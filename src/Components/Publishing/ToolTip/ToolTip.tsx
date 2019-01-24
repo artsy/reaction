@@ -1,3 +1,4 @@
+import { color } from "@artsy/palette"
 import { ArtistToolTip_artist$ref } from "__generated__/ArtistToolTip_artist.graphql"
 import { GeneToolTip_gene$ref } from "__generated__/GeneToolTip_gene.graphql"
 import React from "react"
@@ -81,8 +82,10 @@ interface DivProps {
 
 export const ToolTipContainer = styled.div.attrs<DivProps>({})`
   position: absolute;
+  color: ${color("black100")};
   z-index: 10;
   left: ${props => (props.positionLeft ? props.positionLeft : 0)}px;
+
   ${props =>
     props.orientation === "up" ? `bottom: 95%;` : `top: calc(100% + 10px);`};
 `
@@ -95,6 +98,7 @@ const Content = styled.div.attrs<{ orientation: string; arrowLeft?: string }>(
   background: white;
   margin-bottom: 15px;
   width: fit-content;
+  color: inherit;
 
   a {
     background-image: none;

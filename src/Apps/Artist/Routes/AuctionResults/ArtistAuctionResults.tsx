@@ -1,8 +1,8 @@
+import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
+import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
@@ -16,6 +16,9 @@ import {
   LoadingArea,
   LoadingAreaState,
 } from "Apps/Artist/Components/LoadingArea"
+import createLogger from "Utils/logger"
+
+const logger = createLogger("ArtistAuctionResults.tsx")
 
 const PAGE_SIZE = 10
 
@@ -66,7 +69,7 @@ class AuctionResultsContainer extends Component<
       null,
       error => {
         if (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
     )

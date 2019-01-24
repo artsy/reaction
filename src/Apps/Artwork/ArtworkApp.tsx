@@ -1,147 +1,206 @@
-import { Box, Separator } from "@artsy/palette"
-import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
+import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
-import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 
+import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
+
+import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
-import { ArtworkImagesFragmentContainer as ArtworkImages } from "./Components/ArtworkImages"
+import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "./Components/ArtworkImageBrowser"
+import { ArtworkMetaFragmentContainer as ArtworkMeta } from "./Components/ArtworkMeta"
+import { ArtworkRelatedArtistsFragmentContainer as RelatedArtists } from "./Components/ArtworkRelatedArtists"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
-// import { FullArtworkGrid, Tab, Tabs } from "Styleguide/Components"
-// import { OtherWorksQueryRenderer as OtherWorks } from "./Components/OtherWorks"
+import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/Router"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Styleguide/Components"
+} from "Components/v2"
+import { TrackingProp } from "react-tracking"
+import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
 
 export interface Props {
   artwork: ArtworkApp_artwork
+  tracking?: TrackingProp
 }
 
-export const ArtworkApp: React.SFC<Props> = props => {
-  return (
-    <HorizontalPadding>
-      <Row>
-        <Col sm={8}>
-          <ArtworkBanner artwork={props.artwork} />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={8}>
-          <Box px={4}>
-            <ArtworkImages artwork={props.artwork} />
-          </Box>
-        </Col>
-        <Col sm={4}>
-          <ArtworkSidebar artwork={props.artwork} />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={8}>
-          <ArtworkDetails artwork={props.artwork} />
-        </Col>
-      </Row>
-      {props.artwork.artist && (
-        <Row>
-          <Col sm={8}>
-            <ArtistInfo artistID={props.artwork.artist.id} />
-          </Col>
-        </Row>
-      )}
+declare const window: any
+@track()
+export class ArtworkApp extends React.Component<Props> {
+  // TODO: Move the below tracking, which consists of:
+  //
+  //  * a custom `track` event when the artwork is acquireable or in an auction
+  //  * a custom pageview event including extra metadata
+  //
+  // into an appropriate wrapper HOC.
+  componentDidMount() {
+    this.trackPageview()
+    this.trackProductView()
+  }
 
-      <Row>
-        <Col>
-          <Box mt={6}>{/* <OtherWorks artworkID={props.artwork.id} /> */}</Box>
-        </Col>
-      </Row>
+  trackProductView() {
+    const {
+      tracking,
+      artwork: { is_acquireable, is_in_auction, _id },
+    } = this.props
 
-      {typeof window !== "undefined" && (
-        <LazyLoadComponent threshold={1000}>
+    if (is_acquireable || is_in_auction) {
+      const trackingData = {
+        action_type: Schema.ActionType.ViewedProduct,
+        id: _id,
+      }
+      if (tracking) tracking.trackEvent(trackingData)
+    }
+  }
+
+  enableIntercomForBuyers(mediator) {
+    const {
+      artwork: { is_offerable, is_acquireable },
+    } = this.props
+    mediator &&
+      mediator.trigger &&
+      mediator.trigger("enableIntercomForBuyers", {
+        is_offerable,
+        is_acquireable,
+      })
+  }
+
+  trackPageview() {
+    const {
+      artwork: { price, availability, is_offerable, is_acquireable },
+    } = this.props
+
+    // Pageview
+    const properties = {
+      path: window.location.pathname,
+      acquireable: is_acquireable,
+      offerable: is_offerable,
+      availability,
+      price_listed: !!price,
+    }
+
+    if (typeof window.analytics !== "undefined") {
+      window.analytics.page(properties, { integrations: { Marketo: false } })
+    }
+  }
+
+  renderArtists() {
+    const artists = get(this.props, p => p.artwork.artists)
+
+    if (!artists.length) {
+      return null
+    }
+
+    return (
+      <>
+        {artists.map((artist, index) => {
+          const addSpacer = artists.length > 1 && index < artists.length - 1
+          return (
+            <Row key={artist.id}>
+              <Col>
+                <ArtistInfo artistID={artist.id} />
+                {addSpacer && <Spacer mb={2} />}
+              </Col>
+            </Row>
+          )
+        })}
+      </>
+    )
+  }
+
+  render() {
+    const { artwork } = this.props
+
+    return (
+      <AppContainer>
+        <HorizontalPadding>
+          {/* NOTE: react-head automatically moves these tags to the <head> element */}
+          <ArtworkMeta artwork={artwork} />
+
           <Row>
-            <Col>
-              <RecentlyViewed />
+            <Col sm={8}>
+              <ArtworkBanner artwork={artwork} />
+              <Spacer mb={2} />
             </Col>
           </Row>
-        </LazyLoadComponent>
-      )}
 
-      <Row>
-        <Col>
-          <Separator mt={6} mb={3} />
-          <Footer />
-        </Col>
-      </Row>
+          {/* Mobile */}
+          <Media at="xs">
+            <Row>
+              <Col>
+                <ArtworkImageBrowser artwork={artwork} />
+                <ArtworkSidebar artwork={artwork} />
+                <ArtworkDetails artwork={artwork} />
+                {this.renderArtists()}
+              </Col>
+            </Row>
+          </Media>
 
-      {/*
-        TODO: Implement
+          {/* Desktop */}
+          <Media greaterThan="xs">
+            <Row>
+              <Col sm={8}>
+                <Box pr={4}>
+                  <ArtworkImageBrowser artwork={artwork} />
+                  <ArtworkDetails artwork={artwork} />
+                  {this.renderArtists()}
+                </Box>
+              </Col>
+              <Col sm={4}>
+                <ArtworkSidebar artwork={artwork} />
+              </Col>
+            </Row>
+          </Media>
 
-      <Row>
-        <Col>
-          <Box mb={6}>
-            <OtherWorks headline="Other works by Banksy" />
-          </Box>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Box mb={6}>
-            <OtherWorks headline="Other works from Salon 94" />
-          </Box>
-        </Col>
-      </Row>
+          <Row>
+            <Col>
+              <Box mt={6}>
+                <OtherWorks artwork={artwork} />
+              </Box>
+            </Col>
+          </Row>
 
-      <Row>
-        <Col>
-          <RelatedWorks>
-            <GridBlock>
-              <Title>Related works</Title>
-              <ViewAllButton>View all</ViewAllButton>
-              <Tabs>
-                <Tab name="Gene">
-                  <FullArtworkGrid artistID="pablo-picasso" />
-                </Tab>
-                <Tab name="Another Gene">
-                  <FullArtworkGrid artistID="banksy" />
-                </Tab>
-                <Tab name="Third Gene">
-                  <FullArtworkGrid artistID="pablo-picasso" />
-                </Tab>
-                <Tab name="Most Similar">
-                  <FullArtworkGrid artistID="banksy" />
-                </Tab>
-              </Tabs>
-            </GridBlock>
-          </RelatedWorks>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <RelatedArtists>
-            <RelatedArtistItem>
-              <Image>TODO: Image</Image>
-              <Name>Francesca DiMattio</Name>
-              <Metadata>American, b. 1979</Metadata>
-              <FollowButton>Follow</FollowButton>
-            </RelatedArtistItem>
-            <RelatedArtistItem>
-              <Image>TODO: Image</Image>
-              <Name>Jennifer Allora & Guillermo Calzadilla</Name>
-              <Metadata>American, b. 1979</Metadata>
-              <FollowButton>Follow</FollowButton>
-            </RelatedArtistItem>
-          </RelatedArtists>
-        </Col>
-      </Row>
-      */}
+          {artwork.artist && (
+            <Row>
+              <Col>
+                <RelatedArtists artwork={artwork} />
+              </Col>
+            </Row>
+          )}
 
-      <div id="lightbox-container" />
-    </HorizontalPadding>
-  )
+          {typeof window !== "undefined" && (
+            <LazyLoadComponent threshold={1000}>
+              <Row>
+                <Col>
+                  <RecentlyViewed />
+                </Col>
+              </Row>
+            </LazyLoadComponent>
+          )}
+
+          <Row>
+            <Col>
+              <Separator mt={6} mb={3} />
+              <Footer />
+            </Col>
+          </Row>
+
+          <div id="lightbox-container" />
+          <ContextConsumer>
+            {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
+          </ContextConsumer>
+        </HorizontalPadding>
+      </AppContainer>
+    )
+  }
 }
 
 export const ArtworkAppFragmentContainer = createFragmentContainer(
@@ -149,24 +208,26 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
   graphql`
     fragment ArtworkApp_artwork on Artwork {
       id
+      _id
+      is_acquireable
+      is_offerable
+      availability
+      price
+      is_in_auction
+      artists {
+        _id
+        id
+      }
       artist {
         id
       }
+      ...ArtworkRelatedArtists_artwork
+      ...ArtworkMeta_artwork
       ...ArtworkBanner_artwork
       ...ArtworkSidebar_artwork
       ...ArtworkDetails_artwork
-      ...ArtworkImages_artwork
+      ...ArtworkImageBrowser_artwork
+      ...OtherWorks_artwork
     }
   `
 )
-
-// const FollowButton = styled.div``
-// const Name = styled.div``
-// const Metadata = styled.div``
-// const GridBlock = styled.div``
-// const Title = styled.div``
-// const ViewAllButton = styled.div``
-// const RelatedWorks = styled.div``
-// const RelatedArtists = styled.div``
-// const RelatedArtistItem = styled.div``
-// const Image = styled.div``

@@ -57,6 +57,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -83,6 +89,12 @@ const node: ConcreteFragment = {
       "kind": "LocalArgument",
       "name": "attribution_class",
       "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
       "defaultValue": null
     }
   ],
@@ -127,6 +139,12 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": "Boolean"
@@ -148,6 +166,12 @@ const node: ConcreteFragment = {
           "name": "medium",
           "variableName": "medium",
           "type": "String"
+        },
+        {
+          "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
@@ -193,5 +217,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'b5a8be204586a373893524d3a402068a';
+(node as any).hash = 'abd598211f110b95e3ed025bfe3b5250';
 export default node;

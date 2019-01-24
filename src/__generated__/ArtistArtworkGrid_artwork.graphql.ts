@@ -13,6 +13,11 @@ export type ArtistArtworkGrid_artwork = {
             readonly artworks: any | null;
         }) | null;
         readonly artworks_connection: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
         }) | null;
     }) | null;
@@ -25,6 +30,13 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -34,15 +46,16 @@ return {
   "name": "ArtistArtworkGrid_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
-  "selections": [
+  "argumentDefinitions": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
+      "kind": "LocalArgument",
+      "name": "excludeArtworkIDs",
+      "type": "[String!]",
+      "defaultValue": null
+    }
+  ],
+  "selections": [
+    v0,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -101,8 +114,14 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "artworks_connection",
-          "storageKey": "artworks_connection(filter:[\"IS_FOR_SALE\"],first:10,sort:\"PUBLISHED_AT_DESC\")",
+          "storageKey": null,
           "args": [
+            {
+              "kind": "Variable",
+              "name": "exclude",
+              "variableName": "excludeArtworkIDs",
+              "type": "[String]"
+            },
             {
               "kind": "Literal",
               "name": "filter",
@@ -114,7 +133,7 @@ return {
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
+              "value": 8,
               "type": "Int"
             },
             {
@@ -131,15 +150,39 @@ return {
               "kind": "FragmentSpread",
               "name": "ArtworkGrid_artworks",
               "args": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    v0,
+                    v1
+                  ]
+                }
+              ]
             }
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = 'cc473448a2eed83f3c52816bb1d6c07a';
+(node as any).hash = 'aae34f84513daba2b1d30d535f54817c';
 export default node;

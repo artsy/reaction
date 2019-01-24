@@ -1,9 +1,11 @@
 import {
   BorderedRadio,
   Button,
+  Col,
   Collapse,
   Flex,
   RadioGroup,
+  Row,
   Sans,
   Spacer,
 } from "@artsy/palette"
@@ -12,6 +14,7 @@ import {
   OrderFulfillmentType,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import {
   Address,
   AddressChangeHandler,
@@ -29,11 +32,11 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"
@@ -43,8 +46,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -52,9 +53,9 @@ import { Media } from "Utils/Responsive"
 
 export interface ShippingProps {
   order: Shipping_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
+  dialog: Dialog
 }
 
 export interface ShippingState {
@@ -63,30 +64,20 @@ export interface ShippingState {
   addressErrors: AddressErrors
   addressTouched: AddressTouched
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Shipping/index.tsx")
 
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
-  state = {
+  state: ShippingState = {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
-    errorModalTitle: null,
-    errorModalMessage: null,
-  }
-
-  componentDidMount() {
-    this.props.mediator.trigger("order:shipping")
   }
 
   get startingAddress() {
@@ -234,13 +225,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
-  onMutationError(error, errorModalTitle?, errorModalMessage?) {
+  onMutationError(error, title?, message?) {
     logger.error(error)
+    this.props.dialog.showErrorDialog({ title, message })
     this.setState({
       isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
     })
   }
 
@@ -270,10 +259,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       errors,
       hasErrors,
     }
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
@@ -412,34 +397,19 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   >
                     Continue
                   </Button>
+                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
-const ShippingRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ShippingRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const ShippingFragmentContainer = createFragmentContainer(
-  ShippingRouteWrapper,
+  trackPageViewWrapper(injectDialog(ShippingRoute)),
   graphql`
     fragment Shipping_order on Order {
       id

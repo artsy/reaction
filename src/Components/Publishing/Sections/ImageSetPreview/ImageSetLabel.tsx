@@ -8,6 +8,7 @@ import { ImageSetPreviewProps } from "./ImageSetPreview"
 
 export const ImageSetLabel = (props: ImageSetPreviewProps) => {
   const {
+    color,
     section: { images, title },
   } = props
   const label = images.length === 1 ? "Image" : "Images"
@@ -17,25 +18,25 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
   return (
     <LabelWrapper alignItems="center" justifyContent="space-between">
       <Flex flexDirection="column" justifyContent="space-between">
-        <Sans size={["4", "5"]} weight="medium" pb={2}>
+        <SlideshowTitle size={["4", "5"]} weight="medium" pb={2} color={color}>
           {primaryTitle}
-        </Sans>
+        </SlideshowTitle>
 
-        <Flex>
-          <Sans size={["2", "3"]} weight="medium">
+        <SlideshowCta>
+          <Sans size={["2", "3"]} weight="medium" color={color}>
             View Slideshow
           </Sans>
           {title && (
-            <Sans size={["2", "3"]} pl={20}>
+            <Sans size={["2", "3"]} pl={20} color={color}>
               {imageCount}
             </Sans>
           )}
-        </Flex>
+        </SlideshowCta>
       </Flex>
 
       <Media greaterThanOrEqual="sm">
         <IconContainer>
-          <IconImageSet />
+          <IconImageSet color={color} />
         </IconContainer>
       </Media>
     </LabelWrapper>
@@ -57,3 +58,7 @@ export const LabelWrapper = styled(Flex)`
   padding: ${space(2)}px;
   width: 100%;
 `
+
+// exported for targeting from outside components
+export const SlideshowTitle = styled(Sans)``
+export const SlideshowCta = styled(Flex)``

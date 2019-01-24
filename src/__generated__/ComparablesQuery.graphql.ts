@@ -51,6 +51,7 @@ query ComparablesQuery(
 }
 
 fragment GridItem_artwork on Artwork {
+  _id
   image {
     placeholder
     url(version: "large")
@@ -62,6 +63,7 @@ fragment GridItem_artwork on Artwork {
     __id
   }
   is_acquireable
+  is_offerable
   href
   ...Metadata_artwork
   ...Save_artwork
@@ -77,6 +79,7 @@ fragment Metadata_artwork on Artwork {
 
 fragment Save_artwork on Artwork {
   __id
+  _id
   id
   is_saved
 }
@@ -267,7 +270,7 @@ return {
   "operationKind": "query",
   "name": "ComparablesQuery",
   "id": null,
-  "text": "query ComparablesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    artist {\n      id\n      __id\n    }\n    category\n    attribution_class {\n      id\n      name\n    }\n    priceCents {\n      min\n    }\n    ...GridItem_artwork\n    __id\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ComparablesQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    artist {\n      id\n      __id\n    }\n    category\n    attribution_class {\n      id\n      name\n    }\n    priceCents {\n      min\n    }\n    ...GridItem_artwork\n    __id\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  is_offerable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -316,13 +319,20 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "sale_message",
+            "name": "title",
             "args": null,
             "storageKey": null
           },
           v4,
           v7,
           v8,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "_id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -430,14 +440,15 @@ return {
             "args": null,
             "storageKey": null
           },
-          v9,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "title",
+            "name": "is_offerable",
             "args": null,
             "storageKey": null
           },
+          v9,
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -445,7 +456,13 @@ return {
             "args": null,
             "storageKey": null
           },
-          v5,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "sale_message",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -557,13 +574,6 @@ return {
             ]
           },
           v3,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "_id",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "ScalarField",
             "alias": null,

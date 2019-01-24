@@ -1,7 +1,7 @@
-import Colors from "Assets/Colors"
+import { color as Color } from "@artsy/palette"
 import { avantgarde, garamond, unica } from "Assets/Fonts"
-import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import "react"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { PrimaryLink } from "../ToolTip/LinkWithTooltip"
 import { ArticleLayout } from "../Typings"
@@ -13,9 +13,6 @@ interface StyledTextProps {
   postscript?: boolean
   showTooltips?: boolean
 }
-
-const div: StyledFunction<StyledTextProps & React.HTMLProps<HTMLDivElement>> =
-  styled.div
 
 function getBlockquoteSize(layout, size) {
   const desktop = size === "lg"
@@ -33,17 +30,20 @@ function getBlockquoteSize(layout, size) {
   }
 }
 
-export const StyledText = div`
+export const StyledText = styled.div<StyledTextProps>`
   position: relative;
   padding-bottom: ${props => (props.postscript ? "2em" : "")};
   width: 100%;
+  color: ${props => props.color};
+
   a {
     color: ${props => props.color};
     text-decoration: none;
     background-image: linear-gradient(
       to bottom,
       transparent 0,
-      ${props => (props.color === "black" ? Colors.grayBold : props.color)} 1px,
+      ${props =>
+        props.color === "black" ? Color("black80") : props.color} 1px,
         transparent 0
       );
     background-size: 1.25px 4px;
@@ -51,15 +51,17 @@ export const StyledText = div`
     background-position: bottom;
     &:hover {
       color: ${props =>
-        props.color === "black" ? Colors.grayDark : props.color};
+        props.color === "black" ? Color("black30") : props.color};
       opacity:  ${props => (props.color === "black" ? "1" : ".65")};
     }
   }
+
   div[class*='ToolTip'] a {
     background-image: none;
     opacity: 1;
     color: inherit;
   }
+
   p, ul, ol, .paragraph,
   div[data-block=true] .public-DraftStyleDefault-block {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
@@ -104,7 +106,7 @@ export const StyledText = div`
       content: "";
       width: 8px;
       height: 8px;
-      background: black;
+      background: ${props => props.color};
       border-radius: 50%;
       position: absolute;
       top: 69px;
@@ -185,7 +187,7 @@ export const StyledText = div`
     content: "";
     width: 8px;
     height: 8px;
-    background: black;
+    background: ${props => props.color};
     border-radius: 50%;
     margin-left: 12px;
     margin-bottom: 1px;

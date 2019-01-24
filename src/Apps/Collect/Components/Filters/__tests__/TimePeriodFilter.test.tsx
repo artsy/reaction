@@ -19,6 +19,19 @@ describe("TimePeriodFilter", () => {
     expect(timePeriodFilter.find(Radio).length).toBe(15)
   })
 
+  it("filters out incorrect years", () => {
+    timePeriodFilter = mount(
+      <ContextProvider mediator={mediator}>
+        <TimePeriodFilter
+          filters={filterState}
+          timePeriods={["2910", "2010", "2000"]}
+        />
+      </ContextProvider>
+    )
+
+    expect(timePeriodFilter.find(Radio).length).toBe(2)
+  })
+
   it("updates the state with the correct time period", done => {
     timePeriodFilter
       .find(Radio)

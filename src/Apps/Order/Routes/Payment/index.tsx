@@ -1,12 +1,3 @@
-import {
-  Button,
-  Checkbox,
-  Collapse,
-  Flex,
-  Join,
-  Serif,
-  Spacer,
-} from "@artsy/palette"
 import { Payment_order } from "__generated__/Payment_order.graphql"
 import { PaymentRouteCreateCreditCardMutation } from "__generated__/PaymentRouteCreateCreditCardMutation.graphql"
 import { PaymentRouteSetOrderPaymentMutation } from "__generated__/PaymentRouteSetOrderPaymentMutation.graphql"
@@ -19,6 +10,7 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Helper } from "Apps/Order/Components/Helper"
@@ -30,10 +22,9 @@ import {
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -43,11 +34,22 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Flex,
+  Join,
+  Row,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -56,10 +58,10 @@ export const ContinueButton = props => (
 )
 
 export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
-  mediator: Mediator
   order: Payment_order
   relay?: RelayRefetchProp
   router: Router
+  dialog: Dialog
 }
 
 interface PaymentState {
@@ -69,8 +71,6 @@ interface PaymentState {
   addressTouched: AddressTouched
   stripeError: stripe.Error
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
 }
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
@@ -81,15 +81,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     hideBillingAddress: true,
     stripeError: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
-  }
-
-  componentDidMount() {
-    this.props.mediator.trigger("order:payment")
   }
 
   startingAddress(): Address {
@@ -140,6 +134,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             this.createCreditCard({ token: token.id, oneTimeUse: true })
           }
         })
+        .catch(e => {
+          this.onMutationError(new ErrorWithMetadata(e))
+        })
     })
   }
 
@@ -180,10 +177,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         [key]: true,
       },
     })
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -256,7 +249,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     />
                   </Media>
                 </Join>
-                <Spacer mb={3} />
               </Flex>
             }
             Sidebar={
@@ -274,19 +266,13 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       onClick={this.onContinue}
                       loading={isCommittingMutation}
                     />
+                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-        />
       </>
     )
   }
@@ -436,13 +422,10 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private onMutationError(error, errorModalMessage?) {
+  private onMutationError(error, message?) {
     logger.error(error)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalMessage,
-    })
+    this.props.dialog.showErrorDialog({ message })
+    this.setState({ isCommittingMutation: false })
   }
 
   private isPickup = () => {
@@ -454,16 +437,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 }
 
-const PaymentRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <PaymentRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(PaymentRouteWrapper),
+  injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute))),
   graphql`
     fragment Payment_order on Order {
       id

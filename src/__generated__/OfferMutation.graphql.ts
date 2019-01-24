@@ -21,9 +21,9 @@ export type OfferMutationResponse = {
             readonly order?: ({
                 readonly id: string | null;
                 readonly mode: OrderModeEnum | null;
-                readonly itemsTotal: string | null;
                 readonly totalListPrice: string | null;
-                readonly lastOffer: ({
+                readonly totalListPriceCents: number | null;
+                readonly myLastOffer?: ({
                     readonly id: string | null;
                     readonly amountCents: number | null;
                 }) | null;
@@ -56,12 +56,14 @@ mutation OfferMutation(
           __typename
           id
           mode
-          itemsTotal
           totalListPrice
-          lastOffer {
-            id
-            amountCents
-            __id: id
+          totalListPriceCents
+          ... on OfferOrder {
+            myLastOffer {
+              id
+              amountCents
+              __id: id
+            }
           }
           __id: id
         }
@@ -157,14 +159,14 @@ v5 = {
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "itemsTotal",
+  "name": "totalListPrice",
   "args": null,
   "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "totalListPrice",
+  "name": "totalListPriceCents",
   "args": null,
   "storageKey": null
 },
@@ -176,23 +178,29 @@ v8 = {
   "storageKey": null
 },
 v9 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "lastOffer",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Offer",
-  "plural": false,
+  "kind": "InlineFragment",
+  "type": "OfferOrder",
   "selections": [
-    v4,
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "amountCents",
+      "name": "myLastOffer",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    },
-    v8
+      "concreteType": "Offer",
+      "plural": false,
+      "selections": [
+        v4,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amountCents",
+          "args": null,
+          "storageKey": null
+        },
+        v8
+      ]
+    }
   ]
 };
 return {
@@ -200,7 +208,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          itemsTotal\n          totalListPrice\n          lastOffer {\n            id\n            amountCents\n            __id: id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -246,8 +254,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]
@@ -302,8 +310,8 @@ return {
                       v5,
                       v6,
                       v7,
-                      v9,
-                      v8
+                      v8,
+                      v9
                     ]
                   }
                 ]
@@ -316,5 +324,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b40b228542707e958e2c6cdbd2ffb6cf';
+(node as any).hash = 'bc84dfb865867535763b30db14838b08';
 export default node;

@@ -23,11 +23,8 @@ export class ArtworkSidebarSizeInfo extends React.Component<
     }
     return (
       <Box color="black60">
-        <Serif size="2">
-          {dimensions &&
-            (dimensions.in || dimensions.cm) &&
-            [dimensions.in, dimensions.cm].join("; ")}
-        </Serif>
+        {dimensions.in && <Serif size="2">{dimensions.in}</Serif>}
+        {dimensions.cm && <Serif size="2">{dimensions.cm}</Serif>}
         {edition_of && <Serif size="2">{edition_of}</Serif>}
       </Box>
     )

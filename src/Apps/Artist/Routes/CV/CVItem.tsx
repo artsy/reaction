@@ -1,8 +1,8 @@
+import { Col, Row } from "@artsy/palette"
 import { CVItem_artist } from "__generated__/CVItem_artist.graphql"
 import { groupBy } from "lodash"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Responsive } from "Utils/Responsive"
 
 import {

@@ -11,7 +11,7 @@ import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 import { Media, valuesWithBreakpointProps } from "Utils/Responsive"
-import RelayGridItem, { ArtworkGridItem } from "../Artwork/GridItem"
+import GridItem from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 
@@ -19,13 +19,13 @@ export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
   columnCount?: number | number[]
-  sectionMargin?: number
   itemMargin?: number
+  mediator?: Mediator
+  onBrickClick?: () => void
   onClearFilters?: () => any
   onLoadMore?: () => any
-  useRelay?: boolean
+  sectionMargin?: number
   user?: User
-  mediator?: Mediator
 }
 
 export interface ArtworkGridContainerState {
@@ -41,7 +41,6 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: [3],
     sectionMargin: 20,
     itemMargin: 20,
-    useRelay: true,
   }
 
   state = {
@@ -107,16 +106,17 @@ export class ArtworkGridContainer extends React.Component<
       const artworkComponents = []
       for (let j = 0; j < sectionedArtworks[i].length; j++) {
         const artwork = sectionedArtworks[i][j]
-        const GridItem: typeof RelayGridItem = (this.props.useRelay
-          ? RelayGridItem
-          : ArtworkGridItem) as any
         artworkComponents.push(
           <GridItem
             artwork={artwork}
             key={"artwork-" + j + "-" + artwork.__id}
-            useRelay={this.props.useRelay}
             user={this.props.user}
             mediator={this.props.mediator}
+            onClick={() => {
+              if (this.props.onBrickClick) {
+                this.props.onBrickClick()
+              }
+            }}
           />
         )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.

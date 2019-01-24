@@ -1,15 +1,24 @@
 import { storiesOf } from "@storybook/react"
 import { Article } from "Components/Publishing/Article"
+import { clone, extend } from "lodash"
 import React from "react"
 
 import {
+  BasicArticle,
   ImageHeavyStandardArticle,
   MissingVerticalStandardArticle,
+  SeriesArticle,
   StandardArticle,
+  SuperArticle,
 } from "../Fixtures/Articles"
 
 import { ContextProvider } from "Artsy"
-import { Display, RelatedCanvas, RelatedPanel } from "../Fixtures/Components"
+import {
+  Display,
+  HeroSections,
+  RelatedCanvas,
+  RelatedPanel,
+} from "../Fixtures/Components"
 import { ArticleData } from "../Typings"
 
 const story = storiesOf("Publishing/Articles/Standard", module)
@@ -21,6 +30,32 @@ const story = storiesOf("Publishing/Articles/Standard", module)
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
         />
+      </ContextProvider>
+    )
+  })
+  .add("Super Article", () => {
+    const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
+    return (
+      <ContextProvider>
+        <Article
+          article={article}
+          relatedArticlesForPanel={RelatedPanel}
+          relatedArticlesForCanvas={RelatedCanvas}
+          isSuper
+        />
+      </ContextProvider>
+    )
+  })
+  .add("In series", () => {
+    const article = clone({
+      ...StandardArticle,
+      seriesArticle: SeriesArticle,
+      relatedArticles: [BasicArticle, SuperArticle],
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article article={article} />
       </ContextProvider>
     )
   })

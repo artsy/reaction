@@ -1,10 +1,9 @@
-import { Box } from "@artsy/palette"
+import { Box, Col, Row } from "@artsy/palette"
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
+import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { ArticleItem } from "./ArtistArticle"
 
 import {

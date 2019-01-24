@@ -22,7 +22,14 @@ const node: ConcreteFragment = {
   "name": "FollowArtistButton_artist",
   "type": "Artist",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "showFollowSuggestions",
+      "type": "Boolean",
+      "defaultValue": false
+    }
+  ],
   "selections": [
     {
       "kind": "ScalarField",
@@ -64,11 +71,18 @@ const node: ConcreteFragment = {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "FollowArtistPopover_suggested",
-      "args": null
+      "kind": "Condition",
+      "passingValue": true,
+      "condition": "showFollowSuggestions",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "FollowArtistPopover_suggested",
+          "args": null
+        }
+      ]
     }
   ]
 };
-(node as any).hash = '4754d3426b461ec77d6c3c7c7e603d9a';
+(node as any).hash = 'c8cd753c0684c100bbc6d08b01eec991';
 export default node;

@@ -4,6 +4,7 @@
 export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
+  ArtworkPage = "Artwork page",
 }
 
 /**
@@ -41,9 +42,22 @@ export enum ActionType {
   Click = "Click",
 
   /**
+   * A click on 'Buy Now' or 'Make offer' buttons.
+   */
+  ClickedBuyNow = "Clicked buy now",
+  ClickedMakeOffer = "Clicked make offer",
+  ClickedContactGallery = 'Clicked "Contact Gallery"',
+  ClickedBid = 'Clicked "Bid"',
+
+  /**
    * Triggers a pageview in force, skips segment
    */
   ClickedReadMore = "Clicked read more",
+
+  /**
+   * A/B Test Experiments
+   */
+  ExperimentViewed = "Experiment Viewed",
 
   /**
    * Moving the mouse pointer over a UI element or, when browsing on a mobile
@@ -74,6 +88,14 @@ export enum ActionType {
    * BNMO
    */
   SubmittedOrder = "submitted_order",
+  SubmittedOffer = "submitted_offer",
+  SubmittedCounterOffer = "submitted_counter_offer",
+  ViewedProduct = "Viewed Product",
+  FocusedOnOfferInput = "Focused on offer input",
+
+  // MO speedbumps
+  ViewedOfferTooLow = "Viewed offer too low",
+  ViewedOfferHigherThanListPrice = "Viewed offer higher than listed price",
 }
 
 /**
@@ -168,10 +190,16 @@ export enum Subject {
   AuctionConditionsOfSale = "conditions of sale",
   AuctionFAQ = "auction faq",
   AuctionAskSpecialist = "ask a specialist",
+  AuctionBuyerPremium = "Buyer premium",
 
   CollectorFAQ = "collector faq",
 
   ConsignLearnMore = "learn more",
+
+  // Artwork Page
+  Classification = "Classification info",
+  ContactGallery = "Contact Gallery",
+  EnterLiveAuction = "Enter live auction",
 }
 
 /**
@@ -180,6 +208,7 @@ export enum Subject {
 export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
+  RecentlyViewedArtworks = "recently_viewed_artworks",
 
   /**
    * Artist page
@@ -188,6 +217,7 @@ export enum ContextModule {
   AboutTheWorkPartner = "About the Work (Partner)",
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
+  ArtistInsights = "ArtistInsights",
   Biography = "Biography",
   Sidebar = "Sidebar",
 
@@ -195,6 +225,15 @@ export enum ContextModule {
    * Artwork page
    */
   ArtworkTabs = "Artwork tabs",
+  OtherWorksByArtist = "Other works by artist",
+  OtherWorksInAuction = "Other works in auction",
+  OtherWorksInFair = "Other works in fair",
+  OtherWorksFromGallery = "Other works from gallery",
+  OtherWorksFromShow = "Other works from show",
+  RelatedArtists = "RelatedArtists",
+  RelatedWorks = "RelatedWorks",
+  ShareButton = "Share button",
+  Zoom = "Zoom",
 
   /*
   * Articles
@@ -223,6 +262,11 @@ export enum ContextModule {
 export enum Flow {
   ArtworkAboutTheWork = "Artwork about the work",
   ArtworkAboutTheArtist = "Artwork about the artist",
+  ArtworkShare = "Artwork share",
+  ArtworkZoom = "Artwork zoom",
+  Auctions = "Auctions",
+  BuyNow = "Buy now",
+  MakeOffer = "Make offer",
 }
 
 export enum Label {
@@ -234,7 +278,10 @@ export enum Label {
 }
 
 export enum Type {
+  ArtistCard = "Artist card",
+  ArtworkBrick = "Artwork brick",
   Button = "Button",
-  Tab = "Tab",
   Link = "Link",
+  Tab = "Tab",
+  Thumbnail = "thumbnail",
 }

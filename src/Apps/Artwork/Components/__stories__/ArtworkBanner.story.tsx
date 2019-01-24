@@ -1,18 +1,19 @@
 import { AllAdditionalDetailsPresent } from "Apps/__tests__/Fixtures/Artworks"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { ArtworkBanner, ArtworkBannerQueryRenderer } from "../ArtworkBanner"
 
 import {
   ArtworkAuctionBannerFixture,
+  ArtworkBenefitAuctionBannerFixture,
   ArtworkCurrentShowBannerFixture,
   ArtworkFairBannerFixture,
   ArtworkPastShowBannerFixture,
   ArtworkUpcomingShowBannerFixture,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkBanner"
 
-storiesOf("Styleguide/Artwork", module).add("ArtworkBanner", () => {
+storiesOf("Apps/Artwork Page/Components", module).add("ArtworkBanner", () => {
   return (
     <React.Fragment>
       <Section title="ArtworkBannerQueryRenderer artwork with no banner">
@@ -23,6 +24,9 @@ storiesOf("Styleguide/Artwork", module).add("ArtworkBanner", () => {
       </Section>
       <Section title="Fixture artwork with auction banner">
         <ArtworkBanner artwork={ArtworkAuctionBannerFixture as any} />
+      </Section>
+      <Section title="Fixture artwork with benefit auction banner">
+        <ArtworkBanner artwork={ArtworkBenefitAuctionBannerFixture as any} />
       </Section>
       <Section title="Fixture artwork with fair banner">
         <ArtworkBanner artwork={ArtworkFairBannerFixture as any} />

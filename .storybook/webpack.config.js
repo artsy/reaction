@@ -19,15 +19,20 @@ const cacheDirectory = path.resolve(__dirname, "../", ".cache")
 
 const {
   CI,
+  CMS_URL,
   APP_URL,
+  FACEBOOK_APP_NAMESPACE,
+  PREDICTION_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
+  GENOME_URL,
   METAPHYSICS_ENDPOINT,
   NETLIFY,
   NODE_ENV,
   STRIPE_PUBLISHABLE_KEY,
   USER_ACCESS_TOKEN,
   USER_ID,
+  USER_TYPE,
   USER_LAB_FEATURES,
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
@@ -43,8 +48,12 @@ const notOnCI = value => (isCI ? [] : [value])
  */
 const sharifyPath = sharify({
   APP_URL,
+  CMS_URL,
+  FACEBOOK_APP_NAMESPACE,
+  PREDICTION_URL,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
+  GENOME_URL,
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
   STRIPE_PUBLISHABLE_KEY,
@@ -72,6 +81,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
     new webpack.DefinePlugin({
       "process.env": {
         USER_ID: JSON.stringify(USER_ID),
+        USER_TYPE: JSON.stringify(USER_TYPE),
         USER_ACCESS_TOKEN: JSON.stringify(USER_ACCESS_TOKEN),
         USER_LAB_FEATURES: JSON.stringify(USER_LAB_FEATURES),
         XAPP_TOKEN: JSON.stringify(XAPP_TOKEN),

@@ -10,7 +10,6 @@ import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { FollowTrackingData } from "../../FollowButton/Typings"
 import { ToolTipDescription } from "./Components/Description"
-import { NewFeature } from "./Components/NewFeature"
 
 export interface ArtistToolTipProps {
   artist: ArtistToolTip_artist
@@ -101,8 +100,6 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
             {description && <ToolTipDescription text={description} />}
           </a>
         </ArtistContainer>
-
-        <NewFeature />
       </Wrapper>
     )
   }

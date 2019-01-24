@@ -4,21 +4,12 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkSidebarCurrentBidInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarCurrentBidInfo_artwork$ref = typeof _ArtworkSidebarCurrentBidInfo_artwork$ref;
 export type ArtworkSidebarCurrentBidInfo_artwork = {
-    readonly myLotStanding: ReadonlyArray<{
-        readonly active_bid: ({
-            readonly is_winning: boolean | null;
-            readonly max_bid: ({
-                readonly display: string | null;
-            }) | null;
-        }) | null;
-    }> | null;
+    readonly _id: string;
     readonly sale: ({
-        readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
+        readonly is_live_open: boolean | null;
     }) | null;
     readonly sale_artwork: ({
-        readonly lot_label: string | null;
-        readonly estimate: string | null;
         readonly is_with_reserve: boolean | null;
         readonly reserve_message: string | null;
         readonly reserve_status: string | null;
@@ -29,13 +20,31 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
             readonly bidder_positions: any | null;
         }) | null;
     }) | null;
+    readonly myLotStanding: ReadonlyArray<{
+        readonly active_bid: ({
+            readonly is_winning: boolean | null;
+        }) | null;
+        readonly most_recent_bid: ({
+            readonly is_winning: boolean | null;
+            readonly max_bid: ({
+                readonly display: string | null;
+            }) | null;
+        }) | null;
+    }> | null;
     readonly " $refType": ArtworkSidebarCurrentBidInfo_artwork$ref;
 };
 
 
 
 const node: ConcreteFragment = (function(){
-var v0 = [
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v1 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -44,10 +53,10 @@ var v0 = [
     "storageKey": null
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "is_winning",
   "args": null,
   "storageKey": null
 };
@@ -59,51 +68,11 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "myLotStanding",
-      "storageKey": "myLotStanding(live:true)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "live",
-          "value": true,
-          "type": "Boolean"
-        }
-      ],
-      "concreteType": "LotStanding",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "active_bid",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "BidderPosition",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "is_winning",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "max_bid",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "BidderPositionMaxBid",
-              "plural": false,
-              "selections": v0
-            },
-            v1
-          ]
-        }
-      ]
+      "name": "_id",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -117,18 +86,18 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_open",
+          "name": "is_closed",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_closed",
+          "name": "is_live_open",
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
     {
@@ -140,20 +109,6 @@ return {
       "concreteType": "SaleArtwork",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "lot_label",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "estimate",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -183,7 +138,7 @@ return {
           "args": null,
           "concreteType": "SaleArtworkCurrentBid",
           "plural": false,
-          "selections": v0
+          "selections": v1
         },
         {
           "kind": "LinkedField",
@@ -203,12 +158,66 @@ return {
             }
           ]
         },
-        v1
+        v0
       ]
     },
-    v1
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "myLotStanding",
+      "storageKey": "myLotStanding(live:true)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "live",
+          "value": true,
+          "type": "Boolean"
+        }
+      ],
+      "concreteType": "LotStanding",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "active_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "BidderPosition",
+          "plural": false,
+          "selections": [
+            v2,
+            v0
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "most_recent_bid",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "BidderPosition",
+          "plural": false,
+          "selections": [
+            v2,
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "max_bid",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "BidderPositionMaxBid",
+              "plural": false,
+              "selections": v1
+            },
+            v0
+          ]
+        }
+      ]
+    },
+    v0
   ]
 };
 })();
-(node as any).hash = '7a4114f15229a31cf19814409e1c51c7';
+(node as any).hash = '7994fa82fd257302e062c4a8ce092a40';
 export default node;

@@ -3,6 +3,7 @@ import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 
+import { Toggle } from "react-powerplug"
 import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
 import { Checkbox } from "../Checkbox"
@@ -54,6 +55,38 @@ storiesOf("Components/Input", module)
         />
       </section>
     </div>
+  ))
+  .add("Input with Error", () => (
+    <Toggle initial>
+      {({ on, toggle }) => (
+        <div style={{ padding: 10 }}>
+          <Title>Input with error</Title>
+          <Subtitle>
+            Used when greater context is needed beyond the title.
+          </Subtitle>
+
+          <Button onClick={toggle}>Toggle errors</Button>
+
+          <section style={{ padding: 10 }}>
+            <Input
+              placeholder="Placeholder"
+              title="Title"
+              error={on ? "There was a problem" : null}
+              block
+            />
+
+            <Input
+              placeholder="Placeholder"
+              title="Title"
+              description="Short description"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+            />
+          </section>
+        </div>
+      )}
+    </Toggle>
   ))
   .add("Input with Label", () => (
     <div style={{ padding: 10 }}>

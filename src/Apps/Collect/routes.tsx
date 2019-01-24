@@ -30,10 +30,12 @@ export const routes: RouteConfig[] = [
         $sort: String
         $at_auction: Boolean
         $acquireable: Boolean
+        $offerable: Boolean
         $inquireable_only: Boolean
         $price_range: String
         $artist_id: String
         $attribution_class: [String]
+        $color: String
       ) {
         viewer {
           ...CollectApp_viewer
@@ -45,10 +47,12 @@ export const routes: RouteConfig[] = [
               sort: $sort
               at_auction: $at_auction
               acquireable: $acquireable
+              offerable: $offerable
               inquireable_only: $inquireable_only
               price_range: $price_range
               artist_id: $artist_id
               attribution_class: $attribution_class
+              color: $color
             )
         }
       }
@@ -74,6 +78,7 @@ export const routes: RouteConfig[] = [
         $sort: String
         $at_auction: Boolean
         $acquireable: Boolean
+        $offerable: Boolean
         $inquireable_only: Boolean
         $price_range: String
       ) {
@@ -86,6 +91,7 @@ export const routes: RouteConfig[] = [
               sort: $sort
               at_auction: $at_auction
               acquireable: $acquireable
+              offerable: $offerable
               inquireable_only: $inquireable_only
               price_range: $price_range
             )

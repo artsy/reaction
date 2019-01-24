@@ -10,8 +10,8 @@ export type Offer_order = {
     readonly id: string | null;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
-    readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
+    readonly totalListPriceCents: number | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -35,15 +35,7 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -75,16 +67,23 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "itemsTotal",
-      "args": v1,
-      "storageKey": "itemsTotal(precision:2)"
+      "name": "totalListPrice",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "precision",
+          "value": 2,
+          "type": "Int"
+        }
+      ],
+      "storageKey": "totalListPrice(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "totalListPrice",
-      "args": v1,
-      "storageKey": "totalListPrice(precision:2)"
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -132,7 +131,7 @@ return {
                     }
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -149,9 +148,9 @@ return {
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
-    v2
+    v1
   ]
 };
 })();
-(node as any).hash = '867d9554eda7c1e15e9e9785acaf4db4';
+(node as any).hash = '6ee0e0c309dc3f09604fa6cf229cfbac';
 export default node;

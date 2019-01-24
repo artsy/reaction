@@ -1,22 +1,21 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Col, Row, Sans, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { withContext } from "Artsy/SystemContext"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MarketInsightsFragmentContainer as MarketInsights,
   MAX_CHARS,
-  SelectedExhibitionFragmentContainer as SelectedExhibitions,
-} from "Styleguide/Components"
+  SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
+} from "Components/v2"
 
 export interface OverviewRouteProps {
   artist: Overview_artist & {
@@ -28,9 +27,6 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
-@track({
-  context_module: Schema.ContextModule.ArtistOverview,
-})
 class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
@@ -58,14 +54,14 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
   render() {
     const { artist } = this.props
-    const showSelectedExhibitions = Boolean(artist.exhibition_highlights.length)
+    const showArtistInsights =
+      showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
     const bioLen = artist.biography_blurb.text.length
     const hideMainOverviewSection =
-      !showMarketInsights(this.props.artist) &&
-      !showSelectedExhibitions &&
+      !showArtistInsights &&
       !showArtistBio &&
       !showCurrentEvent &&
       !showConsignable
@@ -78,75 +74,62 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       <>
         <Row>
           <Col sm={colNum}>
-            {showMarketInsights && (
-              <>
-                <MarketInsights artist={artist} />
-                <Spacer mb={1} />
-              </>
-            )}
-
-            {showSelectedExhibitions && (
-              <>
-                <SelectedExhibitions
-                  artistID={artist.id}
-                  totalExhibitions={this.props.artist.counts.partner_shows}
-                  exhibitions={this.props.artist.exhibition_highlights}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
-
-            {showArtistBio && (
-              <>
-                <ArtistBio
-                  onReadMoreClicked={() => {
-                    this.setState({ isReadMoreExpanded: true })
-                  }}
-                  bio={artist}
-                />
-                <Spacer mb={1} />
-              </>
-            )}
-
             <>
-              <Media at="xs">
-                {bioLen < MAX_CHARS.xs ? (
-                  <>
-                    <Genes artist={artist} />
-                    <Spacer mb={1} />
-                  </>
-                ) : (
-                  showGenes && <Genes artist={artist} />
-                )}
-              </Media>
-              <Media greaterThan="xs">
-                {bioLen < MAX_CHARS.default ? (
-                  <>
-                    <Genes artist={artist} />
-                    <Spacer mb={1} />
-                  </>
-                ) : (
-                  showGenes && <Genes artist={artist} />
-                )}
-              </Media>
-
-              {showGenes && <Spacer mb={1} />}
+              {showArtistBio && (
+                <>
+                  <ArtistBio
+                    onReadMoreClicked={() => {
+                      this.setState({ isReadMoreExpanded: true })
+                    }}
+                    bio={artist}
+                  />
+                </>
+              )}
+              {showGenes && (
+                <>
+                  <Spacer mb={1} />
+                  <Media at="xs">
+                    {bioLen < MAX_CHARS.xs ? (
+                      <>
+                        <Genes artist={artist} />
+                      </>
+                    ) : (
+                      showGenes && <Genes artist={artist} />
+                    )}
+                  </Media>
+                  <Media greaterThan="xs">
+                    {bioLen < MAX_CHARS.default ? (
+                      <>
+                        <Genes artist={artist} />
+                      </>
+                    ) : (
+                      showGenes && <Genes artist={artist} />
+                    )}
+                  </Media>
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showConsignable && (
+                <>
+                  <Spacer mb={1} />
+                  <Sans size="2" color="black60">
+                    Want to sell a work by this artist?{" "}
+                    <a
+                      href="/consign"
+                      onClick={this.handleConsignClick.bind(this)}
+                    >
+                      Learn more
+                    </a>.
+                  </Sans>
+                </>
+              )}
+              {showArtistInsights && (
+                <>
+                  <Spacer mb={2} />
+                  <SelectedCareerAchievements artist={artist} />
+                </>
+              )}
             </>
-
-            {showConsignable && (
-              <>
-                <Spacer mb={2} />
-                <Sans size="2" color="black60">
-                  Want to sell a work by this artist?{" "}
-                  <a
-                    href="/consign"
-                    onClick={this.handleConsignClick.bind(this)}
-                  >
-                    Learn more
-                  </a>.
-                </Sans>
-              </>
-            )}
           </Col>
 
           {showCurrentEvent && (
@@ -176,7 +159,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 }
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
-  OverviewRoute,
+  withContext(OverviewRoute),
   graphql`
     fragment Overview_artist on Artist
       @argumentDefinitions(
@@ -186,6 +169,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-decayed_merch" }
         partner_category: {
@@ -196,6 +180,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
       ...ArtistBio_bio
       ...CurrentEvent_artist
       ...MarketInsightsArtistPage_artist
+      ...SelectedCareerAchievementsArtistPage_artist
       ...Genes_artist
       ...ArtworkFilter_artist
         @arguments(
@@ -207,11 +192,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           acquireable: $acquireable
           inquireable_only: $inquireable_only
+          offerable: $offerable
         )
       id
-      exhibition_highlights(size: 3) {
-        ...SelectedExhibitions_exhibitions
-      }
       counts {
         partner_shows
       }
@@ -252,6 +235,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             }
           }
         }
+      }
+      insights {
+        type
       }
     }
   `

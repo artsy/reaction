@@ -1,6 +1,6 @@
 import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
+import { EntityHeader } from "Components/v2/EntityHeader"
 import React, { Component } from "react"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
@@ -28,30 +28,35 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
         </Sans>
 
         <Flex flexWrap="wrap" justifyContent="space-between">
-          {collections.map((collection, index) => {
-            const imageUrl =
-              collection.headerImage &&
-              crop(collection.headerImage, {
-                width: 50,
-                height: 50,
-              })
+          {[...collections] // needs to create a new array since the sort function modifies the array.
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .map((collection, index) => {
+              const imageUrl =
+                collection.headerImage &&
+                crop(collection.headerImage, {
+                  width: 50,
+                  height: 50,
+                })
 
-            return (
-              <Flex width={["100%", "30%"]} flexDirection="column" key={index}>
-                <Media at="xs">{index === 0 && <Separator />}</Media>
-                <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
+              return (
+                <Flex
+                  width={["100%", "30%"]}
+                  flexDirection="column"
+                  key={index}
+                >
+                  <Media at="xs">{index === 0 && <Separator />}</Media>
+                  <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
-                <Box py={2}>
                   <EntityHeader
+                    py={2}
                     href={`/collection/${collection.slug}`}
                     imageUrl={imageUrl}
                     name={collection.title}
                   />
-                </Box>
-                <Separator />
-              </Flex>
-            )
-          })}
+                  <Separator />
+                </Flex>
+              )
+            })}
 
           {hasShortRow && (
             <Media greaterThan="xs">

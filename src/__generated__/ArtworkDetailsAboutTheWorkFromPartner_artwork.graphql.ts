@@ -6,6 +6,9 @@ declare const _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref: unique symbol;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
     readonly additional_information: string | null;
+    readonly sale: ({
+        readonly is_benefit: boolean | null;
+    }) | null;
     readonly partner: ({
         readonly _id: string;
         readonly id: string;
@@ -34,14 +37,14 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -69,6 +72,25 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_benefit",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
       "name": "partner",
       "storageKey": null,
       "args": null,
@@ -82,7 +104,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0,
+        v1,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -127,7 +149,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            v0
           ]
         },
         {
@@ -151,7 +173,7 @@ return {
               "name": "FollowProfileButton_profile",
               "args": null
             },
-            v0,
+            v1,
             {
               "kind": "LinkedField",
               "alias": null,
@@ -177,15 +199,15 @@ return {
                 }
               ]
             },
-            v1
+            v0
           ]
         },
-        v1
+        v0
       ]
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = '4d23f751a4dc43b91ea83b1bf76d5be8';
+(node as any).hash = 'f8955f8a9fdb02ca6a6d2b89faadf5c1';
 export default node;

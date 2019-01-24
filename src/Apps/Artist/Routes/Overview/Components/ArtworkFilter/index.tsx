@@ -1,11 +1,11 @@
+import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/SystemContext"
-import { FilterIcon } from "Assets/Icons/FilterIcon"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Toggle } from "Styleguide/Components"
+import { data as sd } from "sharify"
 import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
@@ -25,6 +25,8 @@ import {
   Spacer,
 } from "@artsy/palette"
 
+const { ENABLE_MAKE_OFFER } = sd
+
 interface Props {
   artist: ArtworkFilter_artist
   hideTopBorder?: boolean
@@ -42,6 +44,7 @@ class Filter extends Component<Props> {
     return {
       hasForSaleArtworks: artist.counts.for_sale_artworks > 0,
       hasBuyNowArtworks: artist.counts.ecommerce_artworks > 0,
+      hasMakeOfferArtworks: artist.counts.has_make_offer_artworks,
       hasAuctionArtworks: artist.counts.auction_artworks > 0,
       hasArtworks: artist.counts.artworks > 0,
     }
@@ -148,38 +151,50 @@ class Filter extends Component<Props> {
   }
 
   renderWaysToBuy(filterState, mediator, counts) {
+    const ways = [
+      {
+        hasWorks: this.existy.hasBuyNowArtworks,
+        name: "Buy now",
+        state: "acquireable",
+      },
+      {
+        hasWorks: this.existy.hasMakeOfferArtworks,
+        name: "Make offer",
+        state: "offerable",
+      },
+      {
+        hasWorks: this.existy.hasAuctionArtworks,
+        name: "Bid",
+        state: "at_auction",
+      },
+      {
+        hasWorks: this.existy.hasForSaleArtworks,
+        name: "Inquire",
+        state: "inquireable_only",
+      },
+    ]
+
+    if (!ENABLE_MAKE_OFFER) {
+      ways.splice(1, 1)
+    }
+
+    const wayCheckboxes = ways.map((way, index) => {
+      const props = {
+        disabled: !way.hasWorks || this.showZeroState,
+        key: index,
+        onSelect: value => filterState.setFilter(way.state, value, mediator),
+        selected: filterState.state[way.state],
+      }
+
+      return <Checkbox {...props}>{way.name}</Checkbox>
+    })
+
     return (
       <React.Fragment>
         <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
           Ways to Buy
         </Sans>
-        <Checkbox
-          selected={filterState.state.acquireable}
-          disabled={!this.existy.hasBuyNowArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("acquireable", value, mediator)
-          }}
-        >
-          Buy now
-        </Checkbox>
-        <Checkbox
-          selected={filterState.state.at_auction}
-          disabled={!this.existy.hasAuctionArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("at_auction", value, mediator)
-          }}
-        >
-          Bid
-        </Checkbox>
-        <Checkbox
-          selected={filterState.state.inquireable_only}
-          disabled={!this.existy.hasForSaleArtworks || this.showZeroState}
-          onSelect={value => {
-            return filterState.setFilter("inquireable_only", value, mediator)
-          }}
-        >
-          Inquire
-        </Checkbox>
+        {wayCheckboxes}
       </React.Fragment>
     )
   }
@@ -355,6 +370,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
@@ -370,6 +386,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
         ecommerce_artworks
         auction_artworks
         artworks
+        has_make_offer_artworks
       }
       filtered_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -388,6 +405,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           partner_id: $partner_id
           for_sale: $for_sale
           sort: $sort
+          offerable: $offerable
           acquireable: $acquireable
           at_auction: $at_auction
           inquireable_only: $inquireable_only

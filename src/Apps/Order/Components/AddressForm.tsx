@@ -1,7 +1,7 @@
 import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
 import Input from "Components/Input"
+import { CountrySelect } from "Components/v2"
 import React from "react"
-import { CountrySelect } from "Styleguide/Components"
 import { TwoColumnSplit } from "./TwoColumnLayout"
 
 export interface Address {

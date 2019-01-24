@@ -152,9 +152,11 @@ type Artist implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(
-    sort: ArtworkSorts
+    # List of artwork IDs to exclude from the response.
+    exclude: [String]
     filter: [ArtistArtworksFilters]
     published: Boolean = true
+    sort: ArtworkSorts
     after: String
     first: Int
     before: String
@@ -205,6 +207,7 @@ type Artist implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -256,6 +259,7 @@ type Artist implements Node {
   hometown: String
   image: Image
   initials(length: Int = 3): String
+  insights: [ArtistInsight]
   is_consignable: Boolean
 
   # Only specific Artists should show a link to auction results.
@@ -396,6 +400,7 @@ type ArtistCounts {
     format: String
     label: String
   ): FormattedNumber
+  has_make_offer_artworks: Boolean
   auction_artworks(
     # Returns a `String` when format is specified. e.g.`'0,0.0000''`
     format: String
@@ -430,6 +435,17 @@ type ArtistHighlights {
     before: String
     last: Int
   ): PartnerArtistConnection
+}
+
+type ArtistInsight {
+  # The type of insight.
+  type: String
+
+  # Label to use when displaying the insight.
+  label: String
+
+  # List of entities relevant to the insight.
+  entities: [String]
 }
 
 type ArtistItem implements Node {
@@ -472,9 +488,11 @@ type ArtistItem implements Node {
     exclude: [String]
   ): [Artwork]
   artworks_connection(
-    sort: ArtworkSorts
+    # List of artwork IDs to exclude from the response.
+    exclude: [String]
     filter: [ArtistArtworksFilters]
     published: Boolean = true
+    sort: ArtworkSorts
     after: String
     first: Int
     before: String
@@ -525,6 +543,7 @@ type ArtistItem implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -576,6 +595,7 @@ type ArtistItem implements Node {
   hometown: String
   image: Image
   initials(length: Int = 3): String
+  insights: [ArtistInsight]
   is_consignable: Boolean
 
   # Only specific Artists should show a link to auction results.
@@ -749,7 +769,6 @@ type Artwork implements Node & Sellable {
   artist_names: String
   articles(size: Int): [Article]
   availability: String
-  myLotStanding(live: Boolean = null): [LotStanding!]
   can_share_image: Boolean
     @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
   category: String
@@ -772,7 +791,7 @@ type Artwork implements Node & Sellable {
   # Returns an HTML string representing the embedded content (video)
   embed(width: Int = 853, height: Int = 450, autoplay: Boolean = false): String
   edition_of: String
-  edition_sets: [EditionSet]
+  edition_sets(sort: EditionSetSorts): [EditionSet]
   exhibition_history(format: Format): String
   fair: Fair
   height: String @deprecated(reason: "Prefer dimensions instead.")
@@ -837,12 +856,10 @@ type Artwork implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+  myLotStanding(live: Boolean = null): [LotStanding!]
 
   # [DO NOT USE] Weekly pageview data (static).
   pageviews: Int
-    @deprecated(
-      reason: "Do not use! This is for an AB test and will be imminently deprecated."
-    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -997,6 +1014,7 @@ type ArtworkContextAuction implements Node {
   href: String
   name: String
   is_auction: Boolean
+  is_benefit: Boolean
   is_auction_promo: Boolean
   is_closed: Boolean
   is_open: Boolean
@@ -1064,8 +1082,18 @@ type ArtworkContextFair {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  about: String
+  artists(
+    # Sorts for artists in a fair
+    sort: FairArtistSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtistConnection
   cached: Int
   banner_size: String
+  counts: FairCounts
   has_full_feature: Boolean
   has_homepage_section: Boolean
   has_large_banner: Boolean
@@ -1076,6 +1104,7 @@ type ArtworkContextFair {
 
   # Are we currently in the fair's active period?
   is_active: Boolean
+  links: String
   mobile_image: Image
   is_published: Boolean
   location: Location
@@ -1112,6 +1141,51 @@ type ArtworkContextFair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+  ticketsLink: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
+
+  # Artworks Elastic Search results
+  filteredArtworks(
+    acquireable: Boolean
+    offerable: Boolean
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    at_auction: Boolean
+    attribution_class: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
+    inquireable_only: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # When true, will only return `marketable` works (not nude or provocative).
+    marketable: Boolean
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    page: Int
+    sale_id: ID
+    size: Int
+    sort: String
+    tag_id: String
+    keyword: String
+  ): FilterArtworks
 }
 
 type ArtworkContextPartnerShow implements Node {
@@ -1288,6 +1362,7 @@ type ArtworkContextSale implements Node {
   href: String
   name: String
   is_auction: Boolean
+  is_benefit: Boolean
   is_auction_promo: Boolean
   is_closed: Boolean
   is_open: Boolean
@@ -1376,6 +1451,7 @@ type ArtworkFilterGene implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -1433,6 +1509,7 @@ type ArtworkFilterTag implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -1525,7 +1602,6 @@ type ArtworkItem implements Node & Sellable {
   artist_names: String
   articles(size: Int): [Article]
   availability: String
-  myLotStanding(live: Boolean = null): [LotStanding!]
   can_share_image: Boolean
     @deprecated(reason: "Favor `is_`-prefixed boolean attributes")
   category: String
@@ -1548,7 +1624,7 @@ type ArtworkItem implements Node & Sellable {
   # Returns an HTML string representing the embedded content (video)
   embed(width: Int = 853, height: Int = 450, autoplay: Boolean = false): String
   edition_of: String
-  edition_sets: [EditionSet]
+  edition_sets(sort: EditionSetSorts): [EditionSet]
   exhibition_history(format: Format): String
   fair: Fair
   height: String @deprecated(reason: "Prefer dimensions instead.")
@@ -1613,12 +1689,10 @@ type ArtworkItem implements Node & Sellable {
   medium: String
   metric: String @deprecated(reason: "Prefer dimensions instead.")
   meta: ArtworkMeta
+  myLotStanding(live: Boolean = null): [LotStanding!]
 
   # [DO NOT USE] Weekly pageview data (static).
   pageviews: Int
-    @deprecated(
-      reason: "Do not use! This is for an AB test and will be imminently deprecated."
-    )
   partner(
     # Use whatever is in the original response instead of making a request
     shallow: Boolean
@@ -1679,6 +1753,14 @@ type ArtworkLayer {
   # A type-specific ID.
   id: String!
   artworks: [Artwork]
+
+  # A connection of artworks from a Layer.
+  artworksConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
   description: String
   href: String
   name: String
@@ -1688,6 +1770,7 @@ type ArtworkLayer {
 type ArtworkMeta {
   description(limit: Int = 155): String
   image: String
+  share: String
   title: String
 }
 
@@ -2029,6 +2112,45 @@ type BidIncrementsFormatted {
   display: String
 }
 
+input buyerAcceptOfferInput {
+  # Offer ID
+  offerId: String!
+  clientMutationId: String
+}
+
+type buyerAcceptOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
+input buyerCounterOfferInput {
+  # The ID of the offer to counter
+  offerId: String!
+
+  # Offer price
+  offerPrice: MoneyInput
+  clientMutationId: String
+}
+
+type buyerCounterOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
+input buyerRejectOfferInput {
+  # Offer ID
+  offerId: String!
+
+  # Reason for rejecting offer
+  rejectReason: CancelReasonType
+  clientMutationId: String
+}
+
+type buyerRejectOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 type BuyersPremium {
   # A globally unique ID.
   __id: ID!
@@ -2277,6 +2399,16 @@ type BuyOrder implements Order {
   ): String
 }
 
+enum CancelReasonType {
+  BUYER_REJECTED
+  SELLER_LAPSED
+  SELLER_REJECTED
+  SELLER_REJECTED_OFFER_TOO_LOW
+  SELLER_REJECTED_SHIPPING_UNAVAILABLE
+  SELLER_REJECTED_ARTWORK_UNAVAILABLE
+  SELLER_REJECTED_OTHER
+}
+
 # Fields of partner category (currently from Gravity).
 type Category {
   id: String!
@@ -2297,6 +2429,9 @@ type City {
   shows(
     sort: PartnerShowSorts
     status: EventStatus
+
+    # Whether to include local discovery stubs as well as displayable shows
+    discoverable: Boolean
     after: String
     first: Int
     before: String
@@ -2660,6 +2795,11 @@ input CreateOfferOrderWithArtworkInput {
 
   # quantity of artwork
   quantity: Int
+
+  # When set to true, we will not reuse existing pending/submitted order.
+  # Otherwise if current user has pending/submitted orders on same artwork/edition
+  # with same quantity, we will return that
+  find_active_or_create: Boolean
   clientMutationId: String
 }
 
@@ -3031,6 +3171,10 @@ type EditionSet implements Sellable {
   sale_message: String
 }
 
+enum EditionSetSorts {
+  PRICE_ASC
+}
+
 input EndSaleInput {
   sale_id: String
   clientMutationId: String
@@ -3046,9 +3190,17 @@ enum EventStatus {
   current @deprecated(reason: "use capital enums")
   running @deprecated(reason: "use capital enums")
   upcoming @deprecated(reason: "use capital enums")
+
+  # End date is in the past
   CLOSED
+
+  # Start date or end date is in the future
   CURRENT
+
+  # Start date is in the past and end date is in the future
   RUNNING
+
+  # Start date is in the future
   UPCOMING
 }
 
@@ -3071,8 +3223,18 @@ type Fair {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  about: String
+  artists(
+    # Sorts for artists in a fair
+    sort: FairArtistSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtistConnection
   cached: Int
   banner_size: String
+  counts: FairCounts
   has_full_feature: Boolean
   has_homepage_section: Boolean
   has_large_banner: Boolean
@@ -3083,6 +3245,7 @@ type Fair {
 
   # Are we currently in the fair's active period?
   is_active: Boolean
+  links: String
   mobile_image: Image
   is_published: Boolean
   location: Location
@@ -3119,6 +3282,90 @@ type Fair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+  ticketsLink: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
+
+  # Artworks Elastic Search results
+  filteredArtworks(
+    acquireable: Boolean
+    offerable: Boolean
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    at_auction: Boolean
+    attribution_class: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
+    inquireable_only: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # When true, will only return `marketable` works (not nude or provocative).
+    marketable: Boolean
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    page: Int
+    sale_id: ID
+    size: Int
+    sort: String
+    tag_id: String
+    keyword: String
+  ): FilterArtworks
+}
+
+enum FairArtistSorts {
+  NAME_ASC
+  NAME_DESC
+}
+
+type FairCounts {
+  artists(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+  artworks(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+  partners(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+  partner_shows(
+    # Returns a `String` when format is specified. e.g.`'0,0.0000''`
+    format: String
+    label: String
+  ): FormattedNumber
+}
+
+type FairExhibitorsGroup {
+  # Letter exhibitors group belongs to
+  letter: String
+
+  # Exhibitors sorted by name
+  exhibitors: [String]
+
+  # Partner/Exhibitor default profile id
+  profile_ids: [String]
 }
 
 enum FairSorts {
@@ -3153,9 +3400,6 @@ type FilterArtworks implements Node {
     before: String
     last: Int
   ): ArtworkConnection
-    @deprecated(
-      reason: "Favour artwork connections that take filter arguments."
-    )
   counts: FilterArtworksCounts
   followed_artists_total: Int
     @deprecated(reason: "Favor `favor counts.followed_artists`")
@@ -3315,6 +3559,42 @@ type FollowedArtistsArtworksGroupEdge {
   cursor: String!
 }
 
+# A connection to a list of items.
+type FollowedFairConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [FollowedFairEdge]
+}
+
+# An edge in a connection.
+type FollowedFairEdge {
+  # The item at the end of the edge
+  node: Fair
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A connection to a list of items.
+type FollowedShowConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [FollowedShowEdge]
+}
+
+# An edge in a connection.
+type FollowedShowEdge {
+  # The item at the end of the edge
+  node: Show
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 type FollowGene {
   gene: Gene
 
@@ -3374,6 +3654,33 @@ type FollowsAndSaves {
     before: String
     last: Int
   ): FollowedArtistsArtworksGroupConnection
+
+  # A list of the current user’s currently followed shows
+  shows(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FollowedShowConnection
+
+  # A list of the current user’s currently followed fair profiles
+  fairs(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FollowedFairConnection
+}
+
+input FollowShowInput {
+  partner_show_id: String
+  unfollow: Boolean = false
+  clientMutationId: String
+}
+
+type FollowShowPayload {
+  show: Show
+  clientMutationId: String
 }
 
 enum Format {
@@ -3441,6 +3748,7 @@ type Gene implements Node {
   ): ArtistConnection
   artworks_connection(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -3487,6 +3795,7 @@ type Gene implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -3625,6 +3934,7 @@ type GeneItem implements Node {
   ): ArtistConnection
   artworks_connection(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -3671,6 +3981,7 @@ type GeneItem implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -4073,8 +4384,18 @@ type HomePageModuleContextFair {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  about: String
+  artists(
+    # Sorts for artists in a fair
+    sort: FairArtistSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtistConnection
   cached: Int
   banner_size: String
+  counts: FairCounts
   has_full_feature: Boolean
   has_homepage_section: Boolean
   has_large_banner: Boolean
@@ -4085,6 +4406,7 @@ type HomePageModuleContextFair {
 
   # Are we currently in the fair's active period?
   is_active: Boolean
+  links: String
   mobile_image: Image
   is_published: Boolean
   location: Location
@@ -4121,6 +4443,51 @@ type HomePageModuleContextFair {
   published: Boolean
     @deprecated(reason: "Prefix Boolean returning fields with `is_`")
   tagline: String
+  ticketsLink: String
+
+  # The exhibitors with booths in this fair.
+  exhibitors_grouped_by_name: [FairExhibitorsGroup]
+
+  # Artworks Elastic Search results
+  filteredArtworks(
+    acquireable: Boolean
+    offerable: Boolean
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    at_auction: Boolean
+    attribution_class: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
+    inquireable_only: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # When true, will only return `marketable` works (not nude or provocative).
+    marketable: Boolean
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    page: Int
+    sale_id: ID
+    size: Int
+    sort: String
+    tag_id: String
+    keyword: String
+  ): FilterArtworks
 }
 
 type HomePageModuleContextFollowArtists {
@@ -4151,6 +4518,7 @@ type HomePageModuleContextGene implements Node {
   ): ArtistConnection
   artworks_connection(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -4197,6 +4565,7 @@ type HomePageModuleContextGene implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -4326,6 +4695,7 @@ type HomePageModuleContextSale implements Node {
   href: String
   name: String
   is_auction: Boolean
+  is_benefit: Boolean
   is_auction_promo: Boolean
   is_closed: Boolean
   is_open: Boolean
@@ -4430,20 +4800,6 @@ type Image {
   versions: [String]
 }
 
-input InitialOfferInput {
-  # ID of order
-  orderId: ID!
-
-  # Offer price
-  offerPrice: MoneyInput
-  clientMutationId: String
-}
-
-type InitialOfferPayload {
-  orderOrError: OrderOrFailureUnionType
-  clientMutationId: String
-}
-
 enum Intents {
   BUY_ART_AND_DESIGN
   SELL_ART_AND_DESIGN
@@ -4512,6 +4868,9 @@ type Location {
   country: String
   coordinates: LatLng
   day_schedules: [DaySchedule]
+
+  # Alternate Markdown-supporting free text representation of a location's opening hours
+  day_schedule_text: String
   displayDaySchedules: [FormattedDaySchedules]
   display: String
   phone: String
@@ -4567,6 +4926,7 @@ type MarketingCollection {
   updatedAt: MarketingDateTime!
   artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -4948,6 +5308,9 @@ type Mutation {
   # Follow (or unfollow) an gene
   followGene(input: FollowGeneInput!): FollowGenePayload
 
+  # Follow (or unfollow) a show
+  followShow(input: FollowShowInput!): FollowShowPayload
+
   # Updating a collector profile (loyalty applicant status).
   updateCollectorProfile(
     input: UpdateCollectorProfileInput!
@@ -5018,10 +5381,40 @@ type Mutation {
   # Approves an order with payment
   ecommerceApproveOrder(input: ApproveOrderInput!): ApproveOrderPayload
 
+  # Buyer accepts a submitted offer from seller
+  ecommerceBuyerAcceptOffer(
+    input: buyerAcceptOfferInput!
+  ): buyerAcceptOfferPayload
+
   # Approves an order with payment
   ecommerceSellerAcceptOffer(
     input: sellerAcceptOfferInput!
   ): sellerAcceptOfferPayload
+
+  # Buyer counters sellers offer
+  ecommerceBuyerCounterOffer(
+    input: buyerCounterOfferInput!
+  ): buyerCounterOfferPayload
+
+  # Submit pending offer
+  ecommerceSubmitPendingOffer(
+    input: submitPendingOfferInput!
+  ): submitPendingOfferPayload
+
+  # Seller counters buyers offer
+  ecommerceSellerCounterOffer(
+    input: sellerCounterOfferInput!
+  ): sellerCounterOfferPayload
+
+  # Buyer rejects a submitted offer from seller
+  ecommerceBuyerRejectOffer(
+    input: buyerRejectOfferInput!
+  ): buyerRejectOfferPayload
+
+  # Rejects an offer
+  ecommerceSellerRejectOffer(
+    input: sellerRejectOfferInput!
+  ): sellerRejectOfferPayload
 
   # Confirms pickup for an ecommerce order
   ecommerceConfirmPickup(input: ConfirmPickupInput!): ConfirmPickupPayload
@@ -5069,10 +5462,6 @@ type Mutation {
 
   # Submits an order
   submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
-
-  # Deprecated.
-  ecommerceInitialOffer(input: InitialOfferInput!): InitialOfferPayload
-    @deprecated(reason: "Use AddInitialOfferToOrder instead.")
   recordArtworkView(input: RecordArtworkViewInput): RecordArtworkViewPayload
 }
 
@@ -5200,7 +5589,7 @@ type Offer {
   # The order on which the offer was made
   order: Order
 
-  # Offer amount in cents
+  # Total of amount, shipping and tax in cents
   buyerTotalCents: Int
 
   # A formatted price with various currency formatting options.
@@ -5216,6 +5605,14 @@ type Offer {
 
   # The order on which the offer was made
   respondsTo: Offer
+  submittedAt(
+    # This arg is deprecated, use timezone instead
+    convert_to_utc: Boolean
+    format: String
+
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
 }
 
 # A connection to a list of items.
@@ -5900,6 +6297,7 @@ type OrderWithMutationSuccess {
 type organizer {
   profile_id: ID
   profile: Profile
+  website: String
 }
 
 type PageCursor {
@@ -6465,7 +6863,10 @@ type Query {
   # A city-based entry point for local discovery
   city(
     # A slug for the city, conforming to Gravity's city slug naming conventions
-    slug: String!
+    slug: String
+
+    # A point which will be used to locate the nearest local discovery city within a threshold
+    near: Near
   ): City
   collection(
     # The slug or ID of the Collection
@@ -6546,6 +6947,7 @@ type Query {
   # Artworks Elastic Search results
   filter_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -7074,6 +7476,7 @@ type Sale implements Node {
   href: String
   name: String
   is_auction: Boolean
+  is_benefit: Boolean
   is_auction_promo: Boolean
   is_closed: Boolean
   is_open: Boolean
@@ -7449,6 +7852,34 @@ type sellerAcceptOfferPayload {
   clientMutationId: String
 }
 
+input sellerCounterOfferInput {
+  # The ID of the offer to counter
+  offerId: String!
+
+  # Offer price
+  offerPrice: MoneyInput
+  clientMutationId: String
+}
+
+type sellerCounterOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
+input sellerRejectOfferInput {
+  # Offer ID
+  offerId: String!
+
+  # Reason for rejecting offer
+  rejectReason: CancelReasonType
+  clientMutationId: String
+}
+
+type sellerRejectOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 input SendConversationMessageMutationInput {
   # The id of the conversation to be updated
   id: String!
@@ -7632,6 +8063,47 @@ type Show implements Node {
   # If the show is in a Fair, then that fair
   fair: Fair
 
+  # Artworks Elastic Search results
+  filteredArtworks(
+    acquireable: Boolean
+    offerable: Boolean
+    aggregation_partner_cities: [String]
+    aggregations: [ArtworkAggregation]
+    artist_id: String
+    artist_ids: [String]
+    at_auction: Boolean
+    attribution_class: [String]
+    color: String
+    dimension_range: String
+    extra_aggregation_gene_ids: [String]
+    include_artworks_by_followed_artists: Boolean
+    include_medium_filter_in_aggregation: Boolean
+    inquireable_only: Boolean
+    for_sale: Boolean
+    gene_id: String
+    gene_ids: [String]
+    height: String
+    width: String
+
+    # When true, will only return `marketable` works (not nude or provocative).
+    marketable: Boolean
+
+    # A string from the list of allocations, or * to denote all mediums
+    medium: String
+    period: String
+    periods: [String]
+    major_periods: [String]
+    partner_id: ID
+    partner_cities: [String]
+    price_range: String
+    page: Int
+    sale_id: ID
+    size: Int
+    sort: String
+    tag_id: String
+    keyword: String
+  ): FilterArtworks
+
   # A path to the show on Artsy
   href: String
 
@@ -7660,6 +8132,9 @@ type Show implements Node {
   # Is it a stubbed show?
   is_reference: Boolean
 
+  # Is it an outsourced local discovery stub show?
+  is_local_discovery: Boolean
+
   # Whether the show is in a fair, group or solo
   kind: String
 
@@ -7676,11 +8151,17 @@ type Show implements Node {
   nearbyShows(
     sort: PartnerShowSorts
     status: EventStatus
+
+    # Whether to include local discovery stubs as well as displayable shows
+    discoverable: Boolean
     after: String
     first: Int
     before: String
     last: Int
   ): ShowConnection
+
+  # Alternate Markdown-supporting free text representation of the opening reception event’s date/time
+  openingReceptionText: String
 
   # The partner that represents this show, could be a non-Artsy partner
   partner: PartnerTypes
@@ -7732,6 +8213,7 @@ type ShowCounts {
     format: String
     label: String
   ): FormattedNumber
+  artists: Int
 }
 
 # An edge in a connection.
@@ -7827,6 +8309,17 @@ type SubmitOrderWithOfferPayload {
   clientMutationId: String
 }
 
+input submitPendingOfferInput {
+  # The ID of the pending offer you want to submit
+  offerId: String!
+  clientMutationId: String
+}
+
+type submitPendingOfferPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
+}
+
 type System {
   # Gravity system time, necessary for synchronizing device clocks.
   time: SystemTime
@@ -7866,6 +8359,7 @@ type Tag implements Node {
   # Artworks Elastic Search results
   filtered_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String
@@ -8188,7 +8682,10 @@ type Viewer {
   # A city-based entry point for local discovery
   city(
     # A slug for the city, conforming to Gravity's city slug naming conventions
-    slug: String!
+    slug: String
+
+    # A point which will be used to locate the nearest local discovery city within a threshold
+    near: Near
   ): City
   collection(
     # The slug or ID of the Collection
@@ -8269,6 +8766,7 @@ type Viewer {
   # Artworks Elastic Search results
   filter_artworks(
     acquireable: Boolean
+    offerable: Boolean
     aggregation_partner_cities: [String]
     aggregations: [ArtworkAggregation]
     artist_id: String

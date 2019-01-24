@@ -2,40 +2,46 @@ import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDe
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import {
-  Flex,
-  FlexProps,
-  Sans,
-  Serif,
-  Spacer,
-  StackableBorderBox,
-} from "@artsy/palette"
+import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { StepSummaryItem, StepSummaryItemProps } from "Components/v2"
 
-export interface TransactionDetailsSummaryItemProps extends FlexProps {
+export interface TransactionDetailsSummaryItemProps
+  extends StepSummaryItemProps {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
+  useLastSubmittedOffer?: boolean
+  offerContextPrice?: "LIST_PRICE" | "LAST_OFFER"
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
   TransactionDetailsSummaryItemProps
 > {
+  static defaultProps: Partial<TransactionDetailsSummaryItemProps> = {
+    offerContextPrice: "LIST_PRICE",
+  }
   render() {
     const { offerOverride, order, ...others } = this.props
     return (
-      <StackableBorderBox flexDirection="column" {...others}>
-        {/* TODO: Seller's offer / Your offer (/ Buyer's offer? Will sellers see this component?) */}
-        {this.renderPriceEntry(order, offerOverride)}
+      <StepSummaryItem {...others}>
+        {this.renderPriceEntry()}
         <Spacer mb={2} />
-        <Entry label="Shipping" value={this.shippingDisplayAmount(order)} />
+        <Entry label="Shipping" value={this.shippingDisplayAmount()} />
 
-        <Entry label="Tax" value={this.taxDisplayAmount(order)} />
+        <Entry label="Tax" value={this.taxDisplayAmount()} />
         <Spacer mb={2} />
-        <Entry label="Total" value={order.buyerTotal} final />
-      </StackableBorderBox>
+        <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
+      </StepSummaryItem>
     )
   }
 
-  shippingDisplayAmount = order => {
+  getOffer(): TransactionDetailsSummaryItem_order["lastOffer"] | null {
+    return this.props.useLastSubmittedOffer
+      ? this.props.order.lastOffer
+      : this.props.order.myLastOffer
+  }
+
+  shippingDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return (
@@ -43,43 +49,68 @@ export class TransactionDetailsSummaryItem extends React.Component<
           "—"
         )
       case "OFFER":
-        return order.myLastOffer
+        const offer = this.getOffer()
+        return offer
           ? this.formattedAmount(
-              order.myLastOffer.shippingTotal,
-              order.myLastOffer.shippingTotalCents
+              offer.shippingTotal,
+              offer.shippingTotalCents
             ) || "—"
           : "—"
     }
   }
 
-  taxDisplayAmount = order => {
+  taxDisplayAmount = () => {
+    const { order } = this.props
     switch (order.mode) {
       case "BUY":
         return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
       case "OFFER":
-        return order.myLastOffer
-          ? this.formattedAmount(
-              order.myLastOffer.taxTotal,
-              order.myLastOffer.taxTotalCents
-            ) || "—"
+        const offer = this.getOffer()
+        return offer
+          ? this.formattedAmount(offer.taxTotal, offer.taxTotalCents) || "—"
           : "—"
     }
   }
 
-  renderPriceEntry = (order, offerOverride) => {
-    return order.mode === "BUY" ? (
-      <Entry label="Price" value={order.itemsTotal} />
-    ) : (
+  buyerTotalDisplayAmount = () => {
+    const { order } = this.props
+    switch (order.mode) {
+      case "BUY":
+        return order.buyerTotal
+      case "OFFER":
+        const offer = this.getOffer()
+        return offer && offer.buyerTotal
+    }
+  }
+
+  renderPriceEntry = () => {
+    const { order, offerOverride, offerContextPrice } = this.props
+    if (order.mode === "BUY") {
+      return <Entry label="Price" value={order.itemsTotal} />
+    }
+    const offer = this.getOffer()
+    const isBuyerOffer =
+      offerOverride != null || !offer || offer.fromParticipant === "BUYER"
+
+    return (
       <>
         <Entry
-          label="Your offer"
-          value={
-            offerOverride ||
-            (order.myLastOffer && order.myLastOffer.amount) ||
-            "—"
-          }
+          label={isBuyerOffer ? "Your offer" : "Seller's offer"}
+          value={offerOverride || (offer && offer.amount) || "—"}
         />
-        <SecondaryEntry label="List price" value={order.totalListPrice} />
+        {offerContextPrice === "LIST_PRICE" ? (
+          <SecondaryEntry label="List price" value={order.totalListPrice} />
+        ) : (
+          // show last offer
+          <SecondaryEntry
+            label={
+              order.lastOffer.fromParticipant === "SELLER"
+                ? "Seller's offer"
+                : "Your offer"
+            }
+            value={order.lastOffer.amount}
+          />
+        )}
       </>
     )
   }
@@ -137,6 +168,21 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
   </Flex>
 )
 
+graphql`
+  fragment TransactionDetailsSummaryItemOfferProperties on Offer {
+    id
+    amount(precision: 2)
+    amountCents
+    shippingTotal(precision: 2)
+    shippingTotalCents
+    taxTotal(precision: 2)
+    taxTotalCents
+    buyerTotal(precision: 2)
+    buyerTotalCents
+    fromParticipant
+  }
+`
+
 export const TransactionDetailsSummaryItemFragmentContainer = createFragmentContainer(
   TransactionDetailsSummaryItem,
   graphql`
@@ -150,19 +196,12 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
       itemsTotal(precision: 2)
       totalListPrice(precision: 2)
       buyerTotal(precision: 2)
-      lastOffer {
-        id
-        amountCents
-      }
       ... on OfferOrder {
+        lastOffer {
+          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
+        }
         myLastOffer {
-          id
-          amount(precision: 2)
-          amountCents
-          shippingTotal(precision: 2)
-          shippingTotalCents
-          taxTotal(precision: 2)
-          taxTotalCents
+          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
         }
       }
     }

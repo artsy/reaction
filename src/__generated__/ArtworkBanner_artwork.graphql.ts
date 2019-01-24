@@ -12,6 +12,14 @@ export type ArtworkBanner_artwork = {
             readonly icon: ({
                 readonly url: string | null;
             }) | null;
+            readonly href: string | null;
+        }) | null;
+    }) | null;
+    readonly sale: ({
+        readonly is_auction: boolean | null;
+        readonly is_benefit: boolean | null;
+        readonly cover_image: ({
+            readonly url: string | null;
         }) | null;
     }) | null;
     readonly artworkContextAuction: ({
@@ -94,25 +102,38 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "is_auction",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v6 = {
+  "kind": "Literal",
+  "name": "version",
+  "value": "square",
+  "type": "[String]"
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v8 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -125,12 +146,7 @@ v6 = [
         "value": 70,
         "type": "Int"
       },
-      {
-        "kind": "Literal",
-        "name": "version",
-        "value": "square",
-        "type": "[String]"
-      },
+      v6,
       {
         "kind": "Literal",
         "name": "width",
@@ -204,10 +220,51 @@ return {
                 }
               ]
             },
-            v3
+            v3,
+            v4
           ]
         },
-        v3
+        v4
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        v5,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_benefit",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "cover_image",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Image",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "url",
+              "args": [
+                v6
+              ],
+              "storageKey": "url(version:\"square\")"
+            }
+          ]
+        },
+        v4
       ]
     },
     {
@@ -219,21 +276,15 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v7,
         v4,
-        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextAuction",
           "selections": [
             v1,
+            v3,
             v5,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "is_auction",
-              "args": null,
-              "storageKey": null
-            },
             {
               "kind": "ScalarField",
               "alias": null,
@@ -275,14 +326,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v7,
         v4,
-        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextFair",
           "selections": [
             v1,
-            v5,
+            v3,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -322,9 +373,9 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v6
+                  "selections": v8
                 },
-                v3
+                v4
               ]
             }
           ]
@@ -340,14 +391,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
+        v7,
         v4,
-        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextPartnerShow",
           "selections": [
             v1,
-            v5,
+            v3,
             v0,
             {
               "kind": "ScalarField",
@@ -364,15 +415,15 @@ return {
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": v6
+              "selections": v8
             }
           ]
         }
       ]
     },
-    v3
+    v4
   ]
 };
 })();
-(node as any).hash = 'e1b05ea3a25e680bbabe03c8aec1da54';
+(node as any).hash = '1088a23ad9988055e5834161ce07a18f';
 export default node;

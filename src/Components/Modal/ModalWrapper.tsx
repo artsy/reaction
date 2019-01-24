@@ -33,6 +33,8 @@ injectGlobal`
   }
 `
 
+const KEYBOARD_EVENT = "keyup"
+
 export class ModalWrapper extends React.Component<
   ModalWrapperProps,
   ModalWrapperState
@@ -59,6 +61,16 @@ export class ModalWrapper extends React.Component<
     }
   }
 
+  componentDidMount() {
+    this.updateBodyScrollBlock()
+    this.updateEscapeKeyListener()
+  }
+
+  componentDidUpdate() {
+    this.updateBodyScrollBlock()
+    this.updateEscapeKeyListener()
+  }
+
   componentWillUnmount() {
     this.removeBlurToContainers()
   }
@@ -77,6 +89,28 @@ export class ModalWrapper extends React.Component<
   removeBlurToContainers = () => {
     for (const container of this.state.blurContainers) {
       container.classList.remove("blurred")
+    }
+  }
+
+  updateBodyScrollBlock() {
+    if (this.props.show) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "auto"
+    }
+  }
+
+  handleEscapeKey = event => {
+    if (event && event.key === "Escape") {
+      this.close()
+    }
+  }
+
+  updateEscapeKeyListener() {
+    if (this.props.show) {
+      document.addEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
+    } else {
+      document.removeEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
     }
   }
 
@@ -151,7 +185,7 @@ export const ModalOverlay = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(200, 200, 200, 0.5);
+  background: rgba(0, 0, 0, 0.6);
 `
 
 export const ModalContainer = styled.div.attrs<{

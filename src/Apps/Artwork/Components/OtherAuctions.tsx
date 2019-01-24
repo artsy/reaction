@@ -1,59 +1,27 @@
-import { Button, Flex, Serif } from "@artsy/palette"
-import { take } from "lodash"
-import React, { ReactNode } from "react"
-import { Col, Grid, Row } from "Styleguide/Elements/Grid"
-import { Media } from "Utils/Responsive"
+import { Box, Flex } from "@artsy/palette"
+import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCard"
+import React from "react"
+import { data as sd } from "sharify"
+import { Header } from "./OtherWorks/Header"
 
 interface OtherAuctionsProps {
-  children: ReactNode[]
+  auctions: any
 }
 export class OtherAuctions extends React.Component<OtherAuctionsProps> {
   render() {
     return (
-      <>
-        <Media at="xs">
-          <SmallOtherAuctions {...this.props} />
-        </Media>
-        <Media between={["sm", "xl"]}>
-          <LargeOtherAuctions cardsPerRow={3} {...this.props} />
-        </Media>
-        <Media greaterThanOrEqual="xl">
-          <LargeOtherAuctions {...this.props} />
-        </Media>
-      </>
+      <Box mt={6}>
+        <Header title="Other auctions" buttonHref={sd.APP_URL + "/auctions"} />
+        <Flex flexWrap="wrap" mr={-2} width="100%">
+          {this.props.auctions.map((auction, index) => {
+            return (
+              <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
+                <AuctionCard sale={auction} />
+              </Box>
+            )
+          })}
+        </Flex>
+      </Box>
     )
   }
 }
-
-const LargeOtherAuctions = ({ cardsPerRow = 4, children }) => (
-  <Flex flexDirection="column" width="100%" alignItems="center">
-    <Serif size="8" mb={1}>
-      Other auctions
-    </Serif>
-    <Button variant="secondaryOutline" size="medium" mb={3}>
-      View All
-    </Button>
-    <Grid fluid>
-      <Row>
-        {take(children, cardsPerRow).map((child, index) => (
-          <Col key={`${index}-${cardsPerRow}`} col={12 / cardsPerRow}>
-            {child}
-          </Col>
-        ))}
-      </Row>
-    </Grid>
-  </Flex>
-)
-
-const SmallOtherAuctions = props => (
-  <React.Fragment>
-    <Serif size="8" mb={1}>
-      Other auctions
-    </Serif>
-    <Button variant="secondaryOutline" size="medium" mb={3}>
-      View All
-    </Button>
-    <hr />
-    {take(props.children, 3)}
-  </React.Fragment>
-)

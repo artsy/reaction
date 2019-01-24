@@ -1,33 +1,29 @@
-import { color, Flex } from "@artsy/palette"
+import { color as Color, Flex } from "@artsy/palette"
+import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
+import { ImagesData } from "Components/Publishing/Typings"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
-
-import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
 import { resize } from "Utils/resizer"
 import { ImageSetLabel } from "./ImageSetLabel"
 
 type Layout = "mini" | "full"
 
+export interface ImageSetSection {
+  type: string
+  images: ImagesData
+  layout?: Layout
+  title?: string
+}
+
 export interface ImageSetPreviewProps {
-  section: {
-    type: string
-    images: Array<{
-      url?: string
-      image?: string
-      index?: any
-    }>
-    layout?: Layout
-    title?: string
-  }
+  color?: string
+  section: ImageSetSection
   children?: ReactNode
   onViewFullscreen?: (index: number) => void
 }
 
 @withFullScreen
-export class ImageSetPreview extends React.PureComponent<
-  ImageSetPreviewProps,
-  null
-> {
+export class ImageSetPreview extends React.PureComponent<ImageSetPreviewProps> {
   getImageUrl() {
     const { images, layout } = this.props.section
     const image = images[0]
@@ -44,6 +40,7 @@ export class ImageSetPreview extends React.PureComponent<
   render() {
     const {
       children,
+      color,
       section: { layout, title },
     } = this.props
     const alt = title || "Open Slideshow"
@@ -56,13 +53,15 @@ export class ImageSetPreview extends React.PureComponent<
             <ImageSetLabel {...this.props} />
             {children}
           </FullLabel>
-          <Img src={src} alt={alt} />
+          <ImgContainer>
+            <Img src={src} alt={alt} />
+          </ImgContainer>
         </ImageSetContainer>
       )
     } else {
       return (
         <ImageSetContainer>
-          <MiniWrapper alignItems="center" onClick={this.onClick}>
+          <MiniWrapper alignItems="center" onClick={this.onClick} color={color}>
             <Img src={src} alt={alt} />
             <ImageSetLabel {...this.props} />
           </MiniWrapper>
@@ -92,6 +91,7 @@ export const FullLabel = styled.div`
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
+
     path,
     polygon {
       fill: white;
@@ -100,12 +100,20 @@ export const FullLabel = styled.div`
 `
 
 export const Img = styled.img`
-  height: 100%;
+  height: auto;
+  width: 100%;
 `
+
+export const ImgContainer = styled.div``
 
 const MiniWrapper = styled(Flex)`
   height: 100px;
   padding: 10px 0 10px 10px;
-  border: 1px solid ${color("black10")};
+  border: 1px solid ${props => (props.color ? props.color : Color("black10"))};
   cursor: pointer;
+
+  ${Img} {
+    height: 100%;
+    width: auto;
+  }
 `

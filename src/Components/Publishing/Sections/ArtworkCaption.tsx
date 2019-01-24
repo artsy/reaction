@@ -1,28 +1,26 @@
-import { garamond, unica } from "Assets/Fonts"
+import { color as Color, Sans, Serif } from "@artsy/palette"
+import { ErrorBoundary } from "Components/ErrorBoundary"
+import { pMedia } from "Components/Helpers"
+import { ArticleLayout, SectionLayout } from "Components/Publishing/Typings"
 import { Truncator } from "Components/Truncator"
 import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
-import Colors from "../../../Assets/Colors"
-import { ErrorBoundary } from "../../ErrorBoundary"
-import { pMedia } from "../../Helpers"
-import TextLink from "../../TextLink"
-import { ArticleLayout, SectionLayout } from "../Typings"
 
 interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
   artwork: any
+  color?: string
   layout?: ArticleLayout
   sectionLayout?: SectionLayout
   linked?: boolean
   isFullscreenCaption?: boolean
 }
 
-interface StyledArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
-  layout?: ArticleLayout
-  sectionLayout?: SectionLayout
-}
+export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
+  static defaultProps = {
+    color: Color("black30"),
+  }
 
-export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   joinParts(children, key, delimiter = ", ") {
     const compacted = _.compact(children)
 
@@ -88,9 +86,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
       return (
         <ArtistName key={`renderArtistName-${key}`}>
-          <TextLink href={href} color="#999">
-            {name}
-          </TextLink>
+          <a href={href}>{name}</a>
         </ArtistName>
       )
     } else {
@@ -120,9 +116,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
         return (
           <span key="renderTitle" className="title">
-            <TextLink href={href} color="#999">
-              {title}
-            </TextLink>
+            <a href={href}>{title}</a>
           </span>
         )
       } else {
@@ -162,9 +156,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
       if (createTextLink) {
         return (
-          <TextLink key="renderPartner" href={`/${slug}`} color="#999">
+          <a key="renderPartner" href={`/${slug}`}>
             {name}
-          </TextLink>
+          </a>
         )
       } else {
         return name
@@ -195,7 +189,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   renderFullscreenCaption = () => {
     return (
-      <StyledFullscreenCaption>
+      <StyledFullscreenCaption size={["3", "4"]} weight="medium">
         <Line>
           <ArtistNames>{this.renderArtists()}</ArtistNames>
         </Line>
@@ -209,7 +203,11 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
 
   renderClassicCaption = () => {
     return (
-      <StyledClassicCaption className="display-artwork__caption">
+      <StyledClassicCaption
+        color={Color("black60")}
+        size="2"
+        className="display-artwork__caption"
+      >
         <Truncator>
           <ArtistNames>{this.renderArtists()}</ArtistNames>
           {this.renderTitleDate()}
@@ -221,13 +219,14 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps, null> {
   }
 
   renderEditorialCaption = () => {
-    const { layout, sectionLayout } = this.props
+    const { color, layout, sectionLayout } = this.props
 
     return (
       <StyledArtworkCaption
+        size="3"
+        color={color}
         layout={layout}
         sectionLayout={sectionLayout}
-        className="display-artwork__caption"
       >
         <ArtistNames>{this.renderArtists()}</ArtistNames>
         <div>
@@ -263,22 +262,22 @@ const ArtistName = styled.span`
   white-space: nowrap;
 `
 
-const StyledArtworkCaption = styled.div`
-  padding: ${(props: StyledArtworkCaptionProps) =>
-    props.sectionLayout === "fillwidth" ? "0 10px;" : "0;"};
+const StyledArtworkCaption = styled(Sans)<{
+  layout?: ArticleLayout
+  sectionLayout?: SectionLayout
+}>`
+  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")};
   margin-top: 10px;
   display: flex;
-  color: ${Colors.grayDark};
-  ${unica("s14")};
 
   a {
-    color: ${Colors.grayDark};
-    ${unica("s14")};
+    color: ${props => props.color};
+    text-decoration: none;
   }
 
   .title,
   .title a {
-    ${unica("s14", "italic")};
+    font-style: italic;
   }
 
   ${pMedia.xs`
@@ -286,11 +285,14 @@ const StyledArtworkCaption = styled.div`
   `};
 `
 
-const StyledClassicCaption = styled.div`
+const StyledClassicCaption = styled(Serif)<{ className?: string }>`
   margin-top: 10px;
   display: block;
-  color: ${Colors.grayDark};
-  ${garamond("s15")};
+
+  a {
+    color: ${props => props.color};
+    text-decoration: none;
+  }
 
   ${ArtistNames} {
     margin-right: 0;
@@ -306,33 +308,21 @@ const StyledClassicCaption = styled.div`
   }
 `
 
-const StyledFullscreenCaption = styled.div`
-  ${unica("s16", "medium")};
+const StyledFullscreenCaption = styled(Sans)`
   display: flex;
-  color: black;
 
-  /* stylelint-disable-next-line */
   a {
     color: black;
-    ${unica("s16", "medium")};
-  }
-
-  .title {
-    ${unica("s16", "mediumItalic")};
+    text-decoration: none;
   }
 
   .title,
   .title a {
-    ${unica("s16", "mediumItalic")};
+    font-style: italic;
   }
 
   ${pMedia.sm`
-    ${unica("s14", "medium")}
     flex-direction: column;
-
-    .title, .title a {
-      ${unica("s14", "mediumItalic")}
-    }
   `};
 `
 

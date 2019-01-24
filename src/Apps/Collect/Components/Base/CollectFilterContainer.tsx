@@ -52,6 +52,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
         for_sale: { type: "Boolean" }
         at_auction: { type: "Boolean" }
         acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
         aggregations: {
           type: "[ArtworkAggregation]"
@@ -61,6 +62,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
         price_range: { type: "String" }
         artist_id: { type: "String" }
         attribution_class: { type: "[String]" }
+        color: { type: "String" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -85,6 +87,8 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           price_range: $price_range
           artist_id: $artist_id
           attribution_class: $attribution_class
+          offerable: $offerable
+          color: $color
         )
     }
   `

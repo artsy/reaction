@@ -1,10 +1,9 @@
-import { Box } from "@artsy/palette"
+import { Box, Tab, Tabs } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
-import { Tab, Tabs } from "Styleguide/Components"
 import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
@@ -36,6 +35,7 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
       flow: Schema.Flow.ArtworkAboutTheArtist,
       type: Schema.Type.Tab,
       label: data.trackingLabel,
+      action_type: Schema.ActionType.Click,
     }
   })
   trackTabChange() {
@@ -45,7 +45,7 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
   render() {
     const { artwork } = this.props
     return (
-      <ArtworkDetailsContainer pb={4}>
+      <ArtworkDetailsContainer mt={[4, 0]} pb={4}>
         <Tabs onChange={this.trackTabChange.bind(this)}>
           <Tab name="About the work" data={{ trackingLabel: "about_the_work" }}>
             <AboutTheWorkFromArtsy artwork={artwork} />

@@ -1,7 +1,6 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { AuctionCard } from "Styleguide/Components"
-import { Section } from "Styleguide/Utils/Section"
+import { Section } from "Utils/Section"
 import { OtherAuctions } from "../OtherAuctions"
 
 const auctions = [
@@ -10,35 +9,37 @@ const auctions = [
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
+    href: "#",
   },
   {
     src: "https://picsum.photos/400/180/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
+    href: "#",
   },
   {
     src: "https://picsum.photos/200/600/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
+    href: "#",
   },
   {
     src: "https://picsum.photos/200/180/?random",
     headline: "Sotheby’s",
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
+    href: "#",
   },
 ]
 
-storiesOf("Styleguide/Artwork/OtherAuctions", module).add(
+storiesOf("Apps/Artwork Page/Components/OtherAuctions", module).add(
   "Other Auctions",
   () => {
     return (
       <Section title="Responsive Other Auctions">
-        <OtherAuctions>
-          {auctions.map(auction => <AuctionCard {...auction} />)}
-        </OtherAuctions>
+        <OtherAuctions auctions={auctions} />
       </Section>
     )
   }

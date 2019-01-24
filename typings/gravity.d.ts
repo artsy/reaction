@@ -1,6 +1,7 @@
 interface User {
-  id?: string
   accessToken?: string
   appToken?: string
+  id?: string
   lab_features?: string[]
+  type?: string
 }

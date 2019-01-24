@@ -3,9 +3,9 @@ import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
 import { ContextConsumer } from "Artsy/Router"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
+import { EntityHeader, ReadMore } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { EntityHeader, ReadMore } from "Styleguide/Components"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
@@ -65,7 +65,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       []
     ).join(", ")
 
-    const imageUrl = get(partner, p => p.profile.icon.url)
+    // Partner avatar is not shown for artworks from benefit auctions
+    const showPartnerLogo = !(artwork.sale && artwork.sale.is_benefit)
+    const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
+    const partnerInitials = showPartnerLogo && partner.initials
 
     return (
       <ContextConsumer>
@@ -81,7 +84,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                   }
                   meta={locationNames}
                   imageUrl={imageUrl}
-                  initials={partner.initials}
+                  initials={partnerInitials}
                   FollowButton={
                     partner.type !== "Auction House" &&
                     partner.profile && (
@@ -90,10 +93,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                         user={user}
                         trackingData={{
                           modelName: Schema.OwnerType.Partner,
-                          context_module: [
-                            Schema.ContextModule.Sidebar,
-                            Schema.ContextModule.Biography,
-                          ],
+                          context_module:
+                            Schema.ContextModule.AboutTheWorkPartner,
                           entity_id: partner._id,
                           entity_slug: partner.id,
                         }}
@@ -155,6 +156,9 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   graphql`
     fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       additional_information(format: HTML)
+      sale {
+        is_benefit
+      }
       partner {
         _id
         id

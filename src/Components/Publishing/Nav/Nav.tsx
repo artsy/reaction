@@ -1,6 +1,6 @@
-import { Serif } from "@artsy/palette"
+import { Flex, Serif } from "@artsy/palette"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
-import React from "react"
+import React, { ReactNode } from "react"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -8,6 +8,7 @@ import { Media } from "Utils/Responsive"
 interface Props extends React.HTMLProps<HTMLDivElement> {
   backgroundColor?: string
   canFix?: boolean
+  children?: ReactNode
   color?: string
   sponsor?: any
   title?: string
@@ -18,7 +19,7 @@ interface State {
   isFixed: boolean
 }
 
-export class NavComponent extends React.Component<Props, State> {
+export class Nav extends React.Component<Props, State> {
   static defaultProps = {
     backgroundColor: "black",
     canFix: true,
@@ -30,7 +31,7 @@ export class NavComponent extends React.Component<Props, State> {
     isFixed: false,
   }
 
-  setPosition = isFixed => {
+  setPosition = (isFixed: boolean) => {
     const { canFix } = this.props
     const currentPosition = this.state.isFixed
 
@@ -42,6 +43,7 @@ export class NavComponent extends React.Component<Props, State> {
   render() {
     const {
       backgroundColor,
+      children,
       color,
       sponsor,
       className,
@@ -66,11 +68,13 @@ export class NavComponent extends React.Component<Props, State> {
             color={color}
             margin="0 10px"
           />
+
           <Media greaterThan="xs">
             <Title size="5" color={color} weight="semibold" textAlign="center">
               {title ? title : <a href="/magazine">Artsy Editorial</a>}
             </Title>
           </Media>
+          {children}
         </NavContainer>
 
         <Waypoint
@@ -82,7 +86,7 @@ export class NavComponent extends React.Component<Props, State> {
   }
 }
 
-const NavContainer = styled.div<{
+export const NavContainer = styled(Flex)<{
   backgroundColor: string
   transparent: boolean
   isFixed: boolean
@@ -90,6 +94,11 @@ const NavContainer = styled.div<{
   background-color: ${props =>
     props.transparent ? "transparent" : props.backgroundColor};
   border-bottom: 1px solid ${props => props.color};
+  position: relative;
+  height: 52px;
+  width: 100%;
+  z-index: 10;
+
   ${props =>
     props.transparent &&
     !props.isFixed &&
@@ -107,20 +116,7 @@ const NavContainer = styled.div<{
     right: 0;
   `};
 `
-export const Nav = styled(NavComponent)`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 52px;
-  width: 100%;
-  color: ${props => props.color};
-  z-index: 10;
 
-  a {
-    z-index: 10;
-  }
-`
 const Title = styled(Serif)<{ color: string }>`
   position: absolute;
   width: 100%;
@@ -136,5 +132,6 @@ const Title = styled(Serif)<{ color: string }>`
   a {
     color: ${props => props.color};
     text-decoration: none;
+    z-index: 10;
   }
 `

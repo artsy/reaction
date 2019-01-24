@@ -80,11 +80,13 @@ export const CollectRefetchContainer = createRefetchContainer(
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
           artist_id: { type: "String" }
           attribution_class: { type: "[String]" }
+          color: { type: "String" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -94,12 +96,14 @@ export const CollectRefetchContainer = createRefetchContainer(
           for_sale: $for_sale
           at_auction: $at_auction
           acquireable: $acquireable
+          offerable: $offerable
           inquireable_only: $inquireable_only
           size: 0
           sort: $sort
           price_range: $price_range
           artist_id: $artist_id
           attribution_class: $attribution_class
+          color: $color
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -112,6 +116,7 @@ export const CollectRefetchContainer = createRefetchContainer(
       $major_periods: [String]
       $partner_id: ID
       $acquireable: Boolean
+      $offerable: Boolean
       $at_auction: Boolean
       $inquireable_only: Boolean
       $for_sale: Boolean
@@ -119,6 +124,7 @@ export const CollectRefetchContainer = createRefetchContainer(
       $price_range: String
       $artist_id: String
       $attribution_class: [String]
+      $color: String
     ) {
       viewer {
         ...CollectRefetch_viewer
@@ -130,10 +136,12 @@ export const CollectRefetchContainer = createRefetchContainer(
             sort: $sort
             at_auction: $at_auction
             acquireable: $acquireable
+            offerable: $offerable
             inquireable_only: $inquireable_only
             price_range: $price_range
             artist_id: $artist_id
             attribution_class: $attribution_class
+            color: $color
           )
       }
     }

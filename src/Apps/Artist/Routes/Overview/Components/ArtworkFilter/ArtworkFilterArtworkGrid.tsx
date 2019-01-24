@@ -3,9 +3,9 @@ import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/Artwor
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { ContextConsumer } from "Artsy/Router"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components"
 import { Subscribe } from "unstated"
 
 import {

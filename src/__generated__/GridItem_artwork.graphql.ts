@@ -6,6 +6,7 @@ import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _GridItem_artwork$ref: unique symbol;
 export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
 export type GridItem_artwork = {
+    readonly _id: string;
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
@@ -16,6 +17,7 @@ export type GridItem_artwork = {
         readonly is_preview: boolean | null;
     }) | null;
     readonly is_acquireable: boolean | null;
+    readonly is_offerable: boolean | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
     readonly " $refType": GridItem_artwork$ref;
@@ -38,6 +40,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -113,6 +122,13 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "is_offerable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -131,5 +147,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '219059d721b4d3f76d2bcd3d6f602b5b';
+(node as any).hash = 'e36a0aaa7b13fcdcaf4d835a4fa80bfd';
 export default node;

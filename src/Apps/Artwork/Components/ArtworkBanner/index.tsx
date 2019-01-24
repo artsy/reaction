@@ -17,6 +17,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
     artworkContextFair,
     artworkContextPartnerShow,
     partner,
+    sale,
   } = props.artwork
 
   // Auction
@@ -24,14 +25,16 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
     artworkContextAuction &&
     artworkContextAuction.__typename === "ArtworkContextAuction"
   ) {
-    const auctionImage = get(partner, p => p.profile.icon.url)
+    const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)
     return (
       <Banner
         imageUrl={auctionImage}
         initials={partner.initials}
         meta="In auction"
         name={artworkContextAuction.name}
-        subHeadline={partner.name}
+        // Do not display partner name for benefit acutions
+        subHeadline={sale.is_benefit ? null : partner.name}
+        href={artworkContextAuction.href}
       />
     )
   }
@@ -50,6 +53,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta="At fair"
         name={artworkContextFair.name}
         subHeadline={partner.name}
+        href={artworkContextFair.href}
       />
     )
   }
@@ -73,6 +77,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta={showLine}
         name={artworkContextPartnerShow.name}
         subHeadline={partner.name}
+        href={artworkContextPartnerShow.href}
       />
     )
   }
@@ -90,6 +95,14 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           icon {
             url(version: "square140")
           }
+          href
+        }
+      }
+      sale {
+        is_auction
+        is_benefit
+        cover_image {
+          url(version: "square")
         }
       }
       # This aliasing selection of the context is done to work around a type generator bug, see below.

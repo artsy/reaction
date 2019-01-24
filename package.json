@@ -1,18 +1,13 @@
 {
   "name": "@artsy/reaction",
-  "version": "0.0.0-development",
+  "version": "11.2.16",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
-  "files": [
-    "assets",
-    "data",
-    "dist",
-    "docs"
-  ],
   "peerDependencies": {
+    "@artsy/palette": "^2.32.2",
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
@@ -25,6 +20,7 @@
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "lint": "tslint -c tslint.json --project tsconfig.json",
+    "omg": "om g",
     "prepare": "patch-package",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
@@ -34,7 +30,7 @@
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
     "prettier-write": "yarn run prettier --write",
     "relay": "relay-compiler --src ./src --schema data/schema.graphql --language typescript --artifactDirectory ./src/__generated__ --exclude '**/node_modules/**,**/__mocks__/**,**/__generated__/**'",
-    "semantic-release": "semantic-release",
+    "release": "auto shipit",
     "start": "yarn storybook",
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook --quiet -s ./public -p 9001'",
     "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schema.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
@@ -55,6 +51,7 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
+    "@artsy/palette": "2.34.6",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -65,11 +62,12 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
-    "@storybook/addon-info": "^4.0.0-alpha.24",
-    "@storybook/addon-options": "^4.0.0-alpha.24",
-    "@storybook/addons": "^4.0.0-alpha.24",
-    "@storybook/cli": "^4.0.0-alpha.24",
-    "@storybook/react": "^4.0.0-alpha.24",
+    "@omakase/cli": "^0.0.5",
+    "@storybook/addon-info": "^4.0.12",
+    "@storybook/addon-options": "^4.0.12",
+    "@storybook/addons": "^4.0.12",
+    "@storybook/cli": "^4.0.12",
+    "@storybook/react": "^4.0.12",
     "@types/dd-trace": "^0.6.0",
     "@types/enzyme": "^3.1.0",
     "@types/isomorphic-fetch": "^0.0.34",
@@ -81,7 +79,7 @@
     "@types/react-dom": "^16.0.7",
     "@types/react-overlays": "^0.8.2",
     "@types/react-relay": "^1.3.9",
-    "@types/react-slick": "^0.14.1",
+    "@types/react-slick": "^0.23.2",
     "@types/react-stripe-elements": "^1.1.7",
     "@types/react-test-renderer": "^16.0.1",
     "@types/react-transition-group": "^2.0.7",
@@ -101,7 +99,6 @@
     "babel-plugin-transform-rename-import": "^2.1.1",
     "cache-loader": "^1.2.2",
     "concurrently": "^3.5.0",
-    "conventional-changelog-ember": "^0.3.4",
     "core-js": "^2.5.7",
     "dd-trace": "^0.6.0",
     "dotenv": "^4.0.0",
@@ -126,14 +123,13 @@
     "react-addons-test-utils": "^16.0.0-alpha.3",
     "react-docgen-typescript-loader": "^2.1.0",
     "react-dom": "^16.5.0",
+    "react-powerplug": "^1.0.0",
     "react-select": "^1.2.1",
     "react-test-renderer": "^16.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-compiler-1.5.0-artsy.3.tgz",
     "relay-compiler-language-typescript": "^1.1.0",
-    "semantic-release": "^12.4.1",
     "simple-progress-webpack-plugin": "^1.1.2",
     "static-extend": "^0.1.2",
-    "storybook-addon-scissors": "^4.0.2",
     "styled-components": "^3.4.5",
     "stylelint": "^9.8.0",
     "stylelint-config-standard": "^18.2.0",
@@ -144,15 +140,15 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-plugin-relay": "^0.0.3",
     "tslint-react": "^2.4.0",
-    "typescript": "^3.0.1",
+    "typescript": "~3.1",
     "typescript-styled-plugin": "^0.13.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/palette": "^2.22.0",
-    "@artsy/react-responsive-media": "^2.0.0-beta.4",
+    "@artsy/detect-responsive-traits": "^0.0.1",
+    "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@sentry/browser": "^4.2.3",
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
@@ -181,9 +177,8 @@
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",
-    "react-popover": "^0.5.10",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz",
-    "react-relay-network-modern": "^2.4.0",
+    "react-relay-network-modern": "^2.5.1",
     "react-relay-network-modern-ssr": "^1.2.2",
     "react-responsive-decorator": "^0.0.1",
     "react-router": "^4.2.0",
@@ -191,7 +186,6 @@
     "react-slick": "^0.23.2",
     "react-spring": "^5.7.2",
     "react-stripe-elements": "^2.0.1",
-    "react-styled-flexboxgrid": "^2.2.0",
     "react-tracking": "^5.6.0",
     "react-transition-group": "^2.3.0",
     "react-url-query": "^1.1.4",
@@ -200,7 +194,6 @@
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/relay-runtime-1.5.0-artsy.3.tgz",
     "serialize-javascript": "^1.5.0",
     "sharify": "^0.1.6",
-    "styled-bootstrap-grid": "1.0.4",
     "styled-system": "^3.1.11",
     "superagent": "^3.6.3",
     "trunc-html": "^1.1.2",
@@ -259,31 +252,7 @@
       "yarn prettier-write --"
     ]
   },
-  "release": {
-    "analyzeCommits": {
-      "preset": "ember",
-      "releaseRules": [
-        {
-          "tag": "DOC",
-          "release": "patch"
-        },
-        {
-          "tag": "FIX",
-          "release": "patch"
-        },
-        {
-          "tag": "PATCH",
-          "release": "patch"
-        },
-        {
-          "tag": "FEATURE",
-          "release": "minor"
-        },
-        {
-          "tag": "BREAKING",
-          "release": "major"
-        }
-      ]
-    }
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

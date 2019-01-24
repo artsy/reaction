@@ -7,17 +7,17 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { EntityHeader } from "Components/v2/EntityHeader"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
-import { EntityHeader } from "Styleguide/Components/EntityHeader"
 import { get } from "Utils/get"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
-} from "Styleguide/Components"
+} from "Components/v2"
 import Events from "Utils/Events"
 
 interface ArtistInfoProps {
@@ -70,10 +70,7 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
                     user={user}
                     trackingData={{
                       modelName: Schema.OwnerType.Artist,
-                      context_module: [
-                        Schema.ContextModule.Sidebar,
-                        Schema.ContextModule.Biography,
-                      ],
+                      context_module: Schema.ContextModule.Biography,
                       entity_id: _id,
                       entity_slug: id,
                     }}

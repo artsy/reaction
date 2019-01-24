@@ -1,26 +1,35 @@
 import {
   BorderedRadio,
   Button,
+  Col,
   Flex,
   RadioGroup,
+  Row,
   Sans,
   Spacer,
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
+import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Helper } from "Apps/Order/Components/Helper"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { Input } from "Components/Input"
-import { ErrorModal } from "Components/Modal/ErrorModal"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { track } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { StaticCollapse } from "Components/StaticCollapse"
+import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
-import { StepSummaryItem } from "Styleguide/Components"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { Placeholder } from "Styleguide/Utils"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
+import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -35,52 +44,188 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "../
 
 export interface RespondProps {
   order: Respond_order
-  mediator: Mediator
   relay?: RelayProp
   router: Router
+  dialog: Dialog
 }
 
 export interface RespondState {
-  offerValue: number | null
-  responseOption: "ACCEPT" | "COUNTER" | "DECLINE" | null
+  offerValue: number
+  formIsDirty: boolean
+  responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
-  isErrorModalOpen: boolean
-  errorModalTitle: string
-  errorModalMessage: string
+  lowSpeedBumpEncountered: boolean
+  highSpeedBumpEncountered: boolean
 }
 
-const logger = createLogger("Order/Routes/Respond/index.tsx")
+export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
+@track()
 export class RespondRoute extends Component<RespondProps, RespondState> {
-  state = {
-    offerValue: null,
+  state: RespondState = {
+    offerValue: 0,
     responseOption: null,
     isCommittingMutation: false,
-    isErrorModalOpen: false,
-    errorModalTitle: null,
-    errorModalMessage: null,
+    formIsDirty: false,
+    lowSpeedBumpEncountered: false,
+    highSpeedBumpEncountered: false,
   }
 
-  onContinueButtonPressed: () => void = () => {
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.FocusedOnOfferInput,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  onOfferInputFocus() {
+    // noop
+  }
+
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.ViewedOfferTooLow,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  showLowSpeedbump() {
+    this.setState({ lowSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer may be too low",
+      message:
+        "Offers within 25% of the seller's offer are most likely to receive a response.",
+      continueButtonText: "OK",
+    })
+  }
+
+  @track<RespondProps>(props => ({
+    order_id: props.order.id,
+    action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
+    flow: Schema.Flow.MakeOffer,
+  }))
+  showHighSpeedbump() {
+    this.setState({ highSpeedBumpEncountered: true })
+    this.props.dialog.showErrorDialog({
+      title: "Offer higher than seller's offer",
+      message: "You’re making an offer higher than the seller's offer.",
+      continueButtonText: "OK",
+    })
+  }
+
+  onContinueButtonPressed = async () => {
+    const {
+      responseOption,
+      offerValue,
+      lowSpeedBumpEncountered,
+      highSpeedBumpEncountered,
+    } = this.state
+
+    if (responseOption === "COUNTER") {
+      if (offerValue <= 0) {
+        this.setState({ formIsDirty: true })
+        return
+      }
+      const currentOfferPrice = this.props.order.itemsTotalCents
+
+      if (
+        !lowSpeedBumpEncountered &&
+        offerValue * 100 < currentOfferPrice * 0.75
+      ) {
+        this.showLowSpeedbump()
+        return
+      }
+
+      if (
+        !highSpeedBumpEncountered &&
+        this.state.offerValue * 100 > currentOfferPrice
+      ) {
+        this.showHighSpeedbump()
+        return
+      }
+    }
+
     this.setState({ isCommittingMutation: true }, () => {
-      window.alert("You did a click!")
-      this.setState({ isCommittingMutation: false })
+      switch (responseOption) {
+        case "COUNTER":
+          this.createCounterOffer(this.state.offerValue)
+            .then(() => {
+              this.props.router.push(
+                `/orders/${this.props.order.id}/review/counter`
+              )
+            })
+            .catch(this.onMutationError)
+          break
+        case "ACCEPT":
+          this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+          break
+        case "DECLINE":
+          this.props.router.push(
+            `/orders/${this.props.order.id}/review/decline`
+          )
+          break
+      }
     })
   }
 
-  onMutationError(errors, errorModalTitle?, errorModalMessage?) {
+  createCounterOffer(price: number) {
+    return new Promise((resolve, reject) =>
+      commitMutation<RespondCounterOfferMutation>(
+        this.props.relay.environment,
+        {
+          mutation: graphql`
+            mutation RespondCounterOfferMutation(
+              $input: buyerCounterOfferInput!
+            ) {
+              ecommerceBuyerCounterOffer(input: $input) {
+                orderOrError {
+                  ... on OrderWithMutationSuccess {
+                    order {
+                      ...Respond_order
+                    }
+                  }
+                  ... on OrderWithMutationFailure {
+                    error {
+                      type
+                      code
+                      data
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              offerId: this.props.order.lastOffer.id,
+              offerPrice: {
+                amount: price,
+                currencyCode: "USD",
+              },
+            },
+          },
+          onCompleted: result => {
+            const orderOrError = result.ecommerceBuyerCounterOffer.orderOrError
+            if (orderOrError.error) {
+              reject(
+                new ErrorWithMetadata(
+                  orderOrError.error.code,
+                  orderOrError.error
+                )
+              )
+            } else {
+              resolve(orderOrError.order)
+            }
+          },
+          onError: reject,
+        }
+      )
+    )
+  }
+
+  onMutationError = (errors, title?, message?) => {
     logger.error(errors)
-    this.setState({
-      isCommittingMutation: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-    })
+    this.props.dialog.showErrorDialog({ title, message })
+    this.setState({ isCommittingMutation: false })
   }
 
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
-  }
+  inputRef = React.createRef<HTMLInputElement>()
 
   render() {
     const { order } = this.props
@@ -111,11 +256,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 <Flex flexDirection="column">
-                  <StepSummaryItem>
-                    <Placeholder name="Timer" />
-                  </StepSummaryItem>
+                  <CountdownTimer
+                    action="Respond"
+                    note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
+                    countdownStart={order.lastOffer.createdAt}
+                    countdownEnd={order.stateExpiresAt}
+                  />
                   <OfferHistoryItem order={order} />
-                  <TransactionDetailsSummaryItem order={order} />
+                  <TransactionDetailsSummaryItem
+                    order={order}
+                    useLastSubmittedOffer
+                  />
                 </Flex>
                 <Spacer mb={[2, 3]} />
                 <RadioGroup
@@ -129,24 +280,18 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   </BorderedRadio>
 
                   <BorderedRadio value="COUNTER">
-                    Send a counteroffer
+                    Send counteroffer
                     <StaticCollapse
                       open={this.state.responseOption === "COUNTER"}
                     >
                       <Spacer mb={2} />
-                      <Input
+                      <OfferInput
                         id="RespondForm_RespondValue"
-                        title="Your offer"
-                        type="number"
-                        defaultValue={null}
-                        onChange={ev =>
-                          this.setState({
-                            offerValue: Math.floor(
-                              Number(ev.currentTarget.value || "0")
-                            ),
-                          })
+                        showError={
+                          this.state.formIsDirty && this.state.offerValue <= 0
                         }
-                        block
+                        onChange={offerValue => this.setState({ offerValue })}
+                        onFocus={this.onOfferInputFocus.bind(this)}
                       />
                     </StaticCollapse>
                   </BorderedRadio>
@@ -157,14 +302,13 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       <Spacer mb={1} />
                       <Sans size="2" color="black60">
-                        Declining an offer permanently ends the negotiation
-                        process. The seller will not be able to make a
-                        counteroffer.
+                        Declining an offer will end the negotiation process on
+                        this offer.
                       </Sans>
                     </StaticCollapse>
                   </BorderedRadio>
                 </RadioGroup>
-                <Spacer mb={3} />
+                <Spacer mb={[2, 3]} />
                 <Flex flexDirection="column" />
                 <Media greaterThan="xs">
                   <Button
@@ -175,6 +319,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   >
                     Continue
                   </Button>
+                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }
@@ -185,11 +330,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   <ShippingSummaryItem order={order} locked />
                   <CreditCardSummaryItem order={order} locked />
                 </Flex>
-                <Spacer mb={[2, 3]} />
-                <Helper artworkId={artwork.id} />
+                <Spacer mb={2} />
                 <Media at="xs">
                   <>
-                    <Spacer mb={3} />
                     <Button
                       onClick={this.onContinueButtonPressed}
                       loading={isCommittingMutation}
@@ -198,42 +341,31 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       Continue
                     </Button>
+                    <Spacer mb={2} />
                   </>
                 </Media>
+                <Helper artworkId={artwork.id} />
               </Flex>
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          contactEmail="orders@artsy.net"
-          detailText={this.state.errorModalMessage}
-          headerText={this.state.errorModalTitle}
-        />
       </>
     )
   }
 }
 
-const RespondRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <RespondRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const RespondFragmentContainer = createFragmentContainer(
-  RespondRouteWrapper,
+  injectDialog(trackPageViewWrapper(RespondRoute)),
   graphql`
     fragment Respond_order on Order {
       id
       mode
       state
       itemsTotal(precision: 2)
+      itemsTotalCents
       totalListPrice(precision: 2)
+      totalListPriceCents
+      stateExpiresAt
       lineItems {
         edges {
           node {
@@ -241,6 +373,12 @@ export const RespondFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          createdAt
+          id
         }
       }
       ...TransactionDetailsSummaryItem_order

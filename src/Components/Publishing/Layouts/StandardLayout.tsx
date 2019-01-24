@@ -72,9 +72,12 @@ export class StandardLayout extends React.Component<
       relatedArticlesForPanel,
       renderTime,
       showTooltips,
+      isSuper,
     } = this.props
     const { isTruncated } = this.state
+    const { seriesArticle } = article
     const campaign = omit(display, "panel", "canvas")
+    const seriesOrSuper = isSuper || seriesArticle
 
     return (
       <Responsive>
@@ -127,14 +130,15 @@ export class StandardLayout extends React.Component<
                 />
               )}
 
-              {(relatedArticlesForCanvas || display) && (
-                <CanvasFooter
-                  article={article}
-                  display={display}
-                  relatedArticles={relatedArticlesForCanvas}
-                  renderTime={renderTime}
-                />
-              )}
+              {(relatedArticlesForCanvas || display) &&
+                !seriesOrSuper && (
+                  <CanvasFooter
+                    article={article}
+                    display={display}
+                    relatedArticles={relatedArticlesForCanvas}
+                    renderTime={renderTime}
+                  />
+                )}
             </ArticleWrapper>
           )
         }}

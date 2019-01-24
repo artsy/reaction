@@ -63,6 +63,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
@@ -88,6 +89,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
             for_sale: $for_sale
             sort: $sort
             acquireable: $acquireable
+            offerable: $offerable
             at_auction: $at_auction
             inquireable_only: $inquireable_only
             price_range: $price_range

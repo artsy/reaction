@@ -67,17 +67,13 @@ describe("OfferHistoryItem", () => {
     const button = offerHistory.find(Button)
     expect(button).toHaveLength(1)
 
-    const collapses = offerHistory.find(StaticCollapse)
+    const collapse = offerHistory.find(StaticCollapse)
 
-    expect(collapses).toHaveLength(2)
-
-    expect(collapses.get(0).props.open).toBeTruthy()
-    expect(collapses.get(1).props.open).toBeFalsy()
+    expect(collapse.props().open).toBeFalsy()
 
     button.simulate("click")
 
-    expect(offerHistory.find(StaticCollapse).get(0).props.open).toBeFalsy()
-    expect(offerHistory.find(StaticCollapse).get(1).props.open).toBeTruthy()
+    expect(offerHistory.find(StaticCollapse).props().open).toBeTruthy()
 
     const text = offerHistory.text()
     expect(text).toMatch("You (May 21)$1,200.00")

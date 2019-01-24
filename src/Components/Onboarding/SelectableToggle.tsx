@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
+import { CircleBlackCheckIcon } from "@artsy/palette"
 import Colors from "Assets/Colors"
 import { avantgarde } from "Assets/Fonts"
-import { CircleBlackCheckIcon } from "../../Assets/Icons/CircleBlackCheckIcon"
 import { media } from "../Helpers"
 
 interface SelectableToggleProps {

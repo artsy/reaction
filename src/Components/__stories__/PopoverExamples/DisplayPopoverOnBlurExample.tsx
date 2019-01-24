@@ -25,7 +25,8 @@ export class DisplayPopoverOnBlurExample extends React.Component {
           <Input
             placeholder="Email"
             onChange={e =>
-              this.setState({ show: false, value: e.currentTarget.value })}
+              this.setState({ show: false, value: e.currentTarget.value })
+            }
             onBlur={() => this.setState({ show: true })}
           />
         </OverlayTrigger>

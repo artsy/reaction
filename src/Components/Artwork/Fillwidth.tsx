@@ -5,35 +5,28 @@ import { createFragmentContainer, graphql } from "react-relay"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
 import fillwidthDimensions from "../../Utils/fillwidth"
-import RelayFillwidthItem, { FillwidthItem } from "./FillwidthItem"
+import FillwidthItem from "./FillwidthItem"
 
 interface Props extends React.HTMLAttributes<FillwidthContainer> {
   targetHeight?: number
   gutter?: number
   size?: any
-  useRelay?: boolean
   artworks: Fillwidth_artworks
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
-  public static defaultProps: Partial<Props> = {
-    useRelay: true,
-  }
-
   renderArtwork(artwork, dimensions, i) {
-    const { gutter, useRelay } = this.props
+    const { gutter } = this.props
     const artworkSize = find(dimensions, ["__id", artwork.__id])
-    const FillWidthItemBlock = useRelay ? RelayFillwidthItem : FillwidthItem
 
     return (
-      <FillWidthItemBlock
+      <FillwidthItem
         artwork={artwork}
         key={"artwork--" + artwork.__id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}
         width={artworkSize.width}
         margin={i === dimensions.length - 1 ? 0 : gutter}
-        useRelay={useRelay}
       />
     )
   }

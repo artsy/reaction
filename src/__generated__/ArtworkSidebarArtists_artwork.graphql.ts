@@ -5,8 +5,10 @@ import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graph
 declare const _ArtworkSidebarArtists_artwork$ref: unique symbol;
 export type ArtworkSidebarArtists_artwork$ref = typeof _ArtworkSidebarArtists_artwork$ref;
 export type ArtworkSidebarArtists_artwork = {
+    readonly cultural_maker: string | null;
     readonly artists: ReadonlyArray<({
         readonly __id: string;
+        readonly _id: string;
         readonly id: string;
         readonly name: string | null;
         readonly href: string | null;
@@ -30,8 +32,22 @@ return {
   "name": "ArtworkSidebarArtists_artwork",
   "type": "Artwork",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "showFollowSuggestions",
+      "type": "Boolean",
+      "defaultValue": true
+    }
+  ],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "cultural_maker",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -42,6 +58,13 @@ return {
       "plural": true,
       "selections": [
         v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -66,7 +89,14 @@ return {
         {
           "kind": "FragmentSpread",
           "name": "FollowArtistButton_artist",
-          "args": null
+          "args": [
+            {
+              "kind": "Variable",
+              "name": "showFollowSuggestions",
+              "variableName": "showFollowSuggestions",
+              "type": null
+            }
+          ]
         }
       ]
     },
@@ -74,5 +104,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '078b2375943c21b18376b77d8ceb6d15';
+(node as any).hash = 'aa97da2dfc57f1cf06cc2eb9fba3bbf5';
 export default node;

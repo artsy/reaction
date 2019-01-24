@@ -9,17 +9,30 @@ import { ArtworkSidebarCurrentBidInfo_artwork$ref } from "./ArtworkSidebarCurren
 import { ArtworkSidebarExtraLinks_artwork$ref } from "./ArtworkSidebarExtraLinks_artwork.graphql";
 import { ArtworkSidebarMetadata_artwork$ref } from "./ArtworkSidebarMetadata_artwork.graphql";
 import { ArtworkSidebarPartnerInfo_artwork$ref } from "./ArtworkSidebarPartnerInfo_artwork.graphql";
+import { AuctionTimer_sale$ref } from "./AuctionTimer_sale.graphql";
 declare const _ArtworkSidebar_artwork$ref: unique symbol;
 export type ArtworkSidebar_artwork$ref = typeof _ArtworkSidebar_artwork$ref;
 export type ArtworkSidebar_artwork = {
     readonly is_in_auction: boolean | null;
+    readonly sale: ({
+        readonly is_closed: boolean | null;
+        readonly " $fragmentRefs": AuctionTimer_sale$ref;
+    }) | null;
     readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref & ArtworkSidebarMetadata_artwork$ref & ArtworkSidebarAuctionPartnerInfo_artwork$ref & ArtworkSidebarCurrentBidInfo_artwork$ref & ArtworkSidebarBidAction_artwork$ref & ArtworkSidebarCommercial_artwork$ref & ArtworkSidebarPartnerInfo_artwork$ref & ArtworkSidebarExtraLinks_artwork$ref;
     readonly " $refType": ArtworkSidebar_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkSidebar_artwork",
   "type": "Artwork",
@@ -27,16 +40,16 @@ const node: ConcreteFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSidebarBidAction_artwork",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_in_auction",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSidebarArtists_artwork",
-      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -55,7 +68,7 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarBidAction_artwork",
+      "name": "ArtworkSidebarArtists_artwork",
       "args": null
     },
     {
@@ -74,13 +87,32 @@ const node: ConcreteFragment = {
       "args": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "__id",
+      "name": "sale",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    }
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_closed",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "AuctionTimer_sale",
+          "args": null
+        },
+        v0
+      ]
+    },
+    v0
   ]
 };
-(node as any).hash = 'ef35603ebb4962f5dda7f9b37731efef';
+})();
+(node as any).hash = 'caa524c1e86a737fdf6e66a8b95e2bc8';
 export default node;

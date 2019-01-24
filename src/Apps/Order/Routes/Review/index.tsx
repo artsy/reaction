@@ -1,8 +1,10 @@
-import { Button, Flex, Join, Sans, Spacer } from "@artsy/palette"
+import { Button, Col, Flex, Join, Row, Spacer } from "@artsy/palette"
 import { Review_order } from "__generated__/Review_order.graphql"
 import { ReviewSubmitOfferOrderMutation } from "__generated__/ReviewSubmitOfferOrderMutation.graphql"
 import { ReviewSubmitOrderMutation } from "__generated__/ReviewSubmitOrderMutation.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
+import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ItemReviewFragmentContainer as ItemReview } from "Apps/Order/Components/ItemReview"
 import {
   buyNowFlowSteps,
@@ -11,10 +13,10 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
@@ -23,8 +25,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { Col, Row } from "Styleguide/Elements/Grid"
-import { HorizontalPadding } from "Styleguide/Utils/HorizontalPadding"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -35,31 +35,23 @@ import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Com
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
 export interface ReviewProps {
-  mediator: Mediator
   order: Review_order
   relay?: RelayProp
   router: Router
   route: RouteConfig
+  dialog: Dialog
 }
 
 interface ReviewState {
   isSubmitting: boolean
-  isErrorModalOpen: boolean
-  errorModalMessage: string
-  errorModalTitle: string
-  errorModalCtaAction: () => null
 }
 
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
 export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  state = {
+  state: ReviewState = {
     isSubmitting: false,
-    isErrorModalOpen: false,
-    errorModalMessage: null,
-    errorModalTitle: null,
-    errorModalCtaAction: null,
   }
 
   constructor(props) {
@@ -67,12 +59,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
   }
 
-  componentDidMount() {
-    this.props.mediator.trigger("order:review")
-  }
-
   @track<ReviewProps>(props => ({
-    action_type: Schema.ActionType.SubmittedOrder,
+    action_type:
+      props.order.mode === "BUY"
+        ? Schema.ActionType.SubmittedOrder
+        : Schema.ActionType.SubmittedOffer,
     order_id: props.order.id,
   }))
   onSuccessfulSubmit() {
@@ -179,6 +170,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     const error = orderOrError.error
     if (error) {
       switch (error.code) {
+        case "missing_required_info": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Missing information",
+            "Please review and update your shipping and/or payment details and try again."
+          )
+          break
+        }
         case "insufficient_inventory": {
           const artistId = this.artistId()
           this.onMutationError(
@@ -242,19 +241,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  onMutationError(
-    error,
-    errorModalTitle?,
-    errorModalMessage?,
-    errorModalCtaAction?
-  ) {
+  onMutationError(error, title?, message?, onContinue?) {
     logger.error(error)
+    this.props.dialog
+      .showErrorDialog({ message, title })
+      // tslint:disable-next-line:no-empty
+      .then(onContinue || (() => {}))
     this.setState({
       isSubmitting: false,
-      isErrorModalOpen: true,
-      errorModalTitle,
-      errorModalMessage,
-      errorModalCtaAction,
     })
   }
 
@@ -268,10 +262,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 
   onChangeShipping = () => {
     this.props.router.push(`/orders/${this.props.order.id}/shipping`)
-  }
-
-  onCloseModal = () => {
-    this.setState({ isErrorModalOpen: false })
   }
 
   render() {
@@ -329,16 +319,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                       Submit
                     </Button>
                     <Spacer mb={2} />
-                    <Sans textAlign="center" size="2" color="black60">
-                      By clicking Submit, I agree to Artsy’s{" "}
-                      <a
-                        href="https://www.artsy.net/conditions-of-sale"
-                        target="_blank"
-                      >
-                        Conditions of Sale
-                      </a>
-                      .
-                    </Sans>
+                    <ConditionsOfSaleDisclaimer textAlign="center" />
                   </Media>
                 </Join>
                 <Spacer mb={3} />
@@ -366,16 +347,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     Submit
                   </Button>
                   <Spacer mb={2} />
-                  <Sans size="2" color="black60">
-                    By clicking Submit, I agree to Artsy’s{" "}
-                    <a
-                      href="https://www.artsy.net/conditions-of-sale"
-                      target="_blank"
-                    >
-                      Conditions of Sale
-                    </a>
-                    .
-                  </Sans>
+                  <ConditionsOfSaleDisclaimer />
                   <Spacer mb={2} />
                   <Helper
                     artworkId={order.lineItems.edges[0].node.artwork.id}
@@ -385,30 +357,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           />
         </HorizontalPadding>
-
-        <ErrorModal
-          onClose={this.onCloseModal}
-          show={this.state.isErrorModalOpen}
-          detailText={this.state.errorModalMessage}
-          contactEmail="orders@artsy.net"
-          headerText={this.state.errorModalTitle}
-          ctaAction={this.state.errorModalCtaAction}
-        />
       </>
     )
   }
 }
 
-const ReviewRouteWrapper = props => (
-  <ContextConsumer>
-    {({ mediator }) => {
-      return <ReviewRoute {...props} mediator={mediator} />
-    }}
-  </ContextConsumer>
-)
-
 export const ReviewFragmentContainer = createFragmentContainer(
-  ReviewRouteWrapper,
+  trackPageViewWrapper(injectDialog(ReviewRoute)),
   graphql`
     fragment Review_order on Order {
       id

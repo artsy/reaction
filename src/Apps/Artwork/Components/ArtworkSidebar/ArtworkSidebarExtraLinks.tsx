@@ -1,4 +1,4 @@
-import { Box, Link, Sans, Spacer } from "@artsy/palette"
+import { Box, Link, Sans, Separator, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
@@ -79,7 +79,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -92,7 +92,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
-        artworkId: this.props.artwork.__id,
+        artworkId: this.props.artwork._id,
       })
   }
 
@@ -174,7 +174,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     if (!renderQuestionsLine && !!!consignableArtistsCount) return null
 
     return (
-      <Box mt={2}>
+      <Box>
+        <Separator mb={3} />
         {isInOpenAuction && this.renderAuctionTerms()}
         {renderQuestionsLine &&
           (artwork.is_in_auction
@@ -203,16 +204,17 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   ArtworkSidebarExtraLinks,
   graphql`
     fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-      __id
+      _id
       is_in_auction
       is_for_sale
       is_acquireable
       is_inquireable
       artists {
-        __id
+        _id
         is_consignable
       }
       sale {
+        _id
         is_closed
       }
     }

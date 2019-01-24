@@ -2,6 +2,9 @@ import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
+import { Theme, themeProps } from "@artsy/palette"
+import { GridThemeProvider } from "styled-bootstrap-grid"
+import { MediaContextProvider } from "Utils/Responsive"
 import { BannerWrapper } from "./Banner/Banner"
 import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
@@ -14,6 +17,8 @@ import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
   article: ArticleData
+  backgroundColor?: string
+  color?: string
   customEditorial?: string
   relatedArticles?: any
   relatedArticlesForPanel?: any
@@ -23,6 +28,7 @@ export interface ArticleProps {
   isHovered?: boolean
   isLoggedIn?: boolean
   isMobile?: boolean
+  isTablet?: boolean
   infiniteScrollEntrySlug?: string
   isSuper?: boolean
   isTruncated?: boolean
@@ -99,13 +105,24 @@ export class Article extends React.Component<ArticleProps> {
     const trackingCode = this.sponsorPixelTrackingCode(article)
 
     return (
-      <FullScreenProvider>
-        {this.getArticleLayout()}
-        {trackingCode && (
-          <PixelTracker unit={trackingCode} date={this.props.renderTime} />
-        )}
-        {this.shouldRenderSignUpCta() && <BannerWrapper article={article} />}
-      </FullScreenProvider>
+      <MediaContextProvider>
+        <Theme>
+          <GridThemeProvider gridTheme={themeProps.grid}>
+            <FullScreenProvider>
+              {this.getArticleLayout()}
+              {trackingCode && (
+                <PixelTracker
+                  unit={trackingCode}
+                  date={this.props.renderTime}
+                />
+              )}
+              {this.shouldRenderSignUpCta() && (
+                <BannerWrapper article={article} />
+              )}
+            </FullScreenProvider>
+          </GridThemeProvider>
+        </Theme>
+      </MediaContextProvider>
     )
   }
 }

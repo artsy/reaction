@@ -17,9 +17,7 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { clone, extend } from "lodash"
 import React from "react"
 
-const story = storiesOf("Publishing/Articles/Feature", module)
-
-story
+storiesOf("Publishing/Articles/Feature/Fullscreen", module)
   .add("Fullscreen", () => {
     return (
       <ContextProvider>
@@ -32,7 +30,7 @@ story
       </ContextProvider>
     )
   })
-  .add("In series", () => {
+  .add("Series", () => {
     const article = clone({
       ...FeatureArticle,
       seriesArticle: SeriesArticle,
@@ -45,7 +43,7 @@ story
       </ContextProvider>
     )
   })
-  .add("In sponsored series", () => {
+  .add("Sponsored series", () => {
     const article = clone({
       ...FeatureArticle,
       seriesArticle: SeriesArticleSponsored,
@@ -58,6 +56,26 @@ story
       </ContextProvider>
     )
   })
+  .add("Custom color", () => {
+    const article = clone({
+      ...FeatureArticle,
+      seriesArticle: SeriesArticleSponsored,
+      relatedArticles: [BasicArticle, SuperArticle],
+    } as ArticleData)
+
+    return (
+      <ContextProvider>
+        <Article
+          article={article}
+          showTooltips
+          backgroundColor="gainsboro"
+          color="orangered"
+        />
+      </ContextProvider>
+    )
+  })
+
+storiesOf("Publishing/Articles/Feature", module)
   .add("Text", () => {
     const article = clone({
       ...FeatureArticle,

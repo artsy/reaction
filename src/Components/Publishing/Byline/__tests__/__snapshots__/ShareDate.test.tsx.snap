@@ -50,7 +50,7 @@ exports[`renders ShareDate properly 1`] = `
   color: black;
 }
 
-@media (max-width:48em) {
+@media (max-width:768px) {
   .c0 .c3 {
     margin-top: 0px;
   }

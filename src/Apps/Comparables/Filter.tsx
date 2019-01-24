@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer } from "@artsy/palette"
+import { Box, Flex, Spacer, Toggle } from "@artsy/palette"
 import { Filter_viewer } from "__generated__/Filter_viewer.graphql"
 import { CollectRefetchContainer } from "Apps/Collect/Components/Base/CollectRefetch"
 import { PriceRangeFilter as PriceRange } from "Apps/Collect/Components/Filters/PriceRangeFilter"
@@ -9,7 +9,6 @@ import { ContextProps } from "Artsy"
 import { SystemProps } from "Artsy/SystemContext"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Toggle } from "Styleguide/Components/Toggle"
 import { Subscribe } from "unstated"
 
 interface Props extends ContextProps {

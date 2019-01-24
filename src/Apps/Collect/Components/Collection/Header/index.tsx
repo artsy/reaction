@@ -1,12 +1,26 @@
-import { Box, color, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { ReadMore } from "Components/v2/ReadMore"
 import React, { Component } from "react"
 import styled from "styled-components"
-import { ReadMore } from "Styleguide/Components/ReadMore"
-import { Col, Grid, media, Row } from "Styleguide/Elements/Grid"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
+
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+
+import {
+  Box,
+  Col,
+  color,
+  Flex,
+  Grid,
+  media,
+  Row,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 
 interface Props {
   collection: {
@@ -36,11 +50,11 @@ const getReadMoreContent = (description, credit) => {
 }
 
 const maxChars = {
-  xs: 200,
-  sm: 430,
-  md: 450,
-  lg: 460,
-  xl: 510,
+  xs: 350,
+  sm: 730,
+  md: 670,
+  lg: 660,
+  xl: 820,
 }
 
 const imageWidthSizes = {
@@ -51,7 +65,19 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+@track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export class CollectionHeader extends Component<Props> {
+  @track({
+    subject: Schema.Subject.ReadMore,
+    type: Schema.Type.Button,
+    action_type: Schema.ActionType.Click,
+  })
+  trackReadMoreClick() {
+    // noop
+  }
+
   render() {
     const { collection } = this.props
     return (
@@ -98,9 +124,11 @@ export class CollectionHeader extends Component<Props> {
                     <Grid>
                       <Row>
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="5" px={[0, 1]}>
+                          <ExtendedSerif size="3" px={[0, 1]}>
                             <ReadMore
-                              onReadMoreClicked={() => false}
+                              onReadMoreClicked={this.trackReadMoreClick.bind(
+                                this
+                              )}
                               maxChars={chars}
                               content={getReadMoreContent(
                                 collection.description,
@@ -135,10 +163,10 @@ const Background = styled(Box)<{
   background-size: cover;
   background-position: center;
 
-  ${media.xs} {
+  ${media.xs`
     margin-left: -20px;
     margin-right: -20px;
-  }
+  `};
 `
 export const Overlay = styled.div`
   position: absolute;

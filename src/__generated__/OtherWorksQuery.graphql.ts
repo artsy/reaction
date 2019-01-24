@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { OtherWorks_artwork$ref } from "./OtherWorks_artwork.graphql";
 export type OtherWorksQueryVariables = {
-    readonly artworkID: string;
+    readonly artworkSlug: string;
 };
 export type OtherWorksQueryResponse = {
     readonly artwork: ({
@@ -19,9 +19,9 @@ export type OtherWorksQuery = {
 
 /*
 query OtherWorksQuery(
-  $artworkID: String!
+  $artworkSlug: String!
 ) {
-  artwork(id: $artworkID) {
+  artwork(id: $artworkSlug) {
     ...OtherWorks_artwork
     __id
   }
@@ -51,7 +51,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artworkID",
+    "name": "artworkSlug",
     "type": "String!",
     "defaultValue": null
   }
@@ -60,7 +60,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
+    "variableName": "artworkSlug",
     "type": "String!"
   }
 ],
@@ -76,7 +76,7 @@ return {
   "operationKind": "query",
   "name": "OtherWorksQuery",
   "id": null,
-  "text": "query OtherWorksQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...OtherWorks_artwork\n    __id\n  }\n}\n\nfragment OtherWorks_artwork on Artwork {\n  id\n  _id\n  sale {\n    is_closed\n    __id\n  }\n  context {\n    __typename\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query OtherWorksQuery(\n  $artworkSlug: String!\n) {\n  artwork(id: $artworkSlug) {\n    ...OtherWorks_artwork\n    __id\n  }\n}\n\nfragment OtherWorks_artwork on Artwork {\n  id\n  _id\n  sale {\n    is_closed\n    __id\n  }\n  context {\n    __typename\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -177,5 +177,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'e09a1e854ace0cc9949f0773e182175b';
+(node as any).hash = '19962bd64d1a61e2de8330034d92ae2d';
 export default node;

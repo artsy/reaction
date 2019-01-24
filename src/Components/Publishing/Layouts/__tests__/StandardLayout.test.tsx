@@ -1,6 +1,9 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { DisplayPanel } from "Components/Publishing/Display/DisplayPanel"
-import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
+import {
+  SeriesArticle,
+  StandardArticle,
+} from "Components/Publishing/Fixtures/Articles"
 import {
   Display,
   RelatedCanvas,
@@ -11,6 +14,7 @@ import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Can
 import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
 import { mount } from "enzyme"
 import "jest-styled-components"
+import { cloneDeep, extend } from "lodash"
 import React from "react"
 import { Sidebar } from "../Components/Sidebar"
 import { StandardLayout } from "../StandardLayout"
@@ -49,10 +53,38 @@ describe("Standard Article", () => {
     expect(article.find(RelatedArticlesCanvas).length).toBe(1)
   })
 
+  it("Does not render RelatedArticlesCanvas if article is super", () => {
+    props.isSuper = true
+    const article = getWrapper(props)
+    expect(article.find(RelatedArticlesCanvas).length).toBe(0)
+  })
+
+  it("Does not render RelatedArticlesCanvas if article is in a series", () => {
+    props.article = extend(cloneDeep(StandardArticle), {
+      seriesArticle: SeriesArticle,
+    })
+    const article = getWrapper(props)
+    expect(article.find(RelatedArticlesCanvas).length).toBe(0)
+  })
+
   it("renders display", () => {
     const article = getWrapper(props)
     expect(article.find(DisplayPanel).length).toBe(1)
     expect(article.find(DisplayCanvas).length).toBe(1)
+  })
+
+  it("Does not render display if article is in a series", () => {
+    props.article = extend(cloneDeep(StandardArticle), {
+      seriesArticle: SeriesArticle,
+    })
+    const article = getWrapper(props)
+    expect(article.find(DisplayCanvas).length).toBe(0)
+  })
+
+  it("Does not render display if article is super", () => {
+    props.isSuper = true
+    const article = getWrapper(props)
+    expect(article.find(DisplayCanvas).length).toBe(0)
   })
 
   it("shows read more if truncated", () => {

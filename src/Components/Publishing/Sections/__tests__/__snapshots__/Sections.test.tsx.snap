@@ -1,7 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sections snapshots renders properly 1`] = `
-.c46 {
+exports[`Sections snapshots tests renders properly 1`] = `
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c42 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.c18 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
+.c33 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c35 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c43 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.c47 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -16,41 +100,24 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 .c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.c42 {
-  display: block;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c42 a {
   color: black;
 }
 
-.c43 {
-  margin-left: 20px;
+.c41 a {
+  color: black;
 }
 
 .c44 {
-  color: black;
+  margin-right: 20px;
+}
+
+.c45 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c44 .c45 {
+.c45 .c46 {
   vertical-align: middle;
   margin: 0;
 }
@@ -70,21 +137,11 @@ exports[`Sections snapshots renders properly 1`] = `
   height: 1000px;
 }
 
-.c20 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 15px;
-  line-height: 1.25em;
-  -webkit-font-smoothing: antialiased;
-  color: #999;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c18 {
+.c19 {
   margin-right: 30px;
 }
 
-.c19 {
+.c20 {
   white-space: nowrap;
 }
 
@@ -95,27 +152,17 @@ exports[`Sections snapshots renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
 }
 
 .c17 a {
-  color: #999999;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  color: #C2C2C2;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c17 .title,
 .c17 .title a {
-  font-family: Unica77LLWebItalic,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
+  font-style: italic;
 }
 
 .c11 {
@@ -218,6 +265,18 @@ exports[`Sections snapshots renders properly 1`] = `
   color: black;
 }
 
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c6 {
   margin-right: 10px;
   width: 197px;
@@ -251,76 +310,6 @@ exports[`Sections snapshots renders properly 1`] = `
 .c26 {
   margin-right: 0px;
   width: 222px;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c33 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-  padding-bottom: 8px;
-}
-
-.c35 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.c36 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 20px;
 }
 
 .c37 {
@@ -368,7 +357,8 @@ exports[`Sections snapshots renders properly 1`] = `
 }
 
 .c38 {
-  height: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .c1 {
@@ -414,20 +404,21 @@ exports[`Sections snapshots renders properly 1`] = `
 .c2 {
   position: relative;
   width: 100%;
+  color: black;
 }
 
 .c2 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background-image: linear-gradient( to bottom, transparent 0, #333333 1px, transparent 0 );
+  background-image: linear-gradient( to bottom,transparent 0,#333 1px,transparent 0 );
   background-size: 1.25px 4px;
   background-repeat: repeat-x;
   background-position: bottom;
 }
 
 .c2 a:hover {
-  color: #999999;
+  color: #C2C2C2;
   opacity: 1;
 }
 
@@ -614,12 +605,39 @@ exports[`Sections snapshots renders properly 1`] = `
   max-width: 780px;
 }
 
-@media (max-width:600px) {
-  .c42 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
+@media screen and (min-width:40em) {
+  .c33 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
     font-size: 14px;
-    line-height: 1.4em;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    line-height: 24px;
   }
 }
 
@@ -651,6 +669,14 @@ exports[`Sections snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c13 {
     padding: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c5 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -693,50 +719,6 @@ exports[`Sections snapshots renders properly 1`] = `
 @media (max-width:600px) {
   .c26 {
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c33 {
-    line-height: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c35 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c35 {
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c36 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c36 {
-    line-height: 24px;
   }
 }
 
@@ -1202,18 +1184,19 @@ exports[`Sections snapshots renders properly 1`] = `
           </a>
           <div>
             <div
-              className="display-artwork__caption c17"
+              className="c17 c18"
+              color="#C2C2C2"
+              fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+              fontSize="14px"
             >
               <span
-                className="c18"
+                className="c19"
               >
                 <span
-                  className="c19"
+                  className="c20"
                 >
                   <a
-                    className="c20"
                     href="/artist/matt-devine"
-                    target="_self"
                   >
                     Matt Devine
                   </a>
@@ -1227,13 +1210,11 @@ exports[`Sections snapshots renders properly 1`] = `
                         <span
                           className="title"
                         >
-                          <TextLink__StyledTextLink
-                            color="#999"
+                          <a
                             href="/artwork/matt-devine-brass-tax"
-                            underline={false}
                           >
                             Brass Tax
-                          </TextLink__StyledTextLink>
+                          </a>
                         </span>
                         <span>
                           , 
@@ -1251,13 +1232,11 @@ exports[`Sections snapshots renders properly 1`] = `
                   dangerouslySetInnerHTML={
                     Object {
                       "__html": <span>
-                        <TextLink__StyledTextLink
-                          color="#999"
+                        <a
                           href="/joanne-artman-gallery"
-                          underline={false}
                         >
                           Joanne Artman Gallery
-                        </TextLink__StyledTextLink>
+                        </a>
                         <span>
                           . 
                         </span>
@@ -2094,12 +2073,15 @@ exports[`Sections snapshots renders properly 1`] = `
               >
                 <path
                   d="M6760.67,551.72h-32v-32h32v32Zm-30-2h28v-28h-28v28Z"
+                  fill="black"
                   transform="translate(-6728.67 -507.72)"
                 />
                 <polygon
+                  fill="black"
                   points="38 37 36 37 36 8 7 8 7 6 38 6 38 37"
                 />
                 <polygon
+                  fill="black"
                   points="44 31 42 31 42 2 13 2 13 0 44 0 44 31"
                 />
               </svg>
@@ -2107,11 +2089,15 @@ exports[`Sections snapshots renders properly 1`] = `
           </div>
         </div>
       </div>
-      <img
-        alt="The Work of Bruce M. Sherman"
-        className="c38"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
-      />
+      <div
+        className=""
+      >
+        <img
+          alt="The Work of Bruce M. Sherman"
+          className="c38"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -2249,28 +2235,38 @@ exports[`Sections snapshots renders properly 1`] = `
       className="c40"
     >
       <div
-        className="c41"
+        className="c41 c42"
+        color="black"
       >
         <div
-          className="c42"
+          className="c43"
+          fontFamily={
+            Object {
+              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+              "fontWeight": 500,
+            }
+          }
+          fontSize="16px"
         >
+          <span
+            className="c44"
+          >
+            <span>
+              <a
+                href="http://artsy.net"
+              >
+                Casey Lesser
+              </a>
+               is a well-known author and a long-time baker.
+            </span>
+          </span>
           <span>
             <a
-              href="http://artsy.net"
-            >
-              Casey Lesser
-            </a>
-             is a well-known author and a long-time baker.
-          </span>
-          <span
-            className="c43"
-          >
-            <a
-              className="c44"
+              className="c45"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c45 c46"
+                className="c46 c47"
               >
                 
               </div>

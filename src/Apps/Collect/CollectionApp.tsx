@@ -1,5 +1,6 @@
 import { Box } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
@@ -42,27 +43,29 @@ export class CollectionApp extends Component<CollectionAppProps> {
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
     return (
-      <FrameWithRecentlyViewed>
-        <Title>{title} | Collect on Artsy</Title>
-        <Meta name="description" content={metadataDescription} />
-        <Meta property="og:url" content={collectionHref} />
-        <Meta property="og:image" content={headerImage} />
-        <Meta property="og:description" content={metadataDescription} />
-        <Meta property="twitter:description" content={metadataDescription} />
-        <Link rel="canonical" href={collectionHref} />
-        <BreadCrumbList
-          items={[
-            { path: "/collections", name: "Collections" },
-            { path: `/collection/${slug}`, name: title },
-          ]}
-        />
-        <SeoProductsForArtworks artworks={artworks} />
+      <AppContainer>
+        <FrameWithRecentlyViewed>
+          <Title>{`${title} | Collect on Artsy`}</Title>
+          <Meta name="description" content={metadataDescription} />
+          <Meta property="og:url" content={collectionHref} />
+          <Meta property="og:image" content={headerImage} />
+          <Meta property="og:description" content={metadataDescription} />
+          <Meta property="twitter:description" content={metadataDescription} />
+          <Link rel="canonical" href={collectionHref} />
+          <BreadCrumbList
+            items={[
+              { path: "/collections", name: "Collections" },
+              { path: `/collection/${slug}`, name: title },
+            ]}
+          />
+          <SeoProductsForArtworks artworks={artworks} />
 
-        <CollectionHeader collection={collection} />
-        <Box>
-          <CollectionFilterContainer collection={collection} />
-        </Box>
-      </FrameWithRecentlyViewed>
+          <CollectionHeader collection={collection} />
+          <Box>
+            <CollectionFilterContainer collection={collection} />
+          </Box>
+        </FrameWithRecentlyViewed>
+      </AppContainer>
     )
   }
 }

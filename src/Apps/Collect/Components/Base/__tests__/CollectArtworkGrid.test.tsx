@@ -1,7 +1,7 @@
+import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
-import { PaginationFragmentContainer as Pagination } from "Styleguide/Components/Pagination"
 import { Provider } from "unstated"
 import { ArtworkGridItem } from "../../../../../Components/Artwork/GridItem"
 import { CollectionAppFixture } from "../../../../__tests__/Fixtures/Collect/CollectionAppFixture"
