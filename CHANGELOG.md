@@ -1,3 +1,11 @@
+# 11.2.18 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Add hook to artwork image for view in room [#1938](https://github.com/artsy/reaction/pull/1938) ([@zephraph](https://github.com/zephraph))
+
+---
+
 # 11.2.17 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
