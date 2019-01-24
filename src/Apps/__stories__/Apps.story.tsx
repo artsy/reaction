@@ -23,7 +23,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={collectRoutes}
-        initialRoute="/collect?offerable=true"
+        initialRoute="/collect"
         context={{
           mediator: {
             trigger: x => x,

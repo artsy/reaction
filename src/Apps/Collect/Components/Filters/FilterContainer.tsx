@@ -4,6 +4,7 @@ import { Subscribe } from "unstated"
 import { FilterState } from "Apps/Collect/FilterState"
 import { Mediator } from "Artsy/SystemContext"
 import { MobileActionSheet } from "../MobileActionSheet"
+import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
 import { SortFilter } from "./SortFilter"
@@ -57,7 +58,9 @@ export class FilterContainer extends React.Component<
         <Toggle label="Medium" expanded>
           <MediumFilter filters={filters} mediums={mediums} />
         </Toggle>
-
+        <Toggle label="Color" expanded>
+          <ColorFilter filters={filters} />
+        </Toggle>
         <Toggle expanded label="Time period">
           <TimePeriodFilter
             filters={filters}
