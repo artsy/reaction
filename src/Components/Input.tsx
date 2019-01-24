@@ -117,7 +117,7 @@ export class Input extends React.Component<InputProps, InputState> {
     return <Eye onClick={this.toggleShowPassword}>{icon}</Eye>
   }
 
-  toggleShowPassword = e => {
+  toggleShowPassword = () => {
     this.setState({
       showPassword: !this.state.showPassword,
     })

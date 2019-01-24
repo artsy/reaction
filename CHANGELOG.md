@@ -1,3 +1,40 @@
+# 11.2.17 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] hide footer if in Eigen [#1937](https://github.com/artsy/reaction/pull/1937) ([@l2succes](https://github.com/l2succes))
+
+---
+
+# 11.2.16 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Imageset props [#1936](https://github.com/artsy/reaction/pull/1936) ([@eessex](https://github.com/eessex))
+
+---
+
+# 11.2.15 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Migrate to palette price filter [#1934](https://github.com/artsy/reaction/pull/1934) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 2.34.6 [#1935](https://github.com/artsy/reaction/pull/1935) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.14 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Collect] Re-add the color wheel filter [#1932](https://github.com/artsy/reaction/pull/1932) ([@mzikherman](https://github.com/mzikherman))
+- Pull `lastOffer` from `OrderOffer` instead of `Order`, due to deprecation [#1929](https://github.com/artsy/reaction/pull/1929) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.13 (Wed Jan 23 2019)
 
 #### 🐛  Bug Fix

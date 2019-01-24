@@ -101,6 +101,12 @@ const node: ConcreteFragment = {
       "name": "attribution_class",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -170,6 +176,12 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": null
@@ -220,5 +232,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '55225b3e1892afba36926e131f51597a';
+(node as any).hash = 'c2f9837d09b0b362d9f0f3a53ea6a60d';
 export default node;

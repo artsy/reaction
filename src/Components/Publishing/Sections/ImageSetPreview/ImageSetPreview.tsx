@@ -1,34 +1,29 @@
 import { color as Color, Flex } from "@artsy/palette"
+import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
+import { ImagesData } from "Components/Publishing/Typings"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
-
-import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
 import { resize } from "Utils/resizer"
 import { ImageSetLabel } from "./ImageSetLabel"
 
 type Layout = "mini" | "full"
 
+export interface ImageSetSection {
+  type: string
+  images: ImagesData
+  layout?: Layout
+  title?: string
+}
+
 export interface ImageSetPreviewProps {
   color?: string
-  section: {
-    type: string
-    images: Array<{
-      url?: string
-      image?: string
-      index?: any
-    }>
-    layout?: Layout
-    title?: string
-  }
+  section: ImageSetSection
   children?: ReactNode
   onViewFullscreen?: (index: number) => void
 }
 
 @withFullScreen
-export class ImageSetPreview extends React.PureComponent<
-  ImageSetPreviewProps,
-  null
-> {
+export class ImageSetPreview extends React.PureComponent<ImageSetPreviewProps> {
   getImageUrl() {
     const { images, layout } = this.props.section
     const image = images[0]
@@ -96,6 +91,7 @@ export const FullLabel = styled.div`
   &:hover {
     background: rgba(0, 0, 0, 0.6);
     color: white;
+
     path,
     polygon {
       fill: white;

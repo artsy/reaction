@@ -115,6 +115,12 @@ return {
       "name": "attribution_class",
       "type": "[String]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -217,6 +223,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": null
@@ -268,5 +280,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '42e420d9a5a0ca545db744733db7be7a';
+(node as any).hash = '5453a085db20616ca0aa0b8dcee981c5';
 export default node;

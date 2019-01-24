@@ -1,6 +1,7 @@
 import { Separator } from "@artsy/palette"
 import { Box, Flex } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
+import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 
@@ -26,9 +27,15 @@ export const FrameWithRecentlyViewed: React.SFC<Props> = ({ children }) => {
         )}
         <Separator mt={6} mb={3} />
 
-        <Box>
-          <Footer />
-        </Box>
+        <ContextConsumer>
+          {({ isEigen }) =>
+            isEigen ? null : (
+              <Box>
+                <Footer />
+              </Box>
+            )
+          }
+        </ContextConsumer>
       </Flex>
     </HorizontalPadding>
   )
