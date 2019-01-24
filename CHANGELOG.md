@@ -1,3 +1,15 @@
+# 11.2.15 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Migrate to palette price filter [#1934](https://github.com/artsy/reaction/pull/1934) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 2.34.6 [#1935](https://github.com/artsy/reaction/pull/1935) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.14 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
