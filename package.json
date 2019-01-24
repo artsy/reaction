@@ -22,9 +22,7 @@
     "lint": "tslint -c tslint.json --project tsconfig.json",
     "omg": "om g",
     "prepare": "patch-package",
-    "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
-    "prepush": "yarn run type-check",
     "prettier": "prettier",
     "stylelint-project": " stylelint -- 'src/**/*.{ts,tsx}'",
     "prettier-project": "yarn run prettier-write 'src/**/*.{ts,tsx}'",
@@ -109,7 +107,7 @@
     "graphql-compiler": "^1.6.2",
     "graphql-config-parser": "^1.2.1",
     "graphql-fetch-schema": "^0.8.0",
-    "husky": "^0.13.4",
+    "husky": "^1.3.1",
     "jest": "^23.6.0",
     "jest-raw-loader": "^1.0.1",
     "jest-styled-components": "^4.11.0-1",
@@ -240,6 +238,12 @@
     "moduleNameMapper": {
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
     }
   },
   "lint-staged": {
