@@ -7,6 +7,7 @@ import { MobileActionSheet } from "../MobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
+import { SizeRangeFilters } from "./SizeRangeFilters"
 import { SortFilter } from "./SortFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
@@ -51,13 +52,22 @@ export class FilterContainer extends React.Component<
           <WaysToBuyFilter filters={filters} />
         </Flex>
 
-        <Flex flexDirection="column" alignItems="left" my={1}>
-          <PriceRangeFilter filters={filters} />
-        </Flex>
+        <Toggle label="Price">
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            <PriceRangeFilter filters={filters} />
+          </Flex>
+        </Toggle>
+
+        <Toggle label="Size">
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            <SizeRangeFilters filters={filters} />
+          </Flex>
+        </Toggle>
 
         <Toggle label="Medium" expanded>
           <MediumFilter filters={filters} mediums={mediums} />
         </Toggle>
+
         <Toggle label="Color" expanded>
           <ColorFilter filters={filters} />
         </Toggle>

@@ -13,6 +13,8 @@ export type CollectRefetchQueryVariables = {
     readonly for_sale?: boolean | null;
     readonly sort?: string | null;
     readonly price_range?: string | null;
+    readonly height_range?: string | null;
+    readonly width_range?: string | null;
     readonly artist_id?: string | null;
     readonly attribution_class?: ReadonlyArray<string | null> | null;
     readonly color?: string | null;
@@ -41,17 +43,19 @@ query CollectRefetchQuery(
   $for_sale: Boolean
   $sort: String
   $price_range: String
+  $height_range: String
+  $width_range: String
   $artist_id: String
   $attribution_class: [String]
   $color: String
 ) {
   viewer {
-    ...CollectRefetch_viewer_3sHrDk
+    ...CollectRefetch_viewer_Nbtb4
   }
 }
 
-fragment CollectRefetch_viewer_3sHrDk on Viewer {
-  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, artist_id: $artist_id, attribution_class: $attribution_class, color: $color) {
+fragment CollectRefetch_viewer_Nbtb4 on Viewer {
+  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height_range, width: $width_range, artist_id: $artist_id, attribution_class: $attribution_class, color: $color) {
     ...CollectArtworkGrid_filtered_artworks
     __id
   }
@@ -278,6 +282,18 @@ var v0 = [
   },
   {
     "kind": "LocalArgument",
+    "name": "height_range",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "width_range",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
     "name": "artist_id",
     "type": "String",
     "defaultValue": null
@@ -361,7 +377,7 @@ return {
   "operationKind": "query",
   "name": "CollectRefetchQuery",
   "id": null,
-  "text": "query CollectRefetchQuery(\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $acquireable: Boolean\n  $offerable: Boolean\n  $at_auction: Boolean\n  $inquireable_only: Boolean\n  $for_sale: Boolean\n  $sort: String\n  $price_range: String\n  $artist_id: String\n  $attribution_class: [String]\n  $color: String\n) {\n  viewer {\n    ...CollectRefetch_viewer_3sHrDk\n  }\n}\n\nfragment CollectRefetch_viewer_3sHrDk on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, artist_id: $artist_id, attribution_class: $attribution_class, color: $color) {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  is_offerable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query CollectRefetchQuery(\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $acquireable: Boolean\n  $offerable: Boolean\n  $at_auction: Boolean\n  $inquireable_only: Boolean\n  $for_sale: Boolean\n  $sort: String\n  $price_range: String\n  $height_range: String\n  $width_range: String\n  $artist_id: String\n  $attribution_class: [String]\n  $color: String\n) {\n  viewer {\n    ...CollectRefetch_viewer_Nbtb4\n  }\n}\n\nfragment CollectRefetch_viewer_Nbtb4 on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height_range, width: $width_range, artist_id: $artist_id, attribution_class: $attribution_class, color: $color) {\n    ...CollectArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment CollectArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  is_offerable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -421,6 +437,12 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "height_range",
+                "variableName": "height_range",
+                "type": null
+              },
+              {
+                "kind": "Variable",
                 "name": "inquireable_only",
                 "variableName": "inquireable_only",
                 "type": null
@@ -459,6 +481,12 @@ return {
                 "kind": "Variable",
                 "name": "sort",
                 "variableName": "sort",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "width_range",
+                "variableName": "width_range",
                 "type": null
               }
             ]
@@ -533,6 +561,12 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "height",
+                "variableName": "height_range",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
                 "name": "inquireable_only",
                 "variableName": "inquireable_only",
                 "type": "Boolean"
@@ -577,6 +611,12 @@ return {
                 "kind": "Variable",
                 "name": "sort",
                 "variableName": "sort",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
+                "name": "width",
+                "variableName": "width_range",
                 "type": "String"
               }
             ],
@@ -1001,5 +1041,5 @@ return {
   }
 };
 })();
-(node as any).hash = '76a11bef73af05b1c8367e55ab3c48e7';
+(node as any).hash = '096f70bb1c494c353385b35e634bde59';
 export default node;

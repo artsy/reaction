@@ -14,6 +14,7 @@ export interface State {
   inquireable_only?: boolean
   price_range?: string
   height_range?: string
+  width_range?: string
   attribution_class?: string[]
   artist_id?: string
   color?: string
@@ -34,6 +35,7 @@ export const initialState = {
   inquireable_only: null,
   price_range: "*-*",
   height_range: "*-*",
+  width_range: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,
@@ -47,6 +49,8 @@ export class FilterState extends Container<State> {
   static MAX_PRICE = 50000
   static MIN_HEIGHT = 1
   static MAX_HEIGHT = 120
+  static MIN_WIDTH = 1
+  static MAX_WIDTH = 120
 
   constructor(props: State) {
     super()
@@ -143,6 +147,7 @@ export class FilterState extends Container<State> {
         break
       case "price_range":
       case "height_range":
+      case "width_range":
       case "partner_id":
       case "color":
       case "medium":
@@ -179,6 +184,10 @@ export class FilterState extends Container<State> {
     return this.state.height_range !== "*-*"
   }
 
+  isWidthSelected(): boolean {
+    return this.state.width_range !== "*-*"
+  }
+
   priceRangeToTuple(): [number, number] {
     const [minStr, maxStr] = this.state.price_range.split("-")
     const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
@@ -187,11 +196,19 @@ export class FilterState extends Container<State> {
     return [min, max]
   }
 
-  // I feel like this could be generalized to be applicable to multiple filters
+  // I feel like these could be generalized to be applicable to multiple filters
   heightRangeToTuple(): [number, number] {
     const [minStr, maxStr] = this.state.height_range.split("-")
     const min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
     const max = maxStr === "*" ? FilterState.MAX_HEIGHT : Number(maxStr)
+
+    return [min, max]
+  }
+
+  widthRangeToTuple(): [number, number] {
+    const [minStr, maxStr] = this.state.width_range.split("-")
+    const min = minStr === "*" ? FilterState.MIN_WIDTH : Number(minStr)
+    const max = maxStr === "*" ? FilterState.MAX_WIDTH : Number(maxStr)
 
     return [min, max]
   }
