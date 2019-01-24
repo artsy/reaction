@@ -1,7 +1,6 @@
 export const initialOfferSuccess = {
   ecommerceAddInitialOfferToOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
       order: {
         __typename: "BuyOrder",
         id: "1234",
@@ -22,7 +21,6 @@ export const initialOfferSuccess = {
 export const initialOfferFailedCannotOffer = {
   ecommerceAddInitialOfferToOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "cant_offer",
@@ -35,7 +33,6 @@ export const initialOfferFailedCannotOffer = {
 export const initialOfferFailedAmountIsInvalid = {
   ecommerceAddInitialOfferToOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "invalid_amount_cents",

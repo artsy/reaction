@@ -1,7 +1,6 @@
 export const creatingCreditCardSuccess = {
   createCreditCard: {
     creditCardOrError: {
-      __typename: "CreditCardMutationSuccess",
       creditCard: {
         id: "gravityCreditCardId",
       },
@@ -12,7 +11,6 @@ export const creatingCreditCardSuccess = {
 export const creatingCreditCardFailed = {
   createCreditCard: {
     creditCardOrError: {
-      __typename: "CreditCardMutationFailure",
       mutationError: {
         type: "payment_error",
         message: "Payment error",

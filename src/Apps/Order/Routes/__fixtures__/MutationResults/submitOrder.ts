@@ -3,7 +3,6 @@ import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 export const submitOrderWithFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "credit_card_not_found",
@@ -16,7 +15,6 @@ export const submitOrderWithFailure = {
 export const submitOrderWithVersionMismatchFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "processing",
         code: "artwork_version_mismatch",
@@ -29,7 +27,6 @@ export const submitOrderWithVersionMismatchFailure = {
 export const submitOrderWithNoInventoryFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "processing",
         code: "insufficient_inventory",
@@ -42,7 +39,6 @@ export const submitOrderWithNoInventoryFailure = {
 export const submitOrderSuccess = {
   ecommerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
       order: {
         ...BuyOrderWithShippingDetails,
         state: "SUBMITTED",

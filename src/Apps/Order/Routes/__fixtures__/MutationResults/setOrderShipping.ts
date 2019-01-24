@@ -3,7 +3,6 @@ import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 export const settingOrderShipmentFailure = {
   ecommerceSetOrderShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "Not permitted",
@@ -16,7 +15,6 @@ export const settingOrderShipmentFailure = {
 export const settingOrderShipmentMissingRegionFailure = {
   ecommerceSetOrderShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "missing_region",
@@ -29,7 +27,6 @@ export const settingOrderShipmentMissingRegionFailure = {
 export const settingOrderShipmentMissingCountryFailure = {
   ecommerceSetOrderShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "missing_country",
@@ -42,7 +39,6 @@ export const settingOrderShipmentMissingCountryFailure = {
 export const settingOrderShipmentSuccess = {
   ecommerceSetOrderShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
       order: {
         ...BuyOrderWithShippingDetails,
       },

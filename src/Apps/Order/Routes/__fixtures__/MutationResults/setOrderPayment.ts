@@ -1,7 +1,6 @@
 export const settingOrderPaymentSuccess = {
   ecommerceSetOrderPayment: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
       order: {
         __typename: "BuyOrder",
         id: "1234",
@@ -23,7 +22,6 @@ export const settingOrderPaymentSuccess = {
 export const settingOrderPaymentFailed = {
   ecommerceSetOrderPayment: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "invalid_state",
