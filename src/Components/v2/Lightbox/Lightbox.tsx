@@ -281,6 +281,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
           ...(enabled && {
             style: { cursor: "zoom-in" },
             onClick: this.show.bind(this),
+            "data-type": "artwork-image",
           }),
         })
       }
