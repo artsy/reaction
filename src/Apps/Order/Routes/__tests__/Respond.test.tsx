@@ -93,7 +93,7 @@ class RespondTestPage extends OrderAppTestPage {
 }
 
 describe("The respond page", () => {
-  const { buildPage, mutations } = createTestEnv({
+  const { buildPage, mutations, routes } = createTestEnv({
     Component: RespondFragmentContainer,
     defaultData: {
       order: testOrder,
@@ -190,7 +190,7 @@ describe("The respond page", () => {
       await page.selectAcceptRadio()
       await page.clickSubmit()
 
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/review/accept`
       )
     })
@@ -199,7 +199,7 @@ describe("The respond page", () => {
       await page.selectDeclineRadio()
       await page.clickSubmit()
 
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/review/decline`
       )
     })
@@ -210,7 +210,7 @@ describe("The respond page", () => {
         expect(page.offerInput.props().showError).toBe(false)
         await page.clickSubmit()
         expect(page.offerInput.props().showError).toBe(true)
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
       })
 
       it("doesn't let the user continue if the offer value is not positive", async () => {
@@ -220,17 +220,17 @@ describe("The respond page", () => {
         expect(page.offerInput.props().showError).toBe(false)
         await page.clickSubmit()
         expect(page.offerInput.props().showError).toBe(true)
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
       })
 
       it("works when a valid number is inputted", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(9000)
 
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
         await page.clickSubmit()
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-        expect(page.lastMutationVariables).toMatchObject({
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.lastFetchVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
             offerPrice: {
@@ -239,7 +239,7 @@ describe("The respond page", () => {
             },
           },
         })
-        expect(page.mockPushRoute).toHaveBeenCalledWith(
+        expect(routes.mockPushRoute).toHaveBeenCalledWith(
           "/orders/2939023/review/counter"
         )
       })
@@ -248,13 +248,13 @@ describe("The respond page", () => {
     it("shows the error modal if submitting a counter offer fails at network level", async () => {
       await page.selectCounterRadio()
       await page.setOfferAmount(9000)
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
 
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
-      expect(page.mockPushRoute).not.toHaveBeenCalled()
+      expect(routes.mockPushRoute).not.toHaveBeenCalled()
       await page.expectDefaultErrorDialog()
     })
 
@@ -263,11 +263,11 @@ describe("The respond page", () => {
       await page.selectCounterRadio()
       await page.setOfferAmount(9000)
 
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(0)
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
-      expect(page.mockPushRoute).not.toHaveBeenCalled()
+      expect(routes.mockPushRoute).not.toHaveBeenCalled()
       await page.expectDefaultErrorDialog()
     })
 
@@ -284,14 +284,14 @@ describe("The respond page", () => {
           "OK"
         )
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
-        expect(page.mockPushRoute).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        expect(routes.mockPushRoute).not.toHaveBeenCalled()
 
         // should work after clicking submit again
         await page.clickSubmit()
 
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-        expect(page.mockPushRoute).toHaveBeenCalledTimes(1)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(routes.mockPushRoute).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -308,14 +308,14 @@ describe("The respond page", () => {
           "OK"
         )
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
-        expect(page.mockPushRoute).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        expect(routes.mockPushRoute).not.toHaveBeenCalled()
 
         // should work after clicking submit again
         await page.clickSubmit()
 
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-        expect(page.mockPushRoute).toHaveBeenCalledTimes(1)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(routes.mockPushRoute).toHaveBeenCalledTimes(1)
       })
     })
   })

@@ -35,6 +35,7 @@ export const initialOfferFailedCannotOffer = {
 export const initialOfferFailedAmountIsInvalid = {
   ecommerceAddInitialOfferToOrder: {
     orderOrError: {
+      __typename: "OrderWithMutationFailure",
       error: {
         type: "validation",
         code: "invalid_amount_cents",

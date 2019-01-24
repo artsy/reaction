@@ -44,7 +44,7 @@ const testOrder = {
 }
 
 describe("Accept seller offer", () => {
-  const { mutations, buildPage } = createTestEnv({
+  const { mutations, buildPage, routes } = createTestEnv({
     Component: AcceptFragmentContainer,
     query: graphql`
       query AcceptTestQuery {
@@ -123,7 +123,7 @@ describe("Accept seller offer", () => {
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
     })

@@ -71,7 +71,7 @@ const fillAddressForm = (component: any, address: Address) => {
 const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
 
 describe("Payment", () => {
-  const { buildPage, mutations } = createTestEnv({
+  const { buildPage, mutations, routes } = createTestEnv({
     Component: PaymentFragmentContainer,
     defaultData: {
       order: testOrder,
@@ -254,7 +254,7 @@ describe("Payment", () => {
     const page = await buildPage()
     await page.clickSubmit()
 
-    expect(page.mockMutationFetch.mock.calls[0][1]).toMatchObject({
+    expect(mutations.mockFetch.mock.calls[0][1]).toMatchObject({
       input: {
         token: "tokenId",
       },
@@ -307,7 +307,7 @@ describe("Payment", () => {
     const page = await buildPage()
     await page.clickSubmit()
 
-    expect(page.lastMutationVariables).toMatchObject({
+    expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         creditCardId: "gravityCreditCardId",
         orderId: "1234",
@@ -321,7 +321,7 @@ describe("Payment", () => {
     )
     const page = await buildPage()
     await page.clickSubmit()
-    expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/review")
+    expect(routes.mockPushRoute).toHaveBeenCalledWith("/orders/1234/review")
   })
 
   it("shows an error modal when there is an error in CreateCreditCardPayload", async () => {
@@ -355,7 +355,7 @@ describe("Payment", () => {
       Promise.resolve({ token: { id: "tokenId" } })
     )
     const page = await buildPage()
-    page.mockMutationNetworkFailureOnce()
+    mutations.mockNetworkFailureOnce()
 
     await page.clickSubmit()
     await page.expectDefaultErrorDialog()
@@ -431,14 +431,14 @@ describe("Payment", () => {
       await page.toggleSameAddressCheckbox()
       await page.clickSubmit()
 
-      expect(page.mockMutationFetch).not.toBeCalled()
+      expect(mutations.mockFetch).not.toBeCalled()
     })
 
     it("does not submit the mutation with an incomplete form with billing address exposed", async () => {
       const page = await buildPage()
       await page.toggleSameAddressCheckbox()
       await page.clickSubmit()
-      expect(page.mockMutationFetch).not.toBeCalled()
+      expect(mutations.mockFetch).not.toBeCalled()
     })
 
     it("allows a missing postal code if the selected country is not US or Canada", async () => {
@@ -462,7 +462,7 @@ describe("Payment", () => {
       fillAddressForm(page.root, address)
       await page.clickSubmit()
       expect(createTokenMock).toBeCalled()
-      expect(page.mockMutationFetch).toBeCalledTimes(2)
+      expect(mutations.mockFetch).toBeCalledTimes(2)
     })
 
     it("allows a missing state/province if the selected country is not US or Canada", async () => {
@@ -487,7 +487,7 @@ describe("Payment", () => {
       await page.clickSubmit()
 
       expect(createTokenMock).toBeCalled()
-      expect(page.mockMutationFetch).toBeCalledTimes(2)
+      expect(mutations.mockFetch).toBeCalledTimes(2)
     })
   })
 

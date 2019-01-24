@@ -32,6 +32,24 @@ class Mutations<MutationNames extends string> {
       }
     })
   }
+
+  // TODO: move these to TestEnv
+  mockNetworkFailureOnce = () => {
+    this.mockFetch.mockImplementationOnce(() =>
+      Promise.reject(new Error("failed to fetch"))
+    )
+  }
+
+  get lastFetchVariables() {
+    return this.mockFetch.mock.calls[this.mockFetch.mock.calls.length - 1][1]
+  }
+
+  readonly mockFetch = jest.fn()
+}
+
+class Routes {
+  mockPushRoute = jest.fn<string>()
+  mockOnTransition = jest.fn()
 }
 
 class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
@@ -60,6 +78,9 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
     afterEach(() => {
       const _errors = this.errors
       this.errors = []
+      this.mutations.mockFetch.mockClear()
+      this.routes.mockOnTransition.mockClear()
+      this.routes.mockPushRoute.mockClear()
       Object.keys(mutationResolvers).forEach(key =>
         mutationResolvers[key].mockClear()
       )
@@ -72,6 +93,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
   }
 
   mutations: Mutations<MutationNames>
+  routes = new Routes()
 
   private errors: any[] = []
 
@@ -117,15 +139,14 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
         throw e
       })
 
-    page.mockQueryFetch.mockImplementation(wrappedFetchQuery)
-    page.mockMutationFetch.mockImplementation(wrappedFetchQuery)
+    this.mutations.mockFetch.mockImplementation(wrappedFetchQuery)
 
     // Switch on mutation/query when making requests to help make assertions
     // Seems we only make assertions about mutations right now
     const mockNetwork = Network.create((operation, variableValues) => {
       return operation.operationKind === "mutation"
-        ? page.mockMutationFetch(operation, variableValues)
-        : page.mockQueryFetch(operation, variableValues)
+        ? this.mutations.mockFetch(operation, variableValues)
+        : wrappedFetchQuery(operation, variableValues)
     })
 
     // @ts-ignore
@@ -134,8 +155,8 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
         <MockBoot breakpoint={breakpoint || defaultBreakpoint}>
           <Component
             {...props}
-            router={{ push: page.mockPushRoute }}
-            route={{ onTransition: jest.fn() }}
+            router={{ push: this.routes.mockPushRoute }}
+            route={{ onTransition: this.routes.mockOnTransition }}
           />
           <ConnectedModalDialog />
         </MockBoot>

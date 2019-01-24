@@ -35,7 +35,7 @@ const testOrder = {
 }
 
 describe("Buyer rejects seller offer", () => {
-  const { mutations, buildPage } = createTestEnv({
+  const { mutations, buildPage, routes } = createTestEnv({
     Component: RejectFragmentContainer,
     query: graphql`
       query RejectTestQuery {
@@ -76,7 +76,7 @@ describe("Buyer rejects seller offer", () => {
 
     it("Shows a change link that takes the user back to the respond page", () => {
       page.root.find("StepSummaryItem a").simulate("click")
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/respond`
       )
     })
@@ -90,7 +90,7 @@ describe("Buyer rejects seller offer", () => {
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
     })
@@ -106,7 +106,7 @@ describe("Buyer rejects seller offer", () => {
     })
 
     it("shows an error modal when there is a network error", async () => {
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })

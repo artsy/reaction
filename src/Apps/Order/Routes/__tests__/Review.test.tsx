@@ -33,7 +33,7 @@ class ReviewTestPage extends OrderAppTestPage {
 }
 
 describe("Review", () => {
-  const { buildPage, mutations } = createTestEnv({
+  const { buildPage, mutations, routes } = createTestEnv({
     Component: ReviewFragmentContainer,
     defaultData: {
       order: testOrder,
@@ -60,18 +60,18 @@ describe("Review", () => {
 
     it("enables the button and routes to the payoff page", async () => {
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-      expect(page.mockPushRoute).toBeCalledWith("/orders/1234/status")
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+      expect(routes.mockPushRoute).toBeCalledWith("/orders/1234/status")
     })
 
     it("takes the user back to the /shipping view", () => {
       page.shippingSummary.find("a").simulate("click")
-      expect(page.mockPushRoute).toBeCalledWith("/orders/1234/shipping")
+      expect(routes.mockPushRoute).toBeCalledWith("/orders/1234/shipping")
     })
 
     it("takes the user back to the /payment view", () => {
       page.paymentSummary.find("a").simulate("click")
-      expect(page.mockPushRoute).toBeCalledWith("/orders/1234/payment")
+      expect(routes.mockPushRoute).toBeCalledWith("/orders/1234/payment")
     })
 
     it("shows an error modal when there is an error in submitOrderPayload", async () => {
@@ -81,7 +81,7 @@ describe("Review", () => {
     })
 
     it("shows an error modal when there is a network error", async () => {
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
@@ -146,13 +146,17 @@ describe("Review", () => {
     it("shows an offer section in the shipping and payment review", () => {
       expect(page.offerSummary.text()).toMatch("Your offer")
       page.offerSummary.find("a").simulate("click")
-      expect(page.mockPushRoute).toBeCalledWith("/orders/offer-order-id/offer")
+      expect(routes.mockPushRoute).toBeCalledWith(
+        "/orders/offer-order-id/offer"
+      )
     })
 
     it("enables the button and routes to the payoff page", async () => {
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-      expect(page.mockPushRoute).toBeCalledWith("/orders/offer-order-id/status")
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+      expect(routes.mockPushRoute).toBeCalledWith(
+        "/orders/offer-order-id/status"
+      )
     })
 
     it("shows an error modal when there is an error in submitOrderPayload", async () => {
@@ -162,7 +166,7 @@ describe("Review", () => {
     })
 
     it("shows an error modal when there is a network error", async () => {
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })

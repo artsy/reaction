@@ -52,7 +52,7 @@ const testOrder = {
 }
 
 describe("Submit Pending Counter Offer", () => {
-  const { buildPage, mutations } = createTestEnv({
+  const { buildPage, mutations, routes } = createTestEnv({
     Component: CounterFragmentContainer,
     query: graphql`
       query CounterTestQuery {
@@ -130,7 +130,7 @@ describe("Submit Pending Counter Offer", () => {
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
-      expect(page.mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
     })
@@ -155,7 +155,7 @@ describe("Submit Pending Counter Offer", () => {
     })
 
     it("shows an error modal when there is a network error", async () => {
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })

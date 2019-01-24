@@ -10,10 +10,7 @@ export function expectOne<T>(component: ReactWrapper<T>): ReactWrapper<T> {
 }
 
 export class RootTestPage {
-  readonly mockPushRoute = jest.fn<string>()
-  readonly mockQueryFetch = jest.fn<string>()
-  readonly mockMutationFetch = jest.fn<string>()
-
+  // these three properties get hydrated by createTestEnv
   readonly root: ReactWrapper
 
   async update() {
@@ -21,18 +18,6 @@ export class RootTestPage {
     this.root.update()
   }
 
-  mockMutationNetworkFailureOnce() {
-    this.mockMutationFetch.mockImplementationOnce(() =>
-      Promise.reject(new Error("failed to fetch"))
-    )
-  }
-
   // @ts-ignore
   find: ReactWrapper["find"] = (...args) => this.root.find(...args)
-
-  get lastMutationVariables() {
-    return this.mockMutationFetch.mock.calls[
-      this.mockMutationFetch.mock.calls.length - 1
-    ][1]
-  }
 }

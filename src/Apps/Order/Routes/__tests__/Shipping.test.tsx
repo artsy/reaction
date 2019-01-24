@@ -57,7 +57,7 @@ class ShippingTestPage extends OrderAppTestPage {
 }
 
 describe("Shipping", () => {
-  const { mutations, buildPage } = createTestEnv({
+  const { mutations, buildPage, routes } = createTestEnv({
     Component: ShippingFragmentContainer,
     defaultData: { order: testOrder },
     defaultMutationResults: {
@@ -94,11 +94,11 @@ describe("Shipping", () => {
 
     fillAddressForm(page.root, validAddress)
 
-    expect(page.mockMutationFetch).not.toHaveBeenCalled()
+    expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
 
-    expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-    expect(page.lastMutationVariables).toMatchInlineSnapshot(`
+    expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+    expect(mutations.lastFetchVariables).toMatchInlineSnapshot(`
 Object {
   "input": Object {
     "fulfillmentType": "SHIP",
@@ -128,19 +128,19 @@ Object {
     })
 
     await page.clickSubmit()
-    expect(page.lastMutationVariables.input.shipping.region).toBe(
+    expect(mutations.lastFetchVariables.input.shipping.region).toBe(
       "New Brunswick"
     )
-    expect(page.lastMutationVariables.input.shipping.country).toBe("US")
+    expect(mutations.lastFetchVariables.input.shipping.country).toBe("US")
   })
 
   it("commits the mutation with pickup option", async () => {
     const page = await buildPage()
     await page.selectPickupOption()
-    expect(page.mockMutationFetch).not.toHaveBeenCalled()
+    expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
-    expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
-    expect(page.lastMutationVariables.input.fulfillmentType).toBe("PICKUP")
+    expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+    expect(mutations.lastFetchVariables.input.fulfillmentType).toBe("PICKUP")
   })
 
   describe("mutation", () => {
@@ -152,7 +152,7 @@ Object {
     it("routes to payment screen after mutation completes", async () => {
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
-      expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/payment")
+      expect(routes.mockPushRoute).toHaveBeenCalledWith("/orders/1234/payment")
     })
 
     it("shows the button spinner while loading the mutation", async () => {
@@ -169,7 +169,7 @@ Object {
 
     it("shows an error modal when there is a network error", async () => {
       fillAddressForm(page.root, validAddress)
-      page.mockMutationNetworkFailureOnce()
+      mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
     })
@@ -222,7 +222,7 @@ Object {
 
     it("includes already-filled-in data in mutation if re-sent", async () => {
       await page.clickSubmit()
-      expect(page.lastMutationVariables.input).toMatchObject({
+      expect(mutations.lastFetchVariables.input).toMatchObject({
         shipping: {
           name: "Dr Collector",
         },
@@ -239,19 +239,19 @@ Object {
     describe("for Ship orders", () => {
       it("does not submit an empty form for a SHIP order", async () => {
         await page.clickSubmit()
-        expect(page.mockMutationFetch).not.toBeCalled()
+        expect(mutations.mockFetch).not.toBeCalled()
       })
 
       it("does not submit the mutation with an incomplete form for a SHIP order", async () => {
         fillIn(page.root, { title: "Full name", value: "Air Bud" })
         await page.clickSubmit()
-        expect(page.mockMutationFetch).not.toBeCalled()
+        expect(mutations.mockFetch).not.toBeCalled()
       })
 
       it("does submit the mutation with a complete form for a SHIP order", async () => {
         fillAddressForm(page.root, validAddress)
         await page.clickSubmit()
-        expect(page.mockMutationFetch).toBeCalled()
+        expect(mutations.mockFetch).toBeCalled()
       })
 
       it("says a required field is required for a SHIP order", async () => {
@@ -281,7 +281,7 @@ Object {
           .filterWhere(wrapper => wrapper.props().title === "Postal code")
         expect(input.props().error).toBeFalsy()
 
-        expect(page.mockMutationFetch).toBeCalled()
+        expect(mutations.mockFetch).toBeCalled()
       })
 
       it("before submit, only shows a validation error on inputs that have been touched", async () => {
@@ -326,14 +326,14 @@ Object {
         }
         fillAddressForm(page.root, address)
         await page.clickSubmit()
-        expect(page.mockMutationFetch).toBeCalled()
+        expect(mutations.mockFetch).toBeCalled()
       })
     })
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toBeCalled()
+      expect(mutations.mockFetch).toBeCalled()
     })
   })
 

@@ -231,7 +231,7 @@ describe("test envs", () => {
     page.creditCardSubmitButton.simulate("click")
     await page.update()
     expect(mutations.resolvers.createCreditCard).toHaveBeenCalled()
-    expect(page.lastMutationVariables).toMatchObject({
+    expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         oneTimeUse: true,
         token: "card-token",
@@ -273,7 +273,7 @@ describe("test envs", () => {
 
   it("lets you simulate a network error", async () => {
     const page = await buildPage()
-    page.mockMutationNetworkFailureOnce()
+    mutations.mockNetworkFailureOnce()
 
     page.creditCardSubmitButton.simulate("click")
     await page.update()
@@ -326,7 +326,7 @@ describe("test envs", () => {
 
     page.orderSubmitButton.simulate("click")
 
-    expect(page.lastMutationVariables).toMatchObject({
+    expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         artworkId: "artwork-id",
       },
@@ -336,7 +336,7 @@ describe("test envs", () => {
 
     page.creditCardSubmitButton.simulate("click")
 
-    expect(page.lastMutationVariables).toMatchObject({
+    expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         oneTimeUse: true,
         token: "card-token",

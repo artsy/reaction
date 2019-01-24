@@ -28,7 +28,7 @@ jest.mock("Apps/Order/Utils/trackPageView")
 const testOrder = { ...UntouchedOfferOrder, id: "1234" }
 
 describe("Offer InitialMutation", () => {
-  const { buildPage, mutations } = createTestEnv({
+  const { buildPage, mutations, routes } = createTestEnv({
     Component: OfferFragmentContainer,
     defaultData: {
       order: testOrder,
@@ -83,7 +83,7 @@ describe("Offer InitialMutation", () => {
         "Offer amount missing or invalid."
       )
       await page.clickSubmit()
-      expect(page.mockMutationFetch).not.toHaveBeenCalled()
+      expect(mutations.mockFetch).not.toHaveBeenCalled()
       expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
     })
 
@@ -93,15 +93,15 @@ describe("Offer InitialMutation", () => {
         "Offer amount missing or invalid."
       )
       await page.clickSubmit()
-      expect(page.mockMutationFetch).not.toHaveBeenCalled()
+      expect(mutations.mockFetch).not.toHaveBeenCalled()
       expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
     })
 
     it("routes to shipping screen after mutation completes", async () => {
       await page.setOfferAmount(16000)
       await page.clickSubmit()
-      expect(page.mockMutationFetch).toHaveBeenCalled()
-      expect(page.mockPushRoute).toHaveBeenCalledWith("/orders/1234/shipping")
+      expect(mutations.mockFetch).toHaveBeenCalled()
+      expect(routes.mockPushRoute).toHaveBeenCalledWith("/orders/1234/shipping")
     })
 
     it("shows the button spinner while committing the mutation", async () => {
@@ -114,7 +114,7 @@ describe("Offer InitialMutation", () => {
       await page.setOfferAmount(16000)
       await page.clickSubmit()
       await page.expectDefaultErrorDialog()
-      expect(page.mockMutationFetch).toHaveBeenCalled()
+      expect(mutations.mockFetch).toHaveBeenCalled()
     })
 
     it("shows a helpful error message in a modal when there is an error from the server because the amount is invalid", async () => {
@@ -133,7 +133,7 @@ describe("Offer InitialMutation", () => {
         await page.setOfferAmount(1000)
         await page.clickSubmit()
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
 
         await page.expectErrorDialogMatching(
           "Offer may be too low",
@@ -141,12 +141,12 @@ describe("Offer InitialMutation", () => {
           "OK"
         )
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
 
         await page.clickSubmit()
         expect(page.modalDialog.props().show).toBeFalsy()
 
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -155,7 +155,7 @@ describe("Offer InitialMutation", () => {
         await page.setOfferAmount(17000)
         await page.clickSubmit()
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
 
         await page.expectErrorDialogMatching(
           "Offer higher than list price",
@@ -163,11 +163,11 @@ describe("Offer InitialMutation", () => {
           "OK"
         )
 
-        expect(page.mockMutationFetch).not.toHaveBeenCalled()
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
 
         await page.clickSubmit()
 
-        expect(page.mockMutationFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
       })
     })
   })
