@@ -93,7 +93,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     } else {
       artworkId = get(
         this.props,
-        props => order.lineItems.edges[0].node.artwork
+        props => order.lineItems.edges[0].node.artwork.id
       )
     }
 
