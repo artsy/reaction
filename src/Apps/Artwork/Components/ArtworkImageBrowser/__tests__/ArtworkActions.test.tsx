@@ -48,8 +48,7 @@ describe("ArtworkActions", () => {
   })
 
   describe("view in a room", () => {
-    // TODO: uncomment once palette with icon name is in.
-    xit("available for artworks that are hangable", () => {
+    it("available for artworks that are hangable", () => {
       const data = cloneDeep(ArtworkActionsFixture)
       data.user.type = "Admin"
       data.artwork.is_hangable = true
