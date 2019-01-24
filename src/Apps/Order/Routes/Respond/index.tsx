@@ -313,7 +313,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   >
                     Continue
                   </Button>
-                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }
@@ -335,7 +334,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       Continue
                     </Button>
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

@@ -219,7 +219,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

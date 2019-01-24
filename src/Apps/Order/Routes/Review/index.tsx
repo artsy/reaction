@@ -313,7 +313,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     <ConditionsOfSaleDisclaimer textAlign="center" />
                   </Media>
                 </Join>
-                <Spacer mb={3} />
               </>
             }
             Sidebar={
@@ -334,7 +333,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   </Button>
                   <Spacer mb={2} />
                   <ConditionsOfSaleDisclaimer />
-                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }

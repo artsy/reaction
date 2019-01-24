@@ -62,6 +62,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
 const FooterContainer = styled(Flex)`
   background-color: ${color("white100")};
   bottom: 0;
+  left: 0;
   position: fixed;
   width: 100%;
   border-top: 1px solid ${color("black10")};

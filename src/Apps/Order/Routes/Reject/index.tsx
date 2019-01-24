@@ -195,7 +195,6 @@ export class Reject extends Component<RejectProps, RejectState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

@@ -265,7 +265,6 @@ export class StatusRoute extends Component<StatusProps> {
                     </Button>
                   )}
                 </Join>
-                <Spacer mb={[2, 3]} />
               </>
             }
             Sidebar={
@@ -275,7 +274,6 @@ export class StatusRoute extends Component<StatusProps> {
                     <ShippingSummaryItem order={order} />
                     <CreditCardSummaryItem order={order} />
                   </Flex>
-                  <Spacer mb={[2, 3]} />
                 </Flex>
               )
             }

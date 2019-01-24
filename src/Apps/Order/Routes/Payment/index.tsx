@@ -264,7 +264,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       onClick={this.onContinue}
                       loading={isCommittingMutation}
                     />
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

@@ -108,7 +108,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 content="width=device-width, user-scalable=no"
               />
             ) : null}
-            <Box pb={55}>
+            <Box pb={75}>
               <StripeProvider stripe={this.state.stripe}>
                 <Elements>
                   <>{children}</>
