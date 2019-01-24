@@ -1,3 +1,12 @@
+# 11.2.14 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Collect] Re-add the color wheel filter [#1932](https://github.com/artsy/reaction/pull/1932) ([@mzikherman](https://github.com/mzikherman))
+- Pull `lastOffer` from `OrderOffer` instead of `Order`, due to deprecation [#1929](https://github.com/artsy/reaction/pull/1929) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.13 (Wed Jan 23 2019)
 
 #### 🐛  Bug Fix
