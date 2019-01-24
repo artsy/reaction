@@ -1,3 +1,11 @@
+# 11.2.20 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Expose image width and height for view in room [#1940](https://github.com/artsy/reaction/pull/1940) ([@zephraph](https://github.com/zephraph))
+
+---
+
 # 11.2.19 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
