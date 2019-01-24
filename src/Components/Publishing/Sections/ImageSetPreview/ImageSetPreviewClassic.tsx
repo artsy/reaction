@@ -1,4 +1,5 @@
 import { avantgarde } from "Assets/Fonts"
+import { ImagesData } from "Components/Publishing/Typings"
 import React, { Component } from "react"
 import styled, { StyledFunction } from "styled-components"
 import { resize } from "../../../../Utils/resizer"
@@ -40,7 +41,18 @@ const containerHeight = 150
 const iconContainer = 50
 const margin = 10
 
-export class ImageSetPreviewClassic extends Component<any, any> {
+export interface ImageSetPreviewClassicProps {
+  images: ImagesData
+}
+
+interface ImageSetPreviewClassicState {
+  visibleImages: number
+}
+
+export class ImageSetPreviewClassic extends Component<
+  ImageSetPreviewClassicProps,
+  ImageSetPreviewClassicState
+> {
   constructor(props) {
     super(props)
     this.state = {
