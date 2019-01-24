@@ -163,6 +163,8 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
       image {
         id
         url(version: "larger")
+        height
+        width
       }
       is_downloadable
       is_hangable
