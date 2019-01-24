@@ -1,4 +1,10 @@
-import { GraphQLFieldResolver, responsePathAsArray } from "graphql"
+import {
+  GraphQLFieldResolver,
+  GraphQLInterfaceType,
+  GraphQLObjectType,
+  GraphQLUnionType,
+  responsePathAsArray,
+} from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import getNetworkLayer from "relay-mock-network-layer"
 import { Network, RelayNetwork } from "relay-runtime"
@@ -25,6 +31,40 @@ const complain = (info, type) => {
   throw new Error(message)
 }
 
+const inferUnionOrInterfaceType = (value, info) => {
+  if (
+    !(info.returnType instanceof GraphQLUnionType) &&
+    !(info.returnType instanceof GraphQLInterfaceType)
+  ) {
+    return value
+  }
+  if (!value || value.__typename || typeof value !== "object") {
+    return value
+  }
+
+  const unionMemberTypes =
+    info.returnType instanceof GraphQLInterfaceType
+      ? info.schema._implementations[info.returnType.name]
+      : (info.returnType._types.filter(
+          type => type instanceof GraphQLObjectType
+        ) as GraphQLObjectType[])
+
+  // TODO: handle nested unions and look at other types
+  // try to find unique properties for each type
+  for (const key of Object.keys(value)) {
+    const matchingTypes = unionMemberTypes.filter(type => type.getFields()[key])
+    if (matchingTypes.length === 1) {
+      return { ...value, __typename: matchingTypes[0].name }
+    }
+  }
+
+  const path = responsePathAsArray(info.path).join("/")
+  const message = `Abmiguous object at path '${path}'. Add a __typename from this list: [${unionMemberTypes
+    .map(type => type.name)
+    .join(", ")}]`
+  throw new Error(message)
+}
+
 export const createMockFetchQuery = ({
   mockData = {},
   mockMutationResults = {},
@@ -36,14 +76,18 @@ export const createMockFetchQuery = ({
   return getNetworkLayer({
     fieldResolver: ((source, _args, _context, info) => {
       // source is null for aliased root fields
-      source = source || mockData
+      source =
+        source ||
+        (info.operation.operation === "mutation"
+          ? mockMutationResults
+          : mockData)
       if (source) {
         if (info.fieldName in source) {
-          return source[info.fieldName]
+          return inferUnionOrInterfaceType(source[info.fieldName], info)
         }
         const alias = info.fieldNodes[0].alias
         if (alias && alias.value in source) {
-          return source[alias.value]
+          return inferUnionOrInterfaceType(source[alias.value], info)
         }
 
         if (info.fieldName === "__id" || info.fieldName === "id") {

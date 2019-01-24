@@ -54,7 +54,6 @@ export const submitOrderSuccess = {
 export const submitOrderWithMissingInfo = {
   ecommerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
       error: {
         type: "processing",
         code: "missing_required_info",

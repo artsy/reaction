@@ -6,7 +6,7 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "jsx": "react",
-    "lib": ["dom", "es2015", "es2016", "es2017"],
+    "lib": ["dom", "es2015", "es2016", "es2017", "esnext.asynciterable"],
     "module": "es2015",
     "moduleResolution": "node",
     "noUnusedLocals": true,

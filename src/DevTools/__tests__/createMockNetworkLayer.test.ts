@@ -199,6 +199,90 @@ describe("createMockNetworkLayer", () => {
       )
     })
 
+    it("allows not specifying typenames when possible", async () => {
+      const data = await fetchMutationResults<
+        createMockNetworkLayerTestMutationResultsMutation
+      >({
+        mockMutationResults: {
+          ecommerceBuyerAcceptOffer: {
+            orderOrError: {
+              order: {
+                __typename: "BuyOrder",
+                id: "my-order",
+                state: "MOCKED",
+              },
+            },
+          },
+        },
+        query,
+        variables: {
+          input: {
+            offerId: "offer-id",
+          },
+        },
+      })
+
+      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "MOCKED"
+      )
+    })
+
+    it("complains about ambiguous types", async () => {
+      try {
+        await fetchMutationResults<
+          createMockNetworkLayerTestMutationResultsMutation
+        >({
+          mockMutationResults: {
+            ecommerceBuyerAcceptOffer: {
+              orderOrError: {
+                order: {
+                  id: "my-order",
+                  state: "MOCKED",
+                },
+              },
+            },
+          },
+          query,
+          variables: {
+            input: {
+              offerId: "offer-id",
+            },
+          },
+        })
+      } catch (e) {
+        expect(e.message).toMatchInlineSnapshot(
+          `"RelayMockNetworkLayerError: Abmiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+        )
+      }
+    })
+
+    it("does not complain about unambiguous interface types", async () => {
+      const data = await fetchMutationResults<
+        createMockNetworkLayerTestMutationResultsMutation
+      >({
+        mockMutationResults: {
+          ecommerceBuyerAcceptOffer: {
+            orderOrError: {
+              order: {
+                id: "my-order",
+                state: "MOCKED",
+                myLastOffer: {},
+              },
+            },
+          },
+        },
+        query,
+        variables: {
+          input: {
+            offerId: "offer-id",
+          },
+        },
+      })
+      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "MOCKED"
+      )
+    })
+
     it("allows mocking network failures", async () => {
       try {
         await fetchMutationResults<
