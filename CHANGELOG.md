@@ -1,3 +1,11 @@
+# 11.2.16 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Imageset props [#1936](https://github.com/artsy/reaction/pull/1936) ([@eessex](https://github.com/eessex))
+
+---
+
 # 11.2.15 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
