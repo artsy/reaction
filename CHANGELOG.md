@@ -1,3 +1,11 @@
+# 11.2.17 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] hide footer if in Eigen [#1937](https://github.com/artsy/reaction/pull/1937) ([@l2succes](https://github.com/l2succes))
+
+---
+
 # 11.2.16 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
