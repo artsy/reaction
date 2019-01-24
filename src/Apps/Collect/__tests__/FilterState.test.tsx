@@ -40,6 +40,7 @@ describe("FilterState", () => {
         medium: "photography",
         page: 1,
         price_range: "*-*",
+        height_range: "*-*",
         sort: "-decayed_merch",
         attribution_class: [],
       })
@@ -52,6 +53,15 @@ describe("FilterState", () => {
 
     setTimeout(() => {
       expect(instance.priceRangeToTuple()).toEqual([50, 43000])
+      done()
+    })
+  })
+
+  it("returns a height range tuple based on filter string", done => {
+    instance.setFilter("height_range", "*-50", mediator)
+
+    setTimeout(() => {
+      expect(instance.heightRangeToTuple()).toEqual([1, 50])
       done()
     })
   })
@@ -69,6 +79,7 @@ const initialState = {
   offerable: null,
   inquireable_only: null,
   price_range: "*-*",
+  height_range: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,

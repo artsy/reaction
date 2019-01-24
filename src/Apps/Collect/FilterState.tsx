@@ -13,6 +13,7 @@ export interface State {
   at_auction?: boolean
   inquireable_only?: boolean
   price_range?: string
+  height_range?: string
   attribution_class?: string[]
   artist_id?: string
   color?: string
@@ -32,6 +33,7 @@ export const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
+  height_range: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,
@@ -43,6 +45,8 @@ export class FilterState extends Container<State> {
 
   static MIN_PRICE = 50
   static MAX_PRICE = 50000
+  static MIN_HEIGHT = 1
+  static MAX_HEIGHT = 120
 
   constructor(props: State) {
     super()
@@ -138,6 +142,7 @@ export class FilterState extends Container<State> {
         newPartialState[filter] = Number(value)
         break
       case "price_range":
+      case "height_range":
       case "partner_id":
       case "color":
       case "medium":
@@ -169,10 +174,24 @@ export class FilterState extends Container<State> {
     return this.state.price_range !== "*-*"
   }
 
+  // generalize to avoid duplication?
+  isHeightSelected(): boolean {
+    return this.state.height_range !== "*-*"
+  }
+
   priceRangeToTuple(): [number, number] {
     const [minStr, maxStr] = this.state.price_range.split("-")
     const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
     const max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
+
+    return [min, max]
+  }
+
+  // I feel like this could be generalized to be applicable to multiple filters
+  heightRangeToTuple(): [number, number] {
+    const [minStr, maxStr] = this.state.height_range.split("-")
+    const min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
+    const max = maxStr === "*" ? FilterState.MAX_HEIGHT : Number(maxStr)
 
     return [min, max]
   }
