@@ -1,3 +1,11 @@
+# 11.2.19 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- pass image url when calling viewInRoom mediator [#1930](https://github.com/artsy/reaction/pull/1930) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 11.2.18 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
