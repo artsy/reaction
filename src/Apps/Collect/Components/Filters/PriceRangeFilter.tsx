@@ -1,5 +1,5 @@
+import { PriceRange } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
-import { PriceRange } from "Components/v2/PriceRange"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
