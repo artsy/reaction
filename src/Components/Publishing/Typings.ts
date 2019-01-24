@@ -66,11 +66,31 @@ export interface SectionData {
   height?: number
 }
 
-export type ImagesData = Array<{
-  url?: string
+export type ImagesData = ImageData[]
+
+export interface ImageData {
+  artist?: GravityEntity
+  artists?: GravityEntity[]
+  caption?: string
+  credit?: string
+  date?: string
+  height?: number
+  id?: string
+  index?: number
   image?: string
-  index?: any
-}>
+  setTitle?: string
+  title?: string
+  type?: string
+  url?: string
+  partner?: GravityEntity
+  slug?: string
+  width?: number
+}
+
+export interface GravityEntity {
+  name?: string
+  slug?: string
+}
 
 export interface DisplayData {
   name: string
