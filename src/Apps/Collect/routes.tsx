@@ -35,6 +35,7 @@ export const routes: RouteConfig[] = [
         $price_range: String
         $artist_id: String
         $attribution_class: [String]
+        $color: String
       ) {
         viewer {
           ...CollectApp_viewer
@@ -51,6 +52,7 @@ export const routes: RouteConfig[] = [
               price_range: $price_range
               artist_id: $artist_id
               attribution_class: $attribution_class
+              color: $color
             )
         }
       }

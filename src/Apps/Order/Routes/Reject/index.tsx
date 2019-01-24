@@ -212,10 +212,6 @@ export const RejectFragmentContainer = createFragmentContainer(
     fragment Reject_order on Order {
       id
       stateExpiresAt
-      lastOffer {
-        id
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -223,6 +219,12 @@ export const RejectFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          id
+          createdAt
         }
       }
       ...ArtworkSummaryItem_order

@@ -15,6 +15,7 @@ export interface State {
   price_range?: string
   attribution_class?: string[]
   artist_id?: string
+  color?: string
 
   tracking?: any
 }
@@ -33,6 +34,7 @@ export const initialState = {
   price_range: "*-*",
   attribution_class: [],
   artist_id: null,
+  color: null,
 }
 
 export class FilterState extends Container<State> {
@@ -106,6 +108,7 @@ export class FilterState extends Container<State> {
         "at_auction",
         "partner_id",
         "inquireable_only",
+        "color",
       ].includes(filter)
     ) {
       newPartialState[filter] = null
@@ -136,6 +139,7 @@ export class FilterState extends Container<State> {
         break
       case "price_range":
       case "partner_id":
+      case "color":
       case "medium":
       case "sort":
         newPartialState[filter] = value

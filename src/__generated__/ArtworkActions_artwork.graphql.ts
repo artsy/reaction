@@ -10,12 +10,17 @@ export type ArtworkActions_artwork = {
         readonly name: string | null;
     }) | null> | null;
     readonly date: string | null;
+    readonly dimensions: ({
+        readonly cm: string | null;
+    }) | null;
     readonly href: string | null;
     readonly id: string;
     readonly image: ({
         readonly id: string | null;
+        readonly url: string | null;
     }) | null;
     readonly is_downloadable: boolean | null;
+    readonly is_hangable: boolean | null;
     readonly partner: ({
         readonly id: string;
     }) | null;
@@ -61,7 +66,21 @@ return {
       "concreteType": "Image",
       "plural": false,
       "selections": [
-        v0
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "url",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "larger",
+              "type": "[String]"
+            }
+          ],
+          "storageKey": "url(version:\"larger\")"
+        }
       ]
     },
     {
@@ -96,6 +115,24 @@ return {
       "storageKey": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "dimensions",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "dimensions",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "cm",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "href",
@@ -112,6 +149,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_downloadable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_hangable",
       "args": null,
       "storageKey": null
     },
@@ -165,5 +209,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5a7d8c9ed94943c1a06cc5bcaf5b21ed';
+(node as any).hash = 'b65256e26095391162ed1a1e9f529215';
 export default node;

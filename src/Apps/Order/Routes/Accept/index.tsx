@@ -236,10 +236,6 @@ export const AcceptFragmentContainer = createFragmentContainer(
     fragment Accept_order on Order {
       id
       stateExpiresAt
-      lastOffer {
-        id
-        createdAt
-      }
       lineItems {
         edges {
           node {
@@ -247,6 +243,12 @@ export const AcceptFragmentContainer = createFragmentContainer(
               id
             }
           }
+        }
+      }
+      ... on OfferOrder {
+        lastOffer {
+          id
+          createdAt
         }
       }
       ...TransactionDetailsSummaryItem_order

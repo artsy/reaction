@@ -31,11 +31,6 @@ query routes_RejectQuery(
 fragment Reject_order on Order {
   id
   stateExpiresAt
-  lastOffer {
-    id
-    createdAt
-    __id: id
-  }
   lineItems {
     edges {
       node {
@@ -45,6 +40,13 @@ fragment Reject_order on Order {
         }
         __id: id
       }
+    }
+  }
+  ... on OfferOrder {
+    lastOffer {
+      id
+      createdAt
+      __id: id
     }
   }
   ...ArtworkSummaryItem_order
@@ -137,7 +139,7 @@ return {
   "operationKind": "query",
   "name": "routes_RejectQuery",
   "id": null,
-  "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lastOffer {\n    id\n    createdAt\n    __id: id\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -187,26 +189,6 @@ return {
             "name": "stateExpiresAt",
             "args": null,
             "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "lastOffer",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Offer",
-            "plural": false,
-            "selections": [
-              v4,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "createdAt",
-                "args": null,
-                "storageKey": null
-              },
-              v2
-            ]
           },
           {
             "kind": "LinkedField",
@@ -345,7 +327,33 @@ return {
               }
             ]
           },
-          v2
+          v2,
+          {
+            "kind": "InlineFragment",
+            "type": "OfferOrder",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "lastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Offer",
+                "plural": false,
+                "selections": [
+                  v4,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "createdAt",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  v2
+                ]
+              }
+            ]
+          }
         ]
       }
     ]

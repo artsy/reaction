@@ -6,6 +6,7 @@ export type CreateOfferOrderWithArtworkInput = {
     readonly artworkId: string;
     readonly editionSetId?: string | null;
     readonly quantity?: number | null;
+    readonly find_active_or_create?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type ArtworkSidebarCommercialOfferOrderMutationVariables = {

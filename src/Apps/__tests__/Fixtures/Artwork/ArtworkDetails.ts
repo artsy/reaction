@@ -3,6 +3,10 @@ export const ArtworkDetailsFixture = {
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   additional_information: "<p>Here is some addition info for this work</p>\n",
   partner: {
+    id: "salon-94",
+    _id: "4e259f0a9441930001006a25",
+    href: "/salon-94",
+    is_default_profile_public: true,
     type: "Gallery",
     name: "Salon 94",
     initials: "S9",
@@ -41,9 +45,7 @@ export const ArtworkDetailsFixture = {
   image_rights: "Courtesy of Chiswick Auctions",
   articles: [
     {
-      author: {
-        name: "Artsy Editorial",
-      },
+      author: { name: "Artsy Editorial" },
       href: "/article/artsy-editorial-the-most-iconic-artists-of-the-1980s",
       published_at: "Aug 17th, 2015",
       thumbnail_image: {
@@ -55,6 +57,7 @@ export const ArtworkDetailsFixture = {
       thumbnail_title: "The Most Iconic Artists of the 1980s",
     },
   ],
-  iterature: "Some literature info goes here",
+  literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
+  sale: null,
 }

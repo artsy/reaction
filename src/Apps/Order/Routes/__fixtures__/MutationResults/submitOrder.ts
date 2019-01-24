@@ -30,3 +30,14 @@ export const submitOrderWithNoInventoryFailure = {
     },
   },
 }
+
+export const submitOrderWithMissingInfo = {
+  ecommerceSubmitOrder: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "missing_required_info",
+      },
+    },
+  },
+}

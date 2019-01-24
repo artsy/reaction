@@ -1,3 +1,138 @@
+# 11.2.20 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Expose image width and height for view in room [#1940](https://github.com/artsy/reaction/pull/1940) ([@zephraph](https://github.com/zephraph))
+
+---
+
+# 11.2.19 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- pass image url when calling viewInRoom mediator [#1930](https://github.com/artsy/reaction/pull/1930) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 11.2.18 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Add hook to artwork image for view in room [#1938](https://github.com/artsy/reaction/pull/1938) ([@zephraph](https://github.com/zephraph))
+
+---
+
+# 11.2.17 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] hide footer if in Eigen [#1937](https://github.com/artsy/reaction/pull/1937) ([@l2succes](https://github.com/l2succes))
+
+---
+
+# 11.2.16 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Imageset props [#1936](https://github.com/artsy/reaction/pull/1936) ([@eessex](https://github.com/eessex))
+
+---
+
+# 11.2.15 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Migrate to palette price filter [#1934](https://github.com/artsy/reaction/pull/1934) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 2.34.6 [#1935](https://github.com/artsy/reaction/pull/1935) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.14 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Collect] Re-add the color wheel filter [#1932](https://github.com/artsy/reaction/pull/1932) ([@mzikherman](https://github.com/mzikherman))
+- Pull `lastOffer` from `OrderOffer` instead of `Order`, due to deprecation [#1929](https://github.com/artsy/reaction/pull/1929) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# 11.2.13 (Wed Jan 23 2019)
+
+#### 🐛  Bug Fix
+
+- [WIP] Start on adding view in room to artwork page v2 [#1928](https://github.com/artsy/reaction/pull/1928) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.4 [#1927](https://github.com/artsy/reaction/pull/1927) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.1.1 [#1926](https://github.com/artsy/reaction/pull/1926) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.12 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Missing info error message [#1888](https://github.com/artsy/reaction/pull/1888) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# 11.2.11 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Do not display partner name in banner for benefit auction artworks [#1925](https://github.com/artsy/reaction/pull/1925) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 11.2.10 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Merge pull request #1924 by Peril
+
+remove partner icon for artwork details if artwork is from benefit auction [#1924](https://github.com/artsy/reaction/pull/1924) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 11.2.9 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes "related auction" image overlapping with text on RAP [#1923](https://github.com/artsy/reaction/pull/1923) ([@mdole](https://github.com/mdole))
+
+---
+
+# 11.2.8 (Tue Jan 22 2019)
+
+#### 🐛  Bug Fix
+
+- Disallow whitespace for address form [#1922](https://github.com/artsy/reaction/pull/1922) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Merge pull request #1921 by Peril
+
+Update dependency @artsy/palette to v2.34.0 [#1921](https://github.com/artsy/reaction/pull/1921) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.33.2 [#1920](https://github.com/artsy/reaction/pull/1920) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.7 (Fri Jan 18 2019)
+
+#### 🐛  Bug Fix
+
+- Roll out Artist Insights V2 to 100% [#1919](https://github.com/artsy/reaction/pull/1919) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.33.1 [#1917](https://github.com/artsy/reaction/pull/1917) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.6 (Fri Jan 18 2019)
 
 

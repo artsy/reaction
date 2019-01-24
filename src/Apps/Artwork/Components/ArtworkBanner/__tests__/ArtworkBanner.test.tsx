@@ -1,5 +1,6 @@
 import {
   ArtworkAuctionBannerFixture,
+  ArtworkBenefitAuctionBannerFixture,
   ArtworkFairBannerFixture,
   ArtworkUpcomingShowBannerFixture,
   ArtwrorkNoBannerFixture,
@@ -37,7 +38,7 @@ describe("ArtworkBanner", () => {
     })
   })
 
-  describe("ArtworkBanner for artwork with auction banner", () => {
+  describe("ArtworkBanner for artwork with regular auction banner", () => {
     beforeAll(async () => {
       wrapper = await getWrapper(ArtworkAuctionBannerFixture)
     })
@@ -50,6 +51,24 @@ describe("ArtworkBanner", () => {
         "https://d32dm0rphc51dk.cloudfront.net/teoB9Znrq-78iSh6_Vh6Og/square.jpg"
       )
       expect(html).toContain("Doyle")
+    })
+  })
+
+  describe("ArtworkBanner for artwork with benefit auction banner", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(ArtworkBenefitAuctionBannerFixture)
+    })
+    it("renders a correct data for the auction", () => {
+      const html = wrapper.html()
+
+      expect(html).toContain("In auction")
+      // expect(html).toContain("BFAMI: Live Benefit Auction 2019")
+      expect(html).toContain(
+        "https://d32dm0rphc51dk.cloudfront.net/0XJ7rzO9dlu60lXl2OuH6g/square.jp"
+      )
+      expect(html).not.toContain(
+        "BFAMI: Live Benefit Auction 2019 partner name"
+      )
     })
   })
 
