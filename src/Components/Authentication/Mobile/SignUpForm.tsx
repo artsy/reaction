@@ -88,6 +88,7 @@ export class MobileSignUpForm extends Component<
               onBlur={handleBlur}
               setTouched={setTouched}
               touchedOnChange={false}
+              autoFocus
               quick
             />
             <TermsOfServiceCheckbox

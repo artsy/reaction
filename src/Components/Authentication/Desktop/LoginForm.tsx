@@ -72,6 +72,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoFocus
               />
               <Input
                 block

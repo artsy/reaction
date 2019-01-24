@@ -63,6 +63,7 @@ export class MobileLoginForm extends Component<FormProps> {
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
+            autoFocus
             quick
           />
         )}
