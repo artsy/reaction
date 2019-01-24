@@ -56,7 +56,7 @@ export type SectionType =
 export interface SectionData {
   type: SectionType
   layout?: SectionLayout
-  images?: any[]
+  images?: ImagesData
   body?: string
   url?: string
   caption?: string
@@ -65,6 +65,12 @@ export interface SectionData {
   mobile_height?: number
   height?: number
 }
+
+export type ImagesData = Array<{
+  url?: string
+  image?: string
+  index?: any
+}>
 
 export interface DisplayData {
   name: string
