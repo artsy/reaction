@@ -17,7 +17,7 @@ import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
 const zone = time => {
-  return moment(time).tz("America/New_York")
+  return moment(time, "YYYY-MM-DD").tz("America/New_York")
 }
 
 const upcomingLabel = (
