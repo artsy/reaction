@@ -2,7 +2,6 @@ export const initialOfferSuccess = {
   ecommerceAddInitialOfferToOrder: {
     orderOrError: {
       order: {
-        __typename: "BuyOrder",
         id: "1234",
         mode: "BUY",
         itemsTotalCents: 400,
