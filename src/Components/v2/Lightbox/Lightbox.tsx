@@ -189,11 +189,14 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   componentDidMount() {
-    this.setState({
-      element: document.getElementById(this.props.lightboxId),
-      // FIXME: convert to import('openseadragon) once force supports it
-      promisedDragon: Promise.resolve(require("openseadragon")),
-    })
+    const element = document.getElementById(this.props.lightboxId)
+    if (element) {
+      this.setState({
+        element,
+        // FIXME: convert to import('openseadragon) once force supports it
+        promisedDragon: Promise.resolve(require("openseadragon")),
+      })
+    }
   }
 
   componentWillUnmount() {
