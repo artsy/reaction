@@ -78,6 +78,12 @@ export class ArtworkActions extends React.Component<
     }
   }
 
+  @track({
+    flow: Schema.Flow.ArtworkViewInRoom,
+    action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.ViewInRoom,
+    type: Schema.Type.Button,
+  })
   openViewInRoom(mediator) {
     const {
       artwork: { dimensions, image },
