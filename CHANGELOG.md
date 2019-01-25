@@ -1,3 +1,11 @@
+# 11.2.21 (Fri Jan 25 2019)
+
+#### undefined
+
+- Guard against missing elements [#1941](https://github.com/artsy/reaction/pull/1941) ([@damassi](https://github.com/damassi))
+
+---
+
 # 11.2.20 (Thu Jan 24 2019)
 
 #### 🐛  Bug Fix
