@@ -79,6 +79,7 @@ export class ColorFilter extends React.Component<Props> {
         {({ mediator }) => {
           const CheckmarkStyle = {
             position: "relative",
+            cursor: "pointer",
             ...CheckmarkPositions[filters.state.color],
           }
           return (
@@ -219,7 +220,11 @@ export class ColorFilter extends React.Component<Props> {
                   />
                 </g>
               </svg>
-              <CheckIcon style={CheckmarkStyle} fill="white100" />
+              <CheckIcon
+                onClick={e => filters.unsetFilter("color", mediator)}
+                style={CheckmarkStyle}
+                fill="white100"
+              />
             </>
           )
         }}
