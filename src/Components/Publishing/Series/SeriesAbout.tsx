@@ -3,10 +3,12 @@ import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 
+import { Share } from "Components/Publishing/Byline/Share"
 import { PartnerBlock } from "Components/Publishing/Partner/PartnerBlock"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import { Media } from "Utils/Responsive"
+import { getArticleFullHref } from "../Constants"
 
 interface Props {
   article?: ArticleData
@@ -61,7 +63,7 @@ export class SeriesAbout extends Component<Props, null> {
 
   render() {
     const {
-      article: { series, sponsor },
+      article: { series, slug, social_title, sponsor, thumbnail_title },
       color,
       editDescription,
       editSubTitle,
@@ -80,11 +82,21 @@ export class SeriesAbout extends Component<Props, null> {
           justifyContent="space-between"
           flexDirection="column"
         >
-          <Sans size="8" mb={["20px", "20px", 0, 0]}>
-            {editSubTitle
-              ? editSubTitle
-              : (series && series.sub_title) || "About the Series"}
-          </Sans>
+          <div>
+            <Sans size="8" mb={["10px", "10px", 20, 20]}>
+              {editSubTitle
+                ? editSubTitle
+                : (series && series.sub_title) || "About the Series"}
+            </Sans>
+
+            <Sans size="5" mb={["20px", "20px", 0, 0]}>
+              <Share
+                url={getArticleFullHref(slug)}
+                title={social_title || thumbnail_title}
+                color={color}
+              />
+            </Sans>
+          </div>
 
           <Media greaterThanOrEqual="md">
             {sponsor && <Box mb={1}>{this.partnerBlock()}</Box>}
