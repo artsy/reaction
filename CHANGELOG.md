@@ -1,3 +1,12 @@
+# 11.2.23 (Fri Jan 25 2019)
+
+#### undefined
+
+- [Bugfix] Only track artwork scroll on /collect [#1942](https://github.com/artsy/reaction/pull/1942) ([@damassi](https://github.com/damassi))
+- @mzikherman => [Collect] Allow clicking on check icon to deselect color filter [#1944](https://github.com/artsy/reaction/pull/1944) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # 11.2.22 (Fri Jan 25 2019)
 
 #### undefined
