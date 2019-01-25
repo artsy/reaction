@@ -144,6 +144,14 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     )
   }
 
+  get shouldTrackArtworkImpressions() {
+    let track = false
+    if (typeof window !== "undefined") {
+      track = window.location.pathname.includes("/collect")
+    }
+    return track
+  }
+
   render() {
     const { style, className, artwork, user } = this.props
 
@@ -152,13 +160,17 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       userSpread = { user }
     }
 
+    const trackableClassName = this.shouldTrackArtworkImpressions
+      ? "artwork-item"
+      : ""
+
     return (
       <Responsive>
         {({ hover, ...breakpoints }) => {
           return (
             <div
               // the 'artwork-item' className and data-id={artwork._id} are required to track Artwork impressions
-              className={`${className} artwork-item`}
+              className={`${className} ${trackableClassName}`}
               style={style}
               data-id={artwork._id}
             >
