@@ -52,6 +52,12 @@ export class FilterContainer extends React.Component<
           <WaysToBuyFilter filters={filters} />
         </Flex>
 
+        <Toggle label="Medium">
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            <MediumFilter filters={filters} mediums={mediums} />
+          </Flex>
+        </Toggle>
+
         <Toggle label="Price">
           <Flex flexDirection="column" alignItems="left" my={1}>
             <PriceRangeFilter filters={filters} />
@@ -64,14 +70,12 @@ export class FilterContainer extends React.Component<
           </Flex>
         </Toggle>
 
-        <Toggle label="Medium" expanded>
-          <MediumFilter filters={filters} mediums={mediums} />
+        <Toggle label="Color">
+          <Flex flexDirection="column" alignItems="center">
+            <ColorFilter filters={filters} />
+          </Flex>
         </Toggle>
-
-        <Toggle label="Color" expanded>
-          <ColorFilter filters={filters} />
-        </Toggle>
-        <Toggle expanded label="Time period">
+        <Toggle label="Time period">
           <TimePeriodFilter
             filters={filters}
             timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}

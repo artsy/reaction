@@ -199,6 +199,7 @@
     "unstated": "^2.1.1",
     "unstated-debug": "^0.2.0",
     "url": "^0.11.0",
+    "yarn": "^1.13.0",
     "yup": "^0.24.1"
   },
   "prettier": {

@@ -76,35 +76,41 @@ class Filter extends Component<Props> {
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
-          {this.renderCategory({
-            filterState,
-            category: "medium",
-            counts: mediumAggregation.counts,
-            mediator,
-          })}
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            {this.renderCategory({
+              filterState,
+              category: "medium",
+              counts: mediumAggregation.counts,
+              mediator,
+            })}
+          </Flex>
         </Toggle>
         <Toggle
           expanded={filterState.state.partner_id && !this.showZeroState}
           label="Gallery"
         >
-          {this.renderCategory({
-            filterState,
-            category: "partner_id",
-            counts: galleryAggregation.counts,
-            mediator,
-          })}
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            {this.renderCategory({
+              filterState,
+              category: "partner_id",
+              counts: galleryAggregation.counts,
+              mediator,
+            })}
+          </Flex>
         </Toggle>
 
         <Toggle
           expanded={filterState.state.partner_id && !this.showZeroState}
           label="Institution"
         >
-          {this.renderCategory({
-            filterState,
-            category: "partner_id",
-            counts: institutionAggregation.counts,
-            mediator,
-          })}
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            {this.renderCategory({
+              filterState,
+              category: "partner_id",
+              counts: institutionAggregation.counts,
+              mediator,
+            })}
+          </Flex>
         </Toggle>
         <Toggle
           expanded={
@@ -112,12 +118,14 @@ class Filter extends Component<Props> {
           }
           label="Time period"
         >
-          {this.renderCategory({
-            filterState,
-            category: "major_periods",
-            counts: periodAggregation.counts,
-            mediator,
-          })}
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            {this.renderCategory({
+              filterState,
+              category: "major_periods",
+              counts: periodAggregation.counts,
+              mediator,
+            })}
+          </Flex>
         </Toggle>
       </>
     )
