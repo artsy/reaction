@@ -1,3 +1,15 @@
+# 11.2.25 (Fri Jan 25 2019)
+
+#### undefined
+
+- Fixes moment warning [#1947](https://github.com/artsy/reaction/pull/1947) ([@kierangillen](https://github.com/kierangillen))
+
+#### undefined
+
+- Update dependency @artsy/palette to v2.35.0 [#1946](https://github.com/artsy/reaction/pull/1946) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.2.24 (Fri Jan 25 2019)
 
 
