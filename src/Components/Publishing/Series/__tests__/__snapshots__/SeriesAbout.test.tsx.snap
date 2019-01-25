@@ -30,7 +30,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -45,16 +45,52 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  margin-bottom: 10px;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
   margin-bottom: 20px;
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c5 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c7 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c7 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -64,22 +100,22 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c7 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c7 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c7 p,
+.c7 ul,
+.c7 ol,
+.c7 .paragraph,
+.c7 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -90,32 +126,32 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c7 p:first-child,
+.c7 .paragraph:first-child,
+.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c7 p:last-child,
+.c7 .paragraph:last-child,
+.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c7 ul,
+.c7 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c7 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c7 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c7 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -124,7 +160,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c7 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -137,7 +173,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c7 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -148,7 +184,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c7 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -157,15 +193,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c7 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c7 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -175,7 +211,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c7 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -183,11 +219,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c7 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c7 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -200,11 +236,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
-.c4 .preventLineBreak {
+.c7 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c4 .content-end {
+.c7 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -215,14 +251,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c7 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c7 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -230,7 +266,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c7 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -282,74 +318,92 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c3 {
+  .c6 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:40em) {
   .c2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c2 {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c3 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c3 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c3 {
     margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c7 p,
+  .c7 ul,
+  .c7 ol,
+  .c7 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c7 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c7 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c7 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c7 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -357,14 +411,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c7 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c7 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -372,7 +426,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c7 .content-start {
     font-size: 55px;
   }
 }
@@ -393,19 +447,109 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       ]
     }
   >
-    <div
-      className="c2"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="28px"
-    >
-      About the Series
+    <div>
+      <div
+        className="c2"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="28px"
+      >
+        About the Series
+      </div>
+      <div
+        className="c3"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="18px"
+      >
+        <div
+          className="c4"
+        >
+          <a
+            className="c5"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 14 14"
+              width="14px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 16 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 17 14"
+              width="17px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
     />
   </div>
   <div
-    className="c3"
+    className="c6"
     width={
       Array [
         1,
@@ -419,7 +563,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c4"
+        className="article__text-section c7"
         color="black"
       >
         <div
@@ -468,7 +612,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -483,16 +627,52 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  margin-bottom: 10px;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
   margin-bottom: 20px;
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c5 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c7 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c7 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -502,22 +682,22 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c7 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c7 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c7 p,
+.c7 ul,
+.c7 ol,
+.c7 .paragraph,
+.c7 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -528,32 +708,32 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c7 p:first-child,
+.c7 .paragraph:first-child,
+.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c7 p:last-child,
+.c7 .paragraph:last-child,
+.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c7 ul,
+.c7 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c7 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c7 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c7 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -562,7 +742,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c7 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -575,7 +755,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c7 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -586,7 +766,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c7 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -595,15 +775,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c7 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c7 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -613,7 +793,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c7 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -621,11 +801,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c7 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c7 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -638,11 +818,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
-.c4 .preventLineBreak {
+.c7 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c4 .content-end {
+.c7 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -653,14 +833,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c7 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c7 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -668,7 +848,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c7 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -720,74 +900,92 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c3 {
+  .c6 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:40em) {
   .c2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c2 {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c3 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c3 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c3 {
     margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c7 p,
+  .c7 ul,
+  .c7 ol,
+  .c7 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c7 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c7 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c7 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c7 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -795,14 +993,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c7 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c7 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -810,7 +1008,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c7 .content-start {
     font-size: 55px;
   }
 }
@@ -831,19 +1029,109 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
       ]
     }
   >
-    <div
-      className="c2"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="28px"
-    >
-      About the Series
+    <div>
+      <div
+        className="c2"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="28px"
+      >
+        About the Series
+      </div>
+      <div
+        className="c3"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="18px"
+      >
+        <div
+          className="c4"
+        >
+          <a
+            className="c5"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 14 14"
+              width="14px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 16 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 17 14"
+              width="17px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
     />
   </div>
   <div
-    className="c3"
+    className="c6"
     width={
       Array [
         1,
@@ -854,7 +1142,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="article__text-section c4"
+      className="article__text-section c7"
       color="black"
     >
       <div>
@@ -899,7 +1187,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   width: 100%;
 }
 
-.c3 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -914,16 +1202,52 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  margin-bottom: 10px;
+}
+
+.c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
   margin-bottom: 20px;
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c5 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c7 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c4 a {
+.c7 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -933,22 +1257,22 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-position: bottom;
 }
 
-.c4 a:hover {
+.c7 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c4 div[class*='ToolTip'] a {
+.c7 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c4 p,
-.c4 ul,
-.c4 ol,
-.c4 .paragraph,
-.c4 div[data-block=true] .public-DraftStyleDefault-block {
+.c7 p,
+.c7 ul,
+.c7 ol,
+.c7 .paragraph,
+.c7 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -959,32 +1283,32 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-style: inherit;
 }
 
-.c4 p:first-child,
-.c4 .paragraph:first-child,
-.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c7 p:first-child,
+.c7 .paragraph:first-child,
+.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c4 p:last-child,
-.c4 .paragraph:last-child,
-.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c7 p:last-child,
+.c7 .paragraph:last-child,
+.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c4 ul,
-.c4 ol {
+.c7 ul,
+.c7 ol {
   padding-left: 1em;
 }
 
-.c4 ul {
+.c7 ul {
   list-style: disc;
 }
 
-.c4 ol {
+.c7 ol {
   list-style: decimal;
 }
 
-.c4 li {
+.c7 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -993,7 +1317,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: .5em;
 }
 
-.c4 h1 {
+.c7 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1006,7 +1330,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c4 h1::before {
+.c7 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1017,7 +1341,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   right: calc(50% - 4px);
 }
 
-.c4 h2 {
+.c7 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1026,15 +1350,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c4 h2 a {
+.c7 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c4 h3 {
+.c7 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1044,7 +1368,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c4 h3 strong {
+.c7 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1052,11 +1376,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   line-height: 1.5em;
 }
 
-.c4 h3 a {
+.c7 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c4 blockquote {
+.c7 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1069,11 +1393,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   word-break: break-word;
 }
 
-.c4 .preventLineBreak {
+.c7 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c4 .content-end {
+.c7 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1084,14 +1408,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-bottom: 1px;
 }
 
-.c4 .artist-follow {
+.c7 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c4 .artist-follow::before {
+.c7 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1099,7 +1423,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c4 .artist-follow::after {
+.c7 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1151,74 +1475,92 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c3 {
+  .c6 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c3 {
+  .c6 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:40em) {
   .c2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c2 {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c3 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c3 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c3 {
     margin-bottom: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c4 p,
-  .c4 ul,
-  .c4 ol,
-  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+  .c7 p,
+  .c7 ul,
+  .c7 ol,
+  .c7 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 li {
+  .c7 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c4 h1 {
+  .c7 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c4 h2 {
+  .c7 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c4 h3 {
+  .c7 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1226,14 +1568,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     line-height: 1.5em;
   }
 
-  .c4 h3 strong {
+  .c7 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c4 blockquote {
+  .c7 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1241,7 +1583,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     margin: 0;
   }
 
-  .c4 .content-start {
+  .c7 .content-start {
     font-size: 55px;
   }
 }
@@ -1262,14 +1604,104 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       ]
     }
   >
-    <div
-      className="c2"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="28px"
-    >
-      <div>
-        Child 
-        sub_title
+    <div>
+      <div
+        className="c2"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="28px"
+      >
+        <div>
+          Child 
+          sub_title
+        </div>
+      </div>
+      <div
+        className="c3"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="18px"
+      >
+        <div
+          className="c4"
+        >
+          <a
+            className="c5"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 14 14"
+              width="14px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 16 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 17 14"
+              width="17px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
     <div
@@ -1277,7 +1709,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     />
   </div>
   <div
-    className="c3"
+    className="c6"
     width={
       Array [
         1,
@@ -1291,7 +1723,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c4"
+        className="article__text-section c7"
         color="black"
       >
         <div
@@ -1340,7 +1772,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   width: 100%;
 }
 
-.c7 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1355,29 +1787,65 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .c3 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c6 {
   margin-bottom: 4px;
 }
 
-.c9 {
+.c12 {
   margin-top: 60px;
 }
 
 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c5 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c5:hover {
+  opacity: 0.6;
+}
+
+.c5:first-child {
+  padding-left: 0;
+}
+
+.c7 {
   display: block;
 }
 
-.c6 img {
+.c9 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c5 {
+.c8 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1385,13 +1853,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 20px;
 }
 
-.c8 {
+.c11 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c8 a {
+.c11 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1401,22 +1869,22 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background-position: bottom;
 }
 
-.c8 a:hover {
+.c11 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c8 div[class*='ToolTip'] a {
+.c11 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c8 p,
-.c8 ul,
-.c8 ol,
-.c8 .paragraph,
-.c8 div[data-block=true] .public-DraftStyleDefault-block {
+.c11 p,
+.c11 ul,
+.c11 ol,
+.c11 .paragraph,
+.c11 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1427,32 +1895,32 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-style: inherit;
 }
 
-.c8 p:first-child,
-.c8 .paragraph:first-child,
-.c8 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c11 p:first-child,
+.c11 .paragraph:first-child,
+.c11 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c8 p:last-child,
-.c8 .paragraph:last-child,
-.c8 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c11 p:last-child,
+.c11 .paragraph:last-child,
+.c11 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c8 ul,
-.c8 ol {
+.c11 ul,
+.c11 ol {
   padding-left: 1em;
 }
 
-.c8 ul {
+.c11 ul {
   list-style: disc;
 }
 
-.c8 ol {
+.c11 ol {
   list-style: decimal;
 }
 
-.c8 li {
+.c11 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1461,7 +1929,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   padding-bottom: .5em;
 }
 
-.c8 h1 {
+.c11 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1474,7 +1942,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-align: center;
 }
 
-.c8 h1::before {
+.c11 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1485,7 +1953,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   right: calc(50% - 4px);
 }
 
-.c8 h2 {
+.c11 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1494,15 +1962,15 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c8 h2 a {
+.c11 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c8 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c11 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
   background-position: bottom !important;
 }
 
-.c8 h3 {
+.c11 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1512,7 +1980,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c8 h3 strong {
+.c11 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1520,11 +1988,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   line-height: 1.5em;
 }
 
-.c8 h3 a {
+.c11 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c8 blockquote {
+.c11 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1537,11 +2005,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   word-break: break-word;
 }
 
-.c8 .preventLineBreak {
+.c11 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c8 .content-end {
+.c11 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1552,14 +2020,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 1px;
 }
 
-.c8 .artist-follow {
+.c11 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c8 .artist-follow::before {
+.c11 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1567,7 +2035,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 32px;
 }
 
-.c8 .artist-follow::after {
+.c11 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1619,43 +2087,61 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c7 {
+  .c10 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c7 {
+  .c10 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c7 {
+  .c10 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:40em) {
   .c2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c2 {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c2 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c3 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c3 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c3 {
     margin-bottom: 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c5 {
+  .c8 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1664,38 +2150,38 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 @media (max-width:600px) {
-  .c8 p,
-  .c8 ul,
-  .c8 ol,
-  .c8 div[data-block=true] .public-DraftStyleDefault-block {
+  .c11 p,
+  .c11 ul,
+  .c11 ol,
+  .c11 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c8 li {
+  .c11 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c8 h1 {
+  .c11 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c8 h2 {
+  .c11 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c8 h3 {
+  .c11 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1703,14 +2189,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     line-height: 1.5em;
   }
 
-  .c8 h3 strong {
+  .c11 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c8 blockquote {
+  .c11 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1718,7 +2204,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     margin: 0;
   }
 
-  .c8 .content-start {
+  .c11 .content-start {
     font-size: 55px;
   }
 }
@@ -1739,29 +2225,119 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       ]
     }
   >
-    <div
-      className="c2"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="28px"
-    >
-      About the Series
+    <div>
+      <div
+        className="c2"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="28px"
+      >
+        About the Series
+      </div>
+      <div
+        className="c3"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="18px"
+      >
+        <div
+          className="c4"
+        >
+          <a
+            className="c5"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 14 14"
+              width="14px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M13.22846,-0.00014 L0.77266,-0.00014 C0.34566,-0.00014 -0.00014,0.34636 -0.00014,0.77266 L-0.00014,13.22706 C-0.00014,13.65336 0.34566,13.99986 0.77266,13.99986 L7.47866,13.99986 L7.47866,8.57836 L5.65376,8.57836 L5.65376,6.46576 L7.47866,6.46576 L7.47866,4.90686 C7.47866,3.09876 8.58256,2.11456 10.19606,2.11456 C10.74066,2.11246 11.28526,2.14046 11.82706,2.19786 L11.82706,4.08576 L10.70776,4.08576 C9.83066,4.08576 9.65846,4.50366 9.65846,5.11476 L9.65846,6.46366 L11.75146,6.46366 L11.47846,8.57696 L9.65986,8.57696 L9.65986,13.99986 L13.22776,13.99986 C13.65406,13.99986 13.99986,13.65406 13.99986,13.22706 L13.99986,0.77266 C13.99986,0.34636 13.65406,-0.00014 13.22776,-0.00014"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 16 14"
+              width="16px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M15.9786472,1.9961647 C15.3802193,2.26166928 14.7456495,2.43612386 14.0957888,2.51257805 C14.7810964,2.1018105 15.2933396,1.45542502 15.537298,0.69435824 C14.8936926,1.07732426 14.189619,1.34699907 13.4542686,1.49087197 C12.8342946,0.828500604 11.967582,0.45318 11.0598622,0.45318 C9.25067784,0.458740305 7.78762253,1.92735593 7.78831756,3.73584521 C7.78762253,3.98744902 7.81542405,4.23835779 7.87033207,4.48370626 C5.23335731,4.35095397 2.77639743,3.10475056 1.11108601,1.05577808 C0.819169985,1.55620555 0.665566552,2.1254418 0.666261591,2.70510362 C0.664871514,3.80256887 1.21256158,4.82775015 2.12653675,5.4352135 C1.60595318,5.42061769 1.09649021,5.28021999 0.642630293,5.02583602 L0.642630293,5.06684327 C0.639155103,6.62859401 1.74009554,7.97488291 3.27195963,8.28139474 C2.99116422,8.36062909 2.70063827,8.40163634 2.40941728,8.40302642 C2.20229591,8.40372145 1.99517454,8.38426039 1.7922234,8.34603329 C2.22106194,9.68120158 3.45127948,10.5958718 4.85317144,10.6229783 C3.69315276,11.5362584 2.25928904,12.0311256 0.783028001,12.0283454 C0.520998616,12.0283454 0.25966427,12.0130546 -0.00028,11.9810828 C1.49961234,12.9437107 3.24554818,13.4552588 5.02762601,13.4531737 C11.0612522,13.4531737 14.3585132,8.45584932 14.3585132,4.12298146 C14.3585132,3.9798036 14.3585132,3.83940589 14.3473926,3.69970322 C14.9896079,3.23611277 15.5442483,2.66201126 15.9855976,2.00311509"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+          <a
+            className="c5"
+            href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
+            onClick={[Function]}
+            target="_blank"
+          >
+            <svg
+              height="14px"
+              version="1.1"
+              viewBox="0 0 17 14"
+              width="17px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth="1"
+              >
+                <path
+                  d="M8.09330005,8.15962873 L16.0866701,1.92619024 L16.0866701,1.14909566 C16.0866701,0.764718818 15.7752762,0.45402 15.3915944,0.45402 L0.795005656,0.45402 C0.411323894,0.45402 0.09993,0.764718818 0.09993,1.14909566 L0.09993,1.92619024 L8.09330005,8.15962873 Z M16.0866701,3.68820703 L16.0866701,12.7589443 C16.0866701,13.1426261 15.7752762,13.45402 15.3915944,13.45402 L0.795005656,13.45402 C0.411323894,13.45402 0.09993,13.1426261 0.09993,12.7589443 L0.09993,3.68820703 L7.66582852,9.58939935 C7.79163721,9.68740502 7.94246863,9.73606031 8.09330005,9.73606031 C8.24413147,9.73606031 8.39496288,9.68740502 8.52077158,9.58939935 L16.0866701,3.68820703 Z"
+                  fill="black"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c3"
+        className="c6"
       >
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c7"
         >
           <div
-            className="c5"
+            className="c8"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c6"
+            className="c9"
           >
             <a
               href="http://artsy.net"
@@ -1778,7 +2354,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     </div>
   </div>
   <div
-    className="c7"
+    className="c10"
     width={
       Array [
         1,
@@ -1792,7 +2368,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c8"
+        className="article__text-section c11"
         color="black"
       >
         <div
@@ -1808,18 +2384,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c9"
+        className="c12"
       >
         <div
-          className="PartnerBlock c4"
+          className="PartnerBlock c7"
         >
           <div
-            className="c5"
+            className="c8"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c6"
+            className="c9"
           >
             <a
               href="http://artsy.net"
