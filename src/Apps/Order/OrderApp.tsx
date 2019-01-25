@@ -8,6 +8,7 @@ import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
+import styled from "styled-components"
 import { get } from "Utils/get"
 import { ConnectedModalDialog } from "./Dialogs"
 
@@ -107,14 +108,19 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 name="viewport"
                 content="width=device-width, user-scalable=no"
               />
-            ) : null}
-            <Box pb={75}>
+            ) : (
+              <Meta
+                name="viewport"
+                content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+              />
+            )}
+            <SafeAreaContainer>
               <StripeProvider stripe={this.state.stripe}>
                 <Elements>
                   <>{children}</>
                 </Elements>
               </StripeProvider>
-            </Box>
+            </SafeAreaContainer>
             <StickyFooter orderType={order.mode} artworkId={artworkId} />
             <ConnectedModalDialog />
           </AppContainer>
@@ -123,3 +129,9 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     )
   }
 }
+
+const SafeAreaContainer = styled(Box)`
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  margin-bottom: 75px;
+`

@@ -36,7 +36,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
 
   render() {
     return (
-      <FooterContainer height={46}>
+      <FooterContainer>
         <ContextConsumer>
           {({ mediator }) => (
             <>
@@ -60,6 +60,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
 }
 
 const FooterContainer = styled(Flex)`
+  height: calc(46px + env(safe-area-inset-bottom));
   background-color: ${color("white100")};
   bottom: 0;
   left: 0;
@@ -68,4 +69,7 @@ const FooterContainer = styled(Flex)`
   border-top: 1px solid ${color("black10")};
   align-items: center;
   justify-content: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 `
