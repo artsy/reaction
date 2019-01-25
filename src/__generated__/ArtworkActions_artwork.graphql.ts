@@ -18,6 +18,8 @@ export type ArtworkActions_artwork = {
     readonly image: ({
         readonly id: string | null;
         readonly url: string | null;
+        readonly height: number | null;
+        readonly width: number | null;
     }) | null;
     readonly is_downloadable: boolean | null;
     readonly is_hangable: boolean | null;
@@ -80,6 +82,20 @@ return {
             }
           ],
           "storageKey": "url(version:\"larger\")"
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "height",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "width",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -209,5 +225,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b65256e26095391162ed1a1e9f529215';
+(node as any).hash = '7dcdaa4e1723fdc7fadf2e4be5a08360';
 export default node;
