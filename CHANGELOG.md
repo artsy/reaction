@@ -1,3 +1,11 @@
+# 11.2.22 (Fri Jan 25 2019)
+
+#### undefined
+
+- add tracking to view in room click [#1943](https://github.com/artsy/reaction/pull/1943) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # 11.2.21 (Fri Jan 25 2019)
 
 #### undefined
