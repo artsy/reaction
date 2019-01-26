@@ -2,18 +2,20 @@ import { ArtworkImageBrowserFixture } from "Apps/__tests__/Fixtures/Artwork/Artw
 import { MockBoot } from "DevTools"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount, ReactWrapper } from "enzyme"
+import { cloneDeep } from "lodash"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
 import { ArtworkImageBrowserFragmentContainer } from "../"
 
 describe("ArtworkImageBrowser", () => {
-  const getWrapper = (breakpoint: Breakpoint = "lg") => {
+  const getWrapper = (
+    breakpoint: Breakpoint = "lg",
+    data = ArtworkImageBrowserFixture
+  ) => {
     return mount(
       <RelayStubProvider>
         <MockBoot breakpoint={breakpoint}>
-          <ArtworkImageBrowserFragmentContainer
-            artwork={ArtworkImageBrowserFixture.artwork as any}
-          />
+          <ArtworkImageBrowserFragmentContainer artwork={data.artwork as any} />
         </MockBoot>
       </RelayStubProvider>
     )
@@ -40,6 +42,14 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders directional arrows", () => {
       expect(wrapper.find("ArrowButton").length).toBe(2)
+    })
+
+    it("returns null if missing images", () => {
+      const data = cloneDeep(ArtworkImageBrowserFixture) as any
+      data.artwork.images = []
+      wrapper = getWrapper("lg", data)
+      expect(wrapper.find("ArtworkImageBrowser").length).toBe(0)
+      expect(wrapper.find("ArtworkActions").length).toBe(0)
     })
   })
 
