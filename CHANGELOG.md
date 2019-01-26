@@ -1,3 +1,11 @@
+# 11.2.27 (Sat Jan 26 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Guard against missing images on /artwork/id [#1950](https://github.com/artsy/reaction/pull/1950) ([@damassi](https://github.com/damassi))
+
+---
+
 # 11.2.26 (Fri Jan 25 2019)
 
 
