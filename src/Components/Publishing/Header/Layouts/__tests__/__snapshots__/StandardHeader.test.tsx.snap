@@ -111,6 +111,14 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   padding-bottom: 50px;
 }
 
+.c5 h1 {
+  font-style: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
 .c2 {
   padding-bottom: 10px;
 }
@@ -407,6 +415,14 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   padding-bottom: 50px;
 }
 
+.c5 h1 {
+  font-style: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
 .c2 {
   padding-bottom: 10px;
 }
@@ -460,7 +476,9 @@ exports[`Standard Header Snapshots renders properly 1`] = `
     <div
       className="c5"
     >
-      New York's Next Art District
+      <h1>
+        New York's Next Art District
+      </h1>
     </div>
     <div
       className="Byline c6"
