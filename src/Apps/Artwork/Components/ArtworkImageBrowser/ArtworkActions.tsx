@@ -295,3 +295,5 @@ const Save = (actionProps: ArtworkActionsProps) => (
     return <UtilButton name="heart" selected={isSaved} />
   }
 }
+
+ArtworkActionsFragmentContainer.displayName = "ArtworkActions"
