@@ -26,7 +26,9 @@ export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
           color={verticalColor}
           vertical={vertical || editVertical}
         />
-        <Title color={TextColor || undefined}>{editTitle || title}</Title>
+        <Title color={TextColor || undefined}>
+          {editTitle || <h1>{title}</h1>}
+        </Title>
       </div>
       <FeatureInnerSubContent {...props} />
     </TextContainer>
@@ -49,6 +51,15 @@ export const Title = styled.div.attrs<{ color?: string }>({})`
   ${unica("s100")};
   margin-bottom: 75px;
   letter-spacing: -0.035em;
+
+  h1 {
+    font-style: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    margin: 0;
+  }
+
   ${pMedia.xl`
     ${unica("s80")}
   `};
