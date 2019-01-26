@@ -70,30 +70,37 @@ export const StyledText = styled.div<StyledTextProps>`
     margin: 0;
     font-style: ${props => (props.postscript ? "italic" : "inherit")};
   }
+
   p:first-child,
   .paragraph:first-child,
   div[data-block=true]:first-child .public-DraftStyleDefault-block {
     padding-top: 0;
   }
+
   p:last-child,
   .paragraph:last-child,
   div[data-block=true]:last-child .public-DraftStyleDefault-block {
     padding-bottom: 0;
   }
+
   ul, ol {
     padding-left: 1em;
   }
+
   ul {
     list-style: disc;
   }
+
   ol {
     list-style: decimal;
   }
+
   li {
     ${props => (props.layout === "classic" ? garamond("s19") : garamond("s23"))}
     padding-top: .5em;
     padding-bottom: .5em;
   }
+
   h1 {
     ${unica("s40")}
     font-weight: normal;
@@ -113,6 +120,7 @@ export const StyledText = styled.div<StyledTextProps>`
       right: calc(50% - 4px);
     }
   }
+
   h2 {
     ${props => (props.layout === "classic" ? garamond("s28") : unica("s32"))}
     font-weight: normal;
@@ -124,6 +132,7 @@ export const StyledText = styled.div<StyledTextProps>`
       background-position: bottom !important;
     }
   }
+
   h3 {
     ${props => (props.layout === "classic" ? avantgarde("s13") : unica("s19"))}
     font-weight: normal;
@@ -140,6 +149,7 @@ export const StyledText = styled.div<StyledTextProps>`
       background-size: 1.25px 1px;
     }
   }
+
   blockquote {
     ${props => getBlockquoteSize(props.layout, "lg")}
     text-align: ${props => (props.layout === "classic" ? "center" : "left")};
@@ -164,6 +174,7 @@ export const StyledText = styled.div<StyledTextProps>`
       `}
     }
   }
+
   p:first-child:first-letter,
   .paragraph:first-child:first-letter,
   div[data-block=true]:first-child .public-DraftStyleDefault-block:first-letter {
@@ -182,6 +193,11 @@ export const StyledText = styled.div<StyledTextProps>`
       text-transform: uppercase;
   `}
   }
+
+  .preventLineBreak {
+    white-space: nowrap;
+  }
+
   .content-end {
     display: inline-block;
     content: "";
@@ -192,11 +208,13 @@ export const StyledText = styled.div<StyledTextProps>`
     margin-left: 12px;
     margin-bottom: 1px;
   }
+
   .artist-follow {
     vertical-align: middle;
     margin-left: 10px;
     cursor: pointer;
     background: none transparent;
+
     &::before {
       font-family: "artsy-icons";
       content: "\ue629";
@@ -204,12 +222,14 @@ export const StyledText = styled.div<StyledTextProps>`
       line-height: 32px;
       font-size: 32px;
     }
+
     &::after {
       content: "Follow";
       ${garamond("s17")}
       text-transform: none;
     }
   }
+
   ${props => pMedia.xs`
     p, ul, ol,
     div[data-block=true] .public-DraftStyleDefault-block {

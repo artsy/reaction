@@ -339,6 +339,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-size: 1.25px 1px;
 }
 
+.c13 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c13 .content-end {
   display: inline-block;
   content: "";
@@ -1261,6 +1265,10 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 .c13 blockquote a {
   background-size: 1.25px 1px;
+}
+
+.c13 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c13 .content-end {

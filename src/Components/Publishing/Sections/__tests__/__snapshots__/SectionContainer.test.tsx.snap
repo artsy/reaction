@@ -161,6 +161,10 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
   word-break: break-word;
 }
 
+.c1 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c1 .content-end {
   display: inline-block;
   content: "";
@@ -447,6 +451,10 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
   word-break: break-word;
 }
 
+.c1 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c1 .content-end {
   display: inline-block;
   content: "";
@@ -731,6 +739,10 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c1 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c1 .content-end {
