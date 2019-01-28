@@ -1,9 +1,16 @@
-import { Box, Flex, Sans, Separator, Spacer } from "@artsy/palette"
-import { EntityHeader } from "Components/v2/EntityHeader"
 import React, { Component } from "react"
 import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
+
+import {
+  Box,
+  EntityHeader,
+  Flex,
+  Sans,
+  Separator,
+  Spacer,
+} from "@artsy/palette"
 
 export interface CollectionEntity {
   title: string
