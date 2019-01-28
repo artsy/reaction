@@ -26,6 +26,7 @@ export interface FormSwitcherProps {
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
   options: ModalOptions
+  title?: string
   tracking?: TrackingProp
   type: ModalType
   submitUrls?: { [P in ModalType]: string } & {
@@ -116,7 +117,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
   }
 
   render() {
-    const { error, isMobile, options } = this.props
+    const { error, isMobile, title, options } = this.props
 
     const queryData = Object.assign(
       {},
@@ -165,6 +166,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
 
     return (
       <Form
+        title={title}
         contextModule={options.contextModule}
         error={error}
         values={defaultValues}
