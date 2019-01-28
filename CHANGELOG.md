@@ -1,3 +1,11 @@
+# 11.3.0 (Mon Jan 28 2019)
+
+#### 🚀  Enhancement
+
+- Add ability to customize sign up form title [#1901](https://github.com/artsy/reaction/pull/1901) ([@yuki24](https://github.com/yuki24))
+
+---
+
 # 11.2.28 (Mon Jan 28 2019)
 
 #### 🐛  Bug Fix
