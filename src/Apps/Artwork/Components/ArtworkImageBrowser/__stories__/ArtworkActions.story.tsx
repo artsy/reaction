@@ -9,6 +9,7 @@ import { ArtworkActions } from "../ArtworkActions"
 
 const ArtworkActionsAuctionFixture = cloneDeep(ArtworkActionsFixture)
 ArtworkActionsAuctionFixture.artwork.sale.is_closed = false
+ArtworkActionsAuctionFixture.artwork.sale.is_auction = true
 
 storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
   "ArtworkActions",

@@ -10,6 +10,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { Media } from "Utils/Responsive"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
 import {
@@ -23,9 +24,11 @@ import {
   Join,
   Link,
   OpenEyeIcon,
+  Sans,
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
+import { ArtworkMorePanel } from "./ArtworkMorePanel"
 
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
@@ -34,6 +37,7 @@ interface ArtworkActionsProps {
 
 interface ArtworkActionsState {
   showSharePanel: boolean
+  showMorePanel: boolean
 }
 
 @track()
@@ -43,6 +47,7 @@ export class ArtworkActions extends React.Component<
 > {
   state = {
     showSharePanel: false,
+    showMorePanel: false,
   }
 
   @track({
@@ -56,6 +61,11 @@ export class ArtworkActions extends React.Component<
     this.setState({
       showSharePanel,
     })
+  }
+
+  toggleMorePanel() {
+    const showMorePanel = !this.state.showMorePanel
+    this.setState({ showMorePanel })
   }
 
   get isAdmin() {
@@ -117,6 +127,7 @@ export class ArtworkActions extends React.Component<
                     <UtilButton
                       name="viewInRoom"
                       onClick={() => this.openViewInRoom(mediator)}
+                      label="View in room"
                     />
                   )}
                 </ContextConsumer>
@@ -124,12 +135,30 @@ export class ArtworkActions extends React.Component<
             <UtilButton
               name="share"
               onClick={this.toggleSharePanel.bind(this)}
+              label="Share"
             />
-            {downloadableImageUrl && (
-              <UtilButton name="download" href={downloadableImageUrl} />
-            )}
-            {this.isAdmin && <UtilButton name="edit" href={editUrl} />}
-            {this.isAdmin && <UtilButton name="genome" href={genomeUrl} />}
+
+            <Media greaterThan="xs">
+              <Flex>
+                <Join separator={<Spacer mx={0} />}>
+                  {downloadableImageUrl && (
+                    <UtilButton
+                      name="download"
+                      href={downloadableImageUrl}
+                      label="Download"
+                    />
+                  )}
+                  {this.isAdmin && (
+                    <UtilButton name="edit" href={editUrl} label="Edit" />
+                  )}
+                  {this.isAdmin && (
+                    <UtilButton name="genome" href={genomeUrl} label="Genome" />
+                  )}
+                </Join>
+              </Flex>
+            </Media>
+
+            <Media at="xs">hi</Media>
           </Join>
 
           {this.state.showSharePanel && (
@@ -137,6 +166,10 @@ export class ArtworkActions extends React.Component<
               artwork={this.props.artwork}
               onClose={this.toggleSharePanel.bind(this)}
             />
+          )}
+
+          {this.state.showMorePanel && (
+            <ArtworkMorePanel onClose={this.toggleMorePanel.bind(this)} />
           )}
         </Container>
       </>
@@ -198,9 +231,10 @@ interface UtilButtonProps {
   href?: string
   onClick?: () => void
   selected?: boolean
+  label: string
 }
 
-class UtilButton extends React.Component<
+export class UtilButton extends React.Component<
   UtilButtonProps,
   { hovered: boolean }
 > {
@@ -209,7 +243,7 @@ class UtilButton extends React.Component<
   }
 
   render() {
-    const { href, name, onClick, ...props } = this.props
+    const { href, label, name, onClick, ...props } = this.props
 
     const getIcon = () => {
       switch (name) {
@@ -238,7 +272,11 @@ class UtilButton extends React.Component<
         p={1}
         pt={0}
         onMouseOver={() => this.setState({ hovered: true })}
-        onMouseOut={() => this.setState({ hovered: false })}
+        onMouseOut={() =>
+          this.setState({
+            hovered: false,
+          })
+        }
         onClick={onClick}
       >
         {href ? (
@@ -248,6 +286,10 @@ class UtilButton extends React.Component<
         ) : (
           <Icon {...props} fill={fill} />
         )}
+
+        <Sans size="2" pl={0.5} pt={0.2}>
+          {label}
+        </Sans>
       </UtilButtonContainer>
     )
   }
@@ -290,9 +332,9 @@ const Save = (actionProps: ArtworkActionsProps) => (
 
   // If an Auction, use Bell (for notifications); if a standard artwork use Heart
   if (isOpenSale) {
-    return <UtilButton name="bell" selected={isSaved} />
+    return <UtilButton name="bell" selected={isSaved} label="Watch lot" />
   } else {
-    return <UtilButton name="heart" selected={isSaved} />
+    return <UtilButton name="heart" selected={isSaved} label="Save" />
   }
 }
 
