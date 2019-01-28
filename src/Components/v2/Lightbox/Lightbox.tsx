@@ -189,11 +189,14 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   componentDidMount() {
-    this.setState({
-      element: document.getElementById(this.props.lightboxId),
-      // FIXME: convert to import('openseadragon) once force supports it
-      promisedDragon: Promise.resolve(require("openseadragon")),
-    })
+    const element = document.getElementById(this.props.lightboxId)
+    if (element) {
+      this.setState({
+        element,
+        // FIXME: convert to import('openseadragon) once force supports it
+        promisedDragon: Promise.resolve(require("openseadragon")),
+      })
+    }
   }
 
   componentWillUnmount() {
@@ -281,6 +284,8 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
           ...(enabled && {
             style: { cursor: "zoom-in" },
             onClick: this.show.bind(this),
+            // Used by view-in-room
+            "data-type": "artwork-image",
           }),
         })
       }

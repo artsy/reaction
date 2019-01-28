@@ -78,6 +78,12 @@ export class ArtworkActions extends React.Component<
     }
   }
 
+  @track({
+    flow: Schema.Flow.ArtworkViewInRoom,
+    action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.ViewInRoom,
+    type: Schema.Type.Button,
+  })
   openViewInRoom(mediator) {
     const {
       artwork: { dimensions, image },
@@ -162,6 +168,9 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
       id
       image {
         id
+        url(version: "larger")
+        height
+        width
       }
       is_downloadable
       is_hangable
@@ -286,3 +295,5 @@ const Save = (actionProps: ArtworkActionsProps) => (
     return <UtilButton name="heart" selected={isSaved} />
   }
 }
+
+ArtworkActionsFragmentContainer.displayName = "ArtworkActions"

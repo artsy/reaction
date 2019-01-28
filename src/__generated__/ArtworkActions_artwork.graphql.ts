@@ -17,6 +17,9 @@ export type ArtworkActions_artwork = {
     readonly id: string;
     readonly image: ({
         readonly id: string | null;
+        readonly url: string | null;
+        readonly height: number | null;
+        readonly width: number | null;
     }) | null;
     readonly is_downloadable: boolean | null;
     readonly is_hangable: boolean | null;
@@ -65,7 +68,35 @@ return {
       "concreteType": "Image",
       "plural": false,
       "selections": [
-        v0
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "url",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "larger",
+              "type": "[String]"
+            }
+          ],
+          "storageKey": "url(version:\"larger\")"
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "height",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "width",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -194,5 +225,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8a8f98f657f06798e16ed82a050c3ca0';
+(node as any).hash = '7dcdaa4e1723fdc7fadf2e4be5a08360';
 export default node;

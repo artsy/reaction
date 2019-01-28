@@ -98,6 +98,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(
         price_range: { type: "String" }
         artist_id: { type: "String" }
         attribution_class: { type: "String" }
+        color: { type: "String" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         ...SeoProductsForArtworks_artworks
@@ -117,6 +118,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(
           price_range: $price_range
           artist_id: $artist_id
           attribution_class: $attribution_class
+          color: $color
         )
     }
   `

@@ -16,9 +16,13 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
   ImageBrowserProps
 >(
   props => {
+    const { images } = props.artwork
+    if (!images.length) {
+      return null
+    }
     return (
       <>
-        <ArtworkImageBrowser images={props.artwork.images} />
+        <ArtworkImageBrowser images={images} />
         <ArtworkActions artwork={props.artwork} />
       </>
     )

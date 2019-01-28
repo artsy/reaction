@@ -8,12 +8,18 @@ export const ArtworkActionsFixture = {
     id: "pablo-picasso-femme-assise-dans-un-fauteuil-tresse",
     is_saved: true,
     is_downloadable: true,
+    is_hangable: true,
     href: "/artwork/pablo-picasso-femme-assise-dans-un-fauteuil-tresse",
     artists: [
       {
         name: "Pablo Picasso",
       },
     ],
+    image: {
+      id: "5aa17f397622dd4f3b006294",
+      url:
+        "https://d32dm0rphc51dk.cloudfront.net/sSoqyQKLQrfODvlAR-oOjw/larger.jpg",
+    },
     images: [
       {
         url:

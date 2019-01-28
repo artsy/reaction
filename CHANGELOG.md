@@ -1,3 +1,121 @@
+# 11.2.27 (Sat Jan 26 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Guard against missing images on /artwork/id [#1950](https://github.com/artsy/reaction/pull/1950) ([@damassi](https://github.com/damassi))
+
+---
+
+# 11.2.26 (Fri Jan 25 2019)
+
+
+
+---
+
+# 11.2.25 (Fri Jan 25 2019)
+
+#### undefined
+
+- Fixes moment warning [#1947](https://github.com/artsy/reaction/pull/1947) ([@kierangillen](https://github.com/kierangillen))
+
+#### undefined
+
+- Update dependency @artsy/palette to v2.35.0 [#1946](https://github.com/artsy/reaction/pull/1946) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.24 (Fri Jan 25 2019)
+
+
+
+---
+
+# 11.2.23 (Fri Jan 25 2019)
+
+#### undefined
+
+- [Bugfix] Only track artwork scroll on /collect [#1942](https://github.com/artsy/reaction/pull/1942) ([@damassi](https://github.com/damassi))
+- @mzikherman => [Collect] Allow clicking on check icon to deselect color filter [#1944](https://github.com/artsy/reaction/pull/1944) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# 11.2.22 (Fri Jan 25 2019)
+
+#### undefined
+
+- add tracking to view in room click [#1943](https://github.com/artsy/reaction/pull/1943) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 11.2.21 (Fri Jan 25 2019)
+
+#### undefined
+
+- Guard against missing elements [#1941](https://github.com/artsy/reaction/pull/1941) ([@damassi](https://github.com/damassi))
+
+---
+
+# 11.2.20 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Expose image width and height for view in room [#1940](https://github.com/artsy/reaction/pull/1940) ([@zephraph](https://github.com/zephraph))
+
+---
+
+# 11.2.19 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- pass image url when calling viewInRoom mediator [#1930](https://github.com/artsy/reaction/pull/1930) ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# 11.2.18 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Add hook to artwork image for view in room [#1938](https://github.com/artsy/reaction/pull/1938) ([@zephraph](https://github.com/zephraph))
+
+---
+
+# 11.2.17 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] hide footer if in Eigen [#1937](https://github.com/artsy/reaction/pull/1937) ([@l2succes](https://github.com/l2succes))
+
+---
+
+# 11.2.16 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Imageset props [#1936](https://github.com/artsy/reaction/pull/1936) ([@eessex](https://github.com/eessex))
+
+---
+
+# 11.2.15 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- Migrate to palette price filter [#1934](https://github.com/artsy/reaction/pull/1934) ([@mdole](https://github.com/mdole))
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 2.34.6 [#1935](https://github.com/artsy/reaction/pull/1935) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.2.14 (Thu Jan 24 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Collect] Re-add the color wheel filter [#1932](https://github.com/artsy/reaction/pull/1932) ([@mzikherman](https://github.com/mzikherman))
+- Pull `lastOffer` from `OrderOffer` instead of `Order`, due to deprecation [#1929](https://github.com/artsy/reaction/pull/1929) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.13 (Wed Jan 23 2019)
 
 #### 🐛  Bug Fix
