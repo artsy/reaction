@@ -1,3 +1,11 @@
+# 11.2.28 (Mon Jan 28 2019)
+
+#### 🐛  Bug Fix
+
+- Remove obsolete offer fields from "schema.graphql" [#1953](https://github.com/artsy/reaction/pull/1953) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.27 (Sat Jan 26 2019)
 
 #### 🐛  Bug Fix
