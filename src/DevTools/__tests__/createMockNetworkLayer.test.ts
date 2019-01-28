@@ -145,6 +145,30 @@ describe("createMockNetworkLayer", () => {
     ])
   })
 
+  it("uses the alias over the default name if both are present", async () => {
+    const data = await fetchQueryWithResolvers(
+      {
+        mockData: {
+          artist: {
+            forSaleArtworks: [{ __id: "for-sale-work" }],
+            artworks: [{ __id: "no-for-sale-work" }],
+            __id: "id",
+          },
+        },
+      },
+      graphql`
+        query createMockNetworkLayerTestAliasQuery {
+          artist(id: "banksy") {
+            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
+              __id
+            }
+          }
+        }
+      `
+    )
+    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
+  })
+
   describe("mutations", () => {
     const query = graphql`
       mutation createMockNetworkLayerTestMutationResultsMutation(

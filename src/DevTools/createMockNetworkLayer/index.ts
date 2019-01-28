@@ -25,12 +25,99 @@ export const createMockNetworkLayer = (mockResolvers: IMocks) => {
   )
 }
 
-const complain = (info, type) => {
-  const path = responsePathAsArray(info.path).join("/")
-  const message = `A mock for field at path '${path}' of type '${type}' was expected but not found.`
-  throw new Error(message)
+export const createMockNetworkLayer2 = ({
+  mockData = {},
+  mockMutationResults = {},
+}: {
+  mockData?: object
+  mockMutationResults?: object
+}): RelayNetwork => {
+  return Network.create(createMockFetchQuery({ mockData, mockMutationResults }))
 }
 
+/**
+ * Here we create a mock for the `fetchQuery` graphql helper which executes
+ * a query. The mock is injected with fake results.
+ * @param param0
+ */
+export const createMockFetchQuery = ({
+  mockData = {},
+  mockMutationResults = {},
+}: {
+  mockData?: object
+  mockMutationResults?: object
+}) => {
+  const idMap = new WeakMap()
+  // getNetworkLayer is quite poorly named. It's actually returning a
+  // `fetchQuery` function
+  return getNetworkLayer({
+    // We pass this field resolver in so that we can control the resolution
+    // logic for all data that relay tries to extract from our mock fixtures.
+    fieldResolver: ((source, _args, _context, info) => {
+      // source is null root fields
+      source =
+        source ||
+        (info.operation.operation === "mutation"
+          ? mockMutationResults
+          : mockData)
+
+      // handle aliased fields first
+      const alias = info.fieldNodes[0].alias
+      if (alias && alias.value in source) {
+        return inferUnionOrInterfaceType(source[alias.value], info)
+      }
+
+      // the common case, the field has a fixture and is not aliased
+      if (info.fieldName in source) {
+        return inferUnionOrInterfaceType(source[info.fieldName], info)
+      }
+
+      if (info.fieldName === "__id" || info.fieldName === "id") {
+        // if relay is looking for `__id` but we only supplied `id`
+        if ("id" in source) {
+          return source.id
+        }
+
+        // relay is looking for an id to denormalize the fixture in the store
+        // but we don't want to have to specify ids for all fixtures
+        // so generate one and store it in a weak map so we don't mutate
+        // the object itself
+        if (idMap.has(source)) {
+          return idMap.get(source)
+        }
+
+        const id = uuid()
+        idMap.set(source, id)
+        return id
+      }
+      complain(info, info.returnType.inspect())
+    }) as GraphQLFieldResolver<any, any>,
+    schema,
+    resolvers: {
+      FormattedNumber: () => FormattedNumber,
+      // here we map the mock fixture entries to resolver functions if they aren't
+      // already. Relay expects functions, but we want to be able to just
+      // supply plain data for syntax convenience.
+      Query: Object.entries(mockData).reduce(
+        (acc, [k, v]) => ({
+          ...acc,
+          [k]: typeof v === "function" ? v : () => v,
+        }),
+        {}
+      ),
+      Mutation: Object.entries(mockMutationResults).reduce(
+        (acc, [k, v]) => ({
+          ...acc,
+          [k]: typeof v === "function" ? v : () => v,
+        }),
+        {}
+      ),
+    },
+  })
+}
+
+// This function tries to infer the concrete type of a value that appears
+// in a position whose type is either a union or an interface
 const inferUnionOrInterfaceType = (value, info) => {
   if (
     !(info.returnType instanceof GraphQLUnionType) &&
@@ -50,7 +137,8 @@ const inferUnionOrInterfaceType = (value, info) => {
         ) as GraphQLObjectType[])
 
   // TODO: handle nested unions and look at other types
-  // try to find unique properties for each type
+
+  // try to find keys in the object which are unique to one type
   for (const key of Object.keys(value)) {
     const matchingTypes = unionMemberTypes.filter(type => type.getFields()[key])
     if (matchingTypes.length === 1) {
@@ -58,6 +146,7 @@ const inferUnionOrInterfaceType = (value, info) => {
     }
   }
 
+  // failed to find unique keys so the object is ambiguous and we need to ask for a __typename
   const path = responsePathAsArray(info.path).join("/")
   const message = `Abmiguous object at path '${path}'. Add a __typename from this list: [${unionMemberTypes
     .map(type => type.name)
@@ -65,74 +154,8 @@ const inferUnionOrInterfaceType = (value, info) => {
   throw new Error(message)
 }
 
-export const createMockFetchQuery = ({
-  mockData = {},
-  mockMutationResults = {},
-}: {
-  mockData?: object
-  mockMutationResults?: object
-}) => {
-  const idMap = new WeakMap()
-  return getNetworkLayer({
-    fieldResolver: ((source, _args, _context, info) => {
-      // source is null for aliased root fields
-      source =
-        source ||
-        (info.operation.operation === "mutation"
-          ? mockMutationResults
-          : mockData)
-      if (source) {
-        if (info.fieldName in source) {
-          return inferUnionOrInterfaceType(source[info.fieldName], info)
-        }
-        const alias = info.fieldNodes[0].alias
-        if (alias && alias.value in source) {
-          return inferUnionOrInterfaceType(source[alias.value], info)
-        }
-
-        if (info.fieldName === "__id" || info.fieldName === "id") {
-          if ("id" in source) {
-            return source.id
-          }
-
-          if (idMap.has(source)) {
-            return idMap.get(source)
-          }
-
-          const id = uuid()
-          idMap.set(source, id)
-          return id
-        }
-      }
-      complain(info, info.returnType.inspect())
-    }) as GraphQLFieldResolver<any, any>,
-    schema,
-    resolvers: {
-      FormattedNumber: () => FormattedNumber,
-      Query: Object.entries(mockData).reduce(
-        (acc, [k, v]) => ({
-          ...acc,
-          [k]: typeof v === "function" ? v : () => v,
-        }),
-        {}
-      ),
-      Mutation: Object.entries(mockMutationResults).reduce(
-        (acc, [k, v]) => ({
-          ...acc,
-          [k]: typeof v === "function" ? v : () => v,
-        }),
-        {}
-      ),
-    },
-  })
-}
-
-export const createMockNetworkLayer2 = ({
-  mockData = {},
-  mockMutationResults = {},
-}: {
-  mockData?: object
-  mockMutationResults?: object
-}): RelayNetwork => {
-  return Network.create(createMockFetchQuery({ mockData, mockMutationResults }))
+const complain = (info, type) => {
+  const path = responsePathAsArray(info.path).join("/")
+  const message = `A mock for field at path '${path}' of type '${type}' was expected but not found.`
+  throw new Error(message)
 }
