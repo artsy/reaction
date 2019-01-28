@@ -41,6 +41,7 @@ describe("FilterState", () => {
         page: 1,
         price_range: "*-*",
         height_range: "*-*",
+        width_range: "*-*",
         sort: "-decayed_merch",
         attribution_class: [],
       })
@@ -80,6 +81,7 @@ const initialState = {
   inquireable_only: null,
   price_range: "*-*",
   height_range: "*-*",
+  width_range: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,

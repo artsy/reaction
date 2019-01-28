@@ -179,7 +179,6 @@ export class FilterState extends Container<State> {
     return this.state.price_range !== "*-*"
   }
 
-  // generalize to avoid duplication?
   isHeightSelected(): boolean {
     return this.state.height_range !== "*-*"
   }
@@ -196,7 +195,6 @@ export class FilterState extends Container<State> {
     return [min, max]
   }
 
-  // I feel like these could be generalized to be applicable to multiple filters
   heightRangeToTuple(): [number, number] {
     const [minStr, maxStr] = this.state.height_range.split("-")
     const min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
