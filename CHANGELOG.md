@@ -1,3 +1,11 @@
+# 11.3.1 (Mon Jan 28 2019)
+
+#### 🐛  Bug Fix
+
+- Add separator to pagination component [#1954](https://github.com/artsy/reaction/pull/1954) ([@iskounen](https://github.com/iskounen))
+
+---
+
 # 11.3.0 (Mon Jan 28 2019)
 
 #### 🚀  Enhancement
