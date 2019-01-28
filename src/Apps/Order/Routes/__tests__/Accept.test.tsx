@@ -135,13 +135,13 @@ describe("Accept seller offer", () => {
     it("shows an error modal when there is an error from the server", async () => {
       mutations.useResultsOnce(acceptOfferFailed)
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows an error modal if there is a capture_failed error", async () => {
       mutations.useResultsOnce(AcceptOfferPaymentFailed)
       await page.clickSubmit()
-      await page.expectErrorDialogMatching(
+      await page.expectAndDismissErrorDialogMatching(
         "An error occurred",
         "There was an error processing your payment. Please try again or contact orders@artsy.net."
       )

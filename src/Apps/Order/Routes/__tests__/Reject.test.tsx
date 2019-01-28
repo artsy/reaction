@@ -102,13 +102,13 @@ describe("Buyer rejects seller offer", () => {
     it("shows an error modal when there is an error from the server", async () => {
       mutations.useResultsOnce(rejectOfferFailed)
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows an error modal when there is a network error", async () => {
       mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
   })
 

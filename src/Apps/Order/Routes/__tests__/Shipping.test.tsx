@@ -164,21 +164,21 @@ Object {
       mutations.useResultsOnce(settingOrderShipmentFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows an error modal when there is a network error", async () => {
       fillAddressForm(page.root, validAddress)
       mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows a validation error modal when there is a missing_country error from the server", async () => {
       mutations.useResultsOnce(settingOrderShipmentMissingCountryFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
-      await page.expectErrorDialogMatching(
+      await page.expectAndDismissErrorDialogMatching(
         "Invalid address",
         "There was an error processing your address. Please review and try again."
       )
@@ -188,7 +188,7 @@ Object {
       mutations.useResultsOnce(settingOrderShipmentMissingRegionFailure)
       fillAddressForm(page.root, validAddress)
       await page.clickSubmit()
-      await page.expectErrorDialogMatching(
+      await page.expectAndDismissErrorDialogMatching(
         "Invalid address",
         "There was an error processing your address. Please review and try again."
       )

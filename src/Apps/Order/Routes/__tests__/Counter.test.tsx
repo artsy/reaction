@@ -142,7 +142,7 @@ describe("Submit Pending Counter Offer", () => {
     it("shows an error modal with proper error when there is insufficient inventory", async () => {
       mutations.useResultsOnce(insufficientInventoryResponse)
       await page.clickSubmit()
-      await page.expectErrorDialogMatching(
+      await page.expectAndDismissErrorDialogMatching(
         "This work has already been sold.",
         "Please contact orders@artsy.net with any questions."
       )
@@ -151,13 +151,13 @@ describe("Submit Pending Counter Offer", () => {
     it("shows generic error modal when there is an error from the server", async () => {
       mutations.useResultsOnce(submitPendingOfferFailed)
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows an error modal when there is a network error", async () => {
       mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
   })
 

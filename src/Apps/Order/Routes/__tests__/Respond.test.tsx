@@ -255,7 +255,7 @@ describe("The respond page", () => {
       expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
       expect(routes.mockPushRoute).not.toHaveBeenCalled()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
@@ -268,7 +268,7 @@ describe("The respond page", () => {
       expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
       expect(routes.mockPushRoute).not.toHaveBeenCalled()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
     })
 
     describe("The 'amount too small' speed bump", () => {
@@ -278,7 +278,7 @@ describe("The respond page", () => {
 
         await page.clickSubmit()
 
-        await page.expectErrorDialogMatching(
+        await page.expectAndDismissErrorDialogMatching(
           "Offer may be too low",
           "Offers within 25% of the seller's offer are most likely to receive a response",
           "OK"
@@ -302,7 +302,7 @@ describe("The respond page", () => {
 
         await page.clickSubmit()
 
-        await page.expectErrorDialogMatching(
+        await page.expectAndDismissErrorDialogMatching(
           "Offer higher than seller's offer",
           "You’re making an offer higher than the seller's offer",
           "OK"

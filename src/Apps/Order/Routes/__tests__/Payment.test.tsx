@@ -296,7 +296,7 @@ describe("Payment", () => {
     )
     const page = await buildPage()
     await page.clickSubmit()
-    await page.expectDefaultErrorDialog()
+    await page.expectAndDismissDefaultErrorDialog()
   })
 
   it("commits setOrderPayment mutation with Gravity credit card id", async () => {
@@ -334,7 +334,7 @@ describe("Payment", () => {
     mutations.useResultsOnce(creatingCreditCardFailed)
 
     await page.clickSubmit()
-    await page.expectErrorDialogMatching(
+    await page.expectAndDismissErrorDialogMatching(
       "An error occurre",
       "No such token: fake-token"
     )
@@ -347,7 +347,7 @@ describe("Payment", () => {
     const page = await buildPage()
     mutations.useResultsOnce(settingOrderPaymentFailed)
     await page.clickSubmit()
-    await page.expectDefaultErrorDialog()
+    await page.expectAndDismissDefaultErrorDialog()
   })
 
   it("shows an error modal when there is a network error", async () => {
@@ -358,7 +358,7 @@ describe("Payment", () => {
     mutations.mockNetworkFailureOnce()
 
     await page.clickSubmit()
-    await page.expectDefaultErrorDialog()
+    await page.expectAndDismissDefaultErrorDialog()
   })
 
   describe("Analytics", () => {

@@ -113,7 +113,7 @@ describe("Offer InitialMutation", () => {
       mutations.useResultsOnce(initialOfferFailedCannotOffer)
       await page.setOfferAmount(16000)
       await page.clickSubmit()
-      await page.expectDefaultErrorDialog()
+      await page.expectAndDismissDefaultErrorDialog()
       expect(mutations.mockFetch).toHaveBeenCalled()
     })
 
@@ -122,7 +122,7 @@ describe("Offer InitialMutation", () => {
 
       await page.setOfferAmount(16000)
       await page.clickSubmit()
-      await page.expectErrorDialogMatching(
+      await page.expectAndDismissErrorDialogMatching(
         "Invalid offer",
         "The offer amount is either missing or invalid. Please try again."
       )
@@ -135,7 +135,7 @@ describe("Offer InitialMutation", () => {
 
         expect(mutations.mockFetch).not.toHaveBeenCalled()
 
-        await page.expectErrorDialogMatching(
+        await page.expectAndDismissErrorDialogMatching(
           "Offer may be too low",
           "Offers within 25% of the list price are most likely to receive a response",
           "OK"
@@ -157,7 +157,7 @@ describe("Offer InitialMutation", () => {
 
         expect(mutations.mockFetch).not.toHaveBeenCalled()
 
-        await page.expectErrorDialogMatching(
+        await page.expectAndDismissErrorDialogMatching(
           "Offer higher than list price",
           "You’re making an offer higher than the list price",
           "OK"

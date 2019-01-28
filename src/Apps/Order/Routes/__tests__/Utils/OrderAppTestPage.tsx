@@ -76,14 +76,14 @@ export class OrderAppTestPage extends RootTestPage {
 
   /*** COMMON ASSERTIONS ***/
 
-  async expectDefaultErrorDialog() {
-    await this.expectErrorDialogMatching(
+  async expectAndDismissDefaultErrorDialog() {
+    await this.expectAndDismissErrorDialogMatching(
       "An error occurred",
       "Something went wrong. Please try again or contact orders@artsy.net."
     )
   }
 
-  async expectErrorDialogMatching(
+  async expectAndDismissErrorDialogMatching(
     title: string,
     message: string,
     buttonText?: string
