@@ -1,3 +1,12 @@
+# 11.3.2 (Mon Jan 28 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.36.1 [#1955](https://github.com/artsy/reaction/pull/1955) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.36.0 [#1952](https://github.com/artsy/reaction/pull/1952) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 11.3.1 (Mon Jan 28 2019)
 
 #### 🐛  Bug Fix
