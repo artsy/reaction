@@ -110,7 +110,6 @@ export class OrderAppTestPage extends RootTestPage {
   async expectButtonSpinnerWhenSubmitting() {
     expect(this.submitButton.props().loading).toBeFalsy()
     this.clickSubmit()
-    this.root.update()
     expect(this.submitButton.props().loading).toBeTruthy()
     await this.update()
     expect(this.submitButton.props().loading).toBeFalsy()
