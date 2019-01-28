@@ -76,41 +76,35 @@ class Filter extends Component<Props> {
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
-          <Flex flexDirection="column" alignItems="left" mb={1}>
-            {this.renderCategory({
-              filterState,
-              category: "medium",
-              counts: mediumAggregation.counts,
-              mediator,
-            })}
-          </Flex>
+          {this.renderCategory({
+            filterState,
+            category: "medium",
+            counts: mediumAggregation.counts,
+            mediator,
+          })}
         </Toggle>
         <Toggle
           expanded={filterState.state.partner_id && !this.showZeroState}
           label="Gallery"
         >
-          <Flex flexDirection="column" alignItems="left" mb={1}>
-            {this.renderCategory({
-              filterState,
-              category: "partner_id",
-              counts: galleryAggregation.counts,
-              mediator,
-            })}
-          </Flex>
+          {this.renderCategory({
+            filterState,
+            category: "partner_id",
+            counts: galleryAggregation.counts,
+            mediator,
+          })}
         </Toggle>
 
         <Toggle
           expanded={filterState.state.partner_id && !this.showZeroState}
           label="Institution"
         >
-          <Flex flexDirection="column" alignItems="left" mb={1}>
-            {this.renderCategory({
-              filterState,
-              category: "partner_id",
-              counts: institutionAggregation.counts,
-              mediator,
-            })}
-          </Flex>
+          {this.renderCategory({
+            filterState,
+            category: "partner_id",
+            counts: institutionAggregation.counts,
+            mediator,
+          })}
         </Toggle>
         <Toggle
           expanded={
@@ -118,14 +112,12 @@ class Filter extends Component<Props> {
           }
           label="Time period"
         >
-          <Flex flexDirection="column" alignItems="left" mb={1}>
-            {this.renderCategory({
-              filterState,
-              category: "major_periods",
-              counts: periodAggregation.counts,
-              mediator,
-            })}
-          </Flex>
+          {this.renderCategory({
+            filterState,
+            category: "major_periods",
+            counts: periodAggregation.counts,
+            mediator,
+          })}
         </Toggle>
       </>
     )
@@ -137,25 +129,29 @@ class Filter extends Component<Props> {
         ? filterState.state.major_periods[0]
         : filterState.state[category]
 
-    return counts.map((count, index) => {
-      return (
-        <Radio
-          my={0.3}
-          selected={currentFilter === count.id}
-          value={count.id}
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filterState.setFilter(category, count.id, mediator)
-            } else {
-              return filterState.unsetFilter(category, mediator)
-            }
-          }}
-          key={index}
-        >
-          {count.name}
-        </Radio>
-      )
-    })
+    return (
+      <Flex flexDirection="column" alignItems="left" mb={1}>
+        {counts.map((count, index) => {
+          return (
+            <Radio
+              my={0.3}
+              selected={currentFilter === count.id}
+              value={count.id}
+              onSelect={({ selected }) => {
+                if (selected) {
+                  return filterState.setFilter(category, count.id, mediator)
+                } else {
+                  return filterState.unsetFilter(category, mediator)
+                }
+              }}
+              key={index}
+            >
+              {count.name}
+            </Radio>
+          )
+        })}
+      </Flex>
+    )
   }
 
   renderWaysToBuy(filterState, mediator, counts) {
