@@ -21,19 +21,21 @@ describe("FilterState", () => {
     expect(instance.state).toEqual({ ...initialState, major_periods: [[]] })
   })
 
-  it("updates it's state properly if a filter is changed", done => {
+  it("updates it's state properly if a filter is changed", () => {
     expect(instance.state.page).toEqual(1)
+
+    instance.setState = jest.fn()
     instance.setFilter("page", 3, mediator)
-    setTimeout(() => {
-      expect(instance.state.page).toEqual(3)
-      done()
-    })
+
+    expect(instance.setState).toBeCalledWith({ page: 3 }, expect.anything())
   })
 
   it("triggers an event after filter is set", done => {
     expect(instance.state.page).toEqual(1)
     instance.setFilter("medium", "photography", mediator)
 
+    // By using setTimeout we let the React setState run through
+    // un-mocked and will run the callback from setState correctly
     setTimeout(() => {
       expect(mediator.trigger).toBeCalledWith("collect:filter:changed", {
         major_periods: [[]],
@@ -49,22 +51,36 @@ describe("FilterState", () => {
     })
   })
 
-  it("returns a price range tuple based on filter string", done => {
+  it("confirms that state is set for price range filter", () => {
+    instance.setState = jest.fn()
     instance.setFilter("price_range", "*-43000", mediator)
-
-    setTimeout(() => {
-      expect(instance.priceRangeToTuple()).toEqual([50, 43000])
-      done()
-    })
+    expect(instance.setState).toBeCalledWith(
+      { price_range: "*-43000" },
+      expect.anything()
+    )
   })
 
-  it("returns a height range tuple based on filter string", done => {
-    instance.setFilter("height_range", "*-50", mediator)
+  it("confirms that price range filter is set to correct values", () => {
+    instance.state = {
+      price_range: "*-43000",
+    }
+    expect(instance.priceRangeToTuple()).toEqual([50, 43000])
+  })
 
-    setTimeout(() => {
-      expect(instance.heightRangeToTuple()).toEqual([1, 50])
-      done()
-    })
+  it("returns a height range tuple based on filter string", () => {
+    instance.setState = jest.fn()
+    instance.setFilter("height_range", "*-50", mediator)
+    expect(instance.setState).toBeCalledWith(
+      { height_range: "*-50" },
+      expect.anything()
+    )
+  })
+
+  it("returns a height range tuple based on the state", () => {
+    instance.state = {
+      height_range: "*-50",
+    }
+    expect(instance.heightRangeToTuple()).toEqual([1, 50])
   })
 })
 
