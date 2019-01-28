@@ -157,7 +157,7 @@ describe("createMockNetworkLayer", () => {
         },
       },
       graphql`
-        query createMockNetworkLayerTestAliasQuery {
+        query createMockNetworkLayerTestAliasPrecendenceQuery {
           artist(id: "banksy") {
             forSaleArtworks: artworks(filter: IS_FOR_SALE) {
               __id
