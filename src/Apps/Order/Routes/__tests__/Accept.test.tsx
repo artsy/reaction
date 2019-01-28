@@ -27,9 +27,6 @@ const testOrder = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: moment(NOW)
     .add(1, "day")
-    .add(4, "hours")
-    .add(22, "minutes")
-    .add(59, "seconds")
     .toISOString(),
   lastOffer: {
     ...OfferWithTotals,
@@ -65,16 +62,28 @@ describe("Accept seller offer", () => {
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
-      page = await buildPage()
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            stateExpiresAt: moment(NOW)
+              .add(1, "day")
+              .add(4, "hours")
+              .add(22, "minutes")
+              .add(59, "seconds")
+              .toISOString(),
+          },
+        },
+      })
+    })
+
+    it("shows the countdown timer", async () => {
+      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("Shows the stepper", async () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
       expect(page.orderStepperCurrentStep).toBe(`Review`)
-    })
-
-    it("shows the countdown timer", async () => {
-      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("shows the transaction summary", async () => {

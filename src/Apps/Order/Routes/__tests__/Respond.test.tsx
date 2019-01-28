@@ -43,9 +43,6 @@ const testOrder = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: moment(NOW)
     .add(1, "day")
-    .add(4, "hours")
-    .add(22, "minutes")
-    .add(59, "seconds")
     .toISOString(),
   lastOffer: {
     ...OfferWithTotals,
@@ -118,20 +115,32 @@ describe("The respond page", () => {
   describe("the page layout", () => {
     let page: RespondTestPage
     beforeAll(async () => {
-      page = await buildPage()
-    })
-
-    it("renders", () => {
-      expect(page.offerInput.text()).toContain("Your offer")
-    })
-
-    it("Shows the stepper", () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"RespondReview"`)
-      expect(page.orderStepperCurrentStep).toBe("Respond")
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            stateExpiresAt: moment(NOW)
+              .add(1, "day")
+              .add(4, "hours")
+              .add(22, "minutes")
+              .add(59, "seconds")
+              .toISOString(),
+          },
+        },
+      })
     })
 
     it("shows the countdown timer", () => {
       expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
+    })
+
+    it("shows the offer input", () => {
+      expect(page.offerInput.text()).toContain("Your offer")
+    })
+
+    it("shows the stepper", () => {
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"RespondReview"`)
+      expect(page.orderStepperCurrentStep).toBe("Respond")
     })
 
     it("shows the offer history item", () => {

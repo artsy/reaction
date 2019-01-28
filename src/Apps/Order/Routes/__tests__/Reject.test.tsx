@@ -23,9 +23,6 @@ const testOrder = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: moment(NOW)
     .add(1, "day")
-    .add(4, "hours")
-    .add(22, "minutes")
-    .add(59, "seconds")
     .toISOString(),
   lastOffer: {
     createdAt: moment(NOW)
@@ -56,16 +53,28 @@ describe("Buyer rejects seller offer", () => {
   describe("the page layout", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
-      page = await buildPage()
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            stateExpiresAt: moment(NOW)
+              .add(1, "day")
+              .add(4, "hours")
+              .add(22, "minutes")
+              .add(59, "seconds")
+              .toISOString(),
+          },
+        },
+      })
+    })
+
+    it("Shows the countdown timer", () => {
+      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("Shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
       expect(page.orderStepperCurrentStep).toBe("Review")
-    })
-
-    it("Shows the countdown timer", () => {
-      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("Shows a message explaining the consequences of a rejection", () => {
