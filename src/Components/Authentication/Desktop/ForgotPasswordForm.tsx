@@ -60,6 +60,7 @@ export class ForgotPasswordForm extends Component<
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoFocus
               />
               {status && !status.success && <Error show>{status.error}</Error>}
               <SubmitButton disabled={isSubmitting}>
