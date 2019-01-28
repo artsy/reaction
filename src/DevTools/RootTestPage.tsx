@@ -20,4 +20,7 @@ export class RootTestPage {
 
   // @ts-ignore
   find: ReactWrapper["find"] = (...args) => this.root.find(...args)
+  text(): string {
+    return this.root.text()
+  }
 }

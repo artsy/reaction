@@ -1,6 +1,6 @@
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
-import React from "react"
+import React, { ReactElement } from "react"
 import { GraphQLTaggedNode } from "react-relay"
 import { Network } from "relay-runtime"
 import { Breakpoint } from "Utils/Responsive"
@@ -33,7 +33,6 @@ class Mutations<MutationNames extends string> {
     })
   }
 
-  // TODO: move these to TestEnv
   mockNetworkFailureOnce = () => {
     this.mockFetch.mockImplementationOnce(() =>
       Promise.reject(new Error("failed to fetch"))
@@ -66,7 +65,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
     this.opts = opts
 
     const mutationResolvers: Record<MutationNames, jest.Mock> = Object.entries(
-      opts.defaultMutationResults
+      opts.defaultMutationResults || {}
     ).reduce(
       (acc, [k, v]) => ({
         ...acc,
@@ -78,6 +77,8 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
     afterEach(() => {
       const _errors = this.errors
       this.errors = []
+      // @ts-ignore
+      this.headTags = []
       this.mutations.mockFetch.mockClear()
       this.routes.mockOnTransition.mockClear()
       this.routes.mockPushRoute.mockClear()
@@ -94,6 +95,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
 
   mutations: Mutations<MutationNames>
   routes = new Routes()
+  readonly headTags: Array<ReactElement<any>> = []
 
   private errors: any[] = []
 
@@ -152,7 +154,10 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
     // @ts-ignore
     page.root = await renderRelayTree({
       Component: (props: any) => (
-        <MockBoot breakpoint={breakpoint || defaultBreakpoint}>
+        <MockBoot
+          breakpoint={breakpoint || defaultBreakpoint}
+          headTags={this.headTags}
+        >
           <Component
             {...props}
             router={{ push: this.routes.mockPushRoute }}
