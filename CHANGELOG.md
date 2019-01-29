@@ -1,3 +1,11 @@
+# 12.1.0 (Tue Jan 29 2019)
+
+#### 🚀  Enhancement
+
+- Sticky footer [#1918](https://github.com/artsy/reaction/pull/1918) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # 12.0.3 (Tue Jan 29 2019)
 
 #### 🐛  Bug Fix
