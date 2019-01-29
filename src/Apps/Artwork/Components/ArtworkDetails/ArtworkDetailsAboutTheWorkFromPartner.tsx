@@ -1,9 +1,7 @@
-import { Box, Sans, Serif, Spacer, StackableBorderBox } from "@artsy/palette"
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
 import { ContextConsumer } from "Artsy/Router"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
-import { EntityHeader, ReadMore } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -16,6 +14,16 @@ import { data as sd } from "sharify"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import Events from "Utils/Events"
+
+import {
+  Box,
+  EntityHeader,
+  ReadMore,
+  Sans,
+  Serif,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork

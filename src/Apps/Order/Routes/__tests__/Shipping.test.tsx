@@ -3,6 +3,7 @@ import { cloneDeep } from "lodash"
 import React from "react"
 
 import { ActiveTabContainer, Button, RadioGroup } from "@artsy/palette"
+import { Stepper } from "@artsy/palette"
 import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
@@ -17,7 +18,7 @@ import {
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input, { InputProps } from "Components/Input"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { CheckMarkWrapper, CountrySelect, Stepper } from "Components/v2"
+import { CountrySelect } from "Components/v2"
 import { MockBoot } from "DevTools"
 import { commitMutation as _commitMutation, RelayProp } from "react-relay"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
@@ -443,7 +444,6 @@ describe("Shipping", () => {
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Shipping")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(1)
-      expect(component.find(CheckMarkWrapper).length).toEqual(1)
     })
   })
 

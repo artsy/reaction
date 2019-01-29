@@ -1,3 +1,8 @@
+import { WithCurrentTime } from "Components/WithCurrentTime"
+import moment from "moment-timezone"
+import React from "react"
+import styled from "styled-components"
+
 import {
   color,
   Flex,
@@ -7,10 +12,6 @@ import {
   StackableBorderBox,
   TimerIcon,
 } from "@artsy/palette"
-import { WithCurrentTime } from "Components/WithCurrentTime"
-import moment from "moment-timezone"
-import React from "react"
-import styled from "styled-components"
 
 const FIVE_HOURS_IN_SECONDS = 60 * 60 * 5
 

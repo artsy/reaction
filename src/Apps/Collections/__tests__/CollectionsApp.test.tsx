@@ -1,6 +1,6 @@
+import { EntityHeader } from "@artsy/palette"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsGrid } from "Apps/Collections/Components/CollectionsGrid"
-import { EntityHeader } from "Components/v2/EntityHeader"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"

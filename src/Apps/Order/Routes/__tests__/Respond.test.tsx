@@ -1,4 +1,4 @@
-import { BorderedRadio, Button } from "@artsy/palette"
+import { BorderedRadio, Button, Stepper } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -12,7 +12,6 @@ import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Input } from "Components/Input"
-import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
