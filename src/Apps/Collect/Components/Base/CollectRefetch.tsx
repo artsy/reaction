@@ -84,8 +84,8 @@ export const CollectRefetchContainer = createRefetchContainer(
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
-          height_range: { type: "String" }
-          width_range: { type: "String" }
+          height: { type: "String" }
+          width: { type: "String" }
           artist_id: { type: "String" }
           attribution_class: { type: "[String]" }
           color: { type: "String" }
@@ -103,8 +103,8 @@ export const CollectRefetchContainer = createRefetchContainer(
           size: 0
           sort: $sort
           price_range: $price_range
-          height: $height_range
-          width: $width_range
+          height: $height
+          width: $width
           artist_id: $artist_id
           attribution_class: $attribution_class
           color: $color
@@ -126,8 +126,8 @@ export const CollectRefetchContainer = createRefetchContainer(
       $for_sale: Boolean
       $sort: String
       $price_range: String
-      $height_range: String
-      $width_range: String
+      $height: String
+      $width: String
       $artist_id: String
       $attribution_class: [String]
       $color: String
@@ -145,8 +145,8 @@ export const CollectRefetchContainer = createRefetchContainer(
             offerable: $offerable
             inquireable_only: $inquireable_only
             price_range: $price_range
-            height_range: $height_range
-            width_range: $width_range
+            height: $height
+            width: $width
             artist_id: $artist_id
             attribution_class: $attribution_class
             color: $color

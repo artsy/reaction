@@ -106,13 +106,13 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "height_range",
+      "name": "height",
       "type": "String",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "width_range",
+      "name": "width",
       "type": "String",
       "defaultValue": null
     },
@@ -247,8 +247,8 @@ return {
         },
         {
           "kind": "Variable",
-          "name": "height_range",
-          "variableName": "height_range",
+          "name": "height",
+          "variableName": "height",
           "type": null
         },
         {
@@ -295,8 +295,8 @@ return {
         },
         {
           "kind": "Variable",
-          "name": "width_range",
-          "variableName": "width_range",
+          "name": "width",
+          "variableName": "width",
           "type": null
         }
       ]
@@ -304,5 +304,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e31b8b677537a15095ac615442d26648';
+(node as any).hash = '471e353c7b515873392e96dc8f6e7947';
 export default node;
