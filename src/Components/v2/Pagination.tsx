@@ -1,4 +1,4 @@
-import { LargePagination, SmallPagination } from "@artsy/palette"
+import { LargePagination, Separator, SmallPagination } from "@artsy/palette"
 import React from "react"
 import { Media } from "Utils/Responsive"
 import { ScrollIntoView } from "Utils/ScrollIntoView"
@@ -32,7 +32,10 @@ export class Pagination extends React.Component<Props> {
           <SmallPagination {...this.props} />
         </Media>
         <Media greaterThan="xs">
-          <LargePagination {...this.props} />
+          <div>
+            <Separator mb={3} pr={2} />
+            <LargePagination {...this.props} />
+          </div>
         </Media>
       </ScrollIntoView>
     )

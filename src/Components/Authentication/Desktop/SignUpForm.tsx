@@ -63,6 +63,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                autoFocus
               />
               <Input
                 block

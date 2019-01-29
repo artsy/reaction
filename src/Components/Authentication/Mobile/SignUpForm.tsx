@@ -88,6 +88,7 @@ export class MobileSignUpForm extends Component<
               onBlur={handleBlur}
               setTouched={setTouched}
               touchedOnChange={false}
+              autoFocus
               quick
             />
             <TermsOfServiceCheckbox
@@ -174,7 +175,9 @@ export class MobileSignUpForm extends Component<
                     fontSize="16px"
                   />
                 </BackButton>
-                <MobileHeader>Sign up for Artsy</MobileHeader>
+                <MobileHeader>
+                  {this.props.title || "Sign up for Artsy"}
+                </MobileHeader>
                 {currentStep}
                 {this.showError(status)}
                 <SubmitButton

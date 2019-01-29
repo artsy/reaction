@@ -1,4 +1,5 @@
 import { Button } from "@artsy/palette"
+import { Stepper } from "@artsy/palette"
 import { ArtworkSummaryItemFragmentContainer } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
@@ -7,7 +8,6 @@ import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 

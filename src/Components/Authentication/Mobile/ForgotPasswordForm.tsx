@@ -47,6 +47,7 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  autoFocus
                 />
                 {status &&
                   !status.success && <Error show>{status.error}</Error>}

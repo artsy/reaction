@@ -1,5 +1,5 @@
+import { EntityHeader } from "@artsy/palette"
 import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
-import { EntityHeader } from "Components/v2/EntityHeader"
 import { mount } from "enzyme"
 import React from "react"
 import { CollectionsGrid } from "../CollectionsGrid"

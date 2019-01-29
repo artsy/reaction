@@ -1,3 +1,50 @@
+# 12.0.0 (Tue Jan 29 2019)
+
+#### 💥  Breaking Change
+
+- Remove palette components [#1956](https://github.com/artsy/reaction/pull/1956) ([@damassi](https://github.com/damassi))
+
+---
+
+# 11.3.3 (Mon Jan 28 2019)
+
+
+
+---
+
+# 11.3.2 (Mon Jan 28 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.36.1 [#1955](https://github.com/artsy/reaction/pull/1955) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.36.0 [#1952](https://github.com/artsy/reaction/pull/1952) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# 11.3.1 (Mon Jan 28 2019)
+
+#### 🐛  Bug Fix
+
+- Add separator to pagination component [#1954](https://github.com/artsy/reaction/pull/1954) ([@iskounen](https://github.com/iskounen))
+
+---
+
+# 11.3.0 (Mon Jan 28 2019)
+
+#### 🚀  Enhancement
+
+- Add ability to customize sign up form title [#1901](https://github.com/artsy/reaction/pull/1901) ([@yuki24](https://github.com/yuki24))
+
+---
+
+# 11.2.28 (Mon Jan 28 2019)
+
+#### 🐛  Bug Fix
+
+- Remove obsolete offer fields from "schema.graphql" [#1953](https://github.com/artsy/reaction/pull/1953) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # 11.2.27 (Sat Jan 26 2019)
 
 #### 🐛  Bug Fix
