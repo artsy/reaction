@@ -1,9 +1,8 @@
-import { Serif } from "@artsy/palette"
+import { ReadMore, Serif } from "@artsy/palette"
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
-import { ReadMore } from "./ReadMore"
 
 export interface ArtistBioProps {
   bio: ArtistBio_bio

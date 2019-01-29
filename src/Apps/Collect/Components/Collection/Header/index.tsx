@@ -1,5 +1,5 @@
+import { ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { ReadMore } from "Components/v2/ReadMore"
 import React, { Component } from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
