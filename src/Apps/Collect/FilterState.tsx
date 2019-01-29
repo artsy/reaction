@@ -185,27 +185,26 @@ export class FilterState extends Container<State> {
     }
   }
 
-  priceRangeToTuple(): [number, number] {
-    const [minStr, maxStr] = this.state.price_range.split("-")
-    const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
-    const max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
-
-    return [min, max]
-  }
-
-  heightRangeToTuple(): [number, number] {
-    const [minStr, maxStr] = this.state.height_range.split("-")
-    const min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
-    const max = maxStr === "*" ? FilterState.MAX_HEIGHT : Number(maxStr)
-
-    return [min, max]
-  }
-
-  widthRangeToTuple(): [number, number] {
-    const [minStr, maxStr] = this.state.width_range.split("-")
-    const min = minStr === "*" ? FilterState.MIN_WIDTH : Number(minStr)
-    const max = maxStr === "*" ? FilterState.MAX_WIDTH : Number(maxStr)
-
+  rangeToTuple(range: string): [number, number] {
+    let minStr: string
+    let maxStr: string
+    let min: number
+    let max: number
+    if (range === "price_range") {
+      ;[minStr, maxStr] = this.state.price_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
+    } else if (range === "height_range") {
+      ;[minStr, maxStr] = this.state.height_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_HEIGHT : Number(maxStr)
+    } else if (range === "width_range") {
+      ;[minStr, maxStr] = this.state.width_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_WIDTH : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_WIDTH : Number(maxStr)
+    } else {
+      ;[minStr, maxStr] = ["*", "*"]
+    }
     return [min, max]
   }
 }

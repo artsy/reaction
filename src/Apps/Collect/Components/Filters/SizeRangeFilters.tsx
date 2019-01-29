@@ -6,8 +6,10 @@ import { FilterState } from "../../FilterState"
 export const SizeRangeFilters: React.SFC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const [initialMinHeight, initialMaxHeight] = filters.heightRangeToTuple()
-  const [initialMinWidth, initialMaxWidth] = filters.widthRangeToTuple()
+  const [initialMinHeight, initialMaxHeight] = filters.rangeToTuple(
+    "height_range"
+  )
+  const [initialMinWidth, initialMaxWidth] = filters.rangeToTuple("width_range")
   return (
     <ContextConsumer>
       {({ mediator }) => (

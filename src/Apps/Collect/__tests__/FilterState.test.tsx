@@ -64,7 +64,7 @@ describe("FilterState", () => {
     instance.state = {
       price_range: "*-43000",
     }
-    expect(instance.priceRangeToTuple()).toEqual([50, 43000])
+    expect(instance.rangeToTuple("price_range")).toEqual([50, 43000])
   })
 
   it("returns a height range tuple based on filter string", () => {
@@ -80,7 +80,7 @@ describe("FilterState", () => {
     instance.state = {
       height_range: "*-50",
     }
-    expect(instance.heightRangeToTuple()).toEqual([1, 50])
+    expect(instance.rangeToTuple("height_range")).toEqual([1, 50])
   })
 })
 
