@@ -1,3 +1,11 @@
+# 12.0.2 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- Add size filters [#1948](https://github.com/artsy/reaction/pull/1948) ([@mdole](https://github.com/mdole))
+
+---
+
 # 12.0.1 (Tue Jan 29 2019)
 
 #### 🐛  Bug Fix
