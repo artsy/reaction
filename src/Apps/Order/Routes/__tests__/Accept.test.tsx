@@ -1,4 +1,4 @@
-import { Button } from "@artsy/palette"
+import { Button, Stepper } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -13,7 +13,6 @@ import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Compo
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { Stepper } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"

@@ -1,7 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 
-import { ActiveTabContainer, Button } from "@artsy/palette"
+import { ActiveTabContainer, Button, Stepper } from "@artsy/palette"
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
@@ -11,7 +11,6 @@ import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/Ship
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { CheckMarkWrapper, Stepper } from "Components/v2"
 import { StepSummaryItem } from "Components/v2/StepSummaryItem"
 import { MockBoot } from "DevTools"
 import { commitMutation } from "react-relay"
@@ -226,7 +225,6 @@ describe("Review", () => {
       const component = getWrapper(offerOrderProps)
       expect(component.find(ActiveTabContainer).text()).toEqual("Review")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(3)
-      expect(component.find(CheckMarkWrapper).length).toEqual(3)
     })
 
     it("shows an offer section in the shipping and payment review", () => {

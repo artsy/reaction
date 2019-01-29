@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   CheckboxProps,
+  Stepper,
 } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
@@ -18,7 +19,6 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { CheckMarkWrapper, Stepper } from "Components/v2"
 import { Input } from "../../../../Components/Input"
 import {
   creatingCreditCardFailed,
@@ -571,7 +571,6 @@ describe("Payment", () => {
       const component = getWrapper({ ...testProps, order: offerOrder })
       expect(component.find(ActiveTabContainer).text()).toEqual("Payment")
       expect(component.find(Stepper).props().currentStepIndex).toEqual(2)
-      expect(component.find(CheckMarkWrapper).length).toEqual(2)
     })
   })
 
