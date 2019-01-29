@@ -371,7 +371,7 @@ export class UtilButton extends React.Component<
         )}
 
         {label && (
-          <Sans size="2" pl={0.5} pt={0.2}>
+          <Sans size="2" pl={0.5} pt="1px">
             {label}
           </Sans>
         )}

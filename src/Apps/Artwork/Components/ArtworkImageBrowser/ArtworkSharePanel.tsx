@@ -118,65 +118,63 @@ export class ArtworkSharePanel extends React.Component<
 
     return (
       <ArtworkPopoutPanel title="Share" onClose={this.props.onClose}>
-        <>
-          <Flex flexDirection="row" mb={1}>
-            <SansGrow size={["3", "2"]} color="black60" mr={4}>
-              <URLInput
-                type="text"
-                readOnly
-                value={url}
-                innerRef={input => (this.input = input)}
-                onClick={this.handleCopy}
-              />
-            </SansGrow>
-            <Sans size={["3", "2"]} weight="medium" color="black60">
-              <a onClick={this.handleCopy}>{this.state.copyLabelText}</a>
-            </Sans>
-          </Flex>
-          <Separator />
-          <Flex flexDirection="row" flexWrap="wrap">
-            {this.renderShareButton({
-              service: "facebook",
-              label: "Facebook",
-              message: "Post to Facebook",
-              url: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-            })}
-            {this.renderShareButton({
-              service: "twitter",
-              label: "Twitter",
-              message: "Share on Twitter",
-              url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${share}&url=${url}&via=artsy`,
-            })}
+        <Flex flexDirection="row" mb={1}>
+          <SansGrow size={["3", "2"]} color="black60" mr={4}>
+            <URLInput
+              type="text"
+              readOnly
+              value={url}
+              innerRef={input => (this.input = input)}
+              onClick={this.handleCopy}
+            />
+          </SansGrow>
+          <Sans size={["3", "2"]} weight="medium" color="black60">
+            <a onClick={this.handleCopy}>{this.state.copyLabelText}</a>
+          </Sans>
+        </Flex>
+        <Separator />
+        <Flex flexDirection="row" flexWrap="wrap">
+          {this.renderShareButton({
+            service: "facebook",
+            label: "Facebook",
+            message: "Post to Facebook",
+            url: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+          })}
+          {this.renderShareButton({
+            service: "twitter",
+            label: "Twitter",
+            message: "Share on Twitter",
+            url: `https://twitter.com/intent/tweet?original_referer=${url}&text=${share}&url=${url}&via=artsy`,
+          })}
 
-            {/*
+          {/*
               NOTE: Safari requires direct user interaction.
               See: https://developer.apple.com/safari/technology-preview/release-notes/#r15
             */}
-            <Flex flexDirection="row" flexBasis="50%" mt={2}>
-              <Icon name="mail" color="black" />
-              <Sans size="3" color="black60">
-                <UnstyledLink
-                  href={`mailto:?subject=${share}&body=${share} on Artsy: ${url}`}
-                >
-                  Mail
-                </UnstyledLink>
-              </Sans>
-            </Flex>
-
-            {this.renderShareButton({
-              service: "pinterest",
-              label: "Pinterest",
-              message: "Pin It on Pinterest",
-              url: `https://pinterest.com/pin/create/button/?url=${url}&media=${shareImageUrl}&description=${share}`,
-            })}
-            {this.renderShareButton({
-              service: "tumblr",
-              label: "Tumblr",
-              message: "",
-              url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${share}&clickthru=${url}`,
-            })}
+          <Flex flexDirection="row" flexBasis="50%" mt={2}>
+            <Icon name="mail" color="black" />
+            <Sans size="3" color="black60">
+              <UnstyledLink
+                href={`mailto:?subject=${share}&body=${share} on Artsy: ${url}`}
+              >
+                Mail
+              </UnstyledLink>
+            </Sans>
           </Flex>
-        </>
+
+          {this.renderShareButton({
+            service: "pinterest",
+            label: "Pinterest",
+            message: "Pin It on Pinterest",
+            url: `https://pinterest.com/pin/create/button/?url=${url}&media=${shareImageUrl}&description=${share}`,
+          })}
+          {this.renderShareButton({
+            service: "tumblr",
+            label: "Tumblr",
+            message: "",
+            url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${share}&clickthru=${url}`,
+          })}
+        </Flex>
       </ArtworkPopoutPanel>
     )
   }
