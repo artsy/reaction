@@ -26,9 +26,7 @@ export const FeatureInnerContent: React.SFC<FeatureHeaderProps> = props => {
           color={verticalColor}
           vertical={vertical || editVertical}
         />
-        <Title color={TextColor || undefined}>
-          {editTitle || <h1>{title}</h1>}
-        </Title>
+        <Title color={TextColor}>{editTitle || <h1>{title}</h1>}</Title>
       </div>
       <FeatureInnerSubContent {...props} />
     </TextContainer>
