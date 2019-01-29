@@ -163,18 +163,28 @@ export class ArtworkActions extends React.Component<
     const downloadableImageUrl = this.getDownloadableImageUrl()
 
     const actionsToShow = [
-      { condition: true, renderer: this.renderSaveButton },
+      { name: "save", condition: true, renderer: this.renderSaveButton },
       {
+        name: "viewInRoom",
         condition: artwork.is_hangable && this.isAdmin,
         renderer: this.renderViewInRoomButton,
       },
-      { condition: true, renderer: this.renderShareButton },
+      { name: "share", condition: true, renderer: this.renderShareButton },
       {
+        name: "download",
         condition: !!downloadableImageUrl,
         renderer: this.renderDownloadButton,
       },
-      { condition: this.isAdmin, renderer: this.renderEditButton },
-      { condition: this.isAdmin, renderer: this.renderGenomeButton },
+      {
+        name: "edit",
+        condition: this.isAdmin,
+        renderer: this.renderEditButton,
+      },
+      {
+        name: "genome",
+        condition: this.isAdmin,
+        renderer: this.renderGenomeButton,
+      },
     ]
 
     const showableActions = actionsToShow.filter(action => {
@@ -191,7 +201,9 @@ export class ArtworkActions extends React.Component<
             <Media greaterThan="xs">
               <Flex>
                 {showableActions.map(action => {
-                  return action.renderer.bind(this)()
+                  return (
+                    <div key={action.name}>{action.renderer.bind(this)()}</div>
+                  )
                 })}
               </Flex>
             </Media>
@@ -199,7 +211,9 @@ export class ArtworkActions extends React.Component<
             <Media at="xs">
               <Flex>
                 {initialActions.map(action => {
-                  return action.renderer.bind(this)()
+                  return (
+                    <div key={action.name}>{action.renderer.bind(this)()}</div>
+                  )
                 })}
 
                 {moreActions &&
@@ -228,7 +242,7 @@ export class ArtworkActions extends React.Component<
               <Flex flexDirection="row" flexWrap="wrap">
                 {moreActions.map(action => {
                   return (
-                    <Flex flexDirection="row" flexBasis="50%">
+                    <Flex flexDirection="row" flexBasis="50%" key={action.name}>
                       {action.renderer.bind(this)()}
                     </Flex>
                   )
