@@ -33,6 +33,8 @@ export const routes: RouteConfig[] = [
         $offerable: Boolean
         $inquireable_only: Boolean
         $price_range: String
+        $height_range: String
+        $width_range: String
         $artist_id: String
         $attribution_class: [String]
         $color: String
@@ -50,6 +52,8 @@ export const routes: RouteConfig[] = [
               offerable: $offerable
               inquireable_only: $inquireable_only
               price_range: $price_range
+              height_range: $height_range
+              width_range: $width_range
               artist_id: $artist_id
               attribution_class: $attribution_class
               color: $color
@@ -81,6 +85,7 @@ export const routes: RouteConfig[] = [
         $offerable: Boolean
         $inquireable_only: Boolean
         $price_range: String
+        $height_range: String
       ) {
         collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
@@ -94,6 +99,7 @@ export const routes: RouteConfig[] = [
               offerable: $offerable
               inquireable_only: $inquireable_only
               price_range: $price_range
+              height_range: $height_range
             )
         }
       }

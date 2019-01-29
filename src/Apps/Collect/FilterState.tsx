@@ -13,6 +13,8 @@ export interface State {
   at_auction?: boolean
   inquireable_only?: boolean
   price_range?: string
+  height_range?: string
+  width_range?: string
   attribution_class?: string[]
   artist_id?: string
   color?: string
@@ -32,6 +34,8 @@ export const initialState = {
   at_auction: null,
   inquireable_only: null,
   price_range: "*-*",
+  height_range: "*-*",
+  width_range: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,
@@ -43,6 +47,10 @@ export class FilterState extends Container<State> {
 
   static MIN_PRICE = 50
   static MAX_PRICE = 50000
+  static MIN_HEIGHT = 1
+  static MAX_HEIGHT = 120
+  static MIN_WIDTH = 1
+  static MAX_WIDTH = 120
 
   constructor(props: State) {
     super()
@@ -138,6 +146,8 @@ export class FilterState extends Container<State> {
         newPartialState[filter] = Number(value)
         break
       case "price_range":
+      case "height_range":
+      case "width_range":
       case "partner_id":
       case "color":
       case "medium":
@@ -165,15 +175,36 @@ export class FilterState extends Container<State> {
     })
   }
 
-  isPriceSelected(): boolean {
-    return this.state.price_range !== "*-*"
+  isRangeSelected(range: string): boolean {
+    if (range === "price_range") {
+      return this.state.price_range !== "*-*"
+    } else if (range === "height_range") {
+      return this.state.height_range !== "*-*"
+    } else if (range === "width_range") {
+      return this.state.width_range !== "*-*"
+    }
   }
 
-  priceRangeToTuple(): [number, number] {
-    const [minStr, maxStr] = this.state.price_range.split("-")
-    const min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
-    const max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
-
+  rangeToTuple(range: string): [number, number] {
+    let minStr: string
+    let maxStr: string
+    let min: number
+    let max: number
+    if (range === "price_range") {
+      ;[minStr, maxStr] = this.state.price_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
+    } else if (range === "height_range") {
+      ;[minStr, maxStr] = this.state.height_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_HEIGHT : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_HEIGHT : Number(maxStr)
+    } else if (range === "width_range") {
+      ;[minStr, maxStr] = this.state.width_range.split("-")
+      min = minStr === "*" ? FilterState.MIN_WIDTH : Number(minStr)
+      max = maxStr === "*" ? FilterState.MAX_WIDTH : Number(maxStr)
+    } else {
+      ;[minStr, maxStr] = ["*", "*"]
+    }
     return [min, max]
   }
 }

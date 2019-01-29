@@ -106,6 +106,18 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "height_range",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "width_range",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "artist_id",
       "type": "String",
       "defaultValue": null
@@ -235,6 +247,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "height_range",
+          "variableName": "height_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "inquireable_only",
           "variableName": "inquireable_only",
           "type": null
@@ -274,11 +292,17 @@ return {
           "name": "sort",
           "variableName": "sort",
           "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "width_range",
+          "variableName": "width_range",
+          "type": null
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '5453a085db20616ca0aa0b8dcee981c5';
+(node as any).hash = 'e31b8b677537a15095ac615442d26648';
 export default node;
