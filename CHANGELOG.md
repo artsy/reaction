@@ -1,3 +1,11 @@
+# 12.0.0 (Tue Jan 29 2019)
+
+#### 💥  Breaking Change
+
+- Remove palette components [#1956](https://github.com/artsy/reaction/pull/1956) ([@damassi](https://github.com/damassi))
+
+---
+
 # 11.3.3 (Mon Jan 28 2019)
 
 
