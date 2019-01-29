@@ -27,7 +27,7 @@ export const WaysToBuyFilter: React.SFC<{
       state: "offerable",
     },
     {
-      disabled: filters.isPriceSelected(),
+      disabled: filters.isRangeSelected("price_range"),
       name: "Bid",
       state: "at_auction",
     },

@@ -175,16 +175,14 @@ export class FilterState extends Container<State> {
     })
   }
 
-  isPriceSelected(): boolean {
-    return this.state.price_range !== "*-*"
-  }
-
-  isHeightSelected(): boolean {
-    return this.state.height_range !== "*-*"
-  }
-
-  isWidthSelected(): boolean {
-    return this.state.width_range !== "*-*"
+  isRangeSelected(range: string): boolean {
+    if (range === "price_range") {
+      return this.state.price_range !== "*-*"
+    } else if (range === "height_range") {
+      return this.state.height_range !== "*-*"
+    } else if (range === "width_range") {
+      return this.state.width_range !== "*-*"
+    }
   }
 
   priceRangeToTuple(): [number, number] {
