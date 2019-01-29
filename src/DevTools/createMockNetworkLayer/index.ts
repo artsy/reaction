@@ -96,7 +96,7 @@ export const createMockFetchQuery = ({
     resolvers: {
       FormattedNumber: () => FormattedNumber,
       // here we map the mock fixture entries to resolver functions if they aren't
-      // already. Relay expects functions, but we want to be able to just
+      // already. graphql-tools expects functions, but we want to be able to just
       // supply plain data for syntax convenience.
       Query: Object.entries(mockData).reduce(
         (acc, [k, v]) => ({
