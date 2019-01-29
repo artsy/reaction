@@ -11,7 +11,6 @@ import {
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
@@ -30,7 +29,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -230,10 +228,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
@@ -319,7 +313,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   >
                     Continue
                   </Button>
-                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }
@@ -341,10 +334,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     >
                       Continue
                     </Button>
-                    <Spacer mb={2} />
                   </>
                 </Media>
-                <Helper artworkId={artwork.id} />
               </Flex>
             }
           />

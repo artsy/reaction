@@ -13,7 +13,6 @@ import {
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
-import { Helper } from "Apps/Order/Components/Helper"
 import {
   buyNowFlowSteps,
   offerFlowSteps,
@@ -258,7 +257,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Helper artworkId={order.lineItems.edges[0].node.artwork.id} />
                 <Media at="xs">
                   <>
                     <Spacer mb={3} />
@@ -266,7 +264,6 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                       onClick={this.onContinue}
                       loading={isCommittingMutation}
                     />
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>

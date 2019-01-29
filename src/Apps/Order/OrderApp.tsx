@@ -1,11 +1,15 @@
+import { Box } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
+import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { Elements, StripeProvider } from "react-stripe-elements"
+import styled from "styled-components"
+import { get } from "Utils/get"
 import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
@@ -83,9 +87,15 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 
   render() {
     const { children, order } = this.props
+    let artworkId
 
     if (!order) {
       return <ErrorPage code={404} />
+    } else {
+      artworkId = get(
+        this.props,
+        props => order.lineItems.edges[0].node.artwork.id
+      )
     }
 
     return (
@@ -98,12 +108,20 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 name="viewport"
                 content="width=device-width, user-scalable=no"
               />
-            ) : null}
-            <StripeProvider stripe={this.state.stripe}>
-              <Elements>
-                <>{children}</>
-              </Elements>
-            </StripeProvider>
+            ) : (
+              <Meta
+                name="viewport"
+                content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+              />
+            )}
+            <SafeAreaContainer>
+              <StripeProvider stripe={this.state.stripe}>
+                <Elements>
+                  <>{children}</>
+                </Elements>
+              </StripeProvider>
+            </SafeAreaContainer>
+            <StickyFooter orderType={order.mode} artworkId={artworkId} />
             <ConnectedModalDialog />
           </AppContainer>
         )}
@@ -111,3 +129,9 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     )
   }
 }
+
+const SafeAreaContainer = styled(Box)`
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  margin-bottom: 75px;
+`

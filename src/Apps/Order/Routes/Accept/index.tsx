@@ -1,7 +1,6 @@
 import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
 import { Accept_order } from "__generated__/Accept_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { Helper } from "Apps/Order/Components/Helper"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
 import { Router } from "found"
@@ -27,7 +26,6 @@ import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
@@ -139,10 +137,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
@@ -211,7 +205,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                 </Flex>
                 <Media greaterThan="xs">
                   <Spacer mb={2} />
-                  <Helper artworkId={artwork.id} />
                 </Media>
                 <Media at="xs">
                   <>
@@ -226,8 +219,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={2} />
-                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>

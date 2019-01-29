@@ -436,13 +436,15 @@ describe("OrderApp", () => {
     }
   }
 
-  it("omits meta viewport tag unless Eigen", () => {
+  it("adds a meta tag with 'view-port-fit=cover' when not Eigen", () => {
     const props = getProps() as any
     const subject = getWrapper({ props }) as any
     const viewportMetaTags = subject
       .find(Meta)
       .filterWhere(meta => meta.props().name === "viewport")
-    expect(viewportMetaTags.length).toBe(0)
+    expect(viewportMetaTags.first().html()).toMatch(
+      '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover">'
+    )
   })
 
   it("includes meta viewport tag if Eigen", () => {
@@ -452,6 +454,12 @@ describe("OrderApp", () => {
       .find(Meta)
       .filterWhere(meta => meta.props().name === "viewport")
     expect(viewportMetaTags.length).toBe(1)
+  })
+
+  it("shows the sticky 'need help?' footer", () => {
+    const props = getProps() as any
+    const subject = getWrapper({ props }) as any
+    expect(subject.text()).toMatch("Need help? Read our FAQ or ask a question.")
   })
 
   it("shows an error page if the order is missing", () => {

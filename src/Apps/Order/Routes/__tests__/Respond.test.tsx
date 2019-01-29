@@ -99,7 +99,7 @@ describe("Offer InitialMutation", () => {
     expect(input.text()).toContain("Your offer")
   })
 
-  it("Shows the stepper", () => {
+  it("shows the stepper", () => {
     const component = getWrapper()
     const stepper = component.find(OrderStepper)
     expect(stepper.text()).toMatch("RespondReview")

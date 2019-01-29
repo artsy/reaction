@@ -5,7 +5,6 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "Apps/Order/Components/CreditCardSummaryItem"
-import { Helper } from "Apps/Order/Components/Helper"
 import {
   counterofferFlowSteps,
   OrderStepper,
@@ -27,7 +26,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -142,11 +140,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     const { order } = this.props
     const { isCommittingMutation } = this.state
 
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
-
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
@@ -206,7 +199,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                 </Flex>
                 <Media greaterThan="xs">
                   <Spacer mb={2} />
-                  <Helper artworkId={artwork.id} />
                 </Media>
                 <Spacer mb={[2, 3]} />
                 <Media at="xs">
@@ -221,8 +213,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={2} />
-                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>

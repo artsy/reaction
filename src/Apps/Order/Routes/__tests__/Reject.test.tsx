@@ -64,7 +64,7 @@ describe("Buyer rejects seller offer", () => {
     mockPushRoute = jest.fn()
   })
 
-  it("Shows the stepper", () => {
+  it("shows the stepper", () => {
     const component = getWrapper()
     const stepper = component.find(OrderStepper)
     expect(stepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
@@ -72,7 +72,7 @@ describe("Buyer rejects seller offer", () => {
     expect(index).toBe(1)
   })
 
-  it("Shows the countdown timer", () => {
+  it("shows the countdown timer", () => {
     const component = getWrapper({
       stateExpiresAt: moment(NOW)
         .add(1, "day")
@@ -84,7 +84,7 @@ describe("Buyer rejects seller offer", () => {
     expect(timer.text()).toContain("01d 04h 22m 59s left")
   })
 
-  it("Shows a message explaining the consequences of a rejection", () => {
+  it("shows a message explaining the consequences of a rejection", () => {
     const component = getWrapper()
     const summary = component.find(StepSummaryItem)
     expect(summary.text()).toContain(
@@ -92,7 +92,7 @@ describe("Buyer rejects seller offer", () => {
     )
   })
 
-  it("Shows a change link that takes the user back to the respond page", () => {
+  it("shows a change link that takes the user back to the respond page", () => {
     const component = getWrapper()
     component.find("StepSummaryItem a").simulate("click")
     expect(mockPushRoute).toHaveBeenCalledWith(
