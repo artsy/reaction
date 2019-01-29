@@ -1,3 +1,11 @@
+# 12.0.3 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- [minor] Replace height_range/width_range with height/width for clarity [#1959](https://github.com/artsy/reaction/pull/1959) ([@mdole](https://github.com/mdole))
+
+---
+
 # 12.0.2 (Tue Jan 29 2019)
 
 #### 🐛  Bug Fix
