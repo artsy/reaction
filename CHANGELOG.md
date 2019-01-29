@@ -1,3 +1,15 @@
+# 12.0.1 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- Article titles have h1 headers [#1951](https://github.com/artsy/reaction/pull/1951) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.36.2 [#1957](https://github.com/artsy/reaction/pull/1957) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 12.0.0 (Tue Jan 29 2019)
 
 #### 💥  Breaking Change
