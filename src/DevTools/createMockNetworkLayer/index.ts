@@ -54,7 +54,7 @@ export const createMockFetchQuery = ({
     // We pass this field resolver in so that we can control the resolution
     // logic for all data that relay tries to extract from our mock fixtures.
     fieldResolver: ((source, _args, _context, info) => {
-      // source is null root fields
+      // source is null for root fields
       source =
         source ||
         (info.operation.operation === "mutation"
