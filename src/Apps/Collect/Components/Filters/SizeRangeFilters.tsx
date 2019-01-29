@@ -6,10 +6,8 @@ import { FilterState } from "../../FilterState"
 export const SizeRangeFilters: React.SFC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const [initialMinHeight, initialMaxHeight] = filters.rangeToTuple(
-    "height_range"
-  )
-  const [initialMinWidth, initialMaxWidth] = filters.rangeToTuple("width_range")
+  const [initialMinHeight, initialMaxHeight] = filters.rangeToTuple("height")
+  const [initialMinWidth, initialMaxWidth] = filters.rangeToTuple("width")
   return (
     <ContextConsumer>
       {({ mediator }) => (
@@ -25,7 +23,7 @@ export const SizeRangeFilters: React.SFC<{
             onAfterChange={([min, max]) => {
               const minStr = min === FilterState.MIN_HEIGHT ? "*" : min
               const maxStr = max === FilterState.MAX_HEIGHT ? "*" : max
-              filters.setFilter("height_range", `${minStr}-${maxStr}`, mediator)
+              filters.setFilter("height", `${minStr}-${maxStr}`, mediator)
             }}
           />
           <LabeledRange
@@ -39,7 +37,7 @@ export const SizeRangeFilters: React.SFC<{
             onAfterChange={([min, max]) => {
               const minStr = min === FilterState.MIN_WIDTH ? "*" : min
               const maxStr = max === FilterState.MAX_WIDTH ? "*" : max
-              filters.setFilter("width_range", `${minStr}-${maxStr}`, mediator)
+              filters.setFilter("width", `${minStr}-${maxStr}`, mediator)
             }}
           />
         </>

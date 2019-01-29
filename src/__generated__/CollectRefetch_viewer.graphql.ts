@@ -81,13 +81,13 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "height_range",
+      "name": "height",
       "type": "String",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "width_range",
+      "name": "width",
       "type": "String",
       "defaultValue": null
     },
@@ -164,7 +164,7 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height_range",
+          "variableName": "height",
           "type": "String"
         },
         {
@@ -218,7 +218,7 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width_range",
+          "variableName": "width",
           "type": "String"
         }
       ],
@@ -241,5 +241,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '75822ca6f9791e18e822b266e0c08d96';
+(node as any).hash = '4c6d6bc778cc33dbb568883bcf5e7db4';
 export default node;

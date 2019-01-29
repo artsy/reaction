@@ -42,8 +42,8 @@ describe("FilterState", () => {
         medium: "photography",
         page: 1,
         price_range: "*-*",
-        height_range: "*-*",
-        width_range: "*-*",
+        height: "*-*",
+        width: "*-*",
         sort: "-decayed_merch",
         attribution_class: [],
       })
@@ -69,18 +69,18 @@ describe("FilterState", () => {
 
   it("returns a height range tuple based on filter string", () => {
     instance.setState = jest.fn()
-    instance.setFilter("height_range", "*-50", mediator)
+    instance.setFilter("height", "*-50", mediator)
     expect(instance.setState).toBeCalledWith(
-      { height_range: "*-50" },
+      { height: "*-50" },
       expect.anything()
     )
   })
 
   it("returns a height range tuple based on the state", () => {
     instance.state = {
-      height_range: "*-50",
+      height: "*-50",
     }
-    expect(instance.rangeToTuple("height_range")).toEqual([1, 50])
+    expect(instance.rangeToTuple("height")).toEqual([1, 50])
   })
 })
 
@@ -96,8 +96,8 @@ const initialState = {
   offerable: null,
   inquireable_only: null,
   price_range: "*-*",
-  height_range: "*-*",
-  width_range: "*-*",
+  height: "*-*",
+  width: "*-*",
   attribution_class: [],
   artist_id: null,
   color: null,
