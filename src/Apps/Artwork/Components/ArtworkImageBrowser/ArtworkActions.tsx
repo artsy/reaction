@@ -85,8 +85,6 @@ export class ArtworkActions extends React.Component<
       const filename = slugify(compact([artistNames, title, date]).join(" "))
       const downloadableImageUrl = `${sd.APP_URL}${href}/download/${filename}.jpg` // prettier-ignore
       return downloadableImageUrl
-    } else {
-      return false
     }
   }
 
@@ -108,63 +106,110 @@ export class ArtworkActions extends React.Component<
       })
   }
 
+  renderSaveButton() {
+    return <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
+  }
+
+  renderViewInRoomButton() {
+    return (
+      <ContextConsumer>
+        {({ mediator }) => (
+          <UtilButton
+            name="viewInRoom"
+            onClick={() => this.openViewInRoom(mediator)}
+            label="View in room"
+          />
+        )}
+      </ContextConsumer>
+    )
+  }
+
+  renderShareButton() {
+    return (
+      <UtilButton
+        name="share"
+        onClick={this.toggleSharePanel.bind(this)}
+        label="Share"
+      />
+    )
+  }
+
+  renderDownloadButton() {
+    return (
+      <UtilButton
+        name="download"
+        href={this.getDownloadableImageUrl()}
+        label="Download"
+      />
+    )
+  }
+
+  renderEditButton() {
+    const { artwork } = this.props
+    const editUrl = `${sd.CMS_URL}/artworks/${artwork.id}/edit?current_partner_id=${artwork.partner.id}` // prettier-ignore
+
+    return <UtilButton name="edit" href={editUrl} label="Edit" />
+  }
+
+  renderGenomeButton() {
+    const { artwork } = this.props
+    const genomeUrl = `${sd.GENOME_URL}/genome/artworks?artwork_ids=${artwork.id}` // prettier-ignore
+
+    return <UtilButton name="genome" href={genomeUrl} label="Genome" />
+  }
+
   render() {
     const { artwork } = this.props
     const downloadableImageUrl = this.getDownloadableImageUrl()
-    const editUrl = `${sd.CMS_URL}/artworks/${artwork.id}/edit?current_partner_id=${artwork.partner.id}` // prettier-ignore
-    const genomeUrl = `${sd.GENOME_URL}/genome/artworks?artwork_ids=${artwork.id}` // prettier-ignore
+
+    const actionsToShow = [
+      { condition: true, renderer: this.renderSaveButton },
+      {
+        condition: artwork.is_hangable && this.isAdmin,
+        renderer: this.renderViewInRoomButton,
+      },
+      { condition: true, renderer: this.renderShareButton },
+      {
+        condition: !!downloadableImageUrl,
+        renderer: this.renderDownloadButton,
+      },
+      { condition: this.isAdmin, renderer: this.renderEditButton },
+      { condition: this.isAdmin, renderer: this.renderGenomeButton },
+    ]
+
+    const showableActions = actionsToShow.filter(action => {
+      return action.condition
+    })
+
+    const initialActions = showableActions.slice(0, 3)
+    const moreActions = showableActions.slice(3)
 
     return (
       <>
         <Container>
           <Join separator={<Spacer mx={0} />}>
-            <SaveButton
-              artwork={this.props.artwork}
-              render={Save(this.props)}
-            />
-            {artwork.is_hangable &&
-              this.isAdmin && (
-                <ContextConsumer>
-                  {({ mediator }) => (
-                    <UtilButton
-                      name="viewInRoom"
-                      onClick={() => this.openViewInRoom(mediator)}
-                      label="View in room"
-                    />
-                  )}
-                </ContextConsumer>
-              )}
-            <UtilButton
-              name="share"
-              onClick={this.toggleSharePanel.bind(this)}
-              label="Share"
-            />
-
             <Media greaterThan="xs">
               <Flex>
-                <Join separator={<Spacer mx={0} />}>
-                  {downloadableImageUrl && (
-                    <UtilButton
-                      name="download"
-                      href={downloadableImageUrl}
-                      label="Download"
-                    />
-                  )}
-                  {this.isAdmin && (
-                    <UtilButton name="edit" href={editUrl} label="Edit" />
-                  )}
-                  {this.isAdmin && (
-                    <UtilButton name="genome" href={genomeUrl} label="Genome" />
-                  )}
-                </Join>
+                {showableActions.map(action => {
+                  return action.renderer.bind(this)()
+                })}
               </Flex>
             </Media>
 
             <Media at="xs">
-              <UtilButton
-                name="more"
-                onClick={this.toggleMorePanel.bind(this)}
-              />
+              <Flex>
+                {initialActions.map(action => {
+                  return action.renderer.bind(this)()
+                })}
+
+                {moreActions &&
+                  moreActions.length > 0 && (
+                    <UtilButton
+                      name="more"
+                      onClick={this.toggleMorePanel.bind(this)}
+                    />
+                  )}
+              </Flex>
             </Media>
           </Join>
 
@@ -181,25 +226,13 @@ export class ArtworkActions extends React.Component<
               onClose={this.toggleMorePanel.bind(this)}
             >
               <Flex flexDirection="row" flexWrap="wrap">
-                {downloadableImageUrl && (
-                  <Flex flexDirection="row" flexBasis="50%">
-                    <UtilButton
-                      name="download"
-                      href={downloadableImageUrl}
-                      label="Download"
-                    />
-                  </Flex>
-                )}
-                {this.isAdmin && (
-                  <Flex flexDirection="row" flexBasis="50%">
-                    <UtilButton name="edit" href={editUrl} label="Edit" />
-                  </Flex>
-                )}
-                {this.isAdmin && (
-                  <Flex flexDirection="row" flexBasis="50%">
-                    <UtilButton name="genome" href={genomeUrl} label="Genome" />
-                  </Flex>
-                )}
+                {moreActions.map(action => {
+                  return (
+                    <Flex flexDirection="row" flexBasis="50%">
+                      {action.renderer.bind(this)()}
+                    </Flex>
+                  )
+                })}
               </Flex>
             </ArtworkPopoutPanel>
           )}
