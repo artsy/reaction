@@ -10,55 +10,52 @@ interface Props {
 const CheckmarkPositions = {
   red: {
     bottom: "63px",
-    left: "137px",
+    left: "58px",
   },
   "black-and-white": {
     bottom: "98px",
-    left: "79px",
   },
   pink: {
     bottom: "98px",
-    left: "145px",
+    left: "65px",
   },
   darkviolet: {
     bottom: "132px",
-    left: "138px",
+    left: "58px",
   },
   violet: {
     bottom: "156px",
-    left: "112px",
+    left: "32px",
   },
   darkblue: {
     bottom: "165px",
-    left: "79px",
   },
   lightblue: {
     bottom: "156px",
-    left: "43px",
+    right: "37px",
   },
   darkgreen: {
     bottom: "132px",
-    left: "20px",
+    right: "60px",
   },
   lightgreen: {
     bottom: "98px",
-    left: "10px",
+    right: "69px",
   },
   yellow: {
     bottom: "63px",
-    left: "20px",
+    right: "60px",
   },
   gold: {
     bottom: "36px",
-    left: "43px",
+    right: "37px",
   },
   orange: {
     bottom: "28px",
-    left: "79px",
   },
   darkorange: {
     bottom: "36px",
-    left: "112px",
+    left: "36px",
   },
 }
 
