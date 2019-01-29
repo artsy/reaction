@@ -1,3 +1,11 @@
+# 12.1.1 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- [ColorFilter] Update positions for checkmark overlay [#1960](https://github.com/artsy/reaction/pull/1960) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # 12.1.0 (Tue Jan 29 2019)
 
 #### 🚀  Enhancement
