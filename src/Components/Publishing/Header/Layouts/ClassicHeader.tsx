@@ -17,7 +17,7 @@ export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
   const { article, date, editTitle, editLeadParagraph } = props
   return (
     <ClassicHeaderContainer>
-      <Title>{editTitle || article.title}</Title>
+      <Title>{editTitle || <h1>{article.title}</h1>}</Title>
 
       {editLeadParagraph ? (
         <LeadParagraph>{editLeadParagraph}</LeadParagraph>
@@ -50,6 +50,14 @@ const ClassicHeaderContainer = styled.div`
 export const Title = styled.div`
   padding-bottom: ${space(3)}px;
   ${garamond("s37")};
+
+  h1 {
+    font-style: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    margin: 0;
+  }
 
   ${pMedia.xs`
     ${garamond("s34")}
