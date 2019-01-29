@@ -1,10 +1,11 @@
-import { Box, color, Flex, media, Sans, Separator, space } from "@artsy/palette"
+import { color, Flex, media, Sans, Separator } from "@artsy/palette"
 import { ArtworkSharePanel_artwork } from "__generated__/ArtworkSharePanel_artwork.graphql"
 import Icon from "Components/Icon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
 interface ArtworkSharePanelProps {
   artwork: ArtworkSharePanel_artwork
@@ -116,16 +117,8 @@ export class ArtworkSharePanel extends React.Component<
     const url = sd.APP_URL + href
 
     return (
-      <Container>
-        <Box position="absolute" top={space(1)} right={space(1)}>
-          <CloseIcon name="close" onClick={this.props.onClose} />
-        </Box>
-        <Flex flexDirection="column" p={2}>
-          <Flex flexDirection="row" mb={2}>
-            <Sans size="3" weight="medium" color="black100">
-              Share
-            </Sans>
-          </Flex>
+      <ArtworkPopoutPanel title="Share" onClose={this.props.onClose}>
+        <>
           <Flex flexDirection="row" mb={1}>
             <SansGrow size={["3", "2"]} color="black60" mr={4}>
               <URLInput
@@ -183,8 +176,8 @@ export class ArtworkSharePanel extends React.Component<
               url: `https://www.tumblr.com/share/photo?source=${shareImageUrl}&caption=${share}&clickthru=${url}`,
             })}
           </Flex>
-        </Flex>
-      </Container>
+        </>
+      </ArtworkPopoutPanel>
     )
   }
 }
@@ -203,23 +196,6 @@ export const ArtworkSharePanelFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-// TODO: We need to figure out if this is going to be a new re-usable panel type
-//       in which I wouldn’t want to add this into Share
-const Container = styled.div`
-  position: absolute;
-  width: 300px;
-  top: -230px;
-  border-radius: 2px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-`
-
-const CloseIcon = styled(Icon)`
-  color: ${color("black30")};
-  cursor: pointer;
-  font-size: 12px;
-`
 
 const SansGrow = styled(Sans)`
   display: flex;

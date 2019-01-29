@@ -1,13 +1,16 @@
-import { Box, color, Flex, Sans, Separator, space } from "@artsy/palette"
+import { Box, color, Flex, Sans, space } from "@artsy/palette"
 import Icon from "Components/Icon"
 import React from "react"
 import styled from "styled-components"
 
-interface ArtworkMorePanelProps {
+interface ArtworkPopoutPanelProps {
   onClose: () => void
+  title: string
 }
 
-export class ArtworkMorePanel extends React.Component<ArtworkMorePanelProps> {
+export class ArtworkPopoutPanel extends React.Component<
+  ArtworkPopoutPanelProps
+> {
   render() {
     return (
       <Container>
@@ -17,22 +20,20 @@ export class ArtworkMorePanel extends React.Component<ArtworkMorePanelProps> {
         <Flex flexDirection="column" p={2}>
           <Flex flexDirection="row" mb={2}>
             <Sans size="3" weight="medium" color="black100">
-              More actions
+              {this.props.title}
             </Sans>
           </Flex>
-          <Separator />
+          {this.props.children}
         </Flex>
       </Container>
     )
   }
 }
 
-// TODO: We need to figure out if this is going to be a new re-usable panel type
-//       in which I wouldn’t want to add this into Share
 const Container = styled.div`
   position: absolute;
   width: 300px;
-  top: -230px;
+  bottom: 30px;
   border-radius: 2px;
   background-color: #ffffff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);

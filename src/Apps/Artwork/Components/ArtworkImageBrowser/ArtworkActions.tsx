@@ -23,12 +23,13 @@ import {
   HeartIcon,
   Join,
   Link,
+  MoreIcon,
   OpenEyeIcon,
   Sans,
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
-import { ArtworkMorePanel } from "./ArtworkMorePanel"
+import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
@@ -60,12 +61,13 @@ export class ArtworkActions extends React.Component<
     const showSharePanel = !this.state.showSharePanel
     this.setState({
       showSharePanel,
+      showMorePanel: false,
     })
   }
 
   toggleMorePanel() {
     const showMorePanel = !this.state.showMorePanel
-    this.setState({ showMorePanel })
+    this.setState({ showMorePanel, showSharePanel: false })
   }
 
   get isAdmin() {
@@ -158,7 +160,12 @@ export class ArtworkActions extends React.Component<
               </Flex>
             </Media>
 
-            <Media at="xs">hi</Media>
+            <Media at="xs">
+              <UtilButton
+                name="more"
+                onClick={this.toggleMorePanel.bind(this)}
+              />
+            </Media>
           </Join>
 
           {this.state.showSharePanel && (
@@ -169,7 +176,32 @@ export class ArtworkActions extends React.Component<
           )}
 
           {this.state.showMorePanel && (
-            <ArtworkMorePanel onClose={this.toggleMorePanel.bind(this)} />
+            <ArtworkPopoutPanel
+              title="More actions"
+              onClose={this.toggleMorePanel.bind(this)}
+            >
+              <Flex flexDirection="row" flexWrap="wrap">
+                {downloadableImageUrl && (
+                  <Flex flexDirection="row" flexBasis="50%">
+                    <UtilButton
+                      name="download"
+                      href={downloadableImageUrl}
+                      label="Download"
+                    />
+                  </Flex>
+                )}
+                {this.isAdmin && (
+                  <Flex flexDirection="row" flexBasis="50%">
+                    <UtilButton name="edit" href={editUrl} label="Edit" />
+                  </Flex>
+                )}
+                {this.isAdmin && (
+                  <Flex flexDirection="row" flexBasis="50%">
+                    <UtilButton name="genome" href={genomeUrl} label="Genome" />
+                  </Flex>
+                )}
+              </Flex>
+            </ArtworkPopoutPanel>
           )}
         </Container>
       </>
@@ -226,12 +258,13 @@ interface UtilButtonProps {
     | "download"
     | "genome"
     | "heart"
+    | "more"
     | "share"
     | "viewInRoom"
   href?: string
   onClick?: () => void
   selected?: boolean
-  label: string
+  label?: string
 }
 
 export class UtilButton extends React.Component<
@@ -257,6 +290,8 @@ export class UtilButton extends React.Component<
           return GenomeIcon
         case "heart":
           return HeartIcon
+        case "more":
+          return MoreIcon
         case "share":
           return ShareIcon
         case "viewInRoom":
@@ -265,7 +300,8 @@ export class UtilButton extends React.Component<
     }
 
     const Icon = getIcon()
-    const fill = this.state.hovered ? color("purple100") : color("black100")
+    const defaultFill = name === "more" ? null : color("black100")
+    const fill = this.state.hovered ? color("purple100") : defaultFill
 
     return (
       <UtilButtonContainer
@@ -287,9 +323,11 @@ export class UtilButton extends React.Component<
           <Icon {...props} fill={fill} />
         )}
 
-        <Sans size="2" pl={0.5} pt={0.2}>
-          {label}
-        </Sans>
+        {label && (
+          <Sans size="2" pl={0.5} pt={0.2}>
+            {label}
+          </Sans>
+        )}
       </UtilButtonContainer>
     )
   }

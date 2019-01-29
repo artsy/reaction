@@ -14,7 +14,7 @@ describe("ArtworkActions", () => {
     )
   }
 
-  it("renders proper components", () => {
+  it.only("renders proper components", () => {
     const wrapper = getWrapper()
     expect(wrapper.find("Heart").length).toBe(1)
     expect(wrapper.find("Share").length).toBe(1)
