@@ -2,6 +2,7 @@ import {
   GraphQLFieldResolver,
   GraphQLResolveInfo,
   isAbstractType,
+  isLeafType,
   responsePathAsArray,
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -53,22 +54,42 @@ export const createMockFetchQuery = ({
     // We pass this field resolver in so that we can control the resolution
     // logic for all data that relay tries to extract from our mock fixtures.
     fieldResolver: ((source, _args, _context, info) => {
-      // source is null for root fields
-      source =
-        source ||
-        (info.operation.operation === "mutation"
-          ? mockMutationResults
-          : mockData)
+      if (responsePathAsArray(info.path).length === 1) {
+        // source is null for root fields
+        source =
+          source ||
+          (info.operation.operation === "mutation"
+            ? mockMutationResults
+            : mockData)
+      }
+
+      // fail early if source is not an object type
+      // this happens because graphql only checks for null when deciding
+      // whether to resolve fields in a given value
+      if (typeof source !== "object") {
+        const parentPath = responsePathAsArray(info.path)
+          .slice(0, -1)
+          .join("/")
+        throw new Error(
+          `The value at path '${parentPath}' should be an object but is a ${typeof source}.`
+        )
+      }
 
       // handle aliased fields first
       const alias = info.fieldNodes[0].alias
       if (alias && alias.value in source) {
-        return inferUnionOrInterfaceType(source[alias.value], info)
+        return inferUnionOrInterfaceType(
+          checkLeafType(source[alias.value], info),
+          info
+        )
       }
 
       // the common case, the field has a fixture and is not aliased
       if (info.fieldName in source) {
-        return inferUnionOrInterfaceType(source[info.fieldName], info)
+        return inferUnionOrInterfaceType(
+          checkLeafType(source[info.fieldName], info),
+          info
+        )
       }
 
       if (info.fieldName === "__id" || info.fieldName === "id") {
@@ -89,7 +110,12 @@ export const createMockFetchQuery = ({
         idMap.set(source, id)
         return id
       }
-      complain(info, info.returnType.inspect())
+
+      throw error(
+        info,
+        ({ type, path }) =>
+          `A mock for field at path '${path}' of type '${type}' was expected but not found.`
+      )
     }) as GraphQLFieldResolver<any, any>,
     schema,
     resolvers: {
@@ -115,6 +141,22 @@ export const createMockFetchQuery = ({
   })
 }
 
+const checkLeafType = (value: unknown, info: GraphQLResolveInfo) => {
+  const returnType = info.returnType
+  if (isLeafType(returnType)) {
+    try {
+      returnType.parseValue(value)
+    } catch (e) {
+      throw error(
+        info,
+        ({ type, path }) =>
+          `Expected mock value of type '${type}' but got '${typeof value}' at path '${path}'`
+      )
+    }
+  }
+  return value
+}
+
 // This function tries to infer the concrete type of a value that appears
 // in a position whose type is either a union or an interface
 const inferUnionOrInterfaceType = (
@@ -127,13 +169,20 @@ const inferUnionOrInterfaceType = (
     return value
   }
 
-  if (value === null || typeof value !== "object" || "__typename" in value) {
+  // remember that typeof null === 'object'
+  if (typeof value !== "object") {
+    throw error(
+      info,
+      ({ type, path }) =>
+        `Expected object of type '${type}' but got '${typeof value}' at path '${path}'`
+    )
+  }
+
+  if (value == null || "__typename" in value) {
     return value
   }
 
   const unionMemberTypes = info.schema.getPossibleTypes(returnType)
-
-  // TODO: handle nested unions and look at other types
 
   // try to find keys in the object which are unique to one type
   for (const key of Object.keys(value)) {
@@ -144,15 +193,22 @@ const inferUnionOrInterfaceType = (
   }
 
   // failed to find unique keys so the object is ambiguous and we need to ask for a __typename
-  const path = responsePathAsArray(info.path).join("/")
-  const message = `Ambiguous object at path '${path}'. Add a __typename from this list: [${unionMemberTypes
-    .map(type => type.name)
-    .join(", ")}]`
-  throw new Error(message)
+  const possibleTypes = unionMemberTypes.map(type => type.name).join(", ")
+  throw error(
+    info,
+    ({ path }) =>
+      `Ambiguous object at path '${path}'. Add a __typename from this list: [${possibleTypes}]`
+  )
 }
 
-const complain = (info: GraphQLResolveInfo, type: string) => {
-  const path = responsePathAsArray(info.path).join("/")
-  const message = `A mock for field at path '${path}' of type '${type}' was expected but not found.`
-  throw new Error(message)
+function error(
+  info: GraphQLResolveInfo,
+  renderMessage: (args: { type: string; path: string }) => string
+) {
+  return new Error(
+    renderMessage({
+      path: responsePathAsArray(info.path).join("/"),
+      type: info.returnType.inspect(),
+    })
+  )
 }

@@ -115,6 +115,58 @@ describe("createMockNetworkLayer", () => {
     }
   })
 
+  // TODO: upgrade graphql. The version we have does hardly any validaton of leaf values.
+  it.skip("complains with a helpful error when leaf field type is incorrect", async () => {
+    try {
+      await fetchQueryWithResolvers({
+        mockData: {
+          artwork: { __id: "blah", title: 32 },
+        },
+      })
+    } catch (e) {
+      expect(e.message).toMatchInlineSnapshot()
+    }
+  })
+
+  // TODO: related to above, the only check right now is that you can't return an array as a string
+  it("complains with a helpful error when leaf field type is incorrect", async () => {
+    try {
+      await fetchQueryWithResolvers({
+        mockData: {
+          artwork: { __id: "blah", title: [] },
+        },
+      })
+    } catch (e) {
+      expect(e.message).toMatchInlineSnapshot(
+        `"RelayMockNetworkLayerError: Expected mock value of type 'String' but got 'object' at path 'artwork/title'"`
+      )
+    }
+  })
+
+  it("complains with a helpful error when non-leaf field type is incorrect", async () => {
+    try {
+      await fetchQueryWithResolvers({
+        mockData: {
+          artwork: 3,
+        },
+      })
+    } catch (e) {
+      expect(e.message).toMatchInlineSnapshot(
+        `"RelayMockNetworkLayerError: The value at path 'artwork' should be an object but is a number."`
+      )
+    }
+  })
+
+  it("Does not complain when non-leaf nullable field type is null", async () => {
+    const data = await fetchQueryWithResolvers({
+      mockData: {
+        artwork: null,
+      },
+    })
+
+    expect(data.artwork).toBeNull()
+  })
+
   it("uses data provided with an aliased name", async () => {
     const data = await fetchQueryWithResolvers(
       {
@@ -334,6 +386,33 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(`"failed to fetch"`)
+      }
+    })
+
+    it("complains if you return the wrong type in an abstract position", async () => {
+      try {
+        await fetchMutationResults<
+          createMockNetworkLayerTestMutationResultsMutation
+        >({
+          mockMutationResults: {
+            ecommerceBuyerAcceptOffer: {
+              orderOrError: {
+                __typename: "OrderWithMutationSuccess",
+                order: "hello I am a string",
+              },
+            },
+          },
+          query,
+          variables: {
+            input: {
+              offerId: "offer-id",
+            },
+          },
+        })
+      } catch (e) {
+        expect(e.message).toMatchInlineSnapshot(
+          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'ecommerceBuyerAcceptOffer/orderOrError/order'"`
+        )
       }
     })
   })
