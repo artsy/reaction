@@ -54,7 +54,8 @@ export const createMockFetchQuery = ({
     // We pass this field resolver in so that we can control the resolution
     // logic for all data that relay tries to extract from our mock fixtures.
     fieldResolver: ((source, _args, _context, info) => {
-      if (responsePathAsArray(info.path).length === 1) {
+      const pathAsArray = responsePathAsArray(info.path)
+      if (pathAsArray.length === 1) {
         // source is null for root fields
         source =
           source ||
@@ -67,9 +68,7 @@ export const createMockFetchQuery = ({
       // this happens because graphql only checks for null when deciding
       // whether to resolve fields in a given value
       if (typeof source !== "object") {
-        const parentPath = responsePathAsArray(info.path)
-          .slice(0, -1)
-          .join("/")
+        const parentPath = pathAsArray.slice(0, -1).join("/")
         throw new Error(
           `The value at path '${parentPath}' should be an object but is a ${typeof source}.`
         )
