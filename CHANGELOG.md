@@ -1,3 +1,11 @@
+# 12.1.2 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Prevent apostrophes from line breaking tooltip links [#1949](https://github.com/artsy/reaction/pull/1949) ([@damassi](https://github.com/damassi))
+
+---
+
 # 12.1.1 (Tue Jan 29 2019)
 
 #### 🐛  Bug Fix
