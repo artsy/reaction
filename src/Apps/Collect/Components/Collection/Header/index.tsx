@@ -198,7 +198,6 @@ const SubtitlesContainer = styled(Box)`
 `
 
 const Title = styled(Serif)`
-  text-transform: capitalize;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `
 
