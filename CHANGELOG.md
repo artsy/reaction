@@ -1,29 +1,3 @@
-# 12.1.5 (Wed Jan 30 2019)
-
-#### 🐛  Bug Fix
-
-- Revert "Refactor tests" [#1963](https://github.com/artsy/reaction/pull/1963) ([@ds300](https://github.com/ds300))
-- Refactor tests [#1899](https://github.com/artsy/reaction/pull/1899) ([@ds300](https://github.com/ds300) sweir27@gmail.com)
-
-#### ⚠️  Pushed to master
-
-- remove --detectOpenHandles  ([@ds300](https://github.com/ds300))
-- add --forceExit to jest invocation  ([@ds300](https://github.com/ds300))
-- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
-- don't re-calculate path array  ([@ds300](https://github.com/ds300))
-- add todo comment context  ([@ds300](https://github.com/ds300))
-- More sanity checks  ([@ds300](https://github.com/ds300))
-- add detectOpenHandles to jest invocation  ([@ds300](https://github.com/ds300))
-- make better use of graphql api  ([@ds300](https://github.com/ds300))
-- abmiguous -> ambiguous  ([@ds300](https://github.com/ds300))
-- Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
-- Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
-- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
-- Merge branch 'master' into refactor-tests  ([@d.j.sheldrick@gmail.com](https://github.com/d.j.sheldrick@gmail.com))
-- bring countdown timer test fixtures closer to the tests  ([@ds300](https://github.com/ds300))
-
----
-
 # 12.1.4 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
