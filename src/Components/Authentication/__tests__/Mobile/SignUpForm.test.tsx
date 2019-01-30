@@ -1,5 +1,5 @@
 import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -17,7 +17,7 @@ describe("MobileSignUpForm", () => {
 
   it("renders the first step", () => {
     const wrapper = getWrapper({})
-    const input = wrapper.find(Input)
+    const input = wrapper.find(QuickInput)
     expect(input.length).toBe(1)
     expect(input.props().type).toEqual("email")
     expect(wrapper.text()).toContain("Sign up for Artsy")

@@ -15,7 +15,7 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { LoginValidator } from "Components/Authentication/Validators"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 
 const Row = styled.div`
   display: flex;
@@ -61,9 +61,8 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
 
           return (
             <Form onSubmit={handleSubmit} height={320}>
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.email && errors.email}
                 placeholder="Enter your email address"
                 name="email"
@@ -74,9 +73,8 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 onBlur={handleBlur}
                 autoFocus
               />
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.password && errors.password}
                 placeholder="Enter your password"
                 name="password"

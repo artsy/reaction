@@ -9,6 +9,7 @@ import Button from "../Buttons/Inverted"
 import { Checkbox } from "../Checkbox"
 import Icon from "../Icon"
 import Input from "../Input"
+import QuickInput from "../QuickInput"
 import TextArea from "../TextArea"
 
 const Title = styled.h1`
@@ -94,19 +95,17 @@ storiesOf("Components/Input", module)
       <Subtitle>Used for short/simple forms</Subtitle>
 
       <div style={{ padding: 10 }}>
-        <Input
+        <QuickInput
           placeholder="Enter your email address"
           label="Email"
           block
-          quick
         />
-        <Input
+        <QuickInput
           type="password"
           placeholder="Enter your password"
           label="Password"
           rightView={<Icon name="search" color={colors.graySemibold} />}
           block
-          quick
         />
       </div>
     </div>

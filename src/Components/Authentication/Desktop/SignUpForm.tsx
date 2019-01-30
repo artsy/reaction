@@ -14,7 +14,7 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { SignUpValidator } from "Components/Authentication/Validators"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 
 export interface SignUpFormState {
   error?: string
@@ -52,9 +52,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
 
           return (
             <Form onSubmit={handleSubmit} height={430}>
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.email && errors.email}
                 placeholder="Enter your email address"
                 name="email"
@@ -65,9 +64,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 onBlur={handleBlur}
                 autoFocus
               />
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.password && errors.password}
                 placeholder="Enter a password"
                 name="password"
@@ -78,9 +76,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 onBlur={handleBlur}
                 showPasswordMessage
               />
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.name && errors.name}
                 placeholder="Enter your full name"
                 name="name"

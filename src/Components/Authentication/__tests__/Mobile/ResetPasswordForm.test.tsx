@@ -1,5 +1,5 @@
 import { MobileForgotPasswordForm } from "Components/Authentication/Mobile/ForgotPasswordForm"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -16,7 +16,7 @@ describe("MobileLoginForm", () => {
 
   it("renders the email input", () => {
     const wrapper = getWrapper({})
-    const input = wrapper.find(Input)
+    const input = wrapper.find(QuickInput)
     expect(input.length).toBe(1)
     expect(input.props().type).toEqual("email")
   })

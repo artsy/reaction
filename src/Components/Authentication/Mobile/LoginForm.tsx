@@ -3,8 +3,8 @@ import { checkEmail } from "Components/Authentication/helpers"
 import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import Icon from "../../Icon"
-import Input from "../../Input"
 import { ProgressIndicator } from "../../ProgressIndicator"
+import QuickInput from "../../QuickInput"
 import { Step, Wizard } from "../../Wizard"
 import {
   BackButton,
@@ -51,7 +51,7 @@ export class MobileLoginForm extends Component<FormProps> {
             setTouched,
           },
         }) => (
-          <Input
+          <QuickInput
             block
             error={errors.email}
             placeholder="Enter your email address"
@@ -64,7 +64,6 @@ export class MobileLoginForm extends Component<FormProps> {
             setTouched={setTouched}
             touchedOnChange={false}
             autoFocus
-            quick
           />
         )}
       </Step>,
@@ -81,7 +80,7 @@ export class MobileLoginForm extends Component<FormProps> {
           },
         }) => (
           <Fragment>
-            <Input
+            <QuickInput
               block
               error={errors.password}
               name="password"
@@ -93,7 +92,6 @@ export class MobileLoginForm extends Component<FormProps> {
               onBlur={handleBlur}
               setTouched={setTouched}
               touchedOnChange={false}
-              quick
             />
             <Row>
               <ForgotPassword onClick={() => (location.href = "/forgot")} />

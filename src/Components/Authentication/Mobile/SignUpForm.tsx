@@ -15,8 +15,8 @@ import { checkEmail } from "Components/Authentication/helpers"
 import { FormProps } from "Components/Authentication/Types"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import Icon from "Components/Icon"
-import Input from "Components/Input"
 import { ProgressIndicator } from "Components/ProgressIndicator"
+import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import React, { Component, Fragment } from "react"
 
@@ -76,7 +76,7 @@ export class MobileSignUpForm extends Component<
           form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
           <Fragment>
-            <Input
+            <QuickInput
               block
               error={!this.state.isSocialSignUp && errors.email}
               placeholder="Enter your email address"
@@ -89,7 +89,6 @@ export class MobileSignUpForm extends Component<
               setTouched={setTouched}
               touchedOnChange={false}
               autoFocus
-              quick
             />
             <TermsOfServiceCheckbox
               error={errors.accepted_terms_of_service}
@@ -108,7 +107,7 @@ export class MobileSignUpForm extends Component<
           wizard,
           form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
-          <Input
+          <QuickInput
             block
             error={errors.password}
             name="password"
@@ -120,7 +119,6 @@ export class MobileSignUpForm extends Component<
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
-            quick
             showPasswordMessage
           />
         )}
@@ -130,7 +128,7 @@ export class MobileSignUpForm extends Component<
           wizard,
           form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
-          <Input
+          <QuickInput
             block
             error={errors.name}
             name="name"
@@ -142,7 +140,6 @@ export class MobileSignUpForm extends Component<
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
-            quick
           />
         )}
       </Step>,
