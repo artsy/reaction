@@ -200,6 +200,10 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
+.c4 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c4 .content-end {
   display: inline-block;
   content: "";
@@ -634,6 +638,10 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
+.c4 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c4 .content-end {
   display: inline-block;
   content: "";
@@ -1059,6 +1067,10 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c4 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c4 .content-end {
@@ -1523,6 +1535,10 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c8 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c8 .content-end {

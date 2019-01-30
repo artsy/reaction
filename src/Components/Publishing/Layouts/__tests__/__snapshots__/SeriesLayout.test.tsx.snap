@@ -512,6 +512,10 @@ exports[`renders a series properly 1`] = `
   word-break: break-word;
 }
 
+.c41 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c41 .content-end {
   display: inline-block;
   content: "";
@@ -1919,6 +1923,10 @@ exports[`renders a sponsored series properly 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c48 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c48 .content-end {

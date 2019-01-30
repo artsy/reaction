@@ -243,6 +243,10 @@ exports[`Video About matches the snapshot 1`] = `
   word-break: break-word;
 }
 
+.c5 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c5 .content-end {
   display: inline-block;
   content: "";
@@ -428,6 +432,10 @@ exports[`Video About matches the snapshot 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c15 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c15 .content-end {
@@ -1230,6 +1238,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   word-break: break-word;
 }
 
+.c5 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c5 .content-end {
   display: inline-block;
   content: "";
@@ -1415,6 +1427,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c15 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c15 .content-end {

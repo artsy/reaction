@@ -641,6 +641,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   word-break: break-word;
 }
 
+.c51 .preventLineBreak {
+  white-space: nowrap;
+}
+
 .c51 .content-end {
   display: inline-block;
   content: "";
@@ -826,6 +830,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-bottom: 46px;
   margin: 0;
   word-break: break-word;
+}
+
+.c61 .preventLineBreak {
+  white-space: nowrap;
 }
 
 .c61 .content-end {

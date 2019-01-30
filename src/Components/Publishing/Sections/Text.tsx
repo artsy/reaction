@@ -1,6 +1,7 @@
 import { startsWith } from "lodash"
 import React, { Component } from "react"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
+import { get } from "Utils/get"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
 
@@ -85,14 +86,39 @@ export class Text extends Component<Props, State> {
 
     if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
       const href = node.attribs.href
-      const text = node.children[0] && node.children[0].data
+      const linkNode = get(node, n => n.children[0].data && n.children[0], {})
 
-      if (text) {
-        return (
-          <LinkWithTooltip key={href + index} url={href} color={color}>
-            {text}
-          </LinkWithTooltip>
-        )
+      if (linkNode.data) {
+        const props = { key: href + index, url: href, color }
+        const next = linkNode.parent && linkNode.parent.next
+        const text = linkNode.data
+        const apostropheRe = /[’'][a-zA-Z]/
+
+        // Check to see if there's an apostrophe following a linked section of
+        // text and if found, return it.
+        const apostrophe = get(next, n => {
+          const str = n.data.substr(0, 2)
+          if (apostropheRe.test(str)) {
+            return str
+          }
+        })
+
+        if (apostrophe) {
+          // Remove the apostrophe from the original text
+          next.data = next.data.substring(2)
+          // And wrap the whole thing with with a span preventing whitespace breaks
+          return (
+            <span
+              className="preventLineBreak"
+              key={`apostropheLinkNode-${props.key}`}
+            >
+              <LinkWithTooltip {...props}>{text}</LinkWithTooltip>
+              {apostrophe}
+            </span>
+          )
+        }
+
+        return <LinkWithTooltip {...props}>{text}</LinkWithTooltip>
       }
     }
   }
