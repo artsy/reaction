@@ -1,3 +1,11 @@
+# 12.1.6 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Make entire link clickable on artwork actions [#1966](https://github.com/artsy/reaction/pull/1966) ([@sweir27](https://github.com/sweir27))
+
+---
+
 # 12.1.5 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
