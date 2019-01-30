@@ -1,3 +1,11 @@
+# 12.1.7 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Fixture for ImageCollection data [#1968](https://github.com/artsy/reaction/pull/1968) ([@eessex](https://github.com/eessex))
+
+---
+
 # 12.1.6 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
