@@ -33,7 +33,7 @@
     "storybook": "node verify-node-version.js && concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook --quiet -s ./public -p 9001'",
     "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schema.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema -- ../reaction/data",
-    "test": "node verify-node-version.js && jest --detectOpenHandles",
+    "test": "node verify-node-version.js && jest --detectOpenHandles --forceExit",
     "test:watch": "jest --watch --runInBand",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty --noEmit",
