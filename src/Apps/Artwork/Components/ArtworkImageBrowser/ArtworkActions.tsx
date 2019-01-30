@@ -363,22 +363,37 @@ export class UtilButton extends React.Component<
         onClick={onClick}
       >
         {href ? (
-          <Link className="noUnderline" href={href} target="_blank">
+          <UtilButtonLink className="noUnderline" href={href} target="_blank">
             <Icon {...props} fill={fill} />
-          </Link>
+            {label && (
+              <Sans size="2" pl={0.5} pt="1px">
+                {label}
+              </Sans>
+            )}
+          </UtilButtonLink>
         ) : (
-          <Icon {...props} fill={fill} />
-        )}
-
-        {label && (
-          <Sans size="2" pl={0.5} pt="1px">
-            {label}
-          </Sans>
+          <>
+            <Icon {...props} fill={fill} />
+            {label && (
+              <Sans size="2" pl={0.5} pt="1px">
+                {label}
+              </Sans>
+            )}
+          </>
         )}
       </UtilButtonContainer>
     )
   }
 }
+
+const UtilButtonLink = styled(Link)`
+  display: flex;
+
+  &:hover {
+    color: ${color("purple100")} !important;
+    text-decoration: none !important;
+  }
+`
 
 const UtilButtonContainer = styled(Flex)`
   cursor: pointer;
