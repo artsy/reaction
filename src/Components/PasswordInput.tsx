@@ -14,7 +14,6 @@ export interface PasswordInputProps extends React.HTMLProps<HTMLInputElement> {
   setTouched?: (fields: { [field: string]: boolean }) => void
   showPasswordMessage?: boolean
   touchedOnChange?: boolean
-  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export interface PasswordInputState {
@@ -125,7 +124,6 @@ export class PasswordInput extends React.Component<
         >
           <Label out={!showLabel}>{label}</Label>
           <InputComponent
-            innerRef={this.props.innerRef}
             {...newProps}
             onFocus={this.onFocus}
             onBlur={this.onBlur}

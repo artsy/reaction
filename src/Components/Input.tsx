@@ -12,7 +12,6 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error?: string
   title?: string
   touchedOnChange?: boolean
-  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export interface InputState {

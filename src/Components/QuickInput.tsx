@@ -12,7 +12,6 @@ export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   label?: string
   setTouched?: (fields: { [field: string]: boolean }) => void
   touchedOnChange?: boolean
-  innerRef?: React.RefObject<HTMLInputElement>
 }
 
 export interface QuickInputState {
@@ -100,7 +99,6 @@ export class QuickInput extends React.Component<
         >
           <Label out={!showLabel}>{label}</Label>
           <InputComponent
-            innerRef={this.props.innerRef}
             {...newProps}
             onFocus={this.onFocus}
             onBlur={this.onBlur}

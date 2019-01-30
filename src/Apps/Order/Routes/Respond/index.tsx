@@ -233,8 +233,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     this.setState({ isCommittingMutation: false })
   }
 
-  inputRef = React.createRef<HTMLInputElement>()
-
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
