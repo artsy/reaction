@@ -116,6 +116,7 @@ describe("createMockNetworkLayer", () => {
   })
 
   // TODO: upgrade graphql. The version we have does hardly any validaton of leaf values.
+  // see https://github.com/graphql/graphql-js/commit/3521e1429eec7eabeee4da65c93306b51308727b
   it.skip("complains with a helpful error when leaf field type is incorrect", async () => {
     try {
       await fetchQueryWithResolvers({
