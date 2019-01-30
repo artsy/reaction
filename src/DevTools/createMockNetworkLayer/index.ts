@@ -1,8 +1,7 @@
 import {
   GraphQLFieldResolver,
-  GraphQLInterfaceType,
-  GraphQLObjectType,
-  GraphQLUnionType,
+  GraphQLResolveInfo,
+  isAbstractType,
   responsePathAsArray,
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -118,23 +117,21 @@ export const createMockFetchQuery = ({
 
 // This function tries to infer the concrete type of a value that appears
 // in a position whose type is either a union or an interface
-const inferUnionOrInterfaceType = (value, info) => {
-  if (
-    !(info.returnType instanceof GraphQLUnionType) &&
-    !(info.returnType instanceof GraphQLInterfaceType)
-  ) {
-    return value
-  }
-  if (!value || value.__typename || typeof value !== "object") {
+const inferUnionOrInterfaceType = (
+  value: unknown,
+  info: GraphQLResolveInfo
+) => {
+  const returnType = info.returnType
+
+  if (!isAbstractType(returnType)) {
     return value
   }
 
-  const unionMemberTypes =
-    info.returnType instanceof GraphQLInterfaceType
-      ? info.schema._implementations[info.returnType.name]
-      : (info.returnType._types.filter(
-          type => type instanceof GraphQLObjectType
-        ) as GraphQLObjectType[])
+  if (value === null || typeof value !== "object" || "__typename" in value) {
+    return value
+  }
+
+  const unionMemberTypes = info.schema.getPossibleTypes(returnType)
 
   // TODO: handle nested unions and look at other types
 
@@ -154,7 +151,7 @@ const inferUnionOrInterfaceType = (value, info) => {
   throw new Error(message)
 }
 
-const complain = (info, type) => {
+const complain = (info: GraphQLResolveInfo, type: string) => {
   const path = responsePathAsArray(info.path).join("/")
   const message = `A mock for field at path '${path}' of type '${type}' was expected but not found.`
   throw new Error(message)
