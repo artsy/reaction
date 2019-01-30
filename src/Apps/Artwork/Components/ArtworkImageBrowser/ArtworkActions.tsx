@@ -390,10 +390,10 @@ const UtilButtonContainer = styled(Flex)`
 `
 
 const Container = styled(Flex).attrs({
-  justifyContent: ["left", "center"],
-  mb: [2, 2],
-  ml: [-0.5, 0.5],
-  pt: [2, 3],
+  justifyContent: "center",
+  mb: 2,
+  ml: 0.5,
+  pt: 3,
 })`
   position: relative;
   user-select: none;
