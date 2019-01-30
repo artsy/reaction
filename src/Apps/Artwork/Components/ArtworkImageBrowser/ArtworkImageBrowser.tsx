@@ -11,7 +11,6 @@ import {
   Col,
   color,
   Flex,
-  media,
   ResponsiveImage,
   Row,
 } from "@artsy/palette"
@@ -180,14 +179,6 @@ const ArrowButtonContainer = styled(Flex)`
 
 const Container = styled(Box)`
   user-select: none;
-
-  ${media.xs`
-    .slick-dots {
-      bottom: -43px;
-      display: inline-block;
-      text-align: right;
-    }
-  `};
 
   .slick-dots li {
     width: 2px;
