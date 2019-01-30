@@ -3,7 +3,6 @@ import React from "react"
 import styled from "styled-components"
 
 import Colors from "../../../../Assets/Colors"
-import Icon from "../../../Icon"
 import Input from "../../../Input"
 
 import { MultiButtonState } from "../../../Buttons/MultiStateButton"
@@ -86,7 +85,6 @@ export default class Artists extends React.Component<StepProps, State> {
         <OnboardingSearchBox>
           <Input
             placeholder={"Search artists..."}
-            leftView={<Icon name="search" color={Colors.graySemibold} />}
             block
             onInput={this.searchTextChanged.bind(this)}
             onPaste={this.searchTextChanged.bind(this)}

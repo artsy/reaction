@@ -11,8 +11,6 @@ export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   error?: string
   label?: string
-  leftView?: JSX.Element
-  rightView?: JSX.Element
   setTouched?: (fields: { [field: string]: boolean }) => void
   showPasswordMessage?: boolean
   touchedOnChange?: boolean
@@ -113,9 +111,7 @@ export class QuickInput extends React.Component<
       error,
       className,
       label,
-      leftView,
       ref: _ref,
-      rightView,
       showPasswordMessage,
       type,
       onChange,
@@ -133,7 +129,6 @@ export class QuickInput extends React.Component<
           className={this.state.focused ? "focused" : ""}
         >
           <Label out={!showLabel}>{label}</Label>
-          {!!leftView && leftView}
           <InputComponent
             innerRef={this.props.innerRef}
             {...newProps}
@@ -144,9 +139,7 @@ export class QuickInput extends React.Component<
             type={this.convertedType}
             showLabel={showLabel}
           />
-          {isPassword
-            ? this.getRightViewForPassword()
-            : !!rightView && rightView}
+          {isPassword && this.getRightViewForPassword()}
         </InputContainer>
         {!error && showPasswordMessage ? (
           <PasswordMessage>

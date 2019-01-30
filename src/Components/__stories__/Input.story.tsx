@@ -4,10 +4,8 @@ import React from "react"
 import styled from "styled-components"
 
 import { Toggle } from "react-powerplug"
-import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
 import { Checkbox } from "../Checkbox"
-import Icon from "../Icon"
 import Input from "../Input"
 import QuickInput from "../QuickInput"
 import TextArea from "../TextArea"
@@ -104,7 +102,6 @@ storiesOf("Components/Input", module)
           type="password"
           placeholder="Enter your password"
           label="Password"
-          rightView={<Icon name="search" color={colors.graySemibold} />}
           block
         />
       </div>

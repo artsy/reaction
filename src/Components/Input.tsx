@@ -10,8 +10,6 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   description?: string
   error?: string
-  leftView?: JSX.Element
-  rightView?: JSX.Element
   title?: string
   touchedOnChange?: boolean
   innerRef?: React.RefObject<HTMLInputElement>
