@@ -275,7 +275,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Abmiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+          `"RelayMockNetworkLayerError: Ambiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
         )
       }
     })

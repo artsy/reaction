@@ -148,7 +148,7 @@ const inferUnionOrInterfaceType = (value, info) => {
 
   // failed to find unique keys so the object is ambiguous and we need to ask for a __typename
   const path = responsePathAsArray(info.path).join("/")
-  const message = `Abmiguous object at path '${path}'. Add a __typename from this list: [${unionMemberTypes
+  const message = `Ambiguous object at path '${path}'. Add a __typename from this list: [${unionMemberTypes
     .map(type => type.name)
     .join(", ")}]`
   throw new Error(message)
