@@ -1,15 +1,24 @@
+import { Button, Stepper } from "@artsy/palette"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
+import { OrderStepper } from "Apps/Order/Components/OrderStepper"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
 import { StepSummaryItem } from "Components/v2"
-import { createTestEnv } from "DevTools/createTestEnv"
+import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { MockBoot } from "DevTools"
+import { mount } from "enzyme"
 import moment from "moment"
-import { commitMutation as _commitMutation, graphql } from "react-relay"
+import React from "react"
+import { commitMutation as _commitMutation } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import {
   rejectOfferFailed,
   rejectOfferSuccess,
 } from "../__fixtures__/MutationResults/rejectOffer"
-import { RejectFragmentContainer } from "../Reject"
-import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
+import { RejectFragmentContainer as RejectRoute } from "../Reject"
+
+const commitMutation = _commitMutation as jest.Mock<any>
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
@@ -17,7 +26,7 @@ jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-jest.unmock("react-relay")
+jest.mock("react-relay")
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -31,98 +40,169 @@ const testOrder = {
   },
 }
 
+let mockPushRoute: jest.Mock<string>
+
 describe("Buyer rejects seller offer", () => {
-  const { mutations, buildPage, routes } = createTestEnv({
-    Component: RejectFragmentContainer,
-    query: graphql`
-      query RejectTestQuery {
-        order: ecommerceOrder(id: "unused") {
-          ...Reject_order
+  const getWrapper = (extraOrderProps?) => {
+    const props = {
+      relay: { environment: {} },
+      router: { push: mockPushRoute },
+      order: {
+        ...testOrder,
+        ...extraOrderProps,
+      },
+    }
+    return mount(
+      <MockBoot>
+        <RejectRoute {...props as any} />
+        <ConnectedModalDialog />
+      </MockBoot>
+    )
+  }
+
+  beforeEach(() => {
+    mockPushRoute = jest.fn()
+  })
+
+  it("shows the stepper", () => {
+    const component = getWrapper()
+    const stepper = component.find(OrderStepper)
+    expect(stepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+    const index = component.find(Stepper).props().currentStepIndex
+    expect(index).toBe(1)
+  })
+
+  it("shows the countdown timer", () => {
+    const component = getWrapper({
+      stateExpiresAt: moment(NOW)
+        .add(1, "day")
+        .add(4, "hours")
+        .add(22, "minutes")
+        .add(59, "seconds"),
+    })
+    const timer = component.find(CountdownTimer)
+    expect(timer.text()).toContain("01d 04h 22m 59s left")
+  })
+
+  it("shows a message explaining the consequences of a rejection", () => {
+    const component = getWrapper()
+    const summary = component.find(StepSummaryItem)
+    expect(summary.text()).toContain(
+      "Declining an offer permanently ends the negotiation process."
+    )
+  })
+
+  it("shows a change link that takes the user back to the respond page", () => {
+    const component = getWrapper()
+    component.find("StepSummaryItem a").simulate("click")
+    expect(mockPushRoute).toHaveBeenCalledWith(
+      `/orders/${testOrder.id}/respond`
+    )
+  })
+
+  describe("mutation", () => {
+    beforeEach(() => {
+      commitMutation.mockReset()
+    })
+
+    it("routes to status page after mutation completes", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(rejectOfferSuccess)
         }
-      }
-    `,
-    defaultData: {
-      order: testOrder,
-    },
-    defaultMutationResults: {
-      ...rejectOfferSuccess,
-    },
-    TestPage: OrderAppTestPage,
-  })
-
-  describe("the page layout", () => {
-    let page: OrderAppTestPage
-    beforeAll(async () => {
-      page = await buildPage({
-        mockData: {
-          order: {
-            ...testOrder,
-            stateExpiresAt: moment(NOW)
-              .add(1, "day")
-              .add(4, "hours")
-              .add(22, "minutes")
-              .add(59, "seconds")
-              .toISOString(),
-          },
-        },
-      })
-    })
-
-    it("Shows the countdown timer", () => {
-      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
-    })
-
-    it("Shows the stepper", () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
-      expect(page.orderStepperCurrentStep).toBe("Review")
-    })
-
-    it("Shows a message explaining the consequences of a rejection", () => {
-      expect(page.find(StepSummaryItem).text()).toContain(
-        "Declining an offer permanently ends the negotiation process."
       )
-    })
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
 
-    it("Shows a change link that takes the user back to the respond page", () => {
-      page.root.find("StepSummaryItem a").simulate("click")
-      expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/respond`
-      )
-    })
-  })
-
-  describe("taking action", () => {
-    let page: OrderAppTestPage
-    beforeEach(async () => {
-      page = await buildPage()
-    })
-
-    it("routes to status page after mutation completes", async () => {
-      await page.clickSubmit()
-      expect(routes.mockPushRoute).toHaveBeenCalledWith(
+      expect(mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/status`
       )
     })
 
-    it("shows the button spinner while loading the mutation", async () => {
-      await page.expectButtonSpinnerWhenSubmitting()
+    it("shows the button spinner while loading the mutation", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(() => {
+        const buttonProps = component
+          .update()
+          .find("Button")
+          .props() as any
+        expect(buttonProps.loading).toBeTruthy()
+      })
+
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
     })
 
-    it("shows an error modal when there is an error from the server", async () => {
-      mutations.useResultsOnce(rejectOfferFailed)
-      await page.clickSubmit()
-      await page.expectAndDismissDefaultErrorDialog()
-    })
+    it("hides the button spinner when the mutation completes", () => {
+      const component = getWrapper()
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(rejectOfferSuccess)
+        }
+      )
+      const submitButton = component.find(Button).last()
+      submitButton.simulate("click")
 
-    it("shows an error modal when there is a network error", async () => {
-      mutations.mockNetworkFailureOnce()
-      await page.clickSubmit()
-      await page.expectAndDismissDefaultErrorDialog()
+      const buttonProps = component
+        .update()
+        .find("Button")
+        .props() as any
+      expect(buttonProps.loading).toBeFalsy()
     })
   })
 
-  it("tracks a pageview", async () => {
-    await buildPage()
+  it("shows an error modal when there is an error from the server", async () => {
+    const component = getWrapper()
+    const mockCommitMutation = commitMutation as jest.Mock<any>
+    mockCommitMutation.mockImplementationOnce(
+      (_environment, { onCompleted }) => {
+        onCompleted(rejectOfferFailed)
+      }
+    )
+
+    const submitButton = component.find(Button).last()
+    submitButton.simulate("click")
+
+    await flushPromiseQueue()
+    component.update()
+
+    const errorComponent = component.find(ModalDialog)
+    expect(errorComponent.props().show).toBe(true)
+    expect(errorComponent.text()).toContain("An error occurred")
+    expect(errorComponent.text()).toContain(
+      "Something went wrong. Please try again or contact orders@artsy.net."
+    )
+
+    component.find(ModalButton).simulate("click")
+
+    await flushPromiseQueue()
+    component.update()
+
+    expect(component.find(ModalDialog).props().show).toBe(false)
+  })
+
+  it("shows an error modal when there is a network error", async () => {
+    const component = getWrapper()
+    const mockCommitMutation = commitMutation as jest.Mock<any>
+    mockCommitMutation.mockImplementationOnce((_, { onError }) =>
+      onError(new TypeError("Network request failed"))
+    )
+
+    component.find(Button).simulate("click")
+
+    await flushPromiseQueue()
+    component.update()
+
+    expect(component.find(ModalDialog).props().show).toBe(true)
+  })
+
+  it("tracks a pageview", () => {
+    getWrapper()
+
     expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

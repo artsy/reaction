@@ -50,7 +50,7 @@ export class MockRouter extends React.Component<Props> {
       const relayNetwork = mockResolvers
         ? createMockNetworkLayer(mockResolvers)
         : mockData || mockMutationResults
-          ? createMockNetworkLayer2({ mockData, mockMutationResults })
+          ? createMockNetworkLayer2(mockData, mockMutationResults)
           : undefined
 
       const { ClientApp } = await buildClientApp({

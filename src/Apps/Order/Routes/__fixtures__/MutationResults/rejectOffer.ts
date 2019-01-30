@@ -3,7 +3,6 @@ export const rejectOfferSuccess = {
     orderOrError: {
       order: {
         id: "1234",
-        awaitingResponseFrom: null,
       },
     },
   },

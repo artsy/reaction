@@ -1,10 +1,14 @@
-import { OfferOrderWithOffers } from "Apps/__tests__/Fixtures/Order"
-
 export const submitPendingOfferSuccess = {
   ecommerceSubmitPendingOffer: {
     orderOrError: {
       order: {
-        ...OfferOrderWithOffers,
+        id: "1234",
+        myLastOffer: {
+          id: "off-1",
+        },
+        lastOffer: {
+          id: "off-1",
+        },
       },
     },
   },
