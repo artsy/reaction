@@ -1,3 +1,11 @@
+# 12.1.3 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Adds text labels to ArtworkActions and conditionally renders them for mobile web [#1958](https://github.com/artsy/reaction/pull/1958) ([@sweir27](https://github.com/sweir27))
+
+---
+
 # 12.1.2 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
