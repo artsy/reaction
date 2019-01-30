@@ -60,6 +60,8 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
         }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
+        height: { type: "String" }
+        width: { type: "String" }
         artist_id: { type: "String" }
         attribution_class: { type: "[String]" }
         color: { type: "String" }
@@ -85,6 +87,8 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           inquireable_only: $inquireable_only
           price_range: $price_range
+          height: $height
+          width: $width
           artist_id: $artist_id
           attribution_class: $attribution_class
           offerable: $offerable

@@ -3,8 +3,6 @@ import { Reject_order } from "__generated__/Reject_order.graphql"
 import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
-import { Helper } from "Apps/Order/Components/Helper"
-
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
@@ -14,7 +12,6 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { StepSummaryItem } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
@@ -119,10 +116,6 @@ export class Reject extends Component<RejectProps, RejectState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
@@ -189,7 +182,6 @@ export class Reject extends Component<RejectProps, RejectState> {
                     <ArtworkSummaryItem order={order} />
                   </Flex>
                   <Spacer mb={2} />
-                  <Helper artworkId={artwork.id} />
                 </Media>
                 <Media at="xs">
                   <>
@@ -203,8 +195,6 @@ export class Reject extends Component<RejectProps, RejectState> {
                     </Button>
                     <Spacer mb={2} />
                     <ConditionsOfSaleDisclaimer />
-                    <Spacer mb={2} />
-                    <Helper artworkId={artwork.id} />
                   </>
                 </Media>
               </Flex>

@@ -50,6 +50,14 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
+.c1 h1 {
+  font-style: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
 .c2 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 19px;
@@ -181,6 +189,14 @@ exports[`Classic Header Snapshots renders properly 1`] = `
   -webkit-font-smoothing: antialiased;
 }
 
+.c1 h1 {
+  font-style: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
+
 .c2 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 19px;
@@ -235,7 +251,9 @@ exports[`Classic Header Snapshots renders properly 1`] = `
   <div
     className="c1"
   >
-    New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
+    <h1>
+      New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
+    </h1>
   </div>
   <div
     className="c2"

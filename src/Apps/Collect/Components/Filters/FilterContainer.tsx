@@ -7,6 +7,7 @@ import { MobileActionSheet } from "../MobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
+import { SizeRangeFilters } from "./SizeRangeFilters"
 import { SortFilter } from "./SortFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
@@ -51,17 +52,30 @@ export class FilterContainer extends React.Component<
           <WaysToBuyFilter filters={filters} />
         </Flex>
 
-        <Flex flexDirection="column" alignItems="left" my={1}>
-          <PriceRangeFilter filters={filters} />
-        </Flex>
+        <Toggle label="Medium">
+          <Flex flexDirection="column" alignItems="left" mb={1}>
+            <MediumFilter filters={filters} mediums={mediums} />
+          </Flex>
+        </Toggle>
 
-        <Toggle label="Medium" expanded>
-          <MediumFilter filters={filters} mediums={mediums} />
+        <Toggle label="Price">
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            <PriceRangeFilter filters={filters} />
+          </Flex>
         </Toggle>
-        <Toggle label="Color" expanded>
-          <ColorFilter filters={filters} />
+
+        <Toggle label="Size">
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            <SizeRangeFilters filters={filters} />
+          </Flex>
         </Toggle>
-        <Toggle expanded label="Time period">
+
+        <Toggle label="Color">
+          <Flex flexDirection="column" alignItems="center">
+            <ColorFilter filters={filters} />
+          </Flex>
+        </Toggle>
+        <Toggle label="Time period">
           <TimePeriodFilter
             filters={filters}
             timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}

@@ -129,25 +129,29 @@ class Filter extends Component<Props> {
         ? filterState.state.major_periods[0]
         : filterState.state[category]
 
-    return counts.map((count, index) => {
-      return (
-        <Radio
-          my={0.3}
-          selected={currentFilter === count.id}
-          value={count.id}
-          onSelect={({ selected }) => {
-            if (selected) {
-              return filterState.setFilter(category, count.id, mediator)
-            } else {
-              return filterState.unsetFilter(category, mediator)
-            }
-          }}
-          key={index}
-        >
-          {count.name}
-        </Radio>
-      )
-    })
+    return (
+      <Flex flexDirection="column" alignItems="left" mb={1}>
+        {counts.map((count, index) => {
+          return (
+            <Radio
+              my={0.3}
+              selected={currentFilter === count.id}
+              value={count.id}
+              onSelect={({ selected }) => {
+                if (selected) {
+                  return filterState.setFilter(category, count.id, mediator)
+                } else {
+                  return filterState.unsetFilter(category, mediator)
+                }
+              }}
+              key={index}
+            >
+              {count.name}
+            </Radio>
+          )
+        })}
+      </Flex>
+    )
   }
 
   renderWaysToBuy(filterState, mediator, counts) {

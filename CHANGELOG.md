@@ -1,3 +1,63 @@
+# 12.1.3 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Adds text labels to ArtworkActions and conditionally renders them for mobile web [#1958](https://github.com/artsy/reaction/pull/1958) ([@sweir27](https://github.com/sweir27))
+
+---
+
+# 12.1.2 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Prevent apostrophes from line breaking tooltip links [#1949](https://github.com/artsy/reaction/pull/1949) ([@damassi](https://github.com/damassi))
+
+---
+
+# 12.1.1 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- [ColorFilter] Update positions for checkmark overlay [#1960](https://github.com/artsy/reaction/pull/1960) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# 12.1.0 (Tue Jan 29 2019)
+
+#### 🚀  Enhancement
+
+- Sticky footer [#1918](https://github.com/artsy/reaction/pull/1918) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# 12.0.3 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- [minor] Replace height_range/width_range with height/width for clarity [#1959](https://github.com/artsy/reaction/pull/1959) ([@mdole](https://github.com/mdole))
+
+---
+
+# 12.0.2 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- Add size filters [#1948](https://github.com/artsy/reaction/pull/1948) ([@mdole](https://github.com/mdole))
+
+---
+
+# 12.0.1 (Tue Jan 29 2019)
+
+#### 🐛  Bug Fix
+
+- Article titles have h1 headers [#1951](https://github.com/artsy/reaction/pull/1951) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.36.2 [#1957](https://github.com/artsy/reaction/pull/1957) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 12.0.0 (Tue Jan 29 2019)
 
 #### 💥  Breaking Change

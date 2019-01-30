@@ -30,7 +30,6 @@ import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
-import { Helper } from "../../Components/Helper"
 import { OfferSummaryItemFragmentContainer as OfferSummaryItem } from "../../Components/OfferSummaryItem"
 import { TwoColumnLayout } from "../../Components/TwoColumnLayout"
 
@@ -322,7 +321,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     <ConditionsOfSaleDisclaimer textAlign="center" />
                   </Media>
                 </Join>
-                <Spacer mb={3} />
               </>
             }
             Sidebar={
@@ -332,11 +330,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Media greaterThan="xs">
-                  <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
-                  />
-                </Media>
                 <Media at="xs">
                   <Button
                     size="large"
@@ -348,10 +341,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   </Button>
                   <Spacer mb={2} />
                   <ConditionsOfSaleDisclaimer />
-                  <Spacer mb={2} />
-                  <Helper
-                    artworkId={order.lineItems.edges[0].node.artwork.id}
-                  />
                 </Media>
               </Flex>
             }

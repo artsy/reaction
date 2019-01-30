@@ -24,7 +24,6 @@ import {
   emptyAddress,
 } from "Apps/Order/Components/AddressForm"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
-import { Helper } from "Apps/Order/Components/Helper"
 import {
   buyNowFlowSteps,
   offerFlowSteps,
@@ -325,8 +324,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 {/* TODO: Make RadioGroup generic for the allowed values,
-                    which could also ensure the children only use
-                    allowed values. */}
+                  which could also ensure the children only use
+                  allowed values. */}
                 {artwork.pickup_available && (
                   <>
                     <RadioGroup
@@ -386,7 +385,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   <TransactionDetailsSummaryItem order={order} />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <Spacer mb={3} />
                   <Button
@@ -397,7 +395,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   >
                     Continue
                   </Button>
-                  <Spacer mb={2} />
                 </Media>
               </Flex>
             }

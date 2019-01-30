@@ -112,5 +112,15 @@ describe("Text", () => {
 
       expect(wrapper.find(LinkWithTooltip)).toHaveLength(0)
     })
+
+    it("Creates a wrapper around links with 's text nodes, preventing line breaks", () => {
+      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a>'s other amazing content <a href="https://www.artsy.net/artist/pablo-picasso">Picasso</a>'s other amazing...</p>`
+      testProps.layout = "standard"
+      testProps.showTooltips = true
+      const wrapper = mount(getWrapper(testProps))
+
+      expect(wrapper.find(".preventLineBreak").length).toEqual(2)
+      expect(wrapper.html()).toContain("'s</span>")
+    })
   })
 })

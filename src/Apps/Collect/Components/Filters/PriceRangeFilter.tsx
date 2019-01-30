@@ -6,7 +6,7 @@ import { FilterState } from "../../FilterState"
 export const PriceRangeFilter: React.SFC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const [initialMin, initialMax] = filters.priceRangeToTuple()
+  const [initialMin, initialMax] = filters.rangeToTuple("price_range")
   return (
     <ContextConsumer>
       {({ mediator }) => (

@@ -10,6 +10,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { Media } from "Utils/Responsive"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
 import {
@@ -22,10 +23,13 @@ import {
   HeartIcon,
   Join,
   Link,
+  MoreIcon,
   OpenEyeIcon,
+  Sans,
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
+import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
@@ -34,6 +38,7 @@ interface ArtworkActionsProps {
 
 interface ArtworkActionsState {
   showSharePanel: boolean
+  showMorePanel: boolean
 }
 
 @track()
@@ -43,6 +48,7 @@ export class ArtworkActions extends React.Component<
 > {
   state = {
     showSharePanel: false,
+    showMorePanel: false,
   }
 
   @track({
@@ -55,7 +61,13 @@ export class ArtworkActions extends React.Component<
     const showSharePanel = !this.state.showSharePanel
     this.setState({
       showSharePanel,
+      showMorePanel: false,
     })
+  }
+
+  toggleMorePanel() {
+    const showMorePanel = !this.state.showMorePanel
+    this.setState({ showMorePanel, showSharePanel: false })
   }
 
   get isAdmin() {
@@ -73,8 +85,6 @@ export class ArtworkActions extends React.Component<
       const filename = slugify(compact([artistNames, title, date]).join(" "))
       const downloadableImageUrl = `${sd.APP_URL}${href}/download/${filename}.jpg` // prettier-ignore
       return downloadableImageUrl
-    } else {
-      return false
     }
   }
 
@@ -96,40 +106,125 @@ export class ArtworkActions extends React.Component<
       })
   }
 
+  renderSaveButton() {
+    return <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
+  }
+
+  renderViewInRoomButton() {
+    return (
+      <ContextConsumer>
+        {({ mediator }) => (
+          <UtilButton
+            name="viewInRoom"
+            onClick={() => this.openViewInRoom(mediator)}
+            label="View in room"
+          />
+        )}
+      </ContextConsumer>
+    )
+  }
+
+  renderShareButton() {
+    return (
+      <UtilButton
+        name="share"
+        onClick={this.toggleSharePanel.bind(this)}
+        label="Share"
+      />
+    )
+  }
+
+  renderDownloadButton() {
+    return (
+      <UtilButton
+        name="download"
+        href={this.getDownloadableImageUrl()}
+        label="Download"
+      />
+    )
+  }
+
+  renderEditButton() {
+    const { artwork } = this.props
+    const editUrl = `${sd.CMS_URL}/artworks/${artwork.id}/edit?current_partner_id=${artwork.partner.id}` // prettier-ignore
+
+    return <UtilButton name="edit" href={editUrl} label="Edit" />
+  }
+
+  renderGenomeButton() {
+    const { artwork } = this.props
+    const genomeUrl = `${sd.GENOME_URL}/genome/artworks?artwork_ids=${artwork.id}` // prettier-ignore
+
+    return <UtilButton name="genome" href={genomeUrl} label="Genome" />
+  }
+
   render() {
     const { artwork } = this.props
     const downloadableImageUrl = this.getDownloadableImageUrl()
-    const editUrl = `${sd.CMS_URL}/artworks/${artwork.id}/edit?current_partner_id=${artwork.partner.id}` // prettier-ignore
-    const genomeUrl = `${sd.GENOME_URL}/genome/artworks?artwork_ids=${artwork.id}` // prettier-ignore
+
+    const actionsToShow = [
+      { name: "save", condition: true, renderer: this.renderSaveButton },
+      {
+        name: "viewInRoom",
+        condition: artwork.is_hangable && this.isAdmin,
+        renderer: this.renderViewInRoomButton,
+      },
+      { name: "share", condition: true, renderer: this.renderShareButton },
+      {
+        name: "download",
+        condition: !!downloadableImageUrl,
+        renderer: this.renderDownloadButton,
+      },
+      {
+        name: "edit",
+        condition: this.isAdmin,
+        renderer: this.renderEditButton,
+      },
+      {
+        name: "genome",
+        condition: this.isAdmin,
+        renderer: this.renderGenomeButton,
+      },
+    ]
+
+    const showableActions = actionsToShow.filter(action => {
+      return action.condition
+    })
+
+    const initialActions = showableActions.slice(0, 3)
+    const moreActions = showableActions.slice(3)
 
     return (
       <>
         <Container>
           <Join separator={<Spacer mx={0} />}>
-            <SaveButton
-              artwork={this.props.artwork}
-              render={Save(this.props)}
-            />
-            {artwork.is_hangable &&
-              this.isAdmin && (
-                <ContextConsumer>
-                  {({ mediator }) => (
+            <Media greaterThan="xs">
+              <Flex>
+                {showableActions.map(action => {
+                  return (
+                    <div key={action.name}>{action.renderer.bind(this)()}</div>
+                  )
+                })}
+              </Flex>
+            </Media>
+
+            <Media at="xs">
+              <Flex>
+                {initialActions.map(action => {
+                  return (
+                    <div key={action.name}>{action.renderer.bind(this)()}</div>
+                  )
+                })}
+
+                {moreActions &&
+                  moreActions.length > 0 && (
                     <UtilButton
-                      name="viewInRoom"
-                      onClick={() => this.openViewInRoom(mediator)}
+                      name="more"
+                      onClick={this.toggleMorePanel.bind(this)}
                     />
                   )}
-                </ContextConsumer>
-              )}
-            <UtilButton
-              name="share"
-              onClick={this.toggleSharePanel.bind(this)}
-            />
-            {downloadableImageUrl && (
-              <UtilButton name="download" href={downloadableImageUrl} />
-            )}
-            {this.isAdmin && <UtilButton name="edit" href={editUrl} />}
-            {this.isAdmin && <UtilButton name="genome" href={genomeUrl} />}
+              </Flex>
+            </Media>
           </Join>
 
           {this.state.showSharePanel && (
@@ -137,6 +232,23 @@ export class ArtworkActions extends React.Component<
               artwork={this.props.artwork}
               onClose={this.toggleSharePanel.bind(this)}
             />
+          )}
+
+          {this.state.showMorePanel && (
+            <ArtworkPopoutPanel
+              title="More actions"
+              onClose={this.toggleMorePanel.bind(this)}
+            >
+              <Flex flexDirection="row" flexWrap="wrap">
+                {moreActions.map(action => {
+                  return (
+                    <Flex flexDirection="row" flexBasis="50%" key={action.name}>
+                      {action.renderer.bind(this)()}
+                    </Flex>
+                  )
+                })}
+              </Flex>
+            </ArtworkPopoutPanel>
           )}
         </Container>
       </>
@@ -193,14 +305,16 @@ interface UtilButtonProps {
     | "download"
     | "genome"
     | "heart"
+    | "more"
     | "share"
     | "viewInRoom"
   href?: string
   onClick?: () => void
   selected?: boolean
+  label?: string
 }
 
-class UtilButton extends React.Component<
+export class UtilButton extends React.Component<
   UtilButtonProps,
   { hovered: boolean }
 > {
@@ -209,7 +323,7 @@ class UtilButton extends React.Component<
   }
 
   render() {
-    const { href, name, onClick, ...props } = this.props
+    const { href, label, name, onClick, ...props } = this.props
 
     const getIcon = () => {
       switch (name) {
@@ -223,6 +337,8 @@ class UtilButton extends React.Component<
           return GenomeIcon
         case "heart":
           return HeartIcon
+        case "more":
+          return MoreIcon
         case "share":
           return ShareIcon
         case "viewInRoom":
@@ -231,14 +347,19 @@ class UtilButton extends React.Component<
     }
 
     const Icon = getIcon()
-    const fill = this.state.hovered ? color("purple100") : color("black100")
+    const defaultFill = name === "more" ? null : color("black100")
+    const fill = this.state.hovered ? color("purple100") : defaultFill
 
     return (
       <UtilButtonContainer
         p={1}
         pt={0}
         onMouseOver={() => this.setState({ hovered: true })}
-        onMouseOut={() => this.setState({ hovered: false })}
+        onMouseOut={() =>
+          this.setState({
+            hovered: false,
+          })
+        }
         onClick={onClick}
       >
         {href ? (
@@ -247,6 +368,12 @@ class UtilButton extends React.Component<
           </Link>
         ) : (
           <Icon {...props} fill={fill} />
+        )}
+
+        {label && (
+          <Sans size="2" pl={0.5} pt="1px">
+            {label}
+          </Sans>
         )}
       </UtilButtonContainer>
     )
@@ -290,9 +417,9 @@ const Save = (actionProps: ArtworkActionsProps) => (
 
   // If an Auction, use Bell (for notifications); if a standard artwork use Heart
   if (isOpenSale) {
-    return <UtilButton name="bell" selected={isSaved} />
+    return <UtilButton name="bell" selected={isSaved} label="Watch lot" />
   } else {
-    return <UtilButton name="heart" selected={isSaved} />
+    return <UtilButton name="heart" selected={isSaved} label="Save" />
   }
 }
 

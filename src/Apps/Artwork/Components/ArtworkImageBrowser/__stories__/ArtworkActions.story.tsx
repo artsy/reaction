@@ -9,6 +9,10 @@ import { ArtworkActions } from "../ArtworkActions"
 
 const ArtworkActionsAuctionFixture = cloneDeep(ArtworkActionsFixture)
 ArtworkActionsAuctionFixture.artwork.sale.is_closed = false
+ArtworkActionsAuctionFixture.artwork.sale.is_auction = true
+
+const ArtworkActionsNonAdminFixture = cloneDeep(ArtworkActionsFixture)
+ArtworkActionsNonAdminFixture.user.type = "User"
 
 storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
   "ArtworkActions",
@@ -25,6 +29,13 @@ storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
           <RelayStubProvider>
             <ArtworkActions {...ArtworkActionsAuctionFixture as any} />
+          </RelayStubProvider>
+        </Flex>
+      </Section>
+      <Section title="Non-admin">
+        <Flex justifyContent="center" alignItems="flex-end" height="200px">
+          <RelayStubProvider>
+            <ArtworkActions {...ArtworkActionsNonAdminFixture as any} />
           </RelayStubProvider>
         </Flex>
       </Section>

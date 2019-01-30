@@ -3,14 +3,13 @@ import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
-import { Helper } from "Apps/Order/Components/Helper"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -20,7 +19,6 @@ import {
   RelayProp,
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
-import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
@@ -208,10 +206,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
-    const artwork = get(
-      this.props,
-      props => order.lineItems.edges[0].node.artwork
-    )
 
     return (
       <>
@@ -282,7 +276,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   />
                 </Flex>
                 <Spacer mb={[2, 3]} />
-                <Helper artworkId={artwork.id} />
                 <Media at="xs">
                   <>
                     <Spacer mb={3} />
@@ -294,7 +287,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                     >
                       Continue
                     </Button>
-                    <Spacer mb={2} />
                   </>
                 </Media>
               </Flex>
