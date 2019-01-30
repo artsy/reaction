@@ -1,189 +1,345 @@
+import { Button } from "@artsy/palette"
+import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { createTestEnv } from "DevTools/createTestEnv"
-import { graphql } from "react-relay"
+import { Input } from "Components/Input"
+import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
+import { MockBoot } from "DevTools"
+import { mount } from "enzyme"
+import React from "react"
+import { RelayProp } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { UntouchedOfferOrder } from "../../../__tests__/Fixtures/Order"
+import { TransactionDetailsSummaryItem } from "../../Components/TransactionDetailsSummaryItem"
 import {
   initialOfferFailedAmountIsInvalid,
   initialOfferFailedCannotOffer,
   initialOfferSuccess,
 } from "../__fixtures__/MutationResults"
-import { OfferFragmentContainer } from "../Offer"
-import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
+import { OfferFragmentContainer as OfferRoute } from "../Offer"
 
 // Need to mock Utils/Events instead of using mockTracking because
 // Boot's `dispatch` tracking prop overrides the one injected by
 // mockTracking
 jest.unmock("react-tracking")
-jest.unmock("react-relay")
-
 jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
-
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
-const testOrder = { ...UntouchedOfferOrder, id: "1234" }
+const commitMutation = _commitMutation as any
+
+jest.mock("react-relay", () => ({
+  commitMutation: jest.fn(),
+  createFragmentContainer: component => component,
+}))
 
 describe("Offer InitialMutation", () => {
-  const { buildPage, mutations, routes } = createTestEnv({
-    Component: OfferFragmentContainer,
-    defaultData: {
-      order: testOrder,
-    },
-    defaultMutationResults: {
-      ...initialOfferSuccess,
-    },
-    TestPage: OrderAppTestPage,
-    query: graphql`
-      query OfferTestQuery {
-        order: ecommerceOrder(id: "unused") {
-          ...Offer_order
-        }
-      }
-    `,
+  const getWrapper = someProps => {
+    return mount(
+      <MockBoot>
+        <OfferRoute {...someProps} />
+        <ConnectedModalDialog />
+      </MockBoot>
+    )
+  }
+
+  let testProps: any
+  beforeEach(() => {
+    mockPostEvent.mockReset()
+    testProps = {
+      order: { ...UntouchedOfferOrder, id: "1234" },
+      relay: { environment: {} } as RelayProp,
+      router: { push: jest.fn() },
+      mediator: { trigger: jest.fn() },
+    } as any
   })
 
-  describe("the page layout", () => {
-    let page: OrderAppTestPage
-    beforeAll(async () => {
-      page = await buildPage()
-    })
+  it("renders", () => {
+    const component = getWrapper(testProps)
+    const input = component.find(Input)
+    expect(input.text()).toContain("Your offer")
+  })
 
-    it("has an offer input", () => {
-      expect(page.offerInput.text()).toContain("Your offer")
-    })
+  it("shows the list price just below the input", () => {
+    const component = getWrapper(testProps)
+    const container = component.find("div#offer-page-left-column")
+    expect(container.text()).toContain("List price: $16,000")
+  })
 
-    it("shows the list price just below the input", () => {
-      const container = page.find("div#offer-page-left-column")
-      expect(container.text()).toContain("List price: $16,000")
-    })
+  it("can receive input, which updates the transaction summary", () => {
+    const component = getWrapper(testProps)
+    const input = component.find(OfferInput)
+    const transactionSummary = component.find(TransactionDetailsSummaryItem)
 
-    it("can receive input, which updates the transaction summary", () => {
-      expect(page.transactionSummary.text()).toContain("Your offer")
+    expect(transactionSummary.text()).toContain("Your offer")
 
-      page.setOfferAmount(1)
-      expect(page.transactionSummary.text()).toContain("Your offer$1.00")
+    input.props().onChange(1)
+    expect(transactionSummary.text()).toContain("Your offer$1.00")
 
-      page.setOfferAmount(1023)
-      expect(page.transactionSummary.text()).toContain("Your offer$1,023.00")
-    })
+    input.props().onChange(1023)
+    expect(transactionSummary.text()).toContain("Your offer$1,023.00")
   })
 
   describe("mutation", () => {
-    let page: OrderAppTestPage
-    beforeEach(async () => {
-      page = await buildPage()
+    const errorLogger = console.error
+
+    beforeEach(() => {
+      console.error = jest.fn() // Silences component logging.
+      commitMutation.mockReset()
     })
 
-    it("doesn't let the user continue if they haven't typed anything in", async () => {
-      expect(page.offerInput.text()).not.toMatch(
+    afterEach(() => {
+      console.error = errorLogger
+    })
+
+    it("doesn't let the user continue if they haven't typed anything in", () => {
+      const component = getWrapper(testProps)
+
+      expect(component.find(OfferInput).text()).not.toMatch(
         "Offer amount missing or invalid."
       )
-      await page.clickSubmit()
-      expect(mutations.mockFetch).not.toHaveBeenCalled()
-      expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
-    })
+      expect(component.find(OfferInput).props().showError).toBe(false)
 
-    it("doesn't let the user continue if the offer value is not positive", async () => {
-      await page.setOfferAmount(0)
-      expect(page.offerInput.text()).not.toMatch(
+      component.find(Button).simulate("click")
+
+      expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
         "Offer amount missing or invalid."
       )
-      await page.clickSubmit()
-      expect(mutations.mockFetch).not.toHaveBeenCalled()
-      expect(page.offerInput.text()).toMatch("Offer amount missing or invalid.")
+
+      expect(commitMutation).not.toHaveBeenCalled()
     })
 
-    it("routes to shipping screen after mutation completes", async () => {
-      await page.setOfferAmount(16000)
-      await page.clickSubmit()
-      expect(mutations.mockFetch).toHaveBeenCalled()
-      expect(routes.mockPushRoute).toHaveBeenCalledWith("/orders/1234/shipping")
+    it("doesn't let the user continue if the offer value is not positive", () => {
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(0)
+
+      expect(component.find(OfferInput).text()).not.toMatch(
+        "Offer amount missing or invalid."
+      )
+      expect(component.find(OfferInput).props().showError).toBe(false)
+
+      component.find(Button).simulate("click")
+
+      expect(component.find(OfferInput).props().showError).toBe(true)
+      expect(component.find(OfferInput).text()).toMatch(
+        "Offer amount missing or invalid."
+      )
+
+      expect(commitMutation).not.toHaveBeenCalled()
     })
 
-    it("shows the button spinner while committing the mutation", async () => {
-      await page.setOfferAmount(15000)
-      await page.expectButtonSpinnerWhenSubmitting()
+    it("routes to shipping screen after mutation completes", () => {
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(initialOfferSuccess)
+        }
+      )
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(16000)
+      component.find(Button).simulate("click")
+
+      expect(testProps.router.push).toHaveBeenCalledWith(
+        "/orders/1234/shipping"
+      )
+    })
+
+    it("shows the button spinner while committing the mutation", () => {
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(() => {
+        const buttonProps = component
+          .update() // We need to wait for the component to re-render
+          .find("Button")
+          .props() as any
+        expect(buttonProps.loading).toBeTruthy()
+      })
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(16000)
+
+      component.find(Button).simulate("click")
     })
 
     it("shows an error modal when there is an error from the server", async () => {
-      mutations.useResultsOnce(initialOfferFailedCannotOffer)
-      await page.setOfferAmount(16000)
-      await page.clickSubmit()
-      await page.expectAndDismissDefaultErrorDialog()
-      expect(mutations.mockFetch).toHaveBeenCalled()
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(initialOfferFailedCannotOffer)
+        }
+      )
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(16000)
+
+      component.find(Button).simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("An error occurred")
+      expect(errorComponent.text()).toContain(
+        "Something went wrong. Please try again or contact orders@artsy.net."
+      )
+
+      component.find(ModalButton).simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      expect(component.find(ModalDialog).props().show).toBe(false)
     })
 
     it("shows a helpful error message in a modal when there is an error from the server because the amount is invalid", async () => {
-      mutations.useResultsOnce(initialOfferFailedAmountIsInvalid)
+      const component = getWrapper(testProps)
+      const mockCommitMutation = commitMutation as jest.Mock<any>
+      mockCommitMutation.mockImplementationOnce(
+        (_environment, { onCompleted }) => {
+          onCompleted(initialOfferFailedAmountIsInvalid)
+        }
+      )
 
-      await page.setOfferAmount(16000)
-      await page.clickSubmit()
-      await page.expectAndDismissErrorDialogMatching(
-        "Invalid offer",
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(16000)
+
+      component.find(Button).simulate("click")
+
+      await flushPromiseQueue()
+      component.update()
+
+      const errorComponent = component.find(ModalDialog)
+      expect(errorComponent.props().show).toBe(true)
+      expect(errorComponent.text()).toContain("Invalid offer")
+      expect(errorComponent.text()).toContain(
         "The offer amount is either missing or invalid. Please try again."
       )
     })
 
     describe("The 'amount too small' speed bump", () => {
       it("shows if the offer amount is too small", async () => {
-        await page.setOfferAmount(1000)
-        await page.clickSubmit()
+        const component = getWrapper(testProps)
 
-        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        component
+          .find(OfferInput)
+          .props()
+          .onChange(1000)
 
-        await page.expectAndDismissErrorDialogMatching(
-          "Offer may be too low",
-          "Offers within 25% of the list price are most likely to receive a response",
-          "OK"
+        component.find(Button).simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        let dialog = component.find(ModalDialog)
+
+        expect(dialog).toHaveLength(1)
+        expect(dialog.props().show).toBe(true)
+
+        expect(dialog.text()).toMatchInlineSnapshot(
+          `"Offer may be too lowOffers within 25% of the list price are most likely to receive a response.OK"`
         )
 
-        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        const button = component.find(ModalButton)
+        expect(button.length).toBe(1)
+        expect(button.text()).toBe("OK")
 
-        await page.clickSubmit()
-        expect(page.modalDialog.props().show).toBeFalsy()
+        // dismiss message
+        button.simulate("click")
 
-        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        await flushPromiseQueue()
+        component.update()
+
+        dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        // submit again
+        component.find(Button).simulate("click")
+
+        expect(commitMutation).toHaveBeenCalledTimes(1)
       })
     })
 
     describe("The 'amount too high' speed bump", () => {
       it("shows if the offer amount is too high", async () => {
-        await page.setOfferAmount(17000)
-        await page.clickSubmit()
+        const component = getWrapper(testProps)
 
-        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        component
+          .find(OfferInput)
+          .props()
+          .onChange(17000)
 
-        await page.expectAndDismissErrorDialogMatching(
-          "Offer higher than list price",
-          "You’re making an offer higher than the list price",
-          "OK"
+        component.find(Button).simulate("click")
+
+        await flushPromiseQueue()
+        component.update()
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        let dialog = component.find(ModalDialog)
+
+        expect(dialog).toHaveLength(1)
+        expect(dialog.props().show).toBe(true)
+
+        expect(dialog.text()).toMatchInlineSnapshot(
+          `"Offer higher than list priceYou’re making an offer higher than the list price.OK"`
         )
 
-        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        const button = component.find(ModalButton)
+        expect(button.length).toBe(1)
+        expect(button.text()).toBe("OK")
 
-        await page.clickSubmit()
+        // dismiss message
+        button.simulate("click")
 
-        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        await flushPromiseQueue()
+        component.update()
+
+        dialog = component.find(ModalDialog)
+        expect(dialog.props().show).toBe(false)
+
+        expect(commitMutation).not.toHaveBeenCalled()
+
+        // submit again
+        component.find(Button).simulate("click")
+
+        expect(commitMutation).toHaveBeenCalledTimes(1)
       })
     })
   })
 
   describe("Analaytics", () => {
-    let page: OrderAppTestPage
-    beforeEach(async () => {
-      page = await buildPage()
-      mockPostEvent.mockReset()
-    })
-
     it("tracks a pageview", () => {
+      getWrapper(testProps)
+
       expect(trackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", () => {
+      const page = getWrapper(testProps)
+
       expect(mockPostEvent).not.toHaveBeenCalled()
 
       page.find("input").simulate("focus")
@@ -197,11 +353,16 @@ describe("Offer InitialMutation", () => {
     })
 
     it("tracks viwing the low offer speedbump", async () => {
-      await page.setOfferAmount(1000)
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(1000)
 
       expect(mockPostEvent).not.toHaveBeenCalled()
 
-      await page.clickSubmit()
+      component.find(Button).simulate("click")
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
         order_id: "1234",
@@ -211,11 +372,16 @@ describe("Offer InitialMutation", () => {
     })
 
     it("tracks viwing the high offer speedbump", async () => {
-      await page.setOfferAmount(20000)
+      const component = getWrapper(testProps)
+
+      component
+        .find(OfferInput)
+        .props()
+        .onChange(20000)
 
       expect(mockPostEvent).not.toHaveBeenCalled()
 
-      await page.clickSubmit()
+      component.find(Button).simulate("click")
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
         order_id: "1234",

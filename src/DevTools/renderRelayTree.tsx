@@ -2,6 +2,7 @@ import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
 import "DevTools/renderUntil"
 import { mount, RenderUntilPredicate } from "enzyme"
 import React from "react"
+import { Variables } from "relay-runtime"
 import { MockRelayRenderer, MockRelayRendererProps } from "./MockRelayRenderer"
 
 /**
@@ -94,15 +95,30 @@ export function renderRelayTree<
 >(
   params: MockRelayRendererProps & {
     renderUntil?: RenderUntilPredicate<P, S, C>
+    variables?: Variables
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }
 ) {
   const {
+    Component,
+    query,
+    mockResolvers,
+    mockData,
+    mockMutationResults,
     renderUntil: renderUntilPredicate,
+    variables,
     wrapper,
-    ...rendererProps
   } = params
-  const renderer = <MockRelayRenderer {...rendererProps} />
+  const renderer = (
+    <MockRelayRenderer
+      Component={Component}
+      mockResolvers={mockResolvers}
+      query={query}
+      variables={variables}
+      mockData={mockData}
+      mockMutationResults={mockMutationResults}
+    />
+  )
   return mount<C, P, S>(wrapper ? wrapper(renderer) : renderer).renderUntil(
     renderUntilPredicate || RelayFinishedLoading
   )

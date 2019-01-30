@@ -10,7 +10,6 @@ import {
   OperationBase,
   OperationDefaults,
   RecordSource,
-  RelayNetwork,
   Store,
 } from "relay-runtime"
 import {
@@ -44,7 +43,6 @@ export interface MockRelayRendererProps<
    * }}
    */
   mockMutationResults?: object
-  mockNetwork?: RelayNetwork
 }
 
 export interface MockRelayRendererState {
@@ -143,44 +141,6 @@ export class MockRelayRenderer<
     this.setState({ caughtError: { error, errorInfo } })
   }
 
-  getRelayNetwork() {
-    const {
-      mockResolvers,
-      mockData,
-      mockMutationResults,
-      mockNetwork,
-    } = this.props
-
-    if (mockNetwork) {
-      if (mockResolvers || mockData || mockMutationResults) {
-        throw new Error(
-          "You cannot use mockNetwork with mockResolvers, mockData, or mockMutationResults"
-        )
-      }
-      return mockNetwork
-    }
-
-    if ((mockData || mockMutationResults) && mockResolvers) {
-      throw new Error(
-        "You cannot use mockResolvers with either mockData or mockMutationResults"
-      )
-    }
-
-    if (!mockData && !mockResolvers && !mockMutationResults) {
-      throw new Error("You must supply mockData and/or mockMutationResults")
-    }
-
-    return mockData
-      ? createMockNetworkLayer2({
-          mockData,
-          mockMutationResults,
-        })
-      : createMockNetworkLayer({
-          Query: () => ({}),
-          ...mockResolvers,
-        })
-  }
-
   render() {
     // TODO: When extracting these test utils to their own package, this check
     //       should probably become a custom TSLint rule, as there’s no good way
@@ -201,9 +161,30 @@ export class MockRelayRenderer<
       return `Error occurred while rendering Relay component: ${error}`
     }
 
-    const { Component, variables, query } = this.props
+    const {
+      Component,
+      variables,
+      query,
+      mockResolvers,
+      mockData,
+      mockMutationResults,
+    } = this.props
 
-    const network = this.getRelayNetwork()
+    if ((mockData || mockMutationResults) && mockResolvers) {
+      throw new Error(
+        "You cannot use mockResolvers with either mockData or mockMutationResults"
+      )
+    }
+    if (!mockData && !mockResolvers && !mockMutationResults) {
+      throw new Error("You must supply mockData and/or mockMutationResults")
+    }
+
+    const network = mockData
+      ? createMockNetworkLayer2(mockData, mockMutationResults)
+      : createMockNetworkLayer({
+          Query: () => ({}),
+          ...mockResolvers,
+        })
     const source = new RecordSource()
     const store = new Store(source)
     const environment = new Environment({
