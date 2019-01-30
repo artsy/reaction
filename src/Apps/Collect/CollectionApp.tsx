@@ -88,6 +88,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         inquireable_only: { type: "Boolean" }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
+        height: { type: "String" }
+        width: { type: "String" }
+        color: { type: "String" }
       ) {
       id
       slug
@@ -118,6 +121,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           at_auction: $at_auction
           inquireable_only: $inquireable_only
           price_range: $price_range
+          height: $height
+          width: $width
+          color: $color
         )
     }
   `

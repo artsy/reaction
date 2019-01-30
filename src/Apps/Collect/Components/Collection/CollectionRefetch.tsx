@@ -86,6 +86,9 @@ export const CollectionRefetchContainer = createRefetchContainer(
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
+          height: { type: "String" }
+          width: { type: "String" }
+          color: { type: "String" }
         ) {
         slug
         filtered_artworks: artworks(
@@ -101,6 +104,9 @@ export const CollectionRefetchContainer = createRefetchContainer(
           size: 0
           sort: $sort
           price_range: $price_range
+          height: $height
+          width: $width
+          color: $color
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -120,6 +126,9 @@ export const CollectionRefetchContainer = createRefetchContainer(
       $for_sale: Boolean
       $sort: String
       $price_range: String
+      $height: String
+      $width: String
+      $color: String
     ) {
       marketingCollection(slug: $collectionSlug) {
         ...CollectionRefetch_collection
@@ -134,6 +143,9 @@ export const CollectionRefetchContainer = createRefetchContainer(
             offerable: $offerable
             inquireable_only: $inquireable_only
             price_range: $price_range
+            height: $height
+            width: $width
+            color: $color
           )
       }
     }
