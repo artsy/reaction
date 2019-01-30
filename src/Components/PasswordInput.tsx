@@ -134,14 +134,8 @@ export class PasswordInput extends React.Component<
           />
           {this.getRightViewForPassword()}
         </InputContainer>
-        {!error && showPasswordMessage ? (
-          <PasswordMessage>
-            Password must be at least 8 characters.
-          </PasswordMessage>
-        ) : (
-          ""
-        )}
-        <Error show={!!error}>{error}</Error>
+        {!error && showPasswordMessage && <PasswordRequirements />}
+        {error && <Error>{error}</Error>}
       </Container>
     )
   }
@@ -195,15 +189,20 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   z-index: 1;
 `
 
-const Error = styled.div.attrs<{ show: boolean }>({})`
+const Error = styled.div`
   ${unica("s12")};
-  margin-top: ${p => (p.show ? "10px" : "0")};
+  margin-top: 10px;
   color: ${Colors.redMedium};
-  visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
-  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
-  height: ${p => (p.show ? "16px" : "0")};
+  animation: ${growAndFadeIn("16px")} 0.25s linear;
+  height: 16px;
 `
+
+const PasswordRequirements = () => (
+  <PasswordMessage>
+    Password must be at least 8 characters.
+  </PasswordMessage>
+)
 
 const PasswordMessage = styled.div`
   ${unica("s12")};

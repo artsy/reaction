@@ -66,7 +66,7 @@ export class Input extends React.Component<InputProps, InputState> {
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         <StyledInput hasError={!!error} {...rest} />
-        <Error show={!!error}>{error}</Error>
+        {error && <Error>{error}</Error>}
       </Container>
     )
   }
@@ -91,14 +91,13 @@ const Description = styled.div`
   margin: 3px 0 0;
 `
 
-const Error = styled.div.attrs<{ show: boolean }>({})`
+const Error = styled.div`
   ${unica("s12")};
-  margin-top: ${p => (p.show ? "10px" : "0")};
+  margin-top: 10px;
   color: ${Colors.redMedium};
-  visibility: ${p => (p.show ? "visible" : "hidden")};
   transition: visibility 0.2s linear;
-  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
-  height: ${p => (p.show ? "16px" : "0")};
+  animation: ${growAndFadeIn("16px")} 0.25s linear;
+  height: 16px;
 `
 
 export default Input
