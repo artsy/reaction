@@ -2,12 +2,65 @@ import {
   DisplayUnitData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
+  SectionData,
 } from "Components/Publishing/Typings"
 import { cloneDeep, extend, flatten } from "lodash"
 import { ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
 import { GeneProps } from "../ToolTip/GeneToolTip"
+
+export const ImageCollection: SectionData = {
+  type: "image_collection",
+  layout: "overflow_fillwidth",
+  title: "A World Without Capitalism",
+  images: [
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/5ZP7vKuVPqiynVU0jpFewQ%2Funnamed.png",
+      type: "image",
+      width: 600,
+      height: 1067,
+      caption:
+        "<p>John Elisle, <em>The Star</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+    },
+    {
+      url:
+        "https://artsy-media-uploads.s3.amazonaws.com/PcvH_rh89gRGxRXgCyGGng%2Funnamed-5.png",
+      type: "image",
+      width: 600,
+      height: 1067,
+      caption:
+        "<p>John Elisle, <em>The Magician</em>, from the reimagined female Tarot cards. Courtesy of the artist. </p>",
+    },
+    {
+      type: "artwork",
+      id: "596aa2851a1e864d5eea6681",
+      slug: "matt-devine-brass-tax",
+      date: "2000",
+      title: "Brass Tax",
+      image:
+        "https://d32dm0rphc51dk.cloudfront.net/lSBz0tsfvOAm2qKdWwgxLw/larger.jpg",
+      partner: {
+        name: "Joanne Artman Gallery",
+        slug: "joanne-artman-gallery",
+      },
+      artists: [
+        {
+          name: "Matt Devine",
+          slug: "matt-devine",
+        },
+      ],
+      artist: {
+        name: "Matt Devine",
+        slug: "matt-devine",
+      },
+      width: 1500,
+      height: 2000,
+      credit: "Courtesy of The Metropolitan Museum of Art",
+    },
+  ],
+}
 
 export const ArtworkMissingInfo = {
   type: "artwork",
