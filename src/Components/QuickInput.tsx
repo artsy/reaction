@@ -9,15 +9,12 @@ import { borderedInput } from "./Mixins"
 
 export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
-  description?: string
   error?: string
   label?: string
   leftView?: JSX.Element
   rightView?: JSX.Element
   setTouched?: (fields: { [field: string]: boolean }) => void
   showPasswordMessage?: boolean
-  title?: string
-  quick?: boolean
   touchedOnChange?: boolean
   innerRef?: React.RefObject<HTMLInputElement>
 }
@@ -112,21 +109,19 @@ export class QuickInput extends React.Component<
   }
 
   render() {
-    const { error } = this.props
-
-    // prettier-ignore
     const {
-        className,
-        label,
-        leftView,
-        ref: _ref,
-        rightView,
-        showPasswordMessage,
-        type,
-        onChange,
-        setTouched,
-        ...newProps
-      } = this.props
+      error,
+      className,
+      label,
+      leftView,
+      ref: _ref,
+      rightView,
+      showPasswordMessage,
+      type,
+      onChange,
+      setTouched,
+      ...newProps
+    } = this.props
     const showLabel = (!!this.state.focused || !!this.state.value) && !!label
     const isPassword = type === "password"
 
@@ -212,10 +207,6 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
   z-index: 1;
-`
-
-export const Title = styled.div`
-  ${garamond("s17")};
 `
 
 const Error = styled.div.attrs<{ show: boolean }>({})`
