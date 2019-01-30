@@ -1,3 +1,11 @@
+# 12.1.4 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Keep actions and image dots centered for mobile web as well [#1961](https://github.com/artsy/reaction/pull/1961) ([@sweir27](https://github.com/sweir27))
+
+---
+
 # 12.1.3 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
