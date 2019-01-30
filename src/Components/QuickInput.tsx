@@ -1,5 +1,4 @@
 import { space } from "@artsy/palette"
-import { ClosedEyeIcon, OpenEyeIcon } from "@artsy/palette"
 import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
@@ -12,7 +11,6 @@ export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   error?: string
   label?: string
   setTouched?: (fields: { [field: string]: boolean }) => void
-  showPasswordMessage?: boolean
   touchedOnChange?: boolean
   innerRef?: React.RefObject<HTMLInputElement>
 }
@@ -20,7 +18,6 @@ export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
 export interface QuickInputState {
   focused: boolean
   value: string
-  showPassword: boolean
 }
 
 /**
@@ -34,7 +31,6 @@ export class QuickInput extends React.Component<
   state = {
     focused: false,
     value: (this.props.value as string) || "",
-    showPassword: false,
     touchedOnChange: true,
   }
 
@@ -82,44 +78,18 @@ export class QuickInput extends React.Component<
     }
   }
 
-  getRightViewForPassword() {
-    const icon = this.state.showPassword ? (
-      <ClosedEyeIcon onClick={this.toggleShowPassword} />
-    ) : (
-      <OpenEyeIcon onClick={this.toggleShowPassword} />
-    )
-
-    return <Eye onClick={this.toggleShowPassword}>{icon}</Eye>
-  }
-
-  toggleShowPassword = () => {
-    this.setState({
-      showPassword: !this.state.showPassword,
-    })
-  }
-
-  get convertedType() {
-    const { type } = this.props
-    if (this.state.showPassword && type === "password") {
-      return "text"
-    }
-    return type
-  }
-
   render() {
     const {
       error,
       className,
       label,
       ref: _ref,
-      showPasswordMessage,
       type,
       onChange,
       setTouched,
       ...newProps
     } = this.props
     const showLabel = (!!this.state.focused || !!this.state.value) && !!label
-    const isPassword = type === "password"
 
     return (
       <Container>
@@ -136,18 +106,9 @@ export class QuickInput extends React.Component<
             onBlur={this.onBlur}
             onChange={this.onChange}
             value={this.state.value}
-            type={this.convertedType}
             showLabel={showLabel}
           />
-          {isPassword && this.getRightViewForPassword()}
         </InputContainer>
-        {!error && showPasswordMessage ? (
-          <PasswordMessage>
-            Password must be at least 8 characters.
-          </PasswordMessage>
-        ) : (
-          ""
-        )}
         <Error show={!!error}>{error}</Error>
       </Container>
     )
@@ -210,19 +171,6 @@ const Error = styled.div.attrs<{ show: boolean }>({})`
   transition: visibility 0.2s linear;
   animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
   height: ${p => (p.show ? "16px" : "0")};
-`
-
-const PasswordMessage = styled.div`
-  ${unica("s12")};
-  margin-top: 10px;
-  color: ${Colors.graySemibold};
-  height: 16px;
-`
-
-const Eye = styled.span`
-  position: absolute;
-  right: 10px;
-  z-index: 1;
 `
 
 export default QuickInput

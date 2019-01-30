@@ -15,6 +15,7 @@ import { checkEmail } from "Components/Authentication/helpers"
 import { FormProps } from "Components/Authentication/Types"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import Icon from "Components/Icon"
+import PasswordInput from "Components/PasswordInput"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
@@ -107,13 +108,12 @@ export class MobileSignUpForm extends Component<
           wizard,
           form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
-          <QuickInput
+          <PasswordInput
             block
             error={errors.password}
             name="password"
             label="Password"
             placeholder="Password"
-            type="password"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}

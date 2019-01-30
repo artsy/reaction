@@ -15,6 +15,7 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { LoginValidator } from "Components/Authentication/Validators"
+import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 
 const Row = styled.div`
@@ -73,13 +74,12 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 onBlur={handleBlur}
                 autoFocus
               />
-              <QuickInput
+              <PasswordInput
                 block
                 error={touched.password && errors.password}
                 placeholder="Enter your password"
                 name="password"
                 label="Password"
-                type="password"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}

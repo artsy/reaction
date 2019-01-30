@@ -3,6 +3,7 @@ import { checkEmail } from "Components/Authentication/helpers"
 import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import Icon from "../../Icon"
+import PasswordInput from "../../PasswordInput"
 import { ProgressIndicator } from "../../ProgressIndicator"
 import QuickInput from "../../QuickInput"
 import { Step, Wizard } from "../../Wizard"
@@ -80,13 +81,12 @@ export class MobileLoginForm extends Component<FormProps> {
           },
         }) => (
           <Fragment>
-            <QuickInput
+            <PasswordInput
               block
               error={errors.password}
               name="password"
               label="Password"
               placeholder="Password"
-              type="password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}

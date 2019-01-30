@@ -14,6 +14,7 @@ import {
   ModalType,
 } from "Components/Authentication/Types"
 import { SignUpValidator } from "Components/Authentication/Validators"
+import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 
 export interface SignUpFormState {
@@ -64,13 +65,12 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 onBlur={handleBlur}
                 autoFocus
               />
-              <QuickInput
+              <PasswordInput
                 block
                 error={touched.password && errors.password}
                 placeholder="Enter a password"
                 name="password"
                 label="Password"
-                type="password"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}

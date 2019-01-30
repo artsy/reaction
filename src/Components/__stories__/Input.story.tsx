@@ -7,6 +7,7 @@ import { Toggle } from "react-powerplug"
 import Button from "../Buttons/Inverted"
 import { Checkbox } from "../Checkbox"
 import Input from "../Input"
+import PasswordInput from "../PasswordInput"
 import QuickInput from "../QuickInput"
 import TextArea from "../TextArea"
 
@@ -98,8 +99,7 @@ storiesOf("Components/Input", module)
           label="Email"
           block
         />
-        <QuickInput
-          type="password"
+        <PasswordInput
           placeholder="Enter your password"
           label="Password"
           block
@@ -154,7 +154,7 @@ storiesOf("Components/Input", module)
   .add("Form w/ Button", () => (
     <div style={{ padding: 10 }}>
       <Input placeholder="Email" block />
-      <Input type="password" placeholder="Password" block />
+      <PasswordInput placeholder="Password" block />
       <Button block>Submit</Button>
     </div>
   ))
