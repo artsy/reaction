@@ -199,6 +199,14 @@ const SubtitlesContainer = styled(Box)`
 
 const Title = styled(Serif)`
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  h1 {
+    font-style: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    margin: 0;
+  }
 `
 
 const ImageCaption = styled(Box)`

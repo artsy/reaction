@@ -61,7 +61,9 @@ export class CollectApp extends Component<CollectAppProps> {
             alignItems="flex-end"
           >
             <Serif size="8">
-              <h1 className="title">Collect art and design online</h1>
+              <h1 className="title" style={h1Style}>
+                Collect art and design online
+              </h1>
             </Serif>
 
             <Sans size="3" weight="medium">
@@ -75,6 +77,14 @@ export class CollectApp extends Component<CollectAppProps> {
       </AppContainer>
     )
   }
+}
+
+const h1Style = {
+  fontStyle: "inherit",
+  fontFamily: "inherit",
+  fontWeight: 400,
+  fontSize: "inherit",
+  margin: 0,
 }
 
 export const CollectAppFragmentContainer = createFragmentContainer(
