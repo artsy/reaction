@@ -1,3 +1,11 @@
+# 12.1.8 (Thu Jan 31 2019)
+
+#### 🐛  Bug Fix
+
+- Add social sharing buttons on series pages [#1945](https://github.com/artsy/reaction/pull/1945) ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # 12.1.7 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix
