@@ -14,8 +14,7 @@ jest.mock("Utils/logger")
  * We want each test to have assertions, otherwise it’s too easy to write async
  * tests that never end up making any, leading to false positives.
  *
- * TODO: Find a way to make this not emit after failing tests. It creates a
- * ton of unuseful noise in the console.
+ * TODO: Find a way to make this not emit after failing tests.
  */
 afterEach(() => expect.hasAssertions())
 

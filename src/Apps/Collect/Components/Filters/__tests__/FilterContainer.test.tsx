@@ -46,7 +46,11 @@ describe("FilterContainer", () => {
             mediator={mockMediator}
             mediums={mediums}
             user={user}
-          />
+          >
+            {filters => {
+              return <div />
+            }}
+          </FilterContainer>
         </Provider>
       </MockBoot>
     )
@@ -65,7 +69,11 @@ describe("FilterContainer", () => {
             mediator={mockMediator}
             mediums={mediums}
             user={user}
-          />
+          >
+            {filters => {
+              return <div />
+            }}
+          </FilterContainer>
         </Provider>
       </MockBoot>
     )
