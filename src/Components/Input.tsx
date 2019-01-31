@@ -1,7 +1,7 @@
 import { growAndFadeIn } from "Assets/Animations"
 import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
-import React from "react"
+import React, { SFC } from "react"
 import styled from "styled-components"
 import { block } from "./Helpers"
 import { borderedInput } from "./Mixins"
@@ -13,27 +13,26 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   title?: string
 }
 
-export interface InputState {
-  value: string
-}
-
 /**
  * Standard input field.
  * The `title` and `description` props are rendered above the input.
  *
  */
-export class Input extends React.Component<InputProps, InputState> {
-  render() {
-    const { error, title, description, ref, ...rest } = this.props
-    return (
-      <Container>
-        {title && <Title>{title}</Title>}
-        {description && <Description>{description}</Description>}
-        <StyledInput hasError={!!error} {...rest} />
-        {error && <InputError>{error}</InputError>}
-      </Container>
-    )
-  }
+export const Input: SFC<InputProps> = ({
+  error,
+  title,
+  description,
+  ref,
+  ...rest
+}) => {
+  return (
+    <Container>
+      {title && <Title>{title}</Title>}
+      {description && <Description>{description}</Description>}
+      <StyledInput hasError={!!error} {...rest} />
+      {error && <InputError>{error}</InputError>}
+    </Container>
+  )
 }
 
 const Container = styled.div`
