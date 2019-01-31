@@ -111,14 +111,6 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   padding-bottom: 50px;
 }
 
-.c5 h1 {
-  font-style: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  margin: 0;
-}
-
 .c2 {
   padding-bottom: 10px;
 }
@@ -413,14 +405,6 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
   padding-bottom: 50px;
-}
-
-.c5 h1 {
-  font-style: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  margin: 0;
 }
 
 .c2 {

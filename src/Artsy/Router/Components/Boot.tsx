@@ -28,7 +28,15 @@ export interface BootProps {
   headTags?: JSX.Element[]
 }
 
-const { GlobalStyles } = injectGlobalStyles()
+const { GlobalStyles } = injectGlobalStyles(`
+  h1 {
+    font-style: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    margin: 0;
+  }
+`)
 
 // TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {

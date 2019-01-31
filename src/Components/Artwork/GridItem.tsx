@@ -4,6 +4,7 @@ import { Mediator } from "Artsy/SystemContext"
 import { isFunction } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import Metadata from "./Metadata"
@@ -78,12 +79,10 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       return null
     }
 
-    const width = 300
+    const width = 400
     const height = Math.floor(width / this.props.artwork.image.aspect_ratio)
     const type = this.props.artwork.image.aspect_ratio ? "fit" : "fill" // Either scale or crop, based on if an aspect ratio is available.
-    const url = `https://d7hftxdivxxvm.cloudfront.net/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(
-      imageURL
-    )}`
+    const url = `${sd.GEMINI_CLOUDFRONT_URL}/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(imageURL)}` // prettier-ignore
     return url
   }
 
