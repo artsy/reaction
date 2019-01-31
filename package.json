@@ -49,6 +49,7 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
+    "@artsy/auto-config": "^0.0.8",
     "@artsy/palette": "2.37.0",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
