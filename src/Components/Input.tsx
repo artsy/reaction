@@ -11,7 +11,6 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   description?: string
   error?: string
   title?: string
-  touchedOnChange?: boolean
 }
 
 export interface InputState {
@@ -24,41 +23,6 @@ export interface InputState {
  *
  */
 export class Input extends React.Component<InputProps, InputState> {
-  state = {
-    value: (this.props.value as string) || "",
-    touchedOnChange: true,
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.props.name !== newProps.name) {
-      this.setState({
-        value: "",
-      })
-    }
-  }
-
-  onFocus = e => {
-    if (this.props.onFocus) {
-      this.props.onFocus(e)
-    }
-  }
-
-  onBlur = e => {
-    if (this.props.onBlur) {
-      this.props.onBlur(e)
-    }
-  }
-
-  onChange = e => {
-    this.setState({
-      value: e.currentTarget.value,
-    })
-
-    if (this.props.onChange) {
-      this.props.onChange(e)
-    }
-  }
-
   render() {
     const { error, title, description, ref, ...rest } = this.props
     return (
