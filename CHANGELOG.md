@@ -1,3 +1,11 @@
+# 12.1.10 (Thu Jan 31 2019)
+
+#### 🐛  Bug Fix
+
+- Fix SSR issues on /collect, grid images, tracking and h1 global tags [#1970](https://github.com/artsy/reaction/pull/1970) ([@damassi](https://github.com/damassi))
+
+---
+
 # 12.1.9 (Thu Jan 31 2019)
 
 
