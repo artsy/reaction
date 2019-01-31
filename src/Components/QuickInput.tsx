@@ -1,5 +1,6 @@
 import { space } from "@artsy/palette"
 import { fadeIn, fadeOut } from "Assets/Animations"
+import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
@@ -11,6 +12,8 @@ export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   error?: string
   label?: string
+  note?: string
+  rightAddOn?: JSX.Element
   setTouched?: (fields: { [field: string]: boolean }) => void
   touchedOnChange?: boolean
 }
@@ -84,9 +87,10 @@ export class QuickInput extends React.Component<
       className,
       label,
       ref: _ref,
-      type,
       onChange,
       setTouched,
+      rightAddOn,
+      note,
       ...newProps
     } = this.props
     const showLabel = (!!this.state.focused || !!this.state.value) && !!label
@@ -107,7 +111,9 @@ export class QuickInput extends React.Component<
             value={this.state.value}
             showLabel={showLabel}
           />
+          {rightAddOn}
         </InputContainer>
+        {note && <InputNote>{note}</InputNote>}
         {error && <InputError>{error}</InputError>}
       </Container>
     )
@@ -160,6 +166,13 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
   z-index: 1;
+`
+
+const InputNote = styled.div`
+  ${unica("s12")};
+  margin-top: 10px;
+  color: ${Colors.graySemibold};
+  height: 16px;
 `
 
 export default QuickInput

@@ -83,6 +83,31 @@ storiesOf("Components/Input", module)
               value="Content"
               block
             />
+
+            <QuickInput
+              placeholder="Placeholder"
+              label="Title"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+            />
+
+            <PasswordInput
+              placeholder="Placeholder"
+              label="Title"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+            />
+
+            <PasswordInput
+              placeholder="Placeholder"
+              label="Title"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+              showPasswordMessage
+            />
           </section>
         </div>
       )}
@@ -103,6 +128,12 @@ storiesOf("Components/Input", module)
           placeholder="Enter your password"
           label="Password"
           block
+        />
+        <PasswordInput
+          placeholder="Enter your password"
+          label="Password"
+          block
+          showPasswordMessage
         />
       </div>
     </div>
