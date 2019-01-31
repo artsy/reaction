@@ -66,7 +66,7 @@ export class Input extends React.Component<InputProps, InputState> {
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         <StyledInput hasError={!!error} {...rest} />
-        {error && <Error>{error}</Error>}
+        {error && <InputError>{error}</InputError>}
       </Container>
     )
   }
@@ -91,7 +91,7 @@ const Description = styled.div`
   margin: 3px 0 0;
 `
 
-const Error = styled.div`
+export const InputError = styled.div`
   ${unica("s12")};
   margin-top: 10px;
   color: ${Colors.redMedium};

@@ -1,10 +1,11 @@
 import { space } from "@artsy/palette"
-import { fadeIn, fadeOut, growAndFadeIn } from "Assets/Animations"
-import Colors from "Assets/Colors"
+import { fadeIn, fadeOut } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { borderedInput } from "./Mixins"
+
+import { InputError } from "./Input"
 
 export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
@@ -107,7 +108,7 @@ export class QuickInput extends React.Component<
             showLabel={showLabel}
           />
         </InputContainer>
-        {error && <Error>{error}</Error>}
+        {error && <InputError>{error}</InputError>}
       </Container>
     )
   }
@@ -159,15 +160,6 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
   animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
   z-index: 1;
-`
-
-const Error = styled.div`
-  ${unica("s12")};
-  margin-top: 10px;
-  color: ${Colors.redMedium};
-  transition: visibility 0.2s linear;
-  animation: ${growAndFadeIn("16px")} 0.25s linear;
-  height: 16px;
 `
 
 export default QuickInput
