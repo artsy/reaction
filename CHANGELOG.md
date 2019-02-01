@@ -1,3 +1,11 @@
+# v12.1.13 (Fri Feb 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes height, width, and color filters on collections [#1965](https://github.com/artsy/reaction/pull/1965) ([@mdole](https://github.com/mdole))
+
+---
+
 # v12.1.12 (Fri Feb 01 2019)
 
 #### 🐛  Bug Fix
