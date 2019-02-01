@@ -125,6 +125,12 @@ return {
       "name": "sort",
       "type": "String",
       "defaultValue": "-decayed_merch"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": "*-*"
     }
   ],
   "selections": [
@@ -294,6 +300,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
           "type": null
@@ -309,5 +321,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5f9c312bd6b9c7197d1b491d7c52ef83';
+(node as any).hash = '379731c794a70e9040dfd5dd879d1cfd';
 export default node;

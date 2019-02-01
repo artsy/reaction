@@ -81,6 +81,12 @@ return {
       "name": "offerable",
       "type": "Boolean",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": "*-*"
     }
   ],
   "selections": [
@@ -148,6 +154,12 @@ return {
           "type": "ID"
         },
         {
+          "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
+          "type": "String"
+        },
+        {
           "kind": "Literal",
           "name": "size",
           "value": 0,
@@ -174,5 +186,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2147f6c0a04d64072e36638c68460fbc';
+(node as any).hash = '8dd29625ea0a7f1a1ecf8168464322ad';
 export default node;

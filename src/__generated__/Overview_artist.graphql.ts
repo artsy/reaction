@@ -138,6 +138,12 @@ return {
         "top-established",
         "top-emerging"
       ]
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": "*-*"
     }
   ],
   "selections": [
@@ -218,6 +224,12 @@ return {
           "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
           "type": null
         },
         {
@@ -480,5 +492,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '49bbaacc4883ab3cebebe746ea9bb1a6';
+(node as any).hash = 'd3c2803548d99eddce4f393c519db8b5';
 export default node;

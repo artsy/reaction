@@ -10,6 +10,7 @@ import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "./ArtworkFilterRefetch"
 import { MobileActionSheet } from "./MobileActionSheet"
+import { PriceRangeFilter } from "./PriceRangeFilter"
 
 import {
   Box,
@@ -82,6 +83,14 @@ class Filter extends Component<Props> {
             counts: mediumAggregation.counts,
             mediator,
           })}
+        </Toggle>
+        <Toggle
+          label="Price"
+          expanded={filterState.state.price_range !== "*-*"}
+        >
+          <Flex flexDirection="column" alignItems="left" my={1}>
+            <PriceRangeFilter filters={filterState} />
+          </Flex>
         </Toggle>
         <Toggle
           expanded={filterState.state.partner_id && !this.showZeroState}
@@ -381,6 +390,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
         }
         sort: { type: "String", defaultValue: "-decayed_merch" }
+        price_range: { type: "String", defaultValue: "*-*" }
       ) {
       id
       name
@@ -413,6 +423,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           acquireable: $acquireable
           at_auction: $at_auction
           inquireable_only: $inquireable_only
+          price_range: $price_range
         )
 
       ...FollowArtistButton_artist
