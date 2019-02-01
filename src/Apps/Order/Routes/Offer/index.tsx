@@ -1,4 +1,13 @@
-import { Button, Col, Flex, Message, Row, Sans, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Col,
+  Flex,
+  Message,
+  Row,
+  Sans,
+  Spacer,
+  TextAreaChange,
+} from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -35,6 +44,7 @@ export interface OfferProps {
 
 export interface OfferState {
   offerValue: number
+  offerNoteValue: TextAreaChange
   isCommittingMutation: boolean
   formIsDirty: boolean
   lowSpeedBumpEncountered: boolean
@@ -49,6 +59,7 @@ const enableOfferNote = sd.ENABLE_OFFER_NOTE
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state: OfferState = {
     offerValue: 0,
+    offerNoteValue: { value: "", exceedsCharacterLimit: false },
     isCommittingMutation: false,
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
@@ -96,11 +107,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   onContinueButtonPressed: () => void = async () => {
     const {
       offerValue,
+      offerNoteValue,
       lowSpeedBumpEncountered,
       highSpeedBumpEncountered,
     } = this.state
 
-    if (offerValue <= 0) {
+    if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
       this.setState({ formIsDirty: true })
       return
     }
@@ -160,6 +172,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 amount: offerValue,
                 currencyCode: "USD",
               },
+              // TODO: put note in here
             },
           },
           onCompleted: data => {
@@ -251,7 +264,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 {enableOfferNote && (
                   <>
                     <RevealButton align="left" buttonLabel="Add note to seller">
-                      <OfferNote onChange={console.log} artworkId={artworkId} />
+                      <OfferNote
+                        onChange={offerNoteValue =>
+                          this.setState({ offerNoteValue })
+                        }
+                        artworkId={artworkId}
+                      />
                       >
                     </RevealButton>
                     <Spacer mb={[2, 3]} />

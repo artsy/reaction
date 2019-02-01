@@ -7,7 +7,7 @@ import {
   Row,
   Sans,
   Spacer,
-  TextArea,
+  TextAreaChange,
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
@@ -53,6 +53,7 @@ export interface RespondProps {
 
 export interface RespondState {
   offerValue: number
+  offerNoteValue: TextAreaChange
   formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
@@ -68,6 +69,7 @@ const enableOfferNote = sd.ENABLE_OFFER_NOTE
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state: RespondState = {
     offerValue: 0,
+    offerNoteValue: { value: "", exceedsCharacterLimit: false },
     responseOption: null,
     isCommittingMutation: false,
     formIsDirty: false,
@@ -117,12 +119,13 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     const {
       responseOption,
       offerValue,
+      offerNoteValue,
       lowSpeedBumpEncountered,
       highSpeedBumpEncountered,
     } = this.state
 
     if (responseOption === "COUNTER") {
-      if (offerValue <= 0) {
+      if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
         this.setState({ formIsDirty: true })
         return
       }
@@ -202,6 +205,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 amount: price,
                 currencyCode: "USD",
               },
+              // TODO: put note in here
             },
           },
           onCompleted: result => {
@@ -304,15 +308,11 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                           >
                             <Spacer mb={1} />
                             <OfferNote
-                              onChange={console.log}
+                              onChange={offerNoteValue =>
+                                this.setState({ offerNoteValue })
+                              }
                               artworkId={artworkId}
-                            />
-                            <TextArea
-                              title="Note (optional)"
-                              characterLimit={200}
-                              description="Use this note to add any additional context about your offer/counteroffer. Please do not share personal information in this field. For any questions about the work, ask our specialists."
-                              placeholder="Add a note"
-                              onChange={console.log}
+                              counteroffer
                             />
                           </RevealButton>
                         </>

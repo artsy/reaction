@@ -1,12 +1,13 @@
 import { Link, TextArea, TextAreaChange } from "@artsy/palette"
-import { ContextProvider } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import React from "react"
 
 export const OfferNote: React.SFC<{
   onChange(change: TextAreaChange): void
   artworkId: string
-}> = ({ onChange, artworkId }) => (
-  <ContextProvider>
+  counteroffer?: boolean
+}> = ({ onChange, artworkId, counteroffer }) => (
+  <ContextConsumer>
     {({ mediator }) => (
       <TextArea
         title="Note (optional)"
@@ -14,12 +15,13 @@ export const OfferNote: React.SFC<{
         description={
           <>
             Use this note to add any additional context about your
-            offer/counteroffer. Please do not share personal information in this
-            field. For any questions about the work,{" "}
+            {counteroffer ? " counteroffer" : " offer"}. Please do not share
+            personal information in this field. For any questions about the
+            work,{" "}
             <Link
               onClick={() =>
                 mediator.trigger("openOrdersContactArtsyModal", {
-                  artworkId: this.props.artworkId,
+                  artworkId,
                 })
               }
             >
@@ -31,5 +33,5 @@ export const OfferNote: React.SFC<{
         onChange={onChange}
       />
     )}
-  </ContextProvider>
+  </ContextConsumer>
 )
