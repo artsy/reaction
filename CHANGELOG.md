@@ -1,3 +1,15 @@
+# v12.1.12 (Fri Feb 01 2019)
+
+#### 🐛  Bug Fix
+
+- pass custom title query param [#1982](https://github.com/artsy/reaction/pull/1982) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.37.6 [#1980](https://github.com/artsy/reaction/pull/1980) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.11 (Fri Feb 01 2019)
 
 #### 🐛  Bug Fix
