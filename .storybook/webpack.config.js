@@ -36,6 +36,7 @@ const {
   USER_LAB_FEATURES,
   WEBPACK_DEVTOOL = "cheap-module-eval-source-map",
   XAPP_TOKEN,
+  ENABLE_OFFER_NOTE,
 } = process.env
 
 const isCI = CI || NETLIFY
@@ -58,6 +59,7 @@ const sharifyPath = sharify({
   NODE_ENV,
   STRIPE_PUBLISHABLE_KEY,
   XAPP_TOKEN,
+  ENABLE_OFFER_NOTE,
 })
 
 const plugins = [
