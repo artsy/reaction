@@ -7,11 +7,14 @@ import {
   Row,
   Sans,
   Spacer,
+  TextArea,
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { OfferNote } from "Apps/Order/Components/OfferNote"
+import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -28,6 +31,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -57,6 +61,8 @@ export interface RespondState {
 }
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
+
+const enableOfferNote = sd.ENABLE_OFFER_NOTE
 
 @track()
 export class RespondRoute extends Component<RespondProps, RespondState> {
@@ -229,6 +235,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     const { order } = this.props
     const { isCommittingMutation } = this.state
 
+    const artworkId = order.lineItems.edges[0].node.artwork.id
+
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
@@ -287,6 +295,28 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                         onChange={offerValue => this.setState({ offerValue })}
                         onFocus={this.onOfferInputFocus.bind(this)}
                       />
+                      {enableOfferNote && (
+                        <>
+                          <Spacer mb={0.5} />
+                          <RevealButton
+                            align="left"
+                            buttonLabel="Add note to seller"
+                          >
+                            <Spacer mb={1} />
+                            <OfferNote
+                              onChange={console.log}
+                              artworkId={artworkId}
+                            />
+                            <TextArea
+                              title="Note (optional)"
+                              characterLimit={200}
+                              description="Use this note to add any additional context about your offer/counteroffer. Please do not share personal information in this field. For any questions about the work, ask our specialists."
+                              placeholder="Add a note"
+                              onChange={console.log}
+                            />
+                          </RevealButton>
+                        </>
+                      )}
                     </StaticCollapse>
                   </BorderedRadio>
                   <BorderedRadio value="DECLINE">

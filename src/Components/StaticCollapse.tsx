@@ -1,12 +1,11 @@
 import React from "react"
 
-export class StaticCollapse extends React.Component<{ open: boolean }> {
+export class StaticCollapse extends React.Component<
+  { open: boolean },
+  { open: boolean; hasChanged: boolean; firstRender: boolean }
+> {
   wrapperModifyTimeout: ReturnType<typeof setTimeout>
   wrapperRef: HTMLDivElement | null = null
-
-  state = {
-    firstRender: true,
-  }
 
   onTransitionEnd = (ev: TransitionEvent) => {
     if (!this.wrapperRef) {
@@ -17,10 +16,11 @@ export class StaticCollapse extends React.Component<{ open: boolean }> {
     }
   }
 
-  componentWillReceiveProps() {
-    // this is only called after the first mount if the props change
-    if (this.state.firstRender) {
-      this.setState({ firstRender: false })
+  static getDerivedStateFromProps(props, prevState) {
+    return {
+      open: props.open,
+      hasChanged: prevState != null && prevState.open !== props.open,
+      firstRender: prevState == null,
     }
   }
 
@@ -30,11 +30,20 @@ export class StaticCollapse extends React.Component<{ open: boolean }> {
     }
 
     this.wrapperRef.addEventListener("transitionend", this.onTransitionEnd)
-    this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
   }
 
   componentDidUpdate() {
     if (!this.wrapperRef) {
+      return
+    }
+    if (!this.state.hasChanged) {
+      if (this.wrapperRef.style.height === "") {
+        // second render, no update to state, but the style.height value was
+        // unset (See render method) so we need to make sure it's set.
+        // For the remainder of this component's life we control it's
+        // style.height outside of the render cycle
+        this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
+      }
       return
     }
     if (this.props.open && this.wrapperRef.style.height !== "auto") {
