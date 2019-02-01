@@ -2,6 +2,7 @@ import {
   BorderedRadio,
   Button,
   Col,
+  Collapse,
   Flex,
   RadioGroup,
   Row,
@@ -21,7 +22,6 @@ import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { StaticCollapse } from "Components/StaticCollapse"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -285,11 +285,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     Accept seller's offer
                   </BorderedRadio>
 
-                  <BorderedRadio value="COUNTER">
+                  <BorderedRadio value="COUNTER" position="relative">
                     Send counteroffer
-                    <StaticCollapse
-                      open={this.state.responseOption === "COUNTER"}
-                    >
+                    <Collapse open={this.state.responseOption === "COUNTER"}>
                       <Spacer mb={2} />
                       <OfferInput
                         id="RespondForm_RespondValue"
@@ -317,19 +315,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                           </RevealButton>
                         </>
                       )}
-                    </StaticCollapse>
+                    </Collapse>
                   </BorderedRadio>
-                  <BorderedRadio value="DECLINE">
+                  <BorderedRadio value="DECLINE" position="relative">
                     Decline seller's offer
-                    <StaticCollapse
-                      open={this.state.responseOption === "DECLINE"}
-                    >
+                    <Collapse open={this.state.responseOption === "DECLINE"}>
                       <Spacer mb={1} />
                       <Sans size="2" color="black60">
                         Declining an offer will end the negotiation process on
                         this offer.
                       </Sans>
-                    </StaticCollapse>
+                    </Collapse>
                   </BorderedRadio>
                 </RadioGroup>
                 <Spacer mb={[2, 3]} />

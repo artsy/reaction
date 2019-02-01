@@ -1,5 +1,4 @@
-import { Button, Flex } from "@artsy/palette"
-import { StaticCollapse } from "Components/StaticCollapse"
+import { Button, Collapse, Flex } from "@artsy/palette"
 import React from "react"
 
 interface RevealButtonProps {
@@ -47,7 +46,7 @@ export class RevealButton extends React.Component<
             {buttonLabel}
           </Button>
         </Flex>
-        <StaticCollapse open={this.state.showing}>{children}</StaticCollapse>
+        <Collapse open={this.state.showing}>{children}</Collapse>
       </Flex>
     )
   }

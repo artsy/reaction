@@ -1,4 +1,4 @@
-import { Button } from "@artsy/palette"
+import { Button, Collapse } from "@artsy/palette"
 import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.graphql"
 import {
   Buyer,
@@ -7,7 +7,6 @@ import {
   OfferWithTotals,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
-import { StaticCollapse } from "Components/StaticCollapse"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -67,13 +66,13 @@ describe("OfferHistoryItem", () => {
     const button = offerHistory.find(Button)
     expect(button).toHaveLength(1)
 
-    const collapse = offerHistory.find(StaticCollapse)
+    const collapse = offerHistory.find(Collapse)
 
     expect(collapse.props().open).toBeFalsy()
 
     button.simulate("click")
 
-    expect(offerHistory.find(StaticCollapse).props().open).toBeTruthy()
+    expect(offerHistory.find(Collapse).props().open).toBeTruthy()
 
     const text = offerHistory.text()
     expect(text).toMatch("You (May 21)$1,200.00")
