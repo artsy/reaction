@@ -1,4 +1,4 @@
-import { ClosedEyeIcon, OpenEyeIcon } from "@artsy/palette"
+import { ClosedEyeIcon, OpenEyeIcon, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
@@ -62,7 +62,7 @@ export class PasswordInput extends React.Component<
 
 const Eye = styled.span`
   position: absolute;
-  right: 10px;
+  right: ${space(1)}px;
   z-index: 1;
 `
 

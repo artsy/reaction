@@ -1,6 +1,7 @@
-// import { ClosedEyeIcon, OpenEyeIcon } from "@artsy/palette"
 import { mount } from "enzyme"
+import "jest-styled-components"
 import React from "react"
+import renderer from "react-test-renderer"
 
 import PasswordInput from "../PasswordInput"
 
@@ -18,6 +19,12 @@ describe("PasswordInput", () => {
     expect(wrapper.find('input[type="text"]').length).toEqual(0)
   })
 
+  it("renders masked as a snapshot", () => {
+    const component = renderer.create(<PasswordInput />).toJSON()
+
+    expect(component).toMatchSnapshot()
+  })
+
   it("renders unmasked if you click on the eye", () => {
     const wrapper = mount(<PasswordInput />)
 
@@ -26,6 +33,16 @@ describe("PasswordInput", () => {
 
     expect(wrapper.find('input[type="password"]').length).toEqual(0)
     expect(wrapper.find('input[type="text"]').length).toEqual(1)
+  })
+
+  it("renders unmasked as a snapshot", () => {
+    const component = renderer.create(<PasswordInput />)
+
+    const root = component.root
+    const input = root.find(element => element.type === "svg")
+    input.props.onClick()
+
+    expect(component.toJSON()).toMatchSnapshot()
   })
 
   it("shows error instead of note when error exists", () => {
