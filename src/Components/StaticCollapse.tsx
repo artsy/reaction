@@ -2,7 +2,12 @@ import React from "react"
 
 export class StaticCollapse extends React.Component<
   { open: boolean },
-  { open: boolean; hasChanged: boolean; firstRender: boolean }
+  {
+    open: boolean
+    hasChanged: boolean
+    firstRender: boolean
+    initialState: boolean
+  }
 > {
   wrapperModifyTimeout: ReturnType<typeof setTimeout>
   wrapperRef: HTMLDivElement | null = null
@@ -16,11 +21,22 @@ export class StaticCollapse extends React.Component<
     }
   }
 
+  state = {
+    open: this.props.open,
+    hasChanged: false,
+    firstRender: true,
+    // ititialState is only true up until the first getDerivedStateFromProps is called
+    // *before* the first render then firstRender is true during the first render
+    // but not afterwards
+    initialState: true,
+  }
+
   static getDerivedStateFromProps(props, prevState) {
     return {
       open: props.open,
-      hasChanged: prevState != null && prevState.open !== props.open,
-      firstRender: prevState == null,
+      hasChanged: !prevState.initialState && prevState.open !== props.open,
+      firstRender: prevState.initialState,
+      initialState: false,
     }
   }
 
@@ -37,6 +53,7 @@ export class StaticCollapse extends React.Component<
       return
     }
     if (!this.state.hasChanged) {
+      console.log("the state didn't change")
       if (this.wrapperRef.style.height === "") {
         // second render, no update to state, but the style.height value was
         // unset (See render method) so we need to make sure it's set.
