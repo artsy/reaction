@@ -1,16 +1,12 @@
 import React from "react"
 
-export class StaticCollapse extends React.Component<
-  { open: boolean },
-  {
-    open: boolean
-    hasChanged: boolean
-    firstRender: boolean
-    initialState: boolean
-  }
-> {
+export class StaticCollapse extends React.Component<{ open: boolean }> {
   wrapperModifyTimeout: ReturnType<typeof setTimeout>
   wrapperRef: HTMLDivElement | null = null
+
+  state = {
+    firstRender: true,
+  }
 
   onTransitionEnd = (ev: TransitionEvent) => {
     if (!this.wrapperRef) {
@@ -21,23 +17,15 @@ export class StaticCollapse extends React.Component<
     }
   }
 
-  state = {
-    open: this.props.open,
-    hasChanged: false,
-    firstRender: true,
-    // ititialState is only true up until the first getDerivedStateFromProps is called
-    // *before* the first render then firstRender is true during the first render
-    // but not afterwards
-    initialState: true,
+  componentWillReceiveProps() {
+    // this is only called after the first mount if the props change
+    if (this.state.firstRender) {
+      this.setState({ firstRender: false })
+    }
   }
 
-  static getDerivedStateFromProps(props, prevState) {
-    return {
-      open: props.open,
-      hasChanged: !prevState.initialState && prevState.open !== props.open,
-      firstRender: prevState.initialState,
-      initialState: false,
-    }
+  shouldComponentUpdate(nextProps) {
+    return nextProps.open !== this.props.open
   }
 
   componentDidMount() {
@@ -46,21 +34,11 @@ export class StaticCollapse extends React.Component<
     }
 
     this.wrapperRef.addEventListener("transitionend", this.onTransitionEnd)
+    this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
   }
 
   componentDidUpdate() {
     if (!this.wrapperRef) {
-      return
-    }
-    if (!this.state.hasChanged) {
-      console.log("the state didn't change")
-      if (this.wrapperRef.style.height === "") {
-        // second render, no update to state, but the style.height value was
-        // unset (See render method) so we need to make sure it's set.
-        // For the remainder of this component's life we control it's
-        // style.height outside of the render cycle
-        this.wrapperRef.style.height = this.props.open ? "auto" : "0px"
-      }
       return
     }
     if (this.props.open && this.wrapperRef.style.height !== "auto") {
