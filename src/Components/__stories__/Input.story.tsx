@@ -19,7 +19,7 @@ const Subtitle = styled.h2`
 `
 
 storiesOf("Components/Input", module)
-  .add("Default Input", () => (
+  .add("Input", () => (
     <div style={{ padding: 10 }}>
       <Title>Input</Title>
       <Subtitle>Our default input style. Title is optional.</Subtitle>
@@ -61,9 +61,7 @@ storiesOf("Components/Input", module)
       {({ on, toggle }) => (
         <div style={{ padding: 10 }}>
           <Title>Input with error</Title>
-          <Subtitle>
-            Used when greater context is needed beyond the title.
-          </Subtitle>
+          <Subtitle>Our default input style. Title is optional.</Subtitle>
 
           <Button onClick={toggle}>Toggle errors</Button>
 
@@ -83,7 +81,35 @@ storiesOf("Components/Input", module)
               value="Content"
               block
             />
+          </section>
+        </div>
+      )}
+    </Toggle>
+  ))
+  .add("QuickInput", () => (
+    <div style={{ padding: 10 }}>
+      <Title>QuickInput</Title>
+      <Subtitle>Used for short/simple forms</Subtitle>
 
+      <div style={{ padding: 10 }}>
+        <QuickInput
+          placeholder="Enter your email address"
+          label="Email"
+          block
+        />
+      </div>
+    </div>
+  ))
+  .add("QuickInput with Error", () => (
+    <Toggle initial>
+      {({ on, toggle }) => (
+        <div style={{ padding: 10 }}>
+          <Title>QuickInput with error</Title>
+          <Subtitle>Used for short/simple forms</Subtitle>
+
+          <Button onClick={toggle}>Toggle errors</Button>
+
+          <section style={{ padding: 10 }}>
             <QuickInput
               placeholder="Placeholder"
               label="Title"
@@ -91,10 +117,44 @@ storiesOf("Components/Input", module)
               value="Content"
               block
             />
+          </section>
+        </div>
+      )}
+    </Toggle>
+  ))
+  .add("PasswordInput", () => (
+    <div style={{ padding: 10 }}>
+      <Title>PasswordInput</Title>
+      <Subtitle>A specialized QuickInput for password entry</Subtitle>
 
+      <div style={{ padding: 10 }}>
+        <PasswordInput
+          placeholder="Enter your password"
+          label="Password"
+          block
+        />
+        <PasswordInput
+          placeholder="Enter your password"
+          label="Password (with requirements)"
+          block
+          showPasswordMessage
+        />
+      </div>
+    </div>
+  ))
+  .add("PasswordInput with Error", () => (
+    <Toggle initial>
+      {({ on, toggle }) => (
+        <div style={{ padding: 10 }}>
+          <Title>PasswordInput with error</Title>
+          <Subtitle>A specialized QuickInput for password entry</Subtitle>
+
+          <Button onClick={toggle}>Toggle errors</Button>
+
+          <section style={{ padding: 10 }}>
             <PasswordInput
               placeholder="Placeholder"
-              label="Title"
+              label="Password"
               error={on ? "There was a problem" : null}
               value="Content"
               block
@@ -102,7 +162,7 @@ storiesOf("Components/Input", module)
 
             <PasswordInput
               placeholder="Placeholder"
-              label="Title"
+              label="Password (with requirements)"
               error={on ? "There was a problem" : null}
               value="Content"
               block
@@ -112,31 +172,6 @@ storiesOf("Components/Input", module)
         </div>
       )}
     </Toggle>
-  ))
-  .add("Input with Label", () => (
-    <div style={{ padding: 10 }}>
-      <Title>Input with label</Title>
-      <Subtitle>Used for short/simple forms</Subtitle>
-
-      <div style={{ padding: 10 }}>
-        <QuickInput
-          placeholder="Enter your email address"
-          label="Email"
-          block
-        />
-        <PasswordInput
-          placeholder="Enter your password"
-          label="Password"
-          block
-        />
-        <PasswordInput
-          placeholder="Enter your password"
-          label="Password"
-          block
-          showPasswordMessage
-        />
-      </div>
-    </div>
   ))
   .add("Text Areas", () => (
     <div>
