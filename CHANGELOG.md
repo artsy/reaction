@@ -1,3 +1,22 @@
+# v12.1.11 (Fri Feb 01 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured  => [Artist] Add price filtering to artist page [#1972](https://github.com/artsy/reaction/pull/1972) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.37.5 [#1978](https://github.com/artsy/reaction/pull/1978) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.37.3 [#1977](https://github.com/artsy/reaction/pull/1977) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.37.2 [#1976](https://github.com/artsy/reaction/pull/1976) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.37.1 [#1973](https://github.com/artsy/reaction/pull/1973) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/auto-config to 0.0.8 [#1975](https://github.com/artsy/reaction/pull/1975) ([@renovate-bot](https://github.com/renovate-bot))
+- Use shared auto config [#1974](https://github.com/artsy/reaction/pull/1974) ([@zephraph](https://github.com/zephraph))
+- Update dependency @artsy/palette to v2.37.0 [#1967](https://github.com/artsy/reaction/pull/1967) ([@renovate-bot](https://github.com/renovate-bot))
+- Update yarn orb to v0.1.5 [#1971](https://github.com/artsy/reaction/pull/1971) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # 12.1.10 (Thu Jan 31 2019)
 
 #### 🐛  Bug Fix
