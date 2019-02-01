@@ -1,3 +1,67 @@
+# 12.1.10 (Thu Jan 31 2019)
+
+#### 🐛  Bug Fix
+
+- Fix SSR issues on /collect, grid images, tracking and h1 global tags [#1970](https://github.com/artsy/reaction/pull/1970) ([@damassi](https://github.com/damassi))
+
+---
+
+# 12.1.9 (Thu Jan 31 2019)
+
+
+
+---
+
+# 12.1.8 (Thu Jan 31 2019)
+
+#### 🐛  Bug Fix
+
+- Add social sharing buttons on series pages [#1945](https://github.com/artsy/reaction/pull/1945) ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# 12.1.7 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Fixture for ImageCollection data [#1968](https://github.com/artsy/reaction/pull/1968) ([@eessex](https://github.com/eessex))
+
+---
+
+# 12.1.6 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Make entire link clickable on artwork actions [#1966](https://github.com/artsy/reaction/pull/1966) ([@sweir27](https://github.com/sweir27))
+
+---
+
+# 12.1.5 (Wed Jan 30 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "Refactor tests" [#1963](https://github.com/artsy/reaction/pull/1963) ([@ds300](https://github.com/ds300))
+- Refactor tests [#1899](https://github.com/artsy/reaction/pull/1899) ([@ds300](https://github.com/ds300) sweir27@gmail.com)
+
+#### ⚠️  Pushed to master
+
+- remove --detectOpenHandles  ([@ds300](https://github.com/ds300))
+- add --forceExit to jest invocation  ([@ds300](https://github.com/ds300))
+- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
+- don't re-calculate path array  ([@ds300](https://github.com/ds300))
+- add todo comment context  ([@ds300](https://github.com/ds300))
+- More sanity checks  ([@ds300](https://github.com/ds300))
+- add detectOpenHandles to jest invocation  ([@ds300](https://github.com/ds300))
+- make better use of graphql api  ([@ds300](https://github.com/ds300))
+- abmiguous -> ambiguous  ([@ds300](https://github.com/ds300))
+- Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
+- Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
+- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
+- Merge branch 'master' into refactor-tests  ([@d.j.sheldrick@gmail.com](https://github.com/d.j.sheldrick@gmail.com))
+- bring countdown timer test fixtures closer to the tests  ([@ds300](https://github.com/ds300))
+
+---
+
 # 12.1.4 (Wed Jan 30 2019)
 
 #### 🐛  Bug Fix

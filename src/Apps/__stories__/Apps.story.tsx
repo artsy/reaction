@@ -36,7 +36,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={collectRoutes}
-        initialRoute="/collection/street-art-now"
+        initialRoute="/collection/david-hockney-ipad-drawings"
         context={{
           mediator: {
             trigger: x => x,

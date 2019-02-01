@@ -2,15 +2,20 @@
 # yarn lockfile v1
 
 
+"@artsy/auto-config@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-0.0.8.tgz#8ed725ea865a2dd976e0b7da954c313d04b24f64"
+  integrity sha512-18INV7f1pqYYNxtlo/Ai9Sa24IrH/q/S+2flUw2/bWku9wAdjuRMB16+HhENO4mcQMIjw5LkfFxtrKVzpvganQ==
+
 "@artsy/detect-responsive-traits@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@2.36.2":
-  version "2.36.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.36.2.tgz#70d86abe8ff17b66d4af6117bd6d9f89b9e1b482"
-  integrity sha512-0Pf7e2laSrWSITtrbB67UuDAXr4A1M6aEILmON4o3Xh3r8Xh27N0KNV/lWLuug/hPLNcy1jY9HFIYJ0an6sBwQ==
+"@artsy/palette@2.37.3":
+  version "2.37.3"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.37.3.tgz#cc222ba79a3c8703c135dfda95594e51196fdb6f"
+  integrity sha512-sKnh/RDT1dV7bxuXevTrui6+99QNfr9cYL63+LR/NPxExbLqSOROq71gGDOCSxkI0rdcu7OgakgIgI7nf/BwYg==
   dependencies:
     moment "^2.23.0"
     moment-timezone "^0.5.23"

@@ -52,14 +52,6 @@ export const Title = styled.div.attrs<{ color?: string }>({})`
   margin-bottom: 75px;
   letter-spacing: -0.035em;
 
-  h1 {
-    font-style: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-    margin: 0;
-  }
-
   ${pMedia.xl`
     ${unica("s80")}
   `};

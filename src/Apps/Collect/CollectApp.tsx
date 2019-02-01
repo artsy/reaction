@@ -61,7 +61,7 @@ export class CollectApp extends Component<CollectAppProps> {
             alignItems="flex-end"
           >
             <Serif size="8">
-              <h1 className="title">Collect art and design online</h1>
+              <h1>Collect art and design online</h1>
             </Serif>
 
             <Sans size="3" weight="medium">

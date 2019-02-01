@@ -62,14 +62,6 @@ const Title = styled.div`
   ${garamond("s50")};
   padding-bottom: 50px;
 
-  h1 {
-    font-style: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-    margin: 0;
-  }
-
   ${pMedia.sm`
     ${garamond("s34")}
   `};
