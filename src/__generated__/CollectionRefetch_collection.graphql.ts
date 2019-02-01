@@ -79,6 +79,24 @@ const node: ConcreteFragment = {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "height",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "width",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -117,9 +135,21 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": "Boolean"
+        },
+        {
+          "kind": "Variable",
+          "name": "height",
+          "variableName": "height",
+          "type": "String"
         },
         {
           "kind": "Variable",
@@ -168,6 +198,12 @@ const node: ConcreteFragment = {
           "name": "sort",
           "variableName": "sort",
           "type": "String"
+        },
+        {
+          "kind": "Variable",
+          "name": "width",
+          "variableName": "width",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -196,5 +232,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7cd214c0c0ddcc46959d11fb6cd49729';
+(node as any).hash = 'c5d2045148b99baa686a5b95c34eeee0';
 export default node;

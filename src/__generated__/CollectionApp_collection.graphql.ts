@@ -104,6 +104,24 @@ return {
       "name": "price_range",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "height",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "width",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -243,8 +261,20 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "height",
+          "variableName": "height",
           "type": null
         },
         {
@@ -276,6 +306,12 @@ return {
           "name": "sort",
           "variableName": "sort",
           "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "width",
+          "variableName": "width",
+          "type": null
         }
       ]
     },
@@ -283,5 +319,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ad5d0a58156a553d9e164ff986b2bf64';
+(node as any).hash = 'f18b8da67ef2e88c1040a1cf9206d2be';
 export default node;
