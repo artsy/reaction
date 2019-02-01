@@ -1,5 +1,5 @@
+import { color, space } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
-import Colors from "Assets/Colors"
 import { garamond, unica } from "Assets/Fonts"
 import React, { SFC } from "react"
 import styled from "styled-components"
@@ -36,7 +36,7 @@ export const Input: SFC<InputProps> = ({
 }
 
 const Container = styled.div`
-  padding-bottom: 5px;
+  padding-bottom: ${space(0.5)}px;
 `
 
 export const StyledInput = styled.input`
@@ -50,14 +50,14 @@ export const Title = styled.div`
 
 const Description = styled.div`
   ${garamond("s15")};
-  color: ${Colors.graySemibold};
-  margin: 3px 0 0;
+  color: ${color("black60")};
+  margin: ${space(0.3)}px 0 0;
 `
 
 export const InputError = styled.div`
   ${unica("s12")};
-  margin-top: 10px;
-  color: ${Colors.redMedium};
+  margin-top: ${space(1)}px;
+  color: ${color("red100")};
   transition: visibility 0.2s linear;
   animation: ${growAndFadeIn("16px")} 0.25s linear;
   height: 16px;
