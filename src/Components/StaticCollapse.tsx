@@ -53,7 +53,6 @@ export class StaticCollapse extends React.Component<
       return
     }
     if (!this.state.hasChanged) {
-      console.log("the state didn't change")
       if (this.wrapperRef.style.height === "") {
         // second render, no update to state, but the style.height value was
         // unset (See render method) so we need to make sure it's set.
