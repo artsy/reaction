@@ -121,13 +121,12 @@ export class QuickInput extends React.Component<
 }
 
 const Container = styled.div`
-  padding-bottom: 5px;
+  padding-bottom: ${space(0.5)}px;
 `
 
 const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   ${garamond("s17")};
   border: 0;
-  font-size: 17px;
   outline: none;
   flex: 1;
   transition: all 0.25s;
@@ -138,7 +137,8 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   height: 100%;
   padding: 0 ${space(1)}px;
   line-height: initial;
-  ${props => props.showLabel && "padding: 10px 10px 0 10px"};
+  ${props =>
+    props.showLabel && `padding: ${space(1)}px ${space(1)}px 0 ${space(1)}px`};
 `
 
 const InputContainer = styled.div.attrs<{
@@ -147,11 +147,11 @@ const InputContainer = styled.div.attrs<{
 }>({})`
   ${borderedInput};
   margin-right: 0;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: ${space(0.5)}px;
+  margin-bottom: ${space(1)}px;
   display: flex;
   position: relative;
-  height: ${p => (p.hasLabel ? "40px" : "20px")};
+  height: ${p => (p.hasLabel ? `${space(4)}px` : `${space(2)}px`)};
   flex-direction: row;
   align-items: center;
   box-sizing: content-box;
@@ -160,8 +160,8 @@ const InputContainer = styled.div.attrs<{
 const Label = styled.label.attrs<{ out: boolean }>({})`
   ${unica("s12", "medium")};
   position: absolute;
-  left: 10px;
-  top: 7px;
+  left: ${space(1)}px;
+  top: ${space(1)}px;
   visibility: ${p => (p.out ? "hidden" : "visible")};
   animation: ${p => (p.out ? fadeOut : fadeIn)} 0.2s linear;
   transition: visibility 0.2s linear;
@@ -170,7 +170,7 @@ const Label = styled.label.attrs<{ out: boolean }>({})`
 
 const InputNote = styled.div`
   ${unica("s12")};
-  margin-top: 10px;
+  margin-top: ${space(1)}px;
   color: ${Colors.graySemibold};
   height: 16px;
 `
