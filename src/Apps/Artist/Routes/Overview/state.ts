@@ -13,6 +13,7 @@ interface State {
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
+  price_range?: string
 
   // UI
   selectedFilters: string[]
@@ -33,6 +34,7 @@ export const initialState = {
   offerable: null,
   at_auction: null,
   inquireable_only: null,
+  price_range: "*-*",
   selectedFilters: [],
   showActionSheet: false,
   showZeroState: false,
@@ -40,6 +42,9 @@ export const initialState = {
 
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
+
+  static MIN_PRICE = 50
+  static MAX_PRICE = 50000
 
   constructor(props: State) {
     super()
@@ -134,6 +139,17 @@ export class FilterState extends Container<State> {
     })
   }
 
+  priceRangeToTuple(): [number, number] {
+    let minStr: string
+    let maxStr: string
+    let min: number
+    let max: number
+    ;[minStr, maxStr] = this.state.price_range.split("-")
+    min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
+    max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
+    return [min, max]
+  }
+
   setFilter(filter, value, mediator) {
     let { selectedFilters } = this.state
 
@@ -145,9 +161,19 @@ export class FilterState extends Container<State> {
         medium: "*",
       }
     } else if (filter === "partner_id") {
-      newPartialState = { major_periods: [], partner_id: value, medium: "*" }
+      newPartialState = {
+        major_periods: [],
+        partner_id: value,
+        medium: "*",
+      }
     } else if (filter === "medium") {
-      newPartialState = { medium: value, partner_id: null, major_periods: [] }
+      newPartialState = {
+        medium: value,
+        partner_id: null,
+        major_periods: [],
+      }
+    } else if (filter === "price_range") {
+      newPartialState[filter] = value
     } else if (
       [
         "for_sale",

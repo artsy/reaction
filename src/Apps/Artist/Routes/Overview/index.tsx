@@ -176,6 +176,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           type: "[String]"
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
+        price_range: { type: "String", defaultValue: "*-*" }
       ) {
       ...ArtistBio_bio
       ...CurrentEvent_artist
@@ -193,6 +194,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           acquireable: $acquireable
           inquireable_only: $inquireable_only
           offerable: $offerable
+          price_range: $price_range
         )
       id
       counts {
