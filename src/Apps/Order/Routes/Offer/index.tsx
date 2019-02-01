@@ -270,7 +270,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         }
                         artworkId={artworkId}
                       />
-                      >
                     </RevealButton>
                     <Spacer mb={[2, 3]} />
                   </>
