@@ -7,11 +7,14 @@ import {
   Row,
   Sans,
   Spacer,
+  TextAreaChange,
 } from "@artsy/palette"
 import { Respond_order } from "__generated__/Respond_order.graphql"
 import { RespondCounterOfferMutation } from "__generated__/RespondCounterOfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { OfferNote } from "Apps/Order/Components/OfferNote"
+import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -28,6 +31,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -49,6 +53,7 @@ export interface RespondProps {
 
 export interface RespondState {
   offerValue: number
+  offerNoteValue: TextAreaChange
   formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
   isCommittingMutation: boolean
@@ -58,10 +63,13 @@ export interface RespondState {
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
 
+const enableOfferNote = sd.ENABLE_OFFER_NOTE
+
 @track()
 export class RespondRoute extends Component<RespondProps, RespondState> {
   state: RespondState = {
     offerValue: 0,
+    offerNoteValue: { value: "", exceedsCharacterLimit: false },
     responseOption: null,
     isCommittingMutation: false,
     formIsDirty: false,
@@ -111,12 +119,13 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     const {
       responseOption,
       offerValue,
+      offerNoteValue,
       lowSpeedBumpEncountered,
       highSpeedBumpEncountered,
     } = this.state
 
     if (responseOption === "COUNTER") {
-      if (offerValue <= 0) {
+      if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
         this.setState({ formIsDirty: true })
         return
       }
@@ -196,6 +205,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 amount: price,
                 currencyCode: "USD",
               },
+              // TODO: put note in here
             },
           },
           onCompleted: result => {
@@ -228,6 +238,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   render() {
     const { order } = this.props
     const { isCommittingMutation } = this.state
+
+    const artworkId = order.lineItems.edges[0].node.artwork.id
 
     return (
       <>
@@ -287,6 +299,24 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                         onChange={offerValue => this.setState({ offerValue })}
                         onFocus={this.onOfferInputFocus.bind(this)}
                       />
+                      {enableOfferNote && (
+                        <>
+                          <Spacer mb={0.5} />
+                          <RevealButton
+                            align="left"
+                            buttonLabel="Add note to seller"
+                          >
+                            <Spacer mb={1} />
+                            <OfferNote
+                              onChange={offerNoteValue =>
+                                this.setState({ offerNoteValue })
+                              }
+                              artworkId={artworkId}
+                              counteroffer
+                            />
+                          </RevealButton>
+                        </>
+                      )}
                     </StaticCollapse>
                   </BorderedRadio>
                   <BorderedRadio value="DECLINE">
