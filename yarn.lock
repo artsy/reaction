@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@2.37.6":
-  version "2.37.6"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.37.6.tgz#a5f6ff80a47e65fb664e493601d529a87f6ce045"
-  integrity sha512-QaDoOMKDED3JUerCoNlOofdHhQi661hclCtjm5thmF1ZuJ16HPImUgLn5bacN61S6cjW/1phs0jPwCkfR82TQw==
+"@artsy/palette@2.37.11":
+  version "2.37.11"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-2.37.11.tgz#591c9df389aa801dd0de6e2499a7d98a30bafa2a"
+  integrity sha512-kV0JFLBdR9JdYto5yEJ7giwCvA+hXsYNKqcU15ga5ZAXFbXQteAom40KzqTqE1URaeVGeWa1jfXdZs+rjKs6IA==
   dependencies:
     moment "^2.23.0"
     moment-timezone "^0.5.23"
