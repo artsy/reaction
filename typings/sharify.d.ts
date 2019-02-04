@@ -29,6 +29,7 @@ declare module "sharify" {
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly XAPP_TOKEN: string
+      readonly ENABLE_OFFER_NOTE?: string
     }
 
     export interface ResponseLocalData extends GlobalData {

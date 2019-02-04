@@ -1,15 +1,26 @@
-import { Button, Col, Flex, Message, Row, Sans, Spacer } from "@artsy/palette"
+import {
+  Button,
+  Col,
+  Flex,
+  Message,
+  Row,
+  Sans,
+  Spacer,
+  TextAreaChange,
+} from "@artsy/palette"
 import { Offer_order } from "__generated__/Offer_order.graphql"
 import { OfferMutation } from "__generated__/OfferMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { OfferInput } from "Apps/Order/Components/OfferInput"
+import { OfferNote } from "Apps/Order/Components/OfferNote"
+import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import * as Schema from "Artsy/Analytics"
 import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
 import {
@@ -18,6 +29,7 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -32,6 +44,7 @@ export interface OfferProps {
 
 export interface OfferState {
   offerValue: number
+  offerNoteValue: TextAreaChange
   isCommittingMutation: boolean
   formIsDirty: boolean
   lowSpeedBumpEncountered: boolean
@@ -40,10 +53,13 @@ export interface OfferState {
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
+const enableOfferNote = sd.ENABLE_OFFER_NOTE
+
 @track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
   state: OfferState = {
     offerValue: 0,
+    offerNoteValue: { value: "", exceedsCharacterLimit: false },
     isCommittingMutation: false,
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
@@ -91,11 +107,12 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   onContinueButtonPressed: () => void = async () => {
     const {
       offerValue,
+      offerNoteValue,
       lowSpeedBumpEncountered,
       highSpeedBumpEncountered,
     } = this.state
 
-    if (offerValue <= 0) {
+    if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
       this.setState({ formIsDirty: true })
       return
     }
@@ -155,6 +172,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                 amount: offerValue,
                 currencyCode: "USD",
               },
+              // TODO: put note in here
             },
           },
           onCompleted: data => {
@@ -207,6 +225,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     const { order } = this.props
     const { isCommittingMutation } = this.state
 
+    const artworkId = order.lineItems.edges[0].node.artwork.id
+
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
@@ -241,6 +261,19 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   </Sans>
                 )}
                 <Spacer mb={[2, 3]} />
+                {enableOfferNote && (
+                  <>
+                    <RevealButton align="left" buttonLabel="Add note to seller">
+                      <OfferNote
+                        onChange={offerNoteValue =>
+                          this.setState({ offerNoteValue })
+                        }
+                        artworkId={artworkId}
+                      />
+                    </RevealButton>
+                    <Spacer mb={[2, 3]} />
+                  </>
+                )}
                 <Message p={[2, 3]}>
                   If your offer is accepted, your payment will be processed
                   immediately. Keep in mind making an offer doesn’t guarantee
