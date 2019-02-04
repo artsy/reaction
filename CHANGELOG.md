@@ -1,3 +1,16 @@
+# v12.1.14 (Mon Feb 04 2019)
+
+#### 🐛  Bug Fix
+
+- Add offer note input + feature flag [#1981](https://github.com/artsy/reaction/pull/1981) ([@xtina-starr](https://github.com/xtina-starr) [@ds300](https://github.com/ds300) [@yuki24](https://github.com/yuki24) [@artsyit](https://github.com/artsyit) [@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/auto-config to v0.1.0 [#1985](https://github.com/artsy/reaction/pull/1985) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v2.37.11 [#1983](https://github.com/artsy/reaction/pull/1983) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.13 (Fri Feb 01 2019)
 
 #### 🐛  Bug Fix
