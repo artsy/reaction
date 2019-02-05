@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "12.1.15",
+  "version": "12.1.16",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
