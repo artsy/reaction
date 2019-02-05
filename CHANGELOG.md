@@ -1,3 +1,11 @@
+# v12.1.18 (Tue Feb 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add to be deprecated slideshow and image to SectionType type [#1991](https://github.com/artsy/reaction/pull/1991) ([@eessex](https://github.com/eessex))
+
+---
+
 # v12.1.17 (Tue Feb 05 2019)
 
 #### 🐛  Bug Fix
