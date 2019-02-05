@@ -1,3 +1,15 @@
+# v12.1.15 (Tue Feb 05 2019)
+
+#### 🐛  Bug Fix
+
+- Update palette [#1988](https://github.com/artsy/reaction/pull/1988) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- [Renovate] Auto-merge minor and patch updates [#1987](https://github.com/artsy/reaction/pull/1987) ([@damassi](https://github.com/damassi))
+
+---
+
 # v12.1.14 (Mon Feb 04 2019)
 
 #### 🐛  Bug Fix
