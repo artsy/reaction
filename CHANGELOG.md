@@ -1,3 +1,11 @@
+# v12.1.17 (Tue Feb 05 2019)
+
+#### 🐛  Bug Fix
+
+- Fixup IconDrag interfaces [#1990](https://github.com/artsy/reaction/pull/1990) ([@eessex](https://github.com/eessex))
+
+---
+
 # v12.1.16 (Tue Feb 05 2019)
 
 #### 🐛  Bug Fix
