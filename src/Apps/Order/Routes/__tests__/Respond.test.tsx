@@ -1,23 +1,13 @@
-import { BorderedRadio, Button, Stepper } from "@artsy/palette"
+import { BorderedRadio, Button } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { ArtworkSummaryItemFragmentContainer } from "Apps/Order/Components/ArtworkSummaryItem"
-import { CreditCardSummaryItemFragmentContainer } from "Apps/Order/Components/CreditCardSummaryItem"
 import { OfferHistoryItemFragmentContainer } from "Apps/Order/Components/OfferHistoryItem"
-import { OrderStepper } from "Apps/Order/Components/OrderStepper"
-import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
-import { TransactionDetailsSummaryItemFragmentContainer } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { Input } from "Components/Input"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
 import moment from "moment"
-import React from "react"
-import { RespondFragmentContainer as RespondRoute } from "../Respond"
+import { RespondFragmentContainer } from "../Respond"
 
 // Need to mock Utils/Events instead of using mockTracking because
 // Boot's `dispatch` tracking prop overrides the one injected by
@@ -37,19 +27,17 @@ const NOW = "2018-12-05T13:47:16.446Z"
 
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-jest.mock("react-relay", () => ({
-  commitMutation: jest.fn(),
-  createFragmentContainer: component => component,
-}))
+jest.unmock("react-relay")
 
-import { OfferInput } from "Apps/Order/Components/OfferInput"
-import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { commitMutation } from "react-relay"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
-
-const commitMutationMock = commitMutation as jest.Mock<any>
+import { createTestEnv } from "DevTools/createTestEnv"
+import { expectOne } from "DevTools/RootTestPage"
+import { graphql } from "react-relay"
+import {
+  buyerCounterOfferFailed,
+  buyerCounterOfferSuccess,
+} from "../__fixtures__/MutationResults/buyerCounterOffer"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -67,460 +55,296 @@ const testOrder = {
   itemsTotalCents: 1000000,
 }
 
-let mockPushRoute: jest.Mock<string>
-
-describe("Offer InitialMutation", () => {
-  const getWrapper = (extraOrderProps?) => {
-    const props = {
-      relay: { environment: {} },
-      router: { push: mockPushRoute },
-      order: {
-        ...testOrder,
-        ...extraOrderProps,
-      },
-    }
-    return mount(
-      <MockBoot>
-        <RespondRoute {...props as any} />
-        <ConnectedModalDialog />
-      </MockBoot>
-    )
+class RespondTestPage extends OrderAppTestPage {
+  get offerHistory() {
+    return expectOne(this.find(OfferHistoryItemFragmentContainer))
   }
+
+  get showOfferHistoryButton() {
+    return expectOne(this.offerHistory.find(Button))
+  }
+
+  findRadioWithText(text: string) {
+    return this.find(BorderedRadio).filterWhere(elem => {
+      return elem.text().includes(text)
+    })
+  }
+
+  async selectAcceptRadio() {
+    const radio = this.findRadioWithText("Accept seller's offer")
+    radio.props().onSelect({ selected: true, value: "ACCEPT" })
+    await this.update()
+  }
+
+  async selectDeclineRadio() {
+    const radio = this.findRadioWithText("Decline seller's offer")
+    radio.props().onSelect({ selected: true, value: "DECLINE" })
+    await this.update()
+  }
+
+  async selectCounterRadio() {
+    const radio = this.findRadioWithText("Send counteroffer")
+    radio.props().onSelect({ selected: true, value: "COUNTER" })
+    await this.update()
+  }
+}
+
+describe("The respond page", () => {
+  const { buildPage, mutations, routes } = createTestEnv({
+    Component: RespondFragmentContainer,
+    defaultData: {
+      order: testOrder,
+    },
+    defaultMutationResults: {
+      ...buyerCounterOfferSuccess,
+    },
+    query: graphql`
+      query RespondTestQuery {
+        order: ecommerceOrder(id: "unused") {
+          ...Respond_order
+        }
+      }
+    `,
+    TestPage: RespondTestPage,
+  })
 
   beforeEach(() => {
     mockPostEvent.mockReset()
-    mockPushRoute = jest.fn()
-    commitMutationMock.mockReset()
   })
 
-  it("renders", () => {
-    const component = getWrapper()
-    const input = component.find(Input)
-    expect(input.text()).toContain("Your offer")
-  })
-
-  it("shows the stepper", () => {
-    const component = getWrapper()
-    const stepper = component.find(OrderStepper)
-    expect(stepper.text()).toMatch("RespondReview")
-
-    const index = component.find(Stepper).props().currentStepIndex
-    expect(index).toBe(0)
-  })
-
-  it("shows the countdown timer", () => {
-    const component = getWrapper({
-      stateExpiresAt: moment(NOW)
-        .add(1, "day")
-        .add(4, "hours")
-        .add(22, "minutes")
-        .add(59, "seconds"),
+  describe("the page layout", () => {
+    let page: RespondTestPage
+    beforeAll(async () => {
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            stateExpiresAt: moment(NOW)
+              .add(1, "day")
+              .add(4, "hours")
+              .add(22, "minutes")
+              .add(59, "seconds")
+              .toISOString(),
+          },
+        },
+      })
     })
-    const timer = component.find(CountdownTimer)
-    expect(timer.text()).toContain("01d 04h 22m 59s left")
-  })
 
-  it("shows the offer history item", () => {
-    const component = getWrapper()
-    const offerHistory = component.find(OfferHistoryItemFragmentContainer)
-    expect(offerHistory).toHaveLength(1)
+    it("shows the countdown timer", () => {
+      expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
+    })
 
-    const button = offerHistory.find(Button)
-    expect(button.text()).toMatch("Show offer history")
+    it("shows the offer input", () => {
+      expect(page.offerInput.text()).toContain("Your offer")
+    })
 
-    button.props().onClick({})
+    it("shows the stepper", () => {
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"RespondReview"`)
+      expect(page.orderStepperCurrentStep).toBe("Respond")
+    })
 
-    expect(offerHistory.text()).toMatch(
-      "You (May 21)$1,200.00Seller (Apr 30)$1,500.00You (Apr 5)$1,100.00"
-    )
-  })
+    it("shows the offer history item", () => {
+      expect(page.showOfferHistoryButton.text()).toMatch("Show offer history")
 
-  it("shows the transaction summary", () => {
-    const component = getWrapper()
-    const transactionSummary = component.find(
-      TransactionDetailsSummaryItemFragmentContainer
-    )
-    expect(transactionSummary).toHaveLength(1)
+      page.showOfferHistoryButton.props().onClick({})
 
-    expect(transactionSummary.text()).toMatch("Seller's offer$14,000")
-  })
+      expect(page.offerHistory.text()).toMatch(
+        "You (May 21)$1,200.00Seller (Apr 30)$1,500.00You (Apr 5)$1,100.00"
+      )
+    })
 
-  it("shows the artwork summary", () => {
-    const component = getWrapper()
-    const artworkSummary = component.find(ArtworkSummaryItemFragmentContainer)
-    expect(artworkSummary).toHaveLength(1)
+    it("shows the transaction summary", () => {
+      expect(page.transactionSummary.text()).toMatch("Seller's offer$14,000")
+    })
 
-    expect(artworkSummary.text()).toMatch("Lisa BreslowGramercy Park South")
-  })
+    it("shows the artwork summary", () => {
+      expect(page.artworkSummary.text()).toMatch(
+        "Lisa BreslowGramercy Park South"
+      )
+    })
 
-  it("shows the shipping details", () => {
-    const component = getWrapper()
-    const shippingSummary = component.find(ShippingSummaryItemFragmentContainer)
-    expect(shippingSummary).toHaveLength(1)
+    it("shows the shipping details", () => {
+      expect(page.shippingSummary.text()).toMatch(
+        "Ship toJoelle Van Dyne401 Broadway"
+      )
+    })
 
-    expect(shippingSummary.text()).toMatch("Ship toJoelle Van Dyne401 Broadway")
-  })
+    it("shows the payment details", () => {
+      expect(page.paymentSummary.text()).toMatchInlineSnapshot(
+        `"•••• 4444  Exp 3/21"`
+      )
+    })
 
-  it("shows the payment details", () => {
-    const component = getWrapper()
-    const paymentSummary = component.find(
-      CreditCardSummaryItemFragmentContainer
-    )
-    expect(paymentSummary).toHaveLength(1)
+    it("shows the continue button", () => {
+      expect(page.submitButton.text()).toBe("Continue")
+    })
 
-    expect(paymentSummary.text()).toMatchInlineSnapshot(`"•••• 4444  Exp 3/21"`)
-  })
+    it("shows three radio buttons with response choices", () => {
+      const radios = page.find(BorderedRadio)
+      expect(radios).toHaveLength(3)
 
-  it("shows the continue button", () => {
-    const component = getWrapper()
-    const continueButton = component.find(Button).last()
-    expect(continueButton.text()).toBe("Continue")
-  })
-
-  it("shows three radio buttons with response choices", () => {
-    const component = getWrapper()
-    const radios = component.find(BorderedRadio)
-    expect(radios).toHaveLength(3)
-
-    expect(radios.first().text()).toMatch("Accept seller's offer")
-    expect(radios.at(1).text()).toMatch("Send counteroffer")
-    expect(radios.at(2).text()).toMatch("Decline seller's offer")
+      expect(radios.first().text()).toMatch("Accept seller's offer")
+      expect(radios.at(1).text()).toMatch("Send counteroffer")
+      expect(radios.at(2).text()).toMatch("Decline seller's offer")
+    })
   })
 
   describe("taking action", () => {
-    // TODO: get rid of window.alert
-    const _alert = window.alert
-    beforeEach(() => {
-      window.alert = jest.fn()
-    })
-    afterEach(() => {
-      window.alert = _alert
+    let page: RespondTestPage
+    beforeEach(async () => {
+      page = await buildPage()
     })
 
-    it("Accepting the seller's offer works", () => {
-      const component = getWrapper()
-      const acceptRadio = component.find(BorderedRadio).first()
+    it("Accepting the seller's offer works", async () => {
+      await page.selectAcceptRadio()
+      await page.clickSubmit()
 
-      acceptRadio.props().onSelect({ selected: true, value: "ACCEPT" })
-
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      expect(mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/review/accept`
       )
     })
 
-    it("Declining the seller's offer works", () => {
-      const component = getWrapper()
-      const declineRadio = component.find(BorderedRadio).last()
+    it("Declining the seller's offer works", async () => {
+      await page.selectDeclineRadio()
+      await page.clickSubmit()
 
-      declineRadio.props().onSelect({ selected: true, value: "DECLINE" })
-
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      expect(mockPushRoute).toHaveBeenCalledWith(
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/review/decline`
       )
     })
 
     describe("countering the seller's offer", () => {
-      it("doesn't work if nothing was typed in", () => {
-        const component = getWrapper()
-
-        const counterRadio = component.find(BorderedRadio).at(1)
-        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-        expect(component.find(OfferInput).props().showError).toBe(false)
-
-        component
-          .find(Button)
-          .last()
-          .simulate("click")
-
-        expect(component.find(OfferInput).props().showError).toBe(true)
-
-        expect(commitMutation).not.toHaveBeenCalled()
+      it("doesn't work if nothing was typed in", async () => {
+        await page.selectCounterRadio()
+        expect(page.offerInput.props().showError).toBe(false)
+        await page.clickSubmit()
+        expect(page.offerInput.props().showError).toBe(true)
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
       })
 
-      it("doesn't let the user continue if the offer value is not positive", () => {
-        const component = getWrapper()
+      it("doesn't let the user continue if the offer value is not positive", async () => {
+        await page.selectCounterRadio()
+        await page.setOfferAmount(0)
 
-        const counterRadio = component.find(BorderedRadio).at(1)
-        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-        component
-          .find(OfferInput)
-          .props()
-          .onChange(0)
-
-        expect(component.find(OfferInput).props().showError).toBe(false)
-
-        component
-          .find(Button)
-          .last()
-          .simulate("click")
-
-        expect(component.find(OfferInput).props().showError).toBe(true)
-
-        expect(commitMutation).not.toHaveBeenCalled()
+        expect(page.offerInput.props().showError).toBe(false)
+        await page.clickSubmit()
+        expect(page.offerInput.props().showError).toBe(true)
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
       })
 
       it("works when a valid number is inputted", async () => {
-        commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
-          onCompleted({
-            ecommerceBuyerCounterOffer: { orderOrError: { order: {} } },
-          })
+        await page.selectCounterRadio()
+        await page.setOfferAmount(9000)
+
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
+        await page.clickSubmit()
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.lastFetchVariables).toMatchObject({
+          input: {
+            offerId: "myoffer-id",
+            offerPrice: {
+              amount: 9000,
+              currencyCode: "USD",
+            },
+          },
         })
-        const component = getWrapper()
-        const counterRadio = component.find(BorderedRadio).at(1)
-
-        counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-        counterRadio
-          .find(OfferInput)
-          .props()
-          .onChange(9000)
-
-        expect(commitMutationMock).toHaveBeenCalledTimes(0)
-
-        component
-          .find(Button)
-          .last()
-          .props()
-          .onClick({})
-
-        expect(commitMutationMock).toHaveBeenCalledTimes(1)
-
-        expect(commitMutationMock.mock.calls[0][1].variables)
-          .toMatchInlineSnapshot(`
-Object {
-  "input": Object {
-    "offerId": "myoffer-id",
-    "offerPrice": Object {
-      "amount": 9000,
-      "currencyCode": "USD",
-    },
-  },
-}
-`)
-        await flushPromiseQueue()
-
-        expect(mockPushRoute).toHaveBeenCalledWith(
+        expect(routes.mockPushRoute).toHaveBeenCalledWith(
           "/orders/2939023/review/counter"
         )
       })
     })
-  })
 
-  it("shows the error modal if submitting a counter offer fails at network level", async () => {
-    commitMutationMock.mockImplementationOnce((_, { onError }) =>
-      onError(new TypeError("Network request failed"))
-    )
-    const component = getWrapper()
-    const counterRadio = component.find(BorderedRadio).at(1)
+    it("shows the error modal if submitting a counter offer fails at network level", async () => {
+      await page.selectCounterRadio()
+      await page.setOfferAmount(9000)
+      mutations.mockNetworkFailureOnce()
 
-    counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
+      await page.clickSubmit()
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
-    counterRadio
-      .find(Input)
-      .props()
-      .onChange({ currentTarget: { value: "9000" } } as any)
+      expect(routes.mockPushRoute).not.toHaveBeenCalled()
+      await page.expectAndDismissDefaultErrorDialog()
+    })
 
-    expect(commitMutationMock).toHaveBeenCalledTimes(0)
+    it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
+      mutations.useResultsOnce(buyerCounterOfferFailed)
+      await page.selectCounterRadio()
+      await page.setOfferAmount(9000)
 
-    component
-      .find(Button)
-      .last()
-      .props()
-      .onClick({})
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
+      await page.clickSubmit()
+      expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
 
-    expect(commitMutationMock).toHaveBeenCalledTimes(1)
+      expect(routes.mockPushRoute).not.toHaveBeenCalled()
+      await page.expectAndDismissDefaultErrorDialog()
+    })
 
-    await flushPromiseQueue()
+    describe("The 'amount too small' speed bump", () => {
+      it("shows if the offer amount is too small", async () => {
+        await page.selectCounterRadio()
+        await page.setOfferAmount(1000)
 
-    expect(
-      component
-        .update()
-        .find(ModalDialog)
-        .props().show
-    ).toBe(true)
-  })
+        await page.clickSubmit()
 
-  it("shows the error modal if submitting a counter offer fails for business reasons", async () => {
-    commitMutationMock.mockImplementationOnce((_, { onCompleted }) => {
-      onCompleted({
-        ecommerceBuyerCounterOffer: { orderOrError: { error: {} } },
+        await page.expectAndDismissErrorDialogMatching(
+          "Offer may be too low",
+          "Offers within 25% of the seller's offer are most likely to receive a response",
+          "OK"
+        )
+
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        expect(routes.mockPushRoute).not.toHaveBeenCalled()
+
+        // should work after clicking submit again
+        await page.clickSubmit()
+
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(routes.mockPushRoute).toHaveBeenCalledTimes(1)
       })
     })
-    const component = getWrapper()
-    const counterRadio = component.find(BorderedRadio).at(1)
 
-    counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+    describe("The 'amount too high' speed bump", () => {
+      it("shows if the offer amount is too high", async () => {
+        await page.selectCounterRadio()
+        await page.setOfferAmount(17000)
 
-    counterRadio
-      .find(Input)
-      .props()
-      .onChange({ currentTarget: { value: "9000" } } as any)
+        await page.clickSubmit()
 
-    expect(commitMutationMock).toHaveBeenCalledTimes(0)
+        await page.expectAndDismissErrorDialogMatching(
+          "Offer higher than seller's offer",
+          "You’re making an offer higher than the seller's offer",
+          "OK"
+        )
 
-    component
-      .find(Button)
-      .last()
-      .props()
-      .onClick({})
+        expect(mutations.mockFetch).not.toHaveBeenCalled()
+        expect(routes.mockPushRoute).not.toHaveBeenCalled()
 
-    expect(commitMutationMock).toHaveBeenCalledTimes(1)
+        // should work after clicking submit again
+        await page.clickSubmit()
 
-    await flushPromiseQueue()
-
-    expect(
-      component
-        .update()
-        .find(ModalDialog)
-        .props().show
-    ).toBe(true)
-  })
-
-  describe("The 'amount too small' speed bump", () => {
-    it("shows if the offer amount is too small", async () => {
-      const component = getWrapper()
-      const counterRadio = component.find(BorderedRadio).at(1)
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-      component
-        .find(OfferInput)
-        .props()
-        .onChange(1000)
-
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      await flushPromiseQueue()
-      component.update()
-      expect(commitMutation).not.toHaveBeenCalled()
-
-      let dialog = component.find(ModalDialog)
-
-      expect(dialog).toHaveLength(1)
-      expect(dialog.props().show).toBe(true)
-
-      expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer may be too lowOffers within 25% of the seller's offer are most likely to receive a response.OK"`
-      )
-
-      const button = component.find(ModalButton)
-      expect(button.length).toBe(1)
-      expect(button.text()).toBe("OK")
-
-      // dismiss message
-      button.simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      dialog = component.find(ModalDialog)
-      expect(dialog.props().show).toBe(false)
-
-      expect(commitMutation).not.toHaveBeenCalled()
-
-      // submit again
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      expect(commitMutation).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  describe("The 'amount too high' speed bump", () => {
-    it("shows if the offer amount is too high", async () => {
-      const component = getWrapper()
-      const counterRadio = component.find(BorderedRadio).at(1)
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-      component
-        .find(OfferInput)
-        .props()
-        .onChange(17000)
-
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      await flushPromiseQueue()
-      component.update()
-      expect(commitMutation).not.toHaveBeenCalled()
-
-      let dialog = component.find(ModalDialog)
-
-      expect(dialog).toHaveLength(1)
-      expect(dialog.props().show).toBe(true)
-
-      expect(dialog.text()).toMatchInlineSnapshot(
-        `"Offer higher than seller's offerYou’re making an offer higher than the seller's offer.OK"`
-      )
-
-      const button = component.find(ModalButton)
-      expect(button.length).toBe(1)
-      expect(button.text()).toBe("OK")
-
-      // dismiss message
-      button.simulate("click")
-
-      await flushPromiseQueue()
-      component.update()
-
-      dialog = component.find(ModalDialog)
-      expect(dialog.props().show).toBe(false)
-
-      expect(commitMutation).not.toHaveBeenCalled()
-
-      // submit again
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
-
-      expect(commitMutation).toHaveBeenCalledTimes(1)
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(routes.mockPushRoute).toHaveBeenCalledTimes(1)
+      })
     })
   })
 
   describe("Analaytics", () => {
-    it("tracks a pageview", () => {
-      getWrapper()
+    let page: RespondTestPage
+    beforeEach(async () => {
+      page = await buildPage()
+    })
 
+    it("tracks a pageview", () => {
       expect(trackPageView).toHaveBeenCalledTimes(1)
     })
 
-    it("tracks the offer input focus", () => {
-      const counter = getWrapper()
-
-      const counterRadio = counter.find(BorderedRadio).at(1)
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
+    it("tracks the offer input focus", async () => {
+      await page.selectCounterRadio()
 
       expect(mockPostEvent).not.toHaveBeenCalled()
 
-      counter
-        .find(OfferInput)
-        .find("input")
-        .simulate("focus")
+      page.offerInput.find("input").simulate("focus")
 
       expect(mockPostEvent).toHaveBeenCalledTimes(1)
       expect(mockPostEvent).toHaveBeenLastCalledWith({
@@ -531,22 +355,12 @@ Object {
     })
 
     it("tracks viwing the low offer speedbump", async () => {
-      const component = getWrapper()
-      const counterRadio = component.find(BorderedRadio).at(1)
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-      component
-        .find(OfferInput)
-        .props()
-        .onChange(1000)
+      await page.selectCounterRadio()
+      await page.setOfferAmount(1000)
 
       expect(mockPostEvent).not.toHaveBeenCalled()
 
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
+      await page.clickSubmit()
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
         order_id: "2939023",
@@ -556,22 +370,12 @@ Object {
     })
 
     it("tracks viwing the high offer speedbump", async () => {
-      const component = getWrapper()
-      const counterRadio = component.find(BorderedRadio).at(1)
-      counterRadio.props().onSelect({ selected: true, value: "COUNTER" })
-
-      component
-        .find(OfferInput)
-        .props()
-        .onChange(20000)
+      await page.selectCounterRadio()
+      await page.setOfferAmount(20000)
 
       expect(mockPostEvent).not.toHaveBeenCalled()
 
-      component
-        .find(Button)
-        .last()
-        .props()
-        .onClick({})
+      await page.clickSubmit()
 
       expect(mockPostEvent).toHaveBeenLastCalledWith({
         order_id: "2939023",
