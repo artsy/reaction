@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders as a snapshot 1`] = `
+.c0 {
+  padding-bottom: 5px;
+}
+
+.c3 {
+  padding: 10px;
+  box-shadow: none;
+  -webkit-transition: border-color 0.25s;
+  transition: border-color 0.25s;
+  margin-right: 10px;
+  resize: none;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 17px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  border: 1px solid #f7625a;
+  -webkit-transition: border-color 0.25s;
+  transition: border-color 0.25s;
+}
+
+.c3::-webkit-input-placeholder {
+  color: #cccccc;
+  text-overflow: ellipsis;
+  line-height: normal;
+}
+
+.c3::-moz-placeholder {
+  color: #cccccc;
+  text-overflow: ellipsis;
+  line-height: normal;
+}
+
+.c3:-ms-input-placeholder {
+  color: #cccccc;
+  text-overflow: ellipsis;
+  line-height: normal;
+}
+
+.c3::placeholder {
+  color: #cccccc;
+  text-overflow: ellipsis;
+  line-height: normal;
+}
+
+.c3:hover,
+.c3:focus,
+.c3.focused {
+  border-color: #f7625a;
+  outline: 0;
+}
+
+.c3:disabled {
+  border: 2px dotted #e5e5e5;
+}
+
+.c1 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 17px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c2 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 15px;
+  line-height: 1.25em;
+  -webkit-font-smoothing: antialiased;
+  color: #666;
+  margin: 3px 0 0;
+}
+
+.c4 {
+  font-family: Unica77LLWebRegular,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-top: 10px;
+  color: #F7625A;
+  -webkit-transition: visibility 0.2s linear;
+  transition: visibility 0.2s linear;
+  -webkit-animation: eBtoLo 0.25s linear;
+  animation: eBtoLo 0.25s linear;
+  height: 16px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    hello
+  </div>
+  <div
+    className="c2"
+  >
+    This is a field
+  </div>
+  <input
+    className="c3"
+    placeholder="a placeholder"
+    type="password"
+  />
+  <div
+    className="c4"
+  >
+    But something went wrong!
+  </div>
+</div>
+`;

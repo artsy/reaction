@@ -3,7 +3,6 @@ import * as React from "react"
 import styled from "styled-components"
 
 import Colors from "../../../../Assets/Colors"
-import Icon from "../../../Icon"
 import Input from "../../../Input"
 
 import { MultiButtonState } from "../../../Buttons/MultiStateButton"
@@ -80,16 +79,6 @@ export default class Genes extends React.Component<StepProps, State> {
         <OnboardingSearchBox>
           <Input
             placeholder={"Search categories..."}
-            leftView={<Icon name="search" color={Colors.graySemibold} />}
-            rightView={
-              this.state.inputText.length ? (
-                <Icon
-                  name="close"
-                  color={Colors.graySemibold}
-                  onClick={this.clearSearch.bind(this)}
-                />
-              ) : null
-            }
             block
             onInput={this.searchTextChanged}
             onPaste={this.searchTextChanged}

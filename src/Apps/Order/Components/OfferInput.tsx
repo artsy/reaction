@@ -9,8 +9,6 @@ export interface OfferInputProps {
 }
 
 export class OfferInput extends React.Component<OfferInputProps> {
-  inputRef = React.createRef<HTMLInputElement>()
-
   render() {
     const { id, showError, onFocus } = this.props
 
@@ -20,7 +18,6 @@ export class OfferInput extends React.Component<OfferInputProps> {
         title="Your offer"
         type="text"
         pattern="[0-9]"
-        innerRef={this.inputRef}
         defaultValue={null}
         error={showError ? "Offer amount missing or invalid." : null}
         onFocus={onFocus}

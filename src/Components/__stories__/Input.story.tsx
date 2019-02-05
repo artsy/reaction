@@ -4,11 +4,11 @@ import React from "react"
 import styled from "styled-components"
 
 import { Toggle } from "react-powerplug"
-import colors from "../../Assets/Colors"
 import Button from "../Buttons/Inverted"
 import { Checkbox } from "../Checkbox"
-import Icon from "../Icon"
 import Input from "../Input"
+import PasswordInput from "../PasswordInput"
+import QuickInput from "../QuickInput"
 import TextArea from "../TextArea"
 
 const Title = styled.h1`
@@ -19,7 +19,7 @@ const Subtitle = styled.h2`
 `
 
 storiesOf("Components/Input", module)
-  .add("Default Input", () => (
+  .add("Input", () => (
     <div style={{ padding: 10 }}>
       <Title>Input</Title>
       <Subtitle>Our default input style. Title is optional.</Subtitle>
@@ -61,9 +61,7 @@ storiesOf("Components/Input", module)
       {({ on, toggle }) => (
         <div style={{ padding: 10 }}>
           <Title>Input with error</Title>
-          <Subtitle>
-            Used when greater context is needed beyond the title.
-          </Subtitle>
+          <Subtitle>Our default input style. Title is optional.</Subtitle>
 
           <Button onClick={toggle}>Toggle errors</Button>
 
@@ -88,28 +86,92 @@ storiesOf("Components/Input", module)
       )}
     </Toggle>
   ))
-  .add("Input with Label", () => (
+  .add("QuickInput", () => (
     <div style={{ padding: 10 }}>
-      <Title>Input with label</Title>
+      <Title>QuickInput</Title>
       <Subtitle>Used for short/simple forms</Subtitle>
 
       <div style={{ padding: 10 }}>
-        <Input
+        <QuickInput
           placeholder="Enter your email address"
           label="Email"
           block
-          quick
-        />
-        <Input
-          type="password"
-          placeholder="Enter your password"
-          label="Password"
-          rightView={<Icon name="search" color={colors.graySemibold} />}
-          block
-          quick
         />
       </div>
     </div>
+  ))
+  .add("QuickInput with Error", () => (
+    <Toggle initial>
+      {({ on, toggle }) => (
+        <div style={{ padding: 10 }}>
+          <Title>QuickInput with error</Title>
+          <Subtitle>Used for short/simple forms</Subtitle>
+
+          <Button onClick={toggle}>Toggle errors</Button>
+
+          <section style={{ padding: 10 }}>
+            <QuickInput
+              placeholder="Placeholder"
+              label="Title"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+            />
+          </section>
+        </div>
+      )}
+    </Toggle>
+  ))
+  .add("PasswordInput", () => (
+    <div style={{ padding: 10 }}>
+      <Title>PasswordInput</Title>
+      <Subtitle>A specialized QuickInput for password entry</Subtitle>
+
+      <div style={{ padding: 10 }}>
+        <PasswordInput
+          placeholder="Enter your password"
+          label="Password"
+          block
+        />
+        <PasswordInput
+          placeholder="Enter your password"
+          label="Password (with requirements)"
+          block
+          showPasswordMessage
+        />
+      </div>
+    </div>
+  ))
+  .add("PasswordInput with Error", () => (
+    <Toggle initial>
+      {({ on, toggle }) => (
+        <div style={{ padding: 10 }}>
+          <Title>PasswordInput with error</Title>
+          <Subtitle>A specialized QuickInput for password entry</Subtitle>
+
+          <Button onClick={toggle}>Toggle errors</Button>
+
+          <section style={{ padding: 10 }}>
+            <PasswordInput
+              placeholder="Placeholder"
+              label="Password"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+            />
+
+            <PasswordInput
+              placeholder="Placeholder"
+              label="Password (with requirements)"
+              error={on ? "There was a problem" : null}
+              value="Content"
+              block
+              showPasswordMessage
+            />
+          </section>
+        </div>
+      )}
+    </Toggle>
   ))
   .add("Text Areas", () => (
     <div>
@@ -158,7 +220,7 @@ storiesOf("Components/Input", module)
   .add("Form w/ Button", () => (
     <div style={{ padding: 10 }}>
       <Input placeholder="Email" block />
-      <Input type="password" placeholder="Password" block />
+      <PasswordInput placeholder="Password" block />
       <Button block>Submit</Button>
     </div>
   ))

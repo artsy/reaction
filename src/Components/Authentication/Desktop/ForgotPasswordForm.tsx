@@ -7,7 +7,7 @@ import {
   FormContainer as Form,
   SubmitButton,
 } from "Components/Authentication/commonElements"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
@@ -49,9 +49,8 @@ export class ForgotPasswordForm extends Component<
 
           return (
             <Form onSubmit={handleSubmit} height={180}>
-              <Input
+              <QuickInput
                 block
-                quick
                 error={touched.email && errors.email}
                 placeholder="Enter your email address"
                 name="email"

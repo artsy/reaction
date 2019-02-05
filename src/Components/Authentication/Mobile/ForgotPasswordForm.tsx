@@ -7,7 +7,7 @@ import {
   MobileInnerWrapper,
   SubmitButton,
 } from "Components/Authentication/commonElements"
-import Input from "Components/Input"
+import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React from "react"
 import { FormComponentType, InputValues } from "../Types"
@@ -36,9 +36,8 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
             <MobileInnerWrapper>
               <Form onSubmit={handleSubmit} height={270}>
                 <MobileHeader>Reset your password</MobileHeader>
-                <Input
+                <QuickInput
                   block
-                  quick
                   error={errors.email}
                   placeholder="Enter your email address"
                   name="email"
