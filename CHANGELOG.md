@@ -1,3 +1,16 @@
+# v12.1.19 (Tue Feb 05 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Point at proper relay-network-modern-build [#1993](https://github.com/artsy/reaction/pull/1993) ([@damassi](https://github.com/damassi))
+- Refactor Input component in preparation for moving to Palette [#1969](https://github.com/artsy/reaction/pull/1969) ([@pepopowitz](https://github.com/pepopowitz) [@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Fix broken snapshot tests from #1969 [#1992](https://github.com/artsy/reaction/pull/1992) ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v12.1.18 (Tue Feb 05 2019)
 
 #### 🐛  Bug Fix
