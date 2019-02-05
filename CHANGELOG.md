@@ -1,3 +1,11 @@
+# v12.1.16 (Tue Feb 05 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor tests (again) [#1979](https://github.com/artsy/reaction/pull/1979) ([@ds300](https://github.com/ds300))
+
+---
+
 # v12.1.15 (Tue Feb 05 2019)
 
 #### 🐛  Bug Fix
