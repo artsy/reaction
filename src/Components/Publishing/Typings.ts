@@ -46,9 +46,11 @@ export interface ArticleData {
 
 export type SectionType =
   | "image_collection"
+  | "image" // TODO: to be deprecated
   | "image_set"
   | "embed"
   | "social_embed"
+  | "slideshow" // TODO: to be deprecated
   | "text"
   | "video"
   | "default"
