@@ -1,6 +1,8 @@
+import { Box, Flex } from "@artsy/palette"
 import { SuggestionsSearch_viewer } from "__generated__/SuggestionsSearch_viewer.graphql"
 import { SuggestionsSearchQuery } from "__generated__/SuggestionsSearchQuery.graphql"
 import { ContextConsumer } from "Artsy/SystemContext"
+import { SearchPreview } from "Components/Search/Previews"
 import * as React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { get } from "Utils/get"
@@ -10,19 +12,60 @@ interface Props {
   viewer: SuggestionsSearch_viewer
 }
 
-export const SearchSuggestions: React.SFC<Props> = ({ viewer }) => {
-  const edges = get(viewer, v => v.search.edges)
-  if (edges.length > 0) {
-    return (
-      <>
-        <h1>Suggestions</h1>
-        {edges.map(({ node }) => {
-          return <div>{node.displayLabel}</div>
-        })}
-      </>
-    )
+interface State {
+  selectedType: string
+  selectedID: string
+}
+
+export class SearchSuggestions extends React.Component<Props, State> {
+  state = {
+    selectedType: null,
+    selectedID: null,
   }
-  return <>no suggestions</>
+
+  renderPreview() {
+    const { selectedID, selectedType } = this.state
+    if (selectedID && selectedType) {
+      return <SearchPreview entityID={selectedID} entityType={selectedType} />
+    }
+  }
+
+  render() {
+    const { viewer } = this.props
+    const edges = get(viewer, v => v.search.edges)
+    if (edges.length > 0) {
+      return (
+        <>
+          <Flex flexDirection={["column", "row"]}>
+            <Box width={["100%", "25%"]}>
+              <Flex flexDirection="column">
+                {edges.map(
+                  ({ node: { displayLabel, searchableType, href } }) => {
+                    return (
+                      <Box
+                        onClick={() => {
+                          // TODO: Expose `id` from `SearchableItem`
+                          const id = href.replace(/\/.*\//, "")
+                          this.setState({
+                            selectedType: searchableType,
+                            selectedID: id,
+                          })
+                        }}
+                      >
+                        {displayLabel}
+                      </Box>
+                    )
+                  }
+                )}
+              </Flex>
+            </Box>
+            <Box width={["100%", "75%"]}>{this.renderPreview()}</Box>
+          </Flex>
+        </>
+      )
+    }
+    return <>no suggestions</>
+  }
 }
 
 export const SearchSuggestionsFragmentContainer = createFragmentContainer(
@@ -34,6 +77,10 @@ export const SearchSuggestionsFragmentContainer = createFragmentContainer(
         edges {
           node {
             displayLabel
+            href
+            ... on SearchableItem {
+              searchableType
+            }
           }
         }
       }

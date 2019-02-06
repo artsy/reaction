@@ -32,6 +32,10 @@ fragment SuggestionsSearch_viewer_4hh6ED on Viewer {
       node {
         __typename
         displayLabel
+        href
+        ... on SearchableItem {
+          searchableType
+        }
         ... on Node {
           __id
         }
@@ -55,7 +59,7 @@ return {
   "operationKind": "query",
   "name": "SearchBarQuery",
   "id": null,
-  "text": "query SearchBarQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SearchBarQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -166,9 +170,29 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
+                        "name": "href",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
                         "name": "__id",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "InlineFragment",
+                        "type": "SearchableItem",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "searchableType",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ]
                   }
