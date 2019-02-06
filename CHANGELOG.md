@@ -1,3 +1,11 @@
+# v12.1.20 (Wed Feb 06 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [AutoSuggest] Rough implementation of artist handling for previews [#1989](https://github.com/artsy/reaction/pull/1989) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.19 (Tue Feb 05 2019)
 
 #### 🐛  Bug Fix
