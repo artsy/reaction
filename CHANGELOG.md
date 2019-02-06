@@ -1,3 +1,11 @@
+# v12.1.21 (Wed Feb 06 2019)
+
+#### 🐛  Bug Fix
+
+- Add back access to the innerRef for Input [#1995](https://github.com/artsy/reaction/pull/1995) ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v12.1.20 (Wed Feb 06 2019)
 
 #### 🐛  Bug Fix
