@@ -1,3 +1,11 @@
+# v12.1.22 (Wed Feb 06 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Search] Add suggestions component [#1994](https://github.com/artsy/reaction/pull/1994) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.21 (Wed Feb 06 2019)
 
 #### 🐛  Bug Fix
