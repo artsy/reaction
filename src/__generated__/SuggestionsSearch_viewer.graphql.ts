@@ -23,9 +23,10 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [
     {
-      "kind": "RootArgument",
+      "kind": "LocalArgument",
       "name": "term",
-      "type": "String!"
+      "type": "String!",
+      "defaultValue": ""
     }
   ],
   "selections": [
@@ -97,5 +98,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1fc10f86dc22565bec4c56b3db091b0c';
+(node as any).hash = '4c09909c73d7aec4186c1a5a705fe6a9';
 export default node;

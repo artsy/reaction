@@ -3,7 +3,14 @@ import React from "react"
 
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
+import { SearchBar } from "Components/Search/SearchBar"
 import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
+
+storiesOf("Components/Search/SearchBar", module).add("Input", () => (
+  <ContextProvider>
+    <SearchBar />
+  </ContextProvider>
+))
 
 storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
   <ContextProvider>

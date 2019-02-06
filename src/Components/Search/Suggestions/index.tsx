@@ -25,10 +25,11 @@ export const SearchSuggestions: React.SFC<Props> = ({ viewer }) => {
   return <>no suggestions</>
 }
 
-const SearchSuggestionsFragmentContainer = createFragmentContainer(
+export const SearchSuggestionsFragmentContainer = createFragmentContainer(
   SearchSuggestions,
   graphql`
-    fragment SuggestionsSearch_viewer on Viewer {
+    fragment SuggestionsSearch_viewer on Viewer
+      @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
       search(query: $term, mode: AUTOSUGGEST, first: 10) {
         edges {
           node {
@@ -52,7 +53,7 @@ export const SearchSuggestionsQueryRenderer: React.SFC<{
             query={graphql`
               query SuggestionsSearchQuery($term: String!) {
                 viewer {
-                  ...SuggestionsSearch_viewer
+                  ...SuggestionsSearch_viewer @arguments(term: $term)
                 }
               }
             `}

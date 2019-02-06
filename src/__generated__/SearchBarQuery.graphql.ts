@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { SuggestionsSearch_viewer$ref } from "./SuggestionsSearch_viewer.graphql";
-export type SuggestionsSearchQueryVariables = {
+export type SearchBarQueryVariables = {
     readonly term: string;
 };
-export type SuggestionsSearchQueryResponse = {
+export type SearchBarQueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": SuggestionsSearch_viewer$ref;
     }) | null;
 };
-export type SuggestionsSearchQuery = {
-    readonly response: SuggestionsSearchQueryResponse;
-    readonly variables: SuggestionsSearchQueryVariables;
+export type SearchBarQuery = {
+    readonly response: SearchBarQueryResponse;
+    readonly variables: SearchBarQueryVariables;
 };
 
 
 
 /*
-query SuggestionsSearchQuery(
+query SearchBarQuery(
   $term: String!
 ) {
   viewer {
@@ -53,13 +53,13 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SuggestionsSearchQuery",
+  "name": "SearchBarQuery",
   "id": null,
-  "text": "query SuggestionsSearchQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SearchBarQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SuggestionsSearchQuery",
+    "name": "SearchBarQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -91,7 +91,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SuggestionsSearchQuery",
+    "name": "SearchBarQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -191,5 +191,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'cd65ab07788e0ea140e2befeb2d49787';
+(node as any).hash = 'b852043c30769d6f0612c3b0d9e4fb7a';
 export default node;
