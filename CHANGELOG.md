@@ -1,3 +1,11 @@
+# v12.1.23 (Wed Feb 06 2019)
+
+#### 🐛  Bug Fix
+
+- Update state of reaction [#1996](https://github.com/artsy/reaction/pull/1996) ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v12.1.22 (Wed Feb 06 2019)
 
 #### 🐛  Bug Fix
