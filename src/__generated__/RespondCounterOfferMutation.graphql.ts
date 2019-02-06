@@ -5,6 +5,7 @@ import { Respond_order$ref } from "./Respond_order.graphql";
 export type buyerCounterOfferInput = {
     readonly offerId: string;
     readonly offerPrice?: MoneyInput | null;
+    readonly note?: string | null;
     readonly clientMutationId?: string | null;
 };
 export type MoneyInput = {

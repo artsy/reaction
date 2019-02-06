@@ -5,6 +5,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type AddInitialOfferToOrderInput = {
     readonly orderId: string;
     readonly offerPrice?: MoneyInput | null;
+    readonly note?: string | null;
     readonly clientMutationId?: string | null;
 };
 export type MoneyInput = {
