@@ -8,7 +8,7 @@
 
 ## Meta
 
-- **State:** development
+- **State:** production
 - **Demo:** <https://artsy.github.io/reaction>
 - **CI:** [![CircleCI](https://circleci.com/gh/artsy/reaction.svg?style=shield)](https://circleci.com/gh/artsy/reaction)
 - **NPM:** [![npm version](https://badge.fury.io/js/%40artsy%2Freaction.svg)](https://www.npmjs.com/package/@artsy/reaction)
