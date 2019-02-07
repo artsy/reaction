@@ -1,0 +1,115 @@
+/* tslint:disable */
+
+import { ConcreteFragment } from "relay-runtime";
+declare const _SearchBarSpike_viewer$ref: unique symbol;
+export type SearchBarSpike_viewer$ref = typeof _SearchBarSpike_viewer$ref;
+export type SearchBarSpike_viewer = {
+    readonly search?: ({
+        readonly edges: ReadonlyArray<({
+            readonly node: ({
+                readonly displayLabel: string | null;
+            }) | null;
+        }) | null> | null;
+    }) | null;
+    readonly " $refType": SearchBarSpike_viewer$ref;
+};
+
+
+
+const node: ConcreteFragment = {
+  "kind": "Fragment",
+  "name": "SearchBarSpike_viewer",
+  "type": "Viewer",
+  "metadata": null,
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "term",
+      "type": "String!",
+      "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasTerm",
+      "type": "Boolean!",
+      "defaultValue": false
+    }
+  ],
+  "selections": [
+    {
+      "kind": "Condition",
+      "passingValue": true,
+      "condition": "hasTerm",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "search",
+          "storageKey": null,
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "first",
+              "value": 10,
+              "type": "Int"
+            },
+            {
+              "kind": "Literal",
+              "name": "mode",
+              "value": "AUTOSUGGEST",
+              "type": "SearchMode"
+            },
+            {
+              "kind": "Variable",
+              "name": "query",
+              "variableName": "term",
+              "type": "String!"
+            }
+          ],
+          "concreteType": "SearchableConnection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "SearchableEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": null,
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "displayLabel",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+(node as any).hash = '9473c92711a8506af5e744fa95c0b742';
+export default node;
