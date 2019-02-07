@@ -88,51 +88,13 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "InlineFragment",
-  "type": "CreditCardMutationFailure",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "mutationError",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "GravityMutationError",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "type",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "message",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "detail",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "InlineFragment",
   "type": "CreditCardMutationSuccess",
   "selections": [
@@ -196,8 +158,46 @@ v4 = {
               "args": null,
               "storageKey": null
             },
-            v3
+            v2
           ]
+        }
+      ]
+    }
+  ]
+},
+v4 = {
+  "kind": "InlineFragment",
+  "type": "CreditCardMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "mutationError",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "GravityMutationError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "message",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "detail",
+          "args": null,
+          "storageKey": null
         }
       ]
     }
@@ -235,7 +235,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
+              v3,
               v4
             ]
           }
@@ -266,8 +266,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
               v2,
+              v3,
               v4
             ]
           }

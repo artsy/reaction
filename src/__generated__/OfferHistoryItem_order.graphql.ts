@@ -22,6 +22,7 @@ export type OfferHistoryItem_order = {
         readonly amount: string | null;
         readonly shippingTotal: string | null;
         readonly taxTotal: string | null;
+        readonly note: string | null;
     }) | null;
     readonly " $refType": OfferHistoryItem_order$ref;
 };
@@ -161,6 +162,13 @@ return {
               "args": v0,
               "storageKey": "taxTotal(precision:2)"
             },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            },
             v1
           ]
         }
@@ -169,5 +177,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a648a0b3b6e78e94ba887d64651ed610';
+(node as any).hash = '115498eb52f9e7edd8cd8dc0893efb8c';
 export default node;

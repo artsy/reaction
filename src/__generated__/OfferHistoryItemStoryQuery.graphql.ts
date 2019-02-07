@@ -43,6 +43,7 @@ fragment OfferHistoryItem_order on Order {
       amount(precision: 2)
       shippingTotal(precision: 2)
       taxTotal(precision: 2)
+      note
       __id: id
     }
   }
@@ -101,7 +102,7 @@ return {
   "operationKind": "query",
   "name": "OfferHistoryItemStoryQuery",
   "id": null,
-  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
+  "text": "query OfferHistoryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -238,6 +239,13 @@ return {
                     "name": "taxTotal",
                     "args": v2,
                     "storageKey": "taxTotal(precision:2)"
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "note",
+                    "args": null,
+                    "storageKey": null
                   },
                   v1
                 ]

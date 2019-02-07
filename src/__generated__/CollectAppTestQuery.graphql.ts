@@ -486,14 +486,14 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
+                          v2,
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "price",
+                            "name": "availability",
                             "args": null,
                             "storageKey": null
                           },
-                          v2,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -514,7 +514,7 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "availability",
+                            "name": "price",
                             "args": null,
                             "storageKey": null
                           },
@@ -850,8 +850,46 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v3,
                           v2,
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "aspect_ratio",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "placeholder",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "version",
+                                    "value": "large",
+                                    "type": "[String]"
+                                  }
+                                ],
+                                "storageKey": "url(version:\"large\")"
+                              }
+                            ]
+                          },
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -930,45 +968,7 @@ return {
                           },
                           v4,
                           v6,
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "image",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Image",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "aspect_ratio",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "placeholder",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "url",
-                                "args": [
-                                  {
-                                    "kind": "Literal",
-                                    "name": "version",
-                                    "value": "large",
-                                    "type": "[String]"
-                                  }
-                                ],
-                                "storageKey": "url(version:\"large\")"
-                              }
-                            ]
-                          },
+                          v3,
                           {
                             "kind": "ScalarField",
                             "alias": null,

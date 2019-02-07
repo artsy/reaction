@@ -143,14 +143,14 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
+                v0,
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "price",
+                  "name": "availability",
                   "args": null,
                   "storageKey": null
                 },
-                v0,
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -189,7 +189,7 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "availability",
+                  "name": "price",
                   "args": null,
                   "storageKey": null
                 },

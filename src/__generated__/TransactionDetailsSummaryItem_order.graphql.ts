@@ -26,6 +26,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
     }) | null;
     readonly myLastOffer?: ({
         readonly id: string | null;
@@ -38,6 +39,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
@@ -45,14 +47,7 @@ export type TransactionDetailsSummaryItem_order = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "taxTotalCents",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -60,32 +55,39 @@ v1 = [
     "type": "Int"
   }
 ],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v1,
+  "args": v0,
   "storageKey": "shippingTotal(precision:2)"
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v1,
+  "args": v0,
   "storageKey": "taxTotal(precision:2)"
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v1,
+  "args": v0,
   "storageKey": "buyerTotal(precision:2)"
 },
 v6 = {
@@ -96,7 +98,6 @@ v6 = {
   "storageKey": null
 },
 v7 = [
-  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -107,20 +108,21 @@ v7 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "amount",
+    "args": v0,
+    "storageKey": "amount(precision:2)"
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "amountCents",
     "args": null,
     "storageKey": null
   },
+  v1,
   v2,
   v3,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v1,
-    "storageKey": "amount(precision:2)"
-  },
-  v0,
+  v4,
   v5,
   {
     "kind": "ScalarField",
@@ -136,6 +138,13 @@ v7 = [
     "args": null,
     "storageKey": null
   },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "note",
+    "args": null,
+    "storageKey": null
+  },
   v6
 ];
 return {
@@ -145,7 +154,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -153,9 +161,6 @@ return {
       "args": null,
       "storageKey": null
     },
-    v2,
-    v3,
-    v4,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -163,18 +168,22 @@ return {
       "args": null,
       "storageKey": null
     },
+    v1,
+    v2,
+    v3,
+    v4,
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": v1,
+      "args": v0,
       "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v1,
+      "args": v0,
       "storageKey": "totalListPrice(precision:2)"
     },
     v5,

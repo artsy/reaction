@@ -40,16 +40,16 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSidebarBidAction_artwork",
-      "args": null
-    },
-    {
       "kind": "ScalarField",
       "alias": null,
       "name": "is_in_auction",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSidebarArtists_artwork",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -68,7 +68,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarArtists_artwork",
+      "name": "ArtworkSidebarBidAction_artwork",
       "args": null
     },
     {

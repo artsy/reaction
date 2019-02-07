@@ -372,17 +372,17 @@ return {
                           v2,
                           {
                             "kind": "InlineFragment",
-                            "type": "Partner",
+                            "type": "ExternalPartner",
                             "selections": [
-                              v4,
-                              v5
+                              v4
                             ]
                           },
                           {
                             "kind": "InlineFragment",
-                            "type": "ExternalPartner",
+                            "type": "Partner",
                             "selections": [
-                              v4
+                              v4,
+                              v5
                             ]
                           }
                         ]

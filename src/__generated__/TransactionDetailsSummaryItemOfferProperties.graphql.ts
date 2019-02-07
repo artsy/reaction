@@ -15,6 +15,7 @@ export type TransactionDetailsSummaryItemOfferProperties = {
     readonly buyerTotal: string | null;
     readonly buyerTotalCents: number | null;
     readonly fromParticipant: OrderParticipantEnum | null;
+    readonly note: string | null;
     readonly " $refType": TransactionDetailsSummaryItemOfferProperties$ref;
 };
 
@@ -39,16 +40,16 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "taxTotal",
-      "args": v0,
-      "storageKey": "taxTotal(precision:2)"
+      "name": "id",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
+      "name": "amount",
+      "args": v0,
+      "storageKey": "amount(precision:2)"
     },
     {
       "kind": "ScalarField",
@@ -74,9 +75,9 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "amount",
+      "name": "taxTotal",
       "args": v0,
-      "storageKey": "amount(precision:2)"
+      "storageKey": "taxTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
@@ -108,6 +109,13 @@ return {
     },
     {
       "kind": "ScalarField",
+      "alias": null,
+      "name": "note",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
       "alias": "__id",
       "name": "id",
       "args": null,
@@ -116,5 +124,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c45ddea44a1696761a4198d99433c0f6';
+(node as any).hash = '603358d58b399b4455937de2bdae5382';
 export default node;
