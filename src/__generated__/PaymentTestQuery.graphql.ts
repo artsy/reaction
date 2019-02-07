@@ -125,6 +125,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
     myLastOffer {
@@ -138,6 +139,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
   }
@@ -247,7 +249,7 @@ v13 = {
   "storageKey": "buyerTotal(precision:2)"
 },
 v14 = [
-  v11,
+  v12,
   v4,
   {
     "kind": "ScalarField",
@@ -258,6 +260,7 @@ v14 = [
   },
   v3,
   v10,
+  v11,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -265,7 +268,6 @@ v14 = [
     "args": v2,
     "storageKey": "amount(precision:2)"
   },
-  v12,
   v13,
   {
     "kind": "ScalarField",
@@ -281,6 +283,13 @@ v14 = [
     "args": null,
     "storageKey": null
   },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "note",
+    "args": null,
+    "storageKey": null
+  },
   v1
 ];
 return {
@@ -288,7 +297,7 @@ return {
   "operationKind": "query",
   "name": "PaymentTestQuery",
   "id": null,
-  "text": "query PaymentTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  mode\n  creditCard {\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code\n    __id\n  }\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on Pickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query PaymentTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Payment_order\n    __id: id\n  }\n}\n\nfragment Payment_order on Order {\n  id\n  mode\n  creditCard {\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code\n    __id\n  }\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on Pickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

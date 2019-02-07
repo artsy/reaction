@@ -26,6 +26,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
     }) | null;
     readonly myLastOffer?: ({
         readonly id: string | null;
@@ -38,6 +39,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
 };
@@ -96,7 +98,7 @@ v6 = {
   "storageKey": null
 },
 v7 = [
-  v4,
+  v0,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -113,6 +115,7 @@ v7 = [
   },
   v2,
   v3,
+  v4,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -120,7 +123,6 @@ v7 = [
     "args": v1,
     "storageKey": "amount(precision:2)"
   },
-  v0,
   v5,
   {
     "kind": "ScalarField",
@@ -133,6 +135,13 @@ v7 = [
     "kind": "ScalarField",
     "alias": null,
     "name": "fromParticipant",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "note",
     "args": null,
     "storageKey": null
   },

@@ -48,6 +48,7 @@ fragment Respond_order on Order {
     lastOffer {
       createdAt
       id
+      note
       __id: id
     }
   }
@@ -81,6 +82,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
     myLastOffer {
@@ -94,6 +96,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
   }
@@ -185,6 +188,7 @@ fragment OfferHistoryItem_order on Order {
       amount(precision: 2)
       shippingTotal(precision: 2)
       taxTotal(precision: 2)
+      note
       __id: id
     }
   }
@@ -294,25 +298,32 @@ v11 = {
 v12 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "note",
+  "args": null,
+  "storageKey": null
+},
+v13 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "amount",
   "args": v4,
   "storageKey": "amount(precision:2)"
 },
-v13 = {
+v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "amountCents",
   "args": null,
   "storageKey": null
 },
-v14 = {
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotalCents",
   "args": null,
   "storageKey": null
 },
-v15 = {
+v16 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "fromParticipant",
@@ -324,7 +335,7 @@ return {
   "operationKind": "query",
   "name": "RespondTestQuery",
   "id": null,
-  "text": "query RespondTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Respond_order\n    __id: id\n  }\n}\n\nfragment Respond_order on Order {\n  id\n  mode\n  state\n  itemsTotal(precision: 2)\n  itemsTotalCents\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      createdAt\n      id\n      __id: id\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferHistoryItem_order\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n  }\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment CreditCardSummaryItem_order on Order {\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query RespondTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Respond_order\n    __id: id\n  }\n}\n\nfragment Respond_order on Order {\n  id\n  mode\n  state\n  itemsTotal(precision: 2)\n  itemsTotalCents\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      createdAt\n      id\n      note\n      __id: id\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferHistoryItem_order\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment CreditCardSummaryItem_order on Order {\n  creditCard {\n    brand\n    last_digits\n    expiration_year\n    expiration_month\n    __id\n  }\n  __id: id\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -675,7 +686,7 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v8,
+                  v7,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -683,16 +694,17 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1,
                   v12,
+                  v1,
                   v13,
-                  v7,
+                  v14,
                   v3,
+                  v8,
                   v9,
                   v10,
                   v11,
-                  v14,
-                  v15
+                  v15,
+                  v16
                 ]
               },
               {
@@ -704,16 +716,17 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v9,
+                  v10,
                   v3,
-                  v13,
+                  v14,
                   v7,
                   v8,
-                  v12,
-                  v10,
+                  v9,
+                  v13,
                   v11,
-                  v14,
                   v15,
+                  v16,
+                  v12,
                   v1
                 ]
               },
@@ -745,7 +758,7 @@ return {
                         "plural": false,
                         "selections": [
                           v3,
-                          v12,
+                          v13,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -760,7 +773,7 @@ return {
                             ],
                             "storageKey": "createdAt(format:\"MMM D\")"
                           },
-                          v15,
+                          v16,
                           v1
                         ]
                       }

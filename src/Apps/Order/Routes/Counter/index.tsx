@@ -172,6 +172,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
                     title="Your counteroffer"
                     onChange={this.onChangeResponse}
                     offerContextPrice="LAST_OFFER"
+                    showOfferNote={true}
                   />
                 </Flex>
                 <Spacer mb={[2, 3]} />

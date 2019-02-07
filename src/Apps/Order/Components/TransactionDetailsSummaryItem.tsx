@@ -11,6 +11,7 @@ export interface TransactionDetailsSummaryItemProps
   offerOverride?: string | null
   useLastSubmittedOffer?: boolean
   offerContextPrice?: "LIST_PRICE" | "LAST_OFFER"
+  showOfferNote?: boolean
 }
 
 export class TransactionDetailsSummaryItem extends React.Component<
@@ -20,7 +21,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
     offerContextPrice: "LIST_PRICE",
   }
   render() {
-    const { offerOverride, order, ...others } = this.props
+    const { showOfferNote, offerOverride, order, ...others } = this.props
     return (
       <StepSummaryItem {...others}>
         {this.renderPriceEntry()}
@@ -30,6 +31,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
         <Entry label="Tax" value={this.taxDisplayAmount()} />
         <Spacer mb={2} />
         <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
+        {showOfferNote && order.mode === "OFFER" && this.renderNoteEntry()}
       </StepSummaryItem>
     )
   }
@@ -115,6 +117,24 @@ export class TransactionDetailsSummaryItem extends React.Component<
     )
   }
 
+  renderNoteEntry = () => {
+    const offer = this.getOffer()
+
+    if (offer.note) {
+      return (
+        <>
+          <Spacer mb={[2, 3]} />
+          <Serif size={["2", "3t"]} weight="semibold" color="black100">
+            Your note
+          </Serif>
+          <Serif size={["2", "3t"]} color="black60">
+            {offer.note}
+          </Serif>
+        </>
+      )
+    }
+  }
+
   formattedAmount = (amount, amountCents) => {
     // FIXME: Use actual currency code
     if (amount) {
@@ -180,6 +200,7 @@ graphql`
     buyerTotal(precision: 2)
     buyerTotalCents
     fromParticipant
+    note
   }
 `
 

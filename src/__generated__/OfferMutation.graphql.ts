@@ -27,6 +27,7 @@ export type OfferMutationResponse = {
                 readonly myLastOffer?: ({
                     readonly id: string | null;
                     readonly amountCents: number | null;
+                    readonly note: string | null;
                 }) | null;
             }) | null;
             readonly error?: ({
@@ -63,6 +64,7 @@ mutation OfferMutation(
             myLastOffer {
               id
               amountCents
+              note
               __id: id
             }
           }
@@ -199,6 +201,13 @@ v9 = {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "note",
+          "args": null,
+          "storageKey": null
+        },
         v8
       ]
     }
@@ -209,7 +218,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              note\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -325,5 +334,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'bc84dfb865867535763b30db14838b08';
+(node as any).hash = 'ffcbdfafdb3c0f6337c146317bc4af2d';
 export default node;

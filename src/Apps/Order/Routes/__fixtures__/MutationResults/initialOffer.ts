@@ -10,6 +10,7 @@ export const initialOfferSuccess = {
         myLastOffer: {
           id: "2345",
           amountCents: 400,
+          note: null,
         },
         lastOffer: null,
       },

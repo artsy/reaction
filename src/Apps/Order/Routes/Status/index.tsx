@@ -229,6 +229,7 @@ export class StatusRoute extends Component<StatusProps> {
       description,
       showTransactionSummary = true,
     } = this.getStatusCopy()
+    const showOfferNote = order.mode === "OFFER" && order.state === "SUBMITTED"
 
     return (
       <>
@@ -251,6 +252,7 @@ export class StatusRoute extends Component<StatusProps> {
                       <TransactionDetailsSummaryItem
                         order={order}
                         useLastSubmittedOffer
+                        showOfferNote={showOfferNote}
                       />
                     </Flex>
                   ) : (

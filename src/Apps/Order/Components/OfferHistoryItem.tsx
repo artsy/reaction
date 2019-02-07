@@ -16,10 +16,11 @@ const OfferHistoryItem: React.SFC<
   const previousOffers = offers.edges.filter(
     ({ node: { id } }) => id !== lastOffer.id
   )
+
   return (
     <StepSummaryItem {...others}>
       <Row>
-        <Serif size={["2", "3"]} color="black60">
+        <Serif size={["2", "3"]} color="black100" weight="semibold">
           {lastOffer.fromParticipant === "SELLER"
             ? "Seller's offer"
             : "Your offer"}
@@ -34,11 +35,28 @@ const OfferHistoryItem: React.SFC<
           List price: {totalListPrice}
         </Sans>
       </Row>
+      {lastOffer.note && (
+        <>
+          <Spacer mb={2} />
+          <Serif size={["2", "3"]} color="black100" weight="semibold">
+            {lastOffer.fromParticipant === "SELLER"
+              ? "Seller's note"
+              : "Your note"}
+          </Serif>
+          <Serif size="2" color="black60">
+            {lastOffer.note}
+          </Serif>
+          <Spacer mb={1} />
+        </>
+      )}
       {previousOffers.length > 0 && (
         <>
-          <Spacer mb={1} />
+          <Spacer mb={2} />
           <RevealButton buttonLabel="Show offer history">
             <Flex m={0} flexDirection="column">
+              <Serif size={["2", "3"]} color="black100" weight="semibold">
+                Offer history
+              </Serif>
               {previousOffers.map(({ node: offer }) => (
                 <Row key={offer.id}>
                   <Serif size={["2", "3"]} color="black60">
@@ -88,6 +106,7 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
           amount(precision: 2)
           shippingTotal(precision: 2)
           taxTotal(precision: 2)
+          note
         }
       }
       totalListPrice(precision: 2)

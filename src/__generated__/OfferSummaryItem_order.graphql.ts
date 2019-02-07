@@ -7,6 +7,7 @@ export type OfferSummaryItem_order = {
     readonly totalListPrice: string | null;
     readonly myLastOffer?: ({
         readonly amount: string | null;
+        readonly note: string | null;
     }) | null;
     readonly " $refType": OfferSummaryItem_order$ref;
 };
@@ -64,6 +65,13 @@ return {
               "args": v0,
               "storageKey": "amount(precision:2)"
             },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            },
             v1
           ]
         }
@@ -72,5 +80,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd2a9645b4aaaf247549f93de0eb282e8';
+(node as any).hash = '90ad44d35301b6a9de545dc7e020855d';
 export default node;

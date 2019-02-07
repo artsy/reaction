@@ -53,7 +53,7 @@ export interface OfferState {
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
-const enableOfferNote = sd.ENABLE_OFFER_NOTE
+const enableOfferNote = process.env.ENABLE_OFFER_NOTE || sd.ENABLE_OFFER_NOTE
 
 @track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
@@ -150,6 +150,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                         myLastOffer {
                           id
                           amountCents
+                          note
                         }
                       }
                     }
@@ -167,12 +168,13 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           `,
           variables: {
             input: {
+              note:
+                this.state.offerNoteValue && this.state.offerNoteValue.value,
               orderId: this.props.order.id,
               offerPrice: {
                 amount: offerValue,
                 currencyCode: "USD",
               },
-              // TODO: put note in here
             },
           },
           onCompleted: data => {

@@ -30,6 +30,7 @@ export type Respond_order = {
     readonly lastOffer?: ({
         readonly createdAt: string | null;
         readonly id: string | null;
+        readonly note: string | null;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
@@ -217,6 +218,13 @@ return {
               "storageKey": null
             },
             v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            },
             v1
           ]
         }
@@ -225,5 +233,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6df305eda5909117b1cc7f9e1df12f0f';
+(node as any).hash = '5fbe1efac59aba6761860d499f4d3720';
 export default node;

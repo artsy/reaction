@@ -46,6 +46,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
     myLastOffer {
@@ -59,6 +60,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotal(precision: 2)
       buyerTotalCents
       fromParticipant
+      note
       __id: id
     }
   }
@@ -126,7 +128,7 @@ v7 = {
   "storageKey": "buyerTotal(precision:2)"
 },
 v8 = [
-  v6,
+  v2,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -143,6 +145,7 @@ v8 = [
   },
   v4,
   v5,
+  v6,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -150,7 +153,6 @@ v8 = [
     "args": v3,
     "storageKey": "amount(precision:2)"
   },
-  v2,
   v7,
   {
     "kind": "ScalarField",
@@ -166,6 +168,13 @@ v8 = [
     "args": null,
     "storageKey": null
   },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "note",
+    "args": null,
+    "storageKey": null
+  },
   v1
 ];
 return {
@@ -173,7 +182,7 @@ return {
   "operationKind": "query",
   "name": "TransactionDetailsSummaryItemStoryQuery",
   "id": null,
-  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      __id: id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
