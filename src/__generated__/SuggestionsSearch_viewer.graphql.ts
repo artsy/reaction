@@ -8,6 +8,8 @@ export type SuggestionsSearch_viewer = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly displayLabel: string | null;
+                readonly href: string | null;
+                readonly searchableType?: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -86,9 +88,29 @@ const node: ConcreteFragment = {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "href",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "__id",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "InlineFragment",
+                  "type": "SearchableItem",
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "searchableType",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
             }
@@ -98,5 +120,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '4c09909c73d7aec4186c1a5a705fe6a9';
+(node as any).hash = 'b2d4eb6ae95ade92e1a3ade95a81c702';
 export default node;
