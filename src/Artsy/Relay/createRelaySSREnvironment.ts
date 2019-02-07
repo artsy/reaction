@@ -16,6 +16,7 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern/node8"
+import { metaphysicsExtensionsLoggerMiddleware } from "./middleware/metaphysicsExtensionsLoggerMiddleware"
 
 const isServer = typeof window === "undefined"
 const isDevelopment =
@@ -108,6 +109,7 @@ export function createRelaySSREnvironment(config: Config = {}) {
         }
       },
       loggingEnabled && loggerMiddleware(),
+      loggingEnabled && metaphysicsExtensionsLoggerMiddleware(),
       loggingEnabled && errorMiddleware({ disableServerMiddlewareTip: true }),
     ])
 
