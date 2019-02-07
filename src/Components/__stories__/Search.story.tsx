@@ -36,8 +36,11 @@ storiesOf("Components/Search/Previews/Artist", module)
     </ContextProvider>
   ))
 
-storiesOf("Components/Search/Previews/Sale", module).add("A sale", () => (
-  <ContextProvider>
-    <SearchPreview entityID="phillips" entityType="Sale" />
-  </ContextProvider>
-))
+storiesOf("Components/Search/Previews/MerchandisableArtworks", module).add(
+  "No query",
+  () => (
+    <ContextProvider>
+      <SearchPreview entityID="" entityType="" />
+    </ContextProvider>
+  )
+)
