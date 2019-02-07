@@ -1,3 +1,15 @@
+# v12.1.24 (Thu Feb 07 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Search] Prototype for loading previews w/ suggestions [#1997](https://github.com/artsy/reaction/pull/1997) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.37.21 [#1999](https://github.com/artsy/reaction/pull/1999) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.23 (Wed Feb 06 2019)
 
 #### 🐛  Bug Fix
