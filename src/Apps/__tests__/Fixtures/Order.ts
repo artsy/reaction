@@ -136,6 +136,7 @@ export const OfferWithTotals = {
   fromParticipant: "SELLER",
   buyerTotal: "$14,320",
   buyerTotalCents: 1432000,
+  note: "Another note!",
 }
 
 export const UntouchedOfferOrder = {
@@ -161,6 +162,18 @@ export const OfferOrderWithOffers = {
     ...OfferWithTotals,
     id: "my-last-offer-id",
     fromParticipant: "BUYER",
+    note: null,
+  },
+}
+
+export const OfferOrderWithOffersAndNote = {
+  ...UntouchedOfferOrder,
+  lastOffer: OfferWithTotals,
+  myLastOffer: {
+    ...OfferWithTotals,
+    id: "my-last-offer-id",
+    fromParticipant: "BUYER",
+    note: "This is a note!",
   },
 }
 
@@ -204,6 +217,12 @@ export const BuyOrderWithShippingDetails = {
 
 export const OfferOrderWithShippingDetails = {
   ...OfferOrderWithOffers,
+  ...ShippingDetails,
+  ...PaymentDetails,
+}
+
+export const OfferOrderWithShippingDetailsAndNote = {
+  ...OfferOrderWithOffersAndNote,
   ...ShippingDetails,
   ...PaymentDetails,
 }

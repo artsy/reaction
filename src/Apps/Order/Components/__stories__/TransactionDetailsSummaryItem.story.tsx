@@ -74,6 +74,7 @@ storiesOf("Apps/Order Page/Components", module).add(
                 buyerTotal: "$102789",
                 buyerTotalCents: 10278900,
                 fromParticipant: "BUYER",
+                note: "This is a note!",
               },
             })}
           </Flex>
@@ -95,11 +96,10 @@ storiesOf("Apps/Order Page/Components", module).add(
                   buyerTotal: "$102789",
                   buyerTotalCents: 10278900,
                   fromParticipant: "BUYER",
+                  note: "This is a note!",
                 },
               },
-              {
-                offerOverride: "£123.00",
-              }
+              { offerOverride: "£123.00" }
             )}
           </Flex>
         </Section>
@@ -120,11 +120,10 @@ storiesOf("Apps/Order Page/Components", module).add(
                   buyerTotal: "$102789",
                   buyerTotalCents: 10278900,
                   fromParticipant: "BUYER",
+                  note: "This is a note!",
                 },
               },
-              {
-                useLastSubmittedOffer: true,
-              }
+              { useLastSubmittedOffer: true }
             )}
           </Flex>
         </Section>
@@ -145,11 +144,10 @@ storiesOf("Apps/Order Page/Components", module).add(
                   buyerTotal: "$102789",
                   buyerTotalCents: 10278900,
                   fromParticipant: "SELLER",
+                  note: "This is a note!",
                 },
               },
-              {
-                useLastSubmittedOffer: true,
-              }
+              { useLastSubmittedOffer: true }
             )}
           </Flex>
         </Section>
@@ -170,6 +168,7 @@ storiesOf("Apps/Order Page/Components", module).add(
                   buyerTotal: "$102789",
                   buyerTotalCents: 10278900,
                   fromParticipant: "SELLER",
+                  note: "This is a note!",
                 },
                 myLastOffer: {
                   id: "23456",
@@ -182,11 +181,10 @@ storiesOf("Apps/Order Page/Components", module).add(
                   buyerTotal: "$102789",
                   buyerTotalCents: 10278900,
                   fromParticipant: "BUYER",
+                  note: "This is a note!",
                 },
               },
-              {
-                offerContextPrice: "LAST_OFFER",
-              }
+              { offerContextPrice: "LAST_OFFER" }
             )}
           </Flex>
         </Section>

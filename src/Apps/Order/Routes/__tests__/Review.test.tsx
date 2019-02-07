@@ -1,6 +1,7 @@
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
+  OfferOrderWithShippingDetailsAndNote,
 } from "Apps/__tests__/Fixtures/Order"
 import { OfferSummaryItemFragmentContainer } from "Apps/Order/Components/OfferSummaryItem"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
@@ -149,6 +150,21 @@ describe("Review", () => {
       expect(routes.mockPushRoute).toBeCalledWith(
         "/orders/offer-order-id/offer"
       )
+    })
+
+    it("does not show the offer note section if the offer has no note", () => {
+      expect(page.offerSummary.text()).not.toMatch("Your note")
+    })
+
+    it("shows an offer note if one exists", async () => {
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...OfferOrderWithShippingDetailsAndNote,
+          },
+        },
+      })
+      expect(page.offerSummary.text()).toMatch("Your noteThis is a note!")
     })
 
     it("enables the button and routes to the payoff page", async () => {

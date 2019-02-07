@@ -2,6 +2,7 @@ import { BorderedRadio, Button } from "@artsy/palette"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
+  OfferOrderWithShippingDetailsAndNote,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
@@ -141,6 +142,27 @@ describe("The respond page", () => {
     it("shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(`"RespondReview"`)
       expect(page.orderStepperCurrentStep).toBe("Respond")
+    })
+
+    it("shows a note if there is one", async () => {
+      const pageWithNote = await buildPage({
+        mockData: {
+          order: {
+            ...OfferOrderWithShippingDetailsAndNote,
+            stateExpiresAt: moment(NOW)
+              .add(1, "day")
+              .add(4, "hours")
+              .add(22, "minutes")
+              .add(59, "seconds")
+              .toISOString(),
+          },
+        },
+      })
+      expect(pageWithNote.text()).toContain("Seller's noteAnother note!")
+    })
+
+    it("does not show a note if there is none", () => {
+      expect(page.text()).not.toContain("Your note")
     })
 
     it("shows the offer history item", () => {

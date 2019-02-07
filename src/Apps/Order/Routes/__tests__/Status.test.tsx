@@ -4,6 +4,7 @@ import {
   BuyOrderWithShippingDetails,
   OfferOrderPickup,
   OfferOrderWithShippingDetails,
+  OfferOrderWithShippingDetailsAndNote,
 } from "Apps/__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
@@ -30,7 +31,10 @@ class StatusTestPage extends OrderAppTestPage {
   }
 }
 
-const testOrder = { ...OfferOrderWithShippingDetails, state: "SUBMITTED" }
+const testOrder = {
+  ...OfferOrderWithShippingDetailsAndNote,
+  state: "SUBMITTED",
+}
 
 describe("Status", () => {
   const env = createTestEnv({
@@ -80,6 +84,21 @@ describe("Status", () => {
         expect(page.text()).not.toContain("or buy now at list price")
         page.expectMessage()
       })
+
+      it("should show a note section", async () => {
+        const page = await env.buildPage()
+        expect(page.text()).toContain("Your noteAnother note!")
+        page.expectMessage()
+      })
+
+      it("should not show a note section if none exists", async () => {
+        const page = await buildPageWithOrder(
+          produce(testOrder, order => {
+            order.lastOffer.note = null
+          })
+        )
+        expect(page.text()).not.toContain("Your note")
+      })
     })
 
     describe("approved", () => {
@@ -101,6 +120,14 @@ describe("Status", () => {
         })
         expect(page.text()).toContain("Your order has shipped")
         page.expectMessage()
+      })
+
+      it("should not contain a note section", async () => {
+        const page = await buildPageWithOrder({
+          ...OfferOrderWithShippingDetails,
+          state: "FULFILLED",
+        })
+        expect(page.text()).not.toContain("Your note")
       })
     })
 
