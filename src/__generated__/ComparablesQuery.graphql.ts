@@ -316,8 +316,14 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "title",
+            "args": null,
+            "storageKey": null
+          },
           v4,
-          v5,
           v7,
           v8,
           {
@@ -442,13 +448,7 @@ return {
             "storageKey": null
           },
           v9,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "title",
-            "args": null,
-            "storageKey": null
-          },
+          v5,
           {
             "kind": "ScalarField",
             "alias": null,

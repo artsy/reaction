@@ -80,34 +80,6 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "mode",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -144,6 +116,34 @@ v6 = {
       ]
     }
   ]
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "mode",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
@@ -177,11 +177,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v2,
+                  v3,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -191,14 +192,13 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
                       v4,
-                      v5
+                      v5,
+                      v6
                     ]
                   }
                 ]
-              },
-              v6
+              }
             ]
           }
         ]
@@ -228,12 +228,13 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              v3,
               v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
                 "selections": [
-                  v2,
+                  v3,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -243,15 +244,14 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v2,
                       v3,
                       v4,
-                      v5
+                      v5,
+                      v6
                     ]
                   }
                 ]
-              },
-              v6
+              }
             ]
           }
         ]

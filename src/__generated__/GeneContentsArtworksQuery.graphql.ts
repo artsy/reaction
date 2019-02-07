@@ -546,46 +546,14 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v2,
                           {
-                            "kind": "LinkedField",
+                            "kind": "ScalarField",
                             "alias": null,
-                            "name": "image",
-                            "storageKey": null,
+                            "name": "sale_message",
                             "args": null,
-                            "concreteType": "Image",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "aspect_ratio",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "placeholder",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "url",
-                                "args": [
-                                  {
-                                    "kind": "Literal",
-                                    "name": "version",
-                                    "value": "large",
-                                    "type": "[String]"
-                                  }
-                                ],
-                                "storageKey": "url(version:\"large\")"
-                              }
-                            ]
+                            "storageKey": null
                           },
+                          v2,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -684,11 +652,43 @@ return {
                             "storageKey": null
                           },
                           {
-                            "kind": "ScalarField",
+                            "kind": "LinkedField",
                             "alias": null,
-                            "name": "sale_message",
+                            "name": "image",
+                            "storageKey": null,
                             "args": null,
-                            "storageKey": null
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "aspect_ratio",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "placeholder",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "version",
+                                    "value": "large",
+                                    "type": "[String]"
+                                  }
+                                ],
+                                "storageKey": "url(version:\"large\")"
+                              }
+                            ]
                           },
                           {
                             "kind": "ScalarField",
@@ -911,12 +911,12 @@ return {
                   v2,
                   {
                     "kind": "InlineFragment",
-                    "type": "ArtworkFilterTag",
+                    "type": "ArtworkFilterGene",
                     "selections": v9
                   },
                   {
                     "kind": "InlineFragment",
-                    "type": "ArtworkFilterGene",
+                    "type": "ArtworkFilterTag",
                     "selections": v9
                   }
                 ]

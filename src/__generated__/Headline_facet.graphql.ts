@@ -36,12 +36,12 @@ return {
     },
     {
       "kind": "InlineFragment",
-      "type": "ArtworkFilterTag",
+      "type": "ArtworkFilterGene",
       "selections": v0
     },
     {
       "kind": "InlineFragment",
-      "type": "ArtworkFilterGene",
+      "type": "ArtworkFilterTag",
       "selections": v0
     }
   ]

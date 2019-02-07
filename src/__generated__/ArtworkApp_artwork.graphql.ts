@@ -42,14 +42,14 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "_id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "_id",
   "args": null,
   "storageKey": null
 };
@@ -60,8 +60,20 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artist",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
+    },
     v0,
-    v1,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -106,24 +118,12 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v1,
+        v2,
         v0,
-        v2
+        v1
       ]
     },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "artist",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Artist",
-      "plural": false,
-      "selections": [
-        v0,
-        v2
-      ]
-    },
+    v2,
     {
       "kind": "FragmentSpread",
       "name": "ArtworkRelatedArtists_artwork",
@@ -159,7 +159,7 @@ return {
       "name": "OtherWorks_artwork",
       "args": null
     },
-    v2
+    v1
   ]
 };
 })();

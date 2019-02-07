@@ -197,16 +197,27 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "title",
+            "kind": "LinkedField",
+            "alias": "artworkMeta",
+            "name": "meta",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "ArtworkMeta",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "share",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           },
           {
             "kind": "ScalarField",
-            "alias": "image_alt",
-            "name": "to_s",
+            "alias": null,
+            "name": "title",
             "args": null,
             "storageKey": null
           },
@@ -398,22 +409,11 @@ return {
             ]
           },
           {
-            "kind": "LinkedField",
-            "alias": "artworkMeta",
-            "name": "meta",
-            "storageKey": null,
+            "kind": "ScalarField",
+            "alias": "image_alt",
+            "name": "to_s",
             "args": null,
-            "concreteType": "ArtworkMeta",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "share",
-                "args": null,
-                "storageKey": null
-              }
-            ]
+            "storageKey": null
           },
           {
             "kind": "LinkedField",

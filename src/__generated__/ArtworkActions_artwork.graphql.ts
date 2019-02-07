@@ -41,14 +41,14 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -60,13 +60,48 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "Save_artwork",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "image",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Image",
+      "plural": false,
+      "selections": [
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "url",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "larger",
+              "type": "[String]"
+            }
+          ],
+          "storageKey": "url(version:\"larger\")"
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "height",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "width",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSharePanel_artwork",
+      "name": "Save_artwork",
       "args": null
     },
     {
@@ -85,7 +120,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -120,46 +155,11 @@ return {
       "args": null,
       "storageKey": null
     },
-    v1,
+    v0,
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "image",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Image",
-      "plural": false,
-      "selections": [
-        v1,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "url",
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "version",
-              "value": "larger",
-              "type": "[String]"
-            }
-          ],
-          "storageKey": "url(version:\"larger\")"
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "height",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "width",
-          "args": null,
-          "storageKey": null
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "ArtworkSharePanel_artwork",
+      "args": null
     },
     {
       "kind": "ScalarField",
@@ -184,8 +184,8 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v1,
-        v0
+        v0,
+        v1
       ]
     },
     {
@@ -218,10 +218,10 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();

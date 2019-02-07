@@ -64,14 +64,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "href",
+      "name": "image_rights",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "date",
+      "name": "href",
       "args": null,
       "storageKey": null
     },
@@ -105,7 +105,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "image_rights",
+      "name": "date",
       "args": null,
       "storageKey": null
     },

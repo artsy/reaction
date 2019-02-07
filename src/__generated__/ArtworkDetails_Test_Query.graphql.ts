@@ -147,35 +147,6 @@ v1 = {
 },
 v2 = [
   {
-    "kind": "Literal",
-    "name": "format",
-    "value": "HTML",
-    "type": "Format"
-  }
-],
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v6 = [
-  {
     "kind": "ScalarField",
     "alias": null,
     "name": "label",
@@ -189,7 +160,36 @@ v6 = [
     "args": null,
     "storageKey": null
   }
-];
+],
+v3 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "HTML",
+    "type": "Format"
+  }
+],
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
@@ -238,18 +238,27 @@ return {
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "certificateOfAuthenticity",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtworkInfoRow",
+            "plural": false,
+            "selections": v2
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "name": "description",
-            "args": v2,
+            "args": v3,
             "storageKey": "description(format:\"HTML\")"
           },
-          v1,
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "additional_information",
-            "args": v2,
+            "args": v3,
             "storageKey": "additional_information(format:\"HTML\")"
           },
           {
@@ -287,7 +296,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v3,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -295,8 +304,8 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4,
               v5,
+              v6,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -340,7 +349,7 @@ return {
                 "plural": false,
                 "selections": [
                   v1,
-                  v3,
+                  v4,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -386,7 +395,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v6
+            "selections": v2
           },
           {
             "kind": "LinkedField",
@@ -396,7 +405,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v6
+            "selections": v2
           },
           {
             "kind": "LinkedField",
@@ -406,18 +415,9 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v6
+            "selections": v2
           },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "certificateOfAuthenticity",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "ArtworkInfoRow",
-            "plural": false,
-            "selections": v6
-          },
+          v1,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -471,11 +471,11 @@ return {
                 "concreteType": "Author",
                 "plural": false,
                 "selections": [
-                  v5,
+                  v6,
                   v1
                 ]
               },
-              v4,
+              v5,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -534,28 +534,28 @@ return {
                 "storageKey": null
               },
               v1,
-              v3
+              v4
             ]
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "literature",
-            "args": v2,
+            "args": v3,
             "storageKey": "literature(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "exhibition_history",
-            "args": v2,
+            "args": v3,
             "storageKey": "exhibition_history(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "provenance",
-            "args": v2,
+            "args": v3,
             "storageKey": "provenance(format:\"HTML\")"
           }
         ]

@@ -71,20 +71,6 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -107,6 +93,20 @@ v4 = {
       ]
     }
   ]
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
@@ -147,6 +147,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -160,13 +161,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v2,
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
-              },
-              v4
+              }
             ]
           }
         ]
@@ -197,6 +197,7 @@ return {
             "plural": false,
             "selections": [
               v5,
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -211,13 +212,12 @@ return {
                     "plural": false,
                     "selections": [
                       v5,
-                      v2,
-                      v3
+                      v3,
+                      v4
                     ]
                   }
                 ]
-              },
-              v4
+              }
             ]
           }
         ]

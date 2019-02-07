@@ -459,16 +459,27 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "is_in_auction",
+            "name": "attribution_class",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "AttributionClass",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "short_description",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "cultural_maker",
+            "name": "is_in_auction",
             "args": null,
             "storageKey": null
           },
@@ -763,22 +774,18 @@ return {
           v10,
           v11,
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "attribution_class",
-            "storageKey": null,
+            "name": "shippingOrigin",
             "args": null,
-            "concreteType": "AttributionClass",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "short_description",
-                "args": null,
-                "storageKey": null
-              }
-            ]
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "cultural_maker",
+            "args": null,
+            "storageKey": null
           },
           v3,
           {
@@ -824,30 +831,6 @@ return {
             "concreteType": "Sale",
             "plural": false,
             "selections": [
-              v3,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "is_closed",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "is_with_buyers_premium",
-                "args": null,
-                "storageKey": null
-              },
-              v2,
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "is_live_open",
-                "args": null,
-                "storageKey": null
-              },
-              v4,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -866,6 +849,30 @@ return {
                   },
                   v2
                 ]
+              },
+              v3,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "is_with_buyers_premium",
+                "args": null,
+                "storageKey": null
+              },
+              v2,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "is_live_open",
+                "args": null,
+                "storageKey": null
+              },
+              v4,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "is_closed",
+                "args": null,
+                "storageKey": null
               },
               {
                 "kind": "ScalarField",
@@ -976,13 +983,6 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "shippingInfo",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "shippingOrigin",
             "args": null,
             "storageKey": null
           },

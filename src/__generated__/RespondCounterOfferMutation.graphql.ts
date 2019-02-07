@@ -263,13 +263,6 @@ v1 = [
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -307,6 +300,13 @@ v3 = {
     }
   ]
 },
+v3 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
 v4 = {
   "kind": "ScalarField",
   "alias": null,
@@ -339,44 +339,44 @@ v7 = {
 v8 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "shippingTotal",
   "args": v6,
   "storageKey": "shippingTotal(precision:2)"
 },
-v9 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
   "args": v6,
   "storageKey": "taxTotal(precision:2)"
 },
-v11 = {
+v12 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotalCents",
   "args": null,
   "storageKey": null
 },
-v12 = {
+v13 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
   "args": v6,
   "storageKey": "buyerTotal(precision:2)"
-},
-v13 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
 },
 v14 = {
   "kind": "ScalarField",
@@ -445,6 +445,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -463,12 +464,11 @@ return {
                         "name": "Respond_order",
                         "args": null
                       },
-                      v2
+                      v3
                     ]
                   }
                 ]
-              },
-              v3
+              }
             ]
           }
         ]
@@ -499,6 +499,7 @@ return {
             "plural": false,
             "selections": [
               v4,
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -512,14 +513,8 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
+                      v4,
                       v5,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "mode",
-                        "args": null,
-                        "storageKey": null
-                      },
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -666,36 +661,9 @@ return {
                                       }
                                     ]
                                   },
-                                  v2
+                                  v3
                                 ]
                               }
-                            ]
-                          }
-                        ]
-                      },
-                      v4,
-                      v8,
-                      v9,
-                      v10,
-                      v11,
-                      v12,
-                      v2,
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "seller",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": null,
-                        "plural": false,
-                        "selections": [
-                          v4,
-                          v7,
-                          {
-                            "kind": "InlineFragment",
-                            "type": "Partner",
-                            "selections": [
-                              v13
                             ]
                           }
                         ]
@@ -714,7 +682,7 @@ return {
                             "kind": "InlineFragment",
                             "type": "Ship",
                             "selections": [
-                              v13,
+                              v8,
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -764,6 +732,39 @@ return {
                                 "args": null,
                                 "storageKey": null
                               }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "mode",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      v9,
+                      v10,
+                      v11,
+                      v12,
+                      v13,
+                      v3,
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "seller",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": null,
+                        "plural": false,
+                        "selections": [
+                          v4,
+                          v7,
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Partner",
+                            "selections": [
+                              v8
                             ]
                           }
                         ]
@@ -821,6 +822,7 @@ return {
                             "concreteType": "Offer",
                             "plural": false,
                             "selections": [
+                              v9,
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -828,16 +830,15 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              v5,
                               v14,
-                              v2,
+                              v3,
                               v15,
                               v16,
-                              v8,
-                              v9,
+                              v5,
                               v10,
                               v11,
                               v12,
+                              v13,
                               v17,
                               v18
                             ]
@@ -851,18 +852,18 @@ return {
                             "concreteType": "Offer",
                             "plural": false,
                             "selections": [
+                              v12,
                               v5,
-                              v15,
                               v16,
-                              v8,
                               v9,
                               v10,
                               v11,
-                              v12,
+                              v15,
+                              v13,
                               v17,
                               v18,
                               v14,
-                              v2
+                              v3
                             ]
                           },
                           {
@@ -909,7 +910,7 @@ return {
                                         "storageKey": "createdAt(format:\"MMM D\")"
                                       },
                                       v18,
-                                      v2
+                                      v3
                                     ]
                                   }
                                 ]
@@ -921,8 +922,7 @@ return {
                     ]
                   }
                 ]
-              },
-              v3
+              }
             ]
           }
         ]

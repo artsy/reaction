@@ -49,6 +49,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "live_start_at",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "cover_image",
@@ -93,13 +100,6 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "end_at",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -128,7 +128,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "live_start_at",
+      "name": "end_at",
       "args": null,
       "storageKey": null
     },
