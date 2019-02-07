@@ -205,7 +205,8 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                 amount: price,
                 currencyCode: "USD",
               },
-              // TODO: put note in here
+              note:
+                this.state.offerNoteValue && this.state.offerNoteValue.value,
             },
           },
           onCompleted: result => {
@@ -394,6 +395,7 @@ export const RespondFragmentContainer = createFragmentContainer(
         lastOffer {
           createdAt
           id
+          note
         }
       }
       ...TransactionDetailsSummaryItem_order

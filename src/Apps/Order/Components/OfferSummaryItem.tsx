@@ -1,4 +1,4 @@
-import { Sans, Serif } from "@artsy/palette"
+import { Sans, Serif, Spacer } from "@artsy/palette"
 import { OfferSummaryItem_order } from "__generated__/OfferSummaryItem_order.graphql"
 import {
   StepSummaryItem,
@@ -13,6 +13,8 @@ const OfferSummaryItem = ({
 }: {
   order: OfferSummaryItem_order
 } & StepSummaryItemProps) => {
+  const offerNote = order.myLastOffer.note
+
   return (
     <StepSummaryItem title="Your offer" {...others}>
       <Serif size={["2", "3t"]} color="black100">
@@ -21,6 +23,17 @@ const OfferSummaryItem = ({
       <Sans size="2" color="black60">
         List price: {order.totalListPrice}
       </Sans>
+      {offerNote && (
+        <>
+          <Spacer mb={[2, 3]} />
+          <Serif size={["2", "3t"]} weight="semibold" color="black100">
+            Your note
+          </Serif>
+          <Serif size={["2", "3t"]} color="black60">
+            {offerNote}
+          </Serif>
+        </>
+      )}
     </StepSummaryItem>
   )
 }
@@ -33,6 +46,7 @@ export const OfferSummaryItemFragmentContainer = createFragmentContainer(
       ... on OfferOrder {
         myLastOffer {
           amount(precision: 2)
+          note
         }
       }
     }
