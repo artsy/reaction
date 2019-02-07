@@ -14,7 +14,7 @@ import {
 import { VideoControls, VideoControlsContainer } from "./VideoControls"
 
 export interface VideoPlayerProps extends React.HTMLProps<HTMLDivElement> {
-  url: string
+  url?: string
   title?: string
   notifyPlayToggle?: (e) => void
   forcePlay?: boolean

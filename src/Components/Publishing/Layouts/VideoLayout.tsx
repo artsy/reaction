@@ -83,12 +83,14 @@ export class VideoLayout extends Component<Props, State> {
       <VideoLayoutContainer>
         <Nav transparent sponsor={sponsor} canFix={false} />
         <VideoPlayerContainer>
-          <VideoPlayer
-            url={media.url}
-            title={media.title}
-            forcePlay={this.state.isPlaying}
-            notifyPlayToggle={this.onPlayToggle}
-          />
+          {media.url && (
+            <VideoPlayer
+              url={media.url}
+              title={media.title}
+              forcePlay={this.state.isPlaying}
+              notifyPlayToggle={this.onPlayToggle}
+            />
+          )}
           <VideoCover
             article={article}
             media={media}

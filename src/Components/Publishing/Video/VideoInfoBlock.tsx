@@ -1,36 +1,34 @@
 import { Flex, Sans } from "@artsy/palette"
-import React, { Component } from "react"
-import styled from "styled-components"
-
 import { formatTime } from "Components/Publishing/Constants"
+import { MediaData } from "Components/Publishing/Typings"
+import React from "react"
+import styled from "styled-components"
 
 interface Props {
   editTitle?: any
-  media?: any
+  media?: MediaData
   subTitleLink?: string
   subTitle?: string
   title?: string
 }
 
-export class VideoInfoBlock extends Component<Props, null> {
-  render() {
-    const { editTitle, media, subTitle, subTitleLink, title } = this.props
+export const VideoInfoBlock: React.SFC<Props> = props => {
+  const { editTitle, media, subTitle, subTitleLink, title } = props
 
-    return (
-      <div>
-        <Flex>
-          {subTitle && (
-            <SubTitle size="3" mr={20}>
-              {subTitleLink ? <a href={subTitleLink}>{subTitle}</a> : subTitle}
-            </SubTitle>
-          )}
-          {media.duration && <Sans size="3">{formatTime(media.duration)}</Sans>}
-        </Flex>
+  return (
+    <div>
+      <Flex>
+        {subTitle && (
+          <SubTitle size="3" mr={20}>
+            {subTitleLink ? <a href={subTitleLink}>{subTitle}</a> : subTitle}
+          </SubTitle>
+        )}
+        {media.duration && <Sans size="3">{formatTime(media.duration)}</Sans>}
+      </Flex>
 
-        <Sans size="10">{editTitle || title}</Sans>
-      </div>
-    )
-  }
+      <Sans size="10">{editTitle || title}</Sans>
+    </div>
+  )
 }
 
 const SubTitle = styled(Sans)`

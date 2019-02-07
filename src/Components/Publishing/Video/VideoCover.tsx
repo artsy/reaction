@@ -4,31 +4,24 @@ import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 
 import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
+import { ArticleData, MediaData } from "Components/Publishing/Typings"
 import { VideoInfoBlock } from "./VideoInfoBlock"
 
-interface Props {
-  article: any
+interface VideoCoverProps {
+  article: ArticleData
   description?: string
   editDescription?: any
   editTitle?: any
   hideCover?: boolean
-  media: any
+  media: MediaData
   playVideo?: () => void
   seriesLink?: string
   seriesTitle?: string
   tracking?: TrackingProp
 }
 
-interface CoverProps {
-  hideCover?: boolean
-}
-
-interface CoverAssetProps {
-  src?: string
-}
-
 @track()
-export class VideoCover extends Component<Props, null> {
+export class VideoCover extends Component<VideoCoverProps> {
   onPlayClick = () => {
     const { tracking, playVideo } = this.props
 
@@ -55,7 +48,12 @@ export class VideoCover extends Component<Props, null> {
         <VideoCoverAsset src={media.cover_image_url} />
         <VideoCoverOverlay />
 
-        <VideoCoverInfo alignItems="flex-end" pb={[40, 60]} px={20}>
+        <VideoCoverInfo
+          width="100%"
+          alignItems="flex-end"
+          pb={[40, 60]}
+          px={20}
+        >
           <Box maxWidth={1200} mx="auto" pb="12px">
             <Flex>
               <Box width="60px" pr={20} onClick={this.onPlayClick}>
@@ -86,19 +84,28 @@ export class VideoCover extends Component<Props, null> {
   }
 }
 
-export const VideoCoverAsset = styled.div<CoverAssetProps>`
+export const VideoCoverAsset = styled.div<{ src?: string }>`
   background: url(${props => props.src || ""}) no-repeat center center;
   background-size: cover;
   background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `
 
 const VideoCoverOverlay = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `
 
 const VideoCoverInfo = styled(Flex)`
   box-sizing: border-box;
   z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
   ${IconVideoPlay} {
     height: 60px;
@@ -107,7 +114,7 @@ const VideoCoverInfo = styled(Flex)`
   }
 `
 
-export const VideoCoverContainer = styled.div<CoverProps>`
+export const VideoCoverContainer = styled.div<{ hideCover?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -117,10 +124,4 @@ export const VideoCoverContainer = styled.div<CoverProps>`
   opacity: ${props => (props.hideCover ? "0" : "1")};
   visibility: ${props => (props.hideCover ? "hidden" : "visible")};
   transition: opacity 0.25s ease, visibility 0.25s ease;
-
-  ${VideoCoverAsset}, ${VideoCoverOverlay}, ${VideoCoverInfo} {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
 `

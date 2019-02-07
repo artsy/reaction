@@ -1,84 +1,79 @@
-import { Box, color, Flex, Sans } from "@artsy/palette"
-import React, { Component } from "react"
+import { Box, Flex, Sans } from "@artsy/palette"
+import React from "react"
 import styled from "styled-components"
 
 import { ShareDate } from "Components/Publishing/Byline/ShareDate"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { Text } from "Components/Publishing/Sections/Text"
+import { ArticleData } from "Components/Publishing/Typings"
 import { Media } from "Utils/Responsive"
 
 export interface VideoAboutProps {
-  article: any
+  article: ArticleData
   color?: string
   editDescription?: any
   editCredits?: any
 }
 
-export class VideoAbout extends Component<VideoAboutProps, null> {
-  static defaultProps = {
-    color: color("black100"),
-  }
+export const VideoAbout: React.SFC<VideoAboutProps> = ({
+  article,
+  color = "black",
+  editCredits,
+  editDescription,
+}) => {
+  const {
+    media: { credits, description },
+  } = article
 
-  render() {
-    const { article, editCredits, editDescription } = this.props
-    const {
-      media: { credits, description },
-    } = article
-
-    return (
-      <VideoAboutContainer
-        maxWidth={1200}
-        mx="auto"
-        flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+  return (
+    <VideoAboutContainer
+      maxWidth={1200}
+      mx="auto"
+      flexDirection={["column-reverse", "column-reverse", "row", "row"]}
+    >
+      <Credits
+        width={[1, 1, 1 / 3, 1 / 3]}
+        flexDirection="column"
+        pt={["80px", "80px", 0, 0]}
       >
-        <Credits
-          width={[1, 1, 1 / 3, 1 / 3]}
-          flexDirection="column"
-          pt={["80px", "80px", 0, 0]}
-        >
-          <Sans size="8" color={this.props.color} pb={10}>
-            Credits
-          </Sans>
+        <Sans size="8" color={color} pb={10}>
+          Credits
+        </Sans>
 
-          {editCredits ? (
-            <Text layout="standard">{editCredits}</Text>
-          ) : (
-            <Text layout="standard" html={credits} />
-          )}
+        {editCredits ? (
+          <Text layout="standard">{editCredits}</Text>
+        ) : (
+          <Text layout="standard" html={credits} />
+        )}
 
-          <Media greaterThanOrEqual="md">
-            <Box mt={40}>
-              <ShareDate color={this.props.color} article={article} />
-            </Box>
-          </Media>
-        </Credits>
+        <Media greaterThanOrEqual="md">
+          <Box mt={40}>
+            <ShareDate color={color} article={article} />
+          </Box>
+        </Media>
+      </Credits>
 
-        <Box width={[1, 1, 2 / 3, 2 / 3]}>
-          <Sans size="8" color={this.props.color} pb={10}>
-            About the Film
-          </Sans>
+      <Box width={[1, 1, 2 / 3, 2 / 3]}>
+        <Sans size="8" color={color} pb={10}>
+          About the Film
+        </Sans>
 
-          {editDescription ? (
-            <Text color={this.props.color} layout="standard">
-              {editDescription}
-            </Text>
-          ) : (
-            <Text
-              color={this.props.color}
-              layout="standard"
-              html={description}
-            />
-          )}
+        {editDescription ? (
+          <Text color={color} layout="standard">
+            {editDescription}
+          </Text>
+        ) : (
+          <Text color={color} layout="standard" html={description} />
+        )}
 
-          <Media lessThan="md">
-            <Box mt={40}>
-              <ShareDate color={this.props.color} article={article} />
-            </Box>
-          </Media>
-        </Box>
-      </VideoAboutContainer>
-    )
-  }
+        <Media lessThan="md">
+          <Box mt={40}>
+            <ShareDate color={color} article={article} />
+          </Box>
+        </Media>
+      </Box>
+    </VideoAboutContainer>
+  )
 }
 
 export const Credits = styled(Flex)`
