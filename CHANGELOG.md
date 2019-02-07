@@ -1,3 +1,15 @@
+# v12.1.26 (Thu Feb 07 2019)
+
+#### 🐛  Bug Fix
+
+- Adds some inline logs to highlight metaphysics extensions used in the query [#2002](https://github.com/artsy/reaction/pull/2002) ([@orta](https://github.com/orta))
+
+#### 🏠  Internal
+
+- Update yarn orb to v0.1.6 [#2001](https://github.com/artsy/reaction/pull/2001) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.25 (Thu Feb 07 2019)
 
 #### 🐛  Bug Fix
