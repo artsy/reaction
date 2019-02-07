@@ -1,3 +1,11 @@
+# v12.1.25 (Thu Feb 07 2019)
+
+#### 🐛  Bug Fix
+
+- Make offer note (review + respond steps) [#1998](https://github.com/artsy/reaction/pull/1998) ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v12.1.24 (Thu Feb 07 2019)
 
 #### 🐛  Bug Fix
