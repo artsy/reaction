@@ -1,5 +1,6 @@
 import React, { SFC } from "react"
 import { ArtistSearchPreviewQueryRenderer as ArtistSearchPreview } from "./Grids/Artist"
+import { MerchandisableArtworksPreviewQueryRenderer as MerchandisableArtworksPreview } from "./Grids/MerchandisableArtworks"
 
 export interface SearchPreviewProps {
   entityID: string
@@ -15,8 +16,7 @@ export const SearchPreview: SFC<SearchPreviewProps> = ({
       return <ArtistSearchPreview entityID={entityID} />
     }
     default: {
-      return <>Featured Artworks here</>
+      return <MerchandisableArtworksPreview />
     }
-    // And so forth...
   }
 }
