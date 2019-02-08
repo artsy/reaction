@@ -1,3 +1,17 @@
+# v12.1.29 (Fri Feb 08 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Autosuggest] Remove spike naming, and some more cleanup of UI [#2007](https://github.com/artsy/reaction/pull/2007) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v12.1.28 (Fri Feb 08 2019)
+
+
+
+---
+
 # v12.1.27 (Fri Feb 08 2019)
 
 #### 🐛  Bug Fix

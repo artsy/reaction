@@ -12,12 +12,6 @@ export const SearchPreview: SFC<SearchPreviewProps> = ({
   entityType,
 }) => {
   switch (entityType) {
-    case "Sale": {
-      return <div>Sale Context Not Implemented</div>
-    }
-    case "Fair": {
-      return <div>Fair Context Not Implemented</div>
-    }
     case "Artist": {
       return <ArtistSearchPreview entityID={entityID} />
     }
