@@ -8,6 +8,9 @@ export type SearchBarSpike_viewer = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly displayLabel: string | null;
+                readonly href: string | null;
+                readonly searchableType?: string | null;
+                readonly id?: string;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -97,9 +100,36 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "__id",
                       "args": null,
                       "storageKey": null
+                    },
+                    {
+                      "kind": "InlineFragment",
+                      "type": "SearchableItem",
+                      "selections": [
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "searchableType",
+                          "args": null,
+                          "storageKey": null
+                        },
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "id",
+                          "args": null,
+                          "storageKey": null
+                        }
+                      ]
                     }
                   ]
                 }
@@ -111,5 +141,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '9473c92711a8506af5e744fa95c0b742';
+(node as any).hash = '297fcf07fa6b24b023f91675e887c1e6';
 export default node;
