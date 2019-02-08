@@ -1,3 +1,11 @@
+# v12.1.31 (Fri Feb 08 2019)
+
+#### 🐛  Bug Fix
+
+- Add query-less merchandisable search preview [#2006](https://github.com/artsy/reaction/pull/2006) ([@jonallured](https://github.com/jonallured) [@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v12.1.30 (Fri Feb 08 2019)
 
 #### 🐛  Bug Fix
