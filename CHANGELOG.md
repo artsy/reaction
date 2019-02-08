@@ -1,3 +1,11 @@
+# v12.1.30 (Fri Feb 08 2019)
+
+#### 🐛  Bug Fix
+
+- [Metaphysics Logger] Fix some edge cases [#2008](https://github.com/artsy/reaction/pull/2008) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.29 (Fri Feb 08 2019)
 
 #### 🐛  Bug Fix
