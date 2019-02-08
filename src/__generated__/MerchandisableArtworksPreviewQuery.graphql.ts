@@ -31,7 +31,7 @@ fragment MerchandisableArtworks_viewer on Viewer {
           title
           artist_names
           image {
-            cropped(width: 50, height: 50) {
+            cropped(width: 40, height: 40) {
               url
             }
           }
@@ -57,7 +57,7 @@ return {
   "operationKind": "query",
   "name": "MerchandisableArtworksPreviewQuery",
   "id": null,
-  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          title\n          artist_names\n          image {\n            cropped(width: 50, height: 50) {\n              url\n            }\n          }\n          date\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          title\n          artist_names\n          image {\n            cropped(width: 40, height: 40) {\n              url\n            }\n          }\n          date\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -184,18 +184,18 @@ return {
                                 "kind": "LinkedField",
                                 "alias": null,
                                 "name": "cropped",
-                                "storageKey": "cropped(height:50,width:50)",
+                                "storageKey": "cropped(height:40,width:40)",
                                 "args": [
                                   {
                                     "kind": "Literal",
                                     "name": "height",
-                                    "value": 50,
+                                    "value": 40,
                                     "type": "Int!"
                                   },
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 50,
+                                    "value": 40,
                                     "type": "Int!"
                                   }
                                 ],

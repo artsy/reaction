@@ -127,18 +127,18 @@ return {
                           "kind": "LinkedField",
                           "alias": null,
                           "name": "cropped",
-                          "storageKey": "cropped(height:50,width:50)",
+                          "storageKey": "cropped(height:40,width:40)",
                           "args": [
                             {
                               "kind": "Literal",
                               "name": "height",
-                              "value": 50,
+                              "value": 40,
                               "type": "Int!"
                             },
                             {
                               "kind": "Literal",
                               "name": "width",
-                              "value": 50,
+                              "value": 40,
                               "type": "Int!"
                             }
                           ],
@@ -175,5 +175,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ec2b8cd6d68bf98acd5a7a9674bcc346';
+(node as any).hash = 'ac574c66ce17df1ec6783a69504f80f3';
 export default node;

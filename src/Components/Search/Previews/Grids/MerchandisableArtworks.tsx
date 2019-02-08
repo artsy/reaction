@@ -1,5 +1,6 @@
 import React from "react"
 
+import { Box, Flex, Image, Sans, Serif } from "@artsy/palette"
 import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtworks_viewer.graphql"
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -20,20 +21,33 @@ const MerchandisableArtworksPreview: React.SFC<
     []
   ).map(x => x.node)
 
-  return (
-    <>
-      <h1>Related Artworks</h1>
+  const merchandisableItems = artworks.map((artwork, i) => (
+    <MerchandisableArtworkItem artwork={artwork} key={i} />
+  ))
 
-      {artworks.map(artwork => (
-        <>
-          <h3 key={artwork.title}>
-            {artwork.title}, {artwork.date}
-          </h3>
-          <h4>{artwork.artist_names}</h4>
-          <hr />
-        </>
-      ))}
-    </>
+  return (
+    <Box>
+      <Sans size="2" weight="medium">
+        Related Artworks
+      </Sans>
+
+      <Flex flexDirection="column">{merchandisableItems}</Flex>
+    </Box>
+  )
+}
+
+const MerchandisableArtworkItem = ({ artwork }) => {
+  const imageUrl = get(artwork, x => x.image.cropped.url, "")
+  return (
+    <Flex m={2}>
+      <Image mr={2} src={imageUrl} />
+      <Box>
+        <Serif size="2" italic>
+          {artwork.title}, {artwork.date}
+        </Serif>
+        <Serif size="2">{artwork.artist_names}</Serif>
+      </Box>
+    </Flex>
   )
 }
 
@@ -49,7 +63,7 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
               title
               artist_names
               image {
-                cropped(width: 50, height: 50) {
+                cropped(width: 40, height: 40) {
                   url
                 }
               }
