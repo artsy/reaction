@@ -4,7 +4,14 @@ import React from "react"
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
 import { SearchBar } from "Components/Search/SearchBar"
+import { SearchBarSpikeQueryRenderer as SearchBarSpike } from "Components/Search/Spike/SearchBarSpike"
 import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
+
+storiesOf("Components/Search/Spike/SearchBarSpike", module).add("Input", () => (
+  <ContextProvider>
+    <SearchBarSpike />
+  </ContextProvider>
+))
 
 storiesOf("Components/Search/SearchBar", module).add("Input", () => (
   <ContextProvider>
@@ -15,12 +22,6 @@ storiesOf("Components/Search/SearchBar", module).add("Input", () => (
 storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
   <ContextProvider>
     <SearchSuggestions term="andy" />
-  </ContextProvider>
-))
-
-storiesOf("Components/Search/Previews/Sale", module).add("A sale", () => (
-  <ContextProvider>
-    <SearchPreview entityID="phillips" entityType="Sale" />
   </ContextProvider>
 ))
 
