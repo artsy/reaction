@@ -15,7 +15,7 @@ export function metaphysicsExtensionsLoggerMiddleware() {
         // Pull out the stitching logs, e.g. what graphql requests
         // did stitching do for you under the hood
         const stitching = requests.stitching
-        const stitchCount = stitching && Object.keys(stitching)
+        const stitchCount = stitching && Object.keys(stitching.requests).length
         const stitchSummary = stitchCount ? `${stitchCount} stitched` : ""
 
         // Grab the rest API requests (only ones that use DataLoader)
@@ -23,7 +23,7 @@ export function metaphysicsExtensionsLoggerMiddleware() {
         const apis = _.omit(requests, ["stitching"])
         const requestCount = Object.keys(apis)
           .map(k => Object.keys(requests[k].requests).length) // API requests
-          .reduce((a, c) => a + c) // Add them all up
+          .reduce((a, c) => a + c, 0) // Add them all up
 
         // Not telling anyone off, but over 15 is probably a point
         // where you want that highlighted.
@@ -40,7 +40,7 @@ export function metaphysicsExtensionsLoggerMiddleware() {
           ? `%c ${requestCount} %ccalls` // These need consistent amounts of %c
           : "%c%c"
 
-        const title = `%cMetaphysics API -${requestSummary}${stitchSummary}`
+        const title = `%cMetaphysics API -${requestSummary} ${stitchSummary}`
 
         // Make sure we have something to show
         if (requestCount || stitchCount) {
@@ -61,10 +61,11 @@ export function metaphysicsExtensionsLoggerMiddleware() {
 
           // Show stitched queries inline. This will probably need work in
           // the future, because I bet it's ugly.
+
           if (stitchCount) {
             console.group("Stitched")
-            stitching.requests.forEach(element => {
-              console.log(element.requests)
+            Object.keys(stitching.requests).forEach(stitchedSchema => {
+              console.log(stitching.requests[stitchedSchema])
             })
             console.groupEnd()
           }
