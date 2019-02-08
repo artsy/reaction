@@ -29,7 +29,7 @@ const MerchandisableArtworksPreview: React.SFC<
   return (
     <Box>
       <Sans size="2" weight="medium">
-        Related Artworks
+        Now Available for Buy Now/ Make Offer
       </Sans>
 
       <Flex flexDirection="column">{merchandisableItems}</Flex>
