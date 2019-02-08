@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _SearchBarSpike_viewer$ref: unique symbol;
-export type SearchBarSpike_viewer$ref = typeof _SearchBarSpike_viewer$ref;
-export type SearchBarSpike_viewer = {
+declare const _SearchBar_viewer$ref: unique symbol;
+export type SearchBar_viewer$ref = typeof _SearchBar_viewer$ref;
+export type SearchBar_viewer = {
     readonly search?: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -14,14 +14,14 @@ export type SearchBarSpike_viewer = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SearchBarSpike_viewer$ref;
+    readonly " $refType": SearchBar_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SearchBarSpike_viewer",
+  "name": "SearchBar_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -141,5 +141,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '297fcf07fa6b24b023f91675e887c1e6';
+(node as any).hash = '1d1401a81558c8538abb9c09129418d5';
 export default node;
