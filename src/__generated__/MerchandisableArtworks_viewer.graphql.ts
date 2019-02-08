@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { PreviewGridItem_artwork$ref } from "./PreviewGridItem_artwork.graphql";
 declare const _MerchandisableArtworks_viewer$ref: unique symbol;
 export type MerchandisableArtworks_viewer$ref = typeof _MerchandisableArtworks_viewer$ref;
 export type MerchandisableArtworks_viewer = {
@@ -9,15 +10,7 @@ export type MerchandisableArtworks_viewer = {
         readonly artworks_connection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
-                    readonly href: string | null;
-                    readonly title: string | null;
-                    readonly artist_names: string | null;
-                    readonly image: ({
-                        readonly cropped: ({
-                            readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                    readonly date: string | null;
+                    readonly " $fragmentRefs": PreviewGridItem_artwork$ref;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -102,74 +95,9 @@ return {
                   "plural": false,
                   "selections": [
                     {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "href",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "title",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "artist_names",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "LinkedField",
-                      "alias": null,
-                      "name": "image",
-                      "storageKey": null,
-                      "args": null,
-                      "concreteType": "Image",
-                      "plural": false,
-                      "selections": [
-                        {
-                          "kind": "LinkedField",
-                          "alias": null,
-                          "name": "cropped",
-                          "storageKey": "cropped(height:40,width:40)",
-                          "args": [
-                            {
-                              "kind": "Literal",
-                              "name": "height",
-                              "value": 40,
-                              "type": "Int!"
-                            },
-                            {
-                              "kind": "Literal",
-                              "name": "width",
-                              "value": 40,
-                              "type": "Int!"
-                            }
-                          ],
-                          "concreteType": "CroppedImageUrl",
-                          "plural": false,
-                          "selections": [
-                            {
-                              "kind": "ScalarField",
-                              "alias": null,
-                              "name": "url",
-                              "args": null,
-                              "storageKey": null
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "date",
-                      "args": null,
-                      "storageKey": null
+                      "kind": "FragmentSpread",
+                      "name": "PreviewGridItem_artwork",
+                      "args": null
                     },
                     v0
                   ]
@@ -183,5 +111,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '253d0f699bbacd0483a65901a97c33f9';
+(node as any).hash = 'f1f4bf6587c8e5724373d845ef754f55';
 export default node;
