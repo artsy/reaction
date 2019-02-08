@@ -1,104 +1,271 @@
-import { Spacer, Spinner } from "@artsy/palette"
-import { SearchBarQuery } from "__generated__/SearchBarQuery.graphql"
+import { Box, Flex } from "@artsy/palette"
+import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
+import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
 import Input from "Components/Input"
-import { SearchSuggestionsFragmentContainer as SearchSuggestions } from "Components/Search/Suggestions"
+import { SearchPreview } from "Components/Search/Previews"
+import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
 import React, { Component } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import Autosuggest from "react-autosuggest"
+import {
+  createRefetchContainer,
+  graphql,
+  QueryRenderer,
+  RelayRefetchProp,
+} from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
+
+const AutosuggestContainer = styled(Box)`
+  div[role="combobox"] {
+    div[role="listbox"] {
+      ul {
+        list-style-type: none;
+      }
+    }
+  }
+`
 
 export interface Props extends ContextProps {
-  term?: string
+  relay: RelayRefetchProp
+  viewer: SearchBar_viewer
 }
 
+const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
+
 interface State {
-  term: string
+  /* Holds current input */
   input: string
-  searched: boolean
+  /* For preview generation of selected items */
+  entityID: string
+  entityType: string
+  focused: boolean
 }
 
 export class SearchBar extends Component<Props, State> {
   state = {
-    searched: false,
-    term: null,
-    input: null,
+    input: "",
+    entityID: null,
+    entityType: null,
+    focused: false,
   }
 
-  throttledTextChange = term => {
-    this.setState({ term })
+  // Throttled method to toggle previews.
+  throttledOnSuggestionHighlighted = ({ suggestion }) => {
+    if (!suggestion) return null
+    const {
+      node: { searchableType: entityType, id: entityID },
+    } = suggestion
+    this.setState({ entityType, entityID })
+  }
+
+  // Throttled method to perform refetch for new suggest query.
+  throttledFetch = ({ value: term }) => {
+    this.props.relay.refetch(
+      {
+        term,
+        hasTerm: true,
+      },
+      null,
+      error => {
+        if (error) console.error(error)
+      }
+    )
   }
 
   componentDidMount() {
-    this.throttledTextChange = throttle(this.throttledTextChange, 500, {
+    this.throttledFetch = throttle(this.throttledFetch, 500, {
       leading: true,
     })
+    this.throttledOnSuggestionHighlighted = throttle(
+      this.throttledOnSuggestionHighlighted,
+      500,
+      { leading: true }
+    )
   }
 
-  searchTextChanged = e => {
-    const input = e.target.value
+  searchTextChanged = (_e, { newValue: input }) => {
     this.setState({ input })
-    this.throttledTextChange(input)
   }
 
-  resultsForTerm(term: string) {
-    if (term && term.length > 0) {
-      return (
-        <ContextConsumer>
-          {({ relayEnvironment }) => {
-            return (
-              <QueryRenderer<SearchBarQuery>
-                environment={relayEnvironment}
-                query={graphql`
-                  query SearchBarQuery($term: String!) {
-                    viewer {
-                      ...SuggestionsSearch_viewer @arguments(term: $term)
-                    }
-                  }
-                `}
-                variables={{ term }}
-                render={({ props }) => {
-                  if (props) {
-                    return (
-                      <SearchSuggestions term={term} viewer={props.viewer} />
-                    )
-                  } else {
-                    return (
-                      <SpinnerContainer>
-                        <Spinner />
-                      </SpinnerContainer>
-                    )
-                  }
-                }}
-              />
-            )
-          }}
-        </ContextConsumer>
-      )
+  onFocus = () => {
+    this.setState({ focused: true })
+  }
+
+  onBlur = () => {
+    this.setState({ focused: false })
+  }
+
+  onSuggestionsClearRequested = () => {
+    this.setState({ input: "", entityID: null, entityType: null })
+  }
+
+  // Navigate to selected search item.
+  onSuggestionSelected = (
+    _e,
+    {
+      suggestion: {
+        node: { href },
+      },
+    }
+  ) => {
+    window.location.href = href
+  }
+
+  renderPreview() {
+    const { entityID, entityType } = this.state
+    if (entityID && entityType) {
+      return <SearchPreview entityID={entityID} entityType={entityType} />
     }
   }
 
-  render() {
-    const { term } = this.state
+  renderSuggestionsContainer = ({ containerProps, children, query }) => {
+    const { focused } = this.state
+
+    let firstItem = null
+    if (query) {
+      firstItem = <Box>Search "{query}"</Box>
+    } else if (focused) {
+      firstItem = <Box>{PLACEHOLDER}</Box>
+    }
 
     return (
-      <>
-        <Input
-          block
-          onInput={this.searchTextChanged.bind(this)}
-          onPaste={this.searchTextChanged.bind(this)}
-          onCut={this.searchTextChanged.bind(this)}
-          autoFocus
+      <Box {...containerProps}>
+        <Flex flexDirection={["column", "row"]}>
+          <Box width={["100%", "50%"]}>
+            <Flex flexDirection="column">
+              {firstItem}
+              {children}
+            </Flex>
+          </Box>
+          <Box width={["100%", "50%"]}>{this.renderPreview()}</Box>
+        </Flex>
+      </Box>
+    )
+  }
+
+  renderSuggestion = (
+    { node: { displayLabel, searchableType } },
+    { isHighlighted }
+  ) => {
+    return (
+      <Box style={{ backgroundColor: isHighlighted ? "#ddd" : "#fff" }}>
+        <SuggestionItem display={displayLabel} label={searchableType} />
+      </Box>
+    )
+  }
+
+  renderInputComponent = inputProps => (
+    <Box>
+      <Input style={{ width: "100%" }} {...inputProps} />
+    </Box>
+  )
+
+  renderAutosuggestComponent(xs: boolean) {
+    const { input } = this.state
+    const { viewer } = this.props
+    const edges = get(viewer, v => v.search.edges, [])
+
+    const inputProps = {
+      onChange: this.searchTextChanged,
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      placeholder: xs ? "" : PLACEHOLDER,
+      value: input,
+    }
+
+    return (
+      <AutosuggestContainer>
+        <Autosuggest
+          suggestions={edges}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
+          onSuggestionsFetchRequested={this.throttledFetch}
+          getSuggestionValue={({ node: { displayLabel } }) => displayLabel}
+          renderSuggestion={this.renderSuggestion}
+          renderSuggestionsContainer={this.renderSuggestionsContainer}
+          inputProps={inputProps}
+          onSuggestionSelected={this.onSuggestionSelected}
+          renderInputComponent={this.renderInputComponent}
         />
-        <Spacer />
-        {this.resultsForTerm(term)}
+      </AutosuggestContainer>
+    )
+  }
+
+  render() {
+    return (
+      <>
+        <Media at="xs">{this.renderAutosuggestComponent(true)}</Media>
+        <Media greaterThan="xs">{this.renderAutosuggestComponent(false)}</Media>
       </>
     )
   }
 }
 
-const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
+export const SearchBarRefetchContainer = createRefetchContainer(
+  SearchBar,
+  {
+    viewer: graphql`
+      fragment SearchBar_viewer on Viewer
+        @argumentDefinitions(
+          term: { type: "String!", defaultValue: "" }
+          hasTerm: { type: "Boolean!", defaultValue: false }
+        ) {
+        search(query: $term, mode: AUTOSUGGEST, first: 10)
+          @include(if: $hasTerm) {
+          edges {
+            node {
+              displayLabel
+              href
+              ... on SearchableItem {
+                searchableType
+                id
+              }
+            }
+          }
+        }
+      }
+    `,
+  },
+  graphql`
+    query SearchBarRefetchQuery($term: String!, $hasTerm: Boolean!) {
+      viewer {
+        ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
+      }
+    }
+  `
+)
+
+export const SearchBarQueryRenderer: React.SFC = () => {
+  return (
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<SearchBarSuggestQuery>
+            environment={relayEnvironment}
+            query={graphql`
+              query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {
+                viewer {
+                  ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
+                }
+              }
+            `}
+            variables={{
+              term: "",
+              hasTerm: false,
+            }}
+            render={({ props }) => {
+              if (props) {
+                return <SearchBarRefetchContainer viewer={props.viewer} />
+              } else {
+                return null
+              }
+            }}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
+}

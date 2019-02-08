@@ -1,34 +1,34 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchBarSpike_viewer$ref } from "./SearchBarSpike_viewer.graphql";
-export type SearchBarSpikeRefetchQueryVariables = {
+import { SearchBar_viewer$ref } from "./SearchBar_viewer.graphql";
+export type SearchBarRefetchQueryVariables = {
     readonly term: string;
     readonly hasTerm: boolean;
 };
-export type SearchBarSpikeRefetchQueryResponse = {
+export type SearchBarRefetchQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchBarSpike_viewer$ref;
+        readonly " $fragmentRefs": SearchBar_viewer$ref;
     }) | null;
 };
-export type SearchBarSpikeRefetchQuery = {
-    readonly response: SearchBarSpikeRefetchQueryResponse;
-    readonly variables: SearchBarSpikeRefetchQueryVariables;
+export type SearchBarRefetchQuery = {
+    readonly response: SearchBarRefetchQueryResponse;
+    readonly variables: SearchBarRefetchQueryVariables;
 };
 
 
 
 /*
-query SearchBarSpikeRefetchQuery(
+query SearchBarRefetchQuery(
   $term: String!
   $hasTerm: Boolean!
 ) {
   viewer {
-    ...SearchBarSpike_viewer_2Mejjw
+    ...SearchBar_viewer_2Mejjw
   }
 }
 
-fragment SearchBarSpike_viewer_2Mejjw on Viewer {
+fragment SearchBar_viewer_2Mejjw on Viewer {
   search(query: $term, mode: AUTOSUGGEST, first: 10) @include(if: $hasTerm) {
     edges {
       node {
@@ -66,13 +66,13 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SearchBarSpikeRefetchQuery",
+  "name": "SearchBarRefetchQuery",
   "id": null,
-  "text": "query SearchBarSpikeRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBarSpike_viewer_2Mejjw\n  }\n}\n\nfragment SearchBarSpike_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SearchBarRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SearchBarSpikeRefetchQuery",
+    "name": "SearchBarRefetchQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -88,7 +88,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchBarSpike_viewer",
+            "name": "SearchBar_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -110,7 +110,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SearchBarSpikeRefetchQuery",
+    "name": "SearchBarRefetchQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -244,5 +244,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'be8b9d751eea6571e73ad688c8d9bbb8';
+(node as any).hash = 'cb6e3d4666fd34a44ff7abab4e21d91f';
 export default node;
