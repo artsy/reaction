@@ -9,6 +9,7 @@ export type MerchandisableArtworks_viewer = {
         readonly artworks_connection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
+                    readonly href: string | null;
                     readonly title: string | null;
                     readonly artist_names: string | null;
                     readonly image: ({
@@ -103,6 +104,13 @@ return {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "title",
                       "args": null,
                       "storageKey": null
@@ -175,5 +183,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ac574c66ce17df1ec6783a69504f80f3';
+(node as any).hash = '253d0f699bbacd0483a65901a97c33f9';
 export default node;
