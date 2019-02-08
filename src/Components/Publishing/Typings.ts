@@ -106,6 +106,16 @@ export interface DisplayUnitAssetData {
   url?: string
 }
 
+export interface MediaData {
+  url?: string
+  cover_image_url?: string
+  duration?: number
+  release_date?: string
+  published?: boolean
+  description?: string
+  credits?: string
+}
+
 export interface DisplayUnitData {
   assets?: DisplayUnitAssetData[]
   body?: string

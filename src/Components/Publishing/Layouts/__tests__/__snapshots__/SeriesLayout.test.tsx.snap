@@ -139,6 +139,7 @@ exports[`renders a series properly 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: white;
   margin-bottom: 10px;
 }
 
@@ -1094,7 +1095,7 @@ exports[`renders a series properly 1`] = `
     className="c11 c12"
   >
     <div
-      className="SeriesTitle c13 c14"
+      className="c13 c14"
       color="white"
     >
       <div
@@ -1390,6 +1391,7 @@ exports[`renders a series properly 1`] = `
           <div>
             <div
               className="c39"
+              color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
             >
@@ -1664,6 +1666,7 @@ exports[`renders a sponsored series properly 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: white;
   margin-bottom: 10px;
 }
 
@@ -2715,7 +2718,7 @@ exports[`renders a sponsored series properly 1`] = `
     className="c13 c14"
   >
     <div
-      className="SeriesTitle c15 c16"
+      className="c15 c16"
       color="white"
     >
       <div
@@ -3033,6 +3036,7 @@ exports[`renders a sponsored series properly 1`] = `
           <div>
             <div
               className="c45"
+              color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
             >

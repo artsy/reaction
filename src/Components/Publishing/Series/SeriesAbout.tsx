@@ -10,7 +10,7 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { Media } from "Utils/Responsive"
 import { getArticleFullHref } from "../Constants"
 
-interface Props {
+interface SeriesAboutProps {
   article?: ArticleData
   color?: string
   editDescription?: any
@@ -19,8 +19,10 @@ interface Props {
 }
 
 @track()
-export class SeriesAbout extends Component<Props, null> {
-  public static defaultProps: Partial<Props>
+export class SeriesAbout extends Component<SeriesAboutProps> {
+  public static defaultProps: Partial<SeriesAboutProps> = {
+    color: "black",
+  }
 
   componentDidMount() {
     const textLink = document.querySelector(".SeriesAbout__description a")
@@ -71,7 +73,7 @@ export class SeriesAbout extends Component<Props, null> {
 
     return (
       <SeriesAboutContainer
-        color={color || "black"}
+        color={color}
         maxWidth="1200px"
         mx="auto"
         width="100%"
@@ -83,7 +85,7 @@ export class SeriesAbout extends Component<Props, null> {
           flexDirection="column"
         >
           <div>
-            <Sans size="8" mb={["10px", "10px", 20, 20]}>
+            <Sans size="8" mb={["10px", "10px", 20, 20]} color={color}>
               {editSubTitle
                 ? editSubTitle
                 : (series && series.sub_title) || "About the Series"}
@@ -105,14 +107,14 @@ export class SeriesAbout extends Component<Props, null> {
 
         <Flex width={[1, 1, 2 / 3, 2 / 3]} flexDirection="column">
           {editDescription ? (
-            <Text layout="standard" color={color || "black"}>
+            <Text layout="standard" color={color}>
               {editDescription}
             </Text>
           ) : (
             <div className="SeriesAbout__description">
               <Text
                 layout="standard"
-                color={color || "black"}
+                color={color}
                 html={series && series.description}
               />
             </div>

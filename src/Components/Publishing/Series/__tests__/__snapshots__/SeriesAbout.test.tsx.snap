@@ -45,6 +45,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -450,6 +451,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     <div>
       <div
         className="c2"
+        color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
       >
@@ -627,6 +629,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -1032,6 +1035,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     <div>
       <div
         className="c2"
+        color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
       >
@@ -1202,6 +1206,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -1607,6 +1612,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     <div>
       <div
         className="c2"
+        color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
       >
@@ -1787,6 +1793,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
+  color: black;
   margin-bottom: 10px;
 }
 
@@ -2228,6 +2235,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     <div>
       <div
         className="c2"
+        color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
       >

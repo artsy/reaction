@@ -41,7 +41,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 <div
-  className="SeriesTitle c0"
+  className="c0"
   color="black"
 >
   <div
@@ -93,7 +93,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 <div
-  className="SeriesTitle c0"
+  className="c0"
   color="black"
 >
   <div
@@ -176,7 +176,7 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 <div
-  className="SeriesTitle c0"
+  className="c0"
   color="black"
 >
   <div

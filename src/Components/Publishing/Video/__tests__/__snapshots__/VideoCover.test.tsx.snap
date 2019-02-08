@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Cover matches the snapshot 1`] = `
-.c7 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,84 +13,94 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
+  width: 100%;
 }
 
-.c9 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c14 {
+.c11 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
   margin-right: 20px;
 }
 
-.c15 {
+.c12 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
 }
 
-.c16 {
+.c13 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 42px;
   line-height: 50px;
 }
 
-.c18 {
+.c15 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 26px;
   padding-top: 30px;
 }
 
-.c8 {
+.c5 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 12px;
 }
 
-.c10 {
+.c7 {
   padding-right: 20px;
   width: 60px;
 }
 
-.c17 {
+.c14 {
   max-width: 100%;
 }
 
-.c12 {
+.c9 {
   width: 32px;
   height: 32px;
 }
 
-.c13 a {
+.c10 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 {
+.c1 {
   background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c4 {
+.c2 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c6 {
+.c3 {
   box-sizing: border-box;
   z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c6 .c11 {
+.c3 .c8 {
   height: 60px;
   width: 44px;
   cursor: pointer;
@@ -109,58 +119,50 @@ exports[`Video Cover matches the snapshot 1`] = `
   transition: opacity 0.25s ease,visibility 0.25s ease;
 }
 
-.c0 .c1,
-.c0 .c3,
-.c0 .c5 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
 @media screen and (min-width:40em) {
-  .c7 {
+  .c4 {
     padding-bottom: 60px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c17 {
+  .c14 {
     max-width: 60%;
   }
 }
@@ -169,28 +171,29 @@ exports[`Video Cover matches the snapshot 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
     src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
   />
   <div
-    className="c3 c4"
+    className="c2"
   />
   <div
-    className="c5 c6 c7"
+    className="c3 c4"
+    width="100%"
   >
     <div
-      className="c8"
+      className="c5"
     >
       <div
-        className="c9"
+        className="c6"
       >
         <div
-          className="c10"
+          className="c7"
           onClick={[Function]}
           width="60px"
         >
           <svg
-            className="c11 c12"
+            className="c8 c9"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -215,17 +218,17 @@ exports[`Video Cover matches the snapshot 1`] = `
         >
           <div>
             <div
-              className="c9"
+              className="c6"
             >
               <div
-                className="c13 c14"
+                className="c10 c11"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
                 Future of Art
               </div>
               <div
-                className="c15"
+                className="c12"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -233,7 +236,7 @@ exports[`Video Cover matches the snapshot 1`] = `
               </div>
             </div>
             <div
-              className="c16"
+              className="c13"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -243,10 +246,10 @@ exports[`Video Cover matches the snapshot 1`] = `
         </div>
       </div>
       <div
-        className="c17"
+        className="c14"
       >
         <div
-          className="c18"
+          className="c15"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -266,7 +269,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 `;
 
 exports[`Video Cover matches the snapshot with edit props 1`] = `
-.c7 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -278,84 +281,94 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
+  width: 100%;
 }
 
-.c9 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c14 {
+.c11 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
   margin-right: 20px;
 }
 
-.c15 {
+.c12 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
 }
 
-.c16 {
+.c13 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 42px;
   line-height: 50px;
 }
 
-.c18 {
+.c15 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 18px;
   line-height: 26px;
   padding-top: 30px;
 }
 
-.c8 {
+.c5 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 12px;
 }
 
-.c10 {
+.c7 {
   padding-right: 20px;
   width: 60px;
 }
 
-.c17 {
+.c14 {
   max-width: 100%;
 }
 
-.c12 {
+.c9 {
   width: 32px;
   height: 32px;
 }
 
-.c13 a {
+.c10 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c2 {
+.c1 {
   background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c4 {
+.c2 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c6 {
+.c3 {
   box-sizing: border-box;
   z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-.c6 .c11 {
+.c3 .c8 {
   height: 60px;
   width: 44px;
   cursor: pointer;
@@ -374,58 +387,50 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   transition: opacity 0.25s ease,visibility 0.25s ease;
 }
 
-.c0 .c1,
-.c0 .c3,
-.c0 .c5 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
 @media screen and (min-width:40em) {
-  .c7 {
+  .c4 {
     padding-bottom: 60px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c18 {
+  .c15 {
     font-size: 22px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c18 {
+  .c15 {
     line-height: 32px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c17 {
+  .c14 {
     max-width: 60%;
   }
 }
@@ -434,28 +439,29 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
     src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
   />
   <div
-    className="c3 c4"
+    className="c2"
   />
   <div
-    className="c5 c6 c7"
+    className="c3 c4"
+    width="100%"
   >
     <div
-      className="c8"
+      className="c5"
     >
       <div
-        className="c9"
+        className="c6"
       >
         <div
-          className="c10"
+          className="c7"
           onClick={[Function]}
           width="60px"
         >
           <svg
-            className="c11 c12"
+            className="c8 c9"
             version="1.1"
             viewBox="0 0 40 56"
             x="0px"
@@ -480,17 +486,17 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         >
           <div>
             <div
-              className="c9"
+              className="c6"
             >
               <div
-                className="c13 c14"
+                className="c10 c11"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
                 Future of Art
               </div>
               <div
-                className="c15"
+                className="c12"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -498,7 +504,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
               </div>
             </div>
             <div
-              className="c16"
+              className="c13"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -511,10 +517,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         </div>
       </div>
       <div
-        className="c17"
+        className="c14"
       >
         <div
-          className="c18"
+          className="c15"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [

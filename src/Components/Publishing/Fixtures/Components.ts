@@ -1,5 +1,6 @@
 import {
   DisplayUnitData,
+  MediaData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
   SectionData,
@@ -534,7 +535,7 @@ export const ImageSetMiniSansTitle: ImageSetPreviewProps["section"] = {
   images: Images,
 }
 
-export const Media = [
+export const Media: MediaData[] = [
   {
     url:
       "https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4",
