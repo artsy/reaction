@@ -1,3 +1,15 @@
+# v12.1.27 (Fri Feb 08 2019)
+
+#### 🐛  Bug Fix
+
+- Update series/video null states [#2004](https://github.com/artsy/reaction/pull/2004) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.37.23 [#2000](https://github.com/artsy/reaction/pull/2000) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.26 (Thu Feb 07 2019)
 
 #### 🐛  Bug Fix
