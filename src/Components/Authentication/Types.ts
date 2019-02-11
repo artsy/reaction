@@ -33,6 +33,7 @@ export interface FormProps {
   onTwitterLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string
+  entityName?: string
 }
 
 interface AfterSignUpAction {

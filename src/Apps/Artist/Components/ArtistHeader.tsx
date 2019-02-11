@@ -255,7 +255,7 @@ export class SmallArtistHeader extends Component<Props> {
                 objectId: props.artist.id,
                 signUpIntent: "follow artist",
                 trigger: "click",
-                title: `Sign up to follow ${props.artist.name}`,
+                entityName: props.artist.name,
               })
               const href = `/sign_up?redirect-to=${window.location}&${params}`
 
