@@ -1,3 +1,15 @@
+# v12.1.32 (Mon Feb 11 2019)
+
+#### 🐛  Bug Fix
+
+- [PATCH authentication] pass artist name in query params [#2009](https://github.com/artsy/reaction/pull/2009) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v2.37.24 [#2005](https://github.com/artsy/reaction/pull/2005) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v12.1.31 (Fri Feb 08 2019)
 
 #### 🐛  Bug Fix
