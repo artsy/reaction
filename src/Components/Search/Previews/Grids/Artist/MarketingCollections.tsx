@@ -1,6 +1,6 @@
 import React from "react"
 
-export const MarketingCollectionsGrid: React.SFC<any> = ({
+export const MarketingCollectionsPreview: React.SFC<any> = ({
   marketingCollections,
 }) => {
   return (

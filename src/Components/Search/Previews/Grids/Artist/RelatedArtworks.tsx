@@ -5,14 +5,16 @@ import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { get } from "Utils/get"
 
-import { RelatedArtworks_viewer } from "__generated__/RelatedArtworks_viewer.graphql"
-import { RelatedArtworksQuery } from "__generated__/RelatedArtworksQuery.graphql"
+import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
+import { RelatedArtworksPreviewQuery } from "__generated__/RelatedArtworksPreviewQuery.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
 
-interface RelatedArtworksProps {
-  viewer: RelatedArtworks_viewer
+interface RelatedArtworksPreviewProps {
+  viewer: RelatedArtworksPreview_viewer
 }
-const RelatedArtworks: React.SFC<RelatedArtworksProps> = ({ viewer }) => {
+const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
+  viewer,
+}) => {
   const artworks = get(
     viewer,
     x => x.filter_artworks.artworks_connection.edges,
@@ -33,10 +35,10 @@ const RelatedArtworks: React.SFC<RelatedArtworksProps> = ({ viewer }) => {
   )
 }
 
-export const RelatedArtworksFragmentContainer = createFragmentContainer(
-  RelatedArtworks,
+export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
+  RelatedArtworksPreview,
   graphql`
-    fragment RelatedArtworks_viewer on Viewer {
+    fragment RelatedArtworksPreview_viewer on Viewer {
       filter_artworks(
         aggregations: [TOTAL]
         sort: "-decayed_merch"
@@ -55,24 +57,26 @@ export const RelatedArtworksFragmentContainer = createFragmentContainer(
   `
 )
 
-export const RelatedArtworksQueryRenderer: React.SFC<{
+export const RelatedArtworksPreviewQueryRenderer: React.SFC<{
   entityID: string
 }> = ({ entityID }) => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
         return (
-          <QueryRenderer<RelatedArtworksQuery>
+          <QueryRenderer<RelatedArtworksPreviewQuery>
             environment={relayEnvironment}
             variables={{ entityID }}
             query={graphql`
-              query RelatedArtworksQuery($entityID: String!) {
+              query RelatedArtworksPreviewQuery($entityID: String!) {
                 viewer {
-                  ...RelatedArtworks_viewer
+                  ...RelatedArtworksPreview_viewer
                 }
               }
             `}
-            render={renderWithLoadProgress(RelatedArtworksFragmentContainer)}
+            render={renderWithLoadProgress(
+              RelatedArtworksPreviewFragmentContainer
+            )}
           />
         )
       }}

@@ -4,8 +4,8 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { MarketingCollectionsGrid } from "./MarketingCollections"
-import { RelatedArtworksQueryRenderer as RelatedArtworks } from "./RelatedArtworks"
+import { MarketingCollectionsPreview } from "./MarketingCollections"
+import { RelatedArtworksPreviewQueryRenderer as RelatedArtworks } from "./RelatedArtworks"
 
 interface ArtistSearchPreviewProps {
   artist: ArtistSearchPreview_artist
@@ -19,7 +19,9 @@ export const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
 
     if (marketingCollections.length > 0) {
       return (
-        <MarketingCollectionsGrid marketingCollections={marketingCollections} />
+        <MarketingCollectionsPreview
+          marketingCollections={marketingCollections}
+        />
       )
     }
     return <RelatedArtworks entityID={artist.id} />

@@ -1,32 +1,32 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { RelatedArtworks_viewer$ref } from "./RelatedArtworks_viewer.graphql";
-export type RelatedArtworksQueryVariables = {
+import { RelatedArtworksPreview_viewer$ref } from "./RelatedArtworksPreview_viewer.graphql";
+export type RelatedArtworksPreviewQueryVariables = {
     readonly entityID: string;
 };
-export type RelatedArtworksQueryResponse = {
+export type RelatedArtworksPreviewQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": RelatedArtworks_viewer$ref;
+        readonly " $fragmentRefs": RelatedArtworksPreview_viewer$ref;
     }) | null;
 };
-export type RelatedArtworksQuery = {
-    readonly response: RelatedArtworksQueryResponse;
-    readonly variables: RelatedArtworksQueryVariables;
+export type RelatedArtworksPreviewQuery = {
+    readonly response: RelatedArtworksPreviewQueryResponse;
+    readonly variables: RelatedArtworksPreviewQueryVariables;
 };
 
 
 
 /*
-query RelatedArtworksQuery(
+query RelatedArtworksPreviewQuery(
   $entityID: String!
 ) {
   viewer {
-    ...RelatedArtworks_viewer
+    ...RelatedArtworksPreview_viewer
   }
 }
 
-fragment RelatedArtworks_viewer on Viewer {
+fragment RelatedArtworksPreview_viewer on Viewer {
   filter_artworks(aggregations: [TOTAL], sort: "-decayed_merch", artist_id: $entityID) {
     __id
     artworks_connection(first: 8) {
@@ -73,13 +73,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "RelatedArtworksQuery",
+  "name": "RelatedArtworksPreviewQuery",
   "id": null,
-  "text": "query RelatedArtworksQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...RelatedArtworks_viewer\n  }\n}\n\nfragment RelatedArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query RelatedArtworksPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...RelatedArtworksPreview_viewer\n  }\n}\n\nfragment RelatedArtworksPreview_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RelatedArtworksQuery",
+    "name": "RelatedArtworksPreviewQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -95,7 +95,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "RelatedArtworks_viewer",
+            "name": "RelatedArtworksPreview_viewer",
             "args": null
           }
         ]
@@ -104,7 +104,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RelatedArtworksQuery",
+    "name": "RelatedArtworksPreviewQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -275,5 +275,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'fe4cd6116e685a478818bd86c6a6109b';
+(node as any).hash = '878058abd086035ed81e57331dd01448';
 export default node;

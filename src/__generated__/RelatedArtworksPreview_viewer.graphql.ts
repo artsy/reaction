@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { PreviewGridItem_artwork$ref } from "./PreviewGridItem_artwork.graphql";
-declare const _RelatedArtworks_viewer$ref: unique symbol;
-export type RelatedArtworks_viewer$ref = typeof _RelatedArtworks_viewer$ref;
-export type RelatedArtworks_viewer = {
+declare const _RelatedArtworksPreview_viewer$ref: unique symbol;
+export type RelatedArtworksPreview_viewer$ref = typeof _RelatedArtworksPreview_viewer$ref;
+export type RelatedArtworksPreview_viewer = {
     readonly filter_artworks: ({
         readonly __id: string;
         readonly artworks_connection: ({
@@ -15,7 +15,7 @@ export type RelatedArtworks_viewer = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly " $refType": RelatedArtworks_viewer$ref;
+    readonly " $refType": RelatedArtworksPreview_viewer$ref;
 };
 
 
@@ -30,7 +30,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "RelatedArtworks_viewer",
+  "name": "RelatedArtworksPreview_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -123,5 +123,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '700234d91af7b823a766bcc719211263';
+(node as any).hash = '88f29dccc1a2b4a5e877d48dfaafe6fb';
 export default node;

@@ -3,8 +3,8 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { ArtistSearchPreview } from "../index"
-import { MarketingCollectionsGrid } from "../MarketingCollections"
-import { RelatedArtworksQueryRenderer as RelatedArtworks } from "../RelatedArtworks"
+import { MarketingCollectionsPreview } from "../MarketingCollections"
+import { RelatedArtworksPreviewQueryRenderer as RelatedArtworks } from "../RelatedArtworks"
 
 describe(ArtistSearchPreview, () => {
   it("renders related artworks when there are no marketing collections for the artist", () => {
@@ -16,7 +16,7 @@ describe(ArtistSearchPreview, () => {
 
     const wrapper = mount(<ArtistSearchPreview artist={artist} />)
 
-    expect(wrapper.find(MarketingCollectionsGrid).length).toEqual(0)
+    expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(0)
     expect(wrapper.find(RelatedArtworks).length).toEqual(1)
   })
 
@@ -37,6 +37,6 @@ describe(ArtistSearchPreview, () => {
     const wrapper = mount(<ArtistSearchPreview artist={artist} />)
 
     expect(wrapper.find(RelatedArtworks).length).toEqual(0)
-    expect(wrapper.find(MarketingCollectionsGrid).length).toEqual(1)
+    expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(1)
   })
 })
