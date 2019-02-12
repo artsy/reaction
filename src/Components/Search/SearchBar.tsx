@@ -23,6 +23,7 @@ const AutosuggestContainer = styled(Box)`
     div[role="listbox"] {
       ul {
         list-style-type: none;
+        padding: 0;
       }
     }
   }
@@ -143,7 +144,9 @@ export class SearchBar extends Component<Props, State> {
         <Flex flexDirection={["column", "row"]}>
           <Box width={["100%", "50%"]}>
             <Flex flexDirection="column">
-              {firstItem}
+              <Box mt={3} pl={3}>
+                {firstItem}
+              </Box>
               {children}
             </Flex>
           </Box>
@@ -167,7 +170,7 @@ export class SearchBar extends Component<Props, State> {
   renderInputComponent = inputProps => (
     <Box>
       <Input
-        style={{ width: "100%" }}
+        style={{ width: "50%" }}
         innerRef={inputProps.ref}
         {...inputProps}
         ref={null}
@@ -191,6 +194,7 @@ export class SearchBar extends Component<Props, State> {
     return (
       <AutosuggestContainer>
         <Autosuggest
+          alwaysRenderSuggestions
           suggestions={edges}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
