@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { injectGlobal } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 import colors from "../Assets/Colors"
 import Icon from "./Icon"
 
@@ -19,7 +19,7 @@ const NavIcon = styled.a`
 `
 
 /* stylelint-disable-next-line */
-injectGlobal`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   body {
     margin: 0;
   }
@@ -31,6 +31,7 @@ export interface NavBarProps extends React.Props<HTMLDivElement> {
 
 const NavBar: React.SFC<NavBarProps> = props => (
   <Nav>
+    <GlobalStyle suppressMultiMountWarning />
     <NavIcon href={props.logoLink}>
       <Icon name="logotype" color="black" fontSize="40px" />
     </NavIcon>

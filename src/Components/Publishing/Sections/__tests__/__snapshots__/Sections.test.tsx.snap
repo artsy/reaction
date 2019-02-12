@@ -6,21 +6,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -30,25 +15,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
   justify-content: space-between;
 }
 
-.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c42 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .c18 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -56,7 +22,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: #C2C2C2;
 }
 
-.c33 {
+.c32 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -64,28 +30,28 @@ exports[`Sections snapshots tests renders properly 1`] = `
   padding-bottom: 8px;
 }
 
-.c35 {
+.c34 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
 
-.c36 {
+.c35 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 12px;
   line-height: 16px;
   padding-left: 20px;
 }
 
-.c43 {
+.c41 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
 }
 
-.c47 {
+.c45 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -99,30 +65,39 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c41 {
+.c40 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
   color: black;
 }
 
-.c41 a {
+.c40 a {
   color: black;
 }
 
-.c44 {
+.c42 {
   margin-right: 20px;
 }
 
-.c45 {
+.c43 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c45 .c46 {
+.c43 .c44 {
   vertical-align: middle;
   margin: 0;
 }
 
-.c40 {
+.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -312,20 +287,39 @@ exports[`Sections snapshots tests renders properly 1`] = `
   width: 222px;
 }
 
-.c37 {
+.c36 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c37 > svg {
+.c36 > svg {
   height: 98%;
 }
 
 .c30 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 20px;
   width: 100%;
+}
+
+.c33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c28 {
@@ -356,7 +350,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   fill: white;
 }
 
-.c38 {
+.c37 {
   height: auto;
   width: 100%;
 }
@@ -393,7 +387,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c39 {
+.c38 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -514,7 +508,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c2 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c2 h2 .c46 {
   background-position: bottom !important;
 }
 
@@ -610,37 +604,37 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c33 {
+  .c32 {
     font-size: 18px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c33 {
+  .c32 {
     line-height: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c35 {
+  .c34 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c35 {
+  .c34 {
     line-height: 24px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c36 {
+  .c35 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c36 {
+  .c35 {
     line-height: 24px;
   }
 }
@@ -775,7 +769,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c39 {
+  .c38 {
     padding: 0 20px;
   }
 }
@@ -2008,13 +2002,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
         onClick={[Function]}
       >
         <div
-          className="c30 c31"
+          className="c30"
         >
           <div
-            className="c32"
+            className="c31"
           >
             <div
-              className="c33"
+              className="c32"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2031,10 +2025,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
               The Work of Bruce M. Sherman
             </div>
             <div
-              className="c34"
+              className="c33"
             >
               <div
-                className="c35"
+                className="c34"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2051,7 +2045,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                 View Slideshow
               </div>
               <div
-                className="c36"
+                className="c35"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize={
                   Array [
@@ -2068,7 +2062,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             className="rrm-container rrm-greaterThanOrEqual-sm"
           >
             <div
-              className="c37"
+              className="c36"
             >
               <svg
                 className="image-set"
@@ -2098,7 +2092,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       >
         <img
           alt="The Work of Bruce M. Sherman"
-          className="c38"
+          className="c37"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
         />
       </div>
@@ -2233,17 +2227,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c39"
+    className="c38"
   >
     <div
-      className="c40"
+      className="c39"
     >
       <div
-        className="c41 c42"
+        className="c40"
         color="black"
       >
         <div
-          className="c43"
+          className="c41"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2253,7 +2247,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           fontSize="16px"
         >
           <span
-            className="c44"
+            className="c42"
           >
             <span>
               <a
@@ -2266,11 +2260,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </span>
           <span>
             <a
-              className="c45"
+              className="c43"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c46 c47"
+                className="c44 c45"
               >
                 
               </div>

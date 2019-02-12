@@ -123,7 +123,7 @@ describe("buildServerApp", () => {
 
   it("passes along rendered css", async () => {
     const { styleTags } = await getWrapper()
-    expect(styleTags).toContain("style data-styled-components")
+    expect(styleTags).toContain("style data-styled")
   })
 
   describe("concerning device detection", () => {

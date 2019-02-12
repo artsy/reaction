@@ -9,6 +9,10 @@ exports[`NewsNav renders NewsNav 1`] = `
 }
 
 .c3 {
+  font-family: Unica77LLWebMedium,Arial,serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 25px;
+  line-height: 1.1em;
   position: absolute;
   left: 30px;
 }
@@ -54,6 +58,15 @@ exports[`NewsNav renders NewsNav 1`] = `
 
 @media (max-width:720px) {
   .c3 {
+    font-family: Unica77LLWebMedium,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
     left: 20px;
   }
 }
@@ -76,7 +89,7 @@ exports[`NewsNav renders NewsNav 1`] = `
       Jun 29, 2017
     </div>
     <div
-      className="c3 c2"
+      className="c3"
     >
       News
     </div>

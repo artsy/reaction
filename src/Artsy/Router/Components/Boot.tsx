@@ -11,6 +11,7 @@ import { data as sd } from "sharify"
 import { Provider as StateProvider } from "unstated"
 import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
+import { createMediaStyle } from "Utils/Responsive"
 
 import {
   MatchingMediaQueries,
@@ -28,7 +29,14 @@ export interface BootProps {
   headTags?: JSX.Element[]
 }
 
-const { GlobalStyles } = injectGlobalStyles(`
+// Build global responsive styles
+const reactResponsiveStyles = createMediaStyle()
+
+// FIXME: When we update to latest @types/styled-components `suppressMultiMountWarning`
+// issue will be fixed
+const { GlobalStyles } = injectGlobalStyles<{
+  suppressMultiMountWarning: boolean
+}>(`
   h1 {
     font-style: inherit;
     font-family: inherit;
@@ -36,9 +44,10 @@ const { GlobalStyles } = injectGlobalStyles(`
     font-size: inherit;
     margin: 0;
   }
+
+  ${reactResponsiveStyles}
 `)
 
-// TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {
   dispatch: data => Events.postEvent(data),
 })
@@ -71,12 +80,11 @@ export class Boot extends React.Component<BootProps> {
                 >
                   <Theme>
                     <Grid fluid>
-                      <GlobalStyles>
-                        {children}
-                        {process.env.NODE_ENV === "development" && (
-                          <BreakpointVisualizer />
-                        )}
-                      </GlobalStyles>
+                      <GlobalStyles suppressMultiMountWarning />
+                      {children}
+                      {process.env.NODE_ENV === "development" && (
+                        <BreakpointVisualizer />
+                      )}
                     </Grid>
                   </Theme>
                 </ResponsiveProvider>

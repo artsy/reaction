@@ -1,6 +1,6 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
-import styled, { injectGlobal, keyframes } from "styled-components"
+import styled, { createGlobalStyle, keyframes } from "styled-components"
 import FadeTransition from "../Animation/FadeTransition"
 import { media } from "../Helpers"
 import { CtaProps } from "./ModalCta"
@@ -27,7 +27,7 @@ export interface ModalWrapperState {
   blurContainers: Element[]
 }
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   .blurred {
     filter: blur(50px);
   }
@@ -127,6 +127,7 @@ export class ModalWrapper extends React.Component<
     return (
       <Theme>
         <Wrapper isShown={isShown || isAnimating}>
+          <GlobalStyle suppressMultiMountWarning />
           {isShown && <ModalOverlay onClick={this.close} />}
           <FadeTransition
             in={isShown}

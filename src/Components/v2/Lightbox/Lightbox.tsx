@@ -226,7 +226,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
           onWheel={this.detectActivity}
           onTouchStart={this.detectActivity}
           onTouchMove={this.detectActivity}
-          innerRef={this.state.deepZoomRef as any /* TODO Update SC */}
+          ref={this.state.deepZoomRef as any /* TODO Update SC */}
         >
           <Box
             position="absolute"

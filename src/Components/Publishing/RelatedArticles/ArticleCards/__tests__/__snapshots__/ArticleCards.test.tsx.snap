@@ -28,21 +28,6 @@ exports[`ArticleCard renders properly 1`] = `
   width: 100%;
 }
 
-.c15 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .c4 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
@@ -64,21 +49,11 @@ exports[`ArticleCard renders properly 1`] = `
   line-height: 20px;
 }
 
-.c17 {
+.c15 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1em;
-}
-
-.c0 {
-  margin-bottom: 40px;
-}
-
-.c11 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-  width: 100%;
 }
 
 .c8 {
@@ -115,12 +90,12 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c16 {
+.c14 {
   width: 32px;
   height: 32px;
 }
 
-.c13 {
+.c12 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -131,6 +106,9 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c10 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  width: 100%;
   position: relative;
   height: inherit;
   background: white;
@@ -146,23 +124,39 @@ exports[`ArticleCard renders properly 1`] = `
   display: block;
 }
 
-.c1 .c12 {
+.c1 .c11 {
   opacity: 1;
 }
 
-.c1:hover .c12 {
+.c1:hover .c11 {
   opacity: 0.7;
 }
 
-.c14 {
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 20px;
 }
 
-.c14 svg {
+.c13 svg {
   height: 40px;
+}
+
+.c0 {
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width:40em) {
@@ -316,53 +310,53 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c11 {
+  .c10 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c11 {
+  .c10 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c11 {
+  .c10 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c11 {
+  .c10 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c11 {
+  .c10 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c11 {
+  .c10 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c14 svg {
+  .c13 svg {
     height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    margin-bottom: 60px;
   }
 }
 
@@ -462,7 +456,7 @@ exports[`ArticleCard renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c10"
           width={
             Array [
               "100%",
@@ -473,7 +467,7 @@ exports[`ArticleCard renders properly 1`] = `
           }
         >
           <img
-            className="c12 c13"
+            className="c11 c12"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
           />
         </div>
@@ -551,7 +545,7 @@ exports[`ArticleCard renders properly 1`] = `
           </div>
         </div>
         <div
-          className="c10 c11"
+          className="c10"
           width={
             Array [
               "100%",
@@ -562,14 +556,14 @@ exports[`ArticleCard renders properly 1`] = `
           }
         >
           <img
-            className="c12 c13"
+            className="c11 c12"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
           />
           <div
-            className="c14 c15"
+            className="c13"
           >
             <svg
-              className="c16"
+              className="c14"
               version="1.1"
               viewBox="0 0 40 56"
               x="0px"
@@ -589,7 +583,7 @@ exports[`ArticleCard renders properly 1`] = `
               </g>
             </svg>
             <div
-              className="c17"
+              className="c15"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
