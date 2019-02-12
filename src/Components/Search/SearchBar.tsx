@@ -158,11 +158,15 @@ export class SearchBar extends Component<Props, State> {
 
   renderSuggestion = (
     { node: { displayLabel, searchableType } },
-    { isHighlighted }
+    { query, isHighlighted }
   ) => {
     return (
       <Box style={{ backgroundColor: isHighlighted ? "#ddd" : "#fff" }}>
-        <SuggestionItem display={displayLabel} label={searchableType} />
+        <SuggestionItem
+          query={query}
+          display={displayLabel}
+          label={searchableType}
+        />
       </Box>
     )
   }
@@ -194,7 +198,6 @@ export class SearchBar extends Component<Props, State> {
     return (
       <AutosuggestContainer>
         <Autosuggest
-          alwaysRenderSuggestions
           suggestions={edges}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}

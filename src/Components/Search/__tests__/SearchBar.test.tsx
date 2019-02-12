@@ -92,4 +92,13 @@ describe("SearchBar", () => {
     component.find(SuggestionItem).simulate("click")
     expect(window.location.assign).toHaveBeenCalledWith("/cat/percy-z")
   })
+
+  it("highlights matching parts of suggestions", async () => {
+    const component = await getWrapper(searchResults)
+
+    simulateTyping(component, "perc") // Matching text w/ suggestion.
+    await flushPromiseQueue()
+
+    expect(component.html()).toContain("<strong>Perc</strong>y Z")
+  })
 })
