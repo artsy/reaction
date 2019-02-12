@@ -16,7 +16,10 @@ import {
 } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+const logger = createLogger("Components/Search/SearchBar")
 
 const AutosuggestContainer = styled(Box)`
   div[role="combobox"] {
@@ -79,7 +82,7 @@ export class SearchBar extends Component<Props, State> {
       },
       null,
       error => {
-        if (error) console.error(error)
+        if (error) logger.error(error)
       }
     )
   }
@@ -161,7 +164,7 @@ export class SearchBar extends Component<Props, State> {
     { query, isHighlighted }
   ) => {
     return (
-      <Box style={{ backgroundColor: isHighlighted ? "#ddd" : "#fff" }}>
+      <Box bg={isHighlighted ? "#ddd" : "#fff"}>
         <SuggestionItem
           query={query}
           display={displayLabel}
@@ -172,9 +175,9 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderInputComponent = inputProps => (
-    <Box>
+    <Box width={["100%", "50%"]}>
       <Input
-        style={{ width: "50%" }}
+        style={{ width: "100%" }}
         innerRef={inputProps.ref}
         {...inputProps}
         ref={null}
@@ -182,7 +185,7 @@ export class SearchBar extends Component<Props, State> {
     </Box>
   )
 
-  renderAutosuggestComponent(xs: boolean) {
+  renderAutosuggestComponent({ xs }) {
     const { input } = this.state
     const { viewer } = this.props
     const edges = get(viewer, v => v.search.edges, [])
@@ -217,8 +220,10 @@ export class SearchBar extends Component<Props, State> {
   render() {
     return (
       <>
-        <Media at="xs">{this.renderAutosuggestComponent(true)}</Media>
-        <Media greaterThan="xs">{this.renderAutosuggestComponent(false)}</Media>
+        <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
+        <Media greaterThan="xs">
+          {this.renderAutosuggestComponent({ xs: false })}
+        </Media>
       </>
     )
   }
