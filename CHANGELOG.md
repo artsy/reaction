@@ -1,3 +1,11 @@
+# v12.1.33 (Tue Feb 12 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [SearchBar] Start some basic tests [#2010](https://github.com/artsy/reaction/pull/2010) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.32 (Mon Feb 11 2019)
 
 #### 🐛  Bug Fix
