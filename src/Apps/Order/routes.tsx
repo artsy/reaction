@@ -6,6 +6,7 @@ import { graphql } from "react-relay"
 import { OrderApp } from "./OrderApp"
 
 import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
+import { NewPaymentFragmentContainer as NewPaymentRoute } from "Apps/Order/Routes/NewPayment"
 import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
 import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
 import { RejectFragmentContainer as RejectRoute } from "Apps/Order/Routes/Reject"
@@ -120,6 +121,21 @@ export const routes: RouteConfig[] = [
       {
         path: "payment",
         Component: PaymentRoute,
+        onTransition: confirmRouteExit,
+        query: graphql`
+          query routes_NewPaymentQuery($orderID: String!) {
+            order: ecommerceOrder(id: $orderID) {
+              ...Payment_order
+            }
+          }
+        `,
+        cacheConfig: {
+          force: true,
+        },
+      },
+      {
+        path: "payment/new",
+        Component: NewPaymentRoute,
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_PaymentQuery($orderID: String!) {
