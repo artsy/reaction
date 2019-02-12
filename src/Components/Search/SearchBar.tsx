@@ -45,11 +45,19 @@ interface State {
 }
 
 export class SearchBar extends Component<Props, State> {
+  public input: HTMLInputElement
+
   state = {
     input: "",
     entityID: null,
     entityType: null,
     focused: false,
+  }
+
+  storeInputReference = autosuggest => {
+    if (autosuggest != null) {
+      this.input = autosuggest.input
+    }
   }
 
   // Throttled method to toggle previews.
@@ -111,7 +119,7 @@ export class SearchBar extends Component<Props, State> {
       },
     }
   ) => {
-    window.location.href = href
+    window.location.assign(href)
   }
 
   renderPreview() {
@@ -130,7 +138,6 @@ export class SearchBar extends Component<Props, State> {
     } else if (focused) {
       firstItem = <Box>{PLACEHOLDER}</Box>
     }
-
     return (
       <Box {...containerProps}>
         <Flex flexDirection={["column", "row"]}>
@@ -159,7 +166,12 @@ export class SearchBar extends Component<Props, State> {
 
   renderInputComponent = inputProps => (
     <Box>
-      <Input style={{ width: "100%" }} {...inputProps} />
+      <Input
+        style={{ width: "100%" }}
+        innerRef={inputProps.ref}
+        {...inputProps}
+        ref={null}
+      />
     </Box>
   )
 
@@ -189,6 +201,7 @@ export class SearchBar extends Component<Props, State> {
           inputProps={inputProps}
           onSuggestionSelected={this.onSuggestionSelected}
           renderInputComponent={this.renderInputComponent}
+          ref={this.storeInputReference}
         />
       </AutosuggestContainer>
     )
