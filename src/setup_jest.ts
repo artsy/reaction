@@ -15,6 +15,8 @@ jest.mock("Utils/logger")
  * tests that never end up making any, leading to false positives.
  *
  * TODO: Find a way to make this not emit after failing tests.
+ *
+ * SEE: https://github.com/facebook/jest/issues/2209#issuecomment-458706599
  */
 // afterEach(() => expect.hasAssertions())
 
@@ -58,10 +60,15 @@ const logAndThrow = loggerFn => {
       // Skip this frame in the stack to point to the actual log call-site
       Error.captureStackTrace(err, imp)
 
-      // FIXME: because we're throwing non-errors, its stopping execution
-      // and failing our tests when library code warns in certain ways.
+      // FIXME:
+      // Because we're throwing non-errors, its stopping execution
+      // and failing our tests when library code warns in certain ways. This
+      // creates problems for invariants and other strict checks in
+      // styled-components 4. With the below ccommented out we still get good
+      // logs.
+
       // throw err
-      console.log(err)
+      // console.log(err)
     }
   }
   return imp

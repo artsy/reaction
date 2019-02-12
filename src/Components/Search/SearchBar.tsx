@@ -166,12 +166,7 @@ export class SearchBar extends Component<Props, State> {
 
   renderInputComponent = inputProps => (
     <Box>
-      <Input
-        style={{ width: "100%" }}
-        innerRef={inputProps.ref}
-        {...inputProps}
-        ref={null}
-      />
+      <Input style={{ width: "100%" }} {...inputProps} />
     </Box>
   )
 

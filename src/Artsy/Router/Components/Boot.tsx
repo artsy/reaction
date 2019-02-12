@@ -37,8 +37,6 @@ const reactResponsiveStyles = createMediaStyle()
 const { GlobalStyles } = injectGlobalStyles<{
   suppressMultiMountWarning: boolean
 }>(`
-  ${reactResponsiveStyles}
-
   h1 {
     font-style: inherit;
     font-family: inherit;
@@ -46,6 +44,8 @@ const { GlobalStyles } = injectGlobalStyles<{
     font-size: inherit;
     margin: 0;
   }
+
+  ${reactResponsiveStyles}
 `)
 
 @track(null, {
