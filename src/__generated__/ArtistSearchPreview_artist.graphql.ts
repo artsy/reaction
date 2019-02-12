@@ -4,6 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtistSearchPreview_artist$ref: unique symbol;
 export type ArtistSearchPreview_artist$ref = typeof _ArtistSearchPreview_artist$ref;
 export type ArtistSearchPreview_artist = {
+    readonly id: string;
     readonly marketingCollections: ReadonlyArray<({
         readonly title: string;
     }) | null> | null;
@@ -19,6 +20,13 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -53,5 +61,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'cd2fc82225ebe403923888807c11ce3a';
+(node as any).hash = 'e3e3a295b94b2432fc668914beb4d176';
 export default node;

@@ -28,6 +28,7 @@ query ArtistSearchPreviewQuery(
 }
 
 fragment ArtistSearchPreview_artist on Artist {
+  id
   marketingCollections {
     title
     __id: id
@@ -65,7 +66,7 @@ return {
   "operationKind": "query",
   "name": "ArtistSearchPreviewQuery",
   "id": null,
-  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  artist(id: $entityID) {\n    ...ArtistSearchPreview_artist\n    __id\n  }\n}\n\nfragment ArtistSearchPreview_artist on Artist {\n  marketingCollections {\n    title\n    __id: id\n  }\n  __id\n}\n",
+  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  artist(id: $entityID) {\n    ...ArtistSearchPreview_artist\n    __id\n  }\n}\n\nfragment ArtistSearchPreview_artist on Artist {\n  id\n  marketingCollections {\n    title\n    __id: id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -107,6 +108,13 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,

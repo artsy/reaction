@@ -5,23 +5,24 @@ import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { MarketingCollectionsGrid } from "./MarketingCollections"
+import { RelatedArtworksQueryRenderer as RelatedArtworks } from "./RelatedArtworks"
 
 interface ArtistSearchPreviewProps {
   artist: ArtistSearchPreview_artist
 }
 
-export class ArtistSearchPreview extends React.Component<
-  ArtistSearchPreviewProps
-> {
-  render() {
-    const { marketingCollections } = this.props.artist
+const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
+  artist,
+}) => {
+  {
+    const { marketingCollections } = artist
 
     if (marketingCollections.length > 0) {
       return (
         <MarketingCollectionsGrid marketingCollections={marketingCollections} />
       )
     }
-    return <div>no marketing collections</div>
+    return <RelatedArtworks entityID={artist.id} />
   }
 }
 
@@ -29,6 +30,7 @@ export const ArtistSearchPreviewFragmentContainer = createFragmentContainer(
   ArtistSearchPreview,
   graphql`
     fragment ArtistSearchPreview_artist on Artist {
+      id
       marketingCollections {
         title
       }
