@@ -124,7 +124,7 @@ export class ArtworkSharePanel extends React.Component<
               type="text"
               readOnly
               value={url}
-              innerRef={input => (this.input = input)}
+              ref={input => (this.input = input)}
               onClick={this.handleCopy}
             />
           </SansGrow>

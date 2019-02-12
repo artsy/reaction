@@ -32,8 +32,11 @@ export interface BootProps {
 // Build global responsive styles
 const reactResponsiveStyles = createMediaStyle()
 
-// FIXME: When we update to latest @types/styled-components this will be fixed
-const { GlobalStyles } = injectGlobalStyles<{ suppressMultiMountWarning: boolean }>`
+// FIXME: When we update to latest @types/styled-components `suppressMultiMountWarning`
+// issue will be fixed
+const { GlobalStyles } = injectGlobalStyles<{
+  suppressMultiMountWarning: boolean
+}>(`
   ${reactResponsiveStyles}
 
   h1 {
@@ -43,7 +46,7 @@ const { GlobalStyles } = injectGlobalStyles<{ suppressMultiMountWarning: boolean
     font-size: inherit;
     margin: 0;
   }
-`
+`)
 
 @track(null, {
   dispatch: data => Events.postEvent(data),
@@ -76,13 +79,13 @@ export class Boot extends React.Component<BootProps> {
                   }
                 >
                   <Theme>
-                      <Grid fluid>
-                        <GlobalStyles suppressMultiMountWarning />
-                        {children}
-                        {process.env.NODE_ENV === "development" && (
-                          <BreakpointVisualizer />
-                        )}
-                      </Grid>
+                    <Grid fluid>
+                      <GlobalStyles suppressMultiMountWarning />
+                      {children}
+                      {process.env.NODE_ENV === "development" && (
+                        <BreakpointVisualizer />
+                      )}
+                    </Grid>
                   </Theme>
                 </ResponsiveProvider>
               </MediaContextProvider>
