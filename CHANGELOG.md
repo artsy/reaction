@@ -1,3 +1,11 @@
+# v12.1.34 (Tue Feb 12 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [AuctionTimer] Make sure to display the minute portion in label [#2011](https://github.com/artsy/reaction/pull/2011) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.33 (Tue Feb 12 2019)
 
 #### 🐛  Bug Fix
