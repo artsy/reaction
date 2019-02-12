@@ -11,7 +11,7 @@ interface ArtistSearchPreviewProps {
   artist: ArtistSearchPreview_artist
 }
 
-const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
+export const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
   artist,
 }) => {
   {
