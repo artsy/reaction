@@ -1,18 +1,15 @@
 import { Box, Flex, Sans } from "@artsy/palette"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
-import { RelatedArtworksPreviewQuery } from "__generated__/RelatedArtworksPreviewQuery.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
 
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
 }
-const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
+export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
   viewer,
 }) => {
   const artworks = get(
@@ -38,7 +35,8 @@ const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
 export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
   RelatedArtworksPreview,
   graphql`
-    fragment RelatedArtworksPreview_viewer on Viewer {
+    fragment RelatedArtworksPreview_viewer on Viewer
+      @argumentDefinitions(entityID: { type: "String!" }) {
       filter_artworks(
         aggregations: [TOTAL]
         sort: "-decayed_merch"
@@ -56,30 +54,3 @@ export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-export const RelatedArtworksPreviewQueryRenderer: React.SFC<{
-  entityID: string
-}> = ({ entityID }) => {
-  return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<RelatedArtworksPreviewQuery>
-            environment={relayEnvironment}
-            variables={{ entityID }}
-            query={graphql`
-              query RelatedArtworksPreviewQuery($entityID: String!) {
-                viewer {
-                  ...RelatedArtworksPreview_viewer
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              RelatedArtworksPreviewFragmentContainer
-            )}
-          />
-        )
-      }}
-    </ContextConsumer>
-  )
-}

@@ -35,9 +35,10 @@ return {
   "metadata": null,
   "argumentDefinitions": [
     {
-      "kind": "RootArgument",
+      "kind": "LocalArgument",
       "name": "entityID",
-      "type": "String"
+      "type": "String!",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -123,5 +124,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '88f29dccc1a2b4a5e877d48dfaafe6fb';
+(node as any).hash = '43f99049d331104fc425d84e94ef612f';
 export default node;
