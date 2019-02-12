@@ -3,7 +3,7 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { ArtistSearchPreview } from "../index"
-import { MarketingCollectionsPreviewQueryRenderer as MarketingCollectionsPreview } from "../MarketingCollections"
+import { MarketingCollectionsPreview } from "../MarketingCollections"
 import { RelatedArtworksPreviewQueryRenderer as RelatedArtworks } from "../RelatedArtworks"
 
 describe(ArtistSearchPreview, () => {
@@ -26,9 +26,11 @@ describe(ArtistSearchPreview, () => {
       marketingCollections: [
         {
           title: "Flowers in spring",
+          " $fragmentRefs": null,
         },
         {
           title: "Shovels in winter",
+          " $fragmentRefs": null,
         },
       ],
       " $refType": null,

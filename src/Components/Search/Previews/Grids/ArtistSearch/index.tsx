@@ -4,8 +4,8 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { MarketingCollectionsPreviewQueryRenderer as MarketingCollectionsPreview } from "./MarketingCollections"
-import { RelatedArtworksPreviewQueryRenderer as RelatedArtworks } from "./RelatedArtworks"
+import { MarketingCollectionsPreviewFragmentContainer as MarketingCollectionsPreview } from "./MarketingCollections"
+import { RelatedArtworksPreviewQueryRenderer as RelatedArtworksPreview } from "./RelatedArtworks"
 
 interface ArtistSearchPreviewProps {
   artist: ArtistSearchPreview_artist
@@ -18,9 +18,13 @@ export const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
     const { marketingCollections } = artist
 
     if (marketingCollections.length > 0) {
-      return <MarketingCollectionsPreview entityID={artist.id} />
+      return (
+        <MarketingCollectionsPreview
+          marketingCollections={artist.marketingCollections}
+        />
+      )
     }
-    return <RelatedArtworks entityID={artist.id} />
+    return <RelatedArtworksPreview entityID={artist.id} />
   }
 }
 
@@ -31,6 +35,7 @@ export const ArtistSearchPreviewFragmentContainer = createFragmentContainer(
       id
       marketingCollections {
         title
+        ...MarketingCollectionsPreview_marketingCollections
       }
     }
   `
