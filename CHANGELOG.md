@@ -1,3 +1,15 @@
+# v13.0.1 (Wed Feb 13 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured => Highlight matching parts of query [#2012](https://github.com/artsy/reaction/pull/2012) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.1 [#2014](https://github.com/artsy/reaction/pull/2014) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v13.0.0 (Tue Feb 12 2019)
 
 #### 💥  Breaking Change
