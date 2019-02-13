@@ -24,7 +24,7 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
       {relatedArticles && (
         <RelatedArticlesCanvas
           articles={relatedArticles}
-          vertical={article.vertical}
+          vertical={article.layout !== "news" && article.vertical}
         />
       )}
 
