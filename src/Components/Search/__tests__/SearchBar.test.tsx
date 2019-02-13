@@ -23,6 +23,12 @@ const searchResults = {
       },
     ],
   },
+
+  filter_artworks: {
+    artworks_connection: {
+      edges: [],
+    },
+  },
 }
 
 const simulateTyping = (wrapper: ReactWrapper, text: string) => {
@@ -101,5 +107,14 @@ describe("SearchBar", () => {
     await flushPromiseQueue()
 
     expect(component.html()).toContain("<strong>Perc</strong>y Z")
+  })
+
+  it("displays merchandisable artworks", async () => {
+    const component = await getWrapper(searchResults)
+
+    simulateTyping(component, "blah") // Any text of non-zero length.
+    await flushPromiseQueue()
+
+    expect(component.text()).toContain("Now Available for Buy Now/ Make Offer")
   })
 })
