@@ -11,19 +11,20 @@ interface MarketingCollectionsPreviewProps {
 }
 
 const CollectionBox = styled(Box)<{ imageUrl: string }>`
-  margin: 10px;
+  margin-right: ${space(2)}px;
+  margin-bottom: ${space(2)}px;
   width: 185px;
   height: 80px;
-  background-position: center;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${p => p.imageUrl});
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(${p => p.imageUrl}) center;
 `
 
-const CollectionTitle = styled(Serif).attrs({display: "inline", size: "2"})`
+const CollectionTitle = styled(Serif).attrs({ display: "inline", size: "2" })`
   color: ${color("white100")};
 `
 
-export const CollectionTitles = ({title}) => {
-  const [ first, ...rest ] = title.split(": ")
+export const CollectionTitles = ({ title }) => {
+  const [first, ...rest] = title.split(": ")
   const showHeadline = rest.length !== 0
   const headline = showHeadline && first
   const subtitle = showHeadline ? rest.join(": ") : first
@@ -45,23 +46,33 @@ export const CollectionTitles = ({title}) => {
 export const MarketingCollectionsPreview: React.SFC<
   MarketingCollectionsPreviewProps
 > = ({ marketingCollections }) => {
-  const items = marketingCollections.map(({ headerImage, title, slug }, index) => {
-    const href = `collection/${slug}`
-    const imageUrl = `${sd.GEMINI_CLOUDFRONT_URL}/?resize_to=fill&width=185&height=80&quality=95&src=${encodeURIComponent(headerImage)}`
+  const items = marketingCollections.map(
+    ({ headerImage, title, slug }, index) => {
+      const href = `collection/${slug}`
+      const imageUrl = `${
+        sd.GEMINI_CLOUDFRONT_URL
+      }/?resize_to=fill&width=185&height=80&quality=95&src=${encodeURIComponent(
+        headerImage
+      )}`
 
-    return (
-      <CollectionBox imageUrl={imageUrl} key={index}>
-        <Link href={href} noUnderline>
-          <CollectionTitles title={title} />
-        </Link>
-      </CollectionBox>
-    )
-  })
+      return (
+        <CollectionBox imageUrl={imageUrl} key={index}>
+          <Link href={href} noUnderline>
+            <CollectionTitles title={title} />
+          </Link>
+        </CollectionBox>
+      )
+    }
+  )
 
   return (
     <>
-      <Sans size="2" weight="medium">Artist Collections</Sans>
-      <Flex alignItems="flex-start" flexWrap="wrap">{items}</Flex>
+      <Sans size="3" weight="medium" color="black100" mb={`${space(2)}px`}>
+        Artist Collections
+      </Sans>
+      <Flex alignItems="flex-start" flexWrap="wrap">
+        {items}
+      </Flex>
     </>
   )
 }

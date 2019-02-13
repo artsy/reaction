@@ -1,4 +1,4 @@
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, space } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -19,15 +19,19 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
   ).map(x => x.node)
 
   const relatedArtworks = artworks.map((artwork, i) => (
-    <PreviewGridItem artwork={artwork} key={i} />
+    <Box width="50%">
+      <PreviewGridItem artwork={artwork} key={i} />
+    </Box>
   ))
   return (
     <Box>
-      <Sans size="2" weight="medium">
+      <Sans size="3" weight="medium" color="black100" mb={`${space(2)}px`}>
         Related Artworks
       </Sans>
 
-      <Flex flexDirection="column">{relatedArtworks}</Flex>
+      <Flex alignItems="flex-start" flexWrap="wrap">
+        {relatedArtworks}
+      </Flex>
     </Box>
   )
 }

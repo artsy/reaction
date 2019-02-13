@@ -21,23 +21,27 @@ storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
 
 storiesOf("Components/Search/Previews/Artist", module)
   .add("An artist with collections", () => (
-    <Box width="500px">
+    <Box width="450px" p="20px">
       <ContextProvider>
         <SearchPreview entityID="robert-indiana" entityType="Artist" />
       </ContextProvider>
     </Box>
   ))
   .add("An artist without collections", () => (
-    <ContextProvider>
-      <SearchPreview entityID="douglas-gordon" entityType="Artist" />
-    </ContextProvider>
+    <Box width="450px" p="20px">
+      <ContextProvider>
+        <SearchPreview entityID="douglas-gordon" entityType="Artist" />
+      </ContextProvider>
+    </Box>
   ))
 
 storiesOf("Components/Search/Previews/MerchandisableArtworks", module).add(
   "No query",
   () => (
-    <ContextProvider>
-      <SearchPreview entityID="" entityType="" />
-    </ContextProvider>
+    <Box width="450px" p="20px">
+      <ContextProvider>
+        <SearchPreview entityID="" entityType="" />
+      </ContextProvider>
+    </Box>
   )
 )

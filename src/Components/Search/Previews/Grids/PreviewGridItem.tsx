@@ -1,7 +1,7 @@
 import React from "react"
 import { get } from "Utils/get"
 
-import { Box, Flex, Image, Link, Serif } from "@artsy/palette"
+import { Box, Flex, Image, Link, Serif, space } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { PreviewGridItem_artwork } from "__generated__/PreviewGridItem_artwork.graphql"
@@ -15,9 +15,9 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
 }) => {
   const imageUrl = get(artwork, x => x.image.cropped.url, "")
   return (
-    <Flex m={2}>
+    <Flex mr={`${space(2)}px`} mb={`${space(2)}px`}>
       <Link href={artwork.href} noUnderline>
-        <Image mr={2} src={imageUrl} />
+        <Image mr={`${space(2)}px`} src={imageUrl} />
       </Link>
       <Link href={artwork.href} noUnderline>
         <Box>
