@@ -1,12 +1,18 @@
 import Events from "../Utils/Events"
 import { addDecorator, configure } from "@storybook/react"
 import { withOptions } from "@storybook/addon-options"
+import { createMediaStyle } from "Utils/Responsive"
 
 const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
   req.keys().forEach(filename => req(filename))
 }
+
+// Add RRM styles to Storybooks head
+const rrmStyle = document.createElement("style")
+rrmStyle.innerHTML = createMediaStyle()
+document.head.appendChild(rrmStyle)
 
 addDecorator(
   withOptions({
