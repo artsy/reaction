@@ -11,7 +11,6 @@ import { data as sd } from "sharify"
 import { Provider as StateProvider } from "unstated"
 import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
-import { createMediaStyle } from "Utils/Responsive"
 
 import {
   MatchingMediaQueries,
@@ -29,9 +28,6 @@ export interface BootProps {
   headTags?: JSX.Element[]
 }
 
-// Build global responsive styles
-const reactResponsiveStyles = createMediaStyle()
-
 // FIXME: When we update to latest @types/styled-components `suppressMultiMountWarning`
 // issue will be fixed
 const { GlobalStyles } = injectGlobalStyles<{
@@ -44,8 +40,6 @@ const { GlobalStyles } = injectGlobalStyles<{
     font-size: inherit;
     margin: 0;
   }
-
-  ${reactResponsiveStyles}
 `)
 
 @track(null, {
