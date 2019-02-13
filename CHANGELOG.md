@@ -1,3 +1,19 @@
+# v13.0.0 (Tue Feb 12 2019)
+
+#### 💥  Breaking Change
+
+- [Lib] Upgrade styled-components@4.0.3 [#1870](https://github.com/artsy/reaction/pull/1870) ([@damassi](https://github.com/damassi))
+
+---
+
+# v12.1.34 (Tue Feb 12 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [AuctionTimer] Make sure to display the minute portion in label [#2011](https://github.com/artsy/reaction/pull/2011) ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v12.1.33 (Tue Feb 12 2019)
 
 #### 🐛  Bug Fix

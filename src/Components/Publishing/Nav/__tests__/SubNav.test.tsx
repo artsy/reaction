@@ -1,9 +1,9 @@
-import Icon from "Components/Icon"
 import { IconHamburger } from "Components/Publishing/Icon/IconHamburger"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import Icon from "../../../Icon"
 import { SubNav } from "../SubNav"
 
 describe("SubNav", () => {

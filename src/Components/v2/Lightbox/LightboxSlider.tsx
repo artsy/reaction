@@ -159,7 +159,7 @@ export const Slider: SFC<SliderProps> = props => (
         max={props.max.toString()}
         step={props.step.toString()}
         onChange={props.onChange}
-        innerRef={element => element && (element.value = props.value)}
+        ref={element => element && (element.value = props.value)}
       />
       <ZoomInButton onClick={props.onZoomInClicked} />
     </Flex>

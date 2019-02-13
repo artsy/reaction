@@ -207,11 +207,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
     }
 
     render() {
-      // Under the hood <Link> desugars to an `<a>` tag. Ensure only whitelisted
-      // props pass through to avoid React warnings.
-      //
-      // FIXME: Not really clear if these indeed should all be passed through
-      //        and not all of them are in the public props either.
+      // Only pass found-router specific props across
       const whitelistedProps: any = pick(
         ["Component", "activeClassName", "exact", "replace", "to"],
         this.props

@@ -19,12 +19,12 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   text-decoration: none;
 }
 
-.c0 .ArtworkCaption__ArtistNames-t0bcvj-0 {
+.c0 .c2 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.c0 .ArtworkCaption__ArtistNames-t0bcvj-0::after {
+.c0 .c2::after {
   content: ", ";
 }
 
@@ -42,7 +42,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<span><span class=\\"ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
+          "__html": "<span><span class=\\"c2 ciyMlo\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
         }
       }
     />
@@ -203,12 +203,12 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   font-style: italic;
 }
 
-.eKMyBw .c2 {
+.c4 .c2 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.eKMyBw .c2::after {
+.c4 .c2::after {
   content: ", ";
 }
 

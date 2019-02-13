@@ -1,4 +1,3 @@
-import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
 import { ModalHeader } from "../ModalHeader"
@@ -18,12 +17,12 @@ describe("ModalHeader", () => {
   it("Renders title if present", () => {
     const component = getWrapper(props)
     expect(component.html()).toMatch("Log In")
-    expect(component.find(Icon)).toHaveLength(0)
+    expect(component.find("Icon")).toHaveLength(0)
   })
 
   it("Renders logo if present", () => {
     props.hasLogo = true
     const component = getWrapper(props)
-    expect(component.find(Icon)).toHaveLength(1)
+    expect(component.find("Icon")).toHaveLength(1)
   })
 })

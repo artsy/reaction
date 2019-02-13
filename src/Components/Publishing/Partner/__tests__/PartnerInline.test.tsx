@@ -1,5 +1,4 @@
 import { mockTracking } from "Artsy/Analytics"
-import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -15,7 +14,7 @@ const Props = {
 
 it("renders artsy logo", () => {
   const wrapper = mount(<PartnerInline {...Props} />)
-  const icon = wrapper.find(Icon)
+  const icon = wrapper.find("Icon")
   expect(icon.exists()).toBe(true)
 })
 

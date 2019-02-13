@@ -1,5 +1,5 @@
-import { storiesOf } from "@storybook/react"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"

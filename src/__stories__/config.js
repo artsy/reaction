@@ -1,18 +1,12 @@
 import Events from "../Utils/Events"
 import { addDecorator, configure } from "@storybook/react"
 import { withOptions } from "@storybook/addon-options"
-import { injectGlobal } from "styled-components"
-import { createMediaStyle } from "../Utils/Responsive"
 
 const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
   req.keys().forEach(filename => req(filename))
 }
-
-injectGlobal`
-  ${createMediaStyle()}
-`
 
 addDecorator(
   withOptions({
