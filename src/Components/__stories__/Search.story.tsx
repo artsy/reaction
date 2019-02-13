@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
@@ -20,9 +21,11 @@ storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
 
 storiesOf("Components/Search/Previews/Artist", module)
   .add("An artist with collections", () => (
-    <ContextProvider>
-      <SearchPreview entityID="kaws" entityType="Artist" />
-    </ContextProvider>
+    <Box width="500px">
+      <ContextProvider>
+        <SearchPreview entityID="robert-indiana" entityType="Artist" />
+      </ContextProvider>
+    </Box>
   ))
   .add("An artist without collections", () => (
     <ContextProvider>
