@@ -16,13 +16,17 @@ import {
 } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+const logger = createLogger("Components/Search/SearchBar")
 
 const AutosuggestContainer = styled(Box)`
   div[role="combobox"] {
     div[role="listbox"] {
       ul {
         list-style-type: none;
+        padding: 0;
       }
     }
   }
@@ -78,7 +82,7 @@ export class SearchBar extends Component<Props, State> {
       },
       null,
       error => {
-        if (error) console.error(error)
+        if (error) logger.error(error)
       }
     )
   }
@@ -143,7 +147,9 @@ export class SearchBar extends Component<Props, State> {
         <Flex flexDirection={["column", "row"]}>
           <Box width={["100%", "50%"]}>
             <Flex flexDirection="column">
-              {firstItem}
+              <Box mt={3} pl={3}>
+                {firstItem}
+              </Box>
               {children}
             </Flex>
           </Box>
@@ -155,11 +161,15 @@ export class SearchBar extends Component<Props, State> {
 
   renderSuggestion = (
     { node: { displayLabel, searchableType } },
-    { isHighlighted }
+    { query, isHighlighted }
   ) => {
     return (
-      <Box style={{ backgroundColor: isHighlighted ? "#ddd" : "#fff" }}>
-        <SuggestionItem display={displayLabel} label={searchableType} />
+      <Box bg={isHighlighted ? "#ddd" : "#fff"}>
+        <SuggestionItem
+          query={query}
+          display={displayLabel}
+          label={searchableType}
+        />
       </Box>
     )
   }
@@ -170,7 +180,7 @@ export class SearchBar extends Component<Props, State> {
     </Box>
   )
 
-  renderAutosuggestComponent(xs: boolean) {
+  renderAutosuggestComponent({ xs }) {
     const { input } = this.state
     const { viewer } = this.props
     const edges = get(viewer, v => v.search.edges, [])
@@ -205,8 +215,10 @@ export class SearchBar extends Component<Props, State> {
   render() {
     return (
       <>
-        <Media at="xs">{this.renderAutosuggestComponent(true)}</Media>
-        <Media greaterThan="xs">{this.renderAutosuggestComponent(false)}</Media>
+        <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
+        <Media greaterThan="xs">
+          {this.renderAutosuggestComponent({ xs: false })}
+        </Media>
       </>
     )
   }
