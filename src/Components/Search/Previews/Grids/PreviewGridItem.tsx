@@ -9,7 +9,10 @@ import { PreviewGridItem_artwork } from "__generated__/PreviewGridItem_artwork.g
 interface PreviewGridItemProps {
   artwork: PreviewGridItem_artwork
 }
-const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({ artwork }) => {
+
+export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
+  artwork,
+}) => {
   const imageUrl = get(artwork, x => x.image.cropped.url, "")
   return (
     <Flex m={2}>
