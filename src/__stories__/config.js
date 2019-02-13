@@ -10,12 +10,9 @@ function loadStories() {
 }
 
 // Add RRM styles to Storybooks head
-const reactResponsiveStyles = createMediaStyle()
-document.head.innerHTML += `
-  <style>
-    ${reactResponsiveStyles}
-  </style>
-`
+const rrmStyle = document.createElement("style")
+rrmStyle.innerHTML = createMediaStyle()
+document.head.appendChild(rrmStyle)
 
 addDecorator(
   withOptions({
