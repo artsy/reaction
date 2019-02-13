@@ -103,4 +103,26 @@ describe(ArtistSearchPreviewFragmentContainer, () => {
     expect(wrapper.find(RelatedArtworksPreview).length).toEqual(0)
     expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(1)
   })
+
+  it("includes links to collections", async () => {
+    const viewer = {
+      artist: {
+        id: "andy-warhol",
+        marketingCollections: [
+          { title: 'Andy Warhol: Prettiest Flowers', slug: 'andy-warhol-prettiest-flowers', headerImage: 'http://path/to/image.jpg' },
+          { title: 'Andy Warhol: Soup Cans Yo!', slug: 'andy-warhol-soup-cans-yo', headerImage: 'http://path/to/another-image.jpg' }
+        ],
+      },
+      filter_artworks: {
+        artworks_connection: {
+          edges: []
+        }
+      }
+    }
+
+    const component = await getWrapper(viewer)
+    const hrefs = component.find('a').map(node => node.props().href)
+    const expected = viewer.artist.marketingCollections.map(collection => `collection/${collection.slug}`)
+    expect(hrefs).toEqual(expected)
+  })
 })

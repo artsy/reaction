@@ -12,8 +12,9 @@ export const MarketingCollectionsPreview: React.SFC<
   return (
     <>
       <h1>Collections</h1>
-      {marketingCollections.map(({ title }, index) => {
-        return <div key={index}>{title}</div>
+      {marketingCollections.map(({ title, slug }, index) => {
+        const href = `collection/${slug}`
+        return <div key={index}><a href={href}>{title}</a></div>
       })}
     </>
   )
