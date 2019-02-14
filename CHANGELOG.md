@@ -1,3 +1,58 @@
+# v13.0.6 (Thu Feb 14 2019)
+
+
+
+---
+
+# v13.0.5 (Thu Feb 14 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.4 [#2023](https://github.com/artsy/reaction/pull/2023) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/palette to 3.0.3 [#2022](https://github.com/artsy/reaction/pull/2022) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v13.0.4 (Thu Feb 14 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.2 [#2019](https://github.com/artsy/reaction/pull/2019) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v13.0.3 (Thu Feb 14 2019)
+
+
+
+---
+
+# v13.0.2 (Wed Feb 13 2019)
+
+
+
+---
+
+# v13.0.1 (Wed Feb 13 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured => Highlight matching parts of query [#2012](https://github.com/artsy/reaction/pull/2012) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.1 [#2014](https://github.com/artsy/reaction/pull/2014) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v13.0.0 (Tue Feb 12 2019)
+
+#### 💥  Breaking Change
+
+- [Lib] Upgrade styled-components@4.0.3 [#1870](https://github.com/artsy/reaction/pull/1870) ([@damassi](https://github.com/damassi))
+
+---
+
 # v12.1.34 (Tue Feb 12 2019)
 
 #### 🐛  Bug Fix

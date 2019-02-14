@@ -1,7 +1,7 @@
 import React, { Children, cloneElement } from "react"
 import Transition, { TransitionProps } from "react-transition-group/Transition"
 import styled from "styled-components"
-import { injectGlobal } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 import CircleIcon from "../../CircleIcon"
 import { OverlayTrigger } from "../../OverlayTrigger"
@@ -15,12 +15,12 @@ const ENTERING = "entering"
 
 const FADE_DURATION = 200
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle<{ suppressMultiMountWarning: boolean }>`
   .fade {
     opacity: 0;
     transition: opacity ${FADE_DURATION}ms linear;
   }
-  
+
   .in {
     opacity: 1;
   }
@@ -63,6 +63,7 @@ export class WithAnimationExample extends React.Component {
 
     return (
       <Container>
+        <GlobalStyle suppressMultiMountWarning />
         <OverlayTrigger
           show={show}
           placement="bottom"

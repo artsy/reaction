@@ -92,8 +92,8 @@ describe("FormSwitcher", () => {
       })
 
       wrapper
-        .find(SmallTextLink)
-        .at(2)
+        .find("SmallTextLink")
+        .at(1)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")

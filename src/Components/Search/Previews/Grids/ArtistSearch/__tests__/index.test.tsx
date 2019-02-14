@@ -14,7 +14,7 @@ const getWrapper = (viewer, breakpoint = "xl") => {
   return renderRelayTree({
     Component: ArtistSearchPreviewFragmentContainer,
     query: graphql`
-      query ArtistSearchPreviewQuery($entityID: String!) {
+      query TestsQuery($entityID: String!) {
         viewer {
           ...ArtistSearchPreview_viewer @arguments(entityID: $entityID)
         }

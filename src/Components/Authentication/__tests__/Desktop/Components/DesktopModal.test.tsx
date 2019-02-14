@@ -1,5 +1,4 @@
 import { DesktopModal } from "Components/Authentication/Desktop/Components/DesktopModal"
-import Icon from "Components/Icon"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -32,7 +31,7 @@ describe("DesktopModal", () => {
       const tracking = { trackEvent: jest.fn() }
       const wrapper = getWrapper({ tracking })
       wrapper
-        .find(Icon)
+        .find("Icon")
         .at(0)
         .simulate("click")
 

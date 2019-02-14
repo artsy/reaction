@@ -1,32 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video About matches the snapshot 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-}
-
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding-top: 80px;
-  width: 100%;
-}
-
-.c3 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
@@ -34,27 +9,27 @@ exports[`Video About matches the snapshot 1`] = `
   padding-bottom: 10px;
 }
 
-.c9 {
+.c8 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
-.c6 {
+.c5 {
   margin-top: 40px;
 }
 
-.c14 {
+.c13 {
   width: 100%;
 }
 
-.c8 {
+.c7 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c11 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,36 +43,36 @@ exports[`Video About matches the snapshot 1`] = `
   margin-top: 5px;
 }
 
-.c13 {
+.c12 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c13:hover {
+.c12:hover {
   opacity: 0.6;
 }
 
-.c13:first-child {
+.c12:first-child {
   padding-left: 0;
 }
 
-.c12 {
+.c11 {
   margin: 5px 10px 5px 0;
 }
 
-.c7 {
+.c6 {
   color: black;
 }
 
-.c5 {
+.c4 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c5 a {
+.c4 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -107,22 +82,22 @@ exports[`Video About matches the snapshot 1`] = `
   background-position: bottom;
 }
 
-.c5 a:hover {
+.c4 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c5 div[class*='ToolTip'] a {
+.c4 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c5 p,
-.c5 ul,
-.c5 ol,
-.c5 .paragraph,
-.c5 div[data-block=true] .public-DraftStyleDefault-block {
+.c4 p,
+.c4 ul,
+.c4 ol,
+.c4 .paragraph,
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -133,32 +108,32 @@ exports[`Video About matches the snapshot 1`] = `
   font-style: inherit;
 }
 
-.c5 p:first-child,
-.c5 .paragraph:first-child,
-.c5 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c4 p:first-child,
+.c4 .paragraph:first-child,
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c5 p:last-child,
-.c5 .paragraph:last-child,
-.c5 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c4 p:last-child,
+.c4 .paragraph:last-child,
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c5 ul,
-.c5 ol {
+.c4 ul,
+.c4 ol {
   padding-left: 1em;
 }
 
-.c5 ul {
+.c4 ul {
   list-style: disc;
 }
 
-.c5 ol {
+.c4 ol {
   list-style: decimal;
 }
 
-.c5 li {
+.c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -167,7 +142,7 @@ exports[`Video About matches the snapshot 1`] = `
   padding-bottom: .5em;
 }
 
-.c5 h1 {
+.c4 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -180,7 +155,7 @@ exports[`Video About matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c5 h1::before {
+.c4 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -191,7 +166,7 @@ exports[`Video About matches the snapshot 1`] = `
   right: calc(50% - 4px);
 }
 
-.c5 h2 {
+.c4 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -200,15 +175,15 @@ exports[`Video About matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c5 h2 a {
+.c4 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c5 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c4 h2 .c14 {
   background-position: bottom !important;
 }
 
-.c5 h3 {
+.c4 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -218,7 +193,7 @@ exports[`Video About matches the snapshot 1`] = `
   margin: 0;
 }
 
-.c5 h3 strong {
+.c4 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -226,11 +201,11 @@ exports[`Video About matches the snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c5 h3 a {
+.c4 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c5 blockquote {
+.c4 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -243,11 +218,11 @@ exports[`Video About matches the snapshot 1`] = `
   word-break: break-word;
 }
 
-.c5 .preventLineBreak {
+.c4 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c5 .content-end {
+.c4 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -258,14 +233,14 @@ exports[`Video About matches the snapshot 1`] = `
   margin-bottom: 1px;
 }
 
-.c5 .artist-follow {
+.c4 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c5 .artist-follow::before {
+.c4 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -273,7 +248,7 @@ exports[`Video About matches the snapshot 1`] = `
   font-size: 32px;
 }
 
-.c5 .artist-follow::after {
+.c4 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -282,8 +257,153 @@ exports[`Video About matches the snapshot 1`] = `
   text-transform: none;
 }
 
-.c1 .c4 p {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 80px;
+  width: 100%;
+}
+
+.c1 .c3 p {
   padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+@media screen and (min-width:40em) {
+  .c13 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c13 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c13 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media (max-width:768px) {
+  .c6 .c9 {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c4 p,
+  .c4 ul,
+  .c4 ol,
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .c4 li {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .c4 h1 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c4 h2 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c4 h3 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c4 h3 strong {
+    font-family: Unica77LLWebMedium,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c4 blockquote {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .c4 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    padding-top: 80px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
 }
 
 @media screen and (min-width:40em) {
@@ -310,131 +430,11 @@ exports[`Video About matches the snapshot 1`] = `
   }
 }
 
-@media screen and (min-width:40em) {
-  .c2 {
-    padding-top: 80px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    padding-top: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    padding-top: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c14 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media (max-width:768px) {
-  .c7 .c10 {
-    margin-top: 0px;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 p,
-  .c5 ul,
-  .c5 ol,
-  .c5 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .c5 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .c5 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c5 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c5 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c5 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c5 blockquote {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 34px;
-    line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-  }
-
-  .c5 .content-start {
-    font-size: 55px;
-  }
-}
-
 <div
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
     width={
       Array [
         1,
@@ -445,7 +445,7 @@ exports[`Video About matches the snapshot 1`] = `
     }
   >
     <div
-      className="c3"
+      className="c2"
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -453,7 +453,7 @@ exports[`Video About matches the snapshot 1`] = `
       Credits
     </div>
     <div
-      className="article__text-section c4 c5"
+      className="article__text-section c3 c4"
       color="black"
     >
       <div
@@ -468,16 +468,16 @@ exports[`Video About matches the snapshot 1`] = `
       className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c6"
+        className="c5"
       >
         <div
-          className="c7"
+          className="c6"
         >
           <div
-            className="c8"
+            className="c7"
           >
             <div
-              className="c9"
+              className="c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -490,10 +490,10 @@ exports[`Video About matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="c10 c11"
+            className="c9 c10"
           >
             <div
-              className="c12 c9"
+              className="c11 c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -505,7 +505,7 @@ exports[`Video About matches the snapshot 1`] = `
               Share
             </div>
             <a
-              className="c13"
+              className="c12"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -531,7 +531,7 @@ exports[`Video About matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -557,7 +557,7 @@ exports[`Video About matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -588,7 +588,7 @@ exports[`Video About matches the snapshot 1`] = `
     </div>
   </div>
   <div
-    className="c14"
+    className="c13"
     width={
       Array [
         1,
@@ -599,7 +599,7 @@ exports[`Video About matches the snapshot 1`] = `
     }
   >
     <div
-      className="c3"
+      className="c2"
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -607,7 +607,7 @@ exports[`Video About matches the snapshot 1`] = `
       About the Film
     </div>
     <div
-      className="article__text-section c4 c5"
+      className="article__text-section c3 c4"
       color="black"
     >
       <div
@@ -622,16 +622,16 @@ exports[`Video About matches the snapshot 1`] = `
       className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c6"
+        className="c5"
       >
         <div
-          className="c7"
+          className="c6"
         >
           <div
-            className="c8"
+            className="c7"
           >
             <div
-              className="c9"
+              className="c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -644,10 +644,10 @@ exports[`Video About matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="c10 c11"
+            className="c9 c10"
           >
             <div
-              className="c12 c9"
+              className="c11 c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -659,7 +659,7 @@ exports[`Video About matches the snapshot 1`] = `
               Share
             </div>
             <a
-              className="c13"
+              className="c12"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -685,7 +685,7 @@ exports[`Video About matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -711,7 +711,7 @@ exports[`Video About matches the snapshot 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -745,32 +745,7 @@ exports[`Video About matches the snapshot 1`] = `
 `;
 
 exports[`Video About matches the snapshot with editable props 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
-}
-
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding-top: 80px;
-  width: 100%;
-}
-
-.c3 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 28px;
   line-height: 36px;
@@ -778,27 +753,27 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding-bottom: 10px;
 }
 
-.c9 {
+.c8 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
-.c6 {
+.c5 {
   margin-top: 40px;
 }
 
-.c14 {
+.c13 {
   width: 100%;
 }
 
-.c8 {
+.c7 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c11 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -812,36 +787,36 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   margin-top: 5px;
 }
 
-.c13 {
+.c12 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c13:hover {
+.c12:hover {
   opacity: 0.6;
 }
 
-.c13:first-child {
+.c12:first-child {
   padding-left: 0;
 }
 
-.c12 {
+.c11 {
   margin: 5px 10px 5px 0;
 }
 
-.c7 {
+.c6 {
   color: black;
 }
 
-.c5 {
+.c4 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c5 a {
+.c4 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -851,22 +826,22 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   background-position: bottom;
 }
 
-.c5 a:hover {
+.c4 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c5 div[class*='ToolTip'] a {
+.c4 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c5 p,
-.c5 ul,
-.c5 ol,
-.c5 .paragraph,
-.c5 div[data-block=true] .public-DraftStyleDefault-block {
+.c4 p,
+.c4 ul,
+.c4 ol,
+.c4 .paragraph,
+.c4 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -877,32 +852,32 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   font-style: inherit;
 }
 
-.c5 p:first-child,
-.c5 .paragraph:first-child,
-.c5 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c4 p:first-child,
+.c4 .paragraph:first-child,
+.c4 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c5 p:last-child,
-.c5 .paragraph:last-child,
-.c5 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c4 p:last-child,
+.c4 .paragraph:last-child,
+.c4 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c5 ul,
-.c5 ol {
+.c4 ul,
+.c4 ol {
   padding-left: 1em;
 }
 
-.c5 ul {
+.c4 ul {
   list-style: disc;
 }
 
-.c5 ol {
+.c4 ol {
   list-style: decimal;
 }
 
-.c5 li {
+.c4 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -911,7 +886,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   padding-bottom: .5em;
 }
 
-.c5 h1 {
+.c4 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -924,7 +899,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   text-align: center;
 }
 
-.c5 h1::before {
+.c4 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -935,7 +910,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   right: calc(50% - 4px);
 }
 
-.c5 h2 {
+.c4 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -944,15 +919,15 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   margin: 0;
 }
 
-.c5 h2 a {
+.c4 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c5 h2 .LinkWithTooltip__PrimaryLink-s1omtxql-0 {
+.c4 h2 .c14 {
   background-position: bottom !important;
 }
 
-.c5 h3 {
+.c4 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -962,7 +937,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   margin: 0;
 }
 
-.c5 h3 strong {
+.c4 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -970,11 +945,11 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   line-height: 1.5em;
 }
 
-.c5 h3 a {
+.c4 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c5 blockquote {
+.c4 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -987,11 +962,11 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   word-break: break-word;
 }
 
-.c5 .preventLineBreak {
+.c4 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c5 .content-end {
+.c4 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1002,14 +977,14 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   margin-bottom: 1px;
 }
 
-.c5 .artist-follow {
+.c4 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c5 .artist-follow::before {
+.c4 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1017,7 +992,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   font-size: 32px;
 }
 
-.c5 .artist-follow::after {
+.c4 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1026,8 +1001,153 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   text-transform: none;
 }
 
-.c1 .c4 p {
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 80px;
+  width: 100%;
+}
+
+.c1 .c3 p {
   padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+@media screen and (min-width:40em) {
+  .c13 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c13 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c13 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media (max-width:768px) {
+  .c6 .c9 {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width:600px) {
+  .c4 p,
+  .c4 ul,
+  .c4 ol,
+  .c4 div[data-block=true] .public-DraftStyleDefault-block {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .c4 li {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 19px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .c4 h1 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 34px;
+    line-height: 1.1em;
+  }
+
+  .c4 h2 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 32px;
+    line-height: 1.1em;
+  }
+
+  .c4 h3 {
+    font-family: Unica77LLWebRegular,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .c4 h3 strong {
+    font-family: Unica77LLWebMedium,Arial,serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .c4 blockquote {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 34px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+  }
+
+  .c4 .content-start {
+    font-size: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    padding-top: 80px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
 }
 
 @media screen and (min-width:40em) {
@@ -1054,131 +1174,11 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   }
 }
 
-@media screen and (min-width:40em) {
-  .c2 {
-    padding-top: 80px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    padding-top: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    padding-top: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c14 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media (max-width:768px) {
-  .c7 .c10 {
-    margin-top: 0px;
-  }
-}
-
-@media (max-width:600px) {
-  .c5 p,
-  .c5 ul,
-  .c5 ol,
-  .c5 div[data-block=true] .public-DraftStyleDefault-block {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .c5 li {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 19px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .c5 h1 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 34px;
-    line-height: 1.1em;
-  }
-
-  .c5 h2 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 32px;
-    line-height: 1.1em;
-  }
-
-  .c5 h3 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-    line-height: 1.5em;
-  }
-
-  .c5 h3 strong {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    line-height: 1.1em;
-  }
-
-  .c5 blockquote {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 34px;
-    line-height: 1.1em;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-  }
-
-  .c5 .content-start {
-    font-size: 55px;
-  }
-}
-
 <div
   className="c0"
 >
   <div
-    className="c1 c2"
+    className="c1"
     width={
       Array [
         1,
@@ -1189,7 +1189,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     }
   >
     <div
-      className="c3"
+      className="c2"
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -1197,7 +1197,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       Credits
     </div>
     <div
-      className="article__text-section c4 c5"
+      className="article__text-section c3 c4"
       color="black"
     >
       <div>
@@ -1209,16 +1209,16 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c6"
+        className="c5"
       >
         <div
-          className="c7"
+          className="c6"
         >
           <div
-            className="c8"
+            className="c7"
           >
             <div
-              className="c9"
+              className="c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1231,10 +1231,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </div>
           </div>
           <div
-            className="c10 c11"
+            className="c9 c10"
           >
             <div
-              className="c12 c9"
+              className="c11 c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1246,7 +1246,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               Share
             </div>
             <a
-              className="c13"
+              className="c12"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -1272,7 +1272,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1298,7 +1298,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -1329,7 +1329,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     </div>
   </div>
   <div
-    className="c14"
+    className="c13"
     width={
       Array [
         1,
@@ -1340,7 +1340,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     }
   >
     <div
-      className="c3"
+      className="c2"
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -1348,7 +1348,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       About the Film
     </div>
     <div
-      className="article__text-section c4 c5"
+      className="article__text-section c3 c4"
       color="black"
     >
       <div>
@@ -1360,16 +1360,16 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c6"
+        className="c5"
       >
         <div
-          className="c7"
+          className="c6"
         >
           <div
-            className="c8"
+            className="c7"
           >
             <div
-              className="c9"
+              className="c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1382,10 +1382,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             </div>
           </div>
           <div
-            className="c10 c11"
+            className="c9 c10"
           >
             <div
-              className="c12 c9"
+              className="c11 c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1397,7 +1397,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               Share
             </div>
             <a
-              className="c13"
+              className="c12"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"
@@ -1423,7 +1423,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1449,7 +1449,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
               </svg>
             </a>
             <a
-              className="c13"
+              className="c12"
               href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
               onClick={[Function]}
               target="_blank"

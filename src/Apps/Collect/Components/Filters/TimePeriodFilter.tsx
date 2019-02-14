@@ -32,9 +32,8 @@ export const TimePeriodFilter: React.SFC<{
                 }
               }}
               key={index}
-            >
-              {timePeriod}
-            </Radio>
+              label={timePeriod}
+            />
           )
         })
     }

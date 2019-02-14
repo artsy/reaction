@@ -264,7 +264,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
   align-items: flex-start;
 }
 
-.c0 .Author__StyledAuthor-sbiape-0 {
+.c0 .c3 {
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -570,7 +570,7 @@ exports[`News Byline renders properly when truncated 1`] = `
   align-items: flex-start;
 }
 
-.c0 .Author__StyledAuthor-sbiape-0 {
+.c0 .c3 {
   margin-top: 0;
   margin-bottom: 5px;
 }

@@ -10,7 +10,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   block?: boolean
   description?: string
   error?: string
-  innerRef?: React.RefObject<HTMLInputElement>
+  ref?: React.RefObject<any>
   title?: string
 }
 
@@ -23,7 +23,6 @@ export const Input: SFC<InputProps> = ({
   error,
   title,
   description,
-  ref,
   ...rest
 }) => {
   return (

@@ -28,7 +28,11 @@ export interface BootProps {
   headTags?: JSX.Element[]
 }
 
-const { GlobalStyles } = injectGlobalStyles(`
+// FIXME: When we update to latest @types/styled-components `suppressMultiMountWarning`
+// issue will be fixed
+const { GlobalStyles } = injectGlobalStyles<{
+  suppressMultiMountWarning: boolean
+}>(`
   h1 {
     font-style: inherit;
     font-family: inherit;
@@ -38,7 +42,6 @@ const { GlobalStyles } = injectGlobalStyles(`
   }
 `)
 
-// TODO: Do we want to let Force explicitly inject the analytics code?
 @track(null, {
   dispatch: data => Events.postEvent(data),
 })
@@ -71,12 +74,11 @@ export class Boot extends React.Component<BootProps> {
                 >
                   <Theme>
                     <Grid fluid>
-                      <GlobalStyles>
-                        {children}
-                        {process.env.NODE_ENV === "development" && (
-                          <BreakpointVisualizer />
-                        )}
-                      </GlobalStyles>
+                      <GlobalStyles suppressMultiMountWarning />
+                      {children}
+                      {process.env.NODE_ENV === "development" && (
+                        <BreakpointVisualizer />
+                      )}
                     </Grid>
                   </Theme>
                 </ResponsiveProvider>

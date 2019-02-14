@@ -30,9 +30,8 @@ export const MediumFilter: React.SFC<{
                 }
               }}
               key={index}
-            >
-              {medium.name}
-            </Radio>
+              label={medium.name}
+            />
           )
         })
       }

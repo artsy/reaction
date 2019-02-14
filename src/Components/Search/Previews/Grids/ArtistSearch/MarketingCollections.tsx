@@ -28,7 +28,7 @@ const CollectionBox = styled(Box)<{ imageUrl: string }>`
   }
 `
 
-const CollectionTitle = styled(Serif).attrs({ display: "inline", size: "2" })`
+const CollectionTitle = styled(Serif).attrs({ display: "inline" })`
   color: ${color("white100")};
 `
 
@@ -42,11 +42,13 @@ export const CollectionTitles = ({ title }: { title: string }) => {
     <Flex justifyContent="flex-end" flexDirection="column" height="80px">
       {showHeadline && (
         <Box ml={`${space(1)}px`} mb={`-${space(0.5)}px`}>
-          <CollectionTitle weight="semibold">{headline}:</CollectionTitle>
+          <CollectionTitle weight="semibold" size="2">
+            {headline}:
+          </CollectionTitle>
         </Box>
       )}
       <Box ml={`${space(1)}px`} mb={`${space(1)}px`}>
-        <CollectionTitle>{subtitle}</CollectionTitle>
+        <CollectionTitle size="2">{subtitle}</CollectionTitle>
       </Box>
     </Flex>
   )

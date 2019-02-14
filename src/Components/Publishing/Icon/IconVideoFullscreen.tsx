@@ -40,7 +40,11 @@ Icon.defaultProps = {
   color: "black",
 }
 
-export const IconVideoFullscreen = styled(Icon)`
+export const IconVideoFullscreen = styled(Icon).attrs<{
+  suppressClassNameWarning?: boolean
+}>({
+  suppressClassNameWarning: true,
+})`
   width: 28px;
   height: 28px;
 `

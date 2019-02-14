@@ -23,7 +23,11 @@ Icon.defaultProps = {
   color: "black",
 }
 
-export const IconVideoUnmute = styled(Icon)`
+export const IconVideoUnmute = styled(Icon).attrs<{
+  suppressClassNameWarning?: boolean
+}>({
+  suppressClassNameWarning: true,
+})`
   width: 32px;
   height: 32px;
 `

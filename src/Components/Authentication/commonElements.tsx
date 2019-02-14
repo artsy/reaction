@@ -23,6 +23,8 @@ export const SmallTextLink = styled.a`
   ${unica("s12")};
 `
 
+SmallTextLink.displayName = "SmallTextLink"
+
 export const SmallText = styled.span`
   margin: 0;
   color: ${color("black60")};

@@ -82,7 +82,10 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     const width = 400
     const height = Math.floor(width / this.props.artwork.image.aspect_ratio)
     const type = this.props.artwork.image.aspect_ratio ? "fit" : "fill" // Either scale or crop, based on if an aspect ratio is available.
-    const url = `${sd.GEMINI_CLOUDFRONT_URL}/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(imageURL)}` // prettier-ignore
+    const geminiUrl =
+      sd.GEMINI_CLOUDFRONT_URL || process.env.GEMINI_CLOUDFRONT_URL // fallback, useful if we're yarn linking
+
+    const url = `${geminiUrl}/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(imageURL)}` // prettier-ignore
     return url
   }
 

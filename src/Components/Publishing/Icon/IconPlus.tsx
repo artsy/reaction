@@ -33,7 +33,11 @@ const Icon: React.SFC<Props> = props => (
   </svg>
 )
 
-export const IconPlus = styled(Icon)`
+export const IconPlus = styled(Icon).attrs<{
+  suppressClassNameWarning?: boolean
+}>({
+  suppressClassNameWarning: true,
+})`
   width: 15px;
   height: 15px;
   ${pMedia.md`
