@@ -17,6 +17,15 @@ const CollectionBox = styled(Box)<{ imageUrl: string }>`
   height: 80px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${p => p.imageUrl}) center;
+
+  &:hover {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url(${p => p.imageUrl}) center;
+  }
 `
 
 const CollectionTitle = styled(Serif).attrs({ display: "inline", size: "2" })`
