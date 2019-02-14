@@ -41,7 +41,7 @@ export class AuctionTimer extends React.Component<Props> {
   }
 
   labelWithTimeRemaining() {
-    const display = moment(this.endDate).format("MMM D, h:ma")
+    const display = moment(this.endDate).format("MMM D, h:mma")
     if (this.liveStartAt) {
       return `Live ${display}`
     } else {
