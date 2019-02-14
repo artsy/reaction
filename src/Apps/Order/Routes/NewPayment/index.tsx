@@ -206,16 +206,18 @@ export class NewPaymentRoute extends Component<
                 style={isCommittingMutation ? { pointerEvents: "none" } : {}}
               >
                 {order.mode === "OFFER" && (
-                  <Flex>
-                    <CountdownTimer
-                      action="Respond"
-                      note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
-                      countdownStart={order.lastOffer.createdAt}
-                      countdownEnd={order.stateExpiresAt}
-                    />
-                  </Flex>
+                  <>
+                    <Flex>
+                      <CountdownTimer
+                        action="Respond"
+                        note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
+                        countdownStart={order.lastOffer.createdAt}
+                        countdownEnd={order.stateExpiresAt}
+                      />
+                    </Flex>
+                    <Spacer mb={[2, 3]} />
+                  </>
                 )}
-                <Spacer mb={[2, 3]} />
                 <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
                     <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
