@@ -23,7 +23,7 @@ const CollectionTitle = styled(Serif).attrs({ display: "inline", size: "2" })`
   color: ${color("white100")};
 `
 
-export const CollectionTitles = ({ title }) => {
+export const CollectionTitles = ({ title }: { title: string }) => {
   const [first, ...rest] = title.split(": ")
   const showHeadline = rest.length !== 0
   const headline = showHeadline && first

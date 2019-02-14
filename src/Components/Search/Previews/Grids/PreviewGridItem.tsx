@@ -9,6 +9,7 @@ import styled from "styled-components"
 
 interface PreviewGridItemProps {
   artwork: PreviewGridItem_artwork
+  emphasizeArtist?: boolean
 }
 
 const Title = styled(Serif).attrs({ size: "2", italic: true })`
@@ -20,6 +21,7 @@ const Title = styled(Serif).attrs({ size: "2", italic: true })`
 
 export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
   artwork,
+  emphasizeArtist,
 }) => {
   const imageUrl = get(artwork, x => x.image.cropped.url, "")
   return (
@@ -32,7 +34,9 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
           <Title>
             {artwork.title}, {artwork.date}
           </Title>
-          <Serif size="2">{artwork.artist_names}</Serif>
+          <Serif size="2" weight={emphasizeArtist ? "semibold" : "regular"}>
+            {artwork.artist_names}
+          </Serif>
         </Box>
       </Link>
     </Flex>
