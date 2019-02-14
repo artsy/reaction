@@ -35,9 +35,8 @@ export const MediumFilter: React.SFC = () => {
                             }
                           }}
                           key={index}
-                        >
-                          {category}
-                        </Radio>
+                          label={category}
+                        />
                       )
                     }
                   )}

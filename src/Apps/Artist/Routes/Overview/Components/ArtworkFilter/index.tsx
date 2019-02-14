@@ -154,9 +154,8 @@ class Filter extends Component<Props> {
                 }
               }}
               key={index}
-            >
-              {count.name}
-            </Radio>
+              label={count.name}
+            />
           )
         })}
       </Flex>
