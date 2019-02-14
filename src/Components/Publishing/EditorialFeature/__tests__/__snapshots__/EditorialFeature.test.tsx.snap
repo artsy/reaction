@@ -45,7 +45,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__NavBorder-apetgy-1 iETHMg"
+        className="Eoy2018Artists__NavBorder-apetgy-1 dIxedR"
       />
     </div>
     <span
@@ -57,7 +57,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="sc-cSHVUG kVPJDT"
+    className="sc-htoDjs cTtNfc"
   >
     <div
       className="ArticleHeader-pbffir-3 bWhgVr"
@@ -119,17 +119,17 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </h1>
     </div>
     <div
-      className="Eoy2018Artists__ArticleContent-apetgy-2 fxMJWN"
+      className="Eoy2018Artists__ArticleContent-apetgy-2 dvYCoX"
     >
       <div
-        className="Eoy2018Artists__IntroSection-apetgy-6 bRvcVx"
+        className="Eoy2018Artists__IntroSection-apetgy-6 kRsgop"
       >
         <div
           className="Byline Byline__BylineContainer-sc-1iqb1j2-0 lnQvdw"
           color="black"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje fXsUty"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -149,7 +149,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
             className="Date__DateContainer-sc-1u78l60-0 kgTcUj"
           >
             <div
-              className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
+              className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -245,7 +245,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="sc-cSHVUG fQBYEu"
+          className="sc-htoDjs grMeOB"
         >
           <div
             className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -268,10 +268,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Kerry James Marshall</h1><h2>B. 1955, Birmingham, Alabama</h2><h2>Lives and works in Chicago</h2>",
@@ -279,11 +279,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fczKbn"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 iUksSz"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FoT1vtmuowAQU9SG2M-gmnw%252FKerry_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -299,7 +299,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -321,7 +321,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -357,7 +357,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -374,7 +374,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -416,7 +416,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -426,7 +426,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Kerry James Marshall, <i>Past Times, </i>1997. Courtesy of Sotheby’s. </p>",
@@ -447,7 +447,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -469,10 +469,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Adrian Piper</h1><h2>B. 1948, New York, New York </h2><h2>Lives and works in Berlin</h2>",
@@ -480,11 +480,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 gCmcoV"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 eucfpm"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FnlMY9VcLmWae2o0fwpvUWw%252FAdrian2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -500,7 +500,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -522,7 +522,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -558,7 +558,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -575,7 +575,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -617,7 +617,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -627,7 +627,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Adrian Piper, <i>Safe #1, </i>1990. Courtesy of the Museum of Modern Art.</p>",
@@ -648,7 +648,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -670,10 +670,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Maurizio Cattelan</h1><h2>B. 1960, Padua, Italy </h2><h2>Lives and works in New York</h2>",
@@ -681,11 +681,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 kjPmzt"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fcVpBa"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FBBJ7xDcd8JV2HoI_7iC2bw%252Fcattelan_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -701,7 +701,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -723,7 +723,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -759,7 +759,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -776,7 +776,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -818,7 +818,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -828,7 +828,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Maurizio Cattelan, <i>Untitled</i>, 2018, in “The Artist is Present” at the Yuz Museum, Shanghai. Courtesy of the artist.</p>",
@@ -849,7 +849,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -871,10 +871,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Judy Chicago</h1><h2>B. 1939, Chicago, Illinois</h2><h2>Lives and works in Belen, New Mexico</h2>",
@@ -882,11 +882,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 hKucaH"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 bhziDT"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5Ww0vmM4m54-yy8duulLGw%252FJudy_crop2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -902,7 +902,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -924,7 +924,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -960,7 +960,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -977,7 +977,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -1019,7 +1019,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -1029,7 +1029,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Judy Chicago, <i>Purple Atmosphere</i>, 1969. © Judy Chicago/Artists Rights Society (ARS), NY. Photo courtesy of Through the Flower Archives. </p>",
@@ -1050,7 +1050,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -1072,10 +1072,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Alex Da Corte</h1><h2>B. 1980, Camden, New Jersey</h2><h2>Lives and works in Philadelphia</h2>",
@@ -1083,11 +1083,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 dEmLHJ"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 cdtqSd"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F-zxcH5MJpHFsGT6YmmVjlA%252FAlex-Da-Corte-1.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -1103,7 +1103,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -1125,7 +1125,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -1161,7 +1161,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1178,7 +1178,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -1220,7 +1220,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -1230,7 +1230,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Alex Da Corte, <i>Rubber Pencil Devil</i>, 2018. Courtesy of Gió Marconi. Photo by Tom Little.</p>",
@@ -1251,7 +1251,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -1273,10 +1273,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Bruce Nauman</h1><h2>B. 1941, Fort Wayne, Indiana </h2><h2>Lives and works in Galisteo, New Mexico</h2>",
@@ -1284,11 +1284,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 eNWpES"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 dfQRJG"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FejQfY6k6HaEYq77uFwLSDg%252FBruce-crop-2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -1304,7 +1304,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -1326,7 +1326,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -1362,7 +1362,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1379,7 +1379,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -1421,7 +1421,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -1431,7 +1431,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Still from Bruce Nauman, <i>Green Horses</i>, 1988. © 2018 Bruce Nauman/Artists Rights Society (ARS), NY. Photo by Ron Amstutz.</p>",
@@ -1452,7 +1452,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -1474,10 +1474,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Cao Fei</h1><h2>B. 1978, Guangzhou, China</h2><h2>Lives and works in Beijing</h2>",
@@ -1485,11 +1485,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 cVygsj"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 jSqfbY"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2vk2gnhoUzhrEQWaCQjKyw%252FCao-fei-2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -1505,7 +1505,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -1527,7 +1527,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -1563,7 +1563,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1580,7 +1580,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -1622,7 +1622,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -1632,7 +1632,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Still from Cao Fei, <i>Prison Architect, </i>2018. Cinematography by Kwan Pun Leung. Courtesy of Tai Kwun.</p>",
@@ -1653,7 +1653,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -1675,10 +1675,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Simone Leigh</h1><h2>B. 1967, Chicago, Illinois</h2><h2>Lives and works in Brooklyn</h2>",
@@ -1686,11 +1686,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fXOKlP"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 kSPDvw"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FhEOTF5m2OkHPxocchkntXg%252FSimone_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -1706,7 +1706,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -1728,7 +1728,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -1764,7 +1764,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1781,7 +1781,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -1823,7 +1823,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -1833,7 +1833,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Simone Leigh, <i>Brick House</i>, 2018 (in progress). Photo by Timothy Schenck. Courtesy of Friends of the High Line.</p>",
@@ -1854,7 +1854,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -1876,10 +1876,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>David Hockney</h1><h2>B. 1937, Bradford, United Kingdom</h2><h2>Lives and works in Los Angeles</h2>",
@@ -1887,11 +1887,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 hZLzas"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 kjadjz"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F1kPiAY_ExpQb0iTnRiYf1A%252Fhockney_crop_pulledback.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -1907,7 +1907,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -1929,7 +1929,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -1965,7 +1965,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1982,7 +1982,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -2024,7 +2024,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -2034,7 +2034,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>David Hockney, <i>Portrait of an Artist (Pool with Two Figures), </i>1972. Courtesy of Christie&#x27;s.</p>",
@@ -2055,7 +2055,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -2077,10 +2077,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Wu Tsang</h1><h2>B. 1982, Worcester, Massachusetts</h2><h2>Lives and works in Los Angeles</h2>",
@@ -2088,11 +2088,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 dcaCIw"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 gQoSSW"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fc29PdWzeGmZ2FnfpzBExKQ%252Fwu_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -2108,7 +2108,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -2130,7 +2130,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -2166,7 +2166,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2183,7 +2183,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -2225,7 +2225,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -2235,7 +2235,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Wu Tsang, <i>We Hold Where Study, </i>2017, at “Devotional Document (Part 2),” Kunsthalle Münster, Münster, 2017. Courtesy of the artist and Galerie Isabella Bortolozzi, Berlin.</p>",
@@ -2256,7 +2256,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -2278,10 +2278,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Tomás Saraceno</h1><h2>B. 1973, San Miguel de Tucumán, Argentina</h2><h2>Lives and works in Berlin</h2>",
@@ -2289,11 +2289,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 hyZXfq"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 cDLSSP"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FWoWfgpwz1R6hYXowTMtQbg%252FTomas_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -2309,7 +2309,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -2331,7 +2331,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -2367,7 +2367,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2384,7 +2384,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -2426,7 +2426,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -2436,7 +2436,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Tomás Saraceno, <i>Algo-r(h)i(y)thms</i>, 2018, at “ON AIR,” Palais de Tokyo, Paris. Photo © Andrea Rossetti. Courtesy of the artist; Esther Schipper; and Pinksummer Contemporary Art.</p>",
@@ -2457,7 +2457,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -2479,10 +2479,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Takashi Murakami</h1><h2>B. 1962, Tokyo, Japan</h2><h2>Lives and works in Tokyo</h2>",
@@ -2490,11 +2490,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 IhQJV"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 gHwzFK"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F3oOK_ctPDJV9hBSiUURaBA%252Ftakashi_crop_otheroption.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -2510,7 +2510,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -2532,7 +2532,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -2568,7 +2568,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2585,7 +2585,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -2627,7 +2627,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -2637,7 +2637,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Takashi Murakami, <i>DOB’s March, </i>1995. © Takashi Murakami/Kaikai Kiki Co., Ltd. All rights reserved. Courtesy of Gagosian.</p>",
@@ -2658,7 +2658,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -2680,10 +2680,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Joan Mitchell</h1><h2>B. 1925, Chicago, Illinois</h2><h2>D. 1992, Paris</h2>",
@@ -2691,11 +2691,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 hBeZOg"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 hxDlXA"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5IpvVQ9JhQ-YFYSrFF450Q%252FJoan_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -2711,7 +2711,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -2733,7 +2733,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -2769,7 +2769,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2786,7 +2786,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -2828,7 +2828,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -2838,7 +2838,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Joan Mitchell, <i>Ici, </i>1992. © Estate of Joan Mitchell.</p>",
@@ -2859,7 +2859,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -2881,10 +2881,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Forensic Architecture</h1><h2>Founded in 2010</h2><h2>Based in London</h2>",
@@ -2892,11 +2892,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 eQWHFC"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fEvJds"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl-eI1OtsSoanJ_x3YlnEWg%252FFA.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -2912,7 +2912,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -2934,7 +2934,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -2970,7 +2970,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2987,7 +2987,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -3029,7 +3029,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -3039,7 +3039,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p> Forensic Architecture, <i>Counter Investigations, </i> 2018, at The Institute of Contemporary Art, Boston. Photo by Mark Blower.</p>",
@@ -3060,7 +3060,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -3082,10 +3082,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Wolfgang Tillmans</h1><h2>B. 1968, Remscheid, Germany</h2><h2>Lives and works in Berlin and London</h2>",
@@ -3093,11 +3093,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 brGNxp"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 dcjpZD"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgaTpzI49OUOFP1Ks1-bTNg%252Fwolfgang_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -3113,7 +3113,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -3135,7 +3135,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -3171,7 +3171,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3188,7 +3188,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -3230,7 +3230,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -3240,7 +3240,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>English National Opera, <i>War Requiem, </i>2018. Set design by Wolfgang Tillmans. Photo © Richard Hubert Smith. Courtesy of the English National Opera.</p>",
@@ -3261,7 +3261,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -3283,10 +3283,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Charline von Heyl</h1><h2>B. 1960, Mainz, Germany</h2><h2>Lives and works in New York and Marfa, Texas</h2>",
@@ -3294,11 +3294,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 dotRXY"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 cCIivg"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FY96402AXIKWZiX1iACXVLg%252Fcharline2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -3314,7 +3314,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -3336,7 +3336,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -3372,7 +3372,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3389,7 +3389,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -3431,7 +3431,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -3441,7 +3441,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Charline von Heyl, <i>Vandals without Sandals, </i> 2018. Courtesy of Petzel.</p>",
@@ -3462,7 +3462,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -3484,10 +3484,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Charles White</h1><h2>B. 1918, Chicago, Illinois</h2><h2>D. 1979, Los Angeles, California</h2>",
@@ -3495,11 +3495,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 UWELj"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 bgNXBm"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FRgD2WhDMmriNWjQaiVAtYA%252FCharles_crop2.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -3515,7 +3515,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -3537,7 +3537,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -3573,7 +3573,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3590,7 +3590,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -3632,7 +3632,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -3642,7 +3642,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Charles White, <i>Sound of Silence, </i>1978. © 1978 The Charles White Archives. Courtesy of the Museum of Modern Art.</p>",
@@ -3663,7 +3663,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -3685,10 +3685,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Andrea Fraser</h1><h2>B. 1965, Billings, Montana</h2><h2>Lives and works in Los Angeles</h2>",
@@ -3696,11 +3696,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fnXovb"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 iPWbdV"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2We6jcCx0JXM7EmjoJKc3g%252FAndrea_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -3716,7 +3716,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -3738,7 +3738,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -3774,7 +3774,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3791,7 +3791,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -3833,7 +3833,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -3843,7 +3843,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Andrea Fraser, <i>2016 in Museums, Money, and Politics, </i>a SITE Santa Fe Commission, 2018. Photo by Brandon Soder. Courtesy of SITE Santa Fe.</p>",
@@ -3864,7 +3864,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -3886,10 +3886,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>John Bock</h1><h2>B. 1965, Schenefeld, Germany</h2><h2>Lives and works in Berlin</h2>",
@@ -3897,11 +3897,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fJcueF"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fZmNqE"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F69-YSOLh8LC9E2BmQQcAqw%252Fjohn-bock.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -3917,7 +3917,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -3939,7 +3939,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -3975,7 +3975,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3992,7 +3992,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -4034,7 +4034,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -4044,7 +4044,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>John Bock, “Dead + Juicy,” 2018. Courtesy of Anton Kern Gallery.  </p>",
@@ -4065,7 +4065,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -4087,10 +4087,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 dFdsqN"
+        className="Eoy2018Artists__ArtistHeaderSection-apetgy-3 lhifzh"
       >
         <div
-          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 cMVeLB"
+          className="Eoy2018Artists__ArtistHeaderTitle-apetgy-4 ggqIIq"
           dangerouslySetInnerHTML={
             Object {
               "__html": "<h1>Kehinde Wiley</h1><h2>B. 1977, Los Angeles, California</h2><h2>Lives and works in New York</h2>",
@@ -4098,11 +4098,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           }
         />
         <div
-          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 gNZlBi"
+          className="Eoy2018Artists__ArtistHeaderImg-apetgy-5 fWfaJc"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGDx8y_WfzrowtQpmaMcQRw%252Fkehinde_crop.jpg&width=700&quality=80"
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje dwaqqB"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dwaqqB"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
@@ -4118,7 +4118,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 iIxALY sc-EHOje dJpJwb"
@@ -4140,7 +4140,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 iVivhN"
+        className="Eoy2018Artists__ImageSetWrapper-apetgy-10 hAkxpi"
       >
         <div
           className="ImageSetPreview__ImageSetContainer-sc-1pp4y1-0 hIuyQc"
@@ -4176,7 +4176,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4193,7 +4193,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     View Slideshow
                   </div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -4235,7 +4235,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="Eoy2018Artists__CaptionWrapper-apetgy-8 daUMVu sc-EHOje glaPNi"
+              className="Eoy2018Artists__CaptionWrapper-apetgy-8 kYFazE sc-EHOje glaPNi"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -4245,7 +4245,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               }
             >
               <div
-                className="Eoy2018Artists__ImageSetCaption-apetgy-9 ciDjGd"
+                className="Eoy2018Artists__ImageSetCaption-apetgy-9 jDIKUY"
                 dangerouslySetInnerHTML={
                   Object {
                     "__html": "<p>Kehinde Wiley, <i>Three Girls in a Wood, </i> 2018. © Kehinde Wiley. Courtesy of the artist and Roberts Projects.</p>",
@@ -4266,7 +4266,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -4288,7 +4288,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG fQBYEu"
+        className="sc-htoDjs grMeOB"
       >
         <div
           className="Eoy2018Artists__TextSection-apetgy-7 dolsGf sc-EHOje dJpJwb"
@@ -4312,13 +4312,13 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     </div>
   </div>
   <div
-    className="sc-cSHVUG ftbyBW"
+    className="sc-htoDjs dhOLBP"
   >
     <div
       className="Eoy2018Artists__RelatedArticleWrapper-apetgy-11 fAPIhx"
     >
       <div
-        className="sc-cSHVUG cuCRmd"
+        className="sc-htoDjs dYiTnf"
       >
         <div
           className="ArticleCards__ArticlesWrapper-sc-128ki95-0 hmyaEK"
@@ -4345,7 +4345,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               >
                 <div>
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje dmUTBA"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje dmUTBA"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize={
                       Array [
@@ -4359,7 +4359,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     The People Who Defined Visual Culture in 2018
                   </div>
                   <div
-                    className="sc-gzVnrw ibZhkv sc-EHOje lhPpoe"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje lhPpoe"
                     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                     fontSize={
                       Array [
@@ -4377,7 +4377,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   className="Date__DateContainer-sc-1u78l60-0 kgTcUj"
                 >
                   <div
-                    className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
+                    className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje fXsUty"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4497,13 +4497,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
   >
     <div
-      className="sc-cSHVUG idOKEm"
+      className="sc-htoDjs dXICTI"
     >
       <div
         className="sc-ifAKCX graXiS"
       >
         <div
-          className="sc-cSHVUG gZHSMa"
+          className="sc-htoDjs iBhAls"
           width={
             Array [
               "100%",
@@ -4606,7 +4606,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           }
         >
           <div
-            className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
+            className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje fXsUty"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4626,7 +4626,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
             className="Date__DateContainer-sc-1u78l60-0 kgTcUj"
           >
             <div
-              className="sc-bZQynM bOrPFB sc-EHOje fXsUty"
+              className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje fXsUty"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4641,7 +4641,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -4788,7 +4788,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -4798,7 +4798,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -4854,7 +4854,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4871,7 +4871,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -4928,7 +4928,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -4938,7 +4938,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5086,7 +5086,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5096,7 +5096,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5152,7 +5152,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5169,7 +5169,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -5226,7 +5226,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5236,7 +5236,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5384,7 +5384,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5394,7 +5394,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5450,7 +5450,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5467,7 +5467,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -5524,7 +5524,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5534,7 +5534,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5682,7 +5682,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5692,7 +5692,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5748,7 +5748,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5765,7 +5765,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -5822,7 +5822,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5832,7 +5832,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -5980,7 +5980,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -5990,7 +5990,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6046,7 +6046,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -6063,7 +6063,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -6120,7 +6120,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6130,7 +6130,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6278,7 +6278,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6288,7 +6288,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6344,7 +6344,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -6361,7 +6361,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -6418,7 +6418,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6428,7 +6428,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6576,7 +6576,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6586,7 +6586,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6642,7 +6642,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -6659,7 +6659,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -6716,7 +6716,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6726,7 +6726,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6874,7 +6874,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6884,7 +6884,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -6907,7 +6907,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -6917,7 +6917,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7065,7 +7065,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7075,7 +7075,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7131,7 +7131,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -7148,7 +7148,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -7205,7 +7205,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7215,7 +7215,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7363,7 +7363,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7373,7 +7373,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7396,7 +7396,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7406,7 +7406,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7554,7 +7554,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7564,7 +7564,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7620,7 +7620,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -7637,7 +7637,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -7694,7 +7694,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7704,7 +7704,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7852,7 +7852,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7862,7 +7862,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -7888,7 +7888,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -7898,7 +7898,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8046,7 +8046,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8056,7 +8056,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8112,7 +8112,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8129,7 +8129,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -8186,7 +8186,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8196,7 +8196,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8344,7 +8344,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8354,7 +8354,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8380,7 +8380,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8390,7 +8390,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8538,7 +8538,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8548,7 +8548,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8607,7 +8607,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8624,7 +8624,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -8681,7 +8681,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8691,7 +8691,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8839,7 +8839,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8849,7 +8849,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -8905,7 +8905,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8922,7 +8922,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -8979,7 +8979,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -8989,7 +8989,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9137,7 +9137,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9147,7 +9147,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9203,7 +9203,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9220,7 +9220,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -9277,7 +9277,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9287,7 +9287,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9435,7 +9435,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9445,7 +9445,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9468,7 +9468,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9478,7 +9478,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9626,7 +9626,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9636,7 +9636,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9692,7 +9692,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9709,7 +9709,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -9766,7 +9766,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9776,7 +9776,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9924,7 +9924,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -9934,7 +9934,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -9990,7 +9990,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10007,7 +10007,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10064,7 +10064,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10074,7 +10074,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10222,7 +10222,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10232,7 +10232,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10288,7 +10288,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10305,7 +10305,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10362,7 +10362,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10372,7 +10372,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10520,7 +10520,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10530,7 +10530,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10553,7 +10553,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10563,7 +10563,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10711,7 +10711,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10721,7 +10721,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -10777,7 +10777,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10794,7 +10794,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10851,7 +10851,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -10861,7 +10861,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -11009,7 +11009,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -11019,7 +11019,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -11075,7 +11075,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11092,7 +11092,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -11149,7 +11149,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -11159,7 +11159,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -11307,7 +11307,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -11317,7 +11317,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -11373,7 +11373,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 className="ImageSetLabel__SlideshowCta-v8vmy8-3 gDDkkM"
               >
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje cXxEpa"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje cXxEpa"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11390,7 +11390,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="sc-bZQynM bOrPFB sc-EHOje couLSF"
+                  className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje couLSF"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -11447,7 +11447,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -11457,7 +11457,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
@@ -11480,7 +11480,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="Eoy2018Culture__TextContainer-sc-14ga9qk-3 ktZCSI"
     >
       <div
-        className="sc-cSHVUG dZVfpG"
+        className="sc-htoDjs eoYKwy"
         width={
           Array [
             "100%",
@@ -11490,7 +11490,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="sc-gzVnrw ibZhkv sc-EHOje bojfFh"
+          className="Typography-sc-1pie2ao-0 ehDCiu sc-EHOje bojfFh"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
         >
