@@ -92,12 +92,12 @@ storiesOf("Apps/Order Page/Buy Now/NewPayment", module)
 storiesOf("Apps/Order Page/Buy Now/Payment", module)
   .add("With 'Ship'", () => (
     <Router
-      initialRoute="/orders/123/payment/new"
+      initialRoute="/orders/123/payment"
       order={BuyOrderWithShippingDetails}
     />
   ))
   .add("With 'Pickup'", () => (
-    <Router initialRoute="/orders/123/payment/new" order={BuyOrderPickup} />
+    <Router initialRoute="/orders/123/payment" order={BuyOrderPickup} />
   ))
 
 storiesOf("Apps/Order Page/Buy Now/Status", module)
