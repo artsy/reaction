@@ -1,3 +1,12 @@
+# v13.0.5 (Thu Feb 14 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.4 [#2023](https://github.com/artsy/reaction/pull/2023) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/palette to 3.0.3 [#2022](https://github.com/artsy/reaction/pull/2022) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v13.0.4 (Thu Feb 14 2019)
 
 #### 🏠  Internal
