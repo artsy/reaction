@@ -332,12 +332,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                       onSelect={this.onSelectShippingOption.bind(this)}
                       defaultValue={this.state.shippingOption}
                     >
-                      <BorderedRadio value="SHIP">
-                        Add shipping address
-                      </BorderedRadio>
+                      <BorderedRadio
+                        value="SHIP"
+                        label="Add shipping address"
+                      />
 
-                      <BorderedRadio value="PICKUP">
-                        Arrange for pickup (free)
+                      <BorderedRadio
+                        value="PICKUP"
+                        label="Arrange for pickup (free)"
+                      >
                         <Collapse open={this.state.shippingOption === "PICKUP"}>
                           <Sans size="2" color="black60">
                             After your order is confirmed, a specialist will

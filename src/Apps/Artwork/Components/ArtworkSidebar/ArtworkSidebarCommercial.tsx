@@ -105,8 +105,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             }}
             selected={this.state.selectedEditionSet === editionSet}
             disabled={!editionEcommerceAvailable}
+            label={editionFragment}
           />
-          {editionFragment}
         </Row>
       )
     } else {

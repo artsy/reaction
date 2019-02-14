@@ -280,12 +280,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   }
                   defaultValue={this.state.responseOption}
                 >
-                  <BorderedRadio value="ACCEPT">
-                    Accept seller's offer
-                  </BorderedRadio>
-
-                  <BorderedRadio value="COUNTER" position="relative">
-                    Send counteroffer
+                  <BorderedRadio value="ACCEPT" label="Accept seller's offer" />
+                  <BorderedRadio
+                    value="COUNTER"
+                    position="relative"
+                    label="Send counteroffer"
+                  >
                     <Collapse open={this.state.responseOption === "COUNTER"}>
                       <Spacer mb={2} />
                       <OfferInput
@@ -316,15 +316,20 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                       )}
                     </Collapse>
                   </BorderedRadio>
-                  <BorderedRadio value="DECLINE" position="relative">
-                    Decline seller's offer
-                    <Collapse open={this.state.responseOption === "DECLINE"}>
-                      <Spacer mb={1} />
-                      <Sans size="2" color="black60">
-                        Declining an offer will end the negotiation process on
-                        this offer.
-                      </Sans>
-                    </Collapse>
+                  <BorderedRadio
+                    value="DECLINE"
+                    position="relative"
+                    label="Decline seller's offer"
+                  >
+                    <Flex position="relative">
+                      <Collapse open={this.state.responseOption === "DECLINE"}>
+                        <Spacer mb={1} />
+                        <Sans size="2" color="black60">
+                          Declining an offer will end the negotiation process on
+                          this offer.
+                        </Sans>
+                      </Collapse>
+                    </Flex>
                   </BorderedRadio>
                 </RadioGroup>
                 <Spacer mb={[2, 3]} />
