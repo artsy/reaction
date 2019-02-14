@@ -4,7 +4,7 @@ import React from "react"
 
 import { CollectionTitles } from "../MarketingCollections"
 
-describe(CollectionTitles, () => {
+describe("CollectionTitles", () => {
   it("with no colons", () => {
     const wrapper = mount(<CollectionTitles title="The best one" />)
     expect(wrapper.find(Serif).length).toEqual(1)
@@ -16,7 +16,9 @@ describe(CollectionTitles, () => {
   })
 
   it("with two colons", () => {
-    const wrapper = mount(<CollectionTitles title="KAWS: Purple ones: the most expensive ones" />)
+    const wrapper = mount(
+      <CollectionTitles title="KAWS: Purple ones: the most expensive ones" />
+    )
     expect(wrapper.find(Serif).length).toEqual(2)
     const secondOne = wrapper.find(Serif).at(1)
     expect(secondOne.text()).toEqual("Purple ones: the most expensive ones")

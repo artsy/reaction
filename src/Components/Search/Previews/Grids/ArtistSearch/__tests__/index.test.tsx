@@ -4,9 +4,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { PreviewGridItem } from "../../PreviewGridItem"
-import {
-  ArtistSearchPreviewFragmentContainer,
-} from "../index"
+import { ArtistSearchPreviewFragmentContainer } from "../index"
 import { MarketingCollectionsPreview } from "../MarketingCollections"
 import { RelatedArtworksPreview } from "../RelatedArtworks"
 
@@ -34,7 +32,7 @@ const getWrapper = (viewer, breakpoint = "xl") => {
   })
 }
 
-describe(ArtistSearchPreviewFragmentContainer, () => {
+describe("ArtistSearchPreviewFragmentContainer", () => {
   it("renders related artworks when there are no marketing collections for the artist", async () => {
     const viewer = {
       artist: {
@@ -109,20 +107,30 @@ describe(ArtistSearchPreviewFragmentContainer, () => {
       artist: {
         id: "andy-warhol",
         marketingCollections: [
-          { title: 'Andy Warhol: Prettiest Flowers', slug: 'andy-warhol-prettiest-flowers', headerImage: 'http://path/to/image.jpg' },
-          { title: 'Andy Warhol: Soup Cans Yo!', slug: 'andy-warhol-soup-cans-yo', headerImage: 'http://path/to/another-image.jpg' }
+          {
+            title: "Andy Warhol: Prettiest Flowers",
+            slug: "andy-warhol-prettiest-flowers",
+            headerImage: "http://path/to/image.jpg",
+          },
+          {
+            title: "Andy Warhol: Soup Cans Yo!",
+            slug: "andy-warhol-soup-cans-yo",
+            headerImage: "http://path/to/another-image.jpg",
+          },
         ],
       },
       filter_artworks: {
         artworks_connection: {
-          edges: []
-        }
-      }
+          edges: [],
+        },
+      },
     }
 
     const component = await getWrapper(viewer)
-    const hrefs = component.find('a').map(node => node.props().href)
-    const expected = viewer.artist.marketingCollections.map(collection => `collection/${collection.slug}`)
+    const hrefs = component.find("a").map(node => node.props().href)
+    const expected = viewer.artist.marketingCollections.map(
+      collection => `collection/${collection.slug}`
+    )
     expect(hrefs).toEqual(expected)
   })
 })
