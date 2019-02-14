@@ -5,10 +5,18 @@ import { Box, Flex, Image, Link, Serif, space } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { PreviewGridItem_artwork } from "__generated__/PreviewGridItem_artwork.graphql"
+import styled from "styled-components"
 
 interface PreviewGridItemProps {
   artwork: PreviewGridItem_artwork
 }
+
+const Title = styled(Serif).attrs({ size: "2", italic: true })`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: ${space(12)}px;
+`
 
 export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
   artwork,
@@ -21,9 +29,9 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
       </Link>
       <Link href={artwork.href} noUnderline>
         <Box>
-          <Serif size="2" italic>
+          <Title>
             {artwork.title}, {artwork.date}
-          </Serif>
+          </Title>
           <Serif size="2">{artwork.artist_names}</Serif>
         </Box>
       </Link>

@@ -19,8 +19,8 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
   ).map(x => x.node)
 
   const relatedArtworks = artworks.map((artwork, i) => (
-    <Box width="50%">
-      <PreviewGridItem artwork={artwork} key={i} />
+    <Box width="50%" key={i}>
+      <PreviewGridItem artwork={artwork} />
     </Box>
   ))
   return (
