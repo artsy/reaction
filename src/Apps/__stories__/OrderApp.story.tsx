@@ -65,15 +65,39 @@ storiesOf("Apps/Order Page/Buy Now/Review", module).add("Review", () => (
   />
 ))
 
+storiesOf("Apps/Order Page/Buy Now/NewPayment", module)
+  .add("With 'Ship'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: null,
+        lastOffer: null,
+      }}
+    />
+  ))
+  .add("With 'Pickup'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...BuyOrderPickup,
+        state: "SUBMITTED",
+        stateExpiresAt: null,
+        lastOffer: null,
+      }}
+    />
+  ))
+
 storiesOf("Apps/Order Page/Buy Now/Payment", module)
   .add("With 'Ship'", () => (
     <Router
-      initialRoute="/orders/123/payment"
+      initialRoute="/orders/123/payment/new"
       order={BuyOrderWithShippingDetails}
     />
   ))
   .add("With 'Pickup'", () => (
-    <Router initialRoute="/orders/123/payment" order={BuyOrderPickup} />
+    <Router initialRoute="/orders/123/payment/new" order={BuyOrderPickup} />
   ))
 
 storiesOf("Apps/Order Page/Buy Now/Status", module)
@@ -180,6 +204,49 @@ storiesOf("Apps/Order Page/Make Offer/Payment", module)
     <Router initialRoute="/orders/123/payment" order={OfferOrderPickup} />
   ))
 
+storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
+  .add("With 'Ship'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...OfferOrderPickup,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
+          .toISOString(),
+        lastOffer: {
+          ...OfferWithTotals,
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      }}
+    />
+  ))
+  .add("With 'Pickup'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
+          .toISOString(),
+        lastOffer: {
+          ...OfferWithTotals,
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      }}
+    />
+  ))
 storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   <Router
     initialRoute="/orders/123/review"

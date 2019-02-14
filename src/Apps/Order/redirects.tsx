@@ -184,6 +184,10 @@ export const redirects: RedirectRecord<OrderQuery> = {
       ],
     },
     {
+      path: "payment/new",
+      rules: [goToShippingIfShippingIsNotCompleted],
+    },
+    {
       path: "review",
       rules: [
         goToStatusIfOrderIsNotPending,

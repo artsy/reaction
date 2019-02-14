@@ -35,6 +35,7 @@ export type NewPayment_order = {
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
+    readonly stateExpiresAt: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -43,6 +44,11 @@ export type NewPayment_order = {
                 }) | null;
             }) | null;
         }) | null> | null;
+    }) | null;
+    readonly lastOffer?: ({
+        readonly createdAt: string | null;
+        readonly id: string | null;
+        readonly note: string | null;
     }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
     readonly " $refType": NewPayment_order$ref;
@@ -220,6 +226,13 @@ return {
       ]
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "lineItems",
@@ -276,9 +289,42 @@ return {
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
     },
-    v5
+    v5,
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "createdAt",
+              "args": null,
+              "storageKey": null
+            },
+            v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            },
+            v5
+          ]
+        }
+      ]
+    }
   ]
 };
 })();
-(node as any).hash = 'ec393a70b66e118e8f4b5fc64cb9481d';
+(node as any).hash = 'bdb868df6449c82f7c6f86baa7ead8c4';
 export default node;

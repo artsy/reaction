@@ -123,7 +123,7 @@ export const routes: RouteConfig[] = [
         Component: PaymentRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_NewPaymentQuery($orderID: String!) {
+          query routes_PaymentQuery($orderID: String!) {
             order: ecommerceOrder(id: $orderID) {
               ...Payment_order
             }
@@ -138,9 +138,9 @@ export const routes: RouteConfig[] = [
         Component: NewPaymentRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_PaymentQuery($orderID: String!) {
+          query routes_NewPaymentQuery($orderID: String!) {
             order: ecommerceOrder(id: $orderID) {
-              ...Payment_order
+              ...NewPayment_order
             }
           }
         `,
