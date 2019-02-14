@@ -1,3 +1,11 @@
+# v13.0.4 (Thu Feb 14 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.2 [#2019](https://github.com/artsy/reaction/pull/2019) ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v13.0.3 (Thu Feb 14 2019)
 
 
