@@ -28,7 +28,7 @@ const CollectionBox = styled(Box)<{ imageUrl: string }>`
   }
 `
 
-export const CollectionTitle = styled(Serif).attrs({ display: "inline" })`
+export const CollectionTitle = styled(Serif)`
   color: ${color("white100")};
 `
 CollectionTitle.displayName = "CollectionTitle"
@@ -42,7 +42,7 @@ export const CollectionTitles = ({ title }: { title: string }) => {
   return (
     <Flex justifyContent="flex-end" flexDirection="column" height="80px">
       {showHeadline && (
-        <Box ml={1} mb={-0.5}>
+        <Box ml={1}>
           <CollectionTitle weight="semibold" size="2">
             {headline}:
           </CollectionTitle>
