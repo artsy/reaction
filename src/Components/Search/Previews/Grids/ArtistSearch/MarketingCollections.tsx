@@ -28,9 +28,10 @@ const CollectionBox = styled(Box)<{ imageUrl: string }>`
   }
 `
 
-const CollectionTitle = styled(Serif).attrs({ display: "inline" })`
+export const CollectionTitle = styled(Serif).attrs({ display: "inline" })`
   color: ${color("white100")};
 `
+CollectionTitle.displayName = "CollectionTitle"
 
 export const CollectionTitles = ({ title }: { title: string }) => {
   const [first, ...rest] = title.split(": ")
