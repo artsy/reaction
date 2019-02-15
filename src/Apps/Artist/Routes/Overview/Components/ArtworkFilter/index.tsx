@@ -1,6 +1,7 @@
 import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { track } from "Artsy/Analytics"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
@@ -33,6 +34,7 @@ interface Props {
   mediator?: Mediator
 }
 
+@track()
 class Filter extends Component<Props> {
   static defaultProps = {
     hideTopBorder: false,
@@ -146,13 +148,9 @@ class Filter extends Component<Props> {
               my={0.3}
               selected={currentFilter === count.id}
               value={count.id}
-              onSelect={({ selected }) => {
-                if (selected) {
-                  return filterState.setFilter(category, count.id, mediator)
-                } else {
-                  return filterState.unsetFilter(category, mediator)
-                }
-              }}
+              onSelect={({ selected }) =>
+                this.handleCategorySelect(selected, category, count)
+              }
               key={index}
               label={count.name}
             />
@@ -160,6 +158,20 @@ class Filter extends Component<Props> {
         })}
       </Flex>
     )
+  }
+
+  @track((_props, _state, [_selected, category, count]) => {
+    const changeProperty = `changed_${category}`
+    return { [changeProperty]: count.id }
+  })
+  handleCategorySelect(selected, category, count) {
+    const { filterState, mediator } = this.props
+
+    if (selected) {
+      return filterState.setFilter(category, count.id, mediator)
+    } else {
+      return filterState.unsetFilter(category, mediator)
+    }
   }
 
   renderWaysToBuy(filterState, mediator, counts) {
