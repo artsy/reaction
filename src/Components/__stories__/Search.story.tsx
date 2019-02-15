@@ -21,14 +21,14 @@ storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
 
 storiesOf("Components/Search/Previews/Artist", module)
   .add("An artist with collections", () => (
-    <Box width="450px" p="20px">
+    <Box width="450px" p={2}>
       <ContextProvider>
         <SearchPreview entityID="robert-indiana" entityType="Artist" />
       </ContextProvider>
     </Box>
   ))
   .add("An artist without collections", () => (
-    <Box width="450px" p="20px">
+    <Box width="450px" p={2}>
       <ContextProvider>
         <SearchPreview entityID="douglas-gordon" entityType="Artist" />
       </ContextProvider>
@@ -38,7 +38,7 @@ storiesOf("Components/Search/Previews/Artist", module)
 storiesOf("Components/Search/Previews/MerchandisableArtworks", module).add(
   "No query",
   () => (
-    <Box width="450px" p="20px">
+    <Box width="450px" p={2}>
       <ContextProvider>
         <SearchPreview entityID="" entityType="" />
       </ContextProvider>

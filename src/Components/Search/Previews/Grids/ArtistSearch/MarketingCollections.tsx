@@ -1,4 +1,4 @@
-import { Box, color, Flex, Link, Sans, Serif, space } from "@artsy/palette"
+import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -10,8 +10,6 @@ interface MarketingCollectionsPreviewProps {
 }
 
 const CollectionBox = styled(Box)<{ imageUrl: string }>`
-  margin-right: ${space(2)}px;
-  margin-bottom: ${space(2)}px;
   width: 185px;
   height: 80px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -66,7 +64,7 @@ export const MarketingCollectionsPreview: React.SFC<
       })
 
       return (
-        <CollectionBox imageUrl={imageUrl} key={index}>
+        <CollectionBox imageUrl={imageUrl} key={index} mr={2} mb={2}>
           <Link href={href} noUnderline>
             <CollectionTitles title={title} />
           </Link>
