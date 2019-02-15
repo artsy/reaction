@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, space } from "@artsy/palette"
+import { Box, Flex, Sans } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -25,7 +25,7 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
   ))
   return (
     <Box>
-      <Sans size="3" weight="medium" color="black100" mb={`${space(2)}px`}>
+      <Sans size="3" weight="medium" color="black100" mb={2}>
         Related Artworks
       </Sans>
 

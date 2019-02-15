@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, Flex, Sans, space } from "@artsy/palette"
+import { Box, Flex, Sans } from "@artsy/palette"
 import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtworks_viewer.graphql"
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -30,7 +30,7 @@ const MerchandisableArtworksPreview: React.SFC<
 
   return (
     <Box>
-      <Sans size="3" weight="medium" color="black100" mb={`${space(2)}px`}>
+      <Sans size="3" weight="medium" color="black100" mb={2}>
         Now Available for Buy Now/ Make Offer
       </Sans>
 

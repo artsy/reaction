@@ -25,10 +25,10 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
 }) => {
   const imageUrl = get(artwork, x => x.image.cropped.url, "")
   return (
-    <Flex mr={`${space(2)}px`} mb={`${space(2)}px`}>
+    <Flex mr={2} mb={2}>
       <Link href={artwork.href} noUnderline>
         <Image
-          mr={`${space(2)}px`}
+          mr={2}
           src={imageUrl}
           alt={`${artwork.title} by ${artwork.artist_names}`}
         />

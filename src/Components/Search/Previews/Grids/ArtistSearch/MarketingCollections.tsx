@@ -42,13 +42,13 @@ export const CollectionTitles = ({ title }: { title: string }) => {
   return (
     <Flex justifyContent="flex-end" flexDirection="column" height="80px">
       {showHeadline && (
-        <Box ml={`${space(1)}px`} mb={`-${space(0.5)}px`}>
+        <Box ml={1} mb={-0.5}>
           <CollectionTitle weight="semibold" size="2">
             {headline}:
           </CollectionTitle>
         </Box>
       )}
-      <Box ml={`${space(1)}px`} mb={`${space(1)}px`}>
+      <Box ml={1} mb={1}>
         <CollectionTitle size="2">{subtitle}</CollectionTitle>
       </Box>
     </Flex>
@@ -79,7 +79,7 @@ export const MarketingCollectionsPreview: React.SFC<
 
   return (
     <>
-      <Sans size="3" weight="medium" color="black100" mb={`${space(2)}px`}>
+      <Sans size="3" weight="medium" color="black100" mb={2}>
         Artist Collections
       </Sans>
       <Flex alignItems="flex-start" flexWrap="wrap">
