@@ -1,10 +1,9 @@
-import { data as sd } from "sharify"
-
 import { Box, color, Flex, Link, Sans, Serif, space } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { crop } from "Utils/resizer"
 
 interface MarketingCollectionsPreviewProps {
   marketingCollections: MarketingCollectionsPreview_marketingCollections
@@ -61,11 +60,10 @@ export const MarketingCollectionsPreview: React.SFC<
   const items = marketingCollections.map(
     ({ headerImage, title, slug }, index) => {
       const href = `collection/${slug}`
-      const imageUrl = `${
-        sd.GEMINI_CLOUDFRONT_URL
-      }/?resize_to=fill&width=185&height=80&quality=95&src=${encodeURIComponent(
-        headerImage
-      )}`
+      const imageUrl = crop(headerImage, {
+        width: 185,
+        height: 80,
+      })
 
       return (
         <CollectionBox imageUrl={imageUrl} key={index}>
