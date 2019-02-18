@@ -37,6 +37,7 @@ export const UntouchedOrder = {
   code: "abcdefg",
   state: "PENDING",
   stateReason: null,
+  stateExpiresAt: null,
   itemsTotal: "$12,000",
   totalListPrice: "$12,000",
   totalListPriceCents: 1200000,

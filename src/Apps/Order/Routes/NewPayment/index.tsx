@@ -373,7 +373,7 @@ export class NewPaymentRoute extends Component<
           } = data
 
           if (orderOrError.order) {
-            this.props.router.push(`/orders/${this.props.order.id}/review`)
+            this.props.router.push(`/orders/${this.props.order.id}/status`)
           } else {
             if (errors) {
               errors.forEach(this.onMutationError.bind(this))
