@@ -391,28 +391,6 @@ describe("Payment", () => {
     await page.expectAndDismissDefaultErrorDialog()
   })
 
-  describe("Analytics", () => {
-    it("tracks click when use shipping address checkbox transitions from checked to unchecked but not from unchecked to checked", async () => {
-      const page = await buildPage()
-      // Initial state is checked
-      await page.toggleSameAddressCheckbox()
-      expect(mockPostEvent).toBeCalledWith({
-        action_type: "Click",
-        subject: "use shipping address",
-        flow: "buy now",
-        type: "checkbox",
-      })
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-
-      mockPostEvent.mockClear()
-
-      // State is now unchecked
-      await page.toggleSameAddressCheckbox()
-
-      expect(mockPostEvent).not.toBeCalled()
-    })
-  })
-
   describe("Validations", () => {
     it("says a required field is required with billing address exposed", async () => {
       const page = await buildPage()
