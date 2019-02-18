@@ -140,17 +140,6 @@ export class NewPaymentRoute extends Component<
     })
   }
 
-  @track((props, state, args) => {
-    const showBillingAddress = !args[0]
-    if (showBillingAddress) {
-      return {
-        action_type: Schema.ActionType.Click,
-        subject: Schema.Subject.BNMOUseShippingAddress,
-        flow: "buy now",
-        type: "checkbox",
-      }
-    }
-  })
   handleChangeHideBillingAddress(hideBillingAddress: boolean) {
     if (!hideBillingAddress) {
       this.setState({
