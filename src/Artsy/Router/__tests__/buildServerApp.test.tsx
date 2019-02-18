@@ -12,13 +12,6 @@ import { Title } from "react-head"
 import { graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 
-jest.mock("loadable-components/server", () => ({
-  getLoadableState: () =>
-    Promise.resolve({
-      getScriptTag: () => "__LOADABLE_STATE__",
-    }),
-}))
-
 const defaultComponent = () => <div>hi!</div>
 
 describe("buildServerApp", () => {
@@ -63,10 +56,9 @@ describe("buildServerApp", () => {
     expect(wrapper.html()).toContain("<div>hi!</div>")
   })
 
-  it("bootstraps relay and loadable-components SSR data", async () => {
+  it("bootstraps relay SSR data", async () => {
     const { scripts } = await getWrapper()
     expect(scripts).toContain("__RELAY_BOOTSTRAP__")
-    expect(scripts).toContain("__LOADABLE_STATE__")
   })
 
   it("resolves with a 200 status if url matches request", async () => {

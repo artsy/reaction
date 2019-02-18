@@ -8,7 +8,6 @@ import { Resolver } from "found-relay"
 import { ScrollManager } from "found-scroll"
 import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
-import { loadComponents } from "loadable-components"
 import React, { ComponentType } from "react"
 import { getUser } from "Utils/getUser"
 import { RouterConfig } from "./"
@@ -67,12 +66,6 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
           </ScrollManager>
         ),
       })
-
-      try {
-        await loadComponents()
-      } catch (error) {
-        // FIXME: https://github.com/smooth-code/loadable-components/pull/93
-      }
 
       const ClientApp = () => {
         return (

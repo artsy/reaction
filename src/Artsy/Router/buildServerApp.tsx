@@ -4,7 +4,6 @@ import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
 import { getFarceResult } from "found/lib/server"
-import { getLoadableState } from "loadable-components/server"
 import React, { ComponentType } from "react"
 import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
@@ -81,21 +80,18 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           )
         }
 
-        const { loadableState, relayData: _relayData, styleTags } = await trace(
+        const { relayData: _relayData, styleTags } = await trace(
           "buildServerApp.fetch",
           (async () => {
             // Kick off relay requests to prime cache. TODO: Remove the need to
             // do this by using persisted queries.
             ReactDOMServer.renderToString(<ServerApp />)
-            // Extract render queue for bundle split components using dyanamic `import()`
-            const state = await getLoadableState(<ServerApp />)
             // Extract CSS styleTags to inject for SSR pass
             const tags = collectSSRStyles(<ServerApp />)
             // Get serializable Relay data for rehydration on the client
             const data = await relayEnvironment.relaySSRMiddleware.getCache()
 
             return {
-              loadableState: state,
               relayData: data,
               styleTags: tags,
             }
@@ -107,10 +103,6 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
 
         // Build up script tags to inject into head
         const scripts = []
-        if (loadableState) {
-          scripts.push(loadableState.getScriptTag())
-        }
-
         scripts.push(`
           <script>
             var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
