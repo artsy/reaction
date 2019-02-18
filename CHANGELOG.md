@@ -1,3 +1,15 @@
+# v14.0.0 (Mon Feb 18 2019)
+
+#### 💥  Breaking Change
+
+- Always render in context of isolated stylesheet. [#2029](https://github.com/artsy/reaction/pull/2029) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v13.0.10 (Mon Feb 18 2019)
 
 
