@@ -19,7 +19,6 @@ import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -140,17 +139,6 @@ export class NewPaymentRoute extends Component<
     })
   }
 
-  @track((props, state, args) => {
-    const showBillingAddress = !args[0]
-    if (showBillingAddress) {
-      return {
-        action_type: Schema.ActionType.Click,
-        subject: Schema.Subject.BNMOUseShippingAddress,
-        flow: "buy now",
-        type: "checkbox",
-      }
-    }
-  })
   handleChangeHideBillingAddress(hideBillingAddress: boolean) {
     if (!hideBillingAddress) {
       this.setState({
@@ -209,7 +197,7 @@ export class NewPaymentRoute extends Component<
                   <>
                     <Flex>
                       <CountdownTimer
-                        action="Respond"
+                        action="Submit new payment"
                         note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
                         countdownStart={order.lastOffer.createdAt}
                         countdownEnd={order.stateExpiresAt}
@@ -373,7 +361,7 @@ export class NewPaymentRoute extends Component<
           } = data
 
           if (orderOrError.order) {
-            this.props.router.push(`/orders/${this.props.order.id}/review`)
+            this.props.router.push(`/orders/${this.props.order.id}/status`)
           } else {
             if (errors) {
               errors.forEach(this.onMutationError.bind(this))

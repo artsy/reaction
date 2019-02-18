@@ -65,30 +65,6 @@ storiesOf("Apps/Order Page/Buy Now/Review", module).add("Review", () => (
   />
 ))
 
-storiesOf("Apps/Order Page/Buy Now/NewPayment", module)
-  .add("With 'Ship'", () => (
-    <Router
-      initialRoute="/orders/123/payment/new"
-      order={{
-        ...OfferOrderWithShippingDetails,
-        state: "SUBMITTED",
-        stateExpiresAt: null,
-        lastOffer: null,
-      }}
-    />
-  ))
-  .add("With 'Pickup'", () => (
-    <Router
-      initialRoute="/orders/123/payment/new"
-      order={{
-        ...BuyOrderPickup,
-        state: "SUBMITTED",
-        stateExpiresAt: null,
-        lastOffer: null,
-      }}
-    />
-  ))
-
 storiesOf("Apps/Order Page/Buy Now/Payment", module)
   .add("With 'Ship'", () => (
     <Router

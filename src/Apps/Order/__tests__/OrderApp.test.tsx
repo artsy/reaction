@@ -394,6 +394,55 @@ describe("OrderApp routing redirects", () => {
       expect(redirect.url).toBe("/orders/1234/respond")
     })
   })
+
+  describe("visiting the /payment/new page", () => {
+    const counterOfferOrder = {
+      ...OfferOrderWithShippingDetails,
+      id: 1234,
+      state: "SUBMITTED",
+      lastOffer: {
+        ...OfferWithTotals,
+        id: "last-offer",
+        createdAt: moment()
+          .subtract(1, "days")
+          .toISOString(),
+      },
+      myLastOffer: {
+        id: "my-last-offer",
+        createdAt: moment().toISOString(),
+      },
+      awaitingResponseFrom: "BUYER",
+    }
+    it("stays on the /payment/new page if all conditions are met", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver(counterOfferOrder)
+      )
+      expect(redirect).toBe(undefined)
+    })
+    // goToStatusIfNotOfferOrder,
+    it("redirects to /status if not an offer order", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          mode: "BUY",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+    // goToStatusIfOrderIsNotSubmitted,
+    it("redirects to /status if order is not submitted", async () => {
+      const { redirect } = await render(
+        "/orders/1234/review/counter",
+        mockResolver({
+          ...counterOfferOrder,
+          state: "PENDING",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+  })
 })
 
 describe("OrderApp", () => {
