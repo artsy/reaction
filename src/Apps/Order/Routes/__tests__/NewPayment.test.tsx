@@ -34,6 +34,10 @@ jest.mock("react-stripe-elements", () => {
   }
 })
 
+jest.mock("Utils/getCurrentTimeAsIsoString")
+const NOW = "2018-12-05T13:47:16.446Z"
+require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
+
 jest.unmock("react-tracking")
 jest.unmock("react-relay")
 jest.mock("Utils/Events", () => ({
@@ -73,12 +77,12 @@ const testOrder = {
   ...OfferOrderWithShippingDetails,
   id: "1234",
   state: "SUBMITTED",
-  stateExpiresAt: moment()
+  stateExpiresAt: moment(NOW)
     .add(1, "day")
     .toISOString(),
   lastOffer: {
     ...OfferWithTotals,
-    createdAt: moment()
+    createdAt: moment(NOW)
       .subtract(1, "day")
       .toISOString(),
   },
@@ -159,6 +163,24 @@ describe("Payment", () => {
     })
     expect(page.find(Checkbox).length).toBe(0)
     expect(page.find(Collapse).props().open).toBe(true)
+  })
+
+  it("shows the countdown timer", async () => {
+    const page = await buildPage({
+      mockData: {
+        order: {
+          ...testOrder,
+          stateExpiresAt: moment(NOW)
+            .add(1, "day")
+            .add(4, "hours")
+            .add(22, "minutes")
+            .add(59, "seconds")
+            .toISOString(),
+        },
+      },
+    })
+
+    expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
   })
 
   it("removes all data when the billing address form is hidden", async () => {
