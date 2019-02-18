@@ -4,10 +4,15 @@
 
 import { ContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { buildServerApp, ServerRouterConfig } from "Artsy/Router/buildServerApp"
+import {
+  __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
+  buildServerApp,
+  ServerRouterConfig,
+} from "Artsy/Router/buildServerApp"
 import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
 import React from "react"
+import ReactDOMServer from "react-dom/server"
 import { Title } from "react-head"
 import { graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
@@ -23,7 +28,7 @@ describe("buildServerApp", () => {
     ServerRouterConfig,
     Exclude<keyof ServerRouterConfig, "routes">
   > = {}) => {
-    const { ServerApp, ...rest } = await buildServerApp({
+    const result = await buildServerApp({
       routes: [
         {
           path: "/",
@@ -45,15 +50,20 @@ describe("buildServerApp", () => {
       userAgent: "A random user-agent",
       ...options,
     })
+    const ServerApp = Object.getOwnPropertyDescriptor(
+      result,
+      __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__
+    ).value
     return {
-      ...rest,
+      ...result,
+      ServerApp,
       wrapper: render(<ServerApp />),
     }
   }
 
-  it("resolved with a <ServerApp /> component", async () => {
-    const { wrapper } = await getWrapper()
-    expect(wrapper.html()).toContain("<div>hi!</div>")
+  it("resolves with a rendered version of the ServerApp component", async () => {
+    const { ServerApp, bodyHTML } = await getWrapper()
+    expect(bodyHTML).toEqual(ReactDOMServer.renderToString(<ServerApp />))
   })
 
   it("bootstraps relay SSR data", async () => {
