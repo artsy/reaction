@@ -163,7 +163,6 @@
     "history": "^4.6.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonp": "^0.2.1",
-    "loadable-components": "^2.2.2",
     "lodash": "^4.17.4",
     "memoize-one": "^4.0.3",
     "moment-timezone": "^0.5.13",

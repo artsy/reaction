@@ -4,11 +4,10 @@ import queryMiddleware from "farce/lib/queryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
 import { getFarceResult } from "found/lib/server"
-import { getLoadableState } from "loadable-components/server"
-import React, { ComponentType } from "react"
+import React from "react"
 import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
-import { collectSSRStyles } from "Utils/collectSSRStyles"
+import { ServerStyleSheet } from "styled-components"
 import { getUser } from "Utils/getUser"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
@@ -17,7 +16,7 @@ import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 interface Resolve {
-  ServerApp?: ComponentType<any>
+  bodyHTML?: string
   redirect?: {
     url: string
   }
@@ -81,23 +80,26 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           )
         }
 
-        const { loadableState, relayData: _relayData, styleTags } = await trace(
+        const { relayData: _relayData, styleTags, bodyHTML } = await trace(
           "buildServerApp.fetch",
           (async () => {
-            // Kick off relay requests to prime cache. TODO: Remove the need to
-            // do this by using persisted queries.
-            ReactDOMServer.renderToString(<ServerApp />)
-            // Extract render queue for bundle split components using dyanamic `import()`
-            const state = await getLoadableState(<ServerApp />)
-            // Extract CSS styleTags to inject for SSR pass
-            const tags = collectSSRStyles(<ServerApp />)
+            const sheet = new ServerStyleSheet()
+            // Kick off relay requests to prime cache.
+            // TODO: Remove the need to do this by using persisted queries.
+            ReactDOMServer.renderToString(sheet.collectStyles(<ServerApp />))
             // Get serializable Relay data for rehydration on the client
             const data = await relayEnvironment.relaySSRMiddleware.getCache()
+            // Render tree again, but this time with Relay data being available.
+            const html = ReactDOMServer.renderToString(
+              sheet.collectStyles(<ServerApp />)
+            )
+            // Extract CSS styleTags to inject for SSR pass
+            const tags = sheet.getStyleTags()
 
             return {
-              loadableState: state,
               relayData: data,
               styleTags: tags,
+              bodyHTML: html,
             }
           })()
         )
@@ -107,23 +109,31 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
 
         // Build up script tags to inject into head
         const scripts = []
-        if (loadableState) {
-          scripts.push(loadableState.getScriptTag())
-        }
-
         scripts.push(`
           <script>
             var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
           </script>
         `)
 
-        resolve({
-          ServerApp,
+        const result = {
+          bodyHTML,
           status,
           headTags,
           styleTags,
           scripts: scripts.join("\n"),
-        })
+        }
+
+        // Only exporting this for testing purposes, don't go around using this
+        // elsewhere, we’re serious.
+        if (typeof jest !== "undefined") {
+          Object.defineProperty(
+            result,
+            __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
+            { value: ServerApp }
+          )
+        }
+
+        resolve(result)
       } catch (error) {
         console.error("[Artsy/Router/buildServerApp] Error:", error)
         reject(error)
@@ -131,6 +141,9 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
     })
   )
 }
+
+export const __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__ =
+  typeof jest !== "undefined" ? Symbol() : null
 
 /**
  * FIXME: Relay SSR middleware is passing a _res object across which
