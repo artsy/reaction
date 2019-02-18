@@ -1,4 +1,4 @@
-import { color, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import match from "autosuggest-highlight/match"
 import parse from "autosuggest-highlight/parse"
 import React, { SFC } from "react"
@@ -9,9 +9,18 @@ interface Props {
 }
 
 export const SuggestionItem: SFC<Props> = ({ display, label, query }) => {
+  if (label === "FirstItem") {
+    return (
+      <Box pl={3} pb={3}>
+        Search "{query}"
+      </Box>
+    )
+  }
+
   const matches = match(display, query)
   const parts = parse(display, matches)
 
+  // TODO: Center text vertically
   return (
     <Flex pl={3} pb={3} justifyContent="center" flexDirection="column">
       <Serif size="2">

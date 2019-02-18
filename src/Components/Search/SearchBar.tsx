@@ -27,6 +27,7 @@ const AutosuggestContainer = styled(Box)`
       ul {
         list-style-type: none;
         padding: 0;
+        margin: 0;
       }
     }
   }
@@ -41,7 +42,7 @@ const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 
 interface State {
   /* Holds current input */
-  input: string
+  term: string
   /* For preview generation of selected items */
   entityID: string
   entityType: string
@@ -52,24 +53,22 @@ export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
 
   state = {
-    input: "",
+    term: "",
     entityID: null,
     entityType: null,
     focused: false,
   }
 
-  storeInputReference = autosuggest => {
-    if (autosuggest != null) {
-      this.input = autosuggest.input
-    }
-  }
-
   // Throttled method to toggle previews.
   throttledOnSuggestionHighlighted = ({ suggestion }) => {
-    if (!suggestion) return null
+    if (!suggestion) return
+
     const {
       node: { searchableType: entityType, id: entityID },
     } = suggestion
+
+    if (entityType === "FirstItem") return
+
     this.setState({ entityType, entityID })
   }
 
@@ -98,8 +97,8 @@ export class SearchBar extends Component<Props, State> {
     )
   }
 
-  searchTextChanged = (_e, { newValue: input }) => {
-    this.setState({ input })
+  searchTextChanged = (_e, { newValue: term }) => {
+    this.setState({ term })
   }
 
   onFocus = () => {
@@ -111,7 +110,7 @@ export class SearchBar extends Component<Props, State> {
   }
 
   onSuggestionsClearRequested = () => {
-    this.setState({ input: "", entityID: null, entityType: null })
+    this.setState({ term: "", entityID: null, entityType: null })
   }
 
   // Navigate to selected search item.
@@ -127,29 +126,32 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderPreview() {
-    const { entityID, entityType } = this.state
-    if (entityID && entityType) {
-      return <SearchPreview entityID={entityID} entityType={entityType} />
-    }
+    const { entityID, entityType, focused } = this.state
+    if (!focused) return
+
+    return <SearchPreview entityID={entityID} entityType={entityType} />
   }
 
-  renderSuggestionsContainer = ({ containerProps, children, query }) => {
+  renderSuggestionsContainer = (
+    { containerProps, children, query },
+    { xs }
+  ) => {
     const { focused } = this.state
 
-    let firstItem = null
-    if (query) {
-      firstItem = <Box>Search "{query}"</Box>
-    } else if (focused) {
-      firstItem = <Box>{PLACEHOLDER}</Box>
+    let emptyState = null
+    if (!xs && !query && focused) {
+      emptyState = (
+        <Box pb={3} pl={3}>
+          {PLACEHOLDER}
+        </Box>
+      )
     }
     return (
       <Box {...containerProps}>
         <Flex flexDirection={["column", "row"]}>
           <Box width={["100%", "50%"]}>
             <Flex flexDirection="column">
-              <Box mt={3} pl={3}>
-                {firstItem}
-              </Box>
+              {emptyState}
               {children}
             </Flex>
           </Box>
@@ -159,6 +161,10 @@ export class SearchBar extends Component<Props, State> {
         </Flex>
       </Box>
     )
+  }
+
+  getSuggestionValue = ({ node: { displayLabel } }) => {
+    return displayLabel
   }
 
   renderSuggestion = (
@@ -177,38 +183,46 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderInputComponent = inputProps => (
-    <Box>
-      <Input style={{ width: "100%" }} {...inputProps} />
-    </Box>
+    <Input style={{ width: "100%" }} {...inputProps} />
   )
 
   renderAutosuggestComponent({ xs }) {
-    const { input } = this.state
+    const { term } = this.state
     const { viewer } = this.props
-    const edges = get(viewer, v => v.search.edges, [])
 
     const inputProps = {
       onChange: this.searchTextChanged,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
       placeholder: xs ? "" : PLACEHOLDER,
-      value: input,
+      value: term,
     }
 
+    const firstSuggestionPlaceholder = {
+      node: {
+        searchableType: "FirstItem",
+        displayLabel: term,
+        href: `/search?q={input}`,
+      },
+    }
+
+    const edges = get(viewer, v => v.search.edges, [])
+    const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
     return (
       <AutosuggestContainer>
         <Autosuggest
-          suggestions={edges}
+          suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
           onSuggestionsFetchRequested={this.throttledFetch}
-          getSuggestionValue={({ node: { displayLabel } }) => displayLabel}
+          getSuggestionValue={this.getSuggestionValue}
           renderSuggestion={this.renderSuggestion}
-          renderSuggestionsContainer={this.renderSuggestionsContainer}
+          renderSuggestionsContainer={props => {
+            return this.renderSuggestionsContainer(props, { xs })
+          }}
           inputProps={inputProps}
           onSuggestionSelected={this.onSuggestionSelected}
           renderInputComponent={this.renderInputComponent}
-          ref={this.storeInputReference}
         />
       </AutosuggestContainer>
     )
@@ -235,7 +249,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 10)
+        search(query: $term, mode: AUTOSUGGEST, first: 7)
           @include(if: $hasTerm) {
           edges {
             node {

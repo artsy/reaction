@@ -1,11 +1,10 @@
 import { Box } from "@artsy/palette"
-import React from "react"
-import { storiesOf } from "storybook/storiesOf"
-
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
+import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 
 storiesOf("Components/Search/SearchBar", module).add("Input", () => (
   <ContextProvider>

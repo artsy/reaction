@@ -180,6 +180,49 @@ storiesOf("Apps/Order Page/Make Offer/Payment", module)
     <Router initialRoute="/orders/123/payment" order={OfferOrderPickup} />
   ))
 
+storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
+  .add("With 'Ship'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...OfferOrderPickup,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
+          .toISOString(),
+        lastOffer: {
+          ...OfferWithTotals,
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      }}
+    />
+  ))
+  .add("With 'Pickup'", () => (
+    <Router
+      initialRoute="/orders/123/payment/new"
+      order={{
+        ...OfferOrderWithShippingDetails,
+        state: "SUBMITTED",
+        stateExpiresAt: moment()
+          .add(1, "day")
+          .toISOString(),
+        lastOffer: {
+          ...OfferWithTotals,
+          createdAt: moment()
+            .subtract(1, "day")
+            .toISOString(),
+        },
+        awaitingResponseFrom: "BUYER",
+        offers: { edges: Offers },
+        buyer: Buyer,
+      }}
+    />
+  ))
 storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
   <Router
     initialRoute="/orders/123/review"
