@@ -209,7 +209,7 @@ export class NewPaymentRoute extends Component<
                   <>
                     <Flex>
                       <CountdownTimer
-                        action="Respond"
+                        action="Submit new payment"
                         note="Expiration will end negotiations on this offer. Keep in mind the work can be sold to another buyer in the meantime."
                         countdownStart={order.lastOffer.createdAt}
                         countdownEnd={order.stateExpiresAt}
