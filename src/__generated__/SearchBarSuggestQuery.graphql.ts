@@ -29,7 +29,7 @@ query SearchBarSuggestQuery(
 }
 
 fragment SearchBar_viewer_2Mejjw on Viewer {
-  search(query: $term, mode: AUTOSUGGEST, first: 10) @include(if: $hasTerm) {
+  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {
     edges {
       node {
         __typename
@@ -68,7 +68,7 @@ return {
   "operationKind": "query",
   "name": "SearchBarSuggestQuery",
   "id": null,
-  "text": "query SearchBarSuggestQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SearchBarSuggestQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -136,7 +136,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 10,
+                    "value": 7,
                     "type": "Int"
                   },
                   {
