@@ -155,7 +155,9 @@ export class SearchBar extends Component<Props, State> {
               {children}
             </Flex>
           </Box>
-          <Box width={["100%", "50%"]}>{this.renderPreview()}</Box>
+          <Box width={["100%", "50%"]} p={3}>
+            {this.renderPreview()}
+          </Box>
         </Flex>
       </Box>
     )

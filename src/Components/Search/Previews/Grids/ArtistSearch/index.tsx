@@ -1,53 +1,46 @@
-import { ArtistSearchPreview_artist } from "__generated__/ArtistSearchPreview_artist.graphql"
+import { ArtistSearchPreview_viewer } from "__generated__/ArtistSearchPreview_viewer.graphql"
 import { ArtistSearchPreviewQuery } from "__generated__/ArtistSearchPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer } from "Artsy/SystemContext"
-import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { MarketingCollectionsPreviewFragmentContainer as MarketingCollectionsPreview } from "./MarketingCollections"
+import { RelatedArtworksPreviewFragmentContainer as RelatedArtworksPreview } from "./RelatedArtworks"
 
 interface ArtistSearchPreviewProps {
-  artist: ArtistSearchPreview_artist
+  viewer: ArtistSearchPreview_viewer
 }
 
-export class ArtistSearchPreview extends React.Component<
-  ArtistSearchPreviewProps
-> {
-  render() {
-    const { marketingCollections, artworks_connection } = this.props.artist
+export const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
+  viewer,
+}) => {
+  {
+    const { marketingCollections } = viewer.artist
 
     if (marketingCollections.length > 0) {
       return (
-        <>
-          <h1>Collections</h1>
-          {marketingCollections.map(({ title }, index) => {
-            return <div>{title}</div>
-          })}
-        </>
+        <MarketingCollectionsPreview
+          marketingCollections={marketingCollections}
+        />
       )
     }
-
-    return (
-      <ArtworkGrid artworks={artworks_connection} columnCount={[2, 3, 4]} />
-    )
+    return <RelatedArtworksPreview viewer={viewer} />
   }
 }
 
 export const ArtistSearchPreviewFragmentContainer = createFragmentContainer(
   ArtistSearchPreview,
   graphql`
-    fragment ArtistSearchPreview_artist on Artist {
-      id
-      marketingCollections {
-        title
+    fragment ArtistSearchPreview_viewer on Viewer
+      @argumentDefinitions(entityID: { type: "String!" }) {
+      artist(id: $entityID) {
+        id
+        marketingCollections {
+          title
+          ...MarketingCollectionsPreview_marketingCollections
+        }
       }
-      artworks_connection(
-        first: 8
-        filter: [IS_FOR_SALE]
-        sort: PUBLISHED_AT_DESC
-      ) {
-        ...ArtworkGrid_artworks
-      }
+      ...RelatedArtworksPreview_viewer @arguments(entityID: $entityID)
     }
   `
 )
@@ -66,8 +59,8 @@ export const ArtistSearchPreviewQueryRenderer: React.SFC<{
             }}
             query={graphql`
               query ArtistSearchPreviewQuery($entityID: String!) {
-                artist(id: $entityID) {
-                  ...ArtistSearchPreview_artist
+                viewer {
+                  ...ArtistSearchPreview_viewer @arguments(entityID: $entityID)
                 }
               }
             `}

@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
@@ -19,21 +20,27 @@ storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
 
 storiesOf("Components/Search/Previews/Artist", module)
   .add("An artist with collections", () => (
-    <ContextProvider>
-      <SearchPreview entityID="kaws" entityType="Artist" />
-    </ContextProvider>
+    <Box width="450px" p={2}>
+      <ContextProvider>
+        <SearchPreview entityID="robert-indiana" entityType="Artist" />
+      </ContextProvider>
+    </Box>
   ))
   .add("An artist without collections", () => (
-    <ContextProvider>
-      <SearchPreview entityID="douglas-gordon" entityType="Artist" />
-    </ContextProvider>
+    <Box width="450px" p={2}>
+      <ContextProvider>
+        <SearchPreview entityID="douglas-gordon" entityType="Artist" />
+      </ContextProvider>
+    </Box>
   ))
 
 storiesOf("Components/Search/Previews/MerchandisableArtworks", module).add(
   "No query",
   () => (
-    <ContextProvider>
-      <SearchPreview entityID="" entityType="" />
-    </ContextProvider>
+    <Box width="450px" p={2}>
+      <ContextProvider>
+        <SearchPreview entityID="" entityType="" />
+      </ContextProvider>
+    </Box>
   )
 )

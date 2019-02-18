@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { ArtistSearchPreview_viewer$ref } from "./ArtistSearchPreview_viewer.graphql";
-export type ArtistSearchPreviewQueryVariables = {
+export type TestsQueryVariables = {
     readonly entityID: string;
 };
-export type ArtistSearchPreviewQueryResponse = {
+export type TestsQueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": ArtistSearchPreview_viewer$ref;
     }) | null;
 };
-export type ArtistSearchPreviewQuery = {
-    readonly response: ArtistSearchPreviewQueryResponse;
-    readonly variables: ArtistSearchPreviewQueryVariables;
+export type TestsQuery = {
+    readonly response: TestsQueryResponse;
+    readonly variables: TestsQueryVariables;
 };
 
 
 
 /*
-query ArtistSearchPreviewQuery(
+query TestsQuery(
   $entityID: String!
 ) {
   viewer {
@@ -100,13 +100,13 @@ v2 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtistSearchPreviewQuery",
+  "name": "TestsQuery",
   "id": null,
-  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query TestsQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtistSearchPreviewQuery",
+    "name": "TestsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -138,7 +138,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtistSearchPreviewQuery",
+    "name": "TestsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -362,5 +362,5 @@ return {
   }
 };
 })();
-(node as any).hash = '100a9c154c850d116db5be114bf3618d';
+(node as any).hash = '3d8845197006fd8912e4fdc0a8102957';
 export default node;

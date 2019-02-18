@@ -23,16 +23,20 @@ const MerchandisableArtworksPreview: React.SFC<
   ).map(x => x.node)
 
   const merchandisableItems = artworks.map((artwork, i) => (
-    <PreviewGridItem artwork={artwork} key={i} />
+    <Box width="50%">
+      <PreviewGridItem artwork={artwork} key={i} />
+    </Box>
   ))
 
   return (
     <Box>
-      <Sans size="2" weight="medium">
+      <Sans size="3" weight="medium" color="black100" mb={2}>
         Now Available for Buy Now/ Make Offer
       </Sans>
 
-      <Flex flexDirection="column">{merchandisableItems}</Flex>
+      <Flex alignItems="flex-start" flexWrap="wrap">
+        {merchandisableItems}
+      </Flex>
     </Box>
   )
 }
