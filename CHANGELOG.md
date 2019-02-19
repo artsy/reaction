@@ -1,3 +1,15 @@
+# v14.0.2 (Tue Feb 19 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Autosuggest] Link on click/enter to suggestion items [#2034](https://github.com/artsy/reaction/pull/2034) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.0.1 (Mon Feb 18 2019)
 
 
