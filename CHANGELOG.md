@@ -1,3 +1,15 @@
+# v14.0.3 (Tue Feb 19 2019)
+
+#### 🐛  Bug Fix
+
+- Fail tests on console warn and error logs [#2035](https://github.com/artsy/reaction/pull/2035) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v14.0.2 (Tue Feb 19 2019)
 
 #### 🐛  Bug Fix
