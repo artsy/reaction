@@ -155,7 +155,7 @@ export class SearchBar extends Component<Props, State> {
               {children}
             </Flex>
           </Box>
-          <Box width={["100%", "50%"]} p={3}>
+          <Box width={["100%", "50%"]} pl={3}>
             {this.renderPreview()}
           </Box>
         </Flex>
@@ -168,7 +168,7 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderSuggestion = (
-    { node: { displayLabel, searchableType } },
+    { node: { displayLabel, searchableType, href } },
     { query, isHighlighted }
   ) => {
     return (
@@ -177,14 +177,15 @@ export class SearchBar extends Component<Props, State> {
           query={query}
           display={displayLabel}
           label={searchableType}
+          href={href}
         />
       </Box>
     )
   }
 
-  renderInputComponent = inputProps => (
-    <Input style={{ width: "100%" }} {...inputProps} />
-  )
+  renderInputComponent = inputProps => {
+    return <Input style={{ width: "100%" }} {...inputProps} />
+  }
 
   renderAutosuggestComponent({ xs }) {
     const { term } = this.state
@@ -202,7 +203,7 @@ export class SearchBar extends Component<Props, State> {
       node: {
         searchableType: "FirstItem",
         displayLabel: term,
-        href: `/search?q={input}`,
+        href: `/search?q=${term}`,
       },
     }
 
