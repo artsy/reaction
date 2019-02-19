@@ -19,7 +19,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
  * The `title` and `description` props are rendered above the input.
  *
  */
-export const Input: React.ComponentType<InputProps> = React.forwardRef(
+export const Input: React.ExoticComponent<InputProps> = React.forwardRef(
   ({ error, title, description, ...rest }, ref) => {
     return (
       <Container>
