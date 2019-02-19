@@ -6,9 +6,10 @@ import React from "react"
 import styled from "styled-components"
 import { borderedInput } from "./Mixins"
 
+import { ExtractProps } from "Utils/ExtractProps"
 import { InputError } from "./Input"
 
-export interface QuickInputProps extends React.HTMLProps<HTMLInputElement> {
+export interface QuickInputProps extends ExtractProps<typeof InputComponent> {
   block?: boolean
   error?: string
   label?: string
@@ -124,7 +125,7 @@ const Container = styled.div`
   padding-bottom: ${space(0.5)}px;
 `
 
-const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
+const InputComponent = styled.input`
   ${garamond("s17")};
   border: 0;
   outline: none;
@@ -137,7 +138,7 @@ const InputComponent = styled.input.attrs<{ showLabel: boolean }>({})`
   height: 100%;
   padding: 0 ${space(1)}px;
   line-height: initial;
-  ${props =>
+  ${(props: { showLabel?: boolean }) =>
     props.showLabel && `padding: ${space(1)}px ${space(1)}px 0 ${space(1)}px`};
 `
 

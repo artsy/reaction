@@ -1,9 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import { ExtractProps } from "Utils/ExtractProps"
 import Icon from "../Icon"
-import Button, { ButtonProps } from "./Default"
+import Button from "./Default"
 
-const TwitterButton = (props: ButtonProps) => {
+// TODO: refactor ButtonProps so this isn't necessary
+const TwitterButton = (props: ExtractProps<typeof Button>) => {
   const icon = <Icon name="twitter" color="white" />
   return (
     <Button {...props} icon={icon}>

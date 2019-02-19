@@ -1,12 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { ExtractProps } from "Utils/ExtractProps"
 import Icon from "../Icon"
-import Button, { ButtonProps } from "./Default"
+import Button from "./Default"
 
-const FacebookButton = (props: ButtonProps) => {
+// TODO: refactor ButtonProps so this isn't necessary
+const FacebookButton = (props: ExtractProps<typeof Button>) => {
   const icon = <Icon name="facebook" color={props.color || "white"} />
   return (
-    <Button {...props} icon={icon}>
+    <Button {...props as any} icon={icon}>
       {props.children || "Log in with Facebook"}
     </Button>
   )

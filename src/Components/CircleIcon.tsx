@@ -19,7 +19,8 @@ const CircleIconContainer = (styled.div as StyledFunction<CircleIconProps>)`
 `
 
 const CircleIcon: React.SFC<CircleIconProps> = (props: CircleIconProps) => {
-  const { ref, ...reminderProps } = props
+  // TODO: refactor this to be less messy and easier to type
+  const { ref, ...reminderProps } = props as any
 
   return (
     <CircleIconContainer {...reminderProps}>
