@@ -1,16 +1,15 @@
 import { Checkmark } from "Assets/Checkmark"
 import { garamond } from "Assets/Fonts"
-import React, { Component, HTMLProps } from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
+import { ExtractProps } from "Utils/ExtractProps"
 import colors from "../Assets/Colors"
 
 export interface CheckboxState {
   checked: boolean
 }
 
-export interface CheckboxProps extends HTMLProps<HTMLInputElement> {
-  error?: boolean
-}
+export type CheckboxProps = ExtractProps<typeof CheckboxInput>
 
 export class Checkbox extends Component<CheckboxProps, CheckboxState> {
   constructor(props) {
@@ -84,7 +83,7 @@ const PositionedCheckmark = styled(Checkmark)`
   margin-left: 3px;
 `
 
-const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
+const CheckboxInput = styled.input`
   width: 20px;
   height: 20px;
   position: absolute;
@@ -104,7 +103,8 @@ const CheckboxInput = styled.input.attrs<CheckboxProps>({})`
     box-sizing: border-box;
     background-color: ${colors.white};
     border: 2px solid
-      ${({ error }) => (error ? colors.redMedium : colors.grayRegular)};
+      ${({ error }: { error?: boolean }) =>
+        error ? colors.redMedium : colors.grayRegular};
   }
 
   &:checked::after {

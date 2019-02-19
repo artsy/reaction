@@ -1,4 +1,4 @@
-import React, { Children, cloneElement } from "react"
+import React, { Children, cloneElement, ReactElement } from "react"
 import Transition, { TransitionProps } from "react-transition-group/Transition"
 import styled from "styled-components"
 import { createGlobalStyle } from "styled-components"
@@ -38,7 +38,7 @@ class Fade extends React.Component<TransitionProps> {
     return (
       <Transition {...newProps} timeout={FADE_DURATION}>
         {(status, innerProps) =>
-          cloneElement(Children.only(children), {
+          cloneElement(Children.only(children) as ReactElement, {
             ...innerProps,
             className: `fade ${this.fadeStyles[status]}`,
           })
