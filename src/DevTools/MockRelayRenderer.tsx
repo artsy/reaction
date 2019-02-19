@@ -22,6 +22,7 @@ export interface MockRelayRendererProps<
   T extends OperationBase = OperationDefaults
 > {
   Component: RelayContainer<T["response"]>
+  componentProps?: object
   variables?: T["variables"]
   query: GraphQLTaggedNode
   /**
@@ -223,7 +224,10 @@ export class MockRelayRenderer<
               // We rely on renderWithLoadProgress to throw an error in the test
               // env ASAP. When we extract these test helpers to their own package
               // that will need to be handled explicitly.
-              render={renderWithLoadProgress(Component as any)}
+              render={renderWithLoadProgress(
+                Component as any,
+                this.props.componentProps
+              )}
             />
           </ContextProvider>
         )}

@@ -35,6 +35,7 @@ export const ArtworksGridEdges = [
       is_inquireable: true,
       id: "kaws-pinocchio-3",
       is_saved: false,
+      is_offerable: false,
     },
   },
   {
@@ -73,6 +74,7 @@ export const ArtworksGridEdges = [
       is_inquireable: true,
       id: "kaws-kaws-x-undercover-5",
       is_saved: false,
+      is_offerable: false,
     },
   },
   {
@@ -111,6 +113,7 @@ export const ArtworksGridEdges = [
       is_inquireable: true,
       id: "kaws-kaws-x-undercover-4",
       is_saved: false,
+      is_offerable: false,
     },
   },
   {
@@ -142,6 +145,8 @@ export const ArtworksGridEdges = [
       title: "PASSING THROUGH BROWN (OPEN EDITION)",
       __id: "QXJ0d29yazprYXdzLXBhc3NpbmctdGhyb3VnaC1icm93bi1vcGVuLWVkaXRpb24=",
       _id: "5b9c4afc2779fa4c5c47a748",
+      is_offerable: false,
+      artists: null,
     },
   },
 ]
