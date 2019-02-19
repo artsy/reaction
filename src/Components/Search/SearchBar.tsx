@@ -76,10 +76,10 @@ const SuggestionContainer = ({
 }) => {
   return (
     <AutosuggestWrapper flexDirection={["column", "row"]} {...containerProps}>
-      <SuggestionListWrapper width={["100%"]}>
+      <SuggestionListWrapper width={"100%"}>
         <Flex flexDirection="column">{children}</Flex>
       </SuggestionListWrapper>
-      <PreviewListWrapper width={["100%", "50%"]} pl={3}>
+      <PreviewListWrapper width={"450px"} pl={3}>
         {preview}
       </PreviewListWrapper>
     </AutosuggestWrapper>
