@@ -49,6 +49,43 @@ interface State {
   focused: boolean
 }
 
+const AutosuggestWrapper = styled(Box)`
+  background: red;
+  position: relative;
+`
+
+const SuggestionListWrapper = styled(Box)`
+  background-color: green;
+  position: absolute;
+  left: 0;
+  right: 0;
+`
+
+const PreviewListWrapper = styled(Box)`
+  background-color: blue;
+  position: absolute;
+  left: 100%;
+`
+
+const SuggestionContainer = ({
+  children,
+  containerProps,
+  focused,
+  query,
+  preview,
+}) => {
+  return (
+    <AutosuggestWrapper flexDirection={["column", "row"]} {...containerProps}>
+      <SuggestionListWrapper width={["100%"]}>
+        <Flex flexDirection="column">{children}</Flex>
+      </SuggestionListWrapper>
+      <PreviewListWrapper width={["100%", "50%"]} pl={3}>
+        {preview}
+      </PreviewListWrapper>
+    </AutosuggestWrapper>
+  )
+}
+
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
 
@@ -146,20 +183,19 @@ export class SearchBar extends Component<Props, State> {
         </Box>
       )
     }
+
+    const props = {
+      children,
+      containerProps,
+      focused,
+      query,
+      preview: this.renderPreview(),
+    }
+
     return (
-      <Box {...containerProps}>
-        <Flex flexDirection={["column", "row"]}>
-          <Box width={["100%", "50%"]}>
-            <Flex flexDirection="column">
-              {emptyState}
-              {children}
-            </Flex>
-          </Box>
-          <Box width={["100%", "50%"]} pl={3}>
-            {this.renderPreview()}
-          </Box>
-        </Flex>
-      </Box>
+      <SuggestionContainer {...props}>
+        {emptyState || children}
+      </SuggestionContainer>
     )
   }
 
