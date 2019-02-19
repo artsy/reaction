@@ -10,12 +10,15 @@ import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
 import React, { ComponentType } from "react"
 import { getUser } from "Utils/getUser"
+import createLogger from "Utils/logger"
 import { RouterConfig } from "./"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 
 interface Resolve {
   ClientApp: ComponentType<any>
 }
+
+const logger = createLogger("Artsy/Router/buildClientApp.tsx")
 
 export function buildClientApp(config: RouterConfig): Promise<Resolve> {
   return new Promise(async (resolve, reject) => {
@@ -85,7 +88,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         ClientApp,
       })
     } catch (error) {
-      console.error("[Artsy/Router/buildClientApp]", error)
+      logger.error(error)
       reject(error)
     }
   })
