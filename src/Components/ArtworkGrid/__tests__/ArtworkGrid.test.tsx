@@ -4,6 +4,7 @@ import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { ExtractProps } from "Utils/ExtractProps"
 import { ArtworkGridItem } from "../../Artwork/GridItem"
 import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
@@ -18,7 +19,10 @@ jest.unmock("react-relay")
 global.clearInterval = jest.fn()
 
 const TestContainer = createFragmentContainer(
-  ({ artist, ...props }: ArtworkGridProps & { artist: ArtworkGrid_artist }) => {
+  ({
+    artist,
+    ...props
+  }: ExtractProps<typeof ArtworkGrid> & { artist: ArtworkGrid_artist }) => {
     return <ArtworkGrid {...props} artworks={artist.artworks_connection} />
   },
   graphql`
