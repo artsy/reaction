@@ -35,6 +35,11 @@ if (typeof window !== "undefined") {
 }
 
 if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
+  const originalLoggers = {
+    error: console.error,
+    warn: console.warn,
+  }
+
   function logToError(type, args, constructorOpt: () => void) {
     const explanation =
       chalk.white(`Test failed due to \`console.${type}(…)\` call.\n`) +
@@ -55,8 +60,11 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
 
   beforeEach(done => {
     ;["error", "warn"].forEach((type: "error" | "warn") => {
-      const handler = (...args) => done.fail(logToError(type, args, handler))
-      jest.spyOn(console, type).mockImplementation(handler)
+      // Don't spy on loggers that have been modified by the current test.
+      if (console[type] === originalLoggers[type]) {
+        const handler = (...args) => done.fail(logToError(type, args, handler))
+        jest.spyOn(console, type).mockImplementation(handler)
+      }
     })
     done() // it is important to call this here or every test will timeout
   })
