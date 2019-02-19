@@ -88,15 +88,18 @@ describe("SearchBar", () => {
     expect(component.find(Input).props().placeholder).toBe("")
   })
 
-  // FIXME: Reenable after styled components 4 upgrade
-  xit("navigates the user when clicking on an item", async done => {
+  it("navigates the user when clicking on an item", async () => {
     const component = await getWrapper(searchResults)
 
     simulateTyping(component, "blah") // Any text of non-zero length.
     await flushPromiseQueue()
 
     window.location.assign = jest.fn()
-    component.find(SuggestionItem).simulate("click")
+    component
+      .find(SuggestionItem)
+      .at(1) // at 0 is the firstSuggestionPlaceholder
+      .simulate("click")
+
     expect(window.location.assign).toHaveBeenCalledWith("/cat/percy-z")
   })
 
