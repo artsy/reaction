@@ -1,7 +1,7 @@
 import { color, space } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
-import React, { SFC } from "react"
+import React from "react"
 import styled from "styled-components"
 import { block } from "./Helpers"
 import { borderedInput } from "./Mixins"
@@ -19,21 +19,18 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
  * The `title` and `description` props are rendered above the input.
  *
  */
-export const Input: SFC<InputProps> = ({
-  error,
-  title,
-  description,
-  ...rest
-}) => {
-  return (
-    <Container>
-      {title && <Title>{title}</Title>}
-      {description && <Description>{description}</Description>}
-      <StyledInput hasError={!!error} {...rest} />
-      {error && <InputError>{error}</InputError>}
-    </Container>
-  )
-}
+export const Input: React.ComponentType<InputProps> = React.forwardRef(
+  ({ error, title, description, ...rest }, ref) => {
+    return (
+      <Container>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
+        <StyledInput ref={ref} hasError={!!error} {...rest} />
+        {error && <InputError>{error}</InputError>}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.div`
   padding-bottom: ${space(0.5)}px;
