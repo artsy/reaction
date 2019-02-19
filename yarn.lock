@@ -12,16 +12,16 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.0.4.tgz#5ef384a448e72c44ebe1577b62066e445b773986"
-  integrity sha512-1oew/LPB2dy+zMAH26lcZN1WBnDInP4qu3varjxucpj6BVDIHoi/T34gdbxFI0AJ9/xT8gjKlgrg5Wf+pWH/xw==
+"@artsy/palette@3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.0.6.tgz#ba613bae4b6072ace319635aa0a5ce2955b12fd4"
+  integrity sha512-vvY314vqQEqOYUmJ29fnwY2DbnI1jKgrf/TieJmILJfh/e9JHXaewMG7q8JcPfLQqQqsv9uNtiNShyzBkAhM1g==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
     moment-timezone "^0.5.23"
     rc-slider "^8.6.2"
-    react "^16.5.0"
+    react "^16.8.2"
     react-live "^1.12.0"
     react-powerplug "^1.0.0"
     react-spring "^5.7.2"
@@ -11682,7 +11682,7 @@ react-waypoint@^7.3.3:
     consolidated-events "^1.1.0"
     prop-types "^15.0.0"
 
-react@16.8.2, react@^16.5.0, react@^16.8.2:
+react@16.8.2, react@^16.8.2:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.2.tgz#83064596feaa98d9c2857c4deae1848b542c9c0c"
   integrity sha512-aB2ctx9uQ9vo09HVknqv3DGRpI7OIGJhCx3Bt0QqoRluEjHSaObJl+nG12GDdYH6sTgE7YiPJ6ZUyMx9kICdXw==
