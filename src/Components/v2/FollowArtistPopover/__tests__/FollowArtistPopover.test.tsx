@@ -6,8 +6,6 @@ import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 
-jest.unmock("react-relay")
-
 describe("Follow Artist Popover", () => {
   let wrapper: ReactWrapper
 

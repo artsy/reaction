@@ -1,7 +1,6 @@
+import { ArtworkGrid_artist } from "__generated__/ArtworkGrid_artist.graphql"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { renderRelayTree } from "DevTools"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
-import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -10,6 +9,7 @@ import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
   ArtworkGridContainer,
   ArtworkGridContainerState,
+  ArtworkGridProps,
   createSectionedArtworks,
 } from "../ArtworkGrid"
 import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
@@ -18,8 +18,8 @@ jest.unmock("react-relay")
 global.clearInterval = jest.fn()
 
 const TestContainer = createFragmentContainer(
-  (props: any) => {
-    return <ArtworkGrid artworks={props.artist.artworks_connection} />
+  ({ artist, ...props }: ArtworkGridProps & { artist: ArtworkGrid_artist }) => {
+    return <ArtworkGrid {...props} artworks={artist.artworks_connection} />
   },
   graphql`
     fragment ArtworkGrid_artist on Artist {
@@ -98,9 +98,13 @@ describe("ArtworkGrid", () => {
   })
 
   describe("when rendering", () => {
-    const getRelayWrapper = async (artworks = ArtworkGridFixture) => {
+    const getRelayWrapper = async ({
+      artworks,
+      ...componentProps
+    }: ArtworkGridProps) => {
       return await renderRelayTree({
         Component: TestContainer,
+        componentProps,
         query: graphql`
           query ArtworkGrid_Test_Query {
             artist(id: "pablo-picasso") {
@@ -108,76 +112,65 @@ describe("ArtworkGrid", () => {
             }
           }
         `,
-        mockResolvers: {
-          Artist: () => ({ artworks_connection: artworks }),
-          ArtworkConnection: () => artworks,
+        mockData: {
+          artist: { artworks_connection: artworks },
         },
       })
     }
 
     let props
-    const getWrapper = passedProps => {
-      return mount(
-        <RelayStubProvider>
-          <ArtworkGridContainer {...passedProps} />
-        </RelayStubProvider>
-      )
-    }
 
     beforeEach(() => {
       props = {
-        artworks: ArtworkGridFixture,
+        artworks: cloneDeep(ArtworkGridFixture),
       }
     })
 
     it("Renders artworks if present", async () => {
-      const wrapper = await getRelayWrapper()
+      const wrapper = await getRelayWrapper(props)
       expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
       expect(wrapper.find(ArtworkGridItem).length).toBe(4)
     })
 
     it("Renders empty message if no artworks", async () => {
-      const emptyArtworks = cloneDeep(ArtworkGridFixture)
-      emptyArtworks.edges = []
-      const wrapper = await getRelayWrapper(emptyArtworks)
+      props.artworks.edges = []
+      const wrapper = await getRelayWrapper(props)
       expect(wrapper.find(ArtworkGridEmptyState).exists()).toBeTruthy()
     })
 
-    it("Can call onClearFilters from empty message", () => {
-      const emptyArtworks = cloneDeep(ArtworkGridFixture)
-      emptyArtworks.edges = []
-      props.artworks = emptyArtworks
+    it("Can call onClearFilters from empty message", async () => {
+      props.artworks.edges = []
       props.onClearFilters = jest.fn()
-      const wrapper = getWrapper(props)
+      const wrapper = await getRelayWrapper(props)
       wrapper.find("a").simulate("click")
       expect(props.onClearFilters).toBeCalled()
     })
 
-    it("#componentDidMount sets state.interval if props.onLoadMore", () => {
+    it("#componentDidMount sets state.interval if props.onLoadMore", async () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props).find(ArtworkGridContainer)
+      const wrapper = (await getRelayWrapper(props)).find(ArtworkGridContainer)
       const { interval } = wrapper.state() as ArtworkGridContainerState
       expect(interval).toBeGreaterThan(0)
     })
 
-    it("#componentWillUnmount calls #clearInterval if state.interval exists", () => {
+    it("#componentWillUnmount calls #clearInterval if state.interval exists", async () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props).find(ArtworkGridContainer)
+      const wrapper = (await getRelayWrapper(props)).find(ArtworkGridContainer)
       wrapper.instance().componentWillUnmount()
       expect(global.clearInterval).toBeCalled()
     })
 
-    it("#maybeLoadMore calls props.onLoadMore if scroll position is at end", () => {
+    it("#maybeLoadMore calls props.onLoadMore if scroll position is at end", async () => {
       props.onLoadMore = jest.fn()
-      const wrapper = getWrapper(props)
+      const wrapper = (await getRelayWrapper(props))
         .find(ArtworkGridContainer)
         .instance() as ArtworkGridContainer
       wrapper.maybeLoadMore()
       expect(props.onLoadMore).toBeCalled()
     })
 
-    it("#sectionedArtworks divides artworks into columns", () => {
-      const wrapper = getWrapper(props)
+    it("#sectionedArtworks divides artworks into columns", async () => {
+      const wrapper = (await getRelayWrapper(props))
         .find(ArtworkGridContainer)
         .instance() as ArtworkGridContainer
       const artworks = wrapper.sectionedArtworksForAllBreakpoints(
@@ -187,8 +180,8 @@ describe("ArtworkGrid", () => {
       expect(artworks[0].length).toBe(2)
     })
 
-    it("Renders artworks if present", () => {
-      const wrapper = getWrapper(props).find(ArtworkGridContainer)
+    it("Renders artworks if present", async () => {
+      const wrapper = (await getRelayWrapper(props)).find(ArtworkGridContainer)
       expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
       expect(wrapper.find(ArtworkGridItem).length).toBe(4)
     })

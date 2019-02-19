@@ -1,6 +1,8 @@
+import chalk from "chalk"
 import Enzyme from "enzyme"
 import Adapter from "enzyme-adapter-react-16"
 import "regenerator-runtime/runtime"
+import { format } from "util"
 
 jest.mock("react-tracking")
 import _track from "react-tracking"
@@ -32,48 +34,38 @@ if (typeof window !== "undefined") {
   HTMLMediaElement.prototype.play = jest.fn()
 }
 
-/**
- * Fail tests that log errors or warnings, because these can point to actual
- * bugs and once there are already a few of these the person writing new code
- * will start ignoring them.
- *
- * If a test is expected to log an error or a warning, mock it so the output
- * doesn’t actually show up.
- */
-const logAndThrow = loggerFn => {
-  // tslint:disable-next-line:only-arrow-functions
-  const imp = function(message) {
-    // Dont log warnings from RelayStubProvier
-    if (
-      typeof message === "string" &&
-      message.includes("Warning: RelayModernSelector")
-    ) {
-      return false
-    }
+if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
+  const originalLoggers = {
+    error: console.error,
+    warn: console.warn,
+  }
 
-    // Keep default logging behaviour
-    loggerFn.apply(console, arguments)
-    if (message instanceof Error) {
-      throw message
+  function logToError(type, args, constructorOpt: () => void) {
+    const explanation =
+      chalk.white(`Test failed due to \`console.${type}(…)\` call.\n`) +
+      chalk.gray("(Disable with ALLOW_CONSOLE_LOGS=true env variable.)\n\n")
+    if (args[0] instanceof Error) {
+      const msg = explanation + chalk.red(args[0].message)
+      const err = new Error(msg)
+      err.stack = args[0].stack.replace(`Error: ${args[0].message}`, msg)
+      return err
     } else {
-      const err = new Error(message)
-      // Skip this frame in the stack to point to the actual log call-site
-      Error.captureStackTrace(err, imp)
-
-      // FIXME:
-      // Because we're throwing non-errors, its stopping execution
-      // and failing our tests when library code warns in certain ways. This
-      // creates problems for invariants and other strict checks in
-      // styled-components 4. With the below ccommented out we still get good
-      // logs.
-
-      // throw err
-      // console.log(err)
+      const err = new Error(
+        explanation + chalk.red(format(args[0], ...args.slice(1)))
+      )
+      Error.captureStackTrace(err, constructorOpt)
+      return err
     }
   }
-  return imp
+
+  beforeEach(done => {
+    ;["error", "warn"].forEach((type: "error" | "warn") => {
+      // Don't spy on loggers that have been modified by the current test.
+      if (console[type] === originalLoggers[type]) {
+        const handler = (...args) => done.fail(logToError(type, args, handler))
+        jest.spyOn(console, type).mockImplementation(handler)
+      }
+    })
+    done() // it is important to call this here or every test will timeout
+  })
 }
-const originalConsoleError = console.error
-const originalWarnError = console.warn
-console.error = logAndThrow(originalConsoleError)
-console.warn = logAndThrow(originalWarnError)

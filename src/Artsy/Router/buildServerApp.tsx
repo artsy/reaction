@@ -9,6 +9,7 @@ import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
 import { getUser } from "Utils/getUser"
+import createLogger from "Utils/logger"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
 import { RouterConfig } from "./"
@@ -28,6 +29,8 @@ interface Resolve {
 
 // No need to invoke this for each request.
 const MediaStyle = createMediaStyle()
+
+const logger = createLogger("Artsy/Router/buildServerApp.tsx")
 
 export interface ServerRouterConfig extends RouterConfig {
   userAgent?: string
@@ -135,7 +138,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
 
         resolve(result)
       } catch (error) {
-        console.error("[Artsy/Router/buildServerApp] Error:", error)
+        logger.error(error)
         reject(error)
       }
     })
