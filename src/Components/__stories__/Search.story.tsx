@@ -3,6 +3,7 @@ import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
+import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"
@@ -87,6 +88,29 @@ storiesOf("Components/Search/SearchBar", module).add("Input", () => (
 storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
   <ContextProvider>
     <SearchSuggestions term="andy" />
+  </ContextProvider>
+))
+
+storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
+  <ContextProvider>
+    <SuggestionItem
+      display="display one"
+      label="FirstItem"
+      query="a query"
+      href="/"
+    />
+    <SuggestionItem
+      display="display two"
+      label="label two"
+      query="a query"
+      href="/"
+    />
+    <SuggestionItem
+      display="display three"
+      label="label three"
+      query="a query"
+      href="/"
+    />
   </ContextProvider>
 ))
 

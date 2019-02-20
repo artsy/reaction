@@ -19,6 +19,7 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { SuggestionItemContainer } from "./Suggestions/SuggestionItemContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
@@ -182,9 +183,7 @@ export class SearchBar extends Component<Props, State> {
     let emptyState = null
     if (!xs && !query && focused) {
       emptyState = (
-        <Box pb={3} pl={3}>
-          {PLACEHOLDER}
-        </Box>
+        <SuggestionItemContainer>{PLACEHOLDER}</SuggestionItemContainer>
       )
     }
 
