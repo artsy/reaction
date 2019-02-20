@@ -19,6 +19,7 @@ interface Props {
   onExpand?: () => void
   relatedArticlesForCanvas?: RelatedArticleCanvasData[]
   renderTime?: number
+  showCollectionsRail?: boolean
   tracking?: TrackingProp
 }
 
@@ -79,6 +80,7 @@ export class NewsLayout extends Component<Props, State> {
       isMobile,
       relatedArticlesForCanvas,
       renderTime,
+      showCollectionsRail,
     } = this.props
     const { isTruncated, isHovered } = this.state
 
@@ -120,6 +122,7 @@ export class NewsLayout extends Component<Props, State> {
             display={display}
             relatedArticles={relatedArticlesForCanvas}
             renderTime={renderTime}
+            showCollectionsRail={showCollectionsRail}
           />
         )}
       </NewsContainer>

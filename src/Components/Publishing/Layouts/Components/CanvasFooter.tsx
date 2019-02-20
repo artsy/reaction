@@ -14,6 +14,7 @@ export interface CanvasFooterProps {
   relatedArticles?: RelatedArticleCanvasData[]
   article: ArticleData
   renderTime?: number
+  showCollectionsRail?: boolean
 }
 
 export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {

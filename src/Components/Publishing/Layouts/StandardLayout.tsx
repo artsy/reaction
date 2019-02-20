@@ -72,6 +72,7 @@ export class StandardLayout extends React.Component<
       relatedArticlesForPanel,
       renderTime,
       showTooltips,
+      showCollectionsRail,
       isSuper,
     } = this.props
     const { isTruncated } = this.state
@@ -137,6 +138,7 @@ export class StandardLayout extends React.Component<
                     display={display}
                     relatedArticles={relatedArticlesForCanvas}
                     renderTime={renderTime}
+                    showCollectionsRail={showCollectionsRail}
                   />
                 )}
             </ArticleWrapper>
