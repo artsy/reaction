@@ -78,7 +78,7 @@ export function createRelaySSREnvironment(config: Config = {}) {
       // or further refactoring to extract `addMiddlewareToEnvironment(environment)`,
       // to be used in the SearchBar QueryRenderer (for example).
       next => req => {
-        if (req.variables.term === "")
+        if (req.id === "SearchBarSuggestQuery" && req.variables.term === "")
           return Promise.resolve({ data: { viewer: {} } })
         return next(req)
       },
