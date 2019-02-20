@@ -1,3 +1,15 @@
+# v14.0.7 (Wed Feb 20 2019)
+
+#### 🐛  Bug Fix
+
+- Adds jest-styled-components to EditorialFeature [#2045](https://github.com/artsy/reaction/pull/2045) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v14.0.6 (Wed Feb 20 2019)
 
 #### 🐛  Bug Fix
