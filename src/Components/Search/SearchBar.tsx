@@ -297,7 +297,7 @@ export const SearchBarQueryRenderer: React.SFC = () => {
               if (props) {
                 return <SearchBarRefetchContainer viewer={props.viewer} />
               } else {
-                return null
+                return <Input placeholder={PLACEHOLDER} />
               }
             }}
           />
