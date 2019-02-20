@@ -1,3 +1,15 @@
+# v14.0.8 (Wed Feb 20 2019)
+
+#### 🐛  Bug Fix
+
+- Bump Palette to latest [#2047](https://github.com/artsy/reaction/pull/2047) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.0.7 (Wed Feb 20 2019)
 
 #### 🐛  Bug Fix
