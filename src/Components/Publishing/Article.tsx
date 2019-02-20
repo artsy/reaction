@@ -2,8 +2,7 @@ import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import Events from "../../Utils/Events"
 
-import { Theme, themeProps } from "@artsy/palette"
-import { GridThemeProvider } from "styled-bootstrap-grid"
+import { Theme } from "@artsy/palette"
 import { MediaContextProvider } from "Utils/Responsive"
 import { BannerWrapper } from "./Banner/Banner"
 import { PixelTracker } from "./Display/ExternalTrackers"
@@ -107,20 +106,15 @@ export class Article extends React.Component<ArticleProps> {
     return (
       <MediaContextProvider>
         <Theme>
-          <GridThemeProvider gridTheme={themeProps.grid}>
-            <FullScreenProvider>
-              {this.getArticleLayout()}
-              {trackingCode && (
-                <PixelTracker
-                  unit={trackingCode}
-                  date={this.props.renderTime}
-                />
-              )}
-              {this.shouldRenderSignUpCta() && (
-                <BannerWrapper article={article} />
-              )}
-            </FullScreenProvider>
-          </GridThemeProvider>
+          <FullScreenProvider>
+            {this.getArticleLayout()}
+            {trackingCode && (
+              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
+            )}
+            {this.shouldRenderSignUpCta() && (
+              <BannerWrapper article={article} />
+            )}
+          </FullScreenProvider>
         </Theme>
       </MediaContextProvider>
     )
