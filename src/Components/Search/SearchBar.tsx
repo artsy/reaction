@@ -79,7 +79,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width="450px" pl={3}>
+        <Box width="450px" pl={3} py={2}>
           {preview}
         </Box>
       </ResultsWrapper>
