@@ -2,6 +2,7 @@ import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
+import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
@@ -50,38 +51,34 @@ interface State {
 }
 
 const AutosuggestWrapper = styled(Box)`
-  background: red;
   position: relative;
 `
 
-const SuggestionListWrapper = styled(Box)`
-  background-color: green;
+const ResultsWrapper = styled(Box)`
+  width: calc(100% + 450px);
+  background-color: ${colors.white};
+  display: flex;
+  box-shadow: 1px 1px 6px ${colors.black30};
   position: absolute;
-  left: 0;
-  right: 0;
 `
 
-const PreviewListWrapper = styled(Box)`
-  background-color: blue;
-  position: absolute;
-  left: 100%;
-`
-
-const SuggestionContainer = ({
-  children,
-  containerProps,
-  focused,
-  query,
-  preview,
-}) => {
+const SuggestionContainer = ({ children, containerProps, preview }) => {
   return (
-    <AutosuggestWrapper flexDirection={["column", "row"]} {...containerProps}>
-      <SuggestionListWrapper width={"100%"}>
-        <Flex flexDirection="column">{children}</Flex>
-      </SuggestionListWrapper>
-      <PreviewListWrapper width={"450px"} pl={3}>
-        {preview}
-      </PreviewListWrapper>
+    <AutosuggestWrapper
+      width="100%"
+      flexDirection={["column", "row"]}
+      {...containerProps}
+    >
+      <ResultsWrapper>
+        <Box width="calc(100% - 450px)">
+          <Flex flexDirection="column" width="100%">
+            {children}
+          </Flex>
+        </Box>
+        <Box width="450px" pl={3}>
+          {preview}
+        </Box>
+      </ResultsWrapper>
     </AutosuggestWrapper>
   )
 }

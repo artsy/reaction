@@ -5,16 +5,27 @@ import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar
 import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import styled from "styled-components"
+
+const SearchBarContainer = styled(Box)`
+  flex-grow: 1;
+`
 
 storiesOf("Components/Search/SearchBar", module).add("Input", () => (
   <>
     <Flex>
       <Box>Artsy Logo</Box>
-      <Box width="400px">
+      <SearchBarContainer>
         <ContextProvider>
           <SearchBar />
         </ContextProvider>
-      </Box>
+      </SearchBarContainer>
+      <Box>Nav Item</Box>
+      <Box>Nav Item</Box>
+      <Box>Nav Item</Box>
+      <Box>Nav Item</Box>
+      <Box>Nav Item</Box>
+      <Box>Nav Item</Box>
       <Box>Nav Item</Box>
       <Box>Nav Item</Box>
       <Box>Nav Item</Box>
