@@ -1,3 +1,15 @@
+# v14.0.6 (Wed Feb 20 2019)
+
+#### 🐛  Bug Fix
+
+- @alloy => [Autosuggest] Allow QueryRenderer to return w/o fetching [#2039](https://github.com/artsy/reaction/pull/2039) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.0.5 (Wed Feb 20 2019)
 
 #### 🐛  Bug Fix
