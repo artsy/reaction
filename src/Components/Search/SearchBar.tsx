@@ -62,6 +62,10 @@ const ResultsWrapper = styled(Box)`
   position: absolute;
 `
 
+const SuggestionsWrapper = styled(Box)`
+  border-right: 1px solid ${colors.grayRegular};
+`
+
 const SuggestionContainer = ({ children, containerProps, preview }) => {
   return (
     <AutosuggestWrapper
@@ -70,11 +74,11 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
       {...containerProps}
     >
       <ResultsWrapper>
-        <Box width="calc(100% - 450px)">
+        <SuggestionsWrapper width="calc(100% - 450px)">
           <Flex flexDirection="column" width="100%">
             {children}
           </Flex>
-        </Box>
+        </SuggestionsWrapper>
         <Box width="450px" pl={3}>
           {preview}
         </Box>
