@@ -58,7 +58,7 @@ const ResultsWrapper = styled(Box)`
   width: calc(100% + 450px);
   background-color: ${colors.white};
   display: flex;
-  box-shadow: 1px 1px 6px ${colors.black30};
+  border: 1px solid ${colors.grayRegular};
   position: absolute;
 `
 
@@ -73,7 +73,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
       flexDirection={["column", "row"]}
       {...containerProps}
     >
-      <ResultsWrapper>
+      <ResultsWrapper mt={0.5}>
         <SuggestionsWrapper width="calc(100% - 450px)">
           <Flex flexDirection="column" width="100%">
             {children}
@@ -175,6 +175,9 @@ export class SearchBar extends Component<Props, State> {
     { xs }
   ) => {
     const { focused } = this.state
+    if (!focused) {
+      return null
+    }
 
     let emptyState = null
     if (!xs && !query && focused) {
