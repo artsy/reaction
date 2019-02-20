@@ -1,3 +1,15 @@
+# v14.0.5 (Wed Feb 20 2019)
+
+#### 🐛  Bug Fix
+
+- Updates relay schema [#2041](https://github.com/artsy/reaction/pull/2041) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v14.0.4 (Tue Feb 19 2019)
 
 #### 🐛  Bug Fix
