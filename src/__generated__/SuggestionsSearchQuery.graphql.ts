@@ -27,7 +27,7 @@ query SuggestionsSearchQuery(
 }
 
 fragment SuggestionsSearch_viewer_4hh6ED on Viewer {
-  search(query: $term, mode: AUTOSUGGEST, first: 10) {
+  search(query: $term, mode: AUTOSUGGEST, first: 5) {
     edges {
       node {
         __typename
@@ -59,7 +59,7 @@ return {
   "operationKind": "query",
   "name": "SuggestionsSearchQuery",
   "id": null,
-  "text": "query SuggestionsSearchQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 10) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SuggestionsSearchQuery(\n  $term: String!\n) {\n  viewer {\n    ...SuggestionsSearch_viewer_4hh6ED\n  }\n}\n\nfragment SuggestionsSearch_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 5) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -116,7 +116,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 10,
+                "value": 5,
                 "type": "Int"
               },
               {

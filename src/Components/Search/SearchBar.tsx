@@ -287,7 +287,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 7)
+        search(query: $term, mode: AUTOSUGGEST, first: 5)
           @include(if: $hasTerm) {
           edges {
             node {

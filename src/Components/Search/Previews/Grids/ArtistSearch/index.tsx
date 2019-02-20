@@ -35,7 +35,7 @@ export const ArtistSearchPreviewFragmentContainer = createFragmentContainer(
       @argumentDefinitions(entityID: { type: "String!" }) {
       artist(id: $entityID) {
         id
-        marketingCollections {
+        marketingCollections(size: 6) {
           title
           ...MarketingCollectionsPreview_marketingCollections
         }

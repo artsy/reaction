@@ -60,8 +60,15 @@ const node: ConcreteFragment = {
           "kind": "LinkedField",
           "alias": null,
           "name": "marketingCollections",
-          "storageKey": null,
-          "args": null,
+          "storageKey": "marketingCollections(size:6)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "size",
+              "value": 6,
+              "type": "Int"
+            }
+          ],
           "concreteType": "MarketingCollection",
           "plural": true,
           "selections": [
@@ -109,5 +116,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2fd6cd7a9f843faec6dd4fe0c43ac857';
+(node as any).hash = '75fa320234ceaf45c234aa38bdf9385d';
 export default node;

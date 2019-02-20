@@ -73,7 +73,7 @@ export const SearchSuggestionsFragmentContainer = createFragmentContainer(
   graphql`
     fragment SuggestionsSearch_viewer on Viewer
       @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
-      search(query: $term, mode: AUTOSUGGEST, first: 10) {
+      search(query: $term, mode: AUTOSUGGEST, first: 5) {
         edges {
           node {
             displayLabel

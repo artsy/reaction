@@ -29,7 +29,7 @@ query ArtistSearchPreviewQuery(
 fragment ArtistSearchPreview_viewer_1IQPhv on Viewer {
   artist(id: $entityID) {
     id
-    marketingCollections {
+    marketingCollections(size: 6) {
       title
       ...MarketingCollectionsPreview_marketingCollections
       __id: id
@@ -49,7 +49,7 @@ fragment MarketingCollectionsPreview_marketingCollections on MarketingCollection
 fragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {
   filter_artworks(aggregations: [TOTAL], sort: "-decayed_merch", artist_id: $entityID) {
     __id
-    artworks_connection(first: 8) {
+    artworks_connection(first: 10) {
       edges {
         node {
           ...PreviewGridItem_artwork
@@ -102,7 +102,7 @@ return {
   "operationKind": "query",
   "name": "ArtistSearchPreviewQuery",
   "id": null,
-  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections(size: 6) {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -177,8 +177,15 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "marketingCollections",
-                "storageKey": null,
-                "args": null,
+                "storageKey": "marketingCollections(size:6)",
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "size",
+                    "value": 6,
+                    "type": "Int"
+                  }
+                ],
                 "concreteType": "MarketingCollection",
                 "plural": true,
                 "selections": [
@@ -244,12 +251,12 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "artworks_connection",
-                "storageKey": "artworks_connection(first:8)",
+                "storageKey": "artworks_connection(first:10)",
                 "args": [
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 8,
+                    "value": 10,
                     "type": "Int"
                   }
                 ],
