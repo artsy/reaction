@@ -1,3 +1,20 @@
+# v14.0.10 (Wed Feb 20 2019)
+
+#### 🐛  Bug Fix
+
+- Pull in latest schema [#2049](https://github.com/artsy/reaction/pull/2049) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 3.0.7 [#2048](https://github.com/artsy/reaction/pull/2048) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.0.8 (Wed Feb 20 2019)
 
 #### 🐛  Bug Fix
