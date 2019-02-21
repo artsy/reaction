@@ -236,6 +236,7 @@ export class SearchBar extends Component<Props, State> {
       onBlur: this.onBlur,
       placeholder: xs ? "" : PLACEHOLDER,
       value: term,
+      name: "term",
     }
 
     const firstSuggestionPlaceholder = {
@@ -336,7 +337,13 @@ export const SearchBarQueryRenderer: React.SFC = () => {
               if (props) {
                 return <SearchBarRefetchContainer viewer={props.viewer} />
               } else {
-                return <Input placeholder={PLACEHOLDER} />
+                return (
+                  <Input
+                    name="term"
+                    style={{ width: "100%" }}
+                    placeholder={PLACEHOLDER}
+                  />
+                )
               }
             }}
           />
