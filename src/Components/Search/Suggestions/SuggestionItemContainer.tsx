@@ -2,7 +2,7 @@ import { Flex } from "@artsy/palette"
 import React, { SFC } from "react"
 
 interface Props {
-  children: JSX.Element[] | string[] | string
+  children: React.ReactNode
 }
 
 export const SuggestionItemContainer: SFC<Props> = ({ children }) => (
