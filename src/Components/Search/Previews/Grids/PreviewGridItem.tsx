@@ -12,7 +12,7 @@ interface PreviewGridItemProps {
   emphasizeArtist?: boolean
 }
 
-const Title = styled(Serif).attrs({ italic: true })`
+const OverflowEllipsis = styled(Serif)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -42,12 +42,15 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
       </Link>
       <Link href={artwork.href} noUnderline>
         <Box>
-          <Title size="2">
+          <OverflowEllipsis size="2" italic>
             {artwork.title}, {artwork.date}
-          </Title>
-          <Serif size="2" weight={emphasizeArtist ? "semibold" : "regular"}>
+          </OverflowEllipsis>
+          <OverflowEllipsis
+            size="2"
+            weight={emphasizeArtist ? "semibold" : "regular"}
+          >
             {artwork.artist_names}
-          </Serif>
+          </OverflowEllipsis>
         </Box>
       </Link>
     </Flex>
