@@ -47,7 +47,7 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
     fragment MerchandisableArtworks_viewer on Viewer {
       filter_artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
         __id
-        artworks_connection(first: 8) {
+        artworks_connection(first: 10) {
           edges {
             node {
               ...PreviewGridItem_artwork

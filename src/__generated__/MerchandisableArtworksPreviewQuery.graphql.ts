@@ -25,7 +25,7 @@ query MerchandisableArtworksPreviewQuery {
 fragment MerchandisableArtworks_viewer on Viewer {
   filter_artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
     __id
-    artworks_connection(first: 8) {
+    artworks_connection(first: 10) {
       edges {
         node {
           ...PreviewGridItem_artwork
@@ -63,7 +63,7 @@ return {
   "operationKind": "query",
   "name": "MerchandisableArtworksPreviewQuery",
   "id": null,
-  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 8) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -133,12 +133,12 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "artworks_connection",
-                "storageKey": "artworks_connection(first:8)",
+                "storageKey": "artworks_connection(first:10)",
                 "args": [
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 8,
+                    "value": 10,
                     "type": "Int"
                   }
                 ],

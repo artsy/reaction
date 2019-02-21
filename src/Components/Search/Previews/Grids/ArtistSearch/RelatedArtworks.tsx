@@ -47,7 +47,7 @@ export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
         artist_id: $entityID
       ) {
         __id
-        artworks_connection(first: 8) {
+        artworks_connection(first: 10) {
           edges {
             node {
               ...PreviewGridItem_artwork

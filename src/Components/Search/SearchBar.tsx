@@ -2,6 +2,7 @@ import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
+import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
@@ -18,6 +19,7 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { SuggestionItemContainer } from "./Suggestions/SuggestionItemContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
@@ -47,6 +49,43 @@ interface State {
   entityID: string
   entityType: string
   focused: boolean
+}
+
+const AutosuggestWrapper = styled(Box)`
+  position: relative;
+`
+
+const ResultsWrapper = styled(Box)`
+  width: calc(100% + 450px);
+  background-color: ${colors.white};
+  display: flex;
+  border: 1px solid ${colors.grayRegular};
+  position: absolute;
+`
+
+const SuggestionsWrapper = styled(Box)`
+  border-right: 1px solid ${colors.grayRegular};
+`
+
+const SuggestionContainer = ({ children, containerProps, preview }) => {
+  return (
+    <AutosuggestWrapper
+      width="100%"
+      flexDirection={["column", "row"]}
+      {...containerProps}
+    >
+      <ResultsWrapper mt={0.5}>
+        <SuggestionsWrapper width="calc(100% - 450px)">
+          <Flex flexDirection="column" width="100%">
+            {children}
+          </Flex>
+        </SuggestionsWrapper>
+        <Box width="450px" pl={3} py={2}>
+          {preview}
+        </Box>
+      </ResultsWrapper>
+    </AutosuggestWrapper>
+  )
 }
 
 export class SearchBar extends Component<Props, State> {
@@ -137,29 +176,29 @@ export class SearchBar extends Component<Props, State> {
     { xs }
   ) => {
     const { focused } = this.state
+    if (!focused) {
+      return null
+    }
 
     let emptyState = null
     if (!xs && !query && focused) {
       emptyState = (
-        <Box pb={3} pl={3}>
-          {PLACEHOLDER}
-        </Box>
+        <SuggestionItemContainer>{PLACEHOLDER}</SuggestionItemContainer>
       )
     }
+
+    const props = {
+      children,
+      containerProps,
+      focused,
+      query,
+      preview: this.renderPreview(),
+    }
+
     return (
-      <Box {...containerProps}>
-        <Flex flexDirection={["column", "row"]}>
-          <Box width={["100%", "50%"]}>
-            <Flex flexDirection="column">
-              {emptyState}
-              {children}
-            </Flex>
-          </Box>
-          <Box width={["100%", "50%"]} pl={3}>
-            {this.renderPreview()}
-          </Box>
-        </Flex>
-      </Box>
+      <SuggestionContainer {...props}>
+        {emptyState || children}
+      </SuggestionContainer>
     )
   }
 
@@ -250,7 +289,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 7)
+        search(query: $term, mode: AUTOSUGGEST, first: 5)
           @include(if: $hasTerm) {
           edges {
             node {

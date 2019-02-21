@@ -12,7 +12,7 @@ interface PreviewGridItemProps {
   emphasizeArtist?: boolean
 }
 
-const Title = styled(Serif).attrs({ italic: true })`
+const OverflowEllipsis = styled(Serif)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -28,26 +28,27 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
   return (
     <Flex mr={2} mb={2}>
       <Link href={artwork.href} noUnderline>
-        {imageUrl ? (
-          <Image
-            mr={2}
-            src={imageUrl}
-            alt={`${artwork.title} by ${artwork.artist_names}`}
-          />
-        ) : (
-          <Box width="40px" height="40px" mr={2}>
-            &nbsp;
-          </Box>
-        )}
+        <Box width="40px" height="40px" mr={2}>
+          {imageUrl && (
+            <Image
+              mr={2}
+              src={imageUrl}
+              alt={`${artwork.title} by ${artwork.artist_names}`}
+            />
+          )}
+        </Box>
       </Link>
       <Link href={artwork.href} noUnderline>
         <Box>
-          <Title size="2">
+          <OverflowEllipsis size="2" italic>
             {artwork.title}, {artwork.date}
-          </Title>
-          <Serif size="2" weight={emphasizeArtist ? "semibold" : "regular"}>
+          </OverflowEllipsis>
+          <OverflowEllipsis
+            size="2"
+            weight={emphasizeArtist ? "semibold" : "regular"}
+          >
             {artwork.artist_names}
-          </Serif>
+          </OverflowEllipsis>
         </Box>
       </Link>
     </Flex>
