@@ -1,14 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { CollectionEntity_collection$ref } from "./CollectionEntity_collection.graphql";
 declare const _CollectionsRail_collections$ref: unique symbol;
 export type CollectionsRail_collections$ref = typeof _CollectionsRail_collections$ref;
 export type CollectionsRail_collections = ReadonlyArray<{
-    readonly slug: string;
-    readonly headerImage: string | null;
-    readonly title: string;
-    readonly price_guidance: number | null;
-    readonly show_on_editorial: boolean;
+    readonly " $fragmentRefs": CollectionEntity_collection$ref;
     readonly " $refType": CollectionsRail_collections$ref;
 }>;
 
@@ -24,39 +21,9 @@ const node: ConcreteFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "slug",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "headerImage",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "price_guidance",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "show_on_editorial",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "CollectionEntity_collection",
+      "args": null
     },
     {
       "kind": "ScalarField",
@@ -67,5 +34,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '0f65e624804361756b5f9d074b0a9f64';
+(node as any).hash = '35961dd8c6f3b9ed5fff404b9a586026';
 export default node;

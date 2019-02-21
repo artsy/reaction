@@ -24,6 +24,11 @@ query CollectionsRailQuery {
 }
 
 fragment CollectionsRail_collections on MarketingCollection {
+  ...CollectionEntity_collection
+  __id: id
+}
+
+fragment CollectionEntity_collection on MarketingCollection {
   slug
   headerImage
   title
@@ -60,7 +65,7 @@ return {
   "operationKind": "query",
   "name": "CollectionsRailQuery",
   "id": null,
-  "text": "query CollectionsRailQuery {\n  collections: marketingCollections(showOnEditorial: true, size: 4) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
+  "text": "query CollectionsRailQuery {\n  collections: marketingCollections(showOnEditorial: true, size: 4) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n  __id: id\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

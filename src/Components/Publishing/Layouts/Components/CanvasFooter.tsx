@@ -1,4 +1,5 @@
 import { color } from "@artsy/palette"
+import { CollectionsRailContent } from "Components/CollectionsRail"
 import {
   ArticleData,
   DisplayData,
@@ -8,7 +9,6 @@ import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import React from "react"
 import styled from "styled-components"
-import { CollectionsRailContent } from "../../../CollectionsRail"
 
 export interface CanvasFooterProps {
   display?: DisplayData
