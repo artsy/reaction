@@ -8,6 +8,7 @@ import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import React from "react"
 import styled from "styled-components"
+import { CollectionsRailContent } from "../../../CollectionsRail"
 
 export interface CanvasFooterProps {
   display?: DisplayData
@@ -19,6 +20,9 @@ export interface CanvasFooterProps {
 
 export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
   const { article, display, relatedArticles, renderTime } = props
+  const showCollectionRails = ["standard", "feature", "news"].includes(
+    article.layout
+  )
 
   return (
     <CanvasFooterContainer>
@@ -28,6 +32,8 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
           vertical={article.layout !== "news" && article.vertical}
         />
       )}
+
+      {showCollectionRails && <CollectionsRailContent {...props} />}
 
       {display && (
         <DisplayContainer hasBorder={relatedArticles ? true : false}>
