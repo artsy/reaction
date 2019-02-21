@@ -1,7 +1,8 @@
-import { Box, color, Sans, Serif } from "@artsy/palette"
+import { Box, color, Link, Sans, Serif } from "@artsy/palette"
 import { CollectionEntity_collection } from "__generated__/CollectionEntity_collection.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
 
@@ -24,18 +25,27 @@ const CollectionTitle = styled(Serif)`
   width: max-content;
 `
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+`
+
 export const CollectionEntity: SFC<CollectionProps> = ({ collection }) => {
   return (
     <Box mb={3} width="100%">
-      <Background
-        collectionImage={resize(collection.headerImage, {
-          width: 645,
-          height: 275,
-          quality: 80,
-        })}
-      />
-      <CollectionTitle size="4">{collection.title}</CollectionTitle>
-      <Sans size="2">Works from ${collection.price_guidance}</Sans>
+      <StyledLink href={`${sd.APP_URL}/collection/${collection.slug}`}>
+        <Background
+          collectionImage={resize(collection.headerImage, {
+            width: 645,
+            height: 275,
+            quality: 80,
+          })}
+        />
+        <CollectionTitle size="4">{collection.title}</CollectionTitle>
+        <Sans size="2">Works from ${collection.price_guidance}</Sans>
+      </StyledLink>
     </Box>
   )
 }
