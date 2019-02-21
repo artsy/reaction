@@ -28,17 +28,15 @@ export const PreviewGridItem: React.SFC<PreviewGridItemProps> = ({
   return (
     <Flex mr={2} mb={2}>
       <Link href={artwork.href} noUnderline>
-        {imageUrl ? (
-          <Image
-            mr={2}
-            src={imageUrl}
-            alt={`${artwork.title} by ${artwork.artist_names}`}
-          />
-        ) : (
-          <Box width="40px" height="40px" mr={2}>
-            &nbsp;
-          </Box>
-        )}
+        <Box width="40px" height="40px" mr={2}>
+          {imageUrl && (
+            <Image
+              mr={2}
+              src={imageUrl}
+              alt={`${artwork.title} by ${artwork.artist_names}`}
+            />
+          )}
+        </Box>
       </Link>
       <Link href={artwork.href} noUnderline>
         <Box>
