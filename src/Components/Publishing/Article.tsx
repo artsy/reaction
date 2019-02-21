@@ -36,6 +36,7 @@ export interface ArticleProps {
   marginTop?: string | null
   display?: DisplayData
   showTooltips?: boolean
+  showCollectionsRail?: boolean
   slideIndex?: number
   tracking?: TrackingProp
   closeViewer?: () => void
