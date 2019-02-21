@@ -1,3 +1,15 @@
+# v14.0.12 (Thu Feb 21 2019)
+
+#### 🐛  Bug Fix
+
+- Add showCollectionsRail prop to Articles [#2044](https://github.com/artsy/reaction/pull/2044) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.0.11 (Thu Feb 21 2019)
 
 #### 🏠  Internal
