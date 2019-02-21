@@ -12,8 +12,11 @@ interface Props {
 
 export const SuggestionItem: SFC<Props> = ({ href, display, label, query }) => {
   if (label === "FirstItem") {
+    // `color="black100"` is misleading.
+    //  The actual color doesn't really matter - the child element controls the displayed color.
+    //  We specify color only because it makes the text not underlined on hover.
     return (
-      <Link noUnderline href={href}>
+      <Link noUnderline href={href} color="black100">
         <SuggestionItemContainer>Search "{query}"</SuggestionItemContainer>
       </Link>
     )
@@ -23,7 +26,10 @@ export const SuggestionItem: SFC<Props> = ({ href, display, label, query }) => {
   const parts = parse(display, matches)
 
   return (
-    <Link noUnderline href={href}>
+    // `color="black100"` is misleading.
+    //  The actual color doesn't really matter - the child elements control the displayed color.
+    //  We specify color only because it makes the text not underlined on hover.
+    <Link noUnderline href={href} color="black100">
       <SuggestionItemContainer>
         <Serif size="3">
           {parts.map(({ highlight, text }, index) => {
