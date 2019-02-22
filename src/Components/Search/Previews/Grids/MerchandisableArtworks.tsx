@@ -7,6 +7,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "./PreviewGridItem"
 
 interface MerchandisableArtworksPreviewProps {
@@ -23,7 +24,7 @@ const MerchandisableArtworksPreview: React.SFC<
   ).map(x => x.node)
 
   const merchandisableItems = artworks.map((artwork, i) => (
-    <Box width="50%">
+    <Box width={["0%", "100%", "100%", "50%"]}>
       <PreviewGridItem artwork={artwork} key={i} />
     </Box>
   ))
@@ -34,9 +35,17 @@ const MerchandisableArtworksPreview: React.SFC<
         Now Available for Buy Now/ Make Offer
       </Sans>
 
-      <Flex alignItems="flex-start" flexWrap="wrap">
-        {merchandisableItems}
-      </Flex>
+      <Media lessThan="lg">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {merchandisableItems.slice(0, 5)}
+        </Flex>
+      </Media>
+
+      <Media greaterThan="md">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {merchandisableItems}
+        </Flex>
+      </Media>
     </Box>
   )
 }

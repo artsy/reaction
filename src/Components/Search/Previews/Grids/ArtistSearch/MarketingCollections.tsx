@@ -4,6 +4,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { crop } from "Utils/resizer"
+import { Media } from "Utils/Responsive"
 
 interface MarketingCollectionsPreviewProps {
   marketingCollections: MarketingCollectionsPreview_marketingCollections
@@ -78,9 +79,18 @@ export const MarketingCollectionsPreview: React.SFC<
       <Sans size="3" weight="medium" color="black100" mb={2}>
         Artist Collections
       </Sans>
-      <Flex alignItems="flex-start" flexWrap="wrap">
-        {items}
-      </Flex>
+
+      <Media lessThan="lg">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {items.slice(0, 3)}
+        </Flex>
+      </Media>
+
+      <Media greaterThan="md">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {items}
+        </Flex>
+      </Media>
     </>
   )
 }

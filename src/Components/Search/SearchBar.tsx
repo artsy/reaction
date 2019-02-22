@@ -56,7 +56,6 @@ const AutosuggestWrapper = styled(Box)`
 `
 
 const ResultsWrapper = styled(Box)`
-  width: calc(100% + 450px);
   background-color: ${colors.white};
   display: flex;
   border: 1px solid ${colors.grayRegular};
@@ -74,13 +73,28 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
       flexDirection={["column", "row"]}
       {...containerProps}
     >
-      <ResultsWrapper mt={0.5}>
-        <SuggestionsWrapper width="calc(100% - 450px)">
+      <ResultsWrapper
+        width={[
+          "0px",
+          "calc(100% + 250px)",
+          "calc(100% + 250px)",
+          "calc(100% + 450px)",
+        ]}
+        mt={0.5}
+      >
+        <SuggestionsWrapper
+          width={[
+            "0px",
+            "calc(100% - 250px)",
+            "calc(100% - 250px)",
+            "calc(100% - 450px)",
+          ]}
+        >
           <Flex flexDirection="column" width="100%">
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width="450px" pl={3} py={2}>
+        <Box width={["0px", "240px", "240px", "450px"]} pl={3} py={2}>
           {preview}
         </Box>
       </ResultsWrapper>

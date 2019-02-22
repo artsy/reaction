@@ -2,6 +2,7 @@ import { Box, Flex, Sans } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
+import { Media } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
@@ -19,7 +20,7 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
   ).map(x => x.node)
 
   const relatedArtworks = artworks.map((artwork, i) => (
-    <Box width="50%" key={i}>
+    <Box width={["0%", "100%", "100%", "50%"]} key={i}>
       <PreviewGridItem artwork={artwork} emphasizeArtist />
     </Box>
   ))
@@ -29,9 +30,17 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
         Related Artworks
       </Sans>
 
-      <Flex alignItems="flex-start" flexWrap="wrap">
-        {relatedArtworks}
-      </Flex>
+      <Media lessThan="lg">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {relatedArtworks.slice(0, 5)}
+        </Flex>
+      </Media>
+
+      <Media greaterThan="md">
+        <Flex alignItems="flex-start" flexWrap="wrap">
+          {relatedArtworks}
+        </Flex>
+      </Media>
     </Box>
   )
 }
