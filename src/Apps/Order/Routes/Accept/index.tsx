@@ -3,7 +3,7 @@ import { Accept_order } from "__generated__/Accept_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { track } from "Artsy/Analytics"
-import { Router } from "found"
+import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import { Media } from "Utils/Responsive"
 import {
@@ -26,6 +26,7 @@ import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { ErrorWithMetadata } from "Utils/errors"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
 import { CreditCardSummaryItemFragmentContainer as CreditCardSummaryItem } from "../../Components/CreditCardSummaryItem"
@@ -34,6 +35,7 @@ interface AcceptProps {
   order: Accept_order
   relay?: RelayProp
   router: Router
+  route: RouteConfig
   dialog: Dialog
 }
 
@@ -111,6 +113,17 @@ export class Accept extends Component<AcceptProps, AcceptState> {
           )
           break
         }
+        case "insufficient_inventory": {
+          this.onMutationError(
+            new ErrorWithMetadata(error.code, error),
+            "Not available",
+            "Sorry, the work is no longer available.",
+            () => {
+              this.routeToArtistPage()
+            }
+          )
+          break
+        }
         default: {
           this.onMutationError(new ErrorWithMetadata(error.code, error))
           break
@@ -144,6 +157,21 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   onChangeResponse = () => {
     const { order } = this.props
     this.props.router.push(`/orders/${order.id}/respond`)
+  }
+
+  artistId() {
+    return get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.artists[0].id
+    )
+  }
+
+  routeToArtistPage() {
+    const artistId = this.artistId()
+
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artist/${artistId}`)
   }
 
   render() {
@@ -253,6 +281,9 @@ export const AcceptFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
+              artists {
+                id
+              }
             }
           }
         }
