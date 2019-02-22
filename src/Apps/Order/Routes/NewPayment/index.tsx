@@ -304,7 +304,7 @@ export class NewPaymentRoute extends Component<
           } = data
 
           if (creditCardOrError.creditCard) {
-            this.setOrderPayment({
+            this.fixFailedPayment({
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
@@ -349,7 +349,7 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private setOrderPayment({ creditCardId }) {
+  private fixFailedPayment({ creditCardId }) {
     commitMutation<NewPaymentRouteSetOrderPaymentMutation>(
       this.props.relay.environment,
       {
@@ -357,7 +357,7 @@ export class NewPaymentRoute extends Component<
           this.setState({ isCommittingMutation: false })
 
           const {
-            ecommerceSetOrderPayment: { orderOrError },
+            ecommerceFixFailedPayment: { orderOrError },
           } = data
 
           if (orderOrError.order) {
@@ -376,12 +376,13 @@ export class NewPaymentRoute extends Component<
         onError: this.onMutationError.bind(this),
         mutation: graphql`
           mutation NewPaymentRouteSetOrderPaymentMutation(
-            $input: SetOrderPaymentInput!
+            $input: FixFailedPaymentInput!
           ) {
-            ecommerceSetOrderPayment(input: $input) {
+            ecommerceFixFailedPayment(input: $input) {
               orderOrError {
                 ... on OrderWithMutationSuccess {
                   order {
+                    state
                     creditCard {
                       id
                       name
@@ -391,6 +392,9 @@ export class NewPaymentRoute extends Component<
                       state
                       country
                       postal_code
+                    }
+                    ... on OfferOrder {
+                      awaitingResponseFrom
                     }
                   }
                 }
@@ -407,7 +411,7 @@ export class NewPaymentRoute extends Component<
         `,
         variables: {
           input: {
-            orderId: this.props.order.id,
+            offerId: this.props.order.lastOffer.id,
             creditCardId,
           },
         },
