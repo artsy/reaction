@@ -4,6 +4,7 @@ import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
+import { pMedia } from "Components/Helpers"
 import { CollectionEntityFragmentContainer as CollectionEntity } from "./Collection"
 
 interface CollectionRailsProps {
@@ -15,11 +16,20 @@ const RailsWrapper = styled(Flex)`
   max-width: 1250px;
   margin: 0 auto;
   flex-direction: column;
+  ${pMedia.xl`
+    padding: 40px;
+  `};
+  ${pMedia.lg`
+    padding: 40px;
+  `};
+  ${pMedia.xs`
+    padding: 40px 30px;
+  `};
 `
 
 export const CollectionsRail: SFC<CollectionRailsProps> = ({ collections }) => {
   return (
-    <RailsWrapper pb={3} px={["30px", 0]}>
+    <RailsWrapper pb={3}>
       <Sans size="6">Shop artworks from curated collections</Sans>
       <Spacer mb={3} />
       <Flex flexWrap="wrap">
