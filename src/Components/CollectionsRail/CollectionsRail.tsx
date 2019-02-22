@@ -11,6 +11,11 @@ interface CollectionRailsProps {
   collections: CollectionsRail_collections
 }
 
+/**
+ *
+ * TODO: Replace Helper Media with palette Media when a/b test closes.
+ *
+ */
 const RailsWrapper = styled(Flex)`
   width: 100%;
   max-width: 1250px;
