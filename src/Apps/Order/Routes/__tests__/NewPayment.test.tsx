@@ -18,6 +18,7 @@ import {
   creatingCreditCardFailed,
   creatingCreditCardSuccess,
   fixFailedPaymentFailure,
+  fixFailedPaymentInsufficientInventoryFailure,
   fixFailedPaymentSuccess,
 } from "../__fixtures__/MutationResults"
 
@@ -49,6 +50,7 @@ const createTokenMock = require("react-stripe-elements").__stripeMock
   .createToken as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
+window.location.assign = jest.fn()
 
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
@@ -143,6 +145,7 @@ describe("Payment", () => {
   })
 
   beforeEach(() => {
+    ;(window.location.assign as any).mockReset()
     mockPostEvent.mockReset()
     createTokenMock.mockReset()
     createTokenMock.mockImplementation(() => Promise.resolve())
@@ -383,6 +386,24 @@ describe("Payment", () => {
       "An error occurred",
       "No such token: fake-token"
     )
+  })
+
+  it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
+    createTokenMock.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
+
+    const page = await buildPage()
+
+    mutations.useResultsOnce(fixFailedPaymentInsufficientInventoryFailure)
+
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "Not available",
+      "Sorry, the work is no longer available."
+    )
+    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+    expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
   })
 
   it("shows an error modal when fixing the failed payment fails", async () => {

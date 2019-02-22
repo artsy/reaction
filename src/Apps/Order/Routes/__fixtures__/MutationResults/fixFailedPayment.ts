@@ -21,3 +21,15 @@ export const fixFailedPaymentFailure = {
     },
   },
 }
+
+export const fixFailedPaymentInsufficientInventoryFailure = {
+  ecommerceFixFailedPayment: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "insufficient_inventory",
+        data: "No moar artwork (╯°□°）╯︵ ┻━┻",
+      },
+    },
+  },
+}

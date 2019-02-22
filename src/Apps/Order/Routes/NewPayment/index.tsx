@@ -20,7 +20,7 @@ import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { Router } from "found"
+import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -45,6 +45,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import { get } from "Utils/get"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -57,6 +58,7 @@ export interface NewPaymentProps
   order: NewPayment_order
   relay?: RelayRefetchProp
   router: Router
+  route: RouteConfig
   dialog: Dialog
 }
 
@@ -119,8 +121,7 @@ export class NewPaymentRoute extends Component<
         }
       }
 
-      const { address } = this.state
-      const stripeBillingAddress = this.getStripeBillingAddress(address)
+      const stripeBillingAddress = this.getStripeBillingAddress()
       this.props.stripe
         .createToken(stripeBillingAddress)
         .then(({ error, token }) => {
@@ -270,7 +271,7 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private getStripeBillingAddress(formAddress: Address): stripe.TokenOptions {
+  private getStripeBillingAddress(): stripe.TokenOptions {
     const selectedBillingAddress = (this.needsAddress()
       ? this.state.address
       : this.props.order.requestedFulfillment) as Address
@@ -314,6 +315,7 @@ export class NewPaymentRoute extends Component<
               const mutationError = creditCardOrError.mutationError
               this.onMutationError(
                 new ErrorWithMetadata(mutationError.message, mutationError),
+                "An error occurred",
                 mutationError.detail
               )
             }
@@ -371,7 +373,19 @@ export class NewPaymentRoute extends Component<
                 case "capture_failed": {
                   this.onMutationError(
                     new ErrorWithMetadata(orderError.code, orderError),
+                    "An error occurred",
                     "There was an error processing your payment. Please try again or contact orders@artsy.net."
+                  )
+                  break
+                }
+                case "insufficient_inventory": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError),
+                    "Not available",
+                    "Sorry, the work is no longer available.",
+                    () => {
+                      this.routeToArtistPage()
+                    }
                   )
                   break
                 }
@@ -431,9 +445,17 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private onMutationError(error, message?) {
+  private onMutationError(
+    error: ErrorWithMetadata,
+    title?: string,
+    message?: string,
+    onDismiss?: () => void
+  ) {
     logger.error(error)
-    this.props.dialog.showErrorDialog({ message })
+    const result = this.props.dialog.showErrorDialog({ title, message })
+    if (onDismiss) {
+      result.then(onDismiss)
+    }
     this.setState({ isCommittingMutation: false })
   }
 
@@ -443,6 +465,21 @@ export class NewPaymentRoute extends Component<
 
   private needsAddress = () => {
     return this.isPickup() || !this.state.hideBillingAddress
+  }
+
+  artistId() {
+    return get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.artists[0].id
+    )
+  }
+
+  routeToArtistPage() {
+    const artistId = this.artistId()
+
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artist/${artistId}`)
   }
 }
 
@@ -482,6 +519,9 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
+              artists {
+                id
+              }
             }
           }
         }
