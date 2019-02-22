@@ -1,3 +1,15 @@
+# v14.0.15 (Fri Feb 22 2019)
+
+#### 🐛  Bug Fix
+
+- Collections Rail [#2052](https://github.com/artsy/reaction/pull/2052) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v14.0.14 (Thu Feb 21 2019)
 
 
