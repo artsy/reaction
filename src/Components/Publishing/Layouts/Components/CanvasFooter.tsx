@@ -20,9 +20,6 @@ export interface CanvasFooterProps {
 
 export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
   const { article, display, relatedArticles, renderTime } = props
-  const showCollectionRails = ["standard", "feature", "news"].includes(
-    article.layout
-  )
 
   return (
     <CanvasFooterContainer>
@@ -33,7 +30,7 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
         />
       )}
 
-      {showCollectionRails && <CollectionsRailContent {...props} />}
+      {props.showCollectionsRail && <CollectionsRailContent {...props} />}
 
       {display && (
         <DisplayContainer hasBorder={relatedArticles ? true : false}>
