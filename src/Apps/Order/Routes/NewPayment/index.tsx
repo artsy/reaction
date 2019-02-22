@@ -373,8 +373,8 @@ export class NewPaymentRoute extends Component<
                 case "capture_failed": {
                   this.onMutationError(
                     new ErrorWithMetadata(orderError.code, orderError),
-                    "An error occurred",
-                    "There was an error processing your payment. Please try again or contact orders@artsy.net."
+                    "Charge failed",
+                    "Payment authorization has been declined. Please contact your card provider and try again."
                   )
                   break
                 }

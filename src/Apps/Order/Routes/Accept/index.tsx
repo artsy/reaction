@@ -104,8 +104,8 @@ export class Accept extends Component<AcceptProps, AcceptState> {
         case "capture_failed": {
           this.onMutationError(
             new ErrorWithMetadata(error.code, error),
-            "An error occurred",
-            "There was an error processing your payment. Please try again or contact orders@artsy.net.",
+            "Charge failed",
+            "Payment authorization has been declined. Please contact your card provider and try again.",
             () =>
               this.props.router.push(
                 `/orders/${this.props.order.id}/payment/new`

@@ -158,8 +158,8 @@ describe("Accept seller offer", () => {
       mutations.useResultsOnce(acceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
-        "An error occurred",
-        "There was an error processing your payment. Please try again or contact orders@artsy.net."
+        "Charge failed",
+        "Payment authorization has been declined. Please contact your card provider and try again."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/payment/new`
