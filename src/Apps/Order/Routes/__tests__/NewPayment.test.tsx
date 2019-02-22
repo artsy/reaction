@@ -17,7 +17,8 @@ import { Input } from "../../../../Components/Input"
 import {
   creatingCreditCardFailed,
   creatingCreditCardSuccess,
-  settingOrderPaymentFailed,
+  fixFailedPaymentFailure,
+  fixFailedPaymentSuccess,
 } from "../__fixtures__/MutationResults"
 
 jest.mock("react-stripe-elements", () => {
@@ -99,14 +100,6 @@ const testOrderPickup = {
   },
 }
 
-const settingOrderPaymentSuccess = {
-  ecommerceSetOrderPayment: {
-    orderOrError: {
-      order: testOrder,
-    },
-  },
-}
-
 describe("Payment", () => {
   const { buildPage, mutations, routes } = createTestEnv({
     Component: NewPaymentFragmentContainer,
@@ -115,7 +108,7 @@ describe("Payment", () => {
     },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
-      ...settingOrderPaymentSuccess,
+      ...fixFailedPaymentSuccess,
     },
     query: graphql`
       query NewPaymentTestQuery {
@@ -362,7 +355,7 @@ describe("Payment", () => {
     expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         creditCardId: "gravityCreditCardId",
-        orderId: "1234",
+        offerId: "myoffer-id",
       },
     })
   })
@@ -387,19 +380,22 @@ describe("Payment", () => {
 
     await page.clickSubmit()
     await page.expectAndDismissErrorDialogMatching(
-      "An error occurre",
+      "An error occurred",
       "No such token: fake-token"
     )
   })
 
-  it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
+  it("shows an error modal when fixing the failed payment fails", async () => {
     createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
     const page = await buildPage()
-    mutations.useResultsOnce(settingOrderPaymentFailed)
+    mutations.useResultsOnce(fixFailedPaymentFailure)
     await page.clickSubmit()
-    await page.expectAndDismissDefaultErrorDialog()
+    await page.expectAndDismissErrorDialogMatching(
+      "An error occurred",
+      "There was an error processing your payment. Please try again or contact orders@artsy.net."
+    )
   })
 
   it("shows an error modal when there is a network error", async () => {

@@ -367,9 +367,21 @@ export class NewPaymentRoute extends Component<
               errors.forEach(this.onMutationError.bind(this))
             } else {
               const orderError = orderOrError.error
-              this.onMutationError(
-                new ErrorWithMetadata(orderError.code, orderError)
-              )
+              switch (orderError.code) {
+                case "capture_failed": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError),
+                    "There was an error processing your payment. Please try again or contact orders@artsy.net."
+                  )
+                  break
+                }
+                default: {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError)
+                  )
+                  break
+                }
+              }
             }
           }
         },
