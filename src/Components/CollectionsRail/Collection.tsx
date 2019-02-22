@@ -1,5 +1,6 @@
 import { Box, color, Link, Sans, Serif } from "@artsy/palette"
 import { CollectionEntity_collection } from "__generated__/CollectionEntity_collection.graphql"
+import currency from "currency.js"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -44,7 +45,12 @@ export const CollectionEntity: SFC<CollectionProps> = ({ collection }) => {
           })}
         />
         <CollectionTitle size="4">{collection.title}</CollectionTitle>
-        <Sans size="2">Works from ${collection.price_guidance}</Sans>
+        <Sans size="2">
+          Works from ${currency(collection.price_guidance, {
+            separator: ",",
+            precision: 0,
+          }).format()}
+        </Sans>
       </StyledLink>
     </Box>
   )
