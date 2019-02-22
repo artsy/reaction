@@ -75,7 +75,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
     >
       <ResultsWrapper
         width={[
-          "0px",
+          "100%",
           "calc(100% + 250px)",
           "calc(100% + 250px)",
           "calc(100% + 450px)",
@@ -84,7 +84,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
       >
         <SuggestionsWrapper
           width={[
-            "0px",
+            "100%",
             "calc(100% - 250px)",
             "calc(100% - 250px)",
             "calc(100% - 450px)",
@@ -94,7 +94,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width={["0px", "240px", "240px", "450px"]} pl={3} py={2}>
+        <Box width={["0px", "240px", "240px", "450px"]} pl={[0, 3]} py={[0, 2]}>
           {preview}
         </Box>
       </ResultsWrapper>
