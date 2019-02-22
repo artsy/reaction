@@ -154,6 +154,9 @@ describe("Accept seller offer", () => {
         "An error occurred",
         "There was an error processing your payment. Please try again or contact orders@artsy.net."
       )
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/payment/new`
+      )
     })
   })
 

@@ -103,7 +103,11 @@ export class Accept extends Component<AcceptProps, AcceptState> {
           this.onMutationError(
             new ErrorWithMetadata(error.code, error),
             "An error occurred",
-            "There was an error processing your payment. Please try again or contact orders@artsy.net."
+            "There was an error processing your payment. Please try again or contact orders@artsy.net.",
+            () =>
+              this.props.router.push(
+                `/orders/${this.props.order.id}/payment/new`
+              )
           )
           break
         }
@@ -121,9 +125,17 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
-  onMutationError(error, title?, message?) {
+  onMutationError(
+    error: Error,
+    title?: string,
+    message?: string,
+    onDismiss?: () => void
+  ) {
     logger.error(error)
-    this.props.dialog.showErrorDialog({ title, message })
+    const result = this.props.dialog.showErrorDialog({ title, message })
+    if (onDismiss) {
+      result.then(onDismiss)
+    }
     this.setState({
       isCommittingMutation: false,
     })
