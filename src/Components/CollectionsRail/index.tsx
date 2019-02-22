@@ -9,40 +9,38 @@ interface Props {
   showOnEditorial?: boolean
 }
 
-export class CollectionsRailContent extends React.Component<Props, null> {
-  render() {
-    return (
-      <ContextConsumer>
-        {({ relayEnvironment }) => {
-          return (
-            <QueryRenderer<CollectionsRailQuery>
-              environment={relayEnvironment}
-              variables={{
-                showOnEditorial: true,
-                size: 4,
-              }}
-              query={graphql`
-                query CollectionsRailQuery {
-                  collections: marketingCollections(
-                    showOnEditorial: true
-                    size: 4
-                  ) {
-                    ...CollectionsRail_collections
-                  }
+export const CollectionsRailContent: React.SFC<Props> = () => {
+  return (
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<CollectionsRailQuery>
+            environment={relayEnvironment}
+            variables={{
+              showOnEditorial: true,
+              size: 4,
+            }}
+            query={graphql`
+              query CollectionsRailQuery {
+                collections: marketingCollections(
+                  showOnEditorial: true
+                  size: 4
+                ) {
+                  ...CollectionsRail_collections
                 }
-              `}
-              render={({ props }) => {
-                if (props) {
-                  return <CollectionsRail {...props} />
-                } else {
-                  return null
-                }
-              }}
-              cacheConfig={{ force: true }}
-            />
-          )
-        }}
-      </ContextConsumer>
-    )
-  }
+              }
+            `}
+            render={({ props }) => {
+              if (props) {
+                return <CollectionsRail {...props} />
+              } else {
+                return null
+              }
+            }}
+            cacheConfig={{ force: true }}
+          />
+        )
+      }}
+    </ContextConsumer>
+  )
 }
