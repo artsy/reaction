@@ -96,6 +96,8 @@ export enum ActionType {
   // MO speedbumps
   ViewedOfferTooLow = "Viewed offer too low",
   ViewedOfferHigherThanListPrice = "Viewed offer higher than listed price",
+
+  FocusedOnAutosuggestInput = "Focused on header auto-suggest input",
 }
 
 /**

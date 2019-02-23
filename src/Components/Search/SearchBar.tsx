@@ -2,6 +2,8 @@ import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
@@ -15,6 +17,7 @@ import {
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -38,6 +41,7 @@ const AutosuggestContainer = styled(Box)`
 export interface Props extends ContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
+  tracking?: TrackingProp
 }
 
 const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
@@ -88,6 +92,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
   )
 }
 
+@track()
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
 
@@ -113,7 +118,8 @@ export class SearchBar extends Component<Props, State> {
 
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    this.props.relay.refetch(
+    const { tracking, relay, viewer } = this.props
+    relay.refetch(
       {
         term,
         hasTerm: true,
@@ -121,6 +127,13 @@ export class SearchBar extends Component<Props, State> {
       null,
       error => {
         if (error) logger.error(error)
+        if (tracking) {
+          const edges = get(viewer, v => v.search.edges, [])
+          const action = `Auto-suggest with ${
+            edges.length === 0 ? "no results" : "results"
+          }`
+          tracking.trackEvent({ action, term })
+        }
       }
     )
   }
@@ -140,7 +153,10 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ term })
   }
 
-  onFocus = () => {
+  @track({
+    action_type: Schema.ActionType.FocusedOnAutosuggestInput,
+  })
+  onFocus() {
     this.setState({ focused: true })
   }
 
@@ -157,10 +173,22 @@ export class SearchBar extends Component<Props, State> {
     _e,
     {
       suggestion: {
-        node: { href },
+        node: { href, searchableType, id },
       },
+      suggestionIndex,
     }
   ) => {
+    const { tracking } = this.props
+    if (tracking) {
+      tracking.trackEvent({
+        action: "Selected item from search",
+        query: this.state.term,
+        destination_path: href,
+        item_type: searchableType,
+        item_id: id,
+        item_number: suggestionIndex,
+      })
+    }
     window.location.assign(href)
   }
 
@@ -232,7 +260,7 @@ export class SearchBar extends Component<Props, State> {
 
     const inputProps = {
       onChange: this.searchTextChanged,
-      onFocus: this.onFocus,
+      onFocus: this.onFocus.bind(this),
       onBlur: this.onBlur,
       placeholder: xs ? "" : PLACEHOLDER,
       value: term,
