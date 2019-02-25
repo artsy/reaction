@@ -235,8 +235,7 @@ export class SearchBar extends Component<Props, State> {
       return null
     }
 
-    const showEmptyState = !xs && !query && focused
-    const emptyState = showEmptyState && <EmptySuggestion />
+    const showEmptySuggestion = !xs && !query && focused
 
     const props = {
       children,
@@ -248,7 +247,7 @@ export class SearchBar extends Component<Props, State> {
 
     return (
       <SuggestionContainer {...props}>
-        {emptyState || children}
+        {showEmptySuggestion ? <EmptySuggestion /> : children}
       </SuggestionContainer>
     )
   }
