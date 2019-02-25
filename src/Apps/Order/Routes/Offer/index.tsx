@@ -29,7 +29,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -52,8 +51,6 @@ export interface OfferState {
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
-
-const enableOfferNote = process.env.ENABLE_OFFER_NOTE || sd.ENABLE_OFFER_NOTE
 
 @track()
 export class OfferRoute extends Component<OfferProps, OfferState> {
@@ -263,19 +260,15 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   </Sans>
                 )}
                 <Spacer mb={[2, 3]} />
-                {enableOfferNote && (
-                  <>
-                    <RevealButton align="left" buttonLabel="Add note to seller">
-                      <OfferNote
-                        onChange={offerNoteValue =>
-                          this.setState({ offerNoteValue })
-                        }
-                        artworkId={artworkId}
-                      />
-                    </RevealButton>
-                    <Spacer mb={[2, 3]} />
-                  </>
-                )}
+                <RevealButton align="left" buttonLabel="Add note to seller">
+                  <OfferNote
+                    onChange={offerNoteValue =>
+                      this.setState({ offerNoteValue })
+                    }
+                    artworkId={artworkId}
+                  />
+                </RevealButton>
+                <Spacer mb={[2, 3]} />
                 <Message p={[2, 3]}>
                   If your offer is accepted, your payment will be processed
                   immediately. Keep in mind making an offer doesn’t guarantee

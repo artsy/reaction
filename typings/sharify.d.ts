@@ -18,7 +18,6 @@ declare module "sharify" {
     export interface GlobalData {
       readonly APP_URL: string
       readonly CMS_URL: string
-      readonly ENABLE_MAKE_OFFER: string
       readonly FACEBOOK_APP_NAMESPACE: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
@@ -29,7 +28,6 @@ declare module "sharify" {
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly XAPP_TOKEN: string
-      readonly ENABLE_OFFER_NOTE?: string
     }
 
     export interface ResponseLocalData extends GlobalData {
