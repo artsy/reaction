@@ -1,3 +1,15 @@
+# v14.1.0 (Mon Feb 25 2019)
+
+#### 🚀  Enhancement
+
+- Support more breakpoints for new search bar [#2056](https://github.com/artsy/reaction/pull/2056) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.0.16 (Mon Feb 25 2019)
 
 #### 🐛  Bug Fix
