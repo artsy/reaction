@@ -11,35 +11,32 @@ interface Props {
 }
 
 export const SuggestionItem: SFC<Props> = ({ href, display, label, query }) => {
-  if (label === "FirstItem") {
-    // `color="black100"` is misleading.
-    //  The actual color doesn't really matter - the child element controls the displayed color.
-    //  We specify color only because it makes the text not underlined on hover.
-    return (
-      <Link noUnderline href={href} color="black100">
-        <SuggestionItemContainer>Search "{query}"</SuggestionItemContainer>
-      </Link>
+  let children = <>`Search "${query}"`</>
+
+  if (label !== "FirstItem") {
+    const matches = match(display, query)
+    const parts = parse(display, matches)
+    const partTags = parts.map(
+      ({ highlight, text }, index) =>
+        highlight ? <strong key={index}>{text}</strong> : text
     )
-  }
 
-  const matches = match(display, query)
-  const parts = parse(display, matches)
-
-  return (
-    // `color="black100"` is misleading.
-    //  The actual color doesn't really matter - the child elements control the displayed color.
-    //  We specify color only because it makes the text not underlined on hover.
-    <Link noUnderline href={href} color="black100">
-      <SuggestionItemContainer>
-        <Serif size="3">
-          {parts.map(({ highlight, text }, index) => {
-            return highlight ? <strong key={index}>{text}</strong> : text
-          })}
-        </Serif>
+    children = (
+      <>
+        <Serif size="3">{partTags}</Serif>
         <Sans color={color("black60")} size="2">
           {label}
         </Sans>
-      </SuggestionItemContainer>
+      </>
+    )
+  }
+
+  return (
+    // `color="black100"` is misleading on Link. The value doesn't matter
+    // because the child element controls the displayed color. Color is only
+    // specified to make the text not underlined on hover.
+    <Link noUnderline href={href} color="black100">
+      <SuggestionItemContainer>{children}</SuggestionItemContainer>
     </Link>
   )
 }

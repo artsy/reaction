@@ -10,7 +10,7 @@ export interface SearchPreviewProps {
 
 const previewComponents = {
   Artist: ArtistSearchPreview,
-  default: MerchandisableArtworksPreview
+  default: MerchandisableArtworksPreview,
 }
 
 export const SearchPreview: SFC<SearchPreviewProps> = ({
