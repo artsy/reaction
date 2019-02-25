@@ -19,7 +19,7 @@ export const SuggestionItem: SFC<Props> = props => {
   return (
     // Note: we've specified a color on the Link below to ensure an underline
     // is suppressed on hover - technically the value does not matter.
-    <Box bg={isHighlighted ? "#ddd" : "#fff"}>
+    <Box bg={isHighlighted ? "black5" : "white100"}>
       <Link color="black100" href={href} noUnderline>
         <SuggestionWrapper>
           <Flex flexDirection="column" flexGrow="1" justifyContent="center">
