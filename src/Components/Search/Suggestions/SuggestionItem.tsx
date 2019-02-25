@@ -2,6 +2,7 @@ import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import match from "autosuggest-highlight/match"
 import parse from "autosuggest-highlight/parse"
 import React, { SFC } from "react"
+import styled from "styled-components"
 
 interface Props {
   display: string
@@ -22,15 +23,28 @@ export const SuggestionItem: SFC<Props> = props => {
     <Box bg={isHighlighted ? "black5" : "white100"}>
       <Link color="black100" href={href} noUnderline>
         <SuggestionWrapper>
-          <Flex flexDirection="column" flexGrow="1" justifyContent="center">
+          <InnerWrapper
+            flexDirection="column"
+            flexGrow="1"
+            justifyContent="center"
+          >
             <Suggestion {...props} />
-          </Flex>
-          {isHighlighted && <HighlightIcon />}
+          </InnerWrapper>
+          {isHighlighted && (
+            <Flex flexGrow="0" px={2}>
+              <HighlightIcon />
+            </Flex>
+          )}
         </SuggestionWrapper>
       </Link>
     </Box>
   )
 }
+
+const InnerWrapper = styled(Flex)`
+  overflow: hidden;
+  white-space: nowrap;
+`
 
 export const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 
@@ -39,7 +53,7 @@ export const EmptySuggestion = () => (
 )
 
 const SuggestionWrapper = props => (
-  <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+  <Flex alignItems="center" flexDirection="row" height="62px" pl={3}>
     {props.children}
   </Flex>
 )
@@ -56,13 +70,18 @@ const DefaultSuggestion = ({ display, label, query }) => {
 
   return (
     <>
-      <Serif size="3">{partTags}</Serif>
+      <SuggestionTitle size="3">{partTags}</SuggestionTitle>
       <Sans color={color("black60")} size="2">
         {label}
       </Sans>
     </>
   )
 }
+
+const SuggestionTitle = styled(Serif)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
 
 const HighlightIcon = () => (
   <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
