@@ -1,3 +1,15 @@
+# v14.1.5 (Mon Feb 25 2019)
+
+#### 🐛  Bug Fix
+
+- Add return icon to search suggestions [#2061](https://github.com/artsy/reaction/pull/2061) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.1.4 (Mon Feb 25 2019)
 
 #### 🐛  Bug Fix
