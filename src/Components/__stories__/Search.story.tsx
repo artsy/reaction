@@ -89,14 +89,14 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
     <SuggestionItem
       display="display one"
       href="/"
-      isHighlighted
+      isHighlighted={false}
       label="FirstItem"
       query="a query"
     />
     <SuggestionItem
       display="display two"
       href="/"
-      isHighlighted={false}
+      isHighlighted
       label="label two"
       query="a query"
     />

@@ -1,8 +1,9 @@
-import { Box, color, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import match from "autosuggest-highlight/match"
 import parse from "autosuggest-highlight/parse"
 import React, { SFC } from "react"
-import { SuggestionItemContainer } from "./SuggestionItemContainer"
+import styled from "styled-components"
+
 interface Props {
   display: string
   href: string
@@ -11,41 +12,49 @@ interface Props {
   query: string
 }
 
-export const SuggestionItem: SFC<Props> = ({
-  display,
-  href,
-  isHighlighted,
-  label,
-  query
-}) => {
-  let children = <>Search "{query}"</>
+export const SuggestionItem: SFC<Props> = props => {
+  const { label, href, isHighlighted } = props
 
-  if (label !== "FirstItem") {
-    const matches = match(display, query)
-    const parts = parse(display, matches)
-    const partTags = parts.map(
-      ({ highlight, text }, index) =>
-        highlight ? <strong key={index}>{text}</strong> : text
-    )
-
-    children = (
-      <>
-        <Serif size="3">{partTags}</Serif>
-        <Sans color={color("black60")} size="2">
-          {label}
-        </Sans>
-      </>
-    )
-  }
+  const Suggestion = label === "FirstItem" ? FirstSuggestion : DefaultSuggestion
 
   return (
-    // `color="black100"` is misleading on Link. The value doesn't matter
-    // because the child element controls the displayed color. Color is only
-    // specified to make the text not underlined on hover.
+    // Note: we've specified a color on the Link below to ensure an underline
+    // is suppressed on hover - technically the value does not matter.
     <Box bg={isHighlighted ? "#ddd" : "#fff"}>
-      <Link noUnderline href={href} color="black100">
-        <SuggestionItemContainer>{children}</SuggestionItemContainer>
+      <Link color="black100" href={href} noUnderline>
+        <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+          <Flex flexDirection="column" flexGrow="1" justifyContent="center">
+            <Suggestion {...props} />
+          </Flex>
+          {isHighlighted && <HighlightIcon />}
+        </Flex>
       </Link>
     </Box>
   )
 }
+
+const FirstSuggestion = ({query}) => (<>Search "{query}"</>)
+
+const DefaultSuggestion = ({display, label, query}) => {
+  const matches = match(display, query)
+  const parts = parse(display, matches)
+  const partTags = parts.map(
+    ({ highlight, text }, index) =>
+      highlight ? <strong key={index}>{text}</strong> : text
+  )
+
+  return (
+    <>
+      <Serif size="3">{partTags}</Serif>
+      <Sans color={color("black60")} size="2">
+        {label}
+      </Sans>
+    </>
+  )
+}
+
+const HighlightIcon = styled.div`
+  background-color: red;
+  height: 12px;
+  width: 12px;
+`
