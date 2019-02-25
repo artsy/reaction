@@ -31,7 +31,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -62,8 +61,6 @@ export interface RespondState {
 }
 
 export const logger = createLogger("Order/Routes/Respond/index.tsx")
-
-const enableOfferNote = sd.ENABLE_OFFER_NOTE
 
 @track()
 export class RespondRoute extends Component<RespondProps, RespondState> {
@@ -296,24 +293,20 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                         onChange={offerValue => this.setState({ offerValue })}
                         onFocus={this.onOfferInputFocus.bind(this)}
                       />
-                      {enableOfferNote && (
-                        <>
-                          <Spacer mb={0.5} />
-                          <RevealButton
-                            align="left"
-                            buttonLabel="Add note to seller"
-                          >
-                            <Spacer mb={1} />
-                            <OfferNote
-                              onChange={offerNoteValue =>
-                                this.setState({ offerNoteValue })
-                              }
-                              artworkId={artworkId}
-                              counteroffer
-                            />
-                          </RevealButton>
-                        </>
-                      )}
+                      <Spacer mb={0.5} />
+                      <RevealButton
+                        align="left"
+                        buttonLabel="Add note to seller"
+                      >
+                        <Spacer mb={1} />
+                        <OfferNote
+                          onChange={offerNoteValue =>
+                            this.setState({ offerNoteValue })
+                          }
+                          artworkId={artworkId}
+                          counteroffer
+                        />
+                      </RevealButton>
                     </Collapse>
                   </BorderedRadio>
                   <BorderedRadio
