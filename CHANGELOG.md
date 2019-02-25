@@ -1,3 +1,15 @@
+# v14.1.1 (Mon Feb 25 2019)
+
+#### 🐛  Bug Fix
+
+- Remove stale code [#2059](https://github.com/artsy/reaction/pull/2059) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.1.0 (Mon Feb 25 2019)
 
 #### 🚀  Enhancement
