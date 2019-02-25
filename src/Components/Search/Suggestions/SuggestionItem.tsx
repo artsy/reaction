@@ -22,12 +22,12 @@ export const SuggestionItem: SFC<Props> = props => {
     // is suppressed on hover - technically the value does not matter.
     <Box bg={isHighlighted ? "#ddd" : "#fff"}>
       <Link color="black100" href={href} noUnderline>
-        <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+        <SuggestionWrapper>
           <Flex flexDirection="column" flexGrow="1" justifyContent="center">
             <Suggestion {...props} />
           </Flex>
           {isHighlighted && <HighlightIcon />}
-        </Flex>
+        </SuggestionWrapper>
       </Link>
     </Box>
   )
@@ -36,8 +36,14 @@ export const SuggestionItem: SFC<Props> = props => {
 export const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 
 export const EmptySuggestion = () => (
-  <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+  <SuggestionWrapper>
     {PLACEHOLDER}
+  </SuggestionWrapper>
+)
+
+const SuggestionWrapper = props => (
+  <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+    {props.children}
   </Flex>
 )
 
