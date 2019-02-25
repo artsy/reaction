@@ -1,3 +1,15 @@
+# v14.1.3 (Mon Feb 25 2019)
+
+#### 🐛  Bug Fix
+
+- Don't dismiss the search results if the user clicked on a descendant component [#2060](https://github.com/artsy/reaction/pull/2060) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.1.2 (Mon Feb 25 2019)
 
 
