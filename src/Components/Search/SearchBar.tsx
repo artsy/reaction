@@ -17,7 +17,6 @@ import {
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
-import { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -41,7 +40,6 @@ const AutosuggestContainer = styled(Box)`
 export interface Props extends ContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
-  tracking?: TrackingProp
 }
 
 const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
@@ -116,9 +114,19 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ entityType, entityID })
   }
 
+  @track((_props, _state, [query, hasResults]) => ({
+    action_type: hasResults
+      ? Schema.ActionType.SearchedAutosuggestWithResults
+      : Schema.ActionType.SearchedAutosuggestWithoutResults,
+    query,
+  }))
+  trackSearch(_term, _hasResults) {
+    /* no-op */
+  }
+
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    const { tracking, relay, viewer } = this.props
+    const { relay, viewer } = this.props
     relay.refetch(
       {
         term,
@@ -126,14 +134,12 @@ export class SearchBar extends Component<Props, State> {
       },
       null,
       error => {
-        if (error) logger.error(error)
-        if (tracking) {
-          const edges = get(viewer, v => v.search.edges, [])
-          const action = `Auto-suggest with ${
-            edges.length === 0 ? "no results" : "results"
-          }`
-          tracking.trackEvent({ action, term })
+        if (error) {
+          logger.error(error)
+          return
         }
+        const edges = get(viewer, v => v.search.edges, [])
+        this.trackSearch(term, edges.length > 0)
       }
     )
   }
@@ -169,26 +175,32 @@ export class SearchBar extends Component<Props, State> {
   }
 
   // Navigate to selected search item.
-  onSuggestionSelected = (
-    _e,
-    {
-      suggestion: {
-        node: { href, searchableType, id },
-      },
-      suggestionIndex,
-    }
-  ) => {
-    const { tracking } = this.props
-    if (tracking) {
-      tracking.trackEvent({
-        action: "Selected item from search",
-        query: this.state.term,
-        destination_path: href,
-        item_type: searchableType,
-        item_id: id,
-        item_number: suggestionIndex,
-      })
-    }
+  @track(
+    (
+      _props,
+      state: State,
+      [
+        {
+          suggestion: {
+            node: { href, searchableType, id },
+          },
+          suggestionIndex,
+        },
+      ]
+    ) => ({
+      action_type: Schema.ActionType.SelectedItemFromSearch,
+      query: state.term,
+      destination_path: href,
+      item_type: searchableType,
+      item_id: id,
+      item_number: suggestionIndex,
+    })
+  )
+  onSuggestionSelected({
+    suggestion: {
+      node: { href },
+    },
+  }) {
     window.location.assign(href)
   }
 
@@ -290,7 +302,9 @@ export class SearchBar extends Component<Props, State> {
             return this.renderSuggestionsContainer(props, { xs })
           }}
           inputProps={inputProps}
-          onSuggestionSelected={this.onSuggestionSelected}
+          onSuggestionSelected={(_e, selection) =>
+            this.onSuggestionSelected(selection)
+          }
           renderInputComponent={this.renderInputComponent}
         />
       </AutosuggestContainer>
