@@ -7,7 +7,11 @@ import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
-import { EmptySuggestion, PLACEHOLDER, SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
+import {
+  EmptySuggestion,
+  PLACEHOLDER,
+  SuggestionItem,
+} from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
 import React, { Component } from "react"
 import Autosuggest from "react-autosuggest"
