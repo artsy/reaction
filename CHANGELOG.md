@@ -1,3 +1,15 @@
+# v14.1.4 (Mon Feb 25 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Update react-line-ellipses [#2062](https://github.com/artsy/reaction/pull/2062) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.1.3 (Mon Feb 25 2019)
 
 #### 🐛  Bug Fix
