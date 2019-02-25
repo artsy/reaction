@@ -8,7 +8,7 @@ export interface SearchPreviewProps {
   entityType: string
 }
 
-const map = {
+const previewComponents = {
   Artist: ArtistSearchPreview,
   default: MerchandisableArtworksPreview
 }
@@ -17,7 +17,7 @@ export const SearchPreview: SFC<SearchPreviewProps> = ({
   entityID,
   entityType,
 }) => {
-  const Preview = map[entityType] || map.default
+  const Preview = previewComponents[entityType] || previewComponents.default
 
   return (
     <Media greaterThan="xs">
