@@ -2,7 +2,6 @@ import { Box, Flex } from "@artsy/palette"
 import { ContextProvider } from "Artsy/SystemContext"
 import { SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
-import { SearchSuggestionsQueryRenderer as SearchSuggestions } from "Components/Search/Suggestions"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -83,12 +82,6 @@ storiesOf("Components/Search/SearchBar", module).add("Input", () => (
       In mattis euismod mattis.
     </p>
   </>
-))
-
-storiesOf("Components/Search/Suggestions", module).add("Term: Andy", () => (
-  <ContextProvider>
-    <SearchSuggestions term="andy" />
-  </ContextProvider>
 ))
 
 storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
