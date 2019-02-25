@@ -88,21 +88,24 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
   <ContextProvider>
     <SuggestionItem
       display="display one"
+      href="/"
+      isHighlighted
       label="FirstItem"
       query="a query"
-      href="/"
     />
     <SuggestionItem
       display="display two"
+      href="/"
+      isHighlighted={false}
       label="label two"
       query="a query"
-      href="/"
     />
     <SuggestionItem
       display="display three"
+      href="/"
+      isHighlighted={false}
       label="label three"
       query="a query"
-      href="/"
     />
   </ContextProvider>
 ))

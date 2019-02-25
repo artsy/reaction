@@ -265,14 +265,13 @@ export class SearchBar extends Component<Props, State> {
     { query, isHighlighted }
   ) => {
     return (
-      <Box bg={isHighlighted ? "#ddd" : "#fff"}>
-        <SuggestionItem
-          query={query}
-          display={displayLabel}
-          label={searchableType}
-          href={href}
-        />
-      </Box>
+      <SuggestionItem
+        display={displayLabel}
+        href={href}
+        isHighlighted={isHighlighted}
+        label={searchableType}
+        query={query}
+      />
     )
   }
 
