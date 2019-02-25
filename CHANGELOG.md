@@ -1,3 +1,15 @@
+# v14.0.16 (Mon Feb 25 2019)
+
+#### 🐛  Bug Fix
+
+- Remove make offer feature flags [#2058](https://github.com/artsy/reaction/pull/2058) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v14.0.15 (Fri Feb 22 2019)
 
 #### 🐛  Bug Fix
