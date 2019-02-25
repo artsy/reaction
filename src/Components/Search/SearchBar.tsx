@@ -7,7 +7,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
-import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
+import { EmptySuggestion, PLACEHOLDER, SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
 import React, { Component } from "react"
 import Autosuggest from "react-autosuggest"
@@ -21,7 +21,6 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-import { SuggestionItemContainer } from "./Suggestions/SuggestionItemContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
@@ -41,8 +40,6 @@ export interface Props extends ContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
 }
-
-const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 
 interface State {
   /* Holds current input */
@@ -234,12 +231,8 @@ export class SearchBar extends Component<Props, State> {
       return null
     }
 
-    let emptyState = null
-    if (!xs && !query && focused) {
-      emptyState = (
-        <SuggestionItemContainer>{PLACEHOLDER}</SuggestionItemContainer>
-      )
-    }
+    const showEmptyState = !xs && !query && focused
+    const emptyState = showEmptyState && <EmptySuggestion />
 
     const props = {
       children,

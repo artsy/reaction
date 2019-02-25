@@ -33,6 +33,14 @@ export const SuggestionItem: SFC<Props> = props => {
   )
 }
 
+export const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
+
+export const EmptySuggestion = () => (
+  <Flex alignItems="center" flexDirection="row" height="62px" px={3}>
+    {PLACEHOLDER}
+  </Flex>
+)
+
 const FirstSuggestion = ({query}) => (<>Search "{query}"</>)
 
 const DefaultSuggestion = ({display, label, query}) => {
