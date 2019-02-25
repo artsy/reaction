@@ -1,27 +1,44 @@
-import { Flex, Sans } from "@artsy/palette"
+import { color, Flex, Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy/SystemContext"
 import { isFunction } from "lodash"
 import React from "react"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import styled from "styled-components"
-import colors from "../../Assets/Colors"
+import styled, { css, keyframes } from "styled-components"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
-const Image = styled.img`
+/**
+ * The animation that's used for the background of an image while it's loading
+ * in.
+ */
+const pulse = keyframes`
+  0% { background-color: ${color("black10")}; }
+  50% { background-color: ${color("black5")}; }
+  100% { background-color: ${color("black10")}; }
+`
+
+const pulseAnimation = props =>
+  css`
+    ${pulse} 2s ease-in-out infinite;
+  `
+
+const Image = styled(LazyLoadImage)`
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  transition: opacity 0.25s;
 `
 
 const Placeholder = styled.div`
-  background-color: ${colors.grayMedium};
+  background-color: ${color("black10")};
   position: relative;
   width: 100%;
   overflow: hidden;
+  animation: ${pulseAnimation};
 `
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
@@ -34,6 +51,7 @@ interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
 
 interface State {
   isMounted: boolean
+  isImageLoaded: boolean
 }
 
 const IMAGE_QUALITY = 80
@@ -58,6 +76,7 @@ const Badges = styled(Flex)`
 class ArtworkGridItemContainer extends React.Component<Props, State> {
   state = {
     isMounted: false,
+    isImageLoaded: false,
   }
 
   canHover: boolean
@@ -71,6 +90,12 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     if (isFunction(window.matchMedia)) {
       this.canHover = !window.matchMedia("(hover: none)").matches
     }
+  }
+
+  imageLoaded() {
+    this.setState({
+      isImageLoaded: true,
+    })
   }
 
   getImageUrl() {
@@ -140,6 +165,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
 
   render() {
     const { style, className, artwork, user } = this.props
+    const { isImageLoaded } = this.state
 
     let userSpread = {}
     if (user) {
@@ -167,7 +193,11 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               }
             }}
           >
-            <Image src={this.getImageUrl()} />
+            <Image
+              style={{ opacity: isImageLoaded ? "1" : "0" }}
+              src={this.getImageUrl()}
+              onLoad={this.imageLoaded.bind(this)}
+            />
           </a>
 
           {this.renderArtworkBadge(artwork)}
