@@ -24,8 +24,8 @@ const MerchandisableArtworksPreview: React.SFC<
   ).map(x => x.node)
 
   const merchandisableItems = artworks.map((artwork, i) => (
-    <Box width={["0%", "100%", "100%", "50%"]}>
-      <PreviewGridItem artwork={artwork} key={i} />
+    <Box width={["0%", "100%", "100%", "50%"]} key={i}>
+      <PreviewGridItem artwork={artwork} />
     </Box>
   ))
 

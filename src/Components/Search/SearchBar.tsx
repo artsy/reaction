@@ -107,6 +107,8 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
 @track()
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
+  private containerRef: Node
+  private userClickedOnDescendant: boolean
 
   state = {
     term: "",
@@ -180,12 +182,24 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ focused: true })
   }
 
-  onBlur = () => {
-    this.setState({ focused: false })
+  onBlur = e => {
+    // This event _also_ fires when a user clicks on a link in the preview pane.
+    //  If we setState({focused: false}) when that happens, the link will get
+    //  removed from the DOM before the browser has a chance to follow it.
+    if (this.containerRef.contains(e.relatedTarget)) {
+      this.userClickedOnDescendant = true
+    } else {
+      this.setState({ focused: false })
+    }
   }
 
   onSuggestionsClearRequested = () => {
-    this.setState({ term: "", entityID: null, entityType: null })
+    // This event _also_ fires when a user clicks on a link in the preview pane.
+    //  If we initialize state when that happens, the link will get removed
+    //  from the DOM before the browser has a chance to follow it.
+    if (!this.userClickedOnDescendant) {
+      this.setState({ term: "", entityID: null, entityType: null })
+    }
   }
 
   // Navigate to selected search item.
@@ -304,7 +318,7 @@ export class SearchBar extends Component<Props, State> {
     const edges = get(viewer, v => v.search.edges, [])
     const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
     return (
-      <AutosuggestContainer>
+      <AutosuggestContainer ref={ref => (this.containerRef = ref)}>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
