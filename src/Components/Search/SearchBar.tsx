@@ -2,6 +2,8 @@ import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
 import { ContextConsumer, ContextProps } from "Artsy"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
 import { SearchPreview } from "Components/Search/Previews"
@@ -102,6 +104,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
   )
 }
 
+@track()
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
 
@@ -125,16 +128,32 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ entityType, entityID })
   }
 
+  @track((_props, _state, [query, hasResults]) => ({
+    action_type: hasResults
+      ? Schema.ActionType.SearchedAutosuggestWithResults
+      : Schema.ActionType.SearchedAutosuggestWithoutResults,
+    query,
+  }))
+  trackSearch(_term, _hasResults) {
+    /* no-op */
+  }
+
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    this.props.relay.refetch(
+    const { relay, viewer } = this.props
+    relay.refetch(
       {
         term,
         hasTerm: true,
       },
       null,
       error => {
-        if (error) logger.error(error)
+        if (error) {
+          logger.error(error)
+          return
+        }
+        const edges = get(viewer, v => v.search.edges, [])
+        this.trackSearch(term, edges.length > 0)
       }
     )
   }
@@ -154,7 +173,10 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ term })
   }
 
-  onFocus = () => {
+  @track({
+    action_type: Schema.ActionType.FocusedOnAutosuggestInput,
+  })
+  onFocus() {
     this.setState({ focused: true })
   }
 
@@ -167,14 +189,32 @@ export class SearchBar extends Component<Props, State> {
   }
 
   // Navigate to selected search item.
-  onSuggestionSelected = (
-    _e,
-    {
-      suggestion: {
-        node: { href },
-      },
-    }
-  ) => {
+  @track(
+    (
+      _props,
+      state: State,
+      [
+        {
+          suggestion: {
+            node: { href, searchableType, id },
+          },
+          suggestionIndex,
+        },
+      ]
+    ) => ({
+      action_type: Schema.ActionType.SelectedItemFromSearch,
+      query: state.term,
+      destination_path: href,
+      item_type: searchableType,
+      item_id: id,
+      item_number: suggestionIndex,
+    })
+  )
+  onSuggestionSelected({
+    suggestion: {
+      node: { href },
+    },
+  }) {
     window.location.assign(href)
   }
 
@@ -246,7 +286,7 @@ export class SearchBar extends Component<Props, State> {
 
     const inputProps = {
       onChange: this.searchTextChanged,
-      onFocus: this.onFocus,
+      onFocus: this.onFocus.bind(this),
       onBlur: this.onBlur,
       placeholder: xs ? "" : PLACEHOLDER,
       value: term,
@@ -276,7 +316,9 @@ export class SearchBar extends Component<Props, State> {
             return this.renderSuggestionsContainer(props, { xs })
           }}
           inputProps={inputProps}
-          onSuggestionSelected={this.onSuggestionSelected}
+          onSuggestionSelected={(_e, selection) =>
+            this.onSuggestionSelected(selection)
+          }
           renderInputComponent={this.renderInputComponent}
         />
       </AutosuggestContainer>
