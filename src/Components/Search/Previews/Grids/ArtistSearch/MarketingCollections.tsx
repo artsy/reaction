@@ -2,6 +2,7 @@ import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
@@ -58,7 +59,7 @@ export const MarketingCollectionsPreview: React.SFC<
 > = ({ marketingCollections }) => {
   const items = marketingCollections.map(
     ({ headerImage, title, slug }, index) => {
-      const href = `collection/${slug}`
+      const href = `${sd.APP_URL}/collection/${slug}`
       const imageUrl = crop(headerImage, {
         width: 185,
         height: 80,

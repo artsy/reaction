@@ -9,6 +9,11 @@ import { MarketingCollectionsPreview } from "../MarketingCollections"
 import { RelatedArtworksPreview } from "../RelatedArtworks"
 
 jest.unmock("react-relay")
+jest.mock("sharify", () => ({
+  data: {
+    APP_URL: "https://staging.artsy.net",
+  },
+}))
 
 const getWrapper = (viewer, breakpoint = "xl") => {
   return renderRelayTree({
@@ -132,7 +137,7 @@ describe("ArtistSearchPreviewFragmentContainer", () => {
       const component = await getWrapper(viewer)
       const hrefs = component.find("a").map(node => node.props().href)
       const expected = viewer.artist.marketingCollections.map(
-        collection => `collection/${collection.slug}`
+        collection => `https://staging.artsy.net/collection/${collection.slug}`
       )
       expect(hrefs).toEqual(expected)
     })
