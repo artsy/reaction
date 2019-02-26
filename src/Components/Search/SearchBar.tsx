@@ -26,6 +26,7 @@ import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { SearchInputContainer } from "./SearchInputContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
@@ -288,9 +289,7 @@ export class SearchBar extends Component<Props, State> {
     )
   }
 
-  renderInputComponent = inputProps => {
-    return <Input style={{ width: "100%" }} {...inputProps} />
-  }
+  renderInputComponent = props => <SearchInputContainer {...props} />
 
   renderAutosuggestComponent({ xs }) {
     const { term } = this.state
