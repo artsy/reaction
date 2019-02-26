@@ -26,6 +26,7 @@ export const CollectionsFixture = [
     title: "Street Art Now",
     slug: "street-art-now",
     headerImage: "http://files.artsy.net/images/streetartnow.png",
+    price_guidance: 200,
   },
   {
     title: "Timeless Modern Prints",
