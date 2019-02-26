@@ -19,10 +19,16 @@ export class ArtworkImageBrowserContainer extends React.Component<
   slider: Slider
 
   render() {
-    const { images } = this.props.artwork
+    const { images, image } = this.props.artwork
     if (!images.length) {
       return null
     }
+
+    const primaryImageIndex = images
+      .map(e => {
+        return e.id
+      })
+      .indexOf(image.id)
 
     return (
       <>
@@ -32,7 +38,8 @@ export class ArtworkImageBrowserContainer extends React.Component<
         />
         <ArtworkActions
           selectDefaultSlide={() => {
-            this.slider.slickGoTo(0)
+            this.slider.slickGoTo(primaryImageIndex)
+            return primaryImageIndex
           }}
           artwork={this.props.artwork}
         />
@@ -53,7 +60,12 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       href
 
       ...ArtworkActions_artwork
-
+      image {
+        id
+        url(version: "larger")
+        height
+        width
+      }
       images {
         id
         uri: url(version: ["larger", "large"])

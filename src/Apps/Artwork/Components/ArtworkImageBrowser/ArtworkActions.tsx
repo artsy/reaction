@@ -96,7 +96,7 @@ export class ArtworkActions extends React.Component<
     type: Schema.Type.Button,
   })
   openViewInRoom(mediator) {
-    this.props.selectDefaultSlide()
+    const primaryImageIndex = this.props.selectDefaultSlide()
 
     setTimeout(() => {
       const {
@@ -108,6 +108,7 @@ export class ArtworkActions extends React.Component<
         mediator.trigger("openViewInRoom", {
           dimensions,
           image,
+          primaryImageIndex,
         })
     }, 300)
   }

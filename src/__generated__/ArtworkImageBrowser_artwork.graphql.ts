@@ -9,6 +9,12 @@ export type ArtworkImageBrowser_artwork = {
     readonly image_alt: string | null;
     readonly image_title: string | null;
     readonly href: string | null;
+    readonly image: ({
+        readonly id: string | null;
+        readonly url: string | null;
+        readonly height: number | null;
+        readonly width: number | null;
+    }) | null;
     readonly images: ReadonlyArray<({
         readonly id: string | null;
         readonly uri: string | null;
@@ -37,7 +43,15 @@ export type ArtworkImageBrowser_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkImageBrowser_artwork",
   "type": "Artwork",
@@ -80,19 +94,53 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "image",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Image",
+      "plural": false,
+      "selections": [
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "url",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "larger",
+              "type": "[String]"
+            }
+          ],
+          "storageKey": "url(version:\"larger\")"
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "height",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "width",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
       "name": "images",
       "storageKey": null,
       "args": null,
       "concreteType": "Image",
       "plural": true,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
+        v0,
         {
           "kind": "ScalarField",
           "alias": "uri",
@@ -254,5 +302,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7ba3e87f4eccf6493397bc6caab748fa';
+})();
+(node as any).hash = '2547bb44d60c4f588be01fea3e3337e1';
 export default node;
