@@ -66,12 +66,12 @@ const DefaultSuggestion = ({ display, label, query }) => {
 
 const HighlightIcon = () => (
   <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fill-rule="evenodd">
+    <g fill="none" fillRule="evenodd">
       <path fill="none" d="M0 0h18v18H0z" />
       <path
         d="M4.883 11.244l3.108 3.068-.693.688L3 10.758l4.299-4.23.692.689-3.106 3.056h9.134V3H15v8.244H4.883z"
         fill="#000"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       />
     </g>
   </svg>
