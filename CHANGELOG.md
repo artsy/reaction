@@ -1,3 +1,15 @@
+# v14.1.11 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link styles in Collections header [#2071](https://github.com/artsy/reaction/pull/2071) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.1.10 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
