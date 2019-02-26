@@ -1,3 +1,15 @@
+# v14.1.9 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured => [Autosuggest] Couple minor QA items [#2066](https://github.com/artsy/reaction/pull/2066) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.1.8 (Tue Feb 26 2019)
 
 
