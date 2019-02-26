@@ -22,6 +22,7 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import styled from "styled-components"
+import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -105,7 +106,9 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
   )
 }
 
-@track()
+@track(null, {
+  dispatch: data => Events.postEvent(data),
+})
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
   private containerRef: Node
