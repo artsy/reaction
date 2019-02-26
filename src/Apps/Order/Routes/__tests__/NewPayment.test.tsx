@@ -17,7 +17,9 @@ import { Input } from "../../../../Components/Input"
 import {
   creatingCreditCardFailed,
   creatingCreditCardSuccess,
-  settingOrderPaymentFailed,
+  fixFailedPaymentFailure,
+  fixFailedPaymentInsufficientInventoryFailure,
+  fixFailedPaymentSuccess,
 } from "../__fixtures__/MutationResults"
 
 jest.mock("react-stripe-elements", () => {
@@ -48,6 +50,7 @@ const createTokenMock = require("react-stripe-elements").__stripeMock
   .createToken as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
+window.location.assign = jest.fn()
 
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
@@ -99,14 +102,6 @@ const testOrderPickup = {
   },
 }
 
-const settingOrderPaymentSuccess = {
-  ecommerceSetOrderPayment: {
-    orderOrError: {
-      order: testOrder,
-    },
-  },
-}
-
 describe("Payment", () => {
   const { buildPage, mutations, routes } = createTestEnv({
     Component: NewPaymentFragmentContainer,
@@ -115,7 +110,7 @@ describe("Payment", () => {
     },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
-      ...settingOrderPaymentSuccess,
+      ...fixFailedPaymentSuccess,
     },
     query: graphql`
       query NewPaymentTestQuery {
@@ -150,6 +145,7 @@ describe("Payment", () => {
   })
 
   beforeEach(() => {
+    ;(window.location.assign as any).mockReset()
     mockPostEvent.mockReset()
     createTokenMock.mockReset()
     createTokenMock.mockImplementation(() => Promise.resolve())
@@ -362,7 +358,7 @@ describe("Payment", () => {
     expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         creditCardId: "gravityCreditCardId",
-        orderId: "1234",
+        offerId: "myoffer-id",
       },
     })
   })
@@ -387,19 +383,40 @@ describe("Payment", () => {
 
     await page.clickSubmit()
     await page.expectAndDismissErrorDialogMatching(
-      "An error occurre",
+      "An error occurred",
       "No such token: fake-token"
     )
   })
 
-  it("shows an error modal when there is an error in SetOrderPaymentPayload", async () => {
+  it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
+    createTokenMock.mockReturnValue(
+      Promise.resolve({ token: { id: "tokenId" } })
+    )
+
+    const page = await buildPage()
+
+    mutations.useResultsOnce(fixFailedPaymentInsufficientInventoryFailure)
+
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "Not available",
+      "Sorry, the work is no longer available."
+    )
+    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+    expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
+  })
+
+  it("shows an error modal when fixing the failed payment fails", async () => {
     createTokenMock.mockReturnValue(
       Promise.resolve({ token: { id: "tokenId" } })
     )
     const page = await buildPage()
-    mutations.useResultsOnce(settingOrderPaymentFailed)
+    mutations.useResultsOnce(fixFailedPaymentFailure)
     await page.clickSubmit()
-    await page.expectAndDismissDefaultErrorDialog()
+    await page.expectAndDismissErrorDialogMatching(
+      "Charge failed",
+      "Payment authorization has been declined. Please contact your card provider and try again."
+    )
   })
 
   it("shows an error modal when there is a network error", async () => {

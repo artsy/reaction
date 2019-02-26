@@ -41,6 +41,9 @@ export type NewPayment_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
+                    readonly artists: ReadonlyArray<({
+                        readonly id: string;
+                    }) | null> | null;
                 }) | null;
             }) | null;
         }) | null> | null;
@@ -269,6 +272,19 @@ return {
                   "plural": false,
                   "selections": [
                     v0,
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "artists",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "Artist",
+                      "plural": true,
+                      "selections": [
+                        v0,
+                        v4
+                      ]
+                    },
                     v4
                   ]
                 },
@@ -326,5 +342,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bdb868df6449c82f7c6f86baa7ead8c4';
+(node as any).hash = '6fafabfeb1744229a15e7e330a2ac22d';
 export default node;

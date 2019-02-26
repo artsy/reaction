@@ -20,7 +20,7 @@ import { validateAddress } from "Apps/Order/Utils/formValidators"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { Router } from "found"
+import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import {
   commitMutation,
@@ -45,6 +45,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import { get } from "Utils/get"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -57,6 +58,7 @@ export interface NewPaymentProps
   order: NewPayment_order
   relay?: RelayRefetchProp
   router: Router
+  route: RouteConfig
   dialog: Dialog
 }
 
@@ -119,8 +121,7 @@ export class NewPaymentRoute extends Component<
         }
       }
 
-      const { address } = this.state
-      const stripeBillingAddress = this.getStripeBillingAddress(address)
+      const stripeBillingAddress = this.getStripeBillingAddress()
       this.props.stripe
         .createToken(stripeBillingAddress)
         .then(({ error, token }) => {
@@ -270,7 +271,7 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private getStripeBillingAddress(formAddress: Address): stripe.TokenOptions {
+  private getStripeBillingAddress(): stripe.TokenOptions {
     const selectedBillingAddress = (this.needsAddress()
       ? this.state.address
       : this.props.order.requestedFulfillment) as Address
@@ -304,7 +305,7 @@ export class NewPaymentRoute extends Component<
           } = data
 
           if (creditCardOrError.creditCard) {
-            this.setOrderPayment({
+            this.fixFailedPayment({
               creditCardId: creditCardOrError.creditCard.id,
             })
           } else {
@@ -314,6 +315,7 @@ export class NewPaymentRoute extends Component<
               const mutationError = creditCardOrError.mutationError
               this.onMutationError(
                 new ErrorWithMetadata(mutationError.message, mutationError),
+                "An error occurred",
                 mutationError.detail
               )
             }
@@ -349,7 +351,7 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private setOrderPayment({ creditCardId }) {
+  private fixFailedPayment({ creditCardId }) {
     commitMutation<NewPaymentRouteSetOrderPaymentMutation>(
       this.props.relay.environment,
       {
@@ -357,7 +359,7 @@ export class NewPaymentRoute extends Component<
           this.setState({ isCommittingMutation: false })
 
           const {
-            ecommerceSetOrderPayment: { orderOrError },
+            ecommerceFixFailedPayment: { orderOrError },
           } = data
 
           if (orderOrError.order) {
@@ -367,21 +369,46 @@ export class NewPaymentRoute extends Component<
               errors.forEach(this.onMutationError.bind(this))
             } else {
               const orderError = orderOrError.error
-              this.onMutationError(
-                new ErrorWithMetadata(orderError.code, orderError)
-              )
+              switch (orderError.code) {
+                case "capture_failed": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError),
+                    "Charge failed",
+                    "Payment authorization has been declined. Please contact your card provider and try again."
+                  )
+                  break
+                }
+                case "insufficient_inventory": {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError),
+                    "Not available",
+                    "Sorry, the work is no longer available.",
+                    () => {
+                      this.routeToArtistPage()
+                    }
+                  )
+                  break
+                }
+                default: {
+                  this.onMutationError(
+                    new ErrorWithMetadata(orderError.code, orderError)
+                  )
+                  break
+                }
+              }
             }
           }
         },
         onError: this.onMutationError.bind(this),
         mutation: graphql`
           mutation NewPaymentRouteSetOrderPaymentMutation(
-            $input: SetOrderPaymentInput!
+            $input: FixFailedPaymentInput!
           ) {
-            ecommerceSetOrderPayment(input: $input) {
+            ecommerceFixFailedPayment(input: $input) {
               orderOrError {
                 ... on OrderWithMutationSuccess {
                   order {
+                    state
                     creditCard {
                       id
                       name
@@ -391,6 +418,9 @@ export class NewPaymentRoute extends Component<
                       state
                       country
                       postal_code
+                    }
+                    ... on OfferOrder {
+                      awaitingResponseFrom
                     }
                   }
                 }
@@ -407,7 +437,7 @@ export class NewPaymentRoute extends Component<
         `,
         variables: {
           input: {
-            orderId: this.props.order.id,
+            offerId: this.props.order.lastOffer.id,
             creditCardId,
           },
         },
@@ -415,9 +445,17 @@ export class NewPaymentRoute extends Component<
     )
   }
 
-  private onMutationError(error, message?) {
+  private onMutationError(
+    error: ErrorWithMetadata,
+    title?: string,
+    message?: string,
+    onDismiss?: () => void
+  ) {
     logger.error(error)
-    this.props.dialog.showErrorDialog({ message })
+    const result = this.props.dialog.showErrorDialog({ title, message })
+    if (onDismiss) {
+      result.then(onDismiss)
+    }
     this.setState({ isCommittingMutation: false })
   }
 
@@ -427,6 +465,21 @@ export class NewPaymentRoute extends Component<
 
   private needsAddress = () => {
     return this.isPickup() || !this.state.hideBillingAddress
+  }
+
+  artistId() {
+    return get(
+      this.props.order,
+      o => o.lineItems.edges[0].node.artwork.artists[0].id
+    )
+  }
+
+  routeToArtistPage() {
+    const artistId = this.artistId()
+
+    // Don't confirm whether or not you want to leave the page
+    this.props.route.onTransition = () => null
+    window.location.assign(`/artist/${artistId}`)
   }
 }
 
@@ -466,6 +519,9 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
           node {
             artwork {
               id
+              artists {
+                id
+              }
             }
           }
         }
