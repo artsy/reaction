@@ -73,14 +73,28 @@ describe("ArtistSearchPreviewFragmentContainer", () => {
           },
         }
 
-        const wrapper = await getWrapper(viewer)
+        const wrapper = await getWrapper(viewer, "lg")
 
         expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(0)
         expect(wrapper.find(RelatedArtworksPreview).length).toEqual(1)
         expect(wrapper.find(PreviewGridItem).length).toEqual(10)
       })
 
-      // it("renders 5 artworks at md", async() => {})
+      it("renders 5 artworks at md", async () => {
+        const viewer = {
+          artist: {
+            id: "andy-warhol",
+            marketingCollections: [],
+          },
+          filter_artworks: {
+            artworks_connection: buildArtworksConnection(10),
+          },
+        }
+
+        const wrapper = await getWrapper(viewer, "md")
+
+        expect(wrapper.find(PreviewGridItem).length).toEqual(5)
+      })
 
       describe("an artist with no related artworks", () => {
         // it("renders an empty preview", async() => {})
