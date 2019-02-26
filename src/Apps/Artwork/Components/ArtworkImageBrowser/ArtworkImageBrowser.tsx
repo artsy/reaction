@@ -1,6 +1,6 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { Lightbox } from "Components/v2"
-import React, { forwardRef } from "react"
+import React from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -17,29 +17,32 @@ import {
 
 interface ArtworkBrowserProps {
   images: ArtworkImageBrowser_artwork["images"]
+  sliderRef?(slider: Slider): void
 }
 
-export const ArtworkImageBrowser = forwardRef((props, ref) => {
+export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
   return (
     <>
       <Media at="xs">
-        <SmallArtworkImageBrowser images={props.images} ref={ref} />
+        <SmallArtworkImageBrowser {...props} />
       </Media>
       <Media greaterThan="xs">
-        <LargeArtworkImageBrowser images={props.images} ref={ref} />
+        <LargeArtworkImageBrowser {...props} />
       </Media>
     </>
   )
-})
+}
 
 export class LargeArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
   slider: Slider
 
-  get testMethod() {
-    console.log("im in the test method!")
-    return true
+  setSliderRef = slider => {
+    this.slider = slider
+    if (this.props.sliderRef) {
+      this.props.sliderRef(slider)
+    }
   }
 
   get settings(): Settings {
@@ -71,7 +74,7 @@ export class LargeArtworkImageBrowser extends React.Component<
             </Col>
           )}
           <Col sm={hasMultipleImages ? 10 : 12}>
-            <Slider {...this.settings} ref={slider => (this.slider = slider)}>
+            <Slider {...this.settings} ref={this.setSliderRef}>
               {this.props.images.map(image => {
                 return (
                   <Flex
@@ -113,6 +116,15 @@ export class SmallArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps,
   ArtworkBrowserState
 > {
+  slider: Slider
+
+  setSliderRef = slider => {
+    this.slider = slider
+    if (this.props.sliderRef) {
+      this.props.sliderRef(slider)
+    }
+  }
+
   state = {
     isLocked: false,
   }
@@ -134,7 +146,7 @@ export class SmallArtworkImageBrowser extends React.Component<
   render() {
     return (
       <Container>
-        <Slider {...this.settings}>
+        <Slider {...this.settings} ref={this.setSliderRef}>
           {this.props.images.map(image => {
             return (
               <Flex

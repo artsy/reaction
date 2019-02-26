@@ -1,10 +1,11 @@
-import React, { useRef } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import Slider from "react-slick"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
@@ -15,17 +16,7 @@ export interface ImageBrowserProps {
 export class ArtworkImageBrowserContainer extends React.Component<
   ImageBrowserProps
 > {
-  childRef: any
-
-  constructor(props) {
-    super(props)
-    this.childRef = useRef(null)
-  }
-
-  callChildMethod = () => {
-    console.log("calling child method")
-    this.childRef.testMethod()
-  }
+  slider: Slider
 
   render() {
     const { images } = this.props.artwork
@@ -35,10 +26,15 @@ export class ArtworkImageBrowserContainer extends React.Component<
 
     return (
       <>
-        <ArtworkImageBrowser images={images} ref={this.childRef} />
+        <ArtworkImageBrowser
+          images={images}
+          sliderRef={slider => (this.slider = slider)}
+        />
         <ArtworkActions
+          selectDefaultSlide={() => {
+            this.slider.slickGoTo(0)
+          }}
           artwork={this.props.artwork}
-          testProp={this.callChildMethod}
         />
       </>
     )
