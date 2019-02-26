@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Spacer } from "@artsy/palette"
+import { Box, Sans, Spacer } from "@artsy/palette"
 import { Carousel } from "Components/v2"
 import React, { SFC } from "react"
 import { ArtistCollectionEntity } from "./CollectionEntity"
@@ -11,13 +11,17 @@ export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
   collections,
 }) => {
   return (
-    <Box pb={3}>
-      <Box>
-        <Sans size="6">Browse by series</Sans>
-        <Spacer mb={3} />
-      </Box>
+    <Box>
+      <Sans size="3" weight="medium">
+        Browse by series
+      </Sans>
+      <Spacer pb={1} />
+
       <Carousel
         height={200}
+        settings={{
+          arrows: true,
+        }}
         data={collections as object[]}
         render={slide => {
           return <ArtistCollectionEntity collection={slide} />
@@ -26,16 +30,3 @@ export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
     </Box>
   )
 }
-
-// {collections.map((collection, index) => {
-//   const shouldAddPadding = index % 2 === 0
-//   return (
-//     <Box
-//       width={["100%", "50%"]}
-//       key={index}
-//       pr={[0, shouldAddPadding ? 2 : 0]}
-//     >
-//       <ArtistCollectionEntity collection={collection} />
-//     </Box>
-//   )
-// })}
