@@ -6,6 +6,7 @@ import { graphql } from "react-relay"
 import { PreviewGridItem } from "../../PreviewGridItem"
 import { ArtistSearchPreviewFragmentContainer } from "../index"
 import { MarketingCollectionsPreview } from "../MarketingCollections"
+import { NoResultsPreview } from "../NoResults"
 import { RelatedArtworksPreview } from "../RelatedArtworks"
 
 jest.unmock("react-relay")
@@ -39,7 +40,7 @@ const getWrapper = (viewer, breakpoint = "xl") => {
 
 const buildArtworksConnection: any = (numberOfItems: number) => {
   const edges = Array(numberOfItems)
-    .fill(1)
+    .fill(undefined)
     .map((_, i) => ({
       node: buildNode(i),
     }))
@@ -97,7 +98,24 @@ describe("ArtistSearchPreviewFragmentContainer", () => {
       })
 
       describe("an artist with no related artworks", () => {
-        // it("renders an empty preview", async() => {})
+        it("renders an empty preview", async () => {
+          const viewer = {
+            artist: {
+              id: "andy-warhol",
+              marketingCollections: [],
+            },
+            filter_artworks: {
+              artworks_connection: buildArtworksConnection(0),
+            },
+          }
+
+          const wrapper = await getWrapper(viewer, "md")
+
+          expect(wrapper.find(NoResultsPreview).length).toEqual(1)
+          expect(wrapper.text()).toEqual(
+            "This artist does not have any work on Artsy yet."
+          )
+        })
       })
     })
   })
