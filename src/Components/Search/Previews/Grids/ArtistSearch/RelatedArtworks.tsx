@@ -8,6 +8,7 @@ import { Media } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
+import { NoResultsPreview } from "./NoResults"
 
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
@@ -36,6 +37,11 @@ export class RelatedArtworksPreview extends React.Component<
     ).map(x => x.node)
 
     const { state } = searchState
+
+    if (artworks.length === 0) {
+      return <NoResultsPreview />
+    }
+
     const relatedArtworks = artworks.map((artwork, i) => {
       return (
         <Box width={["0%", "100%", "100%", "50%"]} key={i}>

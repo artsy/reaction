@@ -1,3 +1,53 @@
+# v14.1.14 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Make @sentry/browser a peer dependency of reaction [#2072](https://github.com/artsy/reaction/pull/2072) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v14.1.12 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add an "empty" preview for artists without collections or artworks [#2070](https://github.com/artsy/reaction/pull/2070) ([@pepopowitz](https://github.com/pepopowitz))
+- Add CollectionsRail tracking and tests [#2068](https://github.com/artsy/reaction/pull/2068) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.11 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link styles in Collections header [#2071](https://github.com/artsy/reaction/pull/2071) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.10 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add search bar icon [#2067](https://github.com/artsy/reaction/pull/2067) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.1.9 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
