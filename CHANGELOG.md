@@ -1,3 +1,15 @@
+# v14.1.6 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Autosuggest] Hook up event dispatch for analytics tracking [#2065](https://github.com/artsy/reaction/pull/2065) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.1.5 (Mon Feb 25 2019)
 
 #### 🐛  Bug Fix
