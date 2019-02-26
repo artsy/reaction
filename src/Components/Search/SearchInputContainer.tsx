@@ -25,10 +25,10 @@ const SearchButton = styled.button`
   }
 `
 
-export const SearchInputContainer = props => {
+export const SearchInputContainer: React.ExoticComponent<any> = React.forwardRef((props, ref) => {
   return (
     <Box style={{ position: "relative" }}>
-      <Input style={{ width: "100%" }} {...props} />
+      <Input ref={ref} style={{ width: "100%" }} {...props} />
       <SearchButton>
         <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
           <title>search</title>
@@ -41,4 +41,4 @@ export const SearchInputContainer = props => {
       </SearchButton>
     </Box>
   )
-}
+})
