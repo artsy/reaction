@@ -38,7 +38,7 @@ describe("CollectionsRail", () => {
     expect(dispatch).toBeCalledWith({
       action_type: "Impression",
       context_module: "CollectionsRail",
-      subject: "CollectionsRail",
+      context_page_owner_type: "Article",
     })
   })
 })
