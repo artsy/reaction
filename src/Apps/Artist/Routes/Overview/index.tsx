@@ -1,10 +1,12 @@
-import { Box, Col, Row, Sans, Spacer } from "@artsy/palette"
+import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
+import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { withContext } from "Artsy/SystemContext"
+import { ArtistCollectionsRail } from "Components/Artist/CollectionsRail/CollectionsRail"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -69,6 +71,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
+    const showCollectionsRail = true
 
     return (
       <>
@@ -142,6 +145,14 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         </Row>
 
         {!hideMainOverviewSection && <Spacer mb={4} />}
+
+        {showCollectionsRail && (
+          <div>
+            <Separator mb={3} />
+            <ArtistCollectionsRail collections={CollectionsFixture} />
+            <Spacer mb={3} />
+          </div>
+        )}
 
         <Row>
           <Col>
