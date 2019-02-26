@@ -112,7 +112,7 @@ describe("ArtistSearchPreviewFragmentContainer", () => {
           const wrapper = await getWrapper(viewer, "md")
 
           expect(wrapper.find(NoResultsPreview).length).toEqual(1)
-          expect(wrapper.text()).toEqual(
+          expect(wrapper.text()).toContain(
             "This artist does not have any work on Artsy yet."
           )
         })
