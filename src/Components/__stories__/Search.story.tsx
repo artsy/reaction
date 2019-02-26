@@ -125,6 +125,16 @@ storiesOf("Components/Search/Previews/Artist", module)
       </ContextProvider>
     </Box>
   ))
+  .add("An artist with neither collections nor related artworks", () => (
+    <Box width="450px" p={2}>
+      <ContextProvider>
+        <SearchPreview
+          entityID="miguel-angel-angel-rojas"
+          entityType="Artist"
+        />
+      </ContextProvider>
+    </Box>
+  ))
 
 storiesOf("Components/Search/Previews/MerchandisableArtworks", module).add(
   "No query",

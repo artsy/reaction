@@ -6,6 +6,7 @@ import { Media } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
+import { NoResultsPreview } from "./NoResults"
 
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
@@ -18,6 +19,10 @@ export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
     x => x.filter_artworks.artworks_connection.edges,
     []
   ).map(x => x.node)
+
+  if (artworks.length === 0) {
+    return <NoResultsPreview />
+  }
 
   const relatedArtworks = artworks.map((artwork, i) => (
     <Box width={["0%", "100%", "100%", "50%"]} key={i}>
