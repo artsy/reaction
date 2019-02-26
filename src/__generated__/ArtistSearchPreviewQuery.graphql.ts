@@ -52,6 +52,7 @@ fragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {
     artworks_connection(first: 10) {
       edges {
         node {
+          href
           ...PreviewGridItem_artwork
           __id
         }
@@ -102,7 +103,7 @@ return {
   "operationKind": "query",
   "name": "ArtistSearchPreviewQuery",
   "id": null,
-  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections(size: 6) {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query ArtistSearchPreviewQuery(\n  $entityID: String!\n) {\n  viewer {\n    ...ArtistSearchPreview_viewer_1IQPhv\n  }\n}\n\nfragment ArtistSearchPreview_viewer_1IQPhv on Viewer {\n  artist(id: $entityID) {\n    id\n    marketingCollections(size: 6) {\n      title\n      ...MarketingCollectionsPreview_marketingCollections\n      __id: id\n    }\n    __id\n  }\n  ...RelatedArtworksPreview_viewer_1IQPhv\n}\n\nfragment MarketingCollectionsPreview_marketingCollections on MarketingCollection {\n  title\n  slug\n  headerImage\n  __id: id\n}\n\nfragment RelatedArtworksPreview_viewer_1IQPhv on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\", artist_id: $entityID) {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          href\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
