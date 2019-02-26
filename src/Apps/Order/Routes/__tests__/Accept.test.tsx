@@ -10,7 +10,6 @@ import moment from "moment"
 import { graphql } from "react-relay"
 import {
   acceptOfferFailed,
-  acceptOfferInsufficientInventoryFailure,
   acceptOfferPaymentFailed,
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
@@ -23,8 +22,6 @@ jest.unmock("react-relay")
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
-
-window.location.assign = jest.fn()
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -60,10 +57,6 @@ describe("Accept seller offer", () => {
       ...acceptOfferSuccess,
     },
     TestPage: OrderAppTestPage,
-  })
-
-  beforeEach(() => {
-    ;(window.location.assign as any).mockReset()
   })
 
   describe("with default data", () => {
@@ -158,24 +151,9 @@ describe("Accept seller offer", () => {
       mutations.useResultsOnce(acceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
-        "Charge failed",
-        "Payment authorization has been declined. Please contact your card provider and try again."
+        "An error occurred",
+        "There was an error processing your payment. Please try again or contact orders@artsy.net."
       )
-      expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/payment/new`
-      )
-    })
-
-    it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
-      mutations.useResultsOnce(acceptOfferInsufficientInventoryFailure)
-
-      await page.clickSubmit()
-      await page.expectAndDismissErrorDialogMatching(
-        "Not available",
-        "Sorry, the work is no longer available."
-      )
-      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
-      expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
     })
   })
 
