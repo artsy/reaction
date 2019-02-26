@@ -1,4 +1,4 @@
-import { Box, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import currency from "currency.js"
 import React, { SFC } from "react"
 import { data as sd } from "sharify"
@@ -11,16 +11,16 @@ export interface CollectionProps {
 export const ArtistCollectionEntity: SFC<CollectionProps> = ({
   collection,
 }) => {
-  const { price_guidance, slug, title } = collection
+  const { price_guidance, slug, title, headerImage } = collection
   const formattedTitle = title.split(": ")[1] || title
 
   return (
     <Box width="100%" pr={2}>
       <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
         <ImgWrapper pb={1}>
-          <ImgPlaceholder />
-          <ImgPlaceholder />
-          <ImgPlaceholder />
+          <ImgPlaceholder headerImage={headerImage} />
+          <ImgPlaceholder headerImage={headerImage} />
+          <ImgPlaceholder headerImage={headerImage} />
         </ImgWrapper>
 
         <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
@@ -49,10 +49,13 @@ const StyledLink = styled(Link)`
   }
 `
 
-const ImgPlaceholder = styled.div`
+const ImgPlaceholder = styled.div<{ headerImage: string }>`
   width: 85px;
   height: 125px;
-  background: gray;
+  background: url(${props => props.headerImage});
+  background-color: ${color("black10")};
+  background-position: center;
+  background-size: cover;
 
   &:last-child {
     padding-right: 0;
