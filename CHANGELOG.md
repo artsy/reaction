@@ -1,3 +1,15 @@
+# v14.1.12 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add CollectionsRail tracking and tests [#2068](https://github.com/artsy/reaction/pull/2068) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.1.11 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
