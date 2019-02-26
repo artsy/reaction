@@ -201,10 +201,17 @@ export enum Subject {
 
   ConsignLearnMore = "learn more",
 
-  // Artwork Page
+  /**
+   * Artwork Page
+   */
   Classification = "Classification info",
   ContactGallery = "Contact Gallery",
   EnterLiveAuction = "Enter live auction",
+
+  /**
+   * Collections Rails
+   */
+  CollectionsRail = "CollectionsRail",
 }
 
 /**
@@ -263,6 +270,11 @@ export enum ContextModule {
    * Collection page
    */
   CollectionDescription = "CollectionDescription",
+
+  /**
+   * Collections Rails
+   */
+  CollectionsRail = "CollectionsRail",
 }
 
 export enum Flow {
