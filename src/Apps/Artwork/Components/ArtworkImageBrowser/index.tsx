@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
@@ -12,21 +12,43 @@ export interface ImageBrowserProps {
   artwork: ArtworkImageBrowser_artwork
 }
 
-export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
+export class ArtworkImageBrowserContainer extends React.Component<
   ImageBrowserProps
->(
-  props => {
-    const { images } = props.artwork
+> {
+  childRef: any
+
+  constructor(props) {
+    super(props)
+    this.childRef = useRef(null)
+  }
+
+  callChildMethod = () => {
+    console.log("calling child method")
+    this.childRef.testMethod()
+  }
+
+  render() {
+    const { images } = this.props.artwork
     if (!images.length) {
       return null
     }
+
     return (
       <>
-        <ArtworkImageBrowser images={images} />
-        <ArtworkActions artwork={props.artwork} />
+        <ArtworkImageBrowser images={images} ref={this.childRef} />
+        <ArtworkActions
+          artwork={this.props.artwork}
+          testProp={this.callChildMethod}
+        />
       </>
     )
-  },
+  }
+}
+
+export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
+  ImageBrowserProps
+>(
+  ArtworkImageBrowserContainer,
   graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
       title

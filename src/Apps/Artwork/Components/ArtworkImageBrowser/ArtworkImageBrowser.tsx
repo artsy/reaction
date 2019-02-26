@@ -1,6 +1,6 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { Lightbox } from "Components/v2"
-import React from "react"
+import React, { forwardRef } from "react"
 import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -19,23 +19,28 @@ interface ArtworkBrowserProps {
   images: ArtworkImageBrowser_artwork["images"]
 }
 
-export const ArtworkImageBrowser: React.SFC<ArtworkBrowserProps> = props => {
+export const ArtworkImageBrowser = forwardRef((props, ref) => {
   return (
     <>
       <Media at="xs">
-        <SmallArtworkImageBrowser images={props.images} />
+        <SmallArtworkImageBrowser images={props.images} ref={ref} />
       </Media>
       <Media greaterThan="xs">
-        <LargeArtworkImageBrowser images={props.images} />
+        <LargeArtworkImageBrowser images={props.images} ref={ref} />
       </Media>
     </>
   )
-}
+})
 
 export class LargeArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
   slider: Slider
+
+  get testMethod() {
+    console.log("im in the test method!")
+    return true
+  }
 
   get settings(): Settings {
     return {

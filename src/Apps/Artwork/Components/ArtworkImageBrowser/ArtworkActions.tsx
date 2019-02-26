@@ -34,6 +34,7 @@ import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
   user?: User
+  testProp: any
 }
 
 interface ArtworkActionsState {
@@ -58,6 +59,9 @@ export class ArtworkActions extends React.Component<
     type: Schema.Type.Button,
   })
   toggleSharePanel() {
+    console.log("clicked!")
+    this.props.testProp()
+
     const showSharePanel = !this.state.showSharePanel
     this.setState({
       showSharePanel,
