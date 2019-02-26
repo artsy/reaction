@@ -328,9 +328,10 @@ export class SearchBar extends Component<Props, State> {
             return this.renderSuggestionsContainer(props, { xs })
           }}
           inputProps={inputProps}
-          onSuggestionSelected={(_e, selection) =>
+          onSuggestionSelected={(e, selection) => {
+            e.preventDefault()
             this.onSuggestionSelected(selection)
-          }
+          }}
           renderInputComponent={this.renderInputComponent}
         />
       </AutosuggestContainer>
