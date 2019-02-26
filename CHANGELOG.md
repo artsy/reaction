@@ -1,3 +1,15 @@
+# v14.1.10 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add search bar icon [#2067](https://github.com/artsy/reaction/pull/2067) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.1.9 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
