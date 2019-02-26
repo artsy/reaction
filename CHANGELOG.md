@@ -1,3 +1,15 @@
+# v14.1.14 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Make @sentry/browser a peer dependency of reaction [#2072](https://github.com/artsy/reaction/pull/2072) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v14.1.12 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
