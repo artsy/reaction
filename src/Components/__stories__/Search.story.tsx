@@ -94,14 +94,14 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
       query="a query"
     />
     <SuggestionItem
-      display="display two"
+      display="display two aklsdfjalkdfj alksdjf alkdfjs lakjds flkajsd flkajs dflkaj sdflkja sdfklja sdflk asdklfj aklsdjf lakdjsf lkajds flkajsd flkajs flkajsd flkajdf alksdjalksjdfalsdfk j"
       href="/"
       isHighlighted
       label="label two"
       query="a query"
     />
     <SuggestionItem
-      display="display three"
+      display="display three aklsdfj alksdjf alksdj falkdjsf alkjds flakjdsflakjds flakjsdflajs dflkajsf"
       href="/"
       isHighlighted={false}
       label="label three"
