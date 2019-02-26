@@ -1,3 +1,15 @@
+# v14.1.7 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Hook up failed payment flow [#2055](https://github.com/artsy/reaction/pull/2055) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v14.1.6 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
