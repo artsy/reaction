@@ -1,3 +1,15 @@
+# v14.1.19 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema to avoid failures in force builds [#2078](https://github.com/artsy/reaction/pull/2078) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v14.1.18 (Wed Feb 27 2019)
 
 #### 🐛  Bug Fix
