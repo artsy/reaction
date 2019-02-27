@@ -6,7 +6,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
-import { SearchPreview } from "Components/Search/Previews"
+import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Previews"
 import {
   EmptySuggestion,
   PLACEHOLDER,
@@ -22,25 +22,20 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import styled from "styled-components"
+import { Subscribe } from "unstated"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import {
+  AutosuggestManager,
+  handlePreviewSelection,
+  shouldNavigateToPreview,
+} from "./AutosuggestManager"
 import { SearchInputContainer } from "./SearchInputContainer"
+import { SearchBarState } from "./state"
 
 const logger = createLogger("Components/Search/SearchBar")
-
-const AutosuggestContainer = styled(Box)`
-  div[role="combobox"] {
-    div[role="listbox"] {
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-    }
-  }
-`
 
 export interface Props extends ContextProps {
   relay: RelayRefetchProp
@@ -132,7 +127,10 @@ export class SearchBar extends Component<Props, State> {
 
     if (entityType === "FirstItem") return
 
-    this.setState({ entityType, entityID })
+    this.setState({
+      entityType,
+      entityID,
+    })
   }
 
   @track((_props, _state, [query, hasResults]) => ({
@@ -315,25 +313,35 @@ export class SearchBar extends Component<Props, State> {
     const edges = get(viewer, v => v.search.edges, [])
     const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
     return (
-      <AutosuggestContainer ref={ref => (this.containerRef = ref)}>
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
-          onSuggestionsFetchRequested={this.throttledFetch}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={this.renderSuggestion}
-          renderSuggestionsContainer={props => {
-            return this.renderSuggestionsContainer(props, { xs })
-          }}
-          inputProps={inputProps}
-          onSuggestionSelected={(e, selection) => {
-            e.preventDefault()
-            this.onSuggestionSelected(selection)
-          }}
-          renderInputComponent={this.renderInputComponent}
-        />
-      </AutosuggestContainer>
+      <Subscribe to={[SearchBarState]}>
+        {(searchState: SearchBarState) => {
+          return (
+            <AutosuggestManager ref={ref => (this.containerRef = ref)}>
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
+                onSuggestionsFetchRequested={this.throttledFetch}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                renderSuggestionsContainer={props => {
+                  return this.renderSuggestionsContainer(props, { xs })
+                }}
+                inputProps={inputProps}
+                onSuggestionSelected={(e, selection) => {
+                  e.preventDefault()
+                  if (shouldNavigateToPreview(searchState)) {
+                    handlePreviewSelection(searchState)
+                  } else {
+                    this.onSuggestionSelected(selection)
+                  }
+                }}
+                renderInputComponent={this.renderInputComponent}
+              />
+            </AutosuggestManager>
+          )
+        }}
+      </Subscribe>
     )
   }
 

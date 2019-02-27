@@ -1,6 +1,6 @@
 import { Box, Flex } from "@artsy/palette"
 import { ContextProvider } from "Artsy/SystemContext"
-import { SearchPreview } from "Components/Search/Previews"
+import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import React from "react"

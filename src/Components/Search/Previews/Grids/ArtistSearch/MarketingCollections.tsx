@@ -1,14 +1,17 @@
 import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
+import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { Subscribe } from "unstated"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
 interface MarketingCollectionsPreviewProps {
   marketingCollections: MarketingCollectionsPreview_marketingCollections
+  searchState?: SearchBarState
 }
 
 const CollectionBox = styled(Box)<{ imageUrl: string }>`
@@ -17,7 +20,8 @@ const CollectionBox = styled(Box)<{ imageUrl: string }>`
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${p => p.imageUrl}) center;
 
-  &:hover {
+  &:hover,
+  &.highlighted {
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.5),
@@ -54,50 +58,81 @@ export const CollectionTitles = ({ title }: { title: string }) => {
   )
 }
 
-export const MarketingCollectionsPreview: React.SFC<
+export class MarketingCollectionsPreview extends React.Component<
   MarketingCollectionsPreviewProps
-> = ({ marketingCollections }) => {
-  const items = marketingCollections.map(
-    ({ headerImage, title, slug }, index) => {
-      const href = `${sd.APP_URL}/collection/${slug}`
-      const imageUrl = crop(headerImage, {
-        width: 185,
-        height: 80,
-      })
+> {
+  componentDidMount() {
+    const items = this.props.marketingCollections.map(({ slug }) => {
+      return { href: `${sd.APP_URL}/collection/${slug}` }
+    })
 
-      return (
-        <CollectionBox imageUrl={imageUrl} key={index} mr={2} mb={2}>
-          <Link href={href} noUnderline>
-            <CollectionTitles title={title} />
-          </Link>
-        </CollectionBox>
-      )
-    }
-  )
+    this.props.searchState.registerItems(items)
+  }
+  render() {
+    const { marketingCollections, searchState } = this.props
 
-  return (
-    <>
-      <Sans size="3" weight="medium" color="black100" mb={2}>
-        Artist Collections
-      </Sans>
+    const { state } = searchState
+    const items = marketingCollections.map(
+      ({ headerImage, title, slug }, index) => {
+        const href = `${sd.APP_URL}/collection/${slug}`
+        const imageUrl = crop(headerImage, {
+          width: 185,
+          height: 80,
+        })
 
-      <Media lessThan="lg">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {items.slice(0, 3)}
-        </Flex>
-      </Media>
+        const highlighted =
+          state.hasEnteredPreviews && index === state.selectedPreviewIndex
 
-      <Media greaterThan="md">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {items}
-        </Flex>
-      </Media>
-    </>
-  )
+        return (
+          <CollectionBox
+            className={highlighted && "highlighted"}
+            imageUrl={imageUrl}
+            key={index}
+            mr={2}
+            mb={2}
+          >
+            <Link href={href} noUnderline>
+              <CollectionTitles title={title} />
+            </Link>
+          </CollectionBox>
+        )
+      }
+    )
+
+    return (
+      <>
+        <Sans size="3" weight="medium" color="black100" mb={2}>
+          Artist Collections
+        </Sans>
+
+        <Media lessThan="lg">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {items.slice(0, 3)}
+          </Flex>
+        </Media>
+
+        <Media greaterThan="md">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {items}
+          </Flex>
+        </Media>
+      </>
+    )
+  }
 }
 
 export const MarketingCollectionsPreviewFragmentContainer = createFragmentContainer(
-  MarketingCollectionsPreview,
+  (props: MarketingCollectionsPreviewProps) => {
+    return (
+      <Subscribe to={[SearchBarState]}>
+        {(searchState: SearchBarState) => {
+          return (
+            <MarketingCollectionsPreview searchState={searchState} {...props} />
+          )
+        }}
+      </Subscribe>
+    )
+  },
   graphql`
     fragment MarketingCollectionsPreview_marketingCollections on MarketingCollection
       @relay(plural: true) {
