@@ -1,4 +1,4 @@
-import { Sans } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
@@ -40,7 +40,7 @@ export class RelatedArticlesCanvas extends React.Component<
     const { articles, isMobile, vertical } = this.props
 
     return (
-      <RelatedArticlesContainer>
+      <Flex flexDirection="column" maxWidth={1250} mx="auto" mt={4} mb={6}>
         {getTitle(vertical)}
         <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
         <ArticlesWrapper isMobile={isMobile}>
@@ -53,7 +53,7 @@ export class RelatedArticlesCanvas extends React.Component<
             )
           })}
         </ArticlesWrapper>
-      </RelatedArticlesContainer>
+      </Flex>
     )
   }
 }
@@ -61,21 +61,14 @@ export class RelatedArticlesCanvas extends React.Component<
 const getTitle = vertical => {
   if (vertical) {
     return (
-      <Title size="8">
-        Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
+      <Title size={["6", "8"]}>
+        Further reading in <VerticalSpan>{vertical.name}</VerticalSpan>
       </Title>
     )
   } else {
-    return <Title size="8">More from Artsy Editorial</Title>
+    return <Title size={["6", "8"]}>More from Artsy Editorial</Title>
   }
 }
-
-const RelatedArticlesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 1250px;
-  margin: 40px auto 80px auto;
-`
 
 const Title = styled(Sans)`
   margin-bottom: 20px;

@@ -130,6 +130,7 @@ story.add(`Multiple articles`, () => {
           display={Display("slideshow")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
+          showCollectionsRail
         />
         <Article
           article={article}

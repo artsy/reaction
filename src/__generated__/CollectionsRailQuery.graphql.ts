@@ -2,7 +2,11 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { CollectionsRail_collections$ref } from "./CollectionsRail_collections.graphql";
-export type CollectionsRailQueryVariables = {};
+export type CollectionsRailQueryVariables = {
+    readonly showOnEditorial?: boolean | null;
+    readonly size?: number | null;
+    readonly randomize?: boolean | null;
+};
 export type CollectionsRailQueryResponse = {
     readonly collections: ReadonlyArray<{
         readonly " $fragmentRefs": CollectionsRail_collections$ref;
@@ -16,8 +20,12 @@ export type CollectionsRailQuery = {
 
 
 /*
-query CollectionsRailQuery {
-  collections: marketingCollections(showOnEditorial: true, size: 4) {
+query CollectionsRailQuery(
+  $showOnEditorial: Boolean
+  $size: Int
+  $randomize: Boolean
+) {
+  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomize: $randomize) {
     ...CollectionsRail_collections
     __id: id
   }
@@ -41,19 +49,45 @@ fragment CollectionEntity_collection on MarketingCollection {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "Literal",
+    "kind": "LocalArgument",
     "name": "showOnEditorial",
-    "value": true,
+    "type": "Boolean",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "size",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "randomize",
+    "type": "Boolean",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "randomize",
+    "variableName": "randomize",
     "type": "Boolean"
   },
   {
-    "kind": "Literal",
+    "kind": "Variable",
+    "name": "showOnEditorial",
+    "variableName": "showOnEditorial",
+    "type": "Boolean"
+  },
+  {
+    "kind": "Variable",
     "name": "size",
-    "value": 4,
+    "variableName": "size",
     "type": "Int"
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -65,21 +99,21 @@ return {
   "operationKind": "query",
   "name": "CollectionsRailQuery",
   "id": null,
-  "text": "query CollectionsRailQuery {\n  collections: marketingCollections(showOnEditorial: true, size: 4) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n  __id: id\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
+  "text": "query CollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $randomize: Boolean\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomize: $randomize) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n  __id: id\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CollectionsRailQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "collections",
         "name": "marketingCollections",
-        "storageKey": "marketingCollections(showOnEditorial:true,size:4)",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -88,7 +122,7 @@ return {
             "name": "CollectionsRail_collections",
             "args": null
           },
-          v1
+          v2
         ]
       }
     ]
@@ -96,14 +130,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "CollectionsRailQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "collections",
         "name": "marketingCollections",
-        "storageKey": "marketingCollections(showOnEditorial:true,size:4)",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -142,12 +176,12 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1
+          v2
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '9ee28f8d83eeabe7160d78de0db00e88';
+(node as any).hash = '566ba8777f4ede125598df15a4907d1f';
 export default node;

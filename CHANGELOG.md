@@ -1,3 +1,139 @@
+# v14.1.22 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- [DO NOT MERGE] New payment page will redirect to /status page unless the order's last transaction has failed [#2081](https://github.com/artsy/reaction/pull/2081) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- [@sweir27](https://github.com/sweir27)
+
+---
+
+# v14.1.21 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Avoid endlessly requesting further pages of followed artists' artworks [#2080](https://github.com/artsy/reaction/pull/2080) ([@joeyAghion](https://github.com/joeyAghion))
+
+#### Authors: 1
+
+- Joey Aghion ([@joeyAghion](https://github.com/joeyAghion))
+
+---
+
+# v14.1.20 (Wed Feb 27 2019)
+
+
+
+---
+
+# v14.1.19 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema to avoid failures in force builds [#2078](https://github.com/artsy/reaction/pull/2078) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v14.1.18 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Update CollectionsRail analytics with revised fields [#2073](https://github.com/artsy/reaction/pull/2073) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.17 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Add separator between RelatedArticlesCanvas and CollectionsRail [#2076](https://github.com/artsy/reaction/pull/2076) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.16 (Wed Feb 27 2019)
+
+
+
+---
+
+# v14.1.15 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Randomize collections rail [#2075](https://github.com/artsy/reaction/pull/2075) ([@xtina-starr](https://github.com/xtina-starr))
+- @pepopowitz => [Autosuggest] Start letting keyboard navigate preview pane [#2069](https://github.com/artsy/reaction/pull/2069) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v14.1.14 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Make @sentry/browser a peer dependency of reaction [#2072](https://github.com/artsy/reaction/pull/2072) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v14.1.12 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add an "empty" preview for artists without collections or artworks [#2070](https://github.com/artsy/reaction/pull/2070) ([@pepopowitz](https://github.com/pepopowitz))
+- Add CollectionsRail tracking and tests [#2068](https://github.com/artsy/reaction/pull/2068) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.11 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link styles in Collections header [#2071](https://github.com/artsy/reaction/pull/2071) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.10 (Tue Feb 26 2019)
+
+#### 🐛  Bug Fix
+
+- Add search bar icon [#2067](https://github.com/artsy/reaction/pull/2067) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.1.9 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix

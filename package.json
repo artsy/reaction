@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "14.1.9",
+  "version": "14.1.22",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -12,7 +12,8 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.2.0",
-    "styled-components": "^4"
+    "styled-components": "^4",
+    "@sentry/browser": "^4.2.3"
   },
   "scripts": {
     "clean": "rm -rf dist",
@@ -63,6 +64,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
     "@omakase/cli": "^0.0.5",
+    "@sentry/browser": "^4.2.3",
     "@storybook/addon-info": "^4.0.12",
     "@storybook/addon-options": "^4.0.12",
     "@storybook/addons": "^4.0.12",
@@ -154,7 +156,6 @@
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.1",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
-    "@sentry/browser": "^4.2.3",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",

@@ -19,12 +19,18 @@ export const CollectionsRailContent: React.SFC<Props> = () => {
             variables={{
               showOnEditorial: true,
               size: 4,
+              randomize: true,
             }}
             query={graphql`
-              query CollectionsRailQuery {
+              query CollectionsRailQuery(
+                $showOnEditorial: Boolean
+                $size: Int
+                $randomize: Boolean
+              ) {
                 collections: marketingCollections(
-                  showOnEditorial: true
-                  size: 4
+                  showOnEditorial: $showOnEditorial
+                  size: $size
+                  randomize: $randomize
                 ) {
                   ...CollectionsRail_collections
                 }
