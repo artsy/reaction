@@ -10,6 +10,7 @@ export type MerchandisableArtworks_viewer = {
         readonly artworks_connection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
+                    readonly href: string | null;
                     readonly " $fragmentRefs": PreviewGridItem_artwork$ref;
                 }) | null;
             }) | null> | null;
@@ -95,6 +96,13 @@ return {
                   "plural": false,
                   "selections": [
                     {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
                       "kind": "FragmentSpread",
                       "name": "PreviewGridItem_artwork",
                       "args": null
@@ -111,5 +119,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '79905c4eb172da9b968160702df1e1a8';
+(node as any).hash = '1683fd1646791ee411ecce8faa7205b4';
 export default node;

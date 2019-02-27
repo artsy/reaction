@@ -36,6 +36,34 @@ export const CollectionsFixture = [
   },
 ]
 
+export const CollectionsRailFixture = [
+  {
+    slug: "jasper-johns-flags",
+    headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
+    title: "Jasper Johns: Flags",
+    price_guidance: 1000,
+  },
+  {
+    slug: "street-art-now",
+    headerImage: "http://files.artsy.net/images/banksygirlwithballoon.png",
+    title: "Street Art Now",
+    price_guidance: 200,
+  },
+  {
+    slug: "contemporary-limited-editions",
+    headerImage:
+      "http://files.artsy.net/images/contemporarylimitededition2.png",
+    title: "Contemporary Limited Editions",
+    price_guidance: 1000,
+  },
+  {
+    slug: "timeless-modern-prints",
+    headerImage: "http://files.artsy.net/images/timelessmodernprints.png",
+    title: "Timeless Modern Prints",
+    price_guidance: 2500,
+  },
+]
+
 export const CategoriesFixture = [
   {
     name: "Abstract Art",
