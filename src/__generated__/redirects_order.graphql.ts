@@ -9,6 +9,7 @@ export type redirects_order = {
     readonly id: string | null;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
+    readonly lastTransactionFailed: boolean | null;
     readonly requestedFulfillment: ({
         readonly __typename: string;
     }) | null;
@@ -93,6 +94,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "lastTransactionFailed",
       "args": null,
       "storageKey": null
     },
@@ -205,5 +213,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6ebbf99189725ca37c7015f849d436a4';
+(node as any).hash = '69f41a6e9e04504f73cde98dea2ae25b';
 export default node;

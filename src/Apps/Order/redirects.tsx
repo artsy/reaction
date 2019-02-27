@@ -119,6 +119,11 @@ const goToStatusIfOrderIsNotSubmitted = goToStatusIf(
   "Order was not yet submitted"
 )
 
+const goToStatusIfNotLastTransactionFailed = goToStatusIf(
+  order => !order.lastTransactionFailed,
+  "Order's lastTransactionFailed must be true"
+)
+
 const goToReviewIfOrderIsPending: OrderPredicate = ({ order }) => {
   if (order.state === "PENDING") {
     return {
@@ -185,7 +190,11 @@ export const redirects: RedirectRecord<OrderQuery> = {
     },
     {
       path: "payment/new",
-      rules: [goToStatusIfNotOfferOrder, goToStatusIfOrderIsNotSubmitted],
+      rules: [
+        goToStatusIfNotOfferOrder,
+        goToStatusIfOrderIsNotSubmitted,
+        goToStatusIfNotLastTransactionFailed,
+      ],
     },
     {
       path: "review",
@@ -237,6 +246,7 @@ graphql`
     id
     mode
     state
+    lastTransactionFailed
     ... on OfferOrder {
       myLastOffer {
         id
