@@ -61,12 +61,13 @@ export class RelatedArticlesCanvas extends React.Component<
 const getTitle = vertical => {
   if (vertical) {
     return (
-      <Title size="8">
-        Further Reading in <VerticalSpan>{vertical.name}</VerticalSpan>
+      <Title size={["6", "8"]}>
+        Further reading in{" "}
+        <VerticalSpan>{vertical.name.toLowerCase()}</VerticalSpan>
       </Title>
     )
   } else {
-    return <Title size="8">More from Artsy Editorial</Title>
+    return <Title size={["6", "8"]}>More from Artsy Editorial</Title>
   }
 }
 
