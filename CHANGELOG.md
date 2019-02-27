@@ -1,3 +1,15 @@
+# v14.1.22 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- [DO NOT MERGE] New payment page will redirect to /status page unless the order's last transaction has failed [#2081](https://github.com/artsy/reaction/pull/2081) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- [@sweir27](https://github.com/sweir27)
+
+---
+
 # v14.1.21 (Wed Feb 27 2019)
 
 #### 🐛  Bug Fix
