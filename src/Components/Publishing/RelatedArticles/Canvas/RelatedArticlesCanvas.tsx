@@ -62,8 +62,7 @@ const getTitle = vertical => {
   if (vertical) {
     return (
       <Title size={["6", "8"]}>
-        Further reading in{" "}
-        <VerticalSpan>{vertical.name.toLowerCase()}</VerticalSpan>
+        Further reading in <VerticalSpan>{vertical.name}</VerticalSpan>
       </Title>
     )
   } else {

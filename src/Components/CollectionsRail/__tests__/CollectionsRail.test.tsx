@@ -19,7 +19,7 @@ describe("CollectionsRail", () => {
 
   it("Renders expected fields", () => {
     const component = mount(<CollectionsRail {...props} />)
-    expect(component.text()).toMatch("Shop artworks from curated collections")
+    expect(component.text()).toMatch("Shop works from curated collections")
     expect(component.find(CollectionEntity).length).toBe(4)
     expect(component.text()).toMatch("Jasper Johns: Flags")
     expect(component.text()).toMatch("Works from $1,000")

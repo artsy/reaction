@@ -18,8 +18,8 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 22px;
+  line-height: 30px;
 }
 
 .c8 {
@@ -132,6 +132,18 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   margin-right: 0;
 }
 
+@media screen and (min-width:40em) {
+  .c2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c2 {
+    line-height: 36px;
+  }
+}
+
 @media (max-width:720px) {
   .c5 {
     width: 225px;
@@ -189,9 +201,14 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   <div
     className="c1 c2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-    fontSize="28px"
+    fontSize={
+      Array [
+        "22px",
+        "28px",
+      ]
+    }
   >
-    Further Reading in 
+    Further reading in 
     <span
       className="c3"
     >
