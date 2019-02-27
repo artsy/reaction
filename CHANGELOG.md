@@ -1,3 +1,15 @@
+# v14.1.17 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Add separator between RelatedArticlesCanvas and CollectionsRail [#2076](https://github.com/artsy/reaction/pull/2076) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.1.16 (Wed Feb 27 2019)
 
 
