@@ -40,8 +40,8 @@ export class CollectionEntity extends React.Component<CollectionProps> {
   @track<CollectionProps>(({ collection }) => ({
     action_type: Schema.ActionType.Click,
     context_module: Schema.ContextModule.CollectionsRail,
+    context_page_owner_type: Schema.OwnerType.Article,
     destination_path: `${sd.APP_URL}/collection/${collection.slug}`,
-    subject: Schema.Subject.CollectionsRail,
     type: Schema.Type.Thumbnail,
   }))
   onLinkClick() {

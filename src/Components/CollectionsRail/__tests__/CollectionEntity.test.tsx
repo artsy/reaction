@@ -32,8 +32,8 @@ describe("CollectionEntity", () => {
     expect(dispatch).toBeCalledWith({
       action_type: "Click",
       context_module: "CollectionsRail",
+      context_page_owner_type: "Article",
       destination_path: "undefined/collection/jasper-johns-flags",
-      subject: "CollectionsRail",
       type: "thumbnail",
     })
   })
