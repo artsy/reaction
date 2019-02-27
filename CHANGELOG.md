@@ -1,3 +1,17 @@
+# v14.1.15 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Randomize collections rail [#2075](https://github.com/artsy/reaction/pull/2075) ([@xtina-starr](https://github.com/xtina-starr))
+- @pepopowitz => [Autosuggest] Start letting keyboard navigate preview pane [#2069](https://github.com/artsy/reaction/pull/2069) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.1.14 (Tue Feb 26 2019)
 
 #### 🐛  Bug Fix
