@@ -1,3 +1,15 @@
+# v14.1.18 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Update CollectionsRail analytics with revised fields [#2073](https://github.com/artsy/reaction/pull/2073) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.1.17 (Wed Feb 27 2019)
 
 #### 🐛  Bug Fix
