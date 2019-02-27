@@ -1,10 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 128px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1250px;
+}
+
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 22px;
+  line-height: 30px;
 }
 
 .c8 {
@@ -89,18 +104,6 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   object-fit: cover;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 1250px;
-  margin: 40px auto 80px auto;
-}
-
 .c1 {
   margin-bottom: 20px;
 }
@@ -127,6 +130,18 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 .c4 a:last-child {
   margin-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .c2 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c2 {
+    line-height: 36px;
+  }
 }
 
 @media (max-width:720px) {
@@ -186,9 +201,14 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   <div
     className="c1 c2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-    fontSize="28px"
+    fontSize={
+      Array [
+        "22px",
+        "28px",
+      ]
+    }
   >
-    Further Reading in 
+    Further reading in 
     <span
       className="c3"
     >

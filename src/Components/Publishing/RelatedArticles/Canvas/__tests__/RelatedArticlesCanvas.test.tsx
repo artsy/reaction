@@ -29,7 +29,7 @@ describe("RelatedArticlesCanvas", () => {
 
   it("renders the vertical name if there is one", () => {
     const component = getWrapper(testProps)
-    expect(component.html()).toMatch("Art Market")
+    expect(component.text()).toMatch("Further reading in Art Market")
   })
 
   it("renders a default message if there is no vertical", () => {

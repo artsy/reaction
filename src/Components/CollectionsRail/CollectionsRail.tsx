@@ -52,7 +52,7 @@ export class CollectionsRail extends React.Component<CollectionRailsProps> {
     return (
       <RailsWrapper pb={3}>
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-        <Sans size="6">Shop artworks from curated collections</Sans>
+        <Sans size={["6", "8"]}>Shop works from curated collections</Sans>
         <Spacer mb={3} />
         <Flex flexWrap="wrap">
           {collections.map((collection, index) => {
