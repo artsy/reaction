@@ -22,7 +22,7 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
+import { Provider, Subscribe } from "unstated"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -411,7 +411,11 @@ export const SearchBarQueryRenderer: React.SFC = () => {
             }}
             render={({ props }) => {
               if (props) {
-                return <SearchBarRefetchContainer viewer={props.viewer} />
+                return (
+                  <Provider>
+                    <SearchBarRefetchContainer viewer={props.viewer} />
+                  </Provider>
+                )
               } else {
                 return (
                   <Input
