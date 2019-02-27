@@ -1,3 +1,15 @@
+# v14.1.21 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Avoid endlessly requesting further pages of followed artists' artworks [#2080](https://github.com/artsy/reaction/pull/2080) ([@joeyAghion](https://github.com/joeyAghion))
+
+#### Authors: 1
+
+- Joey Aghion ([@joeyAghion](https://github.com/joeyAghion))
+
+---
+
 # v14.1.20 (Wed Feb 27 2019)
 
 
