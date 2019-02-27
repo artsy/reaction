@@ -86,6 +86,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                     <Lightbox
                       deepZoom={image.deepZoom}
                       enabled={image.is_zoomable}
+                      isDefault={image.is_default}
                     >
                       <DesktopImage src={image.uri} width="100%" />
                     </Lightbox>
@@ -158,6 +159,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                 <Lightbox
                   deepZoom={image.deepZoom}
                   enabled={!this.state.isLocked && image.is_zoomable}
+                  isDefault={image.is_default}
                 >
                   <ResponsiveImage src={image.uri} width="100%" />
                 </Lightbox>

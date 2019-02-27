@@ -23,6 +23,7 @@ export type ArtworkImageBrowser_artwork = {
         }) | null;
         readonly aspectRatio: number;
         readonly is_zoomable: boolean | null;
+        readonly is_default: boolean | null;
         readonly deepZoom: ({
             readonly Image: ({
                 readonly xmlns: string | null;
@@ -210,6 +211,13 @@ return {
           "storageKey": null
         },
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_default",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": "deepZoom",
           "name": "deep_zoom",
@@ -303,5 +311,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2547bb44d60c4f588be01fea3e3337e1';
+(node as any).hash = 'faaf1881f00418e8beda0514ec5f73ed';
 export default node;

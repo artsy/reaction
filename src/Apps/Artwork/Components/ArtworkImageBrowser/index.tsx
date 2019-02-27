@@ -24,7 +24,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
       return null
     }
 
-    const primaryImageIndex = images
+    const defaultImageIndex = images
       .map(e => {
         return e.id
       })
@@ -38,8 +38,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
         />
         <ArtworkActions
           selectDefaultSlide={() => {
-            this.slider.slickGoTo(primaryImageIndex)
-            return primaryImageIndex
+            this.slider.slickGoTo(defaultImageIndex)
           }}
           artwork={this.props.artwork}
         />
@@ -74,6 +73,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
         }
         aspectRatio: aspect_ratio
         is_zoomable
+        is_default
         deepZoom: deep_zoom {
           Image {
             xmlns

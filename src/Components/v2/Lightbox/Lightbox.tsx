@@ -40,6 +40,7 @@ export interface DeepZoomProps {
 export interface LightboxProps {
   deepZoom: DeepZoomProps
   enabled?: boolean
+  isDefault?: boolean
 
   /**
    * Id of the element to render the lightbox in
@@ -270,7 +271,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   render() {
-    const { children, enabled } = this.props
+    const { children, enabled, isDefault } = this.props
 
     // Only render client-side
     if (!this.state.element) {
@@ -286,6 +287,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
             onClick: this.show.bind(this),
             // Used by view-in-room
             "data-type": "artwork-image",
+            "data-is-default": isDefault,
           }),
         })
       }
