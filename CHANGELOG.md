@@ -1,3 +1,15 @@
+# v14.1.23 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Prevent body from intercepting scroll events when modal is not open (GALL-1430, DISCO-683) [#2074](https://github.com/artsy/reaction/pull/2074) ([@starsirius](https://github.com/starsirius))
+
+#### Authors: 1
+
+- Chung-Yi Chi ([@starsirius](https://github.com/starsirius))
+
+---
+
 # v14.1.22 (Wed Feb 27 2019)
 
 #### 🐛  Bug Fix
