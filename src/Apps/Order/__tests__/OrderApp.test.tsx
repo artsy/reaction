@@ -412,10 +412,11 @@ describe("OrderApp routing redirects", () => {
         createdAt: moment().toISOString(),
       },
       awaitingResponseFrom: "BUYER",
+      lastTransactionFailed: true,
     }
     it("stays on the /payment/new page if all conditions are met", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/1234/payment/new",
         mockResolver(counterOfferOrder)
       )
       expect(redirect).toBe(undefined)
@@ -423,7 +424,7 @@ describe("OrderApp routing redirects", () => {
     // goToStatusIfNotOfferOrder,
     it("redirects to /status if not an offer order", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/1234/payment/new",
         mockResolver({
           ...counterOfferOrder,
           mode: "BUY",
@@ -434,10 +435,21 @@ describe("OrderApp routing redirects", () => {
     // goToStatusIfOrderIsNotSubmitted,
     it("redirects to /status if order is not submitted", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/1234/payment/new",
         mockResolver({
           ...counterOfferOrder,
           state: "PENDING",
+        })
+      )
+      expect(redirect.url).toBe("/orders/1234/status")
+    })
+
+    it("redirects to /status if order does not have a failing last transaction", async () => {
+      const { redirect } = await render(
+        "/orders/1234/payment/new",
+        mockResolver({
+          ...counterOfferOrder,
+          lastTransactionFailed: false,
         })
       )
       expect(redirect.url).toBe("/orders/1234/status")

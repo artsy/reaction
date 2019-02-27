@@ -14,6 +14,7 @@ export type routes_OrderQueryResponse = {
         readonly id: string | null;
         readonly mode: OrderModeEnum | null;
         readonly state: string | null;
+        readonly lastTransactionFailed: boolean | null;
         readonly requestedFulfillment: ({
             readonly __typename: string;
         }) | null;
@@ -60,6 +61,7 @@ query routes_OrderQuery(
     id
     mode
     state
+    lastTransactionFailed
     ... on OfferOrder {
       myLastOffer {
         id
@@ -163,11 +165,18 @@ v6 = {
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "lastTransactionFailed",
   "args": null,
   "storageKey": null
 },
 v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "requestedFulfillment",
@@ -176,21 +185,21 @@ v8 = {
   "concreteType": null,
   "plural": false,
   "selections": [
-    v7
+    v8
   ]
 },
-v9 = [
+v10 = [
   v4,
   v1
 ],
-v10 = {
+v11 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v11 = {
+v12 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "lineItems",
@@ -225,16 +234,16 @@ v11 = {
               "args": null,
               "concreteType": "Artwork",
               "plural": false,
-              "selections": v9
+              "selections": v10
             },
-            v10
+            v11
           ]
         }
       ]
     }
   ]
 },
-v12 = {
+v13 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -242,9 +251,9 @@ v12 = {
   "args": null,
   "concreteType": "CreditCard",
   "plural": false,
-  "selections": v9
+  "selections": v10
 },
-v13 = [
+v14 = [
   v4,
   {
     "kind": "ScalarField",
@@ -253,9 +262,9 @@ v13 = [
     "args": null,
     "storageKey": null
   },
-  v10
+  v11
 ],
-v14 = {
+v15 = {
   "kind": "InlineFragment",
   "type": "OfferOrder",
   "selections": [
@@ -267,7 +276,7 @@ v14 = {
       "args": null,
       "concreteType": "Offer",
       "plural": false,
-      "selections": v13
+      "selections": v14
     },
     {
       "kind": "LinkedField",
@@ -277,7 +286,7 @@ v14 = {
       "args": null,
       "concreteType": "Offer",
       "plural": false,
-      "selections": v13
+      "selections": v14
     },
     {
       "kind": "ScalarField",
@@ -293,7 +302,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -315,11 +324,12 @@ return {
           v4,
           v5,
           v6,
-          v8,
-          v11,
+          v7,
+          v9,
           v12,
-          v10,
-          v14
+          v13,
+          v11,
+          v15
         ]
       }
     ]
@@ -339,15 +349,16 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v7,
+          v8,
           v4,
           v5,
           v6,
-          v8,
-          v11,
+          v7,
+          v9,
           v12,
-          v10,
-          v14
+          v13,
+          v11,
+          v15
         ]
       }
     ]
