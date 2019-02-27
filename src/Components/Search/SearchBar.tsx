@@ -318,6 +318,7 @@ export class SearchBar extends Component<Props, State> {
           return (
             <AutosuggestManager ref={ref => (this.containerRef = ref)}>
               <Autosuggest
+                alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
                 suggestions={suggestions}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
