@@ -1,4 +1,4 @@
-import { color } from "@artsy/palette"
+import { color, Separator } from "@artsy/palette"
 import { CollectionsRailContent } from "Components/CollectionsRail"
 import {
   ArticleData,
@@ -30,7 +30,12 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
         />
       )}
 
-      {props.showCollectionsRail && <CollectionsRailContent {...props} />}
+      {props.showCollectionsRail && (
+        <div>
+          <Separator mb={4} />
+          <CollectionsRailContent {...props} />
+        </div>
+      )}
 
       {display && (
         <DisplayContainer hasBorder={relatedArticles ? true : false}>
