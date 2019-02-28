@@ -5,22 +5,22 @@ import { data as sd } from "sharify"
 import styled from "styled-components"
 
 export interface CollectionProps {
-  collection: any
+  collection: any // TODO: add typings when Kaws schema supports all fields
 }
 
 export const ArtistCollectionEntity: SFC<CollectionProps> = ({
   collection,
 }) => {
-  const { price_guidance, slug, title, headerImage } = collection
+  const { price_guidance, slug, title } = collection
   const formattedTitle = title.split(": ")[1] || title
 
   return (
     <Box width="100%" pr={2}>
       <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
         <ImgWrapper pb={1}>
-          <ImgPlaceholder headerImage={headerImage} />
-          <ImgPlaceholder headerImage={headerImage} />
-          <ImgPlaceholder headerImage={headerImage} />
+          <ImgPlaceholder />
+          <ImgPlaceholder />
+          <ImgPlaceholder />
         </ImgWrapper>
 
         <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
@@ -49,10 +49,10 @@ const StyledLink = styled(Link)`
   }
 `
 
-const ImgPlaceholder = styled.div<{ headerImage: string }>`
+// TODO: add background url when supported by Kaws
+const ImgPlaceholder = styled.div`
   width: 85px;
   height: 125px;
-  background: url(${props => props.headerImage});
   background-color: ${color("black10")};
   background-position: center;
   background-size: cover;

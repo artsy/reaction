@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { ArtistCollectionEntity } from "./CollectionEntity"
 
 interface ArtistCollectionsRailProps {
-  collections?: any
+  collections?: any // TODO: add typings when Kaws schema supports all fields
 }
 
 export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
@@ -24,6 +24,7 @@ export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
           settings={{
             slidesToScroll: 1,
           }}
+          // TODO: add typings when Kaws schema supports all fields
           data={collections as object[]}
           render={slide => {
             return <ArtistCollectionEntity collection={slide} />
