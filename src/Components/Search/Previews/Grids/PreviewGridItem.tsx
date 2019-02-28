@@ -48,7 +48,6 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
         style={{
           backgroundColor: highlight ? color("black5") : color("white100"),
         }}
-        mr={2}
         mb={2}
       >
         <Link {...linkProps} noUnderline>

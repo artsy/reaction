@@ -95,7 +95,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width={["0px", "240px", "240px", "450px"]} pl={[0, 3]} py={[0, 2]}>
+        <Box width={["0px", "240px", "240px", "450px"]} px={[0, 3]} py={[0, 2]}>
           {preview}
         </Box>
       </ResultsWrapper>
@@ -192,10 +192,9 @@ export class SearchBar extends Component<Props, State> {
     //  removed from the DOM before the browser has a chance to follow it.
     if (this.containerRef.contains(e.relatedTarget)) {
       this.userClickedOnDescendant = true
+    } else {
+      this.setState({ focused: false })
     }
-    // } else {
-    //   this.setState({ focused: false })
-    // }
   }
 
   onSuggestionsClearRequested = () => {

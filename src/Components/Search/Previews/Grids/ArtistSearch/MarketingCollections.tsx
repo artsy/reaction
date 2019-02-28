@@ -1,4 +1,4 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Link, Sans, Serif, space } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
 import { SearchBarState } from "Components/Search/state"
 import React from "react"
@@ -15,9 +15,14 @@ interface MarketingCollectionsPreviewProps {
   smallScreen?: boolean
 }
 
-const CollectionBox = styled(Box)<{ imageUrl: string }>`
+const CollectionBox = styled(Box)<{ imageUrl: string; itemsPerRow: 1 | 2 }>`
   width: 185px;
   height: 80px;
+
+  &:nth-child(even) {
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+  }
+
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${p => p.imageUrl}) center;
 
@@ -59,6 +64,42 @@ export const CollectionTitles = ({ title }: { title: string }) => {
   )
 }
 
+const renderItems = (
+  {
+    marketingCollections,
+    searchState: { state },
+  }: MarketingCollectionsPreviewProps,
+  itemsPerRow: 1 | 2
+) => {
+  const displayedItems =
+    itemsPerRow === 1 ? marketingCollections.slice(0, 3) : marketingCollections
+
+  return displayedItems.map(({ headerImage, title, slug }, index) => {
+    const href = `${sd.APP_URL}/collection/${slug}`
+    const imageUrl = crop(headerImage, {
+      width: 185,
+      height: 80,
+    })
+
+    const highlighted =
+      state.hasEnteredPreviews && index === state.selectedPreviewIndex
+
+    return (
+      <CollectionBox
+        className={highlighted && "highlighted"}
+        imageUrl={imageUrl}
+        key={index}
+        mb={2}
+        itemsPerRow={itemsPerRow}
+      >
+        <Link href={href} noUnderline>
+          <CollectionTitles title={title} />
+        </Link>
+      </CollectionBox>
+    )
+  })
+}
+
 export class MarketingCollectionsPreview extends React.Component<
   MarketingCollectionsPreviewProps
 > {
@@ -72,37 +113,8 @@ export class MarketingCollectionsPreview extends React.Component<
       smallScreen ? items.slice(0, 3) : items
     )
   }
+
   render() {
-    const { marketingCollections, searchState } = this.props
-
-    const { state } = searchState
-    const items = marketingCollections.map(
-      ({ headerImage, title, slug }, index) => {
-        const href = `${sd.APP_URL}/collection/${slug}`
-        const imageUrl = crop(headerImage, {
-          width: 185,
-          height: 80,
-        })
-
-        const highlighted =
-          state.hasEnteredPreviews && index === state.selectedPreviewIndex
-
-        return (
-          <CollectionBox
-            className={highlighted && "highlighted"}
-            imageUrl={imageUrl}
-            key={index}
-            mr={2}
-            mb={2}
-          >
-            <Link href={href} noUnderline>
-              <CollectionTitles title={title} />
-            </Link>
-          </CollectionBox>
-        )
-      }
-    )
-
     return (
       <>
         <Sans size="3" weight="medium" color="black100" mb={2}>
@@ -111,13 +123,13 @@ export class MarketingCollectionsPreview extends React.Component<
 
         <Media lessThan="lg">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {items.slice(0, 3)}
+            {renderItems(this.props, 1)}
           </Flex>
         </Media>
 
         <Media greaterThan="md">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {items}
+            {renderItems(this.props, 2)}
           </Flex>
         </Media>
       </>
