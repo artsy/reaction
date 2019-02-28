@@ -63,7 +63,7 @@ class MerchandisableArtworksPreview extends React.Component<
     return (
       <Box>
         <Sans size="3" weight="medium" color="black100" mb={1} ml={1}>
-          Now Available for Buy Now/ Make Offer
+          Now available on Artsy
         </Sans>
 
         <Media lessThan="lg">
