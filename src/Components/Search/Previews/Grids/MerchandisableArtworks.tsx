@@ -28,12 +28,10 @@ class MerchandisableArtworksPreview extends React.Component<
   MerchandisableArtworksPreviewProps
 > {
   componentDidMount() {
-    const items = this.getArtworks()
-
-    this.props.searchState.registerItems(items)
+    this.props.searchState.registerItems(this.artworks)
   }
 
-  getArtworks(): any {
+  get artworks(): any {
     return get(
       this.props.viewer,
       x => x.filter_artworks.artworks_connection.edges,
@@ -42,13 +40,12 @@ class MerchandisableArtworksPreview extends React.Component<
   }
 
   renderItems(itemsPerRow: 1 | 2) {
+    const displayedArtworks =
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
+
     const {
       searchState: { state },
     } = this.props
-
-    const artworks = this.getArtworks()
-    const displayedArtworks =
-      itemsPerRow === 1 ? artworks.slice(0, 5) : artworks
 
     return displayedArtworks.map((artwork, i) => (
       <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>

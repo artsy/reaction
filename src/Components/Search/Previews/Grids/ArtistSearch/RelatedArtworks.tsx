@@ -26,12 +26,10 @@ export class RelatedArtworksPreview extends React.Component<
   RelatedArtworksPreviewProps
 > {
   componentDidMount() {
-    const items = this.getArtworks()
-
-    this.props.searchState.registerItems(items)
+    this.props.searchState.registerItems(this.artworks)
   }
 
-  getArtworks(): any {
+  get artworks(): any {
     return get(
       this.props.viewer,
       x => x.filter_artworks.artworks_connection.edges,
@@ -40,11 +38,13 @@ export class RelatedArtworksPreview extends React.Component<
   }
 
   renderItems(itemsPerRow: 1 | 2) {
-    const artworks = this.getArtworks()
     const displayedArtworks =
-      itemsPerRow === 1 ? artworks.slice(0, 5) : artworks
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
 
-    const { state } = this.props.searchState
+    const {
+      searchState: { state },
+    } = this.props
+
     return displayedArtworks.map((artwork, i) => (
       <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
         <PreviewGridItem
@@ -59,7 +59,7 @@ export class RelatedArtworksPreview extends React.Component<
   }
 
   render() {
-    if (this.getArtworks().length === 0) {
+    if (this.artworks.length === 0) {
       return <NoResultsPreview />
     }
 
