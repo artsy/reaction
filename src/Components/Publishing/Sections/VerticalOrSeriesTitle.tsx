@@ -34,7 +34,7 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   )
 }
 
-export const Vertical = styled(Sans)`
+export const Vertical = styled(Sans)<{ color: string }>`
   a {
     color: ${props => props.color};
     text-decoration: none;
