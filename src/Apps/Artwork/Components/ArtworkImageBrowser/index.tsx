@@ -24,11 +24,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
       return null
     }
 
-    const defaultImageIndex = images
-      .map(e => {
-        return e.id
-      })
-      .indexOf(image.id)
+    const defaultImageIndex = images.findIndex(e => e.id === image.id)
 
     return (
       <>

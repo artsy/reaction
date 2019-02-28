@@ -117,15 +117,6 @@ export class SmallArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps,
   ArtworkBrowserState
 > {
-  slider: Slider
-
-  setSliderRef = slider => {
-    this.slider = slider
-    if (this.props.sliderRef) {
-      this.props.sliderRef(slider)
-    }
-  }
-
   state = {
     isLocked: false,
   }
@@ -147,7 +138,7 @@ export class SmallArtworkImageBrowser extends React.Component<
   render() {
     return (
       <Container>
-        <Slider {...this.settings} ref={this.setSliderRef}>
+        <Slider {...this.settings} ref={this.props.sliderRef}>
           {this.props.images.map(image => {
             return (
               <Flex
