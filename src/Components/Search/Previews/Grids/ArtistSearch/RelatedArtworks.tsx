@@ -51,6 +51,7 @@ export class RelatedArtworksPreview extends React.Component<
               state.hasEnteredPreviews && i === state.selectedPreviewIndex
             }
             emphasizeArtist
+            accessibilityLabel={`preview-${i.toLocaleString()}`}
           />
         </Box>
       )

@@ -14,6 +14,7 @@ interface PreviewGridItemProps {
   emphasizeArtist?: boolean
   highlight?: boolean
   searchState?: SearchBarState
+  accessibilityLabel?: string
 }
 
 const OverflowEllipsis = styled(Serif)`
@@ -25,8 +26,22 @@ const OverflowEllipsis = styled(Serif)`
 
 export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
   render() {
-    const { artwork, emphasizeArtist, highlight } = this.props
+    const {
+      artwork,
+      emphasizeArtist,
+      highlight,
+      accessibilityLabel,
+    } = this.props
     const imageUrl = get(artwork, x => x.image.cropped.url, "")
+
+    const linkProps: any = {
+      role: "link",
+      href: artwork.href,
+    }
+
+    if (accessibilityLabel) {
+      linkProps.id = accessibilityLabel
+    }
 
     return (
       <Flex
@@ -36,7 +51,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
         mr={2}
         mb={2}
       >
-        <Link href={artwork.href} noUnderline>
+        <Link {...linkProps} noUnderline>
           <Box width="40px" height="40px" mr={2}>
             {imageUrl && (
               <Image
@@ -77,6 +92,7 @@ export const PreviewGridItemFragmentContainer = createFragmentContainer(
   },
   graphql`
     fragment PreviewGridItem_artwork on Artwork {
+      id
       href
       title
       artist_names
