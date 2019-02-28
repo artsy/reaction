@@ -1,3 +1,15 @@
+# v14.1.26 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- Fix type errors [#2088](https://github.com/artsy/reaction/pull/2088) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.1.25 (Thu Feb 28 2019)
 
 #### 🐛  Bug Fix
