@@ -40,6 +40,7 @@ const logger = createLogger("Components/Search/SearchBar")
 export interface Props extends ContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
+  searchState: SearchBarState
 }
 
 interface State {
@@ -291,7 +292,7 @@ export class SearchBar extends Component<Props, State> {
 
   renderAutosuggestComponent({ xs }) {
     const { term } = this.state
-    const { viewer } = this.props
+    const { viewer, searchState } = this.props
 
     const inputProps = {
       onChange: this.searchTextChanged,
@@ -300,6 +301,12 @@ export class SearchBar extends Component<Props, State> {
       placeholder: xs ? "" : PLACEHOLDER,
       value: term,
       name: "term",
+    }
+
+    if (searchState.state.selectedPreviewIndex != null) {
+      inputProps["aria-activedescendant"] = `preview-${
+        searchState.state.selectedPreviewIndex
+      }`
     }
 
     const firstSuggestionPlaceholder = {
@@ -313,35 +320,30 @@ export class SearchBar extends Component<Props, State> {
     const edges = get(viewer, v => v.search.edges, [])
     const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
-          return (
-            <AutosuggestManager ref={ref => (this.containerRef = ref)}>
-              <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
-                onSuggestionsFetchRequested={this.throttledFetch}
-                getSuggestionValue={this.getSuggestionValue}
-                renderSuggestion={this.renderSuggestion}
-                renderSuggestionsContainer={props => {
-                  return this.renderSuggestionsContainer(props, { xs })
-                }}
-                inputProps={inputProps}
-                onSuggestionSelected={(e, selection) => {
-                  e.preventDefault()
-                  if (shouldNavigateToPreview(searchState)) {
-                    handlePreviewSelection(searchState)
-                  } else {
-                    this.onSuggestionSelected(selection)
-                  }
-                }}
-                renderInputComponent={this.renderInputComponent}
-              />
-            </AutosuggestManager>
-          )
-        }}
-      </Subscribe>
+      <AutosuggestManager ref={ref => (this.containerRef = ref)}>
+        <Autosuggest
+          alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
+          suggestions={suggestions}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
+          onSuggestionsFetchRequested={this.throttledFetch}
+          getSuggestionValue={this.getSuggestionValue}
+          renderSuggestion={this.renderSuggestion}
+          renderSuggestionsContainer={props => {
+            return this.renderSuggestionsContainer(props, { xs })
+          }}
+          inputProps={inputProps}
+          onSuggestionSelected={(e, selection) => {
+            e.preventDefault()
+            if (shouldNavigateToPreview(searchState)) {
+              handlePreviewSelection(searchState)
+            } else {
+              this.onSuggestionSelected(selection)
+            }
+          }}
+          renderInputComponent={this.renderInputComponent}
+        />
+      </AutosuggestManager>
     )
   }
 
@@ -358,7 +360,15 @@ export class SearchBar extends Component<Props, State> {
 }
 
 export const SearchBarRefetchContainer = createRefetchContainer(
-  SearchBar,
+  (props: Props) => {
+    return (
+      <Subscribe to={[SearchBarState]}>
+        {(searchState: SearchBarState) => {
+          return <SearchBar {...props} searchState={searchState} />
+        }}
+      </Subscribe>
+    )
+  },
   {
     viewer: graphql`
       fragment SearchBar_viewer on Viewer

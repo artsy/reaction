@@ -4,7 +4,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
 import styled from "styled-components"
@@ -14,6 +14,7 @@ import { NoResultsPreview } from "./NoResults"
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
 
 const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
@@ -26,7 +27,11 @@ export class RelatedArtworksPreview extends React.Component<
   RelatedArtworksPreviewProps
 > {
   componentDidMount() {
-    this.props.searchState.registerItems(this.artworks)
+    const { smallScreen } = this.props
+
+    this.props.searchState.registerItems(
+      smallScreen ? this.artworks.slice(0, 5) : this.artworks
+    )
   }
 
   get artworks(): any {
@@ -53,6 +58,7 @@ export class RelatedArtworksPreview extends React.Component<
             state.hasEnteredPreviews && i === state.selectedPreviewIndex
           }
           emphasizeArtist
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
         />
       </ItemContainer>
     ))
@@ -88,11 +94,23 @@ export class RelatedArtworksPreview extends React.Component<
 export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
   (props: RelatedArtworksPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
-          return <RelatedArtworksPreview searchState={searchState} {...props} />
+      <Responsive>
+        {({ xs, sm, md }) => {
+          return (
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <RelatedArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
+          )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
 

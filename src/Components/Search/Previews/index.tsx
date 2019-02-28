@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import { Subscribe } from "unstated"
@@ -27,7 +28,14 @@ class SearchPreview extends React.Component<SearchPreviewProps> {
 
     return (
       <Media greaterThan="xs">
-        <Preview {...rest} />
+        <Box
+          onMouseOver={() =>
+            this.props.searchState.enterPreviewWithoutSelection()
+          }
+          onMouseOut={() => this.props.searchState.leavePreviewIfNoSelection()}
+        >
+          <Preview {...rest} />
+        </Box>
       </Media>
     )
   }
