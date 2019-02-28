@@ -1,3 +1,15 @@
+# v14.1.25 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Autosuggest] Maintain suggestion list even while navigating to a preview item [#2084](https://github.com/artsy/reaction/pull/2084) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.1.24 (Thu Feb 28 2019)
 
 #### 🐛  Bug Fix
