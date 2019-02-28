@@ -14,7 +14,7 @@ interface PreviewGridItemProps {
   emphasizeArtist?: boolean
   highlight?: boolean
   searchState?: SearchBarState
-  accessibilityLabel?: string
+  accessibilityLabel: string
 }
 
 const OverflowEllipsis = styled(Serif)`
@@ -37,10 +37,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
     const linkProps: any = {
       role: "link",
       href: artwork.href,
-    }
-
-    if (accessibilityLabel) {
-      linkProps.id = accessibilityLabel
+      id: accessibilityLabel,
     }
 
     return (
@@ -91,7 +88,6 @@ export const PreviewGridItemFragmentContainer = createFragmentContainer(
   },
   graphql`
     fragment PreviewGridItem_artwork on Artwork {
-      id
       href
       title
       artist_names

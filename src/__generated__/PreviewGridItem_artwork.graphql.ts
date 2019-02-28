@@ -4,7 +4,6 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _PreviewGridItem_artwork$ref: unique symbol;
 export type PreviewGridItem_artwork$ref = typeof _PreviewGridItem_artwork$ref;
 export type PreviewGridItem_artwork = {
-    readonly id: string;
     readonly href: string | null;
     readonly title: string | null;
     readonly artist_names: string | null;
@@ -26,13 +25,6 @@ const node: ConcreteFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -112,5 +104,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2d774a27b36ca0f20acec8349bf0750c';
+(node as any).hash = '748e3cd688c1270e68f8dbcbea094146';
 export default node;

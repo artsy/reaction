@@ -38,7 +38,6 @@ fragment MerchandisableArtworks_viewer on Viewer {
 }
 
 fragment PreviewGridItem_artwork on Artwork {
-  id
   href
   title
   artist_names
@@ -65,7 +64,7 @@ return {
   "operationKind": "query",
   "name": "MerchandisableArtworksPreviewQuery",
   "id": null,
-  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          href\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  id\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
+  "text": "query MerchandisableArtworksPreviewQuery {\n  viewer {\n    ...MerchandisableArtworks_viewer\n  }\n}\n\nfragment MerchandisableArtworks_viewer on Viewer {\n  filter_artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    __id\n    artworks_connection(first: 10) {\n      edges {\n        node {\n          href\n          ...PreviewGridItem_artwork\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment PreviewGridItem_artwork on Artwork {\n  href\n  title\n  artist_names\n  image {\n    cropped(width: 40, height: 40) {\n      url\n    }\n  }\n  date\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -169,13 +168,6 @@ return {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "href",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "id",
                             "args": null,
                             "storageKey": null
                           },
