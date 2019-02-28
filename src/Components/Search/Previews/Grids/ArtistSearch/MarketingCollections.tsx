@@ -7,11 +7,12 @@ import { data as sd } from "sharify"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 import { crop } from "Utils/resizer"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 interface MarketingCollectionsPreviewProps {
   marketingCollections: MarketingCollectionsPreview_marketingCollections
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
 
 const CollectionBox = styled(Box)<{ imageUrl: string }>`
@@ -62,11 +63,14 @@ export class MarketingCollectionsPreview extends React.Component<
   MarketingCollectionsPreviewProps
 > {
   componentDidMount() {
-    const items = this.props.marketingCollections.map(({ slug }) => {
+    const { smallScreen, marketingCollections } = this.props
+    const items = marketingCollections.map(({ slug }) => {
       return { href: `${sd.APP_URL}/collection/${slug}` }
     })
 
-    this.props.searchState.registerItems(items)
+    this.props.searchState.registerItems(
+      smallScreen ? items.slice(0, 3) : items
+    )
   }
   render() {
     const { marketingCollections, searchState } = this.props
@@ -124,13 +128,23 @@ export class MarketingCollectionsPreview extends React.Component<
 export const MarketingCollectionsPreviewFragmentContainer = createFragmentContainer(
   (props: MarketingCollectionsPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
+      <Responsive>
+        {({ xs, sm, md }) => {
           return (
-            <MarketingCollectionsPreview searchState={searchState} {...props} />
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <MarketingCollectionsPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
           )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
   graphql`

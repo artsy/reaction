@@ -4,7 +4,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
@@ -13,18 +13,23 @@ import { NoResultsPreview } from "./NoResults"
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
 export class RelatedArtworksPreview extends React.Component<
   RelatedArtworksPreviewProps
 > {
   componentDidMount() {
+    const { smallScreen, viewer } = this.props
+
     const items = get(
-      this.props.viewer,
+      viewer,
       x => x.filter_artworks.artworks_connection.edges,
       []
     ).map(x => x.node)
 
-    this.props.searchState.registerItems(items)
+    this.props.searchState.registerItems(
+      smallScreen ? items.slice(0, 5) : items
+    )
   }
 
   render() {
@@ -81,11 +86,23 @@ export class RelatedArtworksPreview extends React.Component<
 export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
   (props: RelatedArtworksPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
-          return <RelatedArtworksPreview searchState={searchState} {...props} />
+      <Responsive>
+        {({ xs, sm, md }) => {
+          return (
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <RelatedArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
+          )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
 

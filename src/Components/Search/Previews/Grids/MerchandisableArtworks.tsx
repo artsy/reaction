@@ -9,25 +9,30 @@ import { SearchBarState } from "Components/Search/state"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "./PreviewGridItem"
 
 interface MerchandisableArtworksPreviewProps {
   viewer: MerchandisableArtworks_viewer
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
 
 class MerchandisableArtworksPreview extends React.Component<
   MerchandisableArtworksPreviewProps
 > {
   componentDidMount() {
+    const { smallScreen, viewer } = this.props
+
     const items = get(
-      this.props.viewer,
+      viewer,
       x => x.filter_artworks.artworks_connection.edges,
       []
     ).map(x => x.node)
 
-    this.props.searchState.registerItems(items)
+    this.props.searchState.registerItems(
+      smallScreen ? items.slice(0, 5) : items
+    )
   }
 
   render() {
@@ -46,6 +51,7 @@ class MerchandisableArtworksPreview extends React.Component<
             state.hasEnteredPreviews && i === state.selectedPreviewIndex
           }
           artwork={artwork}
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
         />
       </Box>
     ))
@@ -75,16 +81,23 @@ class MerchandisableArtworksPreview extends React.Component<
 export const MerchandisableArtworksPreviewFragmentContainer = createFragmentContainer(
   (props: MerchandisableArtworksPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
+      <Responsive>
+        {({ xs, sm, md }) => {
           return (
-            <MerchandisableArtworksPreview
-              searchState={searchState}
-              {...props}
-            />
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <MerchandisableArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
           )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
   graphql`
