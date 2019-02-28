@@ -263,6 +263,7 @@ const ArtistName = styled.span`
 `
 
 const StyledArtworkCaption = styled(Sans)<{
+  color?: string
   layout?: ArticleLayout
   sectionLayout?: SectionLayout
 }>`
@@ -285,7 +286,10 @@ const StyledArtworkCaption = styled(Sans)<{
   `};
 `
 
-const StyledClassicCaption = styled(Serif)<{ className?: string }>`
+const StyledClassicCaption = styled(Serif)<{
+  className?: string
+  color?: string
+}>`
   margin-top: 10px;
   display: block;
 
