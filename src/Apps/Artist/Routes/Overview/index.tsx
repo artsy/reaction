@@ -35,6 +35,16 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     isReadMoreExpanded: false,
   }
 
+  componentDidMount() {
+    // TODO: remove after CollectionsRail a/b test
+    const showCollectionsRail =
+      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+
+    if (showCollectionsRail) {
+      this.trackingCollectionsRailTest()
+    }
+  }
+
   @track<OverviewRouteProps>(props => ({
     action_type: Schema.ActionType.Click,
     // TODO: Feel like these should become enums too
@@ -55,11 +65,11 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return showGenes
   }
 
-  trackingCollectionsRailTest() {
+  @track<OverviewRouteProps>(props => {
     // TODO: remove after CollectionsRail a/b test
     const experiment = "artist_collections_rail"
     const variation =
-      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+      props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
 
     return {
       action_type: Schema.ActionType.ExperimentViewed,
@@ -69,6 +79,9 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       variation_name: variation,
       nonInteraction: 1,
     }
+  })
+  trackingCollectionsRailTest() {
+    // no-op
   }
 
   render() {
