@@ -1,6 +1,5 @@
 import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
-import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { track } from "Artsy/Analytics"
@@ -10,6 +9,7 @@ import { ArtistCollectionsRail } from "Components/Artist/CollectionsRail/Collect
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
@@ -20,6 +20,7 @@ import {
 } from "Components/v2"
 
 export interface OverviewRouteProps {
+  ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
   artist: Overview_artist & {
     __fragments: object[]
   }
@@ -54,8 +55,28 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return showGenes
   }
 
+  trackingCollectionsRailTest() {
+    // TODO: remove after CollectionsRail a/b test
+    const experiment = "artist_collections_rail"
+    const variation =
+      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+
+    return {
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    }
+  }
+
   render() {
     const { artist } = this.props
+    const collectionsRailVariation =
+      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+    const showCollectionsRail = collectionsRailVariation === "experiment"
+
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
@@ -71,7 +92,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
-    const showCollectionsRail = true
 
     return (
       <>
@@ -146,10 +166,10 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
         {!hideMainOverviewSection && <Spacer mb={4} />}
 
-        {showCollectionsRail && (
+        {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
           <div>
             <Separator mb={3} />
-            <ArtistCollectionsRail collections={CollectionsFixture} />
+            <ArtistCollectionsRail />
             <Spacer mb={3} />
           </div>
         )}

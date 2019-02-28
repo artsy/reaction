@@ -8,7 +8,7 @@ storiesOf("Components/Artist/CollectionsRail", module).add(
   "Artist Collections Rail",
   () => (
     <Theme>
-      <Box maxWidth={1250}>
+      <Box maxWidth={1192} px={4}>
         <ArtistCollectionsRail collections={CollectionsFixture} />
       </Box>
     </Theme>

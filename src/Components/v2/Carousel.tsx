@@ -153,7 +153,7 @@ const CarouselContainer = styled.div<{ height?: number }>`
   }
 `
 
-const ArrowButton = styled(Flex).attrs<LeftProps & RightProps>({})`
+export const ArrowButton = styled(Flex)<LeftProps & RightProps>`
   position: relative;
   cursor: pointer;
   display: flex;

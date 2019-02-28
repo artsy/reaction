@@ -35,3 +35,4 @@ if (!window.sd || !(typeof window.sd === "object")) {
   window.sd = {}
 }
 window.sd.STRIPE_PUBLISHABLE_KEY = "pk_test_BGUg8FPmcBs1ISbN25iCp2Ga"
+window.sd.ARTIST_COLLECTIONS_RAIL = "experiment"
