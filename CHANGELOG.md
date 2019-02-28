@@ -1,3 +1,20 @@
+# v14.1.24 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor search previews css [#2082](https://github.com/artsy/reaction/pull/2082) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.9 [#2083](https://github.com/artsy/reaction/pull/2083) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.1.23 (Wed Feb 27 2019)
 
 #### 🐛  Bug Fix
