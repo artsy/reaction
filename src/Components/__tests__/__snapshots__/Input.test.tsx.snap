@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input renders as a snapshot 1`] = `
-.c0 {
-  padding-bottom: 5px;
-}
-
-.c3 {
+.c2 {
   padding: 10px;
   box-shadow: none;
   -webkit-transition: border-color 0.25s;
@@ -25,49 +21,49 @@ exports[`Input renders as a snapshot 1`] = `
   transition: border-color 0.25s;
 }
 
-.c3::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
   line-height: normal;
 }
 
-.c3::-moz-placeholder {
+.c2::-moz-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
   line-height: normal;
 }
 
-.c3:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
   line-height: normal;
 }
 
-.c3::placeholder {
+.c2::placeholder {
   color: #cccccc;
   text-overflow: ellipsis;
   line-height: normal;
 }
 
-.c3:hover,
-.c3:focus,
-.c3.focused {
+.c2:hover,
+.c2:focus,
+.c2.focused {
   border-color: #f7625a;
   outline: 0;
 }
 
-.c3:disabled {
+.c2:disabled {
   border: 2px dotted #e5e5e5;
 }
 
-.c1 {
+.c0 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c2 {
+.c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
   line-height: 1.25em;
@@ -76,7 +72,7 @@ exports[`Input renders as a snapshot 1`] = `
   margin: 3px 0 0;
 }
 
-.c4 {
+.c3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 12px;
@@ -91,25 +87,25 @@ exports[`Input renders as a snapshot 1`] = `
 }
 
 <div
-  className="c0"
+  className=""
 >
   <div
-    className="c1"
+    className="c0"
   >
     hello
   </div>
   <div
-    className="c2"
+    className="c1"
   >
     This is a field
   </div>
   <input
-    className="c3"
+    className="c2"
     placeholder="a placeholder"
     type="password"
   />
   <div
-    className="c4"
+    className="c3"
   >
     But something went wrong!
   </div>
