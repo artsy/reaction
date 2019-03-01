@@ -204,45 +204,59 @@ enum navActions {
   TOGGLE_USER_MENU,
   TOGGLE_NOTIFICATIONS_MENU,
   TOGGLE_MOBILE_MENU,
+  TOGGLE_LOG_IN,
 }
 
 const navReducer = (state, action) => {
-  const closeMenus = {
+  const resetMenus = {
     showNavMenu: false,
-    showeUserMenu: false,
+    showUserMenu: false,
     showNotificationsMenu: false,
     showMobileMenu: false,
   }
+
   switch (action.type) {
     case navActions.TOGGLE_NAV_MENU:
       return {
-        ...closeMenus,
+        ...state,
+        ...resetMenus,
         showNavMenu: !state.showNavMenu,
       }
     case navActions.TOGGLE_USER_MENU:
       return {
-        ...closeMenus,
-        showeUserMenu: !state.showeUserMenu,
+        ...state,
+        ...resetMenus,
+        showUserMenu: !state.showUserMenu,
       }
     case navActions.TOGGLE_NOTIFICATIONS_MENU:
       return {
-        ...closeMenus,
+        ...state,
+        ...resetMenus,
         showNotificationsMenu: !state.showNotificationsMenu,
       }
     case navActions.TOGGLE_MOBILE_MENU:
       return {
-        ...closeMenus,
+        ...state,
+        ...resetMenus,
         showMobileMenu: !state.showMobileMenu,
       }
+    case navActions.TOGGLE_LOG_IN:
+      return {
+        ...state,
+        loggedIn: !state.loggedIn,
+      }
+    default:
+      return state
   }
 }
 
 export const NavBar = () => {
   const [navState, dispatch] = useReducer(navReducer, {
     showNavMenu: false,
-    showeUserMenu: true,
+    showUserMenu: false,
     showNotificationsMenu: false,
     showMobileMenu: false,
+    loggedIn: false,
   })
 
   return (
@@ -275,45 +289,61 @@ export const NavBar = () => {
           <NavItem display={["none", "none", "block"]}>Galleries</NavItem>
           <NavItem display={["none", "none", "none", "block"]}>Fairs</NavItem>
           <NavItem>Magazine</NavItem>
-          <NavItem
-            menu={navState.showNavMenu && <NavMenu />}
-            onClick={() =>
-              dispatch({
-                type: navActions.TOGGLE_NAV_MENU,
-              })
-            }
-          >
-            <MoreIcon top="3px" />
-          </NavItem>
-          <NavItem
-            menu={navState.showNotificationsMenu && <NotificationMenu />}
-            onClick={() =>
-              dispatch({
-                type: navActions.TOGGLE_NOTIFICATIONS_MENU,
-              })
-            }
-          >
-            <BellIcon />
-          </NavItem>
-          <NavItem
-            menu={navState.showeUserMenu && <UserMenu />}
-            onClick={() =>
-              dispatch({
-                type: navActions.TOGGLE_USER_MENU,
-              })
-            }
-          >
-            <SoloIcon />
-          </NavItem>
+
+          <Spacer mr={3} />
+
+          {navState.loggedIn && (
+            <>
+              <NavItem
+                menu={navState.showNavMenu && <NavMenu />}
+                onClick={() =>
+                  dispatch({
+                    type: navActions.TOGGLE_NAV_MENU,
+                  })
+                }
+              >
+                <MoreIcon top="3px" />
+              </NavItem>
+              <NavItem
+                menu={navState.showNotificationsMenu && <NotificationMenu />}
+                onClick={() =>
+                  dispatch({
+                    type: navActions.TOGGLE_NOTIFICATIONS_MENU,
+                  })
+                }
+              >
+                <BellIcon />
+              </NavItem>
+              <NavItem
+                menu={navState.showUserMenu && <UserMenu />}
+                onClick={() =>
+                  dispatch({
+                    type: navActions.TOGGLE_USER_MENU,
+                  })
+                }
+              >
+                <SoloIcon />
+              </NavItem>
+            </>
+          )}
         </NavSection>
 
-        <Spacer mr={3} />
-
-        <NavSection>
-          <Button variant="secondaryOutline">Log in</Button>
-          <Spacer mr={1} />
-          <Button>Sign up</Button>
-        </NavSection>
+        {!navState.loggedIn && (
+          <NavSection>
+            <Button
+              variant="secondaryOutline"
+              onClick={() =>
+                dispatch({
+                  type: navActions.TOGGLE_LOG_IN,
+                })
+              }
+            >
+              Log in
+            </Button>
+            <Spacer mr={1} />
+            <Button>Sign up</Button>
+          </NavSection>
+        )}
       </NavSection>
 
       {/*
