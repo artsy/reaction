@@ -1,3 +1,15 @@
+# v14.2.1 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Artist Collections Rail initial setup [#2085](https://github.com/artsy/reaction/pull/2085) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.2.0 (Fri Mar 01 2019)
 
 #### 🚀  Enhancement
