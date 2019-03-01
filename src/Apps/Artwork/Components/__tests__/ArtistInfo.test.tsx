@@ -35,12 +35,14 @@ describe("ArtistInfo", () => {
       expect(wrapper.find("EntityHeader").length).toBe(1)
       expect(wrapper.find("ArtistBio").length).toBe(1)
       expect(wrapper.find("Button").length).toBe(1)
+      expect(wrapper.find("Button").text()).toEqual("Show artist insights")
       expect(wrapper.find("MarketInsights").length).toBe(0)
       expect(wrapper.find("SelectedExhibitions").length).toBe(0)
     })
   })
 
   it("shows artist insights when the 'Show artist insights' button is clicked", () => {
+    wrapper.find("Button").simulate("click")
     expect(wrapper.find("MarketInsights").length).toBe(1)
     expect(wrapper.find("SelectedExhibitions").length).toBe(1)
   })
