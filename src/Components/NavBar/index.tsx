@@ -5,16 +5,21 @@ import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar
 
 import {
   ArtsyMarkIcon,
+  BellIcon,
   BorderBox,
   Box,
   BoxProps,
   Button,
   color,
   Flex,
+  HeartIcon,
   Link,
   MoreIcon,
+  PowerIcon,
   Sans,
   Separator,
+  SettingsIcon,
+  SoloIcon,
   Spacer,
 } from "@artsy/palette"
 
@@ -63,7 +68,12 @@ const MenuContainer = styled(Box)`
   box-shadow: 2px 2px ${color("black5")};
 `
 
-const Menu = ({ title, children }) => {
+interface MenuProps {
+  title?: string
+  children?: any // TODO: type as MenuItem[]
+}
+
+const Menu: React.SFC<MenuProps> = ({ title, children }) => {
   return (
     <MenuContainer mt={2} width={230}>
       <BorderBox p={0}>
@@ -78,7 +88,7 @@ const Menu = ({ title, children }) => {
             </Box>
           )}
 
-          {children}
+          <Box py={title ? 0 : 1}>{children}</Box>
         </Flex>
       </BorderBox>
     </MenuContainer>
@@ -96,6 +106,75 @@ const NavMenu = () => {
   )
 }
 
+const NotificationMenu = () => {
+  return (
+    <Menu title="Actvity">
+      <MenuItem>
+        <Flex alignItems="center">
+          <Box width={40} height={40} bg="black5" mr={2} />
+          <Box>
+            <Sans size="2">5 works added</Sans>
+            <Sans size="2" weight="medium">
+              Jeff Koons
+            </Sans>
+          </Box>
+        </Flex>
+      </MenuItem>
+      <MenuItem>
+        <Flex alignItems="center">
+          <Box width={40} height={40} bg="black5" mr={2} />
+          <Box>
+            <Sans size="2">5 works added</Sans>
+            <Sans size="2" weight="medium">
+              Josef Albers
+            </Sans>
+          </Box>
+        </Flex>
+      </MenuItem>
+      <MenuItem>
+        <Flex alignItems="center">
+          <Box width={40} height={40} bg="black5" mr={2} />
+          <Box>
+            <Sans size="2">5 works added</Sans>
+            <Sans size="2" weight="medium">
+              Ellsworth Kelly
+            </Sans>
+          </Box>
+        </Flex>
+      </MenuItem>
+      <Flex p={2} flexDirection="column" alignItems="center">
+        <Separator />
+        <Box pt={2}>
+          <Sans size="2">
+            <Link href="/" style={{ textDecoration: "underline" }}>
+              View all
+            </Link>
+          </Sans>
+        </Box>
+      </Flex>
+    </Menu>
+  )
+}
+
+const UserMenu = () => {
+  return (
+    <Menu>
+      <MenuItem>
+        <HeartIcon top={5} mr={0.5} /> Saves & Follows
+      </MenuItem>
+      <MenuItem>
+        <SoloIcon top={4} mr={0.5} /> Collector Profile
+      </MenuItem>
+      <MenuItem>
+        <SettingsIcon top={5} mr={0.5} /> Settings
+      </MenuItem>
+      <MenuItem>
+        <PowerIcon top={5} mr={0.5} /> Log out
+      </MenuItem>
+    </Menu>
+  )
+}
+
 const NavItem: React.SFC<NavItemProps> = ({
   display = "block",
   children,
@@ -104,7 +183,13 @@ const NavItem: React.SFC<NavItemProps> = ({
   onClick,
 }) => {
   return (
-    <Box p={1} display={display} position="relative" onClick={onClick}>
+    <Box
+      p={1}
+      display={display}
+      position="relative"
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+    >
       <Sans size="3" weight="medium">
         {href ? <Link href="/">{children}</Link> : children}
       </Sans>
@@ -121,20 +206,25 @@ enum navActions {
 }
 
 const navReducer = (state, action) => {
+  const closeMenus = {
+    showNavMenu: false,
+    showeUserMenu: false,
+    showNotificationsMenu: false,
+  }
   switch (action.type) {
     case navActions.TOGGLE_NAV_MENU:
       return {
-        ...state,
+        ...closeMenus,
         showNavMenu: !state.showNavMenu,
       }
     case navActions.TOGGLE_USER_MENU:
       return {
-        ...state,
+        ...closeMenus,
         showeUserMenu: !state.showeUserMenu,
       }
     case navActions.TOGGLE_NOTIFICATIONS_MENU:
       return {
-        ...state,
+        ...closeMenus,
         showNotificationsMenu: !state.showNotificationsMenu,
       }
   }
@@ -143,7 +233,7 @@ const navReducer = (state, action) => {
 export const NavBar = () => {
   const [navState, dispatch] = useReducer(navReducer, {
     showNavMenu: false,
-    showeUserMenu: false,
+    showeUserMenu: true,
     showNotificationsMenu: false,
   })
 
@@ -179,9 +269,33 @@ export const NavBar = () => {
           <NavItem>Magazine</NavItem>
           <NavItem
             menu={navState.showNavMenu && <NavMenu />}
-            onClick={() => dispatch({ type: navActions.TOGGLE_NAV_MENU })}
+            onClick={() =>
+              dispatch({
+                type: navActions.TOGGLE_NAV_MENU,
+              })
+            }
           >
             <MoreIcon top="3px" />
+          </NavItem>
+          <NavItem
+            menu={navState.showNotificationsMenu && <NotificationMenu />}
+            onClick={() =>
+              dispatch({
+                type: navActions.TOGGLE_NOTIFICATIONS_MENU,
+              })
+            }
+          >
+            <BellIcon />
+          </NavItem>
+          <NavItem
+            menu={navState.showeUserMenu && <UserMenu />}
+            onClick={() =>
+              dispatch({
+                type: navActions.TOGGLE_USER_MENU,
+              })
+            }
+          >
+            <SoloIcon />
           </NavItem>
         </NavSection>
 
