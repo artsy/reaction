@@ -34,9 +34,26 @@ describe("ArtistInfo", () => {
     it("renders a correct component tree", () => {
       expect(wrapper.find("EntityHeader").length).toBe(1)
       expect(wrapper.find("ArtistBio").length).toBe(1)
-      expect(wrapper.find("MarketInsights").length).toBe(1)
-      expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+      expect(wrapper.find("Button").length).toBe(1)
+      expect(wrapper.find("MarketInsights").length).toBe(0)
+      expect(wrapper.find("SelectedExhibitions").length).toBe(0)
     })
+  })
+
+  it("shows artist insights when the 'Show artist insights' button is clicked", () => {
+    expect(wrapper.find("MarketInsights").length).toBe(1)
+    expect(wrapper.find("SelectedExhibitions").length).toBe(1)
+  })
+
+  it("Hides 'Show artist insights' button if no market insights or selected exhibitions data", async () => {
+    const data = cloneDeep(ArtistInfoFixture)
+    data.highlights.partners = null
+    data.collections = null
+    data.auctionResults = null
+    data.exhibition_highlights = []
+    wrapper = await getWrapper(data)
+    console.log("HTML", wrapper.html())
+    expect(wrapper.find("Button").length).toBe(0)
   })
 
   it("hides ArtistBio if no data", async () => {
@@ -52,6 +69,7 @@ describe("ArtistInfo", () => {
     data.collections = null
     data.auctionResults = null
     wrapper = await getWrapper(data)
+    wrapper.setState({ showArtistInsights: true })
     expect(wrapper.find("MarketInsights").html()).toBe(null)
   })
 
@@ -59,6 +77,7 @@ describe("ArtistInfo", () => {
     const data = cloneDeep(ArtistInfoFixture)
     data.exhibition_highlights = []
     wrapper = await getWrapper(data)
+    wrapper.setState({ showArtistInsights: true })
     expect(wrapper.find("SelectedExhibitions").html()).toBe(null)
   })
 })

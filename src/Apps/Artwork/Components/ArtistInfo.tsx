@@ -141,7 +141,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                 size="small"
                 mt={1}
               >
-                Show artist Insights
+                Show artist insights
               </Button>
             </StackableBorderBox>
             {this.state.showArtistInsights && (
