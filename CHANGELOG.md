@@ -1,3 +1,15 @@
+# v14.1.27 (Fri Mar 01 2019)
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 3.0.11 [#2089](https://github.com/artsy/reaction/pull/2089) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.1.26 (Thu Feb 28 2019)
 
 #### 🐛  Bug Fix
