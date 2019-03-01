@@ -9,11 +9,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: 1250px;
   margin-bottom: 128px;
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1250px;
 }
 
 .c2 {

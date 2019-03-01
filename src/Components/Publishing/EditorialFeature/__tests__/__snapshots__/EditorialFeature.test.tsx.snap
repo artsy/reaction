@@ -6483,8 +6483,8 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   max-width: 1000px;
+  width: 100%;
 }
 
 .c19 {
