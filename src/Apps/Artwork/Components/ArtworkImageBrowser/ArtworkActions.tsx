@@ -34,6 +34,7 @@ import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
   user?: User
+  selectDefaultSlide(): void
 }
 
 interface ArtworkActionsState {
@@ -95,15 +96,20 @@ export class ArtworkActions extends React.Component<
     type: Schema.Type.Button,
   })
   openViewInRoom(mediator) {
-    const {
-      artwork: { dimensions, image },
-    } = this.props
-    mediator &&
-      mediator.trigger &&
-      mediator.trigger("openViewInRoom", {
-        dimensions,
-        image,
-      })
+    this.props.selectDefaultSlide()
+
+    setTimeout(() => {
+      const {
+        artwork: { dimensions, image },
+      } = this.props
+
+      mediator &&
+        mediator.trigger &&
+        mediator.trigger("openViewInRoom", {
+          dimensions,
+          image,
+        })
+    }, 300)
   }
 
   renderSaveButton() {

@@ -573,10 +573,10 @@ exports[`renders a series properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1200px;
 }
 
 .c13 {
@@ -2123,10 +2123,10 @@ exports[`renders a sponsored series properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1200px;
 }
 
 .c15 {
