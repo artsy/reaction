@@ -99,6 +99,7 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: number,
     sectionedArtworks: SectionedArtworks
   ) {
+    const { preloadImageCount = 0 } = this.props
     const spacerStyle = {
       height: this.props.itemMargin,
     }
@@ -114,6 +115,7 @@ export class ArtworkGridContainer extends React.Component<
             key={"artwork-" + j + "-" + artwork.__id}
             user={this.props.user}
             mediator={this.props.mediator}
+            preloadImage={i + j < preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
                 this.props.onBrickClick()

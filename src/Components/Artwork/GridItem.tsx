@@ -43,6 +43,7 @@ const Placeholder = styled.div`
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   artwork: GridItem_artwork
+  preloadImage?: boolean
   mediator?: Mediator
   onClick?: () => void
   style?: any
@@ -164,7 +165,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
   }
 
   render() {
-    const { style, className, artwork, user } = this.props
+    const { style, className, artwork, user, preloadImage = false } = this.props
     const { isImageLoaded } = this.state
 
     let userSpread = {}
@@ -197,6 +198,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               style={{ opacity: isImageLoaded ? "1" : "0" }}
               src={this.getImageUrl()}
               onLoad={this.imageLoaded.bind(this)}
+              visibleByDefault={preloadImage}
             />
           </a>
 
