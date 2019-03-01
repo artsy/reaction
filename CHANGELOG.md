@@ -1,3 +1,15 @@
+# v14.2.2 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Match comp for active preview items [#2086](https://github.com/artsy/reaction/pull/2086) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.2.1 (Fri Mar 01 2019)
 
 #### 🐛  Bug Fix
