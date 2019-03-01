@@ -10,7 +10,7 @@ import moment from "moment"
 import { graphql } from "react-relay"
 import {
   acceptOfferFailed,
-  AcceptOfferPaymentFailed,
+  acceptOfferPaymentFailed,
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer } from "../Accept"
@@ -148,7 +148,7 @@ describe("Accept seller offer", () => {
     })
 
     it("shows an error modal if there is a capture_failed error", async () => {
-      mutations.useResultsOnce(AcceptOfferPaymentFailed)
+      mutations.useResultsOnce(acceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "An error occurred",

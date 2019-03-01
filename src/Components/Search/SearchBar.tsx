@@ -6,8 +6,12 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
-import { SearchPreview } from "Components/Search/Previews"
-import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
+import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Previews"
+import {
+  EmptySuggestion,
+  PLACEHOLDER,
+  SuggestionItem,
+} from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
 import React, { Component } from "react"
 import Autosuggest from "react-autosuggest"
@@ -18,31 +22,26 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 import styled from "styled-components"
+import { Provider, Subscribe } from "unstated"
+import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-import { SuggestionItemContainer } from "./Suggestions/SuggestionItemContainer"
+import {
+  AutosuggestManager,
+  handlePreviewSelection,
+  shouldNavigateToPreview,
+} from "./AutosuggestManager"
+import { SearchInputContainer } from "./SearchInputContainer"
+import { SearchBarState } from "./state"
 
 const logger = createLogger("Components/Search/SearchBar")
-
-const AutosuggestContainer = styled(Box)`
-  div[role="combobox"] {
-    div[role="listbox"] {
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-    }
-  }
-`
 
 export interface Props extends ContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
+  searchState: SearchBarState
 }
-
-const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 
 interface State {
   /* Holds current input */
@@ -96,7 +95,7 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width={["0px", "240px", "240px", "450px"]} pl={[0, 3]} py={[0, 2]}>
+        <Box width={["0px", "240px", "240px", "450px"]} px={[0, 3]} py={[0, 2]}>
           {preview}
         </Box>
       </ResultsWrapper>
@@ -104,9 +103,13 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
   )
 }
 
-@track()
+@track(null, {
+  dispatch: data => Events.postEvent(data),
+})
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
+  private containerRef: Node
+  private userClickedOnDescendant: boolean
 
   state = {
     term: "",
@@ -125,7 +128,10 @@ export class SearchBar extends Component<Props, State> {
 
     if (entityType === "FirstItem") return
 
-    this.setState({ entityType, entityID })
+    this.setState({
+      entityType,
+      entityID,
+    })
   }
 
   @track((_props, _state, [query, hasResults]) => ({
@@ -180,12 +186,24 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ focused: true })
   }
 
-  onBlur = () => {
-    this.setState({ focused: false })
+  onBlur = e => {
+    // This event _also_ fires when a user clicks on a link in the preview pane.
+    //  If we setState({focused: false}) when that happens, the link will get
+    //  removed from the DOM before the browser has a chance to follow it.
+    if (this.containerRef.contains(e.relatedTarget)) {
+      this.userClickedOnDescendant = true
+    } else {
+      this.setState({ focused: false })
+    }
   }
 
   onSuggestionsClearRequested = () => {
-    this.setState({ term: "", entityID: null, entityType: null })
+    // This event _also_ fires when a user clicks on a link in the preview pane.
+    //  If we initialize state when that happens, the link will get removed
+    //  from the DOM before the browser has a chance to follow it.
+    if (!this.userClickedOnDescendant) {
+      this.setState({ term: "", entityID: null, entityType: null })
+    }
   }
 
   // Navigate to selected search item.
@@ -234,12 +252,7 @@ export class SearchBar extends Component<Props, State> {
       return null
     }
 
-    let emptyState = null
-    if (!xs && !query && focused) {
-      emptyState = (
-        <SuggestionItemContainer>{PLACEHOLDER}</SuggestionItemContainer>
-      )
-    }
+    const showEmptySuggestion = !xs && !query && focused
 
     const props = {
       children,
@@ -251,7 +264,7 @@ export class SearchBar extends Component<Props, State> {
 
     return (
       <SuggestionContainer {...props}>
-        {emptyState || children}
+        {showEmptySuggestion ? <EmptySuggestion /> : children}
       </SuggestionContainer>
     )
   }
@@ -265,24 +278,21 @@ export class SearchBar extends Component<Props, State> {
     { query, isHighlighted }
   ) => {
     return (
-      <Box bg={isHighlighted ? "#ddd" : "#fff"}>
-        <SuggestionItem
-          query={query}
-          display={displayLabel}
-          label={searchableType}
-          href={href}
-        />
-      </Box>
+      <SuggestionItem
+        display={displayLabel}
+        href={href}
+        isHighlighted={isHighlighted}
+        label={searchableType}
+        query={query}
+      />
     )
   }
 
-  renderInputComponent = inputProps => {
-    return <Input style={{ width: "100%" }} {...inputProps} />
-  }
+  renderInputComponent = props => <SearchInputContainer {...props} />
 
   renderAutosuggestComponent({ xs }) {
     const { term } = this.state
-    const { viewer } = this.props
+    const { viewer, searchState } = this.props
 
     const inputProps = {
       onChange: this.searchTextChanged,
@@ -291,6 +301,12 @@ export class SearchBar extends Component<Props, State> {
       placeholder: xs ? "" : PLACEHOLDER,
       value: term,
       name: "term",
+    }
+
+    if (searchState.state.selectedPreviewIndex != null) {
+      inputProps["aria-activedescendant"] = `preview-${
+        searchState.state.selectedPreviewIndex
+      }`
     }
 
     const firstSuggestionPlaceholder = {
@@ -304,8 +320,9 @@ export class SearchBar extends Component<Props, State> {
     const edges = get(viewer, v => v.search.edges, [])
     const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
     return (
-      <AutosuggestContainer>
+      <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
+          alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
@@ -316,12 +333,17 @@ export class SearchBar extends Component<Props, State> {
             return this.renderSuggestionsContainer(props, { xs })
           }}
           inputProps={inputProps}
-          onSuggestionSelected={(_e, selection) =>
-            this.onSuggestionSelected(selection)
-          }
+          onSuggestionSelected={(e, selection) => {
+            e.preventDefault()
+            if (shouldNavigateToPreview(searchState)) {
+              handlePreviewSelection(searchState)
+            } else {
+              this.onSuggestionSelected(selection)
+            }
+          }}
           renderInputComponent={this.renderInputComponent}
         />
-      </AutosuggestContainer>
+      </AutosuggestManager>
     )
   }
 
@@ -338,7 +360,15 @@ export class SearchBar extends Component<Props, State> {
 }
 
 export const SearchBarRefetchContainer = createRefetchContainer(
-  SearchBar,
+  (props: Props) => {
+    return (
+      <Subscribe to={[SearchBarState]}>
+        {(searchState: SearchBarState) => {
+          return <SearchBar {...props} searchState={searchState} />
+        }}
+      </Subscribe>
+    )
+  },
   {
     viewer: graphql`
       fragment SearchBar_viewer on Viewer
@@ -391,7 +421,11 @@ export const SearchBarQueryRenderer: React.SFC = () => {
             }}
             render={({ props }) => {
               if (props) {
-                return <SearchBarRefetchContainer viewer={props.viewer} />
+                return (
+                  <Provider>
+                    <SearchBarRefetchContainer viewer={props.viewer} />
+                  </Provider>
+                )
               } else {
                 return (
                   <Input

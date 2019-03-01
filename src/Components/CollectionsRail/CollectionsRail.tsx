@@ -1,11 +1,15 @@
-import { Box, Flex, Sans, Spacer } from "@artsy/palette"
+import { Box, Flex, Sans, space, Spacer } from "@artsy/palette"
 import { CollectionsRail_collections } from "__generated__/CollectionsRail_collections.graphql"
-import React, { SFC } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { pMedia } from "Components/Helpers"
-import { CollectionEntityFragmentContainer as CollectionEntity } from "./Collection"
+import { once } from "lodash"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import Waypoint from "react-waypoint"
+import styled from "styled-components"
+import Events from "Utils/Events"
+import { CollectionEntityFragmentContainer as CollectionEntity } from "./CollectionEntity"
 
 interface CollectionRailsProps {
   collections: CollectionsRail_collections
@@ -21,38 +25,52 @@ const RailsWrapper = styled(Flex)`
   max-width: 1250px;
   margin: 0 auto;
   flex-direction: column;
+
   ${pMedia.xl`
-    padding: 40px;
+    padding: ${space(4)}px;
   `};
-  ${pMedia.lg`
-    padding: 40px;
-  `};
-  ${pMedia.xs`
-    padding: 40px 30px;
+  ${pMedia.sm`
+    padding: ${space(4)}px ${space(2)}px;
   `};
 `
 
-export const CollectionsRail: SFC<CollectionRailsProps> = ({ collections }) => {
-  return (
-    <RailsWrapper pb={3}>
-      <Sans size="6">Shop artworks from curated collections</Sans>
-      <Spacer mb={3} />
-      <Flex flexWrap="wrap">
-        {collections.map((collection, index) => {
-          const shouldAddPadding = index % 2 === 0
-          return (
-            <Box
-              width={["100%", "50%"]}
-              key={index}
-              pr={[0, shouldAddPadding ? 2 : 0]}
-            >
-              <CollectionEntity collection={collection} />
-            </Box>
-          )
-        })}
-      </Flex>
-    </RailsWrapper>
-  )
+@track(null, {
+  dispatch: data => Events.postEvent(data),
+})
+export class CollectionsRail extends React.Component<CollectionRailsProps> {
+  @track({
+    action_type: Schema.ActionType.Impression,
+    context_module: Schema.ContextModule.CollectionsRail,
+    context_page_owner_type: Schema.OwnerType.Article,
+  })
+  trackImpression() {
+    // noop
+  }
+
+  render() {
+    const { collections } = this.props
+    return (
+      <RailsWrapper pb={3}>
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
+        <Sans size={["6", "8"]}>Shop works from curated collections</Sans>
+        <Spacer mb={3} />
+        <Flex flexWrap="wrap">
+          {collections.map((collection, index) => {
+            const shouldAddPadding = index % 2 === 0
+            return (
+              <Box
+                width={["100%", "50%"]}
+                key={index}
+                pr={[0, shouldAddPadding ? 2 : 0]}
+              >
+                <CollectionEntity collection={collection} />
+              </Box>
+            )
+          })}
+        </Flex>
+      </RailsWrapper>
+    )
+  }
 }
 
 export const CollectionsRailFragmentContainer = createFragmentContainer(

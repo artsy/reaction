@@ -1,57 +1,115 @@
 import React from "react"
 
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, space } from "@artsy/palette"
 import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtworks_viewer.graphql"
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
+import { SearchBarState } from "Components/Search/state"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import styled from "styled-components"
+import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "./PreviewGridItem"
 
 interface MerchandisableArtworksPreviewProps {
   viewer: MerchandisableArtworks_viewer
+  searchState?: SearchBarState
+  smallScreen?: boolean
 }
 
-const MerchandisableArtworksPreview: React.SFC<
+const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
+  &:nth-child(even) {
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+  }
+`
+
+class MerchandisableArtworksPreview extends React.Component<
   MerchandisableArtworksPreviewProps
-> = ({ viewer }) => {
-  const artworks = get(
-    viewer,
-    x => x.filter_artworks.artworks_connection.edges,
-    []
-  ).map(x => x.node)
+> {
+  componentDidMount() {
+    const { smallScreen } = this.props
 
-  const merchandisableItems = artworks.map((artwork, i) => (
-    <Box width={["0%", "100%", "100%", "50%"]}>
-      <PreviewGridItem artwork={artwork} key={i} />
-    </Box>
-  ))
+    this.props.searchState.registerItems(
+      smallScreen ? this.artworks.slice(0, 5) : this.artworks
+    )
+  }
 
-  return (
-    <Box>
-      <Sans size="3" weight="medium" color="black100" mb={2}>
-        Now Available for Buy Now/ Make Offer
-      </Sans>
+  get artworks(): any {
+    return get(
+      this.props.viewer,
+      x => x.filter_artworks.artworks_connection.edges,
+      []
+    ).map(x => x.node)
+  }
 
-      <Media lessThan="lg">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {merchandisableItems.slice(0, 5)}
-        </Flex>
-      </Media>
+  renderItems(itemsPerRow: 1 | 2) {
+    const displayedArtworks =
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
 
-      <Media greaterThan="md">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {merchandisableItems}
-        </Flex>
-      </Media>
-    </Box>
-  )
+    const {
+      searchState: { state },
+    } = this.props
+
+    return displayedArtworks.map((artwork, i) => (
+      <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
+        <PreviewGridItem
+          highlight={
+            state.hasEnteredPreviews && i === state.selectedPreviewIndex
+          }
+          artwork={artwork}
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
+        />
+      </ItemContainer>
+    ))
+  }
+
+  render() {
+    return (
+      <Box>
+        <Sans size="3" weight="medium" color="black100" mb={2}>
+          Now Available for Buy Now/ Make Offer
+        </Sans>
+
+        <Media lessThan="lg">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {this.renderItems(1)}
+          </Flex>
+        </Media>
+
+        <Media greaterThan="md">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {this.renderItems(2)}
+          </Flex>
+        </Media>
+      </Box>
+    )
+  }
 }
 
 export const MerchandisableArtworksPreviewFragmentContainer = createFragmentContainer(
-  MerchandisableArtworksPreview,
+  (props: MerchandisableArtworksPreviewProps) => {
+    return (
+      <Responsive>
+        {({ xs, sm, md }) => {
+          return (
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <MerchandisableArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
+          )
+        }}
+      </Responsive>
+    )
+  },
   graphql`
     fragment MerchandisableArtworks_viewer on Viewer {
       filter_artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
@@ -59,6 +117,7 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
         artworks_connection(first: 10) {
           edges {
             node {
+              href
               ...PreviewGridItem_artwork
             }
           }

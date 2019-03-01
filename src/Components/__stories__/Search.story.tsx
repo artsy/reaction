@@ -1,6 +1,6 @@
 import { Box, Flex } from "@artsy/palette"
 import { ContextProvider } from "Artsy/SystemContext"
-import { SearchPreview } from "Components/Search/Previews"
+import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Previews"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import React from "react"
@@ -88,21 +88,24 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
   <ContextProvider>
     <SuggestionItem
       display="display one"
+      href="/"
+      isHighlighted={false}
       label="FirstItem"
       query="a query"
-      href="/"
     />
     <SuggestionItem
-      display="display two"
+      display="display two aklsdfjalkdfj alksdjf alkdfjs lakjds flkajsd flkajs dflkaj sdflkja sdfklja sdflk asdklfj aklsdjf lakdjsf lkajds flkajsd flkajs flkajsd flkajdf alksdjalksjdfalsdfk j"
+      href="/"
+      isHighlighted
       label="label two"
       query="a query"
-      href="/"
     />
     <SuggestionItem
-      display="display three"
+      display="display three aklsdfj alksdjf alksdj falkdjsf alkjds flakjdsflakjds flakjsdflajs dflkajsf"
+      href="/"
+      isHighlighted={false}
       label="label three"
       query="a query"
-      href="/"
     />
   </ContextProvider>
 ))
@@ -119,6 +122,16 @@ storiesOf("Components/Search/Previews/Artist", module)
     <Box width="450px" p={2}>
       <ContextProvider>
         <SearchPreview entityID="douglas-gordon" entityType="Artist" />
+      </ContextProvider>
+    </Box>
+  ))
+  .add("An artist with neither collections nor related artworks", () => (
+    <Box width="450px" p={2}>
+      <ContextProvider>
+        <SearchPreview
+          entityID="miguel-angel-angel-rojas"
+          entityType="Artist"
+        />
       </ContextProvider>
     </Box>
   ))

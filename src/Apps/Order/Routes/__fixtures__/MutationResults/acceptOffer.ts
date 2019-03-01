@@ -19,13 +19,26 @@ export const acceptOfferFailed = {
     },
   },
 }
-export const AcceptOfferPaymentFailed = {
+
+export const acceptOfferPaymentFailed = {
   ecommerceBuyerAcceptOffer: {
     orderOrError: {
       error: {
         type: "processing",
         code: "capture_failed",
         data: { some_details: "more details" },
+      },
+    },
+  },
+}
+
+export const acceptOfferInsufficientInventoryFailure = {
+  ecommerceBuyerAcceptOffer: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "insufficient_inventory",
+        data: "No moar artwork (╯°□°）╯︵ ┻━┻",
       },
     },
   },

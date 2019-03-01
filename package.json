@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "14.1.2",
+  "version": "14.1.28",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -8,6 +8,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@artsy/palette": "^3.0.0",
+    "@sentry/browser": "^4.2.3",
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
@@ -51,7 +52,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "3.0.8",
+    "@artsy/palette": "3.0.13",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -63,6 +64,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
     "@omakase/cli": "^0.0.5",
+    "@sentry/browser": "^4.2.3",
     "@storybook/addon-info": "^4.0.12",
     "@storybook/addon-options": "^4.0.12",
     "@storybook/addons": "^4.0.12",
@@ -154,7 +156,6 @@
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.1",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
-    "@sentry/browser": "^4.2.3",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
@@ -179,7 +180,7 @@
     "react-head": "^3.0.0",
     "react-html-parser": "^2.0.2",
     "react-lazy-load-image-component": "^1.1.1",
-    "react-lines-ellipsis": "xiaody/react-lines-ellipsis#0cd517ad9079aeb5e6710178d93dd6faa65b924a",
+    "react-lines-ellipsis": "^0.14.0",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
     "react-overlays": "^0.8.3",

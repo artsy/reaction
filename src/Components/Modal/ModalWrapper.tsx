@@ -96,7 +96,7 @@ export class ModalWrapper extends React.Component<
     if (this.props.show) {
       document.body.style.overflowY = "hidden"
     } else {
-      document.body.style.overflowY = "auto"
+      document.body.style.overflowY = "visible"
     }
   }
 

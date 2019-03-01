@@ -771,6 +771,7 @@ type Artwork implements Node & Searchable & Sellable {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  cached: Int
   additional_information(format: Format): String
   artist(
     # Use whatever is in the original response instead of making a request
@@ -926,7 +927,6 @@ type Artwork implements Node & Searchable & Sellable {
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
   certificateOfAuthenticity: ArtworkInfoRow
-  cached: Int
 }
 
 enum ArtworkAggregation {
@@ -1616,6 +1616,7 @@ type ArtworkItem implements Node & Searchable & Sellable {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  cached: Int
   additional_information(format: Format): String
   artist(
     # Use whatever is in the original response instead of making a request
@@ -1771,7 +1772,6 @@ type ArtworkItem implements Node & Searchable & Sellable {
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
   certificateOfAuthenticity: ArtworkInfoRow
-  cached: Int
 }
 
 type ArtworkLayer {
@@ -2357,6 +2357,9 @@ type BuyOrder implements Order {
 
   # Credit card on this order
   creditCard: CreditCard
+
+  # Whether or not the last attempt to charge the buyer failed
+  lastTransactionFailed: Boolean
   lastApprovedAt(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
@@ -2439,7 +2442,9 @@ type City {
   coordinates: LatLng
   shows(
     sort: PartnerShowSorts
-    status: EventStatus
+
+    # By default we filter shows by current
+    status: EventStatus = CURRENT
 
     # Whether to include local discovery stubs as well as displayable shows
     discoverable: Boolean
@@ -2448,7 +2453,14 @@ type City {
     before: String
     last: Int
   ): ShowConnection
-  fairs(size: Int, sort: FairSorts, status: EventStatus): [Fair]
+  fairs(
+    sort: FairSorts
+    status: EventStatus
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): FairConnection
 }
 
 type Collection implements Node {
@@ -2787,7 +2799,7 @@ input CreateGeminiEntryForAssetInput {
   # The S3 bucket where the file was uploaded
   source_bucket: String!
 
-  # Additional JSON data to pass through gemini, should deiinitely contain an `id` and a `_type`
+  # Additional JSON data to pass through gemini, should definitely contain an `id` and a `_type`
   metadata: JSON!
   clientMutationId: String
 }
@@ -3349,6 +3361,17 @@ enum FairArtistSorts {
   NAME_DESC
 }
 
+# A connection to a list of items.
+type FairConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [FairEdge]
+  pageCursors: PageCursors
+  totalCount: Int
+}
+
 type FairCounts {
   artists(
     # Returns a `String` when format is specified. e.g.`'0,0.0000''`
@@ -3372,12 +3395,24 @@ type FairCounts {
   ): FormattedNumber
 }
 
+# An edge in a connection.
+type FairEdge {
+  # The item at the end of the edge
+  node: Fair
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
 type FairExhibitor {
   # Exhibitor name
   name: String
 
   # Exhibitors id
   id: String
+
+  # Exhibitors _id
+  partner_id: String
 
   # Partner default profile id
   profile_id: String
@@ -3475,6 +3510,20 @@ type FilterSaleArtworksCounts {
     format: String
     label: String
   ): FormattedNumber
+}
+
+input FixFailedPaymentInput {
+  # Offer ID
+  offerId: ID!
+
+  # Credit card ID
+  creditCardId: String!
+  clientMutationId: String
+}
+
+type FixFailedPaymentPayload {
+  orderOrError: OrderOrFailureUnionType
+  clientMutationId: String
 }
 
 type FollowArtist {
@@ -4274,7 +4323,7 @@ type HomePage {
     # ID of followed artist to target for related artist rails
     followed_artist_id: String
 
-    # ID of generic gene rail to target
+    # [DEPRECATED: Favor more specific `generic_gene_id`] ID of generic gene rail to target
     generic_gene_id: String
 
     # ID of generic gene rail to target
@@ -4343,14 +4392,15 @@ type HomePageArtworkModule implements Node {
 }
 
 enum HomePageArtworkModuleTypes {
+  FOLLOWED_GENES
+  GENERIC_GENES
   ACTIVE_BIDS
   CURRENT_FAIRS
   FOLLOWED_ARTIST
   FOLLOWED_ARTISTS
   FOLLOWED_GALLERIES
-  FOLLOWED_GENES
-  GENERIC_GENES
   LIVE_AUCTIONS
+  POPULAR_ARTISTS
   RECOMMENDED_WORKS
   RELATED_ARTISTS
   SAVED_WORKS
@@ -5497,6 +5547,11 @@ type Mutation {
     input: SubmitOrderWithOfferInput!
   ): SubmitOrderWithOfferPayload
 
+  # Fix the failed payment on an offer order
+  ecommerceFixFailedPayment(
+    input: FixFailedPaymentInput!
+  ): FixFailedPaymentPayload
+
   # Creates an order with an artwork
   createOrderWithArtwork(
     input: CreateOrderWithArtworkInput!
@@ -5844,6 +5899,9 @@ type OfferOrder implements Order {
 
   # Credit card on this order
   creditCard: CreditCard
+
+  # Whether or not the last attempt to charge the buyer failed
+  lastTransactionFailed: Boolean
   lastApprovedAt(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
@@ -6060,6 +6118,9 @@ interface Order {
 
   # Credit card on this order
   creditCard: CreditCard
+
+  # Whether or not the last attempt to charge the buyer failed
+  lastTransactionFailed: Boolean
   lastApprovedAt(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
@@ -7267,7 +7328,7 @@ type Query {
     # Entities to include in search. Default: [ARTIST, ARTWORK].
     entities: [SearchEntity]
 
-    # Mode of search to exceute. Default: SITE.
+    # Mode of search to execute. Default: SITE.
     mode: SearchMode
     after: String
     first: Int
@@ -7379,6 +7440,7 @@ type Query {
   # Find partners by ID
   _unused_gravity_partners(ids: [ID]!): [DoNotUseThisPartner]
   marketingCollections(
+    randomize: Boolean
     size: Int
     showOnEditorial: Boolean
     artistID: String
@@ -8282,7 +8344,9 @@ type Show implements Node {
   # Shows that are near (~75km) from this show
   nearbyShows(
     sort: PartnerShowSorts
-    status: EventStatus
+
+    # By default show only current shows
+    status: EventStatus = CURRENT
 
     # Whether to include local discovery stubs as well as displayable shows
     discoverable: Boolean
@@ -9190,7 +9254,7 @@ type Viewer {
     # Entities to include in search. Default: [ARTIST, ARTWORK].
     entities: [SearchEntity]
 
-    # Mode of search to exceute. Default: SITE.
+    # Mode of search to execute. Default: SITE.
     mode: SearchMode
     after: String
     first: Int

@@ -11,10 +11,11 @@ interface ArtistSearchPreviewProps {
   viewer: ArtistSearchPreview_viewer
 }
 
-export const ArtistSearchPreview: React.SFC<ArtistSearchPreviewProps> = ({
-  viewer,
-}) => {
-  {
+export class ArtistSearchPreview extends React.Component<
+  ArtistSearchPreviewProps
+> {
+  render() {
+    const { viewer } = this.props
     const { marketingCollections } = viewer.artist
 
     if (marketingCollections.length > 0) {

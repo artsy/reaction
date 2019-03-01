@@ -24,7 +24,7 @@ export class RelatedArticleCanvasLink extends React.Component<
       props.article.layout,
       props.article.slug
     ),
-    type: "thumbnail", // TODO: add to schema
+    type: Schema.Type.Thumbnail,
   }))
   onClick() {
     // noop

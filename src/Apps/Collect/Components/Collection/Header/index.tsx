@@ -107,10 +107,19 @@ export class CollectionHeader extends Component<Props> {
                     <Overlay />
                     <MetaContainer>
                       <SubtitlesContainer>
-                        <Sans size={["2", "3"]} color="white100">
+                        <Sans
+                          size={["2", "3"]}
+                          weight="medium"
+                          color="white100"
+                        >
                           <a href={categoryTarget}>{collection.category}</a>
                         </Sans>
-                        <Sans size={["2", "3"]} color="white100" ml="auto">
+                        <Sans
+                          size={["2", "3"]}
+                          weight="medium"
+                          color="white100"
+                          ml="auto"
+                        >
                           <a href="/collect">View all artworks</a>
                         </Sans>
                       </SubtitlesContainer>
@@ -191,9 +200,21 @@ const DescriptionContainer = styled(Flex)``
 
 const SubtitlesContainer = styled(Box)`
   display: flex;
+  color: white;
+
+  a,
+  a:hover {
+    color: inherit;
+  }
 
   ${Sans} {
     text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+    &:last-child {
+      a {
+        text-decoration: underline;
+      }
+    }
   }
 `
 

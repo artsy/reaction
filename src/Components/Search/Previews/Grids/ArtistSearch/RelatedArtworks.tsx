@@ -1,52 +1,119 @@
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, space } from "@artsy/palette"
+import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
+import styled from "styled-components"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
+import { NoResultsPreview } from "./NoResults"
 
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
+  searchState?: SearchBarState
+  smallScreen?: boolean
 }
-export const RelatedArtworksPreview: React.SFC<RelatedArtworksPreviewProps> = ({
-  viewer,
-}) => {
-  const artworks = get(
-    viewer,
-    x => x.filter_artworks.artworks_connection.edges,
-    []
-  ).map(x => x.node)
 
-  const relatedArtworks = artworks.map((artwork, i) => (
-    <Box width={["0%", "100%", "100%", "50%"]} key={i}>
-      <PreviewGridItem artwork={artwork} emphasizeArtist />
-    </Box>
-  ))
-  return (
-    <Box>
-      <Sans size="3" weight="medium" color="black100" mb={2}>
-        Related Artworks
-      </Sans>
+const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
+  &:nth-child(even) {
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+  }
+`
 
-      <Media lessThan="lg">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {relatedArtworks.slice(0, 5)}
-        </Flex>
-      </Media>
+export class RelatedArtworksPreview extends React.Component<
+  RelatedArtworksPreviewProps
+> {
+  componentDidMount() {
+    const { smallScreen } = this.props
 
-      <Media greaterThan="md">
-        <Flex alignItems="flex-start" flexWrap="wrap">
-          {relatedArtworks}
-        </Flex>
-      </Media>
-    </Box>
-  )
+    this.props.searchState.registerItems(
+      smallScreen ? this.artworks.slice(0, 5) : this.artworks
+    )
+  }
+
+  get artworks(): any {
+    return get(
+      this.props.viewer,
+      x => x.filter_artworks.artworks_connection.edges,
+      []
+    ).map(x => x.node)
+  }
+
+  renderItems(itemsPerRow: 1 | 2) {
+    const displayedArtworks =
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
+
+    const {
+      searchState: { state },
+    } = this.props
+
+    return displayedArtworks.map((artwork, i) => (
+      <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
+        <PreviewGridItem
+          artwork={artwork}
+          highlight={
+            state.hasEnteredPreviews && i === state.selectedPreviewIndex
+          }
+          emphasizeArtist
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
+        />
+      </ItemContainer>
+    ))
+  }
+
+  render() {
+    if (this.artworks.length === 0) {
+      return <NoResultsPreview />
+    }
+
+    return (
+      <Box>
+        <Sans size="3" weight="medium" color="black100" mb={2}>
+          Related Artworks
+        </Sans>
+
+        <Media lessThan="lg">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {this.renderItems(1)}
+          </Flex>
+        </Media>
+
+        <Media greaterThan="md">
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {this.renderItems(2)}
+          </Flex>
+        </Media>
+      </Box>
+    )
+  }
 }
 
 export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
-  RelatedArtworksPreview,
+  (props: RelatedArtworksPreviewProps) => {
+    return (
+      <Responsive>
+        {({ xs, sm, md }) => {
+          return (
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <RelatedArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
+          )
+        }}
+      </Responsive>
+    )
+  },
+
   graphql`
     fragment RelatedArtworksPreview_viewer on Viewer
       @argumentDefinitions(entityID: { type: "String!" }) {
@@ -59,6 +126,7 @@ export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
         artworks_connection(first: 10) {
           edges {
             node {
+              href
               ...PreviewGridItem_artwork
             }
           }

@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.0.8.tgz#f047460c18d344220e8cd067f0c2747258922693"
-  integrity sha512-PnVYf0UkKMUVt8/EyIPKAKN8pyQASomQ3gmRgVd3u6md+Lgsqye5F0J4BdFSNbZDAy8Me/EYs0+DQXD5ZvS4oQ==
+"@artsy/palette@3.0.13":
+  version "3.0.13"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.0.13.tgz#89c52b172bb826f6c5c766a6255227951901c1a9"
+  integrity sha512-4eYH2sh8gWQvgL5oVBEYMbzc3Sb/ymqW6S3eQHSoq0Oagkxat3qK00DdQtAH7bVjSDl8PoAonv1/m44wJOP+8w==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
@@ -11412,9 +11412,10 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-lines-ellipsis@xiaody/react-lines-ellipsis#0cd517ad9079aeb5e6710178d93dd6faa65b924a:
-  version "0.13.0"
-  resolved "https://codeload.github.com/xiaody/react-lines-ellipsis/tar.gz/0cd517ad9079aeb5e6710178d93dd6faa65b924a"
+react-lines-ellipsis@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.14.0.tgz#954459e68d8f9fc5a40498cabc5f47d63cbefd21"
+  integrity sha512-zJf+evlugAQ42zwHYbsR/P9SSx2UrT4opWwY8JXPNIZTVVxjqTt2+91Csx3ya0xSesj7E/EgfUbtDfU03uylXQ==
 
 react-live@^1.12.0:
   version "1.12.0"

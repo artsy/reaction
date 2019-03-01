@@ -62,7 +62,7 @@ const ProfileImage = styled(Box)<{ src?: string }>`
   `};
 `
 
-const AuthorContainer = styled(Flex)`
+const AuthorContainer = styled(Flex)<{ color: string }>`
   color: ${props => props.color};
 
   a {

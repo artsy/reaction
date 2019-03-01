@@ -6,9 +6,15 @@ import { graphql } from "react-relay"
 import { PreviewGridItem } from "../../PreviewGridItem"
 import { ArtistSearchPreviewFragmentContainer } from "../index"
 import { MarketingCollectionsPreview } from "../MarketingCollections"
+import { NoResultsPreview } from "../NoResults"
 import { RelatedArtworksPreview } from "../RelatedArtworks"
 
 jest.unmock("react-relay")
+jest.mock("sharify", () => ({
+  data: {
+    APP_URL: "https://staging.artsy.net",
+  },
+}))
 
 const getWrapper = (viewer, breakpoint = "xl") => {
   return renderRelayTree({
@@ -32,45 +38,85 @@ const getWrapper = (viewer, breakpoint = "xl") => {
   })
 }
 
+const buildArtworksConnection: any = (numberOfItems: number) => {
+  const edges = Array(numberOfItems)
+    .fill(undefined)
+    .map((_, i) => ({
+      node: buildNode(i),
+    }))
+
+  return {
+    edges,
+  }
+}
+
+const buildNode: any = (nodeIndex: number) => ({
+  artist_names: "Andy Warhol",
+  date: "tomorrow",
+  href: `http://artsy.net/artwork/ugly-flower-${nodeIndex}`,
+  image: {
+    cropped: { url: "http://path/to/ugly-image.jpg" },
+  },
+  title: `Ugly Flower-${nodeIndex}`,
+})
+
 describe("ArtistSearchPreviewFragmentContainer", () => {
   describe("an artist with no marketing collections", () => {
-    it("renders related artworks", async () => {
-      const viewer = {
-        artist: {
-          id: "andy-warhol",
-          marketingCollections: [],
-        },
-        filter_artworks: {
-          artworks_connection: {
-            edges: [
-              {
-                node: {
-                  artist_names: "Andy Warhol",
-                  date: "yesterday",
-                  href: "http://artsy.net/artwork/pretty-flower",
-                  image: { cropped: { url: "http://path/to/image.jpg" } },
-                  title: "Pretty Flower",
-                },
-              },
-              {
-                node: {
-                  artist_names: "Andy Warhol",
-                  date: "tomorrow",
-                  href: "http://artsy.net/artwork/ugly-flower",
-                  image: { cropped: { url: "http://path/to/ugly-image.jpg" } },
-                  title: "Ugly Flower",
-                },
-              },
-            ],
+    describe("an artist with related artworks", () => {
+      it("renders 10 related artworks at lg", async () => {
+        const viewer = {
+          artist: {
+            id: "andy-warhol",
+            marketingCollections: [],
           },
-        },
-      }
+          filter_artworks: {
+            artworks_connection: buildArtworksConnection(10),
+          },
+        }
 
-      const wrapper = await getWrapper(viewer)
+        const wrapper = await getWrapper(viewer, "lg")
 
-      expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(0)
-      expect(wrapper.find(RelatedArtworksPreview).length).toEqual(1)
-      expect(wrapper.find(PreviewGridItem).length).toEqual(2)
+        expect(wrapper.find(MarketingCollectionsPreview).length).toEqual(0)
+        expect(wrapper.find(RelatedArtworksPreview).length).toEqual(1)
+        expect(wrapper.find(PreviewGridItem).length).toEqual(10)
+      })
+
+      it("renders 5 artworks at md", async () => {
+        const viewer = {
+          artist: {
+            id: "andy-warhol",
+            marketingCollections: [],
+          },
+          filter_artworks: {
+            artworks_connection: buildArtworksConnection(10),
+          },
+        }
+
+        const wrapper = await getWrapper(viewer, "md")
+
+        expect(wrapper.find(PreviewGridItem).length).toEqual(5)
+      })
+
+      describe("an artist with no related artworks", () => {
+        it("renders an empty preview", async () => {
+          const viewer = {
+            artist: {
+              id: "andy-warhol",
+              marketingCollections: [],
+            },
+            filter_artworks: {
+              artworks_connection: buildArtworksConnection(0),
+            },
+          }
+
+          const wrapper = await getWrapper(viewer, "md")
+
+          expect(wrapper.find(NoResultsPreview).length).toEqual(1)
+          expect(wrapper.text()).toContain(
+            "This artist does not have any work on Artsy yet."
+          )
+        })
+      })
     })
   })
 
@@ -132,7 +178,7 @@ describe("ArtistSearchPreviewFragmentContainer", () => {
       const component = await getWrapper(viewer)
       const hrefs = component.find("a").map(node => node.props().href)
       const expected = viewer.artist.marketingCollections.map(
-        collection => `collection/${collection.slug}`
+        collection => `https://staging.artsy.net/collection/${collection.slug}`
       )
       expect(hrefs).toEqual(expected)
     })
