@@ -17,6 +17,7 @@ declare module "sharify" {
      */
     export interface GlobalData {
       readonly APP_URL: string
+      readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly CMS_URL: string
       readonly FACEBOOK_APP_NAMESPACE: string
       readonly FORCE_CLOUDFRONT_URL: string

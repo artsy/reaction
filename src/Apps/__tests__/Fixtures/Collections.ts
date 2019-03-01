@@ -10,6 +10,7 @@ export const CollectionsFixture = [
     slug: "collectible-sculptures",
     headerImage:
       "http://files.artsy.net/images/pumpkinsbigartistsmallsculpture.png",
+    price_guidance: 1000,
   },
   {
     title: "Minimalist Prints",
@@ -26,6 +27,7 @@ export const CollectionsFixture = [
     title: "Street Art Now",
     slug: "street-art-now",
     headerImage: "http://files.artsy.net/images/streetartnow.png",
+    price_guidance: 200,
   },
   {
     title: "Timeless Modern Prints",
