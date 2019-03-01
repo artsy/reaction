@@ -41,7 +41,7 @@ export class CollectionsRail extends React.Component<CollectionRailsProps> {
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,
-    subject: Schema.Subject.CollectionsRail,
+    context_page_owner_type: Schema.OwnerType.Article,
   })
   trackImpression() {
     // noop
@@ -52,7 +52,7 @@ export class CollectionsRail extends React.Component<CollectionRailsProps> {
     return (
       <RailsWrapper pb={3}>
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-        <Sans size="6">Shop artworks from curated collections</Sans>
+        <Sans size={["6", "8"]}>Shop works from curated collections</Sans>
         <Spacer mb={3} />
         <Flex flexWrap="wrap">
           {collections.map((collection, index) => {

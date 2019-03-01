@@ -9,7 +9,7 @@ interface StateContainer {
 export class SearchBarState extends Container<StateContainer> {
   state = {
     hasEnteredPreviews: false,
-    selectedPreviewIndex: 0,
+    selectedPreviewIndex: null, // if set, represents currently selected index (via keyboard)
     previewItems: [],
   }
 
@@ -27,19 +27,28 @@ export class SearchBarState extends Container<StateContainer> {
   reset() {
     this.setState({
       hasEnteredPreviews: false,
-      selectedPreviewIndex: 0,
+      selectedPreviewIndex: null,
       previewItems: [],
     })
+  }
+
+  enterPreviewWithoutSelection() {
+    this.setState({ hasEnteredPreviews: true })
   }
 
   enterPreview() {
     this.setState({ hasEnteredPreviews: true, selectedPreviewIndex: 0 })
   }
 
+  leavePreviewIfNoSelection() {
+    if (this.state.selectedPreviewIndex != null) return
+    this.setState({ hasEnteredPreviews: false })
+  }
+
   decrementOrLeavePreview() {
     let selectedPreviewIndex = this.state.selectedPreviewIndex - 1
     const hasEnteredPreviews = selectedPreviewIndex >= 0
-    selectedPreviewIndex = Math.max(0, selectedPreviewIndex)
+    selectedPreviewIndex = hasEnteredPreviews ? selectedPreviewIndex : null
     this.setState({ hasEnteredPreviews, selectedPreviewIndex })
   }
 

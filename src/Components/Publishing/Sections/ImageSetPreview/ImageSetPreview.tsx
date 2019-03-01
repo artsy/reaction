@@ -106,7 +106,7 @@ export const Img = styled.img`
 
 export const ImgContainer = styled.div``
 
-const MiniWrapper = styled(Flex)`
+const MiniWrapper = styled(Flex)<{ color?: string }>`
   height: 100px;
   padding: 10px 0 10px 10px;
   border: 1px solid ${props => (props.color ? props.color : Color("black10"))};

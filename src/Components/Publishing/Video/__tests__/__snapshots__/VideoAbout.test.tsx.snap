@@ -281,9 +281,9 @@ exports[`Video About matches the snapshot 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
 }
 
 @media screen and (min-width:40em) {
@@ -1025,9 +1025,9 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
 }
 
 @media screen and (min-width:40em) {

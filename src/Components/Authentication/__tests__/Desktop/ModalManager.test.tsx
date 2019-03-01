@@ -57,7 +57,7 @@ describe("ModalManager", () => {
     const wrapper = getWrapper()
     const manager = wrapper.instance() as ModalManager
 
-    expect(document.body.style.overflowY).toEqual("auto")
+    expect(document.body.style.overflowY).toEqual("visible")
 
     manager.openModal({
       mode: ModalType.login,

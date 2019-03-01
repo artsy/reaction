@@ -5,6 +5,7 @@ import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_a
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import Slider from "react-slick"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
@@ -12,21 +13,40 @@ export interface ImageBrowserProps {
   artwork: ArtworkImageBrowser_artwork
 }
 
-export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
+export class ArtworkImageBrowserContainer extends React.Component<
   ImageBrowserProps
->(
-  props => {
-    const { images } = props.artwork
+> {
+  slider: Slider
+
+  render() {
+    const { images, image } = this.props.artwork
     if (!images.length) {
       return null
     }
+
+    const defaultImageIndex = images.findIndex(e => e.id === image.id)
+
     return (
       <>
-        <ArtworkImageBrowser images={images} />
-        <ArtworkActions artwork={props.artwork} />
+        <ArtworkImageBrowser
+          images={images}
+          sliderRef={slider => (this.slider = slider)}
+        />
+        <ArtworkActions
+          selectDefaultSlide={() => {
+            this.slider.slickGoTo(defaultImageIndex)
+          }}
+          artwork={this.props.artwork}
+        />
       </>
     )
-  },
+  }
+}
+
+export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
+  ImageBrowserProps
+>(
+  ArtworkImageBrowserContainer,
   graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
       title
@@ -35,7 +55,12 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       href
 
       ...ArtworkActions_artwork
-
+      image {
+        id
+        url(version: "larger")
+        height
+        width
+      }
       images {
         id
         uri: url(version: ["larger", "large"])
@@ -44,6 +69,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
         }
         aspectRatio: aspect_ratio
         is_zoomable
+        is_default
         deepZoom: deep_zoom {
           Image {
             xmlns

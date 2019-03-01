@@ -1,55 +1,71 @@
 import React from "react"
 
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, space } from "@artsy/palette"
 import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtworks_viewer.graphql"
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
 import { SearchBarState } from "Components/Search/state"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import styled from "styled-components"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "./PreviewGridItem"
 
 interface MerchandisableArtworksPreviewProps {
   viewer: MerchandisableArtworks_viewer
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
+
+const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
+  &:nth-child(even) {
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+  }
+`
 
 class MerchandisableArtworksPreview extends React.Component<
   MerchandisableArtworksPreviewProps
 > {
   componentDidMount() {
-    const items = get(
+    const { smallScreen } = this.props
+
+    this.props.searchState.registerItems(
+      smallScreen ? this.artworks.slice(0, 5) : this.artworks
+    )
+  }
+
+  get artworks(): any {
+    return get(
       this.props.viewer,
       x => x.filter_artworks.artworks_connection.edges,
       []
     ).map(x => x.node)
-
-    this.props.searchState.registerItems(items)
   }
 
-  render() {
-    const { viewer, searchState } = this.props
-    const artworks = get(
-      viewer,
-      x => x.filter_artworks.artworks_connection.edges,
-      []
-    ).map(x => x.node)
+  renderItems(itemsPerRow: 1 | 2) {
+    const displayedArtworks =
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
 
-    const { state } = searchState
-    const merchandisableItems = artworks.map((artwork, i) => (
-      <Box width={["0%", "100%", "100%", "50%"]} key={i}>
+    const {
+      searchState: { state },
+    } = this.props
+
+    return displayedArtworks.map((artwork, i) => (
+      <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
         <PreviewGridItem
           highlight={
             state.hasEnteredPreviews && i === state.selectedPreviewIndex
           }
           artwork={artwork}
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
         />
-      </Box>
+      </ItemContainer>
     ))
+  }
 
+  render() {
     return (
       <Box>
         <Sans size="3" weight="medium" color="black100" mb={2}>
@@ -58,13 +74,13 @@ class MerchandisableArtworksPreview extends React.Component<
 
         <Media lessThan="lg">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {merchandisableItems.slice(0, 5)}
+            {this.renderItems(1)}
           </Flex>
         </Media>
 
         <Media greaterThan="md">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {merchandisableItems}
+            {this.renderItems(2)}
           </Flex>
         </Media>
       </Box>
@@ -75,16 +91,23 @@ class MerchandisableArtworksPreview extends React.Component<
 export const MerchandisableArtworksPreviewFragmentContainer = createFragmentContainer(
   (props: MerchandisableArtworksPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
+      <Responsive>
+        {({ xs, sm, md }) => {
           return (
-            <MerchandisableArtworksPreview
-              searchState={searchState}
-              {...props}
-            />
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <MerchandisableArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
           )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
   graphql`

@@ -1,3 +1,154 @@
+# v14.1.28 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- View-in-room: Select default image when "view in room" is clicked [#2077](https://github.com/artsy/reaction/pull/2077) ([@sweir27](https://github.com/sweir27) [@ds300](https://github.com/ds300) [@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.13 [#2095](https://github.com/artsy/reaction/pull/2095) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/palette to 3.0.12 [#2094](https://github.com/artsy/reaction/pull/2094) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- [@sweir27](https://github.com/sweir27)
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v14.1.27 (Fri Mar 01 2019)
+
+#### 🏠  Internal
+
+- Pin dependency @artsy/palette to 3.0.11 [#2089](https://github.com/artsy/reaction/pull/2089) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v14.1.26 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- Fix type errors [#2088](https://github.com/artsy/reaction/pull/2088) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v14.1.25 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Autosuggest] Maintain suggestion list even while navigating to a preview item [#2084](https://github.com/artsy/reaction/pull/2084) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v14.1.24 (Thu Feb 28 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor search previews css [#2082](https://github.com/artsy/reaction/pull/2082) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.9 [#2083](https://github.com/artsy/reaction/pull/2083) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v14.1.23 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Prevent body from intercepting scroll events when modal is not open (GALL-1430, DISCO-683) [#2074](https://github.com/artsy/reaction/pull/2074) ([@starsirius](https://github.com/starsirius))
+
+#### Authors: 1
+
+- Chung-Yi Chi ([@starsirius](https://github.com/starsirius))
+
+---
+
+# v14.1.22 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- [DO NOT MERGE] New payment page will redirect to /status page unless the order's last transaction has failed [#2081](https://github.com/artsy/reaction/pull/2081) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- [@sweir27](https://github.com/sweir27)
+
+---
+
+# v14.1.21 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Avoid endlessly requesting further pages of followed artists' artworks [#2080](https://github.com/artsy/reaction/pull/2080) ([@joeyAghion](https://github.com/joeyAghion))
+
+#### Authors: 1
+
+- Joey Aghion ([@joeyAghion](https://github.com/joeyAghion))
+
+---
+
+# v14.1.20 (Wed Feb 27 2019)
+
+
+
+---
+
+# v14.1.19 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema to avoid failures in force builds [#2078](https://github.com/artsy/reaction/pull/2078) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v14.1.18 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Update CollectionsRail analytics with revised fields [#2073](https://github.com/artsy/reaction/pull/2073) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.1.17 (Wed Feb 27 2019)
+
+#### 🐛  Bug Fix
+
+- Add separator between RelatedArticlesCanvas and CollectionsRail [#2076](https://github.com/artsy/reaction/pull/2076) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.1.16 (Wed Feb 27 2019)
 
 

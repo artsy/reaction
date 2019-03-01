@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "14.1.16",
+  "version": "14.1.28",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -8,12 +8,12 @@
   "license": "MIT",
   "peerDependencies": {
     "@artsy/palette": "^3.0.0",
+    "@sentry/browser": "^4.2.3",
     "dd-trace": "^0.6.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.2.0",
-    "styled-components": "^4",
-    "@sentry/browser": "^4.2.3"
+    "styled-components": "^4"
   },
   "scripts": {
     "clean": "rm -rf dist",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "3.0.8",
+    "@artsy/palette": "3.0.13",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",

@@ -828,10 +828,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1200px;
 }
 
 .c25 {
@@ -1080,9 +1080,9 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
 }
 
 .c61 a {

@@ -31,7 +31,6 @@ export const NoResultsPreview: React.SFC = () => {
       alignItems="center"
       flexDirection="column"
       my={140}
-      pr={3}
     >
       <ArtworkIcon />
       <Serif

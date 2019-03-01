@@ -52,7 +52,7 @@ export class WorksForYouFeed extends Component<Props, State> {
 
   maybeLoadMore() {
     const threshold = window.innerHeight + window.scrollY
-    const el = ReactDOM.findDOMNode(this) as Element
+    const el = ReactDOM.findDOMNode(this).parentElement as Element
     if (threshold >= el.clientHeight + el.scrollTop) {
       this.loadMoreArtworks()
     }

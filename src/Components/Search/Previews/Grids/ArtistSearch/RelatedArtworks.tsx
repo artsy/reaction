@@ -1,60 +1,74 @@
-import { Box, Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, space } from "@artsy/palette"
 import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
-import { Media } from "Utils/Responsive"
+import { Media, Responsive } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
+import styled from "styled-components"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
 import { NoResultsPreview } from "./NoResults"
 
 interface RelatedArtworksPreviewProps {
   viewer: RelatedArtworksPreview_viewer
   searchState?: SearchBarState
+  smallScreen?: boolean
 }
+
+const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
+  &:nth-child(even) {
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+  }
+`
+
 export class RelatedArtworksPreview extends React.Component<
   RelatedArtworksPreviewProps
 > {
   componentDidMount() {
-    const items = get(
+    const { smallScreen } = this.props
+
+    this.props.searchState.registerItems(
+      smallScreen ? this.artworks.slice(0, 5) : this.artworks
+    )
+  }
+
+  get artworks(): any {
+    return get(
       this.props.viewer,
       x => x.filter_artworks.artworks_connection.edges,
       []
     ).map(x => x.node)
+  }
 
-    this.props.searchState.registerItems(items)
+  renderItems(itemsPerRow: 1 | 2) {
+    const displayedArtworks =
+      itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
+
+    const {
+      searchState: { state },
+    } = this.props
+
+    return displayedArtworks.map((artwork, i) => (
+      <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
+        <PreviewGridItem
+          artwork={artwork}
+          highlight={
+            state.hasEnteredPreviews && i === state.selectedPreviewIndex
+          }
+          emphasizeArtist
+          accessibilityLabel={`preview-${i.toLocaleString()}`}
+        />
+      </ItemContainer>
+    ))
   }
 
   render() {
-    const { viewer, searchState } = this.props
-
-    const artworks = get(
-      viewer,
-      x => x.filter_artworks.artworks_connection.edges,
-      []
-    ).map(x => x.node)
-
-    const { state } = searchState
-
-    if (artworks.length === 0) {
+    if (this.artworks.length === 0) {
       return <NoResultsPreview />
     }
 
-    const relatedArtworks = artworks.map((artwork, i) => {
-      return (
-        <Box width={["0%", "100%", "100%", "50%"]} key={i}>
-          <PreviewGridItem
-            artwork={artwork}
-            highlight={
-              state.hasEnteredPreviews && i === state.selectedPreviewIndex
-            }
-            emphasizeArtist
-          />
-        </Box>
-      )
-    })
     return (
       <Box>
         <Sans size="3" weight="medium" color="black100" mb={2}>
@@ -63,13 +77,13 @@ export class RelatedArtworksPreview extends React.Component<
 
         <Media lessThan="lg">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {relatedArtworks.slice(0, 5)}
+            {this.renderItems(1)}
           </Flex>
         </Media>
 
         <Media greaterThan="md">
           <Flex alignItems="flex-start" flexWrap="wrap">
-            {relatedArtworks}
+            {this.renderItems(2)}
           </Flex>
         </Media>
       </Box>
@@ -80,11 +94,23 @@ export class RelatedArtworksPreview extends React.Component<
 export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
   (props: RelatedArtworksPreviewProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
-        {(searchState: SearchBarState) => {
-          return <RelatedArtworksPreview searchState={searchState} {...props} />
+      <Responsive>
+        {({ xs, sm, md }) => {
+          return (
+            <Subscribe to={[SearchBarState]}>
+              {(searchState: SearchBarState) => {
+                return (
+                  <RelatedArtworksPreview
+                    searchState={searchState}
+                    {...props}
+                    smallScreen={xs || sm || md}
+                  />
+                )
+              }}
+            </Subscribe>
+          )
         }}
-      </Subscribe>
+      </Responsive>
     )
   },
 

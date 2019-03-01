@@ -88,6 +88,7 @@ export class Nav extends React.Component<Props, State> {
 
 export const NavContainer = styled(Flex)<{
   backgroundColor: string
+  color: string
   transparent: boolean
   isFixed: boolean
 }>`
