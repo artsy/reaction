@@ -1,3 +1,16 @@
+# v14.1.29 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fix input padding [#2090](https://github.com/artsy/reaction/pull/2090) ([@damassi](https://github.com/damassi) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.1.28 (Fri Mar 01 2019)
 
 #### 🐛  Bug Fix
