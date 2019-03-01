@@ -8,7 +8,6 @@ import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFro
 import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
 import { ArtworkDetailsAdditionalInfoFragmentContainer as AdditionalInfo } from "./ArtworkDetailsAdditionalInfo"
 import { ArtworkDetailsArticlesFragmentContainer as Articles } from "./ArtworkDetailsArticles"
-import { ArtworkDetailsChecklistFragmentContainer as Checklist } from "./ArtworkDetailsChecklist"
 
 import { ArtworkDetails_artwork } from "__generated__/ArtworkDetails_artwork.graphql"
 import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
@@ -94,7 +93,6 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
     fragment ArtworkDetails_artwork on Artwork {
       ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
       ...ArtworkDetailsAboutTheWorkFromPartner_artwork
-      ...ArtworkDetailsChecklist_artwork
       ...ArtworkDetailsAdditionalInfo_artwork
       ...ArtworkDetailsArticles_artwork
       articles(size: 10) {
