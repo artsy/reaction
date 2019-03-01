@@ -19,7 +19,7 @@ interface RelatedArtworksPreviewProps {
 
 const ItemContainer = styled(Box)<{ itemsPerRow: 1 | 2 }>`
   &:nth-child(even) {
-    margin-left: ${p => (p.itemsPerRow === 2 ? space(2) : 0)}px;
+    margin-left: ${p => (p.itemsPerRow === 2 ? space(1) : 0)}px;
   }
 `
 
@@ -51,7 +51,7 @@ export class RelatedArtworksPreview extends React.Component<
     } = this.props
 
     return displayedArtworks.map((artwork, i) => (
-      <ItemContainer width={["0%", "180px"]} key={i} itemsPerRow={itemsPerRow}>
+      <ItemContainer width={["0%", "200px"]} key={i} itemsPerRow={itemsPerRow}>
         <PreviewGridItem
           artwork={artwork}
           highlight={
@@ -71,7 +71,7 @@ export class RelatedArtworksPreview extends React.Component<
 
     return (
       <Box>
-        <Sans size="3" weight="medium" color="black100" mb={2}>
+        <Sans size="3" weight="medium" color="black100" mb={1} ml={1}>
           Related Artworks
         </Sans>
 

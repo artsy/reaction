@@ -118,6 +118,6 @@ describe("SearchBar", () => {
     simulateTyping(component, "blah") // Any text of non-zero length.
     await flushPromiseQueue()
 
-    expect(component.text()).toContain("Now Available for Buy Now/ Make Offer")
+    expect(component.text()).toContain("Now available on Artsy")
   })
 })

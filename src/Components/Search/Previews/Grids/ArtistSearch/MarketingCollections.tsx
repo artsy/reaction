@@ -92,7 +92,7 @@ const renderItems = (
         mb={2}
         itemsPerRow={itemsPerRow}
       >
-        <Link href={href} noUnderline>
+        <Link href={href} color="black100" noUnderline>
           <CollectionTitles title={title} />
         </Link>
       </CollectionBox>
