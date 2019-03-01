@@ -26,7 +26,7 @@ describe("ArtistInfo", () => {
   }
   let wrapper
 
-  describe("ArtistInfo for artwort with complete artist info", () => {
+  describe("ArtistInfo for artwork with complete artist info", () => {
     beforeAll(async () => {
       wrapper = await getWrapper()
     })
@@ -52,9 +52,8 @@ describe("ArtistInfo", () => {
     data.highlights.partners = null
     data.collections = null
     data.auctionResults = null
-    data.exhibition_highlights = []
+    data.exhibition_highlights = null
     wrapper = await getWrapper(data)
-    console.log("HTML", wrapper.html())
     expect(wrapper.find("Button").length).toBe(0)
   })
 
@@ -71,7 +70,7 @@ describe("ArtistInfo", () => {
     data.collections = null
     data.auctionResults = null
     wrapper = await getWrapper(data)
-    wrapper.setState({ showArtistInsights: true })
+    wrapper.find("Button").simulate("click")
     expect(wrapper.find("MarketInsights").html()).toBe(null)
   })
 
@@ -79,7 +78,7 @@ describe("ArtistInfo", () => {
     const data = cloneDeep(ArtistInfoFixture)
     data.exhibition_highlights = []
     wrapper = await getWrapper(data)
-    wrapper.setState({ showArtistInsights: true })
+    wrapper.find("Button").simulate("click")
     expect(wrapper.find("SelectedExhibitions").html()).toBe(null)
   })
 })

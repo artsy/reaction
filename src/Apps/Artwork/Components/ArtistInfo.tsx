@@ -69,9 +69,17 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   }
 
   render() {
+    const { artist } = this.props
     const { biography_blurb, image, id, _id } = this.props.artist
     const showArtistBio = !!biography_blurb.text
     const imageUrl = get(this.props, p => image.cropped.url)
+    const showArtistInsightsButton =
+      (artist.exhibition_highlights &&
+        artist.exhibition_highlights.length > 0) ||
+      (artist.auctionResults && artist.auctionResults.edges.length > 0) ||
+      (artist.collections && artist.collections.length > 0) ||
+      (artist.highlights.partners &&
+        artist.highlights.partners.edges.length > 0)
 
     return (
       <ContextConsumer>
@@ -134,15 +142,17 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                   />
                 </>
               )}
-              <Button
-                onClick={this.toggleArtistInsights}
-                width={130}
-                variant="secondaryGray"
-                size="small"
-                mt={1}
-              >
-                Show artist insights
-              </Button>
+              {showArtistInsightsButton && (
+                <Button
+                  onClick={this.toggleArtistInsights}
+                  width={130}
+                  variant="secondaryGray"
+                  size="small"
+                  mt={1}
+                >
+                  Show artist insights
+                </Button>
+              )}
             </StackableBorderBox>
             {this.state.showArtistInsights && (
               <>
@@ -175,7 +185,13 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
 export const ArtistInfoFragmentContainer = createFragmentContainer(
   ArtistInfo,
   graphql`
-    fragment ArtistInfo_artist on Artist {
+    fragment ArtistInfo_artist on Artist
+      @argumentDefinitions(
+        partner_category: {
+          type: "[String]"
+          defaultValue: ["blue-chip", "top-established", "top-emerging"]
+        }
+      ) {
       _id
       id
       name
@@ -191,6 +207,36 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
       }
       exhibition_highlights(size: 3) {
         ...SelectedExhibitions_exhibitions
+      }
+      collections
+      highlights {
+        partners(
+          first: 10
+          display_on_partner_profile: true
+          represented_by: true
+          partner_category: $partner_category
+        ) {
+          edges {
+            node {
+              categories {
+                id
+              }
+            }
+          }
+        }
+      }
+      auctionResults(
+        recordsTrusted: true
+        first: 1
+        sort: PRICE_AND_DATE_DESC
+      ) {
+        edges {
+          node {
+            price_realized {
+              display(format: "0a")
+            }
+          }
+        }
       }
       ...ArtistBio_bio
       ...MarketInsightsArtistPage_artist
