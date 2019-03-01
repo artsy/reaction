@@ -1,3 +1,23 @@
+# v14.1.28 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- View-in-room: Select default image when "view in room" is clicked [#2077](https://github.com/artsy/reaction/pull/2077) ([@sweir27](https://github.com/sweir27) [@ds300](https://github.com/ds300) [@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.13 [#2095](https://github.com/artsy/reaction/pull/2095) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/palette to 3.0.12 [#2094](https://github.com/artsy/reaction/pull/2094) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- [@sweir27](https://github.com/sweir27)
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.1.27 (Fri Mar 01 2019)
 
 #### 🏠  Internal
