@@ -23,11 +23,13 @@ declare module "sharify" {
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly GENOME_URL: string
+      readonly IS_MOBILE: boolean
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
       readonly PREDICTION_URL: string
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
+      readonly VOLLEY_ENDPOINT: string
       readonly XAPP_TOKEN: string
     }
 
