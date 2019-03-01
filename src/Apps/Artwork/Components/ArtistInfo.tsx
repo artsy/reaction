@@ -1,4 +1,10 @@
-import { EntityHeader, Sans, Spacer, StackableBorderBox } from "@artsy/palette"
+import {
+  Button,
+  EntityHeader,
+  Sans,
+  Spacer,
+  StackableBorderBox,
+} from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
 import { ContextConsumer } from "Artsy"
@@ -25,6 +31,10 @@ interface ArtistInfoProps {
   mediator?: Mediator
 }
 
+interface ArtistInfoState {
+  showArtistInsights: boolean
+}
+
 const Container = ({ children }) => (
   <StackableBorderBox p={2}>{children}</StackableBorderBox>
 )
@@ -37,7 +47,11 @@ const Container = ({ children }) => (
     dispatch: data => Events.postEvent(data),
   }
 )
-export class ArtistInfo extends Component<ArtistInfoProps> {
+export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
+  state = {
+    showArtistInsights: false,
+  }
+
   @track({
     action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkAboutTheArtist,
@@ -46,6 +60,12 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
   })
   trackArtistBioReadMoreClick() {
     // noop
+  }
+
+  toggleArtistInsights = () => {
+    this.setState({
+      showArtistInsights: !this.state.showArtistInsights,
+    })
   }
 
   render() {
@@ -114,24 +134,37 @@ export class ArtistInfo extends Component<ArtistInfoProps> {
                   />
                 </>
               )}
+              <Button
+                onClick={this.toggleArtistInsights}
+                width={130}
+                variant="secondaryGray"
+                size="small"
+                mt={1}
+              >
+                Show artist Insights
+              </Button>
             </StackableBorderBox>
-            <MarketInsights
-              artist={this.props.artist}
-              border={false}
-              Container={Container}
-            />
-            <SelectedExhibitions
-              artistID={this.props.artist.id}
-              border={false}
-              totalExhibitions={this.props.artist.counts.partner_shows}
-              exhibitions={this.props.artist.exhibition_highlights}
-              ViewAllLink={
-                <a href={`${sd.APP_URL}/artist/${this.props.artist.id}/cv`}>
-                  View all
-                </a>
-              }
-              Container={Container}
-            />
+            {this.state.showArtistInsights && (
+              <>
+                <MarketInsights
+                  artist={this.props.artist}
+                  border={false}
+                  Container={Container}
+                />
+                <SelectedExhibitions
+                  artistID={this.props.artist.id}
+                  border={false}
+                  totalExhibitions={this.props.artist.counts.partner_shows}
+                  exhibitions={this.props.artist.exhibition_highlights}
+                  ViewAllLink={
+                    <a href={`${sd.APP_URL}/artist/${this.props.artist.id}/cv`}>
+                      View all
+                    </a>
+                  }
+                  Container={Container}
+                />
+              </>
+            )}
           </>
         )}
       </ContextConsumer>
