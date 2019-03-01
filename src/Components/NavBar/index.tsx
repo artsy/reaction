@@ -73,9 +73,9 @@ interface MenuProps {
   children?: any // TODO: type as MenuItem[]
 }
 
-const Menu: React.SFC<MenuProps> = ({ title, children }) => {
+const Menu: React.SFC<MenuProps> = ({ title, children, ...props }) => {
   return (
-    <MenuContainer mt={2} width={230}>
+    <MenuContainer mt={2} width={230} {...props}>
       <BorderBox p={0}>
         <Flex flexDirection="column" width="100%">
           {title && (
@@ -203,6 +203,7 @@ enum navActions {
   TOGGLE_NAV_MENU,
   TOGGLE_USER_MENU,
   TOGGLE_NOTIFICATIONS_MENU,
+  TOGGLE_MOBILE_MENU,
 }
 
 const navReducer = (state, action) => {
@@ -210,6 +211,7 @@ const navReducer = (state, action) => {
     showNavMenu: false,
     showeUserMenu: false,
     showNotificationsMenu: false,
+    showMobileMenu: false,
   }
   switch (action.type) {
     case navActions.TOGGLE_NAV_MENU:
@@ -227,6 +229,11 @@ const navReducer = (state, action) => {
         ...closeMenus,
         showNotificationsMenu: !state.showNotificationsMenu,
       }
+    case navActions.TOGGLE_MOBILE_MENU:
+      return {
+        ...closeMenus,
+        showMobileMenu: !state.showMobileMenu,
+      }
   }
 }
 
@@ -235,6 +242,7 @@ export const NavBar = () => {
     showNavMenu: false,
     showeUserMenu: true,
     showNotificationsMenu: false,
+    showMobileMenu: false,
   })
 
   return (
@@ -311,7 +319,34 @@ export const NavBar = () => {
       {/*
         Mobile
       */}
-      <NavSection display={["flex", "none"]}>Click me</NavSection>
+      <NavSection display={["flex", "none"]}>
+        <NavItem
+          onClick={() =>
+            dispatch({
+              type: navActions.TOGGLE_MOBILE_MENU,
+            })
+          }
+        >
+          Icon
+          {navState.showMobileMenu && (
+            <Flex flexDirection="column">
+              <Menu>
+                <MenuItem>Home</MenuItem>
+                <MenuItem>Artists</MenuItem>
+                <MenuItem>Shows</MenuItem>
+                <MenuItem>Galleries</MenuItem>
+                <MenuItem>Museums</MenuItem>
+                <MenuItem>Articles</MenuItem>
+                <MenuItem>Fairs</MenuItem>
+                <MenuItem>Auctions</MenuItem>
+                <Separator />
+                <MenuItem>Works for you</MenuItem>
+                <MenuItem>Account</MenuItem>
+              </Menu>
+            </Flex>
+          )}
+        </NavItem>
+      </NavSection>
     </Container>
   )
 }
