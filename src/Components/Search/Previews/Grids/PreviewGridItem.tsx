@@ -24,11 +24,12 @@ const OverflowEllipsis = styled(Serif)`
   max-width: ${space(12)}px;
 `
 
-const Wrapper = styled(Flex)<{isHighlight: boolean}>`
-  background-color: ${props => props.isHighlight ? color("black5") : color("white100")};
+const Wrapper = styled(Flex)<{ isHighlight: boolean }>`
+  background-color: ${props =>
+    props.isHighlight ? color("black5") : color("white100")};
 
   :hover {
-    background-color: ${color("black5")}
+    background-color: ${color("black5")};
   }
 `
 
@@ -49,10 +50,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
     }
 
     return (
-      <Wrapper
-        isHighlight={highlight}
-        p={1}
-      >
+      <Wrapper isHighlight={highlight} p={1}>
         <Link {...linkProps} noUnderline>
           <Box width="40px" height="40px" mr={2}>
             {imageUrl && (
