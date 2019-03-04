@@ -56,25 +56,25 @@ export class DialogContainer extends Container<DialogState> {
     })
   }
 
-  showAcceptDialog = ({
+  showConfirmDialog = ({
     title,
     message,
-    continueButtonText = "Continue",
+    confirmButtonText = "Continue",
     cancelButtonText = "Cancel",
   }: {
     title: React.ReactNode
     message: React.ReactNode
-    continueButtonText?: string
+    confirmButtonText?: string
     cancelButtonText?: string
-  }): Promise<{ accepted: boolean }> => {
-    return new Promise<{ accepted: boolean }>(resolve => {
+  }): Promise<{ confirmed: boolean }> => {
+    return new Promise<{ confirmed: boolean }>(resolve => {
       const accept = () => {
         this.hide()
-        resolve({ accepted: true })
+        resolve({ confirmed: true })
       }
       const reject = () => {
         this.hide()
-        resolve({ accepted: false })
+        resolve({ confirmed: false })
       }
 
       this.show({
@@ -83,7 +83,7 @@ export class DialogContainer extends Container<DialogState> {
           heading: title,
           detail: message,
           primaryCta: {
-            text: continueButtonText,
+            text: confirmButtonText,
             action: accept,
           },
           secondaryCta: {
@@ -149,12 +149,12 @@ const extractDialogHelpers = ({
   show,
   hide,
   showErrorDialog,
-  showAcceptDialog,
+  showConfirmDialog,
 }: DialogContainer) => ({
   show,
   hide,
   showErrorDialog,
-  showAcceptDialog,
+  showConfirmDialog,
 })
 
 export type Dialog = ReturnType<typeof extractDialogHelpers>

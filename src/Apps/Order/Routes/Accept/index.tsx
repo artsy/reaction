@@ -99,12 +99,12 @@ export class Accept extends Component<AcceptProps, AcceptState> {
 
   async showCardFailureDialog(props: { title: string; message: string }) {
     this.setState({ isCommittingMutation: false })
-    const { accepted } = await this.props.dialog.showAcceptDialog({
+    const { confirmed } = await this.props.dialog.showConfirmDialog({
       ...props,
       cancelButtonText: "OK",
-      continueButtonText: "Use new card",
+      confirmButtonText: "Use new card",
     })
-    if (accepted) {
+    if (confirmed) {
       this.props.router.push(`/orders/${this.props.order.id}/payment/new`)
     }
   }
