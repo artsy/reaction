@@ -1,3 +1,15 @@
+# v14.2.6 (Mon Mar 04 2019)
+
+#### 🐛  Bug Fix
+
+- Remove restriction on layout for EditorialFeatures [#2101](https://github.com/artsy/reaction/pull/2101) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.2.5 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
