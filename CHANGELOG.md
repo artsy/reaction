@@ -1,3 +1,72 @@
+# v14.2.2 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Match comp for active preview items [#2086](https://github.com/artsy/reaction/pull/2086) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v14.2.1 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Artist Collections Rail initial setup [#2085](https://github.com/artsy/reaction/pull/2085) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.2.0 (Fri Mar 01 2019)
+
+#### 🚀  Enhancement
+
+- First pass static <NavBar /> UI [#2093](https://github.com/artsy/reaction/pull/2093) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v14.1.29 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fix input padding [#2090](https://github.com/artsy/reaction/pull/2090) ([@damassi](https://github.com/damassi) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v14.1.28 (Fri Mar 01 2019)
+
+#### 🐛  Bug Fix
+
+- View-in-room: Select default image when "view in room" is clicked [#2077](https://github.com/artsy/reaction/pull/2077) ([@sweir27](https://github.com/sweir27) [@ds300](https://github.com/ds300) [@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.0.13 [#2095](https://github.com/artsy/reaction/pull/2095) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dependency @artsy/palette to 3.0.12 [#2094](https://github.com/artsy/reaction/pull/2094) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- [@sweir27](https://github.com/sweir27)
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.1.27 (Fri Mar 01 2019)
 
 #### 🏠  Internal

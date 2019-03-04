@@ -17,16 +17,17 @@ import {
 
 interface ArtworkBrowserProps {
   images: ArtworkImageBrowser_artwork["images"]
+  sliderRef?(slider: Slider): void
 }
 
-export const ArtworkImageBrowser: React.SFC<ArtworkBrowserProps> = props => {
+export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
   return (
     <>
       <Media at="xs">
-        <SmallArtworkImageBrowser images={props.images} />
+        <SmallArtworkImageBrowser {...props} />
       </Media>
       <Media greaterThan="xs">
-        <LargeArtworkImageBrowser images={props.images} />
+        <LargeArtworkImageBrowser {...props} />
       </Media>
     </>
   )
@@ -36,6 +37,13 @@ export class LargeArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
   slider: Slider
+
+  setSliderRef = slider => {
+    this.slider = slider
+    if (this.props.sliderRef) {
+      this.props.sliderRef(slider)
+    }
+  }
 
   get settings(): Settings {
     return {
@@ -66,7 +74,7 @@ export class LargeArtworkImageBrowser extends React.Component<
             </Col>
           )}
           <Col sm={hasMultipleImages ? 10 : 12}>
-            <Slider {...this.settings} ref={slider => (this.slider = slider)}>
+            <Slider {...this.settings} ref={this.setSliderRef}>
               {this.props.images.map(image => {
                 return (
                   <Flex
@@ -78,6 +86,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                     <Lightbox
                       deepZoom={image.deepZoom}
                       enabled={image.is_zoomable}
+                      isDefault={image.is_default}
                     >
                       <DesktopImage src={image.uri} width="100%" />
                     </Lightbox>
@@ -129,7 +138,7 @@ export class SmallArtworkImageBrowser extends React.Component<
   render() {
     return (
       <Container>
-        <Slider {...this.settings}>
+        <Slider {...this.settings} ref={this.props.sliderRef}>
           {this.props.images.map(image => {
             return (
               <Flex
@@ -141,6 +150,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                 <Lightbox
                   deepZoom={image.deepZoom}
                   enabled={!this.state.isLocked && image.is_zoomable}
+                  isDefault={image.is_default}
                 >
                   <ResponsiveImage src={image.uri} width="100%" />
                 </Lightbox>

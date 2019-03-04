@@ -234,6 +234,12 @@ fragment ArtworkImageBrowser_artwork on Artwork {
   image_title
   href
   ...ArtworkActions_artwork
+  image {
+    id
+    url(version: "larger")
+    height
+    width
+  }
   images {
     id
     uri: url(version: ["larger", "large"])
@@ -242,6 +248,7 @@ fragment ArtworkImageBrowser_artwork on Artwork {
     }
     aspectRatio: aspect_ratio
     is_zoomable
+    is_default
     deepZoom: deep_zoom {
       Image {
         xmlns
@@ -2239,6 +2246,13 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "is_zoomable",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "is_default",
                 "args": null,
                 "storageKey": null
               },

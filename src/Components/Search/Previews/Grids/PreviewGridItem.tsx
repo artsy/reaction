@@ -24,6 +24,15 @@ const OverflowEllipsis = styled(Serif)`
   max-width: ${space(12)}px;
 `
 
+const Wrapper = styled(Flex)<{ isHighlight: boolean }>`
+  background-color: ${props =>
+    props.isHighlight ? color("black5") : color("white100")};
+
+  :hover {
+    background-color: ${color("black5")};
+  }
+`
+
 export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
   render() {
     const {
@@ -41,12 +50,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
     }
 
     return (
-      <Flex
-        style={{
-          backgroundColor: highlight ? color("black5") : color("white100"),
-        }}
-        mb={2}
-      >
+      <Wrapper isHighlight={highlight} p={1}>
         <Link {...linkProps} noUnderline>
           <Box width="40px" height="40px" mr={2}>
             {imageUrl && (
@@ -58,7 +62,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
             )}
           </Box>
         </Link>
-        <Link href={artwork.href} noUnderline>
+        <Link href={artwork.href} color="black100" noUnderline>
           <Box>
             <OverflowEllipsis size="2" italic>
               {artwork.title}, {artwork.date}
@@ -71,7 +75,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
             </OverflowEllipsis>
           </Box>
         </Link>
-      </Flex>
+      </Wrapper>
     )
   }
 }
