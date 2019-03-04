@@ -1,6 +1,7 @@
 import {
   Button,
   EntityHeader,
+  Flex,
   Sans,
   Spacer,
   StackableBorderBox,
@@ -146,15 +147,16 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                 </>
               )}
               {showArtistInsightsButton && (
-                <Button
-                  onClick={this.toggleArtistInsights}
-                  width={130}
-                  variant="secondaryGray"
-                  size="small"
-                  mt={1}
-                >
-                  {buttonText}
-                </Button>
+                <Flex flexDirection="column" alignItems="flex-start">
+                  <Button
+                    onClick={this.toggleArtistInsights}
+                    variant="secondaryGray"
+                    size="small"
+                    mt={1}
+                  >
+                    {buttonText}
+                  </Button>
+                </Flex>
               )}
             </StackableBorderBox>
             {this.state.showArtistInsights && (
