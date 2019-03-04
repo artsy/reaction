@@ -80,6 +80,9 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
       (artist.collections && artist.collections.length > 0) ||
       (artist.highlights.partners &&
         artist.highlights.partners.edges.length > 0)
+    const buttonText = this.state.showArtistInsights
+      ? "Hide artist insights"
+      : "Show artist insights"
 
     return (
       <ContextConsumer>
@@ -150,7 +153,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                   size="small"
                   mt={1}
                 >
-                  Show artist insights
+                  {buttonText}
                 </Button>
               )}
             </StackableBorderBox>
@@ -181,6 +184,8 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     )
   }
 }
+
+// ADDED COLLECTIONS, HIGHLIGHTS, AND AUCTION RESULTS TO FRAGMENT FOR SHOW ARTIST INSIGHTS BUTTON VISIBLILITY CHECK
 
 export const ArtistInfoFragmentContainer = createFragmentContainer(
   ArtistInfo,
