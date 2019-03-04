@@ -10,6 +10,7 @@ import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Preview
 import {
   EmptySuggestion,
   PLACEHOLDER,
+  PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
@@ -298,7 +299,7 @@ export class SearchBar extends Component<Props, State> {
       onChange: this.searchTextChanged,
       onFocus: this.onFocus.bind(this),
       onBlur: this.onBlur,
-      placeholder: xs ? "" : PLACEHOLDER,
+      placeholder: xs ? PLACEHOLDER_XS : PLACEHOLDER,
       value: term,
       name: "term",
     }
