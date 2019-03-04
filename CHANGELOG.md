@@ -1,3 +1,15 @@
+# v14.2.8 (Mon Mar 04 2019)
+
+#### 🐛  Bug Fix
+
+- @jonallured => [Autosuggest] Unselect keyboard when you bring the mouse in to previews [#2103](https://github.com/artsy/reaction/pull/2103) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.2.7 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
