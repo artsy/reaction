@@ -1,7 +1,7 @@
 import { color, Flex, Sans } from "@artsy/palette"
 import { ModalWidth, ModalWrapper } from "Components/Modal/ModalWrapper"
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 export interface CtaProps {
   action(): void
@@ -64,26 +64,10 @@ const StyledSans = styled(Sans)`
   transition: color 0.14s ease;
   cursor: pointer;
   color: ${color("purple100")};
-  ${({ secondary }: { secondary: boolean }) =>
-    secondary &&
-    css`
-      color: ${color("black30")};
-      &:hover {
-        color: ${color("black60")};
-      }
-    `};
 `
 
 // TODO: Generalize this button and move it to @artsy/palette
 export const ModalButton: React.SFC<{
   secondary?: boolean
   onClick: () => void
-}> = props => (
-  <StyledSans
-    p={2}
-    size="3"
-    secondary={props.secondary}
-    weight="medium"
-    {...props}
-  />
-)
+}> = props => <StyledSans p={2} size="3" weight="medium" {...props} />

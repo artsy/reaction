@@ -26,7 +26,19 @@ export const acceptOfferPaymentFailed = {
       error: {
         type: "processing",
         code: "capture_failed",
-        data: { some_details: "more details" },
+        data: null,
+      },
+    },
+  },
+}
+
+export const acceptOfferPaymentFailedInsufficientFunds = {
+  ecommerceBuyerAcceptOffer: {
+    orderOrError: {
+      error: {
+        type: "processing",
+        code: "capture_failed",
+        data: `{"failure_code": "insufficient_funds"}`,
       },
     },
   },

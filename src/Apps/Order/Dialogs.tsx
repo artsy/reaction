@@ -56,6 +56,47 @@ export class DialogContainer extends Container<DialogState> {
     })
   }
 
+  showConfirmDialog = ({
+    title,
+    message,
+    confirmButtonText = "Continue",
+    cancelButtonText = "Cancel",
+  }: {
+    title: React.ReactNode
+    message: React.ReactNode
+    confirmButtonText?: string
+    cancelButtonText?: string
+  }): Promise<{ confirmed: boolean }> => {
+    return new Promise<{ confirmed: boolean }>(resolve => {
+      const accept = () => {
+        this.hide()
+        resolve({ confirmed: true })
+      }
+      const reject = () => {
+        this.hide()
+        resolve({ confirmed: false })
+      }
+
+      this.show({
+        props: {
+          show: true,
+          heading: title,
+          detail: message,
+          primaryCta: {
+            text: confirmButtonText,
+            action: accept,
+          },
+          secondaryCta: {
+            text: cancelButtonText,
+            action: reject,
+          },
+          onClose: reject,
+        },
+        onForceClose: reject,
+      })
+    })
+  }
+
   /**
    * returns a promise that resolves to `true` if the user clicked the
    * continue button, and `false` if the modal was dismissed through other means.
@@ -108,10 +149,12 @@ const extractDialogHelpers = ({
   show,
   hide,
   showErrorDialog,
+  showConfirmDialog,
 }: DialogContainer) => ({
   show,
   hide,
   showErrorDialog,
+  showConfirmDialog,
 })
 
 export type Dialog = ReturnType<typeof extractDialogHelpers>
