@@ -6,10 +6,11 @@ import { ContextConsumer } from "Artsy"
 import { CollectionsRailFragmentContainer as CollectionsRail } from "./CollectionsRail"
 
 interface Props {
+  articleId?: string
   showOnEditorial?: boolean
 }
 
-export const CollectionsRailContent: React.SFC<Props> = () => {
+export const CollectionsRailContent: React.SFC<Props> = passedProps => {
   return (
     <ContextConsumer>
       {({ relayEnvironment }) => {
@@ -19,18 +20,18 @@ export const CollectionsRailContent: React.SFC<Props> = () => {
             variables={{
               showOnEditorial: true,
               size: 4,
-              randomize: true,
+              randomizationSeed: passedProps.articleId,
             }}
             query={graphql`
               query CollectionsRailQuery(
                 $showOnEditorial: Boolean
                 $size: Int
-                $randomize: Boolean
+                $randomizationSeed: String
               ) {
                 collections: marketingCollections(
                   showOnEditorial: $showOnEditorial
                   size: $size
-                  randomize: $randomize
+                  randomizationSeed: $randomizationSeed
                 ) {
                   ...CollectionsRail_collections
                 }

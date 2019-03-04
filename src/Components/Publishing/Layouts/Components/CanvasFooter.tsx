@@ -33,7 +33,7 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
       {props.showCollectionsRail && (
         <div>
           <Separator mb={4} />
-          <CollectionsRailContent {...props} />
+          <CollectionsRailContent {...props} articleId={article.id} />
         </div>
       )}
 

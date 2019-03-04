@@ -5,7 +5,7 @@ import { CollectionsRail_collections$ref } from "./CollectionsRail_collections.g
 export type CollectionsRailQueryVariables = {
     readonly showOnEditorial?: boolean | null;
     readonly size?: number | null;
-    readonly randomize?: boolean | null;
+    readonly randomizationSeed?: string | null;
 };
 export type CollectionsRailQueryResponse = {
     readonly collections: ReadonlyArray<{
@@ -23,9 +23,9 @@ export type CollectionsRailQuery = {
 query CollectionsRailQuery(
   $showOnEditorial: Boolean
   $size: Int
-  $randomize: Boolean
+  $randomizationSeed: String
 ) {
-  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomize: $randomize) {
+  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomizationSeed: $randomizationSeed) {
     ...CollectionsRail_collections
     __id: id
   }
@@ -62,17 +62,17 @@ var v0 = [
   },
   {
     "kind": "LocalArgument",
-    "name": "randomize",
-    "type": "Boolean",
+    "name": "randomizationSeed",
+    "type": "String",
     "defaultValue": null
   }
 ],
 v1 = [
   {
     "kind": "Variable",
-    "name": "randomize",
-    "variableName": "randomize",
-    "type": "Boolean"
+    "name": "randomizationSeed",
+    "variableName": "randomizationSeed",
+    "type": "String"
   },
   {
     "kind": "Variable",
@@ -99,7 +99,7 @@ return {
   "operationKind": "query",
   "name": "CollectionsRailQuery",
   "id": null,
-  "text": "query CollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $randomize: Boolean\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomize: $randomize) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n  __id: id\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
+  "text": "query CollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $randomizationSeed: String\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomizationSeed: $randomizationSeed) {\n    ...CollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n  __id: id\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance\n  show_on_editorial\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -183,5 +183,5 @@ return {
   }
 };
 })();
-(node as any).hash = '566ba8777f4ede125598df15a4907d1f';
+(node as any).hash = 'e6e181f0317cc4947ddb0d4cf5613dca';
 export default node;
