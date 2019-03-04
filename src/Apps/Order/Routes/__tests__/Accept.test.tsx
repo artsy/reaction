@@ -12,6 +12,7 @@ import {
   acceptOfferFailed,
   acceptOfferInsufficientInventoryFailure,
   acceptOfferPaymentFailed,
+  acceptOfferPaymentFailedInsufficientFunds,
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer } from "../Accept"
@@ -159,7 +160,19 @@ describe("Accept seller offer", () => {
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Charge failed",
-        "Payment authorization has been declined. Please contact your card provider and try again."
+        "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card."
+      )
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/payment/new`
+      )
+    })
+
+    it("shows an error modal if there is a capture_failed error with insuffient_funds", async () => {
+      mutations.useResultsOnce(acceptOfferPaymentFailedInsufficientFunds)
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Insufficient funds",
+        "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
         `/orders/${testOrder.id}/payment/new`

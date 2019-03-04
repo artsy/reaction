@@ -97,20 +97,42 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     })
   }
 
-  onSubmitCompleted(orderOrError) {
+  async showCardFailureDialog(props: { title: string; message: string }) {
+    this.setState({ isCommittingMutation: false })
+    const { accepted } = await this.props.dialog.showAcceptDialog({
+      ...props,
+      cancelButtonText: "OK",
+      continueButtonText: "Use new card",
+    })
+    if (accepted) {
+      this.props.router.push(`/orders/${this.props.order.id}/payment/new`)
+    }
+  }
+
+  async onSubmitCompleted(orderOrError) {
     const error = orderOrError.error
     if (error) {
       switch (error.code) {
         case "capture_failed": {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Charge failed",
-            "Payment authorization has been declined. Please contact your card provider and try again.",
-            () =>
-              this.props.router.push(
-                `/orders/${this.props.order.id}/payment/new`
-              )
-          )
+          let data = {} as any
+          if (error.data) {
+            data = JSON.parse(error.data)
+          }
+
+          // https://stripe.com/docs/declines/codes
+          if (data.failure_code === "insufficient_funds") {
+            this.showCardFailureDialog({
+              title: "Insufficient funds",
+              message:
+                "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again.",
+            })
+          } else {
+            this.showCardFailureDialog({
+              title: "Charge failed",
+              message:
+                "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card.",
+            })
+          }
           break
         }
         case "insufficient_inventory": {
