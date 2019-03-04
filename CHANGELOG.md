@@ -1,3 +1,15 @@
+# v14.2.7 (Mon Mar 04 2019)
+
+#### 🐛  Bug Fix
+
+- Add the placeholder on XS too [#2104](https://github.com/artsy/reaction/pull/2104) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.2.6 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
