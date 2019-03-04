@@ -1,3 +1,15 @@
+# v14.2.4 (Mon Mar 04 2019)
+
+#### 🐛  Bug Fix
+
+- Collapse artwork details on artwork page into one section [#2096](https://github.com/artsy/reaction/pull/2096) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v14.2.3 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
