@@ -318,7 +318,7 @@ export class SearchBar extends Component<Props, State> {
     }
 
     const edges = get(viewer, v => v.search.edges, [])
-    const suggestions = xs ? edges : [firstSuggestionPlaceholder, ...edges]
+    const suggestions = [firstSuggestionPlaceholder, ...edges]
     return (
       <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
