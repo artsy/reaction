@@ -1,3 +1,15 @@
+# v14.2.5 (Mon Mar 04 2019)
+
+#### 🐛  Bug Fix
+
+- sync metaphystics schema and use new randomizationSeed argument [#2099](https://github.com/artsy/reaction/pull/2099) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v14.2.4 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
