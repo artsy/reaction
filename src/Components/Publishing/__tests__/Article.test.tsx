@@ -42,6 +42,13 @@ it("renders feature articles in fullscreen layout", () => {
   expect(article.find(ArticleWithFullScreen).length).toBe(1)
 })
 
+it("renders custom articles in fullscreen layout", () => {
+  const article = mount(
+    <Article article={FeatureArticle} customEditorial="MY_CUSTOM_ARTICLE" />
+  )
+  expect(article.find(ArticleWithFullScreen).length).toBe(1)
+})
+
 it("renders series articles in series layout", () => {
   const article = mount(<Article article={SeriesArticle} />)
   expect(article.find(SeriesLayout).length).toBe(1)
@@ -56,6 +63,7 @@ it("renders news articles in news layout", () => {
   const article = mount(<Article article={NewsArticle} />)
   expect(article.find(NewsLayout).length).toBe(1)
 })
+
 it("does not renders mobile BannerWrapper for standard article layouts for desktop", () => {
   const article = shallow(
     <Article article={StandardArticle} isMobile={false} isLoggedIn={false} />
