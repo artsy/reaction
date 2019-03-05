@@ -1,5 +1,6 @@
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
+import { ArrowButton } from "Components/v2/Carousel"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { drop } from "lodash"
@@ -40,18 +41,37 @@ describe("CollectionsRail", () => {
     expect(component.find(ArtistCollectionEntity).length).toBe(0)
   })
 
-  it("Tracks impressions", () => {
-    const { Component, dispatch } = mockTracking(ArtistCollectionsRail)
-    const component = mount(<Component {...props} />)
-    component
-      .find(Waypoint)
-      .getElement()
-      .props.onEnter()
+  describe("Tracking", () => {
+    it("Tracks impressions", () => {
+      const { Component, dispatch } = mockTracking(ArtistCollectionsRail)
+      const component = mount(<Component {...props} />)
+      component
+        .find(Waypoint)
+        .getElement()
+        .props.onEnter()
 
-    expect(dispatch).toBeCalledWith({
-      action_type: "Impression",
-      context_module: "CollectionsRail",
-      context_page_owner_type: "Artist",
+      expect(dispatch).toBeCalledWith({
+        action_type: "Impression",
+        context_module: "CollectionsRail",
+        context_page_owner_type: "Artist",
+      })
+    })
+
+    it("Tracks carousel navigation", () => {
+      const { Component, dispatch } = mockTracking(ArtistCollectionsRail)
+      const component = mount(<Component {...props} />)
+      component
+        .find(ArrowButton)
+        .at(1)
+        .simulate("click")
+
+      expect(dispatch).toBeCalledWith({
+        action_type: "Click",
+        context_module: "CollectionsRail",
+        context_page_owner_type: "Artist",
+        subject: "clicked next button",
+        type: "Button",
+      })
     })
   })
 })

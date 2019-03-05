@@ -2,7 +2,7 @@ import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -30,6 +30,17 @@ export class ArtistCollectionsRail extends React.Component<
     // noop
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.CollectionsRail,
+    context_page_owner_type: Schema.OwnerType.Artist,
+    type: Schema.Type.Button,
+    subject: Schema.Subject.ClickedNextButton,
+  })
+  trackCarouselNav() {
+    // noop
+  }
+
   render() {
     const { collections } = this.props
     if (collections.length > 3) {
@@ -46,6 +57,7 @@ export class ArtistCollectionsRail extends React.Component<
             settings={{
               slidesToScroll: 1,
             }}
+            onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
             render={slide => {
               return <ArtistCollectionEntity collection={slide} />
