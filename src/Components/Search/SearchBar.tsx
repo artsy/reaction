@@ -432,7 +432,7 @@ export const SearchBarQueryRenderer: React.SFC = () => {
                   <Input
                     name="term"
                     style={{ width: "100%" }}
-                    placeholder={PLACEHOLDER}
+                    placeholder={PLACEHOLDER_XS}
                   />
                 )
               }
