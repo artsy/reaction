@@ -1,18 +1,20 @@
 import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import currency from "currency.js"
 import React, { SFC } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 
 export interface CollectionProps {
-  collection: any // TODO: add typings when Kaws schema supports all fields
+  collection: ArtistCollectionEntity_collection
 }
 
 export const ArtistCollectionEntity: SFC<CollectionProps> = ({
   collection,
 }) => {
   const { price_guidance, slug, title } = collection
-  const formattedTitle = title.split(": ")[1] || title
+  const formattedTitle = (title && title.split(": ")[1]) || title
 
   return (
     <Box width="100%" pr={2}>
@@ -66,3 +68,14 @@ const ImgWrapper = styled(Flex)`
   width: 265px;
   justify-content: space-between;
 `
+
+export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
+  ArtistCollectionEntity,
+  graphql`
+    fragment ArtistCollectionEntity_collection on MarketingCollection {
+      slug
+      title
+      price_guidance
+    }
+  `
+)

@@ -1,17 +1,19 @@
 import { Box, Sans, Spacer } from "@artsy/palette"
+import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { ArrowButton, Carousel } from "Components/v2"
 import React, { SFC } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { ArtistCollectionEntity } from "./CollectionEntity"
+import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
 
 interface ArtistCollectionsRailProps {
-  collections?: any // TODO: add typings when Kaws schema supports all fields
+  collections: ArtistCollectionsRail_collections
 }
 
 export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
   collections,
 }) => {
-  if (collections) {
+  if (collections.length > 3) {
     return (
       <RailWrapper>
         <Sans size="3" weight="medium">
@@ -24,8 +26,7 @@ export const ArtistCollectionsRail: SFC<ArtistCollectionsRailProps> = ({
           settings={{
             slidesToScroll: 1,
           }}
-          // TODO: add typings when Kaws schema supports all fields
-          data={collections as object[]}
+          data={collections as object[]} // type required by slider
           render={slide => {
             return <ArtistCollectionEntity collection={slide} />
           }}
@@ -43,3 +44,13 @@ const RailWrapper = styled(Box)`
     align-self: flex-start;
   }
 `
+
+export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
+  ArtistCollectionsRail,
+  graphql`
+    fragment ArtistCollectionsRail_collections on MarketingCollection
+      @relay(plural: true) {
+      ...ArtistCollectionEntity_collection
+    }
+  `
+)
