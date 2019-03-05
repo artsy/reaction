@@ -12,16 +12,16 @@ import {
 export const UserMenu: React.FC = () => {
   return (
     <Menu>
-      <MenuItem>
+      <MenuItem href="/">
         <HeartIcon mr={1} /> Saves & Follows
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/">
         <SoloIcon mr={1} /> Collector Profile
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/">
         <SettingsIcon mr={1} /> Settings
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/">
         <PowerIcon mr={1} /> Log out
       </MenuItem>
     </Menu>

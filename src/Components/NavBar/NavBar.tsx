@@ -98,17 +98,19 @@ export const NavBar: React.FC = () => {
           {showMobileMenu && (
             <Flex flexDirection="column">
               <Menu>
-                <MenuItem>Home</MenuItem>
-                <MenuItem>Artists</MenuItem>
-                <MenuItem>Shows</MenuItem>
-                <MenuItem>Galleries</MenuItem>
-                <MenuItem>Museums</MenuItem>
-                <MenuItem>Articles</MenuItem>
-                <MenuItem>Fairs</MenuItem>
-                <MenuItem>Auctions</MenuItem>
+                <MenuItem href="/">Home</MenuItem>
+                <MenuItem href="/">Artists</MenuItem>
+                <MenuItem href="/">Shows</MenuItem>
+                <MenuItem href="/">Galleries</MenuItem>
+                <MenuItem href="/">Museums</MenuItem>
+                <MenuItem href="/">Articles</MenuItem>
+                <MenuItem href="/">Fairs</MenuItem>
+                <MenuItem href="/">Auctions</MenuItem>
+
                 <Separator />
-                <MenuItem>Works for you</MenuItem>
-                <MenuItem>Account</MenuItem>
+
+                <MenuItem href="/">Works for you</MenuItem>
+                <MenuItem href="/">Account</MenuItem>
               </Menu>
             </Flex>
           )}

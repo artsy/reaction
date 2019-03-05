@@ -13,7 +13,7 @@ import {
 export const NotificationMenu: React.FC = () => {
   return (
     <Menu title="Actvity">
-      <MenuItem>
+      <MenuItem href="/">
         <Flex alignItems="center">
           <Box width={40} height={40} bg="black5" mr={2} />
           <Box>
@@ -24,7 +24,7 @@ export const NotificationMenu: React.FC = () => {
           </Box>
         </Flex>
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/">
         <Flex alignItems="center">
           <Box width={40} height={40} bg="black5" mr={2} />
           <Box>
@@ -35,7 +35,7 @@ export const NotificationMenu: React.FC = () => {
           </Box>
         </Flex>
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/">
         <Flex alignItems="center">
           <Box width={40} height={40} bg="black5" mr={2} />
           <Box>
