@@ -22,7 +22,9 @@ import {
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
+import request from "superagent"
 import { Provider, Subscribe } from "unstated"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
@@ -148,6 +150,8 @@ export class SearchBar extends Component<Props, State> {
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
     const { relay, viewer } = this.props
+    const performanceStart = performance && performance.now()
+
     relay.refetch(
       {
         term,
@@ -158,6 +162,8 @@ export class SearchBar extends Component<Props, State> {
         if (error) {
           logger.error(error)
           return
+        } else if (performanceStart && sd.VOLLEY_ENDPOINT) {
+          this.reportPerformanceMeasurement(performanceStart)
         }
         const edges = get(viewer, v => v.search.edges, [])
         this.trackSearch(term, edges.length > 0)
@@ -174,6 +180,26 @@ export class SearchBar extends Component<Props, State> {
       500,
       { leading: true }
     )
+  }
+
+  reportPerformanceMeasurement = performanceStart => {
+    const duration = performance.now() - performanceStart
+    const deviceType = sd.IS_MOBILE ? "mobile" : "desktop"
+
+    const metricPayload = {
+      type: "timing",
+      name: "autocomplete-search-response",
+      timing: duration,
+      tags: [`device-type:${deviceType}`, "design:rich"],
+    }
+
+    request
+      .post(sd.VOLLEY_ENDPOINT)
+      .send({
+        serviceName: "force",
+        metrics: [metricPayload],
+      })
+      .end()
   }
 
   searchTextChanged = (_e, { newValue: term }) => {
