@@ -1,6 +1,7 @@
 import { Box, Serif } from "@artsy/palette"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
+import styled from "styled-components"
 
 import { FollowIcon } from "Components/v2"
 import React from "react"
@@ -13,18 +14,22 @@ export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
 }
 
+const ArtistName = styled(Serif)`
+  white-space: nowrap;
+`
+
 type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   private renderArtistName(artist: Artist) {
     return artist.href ? (
-      <Serif size="5t" display="inline-block" weight="semibold">
+      <ArtistName size="5t" display="inline-block" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
-      </Serif>
+      </ArtistName>
     ) : (
-      <Serif size="5t" display="inline-block" weight="semibold">
+      <ArtistName size="5t" display="inline-block" weight="semibold">
         {artist.name}
-      </Serif>
+      </ArtistName>
     )
   }
 
