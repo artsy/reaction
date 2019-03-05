@@ -1,3 +1,15 @@
+# v14.2.10 (Tue Mar 05 2019)
+
+#### 🐛  Bug Fix
+
+- SearchBar - Don't show suggestions container at xs when there is no query. [#2106](https://github.com/artsy/reaction/pull/2106) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.2.9 (Tue Mar 05 2019)
 
 #### 🐛  Bug Fix
