@@ -1,10 +1,13 @@
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { drop } from "lodash"
 import React from "react"
+import Waypoint from "react-waypoint"
 import { ArtistCollectionEntity } from "../ArtistCollectionEntity"
 import { ArtistCollectionsRail } from "../ArtistCollectionsRail"
+jest.unmock("react-tracking")
 
 describe("CollectionsRail", () => {
   let props
@@ -35,5 +38,20 @@ describe("CollectionsRail", () => {
 
     expect(component.text()).toBe(null)
     expect(component.find(ArtistCollectionEntity).length).toBe(0)
+  })
+
+  it("Tracks impressions", () => {
+    const { Component, dispatch } = mockTracking(ArtistCollectionsRail)
+    const component = mount(<Component {...props} />)
+    component
+      .find(Waypoint)
+      .getElement()
+      .props.onEnter()
+
+    expect(dispatch).toBeCalledWith({
+      action_type: "Impression",
+      context_module: "CollectionsRail",
+      context_page_owner_type: "Artist",
+    })
   })
 })

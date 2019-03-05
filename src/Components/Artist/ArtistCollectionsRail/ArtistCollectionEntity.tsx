@@ -1,7 +1,9 @@
 import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import currency from "currency.js"
-import React, { SFC } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -10,40 +12,55 @@ export interface CollectionProps {
   collection: ArtistCollectionEntity_collection
 }
 
-export const ArtistCollectionEntity: SFC<CollectionProps> = ({
-  collection,
-}) => {
-  const { price_guidance, slug, title } = collection
-  const formattedTitle = (title && title.split(": ")[1]) || title
+@track()
+export class ArtistCollectionEntity extends React.Component<CollectionProps> {
+  @track<CollectionProps>(({ collection }) => ({
+    action_type: Schema.ActionType.Click,
+    context_module: Schema.ContextModule.CollectionsRail,
+    context_page_owner_type: Schema.OwnerType.Artist,
+    destination_path: `${sd.APP_URL}/collection/${collection.slug}`,
+    type: Schema.Type.Thumbnail,
+  }))
+  onLinkClick() {
+    // noop
+  }
 
-  return (
-    <Box width="100%" pr={2}>
-      <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
-        <ImgWrapper pb={1}>
-          <ImgPlaceholder />
-          <ImgPlaceholder />
-          <ImgPlaceholder />
-        </ImgWrapper>
+  render() {
+    const { price_guidance, slug, title } = this.props.collection
+    const formattedTitle = (title && title.split(": ")[1]) || title
 
-        <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
-        {price_guidance && (
-          <Sans size="2" color="black60">
-            Works from ${currency(price_guidance, {
-              separator: ",",
-              precision: 0,
-            }).format()}
-          </Sans>
-        )}
-      </StyledLink>
-    </Box>
-  )
+    return (
+      <Box width="100%" pr={2}>
+        <StyledLink
+          href={`${sd.APP_URL}/collection/${slug}`}
+          onClick={this.onLinkClick.bind(this)}
+        >
+          <ImgWrapper pb={1}>
+            <ImgPlaceholder />
+            <ImgPlaceholder />
+            <ImgPlaceholder />
+          </ImgWrapper>
+
+          <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
+          {price_guidance && (
+            <Sans size="2" color="black60">
+              Works from ${currency(price_guidance, {
+                separator: ",",
+                precision: 0,
+              }).format()}
+            </Sans>
+          )}
+        </StyledLink>
+      </Box>
+    )
+  }
 }
 
 const CollectionTitle = styled(Serif)`
   width: max-content;
 `
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
