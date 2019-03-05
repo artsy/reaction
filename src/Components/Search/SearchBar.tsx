@@ -252,6 +252,9 @@ export class SearchBar extends Component<Props, State> {
     if (!focused) {
       return null
     }
+    if (xs && !query) {
+      return null
+    }
 
     const showEmptySuggestion = !xs && !query && focused
 
