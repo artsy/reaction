@@ -1,3 +1,20 @@
+# v14.2.11 (Tue Mar 05 2019)
+
+#### 🐛  Bug Fix
+
+- Measure performance of search bar [#2097](https://github.com/artsy/reaction/pull/2097) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.1.0 [#2107](https://github.com/artsy/reaction/pull/2107) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.2.10 (Tue Mar 05 2019)
 
 #### 🐛  Bug Fix
