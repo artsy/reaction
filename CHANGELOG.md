@@ -1,3 +1,15 @@
+# v14.2.9 (Tue Mar 05 2019)
+
+#### 🐛  Bug Fix
+
+- Disco 786 xs placeholder [#2102](https://github.com/artsy/reaction/pull/2102) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.2.8 (Mon Mar 04 2019)
 
 #### 🐛  Bug Fix
