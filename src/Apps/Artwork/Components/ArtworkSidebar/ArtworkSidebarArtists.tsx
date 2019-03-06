@@ -19,13 +19,13 @@ type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   private renderArtistName(artist: Artist) {
     return artist.href ? (
-      <ArtistName size="5t" display="inline-block" weight="semibold">
+      <Serif size="5t" display="inline-block" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
-      </ArtistName>
+      </Serif>
     ) : (
-      <ArtistName size="5t" display="inline-block" weight="semibold">
+      <Serif size="5t" display="inline-block" weight="semibold">
         {artist.name}
-      </ArtistName>
+      </Serif>
     )
   }
 
@@ -95,14 +95,14 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       <ContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Box>
+            <ArtistName>
               {artists.length === 1
                 ? this.renderSingleArtist(artists[0], user, mediator)
                 : this.renderMultipleArtists()}
               {artists.length === 0 &&
                 cultural_maker &&
                 this.renderCulturalMaker(cultural_maker)}
-            </Box>
+            </ArtistName>
           )
         }}
       </ContextConsumer>
@@ -131,6 +131,6 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
   `
 )
 
-const ArtistName = styled(Serif)`
+const ArtistName = styled(Box)`
   white-space: pre;
 `
