@@ -1,8 +1,8 @@
 import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
-import { ContextProps } from "Artsy"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
-import React, { SFC, useContext } from "react"
+import { ContextConsumer, ContextProps } from "Artsy"
+import { Mediator } from "Artsy/SystemContext"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
@@ -28,46 +28,59 @@ export interface Props extends ContextProps {
 
 // TODO: This whole component should be refactored to use less `Media` decisions
 export const ArtistAuctionResultItem: SFC<Props> = props => {
-  const { user, mediator } = useContext(SystemContext)
   return (
-    <>
-      <Media at="xs">
-        {(className, renderChildren) => (
-          <Row className={className}>
-            {renderChildren && (
-              <ExtraSmallAuctionItem
-                {...props}
-                mediator={mediator}
-                user={user}
-              />
-            )}
-          </Row>
-        )}
-      </Media>
-      <Media between={["sm", "lg"]}>
-        {(className, renderChildren) => (
-          <Row className={className}>
-            {renderChildren && (
-              <SmallAuctionItem {...props} mediator={mediator} user={user} />
-            )}
-          </Row>
-        )}
-      </Media>
-      <Media greaterThanOrEqual="lg">
-        {(className, renderChildren) => (
-          <Row className={className}>
-            {renderChildren && (
-              <LargeAuctionItem {...props} mediator={mediator} user={user} />
-            )}
-          </Row>
-        )}
-      </Media>
-      <Col>
-        <Box pt={2} pb={1}>
-          {!props.lastChild && <Separator />}
-        </Box>
-      </Col>
-    </>
+    <ContextConsumer>
+      {({ user, mediator }) => {
+        return (
+          <>
+            <Media at="xs">
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <ExtraSmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
+            </Media>
+            <Media between={["sm", "lg"]}>
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <SmallAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
+            </Media>
+            <Media greaterThanOrEqual="lg">
+              {(className, renderChildren) => (
+                <Row className={className}>
+                  {renderChildren && (
+                    <LargeAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  )}
+                </Row>
+              )}
+            </Media>
+            <Col>
+              <Box pt={2} pb={1}>
+                {!props.lastChild && <Separator />}
+              </Box>
+            </Col>
+          </>
+        )
+      }}
+    </ContextConsumer>
   )
 }
 

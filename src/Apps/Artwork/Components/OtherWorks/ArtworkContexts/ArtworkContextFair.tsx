@@ -1,9 +1,9 @@
 import { Join, Spacer } from "@artsy/palette"
 import { ArtworkContextFair_artwork } from "__generated__/ArtworkContextFair_artwork.graphql"
 import { ArtworkContextFairQuery } from "__generated__/ArtworkContextFairQuery.graphql"
-import { SystemContext } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { OtherWorksContextProps } from ".."
 
@@ -17,28 +17,32 @@ import {
 export const ArtworkContextFairQueryRenderer: React.SFC<
   OtherWorksContextProps
 > = ({ artworkSlug, artworkID }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<ArtworkContextFairQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
-        excludeArtworkIDs: [artworkID],
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkContextFairQuery>
+            environment={relayEnvironment}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
+            query={graphql`
+              query ArtworkContextFairQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
+                artwork(id: $artworkSlug) {
+                  ...ArtworkContextFair_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+                }
+              }
+            `}
+            render={renderWithLoadProgress(ArtworkContextFairFragmentContainer)}
+          />
+        )
       }}
-      query={graphql`
-        query ArtworkContextFairQuery(
-          $artworkSlug: String!
-          $excludeArtworkIDs: [String!]
-        ) {
-          artwork(id: $artworkSlug) {
-            ...ArtworkContextFair_artwork
-              @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-          }
-        }
-      `}
-      render={renderWithLoadProgress(ArtworkContextFairFragmentContainer)}
-    />
+    </ContextConsumer>
   )
 }
 

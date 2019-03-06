@@ -3,13 +3,14 @@ import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtwo
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
+import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { Mediator, SystemContext, withContext } from "Artsy/SystemContext"
+import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { take } from "lodash"
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
@@ -161,23 +162,29 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
 export const RelatedWorksArtworkGridQueryRenderer: React.SFC<{
   artworkSlug: string
 }> = ({ artworkSlug }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<RelatedWorksArtworkGridQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<RelatedWorksArtworkGridQuery>
+            environment={relayEnvironment}
+            variables={{
+              artworkSlug,
+            }}
+            query={graphql`
+              query RelatedWorksArtworkGridQuery($artworkSlug: String!) {
+                artwork(id: $artworkSlug) {
+                  ...RelatedWorksArtworkGrid_artwork
+                }
+              }
+            `}
+            render={renderWithLoadProgress(
+              RelatedWorksArtworkGridRefetchContainer
+            )}
+          />
+        )
       }}
-      query={graphql`
-        query RelatedWorksArtworkGridQuery($artworkSlug: String!) {
-          artwork(id: $artworkSlug) {
-            ...RelatedWorksArtworkGrid_artwork
-          }
-        }
-      `}
-      render={renderWithLoadProgress(RelatedWorksArtworkGridRefetchContainer)}
-    />
+    </ContextConsumer>
   )
 }
 

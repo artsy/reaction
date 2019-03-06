@@ -38,9 +38,20 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       conditionDescription,
       certificateOfAuthenticity,
     } = this.props.artwork
-    if (!series && !publisher && !manufacturer && !image_rights) {
+
+    if (
+      !series &&
+      !publisher &&
+      !manufacturer &&
+      !image_rights &&
+      !framed &&
+      !signatureInfo &&
+      !conditionDescription &&
+      !certificateOfAuthenticity
+    ) {
       return null
     }
+
     return (
       <StackableBorderBox p={2}>
         <Box>

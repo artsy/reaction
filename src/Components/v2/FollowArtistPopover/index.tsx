@@ -10,8 +10,8 @@ import {
 } from "@artsy/palette"
 import { FollowArtistPopover_suggested } from "__generated__/FollowArtistPopover_suggested.graphql"
 import { FollowArtistPopoverQuery } from "__generated__/FollowArtistPopoverQuery.graphql"
-import { ContextProps, SystemContext } from "Artsy/SystemContext"
-import React, { SFC, useContext } from "react"
+import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
+import React, { SFC } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
 import { Provider } from "unstated"
@@ -97,28 +97,33 @@ export const FollowArtistPopoverQueryRenderer = ({
 }: {
   artistID: string
 }) => {
-  const { relayEnvironment, user } = useContext(SystemContext)
   return (
-    <QueryRenderer<FollowArtistPopoverQuery>
-      environment={relayEnvironment}
-      variables={{ artistID }}
-      query={graphql`
-        query FollowArtistPopoverQuery($artistID: String!) {
-          artist(id: $artistID) {
-            ...FollowArtistPopover_suggested
-          }
-        }
-      `}
-      render={({ props }) => {
+    <ContextConsumer>
+      {({ relayEnvironment, user }) => {
         return (
-          props && (
-            <FollowArtistPopoverFragmentContainer
-              suggested={props.artist}
-              user={user}
-            />
-          )
+          <QueryRenderer<FollowArtistPopoverQuery>
+            environment={relayEnvironment}
+            variables={{ artistID }}
+            query={graphql`
+              query FollowArtistPopoverQuery($artistID: String!) {
+                artist(id: $artistID) {
+                  ...FollowArtistPopover_suggested
+                }
+              }
+            `}
+            render={({ props }) => {
+              return (
+                props && (
+                  <FollowArtistPopoverFragmentContainer
+                    suggested={props.artist}
+                    user={user}
+                  />
+                )
+              )
+            }}
+          />
         )
       }}
-    />
+    </ContextConsumer>
   )
 }

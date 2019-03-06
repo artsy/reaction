@@ -1,3 +1,39 @@
+# v14.3.3 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- add tabIndex={0} to preview links to get Safari to specify e.relatedTarget on blur [#2121](https://github.com/artsy/reaction/pull/2121) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v14.3.2 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Bump reaction [#2120](https://github.com/artsy/reaction/pull/2120) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v14.3.1 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Show artwork "additional info" component if any of the fields exist [#2117](https://github.com/artsy/reaction/pull/2117) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v14.3.0 (Wed Mar 06 2019)
 
 #### 🚀  Enhancement

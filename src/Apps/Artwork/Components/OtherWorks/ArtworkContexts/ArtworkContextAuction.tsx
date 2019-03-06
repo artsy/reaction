@@ -1,8 +1,8 @@
 import { ArtworkContextAuction_viewer } from "__generated__/ArtworkContextAuction_viewer.graphql"
 import { ArtworkContextAuctionQuery } from "__generated__/ArtworkContextAuctionQuery.graphql"
-import { SystemContext } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { Join, Spacer } from "@artsy/palette"
@@ -22,34 +22,40 @@ interface ArtworkContextAuctionProps extends OtherWorksContextProps {
 export const ArtworkContextAuctionQueryRenderer: React.SFC<
   ArtworkContextAuctionProps
 > = ({ artworkSlug, artworkID, isClosed }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<ArtworkContextAuctionQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
-        excludeArtworkIDs: [artworkID],
-        isClosed,
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkContextAuctionQuery>
+            environment={relayEnvironment}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+              isClosed,
+            }}
+            query={graphql`
+              query ArtworkContextAuctionQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+                $isClosed: Boolean!
+              ) {
+                viewer {
+                  ...ArtworkContextAuction_viewer
+                    @arguments(
+                      excludeArtworkIDs: $excludeArtworkIDs
+                      isClosed: $isClosed
+                      artworkSlug: $artworkSlug
+                    )
+                }
+              }
+            `}
+            render={renderWithLoadProgress(
+              ArtworkContextAuctionFragmentContainer
+            )}
+          />
+        )
       }}
-      query={graphql`
-        query ArtworkContextAuctionQuery(
-          $artworkSlug: String!
-          $excludeArtworkIDs: [String!]
-          $isClosed: Boolean!
-        ) {
-          viewer {
-            ...ArtworkContextAuction_viewer
-              @arguments(
-                excludeArtworkIDs: $excludeArtworkIDs
-                isClosed: $isClosed
-                artworkSlug: $artworkSlug
-              )
-          }
-        }
-      `}
-      render={renderWithLoadProgress(ArtworkContextAuctionFragmentContainer)}
-    />
+    </ContextConsumer>
   )
 }
 

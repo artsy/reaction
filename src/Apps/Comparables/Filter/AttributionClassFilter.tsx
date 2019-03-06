@@ -1,46 +1,57 @@
 import { Checkbox } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
-import { SystemContext } from "Artsy/SystemContext"
-import React, { useContext } from "react"
+import { ContextConsumer } from "Artsy/SystemContext"
+import React from "react"
 import { Subscribe } from "unstated"
 
-export const AttributionClassFilter: React.FC = () => {
-  const { mediator } = useContext(SystemContext)
+export const AttributionClassFilter: React.SFC = () => {
   return (
-    <Subscribe to={[FilterState]}>
-      {(filters: FilterState) => {
+    <ContextConsumer>
+      {({ mediator }) => {
         return (
-          <>
-            {Object.keys(AttributionClasses).map((attributionClass, index) => {
-              const className = AttributionClasses[attributionClass].name
-              const isSelected = filters.state.attribution_class.includes(
-                attributionClass
-              )
-
+          <Subscribe to={[FilterState]}>
+            {(filters: FilterState) => {
               return (
-                <Checkbox
-                  selected={isSelected}
-                  onSelect={selected => {
-                    if (selected) {
-                      return filters.setFilter(
-                        "attribution_class",
-                        attributionClass,
-                        mediator
+                <>
+                  {Object.keys(AttributionClasses).map(
+                    (attributionClass, index) => {
+                      const className =
+                        AttributionClasses[attributionClass].name
+                      const isSelected = filters.state.attribution_class.includes(
+                        attributionClass
                       )
-                    } else {
-                      return filters.unsetFilter("attribution_class", mediator)
+
+                      return (
+                        <Checkbox
+                          selected={isSelected}
+                          onSelect={selected => {
+                            if (selected) {
+                              return filters.setFilter(
+                                "attribution_class",
+                                attributionClass,
+                                mediator
+                              )
+                            } else {
+                              return filters.unsetFilter(
+                                "attribution_class",
+                                mediator
+                              )
+                            }
+                          }}
+                          key={index}
+                        >
+                          {className}
+                        </Checkbox>
+                      )
                     }
-                  }}
-                  key={index}
-                >
-                  {className}
-                </Checkbox>
+                  )}
+                </>
               )
-            })}
-          </>
+            }}
+          </Subscribe>
         )
       }}
-    </Subscribe>
+    </ContextConsumer>
   )
 }
 

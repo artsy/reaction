@@ -1,9 +1,9 @@
 import { AuctionTimer_sale } from "__generated__/AuctionTimer_sale.graphql"
 import { AuctionTimerQuery } from "__generated__/AuctionTimerQuery.graphql"
-import { SystemContext } from "Artsy/SystemContext"
+import { ContextConsumer } from "Artsy/SystemContext"
 import { Timer } from "Components/v2/Timer"
 import moment from "moment-timezone"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 export interface Props {
@@ -69,21 +69,28 @@ export const AuctionTimerFragmentContainer = createFragmentContainer(
 )
 
 export const AuctionTimerQueryRenderer = ({ saleID }: { saleID: string }) => {
-  const { relayEnvironment } = useContext(SystemContext)
   return (
-    <QueryRenderer<AuctionTimerQuery>
-      environment={relayEnvironment}
-      variables={{ saleID }}
-      query={graphql`
-        query AuctionTimerQuery($saleID: String!) {
-          sale(id: $saleID) {
-            ...AuctionTimer_sale
-          }
-        }
-      `}
-      render={({ props }) => {
-        return props && <AuctionTimerFragmentContainer sale={props.sale} />
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<AuctionTimerQuery>
+            environment={relayEnvironment}
+            variables={{ saleID }}
+            query={graphql`
+              query AuctionTimerQuery($saleID: String!) {
+                sale(id: $saleID) {
+                  ...AuctionTimer_sale
+                }
+              }
+            `}
+            render={({ props }) => {
+              return (
+                props && <AuctionTimerFragmentContainer sale={props.sale} />
+              )
+            }}
+          />
+        )
       }}
-    />
+    </ContextConsumer>
   )
 }
