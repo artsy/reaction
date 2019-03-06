@@ -42,7 +42,8 @@ const handleError = error => {
 
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
-  initialProps: object = {}
+  initialProps: object = {},
+  Wrapper: any = SpinnerContainer,
 ): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
   return ({ error, props, retry }) => {
     if (error) {
@@ -52,9 +53,9 @@ export function renderWithLoadProgress<P>(
       return <Container {...initialProps} {...props as any} />
     } else {
       return (
-        <SpinnerContainer className={LoadingClassName}>
+        <Wrapper className={LoadingClassName}>
           <Spinner />
-        </SpinnerContainer>
+        </Wrapper>
       )
     }
   }
