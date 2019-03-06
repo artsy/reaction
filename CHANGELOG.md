@@ -1,3 +1,15 @@
+# v14.3.3 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- add tabIndex={0} to preview links to get Safari to specify e.relatedTarget on blur [#2121](https://github.com/artsy/reaction/pull/2121) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.3.2 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix
