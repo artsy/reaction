@@ -17,32 +17,36 @@ const SpinnerContainer = styled.figure`
 
 export const LoadingClassName = "relay-loading"
 
+const handleError = error => {
+  // In tests we want errors to clearly bubble up.
+  if (typeof jest !== "undefined") {
+    throw error
+  }
+
+  if (error.message) {
+    console.error(error.message)
+  }
+
+  const networkError = error as any
+  if (networkError.response && networkError.response._bodyInit) {
+    let data = networkError.response._bodyInit
+    if (data) {
+      try {
+        data = JSON.parse(data)
+        console.error(`Metaphysics Error data:`, data)
+        // tslint:disable-next-line:no-empty
+      } catch (e) {}
+    }
+  }
+}
+
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {}
 ): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
   return ({ error, props, retry }) => {
     if (error) {
-      // In tests we want errors to clearly bubble up.
-      if (typeof jest !== "undefined") {
-        throw error
-      }
-
-      const networkError = error as any
-      if (error.message) {
-        console.error(error.message)
-      }
-      if (networkError.response && networkError.response._bodyInit) {
-        let data = networkError.response._bodyInit
-        if (data) {
-          try {
-            data = JSON.parse(data)
-            console.error(`Metaphysics Error data:`, data)
-            // tslint:disable-next-line:no-empty
-          } catch (e) {}
-        }
-      }
-
+      handleError(error)
       return null
     } else if (props) {
       return <Container {...initialProps} {...props as any} />
