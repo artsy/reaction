@@ -1,3 +1,15 @@
+# v14.3.2 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Bump reaction [#2120](https://github.com/artsy/reaction/pull/2120) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.3.1 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix
