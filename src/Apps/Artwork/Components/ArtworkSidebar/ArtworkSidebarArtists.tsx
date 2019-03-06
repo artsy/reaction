@@ -132,5 +132,5 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
 )
 
 const ArtistName = styled(Serif)`
-  white-space: nowrap;
+  white-space: pre;
 `
