@@ -1,3 +1,15 @@
+# v14.3.1 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Show artwork "additional info" component if any of the fields exist [#2117](https://github.com/artsy/reaction/pull/2117) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v14.3.0 (Wed Mar 06 2019)
 
 #### 🚀  Enhancement
