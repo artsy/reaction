@@ -1,3 +1,20 @@
+# v14.2.12 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- [Toolchain] Update Storybooks v5 [#2112](https://github.com/artsy/reaction/pull/2112) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.1.1 [#2109](https://github.com/artsy/reaction/pull/2109) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.2.11 (Tue Mar 05 2019)
 
 #### 🐛  Bug Fix
