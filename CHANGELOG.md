@@ -1,3 +1,15 @@
+# v14.3.0 (Wed Mar 06 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update SystemContext API to support `useContext` [#2113](https://github.com/artsy/reaction/pull/2113) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.2.12 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix
