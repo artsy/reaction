@@ -1,5 +1,5 @@
 import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
-import { ContextConsumer } from "Artsy"
+import { ContextConsumer } from "Artsy/Router"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import StyledTextLink from "Components/TextLink"

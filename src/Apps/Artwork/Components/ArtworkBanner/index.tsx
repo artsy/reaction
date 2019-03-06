@@ -1,8 +1,8 @@
 import { ArtworkBanner_artwork } from "__generated__/ArtworkBanner_artwork.graphql"
 import { ArtworkBannerQuery } from "__generated__/ArtworkBannerQuery.graphql"
-import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
+import { ContextConsumer } from "Artsy/Router"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { get } from "Utils/get"
 import { Banner } from "./Banner"
@@ -203,20 +203,24 @@ export const ArtworkBannerQueryRenderer = ({
 }: {
   artworkID: string
 }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<ArtworkBannerQuery>
-      environment={relayEnvironment}
-      variables={{ artworkID }}
-      query={graphql`
-        query ArtworkBannerQuery($artworkID: String!) {
-          artwork(id: $artworkID) {
-            ...ArtworkBanner_artwork
-          }
-        }
-      `}
-      render={renderWithLoadProgress(ArtworkBannerFragmentContainer)}
-    />
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkBannerQuery>
+            environment={relayEnvironment}
+            variables={{ artworkID }}
+            query={graphql`
+              query ArtworkBannerQuery($artworkID: String!) {
+                artwork(id: $artworkID) {
+                  ...ArtworkBanner_artwork
+                }
+              }
+            `}
+            render={renderWithLoadProgress(ArtworkBannerFragmentContainer)}
+          />
+        )
+      }}
+    </ContextConsumer>
   )
 }

@@ -1,6 +1,6 @@
 import { Box, Serif } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/Router"
 
 import { FollowIcon } from "Components/v2"
 import React from "react"

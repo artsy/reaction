@@ -1,7 +1,7 @@
 import { color, Flex, Link, Sans, Spacer } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer } from "Artsy/Router"
 import React, { Component } from "react"
 import styled from "styled-components"
 
