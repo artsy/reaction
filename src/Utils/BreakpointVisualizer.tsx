@@ -5,6 +5,7 @@ import { Media } from "Utils/Responsive"
 
 // TODO: Bring transition animation back
 const StyledBox = styled(Box)`
+  pointer-events: none;
   position: fixed;
   background-color: black;
   color: white;
