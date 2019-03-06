@@ -14,10 +14,6 @@ export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
 }
 
-const ArtistName = styled(Serif)`
-  white-space: nowrap;
-`
-
 type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
@@ -134,3 +130,7 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+const ArtistName = styled(Serif)`
+  white-space: nowrap;
+`
