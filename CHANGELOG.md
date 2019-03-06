@@ -1,3 +1,15 @@
+# v14.3.4 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Update title meta for collections [#2110](https://github.com/artsy/reaction/pull/2110) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v14.3.3 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix
