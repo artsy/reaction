@@ -48,6 +48,8 @@ export function renderWithLoadProgress<P>(
   initialProps: object = {},
   wrapperProps: object = {}
 ): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
+  // TODO: We need design for retrying or the approval to use the iOS design.
+  // See also: https://artsyproduct.atlassian.net/browse/PLATFORM-1272
   return ({ error, props, retry }) => {
     if (error) {
       handleError(error)
