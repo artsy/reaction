@@ -20,7 +20,6 @@ import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 import { ComponentClass, StatelessComponent } from "react"
 
 // @ts-ignore
-import { ContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 // @ts-ignore
 import { PaymentProps } from "./Routes/Payment"

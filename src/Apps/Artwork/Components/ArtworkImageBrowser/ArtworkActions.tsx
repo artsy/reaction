@@ -1,11 +1,11 @@
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { Mediator, SystemContext } from "Artsy/SystemContext"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import { compact } from "lodash"
 import { isNull } from "lodash"
-import React from "react"
+import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -34,6 +34,7 @@ import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
   user?: User
+  mediator?: Mediator
   selectDefaultSlide(): void
 }
 
@@ -95,12 +96,13 @@ export class ArtworkActions extends React.Component<
     context_module: Schema.ContextModule.ViewInRoom,
     type: Schema.Type.Button,
   })
-  openViewInRoom(mediator) {
+  openViewInRoom() {
     this.props.selectDefaultSlide()
 
     setTimeout(() => {
       const {
         artwork: { dimensions, image },
+        mediator,
       } = this.props
 
       mediator &&
@@ -118,15 +120,11 @@ export class ArtworkActions extends React.Component<
 
   renderViewInRoomButton() {
     return (
-      <ContextConsumer>
-        {({ mediator }) => (
-          <UtilButton
-            name="viewInRoom"
-            onClick={() => this.openViewInRoom(mediator)}
-            label="View in room"
-          />
-        )}
-      </ContextConsumer>
+      <UtilButton
+        name="viewInRoom"
+        onClick={() => this.openViewInRoom()}
+        label="View in room"
+      />
     )
   }
 
@@ -264,11 +262,8 @@ export class ArtworkActions extends React.Component<
 
 export const ArtworkActionsFragmentContainer = createFragmentContainer(
   (props: ArtworkActionsProps) => {
-    return (
-      <ContextConsumer>
-        {({ user }) => <ArtworkActions user={user} {...props} />}
-      </ContextConsumer>
-    )
+    const { user, mediator } = useContext(SystemContext)
+    return <ArtworkActions user={user} mediator={mediator} {...props} />
   },
   graphql`
     fragment ArtworkActions_artwork on Artwork {

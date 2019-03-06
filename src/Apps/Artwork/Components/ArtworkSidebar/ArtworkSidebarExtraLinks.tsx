@@ -1,9 +1,8 @@
 import { Box, Link, Sans, Separator, Spacer } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/Router"
-import { Mediator } from "Artsy/SystemContext"
-import React, { SFC } from "react"
+import { Mediator, SystemContext } from "Artsy/SystemContext"
+import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
@@ -191,13 +190,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
 export const ArtworkSidebarExtraLinks: SFC<
   ArtworkSidebarExtraLinksProps
 > = props => {
-  return (
-    <ContextConsumer>
-      {({ mediator }) => (
-        <ArtworkSidebarExtraLinksContainer {...props} mediator={mediator} />
-      )}
-    </ContextConsumer>
-  )
+  const { mediator } = useContext(SystemContext)
+  return <ArtworkSidebarExtraLinksContainer {...props} mediator={mediator} />
 }
 
 export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer(

@@ -1,11 +1,11 @@
 import { Box, Serif, Theme } from "@artsy/palette"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import { UserSettingsPaymentsQuery } from "__generated__/UserSettingsPaymentsQuery.graphql"
-import { ContextConsumer, ContextProps } from "Artsy"
+import { ContextProps, SystemContext } from "Artsy"
 import { get } from "Utils/get"
 
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React from "react"
+import React, { useContext } from "react"
 import {
   createFragmentContainer,
   graphql,
@@ -92,29 +92,25 @@ export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
 )
 
 export const UserSettingsPaymentsQueryRenderer = () => {
+  const { user, relayEnvironment } = useContext(SystemContext)
+  if (!user) {
+    return null
+  }
+
   return (
-    <ContextConsumer>
-      {({ user, relayEnvironment }) => {
-        if (!user) {
-          return null
+    <QueryRenderer<UserSettingsPaymentsQuery>
+      environment={relayEnvironment}
+      variables={{}}
+      query={graphql`
+        query UserSettingsPaymentsQuery {
+          me {
+            ...UserSettingsPayments_me
+          }
         }
-        return (
-          <QueryRenderer<UserSettingsPaymentsQuery>
-            environment={relayEnvironment}
-            variables={{}}
-            query={graphql`
-              query UserSettingsPaymentsQuery {
-                me {
-                  ...UserSettingsPayments_me
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              UserSettingsPaymentsFragmentContainer as any
-            )}
-          />
-        )
-      }}
-    </ContextConsumer>
+      `}
+      render={renderWithLoadProgress(
+        UserSettingsPaymentsFragmentContainer as any
+      )}
+    />
   )
 }

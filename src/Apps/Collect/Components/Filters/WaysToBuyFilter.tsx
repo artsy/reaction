@@ -1,6 +1,6 @@
 import { Checkbox, Sans } from "@artsy/palette"
-import { ContextConsumer } from "Artsy/SystemContext"
-import React from "react"
+import { SystemContext } from "Artsy/SystemContext"
+import React, { useContext } from "react"
 import { FilterState, State } from "../../FilterState"
 
 interface WayToBuy {
@@ -9,9 +9,11 @@ interface WayToBuy {
   state: keyof State
 }
 
-export const WaysToBuyFilter: React.SFC<{
+export const WaysToBuyFilter: React.FC<{
   filters: FilterState
 }> = ({ filters }) => {
+  const { mediator } = useContext(SystemContext)
+
   const ways: WayToBuy[] = [
     {
       disabled: false,
@@ -35,7 +37,7 @@ export const WaysToBuyFilter: React.SFC<{
     },
   ]
 
-  const constructCheckboxes = mediator =>
+  const constructCheckboxes = () =>
     ways.map((way, index) => {
       const props = {
         disabled: way.disabled,
@@ -48,15 +50,11 @@ export const WaysToBuyFilter: React.SFC<{
     })
 
   return (
-    <ContextConsumer>
-      {({ mediator }) => (
-        <React.Fragment>
-          <Sans size="2" weight="medium" color="black100" my={1}>
-            Ways to buy
-          </Sans>
-          {constructCheckboxes(mediator)}
-        </React.Fragment>
-      )}
-    </ContextConsumer>
+    <React.Fragment>
+      <Sans size="2" weight="medium" color="black100" my={1}>
+        Ways to buy
+      </Sans>
+      {constructCheckboxes()}
+    </React.Fragment>
   )
 }
