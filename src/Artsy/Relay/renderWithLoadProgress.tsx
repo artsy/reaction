@@ -2,6 +2,7 @@ import { Spinner } from "@artsy/palette"
 import React from "react"
 import { ReadyState, RelayContainer } from "react-relay"
 import styled from "styled-components"
+import createLogger from 'Utils/logger'
 
 /**
  * WARNING: Do _not_ change this element to something common like a div. If the
@@ -23,19 +24,21 @@ const handleError = error => {
     throw error
   }
 
+  const logger = createLogger('Artsy/Relay/renderWithLoadProgress')
+
   if (error.message) {
-    console.error(error.message)
+    logger.error(error.message)
   }
 
   const networkError = error as any
   if (networkError.response && networkError.response._bodyInit) {
-    let data = networkError.response._bodyInit
-    if (data) {
-      try {
-        data = JSON.parse(data)
-        console.error(`Metaphysics Error data:`, data)
-        // tslint:disable-next-line:no-empty
-      } catch (e) {}
+    const body = networkError.response._bodyInit
+    try {
+      const data = JSON.parse(body)
+      console.error(`Metaphysics Error data:`, data)
+      logger.error(data)
+    } catch (e) {
+      logger.error('Metaphysics Error could not be parsed.')
     }
   }
 }
