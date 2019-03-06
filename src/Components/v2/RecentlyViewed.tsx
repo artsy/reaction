@@ -1,13 +1,13 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
+import { ContextConsumer, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/Router"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import { Carousel } from "Components/v2/Carousel"
-import React from "react"
+import React, { useContext } from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -96,27 +96,22 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
 )
 
 export const RecentlyViewedQueryRenderer = () => {
+  const { user, relayEnvironment } = useContext(SystemContext)
+  if (!user) {
+    return null
+  }
   return (
-    <ContextConsumer>
-      {({ user, mediator, relayEnvironment }) => {
-        if (!user) {
-          return null
+    <QueryRenderer<RecentlyViewedQuery>
+      environment={relayEnvironment}
+      variables={{}}
+      query={graphql`
+        query RecentlyViewedQuery {
+          me {
+            ...RecentlyViewed_me
+          }
         }
-        return (
-          <QueryRenderer<RecentlyViewedQuery>
-            environment={relayEnvironment}
-            variables={{}}
-            query={graphql`
-              query RecentlyViewedQuery {
-                me {
-                  ...RecentlyViewed_me
-                }
-              }
-            `}
-            render={renderWithLoadProgress(RecentlyViewedFragmentContainer)}
-          />
-        )
-      }}
-    </ContextConsumer>
+      `}
+      render={renderWithLoadProgress(RecentlyViewedFragmentContainer)}
+    />
   )
 }

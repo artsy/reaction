@@ -1,6 +1,6 @@
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
-import { ContextConsumer } from "Artsy/Router"
+import { ContextConsumer } from "Artsy"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

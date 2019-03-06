@@ -75,7 +75,6 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           }
         }
       }
-
       ...CollectRefetch_viewer
         @arguments(
           medium: $medium
