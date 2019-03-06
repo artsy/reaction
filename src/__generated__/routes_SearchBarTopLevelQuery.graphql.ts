@@ -27,8 +27,9 @@ query routes_SearchBarTopLevelQuery(
 }
 
 fragment SearchApp_viewer_4hh6ED on Viewer {
-  search(query: $term, mode: AUTOSUGGEST, first: 1) {
+  search(query: $term, first: 1, aggregations: [TYPE]) {
     totalCount
+    ...NavigationTabs_searchableConnection
     edges {
       node {
         __typename
@@ -42,6 +43,17 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
     }
   }
 }
+
+fragment NavigationTabs_searchableConnection on SearchableConnection {
+  aggregations {
+    slice
+    counts {
+      count
+      name
+      __id
+    }
+  }
+}
 */
 
 const node: ConcreteRequest = (function(){
@@ -52,13 +64,20 @@ var v0 = [
     "type": "String!",
     "defaultValue": null
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_SearchBarTopLevelQuery",
   "id": null,
-  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 1) {\n    totalCount\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    totalCount\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -114,15 +133,17 @@ return {
             "args": [
               {
                 "kind": "Literal",
-                "name": "first",
-                "value": 1,
-                "type": "Int"
+                "name": "aggregations",
+                "value": [
+                  "TYPE"
+                ],
+                "type": "[SearchAggregation]"
               },
               {
                 "kind": "Literal",
-                "name": "mode",
-                "value": "AUTOSUGGEST",
-                "type": "SearchMode"
+                "name": "first",
+                "value": 1,
+                "type": "Int"
               },
               {
                 "kind": "Variable",
@@ -140,6 +161,50 @@ return {
                 "name": "totalCount",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "aggregations",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "SearchAggregationResults",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "slice",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "counts",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "AggregationCount",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "count",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "name",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      v1
+                    ]
+                  }
+                ]
               },
               {
                 "kind": "LinkedField",
@@ -166,13 +231,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "__id",
-                        "args": null,
-                        "storageKey": null
-                      },
+                      v1,
                       {
                         "kind": "InlineFragment",
                         "type": "SearchableItem",

@@ -1209,6 +1209,7 @@ type ArtworkContextFair {
     # When true, will only return exact keyword match
     keyword_match_exact: Boolean
   ): FilterArtworks
+  sponsoredContent: FairSponsoredContent
 }
 
 type ArtworkContextPartnerShow implements Node {
@@ -2464,6 +2465,12 @@ type City {
     before: String
     last: Int
   ): FairConnection
+  sponsoredContent: CitySponsoredContent
+}
+
+type CitySponsoredContent {
+  introText: String
+  artGuideUrl: String
 }
 
 type Collection implements Node {
@@ -3360,6 +3367,7 @@ type Fair {
     # When true, will only return exact keyword match
     keyword_match_exact: Boolean
   ): FilterArtworks
+  sponsoredContent: FairSponsoredContent
 }
 
 enum FairArtistSorts {
@@ -3439,6 +3447,11 @@ enum FairSorts {
   NAME_DESC
   START_AT_ASC
   START_AT_DESC
+}
+
+type FairSponsoredContent {
+  activationText: String
+  pressReleaseUrl: String
 }
 
 type FeaturedLinkItem {
@@ -4591,6 +4604,7 @@ type HomePageModuleContextFair {
     # When true, will only return exact keyword match
     keyword_match_exact: Boolean
   ): FilterArtworks
+  sponsoredContent: FairSponsoredContent
 }
 
 type HomePageModuleContextFollowArtists {
@@ -5040,6 +5054,9 @@ type MarketingCollection {
 
   # Collection can be surfaced on editorial pages
   show_on_editorial: Boolean!
+
+  # Collection has prioritized connection to artist
+  is_featured_artist_content: Boolean!
   artworks(
     acquireable: Boolean
     offerable: Boolean
@@ -5203,7 +5220,7 @@ type Me implements Node {
   # A list of the current user’s artist follows
   follow_artists(page: Int, size: Int): FollowArtists
 
-  # A list of the current user’s inquiry requests
+  # A Connection of followed artists by current user
   followed_artists_connection(
     after: String
     first: Int
@@ -6822,6 +6839,9 @@ type PartnerShowEventType {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A formatted description of the start to end dates
+  exhibitionPeriod: String
 }
 
 enum PartnerShowSorts {
@@ -7339,6 +7359,7 @@ type Query {
 
     # Mode of search to execute. Default: SITE.
     mode: SearchMode
+    aggregations: [SearchAggregation]
     after: String
     first: Int
     before: String
@@ -7451,6 +7472,7 @@ type Query {
   marketingCollections(
     randomizationSeed: String
     size: Int
+    isFeaturedArtistContent: Boolean
     showOnEditorial: Boolean
     artistID: String
   ): [MarketingCollection!]!
@@ -7975,6 +7997,9 @@ type SearchableConnection {
   edges: [SearchableEdge]
   pageCursors: PageCursors
   totalCount: Int
+
+  # Returns aggregation counts for the given filter query.
+  aggregations: [SearchAggregationResults]
 }
 
 # An edge in a connection.
@@ -7998,6 +8023,16 @@ type SearchableItem implements Node & Searchable {
   imageUrl: String
   href: String
   searchableType: String
+}
+
+enum SearchAggregation {
+  TYPE
+}
+
+# The results for a requested aggregations
+type SearchAggregationResults {
+  counts: [AggregationCount]
+  slice: SearchAggregation
 }
 
 enum SearchEntity {
@@ -8395,6 +8430,14 @@ type Show implements Node {
 
   # Is it a fair booth or a show?
   type: String
+
+  # A Connection of followed artists by current user for this show
+  followedArtists(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowFollowArtistConnection
 }
 
 # A connection to a list of items.
@@ -8425,6 +8468,28 @@ type ShowCounts {
 type ShowEdge {
   # The item at the end of the edge
   node: Show
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type ShowFollowArtist {
+  artist: Artist
+}
+
+# A connection to a list of items.
+type ShowFollowArtistConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ShowFollowArtistEdge]
+}
+
+# An edge in a connection.
+type ShowFollowArtistEdge {
+  # The item at the end of the edge
+  node: ShowFollowArtist
 
   # A cursor for use in pagination
   cursor: String!
@@ -9265,6 +9330,7 @@ type Viewer {
 
     # Mode of search to execute. Default: SITE.
     mode: SearchMode
+    aggregations: [SearchAggregation]
     after: String
     first: Int
     before: String

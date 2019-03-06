@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { NavigationTabs_searchableConnection$ref } from "./NavigationTabs_searchableConnection.graphql";
 declare const _SearchApp_viewer$ref: unique symbol;
 export type SearchApp_viewer$ref = typeof _SearchApp_viewer$ref;
 export type SearchApp_viewer = {
@@ -11,6 +12,7 @@ export type SearchApp_viewer = {
                 readonly id?: string;
             }) | null;
         }) | null> | null;
+        readonly " $fragmentRefs": NavigationTabs_searchableConnection$ref;
     }) | null;
     readonly " $refType": SearchApp_viewer$ref;
 };
@@ -39,15 +41,17 @@ const node: ConcreteFragment = {
       "args": [
         {
           "kind": "Literal",
-          "name": "first",
-          "value": 1,
-          "type": "Int"
+          "name": "aggregations",
+          "value": [
+            "TYPE"
+          ],
+          "type": "[SearchAggregation]"
         },
         {
           "kind": "Literal",
-          "name": "mode",
-          "value": "AUTOSUGGEST",
-          "type": "SearchMode"
+          "name": "first",
+          "value": 1,
+          "type": "Int"
         },
         {
           "kind": "Variable",
@@ -65,6 +69,11 @@ const node: ConcreteFragment = {
           "name": "totalCount",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "NavigationTabs_searchableConnection",
+          "args": null
         },
         {
           "kind": "LinkedField",
@@ -112,5 +121,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'cb1a722474befede76d53a852b7ad165';
+(node as any).hash = '813abcefae5db4f893b7ed4dd9a17de5';
 export default node;
