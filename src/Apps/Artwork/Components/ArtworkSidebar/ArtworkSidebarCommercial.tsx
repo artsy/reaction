@@ -15,10 +15,9 @@ import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/Artwor
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/Router"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator, SystemContext } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import React, { SFC } from "react"
+import React, { FC, useContext } from "react"
 import {
   commitMutation,
   createFragmentContainer,
@@ -426,19 +425,17 @@ interface ArtworkSidebarCommercialProps {
   relay?: RelayProp
 }
 
-export const ArtworkSidebarCommercial: SFC<
+export const ArtworkSidebarCommercial: FC<
   ArtworkSidebarCommercialProps
 > = props => {
+  const { mediator, user } = useContext(SystemContext)
+
   return (
-    <ContextConsumer>
-      {({ mediator, user }) => (
-        <ArtworkSidebarCommercialContainer
-          {...props}
-          mediator={mediator}
-          user={user}
-        />
-      )}
-    </ContextConsumer>
+    <ArtworkSidebarCommercialContainer
+      {...props}
+      mediator={mediator}
+      user={user}
+    />
   )
 }
 

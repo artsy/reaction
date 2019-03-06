@@ -1,7 +1,7 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { ContextConsumer, ContextProps } from "Artsy"
+import { ContextProps, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
@@ -14,7 +14,7 @@ import {
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
-import React, { Component } from "react"
+import React, { Component, useContext } from "react"
 import Autosuggest from "react-autosuggest"
 import {
   createRefetchContainer,
@@ -22,7 +22,9 @@ import {
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
+import request from "superagent"
 import { Provider, Subscribe } from "unstated"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
@@ -148,6 +150,8 @@ export class SearchBar extends Component<Props, State> {
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
     const { relay, viewer } = this.props
+    const performanceStart = performance && performance.now()
+
     relay.refetch(
       {
         term,
@@ -158,6 +162,8 @@ export class SearchBar extends Component<Props, State> {
         if (error) {
           logger.error(error)
           return
+        } else if (performanceStart && sd.VOLLEY_ENDPOINT) {
+          this.reportPerformanceMeasurement(performanceStart)
         }
         const edges = get(viewer, v => v.search.edges, [])
         this.trackSearch(term, edges.length > 0)
@@ -174,6 +180,26 @@ export class SearchBar extends Component<Props, State> {
       500,
       { leading: true }
     )
+  }
+
+  reportPerformanceMeasurement = performanceStart => {
+    const duration = performance.now() - performanceStart
+    const deviceType = sd.IS_MOBILE ? "mobile" : "desktop"
+
+    const metricPayload = {
+      type: "timing",
+      name: "autocomplete-search-response",
+      timing: duration,
+      tags: [`device-type:${deviceType}`, "design:rich"],
+    }
+
+    request
+      .post(sd.VOLLEY_ENDPOINT)
+      .send({
+        serviceName: "force",
+        metrics: [metricPayload],
+      })
+      .end()
   }
 
   searchTextChanged = (_e, { newValue: term }) => {
@@ -250,6 +276,9 @@ export class SearchBar extends Component<Props, State> {
   ) => {
     const { focused } = this.state
     if (!focused) {
+      return null
+    }
+    if (xs && !query) {
       return null
     }
 
@@ -402,44 +431,39 @@ export const SearchBarRefetchContainer = createRefetchContainer(
   `
 )
 
-export const SearchBarQueryRenderer: React.SFC = () => {
+export const SearchBarQueryRenderer: React.FC = () => {
+  const { relayEnvironment } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<SearchBarSuggestQuery>
-            environment={relayEnvironment}
-            query={graphql`
-              query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {
-                viewer {
-                  ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
-                }
-              }
-            `}
-            variables={{
-              term: "",
-              hasTerm: false,
-            }}
-            render={({ props }) => {
-              if (props) {
-                return (
-                  <Provider>
-                    <SearchBarRefetchContainer viewer={props.viewer} />
-                  </Provider>
-                )
-              } else {
-                return (
-                  <Input
-                    name="term"
-                    style={{ width: "100%" }}
-                    placeholder={PLACEHOLDER_XS}
-                  />
-                )
-              }
-            }}
-          />
-        )
+    <QueryRenderer<SearchBarSuggestQuery>
+      environment={relayEnvironment}
+      query={graphql`
+        query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {
+          viewer {
+            ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
+          }
+        }
+      `}
+      variables={{
+        term: "",
+        hasTerm: false,
       }}
-    </ContextConsumer>
+      render={({ props }) => {
+        if (props) {
+          return (
+            <Provider>
+              <SearchBarRefetchContainer viewer={props.viewer} />
+            </Provider>
+          )
+        } else {
+          return (
+            <Input
+              name="term"
+              style={{ width: "100%" }}
+              placeholder={PLACEHOLDER_XS}
+            />
+          )
+        }
+      }}
+    />
   )
 }

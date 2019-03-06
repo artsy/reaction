@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import { Box, Flex, Sans, space } from "@artsy/palette"
 import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtworks_viewer.graphql"
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer, ContextProps } from "Artsy/SystemContext"
+import { ContextProps, SystemContext } from "Artsy/SystemContext"
 import { SearchBarState } from "Components/Search/state"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
@@ -130,26 +130,21 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
 export const MerchandisableArtworksPreviewQueryRenderer: React.SFC<
   ContextProps
 > = () => {
+  const { relayEnvironment } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<MerchandisableArtworksPreviewQuery>
-            environment={relayEnvironment}
-            variables={{}}
-            query={graphql`
-              query MerchandisableArtworksPreviewQuery {
-                viewer {
-                  ...MerchandisableArtworks_viewer
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              MerchandisableArtworksPreviewFragmentContainer
-            )}
-          />
-        )
-      }}
-    </ContextConsumer>
+    <QueryRenderer<MerchandisableArtworksPreviewQuery>
+      environment={relayEnvironment}
+      variables={{}}
+      query={graphql`
+        query MerchandisableArtworksPreviewQuery {
+          viewer {
+            ...MerchandisableArtworks_viewer
+          }
+        }
+      `}
+      render={renderWithLoadProgress(
+        MerchandisableArtworksPreviewFragmentContainer
+      )}
+    />
   )
 }

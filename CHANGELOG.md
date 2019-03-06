@@ -1,3 +1,73 @@
+# v14.3.1 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Show artwork "additional info" component if any of the fields exist [#2117](https://github.com/artsy/reaction/pull/2117) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v14.3.0 (Wed Mar 06 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update SystemContext API to support `useContext` [#2113](https://github.com/artsy/reaction/pull/2113) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v14.2.12 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- [Toolchain] Update Storybooks v5 [#2112](https://github.com/artsy/reaction/pull/2112) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.1.1 [#2109](https://github.com/artsy/reaction/pull/2109) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v14.2.11 (Tue Mar 05 2019)
+
+#### 🐛  Bug Fix
+
+- Measure performance of search bar [#2097](https://github.com/artsy/reaction/pull/2097) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.1.0 [#2107](https://github.com/artsy/reaction/pull/2107) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v14.2.10 (Tue Mar 05 2019)
+
+#### 🐛  Bug Fix
+
+- SearchBar - Don't show suggestions container at xs when there is no query. [#2106](https://github.com/artsy/reaction/pull/2106) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.2.9 (Tue Mar 05 2019)
 
 #### 🐛  Bug Fix
