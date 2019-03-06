@@ -1,0 +1,211 @@
+/* tslint:disable */
+
+import { ConcreteRequest } from "relay-runtime";
+import { SearchApp_viewer$ref } from "./SearchApp_viewer.graphql";
+export type routes_SearchBarTopLevelQueryVariables = {
+    readonly term: string;
+};
+export type routes_SearchBarTopLevelQueryResponse = {
+    readonly viewer: ({
+        readonly " $fragmentRefs": SearchApp_viewer$ref;
+    }) | null;
+};
+export type routes_SearchBarTopLevelQuery = {
+    readonly response: routes_SearchBarTopLevelQueryResponse;
+    readonly variables: routes_SearchBarTopLevelQueryVariables;
+};
+
+
+
+/*
+query routes_SearchBarTopLevelQuery(
+  $term: String!
+) {
+  viewer {
+    ...SearchApp_viewer_4hh6ED
+  }
+}
+
+fragment SearchApp_viewer_4hh6ED on Viewer {
+  search(query: $term, mode: AUTOSUGGEST, first: 1) {
+    totalCount
+    edges {
+      node {
+        __typename
+        ... on SearchableItem {
+          id
+        }
+        ... on Node {
+          __id
+        }
+      }
+    }
+  }
+}
+*/
+
+const node: ConcreteRequest = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "term",
+    "type": "String!",
+    "defaultValue": null
+  }
+];
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "routes_SearchBarTopLevelQuery",
+  "id": null,
+  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 1) {\n    totalCount\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
+    "name": "routes_SearchBarTopLevelQuery",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": v0,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": "viewer",
+        "name": "__viewer_viewer",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Viewer",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "SearchApp_viewer",
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "term",
+                "variableName": "term",
+                "type": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "operation": {
+    "kind": "Operation",
+    "name": "routes_SearchBarTopLevelQuery",
+    "argumentDefinitions": v0,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "viewer",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Viewer",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "search",
+            "storageKey": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "first",
+                "value": 1,
+                "type": "Int"
+              },
+              {
+                "kind": "Literal",
+                "name": "mode",
+                "value": "AUTOSUGGEST",
+                "type": "SearchMode"
+              },
+              {
+                "kind": "Variable",
+                "name": "query",
+                "variableName": "term",
+                "type": "String!"
+              }
+            ],
+            "concreteType": "SearchableConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "totalCount",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "SearchableEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__typename",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__id",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "InlineFragment",
+                        "type": "SearchableItem",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": null,
+        "name": "viewer",
+        "args": null,
+        "handle": "viewer",
+        "key": "",
+        "filters": null
+      }
+    ]
+  }
+};
+})();
+(node as any).hash = '3b024d92fcba431a3667ed0d990cbbaa';
+export default node;

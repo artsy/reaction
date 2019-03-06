@@ -4,6 +4,7 @@ import React from "react"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
+import { routes as searchRoutes } from "../Search/routes"
 
 storiesOf("Apps", module)
   .add("Artist Page", () => {
@@ -53,4 +54,7 @@ storiesOf("Apps", module)
         context={{}}
       />
     )
+  })
+  .add("Search Results page", () => {
+    return <MockRouter routes={searchRoutes} initialRoute="/search?term=andy" />
   })
