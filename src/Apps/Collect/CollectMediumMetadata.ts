@@ -52,7 +52,7 @@ export function getMetadataForMedium(medium) {
 
   if (title && mediumDescription) {
     return {
-      title: `${title} for Sale | Collect on Artsy`,
+      title: `${title} - For Sale on Artsy`,
       breadcrumbTitle: title,
       description: `Buy, bid, and inquire on over ${mediumDescription} on Artsy, the world’s largest online marketplace for art and design.`,
     }
