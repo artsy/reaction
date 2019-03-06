@@ -175,6 +175,11 @@ export enum ActionName {
  * Identifier of content that was interacted with
  */
 export enum Subject {
+  /**
+   * Generic events
+   */
+  ClickedNextButton = "clicked next button",
+
   /*
   * Articles
   * TODO: Old schema
@@ -207,11 +212,6 @@ export enum Subject {
   Classification = "Classification info",
   ContactGallery = "Contact Gallery",
   EnterLiveAuction = "Enter live auction",
-
-  /**
-   * Collections Rails
-   */
-  CollectionsRail = "CollectionsRail",
 }
 
 /**
