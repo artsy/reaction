@@ -97,70 +97,66 @@ if (USER_ID && USER_ACCESS_TOKEN) {
 // A mix of  the base from Emission's webpack setup, and the simple config for
 // storybooks: https://storybook.js.org/configurations/custom-webpack-config/
 
-module.exports = (baseConfig, env) => {
-  console.log("\n[Reaction] Booting...\n")
+console.log("\n[Reaction] Booting...\n")
 
-  /**
-   * @type {webpack.Configuration}
-   */
-  const artsyWebpackConfig = {
-    mode: env.toLowerCase(),
-    devtool: WEBPACK_DEVTOOL,
-    devServer: {
-      overlay: {
-        warnings: true,
-        errors: true,
-      },
-      stats: "errors-only",
+/**
+ * @type {webpack.Configuration}
+ */
+module.exports = {
+  devtool: WEBPACK_DEVTOOL,
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: true,
     },
+    stats: "errors-only",
+  },
 
-    resolve: {
-      extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
-      alias: {
-        sharify: sharifyPath.replace(/\.js$/, ""),
-        "styled-components": path.resolve("./node_modules/styled-components"),
+  resolve: {
+    extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      sharify: sharifyPath.replace(/\.js$/, ""),
+      "styled-components": path.resolve("./node_modules/styled-components"),
+    },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.graphql$/,
+        include: [/data/],
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: "raw-loader",
+          },
+        ],
       },
-    },
-    module: {
-      rules: [
-        {
-          test: /\.graphql$/,
-          include: [/data/],
-          exclude: [/node_modules/],
-          use: [
-            {
-              loader: "raw-loader",
+      {
+        test: /\.tsx?$/,
+        include: [/src/],
+        exclude: [/node_modules/, new RegExp(package.jest.testRegex)],
+        use: [
+          {
+            loader: "cache-loader",
+            options: {
+              cacheDirectory: path.join(cacheDirectory),
             },
-          ],
-        },
-        {
-          test: /\.tsx?$/,
-          include: [/src/],
-          exclude: [/node_modules/, new RegExp(package.jest.testRegex)],
-          use: [
-            {
-              loader: "cache-loader",
-              options: {
-                cacheDirectory: path.join(cacheDirectory),
-              },
+          },
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: path.join(cacheDirectory, "babel"),
             },
-            {
-              loader: "babel-loader",
-              options: {
-                cacheDirectory: path.join(cacheDirectory, "babel"),
-              },
-            },
-          ],
-        },
-        // ESM support. See: https://github.com/apollographql/react-apollo/issues/1737#issuecomment-371178602
-        {
-          type: "javascript/auto",
-          test: /\.mjs$/,
-          use: [],
-        },
-      ],
-    },
-    plugins: plugins,
-  }
-  return merge(baseConfig, artsyWebpackConfig)
+          },
+        ],
+      },
+      // ESM support. See: https://github.com/apollographql/react-apollo/issues/1737#issuecomment-371178602
+      {
+        type: "javascript/auto",
+        test: /\.mjs$/,
+        use: [],
+      },
+    ],
+  },
+  plugins: plugins,
 }
