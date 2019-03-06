@@ -51,7 +51,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
 
     return (
       <Wrapper isHighlight={highlight} p={1}>
-        <Link {...linkProps} noUnderline>
+        <Link {...linkProps} noUnderline tabIndex={0}>
           <Box width="40px" height="40px" mr={2}>
             {imageUrl && (
               <Image
@@ -62,7 +62,7 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
             )}
           </Box>
         </Link>
-        <Link href={artwork.href} color="black100" noUnderline>
+        <Link href={artwork.href} color="black100" noUnderline tabIndex={0}>
           <Box>
             <OverflowEllipsis size="2" italic>
               {artwork.title}, {artwork.date}
