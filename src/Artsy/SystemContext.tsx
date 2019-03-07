@@ -43,7 +43,7 @@ export interface ContextProps<T = {}> extends SystemProps {
   [key: string]: any
 }
 
-const Context = React.createContext<ContextProps<any>>({})
+export const SystemContext = React.createContext<ContextProps<any>>({})
 
 /**
  * Creates a new Context.Provider with a user and Relay environment, or defaults
@@ -63,10 +63,14 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
     relayEnvironment,
   }
 
-  return <Context.Provider value={providerValues}>{children}</Context.Provider>
+  return (
+    <SystemContext.Provider value={providerValues}>
+      {children}
+    </SystemContext.Provider>
+  )
 }
 
-export const ContextConsumer = Context.Consumer
+export const ContextConsumer = SystemContext.Consumer
 
 /**
  * A HOC utility function for injecting renderProps into a component.

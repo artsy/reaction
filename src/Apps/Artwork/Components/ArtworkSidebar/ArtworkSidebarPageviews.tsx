@@ -1,9 +1,9 @@
 import { Box, Flex, PageviewsIcon, Sans } from "@artsy/palette"
 import { ArtworkSidebarPageviews_artwork } from "__generated__/ArtworkSidebarPageviews_artwork.graphql"
 import { ArtworkSidebarPageviewsQuery } from "__generated__/ArtworkSidebarPageviewsQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { SFC } from "react"
+import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 interface Props {
@@ -54,26 +54,20 @@ export const ArtworkSidebarPageviewsQueryRenderer = ({
 }: {
   artworkID: string
 }) => {
+  const { relayEnvironment } = useContext(SystemContext)
+
   return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<ArtworkSidebarPageviewsQuery>
-            environment={relayEnvironment}
-            variables={{ artworkID }}
-            query={graphql`
-              query ArtworkSidebarPageviewsQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
-                  ...ArtworkSidebarPageviews_artwork
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              ArtworkSidebarPageviewsFragmentContainer
-            )}
-          />
-        )
-      }}
-    </ContextConsumer>
+    <QueryRenderer<ArtworkSidebarPageviewsQuery>
+      environment={relayEnvironment}
+      variables={{ artworkID }}
+      query={graphql`
+        query ArtworkSidebarPageviewsQuery($artworkID: String!) {
+          artwork(id: $artworkID) {
+            ...ArtworkSidebarPageviews_artwork
+          }
+        }
+      `}
+      render={renderWithLoadProgress(ArtworkSidebarPageviewsFragmentContainer)}
+    />
   )
 }

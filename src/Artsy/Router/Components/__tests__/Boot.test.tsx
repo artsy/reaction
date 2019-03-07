@@ -1,5 +1,5 @@
+import { ContextConsumer } from "Artsy"
 import { Boot } from "Artsy/Router"
-import { ContextConsumer } from "Artsy/Router"
 import { ErrorBoundary } from "Components/ErrorBoundary"
 import { mount } from "enzyme"
 import React from "react"

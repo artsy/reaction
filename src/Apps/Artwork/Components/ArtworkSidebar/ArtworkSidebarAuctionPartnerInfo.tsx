@@ -1,7 +1,7 @@
 import { Box, Link, Serif } from "@artsy/palette"
+import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/Router"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
