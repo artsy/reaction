@@ -30,7 +30,7 @@ export const artistResponse = {
     },
     {
       type: "BIENNIAL",
-      label: "Participated in a major biennial",
+      label: "Included in a major biennial",
       entities: ["frieze"],
     },
   ],
