@@ -1,3 +1,15 @@
+# v14.3.5 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor spinner function [#2114](https://github.com/artsy/reaction/pull/2114) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.3.4 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix
