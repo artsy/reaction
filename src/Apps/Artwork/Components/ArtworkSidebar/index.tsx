@@ -1,7 +1,8 @@
 import { Box, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { ContextConsumer } from "Artsy/Router"
 import { AuctionTimerFragmentContainer as AuctionTimer } from "Components/v2/AuctionTimer"
-import React, { Component, useContext } from "react"
+import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
@@ -14,7 +15,6 @@ import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./Art
 
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
-import { SystemContext } from "Artsy"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
@@ -84,20 +84,24 @@ export const ArtworkSidebarQueryRenderer = ({
 }: {
   artworkID: string
 }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<ArtworkSidebarQuery>
-      environment={relayEnvironment}
-      variables={{ artworkID }}
-      query={graphql`
-        query ArtworkSidebarQuery($artworkID: String!) {
-          artwork(id: $artworkID) {
-            ...ArtworkSidebar_artwork
-          }
-        }
-      `}
-      render={renderWithLoadProgress(ArtworkSidebarFragmentContainer)}
-    />
+    <ContextConsumer>
+      {({ user, mediator, relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkSidebarQuery>
+            environment={relayEnvironment}
+            variables={{ artworkID }}
+            query={graphql`
+              query ArtworkSidebarQuery($artworkID: String!) {
+                artwork(id: $artworkID) {
+                  ...ArtworkSidebar_artwork
+                }
+              }
+            `}
+            render={renderWithLoadProgress(ArtworkSidebarFragmentContainer)}
+          />
+        )
+      }}
+    </ContextConsumer>
   )
 }

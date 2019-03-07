@@ -1,7 +1,7 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { ContextProps, SystemContext } from "Artsy"
+import { ContextConsumer, ContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
@@ -14,7 +14,7 @@ import {
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
-import React, { Component, useContext } from "react"
+import React, { Component } from "react"
 import Autosuggest from "react-autosuggest"
 import {
   createRefetchContainer,
@@ -70,6 +70,12 @@ const SuggestionsWrapper = styled(Box)`
   border-right: 1px solid ${colors.grayRegular};
 `
 
+const PreviewWrapper = styled(Box)`
+  > div {
+    height: 100%;
+  }
+`
+
 const SuggestionContainer = ({ children, containerProps, preview }) => {
   return (
     <AutosuggestWrapper
@@ -98,9 +104,14 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width={["0px", "240px", "240px", "450px"]} px={[0, 2]} py={[0, 2]}>
+        <PreviewWrapper
+          width={["0px", "240px", "240px", "450px"]}
+          height="375px"
+          px={[0, 2]}
+          py={[0, 2]}
+        >
           {preview}
-        </Box>
+        </PreviewWrapper>
       </ResultsWrapper>
     </AutosuggestWrapper>
   )
@@ -260,6 +271,8 @@ export class SearchBar extends Component<Props, State> {
       node: { href },
     },
   }) {
+    this.userClickedOnDescendant = true
+
     window.location.assign(href)
   }
 
@@ -352,7 +365,9 @@ export class SearchBar extends Component<Props, State> {
     return (
       <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
-          alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
+          alwaysRenderSuggestions={
+            searchState.state.hasEnteredPreviews || this.userClickedOnDescendant
+          }
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
@@ -431,39 +446,44 @@ export const SearchBarRefetchContainer = createRefetchContainer(
   `
 )
 
-export const SearchBarQueryRenderer: React.FC = () => {
-  const { relayEnvironment } = useContext(SystemContext)
+export const SearchBarQueryRenderer: React.SFC = () => {
   return (
-    <QueryRenderer<SearchBarSuggestQuery>
-      environment={relayEnvironment}
-      query={graphql`
-        query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {
-          viewer {
-            ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
-          }
-        }
-      `}
-      variables={{
-        term: "",
-        hasTerm: false,
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<SearchBarSuggestQuery>
+            environment={relayEnvironment}
+            query={graphql`
+              query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {
+                viewer {
+                  ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
+                }
+              }
+            `}
+            variables={{
+              term: "",
+              hasTerm: false,
+            }}
+            render={({ props }) => {
+              if (props) {
+                return (
+                  <Provider>
+                    <SearchBarRefetchContainer viewer={props.viewer} />
+                  </Provider>
+                )
+              } else {
+                return (
+                  <Input
+                    name="term"
+                    style={{ width: "100%" }}
+                    placeholder={PLACEHOLDER_XS}
+                  />
+                )
+              }
+            }}
+          />
+        )
       }}
-      render={({ props }) => {
-        if (props) {
-          return (
-            <Provider>
-              <SearchBarRefetchContainer viewer={props.viewer} />
-            </Provider>
-          )
-        } else {
-          return (
-            <Input
-              name="term"
-              style={{ width: "100%" }}
-              placeholder={PLACEHOLDER_XS}
-            />
-          )
-        }
-      }}
-    />
+    </ContextConsumer>
   )
 }

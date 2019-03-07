@@ -1,9 +1,9 @@
 import { Join, Spacer } from "@artsy/palette"
 import { ArtworkContextPartnerShow_artwork } from "__generated__/ArtworkContextPartnerShow_artwork.graphql"
 import { ArtworkContextPartnerShowQuery } from "__generated__/ArtworkContextPartnerShowQuery.graphql"
-import { SystemContext } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { OtherWorksContextProps } from ".."
 
@@ -17,29 +17,34 @@ import {
 export const ArtworkContextPartnerShowQueryRenderer: React.SFC<
   OtherWorksContextProps
 > = ({ artworkSlug, artworkID }) => {
-  const { relayEnvironment } = useContext(SystemContext)
   return (
-    <QueryRenderer<ArtworkContextPartnerShowQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
-        excludeArtworkIDs: [artworkID],
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkContextPartnerShowQuery>
+            environment={relayEnvironment}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
+            query={graphql`
+              query ArtworkContextPartnerShowQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
+                artwork(id: $artworkSlug) {
+                  ...ArtworkContextPartnerShow_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+                }
+              }
+            `}
+            render={renderWithLoadProgress(
+              ArtworkContextPartnerShowFragmentContainer
+            )}
+          />
+        )
       }}
-      query={graphql`
-        query ArtworkContextPartnerShowQuery(
-          $artworkSlug: String!
-          $excludeArtworkIDs: [String!]
-        ) {
-          artwork(id: $artworkSlug) {
-            ...ArtworkContextPartnerShow_artwork
-              @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-          }
-        }
-      `}
-      render={renderWithLoadProgress(
-        ArtworkContextPartnerShowFragmentContainer
-      )}
-    />
+    </ContextConsumer>
   )
 }
 

@@ -33,6 +33,7 @@ class SearchPreview extends React.Component<SearchPreviewProps> {
             this.props.searchState.enterPreviewWithoutSelection()
           }
           onMouseOut={() => this.props.searchState.leavePreviewIfNoSelection()}
+          height="100%"
         >
           <Preview {...rest} />
         </Box>

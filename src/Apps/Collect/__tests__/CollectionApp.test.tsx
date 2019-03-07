@@ -50,7 +50,7 @@ describe("CollectionApp", () => {
     )
 
     const title = tree.find("Title")
-    expect(title.at(0).text()).toContain("KAWS: Companions | Collect on Artsy")
+    expect(title.at(0).text()).toContain("KAWS: Companions - For Sale on Artsy")
 
     const breadCrumbList = tree.find(BreadCrumbList)
     expect(breadCrumbList.props().items).toEqual([

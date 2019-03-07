@@ -1,11 +1,11 @@
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
+import { ContextConsumer } from "Artsy/SystemContext"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import { compact } from "lodash"
 import { isNull } from "lodash"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -34,7 +34,6 @@ import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
   user?: User
-  mediator?: Mediator
   selectDefaultSlide(): void
 }
 
@@ -96,13 +95,12 @@ export class ArtworkActions extends React.Component<
     context_module: Schema.ContextModule.ViewInRoom,
     type: Schema.Type.Button,
   })
-  openViewInRoom() {
+  openViewInRoom(mediator) {
     this.props.selectDefaultSlide()
 
     setTimeout(() => {
       const {
         artwork: { dimensions, image },
-        mediator,
       } = this.props
 
       mediator &&
@@ -120,11 +118,15 @@ export class ArtworkActions extends React.Component<
 
   renderViewInRoomButton() {
     return (
-      <UtilButton
-        name="viewInRoom"
-        onClick={() => this.openViewInRoom()}
-        label="View in room"
-      />
+      <ContextConsumer>
+        {({ mediator }) => (
+          <UtilButton
+            name="viewInRoom"
+            onClick={() => this.openViewInRoom(mediator)}
+            label="View in room"
+          />
+        )}
+      </ContextConsumer>
     )
   }
 
@@ -170,7 +172,7 @@ export class ArtworkActions extends React.Component<
       { name: "save", condition: true, renderer: this.renderSaveButton },
       {
         name: "viewInRoom",
-        condition: artwork.is_hangable && this.isAdmin,
+        condition: artwork.is_hangable,
         renderer: this.renderViewInRoomButton,
       },
       { name: "share", condition: true, renderer: this.renderShareButton },
@@ -262,8 +264,11 @@ export class ArtworkActions extends React.Component<
 
 export const ArtworkActionsFragmentContainer = createFragmentContainer(
   (props: ArtworkActionsProps) => {
-    const { user, mediator } = useContext(SystemContext)
-    return <ArtworkActions user={user} mediator={mediator} {...props} />
+    return (
+      <ContextConsumer>
+        {({ user }) => <ArtworkActions user={user} {...props} />}
+      </ContextConsumer>
+    )
   },
   graphql`
     fragment ArtworkActions_artwork on Artwork {

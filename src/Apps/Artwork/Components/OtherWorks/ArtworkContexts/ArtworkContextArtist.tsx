@@ -1,9 +1,9 @@
 import { Join, Spacer } from "@artsy/palette"
 import { ArtworkContextArtist_artwork } from "__generated__/ArtworkContextArtist_artwork.graphql"
 import { ArtworkContextArtistQuery } from "__generated__/ArtworkContextArtistQuery.graphql"
-import { SystemContext } from "Artsy"
+import { ContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
+import React from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { OtherWorksContextProps } from ".."
 
@@ -13,31 +13,37 @@ import {
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
-export const ArtworkContextArtistQueryRenderer: React.FC<
+export const ArtworkContextArtistQueryRenderer: React.SFC<
   OtherWorksContextProps
 > = ({ artworkSlug, artworkID }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-
   return (
-    <QueryRenderer<ArtworkContextArtistQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
-        excludeArtworkIDs: [artworkID],
+    <ContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<ArtworkContextArtistQuery>
+            environment={relayEnvironment}
+            variables={{
+              artworkSlug,
+              excludeArtworkIDs: [artworkID],
+            }}
+            query={graphql`
+              query ArtworkContextArtistQuery(
+                $artworkSlug: String!
+                $excludeArtworkIDs: [String!]
+              ) {
+                artwork(id: $artworkSlug) {
+                  ...ArtworkContextArtist_artwork
+                    @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+                }
+              }
+            `}
+            render={renderWithLoadProgress(
+              ArtworkContextArtistFragmentContainer
+            )}
+          />
+        )
       }}
-      query={graphql`
-        query ArtworkContextArtistQuery(
-          $artworkSlug: String!
-          $excludeArtworkIDs: [String!]
-        ) {
-          artwork(id: $artworkSlug) {
-            ...ArtworkContextArtist_artwork
-              @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-          }
-        }
-      `}
-      render={renderWithLoadProgress(ArtworkContextArtistFragmentContainer)}
-    />
+    </ContextConsumer>
   )
 }
 

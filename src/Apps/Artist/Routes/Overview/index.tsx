@@ -5,7 +5,7 @@ import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Com
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { withContext } from "Artsy/SystemContext"
-import { ArtistCollectionsRail } from "Components/Artist/CollectionsRail/CollectionsRail"
+import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Components/Artist/ArtistCollectionsRail"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -182,7 +182,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
           <div>
             <Separator mb={3} />
-            <ArtistCollectionsRail />
+            <ArtistCollectionsRail artistID={artist._id} />
             <Spacer mb={3} />
           </div>
         )}
