@@ -172,7 +172,7 @@ export class ArtworkActions extends React.Component<
       { name: "save", condition: true, renderer: this.renderSaveButton },
       {
         name: "viewInRoom",
-        condition: artwork.is_hangable && this.isAdmin,
+        condition: artwork.is_hangable,
         renderer: this.renderViewInRoomButton,
       },
       { name: "share", condition: true, renderer: this.renderShareButton },

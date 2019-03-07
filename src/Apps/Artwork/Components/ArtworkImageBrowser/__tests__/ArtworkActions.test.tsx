@@ -38,7 +38,7 @@ describe("ArtworkActions", () => {
     const wrapper = getWrapper("lg", data)
     expect(wrapper.find("Heart").length).toBe(1)
     expect(wrapper.find("Share").length).toBe(1)
-    expect(wrapper.find("OpenEye").length).toBe(0)
+    expect(wrapper.find("OpenEye").length).toBe(1)
     expect(wrapper.find("Download").length).toBe(1)
     expect(wrapper.find("Edit").length).toBe(0)
     expect(wrapper.find("Genome").length).toBe(0)
@@ -141,11 +141,12 @@ describe("ArtworkActions", () => {
     it("shows no More icon if there are <= 3 actions", () => {
       const data = cloneDeep(ArtworkActionsFixture)
       data.user.type = "User"
+      data.artwork.is_downloadable = false
       const wrapper = getWrapper("xs", data)
       expect(wrapper.find("Heart").length).toBe(1)
       expect(wrapper.find("Share").length).toBe(1)
-      expect(wrapper.find("Download").length).toBe(1)
-      expect(wrapper.find("OpenEye").length).toBe(0)
+      expect(wrapper.find("OpenEye").length).toBe(1)
+      expect(wrapper.find("Download").length).toBe(0)
       expect(wrapper.find("Edit").length).toBe(0)
       expect(wrapper.find("Genome").length).toBe(0)
       expect(wrapper.find("More").length).toBe(0)
