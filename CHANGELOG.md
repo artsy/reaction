@@ -1,3 +1,15 @@
+# v14.3.9 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Return correct error [#2127](https://github.com/artsy/reaction/pull/2127) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v14.3.8 (Thu Mar 07 2019)
 
 #### 🐛  Bug Fix
