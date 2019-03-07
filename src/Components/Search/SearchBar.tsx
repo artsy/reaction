@@ -271,6 +271,8 @@ export class SearchBar extends Component<Props, State> {
       node: { href },
     },
   }) {
+    this.userClickedOnDescendant = true
+
     window.location.assign(href)
   }
 
@@ -363,7 +365,9 @@ export class SearchBar extends Component<Props, State> {
     return (
       <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
-          alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
+          alwaysRenderSuggestions={
+            searchState.state.hasEnteredPreviews || this.userClickedOnDescendant
+          }
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}
