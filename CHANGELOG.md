@@ -1,3 +1,15 @@
+# v14.3.6 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Set static preview height & use flex to vertically center 'no results' [#2115](https://github.com/artsy/reaction/pull/2115) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.3.5 (Thu Mar 07 2019)
 
 #### 🐛  Bug Fix
