@@ -1,3 +1,15 @@
+# v14.3.7 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Autosuggest] Ensure suggestions remain when suggestion is selected [#2124](https://github.com/artsy/reaction/pull/2124) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.3.6 (Thu Mar 07 2019)
 
 #### 🐛  Bug Fix
