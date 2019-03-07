@@ -40,7 +40,7 @@ const handleError = error => {
       console.error(`Metaphysics Error data:`, data)
       logger.error(data)
     } catch (e) {
-      logger.error("Metaphysics Error could not be parsed.", error)
+      logger.error("Metaphysics Error could not be parsed.", e)
     }
   }
 }
