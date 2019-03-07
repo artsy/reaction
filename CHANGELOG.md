@@ -1,3 +1,63 @@
+# v14.3.7 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Autosuggest] Ensure suggestions remain when suggestion is selected [#2124](https://github.com/artsy/reaction/pull/2124) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v14.3.6 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Set static preview height & use flex to vertically center 'no results' [#2115](https://github.com/artsy/reaction/pull/2115) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v14.3.5 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor spinner function [#2114](https://github.com/artsy/reaction/pull/2114) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v14.3.4 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- Update title meta for collections [#2110](https://github.com/artsy/reaction/pull/2110) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v14.3.3 (Wed Mar 06 2019)
+
+#### 🐛  Bug Fix
+
+- add tabIndex={0} to preview links to get Safari to specify e.relatedTarget on blur [#2121](https://github.com/artsy/reaction/pull/2121) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v14.3.2 (Wed Mar 06 2019)
 
 #### 🐛  Bug Fix

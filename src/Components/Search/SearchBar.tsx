@@ -70,6 +70,12 @@ const SuggestionsWrapper = styled(Box)`
   border-right: 1px solid ${colors.grayRegular};
 `
 
+const PreviewWrapper = styled(Box)`
+  > div {
+    height: 100%;
+  }
+`
+
 const SuggestionContainer = ({ children, containerProps, preview }) => {
   return (
     <AutosuggestWrapper
@@ -98,9 +104,14 @@ const SuggestionContainer = ({ children, containerProps, preview }) => {
             {children}
           </Flex>
         </SuggestionsWrapper>
-        <Box width={["0px", "240px", "240px", "450px"]} px={[0, 2]} py={[0, 2]}>
+        <PreviewWrapper
+          width={["0px", "240px", "240px", "450px"]}
+          height="375px"
+          px={[0, 2]}
+          py={[0, 2]}
+        >
           {preview}
-        </Box>
+        </PreviewWrapper>
       </ResultsWrapper>
     </AutosuggestWrapper>
   )
@@ -260,6 +271,8 @@ export class SearchBar extends Component<Props, State> {
       node: { href },
     },
   }) {
+    this.userClickedOnDescendant = true
+
     window.location.assign(href)
   }
 
@@ -352,7 +365,9 @@ export class SearchBar extends Component<Props, State> {
     return (
       <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
-          alwaysRenderSuggestions={searchState.state.hasEnteredPreviews}
+          alwaysRenderSuggestions={
+            searchState.state.hasEnteredPreviews || this.userClickedOnDescendant
+          }
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           onSuggestionHighlighted={this.throttledOnSuggestionHighlighted}

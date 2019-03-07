@@ -1,15 +1,16 @@
 import { Box, Theme } from "@artsy/palette"
-import { CollectionsFixture } from "Apps/__tests__/Fixtures/Collections"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ArtistCollectionsRail } from "../Artist/CollectionsRail/CollectionsRail"
+import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "../Artist/ArtistCollectionsRail"
 
 storiesOf("Components/Artist/CollectionsRail", module).add(
   "Artist Collections Rail",
   () => (
     <Theme>
       <Box maxWidth={1192} px={4}>
-        <ArtistCollectionsRail collections={CollectionsFixture} />
+        <ArtistCollectionsRail artistID="4d8b92b34eb68a1b2c0003f4" />
+        <ArtistCollectionsRail artistID="4db443766c0cee66480004ca" />
+        <ArtistCollectionsRail artistID="4d8d12a3876c697ae1000059" />
       </Box>
     </Theme>
   )
