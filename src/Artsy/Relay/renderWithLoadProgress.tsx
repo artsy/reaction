@@ -11,8 +11,10 @@ import createLogger from "Utils/logger"
  * from the SpinnerContainer and Spinner.
  */
 const SpinnerContainer = styled.figure`
-  width: 100%;
-  height: 100px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
 `
 
