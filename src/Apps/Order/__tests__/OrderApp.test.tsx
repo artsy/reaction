@@ -1,5 +1,5 @@
 import { routes } from "Apps/Order/routes"
-import { ContextProvider } from "Artsy/Router"
+import { ContextProvider } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import { mount } from "enzyme"
 import { Resolver } from "found-relay"

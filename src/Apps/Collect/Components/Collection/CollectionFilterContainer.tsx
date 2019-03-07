@@ -1,5 +1,5 @@
-import { ContextConsumer } from "Artsy"
-import React, { Component } from "react"
+import { SystemContext } from "Artsy"
+import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectionRefetchContainer } from "./CollectionRefetch"
 
@@ -10,42 +10,35 @@ import { FilterContainer } from "../Filters"
 export interface CollectionFilterContainerProps {
   collection?: CollectionFilterContainer_collection
 }
-export class CollectionFilterContainer extends Component<
+export const CollectionFilterContainer: React.FC<
   CollectionFilterContainerProps
-> {
-  render() {
-    const { collection } = this.props
-    const { aggregations } = collection.artworks
-    const mediumAggregation = aggregations.find(
-      agg => agg.slice === "MEDIUM"
-    ) || { counts: [] }
+> = props => {
+  const { user, mediator } = useContext(SystemContext)
+  const { collection } = props
+  const { aggregations } = collection.artworks
+  const mediumAggregation = aggregations.find(
+    agg => agg.slice === "MEDIUM"
+  ) || { counts: [] }
 
-    const timePeriodAggregation = aggregations.find(
-      agg => agg.slice === "MAJOR_PERIOD"
-    ) || { counts: [] }
+  const timePeriodAggregation = aggregations.find(
+    agg => agg.slice === "MAJOR_PERIOD"
+  ) || { counts: [] }
 
-    return (
-      <ContextConsumer>
-        {({ user, mediator }) => {
-          return (
-            <FilterContainer
-              user={user}
-              mediator={mediator}
-              mediums={mediumAggregation.counts as any}
-              timePeriods={timePeriodAggregation.counts as any}
-            >
-              {(filters: FilterState) => (
-                <CollectionRefetchContainer
-                  collection={collection}
-                  filtersState={filters.state}
-                />
-              )}
-            </FilterContainer>
-          )
-        }}
-      </ContextConsumer>
-    )
-  }
+  return (
+    <FilterContainer
+      user={user}
+      mediator={mediator}
+      mediums={mediumAggregation.counts as any}
+      timePeriods={timePeriodAggregation.counts as any}
+    >
+      {(filters: FilterState) => (
+        <CollectionRefetchContainer
+          collection={collection}
+          filtersState={filters.state}
+        />
+      )}
+    </FilterContainer>
+  )
 }
 
 export const CollectionFilterFragmentContainer = createFragmentContainer(
