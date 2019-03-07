@@ -1,3 +1,15 @@
+# v14.3.8 (Thu Mar 07 2019)
+
+#### 🐛  Bug Fix
+
+- Artist insights 2.0 - Update biennial badge label [#2126](https://github.com/artsy/reaction/pull/2126) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v14.3.7 (Thu Mar 07 2019)
 
 #### 🐛  Bug Fix
