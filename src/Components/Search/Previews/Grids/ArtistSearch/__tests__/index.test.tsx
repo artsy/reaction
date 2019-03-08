@@ -3,6 +3,7 @@ import { MockBoot } from "DevTools/MockBoot"
 import React from "react"
 import { graphql } from "react-relay"
 
+import { SearchBarProvider } from "Components/Search/SearchBarContext"
 import { PreviewGridItem } from "../../PreviewGridItem"
 import { ArtistSearchPreviewFragmentContainer } from "../index"
 import { MarketingCollectionsPreview } from "../MarketingCollections"
@@ -33,7 +34,9 @@ const getWrapper = (viewer, breakpoint = "xl") => {
       entityID: "andy",
     },
     wrapper: children => (
-      <MockBoot breakpoint={breakpoint as any}>{children}</MockBoot>
+      <MockBoot breakpoint={breakpoint as any}>
+        <SearchBarProvider>{children}</SearchBarProvider>
+      </MockBoot>
     ),
   })
 }

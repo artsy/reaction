@@ -1,12 +1,14 @@
 import { Box, Flex, Sans, space } from "@artsy/palette"
-import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Subscribe } from "unstated"
 import { get } from "Utils/get"
 import { Media, Responsive } from "Utils/Responsive"
 
 import { RelatedArtworksPreview_viewer } from "__generated__/RelatedArtworksPreview_viewer.graphql"
+import {
+  SearchBarConsumer,
+  SearchBarState,
+} from "Components/Search/SearchBarContext"
 import styled from "styled-components"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "../PreviewGridItem"
 import { NoResultsPreview } from "./NoResults"
@@ -29,7 +31,7 @@ export class RelatedArtworksPreview extends React.Component<
   componentDidMount() {
     const { smallScreen } = this.props
 
-    this.props.searchState.registerItems(
+    this.props.searchState.registerPreviewItems(
       smallScreen ? this.artworks.slice(0, 5) : this.artworks
     )
   }
@@ -46,16 +48,15 @@ export class RelatedArtworksPreview extends React.Component<
     const displayedArtworks =
       itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
 
-    const {
-      searchState: { state },
-    } = this.props
+    const { searchState } = this.props
 
     return displayedArtworks.map((artwork, i) => (
       <ItemContainer width={["0%", "200px"]} key={i} itemsPerRow={itemsPerRow}>
         <PreviewGridItem
           artwork={artwork}
           highlight={
-            state.hasEnteredPreviews && i === state.selectedPreviewIndex
+            searchState.hasEnteredPreviews &&
+            i === searchState.selectedPreviewIndex
           }
           emphasizeArtist
           accessibilityLabel={`preview-${i.toLocaleString()}`}
@@ -97,7 +98,7 @@ export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
       <Responsive>
         {({ xs, sm, md }) => {
           return (
-            <Subscribe to={[SearchBarState]}>
+            <SearchBarConsumer>
               {(searchState: SearchBarState) => {
                 return (
                   <RelatedArtworksPreview
@@ -107,7 +108,7 @@ export const RelatedArtworksPreviewFragmentContainer = createFragmentContainer(
                   />
                 )
               }}
-            </Subscribe>
+            </SearchBarConsumer>
           )
         }}
       </Responsive>

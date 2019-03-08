@@ -1,11 +1,13 @@
 import { Box, color, Flex, Link, Sans, Serif, space } from "@artsy/palette"
 import { MarketingCollectionsPreview_marketingCollections } from "__generated__/MarketingCollectionsPreview_marketingCollections.graphql"
-import { SearchBarState } from "Components/Search/state"
+import {
+  SearchBarConsumer,
+  SearchBarState,
+} from "Components/Search/SearchBarContext"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 import { crop } from "Utils/resizer"
 import { Media, Responsive } from "Utils/Responsive"
 
@@ -67,7 +69,7 @@ export const CollectionTitles = ({ title }: { title: string }) => {
 const renderItems = (
   {
     marketingCollections,
-    searchState: { state },
+    searchState: state,
   }: MarketingCollectionsPreviewProps,
   itemsPerRow: 1 | 2
 ) => {
@@ -109,7 +111,7 @@ export class MarketingCollectionsPreview extends React.Component<
       return { href: `${sd.APP_URL}/collection/${slug}` }
     })
 
-    this.props.searchState.registerItems(
+    this.props.searchState.registerPreviewItems(
       smallScreen ? items.slice(0, 3) : items
     )
   }
@@ -143,7 +145,7 @@ export const MarketingCollectionsPreviewFragmentContainer = createFragmentContai
       <Responsive>
         {({ xs, sm, md }) => {
           return (
-            <Subscribe to={[SearchBarState]}>
+            <SearchBarConsumer>
               {(searchState: SearchBarState) => {
                 return (
                   <MarketingCollectionsPreview
@@ -153,7 +155,7 @@ export const MarketingCollectionsPreviewFragmentContainer = createFragmentContai
                   />
                 )
               }}
-            </Subscribe>
+            </SearchBarConsumer>
           )
         }}
       </Responsive>

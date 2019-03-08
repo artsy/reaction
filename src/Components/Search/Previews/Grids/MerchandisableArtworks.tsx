@@ -5,10 +5,12 @@ import { MerchandisableArtworks_viewer } from "__generated__/MerchandisableArtwo
 import { MerchandisableArtworksPreviewQuery } from "__generated__/MerchandisableArtworksPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { ContextProps, SystemContext } from "Artsy/SystemContext"
-import { SearchBarState } from "Components/Search/state"
+import {
+  SearchBarConsumer,
+  SearchBarState,
+} from "Components/Search/SearchBarContext"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 import { get } from "Utils/get"
 import { Media, Responsive } from "Utils/Responsive"
 import { PreviewGridItemFragmentContainer as PreviewGridItem } from "./PreviewGridItem"
@@ -31,7 +33,7 @@ class MerchandisableArtworksPreview extends React.Component<
   componentDidMount() {
     const { smallScreen } = this.props
 
-    this.props.searchState.registerItems(
+    this.props.searchState.registerPreviewItems(
       smallScreen ? this.artworks.slice(0, 5) : this.artworks
     )
   }
@@ -48,9 +50,7 @@ class MerchandisableArtworksPreview extends React.Component<
     const displayedArtworks =
       itemsPerRow === 1 ? this.artworks.slice(0, 5) : this.artworks
 
-    const {
-      searchState: { state },
-    } = this.props
+    const { searchState: state } = this.props
 
     return displayedArtworks.map((artwork, i) => (
       <ItemContainer width={["0%", "200px"]} key={i} itemsPerRow={itemsPerRow}>
@@ -94,7 +94,7 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
       <Responsive>
         {({ xs, sm, md }) => {
           return (
-            <Subscribe to={[SearchBarState]}>
+            <SearchBarConsumer>
               {(searchState: SearchBarState) => {
                 return (
                   <MerchandisableArtworksPreview
@@ -104,7 +104,7 @@ export const MerchandisableArtworksPreviewFragmentContainer = createFragmentCont
                   />
                 )
               }}
-            </Subscribe>
+            </SearchBarConsumer>
           )
         }}
       </Responsive>

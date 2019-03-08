@@ -5,9 +5,11 @@ import { Box, color, Flex, Image, Link, Serif, space } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { PreviewGridItem_artwork } from "__generated__/PreviewGridItem_artwork.graphql"
-import { SearchBarState } from "Components/Search/state"
+import {
+  SearchBarConsumer,
+  SearchBarState,
+} from "Components/Search/SearchBarContext"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 
 interface PreviewGridItemProps {
   artwork: PreviewGridItem_artwork
@@ -83,11 +85,11 @@ export class PreviewGridItem extends React.Component<PreviewGridItemProps> {
 export const PreviewGridItemFragmentContainer = createFragmentContainer(
   (props: PreviewGridItemProps) => {
     return (
-      <Subscribe to={[SearchBarState]}>
+      <SearchBarConsumer>
         {(searchState: SearchBarState) => {
           return <PreviewGridItem {...props} searchState={searchState} />
         }}
-      </Subscribe>
+      </SearchBarConsumer>
     )
   },
   graphql`

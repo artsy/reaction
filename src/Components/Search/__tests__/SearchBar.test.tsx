@@ -1,5 +1,6 @@
 import Input from "Components/Input"
 import { SearchBarRefetchContainer as SearchBar } from "Components/Search/SearchBar"
+import { SearchBarProvider } from "Components/Search/SearchBarContext"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import { renderRelayTree } from "DevTools"
 import { MockBoot } from "DevTools/MockBoot"
@@ -57,7 +58,9 @@ const getWrapper = (viewer, breakpoint = "xl") => {
       hasTerm: true,
     },
     wrapper: children => (
-      <MockBoot breakpoint={breakpoint as any}>{children}</MockBoot>
+      <MockBoot breakpoint={breakpoint as any}>
+        <SearchBarProvider>{children}</SearchBarProvider>
+      </MockBoot>
     ),
   })
 }

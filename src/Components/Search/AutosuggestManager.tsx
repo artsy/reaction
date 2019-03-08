@@ -1,9 +1,8 @@
 import { Box } from "@artsy/palette"
-import { SearchBarState } from "Components/Search/state"
 import React from "react"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 import { get } from "Utils/get"
+import { SearchBarConsumer, SearchBarState } from "./SearchBarContext"
 
 const keyCodes = {
   RIGHT: 39,
@@ -25,16 +24,14 @@ const AutosuggestContainer = styled(Box)`
   }
 `
 
-export const shouldNavigateToPreview = searchState => {
-  const { state } = searchState
+export const shouldNavigateToPreview = (state: SearchBarState) => {
   const previewItem = state.previewItems[state.selectedPreviewIndex]
   const href = get(previewItem, item => item.href)
   return state.hasEnteredPreviews && href
 }
 
-export const handlePreviewSelection = searchState => {
-  const { state } = searchState
-  if (shouldNavigateToPreview(searchState)) {
+export const handlePreviewSelection = (state: SearchBarState) => {
+  if (shouldNavigateToPreview(state)) {
     window.location.assign(state.previewItems[state.selectedPreviewIndex].href)
     return
   }
@@ -44,14 +41,13 @@ const handleKeyboardNavigation = (
   keyCode: number,
   searchState: SearchBarState
 ) => {
-  const { state } = searchState
   if (keyCode === keyCodes.RIGHT) {
-    if (state.hasEnteredPreviews) {
+    if (searchState.hasEnteredPreviews) {
       searchState.incrementSelectedPreviewIndex()
     } else {
       searchState.enterPreview()
     }
-  } else if (keyCode === keyCodes.LEFT && state.hasEnteredPreviews) {
+  } else if (keyCode === keyCodes.LEFT && searchState.hasEnteredPreviews) {
     searchState.decrementOrLeavePreview()
   } else if (keyCode === keyCodes.UP || keyCode === keyCodes.DOWN) {
     searchState.reset()
@@ -64,7 +60,7 @@ export const AutosuggestManager: React.ExoticComponent<
   React.HTMLProps<HTMLDivElement>
 > = React.forwardRef(({ children }, ref: React.RefObject<any>) => {
   return (
-    <Subscribe to={[SearchBarState]}>
+    <SearchBarConsumer>
       {(searchState: SearchBarState) => {
         return (
           <AutosuggestContainer
@@ -77,6 +73,6 @@ export const AutosuggestManager: React.ExoticComponent<
           </AutosuggestContainer>
         )
       }}
-    </Subscribe>
+    </SearchBarConsumer>
   )
 })

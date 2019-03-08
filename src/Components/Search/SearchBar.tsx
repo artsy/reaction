@@ -25,7 +25,6 @@ import {
 import { data as sd } from "sharify"
 import styled from "styled-components"
 import request from "superagent"
-import { Provider, Subscribe } from "unstated"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -35,8 +34,12 @@ import {
   handlePreviewSelection,
   shouldNavigateToPreview,
 } from "./AutosuggestManager"
+import {
+  SearchBarConsumer,
+  SearchBarProvider,
+  SearchBarState,
+} from "./SearchBarContext"
 import { SearchInputContainer } from "./SearchInputContainer"
-import { SearchBarState } from "./state"
 
 const logger = createLogger("Components/Search/SearchBar")
 
@@ -346,9 +349,9 @@ export class SearchBar extends Component<Props, State> {
       name: "term",
     }
 
-    if (searchState.state.selectedPreviewIndex != null) {
+    if (searchState.selectedPreviewIndex != null) {
       inputProps["aria-activedescendant"] = `preview-${
-        searchState.state.selectedPreviewIndex
+        searchState.selectedPreviewIndex
       }`
     }
 
@@ -366,7 +369,7 @@ export class SearchBar extends Component<Props, State> {
       <AutosuggestManager ref={ref => (this.containerRef = ref)}>
         <Autosuggest
           alwaysRenderSuggestions={
-            searchState.state.hasEnteredPreviews || this.userClickedOnDescendant
+            searchState.hasEnteredPreviews || this.userClickedOnDescendant
           }
           suggestions={suggestions}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -407,11 +410,11 @@ export class SearchBar extends Component<Props, State> {
 export const SearchBarRefetchContainer = createRefetchContainer(
   (props: Props) => {
     return (
-      <Subscribe to={[SearchBarState]}>
+      <SearchBarConsumer>
         {(searchState: SearchBarState) => {
           return <SearchBar {...props} searchState={searchState} />
         }}
-      </Subscribe>
+      </SearchBarConsumer>
     )
   },
   {
@@ -465,9 +468,9 @@ export const SearchBarQueryRenderer: React.FC = () => {
       render={({ props }) => {
         if (props) {
           return (
-            <Provider>
+            <SearchBarProvider>
               <SearchBarRefetchContainer viewer={props.viewer} />
-            </Provider>
+            </SearchBarProvider>
           )
         } else {
           return (

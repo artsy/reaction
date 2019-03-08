@@ -1,8 +1,7 @@
 import { Box } from "@artsy/palette"
-import { SearchBarState } from "Components/Search/state"
 import React from "react"
-import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
+import { SearchBarConsumer, SearchBarState } from "../SearchBarContext"
 import { ArtistSearchPreviewQueryRenderer as ArtistSearchPreview } from "./Grids/ArtistSearch"
 import { MerchandisableArtworksPreviewQueryRenderer as MerchandisableArtworksPreview } from "./Grids/MerchandisableArtworks"
 
@@ -48,11 +47,11 @@ export class SearchPreviewWrapper extends React.Component<{
 }> {
   render() {
     return (
-      <Subscribe to={[SearchBarState]}>
+      <SearchBarConsumer>
         {(searchState: SearchBarState) => {
           return <SearchPreview {...this.props} searchState={searchState} />
         }}
-      </Subscribe>
+      </SearchBarConsumer>
     )
   }
 }
