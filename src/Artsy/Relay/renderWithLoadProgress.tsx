@@ -1,4 +1,4 @@
-import { Spinner } from "@artsy/palette"
+import { Spinner, SpinnerProps } from "@artsy/palette"
 import React from "react"
 import { ReadyState, RelayContainer } from "react-relay"
 import styled from "styled-components"
@@ -48,7 +48,8 @@ const handleError = error => {
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {},
-  wrapperProps: object = {}
+  wrapperProps: object = {},
+  spinnerProps: SpinnerProps = {}
 ): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
   // TODO: We need design for retrying or the approval to use the iOS design.
   // See also: https://artsyproduct.atlassian.net/browse/PLATFORM-1272
@@ -61,7 +62,7 @@ export function renderWithLoadProgress<P>(
     } else {
       return (
         <SpinnerContainer className={LoadingClassName} {...wrapperProps}>
-          <Spinner />
+          <Spinner {...spinnerProps} />
         </SpinnerContainer>
       )
     }

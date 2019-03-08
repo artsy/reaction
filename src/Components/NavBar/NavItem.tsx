@@ -1,10 +1,11 @@
-import { Box, BoxProps, Link as TextLink, Sans } from "@artsy/palette"
+import { Box, BoxProps, Link, Sans } from "@artsy/palette"
 import React, { useState } from "react"
 import styled from "styled-components"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
   href?: string
+  active?: boolean
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -12,8 +13,9 @@ export const NavItem: React.FC<NavItemProps> = ({
   display = "block",
   children,
   href,
+  active = false,
 }) => {
-  const [hover, toggleHover] = useState(false)
+  const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const hoverColor = hover ? "purple100" : "black80"
 
@@ -26,11 +28,11 @@ export const NavItem: React.FC<NavItemProps> = ({
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
     >
-      <TextLink href={href} color={hoverColor}>
+      <Link href={href} color={hoverColor} underlineBehavior={"none" as any}>
         <Sans size="3" weight="medium" color={hoverColor}>
           {children}
         </Sans>
-      </TextLink>
+      </Link>
       {showMenu && (
         <MenuContainer>
           <Menu />

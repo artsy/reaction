@@ -1,3 +1,3 @@
 export * from "./MoreNavMenu"
-export * from "./NotificationMenu"
+export * from "./NotificationsMenu"
 export * from "./UserMenu"
