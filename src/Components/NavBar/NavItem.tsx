@@ -6,6 +6,7 @@ interface NavItemProps extends BoxProps {
   Menu?: React.FC
   href?: string
   active?: boolean
+  onClick?: () => void
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -14,6 +15,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   children,
   href,
   active = false,
+  onClick,
 }) => {
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
@@ -27,6 +29,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       style={{ cursor: "pointer" }}
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
+      onClick={onClick}
     >
       <Link href={href} color={hoverColor} underlineBehavior={"none" as any}>
         <Sans size="3" weight="medium" color={hoverColor}>

@@ -10,6 +10,9 @@ import {
   UserMenu,
 } from "./Menus"
 
+import { MobileNavMenu } from "./MobileNavMenu"
+import { MobileToggleIcon } from "./MobileNavMenu/MobileToggleIcon"
+
 import {
   ArtsyMarkIcon,
   BellIcon,
@@ -18,118 +21,107 @@ import {
   color,
   Flex,
   Link,
-  Menu,
-  MenuItem,
   MoreIcon,
-  Separator,
   SoloIcon,
   Spacer,
 } from "@artsy/palette"
 
 export const NavBar: React.FC = () => {
   const [isLoggedIn, toggleLogin] = useState(true)
-  const showMobileMenu = false
+  const [showMobileMenu, toggleMobileNav] = useState(false)
 
   return (
-    <Container p={1}>
-      <NavSection>
-        <Link href="/" style={{ display: "flex" }}>
-          <ArtsyMarkIcon height={40} width={40} />
-        </Link>
-      </NavSection>
-
-      <Spacer mr={1} />
-
-      <NavSection width="100%">
-        <Box width="100%" maxWidth={570}>
-          <SearchBar />
-        </Box>
-      </NavSection>
-
-      <Spacer mr={3} />
-
-      {/*
-        Desktop
-      */}
-      <NavSection display={["none", "flex"]}>
+    <>
+      <NavBarContainer p={1}>
         <NavSection>
-          <NavItem href="/collect">Artworks</NavItem>
-          <NavItem href="/auctions">Auctions</NavItem>
+          <Link href="/" style={{ display: "flex" }}>
+            <ArtsyMarkIcon height={40} width={40} />
+          </Link>
+        </NavSection>
 
-          {/**
-            Only show Galleries and Fairs at `lg` and `xl`
-          */}
-          <NavItem href="/galleries" display={["none", "none", "block"]}>
-            Galleries
-          </NavItem>
-          <NavItem
-            href="/art-fairs"
-            display={["none", "none", "none", "block"]}
-          >
-            Fairs
-          </NavItem>
-          <NavItem href="/articles">Magazine</NavItem>
-          <NavItem Menu={MoreNavMenu}>
-            <MoreIcon top="3px" />
-          </NavItem>
+        <Spacer mr={1} />
 
-          <Spacer mr={3} />
+        <NavSection width="100%">
+          <Box width="100%" maxWidth={570}>
+            <SearchBar />
+          </Box>
+        </NavSection>
 
-          {isLoggedIn && (
-            <>
-              <NavItem Menu={NotificationsMenu}>
-                <BellIcon top={3} />
-              </NavItem>
-              <NavItem Menu={UserMenu}>
-                <SoloIcon top={3} />
-              </NavItem>
-            </>
+        <Spacer mr={3} />
+
+        {/*
+          Desktop
+        */}
+        <NavSection display={["none", "flex"]}>
+          <NavSection>
+            <NavItem href="/collect">Artworks</NavItem>
+            <NavItem href="/auctions">Auctions</NavItem>
+
+            {/**
+              Only show Galleries and Fairs at `lg` and `xl`
+            */}
+            <NavItem href="/galleries" display={["none", "none", "block"]}>
+              Galleries
+            </NavItem>
+            <NavItem
+              href="/art-fairs"
+              display={["none", "none", "none", "block"]}
+            >
+              Fairs
+            </NavItem>
+            <NavItem href="/articles">Magazine</NavItem>
+            <NavItem Menu={MoreNavMenu}>
+              <MoreIcon top="3px" />
+            </NavItem>
+
+            <Spacer mr={3} />
+
+            {isLoggedIn && (
+              <>
+                <NavItem Menu={NotificationsMenu}>
+                  <BellIcon top={3} />
+                </NavItem>
+                <NavItem Menu={UserMenu}>
+                  <SoloIcon top={3} />
+                </NavItem>
+              </>
+            )}
+          </NavSection>
+
+          {!isLoggedIn && (
+            <NavSection>
+              <Button
+                variant="secondaryOutline"
+                onClick={() => toggleLogin(true)}
+              >
+                Log in
+              </Button>
+              <Spacer mr={1} />
+              <Button>Sign up</Button>
+            </NavSection>
           )}
         </NavSection>
 
-        {!isLoggedIn && (
-          <NavSection>
-            <Button
-              variant="secondaryOutline"
-              onClick={() => toggleLogin(true)}
+        {/*
+          Mobile
+        */}
+        <NavSection display={["flex", "none"]}>
+          <NavItem onClick={() => toggleMobileNav(!showMobileMenu)}>
+            <Flex
+              alignItems="center"
+              justifyContent="center"
+              width={22}
+              height={22}
             >
-              Log in
-            </Button>
-            <Spacer mr={1} />
-            <Button>Sign up</Button>
-          </NavSection>
-        )}
-      </NavSection>
-
-      {/*
-        Mobile
-      */}
-      <NavSection display={["flex", "none"]}>
-        <NavItem>
-          Icon
-          {showMobileMenu && (
-            <Flex flexDirection="column">
-              <Menu>
-                <MenuItem href="/">Home</MenuItem>
-                <MenuItem href="/artworks">Artworks</MenuItem>
-                <MenuItem href="/auctions">Auctions</MenuItem>
-                <MenuItem href="/articles">Magazine</MenuItem>
-                <MenuItem href="/galleries">Galleries</MenuItem>
-                <MenuItem href="/fairs">Fairs</MenuItem>
-                <MenuItem href="/artists">Artists</MenuItem>
-                <MenuItem href="/shows">Shows</MenuItem>
-                <MenuItem href="/institutions">Museums</MenuItem>
-
-                <Separator />
-
-                <MenuItem href="/works-for-you">Works for you</MenuItem>
-                <MenuItem href="/user/edit">Account</MenuItem>
-              </Menu>
+              <MobileNavDivider />
+              <MobileToggleIcon open={showMobileMenu} />
             </Flex>
-          )}
-        </NavItem>
-      </NavSection>
-    </Container>
+          </NavItem>
+        </NavSection>
+      </NavBarContainer>
+
+      {showMobileMenu && <MobileNavMenu />}
+    </>
   )
 }
 
@@ -139,7 +131,15 @@ const NavSection = ({ children, ...props }) => (
   </Flex>
 )
 
-const Container = styled(Flex)`
+const NavBarContainer = styled(Flex)`
   background-color: ${color("white100")};
   border-bottom: 1px solid ${color("black10")};
+`
+
+// FIXME: This needs to be cleaned up once we get proper icons
+const MobileNavDivider = styled(Box)`
+  border-left: 1px solid ${color("black10")};
+  height: 63px;
+  position: absolute;
+  left: -12px;
 `
