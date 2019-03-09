@@ -2,7 +2,10 @@ import React, { useContext } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { SystemContext } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import {
+  LoadProgressRenderer,
+  renderWithLoadProgress,
+} from "Artsy/Relay/renderWithLoadProgress"
 import { get } from "Utils/get"
 
 import {
@@ -21,7 +24,9 @@ import {
   Separator,
 } from "@artsy/palette"
 
-const NotificationsMenu: React.FC<NotificationsMenuQueryResponse> = props => {
+const NotificationMenuItems: React.FC<
+  NotificationsMenuQueryResponse
+> = props => {
   const notifications = get(props, p => p.me.followsAndSaves.notifications.edges, []) // prettier-ignore
 
   return (
@@ -72,32 +77,32 @@ const NotificationsMenu: React.FC<NotificationsMenuQueryResponse> = props => {
   )
 }
 
-export const NotificationsMenuQueryRenderer: React.FC = () => {
+export const NotificationsQueryRenderer: React.FC<{
+  render: LoadProgressRenderer<any>
+}> = ({ render }) => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <Menu title="Actvity">
-      <QueryRenderer<NotificationsMenuQuery>
-        environment={relayEnvironment}
-        query={graphql`
-          query NotificationsMenuQuery {
-            me {
-              followsAndSaves {
-                notifications: bundledArtworksByArtist(
-                  sort: PUBLISHED_AT_DESC
-                  for_sale: true
-                  first: 10
-                ) @connection(key: "WorksForYou_notifications") {
-                  edges {
-                    node {
-                      href
-                      summary
-                      artists
-                      published_at(format: "MMM DD")
-                      image {
-                        resized(height: 40, width: 40) {
-                          url
-                        }
+    <QueryRenderer<NotificationsMenuQuery>
+      environment={relayEnvironment}
+      query={graphql`
+        query NotificationsMenuQuery {
+          me {
+            followsAndSaves {
+              notifications: bundledArtworksByArtist(
+                sort: PUBLISHED_AT_DESC
+                for_sale: true
+                first: 10
+              ) @connection(key: "WorksForYou_notifications") {
+                edges {
+                  node {
+                    href
+                    summary
+                    artists
+                    published_at(format: "MMM DD")
+                    image {
+                      resized(height: 40, width: 40) {
+                        url
                       }
                     }
                   }
@@ -105,10 +110,20 @@ export const NotificationsMenuQueryRenderer: React.FC = () => {
               }
             }
           }
-        `}
-        variables={{}}
+        }
+      `}
+      variables={{}}
+      render={render}
+    />
+  )
+}
+
+export const NotificationsMenu: React.FC = () => {
+  return (
+    <Menu title="Actvity">
+      <NotificationsQueryRenderer
         render={renderWithLoadProgress(
-          NotificationsMenu,
+          NotificationMenuItems,
           {},
           {},
           { size: "small" }

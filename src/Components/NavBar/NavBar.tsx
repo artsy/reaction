@@ -5,13 +5,14 @@ import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar
 import { NavItem } from "./NavItem"
 
 import {
+  MobileNavMenu,
+  MobileToggleIcon, // FIXME: Move this out when we have an icon
   MoreNavMenu,
-  NotificationsMenuQueryRenderer as NotificationsMenu,
+  NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
-import { MobileNavMenu } from "./MobileNavMenu"
-import { MobileToggleIcon } from "./MobileNavMenu/MobileToggleIcon"
+import { NotificationsBadge } from "./NotificationsBadge"
 
 import {
   ArtsyMarkIcon,
@@ -69,7 +70,7 @@ export const NavBar: React.FC = () => {
             >
               Fairs
             </NavItem>
-            <NavItem href="/articles">Magazine</NavItem>
+            <NavItem href="/articles">Editorial</NavItem>
             <NavItem Menu={MoreNavMenu}>
               <MoreIcon top="3px" />
             </NavItem>
@@ -78,7 +79,7 @@ export const NavBar: React.FC = () => {
 
             {isLoggedIn && (
               <>
-                <NavItem Menu={NotificationsMenu}>
+                <NavItem Menu={NotificationsMenu} Overlay={NotificationsBadge}>
                   <BellIcon top={3} />
                 </NavItem>
                 <NavItem Menu={UserMenu}>
