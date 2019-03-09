@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.2.3.tgz#fa4448435f48f2d289da89758872423296878eac"
-  integrity sha512-G2XGKqKUE7UAgP69KktU7rOz/DvXQVDvK2CRddnQh94al8QUxRBa2ws1R4dC9C8Cos88WDlrF+0qbRQ6W/eNMA==
+"@artsy/palette@3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-3.2.5.tgz#0f671d92afdc0ef35e4366a5fa8cef708fa9ffe1"
+  integrity sha512-ikTzFt98tJWfmbTZfQ9QP3KSBqLvFT+jVGSDAvPjoggOv+2FRXVH6ZUznxkMxLntgzXvbOe/E9ACq62sIkrdTA==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
