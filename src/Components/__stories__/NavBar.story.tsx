@@ -1,16 +1,42 @@
-import React from "react"
+import React, { useContext } from "react"
 import { storiesOf } from "storybook/storiesOf"
 
 import { Box } from "@artsy/palette"
-import { SystemContextProvider } from "Artsy"
+import { SystemContext, SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 
-storiesOf("Components/NavBar", module).add("NavBar", () => {
+storiesOf("Components/NavBar", module)
+  .add("Logged Out", () => {
+    return (
+      <Box width="100%">
+        <SystemContextProvider>
+          <NavBar />
+        </SystemContextProvider>
+
+        <PageCopy />
+      </Box>
+    )
+  })
+
+  .add("Logged in", () => {
+    const LoggedInNavBar = () => {
+      const { user } = useContext(SystemContext)
+      return <NavBar user={user} />
+    }
+    return (
+      <Box width="100%">
+        <SystemContextProvider>
+          <LoggedInNavBar />
+        </SystemContextProvider>
+
+        <PageCopy />
+      </Box>
+    )
+  })
+
+const PageCopy = () => {
   return (
-    <Box width="100%">
-      <SystemContextProvider>
-        <NavBar />
-      </SystemContextProvider>
+    <>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nibh
         quis ex imperdiet tristique eu non nisl. Nullam dignissim ex vel
@@ -63,6 +89,6 @@ storiesOf("Components/NavBar", module).add("NavBar", () => {
         malesuada quam. Nulla et est laoreet, malesuada justo in, lacinia
         tellus. In mattis euismod mattis.
       </p>
-    </Box>
+    </>
   )
-})
+}

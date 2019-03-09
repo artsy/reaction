@@ -1,18 +1,20 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 
+import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
-import { NavItem } from "./NavItem"
 
 import {
   MobileNavMenu,
-  MobileToggleIcon, // FIXME: Move this out when we have an icon
+  MobileToggleIcon,
   MoreNavMenu,
   NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
+import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
+import * as auth from "./Utils/auth"
 
 import {
   ArtsyMarkIcon,
@@ -27,9 +29,14 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-export const NavBar: React.FC = () => {
-  const [isLoggedIn, toggleLogin] = useState(true)
+interface NavBarProps {
+  user?: User
+}
+
+export const NavBar: React.FC<NavBarProps> = ({ user }) => {
+  const { mediator } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
+  const isLoggedIn = Boolean(user)
 
   return (
     <>
@@ -70,7 +77,7 @@ export const NavBar: React.FC = () => {
             >
               Fairs
             </NavItem>
-            <NavItem href="/articles">Editorial</NavItem>
+            <NavItem href="/articles">Magazine</NavItem>
             <NavItem Menu={MoreNavMenu}>
               <MoreIcon top="3px" />
             </NavItem>
@@ -93,12 +100,12 @@ export const NavBar: React.FC = () => {
             <NavSection>
               <Button
                 variant="secondaryOutline"
-                onClick={() => toggleLogin(true)}
+                onClick={() => auth.login(mediator)}
               >
                 Log in
               </Button>
               <Spacer mr={1} />
-              <Button>Sign up</Button>
+              <Button onClick={() => auth.signup(mediator)}>Sign up</Button>
             </NavSection>
           )}
         </NavSection>

@@ -2,11 +2,12 @@ import React, { useContext } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { SystemContext } from "Artsy"
+import { get } from "Utils/get"
+
 import {
   LoadProgressRenderer,
   renderWithLoadProgress,
 } from "Artsy/Relay/renderWithLoadProgress"
-import { get } from "Utils/get"
 
 import {
   NotificationsMenuQuery,
@@ -27,7 +28,13 @@ import {
 const NotificationMenuItems: React.FC<
   NotificationsMenuQueryResponse
 > = props => {
-  const notifications = get(props, p => p.me.followsAndSaves.notifications.edges, []) // prettier-ignore
+  const notifications = get(
+    props,
+    p => {
+      return p.me.followsAndSaves.notifications.edges
+    },
+    []
+  )
 
   return (
     <>
@@ -77,6 +84,26 @@ const NotificationMenuItems: React.FC<
   )
 }
 
+export const NotificationsMenu: React.FC = () => {
+  return (
+    <Menu title="Actvity">
+      <NotificationsQueryRenderer
+        render={renderWithLoadProgress(
+          NotificationMenuItems,
+          {},
+          {},
+          { size: "small" }
+        )}
+      />
+    </Menu>
+  )
+}
+
+/**
+ * This QueryRenderer is also shared with NotificationBadge. Once the request
+ * is performed the data is cached at the network layer so menu data appears
+ * immediately and doesn't require a second request.
+ */
 export const NotificationsQueryRenderer: React.FC<{
   render: LoadProgressRenderer<any>
 }> = ({ render }) => {
@@ -91,7 +118,6 @@ export const NotificationsQueryRenderer: React.FC<{
             followsAndSaves {
               notifications: bundledArtworksByArtist(
                 sort: PUBLISHED_AT_DESC
-                for_sale: true
                 first: 10
               ) @connection(key: "WorksForYou_notifications") {
                 edges {
@@ -115,20 +141,5 @@ export const NotificationsQueryRenderer: React.FC<{
       variables={{}}
       render={render}
     />
-  )
-}
-
-export const NotificationsMenu: React.FC = () => {
-  return (
-    <Menu title="Actvity">
-      <NotificationsQueryRenderer
-        render={renderWithLoadProgress(
-          NotificationMenuItems,
-          {},
-          {},
-          { size: "small" }
-        )}
-      />
-    </Menu>
   )
 }

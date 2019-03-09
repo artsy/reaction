@@ -1,5 +1,7 @@
+import cookie from "cookies-js"
 import React from "react"
 import { ReadyState } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 import { color, Flex, Sans } from "@artsy/palette"
@@ -22,15 +24,42 @@ export const NotificationsBadge = () => {
           return null
         }
 
-        const notificationCount = get(props, p => p.me.followsAndSaves.notifications.edges.length, 0) // prettier-ignore
-        if (notificationCount === 0) {
+        // Get the unread notification count from the server, but first defer
+        // to the value stored in the cookie.
+        const totalUnread = get(
+          props,
+          p => {
+            return (
+              sd.NOTIFICATION_COUNT ||
+              p.me.followsAndSaves.notifications.edges.length
+            )
+          },
+          0
+        )
+
+        let notificationLabel
+
+        // Update the notification bad with the count, and store it in a cookie
+        // so that subsequent page views don't need a fetch in order to render
+        // the badge
+        if (
+          totalUnread > 0 &&
+          cookie.get("notification-count") !== totalUnread
+        ) {
+          notificationLabel = totalUnread >= 100 ? "99+" : totalUnread
+          cookie.set("notification-count", totalUnread)
+        }
+
+        // User has no notifications; clear the cookie
+        if (totalUnread === 0) {
+          cookie.expire("notification-count")
           return null
         }
 
         return (
           <Container>
             <Sans size="1" weight="medium" color="white100">
-              {notificationCount}
+              {notificationLabel}
             </Sans>
           </Container>
         )
