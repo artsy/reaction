@@ -54,6 +54,8 @@ export enum ActionType {
    */
   ClickedReadMore = "Clicked read more",
 
+  ClickedCommercialFilter = "Clicked commercial filter params",
+
   /**
    * A/B Test Experiments
    */

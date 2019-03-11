@@ -2,6 +2,7 @@ import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
@@ -160,9 +161,12 @@ class Filter extends Component<Props> {
     )
   }
 
-  @track((_props, _state, [_selected, category, count]) => {
-    const changeProperty = `changed_${category}`
-    return { [changeProperty]: count.id }
+  @track((props: Props, _state, [_selected, category, count]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { [category]: count.id },
+      current: { ...props.filterState.state },
+    }
   })
   handleCategorySelect(selected, category, count) {
     const { filterState, mediator } = this.props
