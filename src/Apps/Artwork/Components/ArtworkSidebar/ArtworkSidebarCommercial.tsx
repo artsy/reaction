@@ -230,7 +230,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", { mode: "login" })
+      mediator.trigger("open:auth", {
+        mode: "login",
+        redirectTo: location.href,
+      })
     }
   }
 
@@ -310,7 +313,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", { mode: "login" })
+      mediator.trigger("open:auth", {
+        mode: "login",
+        redirectTo: location.href,
+      })
     }
   }
 
