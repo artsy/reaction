@@ -1,3 +1,23 @@
+# v14.3.12 (Mon Mar 11 2019)
+
+#### 🐛  Bug Fix
+
+- explicitly add redirectTo property for fb auth flow [#2138](https://github.com/artsy/reaction/pull/2138) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v3.2.6 [#2134](https://github.com/artsy/reaction/pull/2134) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v3.2.5 [#2130](https://github.com/artsy/reaction/pull/2130) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v3.2.3 [#2128](https://github.com/artsy/reaction/pull/2128) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v3.2.2 [#2118](https://github.com/artsy/reaction/pull/2118) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v14.3.11 (Thu Mar 07 2019)
 
 #### 🐛  Bug Fix
