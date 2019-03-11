@@ -1,3 +1,15 @@
+# v14.3.13 (Mon Mar 11 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Create shell for search2, with a tab navigation [#2137](https://github.com/artsy/reaction/pull/2137) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v14.3.12 (Mon Mar 11 2019)
 
 #### 🐛  Bug Fix
