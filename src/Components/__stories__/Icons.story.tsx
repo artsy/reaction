@@ -1,5 +1,5 @@
-import { storiesOf } from "@storybook/react"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 
 import { Box, Col, Flex, Grid, Row } from "@artsy/palette"
 import * as svgs from "@artsy/palette"
@@ -20,13 +20,13 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
         <Row>
           <Flex flexDirection="row" flexWrap="wrap">
             <Col p={1} width="auto">
-              <svgs.BellIcon />
+              <svgs.BellIcon width="25" />
             </Col>
             <Col p={1} width="auto">
               <svgs.CheckIcon />
             </Col>
             <Col p={1} width="auto">
-              <svgs.ChevronIcon size={40} />
+              <svgs.ChevronIcon width={40} height={40} />
             </Col>
             <Col p={1} width="auto">
               <svgs.CircleBlackCheckIcon width="25" height="25" />
@@ -38,7 +38,7 @@ storiesOf("Components/Icons", module).add("All Icons", () => {
               <svgs.ClosedEyeIcon />
             </Col>
             <Col p={1} width="auto">
-              <svgs.FilterIcon fill="#000" />
+              <svgs.FilterIcon fill="black10" />
             </Col>
             <Col p={1} width="auto">
               <svgs.HeartIcon />

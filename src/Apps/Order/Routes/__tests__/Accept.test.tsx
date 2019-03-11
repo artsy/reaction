@@ -90,7 +90,9 @@ describe("Accept seller offer", () => {
     })
 
     it("Shows the stepper", async () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"checkRespond navigate rightReview"`
+      )
       expect(page.orderStepperCurrentStep).toBe(`Review`)
     })
 
@@ -111,13 +113,13 @@ describe("Accept seller offer", () => {
 
     it("shows the shipping details", async () => {
       expect(page.shippingSummary.text()).toMatch(
-        "Ship toJoelle Van Dyne401 Broadway"
+        "Ship toLockedJoelle Van Dyne401 Broadway"
       )
     })
 
     it("shows the payment details", async () => {
       expect(page.paymentSummary.text()).toMatchInlineSnapshot(
-        `"•••• 4444  Exp 3/21"`
+        `"Lockedvisa•••• 4444  Exp 3/21"`
       )
     })
 

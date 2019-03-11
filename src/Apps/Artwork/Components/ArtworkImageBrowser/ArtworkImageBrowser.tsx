@@ -172,7 +172,7 @@ const ArrowButton = ({ direction, onClick }) => {
       alignItems={direction === "left" ? "flex-start" : "flex-end"}
       onClick={onClick}
     >
-      <ChevronIcon direction={direction} size={50} />
+      <ChevronIcon direction={direction} width={30} height={30} />
     </ArrowButtonContainer>
   )
 }

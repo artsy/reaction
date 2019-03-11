@@ -90,7 +90,9 @@ describe("Submit Pending Counter Offer", () => {
     })
 
     it("Shows the stepper", () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"checkRespond navigate rightReview"`
+      )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })
 
@@ -110,13 +112,13 @@ describe("Submit Pending Counter Offer", () => {
 
     it("shows the shipping details", () => {
       expect(page.shippingSummary.text()).toMatch(
-        "Ship toJoelle Van Dyne401 Broadway"
+        "Ship toLockedJoelle Van Dyne401 Broadway"
       )
     })
 
     it("shows the payment details", () => {
       expect(page.paymentSummary.text()).toMatchInlineSnapshot(
-        `"•••• 4444  Exp 3/21"`
+        `"Lockedvisa•••• 4444  Exp 3/21"`
       )
     })
 

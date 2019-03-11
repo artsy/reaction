@@ -140,7 +140,9 @@ describe("The respond page", () => {
     })
 
     it("shows the stepper", () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"RespondReview"`)
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"Respondnavigate rightReview"`
+      )
       expect(page.orderStepperCurrentStep).toBe("Respond")
     })
 
@@ -187,13 +189,13 @@ describe("The respond page", () => {
 
     it("shows the shipping details", () => {
       expect(page.shippingSummary.text()).toMatch(
-        "Ship toJoelle Van Dyne401 Broadway"
+        "Ship toLockedJoelle Van Dyne401 Broadway"
       )
     })
 
     it("shows the payment details", () => {
       expect(page.paymentSummary.text()).toMatchInlineSnapshot(
-        `"•••• 4444  Exp 3/21"`
+        `"Lockedvisa•••• 4444  Exp 3/21"`
       )
     })
 

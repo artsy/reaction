@@ -3,14 +3,7 @@ import React, { useContext } from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
 
-import {
-  Button,
-  color,
-  FilterIcon,
-  Flex,
-  SmallSelect,
-  Spacer,
-} from "@artsy/palette"
+import { Button, FilterIcon, Flex, SmallSelect, Spacer } from "@artsy/palette"
 
 export const SortFilter: React.FC<{
   filters: FilterState
@@ -52,7 +45,7 @@ export const SortFilter: React.FC<{
       <Media at="xs">
         <Button size="small" mt={-1} onClick={onShow}>
           <Flex justifyContent="space-between" alignItems="center">
-            <FilterIcon fill={color("white100")} />
+            <FilterIcon fill="white100" />
             <Spacer mr={0.5} />
             Filter
           </Flex>
