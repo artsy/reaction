@@ -1,3 +1,15 @@
+# v15.2.0 (Tue Mar 12 2019)
+
+#### 🚀  Enhancement
+
+- Lazy-load images in the artwork grid [#2064](https://github.com/artsy/reaction/pull/2064) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.1.1 (Tue Mar 12 2019)
 
 #### 🏠  Internal
