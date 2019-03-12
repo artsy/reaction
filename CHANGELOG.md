@@ -1,3 +1,15 @@
+# v15.0.0 (Tue Mar 12 2019)
+
+#### 💥  Breaking Change
+
+- [Icons Upgrade] Fix incompatabilities [#2140](https://github.com/artsy/reaction/pull/2140) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v14.3.14 (Mon Mar 11 2019)
 
 
