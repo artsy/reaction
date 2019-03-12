@@ -99,7 +99,7 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: number,
     sectionedArtworks: SectionedArtworks
   ) {
-    const { preloadImageCount = 0 } = this.props
+    const { preloadImageCount } = this.props
     const spacerStyle = {
       height: this.props.itemMargin,
     }
