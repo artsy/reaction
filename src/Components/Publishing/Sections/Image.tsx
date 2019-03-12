@@ -31,7 +31,10 @@ export const Image: React.SFC<ImageProps> = props => {
     width,
   } = props
   const caption = image.caption || ""
-  const src = resize(image.url, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
+  const src = resize(image.url, {
+    width: layout === "feature" ? 2000 : 1200,
+    quality: GLOBAL_IMAGE_QUALITY,
+  })
   const alt = caption.replace(/<[^>]*>/g, "") /* strip caption html */
 
   return (
