@@ -42,9 +42,14 @@ describe("SelectedCareerAchievements", () => {
   })
 
   it("renders selected career achievements if no auction results or partner highlights", async () => {
-    ArtistFixture.auctionResults = null
-    ArtistFixture.highlights.partners = null
-    wrapper = await getWrapper(ArtistFixture)
+    wrapper = await getWrapper({
+      ...ArtistFixture,
+      auctionResults: null,
+      highlights: {
+        ...ArtistFixture.highlights,
+        partners: null,
+      },
+    })
     const text = wrapper.text()
 
     expect(text).toContain("Selected career achievements")
@@ -57,10 +62,30 @@ describe("SelectedCareerAchievements", () => {
   })
 
   it("doesn't render selected career achievements if no auction results, partner highlights, or insights", async () => {
-    ArtistFixture.auctionResults = null
-    ArtistFixture.highlights.partners = null
-    ArtistFixture.insights = null
-    wrapper = await getWrapper(ArtistFixture)
+    wrapper = await getWrapper({
+      ...ArtistFixture,
+      auctionResults: null,
+      highlights: {
+        ...ArtistFixture.highlights,
+        partners: null,
+      },
+      insights: [],
+    })
+    const text = wrapper.text()
+
+    expect(text).toBe(null)
+  })
+
+  it("doesn't render selected career achievements if no auction results or partner highlights and insights is null", async () => {
+    wrapper = await getWrapper({
+      ...ArtistFixture,
+      auctionResults: null,
+      highlights: {
+        ...ArtistFixture.highlights,
+        partners: null,
+      },
+      insights: null,
+    })
     const text = wrapper.text()
 
     expect(text).toBe(null)
