@@ -1,3 +1,4 @@
+import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -34,7 +35,15 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        Component: () => <div>Artwork search results</div>,
+        Component: SearchResultsArtworksRoute,
+        query: graphql`
+          query routes_SearchResultsArtworkQuery($term: String!) {
+            viewer {
+              ...SearchResultsArtworksRoute_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
       },
       {
         path: "artists",
