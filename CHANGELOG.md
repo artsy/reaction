@@ -1,3 +1,29 @@
+# v15.1.0 (Tue Mar 12 2019)
+
+#### 🚀  Enhancement
+
+- @dblandin => [SearchResults] Add basic contents for a tab [#2148](https://github.com/artsy/reaction/pull/2148) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🐛  Bug Fix
+
+- Pass props.color to /video credits [#2136](https://github.com/artsy/reaction/pull/2136) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Lockfile got out of date... [#2147](https://github.com/artsy/reaction/pull/2147) ([@zephraph](https://github.com/zephraph))
+- Update dependency @artsy/palette to v4.0.3 [#2144](https://github.com/artsy/reaction/pull/2144) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+- Pin palette dep [#2143](https://github.com/artsy/reaction/pull/2143) ([@damassi](https://github.com/damassi))
+
+#### Authors: 5
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.0.0 (Tue Mar 12 2019)
 
 #### 💥  Breaking Change
