@@ -25,12 +25,20 @@ const pulseAnimation = props =>
     ${pulse} 2s ease-in-out infinite;
   `
 
-const Image = styled(LazyLoadImage)`
+const imageStyles = css`
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+`
+
+const Image = styled(LazyLoadImage)`
   transition: opacity 0.25s;
+  ${imageStyles};
+`
+
+const EagerImage = styled.img`
+  ${imageStyles};
 `
 
 const Placeholder = styled.div`
@@ -194,12 +202,28 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               }
             }}
           >
-            <Image
-              style={{ opacity: isImageLoaded ? "1" : "0" }}
-              src={this.getImageUrl()}
-              onLoad={this.imageLoaded.bind(this)}
-              visibleByDefault={preloadImage}
-            />
+            {preloadImage ? (
+              <EagerImage
+                title={artwork.title}
+                alt={artwork.image_title}
+                src={this.getImageUrl()}
+              />
+            ) : (
+              <Image
+                title={artwork.title}
+                alt={artwork.image_title}
+                style={{ opacity: isImageLoaded ? "1" : "0" }}
+                src={this.getImageUrl()}
+                onLoad={this.imageLoaded.bind(this)}
+              />
+            )}
+            <noscript>
+              <EagerImage
+                title={artwork.title}
+                alt={artwork.image_title}
+                src={this.getImageUrl()}
+              />
+            </noscript>
           </a>
 
           {this.renderArtworkBadge(artwork)}
@@ -240,6 +264,8 @@ export default createFragmentContainer(
   graphql`
     fragment GridItem_artwork on Artwork {
       _id
+      title
+      image_title
       image {
         placeholder
         url(version: "large")
