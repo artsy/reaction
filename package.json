@@ -16,7 +16,7 @@
     "styled-components": "^4"
   },
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf .cache && rm -rf dist",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
