@@ -47,6 +47,7 @@ class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
         <ArtworkGrid
           artworks={artworksConnection}
           columnCount={[2, 3, 4]}
+          preloadImageCount={0}
           mediator={mediator}
           onBrickClick={this.trackBrickClick.bind(this)}
         />

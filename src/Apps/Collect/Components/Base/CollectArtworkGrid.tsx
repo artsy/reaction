@@ -86,6 +86,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
                     <ArtworkGrid
                       artworks={artworks as any}
                       columnCount={columnCount}
+                      preloadImageCount={9}
                       itemMargin={40}
                       user={user}
                       mediator={mediator}

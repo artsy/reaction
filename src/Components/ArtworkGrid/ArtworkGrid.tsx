@@ -19,6 +19,7 @@ export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
   columnCount?: number | number[]
+  preloadImageCount?: number
   itemMargin?: number
   mediator?: Mediator
   onBrickClick?: () => void
@@ -41,6 +42,7 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: [3],
     sectionMargin: 20,
     itemMargin: 20,
+    preloadImageCount: 6,
   }
 
   state = {
@@ -97,6 +99,7 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: number,
     sectionedArtworks: SectionedArtworks
   ) {
+    const { preloadImageCount } = this.props
     const spacerStyle = {
       height: this.props.itemMargin,
     }
@@ -112,6 +115,7 @@ export class ArtworkGridContainer extends React.Component<
             key={"artwork-" + j + "-" + artwork.__id}
             user={this.props.user}
             mediator={this.props.mediator}
+            preloadImage={i + j < preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
                 this.props.onBrickClick()
