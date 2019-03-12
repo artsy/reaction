@@ -1,3 +1,15 @@
+# v15.2.1 (Tue Mar 12 2019)
+
+#### 🐛  Bug Fix
+
+- Conditionally open mobile sign up when saving artwork [#2151](https://github.com/artsy/reaction/pull/2151) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.2.0 (Tue Mar 12 2019)
 
 #### 🚀  Enhancement
