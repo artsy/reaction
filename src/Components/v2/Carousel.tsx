@@ -59,7 +59,7 @@ export const LargeCarousel = (props: Props) => {
           props.onArrowClick && props.onArrowClick()
         }}
       >
-        <ChevronIcon direction="left" fill="black100" size={50} />
+        <ChevronIcon direction="left" fill="black100" width={30} height={30} />
       </ArrowButton>
 
       <CarouselContainer height={props.height}>
@@ -77,7 +77,7 @@ export const LargeCarousel = (props: Props) => {
           props.onArrowClick && props.onArrowClick()
         }}
       >
-        <ChevronIcon direction="right" fill="black100" size={50} />
+        <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
     </Flex>
   )

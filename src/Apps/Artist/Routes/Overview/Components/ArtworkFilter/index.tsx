@@ -17,7 +17,6 @@ import {
   Box,
   Button,
   Checkbox,
-  color,
   Flex,
   Message,
   Radio,
@@ -302,7 +301,7 @@ class Filter extends Component<Props> {
             onClick={() => filterState.showActionSheet(true)}
           >
             <Flex justifyContent="space-between" alignItems="center">
-              <FilterIcon fill={color("white100")} />
+              <FilterIcon fill={"white100"} />
               <Spacer mr={0.5} />
               Filter
             </Flex>

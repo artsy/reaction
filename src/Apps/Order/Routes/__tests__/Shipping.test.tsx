@@ -345,7 +345,7 @@ Object {
         },
       })
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"Offer ShippingPaymentReview"`
+        `"checkOffer navigate rightShippingnavigate rightPaymentnavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Shipping")
     })

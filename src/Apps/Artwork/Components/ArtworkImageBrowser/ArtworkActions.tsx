@@ -14,12 +14,14 @@ import { Media } from "Utils/Responsive"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
 import {
+  BellFillIcon,
   BellIcon,
   color,
   DownloadIcon,
   EditIcon,
   Flex,
   GenomeIcon,
+  HeartFillIcon,
   HeartIcon,
   Join,
   Link,
@@ -313,6 +315,7 @@ interface UtilButtonProps {
   onClick?: () => void
   selected?: boolean
   label?: string
+  Icon?: React.ReactNode
 }
 
 export class UtilButton extends React.Component<
@@ -324,7 +327,7 @@ export class UtilButton extends React.Component<
   }
 
   render() {
-    const { href, label, name, onClick, ...props } = this.props
+    const { href, label, name, onClick, Icon, ...props } = this.props
 
     const getIcon = () => {
       switch (name) {
@@ -347,9 +350,16 @@ export class UtilButton extends React.Component<
       }
     }
 
-    const Icon = getIcon()
-    const defaultFill = name === "more" ? null : color("black100")
-    const fill = this.state.hovered ? color("purple100") : defaultFill
+    // If we're passing in an `Icon`, override
+    let ActionIcon
+    if (Icon) {
+      ActionIcon = Icon
+    } else {
+      ActionIcon = getIcon()
+    }
+
+    const defaultFill = name === "more" ? null : "black100"
+    const fill = this.state.hovered ? "purple100" : defaultFill
 
     return (
       <UtilButtonContainer
@@ -365,7 +375,7 @@ export class UtilButton extends React.Component<
       >
         {href ? (
           <UtilButtonLink className="noUnderline" href={href} target="_blank">
-            <Icon {...props} fill={fill} />
+            <ActionIcon {...props} fill={"black100"} />
             {label && (
               <Sans size="2" pl={0.5} pt="1px">
                 {label}
@@ -374,7 +384,7 @@ export class UtilButton extends React.Component<
           </UtilButtonLink>
         ) : (
           <>
-            <Icon {...props} fill={fill} />
+            <ActionIcon {...props} fill={fill} />
             {label && (
               <Sans size="2" pl={0.5} pt="1px">
                 {label}
@@ -433,9 +443,23 @@ const Save = (actionProps: ArtworkActionsProps) => (
 
   // If an Auction, use Bell (for notifications); if a standard artwork use Heart
   if (isOpenSale) {
-    return <UtilButton name="bell" selected={isSaved} label="Watch lot" />
+    const FilledIcon = () => <BellFillIcon fill="purple100" />
+    return (
+      <UtilButton
+        name="bell"
+        Icon={isSaved ? FilledIcon : BellIcon}
+        label="Watch lot"
+      />
+    )
   } else {
-    return <UtilButton name="heart" selected={isSaved} label="Save" />
+    const FilledIcon = () => <HeartFillIcon fill="purple100" />
+    return (
+      <UtilButton
+        name="heart"
+        Icon={isSaved ? FilledIcon : HeartIcon}
+        label="Save"
+      />
+    )
   }
 }
 
