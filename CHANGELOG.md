@@ -1,3 +1,15 @@
+# v15.1.1 (Tue Mar 12 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.0.4 [#2149](https://github.com/artsy/reaction/pull/2149) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.1.0 (Tue Mar 12 2019)
 
 #### 🚀  Enhancement

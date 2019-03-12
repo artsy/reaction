@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "15.1.0",
+  "version": "15.1.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -16,7 +16,7 @@
     "styled-components": "^4"
   },
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf .cache && rm -rf dist",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "4.0.3",
+    "@artsy/palette": "4.0.4",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
