@@ -32,12 +32,12 @@ const imageStyles = css`
   left: 0;
 `
 
-const Image = styled(LazyLoadImage)`
+const LazyImage = styled(LazyLoadImage)`
   transition: opacity 0.25s;
   ${imageStyles};
 `
 
-const EagerImage = styled.img`
+const Image = styled.img`
   ${imageStyles};
 `
 
@@ -203,13 +203,13 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
             }}
           >
             {preloadImage ? (
-              <EagerImage
+              <Image
                 title={artwork.title}
                 alt={artwork.image_title}
                 src={this.getImageUrl()}
               />
             ) : (
-              <Image
+              <LazyImage
                 title={artwork.title}
                 alt={artwork.image_title}
                 style={{ opacity: isImageLoaded ? "1" : "0" }}
@@ -218,7 +218,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               />
             )}
             <noscript>
-              <EagerImage
+              <Image
                 title={artwork.title}
                 alt={artwork.image_title}
                 src={this.getImageUrl()}
