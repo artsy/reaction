@@ -16,6 +16,9 @@ import styled from "styled-components"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
 
+import { stringify } from "qs"
+import { data as sd } from "sharify"
+
 const SIZE = 40
 
 export interface SaveTrackingProps {
@@ -126,22 +129,44 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       })
       this.trackSave()
     } else {
-      if (this.props.mediator) {
-        this.props.mediator.trigger("open:auth", {
-          mode: "signup",
-          copy: `Sign up to save artworks`,
-          intent: "save artwork",
-          signupIntent: "save artwork",
-          trigger: "click",
-          afterSignUpAction: {
-            action: "save",
-            objectId: this.props.artwork.id,
-          },
-        })
+      if (sd.IS_MOBILE) {
+        this.openMobileAuth(this.props.artwork)
+      } else if (this.props.mediator) {
+        this.openDesktopAuth(this.props.mediator, this.props.artwork.id)
       } else {
         window.location.href = "/login"
       }
     }
+  }
+
+  openMobileAuth(artwork) {
+    const params = stringify({
+      action: "save",
+      contextModule: "Artwork page",
+      intent: "save artwork",
+      kind: "artwork",
+      objectId: artwork.id,
+      signUpIntent: "save artwork",
+      trigger: "click",
+      entityName: artwork.title,
+    })
+    const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+    window.location.href = href
+  }
+
+  openDesktopAuth(mediator, artworkId) {
+    mediator.trigger("open:auth", {
+      mode: "signup",
+      copy: `Sign up to save artworks`,
+      intent: "save artwork",
+      signupIntent: "save artwork",
+      trigger: "click",
+      afterSignUpAction: {
+        action: "save",
+        objectId: artworkId,
+      },
+    })
   }
 
   mixinButtonActions() {
