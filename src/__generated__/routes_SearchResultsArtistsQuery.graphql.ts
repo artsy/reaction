@@ -1,40 +1,38 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsArtworksRoute_viewer$ref } from "./SearchResultsArtworksRoute_viewer.graphql";
-export type routes_SearchResultsArtworkQueryVariables = {
+import { SearchResultsArtistsRoute_viewer$ref } from "./SearchResultsArtistsRoute_viewer.graphql";
+export type routes_SearchResultsArtistsQueryVariables = {
     readonly term: string;
 };
-export type routes_SearchResultsArtworkQueryResponse = {
+export type routes_SearchResultsArtistsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsArtworksRoute_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsArtistsRoute_viewer$ref;
     }) | null;
 };
-export type routes_SearchResultsArtworkQuery = {
-    readonly response: routes_SearchResultsArtworkQueryResponse;
-    readonly variables: routes_SearchResultsArtworkQueryVariables;
+export type routes_SearchResultsArtistsQuery = {
+    readonly response: routes_SearchResultsArtistsQueryResponse;
+    readonly variables: routes_SearchResultsArtistsQueryVariables;
 };
 
 
 
 /*
-query routes_SearchResultsArtworkQuery(
+query routes_SearchResultsArtistsQuery(
   $term: String!
 ) {
   viewer {
-    ...SearchResultsArtworksRoute_viewer_4hh6ED
+    ...SearchResultsArtistsRoute_viewer_4hh6ED
   }
 }
 
-fragment SearchResultsArtworksRoute_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 10, entities: [ARTWORK]) {
+fragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {
+  search(query: $term, first: 10, entities: [ARTIST]) {
     edges {
       node {
         __typename
-        ... on Artwork {
-          title
-          artist_names
-          date
+        ... on Artist {
+          name
         }
         ... on Node {
           __id
@@ -57,13 +55,13 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchResultsArtworkQuery",
+  "name": "routes_SearchResultsArtistsQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtworkQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtworksRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtworksRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTWORK]) {\n    edges {\n      node {\n        __typename\n        ... on Artwork {\n          title\n          artist_names\n          date\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtistsRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchResultsArtworkQuery",
+    "name": "routes_SearchResultsArtistsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -79,7 +77,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsArtworksRoute_viewer",
+            "name": "SearchResultsArtistsRoute_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -95,7 +93,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchResultsArtworkQuery",
+    "name": "routes_SearchResultsArtistsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -117,7 +115,7 @@ return {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
-                  "ARTWORK"
+                  "ARTIST"
                 ],
                 "type": "[SearchEntity]"
               },
@@ -171,26 +169,12 @@ return {
                       },
                       {
                         "kind": "InlineFragment",
-                        "type": "Artwork",
+                        "type": "Artist",
                         "selections": [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "title",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "artist_names",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "date",
+                            "name": "name",
                             "args": null,
                             "storageKey": null
                           }
@@ -217,5 +201,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5a4f7343143f964173d600b97d3cb6f7';
+(node as any).hash = 'e3c18749ccb285009f8068788ce14a7d';
 export default node;
