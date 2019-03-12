@@ -141,6 +141,20 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   padding-right: 10px;
 }
 
+.c5 {
+  font-family: artsy-icons;
+  color: #000;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  color: #000;
+}
+
 .c20 {
   margin: 10px 20px 0 0;
 }
@@ -202,20 +216,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -ms-flex-align: flex-end;
   align-items: flex-end;
   color: black;
-}
-
-.c5 {
-  font-family: artsy-icons;
-  color: #000;
-  font-size: 32px;
-  margin: 0 5px;
-  display: inline-block;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  position: relative;
-  color: #000;
 }
 
 .c3 {
@@ -6559,6 +6559,20 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   width: 100%;
 }
 
+.c5 {
+  font-family: artsy-icons;
+  color: black;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  color: black;
+}
+
 .c21 {
   margin: 10px 20px 0 0;
 }
@@ -6644,20 +6658,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 
 .c38 > a:hover,
 .c38 a:hover {
-  color: black;
-}
-
-.c5 {
-  font-family: artsy-icons;
-  color: black;
-  font-size: 32px;
-  margin: 0 5px;
-  display: inline-block;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  position: relative;
   color: black;
 }
 
@@ -8214,7 +8214,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="A still from Donald Glover’s “This Is America” video. Courtesy of the artist."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FcFYhEkcOH68HfFsRha83yA%252Fthis-is-america.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FcFYhEkcOH68HfFsRha83yA%252Fthis-is-america.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -8512,7 +8512,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Detail of Amy Sherald, Michelle LaVaughn Robinson Obama, 2018. Courtesy of the National Portrait Gallery, Smithsonian Institution."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPs8YXbW8eqEo1pn9tWmtUw%252FMichelle-Obama-2-3.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPs8YXbW8eqEo1pn9tWmtUw%252FMichelle-Obama-2-3.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -8810,7 +8810,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Installation view of teamLab, “Borderless,” 2018, at Mori Building Digital Art Museum, Odaiba, Tokyo. © teamLab. Courtesy of Pace Gallery."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FMSmO8KUrvWXG89xkuYTXcQ%252FTeam-Lab-1.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FMSmO8KUrvWXG89xkuYTXcQ%252FTeam-Lab-1.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -9108,7 +9108,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Photo of Nan Goldin during a protest at the Harvard Art Museums. Photo by TW Collins. Courtesy of P.A.I.N. Sackler. "
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FVGqbgOtSAwLIh4b1i6qUjg%252FNan-Goldin.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FVGqbgOtSAwLIh4b1i6qUjg%252FNan-Goldin.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -9406,7 +9406,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Illustrations by Tim O’Brien for Time. Courtesy of Time."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FyswckDIxtxpMOJVUn0buTA%252Ftrump-cover.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FyswckDIxtxpMOJVUn0buTA%252Ftrump-cover.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -9704,7 +9704,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Portrait of Virgil Abloh at the Louis Vuitton headquarters © Alex Majoli/Magnum Photos. Courtesy of Magnum Photos."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FB5TJX7T9KhipmIMQNa89UQ%252FVirgilAbloh1.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FB5TJX7T9KhipmIMQNa89UQ%252FVirgilAbloh1.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -10002,7 +10002,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Photo by Nicolas McComber via Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FqhospIkboXNNaKstMepR8Q%252Fgettyimages-497948239-1024x1024.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FqhospIkboXNNaKstMepR8Q%252Fgettyimages-497948239-1024x1024.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -10300,7 +10300,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="A demonstration of SenseTime surveillance software identifying details about people and vehicles. Image by REUTERS/Thomas Peter."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9x64dDN-rzDGvP1I_2_LIA%252FRTS1JOE1.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9x64dDN-rzDGvP1I_2_LIA%252FRTS1JOE1.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -10491,7 +10491,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Chromat’s “Pool Rules” campaign, 2018. Courtesy of Chromat."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FP60eLGMR2gw-28uv0_HqHg%252FAll-Body-Hair_SQUARE.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FP60eLGMR2gw-28uv0_HqHg%252FAll-Body-Hair_SQUARE.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -10789,7 +10789,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Detail of Artemisia Gentileschi, Judith and Holofernes, ca. 1620. Courtesy of Uffizi Gallery, Florence."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fi2CYazJvF5wLXzyNKYvieg%252FAG.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fi2CYazJvF5wLXzyNKYvieg%252FAG.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -10980,7 +10980,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Tyler Mitchell’s portraits of Beyoncé on the September cover of Vogue, 2018. Courtesy of the artist. "
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FLuFZ75Fw5Y3o3ykPG4GlHA%252FTyler-Mitchell.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FLuFZ75Fw5Y3o3ykPG4GlHA%252FTyler-Mitchell.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -11278,7 +11278,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Courtesy of Nike."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz_OfNx3FevCzKtM5mpladg%252FKaep_Twitter_original.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fz_OfNx3FevCzKtM5mpladg%252FKaep_Twitter_original.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -11472,7 +11472,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Frida Escobedo in the Serpentine Pavilion 2018. Photo by Yui Mok/PA Images via Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZOqOihulahiEyNTAUIC-KQ%252FFrida.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FZOqOihulahiEyNTAUIC-KQ%252FFrida.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -11770,7 +11770,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="The Peoples Vote March For The Future, October 20, 2018 in London, United Kingdom. Photo by Richard Baker/In Pictures via Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FHFx9YigVAntD6nEK2RsKUA%252FEU-flag.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FHFx9YigVAntD6nEK2RsKUA%252FEU-flag.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -11964,7 +11964,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Banksy, Love is in the Bin, 2018. Photo by Ben Stansall/AFP/Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F-befF7qZAmHJkDWB2xJkgg%252Fbanksy.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F-befF7qZAmHJkDWB2xJkgg%252Fbanksy.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -12265,7 +12265,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Robin Hammond’s photo for the cover of National Geographic’sRace Issue, 2018. Courtesy of the artist."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FTv5WK-OU5YcfcC91v4vMmg%252FRH2.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FTv5WK-OU5YcfcC91v4vMmg%252FRH2.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -12563,7 +12563,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Meryl Streep, Ai-jen Poo, Natalie Portman, Tarana Burke, Michelle Williams, America Ferrera, Jessica Chastain, Amy Poehler, and activist Saru Jayaraman attend 19th Annual Post-Golden Globes Party, 2018. Photo by Frazer Harrison/Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FbkvGvE6tp2EP19kqnFcpZg%252FTimes-Up.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FbkvGvE6tp2EP19kqnFcpZg%252FTimes-Up.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -12861,7 +12861,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Icon&#x27;s 3-D Home and Vulcan Printer. Courtesy of New Story."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FonTeTCjr_e83ByifcMtXbw%252F3d.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FonTeTCjr_e83ByifcMtXbw%252F3d.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -13052,7 +13052,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Still from Marvel Studios’ Black Panther, featuring M’Baku (Winston Duke). Photo by Film Frame. Courtesy of and ©Marvel Studios 2018."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F_l1KjIyqKDM91G16jKyaXw%252FRET0780_v130_1081.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F_l1KjIyqKDM91G16jKyaXw%252FRET0780_v130_1081.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -13350,7 +13350,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Photo by John Moore/Getty Images."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4shupex2D9w9PWXdTmAMzA%252FJohn-Moore.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4shupex2D9w9PWXdTmAMzA%252FJohn-Moore.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -13648,7 +13648,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Film still from Crazy Rich Asians. © 2018 Warner Bros. Entertainment Inc. and Kimmel Distribution, LLC. Photo courtesy of Warner Bros. Pictures. "
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FkpnNQ1PlOLDm36GE6hs-cg%252FCRA3.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FkpnNQ1PlOLDm36GE6hs-cg%252FCRA3.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -13946,7 +13946,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Millicent Fawcett, 2018. Photo by Garry Knight, via Flickr. "
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FXhJSikVVXBGXnzCgeCM1aQ%252FMF.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FXhJSikVVXBGXnzCgeCM1aQ%252FMF.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -14137,7 +14137,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Portrait of Sean Combs by Kevin Mazur/WireImage."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FQuNflQwi_NT0JbQT5tdnUg%252FSean-Combs.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FQuNflQwi_NT0JbQT5tdnUg%252FSean-Combs.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -14435,7 +14435,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Red Antler&#x27;s branding designs for Burrow on the New York subway. Courtesy of Red Antler."
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FfUmNBMo9PJ2XTbLGd0bunw%252FBurrow4.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FfUmNBMo9PJ2XTbLGd0bunw%252FBurrow4.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
@@ -14733,7 +14733,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 alt="Make America Great Again with Spider Martin in Pearl, MS, 2016. Courtesy of Wyatt Gallery/For Freedoms. "
                 className="BlockImage__container c32"
                 height="auto"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FG7L_BaQLUPAo6Er5_SqQjw%252Ffor-freedoms.jpg&width=1200&quality=80"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FG7L_BaQLUPAo6Er5_SqQjw%252Ffor-freedoms.jpg&width=2000&quality=80"
                 width="100%"
               />
               <div
