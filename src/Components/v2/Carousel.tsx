@@ -10,6 +10,7 @@ interface Props {
   height?: number
   data: object[] // This is designed to handle any shape of data passed, as long as its an array
   render: (slide) => ReactNode
+  onArrowClick?: () => void
 }
 
 export class Carousel extends React.Component<Props> {
@@ -51,8 +52,14 @@ export const LargeCarousel = (props: Props) => {
       alignItems="center"
       height={props.height}
     >
-      <ArrowButton left={-8} onClick={() => slickRef.slickPrev()}>
-        <ChevronIcon direction="left" fill="black100" size={50} />
+      <ArrowButton
+        left={-8}
+        onClick={() => {
+          slickRef.slickPrev && slickRef.slickPrev() // check existence for tests
+          props.onArrowClick && props.onArrowClick()
+        }}
+      >
+        <ChevronIcon direction="left" fill="black100" width={30} height={30} />
       </ArrowButton>
 
       <CarouselContainer height={props.height}>
@@ -63,8 +70,14 @@ export const LargeCarousel = (props: Props) => {
         </Slick>
       </CarouselContainer>
 
-      <ArrowButton right={-8} onClick={() => slickRef.slickNext()}>
-        <ChevronIcon direction="right" fill="black100" size={50} />
+      <ArrowButton
+        right={-8}
+        onClick={() => {
+          slickRef.slickNext && slickRef.slickNext() // check existence for tests
+          props.onArrowClick && props.onArrowClick()
+        }}
+      >
+        <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
     </Flex>
   )

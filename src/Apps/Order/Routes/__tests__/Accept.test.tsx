@@ -10,7 +10,9 @@ import moment from "moment"
 import { graphql } from "react-relay"
 import {
   acceptOfferFailed,
+  acceptOfferInsufficientInventoryFailure,
   acceptOfferPaymentFailed,
+  acceptOfferPaymentFailedInsufficientFunds,
   acceptOfferSuccess,
 } from "../__fixtures__/MutationResults"
 import { AcceptFragmentContainer } from "../Accept"
@@ -22,6 +24,8 @@ jest.unmock("react-relay")
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
+
+window.location.assign = jest.fn()
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -59,6 +63,10 @@ describe("Accept seller offer", () => {
     TestPage: OrderAppTestPage,
   })
 
+  beforeEach(() => {
+    ;(window.location.assign as any).mockReset()
+  })
+
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
@@ -82,7 +90,9 @@ describe("Accept seller offer", () => {
     })
 
     it("Shows the stepper", async () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"checkRespond navigate rightReview"`
+      )
       expect(page.orderStepperCurrentStep).toBe(`Review`)
     })
 
@@ -103,13 +113,13 @@ describe("Accept seller offer", () => {
 
     it("shows the shipping details", async () => {
       expect(page.shippingSummary.text()).toMatch(
-        "Ship toJoelle Van Dyne401 Broadway"
+        "Ship toLockedJoelle Van Dyne401 Broadway"
       )
     })
 
     it("shows the payment details", async () => {
       expect(page.paymentSummary.text()).toMatchInlineSnapshot(
-        `"•••• 4444  Exp 3/21"`
+        `"Lockedvisa•••• 4444  Exp 3/21"`
       )
     })
 
@@ -151,9 +161,36 @@ describe("Accept seller offer", () => {
       mutations.useResultsOnce(acceptOfferPaymentFailed)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
-        "An error occurred",
-        "There was an error processing your payment. Please try again or contact orders@artsy.net."
+        "Charge failed",
+        "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card."
       )
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/payment/new`
+      )
+    })
+
+    it("shows an error modal if there is a capture_failed error with insuffient_funds", async () => {
+      mutations.useResultsOnce(acceptOfferPaymentFailedInsufficientFunds)
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Insufficient funds",
+        "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again."
+      )
+      expect(routes.mockPushRoute).toHaveBeenCalledWith(
+        `/orders/${testOrder.id}/payment/new`
+      )
+    })
+
+    it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
+      mutations.useResultsOnce(acceptOfferInsufficientInventoryFailure)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Not available",
+        "Sorry, the work is no longer available."
+      )
+      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+      expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
     })
   })
 

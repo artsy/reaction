@@ -1,7 +1,9 @@
 import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -15,7 +17,6 @@ import {
   Box,
   Button,
   Checkbox,
-  color,
   Flex,
   Message,
   Radio,
@@ -29,8 +30,11 @@ interface Props {
   artist: ArtworkFilter_artist
   hideTopBorder?: boolean
   filterState?: FilterState
+  user?: User
+  mediator?: Mediator
 }
 
+@track()
 class Filter extends Component<Props> {
   static defaultProps = {
     hideTopBorder: false,
@@ -52,7 +56,8 @@ class Filter extends Component<Props> {
     return !this.existy.hasArtworks
   }
 
-  renderFilters({ user, filterState, mediator, hideTopBorder }) {
+  renderFilters({ hideTopBorder }) {
+    const { filterState, mediator } = this.props
     const { counts } = this.props.artist
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -143,13 +148,9 @@ class Filter extends Component<Props> {
               my={0.3}
               selected={currentFilter === count.id}
               value={count.id}
-              onSelect={({ selected }) => {
-                if (selected) {
-                  return filterState.setFilter(category, count.id, mediator)
-                } else {
-                  return filterState.unsetFilter(category, mediator)
-                }
-              }}
+              onSelect={({ selected }) =>
+                this.handleCategorySelect(selected, category, count)
+              }
               key={index}
               label={count.name}
             />
@@ -157,6 +158,23 @@ class Filter extends Component<Props> {
         })}
       </Flex>
     )
+  }
+
+  @track((props: Props, _state, [_selected, category, count]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { [category]: count.id },
+      current: { ...props.filterState.state },
+    }
+  })
+  handleCategorySelect(selected, category, count) {
+    const { filterState, mediator } = this.props
+
+    if (selected) {
+      return filterState.setFilter(category, count.id, mediator)
+    } else {
+      return filterState.unsetFilter(category, mediator)
+    }
   }
 
   renderWaysToBuy(filterState, mediator, counts) {
@@ -204,10 +222,12 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderZeroState({ user, mediator }) {
+  renderZeroState() {
     const {
       artist,
       artist: { id, name, is_followed },
+      mediator,
+      user,
     } = this.props
 
     return (
@@ -240,7 +260,8 @@ class Filter extends Component<Props> {
     )
   }
 
-  renderSelect({ filterState, mediator }) {
+  renderSelect() {
+    const { filterState, mediator } = this.props
     return (
       <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
         <SmallSelect
@@ -280,7 +301,7 @@ class Filter extends Component<Props> {
             onClick={() => filterState.showActionSheet(true)}
           >
             <Flex justifyContent="space-between" alignItems="center">
-              <FilterIcon fill={color("white100")} />
+              <FilterIcon fill={"white100"} />
               <Spacer mr={0.5} />
               Filter
             </Flex>
@@ -291,67 +312,48 @@ class Filter extends Component<Props> {
   }
 
   render() {
-    const { filterState } = this.props
+    const { filterState, hideTopBorder } = this.props
+
+    const Filters = () => this.renderFilters({ hideTopBorder })
+
     return (
-      <ContextConsumer>
-        {({ user, mediator }) => {
-          const hideTopBorder = this.props.hideTopBorder
+      <Flex flexDirection={["column", "row"]}>
+        <Box width={["100%", "25%"]} mr={2}>
+          <Media at="xs">
+            {filterState.state.showActionSheet && (
+              <MobileActionSheet
+                onClose={() => filterState.showActionSheet(false)}
+              >
+                <Filters />
+              </MobileActionSheet>
+            )}
+          </Media>
+          <Media greaterThan="xs">
+            <Filters />
+          </Media>
+        </Box>
+        {/* Main Artwork Grid */}
+        <Box width={["100%", "75%"]}>
+          <Media greaterThan="xs">
+            {!hideTopBorder && <Separator mb={2} mt={-1} />}
+          </Media>
 
-          const Filters = () =>
-            this.renderFilters({
-              user,
-              filterState,
-              mediator,
-              hideTopBorder,
-            })
+          {this.renderSelect()}
 
-          return (
-            <Flex flexDirection={["column", "row"]}>
-              <Box width={["100%", "25%"]} mr={2}>
-                <Media at="xs">
-                  {filterState.state.showActionSheet && (
-                    <MobileActionSheet
-                      onClose={() => filterState.showActionSheet(false)}
-                    >
-                      <Filters />
-                    </MobileActionSheet>
-                  )}
-                </Media>
-                <Media greaterThan="xs">
-                  <Filters />
-                </Media>
-              </Box>
-              {/* Main Artwork Grid */}
-              <Box width={["100%", "75%"]}>
-                <Media greaterThan="xs">
-                  {!hideTopBorder && <Separator mb={2} mt={-1} />}
-                </Media>
+          <Spacer mb={2} />
 
-                {this.renderSelect({
-                  filterState,
-                  mediator,
-                })}
-
-                <Spacer mb={2} />
-
-                {this.showZeroState ? (
-                  this.renderZeroState({
-                    user,
-                    mediator,
-                  })
-                ) : (
-                  <ArtworkFilter
-                    artist={this.props.artist}
-                    artistID={this.props.artist.id}
-                    columnCount={[2, 2, 2, 3]}
-                    filters={filterState.state}
-                  />
-                )}
-              </Box>
-            </Flex>
-          )
-        }}
-      </ContextConsumer>
+          {this.showZeroState ? (
+            this.renderZeroState()
+          ) : (
+            <ArtworkFilter
+              artist={this.props.artist}
+              artistID={this.props.artist.id}
+              columnCount={[2, 2, 2, 3]}
+              filters={filterState.state}
+            />
+          )}
+        </Box>
+      </Flex>
     )
   }
 }
@@ -359,11 +361,22 @@ class Filter extends Component<Props> {
 export const ArtworkFilterFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
-      <Subscribe to={[FilterState]}>
-        {(filters: FilterState) => {
-          return <Filter filterState={filters} {...props} />
-        }}
-      </Subscribe>
+      <ContextConsumer>
+        {({ user, mediator }) => (
+          <Subscribe to={[FilterState]}>
+            {(filters: FilterState) => {
+              return (
+                <Filter
+                  filterState={filters}
+                  mediator={mediator}
+                  user={user}
+                  {...props}
+                />
+              )
+            }}
+          </Subscribe>
+        )}
+      </ContextConsumer>
     )
   },
   graphql`

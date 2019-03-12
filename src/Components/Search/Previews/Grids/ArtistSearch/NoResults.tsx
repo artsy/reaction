@@ -30,7 +30,7 @@ export const NoResultsPreview: React.SFC = () => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      my={140}
+      height="100%"
     >
       <ArtworkIcon />
       <Serif

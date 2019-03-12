@@ -8,12 +8,45 @@ export type ArtworkDetailsAdditionalInfo_artwork = {
     readonly publisher: string | null;
     readonly manufacturer: string | null;
     readonly image_rights: string | null;
+    readonly framed: ({
+        readonly label: string | null;
+        readonly details: string | null;
+    }) | null;
+    readonly signatureInfo: ({
+        readonly label: string | null;
+        readonly details: string | null;
+    }) | null;
+    readonly conditionDescription: ({
+        readonly label: string | null;
+        readonly details: string | null;
+    }) | null;
+    readonly certificateOfAuthenticity: ({
+        readonly label: string | null;
+        readonly details: string | null;
+    }) | null;
     readonly " $refType": ArtworkDetailsAdditionalInfo_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "label",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "details",
+    "args": null,
+    "storageKey": null
+  }
+];
+return {
   "kind": "Fragment",
   "name": "ArtworkDetailsAdditionalInfo_artwork",
   "type": "Artwork",
@@ -49,6 +82,46 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "framed",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "signatureInfo",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "conditionDescription",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "certificateOfAuthenticity",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkInfoRow",
+      "plural": false,
+      "selections": v0
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "__id",
@@ -57,5 +130,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2ec60c1eb758fa6fbe016c6468e7d8c1';
+})();
+(node as any).hash = '24faf5a518a2d1dd07edcaaf5872be3a';
 export default node;

@@ -28,10 +28,30 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
   }
 
   render() {
-    const { series, publisher, manufacturer, image_rights } = this.props.artwork
-    if (!series && !publisher && !manufacturer && !image_rights) {
+    const {
+      series,
+      publisher,
+      manufacturer,
+      image_rights,
+      framed,
+      signatureInfo,
+      conditionDescription,
+      certificateOfAuthenticity,
+    } = this.props.artwork
+
+    if (
+      !series &&
+      !publisher &&
+      !manufacturer &&
+      !image_rights &&
+      !framed &&
+      !signatureInfo &&
+      !conditionDescription &&
+      !certificateOfAuthenticity
+    ) {
       return null
     }
+
     return (
       <StackableBorderBox p={2}>
         <Box>
@@ -39,6 +59,19 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
           {publisher && this.renderRow("Publisher", publisher)}
           {manufacturer && this.renderRow("Manufacturer", manufacturer)}
           {image_rights && this.renderRow("Image rights", image_rights)}
+          {framed && this.renderRow(framed.label, framed.details)}
+          {signatureInfo &&
+            this.renderRow(signatureInfo.label, signatureInfo.details)}
+          {conditionDescription &&
+            this.renderRow(
+              conditionDescription.label,
+              conditionDescription.details
+            )}
+          {certificateOfAuthenticity &&
+            this.renderRow(
+              certificateOfAuthenticity.label,
+              certificateOfAuthenticity.details
+            )}
         </Box>
       </StackableBorderBox>
     )
@@ -53,6 +86,22 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
       publisher
       manufacturer
       image_rights
+      framed {
+        label
+        details
+      }
+      signatureInfo {
+        label
+        details
+      }
+      conditionDescription {
+        label
+        details
+      }
+      certificateOfAuthenticity {
+        label
+        details
+      }
     }
   `
 )

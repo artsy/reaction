@@ -1,11 +1,11 @@
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { Mediator, SystemContext } from "Artsy/SystemContext"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import { compact } from "lodash"
 import { isNull } from "lodash"
-import React from "react"
+import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -14,12 +14,14 @@ import { Media } from "Utils/Responsive"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
 import {
+  BellFillIcon,
   BellIcon,
   color,
   DownloadIcon,
   EditIcon,
   Flex,
   GenomeIcon,
+  HeartFillIcon,
   HeartIcon,
   Join,
   Link,
@@ -34,6 +36,7 @@ import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 interface ArtworkActionsProps {
   artwork: ArtworkActions_artwork
   user?: User
+  mediator?: Mediator
   selectDefaultSlide(): void
 }
 
@@ -95,12 +98,13 @@ export class ArtworkActions extends React.Component<
     context_module: Schema.ContextModule.ViewInRoom,
     type: Schema.Type.Button,
   })
-  openViewInRoom(mediator) {
+  openViewInRoom() {
     this.props.selectDefaultSlide()
 
     setTimeout(() => {
       const {
         artwork: { dimensions, image },
+        mediator,
       } = this.props
 
       mediator &&
@@ -118,15 +122,11 @@ export class ArtworkActions extends React.Component<
 
   renderViewInRoomButton() {
     return (
-      <ContextConsumer>
-        {({ mediator }) => (
-          <UtilButton
-            name="viewInRoom"
-            onClick={() => this.openViewInRoom(mediator)}
-            label="View in room"
-          />
-        )}
-      </ContextConsumer>
+      <UtilButton
+        name="viewInRoom"
+        onClick={() => this.openViewInRoom()}
+        label="View in room"
+      />
     )
   }
 
@@ -172,7 +172,7 @@ export class ArtworkActions extends React.Component<
       { name: "save", condition: true, renderer: this.renderSaveButton },
       {
         name: "viewInRoom",
-        condition: artwork.is_hangable && this.isAdmin,
+        condition: artwork.is_hangable,
         renderer: this.renderViewInRoomButton,
       },
       { name: "share", condition: true, renderer: this.renderShareButton },
@@ -264,11 +264,8 @@ export class ArtworkActions extends React.Component<
 
 export const ArtworkActionsFragmentContainer = createFragmentContainer(
   (props: ArtworkActionsProps) => {
-    return (
-      <ContextConsumer>
-        {({ user }) => <ArtworkActions user={user} {...props} />}
-      </ContextConsumer>
-    )
+    const { user, mediator } = useContext(SystemContext)
+    return <ArtworkActions user={user} mediator={mediator} {...props} />
   },
   graphql`
     fragment ArtworkActions_artwork on Artwork {
@@ -318,6 +315,7 @@ interface UtilButtonProps {
   onClick?: () => void
   selected?: boolean
   label?: string
+  Icon?: React.ReactNode
 }
 
 export class UtilButton extends React.Component<
@@ -329,7 +327,7 @@ export class UtilButton extends React.Component<
   }
 
   render() {
-    const { href, label, name, onClick, ...props } = this.props
+    const { href, label, name, onClick, Icon, ...props } = this.props
 
     const getIcon = () => {
       switch (name) {
@@ -352,9 +350,16 @@ export class UtilButton extends React.Component<
       }
     }
 
-    const Icon = getIcon()
-    const defaultFill = name === "more" ? null : color("black100")
-    const fill = this.state.hovered ? color("purple100") : defaultFill
+    // If we're passing in an `Icon`, override
+    let ActionIcon
+    if (Icon) {
+      ActionIcon = Icon
+    } else {
+      ActionIcon = getIcon()
+    }
+
+    const defaultFill = name === "more" ? null : "black100"
+    const fill = this.state.hovered ? "purple100" : defaultFill
 
     return (
       <UtilButtonContainer
@@ -370,7 +375,7 @@ export class UtilButton extends React.Component<
       >
         {href ? (
           <UtilButtonLink className="noUnderline" href={href} target="_blank">
-            <Icon {...props} fill={fill} />
+            <ActionIcon {...props} fill={"black100"} />
             {label && (
               <Sans size="2" pl={0.5} pt="1px">
                 {label}
@@ -379,7 +384,7 @@ export class UtilButton extends React.Component<
           </UtilButtonLink>
         ) : (
           <>
-            <Icon {...props} fill={fill} />
+            <ActionIcon {...props} fill={fill} />
             {label && (
               <Sans size="2" pl={0.5} pt="1px">
                 {label}
@@ -438,9 +443,23 @@ const Save = (actionProps: ArtworkActionsProps) => (
 
   // If an Auction, use Bell (for notifications); if a standard artwork use Heart
   if (isOpenSale) {
-    return <UtilButton name="bell" selected={isSaved} label="Watch lot" />
+    const FilledIcon = () => <BellFillIcon fill="purple100" />
+    return (
+      <UtilButton
+        name="bell"
+        Icon={isSaved ? FilledIcon : BellIcon}
+        label="Watch lot"
+      />
+    )
   } else {
-    return <UtilButton name="heart" selected={isSaved} label="Save" />
+    const FilledIcon = () => <HeartFillIcon fill="purple100" />
+    return (
+      <UtilButton
+        name="heart"
+        Icon={isSaved ? FilledIcon : HeartIcon}
+        label="Save"
+      />
+    )
   }
 }
 

@@ -1,8 +1,8 @@
 import { ArtistSearchPreview_viewer } from "__generated__/ArtistSearchPreview_viewer.graphql"
 import { ArtistSearchPreviewQuery } from "__generated__/ArtistSearchPreviewQuery.graphql"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/SystemContext"
-import React from "react"
+import { SystemContext } from "Artsy/SystemContext"
+import React, { useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { MarketingCollectionsPreviewFragmentContainer as MarketingCollectionsPreview } from "./MarketingCollections"
 import { RelatedArtworksPreviewFragmentContainer as RelatedArtworksPreview } from "./RelatedArtworks"
@@ -49,28 +49,21 @@ export const ArtistSearchPreviewFragmentContainer = createFragmentContainer(
 export const ArtistSearchPreviewQueryRenderer: React.SFC<{
   entityID: string
 }> = ({ entityID }) => {
+  const { relayEnvironment } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<ArtistSearchPreviewQuery>
-            environment={relayEnvironment}
-            variables={{
-              entityID,
-            }}
-            query={graphql`
-              query ArtistSearchPreviewQuery($entityID: String!) {
-                viewer {
-                  ...ArtistSearchPreview_viewer @arguments(entityID: $entityID)
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              ArtistSearchPreviewFragmentContainer
-            )}
-          />
-        )
+    <QueryRenderer<ArtistSearchPreviewQuery>
+      environment={relayEnvironment}
+      variables={{
+        entityID,
       }}
-    </ContextConsumer>
+      query={graphql`
+        query ArtistSearchPreviewQuery($entityID: String!) {
+          viewer {
+            ...ArtistSearchPreview_viewer @arguments(entityID: $entityID)
+          }
+        }
+      `}
+      render={renderWithLoadProgress(ArtistSearchPreviewFragmentContainer)}
+    />
   )
 }

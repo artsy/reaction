@@ -139,7 +139,7 @@ describe("Review", () => {
 
     it("shows an active offer stepper if the order is an Offer Order", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"Offer Shipping Payment Review"`
+        `"checkOffer navigate rightcheckShipping navigate rightcheckPayment navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })

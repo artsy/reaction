@@ -73,7 +73,7 @@ describe("SearchBar", () => {
     expect(component.text()).toContain("Cat")
   })
 
-  it("displays placeholder text", async () => {
+  it("displays long placeholder text at sizes greater than xs", async () => {
     const component = await getWrapper(searchResults)
     await flushPromiseQueue()
     expect(component.find(Input).props().placeholder).toBe(
@@ -81,11 +81,11 @@ describe("SearchBar", () => {
     )
   })
 
-  it("doesn't display placeholder text in the xs breakpoint", async () => {
+  it("displays short placeholder text in the xs breakpoint", async () => {
     const component = await getWrapper(searchResults, "xs")
     await flushPromiseQueue()
 
-    expect(component.find(Input).props().placeholder).toBe("")
+    expect(component.find(Input).props().placeholder).toBe("Search Artsy")
   })
 
   it("navigates the user when clicking on an item", async () => {
@@ -118,6 +118,6 @@ describe("SearchBar", () => {
     simulateTyping(component, "blah") // Any text of non-zero length.
     await flushPromiseQueue()
 
-    expect(component.text()).toContain("Now Available for Buy Now/ Make Offer")
+    expect(component.text()).toContain("Now available on Artsy")
   })
 })

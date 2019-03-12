@@ -1,57 +1,46 @@
 import { Checkbox } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy/SystemContext"
-import React from "react"
+import { SystemContext } from "Artsy/SystemContext"
+import React, { useContext } from "react"
 import { Subscribe } from "unstated"
 
-export const AttributionClassFilter: React.SFC = () => {
+export const AttributionClassFilter: React.FC = () => {
+  const { mediator } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ mediator }) => {
+    <Subscribe to={[FilterState]}>
+      {(filters: FilterState) => {
         return (
-          <Subscribe to={[FilterState]}>
-            {(filters: FilterState) => {
-              return (
-                <>
-                  {Object.keys(AttributionClasses).map(
-                    (attributionClass, index) => {
-                      const className =
-                        AttributionClasses[attributionClass].name
-                      const isSelected = filters.state.attribution_class.includes(
-                        attributionClass
-                      )
-
-                      return (
-                        <Checkbox
-                          selected={isSelected}
-                          onSelect={selected => {
-                            if (selected) {
-                              return filters.setFilter(
-                                "attribution_class",
-                                attributionClass,
-                                mediator
-                              )
-                            } else {
-                              return filters.unsetFilter(
-                                "attribution_class",
-                                mediator
-                              )
-                            }
-                          }}
-                          key={index}
-                        >
-                          {className}
-                        </Checkbox>
-                      )
-                    }
-                  )}
-                </>
+          <>
+            {Object.keys(AttributionClasses).map((attributionClass, index) => {
+              const className = AttributionClasses[attributionClass].name
+              const isSelected = filters.state.attribution_class.includes(
+                attributionClass
               )
-            }}
-          </Subscribe>
+
+              return (
+                <Checkbox
+                  selected={isSelected}
+                  onSelect={selected => {
+                    if (selected) {
+                      return filters.setFilter(
+                        "attribution_class",
+                        attributionClass,
+                        mediator
+                      )
+                    } else {
+                      return filters.unsetFilter("attribution_class", mediator)
+                    }
+                  }}
+                  key={index}
+                >
+                  {className}
+                </Checkbox>
+              )
+            })}
+          </>
         )
       }}
-    </ContextConsumer>
+    </Subscribe>
   )
 }
 

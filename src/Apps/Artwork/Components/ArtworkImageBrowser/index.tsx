@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import Slider from "react-slick"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
@@ -93,26 +93,20 @@ export const ArtworkImageBrowserQueryRenderer = ({
 }: {
   artworkID: string
 }) => {
+  const { relayEnvironment } = useContext(SystemContext)
+
   return (
-    <ContextConsumer>
-      {({ user, mediator, relayEnvironment }) => {
-        return (
-          <QueryRenderer<ArtworkImageBrowserQuery>
-            environment={relayEnvironment}
-            variables={{ artworkID }}
-            query={graphql`
-              query ArtworkImageBrowserQuery($artworkID: String!) {
-                artwork(id: $artworkID) {
-                  ...ArtworkImageBrowser_artwork
-                }
-              }
-            `}
-            render={renderWithLoadProgress(
-              ArtworkImageBrowserFragmentContainer
-            )}
-          />
-        )
-      }}
-    </ContextConsumer>
+    <QueryRenderer<ArtworkImageBrowserQuery>
+      environment={relayEnvironment}
+      variables={{ artworkID }}
+      query={graphql`
+        query ArtworkImageBrowserQuery($artworkID: String!) {
+          artwork(id: $artworkID) {
+            ...ArtworkImageBrowser_artwork
+          }
+        }
+      `}
+      render={renderWithLoadProgress(ArtworkImageBrowserFragmentContainer)}
+    />
   )
 }

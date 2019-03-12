@@ -61,7 +61,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"01d 00s leftRespond by Dec 04, 8:50 AM ESTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Dec 04, 8:50 AM ESTExpired offers end the negotiation process permanently."`
       )
     })
 
@@ -71,7 +71,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"01d 00s leftRespond by Dec 04, 1:50 PM GMTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Dec 04, 1:50 PM GMTExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -85,7 +85,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"01d 00s leftRespond by Aug 04, 9:50 AM EDTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Aug 04, 9:50 AM EDTExpired offers end the negotiation process permanently."`
       )
     })
 
@@ -95,7 +95,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"01d 00s leftRespond by Aug 04, 2:50 PM BSTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Aug 04, 2:50 PM BSTExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -114,7 +114,7 @@ describe("CountdownTimer", () => {
 
     const text = timer.text()
     expect(text).toMatchInlineSnapshot(
-      `"01d 30m 00s leftRespond by Dec 04, 8:50 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining01d 30m 00s leftRespond by Dec 04, 8:50 AM ESTExpired offers end the negotiation process permanently."`
     )
   })
 
@@ -132,7 +132,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"01d 15h 10m 05s leftRespond by Dec 05, 12:00 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining01d 15h 10m 05s leftRespond by Dec 05, 12:00 AM ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -147,7 +147,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"15h 10m 05s leftRespond by Dec 04, 12:00 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining15h 10m 05s leftRespond by Dec 04, 12:00 AM ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -159,7 +159,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"15m 10s leftRespond by Dec 03, 9:05 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining15m 10s leftRespond by Dec 03, 9:05 AM ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -169,7 +169,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"01s leftRespond by Dec 03, 8:50 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining01s leftRespond by Dec 03, 8:50 AM ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -179,7 +179,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"0 days leftRespond by Dec 03, 8:50 AM ESTExpired offers end the negotiation process permanently."`
+      `"time remaining0 days leftRespond by Dec 03, 8:50 AM ESTExpired offers end the negotiation process permanently."`
     )
   })
 })

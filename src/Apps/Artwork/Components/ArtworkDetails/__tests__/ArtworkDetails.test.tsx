@@ -24,6 +24,21 @@ describe("ArtworkDetails", () => {
   }
   let wrapper
 
+  describe("ArtworkDetails for a gallery artwork that is missing some fields", () => {
+    it("renders additional info with just what is present", async () => {
+      const data = cloneDeep(ArtworkDetailsFixture)
+      data.series = null
+      data.publisher = null
+      data.manufacturer = null
+      data.image_rights = null
+      data.framed = null
+      wrapper = await getWrapper(data)
+      expect(wrapper.html()).toContain("Signed")
+      expect(wrapper.html()).toContain("Condition details")
+      expect(wrapper.html()).toContain("Certificate of authenticity")
+    })
+  })
+
   describe("ArtworkDetails for gallery artwork with complete details", () => {
     beforeAll(async () => {
       wrapper = await getWrapper()

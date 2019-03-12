@@ -59,23 +59,27 @@ export interface ArticleProps {
 )
 export class Article extends React.Component<ArticleProps> {
   getArticleLayout = () => {
-    const { article } = this.props
+    const { article, customEditorial } = this.props
 
-    switch (article.layout) {
-      case "classic": {
-        return <ClassicLayout {...this.props} />
-      }
-      case "series": {
-        return <SeriesLayout {...this.props} />
-      }
-      case "video": {
-        return <VideoLayout {...this.props} />
-      }
-      case "news": {
-        return <NewsLayout {...this.props} />
-      }
-      default: {
-        return <ArticleWithFullScreen {...this.props} />
+    if (customEditorial) {
+      return <ArticleWithFullScreen {...this.props} />
+    } else {
+      switch (article.layout) {
+        case "classic": {
+          return <ClassicLayout {...this.props} />
+        }
+        case "series": {
+          return <SeriesLayout {...this.props} />
+        }
+        case "video": {
+          return <VideoLayout {...this.props} />
+        }
+        case "news": {
+          return <NewsLayout {...this.props} />
+        }
+        default: {
+          return <ArticleWithFullScreen {...this.props} />
+        }
       }
     }
   }

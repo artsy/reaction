@@ -1,7 +1,7 @@
 import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React from "react"
+import React, { useContext } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
@@ -9,25 +9,21 @@ import { OtherWorksFragmentContainer } from "../OtherWorks"
 import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
 
 export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
+  const { relayEnvironment } = useContext(SystemContext)
+
   return (
-    <ContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<OtherWorksQuery>
-            environment={relayEnvironment}
-            variables={{ artworkSlug }}
-            query={graphql`
-              query OtherWorksQuery($artworkSlug: String!) {
-                artwork(id: $artworkSlug) {
-                  ...OtherWorks_artwork
-                }
-              }
-            `}
-            render={renderWithLoadProgress(OtherWorksFragmentContainer)}
-          />
-        )
-      }}
-    </ContextConsumer>
+    <QueryRenderer<OtherWorksQuery>
+      environment={relayEnvironment}
+      variables={{ artworkSlug }}
+      query={graphql`
+        query OtherWorksQuery($artworkSlug: String!) {
+          artwork(id: $artworkSlug) {
+            ...OtherWorks_artwork
+          }
+        }
+      `}
+      render={renderWithLoadProgress(OtherWorksFragmentContainer)}
+    />
   )
 }
 

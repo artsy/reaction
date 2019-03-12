@@ -77,12 +77,10 @@ export class ArticleWithFullScreen extends React.Component<
         shouldFetchData={this.props.showTooltips}
         onOpenAuthModal={onOpenAuthModal}
       >
-        {article.layout === "feature" ? (
-          customEditorial ? (
-            <EditorialFeature {...articleProps} />
-          ) : (
-            <FeatureLayout {...articleProps} />
-          )
+        {customEditorial ? (
+          <EditorialFeature {...articleProps} />
+        ) : article.layout === "feature" ? (
+          <FeatureLayout {...articleProps} />
         ) : (
           <StandardLayout {...articleProps} />
         )}
