@@ -101,7 +101,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     }
   }
 
-  imageLoaded() {
+  imageLoaded = () => {
     this.setState({
       isImageLoaded: true,
     })
@@ -214,7 +214,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
                 alt={artwork.image_title}
                 style={{ opacity: isImageLoaded ? "1" : "0" }}
                 src={this.getImageUrl()}
-                onLoad={this.imageLoaded.bind(this)}
+                onLoad={this.imageLoaded}
               />
             )}
             <noscript>
