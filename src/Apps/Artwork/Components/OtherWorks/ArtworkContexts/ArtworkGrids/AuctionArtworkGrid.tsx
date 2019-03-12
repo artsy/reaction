@@ -47,8 +47,8 @@ class AuctionArtworkGrid extends React.Component<AuctionArtworkGridProps> {
 
         <ArtworkGrid
           artworks={artworksConnection}
-          preloadImageCount={0}
           columnCount={[2, 3, 4]}
+          preloadImageCount={0}
           mediator={mediator}
           onBrickClick={this.trackBrickClick.bind(this)}
         />
