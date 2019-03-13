@@ -16,9 +16,7 @@ export const FeatureFullscreenHeader: React.SFC<FeatureHeaderProps> = props => {
   const url = (hero_section && hero_section.url) || ""
   const isVideo = url.includes("mp4")
   const src =
-    !isVideo &&
-    url.length &&
-    resize(url, { width: !sd.IS_MOBILE ? 2000 : 1600 })
+    !isVideo && url.length && resize(url, { width: !sd.IS_MOBILE ? 2000 : 600 })
   const hasNav = seriesArticle || super_article || is_super_article
 
   return (
