@@ -30,7 +30,11 @@ interface Props {
 export class ArtistCard extends React.Component<Props> {
   render() {
     return (
-      <Link href={this.props.artist.href} noUnderline>
+      <Link
+        onClick={this.props.onClick}
+        href={this.props.artist.href}
+        noUnderline
+      >
         <Media at="xs">
           <SmallArtistCard {...this.props} />
         </Media>
