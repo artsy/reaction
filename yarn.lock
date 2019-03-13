@@ -12,16 +12,15 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.0.4.tgz#ed28605f116e07f352e30c82e2319516a342be86"
-  integrity sha512-TGgltca1B25KJllikW4oKX4UWoCIkTHg8O7sxDjaoYOH1e3y+72rIh9VMA64dJ5bS0GvGpQ2mR1OVKWD/FZeeg==
+"@artsy/palette@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.1.0.tgz#14d461376f21d30e0cdf78a1d876a34ff89e9e86"
+  integrity sha512-+PG1aKzzPPE+ecFmfe93M+xLJ5RB+kEf32kyPoMQEwYiF5yumuqRNk0aqq6FGght9PJelf58ojnIDVbKoJleWg==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
     moment-timezone "^0.5.23"
     rc-slider "^8.6.2"
-    react "^16.8.2"
     react-live "^1.12.0"
     react-powerplug "^1.0.0"
     react-spring "^5.7.2"
