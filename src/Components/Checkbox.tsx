@@ -1,4 +1,4 @@
-import { Checkmark } from "Assets/Checkmark"
+import { CheckIcon } from "@artsy/palette"
 import { garamond } from "Assets/Fonts"
 import React, { Component } from "react"
 import styled from "styled-components"
@@ -41,6 +41,8 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
     } = this.props
     const { checked } = this.state
 
+    const fill = disabled && checked ? "black30" : "white100"
+
     return (
       <Label className={className} error={error}>
         <CheckmarkContainer>
@@ -53,11 +55,7 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
             error={error}
           />
 
-          {(!disabled || checked) && (
-            <PositionedCheckmark
-              stroke={disabled && checked && colors.black30}
-            />
-          )}
+          {(!disabled || checked) && <PositionedCheckmark fill={fill} />}
         </CheckmarkContainer>
 
         {children}
@@ -77,7 +75,7 @@ const CheckmarkContainer = styled.div`
   align-items: center;
 `
 
-const PositionedCheckmark = styled(Checkmark)`
+const PositionedCheckmark = styled(CheckIcon)`
   z-index: 1;
   margin-top: 1px;
   margin-left: 3px;
