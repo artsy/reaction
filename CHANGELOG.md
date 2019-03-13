@@ -1,3 +1,15 @@
+# v15.3.0 (Wed Mar 13 2019)
+
+#### 🚀  Enhancement
+
+- @pepopowitz => [SearchResults] Add pagination to artworks tab [#2150](https://github.com/artsy/reaction/pull/2150) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.2.2 (Wed Mar 13 2019)
 
 #### 🐛  Bug Fix
