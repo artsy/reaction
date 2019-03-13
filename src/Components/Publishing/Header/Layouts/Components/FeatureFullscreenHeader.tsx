@@ -1,6 +1,7 @@
 import { space } from "@artsy/palette"
 import { PartnerInline } from "Components/Publishing/Partner/PartnerInline"
 import React from "react"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { resize } from "../../../../../Utils/resizer"
 import { pMedia } from "../../../../Helpers"
@@ -14,7 +15,8 @@ export const FeatureFullscreenHeader: React.SFC<FeatureHeaderProps> = props => {
   } = props
   const url = (hero_section && hero_section.url) || ""
   const isVideo = url.includes("mp4")
-  const src = !isVideo && url.length && resize(url, { width: 1600 })
+  const src =
+    !isVideo && url.length && resize(url, { width: !sd.IS_MOBILE ? 2000 : 600 })
   const hasNav = seriesArticle || super_article || is_super_article
 
   return (

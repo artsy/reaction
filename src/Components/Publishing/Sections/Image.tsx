@@ -1,4 +1,5 @@
 import React from "react"
+import { data as sd } from "sharify"
 import { resize } from "../../../Utils/resizer"
 import { GLOBAL_IMAGE_QUALITY } from "../Constants"
 import { ArticleLayout, SectionLayout } from "../Typings"
@@ -31,7 +32,12 @@ export const Image: React.SFC<ImageProps> = props => {
     width,
   } = props
   const caption = image.caption || ""
-  const src = resize(image.url, { width: 1200, quality: GLOBAL_IMAGE_QUALITY })
+  const shouldIncreaseResizeWidth =
+    !sd.IS_MOBILE && sectionLayout === "fillwidth"
+  const src = resize(image.url, {
+    width: shouldIncreaseResizeWidth ? 2000 : 1200,
+    quality: GLOBAL_IMAGE_QUALITY,
+  })
   const alt = caption.replace(/<[^>]*>/g, "") /* strip caption html */
 
   return (
