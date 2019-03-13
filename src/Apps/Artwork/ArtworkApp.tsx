@@ -104,12 +104,14 @@ export class ArtworkApp extends React.Component<Props> {
         {artists.map((artist, index) => {
           const addSpacer = artists.length > 1 && index < artists.length - 1
           return (
-            <Row key={artist.id}>
-              <Col>
-                <ArtistInfo artistID={artist.id} />
-                {addSpacer && <Spacer mb={2} />}
-              </Col>
-            </Row>
+            <>
+              <Row key={artist.id}>
+                <Col>
+                  <ArtistInfo artistID={artist.id} />
+                </Col>
+              </Row>
+              {addSpacer && <Spacer mb={2} />}
+            </>
           )
         })}
       </>
