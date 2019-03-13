@@ -1,3 +1,15 @@
+# v15.3.1 (Wed Mar 13 2019)
+
+#### 🐛  Bug Fix
+
+- Pass ArtistCard onClick to <Link> component. [#2154](https://github.com/artsy/reaction/pull/2154) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v15.3.0 (Wed Mar 13 2019)
 
 #### 🚀  Enhancement
