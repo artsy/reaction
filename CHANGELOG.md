@@ -1,3 +1,20 @@
+# v15.3.2 (Wed Mar 13 2019)
+
+#### 🐛  Bug Fix
+
+- resize full-width images to 2000 [#2153](https://github.com/artsy/reaction/pull/2153) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.1.0 [#2155](https://github.com/artsy/reaction/pull/2155) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.3.1 (Wed Mar 13 2019)
 
 #### 🐛  Bug Fix
