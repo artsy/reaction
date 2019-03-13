@@ -9,10 +9,7 @@ import {
   PaginationFragmentContainer as Pagination,
 } from "Components/v2"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface ShowProps {
   relay: RelayRefetchProp

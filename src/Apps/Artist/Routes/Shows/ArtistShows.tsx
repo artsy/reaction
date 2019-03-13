@@ -8,10 +8,7 @@ import { Media } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface ArtistShowsProps {
   relay: RelayRefetchProp

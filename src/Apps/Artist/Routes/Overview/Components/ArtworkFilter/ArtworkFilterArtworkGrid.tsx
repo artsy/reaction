@@ -8,10 +8,7 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface Props {
   artistID: string

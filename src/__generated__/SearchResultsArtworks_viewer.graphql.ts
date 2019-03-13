@@ -1,10 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _SearchResultsArtworksRoute_viewer$ref: unique symbol;
-export type SearchResultsArtworksRoute_viewer$ref = typeof _SearchResultsArtworksRoute_viewer$ref;
-export type SearchResultsArtworksRoute_viewer = {
+import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+declare const _SearchResultsArtworks_viewer$ref: unique symbol;
+export type SearchResultsArtworks_viewer$ref = typeof _SearchResultsArtworks_viewer$ref;
+export type SearchResultsArtworks_viewer = {
     readonly search: ({
+        readonly pageInfo: {
+            readonly hasNextPage: boolean;
+            readonly endCursor: string | null;
+        };
+        readonly pageCursors: ({
+            readonly " $fragmentRefs": Pagination_pageCursors$ref;
+        }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly title?: string | null;
@@ -13,14 +21,14 @@ export type SearchResultsArtworksRoute_viewer = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SearchResultsArtworksRoute_viewer$ref;
+    readonly " $refType": SearchResultsArtworks_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SearchResultsArtworksRoute_viewer",
+  "name": "SearchResultsArtworks_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -29,6 +37,30 @@ const node: ConcreteFragment = {
       "name": "term",
       "type": "String!",
       "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "first",
+      "type": "Int",
+      "defaultValue": 10
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "last",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "after",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "before",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -39,6 +71,18 @@ const node: ConcreteFragment = {
       "storageKey": null,
       "args": [
         {
+          "kind": "Variable",
+          "name": "after",
+          "variableName": "after",
+          "type": "String"
+        },
+        {
+          "kind": "Variable",
+          "name": "before",
+          "variableName": "before",
+          "type": "String"
+        },
+        {
           "kind": "Literal",
           "name": "entities",
           "value": [
@@ -47,9 +91,15 @@ const node: ConcreteFragment = {
           "type": "[SearchEntity]"
         },
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "first",
-          "value": 10,
+          "variableName": "first",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "last",
+          "variableName": "last",
           "type": "Int"
         },
         {
@@ -62,6 +112,47 @@ const node: ConcreteFragment = {
       "concreteType": "SearchableConnection",
       "plural": false,
       "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endCursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageCursors",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageCursors",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "FragmentSpread",
+              "name": "Pagination_pageCursors",
+              "args": null
+            }
+          ]
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -122,5 +213,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '990ffd13e50cb18e3370ec806b0069cb';
+(node as any).hash = '58c63adba9b1e1d276de573b5eecd576';
 export default node;

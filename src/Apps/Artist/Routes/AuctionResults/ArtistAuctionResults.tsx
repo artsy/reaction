@@ -12,10 +12,7 @@ import { TableSidebar } from "./TableSidebar"
 
 import { Box, Separator, Spacer } from "@artsy/palette"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("ArtistAuctionResults.tsx")

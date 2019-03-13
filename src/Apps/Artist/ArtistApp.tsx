@@ -6,12 +6,12 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { PreloadLinkState } from "Artsy/Router/Components/PreloadLink"
+import { LoadingArea } from "Components/v2/LoadingArea"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Subscribe } from "unstated"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
-import { LoadingArea } from "./Components/LoadingArea"
 
 import {
   Footer,

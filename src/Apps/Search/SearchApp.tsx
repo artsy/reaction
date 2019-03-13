@@ -36,8 +36,8 @@ export class SearchApp extends React.Component<ArtistAppProps> {
 
           <Row>
             <Col>
-              {viewer.search.totalCount} results for "{term}"
-              <Spacer mb={3} />
+              {viewer.search.totalCount} results for "{term}"<Spacer mb={3} />
+              <span id="jumpto--searchResultTabs" />
               <NavigationTabs term={term} searchableConnection={search} />
               <Spacer mb={3} />
               {this.props.children}
