@@ -1,7 +1,6 @@
 import { Box, Serif } from "@artsy/palette"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ContextConsumer } from "Artsy/Router"
-import styled from "styled-components"
 
 import { FollowIcon } from "Components/v2"
 import React from "react"
@@ -19,17 +18,13 @@ type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   private renderArtistName(artist: Artist) {
     return artist.href ? (
-      <ArtistName>
-        <Serif size="5t" display="inline-block" weight="semibold">
-          <a href={artist.href}>{artist.name}</a>
-        </Serif>
-      </ArtistName>
+      <Serif size="5t" display="inline" weight="semibold">
+        <a href={artist.href}>{artist.name}</a>
+      </Serif>
     ) : (
-      <ArtistName>
-        <Serif size="5t" display="inline-block" weight="semibold">
-          {artist.name}
-        </Serif>
-      </ArtistName>
+      <Serif size="5t" display="inline" weight="semibold">
+        {artist.name}
+      </Serif>
     )
   }
 
@@ -134,8 +129,3 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
     }
   `
 )
-
-const ArtistName = styled(Box)`
-  white-space: pre;
-  display: inline-block;
-`
