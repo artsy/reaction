@@ -1,3 +1,17 @@
+# v15.2.2 (Wed Mar 13 2019)
+
+#### 🐛  Bug Fix
+
+- test copy fix [#2156](https://github.com/artsy/reaction/pull/2156) ([@ds300](https://github.com/ds300))
+- Artist insights 2.0 - Some artists with 1 badge don't have insights displayed [#2125](https://github.com/artsy/reaction/pull/2125) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.2.1 (Tue Mar 12 2019)
 
 #### 🐛  Bug Fix
