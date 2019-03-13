@@ -58,7 +58,7 @@ describe("SelectedCareerAchievements", () => {
     expect(text).toContain("Solo show at a major institution")
     expect(text).toContain("Group show at a major institution")
     expect(text).toContain("Reviewed by a major art publication")
-    expect(text).toContain("Participated in a major biennial")
+    expect(text).toContain("Included in a major biennial")
   })
 
   it("doesn't render selected career achievements if no auction results, partner highlights, or insights", async () => {
