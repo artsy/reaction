@@ -7,6 +7,8 @@ declare const _GridItem_artwork$ref: unique symbol;
 export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
 export type GridItem_artwork = {
     readonly _id: string;
+    readonly title: string | null;
+    readonly image_title: string | null;
     readonly image: ({
         readonly placeholder: string | null;
         readonly url: string | null;
@@ -43,7 +45,21 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "image_title",
       "args": null,
       "storageKey": null
     },
@@ -115,7 +131,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_acquireable",
+      "name": "title",
       "args": null,
       "storageKey": null
     },
@@ -147,5 +163,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e36a0aaa7b13fcdcaf4d835a4fa80bfd';
+(node as any).hash = '1e12ef5bdeec23b865151069f7ab34e2';
 export default node;

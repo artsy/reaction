@@ -47,6 +47,7 @@ const InnerWrapper = styled(Flex)`
 `
 
 export const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
+export const PLACEHOLDER_XS = "Search Artsy"
 
 export const EmptySuggestion = () => (
   <SuggestionWrapper>{PLACEHOLDER}</SuggestionWrapper>

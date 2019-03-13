@@ -89,7 +89,10 @@ export class SelectedCareerAchievements extends React.Component<
   }
 
   render() {
-    if (!hasSections(this.props.artist)) {
+    if (
+      !hasSections(this.props.artist) &&
+      (!this.props.artist.insights || this.props.artist.insights.length === 0)
+    ) {
       return null
     }
 

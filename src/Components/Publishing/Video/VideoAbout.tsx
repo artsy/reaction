@@ -41,9 +41,11 @@ export const VideoAbout: React.SFC<VideoAboutProps> = ({
         </Sans>
 
         {editCredits ? (
-          <Text layout="standard">{editCredits}</Text>
+          <Text layout="standard" color={color}>
+            {editCredits}
+          </Text>
         ) : (
-          <Text layout="standard" html={credits} />
+          <Text layout="standard" html={credits} color={color} />
         )}
 
         <Media greaterThanOrEqual="md">

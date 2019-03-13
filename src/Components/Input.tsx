@@ -1,4 +1,4 @@
-import { color, space } from "@artsy/palette"
+import { Box, color, space } from "@artsy/palette"
 import { growAndFadeIn } from "Assets/Animations"
 import { garamond, unica } from "Assets/Fonts"
 import React from "react"
@@ -22,19 +22,15 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 export const Input: React.ExoticComponent<InputProps> = React.forwardRef(
   ({ error, title, description, ...rest }, ref) => {
     return (
-      <Container>
+      <Box>
         {title && <Title>{title}</Title>}
         {description && <Description>{description}</Description>}
         <StyledInput ref={ref} hasError={!!error} {...rest} />
         {error && <InputError>{error}</InputError>}
-      </Container>
+      </Box>
     )
   }
 )
-
-const Container = styled.div`
-  padding-bottom: ${space(0.5)}px;
-`
 
 export const StyledInput = styled.input`
   ${borderedInput};

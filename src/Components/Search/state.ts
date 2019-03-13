@@ -33,7 +33,7 @@ export class SearchBarState extends Container<StateContainer> {
   }
 
   enterPreviewWithoutSelection() {
-    this.setState({ hasEnteredPreviews: true })
+    this.setState({ hasEnteredPreviews: true, selectedPreviewIndex: null })
   }
 
   enterPreview() {

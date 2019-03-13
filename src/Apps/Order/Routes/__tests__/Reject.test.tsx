@@ -73,7 +73,9 @@ describe("Buyer rejects seller offer", () => {
     })
 
     it("Shows the stepper", () => {
-      expect(page.orderStepper.text()).toMatchInlineSnapshot(`"Respond Review"`)
+      expect(page.orderStepper.text()).toMatchInlineSnapshot(
+        `"checkRespond navigate rightReview"`
+      )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })
 

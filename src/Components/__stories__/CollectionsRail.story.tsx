@@ -14,7 +14,7 @@ storiesOf("Components/CollectionsRail", module).add(
   () => (
     <Theme>
       <RailsContainer width="100%">
-        <CollectionsRailContent />
+        <CollectionsRailContent articleId="123" />
       </RailsContainer>
     </Theme>
   )

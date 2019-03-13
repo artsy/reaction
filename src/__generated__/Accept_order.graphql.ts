@@ -15,6 +15,9 @@ export type Accept_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
+                    readonly artists: ReadonlyArray<({
+                        readonly id: string;
+                    }) | null> | null;
                 }) | null;
             }) | null;
         }) | null> | null;
@@ -38,6 +41,13 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -97,15 +107,22 @@ return {
                   "selections": [
                     v0,
                     {
-                      "kind": "ScalarField",
+                      "kind": "LinkedField",
                       "alias": null,
-                      "name": "__id",
+                      "name": "artists",
+                      "storageKey": null,
                       "args": null,
-                      "storageKey": null
-                    }
+                      "concreteType": "Artist",
+                      "plural": true,
+                      "selections": [
+                        v0,
+                        v1
+                      ]
+                    },
+                    v1
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -132,7 +149,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1,
+    v2,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -154,7 +171,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            v2
           ]
         }
       ]
@@ -162,5 +179,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '1594b97f14c43f23bc0141ee9ce8bf2b';
+(node as any).hash = '24e55f9d54ff55efe08283ee3f1d8c04';
 export default node;

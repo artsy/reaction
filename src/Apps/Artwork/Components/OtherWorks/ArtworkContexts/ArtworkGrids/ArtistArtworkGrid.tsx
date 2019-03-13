@@ -45,6 +45,7 @@ export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
         <ArtworkGrid
           artworks={artist.artworks_connection}
           columnCount={[2, 3, 4]}
+          preloadImageCount={0}
           mediator={mediator}
           onBrickClick={this.trackBrickClick.bind(this)}
         />

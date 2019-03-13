@@ -1,6 +1,5 @@
-import { ContextConsumer } from "Artsy/Router"
-import { Mediator } from "Artsy/SystemContext"
-import React from "react"
+import { Mediator, SystemContext } from "Artsy/SystemContext"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Media } from "Utils/Responsive"
@@ -24,21 +23,16 @@ interface Props {
 }
 
 export const Footer: React.SFC<Props> = props => {
+  const { mediator } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ mediator }) => {
-        return (
-          <>
-            <Media at="xs">
-              <SmallFooter mediator={mediator} />
-            </Media>
-            <Media greaterThan="xs">
-              <LargeFooter mediator={mediator} />
-            </Media>
-          </>
-        )
-      }}
-    </ContextConsumer>
+    <>
+      <Media at="xs">
+        <SmallFooter mediator={mediator} />
+      </Media>
+      <Media greaterThan="xs">
+        <LargeFooter mediator={mediator} />
+      </Media>
+    </>
   )
 }
 

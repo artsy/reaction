@@ -1,52 +1,41 @@
 import { Radio } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy/SystemContext"
-import React from "react"
+import { SystemContext } from "Artsy/SystemContext"
+import React, { useContext } from "react"
 import { Subscribe } from "unstated"
 
 export const MediumFilter: React.SFC = () => {
+  const { mediator } = useContext(SystemContext)
   return (
-    <ContextConsumer>
-      {({ mediator }) => {
+    <Subscribe to={[FilterState]}>
+      {(filters: FilterState) => {
         return (
-          <Subscribe to={[FilterState]}>
-            {(filters: FilterState) => {
-              return (
-                <>
-                  {Object.keys(CategoryToMediumGeneMap).map(
-                    (category, index) => {
-                      const medium = CategoryToMediumGeneMap[category]
-                      const isSelected = filters.state.medium === medium
+          <>
+            {Object.keys(CategoryToMediumGeneMap).map((category, index) => {
+              const medium = CategoryToMediumGeneMap[category]
+              const isSelected = filters.state.medium === medium
 
-                      return (
-                        <Radio
-                          my={0.3}
-                          selected={isSelected}
-                          value={medium} // to do: url
-                          onSelect={({ selected }) => {
-                            if (selected) {
-                              return filters.setFilter(
-                                "medium",
-                                medium,
-                                mediator
-                              )
-                            } else {
-                              return filters.unsetFilter("medium", mediator)
-                            }
-                          }}
-                          key={index}
-                          label={category}
-                        />
-                      )
+              return (
+                <Radio
+                  my={0.3}
+                  selected={isSelected}
+                  value={medium} // to do: url
+                  onSelect={({ selected }) => {
+                    if (selected) {
+                      return filters.setFilter("medium", medium, mediator)
+                    } else {
+                      return filters.unsetFilter("medium", mediator)
                     }
-                  )}
-                </>
+                  }}
+                  key={index}
+                  label={category}
+                />
               )
-            }}
-          </Subscribe>
+            })}
+          </>
         )
       }}
-    </ContextConsumer>
+    </Subscribe>
   )
 }
 

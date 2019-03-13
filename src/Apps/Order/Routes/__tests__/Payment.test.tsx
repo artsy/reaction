@@ -501,7 +501,7 @@ describe("Payment", () => {
         },
       })
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"Offer Shipping PaymentReview"`
+        `"checkOffer navigate rightcheckShipping navigate rightPaymentnavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Payment")
     })

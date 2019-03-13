@@ -16,9 +16,9 @@ import { ArtworkRelatedArtistsFragmentContainer as RelatedArtists } from "./Comp
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 
+import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer } from "Artsy/Router"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,

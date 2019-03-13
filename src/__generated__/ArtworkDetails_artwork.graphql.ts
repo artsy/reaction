@@ -5,7 +5,6 @@ import { ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref } from "./ArtworkDetail
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork$ref } from "./ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql";
 import { ArtworkDetailsAdditionalInfo_artwork$ref } from "./ArtworkDetailsAdditionalInfo_artwork.graphql";
 import { ArtworkDetailsArticles_artwork$ref } from "./ArtworkDetailsArticles_artwork.graphql";
-import { ArtworkDetailsChecklist_artwork$ref } from "./ArtworkDetailsChecklist_artwork.graphql";
 declare const _ArtworkDetails_artwork$ref: unique symbol;
 export type ArtworkDetails_artwork$ref = typeof _ArtworkDetails_artwork$ref;
 export type ArtworkDetails_artwork = {
@@ -15,7 +14,7 @@ export type ArtworkDetails_artwork = {
     readonly literature: string | null;
     readonly exhibition_history: string | null;
     readonly provenance: string | null;
-    readonly " $fragmentRefs": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref & ArtworkDetailsAboutTheWorkFromPartner_artwork$ref & ArtworkDetailsChecklist_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
+    readonly " $fragmentRefs": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref & ArtworkDetailsAboutTheWorkFromPartner_artwork$ref & ArtworkDetailsAdditionalInfo_artwork$ref & ArtworkDetailsArticles_artwork$ref;
     readonly " $refType": ArtworkDetails_artwork$ref;
 };
 
@@ -52,11 +51,6 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkDetailsAboutTheWorkFromPartner_artwork",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkDetailsChecklist_artwork",
       "args": null
     },
     {
@@ -120,5 +114,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0d56fc6679fb1ab42d5d5d6d1f4d9ece';
+(node as any).hash = '13d5539efa074030bd4c1860ac720be0';
 export default node;
