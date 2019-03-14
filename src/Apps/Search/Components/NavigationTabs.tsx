@@ -26,18 +26,24 @@ export class NavigationTabs extends React.Component<Props> {
     )
   }
 
-  renderTabs() {
-    const { searchableConnection, term } = this.props
+  aggregationFor(type: string) {
+    const { searchableConnection } = this.props
     const { aggregations } = searchableConnection
 
     const typeAggregation = aggregations.find(agg => agg.slice === "TYPE")
       .counts
+
+    return typeAggregation.find(agg => agg.name === type)
+  }
+
+  renderTabs() {
+    const { term } = this.props
+
     const route = tab => `/search2${tab}?term=${term}`
 
-    const artistAggregation = typeAggregation.find(agg => agg.name === "artist")
-    const artworkAggregation = typeAggregation.find(
-      agg => agg.name === "artwork"
-    )
+    const artistAggregation = this.aggregationFor("artist")
+    const artworkAggregation = this.aggregationFor("artwork")
+    const collectionAggregation = this.aggregationFor("marketing_collection")
     return (
       <>
         {this.renderTab(`Artworks ${artworkAggregation.count}`, route(""), {
@@ -46,6 +52,10 @@ export class NavigationTabs extends React.Component<Props> {
         {this.renderTab(
           `Artists ${artistAggregation.count}`,
           route("/artists")
+        )}
+        {this.renderTab(
+          `Collections ${collectionAggregation.count}`,
+          route("/collections")
         )}
       </>
     )
