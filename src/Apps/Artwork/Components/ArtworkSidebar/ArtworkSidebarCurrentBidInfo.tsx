@@ -89,7 +89,11 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
           >
             {myBidPresent && (
               <Box pt={0.5}>
-                {myBidWinning ? <WinningBidIcon /> : <LosingBidIcon />}
+                {myBidWinning ? (
+                  <WinningBidIcon fill="green100" />
+                ) : (
+                  <LosingBidIcon fill="red100" />
+                )}
               </Box>
             )}
             <Serif size="5t" weight="semibold" pl={0.5}>
