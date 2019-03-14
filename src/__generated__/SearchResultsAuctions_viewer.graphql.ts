@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _SearchResultsArticles_viewer$ref: unique symbol;
-export type SearchResultsArticles_viewer$ref = typeof _SearchResultsArticles_viewer$ref;
-export type SearchResultsArticles_viewer = {
+declare const _SearchResultsAuctions_viewer$ref: unique symbol;
+export type SearchResultsAuctions_viewer$ref = typeof _SearchResultsAuctions_viewer$ref;
+export type SearchResultsAuctions_viewer = {
     readonly search: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
@@ -19,14 +19,14 @@ export type SearchResultsArticles_viewer = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SearchResultsArticles_viewer$ref;
+    readonly " $refType": SearchResultsAuctions_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SearchResultsArticles_viewer",
+  "name": "SearchResultsAuctions_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -84,7 +84,7 @@ const node: ConcreteFragment = {
           "kind": "Literal",
           "name": "entities",
           "value": [
-            "ARTICLE"
+            "SALE"
           ],
           "type": "[SearchEntity]"
         },
@@ -191,5 +191,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a0e6214abaabdc976b077fdb7648b228';
+(node as any).hash = '47c71193a83ee0c919e02e968eba30ad';
 export default node;

@@ -1,28 +1,28 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsArticles_viewer$ref } from "./SearchResultsArticles_viewer.graphql";
-export type SearchResultsArticlesQueryVariables = {
+import { SearchResultsAuctions_viewer$ref } from "./SearchResultsAuctions_viewer.graphql";
+export type SearchResultsAuctionsQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
     readonly after?: string | null;
     readonly before?: string | null;
     readonly term: string;
 };
-export type SearchResultsArticlesQueryResponse = {
+export type SearchResultsAuctionsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsArticles_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsAuctions_viewer$ref;
     }) | null;
 };
-export type SearchResultsArticlesQuery = {
-    readonly response: SearchResultsArticlesQueryResponse;
-    readonly variables: SearchResultsArticlesQueryVariables;
+export type SearchResultsAuctionsQuery = {
+    readonly response: SearchResultsAuctionsQueryResponse;
+    readonly variables: SearchResultsAuctionsQueryVariables;
 };
 
 
 
 /*
-query SearchResultsArticlesQuery(
+query SearchResultsAuctionsQuery(
   $first: Int
   $last: Int
   $after: String
@@ -30,12 +30,12 @@ query SearchResultsArticlesQuery(
   $term: String!
 ) {
   viewer {
-    ...SearchResultsArticles_viewer_4c14dZ
+    ...SearchResultsAuctions_viewer_4c14dZ
   }
 }
 
-fragment SearchResultsArticles_viewer_4c14dZ on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTICLE]) {
+fragment SearchResultsAuctions_viewer_4c14dZ on Viewer {
+  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SALE]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -139,13 +139,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SearchResultsArticlesQuery",
+  "name": "SearchResultsAuctionsQuery",
   "id": null,
-  "text": "query SearchResultsArticlesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArticles_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsArticles_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTICLE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsAuctionsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsAuctions_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsAuctions_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SALE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SearchResultsArticlesQuery",
+    "name": "SearchResultsAuctionsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -161,7 +161,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsArticles_viewer",
+            "name": "SearchResultsAuctions_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -201,7 +201,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SearchResultsArticlesQuery",
+    "name": "SearchResultsAuctionsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -235,7 +235,7 @@ return {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
-                  "ARTICLE"
+                  "SALE"
                 ],
                 "type": "[SearchEntity]"
               },
@@ -400,5 +400,5 @@ return {
   }
 };
 })();
-(node as any).hash = '9d7d9ac7601e03832b991d12ea9787e2';
+(node as any).hash = '8ad6878d8d42d8ac4aad54e85786d1df';
 export default node;

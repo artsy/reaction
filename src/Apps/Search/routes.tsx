@@ -1,6 +1,7 @@
 import { SearchResultsArticlesRouteRouteFragmentContainer as SearchResultsArticlesRoute } from "Apps/Search/Routes/Articles/SearchResultsArticles"
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
+import { SearchResultsAuctionsRouteRouteFragmentContainer as SearchResultsAuctionsRoute } from "Apps/Search/Routes/Auctions/SearchResultsAuctions"
 import { SearchResultsCategoriesRouteRouteFragmentContainer as SearchResultsCategoriesRoute } from "Apps/Search/Routes/Categories/SearchResultsCategories"
 import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollectionsRoute } from "Apps/Search/Routes/Collections/SearchResultsCollections"
 import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
@@ -117,6 +118,18 @@ export const routes: RouteConfig[] = [
           query routes_SearchResultsArticlesQuery($term: String!) {
             viewer {
               ...SearchResultsArticles_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
+      },
+      {
+        path: "auctions",
+        Component: SearchResultsAuctionsRoute,
+        query: graphql`
+          query routes_SearchResultsAuctionsQuery($term: String!) {
+            viewer {
+              ...SearchResultsAuctions_viewer @arguments(term: $term)
             }
           }
         `,

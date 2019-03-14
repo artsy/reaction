@@ -1,5 +1,5 @@
 import { Box, Spacer } from "@artsy/palette"
-import { SearchResultsArticles_viewer } from "__generated__/SearchResultsArticles_viewer.graphql"
+import { SearchResultsAuctions_viewer } from "__generated__/SearchResultsAuctions_viewer.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import React from "react"
@@ -7,13 +7,13 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
 export interface Props {
-  viewer: SearchResultsArticles_viewer
+  viewer: SearchResultsAuctions_viewer
   relay: RelayRefetchProp
 }
 
 const PAGE_SIZE = 10
 
-export class SearchResultsArticlesRoute extends React.Component<
+export class SearchResultAuctionsRoute extends React.Component<
   Props,
   LoadingAreaState
 > {
@@ -65,13 +65,13 @@ export class SearchResultsArticlesRoute extends React.Component<
     const { viewer } = this.props
     const { search: searchConnection } = viewer
 
-    const articles = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const sales = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <LoadingArea isLoading={this.state.isLoading}>
-        {articles.map((article, index) => {
+        {sales.map((sale, index) => {
           return (
             <Box key={index}>
-              {article.displayLabel}
+              {sale.displayLabel}
               <Spacer mb={3} />
             </Box>
           )
@@ -88,11 +88,11 @@ export class SearchResultsArticlesRoute extends React.Component<
   }
 }
 
-export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchContainer(
-  SearchResultsArticlesRoute,
+export const SearchResultsAuctionsRouteRouteFragmentContainer = createRefetchContainer(
+  SearchResultAuctionsRoute,
   {
     viewer: graphql`
-      fragment SearchResultsArticles_viewer on Viewer
+      fragment SearchResultsAuctions_viewer on Viewer
         @argumentDefinitions(
           term: { type: "String!", defaultValue: "" }
           first: { type: "Int", defaultValue: 10 }
@@ -106,7 +106,7 @@ export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchCon
           after: $after
           before: $before
           last: $last
-          entities: [ARTICLE]
+          entities: [SALE]
         ) {
           pageInfo {
             hasNextPage
@@ -125,7 +125,7 @@ export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchCon
     `,
   },
   graphql`
-    query SearchResultsArticlesQuery(
+    query SearchResultsAuctionsQuery(
       $first: Int
       $last: Int
       $after: String
@@ -133,7 +133,7 @@ export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchCon
       $term: String!
     ) {
       viewer {
-        ...SearchResultsArticles_viewer
+        ...SearchResultsAuctions_viewer
           @arguments(
             first: $first
             last: $last

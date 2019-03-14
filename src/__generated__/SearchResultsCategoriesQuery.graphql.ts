@@ -35,7 +35,7 @@ query SearchResultsCategoriesQuery(
 }
 
 fragment SearchResultsCategories_viewer_4c14dZ on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SHOW]) {
+  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [GENE]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -141,7 +141,7 @@ return {
   "operationKind": "query",
   "name": "SearchResultsCategoriesQuery",
   "id": null,
-  "text": "query SearchResultsCategoriesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCategories_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsCategories_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SHOW]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsCategoriesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCategories_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsCategories_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [GENE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -235,7 +235,7 @@ return {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
-                  "SHOW"
+                  "GENE"
                 ],
                 "type": "[SearchEntity]"
               },

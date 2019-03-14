@@ -1,41 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsArticles_viewer$ref } from "./SearchResultsArticles_viewer.graphql";
-export type SearchResultsArticlesQueryVariables = {
-    readonly first?: number | null;
-    readonly last?: number | null;
-    readonly after?: string | null;
-    readonly before?: string | null;
+import { SearchResultsAuctions_viewer$ref } from "./SearchResultsAuctions_viewer.graphql";
+export type routes_SearchResultsAuctionsQueryVariables = {
     readonly term: string;
 };
-export type SearchResultsArticlesQueryResponse = {
+export type routes_SearchResultsAuctionsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsArticles_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsAuctions_viewer$ref;
     }) | null;
 };
-export type SearchResultsArticlesQuery = {
-    readonly response: SearchResultsArticlesQueryResponse;
-    readonly variables: SearchResultsArticlesQueryVariables;
+export type routes_SearchResultsAuctionsQuery = {
+    readonly response: routes_SearchResultsAuctionsQueryResponse;
+    readonly variables: routes_SearchResultsAuctionsQueryVariables;
 };
 
 
 
 /*
-query SearchResultsArticlesQuery(
-  $first: Int
-  $last: Int
-  $after: String
-  $before: String
+query routes_SearchResultsAuctionsQuery(
   $term: String!
 ) {
   viewer {
-    ...SearchResultsArticles_viewer_4c14dZ
+    ...SearchResultsAuctions_viewer_4hh6ED
   }
 }
 
-fragment SearchResultsArticles_viewer_4c14dZ on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTICLE]) {
+fragment SearchResultsAuctions_viewer_4hh6ED on Viewer {
+  search(query: $term, first: 10, entities: [SALE]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -82,30 +74,6 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "first",
-    "type": "Int",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "last",
-    "type": "Int",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "after",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "before",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "term",
     "type": "String!",
     "defaultValue": null
@@ -139,13 +107,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SearchResultsArticlesQuery",
+  "name": "routes_SearchResultsAuctionsQuery",
   "id": null,
-  "text": "query SearchResultsArticlesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArticles_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsArticles_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTICLE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsAuctionsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsAuctions_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsAuctions_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [SALE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SearchResultsArticlesQuery",
+    "name": "routes_SearchResultsAuctionsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -161,32 +129,8 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsArticles_viewer",
+            "name": "SearchResultsAuctions_viewer",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": null
-              },
               {
                 "kind": "Variable",
                 "name": "term",
@@ -201,7 +145,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SearchResultsArticlesQuery",
+    "name": "routes_SearchResultsAuctionsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -220,35 +164,17 @@ return {
             "storageKey": null,
             "args": [
               {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": "String"
-              },
-              {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
-                  "ARTICLE"
+                  "SALE"
                 ],
                 "type": "[SearchEntity]"
               },
               {
-                "kind": "Variable",
+                "kind": "Literal",
                 "name": "first",
-                "variableName": "first",
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
+                "value": 10,
                 "type": "Int"
               },
               {
@@ -400,5 +326,5 @@ return {
   }
 };
 })();
-(node as any).hash = '9d7d9ac7601e03832b991d12ea9787e2';
+(node as any).hash = 'f61f9abd675e61c0e7ff146a19529c08';
 export default node;

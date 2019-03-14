@@ -84,7 +84,7 @@ const node: ConcreteFragment = {
           "kind": "Literal",
           "name": "entities",
           "value": [
-            "SHOW"
+            "GENE"
           ],
           "type": "[SearchEntity]"
         },
@@ -191,5 +191,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1073e65e70438badad0f8bad17b20656';
+(node as any).hash = 'cd14d1794b9ce9dee792d57762f04d81';
 export default node;

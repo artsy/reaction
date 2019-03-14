@@ -77,6 +77,11 @@ export class NavigationTabs extends React.Component<Props> {
       agg => agg.count,
       0
     )
+    const auctionsAggregationCount = get(
+      this.aggregationFor("sale"),
+      agg => agg.count,
+      0
+    )
 
     return (
       <>
@@ -100,6 +105,10 @@ export class NavigationTabs extends React.Component<Props> {
         {this.renderTab(
           `Articles ${articlesAggregationCount}`,
           route("/articles")
+        )}
+        {this.renderTab(
+          `Auctions ${auctionsAggregationCount}`,
+          route("/auctions")
         )}
       </>
     )

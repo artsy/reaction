@@ -106,7 +106,7 @@ export const SearchResultsCategoriesRouteRouteFragmentContainer = createRefetchC
           after: $after
           before: $before
           last: $last
-          entities: [SHOW]
+          entities: [GENE]
         ) {
           pageInfo {
             hasNextPage
