@@ -1,3 +1,15 @@
+# v15.4.1 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- Update test job [#2166](https://github.com/artsy/reaction/pull/2166) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.4.0 (Thu Mar 14 2019)
 
 #### 🚀  Enhancement
