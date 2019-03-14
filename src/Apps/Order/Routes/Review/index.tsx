@@ -196,6 +196,27 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           )
           break
         }
+        case "charge_authorization_failed": {
+          let data = {} as any
+          if (error.data) {
+            data = JSON.parse(error.data)
+          }
+
+          if (data.failure_code === "insufficient_funds") {
+            this.onMutationError(
+              new ErrorWithMetadata(error.code, error),
+              "Insufficient funds",
+              "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
+            )
+          } else {
+            this.onMutationError(
+              new ErrorWithMetadata(error.code, error),
+              "Charge failed",
+              "Payment authorization has been declined. Please contact your card provider and try again."
+            )
+          }
+          break
+        }
         case "artwork_version_mismatch": {
           this.onMutationError(
             new ErrorWithMetadata(error.code, error),
