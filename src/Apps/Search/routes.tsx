@@ -1,6 +1,7 @@
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
 import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollectionsRoute } from "Apps/Search/Routes/Collections/SearchResultsCollections"
+import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
@@ -78,6 +79,18 @@ export const routes: RouteConfig[] = [
           query routes_SearchResultsShowsQuery($term: String!) {
             viewer {
               ...SearchResultsShows_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
+      },
+      {
+        path: "galleries",
+        Component: SearchResultsGalleriesRoute,
+        query: graphql`
+          query routes_SearchResultsGalleriesQuery($term: String!) {
+            viewer {
+              ...SearchResultsGalleries_viewer @arguments(term: $term)
             }
           }
         `,

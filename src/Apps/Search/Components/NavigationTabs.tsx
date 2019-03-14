@@ -3,6 +3,7 @@ import { NavigationTabs_searchableConnection } from "__generated__/NavigationTab
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 interface Props {
   searchableConnection: NavigationTabs_searchableConnection
@@ -41,24 +42,47 @@ export class NavigationTabs extends React.Component<Props> {
 
     const route = tab => `/search2${tab}?term=${term}`
 
-    const artistAggregation = this.aggregationFor("artist")
-    const artworkAggregation = this.aggregationFor("artwork")
-    const collectionAggregation = this.aggregationFor("marketing_collection")
-    const showAggregation = this.aggregationFor("partner_show")
+    const artistAggregationCount = get(
+      this.aggregationFor("artist"),
+      agg => agg.count,
+      0
+    )
+    const artworkAggregationCount = get(
+      this.aggregationFor("artwork"),
+      agg => agg.count,
+      0
+    )
+    const collectionAggregationCount = get(
+      this.aggregationFor("marketing_collection"),
+      agg => agg.count,
+      0
+    )
+    const galleryAggregationCount = get(
+      this.aggregationFor("gallery"),
+      agg => agg.count,
+      0
+    )
+    const showAggregationCount = get(
+      this.aggregationFor("partner_show"),
+      agg => agg.count,
+      0
+    )
+
     return (
       <>
-        {this.renderTab(`Artworks ${artworkAggregation.count}`, route(""), {
+        {this.renderTab(`Artworks ${artworkAggregationCount}`, route(""), {
           exact: true,
         })}
+        {this.renderTab(`Artists ${artistAggregationCount}`, route("/artists"))}
         {this.renderTab(
-          `Artists ${artistAggregation.count}`,
-          route("/artists")
-        )}
-        {this.renderTab(
-          `Collections ${collectionAggregation.count}`,
+          `Collections ${collectionAggregationCount}`,
           route("/collections")
         )}
-        {this.renderTab(`Shows ${showAggregation.count}`, route("/shows"))}
+        {this.renderTab(
+          `Galleries ${galleryAggregationCount}`,
+          route("/galleries")
+        )}
+        {this.renderTab(`Shows ${showAggregationCount}`, route("/shows"))}
       </>
     )
   }
