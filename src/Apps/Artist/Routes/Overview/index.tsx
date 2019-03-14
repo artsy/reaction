@@ -124,12 +124,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               {showGenes && (
                 <>
                   <Spacer mb={1} />
-                  <Media at="xs">
-                    <Genes artist={artist} />
-                  </Media>
-                  <Media greaterThan="xs">
-                    <Genes artist={artist} />
-                  </Media>
+                  <Genes artist={artist} />
                   <Spacer mb={1} />
                 </>
               )}
