@@ -125,18 +125,10 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <>
                   <Spacer mb={1} />
                   <Media at="xs">
-                    {bioLen < MAX_CHARS.xs ? (
-                      <Genes artist={artist} />
-                    ) : (
-                      <Genes artist={artist} />
-                    )}
+                    <Genes artist={artist} />
                   </Media>
                   <Media greaterThan="xs">
-                    {bioLen < MAX_CHARS.default ? (
-                      <Genes artist={artist} />
-                    ) : (
-                      <Genes artist={artist} />
-                    )}
+                    <Genes artist={artist} />
                   </Media>
                   <Spacer mb={1} />
                 </>
