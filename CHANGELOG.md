@@ -1,3 +1,15 @@
+# v15.3.4 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork page - Some artist names are taking up two lines in sidebar [#2111](https://github.com/artsy/reaction/pull/2111) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.3.3 (Thu Mar 14 2019)
 
 #### 🐛  Bug Fix
