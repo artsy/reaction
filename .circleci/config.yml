@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  yarn: artsy/yarn@0.2.0
+  yarn: artsy/yarn@1.0.0
 
 workflows:
   build_and_verify:
@@ -19,9 +19,8 @@ workflows:
       - yarn/type-check:
           requires:
             - yarn/workflow-queue
-      - yarn/test:
+      - yarn/jest:
           args: --runInBand
-          ci-stats: true
           requires:
             - yarn/workflow-queue
       - yarn/auto-release:
@@ -34,7 +33,7 @@ workflows:
               only:
                 - master
           requires:
-            - yarn/test
+            - yarn/jest
             - yarn/relay
             - yarn/lint
             - yarn/type-check
