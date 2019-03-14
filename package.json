@@ -243,10 +243,6 @@
     "setupFiles": [
       "raf/polyfill"
     ],
-    "reporters": [
-      "default",
-      "jest-junit"
-    ],
     "setupTestFrameworkScriptFile": "<rootDir>/src/setup_jest.ts",
     "testURL": "http://localhost/",
     "moduleNameMapper": {
