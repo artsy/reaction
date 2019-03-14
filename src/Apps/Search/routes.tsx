@@ -1,3 +1,4 @@
+import { SearchResultsArticlesRouteRouteFragmentContainer as SearchResultsArticlesRoute } from "Apps/Search/Routes/Articles/SearchResultsArticles"
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
 import { SearchResultsCategoriesRouteRouteFragmentContainer as SearchResultsCategoriesRoute } from "Apps/Search/Routes/Categories/SearchResultsCategories"
@@ -101,9 +102,21 @@ export const routes: RouteConfig[] = [
         path: "categories",
         Component: SearchResultsCategoriesRoute,
         query: graphql`
-          query routes_SearchResultsCategorieQuery($term: String!) {
+          query routes_SearchResultsCategoriesQuery($term: String!) {
             viewer {
               ...SearchResultsCategories_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
+      },
+      {
+        path: "articles",
+        Component: SearchResultsArticlesRoute,
+        query: graphql`
+          query routes_SearchResultsArticlesQuery($term: String!) {
+            viewer {
+              ...SearchResultsArticles_viewer @arguments(term: $term)
             }
           }
         `,

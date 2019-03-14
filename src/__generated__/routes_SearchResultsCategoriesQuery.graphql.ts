@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { SearchResultsCategories_viewer$ref } from "./SearchResultsCategories_viewer.graphql";
-export type routes_SearchResultsCategorieQueryVariables = {
+export type routes_SearchResultsCategoriesQueryVariables = {
     readonly term: string;
 };
-export type routes_SearchResultsCategorieQueryResponse = {
+export type routes_SearchResultsCategoriesQueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": SearchResultsCategories_viewer$ref;
     }) | null;
 };
-export type routes_SearchResultsCategorieQuery = {
-    readonly response: routes_SearchResultsCategorieQueryResponse;
-    readonly variables: routes_SearchResultsCategorieQueryVariables;
+export type routes_SearchResultsCategoriesQuery = {
+    readonly response: routes_SearchResultsCategoriesQueryResponse;
+    readonly variables: routes_SearchResultsCategoriesQueryVariables;
 };
 
 
 
 /*
-query routes_SearchResultsCategorieQuery(
+query routes_SearchResultsCategoriesQuery(
   $term: String!
 ) {
   viewer {
@@ -107,13 +107,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchResultsCategorieQuery",
+  "name": "routes_SearchResultsCategoriesQuery",
   "id": null,
-  "text": "query routes_SearchResultsCategorieQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCategories_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsCategories_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [SHOW]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsCategoriesQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCategories_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsCategories_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [SHOW]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchResultsCategorieQuery",
+    "name": "routes_SearchResultsCategoriesQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -145,7 +145,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchResultsCategorieQuery",
+    "name": "routes_SearchResultsCategoriesQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -326,5 +326,5 @@ return {
   }
 };
 })();
-(node as any).hash = '9ac801d5967a482684d6bcf2f5319d04';
+(node as any).hash = '7068abd2bc2f1def8438223f8449ca5f';
 export default node;
