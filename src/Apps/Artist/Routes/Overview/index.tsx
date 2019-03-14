@@ -130,7 +130,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                         <Genes artist={artist} />
                       </>
                     ) : (
-                      showGenes && <Genes artist={artist} />
+                      <Genes artist={artist} />
                     )}
                   </Media>
                   <Media greaterThan="xs">
@@ -139,7 +139,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                         <Genes artist={artist} />
                       </>
                     ) : (
-                      showGenes && <Genes artist={artist} />
+                      <Genes artist={artist} />
                     )}
                   </Media>
                   <Spacer mb={1} />
@@ -155,7 +155,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       onClick={this.handleConsignClick.bind(this)}
                     >
                       Learn more
-                    </a>.
+                    </a>
+                    .
                   </Sans>
                 </>
               )}
