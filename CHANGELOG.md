@@ -1,3 +1,15 @@
+# v15.4.0 (Thu Mar 14 2019)
+
+#### 🚀  Enhancement
+
+- Always show related categories for artist [#2162](https://github.com/artsy/reaction/pull/2162) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.3.7 (Thu Mar 14 2019)
 
 #### 🐛  Bug Fix
