@@ -100,9 +100,7 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
             Partners
           </Sans>
           <Serif size="2">
-            <Link href="https://www.artsy.net/gallery-partnerships">
-              Artsy for Galleries
-            </Link>
+            <Link href="https://partners.artsy.net">Artsy for Galleries</Link>
             <Link href="https://www.artsy.net/institution-partnerships">
               Artsy for Museums
             </Link>
