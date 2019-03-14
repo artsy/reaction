@@ -1,3 +1,15 @@
+# v15.3.7 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- Fix the link to related artists [#2164](https://github.com/artsy/reaction/pull/2164) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.3.6 (Thu Mar 14 2019)
 
 
