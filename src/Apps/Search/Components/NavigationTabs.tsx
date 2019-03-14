@@ -44,6 +44,7 @@ export class NavigationTabs extends React.Component<Props> {
     const artistAggregation = this.aggregationFor("artist")
     const artworkAggregation = this.aggregationFor("artwork")
     const collectionAggregation = this.aggregationFor("marketing_collection")
+    const showAggregation = this.aggregationFor("partner_show")
     return (
       <>
         {this.renderTab(`Artworks ${artworkAggregation.count}`, route(""), {
@@ -57,6 +58,7 @@ export class NavigationTabs extends React.Component<Props> {
           `Collections ${collectionAggregation.count}`,
           route("/collections")
         )}
+        {this.renderTab(`Shows ${showAggregation.count}`, route("/shows"))}
       </>
     )
   }

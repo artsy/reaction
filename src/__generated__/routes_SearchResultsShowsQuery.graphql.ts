@@ -1,33 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsCollections_viewer$ref } from "./SearchResultsCollections_viewer.graphql";
-export type routes_SearchResultsCollectionQueryVariables = {
+import { SearchResultsShows_viewer$ref } from "./SearchResultsShows_viewer.graphql";
+export type routes_SearchResultsShowsQueryVariables = {
     readonly term: string;
 };
-export type routes_SearchResultsCollectionQueryResponse = {
+export type routes_SearchResultsShowsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsCollections_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsShows_viewer$ref;
     }) | null;
 };
-export type routes_SearchResultsCollectionQuery = {
-    readonly response: routes_SearchResultsCollectionQueryResponse;
-    readonly variables: routes_SearchResultsCollectionQueryVariables;
+export type routes_SearchResultsShowsQuery = {
+    readonly response: routes_SearchResultsShowsQueryResponse;
+    readonly variables: routes_SearchResultsShowsQueryVariables;
 };
 
 
 
 /*
-query routes_SearchResultsCollectionQuery(
+query routes_SearchResultsShowsQuery(
   $term: String!
 ) {
   viewer {
-    ...SearchResultsCollections_viewer_4hh6ED
+    ...SearchResultsShows_viewer_4hh6ED
   }
 }
 
-fragment SearchResultsCollections_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 10, entities: [COLLECTION]) {
+fragment SearchResultsShows_viewer_4hh6ED on Viewer {
+  search(query: $term, first: 10, entities: [SHOW]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -107,13 +107,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchResultsCollectionQuery",
+  "name": "routes_SearchResultsShowsQuery",
   "id": null,
-  "text": "query routes_SearchResultsCollectionQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCollections_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsCollections_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [COLLECTION]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsShowsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsShows_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsShows_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [SHOW]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchResultsCollectionQuery",
+    "name": "routes_SearchResultsShowsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -129,7 +129,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsCollections_viewer",
+            "name": "SearchResultsShows_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -145,7 +145,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchResultsCollectionQuery",
+    "name": "routes_SearchResultsShowsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -167,7 +167,7 @@ return {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
-                  "COLLECTION"
+                  "SHOW"
                 ],
                 "type": "[SearchEntity]"
               },
@@ -326,5 +326,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1c4e5135c5f1240d62df3831c0ff3114';
+(node as any).hash = '4bda87f127e61e5791921b98f9c02186';
 export default node;
