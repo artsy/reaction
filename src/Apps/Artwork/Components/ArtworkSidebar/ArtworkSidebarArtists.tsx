@@ -18,11 +18,11 @@ type Artist = ArtworkSidebarArtists_artwork["artists"][0]
 export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   private renderArtistName(artist: Artist) {
     return artist.href ? (
-      <Serif size="5t" display="inline-block" weight="semibold">
+      <Serif size="5t" display="inline" weight="semibold">
         <a href={artist.href}>{artist.name}</a>
       </Serif>
     ) : (
-      <Serif size="5t" display="inline-block" weight="semibold">
+      <Serif size="5t" display="inline" weight="semibold">
         {artist.name}
       </Serif>
     )
