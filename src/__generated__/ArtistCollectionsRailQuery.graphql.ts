@@ -37,9 +37,24 @@ fragment ArtistCollectionsRail_collections on MarketingCollection {
 }
 
 fragment ArtistCollectionEntity_collection on MarketingCollection {
+  headerImage
   slug
   title
   price_guidance
+  artworks(size: 3, sort: "merchandisability") {
+    hits {
+      artist {
+        name
+        __id
+      }
+      title
+      image {
+        url(version: "small")
+      }
+      __id
+    }
+    __id
+  }
   __id: id
 }
 */
@@ -91,13 +106,27 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "title",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtistCollectionsRailQuery",
   "id": null,
-  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  slug\n  title\n  price_guidance\n  __id: id\n}\n",
+  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -142,23 +171,106 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "slug",
+            "name": "headerImage",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "title",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "price_guidance",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "artworks",
+            "storageKey": "artworks(size:3,sort:\"merchandisability\")",
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "size",
+                "value": 3,
+                "type": "Int"
+              },
+              {
+                "kind": "Literal",
+                "name": "sort",
+                "value": "merchandisability",
+                "type": "String"
+              }
+            ],
+            "concreteType": "FilterArtworks",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "hits",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Artwork",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "artist",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Artist",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "name",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      v4
+                    ]
+                  },
+                  v3,
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "image",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Image",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "url",
+                        "args": [
+                          {
+                            "kind": "Literal",
+                            "name": "version",
+                            "value": "small",
+                            "type": "[String]"
+                          }
+                        ],
+                        "storageKey": "url(version:\"small\")"
+                      }
+                    ]
+                  },
+                  v4
+                ]
+              },
+              v4
+            ]
           },
           v2
         ]
