@@ -10,12 +10,10 @@ import { hasSections as showMarketInsights } from "Components/Artist/MarketInsig
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MAX_CHARS,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
 
@@ -55,16 +53,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
-  maybeShowGenes() {
-    let showGenes = false
-    if (this.state.isReadMoreExpanded) {
-      showGenes = true
-    } else if (!this.props.artist.biography_blurb.text) {
-      showGenes = true
-    }
-    return showGenes
-  }
-
   @track<OverviewRouteProps>(props => {
     // TODO: remove after CollectionsRail a/b test
     const experiment = "artist_collections_rail"
@@ -95,7 +83,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
-    const bioLen = artist.biography_blurb.text.length
     const hideMainOverviewSection =
       !showArtistInsights &&
       !showArtistBio &&
@@ -104,7 +91,6 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
-    const showGenes = this.maybeShowGenes()
 
     return (
       <>
@@ -121,30 +107,9 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   />
                 </>
               )}
-              {showGenes && (
-                <>
-                  <Spacer mb={1} />
-                  <Media at="xs">
-                    {bioLen < MAX_CHARS.xs ? (
-                      <>
-                        <Genes artist={artist} />
-                      </>
-                    ) : (
-                      showGenes && <Genes artist={artist} />
-                    )}
-                  </Media>
-                  <Media greaterThan="xs">
-                    {bioLen < MAX_CHARS.default ? (
-                      <>
-                        <Genes artist={artist} />
-                      </>
-                    ) : (
-                      showGenes && <Genes artist={artist} />
-                    )}
-                  </Media>
-                  <Spacer mb={1} />
-                </>
-              )}
+              <Spacer mb={1} />
+              <Genes artist={artist} />
+              <Spacer mb={1} />
               {showConsignable && (
                 <>
                   <Spacer mb={1} />
@@ -155,7 +120,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       onClick={this.handleConsignClick.bind(this)}
                     >
                       Learn more
-                    </a>.
+                    </a>
+                    .
                   </Sans>
                 </>
               )}
