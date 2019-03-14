@@ -1,3 +1,15 @@
+# v15.3.5 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add images to ArtistCollectionRail [#2152](https://github.com/artsy/reaction/pull/2152) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v15.3.4 (Thu Mar 14 2019)
 
 #### 🐛  Bug Fix
