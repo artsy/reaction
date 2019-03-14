@@ -36,7 +36,7 @@ export class ArtworkRelatedArtists extends React.Component<
       return null
     }
 
-    const relatedUrl = sd.APP_URL + artist.href + "/related_artists"
+    const relatedUrl = sd.APP_URL + artist.href + "/related-artists"
 
     return (
       <ContextConsumer>
