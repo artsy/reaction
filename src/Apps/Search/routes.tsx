@@ -1,5 +1,6 @@
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
+import { SearchResultsCategoriesRouteRouteFragmentContainer as SearchResultsCategoriesRoute } from "Apps/Search/Routes/Categories/SearchResultsCategories"
 import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollectionsRoute } from "Apps/Search/Routes/Collections/SearchResultsCollections"
 import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
@@ -91,6 +92,18 @@ export const routes: RouteConfig[] = [
           query routes_SearchResultsGalleriesQuery($term: String!) {
             viewer {
               ...SearchResultsGalleries_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
+      },
+      {
+        path: "categories",
+        Component: SearchResultsCategoriesRoute,
+        query: graphql`
+          query routes_SearchResultsCategorieQuery($term: String!) {
+            viewer {
+              ...SearchResultsCategories_viewer @arguments(term: $term)
             }
           }
         `,
