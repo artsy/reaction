@@ -1,3 +1,20 @@
+# v15.3.3 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- updating artsy for galleries link [#2159](https://github.com/artsy/reaction/pull/2159) ([@oxaudo](https://github.com/oxaudo))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.1.1 [#2158](https://github.com/artsy/reaction/pull/2158) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.3.2 (Wed Mar 13 2019)
 
 #### 🐛  Bug Fix
