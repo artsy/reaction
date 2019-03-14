@@ -12,6 +12,34 @@ export const submitOrderWithFailure = {
   },
 }
 
+export const submitOrderWithFailureCardDeclined = {
+  ecommerceSubmitOrder: {
+    orderOrError: {
+      __typename: "OrderWithMutationFailure",
+      error: {
+        type: "processing",
+        code: "charge_authorization_failed",
+        data:
+          '{"id":null,"failure_code":"card_declined","failure_message":"Your card was declined."}',
+      },
+    },
+  },
+}
+
+export const submitOrderWithFailureInsufficientFunds = {
+  ecommerceSubmitOrder: {
+    orderOrError: {
+      __typename: "OrderWithMutationFailure",
+      error: {
+        type: "processing",
+        code: "charge_authorization_failed",
+        data:
+          '{"id":null,"failure_code":"insufficient_funds","failure_message":"Your card has insufficient funds to complete the purchase."}',
+      },
+    },
+  },
+}
+
 export const submitOrderWithVersionMismatchFailure = {
   ecommerceSubmitOrder: {
     orderOrError: {

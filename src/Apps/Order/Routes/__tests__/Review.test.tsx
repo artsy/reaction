@@ -11,10 +11,14 @@ import { graphql } from "react-relay"
 import {
   submitOfferOrderSuccess,
   submitOfferOrderWithFailure,
+  submitOfferOrderWithFailureCardDeclined,
+  submitOfferOrderWithFailureInsufficientFunds,
   submitOfferOrderWithNoInventoryFailure,
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderSuccess,
   submitOrderWithFailure,
+  submitOrderWithFailureCardDeclined,
+  submitOrderWithFailureInsufficientFunds,
   submitOrderWithMissingInfo,
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
@@ -111,6 +115,30 @@ describe("Review", () => {
       )
     })
 
+    it("shows a modal with a helpful error message if the user's card is declined", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOrderWithFailureCardDeclined)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Charge failed",
+        "Payment authorization has been declined. Please contact your card provider and try again."
+      )
+    })
+
+    it("shows a modal with a helpful error message if the user's card is declined due to insufficient funds", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOrderWithFailureInsufficientFunds)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Insufficient funds",
+        "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
+      )
+    })
+
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
       window.location.assign = jest.fn()
 
@@ -199,6 +227,30 @@ describe("Review", () => {
         "Something about the work changed since you started checkout. Please review the work before submitting your order."
       )
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
+
+    it("shows a modal with a helpful error message if the user's card is declined", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOfferOrderWithFailureCardDeclined)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Charge failed",
+        "Payment authorization has been declined. Please contact your card provider and try again."
+      )
+    })
+
+    it("shows a modal with a helpful error message if the user's card is declined due to insufficient funds", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOfferOrderWithFailureInsufficientFunds)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Insufficient funds",
+        "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
+      )
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
