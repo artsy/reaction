@@ -77,8 +77,6 @@ const CheckmarkContainer = styled.div`
 
 const PositionedCheckmark = styled(CheckIcon)`
   z-index: 1;
-  margin-top: 1px;
-  margin-left: 3px;
 `
 
 const CheckboxInput = styled.input`
