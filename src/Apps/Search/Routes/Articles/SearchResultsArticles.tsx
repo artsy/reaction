@@ -72,10 +72,23 @@ export class SearchResultsArticlesRoute extends React.Component<
         {articles.map((article, index) => {
           return (
             <Box key={index}>
-              <GenericSearchResultItem item={article} index={index} />
-              <Spacer mb={3} />
-              <Separator />
-              <Spacer mb={3} />
+              <GenericSearchResultItem
+                name={article.displayLabel}
+                index={index}
+                href={article.href}
+                description=""
+                imageUrl={article.imageUrl}
+                entityType="Article"
+              />
+              {index < articles.length - 1 ? (
+                <>
+                  <Spacer mb={3} />
+                  <Separator />
+                  <Spacer mb={3} />
+                </>
+              ) : (
+                <Spacer mb={3} />
+              )}
             </Box>
           )
         })}
@@ -123,6 +136,8 @@ export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchCon
               ... on SearchableItem {
                 id
                 displayLabel
+                href
+                imageUrl
                 searchableType
               }
             }

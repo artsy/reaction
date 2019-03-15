@@ -18,10 +18,23 @@ export const SearchResultsArtistsRoute: SFC<Props> = props => {
       {artists.map((artist, index) => {
         return (
           <Box key={index}>
-            <GenericSearchResultItem item={artist} index={index} />
-            <Spacer mb={3} />
-            <Separator />
-            <Spacer mb={3} />
+            <GenericSearchResultItem
+              name={artist.name}
+              description={artist.bio}
+              imageUrl={artist.imageUrl}
+              index={index}
+              entityType="Artist"
+              href={artist.href}
+            />
+            {index < artists.length - 1 ? (
+              <>
+                <Spacer mb={3} />
+                <Separator />
+                <Spacer mb={3} />
+              </>
+            ) : (
+              <Spacer mb={3} />
+            )}
           </Box>
         )
       })}
@@ -37,10 +50,11 @@ export const SearchResultsArtistsRouteFragmentContainer = createFragmentContaine
       search(query: $term, first: 10, entities: [ARTIST]) {
         edges {
           node {
-            ... on SearchableItem {
-              id
-              displayLabel
-              searchableType
+            ... on Artist {
+              name
+              href
+              imageUrl
+              bio
             }
           }
         }

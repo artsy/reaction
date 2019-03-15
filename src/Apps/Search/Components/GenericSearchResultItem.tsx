@@ -1,46 +1,60 @@
-import { Flex, Image, Link, Sans, Serif, Spacer } from "@artsy/palette"
-import React, { SFC } from "react"
+import { Box, Flex, Image, Link, Sans, Serif, Spacer } from "@artsy/palette"
+import React, { FC } from "react"
 
 interface GenericSearchResultItemProps {
-  item: any
+  imageUrl: string
+  name: string
+  description?: string
   index: number
+  href: string
+  entityType: string
 }
 
-export const GenericSearchResultItem: SFC<
+export const GenericSearchResultItem: FC<
   GenericSearchResultItemProps
 > = props => {
-  const { item, index } = props
+  const { imageUrl, href, name, description, index, entityType } = props
+
+  const translateEntityType = anEntityType => {
+    switch (anEntityType) {
+      case "PartnerShow":
+        return "Show"
+        break
+      default:
+        return anEntityType
+    }
+  }
 
   return (
     <>
       <Flex flexDirection="row">
-        <div>
-          <Link href={item.href}>
-            <Image
-              width={70}
-              height={70}
-              mr={20}
-              src={
-                item.imageUrl || `https://picsum.photos/70/70/?random=${index}`
-              }
-            />
-          </Link>
-        </div>
-        <div>
+        <Box>
+          <Image
+            width={70}
+            height={70}
+            mr={20}
+            src={imageUrl || `https://picsum.photos/70/70/?random=${index}`}
+          />
+        </Box>
+        <Box>
           <Sans color="black100" size="2" weight="medium">
-            {item.searchableType}
+            {translateEntityType(entityType)}
           </Sans>
           <Spacer mb={0.5} />
-          <Serif color="black100" size="3">
-            {item.displayLabel}
-          </Serif>
-          <Spacer mb={0.5} />
-          <Serif color="black60" size="3" maxWidth={536}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </Serif>
-        </div>
+          <Link href={href} underlineBehavior="hover">
+            <Serif color="black100" size="3">
+              {name}
+            </Serif>
+          </Link>
+          {description && (
+            <>
+              <Spacer mb={0.5} />
+              <Serif color="black60" size="3" maxWidth={536}>
+                {description}
+              </Serif>
+            </>
+          )}
+        </Box>
       </Flex>
     </>
   )

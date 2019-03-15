@@ -31,10 +31,11 @@ fragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {
     edges {
       node {
         __typename
-        ... on SearchableItem {
-          id
-          displayLabel
-          searchableType
+        ... on Artist {
+          name
+          href
+          imageUrl
+          bio
         }
         ... on Node {
           __id
@@ -59,7 +60,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsArtistsQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtistsRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtistsRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -171,26 +172,33 @@ return {
                       },
                       {
                         "kind": "InlineFragment",
-                        "type": "SearchableItem",
+                        "type": "Artist",
                         "selections": [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "id",
+                            "name": "name",
                             "args": null,
                             "storageKey": null
                           },
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "displayLabel",
+                            "name": "href",
                             "args": null,
                             "storageKey": null
                           },
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "searchableType",
+                            "name": "imageUrl",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "bio",
                             "args": null,
                             "storageKey": null
                           }
