@@ -1,5 +1,6 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { SearchResultsArtistsRoute_viewer } from "__generated__/SearchResultsArtistsRoute_viewer.graphql"
+import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -17,7 +18,9 @@ export const SearchResultsArtistsRoute: SFC<Props> = props => {
       {artists.map((artist, index) => {
         return (
           <Box key={index}>
-            {artist.name}
+            <GenericSearchResultItem item={artist} index={index} />
+            <Spacer mb={3} />
+            <Separator />
             <Spacer mb={3} />
           </Box>
         )
@@ -34,8 +37,10 @@ export const SearchResultsArtistsRouteFragmentContainer = createFragmentContaine
       search(query: $term, first: 10, entities: [ARTIST]) {
         edges {
           node {
-            ... on Artist {
-              name
+            ... on SearchableItem {
+              id
+              displayLabel
+              searchableType
             }
           }
         }

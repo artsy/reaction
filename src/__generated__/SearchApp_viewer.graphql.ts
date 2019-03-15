@@ -10,6 +10,8 @@ export type SearchApp_viewer = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly id?: string;
+                readonly displayLabel?: string | null;
+                readonly searchableType?: string | null;
             }) | null;
         }) | null> | null;
         readonly " $fragmentRefs": NavigationTabs_searchableConnection$ref;
@@ -110,6 +112,20 @@ const node: ConcreteFragment = {
                       "name": "id",
                       "args": null,
                       "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "displayLabel",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "searchableType",
+                      "args": null,
+                      "storageKey": null
                     }
                   ]
                 }
@@ -121,5 +137,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '813abcefae5db4f893b7ed4dd9a17de5';
+(node as any).hash = 'c7337eb9cc0b3d6722f1d77660ed2fb9';
 export default node;

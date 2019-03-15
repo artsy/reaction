@@ -35,6 +35,8 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
         __typename
         ... on SearchableItem {
           id
+          displayLabel
+          searchableType
         }
         ... on Node {
           __id
@@ -77,7 +79,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchBarTopLevelQuery",
   "id": null,
-  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    totalCount\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
+  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    totalCount\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -240,6 +242,20 @@ return {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "displayLabel",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "searchableType",
                             "args": null,
                             "storageKey": null
                           }

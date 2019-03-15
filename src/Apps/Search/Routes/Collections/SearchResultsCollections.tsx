@@ -1,5 +1,6 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { SearchResultsCollections_viewer } from "__generated__/SearchResultsCollections_viewer.graphql"
+import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import React from "react"
@@ -71,7 +72,9 @@ export class SearchResultsCollectionsRoute extends React.Component<
         {collections.map((collection, index) => {
           return (
             <Box key={index}>
-              {collection.displayLabel}
+              <GenericSearchResultItem item={collection} index={index} />
+              <Spacer mb={3} />
+              <Separator />
               <Spacer mb={3} />
             </Box>
           )
@@ -117,7 +120,11 @@ export const SearchResultsCollectionsRouteFragmentContainer = createRefetchConta
           }
           edges {
             node {
-              displayLabel
+              ... on SearchableItem {
+                id
+                displayLabel
+                searchableType
+              }
             }
           }
         }

@@ -22,7 +22,7 @@ describe("SearchResultsArtworks", () => {
         edges: [
           {
             node: {
-              name: "Catty Artist",
+              displayLabel: "Catty Artist",
             },
           },
         ],
