@@ -53,6 +53,13 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
+  maybeShowGenes() {
+    const { isReadMoreExpanded } = this.state
+    const hasNoBio = !this.props.artist.biography_blurb.text
+
+    return isReadMoreExpanded || hasNoBio
+  }
+
   @track<OverviewRouteProps>(props => {
     // TODO: remove after CollectionsRail a/b test
     const experiment = "artist_collections_rail"
@@ -91,6 +98,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
+    const showGenes = this.maybeShowGenes()
 
     return (
       <>
@@ -107,9 +115,13 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   />
                 </>
               )}
-              <Spacer mb={1} />
-              <Genes artist={artist} />
-              <Spacer mb={1} />
+              {showGenes && (
+                <>
+                  <Spacer mb={1} />
+                  <Genes artist={artist} />
+                  <Spacer mb={1} />
+                </>
+              )}
               {showConsignable && (
                 <>
                   <Spacer mb={1} />
