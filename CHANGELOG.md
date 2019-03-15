@@ -1,3 +1,15 @@
+# v15.5.0 (Fri Mar 15 2019)
+
+#### 🚀  Enhancement
+
+- @dblandin => Adds all other entity tabs [#2168](https://github.com/artsy/reaction/pull/2168) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.4.2 (Fri Mar 15 2019)
 
 #### 🐛  Bug Fix
