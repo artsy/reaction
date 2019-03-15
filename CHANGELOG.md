@@ -1,3 +1,16 @@
+# v15.5.1 (Fri Mar 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fix bid icon colors [#2165](https://github.com/artsy/reaction/pull/2165) ([@jonallured](https://github.com/jonallured))
+- Hide genes once again [#2170](https://github.com/artsy/reaction/pull/2170) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.5.0 (Fri Mar 15 2019)
 
 #### 🚀  Enhancement
