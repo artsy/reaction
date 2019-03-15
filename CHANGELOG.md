@@ -1,3 +1,15 @@
+# v15.5.2 (Fri Mar 15 2019)
+
+#### 🐛  Bug Fix
+
+- Use the Palette CheckIcon [#2157](https://github.com/artsy/reaction/pull/2157) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.5.1 (Fri Mar 15 2019)
 
 #### 🐛  Bug Fix
