@@ -55,7 +55,7 @@ export class ArtworkApp extends React.Component<Props> {
     if (is_acquireable || is_in_auction) {
       const trackingData = {
         action_type: Schema.ActionType.ViewedProduct,
-        id: _id,
+        product_id: _id,
       }
       if (tracking) tracking.trackEvent(trackingData)
     }

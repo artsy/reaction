@@ -1,3 +1,32 @@
+# v15.4.2 (Fri Mar 15 2019)
+
+#### 🐛  Bug Fix
+
+- switch tracking event property for marketing [#2169](https://github.com/artsy/reaction/pull/2169) ([@cavvia](https://github.com/cavvia))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.1.2 [#2167](https://github.com/artsy/reaction/pull/2167) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.4.1 (Thu Mar 14 2019)
+
+#### 🐛  Bug Fix
+
+- Update test job [#2166](https://github.com/artsy/reaction/pull/2166) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.4.0 (Thu Mar 14 2019)
 
 #### 🚀  Enhancement
