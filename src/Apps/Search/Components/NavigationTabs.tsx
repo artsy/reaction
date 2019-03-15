@@ -3,6 +3,7 @@ import { NavigationTabs_searchableConnection } from "__generated__/NavigationTab
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 interface Props {
   searchableConnection: NavigationTabs_searchableConnection
@@ -26,26 +27,88 @@ export class NavigationTabs extends React.Component<Props> {
     )
   }
 
-  renderTabs() {
-    const { searchableConnection, term } = this.props
+  aggregationFor(type: string) {
+    const { searchableConnection } = this.props
     const { aggregations } = searchableConnection
 
     const typeAggregation = aggregations.find(agg => agg.slice === "TYPE")
       .counts
+
+    return typeAggregation.find(agg => agg.name === type)
+  }
+
+  renderTabs() {
+    const { term } = this.props
+
     const route = tab => `/search2${tab}?term=${term}`
 
-    const artistAggregation = typeAggregation.find(agg => agg.name === "artist")
-    const artworkAggregation = typeAggregation.find(
-      agg => agg.name === "artwork"
+    const artistAggregationCount = get(
+      this.aggregationFor("artist"),
+      agg => agg.count,
+      0
     )
+    const artworkAggregationCount = get(
+      this.aggregationFor("artwork"),
+      agg => agg.count,
+      0
+    )
+    const collectionAggregationCount = get(
+      this.aggregationFor("marketing_collection"),
+      agg => agg.count,
+      0
+    )
+    const galleryAggregationCount = get(
+      this.aggregationFor("gallery"),
+      agg => agg.count,
+      0
+    )
+    const showAggregationCount = get(
+      this.aggregationFor("partner_show"),
+      agg => agg.count,
+      0
+    )
+    const categoriesAggregationCount = get(
+      this.aggregationFor("gene"),
+      agg => agg.count,
+      0
+    )
+    const articlesAggregationCount = get(
+      this.aggregationFor("article"),
+      agg => agg.count,
+      0
+    )
+    const auctionsAggregationCount = get(
+      this.aggregationFor("sale"),
+      agg => agg.count,
+      0
+    )
+
     return (
       <>
-        {this.renderTab(`Artworks ${artworkAggregation.count}`, route(""), {
+        {this.renderTab(`Artworks ${artworkAggregationCount}`, route(""), {
           exact: true,
         })}
+        {this.renderTab(`Artists ${artistAggregationCount}`, route("/artists"))}
         {this.renderTab(
-          `Artists ${artistAggregation.count}`,
-          route("/artists")
+          `Collections ${collectionAggregationCount}`,
+          route("/collections")
+        )}
+        {this.renderTab(
+          `Galleries ${galleryAggregationCount}`,
+          route("/galleries")
+        )}
+        {this.renderTab(`Shows ${showAggregationCount}`, route("/shows"))}
+        {this.renderTab(
+          `Categories ${categoriesAggregationCount}`,
+          route("/categories")
+        )}
+        {this.renderTab(
+          `Articles ${articlesAggregationCount}`,
+          route("/articles")
+        )}
+        {this.renderTab(
+          `Auctions ${auctionsAggregationCount}`,
+          route("/auctions")
         )}
       </>
     )
