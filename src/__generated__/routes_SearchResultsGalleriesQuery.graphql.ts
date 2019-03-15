@@ -38,7 +38,13 @@ fragment SearchResultsGalleries_viewer_4hh6ED on Viewer {
     edges {
       node {
         __typename
-        displayLabel
+        ... on SearchableItem {
+          id
+          displayLabel
+          href
+          imageUrl
+          searchableType
+        }
         ... on Node {
           __id
         }
@@ -109,7 +115,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsGalleriesQuery",
   "id": null,
-  "text": "query routes_SearchResultsGalleriesQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsGalleries_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsGalleries_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [GALLERY]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        displayLabel\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsGalleriesQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsGalleries_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsGalleries_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [GALLERY]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          href\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -294,16 +300,50 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "displayLabel",
+                        "name": "__id",
                         "args": null,
                         "storageKey": null
                       },
                       {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "__id",
-                        "args": null,
-                        "storageKey": null
+                        "kind": "InlineFragment",
+                        "type": "SearchableItem",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "displayLabel",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "href",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "imageUrl",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "searchableType",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ]
                   }

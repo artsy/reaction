@@ -33,6 +33,9 @@ fragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {
         __typename
         ... on Artist {
           name
+          href
+          imageUrl
+          bio
         }
         ... on Node {
           __id
@@ -57,7 +60,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsArtistsQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtistsRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtistsRoute_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtistsRoute_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -175,6 +178,27 @@ return {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "name",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "href",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "imageUrl",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "bio",
                             "args": null,
                             "storageKey": null
                           }

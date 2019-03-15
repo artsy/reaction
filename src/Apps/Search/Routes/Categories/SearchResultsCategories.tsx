@@ -1,5 +1,6 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { SearchResultsCategories_viewer } from "__generated__/SearchResultsCategories_viewer.graphql"
+import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import React from "react"
@@ -71,8 +72,22 @@ export class SearchResultCategoriesRoute extends React.Component<
         {genes.map((gene, index) => {
           return (
             <Box key={index}>
-              {gene.displayLabel}
-              <Spacer mb={3} />
+              <GenericSearchResultItem
+                name={gene.displayLabel}
+                index={index}
+                href={gene.href}
+                imageUrl={gene.imageUrl}
+                entityType="Category"
+              />
+              {index < genes.length - 1 ? (
+                <>
+                  <Spacer mb={3} />
+                  <Separator />
+                  <Spacer mb={3} />
+                </>
+              ) : (
+                <Spacer mb={3} />
+              )}
             </Box>
           )
         })}
@@ -117,7 +132,13 @@ export const SearchResultsCategoriesRouteRouteFragmentContainer = createRefetchC
           }
           edges {
             node {
-              displayLabel
+              ... on SearchableItem {
+                id
+                displayLabel
+                href
+                imageUrl
+                searchableType
+              }
             }
           }
         }

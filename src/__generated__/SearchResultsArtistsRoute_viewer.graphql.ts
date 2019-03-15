@@ -8,6 +8,9 @@ export type SearchResultsArtistsRoute_viewer = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly name?: string | null;
+                readonly href?: string | null;
+                readonly imageUrl?: string | null;
+                readonly bio?: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -95,6 +98,27 @@ const node: ConcreteFragment = {
                       "name": "name",
                       "args": null,
                       "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "imageUrl",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "bio",
+                      "args": null,
+                      "storageKey": null
                     }
                   ]
                 }
@@ -106,5 +130,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '3d3faae97e6950ba05e320b5cdd93944';
+(node as any).hash = '3de93f67523eeaf2d5161e147e28c288';
 export default node;

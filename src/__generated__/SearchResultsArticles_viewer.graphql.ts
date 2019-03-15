@@ -15,7 +15,11 @@ export type SearchResultsArticles_viewer = {
         }) | null;
         readonly edges: ReadonlyArray<({
             readonly node: ({
-                readonly displayLabel: string | null;
+                readonly id?: string;
+                readonly displayLabel?: string | null;
+                readonly href?: string | null;
+                readonly imageUrl?: string | null;
+                readonly searchableType?: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -172,16 +176,50 @@ const node: ConcreteFragment = {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "displayLabel",
+                  "name": "__id",
                   "args": null,
                   "storageKey": null
                 },
                 {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__id",
-                  "args": null,
-                  "storageKey": null
+                  "kind": "InlineFragment",
+                  "type": "SearchableItem",
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "displayLabel",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "imageUrl",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "searchableType",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
             }
@@ -191,5 +229,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a0e6214abaabdc976b077fdb7648b228';
+(node as any).hash = '05e1afe2699e33d3f4d70aa01a9db155';
 export default node;

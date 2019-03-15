@@ -23,6 +23,9 @@ describe("SearchResultsArtworks", () => {
           {
             node: {
               name: "Catty Artist",
+              imageUrl: "",
+              href: "/artist/catty-artist",
+              bio: null,
             },
           },
         ],

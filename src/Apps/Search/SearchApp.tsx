@@ -78,6 +78,8 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
           node {
             ... on SearchableItem {
               id
+              displayLabel
+              searchableType
             }
           }
         }

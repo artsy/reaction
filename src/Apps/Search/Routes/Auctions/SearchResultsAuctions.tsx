@@ -1,5 +1,7 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, Separator, Spacer } from "@artsy/palette"
 import { SearchResultsAuctions_viewer } from "__generated__/SearchResultsAuctions_viewer.graphql"
+import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
+
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import React from "react"
@@ -68,10 +70,18 @@ export class SearchResultAuctionsRoute extends React.Component<
     const sales = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <LoadingArea isLoading={this.state.isLoading}>
-        {sales.map((sale, index) => {
+        {sales.map((searchableItem, index) => {
           return (
             <Box key={index}>
-              {sale.displayLabel}
+              <GenericSearchResultItem
+                name={searchableItem.displayLabel}
+                index={index}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType="Auction"
+              />
+              <Spacer mb={3} />
+              <Separator />
               <Spacer mb={3} />
             </Box>
           )
@@ -117,7 +127,13 @@ export const SearchResultsAuctionsRouteRouteFragmentContainer = createRefetchCon
           }
           edges {
             node {
-              displayLabel
+              ... on SearchableItem {
+                id
+                displayLabel
+                href
+                imageUrl
+                searchableType
+              }
             }
           }
         }
