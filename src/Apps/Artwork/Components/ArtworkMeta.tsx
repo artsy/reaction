@@ -5,6 +5,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 
+import { SeoDataForArtworkFragmentContainer as SeoDataForArtwork } from "./Seo/SeoDataForArtwork"
+
 interface ArtworkMetaProps {
   artwork: ArtworkMeta_artwork
 }
@@ -90,6 +92,8 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
           property="og:type"
           content={`${sd.FACEBOOK_APP_NAMESPACE}:artwork`}
         />
+
+        <SeoDataForArtwork artwork={artwork} />
         {this.renderImageMetaTags()}
         {this.renderSailthruTags()}
       </>
@@ -129,6 +133,7 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
           name
         }
       }
+      ...SeoDataForArtwork_artwork
     }
   `
 )
