@@ -1,3 +1,15 @@
+# v15.5.7 (Mon Mar 18 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Add pagination to artists tab [#2177](https://github.com/artsy/reaction/pull/2177) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.5.6 (Mon Mar 18 2019)
 
 #### 🐛  Bug Fix
