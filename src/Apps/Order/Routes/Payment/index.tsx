@@ -26,14 +26,8 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayRefetchProp,
-} from "react-relay"
+import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
