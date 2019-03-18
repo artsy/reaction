@@ -18,18 +18,13 @@ import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import { CommitMutation } from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
 import { Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { ErrorWithMetadata } from "Utils/errors"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { offerFlowSteps, OrderStepper } from "../../Components/OrderStepper"
@@ -39,12 +34,13 @@ export interface OfferProps {
   relay?: RelayProp
   router: Router
   dialog: Dialog
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 export interface OfferState {
   offerValue: number
   offerNoteValue: TextAreaChange
-  isCommittingMutation: boolean
   formIsDirty: boolean
   lowSpeedBumpEncountered: boolean
   highSpeedBumpEncountered: boolean
@@ -57,7 +53,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   state: OfferState = {
     offerValue: 0,
     offerNoteValue: { value: "", exceedsCharacterLimit: false },
-    isCommittingMutation: false,
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
     highSpeedBumpEncountered: false,
@@ -101,7 +96,44 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
-  onContinueButtonPressed: () => void = async () => {
+  addInitialOfferToOrder(variables: OfferMutation["variables"]) {
+    return this.props.commitMutation<OfferMutation>({
+      variables,
+      mutation: graphql`
+        mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
+          ecommerceAddInitialOfferToOrder(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                __typename
+                order {
+                  id
+                  mode
+                  totalListPrice
+                  totalListPriceCents
+                  ... on OfferOrder {
+                    myLastOffer {
+                      id
+                      amountCents
+                      note
+                    }
+                  }
+                }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
+              }
+            }
+          }
+        }
+      `,
+    })
+  }
+
+  onContinueButtonPressed = async () => {
     const {
       offerValue,
       offerNoteValue,
@@ -129,100 +161,47 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       return
     }
 
-    this.setState({ isCommittingMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
-        commitMutation<OfferMutation>(this.props.relay.environment, {
-          mutation: graphql`
-            mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
-              ecommerceAddInitialOfferToOrder(input: $input) {
-                orderOrError {
-                  ... on OrderWithMutationSuccess {
-                    __typename
-                    order {
-                      id
-                      mode
-                      totalListPrice
-                      totalListPriceCents
-                      ... on OfferOrder {
-                        myLastOffer {
-                          id
-                          amountCents
-                          note
-                        }
-                      }
-                    }
-                  }
-                  ... on OrderWithMutationFailure {
-                    error {
-                      type
-                      code
-                      data
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          variables: {
-            input: {
-              note:
-                this.state.offerNoteValue && this.state.offerNoteValue.value,
-              orderId: this.props.order.id,
-              offerPrice: {
-                amount: offerValue,
-                currencyCode: "USD",
-              },
-            },
+    try {
+      const {
+        ecommerceAddInitialOfferToOrder: { orderOrError },
+      } = await this.addInitialOfferToOrder({
+        input: {
+          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
+          orderId: this.props.order.id,
+          offerPrice: {
+            amount: offerValue,
+            currencyCode: "USD",
           },
-          onCompleted: data => {
-            this.setState({ isCommittingMutation: false })
-            const {
-              ecommerceAddInitialOfferToOrder: { orderOrError },
-            } = data
+        },
+      })
 
-            if (orderOrError.error) {
-              switch (orderOrError.error.code) {
-                case "invalid_amount_cents": {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    ),
-                    "Invalid offer",
-                    "The offer amount is either missing or invalid. Please try again."
-                  )
-                  break
-                }
-
-                default: {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    )
-                  )
-                  break
-                }
-              }
-            } else {
-              this.props.router.push(`/orders/${this.props.order.id}/shipping`)
-            }
-          },
-          onError: this.onMutationError.bind(this),
-        })
+      if (!orderOrError.error) {
+        this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+        return
       }
-    })
-  }
 
-  onMutationError(error, title?, message?) {
-    logger.error(error)
-    this.props.dialog.showErrorDialog({ title, message })
-    this.setState({ isCommittingMutation: false })
+      switch (orderOrError.error.code) {
+        case "invalid_amount_cents": {
+          this.props.dialog.showErrorDialog({
+            title: "Invalid offer",
+            message:
+              "The offer amount is either missing or invalid. Please try again.",
+          })
+          break
+        }
+        default: {
+          this.props.dialog.showErrorDialog()
+          break
+        }
+      }
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
   }
 
   render() {
-    const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { order, isCommittingMutation } = this.props
 
     const artworkId = order.lineItems.edges[0].node.artwork.id
 
