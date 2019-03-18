@@ -1,3 +1,15 @@
+# v15.5.4 (Mon Mar 18 2019)
+
+#### 🐛  Bug Fix
+
+- update viewed product analytics event [#2173](https://github.com/artsy/reaction/pull/2173) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
 # v15.5.3 (Fri Mar 15 2019)
 
 
