@@ -13,19 +13,17 @@ import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "App
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { ErrorWithMetadata } from "Utils/errors"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -34,91 +32,74 @@ export interface CounterProps {
   relay?: RelayProp
   router: Router
   dialog: Dialog
-}
-
-export interface CounterState {
+  commitMutation: CommitMutation
   isCommittingMutation: boolean
 }
 
 const logger = createLogger("Order/Routes/Counter/index.tsx")
 
 @track()
-export class CounterRoute extends Component<CounterProps, CounterState> {
-  state: CounterState = {
-    isCommittingMutation: false,
-  }
-
+export class CounterRoute extends Component<CounterProps> {
   constructor(props: CounterProps) {
     super(props)
     this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
   }
 
-  onSubmitButtonPressed: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      commitMutation<CounterSubmitMutation>(this.props.relay.environment, {
-        mutation: graphql`
-          mutation CounterSubmitMutation($input: submitPendingOfferInput!) {
-            ecommerceSubmitPendingOffer(input: $input) {
-              orderOrError {
-                ... on OrderWithMutationSuccess {
-                  order {
-                    state
-                    ... on OfferOrder {
-                      awaitingResponseFrom
-                    }
+  submitPendingOffer(variables: CounterSubmitMutation["variables"]) {
+    return this.props.commitMutation<CounterSubmitMutation>({
+      variables,
+      mutation: graphql`
+        mutation CounterSubmitMutation($input: submitPendingOfferInput!) {
+          ecommerceSubmitPendingOffer(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  state
+                  ... on OfferOrder {
+                    awaitingResponseFrom
                   }
                 }
-                ... on OrderWithMutationFailure {
-                  error {
-                    type
-                    code
-                    data
-                  }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
                 }
               }
             }
           }
-        `,
-        variables: {
-          input: {
-            offerId: this.props.order.myLastOffer.id,
-          },
+        }
+      `,
+    })
+  }
+
+  onSubmitButtonPressed = async () => {
+    try {
+      const {
+        ecommerceSubmitPendingOffer: { orderOrError },
+      } = await this.submitPendingOffer({
+        input: {
+          offerId: this.props.order.myLastOffer.id,
         },
-        onCompleted: result => {
-          const {
-            ecommerceSubmitPendingOffer: { orderOrError },
-          } = result
-          this.onSubmitCompleted(orderOrError)
-        },
-        onError: this.onMutationError.bind(this),
       })
-    })
-  }
 
-  onMutationError(errors, title?, message?) {
-    logger.error(errors)
-    this.props.dialog.showErrorDialog({ message, title })
-    this.setState({
-      isCommittingMutation: false,
-    })
-  }
-
-  onSubmitCompleted = orderOrError => {
-    if (orderOrError.error) {
-      const errorCode = orderOrError.error.code
-      if (errorCode === "insufficient_inventory") {
-        this.onMutationError(
-          new ErrorWithMetadata(orderOrError.error.code, orderOrError.error),
-          "This work has already been sold.",
-          "Please contact orders@artsy.net with any questions."
-        )
-      } else {
-        this.onMutationError(
-          new ErrorWithMetadata(orderOrError.error.code, orderOrError.error)
-        )
+      if (!orderOrError.error) {
+        this.onSuccessfulSubmit()
+        return
       }
-    } else {
-      this.onSuccessfulSubmit()
+
+      if (orderOrError.error.code === "insufficient_inventory") {
+        this.props.dialog.showErrorDialog({
+          title: "This work has already been sold.",
+          message: "Please contact orders@artsy.net with any questions.",
+        })
+      } else {
+        this.props.dialog.showErrorDialog()
+      }
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
     }
   }
 
@@ -127,7 +108,6 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
     order_id: props.order.id,
   }))
   onSuccessfulSubmit() {
-    this.setState({ isCommittingMutation: false })
     this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
@@ -137,8 +117,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
   }
 
   render() {
-    const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { order, isCommittingMutation } = this.props
 
     return (
       <>
@@ -226,7 +205,7 @@ export class CounterRoute extends Component<CounterProps, CounterState> {
 }
 
 export const CounterFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectDialog(CounterRoute)),
+  trackPageViewWrapper(injectCommitMutation(injectDialog(CounterRoute))),
   graphql`
     fragment Counter_order on Order {
       id
