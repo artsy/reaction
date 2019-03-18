@@ -1,3 +1,20 @@
+# v15.5.5 (Mon Mar 18 2019)
+
+#### 🐛  Bug Fix
+
+- set up artist collections rail test [#2172](https://github.com/artsy/reaction/pull/2172) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.1.3 [#2174](https://github.com/artsy/reaction/pull/2174) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.5.4 (Mon Mar 18 2019)
 
 #### 🐛  Bug Fix
