@@ -92,8 +92,12 @@ export enum ActionType {
   SubmittedOrder = "submitted_order",
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
-  ViewedProduct = "Viewed Product",
   FocusedOnOfferInput = "Focused on offer input",
+
+  /**
+   * Paid Marketing - Retargeting
+   */
+  ViewedProduct = "Product Viewed",
 
   // MO speedbumps
   ViewedOfferTooLow = "Viewed offer too low",
