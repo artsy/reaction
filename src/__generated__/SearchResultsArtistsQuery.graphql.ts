@@ -2,32 +2,40 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { SearchResultsArtists_viewer$ref } from "./SearchResultsArtists_viewer.graphql";
-export type routes_SearchResultsArtistsQueryVariables = {
+export type SearchResultsArtistsQueryVariables = {
+    readonly first?: number | null;
+    readonly last?: number | null;
+    readonly after?: string | null;
+    readonly before?: string | null;
     readonly term: string;
 };
-export type routes_SearchResultsArtistsQueryResponse = {
+export type SearchResultsArtistsQueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": SearchResultsArtists_viewer$ref;
     }) | null;
 };
-export type routes_SearchResultsArtistsQuery = {
-    readonly response: routes_SearchResultsArtistsQueryResponse;
-    readonly variables: routes_SearchResultsArtistsQueryVariables;
+export type SearchResultsArtistsQuery = {
+    readonly response: SearchResultsArtistsQueryResponse;
+    readonly variables: SearchResultsArtistsQueryVariables;
 };
 
 
 
 /*
-query routes_SearchResultsArtistsQuery(
+query SearchResultsArtistsQuery(
+  $first: Int
+  $last: Int
+  $after: String
+  $before: String
   $term: String!
 ) {
   viewer {
-    ...SearchResultsArtists_viewer_4hh6ED
+    ...SearchResultsArtists_viewer_4c14dZ
   }
 }
 
-fragment SearchResultsArtists_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 10, entities: [ARTIST]) {
+fragment SearchResultsArtists_viewer_4c14dZ on Viewer {
+  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTIST]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -79,6 +87,30 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "after",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "before",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
     "name": "term",
     "type": "String!",
     "defaultValue": null
@@ -112,13 +144,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchResultsArtistsQuery",
+  "name": "SearchResultsArtistsQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsArtists_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsArtistsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsArtists_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchResultsArtistsQuery",
+    "name": "SearchResultsArtistsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -138,6 +170,30 @@ return {
             "args": [
               {
                 "kind": "Variable",
+                "name": "after",
+                "variableName": "after",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "before",
+                "variableName": "before",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "first",
+                "variableName": "first",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
+                "type": null
+              },
+              {
+                "kind": "Variable",
                 "name": "term",
                 "variableName": "term",
                 "type": null
@@ -150,7 +206,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchResultsArtistsQuery",
+    "name": "SearchResultsArtistsQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -169,6 +225,18 @@ return {
             "storageKey": null,
             "args": [
               {
+                "kind": "Variable",
+                "name": "after",
+                "variableName": "after",
+                "type": "String"
+              },
+              {
+                "kind": "Variable",
+                "name": "before",
+                "variableName": "before",
+                "type": "String"
+              },
+              {
                 "kind": "Literal",
                 "name": "entities",
                 "value": [
@@ -177,9 +245,15 @@ return {
                 "type": "[SearchEntity]"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "first",
-                "value": 10,
+                "variableName": "first",
+                "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "last",
+                "variableName": "last",
                 "type": "Int"
               },
               {
@@ -358,5 +432,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c5134093501506bdf3711826168a8e56';
+(node as any).hash = 'e9a05a7ac13817b34243f86197fd30c3';
 export default node;

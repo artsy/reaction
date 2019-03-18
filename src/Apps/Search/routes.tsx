@@ -119,7 +119,7 @@ export const routes: RouteConfig[] = [
         query: graphql`
           query routes_SearchResultsArtistsQuery($term: String!) {
             viewer {
-              ...SearchResultsArtistsRoute_viewer @arguments(term: $term)
+              ...SearchResultsArtists_viewer @arguments(term: $term)
             }
           }
         `,
