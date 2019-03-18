@@ -18,7 +18,7 @@ import {
 } from "Components/v2"
 
 export interface OverviewRouteProps {
-  ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
+  showCollectionsRail?: boolean // TODO: remove after CollectionsRail a/b test
   artist: Overview_artist & {
     __fragments: object[]
   }
@@ -34,11 +34,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   componentDidMount() {
-    // TODO: remove after CollectionsRail a/b test
-    const showCollectionsRail =
-      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
-
-    if (showCollectionsRail) {
+    if (this.props.showCollectionsRail) {
       this.trackingCollectionsRailTest()
     }
   }
@@ -63,8 +59,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   @track<OverviewRouteProps>(props => {
     // TODO: remove after CollectionsRail a/b test
     const experiment = "artist_collections_rail"
-    const variation =
-      props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+    const variation = sd.ARTIST_COLLECTIONS_RAIL
 
     return {
       action_type: Schema.ActionType.ExperimentViewed,
@@ -80,10 +75,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   render() {
-    const { artist } = this.props
-    const collectionsRailVariation =
-      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
-    const showCollectionsRail = collectionsRailVariation === "experiment"
+    const { artist, showCollectionsRail } = this.props
 
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
