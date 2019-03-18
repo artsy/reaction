@@ -1,28 +1,24 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { SearchResultsFilterContainer_viewer$ref } from "./SearchResultsFilterContainer_viewer.graphql";
-declare const _SearchResultsArtworks_viewer$ref: unique symbol;
-export type SearchResultsArtworks_viewer$ref = typeof _SearchResultsArtworks_viewer$ref;
-export type SearchResultsArtworks_viewer = {
-    readonly " $fragmentRefs": SearchResultsFilterContainer_viewer$ref;
-    readonly " $refType": SearchResultsArtworks_viewer$ref;
+import { SearchResultsArtworkGrid_filtered_artworks$ref } from "./SearchResultsArtworkGrid_filtered_artworks.graphql";
+declare const _SearchResultsRefetch_viewer$ref: unique symbol;
+export type SearchResultsRefetch_viewer$ref = typeof _SearchResultsRefetch_viewer$ref;
+export type SearchResultsRefetch_viewer = {
+    readonly filtered_artworks: ({
+        readonly " $fragmentRefs": SearchResultsArtworkGrid_filtered_artworks$ref;
+    }) | null;
+    readonly " $refType": SearchResultsRefetch_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SearchResultsArtworks_viewer",
+  "name": "SearchResultsRefetch_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
-    {
-      "kind": "LocalArgument",
-      "name": "keyword",
-      "type": "String!",
-      "defaultValue": ""
-    },
     {
       "kind": "LocalArgument",
       "name": "medium",
@@ -73,15 +69,6 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "aggregations",
-      "type": "[ArtworkAggregation]",
-      "defaultValue": [
-        "MEDIUM",
-        "TOTAL"
-      ]
-    },
-    {
-      "kind": "LocalArgument",
       "name": "sort",
       "type": "String",
       "defaultValue": "-partner_updated_at"
@@ -113,7 +100,7 @@ const node: ConcreteFragment = {
     {
       "kind": "LocalArgument",
       "name": "attribution_class",
-      "type": "String",
+      "type": "[String]",
       "defaultValue": null
     },
     {
@@ -121,112 +108,150 @@ const node: ConcreteFragment = {
       "name": "color",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "keyword",
+      "type": "String!",
+      "defaultValue": ""
     }
   ],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "SearchResultsFilterContainer_viewer",
+      "kind": "LinkedField",
+      "alias": "filtered_artworks",
+      "name": "filter_artworks",
+      "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "acquireable",
           "variableName": "acquireable",
-          "type": null
+          "type": "Boolean"
+        },
+        {
+          "kind": "Literal",
+          "name": "aggregations",
+          "value": [
+            "TOTAL"
+          ],
+          "type": "[ArtworkAggregation]"
         },
         {
           "kind": "Variable",
           "name": "artist_id",
           "variableName": "artist_id",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "attribution_class",
           "variableName": "attribution_class",
-          "type": null
+          "type": "[String]"
         },
         {
           "kind": "Variable",
           "name": "color",
           "variableName": "color",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "height",
           "variableName": "height",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
           "variableName": "inquireable_only",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "keyword",
           "variableName": "keyword",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
           "variableName": "major_periods",
-          "type": null
+          "type": "[String]"
         },
         {
           "kind": "Variable",
           "name": "medium",
           "variableName": "medium",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "offerable",
           "variableName": "offerable",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
-          "type": null
+          "type": "ID"
         },
         {
           "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
-          "type": null
+          "type": "String"
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 0,
+          "type": "Int"
         },
         {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "width",
           "variableName": "width",
-          "type": null
+          "type": "String"
+        }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SearchResultsArtworkGrid_filtered_artworks",
+          "args": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '5c8094420b3578ef13b89361ba7a2fbd';
+(node as any).hash = '32106b0949c623673a44bbdb3d4b0a44';
 export default node;

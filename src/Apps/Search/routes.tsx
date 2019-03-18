@@ -7,23 +7,37 @@ import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollecti
 import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
 import { RouteConfig } from "found"
+import qs from "qs"
+import React from "react"
 import { graphql } from "react-relay"
+import { Provider } from "unstated"
+import { FilterState } from "./FilterState"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 // FIXME: The initial render includes `location` in props, but subsequent
 // renders (such as tabbing back to this route in your browser) will not.
 const prepareVariables = (params, props) => {
-  const paramsFromUrl = props.location ? props.location.query : {}
+  let paramsFromUrl = props.location ? props.location.query : {}
   if (
     Object.keys(paramsFromUrl).length === 0 &&
     Object.keys(params).length === 0
   ) {
-    return { term: "andy" }
+    paramsFromUrl = qs.parse(location.search.replace(/^\?/, ""))
+
+    // FIXME: This snippet only is valid during storybook development.
+    // Optionally remove this when feature is launched.
+    if (!paramsFromUrl.term && process.env.NODE_ENV === "development") {
+      paramsFromUrl.term = "andy"
+    }
   }
-  return {
+
+  const allParams = {
     ...paramsFromUrl,
     ...params,
   }
+
+  allParams.keyword = allParams.term
+  return allParams
 }
 
 export const routes: RouteConfig[] = [
@@ -42,10 +56,58 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: SearchResultsArtworksRoute,
+        render: ({ props, Component }) => {
+          if (!props) {
+            return null
+          }
+
+          const currentFilterState = props.location.query
+          currentFilterState.keyword = currentFilterState.term
+          return (
+            <Provider inject={[new FilterState(currentFilterState)]}>
+              <Component viewer={(props as any).viewer} />
+            </Provider>
+          )
+        },
         query: graphql`
-          query routes_SearchResultsArtworksQuery($term: String!) {
+          query routes_SearchResultsArtworksQuery(
+            $keyword: String!
+            $medium: String
+            $major_periods: [String]
+            $partner_id: ID
+            $for_sale: Boolean
+            $sort: String
+            $at_auction: Boolean
+            $acquireable: Boolean
+            $offerable: Boolean
+            $inquireable_only: Boolean
+            $price_range: String
+            $height: String
+            $width: String
+            $artist_id: String
+            $attribution_class: [String]
+            $color: String
+          ) {
             viewer {
-              ...SearchResultsArtworks_viewer @arguments(term: $term)
+              ...SearchResultsArtworks_viewer
+                @arguments(
+                  keyword: $keyword
+                  medium: $medium
+                  major_periods: $major_periods
+                  partner_id: $partner_id
+                  for_sale: $for_sale
+                  sort: $sort
+                  at_auction: $at_auction
+                  acquireable: $acquireable
+                  offerable: $offerable
+                  inquireable_only: $inquireable_only
+                  price_range: $price_range
+                  height: $height
+                  width: $width
+                  artist_id: $artist_id
+                  attribution_class: $attribution_class
+                  color: $color
+                )
             }
           }
         `,
