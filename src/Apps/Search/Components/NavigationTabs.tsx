@@ -10,6 +10,13 @@ interface Props {
   term: string
 }
 
+const MORE_TABS = {
+  tag: "Tag",
+  city: "City",
+  fair: "Fair",
+  feature: "Feature",
+}
+
 export class NavigationTabs extends React.Component<Props> {
   renderTab(
     text: string,
@@ -83,6 +90,16 @@ export class NavigationTabs extends React.Component<Props> {
       0
     )
 
+    let restAggregationCount: number = 0
+    Object.keys(MORE_TABS).forEach(
+      key =>
+        (restAggregationCount += get(
+          this.aggregationFor(key),
+          agg => agg.count,
+          0
+        ))
+    )
+
     return (
       <>
         {this.renderTab(`Artworks ${artworkAggregationCount}`, route(""), {
@@ -110,6 +127,7 @@ export class NavigationTabs extends React.Component<Props> {
           `Auctions ${auctionsAggregationCount}`,
           route("/auctions")
         )}
+        {this.renderTab(`More ${restAggregationCount}`, route("/more"))}
       </>
     )
   }

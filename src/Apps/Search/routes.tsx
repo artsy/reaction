@@ -5,6 +5,7 @@ import { SearchResultsAuctionsRouteRouteFragmentContainer as SearchResultsAuctio
 import { SearchResultsCategoriesRouteRouteFragmentContainer as SearchResultsCategoriesRoute } from "Apps/Search/Routes/Categories/SearchResultsCategories"
 import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollectionsRoute } from "Apps/Search/Routes/Collections/SearchResultsCollections"
 import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
+import { SearchResultsMoreRouteRouteFragmentContainer as SearchResultsMoreRoute } from "Apps/Search/Routes/More/SearchResultsMore"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
 import { RouteConfig } from "found"
 import qs from "qs"
@@ -192,6 +193,18 @@ export const routes: RouteConfig[] = [
           query routes_SearchResultsAuctionsQuery($term: String!) {
             viewer {
               ...SearchResultsAuctions_viewer @arguments(term: $term)
+            }
+          }
+        `,
+        prepareVariables,
+      },
+      {
+        path: "more",
+        Component: SearchResultsMoreRoute,
+        query: graphql`
+          query routes_SearchResultsMoreQuery($term: String!) {
+            viewer {
+              ...SearchResultsMore_viewer @arguments(term: $term)
             }
           }
         `,
