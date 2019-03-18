@@ -49,6 +49,10 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -61,6 +65,8 @@ export interface PaymentProps extends ReactStripeElements.InjectedStripeProps {
   relay?: RelayRefetchProp
   router: Router
   dialog: Dialog
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 interface PaymentState {
@@ -69,7 +75,7 @@ interface PaymentState {
   addressErrors: AddressErrors
   addressTouched: AddressTouched
   stripeError: stripe.Error
-  isCommittingMutation: boolean
+  isCreatingStripeToken: boolean
 }
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
@@ -79,7 +85,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state = {
     hideBillingAddress: true,
     stripeError: null,
-    isCommittingMutation: false,
+    isCreatingStripeToken: false,
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
@@ -105,38 +111,72 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  onContinue: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      if (this.needsAddress()) {
-        const { errors, hasErrors } = validateAddress(this.state.address)
-        if (hasErrors) {
-          this.setState({
-            isCommittingMutation: false,
-            addressErrors: errors,
-            addressTouched: this.touchedAddress,
-          })
-          return
-        }
+  createStripeToken = async () => {
+    try {
+      this.setState({ isCreatingStripeToken: true })
+      const stripeBillingAddress = this.getStripeBillingAddress()
+      return await this.props.stripe.createToken(stripeBillingAddress)
+    } finally {
+      this.setState({ isCreatingStripeToken: false })
+    }
+  }
+
+  onContinue = async () => {
+    if (this.needsAddress()) {
+      const { errors, hasErrors } = validateAddress(this.state.address)
+      if (hasErrors) {
+        this.setState({
+          addressErrors: errors,
+          addressTouched: this.touchedAddress,
+        })
+        return
+      }
+    }
+
+    try {
+      const stripeResult = await this.createStripeToken()
+      if (stripeResult.error) {
+        this.setState({
+          stripeError: stripeResult.error,
+        })
+        return
       }
 
-      const { address } = this.state
-      const stripeBillingAddress = this.getStripeBillingAddress(address)
-      this.props.stripe
-        .createToken(stripeBillingAddress)
-        .then(({ error, token }) => {
-          if (error) {
-            this.setState({
-              isCommittingMutation: false,
-              stripeError: error,
-            })
-          } else {
-            this.createCreditCard({ token: token.id, oneTimeUse: true })
-          }
+      const {
+        createCreditCard: { creditCardOrError },
+      } = await this.createCreditCard({
+        input: {
+          token: stripeResult.token.id,
+          oneTimeUse: true,
+        },
+      })
+
+      if (creditCardOrError.mutationError) {
+        this.props.dialog.showErrorDialog({
+          message: creditCardOrError.mutationError.detail,
         })
-        .catch(e => {
-          this.onMutationError(new ErrorWithMetadata(e))
-        })
-    })
+        return
+      }
+
+      const {
+        ecommerceSetOrderPayment: { orderOrError },
+      } = await this.setOrderPayment({
+        input: {
+          creditCardId: creditCardOrError.creditCard.id,
+          orderId: this.props.order.id,
+        },
+      })
+
+      if (orderOrError.error) {
+        this.props.dialog.showErrorDialog()
+        return
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/review`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
   }
 
   @track((props, state, args) => {
@@ -179,14 +219,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   }
 
   render() {
-    const { order } = this.props
+    const { order, isCommittingMutation } = this.props
     const {
       stripeError,
-      isCommittingMutation,
       address,
       addressErrors,
       addressTouched,
+      isCreatingStripeToken,
     } = this.state
+
+    const isLoading = isCreatingStripeToken || isCommittingMutation
 
     return (
       <>
@@ -208,7 +250,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             Content={
               <Flex
                 flexDirection="column"
-                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+                style={isLoading ? { pointerEvents: "none" } : {}}
               >
                 <Join separator={<Spacer mb={3} />}>
                   <Flex flexDirection="column">
@@ -244,7 +286,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   <Media greaterThan="xs">
                     <ContinueButton
                       onClick={this.onContinue}
-                      loading={isCommittingMutation}
+                      loading={isLoading}
                     />
                   </Media>
                 </Join>
@@ -262,7 +304,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     <Spacer mb={3} />
                     <ContinueButton
                       onClick={this.onContinue}
-                      loading={isCommittingMutation}
+                      loading={isLoading}
                     />
                   </>
                 </Media>
@@ -274,7 +316,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     )
   }
 
-  private getStripeBillingAddress(formAddress: Address): stripe.TokenOptions {
+  private getStripeBillingAddress(): stripe.TokenOptions {
     const selectedBillingAddress = (this.needsAddress()
       ? this.state.address
       : this.props.order.requestedFulfillment) as Address
@@ -298,131 +340,71 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
     }
   }
 
-  private createCreditCard({ token, oneTimeUse }) {
-    commitMutation<PaymentRouteCreateCreditCardMutation>(
-      this.props.relay.environment,
-      {
-        onCompleted: (data, errors) => {
-          const {
-            createCreditCard: { creditCardOrError },
-          } = data
-
-          if (creditCardOrError.creditCard) {
-            this.setOrderPayment({
-              creditCardId: creditCardOrError.creditCard.id,
-            })
-          } else {
-            if (errors) {
-              errors.forEach(this.onMutationError.bind(this))
-            } else {
-              const mutationError = creditCardOrError.mutationError
-              this.onMutationError(
-                new ErrorWithMetadata(mutationError.message, mutationError),
-                mutationError.detail
-              )
+  createCreditCard(
+    variables: PaymentRouteCreateCreditCardMutation["variables"]
+  ) {
+    return this.props.commitMutation<PaymentRouteCreateCreditCardMutation>({
+      variables,
+      mutation: graphql`
+        mutation PaymentRouteCreateCreditCardMutation(
+          $input: CreditCardInput!
+        ) {
+          createCreditCard(input: $input) {
+            creditCardOrError {
+              ... on CreditCardMutationSuccess {
+                creditCard {
+                  id
+                }
+              }
+              ... on CreditCardMutationFailure {
+                mutationError {
+                  type
+                  message
+                  detail
+                }
+              }
             }
           }
-        },
-        onError: this.onMutationError.bind(this),
-        mutation: graphql`
-          mutation PaymentRouteCreateCreditCardMutation(
-            $input: CreditCardInput!
-          ) {
-            createCreditCard(input: $input) {
-              creditCardOrError {
-                ... on CreditCardMutationSuccess {
+        }
+      `,
+    })
+  }
+
+  setOrderPayment(variables: PaymentRouteSetOrderPaymentMutation["variables"]) {
+    return this.props.commitMutation<PaymentRouteSetOrderPaymentMutation>({
+      variables,
+      mutation: graphql`
+        mutation PaymentRouteSetOrderPaymentMutation(
+          $input: SetOrderPaymentInput!
+        ) {
+          ecommerceSetOrderPayment(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
                   creditCard {
                     id
+                    name
+                    street1
+                    street2
+                    city
+                    state
+                    country
+                    postal_code
                   }
                 }
-                ... on CreditCardMutationFailure {
-                  mutationError {
-                    type
-                    message
-                    detail
-                  }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
                 }
               }
             }
           }
-        `,
-        variables: {
-          input: { token, oneTimeUse },
-        },
-      }
-    )
-  }
-
-  private setOrderPayment({ creditCardId }) {
-    commitMutation<PaymentRouteSetOrderPaymentMutation>(
-      this.props.relay.environment,
-      {
-        onCompleted: (data, errors) => {
-          this.setState({ isCommittingMutation: false })
-
-          const {
-            ecommerceSetOrderPayment: { orderOrError },
-          } = data
-
-          if (orderOrError.order) {
-            this.props.router.push(`/orders/${this.props.order.id}/review`)
-          } else {
-            if (errors) {
-              errors.forEach(this.onMutationError.bind(this))
-            } else {
-              const orderError = orderOrError.error
-              this.onMutationError(
-                new ErrorWithMetadata(orderError.code, orderError)
-              )
-            }
-          }
-        },
-        onError: this.onMutationError.bind(this),
-        mutation: graphql`
-          mutation PaymentRouteSetOrderPaymentMutation(
-            $input: SetOrderPaymentInput!
-          ) {
-            ecommerceSetOrderPayment(input: $input) {
-              orderOrError {
-                ... on OrderWithMutationSuccess {
-                  order {
-                    creditCard {
-                      id
-                      name
-                      street1
-                      street2
-                      city
-                      state
-                      country
-                      postal_code
-                    }
-                  }
-                }
-                ... on OrderWithMutationFailure {
-                  error {
-                    type
-                    code
-                    data
-                  }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          input: {
-            orderId: this.props.order.id,
-            creditCardId,
-          },
-        },
-      }
-    )
-  }
-
-  private onMutationError(error, message?) {
-    logger.error(error)
-    this.props.dialog.showErrorDialog({ message })
-    this.setState({ isCommittingMutation: false })
+        }
+      `,
+    })
   }
 
   private isPickup = () => {
@@ -435,7 +417,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute))),
+  injectCommitMutation(
+    injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute)))
+  ),
   graphql`
     fragment Payment_order on Order {
       id
