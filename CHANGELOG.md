@@ -1,3 +1,20 @@
+# v15.5.9 (Tue Mar 19 2019)
+
+#### 🐛  Bug Fix
+
+- Add h1/h2 to artwork pages [#2175](https://github.com/artsy/reaction/pull/2175) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.2.0 [#2183](https://github.com/artsy/reaction/pull/2183) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.5.8 (Tue Mar 19 2019)
 
 #### 🐛  Bug Fix
