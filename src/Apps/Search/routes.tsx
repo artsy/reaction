@@ -8,30 +8,14 @@ import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalle
 import { SearchResultsMoreRouteRouteFragmentContainer as SearchResultsMoreRoute } from "Apps/Search/Routes/More/SearchResultsMore"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
 import { RouteConfig } from "found"
-import qs from "qs"
 import React from "react"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
 import { FilterState } from "./FilterState"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
-// FIXME: The initial render includes `location` in props, but subsequent
-// renders (such as tabbing back to this route in your browser) will not.
 const prepareVariables = (params, props) => {
-  let paramsFromUrl = props.location ? props.location.query : {}
-  if (
-    Object.keys(paramsFromUrl).length === 0 &&
-    Object.keys(params).length === 0
-  ) {
-    paramsFromUrl = qs.parse(location.search.replace(/^\?/, ""))
-
-    // FIXME: This snippet only is valid during storybook development.
-    // Optionally remove this when feature is launched.
-    if (!paramsFromUrl.term && process.env.NODE_ENV === "development") {
-      paramsFromUrl.term = "andy"
-    }
-  }
-
+  const paramsFromUrl = props.location ? props.location.query : {}
   const allParams = {
     ...paramsFromUrl,
     ...params,
