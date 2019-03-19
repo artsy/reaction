@@ -36,12 +36,14 @@ const mountWrapper = props => {
 
 describe("Sections", () => {
   let props
-  beforeEach(() =>
-    (props = {
-      article: StandardArticle,
-      DisplayPanel: () => <div>hi!</div>,
-      isMobile: true,
-    }))
+  beforeEach(
+    () =>
+      (props = {
+        article: StandardArticle,
+        DisplayPanel: () => <div>hi!</div>,
+        isMobile: true,
+      })
+  )
 
   describe("snapshots tests", () => {
     it("renders properly", () => {

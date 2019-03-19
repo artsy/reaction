@@ -48,19 +48,18 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
       <Box>
         <Spacer mb={3} />
         {this.renderPartnerName()}
-        {locationNames &&
-          locationNames.length > 0 && (
-            <Box>
-              <Flex width="100%" pt={1}>
-                <Flex flexDirection="column">
-                  <LocationIcon />
-                </Flex>
-                <Flex flexDirection="column">
-                  {this.renderLocations(locationNames)}
-                </Flex>
+        {locationNames && locationNames.length > 0 && (
+          <Box>
+            <Flex width="100%" pt={1}>
+              <Flex flexDirection="column">
+                <LocationIcon />
               </Flex>
-            </Box>
-          )}
+              <Flex flexDirection="column">
+                {this.renderLocations(locationNames)}
+              </Flex>
+            </Flex>
+          </Box>
+        )}
         <Spacer mb={3} />
       </Box>
     )

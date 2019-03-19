@@ -187,9 +187,9 @@ export enum Subject {
   ClickedNextButton = "clicked next button",
 
   /*
-  * Articles
-  * TODO: Old schema
-  */
+   * Articles
+   * TODO: Old schema
+   */
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",
@@ -255,9 +255,9 @@ export enum ContextModule {
   ViewInRoom = "View in room",
 
   /*
-  * Articles
-  * TODO: Old schema
-  */
+   * Articles
+   * TODO: Old schema
+   */
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",

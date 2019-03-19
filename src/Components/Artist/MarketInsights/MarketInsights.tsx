@@ -188,7 +188,7 @@ export class MarketInsights extends React.Component<Props, null> {
         <TextLink
           color={colors.graySemibold}
           underline
-          href="mailto:productfeedback@artsy.net?subject=Feedback on &quot;About the Artist&quot; information"
+          href='mailto:productfeedback@artsy.net?subject=Feedback on "About the Artist" information'
         >
           Tell us what you think.
         </TextLink>

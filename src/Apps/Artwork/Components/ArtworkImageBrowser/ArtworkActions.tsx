@@ -222,13 +222,12 @@ export class ArtworkActions extends React.Component<
                   )
                 })}
 
-                {moreActions &&
-                  moreActions.length > 0 && (
-                    <UtilButton
-                      name="more"
-                      onClick={this.toggleMorePanel.bind(this)}
-                    />
-                  )}
+                {moreActions && moreActions.length > 0 && (
+                  <UtilButton
+                    name="more"
+                    onClick={this.toggleMorePanel.bind(this)}
+                  />
+                )}
               </Flex>
             </Media>
           </Join>

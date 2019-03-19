@@ -43,23 +43,21 @@ export const StepSummaryItem: React.SFC<StepSummaryItemProps> = ({
               {title}
             </Serif>
           )}
-          {!locked &&
-            onChange && (
-              <Sans size="2">
-                <a className="colorLink" onClick={onChange}>
-                  Change
-                </a>
-              </Sans>
-            )}
+          {!locked && onChange && (
+            <Sans size="2">
+              <a className="colorLink" onClick={onChange}>
+                Change
+              </a>
+            </Sans>
+          )}
           {locked && <LockIcon />}
         </Flex>
       )}
-      {!showHeading &&
-        locked && (
-          <LockIconPositioner p={[2, 3]}>
-            <LockIcon />
-          </LockIconPositioner>
-        )}
+      {!showHeading && locked && (
+        <LockIconPositioner p={[2, 3]}>
+          <LockIcon />
+        </LockIconPositioner>
+      )}
       {children}
     </StackableBorderBox>
   )
