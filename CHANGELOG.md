@@ -1,3 +1,15 @@
+# v15.5.8 (Tue Mar 19 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Add 'more' tab [#2178](https://github.com/artsy/reaction/pull/2178) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.5.7 (Mon Mar 18 2019)
 
 #### 🐛  Bug Fix
