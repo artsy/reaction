@@ -25,7 +25,8 @@ export const OfferNote: React.FC<{
             }
           >
             ask our specialists
-          </Link>.
+          </Link>
+          .
         </>
       }
       placeholder="Add a note"

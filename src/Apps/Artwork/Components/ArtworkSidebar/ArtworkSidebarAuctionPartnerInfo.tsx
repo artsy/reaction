@@ -55,7 +55,8 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
                   This work has a{" "}
                   <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
                     buyer's premium
-                  </Link>.
+                  </Link>
+                  .
                 </Serif>
               )}
           </Box>

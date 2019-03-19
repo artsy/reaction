@@ -59,7 +59,8 @@ export class ArtworkSidebarClassification extends React.Component<
           <Serif size="2">
             <ClassificationLink onClick={this.openModal.bind(this)}>
               {artwork.attribution_class.short_description}
-            </ClassificationLink>.
+            </ClassificationLink>
+            .
           </Serif>
         </Box>
       </ClassificationContainer>

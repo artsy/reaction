@@ -128,7 +128,8 @@ export class MarketInsights extends React.Component<Props, null> {
 
     return (
       <div>
-        {introSentence}&nbsp;
+        {introSentence}
+        &nbsp;
         <TooltipContainer>
           <Tooltip message={categoryTooltipContent}>
             <span style={{ verticalAlign: "text-top" }}>

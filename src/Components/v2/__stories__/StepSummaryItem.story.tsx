@@ -39,9 +39,12 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
           maxWidth={542}
         >
           <Serif size={["2", "3"]} color="black100">
-            Ebe Park<br />
-            315 8th Ave, Apt 5C<br />
-            New York, NY 10001<br />
+            Ebe Park
+            <br />
+            315 8th Ave, Apt 5C
+            <br />
+            New York, NY 10001
+            <br />
             United States
           </Serif>
         </StepSummaryItem>
@@ -66,9 +69,12 @@ storiesOf("Styleguide/Components", module).add("StepSummaryItem", () => {
           maxWidth={542}
         >
           <Serif size={["2", "3"]} color="black100">
-            Ebe Park<br />
-            315 8th Ave, Apt 5C<br />
-            New York, NY 10001<br />
+            Ebe Park
+            <br />
+            315 8th Ave, Apt 5C
+            <br />
+            New York, NY 10001
+            <br />
             United States
           </Serif>
         </StepSummaryItem>
