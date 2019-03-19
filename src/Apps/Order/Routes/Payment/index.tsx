@@ -136,14 +136,12 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         return
       }
 
-      const {
-        createCreditCard: { creditCardOrError },
-      } = await this.createCreditCard({
+      const creditCardOrError = (await this.createCreditCard({
         input: {
           token: stripeResult.token.id,
           oneTimeUse: true,
         },
-      })
+      })).createCreditCard.creditCardOrError
 
       if (creditCardOrError.mutationError) {
         this.props.dialog.showErrorDialog({
@@ -152,18 +150,15 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         return
       }
 
-      const {
-        ecommerceSetOrderPayment: { orderOrError },
-      } = await this.setOrderPayment({
+      const orderOrError = (await this.setOrderPayment({
         input: {
           creditCardId: creditCardOrError.creditCard.id,
           orderId: this.props.order.id,
         },
-      })
+      })).ecommerceSetOrderPayment.orderOrError
 
       if (orderOrError.error) {
-        this.props.dialog.showErrorDialog()
-        return
+        throw orderOrError.error
       }
 
       this.props.router.push(`/orders/${this.props.order.id}/review`)

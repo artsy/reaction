@@ -137,11 +137,9 @@ export class NewPaymentRoute extends Component<
         return
       }
 
-      const {
-        createCreditCard: { creditCardOrError },
-      } = await this.createCreditCard({
+      const creditCardOrError = (await this.createCreditCard({
         input: { token: stripeResult.token.id, oneTimeUse: true },
-      })
+      })).createCreditCard.creditCardOrError
 
       if (creditCardOrError.mutationError) {
         this.props.dialog.showErrorDialog({
@@ -150,14 +148,12 @@ export class NewPaymentRoute extends Component<
         return
       }
 
-      const {
-        ecommerceFixFailedPayment: { orderOrError },
-      } = await this.fixFailedPayment({
+      const orderOrError = (await this.fixFailedPayment({
         input: {
           creditCardId: creditCardOrError.creditCard.id,
           offerId: this.props.order.lastOffer.id,
         },
-      })
+      })).ecommerceFixFailedPayment.orderOrError
 
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)

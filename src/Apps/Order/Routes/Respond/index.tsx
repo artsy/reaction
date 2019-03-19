@@ -154,9 +154,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     }
 
     try {
-      const {
-        ecommerceBuyerCounterOffer: { orderOrError },
-      } = await this.createCounterOffer({
+      const orderOrError = (await this.createCounterOffer({
         input: {
           offerId: this.props.order.lastOffer.id,
           offerPrice: {
@@ -165,11 +163,12 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           },
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
         },
-      })
+      })).ecommerceBuyerCounterOffer.orderOrError
+
       if (orderOrError.error) {
-        this.props.dialog.showErrorDialog()
-        return
+        throw orderOrError.error
       }
+
       this.props.router.push(`/orders/${this.props.order.id}/review/counter`)
     } catch (error) {
       logger.error(error)

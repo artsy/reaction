@@ -68,17 +68,14 @@ export class Reject extends Component<RejectProps> {
 
   onSubmit = async () => {
     try {
-      const {
-        ecommerceBuyerRejectOffer: { orderOrError },
-      } = await this.rejectOffer({
+      const orderOrError = (await this.rejectOffer({
         input: {
           offerId: this.props.order.lastOffer.id,
         },
-      })
+      })).ecommerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
-        this.props.dialog.showErrorDialog()
-        return
+        throw orderOrError.error
       }
 
       this.props.router.push(`/orders/${this.props.order.id}/status`)

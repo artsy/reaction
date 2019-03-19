@@ -133,6 +133,24 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     })
   }
 
+  handleSubmitError(error: { code: string }) {
+    logger.error(error)
+    switch (error.code) {
+      case "invalid_amount_cents": {
+        this.props.dialog.showErrorDialog({
+          title: "Invalid offer",
+          message:
+            "The offer amount is either missing or invalid. Please try again.",
+        })
+        break
+      }
+      default: {
+        this.props.dialog.showErrorDialog()
+        break
+      }
+    }
+  }
+
   onContinueButtonPressed = async () => {
     const {
       offerValue,
@@ -162,9 +180,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     try {
-      const {
-        ecommerceAddInitialOfferToOrder: { orderOrError },
-      } = await this.addInitialOfferToOrder({
+      const orderOrError = (await this.addInitialOfferToOrder({
         input: {
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
           orderId: this.props.order.id,
@@ -173,27 +189,14 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
             currencyCode: "USD",
           },
         },
-      })
+      })).ecommerceAddInitialOfferToOrder.orderOrError
 
-      if (!orderOrError.error) {
-        this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+      if (orderOrError.error) {
+        this.handleSubmitError(orderOrError.error)
         return
       }
 
-      switch (orderOrError.error.code) {
-        case "invalid_amount_cents": {
-          this.props.dialog.showErrorDialog({
-            title: "Invalid offer",
-            message:
-              "The offer amount is either missing or invalid. Please try again.",
-          })
-          break
-        }
-        default: {
-          this.props.dialog.showErrorDialog()
-          break
-        }
-      }
+      this.props.router.push(`/orders/${this.props.order.id}/shipping`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()

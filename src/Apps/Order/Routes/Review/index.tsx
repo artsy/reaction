@@ -129,6 +129,7 @@ export class ReviewRoute extends Component<ReviewProps> {
   }
 
   async handleSubmitError(error: { code: string; data: string }) {
+    logger.error(error)
     switch (error.code) {
       case "missing_required_info": {
         this.props.dialog.showErrorDialog({

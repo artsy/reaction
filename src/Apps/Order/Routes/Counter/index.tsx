@@ -84,21 +84,26 @@ export class CounterRoute extends Component<CounterProps> {
         },
       })
 
-      if (!orderOrError.error) {
-        this.onSuccessfulSubmit()
+      if (orderOrError.error) {
+        this.handleSubmitError(orderOrError.error)
         return
       }
 
-      if (orderOrError.error.code === "insufficient_inventory") {
-        this.props.dialog.showErrorDialog({
-          title: "This work has already been sold.",
-          message: "Please contact orders@artsy.net with any questions.",
-        })
-      } else {
-        this.props.dialog.showErrorDialog()
-      }
+      this.onSuccessfulSubmit()
     } catch (error) {
       logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
+  }
+
+  handleSubmitError(error: { code: string }) {
+    logger.error(error)
+    if (error.code === "insufficient_inventory") {
+      this.props.dialog.showErrorDialog({
+        title: "This work has already been sold.",
+        message: "Please contact orders@artsy.net with any questions.",
+      })
+    } else {
       this.props.dialog.showErrorDialog()
     }
   }
