@@ -421,8 +421,24 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 5)
-          @include(if: $hasTerm) {
+        search(
+          query: $term
+          mode: AUTOSUGGEST
+          first: 5
+          entities: [
+            ARTIST
+            ARTWORK
+            ARTICLE
+            CITY
+            COLLECTION
+            FAIR
+            FEATURE
+            GENE
+            PROFILE
+            SALE
+            TAG
+          ]
+        ) @include(if: $hasTerm) {
           edges {
             node {
               displayLabel

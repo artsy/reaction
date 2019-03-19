@@ -52,6 +52,24 @@ const node: ConcreteFragment = {
           "args": [
             {
               "kind": "Literal",
+              "name": "entities",
+              "value": [
+                "ARTIST",
+                "ARTWORK",
+                "ARTICLE",
+                "CITY",
+                "COLLECTION",
+                "FAIR",
+                "FEATURE",
+                "GENE",
+                "PROFILE",
+                "SALE",
+                "TAG"
+              ],
+              "type": "[SearchEntity]"
+            },
+            {
+              "kind": "Literal",
               "name": "first",
               "value": 5,
               "type": "Int"
@@ -141,5 +159,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'e649d07e62973aefbb0d83d8c32d5031';
+(node as any).hash = 'e652f5f1ae9ae1e8e58102080064eb19';
 export default node;
