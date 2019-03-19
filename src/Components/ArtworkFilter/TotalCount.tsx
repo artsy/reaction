@@ -15,7 +15,8 @@ export class TotalCount extends React.Component<TotalCountProps, null> {
     const s = total !== 1 ? "s" : ""
     return (
       <div className={this.props.className}>
-        {numeral(total).format("0,0")} Work{s}
+        {numeral(total).format("0,0")} Work
+        {s}
       </div>
     )
   }

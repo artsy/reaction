@@ -44,8 +44,10 @@ export class DisplayPopoverOnClickExample extends React.Component {
     )
     const multiLines = (
       <Popover>
-        Popover will stay inside<br />
-        of the page if positioned<br />
+        Popover will stay inside
+        <br />
+        of the page if positioned
+        <br />
         at the edge of the page
       </Popover>
     )

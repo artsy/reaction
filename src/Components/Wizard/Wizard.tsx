@@ -13,9 +13,10 @@ interface WizardProps {
   initialValues?: any
   steps?: StepElement[]
   children?:
-    | ((
-        props: { wizard: WizardRenderProps; form: any }
-      ) => React.ReactElement<any>)
+    | ((props: {
+        wizard: WizardRenderProps
+        form: any
+      }) => React.ReactElement<any>)
     | StepElement
     | StepElement[]
 }

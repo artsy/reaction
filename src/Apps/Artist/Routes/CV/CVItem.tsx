@@ -124,16 +124,15 @@ export class CVItem extends Component<CVItemProps, CVItemState> {
                     </Flex>
                   ) : (
                     <Row key={index}>
-                      {!sm &&
-                        !md && (
-                          <Col xl={2} lg={2}>
-                            {isFirst && (
-                              <Category size="3" weight="medium">
-                                {this.props.category}
-                              </Category>
-                            )}
-                          </Col>
-                        )}
+                      {!sm && !md && (
+                        <Col xl={2} lg={2}>
+                          {isFirst && (
+                            <Category size="3" weight="medium">
+                              {this.props.category}
+                            </Category>
+                          )}
+                        </Col>
+                      )}
                       <Col lg={1} md={2} sm={2}>
                         <Year mr={2} size="3">
                           {year}

@@ -36,19 +36,19 @@ export interface Interaction {
   destination_path?: string
 
   /*
-  * Flow
-  */
+   * Flow
+   */
   flow?: string
 }
 
 export interface AuthenticationInteraction extends Interaction {
   /*
-  * The action taken that prompted user to signup or login.
-  */
+   * The action taken that prompted user to signup or login.
+   */
   intent?: string
 
   /*
-  *  The type of action that triggered the modal (eg: click, timed)
-  */
+   *  The type of action that triggered the modal (eg: click, timed)
+   */
   trigger?: string
 }

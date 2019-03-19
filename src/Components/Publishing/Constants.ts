@@ -123,12 +123,12 @@ export const getDate = (date, format: DateFormat = "default") => {
       return isToday
         ? "Today"
         : isThisYear
-          ? momentTz(date)
-              .tz("America/New_York")
-              .format("MMM D")
-          : momentTz(date)
-              .tz("America/New_York")
-              .format("MMM D, YYYY")
+        ? momentTz(date)
+            .tz("America/New_York")
+            .format("MMM D")
+        : momentTz(date)
+            .tz("America/New_York")
+            .format("MMM D, YYYY")
     default:
       return momentTz(date)
         .tz("America/New_York")

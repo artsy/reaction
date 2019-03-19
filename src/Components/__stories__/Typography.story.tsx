@@ -36,15 +36,18 @@ storiesOf("Typography", module)
       <Title>Alignment</Title>
 
       <Text>
-        Thank you for your interest in the program.<br />
+        Thank you for your interest in the program.
+        <br />
         Have questions? Get in touch
       </Text>
       <Text align="center">
-        Thank you for your interest in the program.<br />
+        Thank you for your interest in the program.
+        <br />
         Have questions? Get in touch
       </Text>
       <Text align="end">
-        Thank you for your interest in the program.<br />
+        Thank you for your interest in the program.
+        <br />
         Have questions? Get in touch
       </Text>
 

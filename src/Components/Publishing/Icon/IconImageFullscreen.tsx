@@ -18,7 +18,8 @@ export class IconImageFullscreen extends Component<any, null> {
             y="0"
             width="38"
             height="22"
-          />>
+          />
+          >
         </g>
       </svg>
     )

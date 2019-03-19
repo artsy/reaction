@@ -358,18 +358,16 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
         {artworkEcommerceAvailable &&
           (artwork.shippingOrigin || artwork.shippingInfo) && <Spacer mt={1} />}
-        {artworkEcommerceAvailable &&
-          artwork.shippingOrigin && (
-            <Sans size="2" color="black60">
-              Ships from {artwork.shippingOrigin}
-            </Sans>
-          )}
-        {artworkEcommerceAvailable &&
-          artwork.shippingInfo && (
-            <Sans size="2" color="black60">
-              {artwork.shippingInfo}
-            </Sans>
-          )}
+        {artworkEcommerceAvailable && artwork.shippingOrigin && (
+          <Sans size="2" color="black60">
+            Ships from {artwork.shippingOrigin}
+          </Sans>
+        )}
+        {artworkEcommerceAvailable && artwork.shippingInfo && (
+          <Sans size="2" color="black60">
+            {artwork.shippingInfo}
+          </Sans>
+        )}
 
         {artwork.is_inquireable ||
         artwork.is_acquireable ||

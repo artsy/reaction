@@ -76,9 +76,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
     const updatedPopularArtists = popularArtistsRootField
       .getLinkedRecords("artists")
       .filter(Boolean)
-      .map(
-        artistItem =>
-          artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
+      .map(artistItem =>
+        artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
       )
 
     popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")

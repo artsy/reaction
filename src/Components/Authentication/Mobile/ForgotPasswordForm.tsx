@@ -48,8 +48,9 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                   onBlur={handleBlur}
                   autoFocus
                 />
-                {status &&
-                  !status.success && <Error show>{status.error}</Error>}
+                {status && !status.success && (
+                  <Error show>{status.error}</Error>
+                )}
                 <SubmitButton disabled={isSubmitting}>
                   Send me reset instructions
                 </SubmitButton>

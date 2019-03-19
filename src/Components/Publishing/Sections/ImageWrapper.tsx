@@ -71,13 +71,11 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
           {...imageProps}
         />
 
-        {layout !== "classic" &&
-          layout !== "news" &&
-          linked && (
-            <Fullscreen>
-              <ViewFullscreen index={index} />
-            </Fullscreen>
-          )}
+        {layout !== "classic" && layout !== "news" && linked && (
+          <Fullscreen>
+            <ViewFullscreen index={index} />
+          </Fullscreen>
+        )}
       </StyledImageWrapper>
     )
   }

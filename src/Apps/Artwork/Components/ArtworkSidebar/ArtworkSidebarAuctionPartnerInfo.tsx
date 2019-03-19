@@ -43,21 +43,20 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
                 {partner.name}
               </Serif>
             )}
-            {sale_artwork &&
-              sale_artwork.estimate && (
-                <Serif size="2" color="black60">
-                  Estimated value: {sale_artwork.estimate}
-                </Serif>
-              )}
-            {sale &&
-              sale.is_with_buyers_premium && (
-                <Serif size="2" color="black60">
-                  This work has a{" "}
-                  <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
-                    buyer's premium
-                  </Link>.
-                </Serif>
-              )}
+            {sale_artwork && sale_artwork.estimate && (
+              <Serif size="2" color="black60">
+                Estimated value: {sale_artwork.estimate}
+              </Serif>
+            )}
+            {sale && sale.is_with_buyers_premium && (
+              <Serif size="2" color="black60">
+                This work has a{" "}
+                <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
+                  buyer's premium
+                </Link>
+                .
+              </Serif>
+            )}
           </Box>
         )}
       </ContextConsumer>

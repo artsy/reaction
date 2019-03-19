@@ -40,7 +40,8 @@ export class Contact extends React.Component<ContactProps, null> {
         const s = bidderPositions > 1 ? "s" : ""
         return (
           <span>
-            {highestBidDisplay} ({bidderPositions} bid{s})
+            {highestBidDisplay} ({bidderPositions} bid
+            {s})
           </span>
         )
       } else {
