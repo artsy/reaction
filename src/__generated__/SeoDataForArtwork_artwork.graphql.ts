@@ -25,6 +25,13 @@ export type SeoDataForArtwork_artwork = {
     readonly partner: ({
         readonly name: string | null;
         readonly type: string | null;
+        readonly profile: ({
+            readonly image: ({
+                readonly resized: ({
+                    readonly url: string | null;
+                }) | null;
+            }) | null;
+        }) | null;
     }) | null;
     readonly artist_names: string | null;
     readonly availability: string | null;
@@ -39,6 +46,13 @@ export type SeoDataForArtwork_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -107,13 +121,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "url",
-              "args": null,
-              "storageKey": null
-            }
+            v0
           ]
         }
       ]
@@ -222,7 +230,63 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "profile",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Profile",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "image",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Image",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "resized",
+                  "storageKey": "resized(height:320,version:[\"medium\"],width:320)",
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "height",
+                      "value": 320,
+                      "type": "Int"
+                    },
+                    {
+                      "kind": "Literal",
+                      "name": "version",
+                      "value": [
+                        "medium"
+                      ],
+                      "type": "[String]"
+                    },
+                    {
+                      "kind": "Literal",
+                      "name": "width",
+                      "value": 320,
+                      "type": "Int"
+                    }
+                  ],
+                  "concreteType": "ResizedImageUrl",
+                  "plural": false,
+                  "selections": [
+                    v0
+                  ]
+                }
+              ]
+            },
+            v1
+          ]
+        },
+        v1
       ]
     },
     {
@@ -264,9 +328,9 @@ return {
         }
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '40ba29d107d280f08e3f71b870777d1a';
+(node as any).hash = 'd478c663cc0c86c7e82da8c3342d1bf7';
 export default node;

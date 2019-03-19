@@ -23,6 +23,13 @@ export const SeoDataForArtworkFixture: SeoDataForArtwork_artwork = {
   partner: {
     name: "Wright",
     type: "Auction House",
+    profile: {
+      image: {
+        resized: {
+          url: "partner-image",
+        },
+      },
+    },
   },
   artist_names: "Artist McArtist",
   availability: "for sale",

@@ -52,6 +52,7 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
       seller: {
         "@type": "ArtGallery",
         name: get(artwork, a => a.partner.name),
+        image: get(artwork, a => a.partner.profile.image.resized.url),
       },
     },
   }
@@ -96,6 +97,13 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
         partner {
           name
           type
+          profile {
+            image {
+              resized(width: 320, height: 320, version: ["medium"]) {
+                url
+              }
+            }
+          }
         }
         artist_names
         availability

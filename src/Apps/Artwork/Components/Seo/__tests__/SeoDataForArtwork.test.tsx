@@ -74,7 +74,11 @@ describe("SeoDataForArtwork", () => {
           availability: "https://schema.org/InStock",
           price: "sale message",
           priceCurrency: "USD",
-          seller: { "@type": "ArtGallery", name: "Wright" },
+          seller: {
+            "@type": "ArtGallery",
+            name: "Wright",
+            image: "partner-image",
+          },
         },
         productionDate: "1950",
         url: "undefined/artwork/an-artwork",
