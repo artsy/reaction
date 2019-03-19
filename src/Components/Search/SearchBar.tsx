@@ -6,7 +6,6 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
-import { SearchPreviewWrapper as SearchPreview } from "Components/Search/Previews"
 import {
   EmptySuggestion,
   PLACEHOLDER,
@@ -66,52 +65,19 @@ const ResultsWrapper = styled(Box)`
   position: absolute;
 `
 
-const SuggestionsWrapper = styled(Box)`
-  border-right: 1px solid ${colors.grayRegular};
-`
-
-const PreviewWrapper = styled(Box)`
-  > div {
-    height: 100%;
-  }
-`
-
-const SuggestionContainer = ({ children, containerProps, preview }) => {
+const SuggestionContainer = ({ children, containerProps }) => {
   return (
     <AutosuggestWrapper
       width="100%"
       flexDirection={["column", "row"]}
       {...containerProps}
     >
-      <ResultsWrapper
-        width={[
-          "100%",
-          "calc(100% + 250px)",
-          "calc(100% + 250px)",
-          "calc(100% + 450px)",
-        ]}
-        mt={0.5}
-      >
-        <SuggestionsWrapper
-          width={[
-            "100%",
-            "calc(100% - 250px)",
-            "calc(100% - 250px)",
-            "calc(100% - 450px)",
-          ]}
-        >
+      <ResultsWrapper width="100%" mt={0.5}>
+        <Box width="100%">
           <Flex flexDirection="column" width="100%">
             {children}
           </Flex>
-        </SuggestionsWrapper>
-        <PreviewWrapper
-          width={["0px", "240px", "240px", "450px"]}
-          height="375px"
-          px={[0, 2]}
-          py={[0, 2]}
-        >
-          {preview}
-        </PreviewWrapper>
+        </Box>
       </ResultsWrapper>
     </AutosuggestWrapper>
   )
@@ -276,13 +242,6 @@ export class SearchBar extends Component<Props, State> {
     window.location.assign(href)
   }
 
-  renderPreview() {
-    const { entityID, entityType, focused } = this.state
-    if (!focused) return
-
-    return <SearchPreview entityID={entityID} entityType={entityType} />
-  }
-
   renderSuggestionsContainer = (
     { containerProps, children, query },
     { xs }
@@ -302,7 +261,6 @@ export class SearchBar extends Component<Props, State> {
       containerProps,
       focused,
       query,
-      preview: this.renderPreview(),
     }
 
     return (
