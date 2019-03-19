@@ -6,6 +6,7 @@ import {
   GraphQLTaggedNode,
 } from "react-relay"
 import { Environment, OperationBase } from "relay-runtime"
+jest.unmock("react-relay")
 
 export type CommitMutation = <MutationType extends OperationBase>(
   args: {
