@@ -1,4 +1,5 @@
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
+import { SystemContext } from "Artsy"
 import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
 import React, { ReactElement } from "react"
 import { GraphQLTaggedNode } from "react-relay"
@@ -154,17 +155,24 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
     // @ts-ignore
     page.root = await renderRelayTree({
       Component: (props: any) => (
-        <MockBoot
-          breakpoint={breakpoint || defaultBreakpoint}
-          headTags={this.headTags}
-        >
-          <Component
-            {...props}
-            router={{ push: this.routes.mockPushRoute }}
-            route={{ onTransition: this.routes.mockOnTransition }}
-          />
-          <ConnectedModalDialog />
-        </MockBoot>
+        <SystemContext.Consumer>
+          {context => (
+            // bypass MockBoot's SystemContext provider
+            <MockBoot
+              breakpoint={breakpoint || defaultBreakpoint}
+              headTags={this.headTags}
+            >
+              <SystemContext.Provider value={context}>
+                <Component
+                  {...props}
+                  router={{ push: this.routes.mockPushRoute }}
+                  route={{ onTransition: this.routes.mockOnTransition }}
+                />
+                <ConnectedModalDialog />
+              </SystemContext.Provider>
+            </MockBoot>
+          )}
+        </SystemContext.Consumer>
       ),
       query,
       mockNetwork,
@@ -180,7 +188,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
  * Creates a testing environment for a relay-powered component. The environment
  * has useful tooling for dealing with relay data. Especially for mocking mutation
  * results and for abstracting away boilerplate.
- * 
+ *
 
  * @param opts.Component the component to render. Will be passed props
   `relay: RelayProp`, a mock for `route: { onTransition(cb): void {} }` and a

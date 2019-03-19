@@ -18,7 +18,10 @@ import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
-import { CommitMutation } from "Apps/Order/Utils/commitMutation"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
@@ -309,7 +312,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 }
 
 export const OfferFragmentContainer = createFragmentContainer(
-  injectDialog(trackPageViewWrapper(OfferRoute)),
+  injectCommitMutation(injectDialog(trackPageViewWrapper(OfferRoute))),
   graphql`
     fragment Offer_order on Order {
       id

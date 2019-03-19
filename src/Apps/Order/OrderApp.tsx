@@ -11,7 +11,6 @@ import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import { ConnectedModalDialog } from "./Dialogs"
-import { ProvideMutationContext } from "./Utils/commitMutation"
 
 declare global {
   interface Window {
@@ -116,13 +115,11 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
               />
             )}
             <SafeAreaContainer>
-              <ProvideMutationContext>
-                <StripeProvider stripe={this.state.stripe}>
-                  <Elements>
-                    <>{children}</>
-                  </Elements>
-                </StripeProvider>
-              </ProvideMutationContext>
+              <StripeProvider stripe={this.state.stripe}>
+                <Elements>
+                  <>{children}</>
+                </Elements>
+              </StripeProvider>
             </SafeAreaContainer>
             <StickyFooter orderType={order.mode} artworkId={artworkId} />
             <ConnectedModalDialog />

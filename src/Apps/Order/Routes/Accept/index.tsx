@@ -117,7 +117,7 @@ export class Accept extends Component<AcceptProps> {
       case "insufficient_inventory": {
         await this.props.dialog.showErrorDialog({
           title: "Not available",
-          message: "Sorry, the work is no longer available",
+          message: "Sorry, the work is no longer available.",
         })
         this.routeToArtistPage()
         break

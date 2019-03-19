@@ -53,17 +53,23 @@ export class ReviewRoute extends Component<ReviewProps> {
     order_id: props.order.id,
   }))
   async onSubmit() {
-    const orderOrError =
-      this.props.order.mode === "BUY"
-        ? (await this.submitBuyOrder()).ecommerceSubmitOrder.orderOrError
-        : (await this.submitOffer()).ecommerceSubmitOrderWithOffer.orderOrError
+    try {
+      const orderOrError =
+        this.props.order.mode === "BUY"
+          ? (await this.submitBuyOrder()).ecommerceSubmitOrder.orderOrError
+          : (await this.submitOffer()).ecommerceSubmitOrderWithOffer
+              .orderOrError
 
-    if (orderOrError.error) {
-      this.handleSubmitError(orderOrError.error)
-      return
+      if (orderOrError.error) {
+        this.handleSubmitError(orderOrError.error)
+        return
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
     }
-
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
   }
 
   submitBuyOrder() {
