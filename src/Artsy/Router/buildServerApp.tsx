@@ -1,20 +1,26 @@
-import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
-import queryMiddleware from "farce/lib/queryMiddleware"
-import { Resolver } from "found-relay"
-import createRender from "found/lib/createRender"
-import { getFarceResult } from "found/lib/server"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
+
+import { Resolver } from "found-relay"
+import createRender from "found/lib/createRender"
+import { getFarceResult } from "found/lib/server"
+import qs from "qs"
+
+import createQueryMiddleware from "farce/lib/createQueryMiddleware"
+
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
+import { Boot } from "Artsy/Router/Components/Boot"
+
 import { getUser } from "Utils/getUser"
 import createLogger from "Utils/logger"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
-import { RouterConfig } from "./"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
+
+import { RouterConfig } from "./"
 
 interface Resolve {
   bodyHTML?: string
@@ -44,7 +50,12 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         const { context = {}, routes = [], url, userAgent } = config
         const user = getUser(context.user)
         const relayEnvironment = context.relayEnvironment || createRelaySSREnvironment({ user }) // prettier-ignore
-        const historyMiddlewares = [queryMiddleware]
+        const historyMiddlewares = [
+          createQueryMiddleware({
+            parse: qs.parse,
+            stringify: qs.stringify,
+          }),
+        ]
         const resolver = new Resolver(relayEnvironment)
         const render = createRender({})
 
