@@ -48,6 +48,12 @@ interface State {
 
 const AutosuggestWrapper = styled(Box)`
   position: relative;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
 `
 
 const ResultsWrapper = styled(Box)`
