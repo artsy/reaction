@@ -142,7 +142,7 @@ describe("SeoDataForArtwork", () => {
         expect(getProductData(wrapper).offers.price).toEqual("sale message")
       })
 
-      it("Renders price range when price range, not hidden, and price range exists", async () => {
+      it("Renders price specification when price range, not hidden, and price range exists", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
           is_price_range: true,
@@ -151,11 +151,18 @@ describe("SeoDataForArtwork", () => {
         })
 
         const offers = getProductData(wrapper).offers
-        expect(offers.minPrice).toEqual("1,234")
-        expect(offers.maxPrice).toEqual("2,345")
+        expect(offers.price).toBeUndefined()
+        expect(offers.priceCurrency).toBeUndefined()
+        expect(offers.priceSpecification).toBeDefined()
+        expect(offers.priceSpecification).toEqual({
+          "@type": "PriceSpecification",
+          minPrice: "1,234",
+          maxPrice: "2,345",
+          priceCurrency: "USD",
+        })
       })
 
-      it("Breaks the price into minPrice & maxPrice when sale_message is a price range", async () => {
+      it("Renders price specification when sale_message is actually a price range", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
           is_price_range: false,
@@ -165,8 +172,14 @@ describe("SeoDataForArtwork", () => {
 
         const offers = getProductData(wrapper).offers
         expect(offers.price).toBeUndefined()
-        expect(offers.minPrice).toEqual("1,234")
-        expect(offers.maxPrice).toEqual("2,345")
+        expect(offers.priceCurrency).toBeUndefined()
+        expect(offers.priceSpecification).toBeDefined()
+        expect(offers.priceSpecification).toEqual({
+          "@type": "PriceSpecification",
+          minPrice: "1,234",
+          maxPrice: "2,345",
+          priceCurrency: "USD",
+        })
       })
     })
 

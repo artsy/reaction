@@ -47,7 +47,6 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
     offers: {
       "@type": "Offer",
       ...displayPrice(artwork),
-      priceCurrency: artwork.price_currency,
       availability: AVAILABILITY[artwork.availability],
       seller: {
         "@type": "ArtGallery",
@@ -117,26 +116,49 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
 )
 
 const displayPrice = artwork => {
-  const { is_price_hidden, is_price_range, price, sale_message } = artwork
+  const {
+    is_price_hidden,
+    is_price_range,
+    price,
+    sale_message,
+    price_currency,
+  } = artwork
 
   if (is_price_range && !is_price_hidden && price) {
-    return splitPriceRange(price)
+    return buildPriceSpecification(price_currency, splitPriceRange(price))
   }
 
-  if (sale_message.includes("-")) {
-    return splitPriceRange(sale_message)
+  if (sale_message && sale_message.includes("-")) {
+    return buildPriceSpecification(
+      price_currency,
+      splitPriceRange(sale_message)
+    )
   }
 
   return {
     price: sale_message,
+    priceCurrency: price_currency,
   }
 }
 
-const splitPriceRange = priceRange => {
+const splitPriceRange = (priceRange: string) => {
   const minAndMaxPrice = priceRange.split("-")
   return {
     minPrice: trim(minAndMaxPrice[0]).replace("$", ""),
     maxPrice: trim(minAndMaxPrice[1]),
+  }
+}
+
+const buildPriceSpecification = (
+  price_currency: string,
+  priceRange: { minPrice: string; maxPrice: string }
+) => {
+  return {
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: price_currency,
+      ...priceRange,
+    },
   }
 }
 
