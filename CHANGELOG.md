@@ -1,3 +1,17 @@
+# v15.5.13 (Wed Mar 20 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Add institution to More tab [#2187](https://github.com/artsy/reaction/pull/2187) ([@mzikherman](https://github.com/mzikherman))
+- Yank autosuggest previews [#2182](https://github.com/artsy/reaction/pull/2182) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.5.12 (Wed Mar 20 2019)
 
 
