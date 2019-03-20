@@ -1,3 +1,16 @@
+# v15.6.1 (Wed Mar 20 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.3.1 [#2189](https://github.com/artsy/reaction/pull/2189) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.6.0 (Wed Mar 20 2019)
 
 #### 🚀  Enhancement
