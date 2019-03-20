@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Layout matches the snapshot 1`] = `
+.c31 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c33 {
+  padding-right: 20px;
+  width: 60px;
+}
+
+.c38 {
+  max-width: 100%;
+}
+
+.c40 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c41 {
+  padding-top: 40px;
+}
+
+.c47 {
+  margin-top: 40px;
+}
+
+.c55 {
+  width: 100%;
+}
+
+.c56 {
+  padding-top: 60px;
+}
+
+.c58 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c62 {
+  color: white;
+}
+
+.c77 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 100px;
+  padding-top: 40px;
+}
+
 .c32 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -161,64 +219,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 20px;
-}
-
-.c31 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 12px;
-}
-
-.c33 {
-  padding-right: 20px;
-  width: 60px;
-}
-
-.c38 {
-  max-width: 100%;
-}
-
-.c40 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c41 {
-  padding-top: 40px;
-}
-
-.c47 {
-  margin-top: 40px;
-}
-
-.c55 {
-  width: 100%;
-}
-
-.c56 {
-  padding-top: 60px;
-}
-
-.c58 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c62 {
-  color: white;
-}
-
-.c77 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 100px;
-  padding-top: 40px;
 }
 
 .c5 {
@@ -1005,6 +1005,66 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
+  .c38 {
+    max-width: 60%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c41 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c41 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c55 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c55 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c55 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c56 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c56 {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c77 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c77 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c65 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
@@ -1259,66 +1319,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media screen and (min-width:64em) {
   .c81 {
     margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c38 {
-    max-width: 60%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c41 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c41 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c55 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c56 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c56 {
-    padding-top: 100px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c77 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c77 {
-    padding-top: 60px;
   }
 }
 

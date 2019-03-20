@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders properly 1`] = `
+.c1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c5 {
+  color: #000;
+}
+
 .c8 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -62,16 +72,6 @@ exports[`ArticleCard renders properly 1`] = `
   font-weight: 500;
   font-size: 14px;
   line-height: 1em;
-}
-
-.c1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c5 {
-  color: #000;
 }
 
 .c3 a {

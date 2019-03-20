@@ -1749,6 +1749,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 `;
 
 exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
+.c6 {
+  margin-bottom: 4px;
+}
+
+.c12 {
+  margin-top: 60px;
+}
+
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1788,14 +1796,6 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 20px;
-}
-
-.c6 {
-  margin-bottom: 4px;
-}
-
-.c12 {
-  margin-top: 60px;
 }
 
 .c4 {

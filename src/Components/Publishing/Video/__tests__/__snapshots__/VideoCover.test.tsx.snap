@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Cover matches the snapshot 1`] = `
+.c4 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c6 {
+  padding-right: 20px;
+  width: 60px;
+}
+
+.c13 {
+  max-width: 100%;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -32,22 +48,6 @@ exports[`Video Cover matches the snapshot 1`] = `
   font-size: 18px;
   line-height: 26px;
   padding-top: 30px;
-}
-
-.c4 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 12px;
-}
-
-.c6 {
-  padding-right: 20px;
-  width: 60px;
-}
-
-.c13 {
-  max-width: 100%;
 }
 
 .c8 {
@@ -117,44 +117,44 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c13 {
     max-width: 60%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c14 {
+    line-height: 32px;
   }
 }
 
@@ -266,6 +266,22 @@ exports[`Video Cover matches the snapshot 1`] = `
 `;
 
 exports[`Video Cover matches the snapshot with edit props 1`] = `
+.c4 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c6 {
+  padding-right: 20px;
+  width: 60px;
+}
+
+.c13 {
+  max-width: 100%;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -297,22 +313,6 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   font-size: 18px;
   line-height: 26px;
   padding-top: 30px;
-}
-
-.c4 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 12px;
-}
-
-.c6 {
-  padding-right: 20px;
-  width: 60px;
-}
-
-.c13 {
-  max-width: 100%;
 }
 
 .c8 {
@@ -382,44 +382,44 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c14 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c13 {
     max-width: 60%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c14 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c14 {
+    line-height: 32px;
   }
 }
 
