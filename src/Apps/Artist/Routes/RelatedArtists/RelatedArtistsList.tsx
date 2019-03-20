@@ -103,6 +103,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                               key={index}
                             >
                               <ArtistCard
+                                lazyLoad
                                 artist={node}
                                 mediator={mediator}
                                 user={user}
