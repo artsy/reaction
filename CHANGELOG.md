@@ -1,3 +1,15 @@
+# v15.6.0 (Wed Mar 20 2019)
+
+#### 🚀  Enhancement
+
+- Render a gray box for search result items without an image [#2190](https://github.com/artsy/reaction/pull/2190) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v15.5.14 (Wed Mar 20 2019)
 
 #### 🐛  Bug Fix
