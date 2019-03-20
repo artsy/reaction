@@ -1,7 +1,7 @@
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
 import { SystemContext } from "Artsy"
 import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
-import React, { ReactElement } from "react"
+import React, { ReactElement, useContext } from "react"
 import { GraphQLTaggedNode } from "react-relay"
 import { Network } from "relay-runtime"
 import { Breakpoint } from "Utils/Responsive"
@@ -154,26 +154,27 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
 
     // @ts-ignore
     page.root = await renderRelayTree({
-      Component: (props: any) => (
-        <SystemContext.Consumer>
-          {context => (
-            // bypass MockBoot's SystemContext provider
-            <MockBoot
-              breakpoint={breakpoint || defaultBreakpoint}
-              headTags={this.headTags}
-            >
-              <SystemContext.Provider value={context}>
-                <Component
-                  {...props}
-                  router={{ push: this.routes.mockPushRoute }}
-                  route={{ onTransition: this.routes.mockOnTransition }}
-                />
-                <ConnectedModalDialog />
-              </SystemContext.Provider>
-            </MockBoot>
-          )}
-        </SystemContext.Consumer>
-      ),
+      Component: (props: any) => {
+        // MockBoot overwrites system context, but we want to preserve the
+        // context set higher in the tree by MockQueryRenderer
+        const contextBypass = useContext(SystemContext)
+        return (
+          <MockBoot
+            breakpoint={breakpoint || defaultBreakpoint}
+            headTags={this.headTags}
+          >
+            <SystemContext.Provider value={contextBypass}>
+              <Component
+                {...props}
+                router={{ push: this.routes.mockPushRoute }}
+                route={{ onTransition: this.routes.mockOnTransition }}
+              />
+              <ConnectedModalDialog />
+            </SystemContext.Provider>
+          </MockBoot>
+        )
+      },
+
       query,
       mockNetwork,
     })

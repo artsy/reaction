@@ -1,6 +1,6 @@
-import { ContextConsumer } from "Artsy"
+import { SystemContext } from "Artsy"
 import { GraphQLError } from "graphql"
-import React from "react"
+import React, { useContext } from "react"
 import {
   commitMutation as relayCommitMutation,
   GraphQLTaggedNode,
@@ -86,22 +86,19 @@ export function injectCommitMutation<Props extends CommitMutationProps>(
   Pick<Props, Exclude<keyof Props, keyof CommitMutationProps>>
 > {
   return props => {
+    const { relayEnvironment } = useContext(SystemContext)
     return (
-      <ContextConsumer>
-        {({ relayEnvironment }) => (
-          <ProvideMutationContext relayEnvironment={relayEnvironment}>
-            <MutationContext.Consumer>
-              {({ isCommittingMutation, commitMutation }) => (
-                <Component
-                  isCommittingMutation={isCommittingMutation}
-                  commitMutation={commitMutation}
-                  {...props}
-                />
-              )}
-            </MutationContext.Consumer>
-          </ProvideMutationContext>
-        )}
-      </ContextConsumer>
+      <ProvideMutationContext relayEnvironment={relayEnvironment}>
+        <MutationContext.Consumer>
+          {({ isCommittingMutation, commitMutation }) => (
+            <Component
+              isCommittingMutation={isCommittingMutation}
+              commitMutation={commitMutation}
+              {...props}
+            />
+          )}
+        </MutationContext.Consumer>
+      </ProvideMutationContext>
     )
   }
 }
