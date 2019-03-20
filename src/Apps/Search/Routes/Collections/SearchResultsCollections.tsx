@@ -74,6 +74,7 @@ export class SearchResultsCollectionsRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={collection.displayLabel}
+                description={collection.description}
                 href={collection.href}
                 imageUrl={collection.imageUrl}
                 entityType="Collection"
@@ -132,7 +133,7 @@ export const SearchResultsCollectionsRouteFragmentContainer = createRefetchConta
           edges {
             node {
               ... on SearchableItem {
-                id
+                description
                 displayLabel
                 href
                 imageUrl

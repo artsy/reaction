@@ -70,13 +70,14 @@ export class SearchResultAuctionsRoute extends React.Component<
     const sales = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <LoadingArea isLoading={this.state.isLoading}>
-        {sales.map((searchableItem, index) => {
+        {sales.map((auction, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={searchableItem.displayLabel}
-                href={searchableItem.href}
-                imageUrl={searchableItem.imageUrl}
+                name={auction.displayLabel}
+                description={auction.description}
+                href={auction.href}
+                imageUrl={auction.imageUrl}
                 entityType="Auction"
               />
               <Spacer mb={3} />
@@ -127,7 +128,7 @@ export const SearchResultsAuctionsRouteRouteFragmentContainer = createRefetchCon
           edges {
             node {
               ... on SearchableItem {
-                id
+                description
                 displayLabel
                 href
                 imageUrl
