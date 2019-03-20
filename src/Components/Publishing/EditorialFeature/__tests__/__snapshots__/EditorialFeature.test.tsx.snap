@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
+.c9 {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.c24 {
+  max-width: 100%;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c73 {
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .c41 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -116,29 +139,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   font-size: 18px;
   line-height: 26px;
   margin-bottom: 20px;
-}
-
-.c9 {
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.c24 {
-  max-width: 100%;
-  margin-left: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c73 {
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .c20 {
@@ -1358,6 +1358,53 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
+  .c9 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c9 {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    max-width: 75%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    max-width: 75%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c73 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c73 {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c79 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
@@ -1558,53 +1605,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 @media screen and (min-width:64em) {
   .c82 {
     line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c9 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c9 {
-    padding-left: 55px;
-    padding-right: 55px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    max-width: 75%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c24 {
-    max-width: 75%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c73 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c73 {
-    padding-left: 55px;
-    padding-right: 55px;
   }
 }
 
@@ -6449,6 +6449,23 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 `;
 
 exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
+.c13 {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c15 {
+  width: 100%;
+}
+
+.c24 {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 .c49 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6540,23 +6557,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 22px;
   line-height: 32px;
-}
-
-.c13 {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c15 {
-  width: 100%;
-}
-
-.c24 {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
 }
 
 .c21 {
@@ -7526,6 +7526,30 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
+  .c15 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c15 {
+    width: 15%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c14 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -7592,30 +7616,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   .c10 {
     padding-left: 55px;
     padding-right: 55px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c15 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c15 {
-    width: 15%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c24 {
-    width: 70%;
   }
 }
 

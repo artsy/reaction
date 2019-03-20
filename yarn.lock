@@ -12,15 +12,16 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.2.1.tgz#9f3fbbe1ee2dcdd5cb8ec4b2f8c5c6bb5f66ea97"
-  integrity sha512-tmcEZefS7Iz4/EIFS6voOB0RlPDwJwsNbfCIRUoXkmqJ61AwekrbjXbJz471eC4KLL/wFu1PTl2NJeLB+akGeQ==
+"@artsy/palette@4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.3.1.tgz#ecd110b7994f578b5ddaedde7841403f74908c83"
+  integrity sha512-WqKUhz8HTPEBWNudRooS+33O5Mgd8QjFRTrPsRgqHHmus+sXy2EVkBIUaK4LuG2QctHNMkfIm0od4sFWi8mZZg==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
     moment-timezone "^0.5.23"
     rc-slider "^8.6.2"
+    react-lazy-load-image-component "^1.3.2"
     react-live "^1.12.0"
     react-powerplug "^1.0.0"
     react-spring "^5.7.2"
@@ -11029,7 +11030,7 @@ react-is@^16.3.2, react-is@^16.6.0, react-is@^16.6.1, react-is@^16.8.1, react-is
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
-react-lazy-load-image-component@^1.1.1:
+react-lazy-load-image-component@^1.1.1, react-lazy-load-image-component@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.3.2.tgz#2182d6ed864feb15c30067e04e52cbcdcfc86860"
   integrity sha512-LLbsFQwIV4TdlObBYjlJyRSmYMadd8pMOsYmihFAI6nXBgOEYVuRJlq7T0PjT5OWzntV38VvSw+P+NJU7etH3Q==
