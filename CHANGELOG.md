@@ -1,3 +1,16 @@
+# v15.5.10 (Wed Mar 20 2019)
+
+#### 🐛  Bug Fix
+
+- run prettier [#2186](https://github.com/artsy/reaction/pull/2186) ([@ds300](https://github.com/ds300))
+- Refactor commitMutation usage [#2179](https://github.com/artsy/reaction/pull/2179) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v15.5.9 (Tue Mar 19 2019)
 
 #### 🐛  Bug Fix
