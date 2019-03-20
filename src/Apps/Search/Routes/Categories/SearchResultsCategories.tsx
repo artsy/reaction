@@ -74,6 +74,7 @@ export class SearchResultCategoriesRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={gene.displayLabel}
+                description={gene.description}
                 href={gene.href}
                 imageUrl={gene.imageUrl}
                 entityType="Category"
@@ -132,7 +133,7 @@ export const SearchResultsCategoriesRouteRouteFragmentContainer = createRefetchC
           edges {
             node {
               ... on SearchableItem {
-                id
+                description
                 displayLabel
                 href
                 imageUrl

@@ -75,6 +75,7 @@ export class SearchResultMoreRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={searchableItem.displayLabel}
+                description={searchableItem.description}
                 href={searchableItem.href}
                 imageUrl={searchableItem.imageUrl}
                 entityType={searchableItem.searchableType}
@@ -133,7 +134,7 @@ export const SearchResultsMoreRouteRouteFragmentContainer = createRefetchContain
           edges {
             node {
               ... on SearchableItem {
-                id
+                description
                 displayLabel
                 href
                 imageUrl
