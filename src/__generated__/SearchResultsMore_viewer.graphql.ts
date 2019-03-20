@@ -91,7 +91,8 @@ const node: ConcreteFragment = {
             "TAG",
             "CITY",
             "FAIR",
-            "FEATURE"
+            "FEATURE",
+            "INSTITUTION"
           ],
           "type": "[SearchEntity]"
         },
@@ -232,5 +233,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '506ca72ee99012bc15c337b90e7830fb';
+(node as any).hash = '98e0e027ac2a4f89228ba85fad8dba6b';
 export default node;
