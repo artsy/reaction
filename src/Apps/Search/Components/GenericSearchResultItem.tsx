@@ -1,13 +1,5 @@
-import {
-  Box,
-  Flex,
-  Image,
-  Link,
-  ReadMore,
-  Sans,
-  Serif,
-  Spacer,
-} from "@artsy/palette"
+import { Box, Flex, Image, Link, Sans, Serif, Spacer } from "@artsy/palette"
+import { Truncator } from "Components/Truncator"
 import React, { FC } from "react"
 
 interface GenericSearchResultItemProps {
@@ -55,7 +47,7 @@ export const GenericSearchResultItem: FC<
             <>
               <Spacer mb={0.5} />
               <Serif color="black60" size="3" maxWidth={536}>
-                <ReadMore maxChars={200} content={description} />
+                <Truncator maxLineCount={3}>{description}</Truncator>
               </Serif>
             </>
           )}
