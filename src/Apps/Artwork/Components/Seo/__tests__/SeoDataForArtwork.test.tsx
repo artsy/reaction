@@ -8,6 +8,11 @@ import { AVAILABILITY, SeoDataForArtwork } from "../SeoDataForArtwork"
 import { SeoDataForArtworkFixture } from "./SeoDataForArtwork.fixture"
 
 jest.unmock("react-relay")
+jest.mock("sharify", () => ({
+  data: {
+    APP_URL: "test-url",
+  },
+}))
 
 describe("SeoDataForArtwork", () => {
   const getWrapper = async (artwork = SeoDataForArtworkFixture) => {
@@ -48,7 +53,7 @@ describe("SeoDataForArtwork", () => {
         description: "artwork description",
         image: "artwork-image",
         name: "artwork title",
-        url: "undefined/artwork/an-artwork",
+        url: "test-url/artwork/an-artwork",
         width: "1 in",
         height: "2 in",
       })
@@ -81,7 +86,7 @@ describe("SeoDataForArtwork", () => {
           },
         },
         productionDate: "1950",
-        url: "undefined/artwork/an-artwork",
+        url: "test-url/artwork/an-artwork",
         width: "1 in",
         height: "2 in",
       })

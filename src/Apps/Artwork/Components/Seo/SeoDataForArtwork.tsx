@@ -5,9 +5,10 @@ import { SeoDataForArtwork_artwork } from "__generated__/SeoDataForArtwork_artwo
 import { CreativeWork } from "Components/v2/Seo/CreativeWork"
 import { Product } from "Components/v2/Seo/Product"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 
-const { APP_URL } = process.env
+const { APP_URL } = sd
 
 interface SeoDataForArtworkProps {
   artwork: SeoDataForArtwork_artwork
