@@ -8,6 +8,7 @@ import { graphql } from "react-relay"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { CommitMutation, injectCommitMutation } from "../commitMutation"
+jest.unmock("react-relay")
 
 describe(injectCommitMutation, () => {
   const network = createMockNetworkLayer2({
