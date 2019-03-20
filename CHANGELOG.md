@@ -1,3 +1,15 @@
+# v15.7.0 (Wed Mar 20 2019)
+
+#### 🚀  Enhancement
+
+- Thread through description to search result items [#2193](https://github.com/artsy/reaction/pull/2193) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v15.6.1 (Wed Mar 20 2019)
 
 #### 🏠  Internal
