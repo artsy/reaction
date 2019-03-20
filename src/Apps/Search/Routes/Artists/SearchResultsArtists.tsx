@@ -76,7 +76,6 @@ export class SearchResultsArtistsRoute extends React.Component<
                 name={artist.name}
                 description={artist.bio}
                 imageUrl={artist.imageUrl}
-                index={index}
                 entityType="Artist"
                 href={artist.href}
               />

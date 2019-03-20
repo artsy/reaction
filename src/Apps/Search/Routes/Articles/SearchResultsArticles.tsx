@@ -74,7 +74,6 @@ export class SearchResultsArticlesRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={article.displayLabel}
-                index={index}
                 href={article.href}
                 description=""
                 imageUrl={article.imageUrl}

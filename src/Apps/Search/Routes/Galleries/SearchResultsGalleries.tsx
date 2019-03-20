@@ -74,7 +74,6 @@ export class SearchResultsGalleriesRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={gallery.displayLabel}
-                index={index}
                 href={gallery.href}
                 description=""
                 imageUrl={gallery.imageUrl}

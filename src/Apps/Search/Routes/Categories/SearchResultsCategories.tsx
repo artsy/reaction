@@ -74,7 +74,6 @@ export class SearchResultCategoriesRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={gene.displayLabel}
-                index={index}
                 href={gene.href}
                 imageUrl={gene.imageUrl}
                 entityType="Category"

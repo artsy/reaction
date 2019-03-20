@@ -74,7 +74,6 @@ export class SearchResultsCollectionsRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={collection.displayLabel}
-                index={index}
                 href={collection.href}
                 imageUrl={collection.imageUrl}
                 entityType="Collection"
