@@ -1,3 +1,15 @@
+# v15.5.14 (Wed Mar 20 2019)
+
+#### 🐛  Bug Fix
+
+- Remove h1 css reset from Boot now that Palette covers it [#2191](https://github.com/artsy/reaction/pull/2191) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v15.5.13 (Wed Mar 20 2019)
 
 #### 🐛  Bug Fix
