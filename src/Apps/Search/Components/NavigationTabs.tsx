@@ -10,12 +10,14 @@ interface Props {
   term: string
 }
 
-const MORE_TABS = {
-  tag: "Tag",
-  city: "City",
-  fair: "Fair",
-  feature: "Feature",
-}
+const MORE_TABS = [
+  "tag",
+  "city",
+  "fair",
+  "feature",
+  "PartnerInstitution",
+  "PartnerInstitutionalSeller",
+]
 
 export class NavigationTabs extends React.Component<Props> {
   renderTab(
@@ -65,7 +67,7 @@ export class NavigationTabs extends React.Component<Props> {
       0
     )
     const galleryAggregationCount = get(
-      this.aggregationFor("gallery"),
+      this.aggregationFor("PartnerGallery"),
       agg => agg.count,
       0
     )
@@ -91,7 +93,7 @@ export class NavigationTabs extends React.Component<Props> {
     )
 
     let restAggregationCount: number = 0
-    Object.keys(MORE_TABS).forEach(
+    MORE_TABS.forEach(
       key =>
         (restAggregationCount += get(
           this.aggregationFor(key),

@@ -122,7 +122,7 @@ export const SearchResultsMoreRouteRouteFragmentContainer = createRefetchContain
           after: $after
           before: $before
           last: $last
-          entities: [TAG, CITY, FAIR, FEATURE]
+          entities: [TAG, CITY, FAIR, FEATURE, INSTITUTION]
         ) {
           pageInfo {
             hasNextPage

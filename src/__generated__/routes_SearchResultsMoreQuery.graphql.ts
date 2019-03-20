@@ -27,7 +27,7 @@ query routes_SearchResultsMoreQuery(
 }
 
 fragment SearchResultsMore_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 10, entities: [TAG, CITY, FAIR, FEATURE]) {
+  search(query: $term, first: 10, entities: [TAG, CITY, FAIR, FEATURE, INSTITUTION]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -115,7 +115,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsMoreQuery",
   "id": null,
-  "text": "query routes_SearchResultsMoreQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsMore_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsMore_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [TAG, CITY, FAIR, FEATURE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          href\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsMoreQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsMore_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsMore_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [TAG, CITY, FAIR, FEATURE, INSTITUTION]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          href\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -176,7 +176,8 @@ return {
                   "TAG",
                   "CITY",
                   "FAIR",
-                  "FEATURE"
+                  "FEATURE",
+                  "INSTITUTION"
                 ],
                 "type": "[SearchEntity]"
               },
