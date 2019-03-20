@@ -8,12 +8,10 @@ import {
 import { Environment, OperationBase } from "relay-runtime"
 jest.unmock("react-relay")
 
-export type CommitMutation = <MutationType extends OperationBase>(
-  args: {
-    mutation: GraphQLTaggedNode
-    variables: MutationType["variables"]
-  }
-) => Promise<MutationType["response"]>
+export type CommitMutation = <MutationType extends OperationBase>(args: {
+  mutation: GraphQLTaggedNode
+  variables: MutationType["variables"]
+}) => Promise<MutationType["response"]>
 
 interface CommitMutationProps {
   commitMutation: CommitMutation
