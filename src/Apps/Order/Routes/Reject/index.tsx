@@ -11,7 +11,6 @@ import React, { Component } from "react"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { StepSummaryItem } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { ErrorWithMetadata } from "Utils/errors"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
@@ -22,90 +21,68 @@ import {
 
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
 import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 
 interface RejectProps {
   order: Reject_order
   relay?: RelayProp
   router: Router
   dialog: Dialog
-}
-
-interface RejectState {
+  commitMutation: CommitMutation
   isCommittingMutation: boolean
 }
 
-export class Reject extends Component<RejectProps, RejectState> {
-  state: RejectState = {
-    isCommittingMutation: false,
-  }
-
-  onSubmit: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
-        commitMutation<RejectOfferMutation>(this.props.relay.environment, {
-          mutation: graphql`
-            mutation RejectOfferMutation($input: buyerRejectOfferInput!) {
-              ecommerceBuyerRejectOffer(input: $input) {
-                orderOrError {
-                  ... on OrderWithMutationSuccess {
-                    __typename
-                    order {
-                      id
-                      ... on OfferOrder {
-                        awaitingResponseFrom
-                      }
-                    }
-                  }
-                  ... on OrderWithMutationFailure {
-                    error {
-                      type
-                      code
-                      data
-                    }
+export class Reject extends Component<RejectProps> {
+  rejectOffer(variables: RejectOfferMutation["variables"]) {
+    return this.props.commitMutation<RejectOfferMutation>({
+      variables,
+      mutation: graphql`
+        mutation RejectOfferMutation($input: buyerRejectOfferInput!) {
+          ecommerceBuyerRejectOffer(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                __typename
+                order {
+                  id
+                  ... on OfferOrder {
+                    awaitingResponseFrom
                   }
                 }
               }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
+              }
             }
-          `,
-          variables: {
-            input: {
-              offerId: this.props.order.lastOffer.id,
-            },
-          },
-          onCompleted: data => {
-            this.setState({ isCommittingMutation: false })
-            const {
-              ecommerceBuyerRejectOffer: { orderOrError },
-            } = data
-
-            if (orderOrError.error) {
-              this.onMutationError(
-                new ErrorWithMetadata(
-                  orderOrError.error.code,
-                  orderOrError.error
-                )
-              )
-            } else {
-              this.props.router.push(`/orders/${this.props.order.id}/status`)
-            }
-          },
-          onError: this.onMutationError.bind(this),
-        })
-      }
+          }
+        }
+      `,
     })
   }
 
-  onMutationError(error, title?, message?) {
-    logger.error(error)
-    this.props.dialog.showErrorDialog({ title, message })
-    this.setState({
-      isCommittingMutation: false,
-    })
+  onSubmit = async () => {
+    try {
+      const orderOrError = (await this.rejectOffer({
+        input: {
+          offerId: this.props.order.lastOffer.id,
+        },
+      })).ecommerceBuyerRejectOffer.orderOrError
+
+      if (orderOrError.error) {
+        throw orderOrError.error
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
   }
 
   onChangeResponse = () => {
@@ -114,8 +91,7 @@ export class Reject extends Component<RejectProps, RejectState> {
   }
 
   render() {
-    const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { order, isCommittingMutation } = this.props
 
     return (
       <>
@@ -207,7 +183,7 @@ export class Reject extends Component<RejectProps, RejectState> {
 }
 
 export const RejectFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectDialog(Reject)),
+  trackPageViewWrapper(injectCommitMutation(injectDialog(Reject))),
   graphql`
     fragment Reject_order on Order {
       id

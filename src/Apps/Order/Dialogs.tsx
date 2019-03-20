@@ -116,7 +116,7 @@ export class DialogContainer extends Container<DialogState> {
     message?: React.ReactNode
     supportEmail?: string
     continueButtonText?: string
-  }): Promise<boolean> => {
+  } = {}): Promise<boolean> => {
     return new Promise<boolean>(resolve => {
       const onContinue = () => {
         this.hide()

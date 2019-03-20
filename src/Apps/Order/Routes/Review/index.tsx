@@ -14,18 +14,16 @@ import {
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { ErrorWithMetadata } from "Utils/errors"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -39,25 +37,14 @@ export interface ReviewProps {
   router: Router
   route: RouteConfig
   dialog: Dialog
-}
-
-interface ReviewState {
-  isSubmitting: boolean
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
-export class ReviewRoute extends Component<ReviewProps, ReviewState> {
-  state: ReviewState = {
-    isSubmitting: false,
-  }
-
-  constructor(props) {
-    super(props)
-    this.onSuccessfulSubmit = this.onSuccessfulSubmit.bind(this)
-  }
-
+export class ReviewRoute extends Component<ReviewProps> {
   @track<ReviewProps>(props => ({
     action_type:
       props.order.mode === "BUY"
@@ -65,153 +52,132 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         : Schema.ActionType.SubmittedOffer,
     order_id: props.order.id,
   }))
-  onSuccessfulSubmit() {
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
-  }
+  async onSubmit() {
+    try {
+      const orderOrError =
+        this.props.order.mode === "BUY"
+          ? (await this.submitBuyOrder()).ecommerceSubmitOrder.orderOrError
+          : (await this.submitOffer()).ecommerceSubmitOrderWithOffer
+              .orderOrError
 
-  onSubmit() {
-    this.props.order.mode === "BUY"
-      ? this.onOrderSubmitted()
-      : this.onOfferOrderSubmitted()
-  }
-
-  onOrderSubmitted() {
-    if (this.props.relay && this.props.relay.environment) {
-      this.setState({ isSubmitting: true }, () =>
-        commitMutation<ReviewSubmitOrderMutation>(
-          this.props.relay.environment,
-          {
-            mutation: graphql`
-              mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
-                ecommerceSubmitOrder(input: $input) {
-                  orderOrError {
-                    ... on OrderWithMutationSuccess {
-                      order {
-                        state
-                      }
-                    }
-                    ... on OrderWithMutationFailure {
-                      error {
-                        type
-                        code
-                        data
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            variables: {
-              input: {
-                orderId: this.props.order.id,
-              },
-            },
-            onCompleted: result => {
-              const {
-                ecommerceSubmitOrder: { orderOrError },
-              } = result
-              this.onSubmitCompleted(orderOrError)
-            },
-            onError: this.onMutationError.bind(this),
-          }
-        )
-      )
-    }
-  }
-
-  onOfferOrderSubmitted() {
-    if (this.props.relay && this.props.relay.environment) {
-      this.setState({ isSubmitting: true }, () =>
-        commitMutation<ReviewSubmitOfferOrderMutation>(
-          this.props.relay.environment,
-          {
-            mutation: graphql`
-              mutation ReviewSubmitOfferOrderMutation(
-                $input: SubmitOrderWithOfferInput!
-              ) {
-                ecommerceSubmitOrderWithOffer(input: $input) {
-                  orderOrError {
-                    ... on OrderWithMutationSuccess {
-                      order {
-                        state
-                      }
-                    }
-                    ... on OrderWithMutationFailure {
-                      error {
-                        type
-                        code
-                        data
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            variables: {
-              input: {
-                offerId: this.props.order.myLastOffer.id,
-              },
-            },
-            onCompleted: result => {
-              const {
-                ecommerceSubmitOrderWithOffer: { orderOrError },
-              } = result
-              this.onSubmitCompleted(orderOrError)
-            },
-            onError: this.onMutationError.bind(this),
-          }
-        )
-      )
-    }
-  }
-
-  onSubmitCompleted = orderOrError => {
-    const error = orderOrError.error
-    if (error) {
-      switch (error.code) {
-        case "missing_required_info": {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Missing information",
-            "Please review and update your shipping and/or payment details and try again."
-          )
-          break
-        }
-        case "insufficient_inventory": {
-          const artistId = this.artistId()
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Not available",
-            "Sorry, the work is no longer available.",
-            artistId ? this.routeToArtistPage.bind(this) : null
-          )
-          break
-        }
-        case "failed_charge_authorize": {
-          const parsedData = JSON.parse(error.data)
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "An error occurred",
-            parsedData.failure_message
-          )
-          break
-        }
-        case "artwork_version_mismatch": {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Work has been updated",
-            "Something about the work changed since you started checkout. Please review the work before submitting your order.",
-            this.routeToArtworkPage.bind(this)
-          )
-          break
-        }
-        default: {
-          this.onMutationError(new ErrorWithMetadata(error.code, error))
-          break
-        }
+      if (orderOrError.error) {
+        this.handleSubmitError(orderOrError.error)
+        return
       }
-    } else {
-      this.onSuccessfulSubmit()
+
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
+  }
+
+  submitBuyOrder() {
+    return this.props.commitMutation<ReviewSubmitOrderMutation>({
+      variables: {
+        input: {
+          orderId: this.props.order.id,
+        },
+      },
+      mutation: graphql`
+        mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
+          ecommerceSubmitOrder(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  state
+                }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
+              }
+            }
+          }
+        }
+      `,
+    })
+  }
+
+  submitOffer() {
+    return this.props.commitMutation<ReviewSubmitOfferOrderMutation>({
+      variables: {
+        input: {
+          offerId: this.props.order.myLastOffer.id,
+        },
+      },
+      mutation: graphql`
+        mutation ReviewSubmitOfferOrderMutation(
+          $input: SubmitOrderWithOfferInput!
+        ) {
+          ecommerceSubmitOrderWithOffer(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  state
+                }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
+              }
+            }
+          }
+        }
+      `,
+    })
+  }
+
+  async handleSubmitError(error: { code: string; data: string }) {
+    logger.error(error)
+    switch (error.code) {
+      case "missing_required_info": {
+        this.props.dialog.showErrorDialog({
+          title: "Missing information",
+          message:
+            "Please review and update your shipping and/or payment details and try again.",
+        })
+        break
+      }
+      case "insufficient_inventory": {
+        await this.props.dialog.showErrorDialog({
+          title: "Not available",
+          message: "Sorry, the work is no longer available.",
+        })
+        const artistId = this.artistId()
+        if (artistId) {
+          this.routeToArtistPage()
+        }
+        break
+      }
+      case "failed_charge_authorize": {
+        const parsedData = JSON.parse(error.data)
+        this.props.dialog.showErrorDialog({
+          title: "An error occurred",
+          message: parsedData.failure_message,
+        })
+        break
+      }
+      case "artwork_version_mismatch": {
+        await this.props.dialog.showErrorDialog({
+          title: "Work has been updated",
+          message:
+            "Something about the work changed since you started checkout. Please review the work before submitting your order.",
+        })
+        this.routeToArtworkPage()
+        break
+      }
+      default: {
+        logger.error(error)
+        this.props.dialog.showErrorDialog()
+        break
+      }
     }
   }
 
@@ -240,17 +206,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     window.location.assign(`/artist/${artistId}`)
   }
 
-  onMutationError(error, title?, message?, onContinue?) {
-    logger.error(error)
-    this.props.dialog
-      .showErrorDialog({ message, title })
-      // tslint:disable-next-line:no-empty
-      .then(onContinue || (() => {}))
-    this.setState({
-      isSubmitting: false,
-    })
-  }
-
   onChangeOffer = () => {
     this.props.router.push(`/orders/${this.props.order.id}/offer`)
   }
@@ -264,8 +219,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   render() {
-    const { order } = this.props
-    const { isSubmitting } = this.state
+    const { order, isCommittingMutation } = this.props
 
     return (
       <>
@@ -312,7 +266,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     <Button
                       size="large"
                       width="100%"
-                      loading={isSubmitting}
+                      loading={isCommittingMutation}
                       onClick={() => this.onSubmit()}
                     >
                       Submit
@@ -334,7 +288,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                   <Button
                     size="large"
                     width="100%"
-                    loading={isSubmitting}
+                    loading={isCommittingMutation}
                     onClick={() => this.onSubmit()}
                   >
                     Submit
@@ -352,7 +306,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 }
 
 export const ReviewFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectDialog(ReviewRoute)),
+  trackPageViewWrapper(injectCommitMutation(injectDialog(ReviewRoute))),
   graphql`
     fragment Review_order on Order {
       id
