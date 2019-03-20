@@ -5,7 +5,6 @@ interface GenericSearchResultItemProps {
   imageUrl: string
   name: string
   description?: string
-  index: number
   href: string
   entityType: string
 }
@@ -13,7 +12,7 @@ interface GenericSearchResultItemProps {
 export const GenericSearchResultItem: FC<
   GenericSearchResultItemProps
 > = props => {
-  const { imageUrl, href, name, description, index, entityType } = props
+  const { imageUrl, href, name, description, entityType } = props
 
   const translateEntityType = anEntityType => {
     switch (anEntityType) {
@@ -28,14 +27,11 @@ export const GenericSearchResultItem: FC<
   return (
     <>
       <Flex flexDirection="row">
-        <Box>
-          <Image
-            width={70}
-            height={70}
-            mr={20}
-            src={imageUrl || `https://picsum.photos/70/70/?random=${index}`}
-          />
-        </Box>
+        <Link href={href}>
+          <Box height={70} width={70} mr={2} bg="black5">
+            {imageUrl && <Image width={70} height={70} src={imageUrl} />}
+          </Box>
+        </Link>
         <Box>
           <Sans color="black100" size="2" weight="medium">
             {translateEntityType(entityType)}

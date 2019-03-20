@@ -75,7 +75,6 @@ export class SearchResultMoreRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={searchableItem.displayLabel}
-                index={index}
                 href={searchableItem.href}
                 imageUrl={searchableItem.imageUrl}
                 entityType={searchableItem.searchableType}

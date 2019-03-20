@@ -74,7 +74,6 @@ export class SearchResultsShowsRoute extends React.Component<
             <Box key={index}>
               <GenericSearchResultItem
                 name={show.displayLabel}
-                index={index}
                 href={show.href}
                 description=""
                 imageUrl={show.imageUrl}
