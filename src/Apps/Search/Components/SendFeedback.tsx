@@ -12,6 +12,7 @@ import { ContextProps } from "Artsy"
 import { withContext } from "Artsy/SystemContext"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
+import styled from "styled-components"
 
 interface State {
   submitted: boolean
@@ -70,8 +71,8 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
 
   renderPersonalInfoInputs() {
     return (
-      <Flex mt={2} width="484px">
-        <Box width="237px" mr={1}>
+      <LoggedOutInputContainer mt={2} alignContent="space-between">
+        <Box mr={1} width="50%">
           <Input
             placeholder="Your name"
             onChange={({ currentTarget: { value: name } }) => {
@@ -79,7 +80,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
             }}
           />
         </Box>
-        <Box width="237px">
+        <Box width="50%">
           <Input
             placeholder="Email address"
             onChange={({ currentTarget: { value: email } }) => {
@@ -87,20 +88,20 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
             }}
           />
         </Box>
-      </Flex>
+      </LoggedOutInputContainer>
     )
   }
 
   renderFeedbackTextArea() {
     return (
-      <Box mt={2} width="484px">
+      <FeedbackTextAreaContainer mt={2}>
         <TextArea
           onChange={({ value: message }) => {
             this.setState({ message })
           }}
           placeholder="Your comments here"
         />
-      </Box>
+      </FeedbackTextAreaContainer>
     )
   }
 
@@ -109,8 +110,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
 
     return (
       <Box bg={color("black5")} p={3} mt={3}>
-        <Flex
-          style={{ minHeight: "212px" }}
+        <FeedbackContainer
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
@@ -134,10 +134,22 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
           >
             Submit
           </Button>
-        </Flex>
+        </FeedbackContainer>
       </Box>
     )
   }
 }
+
+const FeedbackContainer = styled(Flex)`
+  min-height: 212px;
+`
+
+const FeedbackTextAreaContainer = styled(Box)`
+  width: 484px;
+`
+
+const LoggedOutInputContainer = styled(Flex)`
+  width: 484px;
+`
 
 export const SendFeedback = withContext(SendFeedbackForm)
