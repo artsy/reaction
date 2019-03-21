@@ -171,17 +171,17 @@ export class ReviewRoute extends Component<ReviewProps> {
         }
 
         if (data.decline_code === "insufficient_funds") {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Insufficient funds",
-            "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
-          )
+          await this.props.dialog.showErrorDialog({
+            title: "Insufficient funds",
+            message:
+              "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card.",
+          })
         } else {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Charge failed",
-            "Payment authorization has been declined. Please contact your card provider and try again."
-          )
+          await this.props.dialog.showErrorDialog({
+            title: "Charge failed",
+            message:
+              "Payment authorization has been declined. Please contact your card provider and try again.",
+          })
         }
         break
       }
