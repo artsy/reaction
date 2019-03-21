@@ -1,8 +1,15 @@
-import { Box, Button, color, Flex, Serif, TextArea } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  color,
+  Flex,
+  Input,
+  Serif,
+  TextArea,
+} from "@artsy/palette"
 import { SendFeedbackSearchResultsMutation } from "__generated__/SendFeedbackSearchResultsMutation.graphql"
 import { ContextProps } from "Artsy"
 import { withContext } from "Artsy/SystemContext"
-import Input from "Components/Input"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
 
