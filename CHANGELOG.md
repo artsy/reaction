@@ -1,3 +1,15 @@
+# v15.8.2 (Thu Mar 21 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Add zero state to all tabs [#2198](https://github.com/artsy/reaction/pull/2198) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.8.1 (Thu Mar 21 2019)
 
 #### 🐛  Bug Fix
