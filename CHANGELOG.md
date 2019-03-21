@@ -1,3 +1,32 @@
+# v15.8.0 (Thu Mar 21 2019)
+
+#### 🚀  Enhancement
+
+- Use palette image for lazy loading [#2197](https://github.com/artsy/reaction/pull/2197) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v15.7.2 (Thu Mar 21 2019)
+
+#### 🐛  Bug Fix
+
+- Add back artwork structured data [#2180](https://github.com/artsy/reaction/pull/2180) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.3.2 [#2196](https://github.com/artsy/reaction/pull/2196) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.7.1 (Thu Mar 21 2019)
 
 #### 🐛  Bug Fix

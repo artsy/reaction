@@ -1,10 +1,10 @@
 import { EntityHeader } from "@artsy/palette"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsGrid } from "Apps/Collections/Components/CollectionsGrid"
+import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
-import { BreadCrumbList } from "../../Collect/Components/Seo"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "../CollectionsApp"
 
 jest.unmock("react-relay")
