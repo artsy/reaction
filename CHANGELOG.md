@@ -1,3 +1,15 @@
+# v15.8.1 (Thu Mar 21 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Add queryParam support [#2194](https://github.com/artsy/reaction/pull/2194) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.8.0 (Thu Mar 21 2019)
 
 #### 🚀  Enhancement
