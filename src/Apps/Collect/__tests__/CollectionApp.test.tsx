@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "react-relay"
 
+import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import { Provider } from "unstated"
 import { CollectionAppFixture } from "../../__tests__/Fixtures/Collect/CollectionAppFixture"
 import { CollectionAppFragmentContainer as CollectionApp } from "../CollectionApp"
 import { FilterContainer } from "../Components/Filters"
-import { BreadCrumbList } from "../Components/Seo"
 import { FilterState } from "../FilterState"
 
 jest.unmock("react-relay")

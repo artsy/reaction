@@ -4,8 +4,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { toSentence } from "underscore.string"
 
 import { SeoProductsForArtworks_artworks } from "__generated__/SeoProductsForArtworks_artworks.graphql"
+import { Product } from "Components/v2/Seo/Product"
 import { get } from "Utils/get"
-import { Product } from "./Product"
 
 const { APP_URL } = process.env
 
