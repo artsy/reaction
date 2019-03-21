@@ -17,7 +17,7 @@ describe("SearchResultsMore", () => {
   }
 
   const props = {
-    term: "andy",
+    location: { query: { term: "andy" } },
     viewer: {
       search: {
         edges: [

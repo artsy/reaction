@@ -8,6 +8,7 @@ interface SearchRefetchProps {
   filtersState: FilterState["state"]
   viewer: SearchResultsRefetch_viewer
   relay: RelayRefetchProp
+  term: string
 }
 
 export class SearchResultsRefetch extends Component<SearchRefetchProps> {
@@ -54,7 +55,7 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
   }
 
   render() {
-    const { filtersState } = this.props
+    const { filtersState, term } = this.props
     const { filtered_artworks } = this.props.viewer
     return (
       <SearchArtworkGrid
@@ -62,6 +63,7 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
         isLoading={this.isLoading}
         columnCount={[2, 2, 2, 3]}
         filters={filtersState}
+        term={term}
       />
     )
   }

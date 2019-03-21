@@ -9,12 +9,14 @@ import { FilterContainer } from "./Filters"
 
 export interface SearchFilterContainerProps {
   viewer: SearchResultsFilterContainer_viewer
+  term: string
 }
 export class SearchResultsFilterContainer extends Component<
   SearchFilterContainerProps
 > {
   render() {
-    const { filter_artworks } = this.props.viewer
+    const { viewer, term } = this.props
+    const { filter_artworks } = viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
 
@@ -31,6 +33,7 @@ export class SearchResultsFilterContainer extends Component<
                 <SearchResultsRefetchContainer
                   viewer={this.props.viewer}
                   filtersState={filters.state}
+                  term={term}
                 />
               )}
             </FilterContainer>
