@@ -15,6 +15,7 @@ export const ZeroState: FC<Props> = props => {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      width="100%"
     >
       <Box textAlign="center">
         <Serif size="6">

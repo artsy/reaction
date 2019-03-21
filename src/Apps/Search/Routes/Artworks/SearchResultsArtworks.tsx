@@ -6,15 +6,14 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 export interface Props {
   viewer: SearchResultsArtworks_viewer
+  term: string
 }
 
 export class SearchResultsArtworksRoute extends React.Component<Props> {
   render() {
-    const { viewer } = this.props
-
     return (
       <Box>
-        <ArtworkGrid viewer={viewer} />
+        <ArtworkGrid {...this.props} />
       </Box>
     )
   }

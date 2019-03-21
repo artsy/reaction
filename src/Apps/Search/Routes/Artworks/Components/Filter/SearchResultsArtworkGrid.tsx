@@ -8,6 +8,7 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 
+import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   filtered_artworks: SearchResultsArtworkGrid_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp
+  term: string
 }
 
 const PAGE_SIZE = 30
@@ -69,8 +71,11 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     const {
       columnCount,
       filtered_artworks: { artworks },
+      term,
     } = this.props
     const isLoading = this.state.isLoading || this.props.isLoading
+
+    const emptyStateComponent = <ZeroState entity="artworks" term={term} />
 
     return (
       <ContextConsumer>
@@ -88,6 +93,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                       user={user}
                       mediator={mediator}
                       onClearFilters={filters.resetFilters}
+                      emptyStateComponent={emptyStateComponent}
                     />
 
                     <Spacer mb={3} />

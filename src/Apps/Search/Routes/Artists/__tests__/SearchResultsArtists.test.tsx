@@ -1,3 +1,4 @@
+import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { ContextProvider } from "Artsy"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import { MockBoot } from "DevTools"
@@ -17,7 +18,7 @@ describe("SearchResultsArtworks", () => {
   }
 
   const props = {
-    term: "andy",
+    location: { query: { term: "andy" } },
     viewer: {
       search: {
         edges: [
@@ -40,6 +41,21 @@ describe("SearchResultsArtworks", () => {
     },
   }
 
+  const emptyResults = {
+    location: { query: { term: "andy" } },
+    viewer: {
+      search: {
+        edges: [],
+        pageInfo: {
+          hasNextPage: true,
+        },
+        pageCursors: {
+          around: [],
+        },
+      },
+    },
+  }
+
   it("renders artworks contents", () => {
     const wrapper = getWrapper(props) as any
     const html = wrapper.html()
@@ -49,5 +65,10 @@ describe("SearchResultsArtworks", () => {
   it("renders the pagination control", () => {
     const wrapper = getWrapper(props)
     expect(wrapper.find(Pagination).exists).toBeTruthy()
+  })
+
+  it("renders zero state when there are no items", () => {
+    const wrapper = getWrapper(emptyResults)
+    expect(wrapper.find(ZeroState).exists).toBeTruthy()
   })
 })

@@ -63,10 +63,11 @@ export const routes: RouteConfig[] = [
           }
 
           const currentFilterState = props.location.query
-          currentFilterState.keyword = currentFilterState.term
+          const { term } = currentFilterState
+          currentFilterState.keyword = term
           return (
             <Provider inject={[new FilterState(currentFilterState)]}>
-              <Component viewer={(props as any).viewer} />
+              <Component term={term} viewer={(props as any).viewer} />
             </Provider>
           )
         },
