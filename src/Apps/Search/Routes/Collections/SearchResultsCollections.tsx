@@ -1,8 +1,10 @@
 import { Box, Separator, Spacer } from "@artsy/palette"
 import { SearchResultsCollections_viewer } from "__generated__/SearchResultsCollections_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
+import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { Location } from "found"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
@@ -10,6 +12,7 @@ import { get } from "Utils/get"
 export interface Props {
   viewer: SearchResultsCollections_viewer
   relay: RelayRefetchProp
+  location: Location
 }
 
 const PAGE_SIZE = 10
@@ -62,13 +65,14 @@ export class SearchResultsCollectionsRoute extends React.Component<
     )
   }
 
-  render() {
+  renderCollections() {
     const { viewer } = this.props
     const { search: searchConnection } = viewer
 
     const collections = get(viewer, v => v.search.edges, []).map(e => e.node)
+
     return (
-      <LoadingArea isLoading={this.state.isLoading}>
+      <>
         {collections.map((collection, index) => {
           return (
             <Box key={index}>
@@ -98,6 +102,21 @@ export class SearchResultsCollectionsRoute extends React.Component<
           scrollTo="#jumpto--searchResultTabs"
           hasNextPage={searchConnection.pageInfo.hasNextPage}
         />
+      </>
+    )
+  }
+
+  render() {
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
+    const collections = get(viewer, v => v.search.edges, []).map(e => e.node)
+    return (
+      <LoadingArea isLoading={this.state.isLoading}>
+        {collections.length === 0 ? (
+          <ZeroState entity="collections" term={term} />
+        ) : (
+          this.renderCollections()
+        )}
       </LoadingArea>
     )
   }
