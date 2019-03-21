@@ -202,7 +202,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             data = JSON.parse(error.data)
           }
 
-          if (data.failure_code === "insufficient_funds") {
+          if (data.decline_code === "insufficient_funds") {
             this.onMutationError(
               new ErrorWithMetadata(error.code, error),
               "Insufficient funds",
