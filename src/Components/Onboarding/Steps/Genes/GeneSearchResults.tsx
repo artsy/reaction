@@ -70,9 +70,8 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
       "match_gene",
       { term: this.props.term }
     )
-    const updatedSuggestedGenes = suggestedGenes.map(
-      geneItem =>
-        geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
+    const updatedSuggestedGenes = suggestedGenes.map(geneItem =>
+      geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
     )
 
     suggestedGenesRootField.setLinkedRecords(

@@ -72,7 +72,8 @@ export class ArtistInsight extends React.Component<ArtistInsightProps> {
             <>
               , and{" "}
               <Link onClick={this.handleExpand.bind(this)}>
-                {entities.length - 1}&nbsp;more
+                {entities.length - 1}
+                &nbsp;more
               </Link>
             </>
           )}

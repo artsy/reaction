@@ -55,9 +55,8 @@ class SuggestedGenesContent extends React.Component<Props> {
     const suggestedGenes = suggestedGenesRootField.getLinkedRecords(
       "suggested_genes"
     )
-    const updatedSuggestedGenes = suggestedGenes.map(
-      geneItem =>
-        geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
+    const updatedSuggestedGenes = suggestedGenes.map(geneItem =>
+      geneItem.getValue("id") === gene.id ? suggestedGene : geneItem
     )
 
     suggestedGenesRootField.setLinkedRecords(

@@ -110,8 +110,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
         By placing your bid you agree to Artsy's{" "}
         <Link onClick={this.onClickConditionsOfSale.bind(this)}>
           Conditions of Sale
-        </Link>.
-        <Spacer mb={1} />
+        </Link>
+        .<Spacer mb={1} />
       </Container>
     )
   }
@@ -122,7 +122,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
         <Link onClick={this.onClickAuctionFAQ.bind(this)}>auction FAQs</Link> or{" "}
         <Link onClick={this.onClickAuctionAskSpecialist.bind(this)}>
           ask a specialist
-        </Link>.
+        </Link>
+        .
       </Container>
     )
   }
@@ -137,7 +138,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
           or{" "}
           <Link onClick={this.onClickBuyNowAskSpecialist.bind(this)}>
             ask a specialist
-          </Link>.
+          </Link>
+          .
         </Container>
       )
 
@@ -147,7 +149,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
           Have a question?{" "}
           <Link onClick={this.onClickCollectorFAQ.bind(this)}>
             Read our FAQ
-          </Link>.
+          </Link>
+          .
         </Container>
       )
   }

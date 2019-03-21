@@ -6,10 +6,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
 import { ArticleItem } from "./ArtistArticle"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 const PAGE_SIZE = 10
 

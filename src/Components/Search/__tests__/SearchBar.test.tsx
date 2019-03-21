@@ -111,13 +111,4 @@ describe("SearchBar", () => {
 
     expect(component.html()).toContain("<strong>Perc</strong>y Z")
   })
-
-  it("displays merchandisable artworks", async () => {
-    const component = await getWrapper(searchResults)
-
-    simulateTyping(component, "blah") // Any text of non-zero length.
-    await flushPromiseQueue()
-
-    expect(component.text()).toContain("Now available on Artsy")
-  })
 })

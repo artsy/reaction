@@ -17,8 +17,7 @@ export const VideoControls: React.SFC<VideoControlsProps> = props => {
 
 const Div: StyledFunction<
   VideoControlsProps & React.HTMLProps<HTMLDivElement>
-> =
-  styled.div
+> = styled.div
 
 const PlayButtonCaret = Div`
   color: black;

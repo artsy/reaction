@@ -36,7 +36,8 @@ export class DateSource extends Component<Props> {
 
     return (
       <Fragment>
-        {hasSource && ", via"}&nbsp;
+        {hasSource && ", via"}
+        &nbsp;
         {editSource ? (
           editSource
         ) : source.url ? (

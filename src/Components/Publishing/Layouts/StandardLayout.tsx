@@ -131,16 +131,15 @@ export class StandardLayout extends React.Component<
                 />
               )}
 
-              {(relatedArticlesForCanvas || display) &&
-                !seriesOrSuper && (
-                  <CanvasFooter
-                    article={article}
-                    display={display}
-                    relatedArticles={relatedArticlesForCanvas}
-                    renderTime={renderTime}
-                    showCollectionsRail={showCollectionsRail}
-                  />
-                )}
+              {(relatedArticlesForCanvas || display) && !seriesOrSuper && (
+                <CanvasFooter
+                  article={article}
+                  display={display}
+                  relatedArticles={relatedArticlesForCanvas}
+                  renderTime={renderTime}
+                  showCollectionsRail={showCollectionsRail}
+                />
+              )}
             </ArticleWrapper>
           )
         }}

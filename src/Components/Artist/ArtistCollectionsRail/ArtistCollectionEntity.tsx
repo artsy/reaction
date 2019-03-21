@@ -3,6 +3,7 @@ import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectio
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import currency from "currency.js"
+import { map } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -26,8 +27,17 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
   }
 
   render() {
-    const { price_guidance, slug, title } = this.props.collection
+    const {
+      artworks: { hits },
+      headerImage,
+      price_guidance,
+      slug,
+      title,
+    } = this.props.collection
     const formattedTitle = (title && title.split(": ")[1]) || title
+    const bgImages = map(hits, "image.url")
+    const imageSize =
+      bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
 
     return (
       <Box width="100%" pr={2}>
@@ -36,15 +46,23 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
           onClick={this.onLinkClick.bind(this)}
         >
           <ImgWrapper pb={1}>
-            <ImgPlaceholder />
-            <ImgPlaceholder />
-            <ImgPlaceholder />
+            {bgImages.length ? (
+              bgImages.map((url, i) => {
+                const alt = `${hits[i].artist.name}, ${hits[i].title}`
+                return (
+                  <ArtworkImage key={i} src={url} width={imageSize} alt={alt} />
+                )
+              })
+            ) : (
+              <ArtworkImage src={headerImage} width={265} />
+            )}
           </ImgWrapper>
 
           <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
-              Works from ${currency(price_guidance, {
+              Works from $
+              {currency(price_guidance, {
                 separator: ",",
                 precision: 0,
               }).format()}
@@ -68,13 +86,12 @@ export const StyledLink = styled(Link)`
   }
 `
 
-// TODO: add background url when supported by Kaws
-const ImgPlaceholder = styled.div`
-  width: 85px;
+export const ArtworkImage = styled.img<{ width: number }>`
+  width: ${({ width }) => width}px;
   height: 125px;
   background-color: ${color("black10")};
-  background-position: center;
-  background-size: cover;
+  object-fit: cover;
+  object-position: center;
 
   &:last-child {
     padding-right: 0;
@@ -90,9 +107,21 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
   ArtistCollectionEntity,
   graphql`
     fragment ArtistCollectionEntity_collection on MarketingCollection {
+      headerImage
       slug
       title
       price_guidance
+      artworks(size: 3, sort: "merchandisability") {
+        hits {
+          artist {
+            name
+          }
+          title
+          image {
+            url(version: "small")
+          }
+        }
+      }
     }
   `
 )

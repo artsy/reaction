@@ -32,6 +32,10 @@ import {
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
@@ -39,13 +43,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { ErrorWithMetadata } from "Utils/errors"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -55,6 +53,8 @@ export interface ShippingProps {
   relay?: RelayProp
   router: Router
   dialog: Dialog
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 export interface ShippingState {
@@ -62,7 +62,6 @@ export interface ShippingState {
   address: Address
   addressErrors: AddressErrors
   addressTouched: AddressTouched
-  isCommittingMutation: boolean
 }
 
 const logger = createLogger("Order/Routes/Shipping/index.tsx")
@@ -73,7 +72,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     shippingOption: ((this.props.order.requestedFulfillment &&
       this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
       "SHIP") as OrderFulfillmentType,
-    isCommittingMutation: false,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
@@ -103,133 +101,109 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
-  onContinueButtonPressed: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      const { address, shippingOption } = this.state
-
-      if (this.state.shippingOption === "SHIP") {
-        const { errors, hasErrors } = this.validateAddress(this.state.address)
-        if (hasErrors) {
-          this.setState({
-            isCommittingMutation: false,
-            addressErrors: errors,
-            addressTouched: this.touchedAddress,
-          })
-          return
-        }
-      }
-
-      if (this.props.relay && this.props.relay.environment) {
-        commitMutation<ShippingOrderAddressUpdateMutation>(
-          this.props.relay.environment,
-          {
-            mutation: graphql`
-              mutation ShippingOrderAddressUpdateMutation(
-                $input: SetOrderShippingInput!
-              ) {
-                ecommerceSetOrderShipping(input: $input) {
-                  orderOrError {
-                    ... on OrderWithMutationSuccess {
-                      __typename
-                      order {
-                        id
-                        state
-                        requestedFulfillment {
-                          __typename
-                          ... on Ship {
-                            name
-                            addressLine1
-                            addressLine2
-                            city
-                            region
-                            country
-                            postalCode
-                            phoneNumber
-                          }
-                        }
-                      }
-                    }
-                    ... on OrderWithMutationFailure {
-                      error {
-                        type
-                        code
-                        data
-                      }
+  setShipping(variables: ShippingOrderAddressUpdateMutation["variables"]) {
+    return this.props.commitMutation<ShippingOrderAddressUpdateMutation>({
+      variables,
+      mutation: graphql`
+        mutation ShippingOrderAddressUpdateMutation(
+          $input: SetOrderShippingInput!
+        ) {
+          ecommerceSetOrderShipping(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                __typename
+                order {
+                  id
+                  state
+                  requestedFulfillment {
+                    __typename
+                    ... on Ship {
+                      name
+                      addressLine1
+                      addressLine2
+                      city
+                      region
+                      country
+                      postalCode
+                      phoneNumber
                     }
                   }
                 }
               }
-            `,
-            variables: {
-              input: {
-                orderId: this.props.order.id,
-                fulfillmentType: shippingOption,
-                shipping: address,
-              },
-            },
-            onCompleted: data => {
-              this.setState({ isCommittingMutation: false })
-              const {
-                ecommerceSetOrderShipping: { orderOrError },
-              } = data
-
-              if (orderOrError.error) {
-                const errorCode = orderOrError.error.code
-                const errorData = get(
-                  orderOrError,
-                  o => JSON.parse(o.error.data),
-                  {}
-                )
-                if (
-                  errorCode === "missing_region" ||
-                  errorCode === "missing_country" ||
-                  errorCode === "missing_postal_code"
-                ) {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    ),
-                    "Invalid address",
-                    "There was an error processing your address. Please review and try again."
-                  )
-                } else if (
-                  errorCode === "unsupported_shipping_location" &&
-                  errorData.failure_code === "domestic_shipping_only"
-                ) {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    ),
-                    "Can't ship to that address",
-                    "This work can only be shipped to the continental United States."
-                  )
-                } else {
-                  this.onMutationError(
-                    new ErrorWithMetadata(
-                      orderOrError.error.code,
-                      orderOrError.error
-                    )
-                  )
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
                 }
-              } else {
-                this.props.router.push(`/orders/${this.props.order.id}/payment`)
               }
-            },
-            onError: this.onMutationError.bind(this),
+            }
           }
-        )
-      }
+        }
+      `,
     })
   }
 
-  onMutationError(error, title?, message?) {
+  onContinueButtonPressed = async () => {
+    const { address, shippingOption } = this.state
+
+    if (shippingOption === "SHIP") {
+      const { errors, hasErrors } = this.validateAddress(this.state.address)
+      if (hasErrors) {
+        this.setState({
+          addressErrors: errors,
+          addressTouched: this.touchedAddress,
+        })
+        return
+      }
+    }
+
+    try {
+      const orderOrError = (await this.setShipping({
+        input: {
+          orderId: this.props.order.id,
+          fulfillmentType: shippingOption,
+          shipping: address,
+        },
+      })).ecommerceSetOrderShipping.orderOrError
+
+      if (orderOrError.error) {
+        this.handleSubmitError(orderOrError.error)
+        return
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/payment`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
+  }
+
+  handleSubmitError(error: { code: string; data: string }) {
     logger.error(error)
-    this.props.dialog.showErrorDialog({ title, message })
-    this.setState({
-      isCommittingMutation: false,
-    })
+    const parsedData = get(error, e => JSON.parse(e.data), {})
+    if (
+      error.code === "missing_region" ||
+      error.code === "missing_country" ||
+      error.code === "missing_postal_code"
+    ) {
+      this.props.dialog.showErrorDialog({
+        title: "Invalid address",
+        message:
+          "There was an error processing your address. Please review and try again.",
+      })
+    } else if (
+      error.code === "unsupported_shipping_location" &&
+      parsedData.failure_code === "domestic_shipping_only"
+    ) {
+      this.props.dialog.showErrorDialog({
+        title: "Can't ship to that address",
+        message:
+          "This work can only be shipped to the continental United States.",
+      })
+    } else {
+      this.props.dialog.showErrorDialog()
+    }
   }
 
   private validateAddress(address: Address) {
@@ -289,13 +263,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   render() {
-    const { order } = this.props
-    const {
-      address,
-      addressErrors,
-      addressTouched,
-      isCommittingMutation,
-    } = this.state
+    const { order, isCommittingMutation } = this.props
+    const { address, addressErrors, addressTouched } = this.state
     const artwork = get(
       this.props,
       props => order.lineItems.edges[0].node.artwork
@@ -409,7 +378,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 }
 
 export const ShippingFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectDialog(ShippingRoute)),
+  trackPageViewWrapper(injectCommitMutation(injectDialog(ShippingRoute))),
   graphql`
     fragment Shipping_order on Order {
       id

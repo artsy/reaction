@@ -15,7 +15,7 @@ export class ArtworkSidebarTitleInfo extends React.Component<
     const { artwork } = this.props
     return (
       <Box color="black60">
-        <Serif size="2">
+        <Serif size="2" element="h2">
           <i>{artwork.title}</i>
           {artwork.date &&
             artwork.date.replace(/\s+/g, "").length > 0 &&

@@ -63,9 +63,8 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
       "match_artist",
       { term: this.props.term }
     )
-    const updatedPopularArtists = popularArtists.map(
-      artistItem =>
-        artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
+    const updatedPopularArtists = popularArtists.map(artistItem =>
+      artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
     )
 
     popularArtistsRootField.setLinkedRecords(

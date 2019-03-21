@@ -19,19 +19,17 @@ import { RevealButton } from "Apps/Order/Components/RevealButton"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
-import { ErrorWithMetadata } from "Utils/errors"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -48,6 +46,8 @@ export interface RespondProps {
   relay?: RelayProp
   router: Router
   dialog: Dialog
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 export interface RespondState {
@@ -55,7 +55,6 @@ export interface RespondState {
   offerNoteValue: TextAreaChange
   formIsDirty: boolean
   responseOption: "ACCEPT" | "COUNTER" | "DECLINE"
-  isCommittingMutation: boolean
   lowSpeedBumpEncountered: boolean
   highSpeedBumpEncountered: boolean
 }
@@ -68,7 +67,6 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     offerValue: 0,
     offerNoteValue: { value: "", exceedsCharacterLimit: false },
     responseOption: null,
-    isCommittingMutation: false,
     formIsDirty: false,
     lowSpeedBumpEncountered: false,
     highSpeedBumpEncountered: false,
@@ -121,119 +119,91 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
       highSpeedBumpEncountered,
     } = this.state
 
-    if (responseOption === "COUNTER") {
-      if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
-        this.setState({ formIsDirty: true })
-        return
-      }
-      const currentOfferPrice = this.props.order.itemsTotalCents
-
-      if (
-        !lowSpeedBumpEncountered &&
-        offerValue * 100 < currentOfferPrice * 0.75
-      ) {
-        this.showLowSpeedbump()
-        return
-      }
-
-      if (
-        !highSpeedBumpEncountered &&
-        this.state.offerValue * 100 > currentOfferPrice
-      ) {
-        this.showHighSpeedbump()
-        return
-      }
+    if (responseOption === "ACCEPT") {
+      this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+      return
     }
 
-    this.setState({ isCommittingMutation: true }, () => {
-      switch (responseOption) {
-        case "COUNTER":
-          this.createCounterOffer(this.state.offerValue)
-            .then(() => {
-              this.props.router.push(
-                `/orders/${this.props.order.id}/review/counter`
-              )
-            })
-            .catch(this.onMutationError)
-          break
-        case "ACCEPT":
-          this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
-          break
-        case "DECLINE":
-          this.props.router.push(
-            `/orders/${this.props.order.id}/review/decline`
-          )
-          break
+    if (responseOption === "DECLINE") {
+      this.props.router.push(`/orders/${this.props.order.id}/review/decline`)
+      return
+    }
+
+    // responseOption === "COUNTER"
+
+    if (offerValue <= 0 || offerNoteValue.exceedsCharacterLimit) {
+      this.setState({ formIsDirty: true })
+      return
+    }
+    const currentOfferPrice = this.props.order.itemsTotalCents
+
+    if (
+      !lowSpeedBumpEncountered &&
+      offerValue * 100 < currentOfferPrice * 0.75
+    ) {
+      this.showLowSpeedbump()
+      return
+    }
+
+    if (
+      !highSpeedBumpEncountered &&
+      this.state.offerValue * 100 > currentOfferPrice
+    ) {
+      this.showHighSpeedbump()
+      return
+    }
+
+    try {
+      const orderOrError = (await this.createCounterOffer({
+        input: {
+          offerId: this.props.order.lastOffer.id,
+          offerPrice: {
+            amount: this.state.offerValue,
+            currencyCode: "USD",
+          },
+          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
+        },
+      })).ecommerceBuyerCounterOffer.orderOrError
+
+      if (orderOrError.error) {
+        throw orderOrError.error
       }
-    })
+
+      this.props.router.push(`/orders/${this.props.order.id}/review/counter`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
   }
 
-  createCounterOffer(price: number) {
-    return new Promise((resolve, reject) =>
-      commitMutation<RespondCounterOfferMutation>(
-        this.props.relay.environment,
-        {
-          mutation: graphql`
-            mutation RespondCounterOfferMutation(
-              $input: buyerCounterOfferInput!
-            ) {
-              ecommerceBuyerCounterOffer(input: $input) {
-                orderOrError {
-                  ... on OrderWithMutationSuccess {
-                    order {
-                      ...Respond_order
-                    }
-                  }
-                  ... on OrderWithMutationFailure {
-                    error {
-                      type
-                      code
-                      data
-                    }
-                  }
+  createCounterOffer(variables: RespondCounterOfferMutation["variables"]) {
+    return this.props.commitMutation<RespondCounterOfferMutation>({
+      variables,
+      mutation: graphql`
+        mutation RespondCounterOfferMutation($input: buyerCounterOfferInput!) {
+          ecommerceBuyerCounterOffer(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  ...Respond_order
+                }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
                 }
               }
             }
-          `,
-          variables: {
-            input: {
-              offerId: this.props.order.lastOffer.id,
-              offerPrice: {
-                amount: price,
-                currencyCode: "USD",
-              },
-              note:
-                this.state.offerNoteValue && this.state.offerNoteValue.value,
-            },
-          },
-          onCompleted: result => {
-            const orderOrError = result.ecommerceBuyerCounterOffer.orderOrError
-            if (orderOrError.error) {
-              reject(
-                new ErrorWithMetadata(
-                  orderOrError.error.code,
-                  orderOrError.error
-                )
-              )
-            } else {
-              resolve(orderOrError.order)
-            }
-          },
-          onError: reject,
+          }
         }
-      )
-    )
-  }
-
-  onMutationError = (errors, title?, message?) => {
-    logger.error(errors)
-    this.props.dialog.showErrorDialog({ title, message })
-    this.setState({ isCommittingMutation: false })
+      `,
+    })
   }
 
   render() {
-    const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { order, isCommittingMutation } = this.props
 
     const artworkId = order.lineItems.edges[0].node.artwork.id
 
@@ -369,7 +339,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 }
 
 export const RespondFragmentContainer = createFragmentContainer(
-  injectDialog(trackPageViewWrapper(RespondRoute)),
+  injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
   graphql`
     fragment Respond_order on Order {
       id

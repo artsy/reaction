@@ -29,7 +29,9 @@ export function OrderStepper<Steps extends string[]>({
       disableNavigation
       autoScroll
     >
-      {steps.map(step => <Step name={step} key={step} />)}
+      {steps.map(step => (
+        <Step name={step} key={step} />
+      ))}
     </Stepper>
   )
 }

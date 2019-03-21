@@ -24,13 +24,23 @@ interface Props {
   artist: ArtistCard_artist
   user: User
   mediator?: Mediator
+  /** Lazy load the avatar image */
+  lazyLoad?: boolean
   onClick?: () => void
 }
 
 export class ArtistCard extends React.Component<Props> {
+  static defaultProps = {
+    lazyLoad: false,
+  }
+
   render() {
     return (
-      <Link href={this.props.artist.href} noUnderline>
+      <Link
+        onClick={this.props.onClick}
+        href={this.props.artist.href}
+        noUnderline
+      >
         <Media at="xs">
           <SmallArtistCard {...this.props} />
         </Media>
@@ -47,7 +57,10 @@ export const LargeArtistCard: SFC<Props> = props => (
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1} mb={1}>
       {props.artist.image && (
         <Box mb={1}>
-          <Avatar src={get(props.artist.image, i => i.cropped.url)} />
+          <Avatar
+            lazyLoad={props.lazyLoad}
+            src={get(props.artist.image, i => i.cropped.url)}
+          />
         </Box>
       )}
 
@@ -79,7 +92,11 @@ export const SmallArtistCard: SFC<Props> = props => (
   <BorderBox hover width="100%">
     {props.artist.image && (
       <Box mr={2}>
-        <Avatar size="xs" src={get(props.artist.image, i => i.cropped.url)} />
+        <Avatar
+          lazyLoad={props.lazyLoad}
+          size="xs"
+          src={get(props.artist.image, i => i.cropped.url)}
+        />
       </Box>
     )}
     <Flex flexDirection="column">

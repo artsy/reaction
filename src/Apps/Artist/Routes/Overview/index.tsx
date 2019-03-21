@@ -10,17 +10,15 @@ import { hasSections as showMarketInsights } from "Components/Artist/MarketInsig
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { Media } from "Utils/Responsive"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MAX_CHARS,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
 
 export interface OverviewRouteProps {
-  ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
+  showCollectionsRail?: boolean // TODO: remove after CollectionsRail a/b test
   artist: Overview_artist & {
     __fragments: object[]
   }
@@ -36,11 +34,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   componentDidMount() {
-    // TODO: remove after CollectionsRail a/b test
-    const showCollectionsRail =
-      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
-
-    if (showCollectionsRail) {
+    if (this.props.showCollectionsRail) {
       this.trackingCollectionsRailTest()
     }
   }
@@ -56,20 +50,16 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   maybeShowGenes() {
-    let showGenes = false
-    if (this.state.isReadMoreExpanded) {
-      showGenes = true
-    } else if (!this.props.artist.biography_blurb.text) {
-      showGenes = true
-    }
-    return showGenes
+    const { isReadMoreExpanded } = this.state
+    const hasNoBio = !this.props.artist.biography_blurb.text
+
+    return isReadMoreExpanded || hasNoBio
   }
 
   @track<OverviewRouteProps>(props => {
     // TODO: remove after CollectionsRail a/b test
     const experiment = "artist_collections_rail"
-    const variation =
-      props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
+    const variation = sd.ARTIST_COLLECTIONS_RAIL
 
     return {
       action_type: Schema.ActionType.ExperimentViewed,
@@ -85,17 +75,13 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   render() {
-    const { artist } = this.props
-    const collectionsRailVariation =
-      this.props.ARTIST_COLLECTIONS_RAIL || sd.ARTIST_COLLECTIONS_RAIL
-    const showCollectionsRail = collectionsRailVariation === "experiment"
+    const { artist, showCollectionsRail } = this.props
 
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
     const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
-    const bioLen = artist.biography_blurb.text.length
     const hideMainOverviewSection =
       !showArtistInsights &&
       !showArtistBio &&
@@ -124,24 +110,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               {showGenes && (
                 <>
                   <Spacer mb={1} />
-                  <Media at="xs">
-                    {bioLen < MAX_CHARS.xs ? (
-                      <>
-                        <Genes artist={artist} />
-                      </>
-                    ) : (
-                      showGenes && <Genes artist={artist} />
-                    )}
-                  </Media>
-                  <Media greaterThan="xs">
-                    {bioLen < MAX_CHARS.default ? (
-                      <>
-                        <Genes artist={artist} />
-                      </>
-                    ) : (
-                      showGenes && <Genes artist={artist} />
-                    )}
-                  </Media>
+                  <Genes artist={artist} />
                   <Spacer mb={1} />
                 </>
               )}
@@ -155,7 +124,8 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       onClick={this.handleConsignClick.bind(this)}
                     >
                       Learn more
-                    </a>.
+                    </a>
+                    .
                   </Sans>
                 </>
               )}

@@ -92,8 +92,12 @@ export enum ActionType {
   SubmittedOrder = "submitted_order",
   SubmittedOffer = "submitted_offer",
   SubmittedCounterOffer = "submitted_counter_offer",
-  ViewedProduct = "Viewed Product",
   FocusedOnOfferInput = "Focused on offer input",
+
+  /**
+   * Paid Marketing - Retargeting
+   */
+  ViewedProduct = "Product Viewed",
 
   // MO speedbumps
   ViewedOfferTooLow = "Viewed offer too low",
@@ -183,9 +187,9 @@ export enum Subject {
   ClickedNextButton = "clicked next button",
 
   /*
-  * Articles
-  * TODO: Old schema
-  */
+   * Articles
+   * TODO: Old schema
+   */
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",
@@ -251,9 +255,9 @@ export enum ContextModule {
   ViewInRoom = "View in room",
 
   /*
-  * Articles
-  * TODO: Old schema
-  */
+   * Articles
+   * TODO: Old schema
+   */
   FurtherReading = "Further reading",
   ReadMore = "Read more",
   RelatedArticles = "Related articles",

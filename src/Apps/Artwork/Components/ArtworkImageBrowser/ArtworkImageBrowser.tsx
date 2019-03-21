@@ -217,5 +217,6 @@ const PageIndicator = styled.span`
 `
 
 DesktopImage.displayName = "DesktopImage"
+// @ts-ignore
 ResponsiveImage.displayName = "ResponsiveImage"
 PageIndicator.displayName = "PageIndicator"

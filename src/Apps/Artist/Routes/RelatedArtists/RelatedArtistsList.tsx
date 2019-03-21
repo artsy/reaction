@@ -9,10 +9,7 @@ import {
   PaginationFragmentContainer as Pagination,
 } from "Components/v2"
 
-import {
-  LoadingArea,
-  LoadingAreaState,
-} from "Apps/Artist/Components/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface ShowProps {
   relay: RelayRefetchProp
@@ -106,6 +103,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
                               key={index}
                             >
                               <ArtistCard
+                                lazyLoad
                                 artist={node}
                                 mediator={mediator}
                                 user={user}

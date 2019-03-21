@@ -65,7 +65,8 @@ export class CollectionEntity extends React.Component<CollectionProps> {
           />
           <CollectionTitle size="4">{collection.title}</CollectionTitle>
           <Sans size="2">
-            Works from ${currency(collection.price_guidance, {
+            Works from $
+            {currency(collection.price_guidance, {
               separator: ",",
               precision: 0,
             }).format()}
