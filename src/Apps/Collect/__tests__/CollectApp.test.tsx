@@ -4,10 +4,10 @@ import { Title } from "react-head"
 import { graphql } from "react-relay"
 import { Provider } from "unstated"
 
+import { BreadCrumbList } from "Components/v2/Seo"
 import { CollectAppFixture } from "../../__tests__/Fixtures/Collect/CollectAppFixture"
 import { CollectAppFragmentContainer as CollectApp } from "../CollectApp"
 import { FilterContainer } from "../Components/Filters"
-import { BreadCrumbList } from "../Components/Seo"
 import { FilterState } from "../FilterState"
 
 jest.unmock("react-relay")

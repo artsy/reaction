@@ -44,6 +44,106 @@ type AggregationCount {
   sortable_id: String
 }
 
+# An ISO 8601 datetime
+scalar AnalyticsDateTime
+
+# A histogram bin
+type AnalyticsHistogramBin {
+  maxPriceCents: Int!
+  minPriceCents: Int!
+  numArtworks: Int!
+}
+
+# Partner Stats
+type AnalyticsPartnerStatsType {
+  partnerId: String!
+  timeSeries: [AnalyticsPartnerTimeSeriesStatsType!]
+  uniqueVisitors: Int
+}
+
+# Partner Time Series Stats
+type AnalyticsPartnerTimeSeriesStatsType {
+  artworksPublished: Int
+  date: AnalyticsDateTime
+  partnerId: String
+}
+
+# Pricing Context Histogram
+type AnalyticsPricingContext {
+  bins: [AnalyticsHistogramBin!]!
+  filterDescription: String!
+}
+
+enum AnalyticsPricingContextCategoryEnum {
+  # Architecture
+  ARCHITECTURE
+
+  # Books and Portfolios
+  BOOKS_AND_PORTFOLIOS
+
+  # Design/Decorative Art
+  DESIGN_DECORATIVE_ART
+
+  # Drawing, Collage or other Work on Paper
+  DRAWING_COLAGE_OTHER_WORK_ON_PAPER
+
+  # Fashion Design and Wearable Art
+  FASHON
+
+  # Installation
+  INSTALLATION
+
+  # Jewelry
+  JEWELRY
+
+  # Mixed Media
+  MIXED_MEDIA
+
+  # Other
+  OTHER
+
+  # Painting
+  PAINTING
+
+  # Performance Art
+  PERFORMANCE
+
+  # Photography
+  PHOTOGRAPHY
+
+  # Posters
+  POSTERS
+
+  # Print
+  PRINT
+
+  # Sculpture
+  SCULPTURE
+
+  # Sound
+  SOUND
+
+  # Textile Arts
+  TEXTILE
+
+  # Video/Film/Animation
+  VIDEO_FILM_ANIMATION
+
+  # Work on Paper
+  WORK_ON_PAPER
+}
+
+enum AnalyticsPricingContextDimensionsEnum {
+  # large
+  LARGE
+
+  # medium
+  MEDIUM
+
+  # small
+  SMALL
+}
+
 input ApproveOrderInput {
   # Order ID
   orderId: String!
@@ -1121,9 +1221,10 @@ type ArtworkContextFair {
   hours: String
   href: String
   image: Image
+  is_active: Boolean @deprecated(reason: "Prefer isActive instead")
 
   # Are we currently in the fair's active period?
-  is_active: Boolean
+  isActive: Boolean
   links: String
   mobile_image: Image
   is_published: Boolean
@@ -1150,6 +1251,14 @@ type ArtworkContextFair {
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
+    convert_to_utc: Boolean
+    format: String
+
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  active_start_at(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
@@ -2447,10 +2556,19 @@ type City {
   shows(
     sort: PartnerShowSorts
 
-    # By default we filter shows by current
+    # Filter shows by chronological event status
     status: EventStatus = CURRENT
 
-    # Whether to include local discovery stubs as well as displayable shows
+    # Filter shows by partner type
+    partnerType: PartnerShowPartnerType
+
+    # Only used when status is CLOSING_SOON or UPCOMING. Number of days used to filter upcoming and closing soon shows
+    dayThreshold: Int
+
+    # Whether to include local discovery stubs
+    includeStubShows: Boolean
+
+    # Whether to include stub shows or not
     discoverable: Boolean
     after: String
     first: Int
@@ -2471,6 +2589,15 @@ type City {
 type CitySponsoredContent {
   introText: String
   artGuideUrl: String
+  featuredShows: [Show]
+  shows(
+    sort: PartnerShowSorts
+    status: EventStatus
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ShowConnection
 }
 
 type Collection implements Node {
@@ -3235,6 +3362,12 @@ enum EventStatus {
 
   # Start date is in the future
   UPCOMING
+
+  # End date is in near future
+  CLOSING_SOON
+
+  # Special filtering option which is used to show running and upcoming shows
+  RUNNING_AND_UPCOMING
 }
 
 type ExternalPartner {
@@ -3279,9 +3412,10 @@ type Fair {
   hours: String
   href: String
   image: Image
+  is_active: Boolean @deprecated(reason: "Prefer isActive instead")
 
   # Are we currently in the fair's active period?
-  is_active: Boolean
+  isActive: Boolean
   links: String
   mobile_image: Image
   is_published: Boolean
@@ -3308,6 +3442,14 @@ type Fair {
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
+    convert_to_utc: Boolean
+    format: String
+
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  active_start_at(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
@@ -3462,6 +3604,17 @@ type FeaturedLinkItem {
   initials(length: Int = 3): String
   subtitle: String
   title: String
+}
+
+type Feedback {
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID.
+  id: String!
+
+  # Feedback message
+  message: String!
 }
 
 type FilterArtworks implements Node {
@@ -3753,6 +3906,15 @@ type FollowsAndSaves {
 
   # A list of the current user’s currently followed shows
   shows(
+    status: EventStatus
+
+    # Number of days which will be used to filter upcoming and closing soon shows
+    dayThreshold: Int
+
+    # A string representing one of the supported cities in the City Guide, which
+    # are: new-york-ny-usa, los-angeles-ca-usa, london-united-kingdom,
+    # berlin-germany, paris-france, hong-kong-hong-kong
+    city: String
     after: String
     first: Int
     before: String
@@ -4516,9 +4678,10 @@ type HomePageModuleContextFair {
   hours: String
   href: String
   image: Image
+  is_active: Boolean @deprecated(reason: "Prefer isActive instead")
 
   # Are we currently in the fair's active period?
-  is_active: Boolean
+  isActive: Boolean
   links: String
   mobile_image: Image
   is_published: Boolean
@@ -4545,6 +4708,14 @@ type HomePageModuleContextFair {
     timezone: String
   ): String
   end_at(
+    # This arg is deprecated, use timezone instead
+    convert_to_utc: Boolean
+    format: String
+
+    # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
+    timezone: String
+  ): String
+  active_start_at(
     # This arg is deprecated, use timezone instead
     convert_to_utc: Boolean
     format: String
@@ -4995,6 +5166,10 @@ type Location {
   # Alternate Markdown-supporting free text representation of a location's opening hours
   day_schedule_text: String
   displayDaySchedules: [FormattedDaySchedules]
+    @deprecated(reason: "Use openingHours instead")
+
+  # Union returning opening hours in formatted structure or a string
+  openingHours: OpeningHoursUnion
   display: String
   phone: String
   postal_code: String
@@ -5461,6 +5636,9 @@ type Mutation {
   sendConversationMessage(
     input: SendConversationMessageMutationInput!
   ): SendConversationMessageMutationPayload
+
+  # Send a feedback message
+  sendFeedback(input: SendFeedbackMutationInput!): SendFeedbackMutationPayload
 
   # Save (or remove) an artwork to (from) a users default collection.
   saveArtwork(input: SaveArtworkInput!): SaveArtworkPayload
@@ -5992,6 +6170,16 @@ type OfferOrder implements Order {
   # List of submitted offers made on this order so far
   offers: OfferConnection
 }
+
+type OpeningHoursArray {
+  schedules: [FormattedDaySchedules]
+}
+
+type OpeningHoursText {
+  text: String
+}
+
+union OpeningHoursUnion = OpeningHoursArray | OpeningHoursText
 
 interface Order {
   # ID of the order
@@ -6844,6 +7032,11 @@ type PartnerShowEventType {
   exhibitionPeriod: String
 }
 
+enum PartnerShowPartnerType {
+  GALLERY
+  MUSEUM
+}
+
 enum PartnerShowSorts {
   created_at_asc @deprecated(reason: "use capital enums")
   created_at_desc @deprecated(reason: "use capital enums")
@@ -6865,6 +7058,7 @@ enum PartnerShowSorts {
   PUBLISH_AT_DESC
   START_AT_ASC
   START_AT_DESC
+  PARTNER_ASC
 }
 
 enum PartnersSortType {
@@ -7469,6 +7663,17 @@ type Query {
 
   # Find partners by ID
   _unused_gravity_partners(ids: [ID]!): [DoNotUseThisPartner]
+
+  # Find PartnerStats
+  analyticsPartnerStats(partnerId: String!): AnalyticsPartnerStatsType
+
+  # Pricing Context Histograms
+  analyticsPricingContext(
+    artistId: String!
+    category: AnalyticsPricingContextCategoryEnum!
+    dimensions: AnalyticsPricingContextDimensionsEnum!
+    listPriceCents: Int!
+  ): AnalyticsPricingContext
   marketingCollections(
     randomizationSeed: String
     size: Int
@@ -8019,6 +8224,7 @@ type SearchableItem implements Node & Searchable {
 
   # A type-specific Gravity Mongo Document ID.
   _id: String!
+  description: String
   displayLabel: String
   imageUrl: String
   href: String
@@ -8043,9 +8249,12 @@ enum SearchEntity {
   COLLECTION
   FAIR
   FEATURE
+  GALLERY
   GENE
+  INSTITUTION
   PROFILE
   SALE
+  SHOW
   TAG
 }
 
@@ -8130,6 +8339,38 @@ type SendConversationMessageMutationPayload {
   messageEdge: MessageEdge
   clientMutationId: String
 }
+
+type SendFeedbackMutationFailure {
+  mutationError: GravityMutationError
+}
+
+input SendFeedbackMutationInput {
+  # Message to be sent.
+  message: String!
+
+  # Email to associate with message (only used if logged out).
+  email: String
+
+  # Name to associate with message (only used if logged out).
+  name: String
+
+  # URL of page where feedback originated.
+  url: String
+  clientMutationId: String
+}
+
+type SendFeedbackMutationPayload {
+  feedbackOrError: SendFeedbackMutationType
+  clientMutationId: String
+}
+
+type SendFeedbackMutationSuccess {
+  feedback: Feedback
+}
+
+union SendFeedbackMutationType =
+    SendFeedbackMutationSuccess
+  | SendFeedbackMutationFailure
 
 type Services {
   convection: Convection!
@@ -8364,11 +8605,12 @@ type Show implements Node {
   # Does the show exist as a fair booth?
   is_fair_booth: Boolean
 
-  # Is it a stubbed show?
+  # Is it a show provided for historical reference?
   is_reference: Boolean
+  is_local_discovery: Boolean @deprecated(reason: "Prefer isStubShow")
 
   # Is it an outsourced local discovery stub show?
-  is_local_discovery: Boolean
+  isStubShow: Boolean
 
   # Whether the show is in a fair, group or solo
   kind: String
@@ -8408,6 +8650,9 @@ type Show implements Node {
 
   # The press release for this show
   press_release(format: Format): String
+
+  # Link to the press release for this show
+  pressReleaseUrl: String
 
   # When this show starts
   start_at(

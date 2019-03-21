@@ -51,12 +51,11 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
             <AboutTheWorkFromPartner artwork={artwork} />
             <AdditionalInfo artwork={artwork} />
           </Tab>
-          {artwork.articles &&
-            artwork.articles.length && (
-              <Tab name="Articles" data={{ trackingLabel: "articles" }}>
-                <Articles artwork={artwork} />
-              </Tab>
-            )}
+          {artwork.articles && artwork.articles.length && (
+            <Tab name="Articles" data={{ trackingLabel: "articles" }}>
+              <Articles artwork={artwork} />
+            </Tab>
+          )}
           {artwork.exhibition_history && (
             <Tab
               name="Exhibition history"

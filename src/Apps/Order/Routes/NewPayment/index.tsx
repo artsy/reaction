@@ -22,14 +22,8 @@ import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayRefetchProp,
-} from "react-relay"
+import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -45,6 +39,10 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { get } from "Utils/get"
 
 export const ContinueButton = props => (
@@ -60,6 +58,8 @@ export interface NewPaymentProps
   router: Router
   route: RouteConfig
   dialog: Dialog
+  commitMutation: CommitMutation
+  isCommittingMutation: boolean
 }
 
 interface NewPaymentState {
@@ -68,7 +68,7 @@ interface NewPaymentState {
   addressErrors: AddressErrors
   addressTouched: AddressTouched
   stripeError: stripe.Error
-  isCommittingMutation: boolean
+  isCreatingStripeToken: boolean
 }
 
 const logger = createLogger("Order/Routes/NewPayment/index.tsx")
@@ -81,10 +81,10 @@ export class NewPaymentRoute extends Component<
   state = {
     hideBillingAddress: true,
     stripeError: null,
-    isCommittingMutation: false,
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
+    isCreatingStripeToken: false,
   }
 
   startingAddress(): Address {
@@ -107,37 +107,64 @@ export class NewPaymentRoute extends Component<
     }
   }
 
-  onContinue: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      if (this.needsAddress()) {
-        const { errors, hasErrors } = validateAddress(this.state.address)
-        if (hasErrors) {
-          this.setState({
-            isCommittingMutation: false,
-            addressErrors: errors,
-            addressTouched: this.touchedAddress,
-          })
-          return
-        }
+  createStripeToken = async () => {
+    try {
+      this.setState({ isCreatingStripeToken: true })
+      const stripeBillingAddress = this.getStripeBillingAddress()
+      return await this.props.stripe.createToken(stripeBillingAddress)
+    } finally {
+      this.setState({ isCreatingStripeToken: false })
+    }
+  }
+
+  onContinue = async () => {
+    if (this.needsAddress()) {
+      const { errors, hasErrors } = validateAddress(this.state.address)
+      if (hasErrors) {
+        this.setState({
+          addressErrors: errors,
+          addressTouched: this.touchedAddress,
+        })
+        return
+      }
+    }
+
+    try {
+      const stripeResult = await this.createStripeToken()
+
+      if (stripeResult.error) {
+        this.setState({ stripeError: stripeResult.error })
+        return
       }
 
-      const stripeBillingAddress = this.getStripeBillingAddress()
-      this.props.stripe
-        .createToken(stripeBillingAddress)
-        .then(({ error, token }) => {
-          if (error) {
-            this.setState({
-              isCommittingMutation: false,
-              stripeError: error,
-            })
-          } else {
-            this.createCreditCard({ token: token.id, oneTimeUse: true })
-          }
+      const creditCardOrError = (await this.createCreditCard({
+        input: { token: stripeResult.token.id, oneTimeUse: true },
+      })).createCreditCard.creditCardOrError
+
+      if (creditCardOrError.mutationError) {
+        this.props.dialog.showErrorDialog({
+          message: creditCardOrError.mutationError.detail,
         })
-        .catch(e => {
-          this.onMutationError(new ErrorWithMetadata(e))
-        })
-    })
+        return
+      }
+
+      const orderOrError = (await this.fixFailedPayment({
+        input: {
+          creditCardId: creditCardOrError.creditCard.id,
+          offerId: this.props.order.lastOffer.id,
+        },
+      })).ecommerceFixFailedPayment.orderOrError
+
+      if (orderOrError.error) {
+        this.handleFixFailedPaymentError(orderOrError.error.code)
+        return
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
   }
 
   handleChangeHideBillingAddress(hideBillingAddress: boolean) {
@@ -169,14 +196,16 @@ export class NewPaymentRoute extends Component<
   }
 
   render() {
-    const { order } = this.props
+    const { order, isCommittingMutation } = this.props
     const {
       stripeError,
-      isCommittingMutation,
       address,
       addressErrors,
       addressTouched,
+      isCreatingStripeToken,
     } = this.state
+
+    const isLoading = isCommittingMutation || isCreatingStripeToken
 
     return (
       <>
@@ -192,7 +221,7 @@ export class NewPaymentRoute extends Component<
             Content={
               <Flex
                 flexDirection="column"
-                style={isCommittingMutation ? { pointerEvents: "none" } : {}}
+                style={isLoading ? { pointerEvents: "none" } : {}}
               >
                 {order.mode === "OFFER" && (
                   <>
@@ -241,7 +270,7 @@ export class NewPaymentRoute extends Component<
                   <Media greaterThan="xs">
                     <ContinueButton
                       onClick={this.onContinue}
-                      loading={isCommittingMutation}
+                      loading={isLoading}
                     />
                   </Media>
                 </Join>
@@ -259,7 +288,7 @@ export class NewPaymentRoute extends Component<
                     <Spacer mb={3} />
                     <ContinueButton
                       onClick={this.onContinue}
-                      loading={isCommittingMutation}
+                      loading={isLoading}
                     />
                   </>
                 </Media>
@@ -295,168 +324,102 @@ export class NewPaymentRoute extends Component<
     }
   }
 
-  private createCreditCard({ token, oneTimeUse }) {
-    commitMutation<NewPaymentRouteCreateCreditCardMutation>(
-      this.props.relay.environment,
-      {
-        onCompleted: (data, errors) => {
-          const {
-            createCreditCard: { creditCardOrError },
-          } = data
-
-          if (creditCardOrError.creditCard) {
-            this.fixFailedPayment({
-              creditCardId: creditCardOrError.creditCard.id,
-            })
-          } else {
-            if (errors) {
-              errors.forEach(this.onMutationError.bind(this))
-            } else {
-              const mutationError = creditCardOrError.mutationError
-              this.onMutationError(
-                new ErrorWithMetadata(mutationError.message, mutationError),
-                "An error occurred",
-                mutationError.detail
-              )
+  createCreditCard(
+    variables: NewPaymentRouteCreateCreditCardMutation["variables"]
+  ) {
+    return this.props.commitMutation<NewPaymentRouteCreateCreditCardMutation>({
+      variables,
+      mutation: graphql`
+        mutation NewPaymentRouteCreateCreditCardMutation(
+          $input: CreditCardInput!
+        ) {
+          createCreditCard(input: $input) {
+            creditCardOrError {
+              ... on CreditCardMutationSuccess {
+                creditCard {
+                  id
+                }
+              }
+              ... on CreditCardMutationFailure {
+                mutationError {
+                  type
+                  message
+                  detail
+                }
+              }
             }
           }
-        },
-        onError: this.onMutationError.bind(this),
-        mutation: graphql`
-          mutation NewPaymentRouteCreateCreditCardMutation(
-            $input: CreditCardInput!
-          ) {
-            createCreditCard(input: $input) {
-              creditCardOrError {
-                ... on CreditCardMutationSuccess {
+        }
+      `,
+    })
+  }
+
+  fixFailedPayment(
+    variables: NewPaymentRouteSetOrderPaymentMutation["variables"]
+  ) {
+    return this.props.commitMutation<NewPaymentRouteSetOrderPaymentMutation>({
+      variables,
+      mutation: graphql`
+        mutation NewPaymentRouteSetOrderPaymentMutation(
+          $input: FixFailedPaymentInput!
+        ) {
+          ecommerceFixFailedPayment(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                order {
+                  state
                   creditCard {
                     id
-                  }
-                }
-                ... on CreditCardMutationFailure {
-                  mutationError {
-                    type
-                    message
-                    detail
-                  }
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          input: { token, oneTimeUse },
-        },
-      }
-    )
-  }
-
-  private fixFailedPayment({ creditCardId }) {
-    commitMutation<NewPaymentRouteSetOrderPaymentMutation>(
-      this.props.relay.environment,
-      {
-        onCompleted: (data, errors) => {
-          this.setState({ isCommittingMutation: false })
-
-          const {
-            ecommerceFixFailedPayment: { orderOrError },
-          } = data
-
-          if (orderOrError.order) {
-            this.props.router.push(`/orders/${this.props.order.id}/status`)
-          } else {
-            if (errors) {
-              errors.forEach(this.onMutationError.bind(this))
-            } else {
-              const orderError = orderOrError.error
-              switch (orderError.code) {
-                case "capture_failed": {
-                  this.onMutationError(
-                    new ErrorWithMetadata(orderError.code, orderError),
-                    "Charge failed",
-                    "Payment authorization has been declined. Please contact your card provider and try again."
-                  )
-                  break
-                }
-                case "insufficient_inventory": {
-                  this.onMutationError(
-                    new ErrorWithMetadata(orderError.code, orderError),
-                    "Not available",
-                    "Sorry, the work is no longer available.",
-                    () => {
-                      this.routeToArtistPage()
-                    }
-                  )
-                  break
-                }
-                default: {
-                  this.onMutationError(
-                    new ErrorWithMetadata(orderError.code, orderError)
-                  )
-                  break
-                }
-              }
-            }
-          }
-        },
-        onError: this.onMutationError.bind(this),
-        mutation: graphql`
-          mutation NewPaymentRouteSetOrderPaymentMutation(
-            $input: FixFailedPaymentInput!
-          ) {
-            ecommerceFixFailedPayment(input: $input) {
-              orderOrError {
-                ... on OrderWithMutationSuccess {
-                  order {
+                    name
+                    street1
+                    street2
+                    city
                     state
-                    creditCard {
-                      id
-                      name
-                      street1
-                      street2
-                      city
-                      state
-                      country
-                      postal_code
-                    }
-                    ... on OfferOrder {
-                      awaitingResponseFrom
-                    }
+                    country
+                    postal_code
+                  }
+                  ... on OfferOrder {
+                    awaitingResponseFrom
                   }
                 }
-                ... on OrderWithMutationFailure {
-                  error {
-                    type
-                    code
-                    data
-                  }
+              }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
                 }
               }
             }
           }
-        `,
-        variables: {
-          input: {
-            offerId: this.props.order.lastOffer.id,
-            creditCardId,
-          },
-        },
-      }
-    )
+        }
+      `,
+    })
   }
 
-  private onMutationError(
-    error: ErrorWithMetadata,
-    title?: string,
-    message?: string,
-    onDismiss?: () => void
-  ) {
-    logger.error(error)
-    const result = this.props.dialog.showErrorDialog({ title, message })
-    if (onDismiss) {
-      result.then(onDismiss)
+  async handleFixFailedPaymentError(code: string) {
+    switch (code) {
+      case "capture_failed": {
+        this.props.dialog.showErrorDialog({
+          title: "Charge failed",
+          message:
+            "Payment authorization has been declined. Please contact your card provider and try again.",
+        })
+        break
+      }
+      case "insufficient_inventory": {
+        await this.props.dialog.showErrorDialog({
+          title: "Not available",
+          message: "Sorry, the work is no longer available.",
+        })
+        this.routeToArtistPage()
+        break
+      }
+      default: {
+        this.props.dialog.showErrorDialog()
+        break
+      }
     }
-    this.setState({ isCommittingMutation: false })
   }
 
   private isPickup = () => {
@@ -484,7 +447,9 @@ export class NewPaymentRoute extends Component<
 }
 
 export const NewPaymentFragmentContainer = createFragmentContainer(
-  injectStripe(trackPageViewWrapper(injectDialog(NewPaymentRoute))),
+  injectCommitMutation(
+    injectStripe(trackPageViewWrapper(injectDialog(NewPaymentRoute)))
+  ),
   graphql`
     fragment NewPayment_order on Order {
       id

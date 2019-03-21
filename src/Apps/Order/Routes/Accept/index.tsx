@@ -11,21 +11,19 @@ import {
   OrderStepper,
 } from "../../Components/OrderStepper"
 
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-  RelayProp,
-} from "react-relay"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 
 import { AcceptOfferMutation } from "__generated__/AcceptOfferMutation.graphql"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { ShippingSummaryItemFragmentContainer as ShippingSummaryItem } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -37,68 +35,99 @@ interface AcceptProps {
   router: Router
   route: RouteConfig
   dialog: Dialog
-}
-
-interface AcceptState {
+  commitMutation: CommitMutation
   isCommittingMutation: boolean
 }
 
 const logger = createLogger("Order/Routes/Offer/index.tsx")
 
 @track()
-export class Accept extends Component<AcceptProps, AcceptState> {
-  state: AcceptState = {
-    isCommittingMutation: false,
-  }
-
-  onSubmit: () => void = () => {
-    this.setState({ isCommittingMutation: true }, () => {
-      if (this.props.relay && this.props.relay.environment) {
-        commitMutation<AcceptOfferMutation>(this.props.relay.environment, {
-          mutation: graphql`
-            mutation AcceptOfferMutation($input: buyerAcceptOfferInput!) {
-              ecommerceBuyerAcceptOffer(input: $input) {
-                orderOrError {
-                  ... on OrderWithMutationSuccess {
-                    __typename
-                    order {
-                      id
-                      ... on OfferOrder {
-                        awaitingResponseFrom
-                      }
-                    }
-                  }
-                  ... on OrderWithMutationFailure {
-                    error {
-                      type
-                      code
-                      data
-                    }
+export class Accept extends Component<AcceptProps> {
+  acceptOffer() {
+    return this.props.commitMutation<AcceptOfferMutation>({
+      variables: {
+        input: { offerId: this.props.order.lastOffer.id },
+      },
+      mutation: graphql`
+        mutation AcceptOfferMutation($input: buyerAcceptOfferInput!) {
+          ecommerceBuyerAcceptOffer(input: $input) {
+            orderOrError {
+              ... on OrderWithMutationSuccess {
+                __typename
+                order {
+                  id
+                  ... on OfferOrder {
+                    awaitingResponseFrom
                   }
                 }
               }
+              ... on OrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
+              }
             }
-          `,
-          variables: {
-            input: {
-              offerId: this.props.order.lastOffer.id,
-            },
-          },
-          onCompleted: data => {
-            this.setState({ isCommittingMutation: false })
-            const {
-              ecommerceBuyerAcceptOffer: { orderOrError },
-            } = data
-            this.onSubmitCompleted(orderOrError)
-          },
-          onError: this.onMutationError.bind(this),
-        })
-      }
+          }
+        }
+      `,
     })
   }
 
+  onSubmit = async () => {
+    try {
+      const orderOrError = (await this.acceptOffer()).ecommerceBuyerAcceptOffer
+        .orderOrError
+
+      if (orderOrError.error) {
+        this.handleAcceptError(orderOrError.error)
+        return
+      }
+
+      this.props.router.push(`/orders/${this.props.order.id}/status`)
+    } catch (error) {
+      logger.error(error)
+      this.props.dialog.showErrorDialog()
+    }
+  }
+
+  async handleAcceptError(error: { code: string; data: string }) {
+    logger.error(error)
+    switch (error.code) {
+      case "capture_failed": {
+        const parsedData = get(error, e => JSON.parse(e.data), {})
+
+        // https://stripe.com/docs/declines/codes
+        if (parsedData.failure_code === "insufficient_funds") {
+          this.showCardFailureDialog({
+            title: "Insufficient funds",
+            message:
+              "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again.",
+          })
+        } else {
+          this.showCardFailureDialog({
+            title: "Charge failed",
+            message:
+              "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card.",
+          })
+        }
+        break
+      }
+      case "insufficient_inventory": {
+        await this.props.dialog.showErrorDialog({
+          title: "Not available",
+          message: "Sorry, the work is no longer available.",
+        })
+        this.routeToArtistPage()
+        break
+      }
+      default:
+        this.props.dialog.showErrorDialog()
+    }
+  }
+
   async showCardFailureDialog(props: { title: string; message: string }) {
-    this.setState({ isCommittingMutation: false })
     const { confirmed } = await this.props.dialog.showConfirmDialog({
       ...props,
       cancelButtonText: "OK",
@@ -107,73 +136,6 @@ export class Accept extends Component<AcceptProps, AcceptState> {
     if (confirmed) {
       this.props.router.push(`/orders/${this.props.order.id}/payment/new`)
     }
-  }
-
-  async onSubmitCompleted(orderOrError) {
-    const error = orderOrError.error
-    if (error) {
-      switch (error.code) {
-        case "capture_failed": {
-          let data = {} as any
-          if (error.data) {
-            data = JSON.parse(error.data)
-          }
-
-          // https://stripe.com/docs/declines/codes
-          if (data.failure_code === "insufficient_funds") {
-            this.showCardFailureDialog({
-              title: "Insufficient funds",
-              message:
-                "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again.",
-            })
-          } else {
-            this.showCardFailureDialog({
-              title: "Charge failed",
-              message:
-                "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card.",
-            })
-          }
-          break
-        }
-        case "insufficient_inventory": {
-          this.onMutationError(
-            new ErrorWithMetadata(error.code, error),
-            "Not available",
-            "Sorry, the work is no longer available.",
-            () => {
-              this.routeToArtistPage()
-            }
-          )
-          break
-        }
-        default: {
-          this.onMutationError(new ErrorWithMetadata(error.code, error))
-          break
-        }
-      }
-    } else {
-      this.onSuccessfulSubmit()
-    }
-  }
-
-  onSuccessfulSubmit() {
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
-  }
-
-  onMutationError(
-    error: Error,
-    title?: string,
-    message?: string,
-    onDismiss?: () => void
-  ) {
-    logger.error(error)
-    const result = this.props.dialog.showErrorDialog({ title, message })
-    if (onDismiss) {
-      result.then(onDismiss)
-    }
-    this.setState({
-      isCommittingMutation: false,
-    })
   }
 
   onChangeResponse = () => {
@@ -197,8 +159,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
   }
 
   render() {
-    const { order } = this.props
-    const { isCommittingMutation } = this.state
+    const { order, isCommittingMutation } = this.props
 
     return (
       <>
@@ -293,7 +254,7 @@ export class Accept extends Component<AcceptProps, AcceptState> {
 }
 
 export const AcceptFragmentContainer = createFragmentContainer(
-  injectDialog(trackPageViewWrapper(Accept)),
+  injectCommitMutation(injectDialog(trackPageViewWrapper(Accept))),
   graphql`
     fragment Accept_order on Order {
       id

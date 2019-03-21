@@ -48,7 +48,8 @@ export class StickyFooter extends Component<StickyFooterProps> {
                 or{" "}
                 <Link onClick={this.onClickAskSpecialist.bind(this, mediator)}>
                   ask a question
-                </Link>.
+                </Link>
+                .
               </Sans>
               <Spacer mb={2} />
             </>

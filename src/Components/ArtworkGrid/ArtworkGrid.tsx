@@ -115,7 +115,7 @@ export class ArtworkGridContainer extends React.Component<
             key={"artwork-" + j + "-" + artwork.__id}
             user={this.props.user}
             mediator={this.props.mediator}
-            preloadImage={i + j < preloadImageCount}
+            lazyLoad={i + j >= preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
                 this.props.onBrickClick()

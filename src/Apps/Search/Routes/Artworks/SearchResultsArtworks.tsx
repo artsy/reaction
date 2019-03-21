@@ -1,151 +1,70 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box } from "@artsy/palette"
 import { SearchResultsArtworks_viewer } from "__generated__/SearchResultsArtworks_viewer.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2"
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { SearchResultsFilterFragmentContainer as ArtworkGrid } from "Apps/Search/Routes/Artworks/Components/Filter/SearchResultsFilterContainer"
 import React from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { get } from "Utils/get"
+import { createFragmentContainer, graphql } from "react-relay"
 
 export interface Props {
   viewer: SearchResultsArtworks_viewer
-  relay: RelayRefetchProp
 }
 
-const PAGE_SIZE = 10
-
-export class SearchResultsArtworksRoute extends React.Component<
-  Props,
-  LoadingAreaState
-> {
-  state = {
-    isLoading: false,
-  }
-
-  toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
-    })
-  }
-
-  loadNext = () => {
-    const { viewer } = this.props
-    const { search: searchConnection } = viewer
-
-    const {
-      pageInfo: { hasNextPage, endCursor },
-    } = searchConnection
-
-    if (hasNextPage) {
-      this.loadAfter(endCursor)
-    }
-  }
-
-  loadAfter = cursor => {
-    this.toggleLoading(true)
-
-    this.props.relay.refetch(
-      {
-        first: PAGE_SIZE,
-        after: cursor,
-        before: null,
-        last: null,
-      },
-      null,
-      error => {
-        this.toggleLoading(false)
-
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
-  }
-
+export class SearchResultsArtworksRoute extends React.Component<Props> {
   render() {
     const { viewer } = this.props
-    const { search: searchConnection } = viewer
 
-    const artworks = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
-      <LoadingArea isLoading={this.state.isLoading}>
-        {artworks.map((artwork, index) => {
-          return (
-            <Box key={index}>
-              {artwork.title}, {artwork.date} by {artwork.artist_names}
-              <Spacer mb={3} />
-            </Box>
-          )
-        })}
-        <Pagination
-          pageCursors={searchConnection.pageCursors}
-          onClick={this.loadAfter}
-          onNext={this.loadNext}
-          scrollTo="#jumpto--searchResultTabs"
-          hasNextPage={searchConnection.pageInfo.hasNextPage}
-        />
-      </LoadingArea>
+      <Box>
+        <ArtworkGrid viewer={viewer} />
+      </Box>
     )
   }
 }
 
-export const SearchResultsArtworksRouteFragmentContainer = createRefetchContainer(
+export const SearchResultsArtworksRouteFragmentContainer = createFragmentContainer(
   SearchResultsArtworksRoute,
-  {
-    viewer: graphql`
-      fragment SearchResultsArtworks_viewer on Viewer
-        @argumentDefinitions(
-          term: { type: "String!", defaultValue: "" }
-          first: { type: "Int", defaultValue: 10 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-        ) {
-        search(
-          query: $term
-          first: $first
-          after: $after
-          before: $before
-          last: $last
-          entities: [ARTWORK]
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          edges {
-            node {
-              ... on Artwork {
-                title
-                artist_names
-                date
-              }
-            }
-          }
-        }
-      }
-    `,
-  },
   graphql`
-    query SearchResultsArtworksQuery(
-      $first: Int
-      $last: Int
-      $after: String
-      $before: String
-      $term: String!
-    ) {
-      viewer {
-        ...SearchResultsArtworks_viewer
-          @arguments(
-            first: $first
-            last: $last
-            after: $after
-            before: $before
-            term: $term
-          )
-      }
+    fragment SearchResultsArtworks_viewer on Viewer
+      @argumentDefinitions(
+        keyword: { type: "String!", defaultValue: "" }
+        medium: { type: "String", defaultValue: "*" }
+        major_periods: { type: "[String]" }
+        partner_id: { type: "ID" }
+        for_sale: { type: "Boolean" }
+        at_auction: { type: "Boolean" }
+        acquireable: { type: "Boolean" }
+        offerable: { type: "Boolean" }
+        inquireable_only: { type: "Boolean" }
+        aggregations: {
+          type: "[ArtworkAggregation]"
+          defaultValue: [MEDIUM, TOTAL]
+        }
+        sort: { type: "String", defaultValue: "-partner_updated_at" }
+        price_range: { type: "String" }
+        height: { type: "String" }
+        width: { type: "String" }
+        artist_id: { type: "String" }
+        attribution_class: { type: "String" }
+        color: { type: "String" }
+      ) {
+      ...SearchResultsFilterContainer_viewer
+        @arguments(
+          medium: $medium
+          major_periods: $major_periods
+          partner_id: $partner_id
+          for_sale: $for_sale
+          sort: $sort
+          acquireable: $acquireable
+          offerable: $offerable
+          at_auction: $at_auction
+          inquireable_only: $inquireable_only
+          price_range: $price_range
+          height: $height
+          width: $width
+          artist_id: $artist_id
+          attribution_class: $attribution_class
+          color: $color
+          keyword: $keyword
+        )
     }
   `
 )

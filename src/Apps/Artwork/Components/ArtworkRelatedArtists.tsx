@@ -36,7 +36,7 @@ export class ArtworkRelatedArtists extends React.Component<
       return null
     }
 
-    const relatedUrl = sd.APP_URL + artist.href + "/related_artists"
+    const relatedUrl = sd.APP_URL + artist.href + "/related-artists"
 
     return (
       <ContextConsumer>
@@ -49,6 +49,7 @@ export class ArtworkRelatedArtists extends React.Component<
                   return (
                     <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
                       <ArtistCard
+                        lazyLoad
                         artist={node}
                         mediator={mediator}
                         user={user}

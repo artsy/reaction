@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork renders correctly 1`] = `
+.c7 {
+  margin-bottom: 0.3px;
+}
+
 .c5 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -14,10 +18,6 @@ exports[`Artwork renders correctly 1`] = `
   font-size: 12px;
   line-height: 16px;
   color: #666;
-}
-
-.c7 {
-  margin-bottom: 0.3px;
 }
 
 .c3 {

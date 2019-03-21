@@ -2,11 +2,11 @@ import { Flex, Sans, Serif } from "@artsy/palette"
 import { CollectionsApp_categories } from "__generated__/CollectionsApp_categories.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
+import { BreadCrumbList } from "Components/v2/Seo"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { BreadCrumbList } from "../Collect/Components/Seo"
 import { CollectionEntity, CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {

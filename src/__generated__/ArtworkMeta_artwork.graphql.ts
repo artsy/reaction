@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { SeoDataForArtwork_artwork$ref } from "./SeoDataForArtwork_artwork.graphql";
 declare const _ArtworkMeta_artwork$ref: unique symbol;
 export type ArtworkMeta_artwork$ref = typeof _ArtworkMeta_artwork$ref;
 export type ArtworkMeta_artwork = {
@@ -34,6 +35,7 @@ export type ArtworkMeta_artwork = {
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
+    readonly " $fragmentRefs": SeoDataForArtwork_artwork$ref;
     readonly " $refType": ArtworkMeta_artwork$ref;
 };
 
@@ -64,7 +66,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "image_rights",
+      "name": "is_shareable",
       "args": null,
       "storageKey": null
     },
@@ -105,14 +107,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "date",
+      "name": "image_rights",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_shareable",
+      "name": "date",
       "args": null,
       "storageKey": null
     },
@@ -261,9 +263,14 @@ return {
         }
       ]
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "SeoDataForArtwork_artwork",
+      "args": null
+    },
     v1
   ]
 };
 })();
-(node as any).hash = 'bbe6992f870b12358cbdb83377b75b85';
+(node as any).hash = '8bbbd0a2132b9ff450cd6a00a89583a5';
 export default node;

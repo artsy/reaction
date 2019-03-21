@@ -32,15 +32,7 @@ export interface BootProps {
 // issue will be fixed
 const { GlobalStyles } = injectGlobalStyles<{
   suppressMultiMountWarning: boolean
-}>(`
-  h1 {
-    font-style: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-    margin: 0;
-  }
-`)
+}>()
 
 @track(null, {
   dispatch: data => Events.postEvent(data),

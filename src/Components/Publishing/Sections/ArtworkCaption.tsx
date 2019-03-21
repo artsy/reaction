@@ -246,8 +246,8 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
           {isFullscreenCaption
             ? this.renderFullscreenCaption()
             : layout === "classic"
-              ? this.renderClassicCaption()
-              : this.renderEditorialCaption()}
+            ? this.renderClassicCaption()
+            : this.renderEditorialCaption()}
         </div>
       </ErrorBoundary>
     )

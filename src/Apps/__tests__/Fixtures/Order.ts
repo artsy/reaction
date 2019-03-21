@@ -48,6 +48,7 @@ export const UntouchedOrder = {
   creditCard: null,
   buyerTotal: "$12,000",
   requestedFulfillment: null,
+  lastTransactionFailed: false,
   lineItems: {
     edges: [
       {

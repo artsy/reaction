@@ -64,9 +64,8 @@ const FirstSuggestion = ({ query }) => <>Search "{query}"</>
 const DefaultSuggestion = ({ display, label, query }) => {
   const matches = match(display, query)
   const parts = parse(display, matches)
-  const partTags = parts.map(
-    ({ highlight, text }, index) =>
-      highlight ? <strong key={index}>{text}</strong> : text
+  const partTags = parts.map(({ highlight, text }, index) =>
+    highlight ? <strong key={index}>{text}</strong> : text
   )
 
   return (
