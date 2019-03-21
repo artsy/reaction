@@ -1,4 +1,4 @@
-import { color, Flex, Image, Sans } from "@artsy/palette"
+import { color, Flex, Image as BaseImage, Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy/SystemContext"
 import { isFunction } from "lodash"
@@ -16,7 +16,7 @@ const Placeholder = styled.div`
   overflow: hidden;
 `
 
-const AbsoluteImage = styled(Image)`
+const Image = styled(BaseImage)`
   width: 100%;
   position: absolute;
   top: 0;
@@ -167,7 +167,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               }
             }}
           >
-            <AbsoluteImage
+            <Image
               title={artwork.title}
               alt={artwork.image_title}
               src={this.getImageUrl()}
