@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react"
-import { PreloadLink } from "Artsy/Router"
 import { ContextConsumer } from "Artsy/SystemContext"
 import { MockRouter } from "DevTools/MockRouter"
+import { Link } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -33,13 +33,13 @@ const routes = [
                   <nav>
                     <ul>
                       <li>
-                        <PreloadLink to="/home">Link to Home</PreloadLink>
+                        <Link to="/home">Link to Home</Link>
                       </li>
                       <li>
-                        <PreloadLink to="/about">Link to About</PreloadLink>
+                        <Link to="/about">Link to About</Link>
                       </li>
                       <li>
-                        <PreloadLink to="/artist">Link to Artist</PreloadLink>
+                        <Link to="/artist">Link to Artist</Link>
                       </li>
                     </ul>
                   </nav>

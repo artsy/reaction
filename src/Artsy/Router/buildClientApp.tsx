@@ -16,7 +16,7 @@ import createLogger from "Utils/logger"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
+import { Boot } from "Artsy/Router/Boot"
 
 import { RouterConfig } from "./"
 

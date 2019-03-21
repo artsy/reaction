@@ -4,7 +4,18 @@ import { mount } from "enzyme"
 import React from "react"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 
-jest.mock("Artsy/Router/Components/PreloadLink")
+jest.mock("found", () => {
+  return {
+    Link: ({
+      to,
+      children: {
+        props: { children },
+      },
+    }) => {
+      return `<a href=${to}>${children}</a>`
+    },
+  }
+})
 
 describe("SelectedExhibitions", () => {
   const props = {
