@@ -3,19 +3,37 @@ import { SearchResultsArtworks_viewer } from "__generated__/SearchResultsArtwork
 import { SearchResultsFilterFragmentContainer as ArtworkGrid } from "Apps/Search/Routes/Artworks/Components/Filter/SearchResultsFilterContainer"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { Provider } from "unstated"
+import { FilterState } from "../../FilterState"
 
 export interface Props {
   viewer: SearchResultsArtworks_viewer
+  location: {
+    query: {
+      term: string
+    }
+  }
 }
 
 export class SearchResultsArtworksRoute extends React.Component<Props> {
   render() {
-    const { viewer } = this.props
+    const {
+      viewer,
+      location: { query },
+    } = this.props
 
     return (
-      <Box>
-        <ArtworkGrid viewer={viewer} />
-      </Box>
+      <Provider
+        inject={[
+          new FilterState({
+            keyword: query.term,
+          }),
+        ]}
+      >
+        <Box>
+          <ArtworkGrid viewer={viewer} />
+        </Box>
+      </Provider>
     )
   }
 }

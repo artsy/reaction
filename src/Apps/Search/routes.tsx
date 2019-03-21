@@ -1,3 +1,6 @@
+import { RouteConfig } from "found"
+import { graphql } from "react-relay"
+
 import { SearchResultsArticlesRouteRouteFragmentContainer as SearchResultsArticlesRoute } from "Apps/Search/Routes/Articles/SearchResultsArticles"
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
@@ -7,22 +10,11 @@ import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollecti
 import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
 import { SearchResultsMoreRouteRouteFragmentContainer as SearchResultsMoreRoute } from "Apps/Search/Routes/More/SearchResultsMore"
 import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
-import { RouteConfig } from "found"
-import React from "react"
-import { graphql } from "react-relay"
-import { Provider } from "unstated"
-import { FilterState } from "./FilterState"
+
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
-const prepareVariables = (params, props) => {
-  const paramsFromUrl = props.location ? props.location.query : {}
-  const allParams = {
-    ...paramsFromUrl,
-    ...params,
-  }
-
-  allParams.keyword = allParams.term
-  return allParams
+const prepareVariables = (_params, { location }) => {
+  return location.query
 }
 
 export const routes: RouteConfig[] = [
@@ -41,22 +33,10 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: SearchResultsArtworksRoute,
-        render: ({ props, Component }) => {
-          if (!props) {
-            return null
-          }
-
-          const currentFilterState = props.location.query
-          currentFilterState.keyword = currentFilterState.term
-          return (
-            <Provider inject={[new FilterState(currentFilterState)]}>
-              <Component viewer={(props as any).viewer} />
-            </Provider>
-          )
-        },
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsArtworksQuery(
-            $keyword: String!
+            $term: String!
             $medium: String
             $major_periods: [String]
             $partner_id: ID
@@ -76,7 +56,7 @@ export const routes: RouteConfig[] = [
             viewer {
               ...SearchResultsArtworks_viewer
                 @arguments(
-                  keyword: $keyword
+                  keyword: $term
                   medium: $medium
                   major_periods: $major_periods
                   partner_id: $partner_id
@@ -96,11 +76,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "artists",
         Component: SearchResultsArtistsRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsArtistsQuery($term: String!) {
             viewer {
@@ -108,11 +88,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "collections",
         Component: SearchResultsCollectionsRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsCollectionsQuery($term: String!) {
             viewer {
@@ -120,11 +100,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "shows",
         Component: SearchResultsShowsRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsShowsQuery($term: String!) {
             viewer {
@@ -132,11 +112,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "galleries",
         Component: SearchResultsGalleriesRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsGalleriesQuery($term: String!) {
             viewer {
@@ -144,11 +124,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "categories",
         Component: SearchResultsCategoriesRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsCategoriesQuery($term: String!) {
             viewer {
@@ -156,11 +136,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "articles",
         Component: SearchResultsArticlesRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsArticlesQuery($term: String!) {
             viewer {
@@ -168,11 +148,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "auctions",
         Component: SearchResultsAuctionsRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsAuctionsQuery($term: String!) {
             viewer {
@@ -180,11 +160,11 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
       {
         path: "more",
         Component: SearchResultsMoreRoute,
+        prepareVariables,
         query: graphql`
           query routes_SearchResultsMoreQuery($term: String!) {
             viewer {
@@ -192,7 +172,6 @@ export const routes: RouteConfig[] = [
             }
           }
         `,
-        prepareVariables,
       },
     ],
   },
