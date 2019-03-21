@@ -1,18 +1,24 @@
-import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
-import BrowserProtocol from "farce/lib/BrowserProtocol"
-import HashProtocol from "farce/lib/HashProtocol"
-import MemoryProtocol from "farce/lib/MemoryProtocol"
-import queryMiddleware from "farce/lib/queryMiddleware"
+import React, { ComponentType } from "react"
+
 import { Resolver } from "found-relay"
 import { ScrollManager } from "found-scroll"
 import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
 import createRender from "found/lib/createRender"
-import React, { ComponentType } from "react"
+
+import BrowserProtocol from "farce/lib/BrowserProtocol"
+import createQueryMiddleware from "farce/lib/createQueryMiddleware"
+import HashProtocol from "farce/lib/HashProtocol"
+import MemoryProtocol from "farce/lib/MemoryProtocol"
+import qs from "qs"
+
 import { getUser } from "Utils/getUser"
 import createLogger from "Utils/logger"
-import { RouterConfig } from "./"
 import { createRouteConfig } from "./Utils/createRouteConfig"
+
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
+import { Boot } from "Artsy/Router/Components/Boot"
+
+import { RouterConfig } from "./"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -54,7 +60,12 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         }
       }
 
-      const historyMiddlewares = [queryMiddleware]
+      const historyMiddlewares = [
+        createQueryMiddleware({
+          parse: qs.parse,
+          stringify: qs.stringify,
+        }),
+      ]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
       const Router = await createInitialFarceRouter({

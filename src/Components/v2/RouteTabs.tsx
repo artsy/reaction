@@ -26,12 +26,18 @@ export const RouteTabs = styled(TabsContainer)`
   }
 `
 
-export const RouteTab: React.SFC<Partial<PreloadLinkProps>> = ({
+export const RouteTab: React.FC<Partial<PreloadLinkProps>> = ({
   children,
+  /**
+   * If set to false it will fall back to <Link> (from found) under the hood, and
+   * skip all preload behavior. For routes that depend on prepareVariables this
+   * is required.
+   */
+  preload = true,
   ...props
 }) => {
   return (
-    <PreloadLink {...props}>
+    <PreloadLink {...props} preload={preload}>
       <Sans size="3t" weight="medium">
         {children}
       </Sans>

@@ -16,6 +16,17 @@ export interface PreloadLinkProps extends ContextProps, WithRouter, SizeProps {
   immediate?: boolean
   onClick?: () => void
   onToggleLoading?: (isLoading: boolean) => void
+  /**
+   * Toggles on / off preloading behavior.
+   *
+   * NOTE: If a route depends on `prepareVariables` in order to pass arguments
+   * to a graphql query this *must* be false. This is due to the inability to
+   * asyncronously resolve queries, and using `withRouter` will return the
+   * correct values on next tick.
+   *
+   * See: https://graphql.slack.com/archives/C0BEXJLKG/p1553118884211200
+   */
+  preload?: boolean
   replace?: string
   router: Router
   to?: string
@@ -80,6 +91,7 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
     static defaultProps = {
       activeClassName: "active",
       immediate: false,
+      preload: true,
       onToggleFetching: x => x,
     }
 
@@ -213,8 +225,13 @@ const _PreloadLink: React.SFC<PreloadLinkProps> = preloadLinkProps => {
         this.props
       )
 
+      const handlers: { onClick?: (event) => void } = {}
+      if (this.props.preload) {
+        handlers.onClick = this.handleClick
+      }
+
       return (
-        <Link {...whitelistedProps} onClick={this.handleClick}>
+        <Link {...whitelistedProps} {...handlers}>
           {this.props.children}
         </Link>
       )

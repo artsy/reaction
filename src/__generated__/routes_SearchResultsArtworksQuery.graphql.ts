@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { SearchResultsArtworks_viewer$ref } from "./SearchResultsArtworks_viewer.graphql";
 export type routes_SearchResultsArtworksQueryVariables = {
-    readonly keyword: string;
+    readonly term: string;
     readonly medium?: string | null;
     readonly major_periods?: ReadonlyArray<string | null> | null;
     readonly partner_id?: string | null;
@@ -34,7 +34,7 @@ export type routes_SearchResultsArtworksQuery = {
 
 /*
 query routes_SearchResultsArtworksQuery(
-  $keyword: String!
+  $term: String!
   $medium: String
   $major_periods: [String]
   $partner_id: ID
@@ -52,15 +52,15 @@ query routes_SearchResultsArtworksQuery(
   $color: String
 ) {
   viewer {
-    ...SearchResultsArtworks_viewer_17KNCl
+    ...SearchResultsArtworks_viewer_1iA755
   }
 }
 
-fragment SearchResultsArtworks_viewer_17KNCl on Viewer {
-  ...SearchResultsFilterContainer_viewer_17KNCl
+fragment SearchResultsArtworks_viewer_1iA755 on Viewer {
+  ...SearchResultsFilterContainer_viewer_1iA755
 }
 
-fragment SearchResultsFilterContainer_viewer_17KNCl on Viewer {
+fragment SearchResultsFilterContainer_viewer_1iA755 on Viewer {
   filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {
     aggregations {
       slice
@@ -72,11 +72,11 @@ fragment SearchResultsFilterContainer_viewer_17KNCl on Viewer {
     }
     __id
   }
-  ...SearchResultsRefetch_viewer_17KNCl
+  ...SearchResultsRefetch_viewer_1iA755
 }
 
-fragment SearchResultsRefetch_viewer_17KNCl on Viewer {
-  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height, width: $width, artist_id: $artist_id, attribution_class: $attribution_class, color: $color, keyword: $keyword) {
+fragment SearchResultsRefetch_viewer_1iA755 on Viewer {
+  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height, width: $width, artist_id: $artist_id, attribution_class: $attribution_class, color: $color, keyword: $term) {
     ...SearchResultsArtworkGrid_filtered_artworks
     __id
   }
@@ -245,7 +245,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "keyword",
+    "name": "term",
     "type": "String!",
     "defaultValue": null
   },
@@ -419,7 +419,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsArtworksQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtworksQuery(\n  $keyword: String!\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n  $sort: String\n  $at_auction: Boolean\n  $acquireable: Boolean\n  $offerable: Boolean\n  $inquireable_only: Boolean\n  $price_range: String\n  $height: String\n  $width: String\n  $artist_id: String\n  $attribution_class: [String]\n  $color: String\n) {\n  viewer {\n    ...SearchResultsArtworks_viewer_17KNCl\n  }\n}\n\nfragment SearchResultsArtworks_viewer_17KNCl on Viewer {\n  ...SearchResultsFilterContainer_viewer_17KNCl\n}\n\nfragment SearchResultsFilterContainer_viewer_17KNCl on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...SearchResultsRefetch_viewer_17KNCl\n}\n\nfragment SearchResultsRefetch_viewer_17KNCl on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height, width: $width, artist_id: $artist_id, attribution_class: $attribution_class, color: $color, keyword: $keyword) {\n    ...SearchResultsArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment SearchResultsArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  is_offerable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query routes_SearchResultsArtworksQuery(\n  $term: String!\n  $medium: String\n  $major_periods: [String]\n  $partner_id: ID\n  $for_sale: Boolean\n  $sort: String\n  $at_auction: Boolean\n  $acquireable: Boolean\n  $offerable: Boolean\n  $inquireable_only: Boolean\n  $price_range: String\n  $height: String\n  $width: String\n  $artist_id: String\n  $attribution_class: [String]\n  $color: String\n) {\n  viewer {\n    ...SearchResultsArtworks_viewer_1iA755\n  }\n}\n\nfragment SearchResultsArtworks_viewer_1iA755 on Viewer {\n  ...SearchResultsFilterContainer_viewer_1iA755\n}\n\nfragment SearchResultsFilterContainer_viewer_1iA755 on Viewer {\n  filter_artworks(aggregations: [MEDIUM, TOTAL], size: 0) {\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n    }\n    __id\n  }\n  ...SearchResultsRefetch_viewer_1iA755\n}\n\nfragment SearchResultsRefetch_viewer_1iA755 on Viewer {\n  filtered_artworks: filter_artworks(aggregations: [TOTAL], medium: $medium, major_periods: $major_periods, partner_id: $partner_id, for_sale: $for_sale, at_auction: $at_auction, acquireable: $acquireable, offerable: $offerable, inquireable_only: $inquireable_only, size: 0, sort: $sort, price_range: $price_range, height: $height, width: $width, artist_id: $artist_id, attribution_class: $attribution_class, color: $color, keyword: $term) {\n    ...SearchResultsArtworkGrid_filtered_artworks\n    __id\n  }\n}\n\nfragment SearchResultsArtworkGrid_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 30, after: \"\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  is_biddable\n  sale {\n    is_preview\n    __id\n  }\n  is_acquireable\n  is_offerable\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -492,7 +492,7 @@ return {
               {
                 "kind": "Variable",
                 "name": "keyword",
-                "variableName": "keyword",
+                "variableName": "term",
                 "type": null
               },
               {
@@ -677,7 +677,7 @@ return {
               {
                 "kind": "Variable",
                 "name": "keyword",
-                "variableName": "keyword",
+                "variableName": "term",
                 "type": "String"
               },
               {
@@ -1146,5 +1146,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'cee1296e315eaab1244887edb577fca2';
+(node as any).hash = '7365514c04da75c3a6f5f64892daa43c';
 export default node;
