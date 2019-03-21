@@ -197,6 +197,7 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
             .toISOString(),
         },
         awaitingResponseFrom: "BUYER",
+        lastTransactionFailed: true,
         offers: { edges: Offers },
         buyer: Buyer,
       }}
@@ -217,6 +218,7 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
             .subtract(1, "day")
             .toISOString(),
         },
+        lastTransactionFailed: true,
         awaitingResponseFrom: "BUYER",
         offers: { edges: Offers },
         buyer: Buyer,
