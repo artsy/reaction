@@ -30,7 +30,7 @@ export class NavigationTabs extends React.Component<Props> {
     const { exact } = options
 
     return (
-      <RouteTab to={to} exact={exact}>
+      <RouteTab to={to} exact={exact} preload={false}>
         {text}
       </RouteTab>
     )
