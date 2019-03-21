@@ -1,3 +1,15 @@
+# v15.8.0 (Thu Mar 21 2019)
+
+#### 🚀  Enhancement
+
+- Use palette image for lazy loading [#2197](https://github.com/artsy/reaction/pull/2197) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.7.2 (Thu Mar 21 2019)
 
 #### 🐛  Bug Fix
