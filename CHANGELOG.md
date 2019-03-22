@@ -1,3 +1,15 @@
+# v15.9.1 (Fri Mar 22 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [SearchResults] Add tests for sending feedback [#2203](https://github.com/artsy/reaction/pull/2203) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.9.0 (Fri Mar 22 2019)
 
 #### 🚀  Enhancement
