@@ -77,60 +77,10 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const {
-      artist,
-      user,
-      relay,
-      onOpenAuthModal,
-      triggerSuggestions,
-    } = this.props
+    const { user, onOpenAuthModal } = this.props
 
     if (user && user.id) {
-      const newFollowCount = artist.is_followed
-        ? artist.counts.follows - 1
-        : artist.counts.follows + 1
-
-      commitMutation<FollowArtistButtonMutation>(relay.environment, {
-        mutation: graphql`
-          mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
-            followArtist(input: $input) {
-              artist {
-                __id
-                is_followed
-                counts {
-                  follows
-                }
-              }
-            }
-          }
-        `,
-        variables: {
-          input: {
-            artist_id: artist.id,
-            unfollow: artist.is_followed,
-          },
-        },
-        optimisticResponse: {
-          followArtist: {
-            artist: {
-              __id: artist.__id,
-              is_followed: !artist.is_followed,
-              counts: { follows: newFollowCount },
-            },
-          },
-        },
-        updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-          const artistProxy = store.get(data.followArtist.artist.__id)
-
-          artistProxy
-            .getLinkedRecord("counts")
-            .setValue(newFollowCount, "follows")
-        },
-      })
-      this.trackFollow()
-      if (triggerSuggestions && !artist.is_followed) {
-        this.setState({ openSuggestions: true })
-      }
+      this.followArtistForUser(user)
     } else {
       if (onOpenAuthModal) {
         onOpenAuthModal("register", {
@@ -139,6 +89,56 @@ export class FollowArtistButton extends React.Component<Props, State> {
           copy: "Sign up to follow artists",
         })
       }
+    }
+  }
+
+  followArtistForUser = user => {
+    const { artist, relay, triggerSuggestions } = this.props
+
+    const newFollowCount = artist.is_followed
+      ? artist.counts.follows - 1
+      : artist.counts.follows + 1
+
+    commitMutation<FollowArtistButtonMutation>(relay.environment, {
+      mutation: graphql`
+        mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
+          followArtist(input: $input) {
+            artist {
+              __id
+              is_followed
+              counts {
+                follows
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        input: {
+          artist_id: artist.id,
+          unfollow: artist.is_followed,
+        },
+      },
+      optimisticResponse: {
+        followArtist: {
+          artist: {
+            __id: artist.__id,
+            is_followed: !artist.is_followed,
+            counts: { follows: newFollowCount },
+          },
+        },
+      },
+      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
+        const artistProxy = store.get(data.followArtist.artist.__id)
+
+        artistProxy
+          .getLinkedRecord("counts")
+          .setValue(newFollowCount, "follows")
+      },
+    })
+    this.trackFollow()
+    if (triggerSuggestions && !artist.is_followed) {
+      this.setState({ openSuggestions: true })
     }
   }
 
