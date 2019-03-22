@@ -9,6 +9,9 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 
+import { stringify } from "qs"
+import { data as sd } from "sharify"
+
 export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
 }
@@ -28,6 +31,45 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     )
   }
 
+  handleOpenAuth = (mediator, artist) => {
+    if (sd.IS_MOBILE) {
+      this.openMobileAuth(artist)
+    } else if (mediator) {
+      this.openDesktopAuth(mediator, artist)
+    } else {
+      window.location.href = "/login"
+    }
+  }
+
+  openMobileAuth = artist => {
+    const params = stringify({
+      action: "follow",
+      contextModule: "Artwork page",
+      intent: "follow artist",
+      kind: "artist",
+      objectId: artist.id,
+      signUpIntent: "follow artist",
+      trigger: "click",
+      entityName: artist.name,
+    })
+    const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+    window.location.href = href
+  }
+
+  openDesktopAuth = (mediator, artist) => {
+    mediator.trigger("open:auth", {
+      mode: "signup",
+      copy: `Sign up to follow ${artist.name}`,
+      signupIntent: "follow artist",
+      afterSignUpAction: {
+        kind: "artist",
+        action: "follow",
+        objectId: artist.id,
+      },
+    })
+  }
+
   private renderSingleArtist(artist: Artist, user, mediator) {
     return (
       <React.Fragment>
@@ -42,18 +84,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
             entity_id: artist._id,
             entity_slug: artist.id,
           }}
-          onOpenAuthModal={() => {
-            mediator.trigger("open:auth", {
-              mode: "signup",
-              copy: `Sign up to follow ${artist.name}`,
-              signupIntent: "follow artist",
-              afterSignUpAction: {
-                kind: "artist",
-                action: "follow",
-                objectId: artist.id,
-              },
-            })
-          }}
+          onOpenAuthModal={() => this.handleOpenAuth(mediator, artist)}
           triggerSuggestions
           render={({ is_followed }) => {
             return <FollowIcon isFollowed={is_followed} />
