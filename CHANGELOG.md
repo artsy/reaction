@@ -1,3 +1,15 @@
+# v15.9.0 (Fri Mar 22 2019)
+
+#### 🚀  Enhancement
+
+- @dblandin => [SearchResults] Add send feedback component, for logged in users only [#2201](https://github.com/artsy/reaction/pull/2201) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.8.4 (Fri Mar 22 2019)
 
 #### 🐛  Bug Fix
