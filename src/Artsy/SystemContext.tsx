@@ -24,7 +24,7 @@ export interface SystemProps {
    * If none is provided to the `ContextProvider` then one is created, using
    * the `user` if available.
    */
-  relayEnvironment?: Environment
+  relayEnvironment?: Environment & { toggleFetching?: (isFetching) => void }
 
   /**
    * The currently signed-in user.
@@ -69,10 +69,8 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
     isFetchingData,
   }
 
-  // TODO: Not sure that this is the best way to assign this. We have a few
-  // different ways in which we create a relay environment, and while direct
-  // assignment is most direct it feels a bit hacky.
-  // @ts-ignore
+  // Attach a loading state toggle to the relay environment which is triggered
+  // from within the middleware when fetches begin / complete.
   relayEnvironment.toggleFetching = toggleFetching
 
   return (

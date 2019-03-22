@@ -89,6 +89,7 @@ describe("buildClientApp", () => {
           {context => {
             expect(Object.keys(context).sort()).toEqual([
               "foo",
+              "isFetchingData",
               "mediator",
               "relayEnvironment",
               "resolver",

@@ -41,6 +41,7 @@ describe("Artsy context", () => {
         <Artsy.ContextConsumer>
           {props => {
             expect(Object.keys(props).sort()).toEqual([
+              "isFetchingData",
               "relayEnvironment",
               "user",
             ])

@@ -4,24 +4,12 @@ import { mount } from "enzyme"
 import React from "react"
 import { SelectedExhibitions } from "../SelectedExhibitions"
 
-jest.mock("found", () => {
-  return {
-    Link: ({
-      to,
-      children: {
-        props: { children },
-      },
-    }) => {
-      return `<a href=${to}>${children}</a>`
-    },
-  }
-})
-
 describe("SelectedExhibitions", () => {
   const props = {
     exhibitions: exhibitions as any,
     artistID: "andy-warhol",
     totalExhibitions: 100,
+    ViewAllLink: <a href="#">hi</a>,
   }
 
   beforeAll(() => {
