@@ -164,6 +164,27 @@ export class ReviewRoute extends Component<ReviewProps> {
         })
         break
       }
+      case "charge_authorization_failed": {
+        let data = {} as any
+        if (error.data) {
+          data = JSON.parse(error.data)
+        }
+
+        if (data.decline_code === "insufficient_funds") {
+          await this.props.dialog.showErrorDialog({
+            title: "Insufficient funds",
+            message:
+              "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card.",
+          })
+        } else {
+          await this.props.dialog.showErrorDialog({
+            title: "Charge failed",
+            message:
+              "Payment authorization has been declined. Please contact your card provider and try again.",
+          })
+        }
+        break
+      }
       case "artwork_version_mismatch": {
         await this.props.dialog.showErrorDialog({
           title: "Work has been updated",

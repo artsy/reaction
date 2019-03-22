@@ -15,6 +15,8 @@ import {
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderSuccess,
   submitOrderWithFailure,
+  submitOrderWithFailureCardDeclined,
+  submitOrderWithFailureInsufficientFunds,
   submitOrderWithMissingInfo,
   submitOrderWithNoInventoryFailure,
   submitOrderWithVersionMismatchFailure,
@@ -108,6 +110,26 @@ describe("Review", () => {
       await page.expectAndDismissErrorDialogMatching(
         "Missing information",
         "Please review and update your shipping and/or payment details and try again."
+      )
+    })
+
+    it("shows a modal with a helpful error message if the user's card is declined", async () => {
+      mutations.useResultsOnce(submitOrderWithFailureCardDeclined)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Charge failed",
+        "Payment authorization has been declined. Please contact your card provider and try again."
+      )
+    })
+
+    it("shows a modal with a helpful error message if the user's card is declined due to insufficient funds", async () => {
+      mutations.useResultsOnce(submitOrderWithFailureInsufficientFunds)
+
+      await page.clickSubmit()
+      await page.expectAndDismissErrorDialogMatching(
+        "Insufficient funds",
+        "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
       )
     })
 
