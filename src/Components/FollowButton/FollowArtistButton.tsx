@@ -81,14 +81,13 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
     if (user && user.id) {
       this.followArtistForUser(user)
-    } else {
-      if (onOpenAuthModal) {
-        onOpenAuthModal("register", {
-          contextModule: "intext tooltip",
-          intent: "follow artist",
-          copy: "Sign up to follow artists",
-        })
+    } else if (onOpenAuthModal) {
+      const config = {
+        contextModule: "intext tooltip",
+        intent: "follow artist",
+        copy: "Sign up to follow artists",
       }
+      onOpenAuthModal("register", config)
     }
   }
 
