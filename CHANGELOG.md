@@ -1,3 +1,20 @@
+# v15.8.3 (Fri Mar 22 2019)
+
+#### 🐛  Bug Fix
+
+- Improve error message for failed charge in BN flow [#2160](https://github.com/artsy/reaction/pull/2160) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.4.0 [#2199](https://github.com/artsy/reaction/pull/2199) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.8.2 (Thu Mar 21 2019)
 
 #### 🐛  Bug Fix
