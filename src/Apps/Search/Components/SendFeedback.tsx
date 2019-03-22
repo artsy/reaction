@@ -11,6 +11,7 @@ import {
 import { SendFeedbackSearchResultsMutation } from "__generated__/SendFeedbackSearchResultsMutation.graphql"
 import { ContextProps } from "Artsy"
 import { withContext } from "Artsy/SystemContext"
+import { EMAIL_REGEX } from "Components/Publishing/Constants"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
@@ -33,9 +34,9 @@ const logger = createLogger("Apps/Search/Components/SendFeedback.tsx")
 class SendFeedbackForm extends React.Component<ContextProps, State> {
   state = {
     submitted: false,
-    message: null,
-    name: null,
-    email: null,
+    message: "",
+    name: "",
+    email: "",
     triggeredValidation: false,
   }
 
@@ -102,7 +103,8 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   renderPersonalInfoInputs() {
-    const { name, email, triggeredValidation } = this.state
+    const { name, triggeredValidation } = this.state
+    const errorForEmail = this.errorForEmail()
     return (
       <LoggedOutInputContainer mt={2} alignContent="space-between">
         <Box mr={1} width="50%">
@@ -124,13 +126,17 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
               this.setState({ email: value })
             }}
             required
-            error={
-              !email && triggeredValidation ? "Cannot leave field blank" : ""
-            }
+            error={errorForEmail && triggeredValidation ? errorForEmail : ""}
           />
         </Box>
       </LoggedOutInputContainer>
     )
+  }
+
+  errorForEmail() {
+    const { email } = this.state
+    if (!email) return "Cannot leave field blank"
+    if (!email.match(EMAIL_REGEX)) return "Invalid email."
   }
 
   renderFeedbackTextArea() {
