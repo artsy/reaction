@@ -69,6 +69,12 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     })
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkAboutTheArtist,
+    subject: Schema.Subject.ShowArtistInsights,
+    type: Schema.Type.Button,
+  })
   render() {
     const { artist } = this.props
     const { biography_blurb, image, id, _id } = this.props.artist
