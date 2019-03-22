@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CheckCircleIcon,
   color,
   Flex,
   Input,
@@ -13,6 +14,8 @@ import { withContext } from "Artsy/SystemContext"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
+import { ErrorWithMetadata } from "Utils/errors"
+import createLogger from "Utils/logger"
 
 interface Inputs {
   message: string
@@ -24,6 +27,8 @@ interface State extends Inputs {
   submitted: boolean
   triggeredValidation: boolean
 }
+
+const logger = createLogger("Apps/Search/Components/SendFeedback.tsx")
 
 class SendFeedbackForm extends React.Component<ContextProps, State> {
   state = {
@@ -66,10 +71,32 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
       variables: {
         input: { message, email, name },
       },
+      // Add slight delay to make UX seem a bit nicer
       optimisticUpdater: () => {
-        this.setState({
-          submitted: true,
-        })
+        setTimeout(
+          () =>
+            this.setState({
+              submitted: true,
+            }),
+          500
+        )
+      },
+      onCompleted: data => {
+        const {
+          sendFeedback: { feedbackOrError },
+        } = data
+        if (feedbackOrError.mutationError) {
+          logger.error(
+            new ErrorWithMetadata(
+              feedbackOrError.mutationError.type,
+              feedbackOrError.mutationError.message
+            )
+          )
+        } else {
+          this.setState({
+            submitted: true,
+          })
+        }
       },
     })
   }
@@ -124,8 +151,50 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
     )
   }
 
-  render() {
+  renderSuccess() {
+    return (
+      <>
+        <CheckCircleIcon />
+        <Box mt={1} textAlign="center">
+          <Serif size="4">Your message has been sent!</Serif>
+        </Box>
+        <Box>
+          <Serif size="2">Thank you for helping to improve Artsy.</Serif>
+        </Box>
+      </>
+    )
+  }
+
+  renderFeedbackForm() {
     const { user } = this.props
+    return (
+      <>
+        <Box textAlign="center">
+          <Serif size="4">Your feedback is important to us.</Serif>
+        </Box>
+        <Box>
+          <Serif size="2">
+            Tell us how we can improve and help you find what you are looking
+            for.
+          </Serif>
+        </Box>
+        {!user ? this.renderPersonalInfoInputs() : null}
+        {this.renderFeedbackTextArea()}
+        <Button
+          onClick={() => {
+            this.setState({ triggeredValidation: true }, () =>
+              this.handleClick()
+            )
+          }}
+        >
+          Submit
+        </Button>
+      </>
+    )
+  }
+
+  render() {
+    const { submitted } = this.state
 
     return (
       <Box bg={color("black5")} p={3} mt={3}>
@@ -135,26 +204,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
           justifyContent="center"
           width="100%"
         >
-          <Box textAlign="center">
-            <Serif size="4">Your feedback is important to us.</Serif>
-          </Box>
-          <Box>
-            <Serif size="2">
-              Tell us how we can improve and help you find what you are looking
-              for.
-            </Serif>
-          </Box>
-          {!user ? this.renderPersonalInfoInputs() : null}
-          {this.renderFeedbackTextArea()}
-          <Button
-            onClick={() => {
-              this.setState({ triggeredValidation: true }, () =>
-                this.handleClick()
-              )
-            }}
-          >
-            Submit
-          </Button>
+          {submitted ? this.renderSuccess() : this.renderFeedbackForm()}
         </FeedbackContainer>
       </Box>
     )
