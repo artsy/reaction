@@ -28,7 +28,7 @@ function createRender({
   prerender,
   render,
   renderFetched,
-  showPreloader = false,
+  showPreloader = true,
 }) {
   return (renderArgs: {
     Component: React.ComponentType

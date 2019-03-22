@@ -1,4 +1,4 @@
-import { Col, Row, Separator, Spacer } from "@artsy/palette"
+import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
 import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -6,7 +6,6 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
@@ -48,19 +47,15 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
               <NavigationTabs artist={artist} />
               <Spacer mb={3} />
 
-              {children}
+              <Box minHeight="30vh">{children}</Box>
             </Col>
           </Row>
 
-          {typeof window !== "undefined" && (
-            <LazyLoadComponent threshold={1000}>
-              <Row>
-                <Col>
-                  <RecentlyViewed />
-                </Col>
-              </Row>
-            </LazyLoadComponent>
-          )}
+          <Row>
+            <Col>
+              <RecentlyViewed />
+            </Col>
+          </Row>
 
           <Separator mt={6} mb={3} />
 
