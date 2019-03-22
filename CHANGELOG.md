@@ -1,3 +1,15 @@
+# v15.8.4 (Fri Mar 22 2019)
+
+#### 🐛  Bug Fix
+
+- Hide artist insights on artwork page behind button [#2098](https://github.com/artsy/reaction/pull/2098) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.8.3 (Fri Mar 22 2019)
 
 #### 🐛  Bug Fix
