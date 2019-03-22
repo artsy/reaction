@@ -1,8 +1,9 @@
-import { Col, Row, Separator, Spacer } from "@artsy/palette"
+import { Col, Row, Separator, Serif, Spacer } from "@artsy/palette"
 import { SearchApp_viewer } from "__generated__/SearchApp_viewer.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
+import { SearchMeta } from "Apps/Search/Components/SearchMeta"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
@@ -28,15 +29,17 @@ export class SearchApp extends React.Component<ArtistAppProps> {
     return (
       <AppContainer>
         <HorizontalPadding>
-          <Row>
-            <Col>Search Header</Col>
-          </Row>
+          {/* NOTE: react-head automatically moves these tags to the <head> element */}
+          <SearchMeta term={term} />
 
           <Spacer mb={3} />
 
           <Row>
             <Col>
-              {viewer.search.totalCount} results for "{term}"<Spacer mb={3} />
+              <Serif size="5">
+                {viewer.search.totalCount.toLocaleString()} Results for "{term}"
+              </Serif>
+              <Spacer mb={3} />
               <span id="jumpto--searchResultTabs" />
               <NavigationTabs term={term} searchableConnection={search} />
               <Spacer mb={3} />
