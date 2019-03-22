@@ -9,6 +9,7 @@ import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
+import { stringify } from "qs"
 import { data as sd } from "sharify"
 
 import { track } from "Artsy/Analytics"
@@ -50,6 +51,45 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     // noop
   }
 
+  handleOpenAuth = (mediator, artist) => {
+    if (sd.IS_MOBILE) {
+      this.openMobileAuth(artist)
+    } else if (mediator) {
+      this.openDesktopAuth(mediator, artist)
+    } else {
+      window.location.href = "/login"
+    }
+  }
+
+  openMobileAuth = partner => {
+    const params = stringify({
+      action: "follow",
+      contextModule: "Artwork page",
+      intent: "follow gallery",
+      kind: "gallery",
+      objectId: partner.id,
+      signUpIntent: "follow gallery",
+      trigger: "click",
+      entityName: partner.name,
+    })
+    const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+    window.location.href = href
+  }
+
+  openDesktopAuth = (mediator, partner) => {
+    mediator.trigger("open:auth", {
+      mode: "signup",
+      copy: `Sign up to follow ${partner.name}`,
+      signupIntent: "follow gallery",
+      afterSignUpAction: {
+        kind: "profile",
+        action: "follow",
+        objectId: partner.profile && partner.profile.id,
+      },
+    })
+  }
+
   renderReadMore(breakpoint?: string) {
     const { additional_information } = this.props.artwork
     const xs = breakpoint === "xs"
@@ -77,6 +117,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     const showPartnerLogo = !(artwork.sale && artwork.sale.is_benefit)
     const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
     const partnerInitials = showPartnerLogo && partner.initials
+    const showPartnerFollow =
+      partner.type !== "Auction House" && partner.profile
 
     return (
       <ContextConsumer>
@@ -94,8 +136,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                   imageUrl={imageUrl}
                   initials={partnerInitials}
                   FollowButton={
-                    partner.type !== "Auction House" &&
-                    partner.profile && (
+                    showPartnerFollow && (
                       <FollowProfileButton
                         profile={partner.profile}
                         user={user}
@@ -106,19 +147,9 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                           entity_id: partner._id,
                           entity_slug: partner.id,
                         }}
-                        onOpenAuthModal={() => {
-                          mediator &&
-                            mediator.trigger("open:auth", {
-                              mode: "signup",
-                              copy: `Sign up to follow ${partner.name}`,
-                              signupIntent: "follow gallery",
-                              afterSignUpAction: {
-                                kind: "profile",
-                                action: "follow",
-                                objectId: partner.profile && partner.profile.id,
-                              },
-                            })
-                        }}
+                        onOpenAuthModal={() =>
+                          this.handleOpenAuth(mediator, partner)
+                        }
                         render={profile => {
                           const is_followed = profile.is_followed || false
                           return (
