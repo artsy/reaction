@@ -18,6 +18,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 export interface Props {
   viewer: SearchApp_viewer
   location: Location
+  isFetchingData: boolean
 }
 
 @track({
@@ -25,11 +26,13 @@ export interface Props {
 })
 export class SearchApp extends React.Component<Props> {
   render() {
-    const { viewer, location } = this.props
+    const { isFetchingData, viewer, location } = this.props
     const { search } = viewer
     const {
       query: { term },
     } = location
+
+    console.log(isFetchingData)
 
     return (
       <AppContainer>

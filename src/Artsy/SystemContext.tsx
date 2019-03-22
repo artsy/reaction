@@ -1,5 +1,5 @@
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import React, { SFC } from "react"
+import React, { SFC, useState } from "react"
 import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 
@@ -8,17 +8,13 @@ export interface Mediator {
 }
 
 export interface SystemProps {
-  /**
-   * The currently signed-in user.
-   *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
-   * and `USER_ACCESS_TOKEN` environment variables if available.
-   */
-  user?: User
+  /** Flag for checking if we're within an Eigen webview */
+  isEigen?: boolean
 
-  /**
-   * A PubSub hub typically used for communicating with Force.
-   */
+  /** Flag for when the Relay network layer is performing a request */
+  isFetchingData?: boolean
+
+  /** A PubSub hub typically used for communicating with Force. */
   mediator?: Mediator
 
   /**
@@ -30,7 +26,13 @@ export interface SystemProps {
    */
   relayEnvironment?: Environment
 
-  isEigen?: boolean
+  /**
+   * The currently signed-in user.
+   *
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
+   */
+  user?: User
 }
 
 /**
@@ -57,11 +59,21 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user: _user })
 
+  // Listen for changes to relay data fetching state and update consumers
+  const [isFetchingData, toggleFetching] = useState(false)
+
   const providerValues = {
     ...props,
     user: _user,
     relayEnvironment,
+    isFetchingData,
   }
+
+  // TODO: Not sure that this is the best way to assign this. We have a few
+  // different ways in which we create a relay environment, and while direct
+  // assignment is most direct it feels a bit hacky.
+  // @ts-ignore
+  relayEnvironment.toggleFetching = toggleFetching
 
   return (
     <SystemContext.Provider value={providerValues}>
