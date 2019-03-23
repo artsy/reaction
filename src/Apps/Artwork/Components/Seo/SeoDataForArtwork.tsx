@@ -24,7 +24,7 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
 }) => {
   const artistsName = artwork.artist_names
 
-  const dimensions = parseDimensions(get(artwork, a => a.dimensions.in))
+  const dimensions = parseDimensions(get(artwork, a => a.dimensions.in, ""))
 
   const artworkMetaData = {
     name: artwork.meta.title,
@@ -163,8 +163,8 @@ const buildPriceSpecification = (
   }
 }
 
-const parseDimensions = dimensionsAsString => {
-  const segments = dimensionsAsString.replace(" in", "").split("×")
+const parseDimensions = (dimensions: string) => {
+  const segments = dimensions.replace(" in", "").split("×")
 
   if (segments.length === 2) {
     return {
