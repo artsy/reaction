@@ -255,11 +255,8 @@ describe("SeoDataForArtwork", () => {
       })
 
       it("successfully handles case when no dimensions a present", async () => {
-        expect(
-          getWrapper({
-            ...SeoDataForArtworkFixture,
-            dimensions: undefined,
-          })
+        expect(() =>
+          getWrapper({ ...SeoDataForArtworkFixture, dimensions: undefined })
         ).not.toThrow()
       })
     })

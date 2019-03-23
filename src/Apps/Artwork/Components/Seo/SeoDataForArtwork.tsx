@@ -164,6 +164,8 @@ const buildPriceSpecification = (
 }
 
 const parseDimensions = (dimensions: string) => {
+  if (!dimensions) return {}
+
   const segments = dimensions.replace(" in", "").split("×")
 
   if (segments.length === 2) {
