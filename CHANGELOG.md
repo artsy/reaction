@@ -1,3 +1,20 @@
+# v15.9.2 (Sat Mar 23 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure SEO parsing doesn't fail if no dimensions [#2206](https://github.com/artsy/reaction/pull/2206) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.4.1 [#2205](https://github.com/artsy/reaction/pull/2205) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.9.1 (Fri Mar 22 2019)
 
 #### 🐛  Bug Fix
