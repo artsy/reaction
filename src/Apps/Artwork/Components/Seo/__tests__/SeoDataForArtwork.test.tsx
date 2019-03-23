@@ -253,6 +253,13 @@ describe("SeoDataForArtwork", () => {
         expect(getProductData(wrapper).height).toEqual("4 in")
         expect(getProductData(wrapper).depth).toBeUndefined()
       })
+
+      it("successfully handles case when no dimensions a present", async () => {
+        const wrapper = await getWrapper({
+          ...SeoDataForArtworkFixture,
+          dimensions: undefined,
+        })
+      })
     })
   })
 })
