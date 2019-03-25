@@ -1,3 +1,17 @@
+# v15.10.1 (Mon Mar 25 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [SearchResults] Implement analytics [#2210](https://github.com/artsy/reaction/pull/2210) ([@mzikherman](https://github.com/mzikherman))
+- Sync schema with upstream changes [#2212](https://github.com/artsy/reaction/pull/2212) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.10.0 (Mon Mar 25 2019)
 
 #### 🚀  Enhancement
