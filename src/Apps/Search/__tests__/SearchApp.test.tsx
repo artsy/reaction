@@ -48,16 +48,10 @@ describe("SearchApp", () => {
     },
   }
 
-  it("includes the header", () => {
-    const wrapper = getWrapper(props) as any
-    const html = wrapper.html()
-    expect(html).toContain("Search Header")
-  })
-
   it("includes the total count", () => {
     const wrapper = getWrapper(props) as any
     const html = wrapper.html()
-    expect(html).toContain('420 results for "andy"')
+    expect(html).toContain('420 Results for "andy"')
   })
 
   it("includes tabs w/ counts", () => {
