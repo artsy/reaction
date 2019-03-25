@@ -107,18 +107,8 @@ export function createRelaySSREnvironment(config: Config = {}) {
       // TODO: This has been moved over from `Utils/metaphysics` but can eventually
       // be replaced by error / retry middleware
       next => async req => {
-        // Updates SystemContext state so that consumers can subscribe to
-        // preloader updates
-        if (environment.toggleFetching) {
-          environment.toggleFetching(true)
-        }
-
         const response = await next(req)
-
         if (!checkStatus || (response.status >= 200 && response.status < 300)) {
-          if (environment.toggleFetching) {
-            environment.toggleFetching(false)
-          }
           return response
         } else {
           const error = new NetworkError(response.statusText)

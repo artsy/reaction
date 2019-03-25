@@ -1,5 +1,5 @@
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import React, { SFC, useState } from "react"
+import React, { SFC } from "react"
 import { Environment } from "relay-runtime"
 import { getUser } from "Utils/getUser"
 
@@ -11,9 +11,6 @@ export interface SystemProps {
   /** Flag for checking if we're within an Eigen webview */
   isEigen?: boolean
 
-  /** Flag for when the Relay network layer is performing a request */
-  isFetchingData?: boolean
-
   /** A PubSub hub typically used for communicating with Force. */
   mediator?: Mediator
 
@@ -24,7 +21,7 @@ export interface SystemProps {
    * If none is provided to the `ContextProvider` then one is created, using
    * the `user` if available.
    */
-  relayEnvironment?: Environment & { toggleFetching?: (isFetching) => void }
+  relayEnvironment?: Environment
 
   /**
    * The currently signed-in user.
@@ -59,19 +56,11 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user: _user })
 
-  // Listen for changes to relay data fetching state and update consumers
-  const [isFetchingData, toggleFetching] = useState(false)
-
   const providerValues = {
     ...props,
     user: _user,
     relayEnvironment,
-    isFetchingData,
   }
-
-  // Attach a loading state toggle to the relay environment which is triggered
-  // from within the middleware when fetches begin / complete.
-  relayEnvironment.toggleFetching = toggleFetching
 
   return (
     <SystemContext.Provider value={providerValues}>

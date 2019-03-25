@@ -24,12 +24,7 @@ const SpinnerContainer = styled.figure`
 //   return location.action === "POP" ? "STORE_OR_NETWORK" : "STORE_THEN_NETWORK"
 // }
 
-function createRender({
-  prerender,
-  render,
-  renderFetched,
-  showPreloader = true,
-}) {
+function createRender({ prerender, render, renderFetched }) {
   return (renderArgs: {
     Component: React.ComponentType
     props?: object
@@ -55,15 +50,11 @@ function createRender({
 
     // This should only ever show when doing client-side routing.
     if (!props) {
-      if (showPreloader) {
-        return (
-          <SpinnerContainer className={LoadingClassName}>
-            <Spinner />
-          </SpinnerContainer>
-        )
-      } else {
-        return null
-      }
+      return (
+        <SpinnerContainer className={LoadingClassName}>
+          <Spinner />
+        </SpinnerContainer>
+      )
     }
 
     if (renderFetched) {
