@@ -9,6 +9,8 @@ import styled from "styled-components"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
+let IMAGE_LAZY_LOADING = true
+
 const Placeholder = styled.div`
   background-color: ${color("black10")};
   position: relative;
@@ -18,6 +20,7 @@ const Placeholder = styled.div`
 
 const Image = styled(BaseImage)`
   width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -71,6 +74,8 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     if (isFunction(window.matchMedia)) {
       this.canHover = !window.matchMedia("(hover: none)").matches
     }
+    IMAGE_LAZY_LOADING =
+      sd.IMAGE_LAZY_LOADING || process.env.IMAGE_LAZY_LOADING === "true"
   }
 
   getImageUrl() {
@@ -171,7 +176,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               title={artwork.title}
               alt={artwork.image_title}
               src={this.getImageUrl()}
-              lazyLoad={lazyLoad}
+              lazyLoad={IMAGE_LAZY_LOADING && lazyLoad}
             />
           </a>
 
