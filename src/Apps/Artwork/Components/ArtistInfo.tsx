@@ -155,7 +155,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
               {showArtistInsightsButton && (
                 <Flex flexDirection="column" alignItems="flex-start">
                   <Button
-                    onClick={this.toggleArtistInsights()}
+                    onClick={this.toggleArtistInsights.bind(this)}
                     variant="secondaryGray"
                     size="small"
                     mt={1}
