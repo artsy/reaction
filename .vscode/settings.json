@@ -47,5 +47,5 @@
     "**/*.snap",
     "**/*.story.tsx"
   ],
-  "debug.node.autoAttach": "on"
+  "debug.node.autoAttach": "off"
 }
