@@ -19,6 +19,8 @@ import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 
+import { stringify } from "qs"
+
 import {
   ArtistBioFragmentContainer as ArtistBio,
   MarketInsightsFragmentContainer as MarketInsights,
@@ -69,6 +71,45 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     })
   }
 
+  handleOpenAuth = (mediator, artist) => {
+    if (sd.IS_MOBILE) {
+      this.openMobileAuth(artist)
+    } else if (mediator) {
+      this.openDesktopAuth(mediator, artist)
+    } else {
+      window.location.href = "/login"
+    }
+  }
+
+  openMobileAuth = artist => {
+    const params = stringify({
+      action: "follow",
+      contextModule: "Artwork page",
+      intent: "follow artist",
+      kind: "artist",
+      objectId: artist.id,
+      signUpIntent: "follow artist",
+      trigger: "click",
+      entityName: artist.name,
+    })
+    const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+    window.location.href = href
+  }
+
+  openDesktopAuth = (mediator, artist) => {
+    mediator.trigger("open:auth", {
+      mode: "signup",
+      copy: `Sign up to follow ${artist.name}`,
+      signupIntent: "follow artist",
+      afterSignUpAction: {
+        kind: "artist",
+        action: "follow",
+        objectId: artist.id,
+      },
+    })
+  }
+
   render() {
     const { artist } = this.props
     const { biography_blurb, image, id, _id } = this.props.artist
@@ -105,18 +146,9 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                       entity_id: _id,
                       entity_slug: id,
                     }}
-                    onOpenAuthModal={() => {
-                      mediator.trigger("open:auth", {
-                        mode: "signup",
-                        copy: `Sign up to follow ${this.props.artist.name}`,
-                        signupIntent: "follow artist",
-                        afterSignUpAction: {
-                          kind: "artist",
-                          action: "follow",
-                          objectId: this.props.artist.id,
-                        },
-                      })
-                    }}
+                    onOpenAuthModal={() =>
+                      this.handleOpenAuth(mediator, this.props.artist)
+                    }
                     render={({ is_followed }) => {
                       return (
                         <Sans

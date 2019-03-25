@@ -7,6 +7,9 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
+import { stringify } from "qs"
+import { data as sd } from "sharify"
+
 import {
   Avatar,
   BorderBox,
@@ -75,7 +78,7 @@ export const LargeArtistCard: SFC<Props> = props => (
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        onOpenAuthModal={() => maybeAuthenticated(props)}
+        onOpenAuthModal={() => handleOpenAuth(props)}
         render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width={space(9)}>
@@ -111,7 +114,7 @@ export const SmallArtistCard: SFC<Props> = props => (
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
-        onOpenAuthModal={() => maybeAuthenticated(props)}
+        onOpenAuthModal={() => handleOpenAuth(props)}
         render={({ is_followed }) => {
           return (
             <Button variant="secondaryOutline" size="small" width="70px">
@@ -124,15 +127,41 @@ export const SmallArtistCard: SFC<Props> = props => (
   </BorderBox>
 )
 
-function maybeAuthenticated(props: Props) {
-  return props.mediator.trigger("open:auth", {
+const handleOpenAuth = props => {
+  if (sd.IS_MOBILE) {
+    openMobileAuth(props.artist)
+  } else if (props.mediator) {
+    openDesktopAuth(props.mediator, props.artist)
+  } else {
+    window.location.href = "/login"
+  }
+}
+
+const openMobileAuth = artist => {
+  const params = stringify({
+    action: "follow",
+    contextModule: "Artwork page",
+    intent: "follow artist",
+    kind: "artist",
+    objectId: artist.id,
+    signUpIntent: "follow artist",
+    trigger: "click",
+    entityName: artist.name,
+  })
+  const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+  window.location.href = href
+}
+
+const openDesktopAuth = (mediator, artist) => {
+  mediator.trigger("open:auth", {
     mode: "signup",
-    copy: `Sign up to follow ${props.artist.name}`,
+    copy: `Sign up to follow ${artist.name}`,
     signupIntent: "follow artist",
     afterSignUpAction: {
       kind: "artist",
       action: "follow",
-      objectId: props.artist.id,
+      objectId: artist.id,
     },
   })
 }
