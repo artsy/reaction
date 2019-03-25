@@ -66,7 +66,8 @@ export class SearchResultsArticlesRoute extends React.Component<
   }
 
   renderArticles() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const articles = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -82,6 +83,9 @@ export class SearchResultsArticlesRoute extends React.Component<
                 description=""
                 imageUrl={article.imageUrl}
                 entityType="Article"
+                index={index}
+                term={term}
+                id={article._id}
               />
               {index < articles.length - 1 ? (
                 <>
@@ -152,7 +156,7 @@ export const SearchResultsArticlesRouteRouteFragmentContainer = createRefetchCon
           edges {
             node {
               ... on SearchableItem {
-                id
+                _id
                 displayLabel
                 href
                 imageUrl

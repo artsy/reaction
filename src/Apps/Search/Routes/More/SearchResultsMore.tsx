@@ -1,7 +1,6 @@
 import { Box, Separator, Spacer } from "@artsy/palette"
-import { SearchResultsAuctions_viewer } from "__generated__/SearchResultsAuctions_viewer.graphql"
+import { SearchResultsMore_viewer } from "__generated__/SearchResultsMore_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
-
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
@@ -11,7 +10,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
 export interface Props {
-  viewer: SearchResultsAuctions_viewer
+  viewer: SearchResultsMore_viewer
   relay: RelayRefetchProp
   location: Location
 }
@@ -67,7 +66,8 @@ export class SearchResultMoreRoute extends React.Component<
   }
 
   renderItems() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const items = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -82,6 +82,9 @@ export class SearchResultMoreRoute extends React.Component<
                 href={searchableItem.href}
                 imageUrl={searchableItem.imageUrl}
                 entityType={searchableItem.searchableType}
+                index={index}
+                term={term}
+                id={searchableItem._id}
               />
               {index < items.length - 1 ? (
                 <>
@@ -156,6 +159,7 @@ export const SearchResultsMoreRouteRouteFragmentContainer = createRefetchContain
                 description
                 displayLabel
                 href
+                _id
                 imageUrl
                 searchableType
               }

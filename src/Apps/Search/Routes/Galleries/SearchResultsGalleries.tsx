@@ -66,7 +66,8 @@ export class SearchResultsGalleriesRoute extends React.Component<
   }
 
   renderGalleries() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
     const galleries = get(viewer, v => v.search.edges, []).map(e => e.node)
 
@@ -81,6 +82,9 @@ export class SearchResultsGalleriesRoute extends React.Component<
                 href={gallery.href}
                 imageUrl={gallery.imageUrl}
                 entityType="Gallery"
+                index={index}
+                term={term}
+                id={gallery._id}
               />
               {index < galleries.length - 1 ? (
                 <>
@@ -154,6 +158,7 @@ export const SearchResultsGalleriesRouteRouteFragmentContainer = createRefetchCo
                 description
                 displayLabel
                 href
+                _id
                 imageUrl
                 searchableType
               }

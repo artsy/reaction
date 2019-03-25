@@ -66,7 +66,8 @@ export class SearchResultsShowsRoute extends React.Component<
   }
 
   renderShows() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const shows = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -81,6 +82,9 @@ export class SearchResultsShowsRoute extends React.Component<
                 href={show.href}
                 imageUrl={show.imageUrl}
                 entityType="Show"
+                index={index}
+                term={term}
+                id={show._id}
               />
               {index < shows.length - 1 ? (
                 <>
@@ -155,6 +159,7 @@ export const SearchResultsShowsRouteRouteFragmentContainer = createRefetchContai
                 description
                 displayLabel
                 href
+                _id
                 imageUrl
                 searchableType
               }
