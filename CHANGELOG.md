@@ -1,3 +1,15 @@
+# v15.9.3 (Mon Mar 25 2019)
+
+#### 🐛  Bug Fix
+
+- Fix other artwork page follows [#2202](https://github.com/artsy/reaction/pull/2202) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v15.9.2 (Sat Mar 23 2019)
 
 #### 🐛  Bug Fix
