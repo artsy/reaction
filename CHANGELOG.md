@@ -1,3 +1,15 @@
+# v15.9.4 (Mon Mar 25 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [SearchResults] Add meta tags [#2204](https://github.com/artsy/reaction/pull/2204) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.9.3 (Mon Mar 25 2019)
 
 #### 🐛  Bug Fix
