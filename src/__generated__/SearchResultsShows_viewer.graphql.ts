@@ -18,6 +18,7 @@ export type SearchResultsShows_viewer = {
                 readonly description?: string | null;
                 readonly displayLabel?: string | null;
                 readonly href?: string | null;
+                readonly _id?: string;
                 readonly imageUrl?: string | null;
                 readonly searchableType?: string | null;
             }) | null;
@@ -208,6 +209,13 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "_id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "imageUrl",
                       "args": null,
                       "storageKey": null
@@ -229,5 +237,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2001fd869ba4b5fdbc8ec2be7270ea2d';
+(node as any).hash = '9b44d18a92e4e2c3c9ab86d0f40d7b6b';
 export default node;

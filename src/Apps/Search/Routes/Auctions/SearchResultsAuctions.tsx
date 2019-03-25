@@ -67,7 +67,8 @@ export class SearchResultAuctionsRoute extends React.Component<
   }
 
   renderAuctions() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const sales = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -83,6 +84,9 @@ export class SearchResultAuctionsRoute extends React.Component<
                 href={auction.href}
                 imageUrl={auction.imageUrl}
                 entityType="Auction"
+                index={index}
+                term={term}
+                id={auction._id}
               />
               {index < sales.length - 1 ? (
                 <>
@@ -157,6 +161,7 @@ export const SearchResultsAuctionsRouteRouteFragmentContainer = createRefetchCon
                 description
                 displayLabel
                 href
+                _id
                 imageUrl
                 searchableType
               }

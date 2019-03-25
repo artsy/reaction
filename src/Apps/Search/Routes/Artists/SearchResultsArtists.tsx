@@ -66,7 +66,8 @@ export class SearchResultsArtistsRoute extends React.Component<
   }
 
   renderArtists() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const artists = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -82,6 +83,9 @@ export class SearchResultsArtistsRoute extends React.Component<
                 imageUrl={artist.imageUrl}
                 entityType="Artist"
                 href={artist.href}
+                index={index}
+                term={term}
+                id={artist._id}
               />
               {index < artists.length - 1 ? (
                 <>
@@ -154,6 +158,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
             node {
               ... on Artist {
                 name
+                _id
                 href
                 imageUrl
                 bio

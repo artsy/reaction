@@ -16,6 +16,7 @@ export type SearchResultsArtists_viewer = {
         readonly edges: ReadonlyArray<({
             readonly node: ({
                 readonly name?: string | null;
+                readonly _id?: string;
                 readonly href?: string | null;
                 readonly imageUrl?: string | null;
                 readonly bio?: string | null;
@@ -193,6 +194,13 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "_id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "href",
                       "args": null,
                       "storageKey": null
@@ -221,5 +229,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'c006f68a2be37e7be01026155fc8fc66';
+(node as any).hash = '89f52fa5b4c4d98a1299ffa9c01247b4';
 export default node;

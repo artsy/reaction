@@ -1,38 +1,50 @@
+import { Radio, RadioGroup } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
-import { Radio } from "@artsy/palette"
-
-export const TimePeriodFilter: React.SFC<{
+interface Props {
   filters: FilterState
   timePeriods?: string[]
-}> = ({ filters, timePeriods }) => {
-  return (
-    <>
-      {(timePeriods || allowedPeriods)
-        .filter(timePeriod => allowedPeriods.includes(timePeriod))
-        .map((timePeriod, index) => {
-          const isSelected = filters.state.major_periods[0] === timePeriod
+}
 
-          return (
-            <Radio
-              my={0.3}
-              selected={isSelected}
-              value={timePeriod}
-              onSelect={({ selected }) => {
-                if (selected) {
-                  return filters.setFilter("major_periods", timePeriod)
-                } else {
-                  return filters.unsetFilter("major_periods")
-                }
-              }}
-              key={index}
-              label={timePeriod}
-            />
-          )
-        })}
-    </>
-  )
+@track()
+export class TimePeriodFilter extends React.Component<Props> {
+  @track((props: Props, _state, [major_periods]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { major_periods },
+      current: { ...props.filters.state },
+    }
+  })
+  onClick(value) {
+    const { filters } = this.props
+    filters.setFilter("major_periods", value)
+  }
+
+  render() {
+    const { timePeriods } = this.props
+
+    const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
+      allowedPeriods.includes(timePeriod)
+    )
+
+    const radioButtons = periods.map((timePeriod, index) => {
+      return (
+        <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
+      )
+    })
+    return (
+      <RadioGroup
+        onSelect={selectedOption => {
+          this.onClick(selectedOption)
+        }}
+      >
+        {radioButtons}
+      </RadioGroup>
+    )
+  }
 }
 
 const allowedPeriods = [

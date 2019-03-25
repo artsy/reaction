@@ -1,39 +1,51 @@
-import { Radio } from "@artsy/palette"
+import { Radio, RadioGroup } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
-export const MediumFilter: React.SFC<{
+interface Props {
   filters: FilterState
   mediums: Array<{
     id: string
     name: string
   }>
-}> = ({ filters, mediums }) => {
-  const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
-  return (
-    <>
-      {allowedMediums.map((medium, index) => {
-        const isSelected = filters.state.medium === medium.id
+}
 
-        return (
-          <Radio
-            my={0.3}
-            selected={isSelected}
-            value={medium.id}
-            onSelect={({ selected }) => {
-              if (selected) {
-                return filters.setFilter("medium", medium.id)
-              } else {
-                return filters.unsetFilter("medium")
-              }
-            }}
-            key={index}
-            label={medium.name}
-          />
-        )
-      })}
-    </>
-  )
+@track()
+export class MediumFilter extends React.Component<Props> {
+  @track((props: Props, _state, [medium]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { medium },
+      current: { ...props.filters.state },
+    }
+  })
+  onClick(value) {
+    const { filters } = this.props
+    filters.setFilter("medium", value)
+  }
+
+  render() {
+    const { mediums } = this.props
+    const allowedMediums =
+      mediums && mediums.length ? mediums : hardcodedMediums
+
+    const radioButtons = allowedMediums.map((medium, index) => {
+      return (
+        <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
+      )
+    })
+    return (
+      <RadioGroup
+        onSelect={selectedOption => {
+          this.onClick(selectedOption)
+        }}
+      >
+        {radioButtons}
+      </RadioGroup>
+    )
+  }
 }
 
 const hardcodedMediums = [

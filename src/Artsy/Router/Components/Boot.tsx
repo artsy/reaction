@@ -35,7 +35,9 @@ const { GlobalStyles } = injectGlobalStyles<{
 }>()
 
 @track(null, {
-  dispatch: data => Events.postEvent(data),
+  dispatch: data => {
+    Events.postEvent(data)
+  },
 })
 export class Boot extends React.Component<BootProps> {
   componentDidMount() {

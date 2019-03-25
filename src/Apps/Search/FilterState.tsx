@@ -22,7 +22,7 @@ export interface State {
 }
 
 export const initialState = {
-  medium: "*",
+  medium: null,
   for_sale: null,
   page: 1,
   major_periods: [],

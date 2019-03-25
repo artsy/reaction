@@ -66,7 +66,8 @@ export class SearchResultCategoriesRoute extends React.Component<
   }
 
   renderCategories() {
-    const { viewer } = this.props
+    const { viewer, location } = this.props
+    const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
     const genes = get(viewer, v => v.search.edges, []).map(e => e.node)
@@ -81,6 +82,9 @@ export class SearchResultCategoriesRoute extends React.Component<
                 href={gene.href}
                 imageUrl={gene.imageUrl}
                 entityType="Category"
+                index={index}
+                term={term}
+                id={gene._id}
               />
               {index < genes.length - 1 ? (
                 <>
@@ -155,6 +159,7 @@ export const SearchResultsCategoriesRouteRouteFragmentContainer = createRefetchC
                 description
                 displayLabel
                 href
+                _id
                 imageUrl
                 searchableType
               }

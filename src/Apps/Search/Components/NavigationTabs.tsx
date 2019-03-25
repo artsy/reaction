@@ -1,5 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -19,7 +21,19 @@ const MORE_TABS = [
   "PartnerInstitutionalSeller",
 ]
 
+@track({
+  context_module: Schema.ContextModule.NavigationTabs,
+})
 export class NavigationTabs extends React.Component<Props> {
+  @track((_props, _state, [tab, destination_path]: string[]) => ({
+    action_type: Schema.ActionType.Click,
+    subject: tab,
+    destination_path,
+  }))
+  handleClick(tab: string, destination_path: string) {
+    // no-op
+  }
+
   renderTab(
     text: string,
     to: string,
@@ -30,7 +44,14 @@ export class NavigationTabs extends React.Component<Props> {
     const { exact } = options
 
     return (
-      <RouteTab to={to} exact={exact} preload={false}>
+      <RouteTab
+        to={to}
+        exact={exact}
+        preload={false}
+        onClick={() => {
+          this.handleClick(text, to)
+        }}
+      >
         {text}
       </RouteTab>
     )

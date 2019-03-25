@@ -49,7 +49,7 @@ export const SearchResultsFilterFragmentContainer = createFragmentContainer(
   graphql`
     fragment SearchResultsFilterContainer_viewer on Viewer
       @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
+        medium: { type: "String" }
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }

@@ -4,6 +4,8 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
 import { SearchMeta } from "Apps/Search/Components/SearchMeta"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
@@ -13,12 +15,15 @@ import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 
-export interface ArtistAppProps {
+export interface Props {
   viewer: SearchApp_viewer
   location: Location
 }
 
-export class SearchApp extends React.Component<ArtistAppProps> {
+@track({
+  context_page: Schema.PageName.SearchPage,
+})
+export class SearchApp extends React.Component<Props> {
   render() {
     const { viewer, location } = this.props
     const { search } = viewer
