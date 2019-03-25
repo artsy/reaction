@@ -27,7 +27,7 @@ const node: ConcreteFragment = {
       "kind": "LocalArgument",
       "name": "medium",
       "type": "String",
-      "defaultValue": "*"
+      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
@@ -228,5 +228,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '5c8094420b3578ef13b89361ba7a2fbd';
+(node as any).hash = '7cfcecddba9d351e7645c7af98dd1aec';
 export default node;

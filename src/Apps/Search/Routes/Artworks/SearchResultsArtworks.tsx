@@ -1,11 +1,11 @@
 import { Box } from "@artsy/palette"
 import { SearchResultsArtworks_viewer } from "__generated__/SearchResultsArtworks_viewer.graphql"
+import { FilterState } from "Apps/Search/FilterState"
 import { SearchResultsFilterFragmentContainer as ArtworkGrid } from "Apps/Search/Routes/Artworks/Components/Filter/SearchResultsFilterContainer"
 import { Location } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Provider } from "unstated"
-import { FilterState } from "../../FilterState"
 
 export interface Props {
   viewer: SearchResultsArtworks_viewer
@@ -24,7 +24,7 @@ export class SearchResultsArtworksRoute extends React.Component<Props> {
       <Provider
         inject={[
           new FilterState({
-            keyword: query.term,
+            keyword: term,
           }),
         ]}
       >
@@ -42,7 +42,7 @@ export const SearchResultsArtworksRouteFragmentContainer = createFragmentContain
     fragment SearchResultsArtworks_viewer on Viewer
       @argumentDefinitions(
         keyword: { type: "String!", defaultValue: "" }
-        medium: { type: "String", defaultValue: "*" }
+        medium: { type: "String" }
         major_periods: { type: "[String]" }
         partner_id: { type: "ID" }
         for_sale: { type: "Boolean" }
