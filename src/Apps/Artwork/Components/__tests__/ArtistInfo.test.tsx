@@ -89,7 +89,7 @@ describe("ArtistInfo", () => {
     beforeAll(async () => {
       wrapper = await getWrapper()
     })
-    it("tracks click on 'Artist Insights'", () => {
+    it("tracks click on 'Show artist insights' button", () => {
       const button = wrapper.find("Button")
       button.simulate("click")
       expect(track).toBeCalledWith({
