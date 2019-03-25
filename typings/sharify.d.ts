@@ -31,6 +31,7 @@ declare module "sharify" {
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly VOLLEY_ENDPOINT: string
       readonly XAPP_TOKEN: string
+      readonly IMAGE_LAZY_LOADING: boolean
     }
 
     export interface ResponseLocalData extends GlobalData {
