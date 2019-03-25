@@ -1,3 +1,20 @@
+# v15.10.0 (Mon Mar 25 2019)
+
+#### 🚀  Enhancement
+
+- Add feature flag for lazy-loading [#2211](https://github.com/artsy/reaction/pull/2211) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.4.2 [#2209](https://github.com/artsy/reaction/pull/2209) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.9.4 (Mon Mar 25 2019)
 
 #### 🐛  Bug Fix
