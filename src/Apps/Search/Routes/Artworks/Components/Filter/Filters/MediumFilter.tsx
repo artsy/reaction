@@ -1,7 +1,5 @@
 import { Radio, RadioGroup } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
@@ -12,15 +10,7 @@ interface Props {
   }>
 }
 
-@track()
 export class MediumFilter extends React.Component<Props> {
-  @track((props: Props, _state, [medium]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { medium },
-      current: { ...props.filters.state },
-    }
-  })
   onClick(value) {
     const { filters } = this.props
     filters.setFilter("medium", value)

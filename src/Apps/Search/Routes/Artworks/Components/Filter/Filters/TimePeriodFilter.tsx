@@ -1,7 +1,5 @@
 import { Radio, RadioGroup } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
@@ -9,15 +7,7 @@ interface Props {
   timePeriods?: string[]
 }
 
-@track()
 export class TimePeriodFilter extends React.Component<Props> {
-  @track((props: Props, _state, [major_periods]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { major_periods },
-      current: { ...props.filters.state },
-    }
-  })
   onClick(value) {
     const { filters } = this.props
     filters.setFilter("major_periods", value)
