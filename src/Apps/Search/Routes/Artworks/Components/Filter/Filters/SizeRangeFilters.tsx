@@ -1,22 +1,12 @@
 import { LabeledRange } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
   filters: FilterState
 }
 
-@track()
 export class SizeRangeFilters extends React.Component<Props> {
-  @track((props: Props, _state, [type, value]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { [type]: value },
-      current: { ...props.filters.state },
-    }
-  })
   setRange(type, value) {
     const { filters } = this.props
     filters.setFilter(type, value)

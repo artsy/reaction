@@ -1,22 +1,12 @@
 import { PriceRange } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
   filters: FilterState
 }
 
-@track()
 export class PriceRangeFilter extends React.Component<Props> {
-  @track((props: Props, _state, [price_range]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { price_range },
-      current: { ...props.filters.state },
-    }
-  })
   setRange(range) {
     const { filters } = this.props
     filters.setFilter("price_range", range)
