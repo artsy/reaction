@@ -14,7 +14,7 @@ export class TimePeriodFilter extends React.Component<Props> {
   }
 
   render() {
-    const { timePeriods } = this.props
+    const { timePeriods, filters } = this.props
 
     const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
       allowedPeriods.includes(timePeriod)
@@ -25,8 +25,12 @@ export class TimePeriodFilter extends React.Component<Props> {
         <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
       )
     })
+
+    const selectedPeriod = filters.state.major_periods[0]
+
     return (
       <RadioGroup
+        defaultValue={selectedPeriod && selectedPeriod[0]}
         onSelect={selectedOption => {
           this.onClick(selectedOption)
         }}

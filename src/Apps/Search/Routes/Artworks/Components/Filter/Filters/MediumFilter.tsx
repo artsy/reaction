@@ -17,7 +17,7 @@ export class MediumFilter extends React.Component<Props> {
   }
 
   render() {
-    const { mediums } = this.props
+    const { mediums, filters } = this.props
     const allowedMediums =
       mediums && mediums.length ? mediums : hardcodedMediums
 
@@ -26,8 +26,12 @@ export class MediumFilter extends React.Component<Props> {
         <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
       )
     })
+
+    const selectedMedium = filters.state.medium
+
     return (
       <RadioGroup
+        defaultValue={selectedMedium}
         onSelect={selectedOption => {
           this.onClick(selectedOption)
         }}
