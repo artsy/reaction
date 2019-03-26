@@ -1,7 +1,7 @@
 import { color } from "@artsy/palette"
 import React from "react"
 
-export const IconLayoutText: React.SFC<{ fill?: string }> = () => {
+export const IconLayoutText: React.SFC<{ fill?: string }> = ({ fill }) => {
   return (
     <svg
       className="layout-text"
@@ -11,10 +11,7 @@ export const IconLayoutText: React.SFC<{ fill?: string }> = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <g
-          className="layout-text-group"
-          fill={this.props.fill ? this.props.fill : color("black100")}
-        >
+        <g className="layout-text-group" fill={fill ? fill : color("black100")}>
           <polyline points="0 2 34 2 34 0 0 0" />
           <polyline points="0 7 26 7 26 5 0 5" />
           <rect x="0" y="10" width="45" height="20" />
