@@ -1,6 +1,8 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 import React, { Component } from "react"
@@ -18,6 +20,9 @@ export interface CollectAppProps {
   }
 }
 
+@track({
+  context_page: Schema.PageName.CollectPage,
+})
 export class CollectApp extends Component<CollectAppProps> {
   render() {
     const {

@@ -5,6 +5,7 @@ export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
+  CollectPage = "Collect page",
   SearchPage = "Search page",
 }
 

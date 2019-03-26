@@ -1,15 +1,19 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
+
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
   viewer: CollectRefetch_viewer
   relay: RelayRefetchProp
 }
 
+@track()
 export class CollectRefetch extends Component<CollectRefetchProps> {
   // FIXME: Figure out a pattern so that setState can replace this completely
   // Used to prevent multiple in-flight requests
@@ -21,12 +25,23 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
         key !== "page" &&
         !isEqual(this.props.filtersState[key], prevProps.filtersState[key])
       ) {
-        this.loadFilter()
+        this.loadFilter(key)
       }
     })
   }
 
-  loadFilter = () => {
+  @track((props: CollectRefetchProps, _state, [key]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { [key]: props.filtersState[key] },
+      current: { ...props.filtersState },
+    }
+  })
+  trackFilter(_key: string) {
+    // no-op
+  }
+
+  loadFilter = (key: string) => {
     if (!this.isLoading) {
       this.setState({
         isLoading: true,
@@ -34,6 +49,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
 
       this.isLoading = true
 
+      if (untrackedFilters.includes(key)) this.trackFilter(key)
       this.props.relay.refetch(
         {
           ...this.props.filtersState,

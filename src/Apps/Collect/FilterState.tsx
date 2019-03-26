@@ -41,6 +41,12 @@ export const initialState = {
   color: null,
 }
 
+// These filters aren't tracked via the `tracking` prop passed in here.
+// Instead, they are tracked using decorators in the collect page.
+// Once all filters are switched to be tracked using decorators this can
+// be removed.
+export const untrackedFilters = ["medium", "major_periods"]
+
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
   tracking: any
@@ -166,6 +172,7 @@ export class FilterState extends Container<State> {
     this.setState(newPartialState, () => {
       mediator.trigger("collect:filter:changed", this.filteredState)
 
+      if (untrackedFilters.includes(filter)) return
       this.tracking &&
         this.tracking.trackEvent({
           action: "Commercial filter: params changed",

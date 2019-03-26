@@ -1,4 +1,4 @@
-import { Radio } from "@artsy/palette"
+import { Radio, RadioGroup } from "@artsy/palette"
 import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
@@ -11,10 +11,11 @@ export const MediumFilter: React.SFC<{
   }>
 }> = ({ filters, mediums }) => {
   const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
+
   return (
     <ContextConsumer>
-      {({ mediator }) =>
-        allowedMediums.map((medium, index) => {
+      {({ mediator }) => {
+        const radioButtons = allowedMediums.map((medium, index) => {
           const isSelected = filters.state.medium === medium.id
 
           return (
@@ -22,19 +23,21 @@ export const MediumFilter: React.SFC<{
               my={0.3}
               selected={isSelected}
               value={medium.id}
-              onSelect={({ selected }) => {
-                if (selected) {
-                  return filters.setFilter("medium", medium.id, mediator)
-                } else {
-                  return filters.unsetFilter("medium", mediator)
-                }
-              }}
               key={index}
               label={medium.name}
             />
           )
         })
-      }
+        return (
+          <RadioGroup
+            onSelect={selectedOption => {
+              filters.setFilter("medium", selectedOption, mediator)
+            }}
+          >
+            {radioButtons}
+          </RadioGroup>
+        )
+      }}
     </ContextConsumer>
   )
 }
