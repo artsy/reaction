@@ -15,7 +15,6 @@ const Placeholder = styled.div`
   background-color: ${color("black10")};
   position: relative;
   width: 100%;
-  overflow: hidden;
 `
 
 const Image = styled(BaseImage)`
