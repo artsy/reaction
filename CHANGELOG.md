@@ -1,3 +1,15 @@
+# v15.10.4 (Tue Mar 26 2019)
+
+#### 🐛  Bug Fix
+
+- Sync metaphysics schema [#2215](https://github.com/artsy/reaction/pull/2215) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v15.10.3 (Tue Mar 26 2019)
 
 #### 🐛  Bug Fix
