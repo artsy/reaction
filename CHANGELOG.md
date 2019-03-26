@@ -1,3 +1,20 @@
+# v15.11.0 (Tue Mar 26 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Remove PreloadLink [#2200](https://github.com/artsy/reaction/pull/2200) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- @damassi => [Collect] Fix radio buttons which double fire when clicking the label [#2218](https://github.com/artsy/reaction/pull/2218) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.10.5 (Tue Mar 26 2019)
 
 
