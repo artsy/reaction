@@ -9,11 +9,10 @@ import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
 import { SizeRangeFilters } from "./SizeRangeFilters"
-import { SortFilter } from "./SortFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
-import { Box, Flex, Separator, Spacer, Toggle } from "@artsy/palette"
+import { Box, Flex, Separator, Toggle } from "@artsy/palette"
 import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
@@ -99,14 +98,7 @@ export class FilterContainer extends React.Component<
                   )}
 
                   <span id="jump--searchArtworkGrid" />
-                  <SortFilter
-                    filters={filters}
-                    onShow={() =>
-                      this.setState({ showMobileActionSheet: true })
-                    }
-                  />
 
-                  <Spacer mb={2} />
                   {this.props.children(filters)}
                 </Mobile>
               </Media>
@@ -120,8 +112,7 @@ export class FilterContainer extends React.Component<
                   </Box>
                   <Box width="75%">
                     <span id="jump--searchArtworkGrid" />
-                    <SortFilter filters={filters} />
-                    <Spacer mb={2} />
+
                     {this.props.children(filters)}
                   </Box>
                 </Desktop>
