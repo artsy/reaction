@@ -1,3 +1,15 @@
+# v15.10.3 (Tue Mar 26 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Remove null states from publishing Icons [#2213](https://github.com/artsy/reaction/pull/2213) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v15.10.2 (Mon Mar 25 2019)
 
 
