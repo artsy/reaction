@@ -1,3 +1,4 @@
+// @ts-strict
 import { startsWith } from "lodash"
 import React, { Component } from "react"
 import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
@@ -72,6 +73,10 @@ export class Text extends Component<Props, State> {
     return false
   }
 
+  test = (t: string | undefined) => {
+    t.replace("foo", "bar")
+  }
+
   transformNode = (node, index) => {
     const { color } = this.props
     // Dont include relay components unless necessary
@@ -86,7 +91,7 @@ export class Text extends Component<Props, State> {
 
     if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
       const href = node.attribs.href
-      const linkNode = get(node, n => n.children[0].data && n.children[0], {})
+      const linkNode = get(node, n => n.children[0].data && n.children[0])
 
       if (linkNode.data) {
         const props = { key: href + index, url: href, color }

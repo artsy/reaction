@@ -6,6 +6,7 @@
 .storybook/.DS_Store
 .storybook/manager.js
 .vscode/cSpell.json
+.tsconfig.strict.json
 *.tgz
 assets/reaction-force.js
 public/assets/fonts

@@ -20,7 +20,9 @@
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
-    "lint": "tslint -c tslint.json --project tsconfig.json && yarn prettier-check",
+    "postlint": "yarn prettier-check",
+    "lint": "tslint -c tslint.json --project tsconfig.json",
+    "lint:strict": "tslint -c tslint.json --project tsconfig.strict.json",
     "omg": "om g",
     "prepare": "patch-package",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
@@ -39,6 +41,7 @@
     "test:watch": "jest --watch --runInBand",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty --noEmit",
+    "posttype-check": "node ./scripts/strict-config.js && yarn tsc --pretty --noEmit -p .tsconfig.strict.json && rm .tsconfig.strict.json",
     "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
   },
   "resolutions": {
@@ -149,7 +152,7 @@
     "tslint-config-prettier": "^1.1.0",
     "tslint-plugin-relay": "^0.0.3",
     "tslint-react": "^2.4.0",
-    "typescript": "~3.1",
+    "typescript": "^3.3.4000",
     "typescript-styled-plugin": "^0.13.0",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^2.13.1",
