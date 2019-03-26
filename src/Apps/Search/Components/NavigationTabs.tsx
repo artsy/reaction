@@ -47,7 +47,6 @@ export class NavigationTabs extends React.Component<Props> {
       <RouteTab
         to={to}
         exact={exact}
-        preload={false}
         onClick={() => {
           this.handleClick(text, to)
         }}

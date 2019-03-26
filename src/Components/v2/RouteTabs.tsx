@@ -5,7 +5,7 @@ import {
   space,
   TabsContainer,
 } from "@artsy/palette"
-import { PreloadLink, PreloadLinkProps } from "Artsy/Router"
+import { Link, LinkProps } from "found"
 import React from "react"
 import styled from "styled-components"
 
@@ -26,22 +26,13 @@ export const RouteTabs = styled(TabsContainer)`
   }
 `
 
-export const RouteTab: React.FC<Partial<PreloadLinkProps>> = ({
-  children,
-  /**
-   * If set to false it will fall back to <Link> (from found) under the hood, and
-   * skip all preload behavior. For routes that depend on prepareVariables this
-   * is required.
-   */
-  preload = true,
-  ...props
-}) => {
+export const RouteTab: React.FC<LinkProps> = ({ children, ...props }) => {
   return (
-    <PreloadLink {...props} preload={preload}>
+    <Link {...props} activeClassName="active">
       <Sans size="3t" weight="medium">
         {children}
       </Sans>
-    </PreloadLink>
+    </Link>
   )
 }
 

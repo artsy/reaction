@@ -8,17 +8,10 @@ export interface Mediator {
 }
 
 export interface SystemProps {
-  /**
-   * The currently signed-in user.
-   *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
-   * and `USER_ACCESS_TOKEN` environment variables if available.
-   */
-  user?: User
+  /** Flag for checking if we're within an Eigen webview */
+  isEigen?: boolean
 
-  /**
-   * A PubSub hub typically used for communicating with Force.
-   */
+  /** A PubSub hub typically used for communicating with Force. */
   mediator?: Mediator
 
   /**
@@ -30,7 +23,13 @@ export interface SystemProps {
    */
   relayEnvironment?: Environment
 
-  isEigen?: boolean
+  /**
+   * The currently signed-in user.
+   *
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
+   */
+  user?: User
 }
 
 /**

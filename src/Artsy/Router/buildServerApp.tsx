@@ -11,7 +11,7 @@ import qs from "qs"
 import createQueryMiddleware from "farce/lib/createQueryMiddleware"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Boot } from "Artsy/Router/Components/Boot"
+import { Boot } from "Artsy/Router/Boot"
 
 import { getUser } from "Utils/getUser"
 import createLogger from "Utils/logger"

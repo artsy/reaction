@@ -40,6 +40,7 @@ interface Config {
 
 export interface RelaySSREnvironment extends Environment {
   relaySSRMiddleware: RelayClientSSR | RelayServerSSR
+  toggleFetching?: (isFetching) => void
 }
 
 export function createRelaySSREnvironment(config: Config = {}) {
@@ -107,7 +108,6 @@ export function createRelaySSREnvironment(config: Config = {}) {
       // be replaced by error / retry middleware
       next => async req => {
         const response = await next(req)
-
         if (!checkStatus || (response.status >= 200 && response.status < 300)) {
           return response
         } else {

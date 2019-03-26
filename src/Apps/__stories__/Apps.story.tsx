@@ -1,6 +1,6 @@
-import { storiesOf } from "@storybook/react"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
+import { storiesOf } from "storybook/storiesOf"
 import { routes as artistRoutes } from "../Artist/routes"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
