@@ -1,3 +1,15 @@
+# v15.11.1 (Tue Mar 26 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] export FeatureTextAsset [#2217](https://github.com/artsy/reaction/pull/2217) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v15.11.0 (Tue Mar 26 2019)
 
 #### 🚀  Enhancement
