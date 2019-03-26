@@ -30,25 +30,25 @@ export class NavigationTabs extends React.Component<Props> {
     subject: tab,
     destination_path,
   }))
-  handleClick(tab: string, destination_path: string) {
+  trackClick(tab: string, destination_path: string) {
     // no-op
   }
 
-  renderTab(
+  renderTab = (
     text: string,
     to: string,
     options: {
       exact?: boolean
     } = {}
-  ) {
+  ) => {
     const { exact } = options
-
+    const tabName = text.replace(/[0-9]/g, "").trim()
     return (
       <RouteTab
         to={to}
         exact={exact}
         onClick={() => {
-          this.handleClick(text, to)
+          this.trackClick(tabName, to)
         }}
       >
         {text}
