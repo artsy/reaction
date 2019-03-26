@@ -1,3 +1,15 @@
+# v15.11.2 (Tue Mar 26 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [SearchResults] Fix analytics for nav tabs [#2219](https://github.com/artsy/reaction/pull/2219) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.1 (Tue Mar 26 2019)
 
 #### 🐛  Bug Fix
