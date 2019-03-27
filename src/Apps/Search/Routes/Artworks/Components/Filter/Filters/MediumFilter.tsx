@@ -21,12 +21,6 @@ export class MediumFilter extends React.Component<Props> {
     const allowedMediums =
       mediums && mediums.length ? mediums : hardcodedMediums
 
-    const radioButtons = allowedMediums.map((medium, index) => {
-      return (
-        <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
-      )
-    })
-
     const selectedMedium = filters.state.medium
 
     return (
@@ -37,7 +31,11 @@ export class MediumFilter extends React.Component<Props> {
           this.onClick(selectedOption)
         }}
       >
-        {radioButtons}
+        {allowedMediums.map((medium, index) => {
+          return (
+            <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
+          )
+        })}
       </RadioGroup>
     )
   }

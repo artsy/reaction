@@ -45,6 +45,6 @@ describe("MediumFilter", () => {
     setTimeout(() => {
       expect(filterState.state.medium).toBe("photography")
       done()
-    })
+    }, 10)
   })
 })
