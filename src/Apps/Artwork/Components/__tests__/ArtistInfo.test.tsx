@@ -78,7 +78,7 @@ describe("ArtistInfo", () => {
       const user = {}
       const { Component, dispatch } = mockTracking(ArtistInfo)
       const component = mount(
-        <Component user={user} artist={ArtistInfoFixture} />
+        <Component user={user} artist={ArtistInfoFixture as any} />
       )
       const button = component.find("Button")
       button.simulate("click")
