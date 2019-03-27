@@ -9,6 +9,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
+import { ContextConsumer } from "Artsy"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
@@ -32,40 +33,57 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     const { artist, children } = this.props
 
     return (
-      <AppContainer>
-        <HorizontalPadding>
-          <Row>
-            <Col>
-              <ArtistHeader artist={artist} />
-            </Col>
-          </Row>
+      <ContextConsumer>
+        {({ user }) => {
+          const showRecommendations =
+            user && user.lab_features && user.lab_features.length > 0
 
-          <Spacer mb={3} />
+          return (
+            <AppContainer>
+              <HorizontalPadding>
+                <Row>
+                  <Col>
+                    <ArtistHeader artist={artist} />
+                  </Col>
+                </Row>
 
-          <Row>
-            <Col>
-              <NavigationTabs artist={artist} />
-              <Spacer mb={3} />
+                <Spacer mb={3} />
 
-              <Box minHeight="30vh">{children}</Box>
-            </Col>
-          </Row>
+                <Row>
+                  <Col>
+                    <NavigationTabs artist={artist} />
+                    <Spacer mb={3} />
 
-          <Row>
-            <Col>
-              <RecentlyViewed />
-            </Col>
-          </Row>
+                    <Box minHeight="30vh">{children}</Box>
+                  </Col>
+                </Row>
 
-          <Separator mt={6} mb={3} />
+                {showRecommendations && (
+                  <Row>
+                    <Col>
+                      <ArtistRecommendations />
+                    </Col>
+                  </Row>
+                )}
 
-          <Row>
-            <Col>
-              <Footer />
-            </Col>
-          </Row>
-        </HorizontalPadding>
-      </AppContainer>
+                <Row>
+                  <Col>
+                    <RecentlyViewed />
+                  </Col>
+                </Row>
+
+                <Separator mt={6} mb={3} />
+
+                <Row>
+                  <Col>
+                    <Footer />
+                  </Col>
+                </Row>
+              </HorizontalPadding>
+            </AppContainer>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }
@@ -80,3 +98,7 @@ export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
     }
   `,
 })
+
+function ArtistRecommendations() {
+  return <div>recommendations goes here </div>
+}
