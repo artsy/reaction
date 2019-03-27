@@ -10,7 +10,9 @@ export type PricingContext_artwork = {
     readonly pricingContext: ({
         readonly filterDescription: string;
         readonly bins: ReadonlyArray<{
+            readonly maxPrice: string | null;
             readonly maxPriceCents: number;
+            readonly minPrice: string | null;
             readonly minPriceCents: number;
             readonly numArtworks: number;
         }>;
@@ -73,7 +75,21 @@ const node: ConcreteFragment = {
             {
               "kind": "ScalarField",
               "alias": null,
+              "name": "maxPrice",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
               "name": "maxPriceCents",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "minPrice",
               "args": null,
               "storageKey": null
             },
@@ -104,5 +120,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '5f107eb659ec5c7547bfe1097a56ca6d';
+(node as any).hash = 'd73043f264d4f8a79b4b014c8072dc64';
 export default node;

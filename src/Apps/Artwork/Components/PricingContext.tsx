@@ -28,17 +28,17 @@ function PricingContext({ artwork }: PricingContextProps) {
       </Sans>
       <Spacer mb={[2, 3]} />
       <BarChart
-        minLabel={artwork.pricingContext.bins[0].minPriceCents}
+        minLabel={artwork.pricingContext.bins[0].minPrice}
         maxLabel={
           artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
-            .maxPriceCents
+            .maxPrice + "+"
         }
         bars={artwork.pricingContext.bins.map(
           (bin): BarDescriptor => {
-            const title = `${bin.minPriceCents}–${bin.maxPriceCents}`
+            const title = `${bin.minPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
-              artwork.priceCents.min / 100 >= bin.minPriceCents &&
-              artwork.priceCents.min / 100 < bin.maxPriceCents
+              artwork.priceCents.min >= bin.minPriceCents &&
+              artwork.priceCents.min < bin.maxPriceCents
             return {
               value: bin.numArtworks,
               label: {
@@ -69,7 +69,9 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       pricingContext {
         filterDescription
         bins {
+          maxPrice
           maxPriceCents
+          minPrice
           minPriceCents
           numArtworks
         }
