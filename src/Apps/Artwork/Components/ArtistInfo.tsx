@@ -65,9 +65,21 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     // noop
   }
 
-  toggleArtistInsights = () => {
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkAboutTheArtist,
+    subject: Schema.Subject.ShowArtistInsights,
+    type: Schema.Type.Button,
+  })
+  openArtistInsights() {
     this.setState({
-      showArtistInsights: !this.state.showArtistInsights,
+      showArtistInsights: true,
+    })
+  }
+
+  closeArtistInsights() {
+    this.setState({
+      showArtistInsights: false,
     })
   }
 
@@ -181,7 +193,11 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
               {showArtistInsightsButton && (
                 <Flex flexDirection="column" alignItems="flex-start">
                   <Button
-                    onClick={this.toggleArtistInsights}
+                    onClick={
+                      this.state.showArtistInsights
+                        ? this.closeArtistInsights.bind(this)
+                        : this.openArtistInsights.bind(this)
+                    }
                     variant="secondaryGray"
                     size="small"
                     mt={1}

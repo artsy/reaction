@@ -220,6 +220,7 @@ export enum Subject {
   Classification = "Classification info",
   ContactGallery = "Contact Gallery",
   EnterLiveAuction = "Enter live auction",
+  ShowArtistInsights = "Show artist insights",
 }
 
 /**
