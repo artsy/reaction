@@ -1,3 +1,15 @@
+# v15.11.4 (Wed Mar 27 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Some search results QA [#2221](https://github.com/artsy/reaction/pull/2221) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.3 (Wed Mar 27 2019)
 
 #### 🐛  Bug Fix
