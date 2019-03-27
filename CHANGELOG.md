@@ -1,3 +1,15 @@
+# v15.11.5 (Wed Mar 27 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Search] Allow pagination to be set from URL, and modify URL on artists tab [#2224](https://github.com/artsy/reaction/pull/2224) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.4 (Wed Mar 27 2019)
 
 #### 🐛  Bug Fix
