@@ -8,6 +8,7 @@ export type SearchResultsArtistsQueryVariables = {
     readonly after?: string | null;
     readonly before?: string | null;
     readonly term: string;
+    readonly page?: number | null;
 };
 export type SearchResultsArtistsQueryResponse = {
     readonly viewer: ({
@@ -28,14 +29,15 @@ query SearchResultsArtistsQuery(
   $after: String
   $before: String
   $term: String!
+  $page: Int
 ) {
   viewer {
-    ...SearchResultsArtists_viewer_4c14dZ
+    ...SearchResultsArtists_viewer_3D3mrw
   }
 }
 
-fragment SearchResultsArtists_viewer_4c14dZ on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTIST]) {
+fragment SearchResultsArtists_viewer_3D3mrw on Viewer {
+  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: [ARTIST]) {
     pageInfo {
       hasNextPage
       endCursor
@@ -115,6 +117,12 @@ var v0 = [
     "name": "term",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "page",
+    "type": "Int",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -147,7 +155,7 @@ return {
   "operationKind": "query",
   "name": "SearchResultsArtistsQuery",
   "id": null,
-  "text": "query SearchResultsArtistsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsArtists_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          _id\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsArtistsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_3D3mrw\n  }\n}\n\nfragment SearchResultsArtists_viewer_3D3mrw on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          _id\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -191,6 +199,12 @@ return {
                 "kind": "Variable",
                 "name": "last",
                 "variableName": "last",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
                 "type": null
               },
               {
@@ -255,6 +269,12 @@ return {
                 "kind": "Variable",
                 "name": "last",
                 "variableName": "last",
+                "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
                 "type": "Int"
               },
               {
@@ -440,5 +460,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'e9a05a7ac13817b34243f86197fd30c3';
+(node as any).hash = '02345ec0391a8b94f74dde5fb12c4441';
 export default node;

@@ -5,6 +5,7 @@ import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { Location } from "found"
+import qs from "qs"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
@@ -15,14 +16,24 @@ export interface Props {
   location: Location
 }
 
+interface State extends LoadingAreaState {
+  page: number
+}
+
 const PAGE_SIZE = 10
 
-export class SearchResultsArtistsRoute extends React.Component<
-  Props,
-  LoadingAreaState
-> {
+export class SearchResultsArtistsRoute extends React.Component<Props, State> {
   state = {
     isLoading: false,
+    page: null,
+  }
+
+  constructor(props) {
+    super(props)
+    const { location } = this.props
+    const { page } = get(location, l => l.query)
+
+    this.state = { isLoading: false, page: (page && parseInt(page, 10)) || 1 }
   }
 
   toggleLoading = isLoading => {
@@ -40,11 +51,11 @@ export class SearchResultsArtistsRoute extends React.Component<
     } = searchConnection
 
     if (hasNextPage) {
-      this.loadAfter(endCursor)
+      this.loadAfter(endCursor, this.state.page + 1)
     }
   }
 
-  loadAfter = cursor => {
+  loadAfter = (cursor: string, page: number) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -53,14 +64,25 @@ export class SearchResultsArtistsRoute extends React.Component<
         after: cursor,
         before: null,
         last: null,
+        page: null,
       },
       null,
       error => {
         this.toggleLoading(false)
-
+        this.setState({ page })
         if (error) {
           console.error(error)
         }
+
+        const { location } = this.props
+        const { term } = get(location, l => l.query)
+        const urlParams = qs.stringify({
+          term,
+          page,
+        })
+        // TODO: Look into using router push w/ query params.
+        // this.props.router.replace(`/search2?${filterQueryParams}`)
+        window.history.pushState({}, null, `/search2/artists?${urlParams}`)
       }
     )
   }
@@ -138,6 +160,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
+          page: { type: "Int" }
         ) {
         search(
           query: $term
@@ -145,6 +168,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
           after: $after
           before: $before
           last: $last
+          page: $page
           entities: [ARTIST]
         ) {
           pageInfo {
@@ -176,6 +200,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
       $after: String
       $before: String
       $term: String!
+      $page: Int
     ) {
       viewer {
         ...SearchResultsArtists_viewer
@@ -185,6 +210,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
             after: $after
             before: $before
             term: $term
+            page: $page
           )
       }
     }
