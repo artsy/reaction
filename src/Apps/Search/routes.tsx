@@ -84,9 +84,10 @@ export const routes: RouteConfig[] = [
         Component: SearchResultsArtistsRoute,
         prepareVariables,
         query: graphql`
-          query routes_SearchResultsArtistsQuery($term: String!) {
+          query routes_SearchResultsArtistsQuery($term: String!, $page: Int) {
             viewer {
-              ...SearchResultsArtists_viewer @arguments(term: $term)
+              ...SearchResultsArtists_viewer
+                @arguments(term: $term, page: $page)
             }
           }
         `,
