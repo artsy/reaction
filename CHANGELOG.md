@@ -1,3 +1,15 @@
+# v15.11.7 (Wed Mar 27 2019)
+
+#### 🐛  Bug Fix
+
+- Put pricing context on artwork page [#2222](https://github.com/artsy/reaction/pull/2222) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v15.11.6 (Wed Mar 27 2019)
 
 #### 🐛  Bug Fix
