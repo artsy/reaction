@@ -14,16 +14,15 @@ export interface Props {
 
 export class SearchResultsArtworksRoute extends React.Component<Props> {
   render() {
-    const {
-      viewer,
-      location: { query },
-    } = this.props
+    const { viewer, location } = this.props
+    const { query } = location
     const { term } = query
 
     return (
       <Provider
         inject={[
           new FilterState({
+            ...query,
             keyword: term,
           }),
         ]}

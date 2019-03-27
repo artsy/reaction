@@ -41,6 +41,27 @@ export const initialState = {
   keyword: null,
 }
 
+// This is used to remove default state params that clutter up URLs.
+export const isDefaultFilter = (filter, value): boolean => {
+  if (filter === "major_periods" || filter === "attribution_class") {
+    return value.length === 0
+  }
+
+  if (filter === "sort") {
+    return value === "-decayed_merch"
+  }
+
+  if (filter === "price_range" || filter === "height" || filter === "width") {
+    return value === "*-*"
+  }
+
+  if (filter === "page") {
+    return value === 1
+  }
+
+  return !value
+}
+
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
 
