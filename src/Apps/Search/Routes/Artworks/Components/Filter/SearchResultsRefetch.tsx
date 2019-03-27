@@ -1,9 +1,8 @@
 import { SearchResultsRefetch_viewer } from "__generated__/SearchResultsRefetch_viewer.graphql"
-import { FilterState, isDefaultFilter } from "Apps/Search/FilterState"
+import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
-import qs from "qs"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { SearchResultsArtworkGridRefreshContainer as SearchArtworkGrid } from "./SearchResultsArtworkGrid"
@@ -55,27 +54,13 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
             console.error(error)
           }
 
-          const term = this.props.filtersState.keyword
-
-          const filters = Object.entries(this.props.filtersState).reduce(
-            (acc, [key, value]) => {
-              if (isDefaultFilter(key, value) || key === "keyword") {
-                return acc
-              } else {
-                return { ...acc, [key]: value }
-              }
-            },
-            {}
-          )
-
-          const filterQueryParams = qs.stringify({
-            ...filters,
-            term,
-          })
-
           // TODO: Look into using router push w/ query params.
           // this.props.router.replace(`/search2?${filterQueryParams}`)
-          window.history.pushState({}, null, `/search2?${filterQueryParams}`)
+          window.history.pushState(
+            {},
+            null,
+            `/search2?${urlFragmentFromState(this.props.filtersState)}`
+          )
 
           this.setState({
             isLoading: false,
@@ -124,6 +109,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
           attribution_class: { type: "[String]" }
           color: { type: "String" }
           keyword: { type: "String!", defaultValue: "" }
+          page: { type: "Int" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -144,6 +130,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
           attribution_class: $attribution_class
           color: $color
           keyword: $keyword
+          page: $page
         ) {
           ...SearchResultsArtworkGrid_filtered_artworks
         }
@@ -168,6 +155,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
       $attribution_class: [String]
       $color: String
       $keyword: String
+      $page: Int
     ) {
       viewer {
         ...SearchResultsRefetch_viewer
@@ -188,6 +176,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
             attribution_class: $attribution_class
             color: $color
             keyword: $keyword
+            page: $page
           )
       }
     }

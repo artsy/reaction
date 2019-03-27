@@ -222,11 +222,13 @@ const FeedbackContainer = styled(Flex)`
 `
 
 const FeedbackTextAreaContainer = styled(Box)`
-  width: 484px;
+  max-width: 484px;
+  width: 100%;
 `
 
 const LoggedOutInputContainer = styled(Flex)`
-  width: 484px;
+  max-width: 484px;
+  width: 100%;
 `
 
 export const SendFeedback = withContext(SendFeedbackForm)

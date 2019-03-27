@@ -60,6 +60,7 @@ export const SearchResultsArtworksRouteFragmentContainer = createFragmentContain
         artist_id: { type: "String" }
         attribution_class: { type: "String" }
         color: { type: "String" }
+        page: { type: "Int" }
       ) {
       ...SearchResultsFilterContainer_viewer
         @arguments(
@@ -79,6 +80,7 @@ export const SearchResultsArtworksRouteFragmentContainer = createFragmentContain
           attribution_class: $attribution_class
           color: $color
           keyword: $keyword
+          page: $page
         )
     }
   `

@@ -139,6 +139,12 @@ return {
       "name": "keyword",
       "type": "String!",
       "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -289,6 +295,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": null
@@ -316,5 +328,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c11a1c8e0c39cbf677c15980fcd030b6';
+(node as any).hash = '10c3756d2b9d072fb78f6bbf1a733644';
 export default node;

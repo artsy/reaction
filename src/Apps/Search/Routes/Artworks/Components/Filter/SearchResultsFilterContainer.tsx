@@ -69,6 +69,7 @@ export const SearchResultsFilterFragmentContainer = createFragmentContainer(
         attribution_class: { type: "[String]" }
         color: { type: "String" }
         keyword: { type: "String!", defaultValue: "" }
+        page: { type: "Int" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         aggregations {
@@ -97,6 +98,7 @@ export const SearchResultsFilterFragmentContainer = createFragmentContainer(
           offerable: $offerable
           color: $color
           keyword: $keyword
+          page: $page
         )
     }
   `
