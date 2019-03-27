@@ -1,3 +1,15 @@
+# v15.11.3 (Wed Mar 27 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Correct URL behavior for filter interactions [#2220](https://github.com/artsy/reaction/pull/2220) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.2 (Tue Mar 26 2019)
 
 #### 🐛  Bug Fix
