@@ -1,3 +1,15 @@
+# v15.11.6 (Wed Mar 27 2019)
+
+#### 🐛  Bug Fix
+
+- Track clicks on "view insights" button on artist insights module [#2208](https://github.com/artsy/reaction/pull/2208) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.11.5 (Wed Mar 27 2019)
 
 #### 🐛  Bug Fix
