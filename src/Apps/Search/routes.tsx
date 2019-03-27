@@ -52,6 +52,7 @@ export const routes: RouteConfig[] = [
             $artist_id: String
             $attribution_class: [String]
             $color: String
+            $page: Int
           ) {
             viewer {
               ...SearchResultsArtworks_viewer
@@ -72,6 +73,7 @@ export const routes: RouteConfig[] = [
                   artist_id: $artist_id
                   attribution_class: $attribution_class
                   color: $color
+                  page: $page
                 )
             }
           }

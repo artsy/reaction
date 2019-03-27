@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
 import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -54,7 +54,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     }
   }
 
-  loadAfter = (cursor, page, filters, mediator) => {
+  loadAfter = (cursor, page, filters: FilterState, mediator) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -66,10 +66,17 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-        filters.setPage(page, mediator)
+        filters.setPage(page)
         if (error) {
           console.error(error)
         }
+
+        const { state } = filters
+        const urlFragment = urlFragmentFromState(state, { page })
+
+        // TODO: Look into using router push w/ query params.
+        // this.props.router.replace(`/search2?${filterQueryParams}`)
+        window.history.pushState({}, null, `/search2?${urlFragment}`)
       }
     )
   }

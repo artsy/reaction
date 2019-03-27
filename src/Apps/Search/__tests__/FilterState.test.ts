@@ -23,7 +23,10 @@ describe("FilterState", () => {
   it("confirms that state is set for price range filter", () => {
     instance.setState = jest.fn()
     instance.setFilter("price_range", "*-43000")
-    expect(instance.setState).toBeCalledWith({ price_range: "*-43000" })
+    expect(instance.setState).toBeCalledWith({
+      page: 1,
+      price_range: "*-43000",
+    })
   })
 
   it("confirms that price range filter is set to correct values", () => {
@@ -36,7 +39,7 @@ describe("FilterState", () => {
   it("returns a height range tuple based on filter string", () => {
     instance.setState = jest.fn()
     instance.setFilter("height", "*-50")
-    expect(instance.setState).toBeCalledWith({ height: "*-50" })
+    expect(instance.setState).toBeCalledWith({ page: 1, height: "*-50" })
   })
 
   it("returns a height range tuple based on the state", () => {
