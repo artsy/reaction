@@ -31,6 +31,7 @@ export class MediumFilter extends React.Component<Props> {
 
     return (
       <RadioGroup
+        deselectable
         defaultValue={selectedMedium}
         onSelect={selectedOption => {
           this.onClick(selectedOption)

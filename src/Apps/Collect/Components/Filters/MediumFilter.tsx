@@ -30,6 +30,7 @@ export const MediumFilter: React.SFC<{
         })
         return (
           <RadioGroup
+            deselectable
             onSelect={selectedOption => {
               filters.setFilter("medium", selectedOption, mediator)
             }}
