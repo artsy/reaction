@@ -1,15 +1,16 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
+import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { FilterState } from "Apps/Search/FilterState"
 import { ContextConsumer } from "Artsy"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
-
-import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 
 interface Props {
   columnCount: number | number[]
@@ -22,9 +23,21 @@ interface Props {
 
 const PAGE_SIZE = 30
 
+@track()
 class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
   state = {
     isLoading: false,
+  }
+
+  @track((props: Props, _state, [artwork]) => ({
+    action_type: Schema.ActionType.SelectedItemFromSearch,
+    query: props.term,
+    item_type: "Artwork",
+    item_id: artwork.id,
+    destination_path: artwork.href,
+  }))
+  trackBrickClick(_artwork) {
+    // no-op
   }
 
   loadNext = (filters, mediator) => {
@@ -94,6 +107,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                       mediator={mediator}
                       onClearFilters={filters.resetFilters}
                       emptyStateComponent={emptyStateComponent}
+                      onBrickClick={this.trackBrickClick.bind(this)}
                     />
 
                     <Spacer mb={3} />

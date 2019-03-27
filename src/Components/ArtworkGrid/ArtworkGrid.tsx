@@ -15,6 +15,8 @@ import GridItem from "../Artwork/GridItem"
 
 type SectionedArtworks = Array<Array<ArtworkGrid_artworks["edges"][0]["node"]>>
 
+type Artwork = ArtworkGrid_artworks["edges"][0]["node"]
+
 export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
@@ -22,7 +24,7 @@ export interface ArtworkGridProps
   preloadImageCount?: number
   itemMargin?: number
   mediator?: Mediator
-  onBrickClick?: () => void
+  onBrickClick?: (artwork?: Artwork) => void
   onClearFilters?: () => any
   onLoadMore?: () => any
   sectionMargin?: number
@@ -119,7 +121,7 @@ export class ArtworkGridContainer extends React.Component<
             lazyLoad={i + j >= preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
-                this.props.onBrickClick()
+                this.props.onBrickClick(artwork)
               }
             }}
           />
@@ -219,6 +221,8 @@ export default createFragmentContainer(
       edges {
         node {
           __id
+          id
+          href
           image {
             aspect_ratio
           }
