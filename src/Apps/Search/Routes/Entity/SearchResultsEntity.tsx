@@ -1,28 +1,41 @@
 import { Box, Separator, Spacer } from "@artsy/palette"
-import { SearchResultsShows_viewer } from "__generated__/SearchResultsShows_viewer.graphql"
+import { SearchResultsEntity_viewer } from "__generated__/SearchResultsEntity_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { Location } from "found"
+import qs from "qs"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
 export interface Props {
-  viewer: SearchResultsShows_viewer
+  viewer: SearchResultsEntity_viewer
   relay: RelayRefetchProp
   location: Location
+  entities: string[]
+  tab: string
+}
+
+interface State extends LoadingAreaState {
+  page: number
 }
 
 const PAGE_SIZE = 10
 
-export class SearchResultsShowsRoute extends React.Component<
-  Props,
-  LoadingAreaState
-> {
+export class SearchResultsEntityRoute extends React.Component<Props, State> {
   state = {
     isLoading: false,
+    page: null,
+  }
+
+  constructor(props) {
+    super(props)
+    const { location } = this.props
+    const { page } = get(location, l => l.query)
+
+    this.state = { isLoading: false, page: (page && parseInt(page, 10)) || 1 }
   }
 
   toggleLoading = isLoading => {
@@ -40,11 +53,11 @@ export class SearchResultsShowsRoute extends React.Component<
     } = searchConnection
 
     if (hasNextPage) {
-      this.loadAfter(endCursor)
+      this.loadAfter(endCursor, this.state.page + 1)
     }
   }
 
-  loadAfter = cursor => {
+  loadAfter = (cursor: string, page: number) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -53,40 +66,52 @@ export class SearchResultsShowsRoute extends React.Component<
         after: cursor,
         before: null,
         last: null,
+        page: null,
       },
       null,
       error => {
         this.toggleLoading(false)
-
+        this.setState({ page })
         if (error) {
           console.error(error)
         }
+
+        const { location, tab } = this.props
+        const { term } = get(location, l => l.query)
+        const urlParams = qs.stringify({
+          term,
+          page,
+        })
+        // TODO: Look into using router push w/ query params.
+        // this.props.router.replace(`/search2?${filterQueryParams}`)
+        window.history.pushState({}, null, `/search2/${tab}?${urlParams}`)
       }
     )
   }
 
-  renderShows() {
+  renderItems() {
     const { viewer, location } = this.props
     const { term } = get(location, l => l.query)
     const { search: searchConnection } = viewer
 
-    const shows = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+
     return (
       <>
-        {shows.map((show, index) => {
+        {items.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={show.displayLabel}
-                description={show.description}
-                href={show.href}
-                imageUrl={show.imageUrl}
-                entityType="Show"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.searchableType}
                 index={index}
                 term={term}
-                id={show._id}
+                id={searchableItem._id}
               />
-              {index < shows.length - 1 ? (
+              {index < items.length - 1 ? (
                 <>
                   <Spacer mb={3} />
                   <Separator />
@@ -110,33 +135,37 @@ export class SearchResultsShowsRoute extends React.Component<
   }
 
   render() {
-    const { viewer, location } = this.props
+    const { viewer, location, entities, tab } = this.props
+
     const { term } = get(location, l => l.query)
 
-    const shows = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const zeroStateText = entities.length === 1 ? tab : "results"
     return (
       <LoadingArea isLoading={this.state.isLoading}>
-        {shows.length === 0 ? (
-          <ZeroState entity="shows" term={term} />
+        {items.length === 0 ? (
+          <ZeroState entity={zeroStateText} term={term} />
         ) : (
-          this.renderShows()
+          this.renderItems()
         )}
       </LoadingArea>
     )
   }
 }
 
-export const SearchResultsShowsRouteRouteFragmentContainer = createRefetchContainer(
-  SearchResultsShowsRoute,
+export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
+  SearchResultsEntityRoute,
   {
     viewer: graphql`
-      fragment SearchResultsShows_viewer on Viewer
+      fragment SearchResultsEntity_viewer on Viewer
         @argumentDefinitions(
           term: { type: "String!", defaultValue: "" }
           first: { type: "Int", defaultValue: 10 }
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
+          page: { type: "Int" }
+          entities: { type: "[SearchEntity]" }
         ) {
         search(
           query: $term
@@ -144,7 +173,8 @@ export const SearchResultsShowsRouteRouteFragmentContainer = createRefetchContai
           after: $after
           before: $before
           last: $last
-          entities: [SHOW]
+          page: $page
+          entities: $entities
         ) {
           pageInfo {
             hasNextPage
@@ -170,21 +200,25 @@ export const SearchResultsShowsRouteRouteFragmentContainer = createRefetchContai
     `,
   },
   graphql`
-    query SearchResultsShowsQuery(
+    query SearchResultsEntityQuery(
       $first: Int
       $last: Int
       $after: String
       $before: String
       $term: String!
+      $page: Int
+      $entities: [SearchEntity]
     ) {
       viewer {
-        ...SearchResultsShows_viewer
+        ...SearchResultsEntity_viewer
           @arguments(
             first: $first
             last: $last
             after: $after
             before: $before
             term: $term
+            page: $page
+            entities: $entities
           )
       }
     }
