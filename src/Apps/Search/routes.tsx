@@ -1,21 +1,57 @@
 import { RouteConfig } from "found"
+import React from "react"
 import { graphql } from "react-relay"
 
-import { SearchResultsArticlesRouteRouteFragmentContainer as SearchResultsArticlesRoute } from "Apps/Search/Routes/Articles/SearchResultsArticles"
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
-import { SearchResultsAuctionsRouteRouteFragmentContainer as SearchResultsAuctionsRoute } from "Apps/Search/Routes/Auctions/SearchResultsAuctions"
-import { SearchResultsCategoriesRouteRouteFragmentContainer as SearchResultsCategoriesRoute } from "Apps/Search/Routes/Categories/SearchResultsCategories"
-import { SearchResultsCollectionsRouteFragmentContainer as SearchResultsCollectionsRoute } from "Apps/Search/Routes/Collections/SearchResultsCollections"
-import { SearchResultsGalleriesRouteRouteFragmentContainer as SearchResultsGalleriesRoute } from "Apps/Search/Routes/Galleries/SearchResultsGalleries"
-import { SearchResultsMoreRouteRouteFragmentContainer as SearchResultsMoreRoute } from "Apps/Search/Routes/More/SearchResultsMore"
-import { SearchResultsShowsRouteRouteFragmentContainer as SearchResultsShowsRoute } from "Apps/Search/Routes/Shows/SearchResultsShows"
+import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute } from "Apps/Search/Routes/Entity/SearchResultsEntity"
 
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
   return location.query
 }
+
+const tabsToEntitiesMap = {
+  collections: ["COLLECTION"],
+  shows: ["SHOW"],
+  galleries: ["GALLERY"],
+  categories: ["GENE"],
+  articles: ["ARTICLE"],
+  auctions: ["SALE"],
+  more: ["TAG", "CITY", "FAIR", "FEATURE", "INSTITUTION"],
+}
+
+const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
+  return {
+    path: key,
+    Component: SearchResultsEntityRoute,
+    render: ({ props, Component }) => {
+      if (!props) {
+        return null
+      }
+      return <Component {...props} tab={key} entities={entities} />
+    },
+    prepareVariables: (_params, { location }) => {
+      return {
+        ...prepareVariables(_params, { location }),
+        entities,
+      }
+    },
+    query: graphql`
+      query routes_SearchResultsEntityQuery(
+        $term: String!
+        $entities: [SearchEntity]
+        $page: Int
+      ) {
+        viewer {
+          ...SearchResultsEntity_viewer
+            @arguments(term: $term, entities: $entities, page: $page)
+        }
+      }
+    `,
+  }
+})
 
 export const routes: RouteConfig[] = [
   {
@@ -92,90 +128,7 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
-      {
-        path: "collections",
-        Component: SearchResultsCollectionsRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsCollectionsQuery($term: String!) {
-            viewer {
-              ...SearchResultsCollections_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "shows",
-        Component: SearchResultsShowsRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsShowsQuery($term: String!) {
-            viewer {
-              ...SearchResultsShows_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "galleries",
-        Component: SearchResultsGalleriesRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsGalleriesQuery($term: String!) {
-            viewer {
-              ...SearchResultsGalleries_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "categories",
-        Component: SearchResultsCategoriesRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsCategoriesQuery($term: String!) {
-            viewer {
-              ...SearchResultsCategories_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "articles",
-        Component: SearchResultsArticlesRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsArticlesQuery($term: String!) {
-            viewer {
-              ...SearchResultsArticles_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "auctions",
-        Component: SearchResultsAuctionsRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsAuctionsQuery($term: String!) {
-            viewer {
-              ...SearchResultsAuctions_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
-      {
-        path: "more",
-        Component: SearchResultsMoreRoute,
-        prepareVariables,
-        query: graphql`
-          query routes_SearchResultsMoreQuery($term: String!) {
-            viewer {
-              ...SearchResultsMore_viewer @arguments(term: $term)
-            }
-          }
-        `,
-      },
+      ...entityTabs,
     ],
   },
 ]

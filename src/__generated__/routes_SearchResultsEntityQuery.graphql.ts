@@ -1,33 +1,38 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsShows_viewer$ref } from "./SearchResultsShows_viewer.graphql";
-export type routes_SearchResultsShowsQueryVariables = {
+import { SearchResultsEntity_viewer$ref } from "./SearchResultsEntity_viewer.graphql";
+export type SearchEntity = "ARTICLE" | "ARTIST" | "ARTWORK" | "CITY" | "COLLECTION" | "FAIR" | "FEATURE" | "GALLERY" | "GENE" | "INSTITUTION" | "PROFILE" | "SALE" | "SHOW" | "TAG" | "%future added value";
+export type routes_SearchResultsEntityQueryVariables = {
     readonly term: string;
+    readonly entities?: ReadonlyArray<SearchEntity | null> | null;
+    readonly page?: number | null;
 };
-export type routes_SearchResultsShowsQueryResponse = {
+export type routes_SearchResultsEntityQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsShows_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsEntity_viewer$ref;
     }) | null;
 };
-export type routes_SearchResultsShowsQuery = {
-    readonly response: routes_SearchResultsShowsQueryResponse;
-    readonly variables: routes_SearchResultsShowsQueryVariables;
+export type routes_SearchResultsEntityQuery = {
+    readonly response: routes_SearchResultsEntityQueryResponse;
+    readonly variables: routes_SearchResultsEntityQueryVariables;
 };
 
 
 
 /*
-query routes_SearchResultsShowsQuery(
+query routes_SearchResultsEntityQuery(
   $term: String!
+  $entities: [SearchEntity]
+  $page: Int
 ) {
   viewer {
-    ...SearchResultsShows_viewer_4hh6ED
+    ...SearchResultsEntity_viewer_1qCJIT
   }
 }
 
-fragment SearchResultsShows_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 10, entities: [SHOW]) {
+fragment SearchResultsEntity_viewer_1qCJIT on Viewer {
+  search(query: $term, first: 10, page: $page, entities: $entities) {
     pageInfo {
       hasNextPage
       endCursor
@@ -84,6 +89,18 @@ var v0 = [
     "name": "term",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "entities",
+    "type": "[SearchEntity]",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "page",
+    "type": "Int",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -114,13 +131,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchResultsShowsQuery",
+  "name": "routes_SearchResultsEntityQuery",
   "id": null,
-  "text": "query routes_SearchResultsShowsQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsShows_viewer_4hh6ED\n  }\n}\n\nfragment SearchResultsShows_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 10, entities: [SHOW]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsEntityQuery(\n  $term: String!\n  $entities: [SearchEntity]\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_1qCJIT\n  }\n}\n\nfragment SearchResultsEntity_viewer_1qCJIT on Viewer {\n  search(query: $term, first: 10, page: $page, entities: $entities) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchResultsShowsQuery",
+    "name": "routes_SearchResultsEntityQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -136,8 +153,20 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsShows_viewer",
+            "name": "SearchResultsEntity_viewer",
             "args": [
+              {
+                "kind": "Variable",
+                "name": "entities",
+                "variableName": "entities",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
+                "type": null
+              },
               {
                 "kind": "Variable",
                 "name": "term",
@@ -152,7 +181,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchResultsShowsQuery",
+    "name": "routes_SearchResultsEntityQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -171,17 +200,21 @@ return {
             "storageKey": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "entities",
-                "value": [
-                  "SHOW"
-                ],
+                "variableName": "entities",
                 "type": "[SearchEntity]"
               },
               {
                 "kind": "Literal",
                 "name": "first",
                 "value": 10,
+                "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
                 "type": "Int"
               },
               {
@@ -374,5 +407,5 @@ return {
   }
 };
 })();
-(node as any).hash = '4bda87f127e61e5791921b98f9c02186';
+(node as any).hash = 'fe6c5e86fda971399b1d8f8dc6edb0df';
 export default node;

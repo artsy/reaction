@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _SearchResultsCollections_viewer$ref: unique symbol;
-export type SearchResultsCollections_viewer$ref = typeof _SearchResultsCollections_viewer$ref;
-export type SearchResultsCollections_viewer = {
+declare const _SearchResultsEntity_viewer$ref: unique symbol;
+export type SearchResultsEntity_viewer$ref = typeof _SearchResultsEntity_viewer$ref;
+export type SearchResultsEntity_viewer = {
     readonly search: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
@@ -24,14 +24,14 @@ export type SearchResultsCollections_viewer = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SearchResultsCollections_viewer$ref;
+    readonly " $refType": SearchResultsEntity_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SearchResultsCollections_viewer",
+  "name": "SearchResultsEntity_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -64,6 +64,18 @@ const node: ConcreteFragment = {
       "name": "before",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "entities",
+      "type": "[SearchEntity]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -86,11 +98,9 @@ const node: ConcreteFragment = {
           "type": "String"
         },
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "entities",
-          "value": [
-            "COLLECTION"
-          ],
+          "variableName": "entities",
           "type": "[SearchEntity]"
         },
         {
@@ -103,6 +113,12 @@ const node: ConcreteFragment = {
           "kind": "Variable",
           "name": "last",
           "variableName": "last",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
           "type": "Int"
         },
         {
@@ -237,5 +253,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '410a0c1f644056d3a36a426273d060f6';
+(node as any).hash = '15e987e5ecf8fb8d52499d2b797b8d08';
 export default node;
