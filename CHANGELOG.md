@@ -1,3 +1,15 @@
+# v15.11.10 (Thu Mar 28 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [SearchResults] Remove individual entity tabs in favor of one common one [#2229](https://github.com/artsy/reaction/pull/2229) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.9 (Thu Mar 28 2019)
 
 #### 🐛  Bug Fix
