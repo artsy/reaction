@@ -1,3 +1,15 @@
+# v15.11.9 (Thu Mar 28 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Search] Bring back Filter for xs breakpoint [#2227](https://github.com/artsy/reaction/pull/2227) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.8 (Thu Mar 28 2019)
 
 #### 🐛  Bug Fix
