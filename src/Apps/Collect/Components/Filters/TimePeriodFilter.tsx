@@ -29,6 +29,7 @@ export const TimePeriodFilter: React.SFC<{
       })
       return (
         <RadioGroup
+          deselectable
           onSelect={selectedOption => {
             filters.setFilter("major_periods", selectedOption, mediator)
           }}

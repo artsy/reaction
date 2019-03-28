@@ -43,7 +43,7 @@ describe("TimePeriodFilter", () => {
     setTimeout(() => {
       expect(filterState.state.major_periods[0]).toBe("2010")
       done()
-    })
+    }, 10)
   })
 
   it("only shows passed in time periods if available", () => {

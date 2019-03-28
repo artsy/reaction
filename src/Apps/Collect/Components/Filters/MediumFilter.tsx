@@ -15,26 +15,26 @@ export const MediumFilter: React.SFC<{
   return (
     <ContextConsumer>
       {({ mediator }) => {
-        const radioButtons = allowedMediums.map((medium, index) => {
-          const isSelected = filters.state.medium === medium.id
+        const selectedMedium = filters.state.medium
 
-          return (
-            <Radio
-              my={0.3}
-              selected={isSelected}
-              value={medium.id}
-              key={index}
-              label={medium.name}
-            />
-          )
-        })
         return (
           <RadioGroup
+            deselectable
+            defaultValue={selectedMedium}
             onSelect={selectedOption => {
               filters.setFilter("medium", selectedOption, mediator)
             }}
           >
-            {radioButtons}
+            {allowedMediums.map((medium, index) => {
+              return (
+                <Radio
+                  my={0.3}
+                  value={medium.id}
+                  key={index}
+                  label={medium.name}
+                />
+              )
+            })}
           </RadioGroup>
         )
       }}
