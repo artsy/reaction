@@ -81,7 +81,7 @@ export class SearchResultMoreRoute extends React.Component<
                 description={searchableItem.description}
                 href={searchableItem.href}
                 imageUrl={searchableItem.imageUrl}
-                entityType={searchableItem.searchableType}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
                 id={searchableItem._id}
@@ -161,7 +161,7 @@ export const SearchResultsMoreRouteRouteFragmentContainer = createRefetchContain
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }

@@ -40,12 +40,13 @@ fragment SearchResultsArtists_viewer_2iLyA0 on Viewer {
     edges {
       node {
         __typename
-        ... on Artist {
-          name
+        ... on SearchableItem {
+          displayLabel
           _id
           href
           imageUrl
-          bio
+          displayType
+          description
         }
         ... on Node {
           __id
@@ -123,7 +124,7 @@ return {
   "operationKind": "query",
   "name": "routes_SearchResultsArtistsQuery",
   "id": null,
-  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_2iLyA0\n  }\n}\n\nfragment SearchResultsArtists_viewer_2iLyA0 on Viewer {\n  search(query: $term, first: 10, page: $page, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          _id\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_2iLyA0\n  }\n}\n\nfragment SearchResultsArtists_viewer_2iLyA0 on Viewer {\n  search(query: $term, first: 10, page: $page, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          displayLabel\n          _id\n          href\n          imageUrl\n          displayType\n          description\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -326,12 +327,12 @@ return {
                       },
                       {
                         "kind": "InlineFragment",
-                        "type": "Artist",
+                        "type": "SearchableItem",
                         "selections": [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "name",
+                            "name": "displayLabel",
                             "args": null,
                             "storageKey": null
                           },
@@ -359,7 +360,14 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "bio",
+                            "name": "displayType",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "description",
                             "args": null,
                             "storageKey": null
                           }

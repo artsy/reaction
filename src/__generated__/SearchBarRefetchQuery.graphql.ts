@@ -36,7 +36,7 @@ fragment SearchBar_viewer_2Mejjw on Viewer {
         displayLabel
         href
         ... on SearchableItem {
-          searchableType
+          displayType
           id
         }
         ... on Node {
@@ -68,7 +68,7 @@ return {
   "operationKind": "query",
   "name": "SearchBarRefetchQuery",
   "id": null,
-  "text": "query SearchBarRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 5) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          searchableType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "query SearchBarRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 5) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          displayType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -208,7 +208,7 @@ return {
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
-                                "name": "searchableType",
+                                "name": "displayType",
                                 "args": null,
                                 "storageKey": null
                               },

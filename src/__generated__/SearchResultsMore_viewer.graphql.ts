@@ -20,7 +20,7 @@ export type SearchResultsMore_viewer = {
                 readonly href?: string | null;
                 readonly _id?: string;
                 readonly imageUrl?: string | null;
-                readonly searchableType?: string | null;
+                readonly displayType?: string | null;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -227,7 +227,7 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "searchableType",
+                      "name": "displayType",
                       "args": null,
                       "storageKey": null
                     }
@@ -241,5 +241,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '62192ed7900635db4eb362028503cfdb';
+(node as any).hash = 'b5e98b941b62e08d25f488a51b54c024';
 export default node;

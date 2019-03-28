@@ -26,7 +26,7 @@ describe("SearchResultsMore", () => {
               id: "percy",
               displayLabel: "Cat",
               href: "/cat/percy",
-              searchableType: "Artistic Cats",
+              displayType: "Artistic Cat",
             },
           },
         ],

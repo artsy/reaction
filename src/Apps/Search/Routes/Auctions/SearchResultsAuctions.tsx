@@ -75,18 +75,18 @@ export class SearchResultAuctionsRoute extends React.Component<
 
     return (
       <>
-        {sales.map((auction, index) => {
+        {sales.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={auction.displayLabel}
-                description={auction.description}
-                href={auction.href}
-                imageUrl={auction.imageUrl}
-                entityType="Auction"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={auction._id}
+                id={searchableItem._id}
               />
               {index < sales.length - 1 ? (
                 <>
@@ -163,7 +163,7 @@ export const SearchResultsAuctionsRouteRouteFragmentContainer = createRefetchCon
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }

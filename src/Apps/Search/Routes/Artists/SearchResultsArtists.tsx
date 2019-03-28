@@ -96,18 +96,18 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
 
     return (
       <>
-        {artists.map((artist, index) => {
+        {artists.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={artist.name}
-                description={artist.bio}
-                imageUrl={artist.imageUrl}
-                entityType="Artist"
-                href={artist.href}
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
+                href={searchableItem.href}
                 index={index}
                 term={term}
-                id={artist._id}
+                id={searchableItem._id}
               />
               {index < artists.length - 1 ? (
                 <>
@@ -180,12 +180,13 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
           }
           edges {
             node {
-              ... on Artist {
-                name
+              ... on SearchableItem {
+                displayLabel
                 _id
                 href
                 imageUrl
-                bio
+                displayType
+                description
               }
             }
           }

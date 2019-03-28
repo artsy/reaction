@@ -73,18 +73,18 @@ export class SearchResultsGalleriesRoute extends React.Component<
 
     return (
       <>
-        {galleries.map((gallery, index) => {
+        {galleries.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={gallery.displayLabel}
-                description={gallery.description}
-                href={gallery.href}
-                imageUrl={gallery.imageUrl}
-                entityType="Gallery"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={gallery._id}
+                id={searchableItem._id}
               />
               {index < galleries.length - 1 ? (
                 <>
@@ -160,7 +160,7 @@ export const SearchResultsGalleriesRouteRouteFragmentContainer = createRefetchCo
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }

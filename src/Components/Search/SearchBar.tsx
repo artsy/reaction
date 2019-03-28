@@ -101,7 +101,7 @@ export class SearchBar extends Component<Props, State> {
     if (!suggestion) return
 
     const {
-      node: { searchableType: entityType, id: entityID },
+      node: { displayType: entityType, id: entityID },
     } = suggestion
 
     if (entityType === "FirstItem") return
@@ -216,7 +216,7 @@ export class SearchBar extends Component<Props, State> {
       [
         {
           suggestion: {
-            node: { href, searchableType, id },
+            node: { href, displayType, id },
           },
           suggestionIndex,
         },
@@ -225,7 +225,7 @@ export class SearchBar extends Component<Props, State> {
       action_type: Schema.ActionType.SelectedItemFromSearch,
       query: state.term,
       destination_path: href,
-      item_type: searchableType,
+      item_type: displayType,
       item_id: id,
       item_number: suggestionIndex,
     })
@@ -273,7 +273,7 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderSuggestion = (
-    { node: { displayLabel, searchableType, href } },
+    { node: { displayLabel, displayType, href } },
     { query, isHighlighted }
   ) => {
     return (
@@ -281,7 +281,7 @@ export class SearchBar extends Component<Props, State> {
         display={displayLabel}
         href={href}
         isHighlighted={isHighlighted}
-        label={searchableType}
+        label={displayType}
         query={query}
       />
     )
@@ -304,7 +304,7 @@ export class SearchBar extends Component<Props, State> {
 
     const firstSuggestionPlaceholder = {
       node: {
-        searchableType: "FirstItem",
+        displayType: "FirstItem",
         displayLabel: term,
         href: `/search?q=${term}`,
       },
@@ -364,7 +364,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
               displayLabel
               href
               ... on SearchableItem {
-                searchableType
+                displayType
                 id
               }
             }

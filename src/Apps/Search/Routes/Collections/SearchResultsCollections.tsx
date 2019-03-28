@@ -74,18 +74,18 @@ export class SearchResultsCollectionsRoute extends React.Component<
 
     return (
       <>
-        {collections.map((collection, index) => {
+        {collections.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={collection.displayLabel}
-                description={collection.description}
-                href={collection.href}
-                imageUrl={collection.imageUrl}
-                entityType="Collection"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={collection._id}
+                id={searchableItem._id}
               />
               {index < collections.length - 1 ? (
                 <>
@@ -161,7 +161,7 @@ export const SearchResultsCollectionsRouteFragmentContainer = createRefetchConta
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }

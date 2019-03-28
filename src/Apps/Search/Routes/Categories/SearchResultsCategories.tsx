@@ -73,18 +73,18 @@ export class SearchResultCategoriesRoute extends React.Component<
     const genes = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <>
-        {genes.map((gene, index) => {
+        {genes.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={gene.displayLabel}
-                description={gene.description}
-                href={gene.href}
-                imageUrl={gene.imageUrl}
-                entityType="Category"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={gene._id}
+                id={searchableItem._id}
               />
               {index < genes.length - 1 ? (
                 <>
@@ -161,7 +161,7 @@ export const SearchResultsCategoriesRouteRouteFragmentContainer = createRefetchC
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }

@@ -52,7 +52,7 @@ fragment SearchResultsAuctions_viewer_4c14dZ on Viewer {
           href
           _id
           imageUrl
-          searchableType
+          displayType
         }
         ... on Node {
           __id
@@ -148,7 +148,7 @@ return {
   "operationKind": "query",
   "name": "SearchResultsAuctionsQuery",
   "id": null,
-  "text": "query SearchResultsAuctionsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsAuctions_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsAuctions_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SALE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsAuctionsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsAuctions_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsAuctions_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [SALE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -421,7 +421,7 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "searchableType",
+                            "name": "displayType",
                             "args": null,
                             "storageKey": null
                           }

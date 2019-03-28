@@ -73,18 +73,18 @@ export class SearchResultsShowsRoute extends React.Component<
     const shows = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <>
-        {shows.map((show, index) => {
+        {shows.map((searchableItem, index) => {
           return (
             <Box key={index}>
               <GenericSearchResultItem
-                name={show.displayLabel}
-                description={show.description}
-                href={show.href}
-                imageUrl={show.imageUrl}
-                entityType="Show"
+                name={searchableItem.displayLabel}
+                description={searchableItem.description}
+                href={searchableItem.href}
+                imageUrl={searchableItem.imageUrl}
+                entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={show._id}
+                id={searchableItem._id}
               />
               {index < shows.length - 1 ? (
                 <>
@@ -161,7 +161,7 @@ export const SearchResultsShowsRouteRouteFragmentContainer = createRefetchContai
                 href
                 _id
                 imageUrl
-                searchableType
+                displayType
               }
             }
           }
