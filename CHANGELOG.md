@@ -1,3 +1,15 @@
+# v15.11.8 (Thu Mar 28 2019)
+
+#### 🐛  Bug Fix
+
+- [RadioGroup] Add deselectable option [#2225](https://github.com/artsy/reaction/pull/2225) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.11.7 (Wed Mar 27 2019)
 
 #### 🐛  Bug Fix
