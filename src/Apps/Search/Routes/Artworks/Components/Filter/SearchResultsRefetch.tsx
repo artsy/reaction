@@ -1,5 +1,7 @@
 import { SearchResultsRefetch_viewer } from "__generated__/SearchResultsRefetch_viewer.graphql"
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -11,6 +13,7 @@ interface SearchRefetchProps {
   term: string
 }
 
+@track()
 export class SearchResultsRefetch extends Component<SearchRefetchProps> {
   // FIXME: Figure out a pattern so that setState can replace this completely
   // Used to prevent multiple in-flight requests
@@ -22,12 +25,19 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
         key !== "page" &&
         !isEqual(this.props.filtersState[key], prevProps.filtersState[key])
       ) {
-        this.loadFilter()
+        this.loadFilter(key)
       }
     })
   }
 
-  loadFilter = () => {
+  @track((props: SearchRefetchProps, _state, [key]) => {
+    return {
+      action_type: Schema.ActionType.ClickedCommercialFilter,
+      changed: { [key]: props.filtersState[key] },
+      current: { ...props.filtersState },
+    }
+  })
+  loadFilter(_key: string) {
     if (!this.isLoading) {
       this.setState({
         isLoading: true,
@@ -43,6 +53,14 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
           if (error) {
             console.error(error)
           }
+
+          // TODO: Look into using router push w/ query params.
+          // this.props.router.replace(`/search2?${filterQueryParams}`)
+          window.history.pushState(
+            {},
+            null,
+            `/search2?${urlFragmentFromState(this.props.filtersState)}`
+          )
 
           this.setState({
             isLoading: false,
@@ -91,6 +109,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
           attribution_class: { type: "[String]" }
           color: { type: "String" }
           keyword: { type: "String!", defaultValue: "" }
+          page: { type: "Int" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -111,6 +130,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
           attribution_class: $attribution_class
           color: $color
           keyword: $keyword
+          page: $page
         ) {
           ...SearchResultsArtworkGrid_filtered_artworks
         }
@@ -135,6 +155,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
       $attribution_class: [String]
       $color: String
       $keyword: String
+      $page: Int
     ) {
       viewer {
         ...SearchResultsRefetch_viewer
@@ -155,6 +176,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
             attribution_class: $attribution_class
             color: $color
             keyword: $keyword
+            page: $page
           )
       }
     }

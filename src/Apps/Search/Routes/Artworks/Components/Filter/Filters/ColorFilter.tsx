@@ -1,7 +1,5 @@
 import { CheckIcon } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
@@ -60,15 +58,7 @@ const CheckmarkPositions = {
   },
 }
 
-@track()
 export class ColorFilter extends React.Component<Props> {
-  @track((props: Props, _state, [color]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { color },
-      current: { ...props.filters.state },
-    }
-  })
   toggleColor(color) {
     const { filters } = this.props
     if (filters.state.color === color) {

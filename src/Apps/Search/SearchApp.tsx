@@ -1,4 +1,4 @@
-import { Col, Row, Separator, Serif, Spacer } from "@artsy/palette"
+import { Box, Col, Row, Separator, Serif, Spacer } from "@artsy/palette"
 import { SearchApp_viewer } from "__generated__/SearchApp_viewer.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -12,7 +12,6 @@ import {
 } from "Components/v2"
 import { Location } from "found"
 import React from "react"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 
 export interface Props {
@@ -48,19 +47,15 @@ export class SearchApp extends React.Component<Props> {
               <span id="jumpto--searchResultTabs" />
               <NavigationTabs term={term} searchableConnection={search} />
               <Spacer mb={3} />
-              {this.props.children}
+              <Box minHeight="30vh">{this.props.children}</Box>
             </Col>
           </Row>
 
-          {typeof window !== "undefined" && (
-            <LazyLoadComponent threshold={1000}>
-              <Row>
-                <Col>
-                  <RecentlyViewed />
-                </Col>
-              </Row>
-            </LazyLoadComponent>
-          )}
+          <Row>
+            <Col>
+              <RecentlyViewed />
+            </Col>
+          </Row>
 
           <Separator mt={6} mb={3} />
 

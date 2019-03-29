@@ -5,6 +5,7 @@ export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
+  CollectPage = "Collect page",
   SearchPage = "Search page",
 }
 
@@ -219,6 +220,7 @@ export enum Subject {
   Classification = "Classification info",
   ContactGallery = "Contact Gallery",
   EnterLiveAuction = "Enter live auction",
+  ShowArtistInsights = "Show artist insights",
 }
 
 /**

@@ -114,6 +114,12 @@ const node: ConcreteFragment = {
       "name": "keyword",
       "type": "String!",
       "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -205,6 +211,12 @@ const node: ConcreteFragment = {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": "ID"
@@ -253,5 +265,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ebd437ac353b964fd0bb654654474141';
+(node as any).hash = '383c1065dee0939b8f5ea99b9c2edf0a';
 export default node;

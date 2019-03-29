@@ -1,6 +1,6 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
 import { SelectedExhibitions_exhibitions } from "__generated__/SelectedExhibitions_exhibitions.graphql"
-import { PreloadLink } from "Artsy/Router"
+import { Link } from "found"
 import { groupBy, toPairs } from "lodash"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -103,11 +103,7 @@ interface FullExhibitionListProps {
 }
 const FullExhibitionList: SFC<FullExhibitionListProps> = props => {
   const {
-    // FIXME: To use PreloadLink the component has to be within a formal
-    // Artsy/Router app tree. This defaults to PreloadLink, but can be overwritten.
-    ViewAllLink = (
-      <PreloadLink to={`/artist/${props.artistID}/cv`}>View all</PreloadLink>
-    ),
+    ViewAllLink = <Link to={`/artist/${props.artistID}/cv`}>View all</Link>,
   } = props
   return (
     <React.Fragment>

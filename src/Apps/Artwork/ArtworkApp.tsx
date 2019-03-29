@@ -15,6 +15,7 @@ import { ArtworkMetaFragmentContainer as ArtworkMeta } from "./Components/Artwor
 import { ArtworkRelatedArtistsFragmentContainer as RelatedArtists } from "./Components/ArtworkRelatedArtists"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
+import { PricingContextFragmentContainer as PricingContext } from "./Components/PricingContext"
 
 import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -141,6 +142,7 @@ export class ArtworkApp extends React.Component<Props> {
                 <ArtworkImageBrowser artwork={artwork} />
                 <ArtworkSidebar artwork={artwork} />
                 <ArtworkDetails artwork={artwork} />
+                <PricingContext artwork={artwork} />
                 {this.renderArtists()}
               </Col>
             </Row>
@@ -153,6 +155,7 @@ export class ArtworkApp extends React.Component<Props> {
                 <Box pr={4}>
                   <ArtworkImageBrowser artwork={artwork} />
                   <ArtworkDetails artwork={artwork} />
+                  <PricingContext artwork={artwork} />
                   {this.renderArtists()}
                 </Box>
               </Col>
@@ -230,6 +233,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       ...ArtworkDetails_artwork
       ...ArtworkImageBrowser_artwork
       ...OtherWorks_artwork
+      ...PricingContext_artwork
     }
   `
 )

@@ -60,6 +60,20 @@ type AnalyticsHistogramBin {
   maxPriceCents: Int!
   minPriceCents: Int!
   numArtworks: Int!
+  minPrice(
+    decimal: String = "."
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
+  maxPrice(
+    decimal: String = "."
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
 }
 
 # Partner Stats
@@ -139,17 +153,6 @@ enum AnalyticsPricingContextCategoryEnum {
 
   # Work on Paper
   WORK_ON_PAPER
-}
-
-enum AnalyticsPricingContextDimensionsEnum {
-  # large
-  LARGE
-
-  # medium
-  MEDIUM
-
-  # small
-  SMALL
 }
 
 enum AnalyticsSamplingFrequencyEnum {
@@ -1043,6 +1046,13 @@ type Artwork implements Node & Searchable & Sellable {
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
   certificateOfAuthenticity: ArtworkInfoRow
+
+  # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
+  widthCm: Float
+
+  # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
+  heightCm: Float
+  pricingContext: AnalyticsPricingContext
 }
 
 enum ArtworkAggregation {
@@ -1247,6 +1257,8 @@ type ArtworkContextFair {
   location: Location
   name: String
   profile: Profile
+
+  # This connection only supports forward pagination. We're replacing Relay's default cursor with one from Gravity.
   shows_connection(
     # Number of artworks to return
     section: String
@@ -1901,6 +1913,12 @@ type ArtworkItem implements Node & Searchable & Sellable {
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
   certificateOfAuthenticity: ArtworkInfoRow
+
+  # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
+  widthCm: Float
+
+  # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
+  heightCm: Float
 }
 
 type ArtworkLayer {
@@ -3438,6 +3456,8 @@ type Fair {
   location: Location
   name: String
   profile: Profile
+
+  # This connection only supports forward pagination. We're replacing Relay's default cursor with one from Gravity.
   shows_connection(
     # Number of artworks to return
     section: String
@@ -4704,6 +4724,8 @@ type HomePageModuleContextFair {
   location: Location
   name: String
   profile: Profile
+
+  # This connection only supports forward pagination. We're replacing Relay's default cursor with one from Gravity.
   shows_connection(
     # Number of artworks to return
     section: String
@@ -7570,6 +7592,9 @@ type Query {
     # Mode of search to execute. Default: SITE.
     mode: SearchMode
     aggregations: [SearchAggregation]
+
+    # If present, will be used for pagination instead of cursors.
+    page: Int
     after: String
     first: Int
     before: String
@@ -7682,14 +7707,6 @@ type Query {
 
   # Find PartnerStats
   analyticsPartnerStats(partnerId: String!): AnalyticsPartnerStatsType
-
-  # Pricing Context Histograms
-  analyticsPricingContext(
-    artistId: String!
-    category: AnalyticsPricingContextCategoryEnum!
-    dimensions: AnalyticsPricingContextDimensionsEnum!
-    listPriceCents: Int!
-  ): AnalyticsPricingContext
   marketingCollections(
     randomizationSeed: String
     size: Int
@@ -9592,6 +9609,9 @@ type Viewer {
     # Mode of search to execute. Default: SITE.
     mode: SearchMode
     aggregations: [SearchAggregation]
+
+    # If present, will be used for pagination instead of cursors.
+    page: Int
     after: String
     first: Int
     before: String

@@ -2,41 +2,42 @@ import { ContextConsumer } from "Artsy/SystemContext"
 import React from "react"
 import { FilterState } from "../../FilterState"
 
-import { Radio } from "@artsy/palette"
+import { Radio, RadioGroup } from "@artsy/palette"
 
 export const TimePeriodFilter: React.SFC<{
   filters: FilterState
   timePeriods?: string[]
 }> = ({ filters, timePeriods }) => (
   <ContextConsumer>
-    {({ mediator }) =>
-      (timePeriods || allowedPeriods)
-        .filter(timePeriod => allowedPeriods.includes(timePeriod))
-        .map((timePeriod, index) => {
-          const isSelected = filters.state.major_periods[0] === timePeriod
+    {({ mediator }) => {
+      const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
+        allowedPeriods.includes(timePeriod)
+      )
 
-          return (
-            <Radio
-              my={0.3}
-              selected={isSelected}
-              value={timePeriod}
-              onSelect={({ selected }) => {
-                if (selected) {
-                  return filters.setFilter(
-                    "major_periods",
-                    timePeriod,
-                    mediator
-                  )
-                } else {
-                  return filters.unsetFilter("major_periods", mediator)
-                }
-              }}
-              key={index}
-              label={timePeriod}
-            />
-          )
-        })
-    }
+      const radioButtons = periods.map((timePeriod, index) => {
+        const isSelected = filters.state.major_periods[0] === timePeriod
+
+        return (
+          <Radio
+            my={0.3}
+            selected={isSelected}
+            value={timePeriod}
+            key={index}
+            label={timePeriod}
+          />
+        )
+      })
+      return (
+        <RadioGroup
+          deselectable
+          onSelect={selectedOption => {
+            filters.setFilter("major_periods", selectedOption, mediator)
+          }}
+        >
+          {radioButtons}
+        </RadioGroup>
+      )
+    }}
   </ContextConsumer>
 )
 

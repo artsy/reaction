@@ -1,16 +1,17 @@
+import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { ContextProvider } from "Artsy"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
-import { SearchResultMoreRoute as SearchResultsMore } from "../SearchResultsMore"
+import { SearchResultsEntityRoute as SearchResultsEntity } from "../SearchResultsEntity"
 
-describe("SearchResultsMore", () => {
-  const getWrapper = (searchProps: any) => {
+describe("SearchResultsEntity", () => {
+  const getWrapper = searchProps => {
     return mount(
       <MockBoot>
         <ContextProvider>
-          <SearchResultsMore {...searchProps} />
+          <SearchResultsEntity {...searchProps} />
         </ContextProvider>
       </MockBoot>
     )
@@ -32,15 +33,36 @@ describe("SearchResultsMore", () => {
         ],
         pageInfo: {
           hasNextPage: true,
+          endCursor: null,
         },
         pageCursors: {
           around: [],
         },
       },
     },
+    entities: ["GALLERY"],
+    urlTab: "galleries",
   }
 
-  it("renders artworks contents", () => {
+  const emptyResults = {
+    location: { query: { term: "andy" } },
+    viewer: {
+      search: {
+        edges: [],
+        pageInfo: {
+          hasNextPage: true,
+          endCursor: null,
+        },
+        pageCursors: {
+          around: [],
+        },
+      },
+    },
+    entities: ["GALLERY"],
+    urlTab: "galleries",
+  }
+
+  it("renders the items", () => {
     const wrapper = getWrapper(props) as any
     const html = wrapper.html()
     expect(html).toContain("Artistic Cats")
@@ -49,5 +71,10 @@ describe("SearchResultsMore", () => {
   it("renders the pagination control", () => {
     const wrapper = getWrapper(props)
     expect(wrapper.find(Pagination).exists).toBeTruthy()
+  })
+
+  it("renders zero state when there are no items", () => {
+    const wrapper = getWrapper(emptyResults)
+    expect(wrapper.find(ZeroState).exists).toBeTruthy()
   })
 })

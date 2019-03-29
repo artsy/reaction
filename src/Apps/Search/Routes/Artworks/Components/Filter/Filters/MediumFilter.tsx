@@ -1,7 +1,5 @@
 import { Radio, RadioGroup } from "@artsy/palette"
 import { FilterState } from "Apps/Search/FilterState"
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 
 interface Props {
@@ -12,37 +10,32 @@ interface Props {
   }>
 }
 
-@track()
 export class MediumFilter extends React.Component<Props> {
-  @track((props: Props, _state, [medium]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { medium },
-      current: { ...props.filters.state },
-    }
-  })
   onClick(value) {
     const { filters } = this.props
     filters.setFilter("medium", value)
   }
 
   render() {
-    const { mediums } = this.props
+    const { mediums, filters } = this.props
     const allowedMediums =
       mediums && mediums.length ? mediums : hardcodedMediums
 
-    const radioButtons = allowedMediums.map((medium, index) => {
-      return (
-        <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
-      )
-    })
+    const selectedMedium = filters.state.medium
+
     return (
       <RadioGroup
+        deselectable
+        defaultValue={selectedMedium}
         onSelect={selectedOption => {
           this.onClick(selectedOption)
         }}
       >
-        {radioButtons}
+        {allowedMediums.map((medium, index) => {
+          return (
+            <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
+          )
+        })}
       </RadioGroup>
     )
   }

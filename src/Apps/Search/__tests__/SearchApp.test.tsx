@@ -4,9 +4,9 @@ import { mount } from "enzyme"
 import React from "react"
 import { SearchApp } from "../SearchApp"
 
-jest.mock("Artsy/Router/Components/PreloadLink", () => {
+jest.mock("found", () => {
   return {
-    PreloadLink: ({
+    Link: ({
       to,
       children: {
         props: { children },

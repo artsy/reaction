@@ -1,4 +1,5 @@
 import { cloneDeep, isNil, omitBy } from "lodash"
+import qs from "qs"
 import { Container } from "unstated"
 
 export interface State {
@@ -39,6 +40,46 @@ export const initialState = {
   artist_id: null,
   color: null,
   keyword: null,
+}
+
+// Returns a string representing the query part of a URL.
+// It removes default values, and rewrites keyword -> term.
+export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
+  const { keyword: term } = state
+  const filters = Object.entries(state).reduce((acc, [key, value]) => {
+    if (isDefaultFilter(key, value) || key === "keyword") {
+      return acc
+    } else {
+      return { ...acc, [key]: value }
+    }
+  }, {})
+
+  return qs.stringify({
+    ...filters,
+    term,
+    ...extra,
+  })
+}
+
+// This is used to remove default state params that clutter up URLs.
+const isDefaultFilter = (filter, value): boolean => {
+  if (filter === "major_periods" || filter === "attribution_class") {
+    return value.length === 0
+  }
+
+  if (filter === "sort") {
+    return value === "-decayed_merch"
+  }
+
+  if (filter === "price_range" || filter === "height" || filter === "width") {
+    return value === "*-*"
+  }
+
+  if (filter === "page") {
+    return value === 1
+  }
+
+  return !value
 }
 
 export class FilterState extends Container<State> {
@@ -157,7 +198,7 @@ export class FilterState extends Container<State> {
         break
     }
 
-    this.setState(newPartialState)
+    this.setState({ page: 1, ...newPartialState })
   }
 
   isRangeSelected(range: string): boolean {

@@ -8,6 +8,8 @@ export type ArtworkGrid_artworks = {
     readonly edges: ReadonlyArray<({
         readonly node: ({
             readonly __id: string;
+            readonly id: string;
+            readonly href: string | null;
             readonly image: ({
                 readonly aspect_ratio: number;
             }) | null;
@@ -52,6 +54,20 @@ const node: ConcreteFragment = {
               "storageKey": null
             },
             {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "href",
+              "args": null,
+              "storageKey": null
+            },
+            {
               "kind": "LinkedField",
               "alias": null,
               "name": "image",
@@ -80,5 +96,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '54946907e0dd09ddb3b063c64b517438';
+(node as any).hash = 'b14f0927b10e6b5c53d7bd2ca546a2cf';
 export default node;

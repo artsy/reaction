@@ -1,41 +1,46 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsCategories_viewer$ref } from "./SearchResultsCategories_viewer.graphql";
-export type SearchResultsCategoriesQueryVariables = {
+import { SearchResultsEntity_viewer$ref } from "./SearchResultsEntity_viewer.graphql";
+export type SearchEntity = "ARTICLE" | "ARTIST" | "ARTWORK" | "CITY" | "COLLECTION" | "FAIR" | "FEATURE" | "GALLERY" | "GENE" | "INSTITUTION" | "PROFILE" | "SALE" | "SHOW" | "TAG" | "%future added value";
+export type SearchResultsEntityQueryVariables = {
     readonly first?: number | null;
     readonly last?: number | null;
     readonly after?: string | null;
     readonly before?: string | null;
     readonly term: string;
+    readonly page?: number | null;
+    readonly entities?: ReadonlyArray<SearchEntity | null> | null;
 };
-export type SearchResultsCategoriesQueryResponse = {
+export type SearchResultsEntityQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsCategories_viewer$ref;
+        readonly " $fragmentRefs": SearchResultsEntity_viewer$ref;
     }) | null;
 };
-export type SearchResultsCategoriesQuery = {
-    readonly response: SearchResultsCategoriesQueryResponse;
-    readonly variables: SearchResultsCategoriesQueryVariables;
+export type SearchResultsEntityQuery = {
+    readonly response: SearchResultsEntityQueryResponse;
+    readonly variables: SearchResultsEntityQueryVariables;
 };
 
 
 
 /*
-query SearchResultsCategoriesQuery(
+query SearchResultsEntityQuery(
   $first: Int
   $last: Int
   $after: String
   $before: String
   $term: String!
+  $page: Int
+  $entities: [SearchEntity]
 ) {
   viewer {
-    ...SearchResultsCategories_viewer_4c14dZ
+    ...SearchResultsEntity_viewer_4tOGvB
   }
 }
 
-fragment SearchResultsCategories_viewer_4c14dZ on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [GENE]) {
+fragment SearchResultsEntity_viewer_4tOGvB on Viewer {
+  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) {
     pageInfo {
       hasNextPage
       endCursor
@@ -116,6 +121,18 @@ var v0 = [
     "name": "term",
     "type": "String!",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "page",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "entities",
+    "type": "[SearchEntity]",
+    "defaultValue": null
   }
 ],
 v1 = {
@@ -146,13 +163,13 @@ v3 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "SearchResultsCategoriesQuery",
+  "name": "SearchResultsEntityQuery",
   "id": null,
-  "text": "query SearchResultsCategoriesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n) {\n  viewer {\n    ...SearchResultsCategories_viewer_4c14dZ\n  }\n}\n\nfragment SearchResultsCategories_viewer_4c14dZ on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, entities: [GENE]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query SearchResultsEntityQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n  $page: Int\n  $entities: [SearchEntity]\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_4tOGvB\n  }\n}\n\nfragment SearchResultsEntity_viewer_4tOGvB on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          searchableType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "SearchResultsCategoriesQuery",
+    "name": "SearchResultsEntityQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -168,7 +185,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SearchResultsCategories_viewer",
+            "name": "SearchResultsEntity_viewer",
             "args": [
               {
                 "kind": "Variable",
@@ -180,6 +197,12 @@ return {
                 "kind": "Variable",
                 "name": "before",
                 "variableName": "before",
+                "type": null
+              },
+              {
+                "kind": "Variable",
+                "name": "entities",
+                "variableName": "entities",
                 "type": null
               },
               {
@@ -196,6 +219,12 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
+                "type": null
+              },
+              {
+                "kind": "Variable",
                 "name": "term",
                 "variableName": "term",
                 "type": null
@@ -208,7 +237,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "SearchResultsCategoriesQuery",
+    "name": "SearchResultsEntityQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -239,11 +268,9 @@ return {
                 "type": "String"
               },
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "entities",
-                "value": [
-                  "GENE"
-                ],
+                "variableName": "entities",
                 "type": "[SearchEntity]"
               },
               {
@@ -256,6 +283,12 @@ return {
                 "kind": "Variable",
                 "name": "last",
                 "variableName": "last",
+                "type": "Int"
+              },
+              {
+                "kind": "Variable",
+                "name": "page",
+                "variableName": "page",
                 "type": "Int"
               },
               {
@@ -448,5 +481,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b9cbce2f0b2866ca1a2686c59588bb60';
+(node as any).hash = '6db171bc8aa2ccfdee6ad207f60ab6be';
 export default node;

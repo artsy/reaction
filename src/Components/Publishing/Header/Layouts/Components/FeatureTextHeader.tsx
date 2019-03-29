@@ -24,7 +24,7 @@ export const FeatureTextHeader: React.SFC<FeatureHeaderProps> = props => {
         editTitle={editTitle}
       />
 
-      <Asset>
+      <FeatureTextAsset>
         {editImage && <EditImage>{editImage}</EditImage>}
         {url &&
           (url.includes("mp4") ? (
@@ -40,7 +40,7 @@ export const FeatureTextHeader: React.SFC<FeatureHeaderProps> = props => {
           ) : (
             <Image src={src} alt={alt} />
           ))}
-      </Asset>
+      </FeatureTextAsset>
     </TextHeaderContainer>
   )
 }
@@ -51,7 +51,7 @@ const Image = styled.img`
   box-sizing: border-box;
 `
 
-const Asset = styled.div`
+export const FeatureTextAsset = styled.div`
   width: 100%;
   padding-top: ${space(2)}px;
   box-sizing: border-box;
