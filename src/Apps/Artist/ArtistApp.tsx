@@ -14,6 +14,7 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
+import { userHasLabFeature } from "Utils/getUser"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -35,8 +36,10 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const showRecommendations =
-            user && user.lab_features && user.lab_features.length > 0
+          const showRecommendations = userHasLabFeature(
+            user,
+            "Artist Recommendations"
+          )
 
           return (
             <AppContainer>
