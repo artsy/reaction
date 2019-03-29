@@ -1,5 +1,18 @@
+import { Serif } from "@artsy/palette"
 import React from "react"
 
 export function ArtistRecommendations() {
-  return <div>recommendations goes here </div>
+  const { artistName } = data
+
+  return (
+    <div>
+      <Serif size="8" color="black100">
+        Related to {artistName}
+      </Serif>
+    </div>
+  )
+}
+
+const data = {
+  artistName: "Donald Judd",
 }
