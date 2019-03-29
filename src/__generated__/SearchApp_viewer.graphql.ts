@@ -11,7 +11,7 @@ export type SearchApp_viewer = {
             readonly node: ({
                 readonly id?: string;
                 readonly displayLabel?: string | null;
-                readonly searchableType?: string | null;
+                readonly displayType?: string | null;
             }) | null;
         }) | null> | null;
         readonly " $fragmentRefs": NavigationTabs_searchableConnection$ref;
@@ -123,7 +123,7 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "searchableType",
+                      "name": "displayType",
                       "args": null,
                       "storageKey": null
                     }
@@ -137,5 +137,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'c7337eb9cc0b3d6722f1d77660ed2fb9';
+(node as any).hash = 'f26d9caeace9103dd98b540e94ead020';
 export default node;

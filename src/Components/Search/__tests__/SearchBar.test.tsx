@@ -17,7 +17,7 @@ const searchResults = {
         node: {
           displayLabel: "Percy Z",
           href: "/cat/percy-z",
-          searchableType: "Cat",
+          displayType: "Cat",
           id: "percy-z",
         },
       },
