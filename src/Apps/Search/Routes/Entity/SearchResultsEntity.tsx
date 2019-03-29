@@ -112,11 +112,9 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
                 id={searchableItem._id}
               />
               {index < items.length - 1 ? (
-                <>
-                  <Spacer mb={3} />
+                <Box my={3}>
                   <Separator />
-                  <Spacer mb={3} />
-                </>
+                </Box>
               ) : (
                 <Spacer mb={3} />
               )}
