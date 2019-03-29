@@ -1,3 +1,15 @@
+# v15.11.11 (Fri Mar 29 2019)
+
+#### 🐛  Bug Fix
+
+- Update spacer [#2231](https://github.com/artsy/reaction/pull/2231) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.11.10 (Thu Mar 28 2019)
 
 #### 🐛  Bug Fix
