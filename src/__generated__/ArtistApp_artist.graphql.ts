@@ -2,13 +2,14 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
+import { ArtistRecommendations_artist$ref } from "./ArtistRecommendations_artist.graphql";
 import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
 declare const _ArtistApp_artist$ref: unique symbol;
 export type ArtistApp_artist$ref = typeof _ArtistApp_artist$ref;
 export type ArtistApp_artist = {
     readonly _id: string;
     readonly id: string;
-    readonly " $fragmentRefs": ArtistHeader_artist$ref & NavigationTabs_artist$ref;
+    readonly " $fragmentRefs": ArtistHeader_artist$ref & NavigationTabs_artist$ref & ArtistRecommendations_artist$ref;
     readonly " $refType": ArtistApp_artist$ref;
 };
 
@@ -46,6 +47,11 @@ const node: ConcreteFragment = {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "ArtistRecommendations_artist",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "__id",
@@ -54,5 +60,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '6ec519bff85cfd1957c0c3e0d61027ed';
+(node as any).hash = 'b800d135f4b25498c988f3341933a2c8';
 export default node;

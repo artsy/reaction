@@ -5,7 +5,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as artistRoutes } from "../Artist/routes"
 
-storiesOf("Apps", module)
+storiesOf("Apps/Artist Page", module)
   .add("Artist Page", () => {
     return (
       <MockRouter
@@ -22,7 +22,12 @@ storiesOf("Apps", module)
   .add("Artist Recommendations", () => {
     return (
       <Box m={3}>
-        <ArtistRecommendations />
+        <ArtistRecommendations artist={artistWithRecommendations} />
       </Box>
     )
   })
+
+const artistWithRecommendations = {
+  " $refType": null,
+  name: "Pablo Picasso",
+}
