@@ -9,7 +9,7 @@ export type SearchBar_viewer = {
             readonly node: ({
                 readonly displayLabel: string | null;
                 readonly href: string | null;
-                readonly searchableType?: string | null;
+                readonly displayType?: string | null;
                 readonly id?: string;
             }) | null;
         }) | null> | null;
@@ -118,7 +118,7 @@ const node: ConcreteFragment = {
                         {
                           "kind": "ScalarField",
                           "alias": null,
-                          "name": "searchableType",
+                          "name": "displayType",
                           "args": null,
                           "storageKey": null
                         },
@@ -141,5 +141,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'e649d07e62973aefbb0d83d8c32d5031';
+(node as any).hash = '4dcffe86d167506ae2899dd1d5b0ef19';
 export default node;

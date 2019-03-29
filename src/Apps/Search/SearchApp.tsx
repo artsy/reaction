@@ -82,7 +82,7 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
             ... on SearchableItem {
               id
               displayLabel
-              searchableType
+              displayType
             }
           }
         }
