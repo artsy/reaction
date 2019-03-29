@@ -3,18 +3,18 @@ import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
+import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
-
-import { ContextConsumer } from "Artsy"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { userHasLabFeature } from "Utils/getUser"
+import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
+import { ArtistRecommendations } from "./Components/ArtistRecommendations"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -101,7 +101,3 @@ export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
     }
   `,
 })
-
-function ArtistRecommendations() {
-  return <div>recommendations goes here </div>
-}
