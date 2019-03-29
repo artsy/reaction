@@ -5,7 +5,7 @@ interface State {
 }
 
 export class FollowArtistPopoverState extends Container<State> {
-  state = { excludeArtistIds: [] }
+  state: State = { excludeArtistIds: [] }
 
   constructor(props: State) {
     super()
@@ -16,7 +16,7 @@ export class FollowArtistPopoverState extends Container<State> {
   }
 
   addArtist = (artistId: string) => {
-    const { excludeArtistIds } = this.state
+    const { excludeArtistIds = [] } = this.state
     this.setState({ excludeArtistIds: excludeArtistIds.concat(artistId) })
   }
 }

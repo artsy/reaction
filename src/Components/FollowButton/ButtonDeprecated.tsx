@@ -34,7 +34,7 @@ export class FollowButtonDeprecated extends React.Component<Props, State> {
 
     return (
       <FollowButtonContainer
-        isFollowed={isFollowed}
+        isFollowed={isFollowed || false}
         onClick={handleFollow}
         onMouseEnter={() => this.setState({ showUnfollow: true })}
         onMouseLeave={() => this.setState({ showUnfollow: false })}

@@ -18,7 +18,7 @@ interface Props {
 interface State {
   inToolTip: boolean
   maybeHideToolTip: boolean
-  position: ClientRect
+  position?: ClientRect
   orientation?: string
 }
 
@@ -37,10 +37,9 @@ export class LinkWithTooltip extends Component<Props, State> {
   public link: any
   public SetupToolTipPosition: any
 
-  state = {
+  state: State = {
     inToolTip: false,
     maybeHideToolTip: false,
-    position: null,
     orientation: "up",
   }
 
@@ -141,14 +140,16 @@ export class LinkWithTooltip extends Component<Props, State> {
   }
 
   getToolTipPosition = type => {
-    if (this.link) {
+    if (this.link && this.state.position) {
+      // TODO: Fix this type failure
+      // @ts-ignore
       const { left, width, x } = this.state.position
       const linkCenter = width / 2
       const toolTipWidth = type === "artist" ? 360 : 280
 
       let toolTipLeft = linkCenter - toolTipWidth / 2
       const isAtWindowBoundary = x + toolTipLeft < 10
-      let arrowLeft = null
+      let arrowLeft = 0
 
       if (isAtWindowBoundary) {
         const padding = 20
@@ -229,7 +230,7 @@ export class LinkWithTooltip extends Component<Props, State> {
                 this.setState({ inToolTip: true })
               }}
               positionLeft={toolTipPosition && toolTipPosition.toolTipLeft}
-              arrowLeft={toolTipPosition && toolTipPosition.arrowLeft}
+              arrowLeft={toolTipPosition && String(toolTipPosition.arrowLeft)}
               orientation={orientation}
             />
           </FadeTransition>

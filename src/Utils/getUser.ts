@@ -1,7 +1,7 @@
-export function getUser(user: User | null | undefined): User | null {
+export function getUser(user?: User): User | undefined {
   let _user = user
 
-  if (_user === undefined) {
+  if (!_user) {
     const id = process.env.USER_ID
     const type = process.env.USER_TYPE || "User"
     const accessToken = process.env.USER_ACCESS_TOKEN

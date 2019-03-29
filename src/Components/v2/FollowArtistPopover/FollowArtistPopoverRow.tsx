@@ -1,3 +1,4 @@
+// @ts-strict
 import { Avatar, Box, Button, Flex, Serif } from "@artsy/palette"
 import { FollowArtistPopoverRow_artist } from "__generated__/FollowArtistPopoverRow_artist.graphql"
 import { FollowArtistPopoverRowMutation } from "__generated__/FollowArtistPopoverRowMutation.graphql"
@@ -16,7 +17,7 @@ interface Props extends ContextProps {
 }
 
 interface State {
-  swappedArtist: FollowArtistPopoverRow_artist
+  swappedArtist: FollowArtistPopoverRow_artist | null
   followed: boolean
 }
 
@@ -28,16 +29,17 @@ const ArtistName = styled(Serif)`
 `
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
-  state = {
+  state: State = {
     swappedArtist: null,
     followed: false,
   }
 
   handleClick(artistID: string) {
     const { user, relay, excludeArtistIdsState } = this.props
-    const {
-      state: { excludeArtistIds },
-    } = excludeArtistIdsState
+    let excludeArtistIds
+    if (excludeArtistIdsState) {
+      excludeArtistIds = excludeArtistIdsState.state.excludeArtistIds
+    }
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
         mutation: graphql`
@@ -104,7 +106,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const { artist: originalArtist } = this.props
     const { swappedArtist } = this.state
     const artist = swappedArtist || originalArtist
-    const imageUrl = get(artist, a => a.image.cropped.url)
+    const imageUrl = get(artist, a => a!.image!.cropped!.url, "")
     const { _id: artistID } = artist
     const key = `avatar-${artistID}`
     return (

@@ -15,7 +15,7 @@ export const Truncator: React.SFC<Props> = ({
   maxLineCount,
 }) => {
   const html = ReactDOM.renderToStaticMarkup(<span>{children}</span>)
-  let readMoreHTML = null
+  let readMoreHTML: string | null = null
 
   if (ReadMoreLink) {
     readMoreHTML = ReactDOM.renderToStaticMarkup(ReadMoreLink())

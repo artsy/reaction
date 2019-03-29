@@ -1,3 +1,5 @@
+// @ts-strict
+
 import {
   BorderBox,
   Box,
@@ -13,8 +15,10 @@ import { FollowArtistPopoverQuery } from "__generated__/FollowArtistPopoverQuery
 import { ContextProps, SystemContext } from "Artsy/SystemContext"
 import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { Environment } from "relay-runtime"
 import styled from "styled-components"
 import { Provider } from "unstated"
+import { get } from "Utils/get"
 import { FollowArtistPopoverRowFragmentContainer as FollowArtistPopoverRow } from "./FollowArtistPopoverRow"
 import { FollowArtistPopoverState } from "./state"
 
@@ -36,9 +40,11 @@ interface Props extends ContextProps {
 const FollowArtistPopover: SFC<Props> = props => {
   const { suggested, user } = props
   const { related } = suggested
-  const suggetionsCount = related.suggested.edges.length
+  const edges = get(related, r => r!.suggested!.edges, [])!
+
+  const suggetionsCount = edges.length
   if (suggetionsCount === 0) return null
-  const excludeArtistIds = related.suggested.edges.map(({ node: { _id } }) => {
+  const excludeArtistIds = edges.map(({ node: { _id } }) => {
     return _id
   })
   return (
@@ -100,7 +106,7 @@ export const FollowArtistPopoverQueryRenderer = ({
   const { relayEnvironment, user } = useContext(SystemContext)
   return (
     <QueryRenderer<FollowArtistPopoverQuery>
-      environment={relayEnvironment}
+      environment={relayEnvironment as Environment}
       variables={{ artistID }}
       query={graphql`
         query FollowArtistPopoverQuery($artistID: String!) {

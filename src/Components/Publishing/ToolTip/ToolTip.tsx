@@ -74,10 +74,10 @@ export class ToolTip extends React.Component<Props> {
 }
 
 interface DivProps {
-  orientation: string
+  orientation?: string
   onMouseEnter: any
   onMouseLeave: any
-  positionLeft: number
+  positionLeft?: number
 }
 
 export const ToolTipContainer = styled.div.attrs<DivProps>({})`
@@ -90,7 +90,7 @@ export const ToolTipContainer = styled.div.attrs<DivProps>({})`
     props.orientation === "up" ? `bottom: 95%;` : `top: calc(100% + 10px);`};
 `
 
-const Content = styled.div.attrs<{ orientation: string; arrowLeft?: string }>(
+const Content = styled.div.attrs<{ orientation?: string; arrowLeft?: string }>(
   {}
 )`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "declaration": true,
@@ -17,7 +18,7 @@
       }
     ],
     "pretty": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "sourceMap": true,
     "target": "es2015",
     "paths": {
@@ -26,7 +27,7 @@
       "Assets/*": ["./Assets/*"],
       "Components/*": ["./Components/*"],
       "Styleguide/*": ["./Styleguide/*"],
-      "package.json": ["./package.json"]
+      "package.json": ["../package.json"]
     }
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
