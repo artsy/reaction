@@ -1,6 +1,6 @@
 import { Box } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
-import { ArtistRecommendations } from "Apps/Artist/Components/ArtistRecommendations"
+import { ArtistRecommendations } from "Apps/Artist/Routes/Overview/Components/ArtistRecommendations"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

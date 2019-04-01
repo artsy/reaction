@@ -2,6 +2,7 @@ import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
+import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { withContext } from "Artsy/SystemContext"
@@ -10,6 +11,8 @@ import { hasSections as showMarketInsights } from "Components/Artist/MarketInsig
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { userHasLabFeature } from "Utils/getUser"
+import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 import {
@@ -93,81 +96,100 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showGenes = this.maybeShowGenes()
 
     return (
-      <>
-        <Row>
-          <Col sm={colNum}>
+      <ContextConsumer>
+        {({ user }) => {
+          const showRecommendations = userHasLabFeature(
+            user,
+            "Artist Recommendations"
+          )
+
+          return (
             <>
-              {showArtistBio && (
-                <>
-                  <ArtistBio
-                    onReadMoreClicked={() => {
-                      this.setState({ isReadMoreExpanded: true })
-                    }}
-                    bio={artist}
+              <Row>
+                <Col sm={colNum}>
+                  <>
+                    {showArtistBio && (
+                      <>
+                        <ArtistBio
+                          onReadMoreClicked={() => {
+                            this.setState({ isReadMoreExpanded: true })
+                          }}
+                          bio={artist}
+                        />
+                      </>
+                    )}
+                    {showGenes && (
+                      <>
+                        <Spacer mb={1} />
+                        <Genes artist={artist} />
+                        <Spacer mb={1} />
+                      </>
+                    )}
+                    {showConsignable && (
+                      <>
+                        <Spacer mb={1} />
+                        <Sans size="2" color="black60">
+                          Want to sell a work by this artist?{" "}
+                          <a
+                            href="/consign"
+                            onClick={this.handleConsignClick.bind(this)}
+                          >
+                            Learn more
+                          </a>
+                          .
+                        </Sans>
+                      </>
+                    )}
+                    {showArtistInsights && (
+                      <>
+                        <Spacer mb={2} />
+                        <SelectedCareerAchievements artist={artist} />
+                      </>
+                    )}
+                  </>
+                </Col>
+
+                {showCurrentEvent && (
+                  <Col sm={3}>
+                    <Box pl={2}>
+                      <CurrentEvent artist={artist} />
+                    </Box>
+                  </Col>
+                )}
+              </Row>
+
+              {!hideMainOverviewSection && <Spacer mb={4} />}
+
+              {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
+                <div>
+                  <Separator mb={3} />
+                  <ArtistCollectionsRail artistID={artist._id} />
+                  <Spacer mb={3} />
+                </div>
+              )}
+
+              <Row>
+                <Col>
+                  <span id="jump--artistArtworkGrid" />
+
+                  <ArtworkFilter
+                    artist={artist}
+                    hideTopBorder={hideMainOverviewSection}
                   />
-                </>
-              )}
-              {showGenes && (
-                <>
-                  <Spacer mb={1} />
-                  <Genes artist={artist} />
-                  <Spacer mb={1} />
-                </>
-              )}
-              {showConsignable && (
-                <>
-                  <Spacer mb={1} />
-                  <Sans size="2" color="black60">
-                    Want to sell a work by this artist?{" "}
-                    <a
-                      href="/consign"
-                      onClick={this.handleConsignClick.bind(this)}
-                    >
-                      Learn more
-                    </a>
-                    .
-                  </Sans>
-                </>
-              )}
-              {showArtistInsights && (
-                <>
-                  <Spacer mb={2} />
-                  <SelectedCareerAchievements artist={artist} />
-                </>
+                </Col>
+              </Row>
+
+              {showRecommendations && (
+                <Row>
+                  <Col>
+                    <ArtistRecommendations artist={artist} />
+                  </Col>
+                </Row>
               )}
             </>
-          </Col>
-
-          {showCurrentEvent && (
-            <Col sm={3}>
-              <Box pl={2}>
-                <CurrentEvent artist={artist} />
-              </Box>
-            </Col>
-          )}
-        </Row>
-
-        {!hideMainOverviewSection && <Spacer mb={4} />}
-
-        {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
-          <div>
-            <Separator mb={3} />
-            <ArtistCollectionsRail artistID={artist._id} />
-            <Spacer mb={3} />
-          </div>
-        )}
-
-        <Row>
-          <Col>
-            <span id="jump--artistArtworkGrid" />
-
-            <ArtworkFilter
-              artist={artist}
-              hideTopBorder={hideMainOverviewSection}
-            />
-          </Col>
-        </Row>
-      </>
+          )
+        }}
+      </ContextConsumer>
     )
   }
 }

@@ -3,7 +3,6 @@ import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { ContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -12,9 +11,7 @@ import {
 } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { userHasLabFeature } from "Utils/getUser"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
-import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -34,59 +31,40 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     const { artist, children } = this.props
 
     return (
-      <ContextConsumer>
-        {({ user }) => {
-          const showRecommendations = userHasLabFeature(
-            user,
-            "Artist Recommendations"
-          )
+      <AppContainer>
+        <HorizontalPadding>
+          <Row>
+            <Col>
+              <ArtistHeader artist={artist} />
+            </Col>
+          </Row>
 
-          return (
-            <AppContainer>
-              <HorizontalPadding>
-                <Row>
-                  <Col>
-                    <ArtistHeader artist={artist} />
-                  </Col>
-                </Row>
+          <Spacer mb={3} />
 
-                <Spacer mb={3} />
+          <Row>
+            <Col>
+              <NavigationTabs artist={artist} />
+              <Spacer mb={3} />
 
-                <Row>
-                  <Col>
-                    <NavigationTabs artist={artist} />
-                    <Spacer mb={3} />
+              <Box minHeight="30vh">{children}</Box>
+            </Col>
+          </Row>
 
-                    <Box minHeight="30vh">{children}</Box>
-                  </Col>
-                </Row>
+          <Row>
+            <Col>
+              <RecentlyViewed />
+            </Col>
+          </Row>
 
-                {showRecommendations && (
-                  <Row>
-                    <Col>
-                      <ArtistRecommendations artist={artist} />
-                    </Col>
-                  </Row>
-                )}
+          <Separator mt={6} mb={3} />
 
-                <Row>
-                  <Col>
-                    <RecentlyViewed />
-                  </Col>
-                </Row>
-
-                <Separator mt={6} mb={3} />
-
-                <Row>
-                  <Col>
-                    <Footer />
-                  </Col>
-                </Row>
-              </HorizontalPadding>
-            </AppContainer>
-          )
-        }}
-      </ContextConsumer>
+          <Row>
+            <Col>
+              <Footer />
+            </Col>
+          </Row>
+        </HorizontalPadding>
+      </AppContainer>
     )
   }
 }
