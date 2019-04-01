@@ -27,7 +27,7 @@ fragment PricingContext_artwork on Artwork {
   priceCents {
     min
   }
-  pricingContext {
+  pricingContext @include(if: $enablePricingContext) {
     filterDescription
     bins {
       maxPrice
@@ -62,7 +62,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  pricingContext {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -122,71 +122,78 @@ return {
               }
             ]
           },
+          v1,
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "pricingContext",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "AnalyticsPricingContext",
-            "plural": false,
+            "kind": "Condition",
+            "passingValue": true,
+            "condition": "enablePricingContext",
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "filterDescription",
-                "args": null,
-                "storageKey": null
-              },
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "bins",
+                "name": "pricingContext",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "AnalyticsHistogramBin",
-                "plural": true,
+                "concreteType": "AnalyticsPricingContext",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "maxPrice",
+                    "name": "filterDescription",
                     "args": null,
                     "storageKey": null
                   },
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "maxPriceCents",
+                    "name": "bins",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "minPrice",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "minPriceCents",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "numArtworks",
-                    "args": null,
-                    "storageKey": null
+                    "concreteType": "AnalyticsHistogramBin",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "maxPrice",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "maxPriceCents",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "minPrice",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "minPriceCents",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "numArtworks",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ]
               }
             ]
-          },
-          v1
+          }
         ]
       }
     ]

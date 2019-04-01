@@ -66,7 +66,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       priceCents {
         min
       }
-      pricingContext {
+      pricingContext @include(if: $enablePricingContext) {
         filterDescription
         bins {
           maxPrice
