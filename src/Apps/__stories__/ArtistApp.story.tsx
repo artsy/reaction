@@ -1,4 +1,5 @@
 import { Box } from "@artsy/palette"
+import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendations } from "Apps/Artist/Components/ArtistRecommendations"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
@@ -27,7 +28,7 @@ storiesOf("Apps/Artist Page", module)
     )
   })
 
-const artistWithRecommendations = {
+const artistWithRecommendations: ArtistRecommendations_artist = {
   " $refType": null,
   name: "Pablo Picasso",
 }

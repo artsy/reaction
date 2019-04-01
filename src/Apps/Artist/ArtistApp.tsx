@@ -14,7 +14,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userHasLabFeature } from "Utils/getUser"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
-import { ArtistRecommendationsFragmentContainer as ArtistRecommendations } from "./Components/ArtistRecommendations"
+import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -98,7 +98,6 @@ export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
       id
       ...ArtistHeader_artist
       ...NavigationTabs_artist
-      ...ArtistRecommendations_artist
     }
   `,
 })
