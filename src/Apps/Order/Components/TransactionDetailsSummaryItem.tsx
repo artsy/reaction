@@ -2,8 +2,9 @@ import { TransactionDetailsSummaryItem_order } from "__generated__/TransactionDe
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { Flex, media, Sans, Serif, Spacer } from "@artsy/palette"
 import { StepSummaryItem, StepSummaryItemProps } from "Components/v2"
+import styled from "styled-components"
 
 export interface TransactionDetailsSummaryItemProps
   extends StepSummaryItemProps {
@@ -23,7 +24,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
   render() {
     const { showOfferNote, offerOverride, order, ...others } = this.props
     return (
-      <StepSummaryItem {...others}>
+      <StyledStepSummaryItem {...others}>
         {this.renderPriceEntry()}
         <Spacer mb={2} />
         <Entry label="Shipping" value={this.shippingDisplayAmount()} />
@@ -32,7 +33,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
         <Spacer mb={2} />
         <Entry label="Total" value={this.buyerTotalDisplayAmount()} final />
         {showOfferNote && order.mode === "OFFER" && this.renderNoteEntry()}
-      </StepSummaryItem>
+      </StyledStepSummaryItem>
     )
   }
 
@@ -187,6 +188,14 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
     </div>
   </Flex>
 )
+
+const StyledStepSummaryItem = styled(StepSummaryItem)`
+  ${media.xs`
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  `};
+`
 
 graphql`
   fragment TransactionDetailsSummaryItemOfferProperties on Offer {
