@@ -34,14 +34,13 @@ storiesOf("Components/Pages/Gene/Contents", module)
       </div>
     )
   })
-  .add("Artworks Mode w/ Pagination Issue - Russia", () => {
+  .add("Artworks Mode w/ Pagination Issue - Abstract Painting", () => {
     return (
       <div>
         <ContextProvider>
           <Contents
-            sort="-year"
-            filters={{ for_sale: true }}
-            geneID="russia"
+            filters={{ for_sale: false }}
+            geneID="abstract-painting"
             mode="artworks"
             onStateChange={console.log}
           />

@@ -17,6 +17,7 @@ interface Props {
 
 interface State {
   loading: boolean
+  page: number
 }
 
 const SpinnerContainer = styled.div`
@@ -32,6 +33,7 @@ export class GeneArtworksContent extends React.Component<Props, State> {
 
   state = {
     loading: false,
+    page: 1,
   }
 
   loadMoreArtworks() {
@@ -43,18 +45,26 @@ export class GeneArtworksContent extends React.Component<Props, State> {
           if (error) {
             console.error(error)
           }
+
+          // Check to see if we're at the max allowable page.
+          const { page } = this.state
+          if (page > 100) {
+            console.error(`Finished paging: ${this.props.geneID}`)
+            this.finishedPaginatingWithError = true
+          }
+
+          // Check to see if no new edges were received.
           const newLength = this.props.filtered_artworks.artworks.edges.length
           const newHasMore = this.props.filtered_artworks.artworks.pageInfo
             .hasNextPage
-          if (newLength - origLength < PageSize && newHasMore) {
+          if (newLength - origLength === 0 && newHasMore) {
             console.error(
-              `Total count inconsistent with actual records returned for gene: ${
-                this.props.geneID
-              }`
+              `No more records returned for gene: ${this.props.geneID}`
             )
             this.finishedPaginatingWithError = true
           }
-          this.setState({ loading: false })
+
+          this.setState({ loading: false, page: page + 1 })
         })
       })
     }
