@@ -54,7 +54,7 @@ const SuggestionWrapper = props => (
   </Flex>
 )
 
-const FirstSuggestion = ({ query }) => <>Search "{query}"</>
+const FirstSuggestion = ({ query }) => <>See full results for "{query}"</>
 
 const DefaultSuggestion = ({ display, label, query }) => {
   const matches = match(display, query)
