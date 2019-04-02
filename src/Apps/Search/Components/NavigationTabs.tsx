@@ -1,4 +1,4 @@
-import { Flex } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -40,9 +40,10 @@ export class NavigationTabs extends React.Component<Props> {
     to: string,
     options: {
       exact?: boolean
+      count?: number
     } = {}
   ) => {
-    const { exact } = options
+    const { exact, count } = options
     const tabName = text.replace(/[0-9]/g, "").trim()
     return (
       <RouteTab
@@ -52,7 +53,14 @@ export class NavigationTabs extends React.Component<Props> {
           this.trackClick(tabName, to)
         }}
       >
-        {text}
+        <Flex>
+          {text}
+          {count != null && (
+            <Sans ml={0.5} size="3t" weight="regular">
+              {count}
+            </Sans>
+          )}
+        </Flex>
       </RouteTab>
     )
   }
@@ -120,32 +128,34 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab(`Artworks ${artworkCount}`, route(""), {
+        {this.renderTab("Artworks", route(""), {
           exact: true,
+          count: artworkCount,
         })}
-        {this.renderTab(`Artists ${artistAggregationCount}`, route("/artists"))}
-        {this.renderTab(
-          `Collections ${collectionAggregationCount}`,
-          route("/collections")
-        )}
-        {this.renderTab(
-          `Galleries ${galleryAggregationCount}`,
-          route("/galleries")
-        )}
-        {this.renderTab(`Shows ${showAggregationCount}`, route("/shows"))}
-        {this.renderTab(
-          `Categories ${categoriesAggregationCount}`,
-          route("/categories")
-        )}
-        {this.renderTab(
-          `Articles ${articlesAggregationCount}`,
-          route("/articles")
-        )}
-        {this.renderTab(
-          `Auctions ${auctionsAggregationCount}`,
-          route("/auctions")
-        )}
-        {this.renderTab(`More ${restAggregationCount}`, route("/more"))}
+        {this.renderTab("Artists", route("/artists"), {
+          count: artistAggregationCount,
+        })}
+        {this.renderTab("Collections", route("/collections"), {
+          count: collectionAggregationCount,
+        })}
+        {this.renderTab("Galleries", route("/galleries"), {
+          count: galleryAggregationCount,
+        })}
+        {this.renderTab("Shows", route("/shows"), {
+          count: showAggregationCount,
+        })}
+        {this.renderTab("Categories", route("/categories"), {
+          count: categoriesAggregationCount,
+        })}
+        {this.renderTab("Articles", route("/articles"), {
+          count: articlesAggregationCount,
+        })}
+        {this.renderTab("Auctions", route("/auctions"), {
+          count: auctionsAggregationCount,
+        })}
+        {this.renderTab("More", route("/more"), {
+          count: restAggregationCount,
+        })}
       </>
     )
   }
