@@ -10,6 +10,7 @@ import { get } from "Utils/get"
 interface Props {
   searchableConnection: NavigationTabs_searchableConnection
   term: string
+  artworkCount: number
 }
 
 const MORE_TABS = [
@@ -67,17 +68,12 @@ export class NavigationTabs extends React.Component<Props> {
   }
 
   renderTabs() {
-    const { term } = this.props
+    const { term, artworkCount } = this.props
 
     const route = tab => `/search2${tab}?term=${term}`
 
     const artistAggregationCount = get(
       this.aggregationFor("artist"),
-      agg => agg.count,
-      0
-    )
-    const artworkAggregationCount = get(
-      this.aggregationFor("artwork"),
       agg => agg.count,
       0
     )
@@ -124,7 +120,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab(`Artworks ${artworkAggregationCount}`, route(""), {
+        {this.renderTab(`Artworks ${artworkCount}`, route(""), {
           exact: true,
         })}
         {this.renderTab(`Artists ${artistAggregationCount}`, route("/artists"))}

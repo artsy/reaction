@@ -13,6 +13,7 @@ import {
 import { Location } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 export interface Props {
   viewer: SearchApp_viewer
@@ -25,10 +26,23 @@ export interface Props {
 export class SearchApp extends React.Component<Props> {
   render() {
     const { viewer, location } = this.props
-    const { search } = viewer
+    const { search, filter_artworks } = viewer
     const {
       query: { term },
     } = location
+
+    const { aggregations } = search
+    const artworkCount = get(filter_artworks, f => f.counts.total, 0)
+
+    let countWithoutArtworks: number = 0
+    const typeAggregation = aggregations.find(agg => agg.slice === "TYPE")
+      .counts
+
+    typeAggregation.forEach(({ count, name }) => {
+      if (name !== "artwork") {
+        countWithoutArtworks += count
+      }
+    })
 
     return (
       <AppContainer>
@@ -41,11 +55,16 @@ export class SearchApp extends React.Component<Props> {
           <Row>
             <Col>
               <Serif size="5">
-                {viewer.search.totalCount.toLocaleString()} Results for "{term}"
+                {(countWithoutArtworks + artworkCount).toLocaleString()} Results
+                for "{term}"
               </Serif>
               <Spacer mb={3} />
               <span id="jumpto--searchResultTabs" />
-              <NavigationTabs term={term} searchableConnection={search} />
+              <NavigationTabs
+                artworkCount={artworkCount}
+                term={term}
+                searchableConnection={search}
+              />
               <Spacer mb={3} />
               <Box minHeight="30vh">{this.props.children}</Box>
             </Col>
@@ -75,7 +94,13 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
     fragment SearchApp_viewer on Viewer
       @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
       search(query: $term, first: 1, aggregations: [TYPE]) {
-        totalCount
+        aggregations {
+          slice
+          counts {
+            count
+            name
+          }
+        }
         ...NavigationTabs_searchableConnection
         edges {
           node {
@@ -85,6 +110,12 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
               displayType
             }
           }
+        }
+      }
+
+      filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
+        counts {
+          total
         }
       }
     }
