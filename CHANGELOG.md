@@ -1,3 +1,16 @@
+# v15.11.14 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Gene] Relax paging check which stops paging early [#2239](https://github.com/artsy/reaction/pull/2239) ([@mzikherman](https://github.com/mzikherman))
+- @cavvia => [Search] Make sure to get artwork tab count from filter endpoint aggregation [#2241](https://github.com/artsy/reaction/pull/2241) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.13 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix
