@@ -182,7 +182,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               {showRecommendations && (
                 <Row>
                   <Col>
-                    <ArtistRecommendations artist={artist} />
+                    <ArtistRecommendations artistID={artist._id} />
                   </Col>
                 </Row>
               )}

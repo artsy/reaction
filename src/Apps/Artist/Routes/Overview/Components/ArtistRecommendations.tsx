@@ -1,7 +1,6 @@
 import { Serif } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendationsQuery } from "__generated__/ArtistRecommendationsQuery.graphql"
-import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React, { useContext } from "react"
@@ -37,8 +36,8 @@ export const ArtistRecommendationsFragmentContainer = createFragmentContainer(
 )
 
 export const ArtistRecommendationsQueryRenderer: React.FC<{
-  artist: Overview_artist
-}> = ({ artist }) => {
+  artistID: string
+}> = ({ artistID }) => {
   const { relayEnvironment } = useContext(SystemContext)
   return (
     <QueryRenderer<ArtistRecommendationsQuery>
@@ -50,7 +49,7 @@ export const ArtistRecommendationsQueryRenderer: React.FC<{
           }
         }
       `}
-      variables={{ artistID: artist.id }}
+      variables={{ artistID }}
       render={renderWithLoadProgress(ArtistRecommendationsFragmentContainer)}
     />
   )
