@@ -1,3 +1,21 @@
+# v15.11.13 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Gate pricing context [#2240](https://github.com/artsy/reaction/pull/2240) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.0 [#2238](https://github.com/artsy/reaction/pull/2238) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.5.6 [#2234](https://github.com/artsy/reaction/pull/2234) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.11.12 (Fri Mar 29 2019)
 
 #### 🏠  Internal
