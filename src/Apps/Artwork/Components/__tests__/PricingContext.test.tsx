@@ -40,6 +40,10 @@ const mockPricingContext = {
 }
 
 describe("PricingContext", () => {
+  let enablePricingContext = true
+  beforeEach(() => {
+    enablePricingContext = true
+  })
   function getWrapper(pricingContext: any = mockPricingContext) {
     return renderRelayTree({
       Component: (props: any) => (
@@ -56,12 +60,15 @@ describe("PricingContext", () => {
         },
       },
       query: graphql`
-        query PricingContextTestQuery {
+        query PricingContextTestQuery($enablePricingContext: Boolean!) {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
         }
       `,
+      variables: {
+        enablePricingContext,
+      },
     })
   }
   it("renders if there is data present", async () => {
@@ -72,6 +79,13 @@ describe("PricingContext", () => {
   })
   it("renders as null if no data present", async () => {
     const wrapper = await getWrapper(null)
+    expect(wrapper.text()).not.toContain(
+      "Price ranges of small mocks by David Sheldrick"
+    )
+  })
+  it("renders as null if enablePricingContext is false", async () => {
+    enablePricingContext = false
+    const wrapper = await getWrapper()
     expect(wrapper.text()).not.toContain(
       "Price ranges of small mocks by David Sheldrick"
     )

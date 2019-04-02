@@ -73,6 +73,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         historyMiddlewares,
         historyOptions: history.options,
         routeConfig: createRouteConfig(routes),
+        matchContext: { user },
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>

@@ -67,6 +67,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             routeConfig: createRouteConfig(routes),
             resolver,
             render,
+            matchContext: { user },
           })
         )
 
