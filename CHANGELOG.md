@@ -1,3 +1,15 @@
+# v15.11.17 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Check for null media keys in RelatedArticleCard [#2228](https://github.com/artsy/reaction/pull/2228) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v15.11.16 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix
