@@ -1,3 +1,20 @@
+# v15.11.16 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Force search result items of City type to use FallbackIcon [#2245](https://github.com/artsy/reaction/pull/2245) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.1 [#2244](https://github.com/artsy/reaction/pull/2244) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.11.15 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix
