@@ -54,7 +54,7 @@ export const EmptySuggestion = () => (
 )
 
 const SuggestionWrapper = props => (
-  <Flex alignItems="center" flexDirection="row" height="62px" pl={3}>
+  <Flex alignItems="center" flexDirection="row" height="62px" pl={2}>
     {props.children}
   </Flex>
 )
