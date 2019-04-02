@@ -1,3 +1,15 @@
+# v15.11.15 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Show fallback icon when search result item has no image url [#2243](https://github.com/artsy/reaction/pull/2243) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v15.11.14 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix
