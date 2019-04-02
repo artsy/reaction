@@ -1,4 +1,5 @@
 import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
+import { compact } from "lodash"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
@@ -47,6 +48,8 @@ export class ArticleCard extends Component<Props> {
 
   renderDate = () => {
     const { article, editDate } = this.props
+    const hasMedia =
+      article.media && compact(Object.values(article.media)).length
 
     if (editDate) {
       return (
@@ -54,7 +57,7 @@ export class ArticleCard extends Component<Props> {
           {editDate}
         </Sans>
       )
-    } else if (article.media) {
+    } else if (hasMedia) {
       return this.renderMediaDate()
     } else {
       return (
