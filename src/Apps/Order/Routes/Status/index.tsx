@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Join,
+  media,
   Message,
   Sans,
   Serif,
@@ -16,6 +17,7 @@ import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -249,7 +251,7 @@ export class StatusRoute extends Component<StatusProps> {
                   {showTransactionSummary ? (
                     <Flex flexDirection="column">
                       <ArtworkSummaryItem order={order} />
-                      <TransactionDetailsSummaryItem
+                      <StyledTransactionDetailsSummaryItem
                         order={order}
                         useLastSubmittedOffer
                         showOfferNote={showOfferNote}
@@ -273,7 +275,7 @@ export class StatusRoute extends Component<StatusProps> {
               showTransactionSummary && (
                 <Flex flexDirection="column">
                   <Flex flexDirection="column">
-                    <ShippingSummaryItem order={order} />
+                    <StyledShippingSummaryItem order={order} />
                     <CreditCardSummaryItem order={order} />
                   </Flex>
                 </Flex>
@@ -285,6 +287,22 @@ export class StatusRoute extends Component<StatusProps> {
     )
   }
 }
+
+const StyledShippingSummaryItem = styled(ShippingSummaryItem)`
+  ${media.xs`
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  `};
+`
+const StyledTransactionDetailsSummaryItem = styled(
+  TransactionDetailsSummaryItem
+)`
+  ${media.xs`
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  `};
+`
 
 export const StatusFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(StatusRoute),
