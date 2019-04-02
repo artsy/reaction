@@ -14,11 +14,14 @@ interface Props {
 
 export const SuggestionItem: SFC<Props> = props => {
   const { label, href, isHighlighted } = props
-
-  const Suggestion = label === "FirstItem" ? FirstSuggestion : DefaultSuggestion
+  const isFirstItem = label === "FirstItem"
+  const boxStyle = {
+    borderBottom: isFirstItem && `1px solid ${color("black10")}`,
+  }
+  const Suggestion = isFirstItem ? FirstSuggestion : DefaultSuggestion
 
   return (
-    <Box bg={isHighlighted ? "black5" : "white100"}>
+    <Box bg={isHighlighted ? "black5" : "white100"} style={boxStyle}>
       <Link color="black100" href={href} underlineBehavior="none">
         <SuggestionWrapper>
           <InnerWrapper
