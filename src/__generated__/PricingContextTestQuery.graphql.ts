@@ -2,7 +2,9 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { PricingContext_artwork$ref } from "./PricingContext_artwork.graphql";
-export type PricingContextTestQueryVariables = {};
+export type PricingContextTestQueryVariables = {
+    readonly enablePricingContext: boolean;
+};
 export type PricingContextTestQueryResponse = {
     readonly artwork: ({
         readonly " $fragmentRefs": PricingContext_artwork$ref;
@@ -16,7 +18,9 @@ export type PricingContextTestQuery = {
 
 
 /*
-query PricingContextTestQuery {
+query PricingContextTestQuery(
+  $enablePricingContext: Boolean!
+) {
   artwork(id: "unused") {
     ...PricingContext_artwork
     __id
@@ -44,13 +48,21 @@ fragment PricingContext_artwork on Artwork {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
+    "kind": "LocalArgument",
+    "name": "enablePricingContext",
+    "type": "Boolean!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
     "kind": "Literal",
     "name": "id",
     "value": "unused",
     "type": "String!"
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -62,21 +74,21 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "PricingContextTestQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": v1,
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -85,7 +97,7 @@ return {
             "name": "PricingContext_artwork",
             "args": null
           },
-          v1
+          v2
         ]
       }
     ]
@@ -93,14 +105,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "PricingContextTestQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": v1,
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -122,7 +134,7 @@ return {
               }
             ]
           },
-          v1,
+          v2,
           {
             "kind": "Condition",
             "passingValue": true,
@@ -200,5 +212,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b37f94b8bfa44e9e35ba461c5713c143';
+(node as any).hash = '4c411e1b8f073e19c979b02d94511555';
 export default node;
