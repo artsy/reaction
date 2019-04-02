@@ -3,6 +3,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Truncator } from "Components/Truncator"
 import React from "react"
+import { FallbackIcon } from "./FallbackIcon"
 
 interface GenericSearchResultItemProps {
   imageUrl: string
@@ -52,7 +53,13 @@ export class GenericSearchResultItem extends React.Component<
             }}
           >
             <Box height={70} width={70} mr={2} bg="black5">
-              {imageUrl && <Image width={70} height={70} src={imageUrl} />}
+              <Flex height="100%" justifyContent="center" alignItems="center">
+                {imageUrl ? (
+                  <Image width={70} height={70} src={imageUrl} />
+                ) : (
+                  <FallbackIcon entityType={entityType} />
+                )}
+              </Flex>
             </Box>
           </Link>
           <Box>
