@@ -12,13 +12,11 @@ interface Props {
   query: string
 }
 
-export const SuggestionItem: SFC<Props> = props => {
-  const { label, href, isHighlighted } = props
-  const isFirstItem = label === "FirstItem"
+export const FirstSuggestionItem: SFC<Props> = props => {
+  const { href, isHighlighted, query } = props
   const boxStyle = {
-    borderBottom: isFirstItem && `1px solid ${color("black10")}`,
+    borderBottom: `1px solid ${color("black10")}`,
   }
-  const Suggestion = isFirstItem ? FirstSuggestion : DefaultSuggestion
 
   return (
     <Box bg={isHighlighted ? "black5" : "white100"} style={boxStyle}>
@@ -29,7 +27,27 @@ export const SuggestionItem: SFC<Props> = props => {
             flexGrow="1"
             justifyContent="center"
           >
-            <Suggestion {...props} />
+            See full results for "{query}"
+          </InnerWrapper>
+        </SuggestionWrapper>
+      </Link>
+    </Box>
+  )
+}
+
+export const SuggestionItem: SFC<Props> = props => {
+  const { href, isHighlighted } = props
+
+  return (
+    <Box bg={isHighlighted ? "black5" : "white100"}>
+      <Link color="black100" href={href} underlineBehavior="none">
+        <SuggestionWrapper>
+          <InnerWrapper
+            flexDirection="column"
+            flexGrow="1"
+            justifyContent="center"
+          >
+            <DefaultSuggestion {...props} />
           </InnerWrapper>
         </SuggestionWrapper>
       </Link>
@@ -54,8 +72,6 @@ const SuggestionWrapper = props => (
     {props.children}
   </Flex>
 )
-
-const FirstSuggestion = ({ query }) => <>See full results for "{query}"</>
 
 const DefaultSuggestion = ({ display, label, query }) => {
   const matches = match(display, query)
