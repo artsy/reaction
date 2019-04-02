@@ -125,28 +125,50 @@ export class Details extends React.Component<Props, null> {
           weight={"medium"}
           size={"2"}
         >
-          {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
+          {inClosedAuction ? "Bidding closed" : this.saleMessage()}{" "}
         </Sans>
-        <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
-          {!inClosedAuction && this.auctionInfo()}
+        <Sans
+          style={{ display: "inline" }}
+          size={"2"}
+          color={color("black100")}
+          weight={"regular"}
+        >
+          {this.bidInfo()}
         </Sans>
         <Spacer mb={0.3} />
       </>
     )
   }
 
-  saleMessageOrBidInfo() {
+  bidInfo() {
+    const { artwork } = this.props
+    const { sale } = this.props.artwork
+
+    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+    if (!inRunningAuction) {
+      return undefined
+    }
+
+    const bidderPositionCounts = get(
+      artwork,
+      a => a.sale_artwork.counts.bidder_positions,
+      0
+    )
+
+    if (bidderPositionCounts === 0) {
+      return undefined
+    }
+
+    const s = bidderPositionCounts > 1 ? "s" : ""
+    return `(${bidderPositionCounts} bid${s})`
+  }
+
+  saleMessage() {
     const { artwork } = this.props
     const { sale } = artwork
     const inRunningAuction = sale && sale.is_auction && !sale.is_closed
 
     if (inRunningAuction) {
-      const bidderPositionCounts = get(
-        artwork,
-        a => a.sale_artwork.counts.bidder_positions,
-        0
-      )
-
       const highestBidDisplay = get(
         artwork,
         p => p.sale_artwork.highest_bid.display
@@ -156,15 +178,7 @@ export class Details extends React.Component<Props, null> {
         p => p.sale_artwork.opening_bid.display
       )
 
-      let message = highestBidDisplay || openingBidDisplay || ""
-
-      // Append a (x bids) if there are bids
-      if (message && bidderPositionCounts) {
-        const s = bidderPositionCounts > 1 ? "s" : ""
-        message = message + ` (${bidderPositionCounts} bid${s})`
-      }
-
-      return message
+      return highestBidDisplay || openingBidDisplay || ""
     }
 
     // TODO: Extract this sentence-cased version and apply everywhere.
@@ -173,15 +187,6 @@ export class Details extends React.Component<Props, null> {
     }
 
     return artwork.sale_message
-  }
-
-  auctionInfo() {
-    const { artwork } = this.props
-    const { sale } = artwork
-
-    if (sale) {
-      return `(${sale.display_timely_at})`
-    }
   }
 
   render() {
@@ -224,7 +229,6 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
       sale {
         is_auction
         is_closed
-        display_timely_at
       }
       sale_artwork {
         counts {
