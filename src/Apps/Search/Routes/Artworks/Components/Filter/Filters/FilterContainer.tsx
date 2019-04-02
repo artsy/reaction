@@ -57,13 +57,13 @@ export class FilterContainer extends React.Component<
           <WaysToBuyFilter filters={filters} />
         </Flex>
 
-        <Toggle label="Medium">
+        <Toggle label="Medium" expanded>
           <Flex flexDirection="column" alignItems="left" mb={1}>
             <MediumFilter filters={filters} mediums={mediums} />
           </Flex>
         </Toggle>
 
-        <Toggle label="Price">
+        <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
             <PriceRangeFilter filters={filters} />
           </Flex>
