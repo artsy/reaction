@@ -44,40 +44,34 @@ export class GenericSearchResultItem extends React.Component<
     }
 
     return (
-      <>
+      <Link
+        href={href}
+        underlineBehavior="hover"
+        onClick={() => {
+          this.handleClick()
+        }}
+      >
         <Flex flexDirection="row">
-          <Link
-            href={href}
-            onClick={() => {
-              this.handleClick()
-            }}
-          >
-            <Box height={70} width={70} mr={2} bg="black5">
-              <Flex height="100%" justifyContent="center" alignItems="center">
-                {imageUrl && entityType !== "City" ? (
-                  <Image width={70} height={70} src={imageUrl} />
-                ) : (
-                  <FallbackIcon entityType={entityType} />
-                )}
-              </Flex>
-            </Box>
-          </Link>
+          <Box height={70} width={70} mr={2} bg="black5">
+            <Flex height="100%" justifyContent="center" alignItems="center">
+              {imageUrl && entityType !== "City" ? (
+                <Image width={70} height={70} src={imageUrl} />
+              ) : (
+                <FallbackIcon entityType={entityType} />
+              )}
+            </Flex>
+          </Box>
+
           <Box>
             <Sans color="black100" size="2" weight="medium">
               {translateEntityType(entityType)}
             </Sans>
             <Spacer mb={0.5} />
-            <Link
-              href={href}
-              underlineBehavior="hover"
-              onClick={() => {
-                this.handleClick()
-              }}
-            >
-              <Serif color="black100" size="3">
-                {name}
-              </Serif>
-            </Link>
+
+            <Serif color="black100" size="3">
+              {name}
+            </Serif>
+
             {description && (
               <>
                 <Spacer mb={0.5} />
@@ -88,7 +82,7 @@ export class GenericSearchResultItem extends React.Component<
             )}
           </Box>
         </Flex>
-      </>
+      </Link>
     )
   }
 }
