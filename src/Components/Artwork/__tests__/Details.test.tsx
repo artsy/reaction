@@ -81,6 +81,31 @@ describe("Details", () => {
       const html = wrapper.html()
       expect(html).toContain("$450")
     })
+
+    it("shows the number of bids in the message if sale open and are bids", async () => {
+      const data = cloneDeep(artworkInAuction)
+      data.sale_artwork.counts.bidder_positions = 2
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).toContain("$2,600 (2 bids)")
+    })
+
+    it("skips bid information in a closed show", async () => {
+      const data = cloneDeep(artworkInAuction)
+      data.sale_artwork.counts.bidder_positions = 2
+      data.sale.is_closed = true
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).not.toContain("(2 bids)")
+    })
+
+    it("skips showing bid information when there are no positions", async () => {
+      const data = cloneDeep(artworkInAuction)
+      data.sale_artwork.counts.bidder_positions = 0
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).not.toContain("bid")
+    })
   })
 })
 
@@ -106,7 +131,6 @@ const artworkInAuction = {
   sale: {
     is_auction: true,
     is_live_open: false,
-    is_open: true,
     is_closed: false,
     display_timely_at: "ends in 14d",
     __id: "U2FsZTpmb3J1bS1hdWN0aW9ucy1tdWx0aXBseQ==",
@@ -114,6 +138,7 @@ const artworkInAuction = {
   sale_artwork: {
     highest_bid: { display: "$2,600", __id: null },
     opening_bid: { display: "$2,400" },
+    counts: { bidder_positions: 0 },
     __id: "U2FsZUFydHdvcms6Z2VyaGFyZC1yaWNodGVyLXR1bGlwcy1wMTctMTQ=",
   },
   __id: "QXJ0d29yazpnZXJoYXJkLXJpY2h0ZXItdHVsaXBzLXAxNy0xNA==",

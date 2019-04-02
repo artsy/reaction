@@ -141,6 +141,12 @@ export class Details extends React.Component<Props, null> {
     const inRunningAuction = sale && sale.is_auction && !sale.is_closed
 
     if (inRunningAuction) {
+      const bidderPositionCounts = get(
+        artwork,
+        a => a.sale_artwork.counts.bidder_positions,
+        0
+      )
+
       const highestBidDisplay = get(
         artwork,
         p => p.sale_artwork.highest_bid.display
@@ -149,7 +155,16 @@ export class Details extends React.Component<Props, null> {
         artwork,
         p => p.sale_artwork.opening_bid.display
       )
-      return highestBidDisplay || openingBidDisplay || ""
+
+      let message = highestBidDisplay || openingBidDisplay || ""
+
+      // Append a (x bids) if there are bids
+      if (message && bidderPositionCounts) {
+        const s = bidderPositionCounts > 1 ? "s" : ""
+        message = message + ` (${bidderPositionCounts} bid${s})`
+      }
+
+      return message
     }
 
     // TODO: Extract this sentence-cased version and apply everywhere.
@@ -208,12 +223,13 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
       }
       sale {
         is_auction
-        is_live_open
-        is_open
         is_closed
         display_timely_at
       }
       sale_artwork {
+        counts {
+          bidder_positions
+        }
         highest_bid {
           display
         }
