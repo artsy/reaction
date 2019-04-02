@@ -41,10 +41,8 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   handleClick() {
-    const { user, relayEnvironment } = this.props
+    const { relayEnvironment } = this.props
     const { message, name, email } = this.state
-    if (!message) return
-    if (!user && !(name && email)) return
 
     commitMutation<SendFeedbackSearchResultsMutation>(relayEnvironment, {
       mutation: graphql`
@@ -103,30 +101,28 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   renderPersonalInfoInputs() {
-    const { name, triggeredValidation } = this.state
-    const errorForEmail = this.errorForEmail()
     return (
       <LoggedOutInputContainer mt={2} alignContent="space-between">
         <Box mr={1} width="50%">
           <Input
+            name="name"
             placeholder="Your name"
             onChange={({ currentTarget: { value } }) => {
               this.setState({ name: value })
             }}
             required
-            error={
-              !name && triggeredValidation ? "Cannot leave field blank" : ""
-            }
+            error={this.errorForText("name")}
           />
         </Box>
         <Box width="50%">
           <Input
+            name="email"
             placeholder="Email address"
             onChange={({ currentTarget: { value } }) => {
               this.setState({ email: value })
             }}
             required
-            error={errorForEmail && triggeredValidation ? errorForEmail : ""}
+            error={this.errorForEmail()}
           />
         </Box>
       </LoggedOutInputContainer>
@@ -134,13 +130,31 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   errorForEmail() {
-    const { email } = this.state
+    const { email, triggeredValidation } = this.state
+    if (!triggeredValidation) return
     if (!email) return "Cannot leave field blank"
     if (!email.match(EMAIL_REGEX)) return "Invalid email."
   }
 
+  errorForText(key: "message" | "name") {
+    const { triggeredValidation } = this.state
+    if (!triggeredValidation) return
+    const text = this.state[key]
+    if (!text) return "Cannot leave field blank"
+  }
+
+  hasErrors(): boolean {
+    const { user } = this.props
+    if (user) return !!this.errorForText("message")
+
+    return !!(
+      this.errorForEmail() ||
+      this.errorForText("message") ||
+      this.errorForText("name")
+    )
+  }
+
   renderFeedbackTextArea() {
-    const { message, triggeredValidation } = this.state
     return (
       <FeedbackTextAreaContainer mt={2}>
         <TextArea
@@ -149,9 +163,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
           }}
           placeholder="Your comments here"
           required
-          error={
-            !message && triggeredValidation ? "Cannot leave field blank" : ""
-          }
+          error={this.errorForText("message")}
         />
       </FeedbackTextAreaContainer>
     )
@@ -188,9 +200,10 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
         {this.renderFeedbackTextArea()}
         <Button
           onClick={() => {
-            this.setState({ triggeredValidation: true }, () =>
+            this.setState({ triggeredValidation: true }, () => {
+              if (this.hasErrors()) return
               this.handleClick()
-            )
+            })
           }}
         >
           Submit
