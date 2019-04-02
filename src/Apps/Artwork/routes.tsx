@@ -1,9 +1,9 @@
 import { graphql } from "react-relay"
-import sd from "sharify"
 import { ArtworkAppFragmentContainer as ArtworkApp } from "./ArtworkApp"
 
 // @ts-ignore
 import { ComponentClass, StatelessComponent } from "react"
+import { get } from "Utils/get"
 
 // TODO: Investigate better error boundaries for runtime errors
 
@@ -21,11 +21,12 @@ export const routes = [
         }
       }
     `,
-    prepareVariables: params => ({
+    prepareVariables: (params, { context }) => ({
       ...params,
-      // @ts-ignore
-      enablePricingContext: sd.CURRENT_USER.lab_features.includes(
-        "Pricing Context"
+      enablePricingContext: get(
+        context,
+        ctx => ctx.user.lab_features.includes("Pricing Context"),
+        false
       ),
     }),
   },
