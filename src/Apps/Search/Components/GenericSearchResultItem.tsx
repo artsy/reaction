@@ -54,7 +54,7 @@ export class GenericSearchResultItem extends React.Component<
           >
             <Box height={70} width={70} mr={2} bg="black5">
               <Flex height="100%" justifyContent="center" alignItems="center">
-                {imageUrl ? (
+                {imageUrl && entityType !== "City" ? (
                   <Image width={70} height={70} src={imageUrl} />
                 ) : (
                   <FallbackIcon entityType={entityType} />
