@@ -290,17 +290,21 @@ export class StatusRoute extends Component<StatusProps> {
 
 const StyledShippingSummaryItem = styled(ShippingSummaryItem)`
   ${media.xs`
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    &&& {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   `};
 `
 const StyledTransactionDetailsSummaryItem = styled(
   TransactionDetailsSummaryItem
 )`
   ${media.xs`
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    &&& {
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   `};
 `
 
