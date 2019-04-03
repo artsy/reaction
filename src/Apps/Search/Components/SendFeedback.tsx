@@ -156,7 +156,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
 
   renderFeedbackTextArea() {
     return (
-      <FeedbackTextAreaContainer mt={2}>
+      <FeedbackTextAreaContainer my={3}>
         <TextArea
           onChange={({ value }) => {
             this.setState({ message: value })
@@ -188,10 +188,10 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
     return (
       <>
         <Box textAlign="center">
-          <Serif size="4">Your feedback is important to us.</Serif>
+          <Serif size="5">Your feedback is important to us.</Serif>
         </Box>
         <Box>
-          <Serif size="2">
+          <Serif size="3">
             Tell us how we can improve and help you find what you are looking
             for.
           </Serif>
@@ -216,7 +216,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
     const { submitted } = this.state
 
     return (
-      <Box bg={color("black5")} p={3} mt={3}>
+      <Box bg={color("black5")} p={6} mt={3}>
         <FeedbackContainer
           flexDirection="column"
           alignItems="center"

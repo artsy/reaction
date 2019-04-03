@@ -1,3 +1,27 @@
+# v15.11.19 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Border on BNMO status page is too thick (mobile only) [#2237](https://github.com/artsy/reaction/pull/2237) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.11.18 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Search] Tweak styling of feedback component [#2251](https://github.com/artsy/reaction/pull/2251) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.17 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix
