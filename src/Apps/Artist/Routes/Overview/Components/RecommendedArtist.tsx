@@ -1,8 +1,9 @@
 import { EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
+import { SystemContext } from "Artsy/SystemContext"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import { Carousel } from "Components/v2"
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 
@@ -11,7 +12,9 @@ interface RecommendedArtistProps {
 }
 const HEIGHT = 150
 
-export const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
+const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
+  const { user, mediator } = useContext(SystemContext)
+
   return (
     <>
       <EntityHeader
@@ -41,9 +44,9 @@ export const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}
               margin={10}
+              user={user}
+              mediator={mediator}
             />
-            // user={user}
-            // mediator={mediator}
             // onClick={this.trackClick.bind(this)}
           )
         }}
