@@ -1,16 +1,68 @@
 import { EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
 import { SystemContext } from "Artsy/SystemContext"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
+import { stringify } from "qs"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
 }
 const HEIGHT = 150
+
+// TODO: Remaining tasks
+/*
+ * Handle tracking (& find out constants to use)
+ * Move handleOpenAuth/openMobileAuth/openDesktopAuth to shared location
+ * Buy now/make offer labels
+ * Possibly extract <followArtistButton> to a shared location (it was a lot of copypasta that just worked)
+ * Tests
+ */
+
+const handleOpenAuth = (mediator, artist) => {
+  if (sd.IS_MOBILE) {
+    openMobileAuth(artist)
+  } else if (mediator) {
+    openDesktopAuth(mediator, artist)
+  } else {
+    window.location.href = "/login"
+  }
+}
+
+const openMobileAuth = artist => {
+  const params = stringify({
+    action: "follow",
+    contextModule: "Artwork page",
+    intent: "follow artist",
+    kind: "artist",
+    objectId: artist.id,
+    signUpIntent: "follow artist",
+    trigger: "click",
+    entityName: artist.name,
+  })
+  const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+  window.location.href = href
+}
+
+const openDesktopAuth = (mediator, artist) => {
+  mediator.trigger("open:auth", {
+    mode: "signup",
+    copy: `Sign up to follow ${artist.name}`,
+    signupIntent: "follow artist",
+    afterSignUpAction: {
+      kind: "artist",
+      action: "follow",
+      objectId: artist.id,
+    },
+  })
+}
 
 const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
   const { user, mediator } = useContext(SystemContext)
@@ -24,9 +76,32 @@ const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
         meta={artist.formatted_nationality_and_birthday}
         href={artist.href}
         FollowButton={
-          <Sans size="2" weight="medium" color="black">
-            Follow
-          </Sans>
+          <FollowArtistButton
+            artist={artist}
+            user={user}
+            trackingData={{
+              modelName: Schema.OwnerType.Artist,
+              context_module: "????", // TODO: this was Schema.ContextModule.Biography
+              entity_id: artist._id,
+              entity_slug: artist.id,
+            }}
+            onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
+            render={({ is_followed }) => {
+              return (
+                <Sans
+                  size="2"
+                  weight="medium"
+                  color="black"
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "underline",
+                  }}
+                >
+                  {is_followed ? "Following" : "Follow"}
+                </Sans>
+              )
+            }}
+          />
         }
       />
 
@@ -47,7 +122,7 @@ const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
               user={user}
               mediator={mediator}
             />
-            // onClick={this.trackClick.bind(this)}
+            // TODO: onClick={this.trackClick.bind(this)}
           )
         }}
       />
@@ -60,6 +135,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
   graphql`
     fragment RecommendedArtist_artist on Artist {
       id
+      _id
       name
       formatted_nationality_and_birthday
       href
@@ -79,6 +155,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
           }
         }
       }
+      ...FollowArtistButton_artist
     }
   `
 )

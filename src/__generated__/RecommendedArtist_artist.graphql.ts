@@ -1,12 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _RecommendedArtist_artist$ref: unique symbol;
 export type RecommendedArtist_artist$ref = typeof _RecommendedArtist_artist$ref;
 export type RecommendedArtist_artist = {
     readonly id: string;
+    readonly _id: string;
     readonly name: string | null;
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
@@ -29,6 +31,7 @@ export type RecommendedArtist_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
+    readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     readonly " $refType": RecommendedArtist_artist$ref;
 };
 
@@ -60,6 +63,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
       "args": null,
       "storageKey": null
     },
@@ -211,9 +221,14 @@ return {
         }
       ]
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "FollowArtistButton_artist",
+      "args": null
+    },
     v1
   ]
 };
 })();
-(node as any).hash = '32104c458ccc7021a25df93b77f9458f';
+(node as any).hash = '1f64cdc9e3d3023ab0660b802e849ea5';
 export default node;
