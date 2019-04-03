@@ -1,5 +1,6 @@
 import { EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { SystemContext } from "Artsy/SystemContext"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
@@ -18,7 +19,7 @@ const HEIGHT = 150
 
 // TODO: Remaining tasks
 /*
- * Handle tracking (& find out constants to use)
+ * find out tracking constants to use
  * Move handleOpenAuth/openMobileAuth/openDesktopAuth to shared location
  * Buy now/make offer labels
  * Possibly extract <followArtistButton> to a shared location (it was a lot of copypasta that just worked)
@@ -38,7 +39,7 @@ const handleOpenAuth = (mediator, artist) => {
 const openMobileAuth = artist => {
   const params = stringify({
     action: "follow",
-    contextModule: "Artwork page",
+    contextModule: Schema.ContextModule.RecommendedArtists,
     intent: "follow artist",
     kind: "artist",
     objectId: artist.id,
@@ -64,7 +65,33 @@ const openDesktopAuth = (mediator, artist) => {
   })
 }
 
-const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
+@track({
+  context_module: Schema.ContextModule.RecommendedArtists,
+})
+class RecommendedArtistWithTracking extends React.Component<
+  RecommendedArtistProps
+> {
+  @track({
+    type: Schema.Type.Thumbnail,
+    action_type: Schema.ActionType.Click,
+  })
+  trackArtworkClicked() {
+    // noop
+  }
+
+  render() {
+    return (
+      <RecommendedArtist
+        {...this.props}
+        onArtworkClicked={this.trackArtworkClicked.bind(this)}
+      />
+    )
+  }
+}
+
+const RecommendedArtist: FC<
+  RecommendedArtistProps & { onArtworkClicked: () => void }
+> = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
 
   return (
@@ -81,7 +108,7 @@ const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
             user={user}
             trackingData={{
               modelName: Schema.OwnerType.Artist,
-              context_module: "????", // TODO: this was Schema.ContextModule.Biography
+              context_module: Schema.ContextModule.RecommendedArtists,
               entity_id: artist._id,
               entity_slug: artist.id,
             }}
@@ -121,8 +148,8 @@ const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
               margin={10}
               user={user}
               mediator={mediator}
+              onClick={onArtworkClicked}
             />
-            // TODO: onClick={this.trackClick.bind(this)}
           )
         }}
       />
@@ -131,7 +158,7 @@ const RecommendedArtist: FC<RecommendedArtistProps> = ({ artist }) => {
 }
 
 export const RecommendedArtistFragmentContainer = createFragmentContainer(
-  RecommendedArtist,
+  RecommendedArtistWithTracking,
   graphql`
     fragment RecommendedArtist_artist on Artist {
       id
