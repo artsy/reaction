@@ -1,3 +1,15 @@
+# v15.11.22 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed error modal for insufficient funds on accept page [#2254](https://github.com/artsy/reaction/pull/2254) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.11.21 (Wed Apr 03 2019)
 
 #### 🐛  Bug Fix
