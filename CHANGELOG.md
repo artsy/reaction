@@ -1,3 +1,17 @@
+# v15.11.21 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendations [#2236](https://github.com/artsy/reaction/pull/2236) ([@pepopowitz](https://github.com/pepopowitz))
+- @dblandin => [Search] Tweak display of count within tabs [#2250](https://github.com/artsy/reaction/pull/2250) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.20 (Wed Apr 03 2019)
 
 
