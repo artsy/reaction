@@ -43,6 +43,9 @@ storiesOf("Apps", module)
   })
   .add("Search Results page", () => {
     return (
-      <MockRouter routes={searchRoutes} initialRoute="/search2?term=warhol" />
+      <MockRouter
+        routes={searchRoutes}
+        initialRoute="/search2/artists?term=war"
+      />
     )
   })
