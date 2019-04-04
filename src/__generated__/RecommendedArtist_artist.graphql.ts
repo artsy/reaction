@@ -1,9 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { FillwidthItem_artwork$ref } from "./FillwidthItem_artwork.graphql";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
-import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _RecommendedArtist_artist$ref: unique symbol;
 export type RecommendedArtist_artist$ref = typeof _RecommendedArtist_artist$ref;
 export type RecommendedArtist_artist = {
@@ -23,11 +22,8 @@ export type RecommendedArtist_artist = {
                 readonly __id: string;
                 readonly image: ({
                     readonly aspect_ratio: number;
-                    readonly placeholder: string | null;
-                    readonly url: string | null;
                 }) | null;
-                readonly href: string | null;
-                readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
+                readonly " $fragmentRefs": FillwidthItem_artwork$ref;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -39,13 +35,6 @@ export type RecommendedArtist_artist = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -87,7 +76,13 @@ return {
       "args": null,
       "storageKey": null
     },
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -164,7 +159,7 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v1,
+                v0,
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -180,39 +175,12 @@ return {
                       "name": "aspect_ratio",
                       "args": null,
                       "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "placeholder",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "url",
-                      "args": [
-                        {
-                          "kind": "Literal",
-                          "name": "version",
-                          "value": "large",
-                          "type": "[String]"
-                        }
-                      ],
-                      "storageKey": "url(version:\"large\")"
                     }
                   ]
                 },
-                v0,
                 {
                   "kind": "FragmentSpread",
-                  "name": "Metadata_artwork",
-                  "args": null
-                },
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Save_artwork",
+                  "name": "FillwidthItem_artwork",
                   "args": null
                 }
               ]
@@ -226,9 +194,9 @@ return {
       "name": "FollowArtistButton_artist",
       "args": null
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = '1f64cdc9e3d3023ab0660b802e849ea5';
+(node as any).hash = '60350f72595d74f2476540383b5ebe62';
 export default node;

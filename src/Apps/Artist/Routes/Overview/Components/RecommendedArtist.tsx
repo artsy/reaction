@@ -3,7 +3,7 @@ import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { SystemContext } from "Artsy/SystemContext"
-import { FillwidthItem } from "Components/Artwork/FillwidthItem"
+import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
 import { stringify } from "qs"
@@ -19,7 +19,6 @@ const HEIGHT = 150
 
 // TODO: Remaining tasks
 /*
- * find out tracking constants to use
  * Move handleOpenAuth/openMobileAuth/openDesktopAuth to shared location
  * Buy now/make offer labels
  * Possibly extract <followArtistButton> to a shared location (it was a lot of copypasta that just worked)
@@ -178,7 +177,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
             image {
               aspect_ratio
             }
-            ...FillwidthItem_artwork @relay(mask: false)
+            ...FillwidthItem_artwork
           }
         }
       }
