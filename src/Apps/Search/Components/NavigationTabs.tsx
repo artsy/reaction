@@ -89,7 +89,7 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const { term, artworkCount } = this.props
 
-    const route = tab => `/search2${tab}?term=${term}`
+    const route = tab => `/search${tab}?term=${term}`
 
     const tabCountMap = Object.entries(TAB_NAME_MAP).reduce(
       (acc, [key, val]) => {

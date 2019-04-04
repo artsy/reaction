@@ -75,8 +75,8 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
         const urlFragment = urlFragmentFromState(state, { page })
 
         // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search2?${filterQueryParams}`)
-        window.history.pushState({}, null, `/search2?${urlFragment}`)
+        // this.props.router.replace(`/search?${urlFragment}`)
+        window.history.pushState({}, null, `/search?${urlFragment}`)
       }
     )
   }
