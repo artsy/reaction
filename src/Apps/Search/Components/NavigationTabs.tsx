@@ -117,7 +117,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {artworkCount &&
+        {!!artworkCount &&
           this.renderTab("Artworks", route(""), {
             exact: true,
             count: artworkCount,
@@ -129,7 +129,7 @@ export class NavigationTabs extends React.Component<Props> {
           })
         })}
 
-        {restAggregationCount &&
+        {!!restAggregationCount &&
           this.renderTab("More", route("/more"), {
             count: restAggregationCount,
           })}
