@@ -19,9 +19,6 @@ const HEIGHT = 150
 
 // TODO: Remaining tasks
 /*
- * Move handleOpenAuth/openMobileAuth/openDesktopAuth to shared location
- * Buy now/make offer labels
- * Possibly extract <followArtistButton> to a shared location (it was a lot of copypasta that just worked)
  * Tests
  */
 
