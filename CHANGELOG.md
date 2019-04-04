@@ -1,3 +1,20 @@
+# v15.11.23 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- Search bar QA [#2247](https://github.com/artsy/reaction/pull/2247) ([@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.2 [#2256](https://github.com/artsy/reaction/pull/2256) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.11.22 (Wed Apr 03 2019)
 
 #### 🐛  Bug Fix
