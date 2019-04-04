@@ -32,6 +32,7 @@ describe("SearchApp", () => {
             counts: [
               { name: "PartnerGallery", count: 100 },
               { name: "artist", count: 320 },
+              { name: "gene", count: 0 },
             ],
           },
         ],
@@ -56,5 +57,6 @@ describe("SearchApp", () => {
     expect(html).toMatch(/Artworks.*100/)
     expect(html).toMatch(/Artists.*320/)
     expect(html).toMatch(/Galleries.*100/)
+    expect(html).not.toContain("Categories")
   })
 })
