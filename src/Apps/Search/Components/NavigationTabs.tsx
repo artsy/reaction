@@ -78,7 +78,7 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const { term, artworkCount } = this.props
 
-    const route = tab => `/search2${tab}?term=${term}`
+    const route = tab => `/search${tab}?term=${term}`
 
     const artistAggregationCount = get(
       this.aggregationFor("artist"),

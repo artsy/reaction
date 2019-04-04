@@ -55,11 +55,10 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
           }
 
           // TODO: Look into using router push w/ query params.
-          // this.props.router.replace(`/search2?${filterQueryParams}`)
           window.history.pushState(
             {},
             null,
-            `/search2?${urlFragmentFromState(this.props.filtersState)}`
+            `/search?${urlFragmentFromState(this.props.filtersState)}`
           )
 
           this.setState({

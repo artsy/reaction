@@ -55,7 +55,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 
 export const routes: RouteConfig[] = [
   {
-    path: "/search2",
+    path: "/search",
     Component: SearchApp,
     query: graphql`
       query routes_SearchBarTopLevelQuery($term: String!) {
