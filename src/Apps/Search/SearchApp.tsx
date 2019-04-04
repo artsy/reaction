@@ -65,7 +65,6 @@ export class SearchApp extends React.Component<Props> {
                 term={term}
                 searchableConnection={search}
               />
-              <Spacer mb={3} />
               <Box minHeight="30vh">{this.props.children}</Box>
             </Col>
           </Row>
