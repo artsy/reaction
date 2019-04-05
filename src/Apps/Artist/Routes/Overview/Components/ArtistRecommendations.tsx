@@ -36,7 +36,7 @@ export const ArtistRecommendationsFragmentContainer = createFragmentContainer(
     fragment ArtistRecommendations_artist on Artist {
       name
       related {
-        artists(first: 1) {
+        artists(first: 3) {
           edges {
             node {
               __id

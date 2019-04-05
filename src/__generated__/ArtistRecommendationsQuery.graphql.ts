@@ -30,7 +30,7 @@ query ArtistRecommendationsQuery(
 fragment ArtistRecommendations_artist on Artist {
   name
   related {
-    artists(first: 1) {
+    artists(first: 3) {
       edges {
         node {
           __id
@@ -245,7 +245,7 @@ return {
   "operationKind": "query",
   "name": "ArtistRecommendationsQuery",
   "id": null,
-  "text": "query ArtistRecommendationsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  name\n  related {\n    artists(first: 1) {\n      edges {\n        node {\n          __id\n          ...RecommendedArtist_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection(first: 20) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtistRecommendationsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  name\n  related {\n    artists(first: 3) {\n      edges {\n        node {\n          __id\n          ...RecommendedArtist_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection(first: 20) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -301,12 +301,12 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "artists",
-                "storageKey": "artists(first:1)",
+                "storageKey": "artists(first:3)",
                 "args": [
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 1,
+                    "value": 3,
                     "type": "Int"
                   }
                 ],
