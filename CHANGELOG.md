@@ -1,3 +1,15 @@
+# v15.13.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Re-sync schema from metaphysics [#2262](https://github.com/artsy/reaction/pull/2262) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v15.13.0 (Fri Apr 05 2019)
 
 #### 🚀  Enhancement
