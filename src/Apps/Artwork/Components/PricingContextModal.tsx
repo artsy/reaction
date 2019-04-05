@@ -1,19 +1,6 @@
-import {
-  Box,
-  color,
-  QuestionCircleIcon,
-  Sans,
-  Serif,
-  Spacer,
-} from "@artsy/palette"
+import { color, QuestionCircleIcon, Serif, Spacer } from "@artsy/palette"
 import Modal from "Components/Modal/Modal"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-
-import { ArtworkSidebarClassification_artwork } from "__generated__/ArtworkSidebarClassification_artwork.graphql"
-import * as Schema from "Artsy/Analytics/Schema"
-import track from "react-tracking"
 
 interface State {
   isModalOpen: boolean
