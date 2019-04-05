@@ -1,3 +1,16 @@
+# v15.12.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- [SearchResults] Respond to /search instead of /search2 [#2258](https://github.com/artsy/reaction/pull/2258) ([@mzikherman](https://github.com/mzikherman) [@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v15.11.24 (Thu Apr 04 2019)
 
 #### 🐛  Bug Fix
