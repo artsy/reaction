@@ -1,3 +1,15 @@
+# v15.11.24 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => Adjusted zero state [#2257](https://github.com/artsy/reaction/pull/2257) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.11.23 (Thu Apr 04 2019)
 
 #### 🐛  Bug Fix
