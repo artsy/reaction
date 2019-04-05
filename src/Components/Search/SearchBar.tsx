@@ -327,7 +327,7 @@ export class SearchBar extends Component<Props, State> {
         isFirstItem: true,
         displayType: "FirstItem",
         displayLabel: term,
-        href: `/search?q=${term}`,
+        href: `/search?term=${term}`,
       },
     }
 
