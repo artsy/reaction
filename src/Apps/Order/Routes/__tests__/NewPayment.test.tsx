@@ -107,6 +107,7 @@ describe("Payment", () => {
     Component: NewPaymentFragmentContainer,
     defaultData: {
       order: testOrder,
+      me: { creditCards: { edges: [] } },
     },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
@@ -114,6 +115,9 @@ describe("Payment", () => {
     },
     query: graphql`
       query NewPaymentTestQuery {
+        me {
+          ...NewPayment_me
+        }
         order: ecommerceOrder(id: "unused") {
           ...NewPayment_order
         }
@@ -148,7 +152,9 @@ describe("Payment", () => {
     ;(window.location.assign as any).mockReset()
     mockPostEvent.mockReset()
     createTokenMock.mockReset()
-    createTokenMock.mockImplementation(() => Promise.resolve())
+    createTokenMock.mockImplementation(() =>
+      Promise.resolve({ error: "bad error" })
+    )
   })
 
   it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", async () => {
