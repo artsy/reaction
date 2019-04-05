@@ -1,3 +1,15 @@
+# v15.13.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- User can see top three recommended artists [#2261](https://github.com/artsy/reaction/pull/2261) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v15.12.4 (Fri Apr 05 2019)
 
 #### 🐛  Bug Fix
