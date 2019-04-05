@@ -3,7 +3,7 @@ import Modal from "Components/Modal/Modal"
 import React from "react"
 
 interface State {
-  isModalOpen: boolean
+  isModalOpen?: boolean
 }
 
 @track()

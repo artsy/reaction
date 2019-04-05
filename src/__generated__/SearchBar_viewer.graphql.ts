@@ -53,7 +53,7 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "first",
-              "value": 7,
+              "value": 5,
               "type": "Int"
             },
             {
@@ -141,5 +141,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7d0a79e6f397dc366681ef647a0a5d50';
+(node as any).hash = '4dcffe86d167506ae2899dd1d5b0ef19';
 export default node;

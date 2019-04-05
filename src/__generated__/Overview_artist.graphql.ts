@@ -31,13 +31,6 @@ export type Overview_artist = {
                 }) | null;
             }) | null> | null;
         }) | null;
-        readonly artists: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly __id: string;
-                }) | null;
-            }) | null> | null;
-        }) | null;
     }) | null;
     readonly _id: string;
     readonly collections: ReadonlyArray<string | null> | null;
@@ -377,47 +370,6 @@ return {
               ]
             }
           ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "artists",
-          "storageKey": "artists(first:1)",
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "first",
-              "value": 1,
-              "type": "Int"
-            }
-          ],
-          "concreteType": "ArtistConnection",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "edges",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "ArtistEdge",
-              "plural": true,
-              "selections": [
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "node",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "Artist",
-                  "plural": false,
-                  "selections": [
-                    v1
-                  ]
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -540,5 +492,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b8921a21fb76803e35b0b946d2c83881';
+(node as any).hash = 'd3c2803548d99eddce4f393c519db8b5';
 export default node;
