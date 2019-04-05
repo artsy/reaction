@@ -50,6 +50,14 @@ export class SearchApp extends React.Component<Props> {
           </Col>
         </Row>
 
+        {this.renderFooter()}
+      </>
+    )
+  }
+
+  renderFooter() {
+    return (
+      <>
         <Row>
           <Col>
             <RecentlyViewed />
@@ -66,6 +74,7 @@ export class SearchApp extends React.Component<Props> {
       </>
     )
   }
+
   render() {
     const { viewer, location } = this.props
     const { search, filter_artworks } = viewer
@@ -101,6 +110,7 @@ export class SearchApp extends React.Component<Props> {
           ) : (
             <Box mt={3}>
               <ZeroState entity="results" term={term} />
+              {this.renderFooter()}
             </Box>
           )}
           <Spacer mb={3} />
