@@ -17,11 +17,6 @@ interface RecommendedArtistProps {
 }
 const HEIGHT = 150
 
-// TODO: Remaining tasks
-/*
- * Tests
- */
-
 const handleOpenAuth = (mediator, artist) => {
   if (sd.IS_MOBILE) {
     openMobileAuth(artist)
@@ -131,7 +126,7 @@ const RecommendedArtist: FC<
       <Spacer mb={3} />
 
       <Carousel
-        data={artist.artworks_connection.edges as object[]}
+        data={get(artist, a => a.artworks_connection.edges, []) as object[]}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
 

@@ -11,7 +11,7 @@ jest.unmock("react-relay")
 
 describe("ArtistRecommendations", () => {
   async function getWrapper(artistData: any) {
-    const tree = await renderUntil(
+    return await renderUntil(
       wrapper => {
         return wrapper.find(ArtistRecommendations).length > 0
       },
@@ -31,7 +31,6 @@ describe("ArtistRecommendations", () => {
         />
       </MockBoot>
     )
-    return tree
   }
 
   it("Doesn`t explode when there are no recommended artists", async () => {
