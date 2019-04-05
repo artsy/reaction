@@ -34,12 +34,13 @@ export class SearchApp extends React.Component<Props> {
 
     return (
       <>
+        <Spacer mb={4} />
         <Row>
           <Col>
             <Serif size="5">
               {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
             </Serif>
-            <Spacer mb={3} />
+            <Spacer mb={4} />
             <span id="jumpto--searchResultTabs" />
             <NavigationTabs
               artworkCount={artworkCount}
