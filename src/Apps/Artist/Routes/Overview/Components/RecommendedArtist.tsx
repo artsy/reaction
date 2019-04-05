@@ -126,6 +126,7 @@ const RecommendedArtist: FC<
       <Spacer mb={3} />
 
       <Carousel
+        height={240}
         data={get(artist, a => a.artworks_connection.edges, []) as object[]}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
