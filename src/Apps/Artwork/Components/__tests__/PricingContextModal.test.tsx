@@ -44,16 +44,11 @@ describe("PricingContextModal", () => {
       .at(0)
       .simulate("click")
 
-    console.log(
-      "BUTTON",
-      component
-        .find(Button)
-        .at(0)
-        .text()
-    )
-
-    expect(component.text()).not.toContain(
-      "This information represents retail prices for works on Artsy"
-    )
+    // Wait for modal close animation to finish
+    setTimeout(() => {
+      expect(component.text()).not.toContain(
+        "This information represents retail prices for works on Artsy"
+      )
+    }, 500)
   })
 })
