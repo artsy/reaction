@@ -1,4 +1,4 @@
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Separator } from "@artsy/palette"
 import { SearchResultsEntity_viewer } from "__generated__/SearchResultsEntity_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
@@ -111,13 +111,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
                 term={term}
                 id={searchableItem._id}
               />
-              {index < items.length - 1 ? (
-                <Box my={3}>
-                  <Separator />
-                </Box>
-              ) : (
-                <Spacer mb={3} />
-              )}
+              {index < items.length - 1 && <Separator />}
             </Box>
           )
         })}
@@ -142,7 +136,9 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {items.length === 0 ? (
-          <ZeroState entity={zeroStateText} term={term} />
+          <Box mt={3}>
+            <ZeroState entity={zeroStateText} term={term} />
+          </Box>
         ) : (
           this.renderItems()
         )}

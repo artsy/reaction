@@ -1,8 +1,18 @@
-import { Box, Flex, Image, Link, Sans, Serif, Spacer } from "@artsy/palette"
+import {
+  Box,
+  color,
+  Flex,
+  Image,
+  Link,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Truncator } from "Components/Truncator"
 import React from "react"
+import styled from "styled-components"
 import { FallbackIcon } from "./FallbackIcon"
 
 interface GenericSearchResultItemProps {
@@ -46,43 +56,58 @@ export class GenericSearchResultItem extends React.Component<
     return (
       <Link
         href={href}
-        underlineBehavior="hover"
+        underlineBehavior="none"
         onClick={() => {
           this.handleClick()
         }}
       >
-        <Flex flexDirection="row">
-          <Box height={70} width={70} mr={2} bg="black5">
-            <Flex height="100%" justifyContent="center" alignItems="center">
-              {imageUrl && entityType !== "City" ? (
-                <Image width={70} height={70} src={imageUrl} />
-              ) : (
-                <FallbackIcon entityType={entityType} />
+        <ItemRow>
+          <Spacer pb={3} />
+          <Flex pl={4} flexDirection="row">
+            <Box height={70} width={70} mr={2}>
+              <Flex
+                style={{ backgroundColor: color("black10") }}
+                height="100%"
+                justifyContent="center"
+                alignItems="center"
+              >
+                {imageUrl && entityType !== "City" ? (
+                  <Image width={70} height={70} src={imageUrl} />
+                ) : (
+                  <FallbackIcon entityType={entityType} />
+                )}
+              </Flex>
+            </Box>
+
+            <Box>
+              <Sans color="black100" size="2" weight="medium">
+                {translateEntityType(entityType)}
+              </Sans>
+              <Spacer mb={0.5} />
+
+              <Serif color="black100" size="3">
+                {name}
+              </Serif>
+
+              {description && (
+                <>
+                  <Spacer mb={0.5} />
+                  <Serif color="black60" size="3" maxWidth={536}>
+                    <Truncator maxLineCount={3}>{description}</Truncator>
+                  </Serif>
+                </>
               )}
-            </Flex>
-          </Box>
-
-          <Box>
-            <Sans color="black100" size="2" weight="medium">
-              {translateEntityType(entityType)}
-            </Sans>
-            <Spacer mb={0.5} />
-
-            <Serif color="black100" size="3">
-              {name}
-            </Serif>
-
-            {description && (
-              <>
-                <Spacer mb={0.5} />
-                <Serif color="black60" size="3" maxWidth={536}>
-                  <Truncator maxLineCount={3}>{description}</Truncator>
-                </Serif>
-              </>
-            )}
-          </Box>
-        </Flex>
+            </Box>
+          </Flex>
+          <Spacer pb={3} />
+        </ItemRow>
       </Link>
     )
   }
 }
+
+const ItemRow = styled(Box)`
+  &:hover {
+    background-color: ${color("black5")};
+  }
+`
