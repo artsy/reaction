@@ -251,6 +251,8 @@ export enum ContextModule {
   OtherWorksInFair = "Other works in fair",
   OtherWorksFromGallery = "Other works from gallery",
   OtherWorksFromShow = "Other works from show",
+  // TODO: verify this
+  RecommendedArtists = "Recommended Artists",
   RelatedArtists = "RelatedArtists",
   RelatedWorks = "RelatedWorks",
   ShareButton = "Share button",

@@ -1,6 +1,5 @@
 import { Box } from "@artsy/palette"
-import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
-import { ArtistRecommendations } from "Apps/Artist/Routes/Overview/Components/ArtistRecommendations"
+import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "Apps/Artist/Routes/Overview/Components/ArtistRecommendations"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -23,12 +22,7 @@ storiesOf("Apps/Artist Page", module)
   .add("Artist Recommendations", () => {
     return (
       <Box m={3}>
-        <ArtistRecommendations artist={artistWithRecommendations} />
+        <ArtistRecommendations artistID="pablo-picasso" />
       </Box>
     )
   })
-
-const artistWithRecommendations: ArtistRecommendations_artist = {
-  " $refType": null,
-  name: "Pablo Picasso",
-}
