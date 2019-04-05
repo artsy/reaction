@@ -34,12 +34,13 @@ export class SearchApp extends React.Component<Props> {
 
     return (
       <>
+        <Spacer mb={4} />
         <Row>
           <Col>
             <Serif size="5">
               {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
             </Serif>
-            <Spacer mb={3} />
+            <Spacer mb={4} />
             <span id="jumpto--searchResultTabs" />
             <NavigationTabs
               artworkCount={artworkCount}
@@ -50,6 +51,14 @@ export class SearchApp extends React.Component<Props> {
           </Col>
         </Row>
 
+        {this.renderFooter()}
+      </>
+    )
+  }
+
+  renderFooter() {
+    return (
+      <>
         <Row>
           <Col>
             <RecentlyViewed />
@@ -66,6 +75,7 @@ export class SearchApp extends React.Component<Props> {
       </>
     )
   }
+
   render() {
     const { viewer, location } = this.props
     const { search, filter_artworks } = viewer
@@ -101,6 +111,7 @@ export class SearchApp extends React.Component<Props> {
           ) : (
             <Box mt={3}>
               <ZeroState entity="results" term={term} />
+              {this.renderFooter()}
             </Box>
           )}
           <Spacer mb={3} />
