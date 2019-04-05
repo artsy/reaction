@@ -18,8 +18,17 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
 
-import { Checkbox, Collapse, Flex, Join, Serif, Spacer } from "@artsy/palette"
+import {
+  BorderedRadio,
+  Checkbox,
+  Collapse,
+  Flex,
+  RadioGroup,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { CommitMutation } from "Apps/Order/Utils/commitMutation"
+import { CreditCardDetails } from "./CreditCardDetails"
 
 export interface PaymentPickerProps
   extends ReactStripeElements.InjectedStripeProps {
@@ -36,6 +45,8 @@ interface PaymentPickerState {
   addressTouched: AddressTouched
   stripeError: stripe.Error
   isCreatingStripeToken: boolean
+  creditCardSelection: { type: "existing"; id: string } | { type: "new" }
+  saveNewCreditCard: boolean
 }
 
 export class PaymentPicker extends React.Component<
@@ -49,6 +60,14 @@ export class PaymentPicker extends React.Component<
     address: this.startingAddress(),
     addressErrors: {},
     addressTouched: {},
+    creditCardSelection: this.getInitialCreditCardSelection(),
+    saveNewCreditCard: true,
+  }
+
+  getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
+    return this.props.me.creditCards.edges.length
+      ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
+      : { type: "new" }
   }
 
   startingAddress(): Address {
@@ -86,6 +105,11 @@ export class PaymentPicker extends React.Component<
     | { type: "invalid_form" }
     | { type: "success"; creditCardId: string }
   > = async () => {
+    const { creditCardSelection, saveNewCreditCard } = this.state
+    if (creditCardSelection.type === "existing") {
+      return { type: "success", creditCardId: creditCardSelection.id }
+    }
+
     if (this.needsAddress()) {
       const { errors, hasErrors } = validateAddress(this.state.address)
       if (hasErrors) {
@@ -108,7 +132,7 @@ export class PaymentPicker extends React.Component<
     const creditCardOrError = (await this.createCreditCard({
       input: {
         token: stripeResult.token.id,
-        oneTimeUse: true,
+        oneTimeUse: !saveNewCreditCard,
       },
     })).createCreditCard.creditCardOrError
 
@@ -158,40 +182,106 @@ export class PaymentPicker extends React.Component<
   }
 
   render() {
-    const { stripeError, address, addressErrors, addressTouched } = this.state
+    const {
+      stripeError,
+      address,
+      addressErrors,
+      addressTouched,
+      creditCardSelection,
+    } = this.state
+    console.log({ creditCardSelection })
+    const {
+      me: { creditCards },
+    } = this.props
 
     return (
-      <Join separator={<Spacer mb={3} />}>
-        <Flex flexDirection="column">
-          <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
-            Credit card
-          </Serif>
-          <CreditCardInput
-            error={stripeError}
-            onChange={response => {
-              this.setState({ stripeError: response.error })
+      <>
+        {creditCards.edges.length > 0 && (
+          <RadioGroup
+            onSelect={val => {
+              if (val === "new") {
+                this.setState({ creditCardSelection: { type: "new" } })
+              } else {
+                this.setState({
+                  creditCardSelection: { type: "existing", id: val },
+                })
+              }
             }}
-          />
-        </Flex>
-
-        {!this.isPickup() && (
-          <Checkbox
-            selected={this.state.hideBillingAddress}
-            onSelect={this.handleChangeHideBillingAddress.bind(this)}
+            defaultValue={
+              creditCardSelection.type === "new"
+                ? "new"
+                : creditCardSelection.id
+            }
           >
-            Billing and shipping addresses are the same
-          </Checkbox>
+            {creditCards.edges
+              .map(e => {
+                const { id, ...creditCardProps } = e.node
+                return (
+                  <BorderedRadio value={id} key={id}>
+                    <CreditCardDetails {...creditCardProps} />
+                  </BorderedRadio>
+                )
+              })
+              .concat([
+                <BorderedRadio
+                  value="new"
+                  key="new"
+                  selected={creditCardSelection.type === "new"}
+                >
+                  Add another card.
+                </BorderedRadio>,
+              ])}
+          </RadioGroup>
         )}
-        <Collapse open={this.needsAddress()}>
-          <AddressForm
-            value={address}
-            errors={addressErrors}
-            touched={addressTouched}
-            onChange={this.onAddressChange}
-            billing
-          />
+
+        <Collapse open={this.state.creditCardSelection.type === "new"}>
+          <Spacer mb={3} />
+          <Flex flexDirection="column">
+            <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
+              Credit card
+            </Serif>
+            <CreditCardInput
+              error={stripeError}
+              onChange={response => {
+                this.setState({ stripeError: response.error })
+              }}
+            />
+
+            {!this.isPickup() && (
+              <>
+                <Spacer mb={2} />
+                <Checkbox
+                  selected={this.state.hideBillingAddress}
+                  onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                >
+                  Billing and shipping addresses are the same.
+                </Checkbox>
+              </>
+            )}
+            <Collapse open={this.needsAddress()}>
+              <Spacer mb={2} />
+              <AddressForm
+                value={address}
+                errors={addressErrors}
+                touched={addressTouched}
+                onChange={this.onAddressChange}
+                billing
+              />
+              <Spacer mb={2} />
+            </Collapse>
+            <Checkbox
+              selected={this.state.saveNewCreditCard}
+              onSelect={() =>
+                this.setState({
+                  saveNewCreditCard: !this.state.saveNewCreditCard,
+                })
+              }
+            >
+              Save credit card for later use.
+            </Checkbox>
+          </Flex>
         </Collapse>
-      </Join>
+      </>
     )
   }
 
@@ -276,17 +366,11 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
         creditCards {
           edges {
             node {
+              id
               brand
-              name
               last_digits
               expiration_month
               expiration_year
-              street1
-              street2
-              city
-              state
-              country
-              postal_code
             }
           }
         }
