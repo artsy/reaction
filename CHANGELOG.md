@@ -1,3 +1,15 @@
+# v15.12.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Some tweaks to calling out when hovering over an item [#2259](https://github.com/artsy/reaction/pull/2259) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.12.0 (Fri Apr 05 2019)
 
 #### 🚀  Enhancement
