@@ -22,6 +22,16 @@ const MORE_TABS = [
   "PartnerInstitutionalSeller",
 ]
 
+const TAB_NAME_MAP = {
+  artist: "Artists",
+  marketing_collection: "Collections",
+  PartnerGallery: "Galleries",
+  partner_show: "Shows",
+  gene: "Categories",
+  article: "Articles",
+  sale: "Auctions",
+}
+
 @track({
   context_module: Schema.ContextModule.NavigationTabs,
 })
@@ -52,6 +62,7 @@ export class NavigationTabs extends React.Component<Props> {
         onClick={() => {
           this.trackClick(tabName, to)
         }}
+        key={to}
       >
         <Flex>
           {text}
@@ -78,42 +89,20 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const { term, artworkCount } = this.props
 
-    const route = tab => `/search2${tab}?term=${term}`
+    const route = tab => `/search${tab}?term=${term}`
 
-    const artistAggregationCount = get(
-      this.aggregationFor("artist"),
-      agg => agg.count,
-      0
-    )
-    const collectionAggregationCount = get(
-      this.aggregationFor("marketing_collection"),
-      agg => agg.count,
-      0
-    )
-    const galleryAggregationCount = get(
-      this.aggregationFor("PartnerGallery"),
-      agg => agg.count,
-      0
-    )
-    const showAggregationCount = get(
-      this.aggregationFor("partner_show"),
-      agg => agg.count,
-      0
-    )
-    const categoriesAggregationCount = get(
-      this.aggregationFor("gene"),
-      agg => agg.count,
-      0
-    )
-    const articlesAggregationCount = get(
-      this.aggregationFor("article"),
-      agg => agg.count,
-      0
-    )
-    const auctionsAggregationCount = get(
-      this.aggregationFor("sale"),
-      agg => agg.count,
-      0
+    const tabCountMap = Object.entries(TAB_NAME_MAP).reduce(
+      (acc, [key, val]) => {
+        const count = get(this.aggregationFor(key), agg => agg.count, 0)
+        if (!count) {
+          return acc
+        }
+        return {
+          ...acc,
+          [val]: get(this.aggregationFor(key), agg => agg.count, 0),
+        }
+      },
+      {}
     )
 
     let restAggregationCount: number = 0
@@ -128,34 +117,22 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab("Artworks", route(""), {
-          exact: true,
-          count: artworkCount,
+        {!!artworkCount &&
+          this.renderTab("Artworks", route(""), {
+            exact: true,
+            count: artworkCount,
+          })}
+
+        {Object.entries(tabCountMap).map(([key, value]: [string, number]) => {
+          return this.renderTab(key, route(`/${key.toLowerCase()}`), {
+            count: value,
+          })
         })}
-        {this.renderTab("Artists", route("/artists"), {
-          count: artistAggregationCount,
-        })}
-        {this.renderTab("Collections", route("/collections"), {
-          count: collectionAggregationCount,
-        })}
-        {this.renderTab("Galleries", route("/galleries"), {
-          count: galleryAggregationCount,
-        })}
-        {this.renderTab("Shows", route("/shows"), {
-          count: showAggregationCount,
-        })}
-        {this.renderTab("Categories", route("/categories"), {
-          count: categoriesAggregationCount,
-        })}
-        {this.renderTab("Articles", route("/articles"), {
-          count: articlesAggregationCount,
-        })}
-        {this.renderTab("Auctions", route("/auctions"), {
-          count: auctionsAggregationCount,
-        })}
-        {this.renderTab("More", route("/more"), {
-          count: restAggregationCount,
-        })}
+
+        {!!restAggregationCount &&
+          this.renderTab("More", route("/more"), {
+            count: restAggregationCount,
+          })}
       </>
     )
   }

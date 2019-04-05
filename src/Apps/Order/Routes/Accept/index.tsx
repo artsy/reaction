@@ -99,7 +99,7 @@ export class Accept extends Component<AcceptProps> {
         const parsedData = get(error, e => JSON.parse(e.data), {})
 
         // https://stripe.com/docs/declines/codes
-        if (parsedData.failure_code === "insufficient_funds") {
+        if (parsedData.decline_code === "insufficient_funds") {
           this.showCardFailureDialog({
             title: "Insufficient funds",
             message:

@@ -1,3 +1,123 @@
+# v15.13.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Re-sync schema from metaphysics [#2262](https://github.com/artsy/reaction/pull/2262) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.13.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- User can see top three recommended artists [#2261](https://github.com/artsy/reaction/pull/2261) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.4 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendation carousel [#2255](https://github.com/artsy/reaction/pull/2255) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.3 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add basic docs for createTestEnv [#2253](https://github.com/artsy/reaction/pull/2253) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v15.12.2 (Fri Apr 05 2019)
+
+
+
+---
+
+# v15.12.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Some tweaks to calling out when hovering over an item [#2259](https://github.com/artsy/reaction/pull/2259) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.12.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- [SearchResults] Respond to /search instead of /search2 [#2258](https://github.com/artsy/reaction/pull/2258) ([@mzikherman](https://github.com/mzikherman) [@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v15.11.24 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => Adjusted zero state [#2257](https://github.com/artsy/reaction/pull/2257) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.23 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- Search bar QA [#2247](https://github.com/artsy/reaction/pull/2247) ([@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.2 [#2256](https://github.com/artsy/reaction/pull/2256) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.11.22 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed error modal for insufficient funds on accept page [#2254](https://github.com/artsy/reaction/pull/2254) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.11.21 (Wed Apr 03 2019)
 
 #### 🐛  Bug Fix

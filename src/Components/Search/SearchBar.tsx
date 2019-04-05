@@ -8,6 +8,7 @@ import colors from "Assets/Colors"
 import Input from "Components/Input"
 import {
   EmptySuggestion,
+  FirstSuggestionItem,
   PLACEHOLDER,
   PLACEHOLDER_XS,
   SuggestionItem,
@@ -272,10 +273,29 @@ export class SearchBar extends Component<Props, State> {
     return displayLabel
   }
 
-  renderSuggestion = (
-    { node: { displayLabel, displayType, href } },
-    { query, isHighlighted }
-  ) => {
+  renderSuggestion = (edge, rest) => {
+    const renderer = edge.node.isFirstItem
+      ? this.renderFirstSuggestion
+      : this.renderDefaultSuggestion
+    const item = renderer(edge, rest)
+    return item
+  }
+
+  renderFirstSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
+    return (
+      <FirstSuggestionItem
+        display={displayLabel}
+        href={href}
+        isHighlighted={isHighlighted}
+        label={displayType}
+        query={query}
+      />
+    )
+  }
+
+  renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
     return (
       <SuggestionItem
         display={displayLabel}
@@ -304,9 +324,10 @@ export class SearchBar extends Component<Props, State> {
 
     const firstSuggestionPlaceholder = {
       node: {
+        isFirstItem: true,
         displayType: "FirstItem",
         displayLabel: term,
-        href: `/search?q=${term}`,
+        href: `/search?term=${term}`,
       },
     }
 
@@ -357,7 +378,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 5)
+        search(query: $term, mode: AUTOSUGGEST, first: 7)
           @include(if: $hasTerm) {
           edges {
             node {

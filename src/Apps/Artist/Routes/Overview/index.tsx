@@ -19,6 +19,7 @@ import {
   ArtistBioFragmentContainer as ArtistBio,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
+import { get } from "Utils/get"
 
 export interface OverviewRouteProps {
   showCollectionsRail?: boolean // TODO: remove after CollectionsRail a/b test
@@ -31,7 +32,7 @@ interface State {
   isReadMoreExpanded: boolean
 }
 
-class OverviewRoute extends React.Component<OverviewRouteProps, State> {
+export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
   }
@@ -98,10 +99,11 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return (
       <ContextConsumer>
         {({ user }) => {
-          const showRecommendations = userHasLabFeature(
-            user,
-            "Artist Recommendations"
-          )
+          const hasArtistRecommendations =
+            get(artist, a => a.related.artists.edges.length, 0) > 0
+          const showRecommendations =
+            hasArtistRecommendations &&
+            userHasLabFeature(user, "Artist Recommendations")
 
           return (
             <>
@@ -182,6 +184,7 @@ class OverviewRoute extends React.Component<OverviewRouteProps, State> {
               {showRecommendations && (
                 <Row>
                   <Col>
+                    <Separator mt={6} mb={4} />
                     <ArtistRecommendations artistID={artist._id} />
                   </Col>
                 </Row>
@@ -252,6 +255,13 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           edges {
             node {
               id
+            }
+          }
+        }
+        artists(first: 1) {
+          edges {
+            node {
+              __id
             }
           }
         }

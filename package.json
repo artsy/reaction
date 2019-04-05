@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "15.11.21",
+  "version": "15.13.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "4.6.1",
+    "@artsy/palette": "4.6.2",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
