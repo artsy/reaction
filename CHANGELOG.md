@@ -1,3 +1,15 @@
+# v15.12.3 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add basic docs for createTestEnv [#2253](https://github.com/artsy/reaction/pull/2253) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v15.12.2 (Fri Apr 05 2019)
 
 
