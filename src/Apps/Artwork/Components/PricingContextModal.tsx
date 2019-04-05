@@ -6,7 +6,6 @@ interface State {
   isModalOpen?: boolean
 }
 
-@track()
 export class PricingContextModal extends React.Component<State> {
   state = {
     isModalOpen: false,
