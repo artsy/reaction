@@ -1,3 +1,15 @@
+# v15.12.4 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendation carousel [#2255](https://github.com/artsy/reaction/pull/2255) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v15.12.3 (Fri Apr 05 2019)
 
 #### 🐛  Bug Fix
