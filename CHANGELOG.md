@@ -1,3 +1,15 @@
+# v15.13.2 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => Bring back ze footah [#2263](https://github.com/artsy/reaction/pull/2263) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.13.1 (Fri Apr 05 2019)
 
 #### 🐛  Bug Fix
