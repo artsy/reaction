@@ -101,7 +101,7 @@ export class PaymentPicker extends React.Component<
   }
 
   getCreditCardId: () => Promise<
-    | { type: "error"; error: string }
+    | { type: "error"; error: string | undefined }
     | { type: "invalid_form" }
     | { type: "success"; creditCardId: string }
   > = async () => {

@@ -15,7 +15,7 @@ import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { injectStripe, ReactStripeElements } from "react-stripe-elements"
+import { ReactStripeElements } from "react-stripe-elements"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -194,9 +194,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectCommitMutation(
-    injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute)))
-  ),
+  injectCommitMutation(trackPageViewWrapper(injectDialog(PaymentRoute))),
   {
     me: graphql`
       fragment Payment_me on Me {
