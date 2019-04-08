@@ -1,4 +1,4 @@
-import { color, QuestionCircleIcon, Serif, Spacer } from "@artsy/palette"
+import { QuestionCircleIcon, Serif, Spacer } from "@artsy/palette"
 import Modal from "Components/Modal/Modal"
 import React from "react"
 
