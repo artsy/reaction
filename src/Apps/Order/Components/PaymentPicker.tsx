@@ -189,7 +189,6 @@ export class PaymentPicker extends React.Component<
       addressTouched,
       creditCardSelection,
     } = this.state
-    console.log({ creditCardSelection })
     const {
       me: { creditCards },
     } = this.props
