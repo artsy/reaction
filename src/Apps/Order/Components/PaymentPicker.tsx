@@ -64,20 +64,20 @@ export class PaymentPicker extends React.Component<
     saveNewCreditCard: true,
   }
 
-  getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
+  private getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
     return this.props.me.creditCards.edges.length
       ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
       : { type: "new" }
   }
 
-  startingAddress(): Address {
+  private startingAddress(): Address {
     return {
       ...emptyAddress,
       country: "US",
     }
   }
 
-  get touchedAddress() {
+  private get touchedAddress() {
     return {
       name: true,
       country: true,
@@ -90,7 +90,7 @@ export class PaymentPicker extends React.Component<
     }
   }
 
-  createStripeToken = async () => {
+  private createStripeToken = async () => {
     try {
       this.setState({ isCreatingStripeToken: true })
       const stripeBillingAddress = this.getStripeBillingAddress()
@@ -153,7 +153,7 @@ export class PaymentPicker extends React.Component<
       }
     }
   })
-  handleChangeHideBillingAddress(hideBillingAddress: boolean) {
+  private handleChangeHideBillingAddress(hideBillingAddress: boolean) {
     if (!hideBillingAddress) {
       this.setState({
         address: {
@@ -166,7 +166,7 @@ export class PaymentPicker extends React.Component<
     this.setState({ hideBillingAddress })
   }
 
-  onAddressChange: AddressChangeHandler = (address, key) => {
+  private onAddressChange: AddressChangeHandler = (address, key) => {
     const { errors } = validateAddress(address)
     this.setState({
       address,
@@ -308,7 +308,7 @@ export class PaymentPicker extends React.Component<
     }
   }
 
-  createCreditCard(
+  private createCreditCard(
     variables: PaymentPickerCreateCreditCardMutation["variables"]
   ) {
     return this.props.commitMutation<PaymentPickerCreateCreditCardMutation>({
