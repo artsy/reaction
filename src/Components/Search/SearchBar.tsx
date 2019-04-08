@@ -87,7 +87,6 @@ const SuggestionContainer = ({ children, containerProps }) => {
 })
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
-  private containerRef: Node
   private userClickedOnDescendant: boolean
 
   state = {
@@ -125,7 +124,7 @@ export class SearchBar extends Component<Props, State> {
 
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    const { relay, viewer } = this.props
+    const { relay } = this.props
     const performanceStart = performance && performance.now()
 
     relay.refetch(
@@ -141,6 +140,7 @@ export class SearchBar extends Component<Props, State> {
         } else if (performanceStart && sd.VOLLEY_ENDPOINT) {
           this.reportPerformanceMeasurement(performanceStart)
         }
+        const { viewer } = this.props
         const edges = get(viewer, v => v.search.edges, [])
         this.trackSearch(term, edges.length > 0)
       }
@@ -190,14 +190,7 @@ export class SearchBar extends Component<Props, State> {
   }
 
   onBlur = e => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we setState({focused: false}) when that happens, the link will get
-    //  removed from the DOM before the browser has a chance to follow it.
-    if (this.containerRef.contains(e.relatedTarget)) {
-      this.userClickedOnDescendant = true
-    } else {
-      this.setState({ focused: false })
-    }
+    this.setState({ focused: false })
   }
 
   onSuggestionsClearRequested = () => {
