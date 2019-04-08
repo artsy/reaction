@@ -56,12 +56,14 @@ export class ArtistCollectionsRail extends React.Component<
             height={200}
             settings={{
               slidesToScroll: 1,
+              infinite: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
             render={slide => {
               return <ArtistCollectionEntity collection={slide} />
             }}
+            arrowHeight={130}
           />
         </RailWrapper>
       )
