@@ -40,6 +40,7 @@ const {
 } = process.env
 
 const isCI = CI || NETLIFY
+console.log("--------------------------- isCI", isCI, CI, NETLIFY)
 const notOnCI = value => (isCI ? [] : [value])
 
 /**
