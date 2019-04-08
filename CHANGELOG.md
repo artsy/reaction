@@ -1,3 +1,22 @@
+# v15.13.3 (Mon Apr 08 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [Autosuggest] Fix tracking of whether results were returned for a query [#2268](https://github.com/artsy/reaction/pull/2268) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.3 [#2267](https://github.com/artsy/reaction/pull/2267) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.2 [#2266](https://github.com/artsy/reaction/pull/2266) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.1 [#2264](https://github.com/artsy/reaction/pull/2264) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.13.2 (Fri Apr 05 2019)
 
 #### 🐛  Bug Fix
