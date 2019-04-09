@@ -1,3 +1,15 @@
+# v15.13.9 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Test Netlify deployments [#2278](https://github.com/artsy/reaction/pull/2278) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.13.8 (Tue Apr 09 2019)
 
 #### 🐛  Bug Fix
