@@ -32,14 +32,14 @@ const auctions = [
     badge: "In progress",
     href: "#",
   },
-]
+] as any
 
 storiesOf("Apps/Artwork Page/Components/OtherAuctions", module).add(
   "Other Auctions",
   () => {
     return (
       <Section title="Responsive Other Auctions">
-        <OtherAuctions auctions={auctions} />
+        <OtherAuctions viewer={{ sales: auctions } as any} />
       </Section>
     )
   }

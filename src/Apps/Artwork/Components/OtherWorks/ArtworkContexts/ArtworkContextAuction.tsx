@@ -64,7 +64,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       return (
         <Join separator={<Spacer my={6} />}>
           <AuctionArtworkGrid artwork={artwork} />
-          <OtherAuctions auctions={sales} />
+          <OtherAuctions sales={sales as any} />
         </Join>
       )
     } else {
@@ -72,7 +72,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={artwork} />
           <RelatedWorksArtworkGrid artwork={artwork} />
-          <OtherAuctions auctions={sales} />
+          <OtherAuctions sales={sales as any} />
         </Join>
       )
     }
@@ -98,6 +98,8 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         ...RelatedWorksArtworkGrid_artwork
       }
       sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
+        ...OtherAuctions_sales
+        # Relay isn't transitively expanding the child fragments for some reason, so we'll expand manually.
         ...AuctionCard_sale
       }
     }
