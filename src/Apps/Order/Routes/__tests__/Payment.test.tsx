@@ -5,7 +5,6 @@ import {
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import {
-  creatingCreditCardSuccess,
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
