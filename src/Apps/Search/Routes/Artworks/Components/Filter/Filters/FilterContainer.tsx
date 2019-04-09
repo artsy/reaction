@@ -42,6 +42,22 @@ export class FilterContainer extends React.Component<
     showMobileActionSheet: false,
   }
 
+  componentDidMount() {
+    this.updateBodyScrollBlock()
+  }
+
+  componentDidUpdate() {
+    this.updateBodyScrollBlock()
+  }
+
+  updateBodyScrollBlock() {
+    if (this.state.showMobileActionSheet) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "visible"
+    }
+  }
+
   hideMobileActionSheet = () => {
     this.setState({
       showMobileActionSheet: false,
