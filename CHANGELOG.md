@@ -1,3 +1,15 @@
+# v15.13.8 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Downsize artwork image [#2273](https://github.com/artsy/reaction/pull/2273) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.13.7 (Tue Apr 09 2019)
 
 #### 🐛  Bug Fix
