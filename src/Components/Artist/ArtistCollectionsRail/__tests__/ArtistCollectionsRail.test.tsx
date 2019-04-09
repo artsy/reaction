@@ -28,9 +28,9 @@ describe("CollectionsRail", () => {
     expect(component.text()).toMatch("Browse by series")
     expect(component.find(ArtistCollectionEntity).length).toBe(8)
     expect(component.text()).toMatch("Flags")
-    expect(component.text()).toMatch("Works from $1,000")
+    expect(component.text()).toMatch("From $1,000")
     expect(component.text()).toMatch("Street Art Now")
-    expect(component.text()).toMatch("Works from $200")
+    expect(component.text()).toMatch("From $200")
   })
 
   it("Does not render carousel if less than 4 entries", () => {
