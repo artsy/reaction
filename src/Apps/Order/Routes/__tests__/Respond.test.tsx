@@ -195,7 +195,7 @@ describe("The respond page", () => {
 
     it("shows the payment details", () => {
       expect(page.paymentSummary.text()).toMatchInlineSnapshot(
-        `"Lockedvisa•••• 4444  Exp 3/21"`
+        `"Lockedvisa•••• 4444   Exp 03/21"`
       )
     })
 

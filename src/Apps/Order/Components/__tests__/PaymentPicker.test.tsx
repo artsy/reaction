@@ -3,6 +3,7 @@ import { PaymentPicker_me } from "__generated__/PaymentPicker_me.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
+  OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import { creatingCreditCardSuccess } from "Apps/Order/Routes/__fixtures__/MutationResults"
 import {
@@ -515,6 +516,19 @@ describe(PaymentPickerFragmentContainer, () => {
       await page.toggleSameAddressCheckbox()
 
       expect(mockPostEvent).not.toBeCalled()
+    })
+
+    it("doesn't track clicks on the address checkbox when order status is not pending", async () => {
+      const page = await env.buildPage({
+        mockData: {
+          order: {
+            ...OfferOrderWithShippingDetails,
+            state: "SUBMITTED",
+          },
+        },
+      })
+      await page.toggleSameAddressCheckbox()
+      expect(mockPostEvent).not.toHaveBeenCalled()
     })
   })
 

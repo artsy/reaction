@@ -4,11 +4,17 @@ import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
+import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { createTestEnv } from "DevTools/createTestEnv"
+import { graphql } from "react-relay"
+import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
+import { AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
 } from "../__fixtures__/MutationResults"
 import { PaymentFragmentContainer } from "../Payment"
+import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 jest.unmock("react-tracking")
 jest.unmock("react-relay")
@@ -25,14 +31,6 @@ jest.mock(
     return require("../../Components/__mocks__/PaymentPicker")
   }
 )
-
-import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
-
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
-import { createTestEnv } from "DevTools/createTestEnv"
-import { graphql } from "react-relay"
-import { AddressForm } from "../../Components/AddressForm"
-import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
 
