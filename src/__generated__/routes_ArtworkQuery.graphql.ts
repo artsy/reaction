@@ -246,7 +246,7 @@ fragment ArtworkImageBrowser_artwork on Artwork {
   }
   images {
     id
-    uri: url(version: ["larger", "large"])
+    uri: url(version: ["large"])
     placeholder: resized(width: 30, height: 30, version: "small") {
       url
     }
@@ -2357,13 +2357,12 @@ return {
                     "kind": "Literal",
                     "name": "version",
                     "value": [
-                      "larger",
                       "large"
                     ],
                     "type": "[String]"
                   }
                 ],
-                "storageKey": "url(version:[\"larger\",\"large\"])"
+                "storageKey": "url(version:[\"large\"])"
               },
               {
                 "kind": "LinkedField",
