@@ -1,3 +1,20 @@
+# v15.13.6 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- User sees informational modal when they click the question mark next to the bar chart description [#2265](https://github.com/artsy/reaction/pull/2265) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.4 [#2271](https://github.com/artsy/reaction/pull/2271) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.13.5 (Mon Apr 08 2019)
 
 
