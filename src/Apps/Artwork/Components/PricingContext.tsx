@@ -20,24 +20,19 @@ function PricingContext({ artwork }: PricingContextProps) {
     return null
   }
 
-  const openCollectPage = (
-    minCents,
-    maxCents,
-    category,
-    dimensions,
-    artistId
-  ) => {
+  const createUrl = (minCents, maxCents, category, dimensions, artistId) => {
     const categoryHref = "/collect/" + category.toLowerCase()
     const acquirableHref =
       "?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true"
 
+    // could also do calculations on height and width manually to get cm from inches
     const heightCm = dimensions.cm.split(" × ")[0]
     const widthCm = dimensions.cm.split(" × ")[1].replace(" cm", "")
 
     const area = parseFloat(heightCm) * parseFloat(widthCm)
 
-    let min = 70
-    let max = "*"
+    let min
+    let max
 
     if (area < 70 * 70) {
       min = Math.round(40 / 2.54)
@@ -45,10 +40,16 @@ function PricingContext({ artwork }: PricingContextProps) {
     } else if (area < 40 * 40) {
       min = 0
       max = Math.round(40 / 2.54)
+    } else {
+      min = Math.round(70 / 2.54)
+      max = "*"
     }
 
     const sizeHref = "&height=" + min + "-" + max + "&width=" + min + "-" + max
-    const priceRangeHref = "&price_range=" + minCents + "-" + maxCents
+
+    const minDollars = Math.round(minCents / 100)
+    const maxDollars = Math.round(maxCents / 100)
+    const priceRangeHref = "&price_range=" + minDollars + "-" + maxDollars
     const artistHref = "&artist_id=" + artistId
     const url =
       sd.APP_URL +
@@ -58,16 +59,27 @@ function PricingContext({ artwork }: PricingContextProps) {
       sizeHref +
       artistHref
 
+    return url
+  }
+
+  const openCollectPage = (
+    minCents,
+    maxCents,
+    category,
+    dimensions,
+    artistId
+  ) => {
+    const url = createUrl(minCents, maxCents, category, dimensions, artistId)
+
     console.log("URL!!!", url)
 
+    // (() => {window.open(url)})
     if (typeof window !== "undefined") {
-      console.log("WINDOW NOT UND")
-      console.log("WINDOW!!", window)
-      window.open(url)
+      return () => {
+        window.open(url)
+      }
     }
   }
-  console.log("HELLO")
-  console.log("ARTWORK", artwork)
 
   return (
     <BorderBox mb={2} flexDirection="column">
