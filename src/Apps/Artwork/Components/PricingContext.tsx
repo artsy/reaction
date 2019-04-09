@@ -9,6 +9,7 @@ import {
 import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { PricingContextModal } from "./PricingContextModal"
 interface PricingContextProps {
   artwork: PricingContext_artwork
@@ -18,6 +19,55 @@ function PricingContext({ artwork }: PricingContextProps) {
   if (!artwork.pricingContext) {
     return null
   }
+
+  const openCollectPage = (
+    minCents,
+    maxCents,
+    category,
+    dimensions,
+    artistId
+  ) => {
+    const categoryHref = "/collect/" + category.toLowerCase()
+    const acquirableHref =
+      "?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true"
+
+    const heightCm = dimensions.cm.split(" × ")[0]
+    const widthCm = dimensions.cm.split(" × ")[1].replace(" cm", "")
+
+    const area = parseFloat(heightCm) * parseFloat(widthCm)
+
+    let min = 70
+    let max = "*"
+
+    if (area < 70 * 70) {
+      min = Math.round(40 / 2.54)
+      max = Math.round(70 / 2.54)
+    } else if (area < 40 * 40) {
+      min = 0
+      max = Math.round(40 / 2.54)
+    }
+
+    const sizeHref = "&height=" + min + "-" + max + "&width=" + min + "-" + max
+    const priceRangeHref = "&price_range=" + minCents + "-" + maxCents
+    const artistHref = "&artist_id=" + artistId
+    const url =
+      sd.APP_URL +
+      categoryHref +
+      acquirableHref +
+      priceRangeHref +
+      sizeHref +
+      artistHref
+
+    console.log("URL!!!", url)
+
+    if (typeof window !== "undefined") {
+      console.log("WINDOW NOT UND")
+      console.log("WINDOW!!", window)
+      window.open(url)
+    }
+  }
+  console.log("HELLO")
+  console.log("ARTWORK", artwork)
 
   return (
     <BorderBox mb={2} flexDirection="column">
@@ -49,6 +99,13 @@ function PricingContext({ artwork }: PricingContextProps) {
                 title,
                 description: bin.numArtworks + " works",
               },
+              onClick: openCollectPage(
+                bin.minPriceCents,
+                bin.maxPriceCents,
+                artwork.category,
+                artwork.dimensions,
+                artwork.artists[0].id
+              ),
               highlightLabel: artworkFallsInThisBin
                 ? {
                     title,
@@ -70,6 +127,13 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       priceCents {
         min
       }
+      artists {
+        id
+      }
+      dimensions {
+        cm
+      }
+      category
       pricingContext @include(if: $enablePricingContext) {
         filterDescription
         bins {
@@ -80,6 +144,8 @@ export const PricingContextFragmentContainer = createFragmentContainer(
           numArtworks
         }
       }
+      ...ArtworkSidebarSizeInfo_piece
+      ...ArtworkSidebarClassification_artwork
     }
   `
 )
