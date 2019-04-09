@@ -2,13 +2,14 @@ import {
   BarChart,
   BarDescriptor,
   BorderBox,
+  Flex,
   Sans,
   Spacer,
 } from "@artsy/palette"
 import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
+import { PricingContextModal } from "./PricingContextModal"
 interface PricingContextProps {
   artwork: PricingContext_artwork
 }
@@ -23,9 +24,12 @@ function PricingContext({ artwork }: PricingContextProps) {
       <Sans size="2" weight="medium">
         Price
       </Sans>
-      <Sans size="2">
-        Price ranges of {artwork.pricingContext.filterDescription}
-      </Sans>
+      <Flex>
+        <Sans size="2">
+          Price ranges of {artwork.pricingContext.filterDescription}
+        </Sans>
+        <PricingContextModal />
+      </Flex>
       <Spacer mb={[2, 3]} />
       <BarChart
         minLabel={artwork.pricingContext.bins[0].minPrice}
