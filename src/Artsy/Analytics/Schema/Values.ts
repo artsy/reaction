@@ -107,6 +107,7 @@ export enum ActionType {
 
   FocusedOnAutosuggestInput = "Focused on search input",
   SelectedItemFromSearch = "Selected item from search",
+  SelectedItemFromSearchPage = "Selected item from search page",
   SearchedAutosuggestWithResults = "Searched from header with results",
   SearchedAutosuggestWithoutResults = "Searched from header with no results",
 }

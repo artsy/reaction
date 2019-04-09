@@ -30,7 +30,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
   }
 
   @track((props: Props, _state, [artwork]) => ({
-    action_type: Schema.ActionType.SelectedItemFromSearch,
+    action_type: Schema.ActionType.SelectedItemFromSearchPage,
     query: props.term,
     item_type: "Artwork",
     item_id: artwork.id,

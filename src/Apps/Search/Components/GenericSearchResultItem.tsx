@@ -31,7 +31,7 @@ export class GenericSearchResultItem extends React.Component<
   GenericSearchResultItemProps
 > {
   @track((props: GenericSearchResultItemProps) => ({
-    action_type: Schema.ActionType.SelectedItemFromSearch,
+    action_type: Schema.ActionType.SelectedItemFromSearchPage,
     query: props.term,
     item_number: props.index,
     item_type: props.entityType,
