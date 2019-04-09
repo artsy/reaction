@@ -1,3 +1,59 @@
+# v15.13.11 (Tue Apr 09 2019)
+
+
+
+---
+
+# v15.13.10 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Storybooks plugins webpack config [#2280](https://github.com/artsy/reaction/pull/2280) ([@damassi](https://github.com/damassi))
+- [TRIVIAL] Remove null state from IconImageFullscreen [#2281](https://github.com/artsy/reaction/pull/2281) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v15.13.9 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Test Netlify deployments [#2278](https://github.com/artsy/reaction/pull/2278) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.13.8 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Downsize artwork image [#2273](https://github.com/artsy/reaction/pull/2273) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.13.7 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Search] Update action for selecting item from tabs [#2276](https://github.com/artsy/reaction/pull/2276) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.13.6 (Tue Apr 09 2019)
 
 #### 🐛  Bug Fix

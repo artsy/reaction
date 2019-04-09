@@ -151,13 +151,12 @@ return {
               "kind": "Literal",
               "name": "version",
               "value": [
-                "larger",
                 "large"
               ],
               "type": "[String]"
             }
           ],
-          "storageKey": "url(version:[\"larger\",\"large\"])"
+          "storageKey": "url(version:[\"large\"])"
         },
         {
           "kind": "LinkedField",
@@ -311,5 +310,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'faaf1881f00418e8beda0514ec5f73ed';
+(node as any).hash = 'ea796b002acd42f0cb9b16030a95481a';
 export default node;
