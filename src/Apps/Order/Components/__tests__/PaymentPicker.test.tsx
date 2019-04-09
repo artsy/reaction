@@ -1,4 +1,5 @@
-import { Checkbox, Collapse } from "@artsy/palette"
+import { BorderedRadio, Checkbox, Collapse } from "@artsy/palette"
+import { PaymentPicker_me } from "__generated__/PaymentPicker_me.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
@@ -62,46 +63,72 @@ const fillAddressForm = (component: any, address: Address) => {
   fillCountrySelect(component, address.country)
 }
 
+class PaymentPickerTestPage extends RootTestPage {
+  getCreditCardId: PaymentPicker["getCreditCardId"] = async () => {
+    const result = (this.find(
+      PaymentPicker
+    ).instance() as any).getCreditCardId()
+    await this.update()
+    return result
+  }
+
+  get nameInput() {
+    return this.find("input[placeholder='Add full name']")
+  }
+
+  get sameAddressCheckbox() {
+    return this.find(Checkbox).filterWhere(cb =>
+      cb.text().includes("are the same")
+    )
+  }
+
+  get saveCardCheckbox() {
+    return this.find(Checkbox).filterWhere(cb => cb.text().includes("Save"))
+  }
+
+  get addressForm() {
+    return this.find(AddressForm)
+  }
+
+  get addressFormIsVisible() {
+    return this.find(Collapse)
+      .at(1)
+      .props().open
+  }
+
+  get useNewCardSectionIsVisible() {
+    return this.find(Collapse)
+      .at(0)
+      .props().open
+  }
+
+  async toggleSameAddressCheckbox() {
+    this.sameAddressCheckbox.simulate("click")
+    await this.update()
+  }
+
+  setName(name: string) {
+    ;(this.nameInput.instance() as any).value = name
+    this.nameInput.simulate("change")
+  }
+
+  get radios() {
+    return this.find(BorderedRadio)
+  }
+
+  async clickRadio(atIndex: number) {
+    this.find(BorderedRadio)
+      .at(atIndex)
+      .find('input[type="radio"]')
+      .simulate("change")
+    await this.update()
+  }
+}
+
 describe(PaymentPickerFragmentContainer, () => {
   const env = createTestEnv({
     Component: injectCommitMutation(PaymentPickerFragmentContainer as any),
-    TestPage: class PaymentPickerTestPage extends RootTestPage {
-      getCreditCardId: PaymentPicker["getCreditCardId"] = async () => {
-        const result = (this.find(
-          PaymentPicker
-        ).instance() as any).getCreditCardId()
-        await this.update()
-        return result
-      }
-
-      get nameInput() {
-        return this.find("input[placeholder='Add full name']")
-      }
-
-      get sameAddressCheckbox() {
-        return this.find(Checkbox).filterWhere(cb =>
-          cb.text().includes("are the same")
-        )
-      }
-
-      get saveCardCheckbox() {
-        return this.find(Checkbox).filterWhere(cb => cb.text().includes("Save"))
-      }
-
-      get addressForm() {
-        return this.find(AddressForm)
-      }
-
-      async toggleSameAddressCheckbox() {
-        this.sameAddressCheckbox.simulate("click")
-        await this.update()
-      }
-
-      setName(name: string) {
-        ;(this.nameInput.instance() as any).value = name
-        this.nameInput.simulate("change")
-      }
-    },
+    TestPage: PaymentPickerTestPage,
     defaultData: {
       me: {
         creditCards: {
@@ -135,6 +162,19 @@ describe(PaymentPickerFragmentContainer, () => {
     )
   })
 
+  describe("with no existing cards", () => {
+    let page: PaymentPickerTestPage
+    beforeAll(async () => {
+      page = await env.buildPage()
+    })
+    it("always shows the 'use new card' section", () => {
+      expect(page.useNewCardSectionIsVisible).toBeTruthy()
+    })
+    it("does not show any radio buttons", () => {
+      expect(page.radios).toHaveLength(0)
+    })
+  })
+
   it("always shows the billing address form without checkbox when the user selected 'pick' shipping option", async () => {
     const page = await env.buildPage({
       mockData: {
@@ -145,18 +185,14 @@ describe(PaymentPickerFragmentContainer, () => {
     expect(page.text()).not.toMatch(
       "Billing and shipping addresses are the same."
     )
-    expect(
-      page
-        .find(Collapse)
-        .at(0)
-        .props().open
-    ).toBe(true)
+    expect(page.addressFormIsVisible).toBe(true)
   })
 
   it("removes all data when the billing address form is hidden", async () => {
     const page = await env.buildPage()
     // expand address form
     expect(page.sameAddressCheckbox.props().selected).toBe(true)
+    expect(page.addressFormIsVisible).toBe(false)
     await page.toggleSameAddressCheckbox()
     page.setName("Dr Collector")
 
@@ -165,8 +201,12 @@ describe(PaymentPickerFragmentContainer, () => {
     // hide address form
     page.toggleSameAddressCheckbox()
 
+    expect(page.addressFormIsVisible).toBe(false)
+
     // expand address form again
     page.toggleSameAddressCheckbox()
+
+    expect(page.addressFormIsVisible).toBe(true)
 
     // expect name to be empty
     expect((page.nameInput.instance() as any).value).toEqual("")
@@ -307,6 +347,153 @@ describe(PaymentPickerFragmentContainer, () => {
     await page.getCreditCardId()
 
     expect(page.root.text()).toContain("Your card number is invalid.")
+  })
+
+  describe("when the user has existing credit cards", () => {
+    const cards: Array<PaymentPicker_me["creditCards"]["edges"][0]["node"]> = [
+      {
+        id: "card-id-1",
+        brand: "MasterCard",
+        last_digits: "1234",
+        expiration_month: 1,
+        expiration_year: 2018,
+      },
+      {
+        id: "card-id-2",
+        brand: "Visa",
+        last_digits: "2345",
+        expiration_month: 1,
+        expiration_year: 2019,
+      },
+    ]
+    function getPage(
+      _cards: typeof cards,
+      order: any = BuyOrderWithShippingDetails
+    ) {
+      return env.buildPage({
+        mockData: {
+          me: {
+            creditCards: {
+              edges: _cards.map(node => ({ node })),
+            },
+          },
+        },
+      })
+    }
+
+    describe("with one card", () => {
+      let page: PaymentPickerTestPage
+      beforeAll(async () => {
+        page = await getPage(cards.slice(0, 1))
+      })
+      it("has two radio buttons", async () => {
+        expect(page.radios).toHaveLength(2)
+      })
+      it("has the credit card option at the top", async () => {
+        expect(page.radios.at(0).text()).toMatchInlineSnapshot(
+          `"mastercard•••• 1234   Exp 01/18"`
+        )
+      })
+      it("has the 'use new card' option at the bottom", async () => {
+        expect(page.radios.at(1).text()).toMatchInlineSnapshot(
+          `"Add another card."`
+        )
+      })
+      it("starts with the top radio selected", async () => {
+        expect(page.radios.at(0).props().selected).toBeTruthy()
+        expect(page.radios.at(1).props().selected).toBeFalsy()
+      })
+      it("hides the 'use new card' stuff initially", async () => {
+        expect(page.useNewCardSectionIsVisible).toBeFalsy()
+      })
+      it("returns the relevant credit card id if requested", async () => {
+        expect(await page.getCreditCardId()).toMatchObject({
+          type: "success",
+          creditCardId: "card-id-1",
+        })
+      })
+      it("shows the 'use new card' section when you select that option", async () => {
+        await page.clickRadio(1)
+        expect(page.useNewCardSectionIsVisible).toBeTruthy()
+      })
+      it("hides the 'use new card' section if you select the card again", async () => {
+        await page.clickRadio(0)
+        expect(page.useNewCardSectionIsVisible).toBeFalsy()
+      })
+    })
+
+    describe("with two cards", () => {
+      let page: PaymentPickerTestPage
+      beforeAll(async () => {
+        page = await getPage(cards)
+      })
+      it("has three radio buttons", async () => {
+        expect(page.radios).toHaveLength(3)
+      })
+      it("has the credit card options at the top", async () => {
+        expect(page.radios.at(0).text()).toMatchInlineSnapshot(
+          `"mastercard•••• 1234   Exp 01/18"`
+        )
+        expect(page.radios.at(1).text()).toMatchInlineSnapshot(
+          `"visa•••• 2345   Exp 01/19"`
+        )
+      })
+      it("has the 'use new card' option at the bottom", async () => {
+        expect(page.radios.at(2).text()).toMatchInlineSnapshot(
+          `"Add another card."`
+        )
+      })
+      it("starts with the top radio selected", async () => {
+        expect(page.radios.at(0).props().selected).toBeTruthy()
+        expect(page.radios.at(1).props().selected).toBeFalsy()
+        expect(page.radios.at(2).props().selected).toBeFalsy()
+      })
+      it("hides the 'use new card' stuff initially", async () => {
+        expect(page.useNewCardSectionIsVisible).toBeFalsy()
+      })
+      it("returns the relevant credit card id if requested", async () => {
+        expect(await page.getCreditCardId()).toMatchObject({
+          type: "success",
+          creditCardId: "card-id-1",
+        })
+      })
+      it("returns the relevante credit card id if you select a different card", async () => {
+        await page.clickRadio(1)
+        expect(await page.getCreditCardId()).toMatchObject({
+          type: "success",
+          creditCardId: "card-id-2",
+        })
+      })
+      it("shows the 'use new card' section when you select that option", async () => {
+        await page.clickRadio(2)
+        expect(page.useNewCardSectionIsVisible).toBeTruthy()
+      })
+    })
+  })
+
+  describe("saving a card", () => {
+    it("by default saves new cards", async () => {
+      createTokenMock.mockReturnValue(
+        Promise.resolve({ token: { id: "tokenId" } })
+      )
+      const page = await env.buildPage()
+      expect(page.saveCardCheckbox.props().selected).toBe(true)
+      await page.getCreditCardId()
+      expect(env.mutations.lastFetchVariables.input.oneTimeUse).toBe(false)
+    })
+
+    it("can also not save new cards", async () => {
+      createTokenMock.mockReturnValue(
+        Promise.resolve({ token: { id: "tokenId" } })
+      )
+      const page = await env.buildPage()
+      expect(page.saveCardCheckbox.props().selected).toBe(true)
+      page.saveCardCheckbox.simulate("click")
+      await page.update()
+      expect(page.saveCardCheckbox.props().selected).toBe(false)
+      await page.getCreditCardId()
+      expect(env.mutations.lastFetchVariables.input.oneTimeUse).toBe(true)
+    })
   })
 
   describe("Analytics", () => {

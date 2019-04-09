@@ -19,7 +19,7 @@ jest.mock("Utils/Events", () => ({
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
-  // not sure why this is necessary :(
+  // not sure why this is neccessary :(
   // should just work without this extra argument
   () => {
     return require("../../Components/__mocks__/PaymentPicker")
