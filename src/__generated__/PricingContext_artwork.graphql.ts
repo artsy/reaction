@@ -1,12 +1,21 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtworkSidebarClassification_artwork$ref } from "./ArtworkSidebarClassification_artwork.graphql";
+import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece.graphql";
 declare const _PricingContext_artwork$ref: unique symbol;
 export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
     readonly priceCents: ({
         readonly min: number | null;
     }) | null;
+    readonly artists: ReadonlyArray<({
+        readonly id: string;
+    }) | null> | null;
+    readonly dimensions: ({
+        readonly cm: string | null;
+    }) | null;
+    readonly category: string | null;
     readonly pricingContext?: ({
         readonly filterDescription: string;
         readonly bins: ReadonlyArray<{
@@ -17,12 +26,21 @@ export type PricingContext_artwork = {
             readonly numArtworks: number;
         }>;
     }) | null;
+    readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref & ArtworkSidebarClassification_artwork$ref;
     readonly " $refType": PricingContext_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "PricingContext_artwork",
   "type": "Artwork",
@@ -54,12 +72,60 @@ const node: ConcreteFragment = {
       ]
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artists",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "dimensions",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "dimensions",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "cm",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "category",
       "args": null,
       "storageKey": null
     },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSidebarSizeInfo_piece",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSidebarClassification_artwork",
+      "args": null
+    },
+    v0,
     {
       "kind": "Condition",
       "passingValue": true,
@@ -133,5 +199,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'd7213f5cc029ab1b0215c586f255f439';
+})();
+(node as any).hash = 'ccd546a4e86a8a4a4b9e1bc47357ad0f';
 export default node;
