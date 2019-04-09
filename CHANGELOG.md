@@ -1,3 +1,15 @@
+# v15.13.7 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Search] Update action for selecting item from tabs [#2276](https://github.com/artsy/reaction/pull/2276) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v15.13.6 (Tue Apr 09 2019)
 
 #### 🐛  Bug Fix
