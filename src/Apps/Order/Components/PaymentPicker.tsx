@@ -222,7 +222,10 @@ export class PaymentPicker extends React.Component<
                   const { id, ...creditCardProps } = e.node
                   return (
                     <BorderedRadio value={id} key={id}>
-                      <CreditCardDetails {...creditCardProps} />
+                      <CreditCardDetails
+                        responsive={false}
+                        {...creditCardProps}
+                      />
                     </BorderedRadio>
                   )
                 })
