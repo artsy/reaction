@@ -5,11 +5,17 @@ import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
 
+type Arrow = (
+  props: { Arrow: React.ReactType; getSlick: () => any } & Props
+) => React.ReactNode
+
 interface Props {
   settings?: Settings
   height?: number
   data: object[] // This is designed to handle any shape of data passed, as long as its an array
   render: (slide) => ReactNode
+  renderLeftArrow?: Arrow
+  renderRightArrow?: Arrow
   onArrowClick?: () => void
 }
 
@@ -45,13 +51,8 @@ export const LargeCarousel = (props: Props) => {
 
   let slickRef = null
 
-  return (
-    <Flex
-      flexDirection="row"
-      justifyContent="space-around"
-      alignItems="center"
-      height={props.height}
-    >
+  const LeftArrow = () => {
+    return (
       <ArrowButton
         left={-8}
         onClick={() => {
@@ -61,15 +62,11 @@ export const LargeCarousel = (props: Props) => {
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
       </ArrowButton>
+    )
+  }
 
-      <CarouselContainer height={props.height}>
-        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
-          {props.data.map((slide, index) => {
-            return <Box key={index}>{props.render(slide)}</Box>
-          })}
-        </Slick>
-      </CarouselContainer>
-
+  const RightArrow = () => {
+    return (
       <ArrowButton
         right={-8}
         onClick={() => {
@@ -79,6 +76,43 @@ export const LargeCarousel = (props: Props) => {
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
+    )
+  }
+
+  return (
+    <Flex
+      flexDirection="row"
+      justifyContent="space-around"
+      alignItems="center"
+      height={props.height}
+    >
+      {props.renderLeftArrow ? (
+        props.renderLeftArrow({
+          Arrow: LeftArrow,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <LeftArrow />
+      )}
+
+      <CarouselContainer height={props.height}>
+        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
+          {props.data.map((slide, index) => {
+            return <Box key={index}>{props.render(slide)}</Box>
+          })}
+        </Slick>
+      </CarouselContainer>
+
+      {props.renderRightArrow ? (
+        props.renderRightArrow({
+          Arrow: RightArrow,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <RightArrow />
+      )}
     </Flex>
   )
 }
