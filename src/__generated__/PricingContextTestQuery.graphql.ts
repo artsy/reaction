@@ -49,29 +49,6 @@ fragment PricingContext_artwork on Artwork {
       numArtworks
     }
   }
-  ...ArtworkSidebarSizeInfo_piece
-  ...ArtworkSidebarClassification_artwork
-  __id
-}
-
-fragment ArtworkSidebarSizeInfo_piece on Sellable {
-  dimensions {
-    in
-    cm
-  }
-  edition_of
-  ... on Node {
-    __id
-  }
-  ... on EditionSet {
-    __id
-  }
-}
-
-fragment ArtworkSidebarClassification_artwork on Artwork {
-  attribution_class {
-    short_description
-  }
   __id
 }
 */
@@ -105,7 +82,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  artists {\n    id\n    __id\n  }\n  dimensions {\n    cm\n  }\n  category\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n  }\n  artists {\n    id\n    __id\n  }\n  dimensions {\n    cm\n  }\n  category\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -199,13 +176,6 @@ return {
                 "name": "cm",
                 "args": null,
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "in",
-                "args": null,
-                "storageKey": null
               }
             ]
           },
@@ -216,32 +186,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "edition_of",
-            "args": null,
-            "storageKey": null
-          },
           v2,
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "attribution_class",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "AttributionClass",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "short_description",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
           {
             "kind": "Condition",
             "passingValue": true,

@@ -156,8 +156,6 @@ export const PricingContextFragmentContainer = createFragmentContainer(
           numArtworks
         }
       }
-      ...ArtworkSidebarSizeInfo_piece
-      ...ArtworkSidebarClassification_artwork
     }
   `
 )
