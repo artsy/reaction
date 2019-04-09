@@ -1,3 +1,15 @@
+# v15.14.0 (Tue Apr 09 2019)
+
+#### 🚀  Enhancement
+
+- [Carousel] Add arrow render callback [#2283](https://github.com/artsy/reaction/pull/2283) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.13.12 (Tue Apr 09 2019)
 
 
