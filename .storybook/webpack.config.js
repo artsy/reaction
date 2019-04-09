@@ -72,8 +72,8 @@ const plugins = [
     excludeWarnings: true,
     skipFirstNotification: true,
   }),
-  ...notOnCI(new SimpleProgressWebpackPlugin({ format: "compact" })),
   new webpack.NoEmitOnErrorsPlugin(),
+  ...notOnCI(new SimpleProgressWebpackPlugin({ format: "compact" })),
 ]
 
 if (USER_ID && USER_ACCESS_TOKEN) {
@@ -116,7 +116,16 @@ module.exports = async ({ config, mode }) => {
       "styled-components": path.resolve("./node_modules/styled-components"),
     },
   }
-  config.plugins = plugins
+  config.plugins = [...config.plugins, ...plugins]
+
+  // Filter out default Storybooks progress bar plugin if CI, which is merged in
+  // with custom plugins. See: https://github.com/storybooks/storybook/issues/1260#issuecomment-308036626
+  if (isCI) {
+    config.plugins = config.plugins.filter(plugin => {
+      return !(plugin instanceof webpack.ProgressPlugin)
+    })
+  }
+
   config.module.rules.push(
     {
       test: /\.graphql$/,
