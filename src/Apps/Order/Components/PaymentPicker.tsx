@@ -23,7 +23,9 @@ import {
   Checkbox,
   Collapse,
   Flex,
+  Link,
   RadioGroup,
+  Sans,
   Serif,
   Spacer,
 } from "@artsy/palette"
@@ -193,48 +195,58 @@ export class PaymentPicker extends React.Component<
       me: { creditCards },
     } = this.props
 
+    const userHasExistingCards = creditCards.edges.length > 0
+
     return (
       <>
-        {creditCards.edges.length > 0 && (
-          <RadioGroup
-            onSelect={val => {
-              if (val === "new") {
-                this.setState({ creditCardSelection: { type: "new" } })
-              } else {
-                this.setState({
-                  creditCardSelection: { type: "existing", id: val },
-                })
+        {userHasExistingCards && (
+          <>
+            <RadioGroup
+              onSelect={val => {
+                if (val === "new") {
+                  this.setState({ creditCardSelection: { type: "new" } })
+                } else {
+                  this.setState({
+                    creditCardSelection: { type: "existing", id: val },
+                  })
+                }
+              }}
+              defaultValue={
+                creditCardSelection.type === "new"
+                  ? "new"
+                  : creditCardSelection.id
               }
-            }}
-            defaultValue={
-              creditCardSelection.type === "new"
-                ? "new"
-                : creditCardSelection.id
-            }
-          >
-            {creditCards.edges
-              .map(e => {
-                const { id, ...creditCardProps } = e.node
-                return (
-                  <BorderedRadio value={id} key={id}>
-                    <CreditCardDetails {...creditCardProps} />
-                  </BorderedRadio>
-                )
-              })
-              .concat([
-                <BorderedRadio
-                  value="new"
-                  key="new"
-                  selected={creditCardSelection.type === "new"}
-                >
-                  Add another card.
-                </BorderedRadio>,
-              ])}
-          </RadioGroup>
+            >
+              {creditCards.edges
+                .map(e => {
+                  const { id, ...creditCardProps } = e.node
+                  return (
+                    <BorderedRadio value={id} key={id}>
+                      <CreditCardDetails {...creditCardProps} />
+                    </BorderedRadio>
+                  )
+                })
+                .concat([
+                  <BorderedRadio
+                    value="new"
+                    key="new"
+                    selected={creditCardSelection.type === "new"}
+                  >
+                    Add another card.
+                  </BorderedRadio>,
+                ])}
+            </RadioGroup>
+            <Spacer mb={1} />
+            <Sans size="2">
+              <Link href="/user/payments" target="_blank">
+                Manage cards
+              </Link>
+            </Sans>
+          </>
         )}
 
         <Collapse open={this.state.creditCardSelection.type === "new"}>
-          <Spacer mb={3} />
+          {userHasExistingCards && <Spacer mb={3} />}
           <Flex flexDirection="column">
             <Serif mb={1} size="3t" color="black100" lineHeight="1.1em">
               Credit card

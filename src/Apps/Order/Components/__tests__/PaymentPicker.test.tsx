@@ -1,4 +1,4 @@
-import { BorderedRadio, Checkbox, Collapse } from "@artsy/palette"
+import { BorderedRadio, Checkbox, Collapse, Link } from "@artsy/palette"
 import { PaymentPicker_me } from "__generated__/PaymentPicker_me.graphql"
 import {
   BuyOrderPickup,
@@ -173,6 +173,9 @@ describe(PaymentPickerFragmentContainer, () => {
     })
     it("does not show any radio buttons", () => {
       expect(page.radios).toHaveLength(0)
+    })
+    it("does not show the 'manage cards' link", () => {
+      expect(page.find(Link)).toHaveLength(0)
     })
   })
 
@@ -367,10 +370,7 @@ describe(PaymentPickerFragmentContainer, () => {
         expiration_year: 2019,
       },
     ]
-    function getPage(
-      _cards: typeof cards,
-      order: any = BuyOrderWithShippingDetails
-    ) {
+    function getPage(_cards: typeof cards) {
       return env.buildPage({
         mockData: {
           me: {
@@ -389,6 +389,12 @@ describe(PaymentPickerFragmentContainer, () => {
       })
       it("has two radio buttons", async () => {
         expect(page.radios).toHaveLength(2)
+      })
+      it("shows the 'manage cards' link", () => {
+        expect(page.find(Link)).toHaveLength(1)
+        expect(page.find(Link).props().href).toMatchInlineSnapshot(
+          `"/user/payments"`
+        )
       })
       it("has the credit card option at the top", async () => {
         expect(page.radios.at(0).text()).toMatchInlineSnapshot(
@@ -430,6 +436,12 @@ describe(PaymentPickerFragmentContainer, () => {
       })
       it("has three radio buttons", async () => {
         expect(page.radios).toHaveLength(3)
+      })
+      it("shows the 'manage cards' link", () => {
+        expect(page.find(Link)).toHaveLength(1)
+        expect(page.find(Link).props().href).toMatchInlineSnapshot(
+          `"/user/payments"`
+        )
       })
       it("has the credit card options at the top", async () => {
         expect(page.radios.at(0).text()).toMatchInlineSnapshot(
