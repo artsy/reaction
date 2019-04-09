@@ -12,7 +12,7 @@ import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
-import { injectStripe, ReactStripeElements } from "react-stripe-elements"
+import { ReactStripeElements } from "react-stripe-elements"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -258,9 +258,7 @@ export class NewPaymentRoute extends Component<
 }
 
 export const NewPaymentFragmentContainer = createFragmentContainer(
-  injectCommitMutation(
-    injectStripe(trackPageViewWrapper(injectDialog(NewPaymentRoute)))
-  ),
+  injectCommitMutation(trackPageViewWrapper(injectDialog(NewPaymentRoute))),
   {
     me: graphql`
       fragment NewPayment_me on Me {
