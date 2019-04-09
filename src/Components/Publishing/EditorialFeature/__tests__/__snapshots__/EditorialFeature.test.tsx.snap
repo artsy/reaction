@@ -155,6 +155,20 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   background-color: black;
 }
 
+.c84 {
+  margin: 10px 20px 0 0;
+}
+
+.c84::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 5px 1px 0;
+  background-color: #000;
+}
+
 .c21 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
@@ -204,6 +218,21 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   color: black;
 }
 
+.c83 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  color: #000;
+}
+
 .c5 {
   font-family: artsy-icons;
   color: #000;
@@ -236,7 +265,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c86 {
+.c3 .c88 {
   margin: 0 20px;
 }
 
@@ -400,7 +429,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c28 h2 .c87 {
+.c28 h2 .c89 {
   background-position: bottom !important;
 }
 
@@ -478,7 +507,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   text-transform: none;
 }
 
-.c85 {
+.c87 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -488,7 +517,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   display: block;
 }
 
-.c83 {
+.c85 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -507,11 +536,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   display: block;
 }
 
-.c78 .c84 {
+.c78 .c86 {
   opacity: 1;
 }
 
-.c78:hover .c84 {
+.c78:hover .c86 {
   opacity: 0.7;
 }
 
@@ -1617,7 +1646,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     font-size: 24px;
   }
 
-  .c3 .c86 {
+  .c3 .c88 {
     margin: 0 10px;
   }
 }
@@ -1683,40 +1712,40 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c83 {
+  .c85 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c83 {
+  .c85 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c83 {
+  .c85 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c83 {
+  .c85 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c83 {
+  .c85 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c83 {
+  .c85 {
     width: 50%;
   }
 }
@@ -6407,7 +6436,8 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  className="c21"
+                  className="Byline c17 c83"
+                  color="#000"
                 >
                   <div
                     className="c19"
@@ -6419,12 +6449,33 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                     }
                     fontSize="14px"
                   >
-                    Dec 19, 2018
+                    <div
+                      className="c84"
+                      color="#000"
+                    >
+                      Artsy Editors
+                    </div>
+                  </div>
+                  <div
+                    className="c21"
+                  >
+                    <div
+                      className="c19"
+                      fontFamily={
+                        Object {
+                          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                          "fontWeight": 500,
+                        }
+                      }
+                      fontSize="14px"
+                    >
+                      Dec 19, 2018
+                    </div>
                   </div>
                 </div>
               </div>
               <div
-                className="c83"
+                className="c85"
                 width={
                   Array [
                     "100%",
@@ -6435,7 +6486,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 }
               >
                 <img
-                  className="c84 c85"
+                  className="c86 c87"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fr3TUoJ9u8QhxGeWdjR4ccQ%252FVC-email-final.jpg&width=680&height=450&quality=95"
                 />
               </div>

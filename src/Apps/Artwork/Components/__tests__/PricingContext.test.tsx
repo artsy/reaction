@@ -1,3 +1,4 @@
+import { QuestionCircleIcon } from "@artsy/palette"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -83,6 +84,18 @@ describe("PricingContext", () => {
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+  it("renders pricing context question mark icon and informational modal", async () => {
+    const wrapper = await getWrapper()
+    expect(wrapper.find(QuestionCircleIcon).length).toEqual(1)
+    wrapper
+      .find(QuestionCircleIcon)
+      .at(0)
+      .simulate("click")
+    expect(wrapper.text()).toContain(
+      "This information represents retail prices for works on Artsy"
+    )
+  })
+
   it("renders as null if enablePricingContext is false", async () => {
     enablePricingContext = false
     const wrapper = await getWrapper()

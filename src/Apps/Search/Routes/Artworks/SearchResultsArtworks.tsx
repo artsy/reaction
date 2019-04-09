@@ -1,4 +1,4 @@
-import { Box } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworks_viewer } from "__generated__/SearchResultsArtworks_viewer.graphql"
 import { FilterState } from "Apps/Search/FilterState"
 import { SearchResultsFilterFragmentContainer as ArtworkGrid } from "Apps/Search/Routes/Artworks/Components/Filter/SearchResultsFilterContainer"
@@ -28,6 +28,7 @@ export class SearchResultsArtworksRoute extends React.Component<Props> {
         ]}
       >
         <Box>
+          <Spacer mb={3} />
           <ArtworkGrid viewer={viewer} term={term} />
         </Box>
       </Provider>

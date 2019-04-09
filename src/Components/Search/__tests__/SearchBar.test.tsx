@@ -97,7 +97,7 @@ describe("SearchBar", () => {
     window.location.assign = jest.fn()
     component
       .find(SuggestionItem)
-      .at(1) // at 0 is the firstSuggestionPlaceholder
+      .at(0)
       .simulate("click")
 
     expect(window.location.assign).toHaveBeenCalledWith("/cat/percy-z")

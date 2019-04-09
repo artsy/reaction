@@ -117,7 +117,6 @@ const artworkInAuction: Partial<Details_artwork> = {
   sale: {
     is_auction: true,
     is_closed: false,
-    display_timely_at: "ends in 14d",
   },
   sale_artwork: {
     highest_bid: { display: "$2,600" },

@@ -4,18 +4,10 @@ import { mount } from "enzyme"
 import React from "react"
 import { SearchApp } from "../SearchApp"
 
-jest.mock("found", () => {
-  return {
-    Link: ({
-      to,
-      children: {
-        props: { children },
-      },
-    }) => {
-      return `<a href=${to}>${children}</a>`
-    },
-  }
-})
+jest.mock("Components/v2/RouteTabs", () => ({
+  RouteTab: ({ children }) => children,
+  RouteTabs: ({ children }) => children,
+}))
 
 describe("SearchApp", () => {
   const getWrapper = (searchProps: any) => {
@@ -40,6 +32,7 @@ describe("SearchApp", () => {
             counts: [
               { name: "PartnerGallery", count: 100 },
               { name: "artist", count: 320 },
+              { name: "gene", count: 0 },
             ],
           },
         ],
@@ -61,8 +54,9 @@ describe("SearchApp", () => {
   it("includes tabs w/ counts", () => {
     const wrapper = getWrapper(props) as any
     const html = wrapper.html()
-    expect(html).toContain("Artworks 100")
-    expect(html).toContain("Artists 320")
-    expect(html).toContain("Galleries 100")
+    expect(html).toMatch(/Artworks.*100/)
+    expect(html).toMatch(/Artists.*320/)
+    expect(html).toMatch(/Galleries.*100/)
+    expect(html).not.toContain("Categories")
   })
 })

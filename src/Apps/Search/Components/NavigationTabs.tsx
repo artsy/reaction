@@ -1,4 +1,4 @@
-import { Flex } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -22,6 +22,16 @@ const MORE_TABS = [
   "PartnerInstitutionalSeller",
 ]
 
+const TAB_NAME_MAP = {
+  artist: "Artists",
+  marketing_collection: "Collections",
+  PartnerGallery: "Galleries",
+  partner_show: "Shows",
+  gene: "Categories",
+  article: "Articles",
+  sale: "Auctions",
+}
+
 @track({
   context_module: Schema.ContextModule.NavigationTabs,
 })
@@ -40,9 +50,10 @@ export class NavigationTabs extends React.Component<Props> {
     to: string,
     options: {
       exact?: boolean
+      count?: number
     } = {}
   ) => {
-    const { exact } = options
+    const { exact, count } = options
     const tabName = text.replace(/[0-9]/g, "").trim()
     return (
       <RouteTab
@@ -51,8 +62,16 @@ export class NavigationTabs extends React.Component<Props> {
         onClick={() => {
           this.trackClick(tabName, to)
         }}
+        key={to}
       >
-        {text}
+        <Flex>
+          {text}
+          {count != null && (
+            <Sans ml={0.5} size="3t" weight="regular">
+              {count}
+            </Sans>
+          )}
+        </Flex>
       </RouteTab>
     )
   }
@@ -70,42 +89,20 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const { term, artworkCount } = this.props
 
-    const route = tab => `/search2${tab}?term=${term}`
+    const route = tab => `/search${tab}?term=${term}`
 
-    const artistAggregationCount = get(
-      this.aggregationFor("artist"),
-      agg => agg.count,
-      0
-    )
-    const collectionAggregationCount = get(
-      this.aggregationFor("marketing_collection"),
-      agg => agg.count,
-      0
-    )
-    const galleryAggregationCount = get(
-      this.aggregationFor("PartnerGallery"),
-      agg => agg.count,
-      0
-    )
-    const showAggregationCount = get(
-      this.aggregationFor("partner_show"),
-      agg => agg.count,
-      0
-    )
-    const categoriesAggregationCount = get(
-      this.aggregationFor("gene"),
-      agg => agg.count,
-      0
-    )
-    const articlesAggregationCount = get(
-      this.aggregationFor("article"),
-      agg => agg.count,
-      0
-    )
-    const auctionsAggregationCount = get(
-      this.aggregationFor("sale"),
-      agg => agg.count,
-      0
+    const tabCountMap = Object.entries(TAB_NAME_MAP).reduce(
+      (acc, [key, val]) => {
+        const count = get(this.aggregationFor(key), agg => agg.count, 0)
+        if (!count) {
+          return acc
+        }
+        return {
+          ...acc,
+          [val]: get(this.aggregationFor(key), agg => agg.count, 0),
+        }
+      },
+      {}
     )
 
     let restAggregationCount: number = 0
@@ -120,32 +117,22 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab(`Artworks ${artworkCount}`, route(""), {
-          exact: true,
+        {!!artworkCount &&
+          this.renderTab("Artworks", route(""), {
+            exact: true,
+            count: artworkCount,
+          })}
+
+        {Object.entries(tabCountMap).map(([key, value]: [string, number]) => {
+          return this.renderTab(key, route(`/${key.toLowerCase()}`), {
+            count: value,
+          })
         })}
-        {this.renderTab(`Artists ${artistAggregationCount}`, route("/artists"))}
-        {this.renderTab(
-          `Collections ${collectionAggregationCount}`,
-          route("/collections")
-        )}
-        {this.renderTab(
-          `Galleries ${galleryAggregationCount}`,
-          route("/galleries")
-        )}
-        {this.renderTab(`Shows ${showAggregationCount}`, route("/shows"))}
-        {this.renderTab(
-          `Categories ${categoriesAggregationCount}`,
-          route("/categories")
-        )}
-        {this.renderTab(
-          `Articles ${articlesAggregationCount}`,
-          route("/articles")
-        )}
-        {this.renderTab(
-          `Auctions ${auctionsAggregationCount}`,
-          route("/auctions")
-        )}
-        {this.renderTab(`More ${restAggregationCount}`, route("/more"))}
+
+        {!!restAggregationCount &&
+          this.renderTab("More", route("/more"), {
+            count: restAggregationCount,
+          })}
       </>
     )
   }

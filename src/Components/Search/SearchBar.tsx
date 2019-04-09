@@ -8,6 +8,7 @@ import colors from "Assets/Colors"
 import Input from "Components/Input"
 import {
   EmptySuggestion,
+  FirstSuggestionItem,
   PLACEHOLDER,
   PLACEHOLDER_XS,
   SuggestionItem,
@@ -86,7 +87,6 @@ const SuggestionContainer = ({ children, containerProps }) => {
 })
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
-  private containerRef: Node
   private userClickedOnDescendant: boolean
 
   state = {
@@ -124,7 +124,7 @@ export class SearchBar extends Component<Props, State> {
 
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    const { relay, viewer } = this.props
+    const { relay } = this.props
     const performanceStart = performance && performance.now()
 
     relay.refetch(
@@ -140,6 +140,7 @@ export class SearchBar extends Component<Props, State> {
         } else if (performanceStart && sd.VOLLEY_ENDPOINT) {
           this.reportPerformanceMeasurement(performanceStart)
         }
+        const { viewer } = this.props
         const edges = get(viewer, v => v.search.edges, [])
         this.trackSearch(term, edges.length > 0)
       }
@@ -189,14 +190,7 @@ export class SearchBar extends Component<Props, State> {
   }
 
   onBlur = e => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we setState({focused: false}) when that happens, the link will get
-    //  removed from the DOM before the browser has a chance to follow it.
-    if (this.containerRef.contains(e.relatedTarget)) {
-      this.userClickedOnDescendant = true
-    } else {
-      this.setState({ focused: false })
-    }
+    this.setState({ focused: false })
   }
 
   onSuggestionsClearRequested = () => {
@@ -272,10 +266,29 @@ export class SearchBar extends Component<Props, State> {
     return displayLabel
   }
 
-  renderSuggestion = (
-    { node: { displayLabel, displayType, href } },
-    { query, isHighlighted }
-  ) => {
+  renderSuggestion = (edge, rest) => {
+    const renderer = edge.node.isFirstItem
+      ? this.renderFirstSuggestion
+      : this.renderDefaultSuggestion
+    const item = renderer(edge, rest)
+    return item
+  }
+
+  renderFirstSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
+    return (
+      <FirstSuggestionItem
+        display={displayLabel}
+        href={href}
+        isHighlighted={isHighlighted}
+        label={displayType}
+        query={query}
+      />
+    )
+  }
+
+  renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
     return (
       <SuggestionItem
         display={displayLabel}
@@ -304,9 +317,10 @@ export class SearchBar extends Component<Props, State> {
 
     const firstSuggestionPlaceholder = {
       node: {
+        isFirstItem: true,
         displayType: "FirstItem",
         displayLabel: term,
-        href: `/search?q=${term}`,
+        href: `/search?term=${term}`,
       },
     }
 
@@ -357,7 +371,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 5)
+        search(query: $term, mode: AUTOSUGGEST, first: 7)
           @include(if: $hasTerm) {
           edges {
             node {

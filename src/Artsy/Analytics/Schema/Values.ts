@@ -107,6 +107,7 @@ export enum ActionType {
 
   FocusedOnAutosuggestInput = "Focused on search input",
   SelectedItemFromSearch = "Selected item from search",
+  SelectedItemFromSearchPage = "Selected item from search page",
   SearchedAutosuggestWithResults = "Searched from header with results",
   SearchedAutosuggestWithoutResults = "Searched from header with no results",
 }
@@ -251,6 +252,8 @@ export enum ContextModule {
   OtherWorksInFair = "Other works in fair",
   OtherWorksFromGallery = "Other works from gallery",
   OtherWorksFromShow = "Other works from show",
+  // TODO: verify this
+  RecommendedArtists = "Recommended Artists",
   RelatedArtists = "RelatedArtists",
   RelatedWorks = "RelatedWorks",
   ShareButton = "Share button",

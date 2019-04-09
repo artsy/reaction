@@ -38,7 +38,7 @@ export const acceptOfferPaymentFailedInsufficientFunds = {
       error: {
         type: "processing",
         code: "capture_failed",
-        data: `{"failure_code": "insufficient_funds"}`,
+        data: `{"decline_code": "insufficient_funds"}`,
       },
     },
   },

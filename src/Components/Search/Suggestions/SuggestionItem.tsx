@@ -12,29 +12,43 @@ interface Props {
   query: string
 }
 
-export const SuggestionItem: SFC<Props> = props => {
-  const { label, href, isHighlighted } = props
-
-  const Suggestion = label === "FirstItem" ? FirstSuggestion : DefaultSuggestion
+export const FirstSuggestionItem: SFC<Props> = props => {
+  const { href, isHighlighted, query } = props
+  const boxStyle = {
+    borderBottom: `1px solid ${color("black10")}`,
+  }
 
   return (
-    // Note: we've specified a color on the Link below to ensure an underline
-    // is suppressed on hover - technically the value does not matter.
-    <Box bg={isHighlighted ? "black5" : "white100"}>
-      <Link color="black100" href={href} noUnderline>
+    <Box bg={isHighlighted ? "black5" : "white100"} style={boxStyle}>
+      <Link color="black100" href={href} underlineBehavior="none">
         <SuggestionWrapper>
           <InnerWrapper
             flexDirection="column"
             flexGrow="1"
             justifyContent="center"
           >
-            <Suggestion {...props} />
+            See full results for "{query}"
           </InnerWrapper>
-          {isHighlighted && (
-            <Flex flexGrow="0" px={2}>
-              <HighlightIcon />
-            </Flex>
-          )}
+        </SuggestionWrapper>
+      </Link>
+    </Box>
+  )
+}
+
+export const SuggestionItem: SFC<Props> = props => {
+  const { href, isHighlighted } = props
+
+  return (
+    <Box bg={isHighlighted ? "black5" : "white100"}>
+      <Link color="black100" href={href} underlineBehavior="none">
+        <SuggestionWrapper>
+          <InnerWrapper
+            flexDirection="column"
+            flexGrow="1"
+            justifyContent="center"
+          >
+            <DefaultSuggestion {...props} />
+          </InnerWrapper>
         </SuggestionWrapper>
       </Link>
     </Box>
@@ -54,12 +68,10 @@ export const EmptySuggestion = () => (
 )
 
 const SuggestionWrapper = props => (
-  <Flex alignItems="center" flexDirection="row" height="62px" pl={3}>
+  <Flex alignItems="center" flexDirection="row" height="62px" pl={2}>
     {props.children}
   </Flex>
 )
-
-const FirstSuggestion = ({ query }) => <>Search "{query}"</>
 
 const DefaultSuggestion = ({ display, label, query }) => {
   const matches = match(display, query)
@@ -82,16 +94,3 @@ const SuggestionTitle = styled(Serif)`
   overflow: hidden;
   text-overflow: ellipsis;
 `
-
-const HighlightIcon = () => (
-  <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" fillRule="evenodd">
-      <path fill="none" d="M0 0h18v18H0z" />
-      <path
-        d="M4.883 11.244l3.108 3.068-.693.688L3 10.758l4.299-4.23.692.689-3.106 3.056h9.134V3H15v8.244H4.883z"
-        fill="#000"
-        fillRule="nonzero"
-      />
-    </g>
-  </svg>
-)

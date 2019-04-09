@@ -1,7 +1,7 @@
 import { Button } from "@artsy/palette"
 import { SendFeedback } from "Apps/Search/Components/SendFeedback"
 import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
+import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { commitMutation as _commitMutation } from "react-relay"
 import { Environment } from "relay-runtime"
@@ -12,16 +12,30 @@ const successResponse = {
   sendFeedback: { feedbackOrError: { feedback: { message } } },
 }
 
-const simulateTyping = (component, value) => {
+const simulateTypingMessage = (component, value) => {
   const textArea = component.find("textarea")
   // @ts-ignore
   textArea.getDOMNode().value = value
   textArea.simulate("change")
 }
 
+const simulateTypingNameAndEmail = (
+  component: ReactWrapper,
+  { name, email }
+) => {
+  const nameInput = component.find("input[name='name']")
+  // @ts-ignore
+  nameInput.getDOMNode().value = name
+  nameInput.simulate("change")
+  const emailInput = component.find("input[name='email']")
+  // @ts-ignore
+  emailInput.getDOMNode().value = email
+  emailInput.simulate("change")
+}
+
 describe("SendFeedback", () => {
-  const user = { id: "blah" }
-  const getWrapper = () => {
+  const getWrapper = (opts = { user: { id: "blah" } }) => {
+    const { user } = opts
     return mount(
       <MockBoot>
         <SendFeedback user={user} relayEnvironment={{} as Environment} />
@@ -47,13 +61,46 @@ describe("SendFeedback", () => {
     expect(commitMutation).not.toHaveBeenCalled()
   })
 
+  describe("logged out", () => {
+    it("does not call the mutation without a valid email", () => {
+      const component = getWrapper({ user: null })
+      simulateTypingNameAndEmail(component, {
+        name: "Percy Z",
+        email: "percy cant read",
+      })
+      simulateTypingMessage(component, message)
+      component.find(Button).simulate("click")
+      component.update()
+
+      expect(commitMutation).not.toHaveBeenCalled()
+    })
+
+    it("calls the mutation with a valid email and name", () => {
+      const component = getWrapper({ user: null })
+      commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {
+        onCompleted(successResponse)
+      })
+
+      simulateTypingNameAndEmail(component, {
+        name: "Percy Z",
+        email: "percy@example.com",
+      })
+      simulateTypingMessage(component, message)
+
+      component.find(Button).simulate("click")
+      component.update()
+
+      expect(commitMutation).toHaveBeenCalled()
+    })
+  })
+
   it("displays a thank-you after feedback is submitted", () => {
     const component = getWrapper()
     commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {
       onCompleted(successResponse)
     })
 
-    simulateTyping(component, message)
+    simulateTypingMessage(component, message)
     component.find(Button).simulate("click")
     component.update()
 

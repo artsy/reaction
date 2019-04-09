@@ -30,7 +30,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
   }
 
   @track((props: Props, _state, [artwork]) => ({
-    action_type: Schema.ActionType.SelectedItemFromSearch,
+    action_type: Schema.ActionType.SelectedItemFromSearchPage,
     query: props.term,
     item_type: "Artwork",
     item_id: artwork.id,
@@ -75,8 +75,8 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
         const urlFragment = urlFragmentFromState(state, { page })
 
         // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search2?${filterQueryParams}`)
-        window.history.pushState({}, null, `/search2?${urlFragment}`)
+        // this.props.router.replace(`/search?${urlFragment}`)
+        window.history.pushState({}, null, `/search?${urlFragment}`)
       }
     )
   }

@@ -1,3 +1,257 @@
+# v15.13.7 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Search] Update action for selecting item from tabs [#2276](https://github.com/artsy/reaction/pull/2276) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.6 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- User sees informational modal when they click the question mark next to the bar chart description [#2265](https://github.com/artsy/reaction/pull/2265) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.4 [#2271](https://github.com/artsy/reaction/pull/2271) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.13.5 (Mon Apr 08 2019)
+
+
+
+---
+
+# v15.13.4 (Mon Apr 08 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Add loading spinner when navigating to entity tab [#2269](https://github.com/artsy/reaction/pull/2269) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.3 (Mon Apr 08 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [Autosuggest] Fix tracking of whether results were returned for a query [#2268](https://github.com/artsy/reaction/pull/2268) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.3 [#2267](https://github.com/artsy/reaction/pull/2267) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.2 [#2266](https://github.com/artsy/reaction/pull/2266) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.1 [#2264](https://github.com/artsy/reaction/pull/2264) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.13.2 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => Bring back ze footah [#2263](https://github.com/artsy/reaction/pull/2263) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Re-sync schema from metaphysics [#2262](https://github.com/artsy/reaction/pull/2262) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.13.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- User can see top three recommended artists [#2261](https://github.com/artsy/reaction/pull/2261) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.4 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendation carousel [#2255](https://github.com/artsy/reaction/pull/2255) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.3 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add basic docs for createTestEnv [#2253](https://github.com/artsy/reaction/pull/2253) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v15.12.2 (Fri Apr 05 2019)
+
+
+
+---
+
+# v15.12.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Some tweaks to calling out when hovering over an item [#2259](https://github.com/artsy/reaction/pull/2259) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.12.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- [SearchResults] Respond to /search instead of /search2 [#2258](https://github.com/artsy/reaction/pull/2258) ([@mzikherman](https://github.com/mzikherman) [@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v15.11.24 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => Adjusted zero state [#2257](https://github.com/artsy/reaction/pull/2257) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.23 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- Search bar QA [#2247](https://github.com/artsy/reaction/pull/2247) ([@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.2 [#2256](https://github.com/artsy/reaction/pull/2256) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.11.22 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed error modal for insufficient funds on accept page [#2254](https://github.com/artsy/reaction/pull/2254) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.11.21 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendations [#2236](https://github.com/artsy/reaction/pull/2236) ([@pepopowitz](https://github.com/pepopowitz))
+- @dblandin => [Search] Tweak display of count within tabs [#2250](https://github.com/artsy/reaction/pull/2250) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.20 (Wed Apr 03 2019)
+
+
+
+---
+
+# v15.11.19 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Border on BNMO status page is too thick (mobile only) [#2237](https://github.com/artsy/reaction/pull/2237) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.11.18 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Search] Tweak styling of feedback component [#2251](https://github.com/artsy/reaction/pull/2251) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.17 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Check for null media keys in RelatedArticleCard [#2228](https://github.com/artsy/reaction/pull/2228) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v15.11.16 (Tue Apr 02 2019)
 
 #### 🐛  Bug Fix

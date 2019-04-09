@@ -132,8 +132,10 @@ export class FilterState extends Container<State> {
   }
 
   resetFilters = () => {
+    const { keyword } = this.state
     this.setState({
       ...initialState,
+      keyword,
     })
   }
 

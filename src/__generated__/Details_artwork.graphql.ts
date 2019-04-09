@@ -22,7 +22,6 @@ export type Details_artwork = {
     readonly sale: ({
         readonly is_auction: boolean | null;
         readonly is_closed: boolean | null;
-        readonly display_timely_at: string | null;
     }) | null;
     readonly sale_artwork: ({
         readonly counts: ({
@@ -171,13 +170,6 @@ return {
           "args": null,
           "storageKey": null
         },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "display_timely_at",
-          "args": null,
-          "storageKey": null
-        },
         v1
       ]
     },
@@ -246,5 +238,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '315dbd9c6f03724668ac329b214cb578';
+(node as any).hash = 'a53e33484f3008f6623800dc61f8c891';
 export default node;

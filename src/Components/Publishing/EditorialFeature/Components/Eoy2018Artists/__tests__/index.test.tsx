@@ -59,7 +59,12 @@ describe("EditorialFeature", () => {
 
     it("Renders intro and byline", () => {
       const component = getWrapper()
-      expect(component.find(Byline).text()).toMatch("Artsy Editors")
+      expect(
+        component
+          .find(Byline)
+          .at(0)
+          .text()
+      ).toMatch("Artsy Editors")
       expect(
         component
           .find(Text)
@@ -78,7 +83,7 @@ describe("EditorialFeature", () => {
       const component = getWrapper()
       expect(component.find(ArticleCards).length).toBe(1)
       expect(component.find(ArticleCards).text()).toBe(
-        "The People Who Defined Visual Culture in 2018From Donald Glover and Hiro Murai to teamLab, Artsy’s editors select the people who had the biggest impact in changing the visual landscape this year.Dec 19, 2018"
+        "The People Who Defined Visual Culture in 2018From Donald Glover and Hiro Murai to teamLab, Artsy’s editors select the people who had the biggest impact in changing the visual landscape this year.Artsy EditorsDec 19, 2018"
       )
     })
   })
