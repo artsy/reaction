@@ -15,7 +15,7 @@ interface PricingContextProps {
 }
 import { createCollectUrl } from "./../Utils/createCollectUrl"
 
-export function PricingContext({ artwork }: PricingContextProps) {
+function PricingContext({ artwork }: PricingContextProps) {
   if (!artwork.pricingContext) {
     return null
   }
