@@ -43,7 +43,8 @@ function PricingContext({ artwork }: PricingContextProps) {
         }
         bars={artwork.pricingContext.bins.map(
           (bin): BarDescriptor => {
-            const title = `${bin.minPrice}–${bin.maxPrice}`
+            const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
+            const title = `${binMinPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
               artwork.priceCents.min >= bin.minPriceCents &&
               artwork.priceCents.min < bin.maxPriceCents
