@@ -43,11 +43,21 @@ function PricingContext({ artwork }: PricingContextProps) {
             const artworkFallsInThisBin =
               artwork.priceCents.min >= bin.minPriceCents &&
               artwork.priceCents.min < bin.maxPriceCents
+            let labelDescription
+
+            if (bin.numArtworks > 1) {
+              labelDescription = bin.numArtworks + " works"
+            } else if (artworkFallsInThisBin && bin.numArtworks === 0) {
+              labelDescription = "1 work"
+            } else {
+              labelDescription = bin.numArtworks + " work"
+            }
+
             return {
               value: bin.numArtworks,
               label: {
                 title,
-                description: bin.numArtworks + " works",
+                description: labelDescription,
               },
               highlightLabel: artworkFallsInThisBin
                 ? {
