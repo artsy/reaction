@@ -83,6 +83,9 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
+    ${CollectionTitle} {
+      text-decoration: underline;
+    }
   }
 `
 
@@ -93,6 +96,7 @@ export const ArtworkImage = styled.img<{ width: number }>`
   object-fit: cover;
   object-position: center;
   opacity: 0.9;
+  padding-right: 2px;
 
   &:last-child {
     padding-right: 0;
@@ -101,7 +105,6 @@ export const ArtworkImage = styled.img<{ width: number }>`
 
 const ImgWrapper = styled(Flex)`
   width: 265px;
-  justify-content: space-between;
 `
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
