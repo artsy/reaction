@@ -45,7 +45,7 @@ export class ArtistCollectionsRail extends React.Component<
     const { collections } = this.props
     if (collections.length > 3) {
       return (
-        <RailWrapper>
+        <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
             Browse by series
@@ -63,9 +63,22 @@ export class ArtistCollectionsRail extends React.Component<
             render={slide => {
               return <ArtistCollectionEntity collection={slide} />
             }}
-            arrowHeight={130}
+            renderLeftArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
+            renderRightArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
           />
-        </RailWrapper>
+        </Box>
       )
     } else {
       return null
@@ -73,7 +86,8 @@ export class ArtistCollectionsRail extends React.Component<
   }
 }
 
-const RailWrapper = styled(Box)`
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
   ${ArrowButton} {
     min-height: 130px;
     align-self: flex-start;

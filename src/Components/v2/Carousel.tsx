@@ -17,7 +17,6 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  arrowHeight?: number
 }
 
 export class Carousel extends React.Component<Props> {
@@ -60,7 +59,6 @@ export const LargeCarousel = (props: Props) => {
           slickRef.slickPrev && slickRef.slickPrev() // check existence for tests
           props.onArrowClick && props.onArrowClick()
         }}
-        arrowHeight={props.arrowHeight}
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
       </ArrowButton>
@@ -75,7 +73,6 @@ export const LargeCarousel = (props: Props) => {
           slickRef.slickNext && slickRef.slickNext() // check existence for tests
           props.onArrowClick && props.onArrowClick()
         }}
-        arrowHeight={props.arrowHeight}
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
@@ -204,7 +201,7 @@ const CarouselContainer = styled.div<{ height?: number }>`
 `
 
 export const ArrowButton = styled(Flex)<
-  LeftProps & RightProps & { height?: number; arrowHeight?: number }
+  LeftProps & RightProps & { height?: number }
 >`
   position: relative;
   cursor: pointer;
@@ -214,8 +211,7 @@ export const ArrowButton = styled(Flex)<
   opacity: 0.1;
 
   transition: opacity 0.25s;
-  min-height: ${p => p.height || p.arrowHeight || 200}px;
-  align-self: ${p => (p.arrowHeight ? "flex-start" : "")};
+  min-height: ${p => p.height || 200}px;
 
   &:hover {
     opacity: 1;
