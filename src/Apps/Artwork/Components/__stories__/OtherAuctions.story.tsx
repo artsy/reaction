@@ -39,7 +39,7 @@ storiesOf("Apps/Artwork Page/Components/OtherAuctions", module)
   .add("Other Auctions (many)", () => {
     return (
       <Section title="Responsive Other Auctions">
-        <OtherAuctions size={20} />
+        <OtherAuctions size={40} />
       </Section>
     )
   })

@@ -11,7 +11,6 @@ interface OtherAuctionsProps {
 }
 export class OtherAuctions extends React.Component<OtherAuctionsProps> {
   render() {
-    console.log({ sales: this.props.sales })
     return (
       <Box mt={6}>
         <Header title="Other auctions" buttonHref={sd.APP_URL + "/auctions"} />

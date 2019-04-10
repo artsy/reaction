@@ -9,6 +9,10 @@ export type AuctionCard_sale = {
             readonly url: string | null;
         }) | null;
     }) | null;
+    readonly registrationStatus: ({
+        readonly id: string;
+    }) | null;
+    readonly is_registration_closed: boolean | null;
     readonly end_at: string | null;
     readonly href: string | null;
     readonly id: string;
@@ -30,7 +34,7 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -38,6 +42,13 @@ v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
   "args": null,
   "storageKey": null
 };
@@ -51,7 +62,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "live_start_at",
+      "name": "is_preview",
       "args": null,
       "storageKey": null
     },
@@ -100,28 +111,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_live_open",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_preview",
+      "name": "is_registration_closed",
       "args": null,
       "storageKey": null
     },
@@ -132,7 +122,42 @@ return {
       "args": null,
       "storageKey": null
     },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_live_open",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "registrationStatus",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Bidder",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "live_start_at",
+      "args": null,
+      "storageKey": null
+    },
+    v2,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -156,7 +181,7 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
+        v2,
         v1
       ]
     },
@@ -164,5 +189,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '86fd60f4b0d888d1860d59715bb24be5';
+(node as any).hash = 'acd7b97ab815faa05e43691d2d10d150';
 export default node;

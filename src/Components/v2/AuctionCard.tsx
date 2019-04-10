@@ -16,32 +16,47 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
-const zone = time => {
-  return moment(time, "YYYY-MM-DD").tz("America/New_York")
+const zone = timeIn => {
+  const time = moment(timeIn, "YYYY-MM-DD").tz("America/New_York")
+  const now = moment()
+  if (time.diff(now, "days") >= 1) {
+    return `${time.diff(now, "days")}d`
+  } else if (time.diff(now, "hours") >= 1) {
+    return `${time.diff(now, "hours")}h`
+  } else if (time.diff(now, "minutes") >= 1) {
+    return `${time.diff(now, "minutes")}m`
+  }
+  return `${time.diff(now, "seconds")}s`
 }
 
-const upcomingLabel = (
-  startAt,
-  endAt,
-  liveStartAt,
-  isClosed,
-  isLiveOpen,
-  isPreview
-) => {
-  const timeFormat = "MMM D, h:mm A z"
-
+const upcomingLabel = sale => {
+  const {
+    start_at: startAt,
+    end_at: endAt,
+    live_start_at: liveStartAt,
+    is_closed: isClosed,
+    is_live_open: isLiveOpen,
+    is_preview: isPreview,
+    registration_status,
+    is_registration_closed: isRegistrationClosed,
+  } = sale
+  const isRegistered = !!registration_status
   if (isPreview) {
-    return `Auction opens ${zone(startAt).format(timeFormat)}`
+    return `Opens in ${zone(startAt)}`
   } else if (isClosed) {
     return "Auction closed"
   } else if (liveStartAt && !isLiveOpen) {
-    return `Auction opens for live bidding ${zone(liveStartAt).format(
-      timeFormat
-    )}`
+    if (isRegistered || isRegistrationClosed) {
+      return `Live in ${zone(liveStartAt)}`
+    } else {
+      return `Register by ${moment(liveStartAt, "YYYY-MM-DD")
+        .tz("America/New_York")
+        .format("MMM D")}`
+    }
   } else if (liveStartAt) {
-    return "Auction open for live bidding"
+    return "In progress"
   } else {
-    return `Auction closes ${zone(endAt).format(timeFormat)}`
+    return `Ends in ${zone(endAt)}`
   }
 }
 
@@ -116,14 +131,7 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
 
     if (!sale) return
 
-    const statusLabel = upcomingLabel(
-      sale.start_at,
-      sale.end_at,
-      sale.live_start_at,
-      sale.is_closed,
-      sale.is_live_open,
-      sale.is_preview
-    )
+    const statusLabel = upcomingLabel(sale)
 
     const imageURL = get(sale, s => s.cover_image.cropped.url)
     const partnerName = get(sale, s => s.partner.name)
@@ -144,6 +152,10 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
           url
         }
       }
+      registrationStatus {
+        id
+      }
+      is_registration_closed
       end_at
       href
       id
