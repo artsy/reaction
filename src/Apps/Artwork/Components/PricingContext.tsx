@@ -9,71 +9,34 @@ import {
 import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import { PricingContextModal } from "./PricingContextModal"
 interface PricingContextProps {
   artwork: PricingContext_artwork
 }
+import { createCollectUrl } from "./../Utils/createCollectUrl"
 
-function PricingContext({ artwork }: PricingContextProps) {
+export function PricingContext({ artwork }: PricingContextProps) {
   if (!artwork.pricingContext) {
     return null
-  }
-
-  const createUrl = (minCents, maxCents, category, dimensions, artistId) => {
-    const categoryHref = "/collect/" + category.toLowerCase()
-    const acquirableHref =
-      "?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true"
-
-    // could also do calculations on height and width manually to get cm from inches
-    const heightCm = dimensions.cm.split(" × ")[0]
-    const widthCm = dimensions.cm.split(" × ")[1].replace(" cm", "")
-
-    const area = parseFloat(heightCm) * parseFloat(widthCm)
-
-    let min
-    let max
-
-    if (area < 70 * 70) {
-      min = Math.round(40 / 2.54)
-      max = Math.round(70 / 2.54)
-    } else if (area < 40 * 40) {
-      min = 0
-      max = Math.round(40 / 2.54)
-    } else {
-      min = Math.round(70 / 2.54)
-      max = "*"
-    }
-
-    const sizeHref = "&height=" + min + "-" + max + "&width=" + min + "-" + max
-
-    const minDollars = Math.round(minCents / 100)
-    const maxDollars = Math.round(maxCents / 100)
-    const priceRangeHref = "&price_range=" + minDollars + "-" + maxDollars
-    const artistHref = "&artist_id=" + artistId
-    const url =
-      sd.APP_URL +
-      categoryHref +
-      acquirableHref +
-      priceRangeHref +
-      sizeHref +
-      artistHref
-
-    return url
   }
 
   const openCollectPage = (
     minCents,
     maxCents,
     category,
-    dimensions,
+    widthCm,
+    heightCm,
     artistId
   ) => {
-    const url = createUrl(minCents, maxCents, category, dimensions, artistId)
+    const url = createCollectUrl(
+      minCents,
+      maxCents,
+      category,
+      widthCm,
+      heightCm,
+      artistId
+    )
 
-    console.log("URL!!!", url)
-
-    // (() => {window.open(url)})
     if (typeof window !== "undefined") {
       return () => {
         window.open(url)
@@ -115,7 +78,8 @@ function PricingContext({ artwork }: PricingContextProps) {
                 bin.minPriceCents,
                 bin.maxPriceCents,
                 artwork.category,
-                artwork.dimensions,
+                artwork.widthCm,
+                artwork.heightCm,
                 artwork.artists[0].id
               ),
               highlightLabel: artworkFallsInThisBin
@@ -142,9 +106,8 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       artists {
         id
       }
-      dimensions {
-        cm
-      }
+      widthCm
+      heightCm
       category
       pricingContext @include(if: $enablePricingContext) {
         filterDescription

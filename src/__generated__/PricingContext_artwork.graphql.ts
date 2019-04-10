@@ -10,9 +10,8 @@ export type PricingContext_artwork = {
     readonly artists: ReadonlyArray<({
         readonly id: string;
     }) | null> | null;
-    readonly dimensions: ({
-        readonly cm: string | null;
-    }) | null;
+    readonly widthCm: number | null;
+    readonly heightCm: number | null;
     readonly category: string | null;
     readonly pricingContext?: ({
         readonly filterDescription: string;
@@ -88,22 +87,18 @@ return {
       ]
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "dimensions",
-      "storageKey": null,
+      "name": "widthCm",
       "args": null,
-      "concreteType": "dimensions",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "cm",
-          "args": null,
-          "storageKey": null
-        }
-      ]
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "heightCm",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -187,5 +182,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b7755ad90189921d99dbc6fdeaded0e5';
+(node as any).hash = '2c6465b6f5220a18c1f1c241b953d460';
 export default node;
