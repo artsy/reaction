@@ -1,3 +1,17 @@
+# v15.14.1 (Wed Apr 10 2019)
+
+#### 🏠  Internal
+
+- createTestEnv docs follow-up [#2285](https://github.com/artsy/reaction/pull/2285) ([@ds300](https://github.com/ds300))
+- Update dependency @artsy/palette to v4.8.0 [#2277](https://github.com/artsy/reaction/pull/2277) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.14.0 (Tue Apr 09 2019)
 
 #### 🚀  Enhancement
