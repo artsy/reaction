@@ -53,19 +53,21 @@ export const ArtworkContextArtistFragmentContainer = createFragmentContainer<{
       </Join>
     )
   },
-  graphql`
-    fragment ArtworkContextArtist_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      id
-      artist {
-        name
-        href
+  {
+    artwork: graphql`
+      fragment ArtworkContextArtist_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        id
+        artist {
+          name
+          href
+        }
+        ...ArtistArtworkGrid_artwork
+          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+        ...PartnerArtworkGrid_artwork
+          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+        ...RelatedWorksArtworkGrid_artwork
       }
-      ...ArtistArtworkGrid_artwork
-        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-      ...PartnerArtworkGrid_artwork
-        @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-      ...RelatedWorksArtworkGrid_artwork
-    }
-  `
+    `,
+  }
 )

@@ -137,25 +137,27 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
       />
     )
   },
-  graphql`
-    fragment AuctionCard_sale on Sale {
-      cover_image {
-        cropped(width: 200, height: 180) {
-          url
+  {
+    sale: graphql`
+      fragment AuctionCard_sale on Sale {
+        cover_image {
+          cropped(width: 200, height: 180) {
+            url
+          }
+        }
+        end_at
+        href
+        id
+        is_live_open
+        is_preview
+        live_start_at
+        name
+        start_at
+        is_closed
+        partner {
+          name
         }
       }
-      end_at
-      href
-      id
-      is_live_open
-      is_preview
-      live_start_at
-      name
-      start_at
-      is_closed
-      partner {
-        name
-      }
-    }
-  `
+    `,
+  }
 )

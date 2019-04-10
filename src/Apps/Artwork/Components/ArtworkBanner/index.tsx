@@ -85,118 +85,120 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
 }
 export const ArtworkBannerFragmentContainer = createFragmentContainer(
   ArtworkBanner,
-  graphql`
-    fragment ArtworkBanner_artwork on Artwork {
-      partner {
-        type
-        name
-        initials
-        profile {
-          icon {
-            url(version: "square140")
-          }
-          href
-        }
-      }
-      sale {
-        is_auction
-        is_benefit
-        cover_image {
-          url(version: "square")
-        }
-      }
-      # This aliasing selection of the context is done to work around a type generator bug, see below.
-      artworkContextAuction: context {
-        __typename
-        ... on ArtworkContextAuction {
+  {
+    artwork: graphql`
+      fragment ArtworkBanner_artwork on Artwork {
+        partner {
+          type
           name
-          href
-          is_auction
-          is_closed
-          is_open
-          live_start_at
-          live_url_if_open
-        }
-      }
-      artworkContextFair: context {
-        __typename
-        ... on ArtworkContextFair {
-          name
-          href
-          is_active
-          start_at
-          end_at
+          initials
           profile {
-            initials
             icon {
+              url(version: "square140")
+            }
+            href
+          }
+        }
+        sale {
+          is_auction
+          is_benefit
+          cover_image {
+            url(version: "square")
+          }
+        }
+        # This aliasing selection of the context is done to work around a type generator bug, see below.
+        artworkContextAuction: context {
+          __typename
+          ... on ArtworkContextAuction {
+            name
+            href
+            is_auction
+            is_closed
+            is_open
+            live_start_at
+            live_url_if_open
+          }
+        }
+        artworkContextFair: context {
+          __typename
+          ... on ArtworkContextFair {
+            name
+            href
+            is_active
+            start_at
+            end_at
+            profile {
+              initials
+              icon {
+                img: resized(width: 70, height: 70, version: "square") {
+                  url
+                }
+              }
+            }
+          }
+        }
+        artworkContextPartnerShow: context {
+          __typename
+          ... on ArtworkContextPartnerShow {
+            name
+            href
+            type
+            status
+            thumbnail: cover_image {
               img: resized(width: 70, height: 70, version: "square") {
                 url
               }
             }
           }
         }
+        # FIXME: There is a bug in the Relay transformer used before generating Flow types, and thus also our TS type
+        #        generator, that leads to a union selection _with_ a __typename selection being normalized incorrectly.
+        #        What ends up happening is that _only_ the common selection is being omitted from the second fragment,
+        #        i.e. in this case the fair and partnerShow selections are missing name and href.
+        #
+        #        This can be seen much more clear when adding __typename to the context part in ArtworkRail.tsx.
+        #
+        # context {
+        #   __typename
+        #   ... on ArtworkContextAuction {
+        #     name
+        #     href
+        #     is_auction
+        #     is_closed
+        #     is_open
+        #     live_start_at
+        #     live_url_if_open
+        #   }
+        #   ... on ArtworkContextFair {
+        #     name
+        #     href
+        #     is_active
+        #     start_at
+        #     end_at
+        #     profile {
+        #       initials
+        #       icon {
+        #         img: resized(width: 70, height: 70, version: "square") {
+        #           url
+        #         }
+        #       }
+        #     }
+        #   }
+        #   ... on ArtworkContextPartnerShow {
+        #     name
+        #     href
+        #     type
+        #     status
+        #     thumbnail: cover_image {
+        #       img: resized(width: 70, height: 70, version: "square") {
+        #         url
+        #       }
+        #     }
+        #   }
+        # }
       }
-      artworkContextPartnerShow: context {
-        __typename
-        ... on ArtworkContextPartnerShow {
-          name
-          href
-          type
-          status
-          thumbnail: cover_image {
-            img: resized(width: 70, height: 70, version: "square") {
-              url
-            }
-          }
-        }
-      }
-      # FIXME: There is a bug in the Relay transformer used before generating Flow types, and thus also our TS type
-      #        generator, that leads to a union selection _with_ a __typename selection being normalized incorrectly.
-      #        What ends up happening is that _only_ the common selection is being omitted from the second fragment,
-      #        i.e. in this case the fair and partnerShow selections are missing name and href.
-      #
-      #        This can be seen much more clear when adding __typename to the context part in ArtworkRail.tsx.
-      #
-      # context {
-      #   __typename
-      #   ... on ArtworkContextAuction {
-      #     name
-      #     href
-      #     is_auction
-      #     is_closed
-      #     is_open
-      #     live_start_at
-      #     live_url_if_open
-      #   }
-      #   ... on ArtworkContextFair {
-      #     name
-      #     href
-      #     is_active
-      #     start_at
-      #     end_at
-      #     profile {
-      #       initials
-      #       icon {
-      #         img: resized(width: 70, height: 70, version: "square") {
-      #           url
-      #         }
-      #       }
-      #     }
-      #   }
-      #   ... on ArtworkContextPartnerShow {
-      #     name
-      #     href
-      #     type
-      #     status
-      #     thumbnail: cover_image {
-      #       img: resized(width: 70, height: 70, version: "square") {
-      #         url
-      #       }
-      #     }
-      #   }
-      # }
-    }
-  `
+    `,
+  }
 )
 export const ArtworkBannerQueryRenderer = ({
   artworkID,

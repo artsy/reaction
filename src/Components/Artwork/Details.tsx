@@ -189,38 +189,40 @@ export class Details extends React.Component<Props, null> {
 
 export const DetailsFragmentContainer = createFragmentContainer<Props>(
   Details,
-  graphql`
-    fragment Details_artwork on Artwork {
-      href
-      title
-      date
-      sale_message
-      cultural_maker
-      artists(shallow: true) {
-        __id
+  {
+    artwork: graphql`
+      fragment Details_artwork on Artwork {
         href
-        name
-      }
-      collecting_institution
-      partner(shallow: true) {
-        name
-        href
-      }
-      sale {
-        is_auction
-        is_live_open
-        is_open
-        is_closed
-        display_timely_at
-      }
-      sale_artwork {
-        highest_bid {
-          display
+        title
+        date
+        sale_message
+        cultural_maker
+        artists(shallow: true) {
+          __id
+          href
+          name
         }
-        opening_bid {
-          display
+        collecting_institution
+        partner(shallow: true) {
+          name
+          href
+        }
+        sale {
+          is_auction
+          is_live_open
+          is_open
+          is_closed
+          display_timely_at
+        }
+        sale_artwork {
+          highest_bid {
+            display
+          }
+          opening_bid {
+            display
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

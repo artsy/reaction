@@ -77,30 +77,32 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
 
 export const ArtworkSummaryItemFragmentContainer = createFragmentContainer(
   ArtworkSummaryItem,
-  graphql`
-    fragment ArtworkSummaryItem_order on Order {
-      seller {
-        ... on Partner {
-          name
+  {
+    order: graphql`
+      fragment ArtworkSummaryItem_order on Order {
+        seller {
+          ... on Partner {
+            name
+          }
         }
-      }
-      lineItems {
-        edges {
-          node {
-            artwork {
-              artist_names
-              title
-              date
-              shippingOrigin
-              image {
-                resized_ArtworkSummaryItem: resized(width: 55) {
-                  url
+        lineItems {
+          edges {
+            node {
+              artwork {
+                artist_names
+                title
+                date
+                shippingOrigin
+                image {
+                  resized_ArtworkSummaryItem: resized(width: 55) {
+                    url
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

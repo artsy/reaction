@@ -211,36 +211,38 @@ export class CounterRoute extends Component<CounterProps> {
 
 export const CounterFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(CounterRoute))),
-  graphql`
-    fragment Counter_order on Order {
-      id
-      mode
-      state
-      itemsTotal(precision: 2)
-      totalListPrice(precision: 2)
-      stateExpiresAt
-      ... on OfferOrder {
-        lastOffer {
-          createdAt
+  {
+    order: graphql`
+      fragment Counter_order on Order {
+        id
+        mode
+        state
+        itemsTotal(precision: 2)
+        totalListPrice(precision: 2)
+        stateExpiresAt
+        ... on OfferOrder {
+          lastOffer {
+            createdAt
+          }
+          myLastOffer {
+            id
+          }
         }
-        myLastOffer {
-          id
-        }
-      }
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+              }
             }
           }
         }
+        ...TransactionDetailsSummaryItem_order
+        ...ArtworkSummaryItem_order
+        ...ShippingSummaryItem_order
+        ...CreditCardSummaryItem_order
+        ...OfferHistoryItem_order
       }
-      ...TransactionDetailsSummaryItem_order
-      ...ArtworkSummaryItem_order
-      ...ShippingSummaryItem_order
-      ...CreditCardSummaryItem_order
-      ...OfferHistoryItem_order
-    }
-  `
+    `,
+  }
 )

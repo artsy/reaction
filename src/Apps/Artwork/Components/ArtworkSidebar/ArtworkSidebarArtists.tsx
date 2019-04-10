@@ -142,21 +142,23 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
 
 export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
   ArtworkSidebarArtists,
-  graphql`
-    fragment ArtworkSidebarArtists_artwork on Artwork
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: true }
-      ) {
-      cultural_maker
-      artists {
-        __id
-        _id
-        id
-        name
-        href
-        ...FollowArtistButton_artist
-          @arguments(showFollowSuggestions: $showFollowSuggestions)
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarArtists_artwork on Artwork
+        @argumentDefinitions(
+          showFollowSuggestions: { type: "Boolean", defaultValue: true }
+        ) {
+        cultural_maker
+        artists {
+          __id
+          _id
+          id
+          name
+          href
+          ...FollowArtistButton_artist
+            @arguments(showFollowSuggestions: $showFollowSuggestions)
+        }
       }
-    }
-  `
+    `,
+  }
 )

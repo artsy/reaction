@@ -255,32 +255,34 @@ export class Accept extends Component<AcceptProps> {
 
 export const AcceptFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(Accept))),
-  graphql`
-    fragment Accept_order on Order {
-      id
-      stateExpiresAt
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
-              artists {
+  {
+    order: graphql`
+      fragment Accept_order on Order {
+        id
+        stateExpiresAt
+        lineItems {
+          edges {
+            node {
+              artwork {
                 id
+                artists {
+                  id
+                }
               }
             }
           }
         }
-      }
-      ... on OfferOrder {
-        lastOffer {
-          id
-          createdAt
+        ... on OfferOrder {
+          lastOffer {
+            id
+            createdAt
+          }
         }
+        ...TransactionDetailsSummaryItem_order
+        ...ArtworkSummaryItem_order
+        ...ShippingSummaryItem_order
+        ...CreditCardSummaryItem_order
       }
-      ...TransactionDetailsSummaryItem_order
-      ...ArtworkSummaryItem_order
-      ...ShippingSummaryItem_order
-      ...CreditCardSummaryItem_order
-    }
-  `
+    `,
+  }
 )

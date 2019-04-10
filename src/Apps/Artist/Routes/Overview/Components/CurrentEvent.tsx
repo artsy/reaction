@@ -78,23 +78,25 @@ export class LargeCurrentEvent extends Component<CurrentEventProps> {
 
 export const CurrentEventFragmentContainer = createFragmentContainer(
   CurrentEvent,
-  graphql`
-    fragment CurrentEvent_artist on Artist {
-      currentEvent {
-        event {
-          __typename
-        }
-        image {
-          resized(width: 300) {
-            url
+  {
+    artist: graphql`
+      fragment CurrentEvent_artist on Artist {
+        currentEvent {
+          event {
+            __typename
           }
+          image {
+            resized(width: 300) {
+              url
+            }
+          }
+          name
+          status
+          details
+          partner
+          href
         }
-        name
-        status
-        details
-        partner
-        href
       }
-    }
-  `
+    `,
+  }
 )

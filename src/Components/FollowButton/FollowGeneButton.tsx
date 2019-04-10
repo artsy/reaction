@@ -86,14 +86,13 @@ export class FollowGeneButton extends React.Component<Props> {
 }
 
 export const FollowGeneButtonFragmentContainer = track({})(
-  createFragmentContainer(
-    Artsy.withContext(FollowGeneButton),
-    graphql`
+  createFragmentContainer(Artsy.withContext(FollowGeneButton), {
+    gene: graphql`
       fragment FollowGeneButton_gene on Gene {
         __id
         id
         is_followed
       }
-    `
-  )
+    `,
+  })
 )

@@ -340,37 +340,39 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 
 export const RespondFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
-  graphql`
-    fragment Respond_order on Order {
-      id
-      mode
-      state
-      itemsTotal(precision: 2)
-      itemsTotalCents
-      totalListPrice(precision: 2)
-      totalListPriceCents
-      stateExpiresAt
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
+  {
+    order: graphql`
+      fragment Respond_order on Order {
+        id
+        mode
+        state
+        itemsTotal(precision: 2)
+        itemsTotalCents
+        totalListPrice(precision: 2)
+        totalListPriceCents
+        stateExpiresAt
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+              }
             }
           }
         }
-      }
-      ... on OfferOrder {
-        lastOffer {
-          createdAt
-          id
-          note
+        ... on OfferOrder {
+          lastOffer {
+            createdAt
+            id
+            note
+          }
         }
+        ...TransactionDetailsSummaryItem_order
+        ...ArtworkSummaryItem_order
+        ...ShippingSummaryItem_order
+        ...CreditCardSummaryItem_order
+        ...OfferHistoryItem_order
       }
-      ...TransactionDetailsSummaryItem_order
-      ...ArtworkSummaryItem_order
-      ...ShippingSummaryItem_order
-      ...CreditCardSummaryItem_order
-      ...OfferHistoryItem_order
-    }
-  `
+    `,
+  }
 )

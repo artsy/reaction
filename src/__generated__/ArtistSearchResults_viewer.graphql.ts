@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _ArtistSearchResultsContent_viewer$ref: unique symbol;
-export type ArtistSearchResultsContent_viewer$ref = typeof _ArtistSearchResultsContent_viewer$ref;
-export type ArtistSearchResultsContent_viewer = {
+declare const _ArtistSearchResults_viewer$ref: unique symbol;
+export type ArtistSearchResults_viewer$ref = typeof _ArtistSearchResults_viewer$ref;
+export type ArtistSearchResults_viewer = {
     readonly match_artist: ReadonlyArray<({
         readonly id: string;
         readonly _id: string;
@@ -15,14 +15,14 @@ export type ArtistSearchResultsContent_viewer = {
             }) | null;
         }) | null;
     }) | null> | null;
-    readonly " $refType": ArtistSearchResultsContent_viewer$ref;
+    readonly " $refType": ArtistSearchResults_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "ArtistSearchResultsContent_viewer",
+  "name": "ArtistSearchResults_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -123,5 +123,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'bfdccfa207bba7b1c084c6c0b44c4ffe';
+(node as any).hash = 'aac31badd3923a3ac64436155d012dcb';
 export default node;

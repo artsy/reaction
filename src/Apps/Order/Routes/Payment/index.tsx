@@ -409,45 +409,47 @@ export const PaymentFragmentContainer = createFragmentContainer(
   injectCommitMutation(
     injectStripe(trackPageViewWrapper(injectDialog(PaymentRoute)))
   ),
-  graphql`
-    fragment Payment_order on Order {
-      id
-      mode
-      creditCard {
-        name
-        street1
-        street2
-        city
-        state
-        country
-        postal_code
-      }
-      requestedFulfillment {
-        __typename
-        ... on Ship {
+  {
+    order: graphql`
+      fragment Payment_order on Order {
+        id
+        mode
+        creditCard {
           name
-          addressLine1
-          addressLine2
+          street1
+          street2
           city
-          region
+          state
           country
-          postalCode
+          postal_code
         }
-        ... on Pickup {
-          fulfillmentType
+        requestedFulfillment {
+          __typename
+          ... on Ship {
+            name
+            addressLine1
+            addressLine2
+            city
+            region
+            country
+            postalCode
+          }
+          ... on Pickup {
+            fulfillmentType
+          }
         }
-      }
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+              }
             }
           }
         }
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-    }
-  `
+    `,
+  }
 )

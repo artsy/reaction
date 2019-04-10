@@ -182,17 +182,19 @@ export class ArtworkSharePanel extends React.Component<
 
 export const ArtworkSharePanelFragmentContainer = createFragmentContainer(
   ArtworkSharePanel,
-  graphql`
-    fragment ArtworkSharePanel_artwork on Artwork {
-      href
-      images {
-        url
+  {
+    artwork: graphql`
+      fragment ArtworkSharePanel_artwork on Artwork {
+        href
+        images {
+          url
+        }
+        artworkMeta: meta {
+          share
+        }
       }
-      artworkMeta: meta {
-        share
-      }
-    }
-  `
+    `,
+  }
 )
 
 const SansGrow = styled(Sans)`

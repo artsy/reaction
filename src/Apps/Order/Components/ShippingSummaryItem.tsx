@@ -44,22 +44,24 @@ const ShippingSummaryItem = ({
 
 export const ShippingSummaryItemFragmentContainer = createFragmentContainer(
   ShippingSummaryItem,
-  graphql`
-    fragment ShippingSummaryItem_order on Order {
-      state
-      requestedFulfillment {
-        __typename
-        ...ShippingAddress_ship
-      }
-      lineItems {
-        edges {
-          node {
-            artwork {
-              shippingOrigin
+  {
+    order: graphql`
+      fragment ShippingSummaryItem_order on Order {
+        state
+        requestedFulfillment {
+          __typename
+          ...ShippingAddress_ship
+        }
+        lineItems {
+          edges {
+            node {
+              artwork {
+                shippingOrigin
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

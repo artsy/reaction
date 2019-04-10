@@ -24,14 +24,16 @@ export const RelatedArtistsRoute: SFC<RelatedArtistsListProps> = props => {
 
 export const RelatedArtistsRouteFragmentContainer = createFragmentContainer(
   RelatedArtistsRoute,
-  graphql`
-    fragment RelatedArtists_viewer on Viewer
-      @argumentDefinitions(
-        mainKind: { type: "RelatedArtistsKind", defaultValue: "MAIN" }
-      ) {
-      mainArtists: artist(id: $artistID) {
-        ...RelatedArtistsList_artist @arguments(kind: $mainKind)
+  {
+    viewer: graphql`
+      fragment RelatedArtists_viewer on Viewer
+        @argumentDefinitions(
+          mainKind: { type: "RelatedArtistsKind", defaultValue: "MAIN" }
+        ) {
+        mainArtists: artist(id: $artistID) {
+          ...RelatedArtistsList_artist @arguments(kind: $mainKind)
+        }
       }
-    }
-  `
+    `,
+  }
 )

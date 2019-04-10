@@ -450,56 +450,58 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
   injectCommitMutation(
     injectStripe(trackPageViewWrapper(injectDialog(NewPaymentRoute)))
   ),
-  graphql`
-    fragment NewPayment_order on Order {
-      id
-      mode
-      creditCard {
-        name
-        street1
-        street2
-        city
-        state
-        country
-        postal_code
-      }
-      requestedFulfillment {
-        __typename
-        ... on Ship {
+  {
+    order: graphql`
+      fragment NewPayment_order on Order {
+        id
+        mode
+        creditCard {
           name
-          addressLine1
-          addressLine2
+          street1
+          street2
           city
-          region
+          state
           country
-          postalCode
+          postal_code
         }
-        ... on Pickup {
-          fulfillmentType
+        requestedFulfillment {
+          __typename
+          ... on Ship {
+            name
+            addressLine1
+            addressLine2
+            city
+            region
+            country
+            postalCode
+          }
+          ... on Pickup {
+            fulfillmentType
+          }
         }
-      }
-      stateExpiresAt
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
-              artists {
+        stateExpiresAt
+        lineItems {
+          edges {
+            node {
+              artwork {
                 id
+                artists {
+                  id
+                }
               }
             }
           }
         }
-      }
-      ... on OfferOrder {
-        lastOffer {
-          createdAt
-          id
-          note
+        ... on OfferOrder {
+          lastOffer {
+            createdAt
+            id
+            note
+          }
         }
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-    }
-  `
+    `,
+  }
 )

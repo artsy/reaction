@@ -445,24 +445,26 @@ export const ArtworkSidebarCommercial: FC<
 
 export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
   ArtworkSidebarCommercial,
-  graphql`
-    fragment ArtworkSidebarCommercial_artwork on Artwork {
-      id
-      _id
-      is_acquireable
-      is_inquireable
-      is_offerable
-      sale_message
-      shippingInfo
-      shippingOrigin
-      edition_sets {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarCommercial_artwork on Artwork {
         id
-        __id
+        _id
         is_acquireable
+        is_inquireable
         is_offerable
         sale_message
-        ...ArtworkSidebarSizeInfo_piece
+        shippingInfo
+        shippingOrigin
+        edition_sets {
+          id
+          __id
+          is_acquireable
+          is_offerable
+          sale_message
+          ...ArtworkSidebarSizeInfo_piece
+        }
       }
-    }
-  `
+    `,
+  }
 )

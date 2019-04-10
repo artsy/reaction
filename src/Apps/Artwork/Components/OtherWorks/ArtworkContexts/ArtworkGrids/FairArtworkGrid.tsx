@@ -58,23 +58,25 @@ class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
 
 export const FairArtworkGridFragmentContainer = createFragmentContainer(
   withContext(FairArtworkGrid),
-  graphql`
-    fragment FairArtworkGrid_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      fair: show(at_a_fair: true) {
-        href
+  {
+    artwork: graphql`
+      fragment FairArtworkGrid_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        fair: show(at_a_fair: true) {
+          href
 
-        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
-          ...ArtworkGrid_artworks
+          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

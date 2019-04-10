@@ -51,13 +51,12 @@ export const Metadata = styled(MetadataContainer)`
   text-align: left;
 `
 
-export default createFragmentContainer(
-  Metadata,
-  graphql`
+export default createFragmentContainer(Metadata, {
+  artwork: graphql`
     fragment Metadata_artwork on Artwork {
       ...Details_artwork
       ...Contact_artwork
       href
     }
-  `
-)
+  `,
+})
