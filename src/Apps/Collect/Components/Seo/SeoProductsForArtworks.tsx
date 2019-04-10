@@ -99,57 +99,55 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
 }
 
 export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
-  artworks: {
-    artworks: graphql`
-      fragment SeoProductsForArtworks_artworks on FilterArtworks
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 30 }
-          after: { type: "String", defaultValue: "" }
-        ) {
-        artworks_connection(first: $first, after: $after) {
-          edges {
-            node {
-              __id
-              availability
-              category
-              date
-              href
-              is_acquireable
-              is_price_range
-              price
-              price_currency
-              title
-              artists {
-                name
-              }
-              image {
-                url(version: "larger")
-              }
-              meta {
-                description
-              }
-              partner(shallow: true) {
-                name
-                type
-                profile {
-                  icon {
-                    url(version: "larger")
-                  }
+  artworks: graphql`
+    fragment SeoProductsForArtworks_artworks on FilterArtworks
+      @argumentDefinitions(
+        first: { type: "Int", defaultValue: 30 }
+        after: { type: "String", defaultValue: "" }
+      ) {
+      artworks_connection(first: $first, after: $after) {
+        edges {
+          node {
+            __id
+            availability
+            category
+            date
+            href
+            is_acquireable
+            is_price_range
+            price
+            price_currency
+            title
+            artists {
+              name
+            }
+            image {
+              url(version: "larger")
+            }
+            meta {
+              description
+            }
+            partner(shallow: true) {
+              name
+              type
+              profile {
+                icon {
+                  url(version: "larger")
                 }
-                locations(size: 1) {
-                  address
-                  address_2
-                  city
-                  state
-                  country
-                  postal_code
-                  phone
-                }
+              }
+              locations(size: 1) {
+                address
+                address_2
+                city
+                state
+                country
+                postal_code
+                phone
               }
             }
           }
         }
       }
-    `,
-  },
+    }
+  `,
 })

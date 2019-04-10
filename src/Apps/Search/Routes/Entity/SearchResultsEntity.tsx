@@ -150,50 +150,48 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
   SearchResultsEntityRoute,
   {
-    viewer: {
-      viewer: graphql`
-        fragment SearchResultsEntity_viewer on Viewer
-          @argumentDefinitions(
-            term: { type: "String!", defaultValue: "" }
-            first: { type: "Int", defaultValue: 10 }
-            last: { type: "Int" }
-            after: { type: "String" }
-            before: { type: "String" }
-            page: { type: "Int" }
-            entities: { type: "[SearchEntity]" }
-          ) {
-          search(
-            query: $term
-            first: $first
-            after: $after
-            before: $before
-            last: $last
-            page: $page
-            entities: $entities
-          ) {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-            pageCursors {
-              ...Pagination_pageCursors
-            }
-            edges {
-              node {
-                ... on SearchableItem {
-                  description
-                  displayLabel
-                  href
-                  _id
-                  imageUrl
-                  displayType
-                }
+    viewer: graphql`
+      fragment SearchResultsEntity_viewer on Viewer
+        @argumentDefinitions(
+          term: { type: "String!", defaultValue: "" }
+          first: { type: "Int", defaultValue: 10 }
+          last: { type: "Int" }
+          after: { type: "String" }
+          before: { type: "String" }
+          page: { type: "Int" }
+          entities: { type: "[SearchEntity]" }
+        ) {
+        search(
+          query: $term
+          first: $first
+          after: $after
+          before: $before
+          last: $last
+          page: $page
+          entities: $entities
+        ) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          pageCursors {
+            ...Pagination_pageCursors
+          }
+          edges {
+            node {
+              ... on SearchableItem {
+                description
+                displayLabel
+                href
+                _id
+                imageUrl
+                displayType
               }
             }
           }
         }
-      `,
-    },
+      }
+    `,
   },
   graphql`
     query SearchResultsEntityQuery(

@@ -1,5 +1,5 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
-import { MarketInsightsArtistPage_artist } from "__generated__/MarketInsightsArtistPage_artist.graphql"
+import { ArtistMarketInsights_artist } from "__generated__/ArtistMarketInsights_artist.graphql"
 import {
   hasSections,
   highestCategory,
@@ -9,7 +9,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 
 export interface MarketInsightsProps {
-  artist: MarketInsightsArtistPage_artist
+  artist: ArtistMarketInsights_artist
   border?: boolean
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
@@ -121,11 +121,11 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
   }
 }
 
-export const MarketInsightsFragmentContainer = createFragmentContainer(
+export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
   MarketInsights,
   {
     artist: graphql`
-      fragment MarketInsightsArtistPage_artist on Artist
+      fragment ArtistMarketInsights_artist on Artist
         @argumentDefinitions(
           partner_category: {
             type: "[String]"

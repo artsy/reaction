@@ -1,4 +1,4 @@
-import { PopularArtistsContent_popular_artists } from "__generated__/PopularArtistsContent_popular_artists.graphql"
+import { PopularArtists_popular_artists } from "__generated__/PopularArtists_popular_artists.graphql"
 import {
   PopularArtistsFollowArtistMutation,
   PopularArtistsFollowArtistMutationResponse,
@@ -36,7 +36,7 @@ interface Artist {
 export interface RelayProps {
   tracking?: TrackingProp
   relay?: RelayProp
-  popular_artists: PopularArtistsContent_popular_artists
+  popular_artists: PopularArtists_popular_artists
 }
 
 interface Props
@@ -193,7 +193,7 @@ const PopularArtistContentContainer = createFragmentContainer(
   PopularArtistsContent,
   {
     popular_artists: graphql`
-      fragment PopularArtistsContent_popular_artists on PopularArtists {
+      fragment PopularArtists_popular_artists on PopularArtists {
         artists {
           id
           _id
@@ -220,7 +220,7 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
       query={graphql`
         query PopularArtistsQuery {
           popular_artists(exclude_followed_artists: true) {
-            ...PopularArtistsContent_popular_artists
+            ...PopularArtists_popular_artists
           }
         }
       `}

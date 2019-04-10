@@ -92,51 +92,49 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
 export const WorksForYouArtistFeedPaginationContainer = createPaginationContainer(
   WorksForYouArtistFeed,
   {
-    viewer: {
-      viewer: graphql`
-        fragment WorksForYouArtistFeed_viewer on Viewer
-          @argumentDefinitions(
-            count: { type: "Int", defaultValue: 10 }
-            cursor: { type: "String" }
-            artistID: { type: "String!", defaultValue: "" }
-            filter: {
-              type: "[ArtistArtworksFilters]"
-              defaultValue: [IS_FOR_SALE]
+    viewer: graphql`
+      fragment WorksForYouArtistFeed_viewer on Viewer
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String" }
+          artistID: { type: "String!", defaultValue: "" }
+          filter: {
+            type: "[ArtistArtworksFilters]"
+            defaultValue: [IS_FOR_SALE]
+          }
+        ) {
+        artist(id: $artistID) {
+          name
+          href
+          counts {
+            artworks
+            for_sale_artworks
+          }
+          image {
+            resized(height: 80, width: 80) {
+              url
             }
-          ) {
-          artist(id: $artistID) {
-            name
-            href
-            counts {
-              artworks
-              for_sale_artworks
+          }
+          artworks_connection(
+            sort: PUBLISHED_AT_DESC
+            first: $count
+            after: $cursor
+            filter: $filter
+          ) @connection(key: "WorksForYouArtistFeed_artworks_connection") {
+            pageInfo {
+              hasNextPage
+              endCursor
             }
-            image {
-              resized(height: 80, width: 80) {
-                url
-              }
-            }
-            artworks_connection(
-              sort: PUBLISHED_AT_DESC
-              first: $count
-              after: $cursor
-              filter: $filter
-            ) @connection(key: "WorksForYouArtistFeed_artworks_connection") {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              ...ArtworkGrid_artworks
-              edges {
-                node {
-                  __id
-                }
+            ...ArtworkGrid_artworks
+            edges {
+              node {
+                __id
               }
             }
           }
         }
-      `,
-    },
+      }
+    `,
   },
   {
     direction: "forward",

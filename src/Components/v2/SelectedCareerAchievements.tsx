@@ -1,5 +1,5 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
-import { SelectedCareerAchievementsArtistPage_artist } from "__generated__/SelectedCareerAchievementsArtistPage_artist.graphql"
+import { SelectedCareerAchievements_artist } from "__generated__/SelectedCareerAchievements_artist.graphql"
 import {
   hasSections,
   highestCategory,
@@ -11,7 +11,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 export interface SelectedCareerAchievementsProps {
-  artist: SelectedCareerAchievementsArtistPage_artist
+  artist: SelectedCareerAchievements_artist
   border?: boolean
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
@@ -143,7 +143,7 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
   SelectedCareerAchievements,
   {
     artist: graphql`
-      fragment SelectedCareerAchievementsArtistPage_artist on Artist
+      fragment SelectedCareerAchievements_artist on Artist
         @argumentDefinitions(
           partner_category: {
             type: "[String]"

@@ -23,7 +23,7 @@ import { stringify } from "qs"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MarketInsightsFragmentContainer as MarketInsights,
+  ArtistMarketInsightsFragmentContainer as ArtistMarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Components/v2"
 import Events from "Utils/Events"
@@ -209,7 +209,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
             </StackableBorderBox>
             {this.state.showArtistInsights && (
               <>
-                <MarketInsights
+                <ArtistMarketInsights
                   artist={this.props.artist}
                   border={false}
                   Container={Container}
@@ -293,7 +293,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
         }
       }
       ...ArtistBio_bio
-      ...MarketInsightsArtistPage_artist
+      ...ArtistMarketInsights_artist
       ...FollowArtistButton_artist
 
       # The below data is only used to determine whether a section

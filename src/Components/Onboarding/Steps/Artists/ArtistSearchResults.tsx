@@ -1,8 +1,8 @@
+import { ArtistSearchResults_viewer } from "__generated__/ArtistSearchResults_viewer.graphql"
 import {
   ArtistSearchResultsArtistMutation,
   ArtistSearchResultsArtistMutationResponse,
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
-import { ArtistSearchResultsContent_viewer } from "__generated__/ArtistSearchResultsContent_viewer.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
 import { ContextProps, withContext } from "Artsy/SystemContext"
 import * as React from "react"
@@ -21,7 +21,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-type Artist = ArtistSearchResultsContent_viewer["match_artist"][0]
+type Artist = ArtistSearchResults_viewer["match_artist"][0]
 
 export interface ContainerProps extends FollowProps {
   term: string
@@ -30,7 +30,7 @@ export interface ContainerProps extends FollowProps {
 
 interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
   relay?: RelayProp
-  viewer: ArtistSearchResultsContent_viewer
+  viewer: ArtistSearchResults_viewer
 }
 
 @track({}, { dispatch: data => Events.postEvent(data) })
@@ -183,7 +183,7 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   ArtistSearchResultsContent,
   {
     viewer: graphql`
-      fragment ArtistSearchResultsContent_viewer on Viewer {
+      fragment ArtistSearchResults_viewer on Viewer {
         match_artist(term: $term) {
           id
           _id
@@ -209,7 +209,7 @@ const ArtistSearchResultsComponent: React.SFC<
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {
           viewer {
-            ...ArtistSearchResultsContent_viewer
+            ...ArtistSearchResults_viewer
           }
         }
       `}

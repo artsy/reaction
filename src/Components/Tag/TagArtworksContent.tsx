@@ -80,33 +80,31 @@ export class TagArtworksContent extends React.Component<Props, State> {
 export default createPaginationContainer(
   TagArtworksContent,
   {
-    filtered_artworks: {
-      filtered_artworks: graphql`
-        fragment TagArtworksContent_filtered_artworks on FilterArtworks
-          @argumentDefinitions(
-            count: { type: "Int", defaultValue: 10 }
-            cursor: { type: "String", defaultValue: "" }
-          ) {
-          __id
-          artworks: artworks_connection(
-            first: $count
-            after: $cursor
-            sort: $sort
-          ) @connection(key: "TagArtworksContent_filtered_artworks") {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-            ...ArtworkGrid_artworks
-            edges {
-              node {
-                __id
-              }
+    filtered_artworks: graphql`
+      fragment TagArtworksContent_filtered_artworks on FilterArtworks
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+        ) {
+        __id
+        artworks: artworks_connection(
+          first: $count
+          after: $cursor
+          sort: $sort
+        ) @connection(key: "TagArtworksContent_filtered_artworks") {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          ...ArtworkGrid_artworks
+          edges {
+            node {
+              __id
             }
           }
         }
-      `,
-    },
+      }
+    `,
   },
   {
     direction: "forward",

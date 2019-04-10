@@ -122,36 +122,34 @@ export class SearchApp extends React.Component<Props> {
 }
 
 export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
-  viewer: {
-    viewer: graphql`
-      fragment SearchApp_viewer on Viewer
-        @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
-        search(query: $term, first: 1, aggregations: [TYPE]) {
-          aggregations {
-            slice
-            counts {
-              count
-              name
-            }
-          }
-          ...NavigationTabs_searchableConnection
-          edges {
-            node {
-              ... on SearchableItem {
-                id
-                displayLabel
-                displayType
-              }
-            }
+  viewer: graphql`
+    fragment SearchApp_viewer on Viewer
+      @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
+      search(query: $term, first: 1, aggregations: [TYPE]) {
+        aggregations {
+          slice
+          counts {
+            count
+            name
           }
         }
-
-        filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
-          counts {
-            total
+        ...NavigationTabs_searchableConnection
+        edges {
+          node {
+            ... on SearchableItem {
+              id
+              displayLabel
+              displayType
+            }
           }
         }
       }
-    `,
-  },
+
+      filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
+        counts {
+          total
+        }
+      }
+    }
+  `,
 })

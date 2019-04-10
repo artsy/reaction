@@ -220,8 +220,8 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ) {
         ...ArtistBio_bio
         ...CurrentEvent_artist
-        ...MarketInsightsArtistPage_artist
-        ...SelectedCareerAchievementsArtistPage_artist
+        ...MarketInsights_artist
+        ...SelectedCareerAchievements_artist
         ...Genes_artist
         ...ArtworkFilter_artist
           @arguments(

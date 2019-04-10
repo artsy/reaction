@@ -1,13 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { GeneSearchResultsContent_viewer$ref } from "./GeneSearchResultsContent_viewer.graphql";
+import { GeneSearchResults_viewer$ref } from "./GeneSearchResults_viewer.graphql";
 export type GeneSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type GeneSearchResultsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": GeneSearchResultsContent_viewer$ref;
+        readonly " $fragmentRefs": GeneSearchResults_viewer$ref;
     }) | null;
 };
 export type GeneSearchResultsQuery = {
@@ -22,11 +22,11 @@ query GeneSearchResultsQuery(
   $term: String!
 ) {
   viewer {
-    ...GeneSearchResultsContent_viewer
+    ...GeneSearchResults_viewer
   }
 }
 
-fragment GeneSearchResultsContent_viewer on Viewer {
+fragment GeneSearchResults_viewer on Viewer {
   match_gene(term: $term) {
     name
     id
@@ -55,7 +55,7 @@ return {
   "operationKind": "query",
   "name": "GeneSearchResultsQuery",
   "id": null,
-  "text": "query GeneSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...GeneSearchResultsContent_viewer\n  }\n}\n\nfragment GeneSearchResultsContent_viewer on Viewer {\n  match_gene(term: $term) {\n    name\n    id\n    _id\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n    __id\n  }\n}\n",
+  "text": "query GeneSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...GeneSearchResults_viewer\n  }\n}\n\nfragment GeneSearchResults_viewer on Viewer {\n  match_gene(term: $term) {\n    name\n    id\n    _id\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -75,7 +75,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "GeneSearchResultsContent_viewer",
+            "name": "GeneSearchResults_viewer",
             "args": null
           }
         ]
@@ -199,5 +199,5 @@ return {
   }
 };
 })();
-(node as any).hash = '6f403a1a5970448a89a84de12bc8d072';
+(node as any).hash = '381a05e7887812030ff90a5d9f1cf08b';
 export default node;

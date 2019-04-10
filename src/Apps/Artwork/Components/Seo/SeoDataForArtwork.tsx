@@ -70,51 +70,49 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
 export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
   SeoDataForArtwork,
   {
-    artwork: {
-      artwork: graphql`
-        fragment SeoDataForArtwork_artwork on Artwork {
-          href
-          date
-          is_price_hidden
-          is_price_range
-          price
-          price_currency
-          sale_message
-          meta_image: image {
-            resized(
-              width: 640
-              height: 640
-              version: ["large", "medium", "tall"]
-            ) {
-              width
-              height
-              url
-            }
+    artwork: graphql`
+      fragment SeoDataForArtwork_artwork on Artwork {
+        href
+        date
+        is_price_hidden
+        is_price_range
+        price
+        price_currency
+        sale_message
+        meta_image: image {
+          resized(
+            width: 640
+            height: 640
+            version: ["large", "medium", "tall"]
+          ) {
+            width
+            height
+            url
           }
-          meta {
-            title
-            description(limit: 155)
-          }
-          partner {
-            name
-            type
-            profile {
-              image {
-                resized(width: 320, height: 320, version: ["medium"]) {
-                  url
-                }
+        }
+        meta {
+          title
+          description(limit: 155)
+        }
+        partner {
+          name
+          type
+          profile {
+            image {
+              resized(width: 320, height: 320, version: ["medium"]) {
+                url
               }
             }
           }
-          artist_names
-          availability
-          category
-          dimensions {
-            in
-          }
         }
-      `,
-    },
+        artist_names
+        availability
+        category
+        dimensions {
+          in
+        }
+      }
+    `,
   }
 )
 
