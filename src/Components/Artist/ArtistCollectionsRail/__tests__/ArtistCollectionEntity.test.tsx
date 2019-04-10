@@ -23,7 +23,7 @@ describe("ArtistCollectionEntity", () => {
 
     expect(component.text()).not.toMatch("Jasper Johns:")
     expect(component.text()).toMatch("Flags")
-    expect(component.text()).toMatch("Works from $1,000")
+    expect(component.text()).toMatch("From $1,000")
     expect(component.find(ArtworkImage).length).toBe(3)
     const artworkImage = component
       .find(ArtworkImage)

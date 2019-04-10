@@ -61,7 +61,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
           <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
-              Works from $
+              From $
               {currency(price_guidance, {
                 separator: ",",
                 precision: 0,
@@ -83,6 +83,9 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
+    ${CollectionTitle} {
+      text-decoration: underline;
+    }
   }
 `
 
@@ -92,6 +95,8 @@ export const ArtworkImage = styled.img<{ width: number }>`
   background-color: ${color("black10")};
   object-fit: cover;
   object-position: center;
+  opacity: 0.9;
+  padding-right: 2px;
 
   &:last-child {
     padding-right: 0;
@@ -100,7 +105,6 @@ export const ArtworkImage = styled.img<{ width: number }>`
 
 const ImgWrapper = styled(Flex)`
   width: 265px;
-  justify-content: space-between;
 `
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
