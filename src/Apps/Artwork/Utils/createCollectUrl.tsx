@@ -12,11 +12,6 @@ export const createCollectUrl = (
   const acquirableHref =
     "?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true"
 
-  // const heightCm = dimensions.cm.split(" × ")[0]
-  // const widthCm = dimensions.cm.split(" × ")[1].replace(" cm", "")
-
-  // const area = parseFloat(heightCm) * parseFloat(widthCm)
-
   const area = heightCm * widthCm
 
   let min
