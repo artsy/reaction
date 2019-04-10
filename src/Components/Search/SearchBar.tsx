@@ -365,27 +365,29 @@ export const SearchBarRefetchContainer = createRefetchContainer(
     return <SearchBar {...props} />
   },
   {
-    viewer: graphql`
-      fragment SearchBar_viewer on Viewer
-        @argumentDefinitions(
-          term: { type: "String!", defaultValue: "" }
-          hasTerm: { type: "Boolean!", defaultValue: false }
-        ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 7)
-          @include(if: $hasTerm) {
-          edges {
-            node {
-              displayLabel
-              href
-              ... on SearchableItem {
-                displayType
-                id
+    viewer: {
+      viewer: graphql`
+        fragment SearchBar_viewer on Viewer
+          @argumentDefinitions(
+            term: { type: "String!", defaultValue: "" }
+            hasTerm: { type: "Boolean!", defaultValue: false }
+          ) {
+          search(query: $term, mode: AUTOSUGGEST, first: 7)
+            @include(if: $hasTerm) {
+            edges {
+              node {
+                displayLabel
+                href
+                ... on SearchableItem {
+                  displayType
+                  id
+                }
               }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query SearchBarRefetchQuery($term: String!, $hasTerm: Boolean!) {

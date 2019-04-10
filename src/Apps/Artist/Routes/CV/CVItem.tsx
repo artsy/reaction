@@ -175,51 +175,53 @@ export class CVItem extends Component<CVItemProps, CVItemState> {
 export const CVPaginationContainer = createPaginationContainer(
   CVItem,
   {
-    artist: graphql`
-      fragment CVItem_artist on Artist
-        @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String" }
-          sort: { type: "PartnerShowSorts", defaultValue: "start_at_desc" }
-          at_a_fair: { type: "Boolean", defaultValue: false }
-          solo_show: { type: "Boolean", defaultValue: false }
-          is_reference: { type: "Boolean", defaultValue: true }
-          visible_to_public: { type: "Boolean", defaultValue: false }
-        ) {
-        id
-        showsConnection(
-          first: $count
-          after: $cursor
-          sort: $sort
-          at_a_fair: $at_a_fair
-          solo_show: $solo_show
-          is_reference: $is_reference
-          visible_to_public: $visible_to_public
-        ) @connection(key: "Artist_showsConnection") {
-          pageInfo {
-            hasNextPage
-          }
-          edges {
-            node {
-              __id
-              partner {
-                ... on ExternalPartner {
-                  name
+    artist: {
+      artist: graphql`
+        fragment CVItem_artist on Artist
+          @argumentDefinitions(
+            count: { type: "Int", defaultValue: 10 }
+            cursor: { type: "String" }
+            sort: { type: "PartnerShowSorts", defaultValue: "start_at_desc" }
+            at_a_fair: { type: "Boolean", defaultValue: false }
+            solo_show: { type: "Boolean", defaultValue: false }
+            is_reference: { type: "Boolean", defaultValue: true }
+            visible_to_public: { type: "Boolean", defaultValue: false }
+          ) {
+          id
+          showsConnection(
+            first: $count
+            after: $cursor
+            sort: $sort
+            at_a_fair: $at_a_fair
+            solo_show: $solo_show
+            is_reference: $is_reference
+            visible_to_public: $visible_to_public
+          ) @connection(key: "Artist_showsConnection") {
+            pageInfo {
+              hasNextPage
+            }
+            edges {
+              node {
+                __id
+                partner {
+                  ... on ExternalPartner {
+                    name
+                  }
+                  ... on Partner {
+                    name
+                    href
+                  }
                 }
-                ... on Partner {
-                  name
-                  href
-                }
+                name
+                start_at(format: "YYYY")
+                city
+                href
               }
-              name
-              start_at(format: "YYYY")
-              city
-              href
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   {
     direction: "forward",

@@ -237,9 +237,8 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
 
 // ADDED COLLECTIONS, HIGHLIGHTS, AND AUCTION RESULTS TO FRAGMENT FOR SHOW ARTIST INSIGHTS BUTTON VISIBLILITY CHECK
 
-export const ArtistInfoFragmentContainer = createFragmentContainer(
-  ArtistInfo,
-  graphql`
+export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
+  artist: graphql`
     fragment ArtistInfo_artist on Artist
       @argumentDefinitions(
         partner_category: {
@@ -304,8 +303,8 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
         text
       }
     }
-  `
-)
+  `,
+})
 
 export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
   return (

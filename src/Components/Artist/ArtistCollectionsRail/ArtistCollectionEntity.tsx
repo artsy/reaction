@@ -105,23 +105,25 @@ const ImgWrapper = styled(Flex)`
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
   ArtistCollectionEntity,
-  graphql`
-    fragment ArtistCollectionEntity_collection on MarketingCollection {
-      headerImage
-      slug
-      title
-      price_guidance
-      artworks(size: 3, sort: "merchandisability") {
-        hits {
-          artist {
-            name
-          }
-          title
-          image {
-            url(version: "small")
+  {
+    collection: graphql`
+      fragment ArtistCollectionEntity_collection on MarketingCollection {
+        headerImage
+        slug
+        title
+        price_guidance
+        artworks(size: 3, sort: "merchandisability") {
+          hits {
+            artist {
+              name
+            }
+            title
+            image {
+              url(version: "small")
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

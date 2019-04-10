@@ -74,39 +74,41 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
 export const ArtworkFilterRefetchContainer = createRefetchContainer(
   ArtworkGridRefetchContainerWrapper,
   {
-    artist: graphql`
-      fragment ArtworkFilterRefetch_artist on Artist
-        @argumentDefinitions(
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
-          at_auction: { type: "Boolean" }
-          acquireable: { type: "Boolean" }
-          inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-decayed_merch" }
-          offerable: { type: "Boolean" }
-          price_range: { type: "String", defaultValue: "*-*" }
-        ) {
-        __id
-        grid: filtered_artworks(
-          aggregations: [TOTAL]
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          at_auction: $at_auction
-          acquireable: $acquireable
-          inquireable_only: $inquireable_only
-          offerable: $offerable
-          size: 0
-          sort: $sort
-          price_range: $price_range
-        ) {
-          ...ArtworkFilterArtworkGrid_filtered_artworks
+    artist: {
+      artist: graphql`
+        fragment ArtworkFilterRefetch_artist on Artist
+          @argumentDefinitions(
+            medium: { type: "String", defaultValue: "*" }
+            major_periods: { type: "[String]" }
+            partner_id: { type: "ID" }
+            for_sale: { type: "Boolean" }
+            at_auction: { type: "Boolean" }
+            acquireable: { type: "Boolean" }
+            inquireable_only: { type: "Boolean" }
+            sort: { type: "String", defaultValue: "-decayed_merch" }
+            offerable: { type: "Boolean" }
+            price_range: { type: "String", defaultValue: "*-*" }
+          ) {
+          __id
+          grid: filtered_artworks(
+            aggregations: [TOTAL]
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            at_auction: $at_auction
+            acquireable: $acquireable
+            inquireable_only: $inquireable_only
+            offerable: $offerable
+            size: 0
+            sort: $sort
+            price_range: $price_range
+          ) {
+            ...ArtworkFilterArtworkGrid_filtered_artworks
+          }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query ArtworkFilterRefetchQuery(

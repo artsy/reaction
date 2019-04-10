@@ -379,59 +379,61 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
       </ContextConsumer>
     )
   },
-  graphql`
-    fragment ArtworkFilter_artist on Artist
-      @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID" }
-        for_sale: { type: "Boolean" }
-        at_auction: { type: "Boolean" }
-        acquireable: { type: "Boolean" }
-        offerable: { type: "Boolean" }
-        inquireable_only: { type: "Boolean" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+  {
+    artist: graphql`
+      fragment ArtworkFilter_artist on Artist
+        @argumentDefinitions(
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID" }
+          for_sale: { type: "Boolean" }
+          at_auction: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
+          inquireable_only: { type: "Boolean" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+          }
+          sort: { type: "String", defaultValue: "-decayed_merch" }
+          price_range: { type: "String", defaultValue: "*-*" }
+        ) {
+        id
+        name
+        is_followed
+        counts {
+          for_sale_artworks
+          ecommerce_artworks
+          auction_artworks
+          artworks
+          has_make_offer_artworks
         }
-        sort: { type: "String", defaultValue: "-decayed_merch" }
-        price_range: { type: "String", defaultValue: "*-*" }
-      ) {
-      id
-      name
-      is_followed
-      counts {
-        for_sale_artworks
-        ecommerce_artworks
-        auction_artworks
-        artworks
-        has_make_offer_artworks
-      }
-      filtered_artworks(aggregations: $aggregations, size: 0) {
-        aggregations {
-          slice
-          counts {
-            name
-            id
+        filtered_artworks(aggregations: $aggregations, size: 0) {
+          aggregations {
+            slice
+            counts {
+              name
+              id
+            }
           }
         }
+
+        ...ArtworkFilterRefetch_artist
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            sort: $sort
+            offerable: $offerable
+            acquireable: $acquireable
+            at_auction: $at_auction
+            inquireable_only: $inquireable_only
+            price_range: $price_range
+          )
+
+        ...FollowArtistButton_artist
       }
-
-      ...ArtworkFilterRefetch_artist
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          sort: $sort
-          offerable: $offerable
-          acquireable: $acquireable
-          at_auction: $at_auction
-          inquireable_only: $inquireable_only
-          price_range: $price_range
-        )
-
-      ...FollowArtistButton_artist
-    }
-  `
+    `,
+  }
 )

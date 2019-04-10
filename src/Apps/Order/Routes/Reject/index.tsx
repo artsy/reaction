@@ -184,26 +184,28 @@ export class Reject extends Component<RejectProps> {
 
 export const RejectFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(Reject))),
-  graphql`
-    fragment Reject_order on Order {
-      id
-      stateExpiresAt
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
+  {
+    order: graphql`
+      fragment Reject_order on Order {
+        id
+        stateExpiresAt
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+              }
             }
           }
         }
-      }
-      ... on OfferOrder {
-        lastOffer {
-          id
-          createdAt
+        ... on OfferOrder {
+          lastOffer {
+            id
+            createdAt
+          }
         }
+        ...ArtworkSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-    }
-  `
+    `,
+  }
 )

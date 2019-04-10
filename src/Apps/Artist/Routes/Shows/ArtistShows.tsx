@@ -181,56 +181,58 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
 export const ArtistShowsRefetchContainer = createRefetchContainer(
   ArtistShows,
   {
-    artist: graphql`
-      fragment ArtistShows_artist on Artist
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 4 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-          sort: { type: "PartnerShowSorts" }
-          status: { type: "String" }
-        ) {
-        id
-        showsConnection(
-          first: $first
-          after: $after
-          before: $before
-          last: $last
-          sort: $sort
-          status: $status
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          edges {
-            node {
-              partner {
-                ... on ExternalPartner {
-                  name
+    artist: {
+      artist: graphql`
+        fragment ArtistShows_artist on Artist
+          @argumentDefinitions(
+            first: { type: "Int", defaultValue: 4 }
+            last: { type: "Int" }
+            after: { type: "String" }
+            before: { type: "String" }
+            sort: { type: "PartnerShowSorts" }
+            status: { type: "String" }
+          ) {
+          id
+          showsConnection(
+            first: $first
+            after: $after
+            before: $before
+            last: $last
+            sort: $sort
+            status: $status
+          ) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            edges {
+              node {
+                partner {
+                  ... on ExternalPartner {
+                    name
+                  }
+                  ... on Partner {
+                    name
+                  }
                 }
-                ... on Partner {
-                  name
+                name
+                href
+                exhibition_period
+                cover_image {
+                  cropped(width: 800, height: 600) {
+                    url
+                  }
                 }
+                city
               }
-              name
-              href
-              exhibition_period
-              cover_image {
-                cropped(width: 800, height: 600) {
-                  url
-                }
-              }
-              city
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query ArtistShowsQuery(

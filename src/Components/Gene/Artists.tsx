@@ -169,42 +169,44 @@ export class Artists extends React.Component<Props, State> {
 export default createPaginationContainer(
   Artists,
   {
-    gene: graphql`
-      fragment Artists_gene on Gene
-        @argumentDefinitions(
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
+    gene: {
+      gene: graphql`
+        fragment Artists_gene on Gene
+          @argumentDefinitions(
+            aggregations: {
+              type: "[ArtworkAggregation]"
+              defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
+            }
+            count: { type: "Int", defaultValue: 10 }
+            cursor: { type: "String", defaultValue: "" }
+          ) {
+          __id
+          artists: artists_connection(first: $count, after: $cursor)
+            @connection(key: "Artists_artists") {
+            pageInfo {
+              hasNextPage
+            }
+            edges {
+              node {
+                __id
+                ...ArtistRow_artist
+              }
+            }
           }
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String", defaultValue: "" }
-        ) {
-        __id
-        artists: artists_connection(first: $count, after: $cursor)
-          @connection(key: "Artists_artists") {
-          pageInfo {
-            hasNextPage
-          }
-          edges {
-            node {
-              __id
-              ...ArtistRow_artist
+          filter_aggregations: filtered_artworks(
+            aggregations: $aggregations
+            size: 0
+            include_medium_filter_in_aggregation: true
+          ) {
+            ...TotalCount_filter_artworks
+            aggregations {
+              slice
+              ...Dropdown_aggregation
             }
           }
         }
-        filter_aggregations: filtered_artworks(
-          aggregations: $aggregations
-          size: 0
-          include_medium_filter_in_aggregation: true
-        ) {
-          ...TotalCount_filter_artworks
-          aggregations {
-            slice
-            ...Dropdown_aggregation
-          }
-        }
-      }
-    `,
+      `,
+    },
   },
   {
     direction: "forward",

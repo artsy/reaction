@@ -199,94 +199,96 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
   withContext(OverviewRoute),
-  graphql`
-    fragment Overview_artist on Artist
-      @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID!" }
-        for_sale: { type: "Boolean" }
-        at_auction: { type: "Boolean" }
-        acquireable: { type: "Boolean" }
-        offerable: { type: "Boolean" }
-        inquireable_only: { type: "Boolean" }
-        sort: { type: "String", defaultValue: "-decayed_merch" }
-        partner_category: {
-          type: "[String]"
-          defaultValue: ["blue-chip", "top-established", "top-emerging"]
-        }
-        price_range: { type: "String", defaultValue: "*-*" }
-      ) {
-      ...ArtistBio_bio
-      ...CurrentEvent_artist
-      ...MarketInsightsArtistPage_artist
-      ...SelectedCareerAchievementsArtistPage_artist
-      ...Genes_artist
-      ...ArtworkFilter_artist
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          sort: $sort
-          at_auction: $at_auction
-          acquireable: $acquireable
-          inquireable_only: $inquireable_only
-          offerable: $offerable
-          price_range: $price_range
-        )
-      id
-      counts {
-        partner_shows
-      }
-      href
-      is_consignable
-      # NOTE: The following are used to determine whether sections
-      # should be rendered.
-      biography_blurb(format: HTML, partner_bio: true) {
-        text
-        credit
-      }
-      currentEvent {
-        name
-      }
-      related {
-        genes {
-          edges {
-            node {
-              id
-            }
+  {
+    artist: graphql`
+      fragment Overview_artist on Artist
+        @argumentDefinitions(
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID!" }
+          for_sale: { type: "Boolean" }
+          at_auction: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
+          inquireable_only: { type: "Boolean" }
+          sort: { type: "String", defaultValue: "-decayed_merch" }
+          partner_category: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
-        }
-        artists(first: 1) {
-          edges {
-            node {
-              __id
-            }
-          }
-        }
-      }
-      _id
-      collections
-      highlights {
-        partners(
-          first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+          price_range: { type: "String", defaultValue: "*-*" }
         ) {
-          edges {
-            node {
-              categories {
+        ...ArtistBio_bio
+        ...CurrentEvent_artist
+        ...MarketInsightsArtistPage_artist
+        ...SelectedCareerAchievementsArtistPage_artist
+        ...Genes_artist
+        ...ArtworkFilter_artist
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            sort: $sort
+            at_auction: $at_auction
+            acquireable: $acquireable
+            inquireable_only: $inquireable_only
+            offerable: $offerable
+            price_range: $price_range
+          )
+        id
+        counts {
+          partner_shows
+        }
+        href
+        is_consignable
+        # NOTE: The following are used to determine whether sections
+        # should be rendered.
+        biography_blurb(format: HTML, partner_bio: true) {
+          text
+          credit
+        }
+        currentEvent {
+          name
+        }
+        related {
+          genes {
+            edges {
+              node {
                 id
               }
             }
           }
+          artists(first: 1) {
+            edges {
+              node {
+                __id
+              }
+            }
+          }
+        }
+        _id
+        collections
+        highlights {
+          partners(
+            first: 10
+            display_on_partner_profile: true
+            represented_by: true
+            partner_category: $partner_category
+          ) {
+            edges {
+              node {
+                categories {
+                  id
+                }
+              }
+            }
+          }
+        }
+        insights {
+          type
         }
       }
-      insights {
-        type
-      }
-    }
-  `
+    `,
+  }
 )

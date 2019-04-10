@@ -191,21 +191,23 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
 const PopularArtistContentContainer = createFragmentContainer(
   PopularArtistsContent,
-  graphql`
-    fragment PopularArtistsContent_popular_artists on PopularArtists {
-      artists {
-        id
-        _id
-        __id
-        name
-        image {
-          cropped(width: 100, height: 100) {
-            url
+  {
+    popular_artists: graphql`
+      fragment PopularArtistsContent_popular_artists on PopularArtists {
+        artists {
+          id
+          _id
+          __id
+          name
+          image {
+            cropped(width: 100, height: 100) {
+              url
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({

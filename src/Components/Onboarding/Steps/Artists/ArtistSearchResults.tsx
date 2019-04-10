@@ -181,21 +181,23 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
 
 const ArtistSearchResultsContentContainer = createFragmentContainer(
   ArtistSearchResultsContent,
-  graphql`
-    fragment ArtistSearchResultsContent_viewer on Viewer {
-      match_artist(term: $term) {
-        id
-        _id
-        __id
-        name
-        image {
-          cropped(width: 100, height: 100) {
-            url
+  {
+    viewer: graphql`
+      fragment ArtistSearchResultsContent_viewer on Viewer {
+        match_artist(term: $term) {
+          id
+          _id
+          __id
+          name
+          image {
+            cropped(width: 100, height: 100) {
+              url
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 const ArtistSearchResultsComponent: React.SFC<

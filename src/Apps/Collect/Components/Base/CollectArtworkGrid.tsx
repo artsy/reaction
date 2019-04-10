@@ -119,30 +119,32 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
 export const CollectArtworkGridRefreshContainer = createRefetchContainer(
   CollectArtworkGrid,
   {
-    filtered_artworks: graphql`
-      fragment CollectArtworkGrid_filtered_artworks on FilterArtworks
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 30 }
-          after: { type: "String", defaultValue: "" }
-        ) {
-        __id
-        artworks: artworks_connection(first: $first, after: $after) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          ...ArtworkGrid_artworks
-          edges {
-            node {
-              __id
+    filtered_artworks: {
+      filtered_artworks: graphql`
+        fragment CollectArtworkGrid_filtered_artworks on FilterArtworks
+          @argumentDefinitions(
+            first: { type: "Int", defaultValue: 30 }
+            after: { type: "String", defaultValue: "" }
+          ) {
+          __id
+          artworks: artworks_connection(first: $first, after: $after) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            ...ArtworkGrid_artworks
+            edges {
+              node {
+                __id
+              }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query CollectArtworkGridQuery(

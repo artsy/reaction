@@ -98,16 +98,18 @@ export class NavigationTabs extends React.Component<Props> {
 
 export const NavigationTabsFragmentContainer = createFragmentContainer(
   withContext(NavigationTabs),
-  graphql`
-    fragment NavigationTabs_artist on Artist {
-      id
-      statuses {
-        shows
-        artists
-        articles
-        cv(minShowCount: 0)
-        auction_lots
+  {
+    artist: graphql`
+      fragment NavigationTabs_artist on Artist {
+        id
+        statuses {
+          shows
+          artists
+          articles
+          cv(minShowCount: 0)
+          auction_lots
+        }
       }
-    }
-  `
+    `,
+  }
 )

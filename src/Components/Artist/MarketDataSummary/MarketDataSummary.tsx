@@ -136,9 +136,8 @@ export class MarketDataSummary extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(
-  MarketDataSummary,
-  graphql`
+export default createFragmentContainer(MarketDataSummary, {
+  artist: graphql`
     fragment MarketDataSummary_artist on Artist
       @argumentDefinitions(
         partner_category: {
@@ -178,5 +177,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

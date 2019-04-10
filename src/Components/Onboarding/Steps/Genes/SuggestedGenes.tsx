@@ -147,9 +147,8 @@ class SuggestedGenesContent extends React.Component<Props> {
   }
 }
 
-const SuggestedGenesContainer = createFragmentContainer(
-  SuggestedGenesContent,
-  graphql`
+const SuggestedGenesContainer = createFragmentContainer(SuggestedGenesContent, {
+  suggested_genes: graphql`
     fragment SuggestedGenesContent_suggested_genes on Gene
       @relay(plural: true) {
       id
@@ -161,8 +160,8 @@ const SuggestedGenesContainer = createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})
 
 const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
   relayEnvironment,

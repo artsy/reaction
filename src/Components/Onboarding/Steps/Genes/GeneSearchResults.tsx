@@ -168,20 +168,22 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
 
 const GeneSearchResultsContentContainer = createFragmentContainer(
   GeneSearchResultsContent,
-  graphql`
-    fragment GeneSearchResultsContent_viewer on Viewer {
-      match_gene(term: $term) {
-        name
-        id
-        _id
-        image {
-          cropped(width: 100, height: 100) {
-            url
+  {
+    viewer: graphql`
+      fragment GeneSearchResultsContent_viewer on Viewer {
+        match_gene(term: $term) {
+          name
+          id
+          _id
+          image {
+            cropped(width: 100, height: 100) {
+              url
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 const GeneSearchResultsComponent: React.SFC<ContainerProps & ContextProps> = ({

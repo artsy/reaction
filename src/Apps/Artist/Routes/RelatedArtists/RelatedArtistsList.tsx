@@ -147,40 +147,42 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
 export const RelatedArtistsListRefetchContainer = createRefetchContainer(
   RelatedArtistsList,
   {
-    artist: graphql`
-      fragment RelatedArtistsList_artist on Artist
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 16 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-          kind: { type: "RelatedArtistsKind" }
-        ) {
-        id
-        related {
-          artists(
-            first: $first
-            after: $after
-            before: $before
-            last: $last
-            kind: $kind
+    artist: {
+      artist: graphql`
+        fragment RelatedArtistsList_artist on Artist
+          @argumentDefinitions(
+            first: { type: "Int", defaultValue: 16 }
+            last: { type: "Int" }
+            after: { type: "String" }
+            before: { type: "String" }
+            kind: { type: "RelatedArtistsKind" }
           ) {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-            pageCursors {
-              ...Pagination_pageCursors
-            }
-            edges {
-              node {
-                ...ArtistCard_artist
+          id
+          related {
+            artists(
+              first: $first
+              after: $after
+              before: $before
+              last: $last
+              kind: $kind
+            ) {
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+              pageCursors {
+                ...Pagination_pageCursors
+              }
+              edges {
+                node {
+                  ...ArtistCard_artist
+                }
               }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query RelatedArtistsListQuery(

@@ -146,46 +146,48 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
 export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer(
   SearchResultsArtistsRoute,
   {
-    viewer: graphql`
-      fragment SearchResultsArtists_viewer on Viewer
-        @argumentDefinitions(
-          term: { type: "String!", defaultValue: "" }
-          first: { type: "Int", defaultValue: 10 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-          page: { type: "Int" }
-        ) {
-        search(
-          query: $term
-          first: $first
-          after: $after
-          before: $before
-          last: $last
-          page: $page
-          entities: [ARTIST]
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          edges {
-            node {
-              ... on Artist {
-                name
-                _id
-                href
-                imageUrl
-                bio
+    viewer: {
+      viewer: graphql`
+        fragment SearchResultsArtists_viewer on Viewer
+          @argumentDefinitions(
+            term: { type: "String!", defaultValue: "" }
+            first: { type: "Int", defaultValue: 10 }
+            last: { type: "Int" }
+            after: { type: "String" }
+            before: { type: "String" }
+            page: { type: "Int" }
+          ) {
+          search(
+            query: $term
+            first: $first
+            after: $after
+            before: $before
+            last: $last
+            page: $page
+            entities: [ARTIST]
+          ) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            edges {
+              node {
+                ... on Artist {
+                  name
+                  _id
+                  href
+                  imageUrl
+                  bio
+                }
               }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query SearchResultsArtistsQuery(

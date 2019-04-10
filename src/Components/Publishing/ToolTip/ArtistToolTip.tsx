@@ -160,9 +160,8 @@ const Images = styled.a`
 `
 
 export const ArtistTooltipContainer = track({})(
-  createFragmentContainer(
-    ArtistToolTip,
-    graphql`
+  createFragmentContainer(ArtistToolTip, {
+    artist: graphql`
       fragment ArtistToolTip_artist on Artist {
         name
         id
@@ -183,6 +182,6 @@ export const ArtistTooltipContainer = track({})(
           name
         }
       }
-    `
-  )
+    `,
+  })
 )

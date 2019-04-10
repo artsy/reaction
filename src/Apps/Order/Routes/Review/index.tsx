@@ -328,33 +328,35 @@ export class ReviewRoute extends Component<ReviewProps> {
 
 export const ReviewFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(ReviewRoute))),
-  graphql`
-    fragment Review_order on Order {
-      id
-      mode
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
-              artists {
+  {
+    order: graphql`
+      fragment Review_order on Order {
+        id
+        mode
+        lineItems {
+          edges {
+            node {
+              artwork {
                 id
+                artists {
+                  id
+                }
+                ...ItemReview_artwork
               }
-              ...ItemReview_artwork
             }
           }
         }
-      }
-      ... on OfferOrder {
-        myLastOffer {
-          id
+        ... on OfferOrder {
+          myLastOffer {
+            id
+          }
         }
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
+        ...ShippingSummaryItem_order
+        ...CreditCardSummaryItem_order
+        ...OfferSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-      ...ShippingSummaryItem_order
-      ...CreditCardSummaryItem_order
-      ...OfferSummaryItem_order
-    }
-  `
+    `,
+  }
 )

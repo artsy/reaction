@@ -123,49 +123,51 @@ export class ArtistArticles extends Component<
 export const ArtistArticlesRefetchContainer = createRefetchContainer(
   ArtistArticles,
   {
-    artist: graphql`
-      fragment ArtistArticles_artist on Artist
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 10 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-        ) {
-        id
-        articlesConnection(
-          first: $first
-          after: $after
-          before: $before
-          last: $last
-          sort: PUBLISHED_AT_DESC
-          in_editorial_feed: true
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          edges {
-            node {
-              href
-              thumbnail_title
-              author {
-                name
-              }
-              published_at(format: "MMM Do, YYYY")
-              thumbnail_image {
-                resized(width: 300) {
-                  url
+    artist: {
+      artist: graphql`
+        fragment ArtistArticles_artist on Artist
+          @argumentDefinitions(
+            first: { type: "Int", defaultValue: 10 }
+            last: { type: "Int" }
+            after: { type: "String" }
+            before: { type: "String" }
+          ) {
+          id
+          articlesConnection(
+            first: $first
+            after: $after
+            before: $before
+            last: $last
+            sort: PUBLISHED_AT_DESC
+            in_editorial_feed: true
+          ) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            edges {
+              node {
+                href
+                thumbnail_title
+                author {
+                  name
                 }
+                published_at(format: "MMM Do, YYYY")
+                thumbnail_image {
+                  resized(width: 300) {
+                    url
+                  }
+                }
+                href
               }
-              href
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query ArtistArticlesQuery(

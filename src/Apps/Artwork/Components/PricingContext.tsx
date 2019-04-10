@@ -65,21 +65,23 @@ function PricingContext({ artwork }: PricingContextProps) {
 
 export const PricingContextFragmentContainer = createFragmentContainer(
   PricingContext,
-  graphql`
-    fragment PricingContext_artwork on Artwork {
-      priceCents {
-        min
-      }
-      pricingContext @include(if: $enablePricingContext) {
-        filterDescription
-        bins {
-          maxPrice
-          maxPriceCents
-          minPrice
-          minPriceCents
-          numArtworks
+  {
+    artwork: graphql`
+      fragment PricingContext_artwork on Artwork {
+        priceCents {
+          min
+        }
+        pricingContext @include(if: $enablePricingContext) {
+          filterDescription
+          bins {
+            maxPrice
+            maxPriceCents
+            minPrice
+            minPriceCents
+            numArtworks
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

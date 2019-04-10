@@ -88,20 +88,22 @@ export class ArtworkDetails extends Component<ArtworkDetailsProps> {
 
 export const ArtworkDetailsFragmentContainer = createFragmentContainer(
   ArtworkDetails,
-  graphql`
-    fragment ArtworkDetails_artwork on Artwork {
-      ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
-      ...ArtworkDetailsAboutTheWorkFromPartner_artwork
-      ...ArtworkDetailsAdditionalInfo_artwork
-      ...ArtworkDetailsArticles_artwork
-      articles(size: 10) {
-        id
+  {
+    artwork: graphql`
+      fragment ArtworkDetails_artwork on Artwork {
+        ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
+        ...ArtworkDetailsAboutTheWorkFromPartner_artwork
+        ...ArtworkDetailsAdditionalInfo_artwork
+        ...ArtworkDetailsArticles_artwork
+        articles(size: 10) {
+          id
+        }
+        literature(format: HTML)
+        exhibition_history(format: HTML)
+        provenance(format: HTML)
       }
-      literature(format: HTML)
-      exhibition_history(format: HTML)
-      provenance(format: HTML)
-    }
-  `
+    `,
+  }
 )
 
 export const ArtworkDetailsQueryRenderer = ({

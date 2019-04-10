@@ -310,57 +310,59 @@ const StyledTransactionDetailsSummaryItem = styled(
 
 export const StatusFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(StatusRoute),
-  graphql`
-    fragment Status_order on Order {
-      __typename
-      id
-      code
-      state
-      mode
-      stateReason
-      requestedFulfillment {
-        ... on Ship {
-          __typename
+  {
+    order: graphql`
+      fragment Status_order on Order {
+        __typename
+        id
+        code
+        state
+        mode
+        stateReason
+        requestedFulfillment {
+          ... on Ship {
+            __typename
+          }
+          ... on Pickup {
+            __typename
+          }
         }
-        ... on Pickup {
-          __typename
-        }
-      }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-      ...ShippingSummaryItem_order
-      ...CreditCardSummaryItem_order
-      lineItems {
-        edges {
-          node {
-            fulfillments {
-              edges {
-                node {
-                  courier
-                  trackingId
-                  estimatedDelivery(format: "MMM Do, YYYY")
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
+        ...ShippingSummaryItem_order
+        ...CreditCardSummaryItem_order
+        lineItems {
+          edges {
+            node {
+              fulfillments {
+                edges {
+                  node {
+                    courier
+                    trackingId
+                    estimatedDelivery(format: "MMM Do, YYYY")
+                  }
                 }
               }
-            }
-            artwork {
-              id
-              is_acquireable
-              ...ItemReview_artwork
+              artwork {
+                id
+                is_acquireable
+                ...ItemReview_artwork
+              }
             }
           }
         }
-      }
-      ... on OfferOrder {
-        myLastOffer {
-          id
-          amount(precision: 2)
-          amountCents
-          shippingTotal(precision: 2)
-          shippingTotalCents
-          taxTotal(precision: 2)
-          taxTotalCents
+        ... on OfferOrder {
+          myLastOffer {
+            id
+            amount(precision: 2)
+            amountCents
+            shippingTotal(precision: 2)
+            shippingTotalCents
+            taxTotal(precision: 2)
+            taxTotalCents
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

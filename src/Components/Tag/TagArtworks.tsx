@@ -122,41 +122,43 @@ export class TagArtworks extends React.Component<Props, null> {
 }
 
 export default createFragmentContainer(TagArtworks, {
-  tag: graphql`
-    fragment TagArtworks_tag on Tag
-      @argumentDefinitions(
-        for_sale: { type: "Boolean" }
-        medium: { type: "String", defaultValue: "*" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
-        }
-        price_range: { type: "String", defaultValue: "*" }
-        dimension_range: { type: "String", defaultValue: "*" }
-      ) {
-      id
-      filtered_artworks(
-        aggregations: $aggregations
-        for_sale: $for_sale
-        medium: $medium
-        price_range: $price_range
-        dimension_range: $dimension_range
-        size: 0
-      ) {
-        ...TotalCount_filter_artworks
-        ...TagArtworksContent_filtered_artworks
-        aggregations {
-          slice
-          counts {
-            name
-            id
+  tag: {
+    tag: graphql`
+      fragment TagArtworks_tag on Tag
+        @argumentDefinitions(
+          for_sale: { type: "Boolean" }
+          medium: { type: "String", defaultValue: "*" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
           }
-          ...Dropdown_aggregation
-        }
-        facet {
-          ...Headline_facet
+          price_range: { type: "String", defaultValue: "*" }
+          dimension_range: { type: "String", defaultValue: "*" }
+        ) {
+        id
+        filtered_artworks(
+          aggregations: $aggregations
+          for_sale: $for_sale
+          medium: $medium
+          price_range: $price_range
+          dimension_range: $dimension_range
+          size: 0
+        ) {
+          ...TotalCount_filter_artworks
+          ...TagArtworksContent_filtered_artworks
+          aggregations {
+            slice
+            counts {
+              name
+              id
+            }
+            ...Dropdown_aggregation
+          }
+          facet {
+            ...Headline_facet
+          }
         }
       }
-    }
-  `,
+    `,
+  },
 })

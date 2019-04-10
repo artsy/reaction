@@ -67,15 +67,17 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
 
 export const CollectionsAppFragmentContainer = createFragmentContainer(
   CollectionsApp,
-  graphql`
-    fragment CollectionsApp_categories on MarketingCollectionCategory
-      @relay(plural: true) {
-      name
-      collections {
-        slug
-        headerImage
-        title
+  {
+    categories: graphql`
+      fragment CollectionsApp_categories on MarketingCollectionCategory
+        @relay(plural: true) {
+        name
+        collections {
+          slug
+          headerImage
+          title
+        }
       }
-    }
-  `
+    `,
+  }
 )

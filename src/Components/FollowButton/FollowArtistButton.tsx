@@ -189,18 +189,20 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
 export const FollowArtistButtonFragmentContainer = createFragmentContainer(
   Artsy.withContext(FollowArtistButton),
-  graphql`
-    fragment FollowArtistButton_artist on Artist
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: false }
-      ) {
-      __id
-      id
-      is_followed
-      counts {
-        follows
+  {
+    artist: graphql`
+      fragment FollowArtistButton_artist on Artist
+        @argumentDefinitions(
+          showFollowSuggestions: { type: "Boolean", defaultValue: false }
+        ) {
+        __id
+        id
+        is_followed
+        counts {
+          follows
+        }
+        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
       }
-      ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
-    }
-  `
+    `,
+  }
 )

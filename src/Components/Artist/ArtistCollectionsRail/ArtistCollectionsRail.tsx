@@ -80,10 +80,12 @@ const RailWrapper = styled(Box)`
 
 export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
   ArtistCollectionsRail,
-  graphql`
-    fragment ArtistCollectionsRail_collections on MarketingCollection
-      @relay(plural: true) {
-      ...ArtistCollectionEntity_collection
-    }
-  `
+  {
+    collections: graphql`
+      fragment ArtistCollectionsRail_collections on MarketingCollection
+        @relay(plural: true) {
+        ...ArtistCollectionEntity_collection
+      }
+    `,
+  }
 )

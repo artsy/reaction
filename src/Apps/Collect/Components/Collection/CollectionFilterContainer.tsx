@@ -44,56 +44,58 @@ export const CollectionFilterContainer: React.FC<
 export const CollectionFilterFragmentContainer = createFragmentContainer(
   CollectionFilterContainer,
   {
-    collection: graphql`
-      fragment CollectionFilterContainer_collection on MarketingCollection
-        @argumentDefinitions(
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
-          }
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          for_sale: { type: "Boolean" }
-          at_auction: { type: "Boolean" }
-          acquireable: { type: "Boolean" }
-          offerable: { type: "Boolean" }
-          inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
-          price_range: { type: "String" }
-          height: { type: "String" }
-          width: { type: "String" }
-          color: { type: "String" }
-        ) {
-        artworks(
-          aggregations: $aggregations
-          include_medium_filter_in_aggregation: true
-        ) {
-          aggregations {
-            slice
-            counts {
-              id
-              name
-              count
+    collection: {
+      collection: graphql`
+        fragment CollectionFilterContainer_collection on MarketingCollection
+          @argumentDefinitions(
+            aggregations: {
+              type: "[ArtworkAggregation]"
+              defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+            }
+            medium: { type: "String", defaultValue: "*" }
+            major_periods: { type: "[String]" }
+            for_sale: { type: "Boolean" }
+            at_auction: { type: "Boolean" }
+            acquireable: { type: "Boolean" }
+            offerable: { type: "Boolean" }
+            inquireable_only: { type: "Boolean" }
+            sort: { type: "String", defaultValue: "-partner_updated_at" }
+            price_range: { type: "String" }
+            height: { type: "String" }
+            width: { type: "String" }
+            color: { type: "String" }
+          ) {
+          artworks(
+            aggregations: $aggregations
+            include_medium_filter_in_aggregation: true
+          ) {
+            aggregations {
+              slice
+              counts {
+                id
+                name
+                count
+              }
             }
           }
-        }
 
-        ...CollectionRefetch_collection
-          @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            for_sale: $for_sale
-            sort: $sort
-            acquireable: $acquireable
-            offerable: $offerable
-            at_auction: $at_auction
-            inquireable_only: $inquireable_only
-            price_range: $price_range
-            height: $height
-            width: $width
-            color: $color
-          )
-      }
-    `,
+          ...CollectionRefetch_collection
+            @arguments(
+              medium: $medium
+              major_periods: $major_periods
+              for_sale: $for_sale
+              sort: $sort
+              acquireable: $acquireable
+              offerable: $offerable
+              at_auction: $at_auction
+              inquireable_only: $inquireable_only
+              price_range: $price_range
+              height: $height
+              width: $width
+              color: $color
+            )
+        }
+      `,
+    },
   }
 )

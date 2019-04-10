@@ -29,9 +29,8 @@ export class CVRoute extends Component<CVRouteProps> {
   }
 }
 
-export const CVRouteFragmentContainer = createFragmentContainer(
-  CVRoute,
-  graphql`
+export const CVRouteFragmentContainer = createFragmentContainer(CVRoute, {
+  viewer: graphql`
     fragment CV_viewer on Viewer
       @argumentDefinitions(
         soloShows_at_a_fair: { type: "Boolean", defaultValue: false }
@@ -53,5 +52,5 @@ export const CVRouteFragmentContainer = createFragmentContainer(
         ...CVItem_artist @arguments(at_a_fair: $fairBooths_at_a_fair)
       }
     }
-  `
-)
+  `,
+})

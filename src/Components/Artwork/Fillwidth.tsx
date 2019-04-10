@@ -68,9 +68,8 @@ export const Fillwidth = sizeMe(sizeMeOptions)(
   StyledFillwidth
 ) as React.StatelessComponent<Props>
 
-export default createFragmentContainer(
-  Fillwidth,
-  graphql`
+export default createFragmentContainer(Fillwidth, {
+  artworks: graphql`
     fragment Fillwidth_artworks on ArtworkConnection {
       edges {
         node {
@@ -82,5 +81,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

@@ -78,21 +78,23 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
 
 export const RecentlyViewedFragmentContainer = createFragmentContainer(
   RecentlyViewed,
-  graphql`
-    fragment RecentlyViewed_me on Me {
-      recentlyViewedArtworks(first: 20) {
-        edges {
-          node {
-            __id
-            image {
-              aspect_ratio
+  {
+    me: graphql`
+      fragment RecentlyViewed_me on Me {
+        recentlyViewedArtworks(first: 20) {
+          edges {
+            node {
+              __id
+              image {
+                aspect_ratio
+              }
+              ...FillwidthItem_artwork @relay(mask: false)
             }
-            ...FillwidthItem_artwork @relay(mask: false)
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const RecentlyViewedQueryRenderer = () => {

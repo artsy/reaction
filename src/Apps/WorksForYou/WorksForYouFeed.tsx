@@ -124,38 +124,40 @@ export class WorksForYouFeed extends Component<Props, State> {
 export const WorksForYouFeedPaginationContainer = createPaginationContainer(
   WorksForYouFeed,
   {
-    viewer: graphql`
-      fragment WorksForYouFeed_viewer on Viewer
-        @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
-          cursor: { type: "String" }
-          for_sale: { type: "Boolean", defaultValue: true }
-        ) {
-        me {
-          followsAndSaves {
-            notifications: bundledArtworksByArtist(
-              sort: PUBLISHED_AT_DESC
-              first: $count
-              after: $cursor
-              for_sale: $for_sale
-            ) @connection(key: "WorksForYou_notifications") {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              edges {
-                node {
-                  __id
-                  href
-                  summary
-                  artists
-                  published_at(format: "MMM DD")
-                  artworksConnection {
-                    ...ArtworkGrid_artworks
-                  }
-                  image {
-                    resized(height: 80, width: 80) {
-                      url
+    viewer: {
+      viewer: graphql`
+        fragment WorksForYouFeed_viewer on Viewer
+          @argumentDefinitions(
+            count: { type: "Int", defaultValue: 10 }
+            cursor: { type: "String" }
+            for_sale: { type: "Boolean", defaultValue: true }
+          ) {
+          me {
+            followsAndSaves {
+              notifications: bundledArtworksByArtist(
+                sort: PUBLISHED_AT_DESC
+                first: $count
+                after: $cursor
+                for_sale: $for_sale
+              ) @connection(key: "WorksForYou_notifications") {
+                pageInfo {
+                  hasNextPage
+                  endCursor
+                }
+                edges {
+                  node {
+                    __id
+                    href
+                    summary
+                    artists
+                    published_at(format: "MMM DD")
+                    artworksConnection {
+                      ...ArtworkGrid_artworks
+                    }
+                    image {
+                      resized(height: 80, width: 80) {
+                        url
+                      }
                     }
                   }
                 }
@@ -163,8 +165,8 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   {
     direction: "forward",

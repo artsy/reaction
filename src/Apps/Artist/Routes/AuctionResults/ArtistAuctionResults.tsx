@@ -178,39 +178,41 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
     )
   },
   {
-    artist: graphql`
-      fragment ArtistAuctionResults_artist on Artist
-        @argumentDefinitions(
-          sort: { type: "AuctionResultSorts", defaultValue: "DATE_DESC" }
-          first: { type: "Int", defaultValue: 10 }
-          last: { type: "Int" }
-          after: { type: "String" }
-          before: { type: "String" }
-        ) {
-        id
-        auctionResults(
-          first: $first
-          after: $after
-          before: $before
-          last: $last
-          sort: $sort
-        ) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          totalCount
-          edges {
-            node {
-              ...ArtistAuctionResultItem_auctionResult
+    artist: {
+      artist: graphql`
+        fragment ArtistAuctionResults_artist on Artist
+          @argumentDefinitions(
+            sort: { type: "AuctionResultSorts", defaultValue: "DATE_DESC" }
+            first: { type: "Int", defaultValue: 10 }
+            last: { type: "Int" }
+            after: { type: "String" }
+            before: { type: "String" }
+          ) {
+          id
+          auctionResults(
+            first: $first
+            after: $after
+            before: $before
+            last: $last
+            sort: $sort
+          ) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            totalCount
+            edges {
+              node {
+                ...ArtistAuctionResultItem_auctionResult
+              }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query ArtistAuctionResultsQuery(

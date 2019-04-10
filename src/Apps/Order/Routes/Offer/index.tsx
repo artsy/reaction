@@ -313,24 +313,26 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 
 export const OfferFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(OfferRoute))),
-  graphql`
-    fragment Offer_order on Order {
-      id
-      mode
-      state
-      totalListPrice(precision: 2)
-      totalListPriceCents
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
+  {
+    order: graphql`
+      fragment Offer_order on Order {
+        id
+        mode
+        state
+        totalListPrice(precision: 2)
+        totalListPriceCents
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+              }
             }
           }
         }
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-    }
-  `
+    `,
+  }
 )

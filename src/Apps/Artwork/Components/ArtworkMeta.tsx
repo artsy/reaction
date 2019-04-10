@@ -103,37 +103,43 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
 
 export const ArtworkMetaFragmentContainer = createFragmentContainer(
   ArtworkMeta,
-  graphql`
-    fragment ArtworkMeta_artwork on Artwork {
-      href
-      date
-      artist_names
-      sale_message
-      partner {
-        name
-      }
-      image_rights
-      is_shareable
-      meta_image: image {
-        resized(width: 640, height: 640, version: ["large", "medium", "tall"]) {
-          width
-          height
-          url
-        }
-      }
-      meta {
-        title
-        description(limit: 155)
-        long_description: description(limit: 200)
-      }
-      context {
-        __typename
-        ... on ArtworkContextFair {
-          id
+  {
+    artwork: graphql`
+      fragment ArtworkMeta_artwork on Artwork {
+        href
+        date
+        artist_names
+        sale_message
+        partner {
           name
         }
+        image_rights
+        is_shareable
+        meta_image: image {
+          resized(
+            width: 640
+            height: 640
+            version: ["large", "medium", "tall"]
+          ) {
+            width
+            height
+            url
+          }
+        }
+        meta {
+          title
+          description(limit: 155)
+          long_description: description(limit: 200)
+        }
+        context {
+          __typename
+          ... on ArtworkContextFair {
+            id
+            name
+          }
+        }
+        ...SeoDataForArtwork_artwork
       }
-      ...SeoDataForArtwork_artwork
-    }
-  `
+    `,
+  }
 )

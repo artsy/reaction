@@ -128,30 +128,32 @@ export const ArtworkGridRefetchContainer = createRefetchContainer(
     )
   },
   {
-    filtered_artworks: graphql`
-      fragment ArtworkFilterArtworkGrid_filtered_artworks on FilterArtworks
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 24 }
-          after: { type: "String", defaultValue: "" }
-        ) {
-        __id
-        artworks: artworks_connection(first: $first, after: $after) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          ...ArtworkGrid_artworks
-          edges {
-            node {
-              __id
+    filtered_artworks: {
+      filtered_artworks: graphql`
+        fragment ArtworkFilterArtworkGrid_filtered_artworks on FilterArtworks
+          @argumentDefinitions(
+            first: { type: "Int", defaultValue: 24 }
+            after: { type: "String", defaultValue: "" }
+          ) {
+          __id
+          artworks: artworks_connection(first: $first, after: $after) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            pageCursors {
+              ...Pagination_pageCursors
+            }
+            ...ArtworkGrid_artworks
+            edges {
+              node {
+                __id
+              }
             }
           }
         }
-      }
-    `,
+      `,
+    },
   },
   graphql`
     query ArtworkFilterArtworkGridQuery(

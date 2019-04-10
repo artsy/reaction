@@ -206,33 +206,35 @@ export class ArtworkSidebarBidAction extends React.Component<
 
 export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   ArtworkSidebarBidAction,
-  graphql`
-    fragment ArtworkSidebarBidAction_artwork on Artwork {
-      myLotStanding(live: true) {
-        most_recent_bid {
-          max_bid {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarBidAction_artwork on Artwork {
+        myLotStanding(live: true) {
+          most_recent_bid {
+            max_bid {
+              cents
+            }
+          }
+        }
+        id
+        sale {
+          id
+          registrationStatus {
+            qualified_for_bidding
+          }
+          is_preview
+          is_open
+          is_live_open
+          is_closed
+          is_registration_closed
+        }
+        sale_artwork {
+          increments {
             cents
+            display
           }
         }
       }
-      id
-      sale {
-        id
-        registrationStatus {
-          qualified_for_bidding
-        }
-        is_preview
-        is_open
-        is_live_open
-        is_closed
-        is_registration_closed
-      }
-      sale_artwork {
-        increments {
-          cents
-          display
-        }
-      }
-    }
-  `
+    `,
+  }
 )
