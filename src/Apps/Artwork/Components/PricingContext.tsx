@@ -32,7 +32,11 @@ function PricingContext({ artwork }: PricingContextProps) {
       </Flex>
       <Spacer mb={[2, 3]} />
       <BarChart
-        minLabel={artwork.pricingContext.bins[0].minPrice}
+        minLabel={
+          artwork.pricingContext.bins[0].minPrice != null
+            ? artwork.pricingContext.bins[0].minPrice
+            : "$0"
+        }
         maxLabel={
           artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
             .maxPrice + "+"

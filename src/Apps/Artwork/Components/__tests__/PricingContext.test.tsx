@@ -12,7 +12,7 @@ const mockPricingContext = {
     {
       maxPrice: "$88",
       maxPriceCents: 8855,
-      minPrice: "$9",
+      minPrice: null,
       minPriceCents: 900,
       numArtworks: 67,
     },
@@ -102,5 +102,11 @@ describe("PricingContext", () => {
     expect(wrapper.text()).not.toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
+  })
+
+  it("displays $0 as the minimum price label is the minimum price is null", async () => {
+    const wrapper = await getWrapper()
+    expect(wrapper.text()).not.toContain("null")
+    expect(wrapper.text()).toContain("$0")
   })
 })
