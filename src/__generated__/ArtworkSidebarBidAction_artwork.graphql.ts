@@ -12,6 +12,7 @@ export type ArtworkSidebarBidAction_artwork = {
         }) | null;
     }> | null;
     readonly id: string;
+    readonly _id: string;
     readonly sale: ({
         readonly id: string;
         readonly registrationStatus: ({
@@ -106,6 +107,13 @@ return {
       ]
     },
     v2,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -208,5 +216,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0159e1eb4d2fdee5ed62f71337414743';
+(node as any).hash = '7362bd5c91f910a9d4d415a72114bbbb';
 export default node;

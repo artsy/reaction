@@ -51,6 +51,7 @@ export class ReviewRoute extends Component<ReviewProps> {
         ? Schema.ActionType.SubmittedOrder
         : Schema.ActionType.SubmittedOffer,
     order_id: props.order.id,
+    product_id: props.order.lineItems.edges[0].node.artwork._id,
   }))
   async onSubmit() {
     try {
@@ -338,6 +339,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
             node {
               artwork {
                 id
+                _id
                 artists {
                   id
                 }

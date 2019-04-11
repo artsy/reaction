@@ -47,6 +47,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
   @track((props: ArtworkSidebarBidActionProps) => ({
     artwork_slug: props.artwork.id,
+    product_id: props.artwork._id,
     auction_slug: props.artwork.sale.id,
     context_page: Schema.PageName.ArtworkPage,
     action_type: Schema.ActionType.ClickedBid,
@@ -217,6 +218,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
           }
         }
         id
+        _id
         sale {
           id
           registrationStatus {
