@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import {
   __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
@@ -94,21 +94,20 @@ describe("buildServerApp", () => {
   it("passes items along in context option", async done => {
     const HomeApp = () => {
       return (
-        <ContextConsumer>
+        <SystemContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
               "foo",
               "mediator",
               "onlyMatchMediaQueries",
               "relayEnvironment",
-              "resolver",
               "routes",
               "user",
             ])
             setImmediate(done)
             return <div />
           }}
-        </ContextConsumer>
+        </SystemContextConsumer>
       )
     }
 

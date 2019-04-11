@@ -2,7 +2,7 @@ import { Box } from "@artsy/palette"
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
@@ -99,7 +99,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     }
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ isEigen }) => (
           <AppContainer>
             <Title>Checkout | Artsy</Title>
@@ -125,7 +125,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
             <ConnectedModalDialog />
           </AppContainer>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

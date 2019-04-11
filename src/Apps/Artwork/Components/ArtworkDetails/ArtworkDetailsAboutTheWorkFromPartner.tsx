@@ -1,6 +1,6 @@
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -121,7 +121,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       partner.type !== "Auction House" && partner.profile
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <StackableBorderBox p={2}>
@@ -185,7 +185,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             </StackableBorderBox>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

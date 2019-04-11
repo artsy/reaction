@@ -1,6 +1,6 @@
 import { Radio } from "@artsy/palette"
 import { FilterState, initialState } from "Apps/Search/FilterState"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
 import { MediumFilter } from "../MediumFilter"
@@ -17,9 +17,9 @@ describe("MediumFilter", () => {
 
   const mediumFilter = (mediumProps = []) => {
     return mount(
-      <ContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator}>
         <MediumFilter filters={filterState} mediums={mediumProps} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 

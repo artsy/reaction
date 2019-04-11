@@ -1,9 +1,9 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
+import { withSystemContext } from "Artsy"
+import { Mediator } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { withContext } from "Artsy/SystemContext"
-import { Mediator } from "Artsy/SystemContext"
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -97,7 +97,7 @@ export class NavigationTabs extends React.Component<Props> {
 }
 
 export const NavigationTabsFragmentContainer = createFragmentContainer(
-  withContext(NavigationTabs),
+  withSystemContext(NavigationTabs),
   {
     artist: graphql`
       fragment NavigationTabs_artist on Artist {

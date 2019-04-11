@@ -1,7 +1,7 @@
 import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
-import { ContextProps } from "Artsy"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
+import { SystemContextProps } from "Artsy"
+import { Mediator, SystemContext } from "Artsy"
 import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -19,11 +19,10 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult
   mediator?: Mediator
   lastChild: boolean
-  user: User
 }
 
 // TODO: This whole component should be refactored to use less `Media` decisions

@@ -2,15 +2,15 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
 import { Box } from "@artsy/palette"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 
 storiesOf("Components/NavBar", module).add("NavBar", () => {
   return (
     <Box width="100%">
-      <ContextProvider>
+      <SystemContextProvider>
         <NavBar />
-      </ContextProvider>
+      </SystemContextProvider>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nibh
         quis ex imperdiet tristique eu non nisl. Nullam dignissim ex vel

@@ -1,8 +1,8 @@
 import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
 import { stringify } from "qs"
@@ -56,7 +56,7 @@ export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ mediator, user }) => {
           return (
             <>
@@ -69,7 +69,7 @@ export class ArtistHeader extends Component<Props> {
             </>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

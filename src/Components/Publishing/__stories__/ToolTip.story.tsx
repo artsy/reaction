@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { LinkWithTooltip } from "Components/Publishing/ToolTip/LinkWithTooltip"
@@ -12,7 +12,7 @@ storiesOf("Publishing/ToolTips/", module)
   .add("Artist", () => {
     return (
       <div style={{ maxWidth: 580, margin: "50px auto 0 auto" }}>
-        <ContextProvider>
+        <SystemContextProvider>
           <TooltipsData article={StandardArticle}>
             <StyledText layout="standard">
               <LinkWithTooltip
@@ -37,14 +37,14 @@ storiesOf("Publishing/ToolTips/", module)
               </LinkWithTooltip>
             </StyledText>
           </TooltipsData>
-        </ContextProvider>
+        </SystemContextProvider>
       </div>
     )
   })
   .add("Gene", () => {
     return (
       <div style={{ maxWidth: 580, margin: "50px auto" }}>
-        <ContextProvider>
+        <SystemContextProvider>
           <TooltipsData article={StandardArticle}>
             <StyledText layout="standard">
               <LinkWithTooltip
@@ -62,7 +62,7 @@ storiesOf("Publishing/ToolTips/", module)
               </LinkWithTooltip>
             </StyledText>
           </TooltipsData>
-        </ContextProvider>
+        </SystemContextProvider>
       </div>
     )
   })

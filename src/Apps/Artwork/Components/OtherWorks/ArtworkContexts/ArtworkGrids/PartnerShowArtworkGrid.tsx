@@ -1,8 +1,8 @@
 import { PartnerShowArtworkGrid_artwork } from "__generated__/PartnerShowArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { Mediator, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -59,7 +59,7 @@ class PartnerShowArtworkGrid extends React.Component<
 }
 
 export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer(
-  withContext(PartnerShowArtworkGrid),
+  withSystemContext(PartnerShowArtworkGrid),
   {
     artwork: graphql`
       fragment PartnerShowArtworkGrid_artwork on Artwork

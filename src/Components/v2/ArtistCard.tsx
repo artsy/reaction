@@ -1,5 +1,5 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"

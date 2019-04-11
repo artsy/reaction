@@ -9,8 +9,8 @@ import {
   TextArea,
 } from "@artsy/palette"
 import { SendFeedbackSearchResultsMutation } from "__generated__/SendFeedbackSearchResultsMutation.graphql"
-import { ContextProps } from "Artsy"
-import { withContext } from "Artsy/SystemContext"
+import { SystemContextProps } from "Artsy"
+import { withSystemContext } from "Artsy"
 import { EMAIL_REGEX } from "Components/Publishing/Constants"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
@@ -31,7 +31,7 @@ interface State extends Inputs {
 
 const logger = createLogger("Apps/Search/Components/SendFeedback.tsx")
 
-class SendFeedbackForm extends React.Component<ContextProps, State> {
+class SendFeedbackForm extends React.Component<SystemContextProps, State> {
   state = {
     submitted: false,
     message: "",
@@ -244,4 +244,4 @@ const LoggedOutInputContainer = styled(Flex)`
   width: 100%;
 `
 
-export const SendFeedback = withContext(SendFeedbackForm)
+export const SendFeedback = withSystemContext(SendFeedbackForm)

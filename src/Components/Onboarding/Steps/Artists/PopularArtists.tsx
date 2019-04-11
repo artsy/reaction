@@ -4,7 +4,7 @@ import {
   PopularArtistsFollowArtistMutationResponse,
 } from "__generated__/PopularArtistsFollowArtistMutation.graphql"
 import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
@@ -210,7 +210,7 @@ const PopularArtistContentContainer = createFragmentContainer(
   }
 )
 
-const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
+const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
   relayEnvironment,
   updateFollowCount,
 }) => {
@@ -241,4 +241,4 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
   )
 }
 
-export const PopularArtists = withContext(PopularArtistsComponent)
+export const PopularArtists = withSystemContext(PopularArtistsComponent)

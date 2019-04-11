@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy"
 import { MockRouter } from "DevTools/MockRouter"
 import { Link } from "found"
 import React from "react"
@@ -22,7 +22,7 @@ const routes = [
     Component: ({ artist, children, ...props }) => {
       return (
         <>
-          <ContextConsumer>
+          <SystemContextConsumer>
             {context => {
               return (
                 <div>
@@ -48,7 +48,7 @@ const routes = [
                 </div>
               )
             }}
-          </ContextConsumer>
+          </SystemContextConsumer>
         </>
       )
     },

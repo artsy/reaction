@@ -1,6 +1,6 @@
 import { Box, Col, Flex, Row } from "@artsy/palette"
 import { RelatedArtistsList_artist } from "__generated__/RelatedArtistsList_artist.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
@@ -85,7 +85,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
 
   render() {
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <>
@@ -139,7 +139,7 @@ class RelatedArtistsList extends Component<ShowProps, LoadingAreaState> {
             </>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

@@ -1,7 +1,7 @@
 // @ts-ignore
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
 import { Provider } from "unstated"
@@ -29,9 +29,9 @@ describe("OverviewRoute", () => {
     ) {
       return mount(
         <Provider inject={[{} as FilterState]}>
-          <ContextProvider user={user}>
+          <SystemContextProvider user={user}>
             <OverviewRoute artist={artistData} />
-          </ContextProvider>
+          </SystemContextProvider>
         </Provider>
       )
     }

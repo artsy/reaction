@@ -1,6 +1,6 @@
 import { color, Flex, Image as BaseImage, Sans } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 import { isFunction } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

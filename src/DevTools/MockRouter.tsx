@@ -9,11 +9,9 @@ import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { getUser } from "Utils/getUser"
-import { MatchingMediaQueries } from "Utils/Responsive"
 
 interface Props {
   routes: RouteConfig[]
-  initialMatchingMediaQueries?: MatchingMediaQueries
   initialRoute?: string
   initialState?: object
   historyOptions?: HistoryOptions
@@ -37,7 +35,6 @@ export class MockRouter extends React.Component<Props> {
       routes,
       initialRoute,
       historyOptions,
-      initialMatchingMediaQueries,
       mockResolvers,
       mockData,
       mockMutationResults,
@@ -47,7 +44,7 @@ export class MockRouter extends React.Component<Props> {
     try {
       const user = getUser(context && context.user)
 
-      const relayNetwork = mockResolvers
+      const relayEnvironment = mockResolvers
         ? createMockNetworkLayer(mockResolvers)
         : mockData || mockMutationResults
         ? createMockNetworkLayer2({ mockData, mockMutationResults })
@@ -63,9 +60,8 @@ export class MockRouter extends React.Component<Props> {
         context: {
           ...context,
           user,
-          initialMatchingMediaQueries,
-          relayNetwork,
-        },
+          relayEnvironment,
+        } as any,
       })
 
       this.setState({

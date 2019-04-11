@@ -1,6 +1,6 @@
 import { EntityHeader, Spacer, Spinner } from "@artsy/palette"
 import { WorksForYouArtistFeed_viewer } from "__generated__/WorksForYouArtistFeed_viewer.graphql"
-import { ContextProps } from "Artsy"
+import { SystemContextProps } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import styled from "styled-components"
@@ -13,7 +13,7 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 
-interface Props extends ContextProps {
+interface Props extends SystemContextProps {
   relay?: RelayPaginationProp
   viewer: WorksForYouArtistFeed_viewer
   artistID: string
