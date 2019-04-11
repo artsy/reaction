@@ -1,3 +1,21 @@
+# v15.14.2 (Thu Apr 11 2019)
+
+#### 🐛  Bug Fix
+
+- send product_id attribute with key transaction events [#2274](https://github.com/artsy/reaction/pull/2274) ([@cavvia](https://github.com/cavvia))
+- [Refactor] Update deprecated Relay `graphql` assignments [#2289](https://github.com/artsy/reaction/pull/2289) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- [Toolchain] Make Storybooks hooks-safe [#2290](https://github.com/artsy/reaction/pull/2290) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.14.1 (Wed Apr 10 2019)
 
 #### 🏠  Internal
