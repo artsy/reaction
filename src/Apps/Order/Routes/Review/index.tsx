@@ -339,6 +339,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
             node {
               artwork {
                 id
+                _id
                 artists {
                   id
                 }

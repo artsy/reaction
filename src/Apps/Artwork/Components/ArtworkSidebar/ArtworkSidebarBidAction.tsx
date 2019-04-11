@@ -218,6 +218,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
           }
         }
         id
+        _id
         sale {
           id
           registrationStatus {

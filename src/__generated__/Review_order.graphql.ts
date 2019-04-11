@@ -111,6 +111,13 @@ return {
                   "selections": [
                     v0,
                     {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "_id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
                       "kind": "LinkedField",
                       "alias": null,
                       "name": "artists",
@@ -186,5 +193,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2e2ebc23046f1f864bbe9e35e1a97a11';
+(node as any).hash = '5dc4214b38c43bf80c508494edab0822';
 export default node;
