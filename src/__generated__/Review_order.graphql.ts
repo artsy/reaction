@@ -18,6 +18,7 @@ export type Review_order = {
             readonly node: ({
                 readonly artwork: ({
                     readonly id: string;
+                    readonly _id: string;
                     readonly artists: ReadonlyArray<({
                         readonly id: string;
                     }) | null> | null;

@@ -12,6 +12,7 @@ export type ArtworkSidebarBidAction_artwork = {
         }) | null;
     }> | null;
     readonly id: string;
+    readonly _id: string;
     readonly sale: ({
         readonly id: string;
         readonly registrationStatus: ({
