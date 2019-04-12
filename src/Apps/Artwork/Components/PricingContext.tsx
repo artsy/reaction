@@ -19,6 +19,7 @@ function PricingContext({ artwork }: PricingContextProps) {
     return null
   }
 
+  // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   return (
     <BorderBox mb={2} flexDirection="column">
       <Sans size="2" weight="medium">
