@@ -19,6 +19,7 @@ function PricingContext({ artwork }: PricingContextProps) {
     return null
   }
 
+  // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   return (
     <BorderBox mb={2} flexDirection="column">
       <Sans size="2" weight="medium">
@@ -32,14 +33,19 @@ function PricingContext({ artwork }: PricingContextProps) {
       </Flex>
       <Spacer mb={[2, 3]} />
       <BarChart
-        minLabel={artwork.pricingContext.bins[0].minPrice}
+        minLabel={
+          artwork.pricingContext.bins[0].minPrice != null
+            ? artwork.pricingContext.bins[0].minPrice
+            : "$0"
+        }
         maxLabel={
           artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
             .maxPrice + "+"
         }
         bars={artwork.pricingContext.bins.map(
           (bin): BarDescriptor => {
-            const title = `${bin.minPrice}–${bin.maxPrice}`
+            const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
+            const title = `${binMinPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
               artwork.priceCents.min >= bin.minPriceCents &&
               artwork.priceCents.min < bin.maxPriceCents
