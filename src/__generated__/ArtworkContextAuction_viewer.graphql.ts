@@ -3,7 +3,6 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graphql";
 import { AuctionArtworkGrid_artwork$ref } from "./AuctionArtworkGrid_artwork.graphql";
-import { AuctionCard_sale$ref } from "./AuctionCard_sale.graphql";
 import { OtherAuctions_sales$ref } from "./OtherAuctions_sales.graphql";
 import { RelatedWorksArtworkGrid_artwork$ref } from "./RelatedWorksArtworkGrid_artwork.graphql";
 declare const _ArtworkContextAuction_viewer$ref: unique symbol;
@@ -17,7 +16,7 @@ export type ArtworkContextAuction_viewer = {
         readonly " $fragmentRefs": AuctionArtworkGrid_artwork$ref & ArtistArtworkGrid_artwork$ref & RelatedWorksArtworkGrid_artwork$ref;
     }) | null;
     readonly sales: ReadonlyArray<({
-        readonly " $fragmentRefs": OtherAuctions_sales$ref & AuctionCard_sale$ref;
+        readonly " $fragmentRefs": OtherAuctions_sales$ref;
     }) | null> | null;
     readonly " $refType": ArtworkContextAuction_viewer$ref;
 };
@@ -167,16 +166,11 @@ return {
           "name": "OtherAuctions_sales",
           "args": null
         },
-        {
-          "kind": "FragmentSpread",
-          "name": "AuctionCard_sale",
-          "args": null
-        },
         v0
       ]
     }
   ]
 };
 })();
-(node as any).hash = 'aa68851639dc332d69bbfde2c4235b3e';
+(node as any).hash = '519285fbe2e2957bc0a1ae4d0f84d6d2';
 export default node;

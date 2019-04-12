@@ -1,14 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { AuctionCard_sale$ref } from "./AuctionCard_sale.graphql";
 import { OtherAuctions_sales$ref } from "./OtherAuctions_sales.graphql";
 export type OtherAuctionsQueryVariables = {
     readonly size: number;
 };
 export type OtherAuctionsQueryResponse = {
     readonly sales: ReadonlyArray<({
-        readonly " $fragmentRefs": OtherAuctions_sales$ref & AuctionCard_sale$ref;
+        readonly " $fragmentRefs": OtherAuctions_sales$ref;
     }) | null> | null;
 };
 export type OtherAuctionsQuery = {
@@ -24,7 +23,6 @@ query OtherAuctionsQuery(
 ) {
   sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
     ...OtherAuctions_sales
-    ...AuctionCard_sale
     __id
   }
 }
@@ -111,7 +109,7 @@ return {
   "operationKind": "query",
   "name": "OtherAuctionsQuery",
   "id": null,
-  "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    ...AuctionCard_sale\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
+  "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,11 +130,6 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "OtherAuctions_sales",
-            "args": null
-          },
-          {
-            "kind": "FragmentSpread",
-            "name": "AuctionCard_sale",
             "args": null
           },
           v2
@@ -291,5 +284,5 @@ return {
   }
 };
 })();
-(node as any).hash = '360595eaf5ef303329afb5201bf9cd46';
+(node as any).hash = '173fef393fa4d681ab8dc155bd465a81';
 export default node;

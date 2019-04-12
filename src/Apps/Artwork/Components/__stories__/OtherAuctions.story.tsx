@@ -17,8 +17,6 @@ const OtherAuctions = ({ size }: { size?: number }) => {
         query OtherAuctionsQuery($size: Int!) {
           sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
             ...OtherAuctions_sales
-            # Relay isn't transitively expanding the child fragments for some reason, so we'll expand manually.
-            ...AuctionCard_sale
           }
         }
       `}

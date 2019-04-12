@@ -6,7 +6,7 @@ import React, { useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { Join, Spacer } from "@artsy/palette"
-import { OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
+import { OtherAuctionsFragmentContainer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
 import { OtherWorksContextProps } from ".."
 import {
   ArtistArtworkGrid,
@@ -64,7 +64,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       return (
         <Join separator={<Spacer my={6} />}>
           <AuctionArtworkGrid artwork={artwork} />
-          <OtherAuctions sales={sales as any} />
+          <OtherAuctions sales={sales} />
         </Join>
       )
     } else {
@@ -72,7 +72,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={artwork} />
           <RelatedWorksArtworkGrid artwork={artwork} />
-          <OtherAuctions sales={sales as any} />
+          <OtherAuctions sales={sales} />
         </Join>
       )
     }
@@ -99,8 +99,6 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       }
       sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
         ...OtherAuctions_sales
-        # Relay isn't transitively expanding the child fragments for some reason, so we'll expand manually.
-        ...AuctionCard_sale
       }
     }
   `
