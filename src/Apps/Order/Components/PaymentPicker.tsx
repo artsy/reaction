@@ -377,7 +377,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
   {
     me: graphql`
       fragment PaymentPicker_me on Me {
-        creditCards {
+        creditCards(first: 100) {
           edges {
             node {
               id
