@@ -1,3 +1,15 @@
+# v15.14.5 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Preserve search term in SearchBar, based on window.location.search [#2294](https://github.com/artsy/reaction/pull/2294) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v15.14.4 (Fri Apr 12 2019)
 
 #### 🐛  Bug Fix
