@@ -66,21 +66,23 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
 
 export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentContainer(
   ArtworkSidebarAuctionPartnerInfo,
-  graphql`
-    fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
-      _id
-      partner {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
         _id
-        name
+        partner {
+          _id
+          name
+        }
+        sale_artwork {
+          estimate
+        }
+        sale {
+          _id
+          is_closed
+          is_with_buyers_premium
+        }
       }
-      sale_artwork {
-        estimate
-      }
-      sale {
-        _id
-        is_closed
-        is_with_buyers_premium
-      }
-    }
-  `
+    `,
+  }
 )

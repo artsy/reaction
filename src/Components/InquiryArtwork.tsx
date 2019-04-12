@@ -55,11 +55,10 @@ export const InquiryArtwork: React.SFC<
   )
 }
 
-export default createFragmentContainer(
-  InquiryArtwork,
-  graphql`
+export default createFragmentContainer(InquiryArtwork, {
+  artwork: graphql`
     fragment InquiryArtwork_artwork on Artwork {
       ...Artwork_artwork
     }
-  `
-)
+  `,
+})

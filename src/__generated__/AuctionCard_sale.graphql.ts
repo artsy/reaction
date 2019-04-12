@@ -9,16 +9,16 @@ export type AuctionCard_sale = {
             readonly url: string | null;
         }) | null;
     }) | null;
-    readonly registrationStatus: ({
-        readonly id: string;
-    }) | null;
-    readonly is_registration_closed: boolean | null;
     readonly end_at: string | null;
     readonly href: string | null;
     readonly id: string;
     readonly is_live_open: boolean | null;
     readonly is_preview: boolean | null;
     readonly live_start_at: string | null;
+    readonly registrationStatus: ({
+        readonly id: string;
+    }) | null;
+    readonly is_registration_closed: boolean | null;
     readonly name: string | null;
     readonly start_at: string | null;
     readonly is_closed: boolean | null;
@@ -60,11 +60,17 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "is_preview",
+      "name": "registrationStatus",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Bidder",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
     },
     {
       "kind": "LinkedField",
@@ -111,20 +117,6 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_registration_closed",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "end_at",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -138,22 +130,30 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "registrationStatus",
-      "storageKey": null,
+      "name": "is_preview",
       "args": null,
-      "concreteType": "Bidder",
-      "plural": false,
-      "selections": [
-        v0,
-        v1
-      ]
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "live_start_at",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "end_at",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_registration_closed",
       "args": null,
       "storageKey": null
     },
@@ -189,5 +189,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'acd7b97ab815faa05e43691d2d10d150';
+(node as any).hash = 'a66a030350626c50cc51ca4dd6c1149c';
 export default node;

@@ -166,9 +166,8 @@ const openDesktopAuth = (mediator, artist) => {
   })
 }
 
-export const ArtistCardFragmentContainer = createFragmentContainer(
-  ArtistCard,
-  graphql`
+export const ArtistCardFragmentContainer = createFragmentContainer(ArtistCard, {
+  artist: graphql`
     fragment ArtistCard_artist on Artist {
       name
       id
@@ -181,8 +180,8 @@ export const ArtistCardFragmentContainer = createFragmentContainer(
       formatted_nationality_and_birthday
       ...FollowArtistButton_artist
     }
-  `
-)
+  `,
+})
 
 // Helpers
 

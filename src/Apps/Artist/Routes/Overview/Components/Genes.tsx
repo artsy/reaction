@@ -46,9 +46,8 @@ export class Genes extends Component<Props> {
   }
 }
 
-export const GenesFragmentContainer = createFragmentContainer(
-  Genes,
-  graphql`
+export const GenesFragmentContainer = createFragmentContainer(Genes, {
+  artist: graphql`
     fragment Genes_artist on Artist {
       related {
         genes {
@@ -61,5 +60,5 @@ export const GenesFragmentContainer = createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

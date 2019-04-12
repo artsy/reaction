@@ -77,29 +77,31 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       )
     }
   },
-  graphql`
-    fragment ArtworkContextAuction_viewer on Viewer
-      @argumentDefinitions(
-        isClosed: { type: "Boolean" }
-        excludeArtworkIDs: { type: "[String!]" }
-        artworkSlug: { type: "String!" }
-      ) {
-      artwork(id: $artworkSlug) {
-        sale {
-          href
-          is_closed
+  {
+    viewer: graphql`
+      fragment ArtworkContextAuction_viewer on Viewer
+        @argumentDefinitions(
+          isClosed: { type: "Boolean" }
+          excludeArtworkIDs: { type: "[String!]" }
+          artworkSlug: { type: "String!" }
+        ) {
+        artwork(id: $artworkSlug) {
+          sale {
+            href
+            is_closed
+          }
+          ...AuctionArtworkGrid_artwork
+            @skip(if: $isClosed)
+            @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+          ...ArtistArtworkGrid_artwork
+            @include(if: $isClosed)
+            @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+          ...RelatedWorksArtworkGrid_artwork
         }
-        ...AuctionArtworkGrid_artwork
-          @skip(if: $isClosed)
-          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-        ...ArtistArtworkGrid_artwork
-          @include(if: $isClosed)
-          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-        ...RelatedWorksArtworkGrid_artwork
+        sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
+          ...OtherAuctions_sales
+        }
       }
-      sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
-        ...OtherAuctions_sales
-      }
-    }
-  `
+    `,
+  }
 )

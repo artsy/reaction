@@ -60,24 +60,26 @@ class PartnerShowArtworkGrid extends React.Component<
 
 export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer(
   withContext(PartnerShowArtworkGrid),
-  graphql`
-    fragment PartnerShowArtworkGrid_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      show {
-        href
-        name
+  {
+    artwork: graphql`
+      fragment PartnerShowArtworkGrid_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        show {
+          href
+          name
 
-        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
-          ...ArtworkGrid_artworks
+          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

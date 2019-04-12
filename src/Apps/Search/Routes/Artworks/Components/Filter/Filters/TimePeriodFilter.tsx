@@ -31,7 +31,7 @@ export class TimePeriodFilter extends React.Component<Props> {
     return (
       <RadioGroup
         deselectable
-        defaultValue={selectedPeriod && selectedPeriod[0]}
+        defaultValue={selectedPeriod}
         onSelect={selectedOption => {
           this.onClick(selectedOption)
         }}

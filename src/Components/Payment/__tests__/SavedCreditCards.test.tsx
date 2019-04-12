@@ -55,13 +55,13 @@ describe("SavedCreditCards", () => {
         .find(CreditCard)
         .first()
         .text()
-    ).toContain("1224  Exp 05/2020")
+    ).toMatchInlineSnapshot(`"visa•••• 1224   Exp 05/20Remove"`)
     expect(
       creditCardsWrapper
         .find(CreditCard)
         .last()
         .text()
-    ).toContain("2345  Exp 07/2024")
+    ).toMatchInlineSnapshot(`"visa•••• 2345   Exp 07/24Remove"`)
   })
 
   it("lets you remove a credit card", () => {

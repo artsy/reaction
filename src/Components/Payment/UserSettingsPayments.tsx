@@ -75,20 +75,22 @@ graphql`
 
 export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
   UserSettingsPayments,
-  graphql`
-    fragment UserSettingsPayments_me on Me {
-      __id
-      id
-      creditCards(first: 100)
-        @connection(key: "UserSettingsPayments_creditCards", filters: []) {
-        edges {
-          node {
-            ...UserSettingsPaymentsCreditCard @relay(mask: false)
+  {
+    me: graphql`
+      fragment UserSettingsPayments_me on Me {
+        __id
+        id
+        creditCards(first: 100)
+          @connection(key: "UserSettingsPayments_creditCards", filters: []) {
+          edges {
+            node {
+              ...UserSettingsPaymentsCreditCard @relay(mask: false)
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const UserSettingsPaymentsQueryRenderer = () => {

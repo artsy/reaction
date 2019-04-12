@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { PopularArtistsContent_popular_artists$ref } from "./PopularArtistsContent_popular_artists.graphql";
+import { PopularArtists_popular_artists$ref } from "./PopularArtists_popular_artists.graphql";
 export type PopularArtistsQueryVariables = {};
 export type PopularArtistsQueryResponse = {
     readonly popular_artists: ({
-        readonly " $fragmentRefs": PopularArtistsContent_popular_artists$ref;
+        readonly " $fragmentRefs": PopularArtists_popular_artists$ref;
     }) | null;
 };
 export type PopularArtistsQuery = {
@@ -18,11 +18,11 @@ export type PopularArtistsQuery = {
 /*
 query PopularArtistsQuery {
   popular_artists(exclude_followed_artists: true) {
-    ...PopularArtistsContent_popular_artists
+    ...PopularArtists_popular_artists
   }
 }
 
-fragment PopularArtistsContent_popular_artists on PopularArtists {
+fragment PopularArtists_popular_artists on PopularArtists {
   artists {
     id
     _id
@@ -51,7 +51,7 @@ return {
   "operationKind": "query",
   "name": "PopularArtistsQuery",
   "id": null,
-  "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtistsContent_popular_artists\n  }\n}\n\nfragment PopularArtistsContent_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
+  "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtists_popular_artists\n  }\n}\n\nfragment PopularArtists_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -71,7 +71,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "PopularArtistsContent_popular_artists",
+            "name": "PopularArtists_popular_artists",
             "args": null
           }
         ]
@@ -179,5 +179,5 @@ return {
   }
 };
 })();
-(node as any).hash = '6d83082e5c6129f5dfcdf118bb6f5462';
+(node as any).hash = '252659854caf4b33586405725754b5a3';
 export default node;

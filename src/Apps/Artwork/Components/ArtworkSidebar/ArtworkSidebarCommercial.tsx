@@ -162,6 +162,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     type: Schema.Type.Button,
     artwork_id: props.artwork._id,
     artwork_slug: props.artwork.id,
+    product_id: props.artwork._id,
   }))
   handleCreateOrder() {
     const { user, mediator } = this.props
@@ -445,24 +446,26 @@ export const ArtworkSidebarCommercial: FC<
 
 export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
   ArtworkSidebarCommercial,
-  graphql`
-    fragment ArtworkSidebarCommercial_artwork on Artwork {
-      id
-      _id
-      is_acquireable
-      is_inquireable
-      is_offerable
-      sale_message
-      shippingInfo
-      shippingOrigin
-      edition_sets {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarCommercial_artwork on Artwork {
         id
-        __id
+        _id
         is_acquireable
+        is_inquireable
         is_offerable
         sale_message
-        ...ArtworkSidebarSizeInfo_piece
+        shippingInfo
+        shippingOrigin
+        edition_sets {
+          id
+          __id
+          is_acquireable
+          is_offerable
+          sale_message
+          ...ArtworkSidebarSizeInfo_piece
+        }
       }
-    }
-  `
+    `,
+  }
 )

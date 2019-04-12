@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SelectedCareerAchievementsArtistPage_artist$ref } from "./SelectedCareerAchievementsArtistPage_artist.graphql";
+import { SelectedCareerAchievements_artist$ref } from "./SelectedCareerAchievements_artist.graphql";
 export type SelectedCareerAchievementsTestQueryVariables = {};
 export type SelectedCareerAchievementsTestQueryResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": SelectedCareerAchievementsArtistPage_artist$ref;
+        readonly " $fragmentRefs": SelectedCareerAchievements_artist$ref;
     }) | null;
 };
 export type SelectedCareerAchievementsTestQuery = {
@@ -18,12 +18,12 @@ export type SelectedCareerAchievementsTestQuery = {
 /*
 query SelectedCareerAchievementsTestQuery {
   artist(id: "pablo-picasso") {
-    ...SelectedCareerAchievementsArtistPage_artist
+    ...SelectedCareerAchievements_artist
     __id
   }
 }
 
-fragment SelectedCareerAchievementsArtistPage_artist on Artist {
+fragment SelectedCareerAchievements_artist on Artist {
   _id
   highlights {
     partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
@@ -80,7 +80,7 @@ return {
   "operationKind": "query",
   "name": "SelectedCareerAchievementsTestQuery",
   "id": null,
-  "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievementsArtistPage_artist\n    __id\n  }\n}\n\nfragment SelectedCareerAchievementsArtistPage_artist on Artist {\n  _id\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievements_artist\n    __id\n  }\n}\n\nfragment SelectedCareerAchievements_artist on Artist {\n  _id\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -100,7 +100,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SelectedCareerAchievementsArtistPage_artist",
+            "name": "SelectedCareerAchievements_artist",
             "args": null
           },
           v1
@@ -360,5 +360,5 @@ return {
   }
 };
 })();
-(node as any).hash = '2bdce98e7676c4939ebabd0d5bbf8f25';
+(node as any).hash = 'f232b89288771bd7ed4089accb0e3388';
 export default node;

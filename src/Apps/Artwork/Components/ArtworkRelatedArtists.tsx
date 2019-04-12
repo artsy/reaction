@@ -69,20 +69,22 @@ export class ArtworkRelatedArtists extends React.Component<
 
 export const ArtworkRelatedArtistsFragmentContainer = createFragmentContainer(
   ArtworkRelatedArtists,
-  graphql`
-    fragment ArtworkRelatedArtists_artwork on Artwork {
-      artist {
-        href
-        related {
-          artists(kind: MAIN, first: 4) {
-            edges {
-              node {
-                ...ArtistCard_artist
+  {
+    artwork: graphql`
+      fragment ArtworkRelatedArtists_artwork on Artwork {
+        artist {
+          href
+          related {
+            artists(kind: MAIN, first: 4) {
+              edges {
+                node {
+                  ...ArtistCard_artist
+                }
               }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

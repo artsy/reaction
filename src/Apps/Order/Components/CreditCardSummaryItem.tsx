@@ -22,14 +22,16 @@ const CreditCardSummaryItem = ({
 
 export const CreditCardSummaryItemFragmentContainer = createFragmentContainer(
   CreditCardSummaryItem,
-  graphql`
-    fragment CreditCardSummaryItem_order on Order {
-      creditCard {
-        brand
-        last_digits
-        expiration_year
-        expiration_month
+  {
+    order: graphql`
+      fragment CreditCardSummaryItem_order on Order {
+        creditCard {
+          brand
+          last_digits
+          expiration_year
+          expiration_month
+        }
       }
-    }
-  `
+    `,
+  }
 )

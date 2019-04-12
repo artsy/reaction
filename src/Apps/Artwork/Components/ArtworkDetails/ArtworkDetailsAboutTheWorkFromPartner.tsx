@@ -192,31 +192,33 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
 
 export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFragmentContainer(
   ArtworkDetailsAboutTheWorkFromPartner,
-  graphql`
-    fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-      additional_information(format: HTML)
-      sale {
-        is_benefit
-      }
-      partner {
-        _id
-        id
-        type
-        href
-        name
-        initials
-        locations {
-          city
+  {
+    artwork: graphql`
+      fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
+        additional_information(format: HTML)
+        sale {
+          is_benefit
         }
-        is_default_profile_public
-        profile {
-          ...FollowProfileButton_profile
+        partner {
+          _id
           id
-          icon {
-            url(version: "square140")
+          type
+          href
+          name
+          initials
+          locations {
+            city
+          }
+          is_default_profile_public
+          profile {
+            ...FollowProfileButton_profile
+            id
+            icon {
+              url(version: "square140")
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

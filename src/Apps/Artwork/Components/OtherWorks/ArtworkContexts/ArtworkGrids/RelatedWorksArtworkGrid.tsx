@@ -123,28 +123,30 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
   RelatedWorksArtworkGridProps
 >(
   withContext(RelatedWorksArtworkGrid),
-  graphql`
-    fragment RelatedWorksArtworkGrid_artwork on Artwork
-      @argumentDefinitions(layerId: { type: "String" }) {
-      layers {
-        name
-        id
-      }
-      layer(id: $layerId) {
-        name
-        artworksConnection(first: 8) {
-          ...ArtworkGrid_artworks
+  {
+    artwork: graphql`
+      fragment RelatedWorksArtworkGrid_artwork on Artwork
+        @argumentDefinitions(layerId: { type: "String" }) {
+        layers {
+          name
+          id
+        }
+        layer(id: $layerId) {
+          name
+          artworksConnection(first: 8) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `,
+    `,
+  },
   graphql`
     query RelatedWorksArtworkGridRefetchQuery(
       $artworkSlug: String!
