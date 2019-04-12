@@ -1,3 +1,15 @@
+# v15.14.4 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Show 0 instead of null for lowest bucket [#2287](https://github.com/artsy/reaction/pull/2287) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v15.14.3 (Fri Apr 12 2019)
 
 #### 🐛  Bug Fix
