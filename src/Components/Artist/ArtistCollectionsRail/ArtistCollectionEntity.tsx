@@ -50,7 +50,15 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
               bgImages.map((url, i) => {
                 const alt = `${hits[i].artist.name}, ${hits[i].title}`
                 return (
-                  <ArtworkImage key={i} src={url} width={imageSize} alt={alt} />
+                  <SingleImgContainer key={i}>
+                    <ImgOverlay width={imageSize} />
+                    <ArtworkImage
+                      key={i}
+                      src={url}
+                      width={imageSize}
+                      alt={alt}
+                    />
+                  </SingleImgContainer>
                 )
               })
             ) : (
@@ -80,6 +88,7 @@ const CollectionTitle = styled(Serif)`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &:hover {
     text-decoration: none;
@@ -89,6 +98,25 @@ export const StyledLink = styled(Link)`
   }
 `
 
+const SingleImgContainer = styled(Box)`
+  position: relative;
+  margin-right: 2px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`
+
+const ImgOverlay = styled(Box)<{ width: number }>`
+  height: 125px;
+  background-color: ${color("black30")};
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
+`
+
 export const ArtworkImage = styled.img<{ width: number }>`
   width: ${({ width }) => width}px;
   height: 125px;
@@ -96,11 +124,6 @@ export const ArtworkImage = styled.img<{ width: number }>`
   object-fit: cover;
   object-position: center;
   opacity: 0.9;
-  padding-right: 2px;
-
-  &:last-child {
-    padding-right: 0;
-  }
 `
 
 const ImgWrapper = styled(Flex)`

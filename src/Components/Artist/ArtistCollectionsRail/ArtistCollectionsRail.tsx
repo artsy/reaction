@@ -48,7 +48,7 @@ export class ArtistCollectionsRail extends React.Component<
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
-            Browse by series
+            Browse by iconic collections
           </Sans>
           <Spacer pb={1} />
 
