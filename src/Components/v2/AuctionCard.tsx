@@ -16,20 +16,21 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
-const zone = timeIn => {
-  const time = moment(timeIn, "YYYY-MM-DD").tz("America/New_York")
-  const now = moment()
-  if (time.diff(now, "days") >= 1) {
+export const relativeTime = (timeIn, now) => {
+  const time = moment(timeIn, "YYYY-MM-DD")
+  const abs = Math.abs
+  if (abs(time.diff(now, "days")) >= 1) {
     return `${time.diff(now, "days")}d`
-  } else if (time.diff(now, "hours") >= 1) {
+  } else if (abs(time.diff(now, "hours")) >= 1) {
     return `${time.diff(now, "hours")}h`
-  } else if (time.diff(now, "minutes") >= 1) {
+  } else if (abs(time.diff(now, "minutes")) >= 1) {
     return `${time.diff(now, "minutes")}m`
   }
   return `${time.diff(now, "seconds")}s`
 }
 
-const upcomingLabel = sale => {
+// now defaults to moment() but can be overriden for unit testing
+export const upcomingLabel = (sale, now = moment()) => {
   const {
     start_at: startAt,
     end_at: endAt,
@@ -41,22 +42,23 @@ const upcomingLabel = sale => {
     is_registration_closed: isRegistrationClosed,
   } = sale
   const isRegistered = !!registration_status
+  const isLAI = !!liveStartAt
   if (isPreview) {
-    return `Opens in ${zone(startAt)}`
+    return `Opens in ${relativeTime(startAt, now)}`
   } else if (isClosed) {
     return "Auction closed"
-  } else if (liveStartAt && !isLiveOpen) {
-    if (isRegistered || isRegistrationClosed) {
-      return `Live in ${zone(liveStartAt)}`
+  } else if (isLAI) {
+    if (isLiveOpen) {
+      return "In progress"
+    } else if (isRegistered || isRegistrationClosed) {
+      return `Live in ${relativeTime(liveStartAt, now)}`
     } else {
       return `Register by ${moment(liveStartAt, "YYYY-MM-DD")
         .tz("America/New_York")
         .format("MMM D")}`
     }
-  } else if (liveStartAt) {
-    return "In progress"
   } else {
-    return `Ends in ${zone(endAt)}`
+    return `Ends in ${relativeTime(endAt, now)}`
   }
 }
 
