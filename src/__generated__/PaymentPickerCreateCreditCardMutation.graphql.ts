@@ -6,10 +6,10 @@ export type CreditCardInput = {
     readonly oneTimeUse?: boolean | null;
     readonly clientMutationId?: string | null;
 };
-export type PaymentRouteCreateCreditCardMutationVariables = {
+export type PaymentPickerCreateCreditCardMutationVariables = {
     readonly input: CreditCardInput;
 };
-export type PaymentRouteCreateCreditCardMutationResponse = {
+export type PaymentPickerCreateCreditCardMutationResponse = {
     readonly createCreditCard: ({
         readonly creditCardOrError: ({
             readonly creditCard?: ({
@@ -23,15 +23,15 @@ export type PaymentRouteCreateCreditCardMutationResponse = {
         }) | null;
     }) | null;
 };
-export type PaymentRouteCreateCreditCardMutation = {
-    readonly response: PaymentRouteCreateCreditCardMutationResponse;
-    readonly variables: PaymentRouteCreateCreditCardMutationVariables;
+export type PaymentPickerCreateCreditCardMutation = {
+    readonly response: PaymentPickerCreateCreditCardMutationResponse;
+    readonly variables: PaymentPickerCreateCreditCardMutationVariables;
 };
 
 
 
 /*
-mutation PaymentRouteCreateCreditCardMutation(
+mutation PaymentPickerCreateCreditCardMutation(
   $input: CreditCardInput!
 ) {
   createCreditCard(input: $input) {
@@ -144,13 +144,13 @@ v3 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "PaymentRouteCreateCreditCardMutation",
+  "name": "PaymentPickerCreateCreditCardMutation",
   "id": null,
-  "text": "mutation PaymentRouteCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentPickerCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "PaymentRouteCreateCreditCardMutation",
+    "name": "PaymentPickerCreateCreditCardMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -183,7 +183,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "PaymentRouteCreateCreditCardMutation",
+    "name": "PaymentPickerCreateCreditCardMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -221,5 +221,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'dc0ed2493175f2ca5eff958502ae0123';
+(node as any).hash = 'c2ff00b9b91800025e48a10f40bb8b54';
 export default node;
