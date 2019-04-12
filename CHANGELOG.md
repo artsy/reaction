@@ -1,3 +1,15 @@
+# v15.14.3 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Add option to save payment during BNMO orders [#2275](https://github.com/artsy/reaction/pull/2275) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v15.14.2 (Thu Apr 11 2019)
 
 #### 🐛  Bug Fix
