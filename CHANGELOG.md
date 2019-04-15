@@ -1,3 +1,15 @@
+# v15.14.6 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- [PATCH] fix qa items [#2292](https://github.com/artsy/reaction/pull/2292) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v15.14.5 (Fri Apr 12 2019)
 
 #### 🐛  Bug Fix
