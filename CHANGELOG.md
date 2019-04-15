@@ -1,3 +1,15 @@
+# v15.14.8 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes OtherAuction component copy [#2282](https://github.com/artsy/reaction/pull/2282) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### Authors: 1
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+
+---
+
 # v15.14.7 (Mon Apr 15 2019)
 
 
