@@ -16,32 +16,49 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
-const zone = time => {
-  return moment(time, "YYYY-MM-DD").tz("America/New_York")
+export const relativeTime = (timeIn, now) => {
+  const time = moment(timeIn, "YYYY-MM-DD")
+  const abs = Math.abs
+  if (abs(time.diff(now, "days")) >= 1) {
+    return `${time.diff(now, "days")}d`
+  } else if (abs(time.diff(now, "hours")) >= 1) {
+    return `${time.diff(now, "hours")}h`
+  } else if (abs(time.diff(now, "minutes")) >= 1) {
+    return `${time.diff(now, "minutes")}m`
+  }
+  return `${time.diff(now, "seconds")}s`
 }
 
-const upcomingLabel = (
-  startAt,
-  endAt,
-  liveStartAt,
-  isClosed,
-  isLiveOpen,
-  isPreview
-) => {
-  const timeFormat = "MMM D, h:mm A z"
-
+// now defaults to moment() but can be overriden for unit testing
+export const upcomingLabel = (sale, now = moment()) => {
+  const {
+    start_at: startAt,
+    end_at: endAt,
+    live_start_at: liveStartAt,
+    is_closed: isClosed,
+    is_live_open: isLiveOpen,
+    is_preview: isPreview,
+    registration_status,
+    is_registration_closed: isRegistrationClosed,
+  } = sale
+  const isRegistered = !!registration_status
+  const isLAI = !!liveStartAt
   if (isPreview) {
-    return `Auction opens ${zone(startAt).format(timeFormat)}`
+    return `Opens in ${relativeTime(startAt, now)}`
   } else if (isClosed) {
     return "Auction closed"
-  } else if (liveStartAt && !isLiveOpen) {
-    return `Auction opens for live bidding ${zone(liveStartAt).format(
-      timeFormat
-    )}`
-  } else if (liveStartAt) {
-    return "Auction open for live bidding"
+  } else if (isLAI) {
+    if (isLiveOpen) {
+      return "In progress"
+    } else if (isRegistered || isRegistrationClosed) {
+      return `Live in ${relativeTime(liveStartAt, now)}`
+    } else {
+      return `Register by ${moment(liveStartAt, "YYYY-MM-DD")
+        .tz("America/New_York")
+        .format("MMM D")}`
+    }
   } else {
-    return `Auction closes ${zone(endAt).format(timeFormat)}`
+    return `Ends in ${relativeTime(endAt, now)}`
   }
 }
 
@@ -116,14 +133,7 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
 
     if (!sale) return
 
-    const statusLabel = upcomingLabel(
-      sale.start_at,
-      sale.end_at,
-      sale.live_start_at,
-      sale.is_closed,
-      sale.is_live_open,
-      sale.is_preview
-    )
+    const statusLabel = upcomingLabel(sale)
 
     const imageURL = get(sale, s => s.cover_image.cropped.url)
     const partnerName = get(sale, s => s.partner.name)
@@ -151,6 +161,10 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
         is_live_open
         is_preview
         live_start_at
+        registrationStatus {
+          id
+        }
+        is_registration_closed
         name
         start_at
         is_closed
