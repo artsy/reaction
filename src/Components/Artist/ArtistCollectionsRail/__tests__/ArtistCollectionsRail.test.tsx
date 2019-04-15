@@ -25,7 +25,7 @@ describe("CollectionsRail", () => {
 
   it("Renders expected fields", () => {
     const component = getWrapper()
-    expect(component.text()).toMatch("Browse by series")
+    expect(component.text()).toMatch("Browse by iconic collections")
     expect(component.find(ArtistCollectionEntity).length).toBe(8)
     expect(component.text()).toMatch("Flags")
     expect(component.text()).toMatch("From $1,000")
