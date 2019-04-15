@@ -28,14 +28,14 @@ function PricingContext({ artwork }: PricingContextProps) {
     heightCm,
     artistId
   ) => {
-    const url = createCollectUrl(
+    const url = createCollectUrl({
       minCents,
       maxCents,
       category,
       widthCm,
       heightCm,
-      artistId
-    )
+      artistId,
+    })
 
     if (typeof window !== "undefined") {
       return () => {
