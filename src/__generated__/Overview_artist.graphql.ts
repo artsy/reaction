@@ -5,8 +5,8 @@ import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
 import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
 import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
-import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
-import { SelectedCareerAchievementsArtistPage_artist$ref } from "./SelectedCareerAchievementsArtistPage_artist.graphql";
+import { MarketInsights_artist$ref } from "./MarketInsights_artist.graphql";
+import { SelectedCareerAchievements_artist$ref } from "./SelectedCareerAchievements_artist.graphql";
 declare const _Overview_artist$ref: unique symbol;
 export type Overview_artist$ref = typeof _Overview_artist$ref;
 export type Overview_artist = {
@@ -55,7 +55,7 @@ export type Overview_artist = {
     readonly insights: ReadonlyArray<({
         readonly type: string | null;
     }) | null> | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & SelectedCareerAchievementsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsights_artist$ref & SelectedCareerAchievements_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
 
@@ -168,12 +168,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "MarketInsightsArtistPage_artist",
+      "name": "MarketInsights_artist",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "SelectedCareerAchievementsArtistPage_artist",
+      "name": "SelectedCareerAchievements_artist",
       "args": null
     },
     {
@@ -540,5 +540,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b8921a21fb76803e35b0b946d2c83881';
+(node as any).hash = '339edc6a36659de47dce68de5dc5d6d8';
 export default node;

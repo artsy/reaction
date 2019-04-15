@@ -130,9 +130,8 @@ export const FillwidthItem = styled(FillwidthItemContainer).attrs<
   }
 `
 
-export default createFragmentContainer(
-  FillwidthItem,
-  graphql`
+export default createFragmentContainer(FillwidthItem, {
+  artwork: graphql`
     fragment FillwidthItem_artwork on Artwork {
       image {
         placeholder
@@ -143,5 +142,5 @@ export default createFragmentContainer(
       ...Metadata_artwork
       ...Save_artwork
     }
-  `
-)
+  `,
+})

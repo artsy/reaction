@@ -43,21 +43,23 @@ export const ArtworkDetailsArticles: React.SFC<
 
 export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
   ArtworkDetailsArticles,
-  graphql`
-    fragment ArtworkDetailsArticles_artwork on Artwork {
-      articles(size: 10) {
-        author {
-          name
-        }
-        href
-        published_at(format: "MMM Do, YYYY")
-        thumbnail_image {
-          resized(width: 300) {
-            url
+  {
+    artwork: graphql`
+      fragment ArtworkDetailsArticles_artwork on Artwork {
+        articles(size: 10) {
+          author {
+            name
           }
+          href
+          published_at(format: "MMM Do, YYYY")
+          thumbnail_image {
+            resized(width: 300) {
+              url
+            }
+          }
+          thumbnail_title
         }
-        thumbnail_title
       }
-    }
-  `
+    `,
+  }
 )

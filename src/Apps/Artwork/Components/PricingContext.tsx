@@ -19,6 +19,11 @@ function PricingContext({ artwork }: PricingContextProps) {
     return null
   }
 
+  const priceCents = artwork.priceCents.max
+    ? (artwork.priceCents.min + artwork.priceCents.max) / 2
+    : artwork.priceCents.min
+
+  // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   return (
     <BorderBox mb={2} flexDirection="column">
       <Sans size="2" weight="medium">
@@ -32,23 +37,27 @@ function PricingContext({ artwork }: PricingContextProps) {
       </Flex>
       <Spacer mb={[2, 3]} />
       <BarChart
-        minLabel={artwork.pricingContext.bins[0].minPrice}
+        minLabel={
+          artwork.pricingContext.bins[0].minPrice != null
+            ? artwork.pricingContext.bins[0].minPrice
+            : "$0"
+        }
         maxLabel={
           artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
             .maxPrice + "+"
         }
         bars={artwork.pricingContext.bins.map(
           (bin): BarDescriptor => {
-            const title = `${bin.minPrice}–${bin.maxPrice}`
+            const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
+            const title = `${binMinPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
-              artwork.priceCents.min >= bin.minPriceCents &&
-              artwork.priceCents.min < bin.maxPriceCents
+              priceCents >= bin.minPriceCents && priceCents < bin.maxPriceCents
 
             const binValue =
               artworkFallsInThisBin && bin.numArtworks === 0
                 ? 1
                 : bin.numArtworks
-            const labelSuffix = binValue === 1 ? " works" : " work"
+            const labelSuffix = binValue === 1 ? " work" : " works"
 
             return {
               value: binValue,
@@ -59,7 +68,7 @@ function PricingContext({ artwork }: PricingContextProps) {
               highlightLabel: artworkFallsInThisBin
                 ? {
                     title,
-                    description: binValue + labelSuffix,
+                    description: "This work",
                   }
                 : undefined,
             }
@@ -72,21 +81,24 @@ function PricingContext({ artwork }: PricingContextProps) {
 
 export const PricingContextFragmentContainer = createFragmentContainer(
   PricingContext,
-  graphql`
-    fragment PricingContext_artwork on Artwork {
-      priceCents {
-        min
-      }
-      pricingContext @include(if: $enablePricingContext) {
-        filterDescription
-        bins {
-          maxPrice
-          maxPriceCents
-          minPrice
-          minPriceCents
-          numArtworks
+  {
+    artwork: graphql`
+      fragment PricingContext_artwork on Artwork {
+        priceCents {
+          min
+          max
+        }
+        pricingContext @include(if: $enablePricingContext) {
+          filterDescription
+          bins {
+            maxPrice
+            maxPriceCents
+            minPrice
+            minPriceCents
+            numArtworks
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

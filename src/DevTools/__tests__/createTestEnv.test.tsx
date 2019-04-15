@@ -142,14 +142,16 @@ const Component = createFragmentContainer(
       </button>
     </div>
   ),
-  graphql`
-    fragment createTestEnv_artwork on Artwork {
-      title
-      artist {
-        name
+  {
+    artwork: graphql`
+      fragment createTestEnv_artwork on Artwork {
+        title
+        artist {
+          name
+        }
       }
-    }
-  `
+    `,
+  }
 )
 
 describe("test envs", () => {

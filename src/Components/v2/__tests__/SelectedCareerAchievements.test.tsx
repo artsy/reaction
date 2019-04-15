@@ -16,7 +16,7 @@ describe("SelectedCareerAchievements", () => {
       query: graphql`
         query SelectedCareerAchievementsTestQuery {
           artist(id: "pablo-picasso") {
-            ...SelectedCareerAchievementsArtistPage_artist
+            ...SelectedCareerAchievements_artist
           }
         }
       `,

@@ -6,6 +6,7 @@ export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
     readonly priceCents: ({
         readonly min: number | null;
+        readonly max: number | null;
     }) | null;
     readonly pricingContext?: ({
         readonly filterDescription: string;
@@ -48,6 +49,13 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "min",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "max",
           "args": null,
           "storageKey": null
         }
@@ -133,5 +141,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'd7213f5cc029ab1b0215c586f255f439';
+(node as any).hash = '7101905288cecfbd7f4432d77a507e22';
 export default node;

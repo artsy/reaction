@@ -75,21 +75,23 @@ const FollowArtistPopover: SFC<Props> = props => {
 
 export const FollowArtistPopoverFragmentContainer = createFragmentContainer(
   FollowArtistPopover,
-  graphql`
-    fragment FollowArtistPopover_suggested on Artist {
-      related {
-        suggested(first: 3, exclude_followed_artists: true) {
-          edges {
-            node {
-              __id
-              _id
-              ...FollowArtistPopoverRow_artist
+  {
+    suggested: graphql`
+      fragment FollowArtistPopover_suggested on Artist {
+        related {
+          suggested(first: 3, exclude_followed_artists: true) {
+            edges {
+              node {
+                __id
+                _id
+                ...FollowArtistPopoverRow_artist
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const FollowArtistPopoverQueryRenderer = ({

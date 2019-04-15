@@ -214,9 +214,8 @@ const InnerContainer = styled(Flex)`
   width: 100%;
 `
 
-export default createFragmentContainer(
-  ArtworkGrid,
-  graphql`
+export default createFragmentContainer(ArtworkGrid, {
+  artworks: graphql`
     fragment ArtworkGrid_artworks on ArtworkConnection {
       edges {
         node {
@@ -230,8 +229,8 @@ export default createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})
 
 /**
  * Performs a shallow equal of artworks.

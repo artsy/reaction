@@ -12,7 +12,7 @@ const mockPricingContext = {
     {
       maxPrice: "$88",
       maxPriceCents: 8855,
-      minPrice: "$9",
+      minPrice: null,
       minPriceCents: 900,
       numArtworks: 67,
     },
@@ -21,14 +21,14 @@ const mockPricingContext = {
       maxPriceCents: 16810,
       minPrice: "$88",
       minPriceCents: 8855,
-      numArtworks: 57,
+      numArtworks: 1,
     },
     {
       maxPrice: "$247",
       maxPriceCents: 24765,
       minPrice: "$168",
       minPriceCents: 16810,
-      numArtworks: 45,
+      numArtworks: 0,
     },
     {
       maxPrice: "$327",
@@ -45,21 +45,24 @@ describe("PricingContext", () => {
   beforeEach(() => {
     enablePricingContext = true
   })
-  function getWrapper(pricingContext: any = mockPricingContext) {
+  function getWrapper(
+    mockData: any = {
+      artwork: {
+        pricingContext: mockPricingContext,
+        priceCents: {
+          min: 23455,
+          max: null,
+        },
+      },
+    }
+  ) {
     return renderRelayTree({
       Component: (props: any) => (
         <div>
           <PricingContextFragmentContainer {...props} />
         </div>
       ),
-      mockData: {
-        artwork: {
-          pricingContext,
-          priceCents: {
-            min: 23455,
-          },
-        },
-      },
+      mockData,
       query: graphql`
         query PricingContextTestQuery($enablePricingContext: Boolean!) {
           artwork(id: "unused") {
@@ -72,18 +75,29 @@ describe("PricingContext", () => {
       },
     })
   }
+
   it("renders if there is data present", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.text()).toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+
   it("renders as null if no data present", async () => {
-    const wrapper = await getWrapper(null)
+    const wrapper = await getWrapper({
+      artwork: {
+        priceCents: {
+          min: 12345,
+          max: null,
+        },
+        pricingContext: null,
+      },
+    })
     expect(wrapper.text()).not.toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+
   it("renders pricing context question mark icon and informational modal", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.find(QuestionCircleIcon).length).toEqual(1)
@@ -101,6 +115,52 @@ describe("PricingContext", () => {
     const wrapper = await getWrapper()
     expect(wrapper.text()).not.toContain(
       "Price ranges of small mocks by David Sheldrick"
+    )
+  })
+
+  it("displays $0 as the minimum price label if the minimum price is null", async () => {
+    const wrapper = await getWrapper()
+    expect(wrapper.text()).not.toContain("null")
+    expect(wrapper.text()).toContain("$0")
+  })
+
+  it("displays $0 as the minimum price label if the minimum price is null", async () => {
+    const wrapper = await getWrapper()
+    expect(wrapper.text()).not.toContain("null")
+    expect(wrapper.text()).toContain("$0")
+  })
+
+  it("displays '1 work' not '0 works' in highlight label if there are zero artworks for the highlighted bin", async () => {
+    const wrapper = await getWrapper()
+    const highlightedBar = wrapper.find(".Bar__BarBox-vx0va3-0").at(2)
+
+    highlightedBar.simulate("mouseenter")
+    expect(wrapper.text()).not.toContain("0 works")
+    expect(wrapper.text()).toContain("1 work")
+  })
+
+  it("displays 'work' singular not 'works' plural in label when there is only 1 artwork in a bin", async () => {
+    const wrapper = await getWrapper()
+    const secondBar = wrapper.find(".Bar__BarBox-vx0va3-0").at(1)
+
+    secondBar.simulate("mouseenter")
+    expect(wrapper.text()).not.toContain("1 works")
+    expect(wrapper.text()).toContain("1 work")
+  })
+
+  it("uses the mean of min+max when list price is a range", async () => {
+    const wrapper = await getWrapper({
+      artwork: {
+        priceCents: {
+          min: 15500,
+          max: 25500,
+        },
+        pricingContext: mockPricingContext,
+      },
+    })
+
+    expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
+      `"$168–$247This work"`
     )
   })
 })

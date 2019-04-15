@@ -13,9 +13,11 @@ export const ArticlesRoute: React.SFC<ArticlesRouteProps> = props => {
 
 export const ArticlesRouteFragmentContainer = createFragmentContainer(
   ArticlesRoute,
-  graphql`
-    fragment Articles_artist on Artist {
-      ...ArtistArticles_artist
-    }
-  `
+  {
+    artist: graphql`
+      fragment Articles_artist on Artist {
+        ...ArtistArticles_artist
+      }
+    `,
+  }
 )

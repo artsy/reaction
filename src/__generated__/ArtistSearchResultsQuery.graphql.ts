@@ -1,13 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistSearchResultsContent_viewer$ref } from "./ArtistSearchResultsContent_viewer.graphql";
+import { ArtistSearchResults_viewer$ref } from "./ArtistSearchResults_viewer.graphql";
 export type ArtistSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type ArtistSearchResultsQueryResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": ArtistSearchResultsContent_viewer$ref;
+        readonly " $fragmentRefs": ArtistSearchResults_viewer$ref;
     }) | null;
 };
 export type ArtistSearchResultsQuery = {
@@ -22,11 +22,11 @@ query ArtistSearchResultsQuery(
   $term: String!
 ) {
   viewer {
-    ...ArtistSearchResultsContent_viewer
+    ...ArtistSearchResults_viewer
   }
 }
 
-fragment ArtistSearchResultsContent_viewer on Viewer {
+fragment ArtistSearchResults_viewer on Viewer {
   match_artist(term: $term) {
     id
     _id
@@ -55,7 +55,7 @@ return {
   "operationKind": "query",
   "name": "ArtistSearchResultsQuery",
   "id": null,
-  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResultsContent_viewer\n  }\n}\n\nfragment ArtistSearchResultsContent_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
+  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -75,7 +75,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtistSearchResultsContent_viewer",
+            "name": "ArtistSearchResults_viewer",
             "args": null
           }
         ]
@@ -199,5 +199,5 @@ return {
   }
 };
 })();
-(node as any).hash = '98c64d4adbf4a0b483eb75d8eb196853';
+(node as any).hash = 'f358ad4e9edc01efcf24dd5f0b52a026';
 export default node;

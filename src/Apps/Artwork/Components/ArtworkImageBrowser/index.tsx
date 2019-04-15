@@ -45,9 +45,8 @@ export class ArtworkImageBrowserContainer extends React.Component<
 
 export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
   ImageBrowserProps
->(
-  ArtworkImageBrowserContainer,
-  graphql`
+>(ArtworkImageBrowserContainer, {
+  artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
       title
       image_alt: to_s
@@ -85,8 +84,8 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
         }
       }
     }
-  `
-)
+  `,
+})
 
 export const ArtworkImageBrowserQueryRenderer = ({
   artworkID,

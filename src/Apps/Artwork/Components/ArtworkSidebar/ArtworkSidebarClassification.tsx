@@ -70,13 +70,15 @@ export class ArtworkSidebarClassification extends React.Component<
 
 export const ArtworkSidebarClassificationFragmentContainer = createFragmentContainer(
   ArtworkSidebarClassification,
-  graphql`
-    fragment ArtworkSidebarClassification_artwork on Artwork {
-      attribution_class {
-        short_description
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarClassification_artwork on Artwork {
+        attribution_class {
+          short_description
+        }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const ClassificationLink = styled.span`

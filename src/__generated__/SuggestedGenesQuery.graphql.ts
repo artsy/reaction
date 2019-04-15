@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SuggestedGenesContent_suggested_genes$ref } from "./SuggestedGenesContent_suggested_genes.graphql";
+import { SuggestedGenes_suggested_genes$ref } from "./SuggestedGenes_suggested_genes.graphql";
 export type SuggestedGenesQueryVariables = {};
 export type SuggestedGenesQueryResponse = {
     readonly suggested_genes: ReadonlyArray<({
-        readonly " $fragmentRefs": SuggestedGenesContent_suggested_genes$ref;
+        readonly " $fragmentRefs": SuggestedGenes_suggested_genes$ref;
     }) | null> | null;
 };
 export type SuggestedGenesQuery = {
@@ -18,12 +18,12 @@ export type SuggestedGenesQuery = {
 /*
 query SuggestedGenesQuery {
   suggested_genes {
-    ...SuggestedGenesContent_suggested_genes
+    ...SuggestedGenes_suggested_genes
     __id
   }
 }
 
-fragment SuggestedGenesContent_suggested_genes on Gene {
+fragment SuggestedGenes_suggested_genes on Gene {
   id
   _id
   name
@@ -49,7 +49,7 @@ return {
   "operationKind": "query",
   "name": "SuggestedGenesQuery",
   "id": null,
-  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenesContent_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenesContent_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  __id\n}\n",
+  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -69,7 +69,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "SuggestedGenesContent_suggested_genes",
+            "name": "SuggestedGenes_suggested_genes",
             "args": null
           },
           v0
@@ -161,5 +161,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a9738ea08755f945124085b68763957f';
+(node as any).hash = '42530c5bcd10f72dbb90c9e06541717d';
 export default node;

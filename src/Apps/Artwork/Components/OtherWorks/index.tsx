@@ -57,16 +57,18 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       }
     }
   },
-  graphql`
-    fragment OtherWorks_artwork on Artwork {
-      id
-      _id
-      sale {
-        is_closed
+  {
+    artwork: graphql`
+      fragment OtherWorks_artwork on Artwork {
+        id
+        _id
+        sale {
+          is_closed
+        }
+        context {
+          __typename
+        }
       }
-      context {
-        __typename
-      }
-    }
-  `
+    `,
+  }
 )

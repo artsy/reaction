@@ -59,22 +59,24 @@ class AuctionArtworkGrid extends React.Component<AuctionArtworkGridProps> {
 
 export const AuctionArtworkGridFragmentContainer = createFragmentContainer(
   withContext(AuctionArtworkGrid),
-  graphql`
-    fragment AuctionArtworkGrid_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      sale {
-        href
-        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
-          ...ArtworkGrid_artworks
+  {
+    artwork: graphql`
+      fragment AuctionArtworkGrid_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        sale {
+          href
+          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

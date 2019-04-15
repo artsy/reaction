@@ -119,35 +119,37 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
 
 export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentContainer(
   ArtworkSidebarCurrentBidInfo,
-  graphql`
-    fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
-      _id
-      sale {
-        is_closed
-        is_live_open
-      }
-      sale_artwork {
-        is_with_reserve
-        reserve_message
-        reserve_status
-        current_bid {
-          display
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
+        _id
+        sale {
+          is_closed
+          is_live_open
         }
-        counts {
-          bidder_positions
-        }
-      }
-      myLotStanding(live: true) {
-        active_bid {
-          is_winning
-        }
-        most_recent_bid {
-          is_winning
-          max_bid {
+        sale_artwork {
+          is_with_reserve
+          reserve_message
+          reserve_status
+          current_bid {
             display
+          }
+          counts {
+            bidder_positions
+          }
+        }
+        myLotStanding(live: true) {
+          active_bid {
+            is_winning
+          }
+          most_recent_bid {
+            is_winning
+            max_bid {
+              display
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

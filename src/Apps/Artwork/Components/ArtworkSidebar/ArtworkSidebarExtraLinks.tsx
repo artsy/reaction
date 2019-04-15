@@ -199,21 +199,23 @@ export const ArtworkSidebarExtraLinks: SFC<
 
 export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer(
   ArtworkSidebarExtraLinks,
-  graphql`
-    fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-      _id
-      is_in_auction
-      is_for_sale
-      is_acquireable
-      is_inquireable
-      artists {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarExtraLinks_artwork on Artwork {
         _id
-        is_consignable
+        is_in_auction
+        is_for_sale
+        is_acquireable
+        is_inquireable
+        artists {
+          _id
+          is_consignable
+        }
+        sale {
+          _id
+          is_closed
+        }
       }
-      sale {
-        _id
-        is_closed
-      }
-    }
-  `
+    `,
+  }
 )

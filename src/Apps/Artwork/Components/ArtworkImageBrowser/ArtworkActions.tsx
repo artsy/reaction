@@ -266,38 +266,40 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
     const { user, mediator } = useContext(SystemContext)
     return <ArtworkActions user={user} mediator={mediator} {...props} />
   },
-  graphql`
-    fragment ArtworkActions_artwork on Artwork {
-      ...Save_artwork
-      ...ArtworkSharePanel_artwork
+  {
+    artwork: graphql`
+      fragment ArtworkActions_artwork on Artwork {
+        ...Save_artwork
+        ...ArtworkSharePanel_artwork
 
-      artists {
-        name
-      }
-      date
-      dimensions {
-        cm
-      }
-      href
-      id
-      image {
+        artists {
+          name
+        }
+        date
+        dimensions {
+          cm
+        }
+        href
         id
-        url(version: "larger")
-        height
-        width
+        image {
+          id
+          url(version: "larger")
+          height
+          width
+        }
+        is_downloadable
+        is_hangable
+        partner {
+          id
+        }
+        title
+        sale {
+          is_closed
+          is_auction
+        }
       }
-      is_downloadable
-      is_hangable
-      partner {
-        id
-      }
-      title
-      sale {
-        is_closed
-        is_auction
-      }
-    }
-  `
+    `,
+  }
 )
 
 interface UtilButtonProps {

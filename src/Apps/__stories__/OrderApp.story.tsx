@@ -181,7 +181,7 @@ storiesOf("Apps/Order Page/Make Offer/Payment", module)
   ))
 
 storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
-  .add("With 'Ship'", () => (
+  .add("With 'Pickup'", () => (
     <Router
       initialRoute="/orders/123/payment/new"
       order={{
@@ -203,7 +203,7 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
       }}
     />
   ))
-  .add("With 'Pickup'", () => (
+  .add("With 'Ship'", () => (
     <Router
       initialRoute="/orders/123/payment/new"
       order={{

@@ -75,10 +75,12 @@ export class CollectionsRail extends React.Component<CollectionRailsProps> {
 
 export const CollectionsRailFragmentContainer = createFragmentContainer(
   CollectionsRail,
-  graphql`
-    fragment CollectionsRail_collections on MarketingCollection
-      @relay(plural: true) {
-      ...CollectionEntity_collection
-    }
-  `
+  {
+    collections: graphql`
+      fragment CollectionsRail_collections on MarketingCollection
+        @relay(plural: true) {
+        ...CollectionEntity_collection
+      }
+    `,
+  }
 )

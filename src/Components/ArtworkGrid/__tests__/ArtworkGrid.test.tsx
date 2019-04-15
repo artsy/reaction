@@ -25,13 +25,15 @@ const TestContainer = createFragmentContainer(
   }: ExtractProps<typeof ArtworkGrid> & { artist: ArtworkGrid_artist }) => {
     return <ArtworkGrid {...props} artworks={artist.artworks_connection} />
   },
-  graphql`
-    fragment ArtworkGrid_artist on Artist {
-      artworks_connection(first: 4) {
-        ...ArtworkGrid_artworks
+  {
+    artist: graphql`
+      fragment ArtworkGrid_artist on Artist {
+        artworks_connection(first: 4) {
+          ...ArtworkGrid_artworks
+        }
       }
-    }
-  `
+    `,
+  }
 )
 
 describe("ArtworkGrid", () => {

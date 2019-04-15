@@ -87,29 +87,31 @@ const Row: React.SFC<
 
 export const OfferHistoryItemFragmentContainer = createFragmentContainer(
   OfferHistoryItem,
-  graphql`
-    fragment OfferHistoryItem_order on Order {
-      ... on OfferOrder {
-        offers {
-          edges {
-            node {
-              id
-              amount(precision: 2)
-              createdAt(format: "MMM D")
-              fromParticipant
+  {
+    order: graphql`
+      fragment OfferHistoryItem_order on Order {
+        ... on OfferOrder {
+          offers {
+            edges {
+              node {
+                id
+                amount(precision: 2)
+                createdAt(format: "MMM D")
+                fromParticipant
+              }
             }
           }
+          lastOffer {
+            id
+            fromParticipant
+            amount(precision: 2)
+            shippingTotal(precision: 2)
+            taxTotal(precision: 2)
+            note
+          }
         }
-        lastOffer {
-          id
-          fromParticipant
-          amount(precision: 2)
-          shippingTotal(precision: 2)
-          taxTotal(precision: 2)
-          note
-        }
+        totalListPrice(precision: 2)
       }
-      totalListPrice(precision: 2)
-    }
-  `
+    `,
+  }
 )

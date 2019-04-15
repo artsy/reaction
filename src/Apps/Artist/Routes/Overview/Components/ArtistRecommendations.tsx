@@ -32,21 +32,23 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
 
 export const ArtistRecommendationsFragmentContainer = createFragmentContainer(
   ArtistRecommendations,
-  graphql`
-    fragment ArtistRecommendations_artist on Artist {
-      name
-      related {
-        artists(first: 3) {
-          edges {
-            node {
-              __id
-              ...RecommendedArtist_artist
+  {
+    artist: graphql`
+      fragment ArtistRecommendations_artist on Artist {
+        name
+        related {
+          artists(first: 3) {
+            edges {
+              node {
+                __id
+                ...RecommendedArtist_artist
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const ArtistRecommendationsQueryRenderer: React.FC<{
