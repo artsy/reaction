@@ -19,6 +19,10 @@ function PricingContext({ artwork }: PricingContextProps) {
     return null
   }
 
+  const priceCents = artwork.priceCents.max
+    ? (artwork.priceCents.min + artwork.priceCents.max) / 2
+    : artwork.priceCents.min
+
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   return (
     <BorderBox mb={2} flexDirection="column">
@@ -47,8 +51,7 @@ function PricingContext({ artwork }: PricingContextProps) {
             const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
             const title = `${binMinPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
-              artwork.priceCents.min >= bin.minPriceCents &&
-              artwork.priceCents.min < bin.maxPriceCents
+              priceCents >= bin.minPriceCents && priceCents < bin.maxPriceCents
             return {
               value: bin.numArtworks,
               label: {
@@ -76,6 +79,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       fragment PricingContext_artwork on Artwork {
         priceCents {
           min
+          max
         }
         pricingContext @include(if: $enablePricingContext) {
           filterDescription

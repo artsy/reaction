@@ -45,21 +45,24 @@ describe("PricingContext", () => {
   beforeEach(() => {
     enablePricingContext = true
   })
-  function getWrapper(pricingContext: any = mockPricingContext) {
+  function getWrapper(
+    mockData: any = {
+      artwork: {
+        pricingContext: mockPricingContext,
+        priceCents: {
+          min: 23455,
+          max: null,
+        },
+      },
+    }
+  ) {
     return renderRelayTree({
       Component: (props: any) => (
         <div>
           <PricingContextFragmentContainer {...props} />
         </div>
       ),
-      mockData: {
-        artwork: {
-          pricingContext,
-          priceCents: {
-            min: 23455,
-          },
-        },
-      },
+      mockData,
       query: graphql`
         query PricingContextTestQuery($enablePricingContext: Boolean!) {
           artwork(id: "unused") {
@@ -72,18 +75,29 @@ describe("PricingContext", () => {
       },
     })
   }
+
   it("renders if there is data present", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.text()).toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+
   it("renders as null if no data present", async () => {
-    const wrapper = await getWrapper(null)
+    const wrapper = await getWrapper({
+      artwork: {
+        priceCents: {
+          min: 12345,
+          max: null,
+        },
+        pricingContext: null,
+      },
+    })
     expect(wrapper.text()).not.toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+
   it("renders pricing context question mark icon and informational modal", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.find(QuestionCircleIcon).length).toEqual(1)
@@ -103,9 +117,26 @@ describe("PricingContext", () => {
       "Price ranges of small mocks by David Sheldrick"
     )
   })
+
   it("displays $0 as the minimum price label is the minimum price is null", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.text()).not.toContain("null")
     expect(wrapper.text()).toContain("$0")
+  })
+
+  it("uses the mean of min+max when list price is a range", async () => {
+    const wrapper = await getWrapper({
+      artwork: {
+        priceCents: {
+          min: 15500,
+          max: 25500,
+        },
+        pricingContext: mockPricingContext,
+      },
+    })
+
+    expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
+      `"$168–$247This work"`
+    )
   })
 })
