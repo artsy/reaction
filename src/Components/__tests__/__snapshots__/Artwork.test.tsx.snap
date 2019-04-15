@@ -17,7 +17,7 @@ exports[`Artwork renders correctly 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 12px;
   line-height: 16px;
-  color: #666;
+  color: #000;
 }
 
 .c3 {
@@ -141,7 +141,7 @@ exports[`Artwork renders correctly 1`] = `
         </div>
         <div
           className="c6"
-          color="#666"
+          color="#000"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="12px"
           style={

@@ -1,3 +1,4 @@
+import { Details_artwork } from "__generated__/Details_artwork.graphql"
 import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -27,36 +28,21 @@ describe("Details", () => {
 
   describe("in sale", () => {
     it("shows 'bidding closed' message if in closed auction", async () => {
-      const data = cloneDeep(artworkInAuction)
+      const data = cloneDeep(mutableArtwork)
       data.sale.is_closed = true
       const wrapper = await getWrapper(data)
       expect(wrapper.html()).toContain("Bidding closed")
     })
 
-    it("shows sale 'timely' data", async () => {
-      const data = cloneDeep(artworkInAuction)
-      const wrapper = await getWrapper(data)
-      const html = wrapper.html()
-      expect(html).toContain("ends in 14d")
-    })
-
-    it("shows sale 'timely' data when auction is in a preview state", async () => {
-      const data = cloneDeep(artworkInAuction)
-      data.sale.is_open = false
-      const wrapper = await getWrapper(data)
-      const html = wrapper.html()
-      expect(html).toContain("ends in 14d")
-    })
-
     it("shows highest bid if sale open and highest bid", async () => {
-      const data = cloneDeep(artworkInAuction)
+      const data = cloneDeep(mutableArtwork)
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
       expect(html).toContain("$2,600")
     })
 
     it("shows opening bid if sale open and no highest bid", async () => {
-      const data = cloneDeep(artworkInAuction)
+      const data = cloneDeep(mutableArtwork)
       data.sale_artwork.highest_bid.display = null
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
@@ -64,7 +50,7 @@ describe("Details", () => {
     })
 
     it("shows Contact for price if sale_message equals the same", async () => {
-      const data = cloneDeep(artworkInAuction)
+      const data = cloneDeep(mutableArtwork)
       data.sale.is_auction = false
       data.sale_message = "Contact For Price"
       const wrapper = await getWrapper(data)
@@ -73,7 +59,7 @@ describe("Details", () => {
     })
 
     it("shows sale message if sale open and no bids", async () => {
-      const data = cloneDeep(artworkInAuction)
+      const data = cloneDeep(mutableArtwork)
       data.sale_artwork.highest_bid.display = null
       data.sale_artwork.opening_bid.display = null
       data.sale.is_auction = false
@@ -81,10 +67,36 @@ describe("Details", () => {
       const html = wrapper.html()
       expect(html).toContain("$450")
     })
+
+    it("shows the number of bids in the message if sale open and are bids", async () => {
+      const data = cloneDeep(mutableArtwork)
+      data.sale_artwork.counts.bidder_positions = 2
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).toContain("$2,600")
+      expect(html).toContain("(2 bids)")
+    })
+
+    it("skips bid information in a closed show", async () => {
+      const data = cloneDeep(mutableArtwork)
+      data.sale_artwork.counts.bidder_positions = 2
+      data.sale.is_closed = true
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).not.toContain("(2 bids)")
+    })
+
+    it("skips showing bid information when there are no bidder positions", async () => {
+      const data = cloneDeep(mutableArtwork)
+      data.sale_artwork.counts.bidder_positions = 0
+      const wrapper = await getWrapper(data)
+      const html = wrapper.html()
+      expect(html).not.toContain("bid")
+    })
   })
 })
 
-const artworkInAuction = {
+const artworkInAuction: Partial<Details_artwork> = {
   artists: [
     {
       __id: "QXJ0aXN0OmdlcmhhcmQtcmljaHRlcg==",
@@ -101,20 +113,17 @@ const artworkInAuction = {
   partner: {
     name: "Forum Auctions",
     href: "/auction/forum-auctions",
-    __id: "UGFydG5lcjpmb3J1bS1hdWN0aW9ucw==",
   },
   sale: {
     is_auction: true,
-    is_live_open: false,
-    is_open: true,
     is_closed: false,
-    display_timely_at: "ends in 14d",
-    __id: "U2FsZTpmb3J1bS1hdWN0aW9ucy1tdWx0aXBseQ==",
   },
   sale_artwork: {
-    highest_bid: { display: "$2,600", __id: null },
+    highest_bid: { display: "$2,600" },
     opening_bid: { display: "$2,400" },
-    __id: "U2FsZUFydHdvcms6Z2VyaGFyZC1yaWNodGVyLXR1bGlwcy1wMTctMTQ=",
+    counts: { bidder_positions: 0 },
   },
-  __id: "QXJ0d29yazpnZXJoYXJkLXJpY2h0ZXItdHVsaXBzLXAxNy0xNA==",
 }
+
+// https://github.com/facebook/relay/issues/2597
+const mutableArtwork = artworkInAuction as any

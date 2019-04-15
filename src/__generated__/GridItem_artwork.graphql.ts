@@ -17,6 +17,7 @@ export type GridItem_artwork = {
     readonly is_biddable: boolean | null;
     readonly sale: ({
         readonly is_preview: boolean | null;
+        readonly display_timely_at: string | null;
     }) | null;
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
@@ -125,6 +126,13 @@ return {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "display_timely_at",
+          "args": null,
+          "storageKey": null
+        },
         v0
       ]
     },
@@ -163,5 +171,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '1e12ef5bdeec23b865151069f7ab34e2';
+(node as any).hash = '8129589ee884fc52220d853446029094';
 export default node;

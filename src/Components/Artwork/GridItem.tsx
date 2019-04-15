@@ -100,14 +100,18 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     is_offerable,
     href,
     sale,
-  }) {
+  }: GridItem_artwork) {
     const includeBidBadge = is_biddable || (sale && sale.is_preview)
+    // E.g.(ENDS IN 59M)
+    const saleTimingHint =
+      sale && sale.display_timely_at ? ` (${sale.display_timely_at})` : ""
+
     return (
       <React.Fragment>
         <Badges>
           {includeBidBadge && (
             <Badge>
-              <Sans size="0">Bid</Sans>
+              <Sans size="0">Bid{saleTimingHint}</Sans>
             </Badge>
           )}
           {is_acquireable && (
@@ -227,6 +231,7 @@ export default createFragmentContainer(ArtworkGridItem, {
       is_biddable
       sale {
         is_preview
+        display_timely_at
       }
       is_acquireable
       is_offerable
