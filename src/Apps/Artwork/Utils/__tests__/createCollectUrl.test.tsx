@@ -18,7 +18,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/painting?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=28-%2A&width=28-%2A&priceRange=4400-4455&artist_id=evelyn-walg"`
+      `"https://staging.artsy.net/collect/painting?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=28-%2A&width=28-%2A&price_range=4400-4455&artist_id=evelyn-walg"`
     )
   })
   it("formats the collect page url correctly (medium)", async () => {
@@ -32,7 +32,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/film-slash-video?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=16-28&width=16-28&priceRange=4400-4455&artist_id=evelyn-walg"`
+      `"https://staging.artsy.net/collect/film-slash-video?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=16-28&width=16-28&price_range=4400-4455&artist_id=evelyn-walg"`
     )
   })
 
@@ -47,7 +47,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/drawing?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&priceRange=4400-4455&artist_id=banksy"`
+      `"https://staging.artsy.net/collect/drawing?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&price_range=4400-4455&artist_id=banksy"`
     )
   })
 
@@ -61,7 +61,7 @@ describe("createCollectUrl", () => {
       artistId: "banksy",
     })
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&priceRange=4400-4455&artist_id=banksy"`
+      `"https://staging.artsy.net/collect?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&price_range=4400-4455&artist_id=banksy"`
     )
   })
 })

@@ -34,7 +34,7 @@ export const createCollectUrl = ({
     inquireable_only: "true",
     height: `${min}-${max}`,
     width: `${min}-${max}`,
-    priceRange: `${minDollars}-${maxDollars}`,
+    price_range: `${minDollars}-${maxDollars}`,
     artist_id: artistId,
   })
   const path = [sd.APP_URL, "collect", filterCategories[category]]
