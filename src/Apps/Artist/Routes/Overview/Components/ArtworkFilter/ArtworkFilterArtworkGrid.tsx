@@ -85,6 +85,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
         {({ user, mediator }) => (
           <LoadingArea isLoading={this.state.isLoading || this.props.isLoading}>
             <ArtworkGrid
+              preloadImageCount={0}
               artworks={this.props.filtered_artworks.artworks}
               columnCount={this.props.columnCount}
               itemMargin={40}
