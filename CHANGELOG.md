@@ -1,3 +1,15 @@
+# v16.0.0 (Mon Apr 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Remove the freeform aspect of Reaction’s SystemContext [#2291](https://github.com/artsy/reaction/pull/2291) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v15.15.0 (Mon Apr 15 2019)
 
 #### 🚀  Enhancement
