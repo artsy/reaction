@@ -1,3 +1,15 @@
+# v15.14.10 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Lazy load more images on Artist and Artwork pages [#2293](https://github.com/artsy/reaction/pull/2293) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.14.9 (Mon Apr 15 2019)
 
 
