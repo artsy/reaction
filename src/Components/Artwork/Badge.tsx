@@ -13,6 +13,7 @@ class Badge extends React.Component<BadgeProps> {
     const { artwork } = this.props
     const { is_biddable, is_acquireable, is_offerable, href, sale } = artwork
     const includeBidBadge = is_biddable || (sale && sale.is_preview)
+
     return (
       <>
         <Badges>

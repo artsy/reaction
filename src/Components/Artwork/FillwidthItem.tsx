@@ -3,6 +3,7 @@ import { ContextProps } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import Badge from "./Badge"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
@@ -99,6 +100,9 @@ export class FillwidthItemContainer extends React.Component<
           >
             <Image src={this.getImageUrl()} height={imageHeight} />
           </ImageLink>
+
+          <Badge artwork={artwork} />
+
           <SaveButton
             {...userSpread}
             mediator={mediator}
@@ -141,6 +145,7 @@ export default createFragmentContainer(FillwidthItem, {
       href
       ...Metadata_artwork
       ...Save_artwork
+      ...Badge_artwork
     }
   `,
 })
