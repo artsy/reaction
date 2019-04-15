@@ -151,30 +151,32 @@ const RecommendedArtist: FC<
 
 export const RecommendedArtistFragmentContainer = createFragmentContainer(
   RecommendedArtistWithTracking,
-  graphql`
-    fragment RecommendedArtist_artist on Artist {
-      id
-      _id
-      name
-      formatted_nationality_and_birthday
-      href
-      image {
-        cropped(width: 100, height: 100) {
-          url
-        }
-      }
-      artworks_connection(first: 20) {
-        edges {
-          node {
-            __id
-            image {
-              aspect_ratio
-            }
-            ...FillwidthItem_artwork
+  {
+    artist: graphql`
+      fragment RecommendedArtist_artist on Artist {
+        id
+        _id
+        name
+        formatted_nationality_and_birthday
+        href
+        image {
+          cropped(width: 100, height: 100) {
+            url
           }
         }
+        artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {
+          edges {
+            node {
+              __id
+              image {
+                aspect_ratio
+              }
+              ...FillwidthItem_artwork
+            }
+          }
+        }
+        ...FollowArtistButton_artist
       }
-      ...FollowArtistButton_artist
-    }
-  `
+    `,
+  }
 )

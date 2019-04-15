@@ -64,9 +64,8 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
   </BorderBox>
 )
 
-export const ItemReviewFragmentContainer = createFragmentContainer(
-  ItemReview,
-  graphql`
+export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
+  artwork: graphql`
     fragment ItemReview_artwork on Artwork {
       artist_names
       title
@@ -85,5 +84,5 @@ export const ItemReviewFragmentContainer = createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

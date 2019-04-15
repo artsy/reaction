@@ -208,9 +208,8 @@ export class ArtworkApp extends React.Component<Props> {
   }
 }
 
-export const ArtworkAppFragmentContainer = createFragmentContainer(
-  ArtworkApp,
-  graphql`
+export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
+  artwork: graphql`
     fragment ArtworkApp_artwork on Artwork {
       id
       _id
@@ -235,5 +234,5 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
       ...OtherWorks_artwork
       ...PricingContext_artwork
     }
-  `
-)
+  `,
+})

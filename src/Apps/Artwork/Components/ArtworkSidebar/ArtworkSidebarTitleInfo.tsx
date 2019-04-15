@@ -29,11 +29,13 @@ export class ArtworkSidebarTitleInfo extends React.Component<
 
 export const ArtworkSidebarTitleInfoFragmentContainer = createFragmentContainer(
   ArtworkSidebarTitleInfo,
-  graphql`
-    fragment ArtworkSidebarTitleInfo_artwork on Artwork {
-      title
-      date
-      medium
-    }
-  `
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarTitleInfo_artwork on Artwork {
+        title
+        date
+        medium
+      }
+    `,
+  }
 )

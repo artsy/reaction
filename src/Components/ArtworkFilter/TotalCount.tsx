@@ -27,13 +27,12 @@ const StyledTotalCount = styled(TotalCount)`
   ${garamond("s11")};
 `
 
-export default createFragmentContainer(
-  StyledTotalCount,
-  graphql`
+export default createFragmentContainer(StyledTotalCount, {
+  filter_artworks: graphql`
     fragment TotalCount_filter_artworks on FilterArtworks {
       counts {
         total
       }
     }
-  `
-)
+  `,
+})

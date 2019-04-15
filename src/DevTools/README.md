@@ -249,7 +249,7 @@ const page = await env.buildPage({
 
 ### Dynamic things
 
-If you need to modify the the mutation results on-the-fly, you can use `env.mutations`
+If you need to modify the mutation results on-the-fly, you can use `env.mutations`
 
 ```ts
 const page = await env.buildPage()
@@ -285,7 +285,7 @@ env.mutations.mockNetworkFailureOnce()
 await page.clickIncrement()
 expect(page.text()).toMatch("Netork error. Try again later.")
 await page.clickIncrement()
-expect(page.text()).not.toMatch("Netork error. Try again later.")
+expect(page.text()).not.toMatch("Network error. Try again later.")
 ```
 
 You can check whether a route change was requested

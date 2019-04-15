@@ -237,28 +237,30 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
 
 export const AuctionResultItemFragmentContainer = createFragmentContainer(
   ArtistAuctionResultItem,
-  graphql`
-    fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
-      title
-      dimension_text
-      organization
-      images {
-        thumbnail {
-          url
+  {
+    auctionResult: graphql`
+      fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
+        title
+        dimension_text
+        organization
+        images {
+          thumbnail {
+            url
+          }
+        }
+        description
+        date_text
+        sale_date_text
+        price_realized {
+          display
+          cents_usd
+        }
+        estimate {
+          display
         }
       }
-      description
-      date_text
-      sale_date_text
-      price_realized {
-        display
-        cents_usd
-      }
-      estimate {
-        display
-      }
-    }
-  `
+    `,
+  }
 )
 
 const FullDescriptionLink = styled.span`

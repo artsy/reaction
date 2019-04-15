@@ -217,9 +217,8 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
   }
 `
 
-export default createFragmentContainer(
-  ArtworkGridItem,
-  graphql`
+export default createFragmentContainer(ArtworkGridItem, {
+  artwork: graphql`
     fragment GridItem_artwork on Artwork {
       _id
       title
@@ -240,5 +239,5 @@ export default createFragmentContainer(
       ...Metadata_artwork
       ...Save_artwork
     }
-  `
-)
+  `,
+})

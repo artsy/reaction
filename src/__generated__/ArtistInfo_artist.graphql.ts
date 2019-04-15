@@ -2,8 +2,8 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
+import { ArtistMarketInsights_artist$ref } from "./ArtistMarketInsights_artist.graphql";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
 import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhibitions.graphql";
 declare const _ArtistInfo_artist$ref: unique symbol;
 export type ArtistInfo_artist$ref = typeof _ArtistInfo_artist$ref;
@@ -48,7 +48,7 @@ export type ArtistInfo_artist = {
     readonly biography_blurb: ({
         readonly text: string | null;
     }) | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & MarketInsightsArtistPage_artist$ref & FollowArtistButton_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & ArtistMarketInsights_artist$ref & FollowArtistButton_artist$ref;
     readonly " $refType": ArtistInfo_artist$ref;
 };
 
@@ -375,7 +375,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "MarketInsightsArtistPage_artist",
+      "name": "ArtistMarketInsights_artist",
       "args": null
     },
     {
@@ -418,5 +418,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5daf7b587a07a61db6217513542dbe2c';
+(node as any).hash = 'bd01cf9089cf9c950b01a0f675ad2ceb';
 export default node;

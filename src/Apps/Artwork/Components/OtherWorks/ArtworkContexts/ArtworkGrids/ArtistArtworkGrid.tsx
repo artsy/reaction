@@ -56,32 +56,34 @@ export class ArtistArtworkGrid extends React.Component<ArtistArtworkGridProps> {
 
 export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
   withContext(ArtistArtworkGrid),
-  graphql`
-    fragment ArtistArtworkGrid_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      id
-      artist {
-        name
-        href
-        counts {
-          artworks(format: "0,0", label: "work")
-        }
-        artworks_connection(
-          first: 8
-          filter: [IS_FOR_SALE]
-          sort: PUBLISHED_AT_DESC
-          exclude: $excludeArtworkIDs
-        ) {
-          ...ArtworkGrid_artworks
+  {
+    artwork: graphql`
+      fragment ArtistArtworkGrid_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        id
+        artist {
+          name
+          href
+          counts {
+            artworks(format: "0,0", label: "work")
+          }
+          artworks_connection(
+            first: 8
+            filter: [IS_FOR_SALE]
+            sort: PUBLISHED_AT_DESC
+            exclude: $excludeArtworkIDs
+          ) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

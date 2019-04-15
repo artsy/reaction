@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _SuggestedGenesContent_suggested_genes$ref: unique symbol;
-export type SuggestedGenesContent_suggested_genes$ref = typeof _SuggestedGenesContent_suggested_genes$ref;
-export type SuggestedGenesContent_suggested_genes = ReadonlyArray<{
+declare const _SuggestedGenes_suggested_genes$ref: unique symbol;
+export type SuggestedGenes_suggested_genes$ref = typeof _SuggestedGenes_suggested_genes$ref;
+export type SuggestedGenes_suggested_genes = ReadonlyArray<{
     readonly id: string;
     readonly _id: string;
     readonly name: string | null;
@@ -12,14 +12,14 @@ export type SuggestedGenesContent_suggested_genes = ReadonlyArray<{
             readonly url: string | null;
         }) | null;
     }) | null;
-    readonly " $refType": SuggestedGenesContent_suggested_genes$ref;
+    readonly " $refType": SuggestedGenes_suggested_genes$ref;
 }>;
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "SuggestedGenesContent_suggested_genes",
+  "name": "SuggestedGenes_suggested_genes",
   "type": "Gene",
   "metadata": {
     "plural": true
@@ -98,5 +98,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ad7d9ea0e33ce748ebcb67864853561d';
+(node as any).hash = 'cdb26030cf4a534bcfee76e4ca815a17';
 export default node;

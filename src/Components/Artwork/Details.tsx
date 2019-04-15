@@ -113,10 +113,6 @@ export class Details extends React.Component<Props, null> {
   }
 
   saleInfoLine() {
-    const { artwork } = this.props
-    const { sale } = artwork
-    const inClosedAuction = sale && sale.is_auction && sale.is_closed
-
     return (
       <>
         <Sans
@@ -125,7 +121,7 @@ export class Details extends React.Component<Props, null> {
           weight={"medium"}
           size={"2"}
         >
-          {inClosedAuction ? "Bidding closed" : this.saleMessage()}{" "}
+          {this.saleMessage()}{" "}
         </Sans>
         <Sans
           style={{ display: "inline" }}
@@ -166,19 +162,24 @@ export class Details extends React.Component<Props, null> {
   saleMessage() {
     const { artwork } = this.props
     const { sale } = artwork
-    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+    const isAuction = sale && sale.is_auction
 
-    if (inRunningAuction) {
-      const highestBidDisplay = get(
-        artwork,
-        p => p.sale_artwork.highest_bid.display
-      )
-      const openingBidDisplay = get(
-        artwork,
-        p => p.sale_artwork.opening_bid.display
-      )
+    if (isAuction) {
+      const showBiddingClosed = sale.is_closed
+      if (showBiddingClosed) {
+        return "Bidding closed"
+      } else {
+        const highestBidDisplay = get(
+          artwork,
+          p => p.sale_artwork.highest_bid.display
+        )
+        const openingBidDisplay = get(
+          artwork,
+          p => p.sale_artwork.opening_bid.display
+        )
 
-      return highestBidDisplay || openingBidDisplay || ""
+        return highestBidDisplay || openingBidDisplay || ""
+      }
     }
 
     // TODO: Extract this sentence-cased version and apply everywhere.
@@ -209,38 +210,40 @@ export class Details extends React.Component<Props, null> {
 
 export const DetailsFragmentContainer = createFragmentContainer<Props>(
   Details,
-  graphql`
-    fragment Details_artwork on Artwork {
-      href
-      title
-      date
-      sale_message
-      cultural_maker
-      artists(shallow: true) {
-        __id
+  {
+    artwork: graphql`
+      fragment Details_artwork on Artwork {
         href
-        name
-      }
-      collecting_institution
-      partner(shallow: true) {
-        name
-        href
-      }
-      sale {
-        is_auction
-        is_closed
-      }
-      sale_artwork {
-        counts {
-          bidder_positions
+        title
+        date
+        sale_message
+        cultural_maker
+        artists(shallow: true) {
+          __id
+          href
+          name
         }
-        highest_bid {
-          display
+        collecting_institution
+        partner(shallow: true) {
+          name
+          href
         }
-        opening_bid {
-          display
+        sale {
+          is_auction
+          is_closed
+        }
+        sale_artwork {
+          counts {
+            bidder_positions
+          }
+          highest_bid {
+            display
+          }
+          opening_bid {
+            display
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

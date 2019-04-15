@@ -41,12 +41,14 @@ export const ArtworkSidebarPageviews: SFC<Props> = props => {
 
 export const ArtworkSidebarPageviewsFragmentContainer = createFragmentContainer(
   ArtworkSidebarPageviews,
-  graphql`
-    fragment ArtworkSidebarPageviews_artwork on Artwork {
-      id
-      pageviews
-    }
-  `
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarPageviews_artwork on Artwork {
+        id
+        pageviews
+      }
+    `,
+  }
 )
 
 export const ArtworkSidebarPageviewsQueryRenderer = ({

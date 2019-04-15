@@ -45,10 +45,10 @@ export class ArtistCollectionsRail extends React.Component<
     const { collections } = this.props
     if (collections.length > 3) {
       return (
-        <RailWrapper>
+        <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
-            Browse by series
+            Browse by iconic collections
           </Sans>
           <Spacer pb={1} />
 
@@ -56,14 +56,29 @@ export class ArtistCollectionsRail extends React.Component<
             height={200}
             settings={{
               slidesToScroll: 1,
+              infinite: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
             render={slide => {
               return <ArtistCollectionEntity collection={slide} />
             }}
+            renderLeftArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
+            renderRightArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
           />
-        </RailWrapper>
+        </Box>
       )
     } else {
       return null
@@ -71,7 +86,8 @@ export class ArtistCollectionsRail extends React.Component<
   }
 }
 
-const RailWrapper = styled(Box)`
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
   ${ArrowButton} {
     min-height: 130px;
     align-self: flex-start;
@@ -80,10 +96,12 @@ const RailWrapper = styled(Box)`
 
 export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
   ArtistCollectionsRail,
-  graphql`
-    fragment ArtistCollectionsRail_collections on MarketingCollection
-      @relay(plural: true) {
-      ...ArtistCollectionEntity_collection
-    }
-  `
+  {
+    collections: graphql`
+      fragment ArtistCollectionsRail_collections on MarketingCollection
+        @relay(plural: true) {
+        ...ArtistCollectionEntity_collection
+      }
+    `,
+  }
 )

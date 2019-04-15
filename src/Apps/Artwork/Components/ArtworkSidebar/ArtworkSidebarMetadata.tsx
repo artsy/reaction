@@ -38,18 +38,20 @@ export class ArtworkSidebarMetadata extends React.Component<
 
 export const ArtworkSidebarMetadataFragmentContainer = createFragmentContainer(
   ArtworkSidebarMetadata,
-  graphql`
-    fragment ArtworkSidebarMetadata_artwork on Artwork {
-      is_biddable
-      edition_sets {
-        __id
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarMetadata_artwork on Artwork {
+        is_biddable
+        edition_sets {
+          __id
+        }
+        sale_artwork {
+          lot_label
+        }
+        ...ArtworkSidebarTitleInfo_artwork
+        ...ArtworkSidebarSizeInfo_piece
+        ...ArtworkSidebarClassification_artwork
       }
-      sale_artwork {
-        lot_label
-      }
-      ...ArtworkSidebarTitleInfo_artwork
-      ...ArtworkSidebarSizeInfo_piece
-      ...ArtworkSidebarClassification_artwork
-    }
-  `
+    `,
+  }
 )

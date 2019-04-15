@@ -60,12 +60,14 @@ export class AuctionTimer extends React.Component<Props> {
 
 export const AuctionTimerFragmentContainer = createFragmentContainer(
   AuctionTimer,
-  graphql`
-    fragment AuctionTimer_sale on Sale {
-      live_start_at
-      end_at
-    }
-  `
+  {
+    sale: graphql`
+      fragment AuctionTimer_sale on Sale {
+        live_start_at
+        end_at
+      }
+    `,
+  }
 )
 
 export const AuctionTimerQueryRenderer = ({ saleID }: { saleID: string }) => {

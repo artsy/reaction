@@ -114,6 +114,7 @@ module.exports = async ({ config, mode }) => {
     alias: {
       sharify: sharifyPath.replace(/\.js$/, ""),
       "styled-components": path.resolve("./node_modules/styled-components"),
+      react: path.resolve("./node_modules/react"),
     },
   }
   config.plugins = [...config.plugins, ...plugins]

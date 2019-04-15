@@ -123,6 +123,9 @@ export const routes: RouteConfig[] = [
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_PaymentQuery($orderID: String!) {
+            me {
+              ...Payment_me
+            }
             order: ecommerceOrder(id: $orderID) {
               ...Payment_order
             }
@@ -138,6 +141,9 @@ export const routes: RouteConfig[] = [
         onTransition: confirmRouteExit,
         query: graphql`
           query routes_NewPaymentQuery($orderID: String!) {
+            me {
+              ...NewPayment_me
+            }
             order: ecommerceOrder(id: $orderID) {
               ...NewPayment_order
             }

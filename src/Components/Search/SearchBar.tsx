@@ -14,6 +14,7 @@ import {
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
 import { throttle } from "lodash"
+import qs from "qs"
 import React, { Component, useContext } from "react"
 import Autosuggest from "react-autosuggest"
 import {
@@ -90,7 +91,7 @@ export class SearchBar extends Component<Props, State> {
   private userClickedOnDescendant: boolean
 
   state = {
-    term: "",
+    term: getSearchTerm(window.location),
     entityID: null,
     entityType: null,
     focused: false,
@@ -427,4 +428,16 @@ export const SearchBarQueryRenderer: React.FC = () => {
       }}
     />
   )
+}
+
+export function getSearchTerm(location: Location): string {
+  const term = get(
+    qs,
+    querystring => querystring.parse(location.search.slice(1)).term,
+    ""
+  )
+  if (Array.isArray(term)) {
+    return term[0]
+  }
+  return term
 }

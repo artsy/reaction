@@ -253,14 +253,13 @@ export const Container = styled.div`
   }
 `
 
-export default createFragmentContainer(
-  Artsy.withContext(SaveButton),
-  graphql`
+export default createFragmentContainer(Artsy.withContext(SaveButton), {
+  artwork: graphql`
     fragment Save_artwork on Artwork {
       __id
       _id
       id
       is_saved
     }
-  `
-)
+  `,
+})

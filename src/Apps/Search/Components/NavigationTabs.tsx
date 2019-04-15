@@ -150,15 +150,17 @@ export class NavigationTabs extends React.Component<Props> {
 
 export const NavigationTabsFragmentContainer = createFragmentContainer(
   NavigationTabs,
-  graphql`
-    fragment NavigationTabs_searchableConnection on SearchableConnection {
-      aggregations {
-        slice
-        counts {
-          count
-          name
+  {
+    searchableConnection: graphql`
+      fragment NavigationTabs_searchableConnection on SearchableConnection {
+        aggregations {
+          slice
+          counts {
+            count
+            name
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

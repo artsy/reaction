@@ -79,13 +79,15 @@ export class CollectionEntity extends React.Component<CollectionProps> {
 
 export const CollectionEntityFragmentContainer = createFragmentContainer(
   CollectionEntity,
-  graphql`
-    fragment CollectionEntity_collection on MarketingCollection {
-      slug
-      headerImage
-      title
-      price_guidance
-      show_on_editorial
-    }
-  `
+  {
+    collection: graphql`
+      fragment CollectionEntity_collection on MarketingCollection {
+        slug
+        headerImage
+        title
+        price_guidance
+        show_on_editorial
+      }
+    `,
+  }
 )

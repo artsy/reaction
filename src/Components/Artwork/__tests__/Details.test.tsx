@@ -125,12 +125,5 @@ const artworkInAuction: Partial<Details_artwork> = {
   },
 }
 
-// So, we make changes to the fixtured data in tests
-// you'll need to use a version that's Any'd so that
-// tsc passes. Trade-off of any in the test vs guarantee
-// of the data in the fixture.
-//
-// Maybe we could use something like a
-// Muatable<Partial<Details_artwork>>
-// instead?
+// https://github.com/facebook/relay/issues/2597
 const mutableArtwork = artworkInAuction as any

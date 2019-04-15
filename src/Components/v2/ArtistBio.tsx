@@ -35,14 +35,13 @@ export class ArtistBio extends React.Component<ArtistBioProps> {
   }
 }
 
-export const ArtistBioFragmentContainer = createFragmentContainer(
-  ArtistBio,
-  graphql`
+export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
+  bio: graphql`
     fragment ArtistBio_bio on Artist {
       biography_blurb(format: HTML, partner_bio: true) {
         text
         credit
       }
     }
-  `
-)
+  `,
+})

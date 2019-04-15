@@ -108,14 +108,13 @@ export class FollowProfileButton extends React.Component<Props> {
 }
 
 export const FollowProfileButtonFragmentContainer = track({})(
-  createFragmentContainer(
-    Artsy.withContext(FollowProfileButton),
-    graphql`
+  createFragmentContainer(Artsy.withContext(FollowProfileButton), {
+    profile: graphql`
       fragment FollowProfileButton_profile on Profile {
         __id
         id
         is_followed
       }
-    `
-  )
+    `,
+  })
 )

@@ -109,9 +109,8 @@ export const ToolTipFooter = styled.div`
 `
 
 export const GeneToolTipContainer = track()(
-  createFragmentContainer(
-    GeneToolTip,
-    graphql`
+  createFragmentContainer(GeneToolTip, {
+    gene: graphql`
       fragment GeneToolTip_gene on Gene {
         description
         href
@@ -122,6 +121,6 @@ export const GeneToolTipContainer = track()(
         }
         name
       }
-    `
-  )
+    `,
+  })
 )

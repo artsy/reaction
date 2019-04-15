@@ -143,17 +143,19 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
       </Subscribe>
     )
   },
-  graphql`
-    fragment FollowArtistPopoverRow_artist on Artist {
-      id
-      _id
-      __id
-      name
-      image {
-        cropped(width: 45, height: 45) {
-          url
+  {
+    artist: graphql`
+      fragment FollowArtistPopoverRow_artist on Artist {
+        id
+        _id
+        __id
+        name
+        image {
+          cropped(width: 45, height: 45) {
+            url
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )
