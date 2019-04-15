@@ -39,28 +39,32 @@ describe("AuctionCard", () => {
     expect(large.find(LargeAuctionCard).length).toEqual(1)
   })
 
+  const tz = "America/New_York"
+  const currentTime = "2019-04-16"
+  const now = () => moment.tz(currentTime, tz)
+
   describe("relativeTime", () => {
     it("formats properly when >= 1 day", () => {
-      expect(
-        relativeTime(moment().add(25, "hours"), moment())
-      ).toMatchInlineSnapshot(`"1d"`)
+      expect(relativeTime(now().add(25, "hours"), now())).toMatchInlineSnapshot(
+        `"1d"`
+      )
     })
 
     it("formats properly when >= 1 hours", () => {
       expect(
-        relativeTime(moment().add(61, "minutes"), moment())
+        relativeTime(now().add(61, "minutes"), now())
       ).toMatchInlineSnapshot(`"1h"`)
     })
 
     it("formats properly when >= 1 minutes", () => {
       expect(
-        relativeTime(moment().add(61, "seconds"), moment())
+        relativeTime(now().add(61, "seconds"), now())
       ).toMatchInlineSnapshot(`"1m"`)
     })
 
     it("formats properly otherwise", () => {
       expect(
-        relativeTime(moment().add(1, "seconds"), moment())
+        relativeTime(now().add(1, "seconds"), now())
       ).toMatchInlineSnapshot(`"1s"`)
     })
   })
@@ -71,9 +75,9 @@ describe("AuctionCard", () => {
         upcomingLabel(
           {
             is_preview: true,
-            start_at: moment().add(25, "hours"),
+            start_at: now().add(25, "hours"),
           },
-          moment()
+          now()
         )
       ).toMatchInlineSnapshot(`"Opens in 1d"`)
     })
@@ -89,44 +93,48 @@ describe("AuctionCard", () => {
     describe("LAI sales", () => {
       it("handles in-progress sales", () => {
         expect(
-          upcomingLabel({
-            is_live_open: true,
-            live_start_at: moment().subtract(1, "minutes"),
-          })
+          upcomingLabel(
+            {
+              is_live_open: true,
+              live_start_at: now().subtract(1, "minutes"),
+            },
+            now()
+          )
         ).toMatchInlineSnapshot(`"In progress"`)
       })
 
       it("handles upcoming sales", () => {
-        const now = "2019-04-16"
         expect(
           upcomingLabel(
             {
-              live_start_at: moment(now).add(1, "days"),
+              live_start_at: now().add(1, "days"),
             },
-            moment(now)
+            now()
           )
         ).toMatchInlineSnapshot(`"Register by Apr 17"`)
       })
 
       it("handles upcoming sales with closed registration", () => {
-        const now = "2019-04-16"
         expect(
           upcomingLabel(
             {
               is_registration_closed: true,
-              live_start_at: moment(now).add(1, "days"),
+              live_start_at: now().add(1, "days"),
             },
-            moment(now)
+            now()
           )
         ).toMatchInlineSnapshot(`"Live in 1d"`)
       })
 
       it("handles upcoming sales the user is registered for", () => {
         expect(
-          upcomingLabel({
-            registration_status: {},
-            live_start_at: moment().add(1, "days"),
-          })
+          upcomingLabel(
+            {
+              registration_status: {},
+              live_start_at: now().add(1, "days"),
+            },
+            now()
+          )
         ).toMatchInlineSnapshot(`"Live in 1d"`)
       })
     })
