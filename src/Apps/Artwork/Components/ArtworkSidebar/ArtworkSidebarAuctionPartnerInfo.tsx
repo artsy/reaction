@@ -1,5 +1,5 @@
 import { Box, Link, Serif } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
@@ -35,7 +35,7 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
       return null
     }
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ mediator }) => (
           <Box pb={3}>
             {partner && (
@@ -59,7 +59,7 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
             )}
           </Box>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

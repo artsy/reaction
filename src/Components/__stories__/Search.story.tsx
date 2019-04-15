@@ -1,5 +1,5 @@
 import { Box, Flex } from "@artsy/palette"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import React from "react"
@@ -15,9 +15,9 @@ storiesOf("Components/Search/SearchBar", module).add("Input", () => (
     <Flex>
       <Box>Artsy Logo</Box>
       <SearchBarContainer>
-        <ContextProvider>
+        <SystemContextProvider>
           <SearchBar />
-        </ContextProvider>
+        </SystemContextProvider>
       </SearchBarContainer>
       <Box>Nav Item</Box>
       <Box>Nav Item</Box>
@@ -84,7 +84,7 @@ storiesOf("Components/Search/SearchBar", module).add("Input", () => (
 ))
 
 storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
-  <ContextProvider>
+  <SystemContextProvider>
     <SuggestionItem
       display="display one"
       href="/"
@@ -106,5 +106,5 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
       label="label three"
       query="a query"
     />
-  </ContextProvider>
+  </SystemContextProvider>
 ))

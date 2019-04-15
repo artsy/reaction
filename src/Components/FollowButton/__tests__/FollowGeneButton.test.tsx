@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -14,9 +14,9 @@ jest.mock("react-relay", () => ({
 describe("FollowGeneButton", () => {
   const getWrapper = (props = {}, user = {}) => {
     return mount(
-      <ContextProvider user={user}>
+      <SystemContextProvider user={user}>
         <FollowGeneButton relay={{ environment: "" }} {...props} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   }
 
@@ -39,9 +39,9 @@ describe("FollowGeneButton", () => {
   //   it("Renders properly", () => {
   //     const component = renderer
   //       .create(
-  //         <ContextProvider>
+  //         <SystemContextProvider>
   //           <FollowGeneButton {...testProps} />
-  //         </ContextProvider>
+  //         </SystemContextProvider>
   //       )
   //       .toJSON()
   //     expect(component).toMatchSnapshot()

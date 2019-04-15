@@ -2,10 +2,10 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { MarketInsightsContentsQuery } from "__generated__/MarketInsightsContentsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import MarketInsights from "./MarketInsights"
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   artistID: string
 }
 
@@ -35,4 +35,4 @@ class MarketInsightsContents extends React.Component<Props, null> {
   }
 }
 
-export const Contents = withContext(MarketInsightsContents)
+export const Contents = withSystemContext(MarketInsightsContents)

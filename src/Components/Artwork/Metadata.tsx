@@ -1,5 +1,5 @@
 import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import StyledTextLink from "Components/TextLink"
@@ -22,7 +22,7 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     const { artwork, className, extended } = this.props
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user }) => {
           const detailsContent = (
             <div className={className}>
@@ -39,7 +39,7 @@ export class MetadataContainer extends React.Component<MetadataProps> {
             </StyledTextLink>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

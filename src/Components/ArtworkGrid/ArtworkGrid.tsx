@@ -1,6 +1,6 @@
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import { isEqual } from "lodash"
 import memoizeOnce from "memoize-one"

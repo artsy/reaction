@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
@@ -13,9 +13,9 @@ describe("SearchApp", () => {
   const getWrapper = (searchProps: any) => {
     return mount(
       <MockBoot>
-        <ContextProvider>
+        <SystemContextProvider>
           <SearchApp {...searchProps} />
-        </ContextProvider>
+        </SystemContextProvider>
       </MockBoot>
     )
   }

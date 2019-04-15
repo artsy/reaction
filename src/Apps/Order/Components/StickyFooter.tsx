@@ -1,5 +1,5 @@
 import { color, Flex, Link, Sans, Spacer } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React, { Component } from "react"
@@ -37,7 +37,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
   render() {
     return (
       <FooterContainer>
-        <ContextConsumer>
+        <SystemContextConsumer>
           {({ mediator }) => (
             <>
               <Sans size="2" color="black60">
@@ -54,7 +54,7 @@ export class StickyFooter extends Component<StickyFooterProps> {
               <Spacer mb={2} />
             </>
           )}
-        </ContextConsumer>
+        </SystemContextConsumer>
       </FooterContainer>
     )
   }

@@ -7,19 +7,24 @@ export interface Mediator {
   trigger: (action: string, config?: object) => void
 }
 
-export interface SystemProps {
-  /** Flag for checking if we're within an Eigen webview */
+/**
+ * Globally accessible SystemContext values for use in Artsy apps
+ */
+export interface SystemContextProps {
+  /** Is the user opening a Reaction page from the mobile app */
   isEigen?: boolean
 
-  /** A PubSub hub typically used for communicating with Force. */
+  /**
+   * A PubSub hub, which should only be used for communicating with Force.
+   */
   mediator?: Mediator
 
   /**
    * A configured environment object that can be used for any Relay operations
    * that need an environment object.
    *
-   * If none is provided to the `ContextProvider` then one is created, using
-   * the `user` if available.
+   * If none is provided to the `SystemContextProvider` then one is created,
+   * using the `user` if available.
    */
   relayEnvironment?: Environment
 
@@ -32,33 +37,24 @@ export interface SystemProps {
   user?: User
 }
 
-/**
- * Globally accessible Context values for use in Artsy apps
- */
-export interface ContextProps<T = {}> extends SystemProps {
-  /**
-   * Catch-all for additional context values passed in during initialization.
-   */
-  [key: string]: any
-}
-
-export const SystemContext = React.createContext<ContextProps<any>>({})
+export const SystemContext = React.createContext<SystemContextProps>({})
 
 /**
  * Creates a new Context.Provider with a user and Relay environment, or defaults
  * if not passed in as props.
  */
-export const ContextProvider: SFC<ContextProps<any>> = ({
+export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const _user = getUser(props.user)
+  const user = getUser(props.user)
+
   const relayEnvironment =
-    props.relayEnvironment || createRelaySSREnvironment({ user: _user })
+    props.relayEnvironment || createRelaySSREnvironment({ user })
 
   const providerValues = {
     ...props,
-    user: _user,
+    user,
     relayEnvironment,
   }
 
@@ -69,19 +65,19 @@ export const ContextProvider: SFC<ContextProps<any>> = ({
   )
 }
 
-export const ContextConsumer = SystemContext.Consumer
+export const SystemContextConsumer = SystemContext.Consumer
 
 /**
  * A HOC utility function for injecting renderProps into a component.
  */
-export const withContext = Component => {
+export const withSystemContext = Component => {
   return props => {
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {contextValues => {
           return <Component {...contextValues} {...props} />
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

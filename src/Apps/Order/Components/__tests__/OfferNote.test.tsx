@@ -1,5 +1,5 @@
 import { Link } from "@artsy/palette"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 import { ExtractProps } from "Utils/ExtractProps"
@@ -18,9 +18,9 @@ describe("OfferNote", () => {
 
   const getWrapper = (props: Partial<ExtractProps<typeof OfferNote>> = {}) =>
     mount(
-      <ContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator}>
         <OfferNote onChange={onChange} artworkId="artwork-id" {...props} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   it("calls onChange with appropriate change events", () => {
     const wrapper = getWrapper()

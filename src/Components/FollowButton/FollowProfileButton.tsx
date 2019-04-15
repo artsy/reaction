@@ -1,5 +1,5 @@
 import { FollowProfileButtonMutation } from "__generated__/FollowProfileButtonMutation.graphql"
-import * as Artsy from "Artsy/SystemContext"
+import * as Artsy from "Artsy"
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -17,7 +17,7 @@ import {
 
 interface Props
   extends React.HTMLProps<FollowProfileButton>,
-    Artsy.ContextProps {
+    Artsy.SystemContextProps {
   relay?: RelayProp
   profile?: FollowProfileButton_profile
   tracking?: TrackingProp
@@ -108,7 +108,7 @@ export class FollowProfileButton extends React.Component<Props> {
 }
 
 export const FollowProfileButtonFragmentContainer = track({})(
-  createFragmentContainer(Artsy.withContext(FollowProfileButton), {
+  createFragmentContainer(Artsy.withSystemContext(FollowProfileButton), {
     profile: graphql`
       fragment FollowProfileButton_profile on Profile {
         __id

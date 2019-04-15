@@ -1,6 +1,6 @@
 import { color, Sans, Spacer } from "@artsy/palette"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import React from "react"
 // @ts-ignore
 import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
@@ -192,7 +192,7 @@ export class Details extends React.Component<Props, null> {
 
   render() {
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user }) => {
           return (
             <div>
@@ -203,7 +203,7 @@ export class Details extends React.Component<Props, null> {
             </div>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

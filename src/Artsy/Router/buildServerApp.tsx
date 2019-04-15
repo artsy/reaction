@@ -87,7 +87,6 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
               headTags={headTags}
               onlyMatchMediaQueries={matchingMediaQueries}
               relayEnvironment={relayEnvironment}
-              resolver={resolver}
               routes={routes}
             >
               {element}

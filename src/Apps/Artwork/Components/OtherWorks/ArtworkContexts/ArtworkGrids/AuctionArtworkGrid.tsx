@@ -1,8 +1,8 @@
 import { AuctionArtworkGrid_artwork } from "__generated__/AuctionArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { Mediator, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -58,7 +58,7 @@ class AuctionArtworkGrid extends React.Component<AuctionArtworkGridProps> {
 }
 
 export const AuctionArtworkGridFragmentContainer = createFragmentContainer(
-  withContext(AuctionArtworkGrid),
+  withSystemContext(AuctionArtworkGrid),
   {
     artwork: graphql`
       fragment AuctionArtworkGrid_artwork on Artwork

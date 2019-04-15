@@ -2,7 +2,7 @@ import { Box, Spinner, Theme } from "@artsy/palette"
 import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
-import { ContextConsumer, ContextProps } from "Artsy"
+import { SystemContextConsumer, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import React, { Component } from "react"
 import { graphql, QueryRenderer } from "react-relay"
@@ -11,7 +11,7 @@ import Events from "Utils/Events"
 import { WorksForYouArtistFeedPaginationContainer as WorksForYouArtistFeed } from "./WorksForYouArtistFeed"
 import { WorksForYouFeedPaginationContainer as WorksForYouFeed } from "./WorksForYouFeed"
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   artistID?: string
   forSale?: boolean
 }
@@ -32,7 +32,7 @@ export class WorksForYou extends Component<Props> {
 
     return (
       <Theme>
-        <ContextConsumer>
+        <SystemContextConsumer>
           {({ relayEnvironment, user }) => {
             return (
               <>
@@ -94,7 +94,7 @@ export class WorksForYou extends Component<Props> {
               </>
             )
           }}
-        </ContextConsumer>
+        </SystemContextConsumer>
       </Theme>
     )
   }

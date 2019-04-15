@@ -4,7 +4,7 @@ import {
   SuggestedGenesFollowGeneMutationResponse,
 } from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
 import { SuggestedGenesQuery } from "__generated__/SuggestedGenesQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
@@ -162,7 +162,7 @@ const SuggestedGenesContainer = createFragmentContainer(SuggestedGenesContent, {
   `,
 })
 
-const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
+const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
   relayEnvironment,
   updateFollowCount,
 }) => {
@@ -193,4 +193,4 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
   )
 }
 
-export const SuggestedGenes = withContext(SuggestedGenesComponent)
+export const SuggestedGenes = withSystemContext(SuggestedGenesComponent)

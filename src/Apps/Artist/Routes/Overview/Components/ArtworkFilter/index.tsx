@@ -1,9 +1,9 @@
 import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { Mediator, SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -361,7 +361,7 @@ class Filter extends Component<Props> {
 export const ArtworkFilterFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => (
           <Subscribe to={[FilterState]}>
             {(filters: FilterState) => {
@@ -376,7 +376,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
             }}
           </Subscribe>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   },
   {

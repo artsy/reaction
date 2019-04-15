@@ -1,6 +1,6 @@
 import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
-import { ContextProps } from "Artsy"
+import { SystemContextProps } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -8,7 +8,7 @@ import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
 // @ts-ignore
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
@@ -28,7 +28,7 @@ const Placeholder = styled.div`
 `
 
 export interface FillwidthItemContainerProps
-  extends ContextProps,
+  extends SystemContextProps,
     React.HTMLProps<FillwidthItemContainer> {
   artwork: FillwidthItem_artwork
   imageHeight?: number
