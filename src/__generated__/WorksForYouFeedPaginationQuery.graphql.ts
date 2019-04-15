@@ -112,6 +112,7 @@ fragment Badge_artwork on Artwork {
   href
   sale {
     is_preview
+    display_timely_at
     __id
   }
   __id
@@ -136,13 +137,13 @@ fragment Details_artwork on Artwork {
   }
   sale {
     is_auction
-    is_live_open
-    is_open
     is_closed
-    display_timely_at
     __id
   }
   sale_artwork {
+    counts {
+      bidder_positions
+    }
     highest_bid {
       display
       __id: id
@@ -243,7 +244,7 @@ return {
   "operationKind": "query",
   "name": "WorksForYouFeedPaginationQuery",
   "id": null,
-  "text": "query WorksForYouFeedPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...WorksForYouFeed_viewer_1G22uz\n  }\n}\n\nfragment WorksForYouFeed_viewer_1G22uz on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: $count, after: $cursor, for_sale: true) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            image {\n              resized(height: 80, width: 80) {\n                url\n              }\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    display_timely_at\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query WorksForYouFeedPaginationQuery(\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...WorksForYouFeed_viewer_1G22uz\n  }\n}\n\nfragment WorksForYouFeed_viewer_1G22uz on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: $count, after: $cursor, for_sale: true) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            image {\n              resized(height: 80, width: 80) {\n                url\n              }\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -600,6 +601,14 @@ return {
                                               {
                                                 "kind": "ScalarField",
                                                 "alias": null,
+                                                "name": "is_closed",
+                                                "args": null,
+                                                "storageKey": null
+                                              },
+                                              v1,
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
                                                 "name": "is_live_open",
                                                 "args": null,
                                                 "storageKey": null
@@ -614,7 +623,7 @@ return {
                                               {
                                                 "kind": "ScalarField",
                                                 "alias": null,
-                                                "name": "is_closed",
+                                                "name": "is_preview",
                                                 "args": null,
                                                 "storageKey": null
                                               },
@@ -622,14 +631,6 @@ return {
                                                 "kind": "ScalarField",
                                                 "alias": null,
                                                 "name": "display_timely_at",
-                                                "args": null,
-                                                "storageKey": null
-                                              },
-                                              v1,
-                                              {
-                                                "kind": "ScalarField",
-                                                "alias": null,
-                                                "name": "is_preview",
                                                 "args": null,
                                                 "storageKey": null
                                               }
@@ -644,6 +645,24 @@ return {
                                             "concreteType": "SaleArtwork",
                                             "plural": false,
                                             "selections": [
+                                              {
+                                                "kind": "LinkedField",
+                                                "alias": null,
+                                                "name": "counts",
+                                                "storageKey": null,
+                                                "args": null,
+                                                "concreteType": "SaleArtworkCounts",
+                                                "plural": false,
+                                                "selections": [
+                                                  {
+                                                    "kind": "ScalarField",
+                                                    "alias": null,
+                                                    "name": "bidder_positions",
+                                                    "args": null,
+                                                    "storageKey": null
+                                                  }
+                                                ]
+                                              },
                                               {
                                                 "kind": "LinkedField",
                                                 "alias": null,
@@ -675,25 +694,7 @@ return {
                                                   v5
                                                 ]
                                               },
-                                              v1,
-                                              {
-                                                "kind": "LinkedField",
-                                                "alias": null,
-                                                "name": "counts",
-                                                "storageKey": null,
-                                                "args": null,
-                                                "concreteType": "SaleArtworkCounts",
-                                                "plural": false,
-                                                "selections": [
-                                                  {
-                                                    "kind": "ScalarField",
-                                                    "alias": null,
-                                                    "name": "bidder_positions",
-                                                    "args": null,
-                                                    "storageKey": null
-                                                  }
-                                                ]
-                                              }
+                                              v1
                                             ]
                                           },
                                           {

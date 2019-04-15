@@ -10,6 +10,7 @@ export type Badge_artwork = {
     readonly href: string | null;
     readonly sale: ({
         readonly is_preview: boolean | null;
+        readonly display_timely_at: string | null;
     }) | null;
     readonly " $refType": Badge_artwork$ref;
 };
@@ -75,6 +76,13 @@ return {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "display_timely_at",
+          "args": null,
+          "storageKey": null
+        },
         v0
       ]
     },
@@ -82,5 +90,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '33b53a5842d9efd8b09fc34fb29ab13a';
+(node as any).hash = '2acc89282c0f63455bd559089466e8f5';
 export default node;

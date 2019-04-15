@@ -1,3 +1,4 @@
+import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { ContextProps } from "Artsy"
 import React from "react"
@@ -14,10 +15,6 @@ import { Mediator } from "Artsy/SystemContext"
 import styled, { StyledComponentClass } from "styled-components"
 
 const IMAGE_QUALITY = 80
-
-const Image = styled.img`
-  width: 100%;
-`
 
 const ImageLink = styled.a`
   width: 100%;
@@ -41,6 +38,7 @@ export interface FillwidthItemContainerProps
   onClick?: () => void
   targetHeight?: number
   width?: number
+  lazyLoad?: boolean
 }
 
 export class FillwidthItemContainer extends React.Component<
@@ -80,6 +78,7 @@ export class FillwidthItemContainer extends React.Component<
       imageHeight,
       user,
       mediator,
+      lazyLoad,
     } = this.props
 
     let userSpread = {}
@@ -98,7 +97,12 @@ export class FillwidthItemContainer extends React.Component<
               }
             }}
           >
-            <Image src={this.getImageUrl()} height={imageHeight} />
+            <Image
+              src={this.getImageUrl()}
+              width="100%"
+              height={imageHeight}
+              lazyLoad={lazyLoad}
+            />
           </ImageLink>
 
           <Badge artwork={artwork} />

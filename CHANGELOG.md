@@ -1,3 +1,34 @@
+# v15.14.11 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes search bar button press handling. [#2298](https://github.com/artsy/reaction/pull/2298) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.8.1
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#2297](https://github.com/artsy/reaction/pull/2297) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.14.10 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Lazy load more images on Artist and Artwork pages [#2293](https://github.com/artsy/reaction/pull/2293) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v15.14.9 (Mon Apr 15 2019)
 
 

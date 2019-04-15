@@ -13,13 +13,15 @@ class Badge extends React.Component<BadgeProps> {
     const { artwork } = this.props
     const { is_biddable, is_acquireable, is_offerable, href, sale } = artwork
     const includeBidBadge = is_biddable || (sale && sale.is_preview)
-
+    // E.g.(ENDS IN 59M)
+    const saleTimingHint =
+      sale && sale.display_timely_at ? ` (${sale.display_timely_at})` : ""
     return (
       <>
         <Badges>
           {includeBidBadge && (
             <Label>
-              <Sans size="0">Bid</Sans>
+              <Sans size="0">Bid{saleTimingHint}</Sans>
             </Label>
           )}
           {is_acquireable && (
@@ -57,6 +59,7 @@ export default createFragmentContainer(Badge, {
       href
       sale {
         is_preview
+        display_timely_at
       }
     }
   `,

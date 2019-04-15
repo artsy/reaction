@@ -190,14 +190,23 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ focused: true })
   }
 
-  onBlur = e => {
+  onBlur = event => {
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.form &&
+      event.relatedTarget.form === event.target.form
+    ) {
+      this.userClickedOnDescendant = true
+      return
+    }
     this.setState({ focused: false })
   }
 
-  onSuggestionsClearRequested = () => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we initialize state when that happens, the link will get removed
-    //  from the DOM before the browser has a chance to follow it.
+  onSuggestionsClearRequested = e => {
+    // This event _also_ fires when a user clicks on a link in the preview pane
+    //  or the magnifying glass icon. If we initialize state when that happens,
+    //  the link will get removed from the DOM before the browser has a chance
+    //  to follow it.
     if (!this.userClickedOnDescendant) {
       this.setState({ term: "", entityID: null, entityType: null })
     }

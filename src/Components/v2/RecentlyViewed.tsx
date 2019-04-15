@@ -55,6 +55,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
 
                     return (
                       <FillwidthItem
+                        lazyLoad={true}
                         artwork={artwork.node}
                         targetHeight={HEIGHT}
                         imageHeight={HEIGHT}

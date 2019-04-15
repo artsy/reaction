@@ -113,10 +113,6 @@ export class Details extends React.Component<Props, null> {
   }
 
   saleInfoLine() {
-    const { artwork } = this.props
-    const { sale } = artwork
-    const inClosedAuction = sale && sale.is_auction && sale.is_closed
-
     return (
       <>
         <Sans
@@ -125,31 +121,65 @@ export class Details extends React.Component<Props, null> {
           weight={"medium"}
           size={"2"}
         >
-          {inClosedAuction ? "Bidding closed" : this.saleMessageOrBidInfo()}{" "}
+          {this.saleMessage()}{" "}
         </Sans>
-        <Sans style={{ display: "inline" }} size={"2"} color={color("black60")}>
-          {!inClosedAuction && this.auctionInfo()}
+        <Sans
+          style={{ display: "inline" }}
+          size={"2"}
+          color={color("black100")}
+          weight={"regular"}
+        >
+          {this.bidInfo()}
         </Sans>
         <Spacer mb={0.3} />
       </>
     )
   }
 
-  saleMessageOrBidInfo() {
+  bidInfo() {
+    const { artwork } = this.props
+    const { sale } = this.props.artwork
+
+    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+    if (!inRunningAuction) {
+      return undefined
+    }
+
+    const bidderPositionCounts = get(
+      artwork,
+      a => a.sale_artwork.counts.bidder_positions,
+      0
+    )
+
+    if (bidderPositionCounts === 0) {
+      return undefined
+    }
+
+    const s = bidderPositionCounts > 1 ? "s" : ""
+    return `(${bidderPositionCounts} bid${s})`
+  }
+
+  saleMessage() {
     const { artwork } = this.props
     const { sale } = artwork
-    const inRunningAuction = sale && sale.is_auction && !sale.is_closed
+    const isAuction = sale && sale.is_auction
 
-    if (inRunningAuction) {
-      const highestBidDisplay = get(
-        artwork,
-        p => p.sale_artwork.highest_bid.display
-      )
-      const openingBidDisplay = get(
-        artwork,
-        p => p.sale_artwork.opening_bid.display
-      )
-      return highestBidDisplay || openingBidDisplay || ""
+    if (isAuction) {
+      const showBiddingClosed = sale.is_closed
+      if (showBiddingClosed) {
+        return "Bidding closed"
+      } else {
+        const highestBidDisplay = get(
+          artwork,
+          p => p.sale_artwork.highest_bid.display
+        )
+        const openingBidDisplay = get(
+          artwork,
+          p => p.sale_artwork.opening_bid.display
+        )
+
+        return highestBidDisplay || openingBidDisplay || ""
+      }
     }
 
     // TODO: Extract this sentence-cased version and apply everywhere.
@@ -158,15 +188,6 @@ export class Details extends React.Component<Props, null> {
     }
 
     return artwork.sale_message
-  }
-
-  auctionInfo() {
-    const { artwork } = this.props
-    const { sale } = artwork
-
-    if (sale) {
-      return `(${sale.display_timely_at})`
-    }
   }
 
   render() {
@@ -209,12 +230,12 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
         }
         sale {
           is_auction
-          is_live_open
-          is_open
           is_closed
-          display_timely_at
         }
         sale_artwork {
+          counts {
+            bidder_positions
+          }
           highest_bid {
             display
           }
