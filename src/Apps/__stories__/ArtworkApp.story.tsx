@@ -116,3 +116,11 @@ storiesOf("Apps/Artwork Page", module)
       />
     )
   })
+  .add("Artwork in an auction", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/brooklyn-nets-courtside-seats"
+      />
+    )
+  })

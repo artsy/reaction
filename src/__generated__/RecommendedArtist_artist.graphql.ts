@@ -129,13 +129,19 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "artworks_connection",
-      "storageKey": "artworks_connection(first:20)",
+      "storageKey": "artworks_connection(first:20,sort:\"PUBLISHED_AT_DESC\")",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
           "value": 20,
           "type": "Int"
+        },
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "PUBLISHED_AT_DESC",
+          "type": "ArtworkSorts"
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -198,5 +204,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '60350f72595d74f2476540383b5ebe62';
+(node as any).hash = 'bac237869e325729a567d00bf3a3780e';
 export default node;

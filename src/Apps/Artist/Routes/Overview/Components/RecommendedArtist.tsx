@@ -164,7 +164,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
             url
           }
         }
-        artworks_connection(first: 20) {
+        artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {
           edges {
             node {
               __id
