@@ -118,13 +118,12 @@ export class FollowButton extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(
-  Artsy.withContext(FollowButton),
-  graphql`
+export default createFragmentContainer(Artsy.withContext(FollowButton), {
+  artist: graphql`
     fragment Follow_artist on Artist {
       __id
       id
       is_followed
     }
-  `
-)
+  `,
+})

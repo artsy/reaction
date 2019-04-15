@@ -6,6 +6,7 @@ export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
     readonly priceCents: ({
         readonly min: number | null;
+        readonly max: number | null;
     }) | null;
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -62,6 +63,13 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "min",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "max",
           "args": null,
           "storageKey": null
         }
@@ -182,5 +190,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2c6465b6f5220a18c1f1c241b953d460';
+(node as any).hash = 'd08f1d5832ee5a7754767051836b7f34';
 export default node;

@@ -13,11 +13,13 @@ const Metadata = createFragmentContainer(
   (props: { artworkMetadata: MockRelayRendererFixtures_artworkMetadata }) => (
     <div>{props.artworkMetadata.title}</div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
-      title
-    }
-  `
+  {
+    artworkMetadata: graphql`
+      fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
+        title
+      }
+    `,
+  }
 )
 
 export const Artwork = createFragmentContainer(
@@ -30,28 +32,32 @@ export const Artwork = createFragmentContainer(
       )}
     </div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artwork on Artwork {
-      image {
-        url
+  {
+    artwork: graphql`
+      fragment MockRelayRendererFixtures_artwork on Artwork {
+        image {
+          url
+        }
+        artist {
+          id
+        }
+        ...MockRelayRendererFixtures_artworkMetadata
       }
-      artist {
-        id
-      }
-      ...MockRelayRendererFixtures_artworkMetadata
-    }
-  `
+    `,
+  }
 )
 
 const Artist = createFragmentContainer(
   (props: { artist: MockRelayRendererFixtures_artist }) => (
     <div>{props.artist.name}</div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artist on Artist {
-      name
-    }
-  `
+  {
+    artist: graphql`
+      fragment MockRelayRendererFixtures_artist on Artist {
+        name
+      }
+    `,
+  }
 )
 
 const ArtistQueryRenderer = (props: { id: string }) => (

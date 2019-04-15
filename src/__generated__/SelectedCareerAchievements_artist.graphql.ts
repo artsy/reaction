@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _SelectedCareerAchievementsArtistPage_artist$ref: unique symbol;
-export type SelectedCareerAchievementsArtistPage_artist$ref = typeof _SelectedCareerAchievementsArtistPage_artist$ref;
-export type SelectedCareerAchievementsArtistPage_artist = {
+declare const _SelectedCareerAchievements_artist$ref: unique symbol;
+export type SelectedCareerAchievements_artist$ref = typeof _SelectedCareerAchievements_artist$ref;
+export type SelectedCareerAchievements_artist = {
     readonly _id: string;
     readonly highlights: ({
         readonly partners: ({
@@ -32,7 +32,7 @@ export type SelectedCareerAchievementsArtistPage_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SelectedCareerAchievementsArtistPage_artist$ref;
+    readonly " $refType": SelectedCareerAchievements_artist$ref;
 };
 
 
@@ -47,7 +47,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "SelectedCareerAchievementsArtistPage_artist",
+  "name": "SelectedCareerAchievements_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [
@@ -294,5 +294,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3ef695a3f676f52a0b02550350ea5f6';
+(node as any).hash = '87b6c981376c85f3657f9b6e6fd372c5';
 export default node;

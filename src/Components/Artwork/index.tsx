@@ -120,9 +120,8 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
   }
 }
 
-export default createFragmentContainer(
-  Artwork,
-  graphql`
+export default createFragmentContainer(Artwork, {
+  artwork: graphql`
     fragment Artwork_artwork on Artwork {
       id
       image {
@@ -131,5 +130,5 @@ export default createFragmentContainer(
       }
       ...Metadata_artwork
     }
-  `
-)
+  `,
+})

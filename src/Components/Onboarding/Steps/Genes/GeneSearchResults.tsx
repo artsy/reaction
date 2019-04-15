@@ -1,4 +1,4 @@
-import { GeneSearchResultsContent_viewer } from "__generated__/GeneSearchResultsContent_viewer.graphql"
+import { GeneSearchResults_viewer } from "__generated__/GeneSearchResults_viewer.graphql"
 import {
   GeneSearchResultsFollowGeneMutation,
   GeneSearchResultsFollowGeneMutationResponse,
@@ -23,7 +23,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-type Gene = GeneSearchResultsContent_viewer["match_gene"][0]
+type Gene = GeneSearchResults_viewer["match_gene"][0]
 
 interface ContainerProps extends FollowProps {
   term: string
@@ -32,7 +32,7 @@ interface ContainerProps extends FollowProps {
 interface Props extends React.HTMLProps<HTMLAnchorElement>, ContainerProps {
   tracking?: TrackingProp
   relay?: RelayProp
-  viewer: GeneSearchResultsContent_viewer
+  viewer: GeneSearchResults_viewer
 }
 
 const NoResultsContainer = styled.div`
@@ -168,20 +168,22 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
 
 const GeneSearchResultsContentContainer = createFragmentContainer(
   GeneSearchResultsContent,
-  graphql`
-    fragment GeneSearchResultsContent_viewer on Viewer {
-      match_gene(term: $term) {
-        name
-        id
-        _id
-        image {
-          cropped(width: 100, height: 100) {
-            url
+  {
+    viewer: graphql`
+      fragment GeneSearchResults_viewer on Viewer {
+        match_gene(term: $term) {
+          name
+          id
+          _id
+          image {
+            cropped(width: 100, height: 100) {
+              url
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 const GeneSearchResultsComponent: React.SFC<ContainerProps & ContextProps> = ({
@@ -195,7 +197,7 @@ const GeneSearchResultsComponent: React.SFC<ContainerProps & ContextProps> = ({
       query={graphql`
         query GeneSearchResultsQuery($term: String!) {
           viewer {
-            ...GeneSearchResultsContent_viewer
+            ...GeneSearchResults_viewer
           }
         }
       `}

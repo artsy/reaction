@@ -47,9 +47,8 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
   )
 }
 
-export const ShowsRouteFragmentContainer = createFragmentContainer(
-  ShowsRoute,
-  graphql`
+export const ShowsRouteFragmentContainer = createFragmentContainer(ShowsRoute, {
+  viewer: graphql`
     fragment Shows_viewer on Viewer
       @argumentDefinitions(
         currentShowsStatus: { type: "String", defaultValue: "running" }
@@ -78,5 +77,5 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(
           @arguments(sort: $pastShowsSort, status: $pastShowsStatus)
       }
     }
-  `
-)
+  `,
+})

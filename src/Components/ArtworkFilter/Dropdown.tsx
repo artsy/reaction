@@ -181,9 +181,8 @@ const StyledDropdown = styled(Dropdown)`
   margin-left: -1px;
 `
 
-export default createFragmentContainer(
-  StyledDropdown,
-  graphql`
+export default createFragmentContainer(StyledDropdown, {
+  aggregation: graphql`
     fragment Dropdown_aggregation on ArtworksAggregationResults {
       slice
       counts {
@@ -192,5 +191,5 @@ export default createFragmentContainer(
         count
       }
     }
-  `
-)
+  `,
+})

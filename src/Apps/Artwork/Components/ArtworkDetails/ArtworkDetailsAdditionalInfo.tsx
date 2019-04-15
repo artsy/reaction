@@ -80,28 +80,30 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
 
 export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentContainer(
   ArtworkDetailsAdditionalInfo,
-  graphql`
-    fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
-      series
-      publisher
-      manufacturer
-      image_rights
-      framed {
-        label
-        details
+  {
+    artwork: graphql`
+      fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
+        series
+        publisher
+        manufacturer
+        image_rights
+        framed {
+          label
+          details
+        }
+        signatureInfo {
+          label
+          details
+        }
+        conditionDescription {
+          label
+          details
+        }
+        certificateOfAuthenticity {
+          label
+          details
+        }
       }
-      signatureInfo {
-        label
-        details
-      }
-      conditionDescription {
-        label
-        details
-      }
-      certificateOfAuthenticity {
-        label
-        details
-      }
-    }
-  `
+    `,
+  }
 )

@@ -82,9 +82,8 @@ export class CollectApp extends Component<CollectAppProps> {
   }
 }
 
-export const CollectAppFragmentContainer = createFragmentContainer(
-  CollectApp,
-  graphql`
+export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
+  viewer: graphql`
     fragment CollectApp_viewer on Viewer
       @argumentDefinitions(
         medium: { type: "String", defaultValue: "*" }
@@ -130,5 +129,5 @@ export const CollectAppFragmentContainer = createFragmentContainer(
           color: $color
         )
     }
-  `
-)
+  `,
+})

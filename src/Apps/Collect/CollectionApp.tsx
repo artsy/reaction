@@ -72,59 +72,61 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
 export const CollectionAppFragmentContainer = createFragmentContainer(
   CollectionApp,
-  graphql`
-    fragment CollectionApp_collection on MarketingCollection
-      @argumentDefinitions(
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+  {
+    collection: graphql`
+      fragment CollectionApp_collection on MarketingCollection
+        @argumentDefinitions(
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+          }
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID" }
+          for_sale: { type: "Boolean" }
+          at_auction: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
+          inquireable_only: { type: "Boolean" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+          price_range: { type: "String" }
+          height: { type: "String" }
+          width: { type: "String" }
+          color: { type: "String" }
+        ) {
+        id
+        slug
+        title
+        description
+        headerImage
+        category
+        credit
+        query {
+          artist_ids
+          artist_id
+          gene_id
         }
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID" }
-        for_sale: { type: "Boolean" }
-        at_auction: { type: "Boolean" }
-        acquireable: { type: "Boolean" }
-        inquireable_only: { type: "Boolean" }
-        sort: { type: "String", defaultValue: "-partner_updated_at" }
-        price_range: { type: "String" }
-        height: { type: "String" }
-        width: { type: "String" }
-        color: { type: "String" }
-      ) {
-      id
-      slug
-      title
-      description
-      headerImage
-      category
-      credit
-      query {
-        artist_ids
-        artist_id
-        gene_id
-      }
-      artworks(
-        aggregations: $aggregations
-        include_medium_filter_in_aggregation: true
-      ) {
-        ...SeoProductsForArtworks_artworks
-      }
+        artworks(
+          aggregations: $aggregations
+          include_medium_filter_in_aggregation: true
+        ) {
+          ...SeoProductsForArtworks_artworks
+        }
 
-      ...CollectionFilterContainer_collection
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          for_sale: $for_sale
-          sort: $sort
-          acquireable: $acquireable
-          at_auction: $at_auction
-          inquireable_only: $inquireable_only
-          price_range: $price_range
-          height: $height
-          width: $width
-          color: $color
-        )
-    }
-  `
+        ...CollectionFilterContainer_collection
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            for_sale: $for_sale
+            sort: $sort
+            acquireable: $acquireable
+            at_auction: $at_auction
+            inquireable_only: $inquireable_only
+            price_range: $price_range
+            height: $height
+            width: $width
+            color: $color
+          )
+      }
+    `,
+  }
 )

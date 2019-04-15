@@ -1,5 +1,5 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
-import { MarketInsightsArtistPage_artist } from "__generated__/MarketInsightsArtistPage_artist.graphql"
+import { ArtistMarketInsights_artist } from "__generated__/ArtistMarketInsights_artist.graphql"
 import {
   hasSections,
   highestCategory,
@@ -9,7 +9,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 
 export interface MarketInsightsProps {
-  artist: MarketInsightsArtistPage_artist
+  artist: ArtistMarketInsights_artist
   border?: boolean
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
@@ -121,51 +121,53 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
   }
 }
 
-export const MarketInsightsFragmentContainer = createFragmentContainer(
+export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
   MarketInsights,
-  graphql`
-    fragment MarketInsightsArtistPage_artist on Artist
-      @argumentDefinitions(
-        partner_category: {
-          type: "[String]"
-          defaultValue: ["blue-chip", "top-established", "top-emerging"]
-        }
-      ) {
-      _id
-      collections
-      highlights {
-        partners(
-          first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+  {
+    artist: graphql`
+      fragment ArtistMarketInsights_artist on Artist
+        @argumentDefinitions(
+          partner_category: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
         ) {
-          edges {
-            node {
-              categories {
-                id
+        _id
+        collections
+        highlights {
+          partners(
+            first: 10
+            display_on_partner_profile: true
+            represented_by: true
+            partner_category: $partner_category
+          ) {
+            edges {
+              node {
+                categories {
+                  id
+                }
               }
             }
           }
         }
-      }
-      auctionResults(
-        recordsTrusted: true
-        first: 1
-        sort: PRICE_AND_DATE_DESC
-      ) {
-        edges {
-          node {
-            price_realized {
-              display(format: "0a")
+        auctionResults(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized {
+                display(format: "0a")
+              }
+              organization
+              sale_date(format: "YYYY")
             }
-            organization
-            sale_date(format: "YYYY")
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 const TextWrap = props => (

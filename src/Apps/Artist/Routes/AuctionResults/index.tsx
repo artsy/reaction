@@ -13,9 +13,11 @@ export const AuctionResultsRoute = (props: AuctionResultsRouteProps) => {
 
 export const AuctionResultsRouteFragmentContainer = createFragmentContainer(
   AuctionResultsRoute,
-  graphql`
-    fragment AuctionResults_artist on Artist {
-      ...ArtistAuctionResults_artist
-    }
-  `
+  {
+    artist: graphql`
+      fragment AuctionResults_artist on Artist {
+        ...ArtistAuctionResults_artist
+      }
+    `,
+  }
 )

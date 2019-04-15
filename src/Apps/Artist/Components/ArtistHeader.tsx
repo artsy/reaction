@@ -272,27 +272,29 @@ export class SmallArtistHeader extends Component<Props> {
 
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
-  graphql`
-    fragment ArtistHeader_artist on Artist {
-      _id
-      id
-      name
-      nationality
-      years
-      counts {
-        follows
-      }
-      carousel {
-        images {
-          href
-          resized(height: 200) {
-            url
-            width
-            height
+  {
+    artist: graphql`
+      fragment ArtistHeader_artist on Artist {
+        _id
+        id
+        name
+        nationality
+        years
+        counts {
+          follows
+        }
+        carousel {
+          images {
+            href
+            resized(height: 200) {
+              url
+              width
+              height
+            }
           }
         }
+        ...FollowArtistButton_artist
       }
-      ...FollowArtistButton_artist
-    }
-  `
+    `,
+  }
 )
