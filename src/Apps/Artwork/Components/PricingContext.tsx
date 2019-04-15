@@ -13,10 +13,35 @@ import { PricingContextModal } from "./PricingContextModal"
 interface PricingContextProps {
   artwork: PricingContext_artwork
 }
+import { createCollectUrl } from "./../Utils/createCollectUrl"
 
 function PricingContext({ artwork }: PricingContextProps) {
   if (!artwork.pricingContext) {
     return null
+  }
+
+  const openCollectPage = (
+    minCents,
+    maxCents,
+    category,
+    widthCm,
+    heightCm,
+    artistId
+  ) => {
+    const url = createCollectUrl({
+      minCents,
+      maxCents,
+      category,
+      widthCm,
+      heightCm,
+      artistId,
+    })
+
+    if (typeof window !== "undefined") {
+      return () => {
+        window.open(url)
+      }
+    }
   }
 
   const priceCents = artwork.priceCents.max
@@ -58,6 +83,14 @@ function PricingContext({ artwork }: PricingContextProps) {
                 title,
                 description: bin.numArtworks + " works",
               },
+              onClick: openCollectPage(
+                bin.minPriceCents,
+                bin.maxPriceCents,
+                artwork.category,
+                artwork.widthCm,
+                artwork.heightCm,
+                artwork.artists[0].id
+              ),
               highlightLabel: artworkFallsInThisBin
                 ? {
                     title,
@@ -81,6 +114,12 @@ export const PricingContextFragmentContainer = createFragmentContainer(
           min
           max
         }
+        artists {
+          id
+        }
+        widthCm
+        heightCm
+        category
         pricingContext @include(if: $enablePricingContext) {
           filterDescription
           bins {
