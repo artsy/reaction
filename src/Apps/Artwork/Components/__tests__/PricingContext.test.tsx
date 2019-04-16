@@ -129,12 +129,6 @@ describe("PricingContext", () => {
     expect(wrapper.text()).toContain("$0")
   })
 
-  it("displays $0 as the minimum price label if the minimum price is null", async () => {
-    const wrapper = await getWrapper()
-    expect(wrapper.text()).not.toContain("null")
-    expect(wrapper.text()).toContain("$0")
-  })
-
   it("displays '1 work' not '0 works' in highlight label if there are zero artworks for the highlighted bin", async () => {
     const wrapper = await getWrapper()
     const highlightedBar = wrapper.find(BarBox).at(2)
