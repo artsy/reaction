@@ -1,3 +1,21 @@
+# v16.0.1 (Tue Apr 16 2019)
+
+#### 🐛  Bug Fix
+
+- Update reaction to route users to the correct place [#2286](https://github.com/artsy/reaction/pull/2286) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.8.2 [#2300](https://github.com/artsy/reaction/pull/2300) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.0.0 (Mon Apr 15 2019)
 
 #### 💥  Breaking Change
