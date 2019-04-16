@@ -77,11 +77,18 @@ function PricingContext({ artwork }: PricingContextProps) {
             const title = `${binMinPrice}–${bin.maxPrice}`
             const artworkFallsInThisBin =
               priceCents >= bin.minPriceCents && priceCents < bin.maxPriceCents
+
+            const binValue =
+              artworkFallsInThisBin && bin.numArtworks === 0
+                ? 1
+                : bin.numArtworks
+            const labelSuffix = binValue === 1 ? " work" : " works"
+
             return {
-              value: bin.numArtworks,
+              value: binValue,
               label: {
                 title,
-                description: bin.numArtworks + " works",
+                description: binValue + labelSuffix,
               },
               onClick: openCollectPage(
                 bin.minPriceCents,
