@@ -1,4 +1,4 @@
-import { QuestionCircleIcon } from "@artsy/palette"
+import { BarBox, QuestionCircleIcon } from "@artsy/palette"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -137,7 +137,7 @@ describe("PricingContext", () => {
 
   it("displays '1 work' not '0 works' in highlight label if there are zero artworks for the highlighted bin", async () => {
     const wrapper = await getWrapper()
-    const highlightedBar = wrapper.find(".Bar__BarBox-vx0va3-0").at(2)
+    const highlightedBar = wrapper.find(BarBox).at(2)
 
     highlightedBar.simulate("mouseenter")
     expect(wrapper.text()).not.toContain("0 works")
@@ -146,7 +146,7 @@ describe("PricingContext", () => {
 
   it("displays 'work' singular not 'works' plural in label when there is only 1 artwork in a bin", async () => {
     const wrapper = await getWrapper()
-    const secondBar = wrapper.find(".Bar__BarBox-vx0va3-0").at(1)
+    const secondBar = wrapper.find(BarBox).at(1)
 
     secondBar.simulate("mouseenter")
     expect(wrapper.text()).not.toContain("1 works")
