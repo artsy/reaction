@@ -12,10 +12,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.1.tgz#3d83384bf3323fbd4679a2d73155ab85dc73e850"
   integrity sha512-jqrC40t1P6w9zIvsJJhWe8pxLWdEC/kJQmDc4/b3vAnGy1EsJpcIJGUys37kwut7tDYPiypUF06SImtZVLGQnQ==
 
-"@artsy/palette@4.8.1":
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.8.1.tgz#7fc02c7e9a97ce22e8f84b2d1db598a39309a615"
-  integrity sha512-izgIm4BjW9M7drZj9+8J8vuy2hJLW/xTo8dtrzxjQIRNlNwqBIJbu1wERBrnURHkZP1bzxxos2Gqv/wVUEsmHQ==
+"@artsy/palette@4.8.2":
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.8.2.tgz#e9f0754bb1b1c5215b2d0fb075dfec190118ff6e"
+  integrity sha512-2nCxJXZYxymVo3fiSlJcJnJBVe9ySTW5tvewDeTFLz9r3xja7nj9lZfeeALjCaCcyrQCrTpi8IFUYsErJsHZ0w==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
@@ -1713,6 +1713,11 @@
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
+
+"@types/qs@^6.5.3":
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.5.3.tgz#1c3b71b091eaeaf5924538006b7f70603ce63d38"
+  integrity sha512-Jugo5V/1bS0fRhy2z8+cUAHEyWOATaz4rbyLVvcFs7+dXp5HfwpEwzF1Q11bB10ApUqHf+yTauxI0UXQDwGrbA==
 
 "@types/react-dom@^16.8.2":
   version "16.8.2"

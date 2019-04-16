@@ -1,3 +1,46 @@
+# v16.0.0 (Mon Apr 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Remove the freeform aspect of Reaction’s SystemContext [#2291](https://github.com/artsy/reaction/pull/2291) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.15.0 (Mon Apr 15 2019)
+
+#### 🚀  Enhancement
+
+- Adds the bid count to Artist/Artwork page Artwork grids [#2248](https://github.com/artsy/reaction/pull/2248) ([@orta](https://github.com/orta))
+
+#### Authors: 1
+
+- Orta ([@orta](https://github.com/orta))
+
+---
+
+# v15.14.11 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes search bar button press handling. [#2298](https://github.com/artsy/reaction/pull/2298) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.8.1
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#2297](https://github.com/artsy/reaction/pull/2297) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.14.10 (Mon Apr 15 2019)
 
 #### 🐛  Bug Fix

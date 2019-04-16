@@ -1,4 +1,4 @@
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { createMockNetworkLayer } from "DevTools"
@@ -85,20 +85,18 @@ describe("buildClientApp", () => {
   it("passes along initial context values", async done => {
     const HomeApp = () => {
       return (
-        <ContextConsumer>
+        <SystemContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
-              "foo",
               "mediator",
               "relayEnvironment",
-              "resolver",
               "routes",
               "user",
             ])
             setImmediate(done)
             return <div />
           }}
-        </ContextConsumer>
+        </SystemContextConsumer>
       )
     }
 
@@ -113,7 +111,6 @@ describe("buildClientApp", () => {
         },
       ],
       context: {
-        foo: "bar",
         mediator: {
           trigger: jest.fn(),
         },

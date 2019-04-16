@@ -1,6 +1,6 @@
 import { AuctionTimer_sale } from "__generated__/AuctionTimer_sale.graphql"
 import { AuctionTimerQuery } from "__generated__/AuctionTimerQuery.graphql"
-import { SystemContext } from "Artsy/SystemContext"
+import { SystemContext } from "Artsy"
 import { Timer } from "Components/v2/Timer"
 import moment from "moment-timezone"
 import React, { useContext } from "react"

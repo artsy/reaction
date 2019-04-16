@@ -32,6 +32,13 @@ fragment PricingContext_artwork on Artwork {
     min
     max
   }
+  artists {
+    id
+    __id
+  }
+  widthCm
+  heightCm
+  category
   pricingContext @include(if: $enablePricingContext) {
     filterDescription
     bins {
@@ -75,7 +82,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  widthCm\n  heightCm\n  category\n  pricingContext @include(if: $enablePricingContext) {\n    filterDescription\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -141,6 +148,46 @@ return {
                 "storageKey": null
               }
             ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "artists",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Artist",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              },
+              v2
+            ]
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "widthCm",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "heightCm",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "category",
+            "args": null,
+            "storageKey": null
           },
           v2,
           {

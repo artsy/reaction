@@ -13,9 +13,9 @@ import {
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { FC, useContext } from "react"
 import {

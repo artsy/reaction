@@ -1,6 +1,6 @@
 import { PriceRange } from "@artsy/palette"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
-import { SystemContext } from "Artsy/SystemContext"
+import { SystemContext } from "Artsy"
 import React, { useContext } from "react"
 
 export const PriceRangeFilter: React.FC<{

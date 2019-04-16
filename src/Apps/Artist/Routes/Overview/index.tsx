@@ -2,10 +2,10 @@ import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
+import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { withContext } from "Artsy/SystemContext"
 import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Components/Artist/ArtistCollectionsRail"
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
@@ -97,7 +97,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const showGenes = this.maybeShowGenes()
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user }) => {
           const hasArtistRecommendations =
             get(artist, a => a.related.artists.edges.length, 0) > 0
@@ -192,13 +192,13 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             </>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const OverviewRouteFragmentContainer = createFragmentContainer(
-  withContext(OverviewRoute),
+  withSystemContext(OverviewRoute),
   {
     artist: graphql`
       fragment Overview_artist on Artist

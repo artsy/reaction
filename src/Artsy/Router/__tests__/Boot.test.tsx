@@ -1,4 +1,4 @@
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { Boot } from "Artsy/Router"
 import { ErrorBoundary } from "Components/ErrorBoundary"
 import { mount } from "enzyme"
@@ -24,11 +24,11 @@ describe("Boot", () => {
 
     const SomeOtherComponent = () => {
       return (
-        <ContextConsumer>
+        <SystemContextConsumer>
           {({ welcomeMessage }: any) => {
             return <div>{welcomeMessage}</div>
           }}
-        </ContextConsumer>
+        </SystemContextConsumer>
       )
     }
 
@@ -36,7 +36,7 @@ describe("Boot", () => {
   })
 
   it("injects ContextProvider", () => {
-    expect(getWrapper().find("ContextProvider").length).toEqual(1)
+    expect(getWrapper().find("SystemContextProvider").length).toEqual(1)
   })
 
   it("injects ResponsiveProvider", () => {

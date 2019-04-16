@@ -1,7 +1,7 @@
 import { Box, Link, Sans, Separator, Spacer } from "@artsy/palette"
+import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
 import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"

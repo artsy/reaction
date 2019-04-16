@@ -1,5 +1,5 @@
 import { Link } from "@artsy/palette"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
@@ -18,9 +18,9 @@ describe("Sticky footer", () => {
   //   it("renders the StickyFooter properly", () => {
   //     const component = renderer
   //       .create(
-  //         <ContextProvider>
+  //         <SystemContextProvider>
   //           <StickyFooter artworkId="whatever" />
-  //         </ContextProvider>
+  //         </SystemContextProvider>
   //       )
   //       .toJSON()
   //     expect(component).toMatchSnapshot()
@@ -45,9 +45,9 @@ describe("Sticky footer", () => {
 
   it("handles contact specialist modal", () => {
     const component = mount(
-      <ContextProvider mediator={mediatorMock}>
+      <SystemContextProvider mediator={mediatorMock}>
         <StickyFooter orderType="OFFER" artworkId="whatever" />
-      </ContextProvider>
+      </SystemContextProvider>
     )
 
     component
@@ -93,9 +93,9 @@ describe("Sticky footer", () => {
       it("tracks click on 'ask a question'", () => {
         const { Component, dispatch } = mockTracking(StickyFooter)
         const component = mount(
-          <ContextProvider mediator={mediatorMock}>
+          <SystemContextProvider mediator={mediatorMock}>
             <Component orderType="OFFER" artworkId="whatever" />
-          </ContextProvider>
+          </SystemContextProvider>
         )
         component
           .find(Link)
@@ -134,9 +134,9 @@ describe("Sticky footer", () => {
       it("tracks click on 'ask a question'", () => {
         const { Component, dispatch } = mockTracking(StickyFooter)
         const component = mount(
-          <ContextProvider mediator={mediatorMock}>
+          <SystemContextProvider mediator={mediatorMock}>
             <Component orderType="BUY" artworkId="whatever" />
-          </ContextProvider>
+          </SystemContextProvider>
         )
         component
           .find(Link)

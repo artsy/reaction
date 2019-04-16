@@ -1,7 +1,7 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { ContextProps, SystemContext } from "Artsy"
+import { SystemContext, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
@@ -34,7 +34,7 @@ import { SearchInputContainer } from "./SearchInputContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
 }
@@ -190,14 +190,23 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ focused: true })
   }
 
-  onBlur = e => {
+  onBlur = event => {
+    if (
+      event.relatedTarget &&
+      event.relatedTarget.form &&
+      event.relatedTarget.form === event.target.form
+    ) {
+      this.userClickedOnDescendant = true
+      return
+    }
     this.setState({ focused: false })
   }
 
-  onSuggestionsClearRequested = () => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we initialize state when that happens, the link will get removed
-    //  from the DOM before the browser has a chance to follow it.
+  onSuggestionsClearRequested = e => {
+    // This event _also_ fires when a user clicks on a link in the preview pane
+    //  or the magnifying glass icon. If we initialize state when that happens,
+    //  the link will get removed from the DOM before the browser has a chance
+    //  to follow it.
     if (!this.userClickedOnDescendant) {
       this.setState({ term: "", entityID: null, entityType: null })
     }

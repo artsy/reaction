@@ -1,7 +1,7 @@
 import { ArtworkActions_artwork } from "__generated__/ArtworkActions_artwork.graphql"
+import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
 import SaveButton, { SaveProps, SaveState } from "Components/Artwork/Save"
 import { compact } from "lodash"
 import { isNull } from "lodash"

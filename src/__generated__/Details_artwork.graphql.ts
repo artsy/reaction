@@ -21,12 +21,12 @@ export type Details_artwork = {
     }) | null;
     readonly sale: ({
         readonly is_auction: boolean | null;
-        readonly is_live_open: boolean | null;
-        readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
-        readonly display_timely_at: string | null;
     }) | null;
     readonly sale_artwork: ({
+        readonly counts: ({
+            readonly bidder_positions: any | null;
+        }) | null;
         readonly highest_bid: ({
             readonly display: string | null;
         }) | null;
@@ -166,28 +166,7 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_live_open",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "is_open",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "name": "is_closed",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "display_timely_at",
           "args": null,
           "storageKey": null
         },
@@ -203,6 +182,24 @@ return {
       "concreteType": "SaleArtwork",
       "plural": false,
       "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "counts",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "SaleArtworkCounts",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "bidder_positions",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -241,5 +238,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e0e2014a654a44aa66ac03435b60a897';
+(node as any).hash = 'a53e33484f3008f6623800dc61f8c891';
 export default node;

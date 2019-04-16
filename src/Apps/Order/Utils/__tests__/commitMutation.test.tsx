@@ -1,6 +1,6 @@
 import { commitMutationTest1Mutation } from "__generated__/commitMutationTest1Mutation.graphql"
 import { settingOrderPaymentFailed } from "Apps/Order/Routes/__fixtures__/MutationResults"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { createMockNetworkLayer2 } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
@@ -24,9 +24,9 @@ describe(injectCommitMutation, () => {
   })
 
   const Provider: React.FC = props => (
-    <ContextProvider relayEnvironment={relayEnvironment}>
+    <SystemContextProvider relayEnvironment={relayEnvironment}>
       {props.children}
-    </ContextProvider>
+    </SystemContextProvider>
   )
 
   it("injects two props", () => {

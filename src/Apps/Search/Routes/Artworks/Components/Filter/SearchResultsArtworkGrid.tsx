@@ -2,7 +2,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -98,7 +98,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     const emptyStateComponent = <ZeroState entity="artworks" term={term} />
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
@@ -138,7 +138,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
             </Subscribe>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

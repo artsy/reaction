@@ -40,6 +40,18 @@ const mockPricingContext = {
   ],
 }
 
+const mockArtwork = {
+  artists: [{ id: "artist-id" }],
+  widthCm: 234,
+  heightCm: 234,
+  category: "Photography",
+  pricingContext: mockPricingContext,
+  priceCents: {
+    min: 23455,
+    max: null,
+  },
+}
+
 describe("PricingContext", () => {
   let enablePricingContext = true
   beforeEach(() => {
@@ -48,11 +60,7 @@ describe("PricingContext", () => {
   function getWrapper(
     mockData: any = {
       artwork: {
-        pricingContext: mockPricingContext,
-        priceCents: {
-          min: 23455,
-          max: null,
-        },
+        ...mockArtwork,
       },
     }
   ) {
@@ -86,10 +94,7 @@ describe("PricingContext", () => {
   it("renders as null if no data present", async () => {
     const wrapper = await getWrapper({
       artwork: {
-        priceCents: {
-          min: 12345,
-          max: null,
-        },
+        ...mockArtwork,
         pricingContext: null,
       },
     })
@@ -151,11 +156,11 @@ describe("PricingContext", () => {
   it("uses the mean of min+max when list price is a range", async () => {
     const wrapper = await getWrapper({
       artwork: {
+        ...mockArtwork,
         priceCents: {
           min: 15500,
           max: 25500,
         },
-        pricingContext: mockPricingContext,
       },
     })
 

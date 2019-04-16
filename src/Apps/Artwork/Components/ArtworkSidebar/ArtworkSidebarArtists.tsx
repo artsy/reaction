@@ -1,5 +1,5 @@
 import { Box, Serif } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 
 import { FollowIcon } from "Components/v2"
@@ -122,7 +122,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       artwork: { artists, cultural_maker },
     } = this.props
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box>
@@ -135,7 +135,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
             </Box>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

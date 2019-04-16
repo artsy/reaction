@@ -8,11 +8,11 @@ import {
 } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
+import { Mediator } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
@@ -139,7 +139,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
       : "Show artist insights"
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => (
           <>
             <StackableBorderBox p={2} flexDirection="column">
@@ -230,7 +230,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
             )}
           </>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
@@ -308,7 +308,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
 
 export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ relayEnvironment }) => {
         return (
           <QueryRenderer<ArtistInfoQuery>
@@ -325,6 +325,6 @@ export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
           />
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

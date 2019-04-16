@@ -1,5 +1,5 @@
 import { CollectFilterContainer_viewer } from "__generated__/CollectFilterContainer_viewer.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectRefetchContainer } from "./CollectRefetch"
@@ -19,7 +19,7 @@ export class CollectFilterContainer extends Component<
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <FilterContainer
@@ -36,7 +36,7 @@ export class CollectFilterContainer extends Component<
             </FilterContainer>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

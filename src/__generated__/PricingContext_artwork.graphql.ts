@@ -8,6 +8,12 @@ export type PricingContext_artwork = {
         readonly min: number | null;
         readonly max: number | null;
     }) | null;
+    readonly artists: ReadonlyArray<({
+        readonly id: string;
+    }) | null> | null;
+    readonly widthCm: number | null;
+    readonly heightCm: number | null;
+    readonly category: string | null;
     readonly pricingContext?: ({
         readonly filterDescription: string;
         readonly bins: ReadonlyArray<{
@@ -23,7 +29,15 @@ export type PricingContext_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "PricingContext_artwork",
   "type": "Artwork",
@@ -62,12 +76,46 @@ const node: ConcreteFragment = {
       ]
     },
     {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "artists",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Artist",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "widthCm",
       "args": null,
       "storageKey": null
     },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "heightCm",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "category",
+      "args": null,
+      "storageKey": null
+    },
+    v0,
     {
       "kind": "Condition",
       "passingValue": true,
@@ -141,5 +189,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7101905288cecfbd7f4432d77a507e22';
+})();
+(node as any).hash = 'd08f1d5832ee5a7754767051836b7f34';
 export default node;

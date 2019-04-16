@@ -1,14 +1,14 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { Contents } from "../Artist/MarketDataSummary"
 
 function RenderMarketDataSummaryFor(artistID: string) {
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <Contents artistID={artistID} />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 }
 

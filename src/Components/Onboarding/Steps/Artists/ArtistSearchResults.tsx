@@ -4,7 +4,7 @@ import {
   ArtistSearchResultsArtistMutationResponse,
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
@@ -201,7 +201,7 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
 )
 
 const ArtistSearchResultsComponent: React.SFC<
-  ContainerProps & ContextProps
+  ContainerProps & SystemContextProps
 > = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer<ArtistSearchResultsQuery>
@@ -231,4 +231,6 @@ const ArtistSearchResultsComponent: React.SFC<
   )
 }
 
-export const ArtistSearchResults = withContext(ArtistSearchResultsComponent)
+export const ArtistSearchResults = withSystemContext(
+  ArtistSearchResultsComponent
+)

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 
 import { TagContentsArtworksQuery } from "__generated__/TagContentsArtworksQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {
@@ -19,7 +19,7 @@ export interface StateChangePayload {
   sort: Sort
 }
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   filters?: Partial<Filters>
   tagID: string
   sort?: Sort
@@ -146,4 +146,4 @@ class TagContents extends React.Component<Props, State> {
   }
 }
 
-export const Contents = withContext(TagContents)
+export const Contents = withSystemContext(TagContents)

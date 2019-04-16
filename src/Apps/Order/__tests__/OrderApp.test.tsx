@@ -1,5 +1,5 @@
 import { routes } from "Apps/Order/routes"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import { mount } from "enzyme"
 import { Resolver } from "found-relay"
@@ -462,9 +462,9 @@ describe("OrderApp", () => {
     return mount(
       <MockBoot>
         <HeadProvider>
-          <ContextProvider {...context}>
+          <SystemContextProvider {...context}>
             <OrderApp {...props} />
-          </ContextProvider>
+          </SystemContextProvider>
         </HeadProvider>
       </MockBoot>
     )

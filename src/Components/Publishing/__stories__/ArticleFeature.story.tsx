@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { Article } from "Components/Publishing/Article"
 import {
   BasicArticle,
@@ -20,14 +20,14 @@ import React from "react"
 storiesOf("Publishing/Articles/Feature/Fullscreen", module)
   .add("Fullscreen", () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={FeatureArticle}
           display={Display("image")}
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Series", () => {
@@ -38,9 +38,9 @@ storiesOf("Publishing/Articles/Feature/Fullscreen", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article article={article} showTooltips />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Sponsored series", () => {
@@ -51,9 +51,9 @@ storiesOf("Publishing/Articles/Feature/Fullscreen", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article article={article} showTooltips />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Custom color", () => {
@@ -64,14 +64,14 @@ storiesOf("Publishing/Articles/Feature/Fullscreen", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={article}
           showTooltips
           backgroundColor="gainsboro"
           color="orangered"
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
 
@@ -86,9 +86,9 @@ storiesOf("Publishing/Articles/Feature", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article article={article} showTooltips />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Split", () => {
@@ -101,9 +101,9 @@ storiesOf("Publishing/Articles/Feature", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article article={article} showTooltips />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Basic", () => {
@@ -119,7 +119,7 @@ storiesOf("Publishing/Articles/Feature", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={article}
           display={Display("image")}
@@ -127,19 +127,19 @@ storiesOf("Publishing/Articles/Feature", module)
           isTruncated
           showTooltips
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Super Article", () => {
     const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={article}
           isSuper
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })

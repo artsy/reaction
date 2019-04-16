@@ -17,7 +17,7 @@ import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 import { PricingContextFragmentContainer as PricingContext } from "./Components/PricingContext"
 
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -199,9 +199,9 @@ export class ArtworkApp extends React.Component<Props> {
           </Row>
 
           <div id="lightbox-container" />
-          <ContextConsumer>
+          <SystemContextConsumer>
             {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
-          </ContextConsumer>
+          </SystemContextConsumer>
         </HorizontalPadding>
       </AppContainer>
     )
