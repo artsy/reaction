@@ -6,12 +6,10 @@ import * as Schema from "Artsy/Analytics/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
-import { stringify } from "qs"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
-import styled from "styled-components"
 import { get } from "Utils/get"
+import { openAuthModal } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -19,41 +17,9 @@ interface RecommendedArtistProps {
 const HEIGHT = 150
 
 const handleOpenAuth = (mediator, artist) => {
-  if (sd.IS_MOBILE) {
-    openMobileAuth(artist)
-  } else if (mediator) {
-    openDesktopAuth(mediator, artist)
-  } else {
-    window.location.href = "/login"
-  }
-}
-
-const openMobileAuth = artist => {
-  const params = stringify({
-    action: "follow",
+  openAuthModal(mediator, {
+    entity: artist,
     contextModule: Schema.ContextModule.RecommendedArtists,
-    intent: "follow artist",
-    kind: "artist",
-    objectId: artist.id,
-    signUpIntent: "follow artist",
-    trigger: "click",
-    entityName: artist.name,
-  })
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-  window.location.href = href
-}
-
-const openDesktopAuth = (mediator, artist) => {
-  mediator.trigger("open:auth", {
-    mode: "signup",
-    copy: `Sign up to follow ${artist.name}`,
-    signupIntent: "follow artist",
-    afterSignUpAction: {
-      kind: "artist",
-      action: "follow",
-      objectId: artist.id,
-    },
   })
 }
 

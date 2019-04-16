@@ -5,10 +5,8 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
+import { openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
-
-import { stringify } from "qs"
-import { data as sd } from "sharify"
 
 import {
   Avatar,
@@ -128,41 +126,9 @@ export const SmallArtistCard: SFC<Props> = props => (
 )
 
 const handleOpenAuth = props => {
-  if (sd.IS_MOBILE) {
-    openMobileAuth(props.artist)
-  } else if (props.mediator) {
-    openDesktopAuth(props.mediator, props.artist)
-  } else {
-    window.location.href = "/login"
-  }
-}
-
-const openMobileAuth = artist => {
-  const params = stringify({
-    action: "follow",
+  openAuthModal(props.mediator, {
+    entity: props.artist,
     contextModule: "Artwork page",
-    intent: "follow artist",
-    kind: "artist",
-    objectId: artist.id,
-    signUpIntent: "follow artist",
-    trigger: "click",
-    entityName: artist.name,
-  })
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-  window.location.href = href
-}
-
-const openDesktopAuth = (mediator, artist) => {
-  mediator.trigger("open:auth", {
-    mode: "signup",
-    copy: `Sign up to follow ${artist.name}`,
-    signupIntent: "follow artist",
-    afterSignUpAction: {
-      kind: "artist",
-      action: "follow",
-      objectId: artist.id,
-    },
   })
 }
 
