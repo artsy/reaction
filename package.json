@@ -157,7 +157,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/detect-responsive-traits": "^0.0.1",
+    "@artsy/detect-responsive-traits": "^0.0.4",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
