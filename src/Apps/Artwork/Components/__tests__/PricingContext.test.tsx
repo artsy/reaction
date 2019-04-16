@@ -1,9 +1,15 @@
-import { QuestionCircleIcon } from "@artsy/palette"
+import { BarBox, QuestionCircleIcon } from "@artsy/palette"
+import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
+import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { PricingContextFragmentContainer } from "../PricingContext"
+import {
+  PricingContext,
+  PricingContextFragmentContainer,
+} from "../PricingContext"
 
+jest.unmock("react-tracking")
 jest.unmock("react-relay")
 
 const mockPricingContext = {
@@ -143,5 +149,24 @@ describe("PricingContext", () => {
     expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
       `"$168–$247This work"`
     )
+  })
+
+  describe("Analytics", () => {
+    it("tracks click on 'Read our FAQ'", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork} />)
+      component
+        .find(BarBox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Summaries",
+        action_type: "Click",
+        subject: "Histogram Bar",
+        flow: "Artwork Price Summaries",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
   })
 })
