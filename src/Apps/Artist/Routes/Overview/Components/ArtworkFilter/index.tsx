@@ -25,6 +25,7 @@ import {
   SmallSelect,
   Spacer,
 } from "@artsy/palette"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -225,7 +226,7 @@ class Filter extends Component<Props> {
   renderZeroState() {
     const {
       artist,
-      artist: { id, name, is_followed },
+      artist: { name, is_followed },
       mediator,
       user,
     } = this.props
@@ -239,25 +240,21 @@ class Filter extends Component<Props> {
               artist={artist}
               useDeprecatedButtonStyle={false}
               user={user}
-              onOpenAuthModal={() => {
-                mediator.trigger("open:auth", {
-                  mode: "signup",
-                  copy: `Sign up to follow ${name}`,
-                  signupIntent: "follow artist",
-                  afterSignUpAction: {
-                    kind: "artist",
-                    action: "follow",
-                    objectId: id,
-                  },
-                })
-              }}
-              render={() => <a>Follow {name}</a>}
+              onOpenAuthModal={() => this.handleOpenAuth(mediator, artist)}
             />{" "}
             to receive notifications when new works are added.
           </>
         )}
       </Message>
     )
+  }
+
+  handleOpenAuth(mediator, artist) {
+    openAuthModal(mediator, {
+      entity: artist,
+      contextModule: Schema.ContextModule.ArtworkFilter,
+      intent: AuthModalIntent.FollowArtist,
+    })
   }
 
   renderSelect() {
