@@ -9,7 +9,7 @@ import { Carousel } from "Components/v2"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -20,6 +20,7 @@ const handleOpenAuth = (mediator, artist) => {
   openAuthModal(mediator, {
     entity: artist,
     contextModule: Schema.ContextModule.RecommendedArtists,
+    intent: AuthModalIntent.FollowArtist,
   })
 }
 

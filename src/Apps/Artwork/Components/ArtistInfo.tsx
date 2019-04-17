@@ -18,7 +18,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
-import { openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
@@ -86,6 +86,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     openAuthModal(mediator, {
       entity: artist,
       contextModule: "Artwork page",
+      intent: AuthModalIntent.FollowArtist,
     })
   }
 

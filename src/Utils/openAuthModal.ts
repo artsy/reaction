@@ -9,20 +9,51 @@ interface AuthReason {
     name: string
   }
   contextModule: Schema.ContextModule | string
+  intent: AuthModalIntent
+}
+
+export enum AuthModalIntent {
+  FollowArtist = "FollowArtist",
 }
 
 export const openAuthModal = (mediator: Mediator, reason: AuthReason) => {
   if (sd.IS_MOBILE) {
-    openMobileAuth(reason)
+    const intent = getMobileAuthIntent(reason)
+    if (intent) {
+      openMobileAuth(intent)
+    }
   } else if (mediator) {
-    openDesktopAuth(mediator, reason)
+    const intent = getDesktopAuthIntent(reason)
+    if (intent) {
+      openDesktopAuth(mediator, intent)
+    }
   } else {
     window.location.href = "/login"
   }
 }
 
-const openMobileAuth = ({ entity, contextModule }) => {
-  const params = stringify({
+function openMobileAuth(intent) {
+  const params = stringify(intent)
+  const href = `/sign_up?redirect-to=${window.location}&${params}`
+
+  window.location.href = href
+}
+
+function openDesktopAuth(mediator, intent) {
+  mediator.trigger("open:auth", intent)
+}
+
+function getMobileAuthIntent(reason: AuthReason) {
+  switch (reason.intent) {
+    case AuthModalIntent.FollowArtist:
+      return getMobileIntentToFollowArtist(reason)
+    default:
+      return undefined
+  }
+}
+
+function getMobileIntentToFollowArtist({ contextModule, entity }: AuthReason) {
+  return {
     action: "follow",
     contextModule,
     intent: "follow artist",
@@ -31,14 +62,20 @@ const openMobileAuth = ({ entity, contextModule }) => {
     signUpIntent: "follow artist",
     trigger: "click",
     entityName: entity.name,
-  })
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-  window.location.href = href
+  }
 }
 
-const openDesktopAuth = (mediator, { entity }) => {
-  mediator.trigger("open:auth", {
+function getDesktopAuthIntent(reason: AuthReason) {
+  switch (reason.intent) {
+    case AuthModalIntent.FollowArtist:
+      return getDesktopIntentToFollowArtist(reason)
+    default:
+      return undefined
+  }
+}
+
+function getDesktopIntentToFollowArtist({ entity }: AuthReason) {
+  return {
     mode: "signup",
     copy: `Sign up to follow ${entity.name}`,
     signupIntent: "follow artist",
@@ -47,5 +84,5 @@ const openDesktopAuth = (mediator, { entity }) => {
       action: "follow",
       objectId: entity.id,
     },
-  })
+  }
 }

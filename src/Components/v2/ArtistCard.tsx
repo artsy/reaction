@@ -5,7 +5,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 import {
@@ -129,6 +129,7 @@ const handleOpenAuth = props => {
   openAuthModal(props.mediator, {
     entity: props.artist,
     contextModule: "Artwork page",
+    intent: AuthModalIntent.FollowArtist,
   })
 }
 
