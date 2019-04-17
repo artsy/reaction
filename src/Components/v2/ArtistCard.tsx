@@ -1,5 +1,6 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { Mediator } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
@@ -128,7 +129,7 @@ export const SmallArtistCard: SFC<Props> = props => (
 const handleOpenAuth = props => {
   openAuthModal(props.mediator, {
     entity: props.artist,
-    contextModule: "Artwork page",
+    contextModule: Schema.ContextModule.ArtworkPage,
     intent: AuthModalIntent.FollowArtist,
   })
 }

@@ -32,7 +32,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   handleOpenAuth = (mediator, artist) => {
     openAuthModal(mediator, {
       entity: artist,
-      contextModule: "Artwork page",
+      contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,
     })
   }

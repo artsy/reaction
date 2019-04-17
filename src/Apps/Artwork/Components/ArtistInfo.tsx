@@ -85,7 +85,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   handleOpenAuth = (mediator, artist) => {
     openAuthModal(mediator, {
       entity: artist,
-      contextModule: "Artwork page",
+      contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,
     })
   }
