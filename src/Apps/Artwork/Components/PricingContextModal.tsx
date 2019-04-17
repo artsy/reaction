@@ -1,4 +1,6 @@
 import { QuestionCircleIcon, Serif, Spacer } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import Modal from "Components/Modal/Modal"
 import React from "react"
 
@@ -11,6 +13,12 @@ export class PricingContextModal extends React.Component<State> {
     isModalOpen: false,
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.QuestionMarkIcon,
+    context_module: Schema.ContextModule.PriceContext,
+  })
   openModal() {
     this.setState({ isModalOpen: true })
   }

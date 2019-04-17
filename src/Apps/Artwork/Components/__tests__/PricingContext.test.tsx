@@ -152,18 +152,35 @@ describe("PricingContext", () => {
   })
 
   describe("Analytics", () => {
-    it("tracks click on 'Read our FAQ'", () => {
+    it("tracks clicks on histogram bars", () => {
       const { Component, dispatch } = mockTracking(PricingContext)
-      const component = mount(<Component artwork={mockArtwork} />)
+      const component = mount(<Component artwork={mockArtwork as any} />)
       component
         .find(BarBox)
         .at(0)
         .simulate("click")
       expect(dispatch).toBeCalledWith({
-        context_module: "Price Summaries",
+        context_module: "Price Context",
         action_type: "Click",
         subject: "Histogram Bar",
-        flow: "Artwork Price Summaries",
+        flow: "Artwork Price Context",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks hovers on histogram bars", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(BarBox)
+        .at(0)
+        .simulate("mouseOver")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Hover",
+        subject: "Histogram Bar",
+        flow: "Artwork Price Context",
         type: "Chart",
       })
       expect(dispatch).toHaveBeenCalledTimes(1)

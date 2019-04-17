@@ -223,6 +223,7 @@ export enum Subject {
   EnterLiveAuction = "Enter live auction",
   ShowArtistInsights = "Show artist insights",
   HistogramBar = "Histogram Bar",
+  QuestionMarkIcon = "Question Mark Informational Icon",
 }
 
 /**
@@ -260,7 +261,7 @@ export enum ContextModule {
   ShareButton = "Share button",
   Zoom = "Zoom",
   ViewInRoom = "View in room",
-  PriceSummaries = "Price Summaries",
+  PriceContext = "Price Context",
 
   /*
    * Articles
@@ -297,7 +298,7 @@ export enum Flow {
   ArtworkShare = "Artwork share",
   ArtworkZoom = "Artwork zoom",
   ArtworkViewInRoom = "Artwork view in room",
-  ArtworkPriceSummaries = "Artwork Price Summaries",
+  ArtworkPriceContext = "Artwork Price Context",
   Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",

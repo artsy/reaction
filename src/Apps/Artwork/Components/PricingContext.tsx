@@ -18,17 +18,7 @@ interface PricingContextProps {
   artwork: PricingContext_artwork
 }
 
-// @track({
-//   context_module: Schema.ContextModule.PriceSummaries,
-// })
 export class PricingContext extends React.Component<PricingContextProps> {
-  // @track({
-  //   action_type: Schema.ActionType.Click,
-  //   flow: Schema.Flow.ArtworkPriceSummaries,
-  //   subject: Schema.Subject.HistogramBar,
-  //   type: Schema.Type.Chart,
-  //   context_module: Schema.ContextModule.PriceSummaries,
-  // })
   openCollectPage(minCents, maxCents, category, widthCm, heightCm, artistId) {
     const url = createCollectUrl({
       minCents,
@@ -40,22 +30,31 @@ export class PricingContext extends React.Component<PricingContextProps> {
     })
 
     if (typeof window !== "undefined") {
-      // return () => {
-      //   window.open(url)
-      // }
       return this.openWindow.bind(this, url)
     }
   }
 
   @track({
     action_type: Schema.ActionType.Click,
-    flow: Schema.Flow.ArtworkPriceSummaries,
+    flow: Schema.Flow.ArtworkPriceContext,
     subject: Schema.Subject.HistogramBar,
     type: Schema.Type.Chart,
-    context_module: Schema.ContextModule.PriceSummaries,
+    context_module: Schema.ContextModule.PriceContext,
   })
   openWindow(url) {
     window.open(url)
+  }
+
+  @track({
+    action_type: Schema.ActionType.Hover,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+    context_module: Schema.ContextModule.PriceContext,
+  })
+  barchartHover() {
+    console.log("HELLO YOU ARE HOVERING NOW WOOOOO")
+    /// I'm just for tracking!
   }
 
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
@@ -112,6 +111,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
                   artwork.heightCm,
                   artwork.artists[0].id
                 ),
+                onHover: this.barchartHover.bind(this),
                 highlightLabel: artworkFallsInThisBin
                   ? {
                       title,
