@@ -1,7 +1,6 @@
 import { Box, Flex } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
-import { SearchResultsSkeleton } from "Components/Search/SearchResultsSkeleton"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 
 import React from "react"
@@ -109,8 +108,4 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
       query="a query"
     />
   </SystemContextProvider>
-))
-
-storiesOf("Components/Search", module).add("SearchResultsSkeleton", () => (
-  <SearchResultsSkeleton />
 ))

@@ -3,6 +3,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
+import { SearchResultsSkeleton } from "../Search/Components/SearchResultsSkeleton"
 import { routes as searchRoutes } from "../Search/routes"
 
 storiesOf("Apps", module)
@@ -41,6 +42,7 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Search Results page", () => {
+  .add("Search Results Page", () => {
     return <MockRouter routes={searchRoutes} initialRoute="/search?term=andy" />
   })
+  .add("Search Results Skeleton", () => <SearchResultsSkeleton />)
