@@ -123,7 +123,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
                   : bin.numArtworks
               const labelSuffix = binValue === 1 ? " work" : " works"
               return {
-                value: bin.numArtworks,
+                value: binValue,
                 label: {
                   title,
                   description: binValue + labelSuffix,
