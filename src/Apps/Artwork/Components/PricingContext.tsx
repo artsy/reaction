@@ -52,7 +52,7 @@ function PricingContext({ artwork }: PricingContextProps) {
   return (
     <BorderBox mb={2} flexDirection="column">
       <Sans size="2" weight="medium">
-        Price
+        Price in context
       </Sans>
       <Flex>
         <Sans size="2">
