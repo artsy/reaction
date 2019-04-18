@@ -1,3 +1,15 @@
+# v16.1.0 (Thu Apr 18 2019)
+
+#### 🚀  Enhancement
+
+- Search results loading skeleton [#2305](https://github.com/artsy/reaction/pull/2305) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.0.2 (Thu Apr 18 2019)
 
 #### 🐛  Bug Fix
