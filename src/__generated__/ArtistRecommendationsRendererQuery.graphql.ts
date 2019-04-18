@@ -2,22 +2,26 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { ArtistRecommendations_artist$ref } from "./ArtistRecommendations_artist.graphql";
-export type ArtistRecommendations_Test_QueryVariables = {};
-export type ArtistRecommendations_Test_QueryResponse = {
+export type ArtistRecommendationsRendererQueryVariables = {
+    readonly artistID: string;
+};
+export type ArtistRecommendationsRendererQueryResponse = {
     readonly artist: ({
         readonly " $fragmentRefs": ArtistRecommendations_artist$ref;
     }) | null;
 };
-export type ArtistRecommendations_Test_Query = {
-    readonly response: ArtistRecommendations_Test_QueryResponse;
-    readonly variables: ArtistRecommendations_Test_QueryVariables;
+export type ArtistRecommendationsRendererQuery = {
+    readonly response: ArtistRecommendationsRendererQueryResponse;
+    readonly variables: ArtistRecommendationsRendererQueryVariables;
 };
 
 
 
 /*
-query ArtistRecommendations_Test_Query {
-  artist(id: "andy-warhol") {
+query ArtistRecommendationsRendererQuery(
+  $artistID: String!
+) {
+  artist(id: $artistID) {
     ...ArtistRecommendations_artist
     __id
   }
@@ -194,48 +198,56 @@ fragment Contact_artwork on Artwork {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "Literal",
+    "kind": "LocalArgument",
+    "name": "artistID",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
     "name": "id",
-    "value": "andy-warhol",
+    "variableName": "artistID",
     "type": "String!"
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "_id",
   "args": null,
   "storageKey": null
 },
-v6 = [
+v7 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -243,7 +255,7 @@ v6 = [
     "type": "Boolean"
   }
 ],
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -253,23 +265,23 @@ v7 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtistRecommendations_Test_Query",
+  "name": "ArtistRecommendationsRendererQuery",
   "id": null,
-  "text": "query ArtistRecommendations_Test_Query {\n  artist(id: \"andy-warhol\") {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  id\n  name\n  related {\n    artists(first: 3, after: \"\") {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtistRecommendationsRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  id\n  name\n  related {\n    artists(first: 3, after: \"\") {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection(first: 20, sort: PUBLISHED_AT_DESC) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtistRecommendations_Test_Query",
+    "name": "ArtistRecommendationsRendererQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": "artist(id:\"andy-warhol\")",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -278,27 +290,27 @@ return {
             "name": "ArtistRecommendations_artist",
             "args": null
           },
-          v1
+          v2
         ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtistRecommendations_Test_Query",
-    "argumentDefinitions": [],
+    "name": "ArtistRecommendationsRendererQuery",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": "artist(id:\"andy-warhol\")",
-        "args": v0,
+        "storageKey": null,
+        "args": v1,
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          v2,
           v3,
+          v4,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -415,8 +427,8 @@ return {
                               }
                             ]
                           },
-                          v2,
                           v3,
+                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -424,8 +436,8 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v4,
                           v5,
+                          v6,
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -471,13 +483,13 @@ return {
                                         "alias": null,
                                         "name": "partner",
                                         "storageKey": "partner(shallow:true)",
-                                        "args": v6,
+                                        "args": v7,
                                         "concreteType": "Partner",
                                         "plural": false,
                                         "selections": [
-                                          v3,
                                           v4,
-                                          v1,
+                                          v5,
+                                          v2,
                                           {
                                             "kind": "ScalarField",
                                             "alias": null,
@@ -487,8 +499,8 @@ return {
                                           }
                                         ]
                                       },
-                                      v1,
-                                      v4,
+                                      v2,
+                                      v5,
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,
@@ -522,13 +534,13 @@ return {
                                         "alias": null,
                                         "name": "artists",
                                         "storageKey": "artists(shallow:true)",
-                                        "args": v6,
+                                        "args": v7,
                                         "concreteType": "Artist",
                                         "plural": true,
                                         "selections": [
-                                          v1,
-                                          v4,
-                                          v3
+                                          v2,
+                                          v5,
+                                          v4
                                         ]
                                       },
                                       {
@@ -600,7 +612,7 @@ return {
                                             "args": null,
                                             "storageKey": null
                                           },
-                                          v1,
+                                          v2,
                                           {
                                             "kind": "ScalarField",
                                             "alias": null,
@@ -667,7 +679,7 @@ return {
                                             "concreteType": "SaleArtworkHighestBid",
                                             "plural": false,
                                             "selections": [
-                                              v7,
+                                              v8,
                                               {
                                                 "kind": "ScalarField",
                                                 "alias": "__id",
@@ -686,13 +698,13 @@ return {
                                             "concreteType": "SaleArtworkOpeningBid",
                                             "plural": false,
                                             "selections": [
-                                              v7
+                                              v8
                                             ]
                                           },
-                                          v1
+                                          v2
                                         ]
                                       },
-                                      v5,
+                                      v6,
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,
@@ -700,7 +712,7 @@ return {
                                         "args": null,
                                         "storageKey": null
                                       },
-                                      v2,
+                                      v3,
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,
@@ -735,7 +747,7 @@ return {
                               }
                             ]
                           },
-                          v1,
+                          v2,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -805,12 +817,12 @@ return {
               }
             ]
           },
-          v1
+          v2
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '69bb9cd8b80ae8198b01710e3cc02010';
+(node as any).hash = 'f21a276f2160e81488cc25c217bd36b3';
 export default node;
