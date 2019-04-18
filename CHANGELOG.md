@@ -1,3 +1,15 @@
+# v16.1.1 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Badge] Extract component from GridItem and add to FillwidthItem [#2299](https://github.com/artsy/reaction/pull/2299) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.1.0 (Thu Apr 18 2019)
 
 #### 🚀  Enhancement
