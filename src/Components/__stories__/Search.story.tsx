@@ -111,7 +111,6 @@ storiesOf("Components/Search/SuggestionItems", module).add("Some items", () => (
   </SystemContextProvider>
 ))
 
-storiesOf("Components/Search/SearchResultsSkeleton", module).add(
-  "Some items",
-  () => <SearchResultsSkeleton />
-)
+storiesOf("Components/Search", module).add("SearchResultsSkeleton", () => (
+  <SearchResultsSkeleton />
+))
