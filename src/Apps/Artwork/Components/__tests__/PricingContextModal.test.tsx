@@ -1,9 +1,11 @@
 import { Button, QuestionCircleIcon } from "@artsy/palette"
+import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
 import React from "react"
 import { PricingContextModal } from "../PricingContextModal"
 
 jest.unmock("react-relay")
+jest.unmock("react-tracking")
 
 describe("PricingContextModal", () => {
   it("renders with the modal closed", async () => {
@@ -50,5 +52,24 @@ describe("PricingContextModal", () => {
         "This information represents retail prices for works on Artsy"
       )
     }, 500)
+  })
+
+  describe("Analytics", () => {
+    it("tracks clicks on the question mark icon", () => {
+      const { Component, dispatch } = mockTracking(PricingContextModal)
+      const component = mount(<Component />)
+      component
+        .find(QuestionCircleIcon)
+        .at(0)
+        .simulate("click")
+
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Click",
+        subject: "Question Mark Informational Icon",
+        flow: "Artwork Price Context",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
   })
 })
