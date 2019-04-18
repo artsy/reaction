@@ -9,8 +9,11 @@ import {
 import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import Waypoint from "react-waypoint"
+import Events from "Utils/Events"
 import { createCollectUrl } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
@@ -18,6 +21,14 @@ interface PricingContextProps {
   artwork: PricingContext_artwork
 }
 
+@track(
+  {
+    context_module: Schema.ContextModule.PriceContext,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class PricingContext extends React.Component<PricingContextProps> {
   openCollectPage(minCents, maxCents, category, widthCm, heightCm, artistId) {
     const url = createCollectUrl({
@@ -35,11 +46,20 @@ export class PricingContext extends React.Component<PricingContextProps> {
   }
 
   @track({
+    action_type: Schema.ActionType.Impression,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+  })
+  trackImpression() {
+    // noop
+  }
+
+  @track({
     action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkPriceContext,
     subject: Schema.Subject.HistogramBar,
     type: Schema.Type.Chart,
-    context_module: Schema.ContextModule.PriceContext,
   })
   openWindow(url) {
     window.open(url)
@@ -50,11 +70,9 @@ export class PricingContext extends React.Component<PricingContextProps> {
     flow: Schema.Flow.ArtworkPriceContext,
     subject: Schema.Subject.HistogramBar,
     type: Schema.Type.Chart,
-    context_module: Schema.ContextModule.PriceContext,
   })
   barchartHover() {
-    console.log("HELLO YOU ARE HOVERING NOW WOOOOO")
-    /// I'm just for tracking!
+    // I'm just for tracking!
   }
 
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
@@ -70,6 +88,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
       : artwork.priceCents.min
     return (
       <BorderBox mb={2} flexDirection="column">
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
         <Sans size="2" weight="medium">
           Price
         </Sans>
@@ -97,11 +116,17 @@ export class PricingContext extends React.Component<PricingContextProps> {
               const artworkFallsInThisBin =
                 priceCents >= bin.minPriceCents &&
                 priceCents < bin.maxPriceCents
+
+              const binValue =
+                artworkFallsInThisBin && bin.numArtworks === 0
+                  ? 1
+                  : bin.numArtworks
+              const labelSuffix = binValue === 1 ? " work" : " works"
               return {
                 value: bin.numArtworks,
                 label: {
                   title,
-                  description: bin.numArtworks + " works",
+                  description: binValue + labelSuffix,
                 },
                 onClick: this.openCollectPage(
                   bin.minPriceCents,

@@ -4,6 +4,7 @@ import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
+import Waypoint from "react-waypoint"
 import {
   PricingContext,
   PricingContextFragmentContainer,
@@ -170,6 +171,23 @@ describe("PricingContext", () => {
   })
 
   describe("Analytics", () => {
+    it("Tracks impressions", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(Waypoint)
+        .getElement()
+        .props.onEnter()
+
+      expect(dispatch).toBeCalledWith({
+        action_type: "Impression",
+        context_module: "Price Context",
+        subject: "Histogram Bar",
+        type: "Chart",
+        flow: "Artwork Price Context",
+      })
+    })
+
     it("tracks clicks on histogram bars", () => {
       const { Component, dispatch } = mockTracking(PricingContext)
       const component = mount(<Component artwork={mockArtwork as any} />)
