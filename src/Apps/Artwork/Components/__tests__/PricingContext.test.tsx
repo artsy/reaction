@@ -27,14 +27,14 @@ const mockPricingContext = {
       maxPriceCents: 16810,
       minPrice: "$88",
       minPriceCents: 8855,
-      numArtworks: 57,
+      numArtworks: 1,
     },
     {
       maxPrice: "$247",
       maxPriceCents: 24765,
       minPrice: "$168",
       minPriceCents: 16810,
-      numArtworks: 45,
+      numArtworks: 0,
     },
     {
       maxPrice: "$327",
@@ -129,10 +129,28 @@ describe("PricingContext", () => {
     )
   })
 
-  it("displays $0 as the minimum price label is the minimum price is null", async () => {
+  it("displays $0 as the minimum price label if the minimum price is null", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.text()).not.toContain("null")
     expect(wrapper.text()).toContain("$0")
+  })
+
+  it("displays '1 work' not '0 works' in highlight label if there are zero artworks for the highlighted bin", async () => {
+    const wrapper = await getWrapper()
+    const highlightedBar = wrapper.find(BarBox).at(2)
+
+    highlightedBar.simulate("mouseenter")
+    expect(wrapper.text()).not.toContain("0 works")
+    expect(wrapper.text()).toContain("1 work")
+  })
+
+  it("displays 'work' singular not 'works' plural in label when there is only 1 artwork in a bin", async () => {
+    const wrapper = await getWrapper()
+    const secondBar = wrapper.find(BarBox).at(1)
+
+    secondBar.simulate("mouseenter")
+    expect(wrapper.text()).not.toContain("1 works")
+    expect(wrapper.text()).toContain("1 work")
   })
 
   it("uses the mean of min+max when list price is a range", async () => {
