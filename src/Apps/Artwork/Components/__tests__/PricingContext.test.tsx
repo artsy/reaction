@@ -112,7 +112,7 @@ describe("PricingContext", () => {
       .at(0)
       .simulate("click")
     expect(wrapper.text()).toContain(
-      "This information represents retail prices for works on Artsy"
+      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
     )
   })
 
