@@ -1,14 +1,26 @@
-import { Flex, Sans } from "@artsy/palette"
+import { Box, Flex, Link, Sans, space } from "@artsy/palette"
 import { Badge_artwork } from "__generated__/Badge_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 
 interface BadgeProps {
   artwork: Badge_artwork
+  width?: number // for smaller images, we have a tweaked layout
 }
 
+const MIN_IMAGE_SIZE = 150
+
 class Badge extends React.Component<BadgeProps> {
+  get stackedLayout() {
+    return get(
+      this.props,
+      p => p.width / window.devicePixelRatio < MIN_IMAGE_SIZE,
+      false
+    )
+  }
+
   render() {
     const { artwork } = this.props
     const { is_biddable, is_acquireable, is_offerable, href, sale } = artwork
@@ -18,7 +30,7 @@ class Badge extends React.Component<BadgeProps> {
       sale && sale.display_timely_at ? ` (${sale.display_timely_at})` : ""
     return (
       <>
-        <Badges>
+        <Badges flexDirection={this.stackedLayout ? "column" : "row"}>
           {includeBidBadge && (
             <Label>
               <Sans size="0">Bid{saleTimingHint}</Sans>
@@ -26,22 +38,16 @@ class Badge extends React.Component<BadgeProps> {
           )}
           {is_acquireable && (
             <Label>
-              <a
-                href={href}
-                style={{ textDecoration: "none", cursor: "pointer" }}
-              >
+              <BadgeLink href={href} underlineBehavior="none">
                 <Sans size="0">Buy Now</Sans>
-              </a>
+              </BadgeLink>
             </Label>
           )}
           {is_offerable && (
             <Label>
-              <a
-                href={href}
-                style={{ textDecoration: "none", cursor: "pointer" }}
-              >
+              <BadgeLink href={href} underlineBehavior="none">
                 <Sans size="0">Make Offer</Sans>
-              </a>
+              </BadgeLink>
             </Label>
           )}
         </Badges>
@@ -65,14 +71,19 @@ export default createFragmentContainer(Badge, {
   `,
 })
 
-const Label = styled.div`
+const Label = styled(Box)`
   border-radius: 2px;
   letter-spacing: 0.3px;
   padding: 3px 5px 1px 6px;
   background-color: white;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
-  margin-left: 5px;
+  margin-left: ${space(0.5)}px;
+  margin-top: ${space(0.5)}px;
+`
+
+const BadgeLink = styled(Link)`
+  cursor: pointer;
 `
 
 const Badges = styled(Flex)`
