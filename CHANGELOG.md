@@ -1,3 +1,26 @@
+# v16.0.2 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- Price Context tracking [#2307](https://github.com/artsy/reaction/pull/2307) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.9.3 [#2306](https://github.com/artsy/reaction/pull/2306) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.2 [#2304](https://github.com/artsy/reaction/pull/2304) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.1 [#2302](https://github.com/artsy/reaction/pull/2302) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.0 [#2301](https://github.com/artsy/reaction/pull/2301) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/detect-responsive-traits to ^0.0.4
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#1893](https://github.com/artsy/reaction/pull/1893) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.0.1 (Tue Apr 16 2019)
 
 #### 🐛  Bug Fix
