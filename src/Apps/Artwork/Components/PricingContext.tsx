@@ -44,9 +44,7 @@ function PricingContext({ artwork }: PricingContextProps) {
     }
   }
 
-  const priceCents = artwork.priceCents.max
-    ? (artwork.priceCents.min + artwork.priceCents.max) / 2
-    : artwork.priceCents.min
+  const priceCents = artwork.priceCents.max || artwork.priceCents.min
 
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   return (
