@@ -28,7 +28,7 @@ const Placeholder = styled(Box)<BoxProps & BorderRadiusProps>`
 
 export const GridItem: React.SFC<BoxProps> = props => {
   return (
-    <Box style={{ margin: "0 5px 30px 5px" }}>
+    <Box mb={30} pr={20}>
       <Placeholder
         height={props.height}
         style={{ backgroundColor: color("black10") }}
