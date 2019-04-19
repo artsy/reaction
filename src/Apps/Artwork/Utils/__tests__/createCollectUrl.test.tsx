@@ -47,7 +47,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/drawing?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&price_range=4400-4455&artist_id=banksy"`
+      `"https://staging.artsy.net/collect/work-on-paper?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&height=0-16&width=0-16&price_range=4400-4455&artist_id=banksy"`
     )
   })
 
