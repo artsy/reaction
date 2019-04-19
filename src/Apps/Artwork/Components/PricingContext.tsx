@@ -84,7 +84,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
     }
 
     const priceCents = artwork.priceCents.max || artwork.priceCents.min
-    
+
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
