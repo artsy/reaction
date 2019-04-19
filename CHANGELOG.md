@@ -1,3 +1,15 @@
+# v16.1.2 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Updates type to be more specific [#2311](https://github.com/artsy/reaction/pull/2311) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### Authors: 1
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+
+---
+
 # v16.1.1 (Thu Apr 18 2019)
 
 #### 🐛  Bug Fix
