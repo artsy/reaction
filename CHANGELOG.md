@@ -1,3 +1,15 @@
+# v16.1.5 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Use upper bound of range for displaying the highlighted bucket [#2308](https://github.com/artsy/reaction/pull/2308) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.1.3 (Fri Apr 19 2019)
 
 #### 🐛  Bug Fix
