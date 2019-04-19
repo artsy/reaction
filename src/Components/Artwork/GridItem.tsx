@@ -1,4 +1,4 @@
-import { color, Flex, Image as BaseImage, Sans } from "@artsy/palette"
+import { color, Image as BaseImage } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy"
 import { isFunction } from "lodash"
@@ -6,6 +6,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import Badge from "./Badge"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
@@ -41,23 +42,6 @@ interface State {
 
 const IMAGE_QUALITY = 80
 
-const Badge = styled.div`
-  border-radius: 2px;
-  letter-spacing: 0.3px;
-  padding: 3px 5px 1px 6px;
-  background-color: white;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  margin-left: 5px;
-`
-
-const Badges = styled(Flex)`
-  position: absolute;
-  bottom: 8px;
-  left: 3px;
-  pointer-events: none;
-`
-
 class ArtworkGridItemContainer extends React.Component<Props, State> {
   state = {
     isMounted: false,
@@ -92,51 +76,6 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
 
     const url = `${geminiUrl}/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(imageURL)}` // prettier-ignore
     return url
-  }
-
-  renderArtworkBadge({
-    is_biddable,
-    is_acquireable,
-    is_offerable,
-    href,
-    sale,
-  }: GridItem_artwork) {
-    const includeBidBadge = is_biddable || (sale && sale.is_preview)
-    // E.g.(ENDS IN 59M)
-    const saleTimingHint =
-      sale && sale.display_timely_at ? ` (${sale.display_timely_at})` : ""
-
-    return (
-      <React.Fragment>
-        <Badges>
-          {includeBidBadge && (
-            <Badge>
-              <Sans size="0">Bid{saleTimingHint}</Sans>
-            </Badge>
-          )}
-          {is_acquireable && (
-            <Badge>
-              <a
-                href={href}
-                style={{ textDecoration: "none", cursor: "pointer" }}
-              >
-                <Sans size="0">Buy Now</Sans>
-              </a>
-            </Badge>
-          )}
-          {is_offerable && (
-            <Badge>
-              <a
-                href={href}
-                style={{ textDecoration: "none", cursor: "pointer" }}
-              >
-                <Sans size="0">Make Offer</Sans>
-              </a>
-            </Badge>
-          )}
-        </Badges>
-      </React.Fragment>
-    )
   }
 
   get shouldTrackArtworkImpressions() {
@@ -184,7 +123,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
             />
           </a>
 
-          {this.renderArtworkBadge(artwork)}
+          <Badge artwork={artwork} />
 
           {this.canHover && (
             <SaveButton
@@ -228,16 +167,10 @@ export default createFragmentContainer(ArtworkGridItem, {
         url(version: "large")
         aspect_ratio
       }
-      is_biddable
-      sale {
-        is_preview
-        display_timely_at
-      }
-      is_acquireable
-      is_offerable
       href
       ...Metadata_artwork
       ...Save_artwork
+      ...Badge_artwork
     }
   `,
 })

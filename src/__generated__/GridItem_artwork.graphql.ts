@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Badge_artwork$ref } from "./Badge_artwork.graphql";
 import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _GridItem_artwork$ref: unique symbol;
@@ -14,29 +15,14 @@ export type GridItem_artwork = {
         readonly url: string | null;
         readonly aspect_ratio: number;
     }) | null;
-    readonly is_biddable: boolean | null;
-    readonly sale: ({
-        readonly is_preview: boolean | null;
-        readonly display_timely_at: string | null;
-    }) | null;
-    readonly is_acquireable: boolean | null;
-    readonly is_offerable: boolean | null;
     readonly href: string | null;
-    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
+    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
     readonly " $refType": GridItem_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "GridItem_artwork",
   "type": "Artwork",
@@ -46,14 +32,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_acquireable",
+      "name": "_id",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "title",
       "args": null,
       "storageKey": null
     },
@@ -106,53 +92,6 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_biddable",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "sale",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Sale",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "is_preview",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "display_timely_at",
-          "args": null,
-          "storageKey": null
-        },
-        v0
-      ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_offerable",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -167,9 +106,19 @@ return {
       "name": "Save_artwork",
       "args": null
     },
-    v0
+    {
+      "kind": "FragmentSpread",
+      "name": "Badge_artwork",
+      "args": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
-(node as any).hash = '8129589ee884fc52220d853446029094';
+(node as any).hash = 'ccef836f9a27c7aa2e345ce8cb678f68';
 export default node;

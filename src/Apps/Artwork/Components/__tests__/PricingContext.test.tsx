@@ -1,9 +1,16 @@
 import { BarBox, QuestionCircleIcon } from "@artsy/palette"
+import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
+import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { PricingContextFragmentContainer } from "../PricingContext"
+import Waypoint from "react-waypoint"
+import {
+  PricingContext,
+  PricingContextFragmentContainer,
+} from "../PricingContext"
 
+jest.unmock("react-tracking")
 jest.unmock("react-relay")
 
 const mockPricingContext = {
@@ -161,5 +168,58 @@ describe("PricingContext", () => {
     expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
       `"$247–$327This work"`
     )
+  })
+
+  describe("Analytics", () => {
+    it("Tracks impressions", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(Waypoint)
+        .getElement()
+        .props.onEnter()
+
+      expect(dispatch).toBeCalledWith({
+        action_type: "Impression",
+        context_module: "Price Context",
+        subject: "Histogram Bar",
+        type: "Chart",
+        flow: "Artwork Price Context",
+      })
+    })
+
+    it("tracks clicks on histogram bars", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(BarBox)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Click",
+        subject: "Histogram Bar",
+        flow: "Artwork Price Context",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks hovers on histogram bars", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(BarBox)
+        .at(0)
+        .simulate("mouseOver")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Hover",
+        subject: "Histogram Bar",
+        flow: "Artwork Price Context",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
   })
 })

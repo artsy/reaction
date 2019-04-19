@@ -25,7 +25,7 @@ const SearchButton = styled.button`
   }
 `
 
-export const SearchInputContainer: React.ExoticComponent<
+export const SearchInputContainer: React.ForwardRefExoticComponent<
   any
 > = React.forwardRef((props, ref) => {
   return (
