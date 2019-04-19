@@ -93,9 +93,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
           Price
         </Sans>
         <Flex>
-          <Sans size="2">
-            Price ranges of {artwork.pricingContext.filterDescription}
-          </Sans>
+          <Sans size="2">{artwork.pricingContext.appliedFiltersDisplay}</Sans>
           <PricingContextModal />
         </Flex>
         <Spacer mb={[2, 3]} />
@@ -168,7 +166,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         heightCm
         category
         pricingContext @include(if: $enablePricingContext) {
-          filterDescription
+          appliedFiltersDisplay
           bins {
             maxPrice
             maxPriceCents
