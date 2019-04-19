@@ -14,7 +14,8 @@ jest.unmock("react-tracking")
 jest.unmock("react-relay")
 
 const mockPricingContext = {
-  filterDescription: `small mocks by David Sheldrick`,
+  appliedFiltersDisplay: "Price ranges of small mocks by David Sheldrick",
+  filterDescription: `deprecated field`,
   bins: [
     {
       maxPrice: "$88",
