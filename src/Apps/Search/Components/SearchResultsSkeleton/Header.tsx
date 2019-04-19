@@ -1,68 +1,53 @@
-import { Box, color } from "@artsy/palette"
+import { Box, color, Separator } from "@artsy/palette"
 import React from "react"
 
 export const Header: React.SFC<any> = props => {
   return (
-    <Box height={100}>
+    <Box height={100} mb={30} mt={120}>
+      <Box mb={40} background={color("black10")} width={320} height={20} />
       <Box
-        width={380}
-        height={14}
-        style={{ margin: "20px 0 20px 0", backgroundColor: color("black10") }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
       <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
       <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
       <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
       <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
       <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
+        width={80}
+        height={12}
+        mr={3}
+        display="inline-block"
+        background={color("black10")}
       />
-      <Box
-        width={100}
-        height={6}
-        style={{
-          display: "inline-block",
-          marginRight: 10,
-          backgroundColor: color("black10"),
-        }}
-      />
+      <Separator mt={10} />
     </Box>
   )
 }
