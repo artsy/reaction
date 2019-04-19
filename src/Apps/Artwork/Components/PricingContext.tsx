@@ -55,7 +55,7 @@ function PricingContext({ artwork }: PricingContextProps) {
         Price
       </Sans>
       <Flex>
-        <Sans size="2">
+        <Sans size="2" color={"black60"}>
           Price ranges of {artwork.pricingContext.filterDescription}
         </Sans>
         <PricingContextModal />

@@ -1,6 +1,13 @@
-import { QuestionCircleIcon, Serif, Spacer } from "@artsy/palette"
+import {
+  color,
+  QuestionCircleIcon,
+  Serif,
+  Spacer,
+  Tooltip,
+} from "@artsy/palette"
 import Modal from "Components/Modal/Modal"
 import React from "react"
+import styled from "styled-components"
 
 interface State {
   isModalOpen?: boolean
@@ -45,12 +52,25 @@ export class PricingContextModal extends React.Component<State> {
           </Serif>
           <Spacer mt={2} />
         </Modal>
-        <QuestionCircleIcon
-          ml="5px"
-          width="15px"
-          onClick={this.openModal.bind(this)}
-        />
+        <Tooltip width={73} size="sm" content="Learn more">
+          <StyledQuestionCircleIcon
+            ml="5px"
+            width="15px"
+            onClick={this.openModal.bind(this)}
+          />
+        </Tooltip>
       </>
     )
   }
 }
+
+const StyledQuestionCircleIcon = styled(QuestionCircleIcon)`
+  fill: ${color("black60")};
+
+  &:hover {
+    &&& {
+      fill: ${color("black100")} !important;
+    }
+    cursor: pointer;
+  }
+`
