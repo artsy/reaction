@@ -1,3 +1,15 @@
+# v16.1.3 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes mapping between category and medium filter on /collect page to match gene names [#2313](https://github.com/artsy/reaction/pull/2313) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.1.2 (Fri Apr 19 2019)
 
 #### 🐛  Bug Fix
