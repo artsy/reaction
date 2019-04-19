@@ -13,6 +13,7 @@ import {
   PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
+import { isEmpty } from "lodash"
 import { throttle } from "lodash"
 import qs from "qs"
 import React, { Component, useContext } from "react"
@@ -88,6 +89,10 @@ const SuggestionContainer = ({ children, containerProps }) => {
 })
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
+
+  // Once this is set, we don't ever expect to change it back. A click on a
+  // descendant indicates that we're going to navigate away from the page, so
+  // this behaviour  is acceptable.
   private userClickedOnDescendant: boolean
 
   state = {
@@ -191,15 +196,17 @@ export class SearchBar extends Component<Props, State> {
   }
 
   onBlur = event => {
-    if (
+    const isClickOnSearchIcon =
       event.relatedTarget &&
       event.relatedTarget.form &&
       event.relatedTarget.form === event.target.form
-    ) {
-      this.userClickedOnDescendant = true
-      return
+    if (isClickOnSearchIcon) {
+      if (!isEmpty(event.target.value)) {
+        this.userClickedOnDescendant = true
+      }
+    } else {
+      this.setState({ focused: false })
     }
-    this.setState({ focused: false })
   }
 
   onSuggestionsClearRequested = e => {
@@ -323,6 +330,15 @@ export class SearchBar extends Component<Props, State> {
       placeholder: xs ? PLACEHOLDER_XS : PLACEHOLDER,
       value: term,
       name: "term",
+      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (
+          event.keyCode === 13 && // Enter key press ...
+          event.target && // with empty search query
+          isEmpty((event.target as HTMLInputElement).value)
+        ) {
+          event.preventDefault()
+        }
+      },
     }
 
     const firstSuggestionPlaceholder = {

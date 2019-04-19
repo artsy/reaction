@@ -1,5 +1,6 @@
 import { Box, color } from "@artsy/palette"
 import Input from "Components/Input"
+import { isEmpty } from "lodash"
 import React from "react"
 import styled from "styled-components"
 
@@ -31,7 +32,14 @@ export const SearchInputContainer: React.ForwardRefExoticComponent<
   return (
     <Box style={{ position: "relative" }}>
       <Input ref={ref} style={{ width: "100%" }} {...props} />
-      <SearchButton>
+      <SearchButton
+        onClick={event => {
+          ;(event.target as HTMLElement).parentElement.blur()
+          if (isEmpty(props.value)) {
+            event.preventDefault()
+          }
+        }}
+      >
         <svg
           width="18"
           height="18"
