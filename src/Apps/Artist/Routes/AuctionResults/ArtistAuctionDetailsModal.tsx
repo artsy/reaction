@@ -13,6 +13,7 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { get } from "Utils/get"
 
 interface Props {
   hideDetailsModal?: () => void
@@ -62,6 +63,7 @@ const LotDetails: SFC<Props> = props => {
     hideDetailsModal,
     auctionResult: { title, date_text, dimension_text, images, description },
   } = props
+  const imageUrl = get(images, i => i.thumbnail.url, "")
 
   return (
     <>
@@ -87,7 +89,7 @@ const LotDetails: SFC<Props> = props => {
         <Spacer mr={2} />
 
         <Box height="auto">
-          <Image width="100px" src={images.thumbnail.url} />
+          <Image width="100px" src={imageUrl} />
         </Box>
       </Flex>
 
