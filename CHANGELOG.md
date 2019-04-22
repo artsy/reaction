@@ -1,3 +1,21 @@
+# v16.2.3 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Remove null states from Icons [#2320](https://github.com/artsy/reaction/pull/2320) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.9.5 [#2314](https://github.com/artsy/reaction/pull/2314) ([@renovate-bot](https://github.com/renovate-bot) [@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 3
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.2.2 (Mon Apr 22 2019)
 
 #### 🐛  Bug Fix
