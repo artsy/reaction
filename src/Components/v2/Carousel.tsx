@@ -19,14 +19,18 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  lastSlideVisible?: boolean
-  firstSlideVisible?: boolean
+  canScrollRight?: boolean
+  canScrollLeft?: boolean
   afterChange?: (currentIndex: number) => void
 }
 
 interface State {
-  lastSlideVisible: boolean
-  firstSlideVisible: boolean
+  canScrollRight: boolean
+  canScrollLeft: boolean
+}
+
+interface ArrowProps {
+  canScroll: boolean
 }
 
 export class Carousel extends React.Component<Props, State> {
@@ -34,15 +38,17 @@ export class Carousel extends React.Component<Props, State> {
     height: 300,
   }
   state = {
-    lastSlideVisible: false,
-    firstSlideVisible: true,
+    canScrollRight: this.props.data.length > SLIDES_TO_SCROLL,
+    canScrollLeft: false,
   }
 
   afterChange = currentIndex => {
     this.setState({
-      firstSlideVisible: !currentIndex,
-      lastSlideVisible:
-        currentIndex >= this.props.data.length - SLIDES_TO_SCROLL,
+      canScrollLeft: !!currentIndex,
+      canScrollRight: !(
+        currentIndex >=
+        this.props.data.length - SLIDES_TO_SCROLL
+      ),
     })
   }
 
@@ -54,8 +60,8 @@ export class Carousel extends React.Component<Props, State> {
         </Media>
         <Media greaterThan="xs">
           <LargeCarousel
-            lastSlideVisible={this.state.lastSlideVisible}
-            firstSlideVisible={this.state.firstSlideVisible}
+            canScrollRight={this.state.canScrollRight}
+            canScrollLeft={this.state.canScrollLeft}
             afterChange={this.afterChange}
             {...this.props}
           />
@@ -79,10 +85,11 @@ export const LargeCarousel = (props: Props) => {
 
   let slickRef = null
 
-  const LeftArrow = () => {
+  const LeftArrow = (arrowProps: ArrowProps) => {
     return (
       <ArrowButton
         left={-35}
+        canScroll={arrowProps.canScroll}
         onClick={() => {
           slickRef.slickPrev && slickRef.slickPrev() // check existence for tests
           props.onArrowClick && props.onArrowClick()
@@ -93,10 +100,11 @@ export const LargeCarousel = (props: Props) => {
     )
   }
 
-  const RightArrow = () => {
+  const RightArrow = (arrowProps: ArrowProps) => {
     return (
       <ArrowButton
         right={-35}
+        canScroll={arrowProps.canScroll}
         onClick={() => {
           slickRef.slickNext && slickRef.slickNext() // check existence for tests
           props.onArrowClick && props.onArrowClick()
@@ -108,38 +116,41 @@ export const LargeCarousel = (props: Props) => {
   }
 
   return (
-    <Box position="relative">
-      <Flex
-        flexDirection="row"
-        justifyContent="space-around"
-        alignItems="center"
-        height={props.height}
-      >
-        {props.renderLeftArrow
-          ? props.renderLeftArrow({
-              Arrow: LeftArrow,
-              getSlick: () => slickRef,
-              ...props,
-            })
-          : !props.firstSlideVisible && <LeftArrow />}
+    <Flex
+      flexDirection="row"
+      justifyContent="space-around"
+      alignItems="center"
+      position="relative"
+      height={props.height}
+    >
+      {props.renderLeftArrow ? (
+        props.renderLeftArrow({
+          Arrow: LeftArrow,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <LeftArrow canScroll={props.canScrollLeft} />
+      )}
 
-        <CarouselContainer height={props.height}>
-          <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
-            {props.data.map((slide, index) => {
-              return <Box key={index}>{props.render(slide)}</Box>
-            })}
-          </Slick>
-        </CarouselContainer>
+      <CarouselContainer height={props.height}>
+        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
+          {props.data.map((slide, index) => {
+            return <Box key={index}>{props.render(slide)}</Box>
+          })}
+        </Slick>
+      </CarouselContainer>
 
-        {props.renderRightArrow
-          ? props.renderRightArrow({
-              Arrow: RightArrow,
-              getSlick: () => slickRef,
-              ...props,
-            })
-          : !props.lastSlideVisible && <RightArrow />}
-      </Flex>
-    </Box>
+      {props.renderRightArrow ? (
+        props.renderRightArrow({
+          Arrow: RightArrow,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <RightArrow canScroll={props.canScrollRight} />
+      )}
+    </Flex>
   )
 }
 
@@ -227,18 +238,19 @@ const CarouselContainer = styled.div<{ height?: number }>`
 `
 
 export const ArrowButton = styled(Flex)<
-  LeftProps & RightProps & { height?: number }
+  LeftProps & RightProps & { canScroll?: boolean } & { height?: number }
 >`
   position: absolute;
   cursor: pointer;
   user-select: none;
-  opacity: 0.1;
+  opacity: ${p => (p.canScroll ? "0.1" : "0")};
   align-items: center;
   transition: opacity 0.25s;
   min-height: ${p => p.height || 200}px;
+  pointer-events: ${p => (p.canScroll ? "auto" : "none")};
 
   &:hover {
-    opacity: 1;
+    opacity: ${p => (p.canScroll ? "1" : "0")};
   }
 
   ${left};
