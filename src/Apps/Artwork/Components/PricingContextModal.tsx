@@ -5,19 +5,35 @@ import {
   Spacer,
   Tooltip,
 } from "@artsy/palette"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import Modal from "Components/Modal/Modal"
 import React from "react"
 import styled from "styled-components"
+import Events from "Utils/Events"
 
 interface State {
   isModalOpen?: boolean
 }
 
+@track(
+  {
+    context_module: Schema.ContextModule.PriceContext,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)
 export class PricingContextModal extends React.Component<State> {
   state = {
     isModalOpen: false,
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.QuestionMarkIcon,
+  })
   openModal() {
     this.setState({ isModalOpen: true })
   }

@@ -1,3 +1,100 @@
+# v16.2.0 (Fri Apr 19 2019)
+
+#### 🚀  Enhancement
+
+- Update search results loading skeleton [#2316](https://github.com/artsy/reaction/pull/2316) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.1.5 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Use upper bound of range for displaying the highlighted bucket [#2308](https://github.com/artsy/reaction/pull/2308) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.1.3 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Switch to appliedFiltersDisplay [#2315](https://github.com/artsy/reaction/pull/2315) ([@ashkan18](https://github.com/ashkan18))
+- Fixes mapping between category and medium filter on /collect page to match gene names [#2313](https://github.com/artsy/reaction/pull/2313) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 2
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.1.2 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Updates type to be more specific [#2311](https://github.com/artsy/reaction/pull/2311) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### Authors: 1
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+
+---
+
+# v16.1.1 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Badge] Extract component from GridItem and add to FillwidthItem [#2299](https://github.com/artsy/reaction/pull/2299) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.1.0 (Thu Apr 18 2019)
+
+#### 🚀  Enhancement
+
+- Search results loading skeleton [#2305](https://github.com/artsy/reaction/pull/2305) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.0.2 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- Price Context tracking [#2307](https://github.com/artsy/reaction/pull/2307) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.9.3 [#2306](https://github.com/artsy/reaction/pull/2306) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.2 [#2304](https://github.com/artsy/reaction/pull/2304) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.1 [#2302](https://github.com/artsy/reaction/pull/2302) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.0 [#2301](https://github.com/artsy/reaction/pull/2301) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/detect-responsive-traits to ^0.0.4
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#1893](https://github.com/artsy/reaction/pull/1893) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.0.1 (Tue Apr 16 2019)
 
 #### 🐛  Bug Fix

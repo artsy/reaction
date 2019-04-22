@@ -7,27 +7,30 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import Waypoint from "react-waypoint"
+import Events from "Utils/Events"
+import { createCollectUrl } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
+
 interface PricingContextProps {
   artwork: PricingContext_artwork
 }
-import { createCollectUrl } from "./../Utils/createCollectUrl"
 
-function PricingContext({ artwork }: PricingContextProps) {
-  if (!artwork.pricingContext) {
-    return null
+@track(
+  {
+    context_module: Schema.ContextModule.PriceContext,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
   }
-
-  const openCollectPage = (
-    minCents,
-    maxCents,
-    category,
-    widthCm,
-    heightCm,
-    artistId
-  ) => {
+)
+export class PricingContext extends React.Component<PricingContextProps> {
+  openCollectPage(minCents, maxCents, category, widthCm, heightCm, artistId) {
     const url = createCollectUrl({
       minCents,
       maxCents,
@@ -38,78 +41,114 @@ function PricingContext({ artwork }: PricingContextProps) {
     })
 
     if (typeof window !== "undefined") {
-      return () => {
-        window.open(url)
-      }
+      return this.openWindow.bind(this, url)
     }
   }
 
-  const priceCents = artwork.priceCents.max
-    ? (artwork.priceCents.min + artwork.priceCents.max) / 2
-    : artwork.priceCents.min
+  @track({
+    action_type: Schema.ActionType.Impression,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+  })
+  trackImpression() {
+    // noop
+  }
+
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+  })
+  openWindow(url) {
+    window.open(url)
+  }
+
+  @track({
+    action_type: Schema.ActionType.Hover,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+  })
+  barchartHover() {
+    // I'm just for tracking!
+  }
 
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
-  return (
-    <BorderBox mb={2} flexDirection="column">
-      <Sans size="2" weight="medium">
-        Price
-      </Sans>
-      <Flex>
-        <Sans size="2" color={"black60"}>
-          Price ranges of {artwork.pricingContext.filterDescription}
+  render() {
+    const { artwork } = this.props
+
+    if (!artwork.pricingContext) {
+      return null
+    }
+
+    const priceCents = artwork.priceCents.max || artwork.priceCents.min
+
+    return (
+      <BorderBox mb={2} flexDirection="column">
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
+        <Sans size="2" weight="medium">
+          Price
         </Sans>
-        <PricingContextModal />
-      </Flex>
-      <Spacer mb={[2, 3]} />
-      <BarChart
-        minLabel={
-          artwork.pricingContext.bins[0].minPrice != null
-            ? artwork.pricingContext.bins[0].minPrice
-            : "$0"
-        }
-        maxLabel={
-          artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
-            .maxPrice + "+"
-        }
-        bars={artwork.pricingContext.bins.map(
-          (bin): BarDescriptor => {
-            const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
-            const title = `${binMinPrice}–${bin.maxPrice}`
-            const artworkFallsInThisBin =
-              priceCents >= bin.minPriceCents && priceCents < bin.maxPriceCents
-
-            const binValue =
-              artworkFallsInThisBin && bin.numArtworks === 0
-                ? 1
-                : bin.numArtworks
-            const labelSuffix = binValue === 1 ? " work" : " works"
-
-            return {
-              value: binValue,
-              label: {
-                title,
-                description: binValue + labelSuffix,
-              },
-              onClick: openCollectPage(
-                bin.minPriceCents,
-                bin.maxPriceCents,
-                artwork.category,
-                artwork.widthCm,
-                artwork.heightCm,
-                artwork.artists[0].id
-              ),
-              highlightLabel: artworkFallsInThisBin
-                ? {
-                    title,
-                    description: "This work",
-                  }
-                : undefined,
-            }
+        <Flex>
+          <Sans size="2" color={"black60"}>
+            {artwork.pricingContext.appliedFiltersDisplay}
+          </Sans>
+          <PricingContextModal />
+        </Flex>
+        <Spacer mb={[2, 3]} />
+        <BarChart
+          minLabel={
+            artwork.pricingContext.bins[0].minPrice != null
+              ? artwork.pricingContext.bins[0].minPrice
+              : "$0"
           }
-        )}
-      />
-    </BorderBox>
-  )
+          maxLabel={
+            artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
+              .maxPrice + "+"
+          }
+          bars={artwork.pricingContext.bins.map(
+            (bin): BarDescriptor => {
+              const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
+              const title = `${binMinPrice}–${bin.maxPrice}`
+              const artworkFallsInThisBin =
+                priceCents >= bin.minPriceCents &&
+                priceCents < bin.maxPriceCents
+
+              const binValue =
+                artworkFallsInThisBin && bin.numArtworks === 0
+                  ? 1
+                  : bin.numArtworks
+              const labelSuffix = binValue === 1 ? " work" : " works"
+              return {
+                value: binValue,
+                label: {
+                  title,
+                  description: binValue + labelSuffix,
+                },
+                onClick: this.openCollectPage(
+                  bin.minPriceCents,
+                  bin.maxPriceCents,
+                  artwork.category,
+                  artwork.widthCm,
+                  artwork.heightCm,
+                  artwork.artists[0].id
+                ),
+                onHover: this.barchartHover.bind(this),
+                highlightLabel: artworkFallsInThisBin
+                  ? {
+                      title,
+                      description: "This work",
+                    }
+                  : undefined,
+              }
+            }
+          )}
+        />
+      </BorderBox>
+    )
+  }
 }
 
 export const PricingContextFragmentContainer = createFragmentContainer(
@@ -128,7 +167,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         heightCm
         category
         pricingContext @include(if: $enablePricingContext) {
-          filterDescription
+          appliedFiltersDisplay
           bins {
             maxPrice
             maxPriceCents
@@ -141,3 +180,5 @@ export const PricingContextFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+PricingContextFragmentContainer.displayName = "PricingContext"

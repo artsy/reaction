@@ -15,7 +15,7 @@ export type PricingContext_artwork = {
     readonly heightCm: number | null;
     readonly category: string | null;
     readonly pricingContext?: ({
-        readonly filterDescription: string;
+        readonly appliedFiltersDisplay: string | null;
         readonly bins: ReadonlyArray<{
             readonly maxPrice: string | null;
             readonly maxPriceCents: number;
@@ -133,7 +133,7 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "filterDescription",
+              "name": "appliedFiltersDisplay",
               "args": null,
               "storageKey": null
             },
@@ -190,5 +190,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd08f1d5832ee5a7754767051836b7f34';
+(node as any).hash = '7523c3f70dfcf4bddb51b2a485c4de70';
 export default node;
