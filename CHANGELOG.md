@@ -1,3 +1,15 @@
+# v16.2.1 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @kierangillen => [Auction Results] Be defensive about missing images [#2318](https://github.com/artsy/reaction/pull/2318) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.2.0 (Fri Apr 19 2019)
 
 #### 🚀  Enhancement
