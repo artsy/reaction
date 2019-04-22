@@ -1,3 +1,15 @@
+# v16.3.0 (Mon Apr 22 2019)
+
+#### 🚀  Enhancement
+
+- Update moment-timezone to reduce payload size [#2321](https://github.com/artsy/reaction/pull/2321) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.2.3 (Mon Apr 22 2019)
 
 #### 🐛  Bug Fix
