@@ -1,3 +1,15 @@
+# v16.2.2 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Artist Recommendations] Hide Related Artists tab [#2319](https://github.com/artsy/reaction/pull/2319) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.2.1 (Mon Apr 22 2019)
 
 #### 🐛  Bug Fix
