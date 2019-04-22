@@ -18,6 +18,7 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { get } from "Utils/get"
 
 export interface Props extends SystemContextProps {
   auctionResult: ArtistAuctionResultItem_auctionResult
@@ -85,6 +86,7 @@ const LargeAuctionItem: SFC<Props> = props => {
     estimatedPrice,
   } = getProps(props)
 
+  const imageUrl = get(images, i => i.thumbnail.url, "")
   return (
     <Subscribe to={[AuctionResultsState]}>
       {({ state, showDetailsModal }: AuctionResultsState) => {
@@ -92,7 +94,7 @@ const LargeAuctionItem: SFC<Props> = props => {
           <>
             <Col sm={1}>
               <Box height="auto" pr={2}>
-                <Image width="70px" src={images.thumbnail.url} />
+                <Image width="70px" src={imageUrl} />
               </Box>
             </Col>
             <Col sm={4}>
@@ -144,13 +146,14 @@ const SmallAuctionItem: SFC<Props> = props => {
     truncatedDescription,
     estimatedPrice,
   } = getProps(props)
+  const imageUrl = get(images, i => i.thumbnail.url, "")
 
   return (
     <>
       <Col sm={6}>
         <Flex>
           <Box height="auto">
-            <Image width="70px" src={images.thumbnail.url} />
+            <Image width="70px" src={imageUrl} />
           </Box>
 
           <Spacer mr={2} />
@@ -194,13 +197,14 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
     salePrice,
     estimatedPrice,
   } = getProps(props)
+  const imageUrl = get(images, i => i.thumbnail.url, "")
 
   return (
     <>
       <Col>
         <Flex>
           <Box height="auto">
-            <Image width="70px" src={images.thumbnail.url} />
+            <Image width="70px" src={imageUrl} />
           </Box>
 
           <Spacer mr={2} />
