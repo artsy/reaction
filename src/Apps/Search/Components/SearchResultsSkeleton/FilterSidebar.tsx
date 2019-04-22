@@ -35,11 +35,11 @@ const FilterSidebarSection: React.SFC<any> = props => {
 
 export const FilterSidebar: React.SFC<any> = props => {
   return (
-    <Box style={{ width: "25%" }}>
+    <Box width="25%" pr={10} mr={10}>
       <FilterSidebarSection />
-      <Separator mt={2} />
+      <Separator mt={2} mb={2} />
       <FilterSidebarSection />
-      <Separator mt={2} />
+      <Separator mt={2} mb={2} />
       <FilterSidebarSection />
     </Box>
   )

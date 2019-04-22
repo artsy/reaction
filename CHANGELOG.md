@@ -1,3 +1,65 @@
+# v16.2.2 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Artist Recommendations] Hide Related Artists tab [#2319](https://github.com/artsy/reaction/pull/2319) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.2.1 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @kierangillen => [Auction Results] Be defensive about missing images [#2318](https://github.com/artsy/reaction/pull/2318) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.2.0 (Fri Apr 19 2019)
+
+#### 🚀  Enhancement
+
+- Update search results loading skeleton [#2316](https://github.com/artsy/reaction/pull/2316) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.1.5 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Use upper bound of range for displaying the highlighted bucket [#2308](https://github.com/artsy/reaction/pull/2308) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.1.3 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Switch to appliedFiltersDisplay [#2315](https://github.com/artsy/reaction/pull/2315) ([@ashkan18](https://github.com/ashkan18))
+- Fixes mapping between category and medium filter on /collect page to match gene names [#2313](https://github.com/artsy/reaction/pull/2313) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 2
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.1.2 (Fri Apr 19 2019)
 
 #### 🐛  Bug Fix

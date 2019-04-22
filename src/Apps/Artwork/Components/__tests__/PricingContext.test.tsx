@@ -14,7 +14,8 @@ jest.unmock("react-tracking")
 jest.unmock("react-relay")
 
 const mockPricingContext = {
-  filterDescription: `small mocks by David Sheldrick`,
+  appliedFiltersDisplay: "Price ranges of small mocks by David Sheldrick",
+  filterDescription: `deprecated field`,
   bins: [
     {
       maxPrice: "$88",
@@ -154,7 +155,7 @@ describe("PricingContext", () => {
     expect(wrapper.text()).toContain("1 work")
   })
 
-  it("uses the mean of min+max when list price is a range", async () => {
+  it("uses the max when list price is a range", async () => {
     const wrapper = await getWrapper({
       artwork: {
         ...mockArtwork,
@@ -166,7 +167,7 @@ describe("PricingContext", () => {
     })
 
     expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
-      `"$168–$247This work"`
+      `"$247–$327This work"`
     )
   })
 

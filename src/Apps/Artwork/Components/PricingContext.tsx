@@ -83,9 +83,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
       return null
     }
 
-    const priceCents = artwork.priceCents.max
-      ? (artwork.priceCents.min + artwork.priceCents.max) / 2
-      : artwork.priceCents.min
+    const priceCents = artwork.priceCents.max || artwork.priceCents.min
+
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
@@ -93,9 +92,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
           Price
         </Sans>
         <Flex>
-          <Sans size="2">
-            Price ranges of {artwork.pricingContext.filterDescription}
-          </Sans>
+          <Sans size="2">{artwork.pricingContext.appliedFiltersDisplay}</Sans>
           <PricingContextModal />
         </Flex>
         <Spacer mb={[2, 3]} />
@@ -168,7 +165,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         heightCm
         category
         pricingContext @include(if: $enablePricingContext) {
-          filterDescription
+          appliedFiltersDisplay
           bins {
             maxPrice
             maxPriceCents

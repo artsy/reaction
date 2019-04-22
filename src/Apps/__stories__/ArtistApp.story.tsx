@@ -10,7 +10,7 @@ storiesOf("Apps/Artist Page", module)
     return (
       <MockRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso"
+        initialRoute="/artist/andy-warhol"
         context={{
           mediator: {
             trigger: x => x,
