@@ -147,6 +147,7 @@ const RecommendedArtist: FC<
               user={user}
               mediator={mediator}
               onClick={onArtworkClicked}
+              lazyLoad
             />
           )
         }}
