@@ -2,6 +2,7 @@ import { Box, Flex } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
+
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import styled from "styled-components"

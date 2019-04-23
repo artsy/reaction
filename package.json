@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "16.0.1",
+  "version": "16.3.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "4.9.3",
+    "@artsy/palette": "4.10.0",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -172,7 +172,7 @@
     "jsonp": "^0.2.1",
     "lodash": "^4.17.4",
     "memoize-one": "^4.0.3",
-    "moment-timezone": "^0.5.13",
+    "moment-timezone": "^0.5.25",
     "numeral": "^2.0.4",
     "openseadragon": "^2.3.1",
     "prop-types": "^15.5.10",

@@ -4,6 +4,7 @@ import { SystemContextProps } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import Badge from "./Badge"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
 
@@ -43,6 +44,20 @@ export interface FillwidthItemContainerProps
 export class FillwidthItemContainer extends React.Component<
   FillwidthItemContainerProps
 > {
+  get imageWidth() {
+    const {
+      artwork: {
+        image: { aspect_ratio },
+      },
+    } = this.props
+
+    return Math.floor(this.imageHeight * aspect_ratio)
+  }
+
+  get imageHeight() {
+    return this.props.imageHeight * window.devicePixelRatio
+  }
+
   getImageUrl() {
     const imageURL = this.props.artwork.image.url
 
@@ -58,15 +73,13 @@ export class FillwidthItemContainer extends React.Component<
 
     // Either scale or crop, based on if an aspect ratio is available.
     const type = aspect_ratio ? "fit" : "fill"
-    const height = this.props.imageHeight * window.devicePixelRatio
-    const width = Math.floor(height * aspect_ratio * window.devicePixelRatio)
 
     // tslint:disable-next-line:max-line-length
-    return `${
-      sd.GEMINI_CLOUDFRONT_URL
-    }/?resize_to=${type}&width=${width}&height=${height}&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(
-      imageURL
-    )}`
+    return `${sd.GEMINI_CLOUDFRONT_URL}/?resize_to=${type}&width=${
+      this.imageWidth
+    }&height=${
+      this.imageHeight
+    }&quality=${IMAGE_QUALITY}&src=${encodeURIComponent(imageURL)}`
   }
 
   render() {
@@ -103,6 +116,9 @@ export class FillwidthItemContainer extends React.Component<
               lazyLoad={lazyLoad}
             />
           </ImageLink>
+
+          <Badge artwork={artwork} width={this.imageWidth} />
+
           <SaveButton
             {...userSpread}
             mediator={mediator}
@@ -145,6 +161,7 @@ export default createFragmentContainer(FillwidthItem, {
       href
       ...Metadata_artwork
       ...Save_artwork
+      ...Badge_artwork
     }
   `,
 })
