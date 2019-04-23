@@ -5,10 +5,10 @@ import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
-import { stringify } from "qs"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 /**
@@ -149,18 +149,7 @@ export class LargeArtistHeader extends Component<Props> {
             useDeprecatedButtonStyle={false}
             artist={props.artist}
             user={user}
-            onOpenAuthModal={() => {
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
-            }}
+            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
           >
             Follow
           </FollowArtistButton>
@@ -246,21 +235,7 @@ export class SmallArtistHeader extends Component<Props> {
             useDeprecatedButtonStyle={false}
             buttonProps={{ width: "100%" }}
             user={user}
-            onOpenAuthModal={() => {
-              const params = stringify({
-                action: "follow",
-                contextModule: "Artist page",
-                intent: "follow artist",
-                kind: "artist",
-                objectId: props.artist.id,
-                signUpIntent: "follow artist",
-                trigger: "click",
-                entityName: props.artist.name,
-              })
-              const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-              location.href = href
-            }}
+            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
           >
             Follow
           </FollowArtistButton>
@@ -268,6 +243,14 @@ export class SmallArtistHeader extends Component<Props> {
       </Flex>
     )
   }
+}
+
+const handleOpenAuth = (mediator, artist) => {
+  openAuthModal(mediator, {
+    entity: artist,
+    contextModule: Schema.ContextModule.ArtistPage,
+    intent: AuthModalIntent.FollowArtist,
+  })
 }
 
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
