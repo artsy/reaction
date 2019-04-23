@@ -1,12 +1,19 @@
 import { Box, ChevronIcon, Flex, media } from "@artsy/palette"
-import React, { ReactNode } from "react"
+import React, { ReactNode, useState } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
 
+const SLIDES_TO_SCROLL = 5
+
 type Arrow = (
-  props: { Arrow: React.ReactType; getSlick: () => any } & Props
+  props: {
+    currentSlideIndex: number
+    slidesToScroll?: number
+    Arrow: React.ReactType
+    getSlick: () => any
+  } & Props
 ) => React.ReactNode
 
 interface Props {
@@ -39,13 +46,16 @@ export class Carousel extends React.Component<Props> {
 }
 
 export const LargeCarousel = (props: Props) => {
+  const [currentSlideIndex, setSlideIndex] = useState(0)
+
   const slickConfig = {
     arrows: false,
     draggable: false,
     infinite: false,
     speed: 500,
     variableWidth: true,
-    slidesToScroll: 5,
+    slidesToScroll: SLIDES_TO_SCROLL,
+    afterChange: currentIndex => setSlideIndex(currentIndex),
     ...props.settings,
   }
 
@@ -78,7 +88,6 @@ export const LargeCarousel = (props: Props) => {
       </ArrowButton>
     )
   }
-
   return (
     <Flex
       flexDirection="row"
@@ -89,6 +98,7 @@ export const LargeCarousel = (props: Props) => {
       {props.renderLeftArrow ? (
         props.renderLeftArrow({
           Arrow: LeftArrow,
+          currentSlideIndex,
           getSlick: () => slickRef,
           ...props,
         })
@@ -107,6 +117,8 @@ export const LargeCarousel = (props: Props) => {
       {props.renderRightArrow ? (
         props.renderRightArrow({
           Arrow: RightArrow,
+          currentSlideIndex,
+          slidesToScroll: SLIDES_TO_SCROLL,
           getSlick: () => slickRef,
           ...props,
         })
