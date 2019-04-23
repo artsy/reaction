@@ -79,12 +79,12 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         const headTags = [<style type="text/css">{MediaStyle}</style>]
         const matchingMediaQueries = userAgent && matchingMediaQueriesForUserAgent(userAgent) // prettier-ignore
 
-        const ServerApp = () => {
+        const ServerApp = ({ tags = [] }) => {
           return (
             <Boot
               context={context}
               user={user}
-              headTags={headTags}
+              headTags={tags}
               onlyMatchMediaQueries={matchingMediaQueries}
               relayEnvironment={relayEnvironment}
               routes={routes}
@@ -105,7 +105,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             const data = await relayEnvironment.relaySSRMiddleware.getCache()
             // Render tree again, but this time with Relay data being available.
             const html = ReactDOMServer.renderToString(
-              sheet.collectStyles(<ServerApp />)
+              sheet.collectStyles(<ServerApp tags={headTags} />)
             )
             // Extract CSS styleTags to inject for SSR pass
             const tags = sheet.getStyleTags()
