@@ -8,6 +8,7 @@ import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Compo
 import { Carousel } from "Components/v2"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 

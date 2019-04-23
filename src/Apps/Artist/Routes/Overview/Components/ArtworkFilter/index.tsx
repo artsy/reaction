@@ -226,7 +226,7 @@ class Filter extends Component<Props> {
   renderZeroState() {
     const {
       artist,
-      artist: { name, is_followed },
+      artist: { is_followed },
       mediator,
       user,
     } = this.props
