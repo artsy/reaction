@@ -1,5 +1,3 @@
-import { createCollectUrl } from "../createCollectUrl"
-
 jest.mock("sharify", () => ({
   data: {
     APP_URL: "https://staging.artsy.net",
