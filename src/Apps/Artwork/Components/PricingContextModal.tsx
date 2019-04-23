@@ -84,9 +84,7 @@ const StyledQuestionCircleIcon = styled(QuestionCircleIcon)`
   fill: ${color("black60")};
 
   &:hover {
-    &&& {
-      fill: ${color("black100")} !important;
-    }
+    fill: ${color("black100")};
     cursor: pointer;
   }
 `
