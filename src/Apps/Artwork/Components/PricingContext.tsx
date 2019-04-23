@@ -14,7 +14,6 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import Events from "Utils/Events"
-import { createCollectUrl } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
 interface PricingContextProps {
@@ -30,21 +29,6 @@ interface PricingContextProps {
   }
 )
 export class PricingContext extends React.Component<PricingContextProps> {
-  openCollectPage(minCents, maxCents, category, widthCm, heightCm, artistId) {
-    const url = createCollectUrl({
-      minCents,
-      maxCents,
-      category,
-      widthCm,
-      heightCm,
-      artistId,
-    })
-
-    if (typeof window !== "undefined") {
-      return this.openWindow.bind(this, url)
-    }
-  }
-
   @track({
     action_type: Schema.ActionType.Impression,
     flow: Schema.Flow.ArtworkPriceContext,
@@ -53,16 +37,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
   })
   trackImpression() {
     // noop
-  }
-
-  @track({
-    action_type: Schema.ActionType.Click,
-    flow: Schema.Flow.ArtworkPriceContext,
-    subject: Schema.Subject.HistogramBar,
-    type: Schema.Type.Chart,
-  })
-  openWindow(url) {
-    window.open(url)
   }
 
   @track({
@@ -125,14 +99,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
                   title,
                   description: binValue + labelSuffix,
                 },
-                onClick: this.openCollectPage(
-                  bin.minPriceCents,
-                  bin.maxPriceCents,
-                  artwork.category,
-                  artwork.widthCm,
-                  artwork.heightCm,
-                  artwork.artists[0].id
-                ),
                 onHover: this.barchartHover.bind(this),
                 highlightLabel: artworkFallsInThisBin
                   ? {
