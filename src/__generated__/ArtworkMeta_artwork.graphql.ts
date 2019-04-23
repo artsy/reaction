@@ -6,6 +6,7 @@ declare const _ArtworkMeta_artwork$ref: unique symbol;
 export type ArtworkMeta_artwork$ref = typeof _ArtworkMeta_artwork$ref;
 export type ArtworkMeta_artwork = {
     readonly href: string | null;
+    readonly _id: string;
     readonly date: string | null;
     readonly artist_names: string | null;
     readonly sale_message: string | null;
@@ -13,6 +14,8 @@ export type ArtworkMeta_artwork = {
         readonly name: string | null;
     }) | null;
     readonly image_rights: string | null;
+    readonly is_in_auction: boolean | null;
+    readonly is_acquireable: boolean | null;
     readonly is_shareable: boolean | null;
     readonly meta_image: ({
         readonly resized: ({
@@ -66,7 +69,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_shareable",
+      "name": "is_in_auction",
       "args": null,
       "storageKey": null
     },
@@ -74,6 +77,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "href",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "date",
       "args": null,
       "storageKey": null
     },
@@ -114,7 +124,21 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "date",
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_acquireable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_shareable",
       "args": null,
       "storageKey": null
     },
@@ -272,5 +296,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8bbbd0a2132b9ff450cd6a00a89583a5';
+(node as any).hash = 'e1bf74578133fc8ebf24b1ea06329d38';
 export default node;

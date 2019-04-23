@@ -32,6 +32,7 @@ declare module "sharify" {
       readonly VOLLEY_ENDPOINT: string
       readonly XAPP_TOKEN: string
       readonly IMAGE_LAZY_LOADING: boolean
+      readonly GOOGLE_ADWORDS_ID: string
     }
 
     export interface ResponseLocalData extends GlobalData {
