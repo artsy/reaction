@@ -133,22 +133,22 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
                 />
               )
             }}
-            renderLeftArrow={({ getSlick }) => {
+            renderLeftArrow={({ getFlickity }) => {
               return (
                 <Box
                   onClick={() => {
-                    getSlick().slickPrev()
+                    getFlickity && getFlickity.previous()
                   }}
                 >
                   Prev
                 </Box>
               )
             }}
-            renderRightArrow={({ getSlick }) => {
+            renderRightArrow={({ getFlickity }) => {
               return (
                 <Box
                   onClick={() => {
-                    getSlick().slickNext()
+                    getFlickity && getFlickity.next()
                   }}
                 >
                   Next

@@ -180,6 +180,7 @@
     "rc-slider": "^8.6.2",
     "react-autosuggest": "^9.4.3",
     "react-css-transition-replace": "^3.0.2",
+    "react-flickity-component": "^3.2.0",
     "react-head": "^3.0.0",
     "react-html-parser": "^2.0.2",
     "react-lazy-load-image-component": "^1.1.1",

@@ -1,4 +1,4 @@
-import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
+import { EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -8,7 +8,6 @@ import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Compo
 import { Carousel } from "Components/v2"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
@@ -120,20 +119,12 @@ const RecommendedArtist: FC<
           )
         }}
         renderLeftArrow={arrowProps => {
-          const { Arrow, currentSlideIndex } = arrowProps
-          return (
-            <ArrowWrapper>{currentSlideIndex !== 0 && <Arrow />}</ArrowWrapper>
-          )
+          const { Arrow } = arrowProps
+          return <Arrow />
         }}
         renderRightArrow={arrowProps => {
-          const { Arrow, currentSlideIndex, slidesToScroll } = arrowProps
-          return (
-            <ArrowWrapper>
-              {currentSlideIndex < artistData.length - slidesToScroll && (
-                <Arrow />
-              )}
-            </ArrowWrapper>
-          )
+          const { Arrow } = arrowProps
+          return <Arrow />
         }}
       />
     </>
@@ -175,7 +166,3 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
     `,
   }
 )
-
-export const ArrowWrapper = styled(Box)`
-  min-width: 30px;
-`
