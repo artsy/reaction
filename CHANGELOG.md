@@ -1,3 +1,27 @@
+# v16.3.2 (Tue Apr 23 2019)
+
+#### 🐛  Bug Fix
+
+- Unify logic to require authentication for following an artist, following a partner, and saving an artwork [#2303](https://github.com/artsy/reaction/pull/2303) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.3.1 (Tue Apr 23 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.0 [#2322](https://github.com/artsy/reaction/pull/2322) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.3.0 (Mon Apr 22 2019)
 
 #### 🚀  Enhancement

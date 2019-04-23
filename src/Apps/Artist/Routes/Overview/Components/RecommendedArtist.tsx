@@ -1,4 +1,4 @@
-import { EntityHeader, Sans, Spacer } from "@artsy/palette"
+import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -6,11 +6,11 @@ import * as Schema from "Artsy/Analytics/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2"
-import { stringify } from "qs"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
+import styled from "styled-components"
 import { get } from "Utils/get"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -18,41 +18,10 @@ interface RecommendedArtistProps {
 const HEIGHT = 150
 
 const handleOpenAuth = (mediator, artist) => {
-  if (sd.IS_MOBILE) {
-    openMobileAuth(artist)
-  } else if (mediator) {
-    openDesktopAuth(mediator, artist)
-  } else {
-    window.location.href = "/login"
-  }
-}
-
-const openMobileAuth = artist => {
-  const params = stringify({
-    action: "follow",
+  openAuthModal(mediator, {
+    entity: artist,
     contextModule: Schema.ContextModule.RecommendedArtists,
-    intent: "follow artist",
-    kind: "artist",
-    objectId: artist.id,
-    signUpIntent: "follow artist",
-    trigger: "click",
-    entityName: artist.name,
-  })
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-  window.location.href = href
-}
-
-const openDesktopAuth = (mediator, artist) => {
-  mediator.trigger("open:auth", {
-    mode: "signup",
-    copy: `Sign up to follow ${artist.name}`,
-    signupIntent: "follow artist",
-    afterSignUpAction: {
-      kind: "artist",
-      action: "follow",
-      objectId: artist.id,
-    },
+    intent: AuthModalIntent.FollowArtist,
   })
 }
 
@@ -84,6 +53,11 @@ const RecommendedArtist: FC<
   RecommendedArtistProps & { onArtworkClicked: () => void }
 > = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
+  const artistData = get(
+    artist,
+    a => a.artworks_connection.edges,
+    []
+  ) as object[]
 
   return (
     <>
@@ -127,7 +101,7 @@ const RecommendedArtist: FC<
 
       <Carousel
         height={240}
-        data={get(artist, a => a.artworks_connection.edges, []) as object[]}
+        data={artistData}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
 
@@ -142,6 +116,22 @@ const RecommendedArtist: FC<
               mediator={mediator}
               onClick={onArtworkClicked}
             />
+          )
+        }}
+        renderLeftArrow={arrowProps => {
+          const { Arrow, currentSlideIndex } = arrowProps
+          return (
+            <ArrowWrapper>{currentSlideIndex !== 0 && <Arrow />}</ArrowWrapper>
+          )
+        }}
+        renderRightArrow={arrowProps => {
+          const { Arrow, currentSlideIndex, slidesToScroll } = arrowProps
+          return (
+            <ArrowWrapper>
+              {currentSlideIndex < artistData.length - slidesToScroll && (
+                <Arrow />
+              )}
+            </ArrowWrapper>
           )
         }}
       />
@@ -180,3 +170,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+export const ArrowWrapper = styled(Box)`
+  min-width: 30px;
+`

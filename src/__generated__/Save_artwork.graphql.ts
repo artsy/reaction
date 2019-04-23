@@ -8,6 +8,7 @@ export type Save_artwork = {
     readonly _id: string;
     readonly id: string;
     readonly is_saved: boolean | null;
+    readonly title: string | null;
     readonly " $refType": Save_artwork$ref;
 };
 
@@ -47,8 +48,15 @@ const node: ConcreteFragment = {
       "name": "is_saved",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "title",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = '2ad87b946416ba84bc82a9b6844aceb4';
+(node as any).hash = 'c2c4c95bdc8dc89eb18e52f9723edc15';
 export default node;

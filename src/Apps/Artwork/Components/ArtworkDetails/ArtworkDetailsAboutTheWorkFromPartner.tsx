@@ -9,7 +9,6 @@ import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
-import { stringify } from "qs"
 import { data as sd } from "sharify"
 
 import { track } from "Artsy/Analytics"
@@ -25,6 +24,7 @@ import {
   Spacer,
   StackableBorderBox,
 } from "@artsy/palette"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
@@ -51,42 +51,11 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     // noop
   }
 
-  handleOpenAuth = (mediator, artist) => {
-    if (sd.IS_MOBILE) {
-      this.openMobileAuth(artist)
-    } else if (mediator) {
-      this.openDesktopAuth(mediator, artist)
-    } else {
-      window.location.href = "/login"
-    }
-  }
-
-  openMobileAuth = partner => {
-    const params = stringify({
-      action: "follow",
-      contextModule: "Artwork page",
-      intent: "follow gallery",
-      kind: "gallery",
-      objectId: partner.id,
-      signUpIntent: "follow gallery",
-      trigger: "click",
-      entityName: partner.name,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth = (mediator, partner) => {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to follow ${partner.name}`,
-      signupIntent: "follow gallery",
-      afterSignUpAction: {
-        kind: "profile",
-        action: "follow",
-        objectId: partner.profile && partner.profile.id,
-      },
+  handleOpenAuth = (mediator, partner) => {
+    openAuthModal(mediator, {
+      entity: partner,
+      contextModule: Schema.ContextModule.ArtworkPage,
+      intent: AuthModalIntent.FollowPartner,
     })
   }
 

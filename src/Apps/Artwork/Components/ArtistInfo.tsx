@@ -18,8 +18,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
-
-import { stringify } from "qs"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
@@ -84,41 +83,10 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    if (sd.IS_MOBILE) {
-      this.openMobileAuth(artist)
-    } else if (mediator) {
-      this.openDesktopAuth(mediator, artist)
-    } else {
-      window.location.href = "/login"
-    }
-  }
-
-  openMobileAuth = artist => {
-    const params = stringify({
-      action: "follow",
-      contextModule: "Artwork page",
-      intent: "follow artist",
-      kind: "artist",
-      objectId: artist.id,
-      signUpIntent: "follow artist",
-      trigger: "click",
-      entityName: artist.name,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth = (mediator, artist) => {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to follow ${artist.name}`,
-      signupIntent: "follow artist",
-      afterSignUpAction: {
-        kind: "artist",
-        action: "follow",
-        objectId: artist.id,
-      },
+    openAuthModal(mediator, {
+      entity: artist,
+      contextModule: Schema.ContextModule.ArtworkPage,
+      intent: AuthModalIntent.FollowArtist,
     })
   }
 
