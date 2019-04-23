@@ -76,6 +76,10 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           return
         }
 
+        /**
+         * An array that gets passed to `react-head`'s provider that will collect the header
+         * tags that are rendered by the App. `headTags` is _mutated_ when it's passed to the App. Beware.
+         **/
         const headTags = [<style type="text/css">{MediaStyle}</style>]
         const matchingMediaQueries = userAgent && matchingMediaQueriesForUserAgent(userAgent) // prettier-ignore
 
