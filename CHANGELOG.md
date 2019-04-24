@@ -1,3 +1,15 @@
+# v16.3.6 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- Use stitched 'create buy order' mutation [#2331](https://github.com/artsy/reaction/pull/2331) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v16.3.5 (Wed Apr 24 2019)
 
 #### 🐛  Bug Fix
