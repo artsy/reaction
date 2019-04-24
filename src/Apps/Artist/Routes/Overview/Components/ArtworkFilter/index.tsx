@@ -161,13 +161,6 @@ class Filter extends Component<Props> {
     )
   }
 
-  @track((props: Props, _state, [_selected, category, count]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { [category]: count.id },
-      current: { ...props.filterState.state },
-    }
-  })
   handleCategorySelect(selected, category, count) {
     const { filterState, mediator } = this.props
 
