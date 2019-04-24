@@ -1,3 +1,15 @@
+# v16.3.4 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- ensure experiment viewed event is fired [#2326](https://github.com/artsy/reaction/pull/2326) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.3.3 (Tue Apr 23 2019)
 
 #### 🏠  Internal
