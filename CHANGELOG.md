@@ -1,3 +1,15 @@
+# v16.4.0 (Wed Apr 24 2019)
+
+#### 🚀  Enhancement
+
+- Add ability to “show more” artist recommendations [#2310](https://github.com/artsy/reaction/pull/2310) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.3.6 (Wed Apr 24 2019)
 
 #### 🐛  Bug Fix
