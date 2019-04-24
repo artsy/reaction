@@ -1,30 +1,30 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type CreateOrderWithArtworkInput = {
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceCreateOrderWithArtworkInput = {
     readonly artworkId: string;
+    readonly clientMutationId?: string | null;
     readonly editionSetId?: string | null;
     readonly quantity?: number | null;
-    readonly clientMutationId?: string | null;
 };
 export type ArtworkSidebarCommercialOrderMutationVariables = {
-    readonly input: CreateOrderWithArtworkInput;
+    readonly input: CommerceCreateOrderWithArtworkInput;
 };
 export type ArtworkSidebarCommercialOrderMutationResponse = {
-    readonly ecommerceCreateOrderWithArtwork: ({
-        readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
-            readonly order?: ({
-                readonly id: string | null;
-                readonly mode: OrderModeEnum | null;
-            }) | null;
-            readonly error?: ({
+    readonly commerceCreateOrderWithArtwork: ({
+        readonly orderOrError: {
+            readonly __typename: "CommerceOrderWithMutationSuccess";
+            readonly order?: {
+                readonly id: string;
+                readonly mode: CommerceOrderModeEnum | null;
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type ArtworkSidebarCommercialOrderMutation = {
@@ -36,12 +36,12 @@ export type ArtworkSidebarCommercialOrderMutation = {
 
 /*
 mutation ArtworkSidebarCommercialOrderMutation(
-  $input: CreateOrderWithArtworkInput!
+  $input: CommerceCreateOrderWithArtworkInput!
 ) {
-  ecommerceCreateOrderWithArtwork(input: $input) {
+  commerceCreateOrderWithArtwork(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         __typename
         order {
           __typename
@@ -50,7 +50,7 @@ mutation ArtworkSidebarCommercialOrderMutation(
           __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -67,7 +67,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreateOrderWithArtworkInput!",
+    "type": "CommerceCreateOrderWithArtworkInput!",
     "defaultValue": null
   }
 ],
@@ -76,12 +76,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "CreateOrderWithArtworkInput!"
+    "type": "CommerceCreateOrderWithArtworkInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -89,7 +89,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -150,7 +150,7 @@ return {
   "operationKind": "mutation",
   "name": "ArtworkSidebarCommercialOrderMutation",
   "id": null,
-  "text": "mutation ArtworkSidebarCommercialOrderMutation(\n  $input: CreateOrderWithArtworkInput!\n) {\n  ecommerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ArtworkSidebarCommercialOrderMutation(\n  $input: CommerceCreateOrderWithArtworkInput!\n) {\n  commerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -162,10 +162,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceCreateOrderWithArtwork",
+        "name": "commerceCreateOrderWithArtwork",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreateOrderWithArtworkPayload",
+        "concreteType": "CommerceCreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
           {
@@ -180,7 +180,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -213,10 +213,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceCreateOrderWithArtwork",
+        "name": "commerceCreateOrderWithArtwork",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreateOrderWithArtworkPayload",
+        "concreteType": "CommerceCreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
           {
@@ -232,7 +232,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -260,5 +260,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd1fbc7262149f2b4adcaf68f88cc9df2';
+(node as any).hash = 'f717141f6a7d35c3ec8158089159d2eb';
 export default node;
