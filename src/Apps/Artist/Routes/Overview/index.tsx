@@ -38,9 +38,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   componentDidMount() {
-    if (this.props.showCollectionsRail) {
-      this.trackingCollectionsRailTest()
-    }
+    this.trackingCollectionsRailTest()
   }
 
   @track<OverviewRouteProps>(props => ({

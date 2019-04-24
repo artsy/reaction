@@ -1,3 +1,63 @@
+# v16.3.6 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- Use stitched 'create buy order' mutation [#2331](https://github.com/artsy/reaction/pull/2331) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.3.5 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- User can hover over ? icon and see the font color, cursor, and label change [#2324](https://github.com/artsy/reaction/pull/2324) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.3.4 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- ensure experiment viewed event is fired [#2326](https://github.com/artsy/reaction/pull/2326) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.3.3 (Tue Apr 23 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.1 [#2328](https://github.com/artsy/reaction/pull/2328) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.3.2 (Tue Apr 23 2019)
+
+#### 🐛  Bug Fix
+
+- Unify logic to require authentication for following an artist, following a partner, and saving an artwork [#2303](https://github.com/artsy/reaction/pull/2303) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.3.1 (Tue Apr 23 2019)
 
 #### 🏠  Internal

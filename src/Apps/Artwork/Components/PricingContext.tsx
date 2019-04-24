@@ -92,7 +92,9 @@ export class PricingContext extends React.Component<PricingContextProps> {
           Price
         </Sans>
         <Flex>
-          <Sans size="2">{artwork.pricingContext.appliedFiltersDisplay}</Sans>
+          <Sans size="2" color={"black60"}>
+            {artwork.pricingContext.appliedFiltersDisplay}
+          </Sans>
           <PricingContextModal />
         </Flex>
         <Spacer mb={[2, 3]} />
