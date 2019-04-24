@@ -1,3 +1,15 @@
+# v16.3.5 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- User can hover over ? icon and see the font color, cursor, and label change [#2324](https://github.com/artsy/reaction/pull/2324) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.3.4 (Wed Apr 24 2019)
 
 #### 🐛  Bug Fix
