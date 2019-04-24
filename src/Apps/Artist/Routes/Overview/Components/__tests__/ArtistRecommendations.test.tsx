@@ -81,22 +81,22 @@ const defaultArtist = {
     artists: {
       pageInfo: {
         hasNextPage: false,
-        endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
+        endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
       },
       edges: [
         {
           node: {
-            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
+            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
-          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
+          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
         },
       ],
     },
   },
-  id: "QXJ0aXN0Omp1YW4tZ3Jpcw==",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw==",
+  id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
 }
 
 const pagedArtist = {
@@ -105,36 +105,36 @@ const pagedArtist = {
     artists: {
       pageInfo: {
         hasNextPage: true,
-        endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30=",
+        endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
       },
       edges: [
         {
           node: {
-            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
+            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
-          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
+          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
         },
         {
           node: {
-            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29=",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29=",
+            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
+            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
             ...artistFields,
           },
-          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29=",
+          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
         },
         {
           node: {
-            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30=",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30=",
+            id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
+            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
             ...artistFields,
           },
-          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30=",
+          cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
         },
       ],
     },
   },
-  id: "QXJ0aXN0Omp1YW4tZ3Jpcw==",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw==",
+  id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
 }

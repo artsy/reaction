@@ -24,9 +24,6 @@ interface ArtistRecommendationsProps {
 
 const PAGE_SIZE = 3
 
-// TODO:
-// * get help with relay errors
-// * uncomment test & get it working & add coverage for loading more
 export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
   artist,
   relay,
