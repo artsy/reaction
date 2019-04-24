@@ -1,6 +1,6 @@
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
-import { ArrowButton } from "Components/v2/Carousel"
+import { ArrowButton } from "Components/v2/CarouselV2"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { drop } from "lodash"

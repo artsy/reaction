@@ -1,7 +1,11 @@
 import { Box, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
-import { Carousel, LargeCarousel, SmallCarousel } from "Components/v2/Carousel"
+import {
+  Carousel,
+  LargeCarousel,
+  SmallCarousel,
+} from "Components/v2/CarouselV2"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
