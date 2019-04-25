@@ -1,3 +1,17 @@
+# v16.5.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Update responsive grid styling for search results skeleton
+
+This commit updates styling for various responsive breakpoints. [#2338](https://github.com/artsy/reaction/pull/2338) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.5.1 (Thu Apr 25 2019)
 
 #### 🐛  Bug Fix
