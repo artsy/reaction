@@ -129,8 +129,14 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "artworks_connection",
-      "storageKey": "artworks_connection(first:20,sort:\"PUBLISHED_AT_DESC\")",
+      "storageKey": "artworks_connection(filter:\"IS_FOR_SALE\",first:20,sort:\"PUBLISHED_AT_DESC\")",
       "args": [
+        {
+          "kind": "Literal",
+          "name": "filter",
+          "value": "IS_FOR_SALE",
+          "type": "[ArtistArtworksFilters]"
+        },
         {
           "kind": "Literal",
           "name": "first",
@@ -204,5 +210,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bac237869e325729a567d00bf3a3780e';
+(node as any).hash = '6fefba32685b9654f7a1648a8de05f36';
 export default node;
