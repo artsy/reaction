@@ -1,3 +1,15 @@
+# v16.5.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- When price is outside range include it in the bottom or top bucket [#2330](https://github.com/artsy/reaction/pull/2330) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v16.5.0 (Thu Apr 25 2019)
 
 #### 🚀  Enhancement
