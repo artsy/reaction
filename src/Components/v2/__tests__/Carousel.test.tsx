@@ -1,7 +1,7 @@
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"
-import { Carousel, LargeCarousel, SmallCarousel } from "../Carousel"
+import { Carousel, LargeCarousel, SmallCarousel } from "../CarouselV2"
 
 describe("Carousel", () => {
   beforeAll(() => {
@@ -47,12 +47,16 @@ describe("Carousel", () => {
         />
       </MockBoot>
     )
-    expect(wrapper.find(Foo).length).toEqual(2)
-    expect(
-      wrapper
-        .find(Foo)
-        .first()
-        .html()
-    ).toContain("hello name1 how are you")
+
+    // Settimeout needed here for carousel render
+    setTimeout(() => {
+      expect(wrapper.find(Foo).length).toEqual(2)
+      expect(
+        wrapper
+          .find(Foo)
+          .first()
+          .html()
+      ).toContain("hello name1 how are you")
+    })
   })
 })

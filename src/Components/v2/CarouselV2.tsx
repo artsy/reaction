@@ -3,7 +3,36 @@ import React, { ReactNode, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
-import { FlickitySettings } from "./types"
+
+export interface FlickitySettings {
+  draggable?: boolean
+  freeScroll?: boolean
+  wrapAround?: boolean
+  groupCells?: boolean | number | string
+  autoPlay?: boolean | number
+  fullscreen?: boolean
+  fade?: boolean
+  adaptiveHeight?: boolean
+  watchCSS?: boolean
+  hash?: boolean
+  dragThreshold?: number
+  friction?: number
+  selectedAttraction?: number
+  freeScrollFriction?: number
+  imagesLoaded?: boolean
+  lazyLoad?: boolean | number
+  bgLazyLoad?: boolean | number
+  initialIndex?: number
+  accessibility?: boolean
+  setGallerySize?: boolean
+  resize?: boolean
+  cellAlign?: "left" | "center" | "right"
+  contain?: boolean
+  percentPosition?: boolean
+  rightToLeft?: boolean
+  prevNextButtons?: boolean
+  pageDots?: boolean
+}
 
 type Arrow = (
   props: {
@@ -19,7 +48,7 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  flickitySettings?: FlickitySettings
+  carouselSettings?: FlickitySettings
 }
 
 export class Carousel extends React.Component<Props> {
@@ -57,7 +86,7 @@ export const LargeCarousel = (props: Props) => {
   useEffect(() => {
     toggleMounted(true)
   }, [])
-  const flcktyRef = useRef(null)
+  const flicktyRef = useRef(null)
 
   let flickity = null
 
@@ -72,8 +101,8 @@ export const LargeCarousel = (props: Props) => {
   }
 
   if (isMounted) {
-    if (flcktyRef.current !== null) {
-      flickity = flcktyRef.current.flkty
+    if (flicktyRef.current !== null) {
+      flickity = flicktyRef.current.flkty
     }
 
     flickity.on("select", index => {
@@ -82,7 +111,7 @@ export const LargeCarousel = (props: Props) => {
     })
   }
 
-  const flickityOptions = {
+  const carouselSettings = {
     draggable: false,
     freeScroll: false,
     wrapAround: false,
@@ -91,16 +120,15 @@ export const LargeCarousel = (props: Props) => {
     prevNextButtons: false,
     groupCells: true,
     contain: true,
-    ...props.flickitySettings,
+    ...props.carouselSettings,
   }
 
   const LeftArrow = () => {
     const getFlickity = flickity
     return (
       <ArrowButton
-        left={-38}
         onClick={() => {
-          getFlickity.previous && getFlickity.previous() // check existence for tests
+          getFlickity && getFlickity.previous ? getFlickity.previous() : null // check existence for tests
         }}
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
@@ -112,9 +140,8 @@ export const LargeCarousel = (props: Props) => {
     const getFlickity = flickity
     return (
       <ArrowButton
-        right={-38}
         onClick={() => {
-          getFlickity.next && getFlickity.next() // check existence for tests
+          getFlickity && getFlickity.next ? getFlickity.next() : null // check existence for tests
         }}
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
@@ -129,8 +156,8 @@ export const LargeCarousel = (props: Props) => {
       alignItems="center"
       height={props.height}
     >
-      {currentSlideIndex !== 0 && (
-        <Box>
+      {(currentSlideIndex !== 0 || carouselSettings.wrapAround === true) && (
+        <ArrowWrapper left={-38}>
           {props.renderLeftArrow ? (
             props.renderLeftArrow({
               Arrow: LeftArrow,
@@ -140,12 +167,12 @@ export const LargeCarousel = (props: Props) => {
           ) : (
             <LeftArrow />
           )}
-        </Box>
+        </ArrowWrapper>
       )}
 
       <CarouselContainer height={props.height}>
         {Flickity && (
-          <Flickity options={flickityOptions} ref={flcktyRef}>
+          <Flickity options={carouselSettings} ref={flicktyRef}>
             {props.data.map((slide, index) => {
               return <Box key={index}>{props.render(slide)}</Box>
             })}
@@ -153,8 +180,8 @@ export const LargeCarousel = (props: Props) => {
         )}
       </CarouselContainer>
 
-      {!lastItemVisible && (
-        <Box>
+      {(!lastItemVisible || carouselSettings.wrapAround === true) && (
+        <ArrowWrapper right={-38}>
           {props.renderRightArrow ? (
             props.renderRightArrow({
               Arrow: RightArrow,
@@ -164,28 +191,28 @@ export const LargeCarousel = (props: Props) => {
           ) : (
             <RightArrow />
           )}
-        </Box>
+        </ArrowWrapper>
       )}
     </Flex>
   )
 }
 
 export const SmallCarousel = (props: Props) => {
-  const flickityOptions = {
+  const carouselSettings = {
     draggable: true,
     freeScroll: false,
     wrapAround: false,
     cellAlign: "left",
     pageDots: false,
     prevNextButtons: false,
-    ...props.flickitySettings,
+    ...props.carouselSettings,
   }
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
       <CarouselContainer height={props.height}>
         {Flickity && (
-          <Flickity options={flickityOptions}>
+          <Flickity options={carouselSettings}>
             {props.data.map((slide, index) => {
               return <Box key={index}>{props.render(slide)}</Box>
             })}
@@ -195,6 +222,16 @@ export const SmallCarousel = (props: Props) => {
     </Flex>
   )
 }
+
+const ArrowWrapper = styled(Box)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 30px;
+
+  ${left};
+  ${right};
+`
 
 const CarouselContainer = styled.div<{ height?: number }>`
   width: 100%;
@@ -212,9 +249,7 @@ const CarouselContainer = styled.div<{ height?: number }>`
 export const ArrowButton = styled(Flex)<
   LeftProps & RightProps & { height?: number }
 >`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -227,7 +262,4 @@ export const ArrowButton = styled(Flex)<
   &:hover {
     opacity: 1;
   }
-
-  ${left};
-  ${right};
 `

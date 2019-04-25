@@ -54,7 +54,7 @@ export class ArtistCollectionsRail extends React.Component<
 
           <Carousel
             height={200}
-            flickitySettings={{
+            carouselSettings={{
               groupCells: 1,
               wrapAround: true,
             }}

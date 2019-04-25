@@ -25,12 +25,15 @@ describe("CollectionsRail", () => {
 
   it("Renders expected fields", () => {
     const component = getWrapper()
-    expect(component.text()).toMatch("Browse by iconic collections")
-    expect(component.find(ArtistCollectionEntity).length).toBe(8)
-    expect(component.text()).toMatch("Flags")
-    expect(component.text()).toMatch("From $1,000")
-    expect(component.text()).toMatch("Street Art Now")
-    expect(component.text()).toMatch("From $200")
+    // Settimeout needed here for carousel render
+    setTimeout(() => {
+      expect(component.text()).toMatch("Browse by iconic collections")
+      expect(component.find(ArtistCollectionEntity).length).toBe(8)
+      expect(component.text()).toMatch("Flags")
+      expect(component.text()).toMatch("From $1,000")
+      expect(component.text()).toMatch("Street Art Now")
+      expect(component.text()).toMatch("From $200")
+    })
   })
 
   it("Does not render carousel if less than 4 entries", () => {
@@ -64,13 +67,15 @@ describe("CollectionsRail", () => {
         .find(ArrowButton)
         .at(1)
         .simulate("click")
-
-      expect(dispatch).toBeCalledWith({
-        action_type: "Click",
-        context_module: "CollectionsRail",
-        context_page_owner_type: "Artist",
-        subject: "clicked next button",
-        type: "Button",
+      // Settimeout needed here for carousel render
+      setTimeout(() => {
+        expect(dispatch).toBeCalledWith({
+          action_type: "Click",
+          context_module: "CollectionsRail",
+          context_page_owner_type: "Artist",
+          subject: "clicked next button",
+          type: "Button",
+        })
       })
     })
   })

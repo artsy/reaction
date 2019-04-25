@@ -141,6 +141,20 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   margin-bottom: 20px;
 }
 
+.c5 {
+  font-family: artsy-icons;
+  color: #000;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  color: #000;
+}
+
 .c20 {
   margin: 10px 20px 0 0;
 }
@@ -230,20 +244,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
-  color: #000;
-}
-
-.c5 {
-  font-family: artsy-icons;
-  color: #000;
-  font-size: 32px;
-  margin: 0 5px;
-  display: inline-block;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  position: relative;
   color: #000;
 }
 
@@ -6610,6 +6610,20 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 32px;
 }
 
+.c5 {
+  font-family: artsy-icons;
+  color: black;
+  font-size: 32px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  color: black;
+}
+
 .c21 {
   margin: 10px 20px 0 0;
 }
@@ -6695,20 +6709,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 
 .c38 > a:hover,
 .c38 a:hover {
-  color: black;
-}
-
-.c5 {
-  font-family: artsy-icons;
-  color: black;
-  font-size: 32px;
-  margin: 0 5px;
-  display: inline-block;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  position: relative;
   color: black;
 }
 

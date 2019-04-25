@@ -1,13 +1,17 @@
 import { Box, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
-import { Carousel, LargeCarousel, SmallCarousel } from "Components/v2/Carousel"
+import {
+  Carousel,
+  LargeCarousel,
+  SmallCarousel,
+} from "Components/v2/CarouselV2"
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("Carousel", () => {
+storiesOf("Styleguide/Components", module).add("CarouselV2", () => {
   return (
     <React.Fragment>
       <Section title="Responsive Carousel">
@@ -49,6 +53,25 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
           <LargeCarousel
             data={images}
             height={300}
+            render={props => {
+              return (
+                <Image
+                  px={5}
+                  src={props.resized.url}
+                  width={props.resized.width}
+                  height={props.resized.height}
+                />
+              )
+            }}
+          />
+        </Box>
+      </Section>
+      <Section title="Large Carousel with WrapAround">
+        <Box width="70%">
+          <LargeCarousel
+            data={images}
+            height={300}
+            carouselSettings={{ wrapAround: true }}
             render={props => {
               return (
                 <Image
@@ -133,22 +156,22 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
                 />
               )
             }}
-            renderLeftArrow={({ getSlick }) => {
+            renderLeftArrow={({ getFlickity }) => {
               return (
                 <Box
                   onClick={() => {
-                    getSlick().slickPrev()
+                    getFlickity && getFlickity.previous()
                   }}
                 >
                   Prev
                 </Box>
               )
             }}
-            renderRightArrow={({ getSlick }) => {
+            renderRightArrow={({ getFlickity }) => {
               return (
                 <Box
                   onClick={() => {
-                    getSlick().slickNext()
+                    getFlickity && getFlickity.next()
                   }}
                 >
                   Next
