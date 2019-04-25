@@ -1,9 +1,9 @@
 import { Box, ChevronIcon, Flex } from "@artsy/palette"
 import React, { ReactNode, useEffect, useRef, useState } from "react"
-import Flickity from "react-flickity-component"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
+import { FlickitySettings } from "./types"
 
 type Arrow = (
   props: {
@@ -19,10 +19,7 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  flickitySettings?: {
-    wrapAround: boolean
-    groupCells: number
-  }
+  flickitySettings?: FlickitySettings
 }
 
 export class Carousel extends React.Component<Props> {
@@ -43,6 +40,14 @@ export class Carousel extends React.Component<Props> {
     )
   }
 }
+
+/*
+ * Returns null if no window for SSR
+ */
+const Flickity =
+  typeof window !== "undefined"
+    ? require("react-flickity-component")
+    : () => null
 
 export const LargeCarousel = (props: Props) => {
   const [isMounted, toggleMounted] = useState(false)
@@ -67,7 +72,10 @@ export const LargeCarousel = (props: Props) => {
   }
 
   if (isMounted) {
-    flickity = flcktyRef.current.flkty
+    if (flcktyRef.current !== null) {
+      flickity = flcktyRef.current.flkty
+    }
+
     flickity.on("select", index => {
       setSlideIndex(index)
       checkLastItemVisible()
@@ -87,11 +95,12 @@ export const LargeCarousel = (props: Props) => {
   }
 
   const LeftArrow = () => {
+    const getFlickity = flickity
     return (
       <ArrowButton
         left={-38}
         onClick={() => {
-          flcktyRef.current.flkty.previous && flcktyRef.current.flkty.previous() // check existence for tests
+          getFlickity.previous && getFlickity.previous() // check existence for tests
         }}
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
@@ -100,11 +109,12 @@ export const LargeCarousel = (props: Props) => {
   }
 
   const RightArrow = () => {
+    const getFlickity = flickity
     return (
       <ArrowButton
         right={-38}
         onClick={() => {
-          flcktyRef.current.flkty.next && flcktyRef.current.flkty.next() // check existence for tests
+          getFlickity.next && getFlickity.next() // check existence for tests
         }}
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
@@ -134,11 +144,13 @@ export const LargeCarousel = (props: Props) => {
       )}
 
       <CarouselContainer height={props.height}>
-        <Flickity options={flickityOptions} ref={flcktyRef}>
-          {props.data.map((slide, index) => {
-            return <Box key={index}>{props.render(slide)}</Box>
-          })}
-        </Flickity>
+        {Flickity && (
+          <Flickity options={flickityOptions} ref={flcktyRef}>
+            {props.data.map((slide, index) => {
+              return <Box key={index}>{props.render(slide)}</Box>
+            })}
+          </Flickity>
+        )}
       </CarouselContainer>
 
       {!lastItemVisible && (
@@ -172,11 +184,13 @@ export const SmallCarousel = (props: Props) => {
   return (
     <Flex justifyContent="space-around" alignItems="center">
       <CarouselContainer height={props.height}>
-        <Flickity options={flickityOptions}>
-          {props.data.map((slide, index) => {
-            return <Box key={index}>{props.render(slide)}</Box>
-          })}
-        </Flickity>
+        {Flickity && (
+          <Flickity options={flickityOptions}>
+            {props.data.map((slide, index) => {
+              return <Box key={index}>{props.render(slide)}</Box>
+            })}
+          </Flickity>
+        )}
       </CarouselContainer>
     </Flex>
   )
