@@ -1,3 +1,15 @@
+# v16.5.3 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => Adjust filter tracking on artist page, make sure to cover all filters [#2332](https://github.com/artsy/reaction/pull/2332) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.5.2 (Thu Apr 25 2019)
 
 #### 🐛  Bug Fix
