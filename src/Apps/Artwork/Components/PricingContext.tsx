@@ -53,6 +53,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
   render() {
     const { artwork } = this.props
 
+    console.log("SIZE SCORE", artwork.sizeScore)
+
     if (!artwork.pricingContext) {
       return null
     }
@@ -140,6 +142,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         }
         widthCm
         heightCm
+        sizeScore
         category
         pricingContext @include(if: $enablePricingContext) {
           appliedFiltersDisplay
