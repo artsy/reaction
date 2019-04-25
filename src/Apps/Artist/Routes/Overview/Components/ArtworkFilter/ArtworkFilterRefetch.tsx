@@ -1,4 +1,6 @@
 import { ArtworkFilterRefetch_artist } from "__generated__/ArtworkFilterRefetch_artist.graphql"
+import { track } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ArtworkGridRefetchContainer as ArtworkGrid } from "./ArtworkFilterArtworkGrid"
@@ -11,6 +13,7 @@ interface Props {
   artistID: string
 }
 
+@track()
 class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
   state = {
     isLoading: false, // trigger update to children
@@ -26,12 +29,20 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
         key !== "page" &&
         this.props.filters[key] !== prevProps.filters[key]
       ) {
-        this.loadFilter()
+        if (this.isLoading) return
+        this.loadFilter(key)
       }
     })
   }
 
-  loadFilter = () => {
+  @track((props: Props, _state, [key]) => {
+    return {
+      action_type: Schema.ActionType.CommercialFilterParamsChanged,
+      changed: { [key]: props.filters[key] },
+      current: { ...props.filters },
+    }
+  })
+  loadFilter(_key: string) {
     if (!this.isLoading) {
       this.setState({
         isLoading: true,
