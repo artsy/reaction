@@ -35,7 +35,7 @@ const FilterSidebarSection: React.SFC<any> = props => {
 
 export const FilterSidebar: React.SFC<any> = props => {
   return (
-    <Box width="25%" pr={10} mr={10}>
+    <Box display={["none", "block"]} width="25%" pr={10} mr={10}>
       <FilterSidebarSection />
       <Separator mt={2} mb={2} />
       <FilterSidebarSection />
