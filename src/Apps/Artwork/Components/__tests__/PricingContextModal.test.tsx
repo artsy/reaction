@@ -7,6 +7,12 @@ import { PricingContextModal } from "../PricingContextModal"
 jest.unmock("react-relay")
 jest.unmock("react-tracking")
 
+jest.mock("sharify", () => ({
+  data: {
+    APP_URL: "https://www.artsy.net",
+  },
+}))
+
 describe("PricingContextModal", () => {
   it("renders with the modal closed", async () => {
     const component = mount(<PricingContextModal />)

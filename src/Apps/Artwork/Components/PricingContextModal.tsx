@@ -3,6 +3,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import Modal from "Components/Modal/Modal"
 import React from "react"
+import { data as sd } from "sharify"
 import Events from "Utils/Events"
 
 interface State {
@@ -36,8 +37,6 @@ export class PricingContextModal extends React.Component<State> {
   }
 
   render() {
-    const linkHref =
-      "https://www.artsy.net/article/artsy-editorial-artworks-prices"
     return (
       <>
         <Modal
@@ -64,7 +63,9 @@ export class PricingContextModal extends React.Component<State> {
           </Serif>
           <Serif size="3" color={"black80"}>
             Artwork prices are affected by{" "}
-            <Link href={linkHref}>
+            <Link
+              href={sd.APP_URL + "/article/artsy-editorial-artworks-prices"}
+            >
               a variety of objective and subjective factors
             </Link>{" "}
             including the artist's relative position in the art market and the
