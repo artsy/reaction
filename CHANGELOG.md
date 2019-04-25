@@ -1,3 +1,23 @@
+# v16.5.0 (Thu Apr 25 2019)
+
+#### 🚀  Enhancement
+
+- Add mobile styling for search results page loading skeleton
+
+This commits adds responsive props to render the loading skeleton
+optimized for mobile devices. [#2337](https://github.com/artsy/reaction/pull/2337) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.3 [#2336](https://github.com/artsy/reaction/pull/2336) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.4.2 (Thu Apr 25 2019)
 
 #### 🐛  Bug Fix
