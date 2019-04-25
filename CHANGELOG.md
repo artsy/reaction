@@ -1,3 +1,20 @@
+# v16.4.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- User can not click into histogram bars [#2325](https://github.com/artsy/reaction/pull/2325) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.0 [#2335](https://github.com/artsy/reaction/pull/2335) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.4.1 (Thu Apr 25 2019)
 
 #### 🐛  Bug Fix
