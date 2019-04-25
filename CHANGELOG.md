@@ -1,3 +1,20 @@
+# v16.4.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Exclude artworks that aren’t for sale from artist recommendations. [#2333](https://github.com/artsy/reaction/pull/2333) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.2 [#2334](https://github.com/artsy/reaction/pull/2334) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.4.0 (Wed Apr 24 2019)
 
 #### 🚀  Enhancement
