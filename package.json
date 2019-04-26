@@ -74,6 +74,7 @@
     "@types/chalk": "^2.2.0",
     "@types/dd-trace": "^0.6.0",
     "@types/enzyme": "^3.1.0",
+    "@types/flickity": "^2.1.0",
     "@types/graphql": "^14.0.5",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/jest": "^23.3.9",
