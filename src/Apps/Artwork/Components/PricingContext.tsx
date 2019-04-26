@@ -3,6 +3,7 @@ import {
   BarDescriptor,
   BorderBox,
   Flex,
+  Link,
   Sans,
   Spacer,
 } from "@artsy/palette"
@@ -70,12 +71,12 @@ export class PricingContext extends React.Component<PricingContextProps> {
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
         <Sans size="2" weight="medium">
-          Price
+          {artwork.pricingContext.appliedFiltersDisplay}
         </Sans>
         <Flex>
-          <Sans size="2" color={"black60"}>
-            {artwork.pricingContext.appliedFiltersDisplay}
-          </Sans>
+          <Link color="black60">
+            <Sans size="2">Browse works in the category</Sans>
+          </Link>
           <PricingContextModal />
         </Flex>
         <Spacer mb={[2, 3]} />
