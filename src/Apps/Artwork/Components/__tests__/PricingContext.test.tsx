@@ -94,7 +94,7 @@ describe("PricingContext", () => {
 
   it("renders if there is data present", async () => {
     const wrapper = await getWrapper()
-    expect(wrapper.text()).toContain("Price in context")
+    expect(wrapper.text()).toContain("Browse works in this category")
     expect(wrapper.text()).toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
