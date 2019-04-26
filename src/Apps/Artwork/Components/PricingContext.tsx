@@ -15,6 +15,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import Events from "Utils/Events"
+import { createCollectUrl } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
 interface PricingContextProps {
@@ -50,6 +51,16 @@ export class PricingContext extends React.Component<PricingContextProps> {
     // I'm just for tracking!
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.HistogramBar,
+    type: Schema.Type.Chart,
+  })
+  collectPageLinkClick() {
+    // I'm just for tracking!
+  }
+
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   render() {
     const { artwork } = this.props
@@ -74,7 +85,15 @@ export class PricingContext extends React.Component<PricingContextProps> {
           {artwork.pricingContext.appliedFiltersDisplay}
         </Sans>
         <Flex>
-          <Link color="black60">
+          <Link
+            href={createCollectUrl(
+              artwork.category,
+              artwork.sizeScore,
+              artwork.artists[0].id
+            )}
+            onClick={this.collectPageLinkClick}
+            color="black60"
+          >
             <Sans size="2">Browse works in the category</Sans>
           </Link>
           <PricingContextModal />

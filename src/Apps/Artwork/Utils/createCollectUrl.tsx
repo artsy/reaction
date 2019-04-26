@@ -1,7 +1,7 @@
 import * as qs from "qs"
 import { data as sd } from "sharify"
 
-export const createCollectUrl = ({ category, artistId, sizeScore }) => {
+export const createCollectUrl = (category, sizeScore, artistId) => {
   let dimensionRange
   if (sizeScore < 1600) {
     dimensionRange = "0-1600"
