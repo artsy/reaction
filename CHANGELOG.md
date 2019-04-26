@@ -1,3 +1,17 @@
+# v16.5.6 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- Update style for search results page skeleton
+
+Minor updates to the positioning of the skeleton. [#2344](https://github.com/artsy/reaction/pull/2344) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.5.5 (Fri Apr 26 2019)
 
 #### 🐛  Bug Fix
