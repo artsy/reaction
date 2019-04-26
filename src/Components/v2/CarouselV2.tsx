@@ -1,4 +1,4 @@
-import { Box, ChevronIcon, Flex } from "@artsy/palette"
+import { Box, ChevronIcon, Flex, space } from "@artsy/palette"
 import { Options as FlickityOptions } from "flickity"
 import React, { ReactNode, useRef, useState } from "react"
 import styled from "styled-components"
@@ -162,7 +162,7 @@ export const LargeCarousel = (props: Props) => {
       height={props.height}
     >
       {showLeftArrow && (
-        <ArrowWrapper left={-38}>
+        <ArrowWrapper left={-space(4)}>
           {props.renderLeftArrow ? (
             props.renderLeftArrow({
               Arrow: LeftArrow,
@@ -182,7 +182,7 @@ export const LargeCarousel = (props: Props) => {
       </CarouselContainer>
 
       {showRightArrow && (
-        <ArrowWrapper right={-38}>
+        <ArrowWrapper right={-space(4)}>
           {props.renderRightArrow ? (
             props.renderRightArrow({
               Arrow: RightArrow,
