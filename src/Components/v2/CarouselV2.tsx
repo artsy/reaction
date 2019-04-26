@@ -25,6 +25,11 @@ interface Props {
 
 const isClient = typeof window !== "undefined"
 
+/*
+ * Flickity docs https://flickity.metafizzy.co
+ * Flickity requires window, so we must render a seperate Flex wrapper instead of
+ * a carousel if we're using SSR.
+ */
 export class Carousel extends React.Component<Props> {
   static defaultProps = {
     height: 300,
@@ -59,6 +64,9 @@ const renderSlides = props => {
   })
 }
 
+/*
+ * This version of the carousel is only rendered for SSR
+ */
 const CarouselServer = (props: Props) => {
   return (
     <Flex
@@ -99,6 +107,10 @@ export const LargeCarousel = (props: Props) => {
     setLastItemVisible(isLastItemVisible)
   }
 
+  /*
+   * We need to wait for the component to mount before using the flickity ref.
+   * Flickity will only initialize after the component has rendered.
+   */
   if (isMounted) {
     if (flicktyRef.current !== null) {
       flickity = flicktyRef.current.flkty
