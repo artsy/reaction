@@ -32,7 +32,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
 
   @track((props: CollectRefetchProps, _state, [key]) => {
     return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
+      action_type: Schema.ActionType.CommercialFilterParamsChanged,
       changed: { [key]: props.filtersState[key] },
       current: { ...props.filtersState },
     }

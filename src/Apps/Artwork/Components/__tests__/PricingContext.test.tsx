@@ -1,4 +1,4 @@
-import { BarBox, QuestionCircleIcon } from "@artsy/palette"
+import { BarBox, BarChart, QuestionCircleIcon } from "@artsy/palette"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -168,8 +168,84 @@ describe("PricingContext", () => {
     })
 
     expect(wrapper.find("HighlightLabel").text()).toMatchInlineSnapshot(
-      `"$247–$327This work"`
+      `"$247+This work"`
     )
+  })
+
+  it("Puts the artwork in the first bin when the price is smaller than the first bin's min price", async () => {
+    const wrapper = await getWrapper({
+      artwork: {
+        ...mockArtwork,
+        pricingContext: {
+          ...mockArtwork.pricingContext,
+          bins: [
+            {
+              maxPrice: "$247",
+              maxPriceCents: 24765,
+              minPrice: "$168",
+              minPriceCents: 16810,
+              numArtworks: 0,
+            },
+            {
+              maxPrice: "$327",
+              maxPriceCents: 32720,
+              minPrice: "$247",
+              minPriceCents: 24765,
+              numArtworks: 17,
+            },
+          ],
+        },
+        priceCents: {
+          min: 15500,
+          max: 15500,
+        },
+      },
+    })
+
+    expect(wrapper.find(BarChart).props().bars[0].label).toMatchInlineSnapshot(`
+Object {
+  "description": "1 work",
+  "title": "$0–$247",
+}
+`)
+  })
+
+  it("Puts the artwork in the last bin when the price is larger than the last bin's max price", async () => {
+    const wrapper = await getWrapper({
+      artwork: {
+        ...mockArtwork,
+        pricingContext: {
+          ...mockArtwork.pricingContext,
+          bins: [
+            {
+              maxPrice: "$247",
+              maxPriceCents: 24765,
+              minPrice: "$168",
+              minPriceCents: 16810,
+              numArtworks: 17,
+            },
+            {
+              maxPrice: "$327",
+              maxPriceCents: 32720,
+              minPrice: "$247",
+              minPriceCents: 24765,
+              numArtworks: 0,
+            },
+          ],
+        },
+        priceCents: {
+          min: 32721,
+          max: 32721,
+        },
+      },
+    })
+
+    expect(wrapper.find(BarChart).props().bars[1].label).toMatchInlineSnapshot(`
+Object {
+  "description": "1 work",
+  "title": "$247+",
+}
+`)
   })
 
   describe("Analytics", () => {
@@ -188,23 +264,6 @@ describe("PricingContext", () => {
         type: "Chart",
         flow: "Artwork Price Context",
       })
-    })
-
-    it("tracks clicks on histogram bars", () => {
-      const { Component, dispatch } = mockTracking(PricingContext)
-      const component = mount(<Component artwork={mockArtwork as any} />)
-      component
-        .find(BarBox)
-        .at(0)
-        .simulate("click")
-      expect(dispatch).toBeCalledWith({
-        context_module: "Price Context",
-        action_type: "Click",
-        subject: "Histogram Bar",
-        flow: "Artwork Price Context",
-        type: "Chart",
-      })
-      expect(dispatch).toHaveBeenCalledTimes(1)
     })
 
     it("tracks hovers on histogram bars", () => {

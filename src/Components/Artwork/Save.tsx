@@ -2,6 +2,7 @@ import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"
 import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { extend, isNull } from "lodash"
 import React from "react"
 import {
@@ -13,11 +14,9 @@ import {
 import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
-
-import { stringify } from "qs"
-import { data as sd } from "sharify"
 
 const SIZE = 40
 
@@ -129,44 +128,15 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       })
       this.trackSave()
     } else {
-      if (sd.IS_MOBILE) {
-        this.openMobileAuth(this.props.artwork)
-      } else if (this.props.mediator) {
-        this.openDesktopAuth(this.props.mediator, this.props.artwork.id)
-      } else {
-        window.location.href = "/login"
-      }
+      openAuthModal(this.props.mediator, {
+        contextModule: Schema.ContextModule.ArtworkPage,
+        entity: {
+          id: this.props.artwork.id,
+          name: this.props.artwork.title,
+        },
+        intent: AuthModalIntent.SaveArtwork,
+      })
     }
-  }
-
-  openMobileAuth(artwork) {
-    const params = stringify({
-      action: "save",
-      contextModule: "Artwork page",
-      intent: "save artwork",
-      kind: "artwork",
-      objectId: artwork.id,
-      signUpIntent: "save artwork",
-      trigger: "click",
-      entityName: artwork.title,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth(mediator, artworkId) {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to save artworks`,
-      intent: "save artwork",
-      signupIntent: "save artwork",
-      trigger: "click",
-      afterSignUpAction: {
-        action: "save",
-        objectId: artworkId,
-      },
-    })
   }
 
   mixinButtonActions() {
@@ -260,6 +230,7 @@ export default createFragmentContainer(Artsy.withSystemContext(SaveButton), {
       _id
       id
       is_saved
+      title
     }
   `,
 })

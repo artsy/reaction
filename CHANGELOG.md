@@ -1,3 +1,196 @@
+# v16.5.5 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- updated title and added link with no href [#2339](https://github.com/artsy/reaction/pull/2339) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.4 [#2341](https://github.com/artsy/reaction/pull/2341) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.5.4 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Adjust header margin on mobile search results skeleton [#2340](https://github.com/artsy/reaction/pull/2340) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.5.3 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => Adjust filter tracking on artist page, make sure to cover all filters [#2332](https://github.com/artsy/reaction/pull/2332) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.5.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Update responsive grid styling for search results skeleton
+
+This commit updates styling for various responsive breakpoints. [#2338](https://github.com/artsy/reaction/pull/2338) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.5.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- When price is outside range include it in the bottom or top bucket [#2330](https://github.com/artsy/reaction/pull/2330) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.5.0 (Thu Apr 25 2019)
+
+#### 🚀  Enhancement
+
+- Add mobile styling for search results page loading skeleton
+
+This commits adds responsive props to render the loading skeleton
+optimized for mobile devices. [#2337](https://github.com/artsy/reaction/pull/2337) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.3 [#2336](https://github.com/artsy/reaction/pull/2336) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- User can not click into histogram bars [#2325](https://github.com/artsy/reaction/pull/2325) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.0 [#2335](https://github.com/artsy/reaction/pull/2335) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Exclude artworks that aren’t for sale from artist recommendations. [#2333](https://github.com/artsy/reaction/pull/2333) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.2 [#2334](https://github.com/artsy/reaction/pull/2334) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.0 (Wed Apr 24 2019)
+
+#### 🚀  Enhancement
+
+- Add ability to “show more” artist recommendations [#2310](https://github.com/artsy/reaction/pull/2310) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.3.6 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- Use stitched 'create buy order' mutation [#2331](https://github.com/artsy/reaction/pull/2331) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.3.5 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- User can hover over ? icon and see the font color, cursor, and label change [#2324](https://github.com/artsy/reaction/pull/2324) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.3.4 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- ensure experiment viewed event is fired [#2326](https://github.com/artsy/reaction/pull/2326) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.3.3 (Tue Apr 23 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.1 [#2328](https://github.com/artsy/reaction/pull/2328) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.3.2 (Tue Apr 23 2019)
+
+#### 🐛  Bug Fix
+
+- Unify logic to require authentication for following an artist, following a partner, and saving an artwork [#2303](https://github.com/artsy/reaction/pull/2303) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.3.1 (Tue Apr 23 2019)
 
 #### 🏠  Internal

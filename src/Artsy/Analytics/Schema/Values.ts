@@ -56,7 +56,7 @@ export enum ActionType {
    */
   ClickedReadMore = "Clicked read more",
 
-  ClickedCommercialFilter = "Clicked commercial filter params",
+  CommercialFilterParamsChanged = "Commercial filter params changed",
 
   /**
    * A/B Test Experiments
@@ -237,8 +237,10 @@ export enum ContextModule {
   /**
    * Artist page
    */
+  ArtistPage = "Artist page",
   AboutTheWork = "About the work",
   AboutTheWorkPartner = "About the Work (Partner)",
+  ArtworkFilter = "ArtworkFilter",
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
   ArtistInsights = "ArtistInsights",
@@ -248,13 +250,13 @@ export enum ContextModule {
   /**
    * Artwork page
    */
+  ArtworkPage = "Artwork page",
   ArtworkTabs = "Artwork tabs",
   OtherWorksByArtist = "Other works by artist",
   OtherWorksInAuction = "Other works in auction",
   OtherWorksInFair = "Other works in fair",
   OtherWorksFromGallery = "Other works from gallery",
   OtherWorksFromShow = "Other works from show",
-  // TODO: verify this
   RecommendedArtists = "Recommended Artists",
   RelatedArtists = "RelatedArtists",
   RelatedWorks = "RelatedWorks",

@@ -3,6 +3,7 @@ import {
   BarDescriptor,
   BorderBox,
   Flex,
+  Link,
   Sans,
   Spacer,
 } from "@artsy/palette"
@@ -14,7 +15,6 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import Events from "Utils/Events"
-import { createCollectUrl } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
 interface PricingContextProps {
@@ -30,21 +30,6 @@ interface PricingContextProps {
   }
 )
 export class PricingContext extends React.Component<PricingContextProps> {
-  openCollectPage(minCents, maxCents, category, widthCm, heightCm, artistId) {
-    const url = createCollectUrl({
-      minCents,
-      maxCents,
-      category,
-      widthCm,
-      heightCm,
-      artistId,
-    })
-
-    if (typeof window !== "undefined") {
-      return this.openWindow.bind(this, url)
-    }
-  }
-
   @track({
     action_type: Schema.ActionType.Impression,
     flow: Schema.Flow.ArtworkPriceContext,
@@ -53,16 +38,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
   })
   trackImpression() {
     // noop
-  }
-
-  @track({
-    action_type: Schema.ActionType.Click,
-    flow: Schema.Flow.ArtworkPriceContext,
-    subject: Schema.Subject.HistogramBar,
-    type: Schema.Type.Chart,
-  })
-  openWindow(url) {
-    window.open(url)
   }
 
   @track({
@@ -85,34 +60,45 @@ export class PricingContext extends React.Component<PricingContextProps> {
 
     const priceCents = artwork.priceCents.max || artwork.priceCents.min
 
+    const artworkFallsBeforeFirstBin =
+      priceCents < artwork.pricingContext.bins[0].minPriceCents
+    const artworkFallsAfterLastBin =
+      priceCents >=
+      artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
+        .maxPriceCents
+
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
         <Sans size="2" weight="medium">
-          Price in context
+          {artwork.pricingContext.appliedFiltersDisplay}
         </Sans>
         <Flex>
-          <Sans size="2">{artwork.pricingContext.appliedFiltersDisplay}</Sans>
+          <Link color="black60">
+            <Sans size="2">Browse works in the category</Sans>
+          </Link>
           <PricingContextModal />
         </Flex>
         <Spacer mb={[2, 3]} />
         <BarChart
-          minLabel={
-            artwork.pricingContext.bins[0].minPrice != null
-              ? artwork.pricingContext.bins[0].minPrice
-              : "$0"
-          }
+          minLabel="$0"
           maxLabel={
             artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
               .maxPrice + "+"
           }
           bars={artwork.pricingContext.bins.map(
-            (bin): BarDescriptor => {
+            (bin, index): BarDescriptor => {
+              const isFirstBin = index === 0
+              const isLastBin = index === artwork.pricingContext.bins.length - 1
               const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
-              const title = `${binMinPrice}–${bin.maxPrice}`
+              const title = isLastBin
+                ? `${binMinPrice}+`
+                : `${isFirstBin ? "$0" : binMinPrice}–${bin.maxPrice}`
               const artworkFallsInThisBin =
-                priceCents >= bin.minPriceCents &&
-                priceCents < bin.maxPriceCents
+                (isFirstBin && artworkFallsBeforeFirstBin) ||
+                (isLastBin && artworkFallsAfterLastBin) ||
+                (priceCents >= bin.minPriceCents &&
+                  priceCents < bin.maxPriceCents)
 
               const binValue =
                 artworkFallsInThisBin && bin.numArtworks === 0
@@ -125,14 +111,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
                   title,
                   description: binValue + labelSuffix,
                 },
-                onClick: this.openCollectPage(
-                  bin.minPriceCents,
-                  bin.maxPriceCents,
-                  artwork.category,
-                  artwork.widthCm,
-                  artwork.heightCm,
-                  artwork.artists[0].id
-                ),
                 onHover: this.barchartHover.bind(this),
                 highlightLabel: artworkFallsInThisBin
                   ? {
