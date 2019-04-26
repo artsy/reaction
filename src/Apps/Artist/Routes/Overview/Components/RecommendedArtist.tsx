@@ -118,14 +118,6 @@ const RecommendedArtist: FC<
             />
           )
         }}
-        renderLeftArrow={arrowProps => {
-          const { Arrow } = arrowProps
-          return <Arrow />
-        }}
-        renderRightArrow={arrowProps => {
-          const { Arrow } = arrowProps
-          return <Arrow />
-        }}
       />
     </>
   )
