@@ -32,7 +32,7 @@ describe("Meta tags", () => {
       .html()
 
     expect(link).toEqual(
-      '<link rel="canonical" href="test-url/search2?term=cats">'
+      '<link rel="canonical" href="test-url/search?term=cats">'
     )
   })
 })

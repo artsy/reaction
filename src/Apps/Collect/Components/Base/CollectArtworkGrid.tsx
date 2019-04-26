@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
@@ -73,7 +73,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
     const isLoading = this.state.isLoading || this.props.isLoading
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
@@ -111,7 +111,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
             </Subscribe>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

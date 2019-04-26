@@ -1,18 +1,21 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { ContextProps, SystemContext } from "Artsy"
+import { SystemContext, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import Input from "Components/Input"
 import {
   EmptySuggestion,
+  FirstSuggestionItem,
   PLACEHOLDER,
   PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
+import { isEmpty } from "lodash"
 import { throttle } from "lodash"
+import qs from "qs"
 import React, { Component, useContext } from "react"
 import Autosuggest from "react-autosuggest"
 import {
@@ -32,7 +35,7 @@ import { SearchInputContainer } from "./SearchInputContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
 
-export interface Props extends ContextProps {
+export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
   viewer: SearchBar_viewer
 }
@@ -86,11 +89,14 @@ const SuggestionContainer = ({ children, containerProps }) => {
 })
 export class SearchBar extends Component<Props, State> {
   public input: HTMLInputElement
-  private containerRef: Node
+
+  // Once this is set, we don't ever expect to change it back. A click on a
+  // descendant indicates that we're going to navigate away from the page, so
+  // this behaviour  is acceptable.
   private userClickedOnDescendant: boolean
 
   state = {
-    term: "",
+    term: getSearchTerm(window.location),
     entityID: null,
     entityType: null,
     focused: false,
@@ -124,7 +130,7 @@ export class SearchBar extends Component<Props, State> {
 
   // Throttled method to perform refetch for new suggest query.
   throttledFetch = ({ value: term }) => {
-    const { relay, viewer } = this.props
+    const { relay } = this.props
     const performanceStart = performance && performance.now()
 
     relay.refetch(
@@ -140,6 +146,7 @@ export class SearchBar extends Component<Props, State> {
         } else if (performanceStart && sd.VOLLEY_ENDPOINT) {
           this.reportPerformanceMeasurement(performanceStart)
         }
+        const { viewer } = this.props
         const edges = get(viewer, v => v.search.edges, [])
         this.trackSearch(term, edges.length > 0)
       }
@@ -188,21 +195,25 @@ export class SearchBar extends Component<Props, State> {
     this.setState({ focused: true })
   }
 
-  onBlur = e => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we setState({focused: false}) when that happens, the link will get
-    //  removed from the DOM before the browser has a chance to follow it.
-    if (this.containerRef.contains(e.relatedTarget)) {
-      this.userClickedOnDescendant = true
+  onBlur = event => {
+    const isClickOnSearchIcon =
+      event.relatedTarget &&
+      event.relatedTarget.form &&
+      event.relatedTarget.form === event.target.form
+    if (isClickOnSearchIcon) {
+      if (!isEmpty(event.target.value)) {
+        this.userClickedOnDescendant = true
+      }
     } else {
       this.setState({ focused: false })
     }
   }
 
-  onSuggestionsClearRequested = () => {
-    // This event _also_ fires when a user clicks on a link in the preview pane.
-    //  If we initialize state when that happens, the link will get removed
-    //  from the DOM before the browser has a chance to follow it.
+  onSuggestionsClearRequested = e => {
+    // This event _also_ fires when a user clicks on a link in the preview pane
+    //  or the magnifying glass icon. If we initialize state when that happens,
+    //  the link will get removed from the DOM before the browser has a chance
+    //  to follow it.
     if (!this.userClickedOnDescendant) {
       this.setState({ term: "", entityID: null, entityType: null })
     }
@@ -272,10 +283,29 @@ export class SearchBar extends Component<Props, State> {
     return displayLabel
   }
 
-  renderSuggestion = (
-    { node: { displayLabel, displayType, href } },
-    { query, isHighlighted }
-  ) => {
+  renderSuggestion = (edge, rest) => {
+    const renderer = edge.node.isFirstItem
+      ? this.renderFirstSuggestion
+      : this.renderDefaultSuggestion
+    const item = renderer(edge, rest)
+    return item
+  }
+
+  renderFirstSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
+    return (
+      <FirstSuggestionItem
+        display={displayLabel}
+        href={href}
+        isHighlighted={isHighlighted}
+        label={displayType}
+        query={query}
+      />
+    )
+  }
+
+  renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
+    const { displayLabel, displayType, href } = edge.node
     return (
       <SuggestionItem
         display={displayLabel}
@@ -300,13 +330,23 @@ export class SearchBar extends Component<Props, State> {
       placeholder: xs ? PLACEHOLDER_XS : PLACEHOLDER,
       value: term,
       name: "term",
+      onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (
+          event.keyCode === 13 && // Enter key press ...
+          event.target && // with empty search query
+          isEmpty((event.target as HTMLInputElement).value)
+        ) {
+          event.preventDefault()
+        }
+      },
     }
 
     const firstSuggestionPlaceholder = {
       node: {
+        isFirstItem: true,
         displayType: "FirstItem",
         displayLabel: term,
-        href: `/search?q=${term}`,
+        href: `/search?term=${term}`,
       },
     }
 
@@ -357,7 +397,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 5)
+        search(query: $term, mode: AUTOSUGGEST, first: 7)
           @include(if: $hasTerm) {
           edges {
             node {
@@ -413,4 +453,16 @@ export const SearchBarQueryRenderer: React.FC = () => {
       }}
     />
   )
+}
+
+export function getSearchTerm(location: Location): string {
+  const term = get(
+    qs,
+    querystring => querystring.parse(location.search.slice(1)).term,
+    ""
+  )
+  if (Array.isArray(term)) {
+    return term[0]
+  }
+  return term
 }

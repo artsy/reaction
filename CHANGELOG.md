@@ -1,3 +1,926 @@
+# v16.5.6 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- Update style for search results page skeleton
+
+Minor updates to the positioning of the skeleton. [#2344](https://github.com/artsy/reaction/pull/2344) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.5.5 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- updated title and added link with no href [#2339](https://github.com/artsy/reaction/pull/2339) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.4 [#2341](https://github.com/artsy/reaction/pull/2341) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.5.4 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Adjust header margin on mobile search results skeleton [#2340](https://github.com/artsy/reaction/pull/2340) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.5.3 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => Adjust filter tracking on artist page, make sure to cover all filters [#2332](https://github.com/artsy/reaction/pull/2332) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.5.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Update responsive grid styling for search results skeleton
+
+This commit updates styling for various responsive breakpoints. [#2338](https://github.com/artsy/reaction/pull/2338) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.5.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- When price is outside range include it in the bottom or top bucket [#2330](https://github.com/artsy/reaction/pull/2330) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.5.0 (Thu Apr 25 2019)
+
+#### 🚀  Enhancement
+
+- Add mobile styling for search results page loading skeleton
+
+This commits adds responsive props to render the loading skeleton
+optimized for mobile devices. [#2337](https://github.com/artsy/reaction/pull/2337) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.3 [#2336](https://github.com/artsy/reaction/pull/2336) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.2 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- User can not click into histogram bars [#2325](https://github.com/artsy/reaction/pull/2325) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.0 [#2335](https://github.com/artsy/reaction/pull/2335) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.1 (Thu Apr 25 2019)
+
+#### 🐛  Bug Fix
+
+- Exclude artworks that aren’t for sale from artist recommendations. [#2333](https://github.com/artsy/reaction/pull/2333) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.2 [#2334](https://github.com/artsy/reaction/pull/2334) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.4.0 (Wed Apr 24 2019)
+
+#### 🚀  Enhancement
+
+- Add ability to “show more” artist recommendations [#2310](https://github.com/artsy/reaction/pull/2310) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.3.6 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- Use stitched 'create buy order' mutation [#2331](https://github.com/artsy/reaction/pull/2331) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.3.5 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- User can hover over ? icon and see the font color, cursor, and label change [#2324](https://github.com/artsy/reaction/pull/2324) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.3.4 (Wed Apr 24 2019)
+
+#### 🐛  Bug Fix
+
+- ensure experiment viewed event is fired [#2326](https://github.com/artsy/reaction/pull/2326) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.3.3 (Tue Apr 23 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.1 [#2328](https://github.com/artsy/reaction/pull/2328) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.3.2 (Tue Apr 23 2019)
+
+#### 🐛  Bug Fix
+
+- Unify logic to require authentication for following an artist, following a partner, and saving an artwork [#2303](https://github.com/artsy/reaction/pull/2303) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.3.1 (Tue Apr 23 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.10.0 [#2322](https://github.com/artsy/reaction/pull/2322) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.3.0 (Mon Apr 22 2019)
+
+#### 🚀  Enhancement
+
+- Update moment-timezone to reduce payload size [#2321](https://github.com/artsy/reaction/pull/2321) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.2.3 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Remove null states from Icons [#2320](https://github.com/artsy/reaction/pull/2320) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.9.5 [#2314](https://github.com/artsy/reaction/pull/2314) ([@renovate-bot](https://github.com/renovate-bot) [@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 3
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.2.2 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Artist Recommendations] Hide Related Artists tab [#2319](https://github.com/artsy/reaction/pull/2319) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.2.1 (Mon Apr 22 2019)
+
+#### 🐛  Bug Fix
+
+- @kierangillen => [Auction Results] Be defensive about missing images [#2318](https://github.com/artsy/reaction/pull/2318) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.2.0 (Fri Apr 19 2019)
+
+#### 🚀  Enhancement
+
+- Update search results loading skeleton [#2316](https://github.com/artsy/reaction/pull/2316) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.1.5 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Use upper bound of range for displaying the highlighted bucket [#2308](https://github.com/artsy/reaction/pull/2308) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.1.3 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Switch to appliedFiltersDisplay [#2315](https://github.com/artsy/reaction/pull/2315) ([@ashkan18](https://github.com/ashkan18))
+- Fixes mapping between category and medium filter on /collect page to match gene names [#2313](https://github.com/artsy/reaction/pull/2313) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 2
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.1.2 (Fri Apr 19 2019)
+
+#### 🐛  Bug Fix
+
+- Updates type to be more specific [#2311](https://github.com/artsy/reaction/pull/2311) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### Authors: 1
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+
+---
+
+# v16.1.1 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Badge] Extract component from GridItem and add to FillwidthItem [#2299](https://github.com/artsy/reaction/pull/2299) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.1.0 (Thu Apr 18 2019)
+
+#### 🚀  Enhancement
+
+- Search results loading skeleton [#2305](https://github.com/artsy/reaction/pull/2305) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.0.2 (Thu Apr 18 2019)
+
+#### 🐛  Bug Fix
+
+- Price Context tracking [#2307](https://github.com/artsy/reaction/pull/2307) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.9.3 [#2306](https://github.com/artsy/reaction/pull/2306) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.2 [#2304](https://github.com/artsy/reaction/pull/2304) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.1 [#2302](https://github.com/artsy/reaction/pull/2302) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.9.0 [#2301](https://github.com/artsy/reaction/pull/2301) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/detect-responsive-traits to ^0.0.4
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#1893](https://github.com/artsy/reaction/pull/1893) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.0.1 (Tue Apr 16 2019)
+
+#### 🐛  Bug Fix
+
+- Update reaction to route users to the correct place [#2286](https://github.com/artsy/reaction/pull/2286) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.8.2 [#2300](https://github.com/artsy/reaction/pull/2300) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.0.0 (Mon Apr 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Remove the freeform aspect of Reaction’s SystemContext [#2291](https://github.com/artsy/reaction/pull/2291) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.15.0 (Mon Apr 15 2019)
+
+#### 🚀  Enhancement
+
+- Adds the bid count to Artist/Artwork page Artwork grids [#2248](https://github.com/artsy/reaction/pull/2248) ([@orta](https://github.com/orta))
+
+#### Authors: 1
+
+- Orta ([@orta](https://github.com/orta))
+
+---
+
+# v15.14.11 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes search bar button press handling. [#2298](https://github.com/artsy/reaction/pull/2298) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.8.1
+
+Co-authored-by: Renovate Bot <bot@renovateapp.com> [#2297](https://github.com/artsy/reaction/pull/2297) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.14.10 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Lazy load more images on Artist and Artwork pages [#2293](https://github.com/artsy/reaction/pull/2293) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v15.14.9 (Mon Apr 15 2019)
+
+
+
+---
+
+# v15.14.8 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes OtherAuction component copy [#2282](https://github.com/artsy/reaction/pull/2282) ([@ashfurrow](https://github.com/ashfurrow))
+
+#### Authors: 1
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+
+---
+
+# v15.14.7 (Mon Apr 15 2019)
+
+
+
+---
+
+# v15.14.6 (Mon Apr 15 2019)
+
+#### 🐛  Bug Fix
+
+- [PATCH] fix qa items [#2292](https://github.com/artsy/reaction/pull/2292) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v15.14.5 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Preserve search term in SearchBar, based on window.location.search [#2294](https://github.com/artsy/reaction/pull/2294) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.14.4 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Show 0 instead of null for lowest bucket [#2287](https://github.com/artsy/reaction/pull/2287) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.14.3 (Fri Apr 12 2019)
+
+#### 🐛  Bug Fix
+
+- Add option to save payment during BNMO orders [#2275](https://github.com/artsy/reaction/pull/2275) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v15.14.2 (Thu Apr 11 2019)
+
+#### 🐛  Bug Fix
+
+- send product_id attribute with key transaction events [#2274](https://github.com/artsy/reaction/pull/2274) ([@cavvia](https://github.com/cavvia))
+- [Refactor] Update deprecated Relay `graphql` assignments [#2289](https://github.com/artsy/reaction/pull/2289) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- [Toolchain] Make Storybooks hooks-safe [#2290](https://github.com/artsy/reaction/pull/2290) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.14.1 (Wed Apr 10 2019)
+
+#### 🏠  Internal
+
+- createTestEnv docs follow-up [#2285](https://github.com/artsy/reaction/pull/2285) ([@ds300](https://github.com/ds300))
+- Update dependency @artsy/palette to v4.8.0 [#2277](https://github.com/artsy/reaction/pull/2277) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.14.0 (Tue Apr 09 2019)
+
+#### 🚀  Enhancement
+
+- [Carousel] Add arrow render callback [#2283](https://github.com/artsy/reaction/pull/2283) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.13.12 (Tue Apr 09 2019)
+
+
+
+---
+
+# v15.13.11 (Tue Apr 09 2019)
+
+
+
+---
+
+# v15.13.10 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Storybooks plugins webpack config [#2280](https://github.com/artsy/reaction/pull/2280) ([@damassi](https://github.com/damassi))
+- [TRIVIAL] Remove null state from IconImageFullscreen [#2281](https://github.com/artsy/reaction/pull/2281) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v15.13.9 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Test Netlify deployments [#2278](https://github.com/artsy/reaction/pull/2278) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.13.8 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- Downsize artwork image [#2273](https://github.com/artsy/reaction/pull/2273) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v15.13.7 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Search] Update action for selecting item from tabs [#2276](https://github.com/artsy/reaction/pull/2276) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.6 (Tue Apr 09 2019)
+
+#### 🐛  Bug Fix
+
+- User sees informational modal when they click the question mark next to the bar chart description [#2265](https://github.com/artsy/reaction/pull/2265) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.4 [#2271](https://github.com/artsy/reaction/pull/2271) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.13.5 (Mon Apr 08 2019)
+
+
+
+---
+
+# v15.13.4 (Mon Apr 08 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Add loading spinner when navigating to entity tab [#2269](https://github.com/artsy/reaction/pull/2269) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.3 (Mon Apr 08 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [Autosuggest] Fix tracking of whether results were returned for a query [#2268](https://github.com/artsy/reaction/pull/2268) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.7.3 [#2267](https://github.com/artsy/reaction/pull/2267) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.2 [#2266](https://github.com/artsy/reaction/pull/2266) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.7.1 [#2264](https://github.com/artsy/reaction/pull/2264) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.13.2 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => Bring back ze footah [#2263](https://github.com/artsy/reaction/pull/2263) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.13.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Re-sync schema from metaphysics [#2262](https://github.com/artsy/reaction/pull/2262) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.13.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- User can see top three recommended artists [#2261](https://github.com/artsy/reaction/pull/2261) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.4 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendation carousel [#2255](https://github.com/artsy/reaction/pull/2255) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v15.12.3 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add basic docs for createTestEnv [#2253](https://github.com/artsy/reaction/pull/2253) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v15.12.2 (Fri Apr 05 2019)
+
+
+
+---
+
+# v15.12.1 (Fri Apr 05 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => [SearchResults] Some tweaks to calling out when hovering over an item [#2259](https://github.com/artsy/reaction/pull/2259) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.12.0 (Fri Apr 05 2019)
+
+#### 🚀  Enhancement
+
+- [SearchResults] Respond to /search instead of /search2 [#2258](https://github.com/artsy/reaction/pull/2258) ([@mzikherman](https://github.com/mzikherman) [@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v15.11.24 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- @dblandin => Adjusted zero state [#2257](https://github.com/artsy/reaction/pull/2257) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.23 (Thu Apr 04 2019)
+
+#### 🐛  Bug Fix
+
+- Search bar QA [#2247](https://github.com/artsy/reaction/pull/2247) ([@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.2 [#2256](https://github.com/artsy/reaction/pull/2256) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.11.22 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed error modal for insufficient funds on accept page [#2254](https://github.com/artsy/reaction/pull/2254) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.11.21 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Artist recommendations [#2236](https://github.com/artsy/reaction/pull/2236) ([@pepopowitz](https://github.com/pepopowitz))
+- @dblandin => [Search] Tweak display of count within tabs [#2250](https://github.com/artsy/reaction/pull/2250) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.20 (Wed Apr 03 2019)
+
+
+
+---
+
+# v15.11.19 (Wed Apr 03 2019)
+
+#### 🐛  Bug Fix
+
+- Border on BNMO status page is too thick (mobile only) [#2237](https://github.com/artsy/reaction/pull/2237) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v15.11.18 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Search] Tweak styling of feedback component [#2251](https://github.com/artsy/reaction/pull/2251) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.17 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Check for null media keys in RelatedArticleCard [#2228](https://github.com/artsy/reaction/pull/2228) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v15.11.16 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Force search result items of City type to use FallbackIcon [#2245](https://github.com/artsy/reaction/pull/2245) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.1 [#2244](https://github.com/artsy/reaction/pull/2244) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v15.11.15 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Show fallback icon when search result item has no image url [#2243](https://github.com/artsy/reaction/pull/2243) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v15.11.14 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Gene] Relax paging check which stops paging early [#2239](https://github.com/artsy/reaction/pull/2239) ([@mzikherman](https://github.com/mzikherman))
+- @cavvia => [Search] Make sure to get artwork tab count from filter endpoint aggregation [#2241](https://github.com/artsy/reaction/pull/2241) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v15.11.13 (Tue Apr 02 2019)
+
+#### 🐛  Bug Fix
+
+- Gate pricing context [#2240](https://github.com/artsy/reaction/pull/2240) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.6.0 [#2238](https://github.com/artsy/reaction/pull/2238) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.5.6 [#2234](https://github.com/artsy/reaction/pull/2234) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v15.11.12 (Fri Mar 29 2019)
 
 #### 🏠  Internal

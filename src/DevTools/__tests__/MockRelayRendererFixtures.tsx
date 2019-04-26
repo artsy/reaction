@@ -2,8 +2,8 @@ import { MockRelayRendererFixtures_artist } from "__generated__/MockRelayRendere
 import { MockRelayRendererFixtures_artwork } from "__generated__/MockRelayRendererFixtures_artwork.graphql"
 import { MockRelayRendererFixtures_artworkMetadata } from "__generated__/MockRelayRendererFixtures_artworkMetadata.graphql"
 import { MockRelayRendererFixturesArtistQuery } from "__generated__/MockRelayRendererFixturesArtistQuery.graphql"
+import { SystemContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { ContextConsumer } from "Artsy/SystemContext"
 import cheerio from "cheerio"
 import { render } from "enzyme"
 import * as React from "react"
@@ -13,11 +13,13 @@ const Metadata = createFragmentContainer(
   (props: { artworkMetadata: MockRelayRendererFixtures_artworkMetadata }) => (
     <div>{props.artworkMetadata.title}</div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
-      title
-    }
-  `
+  {
+    artworkMetadata: graphql`
+      fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
+        title
+      }
+    `,
+  }
 )
 
 export const Artwork = createFragmentContainer(
@@ -30,32 +32,36 @@ export const Artwork = createFragmentContainer(
       )}
     </div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artwork on Artwork {
-      image {
-        url
+  {
+    artwork: graphql`
+      fragment MockRelayRendererFixtures_artwork on Artwork {
+        image {
+          url
+        }
+        artist {
+          id
+        }
+        ...MockRelayRendererFixtures_artworkMetadata
       }
-      artist {
-        id
-      }
-      ...MockRelayRendererFixtures_artworkMetadata
-    }
-  `
+    `,
+  }
 )
 
 const Artist = createFragmentContainer(
   (props: { artist: MockRelayRendererFixtures_artist }) => (
     <div>{props.artist.name}</div>
   ),
-  graphql`
-    fragment MockRelayRendererFixtures_artist on Artist {
-      name
-    }
-  `
+  {
+    artist: graphql`
+      fragment MockRelayRendererFixtures_artist on Artist {
+        name
+      }
+    `,
+  }
 )
 
 const ArtistQueryRenderer = (props: { id: string }) => (
-  <ContextConsumer>
+  <SystemContextConsumer>
     {({ relayEnvironment }) => {
       return (
         <QueryRenderer<MockRelayRendererFixturesArtistQuery>
@@ -72,7 +78,7 @@ const ArtistQueryRenderer = (props: { id: string }) => (
         />
       )
     }}
-  </ContextConsumer>
+  </SystemContextConsumer>
 )
 
 export const query = graphql`

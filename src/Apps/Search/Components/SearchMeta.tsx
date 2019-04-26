@@ -11,7 +11,7 @@ export class SearchMeta extends Component<Props> {
     const { term } = this.props
 
     const title = `Search Results for '${term}' | Artsy`
-    const href = `/search2?term=${term}`
+    const href = `/search?term=${term}`
     return (
       <>
         <Title>{title}</Title>

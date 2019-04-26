@@ -1,10 +1,10 @@
-import { SuggestedGenesContent_suggested_genes } from "__generated__/SuggestedGenesContent_suggested_genes.graphql"
+import { SuggestedGenes_suggested_genes } from "__generated__/SuggestedGenes_suggested_genes.graphql"
 import {
   SuggestedGenesFollowGeneMutation,
   SuggestedGenesFollowGeneMutationResponse,
 } from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
 import { SuggestedGenesQuery } from "__generated__/SuggestedGenesQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
@@ -21,11 +21,11 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-type Gene = SuggestedGenesContent_suggested_genes[0]
+type Gene = SuggestedGenes_suggested_genes[0]
 
 interface Props extends React.HTMLProps<HTMLAnchorElement>, FollowProps {
   relay?: RelayProp
-  suggested_genes: SuggestedGenesContent_suggested_genes
+  suggested_genes: SuggestedGenes_suggested_genes
   tracking?: TrackingProp
 }
 
@@ -147,11 +147,9 @@ class SuggestedGenesContent extends React.Component<Props> {
   }
 }
 
-const SuggestedGenesContainer = createFragmentContainer(
-  SuggestedGenesContent,
-  graphql`
-    fragment SuggestedGenesContent_suggested_genes on Gene
-      @relay(plural: true) {
+const SuggestedGenesContainer = createFragmentContainer(SuggestedGenesContent, {
+  suggested_genes: graphql`
+    fragment SuggestedGenes_suggested_genes on Gene @relay(plural: true) {
       id
       _id
       name
@@ -161,10 +159,10 @@ const SuggestedGenesContainer = createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})
 
-const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
+const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
   relayEnvironment,
   updateFollowCount,
 }) => {
@@ -174,7 +172,7 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
       query={graphql`
         query SuggestedGenesQuery {
           suggested_genes {
-            ...SuggestedGenesContent_suggested_genes
+            ...SuggestedGenes_suggested_genes
           }
         }
       `}
@@ -195,4 +193,4 @@ const SuggestedGenesComponent: React.SFC<ContextProps & FollowProps> = ({
   )
 }
 
-export const SuggestedGenes = withContext(SuggestedGenesComponent)
+export const SuggestedGenes = withSystemContext(SuggestedGenesComponent)

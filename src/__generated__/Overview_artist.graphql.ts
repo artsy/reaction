@@ -5,8 +5,8 @@ import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
 import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
 import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
-import { MarketInsightsArtistPage_artist$ref } from "./MarketInsightsArtistPage_artist.graphql";
-import { SelectedCareerAchievementsArtistPage_artist$ref } from "./SelectedCareerAchievementsArtistPage_artist.graphql";
+import { MarketInsights_artist$ref } from "./MarketInsights_artist.graphql";
+import { SelectedCareerAchievements_artist$ref } from "./SelectedCareerAchievements_artist.graphql";
 declare const _Overview_artist$ref: unique symbol;
 export type Overview_artist$ref = typeof _Overview_artist$ref;
 export type Overview_artist = {
@@ -31,6 +31,13 @@ export type Overview_artist = {
                 }) | null;
             }) | null> | null;
         }) | null;
+        readonly artists: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly __id: string;
+                }) | null;
+            }) | null> | null;
+        }) | null;
     }) | null;
     readonly _id: string;
     readonly collections: ReadonlyArray<string | null> | null;
@@ -48,7 +55,7 @@ export type Overview_artist = {
     readonly insights: ReadonlyArray<({
         readonly type: string | null;
     }) | null> | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsightsArtistPage_artist$ref & SelectedCareerAchievementsArtistPage_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsights_artist$ref & SelectedCareerAchievements_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
 
@@ -161,12 +168,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "MarketInsightsArtistPage_artist",
+      "name": "MarketInsights_artist",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "SelectedCareerAchievementsArtistPage_artist",
+      "name": "SelectedCareerAchievements_artist",
       "args": null
     },
     {
@@ -370,6 +377,47 @@ return {
               ]
             }
           ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "artists",
+          "storageKey": "artists(first:1)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "first",
+              "value": 1,
+              "type": "Int"
+            }
+          ],
+          "concreteType": "ArtistConnection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtistEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artist",
+                  "plural": false,
+                  "selections": [
+                    v1
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -492,5 +540,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd3c2803548d99eddce4f393c519db8b5';
+(node as any).hash = '339edc6a36659de47dce68de5dc5d6d8';
 export default node;

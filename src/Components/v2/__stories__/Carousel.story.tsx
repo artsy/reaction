@@ -88,6 +88,76 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
           </RelayStubProvider>
         </Box>
       </Section>
+      <Section title="Custom Arrows with defaults">
+        <Box width="70%">
+          <Carousel
+            data={images}
+            render={props => {
+              return (
+                <Image
+                  px={5}
+                  src={props.resized.url}
+                  width={props.resized.width}
+                  height={props.resized.height}
+                />
+              )
+            }}
+            renderLeftArrow={({ Arrow }) => {
+              return (
+                <Box top={10} position="relative" bg="black10">
+                  <Arrow />
+                </Box>
+              )
+            }}
+            renderRightArrow={({ Arrow }) => {
+              return (
+                <Box top={10} position="relative" bg="black10">
+                  <Arrow />
+                </Box>
+              )
+            }}
+          />
+        </Box>
+      </Section>
+      <Section title="Custom Arrows ">
+        <Box width="70%">
+          <Carousel
+            data={images}
+            render={props => {
+              return (
+                <Image
+                  px={5}
+                  src={props.resized.url}
+                  width={props.resized.width}
+                  height={props.resized.height}
+                />
+              )
+            }}
+            renderLeftArrow={({ getSlick }) => {
+              return (
+                <Box
+                  onClick={() => {
+                    getSlick().slickPrev()
+                  }}
+                >
+                  Prev
+                </Box>
+              )
+            }}
+            renderRightArrow={({ getSlick }) => {
+              return (
+                <Box
+                  onClick={() => {
+                    getSlick().slickNext()
+                  }}
+                >
+                  Next
+                </Box>
+              )
+            }}
+          />
+        </Box>
+      </Section>
     </React.Fragment>
   )
 })

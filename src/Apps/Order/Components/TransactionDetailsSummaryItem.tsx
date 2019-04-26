@@ -206,25 +206,27 @@ graphql`
 
 export const TransactionDetailsSummaryItemFragmentContainer = createFragmentContainer(
   TransactionDetailsSummaryItem,
-  graphql`
-    fragment TransactionDetailsSummaryItem_order on Order {
-      __typename
-      mode
-      shippingTotal(precision: 2)
-      shippingTotalCents
-      taxTotal(precision: 2)
-      taxTotalCents
-      itemsTotal(precision: 2)
-      totalListPrice(precision: 2)
-      buyerTotal(precision: 2)
-      ... on OfferOrder {
-        lastOffer {
-          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
-        }
-        myLastOffer {
-          ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
+  {
+    order: graphql`
+      fragment TransactionDetailsSummaryItem_order on Order {
+        __typename
+        mode
+        shippingTotal(precision: 2)
+        shippingTotalCents
+        taxTotal(precision: 2)
+        taxTotalCents
+        itemsTotal(precision: 2)
+        totalListPrice(precision: 2)
+        buyerTotal(precision: 2)
+        ... on OfferOrder {
+          lastOffer {
+            ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
+          }
+          myLastOffer {
+            ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

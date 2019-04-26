@@ -1,7 +1,7 @@
 import { Box, Link, Sans, Separator, Spacer } from "@artsy/palette"
+import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
 import React, { SFC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -199,21 +199,23 @@ export const ArtworkSidebarExtraLinks: SFC<
 
 export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer(
   ArtworkSidebarExtraLinks,
-  graphql`
-    fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-      _id
-      is_in_auction
-      is_for_sale
-      is_acquireable
-      is_inquireable
-      artists {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarExtraLinks_artwork on Artwork {
         _id
-        is_consignable
+        is_in_auction
+        is_for_sale
+        is_acquireable
+        is_inquireable
+        artists {
+          _id
+          is_consignable
+        }
+        sale {
+          _id
+          is_closed
+        }
       }
-      sale {
-        _id
-        is_closed
-      }
-    }
-  `
+    `,
+  }
 )

@@ -1,15 +1,28 @@
 import { Box, ChevronIcon, Flex, media } from "@artsy/palette"
-import React, { ReactNode } from "react"
+import React, { ReactNode, useState } from "react"
 import Slick, { Settings } from "react-slick"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
+
+const SLIDES_TO_SCROLL = 5
+
+type Arrow = (
+  props: {
+    currentSlideIndex: number
+    slidesToScroll?: number
+    Arrow: React.ReactType
+    getSlick: () => any
+  } & Props
+) => React.ReactNode
 
 interface Props {
   settings?: Settings
   height?: number
   data: object[] // This is designed to handle any shape of data passed, as long as its an array
   render: (slide) => ReactNode
+  renderLeftArrow?: Arrow
+  renderRightArrow?: Arrow
   onArrowClick?: () => void
 }
 
@@ -33,25 +46,23 @@ export class Carousel extends React.Component<Props> {
 }
 
 export const LargeCarousel = (props: Props) => {
+  const [currentSlideIndex, setSlideIndex] = useState(0)
+
   const slickConfig = {
     arrows: false,
     draggable: false,
     infinite: false,
     speed: 500,
     variableWidth: true,
-    slidesToScroll: 5,
+    slidesToScroll: SLIDES_TO_SCROLL,
+    afterChange: currentIndex => setSlideIndex(currentIndex),
     ...props.settings,
   }
 
   let slickRef = null
 
-  return (
-    <Flex
-      flexDirection="row"
-      justifyContent="space-around"
-      alignItems="center"
-      height={props.height}
-    >
+  const LeftArrow = () => {
+    return (
       <ArrowButton
         left={-8}
         onClick={() => {
@@ -61,15 +72,11 @@ export const LargeCarousel = (props: Props) => {
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
       </ArrowButton>
+    )
+  }
 
-      <CarouselContainer height={props.height}>
-        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
-          {props.data.map((slide, index) => {
-            return <Box key={index}>{props.render(slide)}</Box>
-          })}
-        </Slick>
-      </CarouselContainer>
-
+  const RightArrow = () => {
+    return (
       <ArrowButton
         right={-8}
         onClick={() => {
@@ -79,6 +86,45 @@ export const LargeCarousel = (props: Props) => {
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
+    )
+  }
+  return (
+    <Flex
+      flexDirection="row"
+      justifyContent="space-around"
+      alignItems="center"
+      height={props.height}
+    >
+      {props.renderLeftArrow ? (
+        props.renderLeftArrow({
+          Arrow: LeftArrow,
+          currentSlideIndex,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <LeftArrow />
+      )}
+
+      <CarouselContainer height={props.height}>
+        <Slick {...slickConfig} ref={slider => (slickRef = slider)}>
+          {props.data.map((slide, index) => {
+            return <Box key={index}>{props.render(slide)}</Box>
+          })}
+        </Slick>
+      </CarouselContainer>
+
+      {props.renderRightArrow ? (
+        props.renderRightArrow({
+          Arrow: RightArrow,
+          currentSlideIndex,
+          slidesToScroll: SLIDES_TO_SCROLL,
+          getSlick: () => slickRef,
+          ...props,
+        })
+      ) : (
+        <RightArrow />
+      )}
     </Flex>
   )
 }

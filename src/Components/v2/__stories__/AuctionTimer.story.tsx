@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { AuctionTimerQueryRenderer } from "Components/v2/AuctionTimer"
 import { Section } from "Utils/Section"
 
@@ -9,14 +9,14 @@ storiesOf("Styleguide/Components", module).add("AuctionTimer", () => {
   return (
     <React.Fragment>
       <Section title="Cambi Design">
-        <ContextProvider>
+        <SystemContextProvider>
           <AuctionTimerQueryRenderer saleID="cambi-fine-design-1" />
-        </ContextProvider>
+        </SystemContextProvider>
       </Section>
       <Section title="EHC Fine Art">
-        <ContextProvider>
+        <SystemContextProvider>
           <AuctionTimerQueryRenderer saleID="ehc-fine-art-essential-editions-vii" />
-        </ContextProvider>
+        </SystemContextProvider>
       </Section>
     </React.Fragment>
   )

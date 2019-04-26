@@ -1,60 +1,41 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _GeneSearchResultsContent_viewer$ref: unique symbol;
-export type GeneSearchResultsContent_viewer$ref = typeof _GeneSearchResultsContent_viewer$ref;
-export type GeneSearchResultsContent_viewer = {
-    readonly match_gene: ReadonlyArray<({
-        readonly name: string | null;
+declare const _PopularArtists_popular_artists$ref: unique symbol;
+export type PopularArtists_popular_artists$ref = typeof _PopularArtists_popular_artists$ref;
+export type PopularArtists_popular_artists = {
+    readonly artists: ReadonlyArray<({
         readonly id: string;
         readonly _id: string;
+        readonly __id: string;
+        readonly name: string | null;
         readonly image: ({
             readonly cropped: ({
                 readonly url: string | null;
             }) | null;
         }) | null;
     }) | null> | null;
-    readonly " $refType": GeneSearchResultsContent_viewer$ref;
+    readonly " $refType": PopularArtists_popular_artists$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "GeneSearchResultsContent_viewer",
-  "type": "Viewer",
+  "name": "PopularArtists_popular_artists",
+  "type": "PopularArtists",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "RootArgument",
-      "name": "term",
-      "type": "String!"
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "match_gene",
+      "name": "artists",
       "storageKey": null,
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "term",
-          "variableName": "term",
-          "type": "String!"
-        }
-      ],
-      "concreteType": "Gene",
+      "args": null,
+      "concreteType": "Artist",
       "plural": true,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -66,6 +47,20 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
           "args": null,
           "storageKey": null
         },
@@ -110,17 +105,10 @@ const node: ConcreteFragment = {
               ]
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '0bea268b7e1c4adf4585567dbc12f2ca';
+(node as any).hash = '1c49138ba6baf7973c1aa1e59f1f0825';
 export default node;

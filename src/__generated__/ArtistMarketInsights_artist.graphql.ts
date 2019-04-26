@@ -1,10 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _SelectedCareerAchievementsArtistPage_artist$ref: unique symbol;
-export type SelectedCareerAchievementsArtistPage_artist$ref = typeof _SelectedCareerAchievementsArtistPage_artist$ref;
-export type SelectedCareerAchievementsArtistPage_artist = {
+declare const _ArtistMarketInsights_artist$ref: unique symbol;
+export type ArtistMarketInsights_artist$ref = typeof _ArtistMarketInsights_artist$ref;
+export type ArtistMarketInsights_artist = {
     readonly _id: string;
+    readonly collections: ReadonlyArray<string | null> | null;
     readonly highlights: ({
         readonly partners: ({
             readonly edges: ReadonlyArray<({
@@ -16,11 +17,6 @@ export type SelectedCareerAchievementsArtistPage_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly insights: ReadonlyArray<({
-        readonly type: string | null;
-        readonly label: string | null;
-        readonly entities: ReadonlyArray<string | null> | null;
-    }) | null> | null;
     readonly auctionResults: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -32,7 +28,7 @@ export type SelectedCareerAchievementsArtistPage_artist = {
             }) | null;
         }) | null> | null;
     }) | null;
-    readonly " $refType": SelectedCareerAchievementsArtistPage_artist$ref;
+    readonly " $refType": ArtistMarketInsights_artist$ref;
 };
 
 
@@ -47,7 +43,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "SelectedCareerAchievementsArtistPage_artist",
+  "name": "ArtistMarketInsights_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [
@@ -67,6 +63,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "collections",
       "args": null,
       "storageKey": null
     },
@@ -156,38 +159,6 @@ return {
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "insights",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtistInsight",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "type",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "label",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "entities",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -294,5 +265,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3ef695a3f676f52a0b02550350ea5f6';
+(node as any).hash = 'dee342713999d33f48569233295b10b8';
 export default node;

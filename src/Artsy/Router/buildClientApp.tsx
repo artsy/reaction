@@ -36,15 +36,12 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         routes = [],
       } = config
 
-      const { relayNetwork, user } = context
-      const relayBootstrap = JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}")
-      const _user = getUser(user)
+      const user = getUser(context.user)
       const relayEnvironment =
         context.relayEnvironment ||
         createRelaySSREnvironment({
-          cache: relayBootstrap,
-          user: _user,
-          relayNetwork,
+          cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
+          user,
         })
 
       const getHistoryProtocol = () => {
@@ -73,6 +70,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         historyMiddlewares,
         historyOptions: history.options,
         routeConfig: createRouteConfig(routes),
+        matchContext: { user },
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>
@@ -85,9 +83,8 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         return (
           <Boot
             context={context}
-            user={_user}
+            user={user}
             relayEnvironment={relayEnvironment}
-            resolver={resolver}
             routes={routes}
           >
             <Router resolver={resolver} />

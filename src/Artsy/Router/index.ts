@@ -1,11 +1,11 @@
 import { RelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { HistoryOptions, HistoryProtocol } from "farce"
 import { RouteConfig } from "found"
-import { ContextProps } from "../SystemContext"
+import { SystemContextProps } from "../SystemContext"
 
 export { Link } from "found"
 export { Boot } from "./Boot"
-export { ContextProvider, ContextConsumer } from "Artsy/SystemContext"
+export { SystemContextProvider, SystemContextConsumer } from "Artsy"
 
 /**
  * Configuration used when creating a new Router app
@@ -14,7 +14,7 @@ export interface RouterConfig {
   /**
    * Context values to be passed to ArtsyContext
    */
-  context?: ContextProps & { relayEnvironment?: RelaySSREnvironment }
+  context?: SystemContextProps & { relayEnvironment?: RelaySSREnvironment }
 
   /**
    * Configuration options to be passed to Found router

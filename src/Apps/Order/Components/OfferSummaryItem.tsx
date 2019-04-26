@@ -40,15 +40,17 @@ const OfferSummaryItem = ({
 
 export const OfferSummaryItemFragmentContainer = createFragmentContainer(
   OfferSummaryItem,
-  graphql`
-    fragment OfferSummaryItem_order on Order {
-      totalListPrice(precision: 2)
-      ... on OfferOrder {
-        myLastOffer {
-          amount(precision: 2)
-          note
+  {
+    order: graphql`
+      fragment OfferSummaryItem_order on Order {
+        totalListPrice(precision: 2)
+        ... on OfferOrder {
+          myLastOffer {
+            amount(precision: 2)
+            note
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

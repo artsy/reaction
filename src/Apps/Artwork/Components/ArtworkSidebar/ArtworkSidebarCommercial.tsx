@@ -13,9 +13,9 @@ import {
 import { ArtworkSidebarCommercial_artwork } from "__generated__/ArtworkSidebarCommercial_artwork.graphql"
 import { ArtworkSidebarCommercialOfferOrderMutation } from "__generated__/ArtworkSidebarCommercialOfferOrderMutation.graphql"
 import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSidebarCommercialOrderMutation.graphql"
+import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, SystemContext } from "Artsy/SystemContext"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { FC, useContext } from "react"
 import {
@@ -162,6 +162,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     type: Schema.Type.Button,
     artwork_id: props.artwork._id,
     artwork_slug: props.artwork.id,
+    product_id: props.artwork._id,
   }))
   handleCreateOrder() {
     const { user, mediator } = this.props
@@ -173,18 +174,18 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             {
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOrderMutation(
-                  $input: CreateOrderWithArtworkInput!
+                  $input: CommerceCreateOrderWithArtworkInput!
                 ) {
-                  ecommerceCreateOrderWithArtwork(input: $input) {
+                  commerceCreateOrderWithArtwork(input: $input) {
                     orderOrError {
-                      ... on OrderWithMutationSuccess {
+                      ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
                           id
                           mode
                         }
                       }
-                      ... on OrderWithMutationFailure {
+                      ... on CommerceOrderWithMutationFailure {
                         error {
                           type
                           code
@@ -209,7 +210,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                   { isCommittingCreateOrderMutation: false },
                   () => {
                     const {
-                      ecommerceCreateOrderWithArtwork: { orderOrError },
+                      commerceCreateOrderWithArtwork: { orderOrError },
                     } = data
                     if (orderOrError.error) {
                       this.onMutationError(
@@ -445,24 +446,26 @@ export const ArtworkSidebarCommercial: FC<
 
 export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer(
   ArtworkSidebarCommercial,
-  graphql`
-    fragment ArtworkSidebarCommercial_artwork on Artwork {
-      id
-      _id
-      is_acquireable
-      is_inquireable
-      is_offerable
-      sale_message
-      shippingInfo
-      shippingOrigin
-      edition_sets {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarCommercial_artwork on Artwork {
         id
-        __id
+        _id
         is_acquireable
+        is_inquireable
         is_offerable
         sale_message
-        ...ArtworkSidebarSizeInfo_piece
+        shippingInfo
+        shippingOrigin
+        edition_sets {
+          id
+          __id
+          is_acquireable
+          is_offerable
+          sale_message
+          ...ArtworkSidebarSizeInfo_piece
+        }
       }
-    }
-  `
+    `,
+  }
 )

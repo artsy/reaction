@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Collect/FilterState"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 import { MobileActionSheet } from "../MobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"

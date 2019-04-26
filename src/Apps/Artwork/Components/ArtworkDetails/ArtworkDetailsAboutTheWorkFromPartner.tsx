@@ -1,6 +1,6 @@
 import { filterLocations } from "Apps/Artwork/Utils/filterLocations"
 import { limitWithCount } from "Apps/Artwork/Utils/limitWithCount"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { FollowProfileButtonFragmentContainer as FollowProfileButton } from "Components/FollowButton/FollowProfileButton"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -9,7 +9,6 @@ import { Media } from "Utils/Responsive"
 import { READ_MORE_MAX_CHARS } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork } from "__generated__/ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql"
-import { stringify } from "qs"
 import { data as sd } from "sharify"
 
 import { track } from "Artsy/Analytics"
@@ -25,6 +24,7 @@ import {
   Spacer,
   StackableBorderBox,
 } from "@artsy/palette"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
@@ -51,42 +51,11 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     // noop
   }
 
-  handleOpenAuth = (mediator, artist) => {
-    if (sd.IS_MOBILE) {
-      this.openMobileAuth(artist)
-    } else if (mediator) {
-      this.openDesktopAuth(mediator, artist)
-    } else {
-      window.location.href = "/login"
-    }
-  }
-
-  openMobileAuth = partner => {
-    const params = stringify({
-      action: "follow",
-      contextModule: "Artwork page",
-      intent: "follow gallery",
-      kind: "gallery",
-      objectId: partner.id,
-      signUpIntent: "follow gallery",
-      trigger: "click",
-      entityName: partner.name,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth = (mediator, partner) => {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to follow ${partner.name}`,
-      signupIntent: "follow gallery",
-      afterSignUpAction: {
-        kind: "profile",
-        action: "follow",
-        objectId: partner.profile && partner.profile.id,
-      },
+  handleOpenAuth = (mediator, partner) => {
+    openAuthModal(mediator, {
+      entity: partner,
+      contextModule: Schema.ContextModule.ArtworkPage,
+      intent: AuthModalIntent.FollowPartner,
     })
   }
 
@@ -121,7 +90,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       partner.type !== "Auction House" && partner.profile
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <StackableBorderBox p={2}>
@@ -185,38 +154,40 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             </StackableBorderBox>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFragmentContainer(
   ArtworkDetailsAboutTheWorkFromPartner,
-  graphql`
-    fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-      additional_information(format: HTML)
-      sale {
-        is_benefit
-      }
-      partner {
-        _id
-        id
-        type
-        href
-        name
-        initials
-        locations {
-          city
+  {
+    artwork: graphql`
+      fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
+        additional_information(format: HTML)
+        sale {
+          is_benefit
         }
-        is_default_profile_public
-        profile {
-          ...FollowProfileButton_profile
+        partner {
+          _id
           id
-          icon {
-            url(version: "square140")
+          type
+          href
+          name
+          initials
+          locations {
+            city
+          }
+          is_default_profile_public
+          profile {
+            ...FollowProfileButton_profile
+            id
+            icon {
+              url(version: "square140")
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

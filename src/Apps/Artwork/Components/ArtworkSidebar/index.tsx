@@ -60,23 +60,25 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
 
 export const ArtworkSidebarFragmentContainer = createFragmentContainer(
   ArtworkSidebar,
-  graphql`
-    fragment ArtworkSidebar_artwork on Artwork {
-      is_in_auction
-      ...ArtworkSidebarArtists_artwork
-      ...ArtworkSidebarMetadata_artwork
-      ...ArtworkSidebarAuctionPartnerInfo_artwork
-      ...ArtworkSidebarCurrentBidInfo_artwork
-      ...ArtworkSidebarBidAction_artwork
-      ...ArtworkSidebarCommercial_artwork
-      ...ArtworkSidebarPartnerInfo_artwork
-      ...ArtworkSidebarExtraLinks_artwork
-      sale {
-        is_closed
-        ...AuctionTimer_sale
+  {
+    artwork: graphql`
+      fragment ArtworkSidebar_artwork on Artwork {
+        is_in_auction
+        ...ArtworkSidebarArtists_artwork
+        ...ArtworkSidebarMetadata_artwork
+        ...ArtworkSidebarAuctionPartnerInfo_artwork
+        ...ArtworkSidebarCurrentBidInfo_artwork
+        ...ArtworkSidebarBidAction_artwork
+        ...ArtworkSidebarCommercial_artwork
+        ...ArtworkSidebarPartnerInfo_artwork
+        ...ArtworkSidebarExtraLinks_artwork
+        sale {
+          is_closed
+          ...AuctionTimer_sale
+        }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const ArtworkSidebarQueryRenderer = ({

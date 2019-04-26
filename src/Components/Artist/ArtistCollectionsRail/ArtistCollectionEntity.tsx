@@ -50,7 +50,15 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
               bgImages.map((url, i) => {
                 const alt = `${hits[i].artist.name}, ${hits[i].title}`
                 return (
-                  <ArtworkImage key={i} src={url} width={imageSize} alt={alt} />
+                  <SingleImgContainer key={i}>
+                    <ImgOverlay width={imageSize} />
+                    <ArtworkImage
+                      key={i}
+                      src={url}
+                      width={imageSize}
+                      alt={alt}
+                    />
+                  </SingleImgContainer>
                 )
               })
             ) : (
@@ -61,7 +69,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
           <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
-              Works from $
+              From $
               {currency(price_guidance, {
                 separator: ",",
                 precision: 0,
@@ -80,10 +88,33 @@ const CollectionTitle = styled(Serif)`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &:hover {
     text-decoration: none;
+    ${CollectionTitle} {
+      text-decoration: underline;
+    }
   }
+`
+
+const SingleImgContainer = styled(Box)`
+  position: relative;
+  margin-right: 2px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`
+
+const ImgOverlay = styled(Box)<{ width: number }>`
+  height: 125px;
+  background-color: ${color("black30")};
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
 `
 
 export const ArtworkImage = styled.img<{ width: number }>`
@@ -92,36 +123,34 @@ export const ArtworkImage = styled.img<{ width: number }>`
   background-color: ${color("black10")};
   object-fit: cover;
   object-position: center;
-
-  &:last-child {
-    padding-right: 0;
-  }
+  opacity: 0.9;
 `
 
 const ImgWrapper = styled(Flex)`
   width: 265px;
-  justify-content: space-between;
 `
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
   ArtistCollectionEntity,
-  graphql`
-    fragment ArtistCollectionEntity_collection on MarketingCollection {
-      headerImage
-      slug
-      title
-      price_guidance
-      artworks(size: 3, sort: "merchandisability") {
-        hits {
-          artist {
-            name
-          }
-          title
-          image {
-            url(version: "small")
+  {
+    collection: graphql`
+      fragment ArtistCollectionEntity_collection on MarketingCollection {
+        headerImage
+        slug
+        title
+        price_guidance
+        artworks(size: 3, sort: "merchandisability") {
+          hits {
+            artist {
+              name
+            }
+            title
+            image {
+              url(version: "small")
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

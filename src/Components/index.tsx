@@ -34,9 +34,9 @@ export interface InitOptions {
 export function init(options: InitOptions) {
   // Relay.injectNetworkLayer(artsyNetworkLayer(options.user))
   // const rootRoute = (
-  //   <Artsy.ContextProvider user={options.user}>
+  //   <Artsy.SystemContextProvider user={options.user}>
   //     <Relay.RootContainer Component={options.component} route={options.queryConfig} />
-  //   </Artsy.ContextProvider>
+  //   </Artsy.SystemContextProvider>
   // )
   // ReactDOM.render(rootRoute, document.getElementById(options.domID))
 }

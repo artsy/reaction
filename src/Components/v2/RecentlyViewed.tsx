@@ -1,7 +1,7 @@
 import { Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
-import { ContextConsumer, SystemContext } from "Artsy"
+import { SystemContext, SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -33,7 +33,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
     const { me } = this.props
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             me && (
@@ -55,6 +55,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
 
                     return (
                       <FillwidthItem
+                        lazyLoad={true}
                         artwork={artwork.node}
                         targetHeight={HEIGHT}
                         imageHeight={HEIGHT}
@@ -71,28 +72,30 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
             )
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const RecentlyViewedFragmentContainer = createFragmentContainer(
   RecentlyViewed,
-  graphql`
-    fragment RecentlyViewed_me on Me {
-      recentlyViewedArtworks(first: 20) {
-        edges {
-          node {
-            __id
-            image {
-              aspect_ratio
+  {
+    me: graphql`
+      fragment RecentlyViewed_me on Me {
+        recentlyViewedArtworks(first: 20) {
+          edges {
+            node {
+              __id
+              image {
+                aspect_ratio
+              }
+              ...FillwidthItem_artwork @relay(mask: false)
             }
-            ...FillwidthItem_artwork @relay(mask: false)
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const RecentlyViewedQueryRenderer = () => {

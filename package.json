@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "15.11.12",
+  "version": "16.5.6",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "4.5.6",
+    "@artsy/palette": "4.10.4",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -80,6 +80,7 @@
     "@types/lodash": "^4.14.111",
     "@types/memoize-one": "^3.1.1",
     "@types/prop-types": "^15.5.1",
+    "@types/qs": "^6.5.3",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
     "@types/react-overlays": "^0.8.2",
@@ -156,7 +157,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "@artsy/detect-responsive-traits": "^0.0.1",
+    "@artsy/detect-responsive-traits": "^0.0.4",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
@@ -171,7 +172,7 @@
     "jsonp": "^0.2.1",
     "lodash": "^4.17.4",
     "memoize-one": "^4.0.3",
-    "moment-timezone": "^0.5.13",
+    "moment-timezone": "^0.5.25",
     "numeral": "^2.0.4",
     "openseadragon": "^2.3.1",
     "prop-types": "^15.5.10",

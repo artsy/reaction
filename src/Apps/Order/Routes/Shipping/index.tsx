@@ -379,37 +379,39 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
 export const ShippingFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(ShippingRoute))),
-  graphql`
-    fragment Shipping_order on Order {
-      id
-      mode
-      state
-      requestedFulfillment {
-        __typename
-        ... on Ship {
-          name
-          addressLine1
-          addressLine2
-          city
-          region
-          country
-          postalCode
-          phoneNumber
+  {
+    order: graphql`
+      fragment Shipping_order on Order {
+        id
+        mode
+        state
+        requestedFulfillment {
+          __typename
+          ... on Ship {
+            name
+            addressLine1
+            addressLine2
+            city
+            region
+            country
+            postalCode
+            phoneNumber
+          }
         }
-      }
-      lineItems {
-        edges {
-          node {
-            artwork {
-              id
-              pickup_available
-              shipsToContinentalUSOnly
+        lineItems {
+          edges {
+            node {
+              artwork {
+                id
+                pickup_available
+                shipsToContinentalUSOnly
+              }
             }
           }
         }
+        ...ArtworkSummaryItem_order
+        ...TransactionDetailsSummaryItem_order
       }
-      ...ArtworkSummaryItem_order
-      ...TransactionDetailsSummaryItem_order
-    }
-  `
+    `,
+  }
 )

@@ -3,7 +3,7 @@ import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { BudgetUpdateMyUserProfileMutation } from "__generated__/BudgetUpdateMyUserProfileMutation.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import Colors from "../../../Assets/Colors"
 import { MultiButtonState } from "../../Buttons/MultiStateButton"
 import { media } from "../../Helpers"
@@ -29,7 +29,7 @@ interface State {
 }
 
 export class BudgetComponent extends React.Component<
-  StepProps & ContextProps,
+  StepProps & SystemContextProps,
   State
 > {
   static slug: "budget" = "budget"
@@ -110,7 +110,7 @@ export class BudgetComponent extends React.Component<
   }
 }
 
-const Budget = withContext(BudgetComponent)
+const Budget = withSystemContext(BudgetComponent)
 // tslint:disable:no-string-literal
 Budget["slug"] = BudgetComponent.slug
 

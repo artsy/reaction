@@ -3,10 +3,10 @@ import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtwo
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
+import { Mediator, SystemContext, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { Mediator, SystemContext, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { take } from "lodash"
 import React, { useContext } from "react"
@@ -122,29 +122,31 @@ class RelatedWorksArtworkGrid extends React.Component<
 export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
   RelatedWorksArtworkGridProps
 >(
-  withContext(RelatedWorksArtworkGrid),
-  graphql`
-    fragment RelatedWorksArtworkGrid_artwork on Artwork
-      @argumentDefinitions(layerId: { type: "String" }) {
-      layers {
-        name
-        id
-      }
-      layer(id: $layerId) {
-        name
-        artworksConnection(first: 8) {
-          ...ArtworkGrid_artworks
+  withSystemContext(RelatedWorksArtworkGrid),
+  {
+    artwork: graphql`
+      fragment RelatedWorksArtworkGrid_artwork on Artwork
+        @argumentDefinitions(layerId: { type: "String" }) {
+        layers {
+          name
+          id
+        }
+        layer(id: $layerId) {
+          name
+          artworksConnection(first: 8) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `,
+    `,
+  },
   graphql`
     query RelatedWorksArtworkGridRefetchQuery(
       $artworkSlug: String!

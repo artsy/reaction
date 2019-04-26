@@ -213,9 +213,8 @@ export class MarketInsights extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(
-  MarketInsights,
-  graphql`
+export default createFragmentContainer(MarketInsights, {
+  artist: graphql`
     fragment MarketInsights_artist on Artist
       @argumentDefinitions(
         partner_category: {
@@ -255,5 +254,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

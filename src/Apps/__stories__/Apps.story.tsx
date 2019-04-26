@@ -1,25 +1,12 @@
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { routes as artistRoutes } from "../Artist/routes"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
+import { SearchResultsSkeleton } from "../Search/Components/SearchResultsSkeleton"
 import { routes as searchRoutes } from "../Search/routes"
 
 storiesOf("Apps", module)
-  .add("Artist Page", () => {
-    return (
-      <MockRouter
-        routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso"
-        context={{
-          mediator: {
-            trigger: x => x,
-          },
-        }}
-      />
-    )
-  })
   .add("Collect Page", () => {
     return (
       <MockRouter
@@ -55,8 +42,7 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Search Results page", () => {
-    return (
-      <MockRouter routes={searchRoutes} initialRoute="/search2?term=andy" />
-    )
+  .add("Search Results Page", () => {
+    return <MockRouter routes={searchRoutes} initialRoute="/search?term=andy" />
   })
+  .add("Search Results Skeleton", () => <SearchResultsSkeleton />)

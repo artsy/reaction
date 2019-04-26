@@ -1,5 +1,5 @@
 import { ArtistCollectionsRailQuery } from "__generated__/ArtistCollectionsRailQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from "./ArtistCollectionsRail"
@@ -11,7 +11,7 @@ interface Props {
 
 export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ relayEnvironment }) => {
         return (
           <QueryRenderer<ArtistCollectionsRailQuery>
@@ -47,6 +47,6 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
           />
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

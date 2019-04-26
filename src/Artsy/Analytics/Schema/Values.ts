@@ -56,7 +56,7 @@ export enum ActionType {
    */
   ClickedReadMore = "Clicked read more",
 
-  ClickedCommercialFilter = "Clicked commercial filter params",
+  CommercialFilterParamsChanged = "Commercial filter params changed",
 
   /**
    * A/B Test Experiments
@@ -107,6 +107,7 @@ export enum ActionType {
 
   FocusedOnAutosuggestInput = "Focused on search input",
   SelectedItemFromSearch = "Selected item from search",
+  SelectedItemFromSearchPage = "Selected item from search page",
   SearchedAutosuggestWithResults = "Searched from header with results",
   SearchedAutosuggestWithoutResults = "Searched from header with no results",
 }
@@ -221,6 +222,8 @@ export enum Subject {
   ContactGallery = "Contact Gallery",
   EnterLiveAuction = "Enter live auction",
   ShowArtistInsights = "Show artist insights",
+  HistogramBar = "Histogram Bar",
+  QuestionMarkIcon = "Question Mark Informational Icon",
 }
 
 /**
@@ -234,8 +237,10 @@ export enum ContextModule {
   /**
    * Artist page
    */
+  ArtistPage = "Artist page",
   AboutTheWork = "About the work",
   AboutTheWorkPartner = "About the Work (Partner)",
+  ArtworkFilter = "ArtworkFilter",
   ArtistOverview = "ArtistOverview",
   ArtistBio = "ArtistBio",
   ArtistInsights = "ArtistInsights",
@@ -245,17 +250,20 @@ export enum ContextModule {
   /**
    * Artwork page
    */
+  ArtworkPage = "Artwork page",
   ArtworkTabs = "Artwork tabs",
   OtherWorksByArtist = "Other works by artist",
   OtherWorksInAuction = "Other works in auction",
   OtherWorksInFair = "Other works in fair",
   OtherWorksFromGallery = "Other works from gallery",
   OtherWorksFromShow = "Other works from show",
+  RecommendedArtists = "Recommended Artists",
   RelatedArtists = "RelatedArtists",
   RelatedWorks = "RelatedWorks",
   ShareButton = "Share button",
   Zoom = "Zoom",
   ViewInRoom = "View in room",
+  PriceContext = "Price Context",
 
   /*
    * Articles
@@ -292,6 +300,7 @@ export enum Flow {
   ArtworkShare = "Artwork share",
   ArtworkZoom = "Artwork zoom",
   ArtworkViewInRoom = "Artwork view in room",
+  ArtworkPriceContext = "Artwork Price Context",
   Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
@@ -312,4 +321,5 @@ export enum Type {
   Link = "Link",
   Tab = "Tab",
   Thumbnail = "thumbnail",
+  Chart = "Chart",
 }

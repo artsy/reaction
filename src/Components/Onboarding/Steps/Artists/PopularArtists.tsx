@@ -1,10 +1,10 @@
-import { PopularArtistsContent_popular_artists } from "__generated__/PopularArtistsContent_popular_artists.graphql"
+import { PopularArtists_popular_artists } from "__generated__/PopularArtists_popular_artists.graphql"
 import {
   PopularArtistsFollowArtistMutation,
   PopularArtistsFollowArtistMutationResponse,
 } from "__generated__/PopularArtistsFollowArtistMutation.graphql"
 import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
-import { ContextProps, withContext } from "Artsy/SystemContext"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import * as React from "react"
 import {
   commitMutation,
@@ -36,7 +36,7 @@ interface Artist {
 export interface RelayProps {
   tracking?: TrackingProp
   relay?: RelayProp
-  popular_artists: PopularArtistsContent_popular_artists
+  popular_artists: PopularArtists_popular_artists
 }
 
 interface Props
@@ -191,24 +191,26 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
 const PopularArtistContentContainer = createFragmentContainer(
   PopularArtistsContent,
-  graphql`
-    fragment PopularArtistsContent_popular_artists on PopularArtists {
-      artists {
-        id
-        _id
-        __id
-        name
-        image {
-          cropped(width: 100, height: 100) {
-            url
+  {
+    popular_artists: graphql`
+      fragment PopularArtists_popular_artists on PopularArtists {
+        artists {
+          id
+          _id
+          __id
+          name
+          image {
+            cropped(width: 100, height: 100) {
+              url
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
-const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
+const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
   relayEnvironment,
   updateFollowCount,
 }) => {
@@ -218,7 +220,7 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
       query={graphql`
         query PopularArtistsQuery {
           popular_artists(exclude_followed_artists: true) {
-            ...PopularArtistsContent_popular_artists
+            ...PopularArtists_popular_artists
           }
         }
       `}
@@ -239,4 +241,4 @@ const PopularArtistsComponent: React.SFC<ContextProps & FollowProps> = ({
   )
 }
 
-export const PopularArtists = withContext(PopularArtistsComponent)
+export const PopularArtists = withSystemContext(PopularArtistsComponent)

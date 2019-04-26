@@ -8,22 +8,21 @@ import {
 } from "@artsy/palette"
 import { ArtistInfo_artist } from "__generated__/ArtistInfo_artist.graphql"
 import { ArtistInfoQuery } from "__generated__/ArtistInfoQuery.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
+import { Mediator } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
-
-import { stringify } from "qs"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 import {
   ArtistBioFragmentContainer as ArtistBio,
-  MarketInsightsFragmentContainer as MarketInsights,
+  ArtistMarketInsightsFragmentContainer as ArtistMarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Components/v2"
 import Events from "Utils/Events"
@@ -84,41 +83,10 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    if (sd.IS_MOBILE) {
-      this.openMobileAuth(artist)
-    } else if (mediator) {
-      this.openDesktopAuth(mediator, artist)
-    } else {
-      window.location.href = "/login"
-    }
-  }
-
-  openMobileAuth = artist => {
-    const params = stringify({
-      action: "follow",
-      contextModule: "Artwork page",
-      intent: "follow artist",
-      kind: "artist",
-      objectId: artist.id,
-      signUpIntent: "follow artist",
-      trigger: "click",
-      entityName: artist.name,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth = (mediator, artist) => {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to follow ${artist.name}`,
-      signupIntent: "follow artist",
-      afterSignUpAction: {
-        kind: "artist",
-        action: "follow",
-        objectId: artist.id,
-      },
+    openAuthModal(mediator, {
+      entity: artist,
+      contextModule: Schema.ContextModule.ArtworkPage,
+      intent: AuthModalIntent.FollowArtist,
     })
   }
 
@@ -139,7 +107,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
       : "Show artist insights"
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => (
           <>
             <StackableBorderBox p={2} flexDirection="column">
@@ -209,7 +177,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
             </StackableBorderBox>
             {this.state.showArtistInsights && (
               <>
-                <MarketInsights
+                <ArtistMarketInsights
                   artist={this.props.artist}
                   border={false}
                   Container={Container}
@@ -230,16 +198,15 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
             )}
           </>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 // ADDED COLLECTIONS, HIGHLIGHTS, AND AUCTION RESULTS TO FRAGMENT FOR SHOW ARTIST INSIGHTS BUTTON VISIBLILITY CHECK
 
-export const ArtistInfoFragmentContainer = createFragmentContainer(
-  ArtistInfo,
-  graphql`
+export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
+  artist: graphql`
     fragment ArtistInfo_artist on Artist
       @argumentDefinitions(
         partner_category: {
@@ -294,7 +261,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
         }
       }
       ...ArtistBio_bio
-      ...MarketInsightsArtistPage_artist
+      ...ArtistMarketInsights_artist
       ...FollowArtistButton_artist
 
       # The below data is only used to determine whether a section
@@ -304,12 +271,12 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(
         text
       }
     }
-  `
-)
+  `,
+})
 
 export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
   return (
-    <ContextConsumer>
+    <SystemContextConsumer>
       {({ relayEnvironment }) => {
         return (
           <QueryRenderer<ArtistInfoQuery>
@@ -326,6 +293,6 @@ export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
           />
         )
       }}
-    </ContextConsumer>
+    </SystemContextConsumer>
   )
 }

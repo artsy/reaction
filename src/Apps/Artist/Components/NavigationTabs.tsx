@@ -1,16 +1,15 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
+import { SystemContextProps, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { withContext } from "Artsy/SystemContext"
-import { Mediator } from "Artsy/SystemContext"
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { userHasLabFeature } from "Utils/getUser"
 
-interface Props {
+interface Props extends SystemContextProps {
   artist: NavigationTabs_artist
-  mediator: Mediator
 }
 
 @track({
@@ -56,9 +55,13 @@ export class NavigationTabs extends React.Component<Props> {
     const {
       artist: { id, statuses },
       mediator,
+      user,
     } = this.props
 
     const route = path => `/artist/${id}${path}`
+
+    const showRelatedArtistsTab =
+      statuses.artists && !userHasLabFeature(user, "Artist Recommendations")
 
     return (
       <>
@@ -77,7 +80,7 @@ export class NavigationTabs extends React.Component<Props> {
           this.renderTab("Auction results", route("/auction-results"), {
             mediator,
           })}
-        {statuses.artists &&
+        {showRelatedArtistsTab &&
           this.renderTab("Related artists", route("/related-artists"), {
             mediator,
           })}
@@ -97,17 +100,19 @@ export class NavigationTabs extends React.Component<Props> {
 }
 
 export const NavigationTabsFragmentContainer = createFragmentContainer(
-  withContext(NavigationTabs),
-  graphql`
-    fragment NavigationTabs_artist on Artist {
-      id
-      statuses {
-        shows
-        artists
-        articles
-        cv(minShowCount: 0)
-        auction_lots
+  withSystemContext(NavigationTabs),
+  {
+    artist: graphql`
+      fragment NavigationTabs_artist on Artist {
+        id
+        statuses {
+          shows
+          artists
+          articles
+          cv(minShowCount: 0)
+          auction_lots
+        }
       }
-    }
-  `
+    `,
+  }
 )

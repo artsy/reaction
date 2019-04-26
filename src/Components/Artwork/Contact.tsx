@@ -75,9 +75,8 @@ export class Contact extends React.Component<ContactProps, null> {
   }
 }
 
-export default createFragmentContainer(
-  Contact,
-  graphql`
+export default createFragmentContainer(Contact, {
+  artwork: graphql`
     fragment Contact_artwork on Artwork {
       _id
       href
@@ -103,5 +102,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
-)
+  `,
+})

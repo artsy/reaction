@@ -89,9 +89,8 @@ const StyledHeadline = styled(Headline)`
   font-size: 2em;
 `
 
-export default createFragmentContainer(
-  StyledHeadline,
-  graphql`
+export default createFragmentContainer(StyledHeadline, {
+  facet: graphql`
     fragment Headline_facet on ArtworkFilterFacet {
       ... on ArtworkFilterTag {
         name
@@ -100,5 +99,5 @@ export default createFragmentContainer(
         name
       }
     }
-  `
-)
+  `,
+})

@@ -33,13 +33,15 @@ export class ArtworkSidebarSizeInfo extends React.Component<
 
 export const ArtworkSidebarSizeInfoFragmentContainer = createFragmentContainer(
   ArtworkSidebarSizeInfo,
-  graphql`
-    fragment ArtworkSidebarSizeInfo_piece on Sellable {
-      dimensions {
-        in
-        cm
+  {
+    piece: graphql`
+      fragment ArtworkSidebarSizeInfo_piece on Sellable {
+        dimensions {
+          in
+          cm
+        }
+        edition_of
       }
-      edition_of
-    }
-  `
+    `,
+  }
 )
