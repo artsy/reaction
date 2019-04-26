@@ -2,13 +2,22 @@ import * as qs from "qs"
 import { data as sd } from "sharify"
 
 export const createCollectUrl = ({ category, artistId, sizeScore }) => {
+  let dimensionRange
+  if (sizeScore < 1600) {
+    dimensionRange = "0-1600"
+  } else if (1600 < sizeScore && sizeScore < 4900) {
+    dimensionRange = "1600-4900"
+  } else {
+    dimensionRange = "4900-*"
+  }
+
   const query = qs.stringify({
     page: 1,
     sort: "-decayed_merch",
     acquireable: "true",
     offerable: "true",
     inquireable_only: "true",
-    dimension_range: sizeScore,
+    dimension_range: dimensionRange,
     artist_id: artistId,
   })
   const path = [sd.APP_URL, "collect", filterCategories[category]]
