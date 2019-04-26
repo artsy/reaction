@@ -1,7 +1,9 @@
 import { Box, ChevronIcon, Flex } from "@artsy/palette"
-import React, { ReactNode, useEffect, useRef, useState } from "react"
+import { Options as FlickityOptions } from "flickity"
+import React, { ReactNode, useRef, useState } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
+import { useDidMount } from "Utils/hooks/useDidMount"
 import { Media } from "Utils/Responsive"
 
 type Arrow = (
@@ -18,8 +20,10 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  settings?: Flickity.Options
+  options?: FlickityOptions
 }
+
+const isClient = typeof window !== "undefined"
 
 export class Carousel extends React.Component<Props> {
   static defaultProps = {
@@ -29,34 +33,59 @@ export class Carousel extends React.Component<Props> {
   render() {
     return (
       <>
-        <Media at="xs">
-          <SmallCarousel {...this.props} />
-        </Media>
-        <Media greaterThan="xs">
-          <LargeCarousel {...this.props} />
-        </Media>
+        {isClient && (
+          <Box key={Math.random()}>
+            <Media at="xs">
+              <SmallCarousel {...this.props} />
+            </Media>
+            <Media greaterThan="xs">
+              <LargeCarousel {...this.props} />
+            </Media>
+          </Box>
+        )}
+        {!isClient && (
+          <Box key={Math.random()}>
+            <CarouselServer {...this.props} />
+          </Box>
+        )}
       </>
     )
   }
 }
 
+const renderSlides = props => {
+  return props.data.map((slide, index) => {
+    return <Box key={index}>{props.render(slide)}</Box>
+  })
+}
+
+const CarouselServer = (props: Props) => {
+  return (
+    <Flex
+      flexDirection="row"
+      position="relative"
+      justifyContent="space-around"
+      alignItems="center"
+      height={props.height}
+    >
+      <CarouselContainer height={props.height}>
+        <Flex>{renderSlides(props)}</Flex>
+      </CarouselContainer>
+    </Flex>
+  )
+}
+
 /*
  * Returns null if no window for SSR
  */
-const Flickity =
-  typeof window !== "undefined"
-    ? require("react-flickity-component")
-    : () => null
+const Flickity = isClient ? require("react-flickity-component") : () => null
 
 export const LargeCarousel = (props: Props) => {
-  const [isMounted, toggleMounted] = useState(false)
   const [currentSlideIndex, setSlideIndex] = useState(0)
   const [lastItemVisible, setLastItemVisible] = useState(false)
-
-  useEffect(() => {
-    toggleMounted(true)
-  }, [])
   const flicktyRef = useRef(null)
+
+  const isMounted = useDidMount()
 
   let flickity = null
 
@@ -81,7 +110,7 @@ export const LargeCarousel = (props: Props) => {
     })
   }
 
-  const settings = {
+  const options = {
     draggable: false,
     freeScroll: false,
     wrapAround: false,
@@ -90,7 +119,7 @@ export const LargeCarousel = (props: Props) => {
     prevNextButtons: false,
     groupCells: true,
     contain: true,
-    ...props.settings,
+    ...props.options,
   }
 
   const LeftArrow = () => {
@@ -121,8 +150,8 @@ export const LargeCarousel = (props: Props) => {
     )
   }
 
-  const showLeftArrow = currentSlideIndex !== 0 || settings.wrapAround === true
-  const showRightArrow = !lastItemVisible || settings.wrapAround === true
+  const showLeftArrow = currentSlideIndex !== 0 || options.wrapAround === true
+  const showRightArrow = !lastItemVisible || options.wrapAround === true
 
   return (
     <Flex
@@ -147,13 +176,9 @@ export const LargeCarousel = (props: Props) => {
       )}
 
       <CarouselContainer height={props.height}>
-        {Flickity && (
-          <Flickity options={settings} ref={flicktyRef}>
-            {props.data.map((slide, index) => {
-              return <Box key={index}>{props.render(slide)}</Box>
-            })}
-          </Flickity>
-        )}
+        <Flickity options={options} ref={flicktyRef}>
+          {renderSlides(props)}
+        </Flickity>
       </CarouselContainer>
 
       {showRightArrow && (
@@ -174,26 +199,20 @@ export const LargeCarousel = (props: Props) => {
 }
 
 export const SmallCarousel = (props: Props) => {
-  const settings = {
+  const options = {
     draggable: true,
     freeScroll: false,
     wrapAround: false,
     cellAlign: "left",
     pageDots: false,
     prevNextButtons: false,
-    ...props.settings,
+    ...props.options,
   }
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
       <CarouselContainer height={props.height}>
-        {Flickity && (
-          <Flickity options={settings}>
-            {props.data.map((slide, index) => {
-              return <Box key={index}>{props.render(slide)}</Box>
-            })}
-          </Flickity>
-        )}
+        <Flickity options={options}>{renderSlides(props)}</Flickity>
       </CarouselContainer>
     </Flex>
   )
