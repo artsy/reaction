@@ -75,7 +75,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
         </Sans>
         <Flex>
           <Link color="black60">
-            <Sans size="2">Browse works in the category</Sans>
+            <Sans size="2">Browse works in this category</Sans>
           </Link>
           <PricingContextModal />
         </Flex>
