@@ -18,7 +18,7 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  settings?: Flickity
+  settings?: Flickity.Options
 }
 
 export class Carousel extends React.Component<Props> {
@@ -94,11 +94,12 @@ export const LargeCarousel = (props: Props) => {
   }
 
   const LeftArrow = () => {
-    const getFlickity = flickity
     return (
       <ArrowButton
         onClick={() => {
-          getFlickity && getFlickity.previous ? getFlickity.previous() : null // check existence for tests
+          if (flickity) {
+            flickity.previous()
+          }
         }}
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
@@ -107,17 +108,22 @@ export const LargeCarousel = (props: Props) => {
   }
 
   const RightArrow = () => {
-    const getFlickity = flickity
     return (
       <ArrowButton
         onClick={() => {
-          getFlickity && getFlickity.next ? getFlickity.next() : null // check existence for tests
+          if (flickity) {
+            flickity.next()
+          }
         }}
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
       </ArrowButton>
     )
   }
+
+  const showLeftArrow = currentSlideIndex !== 0 || settings.wrapAround === true
+  const showRightArrow = !lastItemVisible || settings.wrapAround === true
+
   return (
     <Flex
       flexDirection="row"
@@ -126,7 +132,7 @@ export const LargeCarousel = (props: Props) => {
       alignItems="center"
       height={props.height}
     >
-      {(currentSlideIndex !== 0 || settings.wrapAround === true) && (
+      {showLeftArrow && (
         <ArrowWrapper left={-38}>
           {props.renderLeftArrow ? (
             props.renderLeftArrow({
@@ -150,7 +156,7 @@ export const LargeCarousel = (props: Props) => {
         )}
       </CarouselContainer>
 
-      {(!lastItemVisible || settings.wrapAround === true) && (
+      {showRightArrow && (
         <ArrowWrapper right={-38}>
           {props.renderRightArrow ? (
             props.renderRightArrow({

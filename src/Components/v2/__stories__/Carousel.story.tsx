@@ -9,7 +9,7 @@ import { Section } from "Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Carousel", () => {
   return (
-    <React.Fragment>
+    <>
       <Section title="Responsive Carousel">
         <Box width="70%">
           <Carousel
@@ -158,6 +158,6 @@ storiesOf("Styleguide/Components", module).add("Carousel", () => {
           />
         </Box>
       </Section>
-    </React.Fragment>
+    </>
   )
 })
