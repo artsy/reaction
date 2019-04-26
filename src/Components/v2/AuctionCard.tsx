@@ -40,7 +40,10 @@ export const upcomingLabel = (sale, now = moment()) => {
     is_preview: isPreview,
     registration_status,
     is_registration_closed: isRegistrationClosed,
+    isGalleryAuction: isGalleryAuction,
+    isBenefit: isBenefit,
   } = sale
+
   const isRegistered = !!registration_status
   const isLAI = !!liveStartAt
   if (isPreview) {
@@ -68,6 +71,8 @@ export interface AuctionCardProps {
   headline: string
   subHeadline: string
   badge: string
+  isGalleryAuction: boolean
+  isBenefit: boolean
 }
 
 export class AuctionCard extends React.Component<AuctionCardProps> {
@@ -90,9 +95,11 @@ export const LargeAuctionCard = props => (
     <Serif size="3t" weight="semibold">
       <Truncator maxLineCount={1}>{props.headline}</Truncator>
     </Serif>
-    <Serif size="3t">
-      <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
-    </Serif>
+    {!props.isGalleryAuction && !props.isBenefit && (
+      <Serif size="3t">
+        <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
+      </Serif>
+    )}
     {props.src && (
       <Box height="200px">
         <ResponsiveImage src={props.src} my={2} pb="160px" />
@@ -111,7 +118,7 @@ export const SmallAuctionCard = props => (
         <Serif size="3t" weight="semibold">
           <Truncator maxLineCount={1}>{props.headline}</Truncator>
         </Serif>
-        {props.subHeadline && (
+        {props.subHeadline && !props.isGalleryAuction && !props.isBenefit && (
           <Serif size="3t">
             <Truncator maxLineCount={2}>{props.subHeadline}</Truncator>
           </Serif>
@@ -144,6 +151,8 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
         headline={partnerName}
         subHeadline={sale.name}
         badge={statusLabel}
+        isGalleryAuction={sale.isGalleryAuction}
+        isBenefit={sale.isBenefit}
       />
     )
   },
@@ -155,6 +164,8 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
             url
           }
         }
+        isBenefit
+        isGalleryAuction
         end_at
         href
         id

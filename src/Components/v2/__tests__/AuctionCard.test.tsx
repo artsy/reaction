@@ -1,3 +1,4 @@
+import { Serif } from "@artsy/palette"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import moment from "moment-timezone"
@@ -17,6 +18,8 @@ describe("AuctionCard", () => {
     subHeadline: "Contemporary Day Sale",
     badge: "In progress",
     href: "#",
+    isGalleryAuction: false,
+    isBenefit: false,
   }
 
   beforeAll(() => {
@@ -37,6 +40,40 @@ describe("AuctionCard", () => {
       </MockBoot>
     )
     expect(large.find(LargeAuctionCard).length).toEqual(1)
+  })
+
+  it("Hides the subHeadline for gallery auctions", () => {
+    props.isGalleryAuction = true
+    const small = mount(
+      <MockBoot breakpoint="xs">
+        <AuctionCard {...props} />
+      </MockBoot>
+    )
+    expect(small.find(Serif).length).toEqual(1)
+
+    const large = mount(
+      <MockBoot breakpoint="lg">
+        <AuctionCard {...props} />
+      </MockBoot>
+    )
+    expect(large.find(Serif).length).toEqual(1)
+  })
+
+  it("Hides the subHeadline for benefit auctions", () => {
+    props.isBenefit = true
+    const small = mount(
+      <MockBoot breakpoint="xs">
+        <AuctionCard {...props} />
+      </MockBoot>
+    )
+    expect(small.find(Serif).length).toEqual(1)
+
+    const large = mount(
+      <MockBoot breakpoint="lg">
+        <AuctionCard {...props} />
+      </MockBoot>
+    )
+    expect(large.find(Serif).length).toEqual(1)
   })
 
   const tz = "America/New_York"
