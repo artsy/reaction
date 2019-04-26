@@ -1,3 +1,16 @@
+# v16.5.7 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- Remove the SystemContext around an Artwork metadata because it wasn't being used [#2246](https://github.com/artsy/reaction/pull/2246) ([@orta](https://github.com/orta) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Orta ([@orta](https://github.com/orta))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.5.6 (Fri Apr 26 2019)
 
 #### 🐛  Bug Fix
