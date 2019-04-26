@@ -97,7 +97,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     const imageUrl = get(this.props, p => image.cropped.url)
     const showArtistInsightsButton =
       (artist.exhibition_highlights &&
-        artist.exhibition_highlights.length > 0) ||
+        artist.exhibition_highlights.length > 1) ||
       (artist.auctionResults && artist.auctionResults.edges.length > 0) ||
       (artist.collections && artist.collections.length > 0) ||
       (artist.highlights.partners &&
