@@ -53,8 +53,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
   render() {
     const { artwork } = this.props
 
-    console.log("SIZE SCORE", artwork.sizeScore)
-
     if (!artwork.pricingContext) {
       return null
     }
