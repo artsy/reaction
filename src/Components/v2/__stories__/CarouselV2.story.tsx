@@ -71,7 +71,7 @@ storiesOf("Styleguide/Components", module).add("CarouselV2", () => {
           <LargeCarousel
             data={images}
             height={300}
-            carouselSettings={{ wrapAround: true }}
+            settings={{ wrapAround: true }}
             render={props => {
               return (
                 <Image

@@ -48,7 +48,7 @@ interface Props {
   renderLeftArrow?: Arrow
   renderRightArrow?: Arrow
   onArrowClick?: () => void
-  carouselSettings?: FlickitySettings
+  settings?: FlickitySettings
 }
 
 export class Carousel extends React.Component<Props> {
@@ -111,7 +111,7 @@ export const LargeCarousel = (props: Props) => {
     })
   }
 
-  const carouselSettings = {
+  const settings = {
     draggable: false,
     freeScroll: false,
     wrapAround: false,
@@ -120,7 +120,7 @@ export const LargeCarousel = (props: Props) => {
     prevNextButtons: false,
     groupCells: true,
     contain: true,
-    ...props.carouselSettings,
+    ...props.settings,
   }
 
   const LeftArrow = () => {
@@ -156,7 +156,7 @@ export const LargeCarousel = (props: Props) => {
       alignItems="center"
       height={props.height}
     >
-      {(currentSlideIndex !== 0 || carouselSettings.wrapAround === true) && (
+      {(currentSlideIndex !== 0 || settings.wrapAround === true) && (
         <ArrowWrapper left={-38}>
           {props.renderLeftArrow ? (
             props.renderLeftArrow({
@@ -172,7 +172,7 @@ export const LargeCarousel = (props: Props) => {
 
       <CarouselContainer height={props.height}>
         {Flickity && (
-          <Flickity options={carouselSettings} ref={flicktyRef}>
+          <Flickity options={settings} ref={flicktyRef}>
             {props.data.map((slide, index) => {
               return <Box key={index}>{props.render(slide)}</Box>
             })}
@@ -180,7 +180,7 @@ export const LargeCarousel = (props: Props) => {
         )}
       </CarouselContainer>
 
-      {(!lastItemVisible || carouselSettings.wrapAround === true) && (
+      {(!lastItemVisible || settings.wrapAround === true) && (
         <ArrowWrapper right={-38}>
           {props.renderRightArrow ? (
             props.renderRightArrow({
@@ -198,21 +198,21 @@ export const LargeCarousel = (props: Props) => {
 }
 
 export const SmallCarousel = (props: Props) => {
-  const carouselSettings = {
+  const settings = {
     draggable: true,
     freeScroll: false,
     wrapAround: false,
     cellAlign: "left",
     pageDots: false,
     prevNextButtons: false,
-    ...props.carouselSettings,
+    ...props.settings,
   }
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
       <CarouselContainer height={props.height}>
         {Flickity && (
-          <Flickity options={carouselSettings}>
+          <Flickity options={settings}>
             {props.data.map((slide, index) => {
               return <Box key={index}>{props.render(slide)}</Box>
             })}

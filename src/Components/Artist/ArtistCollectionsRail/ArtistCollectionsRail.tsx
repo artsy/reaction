@@ -54,7 +54,7 @@ export class ArtistCollectionsRail extends React.Component<
 
           <Carousel
             height={200}
-            carouselSettings={{
+            settings={{
               groupCells: 1,
               wrapAround: true,
             }}
