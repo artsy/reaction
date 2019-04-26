@@ -23,17 +23,18 @@ describe("CollectionsRail", () => {
     }
   })
 
-  it("Renders expected fields", () => {
-    const component = getWrapper()
-    // Settimeout needed here for carousel render
-    setTimeout(() => {
-      expect(component.text()).toMatch("Browse by iconic collections")
-      expect(component.find(ArtistCollectionEntity).length).toBe(8)
-      expect(component.text()).toMatch("Flags")
-      expect(component.text()).toMatch("From $1,000")
-      expect(component.text()).toMatch("Street Art Now")
-      expect(component.text()).toMatch("From $200")
+  it("Renders expected fields", async () => {
+    const component = await mount(
+      <ArtistCollectionsRail {...props} />
+    ).renderUntil(n => {
+      return n.html().search("is-selected") > 0
     })
+    expect(component.text()).toMatch("Browse by iconic collections")
+    expect(component.find(ArtistCollectionEntity).length).toBe(8)
+    expect(component.text()).toMatch("Flags")
+    expect(component.text()).toMatch("From $1,000")
+    expect(component.text()).toMatch("Street Art Now")
+    expect(component.text()).toMatch("From $200")
   })
 
   it("Does not render carousel if less than 4 entries", () => {
