@@ -2,7 +2,7 @@ import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/CarouselV2"
 import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -54,9 +54,9 @@ export class ArtistCollectionsRail extends React.Component<
 
           <Carousel
             height={200}
-            settings={{
-              slidesToScroll: 1,
-              infinite: true,
+            options={{
+              groupCells: 1,
+              wrapAround: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
