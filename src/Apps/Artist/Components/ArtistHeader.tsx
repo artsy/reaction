@@ -102,7 +102,7 @@ export class LargeArtistHeader extends Component<Props> {
     return (
       <Box width="100%">
         {hasImages && (
-          <Fragment>
+          <section>
             <Carousel
               height={200}
               data={carousel.images as object[]}
@@ -119,10 +119,8 @@ export class LargeArtistHeader extends Component<Props> {
                 )
               }}
             />
-            <Spacer my={2} />
-          </Fragment>
+          </section>
         )}
-        <Spacer my={2} />
         <Spacer my={2} />
 
         <span id="jumpto-ArtistHeader" />
