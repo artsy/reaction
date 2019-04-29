@@ -3,6 +3,7 @@ import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import {
   Carousel,
+  CarouselServer,
   LargeCarousel,
   SmallCarousel,
 } from "Components/v2/CarouselV2"
@@ -53,6 +54,25 @@ storiesOf("Styleguide/Components", module).add("CarouselV2", () => {
           <LargeCarousel
             data={images}
             height={300}
+            render={props => {
+              return (
+                <Image
+                  px={5}
+                  src={props.resized.url}
+                  width={props.resized.width}
+                  height={props.resized.height}
+                />
+              )
+            }}
+          />
+        </Box>
+      </Section>
+      <Section title="CarouselServer: SSR carousel version">
+        <Box width="70%">
+          <CarouselServer
+            data={images}
+            height={300}
+            options={{ wrapAround: true }}
             render={props => {
               return (
                 <Image
