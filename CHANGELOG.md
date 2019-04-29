@@ -1,3 +1,20 @@
+# v16.5.8 (Mon Apr 29 2019)
+
+#### 🐛  Bug Fix
+
+- Updated copy for pricing context [#2309](https://github.com/artsy/reaction/pull/2309) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.0 [#2345](https://github.com/artsy/reaction/pull/2345) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.5.7 (Fri Apr 26 2019)
 
 #### 🐛  Bug Fix
