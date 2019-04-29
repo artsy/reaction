@@ -94,6 +94,7 @@ describe("PricingContext", () => {
 
   it("renders if there is data present", async () => {
     const wrapper = await getWrapper()
+    expect(wrapper.text()).toContain("Browse works in this category")
     expect(wrapper.text()).toContain(
       "Price ranges of small mocks by David Sheldrick"
     )
@@ -119,7 +120,7 @@ describe("PricingContext", () => {
       .at(0)
       .simulate("click")
     expect(wrapper.text()).toContain(
-      "This information represents retail prices for works on Artsy"
+      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
     )
   })
 
