@@ -80,7 +80,7 @@ const renderSlides = props => {
 /*
  * This version of the carousel is only rendered for SSR
  */
-const CarouselServer = (props: Props) => {
+export const CarouselServer = (props: Props) => {
   return (
     <Flex
       flexDirection="row"
@@ -104,7 +104,7 @@ const Flickity = isClient ? require("react-flickity-component") : () => null
 export const LargeCarousel = (props: Props) => {
   const [currentSlideIndex, setSlideIndex] = useState(0)
   const [lastItemVisible, setLastItemVisible] = useState(false)
-  const flicktyRef = useRef(null)
+  const flickityRef = useRef(null)
   const isMounted = useDidMount()
   let flickity = null
 
@@ -122,22 +122,21 @@ export const LargeCarousel = (props: Props) => {
    * We need to wait for the component to mount before using the flickity ref.
    * Flickity will only initialize after the component has rendered.
    */
-  if (isMounted) {
-    if (flicktyRef.current !== null) {
-      flickity = flicktyRef.current.flkty
-    }
-
+  if (isMounted && flickityRef.current !== null) {
+    flickity = flickityRef.current.flkty
     flickity.on("select", index => {
       setSlideIndex(index)
       checkLastItemVisible()
     })
   }
+
   const options = {
     draggable: false,
     freeScroll: false,
     wrapAround: false,
     cellAlign: "left",
     pageDots: false,
+    lazyLoad: true,
     prevNextButtons: false,
     groupCells: true,
     contain: true,
@@ -198,7 +197,7 @@ export const LargeCarousel = (props: Props) => {
       )}
 
       <CarouselContainer height={props.height}>
-        <Flickity options={options} ref={flicktyRef}>
+        <Flickity options={options} ref={flickityRef}>
           {renderSlides(props)}
         </Flickity>
       </CarouselContainer>
@@ -225,6 +224,7 @@ export const SmallCarousel = (props: Props) => {
     draggable: true,
     freeScroll: false,
     wrapAround: false,
+    lazyLoad: true,
     cellAlign: "left",
     pageDots: false,
     prevNextButtons: false,
