@@ -1,6 +1,5 @@
 import Events from "../Utils/Events"
-import { addDecorator, configure, addParameters } from "@storybook/react"
-import { withOptions } from "@storybook/addon-options"
+import { configure, addParameters } from "@storybook/react"
 import { createMediaStyle } from "Utils/Responsive"
 
 const req = require.context("../", true, /\.story\.tsx$/)
