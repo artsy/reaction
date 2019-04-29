@@ -6,6 +6,13 @@ export type ArticleLayout =
   | "video"
   | "news"
 
+export type ArticleAdType =
+  | "feature"
+  | "article"
+  | "newslanding"
+  | "sponsorlanding"
+  | "sponsorfeature"
+
 export type SectionLayout =
   | "blockquote"
   | "column_width"
