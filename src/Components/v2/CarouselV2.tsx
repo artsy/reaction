@@ -34,12 +34,25 @@ export class Carousel extends React.Component<Props> {
   static defaultProps = {
     height: 300,
   }
+  state = {
+    isMounted: false,
+  }
 
+  componentDidMount() {
+    this.setState({
+      isMounted: true,
+    })
+  }
+
+  /*
+   * If we don't check for isMounted, React will not properly clean up the
+   * CarouselServer component on initial render
+   */
   render() {
     return (
       <>
-        {isClient && (
-          <Box key={Math.random()}>
+        {isClient && this.state.isMounted && (
+          <Box key="client">
             <Media at="xs">
               <SmallCarousel {...this.props} />
             </Media>
@@ -48,8 +61,8 @@ export class Carousel extends React.Component<Props> {
             </Media>
           </Box>
         )}
-        {!isClient && (
-          <Box key={Math.random()}>
+        {!isClient && !this.state.isMounted && (
+          <Box key="server">
             <CarouselServer {...this.props} />
           </Box>
         )}
@@ -92,9 +105,7 @@ export const LargeCarousel = (props: Props) => {
   const [currentSlideIndex, setSlideIndex] = useState(0)
   const [lastItemVisible, setLastItemVisible] = useState(false)
   const flicktyRef = useRef(null)
-
   const isMounted = useDidMount()
-
   let flickity = null
 
   const checkLastItemVisible = () => {
@@ -121,7 +132,6 @@ export const LargeCarousel = (props: Props) => {
       checkLastItemVisible()
     })
   }
-
   const options = {
     draggable: false,
     freeScroll: false,
@@ -242,8 +252,8 @@ const ArrowWrapper = styled(Box)`
 
 const CarouselContainer = styled.div<{ height?: number }>`
   width: 100%;
+  position: relative;
   overflow: hidden;
-
   ${props => {
     if (props.height) {
       return `

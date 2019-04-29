@@ -122,6 +122,8 @@ export class LargeArtistHeader extends Component<Props> {
             <Spacer my={2} />
           </Fragment>
         )}
+        <Spacer my={2} />
+        <Spacer my={2} />
 
         <span id="jumpto-ArtistHeader" />
 
