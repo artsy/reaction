@@ -1,3 +1,21 @@
+# v16.6.0 (Mon Apr 29 2019)
+
+#### 🚀  Enhancement
+
+- Replaces Slick for Flickity in Carousel component [#2329](https://github.com/artsy/reaction/pull/2329) ([@kierangillen](https://github.com/kierangillen) [@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- [Toolchain] Fix deprecated Storybooks options [#2347](https://github.com/artsy/reaction/pull/2347) ([@damassi](https://github.com/damassi))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.5.8 (Mon Apr 29 2019)
 
 #### 🐛  Bug Fix
