@@ -68,6 +68,7 @@
     "@sentry/browser": "^4.2.3",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-options": "^5.0.11",
+    "@storybook/addon-viewport": "^5.0.11",
     "@storybook/addons": "^5.0.11",
     "@storybook/cli": "^5.0.11",
     "@storybook/react": "^5.0.11",
