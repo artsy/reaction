@@ -1,3 +1,15 @@
+# v16.6.2 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artist] don't trigger tracking event in control group [#2346](https://github.com/artsy/reaction/pull/2346) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
 # v16.6.1 (Tue Apr 30 2019)
 
 #### 🐛  Bug Fix
