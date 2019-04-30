@@ -244,11 +244,11 @@ Object {
     })
 
     expect(wrapper.find(BarChart).props().bars[1].label).toMatchInlineSnapshot(`
-      Object {
-        "description": "1 work",
-        "title": "$247+",
-      }
-      `)
+Object {
+  "description": "1 work",
+  "title": "$247+",
+}
+`)
   })
 
   describe("Analytics", () => {
