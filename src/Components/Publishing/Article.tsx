@@ -1,9 +1,10 @@
-import React from "react"
-import track, { TrackingProp } from "react-tracking"
-import Events from "../../Utils/Events"
-
 import { Theme } from "@artsy/palette"
+import React from "react"
+
+import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
+import Events from "../../Utils/Events"
+import { AdScript } from "./Ads/AdScript"
 import { BannerWrapper } from "./Banner/Banner"
 import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
@@ -112,6 +113,7 @@ export class Article extends React.Component<ArticleProps> {
       <MediaContextProvider>
         <Theme>
           <FullScreenProvider>
+            <AdScript article={article} />
             {this.getArticleLayout()}
             {trackingCode && (
               <PixelTracker unit={trackingCode} date={this.props.renderTime} />
