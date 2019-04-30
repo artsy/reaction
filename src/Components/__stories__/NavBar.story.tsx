@@ -4,16 +4,19 @@ import { storiesOf } from "storybook/storiesOf"
 import { Box } from "@artsy/palette"
 import { SystemContext, SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
+import * as Menus from "Components/NavBar/Menus"
 
 storiesOf("Components/NavBar", module)
-  .add("Logged Out", () => {
+  .add("Logged out", () => {
     return (
       <Box width="100%">
         <SystemContextProvider>
           <NavBar />
         </SystemContextProvider>
 
-        <PageCopy />
+        <Box mx={1}>
+          <PageCopy />
+        </Box>
       </Box>
     )
   })
@@ -29,7 +32,65 @@ storiesOf("Components/NavBar", module)
           <LoggedInNavBar />
         </SystemContextProvider>
 
-        <PageCopy />
+        <Box mx={1}>
+          <PageCopy />
+        </Box>
+      </Box>
+    )
+  })
+
+  .add(
+    "Mobile",
+    () => {
+      const LoggedInNavBar = () => {
+        const { user } = useContext(SystemContext)
+        return <NavBar user={user} />
+      }
+      return (
+        <Box width="100%">
+          <SystemContextProvider>
+            <LoggedInNavBar />
+          </SystemContextProvider>
+
+          <Box mx={1}>
+            <PageCopy />
+          </Box>
+        </Box>
+      )
+    },
+    {
+      viewport: {
+        defaultViewport: "iphonex",
+      },
+    }
+  )
+
+storiesOf("Components/NavBar/Menus", module)
+  .add("MoreNavMenu", () => {
+    return (
+      <Box width="100%">
+        <Menus.MoreNavMenu />
+      </Box>
+    )
+  })
+  .add("NotificationsMenu", () => {
+    return (
+      <Box width="100%">
+        <Menus.NotificationsMenu />
+      </Box>
+    )
+  })
+  .add("UserMenu", () => {
+    return (
+      <Box width="100%">
+        <Menus.UserMenu />
+      </Box>
+    )
+  })
+  .add("MobileNavMenu", () => {
+    return (
+      <Box width="100%">
+        <Menus.MobileNavMenu user={{}} />
       </Box>
     )
   })

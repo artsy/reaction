@@ -128,7 +128,7 @@ export const NavBar: React.FC<NavBarProps> = ({ user }) => {
         </NavSection>
       </NavBarContainer>
 
-      {showMobileMenu && <MobileNavMenu />}
+      {showMobileMenu && <MobileNavMenu user={user} />}
     </>
   )
 }

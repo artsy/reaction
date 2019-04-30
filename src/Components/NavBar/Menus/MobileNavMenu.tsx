@@ -1,6 +1,6 @@
 import { SystemContext } from "Artsy"
 import * as auth from "Components/NavBar/Utils/auth"
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import {
@@ -14,9 +14,9 @@ import {
   Serif,
 } from "@artsy/palette"
 
-export const MobileNavMenu = props => {
-  const { mediator, user } = useContext(SystemContext)
-  const [isLoggedIn] = useState(Boolean(user))
+export const MobileNavMenu: React.FC<{ user: User }> = ({ user }) => {
+  const { mediator } = useContext(SystemContext)
+  const isLoggedIn = Boolean(user)
 
   return (
     <MobileNavContainer px={2} py={1} width="100%" flexDirection="column">
