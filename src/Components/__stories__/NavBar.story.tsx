@@ -1,13 +1,27 @@
-import React, { useContext } from "react"
+import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
 import { Box } from "@artsy/palette"
-import { SystemContext, SystemContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 import * as Menus from "Components/NavBar/Menus"
 
 storiesOf("Components/NavBar", module)
   .add("Logged out", () => {
+    return (
+      <Box width="100%">
+        <SystemContextProvider user={null}>
+          <NavBar />
+        </SystemContextProvider>
+
+        <Box mx={1}>
+          <PageCopy />
+        </Box>
+      </Box>
+    )
+  })
+
+  .add("Logged in", () => {
     return (
       <Box width="100%">
         <SystemContextProvider>
@@ -21,35 +35,13 @@ storiesOf("Components/NavBar", module)
     )
   })
 
-  .add("Logged in", () => {
-    const LoggedInNavBar = () => {
-      const { user } = useContext(SystemContext)
-      return <NavBar user={user} />
-    }
-    return (
-      <Box width="100%">
-        <SystemContextProvider>
-          <LoggedInNavBar />
-        </SystemContextProvider>
-
-        <Box mx={1}>
-          <PageCopy />
-        </Box>
-      </Box>
-    )
-  })
-
   .add(
     "Mobile",
     () => {
-      const LoggedInNavBar = () => {
-        const { user } = useContext(SystemContext)
-        return <NavBar user={user} />
-      }
       return (
         <Box width="100%">
           <SystemContextProvider>
-            <LoggedInNavBar />
+            <NavBar />
           </SystemContextProvider>
 
           <Box mx={1}>
@@ -67,32 +59,16 @@ storiesOf("Components/NavBar", module)
 
 storiesOf("Components/NavBar/Menus", module)
   .add("MoreNavMenu", () => {
-    return (
-      <Box width="100%">
-        <Menus.MoreNavMenu />
-      </Box>
-    )
+    return <Menus.MoreNavMenu />
   })
   .add("NotificationsMenu", () => {
-    return (
-      <Box width="100%">
-        <Menus.NotificationsMenu />
-      </Box>
-    )
+    return <Menus.NotificationsMenu />
   })
   .add("UserMenu", () => {
-    return (
-      <Box width="100%">
-        <Menus.UserMenu />
-      </Box>
-    )
+    return <Menus.UserMenu />
   })
   .add("MobileNavMenu", () => {
-    return (
-      <Box width="100%">
-        <Menus.MobileNavMenu user={{}} />
-      </Box>
-    )
+    return <Menus.MobileNavMenu />
   })
 
 const PageCopy = () => {

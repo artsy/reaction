@@ -33,8 +33,8 @@ interface NavBarProps {
   user?: User
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ user }) => {
-  const { mediator } = useContext(SystemContext)
+export const NavBar: React.FC<NavBarProps> = () => {
+  const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
@@ -128,7 +128,7 @@ export const NavBar: React.FC<NavBarProps> = ({ user }) => {
         </NavSection>
       </NavBarContainer>
 
-      {showMobileMenu && <MobileNavMenu user={user} />}
+      {showMobileMenu && <MobileNavMenu />}
     </>
   )
 }

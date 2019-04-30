@@ -14,8 +14,8 @@ import {
   Serif,
 } from "@artsy/palette"
 
-export const MobileNavMenu: React.FC<{ user: User }> = ({ user }) => {
-  const { mediator } = useContext(SystemContext)
+export const MobileNavMenu: React.FC = () => {
+  const { mediator, user } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
 
   return (
