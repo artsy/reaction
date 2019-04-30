@@ -1,3 +1,15 @@
+# v16.6.5 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Artist Recommendations] Exclude artists with less than 7 for sale works [#2352](https://github.com/artsy/reaction/pull/2352) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.6.4 (Tue Apr 30 2019)
 
 #### 🏠  Internal
