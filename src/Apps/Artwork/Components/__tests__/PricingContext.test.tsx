@@ -55,6 +55,7 @@ const mockArtwork = {
   heightCm: 234,
   category: "Photography",
   edition_sets: [],
+  sizeScore: 30.4,
   pricingContext: mockPricingContext,
   priceCents: {
     min: 23455,
