@@ -1,3 +1,15 @@
+# v16.6.3 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- changed logic for displaying 'Show artist insights' button to account for minimum exhibitions [#2342](https://github.com/artsy/reaction/pull/2342) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.6.2 (Tue Apr 30 2019)
 
 #### 🐛  Bug Fix
