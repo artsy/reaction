@@ -1,17 +1,20 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 
+import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
-import { NavItem } from "./NavItem"
 
 import {
+  MobileNavMenu,
+  MobileToggleIcon,
   MoreNavMenu,
-  NotificationsMenuQueryRenderer as NotificationsMenu,
+  NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
-import { MobileNavMenu } from "./MobileNavMenu"
-import { MobileToggleIcon } from "./MobileNavMenu/MobileToggleIcon"
+import { NavItem } from "./NavItem"
+import { NotificationsBadge } from "./NotificationsBadge"
+import * as auth from "./Utils/auth"
 
 import {
   ArtsyMarkIcon,
@@ -26,9 +29,14 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-export const NavBar: React.FC = () => {
-  const [isLoggedIn, toggleLogin] = useState(true)
+interface NavBarProps {
+  user?: User
+}
+
+export const NavBar: React.FC<NavBarProps> = () => {
+  const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
+  const isLoggedIn = Boolean(user)
 
   return (
     <>
@@ -78,7 +86,7 @@ export const NavBar: React.FC = () => {
 
             {isLoggedIn && (
               <>
-                <NavItem Menu={NotificationsMenu}>
+                <NavItem Menu={NotificationsMenu} Overlay={NotificationsBadge}>
                   <BellIcon top={3} />
                 </NavItem>
                 <NavItem Menu={UserMenu}>
@@ -92,12 +100,12 @@ export const NavBar: React.FC = () => {
             <NavSection>
               <Button
                 variant="secondaryOutline"
-                onClick={() => toggleLogin(true)}
+                onClick={() => auth.login(mediator)}
               >
                 Log in
               </Button>
               <Spacer mr={1} />
-              <Button>Sign up</Button>
+              <Button onClick={() => auth.signup(mediator)}>Sign up</Button>
             </NavSection>
           )}
         </NavSection>

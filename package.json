@@ -109,6 +109,7 @@
     "cache-loader": "^1.2.2",
     "chalk": "^2.4.2",
     "concurrently": "^3.5.0",
+    "cookies-js": "^1.2.3",
     "core-js": "^2.5.7",
     "dd-trace": "^0.6.0",
     "dotenv": "^4.0.0",

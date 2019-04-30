@@ -4,13 +4,76 @@ import { storiesOf } from "storybook/storiesOf"
 import { Box } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
+import * as Menus from "Components/NavBar/Menus"
 
-storiesOf("Components/NavBar", module).add("NavBar", () => {
+storiesOf("Components/NavBar", module)
+  .add("Logged out", () => {
+    return (
+      <Box width="100%">
+        <SystemContextProvider user={null}>
+          <NavBar />
+        </SystemContextProvider>
+
+        <Box mx={1}>
+          <PageCopy />
+        </Box>
+      </Box>
+    )
+  })
+
+  .add("Logged in", () => {
+    return (
+      <Box width="100%">
+        <SystemContextProvider>
+          <NavBar />
+        </SystemContextProvider>
+
+        <Box mx={1}>
+          <PageCopy />
+        </Box>
+      </Box>
+    )
+  })
+
+  .add(
+    "Mobile",
+    () => {
+      return (
+        <Box width="100%">
+          <SystemContextProvider>
+            <NavBar />
+          </SystemContextProvider>
+
+          <Box mx={1}>
+            <PageCopy />
+          </Box>
+        </Box>
+      )
+    },
+    {
+      viewport: {
+        defaultViewport: "iphonex",
+      },
+    }
+  )
+
+storiesOf("Components/NavBar/Menus", module)
+  .add("MoreNavMenu", () => {
+    return <Menus.MoreNavMenu />
+  })
+  .add("NotificationsMenu", () => {
+    return <Menus.NotificationsMenu />
+  })
+  .add("UserMenu", () => {
+    return <Menus.UserMenu />
+  })
+  .add("MobileNavMenu", () => {
+    return <Menus.MobileNavMenu />
+  })
+
+const PageCopy = () => {
   return (
-    <Box width="100%">
-      <SystemContextProvider>
-        <NavBar />
-      </SystemContextProvider>
+    <>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nibh
         quis ex imperdiet tristique eu non nisl. Nullam dignissim ex vel
@@ -63,6 +126,6 @@ storiesOf("Components/NavBar", module).add("NavBar", () => {
         malesuada quam. Nulla et est laoreet, malesuada justo in, lacinia
         tellus. In mattis euismod mattis.
       </p>
-    </Box>
+    </>
   )
-})
+}
