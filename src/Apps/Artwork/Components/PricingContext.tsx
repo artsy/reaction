@@ -100,8 +100,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
         </Sans>
         <Flex>
           <Link
-            onClick={this.collectPageLinkClick.bind(
-              this,
+            onClick={this.collectPageLinkClick(
               artwork.pricingContext.appliedFilters.dimension,
               artwork.category,
               sizeScore,
