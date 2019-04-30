@@ -189,6 +189,7 @@ const mockArtwork: PricingContext_artwork = {
       },
     ],
     appliedFiltersDisplay: "Price ranges of large prints by Alex Katz",
+    appliedFilters: { dimension: "SMALL", category: "SCULPTURE" },
   },
 }
 
