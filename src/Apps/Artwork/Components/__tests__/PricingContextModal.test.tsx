@@ -34,10 +34,29 @@ describe("PricingContextModal", () => {
 
     component.find(Link)
 
-    expect(component.find(Link).length).toEqual(1)
-    expect(component.find(Link).props().href).toEqual(
-      "https://www.artsy.net/article/artsy-editorial-artworks-prices"
-    )
+    expect(
+      component
+        .find(Link)
+        .at(0)
+        .props().href
+    ).toEqual("https://www.artsy.net/article/artsy-editorial-artworks-prices")
+  })
+
+  it("renders the support mailto link", async () => {
+    const component = mount(<PricingContextModal />)
+    component
+      .find(QuestionCircleIcon)
+      .at(0)
+      .simulate("click")
+
+    component.find(Link)
+
+    expect(
+      component
+        .find(Link)
+        .at(1)
+        .props().href
+    ).toEqual("mailto:support@artsy.net")
   })
 
   it("opens the modal when the question mark icon is clicked", async () => {
