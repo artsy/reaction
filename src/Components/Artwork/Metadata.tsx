@@ -1,5 +1,4 @@
 import { Metadata_artwork } from "__generated__/Metadata_artwork.graphql"
-import { SystemContextConsumer } from "Artsy"
 import colors from "Assets/Colors"
 import { garamond } from "Assets/Fonts"
 import StyledTextLink from "Components/TextLink"
@@ -22,24 +21,15 @@ export class MetadataContainer extends React.Component<MetadataProps> {
     const { artwork, className, extended } = this.props
 
     return (
-      <SystemContextConsumer>
-        {({ user }) => {
-          const detailsContent = (
-            <div className={className}>
-              <Details
-                includeLinks={false}
-                showSaleLine={extended}
-                artwork={artwork}
-              />
-            </div>
-          )
-          return (
-            <StyledTextLink href={artwork.href}>
-              {detailsContent}
-            </StyledTextLink>
-          )
-        }}
-      </SystemContextConsumer>
+      <StyledTextLink href={artwork.href}>
+        <div className={className}>
+          <Details
+            includeLinks={false}
+            showSaleLine={extended}
+            artwork={artwork}
+          />
+        </div>
+      </StyledTextLink>
     )
   }
 }

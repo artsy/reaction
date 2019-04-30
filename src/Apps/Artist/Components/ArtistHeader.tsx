@@ -4,7 +4,7 @@ import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2"
+import { Carousel } from "Components/v2/CarouselV2"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -102,7 +102,7 @@ export class LargeArtistHeader extends Component<Props> {
     return (
       <Box width="100%">
         {hasImages && (
-          <Fragment>
+          <section>
             <Carousel
               height={200}
               data={carousel.images as object[]}
@@ -119,9 +119,9 @@ export class LargeArtistHeader extends Component<Props> {
                 )
               }}
             />
-            <Spacer my={2} />
-          </Fragment>
+          </section>
         )}
+        <Spacer my={2} />
 
         <span id="jumpto-ArtistHeader" />
 

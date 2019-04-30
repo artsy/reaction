@@ -1,3 +1,113 @@
+# v16.6.4 (Tue Apr 30 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.1 [#2350](https://github.com/artsy/reaction/pull/2350) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.6.3 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- changed logic for displaying 'Show artist insights' button to account for minimum exhibitions [#2342](https://github.com/artsy/reaction/pull/2342) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.6.2 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artist] don't trigger tracking event in control group [#2346](https://github.com/artsy/reaction/pull/2346) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
+# v16.6.1 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump reaction [#2349](https://github.com/artsy/reaction/pull/2349) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.6.0 (Mon Apr 29 2019)
+
+#### 🚀  Enhancement
+
+- Replaces Slick for Flickity in Carousel component [#2329](https://github.com/artsy/reaction/pull/2329) ([@kierangillen](https://github.com/kierangillen) [@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- [Toolchain] Fix deprecated Storybooks options [#2347](https://github.com/artsy/reaction/pull/2347) ([@damassi](https://github.com/damassi))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.5.8 (Mon Apr 29 2019)
+
+#### 🐛  Bug Fix
+
+- Updated copy for pricing context [#2309](https://github.com/artsy/reaction/pull/2309) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.0 [#2345](https://github.com/artsy/reaction/pull/2345) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.5.7 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- Remove the SystemContext around an Artwork metadata because it wasn't being used [#2246](https://github.com/artsy/reaction/pull/2246) ([@orta](https://github.com/orta) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Orta ([@orta](https://github.com/orta))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.5.6 (Fri Apr 26 2019)
+
+#### 🐛  Bug Fix
+
+- Update style for search results page skeleton
+
+Minor updates to the positioning of the skeleton. [#2344](https://github.com/artsy/reaction/pull/2344) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.5.5 (Fri Apr 26 2019)
 
 #### 🐛  Bug Fix

@@ -34,7 +34,7 @@ export type NotificationsMenuQuery = {
 query NotificationsMenuQuery {
   me {
     followsAndSaves {
-      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, for_sale: true, first: 10) {
+      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10) {
         edges {
           node {
             href
@@ -65,24 +65,18 @@ query NotificationsMenuQuery {
 const node: ConcreteRequest = (function(){
 var v0 = {
   "kind": "Literal",
-  "name": "for_sale",
-  "value": true,
-  "type": "Boolean"
-},
-v1 = {
-  "kind": "Literal",
   "name": "sort",
   "value": "PUBLISHED_AT_DESC",
   "type": "ArtworkSorts"
 },
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v3 = [
+v2 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -178,7 +172,7 @@ v3 = [
               }
             ]
           },
-          v2,
+          v1,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -228,7 +222,7 @@ return {
   "operationKind": "query",
   "name": "NotificationsMenuQuery",
   "id": null,
-  "text": "query NotificationsMenuQuery {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, for_sale: true, first: 10) {\n        edges {\n          node {\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            image {\n              resized(height: 40, width: 40) {\n                url\n              }\n            }\n            __id\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n    }\n    __id\n  }\n}\n",
+  "text": "query NotificationsMenuQuery {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10) {\n        edges {\n          node {\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            image {\n              resized(height: 40, width: 40) {\n                url\n              }\n            }\n            __id\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n    }\n    __id\n  }\n}\n",
   "metadata": {
     "connection": [
       {
@@ -272,18 +266,17 @@ return {
                 "kind": "LinkedField",
                 "alias": "notifications",
                 "name": "__WorksForYou_notifications_connection",
-                "storageKey": "__WorksForYou_notifications_connection(for_sale:true,sort:\"PUBLISHED_AT_DESC\")",
+                "storageKey": "__WorksForYou_notifications_connection(sort:\"PUBLISHED_AT_DESC\")",
                 "args": [
-                  v0,
-                  v1
+                  v0
                 ],
                 "concreteType": "FollowedArtistsArtworksGroupConnection",
                 "plural": false,
-                "selections": v3
+                "selections": v2
               }
             ]
           },
-          v2
+          v1
         ]
       }
     ]
@@ -315,7 +308,7 @@ return {
                 "kind": "LinkedField",
                 "alias": "notifications",
                 "name": "bundledArtworksByArtist",
-                "storageKey": "bundledArtworksByArtist(first:10,for_sale:true,sort:\"PUBLISHED_AT_DESC\")",
+                "storageKey": "bundledArtworksByArtist(first:10,sort:\"PUBLISHED_AT_DESC\")",
                 "args": [
                   {
                     "kind": "Literal",
@@ -323,12 +316,11 @@ return {
                     "value": 10,
                     "type": "Int"
                   },
-                  v0,
-                  v1
+                  v0
                 ],
                 "concreteType": "FollowedArtistsArtworksGroupConnection",
                 "plural": false,
-                "selections": v3
+                "selections": v2
               },
               {
                 "kind": "LinkedHandle",
@@ -341,24 +333,22 @@ return {
                     "value": 10,
                     "type": "Int"
                   },
-                  v0,
-                  v1
+                  v0
                 ],
                 "handle": "connection",
                 "key": "WorksForYou_notifications",
                 "filters": [
-                  "sort",
-                  "for_sale"
+                  "sort"
                 ]
               }
             ]
           },
-          v2
+          v1
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'c3646cbe7aa056d9fc254f0f74fb02dc';
+(node as any).hash = '7d7328bde406bc85565f0fd69969f3ea';
 export default node;
