@@ -34,6 +34,7 @@ const mockArtwork: PricingContext_artwork = {
   category: "Sculpture",
   heightCm: 302,
   widthCm: 302,
+  sizeScore: 30.2,
   priceCents: {
     min: 284243,
     max: 284244,
