@@ -40,8 +40,6 @@ export const upcomingLabel = (sale, now = moment()) => {
     is_preview: isPreview,
     registration_status,
     is_registration_closed: isRegistrationClosed,
-    isGalleryAuction: isGalleryAuction,
-    isBenefit: isBenefit,
   } = sale
 
   const isRegistered = !!registration_status
