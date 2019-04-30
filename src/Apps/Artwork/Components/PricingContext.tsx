@@ -44,7 +44,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
   @track({
     action_type: Schema.ActionType.Hover,
     flow: Schema.Flow.ArtworkPriceContext,
-    subject: Schema.Subject.BrowseWorks,
+    subject: Schema.Subject.HistogramBar,
     type: Schema.Type.Chart,
   })
   barchartHover() {
