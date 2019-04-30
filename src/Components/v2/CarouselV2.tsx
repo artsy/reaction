@@ -150,6 +150,7 @@ export const LargeCarousel = (props: Props) => {
           if (flickity) {
             flickity.previous()
           }
+          props.onArrowClick && props.onArrowClick()
         }}
       >
         <ChevronIcon direction="left" fill="black100" width={30} height={30} />
@@ -164,6 +165,7 @@ export const LargeCarousel = (props: Props) => {
           if (flickity) {
             flickity.next()
           }
+          props.onArrowClick && props.onArrowClick()
         }}
       >
         <ChevronIcon direction="right" fill="black100" width={30} height={30} />
