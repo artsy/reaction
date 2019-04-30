@@ -1,3 +1,15 @@
+# v16.6.1 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump reaction [#2349](https://github.com/artsy/reaction/pull/2349) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.6.0 (Mon Apr 29 2019)
 
 #### 🚀  Enhancement
