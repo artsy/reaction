@@ -16,6 +16,7 @@ jest.unmock("react-relay")
 const mockPricingContext = {
   appliedFiltersDisplay: "Price ranges of small mocks by David Sheldrick",
   filterDescription: `deprecated field`,
+  appliedFilters: { category: "PAINTING", dimension: "SMALL" },
   bins: [
     {
       maxPrice: "$88",
@@ -53,6 +54,7 @@ const mockArtwork = {
   widthCm: 234,
   heightCm: 234,
   category: "Photography",
+  edition_sets: [],
   pricingContext: mockPricingContext,
   priceCents: {
     min: 23455,
