@@ -47,6 +47,16 @@ describe("ArtistInfo", () => {
       expect(component.find("Button").length).toBe(0)
     })
 
+    it("Hides 'Show artist insights' button if exhibition count does not meet minimum", async () => {
+      const artist = cloneDeep(ArtistInfoFixture)
+      artist.highlights.partners = null
+      artist.collections = null
+      artist.auctionResults = null
+      artist.exhibition_highlights.length = 1
+      const component = getWrapper({ artist })
+      expect(component.find("Button").length).toBe(0)
+    })
+
     it("hides ArtistBio if no data", async () => {
       const artist = cloneDeep(ArtistInfoFixture)
       artist.biography_blurb.text = null
