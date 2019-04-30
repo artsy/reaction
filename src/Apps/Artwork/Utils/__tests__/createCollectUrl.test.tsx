@@ -9,6 +9,7 @@ jest.mock("sharify", () => ({
 describe("createCollectUrl", () => {
   it("formats the collect page url correctly (large)", async () => {
     const result = createCollectUrl({
+      dimension: "LARGE",
       category: "Painting",
       sizeScore: 5000,
       artistId: "evelyn-walg",
@@ -20,6 +21,7 @@ describe("createCollectUrl", () => {
   })
   it("formats the collect page url correctly (medium)", async () => {
     const result = createCollectUrl({
+      dimension: "MEDIUM",
       category: "Video/Film/Animation",
       sizeScore: 2000,
       artistId: "evelyn-walg",
@@ -32,6 +34,7 @@ describe("createCollectUrl", () => {
 
   it("formats the collect page url correctly (small)", async () => {
     const result = createCollectUrl({
+      dimension: "SMALL",
       category: "Drawing, Collage or other Work on Paper",
       sizeScore: 1000,
       artistId: "banksy",
@@ -42,8 +45,22 @@ describe("createCollectUrl", () => {
     )
   })
 
+  it("formats the collect page url correctly when not filtering by dimension", async () => {
+    const result = createCollectUrl({
+      dimension: null,
+      category: "Drawing, Collage or other Work on Paper",
+      sizeScore: 1000,
+      artistId: "banksy",
+    })
+
+    expect(result).toMatchInlineSnapshot(
+      `"https://staging.artsy.net/collect/drawing?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=%2A-%2A&artist_id=banksy"`
+    )
+  })
+
   it("doesn't specify category in some cases", () => {
     const result = createCollectUrl({
+      dimension: "SMALL",
       category: "Sound",
       sizeScore: 1000,
       artistId: "banksy",

@@ -38,9 +38,18 @@ fragment PricingContext_artwork on Artwork {
   }
   widthCm
   heightCm
+  sizeScore
   category
+  edition_sets {
+    sizeScore
+    __id
+  }
   pricingContext @include(if: $enablePricingContext) {
     appliedFiltersDisplay
+    appliedFilters {
+      dimension
+      category
+    }
     bins {
       maxPrice
       maxPriceCents
@@ -76,13 +85,27 @@ v2 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "sizeScore",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "category",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "PricingContextStoryQuery",
   "id": null,
-  "text": "query PricingContextStoryQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  widthCm\n  heightCm\n  category\n  pricingContext @include(if: $enablePricingContext) {\n    appliedFiltersDisplay\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextStoryQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  widthCm\n  heightCm\n  sizeScore\n  category\n  edition_sets {\n    sizeScore\n    __id\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -182,12 +205,20 @@ return {
             "args": null,
             "storageKey": null
           },
+          v3,
+          v4,
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "category",
+            "name": "edition_sets",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "EditionSet",
+            "plural": true,
+            "selections": [
+              v3,
+              v2
+            ]
           },
           v2,
           {
@@ -210,6 +241,25 @@ return {
                     "name": "appliedFiltersDisplay",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "appliedFilters",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "AnalyticsPriceContextFilterType",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "dimension",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      v4
+                    ]
                   },
                   {
                     "kind": "LinkedField",

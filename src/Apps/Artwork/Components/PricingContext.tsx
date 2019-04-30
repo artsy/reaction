@@ -44,7 +44,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
   @track({
     action_type: Schema.ActionType.Hover,
     flow: Schema.Flow.ArtworkPriceContext,
-    subject: Schema.Subject.HistogramBar,
+    subject: Schema.Subject.BrowseWorks,
     type: Schema.Type.Chart,
   })
   barchartHover() {
@@ -54,19 +54,32 @@ export class PricingContext extends React.Component<PricingContextProps> {
   @track({
     action_type: Schema.ActionType.Click,
     flow: Schema.Flow.ArtworkPriceContext,
-    subject: Schema.Subject.HistogramBar,
+    subject: Schema.Subject.BrowseWorks,
     type: Schema.Type.Chart,
   })
-  collectPageLinkClick() {
-    // I'm just for tracking!
+  collectPageLinkClick(dimension, category, sizeScore, artistId) {
+    const url = createCollectUrl({ dimension, category, sizeScore, artistId })
+    if (typeof window !== "undefined") {
+      window.open(url)
+    }
   }
 
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   render() {
     const { artwork } = this.props
-
     if (!artwork.pricingContext) {
       return null
+    }
+
+    let sizeScore
+
+    if (artwork.sizeScore != null) {
+      sizeScore = artwork.sizeScore
+    } else {
+      sizeScore = Math.max.apply(
+        Math,
+        artwork.edition_sets.map(editionSet => editionSet.sizeScore)
+      )
     }
 
     const priceCents = artwork.priceCents.max || artwork.priceCents.min
@@ -78,6 +91,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
       artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
         .maxPriceCents
 
+    const artistId = artwork.artists[0].id
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
@@ -86,12 +100,12 @@ export class PricingContext extends React.Component<PricingContextProps> {
         </Sans>
         <Flex>
           <Link
-            href={createCollectUrl(
+            onClick={collectPageLinkClick(
+              artwork.pricingContext.appliedFilters.dimension,
               artwork.category,
-              artwork.sizeScore,
-              artwork.artists[0].id
+              sizeScore,
+              artistId
             )}
-            onClick={this.collectPageLinkClick}
             color="black60"
           >
             <Sans size="2">Browse works in the category</Sans>
@@ -162,8 +176,15 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         heightCm
         sizeScore
         category
+        edition_sets {
+          sizeScore
+        }
         pricingContext @include(if: $enablePricingContext) {
           appliedFiltersDisplay
+          appliedFilters {
+            dimension
+            category
+          }
           bins {
             maxPrice
             maxPriceCents

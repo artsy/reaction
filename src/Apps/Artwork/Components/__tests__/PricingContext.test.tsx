@@ -1,4 +1,4 @@
-import { BarBox, BarChart, QuestionCircleIcon } from "@artsy/palette"
+import { BarBox, BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -241,11 +241,11 @@ Object {
     })
 
     expect(wrapper.find(BarChart).props().bars[1].label).toMatchInlineSnapshot(`
-Object {
-  "description": "1 work",
-  "title": "$247+",
-}
-`)
+      Object {
+        "description": "1 work",
+        "title": "$247+",
+      }
+      `)
   })
 
   describe("Analytics", () => {
@@ -277,6 +277,23 @@ Object {
         context_module: "Price Context",
         action_type: "Hover",
         subject: "Histogram Bar",
+        flow: "Artwork Price Context",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks clicks on 'Browse works in this category' link", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(Link)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Click",
+        subject: "Browse works in this category",
         flow: "Artwork Price Context",
         type: "Chart",
       })
