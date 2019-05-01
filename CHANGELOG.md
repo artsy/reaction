@@ -1,3 +1,20 @@
+# v16.6.6 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix notification count [#2358](https://github.com/artsy/reaction/pull/2358) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.3 [#2354](https://github.com/artsy/reaction/pull/2354) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.6.5 (Tue Apr 30 2019)
 
 #### 🐛  Bug Fix
