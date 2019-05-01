@@ -41,7 +41,7 @@ const filterCategories = {
   "Books and Portfolios": "",
   "Design/Decorative Art": "design",
   "Drawing, Collage or other Work on Paper": "drawing",
-  "Fashion Design and Wearable Art": "wearable art",
+  "Fashion Design and Wearable Art": "",
   Installation: "installation",
   Jewelry: "jewelry",
   "Mixed Media": "",
