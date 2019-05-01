@@ -247,7 +247,6 @@ const ArrowWrapper = styled.div<{
   top: 50%;
   transform: translateY(-50%);
   min-width: 30px;
-  z-index: 100;
   transition: opacity 0.25s;
   opacity: ${props => (props.showArrow ? 1 : 0)};
   pointer-events: ${props => (props.showArrow ? "auto" : "none")};
