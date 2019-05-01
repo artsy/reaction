@@ -32,10 +32,6 @@ const mockArtwork: PricingContext_artwork = {
   " $refType": null,
   artists: [{ id: "alex-katz" }],
   category: "Sculpture",
-  heightCm: 302,
-  widthCm: 302,
-  sizeScore: 30.2,
-  edition_sets: [],
   priceCents: {
     min: 284243,
     max: 284244,
