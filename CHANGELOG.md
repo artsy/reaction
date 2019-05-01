@@ -1,3 +1,15 @@
+# v16.6.8 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- Carousel arrows now fade and fixes first slide highlighting [#2359](https://github.com/artsy/reaction/pull/2359) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.6.7 (Wed May 01 2019)
 
 #### 🐛  Bug Fix
