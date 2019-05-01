@@ -69,12 +69,6 @@ return {
       "name": "cursor",
       "type": "String",
       "defaultValue": ""
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "min_forsale_artworks",
-      "type": "Int",
-      "defaultValue": 7
     }
   ],
   "selections": [
@@ -100,14 +94,7 @@ return {
           "alias": "artists",
           "name": "__ArtistRecommendations_artists_connection",
           "storageKey": null,
-          "args": [
-            {
-              "kind": "Variable",
-              "name": "min_forsale_artworks",
-              "variableName": "min_forsale_artworks",
-              "type": "Int"
-            }
-          ],
+          "args": null,
           "concreteType": "ArtistConnection",
           "plural": false,
           "selections": [
@@ -187,5 +174,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0338a2030afd88d1e5f725dd2cc91e5f';
+(node as any).hash = '0397f0ca0708ab154666916336a0334c';
 export default node;

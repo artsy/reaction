@@ -1,8 +1,6 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
-export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
 declare const _PricingContext_artwork$ref: unique symbol;
 export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
@@ -13,13 +11,11 @@ export type PricingContext_artwork = {
     readonly artists: ReadonlyArray<({
         readonly id: string;
     }) | null> | null;
+    readonly widthCm: number | null;
+    readonly heightCm: number | null;
     readonly category: string | null;
     readonly pricingContext?: ({
         readonly appliedFiltersDisplay: string | null;
-        readonly appliedFilters: {
-            readonly dimension: AnalyticsPricingContextDimensionEnum | null;
-            readonly category: AnalyticsPricingContextCategoryEnum | null;
-        };
         readonly bins: ReadonlyArray<{
             readonly maxPrice: string | null;
             readonly maxPriceCents: number;
@@ -38,13 +34,6 @@ var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "category",
   "args": null,
   "storageKey": null
 };
@@ -105,7 +94,27 @@ return {
         v0
       ]
     },
-    v1,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "widthCm",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "heightCm",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "category",
+      "args": null,
+      "storageKey": null
+    },
     v0,
     {
       "kind": "Condition",
@@ -127,25 +136,6 @@ return {
               "name": "appliedFiltersDisplay",
               "args": null,
               "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "appliedFilters",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "AnalyticsPriceContextFilterType",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "dimension",
-                  "args": null,
-                  "storageKey": null
-                },
-                v1
-              ]
             },
             {
               "kind": "LinkedField",
@@ -200,5 +190,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f5f637d4650367b22a69d88eea47c752';
+(node as any).hash = '7523c3f70dfcf4bddb51b2a485c4de70';
 export default node;
