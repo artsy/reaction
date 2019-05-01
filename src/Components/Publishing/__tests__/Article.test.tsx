@@ -120,9 +120,9 @@ it("renders the correct script in the AdScript component of a Standard Article",
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'article'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
       });
       </script>
     </div>"
@@ -139,9 +139,9 @@ it("renders the correct script in the AdScript component of an unsponsored Stand
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'article'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
       });
       </script>
     </div>"
@@ -158,9 +158,28 @@ it("renders the correct script in the AdScript component of a News Article", () 
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'newslanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'newslanding'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of an unsponsored Feature Article", () => {
+  const adScript = shallow(<AdScript article={UnsponsoredFeatureArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'feature'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
       });
       </script>
     </div>"
@@ -177,9 +196,9 @@ it("renders the correct script in the AdScript component of a sponsored Feature 
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'sponsorfeature'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'sponsorfeature'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
       });
       </script>
     </div>"
@@ -196,9 +215,9 @@ it("renders the correct script in the AdScript component of a sponsored Series A
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'sponsorlanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'sponsorlanding'); 
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
       });
       </script>
     </div>"
@@ -215,9 +234,9 @@ it("renders the correct script in the AdScript component of a sponsored Video Ar
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'sponsorlanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'sponsorlanding'); 
+      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); 
       });
       </script>
     </div>"
@@ -234,9 +253,9 @@ it("renders the correct script in the AdScript component of an unsponsored Video
       <script>
       htlbid.cmd = htlbid.cmd || [];
       htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
-      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); // output the ID of the post, article pages only
+      htlbid.setTargeting('is_testing', 'yes'); 
+      htlbid.setTargeting('page_type', 'article'); 
+      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); 
       });
       </script>
     </div>"

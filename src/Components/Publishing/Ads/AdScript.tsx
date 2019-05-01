@@ -26,6 +26,7 @@ export class AdScript extends Component<Props> {
         return ArticleAdType.Article
     }
   }
+
   isSponsored(article: ArticleData) {
     const { tracking_tags, sponsor } = article
 
@@ -43,24 +44,30 @@ export class AdScript extends Component<Props> {
 
     return sponsorPropsPresent ? true : false
   }
+
   render() {
     const { article } = this.props
+
+    // output 'yes' on stage, 'no' on prod
     const env =
       sd.NODE_ENV || (process.env && process.env.NODE_ENV) === "production"
         ? "no"
         : "yes"
+
+    // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
     const pageType = this.getArticleType(article)
+
+    // output the ID of the post, article pages only
+    const articleID = article.id
 
     const script = `
       <script>
-      htlbid.cmd = htlbid.cmd || [];
-      htlbid.cmd.push(function() {
-        htlbid.setTargeting('is_testing', '${env}'); // output 'yes' on stage, 'no' on prod
-        htlbid.setTargeting('page_type', '${pageType}'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
-        htlbid.setTargeting('post_id', '${
-          article.id
-        }'); // output the ID of the post, article pages only
-      });
+        htlbid.cmd = htlbid.cmd || [];
+        htlbid.cmd.push(function() {
+          htlbid.setTargeting('is_testing', '${env}'); 
+          htlbid.setTargeting('page_type', '${pageType}'); 
+          htlbid.setTargeting('post_id', '${articleID}'); 
+        });
       </script>
     `
 
