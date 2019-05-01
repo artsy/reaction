@@ -184,19 +184,17 @@ export const LargeCarousel = (props: Props) => {
       alignItems="center"
       height={props.height}
     >
-      {showLeftArrow && (
-        <ArrowWrapper left={-space(4)}>
-          {props.renderLeftArrow ? (
-            props.renderLeftArrow({
-              Arrow: LeftArrow,
-              getFlickity: flickity,
-              ...props,
-            })
-          ) : (
-            <LeftArrow />
-          )}
-        </ArrowWrapper>
-      )}
+      <ArrowWrapper left={-space(4)} showArrow={showLeftArrow}>
+        {props.renderLeftArrow ? (
+          props.renderLeftArrow({
+            Arrow: LeftArrow,
+            getFlickity: flickity,
+            ...props,
+          })
+        ) : (
+          <LeftArrow />
+        )}
+      </ArrowWrapper>
 
       <CarouselContainer height={props.height}>
         <Flickity options={options} ref={flickityRef}>
@@ -204,19 +202,17 @@ export const LargeCarousel = (props: Props) => {
         </Flickity>
       </CarouselContainer>
 
-      {showRightArrow && (
-        <ArrowWrapper right={-space(4)}>
-          {props.renderRightArrow ? (
-            props.renderRightArrow({
-              Arrow: RightArrow,
-              getFlickity: flickity,
-              ...props,
-            })
-          ) : (
-            <RightArrow />
-          )}
-        </ArrowWrapper>
-      )}
+      <ArrowWrapper right={-space(4)} showArrow={showRightArrow}>
+        {props.renderRightArrow ? (
+          props.renderRightArrow({
+            Arrow: RightArrow,
+            getFlickity: flickity,
+            ...props,
+          })
+        ) : (
+          <RightArrow />
+        )}
+      </ArrowWrapper>
     </Flex>
   )
 }
@@ -242,12 +238,18 @@ export const SmallCarousel = (props: Props) => {
   )
 }
 
-const ArrowWrapper = styled(Box)`
+const ArrowWrapper = styled.div<{
+  left?: number
+  right?: number
+  showArrow: boolean
+}>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   min-width: 30px;
-
+  transition: opacity 0.25s;
+  opacity: ${props => (props.showArrow ? 1 : 0)};
+  pointer-events: ${props => (props.showArrow ? "auto" : "none")};
   ${left};
   ${right};
 `
@@ -256,6 +258,13 @@ const CarouselContainer = styled.div<{ height?: number }>`
   width: 100%;
   position: relative;
   overflow: hidden;
+
+  .flickity-slider {
+    img {
+      user-select: none;
+    }
+  }
+
   ${props => {
     if (props.height) {
       return `
