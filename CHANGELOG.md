@@ -1,3 +1,15 @@
+# v16.6.7 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- updated tests [#2357](https://github.com/artsy/reaction/pull/2357) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.6.6 (Wed May 01 2019)
 
 #### 🐛  Bug Fix
