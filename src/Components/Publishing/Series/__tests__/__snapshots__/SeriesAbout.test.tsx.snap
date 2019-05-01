@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SeriesAbout snapshots Renders properly 1`] = `
+.c6 {
+  margin-bottom: 4px;
+}
+
+.c11 {
+  margin-top: 60px;
+}
+
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -16,7 +24,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,12 +80,23 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 .c7 {
+  display: block;
+}
+
+.c8 img {
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
+}
+
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -87,22 +106,22 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -113,32 +132,32 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -147,7 +166,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -160,7 +179,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -171,7 +190,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -180,15 +199,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c10 h2 .c12 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -198,7 +217,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -206,11 +225,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c10 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -223,11 +242,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -238,14 +257,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -253,7 +272,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -295,19 +314,19 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c6 {
+  .c9 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
@@ -349,38 +368,38 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -388,14 +407,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c10 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -403,7 +422,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
@@ -548,10 +567,26 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
-    />
+    >
+      <div
+        className="c6"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="c6"
+    className="c9"
     width={
       Array [
         1,
@@ -565,7 +600,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="article__text-section c10"
         color="black"
       >
         <div
@@ -579,12 +614,36 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     </div>
     <div
       className="rrm-container rrm-lessThan-md"
-    />
+    >
+      <div
+        className="c11"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
+.c6 {
+  margin-bottom: 4px;
+}
+
+.c11 {
+  margin-top: 60px;
+}
+
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -600,7 +659,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -656,12 +715,23 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 .c7 {
+  display: block;
+}
+
+.c8 img {
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
+}
+
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -671,22 +741,22 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -697,32 +767,32 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -731,7 +801,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -744,7 +814,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -755,7 +825,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -764,15 +834,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c10 h2 .c12 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -782,7 +852,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -790,11 +860,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c10 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -807,11 +877,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -822,14 +892,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -837,7 +907,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -879,19 +949,19 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c6 {
+  .c9 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
@@ -933,38 +1003,38 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -972,14 +1042,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c10 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -987,7 +1057,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
@@ -1132,10 +1202,26 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
-    />
+    >
+      <div
+        className="c6"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="c6"
+    className="c9"
     width={
       Array [
         1,
@@ -1146,7 +1232,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="article__text-section c7"
+      className="article__text-section c10"
       color="black"
     >
       <div>
@@ -1156,12 +1242,36 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     </div>
     <div
       className="rrm-container rrm-lessThan-md"
-    />
+    >
+      <div
+        className="c11"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
+.c6 {
+  margin-bottom: 4px;
+}
+
+.c11 {
+  margin-top: 60px;
+}
+
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1177,7 +1287,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1233,12 +1343,23 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 .c7 {
+  display: block;
+}
+
+.c8 img {
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
+}
+
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1248,22 +1369,22 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1274,32 +1395,32 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1308,7 +1429,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1321,7 +1442,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1332,7 +1453,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1341,15 +1462,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c10 h2 .c12 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1359,7 +1480,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1367,11 +1488,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c10 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1384,11 +1505,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1399,14 +1520,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1414,7 +1535,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1456,19 +1577,19 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c6 {
+  .c9 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c6 {
+  .c9 {
     width: 66.66666666666666%;
   }
 }
@@ -1510,38 +1631,38 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1549,14 +1670,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c10 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1564,7 +1685,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
@@ -1712,10 +1833,26 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     </div>
     <div
       className="rrm-container rrm-greaterThanOrEqual-md"
-    />
+    >
+      <div
+        className="c6"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="c6"
+    className="c9"
     width={
       Array [
         1,
@@ -1729,7 +1866,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="article__text-section c10"
         color="black"
       >
         <div
@@ -1743,7 +1880,23 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     </div>
     <div
       className="rrm-container rrm-lessThan-md"
-    />
+    >
+      <div
+        className="c11"
+      >
+        <div
+          className="PartnerBlock c7"
+        >
+          <div
+            className="c8"
+          >
+            <img
+              src={null}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

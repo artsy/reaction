@@ -59,6 +59,14 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-top: 40px;
 }
 
+.c82 {
+  margin-bottom: 4px;
+}
+
+.c86 {
+  margin-top: 60px;
+}
+
 .c32 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -108,7 +116,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   width: 100%;
 }
 
-.c82 {
+.c85 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,7 +261,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c83 {
+.c3 .c87 {
   margin: 0 20px;
 }
 
@@ -438,6 +446,17 @@ exports[`Video Layout matches the snapshot 1`] = `
   height: 40px;
 }
 
+.c83 {
+  display: block;
+}
+
+.c84 img {
+  max-width: 240px;
+  max-height: 40px;
+  object-fit: contain;
+  object-position: left;
+}
+
 .c46 {
   position: relative;
   width: 100%;
@@ -551,7 +570,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c46 h2 .c84 {
+.c46 h2 .c88 {
   background-position: bottom !important;
 }
 
@@ -1161,19 +1180,19 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c82 {
+  .c85 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c82 {
+  .c85 {
     width: 66.66666666666666%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c82 {
+  .c85 {
     width: 66.66666666666666%;
   }
 }
@@ -1331,7 +1350,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     font-size: 24px;
   }
 
-  .c3 .c83 {
+  .c3 .c87 {
     margin: 0 10px;
   }
 }
@@ -2583,10 +2602,26 @@ exports[`Video Layout matches the snapshot 1`] = `
               </div>
               <div
                 className="rrm-container rrm-greaterThanOrEqual-md"
-              />
+              >
+                <div
+                  className="c82"
+                >
+                  <div
+                    className="PartnerBlock c83"
+                  >
+                    <div
+                      className="c84"
+                    >
+                      <img
+                        src={null}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div
-              className="c82"
+              className="c85"
               width={
                 Array [
                   1,
@@ -2614,7 +2649,23 @@ exports[`Video Layout matches the snapshot 1`] = `
               </div>
               <div
                 className="rrm-container rrm-lessThan-md"
-              />
+              >
+                <div
+                  className="c86"
+                >
+                  <div
+                    className="PartnerBlock c83"
+                  >
+                    <div
+                      className="c84"
+                    >
+                      <img
+                        src={null}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
