@@ -132,25 +132,6 @@ it("renders the correct script in the AdScript component of a Standard Article",
   expect(adScript.html().replace(/\s/g, "")).toEqual(output)
 })
 
-it("renders the correct script in the AdScript component of an unsponsored Standard Article", () => {
-  const adScript = shallow(<AdScript article={StandardArticle} />)
-  const output = `
-    "<div id="htlbid-ad-script">
-      <script>
-      htlbid.cmd = htlbid.cmd || [];
-      htlbid.cmd.push(function() {
-      htlbid.setTargeting('is_testing', 'yes'); 
-      htlbid.setTargeting('page_type', 'article'); 
-      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); 
-      });
-      </script>
-    </div>"
-  `
-    .replace(/\s/g, "")
-    .slice(1, -1)
-  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
-})
-
 it("renders the correct script in the AdScript component of a News Article", () => {
   const adScript = shallow(<AdScript article={NewsArticle} />)
   const output = `
