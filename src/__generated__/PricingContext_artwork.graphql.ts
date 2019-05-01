@@ -13,13 +13,7 @@ export type PricingContext_artwork = {
     readonly artists: ReadonlyArray<({
         readonly id: string;
     }) | null> | null;
-    readonly widthCm: number | null;
-    readonly heightCm: number | null;
-    readonly sizeScore: number | null;
     readonly category: string | null;
-    readonly edition_sets: ReadonlyArray<({
-        readonly sizeScore: number | null;
-    }) | null> | null;
     readonly pricingContext?: ({
         readonly appliedFiltersDisplay: string | null;
         readonly appliedFilters: {
@@ -48,13 +42,6 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "sizeScore",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "category",
@@ -118,35 +105,7 @@ return {
         v0
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "widthCm",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "heightCm",
-      "args": null,
-      "storageKey": null
-    },
     v1,
-    v2,
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "edition_sets",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "EditionSet",
-      "plural": true,
-      "selections": [
-        v1,
-        v0
-      ]
-    },
     v0,
     {
       "kind": "Condition",
@@ -185,7 +144,7 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v2
+                v1
               ]
             },
             {
@@ -241,5 +200,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4ce85fddc2fa713dc976c1bb58c32f9e';
+(node as any).hash = 'f5f637d4650367b22a69d88eea47c752';
 export default node;

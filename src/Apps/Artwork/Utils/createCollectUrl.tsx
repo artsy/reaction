@@ -1,22 +1,21 @@
 import * as qs from "qs"
 import { data as sd } from "sharify"
 
-export const createCollectUrl = ({
-  dimension,
-  category,
-  sizeScore,
-  artistId,
-}) => {
+export const createCollectUrl = (
+  dimension: string,
+  category: string,
+  artistId: string
+) => {
   let dimensionRange
 
-  if (dimension === null) {
-    dimensionRange = "*-*"
-  } else if (sizeScore < 1600) {
+  if (dimension === "SMALL") {
     dimensionRange = "0-1600"
-  } else if (1600 < sizeScore && sizeScore < 4900) {
+  } else if (dimension === "MEDIUM") {
     dimensionRange = "1600-4900"
-  } else {
+  } else if (dimension === "LARGE") {
     dimensionRange = "4900-*"
+  } else {
+    dimensionRange = "*-*"
   }
 
   const query = qs.stringify({

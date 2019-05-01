@@ -57,8 +57,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
     subject: Schema.Subject.BrowseWorks,
     type: Schema.Type.Chart,
   })
-  collectPageLinkClick(dimension, category, sizeScore, artistId) {
-    const url = createCollectUrl({ dimension, category, sizeScore, artistId })
+  collectPageLinkClick(dimension, category, artistId) {
+    const url = createCollectUrl(dimension, category, artistId)
     if (typeof window !== "undefined") {
       window.open(url)
     }
@@ -71,16 +71,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
       return null
     }
 
-    let sizeScore
-
-    if (artwork.sizeScore != null) {
-      sizeScore = artwork.sizeScore
-    } else {
-      sizeScore = Math.max.apply(
-        Math,
-        artwork.edition_sets.map(editionSet => editionSet.sizeScore)
-      )
-    }
+    console.log("ARTWORK", artwork)
 
     const priceCents = artwork.priceCents.max || artwork.priceCents.min
 
@@ -104,7 +95,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
               this,
               artwork.pricingContext.appliedFilters.dimension,
               artwork.category,
-              sizeScore,
               artistId
             )}
             color="black60"
@@ -173,13 +163,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         artists {
           id
         }
-        widthCm
-        heightCm
-        sizeScore
         category
-        edition_sets {
-          sizeScore
-        }
         pricingContext @include(if: $enablePricingContext) {
           appliedFiltersDisplay
           appliedFilters {

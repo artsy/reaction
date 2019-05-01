@@ -36,14 +36,7 @@ fragment PricingContext_artwork on Artwork {
     id
     __id
   }
-  widthCm
-  heightCm
-  sizeScore
   category
-  edition_sets {
-    sizeScore
-    __id
-  }
   pricingContext @include(if: $enablePricingContext) {
     appliedFiltersDisplay
     appliedFilters {
@@ -89,13 +82,6 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "sizeScore",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "category",
   "args": null,
   "storageKey": null
@@ -105,7 +91,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  widthCm\n  heightCm\n  sizeScore\n  category\n  edition_sets {\n    sizeScore\n    __id\n  }\n  pricingContext @include(if: $enablePricingContext) {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery(\n  $enablePricingContext: Boolean!\n) {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext @include(if: $enablePricingContext) {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -191,35 +177,7 @@ return {
               v2
             ]
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "widthCm",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "heightCm",
-            "args": null,
-            "storageKey": null
-          },
           v3,
-          v4,
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "edition_sets",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "EditionSet",
-            "plural": true,
-            "selections": [
-              v3,
-              v2
-            ]
-          },
           v2,
           {
             "kind": "Condition",
@@ -258,7 +216,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v4
+                      v3
                     ]
                   },
                   {
