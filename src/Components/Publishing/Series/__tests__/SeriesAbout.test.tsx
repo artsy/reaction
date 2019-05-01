@@ -59,7 +59,6 @@ describe("SeriesAbout", () => {
 
     it("Does not render PartnerBlock for an unsponsored series", () => {
       const component = mount(<SeriesAbout article={SeriesArticle} />)
-      console.log(component.debug())
       expect(component.find(".PartnerBlock").length).toBe(0)
     })
 
