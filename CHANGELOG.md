@@ -1,3 +1,15 @@
+# v16.7.0 (Wed May 01 2019)
+
+#### 🚀  Enhancement
+
+- Fully roll out artist recommendations [#2360](https://github.com/artsy/reaction/pull/2360) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.6.8 (Wed May 01 2019)
 
 #### 🐛  Bug Fix

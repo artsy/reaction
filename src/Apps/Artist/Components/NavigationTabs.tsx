@@ -6,7 +6,6 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { userHasLabFeature } from "Utils/getUser"
 
 interface Props extends SystemContextProps {
   artist: NavigationTabs_artist
@@ -55,13 +54,9 @@ export class NavigationTabs extends React.Component<Props> {
     const {
       artist: { id, statuses },
       mediator,
-      user,
     } = this.props
 
     const route = path => `/artist/${id}${path}`
-
-    const showRelatedArtistsTab =
-      statuses.artists && !userHasLabFeature(user, "Artist Recommendations")
 
     return (
       <>
@@ -78,10 +73,6 @@ export class NavigationTabs extends React.Component<Props> {
           this.renderTab("Shows", route("/shows"), { mediator })}
         {statuses.auction_lots &&
           this.renderTab("Auction results", route("/auction-results"), {
-            mediator,
-          })}
-        {showRelatedArtistsTab &&
-          this.renderTab("Related artists", route("/related-artists"), {
             mediator,
           })}
       </>

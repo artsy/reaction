@@ -11,8 +11,6 @@ import {
   artistWithRelatedArtists,
   defaultArtist,
   OverviewRouteArtist,
-  userWithoutRecommendationsLabFeature,
-  userWithRecommendationsLabFeature,
 } from "./Index.fixture"
 
 // Mocking the ArtworkFilter component because we're not using it in these tests,
@@ -23,10 +21,7 @@ jest.mock("Apps/Artist/Routes/Overview/Components/ArtworkFilter", () => ({
 
 describe("OverviewRoute", () => {
   describe("Artist Recommendations", () => {
-    function getWrapper(
-      artistData: OverviewRouteArtist,
-      user: User = userWithRecommendationsLabFeature
-    ) {
+    function getWrapper(artistData: OverviewRouteArtist, user: User = {}) {
       return mount(
         <Provider inject={[{} as FilterState]}>
           <SystemContextProvider user={user}>
@@ -60,15 +55,6 @@ describe("OverviewRoute", () => {
       const wrapper = getWrapper(artistWithRelatedArtists)
 
       expect(wrapper.find(ArtistRecommendations).length).toEqual(1)
-    })
-
-    it("Does not display recommendations if there are related artists but user doesn`t have access", () => {
-      const wrapper = getWrapper(
-        artistWithRelatedArtists,
-        userWithoutRecommendationsLabFeature
-      )
-
-      expect(wrapper.find(ArtistRecommendations).length).toEqual(0)
     })
   })
 })
