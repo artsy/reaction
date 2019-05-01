@@ -28,7 +28,8 @@ export class AdScript extends Component<Props> {
   }
   isSponsored(article: ArticleData) {
     const { tracking_tags, sponsor } = article
-    if (tracking_tags.includes("sponsored")) {
+
+    if ((tracking_tags || []).includes("sponsored")) {
       return true
     }
 
@@ -37,14 +38,17 @@ export class AdScript extends Component<Props> {
       "partner_dark_logo",
       "partner_light_logo",
       "partner_logo_link",
-      "",
+      "pixel_tracking_code",
     ].some(prop => sponsor[prop] != null)
 
     return sponsorPropsPresent ? true : false
   }
   render() {
     const { article } = this.props
-    const env = sd.NODE_ENV || (process.env && process.env.NODE_ENV)
+    const env =
+      sd.NODE_ENV || (process.env && process.env.NODE_ENV) === "production"
+        ? "no"
+        : "yes"
     const pageType = this.getArticleType(article)
 
     const script = `

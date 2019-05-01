@@ -50,7 +50,7 @@ export interface ArticleData {
     url?: string
   }
   [x: string]: any
-  tracking_tags?: [string]
+  tracking_tags?: string[]
   sponsor?: {
     pixel_tracking_code?: string
     partner_logo_link?: string

@@ -6,11 +6,15 @@ import {
   FeatureArticle,
   NewsArticle,
   SeriesArticle,
+  SeriesArticleSponsored,
   SponsoredArticle,
   StandardArticle,
+  UnsponsoredFeatureArticle,
   VideoArticle,
+  VideoArticleSponsored,
 } from "../Fixtures/Articles"
 
+import { AdScript } from "../Ads/AdScript"
 import { BannerWrapper } from "../Banner/Banner"
 import { PixelTracker } from "../Display/ExternalTrackers"
 import { ArticleWithFullScreen } from "../Layouts/ArticleWithFullScreen"
@@ -107,4 +111,137 @@ it("does not render PixelTracker when there is no sponsor pixel tracking code", 
   const article = mount(<Article article={SeriesArticle} />)
 
   expect(article.find(PixelTracker).length).toBe(0)
+})
+
+it("renders the correct script in the AdScript component of a Standard Article", () => {
+  const adScript = shallow(<AdScript article={StandardArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of an unsponsored Standard Article", () => {
+  const adScript = shallow(<AdScript article={StandardArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of a News Article", () => {
+  const adScript = shallow(<AdScript article={NewsArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'newslanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of a sponsored Feature Article", () => {
+  const adScript = shallow(<AdScript article={FeatureArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'sponsorfeature'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of a sponsored Series Article", () => {
+  const adScript = shallow(<AdScript article={SeriesArticleSponsored} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'sponsorlanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '594a7e2254c37f00177c0ea9'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of a sponsored Video Article", () => {
+  const adScript = shallow(<AdScript article={VideoArticleSponsored} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'sponsorlanding'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
+})
+
+it("renders the correct script in the AdScript component of an unsponsored Video Article", () => {
+  const adScript = shallow(<AdScript article={VideoArticle} />)
+  const output = `
+    "<div id="htlbid-ad-script">
+      <script>
+      htlbid.cmd = htlbid.cmd || [];
+      htlbid.cmd.push(function() {
+      htlbid.setTargeting('is_testing', 'yes'); // output 'yes' on stage, 'no' on prod
+      htlbid.setTargeting('page_type', 'article'); // output 'feature', 'article', 'newslanding', 'sponsorlanding', 'sponsorfeature'
+      htlbid.setTargeting('post_id', '597b9f652d35b80017a2a6a7'); // output the ID of the post, article pages only
+      });
+      </script>
+    </div>"
+  `
+    .replace(/\s/g, "")
+    .slice(1, -1)
+  expect(adScript.html().replace(/\s/g, "")).toEqual(output)
 })
