@@ -1,11 +1,9 @@
-import React, { useContext } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import Slider from "react-slick"
+import React, { useContext } from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
@@ -16,7 +14,7 @@ export interface ImageBrowserProps {
 export class ArtworkImageBrowserContainer extends React.Component<
   ImageBrowserProps
 > {
-  slider: Slider
+  flickity = null
 
   render() {
     const { images, image, image_alt } = this.props.artwork
@@ -34,7 +32,9 @@ export class ArtworkImageBrowserContainer extends React.Component<
         />
         <ArtworkActions
           selectDefaultSlide={() => {
-            this.slider.slickGoTo(defaultImageIndex)
+            if (this.flickity) {
+              this.flickity.select(defaultImageIndex, false, true)
+            }
           }}
           artwork={this.props.artwork}
         />

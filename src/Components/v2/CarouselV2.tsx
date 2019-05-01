@@ -220,7 +220,7 @@ export const LargeCarousel = (props: Props) => {
 export const SmallCarousel = (props: Props) => {
   const options = {
     draggable: true,
-    freeScroll: false,
+    freeScroll: true,
     wrapAround: false,
     lazyLoad: true,
     cellAlign: "left",

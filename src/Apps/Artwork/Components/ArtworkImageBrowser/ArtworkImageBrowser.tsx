@@ -1,7 +1,7 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { Lightbox } from "Components/v2"
+import { Options as FlickityOptions } from "flickity"
 import React from "react"
-import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
@@ -10,8 +10,19 @@ import { Box, ChevronIcon, Col, color, Flex, Row } from "@artsy/palette"
 interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
-  sliderRef?(slider: Slider): void
+  flickityRef?: (flickityRef: Flickity) => void
 }
+
+interface ArtworkBrowserState {
+  isLocked?: boolean
+  mounted: boolean
+}
+
+/*
+ * Returns null if no window for SSR
+ */
+const isClient = typeof window !== "undefined"
+const Flickity = isClient ? require("react-flickity-component") : () => null
 
 export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
   return (
@@ -27,29 +38,72 @@ export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
 }
 
 export class LargeArtworkImageBrowser extends React.Component<
-  ArtworkBrowserProps
+  ArtworkBrowserProps,
+  ArtworkBrowserState
 > {
-  slider: Slider
+  state = { mounted: false }
 
-  setSliderRef = slider => {
-    this.slider = slider
-    if (this.props.sliderRef) {
-      this.props.sliderRef(slider)
+  flickity = null
+
+  options = {
+    prevNextButtons: false,
+    wrapAround: true,
+    pageDots: true,
+    cellAlign: "left",
+    draggable: false,
+    lazyLoad: true,
+  } as FlickityOptions
+
+  componentDidMount() {
+    this.setState({
+      mounted: true,
+    })
+    const { flickityRef } = this.props
+    if (this.flickity && flickityRef) {
+      flickityRef(this.flickity)
     }
   }
 
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => <PageIndicator />,
-      dots: true,
-      infinite: false,
-      lazyLoad: "ondemand",
-      speed: 0,
-      swipe: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
+  renderSlide = (image, hasMultipleImages) => {
+    return (
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        width="100%"
+        px={hasMultipleImages ? [2, 2, 0] : 0}
+        key={isClient + image.id}
+      >
+        <Lightbox
+          deepZoom={image.deepZoom}
+          enabled={image.is_zoomable}
+          isDefault={image.is_default}
+        >
+          <DesktopImage src={image.uri} width="100%" />
+        </Lightbox>
+      </Flex>
+    )
+  }
+
+  renderCarousel = hasMultipleImages => {
+    return (
+      <Flickity options={this.options} flickityRef={c => (this.flickity = c)}>
+        {this.props.images.map(image => {
+          return this.renderSlide(image, hasMultipleImages)
+        })}
+      </Flickity>
+    )
+  }
+
+  renderServerCarousel = hasMultipleImages => {
+    return (
+      <Flex>
+        {this.props.images.map((image, index) => {
+          const isFirstImage =
+            index === 0 ? this.renderSlide(image, hasMultipleImages) : null
+          return isFirstImage
+        })}
+      </Flex>
+    )
   }
 
   render() {
@@ -62,7 +116,7 @@ export class LargeArtworkImageBrowser extends React.Component<
             <Col sm={1}>
               <ArrowButton
                 direction="left"
-                onClick={() => this.slider.slickPrev()}
+                onClick={() => this.flickity.previous(false, true)}
               />
             </Col>
           )}
@@ -93,7 +147,7 @@ export class LargeArtworkImageBrowser extends React.Component<
             <Col sm={1}>
               <ArrowButton
                 direction="right"
-                onClick={() => this.slider.slickNext()}
+                onClick={() => this.flickity.next(false, true)}
               />
             </Col>
           )}
@@ -103,30 +157,74 @@ export class LargeArtworkImageBrowser extends React.Component<
   }
 }
 
-interface ArtworkBrowserState {
-  isLocked: boolean
-}
-
 export class SmallArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps,
   ArtworkBrowserState
 > {
   state = {
     isLocked: false,
+    mounted: false,
   }
 
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => <PageIndicator />,
-      dots: true,
-      infinite: false,
-      // TODO: Future optimization should it be needed
-      // lazyLoad: "ondemand",
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
+  flickity = null
+
+  options: FlickityOptions = {
+    prevNextButtons: false,
+    wrapAround: true,
+    draggable: true,
+    groupCells: 1,
+    pageDots: true,
+  }
+
+  componentWillMount() {
+    this.setState({
+      mounted: true,
+    })
+  }
+
+  renderCarousel = () => {
+    return (
+      <Flickity
+        options={this.options}
+        key="client"
+        flickityRef={c => (this.flickity = c)}
+      >
+        {this.props.images.map(image => {
+          return this.renderSlide(image)
+        })}
+      </Flickity>
+    )
+  }
+
+  renderServerCarousel = () => {
+    return (
+      <Box key="server">
+        {this.props.images.map((image, index) => {
+          const isFirstImage = index === 0 ? this.renderSlide(image) : null
+          return isFirstImage
+        })}
+      </Box>
+    )
+  }
+
+  renderSlide = image => {
+    return (
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        px={1}
+        key={image.id}
+        width="100%"
+      >
+        <Lightbox
+          deepZoom={image.deepZoom}
+          enabled={!this.state.isLocked && image.is_zoomable}
+          isDefault={image.is_default}
+        >
+          <ResponsiveImage src={image.uri} width="100%" />
+        </Lightbox>
+      </Flex>
+    )
   }
 
   render() {
@@ -186,19 +284,32 @@ const ArrowButtonContainer = styled(Flex)`
 const Container = styled(Box)`
   user-select: none;
 
-  .slick-dots li {
-    width: 2px;
-    color: ${color("black10")};
+  .flickity-viewport {
+    overflow: hidden;
+  }
 
-    &.slick-active > span {
-      color: ${color("black100")};
-    }
+  .flickity-slider > div {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 
-    button {
-      &::before {
-        font-size: 5px;
-      }
-    }
+  .flickity-page-dots {
+    text-align: center;
+    height: 0;
+    padding-top: ${space(1)}px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: ${space(0.5)}px;
+    background-color: ${color("black10")};
+  }
+
+  .dot.is-selected {
+    background-color: ${color("black100")};
   }
 `
 
