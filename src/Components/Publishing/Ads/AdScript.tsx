@@ -34,6 +34,10 @@ export class AdScript extends Component<Props> {
       return true
     }
 
+    if (!sponsor) {
+      return false
+    }
+
     const sponsorPropsPresent = [
       "partner_condensed_logo",
       "partner_dark_logo",
