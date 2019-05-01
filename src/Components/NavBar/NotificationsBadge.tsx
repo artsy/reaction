@@ -1,11 +1,11 @@
 import cookie from "cookies-js"
-import React from "react"
+import React, { useContext } from "react"
 import { ReadyState } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 
 import { color, Flex, Sans } from "@artsy/palette"
 
+import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
@@ -73,7 +73,8 @@ const CircularCount: React.FC<{ notifications?: string }> = ({
 }) => {
   // Check to see if we've got a value from sharify, populated by a cookie on
   // the server.
-  const notificationsLabel = notifications || sd.NOTIFICATION_COUNT
+  const { notificationCount } = useContext(SystemContext)
+  const notificationsLabel = notifications || notificationCount
 
   if (!notificationsLabel) {
     return null
