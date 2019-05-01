@@ -9,7 +9,6 @@ import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articl
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { OverviewRouteFragmentContainer as OverviewRoute } from "./Routes/Overview"
-import { RelatedArtistsRouteFragmentContainer as RelatedArtistsRoute } from "./Routes/RelatedArtists"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // @ts-ignore
@@ -149,17 +148,6 @@ export const routes: RouteConfig[] = [
           query routes_AuctionResultsQuery($artistID: String!) {
             artist(id: $artistID) {
               ...AuctionResults_artist
-            }
-          }
-        `,
-      },
-      {
-        path: "related-artists",
-        Component: RelatedArtistsRoute,
-        query: graphql`
-          query routes_RelatedArtistsQuery($artistID: String!) {
-            viewer {
-              ...RelatedArtists_viewer
             }
           }
         `,

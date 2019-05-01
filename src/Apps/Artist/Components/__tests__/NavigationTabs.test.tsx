@@ -38,22 +38,9 @@ describe("ArtistHeader", async () => {
     expect(html).toContain("/artist/andy-warhol/shows")
     expect(html).toContain("CV")
     expect(html).toContain("/artist/andy-warhol/cv")
-    expect(html).toContain("Related artists")
-    expect(html).toContain("/artist/andy-warhol/related-artists")
     expect(html).toContain("Auction results")
     expect(html).toContain("/artist/andy-warhol/auction-results")
     expect(html).not.toContain("Articles")
     expect(html).not.toContain("/artist/andy-warhol/articles")
-  })
-
-  it("doesnt render 'Related Artists' when the lab feature is present", async () => {
-    const wrapper = await getWrapper(undefined, {
-      user: { lab_features: ["Artist Recommendations"] },
-    })
-    const html = wrapper.html()
-    expect(html).toContain("Shows")
-    expect(html).toContain("/artist/andy-warhol/shows")
-    expect(html).not.toContain("Related artists")
-    expect(html).not.toContain("/artist/andy-warhol/related-artists")
   })
 })
