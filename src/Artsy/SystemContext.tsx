@@ -35,6 +35,11 @@ export interface SystemContextProps {
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   user?: User
+
+  /**
+   * FIXME: Ask alloy how to pass one-off props like this in from force
+   */
+  notificationCount?: number
 }
 
 export const SystemContext = React.createContext<SystemContextProps>({})

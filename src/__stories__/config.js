@@ -1,6 +1,5 @@
 import Events from "../Utils/Events"
-import { addDecorator, configure } from "@storybook/react"
-import { withOptions } from "@storybook/addon-options"
+import { configure, addParameters } from "@storybook/react"
 import { createMediaStyle } from "Utils/Responsive"
 
 const req = require.context("../", true, /\.story\.tsx$/)
@@ -14,14 +13,12 @@ const rrmStyle = document.createElement("style")
 rrmStyle.innerHTML = createMediaStyle()
 document.head.appendChild(rrmStyle)
 
-addDecorator(
-  withOptions({
-    inline: true,
-    name: "Reaction",
-    showAddonPanel: false,
-    sortStoriesByKind: true,
-  })
-)
+addParameters({
+  inline: true,
+  brandTitle: "Reaction",
+  showAddonPanel: false,
+  sortStoriesByKind: true,
+})
 
 setTimeout(() => {
   configure(loadStories, module)

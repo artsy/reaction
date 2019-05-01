@@ -14,18 +14,18 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import React, { Component } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { data as sd } from "sharify"
-import { get } from "Utils/get"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
-
 import {
   ArtistBioFragmentContainer as ArtistBio,
   ArtistMarketInsightsFragmentContainer as ArtistMarketInsights,
   SelectedExhibitionFragmentContainer as SelectedExhibitions,
 } from "Components/v2"
+import { MIN_EXHIBITIONS } from "Components/v2/SelectedExhibitions"
+import React, { Component } from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { data as sd } from "sharify"
 import Events from "Utils/Events"
+import { get } from "Utils/get"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -97,7 +97,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     const imageUrl = get(this.props, p => image.cropped.url)
     const showArtistInsightsButton =
       (artist.exhibition_highlights &&
-        artist.exhibition_highlights.length > 0) ||
+        artist.exhibition_highlights.length >= MIN_EXHIBITIONS) ||
       (artist.auctionResults && artist.auctionResults.edges.length > 0) ||
       (artist.collections && artist.collections.length > 0) ||
       (artist.highlights.partners &&

@@ -79,7 +79,9 @@ export class PricingContextModal extends React.Component<State> {
             including the artist's relative position in the art market and the
             artwork's size, condition, rarity, and subject matter. These factors
             are unique to every artwork. As such, this feature is not intended
-            to provide pricing guidance for the artwork being viewed.
+            to provide pricing guidance for the artwork being viewed. If you
+            have feedback or questions{" "}
+            <Link href="mailto:support@artsy.net">let us know</Link>.
           </Serif>
           <Spacer mt={2} />
         </Modal>

@@ -2,11 +2,12 @@ import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/CarouselV2"
 import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
@@ -21,6 +22,30 @@ interface ArtistCollectionsRailProps {
 export class ArtistCollectionsRail extends React.Component<
   ArtistCollectionsRailProps
 > {
+  componentDidMount() {
+    if (this.props.collections && this.props.collections.length > 0) {
+      this.trackingCollectionsRailTest()
+    }
+  }
+
+  @track(() => {
+    // TODO: remove after CollectionsRail a/b test
+    const experiment = "artist_collections_rail"
+    const variation = sd.ARTIST_COLLECTIONS_RAIL
+
+    return {
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    }
+  })
+  trackingCollectionsRailTest() {
+    // no-op
+  }
+
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,
@@ -54,9 +79,9 @@ export class ArtistCollectionsRail extends React.Component<
 
           <Carousel
             height={200}
-            settings={{
-              slidesToScroll: 1,
-              infinite: true,
+            options={{
+              groupCells: 1,
+              wrapAround: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider

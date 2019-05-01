@@ -94,12 +94,16 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 3 }
           cursor: { type: "String", defaultValue: "" }
+          min_forsale_artworks: { type: "Int", defaultValue: 7 }
         ) {
         id
         name
         related {
-          artists(first: $count, after: $cursor)
-            @connection(key: "ArtistRecommendations_artists") {
+          artists(
+            first: $count
+            after: $cursor
+            min_forsale_artworks: $min_forsale_artworks
+          ) @connection(key: "ArtistRecommendations_artists") {
             pageInfo {
               hasNextPage
             }

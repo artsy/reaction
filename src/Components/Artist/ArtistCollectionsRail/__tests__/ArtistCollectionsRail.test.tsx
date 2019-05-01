@@ -1,6 +1,6 @@
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
-import { ArrowButton } from "Components/v2/Carousel"
+import { ArrowButton } from "Components/v2/CarouselV2"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { drop } from "lodash"
@@ -23,8 +23,12 @@ describe("CollectionsRail", () => {
     }
   })
 
-  it("Renders expected fields", () => {
-    const component = getWrapper()
+  it("Renders expected fields", async () => {
+    const component = await mount(
+      <ArtistCollectionsRail {...props} />
+    ).renderUntil(n => {
+      return n.html().search("is-selected") > 0
+    })
     expect(component.text()).toMatch("Browse by iconic collections")
     expect(component.find(ArtistCollectionEntity).length).toBe(8)
     expect(component.text()).toMatch("Flags")
@@ -64,13 +68,15 @@ describe("CollectionsRail", () => {
         .find(ArrowButton)
         .at(1)
         .simulate("click")
-
-      expect(dispatch).toBeCalledWith({
-        action_type: "Click",
-        context_module: "CollectionsRail",
-        context_page_owner_type: "Artist",
-        subject: "clicked next button",
-        type: "Button",
+      // Settimeout needed here for carousel render
+      setTimeout(() => {
+        expect(dispatch).toBeCalledWith({
+          action_type: "Click",
+          context_module: "CollectionsRail",
+          context_page_owner_type: "Artist",
+          subject: "clicked next button",
+          type: "Button",
+        })
       })
     })
   })

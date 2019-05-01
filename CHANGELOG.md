@@ -1,3 +1,122 @@
+# v16.6.8 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- Carousel arrows now fade and fixes first slide highlighting [#2359](https://github.com/artsy/reaction/pull/2359) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.6.7 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- updated tests [#2357](https://github.com/artsy/reaction/pull/2357) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.6.6 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix notification count [#2358](https://github.com/artsy/reaction/pull/2358) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.3 [#2354](https://github.com/artsy/reaction/pull/2354) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.6.5 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Artist Recommendations] Exclude artists with less than 7 for sale works [#2352](https://github.com/artsy/reaction/pull/2352) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.6.4 (Tue Apr 30 2019)
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.1 [#2350](https://github.com/artsy/reaction/pull/2350) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 1
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.6.3 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- changed logic for displaying 'Show artist insights' button to account for minimum exhibitions [#2342](https://github.com/artsy/reaction/pull/2342) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.6.2 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artist] don't trigger tracking event in control group [#2346](https://github.com/artsy/reaction/pull/2346) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
+# v16.6.1 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump reaction [#2349](https://github.com/artsy/reaction/pull/2349) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.6.0 (Mon Apr 29 2019)
+
+#### 🚀  Enhancement
+
+- Replaces Slick for Flickity in Carousel component [#2329](https://github.com/artsy/reaction/pull/2329) ([@kierangillen](https://github.com/kierangillen) [@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- [Toolchain] Fix deprecated Storybooks options [#2347](https://github.com/artsy/reaction/pull/2347) ([@damassi](https://github.com/damassi))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.5.8 (Mon Apr 29 2019)
 
 #### 🐛  Bug Fix
