@@ -57,8 +57,16 @@ export class PricingContext extends React.Component<PricingContextProps> {
     subject: Schema.Subject.BrowseWorks,
     type: Schema.Type.Chart,
   })
-  collectPageLinkClick(dimension, category, artistId) {
-    const url = createCollectUrl(dimension, category, artistId)
+  collectPageLinkClick({
+    dimension,
+    category,
+    artistId,
+  }: {
+    dimension: "SMALL" | "MEDIUM" | "LARGE" | null
+    category: keyof typeof filterCategories
+    artistId: string
+  }) {
+    const url = createCollectUrl({ dimension, category, artistId })
     if (typeof window !== "undefined") {
       window.open(url)
     }
@@ -89,12 +97,11 @@ export class PricingContext extends React.Component<PricingContextProps> {
         </Sans>
         <Flex>
           <Link
-            onClick={this.collectPageLinkClick.bind(
-              this,
-              artwork.pricingContext.appliedFilters.dimension,
-              artwork.category,
-              artistId
-            )}
+            onClick={this.collectPageLinkClick.bind(this, {
+              dimension: artwork.pricingContext.appliedFilters.dimension,
+              category: artwork.category,
+              artistId,
+            })}
             color="black60"
           >
             <Sans size="2">Browse works in this category</Sans>

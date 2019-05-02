@@ -1,11 +1,15 @@
 import * as qs from "qs"
 import { data as sd } from "sharify"
 
-export const createCollectUrl = (
-  dimension: "SMALL" | "MEDIUM" | "LARGE" | null,
-  category: keyof typeof filterCategories,
+export const createCollectUrl = ({
+  dimension,
+  category,
+  artistId,
+}: {
+  dimension: "SMALL" | "MEDIUM" | "LARGE" | null
+  category: keyof typeof filterCategories
   artistId: string
-) => {
+}) => {
   let dimensionRange
 
   if (dimension === "SMALL") {
