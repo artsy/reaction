@@ -19,18 +19,17 @@ export class ArtworkImageBrowserContainer extends React.Component<
   slider: Slider
 
   render() {
-    const { images, image, title } = this.props.artwork
+    const { images, image, image_alt } = this.props.artwork
     if (!images.length) {
       return null
     }
 
     const defaultImageIndex = images.findIndex(e => e.id === image.id)
-
     return (
       <>
         <ArtworkImageBrowser
           images={images}
-          title={title}
+          imageAlt={image_alt}
           sliderRef={slider => (this.slider = slider)}
         />
         <ArtworkActions
@@ -52,7 +51,6 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       title
       image_alt: to_s
       image_title
-      href
 
       ...ArtworkActions_artwork
       image {

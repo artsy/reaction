@@ -44,7 +44,7 @@ export interface DeepZoomProps {
 }
 
 export interface LightboxProps {
-  title: string
+  imageAlt: string
   deepZoom: DeepZoomProps
   enabled?: boolean
   isDefault?: boolean
@@ -278,7 +278,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   render() {
-    const { children, enabled, isDefault, title } = this.props
+    const { children, enabled, isDefault, imageAlt } = this.props
 
     // Only render client-side
     if (!this.state.element) {
@@ -301,7 +301,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
             >
               <StyledImage
                 src={src}
-                alt={title}
+                alt={imageAlt}
                 data-type="artwork-image"
                 data-is-default={isDefault}
               />

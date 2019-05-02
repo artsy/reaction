@@ -16,7 +16,7 @@ import {
 } from "@artsy/palette"
 
 interface ArtworkBrowserProps {
-  title: string
+  imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
   sliderRef?(slider: Slider): void
 }
@@ -62,7 +62,7 @@ export class LargeArtworkImageBrowser extends React.Component<
 
   render() {
     const hasMultipleImages = this.props.images.length > 1
-
+    const { imageAlt, images } = this.props
     return (
       <Container>
         <Row>
@@ -76,7 +76,7 @@ export class LargeArtworkImageBrowser extends React.Component<
           )}
           <Col sm={hasMultipleImages ? 10 : 12}>
             <Slider {...this.settings} ref={this.setSliderRef}>
-              {this.props.images.map(image => {
+              {images.map(image => {
                 return (
                   <Flex
                     flexDirection="column"
@@ -85,7 +85,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                     key={image.id}
                   >
                     <Lightbox
-                      title={this.props.title}
+                      imageAlt={imageAlt}
                       deepZoom={image.deepZoom}
                       enabled={image.is_zoomable}
                       isDefault={image.is_default}
@@ -150,7 +150,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                 key={image.id}
               >
                 <Lightbox
-                  title={this.props.title}
+                  imageAlt={this.props.imageAlt}
                   deepZoom={image.deepZoom}
                   enabled={!this.state.isLocked && image.is_zoomable}
                   isDefault={image.is_default}

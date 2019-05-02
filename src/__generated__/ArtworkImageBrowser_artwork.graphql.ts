@@ -8,7 +8,6 @@ export type ArtworkImageBrowser_artwork = {
     readonly title: string | null;
     readonly image_alt: string | null;
     readonly image_title: string | null;
-    readonly href: string | null;
     readonly image: ({
         readonly id: string | null;
         readonly url: string | null;
@@ -77,13 +76,6 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "image_title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
       "args": null,
       "storageKey": null
     },
@@ -310,5 +302,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ea796b002acd42f0cb9b16030a95481a';
+(node as any).hash = '5c7755bef56a6a5161a3ddbe9848f1f9';
 export default node;
