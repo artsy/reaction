@@ -63,7 +63,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
     artistId,
   }: {
     dimension: "SMALL" | "MEDIUM" | "LARGE" | null
-    category: string
+    category: keyof typeof filterCategories
     artistId: string
   }) {
     const url = createCollectUrl({ dimension, category, artistId })
@@ -154,6 +154,28 @@ export class PricingContext extends React.Component<PricingContextProps> {
       </BorderBox>
     )
   }
+}
+
+const filterCategories = {
+  Architecture: "",
+  "Books and Portfolios": "",
+  "Design/Decorative Art": "design",
+  "Drawing, Collage or other Work on Paper": "drawing",
+  "Fashion Design and Wearable Art": "",
+  Installation: "installation",
+  Jewelry: "jewelry",
+  "Mixed Media": "",
+  Other: "",
+  Painting: "painting",
+  "Performance Art": "performance-art",
+  Photography: "photography",
+  Posters: "",
+  Print: "prints",
+  Sculpture: "sculpture",
+  Sound: "",
+  "Textile Arts": "",
+  "Video/Film/Animation": "film-slash-video",
+  "Work on Paper": "work-on-paper",
 }
 
 export const PricingContextFragmentContainer = createFragmentContainer(
