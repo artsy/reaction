@@ -1,5 +1,4 @@
 import {
-  color,
   Link,
   QuestionCircleIcon,
   Serif,
@@ -98,10 +97,5 @@ export class PricingContextModal extends React.Component<State> {
 }
 
 const StyledQuestionCircleIcon = styled(QuestionCircleIcon)`
-  fill: ${color("black60")};
-
-  &:hover {
-    fill: ${color("black100")};
-    cursor: pointer;
-  }
+  cursor: pointer;
 `
