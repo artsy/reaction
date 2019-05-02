@@ -46,7 +46,7 @@ export class PricingContextModal extends React.Component<State> {
 
   render() {
     return (
-      <Box height="10px">
+      <Box height="15px">
         <Modal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
