@@ -1,3 +1,20 @@
+# v16.7.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Add Script to Support Ads Hosted on Hashtag Labs' Ad Server [#2361](https://github.com/artsy/reaction/pull/2361) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.4 [#2362](https://github.com/artsy/reaction/pull/2362) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.7.0 (Wed May 01 2019)
 
 #### 🚀  Enhancement
