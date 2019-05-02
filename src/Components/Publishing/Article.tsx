@@ -113,8 +113,8 @@ export class Article extends React.Component<ArticleProps> {
       <MediaContextProvider>
         <Theme>
           <FullScreenProvider>
-            <AdScript article={article} />
             {this.getArticleLayout()}
+            <AdScript article={article} />
             {trackingCode && (
               <PixelTracker unit={trackingCode} date={this.props.renderTime} />
             )}
