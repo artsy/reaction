@@ -51,6 +51,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       title
       image_alt: to_s
       image_title
+      href
 
       ...ArtworkActions_artwork
       image {
