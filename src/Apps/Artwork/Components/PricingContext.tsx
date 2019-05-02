@@ -15,7 +15,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import Events from "Utils/Events"
-import { createCollectUrl } from "./../Utils/createCollectUrl"
+import { createCollectUrl, FilterCategory } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
 interface PricingContextProps {
@@ -63,7 +63,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
     artistId,
   }: {
     dimension: "SMALL" | "MEDIUM" | "LARGE" | null
-    category: keyof typeof filterCategories
+    category: FilterCategory
     artistId: string
   }) {
     const url = createCollectUrl({ dimension, category, artistId })
@@ -154,28 +154,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
       </BorderBox>
     )
   }
-}
-
-const filterCategories = {
-  Architecture: "",
-  "Books and Portfolios": "",
-  "Design/Decorative Art": "design",
-  "Drawing, Collage or other Work on Paper": "drawing",
-  "Fashion Design and Wearable Art": "",
-  Installation: "installation",
-  Jewelry: "jewelry",
-  "Mixed Media": "",
-  Other: "",
-  Painting: "painting",
-  "Performance Art": "performance-art",
-  Photography: "photography",
-  Posters: "",
-  Print: "prints",
-  Sculpture: "sculpture",
-  Sound: "",
-  "Textile Arts": "",
-  "Video/Film/Animation": "film-slash-video",
-  "Work on Paper": "work-on-paper",
 }
 
 export const PricingContextFragmentContainer = createFragmentContainer(

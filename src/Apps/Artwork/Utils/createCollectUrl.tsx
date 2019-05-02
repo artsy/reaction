@@ -7,7 +7,7 @@ export const createCollectUrl = ({
   artistId,
 }: {
   dimension: "SMALL" | "MEDIUM" | "LARGE" | null
-  category: keyof typeof filterCategories
+  category: FilterCategory
   artistId: string
 }) => {
   let dimensionRange
@@ -38,6 +38,8 @@ export const createCollectUrl = ({
 
   return `${path}?${query}`
 }
+
+export type FilterCategory = keyof typeof filterCategories
 
 // these come from MediumFilter.tsx
 const filterCategories = {
