@@ -1,3 +1,15 @@
+# v16.8.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork page images do not use <img> with alt text [#2365](https://github.com/artsy/reaction/pull/2365) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.8.0 (Thu May 02 2019)
 
 #### 🚀  Enhancement
