@@ -26,7 +26,7 @@ const DeepZoomContainer = styled.div`
 const StyledImage = styled(Image)`
   cursor: zoom-in;
   max-width: 100%;
-  max-height: 60vh;
+  max-height: 100%;
 `
 
 export interface DeepZoomProps {
