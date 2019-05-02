@@ -27,7 +27,7 @@ storiesOf("Styleguide/Components", module).add("Lightbox", () => {
   return (
     <React.Fragment>
       <Section title="Lightbox">
-        <Lightbox deepZoom={deepZoom}>
+        <Lightbox title="Untitled" deepZoom={deepZoom}>
           <Image width={width} height={height} src={image("large")} />
         </Lightbox>
       </Section>
