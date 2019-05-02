@@ -93,14 +93,16 @@ export const LargeAuctionCard = props => (
     <Serif size="3t" weight="semibold">
       <Truncator maxLineCount={1}>{props.headline}</Truncator>
     </Serif>
-    {!props.isGalleryAuction && !props.isBenefit && (
-      <Serif size="3t">
-        <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
-      </Serif>
-    )}
+    <Serif size="3t">
+      <Truncator maxLineCount={1}>
+        {!props.isGalleryAuction && !props.isBenefit
+          ? props.subHeadline
+          : "\u00A0"}
+      </Truncator>
+    </Serif>
     {props.src && (
       <Box height="200px">
-        <ResponsiveImage src={props.src} my={2} pb="160px" />
+        <ResponsiveImage src={props.src} my={2} pb="160px" git stash list />
       </Box>
     )}
     <Sans size="2" weight="medium">

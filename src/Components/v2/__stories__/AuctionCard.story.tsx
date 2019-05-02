@@ -28,6 +28,17 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
           href="#"
         />
       </Section>
+      <Section title="Large Auction Card for benefit auction">
+        <LargeAuctionCard
+          src="https://picsum.photos/200/180/?random"
+          headline="MOMA Benefit Auction"
+          subHeadline="MOMA Benefit Auction"
+          badge="In progress"
+          isGalleryAuction={false}
+          isBenefit
+          href="#"
+        />
+      </Section>
       <Section title="Small Auction Card">
         <SmallAuctionCard
           src="https://picsum.photos/200/180/?random"
@@ -47,17 +58,6 @@ storiesOf("Styleguide/Components", module).add("AuctionCard", () => {
           badge="In progress"
           isGalleryAuction
           isBenefit={false}
-          href="#"
-        />
-      </Section>
-      <Section title="Large Auction Card for benefit auction">
-        <LargeAuctionCard
-          src="https://picsum.photos/200/180/?random"
-          headline="MOMA Benefit Auction"
-          subHeadline="MOMA Benefit Auction"
-          badge="In progress"
-          isGalleryAuction={false}
-          isBenefit
           href="#"
         />
       </Section>
