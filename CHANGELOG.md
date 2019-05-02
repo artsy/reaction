@@ -1,3 +1,15 @@
+# v16.8.0 (Thu May 02 2019)
+
+#### 🚀  Enhancement
+
+- Update <Carousel /> with BaseCarousel [#2364](https://github.com/artsy/reaction/pull/2364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.7.2 (Thu May 02 2019)
 
 #### 🐛  Bug Fix
