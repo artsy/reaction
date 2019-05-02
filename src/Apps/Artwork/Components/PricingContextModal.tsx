@@ -1,4 +1,5 @@
 import {
+  Box,
   Link,
   QuestionCircleIcon,
   Serif,
@@ -45,7 +46,7 @@ export class PricingContextModal extends React.Component<State> {
 
   render() {
     return (
-      <>
+      <Box height="10px">
         <Modal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
@@ -91,7 +92,7 @@ export class PricingContextModal extends React.Component<State> {
             onClick={this.openModal.bind(this)}
           />
         </Tooltip>
-      </>
+      </Box>
     )
   }
 }
