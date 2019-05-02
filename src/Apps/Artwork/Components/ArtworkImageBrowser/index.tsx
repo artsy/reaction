@@ -19,7 +19,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
   slider: Slider
 
   render() {
-    const { images, image } = this.props.artwork
+    const { images, image, title } = this.props.artwork
     if (!images.length) {
       return null
     }
@@ -30,6 +30,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
       <>
         <ArtworkImageBrowser
           images={images}
+          title={title}
           sliderRef={slider => (this.slider = slider)}
         />
         <ArtworkActions
