@@ -1,5 +1,5 @@
 import {
-  color,
+  Box,
   Link,
   QuestionCircleIcon,
   Serif,
@@ -46,7 +46,7 @@ export class PricingContextModal extends React.Component<State> {
 
   render() {
     return (
-      <>
+      <Box height="15px">
         <Modal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
@@ -92,16 +92,11 @@ export class PricingContextModal extends React.Component<State> {
             onClick={this.openModal.bind(this)}
           />
         </Tooltip>
-      </>
+      </Box>
     )
   }
 }
 
 const StyledQuestionCircleIcon = styled(QuestionCircleIcon)`
-  fill: ${color("black60")};
-
-  &:hover {
-    fill: ${color("black100")};
-    cursor: pointer;
-  }
+  cursor: pointer;
 `
