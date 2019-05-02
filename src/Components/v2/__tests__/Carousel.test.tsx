@@ -13,7 +13,7 @@ describe("Carousel", () => {
       <MockBoot breakpoint="xs">
         <Carousel
           data={[{ name: "foo" }]}
-          render={props => {
+          render={() => {
             return <div />
           }}
         />
@@ -25,7 +25,7 @@ describe("Carousel", () => {
       <MockBoot breakpoint="lg">
         <Carousel
           data={[{ name: "foo" }]}
-          render={props => {
+          render={() => {
             return <div />
           }}
         />

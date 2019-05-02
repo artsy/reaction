@@ -25,16 +25,10 @@ export class ArtworkImageBrowserContainer extends React.Component<
     const defaultImageIndex = images.findIndex(e => e.id === image.id)
     return (
       <>
-        <ArtworkImageBrowser
-          images={images}
-          imageAlt={image_alt}
-          sliderRef={slider => (this.slider = slider)}
-        />
+        <ArtworkImageBrowser images={images} imageAlt={image_alt} />
         <ArtworkActions
           selectDefaultSlide={() => {
-            if (this.flickity) {
-              this.flickity.select(defaultImageIndex, false, true)
-            }
+            this.flickity.select(defaultImageIndex, false, true)
           }}
           artwork={this.props.artwork}
         />
