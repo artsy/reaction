@@ -13,10 +13,10 @@ interface NavItemProps extends BoxProps {
 export const NavItem: React.FC<NavItemProps> = ({
   Menu,
   Overlay,
-  display = "block",
-  children,
-  href,
   active = false,
+  children,
+  display = "block",
+  href,
   onClick,
 }) => {
   const [hover, toggleHover] = useState(active)

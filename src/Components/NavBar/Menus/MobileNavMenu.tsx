@@ -25,7 +25,7 @@ export const MobileNavMenu: React.FC = () => {
       <MobileLink href="/shows">Shows</MobileLink>
       <MobileLink href="/galleries">Galleries</MobileLink>
       <MobileLink href="/institutions">Museums</MobileLink>
-      <MobileLink href="/institutions">Fairs</MobileLink>
+      <MobileLink href="/fairs">Fairs</MobileLink>
       <MobileLink href="/auctions">Auctions</MobileLink>
       <MobileLink href="/articles">Magazine</MobileLink>
 
@@ -46,14 +46,16 @@ export const MobileNavMenu: React.FC = () => {
   )
 }
 
-const MobileLink = ({
-  href,
-  children,
-  ...props
-}: {
+interface MobileLinkProps {
   children: React.ReactNode
   href?: string
   onClick?: () => void
+}
+
+const MobileLink: React.FC<MobileLinkProps> = ({
+  href,
+  children,
+  ...props
 }) => {
   return (
     <Box my={0.5} {...props} style={{ cursor: "pointer" }}>

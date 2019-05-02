@@ -25,7 +25,7 @@ import {
   Separator,
 } from "@artsy/palette"
 
-const NotificationMenuItems: React.FC<
+export const NotificationMenuItems: React.FC<
   NotificationsMenuQueryResponse
 > = props => {
   const notifications = get(
