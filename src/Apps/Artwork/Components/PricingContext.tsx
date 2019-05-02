@@ -63,7 +63,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
     artistId,
   }: {
     dimension: "SMALL" | "MEDIUM" | "LARGE" | null
-    category: keyof typeof filterCategories
+    category: string
     artistId: string
   }) {
     const url = createCollectUrl({ dimension, category, artistId })
