@@ -288,7 +288,6 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     const modifiedChildren = React.Children.map(
       children,
       (child: React.ReactElement<any>) => {
-        console.log("title", title)
         const {
           props: { src },
         } = child
