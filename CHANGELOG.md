@@ -1,3 +1,15 @@
+# v16.7.2 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Move question icon next to chart title and change color [#2363](https://github.com/artsy/reaction/pull/2363) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.7.1 (Thu May 02 2019)
 
 #### 🐛  Bug Fix
