@@ -1,3 +1,15 @@
+# v16.8.3 (Fri May 03 2019)
+
+#### 🐛  Bug Fix
+
+- Moves ad script component below article layout component [#2368](https://github.com/artsy/reaction/pull/2368) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.8.2 (Fri May 03 2019)
 
 #### 🐛  Bug Fix
