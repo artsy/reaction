@@ -7,17 +7,17 @@ export const MoreNavMenu: React.FC = () => {
       {/*
         Hide nav items at md / lg as they appear in the top nav
       */}
-      <MenuItem href="/" display={["block", "block", "none"]}>
+      <MenuItem href="/galleries" display={["block", "block", "none"]}>
         Galleries
       </MenuItem>
-      <MenuItem href="/" display={["block", "block", "block", "none"]}>
+      <MenuItem href="/fairs" display={["block", "block", "block", "none"]}>
         Fairs
       </MenuItem>
 
-      <MenuItem href="/">Artists</MenuItem>
-      <MenuItem href="/">Shows</MenuItem>
-      <MenuItem href="/">Museums</MenuItem>
-      <MenuItem href="/">Artsy for Galleries</MenuItem>
+      <MenuItem href="/artists">Artists</MenuItem>
+      <MenuItem href="/shows">Shows</MenuItem>
+      <MenuItem href="/institutions">Museums</MenuItem>
+      <MenuItem href="https://partners.artsy.net">Artsy for Galleries</MenuItem>
     </Menu>
   )
 }
