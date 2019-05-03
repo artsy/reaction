@@ -66,6 +66,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           artist_id: { type: "String" }
           attribution_class: { type: "[String]" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         filter_artworks(aggregations: $aggregations, size: 0) {
           aggregations {
@@ -93,6 +94,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
             attribution_class: $attribution_class
             offerable: $offerable
             color: $color
+            page: $page
           )
       }
     `,
