@@ -69,6 +69,7 @@ export class PricingContextModal extends React.Component<State> {
             similar in size and category to the work you're viewing. The prices
             included in the graph are only from galleries and dealers on Artsy.
           </Serif>
+          <Spacer mt={2} />
           <Serif size="3" color={"black80"}>
             Artwork prices are affected by{" "}
             <Link
