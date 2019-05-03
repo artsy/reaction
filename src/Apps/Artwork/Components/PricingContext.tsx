@@ -92,22 +92,22 @@ export class PricingContext extends React.Component<PricingContextProps> {
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-        <Sans size="2" weight="medium">
-          {artwork.pricingContext.appliedFiltersDisplay}
-        </Sans>
         <Flex>
-          <Link
-            onClick={this.collectPageLinkClick.bind(this, {
-              dimension: artwork.pricingContext.appliedFilters.dimension,
-              category: artwork.category,
-              artistId,
-            })}
-            color="black60"
-          >
-            <Sans size="2">Browse works in this category</Sans>
-          </Link>
+          <Sans size="2" weight="medium">
+            {artwork.pricingContext.appliedFiltersDisplay}
+          </Sans>
           <PricingContextModal />
         </Flex>
+        <Link
+          onClick={this.collectPageLinkClick.bind(this, {
+            dimension: artwork.pricingContext.appliedFilters.dimension,
+            category: artwork.category,
+            artistId,
+          })}
+          color="black60"
+        >
+          <Sans size="2">Browse works in this category</Sans>
+        </Link>
         <Spacer mb={[2, 3]} />
         <BarChart
           minLabel="$0"

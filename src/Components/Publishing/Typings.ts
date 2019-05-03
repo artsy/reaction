@@ -6,6 +6,14 @@ export type ArticleLayout =
   | "video"
   | "news"
 
+export enum ArticleAdType {
+  Feature = "feature",
+  Article = "article",
+  NewsLanding = "newslanding",
+  SponsorLanding = "sponsorlanding",
+  SponsorFeature = "sponsorfeature",
+}
+
 export type SectionLayout =
   | "blockquote"
   | "column_width"
@@ -42,6 +50,14 @@ export interface ArticleData {
     url?: string
   }
   [x: string]: any
+  tracking_tags?: string[]
+  sponsor?: {
+    pixel_tracking_code?: string
+    partner_logo_link?: string
+    partner_light_logo?: string
+    partner_dark_logo?: string
+    partner_condensed_logo?: string
+  }
 }
 
 export type SectionType =

@@ -1,5 +1,5 @@
 import {
-  color,
+  Box,
   Link,
   QuestionCircleIcon,
   Serif,
@@ -46,7 +46,7 @@ export class PricingContextModal extends React.Component<State> {
 
   render() {
     return (
-      <>
+      <Box height="15px">
         <Modal
           onClose={this.closeModal}
           show={this.state.isModalOpen}
@@ -69,6 +69,7 @@ export class PricingContextModal extends React.Component<State> {
             similar in size and category to the work you're viewing. The prices
             included in the graph are only from galleries and dealers on Artsy.
           </Serif>
+          <Spacer mt={2} />
           <Serif size="3" color={"black80"}>
             Artwork prices are affected by{" "}
             <Link
@@ -92,16 +93,11 @@ export class PricingContextModal extends React.Component<State> {
             onClick={this.openModal.bind(this)}
           />
         </Tooltip>
-      </>
+      </Box>
     )
   }
 }
 
 const StyledQuestionCircleIcon = styled(QuestionCircleIcon)`
-  fill: ${color("black60")};
-
-  &:hover {
-    fill: ${color("black100")};
-    cursor: pointer;
-  }
+  cursor: pointer;
 `

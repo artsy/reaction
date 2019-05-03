@@ -1,3 +1,68 @@
+# v16.8.2 (Fri May 03 2019)
+
+#### 🐛  Bug Fix
+
+- added modal space [#2366](https://github.com/artsy/reaction/pull/2366) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.8.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork page images do not use <img> with alt text [#2365](https://github.com/artsy/reaction/pull/2365) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.0 (Thu May 02 2019)
+
+#### 🚀  Enhancement
+
+- Update <Carousel /> with BaseCarousel [#2364](https://github.com/artsy/reaction/pull/2364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.7.2 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Move question icon next to chart title and change color [#2363](https://github.com/artsy/reaction/pull/2363) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.7.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Add Script to Support Ads Hosted on Hashtag Labs' Ad Server [#2361](https://github.com/artsy/reaction/pull/2361) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.4 [#2362](https://github.com/artsy/reaction/pull/2362) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.7.0 (Wed May 01 2019)
 
 #### 🚀  Enhancement
