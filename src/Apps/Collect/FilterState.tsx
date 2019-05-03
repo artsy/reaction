@@ -1,4 +1,5 @@
 import { cloneDeep, isNil, omit, omitBy } from "lodash"
+import qs from "qs"
 import { Container } from "unstated"
 
 export interface State {
@@ -39,6 +40,48 @@ export const initialState = {
   attribution_class: [],
   artist_id: null,
   color: null,
+}
+
+// Returns a string representing the query part of a URL.
+// It removes default values.
+export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
+  const filters = Object.entries(state).reduce((acc, [key, value]) => {
+    if (isDefaultFilter(key, value)) {
+      return acc
+    } else {
+      return { ...acc, [key]: value }
+    }
+  }, {})
+
+  return qs.stringify({
+    ...filters,
+    ...extra,
+  })
+}
+
+// This is used to remove default state params that clutter up URLs.
+const isDefaultFilter = (filter, value): boolean => {
+  if (filter === "major_periods" || filter === "attribution_class") {
+    return value.length === 0
+  }
+
+  if (filter === "sort") {
+    return value === "-decayed_merch"
+  }
+
+  if (filter === "price_range" || filter === "height" || filter === "width") {
+    return value === "*-*"
+  }
+
+  if (filter === "page") {
+    return value === 1
+  }
+
+  if (filter === "medium") {
+    return value === "*"
+  }
+
+  return !value
 }
 
 // These filters aren't tracked via the `tracking` prop passed in here.
@@ -94,10 +137,8 @@ export class FilterState extends Container<State> {
     return omitBy(this.state, isNil)
   }
 
-  setPage(page, mediator) {
-    this.setState({ page }, () => {
-      mediator.trigger("collect:filter:changed", this.filteredState)
-    })
+  setPage(page, _mediator) {
+    this.setState({ page })
   }
 
   resetFilters = () => {
@@ -106,7 +147,7 @@ export class FilterState extends Container<State> {
     })
   }
 
-  unsetFilter(filter, mediator) {
+  unsetFilter(filter, _mediator) {
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
@@ -131,12 +172,10 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.setState(newPartialState, () => {
-      mediator.trigger("collect:filter:changed", this.filteredState)
-    })
+    this.setState(newPartialState)
   }
 
-  setFilter(filter: keyof State, value, mediator) {
+  setFilter(filter: keyof State, value, _mediator) {
     let newPartialState = {}
 
     switch (filter) {
@@ -170,8 +209,6 @@ export class FilterState extends Container<State> {
     }
 
     this.setState(newPartialState, () => {
-      mediator.trigger("collect:filter:changed", this.filteredState)
-
       if (untrackedFilters.includes(filter)) return
       this.tracking &&
         this.tracking.trackEvent({

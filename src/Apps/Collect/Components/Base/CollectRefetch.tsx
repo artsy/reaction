@@ -1,5 +1,9 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
+import {
+  FilterState,
+  untrackedFilters,
+  urlFragmentFromState,
+} from "Apps/Collect/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -59,6 +63,13 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
           if (error) {
             console.error(error)
           }
+
+          // TODO: Look into using router push w/ query params.
+          window.history.pushState(
+            {},
+            null,
+            `/collect?${urlFragmentFromState(this.props.filtersState)}`
+          )
 
           this.setState({
             isLoading: false,
