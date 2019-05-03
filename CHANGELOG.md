@@ -1,3 +1,15 @@
+# v16.8.2 (Fri May 03 2019)
+
+#### 🐛  Bug Fix
+
+- added modal space [#2366](https://github.com/artsy/reaction/pull/2366) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v16.8.1 (Thu May 02 2019)
 
 #### 🐛  Bug Fix
