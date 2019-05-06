@@ -33,7 +33,9 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         meta="In auction"
         name={artworkContextAuction.name}
         // Do not display partner name for benefit acutions
-        subHeadline={sale.is_benefit ? null : partner.name}
+        subHeadline={
+          sale.is_benefit || sale.isGalleryAuction ? null : partner.name
+        }
         href={artworkContextAuction.href}
       />
     )
@@ -102,6 +104,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         sale {
           is_auction
           is_benefit
+          isGalleryAuction
           cover_image {
             url(version: "square")
           }
