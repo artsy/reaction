@@ -14,6 +14,44 @@ export enum ArticleAdType {
   SponsorFeature = "sponsorfeature",
 }
 
+export enum AdUnit {
+  Desktop_TopLeaderboard = "Desktop_TopLeaderboard",
+  Desktop_RightRail1 = "Desktop_RightRail1",
+  Desktop_InContentLB1 = "Desktop_InContentLB1",
+  Desktop_InContentLB2 = "Desktop_InContentLB2",
+  Desktop_InContentLBRepeat = "Desktop_InContentLBRepeat",
+  Desktop_TopLogo = "Desktop_TopLogo",
+  Desktop_PIPWLogo = "Desktop_PIPWLogo",
+  Mobile_TopLeaderboard = "Mobile_TopLeaderboard",
+  Mobile_InContentMR1 = "Mobile_InContentMR1",
+  Mobile_InContentMR2 = "Mobile_InContentMR2",
+  Mobile_IncontentMRRepeat = "Mobile_IncontentMRRepeat",
+  Mobile_InContentLB1 = "Mobile_InContentLB1",
+  Mobile_InContentLB2 = "Mobile_InContentLB2",
+  Mobile_InContentLBRepeat = "Mobile_InContentLBRepeat",
+  Mobile_TopLogo = "Mobile_TopLogo",
+  Mobile_PIPWLogo = "Mobile_PIPWLogo",
+}
+
+export enum AdDimension {
+  Desktop_TopLeaderboard = "970x250",
+  Desktop_RightRail1 = "300x250",
+  Desktop_InContentLB1 = "970x250",
+  Desktop_InContentLB2 = "970x250",
+  Desktop_InContentLBRepeat = "970x250",
+  Desktop_TopLogo = "1x1",
+  Desktop_PIPWLogo = "1x1",
+  Mobile_TopLeaderboard = "300x50",
+  Mobile_InContentMR1 = "300x250",
+  Mobile_InContentMR2 = "300x250",
+  Mobile_IncontentMRRepeat = "300x250",
+  Mobile_InContentLB1 = "300x50",
+  Mobile_InContentLB2 = "300x50",
+  Mobile_InContentLBRepeat = "300x50",
+  Mobile_TopLogo = "1x1",
+  Mobile_PIPWLogo = "1x1",
+}
+
 export type SectionLayout =
   | "blockquote"
   | "column_width"

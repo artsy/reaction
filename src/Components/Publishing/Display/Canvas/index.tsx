@@ -5,19 +5,21 @@ import React from "react"
 import track from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled, { StyledFunction } from "styled-components"
+import { isAdmin } from "Utils/admin"
 import { ErrorBoundary } from "../../../ErrorBoundary"
 import { pMedia } from "../../../Helpers"
 import { getCurrentUnixTimestamp } from "../../Constants"
 import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
-
 interface DisplayCanvasProps {
   unit: any
   campaign: any
   article?: any
   renderTime?: number
   tracking?: any
+  adUnit?: string
+  adDimension?: string
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -42,34 +44,53 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
     // noop
   }
 
-  render() {
-    const { unit, campaign, article, renderTime } = this.props
+  renderCanvasContent() {
+    const { unit, campaign, article, adUnit, adDimension } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
+    const isAdminUser = isAdmin()
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
+
+    // @TODO: Hide new ads behind admin flag for now
+    if (isAdminUser) {
+      return (
+        <div
+          className="htl-ad"
+          data-unit={adUnit}
+          data-sizes={adDimension}
+          data-eager
+        />
+      )
+    }
+    return (
+      <>
+        <a
+          href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
+          target="_blank"
+        >
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+        </a>
+        <CanvasContainer
+          unit={unit}
+          campaign={campaign}
+          article={article}
+          disclaimer={disclaimer}
+        />
+        {unit.layout === "overlay" && disclaimer}
+      </>
+    )
+  }
+
+  render() {
+    const { unit, renderTime } = this.props
 
     return (
       <ErrorBoundary>
         <DisplayContainer layout={unit.layout}>
           <Waypoint onEnter={this.trackImpression} />
           <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
-
-          <a
-            href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
-            target="_blank"
-          >
-            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-          </a>
-
-          <CanvasContainer
-            unit={unit}
-            campaign={campaign}
-            article={article}
-            disclaimer={disclaimer}
-          />
-
-          {unit.layout === "overlay" && disclaimer}
+          {this.renderCanvasContent()}
           <PixelTracker unit={unit} date={renderTime} />
         </DisplayContainer>
       </ErrorBoundary>
