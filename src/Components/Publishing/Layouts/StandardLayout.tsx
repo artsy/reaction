@@ -2,6 +2,7 @@ import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -95,6 +96,16 @@ export class StandardLayout extends React.Component<
                   campaign={campaign}
                   article={article}
                   renderTime={renderTime}
+                  adUnit={
+                    isMobileAd
+                      ? AdUnit.Mobile_InContentMR1
+                      : AdUnit.Desktop_RightRail1
+                  }
+                  adDimension={
+                    isMobileAd
+                      ? AdDimension.Mobile_InContentMR1
+                      : AdDimension.Desktop_RightRail1
+                  }
                 />
               )
             )
@@ -138,6 +149,16 @@ export class StandardLayout extends React.Component<
                   relatedArticles={relatedArticlesForCanvas}
                   renderTime={renderTime}
                   showCollectionsRail={showCollectionsRail}
+                  adUnit={
+                    isMobileAd
+                      ? AdUnit.Mobile_TopLeaderboard
+                      : AdUnit.Desktop_TopLeaderboard
+                  }
+                  adDimension={
+                    isMobileAd
+                      ? AdDimension.Mobile_TopLeaderboard
+                      : AdDimension.Desktop_TopLeaderboard
+                  }
                 />
               )}
             </ArticleWrapper>

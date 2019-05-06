@@ -4,6 +4,7 @@ import React, { Component, HTMLProps } from "react"
 import track, { TrackingProp } from "react-tracking"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
+import { isAdmin } from "Utils/admin"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
@@ -21,6 +22,8 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
   tracking?: TrackingProp
   renderTime?: number
+  adUnit?: string
+  adDimension?: string
 }
 
 export interface DisplayPanelState {
@@ -361,9 +364,47 @@ export class DisplayPanel extends Component<
     )
   }
 
+  renderPanelContent() {
+    const { unit, campaign, adDimension, adUnit } = this.props
+    const isVideo = this.isVideo()
+    const isAdminUser = isAdmin()
+    const url = get(unit.assets, "0.url", "")
+
+    // @TODO: Hide new ads behind admin flag for now
+    if (isAdminUser) {
+      return (
+        <div
+          className="htl-ad"
+          data-unit={adUnit}
+          data-sizes={adDimension}
+          data-eager
+        />
+      )
+    }
+    return (
+      isVideo ? (
+        this.renderVideo(url)
+      ) : (
+        <Image className="DisplayPanel__Image" />
+      ),
+      (
+        <div>
+          <Headline>{unit.headline}</Headline>
+
+          <Body
+            dangerouslySetInnerHTML={{
+              __html: unit.body,
+            }}
+          />
+
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+        </div>
+      )
+    )
+  }
   render() {
     const { showCoverImage } = this.state
-    const { unit, campaign, isMobile, renderTime } = this.props
+    const { unit, isMobile, renderTime } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const imageUrl = isVideo
@@ -390,23 +431,7 @@ export class DisplayPanel extends Component<
             coverUrl={coverUrl}
             showCoverImage={showCoverImage}
           >
-            {isVideo ? (
-              this.renderVideo(url)
-            ) : (
-              <Image className="DisplayPanel__Image" />
-            )}
-
-            <div>
-              <Headline>{unit.headline}</Headline>
-
-              <Body
-                dangerouslySetInnerHTML={{
-                  __html: unit.body,
-                }}
-              />
-
-              <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-            </div>
+            {this.renderPanelContent()}
           </DisplayPanelContainer>
           <PixelTracker unit={unit} date={renderTime} />
         </Wrapper>
