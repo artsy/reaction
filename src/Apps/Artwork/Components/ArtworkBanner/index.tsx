@@ -32,7 +32,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         initials={partner.initials}
         meta="In auction"
         name={artworkContextAuction.name}
-        // Do not display partner name for benefit acutions
+        // Do not display partner name for benefit or gallery auctions
         subHeadline={
           sale.isBenefit || sale.isGalleryAuction ? null : partner.name
         }

@@ -82,7 +82,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       []
     ).join(", ")
 
-    // Partner avatar is not shown for artworks from benefit auctions
+    // Partner avatar is not shown for artworks from benefit auctions or gallery auctions
     const showPartnerLogo = !(
       artwork.sale &&
       (artwork.sale.isBenefit || artwork.sale.isGalleryAuction)
