@@ -29,7 +29,6 @@ import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
-  user: User
   mediator?: Mediator
 }
 
