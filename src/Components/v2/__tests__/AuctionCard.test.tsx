@@ -42,7 +42,7 @@ describe("AuctionCard", () => {
     expect(large.find(LargeAuctionCard).length).toEqual(1)
   })
 
-  it("Hides the subHeadline for gallery auctions", () => {
+  it("Renders blank space instead of subHeadline for gallery auctions", () => {
     props.isGalleryAuction = true
     const small = mount(
       <MockBoot breakpoint="xs">
@@ -56,10 +56,15 @@ describe("AuctionCard", () => {
         <AuctionCard {...props} />
       </MockBoot>
     )
-    expect(large.find(Serif).length).toEqual(1)
+    expect(
+      large
+        .find(Serif)
+        .at(1)
+        .text()
+    ).toEqual("\u00A0")
   })
 
-  it("Hides the subHeadline for benefit auctions", () => {
+  it("Renders blank space instead of subHeadline for benefit auctions", () => {
     props.isBenefit = true
     const small = mount(
       <MockBoot breakpoint="xs">
@@ -73,7 +78,12 @@ describe("AuctionCard", () => {
         <AuctionCard {...props} />
       </MockBoot>
     )
-    expect(large.find(Serif).length).toEqual(1)
+    expect(
+      large
+        .find(Serif)
+        .at(1)
+        .text()
+    ).toEqual("\u00A0")
   })
 
   const tz = "America/New_York"
