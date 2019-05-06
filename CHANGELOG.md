@@ -1,3 +1,21 @@
+# v16.8.5 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Expand price by default on collect and artist page [#2376](https://github.com/artsy/reaction/pull/2376) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/auto-config to v1 [#2374](https://github.com/artsy/reaction/pull/2374) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v0.1.2 [#2372](https://github.com/artsy/reaction/pull/2372) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.8.4 (Mon May 06 2019)
 
 #### 🐛  Bug Fix
