@@ -1,3 +1,20 @@
+# v16.8.4 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- User can click browse link to go to filtered collect page [#2351](https://github.com/artsy/reaction/pull/2351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.5 [#2370](https://github.com/artsy/reaction/pull/2370) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.8.3 (Fri May 03 2019)
 
 #### 🐛  Bug Fix
