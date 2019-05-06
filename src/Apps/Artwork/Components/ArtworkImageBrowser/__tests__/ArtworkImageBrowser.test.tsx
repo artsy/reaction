@@ -65,7 +65,7 @@ describe("ArtworkImageBrowser", () => {
     })
 
     it("renders correct number of images", () => {
-      expect(wrapper.find("ResponsiveImage").length).toBe(4)
+      expect(wrapper.find("Image").length).toBe(4)
     })
 
     it("renders custom pagination dots", () => {
