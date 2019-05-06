@@ -7,7 +7,7 @@ import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 
-import { ArtistInfoQueryRenderer as ArtistInfo } from "./Components/ArtistInfo"
+import { ArtistInfoFragmentContainer as ArtistInfo } from "./Components/ArtistInfo"
 import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/ArtworkBanner"
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "./Components/ArtworkImageBrowser"
@@ -108,7 +108,7 @@ export class ArtworkApp extends React.Component<Props> {
             <>
               <Row key={artist.id}>
                 <Col>
-                  <ArtistInfo artistID={artist.id} />
+                  <ArtistInfo artist={artist} />
                 </Col>
               </Row>
               {addSpacer && <Spacer mb={2} />}
@@ -219,11 +219,11 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
       price
       is_in_auction
       artists {
-        _id
         id
+        ...ArtistInfo_artist
       }
       artist {
-        id
+        ...ArtistInfo_artist
       }
       ...ArtworkRelatedArtists_artwork
       ...ArtworkMeta_artwork
