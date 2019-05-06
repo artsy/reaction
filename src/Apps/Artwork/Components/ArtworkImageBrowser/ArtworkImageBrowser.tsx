@@ -5,15 +5,7 @@ import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-import {
-  Box,
-  ChevronIcon,
-  Col,
-  color,
-  Flex,
-  ResponsiveImage,
-  Row,
-} from "@artsy/palette"
+import { Box, ChevronIcon, Col, color, Flex, Row } from "@artsy/palette"
 
 interface ArtworkBrowserProps {
   imageAlt: string
@@ -89,9 +81,9 @@ export class LargeArtworkImageBrowser extends React.Component<
                       deepZoom={image.deepZoom}
                       enabled={image.is_zoomable}
                       isDefault={image.is_default}
-                    >
-                      <DesktopImage src={image.uri} width="100%" />
-                    </Lightbox>
+                      src={image.uri}
+                      initialHeight="60vh"
+                    />
                   </Flex>
                 )
               })}
@@ -138,10 +130,11 @@ export class SmallArtworkImageBrowser extends React.Component<
   }
 
   render() {
+    const { sliderRef, imageAlt, images } = this.props
     return (
       <Container>
-        <Slider {...this.settings} ref={this.props.sliderRef}>
-          {this.props.images.map(image => {
+        <Slider {...this.settings} ref={sliderRef}>
+          {images.map(image => {
             return (
               <Flex
                 flexDirection="column"
@@ -150,13 +143,13 @@ export class SmallArtworkImageBrowser extends React.Component<
                 key={image.id}
               >
                 <Lightbox
-                  imageAlt={this.props.imageAlt}
+                  imageAlt={imageAlt}
                   deepZoom={image.deepZoom}
                   enabled={!this.state.isLocked && image.is_zoomable}
                   isDefault={image.is_default}
-                >
-                  <ResponsiveImage src={image.uri} width="100%" />
-                </Lightbox>
+                  src={image.uri}
+                  initialHeight="45vh"
+                />
               </Flex>
             )
           })}
@@ -209,17 +202,11 @@ const Container = styled(Box)`
   }
 `
 
-const DesktopImage = styled(ResponsiveImage)`
-  padding-bottom: 60vh; /* Responsive max height */
-`
-
 const PageIndicator = styled.span`
   &::after {
     content: "•";
   }
 `
 
-DesktopImage.displayName = "DesktopImage"
 // @ts-ignore
-ResponsiveImage.displayName = "ResponsiveImage"
 PageIndicator.displayName = "PageIndicator"

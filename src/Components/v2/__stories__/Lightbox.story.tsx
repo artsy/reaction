@@ -1,4 +1,3 @@
-import { Image } from "@artsy/palette"
 import { Lightbox } from "Components/v2"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -6,8 +5,6 @@ import { Section } from "Utils/Section"
 
 const image = size =>
   `https://d32dm0rphc51dk.cloudfront.net/88LaQZxzQdksn76f0LGFoQ/${size}.jpg`
-const width = 912
-const height = 608
 const deepZoom = {
   Image: {
     xmlns: "http://schemas.microsoft.com/deepzoom/2008",
@@ -27,9 +24,11 @@ storiesOf("Styleguide/Components", module).add("Lightbox", () => {
   return (
     <React.Fragment>
       <Section title="Lightbox">
-        <Lightbox imageAlt="Kieran Gillen, Untitled, 1984" deepZoom={deepZoom}>
-          <Image width={width} height={height} src={image("large")} />
-        </Lightbox>
+        <Lightbox
+          src={image("large")}
+          imageAlt="Arya Stark, Untitled, 1984"
+          deepZoom={deepZoom}
+        />
       </Section>
       <div id="lightbox-container" />
     </React.Fragment>
