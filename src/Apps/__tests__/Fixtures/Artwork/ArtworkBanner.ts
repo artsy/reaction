@@ -34,7 +34,7 @@ export const ArtworkAuctionBannerFixture = {
   sale: {
     name: "Doyle: Post-War & Contemporary Art",
     is_auction: true,
-    is_benefit: false,
+    isBenefit: false,
     isGalleryAuction: false,
     cover_image: {
       url:
@@ -65,7 +65,7 @@ export const ArtworkBenefitAuctionBannerFixture = {
   },
   sale: {
     is_auction: true,
-    is_benefit: true,
+    isBenefit: true,
     isGalleryAuction: false,
     cover_image: {
       url:

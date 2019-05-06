@@ -83,7 +83,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     ).join(", ")
 
     // Partner avatar is not shown for artworks from benefit auctions
-    const showPartnerLogo = !(artwork.sale && artwork.sale.is_benefit)
+    const showPartnerLogo = !(
+      artwork.sale &&
+      (artwork.sale.isBenefit || artwork.sale.isGalleryAuction)
+    )
     const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
     const partnerInitials = showPartnerLogo && partner.initials
     const showPartnerFollow =
@@ -166,7 +169,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
       fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
         additional_information(format: HTML)
         sale {
-          is_benefit
+          isBenefit
+          isGalleryAuction
         }
         partner {
           _id
