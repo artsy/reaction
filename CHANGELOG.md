@@ -1,3 +1,15 @@
+# v16.8.7 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Uses <Img> instead of <div> for SSR artwork image [#2371](https://github.com/artsy/reaction/pull/2371) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.8.6 (Mon May 06 2019)
 
 #### 🐛  Bug Fix
