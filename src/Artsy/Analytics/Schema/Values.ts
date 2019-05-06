@@ -223,6 +223,7 @@ export enum Subject {
   EnterLiveAuction = "Enter live auction",
   ShowArtistInsights = "Show artist insights",
   HistogramBar = "Histogram Bar",
+  BrowseWorks = "Browse works in this category",
   QuestionMarkIcon = "Question Mark Informational Icon",
 }
 
