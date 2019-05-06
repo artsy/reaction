@@ -95,9 +95,11 @@ export const LargeAuctionCard = props => (
     </Serif>
     <Serif size="3t">
       <Truncator maxLineCount={1}>
-        {!props.isGalleryAuction && !props.isBenefit
-          ? props.subHeadline
-          : "\u00A0"}
+        {!props.isGalleryAuction && !props.isBenefit ? (
+          props.subHeadline
+        ) : (
+          <>&nbsp;</>
+        )}
       </Truncator>
     </Serif>
     {props.src && (
