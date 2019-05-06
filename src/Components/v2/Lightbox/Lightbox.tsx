@@ -49,6 +49,7 @@ export interface LightboxProps {
   enabled?: boolean
   isDefault?: boolean
   src: string
+  initialHeight?: string
 
   /**
    * Id of the element to render the lightbox in
@@ -279,39 +280,36 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   render() {
-    const { children, enabled, isDefault, imageAlt, src } = this.props
+    const { enabled, isDefault, imageAlt, src, initialHeight } = this.props
+    const height = initialHeight || "auto"
 
     // Only render client-side
     if (!this.state.element) {
-      return children
+      return (
+        <Flex justifyContent="center" height={height} alignItems="center">
+          <StyledImage alt={imageAlt} src={src} />
+        </Flex>
+      )
     }
 
-    const modifiedChildren = React.Children.map(
-      children,
-      (child: React.ReactElement<any>) => {
-        return (
-          enabled && (
-            <Flex
-              justifyContent="center"
-              alignItems="center"
-              height="60vh"
-              onClick={this.show.bind(this)}
-            >
-              <StyledImage
-                src={src}
-                alt={imageAlt}
-                data-type="artwork-image"
-                data-is-default={isDefault}
-              />
-            </Flex>
-          )
-        )
-      }
-    )
     return (
       <React.Fragment>
         {this.renderPortal()}
-        {modifiedChildren}
+        {enabled && (
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            height={height}
+            onClick={this.show.bind(this)}
+          >
+            <StyledImage
+              src={src}
+              alt={imageAlt}
+              data-type="artwork-image"
+              data-is-default={isDefault}
+            />
+          </Flex>
+        )}
       </React.Fragment>
     )
   }

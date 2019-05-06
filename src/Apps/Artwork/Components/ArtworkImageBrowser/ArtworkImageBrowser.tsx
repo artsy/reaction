@@ -5,7 +5,7 @@ import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-import { Box, ChevronIcon, Col, color, Flex, Image, Row } from "@artsy/palette"
+import { Box, ChevronIcon, Col, color, Flex, Row } from "@artsy/palette"
 
 interface ArtworkBrowserProps {
   imageAlt: string
@@ -82,11 +82,8 @@ export class LargeArtworkImageBrowser extends React.Component<
                       enabled={image.is_zoomable}
                       isDefault={image.is_default}
                       src={image.uri}
-                    >
-                      <Flex justifyContent="center" alignItems="center">
-                        <DesktopImage alt={imageAlt} src={image.uri} />
-                      </Flex>
-                    </Lightbox>
+                      initialHeight="60vh"
+                    />
                   </Flex>
                 )
               })}
@@ -151,9 +148,8 @@ export class SmallArtworkImageBrowser extends React.Component<
                   enabled={!this.state.isLocked && image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
-                >
-                  <Image alt={imageAlt} src={image.uri} width="100%" />
-                </Lightbox>
+                  initialHeight="45vh"
+                />
               </Flex>
             )
           })}
@@ -206,17 +202,11 @@ const Container = styled(Box)`
   }
 `
 
-const DesktopImage = styled(Image)`
-  max-height: 60vh;
-  max-width: 100%;
-`
-
 const PageIndicator = styled.span`
   &::after {
     content: "•";
   }
 `
 
-DesktopImage.displayName = "DesktopImage"
 // @ts-ignore
 PageIndicator.displayName = "PageIndicator"
