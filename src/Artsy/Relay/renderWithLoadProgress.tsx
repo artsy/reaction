@@ -45,16 +45,22 @@ const handleError = error => {
   }
 }
 
+export type LoadProgressRenderer<P> = (
+  readyState: ReadyState<P>
+) => React.ReactElement<RelayContainer<P>> | null
+
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {},
   wrapperProps: object = {},
   spinnerProps: SpinnerProps = {}
-): (readyState: ReadyState<P>) => React.ReactElement<RelayContainer<P>> | null {
+): LoadProgressRenderer<P> {
   // TODO: We need design for retrying or the approval to use the iOS design.
   // See also: https://artsyproduct.atlassian.net/browse/PLATFORM-1272
   return ({ error, props, retry }) => {
     if (error) {
+      // TODO: Should we add a callback here so that containers can gracefully
+      //       handle an error state?
       handleError(error)
       return null
     } else if (props) {

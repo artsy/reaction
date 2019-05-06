@@ -1,5 +1,5 @@
 import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
-import { SelectedCareerAchievementsArtistPage_artist } from "__generated__/SelectedCareerAchievementsArtistPage_artist.graphql"
+import { SelectedCareerAchievements_artist } from "__generated__/SelectedCareerAchievements_artist.graphql"
 import {
   hasSections,
   highestCategory,
@@ -11,7 +11,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 export interface SelectedCareerAchievementsProps {
-  artist: SelectedCareerAchievementsArtistPage_artist
+  artist: SelectedCareerAchievements_artist
   border?: boolean
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
@@ -141,51 +141,53 @@ export class SelectedCareerAchievements extends React.Component<
 
 export const SelectedCareerAchievementsFragmentContainer = createFragmentContainer(
   SelectedCareerAchievements,
-  graphql`
-    fragment SelectedCareerAchievementsArtistPage_artist on Artist
-      @argumentDefinitions(
-        partner_category: {
-          type: "[String]"
-          defaultValue: ["blue-chip", "top-established", "top-emerging"]
-        }
-      ) {
-      _id
-      highlights {
-        partners(
-          first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+  {
+    artist: graphql`
+      fragment SelectedCareerAchievements_artist on Artist
+        @argumentDefinitions(
+          partner_category: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
         ) {
-          edges {
-            node {
-              categories {
-                id
+        _id
+        highlights {
+          partners(
+            first: 10
+            display_on_partner_profile: true
+            represented_by: true
+            partner_category: $partner_category
+          ) {
+            edges {
+              node {
+                categories {
+                  id
+                }
               }
             }
           }
         }
-      }
-      insights {
-        type
-        label
-        entities
-      }
-      auctionResults(
-        recordsTrusted: true
-        first: 1
-        sort: PRICE_AND_DATE_DESC
-      ) {
-        edges {
-          node {
-            price_realized {
-              display(format: "0a")
+        insights {
+          type
+          label
+          entities
+        }
+        auctionResults(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized {
+                display(format: "0a")
+              }
+              organization
+              sale_date(format: "YYYY")
             }
-            organization
-            sale_date(format: "YYYY")
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

@@ -19,17 +19,17 @@ export class ArtworkImageBrowserContainer extends React.Component<
   slider: Slider
 
   render() {
-    const { images, image } = this.props.artwork
+    const { images, image, image_alt } = this.props.artwork
     if (!images.length) {
       return null
     }
 
     const defaultImageIndex = images.findIndex(e => e.id === image.id)
-
     return (
       <>
         <ArtworkImageBrowser
           images={images}
+          imageAlt={image_alt}
           sliderRef={slider => (this.slider = slider)}
         />
         <ArtworkActions
@@ -45,9 +45,8 @@ export class ArtworkImageBrowserContainer extends React.Component<
 
 export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
   ImageBrowserProps
->(
-  ArtworkImageBrowserContainer,
-  graphql`
+>(ArtworkImageBrowserContainer, {
+  artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
       title
       image_alt: to_s
@@ -63,7 +62,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       }
       images {
         id
-        uri: url(version: ["larger", "large"])
+        uri: url(version: ["large"])
         placeholder: resized(width: 30, height: 30, version: "small") {
           url
         }
@@ -85,8 +84,8 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
         }
       }
     }
-  `
-)
+  `,
+})
 
 export const ArtworkImageBrowserQueryRenderer = ({
   artworkID,

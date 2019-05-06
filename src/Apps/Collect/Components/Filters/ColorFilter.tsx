@@ -1,6 +1,6 @@
 import { CheckIcon } from "@artsy/palette"
 import { FilterState } from "Apps/Collect/FilterState"
-import { ContextConsumer } from "Artsy/SystemContext"
+import { SystemContextConsumer } from "Artsy"
 import React from "react"
 
 interface Props {
@@ -72,7 +72,7 @@ export class ColorFilter extends React.Component<Props> {
     const { filters } = this.props
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ mediator }) => {
           const CheckmarkStyle = {
             position: "relative",
@@ -225,7 +225,7 @@ export class ColorFilter extends React.Component<Props> {
             </>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

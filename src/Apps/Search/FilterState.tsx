@@ -132,8 +132,10 @@ export class FilterState extends Container<State> {
   }
 
   resetFilters = () => {
+    const { keyword } = this.state
     this.setState({
       ...initialState,
+      keyword,
     })
   }
 
@@ -170,7 +172,7 @@ export class FilterState extends Container<State> {
 
     switch (filter) {
       case "major_periods":
-        newPartialState = { major_periods: [value] }
+        newPartialState = { major_periods: !!value ? [value] : [] }
         break
       case "attribution_class":
         newPartialState = {

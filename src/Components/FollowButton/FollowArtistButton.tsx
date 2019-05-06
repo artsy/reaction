@@ -1,6 +1,6 @@
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
-import * as Artsy from "Artsy/SystemContext"
+import * as Artsy from "Artsy"
 import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/v2/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
@@ -21,7 +21,7 @@ import {
 
 interface Props
   extends React.HTMLProps<FollowArtistButton>,
-    Artsy.ContextProps {
+    Artsy.SystemContextProps {
   relay?: RelayProp
   artist?: FollowArtistButton_artist
   tracking?: TrackingProp
@@ -188,19 +188,21 @@ export class FollowArtistButton extends React.Component<Props, State> {
 }
 
 export const FollowArtistButtonFragmentContainer = createFragmentContainer(
-  Artsy.withContext(FollowArtistButton),
-  graphql`
-    fragment FollowArtistButton_artist on Artist
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: false }
-      ) {
-      __id
-      id
-      is_followed
-      counts {
-        follows
+  Artsy.withSystemContext(FollowArtistButton),
+  {
+    artist: graphql`
+      fragment FollowArtistButton_artist on Artist
+        @argumentDefinitions(
+          showFollowSuggestions: { type: "Boolean", defaultValue: false }
+        ) {
+        __id
+        id
+        is_followed
+        counts {
+          follows
+        }
+        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
       }
-      ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
-    }
-  `
+    `,
+  }
 )

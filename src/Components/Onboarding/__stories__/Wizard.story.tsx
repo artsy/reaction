@@ -1,15 +1,15 @@
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { Wizard } from "../Wizard"
 
 storiesOf("Onboarding", module).add("Wizard", () => {
   return (
     <div>
-      <ContextProvider>
+      <SystemContextProvider>
         <Wizard />
-      </ContextProvider>
+      </SystemContextProvider>
     </div>
   )
 })

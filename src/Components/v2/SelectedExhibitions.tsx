@@ -7,7 +7,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 
 const MIN_FOR_SELECTED_EXHIBITIONS = 3
-const MIN_EXHIBITIONS = 2
+export const MIN_EXHIBITIONS = 2
 
 export type Year = string
 
@@ -188,24 +188,26 @@ export class SelectedExhibitionsContainer extends React.Component<
 
 export const SelectedExhibitionFragmentContainer = createFragmentContainer(
   SelectedExhibitions,
-  graphql`
-    fragment SelectedExhibitions_exhibitions on Show @relay(plural: true) {
-      partner {
-        ... on ExternalPartner {
-          name
+  {
+    exhibitions: graphql`
+      fragment SelectedExhibitions_exhibitions on Show @relay(plural: true) {
+        partner {
+          ... on ExternalPartner {
+            name
+          }
+          ... on Partner {
+            name
+          }
         }
-        ... on Partner {
-          name
+        name
+        start_at(format: "YYYY")
+        cover_image {
+          cropped(width: 800, height: 600) {
+            url
+          }
         }
+        city
       }
-      name
-      start_at(format: "YYYY")
-      cover_image {
-        cropped(width: 800, height: 600) {
-          url
-        }
-      }
-      city
-    }
-  `
+    `,
+  }
 )

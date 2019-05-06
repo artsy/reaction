@@ -1,14 +1,14 @@
 import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2"
-import { stringify } from "qs"
+import { Carousel } from "Components/v2/CarouselV3"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 /**
@@ -56,7 +56,7 @@ export class ArtistHeader extends Component<Props> {
   render() {
     const props = this.props
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ mediator, user }) => {
           return (
             <>
@@ -69,7 +69,7 @@ export class ArtistHeader extends Component<Props> {
             </>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
@@ -102,7 +102,7 @@ export class LargeArtistHeader extends Component<Props> {
     return (
       <Box width="100%">
         {hasImages && (
-          <Fragment>
+          <section>
             <Carousel
               height={200}
               data={carousel.images as object[]}
@@ -119,9 +119,9 @@ export class LargeArtistHeader extends Component<Props> {
                 )
               }}
             />
-            <Spacer my={2} />
-          </Fragment>
+          </section>
         )}
+        <Spacer my={2} />
 
         <span id="jumpto-ArtistHeader" />
 
@@ -149,18 +149,7 @@ export class LargeArtistHeader extends Component<Props> {
             useDeprecatedButtonStyle={false}
             artist={props.artist}
             user={user}
-            onOpenAuthModal={() => {
-              props.mediator.trigger("open:auth", {
-                mode: "signup",
-                copy: `Sign up to follow ${props.artist.name}`,
-                signupIntent: "follow artist",
-                afterSignUpAction: {
-                  kind: "artist",
-                  action: "follow",
-                  objectId: props.artist.id,
-                },
-              })
-            }}
+            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
           >
             Follow
           </FollowArtistButton>
@@ -246,21 +235,7 @@ export class SmallArtistHeader extends Component<Props> {
             useDeprecatedButtonStyle={false}
             buttonProps={{ width: "100%" }}
             user={user}
-            onOpenAuthModal={() => {
-              const params = stringify({
-                action: "follow",
-                contextModule: "Artist page",
-                intent: "follow artist",
-                kind: "artist",
-                objectId: props.artist.id,
-                signUpIntent: "follow artist",
-                trigger: "click",
-                entityName: props.artist.name,
-              })
-              const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-              location.href = href
-            }}
+            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
           >
             Follow
           </FollowArtistButton>
@@ -270,29 +245,39 @@ export class SmallArtistHeader extends Component<Props> {
   }
 }
 
+const handleOpenAuth = (mediator, artist) => {
+  openAuthModal(mediator, {
+    entity: artist,
+    contextModule: Schema.ContextModule.ArtistPage,
+    intent: AuthModalIntent.FollowArtist,
+  })
+}
+
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
-  graphql`
-    fragment ArtistHeader_artist on Artist {
-      _id
-      id
-      name
-      nationality
-      years
-      counts {
-        follows
-      }
-      carousel {
-        images {
-          href
-          resized(height: 200) {
-            url
-            width
-            height
+  {
+    artist: graphql`
+      fragment ArtistHeader_artist on Artist {
+        _id
+        id
+        name
+        nationality
+        years
+        counts {
+          follows
+        }
+        carousel {
+          images {
+            href
+            resized(height: 200) {
+              url
+              width
+              height
+            }
           }
         }
+        ...FollowArtistButton_artist
       }
-      ...FollowArtistButton_artist
-    }
-  `
+    `,
+  }
 )

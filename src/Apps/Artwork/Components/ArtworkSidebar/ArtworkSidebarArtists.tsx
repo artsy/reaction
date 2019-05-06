@@ -1,5 +1,5 @@
 import { Box, Serif } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 
 import { FollowIcon } from "Components/v2"
@@ -8,9 +8,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-
-import { stringify } from "qs"
-import { data as sd } from "sharify"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
@@ -32,41 +30,10 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    if (sd.IS_MOBILE) {
-      this.openMobileAuth(artist)
-    } else if (mediator) {
-      this.openDesktopAuth(mediator, artist)
-    } else {
-      window.location.href = "/login"
-    }
-  }
-
-  openMobileAuth = artist => {
-    const params = stringify({
-      action: "follow",
-      contextModule: "Artwork page",
-      intent: "follow artist",
-      kind: "artist",
-      objectId: artist.id,
-      signUpIntent: "follow artist",
-      trigger: "click",
-      entityName: artist.name,
-    })
-    const href = `/sign_up?redirect-to=${window.location}&${params}`
-
-    window.location.href = href
-  }
-
-  openDesktopAuth = (mediator, artist) => {
-    mediator.trigger("open:auth", {
-      mode: "signup",
-      copy: `Sign up to follow ${artist.name}`,
-      signupIntent: "follow artist",
-      afterSignUpAction: {
-        kind: "artist",
-        action: "follow",
-        objectId: artist.id,
-      },
+    openAuthModal(mediator, {
+      entity: artist,
+      contextModule: Schema.ContextModule.ArtworkPage,
+      intent: AuthModalIntent.FollowArtist,
     })
   }
 
@@ -122,7 +89,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       artwork: { artists, cultural_maker },
     } = this.props
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box>
@@ -135,28 +102,30 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
             </Box>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
   ArtworkSidebarArtists,
-  graphql`
-    fragment ArtworkSidebarArtists_artwork on Artwork
-      @argumentDefinitions(
-        showFollowSuggestions: { type: "Boolean", defaultValue: true }
-      ) {
-      cultural_maker
-      artists {
-        __id
-        _id
-        id
-        name
-        href
-        ...FollowArtistButton_artist
-          @arguments(showFollowSuggestions: $showFollowSuggestions)
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarArtists_artwork on Artwork
+        @argumentDefinitions(
+          showFollowSuggestions: { type: "Boolean", defaultValue: true }
+        ) {
+        cultural_maker
+        artists {
+          __id
+          _id
+          id
+          name
+          href
+          ...FollowArtistButton_artist
+            @arguments(showFollowSuggestions: $showFollowSuggestions)
+        }
       }
-    }
-  `
+    `,
+  }
 )

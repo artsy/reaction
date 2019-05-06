@@ -5,10 +5,12 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 
+import { withSystemContext } from "Artsy"
 import { SeoDataForArtworkFragmentContainer as SeoDataForArtwork } from "./Seo/SeoDataForArtwork"
 
 interface ArtworkMetaProps {
   artwork: ArtworkMeta_artwork
+  googleAdId?: string
 }
 
 export class ArtworkMeta extends Component<ArtworkMetaProps> {
@@ -71,6 +73,47 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
     }
   }
 
+  renderGoogleAdSnippet() {
+    const { artwork, googleAdId: fromPropsGoogleAdId } = this.props
+    const { GOOGLE_ADWORDS_ID: fromSharifyGoogleAdId } = sd
+    const { is_in_auction, is_acquireable, _id } = artwork
+    if (!is_in_auction && !is_acquireable) return
+
+    // TODO: Investigate always being able to select from sharify.
+    const googleAdId = fromSharifyGoogleAdId || fromPropsGoogleAdId
+    if (!googleAdId) return
+
+    const script = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', "${googleAdId}");
+      gtag('event', 'page_view', {
+        'send_to': "${googleAdId}",
+        'dynx_itemid': "${_id}"
+      });`
+
+    // The below might be a useful guard if scripts start to be evaluated twice.
+    // const isServer = typeof window === "undefined"
+    // if (!isServer) return
+
+    return (
+      <>
+        <Meta
+          tag="script"
+          type="text/javascript"
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAdId}`}
+        />
+        <Meta
+          tag="script"
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: script }}
+        />
+      </>
+    )
+  }
+
   render() {
     const { artwork } = this.props
     const imageURL = get(artwork, a => a.meta_image.resized.url)
@@ -96,44 +139,54 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
         <SeoDataForArtwork artwork={artwork} />
         {this.renderImageMetaTags()}
         {this.renderSailthruTags()}
+        {this.renderGoogleAdSnippet()}
       </>
     )
   }
 }
 
 export const ArtworkMetaFragmentContainer = createFragmentContainer(
-  ArtworkMeta,
-  graphql`
-    fragment ArtworkMeta_artwork on Artwork {
-      href
-      date
-      artist_names
-      sale_message
-      partner {
-        name
-      }
-      image_rights
-      is_shareable
-      meta_image: image {
-        resized(width: 640, height: 640, version: ["large", "medium", "tall"]) {
-          width
-          height
-          url
-        }
-      }
-      meta {
-        title
-        description(limit: 155)
-        long_description: description(limit: 200)
-      }
-      context {
-        __typename
-        ... on ArtworkContextFair {
-          id
+  withSystemContext(ArtworkMeta),
+  {
+    artwork: graphql`
+      fragment ArtworkMeta_artwork on Artwork {
+        href
+        _id
+        date
+        artist_names
+        sale_message
+        partner {
           name
         }
+        image_rights
+        is_in_auction
+        is_acquireable
+        is_shareable
+        meta_image: image {
+          resized(
+            width: 640
+            height: 640
+            version: ["large", "medium", "tall"]
+          ) {
+            width
+            height
+            url
+          }
+        }
+        meta {
+          title
+          description(limit: 155)
+          long_description: description(limit: 200)
+        }
+        context {
+          __typename
+          ... on ArtworkContextFair {
+            id
+            name
+          }
+        }
+        ...SeoDataForArtwork_artwork
       }
-      ...SeoDataForArtwork_artwork
-    }
-  `
+    `,
+  }
 )

@@ -5,14 +5,13 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
-
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist

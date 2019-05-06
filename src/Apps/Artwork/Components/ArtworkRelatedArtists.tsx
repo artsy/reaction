@@ -1,6 +1,6 @@
 import { Box, Flex } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
@@ -39,7 +39,7 @@ export class ArtworkRelatedArtists extends React.Component<
     const relatedUrl = sd.APP_URL + artist.href + "/related-artists"
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box mt={6}>
@@ -62,27 +62,29 @@ export class ArtworkRelatedArtists extends React.Component<
             </Box>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const ArtworkRelatedArtistsFragmentContainer = createFragmentContainer(
   ArtworkRelatedArtists,
-  graphql`
-    fragment ArtworkRelatedArtists_artwork on Artwork {
-      artist {
-        href
-        related {
-          artists(kind: MAIN, first: 4) {
-            edges {
-              node {
-                ...ArtistCard_artist
+  {
+    artwork: graphql`
+      fragment ArtworkRelatedArtists_artwork on Artwork {
+        artist {
+          href
+          related {
+            artists(kind: MAIN, first: 4) {
+              edges {
+                node {
+                  ...ArtistCard_artist
+                }
               }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

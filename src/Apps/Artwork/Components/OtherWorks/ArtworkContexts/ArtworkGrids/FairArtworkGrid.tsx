@@ -1,8 +1,8 @@
 import { FairArtworkGrid_artwork } from "__generated__/FairArtworkGrid_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { Mediator, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Mediator, withContext } from "Artsy/SystemContext"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -57,24 +57,26 @@ class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
 }
 
 export const FairArtworkGridFragmentContainer = createFragmentContainer(
-  withContext(FairArtworkGrid),
-  graphql`
-    fragment FairArtworkGrid_artwork on Artwork
-      @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
-      fair: show(at_a_fair: true) {
-        href
+  withSystemContext(FairArtworkGrid),
+  {
+    artwork: graphql`
+      fragment FairArtworkGrid_artwork on Artwork
+        @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
+        fair: show(at_a_fair: true) {
+          href
 
-        artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
-          ...ArtworkGrid_artworks
+          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+            ...ArtworkGrid_artworks
 
-          # Used to check for content
-          edges {
-            node {
-              id
+            # Used to check for content
+            edges {
+              node {
+                id
+              }
             }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )

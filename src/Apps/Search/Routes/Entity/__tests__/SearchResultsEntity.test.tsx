@@ -1,5 +1,5 @@
 import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
@@ -10,9 +10,9 @@ describe("SearchResultsEntity", () => {
   const getWrapper = searchProps => {
     return mount(
       <MockBoot>
-        <ContextProvider>
+        <SystemContextProvider>
           <SearchResultsEntity {...searchProps} />
-        </ContextProvider>
+        </SystemContextProvider>
       </MockBoot>
     )
   }

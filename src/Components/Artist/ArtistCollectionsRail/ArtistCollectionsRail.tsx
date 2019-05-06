@@ -2,11 +2,12 @@ import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/CarouselV2"
 import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
@@ -21,6 +22,30 @@ interface ArtistCollectionsRailProps {
 export class ArtistCollectionsRail extends React.Component<
   ArtistCollectionsRailProps
 > {
+  componentDidMount() {
+    if (this.props.collections && this.props.collections.length > 0) {
+      this.trackingCollectionsRailTest()
+    }
+  }
+
+  @track(() => {
+    // TODO: remove after CollectionsRail a/b test
+    const experiment = "artist_collections_rail"
+    const variation = sd.ARTIST_COLLECTIONS_RAIL
+
+    return {
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    }
+  })
+  trackingCollectionsRailTest() {
+    // no-op
+  }
+
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,
@@ -45,25 +70,40 @@ export class ArtistCollectionsRail extends React.Component<
     const { collections } = this.props
     if (collections.length > 3) {
       return (
-        <RailWrapper>
+        <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
-            Browse by series
+            Browse by iconic collections
           </Sans>
           <Spacer pb={1} />
 
           <Carousel
             height={200}
-            settings={{
-              slidesToScroll: 1,
+            options={{
+              groupCells: 1,
+              wrapAround: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
             render={slide => {
               return <ArtistCollectionEntity collection={slide} />
             }}
+            renderLeftArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
+            renderRightArrow={({ Arrow }) => {
+              return (
+                <ArrowContainer>
+                  <Arrow />
+                </ArrowContainer>
+              )
+            }}
           />
-        </RailWrapper>
+        </Box>
       )
     } else {
       return null
@@ -71,7 +111,8 @@ export class ArtistCollectionsRail extends React.Component<
   }
 }
 
-const RailWrapper = styled(Box)`
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
   ${ArrowButton} {
     min-height: 130px;
     align-self: flex-start;
@@ -80,10 +121,12 @@ const RailWrapper = styled(Box)`
 
 export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
   ArtistCollectionsRail,
-  graphql`
-    fragment ArtistCollectionsRail_collections on MarketingCollection
-      @relay(plural: true) {
-      ...ArtistCollectionEntity_collection
-    }
-  `
+  {
+    collections: graphql`
+      fragment ArtistCollectionsRail_collections on MarketingCollection
+        @relay(plural: true) {
+        ...ArtistCollectionEntity_collection
+      }
+    `,
+  }
 )

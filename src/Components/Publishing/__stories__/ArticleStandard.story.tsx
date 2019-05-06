@@ -12,7 +12,7 @@ import {
   SuperArticle,
 } from "../Fixtures/Articles"
 
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import {
   Display,
   HeroSections,
@@ -24,26 +24,26 @@ import { ArticleData } from "../Typings"
 const story = storiesOf("Publishing/Articles/Standard", module)
   .add("Standard", () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Super Article", () => {
     const article = extend({}, SuperArticle, { hero_section: HeroSections[2] })
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={article}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isSuper
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("In series", () => {
@@ -54,44 +54,44 @@ const story = storiesOf("Publishing/Articles/Standard", module)
     } as ArticleData)
 
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article article={article} />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Without Vertical", () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={MissingVerticalStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("Truncated", () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={ImageHeavyStandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isTruncated
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
   .add("With tooltips", () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={StandardArticle}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
 
@@ -99,14 +99,14 @@ const displays = ["overlay", "image", "video", "slideshow"]
 displays.forEach(displayType => {
   story.add(`With ${displayType} ad`, () => {
     return (
-      <ContextProvider>
+      <SystemContextProvider>
         <Article
           article={StandardArticle}
           display={Display(displayType)}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
   })
 })
@@ -123,7 +123,7 @@ story.add(`Multiple articles`, () => {
   }
 
   return (
-    <ContextProvider>
+    <SystemContextProvider>
       <div>
         <Article
           article={article}
@@ -147,6 +147,6 @@ story.add(`Multiple articles`, () => {
           isTruncated
         />
       </div>
-    </ContextProvider>
+    </SystemContextProvider>
   )
 })

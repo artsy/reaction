@@ -1,4 +1,4 @@
-import { Mediator, SystemContext } from "Artsy/SystemContext"
+import { Mediator, SystemContext } from "Artsy"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"

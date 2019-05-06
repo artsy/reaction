@@ -1,4 +1,4 @@
-import { ContextProvider } from "Artsy"
+import { SystemContextProvider } from "Artsy"
 import { FollowGeneButton } from "Components/FollowButton/FollowGeneButton"
 import { Genes } from "Components/Publishing/Fixtures/Components"
 import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
@@ -23,9 +23,9 @@ describe("GeneTooltip", () => {
           onOpenAuthModal: PropTypes.func,
           user: PropTypes.object,
         },
-        <ContextProvider user={(context as any).user}>
+        <SystemContextProvider user={(context as any).user}>
           <GeneToolTip gene={props.gene} />
-        </ContextProvider>
+        </SystemContextProvider>
       )
     )
   }

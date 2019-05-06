@@ -1,7 +1,7 @@
 export const OrderWithSuccess = {
-  ecommerceCreateOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
+      __typename: "CommerceOrderWithMutationSuccess",
       order: {
         id: "orderId",
         mode: "BUY",
@@ -11,9 +11,9 @@ export const OrderWithSuccess = {
 }
 
 export const OrderWithFailure = {
-  ecommerceCreateOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "insufficient_inventory",

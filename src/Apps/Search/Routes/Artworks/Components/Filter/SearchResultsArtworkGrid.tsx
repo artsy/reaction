@@ -2,7 +2,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -30,7 +30,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
   }
 
   @track((props: Props, _state, [artwork]) => ({
-    action_type: Schema.ActionType.SelectedItemFromSearch,
+    action_type: Schema.ActionType.SelectedItemFromSearchPage,
     query: props.term,
     item_type: "Artwork",
     item_id: artwork.id,
@@ -75,8 +75,8 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
         const urlFragment = urlFragmentFromState(state, { page })
 
         // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search2?${filterQueryParams}`)
-        window.history.pushState({}, null, `/search2?${urlFragment}`)
+        // this.props.router.replace(`/search?${urlFragment}`)
+        window.history.pushState({}, null, `/search?${urlFragment}`)
       }
     )
   }
@@ -98,7 +98,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     const emptyStateComponent = <ZeroState entity="artworks" term={term} />
 
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Subscribe to={[FilterState]}>
@@ -138,7 +138,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
             </Subscribe>
           )
         }}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }

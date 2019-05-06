@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Search/FilterState"
-import { Mediator } from "Artsy/SystemContext"
+import { Mediator } from "Artsy"
 import { MobileActionSheet } from "../SearchResultsMobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
@@ -42,6 +42,22 @@ export class FilterContainer extends React.Component<
     showMobileActionSheet: false,
   }
 
+  componentDidMount() {
+    this.updateBodyScrollBlock()
+  }
+
+  componentDidUpdate() {
+    this.updateBodyScrollBlock()
+  }
+
+  updateBodyScrollBlock() {
+    if (this.state.showMobileActionSheet) {
+      document.body.style.overflowY = "hidden"
+    } else {
+      document.body.style.overflowY = "visible"
+    }
+  }
+
   hideMobileActionSheet = () => {
     this.setState({
       showMobileActionSheet: false,
@@ -57,13 +73,13 @@ export class FilterContainer extends React.Component<
           <WaysToBuyFilter filters={filters} />
         </Flex>
 
-        <Toggle label="Medium">
+        <Toggle label="Medium" expanded>
           <Flex flexDirection="column" alignItems="left" mb={1}>
             <MediumFilter filters={filters} mediums={mediums} />
           </Flex>
         </Toggle>
 
-        <Toggle label="Price">
+        <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
             <PriceRangeFilter filters={filters} />
           </Flex>

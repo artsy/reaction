@@ -15,6 +15,10 @@ export type AuctionCard_sale = {
     readonly is_live_open: boolean | null;
     readonly is_preview: boolean | null;
     readonly live_start_at: string | null;
+    readonly registrationStatus: ({
+        readonly id: string;
+    }) | null;
+    readonly is_registration_closed: boolean | null;
     readonly name: string | null;
     readonly start_at: string | null;
     readonly is_closed: boolean | null;
@@ -30,7 +34,7 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -38,6 +42,13 @@ v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
   "args": null,
   "storageKey": null
 };
@@ -49,11 +60,17 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "live_start_at",
+      "name": "registrationStatus",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Bidder",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
     },
     {
       "kind": "LinkedField",
@@ -104,13 +121,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -128,11 +139,25 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "live_start_at",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "end_at",
       "args": null,
       "storageKey": null
     },
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_registration_closed",
+      "args": null,
+      "storageKey": null
+    },
+    v2,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -156,7 +181,7 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
+        v2,
         v1
       ]
     },
@@ -164,5 +189,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '86fd60f4b0d888d1860d59715bb24be5';
+(node as any).hash = 'a66a030350626c50cc51ca4dd6c1149c';
 export default node;

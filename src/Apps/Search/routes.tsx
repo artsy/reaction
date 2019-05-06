@@ -1,3 +1,4 @@
+import { renderSpinner } from "Artsy/Router/Utils/Route"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -27,9 +28,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
     path: key,
     Component: SearchResultsEntityRoute,
     render: ({ props, Component }) => {
-      if (!props) {
-        return null
-      }
+      if (!props) return renderSpinner()
       return <Component {...props} tab={key} entities={entities} />
     },
     prepareVariables: (_params, { location }) => {
@@ -55,7 +54,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 
 export const routes: RouteConfig[] = [
   {
-    path: "/search2",
+    path: "/search",
     Component: SearchApp,
     query: graphql`
       query routes_SearchBarTopLevelQuery($term: String!) {

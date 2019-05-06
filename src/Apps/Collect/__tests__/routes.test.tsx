@@ -1,6 +1,5 @@
 import { Boot } from "Artsy/Router/Boot"
 import { createMockNetworkLayer, renderUntil } from "DevTools"
-import { Resolver } from "found-relay"
 import { find } from "lodash"
 import React from "react"
 import { Environment, RecordSource, Store } from "relay-runtime"
@@ -25,7 +24,6 @@ describe("Routes", () => {
         context={{}}
         user={{}}
         relayEnvironment={environment}
-        resolver={new Resolver(environment)}
         routes={routes}
       />
     )

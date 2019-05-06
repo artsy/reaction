@@ -2,18 +2,24 @@
 import { Avatar, Box, Button, Flex, Serif } from "@artsy/palette"
 import { FollowArtistPopoverRow_artist } from "__generated__/FollowArtistPopoverRow_artist.graphql"
 import { FollowArtistPopoverRowMutation } from "__generated__/FollowArtistPopoverRowMutation.graphql"
-import { ContextProps } from "Artsy"
+import { SystemContextProps } from "Artsy"
 import React from "react"
-import { commitMutation, createFragmentContainer, graphql } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
 import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
 import { FollowArtistPopoverState } from "./state"
 
-interface Props extends ContextProps {
+interface Props extends SystemContextProps {
   artist: FollowArtistPopoverRow_artist
   excludeArtistIdsState?: FollowArtistPopoverState
+  relay: RelayProp
 }
 
 interface State {
@@ -145,17 +151,19 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
       </Subscribe>
     )
   },
-  graphql`
-    fragment FollowArtistPopoverRow_artist on Artist {
-      id
-      _id
-      __id
-      name
-      image {
-        cropped(width: 45, height: 45) {
-          url
+  {
+    artist: graphql`
+      fragment FollowArtistPopoverRow_artist on Artist {
+        id
+        _id
+        __id
+        name
+        image {
+          cropped(width: 45, height: 45) {
+            url
+          }
         }
       }
-    }
-  `
+    `,
+  }
 )

@@ -1,9 +1,9 @@
 import { FilterIcon, Toggle } from "@artsy/palette"
 import { ArtworkFilter_artist } from "__generated__/ArtworkFilter_artist.graphql"
 import { FilterState } from "Apps/Artist/Routes/Overview/state"
+import { Mediator, SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ContextConsumer, Mediator } from "Artsy/SystemContext"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -25,6 +25,7 @@ import {
   SmallSelect,
   Spacer,
 } from "@artsy/palette"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface Props {
   artist: ArtworkFilter_artist
@@ -160,13 +161,6 @@ class Filter extends Component<Props> {
     )
   }
 
-  @track((props: Props, _state, [_selected, category, count]) => {
-    return {
-      action_type: Schema.ActionType.ClickedCommercialFilter,
-      changed: { [category]: count.id },
-      current: { ...props.filterState.state },
-    }
-  })
   handleCategorySelect(selected, category, count) {
     const { filterState, mediator } = this.props
 
@@ -225,7 +219,7 @@ class Filter extends Component<Props> {
   renderZeroState() {
     const {
       artist,
-      artist: { id, name, is_followed },
+      artist: { is_followed },
       mediator,
       user,
     } = this.props
@@ -239,25 +233,21 @@ class Filter extends Component<Props> {
               artist={artist}
               useDeprecatedButtonStyle={false}
               user={user}
-              onOpenAuthModal={() => {
-                mediator.trigger("open:auth", {
-                  mode: "signup",
-                  copy: `Sign up to follow ${name}`,
-                  signupIntent: "follow artist",
-                  afterSignUpAction: {
-                    kind: "artist",
-                    action: "follow",
-                    objectId: id,
-                  },
-                })
-              }}
-              render={() => <a>Follow {name}</a>}
+              onOpenAuthModal={() => this.handleOpenAuth(mediator, artist)}
             />{" "}
             to receive notifications when new works are added.
           </>
         )}
       </Message>
     )
+  }
+
+  handleOpenAuth(mediator, artist) {
+    openAuthModal(mediator, {
+      entity: artist,
+      contextModule: Schema.ContextModule.ArtworkFilter,
+      intent: AuthModalIntent.FollowArtist,
+    })
   }
 
   renderSelect() {
@@ -361,7 +351,7 @@ class Filter extends Component<Props> {
 export const ArtworkFilterFragmentContainer = createFragmentContainer(
   (props: Props) => {
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ user, mediator }) => (
           <Subscribe to={[FilterState]}>
             {(filters: FilterState) => {
@@ -376,62 +366,64 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
             }}
           </Subscribe>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   },
-  graphql`
-    fragment ArtworkFilter_artist on Artist
-      @argumentDefinitions(
-        medium: { type: "String", defaultValue: "*" }
-        major_periods: { type: "[String]" }
-        partner_id: { type: "ID" }
-        for_sale: { type: "Boolean" }
-        at_auction: { type: "Boolean" }
-        acquireable: { type: "Boolean" }
-        offerable: { type: "Boolean" }
-        inquireable_only: { type: "Boolean" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+  {
+    artist: graphql`
+      fragment ArtworkFilter_artist on Artist
+        @argumentDefinitions(
+          medium: { type: "String", defaultValue: "*" }
+          major_periods: { type: "[String]" }
+          partner_id: { type: "ID" }
+          for_sale: { type: "Boolean" }
+          at_auction: { type: "Boolean" }
+          acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
+          inquireable_only: { type: "Boolean" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, GALLERY, INSTITUTION, MAJOR_PERIOD]
+          }
+          sort: { type: "String", defaultValue: "-decayed_merch" }
+          price_range: { type: "String", defaultValue: "*-*" }
+        ) {
+        id
+        name
+        is_followed
+        counts {
+          for_sale_artworks
+          ecommerce_artworks
+          auction_artworks
+          artworks
+          has_make_offer_artworks
         }
-        sort: { type: "String", defaultValue: "-decayed_merch" }
-        price_range: { type: "String", defaultValue: "*-*" }
-      ) {
-      id
-      name
-      is_followed
-      counts {
-        for_sale_artworks
-        ecommerce_artworks
-        auction_artworks
-        artworks
-        has_make_offer_artworks
-      }
-      filtered_artworks(aggregations: $aggregations, size: 0) {
-        aggregations {
-          slice
-          counts {
-            name
-            id
+        filtered_artworks(aggregations: $aggregations, size: 0) {
+          aggregations {
+            slice
+            counts {
+              name
+              id
+            }
           }
         }
+
+        ...ArtworkFilterRefetch_artist
+          @arguments(
+            medium: $medium
+            major_periods: $major_periods
+            partner_id: $partner_id
+            for_sale: $for_sale
+            sort: $sort
+            offerable: $offerable
+            acquireable: $acquireable
+            at_auction: $at_auction
+            inquireable_only: $inquireable_only
+            price_range: $price_range
+          )
+
+        ...FollowArtistButton_artist
       }
-
-      ...ArtworkFilterRefetch_artist
-        @arguments(
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          sort: $sort
-          offerable: $offerable
-          acquireable: $acquireable
-          at_auction: $at_auction
-          inquireable_only: $inquireable_only
-          price_range: $price_range
-        )
-
-      ...FollowArtistButton_artist
-    }
-  `
+    `,
+  }
 )

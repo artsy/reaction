@@ -1,6 +1,6 @@
 import { Radio } from "@artsy/palette"
 import { FilterState, initialState } from "Apps/Search/FilterState"
-import { ContextProvider } from "Artsy/SystemContext"
+import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
 import { TimePeriodFilter } from "../TimePeriodFilter"
@@ -9,9 +9,9 @@ describe("TimePeriodFilter", () => {
   const filterState = new FilterState(initialState)
   const mediator = { trigger: jest.fn() }
   let timePeriodFilter = mount(
-    <ContextProvider mediator={mediator}>
+    <SystemContextProvider mediator={mediator}>
       <TimePeriodFilter filters={filterState} />
-    </ContextProvider>
+    </SystemContextProvider>
   )
 
   it("displays the correct number o Radio components for Time Periods", () => {
@@ -20,12 +20,12 @@ describe("TimePeriodFilter", () => {
 
   it("filters out incorrect years", () => {
     timePeriodFilter = mount(
-      <ContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator}>
         <TimePeriodFilter
           filters={filterState}
           timePeriods={["2910", "2010", "2000"]}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
 
     expect(timePeriodFilter.find(Radio).length).toBe(2)
@@ -47,12 +47,12 @@ describe("TimePeriodFilter", () => {
 
   it("only shows passed in time periods if available", () => {
     timePeriodFilter = mount(
-      <ContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator}>
         <TimePeriodFilter
           filters={filterState}
           timePeriods={["2010", "2000"]}
         />
-      </ContextProvider>
+      </SystemContextProvider>
     )
 
     expect(timePeriodFilter.find(Radio).length).toBe(2)

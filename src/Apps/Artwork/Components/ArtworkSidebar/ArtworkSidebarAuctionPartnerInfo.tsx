@@ -1,5 +1,5 @@
 import { Box, Link, Serif } from "@artsy/palette"
-import { ContextConsumer } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
@@ -35,7 +35,7 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
       return null
     }
     return (
-      <ContextConsumer>
+      <SystemContextConsumer>
         {({ mediator }) => (
           <Box pb={3}>
             {partner && (
@@ -59,28 +59,30 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
             )}
           </Box>
         )}
-      </ContextConsumer>
+      </SystemContextConsumer>
     )
   }
 }
 
 export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentContainer(
   ArtworkSidebarAuctionPartnerInfo,
-  graphql`
-    fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
-      _id
-      partner {
+  {
+    artwork: graphql`
+      fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
         _id
-        name
+        partner {
+          _id
+          name
+        }
+        sale_artwork {
+          estimate
+        }
+        sale {
+          _id
+          is_closed
+          is_with_buyers_premium
+        }
       }
-      sale_artwork {
-        estimate
-      }
-      sale {
-        _id
-        is_closed
-        is_with_buyers_premium
-      }
-    }
-  `
+    `,
+  }
 )

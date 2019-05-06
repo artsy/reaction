@@ -1,5 +1,8 @@
 import Input from "Components/Input"
-import { SearchBarRefetchContainer as SearchBar } from "Components/Search/SearchBar"
+import {
+  getSearchTerm,
+  SearchBarRefetchContainer as SearchBar,
+} from "Components/Search/SearchBar"
 import { SuggestionItem } from "Components/Search/Suggestions/SuggestionItem"
 import { renderRelayTree } from "DevTools"
 import { MockBoot } from "DevTools/MockBoot"
@@ -97,7 +100,7 @@ describe("SearchBar", () => {
     window.location.assign = jest.fn()
     component
       .find(SuggestionItem)
-      .at(1) // at 0 is the firstSuggestionPlaceholder
+      .at(0)
       .simulate("click")
 
     expect(window.location.assign).toHaveBeenCalledWith("/cat/percy-z")
@@ -110,5 +113,59 @@ describe("SearchBar", () => {
     await flushPromiseQueue()
 
     expect(component.html()).toContain("<strong>Perc</strong>y Z")
+  })
+})
+
+describe("getSearchTerm", () => {
+  function buildLocationWithQueryString(queryString: string): Location {
+    return {
+      ancestorOrigins: undefined,
+      host: undefined,
+      hostname: undefined,
+      href: undefined,
+      origin: undefined,
+      port: undefined,
+      protocol: undefined,
+      assign: undefined,
+      hash: undefined,
+      pathname: undefined,
+      reload: undefined,
+      replace: undefined,
+      search: queryString,
+    }
+  }
+
+  it("returns empty string if there is no term", () => {
+    const location = buildLocationWithQueryString(undefined)
+
+    const result = getSearchTerm(location)
+
+    expect(result).toEqual("")
+  })
+
+  it("returns empty string if there is an empty term", () => {
+    const location = buildLocationWithQueryString("")
+
+    const result = getSearchTerm(location)
+
+    expect(result).toEqual("")
+  })
+
+  it("returns the term if there is a single one", () => {
+    const location = buildLocationWithQueryString("?term=monkey")
+
+    const result = getSearchTerm(location)
+
+    expect(result).toEqual("monkey")
+  })
+
+  it("returns the first term if there are multiple", () => {
+    // This is not really a concern in real-life, but TypeScript says
+    //  it can happen, so we should cover it.
+    const location = buildLocationWithQueryString("?term=monkey&term=elephant")
+
+    const result = getSearchTerm(location)
+
+    expect(result).toEqual("monkey")
   })
 })

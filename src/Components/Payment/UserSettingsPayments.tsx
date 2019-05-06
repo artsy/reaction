@@ -1,7 +1,7 @@
 import { Box, Serif, Theme } from "@artsy/palette"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import { UserSettingsPaymentsQuery } from "__generated__/UserSettingsPaymentsQuery.graphql"
-import { ContextProps, SystemContext } from "Artsy"
+import { SystemContext, SystemContextProps } from "Artsy"
 import { get } from "Utils/get"
 
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -15,7 +15,7 @@ import {
 import { PaymentFormWrapper } from "./PaymentFormWrapper"
 import { SavedCreditCards } from "./SavedCreditCards"
 
-interface UserSettingsPaymentsProps extends ContextProps {
+interface UserSettingsPaymentsProps extends SystemContextProps {
   relay?: RelayProp
   me: UserSettingsPayments_me
 }
@@ -75,20 +75,22 @@ graphql`
 
 export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
   UserSettingsPayments,
-  graphql`
-    fragment UserSettingsPayments_me on Me {
-      __id
-      id
-      creditCards(first: 100)
-        @connection(key: "UserSettingsPayments_creditCards", filters: []) {
-        edges {
-          node {
-            ...UserSettingsPaymentsCreditCard @relay(mask: false)
+  {
+    me: graphql`
+      fragment UserSettingsPayments_me on Me {
+        __id
+        id
+        creditCards(first: 100)
+          @connection(key: "UserSettingsPayments_creditCards", filters: []) {
+          edges {
+            node {
+              ...UserSettingsPaymentsCreditCard @relay(mask: false)
+            }
           }
         }
       }
-    }
-  `
+    `,
+  }
 )
 
 export const UserSettingsPaymentsQueryRenderer = () => {

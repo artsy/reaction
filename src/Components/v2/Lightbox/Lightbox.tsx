@@ -1,4 +1,4 @@
-import { Box, color, Flex, space } from "@artsy/palette"
+import { Box, color, Flex, Image, space } from "@artsy/palette"
 import * as Schema from "Artsy/Analytics/Schema"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
@@ -23,6 +23,12 @@ const DeepZoomContainer = styled.div`
   background-color: ${color("black100")};
 `
 
+const StyledImage = styled(Image)`
+  cursor: zoom-in;
+  max-width: 100%;
+  max-height: 100%;
+`
+
 export interface DeepZoomProps {
   Image: {
     xmlns: string
@@ -38,6 +44,7 @@ export interface DeepZoomProps {
 }
 
 export interface LightboxProps {
+  imageAlt: string
   deepZoom: DeepZoomProps
   enabled?: boolean
   isDefault?: boolean
@@ -88,7 +95,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     flow: Schema.Flow.ArtworkZoom,
     action_type: Schema.ActionType.Click,
   })
-  show(event) {
+  show(_event) {
     this.setState({ shown: true, showZoomSlider: true })
   }
 
@@ -204,7 +211,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     this.hide()
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     if (this.state.shown === true && prevState.shown === false) {
       this.initSeaDragon()
     }
@@ -271,7 +278,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   render() {
-    const { children, enabled, isDefault } = this.props
+    const { children, enabled, isDefault, imageAlt } = this.props
 
     // Only render client-side
     if (!this.state.element) {
@@ -281,15 +288,26 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     const modifiedChildren = React.Children.map(
       children,
       (child: React.ReactElement<any>) => {
-        return React.cloneElement(child, {
-          ...(enabled && {
-            style: { cursor: "zoom-in" },
-            onClick: this.show.bind(this),
-            // Used by view-in-room
-            "data-type": "artwork-image",
-            "data-is-default": isDefault,
-          }),
-        })
+        const {
+          props: { src },
+        } = child
+        return (
+          enabled && (
+            <Flex
+              justifyContent="center"
+              alignItems="center"
+              height="60vh"
+              onClick={this.show.bind(this)}
+            >
+              <StyledImage
+                src={src}
+                alt={imageAlt}
+                data-type="artwork-image"
+                data-is-default={isDefault}
+              />
+            </Flex>
+          )
+        )
       }
     )
     return (

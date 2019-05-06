@@ -1,4 +1,4 @@
-import { SystemContext } from "Artsy/SystemContext"
+import { SystemContext } from "Artsy"
 import React, { useContext } from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"

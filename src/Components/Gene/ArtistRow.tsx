@@ -39,9 +39,8 @@ const Container = styled.div`
   margin-bottom: 60px;
 `
 
-export default createFragmentContainer(
-  ArtistRow,
-  graphql`
+export default createFragmentContainer(ArtistRow, {
+  artist: graphql`
     fragment ArtistRow_artist on Artist {
       name
       href
@@ -50,5 +49,5 @@ export default createFragmentContainer(
         ...Fillwidth_artworks
       }
     }
-  `
-)
+  `,
+})

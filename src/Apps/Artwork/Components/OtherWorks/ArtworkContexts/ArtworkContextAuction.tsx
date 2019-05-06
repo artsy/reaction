@@ -6,7 +6,7 @@ import React, { useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
 import { Join, Spacer } from "@artsy/palette"
-import { OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
+import { OtherAuctionsFragmentContainer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
 import { OtherWorksContextProps } from ".."
 import {
   ArtistArtworkGrid,
@@ -64,7 +64,7 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
       return (
         <Join separator={<Spacer my={6} />}>
           <AuctionArtworkGrid artwork={artwork} />
-          <OtherAuctions auctions={sales} />
+          <OtherAuctions sales={sales} />
         </Join>
       )
     } else {
@@ -72,34 +72,36 @@ export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
         <Join separator={<Spacer my={6} />}>
           <ArtistArtworkGrid artwork={artwork} />
           <RelatedWorksArtworkGrid artwork={artwork} />
-          <OtherAuctions auctions={sales} />
+          <OtherAuctions sales={sales} />
         </Join>
       )
     }
   },
-  graphql`
-    fragment ArtworkContextAuction_viewer on Viewer
-      @argumentDefinitions(
-        isClosed: { type: "Boolean" }
-        excludeArtworkIDs: { type: "[String!]" }
-        artworkSlug: { type: "String!" }
-      ) {
-      artwork(id: $artworkSlug) {
-        sale {
-          href
-          is_closed
+  {
+    viewer: graphql`
+      fragment ArtworkContextAuction_viewer on Viewer
+        @argumentDefinitions(
+          isClosed: { type: "Boolean" }
+          excludeArtworkIDs: { type: "[String!]" }
+          artworkSlug: { type: "String!" }
+        ) {
+        artwork(id: $artworkSlug) {
+          sale {
+            href
+            is_closed
+          }
+          ...AuctionArtworkGrid_artwork
+            @skip(if: $isClosed)
+            @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+          ...ArtistArtworkGrid_artwork
+            @include(if: $isClosed)
+            @arguments(excludeArtworkIDs: $excludeArtworkIDs)
+          ...RelatedWorksArtworkGrid_artwork
         }
-        ...AuctionArtworkGrid_artwork
-          @skip(if: $isClosed)
-          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-        ...ArtistArtworkGrid_artwork
-          @include(if: $isClosed)
-          @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-        ...RelatedWorksArtworkGrid_artwork
+        sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
+          ...OtherAuctions_sales
+        }
       }
-      sales(size: 4, sort: TIMELY_AT_NAME_ASC) {
-        ...AuctionCard_sale
-      }
-    }
-  `
+    `,
+  }
 )

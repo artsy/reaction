@@ -19,6 +19,14 @@ const SpinnerContainer = styled.figure`
   position: relative;
 `
 
+export const renderSpinner = () => {
+  return (
+    <SpinnerContainer className={LoadingClassName}>
+      <Spinner />
+    </SpinnerContainer>
+  )
+}
+
 // When popping a route (navigate back), use the data in the store.
 // function defaultGetDataFrom({ location }) {
 //   return location.action === "POP" ? "STORE_OR_NETWORK" : "STORE_THEN_NETWORK"
@@ -49,13 +57,7 @@ function createRender({ prerender, render, renderFetched }) {
     }
 
     // This should only ever show when doing client-side routing.
-    if (!props) {
-      return (
-        <SpinnerContainer className={LoadingClassName}>
-          <Spinner />
-        </SpinnerContainer>
-      )
-    }
+    if (!props) return renderSpinner()
 
     if (renderFetched) {
       return renderFetched(renderArgs)

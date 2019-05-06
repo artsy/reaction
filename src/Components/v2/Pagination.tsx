@@ -42,9 +42,8 @@ export class Pagination extends React.Component<Props> {
   }
 }
 
-export const PaginationFragmentContainer = createFragmentContainer(
-  Pagination,
-  graphql`
+export const PaginationFragmentContainer = createFragmentContainer(Pagination, {
+  pageCursors: graphql`
     fragment Pagination_pageCursors on PageCursors {
       around {
         cursor
@@ -66,5 +65,5 @@ export const PaginationFragmentContainer = createFragmentContainer(
         page
       }
     }
-  `
-)
+  `,
+})

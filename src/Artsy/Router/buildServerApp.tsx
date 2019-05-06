@@ -67,6 +67,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             routeConfig: createRouteConfig(routes),
             resolver,
             render,
+            matchContext: { user },
           })
         )
 
@@ -75,18 +76,21 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           return
         }
 
+        /**
+         * An array that gets passed to `react-head`'s provider that will collect the header
+         * tags that are rendered by the App. `headTags` is _mutated_ when it's passed to the App. Beware.
+         **/
         const headTags = [<style type="text/css">{MediaStyle}</style>]
         const matchingMediaQueries = userAgent && matchingMediaQueriesForUserAgent(userAgent) // prettier-ignore
 
-        const ServerApp = () => {
+        const ServerApp = ({ tags = [] }) => {
           return (
             <Boot
               context={context}
               user={user}
-              headTags={headTags}
+              headTags={tags}
               onlyMatchMediaQueries={matchingMediaQueries}
               relayEnvironment={relayEnvironment}
-              resolver={resolver}
               routes={routes}
             >
               {element}
@@ -105,7 +109,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             const data = await relayEnvironment.relaySSRMiddleware.getCache()
             // Render tree again, but this time with Relay data being available.
             const html = ReactDOMServer.renderToString(
-              sheet.collectStyles(<ServerApp />)
+              sheet.collectStyles(<ServerApp tags={headTags} />)
             )
             // Extract CSS styleTags to inject for SSR pass
             const tags = sheet.getStyleTags()

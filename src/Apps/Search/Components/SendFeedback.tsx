@@ -9,8 +9,8 @@ import {
   TextArea,
 } from "@artsy/palette"
 import { SendFeedbackSearchResultsMutation } from "__generated__/SendFeedbackSearchResultsMutation.graphql"
-import { ContextProps } from "Artsy"
-import { withContext } from "Artsy/SystemContext"
+import { SystemContextProps } from "Artsy"
+import { withSystemContext } from "Artsy"
 import { EMAIL_REGEX } from "Components/Publishing/Constants"
 import React from "react"
 import { commitMutation, graphql } from "react-relay"
@@ -31,7 +31,7 @@ interface State extends Inputs {
 
 const logger = createLogger("Apps/Search/Components/SendFeedback.tsx")
 
-class SendFeedbackForm extends React.Component<ContextProps, State> {
+class SendFeedbackForm extends React.Component<SystemContextProps, State> {
   state = {
     submitted: false,
     message: "",
@@ -41,10 +41,8 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   handleClick() {
-    const { user, relayEnvironment } = this.props
+    const { relayEnvironment } = this.props
     const { message, name, email } = this.state
-    if (!message) return
-    if (!user && !(name && email)) return
 
     commitMutation<SendFeedbackSearchResultsMutation>(relayEnvironment, {
       mutation: graphql`
@@ -103,30 +101,28 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   renderPersonalInfoInputs() {
-    const { name, triggeredValidation } = this.state
-    const errorForEmail = this.errorForEmail()
     return (
       <LoggedOutInputContainer mt={2} alignContent="space-between">
         <Box mr={1} width="50%">
           <Input
+            name="name"
             placeholder="Your name"
             onChange={({ currentTarget: { value } }) => {
               this.setState({ name: value })
             }}
             required
-            error={
-              !name && triggeredValidation ? "Cannot leave field blank" : ""
-            }
+            error={this.errorForText("name")}
           />
         </Box>
         <Box width="50%">
           <Input
+            name="email"
             placeholder="Email address"
             onChange={({ currentTarget: { value } }) => {
               this.setState({ email: value })
             }}
             required
-            error={errorForEmail && triggeredValidation ? errorForEmail : ""}
+            error={this.errorForEmail()}
           />
         </Box>
       </LoggedOutInputContainer>
@@ -134,24 +130,40 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
   }
 
   errorForEmail() {
-    const { email } = this.state
+    const { email, triggeredValidation } = this.state
+    if (!triggeredValidation) return
     if (!email) return "Cannot leave field blank"
     if (!email.match(EMAIL_REGEX)) return "Invalid email."
   }
 
+  errorForText(key: "message" | "name") {
+    const { triggeredValidation } = this.state
+    if (!triggeredValidation) return
+    const text = this.state[key]
+    if (!text) return "Cannot leave field blank"
+  }
+
+  hasErrors(): boolean {
+    const { user } = this.props
+    if (user) return !!this.errorForText("message")
+
+    return !!(
+      this.errorForEmail() ||
+      this.errorForText("message") ||
+      this.errorForText("name")
+    )
+  }
+
   renderFeedbackTextArea() {
-    const { message, triggeredValidation } = this.state
     return (
-      <FeedbackTextAreaContainer mt={2}>
+      <FeedbackTextAreaContainer my={3}>
         <TextArea
           onChange={({ value }) => {
             this.setState({ message: value })
           }}
           placeholder="Your comments here"
           required
-          error={
-            !message && triggeredValidation ? "Cannot leave field blank" : ""
-          }
+          error={this.errorForText("message")}
         />
       </FeedbackTextAreaContainer>
     )
@@ -176,10 +188,10 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
     return (
       <>
         <Box textAlign="center">
-          <Serif size="4">Your feedback is important to us.</Serif>
+          <Serif size="5">Your feedback is important to us.</Serif>
         </Box>
         <Box>
-          <Serif size="2">
+          <Serif size="3">
             Tell us how we can improve and help you find what you are looking
             for.
           </Serif>
@@ -188,9 +200,10 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
         {this.renderFeedbackTextArea()}
         <Button
           onClick={() => {
-            this.setState({ triggeredValidation: true }, () =>
+            this.setState({ triggeredValidation: true }, () => {
+              if (this.hasErrors()) return
               this.handleClick()
-            )
+            })
           }}
         >
           Submit
@@ -203,7 +216,7 @@ class SendFeedbackForm extends React.Component<ContextProps, State> {
     const { submitted } = this.state
 
     return (
-      <Box bg={color("black5")} p={3} mt={3}>
+      <Box bg={color("black5")} p={6} mt={3}>
         <FeedbackContainer
           flexDirection="column"
           alignItems="center"
@@ -231,4 +244,4 @@ const LoggedOutInputContainer = styled(Flex)`
   width: 100%;
 `
 
-export const SendFeedback = withContext(SendFeedbackForm)
+export const SendFeedback = withSystemContext(SendFeedbackForm)

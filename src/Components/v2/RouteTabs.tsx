@@ -16,7 +16,7 @@ export const RouteTabs = styled(TabsContainer)`
     :not(:last-child) {
       margin-right: ${space(3)}px;
     }
-    color: ${color("black30")};
+    color: ${color("black60")};
     text-decoration: none;
 
     &.active {

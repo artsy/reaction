@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { Badge_artwork$ref } from "./Badge_artwork.graphql";
 import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _FillwidthItem_artwork$ref: unique symbol;
@@ -12,7 +13,7 @@ export type FillwidthItem_artwork = {
         readonly aspect_ratio: number;
     }) | null;
     readonly href: string | null;
-    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref;
+    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
     readonly " $refType": FillwidthItem_artwork$ref;
 };
 
@@ -82,6 +83,11 @@ const node: ConcreteFragment = {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "Badge_artwork",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "__id",
@@ -90,5 +96,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'e7d7e05dbcfbc935f92f7d36e8d0fd3e';
+(node as any).hash = '2d0cf4dcb3c793bdd36a81e3fe54d7e6';
 export default node;

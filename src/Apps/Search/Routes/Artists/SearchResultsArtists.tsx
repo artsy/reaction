@@ -1,4 +1,4 @@
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Separator } from "@artsy/palette"
 import { SearchResultsArtists_viewer } from "__generated__/SearchResultsArtists_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
@@ -81,8 +81,8 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
           page,
         })
         // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search2?${filterQueryParams}`)
-        window.history.pushState({}, null, `/search2/artists?${urlParams}`)
+        // this.props.router.replace(`/search/artists?${urlParams}`)
+        window.history.pushState({}, null, `/search/artists?${urlParams}`)
       }
     )
   }
@@ -109,15 +109,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
                 term={term}
                 id={artist._id}
               />
-              {index < artists.length - 1 ? (
-                <>
-                  <Spacer mb={3} />
-                  <Separator />
-                  <Spacer mb={3} />
-                </>
-              ) : (
-                <Spacer mb={3} />
-              )}
+              {index < artists.length - 1 && <Separator />}
             </Box>
           )
         })}
@@ -140,7 +132,9 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {artists.length === 0 ? (
-          <ZeroState entity="artists" term={term} />
+          <Box mt={3}>
+            <ZeroState entity="artists" term={term} />
+          </Box>
         ) : (
           this.renderArtists()
         )}

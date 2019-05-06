@@ -1,7 +1,7 @@
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"
-import { Carousel, LargeCarousel, SmallCarousel } from "../Carousel"
+import { Carousel, LargeCarousel, SmallCarousel } from "../CarouselV3"
 
 describe("Carousel", () => {
   beforeAll(() => {
@@ -34,10 +34,10 @@ describe("Carousel", () => {
     expect(large.find(LargeCarousel).length).toEqual(1)
   })
 
-  it("renders any kind of react element and iterates over data", () => {
+  it("renders any kind of react element and iterates over data", async () => {
     const Foo = ({ name }) => <div>hello {name} how are you</div>
 
-    const wrapper = mount(
+    const wrapper = await mount(
       <MockBoot>
         <Carousel
           data={[{ name: "name1" }, { name: "name2" }]}
@@ -46,7 +46,10 @@ describe("Carousel", () => {
           }}
         />
       </MockBoot>
-    )
+    ).renderUntil(n => {
+      return n.html().search("is-selected") > 0
+    })
+
     expect(wrapper.find(Foo).length).toEqual(2)
     expect(
       wrapper
