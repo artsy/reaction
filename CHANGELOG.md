@@ -1,3 +1,15 @@
+# v16.8.6 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Render artwork page artist info component server-side [#2377](https://github.com/artsy/reaction/pull/2377) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.8.5 (Mon May 06 2019)
 
 #### 🐛  Bug Fix
