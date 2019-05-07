@@ -1,3 +1,15 @@
+# v16.8.12 (Tue May 07 2019)
+
+#### 🐛  Bug Fix
+
+- Removes lab feature requirement for pricing context [#2378](https://github.com/artsy/reaction/pull/2378) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.8.11 (Tue May 07 2019)
 
 
