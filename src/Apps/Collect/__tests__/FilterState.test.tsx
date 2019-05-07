@@ -30,27 +30,6 @@ describe("FilterState", () => {
     expect(instance.setState).toBeCalledWith({ page: 3 }, expect.anything())
   })
 
-  it("triggers an event after filter is set", done => {
-    expect(instance.state.page).toEqual(1)
-    instance.setFilter("medium", "photography", mediator)
-
-    // By using setTimeout we let the React setState run through
-    // un-mocked and will run the callback from setState correctly
-    setTimeout(() => {
-      expect(mediator.trigger).toBeCalledWith("collect:filter:changed", {
-        major_periods: [[]],
-        medium: "photography",
-        page: 1,
-        price_range: "*-*",
-        height: "*-*",
-        width: "*-*",
-        sort: "-decayed_merch",
-        attribution_class: [],
-      })
-      done()
-    })
-  })
-
   it("confirms that state is set for price range filter", () => {
     instance.setState = jest.fn()
     instance.setFilter("price_range", "*-43000", mediator)
@@ -101,4 +80,5 @@ const initialState = {
   attribution_class: [],
   artist_id: null,
   color: null,
+  dimension_range: null,
 }

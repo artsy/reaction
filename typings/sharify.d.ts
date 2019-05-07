@@ -24,16 +24,17 @@ declare module "sharify" {
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly GENOME_URL: string
+      readonly GOOGLE_ADWORDS_ID: string
+      readonly IMAGE_LAZY_LOADING: boolean
       readonly IS_MOBILE: boolean
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
+      readonly NOTIFICATION_COUNT: string
       readonly PREDICTION_URL: string
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly VOLLEY_ENDPOINT: string
       readonly XAPP_TOKEN: string
-      readonly IMAGE_LAZY_LOADING: boolean
-      readonly GOOGLE_ADWORDS_ID: string
     }
 
     export interface ResponseLocalData extends GlobalData {

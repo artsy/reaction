@@ -11,7 +11,6 @@ import { hasSections as showMarketInsights } from "Components/Artist/MarketInsig
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { userHasLabFeature } from "Utils/getUser"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
@@ -110,11 +109,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return (
       <SystemContextConsumer>
         {({ user }) => {
-          const hasArtistRecommendations =
-            get(artist, a => a.related.artists.edges.length, 0) > 0
           const showRecommendations =
-            hasArtistRecommendations &&
-            userHasLabFeature(user, "Artist Recommendations")
+            get(artist, a => a.related.artists.edges.length, 0) > 0
 
           return (
             <>

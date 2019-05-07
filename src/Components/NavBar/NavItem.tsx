@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
+  Overlay?: React.FC
   href?: string
   active?: boolean
   onClick?: () => void
@@ -11,14 +12,16 @@ interface NavItemProps extends BoxProps {
 
 export const NavItem: React.FC<NavItemProps> = ({
   Menu,
-  display = "block",
-  children,
-  href,
+  Overlay,
   active = false,
+  children,
+  display = "block",
+  href,
   onClick,
 }) => {
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
+  const showOverlay = Boolean(Overlay)
   const hoverColor = hover ? "purple100" : "black80"
 
   return (
@@ -31,16 +34,19 @@ export const NavItem: React.FC<NavItemProps> = ({
       onMouseLeave={() => toggleHover(false)}
       onClick={onClick}
     >
-      <Link href={href} color={hoverColor} underlineBehavior={"none" as any}>
+      <Link href={href} color={hoverColor} underlineBehavior="none">
         <Sans size="3" weight="medium" color={hoverColor}>
           {children}
         </Sans>
       </Link>
+
       {showMenu && (
         <MenuContainer>
           <Menu />
         </MenuContainer>
       )}
+
+      {showOverlay && <Overlay />}
     </Box>
   )
 }

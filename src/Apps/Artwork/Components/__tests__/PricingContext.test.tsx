@@ -1,4 +1,4 @@
-import { BarBox, BarChart, QuestionCircleIcon } from "@artsy/palette"
+import { BarBox, BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -16,6 +16,7 @@ jest.unmock("react-relay")
 const mockPricingContext = {
   appliedFiltersDisplay: "Price ranges of small mocks by David Sheldrick",
   filterDescription: `deprecated field`,
+  appliedFilters: { category: "PAINTING", dimension: "SMALL" },
   bins: [
     {
       maxPrice: "$88",
@@ -50,8 +51,6 @@ const mockPricingContext = {
 
 const mockArtwork = {
   artists: [{ id: "artist-id" }],
-  widthCm: 234,
-  heightCm: 234,
   category: "Photography",
   pricingContext: mockPricingContext,
   priceCents: {
@@ -61,10 +60,6 @@ const mockArtwork = {
 }
 
 describe("PricingContext", () => {
-  let enablePricingContext = true
-  beforeEach(() => {
-    enablePricingContext = true
-  })
   function getWrapper(
     mockData: any = {
       artwork: {
@@ -80,15 +75,12 @@ describe("PricingContext", () => {
       ),
       mockData,
       query: graphql`
-        query PricingContextTestQuery($enablePricingContext: Boolean!) {
+        query PricingContextTestQuery {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
         }
       `,
-      variables: {
-        enablePricingContext,
-      },
     })
   }
 
@@ -121,14 +113,6 @@ describe("PricingContext", () => {
       .simulate("click")
     expect(wrapper.text()).toContain(
       "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
-  })
-
-  it("renders as null if enablePricingContext is false", async () => {
-    enablePricingContext = false
-    const wrapper = await getWrapper()
-    expect(wrapper.text()).not.toContain(
-      "Price ranges of small mocks by David Sheldrick"
     )
   })
 
@@ -277,6 +261,23 @@ Object {
         context_module: "Price Context",
         action_type: "Hover",
         subject: "Histogram Bar",
+        flow: "Artwork Price Context",
+        type: "Chart",
+      })
+      expect(dispatch).toHaveBeenCalledTimes(1)
+    })
+
+    it("tracks clicks on 'Browse works in this category' link", () => {
+      const { Component, dispatch } = mockTracking(PricingContext)
+      const component = mount(<Component artwork={mockArtwork as any} />)
+      component
+        .find(Link)
+        .at(0)
+        .simulate("click")
+      expect(dispatch).toBeCalledWith({
+        context_module: "Price Context",
+        action_type: "Click",
+        subject: "Browse works in this category",
         flow: "Artwork Price Context",
         type: "Chart",
       })

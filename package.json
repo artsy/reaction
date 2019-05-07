@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "16.6.3",
+  "version": "16.8.12",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -52,8 +52,8 @@
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
   },
   "devDependencies": {
-    "@artsy/auto-config": "0.1.0",
-    "@artsy/palette": "4.11.1",
+    "@artsy/auto-config": "1.0.0",
+    "@artsy/palette": "4.11.5",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -109,6 +109,7 @@
     "cache-loader": "^1.2.2",
     "chalk": "^2.4.2",
     "concurrently": "^3.5.0",
+    "cookies-js": "^1.2.3",
     "core-js": "^2.5.7",
     "dd-trace": "^0.6.0",
     "dotenv": "^4.0.0",

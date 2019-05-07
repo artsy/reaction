@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@artsy/auto-config@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-0.1.0.tgz#bc76c6b112b5063ec5a79bb4d146481db9b48f45"
-  integrity sha512-bcny+cFUwPwQGY/GGkphm+DjT1gaSotEHRl452UwRHsBM0zmmP86IO9v7GBG/wgaeQoXhTwNJpPZ5IUNyXsDqg==
+"@artsy/auto-config@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.0.tgz#85d39cffd893fb0aa903ff8a17b3cf3baf3d8646"
+  integrity sha512-C7Y7H6qgmrBAL0lp/EGxsEBUNDzgxkB2TnQW3lW37Q6YZiIKYpjGmu0aNHa/HEsY0LTRg2LzF25y1FU+3iAKwQ==
 
 "@artsy/detect-responsive-traits@^0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.4.tgz#933c66db24e70186c20e83017af39794a920ef0e"
   integrity sha512-3LfmVWQdTQLjorlNv02y+qdD3h3RS57M46P/PBlG+nHjzUFtNk2B9NAKPurTzDubjlPYx1FUTH+EPm3ZaoTipg==
 
-"@artsy/palette@4.11.1":
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.11.1.tgz#15164eab91d9d0eaa5b1bfca71072391df129510"
-  integrity sha512-tseC6mcp/vIHBDp/HhGta64evOx0qSkSzeIom3dLz6CuWBHhfljt5oJB96mugp9QQWxvhcoi/4ORYOtzdBV/Zg==
+"@artsy/palette@4.11.5":
+  version "4.11.5"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.11.5.tgz#d548bc696a671c6849bcdba89264086160deb49a"
+  integrity sha512-q0lnM05JD9N0WuxTQ8Gcgtx9BIwuKH7tV8sMs8Sq8IR2deVliYFs61TpxXZ9VW/Biq+2DfNcwqhZAtC6ufknoA==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     moment "^2.23.0"
@@ -4812,6 +4812,11 @@ cookiejar@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.2.tgz#dd8a235530752f988f9a0844f3fc589e3111125c"
   integrity sha512-Mw+adcfzPxcPeI+0WlvRrr/3lGVO0bD75SxX6811cxSh1Wbxx7xZBGK1eVtDf6si8rg2lhnUjsVLMFMfbRIuwA==
+
+cookies-js@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/cookies-js/-/cookies-js-1.2.3.tgz#03315049e7c52bee3f73186a69167eab0ddb2d31"
+  integrity sha1-AzFQSefFK+4/cxhqaRZ+qw3bLTE=
 
 copy-concurrently@^1.0.0:
   version "1.0.5"

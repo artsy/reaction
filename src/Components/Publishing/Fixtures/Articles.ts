@@ -682,6 +682,21 @@ export const FeatureBasicVideoArticle: ArticleData = {
   },
 }
 
+const {
+  tracking_tags,
+  ...UnsponsoredFeatureArticleSansTrackingTagsProp
+} = FeatureArticle
+export const UnsponsoredFeatureArticle: ArticleData = {
+  ...UnsponsoredFeatureArticleSansTrackingTagsProp,
+  sponsor: {
+    partner_condensed_logo: null,
+    partner_dark_logo: null,
+    partner_light_logo: null,
+    partner_logo_link: null,
+    pixel_tracking_code: null,
+  },
+}
+
 export const FeatureBasicArticle: ArticleData = {
   ...FeatureArticle,
   hero_section: {
@@ -814,6 +829,13 @@ export const VideoArticle: ArticleData = {
     name: "Art Market",
   },
   media: Media[0],
+  sponsor: {
+    partner_condensed_logo: null,
+    partner_dark_logo: null,
+    partner_light_logo: null,
+    partner_logo_link: null,
+    pixel_tracking_code: null,
+  },
 }
 
 export const VideoArticleUnpublished = extend(cloneDeep(VideoArticle), {

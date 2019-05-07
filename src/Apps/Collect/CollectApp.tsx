@@ -105,6 +105,8 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
         artist_id: { type: "String" }
         attribution_class: { type: "String" }
         color: { type: "String" }
+        page: { type: "Int" }
+        dimension_range: { type: "String" }
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         ...SeoProductsForArtworks_artworks
@@ -127,6 +129,8 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
           artist_id: $artist_id
           attribution_class: $attribution_class
           color: $color
+          page: $page
+          dimension_range: $dimension_range
         )
     }
   `,

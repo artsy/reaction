@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtistInfo_artist$ref } from "./ArtistInfo_artist.graphql";
 import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
 import { ArtworkImageBrowser_artwork$ref } from "./ArtworkImageBrowser_artwork.graphql";
@@ -20,11 +21,11 @@ export type ArtworkApp_artwork = {
     readonly price: string | null;
     readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<({
-        readonly _id: string;
         readonly id: string;
+        readonly " $fragmentRefs": ArtistInfo_artist$ref;
     }) | null> | null;
     readonly artist: ({
-        readonly id: string;
+        readonly " $fragmentRefs": ArtistInfo_artist$ref;
     }) | null;
     readonly " $fragmentRefs": ArtworkRelatedArtists_artwork$ref & ArtworkMeta_artwork$ref & ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImageBrowser_artwork$ref & OtherWorks_artwork$ref & PricingContext_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
@@ -41,11 +42,9 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
+  "kind": "FragmentSpread",
+  "name": "ArtistInfo_artist",
+  "args": null
 },
 v2 = {
   "kind": "ScalarField",
@@ -111,8 +110,8 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v1,
         v0,
+        v1,
         v2
       ]
     },
@@ -125,11 +124,17 @@ return {
       "concreteType": "Artist",
       "plural": false,
       "selections": [
-        v0,
+        v1,
         v2
       ]
     },
-    v1,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "ArtworkMeta_artwork",
@@ -169,5 +174,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '1489c8cbafe01a68af8e29a53c65ed08';
+(node as any).hash = '5097a7c9d398cce1abd797fc91661166';
 export default node;

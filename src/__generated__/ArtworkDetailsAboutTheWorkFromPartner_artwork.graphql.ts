@@ -7,7 +7,8 @@ export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkD
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
     readonly additional_information: string | null;
     readonly sale: ({
-        readonly is_benefit: boolean | null;
+        readonly isBenefit: boolean | null;
+        readonly isGalleryAuction: boolean | null;
     }) | null;
     readonly partner: ({
         readonly _id: string;
@@ -81,7 +82,14 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_benefit",
+          "name": "isBenefit",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "isGalleryAuction",
           "args": null,
           "storageKey": null
         },
@@ -209,5 +217,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f8955f8a9fdb02ca6a6d2b89faadf5c1';
+(node as any).hash = 'b10480d701a172845d0dccc414c0bd2f';
 export default node;

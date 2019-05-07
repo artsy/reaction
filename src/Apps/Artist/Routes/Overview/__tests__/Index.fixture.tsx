@@ -2,12 +2,6 @@ import { Overview_artist } from "__generated__/Overview_artist.graphql"
 
 export type OverviewRouteArtist = Overview_artist & { __fragments: object[] }
 
-export const userWithRecommendationsLabFeature: User = {
-  lab_features: ["Artist Recommendations"],
-}
-
-export const userWithoutRecommendationsLabFeature: User = {}
-
 export const defaultArtist: OverviewRouteArtist = {
   is_consignable: true,
   __fragments: null,

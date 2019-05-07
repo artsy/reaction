@@ -1,6 +1,6 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState, urlFragmentFromState } from "Apps/Collect/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
@@ -52,6 +52,15 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
       error => {
         this.toggleLoading(false)
         filters.setPage(page, mediator)
+        const { state } = filters
+        const urlFragment = urlFragmentFromState(state, { page })
+
+        // TODO: Look into using router push w/ query params.
+        window.history.pushState(
+          {},
+          null,
+          `${window.location.pathname}?${urlFragment}`
+        )
         if (error) {
           console.error(error)
         }

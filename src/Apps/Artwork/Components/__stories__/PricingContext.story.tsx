@@ -17,13 +17,12 @@ const MockPricingContext = ({
       Component={PricingContextFragmentContainer}
       mockData={{ artwork }}
       query={graphql`
-        query PricingContextStoryQuery($enablePricingContext: Boolean!) {
+        query PricingContextStoryQuery {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
         }
       `}
-      variables={{ enablePricingContext: true }}
     />
   )
 }
@@ -32,8 +31,6 @@ const mockArtwork: PricingContext_artwork = {
   " $refType": null,
   artists: [{ id: "alex-katz" }],
   category: "Sculpture",
-  heightCm: 302,
-  widthCm: 302,
   priceCents: {
     min: 284243,
     max: 284244,
@@ -189,6 +186,7 @@ const mockArtwork: PricingContext_artwork = {
       },
     ],
     appliedFiltersDisplay: "Price ranges of large prints by Alex Katz",
+    appliedFilters: { dimension: "SMALL", category: "SCULPTURE" },
   },
 }
 

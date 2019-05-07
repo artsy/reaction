@@ -15,6 +15,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import Events from "Utils/Events"
+import { createCollectUrl, FilterCategory } from "./../Utils/createCollectUrl"
 import { PricingContextModal } from "./PricingContextModal"
 
 interface PricingContextProps {
@@ -50,10 +51,30 @@ export class PricingContext extends React.Component<PricingContextProps> {
     // I'm just for tracking!
   }
 
+  @track({
+    action_type: Schema.ActionType.Click,
+    flow: Schema.Flow.ArtworkPriceContext,
+    subject: Schema.Subject.BrowseWorks,
+    type: Schema.Type.Chart,
+  })
+  collectPageLinkClick({
+    dimension,
+    category,
+    artistId,
+  }: {
+    dimension: "SMALL" | "MEDIUM" | "LARGE" | null
+    category: FilterCategory
+    artistId: string
+  }) {
+    const url = createCollectUrl({ dimension, category, artistId })
+    if (typeof window !== "undefined") {
+      window.open(url)
+    }
+  }
+
   // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   render() {
     const { artwork } = this.props
-
     if (!artwork.pricingContext) {
       return null
     }
@@ -67,18 +88,26 @@ export class PricingContext extends React.Component<PricingContextProps> {
       artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
         .maxPriceCents
 
+    const artistId = artwork.artists[0].id
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-        <Sans size="2" weight="medium">
-          {artwork.pricingContext.appliedFiltersDisplay}
-        </Sans>
         <Flex>
-          <Link color="black60">
-            <Sans size="2">Browse works in this category</Sans>
-          </Link>
+          <Sans size="2" weight="medium">
+            {artwork.pricingContext.appliedFiltersDisplay}
+          </Sans>
           <PricingContextModal />
         </Flex>
+        <Link
+          onClick={this.collectPageLinkClick.bind(this, {
+            dimension: artwork.pricingContext.appliedFilters.dimension,
+            category: artwork.category,
+            artistId,
+          })}
+          color="black60"
+        >
+          <Sans size="2">Browse works in this category</Sans>
+        </Link>
         <Spacer mb={[2, 3]} />
         <BarChart
           minLabel="$0"
@@ -139,11 +168,13 @@ export const PricingContextFragmentContainer = createFragmentContainer(
         artists {
           id
         }
-        widthCm
-        heightCm
         category
-        pricingContext @include(if: $enablePricingContext) {
+        pricingContext {
           appliedFiltersDisplay
+          appliedFilters {
+            dimension
+            category
+          }
           bins {
             maxPrice
             maxPriceCents

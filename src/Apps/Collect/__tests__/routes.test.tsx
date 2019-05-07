@@ -57,6 +57,21 @@ describe("Routes", () => {
       })
     })
 
+    it("respects the dimension_range option selected by the user", () => {
+      const props = {
+        location: {
+          query: {
+            dimension_range: "*-*",
+          },
+        },
+      }
+
+      expect(route.prepareVariables(params, props)).toEqual({
+        dimension_range: "*-*",
+        sort: "-decayed_merch",
+      })
+    })
+
     xit("renders", async () => {
       const { element } = (await render("/collect", {
         Viewer: () => data,
