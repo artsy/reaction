@@ -41,6 +41,7 @@ export const upcomingLabel = (sale, now = moment()) => {
     registration_status,
     is_registration_closed: isRegistrationClosed,
   } = sale
+
   const isRegistered = !!registration_status
   const isLAI = !!liveStartAt
   if (isPreview) {
@@ -68,6 +69,8 @@ export interface AuctionCardProps {
   headline: string
   subHeadline: string
   badge: string
+  isGalleryAuction: boolean
+  isBenefit: boolean
 }
 
 export class AuctionCard extends React.Component<AuctionCardProps> {
@@ -91,7 +94,13 @@ export const LargeAuctionCard = props => (
       <Truncator maxLineCount={1}>{props.headline}</Truncator>
     </Serif>
     <Serif size="3t">
-      <Truncator maxLineCount={1}>{props.subHeadline}</Truncator>
+      <Truncator maxLineCount={1}>
+        {!props.isGalleryAuction && !props.isBenefit ? (
+          props.subHeadline
+        ) : (
+          <>&nbsp;</>
+        )}
+      </Truncator>
     </Serif>
     {props.src && (
       <Box height="200px">
@@ -111,7 +120,7 @@ export const SmallAuctionCard = props => (
         <Serif size="3t" weight="semibold">
           <Truncator maxLineCount={1}>{props.headline}</Truncator>
         </Serif>
-        {props.subHeadline && (
+        {props.subHeadline && !props.isGalleryAuction && !props.isBenefit && (
           <Serif size="3t">
             <Truncator maxLineCount={2}>{props.subHeadline}</Truncator>
           </Serif>
@@ -144,6 +153,8 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
         headline={partnerName}
         subHeadline={sale.name}
         badge={statusLabel}
+        isGalleryAuction={sale.isGalleryAuction}
+        isBenefit={sale.isBenefit}
       />
     )
   },
@@ -155,6 +166,8 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
             url
           }
         }
+        isBenefit
+        isGalleryAuction
         end_at
         href
         id

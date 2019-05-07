@@ -87,10 +87,7 @@ class Filter extends Component<Props> {
             mediator,
           })}
         </Toggle>
-        <Toggle
-          label="Price"
-          expanded={filterState.state.price_range !== "*-*"}
-        >
+        <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
             <PriceRangeFilter filters={filterState} />
           </Flex>

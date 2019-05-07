@@ -1,3 +1,75 @@
+# v16.8.8 (Tue May 07 2019)
+
+#### 🐛  Bug Fix
+
+- Hide partner name on artwork page for benefit and gallery auctions [#2355](https://github.com/artsy/reaction/pull/2355) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@ds300](https://github.com/ds300))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.8.7 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Uses <Img> instead of <div> for SSR artwork image [#2371](https://github.com/artsy/reaction/pull/2371) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.6 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Render artwork page artist info component server-side [#2377](https://github.com/artsy/reaction/pull/2377) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.8.5 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Expand price by default on collect and artist page [#2376](https://github.com/artsy/reaction/pull/2376) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/auto-config to v1 [#2374](https://github.com/artsy/reaction/pull/2374) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v0.1.2 [#2372](https://github.com/artsy/reaction/pull/2372) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.8.4 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- User can click browse link to go to filtered collect page [#2351](https://github.com/artsy/reaction/pull/2351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.5 [#2370](https://github.com/artsy/reaction/pull/2370) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.8.3 (Fri May 03 2019)
 
 #### 🐛  Bug Fix
