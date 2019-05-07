@@ -169,7 +169,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
           id
         }
         category
-        pricingContext @include(if: $enablePricingContext) {
+        pricingContext {
           appliedFiltersDisplay
           appliedFilters {
             dimension

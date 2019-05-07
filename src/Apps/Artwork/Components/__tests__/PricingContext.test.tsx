@@ -60,10 +60,6 @@ const mockArtwork = {
 }
 
 describe("PricingContext", () => {
-  let enablePricingContext = true
-  beforeEach(() => {
-    enablePricingContext = true
-  })
   function getWrapper(
     mockData: any = {
       artwork: {
@@ -79,15 +75,12 @@ describe("PricingContext", () => {
       ),
       mockData,
       query: graphql`
-        query PricingContextTestQuery($enablePricingContext: Boolean!) {
+        query PricingContextTestQuery {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
         }
       `,
-      variables: {
-        enablePricingContext,
-      },
     })
   }
 
@@ -120,14 +113,6 @@ describe("PricingContext", () => {
       .simulate("click")
     expect(wrapper.text()).toContain(
       "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
-  })
-
-  it("renders as null if enablePricingContext is false", async () => {
-    enablePricingContext = false
-    const wrapper = await getWrapper()
-    expect(wrapper.text()).not.toContain(
-      "Price ranges of small mocks by David Sheldrick"
     )
   })
 
