@@ -117,6 +117,12 @@ return {
       "name": "color",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -256,6 +262,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
           "type": null
@@ -284,5 +296,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '041f4afb8bf59e827f9203e65cc0b4b3';
+(node as any).hash = 'e85e4e5b6c383e799119504b4637bf09';
 export default node;

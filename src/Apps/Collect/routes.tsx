@@ -91,6 +91,8 @@ export const routes: RouteConfig[] = [
         $price_range: String
         $height: String
         $width: String
+        $color: String
+        $page: Int
       ) {
         collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
@@ -106,6 +108,8 @@ export const routes: RouteConfig[] = [
               price_range: $price_range
               height: $height
               width: $width
+              color: $color
+              page: $page
             )
         }
       }

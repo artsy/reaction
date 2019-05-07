@@ -1,5 +1,6 @@
 import { CollectionRefetch_collection } from "__generated__/CollectionRefetch_collection.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
+import { urlFragmentFromState } from "Apps/Search/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -46,6 +47,14 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
             console.error(error)
           }
 
+          window.history.pushState(
+            {},
+            null,
+            `${window.location.pathname}?${urlFragmentFromState(
+              this.props.filtersState
+            )}`
+          )
+
           this.setState({
             isLoading: false,
           })
@@ -89,6 +98,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           height: { type: "String" }
           width: { type: "String" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         slug
         filtered_artworks: artworks(
@@ -107,6 +117,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           height: $height
           width: $width
           color: $color
+          page: $page
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -129,6 +140,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
       $height: String
       $width: String
       $color: String
+      $page: Int
     ) {
       marketingCollection(slug: $collectionSlug) {
         ...CollectionRefetch_collection
@@ -146,6 +158,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
             height: $height
             width: $width
             color: $color
+            page: $page
           )
       }
     }
