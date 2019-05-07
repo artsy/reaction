@@ -19,7 +19,7 @@ export interface State {
   attribution_class?: string[]
   artist_id?: string
   color?: string
-
+  dimension_range?: string
   tracking?: any
 }
 
@@ -40,6 +40,7 @@ export const initialState = {
   attribution_class: [],
   artist_id: null,
   color: null,
+  dimension_range: null,
 }
 
 // Returns a string representing the query part of a URL.

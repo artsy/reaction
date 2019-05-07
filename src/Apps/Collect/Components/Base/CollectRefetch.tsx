@@ -117,6 +117,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           attribution_class: { type: "[String]" }
           color: { type: "String" }
           page: { type: "Int" }
+          dimension_range: { type: "String" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -137,6 +138,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           attribution_class: $attribution_class
           color: $color
           page: $page
+          dimension_range: $dimension_range
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -161,6 +163,7 @@ export const CollectRefetchContainer = createRefetchContainer(
       $attribution_class: [String]
       $color: String
       $page: Int
+      $dimension_range: String
     ) {
       viewer {
         ...CollectRefetch_viewer
@@ -181,6 +184,7 @@ export const CollectRefetchContainer = createRefetchContainer(
             attribution_class: $attribution_class
             color: $color
             page: $page
+            dimension_range: $dimension_range
           )
       }
     }

@@ -12,12 +12,14 @@ export const createCollectUrl = ({
 }) => {
   let dimensionRange
 
+  // This calculation is based on size_score. See definitions of small/medium/large
+  // here: https://github.com/artsy/vortex/blob/f3f605578832773225e08af8b5c0d69424e1d653/dbt/models/sales/price_records.sql
   if (dimension === "SMALL") {
-    dimensionRange = "0-1600"
+    dimensionRange = "*-15.7"
   } else if (dimension === "MEDIUM") {
-    dimensionRange = "1600-4900"
+    dimensionRange = "15.7-27.6"
   } else if (dimension === "LARGE") {
-    dimensionRange = "4900-*"
+    dimensionRange = "27.6-*"
   } else {
     dimensionRange = "*-*"
   }

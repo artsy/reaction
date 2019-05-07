@@ -139,6 +139,12 @@ return {
       "name": "page",
       "type": "Int",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "dimension_range",
+      "type": "String",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -247,6 +253,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "dimension_range",
+          "variableName": "dimension_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
           "type": null
@@ -316,5 +328,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0473a87e91cac5b8bafac6cb38cb71c8';
+(node as any).hash = '11d23b9c1d40d96f9befd525c101f2c6';
 export default node;
