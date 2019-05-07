@@ -1,3 +1,15 @@
+# v16.8.10 (Tue May 07 2019)
+
+#### 🐛  Bug Fix
+
+- Pass dimension_range through the CollectApp viewer + update dimension_range to match size_score [#2379](https://github.com/artsy/reaction/pull/2379) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.8.9 (Tue May 07 2019)
 
 #### 🐛  Bug Fix
