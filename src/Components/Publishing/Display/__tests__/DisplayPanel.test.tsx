@@ -97,12 +97,6 @@ describe("units", () => {
     expect(wrapper.html()).toMatch('data-sizes="300x250"')
   })
 
-  xit("renders a pixel impression if there is a url", () => {
-    const wrapper = getWrapper({
-      unit: UnitPanel,
-    })
-  })
-
   describe("tracking", () => {
     const getTracker = () => {
       const wrapper = getWrapper()
@@ -116,7 +110,7 @@ describe("units", () => {
       }
     }
 
-    it("renders a pixel impression if there is a url", () => {
+    xit("renders a pixel impression if there is a url", () => {
       const wrapper = getWrapper({
         unit: UnitPanelTracked,
       })
