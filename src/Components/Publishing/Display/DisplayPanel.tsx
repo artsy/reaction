@@ -16,14 +16,14 @@ import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
 import { trackImpression } from "./track-once"
 
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
-  campaign: any
+  campaign?: any
   article?: any
   isMobile?: boolean
-  unit: any
+  unit?: any
   tracking?: TrackingProp
   renderTime?: number
-  adUnit?: string
-  adDimension?: string
+  adUnit: string
+  adDimension: string
 }
 
 export interface DisplayPanelState {
@@ -351,7 +351,6 @@ export class DisplayPanel extends Component<
             )}
           </VideoCover>
         )}
-
         <video
           playsInline
           src={url}
@@ -365,7 +364,7 @@ export class DisplayPanel extends Component<
   }
 
   renderPanelContent() {
-    const { unit, campaign, adDimension, adUnit } = this.props
+    const { unit, campaign, adDimension, adUnit, renderTime } = this.props
     const isVideo = this.isVideo()
     const isAdminUser = isAdmin()
     const url = get(unit.assets, "0.url", "")
@@ -399,12 +398,13 @@ export class DisplayPanel extends Component<
 
           <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
         </div>
-      )
+      ),
+      <PixelTracker unit={unit} date={renderTime} />
     )
   }
   render() {
     const { showCoverImage } = this.state
-    const { unit, isMobile, renderTime } = this.props
+    const { unit, isMobile } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const imageUrl = isVideo
@@ -415,6 +415,7 @@ export class DisplayPanel extends Component<
       unit.cover_image_url &&
       crop(unit.cover_image_url, { width: 680, height: 284, isDisplayAd: true })
 
+    // @TODO: Determine how to handle DisplayPanelContainer layout and tracking when this component no longer receives unit prop
     return (
       <ErrorBoundary>
         <Wrapper
@@ -433,7 +434,6 @@ export class DisplayPanel extends Component<
           >
             {this.renderPanelContent()}
           </DisplayPanelContainer>
-          <PixelTracker unit={unit} date={renderTime} />
         </Wrapper>
       </ErrorBoundary>
     )
