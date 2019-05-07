@@ -55,7 +55,8 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
         const { state } = filters
         const urlFragment = urlFragmentFromState(state, { page })
 
-        // TODO: Look into using router push w/ query params.
+        // Using window.history.pushState instead of router.push, because
+        //  we just want to add to the history, not navigate to another route.
         window.history.pushState(
           {},
           null,

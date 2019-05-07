@@ -47,6 +47,8 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
             console.error(error)
           }
 
+          // Using window.history.pushState instead of router.push, because
+          //  we just want to add to the history, not navigate to another route.
           window.history.pushState(
             {},
             null,
