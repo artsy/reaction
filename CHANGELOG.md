@@ -1,3 +1,16 @@
+# v16.8.8 (Tue May 07 2019)
+
+#### 🐛  Bug Fix
+
+- Hide partner name on artwork page for benefit and gallery auctions [#2355](https://github.com/artsy/reaction/pull/2355) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@ds300](https://github.com/ds300))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v16.8.7 (Mon May 06 2019)
 
 #### 🐛  Bug Fix
