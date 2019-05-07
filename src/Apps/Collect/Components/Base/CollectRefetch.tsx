@@ -1,5 +1,9 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
+import {
+  FilterState,
+  untrackedFilters,
+  urlFragmentFromState,
+} from "Apps/Collect/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -60,6 +64,13 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
             console.error(error)
           }
 
+          // TODO: Look into using router push w/ query params.
+          window.history.pushState(
+            {},
+            null,
+            `/collect?${urlFragmentFromState(this.props.filtersState)}`
+          )
+
           this.setState({
             isLoading: false,
           })
@@ -105,6 +116,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           artist_id: { type: "String" }
           attribution_class: { type: "[String]" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         filtered_artworks: filter_artworks(
           aggregations: [TOTAL]
@@ -124,6 +136,7 @@ export const CollectRefetchContainer = createRefetchContainer(
           artist_id: $artist_id
           attribution_class: $attribution_class
           color: $color
+          page: $page
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -147,6 +160,7 @@ export const CollectRefetchContainer = createRefetchContainer(
       $artist_id: String
       $attribution_class: [String]
       $color: String
+      $page: Int
     ) {
       viewer {
         ...CollectRefetch_viewer
@@ -166,6 +180,7 @@ export const CollectRefetchContainer = createRefetchContainer(
             artist_id: $artist_id
             attribution_class: $attribution_class
             color: $color
+            page: $page
           )
       }
     }

@@ -133,6 +133,12 @@ return {
       "name": "color",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -277,6 +283,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": null
@@ -304,5 +316,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '471e353c7b515873392e96dc8f6e7947';
+(node as any).hash = '0473a87e91cac5b8bafac6cb38cb71c8';
 export default node;
