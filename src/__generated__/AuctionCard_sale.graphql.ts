@@ -9,6 +9,8 @@ export type AuctionCard_sale = {
             readonly url: string | null;
         }) | null;
     }) | null;
+    readonly isBenefit: boolean | null;
+    readonly isGalleryAuction: boolean | null;
     readonly end_at: string | null;
     readonly href: string | null;
     readonly id: string;
@@ -60,17 +62,11 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "registrationStatus",
-      "storageKey": null,
+      "name": "live_start_at",
       "args": null,
-      "concreteType": "Bidder",
-      "plural": false,
-      "selections": [
-        v0,
-        v1
-      ]
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -117,6 +113,20 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "isGalleryAuction",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "end_at",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "href",
       "args": null,
       "storageKey": null
@@ -139,16 +149,22 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "live_start_at",
+      "name": "isBenefit",
       "args": null,
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "end_at",
+      "name": "registrationStatus",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Bidder",
+      "plural": false,
+      "selections": [
+        v0,
+        v1
+      ]
     },
     {
       "kind": "ScalarField",
@@ -189,5 +205,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a66a030350626c50cc51ca4dd6c1149c';
+(node as any).hash = 'a1eab9e49dd9c34fc9aa575c65cddf7b';
 export default node;
