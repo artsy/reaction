@@ -124,8 +124,8 @@ describe("unit", () => {
       />
     )
 
-    expect(canvas.html()).toMatch(HostedAdCanvas.adUnit)
-    expect(canvas.html()).toMatch(HostedAdCanvas.adDimension)
+    expect(canvas.html()).toMatch('data-unit="Desktop_TopLeaderboard"')
+    expect(canvas.html()).toMatch('data-sizes="970x250"')
   })
 
   xit("renders the video component if standard layout with video", () => {

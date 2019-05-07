@@ -369,7 +369,7 @@ export class DisplayPanel extends Component<
     const isAdminUser = isAdmin()
     const url = get(unit.assets, "0.url", "")
 
-    // @TODO: Hide new ads behind admin flag for now
+    // @FIXME: Hide new ads behind admin flag for now
     if (isAdminUser) {
       return (
         <div

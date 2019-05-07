@@ -59,7 +59,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
 
-    // @TODO: Hide new ads behind admin flag for now
+    // @FIXME: Hide new ads behind admin flag for now
     if (isAdminUser) {
       return (
         <div
