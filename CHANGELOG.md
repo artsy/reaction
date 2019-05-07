@@ -1,3 +1,16 @@
+# v16.8.9 (Tue May 07 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => Better /collect pagination [#2369](https://github.com/artsy/reaction/pull/2369) ([@mzikherman](https://github.com/mzikherman) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.8.8 (Tue May 07 2019)
 
 #### 🐛  Bug Fix
