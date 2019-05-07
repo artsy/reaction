@@ -7,7 +7,6 @@ import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
@@ -22,30 +21,6 @@ interface ArtistCollectionsRailProps {
 export class ArtistCollectionsRail extends React.Component<
   ArtistCollectionsRailProps
 > {
-  componentDidMount() {
-    if (this.props.collections && this.props.collections.length > 0) {
-      this.trackingCollectionsRailTest()
-    }
-  }
-
-  @track(() => {
-    // TODO: remove after CollectionsRail a/b test
-    const experiment = "artist_collections_rail"
-    const variation = sd.ARTIST_COLLECTIONS_RAIL
-
-    return {
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    }
-  })
-  trackingCollectionsRailTest() {
-    // no-op
-  }
-
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,

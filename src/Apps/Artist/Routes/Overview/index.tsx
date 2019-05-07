@@ -10,6 +10,7 @@ import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Component
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
@@ -45,11 +46,46 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
+  componentDidMount() {
+    if (this.shouldShowCollectionRailTest) {
+      this.trackingCollectionsRailTest()
+    }
+  }
+
+  @track(() => {
+    // TODO: remove after CollectionsRail a/b test
+    const experiment = "artist_collections_rail"
+    const variation = sd.ARTIST_COLLECTIONS_RAIL
+
+    return {
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    }
+  })
+  trackingCollectionsRailTest() {
+    // no-op
+  }
+
   maybeShowGenes() {
     const { isReadMoreExpanded } = this.state
     const hasNoBio = !this.props.artist.biography_blurb.text
 
     return isReadMoreExpanded || hasNoBio
+  }
+
+  get shouldShowCollectionRailTest() {
+    const artistIDs = sd.ARTIST_COLLECTIONS_RAIL_IDS
+    if (artistIDs) {
+      const urlComponents = window.location.pathname.split("/")
+      const id = urlComponents[urlComponents.length - 1]
+      return artistIDs.includes(id)
+    }
+
+    return false
   }
 
   render() {
