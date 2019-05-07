@@ -10,7 +10,6 @@ import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Component
 import { hasSections as showMarketInsights } from "Components/Artist/MarketInsights/MarketInsights"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { userHasLabFeature } from "Utils/getUser"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
@@ -74,11 +73,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return (
       <SystemContextConsumer>
         {({ user }) => {
-          const hasArtistRecommendations =
-            get(artist, a => a.related.artists.edges.length, 0) > 0
           const showRecommendations =
-            hasArtistRecommendations &&
-            userHasLabFeature(user, "Artist Recommendations")
+            get(artist, a => a.related.artists.edges.length, 0) > 0
 
           return (
             <>

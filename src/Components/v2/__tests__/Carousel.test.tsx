@@ -1,7 +1,7 @@
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"
-import { Carousel, LargeCarousel, SmallCarousel } from "../CarouselV2"
+import { Carousel, LargeCarousel, SmallCarousel } from "../CarouselV3"
 
 describe("Carousel", () => {
   beforeAll(() => {

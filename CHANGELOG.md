@@ -1,3 +1,204 @@
+# v16.8.7 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Uses <Img> instead of <div> for SSR artwork image [#2371](https://github.com/artsy/reaction/pull/2371) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.6 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Render artwork page artist info component server-side [#2377](https://github.com/artsy/reaction/pull/2377) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.8.5 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- Expand price by default on collect and artist page [#2376](https://github.com/artsy/reaction/pull/2376) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/auto-config to v1 [#2374](https://github.com/artsy/reaction/pull/2374) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/auto-config to v0.1.2 [#2372](https://github.com/artsy/reaction/pull/2372) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.8.4 (Mon May 06 2019)
+
+#### 🐛  Bug Fix
+
+- User can click browse link to go to filtered collect page [#2351](https://github.com/artsy/reaction/pull/2351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.5 [#2370](https://github.com/artsy/reaction/pull/2370) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.8.3 (Fri May 03 2019)
+
+#### 🐛  Bug Fix
+
+- Moves ad script component below article layout component [#2368](https://github.com/artsy/reaction/pull/2368) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.8.2 (Fri May 03 2019)
+
+#### 🐛  Bug Fix
+
+- added modal space [#2366](https://github.com/artsy/reaction/pull/2366) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.8.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork page images do not use <img> with alt text [#2365](https://github.com/artsy/reaction/pull/2365) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.0 (Thu May 02 2019)
+
+#### 🚀  Enhancement
+
+- Update <Carousel /> with BaseCarousel [#2364](https://github.com/artsy/reaction/pull/2364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.7.2 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Move question icon next to chart title and change color [#2363](https://github.com/artsy/reaction/pull/2363) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.7.1 (Thu May 02 2019)
+
+#### 🐛  Bug Fix
+
+- Add Script to Support Ads Hosted on Hashtag Labs' Ad Server [#2361](https://github.com/artsy/reaction/pull/2361) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.4 [#2362](https://github.com/artsy/reaction/pull/2362) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.7.0 (Wed May 01 2019)
+
+#### 🚀  Enhancement
+
+- Fully roll out artist recommendations [#2360](https://github.com/artsy/reaction/pull/2360) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.6.8 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- Carousel arrows now fade and fixes first slide highlighting [#2359](https://github.com/artsy/reaction/pull/2359) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.6.7 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- updated tests [#2357](https://github.com/artsy/reaction/pull/2357) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v16.6.6 (Wed May 01 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix notification count [#2358](https://github.com/artsy/reaction/pull/2358) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.3 [#2354](https://github.com/artsy/reaction/pull/2354) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.6.5 (Tue Apr 30 2019)
+
+#### 🐛  Bug Fix
+
+- @ashfurrow => [Artist Recommendations] Exclude artists with less than 7 for sale works [#2352](https://github.com/artsy/reaction/pull/2352) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.6.4 (Tue Apr 30 2019)
 
 #### 🏠  Internal

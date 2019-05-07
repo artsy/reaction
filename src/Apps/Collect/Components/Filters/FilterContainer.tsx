@@ -56,7 +56,7 @@ export class FilterContainer extends React.Component<
           </Flex>
         </Toggle>
 
-        <Toggle label="Price">
+        <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
             <PriceRangeFilter filters={filters} />
           </Flex>

@@ -35,6 +35,7 @@ export const routes: RouteConfig[] = [
         $price_range: String
         $height: String
         $width: String
+        $dimension_range: String
         $artist_id: String
         $attribution_class: [String]
         $color: String
@@ -54,6 +55,7 @@ export const routes: RouteConfig[] = [
               price_range: $price_range
               height: $height
               width: $width
+              dimension_range: $dimension_range
               artist_id: $artist_id
               attribution_class: $attribution_class
               color: $color
