@@ -17,13 +17,12 @@ const MockPricingContext = ({
       Component={PricingContextFragmentContainer}
       mockData={{ artwork }}
       query={graphql`
-        query PricingContextStoryQuery($enablePricingContext: Boolean!) {
+        query PricingContextStoryQuery {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
         }
       `}
-      variables={{ enablePricingContext: true }}
     />
   )
 }
