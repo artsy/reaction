@@ -13,13 +13,13 @@ import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
 interface DisplayCanvasProps {
-  unit: any
-  campaign: any
+  unit?: any
+  campaign?: any
   article?: any
   renderTime?: number
   tracking?: any
-  adUnit?: string
-  adDimension?: string
+  adUnit: string
+  adDimension: string
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -45,7 +45,14 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
   }
 
   renderCanvasContent() {
-    const { unit, campaign, article, adUnit, adDimension } = this.props
+    const {
+      unit,
+      campaign,
+      article,
+      adUnit,
+      adDimension,
+      renderTime,
+    } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
     const isAdminUser = isAdmin()
     const disclaimer = (
@@ -78,20 +85,20 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
           disclaimer={disclaimer}
         />
         {unit.layout === "overlay" && disclaimer}
+        <PixelTracker unit={unit} date={renderTime} />
       </>
     )
   }
 
   render() {
-    const { unit, renderTime } = this.props
-
+    const { unit } = this.props
+    // @TODO: Determine how to handle DisplayContainer layout  and tracking when this component no longer receives unit prop
     return (
       <ErrorBoundary>
         <DisplayContainer layout={unit.layout}>
           <Waypoint onEnter={this.trackImpression} />
           <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
           {this.renderCanvasContent()}
-          <PixelTracker unit={unit} date={renderTime} />
         </DisplayContainer>
       </ErrorBoundary>
     )

@@ -1,20 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshots renders the display panel with an image 1`] = `
+exports[`snapshots renders the display panel for a standard article layout 1`] = `
 .c0 {
   cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: black;
   max-width: 360px;
-}
-
-.c3 {
-  margin-bottom: 15px;
-  width: 100%;
-  height: 142px;
-  background-color: black;
-  box-sizing: border-box;
 }
 
 .c1 {
@@ -36,12 +28,95 @@ exports[`snapshots renders the display panel with an image 1`] = `
   background-size: cover;
 }
 
-.c1 .c7 {
+.c1 .c3 {
   background: url() no-repeat center center;
   background-size: cover;
 }
 
-.c4 {
+@media (max-width:720px) {
+  .c0 {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width:900px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media (max-width:600px) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
+  <div
+    className="DisplayPanel__DisplayPanelContainer c1"
+  >
+    <div
+      className="htl-ad"
+      data-eager={true}
+      data-sizes="300x250"
+      data-unit="Desktop_RightRail1"
+    />
+  </div>
+</div>
+`;
+
+exports[`snapshots renders the display panel with an image 1`] = `
+.c0 {
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: black;
+  max-width: 360px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  padding: 20px;
+  max-width: 360px;
+  box-sizing: border-box;
+}
+
+.c1 .c5 {
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
+  background-size: cover;
+}
+
+.c1 .c6 {
+  background: url() no-repeat center center;
+  background-size: cover;
+}
+
+.c2 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -50,7 +125,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
   margin-bottom: 3px;
 }
 
-.c5 {
+.c3 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
@@ -59,11 +134,11 @@ exports[`snapshots renders the display panel with an image 1`] = `
   margin-bottom: 20px;
 }
 
-.c5 a {
+.c3 a {
   color: black;
 }
 
-.c6 {
+.c4 {
   font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -116,17 +191,14 @@ exports[`snapshots renders the display panel with an image 1`] = `
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
   >
-    <div
-      className="DisplayPanel__Image c2 c3"
-    />
     <div>
       <div
-        className="c4"
+        className="c2"
       >
         Euismod Inceptos Quam
       </div>
       <div
-        className="c5"
+        className="c3"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
@@ -134,7 +206,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
         }
       />
       <div
-        className="c6"
+        className="c4"
       >
         Sponsored by Artsy
       </div>
@@ -152,32 +224,6 @@ exports[`snapshots renders the display panel with video 1`] = `
   max-width: 360px;
 }
 
-.c4 {
-  margin-bottom: 15px;
-  width: 100%;
-  height: 142px;
-  background-color: black;
-  box-sizing: border-box;
-  position: absolute;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c9 .c3 {
-  background: url() no-repeat center center;
-  background-size: cover;
-}
-
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -192,17 +238,17 @@ exports[`snapshots renders the display panel with video 1`] = `
   box-sizing: border-box;
 }
 
-.c1 .c10 {
+.c1 .c5 {
   background: url(https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4) no-repeat center center;
   background-size: cover;
 }
 
-.c1 .c3 {
+.c1 .c6 {
   background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=680&height=284&quality=95) no-repeat center center;
   background-size: cover;
 }
 
-.c6 {
+.c2 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -211,7 +257,7 @@ exports[`snapshots renders the display panel with video 1`] = `
   margin-bottom: 3px;
 }
 
-.c7 {
+.c3 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
   line-height: 1.1em;
@@ -220,11 +266,11 @@ exports[`snapshots renders the display panel with video 1`] = `
   margin-bottom: 20px;
 }
 
-.c7 a {
+.c3 a {
   color: black;
 }
 
-.c8 {
+.c4 {
   font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
@@ -235,41 +281,6 @@ exports[`snapshots renders the display panel with video 1`] = `
   font-size: 11px;
   line-height: 1.65em;
   color: #e5e5e5;
-}
-
-.c2 {
-  margin-bottom: 15px;
-  width: 100%;
-  height: 142px;
-  background-color: black;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 video {
-  object-fit: cover;
-  object-position: 50%;
-  width: 100%;
-  height: 100%;
-}
-
-.c5 {
-  color: white;
-  border-top: 13px solid transparent;
-  border-bottom: 13px solid transparent;
-  border-left: 20px solid white;
-  position: absolute;
-  bottom: 13px;
-  left: 15px;
 }
 
 @media (max-width:720px) {
@@ -312,30 +323,14 @@ exports[`snapshots renders the display panel with video 1`] = `
   <div
     className="DisplayPanel__DisplayPanelContainer c1"
   >
-    <div
-      className="VideoContainer c2"
-    >
-      <div
-        className="VideoContainer__VideoCover c3 c4"
-      />
-      <video
-        className="VideoContainer__video"
-        controls={false}
-        playsInline={true}
-        src="https://artsy-media-uploads.s3.amazonaws.com/lHEsRROMLasYi9yZtgTR7A%2Fbombay_artsy_panel_640_28_480.mp4"
-      />
-      <div
-        className="c5"
-      />
-    </div>
     <div>
       <div
-        className="c6"
+        className="c2"
       >
         Euismod Inceptos Quam
       </div>
       <div
-        className="c7"
+        className="c3"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href='http://artsy.net/articles'>Example Link</a>",
@@ -343,7 +338,7 @@ exports[`snapshots renders the display panel with video 1`] = `
         }
       />
       <div
-        className="c8"
+        className="c4"
       >
         Sponsored by Artsy
       </div>
