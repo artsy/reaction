@@ -13,8 +13,8 @@ import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
 interface DisplayCanvasProps {
-  unit?: any
-  campaign?: any
+  unit: any
+  campaign: any
   article?: any
   renderTime?: number
   tracking?: any

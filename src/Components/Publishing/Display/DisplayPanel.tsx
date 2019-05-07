@@ -16,10 +16,10 @@ import { PixelTracker, replaceWithCacheBuster } from "./ExternalTrackers"
 import { trackImpression } from "./track-once"
 
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
-  campaign?: any
+  campaign: any
   article?: any
   isMobile?: boolean
-  unit?: any
+  unit: any
   tracking?: TrackingProp
   renderTime?: number
   adUnit: string
