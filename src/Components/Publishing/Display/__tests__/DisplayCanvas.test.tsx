@@ -11,7 +11,7 @@ import { CanvasVideo } from "../Canvas/CanvasVideo"
 
 import {
   Campaign,
-  HostedAdCanvas,
+  StandardArticleHostedAdCanvas,
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
@@ -26,8 +26,8 @@ describe("snapshot", () => {
         <DisplayCanvas
           unit={UnitCanvasImage}
           campaign={Campaign}
-          adUnit={HostedAdCanvas.adUnit}
-          adDimension={HostedAdCanvas.adDimension}
+          adUnit={StandardArticleHostedAdCanvas.adUnit}
+          adDimension={StandardArticleHostedAdCanvas.adDimension}
         />
       )
       .toJSON()
@@ -40,8 +40,8 @@ describe("snapshot", () => {
         <DisplayCanvas
           unit={UnitCanvasVideo}
           campaign={Campaign}
-          adUnit={HostedAdCanvas.adUnit}
-          adDimension={HostedAdCanvas.adDimension}
+          adUnit={StandardArticleHostedAdCanvas.adUnit}
+          adDimension={StandardArticleHostedAdCanvas.adDimension}
         />
       )
       .toJSON()
@@ -54,8 +54,8 @@ describe("snapshot", () => {
         <DisplayCanvas
           unit={UnitCanvasOverlay}
           campaign={Campaign}
-          adUnit={HostedAdCanvas.adUnit}
-          adDimension={HostedAdCanvas.adDimension}
+          adUnit={StandardArticleHostedAdCanvas.adUnit}
+          adDimension={StandardArticleHostedAdCanvas.adDimension}
         />
       )
       .toJSON()
@@ -68,8 +68,8 @@ describe("snapshot", () => {
         <DisplayCanvas
           unit={UnitCanvasSlideshow}
           campaign={Campaign}
-          adUnit={HostedAdCanvas.adUnit}
-          adDimension={HostedAdCanvas.adDimension}
+          adUnit={StandardArticleHostedAdCanvas.adUnit}
+          adDimension={StandardArticleHostedAdCanvas.adDimension}
         />
       )
       .toJSON()
@@ -88,8 +88,8 @@ describe("unit", () => {
           trackEvent,
         }}
         renderTime={12345}
-        adUnit={HostedAdCanvas.adUnit}
-        adDimension={HostedAdCanvas.adDimension}
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
   }
@@ -99,8 +99,8 @@ describe("unit", () => {
       <DisplayCanvas
         unit={UnitCanvasImage}
         campaign={Campaign}
-        adUnit={HostedAdCanvas.adUnit}
-        adDimension={HostedAdCanvas.adDimension}
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
     expect(canvas.html()).toMatch(UnitCanvasImage.disclaimer)
@@ -119,8 +119,8 @@ describe("unit", () => {
       <DisplayCanvas
         unit={UnitCanvasImage}
         campaign={Campaign}
-        adUnit={HostedAdCanvas.adUnit}
-        adDimension={HostedAdCanvas.adDimension}
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
 
@@ -133,8 +133,8 @@ describe("unit", () => {
       <DisplayCanvas
         unit={UnitCanvasVideo}
         campaign={Campaign}
-        adUnit={HostedAdCanvas.adUnit}
-        adDimension={HostedAdCanvas.adDimension}
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
     expect(canvas.find(CanvasVideo).length).toBe(1)
@@ -145,8 +145,8 @@ describe("unit", () => {
       <DisplayCanvas
         unit={UnitCanvasSlideshow}
         campaign={Campaign}
-        adUnit={HostedAdCanvas.adUnit}
-        adDimension={HostedAdCanvas.adDimension}
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
     expect(canvas.find(CanvasSlideshow).length).toBe(1)

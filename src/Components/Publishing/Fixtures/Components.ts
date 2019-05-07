@@ -298,12 +298,12 @@ export const UnitCanvasSlideshow: DisplayUnitData = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const HostedAdPanel: HostedAdData = {
+export const StandardArticleHostedAdPanel: HostedAdData = {
   adUnit: "Desktop_RightRail1",
   adDimension: "300x250",
 }
 
-export const HostedAdCanvas: HostedAdData = {
+export const StandardArticleHostedAdCanvas: HostedAdData = {
   adUnit: "Desktop_TopLeaderboard",
   adDimension: "970x250",
 }

@@ -9,7 +9,7 @@ import { Sections } from "../Sections/Sections"
 
 import {
   Campaign,
-  HostedAdPanel,
+  StandardArticleHostedAdPanel,
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
@@ -26,8 +26,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
       <DisplayPanel
         unit={UnitPanel}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -37,8 +37,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
         unit={UnitPanelTracked}
         campaign={Campaign}
         renderTime={getCurrentUnixTimestamp()}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -48,8 +48,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
         unit={UnitPanel}
         campaign={Campaign}
         isMobile
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -61,8 +61,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -71,8 +71,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
       <DisplayPanel
         unit={UnitPanelVideo}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -82,8 +82,8 @@ const story = storiesOf("Publishing/Display/Panel", module)
         unit={UnitPanelVideo}
         campaign={Campaign}
         isMobile
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -99,8 +99,8 @@ mobileAdInsertions.forEach(([label, unit]) => {
         isMobile
         unit={unit}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
 
@@ -114,8 +114,8 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasOverlay}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -125,8 +125,8 @@ storiesOf("Publishing/Display/Canvas", module)
         unit={UnitCanvasTracked}
         campaign={Campaign}
         renderTime={getCurrentUnixTimestamp()}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -135,8 +135,8 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasImage}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -145,8 +145,8 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasVideo}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
@@ -155,8 +155,8 @@ storiesOf("Publishing/Display/Canvas", module)
       <DisplayCanvas
         unit={UnitCanvasSlideshow}
         campaign={Campaign}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })

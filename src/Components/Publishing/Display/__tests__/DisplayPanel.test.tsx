@@ -8,7 +8,7 @@ import { DisplayPanel } from "../DisplayPanel"
 
 import {
   Campaign,
-  HostedAdPanel,
+  StandardArticleHostedAdPanel,
   UnitPanel,
   UnitPanelTracked,
   UnitPanelVideo,
@@ -21,8 +21,8 @@ describe("snapshots", () => {
         <DisplayPanel
           unit={UnitPanel}
           campaign={Campaign}
-          adDimension={HostedAdPanel.adDimension}
-          adUnit={HostedAdPanel.adUnit}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+          adUnit={StandardArticleHostedAdPanel.adUnit}
         />
       )
       .toJSON()
@@ -35,8 +35,8 @@ describe("snapshots", () => {
         <DisplayPanel
           unit={UnitPanel}
           campaign={Campaign}
-          adDimension={HostedAdPanel.adDimension}
-          adUnit={HostedAdPanel.adUnit}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+          adUnit={StandardArticleHostedAdPanel.adUnit}
         />
       )
       .toJSON()
@@ -49,8 +49,8 @@ describe("snapshots", () => {
         <DisplayPanel
           unit={UnitPanelVideo}
           campaign={Campaign}
-          adDimension={HostedAdPanel.adDimension}
-          adUnit={HostedAdPanel.adUnit}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+          adUnit={StandardArticleHostedAdPanel.adUnit}
         />
       )
       .toJSON()
@@ -74,8 +74,8 @@ describe("units", () => {
         campaign={Campaign}
         renderTime={12345}
         {...rest}
-        adDimension={HostedAdPanel.adDimension}
-        adUnit={HostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   }
@@ -90,8 +90,8 @@ describe("units", () => {
 
   it("renders the display panel with correct dimensions and unit name", () => {
     const wrapper = getWrapper({
-      adUnit: HostedAdPanel.adUnit,
-      adDimension: HostedAdPanel.adDimension,
+      adUnit: StandardArticleHostedAdPanel.adUnit,
+      adDimension: StandardArticleHostedAdPanel.adDimension,
     })
     expect(wrapper.html()).toMatch('data-unit="Desktop_RightRail1"')
     expect(wrapper.html()).toMatch('data-sizes="300x250"')
