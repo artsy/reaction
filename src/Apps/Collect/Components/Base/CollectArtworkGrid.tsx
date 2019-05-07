@@ -56,7 +56,11 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
         const urlFragment = urlFragmentFromState(state, { page })
 
         // TODO: Look into using router push w/ query params.
-        window.history.pushState({}, null, `/collect?${urlFragment}`)
+        window.history.pushState(
+          {},
+          null,
+          `${window.location.pathname}?${urlFragment}`
+        )
         if (error) {
           console.error(error)
         }
