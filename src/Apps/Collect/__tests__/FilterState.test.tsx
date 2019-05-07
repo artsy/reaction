@@ -80,4 +80,5 @@ const initialState = {
   attribution_class: [],
   artist_id: null,
   color: null,
+  dimension_range: null,
 }

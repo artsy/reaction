@@ -15,7 +15,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/painting?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=4900-%2A&artist_id=evelyn-walg"`
+      `"https://staging.artsy.net/collect/painting?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=27.6-%2A&artist_id=evelyn-walg"`
     )
   })
   it("formats the collect page url correctly (medium)", async () => {
@@ -26,7 +26,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/film-slash-video?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=1600-4900&artist_id=evelyn-walg"`
+      `"https://staging.artsy.net/collect/film-slash-video?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=15.7-27.6&artist_id=evelyn-walg"`
     )
   })
 
@@ -38,7 +38,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect/work-on-paper?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=0-1600&artist_id=banksy"`
+      `"https://staging.artsy.net/collect/work-on-paper?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=%2A-15.7&artist_id=banksy"`
     )
   })
 
@@ -62,7 +62,7 @@ describe("createCollectUrl", () => {
     })
 
     expect(result).toMatchInlineSnapshot(
-      `"https://staging.artsy.net/collect?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=0-1600&artist_id=banksy"`
+      `"https://staging.artsy.net/collect?page=1&sort=-decayed_merch&acquireable=true&offerable=true&inquireable_only=true&dimension_range=%2A-15.7&artist_id=banksy"`
     )
   })
 })
