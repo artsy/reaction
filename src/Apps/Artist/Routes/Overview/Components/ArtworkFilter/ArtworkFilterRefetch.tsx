@@ -98,6 +98,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: { type: "String", defaultValue: "-decayed_merch" }
           offerable: { type: "Boolean" }
           price_range: { type: "String", defaultValue: "*-*" }
+          page: { type: "Int" }
         ) {
         __id
         grid: filtered_artworks(
@@ -113,6 +114,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           size: 0
           sort: $sort
           price_range: $price_range
+          page: $page
         ) {
           ...ArtworkFilterArtworkGrid_filtered_artworks
         }
@@ -132,6 +134,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $for_sale: Boolean
       $sort: String
       $price_range: String
+      $page: Int
     ) {
       node(__id: $artistNodeID) {
         ... on Artist {
@@ -147,6 +150,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               offerable: $offerable
               inquireable_only: $inquireable_only
               price_range: $price_range
+              page: $page
             )
         }
       }

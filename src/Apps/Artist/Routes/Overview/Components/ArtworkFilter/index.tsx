@@ -384,6 +384,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           }
           sort: { type: "String", defaultValue: "-decayed_merch" }
           price_range: { type: "String", defaultValue: "*-*" }
+          page: { type: "Int" }
         ) {
         id
         name
@@ -417,6 +418,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
             at_auction: $at_auction
             inquireable_only: $inquireable_only
             price_range: $price_range
+            page: $page
           )
 
         ...FollowArtistButton_artist
