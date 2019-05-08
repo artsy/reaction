@@ -89,6 +89,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -121,6 +127,12 @@ return {
       "kind": "LocalArgument",
       "name": "color",
       "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
       "defaultValue": null
     }
   ],
@@ -297,6 +309,18 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
           "type": null
@@ -319,5 +343,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f18b8da67ef2e88c1040a1cf9206d2be';
+(node as any).hash = '3d52dd0b097c9da84c1bc53e64866dcf';
 export default node;

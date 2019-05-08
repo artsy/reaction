@@ -63,6 +63,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
           height: { type: "String" }
           width: { type: "String" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         artworks(
           aggregations: $aggregations
@@ -92,6 +93,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
             height: $height
             width: $width
             color: $color
+            page: $page
           )
       }
     `,

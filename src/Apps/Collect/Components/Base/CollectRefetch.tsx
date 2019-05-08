@@ -9,7 +9,10 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import createLogger from "Utils/logger"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
+
+const logger = createLogger("CollectRefetch.tsx")
 
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
@@ -61,14 +64,17 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
         null,
         error => {
           if (error) {
-            console.error(error)
+            logger.error(error)
           }
 
-          // TODO: Look into using router push w/ query params.
+          // Using window.history.pushState instead of router.push, because
+          //   we just want to add to the history, not navigate to another route.
           window.history.pushState(
             {},
             null,
-            `/collect?${urlFragmentFromState(this.props.filtersState)}`
+            `${window.location.pathname}?${urlFragmentFromState(
+              this.props.filtersState
+            )}`
           )
 
           this.setState({
