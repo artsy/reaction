@@ -1,68 +1,87 @@
+import { Box, Flex, Link } from "@artsy/palette"
 import React from "react"
-import styled from "styled-components"
+import { CaptchaTerms, FooterText } from "./commonElements"
+import { ModalType } from "./Types"
 
-import { SmallText, SmallTextLink } from "./commonElements"
-
-interface Props {
+interface FooterProps {
+  handleTypeChange?: (modalType: ModalType) => void
   inline?: boolean
+  mode?: ModalType
+  onFacebookLogin?: any
 }
 
-const FooterContainer = styled.div`
-  display: ${(props: Props) => (props.inline ? "inline" : "flex")};
-  flex-direction: column;
-`
-// TODO: Remove twitter logic once deprecated
-export const Footer = props => {
+export const Footer = (props: FooterProps) => {
   const { onFacebookLogin, handleTypeChange, mode, inline } = props
 
   switch (mode) {
     case "login": {
       return (
-        <FooterContainer inline={inline}>
-          <SmallText>
+        <Flex flexDirection={inline ? "row" : "column"} justifyContent="center">
+          <FooterText>
             {"Log in using "}
-            <SmallTextLink onClick={onFacebookLogin}>Facebook</SmallTextLink>
+            <Link color="black60" onClick={onFacebookLogin}>
+              Facebook
+            </Link>
             {". "}
-          </SmallText>
-
-          <SmallText>
-            {" Don’t have an account? "}
-            <SmallTextLink onClick={() => handleTypeChange("signup")}>
+          </FooterText>
+          <FooterText>
+            {"Don’t have an account? "}
+            <Link
+              color="black60"
+              onClick={() => handleTypeChange("signup" as ModalType)}
+            >
               Sign up.
-            </SmallTextLink>
-          </SmallText>
-        </FooterContainer>
+            </Link>
+          </FooterText>
+        </Flex>
       )
     }
     case "forgot": {
       return (
-        <FooterContainer inline={inline}>
-          <SmallText>
+        <Box textAlign="center">
+          <FooterText>
             {"Don’t need to reset? "}
-            <SmallTextLink onClick={() => handleTypeChange("login")}>
+            <Link
+              color="black60"
+              onClick={() => handleTypeChange("login" as ModalType)}
+            >
               Log in
-            </SmallTextLink>
+            </Link>
             {" or "}
-            <SmallTextLink onClick={() => handleTypeChange("signup")}>
+            <Link
+              color="black60"
+              onClick={() => handleTypeChange("signup" as ModalType)}
+            >
               sign up.
-            </SmallTextLink>
-          </SmallText>
-        </FooterContainer>
+            </Link>
+          </FooterText>
+        </Box>
       )
     }
     default: {
       return (
-        <FooterContainer inline={inline}>
-          <SmallTextLink onClick={onFacebookLogin}>
-            Sign up using Facebook.
-          </SmallTextLink>
-          <SmallText>
-            {" Already have an account? "}
-            <SmallTextLink onClick={() => handleTypeChange("login")}>
-              Log in.
-            </SmallTextLink>
-          </SmallText>
-        </FooterContainer>
+        <Box>
+          <Flex
+            flexDirection={inline ? "row" : "column"}
+            justifyContent="center"
+          >
+            <FooterText>
+              <Link color="black60" onClick={onFacebookLogin}>
+                Sign up using Facebook.
+              </Link>{" "}
+            </FooterText>
+            <FooterText>
+              {"Already have an account? "}
+              <Link
+                color="black60"
+                onClick={() => handleTypeChange("login" as ModalType)}
+              >
+                Log in.
+              </Link>
+            </FooterText>
+          </Flex>
+          <CaptchaTerms />
+        </Box>
       )
     }
   }

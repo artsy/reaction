@@ -1,3 +1,4 @@
+import { Theme } from "@artsy/palette"
 import qs from "querystring"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -165,44 +166,46 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
 
     return (
-      <Form
-        title={title}
-        contextModule={options.contextModule}
-        error={error}
-        values={defaultValues}
-        handleTypeChange={this.handleTypeChange}
-        handleSubmit={handleSubmit}
-        intent={options.intent}
-        onBackButtonClicked={onBackButtonClicked}
-        onFacebookLogin={() => {
-          if (this.props.onSocialAuthEvent) {
-            this.props.onSocialAuthEvent({
-              ...options,
-              service: "facebook",
-            })
-          }
+      <Theme>
+        <Form
+          title={title}
+          contextModule={options.contextModule}
+          error={error}
+          values={defaultValues}
+          handleTypeChange={this.handleTypeChange}
+          handleSubmit={handleSubmit}
+          intent={options.intent}
+          onBackButtonClicked={onBackButtonClicked}
+          onFacebookLogin={() => {
+            if (this.props.onSocialAuthEvent) {
+              this.props.onSocialAuthEvent({
+                ...options,
+                service: "facebook",
+              })
+            }
 
-          if (typeof window !== "undefined") {
-            window.location.href =
-              this.props.submitUrls.facebook +
-              `?${authQueryData}` +
-              "&service=facebook"
-          }
-        }}
-        onTwitterLogin={() => {
-          if (this.props.onSocialAuthEvent) {
-            this.props.onSocialAuthEvent({
-              ...options,
-              service: "twitter",
-            })
-          }
+            if (typeof window !== "undefined") {
+              window.location.href =
+                this.props.submitUrls.facebook +
+                `?${authQueryData}` +
+                "&service=facebook"
+            }
+          }}
+          onTwitterLogin={() => {
+            if (this.props.onSocialAuthEvent) {
+              this.props.onSocialAuthEvent({
+                ...options,
+                service: "twitter",
+              })
+            }
 
-          if (typeof window !== "undefined") {
-            window.location.href =
-              this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
-          }
-        }}
-      />
+            if (typeof window !== "undefined") {
+              window.location.href =
+                this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
+            }
+          }}
+        />
+      </Theme>
     )
   }
 }

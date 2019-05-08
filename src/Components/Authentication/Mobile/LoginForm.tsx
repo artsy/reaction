@@ -1,12 +1,12 @@
+import { Flex } from "@artsy/palette"
 import Colors from "Assets/Colors"
 import { checkEmail } from "Components/Authentication/helpers"
+import Icon from "Components/Icon"
+import PasswordInput from "Components/PasswordInput"
+import { ProgressIndicator } from "Components/ProgressIndicator"
+import QuickInput from "Components/QuickInput"
+import { Step, Wizard } from "Components/Wizard"
 import React, { Component, Fragment } from "react"
-import styled from "styled-components"
-import Icon from "../../Icon"
-import PasswordInput from "../../PasswordInput"
-import { ProgressIndicator } from "../../ProgressIndicator"
-import QuickInput from "../../QuickInput"
-import { Step, Wizard } from "../../Wizard"
 import {
   BackButton,
   Error,
@@ -17,7 +17,7 @@ import {
   MobileInnerWrapper,
   SubmitButton,
 } from "../commonElements"
-import { FormProps } from "../Types"
+import { FormProps, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
 export class MobileLoginForm extends Component<FormProps> {
@@ -93,9 +93,9 @@ export class MobileLoginForm extends Component<FormProps> {
               setTouched={setTouched}
               touchedOnChange={false}
             />
-            <Row>
+            <Flex alignItems="center" justifyContent="flex-end">
               <ForgotPassword onClick={() => (location.href = "/forgot")} />
-            </Row>
+            </Flex>
           </Fragment>
         )}
       </Step>,
@@ -137,10 +137,9 @@ export class MobileLoginForm extends Component<FormProps> {
                   {isLastStep ? "Log in" : "Next"}
                 </SubmitButton>
                 <Footer
-                  mode="login"
+                  mode={"login" as ModalType}
                   handleTypeChange={this.props.handleTypeChange}
                   onFacebookLogin={this.props.onFacebookLogin}
-                  onTwitterLogin={this.props.onTwitterLogin}
                 />
               </MobileInnerWrapper>
             </MobileContainer>
@@ -150,9 +149,3 @@ export class MobileLoginForm extends Component<FormProps> {
     )
   }
 }
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`

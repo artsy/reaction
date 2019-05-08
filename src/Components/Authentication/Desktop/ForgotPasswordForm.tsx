@@ -69,7 +69,7 @@ export class ForgotPasswordForm extends Component<
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.login)
                 }
-                mode="forgot"
+                mode={"forgot" as ModalType}
               />
             </Form>
           )

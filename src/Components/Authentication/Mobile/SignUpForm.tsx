@@ -1,6 +1,5 @@
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import Colors from "Assets/Colors"
 import {
   BackButton,
   Error,
@@ -12,7 +11,7 @@ import {
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import { checkEmail } from "Components/Authentication/helpers"
-import { FormProps } from "Components/Authentication/Types"
+import { FormProps, ModalType } from "Components/Authentication/Types"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import Icon from "Components/Icon"
 import PasswordInput from "Components/PasswordInput"
@@ -166,11 +165,7 @@ export class MobileSignUpForm extends Component<
                       : wizard.previous(e, values)
                   }
                 >
-                  <Icon
-                    name="chevron-left"
-                    color={Colors.graySemibold}
-                    fontSize="16px"
-                  />
+                  <Icon name="chevron-left" color="black60" fontSize="16px" />
                 </BackButton>
                 <MobileHeader>
                   {this.props.title || "Sign up for Artsy"}
@@ -200,7 +195,7 @@ export class MobileSignUpForm extends Component<
                   {isLastStep ? "Create account" : "Next"}
                 </SubmitButton>
                 <Footer
-                  mode="signup"
+                  mode={"signup" as ModalType}
                   onFacebookLogin={e => {
                     if (!values.accepted_terms_of_service) {
                       this.setState(
@@ -219,7 +214,6 @@ export class MobileSignUpForm extends Component<
                       }
                     }
                   }}
-                  onTwitterLogin={this.props.onTwitterLogin}
                   handleTypeChange={this.props.handleTypeChange}
                 />
               </MobileInnerWrapper>

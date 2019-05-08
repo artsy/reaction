@@ -1,7 +1,4 @@
-import { Formik, FormikProps } from "formik"
-import React, { Component } from "react"
-import styled from "styled-components"
-
+import { Flex } from "@artsy/palette"
 import {
   Error,
   Footer,
@@ -17,12 +14,8 @@ import {
 import { LoginValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
+import { Formik, FormikProps } from "formik"
+import React, { Component } from "react"
 
 export interface LoginFormState {
   error: string
@@ -61,7 +54,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
           }
 
           return (
-            <Form onSubmit={handleSubmit} height={320}>
+            <Form onSubmit={handleSubmit}>
               <QuickInput
                 block
                 error={touched.email && errors.email}
@@ -84,20 +77,19 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <Row>
+              <Flex alignItems="center" justifyContent="flex-end">
                 <ForgotPassword
                   onClick={() => this.props.handleTypeChange(ModalType.forgot)}
                 />
-              </Row>
+              </Flex>
               {globalError && <Error show>{globalError}</Error>}
               <SubmitButton loading={isSubmitting}>Log in</SubmitButton>
               <Footer
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.signup)
                 }
-                mode="login"
+                mode={"login" as ModalType}
                 onFacebookLogin={this.props.onFacebookLogin}
-                onTwitterLogin={this.props.onTwitterLogin}
                 inline
               />
             </Form>
