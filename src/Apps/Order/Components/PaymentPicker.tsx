@@ -200,12 +200,12 @@ export class PaymentPicker extends React.Component<
     const orderCard = this.props.order.creditCard
 
     let defaultCard
+
     if (creditCardSelection.type === "new") {
       defaultCard = "new"
     } else {
       defaultCard = orderCard ? orderCard.id : creditCardSelection.id
     }
-    // const defaultCard = orderCard ? orderCard : creditCardSelection
 
     return (
       <>
