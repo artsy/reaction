@@ -9,7 +9,10 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import createLogger from "Utils/logger"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
+
+const logger = createLogger("CollectRefetch.tsx")
 
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
@@ -61,7 +64,7 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
         null,
         error => {
           if (error) {
-            console.error(error)
+            logger.error(error)
           }
 
           // Using window.history.pushState instead of router.push, because

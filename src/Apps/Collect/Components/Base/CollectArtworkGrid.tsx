@@ -3,12 +3,14 @@ import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/Artwor
 import { FilterState, urlFragmentFromState } from "Apps/Collect/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
+import createLogger from "Utils/logger"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+const logger = createLogger("CollectArtworkGrid.tsx")
 
 interface Props {
   columnCount: number | number[]
@@ -63,7 +65,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
           `${window.location.pathname}?${urlFragment}`
         )
         if (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
     )
