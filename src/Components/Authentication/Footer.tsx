@@ -8,10 +8,17 @@ interface FooterProps {
   inline?: boolean
   mode?: ModalType
   onFacebookLogin?: any
+  showRecaptchaDisclaimer?: boolean
 }
 
 export const Footer = (props: FooterProps) => {
-  const { onFacebookLogin, handleTypeChange, mode, inline } = props
+  const {
+    handleTypeChange,
+    inline,
+    mode,
+    onFacebookLogin,
+    showRecaptchaDisclaimer,
+  } = props
 
   switch (mode) {
     case "login": {
@@ -80,7 +87,7 @@ export const Footer = (props: FooterProps) => {
               </Link>
             </FooterText>
           </Flex>
-          <CaptchaTerms />
+          {showRecaptchaDisclaimer && <CaptchaTerms />}
         </Box>
       )
     }

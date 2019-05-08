@@ -115,6 +115,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                   }
                 }}
                 inline
+                showRecaptchaDisclaimer={this.props.showRecaptchaDisclaimer}
               />
             </Form>
           )

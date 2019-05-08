@@ -28,12 +28,13 @@ export interface FormSwitcherProps {
   onTwitterLogin?: (e: Event) => void
   options: ModalOptions
   title?: string
-  tracking?: TrackingProp
-  type: ModalType
+  showRecaptchaDisclaimer?: boolean
   submitUrls?: { [P in ModalType]: string } & {
     facebook?: string
     twitter?: string
   }
+  tracking?: TrackingProp
+  type: ModalType
   values?: InputValues
   onSocialAuthEvent?: (options) => void
   onBackButtonClicked?: (e: Event) => void
@@ -118,7 +119,13 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
   }
 
   render() {
-    const { error, isMobile, title, options } = this.props
+    const {
+      error,
+      isMobile,
+      title,
+      options,
+      showRecaptchaDisclaimer,
+    } = this.props
 
     const queryData = Object.assign(
       {},
@@ -191,19 +198,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
                 "&service=facebook"
             }
           }}
-          onTwitterLogin={() => {
-            if (this.props.onSocialAuthEvent) {
-              this.props.onSocialAuthEvent({
-                ...options,
-                service: "twitter",
-              })
-            }
-
-            if (typeof window !== "undefined") {
-              window.location.href =
-                this.props.submitUrls + `?${authQueryData}` + "&service=twitter"
-            }
-          }}
+          showRecaptchaDisclaimer={showRecaptchaDisclaimer}
         />
       </Theme>
     )

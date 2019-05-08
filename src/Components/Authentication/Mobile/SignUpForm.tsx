@@ -215,6 +215,7 @@ export class MobileSignUpForm extends Component<
                     }
                   }}
                   handleTypeChange={this.props.handleTypeChange}
+                  showRecaptchaDisclaimer={this.props.showRecaptchaDisclaimer}
                 />
               </MobileInnerWrapper>
             </MobileContainer>

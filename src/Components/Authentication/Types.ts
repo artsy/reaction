@@ -30,10 +30,10 @@ export interface FormProps {
   handleTypeChange?: (modalType: ModalType) => void
   intent?: string
   onFacebookLogin?: (e: Event) => void
-  onTwitterLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string
   entityName?: string
+  showRecaptchaDisclaimer?: boolean
 }
 
 interface AfterSignUpAction {
