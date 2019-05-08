@@ -1,3 +1,15 @@
+# v16.9.0 (Wed May 08 2019)
+
+#### 🚀  Enhancement
+
+- Removes slick from ArtworkImageBrowser [#2356](https://github.com/artsy/reaction/pull/2356) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.8.15 (Wed May 08 2019)
 
 #### 🐛  Bug Fix
