@@ -198,7 +198,14 @@ export class PaymentPicker extends React.Component<
     const userHasExistingCards = creditCards.edges.length > 0
 
     const orderCard = this.props.order.creditCard
-    const defaultCard = orderCard ? orderCard : creditCardSelection
+
+    let defaultCard
+    if (creditCardSelection.type === "new") {
+      defaultCard = "new"
+    } else {
+      defaultCard = orderCard ? orderCard.id : creditCardSelection.id
+    }
+    // const defaultCard = orderCard ? orderCard : creditCardSelection
 
     return (
       <>
@@ -214,9 +221,7 @@ export class PaymentPicker extends React.Component<
                   })
                 }
               }}
-              defaultValue={
-                creditCardSelection.type === "new" ? "new" : defaultCard.id
-              }
+              defaultValue={defaultCard}
             >
               {creditCards.edges
                 .map(e => {
