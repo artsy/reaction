@@ -58,7 +58,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
         const urlFragment = urlFragmentFromState(state, { page })
 
         // Using window.history.pushState instead of router.push, because
-        //  we just want to add to the history, not navigate to another route.
+        //   we just want to add to the history, not navigate to another route.
         window.history.pushState(
           {},
           null,
