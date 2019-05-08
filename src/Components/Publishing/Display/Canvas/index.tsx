@@ -1,25 +1,27 @@
 import { color } from "@artsy/palette"
 import { avantgarde, garamond } from "Assets/Fonts"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled, { StyledFunction } from "styled-components"
-import { isAdmin } from "Utils/admin"
 import { ErrorBoundary } from "../../../ErrorBoundary"
 import { pMedia } from "../../../Helpers"
 import { getCurrentUnixTimestamp } from "../../Constants"
 import { PixelTracker, replaceWithCacheBuster } from "../ExternalTrackers"
 import { trackImpression, trackViewability } from "../track-once"
 import { CanvasContainer, unitLayout } from "./CanvasContainer"
+
 interface DisplayCanvasProps {
   unit: any
   campaign: any
   article?: any
   renderTime?: number
   tracking?: any
-  adUnit: string
-  adDimension: string
+  adUnit: AdUnit
+  adDimension: AdDimension
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -54,13 +56,19 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
       renderTime,
     } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
-    const isAdminUser = isAdmin()
+    const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
+      .split(",")
+      .filter(Boolean)
+    const currentUser = get(sd, "CURRENT_USER.email", "")
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
 
-    // @FIXME: Hide new ads behind admin flag for now
-    if (isAdminUser) {
+    // TODO: Remove the allowlist and env checks after externally served ads are implemented
+    if (
+      allowedUsers.includes(currentUser) &&
+      process.env.NODE_ENV !== "production"
+    ) {
       return (
         <div
           className="htl-ad"
@@ -70,6 +78,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
         />
       )
     }
+
     return (
       <>
         <a
@@ -85,6 +94,8 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
           disclaimer={disclaimer}
         />
         {unit.layout === "overlay" && disclaimer}
+        // TODO: Determine how to handle DisplayContainer layout and tracking
+        when this component no longer receives unit prop
         <PixelTracker unit={unit} date={renderTime} />
       </>
     )
@@ -92,7 +103,6 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
 
   render() {
     const { unit } = this.props
-    // @TODO: Determine how to handle DisplayContainer layout  and tracking when this component no longer receives unit prop
     return (
       <ErrorBoundary>
         <DisplayContainer layout={unit.layout}>

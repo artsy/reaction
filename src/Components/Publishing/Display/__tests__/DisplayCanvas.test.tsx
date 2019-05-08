@@ -2,6 +2,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
+import { data as sd } from "sharify"
 import { getCurrentUnixTimestamp } from "../../Constants"
 import { DisplayCanvas } from "../Canvas"
 import { CanvasLink } from "../Canvas/CanvasContainer"
@@ -19,8 +20,14 @@ import {
   UnitCanvasVideo,
 } from "../../Fixtures/Components"
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+  },
+}))
+
 describe("snapshot", () => {
-  xit("renders the canvas in standard layout with image", () => {
+  it("renders the canvas in standard layout with image", () => {
     const component = renderer
       .create(
         <DisplayCanvas
@@ -94,7 +101,7 @@ describe("unit", () => {
     )
   }
 
-  xit("renders the unit data", () => {
+  it("renders the unit data", () => {
     const canvas = mount(
       <DisplayCanvas
         unit={UnitCanvasImage}
@@ -114,21 +121,17 @@ describe("unit", () => {
     expect(canvas.find(CanvasVideo).length).toBe(0)
   })
 
-  it("renders the canvas with the correct dimensions and unit name", () => {
-    const canvas = mount(
-      <DisplayCanvas
-        unit={UnitCanvasImage}
-        campaign={Campaign}
-        adUnit={StandardArticleHostedAdCanvas.adUnit}
-        adDimension={StandardArticleHostedAdCanvas.adDimension}
-      />
-    )
+  it("checks for allowlisted users", () => {
+    const allowedUser = sd.HASHTAG_LAB_ADS_ALLOWLIST.split(",").filter(Boolean)
 
-    expect(canvas.html()).toMatch('data-unit="Desktop_TopLeaderboard"')
-    expect(canvas.html()).toMatch('data-sizes="970x250"')
+    expect(allowedUser).toHaveLength(2)
+    expect(allowedUser).toEqual([
+      "alloweduser@email.com",
+      "alloweduser2@email.com",
+    ])
   })
 
-  xit("renders the video component if standard layout with video", () => {
+  it("renders the video component if standard layout with video", () => {
     const canvas = mount(
       <DisplayCanvas
         unit={UnitCanvasVideo}
@@ -140,7 +143,7 @@ describe("unit", () => {
     expect(canvas.find(CanvasVideo).length).toBe(1)
   })
 
-  xit("renders the slideshow component if slideshow layout", () => {
+  it("renders the slideshow component if slideshow layout", () => {
     const canvas = mount(
       <DisplayCanvas
         unit={UnitCanvasSlideshow}
@@ -152,7 +155,7 @@ describe("unit", () => {
     expect(canvas.find(CanvasSlideshow).length).toBe(1)
   })
 
-  xit("renders a pixel impression if there is a url", () => {
+  it("renders a pixel impression if there is a url", () => {
     const wrapper = getWrapper({
       unit: UnitCanvasTracked,
     })
@@ -188,7 +191,7 @@ describe("unit", () => {
       )
     })
 
-    xit("busts 3rd party cache on click", () => {
+    it("busts 3rd party cache on click", () => {
       const wrapper = getWrapper({
         unit: UnitCanvasTracked,
       })

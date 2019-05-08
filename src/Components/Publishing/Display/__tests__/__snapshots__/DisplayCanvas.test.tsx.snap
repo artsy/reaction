@@ -1,6 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot renders the canvas in overlay layout 1`] = `
+.c5 {
+  height: 100%;
+  object-fit: contain;
+  object-position: left;
+  max-width: 300px;
+  max-height: 100px;
+  margin: 60px auto;
+}
+
+.c4 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  text-align: center;
+  color: #fff;
+  max-width: 500px;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  margin-bottom: 25px;
+}
+
+.c7 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  margin-bottom: 10px;
+  display: initial;
+  background-image: linear-gradient(to bottom,transparent 0,#FFF 2px,transparent 0);
+  background-position: bottom;
+  background-size: 1px 5px;
+  background-repeat: repeat-x;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.c7:hover {
+  opacity: .6;
+}
+
+.c2 {
+  width: 100%;
+  height: 460px;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3 {
+  background: black;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c3::before {
+  content: '';
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/YqTtwB7AWqKD95NGItwjJg%2FRachel_Rossin_portrait_2.jpg);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: 50%;
+  z-index: 1;
+  opacity: 1;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -23,6 +127,99 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #C2C2C2;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.c8 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  color: #C2C2C2;
+  margin: 15px 0 0 0;
+  text-align: center;
+}
+
+@media (max-width:900px) {
+  .c5 {
+    width: auto;
+    margin: 20px 0;
+    max-width: calc(100% - 60px);
+    margin: 15px auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    margin: 0 auto 10px auto;
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media (max-width:600px) {
+  .c6 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:900px) {
+  .c7 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    margin: 35px 0 10px 0;
+  }
+}
+
 <div
   className="c0"
 >
@@ -40,16 +237,186 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
       }
     }
   />
+  <a
+    href="http://artsy.net"
+    target="_blank"
+  >
+    <div
+      className="c1"
+    >
+      Sponsored by Artsy
+    </div>
+  </a>
+  <a
+    className="c2"
+    href="http://artsy.net"
+    onClick={[Function]}
+    target="_blank"
+  >
+    <div
+      className="c3"
+    />
+    <div
+      className="c4"
+    >
+      <div>
+        <img
+          className="c5"
+          src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy_logo_full_whiteweb_transparent.png&width=400&quality=80"
+        />
+        <div
+          className="c6"
+        >
+          Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.
+        </div>
+        <div
+          className="c7"
+        >
+          Link Example
+        </div>
+      </div>
+    </div>
+  </a>
   <div
-    className="htl-ad"
-    data-eager={true}
-    data-sizes="970x250"
-    data-unit="Desktop_TopLeaderboard"
-  />
+    className="c8"
+  >
+    Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+  </div>
+  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
 exports[`snapshot renders the canvas in slideshow layout 1`] = `
+.c2 {
+  width: 100%;
+  overflow: hidden;
+}
+
+.c2 .slick-list {
+  max-height: calc(479.375px + 2.5em);
+  padding: 0 !important;
+}
+
+.c3 {
+  padding-right: 20px;
+}
+
+.c3.title-card {
+  max-width: 1170px;
+  margin-left: 40px;
+  width: 1250px;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c4 {
+  width: 380px;
+  padding: 0 20px 0 0;
+}
+
+.c10 {
+  margin: -5px 0 0;
+}
+
+.c12 {
+  height: auto;
+  max-width: 812.5px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.c13 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  color: #cccccc;
+  margin-top: 10px;
+}
+
+.c7 {
+  height: 100%;
+  object-fit: contain;
+  object-position: left;
+  max-width: 250px;
+  max-height: 90px;
+  margin: 20px 0 50px 0;
+}
+
+.c6 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c8 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.1em;
+  margin-bottom: 25px;
+}
+
+.c9 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  margin-bottom: 10px;
+  display: initial;
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
+  background-position: bottom;
+  background-size: 1px 5px;
+  background-repeat: repeat-x;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.c9:hover {
+  opacity: .6;
+}
+
+.c5 {
+  width: 100%;
+  height: 460px;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -72,6 +439,171 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #C2C2C2;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.c11 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  color: #C2C2C2;
+  margin: 15px 0 0 0;
+}
+
+@media (max-width:900px) {
+  .c2 {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:900px) {
+  .c3.title-card {
+    max-width: 812.5px;
+  }
+}
+
+@media (max-width:1280px) {
+  .c4 {
+    padding: 0 40px;
+    width: 437.5px;
+  }
+
+  .c4 a {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:900px) {
+  .c4 {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .c4 a {
+    height: initial;
+    max-height: initial;
+  }
+}
+
+@media (max-width:900px) {
+  .c10 {
+    margin: 0;
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media (max-width:1080px) {
+  .c12 {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:900px) {
+  .c7 {
+    width: auto;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width:900px) {
+  .c6 {
+    width: 100%;
+  }
+}
+
+@media (max-width:720px) {
+  .c6 {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width:1080px) {
+  .c8 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    margin: 0 auto 10px auto;
+    max-width: calc(100% - 40px);
+    margin-left: 0;
+  }
+}
+
+@media (max-width:600px) {
+  .c8 {
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:1080px) {
+  .c9 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:900px) {
+  .c9 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:1080px) {
+  .c5 {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width:720px) {
+  .c11 {
+    margin: 35px 0 10px 0;
+  }
+}
+
 <div
   className="c0"
 >
@@ -89,16 +621,215 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
       }
     }
   />
-  <div
-    className="htl-ad"
-    data-eager={true}
-    data-sizes="970x250"
-    data-unit="Desktop_TopLeaderboard"
-  />
+  <a
+    href="http://artsy.net"
+    target="_blank"
+  >
+    <div
+      className="c1"
+    >
+      Sponsored by Artsy
+    </div>
+  </a>
+  <div>
+    <div
+      className="c2"
+    >
+      <div>
+        <div
+          className="title-card c3"
+        >
+          <div
+            className="c4"
+          >
+            <a
+              className="c5"
+              href="http://artsy.net"
+              onClick={[Function]}
+              target="_blank"
+            >
+              <div
+                className="c6"
+              >
+                <div>
+                  <img
+                    className="c7"
+                    src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
+                  />
+                  <div
+                    className="c8"
+                  >
+                    Sample copy sed posuere consectetur est at lobortis. Nullam id dolor ultricies vehicula.
+                  </div>
+                  <div
+                    className="c9"
+                  >
+                    Link Example
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div
+              className="c10"
+            >
+              <div
+                className="c11"
+              >
+                Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              alt="Nullam id dolor ultricies vehicula."
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=780&height=460&quality=95"
+            />
+            <div
+              className="c13"
+            >
+              Nullam id dolor ultricies vehicula.
+            </div>
+          </div>
+        </div>
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt=""
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=780&height=460&quality=95"
+            />
+            
+          </div>
+        </div>
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt="Cras justo odio, dapibus ac facilisis in, egestas eget quam."
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=780&height=460&quality=95"
+            />
+            <div
+              className="c13"
+            >
+              Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+            </div>
+          </div>
+        </div>
+        <div
+          className="c3"
+        >
+          <div>
+            <img
+              alt=""
+              className="c12"
+              src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FtjVXiaCPt3Tv1EYS3JqX5g%252FFogoIsland_BridgeStudio_4985_photo_Alex_Fradkin.jpg&width=780&height=460&quality=95"
+            />
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
 exports[`snapshot renders the canvas in standard layout with image 1`] = `
+.c6 {
+  height: 100%;
+  object-fit: contain;
+  object-position: left;
+  max-width: 250px;
+  max-height: 90px;
+  margin: 20px 0 50px 0;
+}
+
+.c5 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c7 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.1em;
+  margin-bottom: 25px;
+}
+
+.c8 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  margin-bottom: 10px;
+  display: initial;
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
+  background-position: bottom;
+  background-size: 1px 5px;
+  background-repeat: repeat-x;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.c8:hover {
+  opacity: .6;
+}
+
+.c3 {
+  display: block;
+  width: 65%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c2 {
+  width: 100%;
+  height: 460px;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c4 {
+  max-width: calc(35% - 20px);
+  height: 100%;
+  margin-right: auto;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -121,6 +852,135 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #C2C2C2;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.c9 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  color: #C2C2C2;
+  margin: 15px 0 0 0;
+}
+
+@media (max-width:900px) {
+  .c6 {
+    width: auto;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c5 {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width:1080px) {
+  .c7 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 {
+    margin: 0 auto 10px auto;
+    max-width: calc(100% - 40px);
+    margin-left: 0;
+  }
+}
+
+@media (max-width:600px) {
+  .c7 {
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:1080px) {
+  .c8 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:900px) {
+  .c8 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: initial;
+    object-fit: contain;
+  }
+}
+
+@media (max-width:1080px) {
+  .c2 {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width:720px) {
+  .c4 {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 {
+    margin: 35px 0 10px 0;
+  }
+}
+
 <div
   className="c0"
 >
@@ -138,16 +998,210 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
       }
     }
   />
-  <div
-    className="htl-ad"
-    data-eager={true}
-    data-sizes="970x250"
-    data-unit="Desktop_TopLeaderboard"
-  />
+  <a
+    href="http://artsy.net"
+    target="_blank"
+  >
+    <div
+      className="c1"
+    >
+      Sponsored by Artsy
+    </div>
+  </a>
+  <a
+    className="c2"
+    href="http://artsy.net"
+    onClick={[Function]}
+    target="_blank"
+  >
+    <img
+      className="c3"
+      src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FYqTtwB7AWqKD95NGItwjJg%252FRachel_Rossin_portrait_2.jpg&width=1200&height=760&quality=95"
+    />
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+      >
+        <div>
+          <img
+            className="c6"
+            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
+          />
+          <div
+            className="c7"
+          >
+            Commodo Risus Pharetra Fermentum Vehicula Adipiscing
+          </div>
+          <div
+            className="c8"
+          >
+            Link Example
+          </div>
+        </div>
+        <div
+          className="c9"
+        >
+          Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        </div>
+      </div>
+    </div>
+  </a>
+  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
 exports[`snapshot renders the canvas in standard layout with video 1`] = `
+.c9 {
+  height: 100%;
+  object-fit: contain;
+  object-position: left;
+  max-width: 250px;
+  max-height: 90px;
+  margin: 20px 0 50px 0;
+}
+
+.c8 {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.c10 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 40px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.1em;
+  margin-bottom: 25px;
+}
+
+.c11 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 23px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.35em;
+  margin-bottom: 10px;
+  display: initial;
+  background-image: linear-gradient(to bottom,transparent 0,#000 2px,transparent 0);
+  background-position: bottom;
+  background-size: 1px 5px;
+  background-repeat: repeat-x;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.c11:hover {
+  opacity: .6;
+}
+
+.c6 {
+  color: black;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid black;
+}
+
+.c5 {
+  background: white;
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+.c3 {
+  width: 65%;
+  max-width: 760px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.c3 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c4 {
+  background: url(https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FXkEYc3dH8HiRVKCIogWfUw%252FBombay%2BDisplay%2BThumbnail.PNG&width=760&quality=80) no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.c2 {
+  width: 100%;
+  height: 460px;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7 {
+  max-width: calc(35% - 20px);
+  height: 100%;
+  margin-right: auto;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -170,6 +1224,137 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
   text-decoration: none;
 }
 
+.c1 {
+  font-family: 'ITC Avant Garde Gothic W04','AvantGardeGothicITCW01D 731075',AvantGardeGothicITCW01Dm,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  font-size: 11px;
+  line-height: 1.65em;
+  color: #C2C2C2;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.c12 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 11px;
+  line-height: 1.1em;
+  -webkit-font-smoothing: antialiased;
+  color: #C2C2C2;
+  margin: 15px 0 0 0;
+}
+
+@media (max-width:900px) {
+  .c9 {
+    width: auto;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c8 {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width:1080px) {
+  .c10 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 23px;
+    line-height: 1.5em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:720px) {
+  .c10 {
+    margin: 0 auto 10px auto;
+    max-width: calc(100% - 40px);
+    margin-left: 0;
+  }
+}
+
+@media (max-width:600px) {
+  .c10 {
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:1080px) {
+  .c11 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@media (max-width:900px) {
+  .c11 {
+    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+    font-size: 17px;
+    line-height: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35em;
+  }
+}
+
+@media (max-width:720px) {
+  .c3 {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .c3 video {
+    height: auto;
+  }
+}
+
+@media (max-width:1080px) {
+  .c2 {
+    max-height: 479.375px;
+  }
+}
+
+@media (max-width:720px) {
+  .c2 {
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width:720px) {
+  .c12 {
+    margin: 35px 0 10px 0;
+  }
+}
+
 <div
   className="c0"
 >
@@ -187,11 +1372,74 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
       }
     }
   />
-  <div
-    className="htl-ad"
-    data-eager={true}
-    data-sizes="970x250"
-    data-unit="Desktop_TopLeaderboard"
-  />
+  <a
+    href="http://artsy.net"
+    target="_blank"
+  >
+    <div
+      className="c1"
+    >
+      Sponsored by Artsy
+    </div>
+  </a>
+  <a
+    className="c2"
+    href="http://artsy.net"
+    onClick={[Function]}
+    target="_blank"
+  >
+    <div
+      className="c3"
+      onClick={[Function]}
+    >
+      <div
+        className="CanvasVideo__cover c4"
+      >
+        <div
+          className="PlayButton c5"
+        >
+          <div
+            className="PlayButton__PlayButtonCaret c6"
+          />
+        </div>
+      </div>
+      <video
+        className="CanvasVideo__video"
+        controls={false}
+        playsInline={true}
+        src="https://artsy-media-uploads.s3.amazonaws.com/z9w_n6UxxoZ_u1lzt4vwrw%2FHero+Loop+02.mp4"
+      />
+    </div>
+    <div
+      className="c7"
+    >
+      <div
+        className="c8"
+      >
+        <div>
+          <img
+            className="c9"
+            src="https://de5y2r7wr8mpb.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fartsy-logo-wide-black.png&width=400&quality=80"
+          />
+          <div
+            className="c10"
+          >
+            Commodo Risus Pharetra Fermentum Vehicula Adipiscing
+          </div>
+          <div
+            className="c11"
+          >
+            Link Example
+          </div>
+        </div>
+        <div
+          className="c12"
+        >
+          Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        </div>
+      </div>
+    </div>
+  </a>
+  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;

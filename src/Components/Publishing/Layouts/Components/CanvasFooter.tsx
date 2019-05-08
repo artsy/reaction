@@ -7,6 +7,7 @@ import {
 } from "Components/Publishing//Typings"
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
 
@@ -16,8 +17,8 @@ export interface CanvasFooterProps {
   article: ArticleData
   renderTime?: number
   showCollectionsRail?: boolean
-  adUnit?: string
-  adDimension?: string
+  adUnit?: AdUnit
+  adDimension?: AdDimension
 }
 
 export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {

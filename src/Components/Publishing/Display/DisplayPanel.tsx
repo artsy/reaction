@@ -1,10 +1,11 @@
 import { avantgarde, garamond, unica } from "Assets/Fonts"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
 import track, { TrackingProp } from "react-tracking"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled from "styled-components"
-import { isAdmin } from "Utils/admin"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
 import { crop, resize } from "../../../Utils/resizer"
@@ -22,8 +23,8 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
   tracking?: TrackingProp
   renderTime?: number
-  adUnit: string
-  adDimension: string
+  adUnit: AdUnit
+  adDimension: AdDimension
 }
 
 export interface DisplayPanelState {
@@ -366,11 +367,17 @@ export class DisplayPanel extends Component<
   renderPanelContent() {
     const { unit, campaign, adDimension, adUnit, renderTime } = this.props
     const isVideo = this.isVideo()
-    const isAdminUser = isAdmin()
     const url = get(unit.assets, "0.url", "")
+    const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
+      .split(",")
+      .filter(Boolean)
+    const currentUser = get(sd, "CURRENT_USER.email", "")
 
-    // @FIXME: Hide new ads behind admin flag for now
-    if (isAdminUser) {
+    // TODO: Remove the allowlist and env checks after externally served ads are implemented
+    if (
+      allowedUsers.includes(currentUser) &&
+      process.env.NODE_ENV !== "production"
+    ) {
       return (
         <div
           className="htl-ad"
@@ -380,26 +387,28 @@ export class DisplayPanel extends Component<
         />
       )
     }
+
     return (
-      isVideo ? (
-        this.renderVideo(url)
-      ) : (
-        <Image className="DisplayPanel__Image" />
-      ),
-      (
+      <>
+        {isVideo ? (
+          this.renderVideo(url)
+        ) : (
+          <Image className="DisplayPanel__Image" />
+        )}
+
         <div>
           <Headline>{unit.headline}</Headline>
-
           <Body
             dangerouslySetInnerHTML={{
               __html: unit.body,
             }}
           />
-
           <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+          // TODO: Determine how to handle DisplayContainer layout and tracking
+          when this component no longer receives unit prop
+          <PixelTracker unit={unit} date={renderTime} />
         </div>
-      ),
-      <PixelTracker unit={unit} date={renderTime} />
+      </>
     )
   }
   render() {
@@ -415,7 +424,6 @@ export class DisplayPanel extends Component<
       unit.cover_image_url &&
       crop(unit.cover_image_url, { width: 680, height: 284, isDisplayAd: true })
 
-    // @TODO: Determine how to handle DisplayPanelContainer layout and tracking when this component no longer receives unit prop
     return (
       <ErrorBoundary>
         <Wrapper

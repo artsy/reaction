@@ -4,6 +4,7 @@ import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import track from "react-tracking"
+import { data as sd } from "sharify"
 import { DisplayPanel } from "../DisplayPanel"
 
 import {
@@ -14,8 +15,14 @@ import {
   UnitPanelVideo,
 } from "Components/Publishing/Fixtures/Components"
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+  },
+}))
+
 describe("snapshots", () => {
-  it("renders the display panel for a standard article layout", () => {
+  it("renders the display panel with an image", () => {
     const displayPanel = renderer
       .create(
         <DisplayPanel
@@ -29,21 +36,7 @@ describe("snapshots", () => {
     expect(displayPanel).toMatchSnapshot()
   })
 
-  xit("renders the display panel with an image", () => {
-    const displayPanel = renderer
-      .create(
-        <DisplayPanel
-          unit={UnitPanel}
-          campaign={Campaign}
-          adDimension={StandardArticleHostedAdPanel.adDimension}
-          adUnit={StandardArticleHostedAdPanel.adUnit}
-        />
-      )
-      .toJSON()
-    expect(displayPanel).toMatchSnapshot()
-  })
-
-  xit("renders the display panel with video", () => {
+  it("renders the display panel with video", () => {
     const displayPanel = renderer
       .create(
         <DisplayPanel
@@ -72,10 +65,10 @@ describe("units", () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
-        renderTime={12345}
-        {...rest}
         adDimension={StandardArticleHostedAdPanel.adDimension}
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        renderTime={12345}
+        {...rest}
       />
     )
   }
@@ -86,15 +79,6 @@ describe("units", () => {
 
   afterEach(() => {
     ;(jest as any).restoreAllMocks()
-  })
-
-  it("renders the display panel with correct dimensions and unit name", () => {
-    const wrapper = getWrapper({
-      adUnit: StandardArticleHostedAdPanel.adUnit,
-      adDimension: StandardArticleHostedAdPanel.adDimension,
-    })
-    expect(wrapper.html()).toMatch('data-unit="Desktop_RightRail1"')
-    expect(wrapper.html()).toMatch('data-sizes="300x250"')
   })
 
   describe("tracking", () => {
@@ -110,7 +94,19 @@ describe("units", () => {
       }
     }
 
-    xit("renders a pixel impression if there is a url", () => {
+    it("checks for allowlisted users", () => {
+      const allowedUser = sd.HASHTAG_LAB_ADS_ALLOWLIST.split(",").filter(
+        Boolean
+      )
+
+      expect(allowedUser).toHaveLength(2)
+      expect(allowedUser).toEqual([
+        "alloweduser@email.com",
+        "alloweduser2@email.com",
+      ])
+    })
+
+    it("renders a pixel impression if there is a url", () => {
       const wrapper = getWrapper({
         unit: UnitPanelTracked,
       })
@@ -130,7 +126,7 @@ describe("units", () => {
       )
     })
 
-    xit("tracks video progress", () => {
+    it("tracks video progress", () => {
       const wrapper = getWrapper({ isVideo: true })
       const instance = wrapper.instance() as any
       const durationSpy = jest.spyOn(instance, "trackDuration")
@@ -206,7 +202,7 @@ describe("units", () => {
   })
 
   describe("#componentDidMount", () => {
-    xit("attaches an onEnded handler to video", () => {
+    it("attaches an onEnded handler to video", () => {
       const wrapper = getWrapper({ isVideo: true })
       const instance = wrapper.instance() as any
       expect(instance.video.onended).toBeDefined()
@@ -256,7 +252,7 @@ describe("units", () => {
 
     describe("Mobile", () => {
       describe("Video", () => {
-        xit("toggles video if within media area", () => {
+        it("toggles video if within media area", () => {
           const wrapper = getWrapper({ isMobile: true, isVideo: true }) as any
           const event = {
             preventDefault: jest.fn(),
@@ -284,7 +280,7 @@ describe("units", () => {
           expect(spy).toHaveBeenCalled()
         })
 
-        xit("toggles muting of video", () => {
+        it("toggles muting of video", () => {
           const wrapper = getWrapper({ isMobile: true, isVideo: true }) as any
           const event = {
             stopPropagation: jest.fn(),
@@ -440,7 +436,7 @@ describe("units", () => {
     })
   })
 
-  xit("#toggleVideo", () => {
+  it("#toggleVideo", () => {
     const pauseSpy = jest.spyOn(DisplayPanel.prototype, "pauseVideo")
     const playSpy = jest.spyOn(DisplayPanel.prototype, "playVideo")
     const wrapper = getWrapper({ isVideo: true }) as any
@@ -450,7 +446,7 @@ describe("units", () => {
     expect(pauseSpy).toHaveBeenCalled()
   })
 
-  xit("#pauseVideo", () => {
+  it("#pauseVideo", () => {
     const wrapper = getWrapper({ isVideo: true }) as any
     const instance = wrapper.instance()
     const spy = jest.spyOn(instance.video, "pause")
@@ -459,7 +455,7 @@ describe("units", () => {
     expect(wrapper.state().isPlaying).toEqual(false)
   })
 
-  xit("#playVideo", () => {
+  it("#playVideo", () => {
     const wrapper = getWrapper({ isVideo: true }) as any
     const instance = wrapper.instance()
     const spy = jest.spyOn(instance.video, "play")
@@ -481,7 +477,7 @@ describe("units", () => {
   })
 
   describe("video", () => {
-    xit("renders a video cover if not playing", () => {
+    it("renders a video cover if not playing", () => {
       const wrapper = getWrapper({ isVideo: true })
       expect(wrapper.find("VideoCover").length).toEqual(1)
     })
@@ -500,23 +496,23 @@ describe("units", () => {
       expect(wrapper.find("VideoCover").length).toEqual(0)
     })
 
-    xit("on mobile, renders mini video controls", () => {
+    it("on mobile, renders mini video controls", () => {
       const wrapper = getWrapper({ isVideo: true, isMobile: true })
       expect(wrapper.find("VideoControls").length).toEqual(1)
     })
 
-    xit("renders a <video />", () => {
+    it("renders a <video />", () => {
       const wrapper = getWrapper({ isVideo: true })
       expect(wrapper.find("video").length).toEqual(1)
     })
 
-    xit("Returns original URL if video asset", () => {
+    it("Returns original URL if video asset", () => {
       const wrapper = getWrapper({ isVideo: true })
       expect(wrapper.find("video").props().src).toBe("foo.mp4")
     })
   })
 
-  xit("renders an image", () => {
+  it("renders an image", () => {
     const wrapper = getWrapper()
     expect(wrapper.find("Image").length).toEqual(1)
   })
