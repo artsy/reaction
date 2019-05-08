@@ -8,24 +8,26 @@ import { Breakpoint } from "Utils/Responsive"
 import { ArtworkImageBrowserFragmentContainer } from "../"
 
 describe("ArtworkImageBrowser", () => {
-  const getWrapper = (
+  const getWrapper = async (
     breakpoint: Breakpoint = "lg",
     data = ArtworkImageBrowserFixture
   ) => {
-    return mount(
+    return await mount(
       <RelayStubProvider>
         <MockBoot breakpoint={breakpoint}>
           <ArtworkImageBrowserFragmentContainer artwork={data.artwork as any} />
         </MockBoot>
       </RelayStubProvider>
-    )
+    ).renderUntil(n => {
+      return n.html().search("is-selected") > 0
+    })
   }
 
   describe("desktop", () => {
     let wrapper: ReactWrapper
 
-    beforeAll(() => {
-      wrapper = getWrapper()
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
 
     it("renders correct container components", () => {
@@ -34,10 +36,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders correct number of images", () => {
       expect(wrapper.find("Image").length).toBe(4)
-    })
-
-    it("renders custom pagination dots", () => {
-      expect(wrapper.find("PageIndicator").length).toBe(4)
     })
 
     it("renders directional arrows", () => {
@@ -47,7 +45,15 @@ describe("ArtworkImageBrowser", () => {
     it("returns null if missing images", () => {
       const data = cloneDeep(ArtworkImageBrowserFixture) as any
       data.artwork.images = []
-      wrapper = getWrapper("lg", data)
+      wrapper = mount(
+        <RelayStubProvider>
+          <MockBoot breakpoint="lg">
+            <ArtworkImageBrowserFragmentContainer
+              artwork={data.artwork as any}
+            />
+          </MockBoot>
+        </RelayStubProvider>
+      )
       expect(wrapper.find("ArtworkImageBrowser").length).toBe(0)
       expect(wrapper.find("ArtworkActions").length).toBe(0)
     })
@@ -56,8 +62,8 @@ describe("ArtworkImageBrowser", () => {
   describe("mobile", () => {
     let wrapper: ReactWrapper
 
-    beforeAll(() => {
-      wrapper = getWrapper("xs")
+    beforeAll(async () => {
+      wrapper = await getWrapper("xs")
     })
 
     it("renders correct container components", () => {
@@ -66,10 +72,6 @@ describe("ArtworkImageBrowser", () => {
 
     it("renders correct number of images", () => {
       expect(wrapper.find("Image").length).toBe(4)
-    })
-
-    it("renders custom pagination dots", () => {
-      expect(wrapper.find("PageIndicator").length).toBe(4)
     })
 
     it("renders does not render directional arrows", () => {

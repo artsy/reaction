@@ -1,5 +1,5 @@
-import { Box, ChevronIcon, Flex, space } from "@artsy/palette"
-import React from "react"
+import { ChevronIcon, color, Flex, space } from "@artsy/palette"
+import React, { Fragment } from "react"
 import { FlickityOptions } from "react-flickity-component"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
@@ -9,12 +9,27 @@ interface CarouselProps {
   /**
    * This is designed to handle any shape of data passed, as long as its an array
    */
-  data: object[]
+  data: any
+
+  /**
+   * Passes flickityRef
+   */
+  setFlickityRef?: (flickityRef) => void
+
+  /**
+   * If this carousel contains only one visible image on render set to true (for SSR)
+   */
+  oneSlideVisible?: boolean
 
   /**
    * The height of the carousel
    */
-  height?: number
+  height?: string
+
+  /**
+   * The width of the carousel
+   */
+  width?: string
 
   /**
    * Callback when forward / backward arrows are clicked
@@ -51,14 +66,15 @@ type ArrowProps = (props: {
   currentSlideIndex: number
   Arrow: React.ReactType
   flickity: {
-    previous: () => void
-    next: () => void
+    previous: (isWrapped?: boolean, isInstant?: boolean) => void
+    next: (isWrapped?: boolean, isInstant?: boolean) => void
   }
 }) => React.ReactNode
 
 export class Carousel extends React.Component<CarouselProps> {
   static defaultProps = {
-    height: 300,
+    height: "300px",
+    oneSlideVisible: false,
   }
 
   render() {
@@ -103,6 +119,7 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
         cellAlign: "left",
         draggable: true,
         freeScroll: false,
+        contain: true,
         friction: 0.3,
         pageDots: true,
         prevNextButtons: false,
@@ -118,6 +135,7 @@ interface BaseCarouselState {
   FlickityCarousel: Flickity | typeof Flex
   currentSlideIndex: number
   lastItemVisible: boolean
+  isMounted: boolean
 }
 
 export class BaseCarousel extends React.Component<
@@ -128,6 +146,7 @@ export class BaseCarousel extends React.Component<
     FlickityCarousel: Flex as any,
     currentSlideIndex: 0,
     lastItemVisible: false,
+    isMounted: false,
   }
 
   /**
@@ -158,13 +177,18 @@ export class BaseCarousel extends React.Component<
    * client has mounted. During the server-side pass we use a Flex wrapper instead.
    */
   componentDidMount() {
+    const { setFlickityRef } = this.props
     const Flickity = require("react-flickity-component")
 
     this.setState(
       {
         FlickityCarousel: Flickity,
+        isMounted: true,
       },
       () => {
+        if (setFlickityRef) {
+          setFlickityRef(this.flickity)
+        }
         this.flickity.on("select", this.handleSlideChange)
       }
     )
@@ -275,40 +299,54 @@ export class BaseCarousel extends React.Component<
   }
 
   render() {
-    const { FlickityCarousel } = this.state
-    const { data, height, render } = this.props
+    const { isMounted, FlickityCarousel } = this.state
+    const { data, height, oneSlideVisible, render } = this.props
+
+    // FIXME: During SSR pass want to hide other images. Work around for lack
+    // of SSR support in Flickity.
+    const carouselImages =
+      typeof window === "undefined" && oneSlideVisible ? [data[0]] : data
 
     return (
-      <Flex
-        flexDirection="row"
-        position="relative"
-        justifyContent="space-around"
-        alignItems="center"
-        height={height}
-      >
-        {this.renderLeftArrow()}
+      <>
+        <Flex
+          flexDirection="row"
+          position="relative"
+          justifyContent="space-around"
+          alignItems="center"
+          height={height}
+        >
+          {this.renderLeftArrow()}
 
-        <CarouselContainer height={height}>
-          <FlickityCarousel
-            options={this.options}
-            flickityRef={c => (this.flickity = c)}
-          >
-            {data.map((slide, index) => {
-              return <Box key={index}>{render(slide)}</Box>
-            })}
-          </FlickityCarousel>
-        </CarouselContainer>
+          <CarouselContainer height={height} isMounted={isMounted}>
+            <FlickityCarousel
+              options={this.options}
+              flickityRef={c => (this.flickity = c)}
+            >
+              {carouselImages.map((slide, index) => {
+                return <Fragment key={index}>{render(slide)}</Fragment>
+              })}
+            </FlickityCarousel>
+          </CarouselContainer>
 
-        {this.renderRightArrow()}
-      </Flex>
+          {this.renderRightArrow()}
+        </Flex>
+      </>
     )
   }
 }
 
-const CarouselContainer = styled.div<{ height?: number }>`
+const CarouselContainer = styled.div<{
+  height?: string
+  isMounted: boolean
+}>`
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: ${props => (props.isMounted ? "visible" : "hidden")};
+
+  .flickity-viewport {
+    overflow: hidden;
+  }
 
   .flickity-slider {
     img {
@@ -316,17 +354,36 @@ const CarouselContainer = styled.div<{ height?: number }>`
     }
   }
 
+  .flickity-page-dots {
+    text-align: center;
+    height: 0;
+    padding-top: ${space(1)}px;
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 100%;
+      display: inline-block;
+      margin: ${space(0.5)}px;
+      background-color: ${color("black10")};
+    }
+
+    .dot.is-selected {
+      background-color: ${color("black100")};
+    }
+  }
+
   ${props => {
     if (props.height) {
       return `
-        height: ${props.height}px;
+        height: ${props.height};
       `
     }
   }};
 `
 
 export const ArrowButton = styled(Flex)<
-  LeftProps & RightProps & { height?: number }
+  LeftProps & RightProps & { height?: string }
 >`
   position: relative;
   cursor: pointer;
@@ -336,7 +393,7 @@ export const ArrowButton = styled(Flex)<
   opacity: 0.3;
 
   transition: opacity 0.25s;
-  min-height: ${p => p.height || 200}px;
+  min-height: ${p => p.height || "200px"};
 
   &:hover {
     opacity: 1;

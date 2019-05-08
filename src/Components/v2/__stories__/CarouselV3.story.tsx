@@ -57,7 +57,7 @@ storiesOf("Styleguide/Components/CarouselV3", module)
       <Container>
         <LargeCarousel
           data={images}
-          height={300}
+          height="300px"
           render={props => {
             return (
               <Image
@@ -79,7 +79,7 @@ storiesOf("Styleguide/Components/CarouselV3", module)
         <LargeCarousel
           showArrows
           data={images}
-          height={300}
+          height="300px"
           options={{ wrapAround: true }}
           render={props => {
             return (
@@ -108,7 +108,6 @@ storiesOf("Styleguide/Components/CarouselV3", module)
                   image: { aspect_ratio },
                 },
               } = artwork
-
               return (
                 <FillwidthItem
                   artwork={artwork.node}

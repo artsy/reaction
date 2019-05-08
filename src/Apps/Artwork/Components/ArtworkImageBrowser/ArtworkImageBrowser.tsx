@@ -1,16 +1,16 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { Lightbox } from "Components/v2"
+import { BaseCarousel as Carousel } from "Components/v2/CarouselV3"
 import React from "react"
-import Slider, { Settings } from "react-slick"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-import { Box, ChevronIcon, Col, color, Flex, Row } from "@artsy/palette"
+import { Box, ChevronIcon, Col, color, Flex, space } from "@artsy/palette"
 
 interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
-  sliderRef?(slider: Slider): void
+  setFlickityRef: (flickityRef: Flickity) => void
 }
 
 export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
@@ -29,131 +29,117 @@ export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
 export class LargeArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
-  slider: Slider
-
-  setSliderRef = slider => {
-    this.slider = slider
-    if (this.props.sliderRef) {
-      this.props.sliderRef(slider)
-    }
-  }
-
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => <PageIndicator />,
-      dots: true,
-      infinite: false,
-      lazyLoad: "ondemand",
-      speed: 0,
-      swipe: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
+  options = {
+    prevNextButtons: false,
+    wrapAround: true,
+    pageDots: true,
+    cellAlign: "left",
+    draggable: false,
+    lazyLoad: true,
   }
 
   render() {
     const hasMultipleImages = this.props.images.length > 1
-    const { imageAlt, images } = this.props
+    const { imageAlt, images, setFlickityRef } = this.props
+
+    // FIXME: During SSR pass want to hide other images. Work around for lack
+    // of SSR support in Flickity.
+    const carouselImages = typeof window === "undefined" ? [images[0]] : images
+
     return (
       <Container>
-        <Row>
-          {hasMultipleImages && (
+        <Carousel
+          showArrows={hasMultipleImages}
+          options={this.options}
+          oneSlideVisible
+          height="60vh"
+          setFlickityRef={setFlickityRef}
+          data={carouselImages}
+          renderLeftArrow={({ flickity }) => (
             <Col sm={1}>
               <ArrowButton
                 direction="left"
-                onClick={() => this.slider.slickPrev()}
+                onClick={() => flickity.previous(false, true)}
               />
             </Col>
           )}
-          <Col sm={hasMultipleImages ? 10 : 12}>
-            <Slider {...this.settings} ref={this.setSliderRef}>
-              {images.map(image => {
-                return (
-                  <Flex
-                    flexDirection="column"
-                    justifyContent="center"
-                    px={hasMultipleImages ? [2, 2, 0] : 0}
-                    key={image.id}
-                  >
-                    <Lightbox
-                      imageAlt={imageAlt}
-                      deepZoom={image.deepZoom}
-                      enabled={image.is_zoomable}
-                      isDefault={image.is_default}
-                      src={image.uri}
-                      initialHeight="60vh"
-                    />
-                  </Flex>
-                )
-              })}
-            </Slider>
-          </Col>
-          {hasMultipleImages && (
+          renderRightArrow={({ flickity }) => (
             <Col sm={1}>
               <ArrowButton
                 direction="right"
-                onClick={() => this.slider.slickNext()}
+                onClick={() => flickity.next(false, true)}
               />
             </Col>
           )}
-        </Row>
+          render={image => {
+            return (
+              <Flex
+                flexDirection="column"
+                justifyContent="center"
+                width="100%"
+                px={hasMultipleImages ? [2, 2, 0] : 0}
+                height="60vh"
+              >
+                <Lightbox
+                  imageAlt={imageAlt}
+                  deepZoom={image.deepZoom}
+                  enabled={image.is_zoomable}
+                  isDefault={image.is_default}
+                  src={image.uri}
+                  initialHeight="60vh"
+                />
+              </Flex>
+            )
+          }}
+        />
       </Container>
     )
   }
 }
 
-interface ArtworkBrowserState {
-  isLocked: boolean
-}
-
 export class SmallArtworkImageBrowser extends React.Component<
-  ArtworkBrowserProps,
-  ArtworkBrowserState
+  ArtworkBrowserProps
 > {
-  state = {
-    isLocked: false,
-  }
-
-  get settings(): Settings {
-    return {
-      arrows: false,
-      customPaging: () => <PageIndicator />,
-      dots: true,
-      infinite: false,
-      // TODO: Future optimization should it be needed
-      // lazyLoad: "ondemand",
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
+  options = {
+    prevNextButtons: false,
+    wrapAround: true,
+    draggable: true,
+    groupCells: 1,
+    pageDots: true,
   }
 
   render() {
-    const { sliderRef, imageAlt, images } = this.props
+    const { images, imageAlt } = this.props
+    // FIXME: During SSR pass want to hide other images. Work around for lack
+    // of SSR support in Flickity.
+    const carouselImages = typeof window === "undefined" ? [images[0]] : images
     return (
       <Container>
-        <Slider {...this.settings} ref={sliderRef}>
-          {images.map(image => {
+        <Carousel
+          options={this.options}
+          data={carouselImages}
+          oneSlideVisible
+          render={image => {
             return (
               <Flex
                 flexDirection="column"
                 justifyContent="center"
                 px={1}
-                key={image.id}
+                width="100%"
+                height="260px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
                   deepZoom={image.deepZoom}
-                  enabled={!this.state.isLocked && image.is_zoomable}
+                  enabled={image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="45vh"
                 />
               </Flex>
             )
-          })}
-        </Slider>
+          }}
+        />
       </Container>
     )
   }
@@ -186,18 +172,32 @@ const ArrowButtonContainer = styled(Flex)`
 const Container = styled(Box)`
   user-select: none;
 
-  .slick-dots li {
-    width: 2px;
-    color: ${color("black10")};
+  .flickity-viewport {
+    overflow: hidden;
+  }
 
-    &.slick-active > span {
-      color: ${color("black100")};
+  .flickity-slider > div {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 100%;
+  }
+
+  .flickity-page-dots {
+    text-align: center;
+    height: 0;
+    padding-top: ${space(1)}px;
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 100%;
+      display: inline-block;
+      margin: ${space(0.5)}px;
+      background-color: ${color("black10")};
     }
 
-    button {
-      &::before {
-        font-size: 5px;
-      }
+    .dot.is-selected {
+      background-color: ${color("black100")};
     }
   }
 `
