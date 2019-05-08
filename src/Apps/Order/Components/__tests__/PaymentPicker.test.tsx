@@ -373,7 +373,7 @@ describe(PaymentPickerFragmentContainer, () => {
 
     const orderCard = {
       id: "card-id-2",
-      name: "Charith Cutestory",
+      name: "Chareth Cutestory",
       street1: "1 Art st",
       street2: null,
       city: "New York",
