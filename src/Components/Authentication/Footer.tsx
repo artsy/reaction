@@ -7,7 +7,7 @@ interface FooterProps {
   handleTypeChange?: (modalType: ModalType) => void
   inline?: boolean
   mode?: ModalType
-  onFacebookLogin?: any
+  onFacebookLogin?: (e: any) => void
   showRecaptchaDisclaimer?: boolean
 }
 

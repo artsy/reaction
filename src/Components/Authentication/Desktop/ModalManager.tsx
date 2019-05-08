@@ -31,6 +31,7 @@ export interface ModalManagerProps {
   onSocialAuthEvent?: (options) => void
   onModalOpen?: () => void
   onModalClose?: () => void
+  showRecaptchaDisclaimer?: boolean
 }
 
 export interface ModalManagerState {
@@ -133,6 +134,7 @@ export class ModalManager extends Component<
           options={options}
           handleTypeChange={this.handleTypeChange}
           onSocialAuthEvent={this.props.onSocialAuthEvent}
+          showRecaptchaDisclaimer={this.props.showRecaptchaDisclaimer}
         />
       </DesktopModal>
     )

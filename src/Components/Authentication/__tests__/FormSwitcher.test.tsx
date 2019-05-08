@@ -1,6 +1,6 @@
+import { Link } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
-// import { SmallTextLink } from "../commonElements"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
 import { LoginForm } from "../Desktop/LoginForm"
 import { SignUpForm } from "../Desktop/SignUpForm"
@@ -70,30 +70,30 @@ describe("FormSwitcher", () => {
     beforeEach(() => {
       window.location.assign = jest.fn()
     })
-    // it("redirects to a url if static or mobile", () => {
-    //   const wrapper = getWrapper({
-    //     type: ModalType.login,
-    //     isMobile: true,
-    //   })
+    it("redirects to a url if static or mobile", () => {
+      const wrapper = getWrapper({
+        type: ModalType.login,
+        isMobile: true,
+      })
 
-    //   wrapper
-    //     .find(SmallTextLink)
-    //     .at(1)
-    //     .simulate("click")
+      wrapper
+        .find(Link)
+        .at(1)
+        .simulate("click")
 
-    //   expect((window.location.assign as any).mock.calls[0][0]).toEqual(
-    //     "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
-    //   )
-    // })
+      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
+        "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
+      )
+    })
 
-    xit("sets type and notifies parent component when type is changed", () => {
+    it("sets type and notifies parent component when type is changed", () => {
       const wrapper = getWrapper({
         type: ModalType.login,
       })
 
       wrapper
-        .find("SmallTextLink")
-        .at(1)
+        .find(Link)
+        .at(2)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")
