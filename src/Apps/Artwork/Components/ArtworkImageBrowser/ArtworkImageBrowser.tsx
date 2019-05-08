@@ -10,7 +10,7 @@ import { Box, ChevronIcon, Col, color, Flex, space } from "@artsy/palette"
 interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
-  flickityRef?: (flickityRef: Flickity) => void
+  setFlickityRef: (flickityRef: Flickity) => void
 }
 
 export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
@@ -40,7 +40,7 @@ export class LargeArtworkImageBrowser extends React.Component<
 
   render() {
     const hasMultipleImages = this.props.images.length > 1
-    const { imageAlt, images } = this.props
+    const { imageAlt, images, setFlickityRef } = this.props
 
     // FIXME: During SSR pass want to hide other images. Work around for lack
     // of SSR support in Flickity.
@@ -53,6 +53,7 @@ export class LargeArtworkImageBrowser extends React.Component<
           options={this.options}
           oneSlideVisible
           height="60vh"
+          setFlickityRef={setFlickityRef}
           data={carouselImages}
           renderLeftArrow={({ flickity }) => (
             <Col sm={1}>

@@ -12,6 +12,11 @@ interface CarouselProps {
   data: any
 
   /**
+   * Passes flickityRef
+   */
+  setFlickityRef?: (flickityRef) => void
+
+  /**
    * If this carousel contains only one visible image on render set to true (for SSR)
    */
   oneSlideVisible?: boolean
@@ -172,6 +177,7 @@ export class BaseCarousel extends React.Component<
    * client has mounted. During the server-side pass we use a Flex wrapper instead.
    */
   componentDidMount() {
+    const { setFlickityRef } = this.props
     const Flickity = require("react-flickity-component")
 
     this.setState(
@@ -180,6 +186,9 @@ export class BaseCarousel extends React.Component<
         isMounted: true,
       },
       () => {
+        if (setFlickityRef) {
+          setFlickityRef(this.flickity)
+        }
         this.flickity.on("select", this.handleSlideChange)
       }
     )
