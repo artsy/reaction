@@ -1,3 +1,15 @@
+# v16.8.15 (Wed May 08 2019)
+
+#### 🐛  Bug Fix
+
+- Creates patch for react-flickity-component to fix flicker [#2388](https://github.com/artsy/reaction/pull/2388) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.8.14 (Wed May 08 2019)
 
 #### 🐛  Bug Fix
