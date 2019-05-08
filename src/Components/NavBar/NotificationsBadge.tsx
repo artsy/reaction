@@ -1,18 +1,20 @@
+import { Box, color, Flex, Sans } from "@artsy/palette"
+import { SystemContext } from "Artsy"
 import cookie from "cookies-js"
+import { once } from "lodash"
 import React, { useContext } from "react"
 import { ReadyState } from "react-relay"
 import styled from "styled-components"
-
-import { color, Flex, Sans } from "@artsy/palette"
-
-import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
+import { NavbarContext } from "./NavBar"
 
 const logger = createLogger("Components/NavBar")
 
-export const NotificationsBadge = () => {
+export const NotificationsBadge: React.FC = () => {
+  const { tracking, Schema } = useContext(NavbarContext)
+
   return (
     <NotificationsQueryRenderer
       render={({ error, props }: ReadyState) => {
@@ -62,7 +64,20 @@ export const NotificationsBadge = () => {
           return null
         }
 
-        return <CircularCount notifications={notifications} />
+        const trackOnHover = once(() => {
+          tracking.trackEvent({
+            flow: Schema.Flow.Header,
+            context_module: Schema.ContextModule.Header,
+            subject: Schema.Subject.NotificationBell,
+            new_notification_count: totalUnread,
+          })
+        })
+
+        return (
+          <Box onMouseOver={trackOnHover}>
+            <CircularCount notifications={notifications} />
+          </Box>
+        )
       }}
     />
   )

@@ -1,8 +1,12 @@
-import React, { useContext, useState } from "react"
+import cookie from "cookies-js"
+import React, { useContext, useMemo, useState } from "react"
 import styled from "styled-components"
 
 import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
+
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 
 import {
   MobileNavMenu,
@@ -28,18 +32,31 @@ import {
   SoloIcon,
   Spacer,
 } from "@artsy/palette"
+import { TrackingProp } from "react-tracking"
 
 interface NavBarProps {
-  user?: User
+  tracking?: TrackingProp
 }
 
-export const NavBar: React.FC<NavBarProps> = () => {
+export const NavbarContext = React.createContext<{
+  tracking?: TrackingProp
+  Schema?: typeof Schema
+}>({})
+
+export const NavBar = track()(({ tracking }: NavBarProps) => {
   const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
+  const navBarContextValue = useMemo(() => {
+    return {
+      tracking,
+      Schema,
+    }
+  }, [])
+
   return (
-    <>
+    <NavbarContext.Provider value={navBarContextValue}>
       <NavBarContainer p={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
@@ -86,7 +103,20 @@ export const NavBar: React.FC<NavBarProps> = () => {
 
             {isLoggedIn && (
               <>
-                <NavItem Menu={NotificationsMenu} Overlay={NotificationsBadge}>
+                <NavItem
+                  href="/works-for-you"
+                  Menu={NotificationsMenu}
+                  Overlay={NotificationsBadge}
+                  onClick={() => {
+                    tracking.trackEvent({
+                      flow: Schema.Flow.Header,
+                      context_module: Schema.ContextModule.Header,
+                      subject: Schema.Subject.NotificationBell,
+                      new_notification_count: cookie.get("notification-count"),
+                      destination_path: "/works-for-you",
+                    })
+                  }}
+                >
                   <BellIcon top={3} />
                 </NavItem>
                 <NavItem Menu={UserMenu}>
@@ -100,12 +130,32 @@ export const NavBar: React.FC<NavBarProps> = () => {
             <NavSection>
               <Button
                 variant="secondaryOutline"
-                onClick={() => auth.login(mediator)}
+                onClick={() => {
+                  tracking.trackEvent({
+                    flow: Schema.Flow.Header,
+                    context_module: Schema.ContextModule.Header,
+                    subject: Schema.Subject.Login,
+                  })
+
+                  auth.login(mediator)
+                }}
               >
                 Log in
               </Button>
               <Spacer mr={1} />
-              <Button onClick={() => auth.signup(mediator)}>Sign up</Button>
+              <Button
+                onClick={() => {
+                  tracking.trackEvent({
+                    flow: Schema.Flow.Header,
+                    context_module: Schema.ContextModule.Header,
+                    subject: Schema.Subject.Signup,
+                  })
+
+                  auth.signup(mediator)
+                }}
+              >
+                Sign up
+              </Button>
             </NavSection>
           )}
         </NavSection>
@@ -114,7 +164,21 @@ export const NavBar: React.FC<NavBarProps> = () => {
           Mobile
         */}
         <NavSection display={["flex", "none"]}>
-          <NavItem onClick={() => toggleMobileNav(!showMobileMenu)}>
+          <NavItem
+            className="mobileHamburgerButton"
+            onClick={() => {
+              const showMenu = !showMobileMenu
+              if (showMenu) {
+                tracking.trackEvent({
+                  flow: Schema.Flow.Header,
+                  context_module: Schema.ContextModule.Header,
+                  subject: Schema.Subject.SmallScreenMenuSandwichIcon,
+                })
+              }
+
+              toggleMobileNav(showMenu)
+            }}
+          >
             <Flex
               alignItems="center"
               justifyContent="center"
@@ -129,9 +193,9 @@ export const NavBar: React.FC<NavBarProps> = () => {
       </NavBarContainer>
 
       {showMobileMenu && <MobileNavMenu />}
-    </>
+    </NavbarContext.Provider>
   )
-}
+})
 
 const NavSection = ({ children, ...props }) => (
   <Flex alignItems="center" {...props}>

@@ -1,12 +1,15 @@
 import { Box, BoxProps, Link, Sans } from "@artsy/palette"
-import React, { useState } from "react"
+import { isString } from "lodash"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
+import { NavbarContext } from "./NavBar"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
   Overlay?: React.FC
-  href?: string
   active?: boolean
+  className?: string
+  href?: string
   onClick?: () => void
 }
 
@@ -15,24 +18,42 @@ export const NavItem: React.FC<NavItemProps> = ({
   Overlay,
   active = false,
   children,
+  className,
   display = "block",
   href,
   onClick,
 }) => {
+  const { tracking, Schema } = useContext(NavbarContext)
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
   const hoverColor = hover ? "purple100" : "black80"
 
+  const trackClick = () => {
+    if (href && isString(children)) {
+      tracking.trackEvent({
+        flow: Schema.Flow.Header,
+        context_module: Schema.ContextModule.Header,
+        subject: children, // Text passed into the NavItem
+        destination_path: href,
+      })
+    }
+  }
+
   return (
     <Box
       p={1}
+      className={className}
       display={display}
       position="relative"
       style={{ cursor: "pointer" }}
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
-      onClick={onClick}
+      onClick={event => {
+        event.preventDefault
+        trackClick()
+        onClick && onClick()
+      }}
     >
       <Link href={href} color={hoverColor} underlineBehavior="none">
         <Sans size="3" weight="medium" color={hoverColor}>
