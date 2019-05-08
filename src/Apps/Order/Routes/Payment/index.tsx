@@ -95,6 +95,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
     const isLoading = isGettingCreditCardId || isCommittingMutation
 
+    console.log("PROPS", this.props)
+
     return (
       <>
         <HorizontalPadding px={[0, 4]}>
