@@ -1,3 +1,20 @@
+# v16.8.14 (Wed May 08 2019)
+
+#### 🐛  Bug Fix
+
+- preserve pagination on collections page [#2384](https://github.com/artsy/reaction/pull/2384) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.6 [#2381](https://github.com/artsy/reaction/pull/2381) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.8.13 (Tue May 07 2019)
 
 
