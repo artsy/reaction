@@ -1,9 +1,9 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { Lightbox } from "Components/v2"
+import { BaseCarousel as Carousel } from "Components/v2/CarouselV3"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
-import { BaseCarousel as Carousel } from "../../../../Components/v2/CarouselV3"
 
 import { Box, ChevronIcon, Col, color, Flex, space } from "@artsy/palette"
 
@@ -11,10 +11,6 @@ interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
   flickityRef?: (flickityRef: Flickity) => void
-}
-
-interface ArtworkBrowserState {
-  isLocked?: boolean
 }
 
 export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
@@ -31,8 +27,7 @@ export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
 }
 
 export class LargeArtworkImageBrowser extends React.Component<
-  ArtworkBrowserProps,
-  ArtworkBrowserState
+  ArtworkBrowserProps
 > {
   options = {
     prevNextButtons: false,
@@ -102,13 +97,8 @@ export class LargeArtworkImageBrowser extends React.Component<
 }
 
 export class SmallArtworkImageBrowser extends React.Component<
-  ArtworkBrowserProps,
-  ArtworkBrowserState
+  ArtworkBrowserProps
 > {
-  state = {
-    isLocked: false,
-  }
-
   options = {
     prevNextButtons: false,
     wrapAround: true,
@@ -140,7 +130,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                 <Lightbox
                   imageAlt={imageAlt}
                   deepZoom={image.deepZoom}
-                  enabled={!this.state.isLocked && image.is_zoomable}
+                  enabled={image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="45vh"

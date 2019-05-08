@@ -106,7 +106,7 @@ export class LargeArtistHeader extends Component<Props> {
             <Carousel
               height="200px"
               data={carousel.images as object[]}
-              render={(slide: Image, index: number) => {
+              render={(slide: Image) => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image

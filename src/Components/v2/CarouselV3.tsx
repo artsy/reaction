@@ -1,4 +1,4 @@
-import { ChevronIcon, Flex, space } from "@artsy/palette"
+import { ChevronIcon, color, Flex, space } from "@artsy/palette"
 import React, { Fragment } from "react"
 import { FlickityOptions } from "react-flickity-component"
 import styled from "styled-components"
@@ -24,7 +24,7 @@ interface CarouselProps {
   /**
    * The width of the carousel
    */
-  width?: number
+  width?: string
 
   /**
    * Callback when forward / backward arrows are clicked
@@ -34,7 +34,7 @@ interface CarouselProps {
   /**
    * The render callback returns an image to display
    */
-  render?: (slide, index) => React.ReactNode
+  render: (slide) => React.ReactNode
 
   /**
    * Flickity options
@@ -114,6 +114,7 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
         cellAlign: "left",
         draggable: true,
         freeScroll: false,
+        contain: true,
         friction: 0.3,
         pageDots: true,
         prevNextButtons: false,
@@ -314,7 +315,7 @@ export class BaseCarousel extends React.Component<
               flickityRef={c => (this.flickity = c)}
             >
               {carouselImages.map((slide, index) => {
-                return <Fragment key={index}>{render(slide, index)}</Fragment>
+                return <Fragment key={index}>{render(slide)}</Fragment>
               })}
             </FlickityCarousel>
           </CarouselContainer>
@@ -341,6 +342,25 @@ const CarouselContainer = styled.div<{
   .flickity-slider {
     img {
       user-select: none;
+    }
+  }
+
+  .flickity-page-dots {
+    text-align: center;
+    height: 0;
+    padding-top: ${space(1)}px;
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 100%;
+      display: inline-block;
+      margin: ${space(0.5)}px;
+      background-color: ${color("black10")};
+    }
+
+    .dot.is-selected {
+      background-color: ${color("black100")};
     }
   }
 
