@@ -138,6 +138,7 @@ exports[`snapshots renders the display panel with an image 1`] = `
       >
         Sponsored by Artsy
       </div>
+      // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
     </div>
   </div>
 </div>
@@ -347,6 +348,7 @@ exports[`snapshots renders the display panel with video 1`] = `
       >
         Sponsored by Artsy
       </div>
+      // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
     </div>
   </div>
 </div>

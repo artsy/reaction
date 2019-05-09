@@ -1,5 +1,8 @@
 import {
+  AdDimension,
+  AdUnit,
   DisplayUnitData,
+  HostedAdData,
   MediaData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
@@ -295,6 +298,16 @@ export const UnitCanvasSlideshow: DisplayUnitData = {
   logo: "http://files.artsy.net/images/artsy-logo-wide-black.png",
   disclaimer:
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+}
+
+export const StandardArticleHostedAdPanel: HostedAdData = {
+  adUnit: "Desktop_RightRail1" as AdUnit,
+  adDimension: "300x250" as AdDimension,
+}
+
+export const StandardArticleHostedAdCanvas: HostedAdData = {
+  adUnit: "Desktop_TopLeaderboard" as AdUnit,
+  adDimension: "970x250" as AdDimension,
 }
 
 export const UnitPanel: DisplayUnitData = {

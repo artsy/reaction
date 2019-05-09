@@ -4,26 +4,48 @@ import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import track from "react-tracking"
+import { data as sd } from "sharify"
 import { DisplayPanel } from "../DisplayPanel"
 
 import {
   Campaign,
+  StandardArticleHostedAdPanel,
   UnitPanel,
   UnitPanelTracked,
   UnitPanelVideo,
 } from "Components/Publishing/Fixtures/Components"
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+  },
+}))
+
 describe("snapshots", () => {
   it("renders the display panel with an image", () => {
     const displayPanel = renderer
-      .create(<DisplayPanel unit={UnitPanel} campaign={Campaign} />)
+      .create(
+        <DisplayPanel
+          unit={UnitPanel}
+          campaign={Campaign}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+          adUnit={StandardArticleHostedAdPanel.adUnit}
+        />
+      )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the display panel with video", () => {
     const displayPanel = renderer
-      .create(<DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />)
+      .create(
+        <DisplayPanel
+          unit={UnitPanelVideo}
+          campaign={Campaign}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+          adUnit={StandardArticleHostedAdPanel.adUnit}
+        />
+      )
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
@@ -43,6 +65,8 @@ describe("units", () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+        adUnit={StandardArticleHostedAdPanel.adUnit}
         renderTime={12345}
         {...rest}
       />
@@ -69,6 +93,18 @@ describe("units", () => {
         spy,
       }
     }
+
+    it("checks for allowlisted users", () => {
+      const allowedUser = sd.HASHTAG_LAB_ADS_ALLOWLIST.split(",").filter(
+        Boolean
+      )
+
+      expect(allowedUser).toHaveLength(2)
+      expect(allowedUser).toEqual([
+        "alloweduser@email.com",
+        "alloweduser2@email.com",
+      ])
+    })
 
     it("renders a pixel impression if there is a url", () => {
       const wrapper = getWrapper({

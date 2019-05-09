@@ -1,9 +1,11 @@
 import { color } from "@artsy/palette"
 import { avantgarde, garamond } from "Assets/Fonts"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get } from "lodash"
 import React from "react"
 import track from "react-tracking"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled, { StyledFunction } from "styled-components"
 import { ErrorBoundary } from "../../../ErrorBoundary"
 import { pMedia } from "../../../Helpers"
@@ -18,6 +20,8 @@ interface DisplayCanvasProps {
   article?: any
   renderTime?: number
   tracking?: any
+  adUnit: AdUnit
+  adDimension: AdDimension
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -42,35 +46,69 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
     // noop
   }
 
-  render() {
-    const { unit, campaign, article, renderTime } = this.props
+  renderCanvasContent() {
+    const {
+      unit,
+      campaign,
+      article,
+      adUnit,
+      adDimension,
+      renderTime,
+    } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
+    const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
+      .split(",")
+      .filter(Boolean)
+    const currentUser = get(sd, "CURRENT_USER.email", "")
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
 
+    // TODO: Remove the allowlist and env checks after externally served ads are implemented
+    if (
+      allowedUsers.includes(currentUser) &&
+      process.env.NODE_ENV !== "production"
+    ) {
+      return (
+        <div
+          className="htl-ad"
+          data-unit={adUnit}
+          data-sizes={adDimension}
+          data-eager
+        />
+      )
+    }
+
+    return (
+      <>
+        <a
+          href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
+          target="_blank"
+        >
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+        </a>
+        <CanvasContainer
+          unit={unit}
+          campaign={campaign}
+          article={article}
+          disclaimer={disclaimer}
+        />
+        {unit.layout === "overlay" && disclaimer}
+        // TODO: Determine how to handle DisplayContainer layout and tracking
+        when this component no longer receives unit prop
+        <PixelTracker unit={unit} date={renderTime} />
+      </>
+    )
+  }
+
+  render() {
+    const { unit } = this.props
     return (
       <ErrorBoundary>
         <DisplayContainer layout={unit.layout}>
           <Waypoint onEnter={this.trackImpression} />
           <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
-
-          <a
-            href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
-            target="_blank"
-          >
-            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-          </a>
-
-          <CanvasContainer
-            unit={unit}
-            campaign={campaign}
-            article={article}
-            disclaimer={disclaimer}
-          />
-
-          {unit.layout === "overlay" && disclaimer}
-          <PixelTracker unit={unit} date={renderTime} />
+          {this.renderCanvasContent()}
         </DisplayContainer>
       </ErrorBoundary>
     )

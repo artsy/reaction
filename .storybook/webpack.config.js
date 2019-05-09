@@ -24,6 +24,7 @@ const {
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   GENOME_URL,
+  HASHTAG_LAB_ADS_ALLOWLIST,
   IMAGE_LAZY_LOADING,
   METAPHYSICS_ENDPOINT,
   NETLIFY,
@@ -52,6 +53,7 @@ const sharifyPath = sharify({
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,
   GENOME_URL,
+  HASHTAG_LAB_ADS_ALLOWLIST,
   IMAGE_LAZY_LOADING,
   METAPHYSICS_ENDPOINT,
   NODE_ENV,
@@ -74,7 +76,9 @@ const plugins = [
     skipFirstNotification: true,
   }),
   new webpack.NoEmitOnErrorsPlugin(),
-  ...notOnCI(new SimpleProgressWebpackPlugin({ format: "compact" })),
+  ...notOnCI(new SimpleProgressWebpackPlugin({
+    format: "compact"
+  })),
 ]
 
 if (USER_ID && USER_ACCESS_TOKEN) {
@@ -100,7 +104,10 @@ console.log("\n[Reaction] Booting...\n")
 /**
  * Booting in full-control mode: https://storybook.js.org/docs/configurations/custom-webpack-config/#full-control-mode-default
  */
-module.exports = async ({ config, mode }) => {
+module.exports = async ({
+  config,
+  mode
+}) => {
   config.mode = mode.toLowerCase()
   config.devtool = WEBPACK_DEVTOOL
   config.devServer = {
@@ -128,23 +135,18 @@ module.exports = async ({ config, mode }) => {
     })
   }
 
-  config.module.rules.push(
-    {
+  config.module.rules.push({
       test: /\.graphql$/,
       include: [/data/],
       exclude: [/node_modules/],
-      use: [
-        {
-          loader: "raw-loader",
-        },
-      ],
-    },
-    {
+      use: [{
+        loader: "raw-loader",
+      }, ],
+    }, {
       test: /\.tsx?$/,
       include: [/src/],
       exclude: [/node_modules/, new RegExp(package.jest.testRegex)],
-      use: [
-        {
+      use: [{
           loader: "cache-loader",
           options: {
             cacheDirectory: path.join(cacheDirectory),
