@@ -25,6 +25,7 @@ describe("LoginForm", () => {
     const input = wrapper.find(`input[name="email"]`)
     input.simulate("blur")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
@@ -60,7 +61,7 @@ describe("LoginForm", () => {
   })
 
   describe("onSubmit", () => {
-    it("calls props.handleSubmit with the right params", done => {
+    it("calls handleSubmit with expected params", done => {
       props.values = LoginValues
       const wrapper = shallow(<LoginForm {...props} />)
       const formik = wrapper.dive().instance() as any

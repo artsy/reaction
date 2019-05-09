@@ -23,37 +23,39 @@ describe("SignUpForm", () => {
     return mount(<SignUpForm {...passedProps} />)
   }
 
-  it("calls handleSubmit with the right params", done => {
-    props.values = SignupValues
-    const wrapper = shallow(<SignUpForm {...props} />)
-    const formik = wrapper.dive().instance() as any
-    formik.submitForm()
+  describe("onSubmit", () => {
+    it("calls handleSubmit with expected params", done => {
+      props.values = SignupValues
+      const wrapper = shallow(<SignUpForm {...props} />)
+      const formik = wrapper.dive().instance() as any
+      formik.submitForm()
 
-    setTimeout(() => {
-      expect(props.handleSubmit).toBeCalledWith(
-        {
-          email: "foo@bar.com",
-          password: "password123",
-          name: "John Doe",
-          accepted_terms_of_service: true,
-        },
-        formik.getFormikActions()
-      )
-      done()
-    })
-  })
-
-  it("fires reCAPTCHA event on submit", done => {
-    props.values = SignupValues
-    const wrapper = shallow(<SignUpForm {...props} />)
-    const formik = wrapper.dive().instance() as any
-    formik.submitForm()
-
-    setTimeout(() => {
-      expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
-        action: "signup_submit",
+      setTimeout(() => {
+        expect(props.handleSubmit).toBeCalledWith(
+          {
+            email: "foo@bar.com",
+            password: "password123",
+            name: "John Doe",
+            accepted_terms_of_service: true,
+          },
+          formik.getFormikActions()
+        )
+        done()
       })
-      done()
+    })
+
+    it("fires reCAPTCHA event", done => {
+      props.values = SignupValues
+      const wrapper = shallow(<SignUpForm {...props} />)
+      const formik = wrapper.dive().instance() as any
+      formik.submitForm()
+
+      setTimeout(() => {
+        expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
+          action: "signup_submit",
+        })
+        done()
+      })
     })
   })
 
@@ -70,6 +72,7 @@ describe("SignUpForm", () => {
     const button = wrapper.find(`input[name="email"]`)
     button.simulate("blur")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
@@ -83,6 +86,7 @@ describe("SignUpForm", () => {
     expect((wrapper.state() as any).error).toEqual("Some global server error")
     input.simulate("change")
     wrapper.update()
+
     setTimeout(() => {
       expect((wrapper.state() as any).error).toEqual(null)
       done()

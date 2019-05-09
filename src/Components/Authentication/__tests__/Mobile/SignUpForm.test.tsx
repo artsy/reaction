@@ -76,67 +76,69 @@ describe("MobileSignUpForm", () => {
     })
   })
 
-  it("calls handleSubmit with the right params", done => {
-    const wrapper = getWrapper()
-    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
-    const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
-    inputEmail.onChange(ChangeEvents.email)
-    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
-    wrapper.find(SubmitButton).simulate("click")
-
-    setTimeout(() => {
-      wrapper.update()
-      const inputPass = wrapper.find(QuickInput).instance() as QuickInput
-      inputPass.onChange(ChangeEvents.password)
+  describe("onSubmit", () => {
+    it("calls handleSubmit with expected params", done => {
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+      inputEmail.onChange(ChangeEvents.email)
+      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
         wrapper.update()
-        const inputName = wrapper.find(QuickInput).instance() as QuickInput
-        inputName.onChange(ChangeEvents.name)
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
         wrapper.find(SubmitButton).simulate("click")
 
         setTimeout(() => {
-          expect(props.handleSubmit.mock.calls[0][0]).toEqual({
-            email: "email@email.com",
-            accepted_terms_of_service: true,
-            password: "password",
-            name: "User Name",
+          wrapper.update()
+          const inputName = wrapper.find(QuickInput).instance() as QuickInput
+          inputName.onChange(ChangeEvents.name)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+              email: "email@email.com",
+              accepted_terms_of_service: true,
+              password: "password",
+              name: "User Name",
+            })
+            done()
           })
-          done()
         })
       })
     })
-  })
 
-  it("fires reCAPTCHA event on submit", done => {
-    const wrapper = getWrapper()
-    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
-    const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
-    inputEmail.onChange(ChangeEvents.email)
-    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
-    wrapper.find(SubmitButton).simulate("click")
-
-    setTimeout(() => {
-      wrapper.update()
-      const inputPass = wrapper.find(QuickInput).instance() as QuickInput
-      inputPass.onChange(ChangeEvents.password)
+    it("fires reCAPTCHA even", done => {
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+      inputEmail.onChange(ChangeEvents.email)
+      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
         wrapper.update()
-        const inputName = wrapper.find(QuickInput).instance() as QuickInput
-        inputName.onChange(ChangeEvents.name)
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
         wrapper.find(SubmitButton).simulate("click")
 
         setTimeout(() => {
-          expect(window.grecaptcha.execute).toBeCalledWith(
-            "recaptcha-api-key",
-            {
-              action: "signup_submit",
-            }
-          )
-          done()
+          wrapper.update()
+          const inputName = wrapper.find(QuickInput).instance() as QuickInput
+          inputName.onChange(ChangeEvents.name)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(window.grecaptcha.execute).toBeCalledWith(
+              "recaptcha-api-key",
+              {
+                action: "signup_submit",
+              }
+            )
+            done()
+          })
         })
       })
     })
@@ -155,6 +157,7 @@ describe("MobileSignUpForm", () => {
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()

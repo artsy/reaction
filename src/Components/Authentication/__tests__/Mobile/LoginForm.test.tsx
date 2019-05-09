@@ -45,6 +45,7 @@ describe("MobileLoginForm", () => {
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
@@ -73,8 +74,8 @@ describe("MobileLoginForm", () => {
     expect(props.onBackButtonClicked).toBeCalled()
   })
 
-  describe("#handleSubmit", () => {
-    it("calls props.handleSubmit", done => {
+  describe("onSubmit", () => {
+    it("calls handleSubmit with expected params", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
       inputEmail.onChange(ChangeEvents.email)
@@ -96,7 +97,7 @@ describe("MobileLoginForm", () => {
       })
     })
 
-    it("fires reCAPTCHA event on submit", done => {
+    it("fires reCAPTCHA event", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
       inputEmail.onChange(ChangeEvents.email)
