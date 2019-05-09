@@ -1,3 +1,15 @@
+# v16.9.1 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- Insert htl ads in standard layout articles hidden behind Allowlist Flag [#2375](https://github.com/artsy/reaction/pull/2375) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.9.0 (Wed May 08 2019)
 
 #### 🚀  Enhancement
