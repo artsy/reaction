@@ -8,6 +8,7 @@ import {
   SubmitButton,
 } from "Components/Authentication/commonElements"
 import QuickInput from "Components/QuickInput"
+import { data as sd } from "sharify"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
@@ -23,11 +24,18 @@ export class ForgotPasswordForm extends Component<
     error: this.props.error,
   }
 
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    window.grecaptcha.ready(() => {
+      window.grecaptcha.execute(sd.RECAPTCHA_KEY, { action: "forgot_submit" })
+      this.props.handleSubmit(values, formikBag)
+    })
+  }
+
   render() {
     return (
       <Formik
         initialValues={this.props.values}
-        onSubmit={this.props.handleSubmit}
+        onSubmit={this.onSubmit}
         validationSchema={ForgotPasswordValidator}
       >
         {({
