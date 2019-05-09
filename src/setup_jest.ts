@@ -29,6 +29,10 @@ import "jsdom"
 if (typeof window !== "undefined") {
   window.open = jest.fn()
   window.matchMedia = undefined
+  window.grecaptcha = {
+    ready: jest.fn(cb => cb()),
+    execute: jest.fn(),
+  }
   window.scrollTo = jest.fn()
   HTMLMediaElement.prototype.pause = jest.fn()
   HTMLMediaElement.prototype.play = jest.fn()
