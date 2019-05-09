@@ -1,3 +1,15 @@
+# v16.9.2 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- change existing title & breadcrumb placements [#2389](https://github.com/artsy/reaction/pull/2389) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.9.1 (Thu May 09 2019)
 
 #### 🐛  Bug Fix
