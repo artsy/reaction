@@ -4,27 +4,38 @@ import { mount } from "enzyme"
 import React from "react"
 
 describe("MobileSignUpForm", () => {
-  const handleSubmit = jest.fn()
-  const getWrapper = props =>
-    mount(
-      <MobileSignUpForm
-        {...props}
-        values={props.values || {}}
-        handleSubmit={handleSubmit}
-        handleTypeChange={jest.fn()}
-      />
-    )
+  let props
+
+  const getWrapper = (passedProps = props) => {
+    return mount(<MobileSignUpForm {...passedProps} />)
+  }
+
+  beforeEach(() => {
+    props = {
+      values: {},
+      handleSubmit: jest.fn(),
+      handleTypeChange: jest.fn(),
+    }
+  })
 
   it("renders the first step", () => {
-    const wrapper = getWrapper({})
+    const wrapper = getWrapper()
     const input = wrapper.find(QuickInput)
     expect(input.length).toBe(1)
     expect(input.props().type).toEqual("email")
     expect(wrapper.text()).toContain("Sign up for Artsy")
   })
 
+  it("renders captcha disclaimer if showRecaptchaDisclaimer", () => {
+    props.showRecaptchaDisclaimer = true
+    const wrapper = getWrapper()
+    expect(wrapper.text()).toMatch(
+      "This site is protected by reCAPTCHA and the Google Privacy Policy Terms of Service apply."
+    )
+  })
+
   it("renders errors", done => {
-    const wrapper = getWrapper({})
+    const wrapper = getWrapper()
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
@@ -35,7 +46,8 @@ describe("MobileSignUpForm", () => {
   })
 
   it("renders password error", () => {
-    const wrapper = getWrapper({ values: { email: "kajsdlfjk" } })
+    props.values = { email: "kajsdlfjk" }
+    const wrapper = getWrapper()
     const formik: any = wrapper.find("Formik").instance()
     formik.setStatus({ error: "some password error" })
     wrapper.update()
@@ -43,18 +55,14 @@ describe("MobileSignUpForm", () => {
   })
 
   it("renders the specified title", () => {
-    const wrapper = getWrapper({ title: "Sign up to follow Andy Warhol" })
-
+    props.title = "Sign up to follow Andy Warhol"
+    const wrapper = getWrapper()
     expect(wrapper.text()).toContain("Sign up to follow Andy Warhol")
   })
 
   it("renders global errors", () => {
-    const wrapper = mount(
-      <MobileSignUpForm
-        error="Some global server error"
-        handleSubmit={jest.fn()}
-      />
-    )
+    props.error = "Some global server error"
+    const wrapper = getWrapper()
     wrapper.update()
     expect(wrapper.html()).toMatch("Some global server error")
   })

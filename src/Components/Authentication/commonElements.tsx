@@ -73,8 +73,8 @@ export const MobileHeader = (props: {
   </Flex>
 )
 
-export const FooterText = (props: { children: any }) => (
-  <Sans size="2" color="black60" mt={1} mr={0.5} textAlign="center">
+export const FooterText = (props: { children: any; mt?: number }) => (
+  <Sans size="2" color="black60" mt={props.mt || 1} mr={0.5} textAlign="center">
     {props.children}
   </Sans>
 )
@@ -95,7 +95,7 @@ export const SubmitButton = (props: ButtonProps) => (
 
 export const CaptchaTerms = () => {
   return (
-    <FooterText>
+    <FooterText mt={2}>
       This site is protected by reCAPTCHA and the Google{" "}
       <Link color="black60" href="https://policies.google.com/privacy">
         Privacy Policy
