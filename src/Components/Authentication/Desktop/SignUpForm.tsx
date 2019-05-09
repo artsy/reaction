@@ -52,7 +52,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
           }
 
           return (
-            <Form onSubmit={handleSubmit} height={430}>
+            <Form onSubmit={handleSubmit}>
               <QuickInput
                 block
                 error={touched.email && errors.email}
@@ -114,8 +114,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                     this.props.onFacebookLogin(e)
                   }
                 }}
-                onTwitterLogin={this.props.onTwitterLogin}
                 inline
+                showRecaptchaDisclaimer={this.props.showRecaptchaDisclaimer}
               />
             </Form>
           )

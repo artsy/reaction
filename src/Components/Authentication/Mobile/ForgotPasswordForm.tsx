@@ -10,7 +10,7 @@ import {
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React from "react"
-import { FormComponentType, InputValues } from "../Types"
+import { FormComponentType, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
 export const MobileForgotPasswordForm: FormComponentType = props => {
@@ -56,7 +56,7 @@ export const MobileForgotPasswordForm: FormComponentType = props => {
                 </SubmitButton>
                 <Footer
                   handleTypeChange={props.handleTypeChange}
-                  mode="forgot"
+                  mode={"forgot" as ModalType}
                 />
               </Form>
             </MobileInnerWrapper>
