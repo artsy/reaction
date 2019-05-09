@@ -32,6 +32,7 @@ declare module "sharify" {
       readonly NODE_ENV: string
       readonly NOTIFICATION_COUNT: string
       readonly PREDICTION_URL: string
+      readonly RECAPTCHA_KEY: string
       readonly SENTRY_PUBLIC_DSN: string
       readonly STRIPE_PUBLISHABLE_KEY: string
       readonly VOLLEY_ENDPOINT: string
