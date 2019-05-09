@@ -282,7 +282,6 @@ exports[`snapshot renders the canvas in overlay layout 1`] = `
   >
     Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
   </div>
-  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
@@ -735,7 +734,6 @@ exports[`snapshot renders the canvas in slideshow layout 1`] = `
       </div>
     </div>
   </div>
-  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
@@ -1048,7 +1046,6 @@ exports[`snapshot renders the canvas in standard layout with image 1`] = `
       </div>
     </div>
   </a>
-  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;
 
@@ -1440,6 +1437,5 @@ exports[`snapshot renders the canvas in standard layout with video 1`] = `
       </div>
     </div>
   </a>
-  // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
 </div>
 `;

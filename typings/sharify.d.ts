@@ -26,6 +26,7 @@ declare module "sharify" {
       readonly GENOME_URL: string
       readonly GOOGLE_ADWORDS_ID: string
       readonly HASHTAG_LAB_ADS_ALLOWLIST: string // TODO: Remove after externally served ads are implemented
+      readonly HASHTAG_LAB_ADS_ENABLED: string // TODO: Remove after externally served ads are implemented
       readonly IMAGE_LAZY_LOADING: boolean
       readonly IS_MOBILE: boolean
       readonly METAPHYSICS_ENDPOINT: string

@@ -1,10 +1,10 @@
 import { avantgarde, garamond, unica } from "Assets/Fonts"
+import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
 import track, { TrackingProp } from "react-tracking"
 import Waypoint from "react-waypoint"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import Colors from "../../../Assets/Colors"
 import Events from "../../../Utils/Events"
@@ -368,16 +368,9 @@ export class DisplayPanel extends Component<
     const { unit, campaign, adDimension, adUnit, renderTime } = this.props
     const isVideo = this.isVideo()
     const url = get(unit.assets, "0.url", "")
-    const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
-      .split(",")
-      .filter(Boolean)
-    const currentUser = get(sd, "CURRENT_USER.email", "")
 
     // TODO: Remove the allowlist and env checks after externally served ads are implemented
-    if (
-      allowedUsers.includes(currentUser) &&
-      process.env.NODE_ENV !== "production"
-    ) {
+    if (isHTLAdEnabled()) {
       return (
         <div
           className="htl-ad"
@@ -388,6 +381,7 @@ export class DisplayPanel extends Component<
       )
     }
 
+    // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
     return (
       <>
         {isVideo ? (
@@ -404,8 +398,6 @@ export class DisplayPanel extends Component<
             }}
           />
           <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-          // TODO: Determine how to handle DisplayContainer layout and tracking
-          when this component no longer receives unit prop
           <PixelTracker unit={unit} date={renderTime} />
         </div>
       </>
