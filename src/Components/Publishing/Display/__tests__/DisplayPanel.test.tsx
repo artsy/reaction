@@ -1,11 +1,9 @@
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import track from "react-tracking"
-import { data as sd } from "sharify"
 import { DisplayPanel } from "../DisplayPanel"
 
 import {
@@ -94,22 +92,6 @@ describe("units", () => {
         spy,
       }
     }
-
-    it("checks for allowlisted users", () => {
-      const allowedUser = sd.HASHTAG_LAB_ADS_ALLOWLIST.split(",").filter(
-        Boolean
-      )
-
-      expect(allowedUser).toHaveLength(2)
-      expect(allowedUser).toEqual([
-        "alloweduser@email.com",
-        "alloweduser2@email.com",
-      ])
-    })
-
-    it("checks for enabled ads", () => {
-      expect(isHTLAdEnabled()).toBe(false)
-    })
 
     it("renders a pixel impression if there is a url", () => {
       const wrapper = getWrapper({

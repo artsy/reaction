@@ -13,9 +13,9 @@ export const isHTLAdEnabled = () => {
     .split(",")
     .filter(Boolean)
   const currentUser = get(sd, "CURRENT_USER.email", "")
+  const isAllowedUser = allowedUsers.includes(currentUser)
   const isAdminUser =
     get(sd, "CURRENT_USER.type", "") === "Admin" ? true : false
-  const isAllowedUser = allowedUsers.includes(currentUser)
 
   if (!sd.HASHTAG_LAB_ADS_ENABLED) {
     return false

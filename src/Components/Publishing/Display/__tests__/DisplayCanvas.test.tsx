@@ -1,9 +1,7 @@
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { data as sd } from "sharify"
 import { getCurrentUnixTimestamp } from "../../Constants"
 import { DisplayCanvas } from "../Canvas"
 import { CanvasLink } from "../Canvas/CanvasContainer"
@@ -120,20 +118,6 @@ describe("unit", () => {
     expect(canvas.find(CanvasText).length).toBe(1)
     expect(canvas.find(CanvasSlideshow).length).toBe(0)
     expect(canvas.find(CanvasVideo).length).toBe(0)
-  })
-
-  it("checks for allowlisted users", () => {
-    const allowedUser = sd.HASHTAG_LAB_ADS_ALLOWLIST.split(",").filter(Boolean)
-
-    expect(allowedUser).toHaveLength(2)
-    expect(allowedUser).toEqual([
-      "alloweduser@email.com",
-      "alloweduser2@email.com",
-    ])
-  })
-
-  it("checks for enabled ads", () => {
-    expect(isHTLAdEnabled()).toBe(false)
   })
 
   it("renders the video component if standard layout with video", () => {
