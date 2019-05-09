@@ -1,3 +1,15 @@
+# v16.9.4 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- Auth footer updates [#2386](https://github.com/artsy/reaction/pull/2386) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.9.3 (Thu May 09 2019)
 
 #### 🐛  Bug Fix
