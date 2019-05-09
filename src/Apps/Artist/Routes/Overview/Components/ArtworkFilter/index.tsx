@@ -58,8 +58,7 @@ class Filter extends Component<Props> {
   }
 
   renderFilters({ hideTopBorder }) {
-    const { filterState, mediator } = this.props
-    const { counts } = this.props.artist
+    const { filterState } = this.props
     const { aggregations } = this.props.artist.filtered_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
     const galleryAggregation = aggregations.find(agg => agg.slice === "GALLERY")
@@ -76,7 +75,7 @@ class Filter extends Component<Props> {
       <>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           {!hideTopBorder && <Separator mb={1} />}
-          {this.renderWaysToBuy(filterState, mediator, counts)}
+          {this.renderWaysToBuy(filterState)}
         </Flex>
 
         <Toggle label="Medium" expanded={!this.showZeroState}>
@@ -84,7 +83,6 @@ class Filter extends Component<Props> {
             filterState,
             category: "medium",
             counts: mediumAggregation.counts,
-            mediator,
           })}
         </Toggle>
         <Toggle label="Price" expanded>
@@ -100,7 +98,6 @@ class Filter extends Component<Props> {
             filterState,
             category: "partner_id",
             counts: galleryAggregation.counts,
-            mediator,
           })}
         </Toggle>
 
@@ -112,7 +109,6 @@ class Filter extends Component<Props> {
             filterState,
             category: "partner_id",
             counts: institutionAggregation.counts,
-            mediator,
           })}
         </Toggle>
         <Toggle
@@ -125,14 +121,13 @@ class Filter extends Component<Props> {
             filterState,
             category: "major_periods",
             counts: periodAggregation.counts,
-            mediator,
           })}
         </Toggle>
       </>
     )
   }
 
-  renderCategory({ filterState, category, counts, mediator }) {
+  renderCategory({ filterState, category, counts }) {
     const currentFilter =
       category === "major_periods"
         ? filterState.state.major_periods[0]
@@ -159,16 +154,16 @@ class Filter extends Component<Props> {
   }
 
   handleCategorySelect(selected, category, count) {
-    const { filterState, mediator } = this.props
+    const { filterState } = this.props
 
     if (selected) {
-      return filterState.setFilter(category, count.id, mediator)
+      return filterState.setFilter(category, count.id)
     } else {
-      return filterState.unsetFilter(category, mediator)
+      return filterState.unsetFilter(category)
     }
   }
 
-  renderWaysToBuy(filterState, mediator, counts) {
+  renderWaysToBuy(filterState) {
     const ways = [
       {
         hasWorks: this.existy.hasBuyNowArtworks,
@@ -196,7 +191,7 @@ class Filter extends Component<Props> {
       const props = {
         disabled: !way.hasWorks || this.showZeroState,
         key: index,
-        onSelect: value => filterState.setFilter(way.state, value, mediator),
+        onSelect: value => filterState.setFilter(way.state, value),
         selected: filterState.state[way.state],
       }
 
@@ -248,7 +243,7 @@ class Filter extends Component<Props> {
   }
 
   renderSelect() {
-    const { filterState, mediator } = this.props
+    const { filterState } = this.props
     return (
       <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
         <SmallSelect
@@ -277,7 +272,7 @@ class Filter extends Component<Props> {
           ]}
           selected={filterState.state.sort}
           onSelect={sort => {
-            return filterState.setSort(sort, mediator)
+            return filterState.setSort(sort)
           }}
         />
 
