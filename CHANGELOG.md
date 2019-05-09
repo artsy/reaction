@@ -1,3 +1,15 @@
+# v16.9.5 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- hides new ads behind admin and env feature flags [#2391](https://github.com/artsy/reaction/pull/2391) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.9.4 (Thu May 09 2019)
 
 #### 🐛  Bug Fix
