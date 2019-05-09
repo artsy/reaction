@@ -1,6 +1,7 @@
 import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
 import { mount, shallow } from "enzyme"
 import React from "react"
+import { LoginValues } from "../fixtures"
 
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
 
@@ -45,10 +46,7 @@ describe("LoginForm", () => {
   })
 
   it("renders spinner", done => {
-    props.values = {
-      email: "foo@bar.com",
-      password: "password123",
-    }
+    props.values = LoginValues
     const wrapper = getWrapper()
     const input = wrapper.find(`Formik`)
     input.simulate("submit")
@@ -63,10 +61,7 @@ describe("LoginForm", () => {
 
   describe("onSubmit", () => {
     it("calls props.handleSubmit with the right params", done => {
-      props.values = {
-        email: "foo@bar.com",
-        password: "password123",
-      }
+      props.values = LoginValues
       const wrapper = shallow(<LoginForm {...props} />)
       const formik = wrapper.dive().instance() as any
       formik.submitForm()
@@ -84,10 +79,7 @@ describe("LoginForm", () => {
     })
 
     it("fires reCAPTCHA event", done => {
-      props.values = {
-        email: "foo@bar.com",
-        password: "password123",
-      }
+      props.values = LoginValues
       const wrapper = getWrapper()
       const input = wrapper.find(`Formik`)
       input.simulate("submit")

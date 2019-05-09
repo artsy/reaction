@@ -1,7 +1,12 @@
 import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
-import { mount } from "enzyme"
+import { mount, shallow } from "enzyme"
 import { Formik } from "formik"
 import React from "react"
+import { SignupValues } from "../fixtures"
+
+jest.mock("sharify", () => ({
+  data: { RECAPTCHA_KEY: "recaptcha-api-key" },
+}))
 
 describe("SignUpForm", () => {
   let props
@@ -10,31 +15,44 @@ describe("SignUpForm", () => {
     props = {
       handleSubmit: jest.fn(),
     }
+    window.grecaptcha.ready.mockClear()
+    window.grecaptcha.execute.mockClear()
   })
 
   const getWrapper = (passedProps = props) => {
     return mount(<SignUpForm {...passedProps} />)
   }
 
-  xit("calls handleSubmit with the right params", done => {
-    const values = {
-      email: "foo@bar.com",
-      password: "password123",
-      name: "John Doe",
-      acceptedTermsOfService: true,
-    }
-    props.values = values
-
-    const wrapper = getWrapper()
-    const formik = wrapper.find(Formik).instance() as any
+  it("calls handleSubmit with the right params", done => {
+    props.values = SignupValues
+    const wrapper = shallow(<SignUpForm {...props} />)
+    const formik = wrapper.dive().instance() as any
     formik.submitForm()
-    wrapper.update()
 
     setTimeout(() => {
       expect(props.handleSubmit).toBeCalledWith(
-        values,
+        {
+          email: "foo@bar.com",
+          password: "password123",
+          name: "John Doe",
+          accepted_terms_of_service: true,
+        },
         formik.getFormikActions()
       )
+      done()
+    })
+  })
+
+  it("fires reCAPTCHA event on submit", done => {
+    props.values = SignupValues
+    const wrapper = shallow(<SignUpForm {...props} />)
+    const formik = wrapper.dive().instance() as any
+    formik.submitForm()
+
+    setTimeout(() => {
+      expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
+        action: "signup_submit",
+      })
       done()
     })
   })
@@ -72,15 +90,9 @@ describe("SignUpForm", () => {
   })
 
   it("renders spinner", done => {
-    props.values = {
-      email: "foo@bar.com",
-      password: "password123",
-      name: "John Doe",
-      acceptedTermsOfService: true,
-    }
+    props.values = SignupValues
     const wrapper = getWrapper()
-
-    const input = wrapper.find(`Formik`)
+    const input = wrapper.find(Formik)
     input.simulate("submit")
     wrapper.update()
 

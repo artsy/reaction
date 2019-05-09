@@ -6,6 +6,7 @@ import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
 import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
+import { ChangeEvents } from "../fixtures"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
@@ -73,27 +74,16 @@ describe("MobileLoginForm", () => {
   })
 
   describe("#handleSubmit", () => {
-    const emailChange = {
-      currentTarget: { value: "email@email.com" },
-      persist: jest.fn(),
-      target: { type: "", name: "email", value: "email@email.com" },
-    }
-    const passwordChange = {
-      currentTarget: { value: "password" },
-      persist: jest.fn(),
-      target: { type: "", name: "password", value: "password" },
-    }
-
     it("calls props.handleSubmit", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
-      inputEmail.onChange(emailChange)
+      inputEmail.onChange(ChangeEvents.email)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
         wrapper.update()
         const inputPass = wrapper.find(QuickInput).instance() as QuickInput
-        inputPass.onChange(passwordChange)
+        inputPass.onChange(ChangeEvents.password)
         wrapper.find(SubmitButton).simulate("click")
 
         setTimeout(() => {
@@ -109,13 +99,13 @@ describe("MobileLoginForm", () => {
     it("fires reCAPTCHA event on submit", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
-      inputEmail.onChange(emailChange)
+      inputEmail.onChange(ChangeEvents.email)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
         wrapper.update()
         const inputPass = wrapper.find(QuickInput).instance() as QuickInput
-        inputPass.onChange(passwordChange)
+        inputPass.onChange(ChangeEvents.password)
         wrapper.find(SubmitButton).simulate("click")
 
         setTimeout(() => {
