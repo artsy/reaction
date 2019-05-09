@@ -23,7 +23,6 @@ export class ArtworkImageBrowserContainer extends React.Component<
     }
 
     const defaultImageIndex = images.findIndex(e => e.id === image.id)
-    console.log("defaultImageIndex", defaultImageIndex)
     return (
       <>
         <ArtworkImageBrowser
