@@ -1,3 +1,4 @@
+import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep } from "lodash"
@@ -18,6 +19,7 @@ import {
 jest.mock("sharify", () => ({
   data: {
     HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+    HASHTAG_LAB_ADS_ENABLED: "test",
   },
 }))
 
@@ -104,6 +106,10 @@ describe("units", () => {
         "alloweduser@email.com",
         "alloweduser2@email.com",
       ])
+    })
+
+    it("checks for enabled ads", () => {
+      expect(isHTLAdEnabled()).toBe(false)
     })
 
     it("renders a pixel impression if there is a url", () => {
