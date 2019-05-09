@@ -37,14 +37,13 @@ interface Props {
   }
 }
 
-const getReadMoreContent = (description, credit) => {
+const getReadMoreContent = description => {
   return (
     <>
       {description && (
         <span dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Spacer mt={3} />
-      {credit && <ImageCaption dangerouslySetInnerHTML={{ __html: credit }} />}
     </>
   )
 }
@@ -105,43 +104,33 @@ export class CollectionHeader extends Component<Props> {
                     height={imageHeight}
                   >
                     <Overlay />
-                    <MetaContainer>
-                      <SubtitlesContainer>
-                        <Sans
-                          size={["2", "3"]}
-                          weight="medium"
-                          color="white100"
-                        >
-                          <a href={categoryTarget}>{collection.category}</a>
-                        </Sans>
-                        <Sans
-                          size={["2", "3"]}
-                          weight="medium"
-                          color="white100"
-                          ml="auto"
-                        >
-                          <a href="/collect">View all artworks</a>
-                        </Sans>
-                      </SubtitlesContainer>
-                      <Spacer mt={1} />
-                      <Title size={["6", "10"]} color="white100">
-                        <h1>{collection.title}</h1>
-                      </Title>
-                    </MetaContainer>
+                    {collection.credit && (
+                      <ImageCaption
+                        size={size}
+                        dangerouslySetInnerHTML={{ __html: collection.credit }}
+                      />
+                    )}
                   </Background>
+                  <MetaContainer mb={2}>
+                    <BreadcrumbContainer size={["2", "3"]}>
+                      <a href="/collect">All artworks</a> /{" "}
+                      <a href={categoryTarget}>{collection.category}</a>
+                    </BreadcrumbContainer>
+                    <Spacer mt={1} />
+                    <Title size={["6", "10"]}>{collection.title}</Title>
+                  </MetaContainer>
                   <DescriptionContainer mb={5}>
                     <Grid>
                       <Row>
                         <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="3" px={[0, 1]}>
+                          <ExtendedSerif size="3">
                             <ReadMore
                               onReadMoreClicked={this.trackReadMoreClick.bind(
                                 this
                               )}
                               maxChars={chars}
                               content={getReadMoreContent(
-                                collection.description,
-                                collection.credit
+                                collection.description
                               )}
                             />
                           </ExtendedSerif>
@@ -184,9 +173,9 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.15)
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.25) 95%
   );
   z-index: 0;
 `
@@ -196,34 +185,37 @@ const MetaContainer = styled(Box)`
   z-index: 1;
 `
 
-const DescriptionContainer = styled(Flex)``
-
-const SubtitlesContainer = styled(Box)`
-  display: flex;
-  color: white;
-
-  a,
-  a:hover {
-    color: inherit;
-  }
-
-  ${Sans} {
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-
-    &:last-child {
-      a {
-        text-decoration: underline;
-      }
-    }
+const BreadcrumbContainer = styled(Sans)`
+  a {
+    text-decoration: none;
   }
 `
+
+const DescriptionContainer = styled(Flex)``
 
 const Title = styled(Serif)`
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `
 
-const ImageCaption = styled(Box)`
+const ImageCaption = styled(Box)<{
+  size: string
+}>`
   ${unica("s12")};
+  position: absolute;
+  bottom: 5px;
+  ${props => {
+    if (["xs", "sm", "md"].includes(props.size)) {
+      return `
+        left: 20px;
+      `
+    } else {
+      return `right: 20px;`
+    }
+  }}
+  max-width: ${props => (props.size === "xs" ? "300px" : "100%")};
+  color: ${color("white100")};
+  z-index: 7;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 `
 
 const ExtendedSerif = styled(Serif)`
