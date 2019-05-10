@@ -1,3 +1,17 @@
+# v16.9.7 (Fri May 10 2019)
+
+#### 🐛  Bug Fix
+
+- Enable smallCarousel pageDots & draggable only when length > 1 [#2396](https://github.com/artsy/reaction/pull/2396) ([@kierangillen](https://github.com/kierangillen))
+- [NavBar] Implement tracking [#2385](https://github.com/artsy/reaction/pull/2385) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.9.6 (Fri May 10 2019)
 
 ### Release Notes
