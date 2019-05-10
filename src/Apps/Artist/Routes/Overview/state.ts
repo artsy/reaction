@@ -1,4 +1,5 @@
-import { cloneDeep, omit, uniq, without } from "lodash"
+import { cloneDeep, uniq, without } from "lodash"
+import qs from "qs"
 import { Container } from "unstated"
 
 interface State {
@@ -40,6 +41,48 @@ export const initialState = {
   showZeroState: false,
 }
 
+// Returns a string representing the query part of a URL.
+// It removes default values.
+export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
+  const filters = Object.entries(state).reduce((acc, [key, value]) => {
+    if (isDefaultFilter(key, value)) {
+      return acc
+    } else {
+      return { ...acc, [key]: value }
+    }
+  }, {})
+
+  return qs.stringify({
+    ...filters,
+    ...extra,
+  })
+}
+
+// This is used to remove default state params that clutter up URLs.
+const isDefaultFilter = (filter, value): boolean => {
+  if (filter === "major_periods" || filter === "attribution_class") {
+    return value.length === 0
+  }
+
+  if (filter === "sort") {
+    return value === "-decayed_merch"
+  }
+
+  if (filter === "price_range" || filter === "height" || filter === "width") {
+    return value === "*-*"
+  }
+
+  if (filter === "page") {
+    return value === 1
+  }
+
+  if (filter === "medium") {
+    return value === "*"
+  }
+
+  return !value
+}
+
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
 
@@ -71,15 +114,30 @@ export class FilterState extends Container<State> {
     }
   }
 
-  setPage(page, mediator) {
+  previousQueryString = ""
+  pushHistory() {
+    const currentQueryString = urlFragmentFromState(this.state)
+    // PriceRangeFilter's onAfterChange event fires twice; this ensures
+    //   we only push that history event once.
+    if (this.previousQueryString !== currentQueryString) {
+      window.history.pushState(
+        {},
+        null,
+        `${window.location.pathname}?${currentQueryString}`
+      )
+      this.previousQueryString = currentQueryString
+    }
+  }
+
+  setPage(page) {
     this.setState({ page }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+      this.pushHistory()
     })
   }
 
-  setSort = (sort, mediator) => {
+  setSort = sort => {
     this.setState({ sort }, () => {
-      mediator.trigger("artist:filter:changed", this.state)
+      this.pushHistory()
     })
   }
 
@@ -107,7 +165,7 @@ export class FilterState extends Container<State> {
     })
   }
 
-  unsetFilter(filter, mediator) {
+  unsetFilter(filter) {
     let { selectedFilters } = this.state
     let newPartialState = {}
     if (filter === "major_periods") {
@@ -131,11 +189,7 @@ export class FilterState extends Container<State> {
     selectedFilters = without(selectedFilters, "radio")
 
     this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
-      const filterState = omit(this.state, [
-        "selectedFilterCount",
-        "showActionSheet",
-      ])
-      mediator.trigger("artist:filter:changed", filterState)
+      this.pushHistory()
     })
   }
 
@@ -150,7 +204,7 @@ export class FilterState extends Container<State> {
     return [min, max]
   }
 
-  setFilter(filter, value, mediator) {
+  setFilter(filter, value) {
     let { selectedFilters } = this.state
 
     let newPartialState = {}
@@ -199,12 +253,7 @@ export class FilterState extends Container<State> {
     selectedFilters = uniq(selectedFilters)
 
     this.setState({ page: 1, selectedFilters, ...newPartialState }, () => {
-      const filterState = omit(this.state, [
-        "selectedFilters",
-        "showActionSheet",
-      ])
-
-      mediator.trigger("artist:filter:changed", filterState)
+      this.pushHistory()
     })
   }
 }
