@@ -1,3 +1,48 @@
+# v16.9.6 (Fri May 10 2019)
+
+### Release Notes
+
+  _From #2394_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.7`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4117-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.6...v4.11.7)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   [Menu] Add onClick event type to interface [#&#8203;461](https://togithub.com/artsy/palette/pull/461) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Passes ref and fixes image height [#2395](https://github.com/artsy/reaction/pull/2395) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.7 [#2394](https://github.com/artsy/reaction/pull/2394) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.9.5 (Thu May 09 2019)
 
 #### 🐛  Bug Fix
