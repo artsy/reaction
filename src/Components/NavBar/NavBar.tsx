@@ -43,7 +43,10 @@ export const NavbarContext = React.createContext<{
   Schema?: typeof Schema
 }>({})
 
-export const NavBar = track()(({ tracking }: NavBarProps) => {
+export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
+  flow: Schema.Flow.Header,
+  context_module: Schema.ContextModule.Header,
+})(({ tracking }) => {
   const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
@@ -107,8 +110,6 @@ export const NavBar = track()(({ tracking }: NavBarProps) => {
                   Overlay={NotificationsBadge}
                   onClick={() => {
                     tracking.trackEvent({
-                      flow: Schema.Flow.Header,
-                      context_module: Schema.ContextModule.Header,
                       subject: Schema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
@@ -130,8 +131,6 @@ export const NavBar = track()(({ tracking }: NavBarProps) => {
                 variant="secondaryOutline"
                 onClick={() => {
                   tracking.trackEvent({
-                    flow: Schema.Flow.Header,
-                    context_module: Schema.ContextModule.Header,
                     subject: Schema.Subject.Login,
                   })
 
@@ -144,8 +143,6 @@ export const NavBar = track()(({ tracking }: NavBarProps) => {
               <Button
                 onClick={() => {
                   tracking.trackEvent({
-                    flow: Schema.Flow.Header,
-                    context_module: Schema.ContextModule.Header,
                     subject: Schema.Subject.Signup,
                   })
 
@@ -168,8 +165,6 @@ export const NavBar = track()(({ tracking }: NavBarProps) => {
               const showMenu = !showMobileMenu
               if (showMenu) {
                 tracking.trackEvent({
-                  flow: Schema.Flow.Header,
-                  context_module: Schema.ContextModule.Header,
                   subject: Schema.Subject.SmallScreenMenuSandwichIcon,
                 })
               }

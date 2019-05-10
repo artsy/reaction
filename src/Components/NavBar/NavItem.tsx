@@ -23,7 +23,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   href,
   onClick,
 }) => {
-  const { tracking, Schema } = useTracking()
+  const { tracking } = useTracking()
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
@@ -32,8 +32,6 @@ export const NavItem: React.FC<NavItemProps> = ({
   const trackClick = () => {
     if (href && isString(children)) {
       tracking.trackEvent({
-        flow: Schema.Flow.Header,
-        context_module: Schema.ContextModule.Header,
         subject: children, // Text passed into the NavItem
         destination_path: href,
       })
@@ -50,7 +48,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
       onClick={event => {
-        event.preventDefault
+        event.preventDefault()
         trackClick()
         onClick && onClick()
       }}

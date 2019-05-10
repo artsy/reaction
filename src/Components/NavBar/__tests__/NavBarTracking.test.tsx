@@ -5,7 +5,7 @@ import { SystemContextProvider } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 
 import { QueryRenderer as _QueryRenderer } from "react-relay"
-import { MoreNavMenu, UserMenu } from "../Menus"
+import { MobileNavMenu, MoreNavMenu, UserMenu } from "../Menus"
 import { NavBar, NavbarContext } from "../NavBar"
 import { NavItem } from "../NavItem"
 
@@ -34,124 +34,164 @@ describe("NavBarTracking", () => {
     jest.resetAllMocks()
   })
 
-  it("tracks MoreNavMenu clicks", () => {
-    const wrapper = mount(
-      <Wrapper>
-        <MoreNavMenu />
-      </Wrapper>
-    )
-    const menuItems = wrapper.find("MenuItem")
-    menuItems.first().simulate("click")
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.HeaderUserDropdown,
-      destination_path: "/galleries",
+  describe("NavBar", () => {
+    it("tracks NavBar notification badge clicks", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <NavBar tracking={tracking} />
+        </Wrapper>
+      )
+      wrapper
+        .find("Link")
+        .find({ href: "/works-for-you" })
+        .first()
+        .simulate("click")
+
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: Schema.Subject.NotificationBell,
+        destination_path: "/works-for-you",
+      })
+    })
+
+    it("tracks NavBar login button clicks", () => {
+      const wrapper = mount(
+        <Wrapper user={null}>
+          <NavBar tracking={tracking} />
+        </Wrapper>
+      )
+      wrapper
+        .find("Button")
+        .first()
+        .simulate("click")
+
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: Schema.Subject.Login,
+      })
+    })
+
+    it("tracks NavBar signup button clicks", () => {
+      const wrapper = mount(
+        <Wrapper user={null}>
+          <NavBar tracking={tracking} />
+        </Wrapper>
+      )
+      wrapper
+        .find("Button")
+        .last()
+        .simulate("click")
+
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: Schema.Subject.Signup,
+      })
     })
   })
 
-  it("tracks UserMenu clicks", () => {
-    const wrapper = mount(
-      <Wrapper>
-        <UserMenu />
-      </Wrapper>
-    )
-    const menuItems = wrapper.find("MenuItem")
-    menuItems.first().simulate("click")
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.HeaderUserDropdown,
-      destination_path: "/user/saves",
+  describe("MoreNavMenu", () => {
+    it("tracks MoreNavMenu clicks", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <MoreNavMenu />
+        </Wrapper>
+      )
+      const menuItems = wrapper.find("MenuItem")
+      menuItems.first().simulate("click", {
+        target: {
+          context_module: Schema.ContextModule.HeaderMoreDropdown,
+          parentNode: {
+            parentNode: {
+              getAttribute: () => "/galleries",
+            },
+          },
+        },
+      })
+      expect(tracking.trackEvent).toBeCalledWith({
+        context_module: Schema.ContextModule.HeaderMoreDropdown,
+        destination_path: "/galleries",
+      })
     })
   })
 
-  it("tracks NavBar notification badge clicks", () => {
-    const wrapper = mount(
-      <Wrapper>
-        <NavBar tracking={tracking} />
-      </Wrapper>
-    )
-    wrapper
-      .find("Link")
-      .find({ href: "/works-for-you" })
-      .first()
-      .simulate("click")
-
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.Header,
-      subject: Schema.Subject.NotificationBell,
-      destination_path: "/works-for-you",
+  describe("UserMenu", () => {
+    it("tracks UserMenu clicks", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <UserMenu />
+        </Wrapper>
+      )
+      const menuItems = wrapper.find("MenuItem")
+      menuItems.first().simulate("click", {
+        target: {
+          parentNode: {
+            parentNode: {
+              getAttribute: () => "/user/saves",
+            },
+          },
+        },
+      })
+      expect(tracking.trackEvent).toBeCalledWith({
+        context_module: Schema.ContextModule.HeaderUserDropdown,
+        destination_path: "/user/saves",
+      })
     })
   })
 
-  it("tracks NavBar login button clicks", () => {
-    const wrapper = mount(
-      <Wrapper user={null}>
-        <NavBar tracking={tracking} />
-      </Wrapper>
-    )
-    wrapper
-      .find("Button")
-      .first()
-      .simulate("click")
+  describe("NavItem", () => {
+    it("tracks NavItem item clicks", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <NavItem href="/art-fairs">Fairs</NavItem>
+        </Wrapper>
+      )
 
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.Header,
-      subject: Schema.Subject.Login,
+      wrapper.find("NavItem").simulate("click")
+
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: "Fairs",
+        destination_path: "/art-fairs",
+      })
     })
   })
 
-  it("tracks NavBar signup button clicks", () => {
-    const wrapper = mount(
-      <Wrapper user={null}>
-        <NavBar tracking={tracking} />
-      </Wrapper>
-    )
-    wrapper
-      .find("Button")
-      .last()
-      .simulate("click")
+  describe("Mobile", () => {
+    it("tracks show mobile menu hamburger button clicks", () => {
+      const wrapper = mount(
+        <Wrapper user={null}>
+          <NavBar tracking={tracking} />
+        </Wrapper>
+      )
+      wrapper
+        .find(".mobileHamburgerButton")
+        .first()
+        .simulate("click")
 
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.Header,
-      subject: Schema.Subject.Signup,
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: Schema.Subject.SmallScreenMenuSandwichIcon,
+      })
     })
-  })
 
-  it("tracks show mobile menu hamburger button clicks", () => {
-    const wrapper = mount(
-      <Wrapper user={null}>
-        <NavBar tracking={tracking} />
-      </Wrapper>
-    )
-    wrapper
-      .find(".mobileHamburgerButton")
-      .first()
-      .simulate("click")
+    it("tracks mobile dropdown clicks", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <MobileNavMenu />
+        </Wrapper>
+      )
 
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.Header,
-      subject: Schema.Subject.SmallScreenMenuSandwichIcon,
-    })
-  })
+      wrapper
+        .find("MobileLink")
+        .last()
+        .simulate("click", {
+          target: {
+            innerText: "Magazine",
+            parentNode: {
+              getAttribute: () => "/articles",
+            },
+          },
+        })
 
-  it("tracks NavItem item clicks", () => {
-    const wrapper = mount(
-      <Wrapper>
-        <NavItem href="/art-fairs">Fairs</NavItem>
-      </Wrapper>
-    )
-
-    wrapper.find("NavItem").simulate("click")
-
-    expect(tracking.trackEvent).toBeCalledWith({
-      flow: Schema.Flow.Header,
-      context_module: Schema.ContextModule.Header,
-      subject: "Fairs",
-      destination_path: "/art-fairs",
+      expect(tracking.trackEvent).toBeCalledWith({
+        subject: "Magazine",
+        destination_path: "/articles",
+      })
     })
   })
 })

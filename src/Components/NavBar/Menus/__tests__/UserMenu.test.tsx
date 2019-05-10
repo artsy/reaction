@@ -1,10 +1,21 @@
 import { SystemContextProvider } from "Artsy"
+import * as auth from "Components/NavBar/Utils/auth"
 import { mount } from "enzyme"
 import React from "react"
-import * as auth from "../../Utils/auth"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("../../Utils/auth")
+jest.mock("Components/NavBar/Utils/auth")
+jest.mock("Components/NavBar/Utils/useTracking", () => {
+  const Schema = require("Artsy/Analytics/Schema")
+  return {
+    useTracking: () => ({
+      tracking: {
+        trackEvent: jest.fn(),
+      },
+      Schema,
+    }),
+  }
+})
 
 describe("UserMenu", () => {
   const mediator = {

@@ -7,6 +7,7 @@ import { NotificationsBadge } from "../NotificationsBadge"
 jest.mock("react-relay", () => {
   return {
     QueryRenderer: jest.fn(),
+    createRefetchContainer: jest.fn(),
   }
 })
 

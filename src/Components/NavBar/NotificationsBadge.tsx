@@ -66,8 +66,6 @@ export const NotificationsBadge: React.FC = () => {
 
         const trackOnHover = once(() => {
           tracking.trackEvent({
-            flow: Schema.Flow.Header,
-            context_module: Schema.ContextModule.Header,
             subject: Schema.Subject.NotificationBell,
             new_notification_count: totalUnread,
           })

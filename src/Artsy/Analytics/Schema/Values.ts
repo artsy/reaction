@@ -242,6 +242,7 @@ export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
   RecentlyViewedArtworks = "recently_viewed_artworks",
+  HeaderMoreDropdown = "HeaderMoreDropdown",
   HeaderUserDropdown = "HeaderUserDropdown",
 
   /**

@@ -2,6 +2,16 @@ import { mount } from "enzyme"
 import React from "react"
 import { NavItem } from "../NavItem"
 
+jest.mock("Components/NavBar/Utils/useTracking", () => {
+  return {
+    useTracking: () => ({
+      tracking: {
+        trackEvent: jest.fn(),
+      },
+    }),
+  }
+})
+
 describe("NavItem", () => {
   it("renders proper content", () => {
     const wrapper = mount(

@@ -2,6 +2,7 @@ import { SystemContext } from "Artsy"
 import * as auth from "Components/NavBar/Utils/auth"
 import React, { useContext } from "react"
 import styled from "styled-components"
+import { useTracking } from "../Utils/useTracking"
 
 import {
   Box,
@@ -15,11 +16,29 @@ import {
 } from "@artsy/palette"
 
 export const MobileNavMenu: React.FC = () => {
+  const { tracking } = useTracking()
   const { mediator, user } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
 
+  const trackClick = event => {
+    const link = event.target
+    const text = link.innerText
+    const href = link.parentNode.getAttribute("href")
+
+    tracking.trackEvent({
+      subject: text,
+      destination_path: href,
+    })
+  }
+
   return (
-    <MobileNavContainer px={2} py={1} width="100%" flexDirection="column">
+    <MobileNavContainer
+      px={2}
+      py={1}
+      width="100%"
+      flexDirection="column"
+      onClick={trackClick}
+    >
       <MobileLink href="/">Home</MobileLink>
       <MobileLink href="/artists">Artists</MobileLink>
       <MobileLink href="/shows">Shows</MobileLink>
