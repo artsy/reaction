@@ -225,6 +225,14 @@ export enum Subject {
   HistogramBar = "Histogram Bar",
   BrowseWorks = "Browse works in this category",
   QuestionMarkIcon = "Question Mark Informational Icon",
+
+  /**
+   * Header
+   */
+  NotificationBell = "Notification Bell",
+  Login = "Log In",
+  Signup = "Sign Up",
+  SmallScreenMenuSandwichIcon = "Small Screen Menu Sandwich Icon",
 }
 
 /**
@@ -234,6 +242,8 @@ export enum ContextModule {
   Header = "Header",
   NavigationTabs = "NavigationTabs",
   RecentlyViewedArtworks = "recently_viewed_artworks",
+  HeaderMoreDropdown = "HeaderMoreDropdown",
+  HeaderUserDropdown = "HeaderUserDropdown",
 
   /**
    * Artist page
@@ -305,6 +315,7 @@ export enum Flow {
   Auctions = "Auctions",
   BuyNow = "Buy now",
   MakeOffer = "Make offer",
+  Header = "Header",
 }
 
 export enum Label {

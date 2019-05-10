@@ -6,7 +6,6 @@ import { NavBar } from "../NavBar"
 import * as auth from "../Utils/auth"
 
 jest.mock("../Utils/auth")
-
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
@@ -19,9 +18,14 @@ describe("NavBar", () => {
   }
 
   const getWrapper = ({ user = null } = {}) => {
+    const tracking = {
+      trackEvent: jest.fn(),
+      getTrackingData: jest.fn(),
+    }
+
     return mount(
       <SystemContextProvider user={user} mediator={mediator}>
-        <NavBar />
+        <NavBar tracking={tracking} />
       </SystemContextProvider>
     )
   }
