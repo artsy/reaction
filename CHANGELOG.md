@@ -1,3 +1,15 @@
+# v16.9.7 (Fri May 10 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Implement tracking [#2385](https://github.com/artsy/reaction/pull/2385) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.9.6 (Fri May 10 2019)
 
 ### Release Notes
