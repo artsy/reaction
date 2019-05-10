@@ -1,3 +1,75 @@
+# v16.10.0 (Fri May 10 2019)
+
+### Release Notes
+
+  _From #2403_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4119-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.8...v4.11.9)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   Updates slider disabled styling and allows for disabledText [#&#8203;463](https://togithub.com/artsy/palette/pull/463) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+_From #2399_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.8`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4118-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.7...v4.11.8)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   Passes disabled to Slider [#&#8203;462](https://togithub.com/artsy/palette/pull/462) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🚀  Enhancement
+
+- Adds disabled text to priceRange filters [#2404](https://github.com/artsy/reaction/pull/2404) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.11.8 to v4.11.9 [#2403](https://github.com/artsy/reaction/pull/2403) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.11.8 [#2399](https://github.com/artsy/reaction/pull/2399) ([@renovate-bot](https://github.com/renovate-bot))
+- Update renovate to use new lib workflow [#2398](https://github.com/artsy/reaction/pull/2398) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.9.9 (Fri May 10 2019)
 
 #### 🐛  Bug Fix
