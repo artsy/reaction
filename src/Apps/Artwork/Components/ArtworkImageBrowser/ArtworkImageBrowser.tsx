@@ -109,7 +109,7 @@ export class SmallArtworkImageBrowser extends React.Component<
   }
 
   render() {
-    const { images, imageAlt } = this.props
+    const { images, imageAlt, setFlickityRef } = this.props
     // FIXME: During SSR pass want to hide other images. Work around for lack
     // of SSR support in Flickity.
     const carouselImages = typeof window === "undefined" ? [images[0]] : images
@@ -119,6 +119,7 @@ export class SmallArtworkImageBrowser extends React.Component<
           options={this.options}
           data={carouselImages}
           oneSlideVisible
+          setFlickityRef={setFlickityRef}
           render={image => {
             return (
               <Flex
@@ -126,7 +127,6 @@ export class SmallArtworkImageBrowser extends React.Component<
                 justifyContent="center"
                 px={1}
                 width="100%"
-                height="260px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
