@@ -1,5 +1,5 @@
 import cookie from "cookies-js"
-import React, { useContext, useMemo, useState } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 
 import { SystemContext } from "Artsy/SystemContext"
@@ -48,15 +48,13 @@ export const NavBar = track()(({ tracking }: NavBarProps) => {
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
-  const navBarContextValue = useMemo(() => {
-    return {
-      tracking,
-      Schema,
-    }
-  }, [])
-
   return (
-    <NavbarContext.Provider value={navBarContextValue}>
+    <NavbarContext.Provider
+      value={{
+        tracking,
+        Schema,
+      }}
+    >
       <NavBarContainer p={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>

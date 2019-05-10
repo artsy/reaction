@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
-
 import { SystemContext } from "Artsy"
+import React, { useContext } from "react"
 import * as auth from "../Utils/auth"
+import { useTracking } from "../Utils/useTracking"
 
 import {
   HeartIcon,
@@ -11,10 +11,9 @@ import {
   SettingsIcon,
   SoloIcon,
 } from "@artsy/palette"
-import { NavbarContext } from "../NavBar"
 
 export const UserMenu: React.FC = () => {
-  const { tracking, Schema } = useContext(NavbarContext)
+  const { tracking, Schema } = useTracking()
   const { mediator } = useContext(SystemContext)
 
   const trackClick = event => {

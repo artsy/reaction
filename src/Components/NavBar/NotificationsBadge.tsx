@@ -8,12 +8,12 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
-import { NavbarContext } from "./NavBar"
+import { useTracking } from "./Utils/useTracking"
 
 const logger = createLogger("Components/NavBar")
 
 export const NotificationsBadge: React.FC = () => {
-  const { tracking, Schema } = useContext(NavbarContext)
+  const { tracking, Schema } = useTracking()
 
   return (
     <NotificationsQueryRenderer

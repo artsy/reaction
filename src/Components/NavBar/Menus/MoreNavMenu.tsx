@@ -1,9 +1,9 @@
 import { Menu, MenuItem } from "@artsy/palette"
-import React, { useContext } from "react"
-import { NavbarContext } from "../NavBar"
+import React from "react"
+import { useTracking } from "../Utils/useTracking"
 
 export const MoreNavMenu: React.FC = () => {
-  const { tracking, Schema } = useContext(NavbarContext)
+  const { tracking, Schema } = useTracking()
 
   const trackClick = event => {
     event.preventDefault()
