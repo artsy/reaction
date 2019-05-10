@@ -112,16 +112,18 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
 }
 
 export const SmallCarousel: React.FC<CarouselProps> = props => {
+  // Only render pageDots and enable draggable if more than one slide
+  const hasMultipleSlides = props.data.length > 1
   return (
     <BaseCarousel
       showArrows={false}
       options={{
         cellAlign: "left",
-        draggable: true,
+        draggable: hasMultipleSlides,
         freeScroll: false,
         contain: true,
         friction: 0.3,
-        pageDots: true,
+        pageDots: hasMultipleSlides,
         prevNextButtons: false,
         wrapAround: false,
         ...props.options,

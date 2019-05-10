@@ -100,23 +100,23 @@ export class LargeArtworkImageBrowser extends React.Component<
 export class SmallArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
-  options = {
-    prevNextButtons: false,
-    wrapAround: true,
-    draggable: true,
-    groupCells: 1,
-    pageDots: true,
-  }
-
   render() {
     const { images, imageAlt, setFlickityRef } = this.props
     // FIXME: During SSR pass want to hide other images. Work around for lack
     // of SSR support in Flickity.
     const carouselImages = typeof window === "undefined" ? [images[0]] : images
+    const hasMultipleImages = this.props.images.length > 1
+    const options = {
+      prevNextButtons: false,
+      wrapAround: true,
+      draggable: hasMultipleImages,
+      groupCells: 1,
+      pageDots: hasMultipleImages,
+    }
     return (
       <Container>
         <Carousel
-          options={this.options}
+          options={options}
           data={carouselImages}
           oneSlideVisible
           setFlickityRef={setFlickityRef}
