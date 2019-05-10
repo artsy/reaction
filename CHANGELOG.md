@@ -1,3 +1,15 @@
+# v16.9.9 (Fri May 10 2019)
+
+#### 🐛  Bug Fix
+
+- Preserve pagination in browser history on artist page [#2392](https://github.com/artsy/reaction/pull/2392) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.9.7 (Fri May 10 2019)
 
 #### 🐛  Bug Fix
