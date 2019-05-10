@@ -14,6 +14,7 @@ export const PriceRangeFilter: React.FC<{
       min={FilterState.MIN_PRICE}
       max={FilterState.MAX_PRICE}
       step={50}
+      disabledText="Disabled for biddable works"
       defaultValue={[initialMin, initialMax]}
       disabled={filters.state.at_auction}
       onAfterChange={([min, max]) => {
