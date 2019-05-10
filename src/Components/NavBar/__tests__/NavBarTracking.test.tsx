@@ -2,11 +2,11 @@ import { mount } from "enzyme"
 import React from "react"
 
 import { SystemContextProvider } from "Artsy"
-import * as Schema from "Artsy/Analytics/Schema"
+import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 
 import { QueryRenderer as _QueryRenderer } from "react-relay"
 import { MobileNavMenu, MoreNavMenu, UserMenu } from "../Menus"
-import { NavBar, NavbarContext } from "../NavBar"
+import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
 
 describe("NavBarTracking", () => {
@@ -18,14 +18,7 @@ describe("NavBarTracking", () => {
   const Wrapper = ({ children, user = { id: "foo" } }) => {
     return (
       <SystemContextProvider user={user} mediator={{ trigger: jest.fn() }}>
-        <NavbarContext.Provider
-          value={{
-            tracking,
-            Schema,
-          }}
-        >
-          {children}
-        </NavbarContext.Provider>
+        {children}
       </SystemContextProvider>
     )
   }
@@ -48,7 +41,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(tracking.trackEvent).toBeCalledWith({
-        subject: Schema.Subject.NotificationBell,
+        subject: AnalyticsSchema.Subject.NotificationBell,
         destination_path: "/works-for-you",
       })
     })
@@ -65,7 +58,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(tracking.trackEvent).toBeCalledWith({
-        subject: Schema.Subject.Login,
+        subject: AnalyticsSchema.Subject.Login,
       })
     })
 
@@ -81,7 +74,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(tracking.trackEvent).toBeCalledWith({
-        subject: Schema.Subject.Signup,
+        subject: AnalyticsSchema.Subject.Signup,
       })
     })
   })
@@ -96,7 +89,7 @@ describe("NavBarTracking", () => {
       const menuItems = wrapper.find("MenuItem")
       menuItems.first().simulate("click", {
         target: {
-          context_module: Schema.ContextModule.HeaderMoreDropdown,
+          context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
           parentNode: {
             parentNode: {
               getAttribute: () => "/galleries",
@@ -105,7 +98,7 @@ describe("NavBarTracking", () => {
         },
       })
       expect(tracking.trackEvent).toBeCalledWith({
-        context_module: Schema.ContextModule.HeaderMoreDropdown,
+        context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
         destination_path: "/galleries",
       })
     })
@@ -129,7 +122,7 @@ describe("NavBarTracking", () => {
         },
       })
       expect(tracking.trackEvent).toBeCalledWith({
-        context_module: Schema.ContextModule.HeaderUserDropdown,
+        context_module: AnalyticsSchema.ContextModule.HeaderUserDropdown,
         destination_path: "/user/saves",
       })
     })
@@ -165,7 +158,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(tracking.trackEvent).toBeCalledWith({
-        subject: Schema.Subject.SmallScreenMenuSandwichIcon,
+        subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
       })
     })
 

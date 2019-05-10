@@ -1,6 +1,8 @@
-import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import React, { SFC } from "react"
+import React, { SFC, useMemo, useState } from "react"
+import { TrackingProp } from "react-tracking"
 import { Environment } from "relay-runtime"
+
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { getUser } from "Utils/getUser"
 
 export interface Mediator {
@@ -20,6 +22,11 @@ export interface SystemContextProps {
   mediator?: Mediator
 
   /**
+   * FIXME: Ask alloy how to pass one-off props like this in from force
+   */
+  notificationCount?: number
+
+  /**
    * A configured environment object that can be used for any Relay operations
    * that need an environment object.
    *
@@ -29,17 +36,19 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
+   * An instance of react-tracking, typically used (and set) within the
+   * `useTracking` hook.
+   */
+  tracking?: TrackingProp
+  setTracking?: (tracking: TrackingProp) => void
+
+  /**
    * The currently signed-in user.
    *
    * Unless explicitely set to `null`, this will default to use the `USER_ID`
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   user?: User
-
-  /**
-   * FIXME: Ask alloy how to pass one-off props like this in from force
-   */
-  notificationCount?: number
 }
 
 export const SystemContext = React.createContext<SystemContextProps>({})
@@ -57,11 +66,17 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 
-  const providerValues = {
-    ...props,
-    user,
-    relayEnvironment,
-  }
+  const [tracking, setTracking] = useState(props.tracking)
+
+  const providerValues = useMemo(() => {
+    return {
+      ...props,
+      relayEnvironment,
+      setTracking,
+      tracking,
+      user,
+    }
+  }, [props.relayEnvironment, props.user, props.tracking])
 
   return (
     <SystemContext.Provider value={providerValues}>

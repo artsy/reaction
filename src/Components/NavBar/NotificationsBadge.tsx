@@ -6,14 +6,14 @@ import React, { useContext } from "react"
 import { ReadyState } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
+import { useTracking } from "Utils/Hooks/useTracking"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
-import { useTracking } from "./Utils/useTracking"
 
 const logger = createLogger("Components/NavBar")
 
 export const NotificationsBadge: React.FC = () => {
-  const { tracking, Schema } = useTracking()
+  const { tracking, AnalyticsSchema } = useTracking()
 
   return (
     <NotificationsQueryRenderer
@@ -66,7 +66,7 @@ export const NotificationsBadge: React.FC = () => {
 
         const trackOnHover = once(() => {
           tracking.trackEvent({
-            subject: Schema.Subject.NotificationBell,
+            subject: AnalyticsSchema.Subject.NotificationBell,
             new_notification_count: totalUnread,
           })
         })

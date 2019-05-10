@@ -1,8 +1,5 @@
-import { SystemContext } from "Artsy"
-import * as auth from "Components/NavBar/Utils/auth"
 import React, { useContext } from "react"
 import styled from "styled-components"
-import { useTracking } from "../Utils/useTracking"
 
 import {
   Box,
@@ -14,6 +11,10 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
+
+import { SystemContext } from "Artsy"
+import * as auth from "Components/NavBar/Utils/auth"
+import { useTracking } from "Utils/Hooks/useTracking"
 
 export const MobileNavMenu: React.FC = () => {
   const { tracking } = useTracking()

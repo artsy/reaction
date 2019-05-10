@@ -2,11 +2,24 @@ import cookie from "cookies-js"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 
+import {
+  ArtsyMarkIcon,
+  BellIcon,
+  Box,
+  Button,
+  color,
+  Flex,
+  Link,
+  MoreIcon,
+  SoloIcon,
+  Spacer,
+} from "@artsy/palette"
+
 import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 
 import {
   MobileNavMenu,
@@ -20,44 +33,24 @@ import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
-import {
-  ArtsyMarkIcon,
-  BellIcon,
-  Box,
-  Button,
-  color,
-  Flex,
-  Link,
-  MoreIcon,
-  SoloIcon,
-  Spacer,
-} from "@artsy/palette"
 import { TrackingProp } from "react-tracking"
+import { useTracking } from "Utils/Hooks/useTracking"
 
 interface NavBarProps {
   tracking?: TrackingProp
 }
 
-export const NavbarContext = React.createContext<{
-  tracking?: TrackingProp
-  Schema?: typeof Schema
-}>({})
-
 export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
-  flow: Schema.Flow.Header,
-  context_module: Schema.ContextModule.Header,
-})(({ tracking }) => {
+  flow: AnalyticsSchema.Flow.Header,
+  context_module: AnalyticsSchema.ContextModule.Header,
+})(props => {
   const { mediator, user } = useContext(SystemContext)
+  const { tracking } = useTracking(props.tracking)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
   return (
-    <NavbarContext.Provider
-      value={{
-        tracking,
-        Schema,
-      }}
-    >
+    <>
       <NavBarContainer p={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
@@ -110,7 +103,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
                   Overlay={NotificationsBadge}
                   onClick={() => {
                     tracking.trackEvent({
-                      subject: Schema.Subject.NotificationBell,
+                      subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
                     })
@@ -131,7 +124,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
                 variant="secondaryOutline"
                 onClick={() => {
                   tracking.trackEvent({
-                    subject: Schema.Subject.Login,
+                    subject: AnalyticsSchema.Subject.Login,
                   })
 
                   auth.login(mediator)
@@ -143,7 +136,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
               <Button
                 onClick={() => {
                   tracking.trackEvent({
-                    subject: Schema.Subject.Signup,
+                    subject: AnalyticsSchema.Subject.Signup,
                   })
 
                   auth.signup(mediator)
@@ -165,7 +158,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
               const showMenu = !showMobileMenu
               if (showMenu) {
                 tracking.trackEvent({
-                  subject: Schema.Subject.SmallScreenMenuSandwichIcon,
+                  subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
                 })
               }
 
@@ -191,7 +184,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
           <MobileNavMenu />
         </>
       )}
-    </NavbarContext.Provider>
+    </>
   )
 })
 
