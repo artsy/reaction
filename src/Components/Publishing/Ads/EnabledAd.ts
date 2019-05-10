@@ -1,4 +1,3 @@
-import { get } from "lodash"
 import { data as sd } from "sharify"
 
 /**
@@ -12,10 +11,9 @@ export const isHTLAdEnabled = () => {
   const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
     .split(",")
     .filter(Boolean)
-  const currentUser = get(sd, "CURRENT_USER.email", "")
+  const currentUser = sd.CURRENT_USER.email // FIXME: Remove after externally served ads are implemented
   const isAllowedUser = allowedUsers.includes(currentUser)
-  const isAdminUser =
-    get(sd, "CURRENT_USER.type", "") === "Admin" ? true : false
+  const isAdminUser = sd.CURRENT_USER.type === "Admin" || false
 
   if (!sd.HASHTAG_LAB_ADS_ENABLED) {
     return false

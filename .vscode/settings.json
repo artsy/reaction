@@ -19,6 +19,7 @@
   "tslint.autoFixOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
   "cSpell.words": [
+    "ALLOWLIST",
     "Fillwidth",
     "Lifecycle",
     "Mastercard",

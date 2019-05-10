@@ -4,4 +4,5 @@ interface User {
   id?: string
   lab_features?: string[]
   type?: string
+  email?: string
 }
