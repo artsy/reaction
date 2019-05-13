@@ -322,6 +322,7 @@ export class BaseCarousel extends React.Component<
 
           <CarouselContainer height={height} isMounted={isMounted}>
             <FlickityCarousel
+              static
               options={this.options}
               flickityRef={c => (this.flickity = c)}
             >
