@@ -12,7 +12,6 @@ describe("ForgotPasswordForm", () => {
       handleSubmit: jest.fn(),
       values: { email: "foo@bar.com" },
     }
-    window.grecaptcha.ready.mockClear()
     window.grecaptcha.execute.mockClear()
   })
 

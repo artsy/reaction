@@ -7,7 +7,7 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import { data as sd } from "sharify"
+import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
 import {
   BackButton,
   Error,
@@ -36,10 +36,8 @@ export class MobileLoginForm extends Component<FormProps> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(sd.RECAPTCHA_KEY, { action: "login_submit" })
-      this.props.handleSubmit(values, formikBag)
-    })
+    Grepcaptcha(GrepcaptchaAction.LoginSubmit)
+    this.props.handleSubmit(values, formikBag)
   }
 
   render() {

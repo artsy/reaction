@@ -16,7 +16,7 @@ import {
 import { SignUpValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
-import { data as sd } from "sharify"
+import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
 
 export interface SignUpFormState {
   error?: string
@@ -28,10 +28,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(sd.RECAPTCHA_KEY, { action: "signup_submit" })
-      this.props.handleSubmit(values, formikBag)
-    })
+    Grepcaptcha(GrepcaptchaAction.SignupSubmit)
+    this.props.handleSubmit(values, formikBag)
   }
 
   render() {

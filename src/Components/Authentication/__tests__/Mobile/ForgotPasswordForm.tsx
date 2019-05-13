@@ -16,7 +16,6 @@ describe("MobileForgotPasswordForm", () => {
       handleSubmit: jest.fn(),
       handleTypeChange: jest.fn(),
     }
-    window.grecaptcha.ready.mockClear()
     window.grecaptcha.execute.mockClear()
   })
 

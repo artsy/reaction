@@ -24,7 +24,7 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import { data as sd } from "sharify"
+import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
 
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
@@ -70,10 +70,8 @@ export class MobileSignUpForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    window.grecaptcha.ready(() => {
-      window.grecaptcha.execute(sd.RECAPTCHA_KEY, { action: "signup_submit" })
-      this.props.handleSubmit(values, formikBag)
-    })
+    Grepcaptcha(GrepcaptchaAction.SignupSubmit)
+    this.props.handleSubmit(values, formikBag)
   }
 
   render() {

@@ -26,12 +26,13 @@ import "DevTools/renderUntil"
 Enzyme.configure({ adapter: new Adapter() })
 
 import "jsdom"
+
 if (typeof window !== "undefined") {
   window.open = jest.fn()
   window.matchMedia = undefined
   window.grecaptcha = {
     ready: jest.fn(cb => cb()),
-    execute: jest.fn(),
+    execute: jest.fn().mockResolvedValue("recaptcha-token"),
   }
   window.scrollTo = jest.fn()
   HTMLMediaElement.prototype.pause = jest.fn()

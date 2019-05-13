@@ -12,7 +12,6 @@ describe("LoginForm", () => {
     props = {
       handleSubmit: jest.fn(),
     }
-    window.grecaptcha.ready.mockClear()
     window.grecaptcha.execute.mockClear()
   })
 
