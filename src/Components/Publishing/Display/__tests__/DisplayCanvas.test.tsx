@@ -22,6 +22,10 @@ import {
 jest.mock("sharify", () => ({
   data: {
     HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+    CURRENT_USER: {
+      type: "Non-Admin",
+      email: "someuser@email.com",
+    },
   },
 }))
 

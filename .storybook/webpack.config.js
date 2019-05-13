@@ -19,6 +19,7 @@ const {
   CI,
   CMS_URL,
   APP_URL,
+  CURRENT_USER, // FIXME: Remove after externally served ads are implemented
   FACEBOOK_APP_NAMESPACE,
   PREDICTION_URL,
   FORCE_CLOUDFRONT_URL,
@@ -50,6 +51,7 @@ const notOnCI = value => (isCI ? [] : [value])
 const sharifyPath = sharify({
   APP_URL,
   CMS_URL,
+  CURRENT_USER, // FIXME: Remove after externally served ads are implemented
   FACEBOOK_APP_NAMESPACE,
   FORCE_CLOUDFRONT_URL,
   GEMINI_CLOUDFRONT_URL,

@@ -11,6 +11,16 @@ import "jest-styled-components"
 import React from "react"
 import { CanvasFooter } from "../CanvasFooter"
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+    CURRENT_USER: {
+      type: "Non-Admin",
+      email: "someuser@email.com",
+    },
+  },
+}))
+
 describe("CanvasFooter", () => {
   let props
   const getWrapper = (passedProps = props) => {
