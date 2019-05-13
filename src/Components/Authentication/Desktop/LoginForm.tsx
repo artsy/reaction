@@ -16,7 +16,7 @@ import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
-import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface LoginFormState {
   error: string
@@ -28,7 +28,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    Grepcaptcha(GrepcaptchaAction.LoginSubmit)
+    repcaptcha("login_submit")
     this.props.handleSubmit(values, formikBag)
   }
 

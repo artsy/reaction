@@ -5,6 +5,7 @@ import { LoginValues } from "../fixtures"
 
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
 
+// FIXME: mock Formik async and remove setTimeout
 describe("LoginForm", () => {
   let props
 

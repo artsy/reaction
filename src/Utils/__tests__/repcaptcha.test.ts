@@ -1,13 +1,13 @@
-import { Grepcaptcha, GrepcaptchaAction } from "../Grepcaptcha"
+import { repcaptcha } from "../repcaptcha"
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
 
-describe("Grepcaptcha", () => {
+describe("repcaptcha", () => {
   beforeEach(() => {
     window.grecaptcha.execute.mockClear()
   })
 
   it("fires an action", () => {
-    Grepcaptcha(GrepcaptchaAction.LoginSubmit)
+    repcaptcha("login_submit")
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "login_submit",
     })
@@ -21,7 +21,7 @@ describe("Grepcaptcha", () => {
       done()
     })
 
-    Grepcaptcha(GrepcaptchaAction.SignupSubmit, callback)
+    repcaptcha("signup_submit", callback)
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "signup_submit",
     })
@@ -36,7 +36,7 @@ describe("Grepcaptcha", () => {
       done()
     })
 
-    Grepcaptcha(GrepcaptchaAction.SignupSubmit, callback)
+    repcaptcha("signup_submit", callback)
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "signup_submit",
     })

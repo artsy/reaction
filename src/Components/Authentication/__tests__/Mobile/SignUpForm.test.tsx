@@ -14,6 +14,7 @@ jest.mock("Components/Authentication/helpers", () => ({
   checkEmail: jest.fn().mockResolvedValue(true),
 }))
 
+// FIXME: mock Formik async and remove setTimeout
 describe("MobileSignUpForm", () => {
   let props
 

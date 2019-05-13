@@ -24,7 +24,7 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
@@ -70,7 +70,7 @@ export class MobileSignUpForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    Grepcaptcha(GrepcaptchaAction.SignupSubmit)
+    repcaptcha("signup_submit")
     this.props.handleSubmit(values, formikBag)
   }
 

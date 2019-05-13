@@ -8,6 +8,7 @@ jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
 }))
 
+// FIXME: mock Formik async and remove setTimeout
 describe("SignUpForm", () => {
   let props
 

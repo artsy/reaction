@@ -16,7 +16,7 @@ import {
 import { SignUpValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
-import { Grepcaptcha, GrepcaptchaAction } from "Utils/Grepcaptcha"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface SignUpFormState {
   error?: string
@@ -28,7 +28,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    Grepcaptcha(GrepcaptchaAction.SignupSubmit)
+    repcaptcha("signup_submit")
     this.props.handleSubmit(values, formikBag)
   }
 

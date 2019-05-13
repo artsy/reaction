@@ -7,6 +7,7 @@ jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
 }))
 
+// FIXME: mock Formik async and remove setTimeout
 describe("MobileForgotPasswordForm", () => {
   let props
 
@@ -36,6 +37,7 @@ describe("MobileForgotPasswordForm", () => {
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
