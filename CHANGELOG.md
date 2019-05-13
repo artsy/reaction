@@ -1,3 +1,15 @@
+# v16.11.0 (Mon May 13 2019)
+
+#### 🚀  Enhancement
+
+- Add reCAPTCHA events to Auth forms [#2393](https://github.com/artsy/reaction/pull/2393) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.10.2 (Mon May 13 2019)
 
 
