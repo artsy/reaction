@@ -105,6 +105,7 @@ export class CollectionHeader extends Component<Props> {
             artworks.merchandisable_artists,
             artistsCount
           ).map((artist, index) => {
+            const hasArtistMetaData = artist.nationality && artist.birthday
             return (
               <EntityContainer
                 width={["100%", "25%"]}
@@ -115,7 +116,11 @@ export class CollectionHeader extends Component<Props> {
                 <EntityHeader
                   imageUrl={artist.imageUrl}
                   name={artist.name}
-                  meta={`${artist.nationality}, b. ${artist.birthday}`}
+                  meta={
+                    hasArtistMetaData
+                      ? `${artist.nationality}, b. ${artist.birthday}`
+                      : null
+                  }
                   href={`/artist/${artist.id}`}
                   FollowButton={
                     <Sans size="2" weight="medium" color={color("black100")}>
@@ -181,7 +186,7 @@ export class CollectionHeader extends Component<Props> {
                     {featuredArtists.length && (
                       <Box pt={isColumnLayout ? 20 : 0} pb={10}>
                         <Sans size="2" weight="medium" pb={15}>
-                          Featured Artists
+                          {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                         </Sans>
                         <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
                           {featuredArtists}
