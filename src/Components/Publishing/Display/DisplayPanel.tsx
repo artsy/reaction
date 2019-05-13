@@ -23,8 +23,8 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
   tracking?: TrackingProp
   renderTime?: number
-  adUnit: AdUnit
-  adDimension: AdDimension
+  adUnit?: AdUnit
+  adDimension?: AdDimension
 }
 
 export interface DisplayPanelState {

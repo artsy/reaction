@@ -171,8 +171,8 @@ export interface MediaData {
 }
 
 export interface HostedAdData {
-  adUnit: AdUnit
-  adDimension: AdDimension
+  adUnit?: AdUnit
+  adDimension?: AdDimension
 }
 
 export interface DisplayUnitData {

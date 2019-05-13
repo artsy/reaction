@@ -20,8 +20,8 @@ interface DisplayCanvasProps {
   article?: any
   renderTime?: number
   tracking?: any
-  adUnit: AdUnit
-  adDimension: AdDimension
+  adUnit?: AdUnit
+  adDimension?: AdDimension
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
