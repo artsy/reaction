@@ -11,9 +11,10 @@ export const isHTLAdEnabled = () => {
   const allowedUsers = (sd.HASHTAG_LAB_ADS_ALLOWLIST || "")
     .split(",")
     .filter(Boolean)
-  const currentUser = sd.CURRENT_USER.email // FIXME: Remove after externally served ads are implemented
+  const currentUser = sd.CURRENT_USER && sd.CURRENT_USER.email // FIXME: Remove after externally served ads are implemented
   const isAllowedUser = allowedUsers.includes(currentUser)
-  const isAdminUser = sd.CURRENT_USER.type === "Admin" || false
+  const isAdminUser =
+    (sd.CURRENT_USER && sd.CURRENT_USER.type === "Admin") || false
 
   if (!sd.HASHTAG_LAB_ADS_ENABLED) {
     return false
