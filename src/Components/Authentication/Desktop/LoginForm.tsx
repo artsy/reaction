@@ -16,6 +16,7 @@ import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface LoginFormState {
   error: string
@@ -26,11 +27,16 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
     error: this.props.error,
   }
 
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("login_submit")
+    this.props.handleSubmit(values, formikBag)
+  }
+
   render() {
     return (
       <Formik
         initialValues={this.props.values}
-        onSubmit={this.props.handleSubmit}
+        onSubmit={this.onSubmit}
         validationSchema={LoginValidator}
       >
         {({

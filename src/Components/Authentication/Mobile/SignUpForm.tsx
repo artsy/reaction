@@ -11,14 +11,20 @@ import {
   TermsOfServiceCheckbox,
 } from "Components/Authentication/commonElements"
 import { checkEmail } from "Components/Authentication/helpers"
-import { FormProps, ModalType } from "Components/Authentication/Types"
+import {
+  FormProps,
+  InputValues,
+  ModalType,
+} from "Components/Authentication/Types"
 import { MobileSignUpValidator } from "Components/Authentication/Validators"
 import Icon from "Components/Icon"
 import PasswordInput from "Components/PasswordInput"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
+import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
@@ -61,6 +67,11 @@ export class MobileSignUpForm extends Component<
     }
 
     return null
+  }
+
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("signup_submit")
+    this.props.handleSubmit(values, formikBag)
   }
 
   render() {
@@ -145,7 +156,7 @@ export class MobileSignUpForm extends Component<
     ]
 
     return (
-      <Wizard steps={steps} onComplete={this.props.handleSubmit}>
+      <Wizard steps={steps} onComplete={this.onSubmit}>
         {context => {
           const {
             form: { handleSubmit, values, setTouched, isSubmitting, status },

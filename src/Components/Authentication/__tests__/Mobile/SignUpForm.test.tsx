@@ -1,8 +1,20 @@
+import { SubmitButton } from "Components/Authentication/commonElements"
 import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
+import Checkbox from "Components/Checkbox"
 import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
+import { ChangeEvents } from "../fixtures"
 
+jest.mock("sharify", () => ({
+  data: { RECAPTCHA_KEY: "recaptcha-api-key" },
+}))
+
+jest.mock("Components/Authentication/helpers", () => ({
+  checkEmail: jest.fn().mockResolvedValue(true),
+}))
+
+// FIXME: mock Formik async and remove setTimeout
 describe("MobileSignUpForm", () => {
   let props
 
@@ -16,6 +28,7 @@ describe("MobileSignUpForm", () => {
       handleSubmit: jest.fn(),
       handleTypeChange: jest.fn(),
     }
+    window.grecaptcha.execute.mockClear()
   })
 
   it("renders the first step", () => {
@@ -23,7 +36,112 @@ describe("MobileSignUpForm", () => {
     const input = wrapper.find(QuickInput)
     expect(input.length).toBe(1)
     expect(input.props().type).toEqual("email")
-    expect(wrapper.text()).toContain("Sign up for Artsy")
+  })
+
+  it("advances and renders the second step", done => {
+    const wrapper = getWrapper()
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+    inputEmail.onChange(ChangeEvents.email)
+    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+    wrapper.find(SubmitButton).simulate("click")
+
+    setTimeout(() => {
+      wrapper.update()
+      expect(wrapper.find(QuickInput).props().type).toEqual("password")
+      done()
+    })
+  })
+
+  it("advances and renders the third step", done => {
+    const wrapper = getWrapper()
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+    inputEmail.onChange(ChangeEvents.email)
+    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+    wrapper.find(SubmitButton).simulate("click")
+
+    setTimeout(() => {
+      wrapper.update()
+      const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+      inputPass.onChange(ChangeEvents.password)
+      wrapper.find(SubmitButton).simulate("click")
+
+      setTimeout(() => {
+        wrapper.update()
+        expect(wrapper.find(QuickInput).props().label).toEqual("Name")
+        expect(wrapper.find(QuickInput).props().type).toEqual("text")
+        done()
+      })
+    })
+  })
+
+  describe("onSubmit", () => {
+    it("calls handleSubmit with expected params", done => {
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+      inputEmail.onChange(ChangeEvents.email)
+      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+      wrapper.find(SubmitButton).simulate("click")
+
+      setTimeout(() => {
+        wrapper.update()
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
+        wrapper.find(SubmitButton).simulate("click")
+
+        setTimeout(() => {
+          wrapper.update()
+          const inputName = wrapper.find(QuickInput).instance() as QuickInput
+          inputName.onChange(ChangeEvents.name)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+              email: "email@email.com",
+              accepted_terms_of_service: true,
+              password: "password",
+              name: "User Name",
+            })
+            done()
+          })
+        })
+      })
+    })
+
+    it("fires reCAPTCHA even", done => {
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+      inputEmail.onChange(ChangeEvents.email)
+      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+      wrapper.find(SubmitButton).simulate("click")
+
+      setTimeout(() => {
+        wrapper.update()
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
+        wrapper.find(SubmitButton).simulate("click")
+
+        setTimeout(() => {
+          wrapper.update()
+          const inputName = wrapper.find(QuickInput).instance() as QuickInput
+          inputName.onChange(ChangeEvents.name)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(window.grecaptcha.execute).toBeCalledWith(
+              "recaptcha-api-key",
+              {
+                action: "signup_submit",
+              }
+            )
+            done()
+          })
+        })
+      })
+    })
   })
 
   it("renders captcha disclaimer if showRecaptchaDisclaimer", () => {
@@ -39,6 +157,7 @@ describe("MobileSignUpForm", () => {
     const button = wrapper.find("button")
     button.simulate("submit")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
@@ -46,12 +165,16 @@ describe("MobileSignUpForm", () => {
   })
 
   it("renders password error", () => {
-    props.values = { email: "kajsdlfjk" }
     const wrapper = getWrapper()
     const formik: any = wrapper.find("Formik").instance()
     formik.setStatus({ error: "some password error" })
     wrapper.update()
     expect(wrapper.html()).toMatch("some password error")
+  })
+
+  it("renders the default title", () => {
+    const wrapper = getWrapper()
+    expect(wrapper.text()).toContain("Sign up for Artsy")
   })
 
   it("renders the specified title", () => {

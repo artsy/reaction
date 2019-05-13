@@ -1,12 +1,13 @@
 import { Flex } from "@artsy/palette"
-import Colors from "Assets/Colors"
 import { checkEmail } from "Components/Authentication/helpers"
 import Icon from "Components/Icon"
 import PasswordInput from "Components/PasswordInput"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
+import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
+import { repcaptcha } from "Utils/repcaptcha"
 import {
   BackButton,
   Error,
@@ -17,7 +18,7 @@ import {
   MobileInnerWrapper,
   SubmitButton,
 } from "../commonElements"
-import { FormProps, ModalType } from "../Types"
+import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
 export class MobileLoginForm extends Component<FormProps> {
@@ -33,6 +34,12 @@ export class MobileLoginForm extends Component<FormProps> {
 
     return null
   }
+
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("login_submit")
+    this.props.handleSubmit(values, formikBag)
+  }
+
   render() {
     const steps = [
       <Step
@@ -101,7 +108,7 @@ export class MobileLoginForm extends Component<FormProps> {
       </Step>,
     ]
     return (
-      <Wizard steps={steps} onComplete={this.props.handleSubmit}>
+      <Wizard steps={steps} onComplete={this.onSubmit}>
         {context => {
           const {
             wizard,
@@ -121,11 +128,7 @@ export class MobileLoginForm extends Component<FormProps> {
                       : wizard.previous(e, values)
                   }
                 >
-                  <Icon
-                    name="chevron-left"
-                    color={Colors.graySemibold}
-                    fontSize="16px"
-                  />
+                  <Icon name="chevron-left" color="black60" fontSize="16px" />
                 </BackButton>
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}

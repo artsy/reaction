@@ -10,59 +10,67 @@ import {
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React from "react"
-import { FormComponentType, InputValues, ModalType } from "../Types"
+import { repcaptcha } from "Utils/repcaptcha"
+import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
-export const MobileForgotPasswordForm: FormComponentType = props => {
-  return (
-    <Formik
-      initialValues={props.values}
-      onSubmit={props.handleSubmit}
-      validationSchema={ForgotPasswordValidator}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        isValid,
-        status,
-      }: FormikProps<InputValues>) => {
-        return (
-          <MobileContainer>
-            <MobileInnerWrapper>
-              <Form onSubmit={handleSubmit} height={270}>
-                <MobileHeader>Reset your password</MobileHeader>
-                <QuickInput
-                  block
-                  error={errors.email}
-                  placeholder="Enter your email address"
-                  name="email"
-                  label="Email"
-                  type="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  autoFocus
-                />
-                {status && !status.success && (
-                  <Error show>{status.error}</Error>
-                )}
-                <SubmitButton disabled={isSubmitting}>
-                  Send me reset instructions
-                </SubmitButton>
-                <Footer
-                  handleTypeChange={props.handleTypeChange}
-                  mode={"forgot" as ModalType}
-                />
-              </Form>
-            </MobileInnerWrapper>
-          </MobileContainer>
-        )
-      }}
-    </Formik>
-  )
+export class MobileForgotPasswordForm extends React.Component<FormProps> {
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("forgot_submit")
+    this.props.handleSubmit(values, formikBag)
+  }
+
+  render() {
+    return (
+      <Formik
+        initialValues={this.props.values}
+        onSubmit={this.onSubmit}
+        validationSchema={ForgotPasswordValidator}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          isValid,
+          status,
+        }: FormikProps<InputValues>) => {
+          return (
+            <MobileContainer>
+              <MobileInnerWrapper>
+                <Form onSubmit={handleSubmit} height={270}>
+                  <MobileHeader>Reset your password</MobileHeader>
+                  <QuickInput
+                    block
+                    error={errors.email}
+                    placeholder="Enter your email address"
+                    name="email"
+                    label="Email"
+                    type="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autoFocus
+                  />
+                  {status && !status.success && (
+                    <Error show>{status.error}</Error>
+                  )}
+                  <SubmitButton disabled={isSubmitting}>
+                    Send me reset instructions
+                  </SubmitButton>
+                  <Footer
+                    handleTypeChange={this.props.handleTypeChange}
+                    mode={"forgot" as ModalType}
+                  />
+                </Form>
+              </MobileInnerWrapper>
+            </MobileContainer>
+          )
+        }}
+      </Formik>
+    )
+  }
 }
