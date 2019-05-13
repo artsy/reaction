@@ -94,6 +94,13 @@ export class CollectionHeader extends Component<Props> {
           const categoryTarget = `/collections#${slugify(collection.category)}`
           const artistsCount = size === "xs" ? 9 : 12
 
+          const hasMultipleArtists =
+            artworks.merchandisable_artists &&
+            artworks.merchandisable_artists.length > 1
+
+          const isColumnLayout =
+            hasMultipleArtists || !collection.description || size === "xs"
+
           const featuredArtists = take(
             artworks.merchandisable_artists,
             artistsCount
@@ -101,7 +108,7 @@ export class CollectionHeader extends Component<Props> {
             return (
               <EntityContainer
                 width={["100%", "25%"]}
-                hasMultipleArtists={hasMultipleArtists}
+                isColumnLayout={isColumnLayout}
                 key={index}
                 pb={20}
               >
@@ -119,9 +126,6 @@ export class CollectionHeader extends Component<Props> {
               </EntityContainer>
             )
           })
-
-          const hasMultipleArtists =
-            featuredArtists.length && featuredArtists.length > 1
 
           return (
             <header>
@@ -154,10 +158,7 @@ export class CollectionHeader extends Component<Props> {
                     <Spacer mt={1} />
                     <Title size={["6", "10"]}>{collection.title}</Title>
                   </MetaContainer>
-                  <DescriptionContainer
-                    hasMultipleArtists={hasMultipleArtists}
-                    mb={5}
-                  >
+                  <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
                     <Box>
                       <Grid>
                         <Row>
@@ -178,11 +179,11 @@ export class CollectionHeader extends Component<Props> {
                       </Grid>
                     </Box>
                     {featuredArtists.length && (
-                      <Box pt={hasMultipleArtists ? 20 : 0} pb={10}>
+                      <Box pt={isColumnLayout ? 20 : 0} pb={10}>
                         <Sans size="2" weight="medium" pb={15}>
                           Featured Artists
                         </Sans>
-                        <Flex flexWrap={hasMultipleArtists ? "wrap" : "nowrap"}>
+                        <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
                           {featuredArtists}
                         </Flex>
                       </Box>
@@ -242,15 +243,15 @@ const BreadcrumbContainer = styled(Sans)`
 `
 
 const EntityContainer = styled(Box)<{
-  hasMultipleArtists: boolean
+  isColumnLayout: boolean
 }>`
-  min-width: ${props => (props.hasMultipleArtists ? "" : "200px")};
+  min-width: ${props => (props.isColumnLayout ? "" : "200px")};
 `
 
 const DescriptionContainer = styled(Flex)<{
-  hasMultipleArtists: boolean
+  isColumnLayout: boolean
 }>`
-  flex-direction: ${props => (props.hasMultipleArtists ? "column" : "row")};
+  flex-direction: ${props => (props.isColumnLayout ? "column" : "row")};
 `
 
 const Title = styled(Serif)`
