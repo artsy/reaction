@@ -157,7 +157,7 @@ export class CollectionHeader extends Component<Props> {
                   </Background>
                   <MetaContainer mb={2}>
                     <BreadcrumbContainer size={["2", "3"]}>
-                      <a href="/collect">All artworks</a> /{" "}
+                      <a href="/collect">All works</a> /{" "}
                       <a href={categoryTarget}>{collection.category}</a>
                     </BreadcrumbContainer>
                     <Spacer mt={1} />
