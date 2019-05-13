@@ -1,3 +1,20 @@
+# v16.10.1 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Remove "Emitting Types" section from README [#2406](https://github.com/artsy/reaction/pull/2406) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dependencies [#2401](https://github.com/artsy/reaction/pull/2401) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.10.0 (Fri May 10 2019)
 
 ### Release Notes
