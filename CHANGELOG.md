@@ -1,3 +1,15 @@
+# v16.11.2 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Changes adUnit and adDimension props from required to optional [#2409](https://github.com/artsy/reaction/pull/2409) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.11.1 (Mon May 13 2019)
 
 #### 🐛  Bug Fix
