@@ -1,3 +1,15 @@
+# v16.11.1 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Check if user exists before diving [#2407](https://github.com/artsy/reaction/pull/2407) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.11.0 (Mon May 13 2019)
 
 #### 🚀  Enhancement
