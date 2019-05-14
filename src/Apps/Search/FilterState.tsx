@@ -127,16 +127,38 @@ export class FilterState extends Container<State> {
     return omitBy(this.state, isNil)
   }
 
+  previousQueryString = ""
+  pushHistory() {
+    const currentQueryString = urlFragmentFromState(this.state)
+    // PriceRangeFilter's onAfterChange event fires twice; this ensures
+    //   we only push that history event once.
+    if (this.previousQueryString !== currentQueryString) {
+      window.history.pushState(
+        {},
+        null,
+        `${window.location.pathname}?${currentQueryString}`
+      )
+      this.previousQueryString = currentQueryString
+    }
+  }
+
   setPage(page) {
-    this.setState({ page })
+    this.setState({ page }, () => {
+      this.pushHistory()
+    })
   }
 
   resetFilters = () => {
     const { keyword } = this.state
-    this.setState({
-      ...initialState,
-      keyword,
-    })
+    this.setState(
+      {
+        ...initialState,
+        keyword,
+      },
+      () => {
+        this.pushHistory()
+      }
+    )
   }
 
   unsetFilter(filter) {
@@ -164,7 +186,9 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.setState(newPartialState)
+    this.setState(newPartialState, () => {
+      this.pushHistory()
+    })
   }
 
   setFilter(filter: keyof State, value) {
@@ -200,7 +224,9 @@ export class FilterState extends Container<State> {
         break
     }
 
-    this.setState({ page: 1, ...newPartialState })
+    this.setState({ page: 1, ...newPartialState }, () => {
+      this.pushHistory()
+    })
   }
 
   isRangeSelected(range: string): boolean {
