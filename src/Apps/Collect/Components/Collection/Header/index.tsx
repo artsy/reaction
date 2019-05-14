@@ -250,7 +250,7 @@ const BreadcrumbContainer = styled(Sans)`
 const EntityContainer = styled(Box)<{
   isColumnLayout: boolean
 }>`
-  min-width: ${props => (props.isColumnLayout ? "" : "200px")};
+  ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
 `
 
 const DescriptionContainer = styled(Flex)<{
