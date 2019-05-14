@@ -1,3 +1,15 @@
+# v16.11.8 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Rename folder for case-sensitivity [#2416](https://github.com/artsy/reaction/pull/2416) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.7 (Tue May 14 2019)
 
 
