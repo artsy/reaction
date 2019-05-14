@@ -97,7 +97,7 @@ export const NavBar: React.FC = injectTracking({
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
                   onClick={() => {
-                    tracking.trackEvent({
+                    tracking.trackEvent<{ new_notification_count: string }>({
                       subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",

@@ -3,19 +3,20 @@ import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 import React from "react"
 import { TrackingProp } from "react-tracking"
 
-export interface TrackingContextProps {
-  tracking?: TrackingProp
-  AnalyticsSchema?: typeof AnalyticsSchema
+type Trackables = AnalyticsSchema.Trackables
+
+interface TrackingContextProps {
+  tracking?: TrackingProp<Trackables>
 }
 
 export const TrackingContext = React.createContext<TrackingContextProps>({})
 
-export const injectTracking = (trackingProps?: AnalyticsSchema.Trackables) => (
+export const injectTracking = (trackingProps?: Trackables) => (
   Component: React.FC | React.ComponentClass
 ) => {
   return _track(trackingProps)(({ tracking, ...props }) => {
     return (
-      <TrackingContext.Provider value={{ tracking, AnalyticsSchema }}>
+      <TrackingContext.Provider value={{ tracking }}>
         <Component {...props} />
       </TrackingContext.Provider>
     )
