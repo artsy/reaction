@@ -1,9 +1,5 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import {
-  FilterState,
-  untrackedFilters,
-  urlFragmentFromState,
-} from "Apps/Collect/FilterState"
+import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -66,16 +62,6 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
           if (error) {
             logger.error(error)
           }
-
-          // Using window.history.pushState instead of router.push, because
-          //   we just want to add to the history, not navigate to another route.
-          window.history.pushState(
-            {},
-            null,
-            `${window.location.pathname}?${urlFragmentFromState(
-              this.props.filtersState
-            )}`
-          )
 
           this.setState({
             isLoading: false,

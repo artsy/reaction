@@ -1,6 +1,6 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
-import { FilterState, urlFragmentFromState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
@@ -54,16 +54,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
       error => {
         this.toggleLoading(false)
         filters.setPage(page, mediator)
-        const { state } = filters
-        const urlFragment = urlFragmentFromState(state, { page })
 
-        // Using window.history.pushState instead of router.push, because
-        //   we just want to add to the history, not navigate to another route.
-        window.history.pushState(
-          {},
-          null,
-          `${window.location.pathname}?${urlFragment}`
-        )
         if (error) {
           logger.error(error)
         }
