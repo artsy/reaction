@@ -138,6 +138,7 @@ describe(PaymentPickerFragmentContainer, () => {
       },
       order: {
         ...BuyOrderWithShippingDetails,
+        creditCard: null,
       },
     },
     defaultMutationResults: {
@@ -277,7 +278,7 @@ describe(PaymentPickerFragmentContainer, () => {
     })
   })
 
-  it.only("tokenizes credit card information using shipping address as billing address", async () => {
+  it("tokenizes credit card information using shipping address as billing address", async () => {
     const page = await env.buildPage()
 
     await page.getCreditCardId()
