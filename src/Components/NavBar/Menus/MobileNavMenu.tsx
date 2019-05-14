@@ -92,6 +92,8 @@ const MobileLink: React.FC<MobileLinkProps> = ({
 const MobileNavContainer = styled(Flex)`
   background-color: white;
   border-bottom: 1px solid ${color("black10")};
+  position: relative;
+  z-index: 2;
 `
 
 export const MobileToggleIcon: React.FC<{ open: boolean }> = ({ open }) => {
