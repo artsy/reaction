@@ -1,3 +1,15 @@
+# v16.11.6 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Do not fire reCAPTCHA actions unless sd.key is present [#2412](https://github.com/artsy/reaction/pull/2412) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.11.5 (Tue May 14 2019)
 
 #### 🐛  Bug Fix
