@@ -47,8 +47,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       style={{ cursor: "pointer" }}
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
-      onClick={event => {
-        event.preventDefault()
+      onClick={() => {
         trackClick()
         onClick && onClick()
       }}

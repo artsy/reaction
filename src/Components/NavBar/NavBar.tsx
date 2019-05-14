@@ -185,7 +185,12 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
         </NavSection>
       </NavBarContainer>
 
-      {showMobileMenu && <MobileNavMenu />}
+      {showMobileMenu && (
+        <>
+          <MobileNavCover onClick={() => toggleMobileNav(false)} />
+          <MobileNavMenu />
+        </>
+      )}
     </NavbarContext.Provider>
   )
 })
@@ -199,6 +204,8 @@ const NavSection = ({ children, ...props }) => (
 const NavBarContainer = styled(Flex)`
   background-color: ${color("white100")};
   border-bottom: 1px solid ${color("black10")};
+  position: relative;
+  z-index: 1;
 `
 
 // FIXME: This needs to be cleaned up once we get proper icons
@@ -207,4 +214,14 @@ const MobileNavDivider = styled(Box)`
   height: 63px;
   position: absolute;
   left: -12px;
+`
+
+const MobileNavCover = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(194, 194, 194, 0.3);
+  z-index: 0;
 `
