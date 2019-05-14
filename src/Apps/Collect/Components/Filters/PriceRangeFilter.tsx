@@ -1,12 +1,10 @@
 import { PriceRange } from "@artsy/palette"
-import { SystemContext } from "Artsy"
-import React, { useContext } from "react"
+import React from "react"
 import { FilterState } from "../../FilterState"
 
 export const PriceRangeFilter: React.FC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const { mediator } = useContext(SystemContext)
   const [initialMin, initialMax] = filters.rangeToTuple("price_range")
   return (
     <PriceRange
@@ -21,7 +19,7 @@ export const PriceRangeFilter: React.FC<{
         const minStr = min === FilterState.MIN_PRICE ? "*" : min
         const maxStr = max === FilterState.MAX_PRICE ? "*" : max
 
-        filters.setFilter("price_range", `${minStr}-${maxStr}`, mediator)
+        filters.setFilter("price_range", `${minStr}-${maxStr}`)
       }}
     />
   )

@@ -153,7 +153,7 @@ export class FilterState extends Container<State> {
     }
   }
 
-  setPage(page, _mediator) {
+  setPage(page) {
     this.setState({ page }, () => {
       this.pushHistory()
     })
@@ -170,7 +170,7 @@ export class FilterState extends Container<State> {
     )
   }
 
-  unsetFilter(filter, _mediator) {
+  unsetFilter(filter) {
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
@@ -200,7 +200,7 @@ export class FilterState extends Container<State> {
     })
   }
 
-  setFilter(filter: keyof State, value, _mediator) {
+  setFilter(filter: keyof State, value) {
     let newPartialState = {}
 
     switch (filter) {

@@ -1,12 +1,10 @@
 import { LabeledRange } from "@artsy/palette"
-import { SystemContext } from "Artsy"
-import React, { useContext } from "react"
+import React from "react"
 import { FilterState } from "../../FilterState"
 
 export const SizeRangeFilters: React.FC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const { mediator } = useContext(SystemContext)
   const [initialMinHeight, initialMaxHeight] = filters.rangeToTuple("height")
   const [initialMinWidth, initialMaxWidth] = filters.rangeToTuple("width")
   return (
@@ -22,7 +20,7 @@ export const SizeRangeFilters: React.FC<{
         onAfterChange={([min, max]) => {
           const minStr = min === FilterState.MIN_HEIGHT ? "*" : min
           const maxStr = max === FilterState.MAX_HEIGHT ? "*" : max
-          filters.setFilter("height", `${minStr}-${maxStr}`, mediator)
+          filters.setFilter("height", `${minStr}-${maxStr}`)
         }}
       />
       <LabeledRange
@@ -36,7 +34,7 @@ export const SizeRangeFilters: React.FC<{
         onAfterChange={([min, max]) => {
           const minStr = min === FilterState.MIN_WIDTH ? "*" : min
           const maxStr = max === FilterState.MAX_WIDTH ? "*" : max
-          filters.setFilter("width", `${minStr}-${maxStr}`, mediator)
+          filters.setFilter("width", `${minStr}-${maxStr}`)
         }}
       />
     </>

@@ -2,9 +2,6 @@ import { FilterState } from "../FilterState"
 
 describe("FilterState", () => {
   let instance = null
-  const mediator = {
-    trigger: jest.fn(),
-  }
 
   const tracking = {
     trackEvent: jest.fn(),
@@ -25,14 +22,14 @@ describe("FilterState", () => {
     expect(instance.state.page).toEqual(1)
 
     instance.setState = jest.fn()
-    instance.setFilter("page", 3, mediator)
+    instance.setFilter("page", 3)
 
     expect(instance.setState).toBeCalledWith({ page: 3 }, expect.anything())
   })
 
   it("confirms that state is set for price range filter", () => {
     instance.setState = jest.fn()
-    instance.setFilter("price_range", "*-43000", mediator)
+    instance.setFilter("price_range", "*-43000")
     expect(instance.setState).toBeCalledWith(
       { price_range: "*-43000" },
       expect.anything()
@@ -48,7 +45,7 @@ describe("FilterState", () => {
 
   it("returns a height range tuple based on filter string", () => {
     instance.setState = jest.fn()
-    instance.setFilter("height", "*-50", mediator)
+    instance.setFilter("height", "*-50")
     expect(instance.setState).toBeCalledWith(
       { height: "*-50" },
       expect.anything()
