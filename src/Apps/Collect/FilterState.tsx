@@ -160,9 +160,14 @@ export class FilterState extends Container<State> {
   }
 
   resetFilters = () => {
-    this.setState({
-      ...initialState,
-    })
+    this.setState(
+      {
+        ...initialState,
+      },
+      () => {
+        this.pushHistory()
+      }
+    )
   }
 
   unsetFilter(filter, _mediator) {
