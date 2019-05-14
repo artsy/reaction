@@ -31,7 +31,7 @@ describe("NavBarTracking", () => {
     it("tracks NavBar notification badge clicks", () => {
       const wrapper = mount(
         <Wrapper>
-          <NavBar tracking={tracking} />
+          <NavBar />
         </Wrapper>
       )
       wrapper
@@ -49,7 +49,7 @@ describe("NavBarTracking", () => {
     it("tracks NavBar login button clicks", () => {
       const wrapper = mount(
         <Wrapper user={null}>
-          <NavBar tracking={tracking} />
+          <NavBar />
         </Wrapper>
       )
       wrapper
@@ -65,7 +65,7 @@ describe("NavBarTracking", () => {
     it("tracks NavBar signup button clicks", () => {
       const wrapper = mount(
         <Wrapper user={null}>
-          <NavBar tracking={tracking} />
+          <NavBar />
         </Wrapper>
       )
       wrapper
@@ -149,7 +149,7 @@ describe("NavBarTracking", () => {
     it("tracks show mobile menu hamburger button clicks", () => {
       const wrapper = mount(
         <Wrapper user={null}>
-          <NavBar tracking={tracking} />
+          <NavBar />
         </Wrapper>
       )
       wrapper

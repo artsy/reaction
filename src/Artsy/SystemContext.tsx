@@ -1,5 +1,4 @@
-import React, { SFC, useMemo, useState } from "react"
-import { TrackingProp } from "react-tracking"
+import React, { SFC, useMemo } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
@@ -36,13 +35,6 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
-   * An instance of react-tracking, typically used (and set) within the
-   * `useTracking` hook.
-   */
-  tracking?: TrackingProp
-  setTracking?: (tracking: TrackingProp) => void
-
-  /**
    * The currently signed-in user.
    *
    * Unless explicitely set to `null`, this will default to use the `USER_ID`
@@ -66,17 +58,13 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 
-  const [tracking, setTracking] = useState(props.tracking)
-
   const providerValues = useMemo(() => {
     return {
       ...props,
       relayEnvironment,
-      setTracking,
-      tracking,
       user,
     }
-  }, [props.relayEnvironment, props.user, props.tracking])
+  }, [props.relayEnvironment, props.user])
 
   return (
     <SystemContext.Provider value={providerValues}>

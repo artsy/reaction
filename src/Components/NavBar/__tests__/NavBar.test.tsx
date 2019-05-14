@@ -25,7 +25,7 @@ describe("NavBar", () => {
 
     return mount(
       <SystemContextProvider user={user} mediator={mediator}>
-        <NavBar tracking={tracking} />
+        <NavBar />
       </SystemContextProvider>
     )
   }

@@ -18,7 +18,6 @@ import {
 import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
-import { track } from "Artsy/Analytics"
 import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 
 import {
@@ -33,19 +32,15 @@ import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
-import { TrackingProp } from "react-tracking"
+import { injectTracking } from "Artsy/Analytics/TrackingContext"
 import { useTracking } from "Utils/Hooks/useTracking"
 
-interface NavBarProps {
-  tracking?: TrackingProp
-}
-
-export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
+export const NavBar: React.FC = injectTracking({
   flow: AnalyticsSchema.Flow.Header,
   context_module: AnalyticsSchema.ContextModule.Header,
-})(props => {
+})(_props => {
   const { mediator, user } = useContext(SystemContext)
-  const { tracking } = useTracking(props.tracking)
+  const { tracking } = useTracking()
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
