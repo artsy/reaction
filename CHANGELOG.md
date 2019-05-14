@@ -1,3 +1,15 @@
+# v16.11.4 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [CarouselV3] Update react-flickity-component@3.3.0 [#2408](https://github.com/artsy/reaction/pull/2408) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.3 (Tue May 14 2019)
 
 #### 🐛  Bug Fix
