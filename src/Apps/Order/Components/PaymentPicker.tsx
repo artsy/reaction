@@ -371,7 +371,8 @@ const PaymentPickerWithInnerRef: React.SFC<
   <PaymentPicker ref={innerRef} {...props as any} />
 )
 
-export const PaymentPickerFragmentContainer = createFragmentContainer(
+// FIXME: After deleting `react-tracking.d.ts, this needed to be cast due to HOC
+export const PaymentPickerFragmentContainer: any = createFragmentContainer(
   // 😭 HOCs
   injectStripe(track()(PaymentPickerWithInnerRef)),
   {
