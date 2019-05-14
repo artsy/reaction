@@ -1,3 +1,15 @@
+# v16.11.3 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Misc QA [#2410](https://github.com/artsy/reaction/pull/2410) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.2 (Mon May 13 2019)
 
 #### 🐛  Bug Fix
