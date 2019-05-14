@@ -1,3 +1,15 @@
+# v16.11.5 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add featured artist module to collection header [#2402](https://github.com/artsy/reaction/pull/2402) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.11.4 (Tue May 14 2019)
 
 #### 🐛  Bug Fix
