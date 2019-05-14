@@ -1,9 +1,12 @@
 import { repcaptcha } from "../repcaptcha"
-jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
+jest.mock("sharify", () => ({ data: jest.fn() }))
+const sd = require("sharify").data
 
 describe("repcaptcha", () => {
   beforeEach(() => {
     window.grecaptcha.execute.mockClear()
+    window.grecaptcha.ready.mockClear()
+    sd.RECAPTCHA_KEY = "recaptcha-api-key"
   })
 
   it("fires an action", () => {
@@ -28,7 +31,7 @@ describe("repcaptcha", () => {
   })
 
   it("Still calls the callback if firing action fails", done => {
-    window.grecaptcha.execute.mockRejectedValue(new Error("google failed"))
+    window.grecaptcha.execute.mockRejectedValueOnce(new Error("google failed"))
     const action = jest.fn()
     const callback = jest.fn(() => {
       action()
@@ -40,5 +43,19 @@ describe("repcaptcha", () => {
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "signup_submit",
     })
+  })
+
+  it("Fires the callback but no action if sd.RECAPTCHA_KEY is missing", done => {
+    sd.RECAPTCHA_KEY = ""
+    const action = jest.fn()
+    const callback = jest.fn(() => {
+      action()
+      expect(action).toBeCalled()
+      done()
+    })
+
+    repcaptcha("signup_submit", callback)
+    expect(window.grecaptcha.ready).not.toBeCalled()
+    expect(window.grecaptcha.execute).not.toBeCalled()
   })
 })
