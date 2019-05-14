@@ -371,10 +371,11 @@ const PaymentPickerWithInnerRef: React.SFC<
   <PaymentPicker ref={innerRef} {...props as any} />
 )
 
-// FIXME: After deleting `react-tracking.d.ts, this needed to be cast due to HOC
-export const PaymentPickerFragmentContainer: any = createFragmentContainer(
+export const PaymentPickerFragmentContainer = createFragmentContainer(
   // 😭 HOCs
-  injectStripe(track()(PaymentPickerWithInnerRef)),
+  injectStripe(track()(
+    PaymentPickerWithInnerRef
+  ) as typeof PaymentPickerWithInnerRef),
   {
     me: graphql`
       fragment PaymentPicker_me on Me {
