@@ -10,7 +10,7 @@ import {
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy"
-import { useTracking } from "Utils/Hooks/useTracking"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import * as auth from "../Utils/auth"
 
 export const UserMenu: React.FC = () => {

@@ -4,10 +4,13 @@ import React from "react"
 import { SystemContextProvider } from "Artsy"
 import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { QueryRenderer as _QueryRenderer } from "react-relay"
 import { MobileNavMenu, MoreNavMenu, UserMenu } from "../Menus"
 import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
+
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("NavBarTracking", () => {
   const tracking = {
@@ -22,6 +25,15 @@ describe("NavBarTracking", () => {
       </SystemContextProvider>
     )
   }
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        tracking,
+        AnalyticsSchema,
+      }
+    })
+  })
 
   afterEach(() => {
     jest.resetAllMocks()

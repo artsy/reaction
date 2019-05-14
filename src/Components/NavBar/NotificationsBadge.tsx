@@ -1,12 +1,12 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
 import { SystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import cookie from "cookies-js"
 import { once } from "lodash"
 import React, { useContext } from "react"
 import { ReadyState } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { useTracking } from "Utils/Hooks/useTracking"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
 

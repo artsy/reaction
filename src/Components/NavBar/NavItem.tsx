@@ -1,8 +1,8 @@
 import { Box, BoxProps, Link, Sans } from "@artsy/palette"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { isString } from "lodash"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { useTracking } from "Utils/Hooks/useTracking"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC

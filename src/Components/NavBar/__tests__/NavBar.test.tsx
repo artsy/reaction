@@ -1,5 +1,7 @@
 import { BellIcon, SoloIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
+import * as AnalyticsSchema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
@@ -11,24 +13,39 @@ jest.mock("Components/Search/SearchBar", () => {
     SearchBarQueryRenderer: () => <div />,
   }
 })
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("NavBar", () => {
   const mediator = {
     trigger: jest.fn(),
   }
 
-  const getWrapper = ({ user = null } = {}) => {
-    const tracking = {
-      trackEvent: jest.fn(),
-      getTrackingData: jest.fn(),
-    }
+  const tracking = {
+    trackEvent: jest.fn(),
+    getTrackingData: jest.fn(),
+  }
 
+  const getWrapper = ({ user = null } = {}) => {
     return mount(
       <SystemContextProvider user={user} mediator={mediator}>
         <NavBar />
       </SystemContextProvider>
     )
   }
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        tracking,
+        AnalyticsSchema,
+      }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it("renders Artsy Logo and SearchBar", () => {
     const wrapper = getWrapper()
     expect(wrapper.find("ArtsyMarkBlackIcon").length).toEqual(1)
@@ -106,19 +123,21 @@ describe("NavBar", () => {
   })
 
   describe("mobile", () => {
-    const wrapper = getWrapper()
-    expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
+    it("toggles menu", () => {
+      const wrapper = getWrapper()
+      expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
 
-    const toggle = () =>
-      wrapper
-        .find("NavSection")
-        .find("NavItem")
-        .last()
-        .simulate("click")
+      const toggle = () =>
+        wrapper
+          .find("NavSection")
+          .find("NavItem")
+          .last()
+          .simulate("click")
 
-    toggle()
-    expect(wrapper.find("MobileNavMenu").length).toEqual(1)
-    toggle()
-    expect(wrapper.find("MobileNavMenu").length).toEqual(0)
+      toggle()
+      expect(wrapper.find("MobileNavMenu").length).toEqual(1)
+      toggle()
+      expect(wrapper.find("MobileNavMenu").length).toEqual(0)
+    })
   })
 })

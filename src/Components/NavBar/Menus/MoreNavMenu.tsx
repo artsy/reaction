@@ -1,6 +1,6 @@
 import { Menu, MenuItem } from "@artsy/palette"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React from "react"
-import { useTracking } from "Utils/Hooks/useTracking"
 
 export const MoreNavMenu: React.FC = () => {
   const { tracking, AnalyticsSchema } = useTracking()

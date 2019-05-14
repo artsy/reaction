@@ -13,8 +13,8 @@ import {
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import * as auth from "Components/NavBar/Utils/auth"
-import { useTracking } from "Utils/Hooks/useTracking"
 
 export const MobileNavMenu: React.FC = () => {
   const { tracking } = useTracking()

@@ -33,7 +33,7 @@ import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
 import { injectTracking } from "Artsy/Analytics/TrackingContext"
-import { useTracking } from "Utils/Hooks/useTracking"
+import { useTracking } from "Artsy/Analytics/useTracking"
 
 export const NavBar: React.FC = injectTracking({
   flow: AnalyticsSchema.Flow.Header,
