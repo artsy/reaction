@@ -67,9 +67,13 @@ export class PaymentPicker extends React.Component<
   }
 
   private getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
-    return this.props.me.creditCards.edges.length
-      ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
-      : { type: "new" }
+    if (this.props.order.creditCard) {
+      return { type: "existing", id: this.props.order.creditCard.id }
+    } else {
+      return this.props.me.creditCards.edges.length
+        ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
+        : { type: "new" }
+    }
   }
 
   private startingAddress(): Address {
@@ -199,12 +203,18 @@ export class PaymentPicker extends React.Component<
 
     const orderCard = this.props.order.creditCard
 
-    let defaultCard
+    const creditCardsArray: any = []
 
-    if (creditCardSelection.type === "new") {
-      defaultCard = "new"
-    } else {
-      defaultCard = orderCard ? orderCard.id : creditCardSelection.id
+    creditCards.edges.map(e => {
+      creditCardsArray.push(e.node)
+    })
+
+    if (
+      orderCard != null &&
+      creditCardsArray.filter(card => card.id === orderCard.id).length === 0 &&
+      orderCard.brand
+    ) {
+      creditCardsArray.unshift(orderCard)
     }
 
     return (
@@ -221,11 +231,15 @@ export class PaymentPicker extends React.Component<
                   })
                 }
               }}
-              defaultValue={defaultCard}
+              defaultValue={
+                creditCardSelection.type === "new"
+                  ? "new"
+                  : creditCardSelection.id
+              }
             >
-              {creditCards.edges
+              {creditCardsArray
                 .map(e => {
-                  const { id, ...creditCardProps } = e.node
+                  const { id, ...creditCardProps } = e
                   return (
                     <BorderedRadio value={id} key={id}>
                       <CreditCardDetails
@@ -410,6 +424,10 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
           state
           country
           postal_code
+          expiration_month
+          expiration_year
+          last_digits
+          brand
         }
         requestedFulfillment {
           __typename

@@ -230,6 +230,10 @@ describe(PaymentPickerFragmentContainer, () => {
             state: "Whitechapel",
             country: "UK",
             postal_code: "E1 8PY",
+            expiration_month: 12,
+            expiration_year: 2022,
+            last_digits: "1234",
+            brand: "Visa",
           },
         },
       },
@@ -253,6 +257,7 @@ describe(PaymentPickerFragmentContainer, () => {
         order: {
           ...BuyOrderPickup,
           id: "1234",
+          creditCard: null,
         },
       },
     })
@@ -272,7 +277,7 @@ describe(PaymentPickerFragmentContainer, () => {
     })
   })
 
-  it("tokenizes credit card information using shipping address as billing address", async () => {
+  it.only("tokenizes credit card information using shipping address as billing address", async () => {
     const page = await env.buildPage()
 
     await page.getCreditCardId()
@@ -386,6 +391,21 @@ describe(PaymentPickerFragmentContainer, () => {
       expiration_year: 2019,
     }
 
+    const unsavedOrderCard = {
+      id: "card-id-3",
+      name: "Chareth Cutestory",
+      street1: "101 Art st",
+      street2: null,
+      city: "New York",
+      state: "NY",
+      country: "USA",
+      postal_code: "90210",
+      brand: "Visa",
+      last_digits: "6789",
+      expiration_month: 12,
+      expiration_year: 2022,
+    }
+
     const orderWithoutCard = {
       ...BuyOrderPickup,
       creditCard: null,
@@ -394,6 +414,11 @@ describe(PaymentPickerFragmentContainer, () => {
     const orderWithCard = {
       ...BuyOrderPickup,
       creditCard: orderCard,
+    }
+
+    const orderWithUnsavedCard = {
+      ...BuyOrderPickup,
+      creditCard: unsavedOrderCard,
     }
 
     function getPage(_cards: typeof cards, _order) {
@@ -511,7 +536,7 @@ describe(PaymentPickerFragmentContainer, () => {
       })
     })
 
-    describe("when returning to the payment page", () => {
+    describe("when returning to the payment page when the initial card is saved", () => {
       let page: PaymentPickerTestPage
       beforeAll(async () => {
         page = await getPage(cards, orderWithCard)
@@ -521,6 +546,26 @@ describe(PaymentPickerFragmentContainer, () => {
           expect(page.radios.at(1).props().selected).toBeTruthy()
           expect(page.radios.at(0).props().selected).toBeFalsy()
           expect(page.radios.at(2).props().selected).toBeFalsy()
+        })
+      })
+    })
+    describe("when returning to the payment page when the initial card is not saved", () => {
+      let page: PaymentPickerTestPage
+      beforeAll(async () => {
+        page = await getPage(cards, orderWithUnsavedCard)
+      })
+      describe("with two saved cards", () => {
+        it("shows a radio button for the unsaved card", async () => {
+          expect(page.radios).toHaveLength(4)
+          expect(page.radios.at(0).text()).toMatchInlineSnapshot(
+            `"visa•••• 6789   Exp 12/22"`
+          )
+        })
+        it("the card associated with the order is selected", async () => {
+          expect(page.radios.at(0).props().selected).toBeTruthy()
+          expect(page.radios.at(1).props().selected).toBeFalsy()
+          expect(page.radios.at(2).props().selected).toBeFalsy()
+          expect(page.radios.at(3).props().selected).toBeFalsy()
         })
       })
     })

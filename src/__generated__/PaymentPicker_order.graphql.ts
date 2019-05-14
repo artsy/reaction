@@ -17,6 +17,10 @@ export type PaymentPicker_order = {
         readonly state: string | null;
         readonly country: string | null;
         readonly postal_code: string | null;
+        readonly expiration_month: number;
+        readonly expiration_year: number;
+        readonly last_digits: string;
+        readonly brand: string;
     }) | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
@@ -67,7 +71,7 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "country",
   "args": null,
   "storageKey": null
 },
@@ -81,7 +85,7 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "country",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
@@ -124,8 +128,8 @@ return {
       "concreteType": "CreditCard",
       "plural": false,
       "selections": [
-        v0,
         v2,
+        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -147,6 +151,34 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "postal_code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "expiration_month",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "expiration_year",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "last_digits",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "brand",
           "args": null,
           "storageKey": null
         },
@@ -186,7 +218,7 @@ return {
           "kind": "InlineFragment",
           "type": "Ship",
           "selections": [
-            v2,
+            v4,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -209,7 +241,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v4,
+            v2,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -272,5 +304,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '74f6fa2b42dd79d0531ce86ce888e960';
+(node as any).hash = '46e3cc411f464aef2e6375f60a165ad0';
 export default node;
