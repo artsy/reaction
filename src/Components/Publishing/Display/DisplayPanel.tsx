@@ -1,6 +1,4 @@
 import { avantgarde, garamond, unica } from "Assets/Fonts"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
-import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, memoize } from "lodash"
 import React, { Component, HTMLProps } from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -23,8 +21,6 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   unit: any
   tracking?: TrackingProp
   renderTime?: number
-  adUnit?: AdUnit
-  adDimension?: AdDimension
 }
 
 export interface DisplayPanelState {
@@ -365,23 +361,10 @@ export class DisplayPanel extends Component<
   }
 
   renderPanelContent() {
-    const { unit, campaign, adDimension, adUnit, renderTime } = this.props
+    const { unit, campaign, renderTime } = this.props
     const isVideo = this.isVideo()
     const url = get(unit.assets, "0.url", "")
 
-    // TODO: Remove the allowlist and env checks after externally served ads are implemented
-    if (isHTLAdEnabled()) {
-      return (
-        <div
-          className="htl-ad"
-          data-unit={adUnit}
-          data-sizes={adDimension}
-          data-eager
-        />
-      )
-    }
-
-    // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
     return (
       <>
         {isVideo ? (

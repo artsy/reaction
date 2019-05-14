@@ -1,7 +1,5 @@
 import { color } from "@artsy/palette"
 import { avantgarde, garamond } from "Assets/Fonts"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
-import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get } from "lodash"
 import React from "react"
 import track from "react-tracking"
@@ -20,8 +18,6 @@ interface DisplayCanvasProps {
   article?: any
   renderTime?: number
   tracking?: any
-  adUnit?: AdUnit
-  adDimension?: AdDimension
 }
 
 interface DivProps extends React.HTMLProps<HTMLDivElement> {
@@ -47,31 +43,12 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
   }
 
   renderCanvasContent() {
-    const {
-      unit,
-      campaign,
-      article,
-      adUnit,
-      adDimension,
-      renderTime,
-    } = this.props
+    const { unit, campaign, article, renderTime } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
 
-    // TODO: Remove the allowlist and env checks after externally served ads are implemented
-    if (isHTLAdEnabled()) {
-      return (
-        <div
-          className="htl-ad"
-          data-unit={adUnit}
-          data-sizes={adDimension}
-          data-eager
-        />
-      )
-    }
-    // TODO: Determine how to handle DisplayContainer layout and tracking when this component no longer receives unit prop
     return (
       <>
         <a

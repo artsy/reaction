@@ -8,47 +8,22 @@ import { DisplayPanel } from "../DisplayPanel"
 
 import {
   Campaign,
-  StandardArticleHostedAdPanel,
   UnitPanel,
   UnitPanelTracked,
   UnitPanelVideo,
 } from "Components/Publishing/Fixtures/Components"
 
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Non-Admin",
-      email: "someuser@email.com",
-    },
-  },
-}))
-
 describe("snapshots", () => {
   it("renders the display panel with an image", () => {
     const displayPanel = renderer
-      .create(
-        <DisplayPanel
-          unit={UnitPanel}
-          campaign={Campaign}
-          adDimension={StandardArticleHostedAdPanel.adDimension}
-          adUnit={StandardArticleHostedAdPanel.adUnit}
-        />
-      )
+      .create(<DisplayPanel unit={UnitPanel} campaign={Campaign} />)
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
 
   it("renders the display panel with video", () => {
     const displayPanel = renderer
-      .create(
-        <DisplayPanel
-          unit={UnitPanelVideo}
-          campaign={Campaign}
-          adDimension={StandardArticleHostedAdPanel.adDimension}
-          adUnit={StandardArticleHostedAdPanel.adUnit}
-        />
-      )
+      .create(<DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />)
       .toJSON()
     expect(displayPanel).toMatchSnapshot()
   })
@@ -68,8 +43,6 @@ describe("units", () => {
       <DisplayPanel
         unit={unit}
         campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
         renderTime={12345}
         {...rest}
       />

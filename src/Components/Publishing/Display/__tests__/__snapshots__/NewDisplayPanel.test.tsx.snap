@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot renders the new canvas in standard layout 1`] = `
+.c0 {
+  color: black100;
+  margin: auto;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  max-width: 360px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: auto;
+  padding: 8px;
+  border: 1px solid #E5E5E5;
+  max-width: 360px;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c0 {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
+    margin: inherit;
+  }
+}
+
+<div
+  className="c0"
+  color="black100"
+>
+  <div
+    className="DisplayPanel__DisplayPanelContainer c1"
+  >
+    <div
+      className="htl-ad"
+      data-eager={true}
+      data-sizes="300x250"
+      data-unit="Desktop_RightRail1"
+    />
+  </div>
+</div>
+`;
