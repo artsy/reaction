@@ -84,6 +84,10 @@ export const NotificationMenuItems: React.FC<
   )
 }
 
+/**
+ * The <Menu /> component renders a QueryRenderer inside of it, which fetches
+ * individual MenuItems for display. During fetch there is a loading spinner.
+ */
 export const NotificationsMenu: React.FC = () => {
   return (
     <Menu title="Actvity">

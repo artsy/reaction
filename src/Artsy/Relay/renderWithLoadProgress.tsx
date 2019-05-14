@@ -16,6 +16,13 @@ const SpinnerContainer = styled.figure`
   flex-direction: column;
   justify-content: center;
   position: relative;
+
+  /*
+    Noticed some weird behavior in force due to figure margin being set to 0
+    in global css. Adding padding of 22 gets things back to visual default.
+  */
+  margin: unset;
+  padding: 22px;
 `
 
 export const LoadingClassName = "relay-loading"
