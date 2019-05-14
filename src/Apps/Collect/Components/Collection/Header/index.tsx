@@ -1,6 +1,8 @@
-import { ReadMore } from "@artsy/palette"
+import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
+import { take } from "lodash"
 import React, { Component } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
@@ -21,6 +23,7 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { Header_artworks } from "__generated__/Header_artworks.graphql"
 
 interface Props {
   collection: {
@@ -35,6 +38,7 @@ interface Props {
     slug: string
     title: string
   }
+  artworks: Header_artworks
 }
 
 const getReadMoreContent = description => {
@@ -78,7 +82,8 @@ export class CollectionHeader extends Component<Props> {
   }
 
   render() {
-    const { collection } = this.props
+    const { collection, artworks } = this.props
+
     return (
       <Responsive>
         {({ xs, sm, md, lg }) => {
@@ -87,6 +92,45 @@ export class CollectionHeader extends Component<Props> {
           const imageHeight = xs ? 160 : 240
           const chars = maxChars[size]
           const categoryTarget = `/collections#${slugify(collection.category)}`
+          const artistsCount = size === "xs" ? 9 : 12
+
+          const hasMultipleArtists =
+            artworks.merchandisable_artists &&
+            artworks.merchandisable_artists.length > 1
+
+          const isColumnLayout =
+            hasMultipleArtists || !collection.description || size === "xs"
+
+          const featuredArtists = take(
+            artworks.merchandisable_artists,
+            artistsCount
+          ).map((artist, index) => {
+            const hasArtistMetaData = artist.nationality && artist.birthday
+            return (
+              <EntityContainer
+                width={["100%", "25%"]}
+                isColumnLayout={isColumnLayout}
+                key={index}
+                pb={20}
+              >
+                <EntityHeader
+                  imageUrl={artist.imageUrl}
+                  name={artist.name}
+                  meta={
+                    hasArtistMetaData
+                      ? `${artist.nationality}, b. ${artist.birthday}`
+                      : null
+                  }
+                  href={`/artist/${artist.id}`}
+                  FollowButton={
+                    <Sans size="2" weight="medium" color={color("black100")}>
+                      Follow
+                    </Sans>
+                  }
+                />
+              </EntityContainer>
+            )
+          })
 
           return (
             <header>
@@ -113,30 +157,42 @@ export class CollectionHeader extends Component<Props> {
                   </Background>
                   <MetaContainer mb={2}>
                     <BreadcrumbContainer size={["2", "3"]}>
-                      <a href="/collect">All artworks</a> /{" "}
+                      <a href="/collect">All works</a> /{" "}
                       <a href={categoryTarget}>{collection.category}</a>
                     </BreadcrumbContainer>
                     <Spacer mt={1} />
                     <Title size={["6", "10"]}>{collection.title}</Title>
                   </MetaContainer>
-                  <DescriptionContainer mb={5}>
-                    <Grid>
-                      <Row>
-                        <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="3">
-                            <ReadMore
-                              onReadMoreClicked={this.trackReadMoreClick.bind(
-                                this
-                              )}
-                              maxChars={chars}
-                              content={getReadMoreContent(
-                                collection.description
-                              )}
-                            />
-                          </ExtendedSerif>
-                        </Col>
-                      </Row>
-                    </Grid>
+                  <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
+                    <Box>
+                      <Grid>
+                        <Row>
+                          <Col xl="8" lg="8" md="10" sm="12" xs="12">
+                            <ExtendedSerif size="3">
+                              <ReadMore
+                                onReadMoreClicked={this.trackReadMoreClick.bind(
+                                  this
+                                )}
+                                maxChars={chars}
+                                content={getReadMoreContent(
+                                  collection.description
+                                )}
+                              />
+                            </ExtendedSerif>
+                          </Col>
+                        </Row>
+                      </Grid>
+                    </Box>
+                    {featuredArtists.length && (
+                      <Box pt={isColumnLayout ? 20 : 0} pb={10}>
+                        <Sans size="2" weight="medium" pb={15}>
+                          {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
+                        </Sans>
+                        <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
+                          {featuredArtists}
+                        </Flex>
+                      </Box>
+                    )}
                   </DescriptionContainer>
                   <Spacer mb={1} />
                 </Box>
@@ -191,7 +247,17 @@ const BreadcrumbContainer = styled(Sans)`
   }
 `
 
-const DescriptionContainer = styled(Flex)``
+const EntityContainer = styled(Box)<{
+  isColumnLayout: boolean
+}>`
+  ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
+`
+
+const DescriptionContainer = styled(Flex)<{
+  isColumnLayout: boolean
+}>`
+  flex-direction: ${props => (props.isColumnLayout ? "column" : "row")};
+`
 
 const Title = styled(Serif)`
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -230,3 +296,20 @@ const ExtendedSerif = styled(Serif)`
     }
   }
 `
+
+export const CollectionFilterFragmentContainer = createFragmentContainer(
+  CollectionHeader,
+  {
+    artworks: graphql`
+      fragment Header_artworks on FilterArtworks {
+        merchandisable_artists {
+          id
+          name
+          imageUrl
+          birthday
+          nationality
+        }
+      }
+    `,
+  }
+)

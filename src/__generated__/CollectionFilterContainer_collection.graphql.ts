@@ -41,6 +41,7 @@ return {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
+        "MERCHANDISABLE_ARTISTS",
         "MEDIUM",
         "MAJOR_PERIOD",
         "TOTAL"
@@ -296,5 +297,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e85e4e5b6c383e799119504b4637bf09';
+(node as any).hash = 'b8324b3bc570b04f460e8f7cb050c9f8';
 export default node;

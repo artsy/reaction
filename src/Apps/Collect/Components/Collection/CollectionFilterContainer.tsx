@@ -49,7 +49,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+            defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           }
           medium: { type: "String", defaultValue: "*" }
           major_periods: { type: "[String]" }
