@@ -373,7 +373,9 @@ const PaymentPickerWithInnerRef: React.SFC<
 
 export const PaymentPickerFragmentContainer = createFragmentContainer(
   // 😭 HOCs
-  injectStripe(track()(PaymentPickerWithInnerRef)),
+  injectStripe(track()(
+    PaymentPickerWithInnerRef
+  ) as typeof PaymentPickerWithInnerRef),
   {
     me: graphql`
       fragment PaymentPicker_me on Me {
