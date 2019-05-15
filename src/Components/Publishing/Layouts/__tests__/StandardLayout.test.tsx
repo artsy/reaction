@@ -26,16 +26,6 @@ jest.mock(
   })
 )
 
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Non-Admin",
-      email: "someuser@email.com",
-    },
-  },
-}))
-
 describe("Standard Article", () => {
   const getWrapper = _props => {
     return mount(<StandardLayout {..._props} />)
@@ -50,6 +40,18 @@ describe("Standard Article", () => {
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
     }
+    jest.doMock("sharify", () => ({
+      HASHTAG_LAB_ADS_ENABLED: false,
+      HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+      CURRENT_USER: {
+        email: "someemail@email.com",
+        type: "Non-Admin",
+      },
+    }))
+  })
+
+  afterEach(() => {
+    jest.resetModules()
   })
 
   it("renders sidebar", () => {

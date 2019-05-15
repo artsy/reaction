@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot renders the new canvas in standard layout 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1250px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  max-width: 1250px;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  width="100%"
+>
+  <div
+    className="htl-ad"
+    data-eager={true}
+    data-sizes="970x250"
+    data-unit="Desktop_TopLeaderboard"
+  />
+</div>
+`;

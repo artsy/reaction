@@ -1,14 +1,18 @@
 import { storiesOf } from "@storybook/react"
+import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { clone, extend } from "lodash"
 import React from "react"
 import { getCurrentUnixTimestamp } from "../Constants"
 import { DisplayCanvas } from "../Display/Canvas"
 import { DisplayPanel } from "../Display/DisplayPanel"
+import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
+import { NewDisplayPanel } from "../Display/NewDisplayPanel"
 import { StandardArticle } from "../Fixtures/Articles"
 import { Sections } from "../Sections/Sections"
 
 import {
   Campaign,
+  StandardArticleHostedAdCanvas,
   StandardArticleHostedAdPanel,
   UnitCanvasImage,
   UnitCanvasOverlay,
@@ -22,69 +26,63 @@ import {
 
 const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
-    return (
-      <DisplayPanel
-        unit={UnitPanel}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
-      />
-    )
+    return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
   })
   .add("Panel with 3rd party tracking", () => {
-    return (
+    return isHTLAdEnabled() ? (
+      <NewDisplayPanel
+        adUnit={StandardArticleHostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
+      />
+    ) : (
       <DisplayPanel
         unit={UnitPanelTracked}
         campaign={Campaign}
         renderTime={getCurrentUnixTimestamp()}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
   .add("Mobile Panel", () => {
-    return (
-      <DisplayPanel
-        unit={UnitPanel}
-        campaign={Campaign}
-        isMobile
-        adDimension={StandardArticleHostedAdPanel.adDimension}
+    return isHTLAdEnabled() ? (
+      <NewDisplayPanel
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
       />
+    ) : (
+      <DisplayPanel unit={UnitPanel} campaign={Campaign} isMobile />
     )
   })
   .add("Without logo", () => {
     const unit = extend({}, UnitPanel, {
       logo: "",
     })
-    return (
-      <DisplayPanel
-        unit={unit}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
+    return isHTLAdEnabled() ? (
+      <NewDisplayPanel
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
       />
+    ) : (
+      <DisplayPanel unit={unit} campaign={Campaign} />
     )
   })
   .add("Video", () => {
-    return (
-      <DisplayPanel
-        unit={UnitPanelVideo}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
+    return isHTLAdEnabled() ? (
+      <NewDisplayPanel
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
       />
+    ) : (
+      <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} />
     )
   })
   .add("Video (mobile)", () => {
-    return (
-      <DisplayPanel
-        unit={UnitPanelVideo}
-        campaign={Campaign}
-        isMobile
-        adDimension={StandardArticleHostedAdPanel.adDimension}
+    return isHTLAdEnabled() ? (
+      <NewDisplayPanel
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        adDimension={StandardArticleHostedAdPanel.adDimension}
       />
+    ) : (
+      <DisplayPanel unit={UnitPanelVideo} campaign={Campaign} isMobile />
     )
   })
 
@@ -94,15 +92,15 @@ mobileAdInsertions.forEach(([label, unit]) => {
   story.add(`${label} injected into mobile body`, () => {
     const article = clone(StandardArticle)
 
-    const DisplayPanelAd = () => (
-      <DisplayPanel
-        isMobile
-        unit={unit}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
-      />
-    )
+    const DisplayPanelAd = () =>
+      isHTLAdEnabled ? (
+        <NewDisplayPanel
+          adUnit={StandardArticleHostedAdPanel.adUnit}
+          adDimension={StandardArticleHostedAdPanel.adDimension}
+        />
+      ) : (
+        <DisplayPanel isMobile unit={unit} campaign={Campaign} />
+      )
 
     return <Sections isMobile DisplayPanel={DisplayPanelAd} article={article} />
   })
@@ -110,53 +108,56 @@ mobileAdInsertions.forEach(([label, unit]) => {
 
 storiesOf("Publishing/Display/Canvas", module)
   .add("Overlay", () => {
-    return (
-      <DisplayCanvas
-        unit={UnitCanvasOverlay}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
+    return isHTLAdEnabled() ? (
+      <NewDisplayCanvas
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
+    ) : (
+      <DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />
     )
   })
   .add("Overlay with 3rd party tracking", () => {
-    return (
+    return isHTLAdEnabled() ? (
+      <NewDisplayCanvas
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
+      />
+    ) : (
       <DisplayCanvas
         unit={UnitCanvasTracked}
         campaign={Campaign}
         renderTime={getCurrentUnixTimestamp()}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
       />
     )
   })
   .add("Image", () => {
-    return (
-      <DisplayCanvas
-        unit={UnitCanvasImage}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
+    return isHTLAdEnabled() ? (
+      <NewDisplayCanvas
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
+    ) : (
+      <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />
     )
   })
   .add("Video", () => {
-    return (
-      <DisplayCanvas
-        unit={UnitCanvasVideo}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
+    return isHTLAdEnabled() ? (
+      <NewDisplayCanvas
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
+    ) : (
+      <DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />
     )
   })
   .add("Slideshow", () => {
-    return (
-      <DisplayCanvas
-        unit={UnitCanvasSlideshow}
-        campaign={Campaign}
-        adDimension={StandardArticleHostedAdPanel.adDimension}
-        adUnit={StandardArticleHostedAdPanel.adUnit}
+    return isHTLAdEnabled() ? (
+      <NewDisplayCanvas
+        adUnit={StandardArticleHostedAdCanvas.adUnit}
+        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
+    ) : (
+      <DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />
     )
   })
