@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
+import { FilterState } from "Apps/Search/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -70,13 +70,6 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
         if (error) {
           console.error(error)
         }
-
-        const { state } = filters
-        const urlFragment = urlFragmentFromState(state, { page })
-
-        // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search?${urlFragment}`)
-        window.history.pushState({}, null, `/search?${urlFragment}`)
       }
     )
   }

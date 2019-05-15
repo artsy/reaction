@@ -1,6 +1,5 @@
 import { CollectionRefetch_collection } from "__generated__/CollectionRefetch_collection.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
-import { urlFragmentFromState } from "Apps/Search/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -49,16 +48,6 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
           if (error) {
             logger.error(error)
           }
-
-          // Using window.history.pushState instead of router.push, because
-          //   we just want to add to the history, not navigate to another route.
-          window.history.pushState(
-            {},
-            null,
-            `${window.location.pathname}?${urlFragmentFromState(
-              this.props.filtersState
-            )}`
-          )
 
           this.setState({
             isLoading: false,

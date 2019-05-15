@@ -138,14 +138,36 @@ export class FilterState extends Container<State> {
     return omitBy(this.state, isNil)
   }
 
+  previousQueryString = ""
+  pushHistory() {
+    const currentQueryString = urlFragmentFromState(this.state)
+    // PriceRangeFilter's onAfterChange event fires twice; this ensures
+    //   we only push that history event once.
+    if (this.previousQueryString !== currentQueryString) {
+      window.history.pushState(
+        {},
+        null,
+        `${window.location.pathname}?${currentQueryString}`
+      )
+      this.previousQueryString = currentQueryString
+    }
+  }
+
   setPage(page, _mediator) {
-    this.setState({ page })
+    this.setState({ page }, () => {
+      this.pushHistory()
+    })
   }
 
   resetFilters = () => {
-    this.setState({
-      ...initialState,
-    })
+    this.setState(
+      {
+        ...initialState,
+      },
+      () => {
+        this.pushHistory()
+      }
+    )
   }
 
   unsetFilter(filter, _mediator) {
@@ -173,7 +195,9 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.setState(newPartialState)
+    this.setState(newPartialState, () => {
+      this.pushHistory()
+    })
   }
 
   setFilter(filter: keyof State, value, _mediator) {
@@ -210,6 +234,7 @@ export class FilterState extends Container<State> {
     }
 
     this.setState(newPartialState, () => {
+      this.pushHistory()
       if (untrackedFilters.includes(filter)) return
       this.tracking &&
         this.tracking.trackEvent({

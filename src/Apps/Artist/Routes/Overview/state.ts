@@ -159,10 +159,15 @@ export class FilterState extends Container<State> {
   }
 
   resetFilters = () => {
-    this.setState({
-      ...initialState,
-      showActionSheet: true,
-    })
+    this.setState(
+      {
+        ...initialState,
+        showActionSheet: true,
+      },
+      () => {
+        this.pushHistory()
+      }
+    )
   }
 
   unsetFilter(filter) {
