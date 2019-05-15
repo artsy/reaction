@@ -1,3 +1,15 @@
+# v16.11.10 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Move new hosted ads to their own components in Standard Articles [#2413](https://github.com/artsy/reaction/pull/2413) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.11.9 (Tue May 14 2019)
 
 #### 🐛  Bug Fix
