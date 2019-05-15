@@ -31,7 +31,7 @@ import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
 import { AnalyticsSchema } from "Artsy"
-import { provideTracking } from "Artsy/Analytics/TrackingContext"
+import { AnalyticsProp, provideTracking } from "Artsy/Analytics/TrackingContext"
 import { useTracking } from "Artsy/Analytics/useTracking"
 
 export const NavBar: React.FC = provideTracking({
@@ -96,7 +96,9 @@ export const NavBar: React.FC = provideTracking({
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
                   onClick={() => {
-                    trackEvent<{ new_notification_count: string }>({
+                    trackEvent<
+                      AnalyticsProp<{ new_notification_count: string }>
+                    >({
                       subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",

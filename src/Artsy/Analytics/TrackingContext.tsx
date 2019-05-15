@@ -4,8 +4,18 @@ import React from "react"
 
 type Trackables = AnalyticsSchema.Trackables
 
+/**
+ * Used when tracking custom events, not in the schema:
+ *
+ * @example
+ *
+ * trackEvent<AnalyticsProp<{ name: string }>>({ name: 'foo' })
+ *
+ */
+export type AnalyticsProp<P> = Trackables & P
+
 interface TrackingContextProps {
-  trackEvent?<P>(trackingProps: Partial<Trackables> & P): void
+  trackEvent?<P extends Trackables>(trackingProps: Partial<P>): void
 }
 
 export const TrackingContext = React.createContext<TrackingContextProps>({})
