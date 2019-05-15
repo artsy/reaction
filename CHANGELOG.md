@@ -1,3 +1,15 @@
+# v16.11.11 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix typo [#2418](https://github.com/artsy/reaction/pull/2418) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.10 (Wed May 15 2019)
 
 #### 🐛  Bug Fix
