@@ -5,9 +5,7 @@ import { NavItem } from "../NavItem"
 jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
-      tracking: {
-        trackEvent: jest.fn(),
-      },
+      trackEvent: jest.fn(),
     }),
   }
 })

@@ -17,7 +17,7 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import * as auth from "Components/NavBar/Utils/auth"
 
 export const MobileNavMenu: React.FC = () => {
-  const { tracking } = useTracking()
+  const { trackEvent } = useTracking()
   const { mediator, user } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
 
@@ -26,7 +26,7 @@ export const MobileNavMenu: React.FC = () => {
     const text = link.innerText
     const href = link.parentNode.getAttribute("href")
 
-    tracking.trackEvent({
+    trackEvent({
       subject: text,
       destination_path: href,
     })

@@ -18,8 +18,6 @@ import {
 import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
-import * as AnalyticsSchema from "Artsy/Analytics/Schema"
-
 import {
   MobileNavMenu,
   MobileToggleIcon,
@@ -32,15 +30,16 @@ import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
-import { injectTracking } from "Artsy/Analytics/TrackingContext"
+import { AnalyticsSchema } from "Artsy"
+import { provideTracking } from "Artsy/Analytics/TrackingContext"
 import { useTracking } from "Artsy/Analytics/useTracking"
 
-export const NavBar: React.FC = injectTracking({
+export const NavBar: React.FC = provideTracking({
   flow: AnalyticsSchema.Flow.Header,
   context_module: AnalyticsSchema.ContextModule.Header,
 })(_props => {
   const { mediator, user } = useContext(SystemContext)
-  const { tracking } = useTracking()
+  const { trackEvent } = useTracking()
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
@@ -97,7 +96,7 @@ export const NavBar: React.FC = injectTracking({
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
                   onClick={() => {
-                    tracking.trackEvent<{ new_notification_count: string }>({
+                    trackEvent<{ new_notification_count: string }>({
                       subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
@@ -118,7 +117,7 @@ export const NavBar: React.FC = injectTracking({
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  tracking.trackEvent({
+                  trackEvent({
                     subject: AnalyticsSchema.Subject.Login,
                   })
 
@@ -130,7 +129,7 @@ export const NavBar: React.FC = injectTracking({
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  tracking.trackEvent({
+                  trackEvent({
                     subject: AnalyticsSchema.Subject.Signup,
                   })
 
@@ -152,7 +151,7 @@ export const NavBar: React.FC = injectTracking({
             onClick={() => {
               const showMenu = !showMobileMenu
               if (showMenu) {
-                tracking.trackEvent({
+                trackEvent({
                   subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
                 })
               }

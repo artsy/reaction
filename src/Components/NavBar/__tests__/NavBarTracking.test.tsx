@@ -1,8 +1,7 @@
 import { mount } from "enzyme"
 import React from "react"
 
-import { SystemContextProvider } from "Artsy"
-import * as AnalyticsSchema from "Artsy/Analytics/Schema"
+import { AnalyticsSchema, SystemContextProvider } from "Artsy"
 
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { QueryRenderer as _QueryRenderer } from "react-relay"
@@ -11,12 +10,14 @@ import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
 
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Artsy/Analytics/TrackingContext", () => {
+  return {
+    provideTracking: () => Component => Component,
+  }
+})
 
 describe("NavBarTracking", () => {
-  const tracking = {
-    trackEvent: jest.fn(),
-    getTrackingData: jest.fn(),
-  }
+  const trackEvent = jest.fn()
 
   const Wrapper = ({ children, user = { id: "foo" } }) => {
     return (
@@ -28,10 +29,7 @@ describe("NavBarTracking", () => {
 
   beforeEach(() => {
     ;(useTracking as jest.Mock).mockImplementation(() => {
-      return {
-        tracking,
-        AnalyticsSchema,
-      }
+      return { trackEvent }
     })
   })
 
@@ -52,7 +50,7 @@ describe("NavBarTracking", () => {
         .first()
         .simulate("click")
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: AnalyticsSchema.Subject.NotificationBell,
         destination_path: "/works-for-you",
       })
@@ -69,7 +67,7 @@ describe("NavBarTracking", () => {
         .first()
         .simulate("click")
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: AnalyticsSchema.Subject.Login,
       })
     })
@@ -85,7 +83,7 @@ describe("NavBarTracking", () => {
         .last()
         .simulate("click")
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: AnalyticsSchema.Subject.Signup,
       })
     })
@@ -109,7 +107,7 @@ describe("NavBarTracking", () => {
           },
         },
       })
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
         destination_path: "/galleries",
       })
@@ -133,7 +131,7 @@ describe("NavBarTracking", () => {
           },
         },
       })
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         context_module: AnalyticsSchema.ContextModule.HeaderUserDropdown,
         destination_path: "/user/saves",
       })
@@ -150,7 +148,7 @@ describe("NavBarTracking", () => {
 
       wrapper.find("NavItem").simulate("click")
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: "Fairs",
         destination_path: "/art-fairs",
       })
@@ -169,7 +167,7 @@ describe("NavBarTracking", () => {
         .first()
         .simulate("click")
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
       })
     })
@@ -193,7 +191,7 @@ describe("NavBarTracking", () => {
           },
         })
 
-      expect(tracking.trackEvent).toBeCalledWith({
+      expect(trackEvent).toBeCalledWith({
         subject: "Magazine",
         destination_path: "/articles",
       })

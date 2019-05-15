@@ -1,16 +1,17 @@
 import { Menu, MenuItem } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import React from "react"
 
 export const MoreNavMenu: React.FC = () => {
-  const { tracking, AnalyticsSchema } = useTracking()
+  const { trackEvent } = useTracking()
 
   const trackClick = event => {
     const link = event.target
     const text = link.innerText
     const href = link.parentNode.parentNode.getAttribute("href")
 
-    tracking.trackEvent({
+    trackEvent({
       context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
       subject: text,
       destination_path: href,

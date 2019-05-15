@@ -1,6 +1,5 @@
 import { BellIcon, SoloIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
-import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
@@ -14,16 +13,18 @@ jest.mock("Components/Search/SearchBar", () => {
   }
 })
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Artsy/Analytics/TrackingContext", () => {
+  return {
+    provideTracking: () => Component => Component,
+  }
+})
 
 describe("NavBar", () => {
   const mediator = {
     trigger: jest.fn(),
   }
 
-  const tracking = {
-    trackEvent: jest.fn(),
-    getTrackingData: jest.fn(),
-  }
+  const trackEvent = jest.fn()
 
   const getWrapper = ({ user = null } = {}) => {
     return mount(
@@ -36,8 +37,7 @@ describe("NavBar", () => {
   beforeEach(() => {
     ;(useTracking as jest.Mock).mockImplementation(() => {
       return {
-        tracking,
-        AnalyticsSchema,
+        trackEvent,
       }
     })
   })
