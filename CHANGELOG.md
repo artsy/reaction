@@ -1,3 +1,15 @@
+# v16.11.14 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- DISCO 1029 - Consolidate url history management in state containers [#2414](https://github.com/artsy/reaction/pull/2414) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.11.13 (Wed May 15 2019)
 
 
