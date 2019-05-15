@@ -90,7 +90,7 @@ export const NotificationMenuItems: React.FC<
  */
 export const NotificationsMenu: React.FC = () => {
   return (
-    <Menu title="Actvity">
+    <Menu title="Activity">
       <NotificationsQueryRenderer
         render={renderWithLoadProgress(
           NotificationMenuItems,
