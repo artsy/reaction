@@ -100,7 +100,7 @@ export class CollectionHeader extends Component<Props> {
 
           const isColumnLayout =
             hasMultipleArtists || !collection.description || size === "xs"
-
+          const smallerScreen = size === "xs" || size === "sm"
           const featuredArtists = take(
             artworks.merchandisable_artists,
             artistsCount
@@ -161,7 +161,7 @@ export class CollectionHeader extends Component<Props> {
                       <a href={categoryTarget}>{collection.category}</a>
                     </BreadcrumbContainer>
                     <Spacer mt={1} />
-                    <Title size={["6", "10"]}>{collection.title}</Title>
+                    <Serif size={["6", "10"]}>{collection.title}</Serif>
                   </MetaContainer>
                   <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
                     <Box>
@@ -169,15 +169,19 @@ export class CollectionHeader extends Component<Props> {
                         <Row>
                           <Col xl="8" lg="8" md="10" sm="12" xs="12">
                             <ExtendedSerif size="3">
-                              <ReadMore
-                                onReadMoreClicked={this.trackReadMoreClick.bind(
-                                  this
-                                )}
-                                maxChars={chars}
-                                content={getReadMoreContent(
-                                  collection.description
-                                )}
-                              />
+                              {smallerScreen ? (
+                                <ReadMore
+                                  onReadMoreClicked={this.trackReadMoreClick.bind(
+                                    this
+                                  )}
+                                  maxChars={chars}
+                                  content={getReadMoreContent(
+                                    collection.description
+                                  )}
+                                />
+                              ) : (
+                                getReadMoreContent(collection.description)
+                              )}
                             </ExtendedSerif>
                           </Col>
                         </Row>
@@ -257,10 +261,6 @@ const DescriptionContainer = styled(Flex)<{
   isColumnLayout: boolean
 }>`
   flex-direction: ${props => (props.isColumnLayout ? "column" : "row")};
-`
-
-const Title = styled(Serif)`
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 `
 
 const ImageCaption = styled(Box)<{
