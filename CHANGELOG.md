@@ -1,3 +1,17 @@
+# v16.11.12 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Adds parens to result counts. [#2419](https://github.com/artsy/reaction/pull/2419) ([@ashfurrow](https://github.com/ashfurrow))
+- Make FillwidthItem more forgiving of empty artwork images [#2420](https://github.com/artsy/reaction/pull/2420) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.11.11 (Wed May 15 2019)
 
 #### 🐛  Bug Fix
