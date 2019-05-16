@@ -14,6 +14,8 @@ export interface TransactionDetailsSummaryItemProps
   showOfferNote?: boolean
 }
 
+const emDash = "—"
+
 export class TransactionDetailsSummaryItem extends React.Component<
   TransactionDetailsSummaryItemProps
 > {
@@ -46,18 +48,10 @@ export class TransactionDetailsSummaryItem extends React.Component<
     const { order } = this.props
     switch (order.mode) {
       case "BUY":
-        return (
-          this.formattedAmount(order.shippingTotal, order.shippingTotalCents) ||
-          "—"
-        )
+        return order.shippingTotal || emDash
       case "OFFER":
         const offer = this.getOffer()
-        return offer
-          ? this.formattedAmount(
-              offer.shippingTotal,
-              offer.shippingTotalCents
-            ) || "—"
-          : "—"
+        return (offer && offer.shippingTotal) || emDash
     }
   }
 
@@ -65,12 +59,10 @@ export class TransactionDetailsSummaryItem extends React.Component<
     const { order } = this.props
     switch (order.mode) {
       case "BUY":
-        return this.formattedAmount(order.taxTotal, order.taxTotalCents) || "—"
+        return order.taxTotal || emDash
       case "OFFER":
         const offer = this.getOffer()
-        return offer
-          ? this.formattedAmount(offer.taxTotal, offer.taxTotalCents) || "—"
-          : "—"
+        return (offer && offer.taxTotal) || emDash
     }
   }
 
@@ -98,7 +90,7 @@ export class TransactionDetailsSummaryItem extends React.Component<
       <>
         <Entry
           label={isBuyerOffer ? "Your offer" : "Seller's offer"}
-          value={offerOverride || (offer && offer.amount) || "—"}
+          value={offerOverride || (offer && offer.amount) || emDash}
         />
         {offerContextPrice === "LIST_PRICE" ? (
           <SecondaryEntry label="List price" value={order.totalListPrice} />
@@ -132,15 +124,6 @@ export class TransactionDetailsSummaryItem extends React.Component<
           </Serif>
         </>
       )
-    }
-  }
-
-  formattedAmount = (amount, amountCents) => {
-    // FIXME: Use actual currency code
-    if (amount) {
-      return amount
-    } else {
-      return amountCents === 0 ? "$0.00" : null
     }
   }
 }
