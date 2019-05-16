@@ -1,3 +1,15 @@
+# v16.11.19 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Remove handling of `null` from the `amount` helper in MP [#2425](https://github.com/artsy/reaction/pull/2425) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v16.11.18 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
