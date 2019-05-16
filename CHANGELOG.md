@@ -1,3 +1,15 @@
+# v16.11.17 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Dont display pageDots if only one image [#2423](https://github.com/artsy/reaction/pull/2423) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.11.16 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
