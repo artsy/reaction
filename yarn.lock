@@ -2155,7 +2155,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-tracking@^6.0.0":
+"@types/react-tracking@6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-6.0.0.tgz#63bcc83c314586f3c84dfe32065872d1346efe9a"
   integrity sha512-wfYIlQCmzfGYm4v0ZTw8F9uLUhdELRzvjD7XX0KB6KFvMsmk98M5LX4r5qBRwpeqCwY9SujJFBvVQrhrnB/ViQ==
