@@ -162,7 +162,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     type: Schema.Type.Button,
     artwork_id: props.artwork._id,
     artwork_slug: props.artwork.id,
-    product_id: props.artwork._id,
+    products: [
+      {
+        product_id: props.artwork._id,
+        quantity: 1,
+        price: props.artwork.price,
+      },
+    ],
   }))
   handleCreateOrder() {
     const { user, mediator } = this.props
@@ -454,6 +460,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         is_acquireable
         is_inquireable
         is_offerable
+        price
         sale_message
         shippingInfo
         shippingOrigin
