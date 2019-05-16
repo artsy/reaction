@@ -8,7 +8,7 @@ describe("FilterState", () => {
   })
 
   it("Gets initialized properly", () => {
-    expect(instance.state).toEqual({ ...initialState, major_periods: [[]] })
+    expect(instance.state).toEqual({ ...initialState, major_periods: [] })
   })
 
   it("updates it's state properly if a filter is changed", () => {

@@ -103,9 +103,6 @@ export class FilterState extends Container<State> {
         }
 
         switch (filter) {
-          case "major_periods":
-            this.state[filter] = [value]
-            break
           case "page":
             this.state[filter] = Number(value)
             break

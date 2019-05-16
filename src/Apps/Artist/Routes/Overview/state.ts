@@ -94,9 +94,7 @@ export class FilterState extends Container<State> {
     if (props) {
       Object.keys(this.state).forEach(filter => {
         if (props[filter]) {
-          if (filter === "major_periods") {
-            this.state[filter] = [props[filter]]
-          } else if (
+          if (
             [
               "for_sale",
               "acquireable",
