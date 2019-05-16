@@ -1,3 +1,15 @@
+# v16.11.16 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- update schema on bid and buy now conversion tracking for criteo [#2424](https://github.com/artsy/reaction/pull/2424) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
 # v16.11.15 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
