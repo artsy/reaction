@@ -1,3 +1,15 @@
+# v16.11.22 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Signup form includes recaptcha_token on handleSubmit [#2427](https://github.com/artsy/reaction/pull/2427) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.11.21 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
