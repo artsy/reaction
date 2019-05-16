@@ -12,8 +12,7 @@ describe("FillwidthItem", () => {
         href: "my/artwork",
       }
 
-      // @ts-ignore
-      const wrapper = render(<FillwidthItem artwork={artwork} />)
+      const wrapper = render(<FillwidthItem artwork={artwork as any} />)
 
       expect(wrapper.html()).toBeNull()
     })
