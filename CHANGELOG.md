@@ -1,3 +1,15 @@
+# v16.11.23 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Schema] Sync schema [#2428](https://github.com/artsy/reaction/pull/2428) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.22 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
