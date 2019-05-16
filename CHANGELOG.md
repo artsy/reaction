@@ -1,3 +1,15 @@
+# v16.11.18 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Set the `major_periods` state property correctly when constructing the Artist, Collect, and Search apps. [#2422](https://github.com/artsy/reaction/pull/2422) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.11.17 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
