@@ -44,7 +44,7 @@ export const initialState = {
 
 // Returns a string representing the query part of a URL.
 // It removes default values, and rewrites keyword -> term.
-export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
+export const urlFragmentFromState = (state: State) => {
   const { keyword: term } = state
   const filters = Object.entries(state).reduce((acc, [key, value]) => {
     if (isDefaultFilter(key, value) || key === "keyword") {
@@ -57,7 +57,6 @@ export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
   return qs.stringify({
     ...filters,
     term,
-    ...extra,
   })
 }
 
