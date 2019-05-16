@@ -109,6 +109,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
         </Link>
         <Spacer mb={[2, 3]} />
         <BarChart
+          // TODO: use artwork's currency
           minLabel="$0"
           maxLabel={
             artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
@@ -120,7 +121,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
               const isLastBin = index === artwork.pricingContext.bins.length - 1
               const title = isLastBin
                 ? `${bin.minPrice}+`
-                : `${isFirstBin ? "$0" : bin.minPrice}–${bin.maxPrice}`
+                : // TODO: use artwork's currency
+                  `${isFirstBin ? "$0" : bin.minPrice}–${bin.maxPrice}`
               const artworkFallsInThisBin =
                 (isFirstBin && artworkFallsBeforeFirstBin) ||
                 (isLastBin && artworkFallsAfterLastBin) ||
