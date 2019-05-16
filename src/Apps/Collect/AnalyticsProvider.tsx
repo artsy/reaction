@@ -3,8 +3,13 @@ import { track } from "Artsy/Analytics/track"
 import React from "react"
 import { Provider } from "unstated"
 
+interface Props {
+  urlBuilder: (state: FilterState) => string
+  [key: string]: any
+}
+
 @track()
-export default class AnalyticsProvider extends React.Component<any> {
+export default class AnalyticsProvider extends React.Component<Props> {
   render() {
     const {
       __fragments,
