@@ -13,6 +13,10 @@ import { Mediator } from "Artsy"
 
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
+import { get } from "Utils/get"
+import createLogger from "Utils/logger"
+
+const logger = createLogger("FillwidthItem.tsx")
 
 const IMAGE_QUALITY = 80
 
@@ -96,6 +100,13 @@ export class FillwidthItemContainer extends React.Component<
     let userSpread = {}
     if (user) {
       userSpread = { user }
+    }
+
+    const image = get(this.props, p => p.artwork.image)
+    if (!image) {
+      const href = get(this.props, p => p.artwork.href, "(unknown href)")
+      logger.error(new Error(`Artwork at ${href} does not have an image!`))
+      return null
     }
 
     return (

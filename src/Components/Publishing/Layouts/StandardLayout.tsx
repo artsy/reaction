@@ -1,6 +1,7 @@
 import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
@@ -10,6 +11,8 @@ import { Responsive } from "Utils/Responsive"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
 import { DisplayPanel } from "../Display/DisplayPanel"
+import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
+import { NewDisplayPanel } from "../Display/NewDisplayPanel"
 import { Header } from "../Header/Header"
 import { ReadMoreButton } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
@@ -32,6 +35,7 @@ export class StandardLayout extends React.Component<
     article: {},
     isTruncated: false,
   }
+
   constructor(props) {
     super(props)
 
@@ -76,10 +80,12 @@ export class StandardLayout extends React.Component<
       showCollectionsRail,
       isSuper,
     } = this.props
+
     const { isTruncated } = this.state
     const { seriesArticle } = article
     const campaign = omit(display, "panel", "canvas")
     const seriesOrSuper = isSuper || seriesArticle
+    const isNewAdEnabled = isHTLAdEnabled()
 
     return (
       <Responsive>
@@ -88,14 +94,9 @@ export class StandardLayout extends React.Component<
           const isMobileAd = Boolean(isMobile || xs || sm || md)
 
           const DisplayPanelAd = () => {
-            return (
-              hasPanel && (
-                <DisplayPanel
-                  isMobile={isMobileAd}
-                  unit={display.panel}
-                  campaign={campaign}
-                  article={article}
-                  renderTime={renderTime}
+            if (isNewAdEnabled) {
+              return (
+                <NewDisplayPanel
                   adUnit={
                     isMobileAd
                       ? AdUnit.Mobile_InContentMR1
@@ -108,10 +109,36 @@ export class StandardLayout extends React.Component<
                   }
                 />
               )
-            )
+            } else {
+              return (
+                hasPanel && (
+                  <DisplayPanel
+                    isMobile={isMobileAd}
+                    unit={display.panel}
+                    campaign={campaign}
+                    article={article}
+                    renderTime={renderTime}
+                  />
+                )
+              )
+            }
           }
           return (
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
+              {isNewAdEnabled && (
+                <NewDisplayCanvas
+                  adUnit={
+                    isMobileAd
+                      ? AdUnit.Mobile_TopLeaderboard
+                      : AdUnit.Desktop_TopLeaderboard
+                  }
+                  adDimension={
+                    isMobileAd
+                      ? AdDimension.Mobile_TopLeaderboard
+                      : AdDimension.Desktop_TopLeaderboard
+                  }
+                />
+              )}
               <ReadMoreWrapper
                 isTruncated={isTruncated}
                 hideButton={() => this.setState({ isTruncated: false })}
@@ -142,25 +169,17 @@ export class StandardLayout extends React.Component<
                 />
               )}
 
-              {(relatedArticlesForCanvas || display) && !seriesOrSuper && (
-                <CanvasFooter
-                  article={article}
-                  display={display}
-                  relatedArticles={relatedArticlesForCanvas}
-                  renderTime={renderTime}
-                  showCollectionsRail={showCollectionsRail}
-                  adUnit={
-                    isMobileAd
-                      ? AdUnit.Mobile_TopLeaderboard
-                      : AdUnit.Desktop_TopLeaderboard
-                  }
-                  adDimension={
-                    isMobileAd
-                      ? AdDimension.Mobile_TopLeaderboard
-                      : AdDimension.Desktop_TopLeaderboard
-                  }
-                />
-              )}
+              {(relatedArticlesForCanvas || display) &&
+                !seriesOrSuper &&
+                !isNewAdEnabled && (
+                  <CanvasFooter
+                    article={article}
+                    display={display}
+                    relatedArticles={relatedArticlesForCanvas}
+                    renderTime={renderTime}
+                    showCollectionsRail={showCollectionsRail}
+                  />
+                )}
             </ArticleWrapper>
           )
         }}

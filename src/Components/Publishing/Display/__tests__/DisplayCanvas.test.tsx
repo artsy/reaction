@@ -11,7 +11,6 @@ import { CanvasVideo } from "../Canvas/CanvasVideo"
 
 import {
   Campaign,
-  StandardArticleHostedAdCanvas,
   UnitCanvasImage,
   UnitCanvasOverlay,
   UnitCanvasSlideshow,
@@ -19,69 +18,31 @@ import {
   UnitCanvasVideo,
 } from "../../Fixtures/Components"
 
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Non-Admin",
-      email: "someuser@email.com",
-    },
-  },
-}))
-
 describe("snapshot", () => {
   it("renders the canvas in standard layout with image", () => {
     const component = renderer
-      .create(
-        <DisplayCanvas
-          unit={UnitCanvasImage}
-          campaign={Campaign}
-          adUnit={StandardArticleHostedAdCanvas.adUnit}
-          adDimension={StandardArticleHostedAdCanvas.adDimension}
-        />
-      )
+      .create(<DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />)
       .toJSON()
     expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in standard layout with video", () => {
     const component = renderer
-      .create(
-        <DisplayCanvas
-          unit={UnitCanvasVideo}
-          campaign={Campaign}
-          adUnit={StandardArticleHostedAdCanvas.adUnit}
-          adDimension={StandardArticleHostedAdCanvas.adDimension}
-        />
-      )
+      .create(<DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />)
       .toJSON()
     expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in overlay layout", () => {
     const component = renderer
-      .create(
-        <DisplayCanvas
-          unit={UnitCanvasOverlay}
-          campaign={Campaign}
-          adUnit={StandardArticleHostedAdCanvas.adUnit}
-          adDimension={StandardArticleHostedAdCanvas.adDimension}
-        />
-      )
+      .create(<DisplayCanvas unit={UnitCanvasOverlay} campaign={Campaign} />)
       .toJSON()
     expect(component).toMatchSnapshot()
   })
 
   it("renders the canvas in slideshow layout", () => {
     const component = renderer
-      .create(
-        <DisplayCanvas
-          unit={UnitCanvasSlideshow}
-          campaign={Campaign}
-          adUnit={StandardArticleHostedAdCanvas.adUnit}
-          adDimension={StandardArticleHostedAdCanvas.adDimension}
-        />
-      )
+      .create(<DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />)
       .toJSON()
     expect(component).toMatchSnapshot()
   })
@@ -98,20 +59,13 @@ describe("unit", () => {
           trackEvent,
         }}
         renderTime={12345}
-        adUnit={StandardArticleHostedAdCanvas.adUnit}
-        adDimension={StandardArticleHostedAdCanvas.adDimension}
       />
     )
   }
 
   it("renders the unit data", () => {
     const canvas = mount(
-      <DisplayCanvas
-        unit={UnitCanvasImage}
-        campaign={Campaign}
-        adUnit={StandardArticleHostedAdCanvas.adUnit}
-        adDimension={StandardArticleHostedAdCanvas.adDimension}
-      />
+      <DisplayCanvas unit={UnitCanvasImage} campaign={Campaign} />
     )
     expect(canvas.html()).toMatch(UnitCanvasImage.disclaimer)
     expect(canvas.html()).toMatch(UnitCanvasImage.headline)
@@ -126,24 +80,14 @@ describe("unit", () => {
 
   it("renders the video component if standard layout with video", () => {
     const canvas = mount(
-      <DisplayCanvas
-        unit={UnitCanvasVideo}
-        campaign={Campaign}
-        adUnit={StandardArticleHostedAdCanvas.adUnit}
-        adDimension={StandardArticleHostedAdCanvas.adDimension}
-      />
+      <DisplayCanvas unit={UnitCanvasVideo} campaign={Campaign} />
     )
     expect(canvas.find(CanvasVideo).length).toBe(1)
   })
 
   it("renders the slideshow component if slideshow layout", () => {
     const canvas = mount(
-      <DisplayCanvas
-        unit={UnitCanvasSlideshow}
-        campaign={Campaign}
-        adUnit={StandardArticleHostedAdCanvas.adUnit}
-        adDimension={StandardArticleHostedAdCanvas.adDimension}
-      />
+      <DisplayCanvas unit={UnitCanvasSlideshow} campaign={Campaign} />
     )
     expect(canvas.find(CanvasSlideshow).length).toBe(1)
   })

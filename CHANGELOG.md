@@ -1,3 +1,83 @@
+# v16.11.14 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- DISCO 1029 - Consolidate url history management in state containers [#2414](https://github.com/artsy/reaction/pull/2414) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.13 (Wed May 15 2019)
+
+
+
+---
+
+# v16.11.12 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Adds parens to result counts. [#2419](https://github.com/artsy/reaction/pull/2419) ([@ashfurrow](https://github.com/ashfurrow))
+- Make FillwidthItem more forgiving of empty artwork images [#2420](https://github.com/artsy/reaction/pull/2420) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.11 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix typo [#2418](https://github.com/artsy/reaction/pull/2418) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.10 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Move new hosted ads to their own components in Standard Articles [#2413](https://github.com/artsy/reaction/pull/2413) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.11.9 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix padding around spinner fetch [#2417](https://github.com/artsy/reaction/pull/2417) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.8 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Rename folder for case-sensitivity [#2416](https://github.com/artsy/reaction/pull/2416) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.7 (Tue May 14 2019)
 
 
