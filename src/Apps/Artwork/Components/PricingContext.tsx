@@ -72,7 +72,6 @@ export class PricingContext extends React.Component<PricingContextProps> {
     }
   }
 
-  // TODO: Investigate why metaphysics is returning null instead of zero for minPrice
   render() {
     const { artwork } = this.props
     if (!artwork.pricingContext) {
@@ -119,10 +118,9 @@ export class PricingContext extends React.Component<PricingContextProps> {
             (bin, index): BarDescriptor => {
               const isFirstBin = index === 0
               const isLastBin = index === artwork.pricingContext.bins.length - 1
-              const binMinPrice = bin.minPrice != null ? bin.minPrice : "$0"
               const title = isLastBin
-                ? `${binMinPrice}+`
-                : `${isFirstBin ? "$0" : binMinPrice}–${bin.maxPrice}`
+                ? `${bin.minPrice}+`
+                : `${isFirstBin ? "$0" : bin.minPrice}–${bin.maxPrice}`
               const artworkFallsInThisBin =
                 (isFirstBin && artworkFallsBeforeFirstBin) ||
                 (isLastBin && artworkFallsAfterLastBin) ||
