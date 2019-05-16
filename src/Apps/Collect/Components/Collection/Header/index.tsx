@@ -1,7 +1,7 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { take } from "lodash"
-import React, { Component } from "react"
+import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
@@ -24,6 +24,9 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
+import { SystemContext } from "Artsy"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface Props {
   collection: {
@@ -52,6 +55,18 @@ const getReadMoreContent = description => {
   )
 }
 
+const handleOpenAuth = (mediator, artist) => {
+  openAuthModal(mediator, {
+    entity: artist,
+    contextModule: Schema.ContextModule.RecommendedArtists,
+    intent: AuthModalIntent.FollowArtist,
+  })
+}
+
+const trackReadMoreClick = () => {
+  // noop
+}
+
 const maxChars = {
   xs: 350,
   sm: 730,
@@ -68,146 +83,169 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
-@track({
-  context_module: Schema.ContextModule.CollectionDescription,
-})
-export class CollectionHeader extends Component<Props> {
-  @track({
-    subject: Schema.Subject.ReadMore,
-    type: Schema.Type.Button,
-    action_type: Schema.ActionType.Click,
-  })
-  trackReadMoreClick() {
-    // noop
-  }
+export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
+  // @track({
+  //   subject: Schema.Subject.ReadMore,
+  //   type: Schema.Type.Button,
+  //   action_type: Schema.ActionType.Click,
+  // })
+  // trackReadMoreClick() {
+  //   // noop
+  // }
 
-  render() {
-    const { collection, artworks } = this.props
+  // render() {
+  //   const { collection, artworks } = this.props
+  const { user, mediator } = useContext(SystemContext)
 
-    return (
-      <Responsive>
-        {({ xs, sm, md, lg }) => {
-          const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
-          const imageWidth = imageWidthSizes[size]
-          const imageHeight = xs ? 160 : 240
-          const chars = maxChars[size]
-          const categoryTarget = `/collections#${slugify(collection.category)}`
-          const artistsCount = size === "xs" ? 9 : 12
+  return (
+    <Responsive>
+      {({ xs, sm, md, lg }) => {
+        const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
+        const imageWidth = imageWidthSizes[size]
+        const imageHeight = xs ? 160 : 240
+        const chars = maxChars[size]
+        const categoryTarget = `/collections#${slugify(collection.category)}`
+        const artistsCount = size === "xs" ? 9 : 12
 
-          const hasMultipleArtists =
-            artworks.merchandisable_artists &&
-            artworks.merchandisable_artists.length > 1
+        const hasMultipleArtists =
+          artworks.merchandisable_artists &&
+          artworks.merchandisable_artists.length > 1
 
-          const isColumnLayout =
-            hasMultipleArtists || !collection.description || size === "xs"
-          const smallerScreen = size === "xs" || size === "sm"
-          const featuredArtists = take(
-            artworks.merchandisable_artists,
-            artistsCount
-          ).map((artist, index) => {
-            const hasArtistMetaData = artist.nationality && artist.birthday
-            return (
-              <EntityContainer
-                width={["100%", "25%"]}
-                isColumnLayout={isColumnLayout}
-                key={index}
-                pb={20}
-              >
-                <EntityHeader
-                  imageUrl={artist.imageUrl}
-                  name={artist.name}
-                  meta={
-                    hasArtistMetaData
-                      ? `${artist.nationality}, b. ${artist.birthday}`
-                      : null
-                  }
-                  href={`/artist/${artist.id}`}
-                  FollowButton={
-                    <Sans size="2" weight="medium" color={color("black100")}>
-                      Follow
-                    </Sans>
-                  }
-                />
-              </EntityContainer>
-            )
-          })
-
+        const isColumnLayout =
+          hasMultipleArtists || !collection.description || size === "xs"
+        const smallerScreen = size === "xs" || size === "sm"
+        const featuredArtists = take(
+          artworks.merchandisable_artists,
+          artistsCount
+        ).map((artist, index) => {
+          const hasArtistMetaData = artist.nationality && artist.birthday
           return (
-            <header>
-              <Flex flexDirection="column">
-                <Box>
-                  <Background
-                    p={2}
-                    mt={[0, 3]}
-                    mb={3}
-                    headerImageUrl={resize(collection.headerImage, {
-                      width: imageWidth * (xs ? 2 : 1),
-                      height: imageHeight * (xs ? 2 : 1),
-                      quality: 80,
-                    })}
-                    height={imageHeight}
-                  >
-                    <Overlay />
-                    {collection.credit && (
-                      <ImageCaption
-                        size={size}
-                        dangerouslySetInnerHTML={{ __html: collection.credit }}
-                      />
-                    )}
-                  </Background>
-                  <MetaContainer mb={2}>
-                    <BreadcrumbContainer size={["2", "3"]}>
-                      <a href="/collect">All works</a> /{" "}
-                      <a href={categoryTarget}>{collection.category}</a>
-                    </BreadcrumbContainer>
-                    <Spacer mt={1} />
-                    <Serif size={["6", "10"]}>{collection.title}</Serif>
-                  </MetaContainer>
-                  <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
-                    <Box>
-                      <Grid>
-                        <Row>
-                          <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                            <ExtendedSerif size="3">
-                              {smallerScreen ? (
-                                <ReadMore
-                                  onReadMoreClicked={this.trackReadMoreClick.bind(
-                                    this
-                                  )}
-                                  maxChars={chars}
-                                  content={getReadMoreContent(
-                                    collection.description
-                                  )}
-                                />
-                              ) : (
-                                getReadMoreContent(collection.description)
-                              )}
-                            </ExtendedSerif>
-                          </Col>
-                        </Row>
-                      </Grid>
-                    </Box>
-                    {featuredArtists.length && (
-                      <Box pt={isColumnLayout ? 20 : 0} pb={10}>
-                        <Sans size="2" weight="medium" pb={15}>
-                          {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
+            <EntityContainer
+              width={["100%", "25%"]}
+              isColumnLayout={isColumnLayout}
+              key={index}
+              pb={20}
+            >
+              <EntityHeader
+                imageUrl={artist.imageUrl}
+                name={artist.name}
+                meta={
+                  hasArtistMetaData
+                    ? `${artist.nationality}, b. ${artist.birthday}`
+                    : null
+                }
+                href={`/artist/${artist.id}`}
+                FollowButton={
+                  <FollowArtistButton
+                    artist={artist}
+                    user={user}
+                    trackingData={{
+                      modelName: Schema.OwnerType.Artist,
+                      context_module: Schema.ContextModule.RecommendedArtists,
+                      // entity_id: artist._id,
+                      entity_slug: artist.id,
+                    }}
+                    onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
+                    render={({ is_followed }) => {
+                      return (
+                        <Sans
+                          size="2"
+                          weight="medium"
+                          color="black"
+                          style={{
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          {is_followed ? "Following" : "Follow"}
                         </Sans>
-                        <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                          {featuredArtists}
-                        </Flex>
-                      </Box>
-                    )}
-                  </DescriptionContainer>
-                  <Spacer mb={1} />
-                </Box>
-              </Flex>
-              <Spacer mb={2} />
-            </header>
+                      )
+                    }}
+                  />
+                }
+              />
+            </EntityContainer>
           )
-        }}
-      </Responsive>
-    )
-  }
+        })
+        // <Sans size="2" weight="medium" color={color("black100")}>
+        //             Follow
+        //           </Sans>
+
+        return (
+          <header>
+            <Flex flexDirection="column">
+              <Box>
+                <Background
+                  p={2}
+                  mt={[0, 3]}
+                  mb={3}
+                  headerImageUrl={resize(collection.headerImage, {
+                    width: imageWidth * (xs ? 2 : 1),
+                    height: imageHeight * (xs ? 2 : 1),
+                    quality: 80,
+                  })}
+                  height={imageHeight}
+                >
+                  <Overlay />
+                  {collection.credit && (
+                    <ImageCaption
+                      size={size}
+                      dangerouslySetInnerHTML={{ __html: collection.credit }}
+                    />
+                  )}
+                </Background>
+                <MetaContainer mb={2}>
+                  <BreadcrumbContainer size={["2", "3"]}>
+                    <a href="/collect">All works</a> /{" "}
+                    <a href={categoryTarget}>{collection.category}</a>
+                  </BreadcrumbContainer>
+                  <Spacer mt={1} />
+                  <Serif size={["6", "10"]}>{collection.title}</Serif>
+                </MetaContainer>
+                <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
+                  <Box>
+                    <Grid>
+                      <Row>
+                        <Col xl="8" lg="8" md="10" sm="12" xs="12">
+                          <ExtendedSerif size="3">
+                            {smallerScreen ? (
+                              <ReadMore
+                                onReadMoreClicked={this.trackReadMoreClick.bind(
+                                  this
+                                )}
+                                maxChars={chars}
+                                content={getReadMoreContent(
+                                  collection.description
+                                )}
+                              />
+                            ) : (
+                              getReadMoreContent(collection.description)
+                            )}
+                          </ExtendedSerif>
+                        </Col>
+                      </Row>
+                    </Grid>
+                  </Box>
+                  {featuredArtists.length && (
+                    <Box pt={isColumnLayout ? 20 : 0} pb={10}>
+                      <Sans size="2" weight="medium" pb={15}>
+                        {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
+                      </Sans>
+                      <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
+                        {featuredArtists}
+                      </Flex>
+                    </Box>
+                  )}
+                </DescriptionContainer>
+                <Spacer mb={1} />
+              </Box>
+            </Flex>
+            <Spacer mb={2} />
+          </header>
+        )
+      }}
+    </Responsive>
+  )
 }
 
 const Background = styled(Box)<{
@@ -304,10 +342,12 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
       fragment Header_artworks on FilterArtworks {
         merchandisable_artists {
           id
+          _id
           name
           imageUrl
           birthday
           nationality
+          ...FollowArtistButton_artist
         }
       }
     `,
