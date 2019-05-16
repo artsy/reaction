@@ -105,7 +105,7 @@ export class FillwidthItemContainer extends React.Component<
     const image = get(this.props, p => p.artwork.image)
     if (!image) {
       const href = get(this.props, p => p.artwork.href, "(unknown href)")
-      logger.error(new Error(`Artwork at ${href} does not have an image!`))
+      logger.error(`Artwork at ${href} does not have an image!`)
       return null
     }
 
