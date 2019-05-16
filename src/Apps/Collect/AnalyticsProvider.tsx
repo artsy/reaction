@@ -11,17 +11,21 @@ export default class AnalyticsProvider extends React.Component<any> {
       __id,
       Component,
       tracking,
+      urlBuilder,
       ...remainingProps
     } = this.props
 
     return (
       <Provider
         inject={[
-          new FilterState({
-            ...this.props.params,
-            ...this.props.location.query,
-            tracking,
-          }),
+          new FilterState(
+            {
+              ...this.props.params,
+              ...this.props.location.query,
+              tracking,
+            },
+            urlBuilder
+          ),
         ]}
       >
         <Component {...remainingProps} query={{ __id, __fragments }} />

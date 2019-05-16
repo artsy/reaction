@@ -101,9 +101,12 @@ export class FilterState extends Container<State> {
   static MAX_HEIGHT = 120
   static MIN_WIDTH = 1
   static MAX_WIDTH = 120
+  urlBuilder: (state: FilterState) => string
 
-  constructor(props: State) {
+  constructor(props: State, urlBuilder: (state: FilterState) => string) {
     super()
+
+    this.urlBuilder = urlBuilder
 
     if (props) {
       this.tracking = props.tracking
@@ -137,6 +140,7 @@ export class FilterState extends Container<State> {
 
   previousQueryString = ""
   pushHistory() {
+    console.log("url builder", this.urlBuilder(null))
     const currentQueryString = urlFragmentFromState(this.state)
     // PriceRangeFilter's onAfterChange event fires twice; this ensures
     //   we only push that history event once.

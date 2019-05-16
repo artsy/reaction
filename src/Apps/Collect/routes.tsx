@@ -4,6 +4,7 @@ import { graphql } from "react-relay"
 import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 import { CollectionAppFragmentContainer as CollectionApp } from "./CollectionApp"
+import { CollectionUrlBuilder, CollectUrlBuilder } from "./urlBuilder"
 
 const initializeVariablesWithFilterState = (params, props) => {
   const initialFilterState = props.location ? props.location.query : {}
@@ -70,7 +71,13 @@ export const routes: RouteConfig[] = [
         return null
       }
 
-      return <AnalyticsProvider {...props} Component={Component} />
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={Component}
+          urlBuilder={CollectUrlBuilder}
+        />
+      )
     },
     prepareVariables: initializeVariablesWithFilterState,
   },
@@ -119,7 +126,13 @@ export const routes: RouteConfig[] = [
         return null
       }
 
-      return <AnalyticsProvider {...props} Component={Component} />
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={Component}
+          urlBuilder={CollectionUrlBuilder}
+        />
+      )
     },
     prepareVariables: initializeVariablesWithFilterState,
   },
