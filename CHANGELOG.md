@@ -1,3 +1,15 @@
+# v16.11.15 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Address feedback for #2420 [#2421](https://github.com/artsy/reaction/pull/2421) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.11.14 (Wed May 15 2019)
 
 #### 🐛  Bug Fix
