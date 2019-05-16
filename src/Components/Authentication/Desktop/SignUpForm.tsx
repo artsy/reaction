@@ -14,7 +14,6 @@ import { SignUpValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
-import { extend } from "lodash"
 import React, { Component } from "react"
 import { repcaptcha } from "Utils/repcaptcha"
 
@@ -29,9 +28,10 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
     repcaptcha("signup_submit", recaptcha_token => {
-      const valuesWithToken = extend(values, {
+      const valuesWithToken = {
+        ...values,
         recaptcha_token,
-      })
+      }
       this.props.handleSubmit(valuesWithToken, formikBag)
     })
   }

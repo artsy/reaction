@@ -23,7 +23,6 @@ import { ProgressIndicator } from "Components/ProgressIndicator"
 import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
-import { extend } from "lodash"
 import React, { Component, Fragment } from "react"
 import { repcaptcha } from "Utils/repcaptcha"
 
@@ -72,9 +71,10 @@ export class MobileSignUpForm extends Component<
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
     repcaptcha("signup_submit", recaptcha_token => {
-      const valuesWithToken = extend(values, {
+      const valuesWithToken = {
+        ...values,
         recaptcha_token,
-      })
+      }
       this.props.handleSubmit(valuesWithToken, formikBag)
     })
   }
