@@ -29,15 +29,6 @@ export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
 export class LargeArtworkImageBrowser extends React.Component<
   ArtworkBrowserProps
 > {
-  options = {
-    prevNextButtons: false,
-    wrapAround: true,
-    pageDots: true,
-    cellAlign: "left",
-    draggable: false,
-    lazyLoad: true,
-  }
-
   render() {
     const hasMultipleImages = this.props.images.length > 1
     const { imageAlt, images, setFlickityRef } = this.props
@@ -46,11 +37,20 @@ export class LargeArtworkImageBrowser extends React.Component<
     // of SSR support in Flickity.
     const carouselImages = typeof window === "undefined" ? [images[0]] : images
 
+    const options = {
+      prevNextButtons: false,
+      wrapAround: true,
+      pageDots: hasMultipleImages,
+      cellAlign: "left",
+      draggable: false,
+      lazyLoad: true,
+    }
+
     return (
       <Container>
         <Carousel
           showArrows={hasMultipleImages}
-          options={this.options}
+          options={options}
           oneSlideVisible
           height="60vh"
           setFlickityRef={setFlickityRef}
