@@ -9,6 +9,7 @@ import { CollectAppFixture } from "../../__tests__/Fixtures/Collect/CollectAppFi
 import { CollectAppFragmentContainer as CollectApp } from "../CollectApp"
 import { FilterContainer } from "../Components/Filters"
 import { FilterState } from "../FilterState"
+import { buildUrlForCollectApp } from "../urlBuilder"
 
 jest.unmock("react-relay")
 
@@ -16,11 +17,14 @@ describe("CollectApp", () => {
   let filterState: FilterState = null
 
   beforeEach(() => {
-    filterState = new FilterState({
-      tracking: {
-        trackEvent: jest.fn(),
+    filterState = new FilterState(
+      {
+        tracking: {
+          trackEvent: jest.fn(),
+        },
       },
-    })
+      buildUrlForCollectApp
+    )
   })
 
   it("renders a relay tree with SEO-friendly meta data", async () => {

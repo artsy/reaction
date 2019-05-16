@@ -95,18 +95,14 @@ export class FilterState extends Container<State> {
     return omitBy(this.state, isNil)
   }
 
-  previousQueryString = ""
+  previousUrl = ""
   pushHistory() {
-    const currentQueryString = this.urlBuilder(this.state)
+    const currentUrl = this.urlBuilder(this.state)
     // PriceRangeFilter's onAfterChange event fires twice; this ensures
     //   we only push that history event once.
-    if (this.previousQueryString !== currentQueryString) {
-      window.history.pushState(
-        {},
-        null,
-        `${window.location.pathname}?${currentQueryString}`
-      )
-      this.previousQueryString = currentQueryString
+    if (this.previousUrl !== currentUrl) {
+      window.history.pushState({}, null, currentUrl)
+      this.previousUrl = currentUrl
     }
   }
 

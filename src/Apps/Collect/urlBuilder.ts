@@ -1,26 +1,41 @@
 import qs from "qs"
 import { State } from "./FilterState"
 
-export const CollectUrlBuilder: (state: State) => string = state => {
-  return urlFragmentFromState(state)
+export const buildUrlForCollectionApp = (state: State): string => {
+  const params = removeDefaultValues(state)
+  const queryString = qs.stringify(params)
+
+  return queryString
+    ? `${window.location.pathname}?${queryString}`
+    : window.location.pathname
 }
 
-export const CollectionUrlBuilder: (state: State) => string = state => {
-  return urlFragmentFromState(state)
+export const buildUrlForCollectApp = (state: State): string => {
+  const fragment = buildCollectUrlFragmentFromState(state)
+
+  return fragment ? `/collect${fragment}` : "/collect"
 }
 
-// Returns a string representing the query part of a URL.
-// It removes default values.
-export const urlFragmentFromState = (state: State) => {
-  const filters = Object.entries(state).reduce((acc, [key, value]) => {
+const buildCollectUrlFragmentFromState = (state: State): string => {
+  const { medium, ...params } = removeDefaultValues(state)
+
+  const emptyOrSpecificMedium = medium ? `/${medium}` : ""
+
+  if (Object.keys(params).length === 0) {
+    return emptyOrSpecificMedium
+  }
+
+  return `${emptyOrSpecificMedium}?${qs.stringify(params)}`
+}
+
+const removeDefaultValues = (state: State): State => {
+  return Object.entries(state).reduce((acc, [key, value]) => {
     if (isDefaultFilter(key, value)) {
       return acc
     } else {
       return { ...acc, [key]: value }
     }
   }, {})
-
-  return qs.stringify(filters)
 }
 
 // This is used to remove default state params that clutter up URLs.
