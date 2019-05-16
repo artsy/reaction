@@ -1,3 +1,15 @@
+# v16.11.21 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump @types/react-tracking@6.0.0 [#2426](https://github.com/artsy/reaction/pull/2426) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.20 (Thu May 16 2019)
 
 
