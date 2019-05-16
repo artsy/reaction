@@ -50,7 +50,7 @@ const getReadMoreContent = description => {
       {description && (
         <span dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <Spacer mt={3} />
+      <Spacer mt={2} />
     </>
   )
 }
@@ -63,6 +63,11 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+track({
+  subject: Schema.Subject.ReadMore,
+  type: Schema.Type.Button,
+  action_type: Schema.ActionType.Click,
+})
 const trackReadMoreClick = () => {
   // noop
 }
@@ -83,18 +88,10 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+track({
+  context_module: Schema.ContextModule.CollectionDescription,
+})
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
-  // @track({
-  //   subject: Schema.Subject.ReadMore,
-  //   type: Schema.Type.Button,
-  //   action_type: Schema.ActionType.Click,
-  // })
-  // trackReadMoreClick() {
-  //   // noop
-  // }
-
-  // render() {
-  //   const { collection, artworks } = this.props
   const { user, mediator } = useContext(SystemContext)
 
   return (
@@ -142,7 +139,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     trackingData={{
                       modelName: Schema.OwnerType.Artist,
                       context_module: Schema.ContextModule.RecommendedArtists,
-                      // entity_id: artist._id,
+                      entity_id: artist._id,
                       entity_slug: artist.id,
                     }}
                     onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
@@ -167,9 +164,6 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
             </EntityContainer>
           )
         })
-        // <Sans size="2" weight="medium" color={color("black100")}>
-        //             Follow
-        //           </Sans>
 
         return (
           <header>
@@ -202,41 +196,48 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                   <Spacer mt={1} />
                   <Serif size={["6", "10"]}>{collection.title}</Serif>
                 </MetaContainer>
-                <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
-                  <Box>
-                    <Grid>
-                      <Row>
-                        <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                          <ExtendedSerif size="3">
-                            {smallerScreen ? (
-                              <ReadMore
-                                onReadMoreClicked={this.trackReadMoreClick.bind(
-                                  this
-                                )}
-                                maxChars={chars}
-                                content={getReadMoreContent(
-                                  collection.description
-                                )}
-                              />
-                            ) : (
-                              getReadMoreContent(collection.description)
-                            )}
-                          </ExtendedSerif>
-                        </Col>
-                      </Row>
-                    </Grid>
-                  </Box>
-                  {featuredArtists.length && (
-                    <Box pt={isColumnLayout ? 20 : 0} pb={10}>
-                      <Sans size="2" weight="medium" pb={15}>
-                        {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
-                      </Sans>
-                      <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                        {featuredArtists}
+                <Grid>
+                  <Row>
+                    <Col xl="8" lg="8" md="8" sm="12" xs="12">
+                      <Flex>
+                        <ExtendedSerif size="3">
+                          {smallerScreen ? (
+                            <ReadMore
+                              onReadMoreClicked={trackReadMoreClick}
+                              maxChars={chars}
+                              content={getReadMoreContent(
+                                collection.description
+                              )}
+                            />
+                          ) : (
+                            getReadMoreContent(collection.description)
+                          )}
+                        </ExtendedSerif>
                       </Flex>
-                    </Box>
-                  )}
-                </DescriptionContainer>
+                    </Col>
+                    <Col
+                      xl={isColumnLayout ? "12" : "3"}
+                      lg={isColumnLayout ? "12" : "3"}
+                      md={isColumnLayout ? "12" : "3"}
+                      sm={12}
+                      xs={12}
+                      mdOffset={isColumnLayout ? null : 1}
+                      lgOffset={isColumnLayout ? null : 1}
+                      xlOffset={isColumnLayout ? null : 1}
+                    >
+                      {featuredArtists.length && (
+                        <Box pb={10}>
+                          <Sans size="2" weight="medium" pb={15}>
+                            {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
+                          </Sans>
+                          <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
+                            {featuredArtists}
+                          </Flex>
+                        </Box>
+                      )}
+                    </Col>
+                  </Row>
+                </Grid>
                 <Spacer mb={1} />
               </Box>
             </Flex>
@@ -293,12 +294,6 @@ const EntityContainer = styled(Box)<{
   isColumnLayout: boolean
 }>`
   ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
-`
-
-const DescriptionContainer = styled(Flex)<{
-  isColumnLayout: boolean
-}>`
-  flex-direction: ${props => (props.isColumnLayout ? "column" : "row")};
 `
 
 const ImageCaption = styled(Box)<{
