@@ -27,7 +27,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
     isLoading: false,
   }
 
-  loadNext = (filters, mediator) => {
+  loadNext = (filters: FilterState) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -37,11 +37,11 @@ class Artworks extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor, filters.state.page + 1, filters, mediator)
+      this.loadAfter(endCursor, filters.state.page + 1, filters)
     }
   }
 
-  loadAfter = (cursor, page, filters, mediator) => {
+  loadAfter = (cursor, page, filters: FilterState) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -53,7 +53,7 @@ class Artworks extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-        filters.setPage(page, mediator)
+        filters.setPage(page)
         if (error) {
           console.error(error)
         }
@@ -103,10 +103,10 @@ class Artworks extends Component<Props, LoadingAreaState> {
                 }
                 pageCursors={this.props.filtered_artworks.artworks.pageCursors}
                 onClick={(cursor, page) => {
-                  this.loadAfter(cursor, page, filterState, mediator)
+                  this.loadAfter(cursor, page, filterState)
                 }}
                 onNext={() => {
-                  this.loadNext(filterState, mediator)
+                  this.loadNext(filterState)
                 }}
                 scrollTo="#jump--artistArtworkGrid"
               />

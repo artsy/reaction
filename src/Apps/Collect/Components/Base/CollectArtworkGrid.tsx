@@ -27,7 +27,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
     isLoading: false,
   }
 
-  loadNext = (filters, mediator) => {
+  loadNext = (filters: FilterState) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -37,11 +37,11 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor, filters.state.page + 1, filters, mediator)
+      this.loadAfter(endCursor, filters.state.page + 1, filters)
     }
   }
 
-  loadAfter = (cursor, page, filters, mediator) => {
+  loadAfter = (cursor, page, filters: FilterState) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -53,7 +53,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-        filters.setPage(page, mediator)
+        filters.setPage(page)
 
         if (error) {
           logger.error(error)
@@ -100,10 +100,10 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
                         hasNextPage={artworks.pageInfo.hasNextPage}
                         pageCursors={artworks.pageCursors as any}
                         onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters, mediator)
+                          this.loadAfter(cursor, page, filters)
                         }}
                         onNext={() => {
-                          this.loadNext(filters, mediator)
+                          this.loadNext(filters)
                         }}
                         scrollTo="#jump--collectArtworkGrid"
                       />
