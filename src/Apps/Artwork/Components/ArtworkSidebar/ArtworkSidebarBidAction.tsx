@@ -47,7 +47,16 @@ export class ArtworkSidebarBidAction extends React.Component<
 
   @track((props: ArtworkSidebarBidActionProps) => ({
     artwork_slug: props.artwork.id,
-    product_id: props.artwork._id,
+    products: [
+      {
+        product_id: props.artwork._id,
+        quantity: 1,
+        price:
+          props.artwork.myLotStanding &&
+          props.artwork.myLotStanding[0] &&
+          props.artwork.myLotStanding[0].most_recent_bid.max_bid.cents / 100,
+      },
+    ],
     auction_slug: props.artwork.sale.id,
     context_page: Schema.PageName.ArtworkPage,
     action_type: Schema.ActionType.ClickedBid,
