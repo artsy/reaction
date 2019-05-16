@@ -1,10 +1,10 @@
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState, State } from "Apps/Collect/FilterState"
 import { track } from "Artsy/Analytics/track"
 import React from "react"
 import { Provider } from "unstated"
 
 interface Props {
-  urlBuilder: (state: FilterState) => string
+  urlBuilder: (state: State) => string
   [key: string]: any
 }
 

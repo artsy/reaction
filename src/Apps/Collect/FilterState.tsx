@@ -1,5 +1,4 @@
 import { cloneDeep, isNil, omit, omitBy } from "lodash"
-import qs from "qs"
 import { Container } from "unstated"
 
 export interface State {
@@ -43,48 +42,6 @@ export const initialState = {
   dimension_range: null,
 }
 
-// Returns a string representing the query part of a URL.
-// It removes default values.
-export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
-  const filters = Object.entries(state).reduce((acc, [key, value]) => {
-    if (isDefaultFilter(key, value)) {
-      return acc
-    } else {
-      return { ...acc, [key]: value }
-    }
-  }, {})
-
-  return qs.stringify({
-    ...filters,
-    ...extra,
-  })
-}
-
-// This is used to remove default state params that clutter up URLs.
-const isDefaultFilter = (filter, value): boolean => {
-  if (filter === "major_periods" || filter === "attribution_class") {
-    return value.length === 0
-  }
-
-  if (filter === "sort") {
-    return value === "-decayed_merch"
-  }
-
-  if (filter === "price_range" || filter === "height" || filter === "width") {
-    return value === "*-*"
-  }
-
-  if (filter === "page") {
-    return value === 1
-  }
-
-  if (filter === "medium") {
-    return value === "*"
-  }
-
-  return !value
-}
-
 // These filters aren't tracked via the `tracking` prop passed in here.
 // Instead, they are tracked using decorators in the collect page.
 // Once all filters are switched to be tracked using decorators this can
@@ -101,9 +58,9 @@ export class FilterState extends Container<State> {
   static MAX_HEIGHT = 120
   static MIN_WIDTH = 1
   static MAX_WIDTH = 120
-  urlBuilder: (state: FilterState) => string
+  urlBuilder: (state: State) => string
 
-  constructor(props: State, urlBuilder: (state: FilterState) => string) {
+  constructor(props: State, urlBuilder: (state: State) => string) {
     super()
 
     this.urlBuilder = urlBuilder
@@ -140,8 +97,7 @@ export class FilterState extends Container<State> {
 
   previousQueryString = ""
   pushHistory() {
-    console.log("url builder", this.urlBuilder(null))
-    const currentQueryString = urlFragmentFromState(this.state)
+    const currentQueryString = this.urlBuilder(this.state)
     // PriceRangeFilter's onAfterChange event fires twice; this ensures
     //   we only push that history event once.
     if (this.previousQueryString !== currentQueryString) {
