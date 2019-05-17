@@ -8,8 +8,7 @@ import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
 
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { AnalyticsSchema } from "Artsy/Analytics"
 
 import {
   Box,
@@ -58,18 +57,9 @@ const getReadMoreContent = description => {
 const handleOpenAuth = (mediator, artist) => {
   openAuthModal(mediator, {
     entity: artist,
-    contextModule: Schema.ContextModule.RecommendedArtists,
+    contextModule: AnalyticsSchema.ContextModule.CollectionDescription,
     intent: AuthModalIntent.FollowArtist,
   })
-}
-
-track({
-  subject: Schema.Subject.ReadMore,
-  type: Schema.Type.Button,
-  action_type: Schema.ActionType.Click,
-})
-const trackReadMoreClick = () => {
-  // noop
 }
 
 const maxChars = {
@@ -88,9 +78,6 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
-track({
-  context_module: Schema.ContextModule.CollectionDescription,
-})
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useContext(SystemContext)
 
@@ -137,8 +124,9 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     artist={artist}
                     user={user}
                     trackingData={{
-                      modelName: Schema.OwnerType.Artist,
-                      context_module: Schema.ContextModule.RecommendedArtists,
+                      modelName: AnalyticsSchema.OwnerType.Artist,
+                      context_module:
+                        AnalyticsSchema.ContextModule.CollectionDescription,
                       entity_id: artist._id,
                       entity_slug: artist.id,
                     }}
@@ -203,7 +191,6 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                         <ExtendedSerif size="3">
                           {smallerScreen ? (
                             <ReadMore
-                              onReadMoreClicked={trackReadMoreClick}
                               maxChars={chars}
                               content={getReadMoreContent(
                                 collection.description
@@ -223,7 +210,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       xlOffset={isColumnLayout ? null : 1}
                     >
                       {featuredArtists.length && (
-                        <Box pb={10}>
+                        <Box pb={10} pt={smallerScreen ? 20 : null}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                           </Sans>
