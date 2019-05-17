@@ -14,7 +14,7 @@ import {
 
 import { SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import * as auth from "Components/NavBar/Utils/auth"
+import * as authentication from "Components/NavBar/Utils/authentication"
 
 export const MobileNavMenu: React.FC = () => {
   const { trackEvent } = useTracking()
@@ -58,8 +58,12 @@ export const MobileNavMenu: React.FC = () => {
         </>
       ) : (
         <>
-          <MobileLink onClick={() => auth.login(mediator)}>Login</MobileLink>
-          <MobileLink onClick={() => auth.signup(mediator)}>Sign up</MobileLink>
+          <MobileLink onClick={() => authentication.login(mediator)}>
+            Login
+          </MobileLink>
+          <MobileLink onClick={() => authentication.signup(mediator)}>
+            Sign up
+          </MobileLink>
         </>
       )}
     </MobileNavContainer>

@@ -2,6 +2,12 @@ import { mount } from "enzyme"
 import React from "react"
 import { MoreNavMenu } from "../MoreNavMenu"
 
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
+
 describe("MoreNavMenu", () => {
   const getWrapper = () => {
     return mount(<MoreNavMenu />)

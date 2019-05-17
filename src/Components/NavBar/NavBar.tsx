@@ -28,13 +28,12 @@ import {
 
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
-import * as auth from "./Utils/auth"
+import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
-import { AnalyticsProp, provideTracking } from "Artsy/Analytics/TrackingContext"
-import { useTracking } from "Artsy/Analytics/useTracking"
+import { track, useTracking } from "Artsy/Analytics"
 
-export const NavBar: React.FC = provideTracking({
+export const NavBar: React.FC = track({
   flow: AnalyticsSchema.Flow.Header,
   context_module: AnalyticsSchema.ContextModule.Header,
 })(_props => {
@@ -96,9 +95,7 @@ export const NavBar: React.FC = provideTracking({
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
                   onClick={() => {
-                    trackEvent<
-                      AnalyticsProp<{ new_notification_count: string }>
-                    >({
+                    trackEvent({
                       subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
@@ -123,7 +120,7 @@ export const NavBar: React.FC = provideTracking({
                     subject: AnalyticsSchema.Subject.Login,
                   })
 
-                  auth.login(mediator)
+                  authentication.login(mediator)
                 }}
               >
                 Log in
@@ -135,7 +132,7 @@ export const NavBar: React.FC = provideTracking({
                     subject: AnalyticsSchema.Subject.Signup,
                   })
 
-                  auth.signup(mediator)
+                  authentication.signup(mediator)
                 }}
               >
                 Sign up

@@ -1,21 +1,27 @@
-import { TrackingContext } from "Artsy/Analytics/TrackingContext"
+import merge from "deepmerge"
 import { useContext } from "react"
+import { Trackables } from "./Schema"
+
+import {
+  ReactTrackingContext,
+  TrackingContext,
+} from "react-tracking/build/withTrackingComponentDecorator"
 
 export function useTracking() {
-  const tracking = useContext(TrackingContext)
+  const trackingContext = useContext(ReactTrackingContext) as TrackingContext
 
-  if (!tracking) {
-    console.error(
+  if (!(trackingContext && trackingContext.tracking)) {
+    throw new Error(
       "[Artsy/Analytics/useTracking] Error: Attempting to call `useTracking` " +
-        "without a TrackingContext present. Did you forget to wrap the top of " +
-        "your component tree with `provideTracking`?"
+        "without a ReactTrackingContext present. Did you forget to wrap the top of " +
+        "your component tree with `track`?"
     )
   }
 
-  // If missing a TrackingContext, return a noop for safety
-  const trackEvent = tracking ? tracking.trackEvent : x => x
-
   return {
-    trackEvent,
+    trackEvent: (data: Partial<Trackables>): void =>
+      trackingContext.tracking.dispatch(
+        merge(trackingContext.tracking.data, data as any)
+      ),
   }
 }

@@ -11,6 +11,12 @@ jest.mock("react-relay", () => {
   }
 })
 
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
+
 describe("NotificationsBadge", () => {
   const QueryRenderer: any = _QueryRenderer
 

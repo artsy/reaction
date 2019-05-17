@@ -1,6 +1,5 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
 import { AnalyticsSchema, SystemContext } from "Artsy"
-import { AnalyticsProp } from "Artsy/Analytics/TrackingContext"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import cookie from "cookies-js"
 import { once } from "lodash"
@@ -66,7 +65,7 @@ export const NotificationsBadge: React.FC = () => {
         }
 
         const trackOnHover = once(() => {
-          trackEvent<AnalyticsProp<{ new_notification_count: string }>>({
+          trackEvent({
             subject: AnalyticsSchema.Subject.NotificationBell,
             new_notification_count: totalUnread,
           })
