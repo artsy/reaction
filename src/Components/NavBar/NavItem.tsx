@@ -1,5 +1,5 @@
 import { Box, BoxProps, Link, Sans } from "@artsy/palette"
-import { useTracking } from "Artsy/Analytics/useTracking"
+import { AnalyticsSchema, useTracking } from "Artsy/Analytics"
 import { isString } from "lodash"
 import React, { useState } from "react"
 import styled from "styled-components"
@@ -32,6 +32,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   const trackClick = () => {
     if (href && isString(children)) {
       trackEvent({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: children, // Text passed into the NavItem
         destination_path: href,
       })

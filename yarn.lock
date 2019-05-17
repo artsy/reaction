@@ -2155,10 +2155,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-tracking@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-5.0.4.tgz#8f65c7a5e77b0385e3faf3b822645745cd5f28b7"
-  integrity sha512-2lYwk6eYsbSqkXCuaKD0TV6uUYOMFE+GPE6JWTaDDHChoECdJjdh9bg59UoFABON+lVUs1KZYie5t+Al1eFfKQ==
+"@types/react-tracking@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-6.0.0.tgz#63bcc83c314586f3c84dfe32065872d1346efe9a"
+  integrity sha512-wfYIlQCmzfGYm4v0ZTw8F9uLUhdELRzvjD7XX0KB6KFvMsmk98M5LX4r5qBRwpeqCwY9SujJFBvVQrhrnB/ViQ==
   dependencies:
     "@types/react" "*"
 
