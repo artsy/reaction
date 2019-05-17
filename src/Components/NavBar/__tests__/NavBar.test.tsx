@@ -4,20 +4,15 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
-import * as auth from "../Utils/auth"
+import * as authentication from "../Utils/authentication"
 
-jest.mock("../Utils/auth")
+jest.mock("../Utils/authentication")
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
   }
 })
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Artsy/Analytics/TrackingContext", () => {
-  return {
-    provideTracking: () => Component => Component,
-  }
-})
 
 describe("NavBar", () => {
   const mediator = {
@@ -109,7 +104,7 @@ describe("NavBar", () => {
         .find("Button")
         .first()
         .simulate("click")
-      expect(auth.login).toHaveBeenCalledWith(mediator)
+      expect(authentication.login).toHaveBeenCalledWith(mediator)
     })
 
     it("calls signup auth action on signup button click", () => {
@@ -118,7 +113,7 @@ describe("NavBar", () => {
         .find("Button")
         .last()
         .simulate("click")
-      expect(auth.signup).toHaveBeenCalledWith(mediator)
+      expect(authentication.signup).toHaveBeenCalledWith(mediator)
     })
   })
 
