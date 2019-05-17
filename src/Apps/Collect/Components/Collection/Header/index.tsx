@@ -198,7 +198,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                 </MetaContainer>
                 <Grid>
                   <Row>
-                    <Col xl="8" lg="8" md="8" sm="12" xs="12">
+                    <Col sm="12" md="8">
                       <Flex>
                         <ExtendedSerif size="3">
                           {smallerScreen ? (
@@ -216,11 +216,8 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       </Flex>
                     </Col>
                     <Col
-                      xl={isColumnLayout ? "12" : "3"}
-                      lg={isColumnLayout ? "12" : "3"}
-                      md={isColumnLayout ? "12" : "3"}
                       sm={12}
-                      xs={12}
+                      md={isColumnLayout ? "12" : "3"}
                       mdOffset={isColumnLayout ? null : 1}
                       lgOffset={isColumnLayout ? null : 1}
                       xlOffset={isColumnLayout ? null : 1}
