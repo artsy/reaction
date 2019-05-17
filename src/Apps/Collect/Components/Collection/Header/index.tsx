@@ -1,7 +1,7 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { take } from "lodash"
-import React, { FC, useContext } from "react"
+import { cloneDeep, take } from "lodash"
+import React, { FC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
@@ -49,7 +49,6 @@ const getReadMoreContent = description => {
       {description && (
         <span dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <Spacer mt={2} />
     </>
   )
 }
@@ -80,6 +79,35 @@ const imageWidthSizes = {
 
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useContext(SystemContext)
+  const [showMore, setShowMore] = useState(false)
+
+  const truncateForMobile = (featuredArtists, isColumnLayout) => {
+    if (featuredArtists.length < 3) {
+      return featuredArtists
+    }
+
+    const remainingArtists = featuredArtists.length - 3
+    const viewMore = (
+      <EntityContainer
+        width={["100%", "25%"]}
+        isColumnLayout={isColumnLayout}
+        pb={20}
+        key={4}
+      >
+        <Box
+          onClick={() => {
+            setShowMore(true)
+          }}
+        >
+          <EntityHeader initials={`+${remainingArtists}`} name="View more" />
+        </Box>
+      </EntityContainer>
+    )
+    const artists = cloneDeep(featuredArtists)
+    artists.splice(3, remainingArtists, viewMore)
+
+    return showMore ? featuredArtists : artists
+  }
 
   return (
     <Responsive>
@@ -199,6 +227,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           ) : (
                             getReadMoreContent(collection.description)
                           )}
+                          {collection.description && <Spacer mt={2} />}
                         </ExtendedSerif>
                       </Flex>
                     </Col>
@@ -210,12 +239,17 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       xlOffset={isColumnLayout ? null : 1}
                     >
                       {featuredArtists.length && (
-                        <Box pb={10} pt={smallerScreen ? 20 : null}>
+                        <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                           </Sans>
                           <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                            {featuredArtists}
+                            {smallerScreen
+                              ? truncateForMobile(
+                                  featuredArtists,
+                                  isColumnLayout
+                                )
+                              : featuredArtists}
                           </Flex>
                         </Box>
                       )}
