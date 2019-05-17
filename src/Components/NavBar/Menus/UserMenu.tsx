@@ -1,7 +1,4 @@
-import { SystemContext } from "Artsy"
 import React, { useContext } from "react"
-import * as auth from "../Utils/auth"
-import { useTracking } from "../Utils/useTracking"
 
 import {
   HeartIcon,
@@ -12,8 +9,12 @@ import {
   SoloIcon,
 } from "@artsy/palette"
 
+import { AnalyticsSchema, SystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
+import * as auth from "../Utils/auth"
+
 export const UserMenu: React.FC = () => {
-  const { tracking, Schema } = useTracking()
+  const { trackEvent } = useTracking()
   const { mediator } = useContext(SystemContext)
 
   const trackClick = event => {
@@ -21,8 +22,8 @@ export const UserMenu: React.FC = () => {
     const text = link.innerText
     const href = link.parentNode.parentNode.getAttribute("href")
 
-    tracking.trackEvent({
-      context_module: Schema.ContextModule.HeaderUserDropdown,
+    trackEvent({
+      context_module: AnalyticsSchema.ContextModule.HeaderUserDropdown,
       subject: text,
       destination_path: href,
     })

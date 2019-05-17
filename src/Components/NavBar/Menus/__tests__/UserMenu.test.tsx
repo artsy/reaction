@@ -5,14 +5,10 @@ import React from "react"
 import { UserMenu } from "../UserMenu"
 
 jest.mock("Components/NavBar/Utils/auth")
-jest.mock("Components/NavBar/Utils/useTracking", () => {
-  const Schema = require("Artsy/Analytics/Schema")
+jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
-      tracking: {
-        trackEvent: jest.fn(),
-      },
-      Schema,
+      trackEvent: jest.fn(),
     }),
   }
 })

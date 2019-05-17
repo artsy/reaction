@@ -1,5 +1,7 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
-import { SystemContext } from "Artsy"
+import { AnalyticsSchema, SystemContext } from "Artsy"
+import { AnalyticsProp } from "Artsy/Analytics/TrackingContext"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import cookie from "cookies-js"
 import { once } from "lodash"
 import React, { useContext } from "react"
@@ -8,12 +10,11 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
-import { useTracking } from "./Utils/useTracking"
 
 const logger = createLogger("Components/NavBar")
 
 export const NotificationsBadge: React.FC = () => {
-  const { tracking, Schema } = useTracking()
+  const { trackEvent } = useTracking()
 
   return (
     <NotificationsQueryRenderer
@@ -65,8 +66,8 @@ export const NotificationsBadge: React.FC = () => {
         }
 
         const trackOnHover = once(() => {
-          tracking.trackEvent({
-            subject: Schema.Subject.NotificationBell,
+          trackEvent<AnalyticsProp<{ new_notification_count: string }>>({
+            subject: AnalyticsSchema.Subject.NotificationBell,
             new_notification_count: totalUnread,
           })
         })

@@ -2,11 +2,21 @@ import cookie from "cookies-js"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 
+import {
+  ArtsyMarkIcon,
+  BellIcon,
+  Box,
+  Button,
+  color,
+  Flex,
+  Link,
+  MoreIcon,
+  SoloIcon,
+  Spacer,
+} from "@artsy/palette"
+
 import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
-
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 
 import {
   MobileNavMenu,
@@ -20,44 +30,21 @@ import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 import * as auth from "./Utils/auth"
 
-import {
-  ArtsyMarkIcon,
-  BellIcon,
-  Box,
-  Button,
-  color,
-  Flex,
-  Link,
-  MoreIcon,
-  SoloIcon,
-  Spacer,
-} from "@artsy/palette"
-import { TrackingProp } from "react-tracking"
+import { AnalyticsSchema } from "Artsy"
+import { AnalyticsProp, provideTracking } from "Artsy/Analytics/TrackingContext"
+import { useTracking } from "Artsy/Analytics/useTracking"
 
-interface NavBarProps {
-  tracking?: TrackingProp
-}
-
-export const NavbarContext = React.createContext<{
-  tracking?: TrackingProp
-  Schema?: typeof Schema
-}>({})
-
-export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
-  flow: Schema.Flow.Header,
-  context_module: Schema.ContextModule.Header,
-})(({ tracking }) => {
+export const NavBar: React.FC = provideTracking({
+  flow: AnalyticsSchema.Flow.Header,
+  context_module: AnalyticsSchema.ContextModule.Header,
+})(_props => {
   const { mediator, user } = useContext(SystemContext)
+  const { trackEvent } = useTracking()
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const isLoggedIn = Boolean(user)
 
   return (
-    <NavbarContext.Provider
-      value={{
-        tracking,
-        Schema,
-      }}
-    >
+    <>
       <NavBarContainer p={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
@@ -109,8 +96,10 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
                   onClick={() => {
-                    tracking.trackEvent({
-                      subject: Schema.Subject.NotificationBell,
+                    trackEvent<
+                      AnalyticsProp<{ new_notification_count: string }>
+                    >({
+                      subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
                     })
@@ -130,8 +119,8 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  tracking.trackEvent({
-                    subject: Schema.Subject.Login,
+                  trackEvent({
+                    subject: AnalyticsSchema.Subject.Login,
                   })
 
                   auth.login(mediator)
@@ -142,8 +131,8 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  tracking.trackEvent({
-                    subject: Schema.Subject.Signup,
+                  trackEvent({
+                    subject: AnalyticsSchema.Subject.Signup,
                   })
 
                   auth.signup(mediator)
@@ -164,8 +153,8 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
             onClick={() => {
               const showMenu = !showMobileMenu
               if (showMenu) {
-                tracking.trackEvent({
-                  subject: Schema.Subject.SmallScreenMenuSandwichIcon,
+                trackEvent({
+                  subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
                 })
               }
 
@@ -191,7 +180,7 @@ export const NavBar: React.FC<NavBarProps> = track<NavBarProps>({
           <MobileNavMenu />
         </>
       )}
-    </NavbarContext.Provider>
+    </>
   )
 })
 
