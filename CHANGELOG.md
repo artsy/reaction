@@ -1,3 +1,15 @@
+# v16.12.0 (Fri May 17 2019)
+
+#### 🚀  Enhancement
+
+- [Tracking] Remove unneeded custom tracking context [#2434](https://github.com/artsy/reaction/pull/2434) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.11.24 (Fri May 17 2019)
 
 ### Release Notes
