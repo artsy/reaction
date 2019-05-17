@@ -203,15 +203,12 @@ export class PaymentPicker extends React.Component<
 
     const orderCard = this.props.order.creditCard
 
-    const creditCardsArray: any = []
+    const creditCardsArray = creditCards.edges.map(e => e.node)
 
-    creditCards.edges.map(e => {
-      creditCardsArray.push(e.node)
-    })
-
+    // # only add the unsaved card to the cards array if its not already there and has the necessary properties
     if (
       orderCard != null &&
-      creditCardsArray.filter(card => card.id === orderCard.id).length === 0 &&
+      creditCardsArray.some(card => card.id === orderCard.id) === 0 &&
       orderCard.brand
     ) {
       creditCardsArray.unshift(orderCard)
