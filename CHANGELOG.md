@@ -1,3 +1,49 @@
+# v16.11.24 (Fri May 17 2019)
+
+### Release Notes
+
+  _From #2432_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4120-Fri-May-17-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.9...v4.12.0)
+
+##### 🚀  Enhancement
+
+-   `palette-docs`, `palette`
+-   X Axis labels for bar chart [#&#8203;392](https://togithub.com/artsy/palette/pull/392) ([@&#8203;sepans](https://togithub.com/sepans))
+
+##### Authors: 1
+
+-   Sepand Ansari ([@&#8203;sepans](https://togithub.com/sepans))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Collection header qa refactor [#2431](https://github.com/artsy/reaction/pull/2431) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.11.9 to v4.12.0 [#2432](https://github.com/artsy/reaction/pull/2432) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dep @types/react-tracking from ^6.0.0 to 6.0.0 [#2429](https://github.com/artsy/reaction/pull/2429) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.11.23 (Thu May 16 2019)
 
 #### 🐛  Bug Fix
