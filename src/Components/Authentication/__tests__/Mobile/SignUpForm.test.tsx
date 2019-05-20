@@ -103,6 +103,7 @@ describe("MobileSignUpForm", () => {
               accepted_terms_of_service: true,
               password: "password",
               name: "User Name",
+              recaptcha_token: "recaptcha-token",
             })
             done()
           })

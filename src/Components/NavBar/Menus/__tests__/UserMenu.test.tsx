@@ -1,18 +1,14 @@
 import { SystemContextProvider } from "Artsy"
-import * as auth from "Components/NavBar/Utils/auth"
+import * as authentication from "Components/NavBar/Utils/authentication"
 import { mount } from "enzyme"
 import React from "react"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("Components/NavBar/Utils/auth")
-jest.mock("Components/NavBar/Utils/useTracking", () => {
-  const Schema = require("Artsy/Analytics/Schema")
+jest.mock("Components/NavBar/Utils/authentication")
+jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
-      tracking: {
-        trackEvent: jest.fn(),
-      },
-      Schema,
+      trackEvent: jest.fn(),
     }),
   }
 })
@@ -61,6 +57,6 @@ describe("UserMenu", () => {
       .find("MenuItem")
       .last()
       .simulate("click")
-    expect(auth.logout).toHaveBeenCalledWith(mediator)
+    expect(authentication.logout).toHaveBeenCalledWith(mediator)
   })
 })

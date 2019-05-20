@@ -11,6 +11,7 @@ import { ArticleData, DisplayData, RelatedArticleCanvasData } from "../Typings"
 import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
 interface Props {
+  areHostedAdsEnabled?: boolean
   article: ArticleData
   display?: DisplayData
   isMobile?: boolean

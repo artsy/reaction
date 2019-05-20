@@ -1,15 +1,14 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { take } from "lodash"
-import React, { Component } from "react"
+import { cloneDeep, take } from "lodash"
+import React, { FC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
 
-import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { AnalyticsSchema } from "Artsy/Analytics"
 
 import {
   Box,
@@ -24,6 +23,9 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
+import { SystemContext } from "Artsy"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 interface Props {
   collection: {
@@ -47,9 +49,16 @@ const getReadMoreContent = description => {
       {description && (
         <span dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <Spacer mt={3} />
     </>
   )
+}
+
+const handleOpenAuth = (mediator, artist) => {
+  openAuthModal(mediator, {
+    entity: artist,
+    contextModule: AnalyticsSchema.ContextModule.CollectionDescription,
+    intent: AuthModalIntent.FollowArtist,
+  })
 }
 
 const maxChars = {
@@ -68,142 +77,194 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
-@track({
-  context_module: Schema.ContextModule.CollectionDescription,
-})
-export class CollectionHeader extends Component<Props> {
-  @track({
-    subject: Schema.Subject.ReadMore,
-    type: Schema.Type.Button,
-    action_type: Schema.ActionType.Click,
-  })
-  trackReadMoreClick() {
-    // noop
-  }
+export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
+  const { user, mediator } = useContext(SystemContext)
+  const [showMore, setShowMore] = useState(false)
 
-  render() {
-    const { collection, artworks } = this.props
+  const truncateForMobile = (featuredArtists, isColumnLayout) => {
+    if (featuredArtists.length < 3) {
+      return featuredArtists
+    }
 
-    return (
-      <Responsive>
-        {({ xs, sm, md, lg }) => {
-          const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
-          const imageWidth = imageWidthSizes[size]
-          const imageHeight = xs ? 160 : 240
-          const chars = maxChars[size]
-          const categoryTarget = `/collections#${slugify(collection.category)}`
-          const artistsCount = size === "xs" ? 9 : 12
-
-          const hasMultipleArtists =
-            artworks.merchandisable_artists &&
-            artworks.merchandisable_artists.length > 1
-
-          const isColumnLayout =
-            hasMultipleArtists || !collection.description || size === "xs"
-
-          const featuredArtists = take(
-            artworks.merchandisable_artists,
-            artistsCount
-          ).map((artist, index) => {
-            const hasArtistMetaData = artist.nationality && artist.birthday
-            return (
-              <EntityContainer
-                width={["100%", "25%"]}
-                isColumnLayout={isColumnLayout}
-                key={index}
-                pb={20}
-              >
-                <EntityHeader
-                  imageUrl={artist.imageUrl}
-                  name={artist.name}
-                  meta={
-                    hasArtistMetaData
-                      ? `${artist.nationality}, b. ${artist.birthday}`
-                      : null
-                  }
-                  href={`/artist/${artist.id}`}
-                  FollowButton={
-                    <Sans size="2" weight="medium" color={color("black100")}>
-                      Follow
-                    </Sans>
-                  }
-                />
-              </EntityContainer>
-            )
-          })
-
-          return (
-            <header>
-              <Flex flexDirection="column">
-                <Box>
-                  <Background
-                    p={2}
-                    mt={[0, 3]}
-                    mb={3}
-                    headerImageUrl={resize(collection.headerImage, {
-                      width: imageWidth * (xs ? 2 : 1),
-                      height: imageHeight * (xs ? 2 : 1),
-                      quality: 80,
-                    })}
-                    height={imageHeight}
-                  >
-                    <Overlay />
-                    {collection.credit && (
-                      <ImageCaption
-                        size={size}
-                        dangerouslySetInnerHTML={{ __html: collection.credit }}
-                      />
-                    )}
-                  </Background>
-                  <MetaContainer mb={2}>
-                    <BreadcrumbContainer size={["2", "3"]}>
-                      <a href="/collect">All works</a> /{" "}
-                      <a href={categoryTarget}>{collection.category}</a>
-                    </BreadcrumbContainer>
-                    <Spacer mt={1} />
-                    <Title size={["6", "10"]}>{collection.title}</Title>
-                  </MetaContainer>
-                  <DescriptionContainer isColumnLayout={isColumnLayout} mb={5}>
-                    <Box>
-                      <Grid>
-                        <Row>
-                          <Col xl="8" lg="8" md="10" sm="12" xs="12">
-                            <ExtendedSerif size="3">
-                              <ReadMore
-                                onReadMoreClicked={this.trackReadMoreClick.bind(
-                                  this
-                                )}
-                                maxChars={chars}
-                                content={getReadMoreContent(
-                                  collection.description
-                                )}
-                              />
-                            </ExtendedSerif>
-                          </Col>
-                        </Row>
-                      </Grid>
-                    </Box>
-                    {featuredArtists.length && (
-                      <Box pt={isColumnLayout ? 20 : 0} pb={10}>
-                        <Sans size="2" weight="medium" pb={15}>
-                          {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
-                        </Sans>
-                        <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                          {featuredArtists}
-                        </Flex>
-                      </Box>
-                    )}
-                  </DescriptionContainer>
-                  <Spacer mb={1} />
-                </Box>
-              </Flex>
-              <Spacer mb={2} />
-            </header>
-          )
-        }}
-      </Responsive>
+    const remainingArtists = featuredArtists.length - 3
+    const viewMore = (
+      <EntityContainer
+        width={["100%", "25%"]}
+        isColumnLayout={isColumnLayout}
+        pb={20}
+        key={4}
+      >
+        <Box
+          onClick={() => {
+            setShowMore(true)
+          }}
+        >
+          <EntityHeader initials={`+${remainingArtists}`} name="View more" />
+        </Box>
+      </EntityContainer>
     )
+    const artists = cloneDeep(featuredArtists)
+    artists.splice(3, remainingArtists, viewMore)
+
+    return showMore ? featuredArtists : artists
   }
+
+  return (
+    <Responsive>
+      {({ xs, sm, md, lg }) => {
+        const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
+        const imageWidth = imageWidthSizes[size]
+        const imageHeight = xs ? 160 : 240
+        const chars = maxChars[size]
+        const categoryTarget = `/collections#${slugify(collection.category)}`
+        const artistsCount = size === "xs" ? 9 : 12
+
+        const hasMultipleArtists =
+          artworks.merchandisable_artists &&
+          artworks.merchandisable_artists.length > 1
+
+        const isColumnLayout =
+          hasMultipleArtists || !collection.description || size === "xs"
+        const smallerScreen = size === "xs" || size === "sm"
+        const featuredArtists = take(
+          artworks.merchandisable_artists,
+          artistsCount
+        ).map((artist, index) => {
+          const hasArtistMetaData = artist.nationality && artist.birthday
+          return (
+            <EntityContainer
+              width={["100%", "25%"]}
+              isColumnLayout={isColumnLayout}
+              key={index}
+              pb={20}
+            >
+              <EntityHeader
+                imageUrl={artist.imageUrl}
+                name={artist.name}
+                meta={
+                  hasArtistMetaData
+                    ? `${artist.nationality}, b. ${artist.birthday}`
+                    : null
+                }
+                href={`/artist/${artist.id}`}
+                FollowButton={
+                  <FollowArtistButton
+                    artist={artist}
+                    user={user}
+                    trackingData={{
+                      modelName: AnalyticsSchema.OwnerType.Artist,
+                      context_module:
+                        AnalyticsSchema.ContextModule.CollectionDescription,
+                      entity_id: artist._id,
+                      entity_slug: artist.id,
+                    }}
+                    onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
+                    render={({ is_followed }) => {
+                      return (
+                        <Sans
+                          size="2"
+                          weight="medium"
+                          color="black"
+                          style={{
+                            cursor: "pointer",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          {is_followed ? "Following" : "Follow"}
+                        </Sans>
+                      )
+                    }}
+                  />
+                }
+              />
+            </EntityContainer>
+          )
+        })
+
+        return (
+          <header>
+            <Flex flexDirection="column">
+              <Box>
+                <Background
+                  p={2}
+                  mt={[0, 3]}
+                  mb={3}
+                  headerImageUrl={resize(collection.headerImage, {
+                    width: imageWidth * (xs ? 2 : 1),
+                    height: imageHeight * (xs ? 2 : 1),
+                    quality: 80,
+                  })}
+                  height={imageHeight}
+                >
+                  <Overlay />
+                  {collection.credit && (
+                    <ImageCaption
+                      size={size}
+                      dangerouslySetInnerHTML={{ __html: collection.credit }}
+                    />
+                  )}
+                </Background>
+                <MetaContainer mb={2}>
+                  <BreadcrumbContainer size={["2", "3"]}>
+                    <a href="/collect">All works</a> /{" "}
+                    <a href={categoryTarget}>{collection.category}</a>
+                  </BreadcrumbContainer>
+                  <Spacer mt={1} />
+                  <Serif size={["6", "10"]}>{collection.title}</Serif>
+                </MetaContainer>
+                <Grid>
+                  <Row>
+                    <Col sm="12" md="8">
+                      <Flex>
+                        <ExtendedSerif size="3">
+                          {smallerScreen ? (
+                            <ReadMore
+                              maxChars={chars}
+                              content={getReadMoreContent(
+                                collection.description
+                              )}
+                            />
+                          ) : (
+                            getReadMoreContent(collection.description)
+                          )}
+                          {collection.description && <Spacer mt={2} />}
+                        </ExtendedSerif>
+                      </Flex>
+                    </Col>
+                    <Col
+                      sm={12}
+                      md={isColumnLayout ? "12" : "3"}
+                      mdOffset={isColumnLayout ? null : 1}
+                      lgOffset={isColumnLayout ? null : 1}
+                      xlOffset={isColumnLayout ? null : 1}
+                    >
+                      {featuredArtists.length && (
+                        <Box pb={10}>
+                          <Sans size="2" weight="medium" pb={15}>
+                            {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
+                          </Sans>
+                          <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
+                            {smallerScreen
+                              ? truncateForMobile(
+                                  featuredArtists,
+                                  isColumnLayout
+                                )
+                              : featuredArtists}
+                          </Flex>
+                        </Box>
+                      )}
+                    </Col>
+                  </Row>
+                </Grid>
+                <Spacer mb={1} />
+              </Box>
+            </Flex>
+            <Spacer mb={2} />
+          </header>
+        )
+      }}
+    </Responsive>
+  )
 }
 
 const Background = styled(Box)<{
@@ -253,16 +314,6 @@ const EntityContainer = styled(Box)<{
   ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
 `
 
-const DescriptionContainer = styled(Flex)<{
-  isColumnLayout: boolean
-}>`
-  flex-direction: ${props => (props.isColumnLayout ? "column" : "row")};
-`
-
-const Title = styled(Serif)`
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-`
-
 const ImageCaption = styled(Box)<{
   size: string
 }>`
@@ -304,10 +355,12 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
       fragment Header_artworks on FilterArtworks {
         merchandisable_artists {
           id
+          _id
           name
           imageUrl
           birthday
           nationality
+          ...FollowArtistButton_artist
         }
       }
     `,

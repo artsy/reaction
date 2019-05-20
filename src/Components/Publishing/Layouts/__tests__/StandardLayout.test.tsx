@@ -39,15 +39,8 @@ describe("Standard Article", () => {
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
+      areHostedAdsEnabled: false,
     }
-    jest.doMock("sharify", () => ({
-      HASHTAG_LAB_ADS_ENABLED: false,
-      HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-      CURRENT_USER: {
-        email: "someemail@email.com",
-        type: "Non-Admin",
-      },
-    }))
   })
 
   afterEach(() => {

@@ -1,8 +1,8 @@
 import { Box, BoxProps, Link, Sans } from "@artsy/palette"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { isString } from "lodash"
 import React, { useState } from "react"
 import styled from "styled-components"
-import { useTracking } from "./Utils/useTracking"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
@@ -23,7 +23,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   href,
   onClick,
 }) => {
-  const { tracking } = useTracking()
+  const { trackEvent } = useTracking()
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
@@ -31,7 +31,7 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   const trackClick = () => {
     if (href && isString(children)) {
-      tracking.trackEvent({
+      trackEvent({
         subject: children, // Text passed into the NavItem
         destination_path: href,
       })

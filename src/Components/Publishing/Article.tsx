@@ -18,6 +18,7 @@ import { ArticleData, DisplayData } from "./Typings"
 GPT.enableSingleRequest()
 
 export interface ArticleProps {
+  areHostedAdsEnabled?: boolean
   article: ArticleData
   backgroundColor?: string
   color?: string

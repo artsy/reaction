@@ -7,10 +7,16 @@ import styled from "styled-components"
 interface DisplayCanvasProps {
   adUnit?: AdUnit
   adDimension?: AdDimension
+  displayNewAds?: boolean
 }
 
 export const NewDisplayCanvas: SFC<DisplayCanvasProps> = props => {
-  const { adUnit, adDimension } = props
+  const { adUnit, adDimension, displayNewAds } = props
+
+  if (!displayNewAds) {
+    return null
+  }
+
   const [width, height] = adDimension.split("x").map((a: string) => parseInt(a))
 
   return (

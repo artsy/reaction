@@ -1,3 +1,102 @@
+# v16.12.1 (Mon May 20 2019)
+
+#### 🐛  Bug Fix
+
+- Removes Enabled Ad Feature Flags from client [#2437](https://github.com/artsy/reaction/pull/2437) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.1 [#2436](https://github.com/artsy/reaction/pull/2436) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.12.0 (Fri May 17 2019)
+
+#### 🚀  Enhancement
+
+- [Tracking] Remove unneeded custom tracking context [#2434](https://github.com/artsy/reaction/pull/2434) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.24 (Fri May 17 2019)
+
+### Release Notes
+
+  _From #2432_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4120-Fri-May-17-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.9...v4.12.0)
+
+##### 🚀  Enhancement
+
+-   `palette-docs`, `palette`
+-   X Axis labels for bar chart [#&#8203;392](https://togithub.com/artsy/palette/pull/392) ([@&#8203;sepans](https://togithub.com/sepans))
+
+##### Authors: 1
+
+-   Sepand Ansari ([@&#8203;sepans](https://togithub.com/sepans))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Collection header qa refactor [#2431](https://github.com/artsy/reaction/pull/2431) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.11.9 to v4.12.0 [#2432](https://github.com/artsy/reaction/pull/2432) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dep @types/react-tracking from ^6.0.0 to 6.0.0 [#2429](https://github.com/artsy/reaction/pull/2429) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.11.23 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Schema] Sync schema [#2428](https://github.com/artsy/reaction/pull/2428) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.22 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Signup form includes recaptcha_token on handleSubmit [#2427](https://github.com/artsy/reaction/pull/2427) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.11.21 (Thu May 16 2019)
 
 #### 🐛  Bug Fix

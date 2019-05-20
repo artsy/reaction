@@ -37,6 +37,7 @@ describe("SignUpForm", () => {
             password: "password123",
             name: "John Doe",
             accepted_terms_of_service: true,
+            recaptcha_token: "recaptcha-token",
           },
           formik.getFormikActions()
         )

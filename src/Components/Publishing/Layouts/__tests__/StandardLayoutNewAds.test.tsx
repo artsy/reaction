@@ -13,17 +13,6 @@ import "jest-styled-components"
 import React from "react"
 import { StandardLayout } from "../StandardLayout"
 
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ENABLED: true,
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Admin",
-      email: "alloweduser@email.com",
-    },
-  },
-}))
-
 jest.mock(
   "Components/Publishing/Sections/FullscreenViewer/withFullScreen",
   () => ({
@@ -36,19 +25,20 @@ describe("Standard Article with new ads hidden behind feature flags", () => {
     return mount(<StandardLayout {..._props} />)
   }
 
-  let props
+  let standardArticleProps
   beforeEach(() => {
-    props = {
+    standardArticleProps = {
       article: StandardArticle,
       display: Display("standard"),
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
+      areHostedAdsEnabled: true,
     }
   })
 
   it("It renders new panel and canvas displays in Standard Layout Articles when feature flagged ads are enabled", () => {
-    const article = getWrapper(props)
+    const article = getWrapper(standardArticleProps)
 
     expect(article.find(NewDisplayPanel).length).toBe(1)
     expect(article.find(NewDisplayCanvas).length).toBe(1)

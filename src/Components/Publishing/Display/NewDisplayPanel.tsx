@@ -7,10 +7,16 @@ import styled from "styled-components"
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   adUnit?: AdUnit
   adDimension?: AdDimension
+  displayNewAds?: boolean
 }
 
 export const NewDisplayPanel: SFC<DisplayPanelProps> = props => {
-  const { adDimension, adUnit } = props
+  const { adDimension, adUnit, displayNewAds } = props
+
+  if (!displayNewAds) {
+    return null
+  }
+
   const [width, height] = adDimension.split("x").map((a: string) => parseInt(a))
 
   return (
@@ -42,6 +48,7 @@ const Wrapper = styled(Box)`
   text-decoration: none;
   max-width: 360px;
 `
+
 const DisplayPanelContainer = styled(Flex)`
   max-width: 360px;
   box-sizing: border-box;

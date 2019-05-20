@@ -70,8 +70,13 @@ export class MobileSignUpForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("signup_submit")
-    this.props.handleSubmit(values, formikBag)
+    repcaptcha("signup_submit", recaptcha_token => {
+      const valuesWithToken = {
+        ...values,
+        recaptcha_token,
+      }
+      this.props.handleSubmit(valuesWithToken, formikBag)
+    })
   }
 
   render() {
