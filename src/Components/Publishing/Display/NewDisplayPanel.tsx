@@ -1,4 +1,4 @@
-import { Box, color, Flex } from "@artsy/palette"
+import { Box, color, Flex, Sans } from "@artsy/palette"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
 import { Bling as GPT } from "react-gpt"
@@ -24,7 +24,7 @@ export const NewDisplayPanel: SFC<DisplayPanelProps> = props => {
       <DisplayPanelContainer
         flexDirection="column"
         className="DisplayPanel__DisplayPanelContainer"
-        p="40px auto"
+        p="40px"
         m="auto"
         width={width}
         height={height}
@@ -38,6 +38,9 @@ export const NewDisplayPanel: SFC<DisplayPanelProps> = props => {
           }}
           slotSize={[width, height]}
         />
+        <Sans size="1" color="black30">
+          Advertisement
+        </Sans>
       </DisplayPanelContainer>
     </Wrapper>
   )

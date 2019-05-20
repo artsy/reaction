@@ -1,4 +1,4 @@
-import { color, Flex } from "@artsy/palette"
+import { color, Flex, Sans } from "@artsy/palette"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
 import { Bling as GPT } from "react-gpt"
@@ -22,6 +22,9 @@ export const NewDisplayCanvas: SFC<DisplayCanvasProps> = props => {
   return (
     <DisplayCanvasContainer flexDirection="column" m="auto" p={2}>
       <GPT adUnitPath={`/21805539690/${adUnit}`} slotSize={[width, height]} />
+      <Sans size="1" color="black30">
+        Advertisement
+      </Sans>
     </DisplayCanvasContainer>
   )
 }

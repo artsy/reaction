@@ -19,8 +19,6 @@ import {
   UnitPanelVideo,
 } from "../Fixtures/Components"
 
-const isHTLAdEnabled = () => true
-
 const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
     return <DisplayPanel unit={UnitPanel} campaign={Campaign} />
