@@ -1,5 +1,6 @@
 import { cloneDeep, isNil, omit, omitBy } from "lodash"
 import { Container } from "unstated"
+import { buildUrlForCollectApp } from "./urlBuilder"
 
 export interface State {
   medium?: string
@@ -60,7 +61,10 @@ export class FilterState extends Container<State> {
   static MAX_WIDTH = 120
   urlBuilder: (state: State) => string
 
-  constructor(props: State, urlBuilder: (state: State) => string) {
+  constructor(
+    props: State,
+    urlBuilder: (state: State) => string = buildUrlForCollectApp
+  ) {
     super()
 
     this.urlBuilder = urlBuilder
