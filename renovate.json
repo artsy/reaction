@@ -1,8 +1,4 @@
 {
   "extends": ["@artsy:lib"],
-  "assignees": ["zephraph", "damassi", "alloy"],
-  "automerge": true,
-  "major": {
-    "automerge": false
-  }
+  "assignees": ["zephraph", "damassi", "alloy"]
 }
