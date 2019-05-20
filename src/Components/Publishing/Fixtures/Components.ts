@@ -303,11 +303,13 @@ export const UnitCanvasSlideshow: DisplayUnitData = {
 export const StandardArticleHostedAdPanel: HostedAdData = {
   adUnit: "Desktop_RightRail1" as AdUnit,
   adDimension: "300x250" as AdDimension,
+  displayNewAds: true,
 }
 
 export const StandardArticleHostedAdCanvas: HostedAdData = {
   adUnit: "Desktop_TopLeaderboard" as AdUnit,
   adDimension: "970x250" as AdDimension,
+  displayNewAds: true,
 }
 
 export const UnitPanel: DisplayUnitData = {

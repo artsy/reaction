@@ -1,6 +1,5 @@
 import { Flex } from "@artsy/palette"
 import { ErrorBoundary } from "Components/ErrorBoundary"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
 import styled from "styled-components"
@@ -8,12 +7,13 @@ import styled from "styled-components"
 interface DisplayCanvasProps {
   adUnit?: AdUnit
   adDimension?: AdDimension
+  displayNewAds?: boolean
 }
 
 export const NewDisplayCanvas: SFC<DisplayCanvasProps> = props => {
-  const { adUnit, adDimension } = props
+  const { adUnit, adDimension, displayNewAds } = props
 
-  if (!isHTLAdEnabled()) {
+  if (!displayNewAds) {
     return null
   }
 

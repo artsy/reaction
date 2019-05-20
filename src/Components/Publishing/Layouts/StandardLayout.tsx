@@ -1,7 +1,6 @@
 import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
@@ -68,6 +67,7 @@ export class StandardLayout extends React.Component<
 
   render() {
     const {
+      areHostedAdsEnabled,
       article,
       display,
       emailSignupUrl,
@@ -85,7 +85,6 @@ export class StandardLayout extends React.Component<
     const { seriesArticle } = article
     const campaign = omit(display, "panel", "canvas")
     const seriesOrSuper = isSuper || seriesArticle
-    const isNewAdEnabled = isHTLAdEnabled()
 
     return (
       <Responsive>
@@ -94,7 +93,7 @@ export class StandardLayout extends React.Component<
           const isMobileAd = Boolean(isMobile || xs || sm || md)
 
           const DisplayPanelAd = () => {
-            if (isNewAdEnabled) {
+            if (areHostedAdsEnabled) {
               return (
                 <NewDisplayPanel
                   adUnit={
@@ -107,6 +106,7 @@ export class StandardLayout extends React.Component<
                       ? AdDimension.Mobile_InContentMR1
                       : AdDimension.Desktop_RightRail1
                   }
+                  displayNewAds={areHostedAdsEnabled}
                 />
               )
             } else {
@@ -125,7 +125,7 @@ export class StandardLayout extends React.Component<
           }
           return (
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
-              {isNewAdEnabled && (
+              {areHostedAdsEnabled && (
                 <NewDisplayCanvas
                   adUnit={
                     isMobileAd
@@ -137,6 +137,7 @@ export class StandardLayout extends React.Component<
                       ? AdDimension.Mobile_TopLeaderboard
                       : AdDimension.Desktop_TopLeaderboard
                   }
+                  displayNewAds={areHostedAdsEnabled}
                 />
               )}
               <ReadMoreWrapper
@@ -171,7 +172,7 @@ export class StandardLayout extends React.Component<
 
               {(relatedArticlesForCanvas || display) &&
                 !seriesOrSuper &&
-                !isNewAdEnabled && (
+                !areHostedAdsEnabled && (
                   <CanvasFooter
                     article={article}
                     display={display}

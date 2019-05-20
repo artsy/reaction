@@ -1,5 +1,4 @@
 import { Box, color, Flex } from "@artsy/palette"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
 import styled from "styled-components"
@@ -8,23 +7,24 @@ import { ErrorBoundary } from "../../ErrorBoundary"
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   adUnit?: AdUnit
   adDimension?: AdDimension
+  displayNewAds?: boolean
 }
 
 export const NewDisplayPanel: SFC<DisplayPanelProps> = props => {
-  const { adDimension, adUnit } = props
+  const { adDimension, adUnit, displayNewAds } = props
 
-  if (!isHTLAdEnabled()) {
+  if (!displayNewAds) {
     return null
   }
 
   return (
     <ErrorBoundary>
-      <Wrapper m={["auto", "0 auto", "auto"]} color="black100">
+      <Wrapper color="black100" m="0 auto">
         <DisplayPanelContainer
-          flexDirection="column"
           className="DisplayPanel__DisplayPanelContainer"
+          m="0 auto"
+          flexDirection="column"
           p={2}
-          m={["auto", "auto", "auto", "inherit"]}
         >
           <div
             className="htl-ad"
@@ -43,6 +43,7 @@ const Wrapper = styled(Box)`
   text-decoration: none;
   max-width: 360px;
 `
+
 const DisplayPanelContainer = styled(Flex)`
   border: 1px solid ${color("black10")};
   max-width: 360px;

@@ -5,17 +5,7 @@ import React from "react"
 import renderer from "react-test-renderer"
 
 import { StandardArticleHostedAdPanel } from "../../Fixtures/Components"
-
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ENABLED: true,
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Admin",
-      email: "alloweduser@email.com",
-    },
-  },
-}))
+// tslint:disable: jsx-boolean-value
 
 describe("snapshot", () => {
   it("renders the new canvas in standard layout", () => {
@@ -24,6 +14,7 @@ describe("snapshot", () => {
         <NewDisplayPanel
           adDimension={StandardArticleHostedAdPanel.adDimension}
           adUnit={StandardArticleHostedAdPanel.adUnit}
+          displayNewAds={true}
         />
       )
       .toJSON()
@@ -37,11 +28,13 @@ describe("data", () => {
       <NewDisplayPanel
         adDimension={StandardArticleHostedAdPanel.adDimension}
         adUnit={StandardArticleHostedAdPanel.adUnit}
+        displayNewAds={true}
       />
     )
 
     expect(panel.props().adDimension).toEqual("300x250")
     expect(panel.props().adUnit).toEqual("Desktop_RightRail1")
+    expect(panel.props().displayNewAds).toBe(true)
     panel.find({ className: "htl-ad" })
     panel.find({ "data-sizes": "300x250" })
     panel.find({ "data-eager": true })
