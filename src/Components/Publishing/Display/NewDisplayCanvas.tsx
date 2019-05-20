@@ -1,8 +1,7 @@
-import { Flex } from "@artsy/palette"
-import { ErrorBoundary } from "Components/ErrorBoundary"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
+import { color, Flex } from "@artsy/palette"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
+import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 
 interface DisplayCanvasProps {
@@ -12,34 +11,20 @@ interface DisplayCanvasProps {
 
 export const NewDisplayCanvas: SFC<DisplayCanvasProps> = props => {
   const { adUnit, adDimension } = props
-
-  if (!isHTLAdEnabled()) {
-    return null
-  }
+  const [width, height] = adDimension.split("x").map((a: string) => parseInt(a))
 
   return (
-    <ErrorBoundary>
-      <DisplayCanvasContainer
-        flexDirection="column"
-        width="100%"
-        m={"0 auto"}
-        maxWidth="1250px"
-      >
-        <div
-          className="htl-ad"
-          data-unit={adUnit}
-          data-sizes={adDimension}
-          data-eager
-        />
-      </DisplayCanvasContainer>
-    </ErrorBoundary>
+    <DisplayCanvasContainer flexDirection="column" m="auto" p={2}>
+      <GPT adUnitPath={`/21805539690/${adUnit}`} slotSize={[width, height]} />
+    </DisplayCanvasContainer>
   )
 }
 
 const DisplayCanvasContainer = styled(Flex)`
   min-height: fit-content;
-  max-width: 1250px;
   box-sizing: border-box;
+  background: ${color("black5")};
+  text-align: center;
 `
 
 // Set names for tests and DOM

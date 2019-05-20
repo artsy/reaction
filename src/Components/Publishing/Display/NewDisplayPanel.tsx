@@ -1,9 +1,8 @@
 import { Box, color, Flex } from "@artsy/palette"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
+import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
-import { ErrorBoundary } from "../../ErrorBoundary"
 
 export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
   adUnit?: AdUnit
@@ -12,29 +11,29 @@ export interface DisplayPanelProps extends React.HTMLProps<HTMLDivElement> {
 
 export const NewDisplayPanel: SFC<DisplayPanelProps> = props => {
   const { adDimension, adUnit } = props
-
-  if (!isHTLAdEnabled()) {
-    return null
-  }
+  const [width, height] = adDimension.split("x").map((a: string) => parseInt(a))
 
   return (
-    <ErrorBoundary>
-      <Wrapper m={["auto", "0 auto", "auto"]} color="black100">
-        <DisplayPanelContainer
-          flexDirection="column"
-          className="DisplayPanel__DisplayPanelContainer"
-          p={2}
-          m={["auto", "auto", "auto", "inherit"]}
-        >
-          <div
-            className="htl-ad"
-            data-unit={adUnit}
-            data-sizes={adDimension}
-            data-eager
-          />
-        </DisplayPanelContainer>
-      </Wrapper>
-    </ErrorBoundary>
+    <Wrapper color="black100">
+      <DisplayPanelContainer
+        flexDirection="column"
+        className="DisplayPanel__DisplayPanelContainer"
+        p="40px auto"
+        m="auto"
+        width={width}
+        height={height}
+      >
+        <GPT
+          adUnitPath={`/21805539690/${adUnit}`}
+          targeting={{
+            is_testing: "no",
+            page_type: "article",
+            post_id: "5cdd7407cb1f5f00189c8205",
+          }}
+          slotSize={[width, height]}
+        />
+      </DisplayPanelContainer>
+    </Wrapper>
   )
 }
 
@@ -44,9 +43,10 @@ const Wrapper = styled(Box)`
   max-width: 360px;
 `
 const DisplayPanelContainer = styled(Flex)`
-  border: 1px solid ${color("black10")};
   max-width: 360px;
   box-sizing: border-box;
+  background: ${color("black5")};
+  text-align: center;
 `
 
 // Set names for tests and DOM
