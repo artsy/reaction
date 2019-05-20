@@ -5,15 +5,19 @@ export const buildUrlForCollectionApp = (state: State): string => {
   const params = removeDefaultValues(state)
   const queryString = qs.stringify(params)
 
-  return queryString
+  const url = queryString
     ? `${window.location.pathname}?${queryString}`
     : window.location.pathname
+
+  return url
 }
 
 export const buildUrlForCollectApp = (state: State): string => {
   const fragment = buildCollectUrlFragmentFromState(state)
 
-  return fragment ? `/collect${fragment}` : "/collect"
+  const url = fragment ? `/collect${fragment}` : "/collect"
+
+  return url
 }
 
 const buildCollectUrlFragmentFromState = (state: State): string => {
