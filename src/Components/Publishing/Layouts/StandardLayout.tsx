@@ -5,7 +5,6 @@ import { getEditorialHref } from "Components/Publishing/Constants"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
 import React from "react"
-import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 import { Responsive } from "Utils/Responsive"
 import { pMedia } from "../../Helpers"
@@ -90,8 +89,6 @@ export class StandardLayout extends React.Component<
     const { seriesArticle } = article
     const campaign = omit(display, "panel", "canvas")
     const seriesOrSuper = isSuper || seriesArticle
-
-    GPT.refresh()
 
     return (
       <Responsive>
