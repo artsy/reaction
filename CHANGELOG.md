@@ -1,3 +1,20 @@
+# v16.12.1 (Mon May 20 2019)
+
+#### 🐛  Bug Fix
+
+- Removes Enabled Ad Feature Flags from client [#2437](https://github.com/artsy/reaction/pull/2437) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.1 [#2436](https://github.com/artsy/reaction/pull/2436) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.12.0 (Fri May 17 2019)
 
 #### 🚀  Enhancement
