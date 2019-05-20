@@ -1,7 +1,6 @@
 import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
@@ -66,6 +65,10 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
+  isHTLAdEnabled() {
+    return true
+  }
+
   render() {
     const {
       article,
@@ -85,7 +88,7 @@ export class StandardLayout extends React.Component<
     const { seriesArticle } = article
     const campaign = omit(display, "panel", "canvas")
     const seriesOrSuper = isSuper || seriesArticle
-    const isNewAdEnabled = isHTLAdEnabled()
+    const isNewAdEnabled = this.isHTLAdEnabled()
 
     return (
       <Responsive>

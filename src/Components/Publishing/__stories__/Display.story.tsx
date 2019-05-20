@@ -1,5 +1,4 @@
 import { storiesOf } from "@storybook/react"
-import { isHTLAdEnabled } from "Components/Publishing/Ads/EnabledAd"
 import { clone, extend } from "lodash"
 import React from "react"
 import { getCurrentUnixTimestamp } from "../Constants"
@@ -23,6 +22,8 @@ import {
   UnitPanelTracked,
   UnitPanelVideo,
 } from "../Fixtures/Components"
+
+const isHTLAdEnabled = () => true
 
 const story = storiesOf("Publishing/Display/Panel", module)
   .add("Panel", () => {
