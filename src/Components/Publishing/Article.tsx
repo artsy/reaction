@@ -16,6 +16,7 @@ import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvid
 import { ArticleData, DisplayData } from "./Typings"
 
 export interface ArticleProps {
+  areHostedAdsEnabled?: boolean
   article: ArticleData
   backgroundColor?: string
   color?: string

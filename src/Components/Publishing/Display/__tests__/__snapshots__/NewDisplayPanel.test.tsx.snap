@@ -3,7 +3,7 @@
 exports[`snapshot renders the new canvas in standard layout 1`] = `
 .c0 {
   color: black100;
-  margin: auto;
+  margin: 0 auto;
   cursor: pointer;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -18,41 +18,11 @@ exports[`snapshot renders the new canvas in standard layout 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin: auto;
+  margin: 0 auto;
   padding: 8px;
   border: 1px solid #E5E5E5;
   max-width: 360px;
   box-sizing: border-box;
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    margin: 0 auto;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c0 {
-    margin: auto;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    margin: auto;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    margin: auto;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    margin: inherit;
-  }
 }
 
 <div
