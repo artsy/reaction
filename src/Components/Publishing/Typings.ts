@@ -1,5 +1,3 @@
-import { FlexProps } from "@artsy/palette"
-
 export type ArticleLayout =
   | "classic"
   | "feature"

@@ -1,16 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot renders the new canvas in standard layout 1`] = `
-.c0 {
-  color: black100;
-  margin: 0 auto;
-  cursor: pointer;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  max-width: 360px;
+.c1 {
+  margin: auto;
 }
 
-.c1 {
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -18,26 +21,34 @@ exports[`snapshot renders the new canvas in standard layout 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin: 0 auto;
-  padding: 8px;
-  border: 1px solid #E5E5E5;
-  max-width: 360px;
-  box-sizing: border-box;
+  padding-bottom: 4px;
+  padding-top: 8px;
+  background: #F8F8F8;
+  text-align: center;
 }
 
 <div
   className="c0"
-  color="black100"
 >
   <div
-    className="DisplayPanel__DisplayPanelContainer c1"
+    className="c1"
   >
     <div
-      className="htl-ad"
-      data-eager={true}
-      data-sizes="300x250"
-      data-unit="Desktop_RightRail1"
+      style={
+        Object {
+          "height": 250,
+          "width": 300,
+        }
+      }
     />
+    <div
+      className="c2"
+      color="black30"
+      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontSize="10px"
+    >
+      Advertisement
+    </div>
   </div>
 </div>
 `;

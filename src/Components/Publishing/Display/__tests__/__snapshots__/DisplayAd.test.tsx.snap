@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot renders the new canvas in standard layout 1`] = `
+exports[`renders the new canvas in standard layout 1`] = `
 .c1 {
   margin: auto;
 }
@@ -22,7 +22,7 @@ exports[`snapshot renders the new canvas in standard layout 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   padding-bottom: 4px;
-  padding-top: 32px;
+  padding-top: 8px;
   background: #F8F8F8;
   text-align: center;
 }
