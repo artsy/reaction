@@ -1493,10 +1493,10 @@
     chalk "^2.4.1"
     tslib "^1.9.3"
 
-"@omakase/cli@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@omakase/cli/-/cli-0.0.5.tgz#6ff925d782779709806ca731d74371081fe862ee"
-  integrity sha512-TTkQLAYhez8nh0yrTmGwnZrEg1c6XFnO2Al7jYjs15Wvaahz+fu2oFzRn1Qnk+12jn2d8R+Fi4J2q5J6BL8AIw==
+"@omakase/cli@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@omakase/cli/-/cli-0.0.7.tgz#410ee5f3b1d8ee82f72558717384589fd94567ce"
+  integrity sha512-+Fw44MntxL5L+VY4l6qjOVxmLUk9W/fn3x2oivnc3LO1OddZ+XaUlStyQTLgQ8nxZ0kQtKR6zp62MpXZiFscWQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
