@@ -1,3 +1,91 @@
+# v16.12.2 (Tue May 21 2019)
+
+### Release Notes
+
+  _From #2444_
+
+<details>
+<summary>omakase-js/omakase</summary>
+
+### [`v0.0.9`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;009-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.8...v0.0.9)
+
+##### 🐛  Bug Fix
+
+-   `cli`
+-   [docs] Update about generator [#&#8203;14](https://togithub.com/omakase-js/omakase/pull/14) ([@&#8203;alloy](https://togithub.com/alloy))
+
+##### Authors: 1
+
+-   Eloy Durán ([@&#8203;alloy](https://togithub.com/alloy))
+
+* * *
+
+### [`v0.0.8`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;008-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.7...v0.0.8)
+
+##### 🐛  Bug Fix
+
+-   `cli`
+-   Add [@&#8203;oclif/plugin-help](https://togithub.com/oclif/plugin-help) as a direct dependency [#&#8203;13](https://togithub.com/omakase-js/omakase/pull/13) ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+##### Authors: 1
+
+-   Justin Bennett ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+* * *
+
+</details>
+
+---
+
+_From #2443_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4121-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.0...v4.12.1)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [Menu] Fix drop shadow [#&#8203;466](https://togithub.com/artsy/palette/pull/466) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Select default time period filter selection via RadioGroup instead of Radio [#2439](https://github.com/artsy/reaction/pull/2439) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @omakase/cli from 0.0.7 to v0.0.9 [#2444](https://github.com/artsy/reaction/pull/2444) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.12.0 to v4.12.1 [#2443](https://github.com/artsy/reaction/pull/2443) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @omakase/cli from 0.0.5 to v0.0.7 [#2441](https://github.com/artsy/reaction/pull/2441) ([@renovate-bot](https://github.com/renovate-bot))
+- Clean up renovate config to remove redundant options [#2438](https://github.com/artsy/reaction/pull/2438) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.12.1 (Mon May 20 2019)
 
 #### 🐛  Bug Fix
