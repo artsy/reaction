@@ -1,3 +1,15 @@
+# v16.12.4 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- Refactors ad rendering in articles [#2440](https://github.com/artsy/reaction/pull/2440) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
 # v16.12.3 (Tue May 21 2019)
 
 #### 🐛  Bug Fix
