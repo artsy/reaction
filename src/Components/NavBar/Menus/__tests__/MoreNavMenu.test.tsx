@@ -33,10 +33,5 @@ describe("MoreNavMenu", () => {
         expect(linkLabel).toEqual(navLink.text())
       })
     })
-
-    it("menu has the correct title", () => {
-      const wrapper = getWrapper()
-      expect(wrapper.find("Menu").prop("title")).toEqual("More")
-    })
   })
 })

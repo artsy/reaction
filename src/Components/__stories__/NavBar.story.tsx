@@ -9,7 +9,7 @@ import * as Menus from "Components/NavBar/Menus"
 storiesOf("Components/NavBar", module)
   .add("Logged out", () => {
     return (
-      <Box width="100%">
+      <Container>
         <SystemContextProvider user={null}>
           <NavBar />
         </SystemContextProvider>
@@ -17,13 +17,13 @@ storiesOf("Components/NavBar", module)
         <Box mx={1}>
           <PageCopy />
         </Box>
-      </Box>
+      </Container>
     )
   })
 
   .add("Logged in", () => {
     return (
-      <Box width="100%">
+      <Container>
         <SystemContextProvider>
           <NavBar />
         </SystemContextProvider>
@@ -31,7 +31,7 @@ storiesOf("Components/NavBar", module)
         <Box mx={1}>
           <PageCopy />
         </Box>
-      </Box>
+      </Container>
     )
   })
 
@@ -39,7 +39,7 @@ storiesOf("Components/NavBar", module)
     "Mobile",
     () => {
       return (
-        <Box width="100%">
+        <Container>
           <SystemContextProvider>
             <NavBar />
           </SystemContextProvider>
@@ -47,7 +47,7 @@ storiesOf("Components/NavBar", module)
           <Box mx={1}>
             <PageCopy />
           </Box>
-        </Box>
+        </Container>
       )
     },
     {
@@ -70,6 +70,10 @@ storiesOf("Components/NavBar/Menus", module)
   .add("MobileNavMenu", () => {
     return <Menus.MobileNavMenu />
   })
+
+const Container = ({ children }) => {
+  return <Box width="100%">{children}</Box>
+}
 
 const PageCopy = () => {
   return (

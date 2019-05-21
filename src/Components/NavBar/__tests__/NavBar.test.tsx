@@ -12,7 +12,9 @@ jest.mock("Components/Search/SearchBar", () => {
     SearchBarQueryRenderer: () => <div />,
   }
 })
+
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia")
 
 describe("NavBar", () => {
   const mediator = {

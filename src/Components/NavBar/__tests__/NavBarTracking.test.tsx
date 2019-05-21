@@ -10,6 +10,7 @@ import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
 
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia")
 
 describe("NavBarTracking", () => {
   const trackEvent = jest.fn()
