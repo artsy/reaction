@@ -1,3 +1,15 @@
+# v16.12.3 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- Apply `medium` filter in path instead of querystring on /collect [#2430](https://github.com/artsy/reaction/pull/2430) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.12.2 (Tue May 21 2019)
 
 ### Release Notes
