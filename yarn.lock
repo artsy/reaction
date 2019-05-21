@@ -2189,10 +2189,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-tracking@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-6.0.0.tgz#63bcc83c314586f3c84dfe32065872d1346efe9a"
-  integrity sha512-wfYIlQCmzfGYm4v0ZTw8F9uLUhdELRzvjD7XX0KB6KFvMsmk98M5LX4r5qBRwpeqCwY9SujJFBvVQrhrnB/ViQ==
+"@types/react-tracking@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-tracking/-/react-tracking-7.0.0.tgz#2c5def990bb19516f2b4d5d343189b0a71c88d8b"
+  integrity sha512-W4NzuoBptl6jnyngOuuDQr1Z4XMMqtKmEQjYBv6xNEnnMVxQB2mRT8ULh/GIWFbng7yROHhLswmw2BcHn/MGRg==
   dependencies:
     "@types/react" "*"
 
@@ -4905,6 +4905,11 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
+
+core-js@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.1.1.tgz#502ba6e7c15300de20a372b390f9fc9039db76f2"
+  integrity sha512-OddJJmAMN6czmPEtp1ScHFWq4RXzH1iWJFGL8CZ6UcopeBzCMjo4Slv0UoLW2hhny1/wsDowm6xCmBCWQ1azkA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -11900,11 +11905,12 @@ react-themeable@^1.1.0:
   dependencies:
     object-assign "^3.0.0"
 
-react-tracking@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-6.0.0.tgz#9ed5dd7f8b64d40fcd1cc0160f449d909e6a58a0"
-  integrity sha512-wYOg9s54CV4/joO3gYJ9YpphGbbyHHhzI9priZk2QTqC3/ygQ8mHM2LK22vE7ILBun8LcGiPWCRUuGV/gtvlgA==
+react-tracking@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-tracking/-/react-tracking-7.0.1.tgz#8d0c21374b58e7259a3a42d908d68923e6c1e112"
+  integrity sha512-O7Gh55b86J9mBNVbUFwnT+GHHY27QtireG97tJdZQvmsQ3ScmJrqLTPq4kFJu/Nyt8Q3AWuM8+jpnmR29GAnWQ==
   dependencies:
+    core-js "^3.1.1"
     deepmerge "^3.2.0"
     hoist-non-react-statics "^3.3.0"
 
