@@ -1,3 +1,20 @@
+# v16.12.6 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump react-tracking@7.0.1 + types [#2446](https://github.com/artsy/reaction/pull/2446) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.12.1 to v4.12.2 [#2445](https://github.com/artsy/reaction/pull/2445) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.12.5 (Tue May 21 2019)
 
 #### 🐛  Bug Fix
