@@ -29,7 +29,7 @@ describe("NotificationsMenu", () => {
 
   it("renders proper zerostate", () => {
     const wrapper = getWrapper({} as any)
-    expect(wrapper.html()).toContain("No new notifications")
+    expect(wrapper.html()).toContain("No new works")
   })
 })
 

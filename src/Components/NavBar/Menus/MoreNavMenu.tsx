@@ -19,7 +19,7 @@ export const MoreNavMenu: React.FC = () => {
   }
 
   return (
-    <Menu title="More" onClick={trackClick}>
+    <Menu onClick={trackClick}>
       {/*
         Hide nav items at md / lg as they appear in the top nav
       */}

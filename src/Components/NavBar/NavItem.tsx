@@ -1,12 +1,14 @@
 import { Box, BoxProps, Link, Sans } from "@artsy/palette"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { isString } from "lodash"
+import { isFunction, isString } from "lodash"
 import React, { useState } from "react"
 import styled from "styled-components"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
-  Overlay?: React.FC
+  Overlay?: React.FC<{
+    hover: boolean
+  }>
   active?: boolean
   className?: string
   href?: string
@@ -40,7 +42,8 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <Box
-      p={1}
+      px={1}
+      py={2}
       className={className}
       display={display}
       position="relative"
@@ -54,7 +57,16 @@ export const NavItem: React.FC<NavItemProps> = ({
     >
       <Link href={href} color={hoverColor} underlineBehavior="none">
         <Sans size="3" weight="medium" color={hoverColor}>
-          {children}
+          <Box height={25}>
+            {isFunction(children)
+              ? // NavItem children can be called as renderProps so that contents
+                // can operate on UI behaviors (such as changing the color of an
+                // icon on hover).
+                children({
+                  hover,
+                })
+              : children}
+          </Box>
         </Sans>
       </Link>
 
@@ -64,13 +76,13 @@ export const NavItem: React.FC<NavItemProps> = ({
         </MenuContainer>
       )}
 
-      {showOverlay && <Overlay />}
+      {showOverlay && <Overlay hover={hover} />}
     </Box>
   )
 }
 
 const MenuContainer = styled(Box)`
   position: absolute;
-  transform: translate(-80%);
-  padding-top: 18px;
+  transform: translateX(-90%);
+  top: 63px;
 `

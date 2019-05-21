@@ -12,6 +12,7 @@ const StyledBox = styled(Box)`
   border-bottom-right-radius: 5px;
   /* transition: opacity 0.3s ease-in-out; */
   opacity: 0.05;
+  z-index: 2;
 `
 
 const BreakpointText: React.SFC<{ breakpoint: string; max?: boolean }> = ({

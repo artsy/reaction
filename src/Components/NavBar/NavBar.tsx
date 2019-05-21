@@ -1,5 +1,5 @@
 import cookie from "cookies-js"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 
 import {
@@ -10,9 +10,9 @@ import {
   color,
   Flex,
   Link,
-  MoreIcon,
   SoloIcon,
   Spacer,
+  themeProps,
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy/SystemContext"
@@ -32,19 +32,28 @@ import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
+import { useMedia } from "Utils/Hooks/useMedia"
 
 export const NavBar: React.FC = track({
   flow: AnalyticsSchema.Flow.Header,
   context_module: AnalyticsSchema.ContextModule.Header,
 })(_props => {
-  const { mediator, user } = useContext(SystemContext)
   const { trackEvent } = useTracking()
+  const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
+  const isMobile = useMedia(themeProps.mediaQueries.sm)
   const isLoggedIn = Boolean(user)
+
+  // Close mobile menu if dragging window from small size to desktop
+  useEffect(() => {
+    if (!isMobile) {
+      toggleMobileNav(false)
+    }
+  }, [isMobile])
 
   return (
     <>
-      <NavBarContainer p={1}>
+      <NavBarContainer px={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
             <ArtsyMarkIcon height={40} width={40} />
@@ -54,7 +63,7 @@ export const NavBar: React.FC = track({
         <Spacer mr={1} />
 
         <NavSection width="100%">
-          <Box width="100%" maxWidth={570}>
+          <Box width="100%">
             <SearchBar />
           </Box>
         </NavSection>
@@ -62,32 +71,40 @@ export const NavBar: React.FC = track({
         <Spacer mr={3} />
 
         {/*
-          Desktop
+          Desktop. Collapses into mobile at `sm` breakpoint.
         */}
-        <NavSection display={["none", "flex"]}>
+        <NavSection display={["none", "none", "flex"]}>
           <NavSection>
             <NavItem href="/collect">Artworks</NavItem>
             <NavItem href="/auctions">Auctions</NavItem>
+            <NavItem href="/galleries">Galleries</NavItem>
 
             {/**
-              Only show Galleries and Fairs at `lg` and `xl`
+              Only show Fairs at `xlg`
             */}
-            <NavItem href="/galleries" display={["none", "none", "block"]}>
-              Galleries
-            </NavItem>
             <NavItem
               href="/art-fairs"
-              display={["none", "none", "none", "block"]}
+              display={["none", "none", "none", "none", "block"]}
             >
               Fairs
             </NavItem>
             <NavItem href="/articles">Magazine</NavItem>
-            <NavItem Menu={MoreNavMenu}>
-              <MoreIcon top="3px" />
+            <NavItem
+              Menu={() => {
+                return (
+                  <Box mr={-2}>
+                    <MoreNavMenu />
+                  </Box>
+                )
+              }}
+            >
+              More
             </NavItem>
+          </NavSection>
 
-            <Spacer mr={3} />
+          <Spacer mr={3} />
 
+          <NavSection>
             {isLoggedIn && (
               <>
                 <NavItem
@@ -102,10 +119,24 @@ export const NavBar: React.FC = track({
                     })
                   }}
                 >
-                  <BellIcon top={3} />
+                  {({ hover }) => {
+                    return (
+                      <BellIcon
+                        top={3}
+                        fill={hover ? "purple100" : "black80"}
+                      />
+                    )
+                  }}
                 </NavItem>
                 <NavItem Menu={UserMenu}>
-                  <SoloIcon top={3} />
+                  {({ hover }) => {
+                    return (
+                      <SoloIcon
+                        top={3}
+                        fill={hover ? "purple100" : "black80"}
+                      />
+                    )
+                  }}
                 </NavItem>
               </>
             )}
@@ -142,9 +173,9 @@ export const NavBar: React.FC = track({
         </NavSection>
 
         {/*
-          Mobile
+          Mobile. Triggers at the `sm` breakpoint.
         */}
-        <NavSection display={["flex", "none"]}>
+        <NavSection display={["flex", "flex", "none"]}>
           <NavItem
             className="mobileHamburgerButton"
             onClick={() => {

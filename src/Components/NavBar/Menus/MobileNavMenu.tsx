@@ -37,6 +37,7 @@ export const MobileNavMenu: React.FC = () => {
       px={2}
       py={1}
       width="100%"
+      height="100vh"
       flexDirection="column"
       onClick={trackClick}
     >
