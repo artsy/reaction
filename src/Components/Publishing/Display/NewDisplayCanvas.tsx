@@ -1,46 +1,6 @@
-import { Flex } from "@artsy/palette"
-import { ErrorBoundary } from "Components/ErrorBoundary"
-import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC } from "react"
-import styled from "styled-components"
+import { DisplayAd, DisplayAdProps } from "./DisplayAd"
 
-interface DisplayCanvasProps {
-  adUnit?: AdUnit
-  adDimension?: AdDimension
-  displayNewAds?: boolean
-}
-
-export const NewDisplayCanvas: SFC<DisplayCanvasProps> = props => {
-  const { adUnit, adDimension, displayNewAds } = props
-
-  if (!displayNewAds) {
-    return null
-  }
-
-  return (
-    <ErrorBoundary>
-      <DisplayCanvasContainer
-        flexDirection="column"
-        width="100%"
-        m={"0 auto"}
-        maxWidth="1250px"
-      >
-        <div
-          className="htl-ad"
-          data-unit={adUnit}
-          data-sizes={adDimension}
-          data-eager
-        />
-      </DisplayCanvasContainer>
-    </ErrorBoundary>
-  )
-}
-
-const DisplayCanvasContainer = styled(Flex)`
-  min-height: fit-content;
-  max-width: 1250px;
-  box-sizing: border-box;
-`
-
-// Set names for tests and DOM
-DisplayCanvasContainer.displayName = "DisplayCanvasContainer"
+export const NewDisplayCanvas: SFC<DisplayAdProps> = props => (
+  <DisplayAd {...props} pt={4} />
+)

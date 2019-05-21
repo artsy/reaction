@@ -2,13 +2,13 @@ import {
   AdDimension,
   AdUnit,
   DisplayUnitData,
-  HostedAdData,
   MediaData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
   SectionData,
 } from "Components/Publishing/Typings"
 import { cloneDeep, extend, flatten } from "lodash"
+import { DisplayAdProps } from "../Display/DisplayAd"
 import { ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"
 import { ArtistToolTipProps } from "../ToolTip/ArtistToolTip"
@@ -300,16 +300,21 @@ export const UnitCanvasSlideshow: DisplayUnitData = {
     "Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
 }
 
-export const StandardArticleHostedAdPanel: HostedAdData = {
+export const StandardArticleHostedAdPanel: DisplayAdProps = {
   adUnit: "Desktop_RightRail1" as AdUnit,
   adDimension: "300x250" as AdDimension,
   displayNewAds: true,
 }
 
-export const StandardArticleHostedAdCanvas: HostedAdData = {
+export const StandardArticleHostedAdCanvas: DisplayAdProps = {
   adUnit: "Desktop_TopLeaderboard" as AdUnit,
   adDimension: "970x250" as AdDimension,
   displayNewAds: true,
+  targetingData: {
+    is_testing: true,
+    page_type: "article",
+    post_id: "123",
+  },
 }
 
 export const UnitPanel: DisplayUnitData = {

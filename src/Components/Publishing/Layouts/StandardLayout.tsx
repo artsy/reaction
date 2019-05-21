@@ -65,6 +65,72 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
+  get targetingData() {
+    return {
+      is_testing: true,
+      page_type: "article",
+      post_id: this.props.article.id,
+    }
+  }
+
+  renderDisplayPanel(isMobileAd: boolean) {
+    const { areHostedAdsEnabled, article, display, renderTime } = this.props
+
+    const hasPanel = get(display, "panel", false)
+    const campaign = omit(display, "panel", "canvas")
+
+    if (areHostedAdsEnabled) {
+      return (
+        <NewDisplayPanel
+          adUnit={
+            isMobileAd ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_RightRail1
+          }
+          adDimension={
+            isMobileAd
+              ? AdDimension.Mobile_InContentMR1
+              : AdDimension.Desktop_RightRail1
+          }
+          displayNewAds={areHostedAdsEnabled}
+          targetingData={this.targetingData}
+        />
+      )
+    }
+    return (
+      hasPanel && (
+        <DisplayPanel
+          isMobile={isMobileAd}
+          unit={display.panel}
+          campaign={campaign}
+          article={article}
+          renderTime={renderTime}
+        />
+      )
+    )
+  }
+
+  renderDisplayCanvas(isMobileAd: boolean) {
+    const { areHostedAdsEnabled } = this.props
+
+    return (
+      areHostedAdsEnabled && (
+        <NewDisplayCanvas
+          adUnit={
+            isMobileAd
+              ? AdUnit.Mobile_TopLeaderboard
+              : AdUnit.Desktop_TopLeaderboard
+          }
+          adDimension={
+            isMobileAd
+              ? AdDimension.Mobile_TopLeaderboard
+              : AdDimension.Desktop_TopLeaderboard
+          }
+          displayNewAds={areHostedAdsEnabled}
+          targetingData={this.targetingData}
+        />
+      )
+    )
+  }
+
   render() {
     const {
       areHostedAdsEnabled,
@@ -83,63 +149,20 @@ export class StandardLayout extends React.Component<
 
     const { isTruncated } = this.state
     const { seriesArticle } = article
-    const campaign = omit(display, "panel", "canvas")
     const seriesOrSuper = isSuper || seriesArticle
 
     return (
       <Responsive>
         {({ xs, sm, md }) => {
-          const hasPanel = get(display, "panel", false)
           const isMobileAd = Boolean(isMobile || xs || sm || md)
+          const DisplayPanelAd = () => (
+            <>{this.renderDisplayPanel(isMobileAd)}</>
+          )
 
-          const DisplayPanelAd = () => {
-            if (areHostedAdsEnabled) {
-              return (
-                <NewDisplayPanel
-                  adUnit={
-                    isMobileAd
-                      ? AdUnit.Mobile_InContentMR1
-                      : AdUnit.Desktop_RightRail1
-                  }
-                  adDimension={
-                    isMobileAd
-                      ? AdDimension.Mobile_InContentMR1
-                      : AdDimension.Desktop_RightRail1
-                  }
-                  displayNewAds={areHostedAdsEnabled}
-                />
-              )
-            } else {
-              return (
-                hasPanel && (
-                  <DisplayPanel
-                    isMobile={isMobileAd}
-                    unit={display.panel}
-                    campaign={campaign}
-                    article={article}
-                    renderTime={renderTime}
-                  />
-                )
-              )
-            }
-          }
           return (
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
-              {areHostedAdsEnabled && (
-                <NewDisplayCanvas
-                  adUnit={
-                    isMobileAd
-                      ? AdUnit.Mobile_TopLeaderboard
-                      : AdUnit.Desktop_TopLeaderboard
-                  }
-                  adDimension={
-                    isMobileAd
-                      ? AdDimension.Mobile_TopLeaderboard
-                      : AdDimension.Desktop_TopLeaderboard
-                  }
-                  displayNewAds={areHostedAdsEnabled}
-                />
-              )}
+              {this.renderDisplayCanvas(isMobileAd)}
+
               <ReadMoreWrapper
                 isTruncated={isTruncated}
                 hideButton={() => this.setState({ isTruncated: false })}

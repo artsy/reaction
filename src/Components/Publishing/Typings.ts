@@ -170,12 +170,6 @@ export interface MediaData {
   credits?: string
 }
 
-export interface HostedAdData {
-  adUnit?: AdUnit
-  adDimension?: AdDimension
-  displayNewAds: boolean
-}
-
 export interface DisplayUnitData {
   assets?: DisplayUnitAssetData[]
   body?: string
