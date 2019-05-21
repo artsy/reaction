@@ -43,7 +43,7 @@ export const initialState = {
 
 // Returns a string representing the query part of a URL.
 // It removes default values.
-export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
+export const urlFragmentFromState = (state: State) => {
   const filters = Object.entries(state).reduce((acc, [key, value]) => {
     if (isDefaultFilter(key, value)) {
       return acc
@@ -52,10 +52,7 @@ export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
     }
   }, {})
 
-  return qs.stringify({
-    ...filters,
-    ...extra,
-  })
+  return qs.stringify(filters)
 }
 
 // This is used to remove default state params that clutter up URLs.
