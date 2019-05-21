@@ -1,3 +1,5 @@
+import { FlexProps } from "@artsy/palette"
+
 export type ArticleLayout =
   | "classic"
   | "feature"
@@ -168,12 +170,6 @@ export interface MediaData {
   published?: boolean
   description?: string
   credits?: string
-}
-
-export interface HostedAdData {
-  adUnit?: AdUnit
-  adDimension?: AdDimension
-  displayNewAds: boolean
 }
 
 export interface DisplayUnitData {
