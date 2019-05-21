@@ -10,6 +10,32 @@ describe("buildUrlForCollectApp", () => {
     expect(result).toEqual("/collect")
   })
 
+  it("should not include defaulted filters", () => {
+    const state: State = {
+      acquireable: false,
+      artist_id: "",
+      at_auction: false,
+      attribution_class: [],
+      color: "",
+      dimension_range: "",
+      for_sale: false,
+      height: "*-*",
+      inquireable_only: false,
+      major_periods: [],
+      offerable: false,
+      page: 1,
+      partner_id: "",
+      price_range: "*-*",
+      sort: "-decayed_merch",
+      tracking: "",
+      width: "*-*",
+    }
+
+    const result = buildUrlForCollectApp(state)
+
+    expect(result).toEqual("/collect")
+  })
+
   it("should include selected filters minus medium in querystring", () => {
     const state: State = {
       acquireable: true,
@@ -56,6 +82,32 @@ describe("buildUrlForCollectionApp", () => {
 
   it("should not include unselected filters", () => {
     const state: State = {}
+
+    const result = buildUrlForCollectionApp(state)
+
+    expect(result).toEqual("/collection/kitties")
+  })
+
+  it("should not include defaulted filters", () => {
+    const state: State = {
+      acquireable: false,
+      artist_id: "",
+      at_auction: false,
+      attribution_class: [],
+      color: "",
+      dimension_range: "",
+      for_sale: false,
+      height: "*-*",
+      inquireable_only: false,
+      major_periods: [],
+      offerable: false,
+      page: 1,
+      partner_id: "",
+      price_range: "*-*",
+      sort: "-decayed_merch",
+      tracking: "",
+      width: "*-*",
+    }
 
     const result = buildUrlForCollectionApp(state)
 

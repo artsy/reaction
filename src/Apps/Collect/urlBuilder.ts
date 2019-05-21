@@ -44,25 +44,21 @@ const removeDefaultValues = (state: State): State => {
 
 // This is used to remove default state params that clutter up URLs.
 const isDefaultFilter = (filter, value): boolean => {
-  if (filter === "major_periods" || filter === "attribution_class") {
-    return value.length === 0
+  switch (filter) {
+    case "major_periods":
+    case "attribution_class":
+      return value.length === 0
+    case "sort":
+      return value === "-decayed_merch"
+    case "price_range":
+    case "height":
+    case "width":
+      return value === "*-*"
+    case "page":
+      return value === 1
+    case "medium":
+      return value === "*"
+    default:
+      return !value
   }
-
-  if (filter === "sort") {
-    return value === "-decayed_merch"
-  }
-
-  if (filter === "price_range" || filter === "height" || filter === "width") {
-    return value === "*-*"
-  }
-
-  if (filter === "page") {
-    return value === 1
-  }
-
-  if (filter === "medium") {
-    return value === "*"
-  }
-
-  return !value
 }
