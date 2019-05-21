@@ -2,7 +2,6 @@ import {
   AdDimension,
   AdUnit,
   DisplayUnitData,
-  HostedAdData,
   MediaData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
