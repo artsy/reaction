@@ -9,6 +9,10 @@ jest.mock("Artsy/Analytics/useTracking", () => ({
   }),
 }))
 
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({ sm: false }),
+}))
+
 describe("MobileNavMenu", () => {
   const getWrapper = props => {
     return mount(

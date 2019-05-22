@@ -11,8 +11,8 @@ import {
   Flex,
   Link,
   SoloIcon,
+  space,
   Spacer,
-  themeProps,
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy/SystemContext"
@@ -32,16 +32,23 @@ import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
+import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
 
-export const NavBar: React.FC = track({
-  flow: AnalyticsSchema.Flow.Header,
-  context_module: AnalyticsSchema.ContextModule.Header,
-})(_props => {
+export const NavBar: React.FC = track(
+  {
+    flow: AnalyticsSchema.Flow.Header,
+    context_module: AnalyticsSchema.ContextModule.Header,
+  },
+  {
+    dispatch: data => Events.postEvent(data),
+  }
+)(_props => {
   const { trackEvent } = useTracking()
   const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
-  const isMobile = useMedia(themeProps.mediaQueries.sm)
+  const { xs, sm } = useMedia()
+  const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
 
   // Close mobile menu if dragging window from small size to desktop
@@ -102,7 +109,7 @@ export const NavBar: React.FC = track({
             </NavItem>
           </NavSection>
 
-          <Spacer mr={3} />
+          <Spacer mr={2} />
 
           <NavSection>
             {isLoggedIn && (
@@ -223,6 +230,7 @@ const NavBarContainer = styled(Flex)`
   border-bottom: 1px solid ${color("black10")};
   position: relative;
   z-index: 1;
+  height: ${space(6)}px;
 `
 
 // FIXME: This needs to be cleaned up once we get proper icons
