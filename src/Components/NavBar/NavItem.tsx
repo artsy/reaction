@@ -1,4 +1,4 @@
-import { Box, BoxProps, Link, Sans } from "@artsy/palette"
+import { Box, BoxProps, Link, Sans, space } from "@artsy/palette"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
 import React, { useState } from "react"
@@ -71,7 +71,7 @@ export const NavItem: React.FC<NavItemProps> = ({
       </Link>
 
       {showMenu && (
-        <MenuContainer>
+        <MenuContainer top={space(6)}>
           <Menu />
         </MenuContainer>
       )}
@@ -84,5 +84,4 @@ export const NavItem: React.FC<NavItemProps> = ({
 const MenuContainer = styled(Box)`
   position: absolute;
   transform: translateX(-90%);
-  top: 63px;
 `

@@ -5,7 +5,6 @@ import { SystemContext, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
-import Input from "Components/Input"
 import {
   EmptySuggestion,
   FirstSuggestionItem,
@@ -13,8 +12,8 @@ import {
   PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
-import { isEmpty } from "lodash"
 import { throttle } from "lodash"
+import { isEmpty } from "lodash"
 import qs from "qs"
 import React, { Component, useContext } from "react"
 import Autosuggest from "react-autosuggest"
@@ -441,14 +440,21 @@ export const SearchBarQueryRenderer: React.FC = () => {
       render={({ props }) => {
         if (props) {
           return <SearchBarRefetchContainer viewer={props.viewer} />
+          // SSR render pass. Since we don't have access to `<Boot>` context
+          // from within the NavBar (it's not a part of any app) we need to lean
+          // on styled-system for showing / hiding depending upon breakpoint.
         } else {
           return (
-            <Input
-              name="term"
-              style={{ width: "100%" }}
-              placeholder={PLACEHOLDER_XS}
-            />
+            <>
+              <Box display={["block", "none"]}>
+                <SearchInputContainer placeholder={PLACEHOLDER_XS} />
+              </Box>
+              <Box display={["none", "block"]}>
+                <SearchInputContainer placeholder={PLACEHOLDER} />
+              </Box>
+            </>
           )
+          return
         }
       }}
     />

@@ -14,7 +14,9 @@ jest.mock("Components/Search/SearchBar", () => {
 })
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia")
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({}),
+}))
 
 describe("NavBar", () => {
   const mediator = {
