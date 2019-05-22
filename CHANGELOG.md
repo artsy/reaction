@@ -1,3 +1,20 @@
+# v16.12.7 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] QA round 2 [#2447](https://github.com/artsy/reaction/pull/2447) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @omakase/cli from 0.0.9 to v0.0.10 [#2448](https://github.com/artsy/reaction/pull/2448) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.12.6 (Tue May 21 2019)
 
 #### 🐛  Bug Fix
