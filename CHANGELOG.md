@@ -1,3 +1,15 @@
+# v16.12.8 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- Remove major_periods filter properly from FilterState in /collect & /collection/:id apps [#2451](https://github.com/artsy/reaction/pull/2451) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.12.7 (Wed May 22 2019)
 
 #### 🐛  Bug Fix
