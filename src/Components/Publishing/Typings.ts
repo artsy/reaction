@@ -96,6 +96,7 @@ export interface ArticleData {
     partner_dark_logo?: string
     partner_condensed_logo?: string
   }
+  shouldAdRender?: boolean
 }
 
 export type SectionType =

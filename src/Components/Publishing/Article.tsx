@@ -18,6 +18,7 @@ import { ArticleData, DisplayData } from "./Typings"
 GPT.enableSingleRequest()
 
 export interface ArticleProps {
+  articleSerial?: number
   areHostedAdsEnabled?: boolean
   article: ArticleData
   backgroundColor?: string
@@ -47,6 +48,7 @@ export interface ArticleProps {
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: object) => void
   onExpand?: () => void
+  shouldAdRender?: boolean
 }
 
 @track(
