@@ -1,3 +1,40 @@
+# v16.12.10 (Thu May 23 2019)
+
+### Release Notes
+
+  _From #2454_
+
+<details>
+<summary>webpack-contrib/webpack-bundle-analyzer</summary>
+
+### [`v3.3.2`](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/blob/master/CHANGELOG.md#&#8203;332)
+
+[Compare Source](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/compare/v2.13.1...v3.3.2)
+
+-   **Bug Fix**
+-   Fix regression with escaping internal assets ([#&#8203;264](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/pull/264), fixes [#&#8203;263](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/issues/263))
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Add license scan report and status [#2449](https://github.com/artsy/reaction/pull/2449) ([@fossabot](https://github.com/fossabot))
+
+#### 🏠  Internal
+
+- Update dep webpack-bundle-analyzer from 2.13.1 to v3 [SECURITY] [#2454](https://github.com/artsy/reaction/pull/2454) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- fossabot ([@fossabot](https://github.com/fossabot))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.12.9 (Wed May 22 2019)
 
 #### 🐛  Bug Fix
