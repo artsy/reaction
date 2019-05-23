@@ -2,6 +2,7 @@ import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { get, omit } from "lodash"
 import React from "react"
@@ -65,14 +66,6 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
-  get targetingData() {
-    return {
-      is_testing: true,
-      page_type: "article",
-      post_id: this.props.article.id,
-    }
-  }
-
   renderDisplayPanel(isMobileAd: boolean) {
     const { areHostedAdsEnabled, article, display, renderTime } = this.props
 
@@ -91,7 +84,7 @@ export class StandardLayout extends React.Component<
               : AdDimension.Desktop_RightRail1
           }
           displayNewAds={areHostedAdsEnabled}
-          targetingData={this.targetingData}
+          targetingData={targetingData(article.id, "article")}
         />
       )
     }
@@ -109,7 +102,7 @@ export class StandardLayout extends React.Component<
   }
 
   renderDisplayCanvas(isMobileAd: boolean) {
-    const { areHostedAdsEnabled } = this.props
+    const { areHostedAdsEnabled, article } = this.props
 
     return (
       areHostedAdsEnabled && (
@@ -125,7 +118,7 @@ export class StandardLayout extends React.Component<
               : AdDimension.Desktop_TopLeaderboard
           }
           displayNewAds={areHostedAdsEnabled}
-          targetingData={this.targetingData}
+          targetingData={targetingData(article.id, "article")}
         />
       )
     )
