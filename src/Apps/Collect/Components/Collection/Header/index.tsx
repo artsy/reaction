@@ -94,13 +94,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         pb={20}
         key={4}
       >
-        <Box
+        <ViewMore
           onClick={() => {
             setShowMore(true)
           }}
         >
-          <EntityHeader initials={`+${remainingArtists}`} name="View more" />
-        </Box>
+          <EntityHeader initials={`+ ${remainingArtists}`} name="View more" />
+        </ViewMore>
       </EntityContainer>
     )
     const artists = cloneDeep(featuredArtists)
@@ -344,6 +344,18 @@ const ExtendedSerif = styled(Serif)`
     div p {
       display: inline;
       ${unica("s12")};
+    }
+  }
+`
+
+const ViewMore = styled(Box)`
+  div {
+    div {
+      text-decoration: underline;
+      ${unica("s14")};
+    }
+    div:first-child {
+      text-decoration: none;
     }
   }
 `
