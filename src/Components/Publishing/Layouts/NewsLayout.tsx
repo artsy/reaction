@@ -84,14 +84,25 @@ export class NewsLayout extends Component<Props, State> {
     }
   }
 
-  // Ad unit code "Desktop_InContentLB1" is for ads that appear after the 3rd article, "Desktop_InContentLB2" is for all other ads
+  // Ad unit code "Mobile/Desktop_InContentLB1" is for ads that appear after the 3rd article,
+  // "<Mobile/Desktop_InContentLB2" for ads that appear after the 9th article,
+  // and Mobile/Desktop_InContentLBRepeat is for all subsequent ads
   getAdUnit() {
     const { articleSerial, isMobile } = this.props
 
     if (articleSerial === 3) {
-      return isMobile ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_InContentLB1
+      return isMobile
+        ? AdUnit.Mobile_NewsLanding_InContent1
+        : AdUnit.Desktop_NewsLanding_Leaderboard1
     }
-    return isMobile ? AdUnit.Mobile_InContentMR2 : AdUnit.Desktop_InContentLB2
+    if (articleSerial === 9) {
+      return isMobile
+        ? AdUnit.Mobile_NewsLanding_InContent2
+        : AdUnit.Desktop_NewsLanding_Leaderboard2
+    }
+    return isMobile
+      ? AdUnit.Mobile_NewsLanding_InContent3
+      : AdUnit.Desktop_NewsLanding_LeaderboardRepeat
   }
 
   renderAd() {
@@ -112,8 +123,8 @@ export class NewsLayout extends Component<Props, State> {
             adUnit={adUnit}
             adDimension={
               isMobile
-                ? AdDimension.Mobile_InContentMR1
-                : AdDimension.Desktop_InContentLB1
+                ? AdDimension.Mobile_NewsLanding_InContent1
+                : AdDimension.Desktop_NewsLanding_Leaderboard1
             }
             displayNewAds={areHostedAdsEnabled}
             targetingData={targetingData(article.id, "newslanding")}
@@ -141,7 +152,6 @@ export class NewsLayout extends Component<Props, State> {
       showCollectionsRail,
     } = this.props
     const { isTruncated, isHovered } = this.state
-    console.log("TCL: NewsLayout -> renderAd -> shouldAdRender", this.props)
 
     return (
       <NewsContainer>
