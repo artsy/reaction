@@ -84,6 +84,7 @@ export class NewsLayout extends Component<Props, State> {
     }
   }
 
+  // Ad unit code "Desktop_InContentLB1" is for ads that appear after the 3rd article, "Desktop_InContentLB2" is for all other ads
   getAdUnit() {
     const { articleSerial, isMobile } = this.props
 
@@ -140,6 +141,7 @@ export class NewsLayout extends Component<Props, State> {
       showCollectionsRail,
     } = this.props
     const { isTruncated, isHovered } = this.state
+    console.log("TCL: NewsLayout -> renderAd -> shouldAdRender", this.props)
 
     return (
       <NewsContainer>
