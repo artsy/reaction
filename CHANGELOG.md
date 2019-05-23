@@ -1,3 +1,21 @@
+# v16.12.13 (Thu May 23 2019)
+
+#### 🐛  Bug Fix
+
+- Add new ads to News landing page [#2453](https://github.com/artsy/reaction/pull/2453) ([@l2succes](https://github.com/l2succes) [@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Sync metaphysics schema [#2457](https://github.com/artsy/reaction/pull/2457) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.12.12 (Thu May 23 2019)
 
 
