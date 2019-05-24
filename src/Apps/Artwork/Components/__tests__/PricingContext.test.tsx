@@ -1,4 +1,4 @@
-import { BarBox, BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
+import { BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -124,7 +124,7 @@ describe("PricingContext", () => {
 
   it("displays '1 work' not '0 works' in highlight label if there are zero artworks for the highlighted bin", async () => {
     const wrapper = await getWrapper()
-    const highlightedBar = wrapper.find(BarBox).at(2)
+    const highlightedBar = wrapper.find("Bar").at(2)
 
     highlightedBar.simulate("mouseenter")
     expect(wrapper.text()).not.toContain("0 works")
@@ -133,7 +133,7 @@ describe("PricingContext", () => {
 
   it("displays 'work' singular not 'works' plural in label when there is only 1 artwork in a bin", async () => {
     const wrapper = await getWrapper()
-    const secondBar = wrapper.find(BarBox).at(1)
+    const secondBar = wrapper.find("Bar").at(1)
 
     secondBar.simulate("mouseenter")
     expect(wrapper.text()).not.toContain("1 works")
@@ -254,7 +254,7 @@ Object {
       const { Component, dispatch } = mockTracking(PricingContext)
       const component = mount(<Component artwork={mockArtwork as any} />)
       component
-        .find(BarBox)
+        .find("Bar")
         .at(0)
         .simulate("mouseOver")
       expect(dispatch).toBeCalledWith({
