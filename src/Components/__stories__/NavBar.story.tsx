@@ -6,17 +6,22 @@ import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 import * as Menus from "Components/NavBar/Menus"
 
+const NavBarArea = props => {
+  return (
+    <SystemContextProvider {...props}>
+      <Box mx={1} position="fixed" top={0} left={-10} width="100%">
+        <NavBar />
+      </Box>
+    </SystemContextProvider>
+  )
+}
+
 storiesOf("Components/NavBar", module)
   .add("Logged out", () => {
     return (
       <Container>
-        <SystemContextProvider user={null}>
-          <NavBar />
-        </SystemContextProvider>
-
-        <Box mx={1}>
-          <PageCopy />
-        </Box>
+        <NavBarArea user={null} />
+        <PageCopy />
       </Container>
     )
   })
@@ -24,13 +29,8 @@ storiesOf("Components/NavBar", module)
   .add("Logged in", () => {
     return (
       <Container>
-        <SystemContextProvider>
-          <NavBar />
-        </SystemContextProvider>
-
-        <Box mx={1}>
-          <PageCopy />
-        </Box>
+        <NavBarArea />
+        <PageCopy />
       </Container>
     )
   })
@@ -40,19 +40,31 @@ storiesOf("Components/NavBar", module)
     () => {
       return (
         <Container>
-          <SystemContextProvider>
-            <NavBar />
-          </SystemContextProvider>
-
-          <Box mx={1}>
-            <PageCopy />
-          </Box>
+          <NavBarArea />
+          <PageCopy />
         </Container>
       )
     },
     {
       viewport: {
         defaultViewport: "iphonex",
+      },
+    }
+  )
+
+  .add(
+    "Tablet",
+    () => {
+      return (
+        <Container>
+          <NavBarArea />
+          <PageCopy />
+        </Container>
+      )
+    },
+    {
+      viewport: {
+        defaultViewport: "ipad",
       },
     }
   )
@@ -77,7 +89,7 @@ const Container = ({ children }) => {
 
 const PageCopy = () => {
   return (
-    <>
+    <Box mx={1} mt={80}>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nibh
         quis ex imperdiet tristique eu non nisl. Nullam dignissim ex vel
@@ -130,6 +142,6 @@ const PageCopy = () => {
         malesuada quam. Nulla et est laoreet, malesuada justo in, lacinia
         tellus. In mattis euismod mattis.
       </p>
-    </>
+    </Box>
   )
 }
