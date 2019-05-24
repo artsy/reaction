@@ -3,7 +3,9 @@ import { CollectionApp_collection } from "__generated__/CollectionApp_collection
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Components/Artist/ArtistCollectionsRail"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
+import { RelatedCollectionsRailContent as RelatedCollectionsRail } from "Components/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { HttpError } from "found"
 import React, { Component } from "react"
@@ -43,6 +45,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
+    const artistId =
+      collection.query.artist_id || collection.query.artist_ids[0]
+    console.log("artist_id:", collection.query.artist_id)
+    console.log("artist_ids:", collection.query.artist_ids)
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -67,6 +73,22 @@ export class CollectionApp extends Component<CollectionAppProps> {
           />
           <Box>
             <CollectionFilterContainer collection={collection} />
+          </Box>
+          <Box>
+            {/* <RelatedCollectionsRail
+              artistID={
+                collection.query.artist_id || collection.query.artist_ids[0]
+              }
+            /> */}
+            {artistId ? (
+              <ArtistCollectionsRail artistID={artistId} />
+            ) : (
+              <RelatedCollectionsRail
+                artistID={
+                  collection.query.artist_id || collection.query.artist_ids[0]
+                }
+              />
+            )}
           </Box>
         </FrameWithRecentlyViewed>
       </AppContainer>
