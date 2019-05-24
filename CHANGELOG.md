@@ -1,3 +1,19 @@
+# v16.12.16 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema with Image Id Nullability change [#2461](https://github.com/artsy/reaction/pull/2461) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Sync metaphysics schema [#2458](https://github.com/artsy/reaction/pull/2458) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.12.15 (Fri May 24 2019)
 
 #### 🐛  Bug Fix
