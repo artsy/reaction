@@ -1,7 +1,6 @@
 import { Box, color } from "@artsy/palette"
-import React, { Component } from "react"
-import styled from "styled-components"
-
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
@@ -11,6 +10,9 @@ import {
   SeriesTitleContainer,
 } from "Components/Publishing/Series/SeriesTitle"
 import { ArticleData } from "Components/Publishing/Typings"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
+import React, { Component } from "react"
+import styled from "styled-components"
 
 interface Props {
   areHostedAdsEnabled?: boolean
@@ -18,13 +20,21 @@ interface Props {
   backgroundColor?: string
   color?: string
   relatedArticles?: any
+  isMobile?: boolean
 }
 
 export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render() {
-    const { article, backgroundColor, relatedArticles } = this.props
+    const {
+      article,
+      backgroundColor,
+      relatedArticles,
+      isMobile,
+      areHostedAdsEnabled,
+    } = this.props
+
     const { hero_section, sponsor } = article
     const backgroundUrl =
       hero_section && hero_section.url ? hero_section.url : ""
@@ -55,6 +65,23 @@ export class SeriesLayout extends Component<Props, null> {
             <SeriesAbout article={article} color={this.props.color} />
           </Box>
         </SeriesContent>
+        {areHostedAdsEnabled && (
+          <NewDisplayCanvas
+            adUnit={
+              isMobile
+                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            adDimension={
+              isMobile
+                ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            displayNewAds={areHostedAdsEnabled}
+            targetingData={targetingData(article.id, "sponsorlanding")}
+            isSeries
+          />
+        )}
       </SeriesContainer>
     )
   }
