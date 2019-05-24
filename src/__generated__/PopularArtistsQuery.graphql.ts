@@ -32,6 +32,7 @@ fragment PopularArtists_popular_artists on PopularArtists {
       cropped(width: 100, height: 100) {
         url
       }
+      __id
     }
   }
 }
@@ -45,13 +46,20 @@ var v0 = [
     "value": true,
     "type": "Boolean"
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "PopularArtistsQuery",
   "id": null,
-  "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtists_popular_artists\n  }\n}\n\nfragment PopularArtists_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
+  "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtists_popular_artists\n  }\n}\n\nfragment PopularArtists_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -115,13 +123,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__id",
-                "args": null,
-                "storageKey": null
-              },
+              v1,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -168,7 +170,8 @@ return {
                         "storageKey": null
                       }
                     ]
-                  }
+                  },
+                  v1
                 ]
               }
             ]

@@ -5,7 +5,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _PaymentPicker_order$ref: unique symbol;
 export type PaymentPicker_order$ref = typeof _PaymentPicker_order$ref;
 export type PaymentPicker_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly creditCard: ({

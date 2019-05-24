@@ -17,7 +17,7 @@ export type createMockNetworkLayerTestMutationResultsMutationResponse = {
                 readonly data: string | null;
             }) | null;
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly state: string | null;
             }) | null;
         }) | null;

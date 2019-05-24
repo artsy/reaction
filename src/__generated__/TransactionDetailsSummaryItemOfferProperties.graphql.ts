@@ -5,7 +5,7 @@ export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItemOfferProperties$ref: unique symbol;
 export type TransactionDetailsSummaryItemOfferProperties$ref = typeof _TransactionDetailsSummaryItemOfferProperties$ref;
 export type TransactionDetailsSummaryItemOfferProperties = {
-    readonly id: string | null;
+    readonly id: string;
     readonly amount: string | null;
     readonly amountCents: number | null;
     readonly shippingTotal: string | null;

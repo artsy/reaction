@@ -258,7 +258,8 @@ return {
                                   "storageKey": null
                                 }
                               ]
-                            }
+                            },
+                            v0
                           ]
                         },
                         {

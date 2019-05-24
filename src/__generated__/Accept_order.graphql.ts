@@ -8,7 +8,7 @@ import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSum
 declare const _Accept_order$ref: unique symbol;
 export type Accept_order$ref = typeof _Accept_order$ref;
 export type Accept_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly stateExpiresAt: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -23,7 +23,7 @@ export type Accept_order = {
         }) | null> | null;
     }) | null;
     readonly lastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly createdAt: string | null;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;

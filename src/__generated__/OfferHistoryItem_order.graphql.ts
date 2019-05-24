@@ -9,7 +9,7 @@ export type OfferHistoryItem_order = {
     readonly offers?: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly amount: string | null;
                 readonly createdAt: string | null;
                 readonly fromParticipant: OrderParticipantEnum | null;
@@ -17,7 +17,7 @@ export type OfferHistoryItem_order = {
         }) | null> | null;
     }) | null;
     readonly lastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly fromParticipant: OrderParticipantEnum | null;
         readonly amount: string | null;
         readonly shippingTotal: string | null;

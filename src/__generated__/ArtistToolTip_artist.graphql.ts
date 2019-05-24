@@ -141,7 +141,8 @@ return {
                   "storageKey": null
                 }
               ]
-            }
+            },
+            v1
           ]
         }
       ]

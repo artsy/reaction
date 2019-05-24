@@ -19,7 +19,15 @@ export type GeneSearchResults_viewer = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "GeneSearchResults_viewer",
   "type": "Viewer",
@@ -108,19 +116,15 @@ const node: ConcreteFragment = {
                   "storageKey": null
                 }
               ]
-            }
+            },
+            v0
           ]
         },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
+        v0
       ]
     }
   ]
 };
+})();
 (node as any).hash = '6adc25a242a646cc0d4169ff9d4e5c20';
 export default node;

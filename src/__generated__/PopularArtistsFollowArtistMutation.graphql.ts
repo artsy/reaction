@@ -70,6 +70,7 @@ mutation PopularArtistsFollowArtistMutation(
           cropped(width: 100, height: 100) {
             url
           }
+          __id
         }
       }
     }
@@ -87,6 +88,7 @@ mutation PopularArtistsFollowArtistMutation(
                 cropped(width: 100, height: 100) {
                   url
                 }
+                __id
               }
             }
           }
@@ -193,7 +195,8 @@ v4 = [
             "storageKey": null
           }
         ]
-      }
+      },
+      v3
     ]
   }
 ],
@@ -316,7 +319,7 @@ return {
   "operationKind": "mutation",
   "name": "PopularArtistsFollowArtistMutation",
   "id": null,
-  "text": "mutation PopularArtistsFollowArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n      artists {\n        id\n        _id\n        __id\n        name\n        image {\n          cropped(width: 100, height: 100) {\n            url\n          }\n        }\n      }\n    }\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              id\n              _id\n              __id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PopularArtistsFollowArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n      artists {\n        id\n        _id\n        __id\n        name\n        image {\n          cropped(width: 100, height: 100) {\n            url\n          }\n          __id\n        }\n      }\n    }\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              id\n              _id\n              __id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n                __id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

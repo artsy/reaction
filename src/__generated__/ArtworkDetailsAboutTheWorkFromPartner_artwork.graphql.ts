@@ -204,7 +204,8 @@ return {
                     }
                   ],
                   "storageKey": "url(version:\"square140\")"
-                }
+                },
+                v0
               ]
             },
             v0

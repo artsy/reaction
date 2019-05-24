@@ -14,7 +14,7 @@ export type createTestEnvOrderMutationResponse = {
     readonly createOrderWithArtwork: ({
         readonly orderOrError: ({
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
             }) | null;
             readonly error?: ({
                 readonly type: string;

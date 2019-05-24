@@ -61,6 +61,7 @@ mutation FollowArtistPopoverRowMutation(
                 cropped(width: 45, height: 45) {
                   url
                 }
+                __id
               }
             }
           }
@@ -236,7 +237,8 @@ v2 = [
                                     "storageKey": null
                                   }
                                 ]
-                              }
+                              },
+                              v1
                             ]
                           }
                         ]
@@ -257,7 +259,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistPopoverRowMutation",
   "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n                __id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

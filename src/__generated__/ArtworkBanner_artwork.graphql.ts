@@ -103,14 +103,14 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
@@ -166,7 +166,8 @@ v8 = [
         "storageKey": null
       }
     ]
-  }
+  },
+  v3
 ];
 return {
   "kind": "Fragment",
@@ -218,14 +219,15 @@ return {
                     }
                   ],
                   "storageKey": "url(version:\"square140\")"
-                }
+                },
+                v3
               ]
             },
-            v3,
-            v4
+            v4,
+            v3
           ]
         },
-        v4
+        v3
       ]
     },
     {
@@ -269,10 +271,11 @@ return {
                 v6
               ],
               "storageKey": "url(version:\"square\")"
-            }
+            },
+            v3
           ]
         },
-        v4
+        v3
       ]
     },
     {
@@ -285,13 +288,13 @@ return {
       "plural": false,
       "selections": [
         v7,
-        v4,
+        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextAuction",
           "selections": [
             v1,
-            v3,
+            v4,
             v5,
             {
               "kind": "ScalarField",
@@ -335,13 +338,13 @@ return {
       "plural": false,
       "selections": [
         v7,
-        v4,
+        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextFair",
           "selections": [
             v1,
-            v3,
+            v4,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -383,7 +386,7 @@ return {
                   "plural": false,
                   "selections": v8
                 },
-                v4
+                v3
               ]
             }
           ]
@@ -400,13 +403,13 @@ return {
       "plural": false,
       "selections": [
         v7,
-        v4,
+        v3,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextPartnerShow",
           "selections": [
             v1,
-            v3,
+            v4,
             v0,
             {
               "kind": "ScalarField",
@@ -429,7 +432,7 @@ return {
         }
       ]
     },
-    v4
+    v3
   ]
 };
 })();

@@ -25,7 +25,15 @@ export type ItemReview_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ItemReview_artwork",
   "type": "Artwork",
@@ -100,7 +108,8 @@ const node: ConcreteFragment = {
           "name": "short_description",
           "args": null,
           "storageKey": null
-        }
+        },
+        v0
       ]
     },
     {
@@ -136,17 +145,13 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        }
+        },
+        v0
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
+})();
 (node as any).hash = '73946f68c326f532fe710492224c3b27';
 export default node;

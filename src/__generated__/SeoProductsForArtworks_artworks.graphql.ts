@@ -81,7 +81,8 @@ v2 = [
       }
     ],
     "storageKey": "url(version:\"larger\")"
-  }
+  },
+  v0
 ];
 return {
   "kind": "Fragment",

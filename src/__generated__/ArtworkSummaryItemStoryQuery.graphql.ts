@@ -49,6 +49,7 @@ fragment ArtworkSummaryItem_order on Order {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
+            __id
           }
           __id
         }
@@ -95,7 +96,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSummaryItemStoryQuery",
   "id": null,
-  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -261,7 +262,8 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              }
+                              },
+                              v3
                             ]
                           },
                           v3

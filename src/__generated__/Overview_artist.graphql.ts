@@ -75,7 +75,11 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-};
+},
+v2 = [
+  v0,
+  v1
+];
 return {
   "kind": "Fragment",
   "name": "Overview_artist",
@@ -381,10 +385,7 @@ return {
                   "args": null,
                   "concreteType": "Gene",
                   "plural": false,
-                  "selections": [
-                    v0,
-                    v1
-                  ]
+                  "selections": v2
                 }
               ]
             }
@@ -516,9 +517,7 @@ return {
                       "args": null,
                       "concreteType": "Category",
                       "plural": true,
-                      "selections": [
-                        v0
-                      ]
+                      "selections": v2
                     },
                     v1
                   ]
