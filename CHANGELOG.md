@@ -1,3 +1,15 @@
+# v16.12.15 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Add hover to mobile nav items [#2460](https://github.com/artsy/reaction/pull/2460) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.12.14 (Fri May 24 2019)
 
 #### 🐛  Bug Fix
