@@ -45,7 +45,7 @@ query NotificationsMenuQuery {
               resized(height: 40, width: 40) {
                 url
               }
-              __id
+              __id: id
             }
             __id
             __typename
@@ -171,7 +171,13 @@ v2 = [
                   }
                 ]
               },
-              v1
+              {
+                "kind": "ScalarField",
+                "alias": "__id",
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              }
             ]
           },
           v1,
@@ -224,7 +230,7 @@ return {
   "operationKind": "query",
   "name": "NotificationsMenuQuery",
   "id": null,
-  "text": "query NotificationsMenuQuery {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10) {\n        edges {\n          node {\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            image {\n              resized(height: 40, width: 40) {\n                url\n              }\n              __id\n            }\n            __id\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n    }\n    __id\n  }\n}\n",
+  "text": "query NotificationsMenuQuery {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10) {\n        edges {\n          node {\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            image {\n              resized(height: 40, width: 40) {\n                url\n              }\n              __id: id\n            }\n            __id\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n    }\n    __id\n  }\n}\n",
   "metadata": {
     "connection": [
       {

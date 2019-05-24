@@ -55,7 +55,7 @@ mutation SuggestedGenesFollowGeneMutation(
               cropped(width: 100, height: 100) {
                 url
               }
-              __id
+              __id: id
             }
           }
         }
@@ -216,7 +216,13 @@ v2 = [
                               }
                             ]
                           },
-                          v1
+                          {
+                            "kind": "ScalarField",
+                            "alias": "__id",
+                            "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          }
                         ]
                       }
                     ]
@@ -236,7 +242,7 @@ return {
   "operationKind": "mutation",
   "name": "SuggestedGenesFollowGeneMutation",
   "id": null,
-  "text": "mutation SuggestedGenesFollowGeneMutation(\n  $input: FollowGeneInput!\n  $excludedGeneIds: [String]!\n) {\n  followGene(input: $input) {\n    gene {\n      similar(first: 1, exclude_gene_ids: $excludedGeneIds) {\n        edges {\n          node {\n            id\n            _id\n            __id\n            name\n            image {\n              cropped(width: 100, height: 100) {\n                url\n              }\n              __id\n            }\n          }\n        }\n      }\n      __id\n    }\n  }\n}\n",
+  "text": "mutation SuggestedGenesFollowGeneMutation(\n  $input: FollowGeneInput!\n  $excludedGeneIds: [String]!\n) {\n  followGene(input: $input) {\n    gene {\n      similar(first: 1, exclude_gene_ids: $excludedGeneIds) {\n        edges {\n          node {\n            id\n            _id\n            __id\n            name\n            image {\n              cropped(width: 100, height: 100) {\n                url\n              }\n              __id: id\n            }\n          }\n        }\n      }\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

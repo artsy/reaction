@@ -36,6 +36,13 @@ export type RecommendedArtist_artist = {
 const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
@@ -172,7 +179,7 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0,
+                v1,
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -208,7 +215,7 @@ return {
       "name": "FollowArtistButton_artist",
       "args": null
     },
-    v0
+    v1
   ]
 };
 })();

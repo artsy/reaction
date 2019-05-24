@@ -55,7 +55,7 @@ fragment ArtistArticles_artist on Artist {
           resized(width: 300) {
             url
           }
-          __id
+          __id: id
         }
         __id
       }
@@ -141,7 +141,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArticlesQuery",
   "id": null,
-  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM Do, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM Do, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -396,7 +396,13 @@ return {
                               }
                             ]
                           },
-                          v2
+                          {
+                            "kind": "ScalarField",
+                            "alias": "__id",
+                            "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          }
                         ]
                       },
                       v2

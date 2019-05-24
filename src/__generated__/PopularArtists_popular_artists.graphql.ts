@@ -20,15 +20,7 @@ export type PopularArtists_popular_artists = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "PopularArtists_popular_artists",
   "type": "PopularArtists",
@@ -58,7 +50,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -106,13 +104,18 @@ return {
                 }
               ]
             },
-            v0
+            {
+              "kind": "ScalarField",
+              "alias": "__id",
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            }
           ]
         }
       ]
     }
   ]
 };
-})();
 (node as any).hash = '1c49138ba6baf7973c1aa1e59f1f0825';
 export default node;

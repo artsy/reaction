@@ -19,15 +19,7 @@ export type Fillwidth_artworks = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "Fillwidth_artworks",
   "type": "ArtworkConnection",
@@ -52,7 +44,13 @@ return {
           "concreteType": "Artwork",
           "plural": false,
           "selections": [
-            v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "__id",
+              "args": null,
+              "storageKey": null
+            },
             {
               "kind": "LinkedField",
               "alias": null,
@@ -69,7 +67,13 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v0
+                {
+                  "kind": "ScalarField",
+                  "alias": "__id",
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                }
               ]
             },
             {
@@ -83,6 +87,5 @@ return {
     }
   ]
 };
-})();
 (node as any).hash = '2c137b96505cd1aae9b4750ecf6bacc7';
 export default node;

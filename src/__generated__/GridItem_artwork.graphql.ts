@@ -22,15 +22,7 @@ export type GridItem_artwork = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "GridItem_artwork",
   "type": "Artwork",
@@ -95,7 +87,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -120,9 +118,14 @@ return {
       "name": "Badge_artwork",
       "args": null
     },
-    v0
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
 (node as any).hash = 'ccef836f9a27c7aa2e345ce8cb678f68';
 export default node;

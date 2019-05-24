@@ -118,7 +118,7 @@ fragment ArtworkGrid_artworks on ArtworkConnection {
       href
       image {
         aspect_ratio
-        __id
+        __id: id
       }
       ...GridItem_artwork
     }
@@ -133,7 +133,7 @@ fragment GridItem_artwork on Artwork {
     placeholder
     url(version: "large")
     aspect_ratio
-    __id
+    __id: id
   }
   href
   ...Metadata_artwork
@@ -325,19 +325,26 @@ v6 = {
 },
 v7 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "display",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v8 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "display",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v10 = [
   v6
 ];
 return {
@@ -345,7 +352,7 @@ return {
   "operationKind": "query",
   "name": "TagContentsArtworksQuery",
   "id": null,
-  "text": "query TagContentsArtworksQuery(\n  $tagID: String!\n  $medium: String\n  $price_range: String\n  $sort: String\n  $for_sale: Boolean\n  $dimension_range: String\n) {\n  tag(id: $tagID) {\n    ...TagArtworks_tag_2wcu0m\n    __id\n  }\n}\n\nfragment TagArtworks_tag_2wcu0m on Tag {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], for_sale: $for_sale, medium: $medium, price_range: $price_range, dimension_range: $dimension_range, size: 0) {\n    ...TotalCount_filter_artworks\n    ...TagArtworksContent_filtered_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n      ...Dropdown_aggregation\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        __id\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment TotalCount_filter_artworks on FilterArtworks {\n  counts {\n    total\n  }\n  __id\n}\n\nfragment TagArtworksContent_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\", sort: $sort) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    id\n    count\n    __id\n  }\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on ArtworkFilterTag {\n    name\n  }\n  ... on ArtworkFilterGene {\n    name\n  }\n  ... on Node {\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query TagContentsArtworksQuery(\n  $tagID: String!\n  $medium: String\n  $price_range: String\n  $sort: String\n  $for_sale: Boolean\n  $dimension_range: String\n) {\n  tag(id: $tagID) {\n    ...TagArtworks_tag_2wcu0m\n    __id\n  }\n}\n\nfragment TagArtworks_tag_2wcu0m on Tag {\n  id\n  filtered_artworks(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], for_sale: $for_sale, medium: $medium, price_range: $price_range, dimension_range: $dimension_range, size: 0) {\n    ...TotalCount_filter_artworks\n    ...TagArtworksContent_filtered_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        id\n        __id\n      }\n      ...Dropdown_aggregation\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        __id\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment TotalCount_filter_artworks on FilterArtworks {\n  counts {\n    total\n  }\n  __id\n}\n\nfragment TagArtworksContent_filtered_artworks on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: 10, after: \"\", sort: $sort) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        __id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    id\n    count\n    __id\n  }\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on ArtworkFilterTag {\n    name\n  }\n  ... on ArtworkFilterGene {\n    name\n  }\n  ... on Node {\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -586,7 +593,7 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              v2,
+                              v7,
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -771,14 +778,8 @@ return {
                                 "concreteType": "SaleArtworkHighestBid",
                                 "plural": false,
                                 "selections": [
-                                  v7,
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": "__id",
-                                    "name": "id",
-                                    "args": null,
-                                    "storageKey": null
-                                  }
+                                  v8,
+                                  v7
                                 ]
                               },
                               {
@@ -790,7 +791,7 @@ return {
                                 "concreteType": "SaleArtworkOpeningBid",
                                 "plural": false,
                                 "selections": [
-                                  v7
+                                  v8
                                 ]
                               },
                               v2
@@ -831,7 +832,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v8
+                          v9
                         ]
                       },
                       {
@@ -923,17 +924,17 @@ return {
                 "concreteType": null,
                 "plural": false,
                 "selections": [
-                  v8,
+                  v9,
                   v2,
                   {
                     "kind": "InlineFragment",
                     "type": "ArtworkFilterGene",
-                    "selections": v9
+                    "selections": v10
                   },
                   {
                     "kind": "InlineFragment",
                     "type": "ArtworkFilterTag",
-                    "selections": v9
+                    "selections": v10
                   }
                 ]
               }

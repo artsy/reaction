@@ -19,15 +19,7 @@ export type FillwidthItem_artwork = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "FillwidthItem_artwork",
   "type": "Artwork",
@@ -71,7 +63,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -96,9 +94,14 @@ return {
       "name": "Badge_artwork",
       "args": null
     },
-    v0
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
 (node as any).hash = '2d0cf4dcb3c793bdd36a81e3fe54d7e6';
 export default node;

@@ -10,13 +10,13 @@ export type ArtworkImageBrowser_artwork = {
     readonly image_title: string | null;
     readonly href: string | null;
     readonly image: ({
-        readonly id: string;
+        readonly id: string | null;
         readonly url: string | null;
         readonly height: number | null;
         readonly width: number | null;
     }) | null;
     readonly images: ReadonlyArray<({
-        readonly id: string;
+        readonly id: string | null;
         readonly uri: string | null;
         readonly placeholder: ({
             readonly url: string | null;
@@ -54,8 +54,8 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -309,7 +309,13 @@ return {
         v1
       ]
     },
-    v1
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
 })();
