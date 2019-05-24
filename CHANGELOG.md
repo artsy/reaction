@@ -1,3 +1,15 @@
+# v16.12.14 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Run relay over sync schema [#2459](https://github.com/artsy/reaction/pull/2459) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.12.13 (Thu May 23 2019)
 
 #### 🐛  Bug Fix
