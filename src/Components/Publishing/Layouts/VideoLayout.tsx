@@ -16,6 +16,7 @@ import { VideoCover } from "Components/Publishing/Video/VideoCover"
 import Events from "Utils/Events"
 
 interface Props {
+  areHostedAdsEnabled?: boolean
   article: ArticleData
   seriesArticle?: ArticleData
   relatedArticles?: any

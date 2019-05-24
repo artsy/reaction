@@ -1,6 +1,6 @@
 import { cloneDeep, isNil, omit, omitBy } from "lodash"
-import qs from "qs"
 import { Container } from "unstated"
+import { buildUrlForCollectApp } from "./urlBuilder"
 
 export interface State {
   medium?: string
@@ -43,48 +43,6 @@ export const initialState = {
   dimension_range: null,
 }
 
-// Returns a string representing the query part of a URL.
-// It removes default values.
-export const urlFragmentFromState = (state: State, extra?: Partial<State>) => {
-  const filters = Object.entries(state).reduce((acc, [key, value]) => {
-    if (isDefaultFilter(key, value)) {
-      return acc
-    } else {
-      return { ...acc, [key]: value }
-    }
-  }, {})
-
-  return qs.stringify({
-    ...filters,
-    ...extra,
-  })
-}
-
-// This is used to remove default state params that clutter up URLs.
-const isDefaultFilter = (filter, value): boolean => {
-  if (filter === "major_periods" || filter === "attribution_class") {
-    return value.length === 0
-  }
-
-  if (filter === "sort") {
-    return value === "-decayed_merch"
-  }
-
-  if (filter === "price_range" || filter === "height" || filter === "width") {
-    return value === "*-*"
-  }
-
-  if (filter === "page") {
-    return value === 1
-  }
-
-  if (filter === "medium") {
-    return value === "*"
-  }
-
-  return !value
-}
-
 // These filters aren't tracked via the `tracking` prop passed in here.
 // Instead, they are tracked using decorators in the collect page.
 // Once all filters are switched to be tracked using decorators this can
@@ -101,9 +59,15 @@ export class FilterState extends Container<State> {
   static MAX_HEIGHT = 120
   static MIN_WIDTH = 1
   static MAX_WIDTH = 120
+  urlBuilder: (state: State) => string
 
-  constructor(props: State) {
+  constructor(
+    props: State,
+    urlBuilder: (state: State) => string = buildUrlForCollectApp
+  ) {
     super()
+
+    this.urlBuilder = urlBuilder
 
     if (props) {
       this.tracking = props.tracking
@@ -114,9 +78,6 @@ export class FilterState extends Container<State> {
         }
 
         switch (filter) {
-          case "major_periods":
-            this.state[filter] = [value]
-            break
           case "page":
             this.state[filter] = Number(value)
             break
@@ -138,17 +99,35 @@ export class FilterState extends Container<State> {
     return omitBy(this.state, isNil)
   }
 
-  setPage(page, _mediator) {
-    this.setState({ page })
+  previousUrl = ""
+  pushHistory() {
+    const currentUrl = this.urlBuilder(this.state)
+    // PriceRangeFilter's onAfterChange event fires twice; this ensures
+    //   we only push that history event once.
+    if (this.previousUrl !== currentUrl) {
+      window.history.pushState({}, null, currentUrl)
+      this.previousUrl = currentUrl
+    }
   }
 
-  resetFilters = () => {
-    this.setState({
-      ...initialState,
+  setPage(page) {
+    this.setState({ page }, () => {
+      this.pushHistory()
     })
   }
 
-  unsetFilter(filter, _mediator) {
+  resetFilters = () => {
+    this.setState(
+      {
+        ...initialState,
+      },
+      () => {
+        this.pushHistory()
+      }
+    )
+  }
+
+  unsetFilter(filter) {
     let newPartialState = {}
     if (filter === "major_periods") {
       newPartialState = { major_periods: [] }
@@ -173,15 +152,17 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.setState(newPartialState)
+    this.setState(newPartialState, () => {
+      this.pushHistory()
+    })
   }
 
-  setFilter(filter: keyof State, value, _mediator) {
+  setFilter(filter: keyof State, value) {
     let newPartialState = {}
 
     switch (filter) {
       case "major_periods":
-        newPartialState = { major_periods: [value] }
+        newPartialState = { major_periods: value ? [value] : [] }
         break
       case "attribution_class":
         newPartialState = {
@@ -210,6 +191,7 @@ export class FilterState extends Container<State> {
     }
 
     this.setState(newPartialState, () => {
+      this.pushHistory()
       if (untrackedFilters.includes(filter)) return
       this.tracking &&
         this.tracking.trackEvent({

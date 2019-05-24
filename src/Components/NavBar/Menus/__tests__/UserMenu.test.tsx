@@ -1,10 +1,17 @@
 import { SystemContextProvider } from "Artsy"
+import * as authentication from "Components/NavBar/Utils/authentication"
 import { mount } from "enzyme"
 import React from "react"
-import * as auth from "../../Utils/auth"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("../../Utils/auth")
+jest.mock("Components/NavBar/Utils/authentication")
+jest.mock("Artsy/Analytics/useTracking", () => {
+  return {
+    useTracking: () => ({
+      trackEvent: jest.fn(),
+    }),
+  }
+})
 
 describe("UserMenu", () => {
   const mediator = {
@@ -50,6 +57,6 @@ describe("UserMenu", () => {
       .find("MenuItem")
       .last()
       .simulate("click")
-    expect(auth.logout).toHaveBeenCalledWith(mediator)
+    expect(authentication.logout).toHaveBeenCalledWith(mediator)
   })
 })

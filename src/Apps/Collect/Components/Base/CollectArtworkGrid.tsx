@@ -1,14 +1,16 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
-import { FilterState, urlFragmentFromState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
+import createLogger from "Utils/logger"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+const logger = createLogger("CollectArtworkGrid.tsx")
 
 interface Props {
   columnCount: number | number[]
@@ -25,7 +27,7 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
     isLoading: false,
   }
 
-  loadNext = (filters, mediator) => {
+  loadNext = (filters: FilterState) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -35,11 +37,11 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor, filters.state.page + 1, filters, mediator)
+      this.loadAfter(endCursor, filters.state.page + 1, filters)
     }
   }
 
-  loadAfter = (cursor, page, filters, mediator) => {
+  loadAfter = (cursor, page, filters: FilterState) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -51,18 +53,10 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-        filters.setPage(page, mediator)
-        const { state } = filters
-        const urlFragment = urlFragmentFromState(state, { page })
+        filters.setPage(page)
 
-        // TODO: Look into using router push w/ query params.
-        window.history.pushState(
-          {},
-          null,
-          `${window.location.pathname}?${urlFragment}`
-        )
         if (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
     )
@@ -106,10 +100,10 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
                         hasNextPage={artworks.pageInfo.hasNextPage}
                         pageCursors={artworks.pageCursors as any}
                         onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters, mediator)
+                          this.loadAfter(cursor, page, filters)
                         }}
                         onNext={() => {
-                          this.loadNext(filters, mediator)
+                          this.loadNext(filters)
                         }}
                         scrollTo="#jump--collectArtworkGrid"
                       />

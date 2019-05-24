@@ -7,8 +7,15 @@ import { NotificationsBadge } from "../NotificationsBadge"
 jest.mock("react-relay", () => {
   return {
     QueryRenderer: jest.fn(),
+    createRefetchContainer: jest.fn(),
   }
 })
+
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
 
 describe("NotificationsBadge", () => {
   const QueryRenderer: any = _QueryRenderer

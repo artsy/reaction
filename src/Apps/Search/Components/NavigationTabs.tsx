@@ -68,7 +68,7 @@ export class NavigationTabs extends React.Component<Props> {
           {text}
           {count != null && (
             <Sans ml={0.5} size="3t" weight="regular">
-              {count}
+              ({count})
             </Sans>
           )}
         </Flex>

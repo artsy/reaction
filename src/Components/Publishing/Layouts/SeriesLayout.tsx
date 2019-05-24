@@ -13,6 +13,7 @@ import {
 import { ArticleData } from "Components/Publishing/Typings"
 
 interface Props {
+  areHostedAdsEnabled?: boolean
   article?: ArticleData
   backgroundColor?: string
   color?: string

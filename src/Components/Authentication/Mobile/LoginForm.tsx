@@ -1,12 +1,13 @@
-import Colors from "Assets/Colors"
+import { Flex } from "@artsy/palette"
 import { checkEmail } from "Components/Authentication/helpers"
+import Icon from "Components/Icon"
+import PasswordInput from "Components/PasswordInput"
+import { ProgressIndicator } from "Components/ProgressIndicator"
+import QuickInput from "Components/QuickInput"
+import { Step, Wizard } from "Components/Wizard"
+import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import styled from "styled-components"
-import Icon from "../../Icon"
-import PasswordInput from "../../PasswordInput"
-import { ProgressIndicator } from "../../ProgressIndicator"
-import QuickInput from "../../QuickInput"
-import { Step, Wizard } from "../../Wizard"
+import { repcaptcha } from "Utils/repcaptcha"
 import {
   BackButton,
   Error,
@@ -17,7 +18,7 @@ import {
   MobileInnerWrapper,
   SubmitButton,
 } from "../commonElements"
-import { FormProps } from "../Types"
+import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
 export class MobileLoginForm extends Component<FormProps> {
@@ -33,6 +34,12 @@ export class MobileLoginForm extends Component<FormProps> {
 
     return null
   }
+
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("login_submit")
+    this.props.handleSubmit(values, formikBag)
+  }
+
   render() {
     const steps = [
       <Step
@@ -93,15 +100,15 @@ export class MobileLoginForm extends Component<FormProps> {
               setTouched={setTouched}
               touchedOnChange={false}
             />
-            <Row>
+            <Flex alignItems="center" justifyContent="flex-end">
               <ForgotPassword onClick={() => (location.href = "/forgot")} />
-            </Row>
+            </Flex>
           </Fragment>
         )}
       </Step>,
     ]
     return (
-      <Wizard steps={steps} onComplete={this.props.handleSubmit}>
+      <Wizard steps={steps} onComplete={this.onSubmit}>
         {context => {
           const {
             wizard,
@@ -121,11 +128,7 @@ export class MobileLoginForm extends Component<FormProps> {
                       : wizard.previous(e, values)
                   }
                 >
-                  <Icon
-                    name="chevron-left"
-                    color={Colors.graySemibold}
-                    fontSize="16px"
-                  />
+                  <Icon name="chevron-left" color="black60" fontSize="16px" />
                 </BackButton>
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
@@ -137,10 +140,9 @@ export class MobileLoginForm extends Component<FormProps> {
                   {isLastStep ? "Log in" : "Next"}
                 </SubmitButton>
                 <Footer
-                  mode="login"
+                  mode={"login" as ModalType}
                   handleTypeChange={this.props.handleTypeChange}
                   onFacebookLogin={this.props.onFacebookLogin}
-                  onTwitterLogin={this.props.onTwitterLogin}
                 />
               </MobileInnerWrapper>
             </MobileContainer>
@@ -150,9 +152,3 @@ export class MobileLoginForm extends Component<FormProps> {
     )
   }
 }
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`

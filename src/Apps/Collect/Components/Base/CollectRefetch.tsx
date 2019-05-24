@@ -1,15 +1,14 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import {
-  FilterState,
-  untrackedFilters,
-  urlFragmentFromState,
-} from "Apps/Collect/FilterState"
+import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import createLogger from "Utils/logger"
 import { CollectArtworkGridRefreshContainer as CollectArtworkGrid } from "./CollectArtworkGrid"
+
+const logger = createLogger("CollectRefetch.tsx")
 
 interface CollectRefetchProps {
   filtersState: FilterState["state"]
@@ -61,15 +60,8 @@ export class CollectRefetch extends Component<CollectRefetchProps> {
         null,
         error => {
           if (error) {
-            console.error(error)
+            logger.error(error)
           }
-
-          // TODO: Look into using router push w/ query params.
-          window.history.pushState(
-            {},
-            null,
-            `/collect?${urlFragmentFromState(this.props.filtersState)}`
-          )
 
           this.setState({
             isLoading: false,

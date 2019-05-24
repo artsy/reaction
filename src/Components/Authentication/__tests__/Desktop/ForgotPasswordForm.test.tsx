@@ -2,38 +2,63 @@ import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPass
 import { mount, shallow } from "enzyme"
 import React from "react"
 
-describe("ResetPasswordForm", () => {
-  xit("calls handleSubmit with the right params", () => {
-    const props = {
+jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
+
+// FIXME: mock Formik async and remove setTimeout
+describe("ForgotPasswordForm", () => {
+  let props
+
+  beforeEach(() => {
+    props = {
       handleSubmit: jest.fn(),
+      values: { email: "foo@bar.com" },
     }
+    window.grecaptcha.execute.mockClear()
+  })
 
-    const values = {
-      email: "foo@bar.com",
-    }
+  const getWrapper = (passedProps = props) => {
+    return mount(<ForgotPasswordForm {...passedProps} />)
+  }
 
-    const wrapper = shallow(
-      <ForgotPasswordForm values={values} handleSubmit={props.handleSubmit} />
-    )
+  describe("onSubmit", () => {
+    it("calls handleSubmit with expected params", done => {
+      const wrapper = shallow(<ForgotPasswordForm {...props} />)
+      const formik = wrapper.dive().instance() as any
+      formik.submitForm()
+      wrapper.update()
 
-    const formik = wrapper.dive().instance() as any
-    formik.submitForm()
+      setTimeout(() => {
+        expect(props.handleSubmit).toBeCalledWith(
+          {
+            email: "foo@bar.com",
+          },
+          formik.getFormikActions()
+        )
+        done()
+      })
+    })
 
-    setTimeout(() => {
-      expect(props.handleSubmit).toBeCalledWith(
-        {
-          email: "foo@bar.com",
-        },
-        formik.getFormikActions()
-      )
+    it("fires reCAPTCHA event", done => {
+      const wrapper = getWrapper()
+      const input = wrapper.find(`Formik`)
+      input.simulate("submit")
+
+      setTimeout(() => {
+        expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
+          action: "forgot_submit",
+        })
+        done()
+      })
     })
   })
 
   it("renders errors", done => {
-    const wrapper = mount(<ForgotPasswordForm handleSubmit={jest.fn()} />)
+    props.values = {}
+    const wrapper = getWrapper()
     const button = wrapper.find(`input[name="email"]`)
     button.simulate("blur")
     wrapper.update()
+
     setTimeout(() => {
       expect(wrapper.html()).toMatch("Please enter a valid email.")
       done()
@@ -41,16 +66,13 @@ describe("ResetPasswordForm", () => {
   })
 
   it("clears error after input change", done => {
-    const wrapper = mount(
-      <ForgotPasswordForm
-        error="Some global server error"
-        handleSubmit={jest.fn()}
-      />
-    )
+    props.error = "Some global server error"
+    const wrapper = getWrapper()
     const input = wrapper.find(`input[name="email"]`)
     expect((wrapper.state() as any).error).toEqual("Some global server error")
     input.simulate("change")
     wrapper.update()
+
     setTimeout(() => {
       expect((wrapper.state() as any).error).toEqual(null)
       done()

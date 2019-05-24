@@ -12,7 +12,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
-import { CollectionHeader } from "./Components/Collection/Header"
+import { CollectionFilterFragmentContainer as CollectionHeader } from "./Components/Collection/Header"
 import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 interface CollectionAppProps {
@@ -36,6 +36,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
   render() {
     const { collection } = this.props
     const { title, slug, headerImage, description, artworks } = collection
+
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
       ? `Buy, bid, and inquire on ${title} on Artsy. ` +
@@ -60,7 +61,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
           />
           <SeoProductsForArtworks artworks={artworks} />
 
-          <CollectionHeader collection={collection} />
+          <CollectionHeader
+            collection={collection}
+            artworks={artworks as any}
+          />
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
@@ -78,7 +82,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+            defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           }
           medium: { type: "String", defaultValue: "*" }
           major_periods: { type: "[String]" }
@@ -86,12 +90,14 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
+          offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
           height: { type: "String" }
           width: { type: "String" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         id
         slug
@@ -109,6 +115,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           aggregations: $aggregations
           include_medium_filter_in_aggregation: true
         ) {
+          ...Header_artworks
           ...SeoProductsForArtworks_artworks
         }
 
@@ -119,12 +126,14 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
             for_sale: $for_sale
             sort: $sort
             acquireable: $acquireable
+            offerable: $offerable
             at_auction: $at_auction
             inquireable_only: $inquireable_only
             price_range: $price_range
             height: $height
             width: $width
             color: $color
+            page: $page
           )
       }
     `,

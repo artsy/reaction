@@ -2,6 +2,7 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
+import { Header_artworks$ref } from "./Header_artworks.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _CollectionApp_collection$ref: unique symbol;
 export type CollectionApp_collection$ref = typeof _CollectionApp_collection$ref;
@@ -19,7 +20,7 @@ export type CollectionApp_collection = {
         readonly gene_id: string | null;
     };
     readonly artworks: ({
-        readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
+        readonly " $fragmentRefs": Header_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
     readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
     readonly " $refType": CollectionApp_collection$ref;
@@ -46,6 +47,7 @@ return {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
+        "MERCHANDISABLE_ARTISTS",
         "MEDIUM",
         "MAJOR_PERIOD",
         "TOTAL"
@@ -89,6 +91,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "inquireable_only",
       "type": "Boolean",
       "defaultValue": null
@@ -121,6 +129,12 @@ return {
       "kind": "LocalArgument",
       "name": "color",
       "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
       "defaultValue": null
     }
   ],
@@ -231,6 +245,11 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
+          "name": "Header_artworks",
+          "args": null
+        },
+        {
+          "kind": "FragmentSpread",
           "name": "SeoProductsForArtworks_artworks",
           "args": null
         },
@@ -297,6 +316,18 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
           "type": null
@@ -319,5 +350,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f18b8da67ef2e88c1040a1cf9206d2be';
+(node as any).hash = '25467f46cd5b9dc0cec17ed9b0218272';
 export default node;

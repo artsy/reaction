@@ -1,6 +1,7 @@
-import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import React, { SFC } from "react"
+import React, { SFC, useMemo } from "react"
 import { Environment } from "relay-runtime"
+
+import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { getUser } from "Utils/getUser"
 
 export interface Mediator {
@@ -20,6 +21,11 @@ export interface SystemContextProps {
   mediator?: Mediator
 
   /**
+   * FIXME: Ask alloy how to pass one-off props like this in from force
+   */
+  notificationCount?: number
+
+  /**
    * A configured environment object that can be used for any Relay operations
    * that need an environment object.
    *
@@ -35,11 +41,6 @@ export interface SystemContextProps {
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   user?: User
-
-  /**
-   * FIXME: Ask alloy how to pass one-off props like this in from force
-   */
-  notificationCount?: number
 }
 
 export const SystemContext = React.createContext<SystemContextProps>({})
@@ -57,11 +58,13 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 
-  const providerValues = {
-    ...props,
-    user,
-    relayEnvironment,
-  }
+  const providerValues = useMemo(() => {
+    return {
+      ...props,
+      relayEnvironment,
+      user,
+    }
+  }, [props.relayEnvironment, props.user])
 
   return (
     <SystemContext.Provider value={providerValues}>

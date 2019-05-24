@@ -41,6 +41,7 @@ return {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
+        "MERCHANDISABLE_ARTISTS",
         "MEDIUM",
         "MAJOR_PERIOD",
         "TOTAL"
@@ -116,6 +117,12 @@ return {
       "kind": "LocalArgument",
       "name": "color",
       "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
       "defaultValue": null
     }
   ],
@@ -256,6 +263,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
           "type": null
@@ -284,5 +297,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '041f4afb8bf59e827f9203e65cc0b4b3';
+(node as any).hash = 'b8324b3bc570b04f460e8f7cb050c9f8';
 export default node;

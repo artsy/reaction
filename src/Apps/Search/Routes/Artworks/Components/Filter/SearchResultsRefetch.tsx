@@ -1,5 +1,5 @@
 import { SearchResultsRefetch_viewer } from "__generated__/SearchResultsRefetch_viewer.graphql"
-import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
+import { FilterState } from "Apps/Search/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -53,13 +53,6 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
           if (error) {
             console.error(error)
           }
-
-          // TODO: Look into using router push w/ query params.
-          window.history.pushState(
-            {},
-            null,
-            `/search?${urlFragmentFromState(this.props.filtersState)}`
-          )
 
           this.setState({
             isLoading: false,

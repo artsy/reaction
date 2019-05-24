@@ -87,6 +87,12 @@ return {
       "name": "price_range",
       "type": "String",
       "defaultValue": "*-*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -149,6 +155,12 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": "Int"
+        },
+        {
+          "kind": "Variable",
           "name": "partner_id",
           "variableName": "partner_id",
           "type": "ID"
@@ -186,5 +198,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8dd29625ea0a7f1a1ecf8168464322ad';
+(node as any).hash = 'e8f19166da037c573aa4928e3fcb1194';
 export default node;

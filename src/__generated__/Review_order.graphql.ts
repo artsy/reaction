@@ -13,6 +13,7 @@ export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
     readonly id: string | null;
     readonly mode: OrderModeEnum | null;
+    readonly itemsTotal: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -65,13 +66,25 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
     v0,
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
+      "name": "itemsTotal",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "precision",
+          "value": 2,
+          "type": "Int"
+        }
+      ],
+      "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "LinkedField",
@@ -147,8 +160,15 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
+      "name": "OfferSummaryItem_order",
       "args": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "FragmentSpread",
@@ -163,11 +183,6 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "CreditCardSummaryItem_order",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "OfferSummaryItem_order",
       "args": null
     },
     v2,
@@ -193,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5dc4214b38c43bf80c508494edab0822';
+(node as any).hash = '0bffcc0a156da80f5e479655a11730d0';
 export default node;

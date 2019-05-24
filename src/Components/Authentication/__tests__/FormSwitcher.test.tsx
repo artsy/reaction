@@ -1,6 +1,6 @@
+import { Link } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
-import { SmallTextLink } from "../commonElements"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
 import { LoginForm } from "../Desktop/LoginForm"
 import { SignUpForm } from "../Desktop/SignUpForm"
@@ -77,7 +77,7 @@ describe("FormSwitcher", () => {
       })
 
       wrapper
-        .find(SmallTextLink)
+        .find(Link)
         .at(1)
         .simulate("click")
 
@@ -92,8 +92,8 @@ describe("FormSwitcher", () => {
       })
 
       wrapper
-        .find("SmallTextLink")
-        .at(1)
+        .find(Link)
+        .at(2)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")

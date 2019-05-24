@@ -1,57 +1,22 @@
 import { growAndFadeIn } from "Assets/Animations"
-import { garamond, unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 export { Footer } from "./Footer"
 export { TermsOfServiceCheckbox } from "./TermsOfServiceCheckbox"
-import { Button, ButtonProps, color } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  ButtonProps,
+  Flex,
+  Link,
+  Sans,
+  Serif,
+} from "@artsy/palette"
 
-interface FormProps {
-  height?: number
-}
-
-export const FormContainer = styled.form`
+export const FormContainer = styled.form<{ height?: number }>`
   display: flex;
   flex-direction: column;
-  height: ${(p: FormProps) => (p.height ? p.height + "px" : "auto")};
-`
-
-export const SmallTextLink = styled.a`
-  color: ${color("black60")};
-  text-decoration: underline;
-  cursor: pointer;
-  ${unica("s12")};
-`
-
-SmallTextLink.displayName = "SmallTextLink"
-
-export const SmallText = styled.span`
-  margin: 0;
-  color: ${color("black60")};
-  ${unica("s12")};
-  line-height: 2.25em;
-`
-
-export const MobileHeader = styled.div`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  flex-direction: row;
-  padding: 10px;
-  margin: 20px 0 0;
-  ${garamond("s23")};
-  font-weight: bold;
-`
-
-export const Error = styled.div.attrs<{ show: boolean }>({})`
-  ${unica("s12")};
-  margin-top: ${p => (p.show ? "auto" : "0")};
-  margin-bottom: 10px;
-  color: ${color("red100")};
-  visibility: ${p => (p.show ? "visible" : "hidden")};
-  transition: visibility 0.2s linear;
-  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
-  height: ${p => (p.show ? "auto" : "0")};
+  min-height: ${p => (p.height ? p.height + "px" : "auto")};
 `
 
 export const MobileInnerWrapper = styled.div`
@@ -82,13 +47,44 @@ export const BackButton = styled.div`
   cursor: pointer;
 `
 
-const ForgotPasswordLink = styled(SmallTextLink)`
-  margin-left: auto;
-  color: ${color("black60")};
+export const ErrorContainer = styled(Box)<{ show: boolean }>`
+  margin-top: ${p => (p.show ? "auto" : "0")};
+  visibility: ${p => (p.show ? "visible" : "hidden")};
+  transition: visibility 0.2s linear;
+  animation: ${p => p.show && growAndFadeIn("16px")} 0.25s linear;
+  height: ${p => (p.show ? "auto" : "0")};
 `
 
-export const ForgotPassword = props => (
-  <ForgotPasswordLink {...props}>Forgot Password?</ForgotPasswordLink>
+export const Error = (props: { children: any; show: boolean }) => (
+  <ErrorContainer show={props.show} mb={1}>
+    <Sans size="2" color="red100">
+      {props.children}
+    </Sans>
+  </ErrorContainer>
+)
+
+export const MobileHeader = (props: {
+  children: React.ReactElement | string
+}) => (
+  <Flex p={1} mt={2} justifyContent="center">
+    <Serif size="5t" weight="semibold" textAlign="center">
+      {props.children}
+    </Serif>
+  </Flex>
+)
+
+export const FooterText = (props: { children: any; mt?: number }) => (
+  <Sans size="2" color="black60" mt={props.mt || 1} mr={0.5} textAlign="center">
+    {props.children}
+  </Sans>
+)
+
+export const ForgotPassword = (props: { onClick: () => void }) => (
+  <Sans size="2">
+    <Link color="black60" {...props}>
+      Forgot Password?
+    </Link>
+  </Sans>
 )
 
 export const SubmitButton = (props: ButtonProps) => (
@@ -96,3 +92,18 @@ export const SubmitButton = (props: ButtonProps) => (
     {props.children}
   </Button>
 )
+
+export const CaptchaTerms = () => {
+  return (
+    <FooterText mt={2}>
+      This site is protected by reCAPTCHA and the Google{" "}
+      <Link color="black60" href="https://policies.google.com/privacy">
+        Privacy Policy
+      </Link>{" "}
+      <Link color="black60" href="https://policies.google.com/terms">
+        Terms of Service
+      </Link>{" "}
+      apply.
+    </FooterText>
+  )
+}

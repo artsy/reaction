@@ -3,6 +3,16 @@ import { mount } from "enzyme"
 import React from "react"
 import { MobileNavMenu } from "../MobileNavMenu"
 
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
+
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({ sm: false }),
+}))
+
 describe("MobileNavMenu", () => {
   const getWrapper = props => {
     return mount(

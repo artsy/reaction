@@ -13,7 +13,6 @@ jest.mock("sharify", () => ({
 
 describe("FilterContainer", () => {
   let filterState: FilterState = null
-  let mockMediator = null
   let user = null
 
   const mediums = [
@@ -22,9 +21,6 @@ describe("FilterContainer", () => {
   ]
 
   beforeEach(() => {
-    mockMediator = {
-      trigger: jest.fn(),
-    }
     filterState = new FilterState({
       tracking: {
         trackEvent: jest.fn(),
@@ -42,11 +38,7 @@ describe("FilterContainer", () => {
     const wrapper = mount(
       <MockBoot breakpoint="xs">
         <Provider inject={[filterState]}>
-          <FilterContainer
-            mediator={mockMediator}
-            mediums={mediums}
-            user={user}
-          >
+          <FilterContainer mediums={mediums} user={user}>
             {filters => {
               return <div />
             }}
@@ -65,11 +57,7 @@ describe("FilterContainer", () => {
     const wrapper = mount(
       <MockBoot breakpoint="lg">
         <Provider inject={[filterState]}>
-          <FilterContainer
-            mediator={mockMediator}
-            mediums={mediums}
-            user={user}
-          >
+          <FilterContainer mediums={mediums} user={user}>
             {filters => {
               return <div />
             }}

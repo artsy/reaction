@@ -25,6 +25,16 @@ jest.mock(
   })
 )
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+    CURRENT_USER: {
+      type: "Non-Admin",
+      email: "someuser@email.com",
+    },
+  },
+}))
+
 it("renders RelatedArticlesCanvas if article is not super or in a series", () => {
   const article = mount(
     <FeatureLayout

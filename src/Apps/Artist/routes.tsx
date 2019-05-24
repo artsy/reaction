@@ -89,6 +89,7 @@ export const routes: RouteConfig[] = [
             $offerable: Boolean
             $inquireable_only: Boolean
             $price_range: String
+            $page: Int
           ) {
             artist(id: $artistID) {
               ...Overview_artist
@@ -103,6 +104,7 @@ export const routes: RouteConfig[] = [
                   inquireable_only: $inquireable_only
                   offerable: $offerable
                   price_range: $price_range
+                  page: $page
                 )
             }
           }

@@ -10,7 +10,6 @@ jest.mock("sharify", () => ({
 }))
 
 describe("FilterContainer", () => {
-  const mockMediator = null
   let user = null
 
   const mediums = [
@@ -29,7 +28,7 @@ describe("FilterContainer", () => {
   it("renders mobile version", () => {
     const wrapper = mount(
       <MockBoot breakpoint="xs">
-        <FilterContainer mediator={mockMediator} mediums={mediums} user={user}>
+        <FilterContainer mediums={mediums} user={user}>
           {filters => {
             return <div />
           }}
@@ -46,7 +45,7 @@ describe("FilterContainer", () => {
   it("renders desktop version", () => {
     const wrapper = mount(
       <MockBoot breakpoint="lg">
-        <FilterContainer mediator={mockMediator} mediums={mediums} user={user}>
+        <FilterContainer mediums={mediums} user={user}>
           {filters => {
             return <div />
           }}

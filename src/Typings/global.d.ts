@@ -14,6 +14,7 @@ declare global {
 
   interface Window {
     __RELAY_BOOTSTRAP__: string
+    grecaptcha: any
   }
 }
 

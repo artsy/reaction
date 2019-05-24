@@ -1,6 +1,6 @@
-import * as auth from "../auth"
+import * as authentication from "../authentication"
 
-describe("auth", () => {
+describe("authentication", () => {
   let mediator
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe("auth", () => {
   })
 
   it("calls login mediator with correct parameters", () => {
-    auth.login(mediator)
+    authentication.login(mediator)
 
     expect(mediator.trigger).toHaveBeenCalledWith("open:auth", {
       contextModule: "Header",
@@ -23,12 +23,12 @@ describe("auth", () => {
   })
 
   it("calls logout mediator with correct parameters", () => {
-    auth.logout(mediator)
+    authentication.logout(mediator)
     expect(mediator.trigger).toHaveBeenCalledWith("auth:logout")
   })
 
   it("calls signup mediator with correct parameters", () => {
-    auth.signup(mediator)
+    authentication.signup(mediator)
     expect(mediator.trigger).toHaveBeenCalledWith("open:auth", {
       contextModule: "Header",
       destination: "http://localhost/",

@@ -1,22 +1,29 @@
 import { BellIcon, SoloIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
-import * as auth from "../Utils/auth"
+import * as authentication from "../Utils/authentication"
 
-jest.mock("../Utils/auth")
-
+jest.mock("../Utils/authentication")
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
   }
 })
 
+jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({}),
+}))
+
 describe("NavBar", () => {
   const mediator = {
     trigger: jest.fn(),
   }
+
+  const trackEvent = jest.fn()
 
   const getWrapper = ({ user = null } = {}) => {
     return mount(
@@ -25,6 +32,19 @@ describe("NavBar", () => {
       </SystemContextProvider>
     )
   }
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it("renders Artsy Logo and SearchBar", () => {
     const wrapper = getWrapper()
     expect(wrapper.find("ArtsyMarkBlackIcon").length).toEqual(1)
@@ -88,7 +108,7 @@ describe("NavBar", () => {
         .find("Button")
         .first()
         .simulate("click")
-      expect(auth.login).toHaveBeenCalledWith(mediator)
+      expect(authentication.login).toHaveBeenCalledWith(mediator)
     })
 
     it("calls signup auth action on signup button click", () => {
@@ -97,24 +117,26 @@ describe("NavBar", () => {
         .find("Button")
         .last()
         .simulate("click")
-      expect(auth.signup).toHaveBeenCalledWith(mediator)
+      expect(authentication.signup).toHaveBeenCalledWith(mediator)
     })
   })
 
   describe("mobile", () => {
-    const wrapper = getWrapper()
-    expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
+    it("toggles menu", () => {
+      const wrapper = getWrapper()
+      expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
 
-    const toggle = () =>
-      wrapper
-        .find("NavSection")
-        .find("NavItem")
-        .last()
-        .simulate("click")
+      const toggle = () =>
+        wrapper
+          .find("NavSection")
+          .find("NavItem")
+          .last()
+          .simulate("click")
 
-    toggle()
-    expect(wrapper.find("MobileNavMenu").length).toEqual(1)
-    toggle()
-    expect(wrapper.find("MobileNavMenu").length).toEqual(0)
+      toggle()
+      expect(wrapper.find("MobileNavMenu").length).toEqual(1)
+      toggle()
+      expect(wrapper.find("MobileNavMenu").length).toEqual(0)
+    })
   })
 })

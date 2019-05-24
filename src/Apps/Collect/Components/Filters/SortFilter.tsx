@@ -1,5 +1,4 @@
-import { SystemContext } from "Artsy"
-import React, { useContext } from "react"
+import React from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
 
@@ -9,7 +8,6 @@ export const SortFilter: React.FC<{
   filters: FilterState
   onShow?: () => void
 }> = ({ filters, onShow }) => {
-  const { mediator } = useContext(SystemContext)
   return (
     <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
       <SmallSelect
@@ -38,7 +36,7 @@ export const SortFilter: React.FC<{
         ]}
         selected={filters.state.sort}
         onSelect={sort => {
-          return filters.setFilter("sort", sort, mediator)
+          return filters.setFilter("sort", sort)
         }}
       />
 

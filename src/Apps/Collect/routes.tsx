@@ -4,6 +4,7 @@ import { graphql } from "react-relay"
 import AnalyticsProvider from "./AnalyticsProvider"
 import { CollectAppFragmentContainer as CollectApp } from "./CollectApp"
 import { CollectionAppFragmentContainer as CollectionApp } from "./CollectionApp"
+import { buildUrlForCollectApp, buildUrlForCollectionApp } from "./urlBuilder"
 
 const initializeVariablesWithFilterState = (params, props) => {
   const initialFilterState = props.location ? props.location.query : {}
@@ -70,7 +71,13 @@ export const routes: RouteConfig[] = [
         return null
       }
 
-      return <AnalyticsProvider {...props} Component={Component} />
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={Component}
+          urlBuilder={buildUrlForCollectApp}
+        />
+      )
     },
     prepareVariables: initializeVariablesWithFilterState,
   },
@@ -91,6 +98,8 @@ export const routes: RouteConfig[] = [
         $price_range: String
         $height: String
         $width: String
+        $color: String
+        $page: Int
       ) {
         collection: marketingCollection(slug: $slug) {
           ...CollectionApp_collection
@@ -106,6 +115,8 @@ export const routes: RouteConfig[] = [
               price_range: $price_range
               height: $height
               width: $width
+              color: $color
+              page: $page
             )
         }
       }
@@ -115,7 +126,13 @@ export const routes: RouteConfig[] = [
         return null
       }
 
-      return <AnalyticsProvider {...props} Component={Component} />
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={Component}
+          urlBuilder={buildUrlForCollectionApp}
+        />
+      )
     },
     prepareVariables: initializeVariablesWithFilterState,
   },

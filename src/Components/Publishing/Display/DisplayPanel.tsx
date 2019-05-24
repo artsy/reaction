@@ -348,7 +348,6 @@ export class DisplayPanel extends Component<
             )}
           </VideoCover>
         )}
-
         <video
           playsInline
           src={url}
@@ -361,9 +360,35 @@ export class DisplayPanel extends Component<
     )
   }
 
+  renderPanelContent() {
+    const { unit, campaign, renderTime } = this.props
+    const isVideo = this.isVideo()
+    const url = get(unit.assets, "0.url", "")
+
+    return (
+      <>
+        {isVideo ? (
+          this.renderVideo(url)
+        ) : (
+          <Image className="DisplayPanel__Image" />
+        )}
+
+        <div>
+          <Headline>{unit.headline}</Headline>
+          <Body
+            dangerouslySetInnerHTML={{
+              __html: unit.body,
+            }}
+          />
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+          <PixelTracker unit={unit} date={renderTime} />
+        </div>
+      </>
+    )
+  }
   render() {
     const { showCoverImage } = this.state
-    const { unit, campaign, isMobile, renderTime } = this.props
+    const { unit, isMobile } = this.props
     const url = get(unit.assets, "0.url", "")
     const isVideo = this.isVideo()
     const imageUrl = isVideo
@@ -390,25 +415,8 @@ export class DisplayPanel extends Component<
             coverUrl={coverUrl}
             showCoverImage={showCoverImage}
           >
-            {isVideo ? (
-              this.renderVideo(url)
-            ) : (
-              <Image className="DisplayPanel__Image" />
-            )}
-
-            <div>
-              <Headline>{unit.headline}</Headline>
-
-              <Body
-                dangerouslySetInnerHTML={{
-                  __html: unit.body,
-                }}
-              />
-
-              <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-            </div>
+            {this.renderPanelContent()}
           </DisplayPanelContainer>
-          <PixelTracker unit={unit} date={renderTime} />
         </Wrapper>
       </ErrorBoundary>
     )

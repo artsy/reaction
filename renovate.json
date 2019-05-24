@@ -1,8 +1,5 @@
 {
-  "extends": ["@artsy"],
-  "assignees": ["zephraph", "damassi", "alloy"],
-  "automerge": true,
-  "major": {
-    "automerge": false
-  }
+  "extends": ["@artsy:lib"],
+  "assignees": ["zephraph"],
+  "reviewers": ["damassi"]
 }

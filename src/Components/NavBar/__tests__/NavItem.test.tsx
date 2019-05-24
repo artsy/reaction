@@ -2,6 +2,16 @@ import { mount } from "enzyme"
 import React from "react"
 import { NavItem } from "../NavItem"
 
+jest.mock("Artsy/Analytics/useTracking", () => {
+  return {
+    useTracking: () => ({
+      trackEvent: jest.fn(),
+    }),
+  }
+})
+
+jest.mock("Utils/Hooks/useMedia")
+
 describe("NavItem", () => {
   it("renders proper content", () => {
     const wrapper = mount(
@@ -27,9 +37,9 @@ describe("NavItem", () => {
       </NavItem>
     )
     expect(wrapper.html()).not.toContain("Menu Item")
-    wrapper.find("Box").simulate("mouseenter")
+    wrapper.simulate("mouseenter")
     expect(wrapper.html()).toContain("Menu Item")
-    wrapper.find("Box").simulate("mouseleave")
+    wrapper.simulate("mouseleave")
     expect(wrapper.html()).not.toContain("Menu Item")
   })
 
@@ -49,7 +59,20 @@ describe("NavItem", () => {
         hello how are you
       </NavItem>
     )
-    wrapper.find("Box").simulate("click")
+    wrapper.simulate("click")
     expect(spy).toHaveBeenCalled()
+  })
+
+  it("supports renderProps for children", () => {
+    const wrapper = mount(
+      <NavItem href="/some-link" active>
+        {({ hover }) => {
+          expect(hover).toBe(true)
+          return <div>hello renderprop</div>
+        }}
+      </NavItem>
+    )
+
+    expect(wrapper.html()).toContain("hello renderprop")
   })
 })

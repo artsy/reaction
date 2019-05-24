@@ -26,6 +26,16 @@ jest.mock("Components/Publishing/ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))
 
+jest.mock("sharify", () => ({
+  data: {
+    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
+    CURRENT_USER: {
+      type: "Non-Admin",
+      email: "someuser@email.com",
+    },
+  },
+}))
+
 it("indexes and titles images", () => {
   const article = mount(
     <ArticleWithFullScreen article={StandardArticle} />

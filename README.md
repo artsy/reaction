@@ -1,4 +1,4 @@
-          :::::::::  ::::::::::     :::      :::::::: ::::::::::: ::::::::::: ::::::::  ::::    :::
+:::::::::  ::::::::::     :::      :::::::: ::::::::::: ::::::::::: ::::::::  ::::    :::
          :+:    :+: :+:          :+: :+:   :+:    :+:    :+:         :+:    :+:    :+: :+:+:   :+:
         +:+    +:+ +:+         +:+   +:+  +:+           +:+         +:+    +:+    +:+ :+:+:+  +:+
        +#++:++#:  +#++:++#   +#++:++#++: +#+           +#+         +#+    +#+    +:+ +#+ +:+ +#+
@@ -11,6 +11,7 @@
 - **State:** production
 - **Demo:** <https://artsy.github.io/reaction>
 - **CI:** [![CircleCI](https://circleci.com/gh/artsy/reaction.svg?style=shield)](https://circleci.com/gh/artsy/reaction)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartsy%2Freaction.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartsy%2Freaction?ref=badge_shield)
 - **NPM:** [![npm version](https://badge.fury.io/js/%40artsy%2Freaction.svg)](https://www.npmjs.com/package/@artsy/reaction)
 - **Point People:** [@alloy](https://github.com/alloy), [@l2succes](https://github.com/l2succes) & [@damassi](https://github.com/damassi)
 
@@ -80,44 +81,6 @@ Peril will automatically add "Version: Patch", if you don't set one on creating 
 If you're making a change but you don't want to immediate trigger a release (i.e. when 2 PRs need to go out together), specify the correct
 version and add the `Skip Release` label. That'll ensure when the next release happens the version is still bumped appropriately.
 
-## Emitting types
 
-We recently started shipping Reaction builds with declaration files (`.d.ts`) so consumers have access to the interfaces and types we add to our components. Because of that, you will notice errors resembling the following:
-
-```typescript
-src/Components/Forms/OrderForm/App.tsx:63:14 - error TS4023: Exported variable 'StyledTitle' has or is using name 'TitleProps' from external module "/Users/lucsucces/Projects/reaction/src/Components/Title" but cannot be named.
-
-63 export const StyledTitle = styled(Title)`
-                ~~~~~~~~~~~
-```
-
-What that error essentially means because you are exporting `StyledTitle`, the interface `TitleProps` also needs to be exported. You can learn more about declarations files [here](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
-
-##### Exporting interfaces
-
-This also affects a bit how we declare our interfaces. Instead using a private `Props` interface as we've been doing
-
-```typescript
-interface Props {
-  ...
-}
-
-export class Icon extends Component<Props> {
-  ...
-}
-```
-
-you should write that instead
-
-```typescript
-export interface IconProps {
-  ...
-}
-
-export class Icon extends Component<IconProps> {
-  ...
-}
-```
-
-The more descriptive interface name (`IconProps`) will get more useful error messages from the compiler when something goes wrong,
-and it's clearer which interface is being referred to in type defintion files.
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartsy%2Freaction.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartsy%2Freaction?ref=badge_large)

@@ -6,32 +6,32 @@ import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 import * as Menus from "Components/NavBar/Menus"
 
+const NavBarArea = props => {
+  return (
+    <SystemContextProvider {...props}>
+      <Box mx={1} position="fixed" top={0} left={-10} width="100%">
+        <NavBar />
+      </Box>
+    </SystemContextProvider>
+  )
+}
+
 storiesOf("Components/NavBar", module)
   .add("Logged out", () => {
     return (
-      <Box width="100%">
-        <SystemContextProvider user={null}>
-          <NavBar />
-        </SystemContextProvider>
-
-        <Box mx={1}>
-          <PageCopy />
-        </Box>
-      </Box>
+      <Container>
+        <NavBarArea user={null} />
+        <PageCopy />
+      </Container>
     )
   })
 
   .add("Logged in", () => {
     return (
-      <Box width="100%">
-        <SystemContextProvider>
-          <NavBar />
-        </SystemContextProvider>
-
-        <Box mx={1}>
-          <PageCopy />
-        </Box>
-      </Box>
+      <Container>
+        <NavBarArea />
+        <PageCopy />
+      </Container>
     )
   })
 
@@ -39,20 +39,32 @@ storiesOf("Components/NavBar", module)
     "Mobile",
     () => {
       return (
-        <Box width="100%">
-          <SystemContextProvider>
-            <NavBar />
-          </SystemContextProvider>
-
-          <Box mx={1}>
-            <PageCopy />
-          </Box>
-        </Box>
+        <Container>
+          <NavBarArea />
+          <PageCopy />
+        </Container>
       )
     },
     {
       viewport: {
         defaultViewport: "iphonex",
+      },
+    }
+  )
+
+  .add(
+    "Tablet",
+    () => {
+      return (
+        <Container>
+          <NavBarArea />
+          <PageCopy />
+        </Container>
+      )
+    },
+    {
+      viewport: {
+        defaultViewport: "ipad",
       },
     }
   )
@@ -71,9 +83,13 @@ storiesOf("Components/NavBar/Menus", module)
     return <Menus.MobileNavMenu />
   })
 
+const Container = ({ children }) => {
+  return <Box width="100%">{children}</Box>
+}
+
 const PageCopy = () => {
   return (
-    <>
+    <Box mx={1} mt={80}>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nibh
         quis ex imperdiet tristique eu non nisl. Nullam dignissim ex vel
@@ -126,6 +142,6 @@ const PageCopy = () => {
         malesuada quam. Nulla et est laoreet, malesuada justo in, lacinia
         tellus. In mattis euismod mattis.
       </p>
-    </>
+    </Box>
   )
 }

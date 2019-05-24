@@ -42,7 +42,7 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
     // noop
   }
 
-  render() {
+  renderCanvasContent() {
     const { unit, campaign, article, renderTime } = this.props
     const url = unit.link ? get(unit, "link.url", "") : ""
     const disclaimer = (
@@ -50,27 +50,33 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
     )
 
     return (
+      <>
+        <a
+          href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
+          target="_blank"
+        >
+          <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
+        </a>
+        <CanvasContainer
+          unit={unit}
+          campaign={campaign}
+          article={article}
+          disclaimer={disclaimer}
+        />
+        {unit.layout === "overlay" && disclaimer}
+        <PixelTracker unit={unit} date={renderTime} />
+      </>
+    )
+  }
+
+  render() {
+    const { unit } = this.props
+    return (
       <ErrorBoundary>
         <DisplayContainer layout={unit.layout}>
           <Waypoint onEnter={this.trackImpression} />
           <Waypoint bottomOffset="50%" onEnter={this.trackViewability} />
-
-          <a
-            href={replaceWithCacheBuster(url, getCurrentUnixTimestamp())}
-            target="_blank"
-          >
-            <SponsoredBy>{`Sponsored by ${campaign.name}`}</SponsoredBy>
-          </a>
-
-          <CanvasContainer
-            unit={unit}
-            campaign={campaign}
-            article={article}
-            disclaimer={disclaimer}
-          />
-
-          {unit.layout === "overlay" && disclaimer}
-          <PixelTracker unit={unit} date={renderTime} />
+          {this.renderCanvasContent()}
         </DisplayContainer>
       </ErrorBoundary>
     )

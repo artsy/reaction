@@ -1,3 +1,906 @@
+# v16.12.16 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema with Image Id Nullability change [#2461](https://github.com/artsy/reaction/pull/2461) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Sync metaphysics schema [#2458](https://github.com/artsy/reaction/pull/2458) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.12.15 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Add hover to mobile nav items [#2460](https://github.com/artsy/reaction/pull/2460) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.12.14 (Fri May 24 2019)
+
+#### 🐛  Bug Fix
+
+- Run relay over sync schema [#2459](https://github.com/artsy/reaction/pull/2459) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.12.13 (Thu May 23 2019)
+
+#### 🐛  Bug Fix
+
+- Add new ads to News landing page [#2453](https://github.com/artsy/reaction/pull/2453) ([@l2succes](https://github.com/l2succes) [@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Sync metaphysics schema [#2457](https://github.com/artsy/reaction/pull/2457) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.12.12 (Thu May 23 2019)
+
+
+
+---
+
+# v16.12.11 (Thu May 23 2019)
+
+
+
+---
+
+# v16.12.10 (Thu May 23 2019)
+
+### Release Notes
+
+  _From #2454_
+
+<details>
+<summary>webpack-contrib/webpack-bundle-analyzer</summary>
+
+### [`v3.3.2`](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/blob/master/CHANGELOG.md#&#8203;332)
+
+[Compare Source](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/compare/v2.13.1...v3.3.2)
+
+-   **Bug Fix**
+-   Fix regression with escaping internal assets ([#&#8203;264](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/pull/264), fixes [#&#8203;263](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/issues/263))
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Add license scan report and status [#2449](https://github.com/artsy/reaction/pull/2449) ([@fossabot](https://github.com/fossabot))
+
+#### 🏠  Internal
+
+- Update dep webpack-bundle-analyzer from 2.13.1 to v3 [SECURITY] [#2454](https://github.com/artsy/reaction/pull/2454) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- fossabot ([@fossabot](https://github.com/fossabot))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.12.9 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- Bump reaction [#2452](https://github.com/artsy/reaction/pull/2452) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.12.8 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- Remove major_periods filter properly from FilterState in /collect & /collection/:id apps [#2451](https://github.com/artsy/reaction/pull/2451) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.12.7 (Wed May 22 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] QA round 2 [#2447](https://github.com/artsy/reaction/pull/2447) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @omakase/cli from 0.0.9 to v0.0.10 [#2448](https://github.com/artsy/reaction/pull/2448) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.12.6 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump react-tracking@7.0.1 + types [#2446](https://github.com/artsy/reaction/pull/2446) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.12.1 to v4.12.2 [#2445](https://github.com/artsy/reaction/pull/2445) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.12.5 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Address QA items [#2442](https://github.com/artsy/reaction/pull/2442) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.12.4 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- Refactors ad rendering in articles [#2440](https://github.com/artsy/reaction/pull/2440) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
+# v16.12.3 (Tue May 21 2019)
+
+#### 🐛  Bug Fix
+
+- Apply `medium` filter in path instead of querystring on /collect [#2430](https://github.com/artsy/reaction/pull/2430) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.12.2 (Tue May 21 2019)
+
+### Release Notes
+
+  _From #2444_
+
+<details>
+<summary>omakase-js/omakase</summary>
+
+### [`v0.0.9`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;009-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.8...v0.0.9)
+
+##### 🐛  Bug Fix
+
+-   `cli`
+-   [docs] Update about generator [#&#8203;14](https://togithub.com/omakase-js/omakase/pull/14) ([@&#8203;alloy](https://togithub.com/alloy))
+
+##### Authors: 1
+
+-   Eloy Durán ([@&#8203;alloy](https://togithub.com/alloy))
+
+* * *
+
+### [`v0.0.8`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;008-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.7...v0.0.8)
+
+##### 🐛  Bug Fix
+
+-   `cli`
+-   Add [@&#8203;oclif/plugin-help](https://togithub.com/oclif/plugin-help) as a direct dependency [#&#8203;13](https://togithub.com/omakase-js/omakase/pull/13) ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+##### Authors: 1
+
+-   Justin Bennett ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+* * *
+
+</details>
+
+---
+
+_From #2443_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4121-Tue-May-21-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.0...v4.12.1)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [Menu] Fix drop shadow [#&#8203;466](https://togithub.com/artsy/palette/pull/466) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Select default time period filter selection via RadioGroup instead of Radio [#2439](https://github.com/artsy/reaction/pull/2439) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @omakase/cli from 0.0.7 to v0.0.9 [#2444](https://github.com/artsy/reaction/pull/2444) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.12.0 to v4.12.1 [#2443](https://github.com/artsy/reaction/pull/2443) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @omakase/cli from 0.0.5 to v0.0.7 [#2441](https://github.com/artsy/reaction/pull/2441) ([@renovate-bot](https://github.com/renovate-bot))
+- Clean up renovate config to remove redundant options [#2438](https://github.com/artsy/reaction/pull/2438) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.12.1 (Mon May 20 2019)
+
+#### 🐛  Bug Fix
+
+- Removes Enabled Ad Feature Flags from client [#2437](https://github.com/artsy/reaction/pull/2437) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update yarn orb to v1.1.1 [#2436](https://github.com/artsy/reaction/pull/2436) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.12.0 (Fri May 17 2019)
+
+#### 🚀  Enhancement
+
+- [Tracking] Remove unneeded custom tracking context [#2434](https://github.com/artsy/reaction/pull/2434) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.24 (Fri May 17 2019)
+
+### Release Notes
+
+  _From #2432_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4120-Fri-May-17-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.9...v4.12.0)
+
+##### 🚀  Enhancement
+
+-   `palette-docs`, `palette`
+-   X Axis labels for bar chart [#&#8203;392](https://togithub.com/artsy/palette/pull/392) ([@&#8203;sepans](https://togithub.com/sepans))
+
+##### Authors: 1
+
+-   Sepand Ansari ([@&#8203;sepans](https://togithub.com/sepans))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Collection header qa refactor [#2431](https://github.com/artsy/reaction/pull/2431) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.11.9 to v4.12.0 [#2432](https://github.com/artsy/reaction/pull/2432) ([@renovate-bot](https://github.com/renovate-bot))
+- Pin dep @types/react-tracking from ^6.0.0 to 6.0.0 [#2429](https://github.com/artsy/reaction/pull/2429) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.11.23 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Schema] Sync schema [#2428](https://github.com/artsy/reaction/pull/2428) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.22 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Signup form includes recaptcha_token on handleSubmit [#2427](https://github.com/artsy/reaction/pull/2427) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.11.21 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Bump @types/react-tracking@6.0.0 [#2426](https://github.com/artsy/reaction/pull/2426) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.20 (Thu May 16 2019)
+
+
+
+---
+
+# v16.11.19 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Remove handling of `null` from the `amount` helper in MP [#2425](https://github.com/artsy/reaction/pull/2425) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v16.11.18 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Set the `major_periods` state property correctly when constructing the Artist, Collect, and Search apps. [#2422](https://github.com/artsy/reaction/pull/2422) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.17 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Dont display pageDots if only one image [#2423](https://github.com/artsy/reaction/pull/2423) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.11.16 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- update schema on bid and buy now conversion tracking for criteo [#2424](https://github.com/artsy/reaction/pull/2424) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
+# v16.11.15 (Thu May 16 2019)
+
+#### 🐛  Bug Fix
+
+- Address feedback for #2420 [#2421](https://github.com/artsy/reaction/pull/2421) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.14 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- DISCO 1029 - Consolidate url history management in state containers [#2414](https://github.com/artsy/reaction/pull/2414) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.13 (Wed May 15 2019)
+
+
+
+---
+
+# v16.11.12 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Adds parens to result counts. [#2419](https://github.com/artsy/reaction/pull/2419) ([@ashfurrow](https://github.com/ashfurrow))
+- Make FillwidthItem more forgiving of empty artwork images [#2420](https://github.com/artsy/reaction/pull/2420) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Ash Furrow ([@ashfurrow](https://github.com/ashfurrow))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.11.11 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix typo [#2418](https://github.com/artsy/reaction/pull/2418) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.10 (Wed May 15 2019)
+
+#### 🐛  Bug Fix
+
+- Move new hosted ads to their own components in Standard Articles [#2413](https://github.com/artsy/reaction/pull/2413) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.11.9 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix padding around spinner fetch [#2417](https://github.com/artsy/reaction/pull/2417) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.8 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Rename folder for case-sensitivity [#2416](https://github.com/artsy/reaction/pull/2416) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.7 (Tue May 14 2019)
+
+
+
+---
+
+# v16.11.6 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Do not fire reCAPTCHA actions unless sd.key is present [#2412](https://github.com/artsy/reaction/pull/2412) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.11.5 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add featured artist module to collection header [#2402](https://github.com/artsy/reaction/pull/2402) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.11.4 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [CarouselV3] Update react-flickity-component@3.3.0 [#2408](https://github.com/artsy/reaction/pull/2408) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.3 (Tue May 14 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Misc QA [#2410](https://github.com/artsy/reaction/pull/2410) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.11.2 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Changes adUnit and adDimension props from required to optional [#2409](https://github.com/artsy/reaction/pull/2409) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.11.1 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Check if user exists before diving [#2407](https://github.com/artsy/reaction/pull/2407) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.11.0 (Mon May 13 2019)
+
+#### 🚀  Enhancement
+
+- Add reCAPTCHA events to Auth forms [#2393](https://github.com/artsy/reaction/pull/2393) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.10.2 (Mon May 13 2019)
+
+
+
+---
+
+# v16.10.1 (Mon May 13 2019)
+
+#### 🐛  Bug Fix
+
+- Remove "Emitting Types" section from README [#2406](https://github.com/artsy/reaction/pull/2406) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dependencies [#2401](https://github.com/artsy/reaction/pull/2401) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.10.0 (Fri May 10 2019)
+
+### Release Notes
+
+  _From #2403_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4119-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.8...v4.11.9)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   Updates slider disabled styling and allows for disabledText [#&#8203;463](https://togithub.com/artsy/palette/pull/463) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+_From #2399_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.8`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4118-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.7...v4.11.8)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   Passes disabled to Slider [#&#8203;462](https://togithub.com/artsy/palette/pull/462) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🚀  Enhancement
+
+- Adds disabled text to priceRange filters [#2404](https://github.com/artsy/reaction/pull/2404) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.11.8 to v4.11.9 [#2403](https://github.com/artsy/reaction/pull/2403) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dependency @artsy/palette to v4.11.8 [#2399](https://github.com/artsy/reaction/pull/2399) ([@renovate-bot](https://github.com/renovate-bot))
+- Update renovate to use new lib workflow [#2398](https://github.com/artsy/reaction/pull/2398) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.9.9 (Fri May 10 2019)
+
+#### 🐛  Bug Fix
+
+- Preserve pagination in browser history on artist page [#2392](https://github.com/artsy/reaction/pull/2392) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.9.7 (Fri May 10 2019)
+
+#### 🐛  Bug Fix
+
+- Enable smallCarousel pageDots & draggable only when length > 1 [#2396](https://github.com/artsy/reaction/pull/2396) ([@kierangillen](https://github.com/kierangillen))
+- [NavBar] Implement tracking [#2385](https://github.com/artsy/reaction/pull/2385) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.9.6 (Fri May 10 2019)
+
+### Release Notes
+
+  _From #2394_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.11.7`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4117-Fri-May-10-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.11.6...v4.11.7)
+
+##### 🐛  Bug Fix
+
+-   `palette`
+-   [Menu] Add onClick event type to interface [#&#8203;461](https://togithub.com/artsy/palette/pull/461) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Passes ref and fixes image height [#2395](https://github.com/artsy/reaction/pull/2395) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.7 [#2394](https://github.com/artsy/reaction/pull/2394) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.9.5 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- hides new ads behind admin and env feature flags [#2391](https://github.com/artsy/reaction/pull/2391) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.9.4 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- Auth footer updates [#2386](https://github.com/artsy/reaction/pull/2386) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.9.3 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- Removes accidental console.log [#2390](https://github.com/artsy/reaction/pull/2390) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.9.2 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- change existing title & breadcrumb placements [#2389](https://github.com/artsy/reaction/pull/2389) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.9.1 (Thu May 09 2019)
+
+#### 🐛  Bug Fix
+
+- Insert htl ads in standard layout articles hidden behind Allowlist Flag [#2375](https://github.com/artsy/reaction/pull/2375) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.9.0 (Wed May 08 2019)
+
+#### 🚀  Enhancement
+
+- Removes slick from ArtworkImageBrowser [#2356](https://github.com/artsy/reaction/pull/2356) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.15 (Wed May 08 2019)
+
+#### 🐛  Bug Fix
+
+- Creates patch for react-flickity-component to fix flicker [#2388](https://github.com/artsy/reaction/pull/2388) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.8.14 (Wed May 08 2019)
+
+#### 🐛  Bug Fix
+
+- preserve pagination on collections page [#2384](https://github.com/artsy/reaction/pull/2384) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dependency @artsy/palette to v4.11.6 [#2381](https://github.com/artsy/reaction/pull/2381) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.8.13 (Tue May 07 2019)
 
 

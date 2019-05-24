@@ -13,7 +13,7 @@ export interface CollectionFilterContainerProps {
 export const CollectionFilterContainer: React.FC<
   CollectionFilterContainerProps
 > = props => {
-  const { user, mediator } = useContext(SystemContext)
+  const { user } = useContext(SystemContext)
   const { collection } = props
   const { aggregations } = collection.artworks
   const mediumAggregation = aggregations.find(
@@ -27,7 +27,6 @@ export const CollectionFilterContainer: React.FC<
   return (
     <FilterContainer
       user={user}
-      mediator={mediator}
       mediums={mediumAggregation.counts as any}
       timePeriods={timePeriodAggregation.counts as any}
     >
@@ -49,7 +48,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, MAJOR_PERIOD, TOTAL]
+            defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           }
           medium: { type: "String", defaultValue: "*" }
           major_periods: { type: "[String]" }
@@ -63,6 +62,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
           height: { type: "String" }
           width: { type: "String" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         artworks(
           aggregations: $aggregations
@@ -92,6 +92,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
             height: $height
             width: $width
             color: $color
+            page: $page
           )
       }
     `,

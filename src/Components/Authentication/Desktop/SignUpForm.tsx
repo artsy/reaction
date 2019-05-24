@@ -1,6 +1,3 @@
-import { Formik, FormikProps } from "formik"
-import React, { Component } from "react"
-
 import {
   Error,
   Footer,
@@ -16,6 +13,9 @@ import {
 import { SignUpValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
+import { Formik, FormikProps } from "formik"
+import React, { Component } from "react"
+import { repcaptcha } from "Utils/repcaptcha"
 
 export interface SignUpFormState {
   error?: string
@@ -26,11 +26,21 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
     error: this.props.error,
   }
 
+  onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
+    repcaptcha("signup_submit", recaptcha_token => {
+      const valuesWithToken = {
+        ...values,
+        recaptcha_token,
+      }
+      this.props.handleSubmit(valuesWithToken, formikBag)
+    })
+  }
+
   render() {
     return (
       <Formik
         initialValues={this.props.values}
-        onSubmit={this.props.handleSubmit}
+        onSubmit={this.onSubmit}
         validationSchema={SignUpValidator}
       >
         {({
@@ -52,7 +62,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
           }
 
           return (
-            <Form onSubmit={handleSubmit} height={430}>
+            <Form onSubmit={handleSubmit}>
               <QuickInput
                 block
                 error={touched.email && errors.email}
@@ -114,8 +124,8 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                     this.props.onFacebookLogin(e)
                   }
                 }}
-                onTwitterLogin={this.props.onTwitterLogin}
                 inline
+                showRecaptchaDisclaimer={this.props.showRecaptchaDisclaimer}
               />
             </Form>
           )

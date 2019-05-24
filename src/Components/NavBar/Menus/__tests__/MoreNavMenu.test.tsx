@@ -2,6 +2,12 @@ import { mount } from "enzyme"
 import React from "react"
 import { MoreNavMenu } from "../MoreNavMenu"
 
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
+
 describe("MoreNavMenu", () => {
   const getWrapper = () => {
     return mount(<MoreNavMenu />)
@@ -26,11 +32,6 @@ describe("MoreNavMenu", () => {
         expect(href).toEqual(navLink.prop("href"))
         expect(linkLabel).toEqual(navLink.text())
       })
-    })
-
-    it("menu has the correct title", () => {
-      const wrapper = getWrapper()
-      expect(wrapper.find("Menu").prop("title")).toEqual("More")
     })
   })
 })

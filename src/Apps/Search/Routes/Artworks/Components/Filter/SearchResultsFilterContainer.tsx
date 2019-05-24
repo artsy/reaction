@@ -22,11 +22,10 @@ export class SearchResultsFilterContainer extends Component<
 
     return (
       <SystemContextConsumer>
-        {({ user, mediator }) => {
+        {({ user }) => {
           return (
             <FilterContainer
               user={user}
-              mediator={mediator}
               mediums={mediumAggregation.counts as any}
             >
               {(filters: FilterState) => (

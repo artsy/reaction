@@ -1,10 +1,10 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 
+import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
 import Events from "../../Utils/Events"
-import { AdScript } from "./Ads/AdScript"
 import { BannerWrapper } from "./Banner/Banner"
 import { PixelTracker } from "./Display/ExternalTrackers"
 import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
@@ -15,7 +15,11 @@ import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
 import { ArticleData, DisplayData } from "./Typings"
 
+GPT.enableSingleRequest()
+
 export interface ArticleProps {
+  articleSerial?: number
+  areHostedAdsEnabled?: boolean
   article: ArticleData
   backgroundColor?: string
   color?: string
@@ -44,6 +48,7 @@ export interface ArticleProps {
   viewerIsOpen?: boolean
   onOpenAuthModal?: (type: "register" | "login", config: object) => void
   onExpand?: () => void
+  shouldAdRender?: boolean
 }
 
 @track(
@@ -114,7 +119,6 @@ export class Article extends React.Component<ArticleProps> {
         <Theme>
           <FullScreenProvider>
             {this.getArticleLayout()}
-            <AdScript article={article} />
             {trackingCode && (
               <PixelTracker unit={trackingCode} date={this.props.renderTime} />
             )}

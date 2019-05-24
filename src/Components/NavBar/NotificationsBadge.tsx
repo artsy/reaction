@@ -1,18 +1,22 @@
+import { Box, color, Flex, Sans } from "@artsy/palette"
+import { AnalyticsSchema, SystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import cookie from "cookies-js"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { ReadyState } from "react-relay"
 import styled from "styled-components"
-
-import { color, Flex, Sans } from "@artsy/palette"
-
-import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { NotificationsQueryRenderer } from "./Menus"
 
 const logger = createLogger("Components/NavBar")
 
-export const NotificationsBadge = () => {
+export const NotificationsBadge: React.FC<{
+  /**
+   * If hovering over the nav item, `hover` is passed into the badge (Overlay)
+   */
+  hover?: boolean
+}> = ({ hover }) => {
   return (
     <NotificationsQueryRenderer
       render={({ error, props }: ReadyState) => {
@@ -36,49 +40,74 @@ export const NotificationsBadge = () => {
           0
         )
 
-        let notifications = totalUnread
+        let count = totalUnread
 
         // Update the notification bad with the count, and store it in a cookie
         // so that subsequent page views don't need a fetch in order to render
         // the badge.
-        if (notifications > 0) {
+        if (count > 0) {
           const cachedNotificationCount = Number(
             cookie.get("notification-count")
           )
-          if (notifications !== cachedNotificationCount) {
-            if (notifications >= 100) {
-              notifications = "99+"
+          if (count !== cachedNotificationCount) {
+            if (count >= 100) {
+              count = "99+"
             }
 
             // In force, when a request is made to `/notifications` endpoint,
             // sd.NOTIFICATIONS_COUNT is populated by this cookie.
-            cookie.set("notification-count", notifications)
+            cookie.set("notification-count", count)
           }
         }
 
         // User has no notifications; clear the cookie
-        if (notifications === 0) {
+        if (count === 0) {
           cookie.expire("notification-count")
           return null
         }
 
-        return <CircularCount notifications={notifications} />
+        return (
+          <Box>
+            <CircularCount count={count} rawCount={totalUnread} hover={hover} />
+          </Box>
+        )
       }}
     />
   )
 }
 
-const CircularCount: React.FC<{ notifications?: string }> = ({
-  notifications,
-}) => {
+const CircularCount: React.FC<{
+  /**
+   * Formatted count for display
+   */
+  count?: string
+  /**
+   * Raw unread count, used for analytics.
+   */
+  rawCount?: boolean
+  /**
+   * True if hovering over the badge
+   */
+  hover?: boolean
+}> = ({ count, rawCount, hover }) => {
   // Check to see if we've got a value from sharify, populated by a cookie on
   // the server.
   const { notificationCount } = useContext(SystemContext)
-  const notificationsLabel = notifications || notificationCount
+  const notificationsLabel = count || notificationCount
+  const { trackEvent } = useTracking()
 
   if (!notificationsLabel) {
     return null
   }
+
+  useEffect(() => {
+    if (hover) {
+      trackEvent({
+        subject: AnalyticsSchema.Subject.NotificationBell,
+        new_notification_count: rawCount,
+      })
+    }
+  }, [hover])
 
   return (
     <Container>
@@ -97,6 +126,6 @@ const Container = styled(Flex)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 3px;
+  top: 12px;
   right: 0;
 `

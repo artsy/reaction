@@ -3,7 +3,10 @@ import { FilterState } from "Apps/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import createLogger from "Utils/logger"
 import { CollectArtworkGridRefreshContainer as ArtworkFilter } from "../Base/CollectArtworkGrid"
+
+const logger = createLogger("CollectionRefetch.tsx")
 
 interface CollectionRefetchProps {
   filtersState: FilterState["state"]
@@ -43,7 +46,7 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
         null,
         error => {
           if (error) {
-            console.error(error)
+            logger.error(error)
           }
 
           this.setState({
@@ -89,6 +92,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           height: { type: "String" }
           width: { type: "String" }
           color: { type: "String" }
+          page: { type: "Int" }
         ) {
         slug
         filtered_artworks: artworks(
@@ -107,6 +111,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           height: $height
           width: $width
           color: $color
+          page: $page
         ) {
           ...CollectArtworkGrid_filtered_artworks
         }
@@ -129,6 +134,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
       $height: String
       $width: String
       $color: String
+      $page: Int
     ) {
       marketingCollection(slug: $collectionSlug) {
         ...CollectionRefetch_collection
@@ -146,6 +152,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
             height: $height
             width: $width
             color: $color
+            page: $page
           )
       }
     }

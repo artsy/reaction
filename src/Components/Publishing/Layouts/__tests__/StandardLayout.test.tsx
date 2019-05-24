@@ -39,7 +39,12 @@ describe("Standard Article", () => {
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
+      areHostedAdsEnabled: false,
     }
+  })
+
+  afterEach(() => {
+    jest.resetModules()
   })
 
   it("renders sidebar", () => {

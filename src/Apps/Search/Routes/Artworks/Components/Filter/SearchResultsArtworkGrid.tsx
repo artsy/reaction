@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { FilterState, urlFragmentFromState } from "Apps/Search/FilterState"
+import { FilterState } from "Apps/Search/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -40,7 +40,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     // no-op
   }
 
-  loadNext = (filters, mediator) => {
+  loadNext = (filters: FilterState) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -50,11 +50,11 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor, filters.state.page + 1, filters, mediator)
+      this.loadAfter(endCursor, filters.state.page + 1, filters)
     }
   }
 
-  loadAfter = (cursor, page, filters: FilterState, mediator) => {
+  loadAfter = (cursor, page, filters: FilterState) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -70,13 +70,6 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
         if (error) {
           console.error(error)
         }
-
-        const { state } = filters
-        const urlFragment = urlFragmentFromState(state, { page })
-
-        // TODO: Look into using router push w/ query params.
-        // this.props.router.replace(`/search?${urlFragment}`)
-        window.history.pushState({}, null, `/search?${urlFragment}`)
       }
     )
   }
@@ -124,10 +117,10 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                         hasNextPage={artworks.pageInfo.hasNextPage}
                         pageCursors={artworks.pageCursors as any}
                         onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters, mediator)
+                          this.loadAfter(cursor, page, filters)
                         }}
                         onNext={() => {
-                          this.loadNext(filters, mediator)
+                          this.loadNext(filters)
                         }}
                         scrollTo="#jump--searchArtworkGrid"
                       />

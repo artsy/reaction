@@ -97,19 +97,21 @@ storiesOf("Components/Authentication/Mobile", module)
 storiesOf("Components/Authentication/Common Elements", module)
   .add("Footer - Signup", () => (
     <div>
-      <Footer mode="signup" />
+      <Footer mode={"signup" as ModalType} />
       <br />
-      <Footer mode="signup" inline />
+      <Footer mode={"signup" as ModalType} inline />
     </div>
   ))
   .add("Footer - Login", () => (
     <div>
-      <Footer mode="login" />
+      <Footer mode={"login" as ModalType} />
       <br />
-      <Footer mode="login" inline />
+      <Footer mode={"login" as ModalType} inline />
     </div>
   ))
-  .add("Footer - Forgot Password", () => <Footer mode="forgot" />)
+  .add("Footer - Forgot Password", () => (
+    <Footer mode={"forgot" as ModalType} />
+  ))
   .add("TermsOfServiceCheckbox", () => (
     <TermsOfServiceCheckbox
       error={null}

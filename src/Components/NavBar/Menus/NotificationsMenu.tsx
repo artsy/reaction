@@ -23,6 +23,7 @@ import {
   MenuItem,
   Sans,
   Separator,
+  Serif,
 } from "@artsy/palette"
 
 export const NotificationMenuItems: React.FC<
@@ -65,28 +66,37 @@ export const NotificationMenuItems: React.FC<
       })}
 
       <Flex py={1} flexDirection="column" alignItems="center">
-        {notifications.length ? (
-          <>
+        <>
+          {notifications.length === 0 && (
+            <Flex width="100%" flexDirection="column">
+              <Box pt={1} pb={3} width="100%" textAlign="center">
+                <Serif size="3">No new works</Serif>
+              </Box>
+            </Flex>
+          )}
+
+          <Box width="100%" px={2}>
             <Separator />
-            <Box pt={2}>
-              <Sans size="2">
-                <Link href="/works-for-you">View all</Link>
-              </Sans>
-            </Box>
-          </>
-        ) : (
-          <Box>
-            <Sans size="3">No new notifications</Sans>
           </Box>
-        )}
+
+          <Box pt={2}>
+            <Sans size="2">
+              <Link href="/works-for-you">View all</Link>
+            </Sans>
+          </Box>
+        </>
       </Flex>
     </>
   )
 }
 
+/**
+ * The <Menu /> component renders a QueryRenderer inside of it, which fetches
+ * individual MenuItems for display. During fetch there is a loading spinner.
+ */
 export const NotificationsMenu: React.FC = () => {
   return (
-    <Menu title="Actvity">
+    <Menu title="Activity">
       <NotificationsQueryRenderer
         render={renderWithLoadProgress(
           NotificationMenuItems,

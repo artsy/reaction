@@ -27,7 +27,8 @@
     ],
     "trailing-comma": false,
     "variable-name": [true, "ban-keywords", "allow-leading-underscore"],
-    "jsdoc-format": false
+    "jsdoc-format": false,
+    "radix": false
   },
   "rulesDirectory": ["./tslint"]
 }

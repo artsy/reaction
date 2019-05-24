@@ -1,6 +1,5 @@
 import { Checkbox, Sans } from "@artsy/palette"
-import { SystemContext } from "Artsy"
-import React, { useContext } from "react"
+import React from "react"
 import { FilterState, State } from "../../FilterState"
 
 interface WayToBuy {
@@ -12,8 +11,6 @@ interface WayToBuy {
 export const WaysToBuyFilter: React.FC<{
   filters: FilterState
 }> = ({ filters }) => {
-  const { mediator } = useContext(SystemContext)
-
   const ways: WayToBuy[] = [
     {
       disabled: false,
@@ -42,7 +39,7 @@ export const WaysToBuyFilter: React.FC<{
       const props = {
         disabled: way.disabled,
         key: index,
-        onSelect: value => filters.setFilter(way.state, value, mediator),
+        onSelect: value => filters.setFilter(way.state, value),
         selected: filters.state[way.state],
       }
 

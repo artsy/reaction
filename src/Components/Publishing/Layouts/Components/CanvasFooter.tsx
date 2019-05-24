@@ -37,7 +37,10 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
         </div>
       )}
 
-      {display && (
+      {/**
+       * FIXME: Remove DisplayCanvas component from footer when ad migration to GAM is complete
+       */
+      display && (
         <DisplayContainer hasBorder={relatedArticles ? true : false}>
           <DisplayCanvas
             unit={display.canvas}

@@ -3,7 +3,7 @@ import { Options as FlickityOptions } from "flickity"
 import React, { ReactNode, useRef, useState } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
-import { useDidMount } from "Utils/hooks/useDidMount"
+import { useDidMount } from "Utils/Hooks/useDidMount"
 import { Media } from "Utils/Responsive"
 
 type Arrow = (

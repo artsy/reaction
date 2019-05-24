@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Subscribe } from "unstated"
 
 import { FilterState } from "Apps/Search/FilterState"
-import { Mediator } from "Artsy"
 import { MobileActionSheet } from "../SearchResultsMobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
@@ -25,7 +24,6 @@ import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
   user?: any
-  mediator: Mediator
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
   children?: (filters: FilterState) => JSX.Element

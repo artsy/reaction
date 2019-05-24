@@ -105,14 +105,14 @@ export class ArtworkApp extends React.Component<Props> {
         {artists.map((artist, index) => {
           const addSpacer = artists.length > 1 && index < artists.length - 1
           return (
-            <>
+            <React.Fragment key={index}>
               <Row key={artist.id}>
                 <Col>
                   <ArtistInfo artist={artist} />
                 </Col>
               </Row>
               {addSpacer && <Spacer mb={2} />}
-            </>
+            </React.Fragment>
           )
         })}
       </>
