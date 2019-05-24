@@ -16,7 +16,7 @@ export type ArtworkActions_artwork = {
     readonly href: string | null;
     readonly id: string;
     readonly image: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly url: string | null;
         readonly height: number | null;
         readonly width: number | null;
@@ -96,7 +96,8 @@ return {
           "name": "width",
           "args": null,
           "storageKey": null
-        }
+        },
+        v1
       ]
     },
     {

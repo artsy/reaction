@@ -10,7 +10,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Respond_order$ref: unique symbol;
 export type Respond_order$ref = typeof _Respond_order$ref;
 export type Respond_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly itemsTotal: string | null;
@@ -29,7 +29,7 @@ export type Respond_order = {
     }) | null;
     readonly lastOffer?: ({
         readonly createdAt: string | null;
-        readonly id: string | null;
+        readonly id: string;
         readonly note: string | null;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;

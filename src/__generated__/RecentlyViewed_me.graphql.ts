@@ -92,6 +92,7 @@ return {
                       "args": null,
                       "storageKey": null
                     },
+                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,

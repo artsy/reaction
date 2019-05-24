@@ -154,7 +154,8 @@ return {
               "storageKey": null
             }
           ]
-        }
+        },
+        v0
       ]
     },
     {
@@ -277,7 +278,8 @@ return {
                       "concreteType": "Category",
                       "plural": true,
                       "selections": [
-                        v1
+                        v1,
+                        v0
                       ]
                     },
                     v0

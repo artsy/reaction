@@ -17,7 +17,15 @@ export type SuggestedGenes_suggested_genes = ReadonlyArray<{
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "SuggestedGenes_suggested_genes",
   "type": "Gene",
@@ -86,17 +94,13 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        }
+        },
+        v0
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
+})();
 (node as any).hash = 'cdb26030cf4a534bcfee76e4ca815a17';
 export default node;

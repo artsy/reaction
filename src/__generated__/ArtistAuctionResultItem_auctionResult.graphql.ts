@@ -31,6 +31,13 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
@@ -87,7 +94,8 @@ return {
               "name": "url",
               "args": null,
               "storageKey": null
-            }
+            },
+            v0
           ]
         }
       ]
@@ -122,7 +130,7 @@ return {
       "concreteType": "AuctionResultPriceRealized",
       "plural": false,
       "selections": [
-        v0,
+        v1,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -141,16 +149,10 @@ return {
       "concreteType": "AuctionLotEstimate",
       "plural": false,
       "selections": [
-        v0
+        v1
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
 })();

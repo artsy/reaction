@@ -17,7 +17,7 @@ export type ArtworkSidebarCommercialOfferOrderMutationResponse = {
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly mode: OrderModeEnum | null;
             }) | null;
             readonly error?: ({

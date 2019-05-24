@@ -122,7 +122,8 @@ return {
               "storageKey": null
             }
           ]
-        }
+        },
+        v0
       ]
     },
     {
@@ -187,7 +188,8 @@ return {
                       "name": "aspect_ratio",
                       "args": null,
                       "storageKey": null
-                    }
+                    },
+                    v0
                   ]
                 },
                 {

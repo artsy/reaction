@@ -37,6 +37,7 @@ fragment AuctionCard_sale on Sale {
     cropped(width: 200, height: 180) {
       url
     }
+    __id
   }
   isBenefit
   isGalleryAuction
@@ -111,7 +112,7 @@ return {
   "operationKind": "query",
   "name": "OtherAuctionsQuery",
   "id": null,
-  "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
+  "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    __id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -199,7 +200,8 @@ return {
                     "storageKey": null
                   }
                 ]
-              }
+              },
+              v2
             ]
           },
           {

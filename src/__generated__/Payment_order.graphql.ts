@@ -8,7 +8,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({

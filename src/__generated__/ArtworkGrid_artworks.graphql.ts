@@ -21,7 +21,15 @@ export type ArtworkGrid_artworks = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkGrid_artworks",
   "type": "ArtworkConnection",
@@ -46,13 +54,7 @@ const node: ConcreteFragment = {
           "concreteType": "Artwork",
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "__id",
-              "args": null,
-              "storageKey": null
-            },
+            v0,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -82,7 +84,8 @@ const node: ConcreteFragment = {
                   "name": "aspect_ratio",
                   "args": null,
                   "storageKey": null
-                }
+                },
+                v0
               ]
             },
             {
@@ -96,5 +99,6 @@ const node: ConcreteFragment = {
     }
   ]
 };
+})();
 (node as any).hash = 'b14f0927b10e6b5c53d7bd2ca546a2cf';
 export default node;

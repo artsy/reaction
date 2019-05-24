@@ -6,7 +6,7 @@ export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _redirects_order$ref: unique symbol;
 export type redirects_order$ref = typeof _redirects_order$ref;
 export type redirects_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly lastTransactionFailed: boolean | null;
@@ -26,11 +26,11 @@ export type redirects_order = {
         readonly id: string;
     }) | null;
     readonly myLastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly createdAt: string | null;
     }) | null;
     readonly lastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly createdAt: string | null;
     }) | null;
     readonly awaitingResponseFrom?: OrderParticipantEnum | null;

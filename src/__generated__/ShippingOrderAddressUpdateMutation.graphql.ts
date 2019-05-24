@@ -26,7 +26,7 @@ export type ShippingOrderAddressUpdateMutationResponse = {
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly state: string | null;
                 readonly requestedFulfillment: ({
                     readonly __typename: "Ship";

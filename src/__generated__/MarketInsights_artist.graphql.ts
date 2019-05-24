@@ -147,7 +147,8 @@ return {
                           "name": "id",
                           "args": null,
                           "storageKey": null
-                        }
+                        },
+                        v0
                       ]
                     },
                     v0

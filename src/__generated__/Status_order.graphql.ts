@@ -11,7 +11,7 @@ declare const _Status_order$ref: unique symbol;
 export type Status_order$ref = typeof _Status_order$ref;
 export type Status_order = {
     readonly __typename: string;
-    readonly id: string | null;
+    readonly id: string;
     readonly code: string | null;
     readonly state: string | null;
     readonly mode: OrderModeEnum | null;
@@ -44,7 +44,7 @@ export type Status_order = {
         }) | null> | null;
     }) | null;
     readonly myLastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
         readonly shippingTotal: string | null;

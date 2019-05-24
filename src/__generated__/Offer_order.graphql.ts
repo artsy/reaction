@@ -7,7 +7,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Offer_order$ref: unique symbol;
 export type Offer_order$ref = typeof _Offer_order$ref;
 export type Offer_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly totalListPrice: string | null;

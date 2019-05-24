@@ -20,7 +20,15 @@ export type ArtistCard_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtistCard_artist",
   "type": "Artist",
@@ -87,7 +95,8 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        }
+        },
+        v0
       ]
     },
     {
@@ -102,14 +111,9 @@ const node: ConcreteFragment = {
       "name": "FollowArtistButton_artist",
       "args": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v0
   ]
 };
+})();
 (node as any).hash = 'db4618c7e342a5b7c654fb638a771150';
 export default node;

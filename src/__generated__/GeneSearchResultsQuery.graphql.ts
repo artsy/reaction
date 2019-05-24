@@ -35,6 +35,7 @@ fragment GeneSearchResults_viewer on Viewer {
       cropped(width: 100, height: 100) {
         url
       }
+      __id
     }
     __id
   }
@@ -49,13 +50,20 @@ var v0 = [
     "type": "String!",
     "defaultValue": null
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "GeneSearchResultsQuery",
   "id": null,
-  "text": "query GeneSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...GeneSearchResults_viewer\n  }\n}\n\nfragment GeneSearchResults_viewer on Viewer {\n  match_gene(term: $term) {\n    name\n    id\n    _id\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n    __id\n  }\n}\n",
+  "text": "query GeneSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...GeneSearchResults_viewer\n  }\n}\n\nfragment GeneSearchResults_viewer on Viewer {\n  match_gene(term: $term) {\n    name\n    id\n    _id\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id\n    }\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -172,16 +180,11 @@ return {
                         "storageKey": null
                       }
                     ]
-                  }
+                  },
+                  v1
                 ]
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__id",
-                "args": null,
-                "storageKey": null
-              }
+              v1
             ]
           }
         ]

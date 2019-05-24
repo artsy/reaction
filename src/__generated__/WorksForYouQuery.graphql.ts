@@ -57,6 +57,7 @@ fragment WorksForYouFeed_viewer_4jSCc2 on Viewer {
               resized(height: 80, width: 80) {
                 url
               }
+              __id
             }
             __typename
           }
@@ -80,6 +81,7 @@ fragment WorksForYouArtistFeed_viewer_45bsh6 on Viewer {
       resized(height: 80, width: 80) {
         url
       }
+      __id
     }
     artworks_connection(sort: PUBLISHED_AT_DESC, first: 10, filter: $filter) {
       pageInfo {
@@ -107,6 +109,7 @@ fragment ArtworkGrid_artworks on ArtworkConnection {
       href
       image {
         aspect_ratio
+        __id
       }
       ...GridItem_artwork
     }
@@ -121,6 +124,7 @@ fragment GridItem_artwork on Artwork {
     placeholder
     url(version: "large")
     aspect_ratio
+    __id
   }
   href
   ...Metadata_artwork
@@ -269,6 +273,13 @@ v2 = {
   "storageKey": null
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "image",
@@ -307,22 +318,23 @@ v3 = {
           "storageKey": null
         }
       ]
-    }
+    },
+    v3
   ]
 },
-v4 = {
+v5 = {
   "kind": "Literal",
   "name": "first",
   "value": 10,
   "type": "Int"
 },
-v5 = {
+v6 = {
   "kind": "Literal",
   "name": "sort",
   "value": "PUBLISHED_AT_DESC",
   "type": "ArtworkSorts"
 },
-v6 = {
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "pageInfo",
@@ -347,7 +359,7 @@ v6 = {
     }
   ]
 },
-v7 = [
+v8 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -355,23 +367,16 @@ v7 = [
     "type": "Boolean"
   }
 ],
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
 v9 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "artists",
   "storageKey": "artists(shallow:true)",
-  "args": v7,
+  "args": v8,
   "concreteType": "Artist",
   "plural": true,
   "selections": [
-    v8,
+    v3,
     v2,
     v1
   ]
@@ -392,6 +397,7 @@ v10 = {
       "args": null,
       "storageKey": null
     },
+    v3,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -476,13 +482,13 @@ v19 = {
   "alias": null,
   "name": "partner",
   "storageKey": "partner(shallow:true)",
-  "args": v7,
+  "args": v8,
   "concreteType": "Partner",
   "plural": false,
   "selections": [
     v1,
     v2,
-    v8,
+    v3,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -515,7 +521,7 @@ v20 = {
       "args": null,
       "storageKey": null
     },
-    v8,
+    v3,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -611,7 +617,7 @@ v22 = {
         v21
       ]
     },
-    v8
+    v3
   ]
 },
 v23 = {
@@ -668,7 +674,7 @@ return {
   "operationKind": "query",
   "name": "WorksForYouQuery",
   "id": null,
-  "text": "query WorksForYouQuery(\n  $includeSelectedArtist: Boolean!\n  $artistID: String!\n  $forSale: Boolean\n  $filter: [ArtistArtworksFilters]\n) {\n  viewer {\n    ...WorksForYouFeed_viewer_4jSCc2 @skip(if: $includeSelectedArtist)\n    ...WorksForYouArtistFeed_viewer_45bsh6 @include(if: $includeSelectedArtist)\n  }\n}\n\nfragment WorksForYouFeed_viewer_4jSCc2 on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10, for_sale: $forSale) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            image {\n              resized(height: 80, width: 80) {\n                url\n              }\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment WorksForYouArtistFeed_viewer_45bsh6 on Viewer {\n  artist(id: $artistID) {\n    name\n    href\n    counts {\n      artworks\n      for_sale_artworks\n    }\n    image {\n      resized(height: 80, width: 80) {\n        url\n      }\n    }\n    artworks_connection(sort: PUBLISHED_AT_DESC, first: 10, filter: $filter) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query WorksForYouQuery(\n  $includeSelectedArtist: Boolean!\n  $artistID: String!\n  $forSale: Boolean\n  $filter: [ArtistArtworksFilters]\n) {\n  viewer {\n    ...WorksForYouFeed_viewer_4jSCc2 @skip(if: $includeSelectedArtist)\n    ...WorksForYouArtistFeed_viewer_45bsh6 @include(if: $includeSelectedArtist)\n  }\n}\n\nfragment WorksForYouFeed_viewer_4jSCc2 on Viewer {\n  me {\n    followsAndSaves {\n      notifications: bundledArtworksByArtist(sort: PUBLISHED_AT_DESC, first: 10, for_sale: $forSale) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            __id\n            href\n            summary\n            artists\n            published_at(format: \"MMM DD\")\n            artworksConnection {\n              ...ArtworkGrid_artworks\n            }\n            image {\n              resized(height: 80, width: 80) {\n                url\n              }\n              __id\n            }\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n}\n\nfragment WorksForYouArtistFeed_viewer_45bsh6 on Viewer {\n  artist(id: $artistID) {\n    name\n    href\n    counts {\n      artworks\n      for_sale_artworks\n    }\n    image {\n      resized(height: 80, width: 80) {\n        url\n      }\n      __id\n    }\n    artworks_connection(sort: PUBLISHED_AT_DESC, first: 10, filter: $filter) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n    __id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -796,7 +802,7 @@ return {
                       }
                     ]
                   },
-                  v3,
+                  v4,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -809,13 +815,13 @@ return {
                         "variableName": "filter",
                         "type": "[ArtistArtworksFilters]"
                       },
-                      v4,
-                      v5
+                      v5,
+                      v6
                     ],
                     "concreteType": "ArtworkConnection",
                     "plural": false,
                     "selections": [
-                      v6,
+                      v7,
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -835,7 +841,7 @@ return {
                             "plural": false,
                             "selections": [
                               v9,
-                              v8,
+                              v3,
                               v2,
                               v10,
                               v11,
@@ -873,8 +879,8 @@ return {
                         "variableName": "filter",
                         "type": "[ArtistArtworksFilters]"
                       },
-                      v4,
-                      v5
+                      v5,
+                      v6
                     ],
                     "handle": "connection",
                     "key": "WorksForYouArtistFeed_artworks_connection",
@@ -883,7 +889,7 @@ return {
                       "filter"
                     ]
                   },
-                  v8
+                  v3
                 ]
               }
             ]
@@ -917,19 +923,19 @@ return {
                         "name": "bundledArtworksByArtist",
                         "storageKey": null,
                         "args": [
-                          v4,
+                          v5,
                           {
                             "kind": "Variable",
                             "name": "for_sale",
                             "variableName": "forSale",
                             "type": "Boolean"
                           },
-                          v5
+                          v6
                         ],
                         "concreteType": "FollowedArtistsArtworksGroupConnection",
                         "plural": false,
                         "selections": [
-                          v6,
+                          v7,
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -948,7 +954,7 @@ return {
                                 "concreteType": "FollowedArtistsArtworksGroup",
                                 "plural": false,
                                 "selections": [
-                                  v8,
+                                  v3,
                                   v2,
                                   {
                                     "kind": "ScalarField",
@@ -1006,7 +1012,7 @@ return {
                                             "plural": false,
                                             "selections": [
                                               v9,
-                                              v8,
+                                              v3,
                                               v2,
                                               v10,
                                               v11,
@@ -1031,7 +1037,7 @@ return {
                                       }
                                     ]
                                   },
-                                  v3,
+                                  v4,
                                   v28
                                 ]
                               },
@@ -1045,14 +1051,14 @@ return {
                         "alias": "notifications",
                         "name": "bundledArtworksByArtist",
                         "args": [
-                          v4,
+                          v5,
                           {
                             "kind": "Variable",
                             "name": "for_sale",
                             "variableName": "forSale",
                             "type": "Boolean"
                           },
-                          v5
+                          v6
                         ],
                         "handle": "connection",
                         "key": "WorksForYou_notifications",
@@ -1063,7 +1069,7 @@ return {
                       }
                     ]
                   },
-                  v8
+                  v3
                 ]
               }
             ]

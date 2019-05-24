@@ -141,7 +141,8 @@ return {
                     }
                   ],
                   "storageKey": "url(version:\"small\")"
-                }
+                },
+                v1
               ]
             },
             v1
