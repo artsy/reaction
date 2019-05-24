@@ -36,7 +36,7 @@ fragment ArtistSearchResults_viewer on Viewer {
       cropped(width: 100, height: 100) {
         url
       }
-      __id
+      __id: id
     }
   }
 }
@@ -50,20 +50,13 @@ var v0 = [
     "type": "String!",
     "defaultValue": null
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtistSearchResultsQuery",
   "id": null,
-  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id\n    }\n  }\n}\n",
+  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id: id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -134,7 +127,13 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__id",
+                "args": null,
+                "storageKey": null
+              },
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -182,7 +181,13 @@ return {
                       }
                     ]
                   },
-                  v1
+                  {
+                    "kind": "ScalarField",
+                    "alias": "__id",
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
+                  }
                 ]
               }
             ]

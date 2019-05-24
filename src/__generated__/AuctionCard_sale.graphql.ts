@@ -36,14 +36,14 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -108,7 +108,13 @@ return {
             }
           ]
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -132,7 +138,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    v1,
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -163,8 +169,8 @@ return {
       "concreteType": "Bidder",
       "plural": false,
       "selections": [
-        v1,
-        v0
+        v0,
+        v1
       ]
     },
     {
@@ -199,10 +205,10 @@ return {
       "plural": false,
       "selections": [
         v2,
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();

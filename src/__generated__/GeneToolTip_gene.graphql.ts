@@ -17,15 +17,7 @@ export type GeneToolTip_gene = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "GeneToolTip_gene",
   "type": "Gene",
@@ -83,7 +75,13 @@ return {
           ],
           "storageKey": "url(version:\"tall\")"
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -93,9 +91,14 @@ return {
       "args": null,
       "storageKey": null
     },
-    v0
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
 (node as any).hash = 'e4df0664535bb18b36a35439157de4ce';
 export default node;

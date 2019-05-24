@@ -65,7 +65,7 @@ fragment ArtistToolTip_artist on Artist {
         width
         height
       }
-      __id
+      __id: id
     }
   }
   genes {
@@ -121,7 +121,7 @@ fragment GeneToolTip_gene on Gene {
   _id
   image {
     url(version: "tall")
-    __id
+    __id: id
   }
   name
   __id
@@ -202,6 +202,13 @@ v7 = {
 },
 v8 = {
   "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
   "alias": null,
   "name": "is_followed",
   "args": null,
@@ -212,7 +219,7 @@ return {
   "operationKind": "query",
   "name": "TooltipsDataLoaderQuery",
   "id": null,
-  "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    _id\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    _id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  _id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  _id\n  image {\n    url(version: \"tall\")\n    __id\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n",
+  "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    id\n    _id\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    __id\n  }\n  genes(slugs: $geneSlugs) {\n    id\n    _id\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    __id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  id\n  _id\n  formatted_nationality_and_birthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  genes {\n    name\n    __id\n  }\n  __id\n}\n\nfragment MarketDataSummary_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  id\n  _id\n  image {\n    url(version: \"tall\")\n    __id: id\n  }\n  name\n  __id\n}\n\nfragment FollowGeneButton_gene on Gene {\n  __id\n  id\n  is_followed\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -377,7 +384,7 @@ return {
                       }
                     ]
                   },
-                  v4
+                  v8
                 ]
               }
             ]
@@ -557,7 +564,7 @@ return {
               }
             ]
           },
-          v8,
+          v9,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -620,12 +627,12 @@ return {
                 ],
                 "storageKey": "url(version:\"tall\")"
               },
-              v4
+              v8
             ]
           },
           v6,
           v4,
-          v8
+          v9
         ]
       }
     ]

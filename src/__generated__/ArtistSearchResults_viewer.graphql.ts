@@ -20,15 +20,7 @@ export type ArtistSearchResults_viewer = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "ArtistSearchResults_viewer",
   "type": "Viewer",
@@ -71,7 +63,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -119,13 +117,18 @@ return {
                 }
               ]
             },
-            v0
+            {
+              "kind": "ScalarField",
+              "alias": "__id",
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            }
           ]
         }
       ]
     }
   ]
 };
-})();
 (node as any).hash = 'aac31badd3923a3ac64436155d012dcb';
 export default node;

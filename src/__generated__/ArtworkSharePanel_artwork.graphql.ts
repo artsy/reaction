@@ -16,15 +16,7 @@ export type ArtworkSharePanel_artwork = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "ArtworkSharePanel_artwork",
   "type": "Artwork",
@@ -54,7 +46,13 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -75,9 +73,14 @@ return {
         }
       ]
     },
-    v0
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
 (node as any).hash = '1aa535d73c67f2bc420065b91e091f3c';
 export default node;

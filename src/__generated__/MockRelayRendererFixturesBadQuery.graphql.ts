@@ -26,7 +26,7 @@ query MockRelayRendererFixturesBadQuery {
 fragment MockRelayRendererFixtures_artwork on Artwork {
   image {
     url
-    __id
+    __id: id
   }
   artist {
     id
@@ -63,7 +63,7 @@ return {
   "operationKind": "query",
   "name": "MockRelayRendererFixturesBadQuery",
   "id": null,
-  "text": "query MockRelayRendererFixturesBadQuery {\n  something_that_is_not_expected: artwork(id: \"mona-lisa\") {\n    ...MockRelayRendererFixtures_artwork\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artwork on Artwork {\n  image {\n    url\n    __id\n  }\n  artist {\n    id\n    __id\n  }\n  ...MockRelayRendererFixtures_artworkMetadata\n  __id\n}\n\nfragment MockRelayRendererFixtures_artworkMetadata on Artwork {\n  title\n  __id\n}\n",
+  "text": "query MockRelayRendererFixturesBadQuery {\n  something_that_is_not_expected: artwork(id: \"mona-lisa\") {\n    ...MockRelayRendererFixtures_artwork\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artwork on Artwork {\n  image {\n    url\n    __id: id\n  }\n  artist {\n    id\n    __id\n  }\n  ...MockRelayRendererFixtures_artworkMetadata\n  __id\n}\n\nfragment MockRelayRendererFixtures_artworkMetadata on Artwork {\n  title\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -121,7 +121,13 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              {
+                "kind": "ScalarField",
+                "alias": "__id",
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              }
             ]
           },
           {
