@@ -16,7 +16,7 @@ export type TransactionDetailsSummaryItem_order = {
     readonly totalListPrice: string | null;
     readonly buyerTotal: string | null;
     readonly lastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
         readonly shippingTotal: string | null;
@@ -29,7 +29,7 @@ export type TransactionDetailsSummaryItem_order = {
         readonly note: string | null;
     }) | null;
     readonly myLastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
         readonly shippingTotal: string | null;

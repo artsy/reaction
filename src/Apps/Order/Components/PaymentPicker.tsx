@@ -203,13 +203,10 @@ export class PaymentPicker extends React.Component<
 
     const creditCardsArray = creditCards.edges.map(e => e.node)
 
-    // only add the unsaved card to the cards array if its not already there and has the necessary properties
-    // we only want to add the unsaved card to the cards array when we are returning to the payment page for a second time
-    // orderCard will only have brand, last_digits, expiration_month, and expiration_year when returning to the payment page
+    // only add the unsaved card to the cards array if it exists and is not already there
     if (
       orderCard != null &&
-      !creditCardsArray.some(card => card.id === orderCard.id) &&
-      orderCard.brand
+      !creditCardsArray.some(card => card.id === orderCard.id)
     ) {
       creditCardsArray.unshift(orderCard)
     }
@@ -356,6 +353,17 @@ export class PaymentPicker extends React.Component<
               ... on CreditCardMutationSuccess {
                 creditCard {
                   id
+                  name
+                  street1
+                  street2
+                  city
+                  state
+                  country
+                  postal_code
+                  expiration_month
+                  expiration_year
+                  last_digits
+                  brand
                 }
               }
               ... on CreditCardMutationFailure {

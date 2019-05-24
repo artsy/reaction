@@ -11,7 +11,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly itemsTotal: string | null;
     readonly lineItems: ({
@@ -29,7 +29,7 @@ export type Review_order = {
         }) | null> | null;
     }) | null;
     readonly myLastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
     }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferSummaryItem_order$ref;
     readonly " $refType": Review_order$ref;

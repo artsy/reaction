@@ -94,6 +94,13 @@ return {
                     },
                     {
                       "kind": "ScalarField",
+                      "alias": "__id",
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
                       "alias": null,
                       "name": "placeholder",
                       "args": null,

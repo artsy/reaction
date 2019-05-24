@@ -20,12 +20,12 @@ export type OfferMutationResponse = {
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly mode: OrderModeEnum | null;
                 readonly totalListPrice: string | null;
                 readonly totalListPriceCents: number | null;
                 readonly myLastOffer?: ({
-                    readonly id: string | null;
+                    readonly id: string;
                     readonly amountCents: number | null;
                     readonly note: string | null;
                 }) | null;

@@ -35,6 +35,7 @@ fragment CurrentEvent_artist on Artist {
       resized(width: 300) {
         url
       }
+      __id: id
     }
     name
     status
@@ -67,7 +68,7 @@ return {
   "operationKind": "query",
   "name": "CurrentEvent_Test_Query",
   "id": null,
-  "text": "query CurrentEvent_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...CurrentEvent_artist\n    __id\n  }\n}\n\nfragment CurrentEvent_artist on Artist {\n  currentEvent {\n    event {\n      __typename\n      ... on Node {\n        __id\n      }\n    }\n    image {\n      resized(width: 300) {\n        url\n      }\n    }\n    name\n    status\n    details\n    partner\n    href\n  }\n  __id\n}\n",
+  "text": "query CurrentEvent_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...CurrentEvent_artist\n    __id\n  }\n}\n\nfragment CurrentEvent_artist on Artist {\n  currentEvent {\n    event {\n      __typename\n      ... on Node {\n        __id\n      }\n    }\n    image {\n      resized(width: 300) {\n        url\n      }\n      __id: id\n    }\n    name\n    status\n    details\n    partner\n    href\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -170,6 +171,13 @@ return {
                         "storageKey": null
                       }
                     ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "__id",
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               },

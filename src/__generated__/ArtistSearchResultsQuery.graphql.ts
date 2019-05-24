@@ -36,6 +36,7 @@ fragment ArtistSearchResults_viewer on Viewer {
       cropped(width: 100, height: 100) {
         url
       }
+      __id: id
     }
   }
 }
@@ -55,7 +56,7 @@ return {
   "operationKind": "query",
   "name": "ArtistSearchResultsQuery",
   "id": null,
-  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n    }\n  }\n}\n",
+  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id: id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -179,6 +180,13 @@ return {
                         "storageKey": null
                       }
                     ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "__id",
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }

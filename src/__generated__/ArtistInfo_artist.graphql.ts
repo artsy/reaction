@@ -154,6 +154,13 @@ return {
               "storageKey": null
             }
           ]
+        },
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -277,7 +284,8 @@ return {
                       "concreteType": "Category",
                       "plural": true,
                       "selections": [
-                        v1
+                        v1,
+                        v0
                       ]
                     },
                     v0

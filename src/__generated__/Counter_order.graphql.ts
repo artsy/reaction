@@ -10,7 +10,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Counter_order$ref: unique symbol;
 export type Counter_order$ref = typeof _Counter_order$ref;
 export type Counter_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly itemsTotal: string | null;
@@ -29,7 +29,7 @@ export type Counter_order = {
         readonly createdAt: string | null;
     }) | null;
     readonly myLastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Counter_order$ref;

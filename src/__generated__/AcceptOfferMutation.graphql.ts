@@ -14,7 +14,7 @@ export type AcceptOfferMutationResponse = {
         readonly orderOrError: ({
             readonly __typename: "OrderWithMutationSuccess";
             readonly order?: ({
-                readonly id: string | null;
+                readonly id: string;
                 readonly awaitingResponseFrom?: OrderParticipantEnum | null;
             }) | null;
             readonly error?: ({

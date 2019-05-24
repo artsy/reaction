@@ -126,6 +126,13 @@ return {
                   "storageKey": null
                 }
               ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": "__id",
+              "name": "id",
+              "args": null,
+              "storageKey": null
             }
           ]
         },

@@ -74,6 +74,13 @@ const node: ConcreteFragment = {
             }
           ],
           "storageKey": "url(version:\"tall\")"
+        },
+        {
+          "kind": "ScalarField",
+          "alias": "__id",
+          "name": "id",
+          "args": null,
+          "storageKey": null
         }
       ]
     },

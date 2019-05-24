@@ -54,6 +54,13 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
@@ -123,7 +130,8 @@ return {
             },
             v0
           ]
-        }
+        },
+        v1
       ]
     },
     {
@@ -280,13 +288,14 @@ return {
                   "selections": [
                     v0
                   ]
-                }
+                },
+                v1
               ]
             },
-            v1
+            v2
           ]
         },
-        v1
+        v2
       ]
     },
     {
@@ -328,7 +337,7 @@ return {
         }
       ]
     },
-    v1
+    v2
   ]
 };
 })();

@@ -102,39 +102,46 @@ v2 = {
 },
 v3 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_auction",
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_auction",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
   "kind": "Literal",
   "name": "version",
   "value": "square",
   "type": "[String]"
 },
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v8 = [
+v9 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -147,7 +154,7 @@ v8 = [
         "value": 70,
         "type": "Int"
       },
-      v6,
+      v7,
       {
         "kind": "Literal",
         "name": "width",
@@ -166,7 +173,8 @@ v8 = [
         "storageKey": null
       }
     ]
-  }
+  },
+  v3
 ];
 return {
   "kind": "Fragment",
@@ -218,14 +226,15 @@ return {
                     }
                   ],
                   "storageKey": "url(version:\"square140\")"
-                }
+                },
+                v3
               ]
             },
-            v3,
-            v4
+            v4,
+            v5
           ]
         },
-        v4
+        v5
       ]
     },
     {
@@ -237,7 +246,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v5,
+        v6,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -266,13 +275,14 @@ return {
               "alias": null,
               "name": "url",
               "args": [
-                v6
+                v7
               ],
               "storageKey": "url(version:\"square\")"
-            }
+            },
+            v3
           ]
         },
-        v4
+        v5
       ]
     },
     {
@@ -284,15 +294,15 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v7,
-        v4,
+        v8,
+        v5,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextAuction",
           "selections": [
             v1,
-            v3,
-            v5,
+            v4,
+            v6,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -334,14 +344,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v7,
-        v4,
+        v8,
+        v5,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextFair",
           "selections": [
             v1,
-            v3,
+            v4,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -381,9 +391,9 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v8
+                  "selections": v9
                 },
-                v4
+                v5
               ]
             }
           ]
@@ -399,14 +409,14 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v7,
-        v4,
+        v8,
+        v5,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextPartnerShow",
           "selections": [
             v1,
-            v3,
+            v4,
             v0,
             {
               "kind": "ScalarField",
@@ -423,13 +433,13 @@ return {
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": v8
+              "selections": v9
             }
           ]
         }
       ]
     },
-    v4
+    v5
   ]
 };
 })();

@@ -31,6 +31,7 @@ fragment SuggestedGenes_suggested_genes on Gene {
     cropped(width: 100, height: 100) {
       url
     }
+    __id: id
   }
   __id
 }
@@ -49,7 +50,7 @@ return {
   "operationKind": "query",
   "name": "SuggestedGenesQuery",
   "id": null,
-  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  __id\n}\n",
+  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -151,6 +152,13 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": "__id",
+                "name": "id",
+                "args": null,
+                "storageKey": null
               }
             ]
           },

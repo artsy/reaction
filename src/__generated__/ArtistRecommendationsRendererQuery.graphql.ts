@@ -60,6 +60,7 @@ fragment RecommendedArtist_artist on Artist {
     cropped(width: 100, height: 100) {
       url
     }
+    __id: id
   }
   artworks_connection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {
     edges {
@@ -67,6 +68,7 @@ fragment RecommendedArtist_artist on Artist {
         __id
         image {
           aspect_ratio
+          __id: id
         }
         ...FillwidthItem_artwork
       }
@@ -81,6 +83,7 @@ fragment FillwidthItem_artwork on Artwork {
     placeholder
     url(version: "large")
     aspect_ratio
+    __id: id
   }
   href
   ...Metadata_artwork
@@ -236,19 +239,26 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "_id",
   "args": null,
   "storageKey": null
 },
-v7 = [
+v8 = [
   {
     "kind": "Literal",
     "name": "shallow",
@@ -256,7 +266,7 @@ v7 = [
     "type": "Boolean"
   }
 ],
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -268,7 +278,7 @@ return {
   "operationKind": "query",
   "name": "ArtistRecommendationsRendererQuery",
   "id": null,
-  "text": "query ArtistRecommendationsRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  id\n  name\n  related {\n    artists(first: 3, after: \"\", min_forsale_artworks: 7) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtistRecommendationsRendererQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist\n    __id\n  }\n}\n\nfragment ArtistRecommendations_artist on Artist {\n  id\n  name\n  related {\n    artists(first: 3, after: \"\", min_forsale_artworks: 7) {\n      pageInfo {\n        hasNextPage\n        endCursor\n      }\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __id\n          __typename\n        }\n        cursor\n      }\n    }\n  }\n  __id\n}\n\nfragment RecommendedArtist_artist on Artist {\n  id\n  _id\n  name\n  formatted_nationality_and_birthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  artworks_connection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {\n    edges {\n      node {\n        __id\n        image {\n          aspect_ratio\n          __id: id\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -431,7 +441,8 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              }
+                              },
+                              v5
                             ]
                           },
                           v3,
@@ -443,8 +454,8 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v5,
                           v6,
+                          v7,
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -496,12 +507,12 @@ return {
                                         "alias": null,
                                         "name": "partner",
                                         "storageKey": "partner(shallow:true)",
-                                        "args": v7,
+                                        "args": v8,
                                         "concreteType": "Partner",
                                         "plural": false,
                                         "selections": [
                                           v4,
-                                          v5,
+                                          v6,
                                           v2,
                                           {
                                             "kind": "ScalarField",
@@ -513,7 +524,7 @@ return {
                                         ]
                                       },
                                       v2,
-                                      v5,
+                                      v6,
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,
@@ -547,12 +558,12 @@ return {
                                         "alias": null,
                                         "name": "artists",
                                         "storageKey": "artists(shallow:true)",
-                                        "args": v7,
+                                        "args": v8,
                                         "concreteType": "Artist",
                                         "plural": true,
                                         "selections": [
                                           v2,
-                                          v5,
+                                          v6,
                                           v4
                                         ]
                                       },
@@ -579,6 +590,7 @@ return {
                                             "args": null,
                                             "storageKey": null
                                           },
+                                          v5,
                                           {
                                             "kind": "ScalarField",
                                             "alias": null,
@@ -692,14 +704,8 @@ return {
                                             "concreteType": "SaleArtworkHighestBid",
                                             "plural": false,
                                             "selections": [
-                                              v8,
-                                              {
-                                                "kind": "ScalarField",
-                                                "alias": "__id",
-                                                "name": "id",
-                                                "args": null,
-                                                "storageKey": null
-                                              }
+                                              v9,
+                                              v5
                                             ]
                                           },
                                           {
@@ -711,13 +717,13 @@ return {
                                             "concreteType": "SaleArtworkOpeningBid",
                                             "plural": false,
                                             "selections": [
-                                              v8
+                                              v9
                                             ]
                                           },
                                           v2
                                         ]
                                       },
-                                      v6,
+                                      v7,
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,

@@ -11,7 +11,7 @@ export type routes_OrderQueryResponse = {
         readonly name: string | null;
     }) | null;
     readonly order: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly mode: OrderModeEnum | null;
         readonly state: string | null;
         readonly lastTransactionFailed: boolean | null;
@@ -31,11 +31,11 @@ export type routes_OrderQueryResponse = {
             readonly id: string;
         }) | null;
         readonly myLastOffer?: ({
-            readonly id: string | null;
+            readonly id: string;
             readonly createdAt: string | null;
         }) | null;
         readonly lastOffer?: ({
-            readonly id: string | null;
+            readonly id: string;
             readonly createdAt: string | null;
         }) | null;
         readonly awaitingResponseFrom?: OrderParticipantEnum | null;

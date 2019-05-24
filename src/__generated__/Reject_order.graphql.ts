@@ -5,7 +5,7 @@ import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql
 declare const _Reject_order$ref: unique symbol;
 export type Reject_order$ref = typeof _Reject_order$ref;
 export type Reject_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly stateExpiresAt: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -17,7 +17,7 @@ export type Reject_order = {
         }) | null> | null;
     }) | null;
     readonly lastOffer?: ({
-        readonly id: string | null;
+        readonly id: string;
         readonly createdAt: string | null;
     }) | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;

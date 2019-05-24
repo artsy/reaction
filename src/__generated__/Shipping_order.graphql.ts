@@ -7,7 +7,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Shipping_order$ref: unique symbol;
 export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly requestedFulfillment: ({

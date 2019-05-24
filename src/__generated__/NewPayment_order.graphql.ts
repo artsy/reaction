@@ -8,7 +8,7 @@ export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _NewPayment_order$ref: unique symbol;
 export type NewPayment_order$ref = typeof _NewPayment_order$ref;
 export type NewPayment_order = {
-    readonly id: string | null;
+    readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly stateExpiresAt: string | null;
     readonly lineItems: ({
@@ -25,7 +25,7 @@ export type NewPayment_order = {
     }) | null;
     readonly lastOffer?: ({
         readonly createdAt: string | null;
-        readonly id: string | null;
+        readonly id: string;
         readonly note: string | null;
     }) | null;
     readonly " $fragmentRefs": PaymentPicker_order$ref & ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;

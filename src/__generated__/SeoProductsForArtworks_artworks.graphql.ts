@@ -81,6 +81,13 @@ v2 = [
       }
     ],
     "storageKey": "url(version:\"larger\")"
+  },
+  {
+    "kind": "ScalarField",
+    "alias": "__id",
+    "name": "id",
+    "args": null,
+    "storageKey": null
   }
 ];
 return {

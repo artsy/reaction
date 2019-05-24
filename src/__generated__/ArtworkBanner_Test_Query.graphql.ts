@@ -31,6 +31,7 @@ fragment ArtworkBanner_artwork on Artwork {
     profile {
       icon {
         url(version: "square140")
+        __id: id
       }
       href
       __id
@@ -43,6 +44,7 @@ fragment ArtworkBanner_artwork on Artwork {
     isGalleryAuction
     cover_image {
       url(version: "square")
+      __id: id
     }
     __id
   }
@@ -78,6 +80,7 @@ fragment ArtworkBanner_artwork on Artwork {
           img: resized(width: 70, height: 70, version: "square") {
             url
           }
+          __id: id
         }
         __id
       }
@@ -98,6 +101,7 @@ fragment ArtworkBanner_artwork on Artwork {
         img: resized(width: 70, height: 70, version: "square") {
           url
         }
+        __id: id
       }
     }
     ... on Node {
@@ -150,32 +154,39 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_auction",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_auction",
+  "args": null,
+  "storageKey": null
+},
+v8 = {
   "kind": "Literal",
   "name": "version",
   "value": "square",
   "type": "[String]"
 },
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v10 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -188,7 +199,7 @@ v9 = [
         "value": 70,
         "type": "Int"
       },
-      v7,
+      v8,
       {
         "kind": "Literal",
         "name": "width",
@@ -207,14 +218,15 @@ v9 = [
         "storageKey": null
       }
     ]
-  }
+  },
+  v5
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkBanner_Test_Query",
   "id": null,
-  "text": "query ArtworkBanner_Test_Query {\n  artwork(id: \"richard-anuszkiewicz-lino-yellow-318\") {\n    ...ArtworkBanner_artwork\n    __id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    type\n    name\n    initials\n    profile {\n      icon {\n        url(version: \"square140\")\n      }\n      href\n      __id\n    }\n    __id\n  }\n  sale {\n    is_auction\n    isBenefit\n    isGalleryAuction\n    cover_image {\n      url(version: \"square\")\n    }\n    __id\n  }\n  artworkContextAuction: context {\n    __typename\n    ... on ArtworkContextAuction {\n      name\n      href\n      is_auction\n      is_closed\n      is_open\n      live_start_at\n      live_url_if_open\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  artworkContextFair: context {\n    __typename\n    ... on ArtworkContextFair {\n      name\n      href\n      is_active\n      start_at\n      end_at\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n        }\n        __id\n      }\n      __id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  artworkContextPartnerShow: context {\n    __typename\n    ... on ArtworkContextPartnerShow {\n      name\n      href\n      type\n      status\n      thumbnail: cover_image {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n      }\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtworkBanner_Test_Query {\n  artwork(id: \"richard-anuszkiewicz-lino-yellow-318\") {\n    ...ArtworkBanner_artwork\n    __id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    type\n    name\n    initials\n    profile {\n      icon {\n        url(version: \"square140\")\n        __id: id\n      }\n      href\n      __id\n    }\n    __id\n  }\n  sale {\n    is_auction\n    isBenefit\n    isGalleryAuction\n    cover_image {\n      url(version: \"square\")\n      __id: id\n    }\n    __id\n  }\n  artworkContextAuction: context {\n    __typename\n    ... on ArtworkContextAuction {\n      name\n      href\n      is_auction\n      is_closed\n      is_open\n      live_start_at\n      live_url_if_open\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  artworkContextFair: context {\n    __typename\n    ... on ArtworkContextFair {\n      name\n      href\n      is_active\n      start_at\n      end_at\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n      __id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  artworkContextPartnerShow: context {\n    __typename\n    ... on ArtworkContextPartnerShow {\n      name\n      href\n      type\n      status\n      thumbnail: cover_image {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n        __id: id\n      }\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -299,10 +311,11 @@ return {
                           }
                         ],
                         "storageKey": "url(version:\"square140\")"
-                      }
+                      },
+                      v5
                     ]
                   },
-                  v5,
+                  v6,
                   v1
                 ]
               },
@@ -318,7 +331,7 @@ return {
             "concreteType": "Sale",
             "plural": false,
             "selections": [
-              v6,
+              v7,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -347,10 +360,11 @@ return {
                     "alias": null,
                     "name": "url",
                     "args": [
-                      v7
+                      v8
                     ],
                     "storageKey": "url(version:\"square\")"
-                  }
+                  },
+                  v5
                 ]
               },
               v1
@@ -365,15 +379,15 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v8,
+              v9,
               v1,
               {
                 "kind": "InlineFragment",
                 "type": "ArtworkContextAuction",
                 "selections": [
                   v3,
-                  v5,
                   v6,
+                  v7,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -415,14 +429,14 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v8,
+              v9,
               v1,
               {
                 "kind": "InlineFragment",
                 "type": "ArtworkContextFair",
                 "selections": [
                   v3,
-                  v5,
+                  v6,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -462,7 +476,7 @@ return {
                         "args": null,
                         "concreteType": "Image",
                         "plural": false,
-                        "selections": v9
+                        "selections": v10
                       },
                       v1
                     ]
@@ -480,14 +494,14 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v8,
+              v9,
               v1,
               {
                 "kind": "InlineFragment",
                 "type": "ArtworkContextPartnerShow",
                 "selections": [
                   v3,
-                  v5,
+                  v6,
                   v2,
                   {
                     "kind": "ScalarField",
@@ -504,7 +518,7 @@ return {
                     "args": null,
                     "concreteType": "Image",
                     "plural": false,
-                    "selections": v9
+                    "selections": v10
                   }
                 ]
               }
