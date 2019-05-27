@@ -75,9 +75,12 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
   }
 
   toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
-    })
+    this.setState(
+      {
+        isLoading,
+      },
+      () => window.scrollTo(0, 0)
+    )
   }
 
   render() {
