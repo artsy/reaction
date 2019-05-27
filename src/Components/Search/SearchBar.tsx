@@ -6,7 +6,6 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import colors from "Assets/Colors"
 import {
-  EmptySuggestion,
   FirstSuggestionItem,
   PLACEHOLDER,
   PLACEHOLDER_XS,
@@ -262,8 +261,6 @@ export class SearchBar extends Component<Props, State> {
       return null
     }
 
-    const showEmptySuggestion = !xs && !query && focused
-
     const props = {
       children,
       containerProps,
@@ -271,11 +268,7 @@ export class SearchBar extends Component<Props, State> {
       query,
     }
 
-    return (
-      <SuggestionContainer {...props}>
-        {showEmptySuggestion ? <EmptySuggestion /> : children}
-      </SuggestionContainer>
-    )
+    return <SuggestionContainer {...props}>{children}</SuggestionContainer>
   }
 
   getSuggestionValue = ({ node: { displayLabel } }) => {
