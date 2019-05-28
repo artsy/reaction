@@ -114,6 +114,13 @@ type AnalyticsPartnerSalesStats {
     cumulative: Boolean = false
   ): [AnalyticsPartnerSalesTimeSeriesStats!]
   totalCents: Int!
+  total(
+    decimal: String = "."
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
 }
 
 # Sales time series data of a partner
@@ -122,6 +129,13 @@ type AnalyticsPartnerSalesTimeSeriesStats {
   endTime: AnalyticsDateTime
   startTime: AnalyticsDateTime
   totalCents: Int!
+  total(
+    decimal: String = "."
+    format: String = "%s%v"
+    precision: Int = 0
+    symbol: String
+    thousand: String = ","
+  ): String
 }
 
 # Partner Stats
@@ -4144,8 +4158,8 @@ type Conversation implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID likely used as a database ID.
-  id: ID!
+  # A type-specific ID.
+  id: ID
 
   # Gravity inquiry id.
   inquiry_id: String
@@ -4942,7 +4956,7 @@ type FairExhibitor {
   __id: ID!
 
   # A type-specific ID.
-  id: ID!
+  id: ID
 
   # A type-specific Gravity Mongo Document ID.
   _id: ID!
