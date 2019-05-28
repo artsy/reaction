@@ -61,6 +61,10 @@ fragment PaymentPicker_order on Order {
     state
     country
     postal_code
+    expiration_month
+    expiration_year
+    last_digits
+    brand
     __id
   }
   requestedFulfillment {
@@ -126,35 +130,63 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "brand",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "state",
+  "name": "last_digits",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "expiration_month",
   "args": null,
   "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "city",
+  "name": "expiration_year",
   "args": null,
   "storageKey": null
 },
 v8 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v11 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "city",
+  "args": null,
+  "storageKey": null
+},
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
   "args": null,
   "storageKey": null
 };
@@ -163,7 +195,7 @@ return {
   "operationKind": "query",
   "name": "PaymentPickerTestQuery",
   "id": null,
-  "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    __id\n  }\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n    __id: id\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        id\n        brand\n        last_digits\n        expiration_month\n        expiration_year\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment PaymentPicker_order on Order {\n  id\n  mode\n  state\n  creditCard {\n    id\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code\n    __id\n  }\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on Pickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    __id\n  }\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n    __id: id\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        id\n        brand\n        last_digits\n        expiration_month\n        expiration_year\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment PaymentPicker_order on Order {\n  id\n  mode\n  state\n  creditCard {\n    id\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code\n    expiration_month\n    expiration_year\n    last_digits\n    brand\n    __id\n  }\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on Pickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -257,34 +289,10 @@ return {
                     "plural": false,
                     "selections": [
                       v3,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "brand",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "last_digits",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "expiration_month",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "expiration_year",
-                        "args": null,
-                        "storageKey": null
-                      },
+                      v4,
+                      v5,
+                      v6,
+                      v7,
                       v0
                     ]
                   }
@@ -304,7 +312,7 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
-          v4,
+          v8,
           v3,
           {
             "kind": "ScalarField",
@@ -313,7 +321,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v5,
+          v9,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -323,8 +331,8 @@ return {
             "concreteType": "CreditCard",
             "plural": false,
             "selections": [
+              v10,
               v3,
-              v6,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -339,9 +347,9 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v7,
-              v5,
-              v8,
+              v11,
+              v9,
+              v12,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -349,6 +357,10 @@ return {
                 "args": null,
                 "storageKey": null
               },
+              v6,
+              v7,
+              v5,
+              v4,
               v0
             ]
           },
@@ -361,7 +373,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v4,
+              v8,
               {
                 "kind": "InlineFragment",
                 "type": "Pickup",
@@ -379,7 +391,7 @@ return {
                 "kind": "InlineFragment",
                 "type": "Ship",
                 "selections": [
-                  v6,
+                  v12,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -394,7 +406,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v7,
+                  v11,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -402,7 +414,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v8,
+                  v10,
                   {
                     "kind": "ScalarField",
                     "alias": null,

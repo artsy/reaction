@@ -14,6 +14,17 @@ export type PaymentPickerCreateCreditCardMutationResponse = {
         readonly creditCardOrError: ({
             readonly creditCard?: ({
                 readonly id: string;
+                readonly name: string | null;
+                readonly street1: string | null;
+                readonly street2: string | null;
+                readonly city: string | null;
+                readonly state: string | null;
+                readonly country: string | null;
+                readonly postal_code: string | null;
+                readonly expiration_month: number;
+                readonly expiration_year: number;
+                readonly last_digits: string;
+                readonly brand: string;
             }) | null;
             readonly mutationError?: ({
                 readonly type: string | null;
@@ -40,6 +51,17 @@ mutation PaymentPickerCreateCreditCardMutation(
       ... on CreditCardMutationSuccess {
         creditCard {
           id
+          name
+          street1
+          street2
+          city
+          state
+          country
+          postal_code
+          expiration_month
+          expiration_year
+          last_digits
+          brand
           __id
         }
       }
@@ -126,7 +148,84 @@ v3 = {
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "country",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
           "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "street1",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "street2",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "city",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "state",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "postal_code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "expiration_month",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "expiration_year",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "last_digits",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "brand",
           "args": null,
           "storageKey": null
         },
@@ -146,7 +245,7 @@ return {
   "operationKind": "mutation",
   "name": "PaymentPickerCreateCreditCardMutation",
   "id": null,
-  "text": "mutation PaymentPickerCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentPickerCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          name\n          street1\n          street2\n          city\n          state\n          country\n          postal_code\n          expiration_month\n          expiration_year\n          last_digits\n          brand\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -221,5 +320,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c2ff00b9b91800025e48a10f40bb8b54';
+(node as any).hash = '950b1048ff38ca844437401bfbbdceef';
 export default node;

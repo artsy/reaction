@@ -67,9 +67,13 @@ export class PaymentPicker extends React.Component<
   }
 
   private getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
-    return this.props.me.creditCards.edges.length
-      ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
-      : { type: "new" }
+    if (this.props.order.creditCard) {
+      return { type: "existing", id: this.props.order.creditCard.id }
+    } else {
+      return this.props.me.creditCards.edges.length
+        ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
+        : { type: "new" }
+    }
   }
 
   private startingAddress(): Address {
@@ -195,7 +199,19 @@ export class PaymentPicker extends React.Component<
       me: { creditCards },
     } = this.props
 
-    const userHasExistingCards = creditCards.edges.length > 0
+    const orderCard = this.props.order.creditCard
+
+    const creditCardsArray = creditCards.edges.map(e => e.node)
+
+    // only add the unsaved card to the cards array if it exists and is not already there
+    if (
+      orderCard != null &&
+      !creditCardsArray.some(card => card.id === orderCard.id)
+    ) {
+      creditCardsArray.unshift(orderCard)
+    }
+
+    const userHasExistingCards = creditCardsArray.length > 0
 
     return (
       <>
@@ -217,9 +233,9 @@ export class PaymentPicker extends React.Component<
                   : creditCardSelection.id
               }
             >
-              {creditCards.edges
+              {creditCardsArray
                 .map(e => {
-                  const { id, ...creditCardProps } = e.node
+                  const { id, ...creditCardProps } = e
                   return (
                     <BorderedRadio value={id} key={id}>
                       <CreditCardDetails
@@ -337,6 +353,17 @@ export class PaymentPicker extends React.Component<
               ... on CreditCardMutationSuccess {
                 creditCard {
                   id
+                  name
+                  street1
+                  street2
+                  city
+                  state
+                  country
+                  postal_code
+                  expiration_month
+                  expiration_year
+                  last_digits
+                  brand
                 }
               }
               ... on CreditCardMutationFailure {
@@ -406,6 +433,10 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
           state
           country
           postal_code
+          expiration_month
+          expiration_year
+          last_digits
+          brand
         }
         requestedFulfillment {
           __typename

@@ -138,6 +138,7 @@ describe(PaymentPickerFragmentContainer, () => {
       },
       order: {
         ...BuyOrderWithShippingDetails,
+        creditCard: null,
       },
     },
     defaultMutationResults: {
@@ -230,6 +231,10 @@ describe(PaymentPickerFragmentContainer, () => {
             state: "Whitechapel",
             country: "UK",
             postal_code: "E1 8PY",
+            expiration_month: 12,
+            expiration_year: 2022,
+            last_digits: "1234",
+            brand: "Visa",
           },
         },
       },
@@ -253,6 +258,7 @@ describe(PaymentPickerFragmentContainer, () => {
         order: {
           ...BuyOrderPickup,
           id: "1234",
+          creditCard: null,
         },
       },
     })
@@ -370,7 +376,53 @@ describe(PaymentPickerFragmentContainer, () => {
         expiration_year: 2019,
       },
     ]
-    function getPage(_cards: typeof cards) {
+
+    const orderCard = {
+      id: "card-id-2",
+      name: "Chareth Cutestory",
+      street1: "1 Art st",
+      street2: null,
+      city: "New York",
+      state: "NY",
+      country: "USA",
+      postal_code: "90210",
+      brand: "Visa",
+      last_digits: "2345",
+      expiration_month: 1,
+      expiration_year: 2019,
+    }
+
+    const unsavedOrderCard = {
+      id: "card-id-3",
+      name: "Chareth Cutestory",
+      street1: "101 Art st",
+      street2: null,
+      city: "New York",
+      state: "NY",
+      country: "USA",
+      postal_code: "90210",
+      brand: "Visa",
+      last_digits: "6789",
+      expiration_month: 12,
+      expiration_year: 2022,
+    }
+
+    const orderWithoutCard = {
+      ...BuyOrderPickup,
+      creditCard: null,
+    }
+
+    const orderWithCard = {
+      ...BuyOrderPickup,
+      creditCard: orderCard,
+    }
+
+    const orderWithUnsavedCard = {
+      ...BuyOrderPickup,
+      creditCard: unsavedOrderCard,
+    }
+
+    function getPage(_cards: typeof cards, _order) {
       return env.buildPage({
         mockData: {
           me: {
@@ -378,6 +430,7 @@ describe(PaymentPickerFragmentContainer, () => {
               edges: _cards.map(node => ({ node })),
             },
           },
+          order: _order,
         },
       })
     }
@@ -385,7 +438,7 @@ describe(PaymentPickerFragmentContainer, () => {
     describe("with one card", () => {
       let page: PaymentPickerTestPage
       beforeAll(async () => {
-        page = await getPage(cards.slice(0, 1))
+        page = await getPage(cards.slice(0, 1), orderWithoutCard)
       })
       it("has two radio buttons", async () => {
         expect(page.radios).toHaveLength(2)
@@ -410,6 +463,7 @@ describe(PaymentPickerFragmentContainer, () => {
         expect(page.radios.at(0).props().selected).toBeTruthy()
         expect(page.radios.at(1).props().selected).toBeFalsy()
       })
+
       it("hides the 'use new card' stuff initially", async () => {
         expect(page.useNewCardSectionIsVisible).toBeFalsy()
       })
@@ -432,7 +486,7 @@ describe(PaymentPickerFragmentContainer, () => {
     describe("with two cards", () => {
       let page: PaymentPickerTestPage
       beforeAll(async () => {
-        page = await getPage(cards)
+        page = await getPage(cards, orderWithoutCard)
       })
       it("has three radio buttons", async () => {
         expect(page.radios).toHaveLength(3)
@@ -480,6 +534,40 @@ describe(PaymentPickerFragmentContainer, () => {
       it("shows the 'use new card' section when you select that option", async () => {
         await page.clickRadio(2)
         expect(page.useNewCardSectionIsVisible).toBeTruthy()
+      })
+    })
+
+    describe("when returning to the payment page when the initial card is saved", () => {
+      let page: PaymentPickerTestPage
+      beforeAll(async () => {
+        page = await getPage(cards, orderWithCard)
+      })
+      describe("with two cards", () => {
+        it("the card associated with the order is selected", async () => {
+          expect(page.radios.at(1).props().selected).toBeTruthy()
+          expect(page.radios.at(0).props().selected).toBeFalsy()
+          expect(page.radios.at(2).props().selected).toBeFalsy()
+        })
+      })
+    })
+    describe("when returning to the payment page when the initial card is not saved", () => {
+      let page: PaymentPickerTestPage
+      beforeAll(async () => {
+        page = await getPage(cards, orderWithUnsavedCard)
+      })
+      describe("with two saved cards", () => {
+        it("shows a radio button for the unsaved card", async () => {
+          expect(page.radios).toHaveLength(4)
+          expect(page.radios.at(0).text()).toMatchInlineSnapshot(
+            `"visa•••• 6789   Exp 12/22"`
+          )
+        })
+        it("the card associated with the order is selected", async () => {
+          expect(page.radios.at(0).props().selected).toBeTruthy()
+          expect(page.radios.at(1).props().selected).toBeFalsy()
+          expect(page.radios.at(2).props().selected).toBeFalsy()
+          expect(page.radios.at(3).props().selected).toBeFalsy()
+        })
       })
     })
   })
