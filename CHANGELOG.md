@@ -1,3 +1,35 @@
+# v16.12.19 (Tue May 28 2019)
+
+#### 🐛  Bug Fix
+
+- Enable New ads on series landing pages [#2463](https://github.com/artsy/reaction/pull/2463) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Match on Bar instead of BarBox to make tests work [#2462](https://github.com/artsy/reaction/pull/2462) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.12.18 (Tue May 28 2019)
+
+#### 🐛  Bug Fix
+
+- Updates search results skeleton styling [#2468](https://github.com/artsy/reaction/pull/2468) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.12.17 (Mon May 27 2019)
+
+
+
+---
+
 # v16.12.16 (Fri May 24 2019)
 
 #### 🐛  Bug Fix

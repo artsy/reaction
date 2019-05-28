@@ -37,6 +37,7 @@ describe("News Layout with new ads enabled", () => {
         <NewsLayout article={NewsArticle} shouldAdRender areHostedAdsEnabled />
       )
       .toJSON()
+
     expect(layout).toMatchSnapshot()
   })
 

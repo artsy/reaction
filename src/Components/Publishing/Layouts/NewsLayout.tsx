@@ -83,10 +83,11 @@ export class NewsLayout extends Component<Props, State> {
       })
     }
   }
-
-  // Ad unit code "Mobile/Desktop_InContentLB1" is for ads that appear after the 3rd article,
-  // "<Mobile/Desktop_InContentLB2" for ads that appear after the 9th article,
-  // and Mobile/Desktop_InContentLBRepeat is for all subsequent ads
+  /**
+   * Ad unit code "Mobile/Desktop_InContentLB1" is for ads that appear after the 3rd article,
+   * "<Mobile/Desktop_InContentLB2" for ads that appear after the 9th article,
+   * and Mobile/Desktop_InContentLBRepeat is for all subsequent ads
+   */
   getAdUnit() {
     const { articleSerial, isMobile } = this.props
 

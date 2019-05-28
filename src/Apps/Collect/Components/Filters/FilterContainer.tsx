@@ -72,10 +72,12 @@ export class FilterContainer extends React.Component<
           </Flex>
         </Toggle>
         <Toggle label="Time period">
-          <TimePeriodFilter
-            filters={filters}
-            timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
-          />
+          <Flex my={1}>
+            <TimePeriodFilter
+              filters={filters}
+              timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
+            />
+          </Flex>
         </Toggle>
       </>
     )

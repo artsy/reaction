@@ -90,15 +90,17 @@ export class FilterContainer extends React.Component<
         </Toggle>
 
         <Toggle label="Color">
-          <Flex flexDirection="column" alignItems="center">
+          <Flex flexDirection="column" alignItems="center" my={1}>
             <ColorFilter filters={filters} />
           </Flex>
         </Toggle>
         <Toggle label="Time period">
-          <TimePeriodFilter
-            filters={filters}
-            timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
-          />
+          <Flex flexDirection="column" alignItems="center" my={1}>
+            <TimePeriodFilter
+              filters={filters}
+              timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
+            />
+          </Flex>
         </Toggle>
       </>
     )
@@ -147,7 +149,7 @@ export class FilterContainer extends React.Component<
                 <Desktop>
                   <Box width="25%" mr={2}>
                     {this.renderFilters(filters)}
-                    <Separator mb={2} mt={-1} />
+                    <Separator mb={2} />
                   </Box>
                   <Box width="75%">
                     <span id="jump--searchArtworkGrid" />
