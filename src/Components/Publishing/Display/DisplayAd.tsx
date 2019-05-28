@@ -13,6 +13,8 @@ export interface DisplayAdProps extends FlexProps {
     page_type: string
     post_id: string
   }
+  isSeries?: boolean
+  isStandard?: boolean
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -46,7 +48,11 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   )
 }
 
-const DisplayAdContainer = styled(Flex)`
-  background: ${color("black5")};
+const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
+  margin: ${props => (props.isStandard ? "0" : "0 auto")};
+  border-top: ${props =>
+    props.isSeries ? `1px solid ${color("black10")}` : "none"};
+  background: ${props =>
+    props.isSeries ? color("black100") : color("black5")};
   text-align: center;
 `

@@ -5,7 +5,6 @@ import React from "react"
 import renderer from "react-test-renderer"
 
 import { StandardArticleHostedAdCanvas } from "../../Fixtures/Components"
-// tslint:disable: jsx-boolean-value
 
 describe("snapshot", () => {
   it("renders the new canvas in standard layout", () => {
@@ -14,7 +13,7 @@ describe("snapshot", () => {
         <NewDisplayCanvas
           adDimension={StandardArticleHostedAdCanvas.adDimension}
           adUnit={StandardArticleHostedAdCanvas.adUnit}
-          displayNewAds={true}
+          displayNewAds
         />
       )
       .toJSON()
@@ -28,7 +27,7 @@ describe("data", () => {
       <NewDisplayCanvas
         adDimension={StandardArticleHostedAdCanvas.adDimension}
         adUnit={StandardArticleHostedAdCanvas.adUnit}
-        displayNewAds={true}
+        displayNewAds
       />
     )
 

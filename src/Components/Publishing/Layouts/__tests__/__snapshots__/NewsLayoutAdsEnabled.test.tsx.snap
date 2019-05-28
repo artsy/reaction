@@ -30,6 +30,8 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   flex-direction: column;
   padding-bottom: 4px;
   padding-top: 32px;
+  margin: 0 auto;
+  border-top: none;
   background: #F8F8F8;
   text-align: center;
 }
