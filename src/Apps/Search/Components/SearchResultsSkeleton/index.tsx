@@ -8,7 +8,7 @@ import { Header } from "./Header"
 export const SearchResultsSkeleton: React.FC<any> = props => {
   return (
     <AppContainer>
-      <Box style={{ minWidth: 320 }}>
+      <Box style={{ minWidth: 320 }} mx={2}>
         <Header />
         <Flex>
           <FilterSidebar />

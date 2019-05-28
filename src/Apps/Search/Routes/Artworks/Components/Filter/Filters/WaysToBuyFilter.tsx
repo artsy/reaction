@@ -1,4 +1,4 @@
-import { Checkbox, Sans } from "@artsy/palette"
+import { Box, Checkbox, Sans } from "@artsy/palette"
 import { FilterState, State } from "Apps/Search/FilterState"
 import React from "react"
 
@@ -56,12 +56,12 @@ export class WaysToBuyFilter extends React.Component<Props> {
       })
 
     return (
-      <React.Fragment>
+      <Box mb={1}>
         <Sans size="2" weight="medium" color="black100" my={1}>
           Ways to buy
         </Sans>
         {constructCheckboxes()}
-      </React.Fragment>
+      </Box>
     )
   }
 }
