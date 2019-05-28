@@ -1,3 +1,15 @@
+# v16.12.21 (Tue May 28 2019)
+
+#### 🐛  Bug Fix
+
+- Sync with some metaphysics id changes [#2469](https://github.com/artsy/reaction/pull/2469) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.12.20 (Tue May 28 2019)
 
 #### 🐛  Bug Fix
