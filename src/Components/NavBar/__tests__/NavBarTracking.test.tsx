@@ -49,6 +49,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.NotificationBell,
         destination_path: "/works-for-you",
       })
@@ -66,6 +67,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.Login,
       })
     })
@@ -82,6 +84,7 @@ describe("NavBarTracking", () => {
         .simulate("click")
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.Signup,
       })
     })
@@ -106,6 +109,7 @@ describe("NavBarTracking", () => {
         },
       })
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
         destination_path: "/galleries",
       })
@@ -130,6 +134,7 @@ describe("NavBarTracking", () => {
         },
       })
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         context_module: AnalyticsSchema.ContextModule.HeaderUserDropdown,
         destination_path: "/user/saves",
       })
@@ -144,9 +149,10 @@ describe("NavBarTracking", () => {
         </Wrapper>
       )
 
-      wrapper.find("NavItem").simulate("click")
+      wrapper.find("Link").simulate("click")
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: "Fairs",
         destination_path: "/art-fairs",
       })
@@ -162,10 +168,12 @@ describe("NavBarTracking", () => {
       )
       wrapper
         .find(".mobileHamburgerButton")
+        .find("Link")
         .first()
         .simulate("click")
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
       })
     })
@@ -190,6 +198,7 @@ describe("NavBarTracking", () => {
         })
 
       expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: "Magazine",
         destination_path: "/articles",
       })

@@ -103,6 +103,7 @@ const CircularCount: React.FC<{
   useEffect(() => {
     if (hover) {
       trackEvent({
+        action_type: AnalyticsSchema.ActionType.Hover,
         subject: AnalyticsSchema.Subject.NotificationBell,
         new_notification_count: rawCount,
       })

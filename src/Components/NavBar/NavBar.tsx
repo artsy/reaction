@@ -120,6 +120,7 @@ export const NavBar: React.FC = track(
                   Overlay={NotificationsBadge}
                   onClick={() => {
                     trackEvent({
+                      action_type: AnalyticsSchema.ActionType.Click,
                       subject: AnalyticsSchema.Subject.NotificationBell,
                       new_notification_count: cookie.get("notification-count"),
                       destination_path: "/works-for-you",
@@ -155,6 +156,7 @@ export const NavBar: React.FC = track(
                 variant="secondaryOutline"
                 onClick={() => {
                   trackEvent({
+                    action_type: AnalyticsSchema.ActionType.Click,
                     subject: AnalyticsSchema.Subject.Login,
                   })
 
@@ -167,6 +169,7 @@ export const NavBar: React.FC = track(
               <Button
                 onClick={() => {
                   trackEvent({
+                    action_type: AnalyticsSchema.ActionType.Click,
                     subject: AnalyticsSchema.Subject.Signup,
                   })
 
@@ -189,6 +192,7 @@ export const NavBar: React.FC = track(
               const showMenu = !showMobileMenu
               if (showMenu) {
                 trackEvent({
+                  action_type: AnalyticsSchema.ActionType.Click,
                   subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
                 })
               }

@@ -12,7 +12,7 @@ import {
   Serif,
 } from "@artsy/palette"
 
-import { SystemContext } from "Artsy"
+import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import * as authentication from "Components/NavBar/Utils/authentication"
 
@@ -27,6 +27,7 @@ export const MobileNavMenu: React.FC = () => {
     const href = link.parentNode.getAttribute("href")
 
     trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
       subject: text,
       destination_path: href,
     })

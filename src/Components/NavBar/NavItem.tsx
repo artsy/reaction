@@ -1,4 +1,5 @@
 import { Box, BoxProps, Link, Sans, space } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
 import React, { useState } from "react"
@@ -34,6 +35,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   const trackClick = () => {
     if (href && isString(children)) {
       trackEvent({
+        action_type: AnalyticsSchema.ActionType.Click,
         subject: children, // Text passed into the NavItem
         destination_path: href,
       })
@@ -42,20 +44,25 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <Box
-      px={1}
-      py={2}
-      className={className}
-      display={display}
       position="relative"
-      style={{ cursor: "pointer" }}
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
-      onClick={() => {
-        trackClick()
-        onClick && onClick()
-      }}
     >
-      <Link href={href} color={hoverColor} underlineBehavior="none">
+      <Link
+        href={href}
+        color={hoverColor}
+        underlineBehavior="none"
+        px={1}
+        py={2}
+        className={className}
+        display={display}
+        position="relative"
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          trackClick()
+          onClick && onClick()
+        }}
+      >
         <Sans size="3" weight="medium" color={hoverColor}>
           <Box height={25}>
             {isFunction(children)
@@ -83,5 +90,5 @@ export const NavItem: React.FC<NavItemProps> = ({
 
 const MenuContainer = styled(Box)`
   position: absolute;
-  transform: translateX(-90%);
+  transform: translateX(-83%);
 `
