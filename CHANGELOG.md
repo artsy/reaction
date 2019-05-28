@@ -1,3 +1,17 @@
+# v16.12.20 (Tue May 28 2019)
+
+#### 🐛  Bug Fix
+
+- If a user has multiple saved credit cards, returning to the Payment page on an order should automatically choose the card associated with the order [#2387](https://github.com/artsy/reaction/pull/2387) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@ds300](https://github.com/ds300) lillian.pace@artsymail.com)
+
+#### Authors: 3
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- lillian.pace@artsymail.com
+
+---
+
 # v16.12.19 (Tue May 28 2019)
 
 #### 🐛  Bug Fix
