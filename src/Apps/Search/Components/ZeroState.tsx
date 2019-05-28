@@ -1,14 +1,21 @@
 import { Box, Flex, Serif } from "@artsy/palette"
 import { SendFeedback } from "Apps/Search/Components/SendFeedback"
+import qs from "qs"
 import React, { FC } from "react"
 
 interface Props {
   term: string
-  entity: string
 }
 
 export const ZeroState: FC<Props> = props => {
-  const { term, entity } = props
+  const { term } = props
+  let hasFilters = false
+  if (window.location.search.length) {
+    const params = Object.keys(
+      qs.parse(window.location.search, { ignoreQueryPrefix: true })
+    )
+    hasFilters = params.length > 1
+  }
 
   return (
     <Flex
@@ -19,15 +26,14 @@ export const ZeroState: FC<Props> = props => {
     >
       <Box m={3} textAlign="center">
         <Serif size="6">
-          {`We couldn't find any ${entity} for 
-        "${term}"`}
+          {hasFilters ? "No results found." : `No results found for "${term}".`}
         </Serif>
-
         <Serif size="3">
-          Try checking your spelling or try another search term.
+          {hasFilters
+            ? "Try removing some filters or try another search term."
+            : "Try checking for spelling errors or try another search term."}
         </Serif>
       </Box>
-
       <Box width="100%">
         <SendFeedback />
       </Box>

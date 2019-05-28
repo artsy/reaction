@@ -110,7 +110,7 @@ export class SearchApp extends React.Component<Props> {
             )
           ) : (
             <Box mt={3}>
-              <ZeroState entity="results" term={term} />
+              <ZeroState term={term} />
               {this.renderFooter()}
             </Box>
           )}
