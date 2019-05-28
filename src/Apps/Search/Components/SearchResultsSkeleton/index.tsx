@@ -12,7 +12,7 @@ export const SearchResultsSkeleton: React.FC<any> = props => {
         <Header />
         <Flex>
           <FilterSidebar />
-          <Box width={["100%", "75%"]} pl={20}>
+          <Box width={["100%", "75%"]}>
             <Grid fluid>
               <Row>
                 <Col xs="6" sm="6" md="6" lg="4">
