@@ -1,3 +1,15 @@
+# v16.12.18 (Tue May 28 2019)
+
+#### 🐛  Bug Fix
+
+- Updates search results skeleton styling [#2468](https://github.com/artsy/reaction/pull/2468) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.12.17 (Mon May 27 2019)
 
 
