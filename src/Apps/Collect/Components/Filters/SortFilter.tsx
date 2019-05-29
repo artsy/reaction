@@ -2,7 +2,7 @@ import React from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
 
-import { Button, FilterIcon, Flex, SmallSelect, Spacer } from "@artsy/palette"
+import { Button, FilterIcon, Flex, SelectSmall, Spacer } from "@artsy/palette"
 
 export const SortFilter: React.FC<{
   filters: FilterState
@@ -10,8 +10,7 @@ export const SortFilter: React.FC<{
 }> = ({ filters, onShow }) => {
   return (
     <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
-      <SmallSelect
-        mt="-8px"
+      <SelectSmall
         options={[
           {
             value: "-decayed_merch",
@@ -35,6 +34,7 @@ export const SortFilter: React.FC<{
           },
         ]}
         selected={filters.state.sort}
+        title="Sort"
         onSelect={sort => {
           return filters.setFilter("sort", sort)
         }}

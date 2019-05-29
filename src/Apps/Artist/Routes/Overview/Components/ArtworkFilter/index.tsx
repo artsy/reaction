@@ -21,8 +21,8 @@ import {
   Message,
   Radio,
   Sans,
+  SelectSmall,
   Separator,
-  SmallSelect,
   Spacer,
 } from "@artsy/palette"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
@@ -246,8 +246,7 @@ class Filter extends Component<Props> {
     const { filterState } = this.props
     return (
       <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
-        <SmallSelect
-          mt="-8px"
+        <SelectSmall
           options={[
             {
               value: "-decayed_merch",
@@ -271,6 +270,7 @@ class Filter extends Component<Props> {
             },
           ]}
           selected={filterState.state.sort}
+          title="Sort"
           onSelect={sort => {
             return filterState.setSort(sort)
           }}
