@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import { compact, findLastIndex, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
@@ -235,16 +236,12 @@ export class Sections extends Component<Props, State> {
 
       if (child) {
         return (
-          <>
-            <SectionContainer
-              key={index}
-              articleLayout={article.layout}
-              section={section}
-            >
+          <Box key={index}>
+            <SectionContainer articleLayout={article.layout} section={section}>
               {child}
             </SectionContainer>
             {ad}
-          </>
+          </Box>
         )
       }
     })
