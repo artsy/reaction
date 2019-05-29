@@ -30,3 +30,7 @@ export function userHasLabFeature(user: User, featureName: string): boolean {
 
   return lab_features.includes(featureName)
 }
+
+export function userIsAdmin(user?: User): boolean {
+  return user && user.type === "Admin"
+}
