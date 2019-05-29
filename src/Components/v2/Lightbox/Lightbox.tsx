@@ -287,7 +287,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     if (!this.state.element) {
       return (
         <Flex justifyContent="center" height={height} alignItems="center">
-          <StyledImage alt={imageAlt} src={src} />
+          <StyledImage alt={imageAlt} src={src} preventRightClick />
         </Flex>
       )
     }
@@ -307,6 +307,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
               alt={imageAlt}
               data-type="artwork-image"
               data-is-default={isDefault}
+              preventRightClick
             />
           </Flex>
         )}

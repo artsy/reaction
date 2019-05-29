@@ -120,6 +120,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               alt={artwork.image_title}
               src={this.getImageUrl()}
               lazyLoad={IMAGE_LAZY_LOADING && lazyLoad}
+              preventRightClick
             />
           </a>
 

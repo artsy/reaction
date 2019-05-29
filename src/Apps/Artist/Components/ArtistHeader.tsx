@@ -114,6 +114,7 @@ export class LargeArtistHeader extends Component<Props> {
                       src={slide.resized.url}
                       width={slide.resized.width}
                       height={slide.resized.height}
+                      preventRightClick
                     />
                   </a>
                 )
@@ -199,6 +200,7 @@ export class SmallArtistHeader extends Component<Props> {
                       src={slide.resized.url}
                       width={slide.resized.width}
                       height={slide.resized.height}
+                      preventRightClick
                     />
                   </a>
                 )

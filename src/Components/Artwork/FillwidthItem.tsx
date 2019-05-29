@@ -125,6 +125,7 @@ export class FillwidthItemContainer extends React.Component<
               width="100%"
               height={imageHeight}
               lazyLoad={lazyLoad}
+              preventRightClick
             />
           </ImageLink>
 
