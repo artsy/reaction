@@ -1,9 +1,10 @@
-import { clone, compact, findLastIndex, once } from "lodash"
+import { compact, findLastIndex, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { ArticleData } from "../Typings"
+import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
+import { AdDimension, AdUnit, ArticleData } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
@@ -179,41 +180,40 @@ export class Sections extends Component<Props, State> {
 
   renderSections() {
     const { article } = this.props
-    const { shouldInjectMobileDisplay } = this.state
     let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
       const shouldInject =
-        shouldInjectMobileDisplay &&
-        sectionItem.type === "text" &&
-        !displayMarkerInjected
+        sectionItem.type === "image_collection" && !displayMarkerInjected
 
-      let section = sectionItem
+      const section = sectionItem
+      let ad = null
 
       if (shouldInject) {
-        try {
-          section = clone(sectionItem)
-          section.body = this.injectDisplayPanelMarker(section.body)
-          displayMarkerInjected = true
-        } catch (error) {
-          console.error(
-            "(reaction/Sections.jsx) Error injecting Display:",
-            error
-          )
-        }
+        ad = (
+          <NewDisplayCanvas
+            adUnit={AdUnit.Desktop_NewsLanding_Leaderboard1}
+            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
+            displayNewAds
+          />
+        )
+        displayMarkerInjected = true
       }
 
       const child = this.getSection(section, index)
 
       if (child) {
         return (
-          <SectionContainer
-            key={index}
-            articleLayout={article.layout}
-            section={section}
-          >
-            {child}
-          </SectionContainer>
+          <>
+            <SectionContainer
+              key={index}
+              articleLayout={article.layout}
+              section={section}
+            >
+              {child}
+            </SectionContainer>
+            {ad}
+          </>
         )
       }
     })
