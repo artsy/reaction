@@ -1,3 +1,17 @@
+# v16.12.23 (Wed May 29 2019)
+
+#### 🐛  Bug Fix
+
+- [Ad Server] add new ads for video layout pages [#2470](https://github.com/artsy/reaction/pull/2470) ([@xtina-starr](https://github.com/xtina-starr))
+- replace use of SmallSelect with SelectSmall [#2475](https://github.com/artsy/reaction/pull/2475) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v16.12.22 (Wed May 29 2019)
 
 ### Release Notes
