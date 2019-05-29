@@ -12,6 +12,7 @@ export const MoreNavMenu: React.FC = () => {
     const href = link.parentNode.parentNode.getAttribute("href")
 
     trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
       context_module: AnalyticsSchema.ContextModule.HeaderMoreDropdown,
       subject: text,
       destination_path: href,

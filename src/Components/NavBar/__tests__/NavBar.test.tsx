@@ -130,6 +130,7 @@ describe("NavBar", () => {
         wrapper
           .find("NavSection")
           .find("NavItem")
+          .find("Link")
           .last()
           .simulate("click")
 

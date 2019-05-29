@@ -59,7 +59,7 @@ describe("NavItem", () => {
         hello how are you
       </NavItem>
     )
-    wrapper.simulate("click")
+    wrapper.find("Link").simulate("click")
     expect(spy).toHaveBeenCalled()
   })
 

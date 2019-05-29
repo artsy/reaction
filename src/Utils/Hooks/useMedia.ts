@@ -69,9 +69,10 @@ export function useMatchMedia(
     setMatches(mediaQueryList.matches)
     const handleChange = event => setMatches(event.matches)
 
-    mediaQueryList.addEventListener("change", handleChange)
+    mediaQueryList.addListener(handleChange)
+
     return () => {
-      mediaQueryList.removeEventListener("change", handleChange)
+      mediaQueryList.removeListener(handleChange)
     }
   }, [mediaQueryString])
 
