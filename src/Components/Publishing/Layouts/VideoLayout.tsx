@@ -4,9 +4,11 @@ import track from "react-tracking"
 import styled from "styled-components"
 
 import { getEditorialHref } from "Components/Publishing/Constants"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
-import { ArticleData } from "Components/Publishing/Typings"
+import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
 import {
   VideoContainer,
   VideoPlayer,
@@ -20,6 +22,7 @@ interface Props {
   article: ArticleData
   seriesArticle?: ArticleData
   relatedArticles?: any
+  isMobile?: boolean
 }
 
 interface State {
@@ -75,11 +78,17 @@ export class VideoLayout extends Component<Props, State> {
   }
 
   render() {
-    const { article, relatedArticles } = this.props
+    const {
+      areHostedAdsEnabled,
+      article,
+      isMobile,
+      relatedArticles,
+    } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const seriesLink =
       seriesArticle && getEditorialHref("series", seriesArticle.slug)
+
     return (
       <VideoLayoutContainer>
         <Nav transparent sponsor={sponsor} canFix={false} />
@@ -113,6 +122,23 @@ export class VideoLayout extends Component<Props, State> {
             </Box>
           )}
         </Box>
+        {areHostedAdsEnabled && (
+          <NewDisplayCanvas
+            adUnit={
+              isMobile
+                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            adDimension={
+              isMobile
+                ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            displayNewAds={areHostedAdsEnabled}
+            targetingData={targetingData(article.id, "sponsorlanding")}
+            isSeries
+          />
+        )}
       </VideoLayoutContainer>
     )
   }

@@ -9,8 +9,7 @@ import {
   SeriesTitle,
   SeriesTitleContainer,
 } from "Components/Publishing/Series/SeriesTitle"
-import { ArticleData } from "Components/Publishing/Typings"
-import { AdDimension, AdUnit } from "Components/Publishing/Typings"
+import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
 import React, { Component } from "react"
 import styled from "styled-components"
 
