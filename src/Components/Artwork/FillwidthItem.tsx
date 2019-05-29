@@ -14,6 +14,7 @@ import { Mediator } from "Artsy"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 import { get } from "Utils/get"
+import { userIsAdmin } from "Utils/getUser"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("FillwidthItem.tsx")
@@ -101,6 +102,7 @@ export class FillwidthItemContainer extends React.Component<
     if (user) {
       userSpread = { user }
     }
+    const isAdmin = userIsAdmin(user)
 
     const image = get(this.props, p => p.artwork.image)
     if (!image) {
@@ -125,7 +127,7 @@ export class FillwidthItemContainer extends React.Component<
               width="100%"
               height={imageHeight}
               lazyLoad={lazyLoad}
-              preventRightClick
+              preventRightClick={!isAdmin}
             />
           </ImageLink>
 
