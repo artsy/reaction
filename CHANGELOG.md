@@ -1,3 +1,139 @@
+# v16.12.22 (Wed May 29 2019)
+
+### Release Notes
+
+  _From #2472_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.8`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4128-Tue-May-28-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.7...v4.12.8)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [Link] Add styled-system position mixin [#&#8203;477](https://togithub.com/artsy/palette/pull/477) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+_From #2471_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.7`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4127-Tue-May-28-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.6...v4.12.7)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [Link] Add styled-system display mixin [#&#8203;476](https://togithub.com/artsy/palette/pull/476) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+_From #2455_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.12.6`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4126-Tue-May-28-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.5...v4.12.6)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   rename MiniSelect to SelectSmall and create separate entry for it in docs [#&#8203;475](https://togithub.com/artsy/palette/pull/475) ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+
+##### 🏠  Internal
+
+-   `@artsy/palette`
+-   Pin dependencies [#&#8203;470](https://togithub.com/artsy/palette/pull/470) ([@&#8203;renovate-bot](https://togithub.com/renovate-bot))
+
+##### Authors: 2
+
+-   Oksana ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+-   Renovate Bot ([@&#8203;renovate-bot](https://togithub.com/renovate-bot))
+
+* * *
+
+### [`v4.12.5`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4125-Thu-May-23-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.4...v4.12.5)
+
+##### 🐛  Bug Fix
+
+-   Add identifier_field to fix page creation errors [#&#8203;471](https://togithub.com/artsy/palette/pull/471) ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+##### Authors: 1
+
+-   Justin Bennett ([@&#8203;zephraph](https://togithub.com/zephraph))
+
+* * *
+
+### [`v4.12.4`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4124-Thu-May-23-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.3...v4.12.4)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Add a MiniSelect as a select component [#&#8203;467](https://togithub.com/artsy/palette/pull/467) ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+
+##### Authors: 1
+
+-   Oksana ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+
+* * *
+
+### [`v4.12.3`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4123-Thu-May-23-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.2...v4.12.3)
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix click-area [#2473](https://github.com/artsy/reaction/pull/2473) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.12.7 to v4.12.8 [#2472](https://github.com/artsy/reaction/pull/2472) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.12.6 to v4.12.7 [#2471](https://github.com/artsy/reaction/pull/2471) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.12.2 to v4.12.6 [#2455](https://github.com/artsy/reaction/pull/2455) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.12.21 (Tue May 28 2019)
 
 #### 🐛  Bug Fix
