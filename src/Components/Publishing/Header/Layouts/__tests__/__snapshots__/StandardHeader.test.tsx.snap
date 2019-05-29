@@ -206,7 +206,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           }
           fontSize="14px"
         >
-          Jun 19, 2015 9:09 am
+          Jun 19, 2015 9:09am
         </div>
       </div>
       <div
@@ -498,7 +498,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
           }
           fontSize="14px"
         >
-          May 19, 2017 9:09 am
+          May 19, 2017 9:09am
         </div>
       </div>
       <div

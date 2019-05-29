@@ -5,7 +5,7 @@ import { SystemContextProvider } from "Artsy"
 import { AuctionTimerQueryRenderer } from "Components/v2/AuctionTimer"
 import { Section } from "Utils/Section"
 
-storiesOf("Styleguide/Components", module).add("AuctionTimer", () => {
+storiesOf("Styleguide/Components", module).add("AuctionTimerLuxon", () => {
   return (
     <React.Fragment>
       <Section title="Piasa Abstraction">

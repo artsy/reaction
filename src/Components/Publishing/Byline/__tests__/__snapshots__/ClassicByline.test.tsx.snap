@@ -57,7 +57,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
     className="c2"
     color="#666"
   >
-    May 19, 2017 9:09 am
+    May 19, 2017 9:09am
   </div>
 </div>
 `;
@@ -119,7 +119,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
     className="c2"
     color="#666"
   >
-    Jul 28, 2017 4:38 pm
+    Jul 28, 2017 4:38pm
   </div>
 </div>
 `;
@@ -181,7 +181,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
     className="c2"
     color="#666"
   >
-    Jul 28, 2017 4:38 pm
+    Jul 28, 2017 4:38pm
   </div>
 </div>
 `;

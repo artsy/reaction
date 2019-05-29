@@ -20,7 +20,7 @@ const OtherAuctions = ({ size }: { size?: number }) => {
           }
         }
       `}
-      variables={{ size: size || 4 }}
+      variables={{ size: size || 20 }}
       render={renderWithLoadProgress(OtherAuctionsFragmentContainer as any)}
     />
   )

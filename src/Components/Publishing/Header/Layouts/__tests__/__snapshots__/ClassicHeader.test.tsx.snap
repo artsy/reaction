@@ -125,7 +125,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
       className="c4"
       color="#666"
     >
-      Jun 19, 2015 9:09 am
+      Jun 19, 2015 9:09am
     </div>
   </div>
 </div>
@@ -255,7 +255,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
       className="c4"
       color="#666"
     >
-      Jul 28, 2017 4:38 pm
+      Jul 28, 2017 4:38pm
     </div>
   </div>
 </div>

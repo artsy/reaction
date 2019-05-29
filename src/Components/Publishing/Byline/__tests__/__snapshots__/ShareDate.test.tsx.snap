@@ -72,7 +72,7 @@ exports[`renders ShareDate properly 1`] = `
       }
       fontSize="14px"
     >
-      May 19, 2017 9:09 am
+      May 19, 2017 9:09am
     </div>
   </div>
   <div

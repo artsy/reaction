@@ -1,0 +1,31 @@
+import { DateTime } from "luxon"
+import React from "react"
+import { storiesOf } from "storybook/storiesOf"
+import { Section } from "Utils/Section"
+import { Timer } from "../TimerLuxon"
+
+storiesOf("Styleguide/Components", module).add("TimerLuxon", () => {
+  return (
+    <React.Fragment>
+      <Section title="Timer (5 days from now)">
+        <Timer endDate={DateTime.local().plus({ days: 5 })} />
+      </Section>
+
+      <Section title="Timer (5 hours from now)">
+        <Timer endDate={DateTime.local().plus({ hours: 5 })} />
+      </Section>
+
+      <Section title="Timer (30 seconds from now)">
+        <Timer
+          labelWithoutTimeRemaining="Oh no, out of time!"
+          labelWithTimeRemaining="There is still time left."
+          endDate={DateTime.local().plus({ seconds: 30 })}
+        />
+      </Section>
+
+      <Section title="Timer (in the past)">
+        <Timer endDate={DateTime.local().minus({ days: 5 })} />
+      </Section>
+    </React.Fragment>
+  )
+})
