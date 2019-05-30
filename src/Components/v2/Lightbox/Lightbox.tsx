@@ -7,7 +7,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import track from "react-tracking"
 import styled from "styled-components"
-import { userIsAdmin } from "Utils/getUser"
+import { userIsAdmin } from "Utils/user"
 import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
 

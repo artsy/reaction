@@ -8,7 +8,7 @@ import { HistoryOptions } from "farce"
 import { RouteConfig } from "found"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
-import { getUser } from "Utils/getUser"
+import { getUser } from "Utils/user"
 
 interface Props {
   routes: RouteConfig[]

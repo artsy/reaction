@@ -8,9 +8,9 @@ import { Carousel } from "Components/v2/CarouselV3"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { userIsAdmin } from "Utils/getUser"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
+import { userIsAdmin } from "Utils/user"
 
 /**
  * This H1 and H2 were added for SEO purposes

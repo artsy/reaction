@@ -14,8 +14,8 @@ import { Mediator } from "Artsy"
 // @ts-ignore
 import styled, { StyledComponentClass } from "styled-components"
 import { get } from "Utils/get"
-import { userIsAdmin } from "Utils/getUser"
 import createLogger from "Utils/logger"
+import { userIsAdmin } from "Utils/user"
 
 const logger = createLogger("FillwidthItem.tsx")
 

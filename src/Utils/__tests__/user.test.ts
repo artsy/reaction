@@ -1,6 +1,6 @@
-import { userHasLabFeature } from "../getUser"
+import { userHasLabFeature } from "../user"
 
-describe("getUser", () => {
+describe("user", () => {
   describe("userHasLabFeature", () => {
     it("returns true when user has specified lab feature", () => {
       const featureName = "my feature"

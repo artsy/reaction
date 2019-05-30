@@ -31,7 +31,7 @@ import {
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
-import { userIsAdmin } from "Utils/getUser"
+import { userIsAdmin } from "Utils/user"
 import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
 interface ArtworkActionsProps {
