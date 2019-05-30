@@ -52,6 +52,7 @@ describe("NavBarTracking", () => {
         action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.NotificationBell,
         destination_path: "/works-for-you",
+        new_notification_count: 0,
       })
     })
 
@@ -155,6 +156,33 @@ describe("NavBarTracking", () => {
         action_type: AnalyticsSchema.ActionType.Click,
         subject: "Fairs",
         destination_path: "/art-fairs",
+      })
+    })
+
+    it("tracks navItem on hover", () => {
+      mount(
+        <Wrapper>
+          <NavItem href="/art-fairs" active>
+            {({ hover }) => {
+              if (hover) {
+                trackEvent({
+                  action_type: AnalyticsSchema.ActionType.Hover,
+                  subject: AnalyticsSchema.Subject.NotificationBell,
+                  destination_path: "/works-for-you",
+                  new_notification_count: 0,
+                })
+              }
+              return <div>hi</div>
+            }}
+          </NavItem>
+        </Wrapper>
+      )
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Hover,
+        subject: AnalyticsSchema.Subject.NotificationBell,
+        destination_path: "/works-for-you",
+        new_notification_count: 0,
       })
     })
   })

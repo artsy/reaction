@@ -50,6 +50,7 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
   useEffect(() => {
@@ -122,12 +123,20 @@ export const NavBar: React.FC = track(
                     trackEvent({
                       action_type: AnalyticsSchema.ActionType.Click,
                       subject: AnalyticsSchema.Subject.NotificationBell,
-                      new_notification_count: cookie.get("notification-count"),
+                      new_notification_count: getNotificationCount(),
                       destination_path: "/works-for-you",
                     })
                   }}
                 >
                   {({ hover }) => {
+                    if (hover) {
+                      trackEvent({
+                        action_type: AnalyticsSchema.ActionType.Hover,
+                        subject: AnalyticsSchema.Subject.NotificationBell,
+                        new_notification_count: getNotificationCount(),
+                      })
+                    }
+
                     return (
                       <BellIcon
                         top={3}
