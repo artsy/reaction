@@ -32,5 +32,5 @@ export function userHasLabFeature(user: User, featureName: string): boolean {
 }
 
 export function userIsAdmin(user?: User): boolean {
-  return user && user.type === "Admin"
+  return user && user.type === "Admin" ? true : false
 }
