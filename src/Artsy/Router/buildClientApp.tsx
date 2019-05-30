@@ -11,8 +11,8 @@ import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
 import qs from "qs"
 
-import { getUser } from "Utils/getUser"
 import createLogger from "Utils/logger"
+import { getUser } from "Utils/user"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"

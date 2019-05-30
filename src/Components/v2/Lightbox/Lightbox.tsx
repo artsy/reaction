@@ -1,4 +1,5 @@
 import { Box, color, Flex, Image, space } from "@artsy/palette"
+import { withSystemContext } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import FadeTransition from "Components/Animation/FadeTransition"
 import { bind, once, throttle } from "lodash"
@@ -6,6 +7,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import track from "react-tracking"
 import styled from "styled-components"
+import { userIsAdmin } from "Utils/user"
 import { CloseButton } from "./CloseButton"
 import { Slider, SliderProps } from "./LightboxSlider"
 
@@ -56,6 +58,8 @@ export interface LightboxProps {
    * Defaults to lightbox-container
    */
   lightboxId?: string
+
+  user?: User
 }
 
 export interface LightboxState {
@@ -70,7 +74,7 @@ export interface LightboxState {
 }
 
 @track({ context_module: Schema.ContextModule.Zoom })
-export class Lightbox extends React.Component<LightboxProps, LightboxState> {
+class LightboxComponent extends React.Component<LightboxProps, LightboxState> {
   static defaultProps = {
     enabled: true,
     lightboxId: "lightbox-container",
@@ -280,14 +284,22 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
   }
 
   render() {
-    const { enabled, isDefault, imageAlt, src, initialHeight } = this.props
+    const {
+      enabled,
+      isDefault,
+      imageAlt,
+      src,
+      initialHeight,
+      user,
+    } = this.props
     const height = initialHeight || "auto"
+    const isAdmin = userIsAdmin(user)
 
     // Only render client-side
     if (!this.state.element) {
       return (
         <Flex justifyContent="center" height={height} alignItems="center">
-          <StyledImage alt={imageAlt} src={src} />
+          <StyledImage alt={imageAlt} src={src} preventRightClick />
         </Flex>
       )
     }
@@ -307,6 +319,7 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
               alt={imageAlt}
               data-type="artwork-image"
               data-is-default={isDefault}
+              preventRightClick={!isAdmin}
             />
           </Flex>
         )}
@@ -335,3 +348,5 @@ export class Lightbox extends React.Component<LightboxProps, LightboxState> {
     this.detectActivity()
   }
 }
+
+export const Lightbox = withSystemContext(LightboxComponent)

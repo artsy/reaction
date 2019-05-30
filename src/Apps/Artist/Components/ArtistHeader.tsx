@@ -10,6 +10,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
+import { userIsAdmin } from "Utils/user"
 
 /**
  * This H1 and H2 were added for SEO purposes
@@ -98,6 +99,7 @@ export class LargeArtistHeader extends Component<Props> {
     } = props
 
     const hasImages = carousel && carousel.images
+    const isAdmin = userIsAdmin(user)
 
     return (
       <Box width="100%">
@@ -114,6 +116,7 @@ export class LargeArtistHeader extends Component<Props> {
                       src={slide.resized.url}
                       width={slide.resized.width}
                       height={slide.resized.height}
+                      preventRightClick={!isAdmin}
                     />
                   </a>
                 )
@@ -183,6 +186,7 @@ export class SmallArtistHeader extends Component<Props> {
     } = props
 
     const hasImages = carousel && carousel.images
+    const isAdmin = userIsAdmin(user)
 
     return (
       <Flex flexDirection="column">
@@ -199,6 +203,7 @@ export class SmallArtistHeader extends Component<Props> {
                       src={slide.resized.url}
                       width={slide.resized.width}
                       height={slide.resized.height}
+                      preventRightClick={!isAdmin}
                     />
                   </a>
                 )

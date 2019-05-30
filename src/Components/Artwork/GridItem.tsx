@@ -1,11 +1,13 @@
 import { color, Image as BaseImage } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy"
+import { withSystemContext } from "Artsy"
 import { isFunction } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { userIsAdmin } from "Utils/user"
 import Badge from "./Badge"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
@@ -93,6 +95,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     if (user) {
       userSpread = { user }
     }
+    const isAdmin = userIsAdmin(user)
 
     // the 'artwork-item' className and data-id={artwork._id} are required to
     // track Artwork impressions
@@ -120,6 +123,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
               alt={artwork.image_title}
               src={this.getImageUrl()}
               lazyLoad={IMAGE_LAZY_LOADING && lazyLoad}
+              preventRightClick={!isAdmin}
             />
           </a>
 
@@ -156,7 +160,7 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
   }
 `
 
-export default createFragmentContainer(ArtworkGridItem, {
+export default createFragmentContainer(withSystemContext(ArtworkGridItem), {
   artwork: graphql`
     fragment GridItem_artwork on Artwork {
       _id

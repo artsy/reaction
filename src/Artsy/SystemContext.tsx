@@ -2,7 +2,7 @@ import React, { SFC, useMemo } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { getUser } from "Utils/getUser"
+import { getUser } from "Utils/user"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void

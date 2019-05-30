@@ -31,6 +31,7 @@ import {
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
+import { userIsAdmin } from "Utils/user"
 import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
 interface ArtworkActionsProps {
@@ -75,8 +76,7 @@ export class ArtworkActions extends React.Component<
   }
 
   get isAdmin() {
-    const isAdmin = this.props.user && this.props.user.type === "Admin"
-    return isAdmin
+    return userIsAdmin(this.props.user)
   }
 
   getDownloadableImageUrl() {

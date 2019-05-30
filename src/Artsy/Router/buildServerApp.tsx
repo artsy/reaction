@@ -13,10 +13,10 @@ import createQueryMiddleware from "farce/lib/createQueryMiddleware"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Boot"
 
-import { getUser } from "Utils/getUser"
 import createLogger from "Utils/logger"
 import { createMediaStyle } from "Utils/Responsive"
 import { trace } from "Utils/trace"
+import { getUser } from "Utils/user"
 import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
