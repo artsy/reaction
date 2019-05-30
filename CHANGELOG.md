@@ -1,3 +1,15 @@
+# v16.12.25 (Thu May 30 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2482](https://github.com/artsy/reaction/pull/2482) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.12.24 (Thu May 30 2019)
 
 ### Release Notes
