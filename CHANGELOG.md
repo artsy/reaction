@@ -1,3 +1,15 @@
+# v16.12.26 (Thu May 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Fix type-checking between Reaction / Palette [#2483](https://github.com/artsy/reaction/pull/2483) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.12.25 (Thu May 30 2019)
 
 #### 🐛  Bug Fix
