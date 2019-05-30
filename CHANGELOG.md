@@ -1,3 +1,95 @@
+# v16.12.24 (Thu May 30 2019)
+
+### Release Notes
+
+  _From #2479_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.13.2`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4132-Thu-May-30-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.13.1...v4.13.2)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Two more stubs [#&#8203;481](https://togithub.com/artsy/palette/pull/481) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+### [`v4.13.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4131-Thu-May-30-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.13.0...v4.13.1)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Add missing component .ios.tsx stubs [#&#8203;480](https://togithub.com/artsy/palette/pull/480) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+### [`v4.13.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4130-Wed-May-29-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.9...v4.13.0)
+
+##### 🚀  Enhancement
+
+-   `@artsy/palette`
+-   Add the ability to prevent right-click on <Image> elements [#&#8203;473](https://togithub.com/artsy/palette/pull/473) ([@&#8203;pepopowitz](https://togithub.com/pepopowitz))
+
+##### Authors: 1
+
+-   Steven Hicks ([@&#8203;pepopowitz](https://togithub.com/pepopowitz))
+
+* * *
+
+### [`v4.12.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4129-Wed-May-29-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.12.8...v4.12.9)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   remove unused SmallSelect and remove margin/padding on label for SelectSmall [#&#8203;478](https://togithub.com/artsy/palette/pull/478) ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+
+##### Authors: 1
+
+-   Oksana ([@&#8203;oxaudo](https://togithub.com/oxaudo))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix notification count for zero notifications [#2481](https://github.com/artsy/reaction/pull/2481) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.12.8 to v4.13.2 [#2479](https://github.com/artsy/reaction/pull/2479) ([@renovate-bot](https://github.com/renovate-bot))
+- Sync schema [#2477](https://github.com/artsy/reaction/pull/2477) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.12.23 (Wed May 29 2019)
 
 #### 🐛  Bug Fix
