@@ -1,3 +1,15 @@
+# v16.13.0 (Thu May 30 2019)
+
+#### 🚀  Enhancement
+
+- Prevent right click on artwork images [#2480](https://github.com/artsy/reaction/pull/2480) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.12.26 (Thu May 30 2019)
 
 #### 🐛  Bug Fix
