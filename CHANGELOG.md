@@ -1,3 +1,20 @@
+# v16.13.1 (Fri May 31 2019)
+
+#### 🐛  Bug Fix
+
+- Add price/-price to SortFilter for collections [#2485](https://github.com/artsy/reaction/pull/2485) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.13.2 to v4.13.3 [#2486](https://github.com/artsy/reaction/pull/2486) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.13.0 (Thu May 30 2019)
 
 #### 🚀  Enhancement
