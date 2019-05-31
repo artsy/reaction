@@ -5,6 +5,7 @@ import { Provider } from "unstated"
 import { FilterState } from "../../../FilterState"
 import { FilterContainer } from "../FilterContainer"
 import { SortFilter } from "../SortFilter"
+import { SortTypes } from "../SortFilterSortTypes"
 
 jest.mock("sharify", () => ({
   data: {
@@ -73,15 +74,15 @@ describe("FilterContainer", () => {
     expect(wrapper.find("Desktop").length).toEqual(1)
   })
 
-  describe("passes the `isCollections` prop to SortFilter", () => {
-    const build_wrapper = ({ mobile = false, collection = false }) =>
+  describe("passes the `sortType` prop to SortFilter", () => {
+    const buildWrapper = ({ mobile = false, collection = false }) =>
       mount(
         <MockBoot breakpoint={mobile ? "xs" : "lg"}>
           <Provider inject={[filterState]}>
             <FilterContainer
               mediums={mediums}
               user={user}
-              isCollection={collection}
+              sortType={collection ? SortTypes.collection : undefined}
             >
               {filters => {
                 return <div />
@@ -91,33 +92,33 @@ describe("FilterContainer", () => {
         </MockBoot>
       )
 
-    it("defaults to false", () => {
-      const mobile_default = build_wrapper({ mobile: true })
-      const desktop_default = build_wrapper({ mobile: false })
+    it("when unspecified, SortFilter uses 'default'", () => {
+      const mobileDefault = buildWrapper({ mobile: true })
+      const desktopDefault = buildWrapper({ mobile: false })
 
-      const mobile_sort_filter = mobile_default.find(SortFilter)
-      const desktop_sort_filter = desktop_default.find(SortFilter)
+      const mobileSortFilter = mobileDefault.find(SortFilter)
+      const desktopSortFilter = desktopDefault.find(SortFilter)
 
-      expect(mobile_sort_filter.props().isCollection).toBe(false)
-      expect(desktop_sort_filter.props().isCollection).toBe(false)
+      expect(mobileSortFilter.props().sortType).toBe(SortTypes.default)
+      expect(desktopSortFilter.props().sortType).toBe(SortTypes.default)
     })
 
     it("on mobile", () => {
-      const mobile_collections = build_wrapper({
+      const mobileCollections = buildWrapper({
         mobile: true,
         collection: true,
       })
-      const mobile_sort_filter = mobile_collections.find(SortFilter)
-      expect(mobile_sort_filter.props().isCollection).toBe(true)
+      const mobileSortFilter = mobileCollections.find(SortFilter)
+      expect(mobileSortFilter.props().sortType).toBe(SortTypes.collection)
     })
 
     it("on desktop", () => {
-      const desktop_collections = build_wrapper({
+      const desktopCollections = buildWrapper({
         mobile: false,
         collection: true,
       })
-      const desktop_sort_filter = desktop_collections.find(SortFilter).at(0)
-      expect(desktop_sort_filter.props().isCollection).toBe(true)
+      const desktopSortFilter = desktopCollections.find(SortFilter).at(0)
+      expect(desktopSortFilter.props().sortType).toBe(SortTypes.collection)
     })
   })
 })

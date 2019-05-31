@@ -2,6 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { FilterState, initialState } from "../../../FilterState"
 import { SortFilter } from "../SortFilter"
+import { getSortOptions, SortTypes } from "../SortFilterSortTypes"
 
 describe("SortFilter", () => {
   let filterState
@@ -11,7 +12,7 @@ describe("SortFilter", () => {
     filterState.setFilter = jest.fn()
   })
 
-  const expect_options = (wrapper, values) => {
+  const expectOptions = (wrapper, values) => {
     const options = wrapper.find("option")
     expect(options.length).toBe(values.length)
     values.forEach((value, index) => {
@@ -19,27 +20,19 @@ describe("SortFilter", () => {
     })
   }
 
-  it("maintains default behavior", () => {
-    const wrapper = mount(<SortFilter filters={filterState} />)
-    expect_options(wrapper, [
-      "-decayed_merch",
-      "-partner_updated_at",
-      "-published_at",
-      "-year",
-      "year",
-    ])
-  })
+  describe("props.sortType", () => {
+    it("uses default if unspecified", () => {
+      const wrapper = mount(<SortFilter filters={filterState} />)
+      const expectedOptions = getSortOptions(SortTypes.default)
+      expectOptions(wrapper, expectedOptions.map(o => o.value))
+    })
 
-  it("adds sort-by-price if and only if isCollection is ture", () => {
-    const wrapper = mount(<SortFilter filters={filterState} isCollection />)
-    expect_options(wrapper, [
-      "-decayed_merch",
-      "-prices",
-      "prices",
-      "-partner_updated_at",
-      "-published_at",
-      "-year",
-      "year",
-    ])
+    it("respects `collection` sort type", () => {
+      const wrapper = mount(
+        <SortFilter filters={filterState} sortType={SortTypes.collection} />
+      )
+      const expectedOptions = getSortOptions(SortTypes.collection)
+      expectOptions(wrapper, expectedOptions.map(o => o.value))
+    })
   })
 })

@@ -6,6 +6,7 @@ import { CollectionRefetchContainer } from "./CollectionRefetch"
 import { CollectionFilterContainer_collection } from "__generated__/CollectionFilterContainer_collection.graphql"
 import { FilterState } from "Apps/Collect/FilterState"
 import { FilterContainer } from "../Filters"
+import { SortTypes } from "../Filters/SortFilterSortTypes"
 
 export interface CollectionFilterContainerProps {
   collection?: CollectionFilterContainer_collection
@@ -29,7 +30,7 @@ export const CollectionFilterContainer: React.FC<
       user={user}
       mediums={mediumAggregation.counts as any}
       timePeriods={timePeriodAggregation.counts as any}
-      isCollection
+      sortType={SortTypes.collection}
     >
       {(filters: FilterState) => (
         <CollectionRefetchContainer
