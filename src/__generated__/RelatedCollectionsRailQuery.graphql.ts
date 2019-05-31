@@ -3,9 +3,9 @@
 import { ConcreteRequest } from "relay-runtime";
 import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
 export type RelatedCollectionsRailQueryVariables = {
-    readonly isFeaturedArtistContent?: boolean | null;
+    readonly showOnEditorial?: boolean | null;
     readonly size?: number | null;
-    readonly artistID?: string | null;
+    readonly category?: string | null;
 };
 export type RelatedCollectionsRailQueryResponse = {
     readonly collections: ReadonlyArray<{
@@ -21,11 +21,11 @@ export type RelatedCollectionsRailQuery = {
 
 /*
 query RelatedCollectionsRailQuery(
-  $isFeaturedArtistContent: Boolean
+  $showOnEditorial: Boolean
   $size: Int
-  $artistID: String
+  $category: String
 ) {
-  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {
+  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, category: $category) {
     ...RelatedCollectionsRail_collections
     __id: id
   }
@@ -50,6 +50,7 @@ fragment RelatedCollectionEntity_collection on MarketingCollection {
       title
       image {
         url(version: "small")
+        __id: id
       }
       __id
     }
@@ -63,7 +64,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "isFeaturedArtistContent",
+    "name": "showOnEditorial",
     "type": "Boolean",
     "defaultValue": null
   },
@@ -75,7 +76,7 @@ var v0 = [
   },
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "category",
     "type": "String",
     "defaultValue": null
   }
@@ -83,14 +84,14 @@ var v0 = [
 v1 = [
   {
     "kind": "Variable",
-    "name": "artistID",
-    "variableName": "artistID",
+    "name": "category",
+    "variableName": "category",
     "type": "String"
   },
   {
     "kind": "Variable",
-    "name": "isFeaturedArtistContent",
-    "variableName": "isFeaturedArtistContent",
+    "name": "showOnEditorial",
+    "variableName": "showOnEditorial",
     "type": "Boolean"
   },
   {
@@ -126,7 +127,7 @@ return {
   "operationKind": "query",
   "name": "RelatedCollectionsRailQuery",
   "id": null,
-  "text": "query RelatedCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...RelatedCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment RelatedCollectionsRail_collections on MarketingCollection {\n  ...RelatedCollectionEntity_collection\n  __id: id\n}\n\nfragment RelatedCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
+  "text": "query RelatedCollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $category: String\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, category: $category) {\n    ...RelatedCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment RelatedCollectionsRail_collections on MarketingCollection {\n  ...RelatedCollectionEntity_collection\n  __id: id\n}\n\nfragment RelatedCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -263,7 +264,8 @@ return {
                           }
                         ],
                         "storageKey": "url(version:\"small\")"
-                      }
+                      },
+                      v2
                     ]
                   },
                   v4
@@ -279,5 +281,5 @@ return {
   }
 };
 })();
-(node as any).hash = '3a7ea7c802d6524d28dc9eec40333e0a';
+(node as any).hash = '60349d412275c9fb023733dd77c9465a';
 export default node;

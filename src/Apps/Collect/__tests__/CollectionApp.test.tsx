@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "react-relay"
 
+import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Components/Artist/ArtistCollectionsRail"
+import { RelatedCollectionsRailContent as RelatedCollectionsRail } from "Components/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import { Provider } from "unstated"
@@ -62,5 +64,43 @@ describe("CollectionApp", () => {
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")
     expect(items.at(1).text()).toContain("KAWS x Undercover , 1999")
+
+    const relatedCollectionsRail = tree.find(RelatedCollectionsRail)
+    expect(relatedCollectionsRail.props().category).toEqual(
+      "Collectible Sculptures"
+    )
+  })
+  // })
+
+  it("renders artist rail when there is an artist", async () => {
+    CollectionAppFixture.collection.query.artist_ids = ["kaws"]
+    const tree = await renderUntil(
+      wrapper => {
+        return wrapper.find(FilterContainer).length > 0
+      },
+      <MockBoot breakpoint="lg">
+        <Provider inject={[filterState]}>
+          <MockRelayRenderer
+            Component={CollectionApp}
+            query={graphql`
+              query CollectionAppTestQuery {
+                collection: marketingCollection(slug: "kaws-companions") {
+                  ...CollectionApp_collection
+                }
+              }
+            `}
+            mockResolvers={{
+              MarketingCollection: () => CollectionAppFixture.collection,
+              ArtworkConnection: () =>
+                CollectionAppFixture.collection.filtered_artworks.artworks,
+              FormattedNumber: () => 3,
+            }}
+          />
+        </Provider>
+      </MockBoot>
+    )
+
+    const artistCollectionsRail = tree.find(ArtistCollectionsRail)
+    expect(artistCollectionsRail.props().artistID).toEqual("kaws")
   })
 })

@@ -47,8 +47,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
     const artistId =
       collection.query.artist_id || collection.query.artist_ids[0]
-    console.log("artist_id:", collection.query.artist_id)
-    console.log("artist_ids:", collection.query.artist_ids)
+
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -74,20 +73,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
-          <Box>
-            {/* <RelatedCollectionsRail
-              artistID={
-                collection.query.artist_id || collection.query.artist_ids[0]
-              }
-            /> */}
+          <Box mt="3">
             {artistId ? (
               <ArtistCollectionsRail artistID={artistId} />
             ) : (
-              <RelatedCollectionsRail
-                artistID={
-                  collection.query.artist_id || collection.query.artist_ids[0]
-                }
-              />
+              <RelatedCollectionsRail category={collection.category} />
             )}
           </Box>
         </FrameWithRecentlyViewed>

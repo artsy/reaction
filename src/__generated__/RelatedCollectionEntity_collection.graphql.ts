@@ -38,6 +38,13 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -141,7 +148,8 @@ return {
                     }
                   ],
                   "storageKey": "url(version:\"small\")"
-                }
+                },
+                v2
               ]
             },
             v1
@@ -150,13 +158,7 @@ return {
         v1
       ]
     },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    }
+    v2
   ]
 };
 })();
