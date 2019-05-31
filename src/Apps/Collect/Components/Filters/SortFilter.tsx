@@ -1,38 +1,19 @@
 import React from "react"
 import { Media } from "Utils/Responsive"
 import { FilterState } from "../../FilterState"
+import { getSortOptions, SortTypes } from "./SortFilterSortTypes"
 
 import { Button, FilterIcon, Flex, SelectSmall, Spacer } from "@artsy/palette"
 
 export const SortFilter: React.FC<{
   filters: FilterState
   onShow?: () => void
-}> = ({ filters, onShow }) => {
+  sortType?: SortTypes
+}> = ({ filters, onShow, sortType }) => {
   return (
     <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
       <SelectSmall
-        options={[
-          {
-            value: "-decayed_merch",
-            text: "Default",
-          },
-          {
-            value: "-partner_updated_at",
-            text: "Recently updated",
-          },
-          {
-            value: "-published_at",
-            text: "Recently added",
-          },
-          {
-            value: "-year",
-            text: "Artwork year (desc.)",
-          },
-          {
-            value: "year",
-            text: "Artwork year (asc.)",
-          },
-        ]}
+        options={getSortOptions(sortType)}
         selected={filters.state.sort}
         title="Sort"
         onSelect={sort => {
@@ -51,4 +32,8 @@ export const SortFilter: React.FC<{
       </Media>
     </Flex>
   )
+}
+
+SortFilter.defaultProps = {
+  sortType: SortTypes.default,
 }

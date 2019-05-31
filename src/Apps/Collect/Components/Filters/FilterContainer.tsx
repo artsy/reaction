@@ -9,6 +9,7 @@ import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
 import { SizeRangeFilters } from "./SizeRangeFilters"
 import { SortFilter } from "./SortFilter"
+import { SortTypes } from "./SortFilterSortTypes"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
@@ -20,6 +21,7 @@ export interface FilterContainerProps {
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
   children?: (filters: FilterState) => JSX.Element
+  sortType?: SortTypes
 }
 
 export interface FilterContainerState {
@@ -104,6 +106,7 @@ export class FilterContainer extends React.Component<
                     onShow={() =>
                       this.setState({ showMobileActionSheet: true })
                     }
+                    sortType={this.props.sortType}
                   />
 
                   <Spacer mb={2} />
@@ -121,7 +124,10 @@ export class FilterContainer extends React.Component<
                   <Box width="75%">
                     <Separator mb={2} mt={-1} />
                     <span id="jump--collectArtworkGrid" />
-                    <SortFilter filters={filters} />
+                    <SortFilter
+                      filters={filters}
+                      sortType={this.props.sortType}
+                    />
                     <Spacer mb={2} />
                     {this.props.children(filters)}
                   </Box>

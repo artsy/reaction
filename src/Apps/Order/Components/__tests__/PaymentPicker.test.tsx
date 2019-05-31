@@ -641,7 +641,6 @@ describe(PaymentPickerFragmentContainer, () => {
       const input = page
         .find(Input)
         .filterWhere(wrapper => wrapper.props().title === "Full name")
-      console.log()
       expect(input.props().error).toEqual("This field is required")
     })
 
