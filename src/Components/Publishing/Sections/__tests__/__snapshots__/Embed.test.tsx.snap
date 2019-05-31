@@ -9,7 +9,7 @@ exports[`renders properly 1`] = `
 @media (max-width:720px) {
   .c0 {
     height: 1300px;
-    width: 100vw;
+    width: 100%;
   }
 }
 
