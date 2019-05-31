@@ -20,6 +20,7 @@ export interface FilterContainerProps {
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
   children?: (filters: FilterState) => JSX.Element
+  isCollection?: boolean
 }
 
 export interface FilterContainerState {
@@ -104,6 +105,7 @@ export class FilterContainer extends React.Component<
                     onShow={() =>
                       this.setState({ showMobileActionSheet: true })
                     }
+                    isCollection={this.props.isCollection}
                   />
 
                   <Spacer mb={2} />
@@ -121,7 +123,10 @@ export class FilterContainer extends React.Component<
                   <Box width="75%">
                     <Separator mb={2} mt={-1} />
                     <span id="jump--collectArtworkGrid" />
-                    <SortFilter filters={filters} />
+                    <SortFilter
+                      filters={filters}
+                      isCollection={this.props.isCollection}
+                    />
                     <Spacer mb={2} />
                     {this.props.children(filters)}
                   </Box>

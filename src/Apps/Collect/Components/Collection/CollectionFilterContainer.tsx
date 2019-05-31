@@ -29,6 +29,7 @@ export const CollectionFilterContainer: React.FC<
       user={user}
       mediums={mediumAggregation.counts as any}
       timePeriods={timePeriodAggregation.counts as any}
+      isCollection
     >
       {(filters: FilterState) => (
         <CollectionRefetchContainer
