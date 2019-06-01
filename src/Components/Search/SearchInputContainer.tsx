@@ -7,7 +7,7 @@ import styled from "styled-components"
 const SearchButton = styled.button`
   position: absolute;
   right: 0;
-  top: 50%;
+  top: calc(50% + 3px);
   border: none;
   margin-top: -14px;
   width: 24px;
@@ -40,7 +40,7 @@ export const SearchInputContainer: React.ForwardRefExoticComponent<
           }
         }}
       >
-        <MagnifyingGlassIcon style={{ position: "relative", top: 3 }} />
+        <MagnifyingGlassIcon />
       </SearchButton>
     </Box>
   )

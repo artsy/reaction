@@ -63,10 +63,6 @@ const InnerWrapper = styled(Flex)`
 export const PLACEHOLDER = "Search by artist, gallery, style, theme, tag, etc."
 export const PLACEHOLDER_XS = "Search Artsy"
 
-export const EmptySuggestion = () => (
-  <SuggestionWrapper>{PLACEHOLDER}</SuggestionWrapper>
-)
-
 const SuggestionWrapper = props => (
   <Flex alignItems="center" flexDirection="row" height="62px" pl={2}>
     {props.children}
