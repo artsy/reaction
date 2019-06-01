@@ -14,7 +14,7 @@ export interface ImageBrowserProps {
 export class ArtworkImageBrowserContainer extends React.Component<
   ImageBrowserProps
 > {
-  flickity = null
+  carousel = null
 
   render() {
     const { images, image, image_alt } = this.props.artwork
@@ -26,13 +26,13 @@ export class ArtworkImageBrowserContainer extends React.Component<
     return (
       <>
         <ArtworkImageBrowser
-          setFlickityRef={f => (this.flickity = f)}
+          setCarouselRef={f => (this.carousel = f)}
           images={images}
           imageAlt={image_alt}
         />
         <ArtworkActions
           selectDefaultSlide={() => {
-            this.flickity.select(defaultImageIndex, false, true)
+            this.carousel.select(defaultImageIndex, false, true)
           }}
           artwork={this.props.artwork}
         />

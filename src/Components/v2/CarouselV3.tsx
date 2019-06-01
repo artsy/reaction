@@ -1,9 +1,14 @@
 import { ChevronIcon, color, Flex, space } from "@artsy/palette"
+import { Options as FlickityOptions } from "flickity"
 import React, { Fragment } from "react"
-import { FlickityOptions } from "react-flickity-component"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
+
+/**
+ * Note: we have the commercial license, which allows us to use this in our MIT licensed codebase,
+ * but non-Artsy devs would technically be using the gplv3 version.
+ */
 
 interface CarouselProps {
   /**
@@ -12,9 +17,9 @@ interface CarouselProps {
   data: any
 
   /**
-   * Passes flickityRef
+   * Passes CarouselRef
    */
-  setFlickityRef?: (flickityRef) => void
+  setCarouselRef?: (CarouselRef) => void
 
   /**
    * If this carousel contains only one visible image on render set to true (for SSR)
@@ -134,7 +139,6 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
 }
 
 interface BaseCarouselState {
-  FlickityCarousel: Flickity | typeof Flex
   currentSlideIndex: number
   lastItemVisible: boolean
   isMounted: boolean
@@ -145,7 +149,6 @@ export class BaseCarousel extends React.Component<
   BaseCarouselState
 > {
   state = {
-    FlickityCarousel: Flex as any,
     currentSlideIndex: 0,
     lastItemVisible: false,
     isMounted: false,
@@ -155,6 +158,7 @@ export class BaseCarousel extends React.Component<
    * A reference to the Flickity instance
    */
   flickity = null
+  carouselRef = null
 
   /**
    * Options to pass to underlying flickity component
@@ -179,17 +183,18 @@ export class BaseCarousel extends React.Component<
    * client has mounted. During the server-side pass we use a Flex wrapper instead.
    */
   componentDidMount() {
-    const { setFlickityRef } = this.props
-    const Flickity = require("react-flickity-component")
+    const Flickity = require("flickity")
+    const { setCarouselRef } = this.props
+
+    this.flickity = new Flickity(this.carouselRef, this.options)
 
     this.setState(
       {
-        FlickityCarousel: Flickity,
         isMounted: true,
       },
       () => {
-        if (setFlickityRef) {
-          setFlickityRef(this.flickity)
+        if (setCarouselRef) {
+          setCarouselRef(this.flickity)
         }
         this.flickity.on("select", this.handleSlideChange)
       }
@@ -197,7 +202,9 @@ export class BaseCarousel extends React.Component<
   }
 
   componentWillUnmount() {
-    this.flickity.off("select")
+    if (this.flickity) {
+      this.flickity.off("select")
+    }
   }
 
   handleSlideChange = index => {
@@ -301,7 +308,7 @@ export class BaseCarousel extends React.Component<
   }
 
   render() {
-    const { isMounted, FlickityCarousel } = this.state
+    const { isMounted } = this.state
     const { data, height, oneSlideVisible, render } = this.props
 
     // FIXME: During SSR pass want to hide other images. Work around for lack
@@ -322,9 +329,8 @@ export class BaseCarousel extends React.Component<
 
           <CarouselContainer height={height} isMounted={isMounted}>
             <FlickityCarousel
-              static
-              options={this.options}
-              flickityRef={c => (this.flickity = c)}
+              isMounted={isMounted}
+              ref={c => (this.carouselRef = c)}
             >
               {carouselImages.map((slide, index) => {
                 return <Fragment key={index}>{render(slide)}</Fragment>
@@ -339,6 +345,12 @@ export class BaseCarousel extends React.Component<
   }
 }
 
+const FlickityCarousel = styled.div<{
+  isMounted: boolean
+}>`
+  display: ${props => (props.isMounted ? "block" : "flex")};
+`
+
 const CarouselContainer = styled.div<{
   height?: string
   isMounted: boolean
@@ -349,6 +361,7 @@ const CarouselContainer = styled.div<{
 
   .flickity-viewport {
     overflow: hidden;
+    width: 100%;
   }
 
   .flickity-slider {
