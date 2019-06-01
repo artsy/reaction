@@ -1,3 +1,16 @@
+# v16.13.2 (Sat Jun 01 2019)
+
+#### 🐛  Bug Fix
+
+- Bring user to top of page when advancing pagination [#2466](https://github.com/artsy/reaction/pull/2466) ([@kierangillen](https://github.com/kierangillen))
+- /DISCO-946 - Adjustments to search input styling and behavior [#2464](https://github.com/artsy/reaction/pull/2464) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.13.1 (Fri May 31 2019)
 
 #### 🐛  Bug Fix
