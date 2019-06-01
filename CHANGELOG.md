@@ -1,3 +1,63 @@
+# v16.13.3 (Sat Jun 01 2019)
+
+### Release Notes
+
+  _From #2490_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.13.5`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4135-Sat-Jun-01-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.13.4...v4.13.5)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [Debug] Test deploy [#&#8203;487](https://togithub.com/artsy/palette/pull/487) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+### [`v4.13.4`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4134-Sat-Jun-01-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.13.3...v4.13.4)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   [ReactNative] Create more stub components [#&#8203;486](https://togithub.com/artsy/palette/pull/486) ([@&#8203;damassi](https://togithub.com/damassi))
+
+##### Authors: 1
+
+-   Christopher Pappas ([@&#8203;damassi](https://togithub.com/damassi))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Removes React-Flickity-Component from Carousel3 [#2492](https://github.com/artsy/reaction/pull/2492) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.13.3 to v4.13.5 [#2490](https://github.com/artsy/reaction/pull/2490) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.13.2 (Sat Jun 01 2019)
 
 #### 🐛  Bug Fix
