@@ -143,6 +143,26 @@ export class Sections extends Component<Props, State> {
     }
   }
 
+  getAdUnit(index: number) {
+    const { isMobile } = this.props
+
+    if (index === 6) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard1
+        : AdUnit.Desktop_Feature_Leaderboard1
+    }
+
+    if (index === 12) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard2
+        : AdUnit.Desktop_Feature_Leaderboard2
+    }
+
+    return isMobile
+      ? AdUnit.Mobile_Feature_InContentLeaderboard3
+      : AdUnit.Desktop_Feature_LeaderboardRepeat
+  }
+
   getSection(section, index) {
     const { article, color, showTooltips } = this.props
 
@@ -180,24 +200,35 @@ export class Sections extends Component<Props, State> {
 
   renderSections() {
     const { article } = this.props
-    let displayMarkerInjected = false
+    let firstAdInjected = false
+    let placementCount = 1
 
     const renderedSections = article.sections.map((sectionItem, index) => {
-      const shouldInject =
-        sectionItem.type === "image_collection" && !displayMarkerInjected
+      let shouldInject =
+        article.layout === "feature" &&
+        sectionItem.type === "image_collection" &&
+        !firstAdInjected
 
       const section = sectionItem
       let ad = null
 
+      if (firstAdInjected) {
+        placementCount++
+      }
+
+      if (placementCount % 6 === 0) {
+        shouldInject = true
+      }
+
       if (shouldInject) {
         ad = (
           <NewDisplayCanvas
-            adUnit={AdUnit.Desktop_NewsLanding_Leaderboard1}
+            adUnit={this.getAdUnit(placementCount)}
             adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
             displayNewAds
           />
         )
-        displayMarkerInjected = true
+        firstAdInjected = true
       }
 
       const child = this.getSection(section, index)

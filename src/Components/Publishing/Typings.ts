@@ -26,6 +26,10 @@ export enum AdUnit {
   Desktop_NewsLanding_Leaderboard2 = "Desktop_Leaderboard2",
   Desktop_NewsLanding_LeaderboardRepeat = "Desktop_LeaderboardRepeat",
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "Desktop_InContentLB2",
+  Desktop_Feature_Leaderboard1 = "Desktop_Leaderboard1",
+  Desktop_Feature_Leaderboard2 = "Desktop_Leaderboard2",
+  Desktop_Feature_LeaderboardRepeat = "Desktop_LeaderboardRepeat",
+
   Mobile_TopLeaderboard = "Mobile_TopLeaderboard",
   Mobile_InContentMR1 = "Mobile_InContentMR1",
   Mobile_InContentMR2 = "Mobile_InContentMR2",
@@ -39,6 +43,9 @@ export enum AdUnit {
   Mobile_NewsLanding_InContent2 = "Mobile_InContentMR2",
   Mobile_NewsLanding_InContent3 = "Mobile_InContentMRRepeat",
   Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom = "Mobile_InContentLB2",
+  Mobile_Feature_InContentLeaderboard1 = "Mobile_InContentLB1",
+  Mobile_Feature_InContentLeaderboard2 = "Mobile_InContentLB2",
+  Mobile_Feature_InContentLeaderboard3 = "Mobile_InContentLBRepeat",
 }
 
 export enum AdDimension {
