@@ -642,7 +642,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
 @media (max-width:720px) {
   .c24 {
     height: 1300px;
-    width: 100vw;
+    width: 100%;
   }
 }
 

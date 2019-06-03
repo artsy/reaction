@@ -31,6 +31,6 @@ const IFrame = iframe`
   height: ${props => props.height + "px"};
   ${props => pMedia.sm`
     height: ${props.mobileHeight}px;
-    width: 100vw;
+    width: 100%;
   `}
 `
