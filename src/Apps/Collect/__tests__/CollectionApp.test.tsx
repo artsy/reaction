@@ -70,7 +70,6 @@ describe("CollectionApp", () => {
       "Collectible Sculptures"
     )
   })
-  // })
 
   it("renders artist rail when there is an artist", async () => {
     CollectionAppFixture.collection.query.artist_ids = ["kaws"]
