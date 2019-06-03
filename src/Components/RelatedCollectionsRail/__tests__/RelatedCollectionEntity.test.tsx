@@ -72,7 +72,7 @@ describe("RelatedCollectionEntity", () => {
     expect(dispatch).toBeCalledWith({
       action_type: "Click",
       context_module: "CollectionsRail",
-      // context_page_owner_type: "Artist",
+      context_page_owner_type: "Collection",
       destination_path: "undefined/collection/jasper-johns-flags",
       type: "thumbnail",
     })

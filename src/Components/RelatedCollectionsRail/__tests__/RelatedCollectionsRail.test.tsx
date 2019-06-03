@@ -57,7 +57,7 @@ describe("CollectionsRail", () => {
       expect(dispatch).toBeCalledWith({
         action_type: "Impression",
         context_module: "CollectionsRail",
-        // context_page_owner_type: "Artist",
+        context_page_owner_type: "Collection",
       })
     })
 
@@ -73,7 +73,7 @@ describe("CollectionsRail", () => {
         expect(dispatch).toBeCalledWith({
           action_type: "Click",
           context_module: "CollectionsRail",
-          // context_page_owner_type: "Artist",
+          context_page_owner_type: "Collection",
           subject: "clicked next button",
           type: "Button",
         })
