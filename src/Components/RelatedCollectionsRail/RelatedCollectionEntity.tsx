@@ -10,7 +10,6 @@ import { data as sd } from "sharify"
 import styled from "styled-components"
 
 export interface CollectionProps {
-  // collection: ArtistCollectionEntity_collection
   collection: RelatedCollectionEntity_collection
 }
 
@@ -19,7 +18,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
   @track<CollectionProps>(({ collection }) => ({
     action_type: Schema.ActionType.Click,
     context_module: Schema.ContextModule.CollectionsRail,
-    // context_page_owner_type: Schema.OwnerType.Collection,
+    context_page_owner_type: Schema.OwnerType.Collection,
     destination_path: `${sd.APP_URL}/collection/${collection.slug}`,
     type: Schema.Type.Thumbnail,
   }))

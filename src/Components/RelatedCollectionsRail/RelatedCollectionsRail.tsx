@@ -24,7 +24,7 @@ export class RelatedCollectionsRail extends React.Component<
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,
-    // context_page_owner_type: Schema.OwnerType.Collection,
+    context_page_owner_type: Schema.OwnerType.Collection,
   })
   trackImpression() {
     // noop
@@ -33,7 +33,7 @@ export class RelatedCollectionsRail extends React.Component<
   @track({
     action_type: Schema.ActionType.Click,
     context_module: Schema.ContextModule.CollectionsRail,
-    // context_page_owner_type: Schema.OwnerType.Collection,
+    context_page_owner_type: Schema.OwnerType.Collection,
     type: Schema.Type.Button,
     subject: Schema.Subject.ClickedNextButton,
   })

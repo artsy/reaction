@@ -6,7 +6,6 @@ import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } fro
 
 interface Props {
   category: string
-  showOnEditorial?: boolean
 }
 
 export const RelatedCollectionsRailContent: React.SFC<Props> = ({
