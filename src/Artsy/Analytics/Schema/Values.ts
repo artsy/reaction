@@ -21,6 +21,7 @@ export enum OwnerType {
   Article = "Article",
   Artist = "Artist",
   Artwork = "Artwork",
+  Collection = "Collection",
   Consignment = "ConsignmentSubmission",
   Conversation = "Conversation",
   Gene = "Gene",
