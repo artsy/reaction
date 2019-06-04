@@ -29,7 +29,7 @@ export class SearchResultsArtworksRoute extends React.Component<Props> {
       >
         <Box>
           <Spacer mb={3} />
-          <ArtworkGrid viewer={viewer} term={term} />
+          <ArtworkGrid viewer={viewer} term={term} location={location} />
         </Box>
       </Provider>
     )

@@ -2,15 +2,18 @@ import { SearchResultsRefetch_viewer } from "__generated__/SearchResultsRefetch_
 import { FilterState } from "Apps/Search/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { Location } from "found"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { SearchResultsArtworkGridRefreshContainer as SearchArtworkGrid } from "./SearchResultsArtworkGrid"
+
 interface SearchRefetchProps {
   filtersState: FilterState["state"]
   viewer: SearchResultsRefetch_viewer
   relay: RelayRefetchProp
   term: string
+  location: Location
 }
 
 @track()
@@ -65,8 +68,9 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
   }
 
   render() {
-    const { filtersState, term } = this.props
+    const { filtersState, term, location } = this.props
     const { filtered_artworks } = this.props.viewer
+
     return (
       <SearchArtworkGrid
         filtered_artworks={filtered_artworks as any}
@@ -74,6 +78,7 @@ export class SearchResultsRefetch extends Component<SearchRefetchProps> {
         columnCount={[2, 2, 2, 3]}
         filters={filtersState}
         term={term}
+        location={location}
       />
     )
   }

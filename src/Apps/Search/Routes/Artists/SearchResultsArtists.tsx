@@ -126,14 +126,14 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
 
   render() {
     const { viewer, location } = this.props
+    const { query } = location
     const { term } = get(location, l => l.query)
-
     const artists = get(viewer, v => v.search.edges, []).map(e => e.node)
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {artists.length === 0 ? (
           <Box mt={3}>
-            <ZeroState term={term} />
+            <ZeroState term={term} query={query} />
           </Box>
         ) : (
           this.renderArtists()

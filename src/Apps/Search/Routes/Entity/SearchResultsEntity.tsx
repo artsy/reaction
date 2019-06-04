@@ -128,6 +128,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 
   render() {
     const { viewer, location } = this.props
+    const { query } = location
 
     const { term } = get(location, l => l.query)
 
@@ -136,7 +137,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
       <LoadingArea isLoading={this.state.isLoading}>
         {items.length === 0 ? (
           <Box mt={3}>
-            <ZeroState term={term} />
+            <ZeroState term={term} query={query} />
           </Box>
         ) : (
           this.renderItems()

@@ -1,21 +1,15 @@
 import { Box, Flex, Serif } from "@artsy/palette"
 import { SendFeedback } from "Apps/Search/Components/SendFeedback"
-import qs from "qs"
 import React, { FC } from "react"
 
 interface Props {
   term: string
+  query: {}
 }
 
 export const ZeroState: FC<Props> = props => {
-  const { term } = props
-  let hasFilters = false
-  if (window.location.search.length) {
-    const params = Object.keys(
-      qs.parse(window.location.search, { ignoreQueryPrefix: true })
-    )
-    hasFilters = params.length > 1
-  }
+  const { term, query } = props
+  const hasFilters = Object.keys(query).length > 1
 
   return (
     <Flex

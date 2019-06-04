@@ -8,6 +8,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
+import { Location } from "found"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
@@ -19,6 +20,7 @@ interface Props {
   isLoading?: boolean
   relay: RelayRefetchProp
   term: string
+  location: Location
 }
 
 const PAGE_SIZE = 30
@@ -88,9 +90,11 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
       columnCount,
       filtered_artworks: { artworks },
       term,
+      location,
     } = this.props
+    const { query } = location
     const isLoading = this.state.isLoading || this.props.isLoading
-    const emptyStateComponent = <ZeroState term={term} />
+    const emptyStateComponent = <ZeroState term={term} query={query} />
 
     return (
       <SystemContextConsumer>

@@ -79,9 +79,8 @@ export class SearchApp extends React.Component<Props> {
   render() {
     const { viewer, location } = this.props
     const { search, filter_artworks } = viewer
-    const {
-      query: { term },
-    } = location
+    const { query } = location
+    const { term } = query
 
     const { aggregations } = search
     const artworkCount = get(filter_artworks, f => f.counts.total, 0)
@@ -110,7 +109,7 @@ export class SearchApp extends React.Component<Props> {
             )
           ) : (
             <Box mt={3}>
-              <ZeroState term={term} />
+              <ZeroState term={term} query={query} />
               {this.renderFooter()}
             </Box>
           )}

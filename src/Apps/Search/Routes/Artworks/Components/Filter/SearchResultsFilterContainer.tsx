@@ -1,5 +1,6 @@
 import { SearchResultsFilterContainer_viewer } from "__generated__/SearchResultsFilterContainer_viewer.graphql"
 import { SystemContextConsumer } from "Artsy"
+import { Location } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SearchResultsRefetchContainer } from "./SearchResultsRefetch"
@@ -10,12 +11,13 @@ import { FilterContainer } from "./Filters"
 export interface SearchFilterContainerProps {
   viewer: SearchResultsFilterContainer_viewer
   term: string
+  location: Location
 }
 export class SearchResultsFilterContainer extends Component<
   SearchFilterContainerProps
 > {
   render() {
-    const { viewer, term } = this.props
+    const { viewer, term, location } = this.props
     const { filter_artworks } = viewer
     const { aggregations } = filter_artworks
     const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
@@ -33,6 +35,7 @@ export class SearchResultsFilterContainer extends Component<
                   viewer={this.props.viewer}
                   filtersState={filters.state}
                   term={term}
+                  location={location}
                 />
               )}
             </FilterContainer>
