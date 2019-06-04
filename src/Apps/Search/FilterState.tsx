@@ -83,6 +83,7 @@ const isDefaultFilter = (filter, value): boolean => {
 
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
+  hasFilters = false
 
   static MIN_PRICE = 50
   static MAX_PRICE = 50000
@@ -115,6 +116,8 @@ export class FilterState extends Container<State> {
           default:
             this.state[filter] = value
         }
+
+        this.checkForFilters()
       })
     }
   }
@@ -157,6 +160,24 @@ export class FilterState extends Container<State> {
     )
   }
 
+  checkForFilters() {
+    this.hasFilters = Object.keys(this.state).some(filter => {
+      const value = this.state[filter]
+      if (
+        value &&
+        value !== "*" &&
+        value !== "*-*" &&
+        value !== false &&
+        value.length !== 0 &&
+        filter !== "page" &&
+        filter !== "keyword" &&
+        filter !== "sort"
+      ) {
+        return true
+      }
+    })
+  }
+
   unsetFilter(filter) {
     let newPartialState = {}
     if (filter === "major_periods") {
@@ -181,6 +202,8 @@ export class FilterState extends Container<State> {
     if (filter === "medium") {
       newPartialState = { medium: "*" }
     }
+
+    this.checkForFilters()
 
     this.setState(newPartialState, () => {
       this.pushHistory()
@@ -219,6 +242,8 @@ export class FilterState extends Container<State> {
         newPartialState[filter] = !!value
         break
     }
+
+    this.checkForFilters()
 
     this.setState({ page: 1, ...newPartialState }, () => {
       this.pushHistory()
