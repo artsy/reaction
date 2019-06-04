@@ -1,11 +1,9 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworks_viewer } from "__generated__/SearchResultsArtworks_viewer.graphql"
-import { FilterState } from "Apps/Search/FilterState"
 import { SearchResultsFilterFragmentContainer as ArtworkGrid } from "Apps/Search/Routes/Artworks/Components/Filter/SearchResultsFilterContainer"
 import { Location } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Provider } from "unstated"
 
 export interface Props {
   viewer: SearchResultsArtworks_viewer
@@ -19,19 +17,10 @@ export class SearchResultsArtworksRoute extends React.Component<Props> {
     const { term } = query
 
     return (
-      <Provider
-        inject={[
-          new FilterState({
-            ...query,
-            keyword: term,
-          }),
-        ]}
-      >
-        <Box>
-          <Spacer mb={3} />
-          <ArtworkGrid viewer={viewer} term={term} />
-        </Box>
-      </Provider>
+      <Box>
+        <Spacer mb={3} />
+        <ArtworkGrid viewer={viewer} term={term} />
+      </Box>
     )
   }
 }

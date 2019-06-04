@@ -203,10 +203,9 @@ export class FilterState extends Container<State> {
       newPartialState = { medium: "*" }
     }
 
-    this.checkForFilters()
-
     this.setState(newPartialState, () => {
       this.pushHistory()
+      this.checkForFilters()
     })
   }
 
@@ -243,10 +242,9 @@ export class FilterState extends Container<State> {
         break
     }
 
-    this.checkForFilters()
-
     this.setState({ page: 1, ...newPartialState }, () => {
       this.pushHistory()
+      this.checkForFilters()
     })
   }
 
