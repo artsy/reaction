@@ -1,4 +1,5 @@
 import { ArtworkSummaryItem_order } from "__generated__/ArtworkSummaryItem_order.graphql"
+import { Omit } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -12,7 +13,7 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 
-export interface ArtworkSummaryItemProps extends FlexProps {
+export interface ArtworkSummaryItemProps extends Omit<FlexProps, "order"> {
   order: ArtworkSummaryItem_order
   className?: string
 }

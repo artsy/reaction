@@ -4,9 +4,10 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import { StepSummaryItem, StepSummaryItemProps } from "Components/v2"
+import { Omit } from "lodash"
 
 export interface TransactionDetailsSummaryItemProps
-  extends StepSummaryItemProps {
+  extends Omit<StepSummaryItemProps, "order"> {
   order: TransactionDetailsSummaryItem_order
   offerOverride?: string | null
   useLastSubmittedOffer?: boolean
