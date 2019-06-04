@@ -24,6 +24,7 @@ export interface SystemContextProps {
    * FIXME: Ask alloy how to pass one-off props like this in from force
    */
   notificationCount?: number
+  searchQuery?: string
 
   /**
    * A configured environment object that can be used for any Relay operations

@@ -18,9 +18,9 @@ describe("UserMenu", () => {
     trigger: jest.fn(),
   }
 
-  const getWrapper = (passedProps = {}) => {
+  const getWrapper = (props = {}) => {
     return mount(
-      <SystemContextProvider mediator={mediator} user={{}} {...passedProps}>
+      <SystemContextProvider mediator={mediator} user={{}} {...props}>
         <UserMenu />
       </SystemContextProvider>
     )

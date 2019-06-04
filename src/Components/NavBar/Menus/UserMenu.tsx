@@ -15,6 +15,7 @@ import {
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { data as sd } from "sharify"
+import { userIsAdmin } from "Utils/user"
 import * as authentication from "../Utils/authentication"
 
 export const UserMenu: React.FC = () => {
@@ -34,7 +35,7 @@ export const UserMenu: React.FC = () => {
     })
   }
 
-  const isAdmin = user.type === "Admin"
+  const isAdmin = userIsAdmin(user)
   const hasPartnerAccess = Boolean(user.has_partner_access)
 
   return (
