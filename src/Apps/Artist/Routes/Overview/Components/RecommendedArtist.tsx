@@ -5,7 +5,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2/CarouselV2"
+import { Carousel } from "Components/v2/CarouselV3"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -99,7 +99,7 @@ const RecommendedArtist: FC<
       <Spacer mb={3} />
 
       <Carousel
-        height={240}
+        height="240px"
         data={artistData}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
