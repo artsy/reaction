@@ -1,3 +1,15 @@
+# v16.13.6 (Tue Jun 04 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix search-on-enter, SSR query persistence, missing admin / CMS dropdown links [#2495](https://github.com/artsy/reaction/pull/2495) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.13.5 (Tue Jun 04 2019)
 
 ### Release Notes
