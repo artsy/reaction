@@ -1,3 +1,62 @@
+# v16.13.5 (Tue Jun 04 2019)
+
+### Release Notes
+
+  _From #2493_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.2`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4142-Mon-Jun-03-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.1...v4.14.2)
+
+* * *
+
+### [`v4.14.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4141-Mon-Jun-03-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.0...v4.14.1)
+
+* * *
+
+### [`v4.14.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4140-Sun-Jun-02-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.13.5...v4.14.0)
+
+##### 🚀  Enhancement
+
+-   `@artsy/palette`
+-   Support order for Flex [#&#8203;488](https://togithub.com/artsy/palette/pull/488) ([@&#8203;starsirius](https://togithub.com/starsirius))
+
+##### Authors: 1
+
+-   Chung-Yi Chi ([@&#8203;starsirius](https://togithub.com/starsirius))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Removes react-flickity-component [#2497](https://github.com/artsy/reaction/pull/2497) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.13.5 to v4.14.2 [#2493](https://github.com/artsy/reaction/pull/2493) ([@renovate-bot](https://github.com/renovate-bot) [@ds300](https://github.com/ds300))
+- Pin dependencies [#2494](https://github.com/artsy/reaction/pull/2494) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v16.13.4 (Mon Jun 03 2019)
 
 
