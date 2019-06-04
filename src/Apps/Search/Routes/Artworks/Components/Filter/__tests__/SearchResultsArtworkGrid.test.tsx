@@ -16,6 +16,7 @@ describe("SearchResultsArtworkGrid", () => {
       },
       <MockBoot breakpoint="lg">
         <MockRelayRenderer
+          componentProps={{ location: { query: { term: "temple" } } }}
           Component={SearchResultsArtworkGrid}
           query={graphql`
             query SearchResultsArtworkGridTestQuery {
