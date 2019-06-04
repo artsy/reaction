@@ -41,7 +41,7 @@ export type ArtworkBanner_artwork = {
         readonly __typename: "ArtworkContextFair";
         readonly name: string | null;
         readonly href: string | null;
-        readonly is_active: boolean | null;
+        readonly isActive: boolean | null;
         readonly start_at: string | null;
         readonly end_at: string | null;
         readonly profile: ({
@@ -355,7 +355,7 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "is_active",
+              "name": "isActive",
               "args": null,
               "storageKey": null
             },
@@ -443,5 +443,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a01d8a22bebc8854e61f1d5d99ebdea7';
+(node as any).hash = '962fb11de8524478c59b78ff9fc95622';
 export default node;

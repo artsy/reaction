@@ -368,12 +368,18 @@ export class SearchBar extends Component<Props, State> {
 
   render() {
     return (
-      <>
+      <form
+        action="/search"
+        method="GET"
+        itemProp="potentialAction"
+        itemScope
+        itemType="http://schema.org/SearchAction"
+      >
         <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
         <Media greaterThan="xs">
           {this.renderAutosuggestComponent({ xs: false })}
         </Media>
-      </>
+      </form>
     )
   }
 }
@@ -415,7 +421,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
 )
 
 export const SearchBarQueryRenderer: React.FC = () => {
-  const { relayEnvironment } = useContext(SystemContext)
+  const { relayEnvironment, searchQuery = "" } = useContext(SystemContext)
   return (
     <QueryRenderer<SearchBarSuggestQuery>
       environment={relayEnvironment}
@@ -440,14 +446,19 @@ export const SearchBarQueryRenderer: React.FC = () => {
           return (
             <>
               <Box display={["block", "none"]}>
-                <SearchInputContainer placeholder={PLACEHOLDER_XS} />
+                <SearchInputContainer
+                  placeholder={searchQuery || PLACEHOLDER_XS}
+                  defaultValue={searchQuery}
+                />
               </Box>
               <Box display={["none", "block"]}>
-                <SearchInputContainer placeholder={PLACEHOLDER} />
+                <SearchInputContainer
+                  placeholder={searchQuery || PLACEHOLDER}
+                  defaultValue={searchQuery}
+                />
               </Box>
             </>
           )
-          return
         }
       }}
     />

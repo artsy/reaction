@@ -16,6 +16,7 @@ declare module "sharify" {
      * These properties are set by Force and configured through environment variables.
      */
     export interface GlobalData {
+      readonly ADMIN_URL: string
       readonly APP_URL: string
       readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]

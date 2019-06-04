@@ -81,7 +81,7 @@ export const ArtworkFairBannerFixture = {
     __typename: "ArtworkContextFair",
     name: "West Bund Art & Design 2018",
     href: "/west-bund-art-and-design-2018",
-    is_active: true,
+    isActive: true,
     start_at: "2018-11-08T02:00:00+00:00",
     end_at: "2018-11-11T08:00:00+00:00",
     profile: {

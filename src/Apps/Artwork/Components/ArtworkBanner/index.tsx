@@ -127,7 +127,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           ... on ArtworkContextFair {
             name
             href
-            is_active
+            isActive
             start_at
             end_at
             profile {
@@ -175,7 +175,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         #   ... on ArtworkContextFair {
         #     name
         #     href
-        #     is_active
+        #     isActive
         #     start_at
         #     end_at
         #     profile {
