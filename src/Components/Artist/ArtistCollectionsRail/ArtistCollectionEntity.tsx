@@ -92,6 +92,7 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
+
     ${CollectionTitle} {
       text-decoration: underline;
     }

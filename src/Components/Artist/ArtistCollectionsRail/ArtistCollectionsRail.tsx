@@ -53,7 +53,7 @@ export class ArtistCollectionsRail extends React.Component<
           <Spacer pb={1} />
 
           <Carousel
-            height={200}
+            height="200px"
             options={{
               groupCells: 1,
               wrapAround: true,
@@ -88,6 +88,7 @@ export class ArtistCollectionsRail extends React.Component<
 
 const ArrowContainer = styled(Box)`
   align-self: flex-start;
+
   ${ArrowButton} {
     min-height: 130px;
     align-self: flex-start;
