@@ -368,12 +368,18 @@ export class SearchBar extends Component<Props, State> {
 
   render() {
     return (
-      <>
+      <form
+        action="/search"
+        method="GET"
+        itemProp="potentialAction"
+        itemScope
+        itemType="http://schema.org/SearchAction"
+      >
         <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
         <Media greaterThan="xs">
           {this.renderAutosuggestComponent({ xs: false })}
         </Media>
-      </>
+      </form>
     )
   }
 }

@@ -18,9 +18,9 @@ describe("UserMenu", () => {
     trigger: jest.fn(),
   }
 
-  const getWrapper = () => {
+  const getWrapper = (passedProps = {}) => {
     return mount(
-      <SystemContextProvider mediator={mediator}>
+      <SystemContextProvider mediator={mediator} user={{}} {...passedProps}>
         <UserMenu />
       </SystemContextProvider>
     )
@@ -58,5 +58,32 @@ describe("UserMenu", () => {
       .last()
       .simulate("click")
     expect(authentication.logout).toHaveBeenCalledWith(mediator)
+  })
+
+  describe("admin features", () => {
+    it("hides admin button if not admin", () => {
+      const wrapper = getWrapper({ user: { type: "NotAdmin" } })
+      expect(wrapper.html()).not.toContain("Admin")
+    })
+
+    it("shows admin button if admin", () => {
+      const wrapper = getWrapper({ user: { type: "Admin" } })
+      expect(wrapper.html()).toContain("Admin")
+    })
+
+    it("shows CMS button if admin", () => {
+      const wrapper = getWrapper({ user: { type: "Admin" } })
+      expect(wrapper.html()).toContain("CMS")
+    })
+
+    it("does not show CMS button if no partner access and not admin", () => {
+      const wrapper = getWrapper({ user: { has_partner_access: false } })
+      expect(wrapper.html()).not.toContain("CMS")
+    })
+
+    it("shows CMS button if has partner access and not admin", () => {
+      const wrapper = getWrapper({ user: { has_partner_access: true } })
+      expect(wrapper.html()).toContain("CMS")
+    })
   })
 })
