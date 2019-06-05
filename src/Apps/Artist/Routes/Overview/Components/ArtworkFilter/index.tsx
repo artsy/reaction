@@ -72,7 +72,7 @@ class Filter extends Component<Props> {
     )
 
     return (
-      <>
+      <Box pr={2}>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           {!hideTopBorder && <Separator mb={1} />}
           {this.renderWaysToBuy(filterState)}
@@ -123,7 +123,7 @@ class Filter extends Component<Props> {
             counts: periodAggregation.counts,
           })}
         </Toggle>
-      </>
+      </Box>
     )
   }
 
@@ -199,12 +199,13 @@ class Filter extends Component<Props> {
     })
 
     return (
-      <React.Fragment>
-        <Sans size="2" weight="medium" color="black100" mt={0.3} mb={1}>
-          Ways to Buy
+      <Box pt={1}>
+        <Sans size="2" weight="medium" color="black100">
+          Ways to buy
         </Sans>
+        <Spacer mb={2} />
         {wayCheckboxes}
-      </React.Fragment>
+      </Box>
     )
   }
 
@@ -246,40 +247,41 @@ class Filter extends Component<Props> {
     const { filterState } = this.props
     return (
       <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
-        <SelectSmall
-          options={[
-            {
-              value: "-decayed_merch",
-              text: "Default",
-            },
-            {
-              value: "-partner_updated_at",
-              text: "Recently updated",
-            },
-            {
-              value: "-published_at",
-              text: "Recently added",
-            },
-            {
-              value: "-year",
-              text: "Artwork year (desc.)",
-            },
-            {
-              value: "year",
-              text: "Artwork year (asc.)",
-            },
-          ]}
-          selected={filterState.state.sort}
-          title="Sort"
-          onSelect={sort => {
-            return filterState.setSort(sort)
-          }}
-        />
+        <Box mt={-0.5}>
+          <SelectSmall
+            options={[
+              {
+                value: "-decayed_merch",
+                text: "Default",
+              },
+              {
+                value: "-partner_updated_at",
+                text: "Recently updated",
+              },
+              {
+                value: "-published_at",
+                text: "Recently added",
+              },
+              {
+                value: "-year",
+                text: "Artwork year (desc.)",
+              },
+              {
+                value: "year",
+                text: "Artwork year (asc.)",
+              },
+            ]}
+            selected={filterState.state.sort}
+            title="Sort"
+            onSelect={sort => {
+              return filterState.setSort(sort)
+            }}
+          />
+        </Box>
 
         <Media at="xs">
           <Button
             size="small"
-            mt={-1}
             onClick={() => filterState.showActionSheet(true)}
           >
             <Flex justifyContent="space-between" alignItems="center">

@@ -90,5 +90,5 @@ export const NavItem: React.FC<NavItemProps> = ({
 
 const MenuContainer = styled(Box)`
   position: absolute;
-  transform: translateX(-83%);
+  transform: translateX(-78%);
 `

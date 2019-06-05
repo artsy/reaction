@@ -213,7 +213,10 @@ export class SearchBar extends Component<Props, State> {
     //  the link will get removed from the DOM before the browser has a chance
     //  to follow it.
     if (!this.userClickedOnDescendant) {
-      this.setState({ term: "", entityID: null, entityType: null })
+      this.setState({
+        entityID: null,
+        entityType: null,
+      })
     }
   }
 
@@ -253,11 +256,10 @@ export class SearchBar extends Component<Props, State> {
     { containerProps, children, query },
     { xs }
   ) => {
+    const noResults = get(this.props, p => p.viewer.search.edges.length === 0)
     const { focused } = this.state
-    if (!focused) {
-      return null
-    }
-    if (xs && !query) {
+
+    if (noResults || !focused || !query || (xs && !query)) {
       return null
     }
 
@@ -344,6 +346,7 @@ export class SearchBar extends Component<Props, State> {
 
     const edges = get(viewer, v => v.search.edges, [])
     const suggestions = [firstSuggestionPlaceholder, ...edges]
+
     return (
       <Autosuggest
         alwaysRenderSuggestions={this.userClickedOnDescendant}

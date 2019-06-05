@@ -66,7 +66,7 @@ export class FilterContainer extends React.Component<
     const { mediums, timePeriods } = this.props
 
     return (
-      <>
+      <Box pr={2}>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
           <WaysToBuyFilter filters={filters} />
         </Flex>
@@ -102,7 +102,7 @@ export class FilterContainer extends React.Component<
             />
           </Flex>
         </Toggle>
-      </>
+      </Box>
     )
   }
 

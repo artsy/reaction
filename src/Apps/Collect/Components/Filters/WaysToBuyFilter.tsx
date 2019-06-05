@@ -1,4 +1,4 @@
-import { Box, Checkbox, Sans } from "@artsy/palette"
+import { Box, Checkbox, Sans, Spacer } from "@artsy/palette"
 import React from "react"
 import { FilterState, State } from "../../FilterState"
 
@@ -47,10 +47,11 @@ export const WaysToBuyFilter: React.FC<{
     })
 
   return (
-    <Box mb={1}>
-      <Sans size="2" weight="medium" color="black100" my={1}>
+    <Box pt={2}>
+      <Sans size="2" weight="medium" color="black100">
         Ways to buy
       </Sans>
+      <Spacer mb={2} />
       {constructCheckboxes()}
     </Box>
   )
