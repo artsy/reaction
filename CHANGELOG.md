@@ -1,3 +1,15 @@
+# v16.13.8 (Wed Jun 05 2019)
+
+#### 🐛  Bug Fix
+
+- [QA] Miscellanous app QA [#2499](https://github.com/artsy/reaction/pull/2499) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.13.7 (Tue Jun 04 2019)
 
 #### 🐛  Bug Fix
