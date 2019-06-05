@@ -62,7 +62,6 @@ export const UserMenu: React.FC = () => {
         <SettingsIcon mr={1} /> Settings
       </MenuItem>
       <MenuItem
-        href="/logout"
         onClick={event => {
           event.preventDefault() // `href` is only for tracking purposes
           authentication.logout(mediator)
