@@ -10,27 +10,27 @@ import {
 } from "@artsy/palette"
 import { AuctionCard_sale } from "__generated__/AuctionCard_sale.graphql"
 import { Truncator } from "Components/Truncator"
-import moment from "moment-timezone"
+import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
 export const relativeTime = (timeIn, now) => {
-  const time = moment(timeIn, "YYYY-MM-DD")
+  const time = DateTime.fromISO(timeIn)
   const abs = Math.abs
-  if (abs(time.diff(now, "days")) >= 1) {
-    return `${time.diff(now, "days")}d`
-  } else if (abs(time.diff(now, "hours")) >= 1) {
-    return `${time.diff(now, "hours")}h`
-  } else if (abs(time.diff(now, "minutes")) >= 1) {
-    return `${time.diff(now, "minutes")}m`
+  if (abs(time.diff(now).as("days")) >= 1) {
+    return `${Math.floor(time.diff(now).as("days"))}d`
+  } else if (abs(time.diff(now).as("hours")) >= 1) {
+    return `${Math.floor(time.diff(now).as("hours"))}h`
+  } else if (abs(time.diff(now).as("minutes")) >= 1) {
+    return `${Math.floor(time.diff(now).as("minutes"))}m`
   }
-  return `${time.diff(now, "seconds")}s`
+  return `${Math.floor(time.diff(now).as("seconds") % 60)}s`
 }
 
-// now defaults to moment() but can be overriden for unit testing
-export const upcomingLabel = (sale, now = moment()) => {
+// now defaults to DateTime.local() but can be overriden for unit testing
+export const upcomingLabel = (sale, now = DateTime.local()) => {
   const {
     start_at: startAt,
     end_at: endAt,
@@ -54,9 +54,8 @@ export const upcomingLabel = (sale, now = moment()) => {
     } else if (isRegistered || isRegistrationClosed) {
       return `Live in ${relativeTime(liveStartAt, now)}`
     } else {
-      return `Register by ${moment(liveStartAt, "YYYY-MM-DD")
-        .tz("America/New_York")
-        .format("MMM D")}`
+      const dateTime = DateTime.fromISO(liveStartAt).setZone("America/New_York")
+      return `Register by ${dateTime.monthShort} ${dateTime.day}`
     }
   } else {
     return `Ends in ${relativeTime(endAt, now)}`
@@ -143,9 +142,9 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
     if (!sale) return
 
     const statusLabel = upcomingLabel(sale)
-
     const imageURL = get(sale, s => s.cover_image.cropped.url)
     const partnerName = get(sale, s => s.partner.name)
+
     return (
       <AuctionCard
         src={imageURL}

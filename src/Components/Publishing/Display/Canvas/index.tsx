@@ -48,7 +48,6 @@ export class DisplayCanvas extends React.Component<DisplayCanvasProps> {
     const disclaimer = (
       <Disclaimer layout={unit.layout}>{unit.disclaimer}</Disclaimer>
     )
-
     return (
       <>
         <a

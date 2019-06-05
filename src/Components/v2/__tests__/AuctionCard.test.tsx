@@ -1,7 +1,7 @@
 import { Serif } from "@artsy/palette"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
-import moment from "moment-timezone"
+import { DateTime } from "luxon"
 import React from "react"
 import {
   AuctionCard,
@@ -88,30 +88,30 @@ describe("AuctionCard", () => {
 
   const tz = "America/New_York"
   const currentTime = "2019-04-16"
-  const now = () => moment.tz(currentTime, tz)
+  const now = () => DateTime.fromISO(currentTime).setZone(tz)
 
   describe("relativeTime", () => {
     it("formats properly when >= 1 day", () => {
-      expect(relativeTime(now().add(25, "hours"), now())).toMatchInlineSnapshot(
-        `"1d"`
-      )
+      expect(
+        relativeTime(now().plus({ hours: 25 }), now())
+      ).toMatchInlineSnapshot(`"1d"`)
     })
 
     it("formats properly when >= 1 hours", () => {
       expect(
-        relativeTime(now().add(61, "minutes"), now())
+        relativeTime(now().plus({ minutes: 61 }), now())
       ).toMatchInlineSnapshot(`"1h"`)
     })
 
     it("formats properly when >= 1 minutes", () => {
       expect(
-        relativeTime(now().add(61, "seconds"), now())
+        relativeTime(now().plus({ seconds: 61 }), now())
       ).toMatchInlineSnapshot(`"1m"`)
     })
 
     it("formats properly otherwise", () => {
       expect(
-        relativeTime(now().add(1, "seconds"), now())
+        relativeTime(now().plus({ seconds: 1 }), now())
       ).toMatchInlineSnapshot(`"1s"`)
     })
   })
@@ -122,7 +122,7 @@ describe("AuctionCard", () => {
         upcomingLabel(
           {
             is_preview: true,
-            start_at: now().add(25, "hours"),
+            start_at: now().plus({ hours: 25 }),
           },
           now()
         )
@@ -143,7 +143,7 @@ describe("AuctionCard", () => {
           upcomingLabel(
             {
               is_live_open: true,
-              live_start_at: now().subtract(1, "minutes"),
+              live_start_at: now().minus({ minutes: 1 }),
             },
             now()
           )
@@ -154,7 +154,7 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
-              live_start_at: now().add(1, "days"),
+              live_start_at: now().plus({ days: 1 }),
             },
             now()
           )
@@ -166,7 +166,7 @@ describe("AuctionCard", () => {
           upcomingLabel(
             {
               is_registration_closed: true,
-              live_start_at: now().add(1, "days"),
+              live_start_at: now().plus({ days: 1 }),
             },
             now()
           )
@@ -178,7 +178,7 @@ describe("AuctionCard", () => {
           upcomingLabel(
             {
               registration_status: {},
-              live_start_at: now().add(1, "days"),
+              live_start_at: now().plus({ days: 1 }),
             },
             now()
           )

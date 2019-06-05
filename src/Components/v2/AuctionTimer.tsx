@@ -2,7 +2,7 @@ import { AuctionTimer_sale } from "__generated__/AuctionTimer_sale.graphql"
 import { AuctionTimerQuery } from "__generated__/AuctionTimerQuery.graphql"
 import { SystemContext } from "Artsy"
 import { Timer } from "Components/v2/Timer"
-import moment from "moment-timezone"
+import { DateTime } from "luxon"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 
@@ -40,7 +40,13 @@ export class AuctionTimer extends React.Component<Props> {
   }
 
   labelWithTimeRemaining() {
-    const display = moment(this.endDate).format("MMM D, h:mma")
+    const dateTime = DateTime.fromISO(this.endDate)
+    // const display = DateTime.fromISO(this.endDate).format("MMM D, h:mma")
+    const amPm = dateTime.hour >= 12 ? "pm" : "am"
+    const minutes =
+      dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
+    const display = `${dateTime.monthShort} ${dateTime.day}, ${dateTime.hour %
+      12}:${minutes}${amPm}`
     if (this.liveStartAt) {
       return `Live ${display}`
     } else {

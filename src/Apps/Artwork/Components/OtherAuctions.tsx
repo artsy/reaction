@@ -1,6 +1,6 @@
 import { Box, Flex } from "@artsy/palette"
 import { OtherAuctions_sales } from "__generated__/OtherAuctions_sales.graphql"
-import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCardLuxon"
+import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCard"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"

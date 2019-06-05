@@ -1,7 +1,6 @@
 import cheerio from "cheerio"
 import { compact, last, uniq } from "lodash"
-import moment from "moment"
-import momentTz from "moment-timezone"
+import { DateTime } from "luxon"
 import url from "url"
 import { ArticleData, DateFormat } from "../Publishing/Typings"
 
@@ -93,50 +92,37 @@ export const getAuthorByline = (authors, isEditoral = true) => {
 }
 
 export const getDate = (date, format: DateFormat = "default") => {
-  const today = moment()
-  const isToday = today.isSame(moment(date), "day")
-  const isThisYear =
-    moment(date).format("YYYY") === moment(today).format("YYYY")
+  const today = DateTime.local()
+  const dateTime = DateTime.fromISO(date).setZone("America/New_York")
+  const isToday = today.hasSame(dateTime, "day")
+  const isThisYear = today.hasSame(dateTime, "year")
+
+  const amPm = dateTime.hour >= 12 ? "pm" : "am"
+  const minutes = dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
+  const monthDay = `${dateTime.monthShort} ${dateTime.day}`
+  const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${
+    dateTime.year
+  }`
+  const time = `${dateTime.hour % 12}:${minutes}${amPm}`
 
   switch (format) {
     case "monthDay":
-      return moment(date).format("MMM D")
+      return monthDay
     case "monthYear":
-      return momentTz(date)
-        .tz("America/New_York")
-        .format("MMMM YYYY")
+      return `${dateTime.monthShort} ${dateTime.year}`
     case "condensed":
-      return momentTz(date)
-        .tz("America/New_York")
-        .format("MMM D, YYYY")
+      return monthDayYear
     case "verbose":
-      const day = isToday
-        ? "Today"
-        : momentTz(date)
-            .tz("America/New_York")
-            .format("MMM D, YYYY")
-      const time = momentTz(date)
-        .tz("America/New_York")
-        .format("h:mm a")
+      const day = isToday ? "Today" : monthDayYear
       return `${day} at ${time}`
     case "news":
-      return isToday
-        ? "Today"
-        : isThisYear
-        ? momentTz(date)
-            .tz("America/New_York")
-            .format("MMM D")
-        : momentTz(date)
-            .tz("America/New_York")
-            .format("MMM D, YYYY")
+      return isToday ? "Today" : isThisYear ? monthDay : monthDayYear
     default:
-      return momentTz(date)
-        .tz("America/New_York")
-        .format("MMM D, YYYY h:mm a")
+      return `${dateTime.monthShort} ${dateTime.day}, ${dateTime.year} ${time}`
   }
 }
 
-export const getCurrentUnixTimestamp = () => moment().unix()
+export const getCurrentUnixTimestamp = () => DateTime.local().toMillis()
 
 export const getMediaDate = article => {
   const { published_at, scheduled_publish_at, media } = article
