@@ -1,3 +1,20 @@
+# v16.13.10 (Wed Jun 05 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "[Article] add GPT ads to featured article" [#2504](https://github.com/artsy/reaction/pull/2504) ([@l2succes](https://github.com/l2succes))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.3 to v4.14.4 [#2501](https://github.com/artsy/reaction/pull/2501) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.13.9 (Wed Jun 05 2019)
 
 #### 🐛  Bug Fix
