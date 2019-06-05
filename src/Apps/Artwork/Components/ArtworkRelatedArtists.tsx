@@ -1,4 +1,4 @@
-import { Box, Flex } from "@artsy/palette"
+import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -6,9 +6,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
-import { Header } from "./OtherWorks/Header"
 
 export interface ArtworkRelatedArtistsProps {
   artwork: ArtworkRelatedArtists_artwork
@@ -36,14 +34,21 @@ export class ArtworkRelatedArtists extends React.Component<
       return null
     }
 
-    const relatedUrl = sd.APP_URL + artist.href + "/related-artists"
-
     return (
       <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
             <Box mt={6}>
-              <Header title="Related artists" buttonHref={relatedUrl} />
+              <Flex flexDirection="column" alignItems="center">
+                <Serif
+                  size={["5t", "8"]}
+                  color="black100"
+                  mb={2}
+                  textAlign="center"
+                >
+                  Related artists
+                </Serif>
+              </Flex>
               <Flex flexWrap="wrap" mr={-2} width="100%">
                 {artist.related.artists.edges.map(({ node }, index) => {
                   return (
@@ -58,6 +63,17 @@ export class ArtworkRelatedArtists extends React.Component<
                     </Box>
                   )
                 })}
+              </Flex>
+              <Flex flexDirection="column" alignItems="center">
+                <Button
+                  variant="secondaryOutline"
+                  mb={3}
+                  onClick={() => {
+                    console.log("show more!")
+                  }}
+                >
+                  Show more
+                </Button>
               </Flex>
             </Box>
           )
