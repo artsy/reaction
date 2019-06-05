@@ -83,7 +83,6 @@ const isDefaultFilter = (filter, value): boolean => {
 
 export class FilterState extends Container<State> {
   state = cloneDeep(initialState)
-  hasFilters = false
 
   static MIN_PRICE = 50
   static MAX_PRICE = 50000
@@ -116,8 +115,6 @@ export class FilterState extends Container<State> {
           default:
             this.state[filter] = value
         }
-
-        this.checkForFilters()
       })
     }
   }
@@ -160,8 +157,8 @@ export class FilterState extends Container<State> {
     )
   }
 
-  checkForFilters() {
-    this.hasFilters = Object.keys(this.state).some(filter => {
+  get hasFilters() {
+    return Object.keys(this.state).some(filter => {
       const value = this.state[filter]
       if (
         value &&
@@ -205,7 +202,6 @@ export class FilterState extends Container<State> {
 
     this.setState(newPartialState, () => {
       this.pushHistory()
-      this.checkForFilters()
     })
   }
 
@@ -244,7 +240,6 @@ export class FilterState extends Container<State> {
 
     this.setState({ page: 1, ...newPartialState }, () => {
       this.pushHistory()
-      this.checkForFilters()
     })
   }
 
