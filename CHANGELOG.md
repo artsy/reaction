@@ -1,3 +1,15 @@
+# v16.13.9 (Wed Jun 05 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Fix instant page issue [#2500](https://github.com/artsy/reaction/pull/2500) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.13.8 (Wed Jun 05 2019)
 
 #### 🐛  Bug Fix
