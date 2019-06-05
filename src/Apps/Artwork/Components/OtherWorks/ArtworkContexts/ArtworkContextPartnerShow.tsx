@@ -1,11 +1,7 @@
 import { Join, Spacer } from "@artsy/palette"
 import { ArtworkContextPartnerShow_artwork } from "__generated__/ArtworkContextPartnerShow_artwork.graphql"
-import { ArtworkContextPartnerShowQuery } from "__generated__/ArtworkContextPartnerShowQuery.graphql"
-import { SystemContext } from "Artsy"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import React, { useContext } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
-import { OtherWorksContextProps } from ".."
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 
 import {
   ArtistArtworkGrid,
@@ -13,35 +9,6 @@ import {
   PartnerShowArtworkGrid,
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
-
-export const ArtworkContextPartnerShowQueryRenderer: React.SFC<
-  OtherWorksContextProps
-> = ({ artworkSlug, artworkID }) => {
-  const { relayEnvironment } = useContext(SystemContext)
-  return (
-    <QueryRenderer<ArtworkContextPartnerShowQuery>
-      environment={relayEnvironment}
-      variables={{
-        artworkSlug,
-        excludeArtworkIDs: [artworkID],
-      }}
-      query={graphql`
-        query ArtworkContextPartnerShowQuery(
-          $artworkSlug: String!
-          $excludeArtworkIDs: [String!]
-        ) {
-          artwork(id: $artworkSlug) {
-            ...ArtworkContextPartnerShow_artwork
-              @arguments(excludeArtworkIDs: $excludeArtworkIDs)
-          }
-        }
-      `}
-      render={renderWithLoadProgress(
-        ArtworkContextPartnerShowFragmentContainer
-      )}
-    />
-  )
-}
 
 export const ArtworkContextPartnerShowFragmentContainer = createFragmentContainer<{
   artwork: ArtworkContextPartnerShow_artwork
