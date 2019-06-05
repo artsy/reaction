@@ -2364,6 +2364,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.111.tgz#d926250baa9526c0ffe85914dd10363068e7893a"
   integrity sha512-t2FwnkdqdZNYPJHTEF+Zf//j5d2I7UbM2Ng+vqqmUCE2RuiVVINJi9RlVdpKvqPqVItsJa0X+ra/tvmwLzlcgg==
 
+"@types/luxon@^1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-1.15.1.tgz#2ce9143cc28ec236397833be416d4ca30fc9b79c"
+  integrity sha512-SOGSpxsAoR+pHLev7oFGbQ4mZCmfcmYY2xsv2+/UeEG2rcJA30k5NVux3cW9rgTe2EVtrqFG+KtMs6ERZsTGKA==
+
 "@types/memoize-one@3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@types/memoize-one/-/memoize-one-3.1.1.tgz#0e21a1b91dc031fb59c1e1657b807ca9aec77475"
