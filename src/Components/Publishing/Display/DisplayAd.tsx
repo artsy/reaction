@@ -55,5 +55,4 @@ const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
   background: ${props =>
     props.isSeries ? color("black100") : color("black5")};
   text-align: center;
-  width: 100%;
 `

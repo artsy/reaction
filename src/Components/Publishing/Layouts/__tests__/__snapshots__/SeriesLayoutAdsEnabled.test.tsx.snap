@@ -98,7 +98,6 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   border-top: 1px solid #E5E5E5;
   background: #000;
   text-align: center;
-  width: 100%;
 }
 
 .c2 {
