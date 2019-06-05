@@ -238,7 +238,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       lgOffset={isColumnLayout ? null : 1}
                       xlOffset={isColumnLayout ? null : 1}
                     >
-                      {featuredArtists.length && (
+                      {featuredArtists.length > 0 && (
                         <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
