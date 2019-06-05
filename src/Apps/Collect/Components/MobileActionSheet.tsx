@@ -18,7 +18,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
     <Subscribe to={[FilterState]}>
       {({ resetFilters }: FilterState) => {
         return (
-          <Container>
+          <Container mt={6}>
             <MobileTopBar>
               <Button
                 variant="noOutline"
@@ -39,7 +39,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
               </Button>
             </MobileTopBar>
 
-            <Spacer mb={3} />
+            <Spacer pt={1} mb={3} />
 
             <Box p={2}>{children}</Box>
           </Container>

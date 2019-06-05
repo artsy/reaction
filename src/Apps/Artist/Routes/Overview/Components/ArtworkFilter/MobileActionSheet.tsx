@@ -22,7 +22,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
           : ""
 
         return (
-          <Container>
+          <Container mt={6}>
             <MobileTopBar>
               <Button
                 variant="noOutline"
@@ -43,7 +43,7 @@ export const MobileActionSheet: SFC<MobileActionSheet> = ({
               </Button>
             </MobileTopBar>
 
-            <Spacer pt={1} mb={4} />
+            <Spacer pt={1} mb={2} />
 
             <Box p={2}>{children}</Box>
           </Container>
