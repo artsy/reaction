@@ -1,3 +1,5 @@
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
@@ -19,6 +21,7 @@ interface Props {
   color?: string
   isMobile?: boolean
   showTooltips?: boolean
+  areHostedAdsEnabled?: boolean
 }
 
 interface State {
@@ -177,18 +180,116 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
+  /**
+   * 
+   * const { article, areHostedAdsEnabled } = this.props
+    let firstAdInjected = false
+    let placementCount = 1
+
+    const renderedSections = article.sections.map((sectionItem, index) => {
+      let shouldInjectNewAds =
+        article.layout === "feature" &&
+        sectionItem.type === "image_collection" &&
+        !firstAdInjected
+
+      const section = sectionItem
+      let ad = null
+
+      if (firstAdInjected) {
+        placementCount++
+      }
+
+      if (placementCount % 6 === 0) {
+        shouldInjectNewAds = true
+      }
+
+      if (shouldInjectNewAds && areHostedAdsEnabled) {
+        ad = (
+          <NewDisplayCanvas
+            adUnit={this.getAdUnit(placementCount)}
+            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
+            displayNewAds
+          />
+        )
+        firstAdInjected = true
+      }
+
+      const child = this.getSection(section, index)
+
+      if (child) {
+        return (
+          <Box key={index}>
+            <SectionContainer articleLayout={article.layout} section={section}>
+              {child}
+            </SectionContainer>
+            {ad}
+          </Box>
+        )
+      }
+    })
+
+    return renderedSections
+   */
+
+  getAdUnit(index: number) {
+    const { isMobile } = this.props
+
+    if (index === 6) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard1
+        : AdUnit.Desktop_Feature_Leaderboard1
+    }
+
+    if (index === 12) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard2
+        : AdUnit.Desktop_Feature_Leaderboard2
+    }
+
+    return isMobile
+      ? AdUnit.Mobile_Feature_InContentLeaderboard3
+      : AdUnit.Desktop_Feature_LeaderboardRepeat
+  }
+
   renderSections() {
-    const { article } = this.props
+    const { article, areHostedAdsEnabled } = this.props
     const { shouldInjectMobileDisplay } = this.state
+    let firstAdInjected = false
+    let placementCount = 1
     let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
+      let section = sectionItem
+      let ad = null
+
       const shouldInject =
         shouldInjectMobileDisplay &&
         sectionItem.type === "text" &&
         !displayMarkerInjected
 
-      let section = sectionItem
+      let shouldInjectNewAds =
+        article.layout === "feature" &&
+        sectionItem.type === "image_collection" &&
+        !firstAdInjected
+
+      if (firstAdInjected) {
+        placementCount++
+      }
+
+      if (placementCount % 6 === 0) {
+        shouldInjectNewAds = true
+      }
+
+      if (shouldInjectNewAds) {
+        ad = (
+          <NewDisplayCanvas
+            adUnit={this.getAdUnit(placementCount)}
+            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
+            displayNewAds
+          />
+        )
+        firstAdInjected = true
+      }
 
       if (shouldInject) {
         try {
@@ -213,6 +314,7 @@ export class Sections extends Component<Props, State> {
             section={section}
           >
             {child}
+            {areHostedAdsEnabled && ad}
           </SectionContainer>
         )
       }
