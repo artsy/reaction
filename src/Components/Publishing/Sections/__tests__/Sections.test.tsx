@@ -1,4 +1,3 @@
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import {
   FeatureArticle,
   StandardArticle,
@@ -142,15 +141,7 @@ describe("Sections", () => {
       const wrapper = mountWrapper(props)
         .childAt(0)
         .instance() as any
-
       expect(wrapper.getContentEndIndex()).toBe(11)
-    })
-
-    it("it injects display ads if feature", () => {
-      props.article = FeatureArticle
-      props.isMobile = false
-      const wrapper = mountWrapper(props)
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
     })
   })
 

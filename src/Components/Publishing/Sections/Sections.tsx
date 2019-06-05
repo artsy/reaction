@@ -1,11 +1,9 @@
-import { Box } from "@artsy/palette"
-import { compact, findLastIndex, once } from "lodash"
+import { clone, compact, findLastIndex, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
-import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
-import { AdDimension, AdUnit, ArticleData } from "../Typings"
+import { ArticleData } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
 import { ImageCollection } from "./ImageCollection"
@@ -144,26 +142,6 @@ export class Sections extends Component<Props, State> {
     }
   }
 
-  getAdUnit(index: number) {
-    const { isMobile } = this.props
-
-    if (index === 6) {
-      return isMobile
-        ? AdUnit.Mobile_Feature_InContentLeaderboard1
-        : AdUnit.Desktop_Feature_Leaderboard1
-    }
-
-    if (index === 12) {
-      return isMobile
-        ? AdUnit.Mobile_Feature_InContentLeaderboard2
-        : AdUnit.Desktop_Feature_Leaderboard2
-    }
-
-    return isMobile
-      ? AdUnit.Mobile_Feature_InContentLeaderboard3
-      : AdUnit.Desktop_Feature_LeaderboardRepeat
-  }
-
   getSection(section, index) {
     const { article, color, showTooltips } = this.props
 
@@ -201,47 +179,41 @@ export class Sections extends Component<Props, State> {
 
   renderSections() {
     const { article } = this.props
-    let firstAdInjected = false
-    let placementCount = 1
+    const { shouldInjectMobileDisplay } = this.state
+    let displayMarkerInjected = false
 
     const renderedSections = article.sections.map((sectionItem, index) => {
-      let shouldInject =
-        article.layout === "feature" &&
-        sectionItem.type === "image_collection" &&
-        !firstAdInjected
+      const shouldInject =
+        shouldInjectMobileDisplay &&
+        sectionItem.type === "text" &&
+        !displayMarkerInjected
 
-      const section = sectionItem
-      let ad = null
-
-      if (firstAdInjected) {
-        placementCount++
-      }
-
-      if (placementCount % 6 === 0) {
-        shouldInject = true
-      }
+      let section = sectionItem
 
       if (shouldInject) {
-        ad = (
-          <NewDisplayCanvas
-            adUnit={this.getAdUnit(placementCount)}
-            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
-            displayNewAds
-          />
-        )
-        firstAdInjected = true
+        try {
+          section = clone(sectionItem)
+          section.body = this.injectDisplayPanelMarker(section.body)
+          displayMarkerInjected = true
+        } catch (error) {
+          console.error(
+            "(reaction/Sections.jsx) Error injecting Display:",
+            error
+          )
+        }
       }
 
       const child = this.getSection(section, index)
 
       if (child) {
         return (
-          <Box key={index}>
-            <SectionContainer articleLayout={article.layout} section={section}>
-              {child}
-            </SectionContainer>
-            {ad}
-          </Box>
+          <SectionContainer
+            key={index}
+            articleLayout={article.layout}
+            section={section}
+          >
+            {child}
+          </SectionContainer>
         )
       }
     })

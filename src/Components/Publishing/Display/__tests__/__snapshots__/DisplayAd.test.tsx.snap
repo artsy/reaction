@@ -27,7 +27,6 @@ exports[`renders the new canvas in standard layout 1`] = `
   border-top: none;
   background: #F8F8F8;
   text-align: center;
-  width: 100%;
 }
 
 <div
