@@ -1,4 +1,4 @@
-import React, { SFC, useMemo } from "react"
+import React, { SFC, useContext, useMemo } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
@@ -89,4 +89,12 @@ export const withSystemContext = Component => {
       </SystemContextConsumer>
     )
   }
+}
+
+/**
+ * Custom hook to access SystemContext
+ */
+export const useSystemContext = () => {
+  const systemContext = useContext(SystemContext)
+  return systemContext
 }
