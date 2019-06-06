@@ -70,6 +70,10 @@ const isDefaultFilter = (filter, value): boolean => {
     return value === "-decayed_merch"
   }
 
+  if (filter === "medium") {
+    return value === "*"
+  }
+
   if (filter === "price_range" || filter === "height" || filter === "width") {
     return value === "*-*"
   }
@@ -119,6 +123,12 @@ export class FilterState extends Container<State> {
     }
   }
 
+  get hasFilters() {
+    return Object.entries(this.state).some(([key, value]) => {
+      return !isDefaultFilter(key, value)
+    })
+  }
+
   get filteredState() {
     return omitBy(this.state, isNil)
   }
@@ -155,24 +165,6 @@ export class FilterState extends Container<State> {
         this.pushHistory()
       }
     )
-  }
-
-  get hasFilters() {
-    return Object.keys(this.state).some(filter => {
-      const value = this.state[filter]
-      if (
-        value &&
-        value !== "*" &&
-        value !== "*-*" &&
-        value !== false &&
-        value.length !== 0 &&
-        filter !== "page" &&
-        filter !== "keyword" &&
-        filter !== "sort"
-      ) {
-        return true
-      }
-    })
   }
 
   unsetFilter(filter) {
