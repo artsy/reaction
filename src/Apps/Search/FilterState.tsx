@@ -71,7 +71,7 @@ const isDefaultFilter = (filter, value): boolean => {
   }
 
   if (filter === "medium") {
-    return value === "*"
+    return value === "*" || !value
   }
 
   if (filter === "price_range" || filter === "height" || filter === "width") {
