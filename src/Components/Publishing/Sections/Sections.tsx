@@ -1,6 +1,7 @@
+import { Box } from "@artsy/palette"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import { clone, compact, findLastIndex, once } from "lodash"
+import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
@@ -180,57 +181,6 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
-  /**
-   * 
-   * const { article, areHostedAdsEnabled } = this.props
-    let firstAdInjected = false
-    let placementCount = 1
-
-    const renderedSections = article.sections.map((sectionItem, index) => {
-      let shouldInjectNewAds =
-        article.layout === "feature" &&
-        sectionItem.type === "image_collection" &&
-        !firstAdInjected
-
-      const section = sectionItem
-      let ad = null
-
-      if (firstAdInjected) {
-        placementCount++
-      }
-
-      if (placementCount % 6 === 0) {
-        shouldInjectNewAds = true
-      }
-
-      if (shouldInjectNewAds && areHostedAdsEnabled) {
-        ad = (
-          <NewDisplayCanvas
-            adUnit={this.getAdUnit(placementCount)}
-            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
-            displayNewAds
-          />
-        )
-        firstAdInjected = true
-      }
-
-      const child = this.getSection(section, index)
-
-      if (child) {
-        return (
-          <Box key={index}>
-            <SectionContainer articleLayout={article.layout} section={section}>
-              {child}
-            </SectionContainer>
-            {ad}
-          </Box>
-        )
-      }
-    })
-
-    return renderedSections
-   */
-
   getAdUnit(index: number) {
     const { isMobile } = this.props
 
@@ -249,6 +199,31 @@ export class Sections extends Component<Props, State> {
     return isMobile
       ? AdUnit.Mobile_Feature_InContentLeaderboard3
       : AdUnit.Desktop_Feature_LeaderboardRepeat
+  }
+
+  /**
+   * Add a margin top when to the ad when the section is any of the following:
+   * 1) Text section without <br> tags wrapping the <p> or <h2> content
+   * 3) Image set section
+   * 4) Image collection with a caption/title
+   */
+  getAdMarginTop(section) {
+    const shouldAddTopMargin = () => {
+      switch (section.type) {
+        case "image_set":
+          return true
+        case "image_collection":
+          get(section, ["images", "[0]", "caption"])
+          return true
+        case "text":
+          section.body.includes("<br>")
+          return true
+        default:
+          return false
+      }
+    }
+
+    return shouldAddTopMargin() ? "calc(100% - 96%)" : null
   }
 
   renderSections() {
@@ -281,12 +256,16 @@ export class Sections extends Component<Props, State> {
       }
 
       if (shouldInjectNewAds) {
+        const marginTop = this.getAdMarginTop(section)
+
         ad = (
-          <NewDisplayCanvas
-            adUnit={this.getAdUnit(placementCount)}
-            adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
-            displayNewAds
-          />
+          <AdWrapper mt={marginTop}>
+            <NewDisplayCanvas
+              adUnit={this.getAdUnit(placementCount)}
+              adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
+              displayNewAds
+            />
+          </AdWrapper>
         )
         firstAdInjected = true
       }
@@ -398,4 +377,8 @@ const StyledSections = div`
     max-width: ${props.layout === "standard" ? "780px" : "auto"};
     ${props.layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
+`
+const AdWrapper = styled(Box)`
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 `
