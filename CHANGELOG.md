@@ -1,3 +1,15 @@
+# v16.14.2 (Thu Jun 06 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] do not render featured artist module when there are not featured artists [#2503](https://github.com/artsy/reaction/pull/2503) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.14.1 (Thu Jun 06 2019)
 
 
