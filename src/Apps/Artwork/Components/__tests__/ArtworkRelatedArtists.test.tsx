@@ -1,15 +1,29 @@
 import { ArtworkRelatedArtistsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkRelatedArtists.fixture"
-import { mockTracking } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { ArtworkRelatedArtists } from "../ArtworkRelatedArtists"
 
-jest.unmock("react-tracking")
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("ArtworkRelatedArtists", () => {
   const getWrapper = props => {
     return mount(<ArtworkRelatedArtists {...props} />)
   }
+
+  const trackEvent = jest.fn()
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   it("renders related artists", () => {
     const props = { artwork: { artist: ArtworkRelatedArtistsFixture } }
@@ -20,21 +34,20 @@ describe("ArtworkRelatedArtists", () => {
   })
 
   it("tracks ArtistCard clicks", () => {
-    const { Component, dispatch } = mockTracking(ArtworkRelatedArtists)
     const props = {
       artwork: { artist: ArtworkRelatedArtistsFixture, " $refType": null },
     }
 
-    const wrapper = mount(<Component {...props} />)
+    const wrapper = getWrapper(props)
 
     const artistCard = wrapper.find("ArtistCard").at(0)
     artistCard.simulate("click")
 
-    expect(dispatch).toBeCalledWith({
+    expect(trackEvent).toBeCalledWith({
       action_type: "Click",
       context_module: "RelatedArtists",
       type: "Artist card",
     })
-    expect(dispatch).toHaveBeenCalledTimes(1)
+    expect(trackEvent).toHaveBeenCalledTimes(1)
   })
 })
