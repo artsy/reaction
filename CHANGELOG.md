@@ -1,3 +1,15 @@
+# v16.14.3 (Thu Jun 06 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Address QA items [#2505](https://github.com/artsy/reaction/pull/2505) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.14.2 (Thu Jun 06 2019)
 
 #### 🐛  Bug Fix
