@@ -10,15 +10,15 @@ import {
   MenuIcon,
   Separator,
   Serif,
+  space,
 } from "@artsy/palette"
 
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import * as authentication from "Components/NavBar/Utils/authentication"
 
 export const MobileNavMenu: React.FC = () => {
   const { trackEvent } = useTracking()
-  const { mediator, user } = useContext(SystemContext)
+  const { user } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
 
   const trackClick = event => {
@@ -34,13 +34,7 @@ export const MobileNavMenu: React.FC = () => {
   }
 
   return (
-    <MobileNavContainer
-      py={[1, 4]}
-      width="100%"
-      height="100vh"
-      flexDirection="column"
-      onClick={trackClick}
-    >
+    <MobileNavContainer py={[1, 4]} flexDirection="column" onClick={trackClick}>
       <MobileLink href="/">Home</MobileLink>
       <MobileLink href="/artists">Artists</MobileLink>
       <MobileLink href="/shows">Shows</MobileLink>
@@ -61,10 +55,14 @@ export const MobileNavMenu: React.FC = () => {
         </>
       ) : (
         <>
-          <MobileLink onClick={() => authentication.login(mediator)}>
+          <MobileLink
+            href={`/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+          >
             Login
           </MobileLink>
-          <MobileLink onClick={() => authentication.signup(mediator)}>
+          <MobileLink
+            href={`/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+          >
             Sign up
           </MobileLink>
         </>
@@ -76,7 +74,7 @@ export const MobileNavMenu: React.FC = () => {
 interface MobileLinkProps {
   children: React.ReactNode
   href?: string
-  onClick?: () => void
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void
 }
 
 const MobileLink: React.FC<MobileLinkProps> = ({
@@ -113,8 +111,12 @@ const MobileNavContainer = styled(Flex)`
   background-color: white;
   border-bottom: 1px solid ${color("black10")};
   position: relative;
-  z-index: 2;
   user-select: none;
+  overflow-y: scroll;
+  z-index: 2;
+  width: 100%;
+  height: calc(100vh - ${space(6)}px);
+  -webkit-overflow-scrolling: touch;
 `
 
 const MobileLinkContainer = styled(Box)<{ disableHover?: boolean }>`

@@ -4,6 +4,7 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
 import React, { useState } from "react"
 import styled from "styled-components"
+import { NavBarHeight } from "./NavBar"
 
 interface NavItemProps extends BoxProps {
   Menu?: React.FC
@@ -90,5 +91,7 @@ export const NavItem: React.FC<NavItemProps> = ({
 
 const MenuContainer = styled(Box)`
   position: absolute;
+  top: ${NavBarHeight}px;
+  margin-top: -1px; /* Offset border */
   transform: translateX(-78%);
 `

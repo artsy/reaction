@@ -19,6 +19,8 @@ exports[`Input renders as a snapshot 1`] = `
   border: 1px solid #f7625a;
   -webkit-transition: border-color 0.25s;
   transition: border-color 0.25s;
+  background-clip: padding-box;
+  border-radius: 0;
 }
 
 .c2::-webkit-input-placeholder {
