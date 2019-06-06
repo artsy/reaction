@@ -1,3 +1,15 @@
+# v16.14.0 (Thu Jun 06 2019)
+
+#### 🚀  Enhancement
+
+- Render artwork page OtherWorks section server-side [#2502](https://github.com/artsy/reaction/pull/2502) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.13.10 (Wed Jun 05 2019)
 
 #### 🐛  Bug Fix
