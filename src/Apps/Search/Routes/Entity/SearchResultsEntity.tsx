@@ -127,17 +127,16 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
   }
 
   render() {
-    const { viewer, location, entities, tab } = this.props
+    const { viewer, location } = this.props
 
     const { term } = get(location, l => l.query)
 
     const items = get(viewer, v => v.search.edges, []).map(e => e.node)
-    const zeroStateText = entities.length === 1 ? tab : "results"
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {items.length === 0 ? (
           <Box mt={3}>
-            <ZeroState entity={zeroStateText} term={term} />
+            <ZeroState term={term} />
           </Box>
         ) : (
           this.renderItems()
