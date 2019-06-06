@@ -29,6 +29,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   border-top: 1px solid #E5E5E5;
   background: #000;
   text-align: center;
+  width: 100%;
 }
 
 .c3 {

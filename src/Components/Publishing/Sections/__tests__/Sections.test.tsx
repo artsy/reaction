@@ -1,3 +1,4 @@
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import {
   FeatureArticle,
   StandardArticle,
@@ -142,6 +143,21 @@ describe("Sections", () => {
         .childAt(0)
         .instance() as any
       expect(wrapper.getContentEndIndex()).toBe(11)
+    })
+
+    it("it injects display ads if feature when ads are enabled", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
+    })
+
+    it("it does not inject display ads if feature when ads are disabled", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(0)
     })
   })
 
