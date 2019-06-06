@@ -42,6 +42,12 @@ export const NotificationsBadge: React.FC<{
 
         let count = totalUnread
 
+        // User has no notifications; clear the cookie
+        if (count === 0) {
+          cookie.expire("notification-count")
+          return null
+        }
+
         // Update the notification bad with the count, and store it in a cookie
         // so that subsequent page views don't need a fetch in order to render
         // the badge.
@@ -58,12 +64,6 @@ export const NotificationsBadge: React.FC<{
             // sd.NOTIFICATIONS_COUNT is populated by this cookie.
             cookie.set("notification-count", count)
           }
-        }
-
-        // User has no notifications; clear the cookie
-        if (count === 0) {
-          cookie.expire("notification-count")
-          return null
         }
 
         return (

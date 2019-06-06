@@ -38,15 +38,22 @@ describe("MobileNavMenu", () => {
       const wrapper = getWrapper({ user: null })
       const links = wrapper.find("MobileLink")
 
-      defaultLinks.forEach(([href, linkLabel], index) => {
-        const navLink = links.at(index)
-        expect(href).toEqual(navLink.prop("href"))
-        expect(linkLabel).toEqual(navLink.text())
-      })
-
-      // These links dont have an `href` prop, but are controlled via JS
-      expect(wrapper.html()).toContain("Login")
-      expect(wrapper.html()).toContain("Sign up")
+      defaultLinks
+        .concat([
+          [
+            "/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header",
+            "Login",
+          ],
+          [
+            "/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header",
+            "Sign up",
+          ],
+        ])
+        .forEach(([href, linkLabel], index) => {
+          const navLink = links.at(index)
+          expect(href).toEqual(navLink.prop("href"))
+          expect(linkLabel).toEqual(navLink.text())
+        })
     })
 
     it("renders correct items when logged in", () => {

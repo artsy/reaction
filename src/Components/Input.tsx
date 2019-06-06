@@ -35,6 +35,10 @@ export const Input: React.ExoticComponent<InputProps> = React.forwardRef(
 export const StyledInput = styled.input`
   ${borderedInput};
   ${block(24)};
+
+  /* Remove shadow and default border radius on iOS */
+  background-clip: padding-box;
+  border-radius: 0;
 `
 
 export const Title = styled.div`

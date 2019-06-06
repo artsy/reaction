@@ -252,14 +252,11 @@ export class SearchBar extends Component<Props, State> {
     window.location.assign(href)
   }
 
-  renderSuggestionsContainer = (
-    { containerProps, children, query },
-    { xs }
-  ) => {
+  renderSuggestionsContainer = ({ containerProps, children, query }) => {
     const noResults = get(this.props, p => p.viewer.search.edges.length === 0)
     const { focused } = this.state
 
-    if (noResults || !focused || !query || (xs && !query)) {
+    if (noResults || !focused || !query) {
       return null
     }
 
@@ -357,7 +354,7 @@ export class SearchBar extends Component<Props, State> {
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={this.renderSuggestion}
         renderSuggestionsContainer={props => {
-          return this.renderSuggestionsContainer(props, { xs })
+          return this.renderSuggestionsContainer(props)
         }}
         inputProps={inputProps}
         onSuggestionSelected={(e, selection) => {

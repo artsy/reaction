@@ -232,6 +232,8 @@ export const NavBar: React.FC = track(
   )
 })
 
+export const NavBarHeight = space(6) - 1 // border offset
+
 const NavSection = ({ children, ...props }) => (
   <Flex alignItems="center" {...props}>
     {children}
@@ -243,7 +245,7 @@ const NavBarContainer = styled(Flex)`
   border-bottom: 1px solid ${color("black10")};
   position: relative;
   z-index: 1;
-  height: ${space(6)}px;
+  height: ${NavBarHeight}px;
 `
 
 // FIXME: This needs to be cleaned up once we get proper icons
