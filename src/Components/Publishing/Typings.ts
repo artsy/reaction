@@ -22,9 +22,11 @@ export enum AdUnit {
   Desktop_InContentLBRepeat = "Desktop_InContentLBRepeat",
   Desktop_TopLogo = "Desktop_TopLogo",
   Desktop_PIPWLogo = "Desktop_PIPWLogo",
+
   Desktop_NewsLanding_Leaderboard1 = "Desktop_Leaderboard1",
   Desktop_NewsLanding_Leaderboard2 = "Desktop_Leaderboard2",
   Desktop_NewsLanding_LeaderboardRepeat = "Desktop_LeaderboardRepeat",
+
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "Desktop_InContentLB2",
   Desktop_Feature_Leaderboard1 = "Desktop_Leaderboard1",
   Desktop_Feature_Leaderboard2 = "Desktop_Leaderboard2",
@@ -59,6 +61,7 @@ export enum AdDimension {
   Desktop_NewsLanding_Leaderboard1 = "970x250",
   Desktop_NewsLanding_Leaderboard2 = "970x250",
   Desktop_NewsLanding_LeaderboardRepeat = "970x250",
+  Mobile_Feature_InContentLeaderboard1 = "300x50",
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "970x250",
   Mobile_TopLeaderboard = "300x50",
   Mobile_InContentMR1 = "300x250",

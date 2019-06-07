@@ -181,16 +181,16 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
-  getAdUnit(index: number) {
+  getAdUnit(index: number, indexAtFirstAd: number) {
     const { isMobile } = this.props
 
-    if (index === 6) {
+    if (index === indexAtFirstAd) {
       return isMobile
         ? AdUnit.Mobile_Feature_InContentLeaderboard1
         : AdUnit.Desktop_Feature_Leaderboard1
     }
 
-    if (index === 12) {
+    if (index === 6) {
       return isMobile
         ? AdUnit.Mobile_Feature_InContentLeaderboard2
         : AdUnit.Desktop_Feature_Leaderboard2
@@ -227,16 +227,16 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, areHostedAdsEnabled } = this.props
+    const { article, areHostedAdsEnabled, isMobile } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let firstAdInjected = false
     let placementCount = 1
     let displayMarkerInjected = false
+    let indexAtFirstAd = null
 
     const renderedSections = article.sections.map((sectionItem, index) => {
       let section = sectionItem
       let ad = null
-
       const shouldInject =
         shouldInjectMobileDisplay &&
         sectionItem.type === "text" &&
@@ -255,19 +255,24 @@ export class Sections extends Component<Props, State> {
         shouldInjectNewAds = true
       }
 
-      if (shouldInjectNewAds) {
+      if (areHostedAdsEnabled && shouldInjectNewAds) {
         const marginTop = this.getAdMarginTop(section)
+        firstAdInjected = true
+        indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
 
         ad = (
           <AdWrapper mt={marginTop}>
             <NewDisplayCanvas
-              adUnit={this.getAdUnit(placementCount)}
-              adDimension={AdDimension.Desktop_NewsLanding_Leaderboard1}
+              adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
+              adDimension={
+                isMobile
+                  ? AdDimension.Mobile_Feature_InContentLeaderboard1
+                  : AdDimension.Desktop_NewsLanding_Leaderboard1
+              }
               displayNewAds
             />
           </AdWrapper>
         )
-        firstAdInjected = true
       }
 
       if (shouldInject) {
@@ -293,7 +298,7 @@ export class Sections extends Component<Props, State> {
             section={section}
           >
             {child}
-            {areHostedAdsEnabled && ad}
+            {ad}
           </SectionContainer>
         )
       }
