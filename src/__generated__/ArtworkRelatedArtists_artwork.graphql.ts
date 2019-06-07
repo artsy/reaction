@@ -5,10 +5,14 @@ import { ArtistCard_artist$ref } from "./ArtistCard_artist.graphql";
 declare const _ArtworkRelatedArtists_artwork$ref: unique symbol;
 export type ArtworkRelatedArtists_artwork$ref = typeof _ArtworkRelatedArtists_artwork$ref;
 export type ArtworkRelatedArtists_artwork = {
+    readonly id: string;
     readonly artist: ({
         readonly href: string | null;
         readonly related: ({
             readonly artists: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                };
                 readonly edges: ReadonlyArray<({
                     readonly node: ({
                         readonly " $fragmentRefs": ArtistCard_artist$ref;
@@ -34,9 +38,42 @@ return {
   "kind": "Fragment",
   "name": "ArtworkRelatedArtists_artwork",
   "type": "Artwork",
-  "metadata": null,
-  "argumentDefinitions": [],
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": [
+          "artist",
+          "related",
+          "artists"
+        ]
+      }
+    ]
+  },
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "count",
+      "type": "Int",
+      "defaultValue": 4
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "cursor",
+      "type": "String",
+      "defaultValue": ""
+    }
+  ],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -64,16 +101,10 @@ return {
           "selections": [
             {
               "kind": "LinkedField",
-              "alias": null,
-              "name": "artists",
-              "storageKey": "artists(first:4,kind:\"MAIN\")",
+              "alias": "artists",
+              "name": "__ArtworkRelatedArtists_artists_connection",
+              "storageKey": "__ArtworkRelatedArtists_artists_connection(kind:\"MAIN\")",
               "args": [
-                {
-                  "kind": "Literal",
-                  "name": "first",
-                  "value": 4,
-                  "type": "Int"
-                },
                 {
                   "kind": "Literal",
                   "name": "kind",
@@ -84,6 +115,31 @@ return {
               "concreteType": "ArtistConnection",
               "plural": false,
               "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "pageInfo",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "PageInfo",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "hasNextPage",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "endCursor",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -107,8 +163,22 @@ return {
                           "name": "ArtistCard_artist",
                           "args": null
                         },
-                        v0
+                        v0,
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "__typename",
+                          "args": null,
+                          "storageKey": null
+                        }
                       ]
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "cursor",
+                      "args": null,
+                      "storageKey": null
                     }
                   ]
                 }
@@ -123,5 +193,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bc16b9760e43eb13c2a06ccbdbce8a23';
+(node as any).hash = '5ec9d018d7422592fa838f8cd78ab245';
 export default node;

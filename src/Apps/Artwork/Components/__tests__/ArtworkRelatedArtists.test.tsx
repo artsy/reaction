@@ -8,7 +8,9 @@ jest.mock("Artsy/Analytics/useTracking")
 
 describe("ArtworkRelatedArtists", () => {
   const getWrapper = props => {
-    return mount(<ArtworkRelatedArtists {...props} />)
+    return mount(
+      <ArtworkRelatedArtists relay={{ hasMore: () => true }} {...props} />
+    )
   }
 
   const trackEvent = jest.fn()

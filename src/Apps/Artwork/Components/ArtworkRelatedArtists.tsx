@@ -1,28 +1,54 @@
-import { Box, Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Serif, Spinner } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { SystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
-import React, { useContext } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import React, { useContext, useState } from "react"
+import {
+  createPaginationContainer,
+  graphql,
+  RelayPaginationProp,
+} from "react-relay"
+import styled from "styled-components"
+import createLogger from "Utils/logger"
 import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
+
+const logger = createLogger("ArtworkRelatedArtists.tsx")
 
 export interface ArtworkRelatedArtistsProps {
   artwork: ArtworkRelatedArtists_artwork
+  relay: RelayPaginationProp
 }
+
+const PAGE_SIZE = 4
 
 export const ArtworkRelatedArtists: React.FC<
   ArtworkRelatedArtistsProps
 > = track()(props => {
   const { trackEvent } = useTracking()
   const { mediator, user } = useContext(SystemContext)
+  const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
   const {
     artwork: { artist },
+    relay,
   } = props
   if (hideGrid(artist.related.artists)) {
     return null
+  }
+
+  const fetchData = () => {
+    if (!relay.hasMore() || relay.isLoading()) {
+      return
+    }
+    setFetchingNextPage(true)
+    relay.loadMore(PAGE_SIZE, error => {
+      if (error) {
+        logger.error(error)
+      }
+      setFetchingNextPage(false)
+    })
   }
 
   return (
@@ -53,30 +79,56 @@ export const ArtworkRelatedArtists: React.FC<
           )
         })}
       </Flex>
-      <Flex flexDirection="column" alignItems="center">
-        <Button
-          variant="secondaryOutline"
-          mb={3}
-          onClick={() => {
-            console.log("show more!")
-          }}
-        >
-          Show more
-        </Button>
-      </Flex>
+
+      {fetchingNextPage && <FetchingMoreSpinner />}
+
+      {relay.hasMore() && <ShowMoreButton onClick={fetchData} />}
     </Box>
   )
 })
 
-export const ArtworkRelatedArtistsFragmentContainer = createFragmentContainer(
+const FetchingMoreSpinner: React.FC = () => {
+  return (
+    <Flex flexDirection="column" alignItems="center">
+      <SpinnerContainer mt={3}>
+        <Spinner />
+      </SpinnerContainer>
+    </Flex>
+  )
+}
+
+const SpinnerContainer = styled(Box)`
+  position: relative;
+`
+
+const ShowMoreButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+  return (
+    <Flex flexDirection="column" alignItems="center">
+      <Button variant="secondaryOutline" mb={3} onClick={onClick}>
+        Show more
+      </Button>
+    </Flex>
+  )
+}
+
+export const ArtworkRelatedArtistsPaginationContainer = createPaginationContainer(
   ArtworkRelatedArtists,
   {
     artwork: graphql`
-      fragment ArtworkRelatedArtists_artwork on Artwork {
+      fragment ArtworkRelatedArtists_artwork on Artwork
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 4 }
+          cursor: { type: "String", defaultValue: "" }
+        ) {
+        id
         artist {
           href
           related {
-            artists(kind: MAIN, first: 4) {
+            artists(kind: MAIN, first: $count, after: $cursor)
+              @connection(key: "ArtworkRelatedArtists_artists") {
+              pageInfo {
+                hasNextPage
+              }
               edges {
                 node {
                   ...ArtistCard_artist
@@ -84,6 +136,38 @@ export const ArtworkRelatedArtistsFragmentContainer = createFragmentContainer(
               }
             }
           }
+        }
+      }
+    `,
+  },
+  {
+    direction: "forward",
+    getConnectionFromProps(props) {
+      return props.artwork.artist.related.artists
+    },
+    getFragmentVariables(prevVars, count) {
+      return {
+        ...prevVars,
+        count,
+      }
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        ...fragmentVariables,
+        count,
+        cursor,
+        artworkID: props.artwork.id,
+      }
+    },
+    query: graphql`
+      query ArtworkRelatedArtistsPaginationQuery(
+        $count: Int!
+        $cursor: String
+        $artworkID: String!
+      ) {
+        artwork(id: $artworkID) {
+          ...ArtworkRelatedArtists_artwork
+            @arguments(count: $count, cursor: $cursor)
         }
       }
     `,

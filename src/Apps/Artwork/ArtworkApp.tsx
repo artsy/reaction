@@ -12,7 +12,7 @@ import { ArtworkBannerFragmentContainer as ArtworkBanner } from "./Components/Ar
 import { ArtworkDetailsFragmentContainer as ArtworkDetails } from "./Components/ArtworkDetails"
 import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "./Components/ArtworkImageBrowser"
 import { ArtworkMetaFragmentContainer as ArtworkMeta } from "./Components/ArtworkMeta"
-import { ArtworkRelatedArtistsFragmentContainer as RelatedArtists } from "./Components/ArtworkRelatedArtists"
+import { ArtworkRelatedArtistsPaginationContainer as RelatedArtists } from "./Components/ArtworkRelatedArtists"
 import { ArtworkSidebarFragmentContainer as ArtworkSidebar } from "./Components/ArtworkSidebar"
 import { OtherWorksFragmentContainer as OtherWorks } from "./Components/OtherWorks"
 import { PricingContextFragmentContainer as PricingContext } from "./Components/PricingContext"
