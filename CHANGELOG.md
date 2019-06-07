@@ -1,3 +1,20 @@
+# v16.14.6 (Fri Jun 07 2019)
+
+#### 🐛  Bug Fix
+
+- Removes width from slide box element [#2514](https://github.com/artsy/reaction/pull/2514) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.9 to v4.14.11 [#2512](https://github.com/artsy/reaction/pull/2512) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.14.5 (Fri Jun 07 2019)
 
 ### Release Notes
