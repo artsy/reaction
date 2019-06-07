@@ -56,4 +56,5 @@ const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
     props.isSeries ? color("black100") : color("black5")};
   text-align: center;
   width: 100%;
+  height: 334px;
 `
