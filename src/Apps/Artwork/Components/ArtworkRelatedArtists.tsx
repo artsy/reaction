@@ -1,10 +1,10 @@
 import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
-import { SystemContext } from "Artsy"
+import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import {
   createPaginationContainer,
   graphql,
@@ -26,7 +26,7 @@ export const ArtworkRelatedArtists: React.FC<
   ArtworkRelatedArtistsProps
 > = track()(props => {
   const { trackEvent } = useTracking()
-  const { mediator, user } = useContext(SystemContext)
+  const { mediator, user } = useSystemContext()
   const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
   const {
