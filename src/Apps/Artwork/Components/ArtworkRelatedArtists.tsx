@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Serif, Spinner } from "@artsy/palette"
+import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { SystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
@@ -10,7 +10,6 @@ import {
   graphql,
   RelayPaginationProp,
 } from "react-relay"
-import styled from "styled-components"
 import createLogger from "Utils/logger"
 import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
 
@@ -80,31 +79,25 @@ export const ArtworkRelatedArtists: React.FC<
         })}
       </Flex>
 
-      {fetchingNextPage && <FetchingMoreSpinner />}
-
-      {relay.hasMore() && <ShowMoreButton onClick={fetchData} />}
+      {relay.hasMore() && (
+        <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
+      )}
     </Box>
   )
 })
 
-const FetchingMoreSpinner: React.FC = () => {
+const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
+  onClick,
+  loading,
+}) => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <SpinnerContainer mt={3}>
-        <Spinner />
-      </SpinnerContainer>
-    </Flex>
-  )
-}
-
-const SpinnerContainer = styled(Box)`
-  position: relative;
-`
-
-const ShowMoreButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
-  return (
-    <Flex flexDirection="column" alignItems="center">
-      <Button variant="secondaryOutline" mb={3} onClick={onClick}>
+      <Button
+        variant="secondaryOutline"
+        mb={3}
+        onClick={onClick}
+        loading={loading}
+      >
         Show more
       </Button>
     </Flex>
