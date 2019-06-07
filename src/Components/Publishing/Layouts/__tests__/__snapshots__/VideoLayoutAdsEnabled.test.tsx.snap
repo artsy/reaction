@@ -1,111 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Layout with new ads enabled renders the video layout properly when new ads are enabled 1`] = `
-.c31 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 12px;
-}
-
-.c33 {
-  padding-right: 20px;
-  width: 60px;
-}
-
-.c38 {
-  max-width: 100%;
-}
-
-.c40 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c41 {
-  padding-top: 40px;
-}
-
-.c47 {
-  margin-top: 40px;
-}
-
-.c55 {
-  width: 100%;
-}
-
-.c57 {
-  margin: auto;
-}
-
-.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
-  color: white;
-  text-align: center;
-}
-
-.c35 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  margin-right: 20px;
-}
-
-.c36 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c37 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 42px;
-  line-height: 50px;
-}
-
-.c39 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  padding-top: 30px;
-}
-
-.c44 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: white;
-  padding-bottom: 10px;
-}
-
-.c50 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c58 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  color: black30;
-  margin: 4px;
-}
-
 .c5 {
   font-family: artsy-icons;
   color: white;
@@ -120,7 +15,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   color: white;
 }
 
-.c56 {
+.c41 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,7 +49,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c59 {
+.c3 .c42 {
   margin: 0 20px;
 }
 
@@ -207,7 +102,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   z-index: 10;
 }
 
-.c52 {
+.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -221,32 +116,32 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin-top: 5px;
 }
 
-.c54 {
+.c40 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c54:hover {
+.c40:hover {
   opacity: 0.6;
 }
 
-.c54:first-child {
+.c40:first-child {
   padding-left: 0;
 }
 
-.c53 {
+.c39 {
   margin: 5px 10px 5px 0;
 }
 
-.c46 {
+.c34 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c46 a {
+.c34 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -256,22 +151,22 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   background-position: bottom;
 }
 
-.c46 a:hover {
+.c34 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c46 div[class*='ToolTip'] a {
+.c34 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c46 p,
-.c46 ul,
-.c46 ol,
-.c46 .paragraph,
-.c46 div[data-block=true] .public-DraftStyleDefault-block {
+.c34 p,
+.c34 ul,
+.c34 ol,
+.c34 .paragraph,
+.c34 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -282,32 +177,32 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   font-style: inherit;
 }
 
-.c46 p:first-child,
-.c46 .paragraph:first-child,
-.c46 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c34 p:first-child,
+.c34 .paragraph:first-child,
+.c34 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c46 p:last-child,
-.c46 .paragraph:last-child,
-.c46 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c34 p:last-child,
+.c34 .paragraph:last-child,
+.c34 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c46 ul,
-.c46 ol {
+.c34 ul,
+.c34 ol {
   padding-left: 1em;
 }
 
-.c46 ul {
+.c34 ul {
   list-style: disc;
 }
 
-.c46 ol {
+.c34 ol {
   list-style: decimal;
 }
 
-.c46 li {
+.c34 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -316,7 +211,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   padding-bottom: .5em;
 }
 
-.c46 h1 {
+.c34 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -329,7 +224,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   text-align: center;
 }
 
-.c46 h1::before {
+.c34 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -340,7 +235,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   right: calc(50% - 4px);
 }
 
-.c46 h2 {
+.c34 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -349,15 +244,15 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin: 0;
 }
 
-.c46 h2 a {
+.c34 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c46 h2 .c60 {
+.c34 h2 .c43 {
   background-position: bottom !important;
 }
 
-.c46 h3 {
+.c34 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -367,7 +262,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin: 0;
 }
 
-.c46 h3 strong {
+.c34 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -375,11 +270,11 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   line-height: 1.5em;
 }
 
-.c46 h3 a {
+.c34 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c46 blockquote {
+.c34 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -392,11 +287,11 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   word-break: break-word;
 }
 
-.c46 .preventLineBreak {
+.c34 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c46 .content-end {
+.c34 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -407,14 +302,14 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin-bottom: 1px;
 }
 
-.c46 .artist-follow {
+.c34 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c46 .artist-follow::before {
+.c34 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -422,7 +317,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   font-size: 32px;
 }
 
-.c46 .artist-follow::after {
+.c34 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -431,33 +326,33 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   text-transform: none;
 }
 
-.c49 {
+.c36 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c18 {
+.c17 {
   width: 32px;
   height: 32px;
 }
 
+.c24 {
+  width: 28px;
+  height: 28px;
+}
+
+.c22 {
+  height: 28px;
+  cursor: pointer;
+}
+
+.c15 {
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
 .c25 {
-  width: 28px;
-  height: 28px;
-}
-
-.c23 {
-  height: 28px;
-  cursor: pointer;
-}
-
-.c16 {
-  height: 28px;
-  width: 28px;
-  cursor: pointer;
-}
-
-.c26 {
   width: 100%;
   background-size: NaN% 100%;
   height: 18px;
@@ -468,13 +363,13 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   background: transparent;
 }
 
-.c26::-webkit-slider-thumb {
+.c25::-webkit-slider-thumb {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c26::-ms-track {
+.c25::-ms-track {
   width: 100%;
   height: 2px;
   cursor: pointer;
@@ -483,7 +378,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   color: transparent;
 }
 
-.c26::-webkit-slider-runnable-track {
+.c25::-webkit-slider-runnable-track {
   height: 2px;
   cursor: pointer;
   -webkit-animate: 0.2s;
@@ -492,7 +387,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   border: 0px;
 }
 
-.c26::-moz-range-track {
+.c25::-moz-range-track {
   height: 2px;
   cursor: pointer;
   -webkit-animate: 0.2s;
@@ -501,7 +396,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   border: 0px;
 }
 
-.c26::-webkit-slider-thumb {
+.c25::-webkit-slider-thumb {
   color: white;
   border: 0px;
   height: 12px;
@@ -515,7 +410,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   appearance: none;
 }
 
-.c26::-moz-range-thumb {
+.c25::-moz-range-thumb {
   color: white;
   box-shadow: 0px 0px 0px white;
   border: 0px;
@@ -530,17 +425,17 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   appearance: none;
 }
 
-.c26::-ms-fill-lower {
+.c25::-ms-fill-lower {
   background: white;
   border: 0px;
 }
 
-.c26::-ms-fill-upper {
+.c25::-ms-fill-upper {
   background: white;
   border: 0px;
 }
 
-.c26::-ms-thumb {
+.c25::-ms-thumb {
   color: white;
   box-shadow: 0px 0px 0px white;
   border: 0px;
@@ -555,22 +450,22 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   appearance: none;
 }
 
-.c26:focus::-webkit-slider-runnable-track {
+.c25:focus::-webkit-slider-runnable-track {
   background: white;
 }
 
-.c26:focus {
+.c25:focus {
   outline: none;
 }
 
-.c21 {
+.c20 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
 }
 
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -582,7 +477,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   width: 100%;
 }
 
-.c13 {
+.c12 {
   color: white;
   display: -webkit-box;
   display: -webkit-flex;
@@ -605,19 +500,19 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   transition: opacity 0.25s ease;
 }
 
-.c13 .c20 {
+.c12 .c19 {
   margin-right: 30px;
 }
 
-.c13 .c22 {
+.c12 .c21 {
   margin-right: 20px;
 }
 
-.c13 .c24 {
+.c12 .c23 {
   cursor: pointer;
 }
 
-.c19 {
+.c18 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -625,14 +520,14 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin-left: 20px;
 }
 
-.c15 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c11 {
+.c10 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -642,28 +537,28 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   width: 100%;
 }
 
-.c10 {
+.c9 {
   width: 100%;
   height: 100%;
   position: relative;
   background-color: black;
 }
 
-.c10 video {
+.c9 video {
   object-fit: contain;
   width: 100%;
   height: 100%;
 }
 
-.c10 .c12 {
+.c9 .c11 {
   opacity: 1;
 }
 
-.c48 {
+.c35 {
   color: white;
 }
 
-.c43 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -675,11 +570,11 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   width: 100%;
 }
 
-.c43 .c45 p {
+.c32 .c33 p {
   padding: 0;
 }
 
-.c42 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -692,13 +587,13 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   margin-right: auto;
 }
 
-.c34 a {
+.c30 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c28 {
+.c27 {
   background: url(https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg) no-repeat center center;
   background-size: cover;
   background-color: black;
@@ -707,14 +602,14 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   height: 100%;
 }
 
-.c29 {
+.c28 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.c30 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -734,13 +629,13 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   height: 100%;
 }
 
-.c30 .c17 {
+.c29 .c16 {
   height: 60px;
   width: 44px;
   cursor: pointer;
 }
 
-.c27 {
+.c26 {
   position: absolute;
   top: 0;
   left: 0;
@@ -764,87 +659,15 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   top: 0;
 }
 
-.c8 {
+.c7 {
   position: relative;
   width: 100vw;
   height: 100vh;
 }
 
-.c8 .c9 {
+.c7 .c8 {
   position: absolute;
   top: 0;
-}
-
-@media screen and (min-width:40em) {
-  .c38 {
-    max-width: 60%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c41 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c41 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c55 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c39 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c39 {
-    line-height: 32px;
-  }
 }
 
 @media (max-width:720px) {
@@ -856,44 +679,44 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     font-size: 24px;
   }
 
-  .c3 .c59 {
+  .c3 .c42 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c46 p,
-  .c46 ul,
-  .c46 ol,
-  .c46 div[data-block=true] .public-DraftStyleDefault-block {
+  .c34 p,
+  .c34 ul,
+  .c34 ol,
+  .c34 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c46 li {
+  .c34 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c46 h1 {
+  .c34 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c46 h2 {
+  .c34 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c46 h3 {
+  .c34 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -901,14 +724,14 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     line-height: 1.5em;
   }
 
-  .c46 h3 strong {
+  .c34 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c46 blockquote {
+  .c34 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -916,55 +739,55 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     margin: 0;
   }
 
-  .c46 .content-start {
+  .c34 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:768px) {
-  .c48 .c51 {
+  .c35 .c37 {
     margin-top: 0px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c43 {
+  .c32 {
     padding-top: 80px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c43 {
+  .c32 {
     padding-top: 0px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c43 {
+  .c32 {
     padding-top: 0px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c43 {
+  .c32 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c43 {
+  .c32 {
     width: 33.33333333333333%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c43 {
+  .c32 {
     width: 33.33333333333333%;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c42 {
+  .c31 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -972,7 +795,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
 }
 
 @media screen and (min-width:52em) {
-  .c42 {
+  .c31 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -980,7 +803,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
 }
 
 @media screen and (min-width:64em) {
-  .c42 {
+  .c31 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -988,7 +811,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
 }
 
 @media screen and (min-width:40em) {
-  .c30 {
+  .c29 {
     padding-bottom: 60px;
   }
 }
@@ -1019,7 +842,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
         className="rrm-container rrm-greaterThan-xs"
       >
         <div
-          className="c6 c7"
+          className="c6 joTwtA"
           color="white"
           fontFamily={
             Object {
@@ -1046,10 +869,10 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     />
   </div>
   <div
-    className="c8"
+    className="c7"
   >
     <div
-      className="c9 c10"
+      className="c8 c9"
     >
       <video
         muted={false}
@@ -1057,23 +880,23 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
         src="https://artsy-vanity-files-production.s3.amazonaws.com/videos/scenic_mono_3.mp4"
       />
       <div
-        className="c11"
+        className="c10"
       >
         <div
-          className="c12 c13"
+          className="c11 c12"
         >
           <div
-            className="c14"
+            className="c13"
           >
             <div
-              className="c15"
+              className="c14"
             >
               <div
-                className="c16"
+                className="c15"
                 onClick={[Function]}
               >
                 <svg
-                  className="c17 c18"
+                  className="c16 c17"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -1094,21 +917,21 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                 </svg>
               </div>
               <div
-                className="c19"
+                className="c18"
               />
             </div>
             <div
-              className="c15"
+              className="c14"
             >
               <div
-                className="c20 c21"
+                className="c19 c20"
               >
                 00:00
                  / 
                 00:00
               </div>
               <div
-                className="c22 c23"
+                className="c21 c22"
                 onClick={[Function]}
               >
                 <svg
@@ -1126,7 +949,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                 </svg>
               </div>
               <svg
-                className="c24 c25"
+                className="c23 c24"
                 height="32px"
                 onClick={[Function]}
                 viewBox="0 0 28 28"
@@ -1185,7 +1008,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             </div>
           </div>
           <input
-            className="c26"
+            className="c25"
             max={0}
             onChange={[Function]}
             onMouseDown={[Function]}
@@ -1198,32 +1021,32 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
       </div>
     </div>
     <div
-      className="c27"
+      className="c26"
     >
       <div
-        className="c28"
+        className="c27"
         src="https://artsy-vanity-files-production.s3.amazonaws.com/images/galerie-ceysson-benetiere_abmb.jpg"
       />
       <div
-        className="c29"
+        className="c28"
       />
       <div
-        className="c30"
+        className="c29"
         width="100%"
       >
         <div
-          className="c31"
+          className="bBcFLq"
         >
           <div
-            className="c32"
+            className="eNmxcA"
           >
             <div
-              className="c33"
+              className="eydErb"
               onClick={[Function]}
               width="60px"
             >
               <svg
-                className="c17 c18"
+                className="c16 c17"
                 version="1.1"
                 viewBox="0 0 40 56"
                 x="0px"
@@ -1244,21 +1067,21 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
               </svg>
             </div>
             <div
-              className=""
+              className="dVZOZN"
             >
               <div>
                 <div
-                  className="c32"
+                  className="eNmxcA"
                 >
                   <div
-                    className="c34 c35"
+                    className="c30 dszOpy"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
                   >
                     Art Market
                   </div>
                   <div
-                    className="c36"
+                    className="bUZGRr deJBsu"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
                   >
@@ -1266,7 +1089,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                   </div>
                 </div>
                 <div
-                  className="c37"
+                  className="bUZGRr kUuHSn"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
@@ -1276,10 +1099,10 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             </div>
           </div>
           <div
-            className="c38"
+            className="gdqIDJ"
           >
             <div
-              className="c39"
+              className="cFlEyZ iwZBau"
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -1298,16 +1121,16 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     </div>
   </div>
   <div
-    className="c40"
+    className="iHcxGD"
   >
     <div
-      className="c41"
+      className="iyAljF"
     >
       <div
-        className="c42"
+        className="c31"
       >
         <div
-          className="c43"
+          className="c32"
           width={
             Array [
               1,
@@ -1318,7 +1141,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
           }
         >
           <div
-            className="c44"
+            className="bUZGRr cExSie"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -1326,7 +1149,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             Credits
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="article__text-section c33 c34"
             color="white"
           >
             <div
@@ -1341,16 +1164,16 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             className="rrm-container rrm-greaterThanOrEqual-md"
           >
             <div
-              className="c47"
+              className="jObTem"
             >
               <div
-                className="c48"
+                className="c35"
               >
                 <div
-                  className="c49"
+                  className="c36"
                 >
                   <div
-                    className="c50"
+                    className="bUZGRr dOrNHt"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1363,10 +1186,10 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                   </div>
                 </div>
                 <div
-                  className="c51 c52"
+                  className="c37 c38"
                 >
                   <div
-                    className="c53 c50"
+                    className="c39 dOrNHt"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1378,7 +1201,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     Share
                   </div>
                   <a
-                    className="c54"
+                    className="c40"
                     href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
                     onClick={[Function]}
                     target="_blank"
@@ -1404,7 +1227,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     </svg>
                   </a>
                   <a
-                    className="c54"
+                    className="c40"
                     href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
                     onClick={[Function]}
                     target="_blank"
@@ -1430,7 +1253,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     </svg>
                   </a>
                   <a
-                    className="c54"
+                    className="c40"
                     href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
                     onClick={[Function]}
                     target="_blank"
@@ -1461,7 +1284,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
           </div>
         </div>
         <div
-          className="c55"
+          className="ffckeT"
           width={
             Array [
               1,
@@ -1472,7 +1295,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
           }
         >
           <div
-            className="c44"
+            className="bUZGRr cExSie"
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -1480,7 +1303,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             About the Film
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="article__text-section c33 c34"
             color="white"
           >
             <div
@@ -1495,16 +1318,16 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
             className="rrm-container rrm-lessThan-md"
           >
             <div
-              className="c47"
+              className="jObTem"
             >
               <div
-                className="c48"
+                className="c35"
               >
                 <div
-                  className="c49"
+                  className="c36"
                 >
                   <div
-                    className="c50"
+                    className="bUZGRr dOrNHt"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1517,10 +1340,10 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                   </div>
                 </div>
                 <div
-                  className="c51 c52"
+                  className="c37 c38"
                 >
                   <div
-                    className="c53 c50"
+                    className="c39 dOrNHt"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1532,7 +1355,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     Share
                   </div>
                   <a
-                    className="c54"
+                    className="c40"
                     href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
                     onClick={[Function]}
                     target="_blank"
@@ -1558,7 +1381,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     </svg>
                   </a>
                   <a
-                    className="c54"
+                    className="c40"
                     href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Fvideo%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
                     onClick={[Function]}
                     target="_blank"
@@ -1584,7 +1407,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
                     </svg>
                   </a>
                   <a
-                    className="c54"
+                    className="c40"
                     href="mailto:?subject=New Study Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/video/joanne-artman-gallery-poetry-naturerefinement-form"
                     onClick={[Function]}
                     target="_blank"
@@ -1618,10 +1441,10 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
     </div>
   </div>
   <div
-    className="c56"
+    className="c41"
   >
     <div
-      className="c57"
+      className="fdqRED"
     >
       <div
         style={
@@ -1632,7 +1455,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
         }
       />
       <div
-        className="c58"
+        className="bUZGRr jritVp"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
