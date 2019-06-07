@@ -1,6 +1,6 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { cloneDeep, take } from "lodash"
+import { cloneDeep, filter, take } from "lodash"
 import React, { FC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -39,6 +39,7 @@ interface Props {
     medium?: string
     slug: string
     title: string
+    query: any
   }
   artworks: Header_artworks
 }
@@ -80,6 +81,9 @@ const imageWidthSizes = {
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useContext(SystemContext)
   const [showMore, setShowMore] = useState(false)
+  const hasMultipleArtists =
+    artworks.merchandisable_artists &&
+    artworks.merchandisable_artists.length > 1
 
   const truncateForMobile = (featuredArtists, isColumnLayout) => {
     if (featuredArtists.length < 3) {
@@ -109,6 +113,82 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     return showMore ? featuredArtists : artists
   }
 
+  const featuredArtistsEntityCollection = (artists, isColumnLayout) => {
+    return artists.map((artist, index) => {
+      const hasArtistMetaData = artist.nationality && artist.birthday
+      return (
+        <EntityContainer
+          width={["100%", "25%"]}
+          isColumnLayout={isColumnLayout}
+          key={index}
+          pb={20}
+        >
+          <EntityHeader
+            imageUrl={artist.imageUrl}
+            name={artist.name}
+            meta={
+              hasArtistMetaData
+                ? `${artist.nationality}, b. ${artist.birthday}`
+                : null
+            }
+            href={`/artist/${artist.id}`}
+            FollowButton={
+              <FollowArtistButton
+                artist={artist}
+                user={user}
+                trackingData={{
+                  modelName: AnalyticsSchema.OwnerType.Artist,
+                  context_module:
+                    AnalyticsSchema.ContextModule.CollectionDescription,
+                  entity_id: artist._id,
+                  entity_slug: artist.id,
+                }}
+                onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
+                render={({ is_followed }) => {
+                  return (
+                    <Sans
+                      size="2"
+                      weight="medium"
+                      color="black"
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      {is_followed ? "Following" : "Follow"}
+                    </Sans>
+                  )
+                }}
+              />
+            }
+          />
+        </EntityContainer>
+      )
+    })
+  }
+
+  const getFeaturedArtists = (
+    artistsCount: number,
+    isColumnLayout: boolean
+  ) => {
+    let featuredArtists
+
+    if (collection.query.artist_ids.length > 0) {
+      featuredArtists = filter(artworks.merchandisable_artists, artist =>
+        collection.query.artist_ids.includes(artist._id)
+      )
+
+      return featuredArtistsEntityCollection(featuredArtists, isColumnLayout)
+    }
+
+    if (artworks.merchandisable_artists.length > 0) {
+      return featuredArtistsEntityCollection(
+        take(artworks.merchandisable_artists, artistsCount),
+        isColumnLayout
+      )
+    }
+  }
+
   return (
     <Responsive>
       {({ xs, sm, md, lg }) => {
@@ -118,68 +198,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
-
-        const hasMultipleArtists =
-          artworks.merchandisable_artists &&
-          artworks.merchandisable_artists.length > 1
-
         const isColumnLayout =
           hasMultipleArtists || !collection.description || size === "xs"
         const smallerScreen = size === "xs" || size === "sm"
-        const featuredArtists = take(
-          artworks.merchandisable_artists,
-          artistsCount
-        ).map((artist, index) => {
-          const hasArtistMetaData = artist.nationality && artist.birthday
-          return (
-            <EntityContainer
-              width={["100%", "25%"]}
-              isColumnLayout={isColumnLayout}
-              key={index}
-              pb={20}
-            >
-              <EntityHeader
-                imageUrl={artist.imageUrl}
-                name={artist.name}
-                meta={
-                  hasArtistMetaData
-                    ? `${artist.nationality}, b. ${artist.birthday}`
-                    : null
-                }
-                href={`/artist/${artist.id}`}
-                FollowButton={
-                  <FollowArtistButton
-                    artist={artist}
-                    user={user}
-                    trackingData={{
-                      modelName: AnalyticsSchema.OwnerType.Artist,
-                      context_module:
-                        AnalyticsSchema.ContextModule.CollectionDescription,
-                      entity_id: artist._id,
-                      entity_slug: artist.id,
-                    }}
-                    onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
-                    render={({ is_followed }) => {
-                      return (
-                        <Sans
-                          size="2"
-                          weight="medium"
-                          color="black"
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "underline",
-                          }}
-                        >
-                          {is_followed ? "Following" : "Follow"}
-                        </Sans>
-                      )
-                    }}
-                  />
-                }
-              />
-            </EntityContainer>
-          )
-        })
+        const featuredArtists = getFeaturedArtists(artistsCount, isColumnLayout)
 
         return (
           <header>
