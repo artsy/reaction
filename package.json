@@ -255,6 +255,7 @@
     "setupFilesAfterEnv": ["<rootDir>/src/setup_jest.ts"],
     "testURL": "http://localhost/",
     "moduleNameMapper": {
+      "^react$": "<rootDir>/node_modules/react",
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
     }
