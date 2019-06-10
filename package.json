@@ -227,6 +227,7 @@
     "bracketSpacing": true
   },
   "jest": {
+    "cacheDirectory": ".cache/jest",
     "transform": {
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
