@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.0",
-    "@artsy/palette": "4.14.12",
+    "@artsy/palette": "4.14.13",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.3.4",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -177,6 +177,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jsonp": "^0.2.1",
     "lodash": "^4.17.4",
+    "luxon": "^1.15",
     "memoize-one": "^4.0.3",
     "moment-timezone": "^0.5.25",
     "numeral": "^2.0.4",

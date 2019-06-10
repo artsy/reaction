@@ -4,8 +4,6 @@ import React from "react"
 import { ExtractProps } from "Utils/ExtractProps"
 import { CountdownTimer } from "../CountdownTimer"
 
-Settings.defaultZoneName = "America/New_York"
-
 const DATE = "2018-12-03T13:50:31.641Z"
 const SUMMER_DATE = "2018-08-03T13:50:31.641Z"
 
@@ -53,7 +51,13 @@ describe("CountdownTimer", () => {
     mockGetOffsetBetweenGravityClock.mockReturnValue(Promise.resolve(0))
   })
 
+  const realDefaultZone = Settings.defaultZoneName
+
   afterEach(() => {
+    Settings.defaultZoneName = realDefaultZone
+  })
+
+  beforeEach(() => {
     Settings.defaultZoneName = "America/New_York"
   })
 
