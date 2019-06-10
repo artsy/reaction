@@ -1,3 +1,15 @@
+# v16.14.10 (Mon Jun 10 2019)
+
+#### 🐛  Bug Fix
+
+- Prepare Reaction for Palette luxon updates [#2525](https://github.com/artsy/reaction/pull/2525) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.14.9 (Mon Jun 10 2019)
 
 
