@@ -43,7 +43,7 @@ export const ArtworkSidebarMetadataFragmentContainer = createFragmentContainer(
       fragment ArtworkSidebarMetadata_artwork on Artwork {
         is_biddable
         edition_sets {
-          __id
+          __typename
         }
         sale_artwork {
           lot_label

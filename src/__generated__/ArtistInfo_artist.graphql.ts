@@ -29,9 +29,7 @@ export type ArtistInfo_artist = {
         readonly partners: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
-                    readonly categories: ReadonlyArray<({
-                        readonly id: string;
-                    }) | null> | null;
+                    readonly __typename: string;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -39,9 +37,7 @@ export type ArtistInfo_artist = {
     readonly auctionResults: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
-                readonly price_realized: ({
-                    readonly display: string | null;
-                }) | null;
+                readonly __typename: string;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -62,13 +58,16 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "__typename",
+    "args": null,
+    "storageKey": null
+  },
+  v0
+];
 return {
   "kind": "Fragment",
   "name": "ArtistInfo_artist",
@@ -213,7 +212,13 @@ return {
         v0
       ]
     },
-    v1,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -274,22 +279,7 @@ return {
                   "args": null,
                   "concreteType": "Partner",
                   "plural": false,
-                  "selections": [
-                    {
-                      "kind": "LinkedField",
-                      "alias": null,
-                      "name": "categories",
-                      "storageKey": null,
-                      "args": null,
-                      "concreteType": "Category",
-                      "plural": true,
-                      "selections": [
-                        v1,
-                        v0
-                      ]
-                    },
-                    v0
-                  ]
+                  "selections": v1
                 },
                 v0
               ]
@@ -343,34 +333,7 @@ return {
               "args": null,
               "concreteType": "AuctionResult",
               "plural": false,
-              "selections": [
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "price_realized",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "AuctionResultPriceRealized",
-                  "plural": false,
-                  "selections": [
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "display",
-                      "args": [
-                        {
-                          "kind": "Literal",
-                          "name": "format",
-                          "value": "0a",
-                          "type": "String"
-                        }
-                      ],
-                      "storageKey": "display(format:\"0a\")"
-                    }
-                  ]
-                },
-                v0
-              ]
+              "selections": v1
             }
           ]
         }
@@ -426,5 +389,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bd01cf9089cf9c950b01a0f675ad2ceb';
+(node as any).hash = '67fd2074bbedcb4a1adab1fe594b0edc';
 export default node;

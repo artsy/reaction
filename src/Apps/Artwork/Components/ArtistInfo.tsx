@@ -239,9 +239,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
         ) {
           edges {
             node {
-              categories {
-                id
-              }
+              __typename
             }
           }
         }
@@ -253,9 +251,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       ) {
         edges {
           node {
-            price_realized {
-              display(format: "0a")
-            }
+            __typename
           }
         }
       }

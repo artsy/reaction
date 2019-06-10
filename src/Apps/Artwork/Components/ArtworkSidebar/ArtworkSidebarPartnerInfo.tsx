@@ -72,7 +72,6 @@ export const ArtworkSidebarPartnerInfoFragmentContainer = createFragmentContaine
     artwork: graphql`
       fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
         partner {
-          __id
           name
           href
           locations {

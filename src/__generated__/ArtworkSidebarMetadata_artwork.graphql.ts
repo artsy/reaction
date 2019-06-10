@@ -9,7 +9,7 @@ export type ArtworkSidebarMetadata_artwork$ref = typeof _ArtworkSidebarMetadata_
 export type ArtworkSidebarMetadata_artwork = {
     readonly is_biddable: boolean | null;
     readonly edition_sets: ReadonlyArray<({
-        readonly __id: string;
+        readonly __typename: string;
     }) | null> | null;
     readonly sale_artwork: ({
         readonly lot_label: string | null;
@@ -51,6 +51,13 @@ return {
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
         v0
       ]
     },
@@ -92,5 +99,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '04f48094f4aca61848838f497c242421';
+(node as any).hash = 'c5e1fd530fcb8c986c96047befa0496f';
 export default node;
