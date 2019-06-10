@@ -86,9 +86,7 @@ describe("AuctionCard", () => {
     ).toEqual("\u00A0")
   })
 
-  const tz = "America/New_York"
-  const currentTime = "2019-04-16"
-  const now = () => DateTime.fromISO(currentTime).setZone(tz)
+  const now = () => DateTime.fromISO("2019-04-16").setZone("America/New_York")
 
   describe("relativeTime", () => {
     it("formats properly when >= 1 day", () => {

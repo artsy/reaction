@@ -16,7 +16,7 @@ export const Timer: React.SFC<{
 }> = ({ endDate, labelWithTimeRemaining, labelWithoutTimeRemaining }) => (
   <WithCurrentTime syncWithServer>
     {currentTime => {
-      const duration = Duration.fromMillis(
+      const duration = Duration.fromISO(
         DateTime.fromISO(endDate)
           .diff(DateTime.fromISO(currentTime))
           .toString()

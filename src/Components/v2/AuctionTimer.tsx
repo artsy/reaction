@@ -41,12 +41,20 @@ export class AuctionTimer extends React.Component<Props> {
 
   labelWithTimeRemaining() {
     const dateTime = DateTime.fromISO(this.endDate)
-    // const display = DateTime.fromISO(this.endDate).format("MMM D, h:mma")
     const amPm = dateTime.hour >= 12 ? "pm" : "am"
     const minutes =
       dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
-    const display = `${dateTime.monthShort} ${dateTime.day}, ${dateTime.hour %
-      12}:${minutes}${amPm}`
+    let hour
+    if (dateTime.hour > 12) {
+      hour = dateTime.hour - 12
+    } else if (dateTime.hour === 0) {
+      hour = 12
+    } else {
+      hour = dateTime.hour
+    }
+    const display = `${dateTime.monthShort} ${
+      dateTime.day
+    }, ${hour}:${minutes}${amPm}`
     if (this.liveStartAt) {
       return `Live ${display}`
     } else {

@@ -103,7 +103,15 @@ export const getDate = (date, format: DateFormat = "default") => {
   const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${
     dateTime.year
   }`
-  const time = `${dateTime.hour % 12}:${minutes}${amPm}`
+  let hour
+  if (dateTime.hour > 12) {
+    hour = dateTime.hour - 12
+  } else if (dateTime.hour === 0) {
+    hour = 12
+  } else {
+    hour = dateTime.hour
+  }
+  const time = `${hour}:${minutes}${amPm}`
 
   switch (format) {
     case "monthDay":
