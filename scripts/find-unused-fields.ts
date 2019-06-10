@@ -8,18 +8,17 @@ import * as ts from "typescript"
 
 function main() {
   if (process.argv.includes("--help") || process.argv.includes("-h")) {
-    console.log()
-    console.log("🔎 ", chalk.bold("find-unused-fields"), "🔍")
-    console.log()
-    console.log("USAGE")
-    console.log()
-    console.log(
-      chalk.cyan.bold("  yarn find-unused-fields"),
-      chalk.cyan("[fragment name]")
-    )
-    console.log()
-    console.log("Add known exceptions in find-unused-fields.ts")
-    console.log()
+    console.log(`
+🔎  ${chalk.bold("find-unused-fields")} 🔍
+
+USAGE
+
+  ${chalk.cyan.bold("  yarn find-unused-fields")} ${chalk.cyan(
+      "[fragment name]"
+    )}
+
+Add known exceptions in find-unused-fields.ts
+`)
     return
   }
   const languageService = getLanguageService()
