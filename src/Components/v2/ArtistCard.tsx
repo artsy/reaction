@@ -21,6 +21,7 @@ import {
   space,
   Spacer,
 } from "@artsy/palette"
+import styled from "styled-components"
 
 interface Props {
   artist: ArtistCard_artist
@@ -54,6 +55,17 @@ export class ArtistCard extends React.Component<Props> {
   }
 }
 
+// Why not use <Truncator>? Because with only one line for the artist origin/
+//  birth year, the Truncator prematurely truncates, showing "American, b. 1938"
+//  as "American, b. ...".
+const SingleLineTruncation = styled(Sans)`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+`
+
 export const LargeArtistCard: SFC<Props> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1} mb={1}>
@@ -70,10 +82,12 @@ export const LargeArtistCard: SFC<Props> = props => (
         <Truncator maxLineCount={2}>{props.artist.name}</Truncator>
       </Serif>
 
-      <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
+      <SingleLineTruncation size="2">
+        {props.artist.formatted_nationality_and_birthday}
+      </SingleLineTruncation>
     </Flex>
 
-    <Flex flexDirection="column" alignItems="center" mt={3}>
+    <Flex flexDirection="column" alignItems="center" mt="auto">
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
