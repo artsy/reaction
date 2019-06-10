@@ -37,6 +37,7 @@ const ignoredFragments: Record<string, Ignored> = {
       "images/placeholder",
       "images/placeholder",
       "images/deepZoom/Image",
+      "images/aspectRatio",
     ],
   },
 }
