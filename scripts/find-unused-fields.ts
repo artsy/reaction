@@ -7,6 +7,21 @@ import { basename, relative } from "path"
 import * as ts from "typescript"
 
 function main() {
+  if (process.argv.includes("--help") || process.argv.includes("-h")) {
+    console.log()
+    console.log("🔎 ", chalk.bold("find-unused-fields"), "🔍")
+    console.log()
+    console.log("USAGE")
+    console.log()
+    console.log(
+      chalk.cyan.bold("  yarn find-unused-fields"),
+      chalk.cyan("[fragment name]")
+    )
+    console.log()
+    console.log("Add known exceptions in find-unused-fields.ts")
+    console.log()
+    return
+  }
   const languageService = getLanguageService()
   const sources = getSources(languageService)
   findUnusedFields(sources, languageService)
