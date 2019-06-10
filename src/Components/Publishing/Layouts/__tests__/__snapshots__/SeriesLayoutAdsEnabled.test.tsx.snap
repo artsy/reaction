@@ -1,6 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout with new ads enabled renders the news layout properly when new ads are enabled 1`] = `
+.c15 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.c25 {
+  margin: auto;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.c6 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
+.c18 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c19 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c26 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
 .c4 {
   font-family: artsy-icons;
   color: white;
@@ -15,7 +84,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   color: white;
 }
 
-.c18 {
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,7 +120,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   -ms-interpolation-mode: bicubic;
 }
 
-.c2 .c19 {
+.c2 .c27 {
   margin: 0 20px;
 }
 
@@ -104,7 +173,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   z-index: 10;
 }
 
-.c15 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,22 +187,22 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin-top: 5px;
 }
 
-.c16 {
+.c21 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c16:hover {
+.c21:hover {
   opacity: 0.6;
 }
 
-.c16:first-child {
+.c21:first-child {
   padding-left: 0;
 }
 
-.c6 {
+.c7 {
   background-color: #000;
   position: fixed;
   top: 0;
@@ -143,7 +212,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   z-index: -1;
 }
 
-.c7 {
+.c8 {
   background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
@@ -155,7 +224,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   z-index: -2;
 }
 
-.c8 {
+.c9 {
   background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
   position: fixed;
   top: 0;
@@ -165,13 +234,13 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   z-index: -1;
 }
 
-.c17 {
+.c23 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c17 a {
+.c23 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -181,22 +250,22 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   background-position: bottom;
 }
 
-.c17 a:hover {
+.c23 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c17 div[class*='ToolTip'] a {
+.c23 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c17 p,
-.c17 ul,
-.c17 ol,
-.c17 .paragraph,
-.c17 div[data-block=true] .public-DraftStyleDefault-block {
+.c23 p,
+.c23 ul,
+.c23 ol,
+.c23 .paragraph,
+.c23 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -207,32 +276,32 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   font-style: inherit;
 }
 
-.c17 p:first-child,
-.c17 .paragraph:first-child,
-.c17 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c23 p:first-child,
+.c23 .paragraph:first-child,
+.c23 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c17 p:last-child,
-.c17 .paragraph:last-child,
-.c17 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c23 p:last-child,
+.c23 .paragraph:last-child,
+.c23 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c17 ul,
-.c17 ol {
+.c23 ul,
+.c23 ol {
   padding-left: 1em;
 }
 
-.c17 ul {
+.c23 ul {
   list-style: disc;
 }
 
-.c17 ol {
+.c23 ol {
   list-style: decimal;
 }
 
-.c17 li {
+.c23 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -241,7 +310,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   padding-bottom: .5em;
 }
 
-.c17 h1 {
+.c23 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -254,7 +323,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   text-align: center;
 }
 
-.c17 h1::before {
+.c23 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -265,7 +334,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   right: calc(50% - 4px);
 }
 
-.c17 h2 {
+.c23 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -274,15 +343,15 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin: 0;
 }
 
-.c17 h2 a {
+.c23 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c17 h2 .c21 {
+.c23 h2 .c29 {
   background-position: bottom !important;
 }
 
-.c17 h3 {
+.c23 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -292,7 +361,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin: 0;
 }
 
-.c17 h3 strong {
+.c23 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -300,11 +369,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   line-height: 1.5em;
 }
 
-.c17 h3 a {
+.c23 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c17 blockquote {
+.c23 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -317,11 +386,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   word-break: break-word;
 }
 
-.c17 .preventLineBreak {
+.c23 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c17 .content-end {
+.c23 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -332,14 +401,14 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin-bottom: 1px;
 }
 
-.c17 .artist-follow {
+.c23 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c17 .artist-follow::before {
+.c23 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -347,7 +416,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   font-size: 32px;
 }
 
-.c17 .artist-follow::after {
+.c23 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -356,7 +425,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   text-transform: none;
 }
 
-.c14 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -370,22 +439,22 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   width: 100%;
 }
 
-.c12 {
+.c13 {
   color: white;
   text-align: center;
 }
 
-.c12 .c20 {
+.c13 .c28 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c12 .c20 img {
+.c13 .c28 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c13 {
+.c14 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 120px;
@@ -393,13 +462,13 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin-bottom: 30px;
 }
 
-.c10 {
+.c11 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c10 .c11 {
+.c11 .c12 {
   margin-bottom: 90px;
 }
 
@@ -407,8 +476,92 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   color: white;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c15 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c15 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c17 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c17 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c17 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c22 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c22 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c22 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c19 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width:720px) {
@@ -420,44 +573,44 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
     font-size: 24px;
   }
 
-  .c2 .c19 {
+  .c2 .c27 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c17 p,
-  .c17 ul,
-  .c17 ol,
-  .c17 div[data-block=true] .public-DraftStyleDefault-block {
+  .c23 p,
+  .c23 ul,
+  .c23 ol,
+  .c23 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c17 li {
+  .c23 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c17 h1 {
+  .c23 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c17 h2 {
+  .c23 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c17 h3 {
+  .c23 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -465,14 +618,14 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
     line-height: 1.5em;
   }
 
-  .c17 h3 strong {
+  .c23 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c17 blockquote {
+  .c23 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -480,13 +633,13 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
     margin: 0;
   }
 
-  .c17 .content-start {
+  .c23 .content-start {
     font-size: 55px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c14 {
+  .c16 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -494,7 +647,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media screen and (min-width:52em) {
-  .c14 {
+  .c16 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -502,7 +655,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media screen and (min-width:64em) {
-  .c14 {
+  .c16 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -510,13 +663,13 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media (max-width:900px) {
-  .c12 .c20 {
+  .c13 .c28 {
     padding-bottom: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c13 {
+  .c14 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 65px;
@@ -552,7 +705,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
         className="rrm-container rrm-greaterThan-xs"
       >
         <div
-          className="c5 joTwtA"
+          className="c5 c6"
           color="white"
           fontFamily={
             Object {
@@ -579,38 +732,38 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
     />
   </div>
   <div
-    className="c6"
+    className="c7"
   >
-    <div
-      className="c7"
-    />
     <div
       className="c8"
     />
+    <div
+      className="c9"
+    />
   </div>
   <div
-    className="c9 c10"
+    className="c10 c11"
   >
     <div
-      className="c11 c12"
+      className="c12 c13"
       color="white"
     >
       <div
-        className="c13"
+        className="c14"
       >
         The Future of Art
       </div>
     </div>
     <div
-      className="fiAwVF"
+      className="c15"
     >
       <div
-        className="c14"
+        className="c16"
         color="white"
         width="100%"
       >
         <div
-          className="ckfosv"
+          className="c17"
           width={
             Array [
               1,
@@ -622,7 +775,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
         >
           <div>
             <div
-              className="bUZGRr eMhSvP"
+              className="c18"
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
@@ -630,15 +783,15 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
               About the Series
             </div>
             <div
-              className="bUZGRr fRcQPt"
+              className="c19"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
             >
               <div
-                className="c15"
+                className="c20"
               >
                 <a
-                  className="c16"
+                  className="c21"
                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -664,7 +817,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
                   </svg>
                 </a>
                 <a
-                  className="c16"
+                  className="c21"
                   href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
                   onClick={[Function]}
                   target="_blank"
@@ -690,7 +843,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
                   </svg>
                 </a>
                 <a
-                  className="c16"
+                  className="c21"
                   href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -723,7 +876,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
           />
         </div>
         <div
-          className="bQqYVB"
+          className="c22"
           width={
             Array [
               1,
@@ -737,7 +890,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c17"
+              className="article__text-section c23"
               color="white"
             >
               <div
@@ -757,10 +910,10 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
     </div>
   </div>
   <div
-    className="c18"
+    className="c24"
   >
     <div
-      className="fdqRED"
+      className="c25"
     >
       <div
         style={
@@ -771,7 +924,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
         }
       />
       <div
-        className="bUZGRr jritVp"
+        className="c26"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

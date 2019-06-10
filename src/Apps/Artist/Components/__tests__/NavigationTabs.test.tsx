@@ -8,7 +8,7 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 jest.mock("Components/v2/RouteTabs")
 
-describe("ArtistHeader", async () => {
+describe("ArtistHeader", () => {
   const getWrapper = async (response = NavigationTabsFixture, context = {}) => {
     return await renderRelayTree({
       Component: ({ artist }: any) => {
