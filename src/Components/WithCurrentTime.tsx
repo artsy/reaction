@@ -1,4 +1,4 @@
-import moment from "moment"
+import { DateTime } from "luxon"
 import React from "react"
 import { getCurrentTimeAsIsoString } from "Utils/getCurrentTimeAsIsoString"
 import { getOffsetBetweenGravityClock } from "Utils/time"
@@ -70,9 +70,9 @@ export class WithCurrentTime extends React.Component<
   render() {
     const { currentTime, timeOffsetInMilliseconds } = this.state
     return this.props.children(
-      moment(currentTime)
-        .subtract(timeOffsetInMilliseconds, "ms")
-        .toISOString()
+      DateTime.fromISO(currentTime)
+        .minus({ millisecond: timeOffsetInMilliseconds })
+        .toString()
     )
   }
 }
