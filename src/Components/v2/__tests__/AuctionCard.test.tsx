@@ -1,4 +1,5 @@
 import { Serif } from "@artsy/palette"
+import { AuctionCard_sale } from "__generated__/AuctionCard_sale.graphql"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import moment from "moment-timezone"
@@ -117,10 +118,35 @@ describe("AuctionCard", () => {
   })
 
   describe("upcomingLabel", () => {
+    const sale: AuctionCard_sale = {
+      " $refType": null,
+      cover_image: {
+        cropped: {
+          url: "",
+        },
+      },
+      isBenefit: false,
+      isGalleryAuction: false,
+      end_at: "",
+      href: "",
+      id: "",
+      is_live_open: false,
+      is_preview: false,
+      live_start_at: "",
+      registrationStatus: null,
+      is_registration_closed: false,
+      name: "",
+      start_at: "",
+      is_closed: false,
+      partner: {
+        name: "",
+      },
+    }
     it("handles preview sales", () => {
       expect(
         upcomingLabel(
           {
+            ...sale,
             is_preview: true,
             start_at: now().add(25, "hours"),
           },
@@ -132,6 +158,7 @@ describe("AuctionCard", () => {
     it("handles closed auctions", () => {
       expect(
         upcomingLabel({
+          ...sale,
           is_closed: true,
         })
       ).toMatchInlineSnapshot(`"Auction closed"`)
@@ -142,6 +169,7 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
+              ...sale,
               is_live_open: true,
               live_start_at: now().subtract(1, "minutes"),
             },
@@ -154,6 +182,7 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
+              ...sale,
               live_start_at: now().add(1, "days"),
             },
             now()
@@ -165,6 +194,7 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
+              ...sale,
               is_registration_closed: true,
               live_start_at: now().add(1, "days"),
             },
@@ -177,7 +207,8 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
-              registration_status: {},
+              ...sale,
+              registrationStatus: { id: "" },
               live_start_at: now().add(1, "days"),
             },
             now()

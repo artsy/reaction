@@ -18,7 +18,6 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
-import { AddressFormProps } from "Apps/Order/Components/AddressForm"
 import { get } from "Utils/get"
 
 export interface Props extends SystemContextProps {

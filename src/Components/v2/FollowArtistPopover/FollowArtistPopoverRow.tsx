@@ -152,6 +152,7 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment FollowArtistPopoverRow_artist on Artist {
+        _id
         name
         image {
           cropped(width: 45, height: 45) {
