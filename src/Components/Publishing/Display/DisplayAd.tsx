@@ -18,6 +18,8 @@ export interface DisplayAdProps extends FlexProps {
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
+  let isAdEmpty
+
   const {
     adDimension,
     adUnit,
@@ -31,20 +33,28 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   }
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
+  const ad = (
+    <GPT
+      adUnitPath={`/21805539690/${props.adUnit}`}
+      targeting={props.targetingData}
+      slotSize={[width, height]}
+      onSlotRenderEnded={e => {
+        isAdEmpty = e.isEmpty
+      }}
+    />
+  )
 
   return (
-    <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
-      <Box m="auto">
-        <GPT
-          adUnitPath={`/21805539690/${adUnit}`}
-          targeting={targetingData}
-          slotSize={[width, height]}
-        />
-        <Sans size="1" color="black30" m={1}>
-          Advertisement
-        </Sans>
-      </Box>
-    </DisplayAdContainer>
+    !isAdEmpty && (
+      <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
+        <Box m="auto">
+          {ad}
+          <Sans size="1" color="black30" m={1}>
+            Advertisement
+          </Sans>
+        </Box>
+      </DisplayAdContainer>
+    )
   )
 }
 
