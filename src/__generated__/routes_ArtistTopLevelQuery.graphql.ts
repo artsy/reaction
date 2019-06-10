@@ -63,7 +63,6 @@ fragment NavigationTabs_artist on Artist {
   id
   statuses {
     shows
-    artists
     articles
     cv(minShowCount: 0)
     auction_lots
@@ -110,7 +109,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtistTopLevelQuery",
   "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -301,13 +300,6 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "shows",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "artists",
                 "args": null,
                 "storageKey": null
               },

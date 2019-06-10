@@ -10,11 +10,9 @@ export type ArtworkSidebarExtraLinks_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly artists: ReadonlyArray<({
-        readonly _id: string;
         readonly is_consignable: boolean | null;
     }) | null> | null;
     readonly sale: ({
-        readonly _id: string;
         readonly is_closed: boolean | null;
     }) | null;
     readonly " $refType": ArtworkSidebarExtraLinks_artwork$ref;
@@ -24,13 +22,6 @@ export type ArtworkSidebarExtraLinks_artwork = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -44,7 +35,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -82,7 +79,6 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -90,7 +86,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
     {
@@ -102,7 +98,6 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -110,12 +105,12 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = 'f8935e926cd892081b16a460b563e28c';
+(node as any).hash = '7d2aba9e455ca0d2f3d1b195e0e6572d';
 export default node;

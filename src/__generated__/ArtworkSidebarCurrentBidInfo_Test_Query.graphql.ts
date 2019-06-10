@@ -24,7 +24,6 @@ query ArtworkSidebarCurrentBidInfo_Test_Query {
 }
 
 fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
-  _id
   sale {
     is_closed
     is_live_open
@@ -48,7 +47,6 @@ fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
       __id
     }
     most_recent_bid {
-      is_winning
       max_bid {
         display
       }
@@ -83,20 +81,13 @@ v2 = [
     "args": null,
     "storageKey": null
   }
-],
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "is_winning",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkSidebarCurrentBidInfo_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarCurrentBidInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarCurrentBidInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  _id\n  sale {\n    is_closed\n    is_live_open\n    __id\n  }\n  sale_artwork {\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  myLotStanding(live: true) {\n    active_bid {\n      is_winning\n      __id\n    }\n    most_recent_bid {\n      is_winning\n      max_bid {\n        display\n      }\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarCurrentBidInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarCurrentBidInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {\n  sale {\n    is_closed\n    is_live_open\n    __id\n  }\n  sale_artwork {\n    is_with_reserve\n    reserve_message\n    reserve_status\n    current_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  myLotStanding(live: true) {\n    active_bid {\n      is_winning\n      __id\n    }\n    most_recent_bid {\n      max_bid {\n        display\n      }\n      __id\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -138,13 +129,6 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "_id",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -257,7 +241,13 @@ return {
                 "concreteType": "BidderPosition",
                 "plural": false,
                 "selections": [
-                  v3,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "is_winning",
+                    "args": null,
+                    "storageKey": null
+                  },
                   v1
                 ]
               },
@@ -270,7 +260,6 @@ return {
                 "concreteType": "BidderPosition",
                 "plural": false,
                 "selections": [
-                  v3,
                   {
                     "kind": "LinkedField",
                     "alias": null,

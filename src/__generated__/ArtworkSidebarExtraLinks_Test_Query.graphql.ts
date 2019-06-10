@@ -30,12 +30,10 @@ fragment ArtworkSidebarExtraLinks_artwork on Artwork {
   is_acquireable
   is_inquireable
   artists {
-    _id
     is_consignable
     __id
   }
   sale {
-    _id
     is_closed
     __id
   }
@@ -58,20 +56,13 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkSidebarExtraLinks_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  _id\n  is_in_auction\n  is_for_sale\n  is_acquireable\n  is_inquireable\n  artists {\n    _id\n    is_consignable\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  _id\n  is_in_auction\n  is_for_sale\n  is_acquireable\n  is_inquireable\n  artists {\n    is_consignable\n    __id\n  }\n  sale {\n    is_closed\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -113,7 +104,13 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v2,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "_id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -151,7 +148,6 @@ return {
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -171,7 +167,6 @@ return {
             "concreteType": "Sale",
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,

@@ -9,9 +9,6 @@ export type ArtistRecommendations_artist = {
     readonly name: string | null;
     readonly related: ({
         readonly artists: ({
-            readonly pageInfo: {
-                readonly hasNextPage: boolean;
-            };
             readonly edges: ReadonlyArray<({
                 readonly node: ({
                     readonly id: string;
@@ -114,31 +111,6 @@ return {
             {
               "kind": "LinkedField",
               "alias": null,
-              "name": "pageInfo",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "PageInfo",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "hasNextPage",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "endCursor",
-                  "args": null,
-                  "storageKey": null
-                }
-              ]
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
               "name": "edges",
               "storageKey": null,
               "args": null,
@@ -178,6 +150,31 @@ return {
                   "storageKey": null
                 }
               ]
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "pageInfo",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PageInfo",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "endCursor",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "hasNextPage",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
             }
           ]
         }
@@ -187,5 +184,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0338a2030afd88d1e5f725dd2cc91e5f';
+(node as any).hash = '9e7938b6ba634599de75bdc87be9c6eb';
 export default node;

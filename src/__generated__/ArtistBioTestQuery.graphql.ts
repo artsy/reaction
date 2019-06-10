@@ -26,7 +26,6 @@ query ArtistBioTestQuery {
 fragment ArtistBio_bio on Artist {
   biography_blurb(format: HTML, partner_bio: true) {
     text
-    credit
   }
   __id
 }
@@ -53,7 +52,7 @@ return {
   "operationKind": "query",
   "name": "ArtistBioTestQuery",
   "id": null,
-  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n",
+  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -121,13 +120,6 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "text",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "credit",
                 "args": null,
                 "storageKey": null
               }

@@ -4,9 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkSidebarAuctionPartnerInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarAuctionPartnerInfo_artwork$ref = typeof _ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 export type ArtworkSidebarAuctionPartnerInfo_artwork = {
-    readonly _id: string;
     readonly partner: ({
-        readonly _id: string;
         readonly name: string | null;
     }) | null;
     readonly sale_artwork: ({
@@ -26,13 +24,6 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
@@ -44,7 +35,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -54,7 +44,6 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -62,7 +51,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
     {
@@ -81,7 +70,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
     {
@@ -93,7 +82,13 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -108,12 +103,12 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        v0
       ]
     },
-    v1
+    v0
   ]
 };
 })();
-(node as any).hash = 'e1fe54df68d7f574fbcb85149c14f99e';
+(node as any).hash = 'c6a39c92e2e559c89b1e7b31adf242a8';
 export default node;

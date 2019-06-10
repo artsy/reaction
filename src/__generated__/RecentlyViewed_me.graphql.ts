@@ -13,7 +13,6 @@ export type RecentlyViewed_me = {
                 readonly __id: string;
                 readonly image: ({
                     readonly aspect_ratio: number;
-                    readonly placeholder: string | null;
                     readonly url: string | null;
                 }) | null;
                 readonly href: string | null;
@@ -96,13 +95,6 @@ return {
                       "kind": "ScalarField",
                       "alias": "__id",
                       "name": "id",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "placeholder",
                       "args": null,
                       "storageKey": null
                     },

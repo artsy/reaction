@@ -27,7 +27,6 @@ fragment NavigationTabs_artist on Artist {
   id
   statuses {
     shows
-    artists
     articles
     cv(minShowCount: 0)
     auction_lots
@@ -57,7 +56,7 @@ return {
   "operationKind": "query",
   "name": "NavigationTabs_Test_Query",
   "id": null,
-  "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    __id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n",
+  "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    __id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -119,13 +118,6 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "shows",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "artists",
                 "args": null,
                 "storageKey": null
               },

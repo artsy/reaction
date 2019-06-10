@@ -4,7 +4,6 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _ArtworkSidebarCurrentBidInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarCurrentBidInfo_artwork$ref = typeof _ArtworkSidebarCurrentBidInfo_artwork$ref;
 export type ArtworkSidebarCurrentBidInfo_artwork = {
-    readonly _id: string;
     readonly sale: ({
         readonly is_closed: boolean | null;
         readonly is_live_open: boolean | null;
@@ -25,7 +24,6 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
             readonly is_winning: boolean | null;
         }) | null;
         readonly most_recent_bid: ({
-            readonly is_winning: boolean | null;
             readonly max_bid: ({
                 readonly display: string | null;
             }) | null;
@@ -52,14 +50,7 @@ v1 = [
     "args": null,
     "storageKey": null
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "is_winning",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "ArtworkSidebarCurrentBidInfo_artwork",
@@ -67,13 +58,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -186,7 +170,13 @@ return {
           "concreteType": "BidderPosition",
           "plural": false,
           "selections": [
-            v2,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "is_winning",
+              "args": null,
+              "storageKey": null
+            },
             v0
           ]
         },
@@ -199,7 +189,6 @@ return {
           "concreteType": "BidderPosition",
           "plural": false,
           "selections": [
-            v2,
             {
               "kind": "LinkedField",
               "alias": null,
@@ -219,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7994fa82fd257302e062c4a8ce092a40';
+(node as any).hash = 'fedde3c8966b405132cca1af168ee580';
 export default node;

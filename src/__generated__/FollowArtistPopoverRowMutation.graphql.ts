@@ -20,7 +20,6 @@ export type FollowArtistPopoverRowMutationResponse = {
                         readonly node: ({
                             readonly __id: string;
                             readonly _id: string;
-                            readonly id: string;
                             readonly name: string | null;
                             readonly image: ({
                                 readonly cropped: ({
@@ -55,7 +54,6 @@ mutation FollowArtistPopoverRowMutation(
             node {
               __id
               _id
-              id
               name
               image {
                 cropped(width: 45, height: 45) {
@@ -187,13 +185,6 @@ v2 = [
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
                             "name": "name",
                             "args": null,
                             "storageKey": null
@@ -265,7 +256,7 @@ return {
   "operationKind": "mutation",
   "name": "FollowArtistPopoverRowMutation",
   "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n                __id: id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n                __id: id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
