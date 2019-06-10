@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MarketInsights snapshots renders correctly 1`] = `
-.c6 {
+.c5 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 15px;
   line-height: 1.25em;
@@ -76,10 +76,6 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
   content: "Blue chip galleries have multiple locations internationally and participate in major art fairs.";
 }
 
-.c4 {
-  position: relative;
-}
-
 .c0 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -99,7 +95,7 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
   padding: 10px 30px;
 }
 
-.c5 {
+.c4 {
   color: #666666;
   padding: 8px 0;
   font-family: Unica77LLWebRegular,Arial,serif;
@@ -108,7 +104,7 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
   line-height: 1.4em;
 }
 
-.c5 a {
+.c4 a {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 10px;
@@ -147,7 +143,7 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
               }
             >
               <svg
-                className="c4"
+                className="Icon-sc-1eovgys-0 lmJieb"
                 fill="black100"
                 height="18px"
                 viewBox="0 0 18 18"
@@ -168,11 +164,11 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="c5"
+    className="c4"
   >
     Generated using partial data. 
     <a
-      className="c6"
+      className="c5"
       href="mailto:productfeedback@artsy.net?subject=Feedback on \\"About the Artist\\" information"
       target="_self"
     >
