@@ -34,6 +34,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         history = {},
         initialRoute = "/",
         routes = [],
+        metaphysicsVersion,
       } = config
 
       const user = getUser(context.user)
@@ -42,6 +43,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         createRelaySSREnvironment({
           cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
           user,
+          metaphysicsVersion,
         })
 
       const getHistoryProtocol = () => {

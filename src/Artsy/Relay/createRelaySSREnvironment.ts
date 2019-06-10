@@ -16,6 +16,7 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern/node8"
+import { MetaphysicsVersion } from "Utils/metaphysics"
 import { metaphysicsExtensionsLoggerMiddleware } from "./middleware/metaphysicsExtensionsLoggerMiddleware"
 
 const isServer = typeof window === "undefined"
@@ -36,6 +37,7 @@ interface Config {
   user?: User
   checkStatus?: boolean
   relayNetwork?: RelayNetwork
+  metaphysicsVersion?: MetaphysicsVersion
 }
 
 export interface RelaySSREnvironment extends Environment {
@@ -44,7 +46,13 @@ export interface RelaySSREnvironment extends Environment {
 }
 
 export function createRelaySSREnvironment(config: Config = {}) {
-  const { cache = {}, checkStatus, user, relayNetwork } = config
+  const {
+    cache = {},
+    checkStatus,
+    user,
+    relayNetwork,
+    metaphysicsVersion = 1,
+  } = config
 
   const relaySSRMiddleware = isServer
     ? new RelayServerSSR()
@@ -84,7 +92,10 @@ export function createRelaySSREnvironment(config: Config = {}) {
         return next(req)
       },
       urlMiddleware({
-        url: METAPHYSICS_ENDPOINT,
+        url:
+          metaphysicsVersion === 1
+            ? METAPHYSICS_ENDPOINT
+            : `${METAPHYSICS_ENDPOINT}/v2`,
         headers: !!user
           ? {
               ...headers,

@@ -5,15 +5,23 @@ import "isomorphic-fetch"
 import * as sharify from "sharify"
 import { NetworkError } from "./errors"
 
+export type MetaphysicsVersion = 1 | 2
+
 export function metaphysics<T>(
   payload: { query: string; variables?: object },
   user?: User,
-  checkStatus: boolean = true
+  checkStatus: boolean = true,
+  version: MetaphysicsVersion = 1
 ): Promise<T> {
   const headers = {
     "Content-Type": "application/json",
     "User-Agent": "Reaction",
   }
+
+  const MP_ENDPOINT =
+    version === 1
+      ? sharify.data.METAPHYSICS_ENDPOINT
+      : `${sharify.data.METAPHYSICS_ENDPOINT}/v2`
 
   // TODO: rename User to AuthTokens and conver to union type
   const AuthHeaders = !!user
@@ -25,7 +33,7 @@ export function metaphysics<T>(
         }
     : null
 
-  return fetch(sharify.data.METAPHYSICS_ENDPOINT, {
+  return fetch(MP_ENDPOINT, {
     method: "POST",
     headers: !!user
       ? {

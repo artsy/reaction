@@ -1,6 +1,7 @@
 import { RelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { HistoryOptions, HistoryProtocol } from "farce"
 import { RouteConfig } from "found"
+import { MetaphysicsVersion } from "Utils/metaphysics"
 import { SystemContextProps } from "../SystemContext"
 
 export { Link } from "found"
@@ -42,4 +43,9 @@ export interface RouterConfig {
    * URL passed from server
    */
   url?: string
+
+  /**
+   * Which metaphysics version to use (defaults to v1)
+   */
+  metaphysicsVersion?: MetaphysicsVersion
 }
