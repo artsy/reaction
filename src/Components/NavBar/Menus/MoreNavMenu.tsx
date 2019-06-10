@@ -3,7 +3,7 @@ import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import React from "react"
 
-export const MoreNavMenu: React.FC = () => {
+export const MoreNavMenu: React.FC<{ width?: number }> = ({ width = 160 }) => {
   const { trackEvent } = useTracking()
 
   const trackClick = event => {
@@ -20,7 +20,7 @@ export const MoreNavMenu: React.FC = () => {
   }
 
   return (
-    <Menu onClick={trackClick}>
+    <Menu onClick={trackClick} width={width}>
       {/*
         Hide nav items at md / lg as they appear in the top nav
       */}

@@ -1,5 +1,25 @@
 import { FilterState } from "../FilterState"
 
+const initialState = {
+  medium: "*",
+  for_sale: null,
+  page: 1,
+  major_periods: [],
+  partner_id: null,
+  sort: "-decayed_merch",
+  acquireable: null,
+  at_auction: null,
+  offerable: null,
+  inquireable_only: null,
+  price_range: "*-*",
+  height: "*-*",
+  width: "*-*",
+  attribution_class: [],
+  artist_id: null,
+  color: null,
+  keyword: null,
+}
+
 describe("FilterState", () => {
   let instance = null
 
@@ -54,24 +74,37 @@ describe("FilterState", () => {
     }
     expect(instance.rangeToTuple("height")).toEqual([1, 50])
   })
-})
 
-const initialState = {
-  medium: "*",
-  for_sale: null,
-  page: 1,
-  major_periods: [],
-  partner_id: null,
-  sort: "-decayed_merch",
-  acquireable: null,
-  at_auction: null,
-  offerable: null,
-  inquireable_only: null,
-  price_range: "*-*",
-  height: "*-*",
-  width: "*-*",
-  attribution_class: [],
-  artist_id: null,
-  color: null,
-  keyword: null,
-}
+  it("returns a height range tuple based on the state", () => {
+    instance.state = {
+      height: "*-50",
+    }
+    expect(instance.rangeToTuple("height")).toEqual([1, 50])
+  })
+
+  it("returns hasFilters as false with no filters", () => {
+    instance.state = initialState
+    expect(instance.hasFilters).toEqual(false)
+  })
+
+  it("returns hasFilters as true if a medium is set", () => {
+    instance.state = {
+      medium: "painting",
+    }
+    expect(instance.hasFilters).toEqual(true)
+  })
+
+  it("returns hasFilters as true if a aquiereable is set", () => {
+    instance.state = {
+      aquiereable: true,
+    }
+    expect(instance.hasFilters).toEqual(true)
+  })
+
+  it("returns hasFilters as true if a price range is not default", () => {
+    instance.state = {
+      price_range: "5000-*",
+    }
+    expect(instance.hasFilters).toEqual(true)
+  })
+})

@@ -133,7 +133,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
       <LoadingArea isLoading={this.state.isLoading}>
         {artists.length === 0 ? (
           <Box mt={3}>
-            <ZeroState entity="artists" term={term} />
+            <ZeroState term={term} />
           </Box>
         ) : (
           this.renderArtists()

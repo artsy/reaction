@@ -669,6 +669,501 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
+export const FeatureArticleHostedAds: ArticleData = {
+  ...FeatureArticle,
+  sections: [
+    {
+      type: "text",
+      body:
+        '<p>My first forays into the Lower East Side of Manhattan began in 1972. I was an eccentric Black 17-year-old from Montreal, wearing eyeliner, looking for my flock. I arrived after the Stonewall Riots to a world of off-off-Broadway theatrical characters. It wasn’t until 1976 that I would firmly transplant myself to the Lower East Side with plans to pursue my vision of life as a poet and artist. </p><p>It’s been 50 years since Stonewall. In our new age of corporate marketing, the annual Pride March has become a celebration of pride without anger, as if we need not continue fighting for our lives, our civil and human rights. How would our ongoing struggle be portrayed in the various anniversary exhibitions on view in New York: “Art after Stonewall, 1969–1989,” organized by the Columbus Museum of Art at the <a href="https://www.artsy.net/leslie-lohman-museum">Leslie-Lohman Museum</a> and the <a href="https://www.artsy.net/grey-nyu">Grey Art Gallery</a>, and “Nobody Promised You Tomorrow: Art 50 Years After Stonewall” at the <a href="https://www.artsy.net/brooklyn-museum">Brooklyn Museum?</a></p>',
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/C6L7avZzD-i4-iHZgDNvcg%2F04.-Lyle-Ashton-Harris%2C-Americas-%28Right%29.jpg",
+          caption:
+            "<p>Lyle Ashton Harris, <i>Americas, </i>1987–88/2007. Courtesy of the artist, Salon 94, and the Solomon R. Guggenheim Museum / Art Resource, NY.</p>",
+          type: "image",
+          width: 1190,
+          height: 1731,
+          index: 0,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>I was 14 years old at the time of the riot in June 1969, when patrons of the Stonewall Inn, a mafia-run gay bar in Greenwich Village, fought back against law enforcement’s oppressive bullying. I was living in Montreal, a place that was progressively liberated. Amendments to the Criminal Code to relax laws against homosexuality were proposed by then-Justice Minister Pierre Trudeau in 1967, two years before Stonewall launched gay rights into the spotlight in the United States. The bill to decriminalize homosexuality was passed in Canada in 1969, and likely overshadowed any press of Stonewall in my world. </p><p>Due to my delayed landing in New York in 1972, I’d missed that year’s annual commemoration of Stonewall. In the years that followed, I have memories of throngs of folks gravitating west on the last Sunday in June for the Gay Liberation Marches. I rarely followed. I wasn’t interested in the mob mentality of marches or parades; I preferred avoiding them altogether. <strong><em> </em></strong></p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/cudoUvvjlGol3luBvqtUtA%2FHujar-GLF2.jpg",
+          caption:
+            "<p>Peter Hujar, <i>Gay Liberation Front Poster, </i>1970. © 1987 The Peter Hujar Archive LLC; Courtesy Pace/MacGill Gallery, New York and Fraenkel Gallery, San Francisco.</p>",
+          type: "image",
+          width: 1196,
+          height: 1780,
+          index: 1,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/abZpHhfupMPXkfM-niszCQ%2F07.-Diana-Davies%2C-Gay-Rights-Demonstration%2C-Albany%2C-NY%2C-1971.jpg",
+          caption:
+            "<p>Diana Davies,<i> Gay Rights Demonstrations, Albany, NY, </i>1971.<i> </i>© The New York Public Library. </p>",
+          type: "image",
+          width: 1200,
+          height: 1779,
+          index: 2,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>The first march was a protest for civil and human rights; anyone could join in off the streets. Today the parade has been taken over by corporate-sponsored floats that tout how wonderful it is to be gay. Onlookers can no longer participate—railings guard the long line of floats. Considering the unequal society we still live in, this is shameful. Whatever liberation we feel we’ve won in our post-Stonewall age of illusion reminds me of what the transgender activist Sylvia Rivera had to say in a 1995 interview, clipped in <a href="https://www.artsy.net/artist/sasha-wortzel">Sasha Wortzel</a>’s 2018 video, <em>This is an Address</em>, on view in the Brooklyn Museum show: “Fight for something and stop being comfortable.” We’re still at war. </p><p>There’s a suggestion that the tide may be turning. This year there are plans for concurrent marches. The nonprofit Heritage of Pride will make a loop from the Flatiron District to Stonewall and up to Chelsea with its sponsored floats behind an impenetrable wall of police barriers. A second parade, organized by the Reclaim Pride Coalition, will follow the path of the original march—without barriers or corporate floats—to refocus our demand for civil rights.</p>',
+    },
+    {
+      type: "text",
+      body: "<h1></h1>",
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/E9aSd7E-Yqi39eW53cq3dQ%2FWarhol.jpg",
+          caption:
+            "<p>Andy Warhol, <i>Ladies and Gentlemen, </i>1975. © 2018 The Andy Warhol Foundation for the Visual Arts, Inc. / Licensed by Artists Rights Society (ARS), New York.</p>",
+          type: "image",
+          width: 1400,
+          height: 2112,
+          index: 3,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p><a href="https://www.artsy.net/show/leslie-lohman-museum-art-after-stonewall-1969-1989">The Leslie-Lohman show</a> spans the 1970s, the period covering my early introduction to the Lower East Side, where I still live today. For a brief period in the mid-’90s, I lived on Fifth Avenue, situated on Manhattan’s East/West divide. I never felt comfortable on this border. The ethnically diverse East Village was always preferable to the homogenous commercialization of the West Village. With the exception of occasional visits to the West Side piers or visits to the Oscar Wilde Memorial Bookshop on Christopher Street, where my first chapbook of poems was distributed, I rarely crossed over. Marsha P. Johnson would hang out on Christopher Street. I met her on the Lower East Side in 1972, when she was rehearsing with the Hot Peaches. </p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/-66cqur2l6sxcOcQT9G_SQ%2F17.-Ann-Patricia-Meredith%2C-Lesbian-Physique%2C-Gay-Games-II-Triumph-in-%2786-San-Francisco%2C-CA%2C-1986-%281%29.jpg",
+          caption:
+            "<p>Ann Patricia Meredith, <i>Lesbian Physique, Gay Games II/Triumph In ‘86 San Francisco, CA, 1986, </i>from “A Different Drummer,” 1970–90. ©annpmeredith.com 6.1986.</p>",
+          type: "image",
+          width: 1800,
+          height: 1295,
+          index: 4,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>During this time, drag and queer performance art might appear out on the street. The late performance artist Stephen Varble is represented in the show in two photographic portraits by Greg Day and <a href="https://www.artsy.net/artist/peter-hujar-2">Peter Hujar</a>. By chance, I witnessed some of Varble’s antics on West Broadway in the mid-’70s. On the weekends he would arrive to SoHo in a limo to then tour the streets in his elaborate costumes.</p><p>Then there’s a 1970 poster by <a href="https://www.artsy.net/artist/martin-wong">Martin Wong</a> advertising the Cockettes, a group of theatrical drag personas—a big disappointment as far as performance from what I remember—who nonetheless left an indelible impression on what queer could look like. Without the glittered beards and eccentric drag of the Cockettes or Stephen Varble, would there ever have been the Sisters of Perpetual Indulgence? All of their camp aesthetics were foregrounded by <a href="https://www.artsy.net/artist/jack-smith-1">Jack Smith</a>’s earlier 1963 movie <em>Flaming Creatures</em>, which is not included in the exhibition. The color film’s graphic depiction of queer sexuality is canonized in gay history.</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/dC-Ed7L5yJef66goLvzxmA%2F13.+Peter+Hujar%2C+Daniel+Ware+%28Cockette%29.jpg",
+          caption:
+            "<p>Peter Hujar, <i>Daniel Ware (Cockette), </i>1971. © 1987 The Peter Hujar Archive LLC. Courtesy of Pace/MacGill Gallery, New York, and Fraenkel Gallery, San Francisco. </p>",
+          type: "image",
+          width: 1400,
+          height: 1384,
+          index: 5,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>For the most part, the show largely presents documentary photography, portraiture, and archival materials that highlight what has always been visible. The prominence of these pictures had me wondering why there isn’t more work included by artists that took on the spirit of the post-Stonewall era to make more interpretive creative statements about being queer.</p>",
+    },
+    {
+      type: "text",
+      body:
+        "<blockquote>We had always been in the picture, but in the post-Stonewall era, unabashedly so.</blockquote>",
+    },
+    {
+      type: "text",
+      body:
+        '<p>What is recovered from this period in photography, though, will live on for generations. Photographers like <a href="https://www.artsy.net/artist/robert-mapplethorpe">Robert Mapplethorpe</a>, <a href="https://www.artsy.net/artist/catherine-opie">Catherine Opie</a>, and <a href="https://www.artsy.net/artist/alvin-baltrop">Alvin Baltrop</a> exposed the predominance of the body and queer sex play among the gay community in the 1970s. I liked seeing the representations of ourselves so openly. We had always been in the picture, but in the post-Stonewall era, unabashedly so.</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "58d436c1cd530e026e0e54a1",
+          slug: "robert-mapplethorpe-17",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/BaNXUiAp74GGF6PTKBU1Pg/larger.jpg",
+          title: null,
+          date: "",
+          partner: {
+            name: "Baudoin Lebon Gallery",
+            slug: "baudoin-lebon-gallery",
+          },
+          artists: [
+            {
+              name: "Robert Mapplethorpe",
+              slug: "robert-mapplethorpe",
+            },
+          ],
+          artist: {
+            name: "Robert Mapplethorpe",
+            slug: "robert-mapplethorpe",
+          },
+          width: 609,
+          height: 610,
+          index: 6,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/MEORh5qbS0v8g7tKEO6Log%2FJS0531.jpg",
+          caption:
+            "<p>Jack Smith, <i>Untitled</i>, c. 1964–1981. © Jack Smith Archive. Courtesy of Gladstone Gallery, New York and Brussels.</p>",
+          type: "image",
+          width: 3606,
+          height: 4164,
+          index: 7,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p><a href="https://www.artsy.net/gene/conceptual-art">Conceptual</a> representations of queerness are best exemplified in the show by the remarkable number of works by women. Kudos for that. There are so many I’ve never heard of, for no good reason. The abstractions produced by now-well-known lesbian artists like <a href="https://www.artsy.net/artist/harmony-hammond">Harmony Hammond</a>, <a href="https://www.artsy.net/artist/joan-snyder">Joan Snyder</a>, <a href="https://www.artsy.net/artist/barbara-hammer">Barbara Hammer</a>, <a href="https://www.artsy.net/artist/lula-mae-blocton">Lula Mae Blocton</a>, and Fran Winant, gathered in one gallery, provide alternative thinking about queerness as a visual metaphor. Snyder does an exemplary job of this in <em>Heart On</em> (1975), a sutured, textural abstract painting that had me thinking about how we contain our feelings, blending or contrasting one in relation to the other.</p>',
+    },
+    {
+      type: "image_set",
+      title: null,
+      layout: "full",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/3lHi4h8Xh9qhz5TMsrCmpA%2FLouise+Fishman%2C+Angry+Jill.jpg",
+          caption:
+            "<p>Louise Fishman, <i>Angry Jill, </i>1973. © Louise Fishman. Courtesy of the artist.</p>",
+          type: "image",
+          width: 1800,
+          height: 1153,
+          setTitle: null,
+          index: 8,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/HOLB-0lLwK5AeiupcaKYBQ%2F273+Heart+On.jpg",
+          caption:
+            "<p>Joan Snyder, <i>Heart On, </i>1975. Photo by Jack Abraham. Courtesy of the artist and The Metropolitan Museum of Art.</p>",
+          type: "image",
+          width: 1800,
+          height: 1346,
+          setTitle: null,
+          index: 9,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/4wrm6Xca69dAuaALUOpvjQ%2F46aeefb41b96194451214decbcd32f50.jpeg",
+          caption:
+            "<p>Harmony Hammond, <i>Duo, </i>1980. © Harmony Hammond/Licensed by VAGA via ARS, New York. Courtesy of Alexander Gray Associates, New York.</p>",
+          type: "image",
+          width: 1431,
+          height: 1800,
+          setTitle: null,
+          index: 10,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/01AzjBf3_d6sv3Z3x9BBgw%2FMBE010+Happy+Birthday+America.jpg",
+          caption:
+            "<p>Mary Beth Edelson, <i>Happy Birthday America,</i> 1976. Courtesy the artist and David Lewis, New York.</p>",
+          type: "image",
+          width: 7218,
+          height: 5004,
+          setTitle: null,
+          index: 11,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/pT-3oWIg-ZA3wQWaSv7wEQ%2FLouise+Fishman%2C+Angry+Louise.jpg",
+          caption:
+            "<p>Louise Fishman,  <i>Angry Louise, </i> 1973. © Louise Fishman. Courtesy of the artist.</p>",
+          type: "image",
+          width: 1800,
+          height: 1164,
+          setTitle: null,
+          index: 12,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>The figures who created platforms for this work to be visible to the larger public are also lionized. Holly Solomon was a champion for what the queer 1970s had to offer. She was the first art dealer to show Mapplethorpe and embrace <a href="https://www.artsy.net/artist/thomas-lanigan-schmidt">Thomas Lanigan-Schmidt</a> with her eponymous gallery. I would get to know Holly personally in the ’80s when I began my own gallery venture with Gracie Mansion. Holly always appreciated our glitzy aesthetic. </p><h1></h1>',
+    },
+    {
+      type: "text",
+      body:
+        '<p>Judy Garland appears in the <a href="https://www.artsy.net/show/grey-art-gallery-art-after-stonewall-1969-1989">Grey Art Gallery’s iteration</a> of the show, representing the 1980s, in <em>Pride 69–’89 </em>(1989), a video by the collective DIVA TV. There’s a persistent belief that the Stonewall Riot happened because many gay folks were mourning Garland’s death. Here, she is a reminder to never forget what was lost to the generation after Stonewall. <a href="https://www.artsy.net/artist/robert-gober">Robert Gober</a>’s <em>Untitled Closet</em> (1989) announces what we could expect to discover in the ’80s: An empty closet with the door removed. After coming out in the ’70s, we were now all about being center stage, even as AIDS was killing too many of us. </p>',
+    },
+    {
+      type: "text",
+      body:
+        "<blockquote>Our passion for loving was seen as killing us, although it saved us, liberating our desires and solidifying our emotional bonds by the time AIDS arrived.</blockquote>",
+    },
+    {
+      type: "text",
+      body:
+        '<p>The queer presence in the East Village became a press magnet. They tagged it “the East Village Scene,” as if there weren’t numerous other scenes at its edges. We were flooded with talented artists and more and more places to present their work. New doors would open in the ’80s when the clubs really got going. They were certainly more familiar social settings than the West Side bars that too often didn’t welcome Black folks. Venues like Club 57, The Pyramid Club, PS 122, 8BC, La MaMa, and the Theater for a New City centered queerness. These were the places I ventured in my neighborhood. </p><p>With the introduction of these spaces, queer performance art became even more evident. John Kelly, <a href="https://www.artsy.net/artist/karen-finley">Karen Finley</a>, Tim Miller, Klaus Nomi, <a href="https://www.artsy.net/artist/keith-haring">Keith Haring</a>, and <a href="https://www.artsy.net/artist/david-mcdermott">David McDermott</a> grew out of a different scene than John Vaccaro, Charles Ludlam’s Theater of the Ridiculous, the Hot Peaches, and the Bloolips—inhabitants of the theatrical world I was introduced to when I first arrived in New York. In the ’80s, drag performers like Ethyl Eichelberger and Penny Arcade crossed over to the burgeoning <a href="https://www.artsy.net/article/artsy-editorial-history-drag-art">art world club scene</a>.</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/ZizcBKU4MNcb5C9zjdzxxA%2Fjds.jpg",
+          caption:
+            "<p>Jimmy DeSana, <i>Television</i>, 1978. Courtesy of the Jimmy DeSana Trust and Salon 94, New York.</p>",
+          type: "image",
+          width: 1261,
+          height: 1872,
+          index: 13,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/1D8PtDLZJ1VSTLp4SKtG8g%2FStephenVarbelbyGregDay007t.jpg",
+          caption:
+            "<p>Greg Day, <i>Stephen Varble at the 12th Annual NY Avant Garde Festival, </i>1975. Courtesy of the artist.</p>",
+          type: "image",
+          width: 579,
+          height: 864,
+          index: 14,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>The ’80s were my biggest swing. I was submerged in art and sexual adventures on the Lower East Side, SoHo, and Tribeca. <a href="https://www.artsy.net/artist/jimmy-desana">Jimmy DeSana</a>’s images from this decade always skirted the edge of that culture. I met Jimmy when I was curating photography exhibitions in the late ’70s, soon after he created the pictures from his “Submission” series (1979). The image used to represent him in this exhibition, <em>Television</em> (1978), is <a href="https://www.artsy.net/gene/surrealism">Surrealist</a> in nature. DeSana is shown lying on seamless paper, nude save for a leather mask covering his face, as he props up a plugged-in TV with his feet. The photograph alludes to a fetishized sexuality that was a part of our generation’s playtime. The parties would eventually end and turn us into warriors fighting for our lives during the AIDS pandemic.</p><p>“What is the sound of ballroom?” asks <em>Dance Tracks 1973–1997 (from the Ballroom Archive &amp; Oral History Project Interviews)</em>, a 2010 project presented by Ultra-Red and the Vogue’ology Collective<em>.</em> I never attended the balls or Keith Haring’s parties at the Paradise Garage where Grace Jones performed, but what a brilliant consideration. This work and several others included in the show clearly bring into view the presence of a Black gay cultural movement.</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/ZbWj1gONcDyY3Yd8ouSMGA%2F12.-Keith-Haring%2C-Safe-Sex.jpg",
+          caption:
+            "<p>Keith Haring, <i>Safe Sex, </i>1985. © Keith Haring Foundation.</p>",
+          type: "image",
+          width: 1400,
+          height: 1433,
+          index: 15,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>The Other Countries collective of Black gay male writers are the subjects of Marlon T. Riggs’s film with Essex Hemphill, <em>Affirmations</em> (1990), and <a href="https://www.artsy.net/artist/lyle-ashton-harris">Lyle Ashton Harris</a>’s <em>Americas</em> triptych of black-and-white photographs (1987–88) presents the artist and a model posing in whiteface in the tradition of African warriors. </p><p>We were not a monolithic group. <em>That Fertile Feeling</em>, a 1980 video featuring <a href="https://www.artsy.net/artist/vaginal-davis">Vaginal Creme Davis</a> performing in the artist’s usual over-the-top madness, provides boundary-pushing proof that being queer in all its diversity was happening in art at the same time, even though much of it went unrecognized because of the respectability politics that many of us were pushing against. </p><p>Yet the exhibitions offer no picture of what our AIDS life looked like. To my surprise, not one <a href="https://www.artsy.net/artist/hugh-steers">Hugh Steers</a> painting was to be found. Tragic. His was a true artistic expression of what was happening in our world at the time, in our war against a system that compromised AIDS education and promoted fear that stigmatized people living with the disease. <strong><em> </em></strong></p>',
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/fYlnqaZZnlXD9FdXGql-AQ%2Fquilt.jpg",
+          caption:
+            "<p>Names Project Foundation, <i>AIDS Memorial Quilt, Block 001, </i>1987. Courtesy of the NAMES Project Foundation.</p>",
+          type: "image",
+          width: 1200,
+          height: 1181,
+          index: 16,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>Fear put many back in the closet. They wanted us dead, as <a href="https://www.artsy.net/artist/david-wojnarowicz">David Wojnarowicz</a> suggested in his 1990–91 broadside <em>Untitled (One Day this Kid…)</em>. Sex clubs and bathhouses shut down. Our passion for loving was seen as killing us, although it saved us, liberating our desires and solidifying our emotional bonds by the time AIDS arrived.</p><p>What’s left to say about this is predominantly illustrated by <a href="https://www.artsy.net/artist/gran-fury">Gran Fury</a>’s political protest posters, which were well publicized in ACT UP demonstrations. Why photographer <a href="https://www.artsy.net/artist/lola-flash">Lola Flash</a>, a member of ACT UP and the affiliate group Art+, was never recognized for her color reversal photographic prints, astounds me. Many of Flash’s works document political protests and actions in which the artist herself was a participant. She is represented in the show by a single photograph, <em>AIDS Quilt</em> (1987). </p>',
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/_Oaj3Y25vZ6gIs5rqoB2KQ%2F11.-Gran-Fury%2C-The-Government-Has-Blood-on-Its-Hands.jpg",
+          caption:
+            "<p>Gran Fury, <i>The Government Has Blood On Its Hands, </i>1988. Courtesy of Avram Finkelstein.</p>",
+          type: "image",
+          width: 1200,
+          height: 1728,
+          index: 17,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>What the artists in both exhibitions have in common, although it’s barely touched on, is that they all lived through the worst of the HIV/AIDS epidemic. They witnessed too many dying or were themselves afflicted. Visual AIDS, a nonprofit New York arts organization formed in the late ’80s, would bring it all together. AIDS decimated and affected the larger part of our queer and non-queer allies. In the ’90s, I was invited to join the Visual AIDS board with my interest in developing the Archive Project. That is when the invisible became visible and I could begin to connect the dots.</p>",
+    },
+    {
+      type: "text",
+      body: "<h1></h1>",
+    },
+    {
+      type: "text",
+      body:
+        "<p>The Brooklyn Museum was a different experience entirely. “Nobody Promised You Tomorrow” tells a more inclusive story of the Stonewall Uprising, directly connecting it to the remarkably diverse community of LGBTQ+ artists carrying on the legacy of Stonewall today and into the future. These artists have come into their own within the developing culture of queer studies and gender theory that came to fruition in the 1990s, well after Stonewall. </p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/5wMsFYKm9CR04IRUc3V-UA%2FEL171.17_NPYT_David_+Antonio_Cruz2.jpg",
+          caption:
+            "<p>David Antonio Cruz, <i>thenightbeneathusacrystalofpain, portrait of ms. dee</i>, 2018. Courtesy of the artist. </p>",
+          type: "image",
+          width: 819,
+          height: 1097,
+          index: 18,
+        },
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/p_wpEc-ZMWBqhBK0wFJ8og%2FEL171.72+Summer+Honey+24x30.jpg",
+          caption:
+            "<p>Mohammed Fayaz, <i>Volume 29: Summer Honey</i>, 2016. Courtesy of the artist. <br> <br> <br> </p>",
+          type: "image",
+          width: 800,
+          height: 1000,
+          index: 19,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>The artists in the exhibition have an eye toward the past; Hugo Gyrl’s vinyl wall piece from 2019 reads: “THE FIRST PRIDE WAS A RIOT! KNOW YOUR POWER.” Yet other sections of this show create much-needed spaces for imagining and organizing toward more equitable futures and new ways of living. One vital platform centers on how gentrification and violence continue to affect our communities today, while another explores attraction and intimacy. </p><p>Some of the works in the Brooklyn Museum show call out the racism that many of us experienced but that is rarely mentioned in gay history. <em>Happy Birthday, Marsha! </em>(2018), a film by Tourmaline and Sasha Wortzel that imagines a day in the life of Marsha P. Johnson, brings us there. Others bring into question the segmentation of what we think of as the gay community—not one but many disparate communities with different needs.</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/tLoxn89UmBKtIMHaO319bA%2FHappyBirthdayMarsha_06.jpg",
+          caption:
+            "<p>Sasha Wortzel and Tourmaline, <i>Happy Birthday, Marsha!</i> (film still), 2018. Courtesy of the artists.</p>",
+          type: "image",
+          width: 1800,
+          height: 1012,
+          index: 20,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p><em>Urgency</em> (2015) by Linda LaBeija speaks to our responsibility to the trans community. Wortzel’s <em>This is an Address I, II</em> (2019) highlights the growing homeless population, especially among queer and trans youth, and the limits of obtaining social services without an address. Other artists reveal personal, interior views of being in a queer world. <a href="https://www.artsy.net/artist/rindon-johnson">Rindon Johnson</a>’s video poem <em>It is April </em>(2017) and <a href="https://www.artsy.net/artist/mark-aguhar">Mark Aguhar</a>’s <em>I’d rather be beautiful than male </em>(2011–12) are both tender and touching. </p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/lHrDmHDdAvw2ZwKzBBqGHA%2FRindon_Johnson__It_Is_April_Godothers.jpg",
+          caption:
+            "<p>Rindon Johnson, featuring Milo McBride, <i>It is April, </i>2017. © Rindon Johnson. Courtesy of the artist.</p>",
+          type: "image",
+          width: 1400,
+          height: 787,
+          index: 21,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>The Brooklyn venue also brings us into the experiences of the marginalized, lost, and forgotten. <a href="https://www.artsy.net/artist/lj-roberts-1">LJ Roberts</a>’s lightbox installation from 2019 is a memorial to Stormé DeLarverie. According to many eyewitnesses, DeLarverie, a butch lesbian, provoked the tussle with police that triggered the Stonewall Riots. The work calls on us to pay tribute to a figure too often lost in our remembrances.</p>',
+    },
+    {
+      type: "text",
+      body: "<h1></h1>",
+    },
+    {
+      type: "text",
+      body:
+        '<p>Some things never change. Mentioned in all of the exhibitions are the <a href="https://www.artsy.net/artist/george-segal">George Segal</a> sculptures that rest in the park across from the Stonewall Inn. Many community activists have <a href="https://www.vulture.com/2018/11/is-nycs-gay-liberation-monument-too-white.html">created controversy</a> around them. As an archivist, I try to make sense of what’s evidenced and question assumptions while considering what can be discovered in attempts to fill in the gaps. </p><p>The sculptures, completed in 1979 but not installed in Christopher Park until 1992, comprise bronze casts of two pairs: one standing male couple and a seated female couple. The figures are painted white, a suggestion of the artist’s method of plaster casting by wrapping his subjects in gauze. They are described in the “Art after Stonewall” catalogue and the wall text in “Nobody Promised You Tomorrow” as whitewashing Stonewall’s legacy. This has me scratching my head. </p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/Bf6ayX2S_tSx8mouwwbymw%2FGettyImages-916576176.jpg",
+          caption:
+            "<p>Sculptures by George Segal at Stonewall National Monument in Christopher Park, New York. Photo by Jeffrey Greenberg/UIG via Getty Images.</p>",
+          type: "image",
+          width: 1400,
+          height: 933,
+          index: 22,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>The ignorance that so many of these protesters proclaim in their “controversy” is disingenuous. The figures, who appear covered in bandages, show no implication of race. As I see it, these “bandages” are quite a fitting representation of the damage done to our community, our existence, and survival through the AIDS pandemic. To misrepresent these sculptures as disparaging to people of color seems ridiculous. People of color were so instrumental in the history of the Stonewall Uprising but many have never recognized how badly we’ve been treated by the very community we’re expected to embrace. Redressing that by protesting and implicating the sculptures as a sign of our further erasure seems like a ploy to alleviate guilt. </p>",
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/Kpyum218FlAMEB2DFQKykg%2FRolston.jpg",
+          caption:
+            "<p>Adam Rolston, <i>I Am Out Therefore I Am, </i>1989. © Adam Rolston. Courtesy of the artist.</p>",
+          type: "image",
+          width: 1400,
+          height: 1435,
+          index: 23,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>Let’s be honest here about the extent of our progress. The celebrated sculptor <a href="https://www.artsy.net/artist/louise-nevelson">Louise Nevelson</a> had originally accepted the commission before it was offered to Segal, but according to the “Art after Stonewall” catalogue, her “‘business advisors’ persuaded her that public affirmation of her lesbianism would hurt the career of her younger lover, also an artist, so she pulled out.” That’s the way the art world was then. Would the advice Nevelson’s advisors gave her be tolerated in the art world today? Is that a rhetorical question? Maybe.</p><p><br></p>',
+    },
+  ],
+}
 export const FeatureBasicVideoArticle: ArticleData = {
   ...FeatureArticle,
   hero_section: {

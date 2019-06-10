@@ -1,5 +1,7 @@
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import {
   FeatureArticle,
+  FeatureArticleHostedAds,
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
@@ -142,6 +144,202 @@ describe("Sections", () => {
         .childAt(0)
         .instance() as any
       expect(wrapper.getContentEndIndex()).toBe(11)
+    })
+
+    it("it injects display ads if feature when ads are enabled", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
+    })
+
+    it("it does not inject display ads if feature when ads are disabled", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      const wrapper = mountWrapper(props)
+      props.areHostedAdsEnabled = false
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(0)
+    })
+
+    it("it injects display ads if feature when ads are enabled", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
+    })
+
+    it("it injects display ads after correct sections if feature", () => {
+      props.article = FeatureArticleHostedAds
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      const wrapper = mountWrapper(props)
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(0)
+          .props().adUnit
+      ).toBe("Desktop_Leaderboard1")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(0)
+          .props().adDimension
+      ).toBe("970x250")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(1)
+          .props().adUnit
+      ).toBe("Desktop_Leaderboard2")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(1)
+          .props().adDimension
+      ).toBe("970x250")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(2)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(2)
+          .props().adDimension
+      ).toBe("970x250")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(3)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(4)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(5)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(6)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(7)
+          .props().adUnit
+      ).toBe("Desktop_LeaderboardRepeat")
+
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(8)
+    })
+
+    it("it injects display ads after correct sections if feature on mobile", () => {
+      props.article = FeatureArticleHostedAds
+      props.isMobile = true
+      props.areHostedAdsEnabled = true
+      const wrapper = mountWrapper(props)
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(0)
+          .props().adUnit
+      ).toBe("Mobile_InContentLB1")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(0)
+          .props().adDimension
+      ).toBe("300x50")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(1)
+          .props().adUnit
+      ).toBe("Mobile_InContentLB2")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(1)
+          .props().adDimension
+      ).toBe("300x50")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(2)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(2)
+          .props().adDimension
+      ).toBe("300x50")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(3)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(4)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(5)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(6)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .at(7)
+          .props().adUnit
+      ).toBe("Mobile_InContentLBRepeat")
+
+      expect(wrapper.find(NewDisplayCanvas).length).toBe(8)
     })
   })
 

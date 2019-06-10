@@ -39,7 +39,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
       bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
 
     return (
-      <Box width="100%" pr={2}>
+      <Box pr={2}>
         <StyledLink
           href={`${sd.APP_URL}/collection/${slug}`}
           onClick={this.onLinkClick.bind(this)}

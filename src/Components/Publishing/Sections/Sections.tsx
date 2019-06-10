@@ -1,4 +1,7 @@
-import { clone, compact, findLastIndex, once } from "lodash"
+import { Box } from "@artsy/palette"
+import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
+import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
@@ -19,6 +22,7 @@ interface Props {
   color?: string
   isMobile?: boolean
   showTooltips?: boolean
+  areHostedAdsEnabled?: boolean
 }
 
 interface State {
@@ -177,18 +181,99 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
+  getAdUnit(index: number, indexAtFirstAd: number) {
+    const { isMobile } = this.props
+
+    if (index === indexAtFirstAd) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard1
+        : AdUnit.Desktop_Feature_Leaderboard1
+    }
+
+    if (index === 6) {
+      return isMobile
+        ? AdUnit.Mobile_Feature_InContentLeaderboard2
+        : AdUnit.Desktop_Feature_Leaderboard2
+    }
+
+    return isMobile
+      ? AdUnit.Mobile_Feature_InContentLeaderboard3
+      : AdUnit.Desktop_Feature_LeaderboardRepeat
+  }
+
+  /**
+   * Add a margin top when to the ad when the section is any of the following:
+   * 1) Text section without <br> tags wrapping the <p> or <h2> content
+   * 3) Image set section
+   * 4) Image collection with a caption/title
+   */
+  getAdMarginTop(section) {
+    const shouldAddTopMargin = () => {
+      switch (section.type) {
+        case "image_set":
+          return true
+        case "image_collection":
+          get(section, ["images", "[0]", "caption"])
+          return true
+        case "text":
+          section.body.includes("<br>")
+          return true
+        default:
+          return false
+      }
+    }
+
+    return shouldAddTopMargin() ? "calc(100% - 96%)" : null
+  }
+
   renderSections() {
-    const { article } = this.props
+    const { article, areHostedAdsEnabled, isMobile } = this.props
     const { shouldInjectMobileDisplay } = this.state
+    let firstAdInjected = false
+    let placementCount = 1
     let displayMarkerInjected = false
+    let indexAtFirstAd = null
 
     const renderedSections = article.sections.map((sectionItem, index) => {
+      let section = sectionItem
+      let ad = null
       const shouldInject =
         shouldInjectMobileDisplay &&
         sectionItem.type === "text" &&
         !displayMarkerInjected
 
-      let section = sectionItem
+      let shouldInjectNewAds =
+        article.layout === "feature" &&
+        sectionItem.type === "image_collection" &&
+        !firstAdInjected
+
+      if (firstAdInjected) {
+        placementCount++
+      }
+
+      if (placementCount % 6 === 0) {
+        shouldInjectNewAds = true
+      }
+
+      if (areHostedAdsEnabled && shouldInjectNewAds) {
+        const marginTop = this.getAdMarginTop(section)
+        firstAdInjected = true
+        indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
+
+        ad = (
+          <AdWrapper mt={marginTop}>
+            <NewDisplayCanvas
+              adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
+              adDimension={
+                isMobile
+                  ? AdDimension.Mobile_Feature_InContentLeaderboard1
+                  : AdDimension.Desktop_NewsLanding_Leaderboard1
+              }
+              displayNewAds
+            />
+          </AdWrapper>
+        )
+      }
 
       if (shouldInject) {
         try {
@@ -213,6 +298,7 @@ export class Sections extends Component<Props, State> {
             section={section}
           >
             {child}
+            {ad}
           </SectionContainer>
         )
       }
@@ -296,4 +382,8 @@ const StyledSections = div`
     max-width: ${props.layout === "standard" ? "780px" : "auto"};
     ${props.layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
+`
+const AdWrapper = styled(Box)`
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 `

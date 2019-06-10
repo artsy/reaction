@@ -59,6 +59,9 @@ export const NavBar: React.FC = track(
     }
   }, [isMobile])
 
+  // FIXME: Remove test
+  const [isWide, toggleMenuLayout] = useState(true)
+
   return (
     <>
       <NavBarContainer px={1}>
@@ -98,10 +101,11 @@ export const NavBar: React.FC = track(
             </NavItem>
             <NavItem href="/articles">Magazine</NavItem>
             <NavItem
+              onClick={() => toggleMenuLayout(!isWide)}
               Menu={() => {
                 return (
-                  <Box mr={-2}>
-                    <MoreNavMenu />
+                  <Box mr={isWide ? -20 : -150}>
+                    <MoreNavMenu width={isWide ? 260 : 160} />
                   </Box>
                 )
               }}
@@ -232,6 +236,8 @@ export const NavBar: React.FC = track(
   )
 })
 
+export const NavBarHeight = space(6) - 1 // border offset
+
 const NavSection = ({ children, ...props }) => (
   <Flex alignItems="center" {...props}>
     {children}
@@ -243,7 +249,7 @@ const NavBarContainer = styled(Flex)`
   border-bottom: 1px solid ${color("black10")};
   position: relative;
   z-index: 1;
-  height: ${space(6)}px;
+  height: ${NavBarHeight}px;
 `
 
 // FIXME: This needs to be cleaned up once we get proper icons

@@ -91,7 +91,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     } = this.props
     const isLoading = this.state.isLoading || this.props.isLoading
 
-    const emptyStateComponent = <ZeroState entity="artworks" term={term} />
+    const emptyStateComponent = <ZeroState term={term} />
 
     return (
       <SystemContextConsumer>

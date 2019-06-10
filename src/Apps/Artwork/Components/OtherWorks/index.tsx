@@ -1,10 +1,10 @@
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArtworkContextArtistQueryRenderer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
+import { ArtworkContextArtistFragmentContainer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
 import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
-import { ArtworkContextFairQueryRenderer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShowQueryRenderer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { ArtworkContextFairFragmentContainer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
+import { ArtworkContextPartnerShowFragmentContainer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
 
 export interface OtherWorksContextProps {
   /** The artworkSlug to query */
@@ -32,34 +32,23 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
         )
       }
       case "ArtworkContextFair": {
-        return (
-          <ArtworkContextFair
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextFair artwork={props.artwork} />
       }
       case "ArtworkContextPartnerShow": {
-        return (
-          <ArtworkContextPartnerShow
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextPartnerShow artwork={props.artwork} />
       }
       default: {
-        return (
-          <ArtworkContextArtist
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-          />
-        )
+        return <ArtworkContextArtist artwork={props.artwork} />
       }
     }
   },
   {
     artwork: graphql`
       fragment OtherWorks_artwork on Artwork {
+        ...ArtworkContextArtist_artwork
+        ...ArtworkContextFair_artwork
+        ...ArtworkContextPartnerShow_artwork
+
         id
         _id
         sale {
