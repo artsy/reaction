@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "16.14.6",
+  "version": "16.14.7",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -252,7 +252,9 @@
     "setupFiles": [
       "raf/polyfill"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/src/setup_jest.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup_jest.ts"
+    ],
     "testURL": "http://localhost/",
     "moduleNameMapper": {
       "^react$": "<rootDir>/node_modules/react",
