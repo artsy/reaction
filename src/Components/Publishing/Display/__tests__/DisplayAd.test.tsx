@@ -53,4 +53,15 @@ it("renders GPT with the correct properties", () => {
   expect(gptProps.adUnitPath).toEqual("/21805539690/Desktop_TopLeaderboard")
   expect(gptProps.targeting).toEqual(AdData.targetingData)
   expect(gptProps.slotSize).toEqual([970, 250])
+  expect(gptProps.onSlotRenderEnded.isEmpty).toEqual(true)
+})
+
+it("renders does not render GPT when flag is false", () => {
+  const ad = mount(
+    <DisplayAd adDimension={AdData.adDimension} adUnit={AdData.adUnit} />
+  )
+
+  const adProps: DisplayAdProps = ad.props()
+  expect(adProps.displayNewAds).toBe(false)
+  expect(ad).toHaveLength(0)
 })
