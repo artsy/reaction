@@ -30,7 +30,7 @@ export const relativeTime = (timeIn, now) => {
 }
 
 // now defaults to moment() but can be overriden for unit testing
-export const upcomingLabel = (sale, now = moment()) => {
+export const upcomingLabel = (sale: AuctionCard_sale, now = moment()) => {
   const {
     start_at: startAt,
     end_at: endAt,
@@ -38,11 +38,11 @@ export const upcomingLabel = (sale, now = moment()) => {
     is_closed: isClosed,
     is_live_open: isLiveOpen,
     is_preview: isPreview,
-    registration_status,
+    registrationStatus,
     is_registration_closed: isRegistrationClosed,
   } = sale
 
-  const isRegistered = !!registration_status
+  const isRegistered = !!registrationStatus
   const isLAI = !!liveStartAt
   if (isPreview) {
     return `Opens in ${relativeTime(startAt, now)}`

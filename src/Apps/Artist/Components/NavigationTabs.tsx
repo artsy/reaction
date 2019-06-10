@@ -98,7 +98,6 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
         id
         statuses {
           shows
-          artists
           articles
           cv(minShowCount: 0)
           auction_lots

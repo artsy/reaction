@@ -168,7 +168,6 @@ export default createFragmentContainer(FillwidthItem, {
   artwork: graphql`
     fragment FillwidthItem_artwork on Artwork {
       image {
-        placeholder
         url(version: "large")
         aspect_ratio
       }

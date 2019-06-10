@@ -69,9 +69,7 @@ export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentC
   {
     artwork: graphql`
       fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
-        _id
         partner {
-          _id
           name
         }
         sale_artwork {

@@ -104,9 +104,6 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
             after: $cursor
             min_forsale_artworks: $min_forsale_artworks
           ) @connection(key: "ArtistRecommendations_artists") {
-            pageInfo {
-              hasNextPage
-            }
             edges {
               node {
                 id
@@ -129,7 +126,11 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         count,
       }
     },
-    getVariables(props, { count, cursor }, fragmentVariables) {
+    getVariables(
+      props: ArtistRecommendationsProps,
+      { count, cursor },
+      fragmentVariables
+    ) {
       return {
         ...fragmentVariables,
         count,

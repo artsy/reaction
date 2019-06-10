@@ -235,7 +235,7 @@ class Filter extends Component<Props> {
     )
   }
 
-  handleOpenAuth(mediator, artist) {
+  handleOpenAuth(mediator, artist: ArtworkFilter_artist) {
     openAuthModal(mediator, {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkFilter,

@@ -132,7 +132,6 @@ export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
         ) {
-        _id
         collections
         highlights {
           partners(

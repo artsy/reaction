@@ -91,15 +91,8 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
     artwork: graphql`
       fragment ArtworkBanner_artwork on Artwork {
         partner {
-          type
           name
           initials
-          profile {
-            icon {
-              url(version: "square140")
-            }
-            href
-          }
         }
         sale {
           is_auction
@@ -115,11 +108,6 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           ... on ArtworkContextAuction {
             name
             href
-            is_auction
-            is_closed
-            is_open
-            live_start_at
-            live_url_if_open
           }
         }
         artworkContextFair: context {
@@ -127,9 +115,6 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           ... on ArtworkContextFair {
             name
             href
-            isActive
-            start_at
-            end_at
             profile {
               initials
               icon {
@@ -145,7 +130,6 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           ... on ArtworkContextPartnerShow {
             name
             href
-            type
             status
             thumbnail: cover_image {
               img: resized(width: 70, height: 70, version: "square") {

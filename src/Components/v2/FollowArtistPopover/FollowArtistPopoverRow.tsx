@@ -34,7 +34,7 @@ const ArtistName = styled(Serif)`
 `
 
 class FollowArtistPopoverRow extends React.Component<Props, State> {
-  state = {
+  state: State = {
     swappedArtist: null,
     followed: false,
   }
@@ -152,9 +152,6 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment FollowArtistPopoverRow_artist on Artist {
-        id
-        _id
-        __id
         name
         image {
           cropped(width: 45, height: 45) {
