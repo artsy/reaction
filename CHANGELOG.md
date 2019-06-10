@@ -1,3 +1,22 @@
+# v16.14.7 (Mon Jun 10 2019)
+
+#### 🐛  Bug Fix
+
+- [Article] Add GAM Hosted Ads to Featured Articles [#2506](https://github.com/artsy/reaction/pull/2506) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- [Lib] Ensure tests run against linked packages and upgrade jest@24.8.0 [#2517](https://github.com/artsy/reaction/pull/2517) ([@damassi](https://github.com/damassi))
+- Update dep @artsy/palette from 4.14.11 to v4.14.12 [#2519](https://github.com/artsy/reaction/pull/2519) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.14.6 (Fri Jun 07 2019)
 
 #### 🐛  Bug Fix
