@@ -73,7 +73,7 @@ export const LargeArtistCard: SFC<Props> = props => (
       <Sans size="2">{props.artist.formatted_nationality_and_birthday}</Sans>
     </Flex>
 
-    <Flex flexDirection="column" alignItems="center" mt={3}>
+    <Flex flexDirection="column" alignItems="center" mt="auto">
       <FollowArtistButton
         artist={props.artist}
         user={props.user}
