@@ -103,13 +103,18 @@ const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0)
 function getSources(languageService: ts.LanguageService): ts.SourceFile[] {
   let arg = process.argv[2]
   if (arg) {
-    if (fs.existsSync(`src/__generated__/${arg}.graphql.ts`)) {
-      arg = `src/__generated__/${arg}.graphql.ts`
-    } else {
-      console.error(chalk.red.bold("Bad argument"), chalk.bold("arg"))
-      console.error("Try a relay fragment name like ArtworkActions_artwork.")
-      process.exit(1)
+    if (!fs.existsSync(arg)) {
+      if (fs.existsSync(`src/__generated__/${arg}.graphql.ts`)) {
+        arg = `src/__generated__/${arg}.graphql.ts`
+      } else {
+        console.error(chalk.red.bold("Bad argument"), chalk.bold("arg"))
+        console.error(
+          "Try a relay fragment name or the path of a generated relay typings file."
+        )
+        process.exit(1)
+      }
     }
+    return [languageService.getProgram().getSourceFile(arg)]
   } else {
     // get all files
     return languageService
