@@ -1,7 +1,7 @@
 import { Serif } from "@artsy/palette"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
-import { DateTime } from "luxon"
+import { DateTime, Settings } from "luxon"
 import React from "react"
 import {
   AuctionCard,
@@ -21,6 +21,16 @@ describe("AuctionCard", () => {
     isGalleryAuction: false,
     isBenefit: false,
   }
+
+  const defaultZone = Settings.defaultZoneName
+
+  beforeEach(() => {
+    Settings.defaultZoneName = "America/New_York"
+  })
+
+  afterEach(() => {
+    Settings.defaultZoneName = defaultZone
+  })
 
   beforeAll(() => {
     window.matchMedia = undefined // Immediately set matching media query in Boot
