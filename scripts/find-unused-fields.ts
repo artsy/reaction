@@ -129,7 +129,12 @@ function getSources(languageService: ts.LanguageService): ts.SourceFile[] {
   }
 }
 
-class CheckContext {
+/**
+ * Helper class for managing options and state while checking a fragment's
+ * generated interface. Traverses the interface first and then reports any
+ * errors found afterward.
+ */
+class FragmentCheckContext {
   errors: string[] = []
 
   constructor(
@@ -147,12 +152,20 @@ class CheckContext {
     this.reportErrors()
   }
 
-  reportErrors() {
+  private reportErrors() {
     if (!this.errors.length) {
       return
     }
     const { rootNode, sourceFile, languageService, fragmentName } = this.opts
-    // find definition of fragment
+    // We want to find the definition of the fragment so we can link to it
+    // when reporting the errors.
+
+    // We're working on the assumption that the fragment's generated type will
+    // be referenced in the same file as the fragment was defined, although that
+    // might not always be the case. It's no biggie if not, we'd just need to
+    // cmd+shift+f.
+
+    // Start out by finding references to our fragment
     const refs = languageService.findReferences(
       sourceFile.fileName,
       rootNode.name.getStart()
@@ -162,10 +175,13 @@ class CheckContext {
         `Can't find references to fragment ${rootNode.name.getStart()}`
       )
     }
+
+    // filter out generated files
     const fileNames = flatten(
       refs.map(({ references }) => references.map(r => r.fileName))
     ).filter(fn => !fn.endsWith(".graphql.ts"))
 
+    const searchString = `fragment ${fragmentName} on `
     let loc: {
       fileName: string
       line: number
@@ -176,7 +192,6 @@ class CheckContext {
         .readFileSync(fileName)
         .toString()
         .split("\n")
-      const searchString = "fragment " + fragmentName + " on "
       const line = lines.findIndex(l => l.includes(searchString))
       if (line < 0) {
         continue
@@ -187,6 +202,7 @@ class CheckContext {
         line: line + 1,
         column: column + 1,
       }
+      break
     }
 
     let path = relative(
@@ -202,7 +218,9 @@ class CheckContext {
     console.log()
   }
 
-  checkTypeNode({
+  // Recursively walk through the fragment's interface, checking each property's
+  // references as we go.
+  private checkTypeNode({
     node,
     path,
   }: {
@@ -259,7 +277,7 @@ class CheckContext {
       if (
         propertyName.startsWith('"') ||
         propertyName === "__typename" ||
-        propertyName === "id"
+        propertyName === "__id"
       ) {
         continue
       }
@@ -277,7 +295,7 @@ class CheckContext {
 
       if (!findReferencesResult) {
         this.errors.push(
-          `No references found to field at path ${fieldPath}, this is a developer error`
+          `No references found to field at path ${fieldPath}, this should never happen 😱`
         )
         continue
       }
@@ -324,7 +342,7 @@ function findUnusedFields(
             return node
           }
 
-          new CheckContext({
+          new FragmentCheckContext({
             fragmentName,
             ignored: ignoredFragments[fragmentName],
             languageService,
