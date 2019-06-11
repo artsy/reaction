@@ -8,9 +8,9 @@ import { Section } from "Utils/Section"
 storiesOf("Styleguide/Components", module).add("AuctionTimer", () => {
   return (
     <React.Fragment>
-      <Section title="Cambi Design">
+      <Section title="Piasa Abstraction">
         <SystemContextProvider>
-          <AuctionTimerQueryRenderer saleID="cambi-fine-design-1" />
+          <AuctionTimerQueryRenderer saleID="piasa-abstraction-in-craft-american-quilts-at-the-turn-of-the-20th-century-and-american-design" />
         </SystemContextProvider>
       </Section>
       <Section title="EHC Fine Art">

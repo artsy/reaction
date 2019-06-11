@@ -1,2 +1,2 @@
-import moment from "moment"
-export const getCurrentTimeAsIsoString = () => moment().toISOString()
+import { DateTime } from "luxon"
+export const getCurrentTimeAsIsoString = () => DateTime.local().toString()

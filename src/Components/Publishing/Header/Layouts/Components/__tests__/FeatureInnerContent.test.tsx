@@ -86,7 +86,7 @@ describe("FeatureInnerSubContent", () => {
     it("Renders custom date", () => {
       props.date = "2015-06-19T13:09:18.567Z"
       const component = getWrapper(props)
-      expect(component.text()).toMatch("Jun 19, 2015 9:09 am")
+      expect(component.text()).toMatch("Jun 19, 2015 9:09am")
     })
   })
 })

@@ -10,8 +10,8 @@ export const CountdownTimer: React.SFC<{
   countdownEnd: string
 }> = props => (
   <WithCurrentTime syncWithServer>
-    {currentTime => (
-      <StaticCountdownTimer currentTime={currentTime} {...props} />
-    )}
+    {currentTime => {
+      return <StaticCountdownTimer currentTime={currentTime} {...props} />
+    }}
   </WithCurrentTime>
 )

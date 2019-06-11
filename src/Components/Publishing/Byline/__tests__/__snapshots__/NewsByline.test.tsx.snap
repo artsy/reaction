@@ -141,7 +141,7 @@ exports[`News Byline renders on mobile 1`] = `
     <div
       className="c5"
     >
-      Jul 19, 2018 at 1:19 pm
+      Jul 19, 2018 at 1:19pm
     </div>
   </div>
   <div
@@ -297,7 +297,7 @@ exports[`News Byline renders on mobile truncated 1`] = `
     <div
       className="c2"
     >
-      Jul 19, 2018 at 1:19 pm
+      Jul 19, 2018 at 1:19pm
     </div>
   </div>
 </div>
@@ -438,7 +438,7 @@ exports[`News Byline renders properly 1`] = `
     <div
       className="c5"
     >
-      Jul 19, 2018 at 1:19 pm
+      Jul 19, 2018 at 1:19pm
       , via
        
       <a
@@ -603,7 +603,7 @@ exports[`News Byline renders properly when truncated 1`] = `
     <div
       className="c2"
     >
-      Jul 19, 2018 at 1:19 pm
+      Jul 19, 2018 at 1:19pm
     </div>
   </div>
 </div>
@@ -744,7 +744,7 @@ exports[`News Byline renders without a news source 1`] = `
     <div
       className="c5"
     >
-      Jul 19, 2018 at 1:19 pm
+      Jul 19, 2018 at 1:19pm
     </div>
   </div>
   <div

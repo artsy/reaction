@@ -109,7 +109,7 @@ describe("ArticleCard", () => {
     props.article.media.published = false
     const component = getWrapper()
 
-    expect(component.text()).toMatch("AvailableAugust 2017")
+    expect(component.text()).toMatch("AvailableAug 2017")
   })
 
   it("Renders the media release_date if present and media is published", () => {
@@ -129,7 +129,7 @@ describe("ArticleCard", () => {
     delete props.article.media.release_date
     const component = getWrapper()
 
-    expect(component.text()).toMatch("AvailableJuly 2017")
+    expect(component.text()).toMatch("AvailableJul 2017")
   })
 
   it("Renders article.published_at date if no release_date and media is present and published", () => {
