@@ -1,6 +1,6 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import React, { SFC } from "react"
+import React, { SFC, useState } from "react"
 import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 
@@ -18,8 +18,6 @@ export interface DisplayAdProps extends FlexProps {
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
-  let isAdEmpty
-
   const {
     adDimension,
     adUnit,
@@ -28,33 +26,33 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
     ...otherProps
   } = props
 
-  if (!displayNewAds) {
-    return null
-  }
-
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
+  const [isAdEmpty, setAdEmpty] = useState(false)
+
   const ad = (
     <GPT
-      adUnitPath={`/21805539690/${props.adUnit}`}
-      targeting={props.targetingData}
+      adUnitPath={`/21805539690/${adUnit}`}
+      targeting={targetingData}
       slotSize={[width, height]}
-      onSlotRenderEnded={e => {
-        isAdEmpty = e.isEmpty
+      onSlotRenderEnded={event => {
+        setAdEmpty(event.isEmpty)
       }}
     />
   )
 
+  if (!displayNewAds || isAdEmpty) {
+    return null
+  }
+
   return (
-    !isAdEmpty && (
-      <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
-        <Box m="auto">
-          {ad}
-          <Sans size="1" color="black30" m={1}>
-            Advertisement
-          </Sans>
-        </Box>
-      </DisplayAdContainer>
-    )
+    <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
+      <Box m="auto">
+        {ad}
+        <Sans size="1" color="black30" m={1}>
+          Advertisement
+        </Sans>
+      </Box>
+    </DisplayAdContainer>
   )
 }
 
