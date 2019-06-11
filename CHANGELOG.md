@@ -1,3 +1,15 @@
+# v16.15.0 (Tue Jun 11 2019)
+
+#### 🚀  Enhancement
+
+- Add a "show more" button to Artwork/related artists [#2515](https://github.com/artsy/reaction/pull/2515) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.14.11 (Mon Jun 10 2019)
 
 #### 🐛  Bug Fix
