@@ -1,3 +1,15 @@
+# v16.16.1 (Tue Jun 11 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Add animation to dropdown [#2530](https://github.com/artsy/reaction/pull/2530) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.16.0 (Tue Jun 11 2019)
 
 #### 🚀  Enhancement
