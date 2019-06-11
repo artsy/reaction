@@ -1,11 +1,11 @@
 import chalk from "chalk"
-import * as dedent from "dedent"
-import * as fs from "fs"
-import * as json5 from "json5"
-import * as klawSync from "klaw-sync"
+import dedent from "dedent"
+import fs from "fs"
+import json5 from "json5"
+import klawSync from "klaw-sync"
 import { flatten } from "lodash"
 import { basename, relative } from "path"
-import * as ts from "typescript"
+import ts from "typescript"
 
 function main() {
   if (process.argv.includes("--help") || process.argv.includes("-h")) {
