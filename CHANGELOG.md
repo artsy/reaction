@@ -1,3 +1,15 @@
+# v16.15.1 (Tue Jun 11 2019)
+
+#### 🏠  Internal
+
+- [ArtistCard] Update comments to give hints about proper truncation methods [#2528](https://github.com/artsy/reaction/pull/2528) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.15.0 (Tue Jun 11 2019)
 
 #### 🚀  Enhancement
