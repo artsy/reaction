@@ -229,7 +229,7 @@ export const CVPaginationContainer = createPaginationContainer(
     getFragmentVariables(prevVars, totalCount) {
       return { ...prevVars, count: totalCount }
     },
-    getVariables(props: CVItemProps, { count, cursor }, fragmentVariables) {
+    getVariables(props, { count, cursor }, fragmentVariables) {
       return {
         // in most cases, for variables other than connection filters like
         // `first`, `after`, etc. you may want to use the previous values.

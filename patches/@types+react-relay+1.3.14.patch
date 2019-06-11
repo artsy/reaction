@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/react-relay/index.d.ts b/node_modules/@types/react-relay/index.d.ts
+index e0c511f..b621b0e 100644
+--- a/node_modules/@types/react-relay/index.d.ts
++++ b/node_modules/@types/react-relay/index.d.ts
+@@ -157,7 +157,7 @@ export interface ConnectionConfig<P> {
+     getConnectionFromProps?(props: P): ConnectionData | undefined | null;
+     getFragmentVariables?: typeof FragmentVariablesGetter;
+     getVariables(
+-        props: { [propName: string]: any },
++        props: P,
+         paginationInfo: { count: number; cursor?: string },
+         fragmentVariables: RelayRuntimeTypes.Variables
+     ): RelayRuntimeTypes.Variables;

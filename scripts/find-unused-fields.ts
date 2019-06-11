@@ -1,4 +1,5 @@
 import chalk from "chalk"
+import * as dedent from "dedent"
 import * as fs from "fs"
 import * as json5 from "json5"
 import * as klawSync from "klaw-sync"
@@ -8,17 +9,16 @@ import * as ts from "typescript"
 
 function main() {
   if (process.argv.includes("--help") || process.argv.includes("-h")) {
-    console.log(`
-🔎  ${chalk.bold("find-unused-fields")} 🔍
+    // prettier-ignore
+    console.log(dedent`
+      🔎  ${chalk.bold("find-unused-fields")} 🔍
 
-USAGE
+      USAGE
 
-  ${chalk.cyan.bold("  yarn find-unused-fields")} ${chalk.cyan(
-      "[fragment name]"
-    )}
+        ${chalk.cyan.bold("  yarn find-unused-fields")} ${chalk.cyan("[fragment name]")}
 
-Add known exceptions in find-unused-fields.ts
-`)
+      Add known exceptions in find-unused-fields.ts
+    `)
     return
   }
   const languageService = getLanguageService()
