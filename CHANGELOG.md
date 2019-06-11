@@ -1,3 +1,15 @@
+# v16.16.0 (Tue Jun 11 2019)
+
+#### 🚀  Enhancement
+
+- Removes Moment-Timezone and introduces Luxon [#2476](https://github.com/artsy/reaction/pull/2476) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.15.1 (Tue Jun 11 2019)
 
 #### 🏠  Internal
