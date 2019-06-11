@@ -55,9 +55,6 @@ export class ArtistCard extends React.Component<Props> {
   }
 }
 
-// Why not use <Truncator>? Because with only one line for the artist origin/
-//  birth year, the Truncator prematurely truncates, showing "American, b. 1938"
-//  as "American, b. ...".
 const SingleLineTruncation = styled(Sans)`
   white-space: nowrap;
   text-overflow: ellipsis;
