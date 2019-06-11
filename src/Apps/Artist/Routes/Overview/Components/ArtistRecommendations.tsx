@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Serif, Spinner } from "@artsy/palette"
+import { Button, Flex, Serif } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendationsRendererQuery } from "__generated__/ArtistRecommendationsRendererQuery.graphql"
 import { SystemContext } from "Artsy"
@@ -10,7 +10,6 @@ import {
   QueryRenderer,
   RelayPaginationProp,
 } from "react-relay"
-import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { RecommendedArtistFragmentContainer as RecommendedArtist } from "./RecommendedArtist"
@@ -55,36 +54,30 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
       </Serif>
       {relatedArtists}
 
-      {fetchingNextPage && <FetchingMoreSpinner />}
-
-      {relay.hasMore() && <ShowMoreButton onClick={fetchData} />}
+      {relay.hasMore() && (
+        <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
+      )}
     </div>
   )
 }
 
-const FetchingMoreSpinner: React.FC = () => {
+const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
+  onClick,
+  loading,
+}) => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <SpinnerContainer mt={3}>
-        <Spinner />
-      </SpinnerContainer>
-    </Flex>
-  )
-}
-
-const ShowMoreButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
-  return (
-    <Flex flexDirection="column" alignItems="center">
-      <Button my={4} variant="secondaryOutline" onClick={onClick}>
+      <Button
+        my={4}
+        variant="secondaryOutline"
+        onClick={onClick}
+        loading={loading}
+      >
         Show More
       </Button>
     </Flex>
   )
 }
-
-const SpinnerContainer = styled(Box)`
-  position: relative;
-`
 
 export const ArtistRecommendationsPaginationContainer = createPaginationContainer(
   ArtistRecommendations,
