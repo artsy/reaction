@@ -1,4 +1,31 @@
-patch-package
+diff --git a/node_modules/graphql/error/printError.js b/node_modules/graphql/error/printError.js
+index 3d6283f..5c11463 100644
+--- a/node_modules/graphql/error/printError.js
++++ b/node_modules/graphql/error/printError.js
+@@ -53,7 +53,7 @@ function highlightSourceAtLocation(source, location) {
+   var padLen = nextLineNum.length;
+   var lines = source.body.split(/\r\n|[\n\r]/g);
+   lines[0] = whitespace(source.locationOffset.column - 1) + lines[0];
+-  var outputLines = [source.name + ' (' + contextLine + ':' + contextColumn + ')', line >= 2 && lpad(padLen, prevLineNum) + ': ' + lines[line - 2], lpad(padLen, lineNum) + ': ' + lines[line - 1], whitespace(2 + padLen + contextColumn - 1) + '^', line < lines.length && lpad(padLen, nextLineNum) + ': ' + lines[line]];
++  var outputLines = [source.name + ':' + contextLine + ':' + contextColumn, line >= 2 && lpad(padLen, prevLineNum) + ': ' + lines[line - 2], lpad(padLen, lineNum) + ': ' + lines[line - 1], whitespace(2 + padLen + contextColumn - 1) + '^', line < lines.length && lpad(padLen, nextLineNum) + ': ' + lines[line]];
+   return outputLines.filter(Boolean).join('\n');
+ }
+ 
+diff --git a/node_modules/graphql/error/printError.mjs b/node_modules/graphql/error/printError.mjs
+index 6aef1d9..0b6f95c 100644
+--- a/node_modules/graphql/error/printError.mjs
++++ b/node_modules/graphql/error/printError.mjs
+@@ -47,7 +47,7 @@ function highlightSourceAtLocation(source, location) {
+   var padLen = nextLineNum.length;
+   var lines = source.body.split(/\r\n|[\n\r]/g);
+   lines[0] = whitespace(source.locationOffset.column - 1) + lines[0];
+-  var outputLines = [source.name + ' (' + contextLine + ':' + contextColumn + ')', line >= 2 && lpad(padLen, prevLineNum) + ': ' + lines[line - 2], lpad(padLen, lineNum) + ': ' + lines[line - 1], whitespace(2 + padLen + contextColumn - 1) + '^', line < lines.length && lpad(padLen, nextLineNum) + ': ' + lines[line]];
++  var outputLines = [source.name + ':' + contextLine + ':' + contextColumn, line >= 2 && lpad(padLen, prevLineNum) + ': ' + lines[line - 2], lpad(padLen, lineNum) + ': ' + lines[line - 1], whitespace(2 + padLen + contextColumn - 1) + '^', line < lines.length && lpad(padLen, nextLineNum) + ': ' + lines[line]];
+   return outputLines.filter(Boolean).join('\n');
+ }
+ 
+diff --git a/node_modules/graphql/utilities/assertValidName.js b/node_modules/graphql/utilities/assertValidName.js
+index a252f1e..d76e099 100644
 --- a/node_modules/graphql/utilities/assertValidName.js
 +++ b/node_modules/graphql/utilities/assertValidName.js
 @@ -41,10 +41,11 @@ function assertValidName(name) {
@@ -17,6 +44,8 @@ patch-package
 +
  }
 \ No newline at end of file
+diff --git a/node_modules/graphql/utilities/assertValidName.mjs b/node_modules/graphql/utilities/assertValidName.mjs
+index 7bf01fd..1577714 100644
 --- a/node_modules/graphql/utilities/assertValidName.mjs
 +++ b/node_modules/graphql/utilities/assertValidName.mjs
 @@ -29,9 +29,9 @@ export function assertValidName(name) {
