@@ -208,11 +208,9 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
         is_acquireable
         is_inquireable
         artists {
-          _id
           is_consignable
         }
         sale {
-          _id
           is_closed
         }
       }

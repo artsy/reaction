@@ -24,6 +24,7 @@ import {
   Spacer,
   StackableBorderBox,
 } from "@artsy/palette"
+import { FollowProfileButton_profile } from "__generated__/FollowProfileButton_profile.graphql"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
@@ -122,7 +123,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                         onOpenAuthModal={() =>
                           this.handleOpenAuth(mediator, partner)
                         }
-                        render={profile => {
+                        render={(profile: FollowProfileButton_profile) => {
                           const is_followed = profile.is_followed || false
                           return (
                             <Sans

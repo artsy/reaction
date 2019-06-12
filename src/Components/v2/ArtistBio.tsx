@@ -40,7 +40,6 @@ export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
     fragment ArtistBio_bio on Artist {
       biography_blurb(format: HTML, partner_bio: true) {
         text
-        credit
       }
     }
   `,

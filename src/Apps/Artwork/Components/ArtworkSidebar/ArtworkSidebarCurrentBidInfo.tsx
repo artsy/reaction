@@ -122,7 +122,6 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
   {
     artwork: graphql`
       fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
-        _id
         sale {
           is_closed
           is_live_open
@@ -143,7 +142,6 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
             is_winning
           }
           most_recent_bid {
-            is_winning
             max_bid {
               display
             }

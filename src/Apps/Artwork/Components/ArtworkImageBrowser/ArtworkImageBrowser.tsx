@@ -13,6 +13,8 @@ interface ArtworkBrowserProps {
   setCarouselRef: (carouselRef: Carousel) => void
 }
 
+type Image = ArtworkBrowserProps["images"][number]
+
 export const ArtworkImageBrowser = (props: ArtworkBrowserProps) => {
   return (
     <>
@@ -71,7 +73,7 @@ export class LargeArtworkImageBrowser extends React.Component<
               />
             </Col>
           )}
-          render={image => {
+          render={(image: Image) => {
             return (
               <Flex
                 flexDirection="column"
@@ -120,7 +122,7 @@ export class SmallArtworkImageBrowser extends React.Component<
           data={carouselImages}
           oneSlideVisible
           setCarouselRef={setCarouselRef}
-          render={image => {
+          render={(image: Image) => {
             return (
               <Flex
                 flexDirection="column"

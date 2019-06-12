@@ -5,15 +5,9 @@ import { ArtworkActions_artwork$ref } from "./ArtworkActions_artwork.graphql";
 declare const _ArtworkImageBrowser_artwork$ref: unique symbol;
 export type ArtworkImageBrowser_artwork$ref = typeof _ArtworkImageBrowser_artwork$ref;
 export type ArtworkImageBrowser_artwork = {
-    readonly title: string | null;
     readonly image_alt: string | null;
-    readonly image_title: string | null;
-    readonly href: string | null;
     readonly image: ({
         readonly id: string | null;
-        readonly url: string | null;
-        readonly height: number | null;
-        readonly width: number | null;
     }) | null;
     readonly images: ReadonlyArray<({
         readonly id: string | null;
@@ -68,29 +62,8 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
       "alias": "image_alt",
       "name": "to_s",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "image_title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
       "args": null,
       "storageKey": null
     },
@@ -109,34 +82,6 @@ return {
       "plural": false,
       "selections": [
         v0,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "url",
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "version",
-              "value": "larger",
-              "type": "[String]"
-            }
-          ],
-          "storageKey": "url(version:\"larger\")"
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "height",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "width",
-          "args": null,
-          "storageKey": null
-        },
         v1
       ]
     },
@@ -319,5 +264,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ea796b002acd42f0cb9b16030a95481a';
+(node as any).hash = '51377fc143d191b4dfefcfc5914e1f36';
 export default node;

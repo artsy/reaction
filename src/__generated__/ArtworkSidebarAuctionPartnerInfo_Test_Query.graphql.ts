@@ -24,9 +24,7 @@ query ArtworkSidebarAuctionPartnerInfo_Test_Query {
 }
 
 fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
-  _id
   partner {
-    _id
     name
     __id
   }
@@ -59,20 +57,13 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "_id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkSidebarAuctionPartnerInfo_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  _id\n  partner {\n    _id\n    name\n    __id\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    __id\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -114,7 +105,6 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -124,7 +114,6 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -163,7 +152,13 @@ return {
             "concreteType": "Sale",
             "plural": false,
             "selections": [
-              v2,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "_id",
+                "args": null,
+                "storageKey": null
+              },
               {
                 "kind": "ScalarField",
                 "alias": null,

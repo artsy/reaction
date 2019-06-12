@@ -4,7 +4,6 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _SelectedCareerAchievements_artist$ref: unique symbol;
 export type SelectedCareerAchievements_artist$ref = typeof _SelectedCareerAchievements_artist$ref;
 export type SelectedCareerAchievements_artist = {
-    readonly _id: string;
     readonly highlights: ({
         readonly partners: ({
             readonly edges: ReadonlyArray<({
@@ -63,13 +62,6 @@ return {
     }
   ],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -295,5 +287,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '87b6c981376c85f3657f9b6e6fd372c5';
+(node as any).hash = 'f44dcc8098ac4b19c54360eb88bc284f';
 export default node;

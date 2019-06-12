@@ -1,4 +1,5 @@
 import { Serif } from "@artsy/palette"
+import { AuctionCard_sale } from "__generated__/AuctionCard_sale.graphql"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import { DateTime, Settings } from "luxon"
@@ -125,12 +126,39 @@ describe("AuctionCard", () => {
   })
 
   describe("upcomingLabel", () => {
+    const sale: AuctionCard_sale = {
+      " $refType": null,
+      cover_image: {
+        cropped: {
+          url: "",
+        },
+      },
+      isBenefit: false,
+      isGalleryAuction: false,
+      end_at: "",
+      href: "",
+      id: "",
+      is_live_open: false,
+      is_preview: false,
+      live_start_at: "",
+      registrationStatus: null,
+      is_registration_closed: false,
+      name: "",
+      start_at: "",
+      is_closed: false,
+      partner: {
+        name: "",
+      },
+    }
     it("handles preview sales", () => {
       expect(
         upcomingLabel(
           {
+            ...sale,
             is_preview: true,
-            start_at: now().plus({ hours: 25 }),
+            start_at: now()
+              .plus({ hours: 25 })
+              .toISO(),
           },
           now()
         )
@@ -140,6 +168,7 @@ describe("AuctionCard", () => {
     it("handles closed auctions", () => {
       expect(
         upcomingLabel({
+          ...sale,
           is_closed: true,
         })
       ).toMatchInlineSnapshot(`"Auction closed"`)
@@ -150,8 +179,11 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
+              ...sale,
               is_live_open: true,
-              live_start_at: now().minus({ minutes: 1 }),
+              live_start_at: now()
+                .minus({ minutes: 1 })
+                .toISO(),
             },
             now()
           )
@@ -162,7 +194,10 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
-              live_start_at: now().plus({ days: 1 }),
+              ...sale,
+              live_start_at: now()
+                .plus({ days: 1 })
+                .toISO(),
             },
             now()
           )
@@ -173,8 +208,11 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
+              ...sale,
               is_registration_closed: true,
-              live_start_at: now().plus({ days: 1 }),
+              live_start_at: now()
+                .plus({ days: 1 })
+                .toISO(),
             },
             now()
           )
@@ -185,8 +223,11 @@ describe("AuctionCard", () => {
         expect(
           upcomingLabel(
             {
-              registration_status: {},
-              live_start_at: now().plus({ days: 1 }),
+              ...sale,
+              registrationStatus: { id: "" },
+              live_start_at: now()
+                .plus({ days: 1 })
+                .toISO(),
             },
             now()
           )

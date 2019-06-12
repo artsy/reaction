@@ -4,7 +4,6 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _Contact_artwork$ref: unique symbol;
 export type Contact_artwork$ref = typeof _Contact_artwork$ref;
 export type Contact_artwork = {
-    readonly _id: string;
     readonly href: string | null;
     readonly is_inquireable: boolean | null;
     readonly sale: ({
@@ -54,13 +53,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -206,5 +198,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '15c2a7973aeb8fd0202f593635e2bbf2';
+(node as any).hash = 'eae0e1181f8c3d8e63e2e9d53be065d3';
 export default node;

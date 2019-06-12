@@ -30,7 +30,10 @@ export const relativeTime = (timeIn, now) => {
 }
 
 // now defaults to DateTime.local() but can be overriden for unit testing
-export const upcomingLabel = (sale, now = DateTime.local()) => {
+export const upcomingLabel = (
+  sale: AuctionCard_sale,
+  now = DateTime.local()
+) => {
   const {
     start_at: startAt,
     end_at: endAt,
@@ -38,11 +41,11 @@ export const upcomingLabel = (sale, now = DateTime.local()) => {
     is_closed: isClosed,
     is_live_open: isLiveOpen,
     is_preview: isPreview,
-    registration_status,
+    registrationStatus,
     is_registration_closed: isRegistrationClosed,
   } = sale
 
-  const isRegistered = !!registration_status
+  const isRegistered = !!registrationStatus
   const isLAI = !!liveStartAt
   if (isPreview) {
     return `Opens in ${relativeTime(startAt, now)}`

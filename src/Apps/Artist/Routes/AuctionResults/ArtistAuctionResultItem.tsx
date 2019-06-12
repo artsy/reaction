@@ -290,7 +290,7 @@ const getDescription = (fullDescription: string) => {
   return truncatedDescription
 }
 
-const getProps = props => {
+const getProps = (props: Props) => {
   const {
     auctionResult: { description, estimate, price_realized },
   } = props

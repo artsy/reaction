@@ -150,7 +150,6 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
         ) {
-        _id
         highlights {
           partners(
             first: 10

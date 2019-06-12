@@ -51,10 +51,7 @@ fragment ArtistInfo_artist on Artist {
     partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
       edges {
         node {
-          categories {
-            id
-            __id
-          }
+          __typename
           __id
         }
         __id
@@ -64,9 +61,7 @@ fragment ArtistInfo_artist on Artist {
   auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
     edges {
       node {
-        price_realized {
-          display(format: "0a")
-        }
+        __typename
         __id
       }
     }
@@ -109,13 +104,11 @@ fragment SelectedExhibitions_exhibitions on Show {
 fragment ArtistBio_bio on Artist {
   biography_blurb(format: HTML, partner_bio: true) {
     text
-    credit
   }
   __id
 }
 
 fragment ArtistMarketInsights_artist on Artist {
-  _id
   collections
   highlights {
     partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
@@ -183,14 +176,21 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = [
-  v3
-],
 v5 = [
+  v4
+],
+v6 = [
   {
     "kind": "Literal",
     "name": "format",
@@ -198,7 +198,7 @@ v5 = [
     "type": "String"
   }
 ],
-v6 = [
+v7 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -207,14 +207,14 @@ v6 = [
     "storageKey": null
   }
 ],
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -226,7 +226,7 @@ return {
   "operationKind": "query",
   "name": "ArtistInfoQuery",
   "id": null,
-  "text": "query ArtistInfoQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  _id\n  id\n  name\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  ...ArtistBio_bio\n  ...ArtistMarketInsights_artist\n  ...FollowArtistButton_artist\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n    __id: id\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n\nfragment ArtistMarketInsights_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query ArtistInfoQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistInfo_artist\n    __id\n  }\n}\n\nfragment ArtistInfo_artist on Artist {\n  _id\n  id\n  name\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  counts {\n    partner_shows\n  }\n  exhibition_highlights(size: 3) {\n    ...SelectedExhibitions_exhibitions\n    __id\n  }\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          __typename\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        __typename\n        __id\n      }\n    }\n  }\n  ...ArtistBio_bio\n  ...ArtistMarketInsights_artist\n  ...FollowArtistButton_artist\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n\nfragment SelectedExhibitions_exhibitions on Show {\n  partner {\n    __typename\n    ... on ExternalPartner {\n      name\n      __id\n    }\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n  }\n  name\n  start_at(format: \"YYYY\")\n  cover_image {\n    cropped(width: 800, height: 600) {\n      url\n    }\n    __id: id\n  }\n  city\n  __id\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n\nfragment ArtistMarketInsights_artist on Artist {\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -293,32 +293,26 @@ return {
                 "concreteType": null,
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "__typename",
-                    "args": null,
-                    "storageKey": null
-                  },
+                  v3,
                   v2,
                   {
                     "kind": "InlineFragment",
                     "type": "Partner",
-                    "selections": v4
+                    "selections": v5
                   },
                   {
                     "kind": "InlineFragment",
                     "type": "ExternalPartner",
-                    "selections": v4
+                    "selections": v5
                   }
                 ]
               },
-              v3,
+              v4,
               {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "start_at",
-                "args": v5,
+                "args": v6,
                 "storageKey": "start_at(format:\"YYYY\")"
               },
               {
@@ -351,9 +345,9 @@ return {
                     ],
                     "concreteType": "CroppedImageUrl",
                     "plural": false,
-                    "selections": v6
+                    "selections": v7
                   },
-                  v7
+                  v8
                 ]
               },
               {
@@ -373,7 +367,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v3,
+          v4,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -411,9 +405,9 @@ return {
                 ],
                 "concreteType": "CroppedImageUrl",
                 "plural": false,
-                "selections": v6
+                "selections": v7
               },
-              v7
+              v8
             ]
           },
           {
@@ -448,7 +442,7 @@ return {
               }
             ]
           },
-          v8,
+          v9,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -521,6 +515,8 @@ return {
                         "concreteType": "Partner",
                         "plural": false,
                         "selections": [
+                          v3,
+                          v2,
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -530,11 +526,10 @@ return {
                             "concreteType": "Category",
                             "plural": true,
                             "selections": [
-                              v8,
+                              v9,
                               v2
                             ]
-                          },
-                          v2
+                          }
                         ]
                       },
                       v2
@@ -590,6 +585,8 @@ return {
                     "concreteType": "AuctionResult",
                     "plural": false,
                     "selections": [
+                      v3,
+                      v2,
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -615,7 +612,6 @@ return {
                           }
                         ]
                       },
-                      v2,
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -627,7 +623,7 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "sale_date",
-                        "args": v5,
+                        "args": v6,
                         "storageKey": "sale_date(format:\"YYYY\")"
                       }
                     ]
@@ -662,13 +658,6 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "text",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "credit",
                 "args": null,
                 "storageKey": null
               }

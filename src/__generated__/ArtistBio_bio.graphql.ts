@@ -6,7 +6,6 @@ export type ArtistBio_bio$ref = typeof _ArtistBio_bio$ref;
 export type ArtistBio_bio = {
     readonly biography_blurb: ({
         readonly text: string | null;
-        readonly credit: string | null;
     }) | null;
     readonly " $refType": ArtistBio_bio$ref;
 };
@@ -48,13 +47,6 @@ const node: ConcreteFragment = {
           "name": "text",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "credit",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -67,5 +59,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7f29aeb3dc2e2e1aea12bc09ede0391b';
+(node as any).hash = 'e736551112eb378b9d7e96216c0fcb23';
 export default node;

@@ -8,7 +8,6 @@ declare const _FillwidthItem_artwork$ref: unique symbol;
 export type FillwidthItem_artwork$ref = typeof _FillwidthItem_artwork$ref;
 export type FillwidthItem_artwork = {
     readonly image: ({
-        readonly placeholder: string | null;
         readonly url: string | null;
         readonly aspect_ratio: number;
     }) | null;
@@ -35,13 +34,6 @@ const node: ConcreteFragment = {
       "concreteType": "Image",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "placeholder",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -103,5 +95,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2d0cf4dcb3c793bdd36a81e3fe54d7e6';
+(node as any).hash = '5ad3f2a82c3429961a10c64ade017d3e';
 export default node;

@@ -7,7 +7,6 @@ export type NavigationTabs_artist = {
     readonly id: string;
     readonly statuses: ({
         readonly shows: boolean | null;
-        readonly artists: boolean | null;
         readonly articles: boolean | null;
         readonly cv: boolean | null;
         readonly auction_lots: boolean | null;
@@ -50,13 +49,6 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "artists",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "name": "articles",
           "args": null,
           "storageKey": null
@@ -93,5 +85,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '95e1b703a032fa3383b88b9aac52289f';
+(node as any).hash = '943c43bf6ae1bb2fec555493cb9191d1';
 export default node;

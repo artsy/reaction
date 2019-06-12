@@ -24,7 +24,6 @@ query SelectedCareerAchievementsTestQuery {
 }
 
 fragment SelectedCareerAchievements_artist on Artist {
-  _id
   highlights {
     partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
       edges {
@@ -81,7 +80,7 @@ return {
   "operationKind": "query",
   "name": "SelectedCareerAchievementsTestQuery",
   "id": null,
-  "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievements_artist\n    __id\n  }\n}\n\nfragment SelectedCareerAchievements_artist on Artist {\n  _id\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievements_artist\n    __id\n  }\n}\n\nfragment SelectedCareerAchievements_artist on Artist {\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -123,13 +122,6 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "_id",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "LinkedField",
             "alias": null,

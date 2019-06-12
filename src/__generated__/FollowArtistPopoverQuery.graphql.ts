@@ -43,9 +43,7 @@ fragment FollowArtistPopover_suggested on Artist {
 }
 
 fragment FollowArtistPopoverRow_artist on Artist {
-  id
   _id
-  __id
   name
   image {
     cropped(width: 45, height: 45) {
@@ -53,6 +51,7 @@ fragment FollowArtistPopoverRow_artist on Artist {
     }
     __id: id
   }
+  __id
 }
 */
 
@@ -85,7 +84,7 @@ return {
   "operationKind": "query",
   "name": "FollowArtistPopoverQuery",
   "id": null,
-  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n}\n",
+  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  _id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -181,13 +180,6 @@ return {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "_id",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "id",
                             "args": null,
                             "storageKey": null
                           },

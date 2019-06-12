@@ -64,9 +64,6 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
         artist {
           name
           href
-          counts {
-            artworks(format: "0,0", label: "work")
-          }
           artworks_connection(
             first: 8
             filter: [IS_FOR_SALE]
@@ -77,9 +74,7 @@ export const ArtistArtworkGridFragmentContainer = createFragmentContainer(
 
             # Used to check for content
             edges {
-              node {
-                id
-              }
+              __typename
             }
           }
         }

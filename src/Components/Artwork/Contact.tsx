@@ -78,7 +78,6 @@ export class Contact extends React.Component<ContactProps, null> {
 export default createFragmentContainer(Contact, {
   artwork: graphql`
     fragment Contact_artwork on Artwork {
-      _id
       href
       is_inquireable
       sale {

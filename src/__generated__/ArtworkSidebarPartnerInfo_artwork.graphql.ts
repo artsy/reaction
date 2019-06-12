@@ -5,7 +5,6 @@ declare const _ArtworkSidebarPartnerInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarPartnerInfo_artwork$ref = typeof _ArtworkSidebarPartnerInfo_artwork$ref;
 export type ArtworkSidebarPartnerInfo_artwork = {
     readonly partner: ({
-        readonly __id: string;
         readonly name: string | null;
         readonly href: string | null;
         readonly locations: ReadonlyArray<({
@@ -41,7 +40,6 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -74,12 +72,13 @@ return {
             },
             v0
           ]
-        }
+        },
+        v0
       ]
     },
     v0
   ]
 };
 })();
-(node as any).hash = '9d17679de672d65ee853e2aa975d3949';
+(node as any).hash = '2d4008d718bc19a2034d96f2665bacf9';
 export default node;

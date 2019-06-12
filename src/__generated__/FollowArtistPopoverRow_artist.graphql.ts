@@ -4,9 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _FollowArtistPopoverRow_artist$ref: unique symbol;
 export type FollowArtistPopoverRow_artist$ref = typeof _FollowArtistPopoverRow_artist$ref;
 export type FollowArtistPopoverRow_artist = {
-    readonly id: string;
     readonly _id: string;
-    readonly __id: string;
     readonly name: string | null;
     readonly image: ({
         readonly cropped: ({
@@ -28,21 +26,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     },
@@ -101,8 +85,15 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = '5bcbb455581d023140e38016f10d4215';
+(node as any).hash = '19a1f04c0c344e48b118ba6835c53d5a';
 export default node;

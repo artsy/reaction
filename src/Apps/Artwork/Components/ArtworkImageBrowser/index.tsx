@@ -46,17 +46,10 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
 >(ArtworkImageBrowserContainer, {
   artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
-      title
       image_alt: to_s
-      image_title
-      href
-
       ...ArtworkActions_artwork
       image {
         id
-        url(version: "larger")
-        height
-        width
       }
       images {
         id

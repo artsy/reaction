@@ -25,13 +25,13 @@ query ArtworkSidebarPartnerInfo_Test_Query {
 
 fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
   partner {
-    __id
     name
     href
     locations {
       city
       __id
     }
+    __id
   }
   __id
 }
@@ -58,7 +58,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebarPartnerInfo_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    href\n    locations {\n      city\n      __id\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -109,7 +109,6 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v1,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -142,7 +141,8 @@ return {
                   },
                   v1
                 ]
-              }
+              },
+              v1
             ]
           },
           v1
