@@ -1,7 +1,7 @@
 import { getDate } from "Components/Publishing/Constants"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import moment from "moment-timezone"
+import { DateTime } from "luxon"
 import React from "react"
 import renderer from "react-test-renderer"
 import { Date } from "../Date"
@@ -24,7 +24,7 @@ describe("Date", () => {
   describe("Unit", () => {
     it("renders the date", () => {
       const component = mount(<Date date={date} layout="split" />)
-      expect(component.text()).toBe("May 19, 2017 9:09 am")
+      expect(component.text()).toBe("May 19, 2017 9:09am")
     })
 
     it("renders condensed date", () => {
@@ -37,11 +37,11 @@ describe("Date", () => {
 describe("#getDate", () => {
   const timestamp = "2017-02-22T19:22:05.709Z"
   const expectedFormattedDates = {
-    monthYear: "February 2017",
+    monthYear: "Feb 2017",
     condensed: "Feb 22, 2017",
-    verbose: "Feb 22, 2017 at 2:22 pm",
-    verboseToday: "Today at 2:22 pm",
-    default: "Feb 22, 2017 2:22 pm",
+    verbose: "Feb 22, 2017 at 2:22pm",
+    verboseToday: "Today at 2:22pm",
+    default: "Feb 22, 2017 2:22pm",
   }
 
   it("returns the correct date for monthYear format", () => {
@@ -66,7 +66,7 @@ describe("#getDate", () => {
 
   // FIXME: Reenable test (fails CI at certain times)
   xit("returns the correct verbose date for same-day timestamps", () => {
-    let today = moment().tz("America/New_York")
+    let today = DateTime.local().setZone("America/New_York")
     today = today.set({
       hour: 14,
       minute: 22,

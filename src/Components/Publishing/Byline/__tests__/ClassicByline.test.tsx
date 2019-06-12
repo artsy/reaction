@@ -62,13 +62,13 @@ describe("ClassicByline", () => {
 
     it("renders published date", () => {
       const component = getWrapper(props)
-      expect(component.text()).toMatch("Jul 28, 2017 4:38 pm")
+      expect(component.text()).toMatch("Jul 28, 2017 4:38pm")
     })
 
     it("renders a custom date", () => {
       props.date = "2017-05-19T13:09:18.567Z"
       const component = getWrapper(props)
-      expect(component.text()).toMatch("May 19, 2017 9:09 am")
+      expect(component.text()).toMatch("May 19, 2017 9:09am")
     })
   })
 })

@@ -8,6 +8,10 @@ interface Props {
   ReadMoreLink?: () => any
 }
 
+/**
+ * Truncate large bodies of text.
+ * If you need to truncate a single line, consider using `text-overflow: ellipsis`.
+ */
 export const Truncator: React.SFC<Props> = ({
   ReadMoreLink,
   children,

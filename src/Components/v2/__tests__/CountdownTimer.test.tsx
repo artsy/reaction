@@ -1,12 +1,8 @@
 import { mount } from "enzyme"
-import moment from "moment"
+import { DateTime, Duration, Settings } from "luxon"
 import React from "react"
 import { ExtractProps } from "Utils/ExtractProps"
 import { CountdownTimer } from "../CountdownTimer"
-
-const guessTimezone = jest.fn(() => "America/New_York")
-
-require("moment-timezone").tz.guess = guessTimezone
 
 const DATE = "2018-12-03T13:50:31.641Z"
 const SUMMER_DATE = "2018-08-03T13:50:31.641Z"
@@ -21,32 +17,32 @@ const mockGetOffsetBetweenGravityClock = getOffsetBetweenGravityClock as jest.Mo
 const defaultProps: ExtractProps<typeof CountdownTimer> = {
   action: "Respond",
   note: "Expired offers end the negotiation process permanently.",
-  countdownStart: moment(DATE)
-    .subtract(1, "days")
-    .toISOString(),
-  countdownEnd: moment(DATE)
-    .add(1, "days")
-    .toISOString(),
+  countdownStart: DateTime.fromISO(DATE)
+    .minus({ days: 1 })
+    .toString(),
+  countdownEnd: DateTime.fromISO(DATE)
+    .plus({ days: 1 })
+    .toString(),
 }
 
 const summerProps: typeof defaultProps = {
   ...defaultProps,
-  countdownStart: moment(SUMMER_DATE)
-    .subtract(1, "days")
-    .toISOString(),
-  countdownEnd: moment(SUMMER_DATE)
-    .add(1, "days")
-    .toISOString(),
+  countdownStart: DateTime.fromISO(SUMMER_DATE)
+    .minus({ days: 1 })
+    .toString(),
+  countdownEnd: DateTime.fromISO(SUMMER_DATE)
+    .plus({ days: 1 })
+    .toString(),
 }
 
-const getPropsWithTimeRemaining = (duration: moment.Duration) => ({
+const getPropsWithTimeRemaining = duration => ({
   ...defaultProps,
-  countdownStart: moment(DATE)
-    .subtract(1, "day")
-    .toISOString(),
-  countdownEnd: moment(DATE)
-    .add(duration)
-    .toISOString(),
+  countdownStart: DateTime.fromISO(DATE)
+    .minus({ days: 1 })
+    .toString(),
+  countdownEnd: DateTime.fromISO(DATE)
+    .plus(duration)
+    .toString(),
 })
 
 describe("CountdownTimer", () => {
@@ -55,23 +51,33 @@ describe("CountdownTimer", () => {
     mockGetOffsetBetweenGravityClock.mockReturnValue(Promise.resolve(0))
   })
 
+  const realDefaultZone = Settings.defaultZoneName
+
+  afterEach(() => {
+    Settings.defaultZoneName = realDefaultZone
+  })
+
+  beforeEach(() => {
+    Settings.defaultZoneName = "America/New_York"
+  })
+
   describe("in winter", () => {
     it("shows timezone as EST", () => {
       const timer = mount(<CountdownTimer {...defaultProps} />)
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Dec 4, 5:50am PSTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
       )
     })
 
-    it("shows timezone as GMT in London", () => {
-      guessTimezone.mockReturnValueOnce("Europe/London")
+    it("shows timezone as UTC in when in UTC", () => {
+      Settings.defaultZoneName = "UTC"
       const timer = mount(<CountdownTimer {...defaultProps} />)
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Dec 4, 5:50am PSTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Dec 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -85,17 +91,17 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Aug 4, 6:50am PDTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Aug 4, 9:50am EDTExpired offers end the negotiation process permanently."`
       )
     })
 
-    it("shows timezone as BST in London", () => {
-      guessTimezone.mockReturnValueOnce("Europe/London")
+    it("shows timezone as UTC when in UTC", () => {
+      Settings.defaultZoneName = "UTC"
       const timer = mount(<CountdownTimer {...summerProps} />)
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Aug 4, 6:50am PDTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00s leftRespond by Aug 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -114,7 +120,7 @@ describe("CountdownTimer", () => {
 
     const text = timer.text()
     expect(text).toMatchInlineSnapshot(
-      `"time remaining01d 30m 00s leftRespond by Dec 4, 5:50am PSTExpired offers end the negotiation process permanently."`
+      `"time remaining01d 30m 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
     )
   })
 
@@ -123,63 +129,56 @@ describe("CountdownTimer", () => {
       mount(
         <CountdownTimer
           {...getPropsWithTimeRemaining(
-            moment
-              .duration(1, "days")
-              .add(15, "hours")
-              .add(10, "minutes")
-              .add(5, "seconds")
+            Duration.fromObject({ days: 1, hours: 15, minutes: 10, seconds: 5 })
           )}
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining01d 15h 10m 05s leftRespond by Dec 4, 9:00pm PSTExpired offers end the negotiation process permanently."`
+      `"time remaining01d 15h 10m 05s leftRespond by Dec 5, 12:00am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
       mount(
         <CountdownTimer
           {...getPropsWithTimeRemaining(
-            moment
-              .duration(15, "hours")
-              .add(10, "minutes")
-              .add(5, "seconds")
+            Duration.fromObject({ hours: 15, minutes: 10, seconds: 5 })
           )}
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining15h 10m 05s leftRespond by Dec 3, 9:00pm PSTExpired offers end the negotiation process permanently."`
+      `"time remaining15h 10m 05s leftRespond by Dec 4, 12:00am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
       mount(
         <CountdownTimer
           {...getPropsWithTimeRemaining(
-            moment.duration(15, "minutes").add(10, "seconds")
+            Duration.fromObject({ minutes: 15, seconds: 10 })
           )}
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining15m 10s leftRespond by Dec 3, 6:05am PSTExpired offers end the negotiation process permanently."`
+      `"time remaining15m 10s leftRespond by Dec 3, 9:05am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
       mount(
         <CountdownTimer
-          {...getPropsWithTimeRemaining(moment.duration(1, "seconds"))}
+          {...getPropsWithTimeRemaining(Duration.fromObject({ seconds: 1 }))}
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining01s leftRespond by Dec 3, 5:50am PSTExpired offers end the negotiation process permanently."`
+      `"time remaining01s leftRespond by Dec 3, 8:50am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
       mount(
         <CountdownTimer
-          {...getPropsWithTimeRemaining(moment.duration(-1, "seconds"))}
+          {...getPropsWithTimeRemaining(Duration.fromObject({ seconds: -1 }))}
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining0 days leftRespond by Dec 3, 5:50am PSTExpired offers end the negotiation process permanently."`
+      `"time remaining0 days leftRespond by Dec 3, 8:50am ESTExpired offers end the negotiation process permanently."`
     )
   })
 })

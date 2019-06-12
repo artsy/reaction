@@ -99,7 +99,7 @@ describe("Standard Header", () => {
       it("Renders a custom date", () => {
         props.date = "2017-05-19T13:09:18.567Z"
         const component = getWrapper(props)
-        expect(component.text()).toMatch("May 19, 2017 9:09 am")
+        expect(component.text()).toMatch("May 19, 2017 9:09am")
       })
     })
   })

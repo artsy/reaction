@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "16.14.7",
+  "version": "16.16.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.0",
-    "@artsy/palette": "4.14.12",
+    "@artsy/palette": "4.14.13",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.3.4",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -171,6 +171,7 @@
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.4",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
+    "@types/luxon": "^1.15.1",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
@@ -183,8 +184,9 @@
     "isomorphic-fetch": "^2.2.1",
     "jsonp": "^0.2.1",
     "lodash": "^4.17.4",
+    "luxon": "^1.15",
     "memoize-one": "^4.0.3",
-    "moment-timezone": "^0.5.25",
+    "moment": "^2.24.0",
     "numeral": "^2.0.4",
     "openseadragon": "^2.3.1",
     "prop-types": "^15.5.10",
@@ -207,7 +209,7 @@
     "react-router": "^4.2.0",
     "react-sizeme": "^2.4.4",
     "react-slick": "^0.23.2",
-    "react-spring": "^5.7.2",
+    "react-spring": "^8.0.23",
     "react-stripe-elements": "^2.0.1",
     "react-tracking": "^7.0.1",
     "react-transition-group": "^2.3.0",
@@ -233,6 +235,7 @@
     "bracketSpacing": true
   },
   "jest": {
+    "cacheDirectory": ".cache/jest",
     "transform": {
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
@@ -263,6 +266,7 @@
     ],
     "testURL": "http://localhost/",
     "moduleNameMapper": {
+      "^luxon$": "<rootDir>/node_modules/luxon",
       "^react$": "<rootDir>/node_modules/react",
       "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"

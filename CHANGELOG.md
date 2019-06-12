@@ -1,3 +1,87 @@
+# v16.16.1 (Tue Jun 11 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Add animation to dropdown [#2530](https://github.com/artsy/reaction/pull/2530) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.16.0 (Tue Jun 11 2019)
+
+#### 🚀  Enhancement
+
+- Removes Moment-Timezone and introduces Luxon [#2476](https://github.com/artsy/reaction/pull/2476) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.15.1 (Tue Jun 11 2019)
+
+#### 🏠  Internal
+
+- [ArtistCard] Update comments to give hints about proper truncation methods [#2528](https://github.com/artsy/reaction/pull/2528) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.15.0 (Tue Jun 11 2019)
+
+#### 🚀  Enhancement
+
+- Add a "show more" button to Artwork/related artists [#2515](https://github.com/artsy/reaction/pull/2515) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.14.11 (Mon Jun 10 2019)
+
+#### 🐛  Bug Fix
+
+- Better handling of long artist names/origins [#2526](https://github.com/artsy/reaction/pull/2526) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.14.10 (Mon Jun 10 2019)
+
+#### 🐛  Bug Fix
+
+- Prepare Reaction for Palette luxon updates [#2525](https://github.com/artsy/reaction/pull/2525) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.14.9 (Mon Jun 10 2019)
+
+
+
+---
+
+# v16.14.8 (Mon Jun 10 2019)
+
+
+
+---
+
 # v16.14.7 (Mon Jun 10 2019)
 
 #### 🐛  Bug Fix

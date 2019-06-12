@@ -1,7 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout with new ads enabled renders the news layout properly when new ads are enabled 1`] = `
-.c23 {
+.c25 {
+  margin: auto;
+}
+
+.c17 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c26 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,11 +65,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   font-weight: 600;
 }
 
-.c18 {
+.c19 {
   margin: 10px 20px 0 0;
 }
 
-.c18::before {
+.c19::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -60,7 +79,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   background-color: black;
 }
 
-.c19 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,11 +91,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   color: #999999;
 }
 
-.c19 a {
+.c20 a {
   color: #999999;
 }
 
-.c20 {
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -90,18 +109,18 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin-top: 5px;
 }
 
-.c21 {
+.c22 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c21:hover {
+.c22:hover {
   opacity: 0.6;
 }
 
-.c21:first-child {
+.c22:first-child {
   padding-left: 0;
 }
 
@@ -123,7 +142,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   align-items: flex-start;
 }
 
-.c15 .c17 {
+.c15 .c18 {
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -142,7 +161,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   position: relative;
 }
 
-.c8:hover .c24 {
+.c8:hover .c27 {
   opacity: 1;
 }
 
@@ -330,7 +349,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   background-size: 1.25px 1px;
 }
 
-.c13 h2 .c25 {
+.c13 h2 .c28 {
   background-position: bottom !important;
 }
 
@@ -430,11 +449,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   margin-top: 30px;
 }
 
-.c0 .c26 {
+.c0 .c29 {
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c22 {
+.c23 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -457,11 +476,11 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   line-height: 1em;
 }
 
-.c22:focus {
+.c23:focus {
   outline: 0;
 }
 
-.c22:hover {
+.c23:hover {
   color: #E5E5E5;
 }
 
@@ -486,7 +505,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media (max-width:720px) {
-  .c19 {
+  .c20 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -495,7 +514,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media (max-width:720px) {
-  .c8 .c24 {
+  .c8 .c27 {
     opacity: 1;
   }
 }
@@ -608,7 +627,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c23 {
     bottom: 15px;
     right: 15px;
   }
@@ -807,7 +826,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
             className="c16"
           >
             <div
-              className="bUZGRr dOrNHt"
+              className="c17"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -817,16 +836,16 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
               fontSize="14px"
             >
               <div
-                className="c17 c18"
+                className="c18 c19"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c19"
+              className="c20"
             >
-              Jul 19, 2018 at 1:19 pm
+              Jul 19, 2018 at 1:19pm
               , via
                
               <a
@@ -839,10 +858,10 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
             </div>
           </div>
           <div
-            className="c20"
+            className="c21"
           >
             <a
-              className="c21"
+              className="c22"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -868,7 +887,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
               </svg>
             </a>
             <a
-              className="c21"
+              className="c22"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -894,7 +913,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
               </svg>
             </a>
             <a
-              className="c21"
+              className="c22"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -924,17 +943,17 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
       </div>
     </div>
     <button
-      className="c22"
+      className="c23"
       onClick={[Function]}
     >
       Expand
     </button>
   </div>
   <div
-    className="c23"
+    className="c24"
   >
     <div
-      className="fdqRED"
+      className="c25"
     >
       <div
         style={
@@ -945,7 +964,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
         }
       />
       <div
-        className="bUZGRr jritVp"
+        className="c26"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
