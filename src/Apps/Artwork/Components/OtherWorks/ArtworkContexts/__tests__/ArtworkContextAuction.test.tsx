@@ -4,14 +4,14 @@ import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
-import { ArtworkContextAuctionFragmentContainer } from "../ArtworkContextAuction"
+import { ArtworkContextAuctionGridsFragmentContainer } from "../ArtworkContextAuction"
 
 describe("ArtworkContextAuction", () => {
   const getWrapper = (props = ArtworkContextAuctionFixture) => {
     return mount(
       <RelayStubProvider>
         <MockBoot breakpoint="lg">
-          <ArtworkContextAuctionFragmentContainer viewer={props as any} />
+          <ArtworkContextAuctionGridsFragmentContainer viewer={props as any} />
         </MockBoot>
       </RelayStubProvider>
     )

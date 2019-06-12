@@ -1,9 +1,8 @@
 import { createMockNetworkLayerTestMutationResultsMutation } from "__generated__/createMockNetworkLayerTestMutationResultsMutation.graphql"
 import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
-import { commitMutation, graphql } from "react-relay"
+import { commitMutation, fetchQuery, graphql } from "react-relay"
 import {
   Environment,
-  fetchQuery,
   GraphQLTaggedNode,
   Network,
   OperationBase,

@@ -11,7 +11,9 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 
 const order: TransactionDetailsSummaryItem_order = {
   " $refType": null,
-  __typename: "BuyOrder",
+  __typename: "OfferOrder",
+  lastOffer: null,
+  myLastOffer: null,
   mode: "BUY",
   itemsTotal: "£3,024.89",
   totalListPrice: "£3,024.89",
