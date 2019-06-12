@@ -1,3 +1,25 @@
+# v16.17.0 (Wed Jun 12 2019)
+
+#### 🚀  Enhancement
+
+- Removes moment from reaction and uses luxon [#2534](https://github.com/artsy/reaction/pull/2534) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🐛  Bug Fix
+
+- Clean up unused fields [#2522](https://github.com/artsy/reaction/pull/2522) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Pin dependencies [#2533](https://github.com/artsy/reaction/pull/2533) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.16.2 (Wed Jun 12 2019)
 
 #### 🐛  Bug Fix
