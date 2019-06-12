@@ -48,12 +48,16 @@ export const ArtworkContextAuctionQueryRenderer: React.SFC<
           }
         }
       `}
-      render={renderWithLoadProgress(ArtworkContextAuctionFragmentContainer)}
+      render={renderWithLoadProgress(
+        ArtworkContextAuctionGridsFragmentContainer
+      )}
     />
   )
 }
 
-export const ArtworkContextAuctionFragmentContainer = createFragmentContainer<{
+// FIXME: When this is named `ArtworkContextAuctionFragmentContainer`,
+//        relay-compiler throws an error about @arguments/@argumentDefinitions.
+export const ArtworkContextAuctionGridsFragmentContainer = createFragmentContainer<{
   viewer: ArtworkContextAuction_viewer
 }>(
   props => {
