@@ -138,6 +138,7 @@
     "react-powerplug": "1.0.0",
     "react-select": "1.2.1",
     "react-test-renderer": "16.8.2",
+    "relay-config": "^5.0",
     "relay-compiler": "^5.0",
     "relay-compiler-language-typescript": "1.1.0",
     "simple-progress-webpack-plugin": "1.1.2",
