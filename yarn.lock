@@ -7409,7 +7409,7 @@ immer@1.12.1, immer@^1.12.0:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.12.1.tgz#40c6e5b292c00560836c2993bda3a24379d466f5"
   integrity sha512-3fmKM6ovaqDt0CdC9daXpNi5x/YCYS3i4cwLdTVkhJdk5jrDXoPs7lCm3IqM3yhfSnz4tjjxbRG2CziQ7m8ztg==
 
-immutable@^3.7.6:
+immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
   integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
@@ -12164,12 +12164,12 @@ relateurl@0.2.x:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler-language-typescript@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-1.1.0.tgz#c3c6770eb74035a0fede99761cc539e5f9b5c3af"
-  integrity sha512-HDWTEsSsNuphmNrjbc1Tf1ljVjbi2CSA7zArsFFYCYHfVU/O7oS3qv/u5E+LrHdYSM80AjpUVjdcFGsqkgOmNw==
+relay-compiler-language-typescript@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-4.3.0.tgz#4069253adfe7866d677324c50f166ee20ea53240"
+  integrity sha512-X7hOG3Q/YkkwCuP6MA881aY3JmqatpsnCpW/J58LOaS6NQ6osl1aurmL7qVwfrIUfk+aSXvUbyUrFeQUj/DhXg==
   dependencies:
-    immutable "^3.7.6"
+    immutable "^3.8.2"
     invariant "^2.2.2"
 
 relay-compiler@^5.0:
