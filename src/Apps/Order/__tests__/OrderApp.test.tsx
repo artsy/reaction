@@ -20,7 +20,7 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { MockBoot } from "DevTools"
 import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
-import moment from "moment"
+import { DateTime } from "luxon"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
 jest.mock("react-stripe-elements", () => ({
@@ -327,13 +327,13 @@ describe("OrderApp routing redirects", () => {
       lastOffer: {
         ...OfferWithTotals,
         id: "last-offer",
-        createdAt: moment()
-          .subtract(1, "days")
-          .toISOString(),
+        createdAt: DateTime.local()
+          .minus({ days: 1 })
+          .toString(),
       },
       myLastOffer: {
         id: "my-last-offer",
-        createdAt: moment().toISOString(),
+        createdAt: DateTime.local().toString(),
       },
       awaitingResponseFrom: "BUYER",
     }
@@ -385,9 +385,9 @@ describe("OrderApp routing redirects", () => {
           ...counterOfferOrder,
           myLastOffer: {
             ...counterOfferOrder.myLastOffer,
-            createdAt: moment()
-              .subtract(2, "days")
-              .toISOString(),
+            createdAt: DateTime.local()
+              .minus({ days: 2 })
+              .toString(),
           },
         })
       )
@@ -403,13 +403,13 @@ describe("OrderApp routing redirects", () => {
       lastOffer: {
         ...OfferWithTotals,
         id: "last-offer",
-        createdAt: moment()
-          .subtract(1, "days")
-          .toISOString(),
+        createdAt: DateTime.local()
+          .minus({ days: 1 })
+          .toString(),
       },
       myLastOffer: {
         id: "my-last-offer",
-        createdAt: moment().toISOString(),
+        createdAt: DateTime.local().toString(),
       },
       awaitingResponseFrom: "BUYER",
       lastTransactionFailed: true,

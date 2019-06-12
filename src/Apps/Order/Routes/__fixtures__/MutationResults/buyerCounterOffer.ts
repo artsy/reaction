@@ -1,14 +1,14 @@
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
-import moment from "moment"
+import { DateTime } from "luxon"
 
 export const buyerCounterOfferSuccess = {
   ecommerceBuyerCounterOffer: {
     orderOrError: {
       order: {
         ...OfferOrderWithShippingDetails,
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
       },
     },
   },

@@ -1,6 +1,6 @@
 import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RouteConfig, Router } from "found"
-import moment from "moment"
+import { DateTime } from "luxon"
 import { graphql } from "react-relay"
 import { get } from "Utils/get"
 import { RedirectPredicate, RedirectRecord } from "./getRedirect"
@@ -139,7 +139,8 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
   if (
     order.myLastOffer &&
     order.lastOffer &&
-    moment(order.myLastOffer.createdAt).isAfter(order.lastOffer.createdAt)
+    DateTime.fromISO(order.myLastOffer.createdAt) >
+      DateTime.fromISO(order.lastOffer.createdAt)
   ) {
     return
   }

@@ -14,7 +14,7 @@ import {
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { MockRouter } from "DevTools/MockRouter"
-import moment from "moment"
+import { DateTime } from "luxon"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as orderRoutes } from "../Order/routes"
@@ -187,14 +187,14 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
       order={{
         ...OfferOrderPickup,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         awaitingResponseFrom: "BUYER",
         lastTransactionFailed: true,
@@ -209,14 +209,14 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
       order={{
         ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         lastTransactionFailed: true,
         awaitingResponseFrom: "BUYER",
@@ -239,14 +239,14 @@ storiesOf("Apps/Order Page/Respond", module)
       order={{
         ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         awaitingResponseFrom: "BUYER",
         offers: { edges: Offers },
@@ -260,23 +260,23 @@ storiesOf("Apps/Order Page/Respond", module)
       order={{
         ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
           id: "last-offer",
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         myLastOffer: {
           ...OfferWithTotals,
           id: "my-last-offer",
           fromParticipant: "BUYER",
-          createdAt: moment()
-            .subtract(1, "minute")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         awaitingResponseFrom: "BUYER",
         offers: { edges: Offers },
@@ -290,15 +290,15 @@ storiesOf("Apps/Order Page/Respond", module)
       order={{
         ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
           id: "last-offer",
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         awaitingResponseFrom: "BUYER",
         offers: { edges: Offers },
@@ -313,15 +313,15 @@ storiesOf("Apps/Order Page/Respond", module)
       order={{
         ...OfferOrderWithShippingDetails,
         state: "SUBMITTED",
-        stateExpiresAt: moment()
-          .add(1, "day")
-          .toISOString(),
+        stateExpiresAt: DateTime.local()
+          .plus({ days: 1 })
+          .toString(),
         lastOffer: {
           ...OfferWithTotals,
           id: "last-offer",
-          createdAt: moment()
-            .subtract(1, "day")
-            .toISOString(),
+          createdAt: DateTime.local()
+            .minus({ days: 1 })
+            .toString(),
         },
         awaitingResponseFrom: "BUYER",
         offers: { edges: Offers },

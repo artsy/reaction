@@ -96,7 +96,6 @@ export const getDate = (date, format: DateFormat = "default") => {
   const dateTime = DateTime.fromISO(date).setZone("America/New_York")
   const isToday = today.hasSame(dateTime, "day")
   const isThisYear = today.hasSame(dateTime, "year")
-
   const amPm = dateTime.hour >= 12 ? "pm" : "am"
   const minutes = dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
   const monthDay = `${dateTime.monthShort} ${dateTime.day}`
