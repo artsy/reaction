@@ -1,4 +1,5 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { VideoArticle as VideoArticleFixture } from "Components/Publishing/Fixtures/Articles"
 import { VideoLayout } from "Components/Publishing/Layouts/VideoLayout"
@@ -50,12 +51,18 @@ describe("data", () => {
         }
         displayNewAds
         isSeries
+        targetingData={targetingData(VideoArticleFixture.id, "sponsorlanding")}
       />
     )
 
     expect(canvas.props().adDimension).toEqual("970x250")
     expect(canvas.props().adUnit).toEqual("Desktop_InContentLB2")
     expect(canvas.props().displayNewAds).toBe(true)
+    expect(canvas.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "sponsorlanding",
+      post_id: "597b9f652d35b80017a2a6a7",
+    })
     expect(canvas).toHaveLength(1)
     canvas.find({ className: "htl-ad" })
     canvas.find({ "data-sizes": "970x250" })
