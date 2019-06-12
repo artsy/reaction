@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { UserSettingsPayments_me$ref } from "./UserSettingsPayments_me.graphql";
 export type PaymentMultipleCreditCardsQueryVariables = {};
 export type PaymentMultipleCreditCardsQueryResponse = {
-    readonly me: ({
+    readonly me: {
         readonly " $fragmentRefs": UserSettingsPayments_me$ref;
-    }) | null;
+    } | null;
 };
 export type PaymentMultipleCreditCardsQuery = {
     readonly response: PaymentMultipleCreditCardsQueryResponse;
@@ -19,7 +19,7 @@ export type PaymentMultipleCreditCardsQuery = {
 query PaymentMultipleCreditCardsQuery {
   me {
     ...UserSettingsPayments_me
-    __id
+    id
   }
 }
 
@@ -61,14 +61,16 @@ v1 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v2 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 100
+  }
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "PaymentMultipleCreditCardsQuery",
-  "id": null,
-  "text": "query PaymentMultipleCreditCardsQuery {\n  me {\n    ...UserSettingsPayments_me\n    __id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "PaymentMultipleCreditCardsQuery",
@@ -89,8 +91,7 @@ return {
             "kind": "FragmentSpread",
             "name": "UserSettingsPayments_me",
             "args": null
-          },
-          v0
+          }
         ]
       }
     ]
@@ -109,21 +110,14 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          v0,
-          v1,
+          (v0/*: any*/),
+          (v1/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
             "name": "creditCards",
             "storageKey": "creditCards(first:100)",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 100,
-                "type": "Int"
-              }
-            ],
+            "args": (v2/*: any*/),
             "concreteType": "CreditCardConnection",
             "plural": false,
             "selections": [
@@ -145,8 +139,8 @@ return {
                     "concreteType": "CreditCard",
                     "plural": false,
                     "selections": [
-                      v0,
-                      v1,
+                      (v0/*: any*/),
+                      (v1/*: any*/),
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -224,14 +218,7 @@ return {
             "kind": "LinkedHandle",
             "alias": null,
             "name": "creditCards",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 100,
-                "type": "Int"
-              }
-            ],
+            "args": (v2/*: any*/),
             "handle": "connection",
             "key": "UserSettingsPayments_creditCards",
             "filters": []
@@ -239,6 +226,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "PaymentMultipleCreditCardsQuery",
+    "id": null,
+    "text": "query PaymentMultipleCreditCardsQuery {\n  me {\n    ...UserSettingsPayments_me\n    id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  __id\n  id\n  creditCards(first: 100) {\n    edges {\n      node {\n        __id\n        id\n        brand\n        last_digits\n        expiration_year\n        expiration_month\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

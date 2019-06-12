@@ -1,21 +1,21 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _CreditCardSummaryItem_order$ref: unique symbol;
 export type CreditCardSummaryItem_order$ref = typeof _CreditCardSummaryItem_order$ref;
 export type CreditCardSummaryItem_order = {
-    readonly creditCard: ({
+    readonly creditCard: {
         readonly brand: string;
         readonly last_digits: string;
         readonly expiration_year: number;
         readonly expiration_month: number;
-    }) | null;
+    } | null;
     readonly " $refType": CreditCardSummaryItem_order$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CreditCardSummaryItem_order",
   "type": "Order",
@@ -58,22 +58,8 @@ const node: ConcreteFragment = {
           "name": "expiration_month",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

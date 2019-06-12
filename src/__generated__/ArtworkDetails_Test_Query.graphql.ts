@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
 export type ArtworkDetails_Test_QueryVariables = {};
 export type ArtworkDetails_Test_QueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkDetails_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkDetails_Test_Query = {
     readonly response: ArtworkDetails_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtworkDetails_Test_Query = {
 query ArtworkDetails_Test_Query {
   artwork(id: "richard-prince-untitled-fashion") {
     ...ArtworkDetails_artwork
-    __id
+    id
   }
 }
 
@@ -30,17 +30,14 @@ fragment ArtworkDetails_artwork on Artwork {
   ...ArtworkDetailsArticles_artwork
   articles(size: 10) {
     id
-    __id
   }
   literature(format: HTML)
   exhibition_history(format: HTML)
   provenance(format: HTML)
-  __id
 }
 
 fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
   description(format: HTML)
-  __id
 }
 
 fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
@@ -48,7 +45,7 @@ fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
   sale {
     isBenefit
     isGalleryAuction
-    __id
+    id
   }
   partner {
     _id
@@ -59,7 +56,7 @@ fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
     initials
     locations {
       city
-      __id
+      id
     }
     is_default_profile_public
     profile {
@@ -67,13 +64,10 @@ fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
       id
       icon {
         url(version: "square140")
-        __id: id
+        id
       }
-      __id
     }
-    __id
   }
-  __id
 }
 
 fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
@@ -97,14 +91,13 @@ fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
     label
     details
   }
-  __id
 }
 
 fragment ArtworkDetailsArticles_artwork on Artwork {
   articles(size: 10) {
     author {
       name
-      __id
+      id
     }
     href
     published_at(format: "MMM Do, YYYY")
@@ -112,12 +105,11 @@ fragment ArtworkDetailsArticles_artwork on Artwork {
       resized(width: 300) {
         url
       }
-      __id: id
+      id
     }
     thumbnail_title
-    __id
+    id
   }
-  __id
 }
 
 fragment FollowProfileButton_profile on Profile {
@@ -132,54 +124,38 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "richard-prince-untitled-fashion",
-    "type": "String!"
+    "value": "richard-prince-untitled-fashion"
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "format",
-    "value": "HTML",
-    "type": "Format"
+    "value": "HTML"
   }
 ],
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v6 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v7 = [
+v5 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -197,11 +173,6 @@ v7 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkDetails_Test_Query",
-  "id": null,
-  "text": "query ArtworkDetails_Test_Query {\n  artwork(id: \"richard-prince-untitled-fashion\") {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature(format: HTML)\n  exhibition_history(format: HTML)\n  provenance(format: HTML)\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    __id\n  }\n  partner {\n    _id\n    id\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      __id\n    }\n    is_default_profile_public\n    profile {\n      ...FollowProfileButton_profile\n      id\n      icon {\n        url(version: \"square140\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n      __id: id\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n\nfragment FollowProfileButton_profile on Profile {\n  __id\n  id\n  is_followed\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkDetails_Test_Query",
@@ -214,7 +185,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"richard-prince-untitled-fashion\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -222,8 +193,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkDetails_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -238,29 +208,22 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"richard-prince-untitled-fashion\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "image_rights",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
             "name": "description",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "description(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "additional_information",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "additional_information(format:\"HTML\")"
           },
           {
@@ -286,7 +249,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v2/*: any*/)
             ]
           },
           {
@@ -305,7 +268,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v3,
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -313,8 +276,8 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4,
-              v5,
+              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -338,7 +301,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
+                  (v2/*: any*/)
                 ]
               },
               {
@@ -357,8 +320,14 @@ return {
                 "concreteType": "Profile",
                 "plural": false,
                 "selections": [
-                  v1,
-                  v3,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "__id",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  (v2/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -383,18 +352,16 @@ return {
                           {
                             "kind": "Literal",
                             "name": "version",
-                            "value": "square140",
-                            "type": "[String]"
+                            "value": "square140"
                           }
                         ],
                         "storageKey": "url(version:\"square140\")"
                       },
-                      v6
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              },
-              v1
+              }
             ]
           },
           {
@@ -418,7 +385,13 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "image_rights",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -427,7 +400,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v5/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -437,7 +410,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v5/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -447,7 +420,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v5/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -457,7 +430,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v5/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -468,8 +441,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 10,
-                "type": "Int"
+                "value": 10
               }
             ],
             "concreteType": "Article",
@@ -484,11 +456,11 @@ return {
                 "concreteType": "Author",
                 "plural": false,
                 "selections": [
-                  v5,
-                  v1
+                  (v4/*: any*/),
+                  (v2/*: any*/)
                 ]
               },
-              v4,
+              (v3/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -497,8 +469,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "format",
-                    "value": "MMM Do, YYYY",
-                    "type": "String"
+                    "value": "MMM Do, YYYY"
                   }
                 ],
                 "storageKey": "published_at(format:\"MMM Do, YYYY\")"
@@ -521,8 +492,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "width",
-                        "value": 300,
-                        "type": "Int"
+                        "value": 300
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -537,7 +507,7 @@ return {
                       }
                     ]
                   },
-                  v6
+                  (v2/*: any*/)
                 ]
               },
               {
@@ -547,34 +517,41 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1,
-              v3
+              (v2/*: any*/)
             ]
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "literature",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "literature(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "exhibition_history",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "exhibition_history(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "provenance",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "provenance(format:\"HTML\")"
-          }
+          },
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkDetails_Test_Query",
+    "id": null,
+    "text": "query ArtworkDetails_Test_Query {\n  artwork(id: \"richard-prince-untitled-fashion\") {\n    ...ArtworkDetails_artwork\n    id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    id\n  }\n  literature(format: HTML)\n  exhibition_history(format: HTML)\n  provenance(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    id\n  }\n  partner {\n    _id\n    id\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      id\n    }\n    is_default_profile_public\n    profile {\n      ...FollowProfileButton_profile\n      id\n      icon {\n        url(version: \"square140\")\n        id\n      }\n    }\n  }\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n      id\n    }\n    thumbnail_title\n    id\n  }\n}\n\nfragment FollowProfileButton_profile on Profile {\n  __id\n  id\n  is_followed\n}\n",
+    "metadata": {}
   }
 };
 })();

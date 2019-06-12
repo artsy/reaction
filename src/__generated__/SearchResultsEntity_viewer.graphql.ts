@@ -1,19 +1,19 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
 declare const _SearchResultsEntity_viewer$ref: unique symbol;
 export type SearchResultsEntity_viewer$ref = typeof _SearchResultsEntity_viewer$ref;
 export type SearchResultsEntity_viewer = {
-    readonly search: ({
+    readonly search: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
+        readonly pageCursors: {
             readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
+        } | null;
+        readonly edges: ReadonlyArray<{
             readonly node: ({
                 readonly description?: string | null;
                 readonly displayLabel?: string | null;
@@ -21,15 +21,26 @@ export type SearchResultsEntity_viewer = {
                 readonly _id?: string;
                 readonly imageUrl?: string | null;
                 readonly displayType?: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } & ({
+                readonly description: string | null;
+                readonly displayLabel: string | null;
+                readonly href: string | null;
+                readonly _id: string;
+                readonly imageUrl: string | null;
+                readonly displayType: string | null;
+            } | {
+                /*This will never be '% other', but we need some
+                value in case none of the concrete values match.*/
+                readonly __typename: "%other";
+            })) | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": SearchResultsEntity_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchResultsEntity_viewer",
   "type": "Viewer",
@@ -88,44 +99,37 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Variable",
           "name": "entities",
-          "variableName": "entities",
-          "type": "[SearchEntity]"
+          "variableName": "entities"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "query",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "SearchableConnection",
@@ -190,13 +194,6 @@ const node: ConcreteFragment = {
               "concreteType": null,
               "plural": false,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__id",
-                  "args": null,
-                  "storageKey": null
-                },
                 {
                   "kind": "InlineFragment",
                   "type": "SearchableItem",

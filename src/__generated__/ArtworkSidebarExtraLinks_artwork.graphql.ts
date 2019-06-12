@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSidebarExtraLinks_artwork$ref: unique symbol;
 export type ArtworkSidebarExtraLinks_artwork$ref = typeof _ArtworkSidebarExtraLinks_artwork$ref;
 export type ArtworkSidebarExtraLinks_artwork = {
@@ -9,31 +9,24 @@ export type ArtworkSidebarExtraLinks_artwork = {
     readonly is_for_sale: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
-    readonly artists: ReadonlyArray<({
+    readonly artists: ReadonlyArray<{
         readonly _id: string;
         readonly is_consignable: boolean | null;
-    }) | null> | null;
-    readonly sale: ({
+    } | null> | null;
+    readonly sale: {
         readonly _id: string;
         readonly is_closed: boolean | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtworkSidebarExtraLinks_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "_id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -44,7 +37,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -82,15 +75,14 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "is_consignable",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
@@ -102,18 +94,16 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "is_closed",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();

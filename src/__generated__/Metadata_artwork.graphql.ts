@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Contact_artwork$ref } from "./Contact_artwork.graphql";
 import { Details_artwork$ref } from "./Details_artwork.graphql";
 declare const _Metadata_artwork$ref: unique symbol;
@@ -13,13 +13,20 @@ export type Metadata_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Metadata_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "href",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "Details_artwork",
@@ -29,20 +36,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "Contact_artwork",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

@@ -10,15 +10,15 @@ export type FollowArtistButtonMutationVariables = {
     readonly input: FollowArtistInput;
 };
 export type FollowArtistButtonMutationResponse = {
-    readonly followArtist: ({
-        readonly artist: ({
+    readonly followArtist: {
+        readonly artist: {
             readonly __id: string;
             readonly is_followed: boolean | null;
-            readonly counts: ({
+            readonly counts: {
                 readonly follows: any | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type FollowArtistButtonMutation = {
     readonly response: FollowArtistButtonMutationResponse;
@@ -38,6 +38,7 @@ mutation FollowArtistButtonMutation(
       counts {
         follows
       }
+      id
     }
   }
 }
@@ -54,57 +55,109 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "followArtist",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "FollowArtistInput!"
-      }
-    ],
-    "concreteType": "FollowArtistPayload",
-    "plural": false,
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_followed",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "counts",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "ArtistCounts",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "follows",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+};
+return {
+  "kind": "Request",
+  "fragment": {
+    "kind": "Fragment",
+    "name": "FollowArtistButtonMutation",
+    "type": "Mutation",
+    "metadata": null,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "artist",
+        "name": "followArtist",
         "storageKey": null,
-        "args": null,
-        "concreteType": "Artist",
+        "args": (v1/*: any*/),
+        "concreteType": "FollowArtistPayload",
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "__id",
+            "name": "artist",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
-            "args": null,
-            "storageKey": null
-          },
+            "concreteType": "Artist",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "operation": {
+    "kind": "Operation",
+    "name": "FollowArtistButtonMutation",
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "followArtist",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "FollowArtistPayload",
+        "plural": false,
+        "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "counts",
+            "name": "artist",
             "storageKey": null,
             "args": null,
-            "concreteType": "ArtistCounts",
+            "concreteType": "Artist",
             "plural": false,
             "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "follows",
+                "name": "id",
                 "args": null,
                 "storageKey": null
               }
@@ -113,28 +166,13 @@ v1 = [
         ]
       }
     ]
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowArtistButtonMutation",
-  "id": null,
-  "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n      counts {\n        follows\n      }\n    }\n  }\n}\n",
-  "metadata": {},
-  "fragment": {
-    "kind": "Fragment",
-    "name": "FollowArtistButtonMutation",
-    "type": "Mutation",
-    "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
   },
-  "operation": {
-    "kind": "Operation",
+  "params": {
+    "operationKind": "mutation",
     "name": "FollowArtistButtonMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "id": null,
+    "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n      counts {\n        follows\n      }\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

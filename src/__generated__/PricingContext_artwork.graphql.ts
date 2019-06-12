@@ -1,20 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
 export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
 declare const _PricingContext_artwork$ref: unique symbol;
 export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
-    readonly priceCents: ({
+    readonly priceCents: {
         readonly min: number | null;
         readonly max: number | null;
-    }) | null;
-    readonly artists: ReadonlyArray<({
+    } | null;
+    readonly artists: ReadonlyArray<{
         readonly id: string;
-    }) | null> | null;
+    } | null> | null;
     readonly category: string | null;
-    readonly pricingContext: ({
+    readonly pricingContext: {
         readonly appliedFiltersDisplay: string | null;
         readonly appliedFilters: {
             readonly dimension: AnalyticsPricingContextDimensionEnum | null;
@@ -27,21 +27,14 @@ export type PricingContext_artwork = {
             readonly minPriceCents: number;
             readonly numArtworks: number;
         }>;
-    }) | null;
+    } | null;
     readonly " $refType": PricingContext_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "category",
@@ -95,11 +88,10 @@ return {
           "name": "id",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
-    v1,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -132,7 +124,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            (v0/*: any*/)
           ]
         },
         {
@@ -182,8 +174,7 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
 })();

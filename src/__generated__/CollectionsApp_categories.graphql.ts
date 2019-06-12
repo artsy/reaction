@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _CollectionsApp_categories$ref: unique symbol;
 export type CollectionsApp_categories$ref = typeof _CollectionsApp_categories$ref;
 export type CollectionsApp_categories = ReadonlyArray<{
@@ -15,7 +15,7 @@ export type CollectionsApp_categories = ReadonlyArray<{
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CollectionsApp_categories",
   "type": "MarketingCollectionCategory",
@@ -58,13 +58,6 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "title",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
           "args": null,
           "storageKey": null
         }

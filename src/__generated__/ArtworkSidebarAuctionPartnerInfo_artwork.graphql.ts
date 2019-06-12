@@ -1,39 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSidebarAuctionPartnerInfo_artwork$ref: unique symbol;
 export type ArtworkSidebarAuctionPartnerInfo_artwork$ref = typeof _ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 export type ArtworkSidebarAuctionPartnerInfo_artwork = {
     readonly _id: string;
-    readonly partner: ({
+    readonly partner: {
         readonly _id: string;
         readonly name: string | null;
-    }) | null;
-    readonly sale_artwork: ({
+    } | null;
+    readonly sale_artwork: {
         readonly estimate: string | null;
-    }) | null;
-    readonly sale: ({
+    } | null;
+    readonly sale: {
         readonly _id: string;
         readonly is_closed: boolean | null;
         readonly is_with_buyers_premium: boolean | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "_id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -44,7 +37,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -54,15 +47,14 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "name",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
@@ -80,8 +72,7 @@ return {
           "name": "estimate",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
@@ -93,7 +84,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -107,11 +98,9 @@ return {
           "name": "is_with_buyers_premium",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();

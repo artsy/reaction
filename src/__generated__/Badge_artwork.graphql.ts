@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _Badge_artwork$ref: unique symbol;
 export type Badge_artwork$ref = typeof _Badge_artwork$ref;
 export type Badge_artwork = {
@@ -8,24 +8,16 @@ export type Badge_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly href: string | null;
-    readonly sale: ({
+    readonly sale: {
         readonly is_preview: boolean | null;
         readonly display_timely_at: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": Badge_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Badge_artwork",
   "type": "Artwork",
@@ -82,13 +74,10 @@ return {
           "name": "display_timely_at",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '2acc89282c0f63455bd559089466e8f5';
 export default node;

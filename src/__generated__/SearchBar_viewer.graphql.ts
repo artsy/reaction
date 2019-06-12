@@ -1,25 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _SearchBar_viewer$ref: unique symbol;
 export type SearchBar_viewer$ref = typeof _SearchBar_viewer$ref;
 export type SearchBar_viewer = {
-    readonly search?: ({
-        readonly edges: ReadonlyArray<({
+    readonly search?: {
+        readonly edges: ReadonlyArray<{
             readonly node: ({
                 readonly displayLabel: string | null;
                 readonly href: string | null;
                 readonly displayType?: string | null;
                 readonly id?: string;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } & ({
+                readonly displayType: string | null;
+                readonly id: string;
+            } | {
+                /*This will never be '% other', but we need some
+                value in case none of the concrete values match.*/
+                readonly __typename: "%other";
+            })) | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": SearchBar_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchBar_viewer",
   "type": "Viewer",
@@ -53,20 +60,17 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "first",
-              "value": 7,
-              "type": "Int"
+              "value": 7
             },
             {
               "kind": "Literal",
               "name": "mode",
-              "value": "AUTOSUGGEST",
-              "type": "SearchMode"
+              "value": "AUTOSUGGEST"
             },
             {
               "kind": "Variable",
               "name": "query",
-              "variableName": "term",
-              "type": "String!"
+              "variableName": "term"
             }
           ],
           "concreteType": "SearchableConnection",
@@ -101,13 +105,6 @@ const node: ConcreteFragment = {
                       "kind": "ScalarField",
                       "alias": null,
                       "name": "href",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
                       "args": null,
                       "storageKey": null
                     },

@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _Follow_artist$ref: unique symbol;
 export type Follow_artist$ref = typeof _Follow_artist$ref;
 export type Follow_artist = {
@@ -12,7 +12,7 @@ export type Follow_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Follow_artist",
   "type": "Artist",

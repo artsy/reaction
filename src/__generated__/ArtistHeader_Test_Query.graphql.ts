@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
 export type ArtistHeader_Test_QueryVariables = {};
 export type ArtistHeader_Test_QueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": ArtistHeader_artist$ref;
-    }) | null;
+    } | null;
 };
 export type ArtistHeader_Test_Query = {
     readonly response: ArtistHeader_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtistHeader_Test_Query = {
 query ArtistHeader_Test_Query {
   artist(id: "pablo-picasso") {
     ...ArtistHeader_artist
-    __id
+    id
   }
 }
 
@@ -40,11 +40,10 @@ fragment ArtistHeader_artist on Artist {
         width
         height
       }
-      __id: id
+      id
     }
   }
   ...FollowArtistButton_artist
-  __id
 }
 
 fragment FollowArtistButton_artist on Artist {
@@ -62,24 +61,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistHeader_Test_Query",
-  "id": null,
-  "text": "query ArtistHeader_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistHeader_artist\n    __id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistHeader_Test_Query",
@@ -92,7 +85,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -100,8 +93,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistHeader_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -116,7 +108,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -127,13 +119,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -207,8 +193,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "height",
-                        "value": 200,
-                        "type": "Int"
+                        "value": 200
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -237,18 +222,18 @@ return {
                       }
                     ]
                   },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v1/*: any*/)
                 ]
               }
             ]
           },
-          v1,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -259,6 +244,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistHeader_Test_Query",
+    "id": null,
+    "text": "query ArtistHeader_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistHeader_artist\n    id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      id\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

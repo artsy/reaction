@@ -1,16 +1,24 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _Headline_facet$ref: unique symbol;
 export type Headline_facet$ref = typeof _Headline_facet$ref;
 export type Headline_facet = {
     readonly name?: string | null;
     readonly " $refType": Headline_facet$ref;
-};
+} & ({
+    readonly name: string | null;
+} | {
+    readonly name: string | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -28,21 +36,14 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "InlineFragment",
+      "type": "ArtworkFilterTag",
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "InlineFragment",
       "type": "ArtworkFilterGene",
-      "selections": v0
-    },
-    {
-      "kind": "InlineFragment",
-      "type": "ArtworkFilterTag",
-      "selections": v0
+      "selections": (v0/*: any*/)
     }
   ]
 };

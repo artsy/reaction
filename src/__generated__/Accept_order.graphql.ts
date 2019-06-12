@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
@@ -10,46 +10,41 @@ export type Accept_order$ref = typeof _Accept_order$ref;
 export type Accept_order = {
     readonly id: string;
     readonly stateExpiresAt: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly id: string;
-                    readonly artists: ReadonlyArray<({
+                    readonly artists: ReadonlyArray<{
                         readonly id: string;
-                    }) | null> | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
         readonly id: string;
         readonly createdAt: string | null;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Accept_order$ref;
-};
+} & ({
+    readonly lastOffer: {
+        readonly id: string;
+        readonly createdAt: string | null;
+    } | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
@@ -61,7 +56,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -105,7 +100,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    (v0/*: any*/),
                     {
                       "kind": "LinkedField",
                       "alias": null,
@@ -115,15 +110,37 @@ return {
                       "concreteType": "Artist",
                       "plural": true,
                       "selections": [
-                        v0,
-                        v1
+                        (v0/*: any*/)
                       ]
-                    },
-                    v1
+                    }
                   ]
-                },
-                v2
+                }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            (v0/*: any*/),
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "createdAt",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -148,33 +165,6 @@ return {
       "kind": "FragmentSpread",
       "name": "CreditCardSummaryItem_order",
       "args": null
-    },
-    v2,
-    {
-      "kind": "InlineFragment",
-      "type": "OfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v0,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "createdAt",
-              "args": null,
-              "storageKey": null
-            },
-            v2
-          ]
-        }
-      ]
     }
   ]
 };

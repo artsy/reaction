@@ -1,22 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _Dropdown_aggregation$ref: unique symbol;
 export type Dropdown_aggregation$ref = typeof _Dropdown_aggregation$ref;
 export type Dropdown_aggregation = {
     readonly slice: ArtworkAggregation | null;
-    readonly counts: ReadonlyArray<({
+    readonly counts: ReadonlyArray<{
         readonly name: string | null;
         readonly id: string;
         readonly count: number | null;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": Dropdown_aggregation$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Dropdown_aggregation",
   "type": "ArtworksAggregationResults",
@@ -57,13 +57,6 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "count",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
           "args": null,
           "storageKey": null
         }

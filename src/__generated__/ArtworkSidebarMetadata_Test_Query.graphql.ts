@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkSidebarMetadata_artwork$ref } from "./ArtworkSidebarMetadata_artwork.graphql";
 export type ArtworkSidebarMetadata_Test_QueryVariables = {};
 export type ArtworkSidebarMetadata_Test_QueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkSidebarMetadata_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarMetadata_Test_Query = {
     readonly response: ArtworkSidebarMetadata_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtworkSidebarMetadata_Test_Query = {
 query ArtworkSidebarMetadata_Test_Query {
   artwork(id: "josef-albers-homage-to-the-square-85") {
     ...ArtworkSidebarMetadata_artwork
-    __id
+    id
   }
 }
 
@@ -27,22 +27,21 @@ fragment ArtworkSidebarMetadata_artwork on Artwork {
   is_biddable
   edition_sets {
     __id
+    id
   }
   sale_artwork {
     lot_label
-    __id
+    id
   }
   ...ArtworkSidebarTitleInfo_artwork
   ...ArtworkSidebarSizeInfo_piece
   ...ArtworkSidebarClassification_artwork
-  __id
 }
 
 fragment ArtworkSidebarTitleInfo_artwork on Artwork {
   title
   date
   medium
-  __id
 }
 
 fragment ArtworkSidebarSizeInfo_piece on Sellable {
@@ -51,20 +50,13 @@ fragment ArtworkSidebarSizeInfo_piece on Sellable {
     cm
   }
   edition_of
-  ... on Node {
-    __id
-  }
-  ... on EditionSet {
-    __id
-  }
 }
 
 fragment ArtworkSidebarClassification_artwork on Artwork {
   attribution_class {
     short_description
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -73,24 +65,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "josef-albers-homage-to-the-square-85",
-    "type": "String!"
+    "value": "josef-albers-homage-to-the-square-85"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarMetadata_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarMetadata_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarMetadata_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable\n  edition_sets {\n    __id\n  }\n  sale_artwork {\n    lot_label\n    __id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n  __id\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n  __id\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n  ... on Node {\n    __id\n  }\n  ... on EditionSet {\n    __id\n  }\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarMetadata_Test_Query",
@@ -103,7 +89,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"josef-albers-homage-to-the-square-85\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -111,8 +97,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarMetadata_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -127,23 +112,35 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"josef-albers-homage-to-the-square-85\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "medium",
+            "name": "is_biddable",
             "args": null,
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "is_biddable",
+            "name": "edition_sets",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "EditionSet",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__id",
+                "args": null,
+                "storageKey": null
+              },
+              (v1/*: any*/)
+            ]
           },
           {
             "kind": "LinkedField",
@@ -161,7 +158,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
           {
@@ -179,18 +176,12 @@ return {
             "storageKey": null
           },
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "edition_sets",
-            "storageKey": null,
+            "name": "medium",
             "args": null,
-            "concreteType": "EditionSet",
-            "plural": true,
-            "selections": [
-              v1
-            ]
+            "storageKey": null
           },
-          v1,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -239,12 +230,20 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
-          }
+          },
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarMetadata_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarMetadata_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarMetadata_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable\n  edition_sets {\n    __id\n    id\n  }\n  sale_artwork {\n    lot_label\n    id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

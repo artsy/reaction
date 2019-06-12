@@ -1,45 +1,37 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _MarketDataSummary_artist$ref: unique symbol;
 export type MarketDataSummary_artist$ref = typeof _MarketDataSummary_artist$ref;
 export type MarketDataSummary_artist = {
     readonly _id: string;
     readonly collections: ReadonlyArray<string | null> | null;
-    readonly highlights: ({
-        readonly partners: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly categories: ReadonlyArray<({
+    readonly highlights: {
+        readonly partners: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly categories: ReadonlyArray<{
                         readonly id: string;
-                    }) | null> | null;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly auctionResults: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly price_realized: ({
+                    } | null> | null;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly auctionResults: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly price_realized: {
                     readonly display: string | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": MarketDataSummary_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "MarketDataSummary_artist",
   "type": "Artist",
@@ -89,26 +81,22 @@ return {
             {
               "kind": "Literal",
               "name": "display_on_partner_profile",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
-              "type": "Int"
+              "value": 10
             },
             {
               "kind": "Variable",
               "name": "partner_category",
-              "variableName": "partner_category",
-              "type": "[String]"
+              "variableName": "partner_category"
             },
             {
               "kind": "Literal",
               "name": "represented_by",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             }
           ],
           "concreteType": "PartnerArtistConnection",
@@ -147,14 +135,11 @@ return {
                           "name": "id",
                           "args": null,
                           "storageKey": null
-                        },
-                        v0
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
@@ -170,20 +155,17 @@ return {
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Literal",
           "name": "recordsTrusted",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PRICE_AND_DATE_DESC",
-          "type": "AuctionResultSorts"
+          "value": "PRICE_AND_DATE_DESC"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -224,24 +206,20 @@ return {
                         {
                           "kind": "Literal",
                           "name": "format",
-                          "value": "0a",
-                          "type": "String"
+                          "value": "0a"
                         }
                       ],
                       "storageKey": "display(format:\"0a\")"
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '04d6d58696b4cf04d800e6706066c9f8';
 export default node;

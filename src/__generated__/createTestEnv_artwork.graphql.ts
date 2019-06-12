@@ -1,27 +1,19 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _createTestEnv_artwork$ref: unique symbol;
 export type createTestEnv_artwork$ref = typeof _createTestEnv_artwork$ref;
 export type createTestEnv_artwork = {
     readonly title: string | null;
-    readonly artist: ({
+    readonly artist: {
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": createTestEnv_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "createTestEnv_artwork",
   "type": "Artwork",
@@ -50,13 +42,10 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '77748b446a7cb5332e22b3fc524700a1';
 export default node;

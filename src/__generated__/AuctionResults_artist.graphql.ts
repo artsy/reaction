@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistAuctionResults_artist$ref } from "./ArtistAuctionResults_artist.graphql";
 declare const _AuctionResults_artist$ref: unique symbol;
 export type AuctionResults_artist$ref = typeof _AuctionResults_artist$ref;
@@ -11,7 +11,7 @@ export type AuctionResults_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "AuctionResults_artist",
   "type": "Artist",
@@ -22,13 +22,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "ArtistAuctionResults_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

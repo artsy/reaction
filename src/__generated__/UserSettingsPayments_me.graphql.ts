@@ -1,14 +1,14 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _UserSettingsPayments_me$ref: unique symbol;
 export type UserSettingsPayments_me$ref = typeof _UserSettingsPayments_me$ref;
 export type UserSettingsPayments_me = {
     readonly __id: string;
     readonly id: string;
-    readonly creditCards: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+    readonly creditCards: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
                 readonly id: string;
                 readonly brand: string;
@@ -16,15 +16,15 @@ export type UserSettingsPayments_me = {
                 readonly expiration_year: number;
                 readonly expiration_month: number;
                 readonly __typename: string;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": UserSettingsPayments_me$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -57,8 +57,8 @@ return {
   },
   "argumentDefinitions": [],
   "selections": [
-    v0,
-    v1,
+    (v0/*: any*/),
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": "creditCards",
@@ -86,8 +86,8 @@ return {
               "concreteType": "CreditCard",
               "plural": false,
               "selections": [
-                v0,
-                v1,
+                (v0/*: any*/),
+                (v1/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,

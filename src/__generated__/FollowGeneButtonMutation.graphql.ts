@@ -9,12 +9,12 @@ export type FollowGeneButtonMutationVariables = {
     readonly input: FollowGeneInput;
 };
 export type FollowGeneButtonMutationResponse = {
-    readonly followGene: ({
-        readonly gene: ({
+    readonly followGene: {
+        readonly gene: {
             readonly __id: string;
             readonly is_followed: boolean | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type FollowGeneButtonMutation = {
     readonly response: FollowGeneButtonMutationResponse;
@@ -31,6 +31,7 @@ mutation FollowGeneButtonMutation(
     gene {
       __id
       is_followed
+      id
     }
   }
 }
@@ -47,69 +48,104 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "followGene",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "FollowGeneInput!"
-      }
-    ],
-    "concreteType": "FollowGenePayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "gene",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "Gene",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__id",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "is_followed",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowGeneButtonMutation",
-  "id": null,
-  "text": "mutation FollowGeneButtonMutation(\n  $input: FollowGeneInput!\n) {\n  followGene(input: $input) {\n    gene {\n      __id\n      is_followed\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowGeneButtonMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "followGene",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "FollowGenePayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "gene",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Gene",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "FollowGeneButtonMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "followGene",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "FollowGenePayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "gene",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Gene",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "FollowGeneButtonMutation",
+    "id": null,
+    "text": "mutation FollowGeneButtonMutation(\n  $input: FollowGeneInput!\n) {\n  followGene(input: $input) {\n    gene {\n      __id\n      is_followed\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

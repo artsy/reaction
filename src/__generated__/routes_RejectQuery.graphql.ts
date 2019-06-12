@@ -6,9 +6,9 @@ export type routes_RejectQueryVariables = {
     readonly orderID: string;
 };
 export type routes_RejectQueryResponse = {
-    readonly order: ({
+    readonly order: {
         readonly " $fragmentRefs": Reject_order$ref;
-    }) | null;
+    } | null;
 };
 export type routes_RejectQuery = {
     readonly response: routes_RejectQueryResponse;
@@ -24,7 +24,7 @@ query routes_RejectQuery(
   order: ecommerceOrder(id: $orderID) {
     __typename
     ...Reject_order
-    __id: id
+    id
   }
 }
 
@@ -36,9 +36,8 @@ fragment Reject_order on Order {
       node {
         artwork {
           id
-          __id
         }
-        __id: id
+        id
       }
     }
   }
@@ -46,11 +45,9 @@ fragment Reject_order on Order {
     lastOffer {
       id
       createdAt
-      __id: id
     }
   }
   ...ArtworkSummaryItem_order
-  __id: id
 }
 
 fragment ArtworkSummaryItem_order on Order {
@@ -59,11 +56,8 @@ fragment ArtworkSummaryItem_order on Order {
     ... on Partner {
       name
     }
-    ... on Node {
-      __id
-    }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
@@ -78,15 +72,14 @@ fragment ArtworkSummaryItem_order on Order {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
+            id
           }
-          __id
+          id
         }
-        __id: id
+        id
       }
     }
   }
-  __id: id
 }
 */
 
@@ -103,58 +96,41 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "orderID",
-    "type": "String!"
+    "variableName": "orderID"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+v4 = [
+  (v3/*: any*/)
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_RejectQuery",
-  "id": null,
-  "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_RejectQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -162,8 +138,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Reject_order",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -171,19 +146,19 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_RejectQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v3,
-          v4,
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -227,8 +202,7 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v4,
-                          v5,
+                          (v3/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -275,8 +249,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -291,12 +264,12 @@ return {
                                   }
                                 ]
                               },
-                              v2
+                              (v3/*: any*/)
                             ]
                           }
                         ]
                       },
-                      v2
+                      (v3/*: any*/)
                     ]
                   }
                 ]
@@ -312,8 +285,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v5,
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -326,10 +298,18 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "ClientExtension",
+                "selections": (v4/*: any*/)
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "User",
+                "selections": (v4/*: any*/)
               }
             ]
           },
-          v2,
           {
             "kind": "InlineFragment",
             "type": "OfferOrder",
@@ -343,15 +323,14 @@ return {
                 "concreteType": "Offer",
                 "plural": false,
                 "selections": [
-                  v4,
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "createdAt",
                     "args": null,
                     "storageKey": null
-                  },
-                  v2
+                  }
                 ]
               }
             ]
@@ -359,6 +338,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_RejectQuery",
+    "id": null,
+    "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n    }\n  }\n  ...ArtworkSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

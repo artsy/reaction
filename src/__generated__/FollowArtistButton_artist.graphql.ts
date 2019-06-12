@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FollowArtistPopover_suggested$ref } from "./FollowArtistPopover_suggested.graphql";
 declare const _FollowArtistButton_artist$ref: unique symbol;
 export type FollowArtistButton_artist$ref = typeof _FollowArtistButton_artist$ref;
@@ -8,16 +8,16 @@ export type FollowArtistButton_artist = {
     readonly __id: string;
     readonly id: string;
     readonly is_followed: boolean | null;
-    readonly counts: ({
+    readonly counts: {
         readonly follows: any | null;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": FollowArtistPopover_suggested$ref;
     readonly " $refType": FollowArtistButton_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistButton_artist",
   "type": "Artist",

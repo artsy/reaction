@@ -1,19 +1,19 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtistBio_bio$ref: unique symbol;
 export type ArtistBio_bio$ref = typeof _ArtistBio_bio$ref;
 export type ArtistBio_bio = {
-    readonly biography_blurb: ({
+    readonly biography_blurb: {
         readonly text: string | null;
         readonly credit: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtistBio_bio$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistBio_bio",
   "type": "Artist",
@@ -29,14 +29,12 @@ const node: ConcreteFragment = {
         {
           "kind": "Literal",
           "name": "format",
-          "value": "HTML",
-          "type": "Format"
+          "value": "HTML"
         },
         {
           "kind": "Literal",
           "name": "partner_bio",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "ArtistBlurb",
@@ -57,13 +55,6 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
 export type Genes_Test_QueryVariables = {};
 export type Genes_Test_QueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": Genes_artist$ref;
-    }) | null;
+    } | null;
 };
 export type Genes_Test_Query = {
     readonly response: Genes_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type Genes_Test_Query = {
 query Genes_Test_Query {
   artist(id: "pablo-picasso") {
     ...Genes_artist
-    __id
+    id
   }
 }
 
@@ -30,12 +30,11 @@ fragment Genes_artist on Artist {
         node {
           href
           name
-          __id
+          id
         }
       }
     }
   }
-  __id
 }
 */
 
@@ -44,24 +43,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "Genes_Test_Query",
-  "id": null,
-  "text": "query Genes_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...Genes_artist\n    __id\n  }\n}\n\nfragment Genes_artist on Artist {\n  related {\n    genes {\n      edges {\n        node {\n          href\n          name\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "Genes_Test_Query",
@@ -74,7 +67,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -82,8 +75,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Genes_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -98,7 +90,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -152,7 +144,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v1
+                          (v1/*: any*/)
                         ]
                       }
                     ]
@@ -161,10 +153,17 @@ return {
               }
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "Genes_Test_Query",
+    "id": null,
+    "text": "query Genes_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...Genes_artist\n    id\n  }\n}\n\nfragment Genes_artist on Artist {\n  related {\n    genes {\n      edges {\n        node {\n          href\n          name\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

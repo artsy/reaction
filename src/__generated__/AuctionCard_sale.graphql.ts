@@ -1,14 +1,14 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _AuctionCard_sale$ref: unique symbol;
 export type AuctionCard_sale$ref = typeof _AuctionCard_sale$ref;
 export type AuctionCard_sale = {
-    readonly cover_image: ({
-        readonly cropped: ({
+    readonly cover_image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly isBenefit: boolean | null;
     readonly isGalleryAuction: boolean | null;
     readonly end_at: string | null;
@@ -17,22 +17,22 @@ export type AuctionCard_sale = {
     readonly is_live_open: boolean | null;
     readonly is_preview: boolean | null;
     readonly live_start_at: string | null;
-    readonly registrationStatus: ({
+    readonly registrationStatus: {
         readonly id: string;
-    }) | null;
+    } | null;
     readonly is_registration_closed: boolean | null;
     readonly name: string | null;
     readonly start_at: string | null;
     readonly is_closed: boolean | null;
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": AuctionCard_sale$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -41,13 +41,6 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
@@ -61,13 +54,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "live_start_at",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -86,14 +72,12 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 180,
-              "type": "Int!"
+              "value": 180
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 200,
-              "type": "Int!"
+              "value": 200
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -107,15 +91,15 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "isBenefit",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -138,7 +122,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -156,7 +140,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "isBenefit",
+      "name": "live_start_at",
       "args": null,
       "storageKey": null
     },
@@ -169,8 +153,7 @@ return {
       "concreteType": "Bidder",
       "plural": false,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
     },
     {
@@ -180,7 +163,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    v2,
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -204,11 +187,9 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v2,
-        v1
+        (v1/*: any*/)
       ]
-    },
-    v1
+    }
   ]
 };
 })();

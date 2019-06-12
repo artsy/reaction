@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkSidebarPageviews_artwork$ref } from "./ArtworkSidebarPageviews_artwork.graphql";
 export type ArtworkSidebarPageviews_Test_QueryVariables = {};
 export type ArtworkSidebarPageviews_Test_QueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkSidebarPageviews_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarPageviews_Test_Query = {
     readonly response: ArtworkSidebarPageviews_Test_QueryResponse;
@@ -19,14 +19,13 @@ export type ArtworkSidebarPageviews_Test_Query = {
 query ArtworkSidebarPageviews_Test_Query {
   artwork(id: "blah") {
     ...ArtworkSidebarPageviews_artwork
-    __id
+    id
   }
 }
 
 fragment ArtworkSidebarPageviews_artwork on Artwork {
   id
   pageviews
-  __id
 }
 */
 
@@ -35,24 +34,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "blah",
-    "type": "String!"
+    "value": "blah"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarPageviews_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarPageviews_Test_Query {\n  artwork(id: \"blah\") {\n    ...ArtworkSidebarPageviews_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarPageviews_artwork on Artwork {\n  id\n  pageviews\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarPageviews_Test_Query",
@@ -65,7 +51,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"blah\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -73,8 +59,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarPageviews_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -89,7 +74,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"blah\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -106,11 +91,17 @@ return {
             "name": "pageviews",
             "args": null,
             "storageKey": null
-          },
-          v1
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarPageviews_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarPageviews_Test_Query {\n  artwork(id: \"blah\") {\n    ...ArtworkSidebarPageviews_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarPageviews_artwork on Artwork {\n  id\n  pageviews\n}\n",
+    "metadata": {}
   }
 };
 })();

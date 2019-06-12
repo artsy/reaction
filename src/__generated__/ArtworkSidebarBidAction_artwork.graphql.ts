@@ -1,41 +1,41 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSidebarBidAction_artwork$ref: unique symbol;
 export type ArtworkSidebarBidAction_artwork$ref = typeof _ArtworkSidebarBidAction_artwork$ref;
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
-        readonly most_recent_bid: ({
-            readonly max_bid: ({
+        readonly most_recent_bid: {
+            readonly max_bid: {
                 readonly cents: number | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
     }> | null;
     readonly id: string;
     readonly _id: string;
-    readonly sale: ({
+    readonly sale: {
         readonly id: string;
-        readonly registrationStatus: ({
+        readonly registrationStatus: {
             readonly qualified_for_bidding: boolean | null;
-        }) | null;
+        } | null;
         readonly is_preview: boolean | null;
         readonly is_open: boolean | null;
         readonly is_live_open: boolean | null;
         readonly is_closed: boolean | null;
         readonly is_registration_closed: boolean | null;
-    }) | null;
-    readonly sale_artwork: ({
-        readonly increments: ReadonlyArray<({
+    } | null;
+    readonly sale_artwork: {
+        readonly increments: ReadonlyArray<{
             readonly cents: number | null;
             readonly display: string | null;
-        }) | null> | null;
-    }) | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": ArtworkSidebarBidAction_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -44,13 +44,6 @@ var v0 = {
   "storageKey": null
 },
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -73,8 +66,7 @@ return {
         {
           "kind": "Literal",
           "name": "live",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "LotStanding",
@@ -98,15 +90,14 @@ return {
               "concreteType": "BidderPositionMaxBid",
               "plural": false,
               "selections": [
-                v0
+                (v0/*: any*/)
               ]
-            },
-            v1
+            }
           ]
         }
       ]
     },
-    v2,
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -123,7 +114,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v2,
+        (v1/*: any*/),
         {
           "kind": "LinkedField",
           "alias": null,
@@ -139,8 +130,7 @@ return {
               "name": "qualified_for_bidding",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         },
         {
@@ -177,8 +167,7 @@ return {
           "name": "is_registration_closed",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
@@ -199,7 +188,7 @@ return {
           "concreteType": "BidIncrementsFormatted",
           "plural": true,
           "selections": [
-            v0,
+            (v0/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
@@ -208,11 +197,9 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();

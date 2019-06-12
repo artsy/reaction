@@ -1,21 +1,21 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _CollectApp_viewer$ref: unique symbol;
 export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
 export type CollectApp_viewer = {
-    readonly filter_artworks: ({
+    readonly filter_artworks: {
         readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
     readonly " $refType": CollectApp_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CollectApp_viewer",
   "type": "Viewer",
@@ -143,14 +143,12 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
       "concreteType": "FilterArtworks",
@@ -160,13 +158,6 @@ const node: ConcreteFragment = {
           "kind": "FragmentSpread",
           "name": "SeoProductsForArtworks_artworks",
           "args": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -177,104 +168,87 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": null
+          "variableName": "acquireable"
         },
         {
           "kind": "Variable",
           "name": "artist_id",
-          "variableName": "artist_id",
-          "type": null
+          "variableName": "artist_id"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
-          "variableName": "at_auction",
-          "type": null
+          "variableName": "at_auction"
         },
         {
           "kind": "Variable",
           "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": null
+          "variableName": "attribution_class"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": null
+          "variableName": "color"
         },
         {
           "kind": "Variable",
           "name": "dimension_range",
-          "variableName": "dimension_range",
-          "type": null
+          "variableName": "dimension_range"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
-          "variableName": "for_sale",
-          "type": null
+          "variableName": "for_sale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": null
+          "variableName": "height"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": null
+          "variableName": "inquireable_only"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
-          "variableName": "major_periods",
-          "type": null
+          "variableName": "major_periods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": null
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": null
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": null
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
-          "variableName": "partner_id",
-          "type": null
+          "variableName": "partner_id"
         },
         {
           "kind": "Variable",
           "name": "price_range",
-          "variableName": "price_range",
-          "type": null
+          "variableName": "price_range"
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": null
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": null
+          "variableName": "width"
         }
       ]
     }

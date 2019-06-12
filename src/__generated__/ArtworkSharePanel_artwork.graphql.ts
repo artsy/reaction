@@ -1,22 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSharePanel_artwork$ref: unique symbol;
 export type ArtworkSharePanel_artwork$ref = typeof _ArtworkSharePanel_artwork$ref;
 export type ArtworkSharePanel_artwork = {
     readonly href: string | null;
-    readonly images: ReadonlyArray<({
+    readonly images: ReadonlyArray<{
         readonly url: string | null;
-    }) | null> | null;
-    readonly artworkMeta: ({
+    } | null> | null;
+    readonly artworkMeta: {
         readonly share: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtworkSharePanel_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSharePanel_artwork",
   "type": "Artwork",
@@ -45,13 +45,6 @@ const node: ConcreteFragment = {
           "name": "url",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -72,13 +65,6 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

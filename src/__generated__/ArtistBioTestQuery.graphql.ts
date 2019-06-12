@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
 export type ArtistBioTestQueryVariables = {};
 export type ArtistBioTestQueryResponse = {
-    readonly bio: ({
+    readonly bio: {
         readonly " $fragmentRefs": ArtistBio_bio$ref;
-    }) | null;
+    } | null;
 };
 export type ArtistBioTestQuery = {
     readonly response: ArtistBioTestQueryResponse;
@@ -19,7 +19,7 @@ export type ArtistBioTestQuery = {
 query ArtistBioTestQuery {
   bio: artist(id: "unused") {
     ...ArtistBio_bio
-    __id
+    id
   }
 }
 
@@ -28,7 +28,6 @@ fragment ArtistBio_bio on Artist {
     text
     credit
   }
-  __id
 }
 */
 
@@ -37,24 +36,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistBioTestQuery",
-  "id": null,
-  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistBioTestQuery",
@@ -67,7 +53,7 @@ return {
         "alias": "bio",
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -75,8 +61,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistBio_bio",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -91,7 +76,7 @@ return {
         "alias": "bio",
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -104,14 +89,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "format",
-                "value": "HTML",
-                "type": "Format"
+                "value": "HTML"
               },
               {
                 "kind": "Literal",
                 "name": "partner_bio",
-                "value": true,
-                "type": "Boolean"
+                "value": true
               }
             ],
             "concreteType": "ArtistBlurb",
@@ -133,10 +116,23 @@ return {
               }
             ]
           },
-          v1
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistBioTestQuery",
+    "id": null,
+    "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n    credit\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

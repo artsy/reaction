@@ -1,23 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _SuggestedGenes_suggested_genes$ref: unique symbol;
 export type SuggestedGenes_suggested_genes$ref = typeof _SuggestedGenes_suggested_genes$ref;
 export type SuggestedGenes_suggested_genes = ReadonlyArray<{
     readonly id: string;
     readonly _id: string;
     readonly name: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": SuggestedGenes_suggested_genes$ref;
 }>;
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SuggestedGenes_suggested_genes",
   "type": "Gene",
@@ -65,14 +65,12 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -86,22 +84,8 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtistToolTip_artist$ref: unique symbol;
 export type ArtistToolTip_artist$ref = typeof _ArtistToolTip_artist$ref;
 export type ArtistToolTip_artist = {
@@ -10,35 +10,28 @@ export type ArtistToolTip_artist = {
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
     readonly blurb: string | null;
-    readonly carousel: ({
-        readonly images: ReadonlyArray<({
-            readonly resized: ({
+    readonly carousel: {
+        readonly images: ReadonlyArray<{
+            readonly resized: {
                 readonly url: string | null;
                 readonly width: number | null;
                 readonly height: number | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly genes: ReadonlyArray<({
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly genes: ReadonlyArray<{
         readonly name: string | null;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": ArtistToolTip_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -49,7 +42,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -112,8 +105,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 200,
-                  "type": "Int"
+                  "value": 200
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -141,13 +133,6 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -162,11 +147,9 @@ return {
       "concreteType": "Gene",
       "plural": true,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
-    },
-    v1
+    }
   ]
 };
 })();

@@ -28,18 +28,13 @@ fragment CollectionsApp_categories on MarketingCollectionCategory {
     slug
     headerImage
     title
-    __id: id
+    id
   }
 }
 */
 
 const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CollectionsAppQuery",
-  "id": null,
-  "text": "query CollectionsAppQuery {\n  categories: marketingCategories {\n    ...CollectionsApp_categories\n  }\n}\n\nfragment CollectionsApp_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CollectionsAppQuery",
@@ -118,7 +113,7 @@ const node: ConcreteRequest = {
               },
               {
                 "kind": "ScalarField",
-                "alias": "__id",
+                "alias": null,
                 "name": "id",
                 "args": null,
                 "storageKey": null
@@ -128,6 +123,13 @@ const node: ConcreteRequest = {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CollectionsAppQuery",
+    "id": null,
+    "text": "query CollectionsAppQuery {\n  categories: marketingCategories {\n    ...CollectionsApp_categories\n  }\n}\n\nfragment CollectionsApp_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 (node as any).hash = 'af1a72e6c145a0aa60e9cb43cf019b59';

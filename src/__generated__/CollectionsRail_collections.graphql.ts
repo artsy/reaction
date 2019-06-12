@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { CollectionEntity_collection$ref } from "./CollectionEntity_collection.graphql";
 declare const _CollectionsRail_collections$ref: unique symbol;
 export type CollectionsRail_collections$ref = typeof _CollectionsRail_collections$ref;
@@ -11,7 +11,7 @@ export type CollectionsRail_collections = ReadonlyArray<{
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CollectionsRail_collections",
   "type": "MarketingCollection",
@@ -24,13 +24,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "CollectionEntity_collection",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

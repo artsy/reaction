@@ -1,49 +1,50 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _CVItem_artist$ref: unique symbol;
 export type CVItem_artist$ref = typeof _CVItem_artist$ref;
 export type CVItem_artist = {
     readonly id: string;
-    readonly showsConnection: ({
+    readonly showsConnection: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
         };
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
                 readonly partner: ({
                     readonly name?: string | null;
                     readonly href?: string | null;
-                }) | null;
+                } & ({
+                    readonly name: string | null;
+                } | {
+                    readonly href: string | null;
+                } | {
+                    /*This will never be '% other', but we need some
+                    value in case none of the concrete values match.*/
+                    readonly __typename: "%other";
+                })) | null;
                 readonly name: string | null;
                 readonly start_at: string | null;
                 readonly city: string | null;
                 readonly href: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": CVItem_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
@@ -127,32 +128,27 @@ return {
         {
           "kind": "Variable",
           "name": "at_a_fair",
-          "variableName": "at_a_fair",
-          "type": "Boolean"
+          "variableName": "at_a_fair"
         },
         {
           "kind": "Variable",
           "name": "is_reference",
-          "variableName": "is_reference",
-          "type": "Boolean"
+          "variableName": "is_reference"
         },
         {
           "kind": "Variable",
           "name": "solo_show",
-          "variableName": "solo_show",
-          "type": "Boolean"
+          "variableName": "solo_show"
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "PartnerShowSorts"
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "visible_to_public",
-          "variableName": "visible_to_public",
-          "type": "Boolean"
+          "variableName": "visible_to_public"
         }
       ],
       "concreteType": "ShowConnection",
@@ -201,7 +197,13 @@ return {
               "concreteType": "Show",
               "plural": false,
               "selections": [
-                v0,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__id",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -211,25 +213,24 @@ return {
                   "concreteType": null,
                   "plural": false,
                   "selections": [
-                    v0,
-                    {
-                      "kind": "InlineFragment",
-                      "type": "Partner",
-                      "selections": [
-                        v1,
-                        v2
-                      ]
-                    },
                     {
                       "kind": "InlineFragment",
                       "type": "ExternalPartner",
                       "selections": [
-                        v1
+                        (v0/*: any*/)
+                      ]
+                    },
+                    {
+                      "kind": "InlineFragment",
+                      "type": "Partner",
+                      "selections": [
+                        (v0/*: any*/),
+                        (v1/*: any*/)
                       ]
                     }
                   ]
                 },
-                v1,
+                (v0/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -238,8 +239,7 @@ return {
                     {
                       "kind": "Literal",
                       "name": "format",
-                      "value": "YYYY",
-                      "type": "String"
+                      "value": "YYYY"
                     }
                   ],
                   "storageKey": "start_at(format:\"YYYY\")"
@@ -251,7 +251,7 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v2,
+                (v1/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -271,8 +271,7 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
 })();

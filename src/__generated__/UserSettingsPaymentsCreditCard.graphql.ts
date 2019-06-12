@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _UserSettingsPaymentsCreditCard$ref: unique symbol;
 export type UserSettingsPaymentsCreditCard$ref = typeof _UserSettingsPaymentsCreditCard$ref;
 export type UserSettingsPaymentsCreditCard = {
@@ -12,11 +12,17 @@ export type UserSettingsPaymentsCreditCard = {
     readonly expiration_month: number;
     readonly __typename: "CreditCard";
     readonly " $refType": UserSettingsPaymentsCreditCard$ref;
-};
+} & ({
+    readonly __typename: "CreditCard";
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "UserSettingsPaymentsCreditCard",
   "type": "CreditCard",

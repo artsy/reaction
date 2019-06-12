@@ -6,9 +6,9 @@ export type FollowArtistPopoverQueryVariables = {
     readonly artistID: string;
 };
 export type FollowArtistPopoverQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": FollowArtistPopover_suggested$ref;
-    }) | null;
+    } | null;
 };
 export type FollowArtistPopoverQuery = {
     readonly response: FollowArtistPopoverQueryResponse;
@@ -23,7 +23,7 @@ query FollowArtistPopoverQuery(
 ) {
   artist(id: $artistID) {
     ...FollowArtistPopover_suggested
-    __id
+    id
   }
 }
 
@@ -35,11 +35,11 @@ fragment FollowArtistPopover_suggested on Artist {
           __id
           _id
           ...FollowArtistPopoverRow_artist
+          id
         }
       }
     }
   }
-  __id
 }
 
 fragment FollowArtistPopoverRow_artist on Artist {
@@ -51,7 +51,7 @@ fragment FollowArtistPopoverRow_artist on Artist {
     cropped(width: 45, height: 45) {
       url
     }
-    __id: id
+    id
   }
 }
 */
@@ -69,37 +69,31 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "FollowArtistPopoverQuery",
-  "id": null,
-  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    __id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowArtistPopoverQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -107,8 +101,7 @@ return {
             "kind": "FragmentSpread",
             "name": "FollowArtistPopover_suggested",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -116,14 +109,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "FollowArtistPopoverQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -145,14 +138,12 @@ return {
                   {
                     "kind": "Literal",
                     "name": "exclude_followed_artists",
-                    "value": true,
-                    "type": "Boolean"
+                    "value": true
                   },
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 3,
-                    "type": "Int"
+                    "value": 3
                   }
                 ],
                 "concreteType": "ArtistConnection",
@@ -176,7 +167,13 @@ return {
                         "concreteType": "Artist",
                         "plural": false,
                         "selections": [
-                          v2,
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__id",
+                            "args": null,
+                            "storageKey": null
+                          },
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -184,13 +181,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
-                          },
+                          (v2/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -216,14 +207,12 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "height",
-                                    "value": 45,
-                                    "type": "Int!"
+                                    "value": 45
                                   },
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 45,
-                                    "type": "Int!"
+                                    "value": 45
                                   }
                                 ],
                                 "concreteType": "CroppedImageUrl",
@@ -238,13 +227,7 @@ return {
                                   }
                                 ]
                               },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v2/*: any*/)
                             ]
                           }
                         ]
@@ -255,10 +238,17 @@ return {
               }
             ]
           },
-          v2
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "FollowArtistPopoverQuery",
+    "id": null,
+    "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_suggested\n    id\n  }\n}\n\nfragment FollowArtistPopover_suggested on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  id\n  _id\n  __id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

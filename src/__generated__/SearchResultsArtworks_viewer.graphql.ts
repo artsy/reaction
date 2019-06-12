@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { SearchResultsFilterContainer_viewer$ref } from "./SearchResultsFilterContainer_viewer.graphql";
 declare const _SearchResultsArtworks_viewer$ref: unique symbol;
 export type SearchResultsArtworks_viewer$ref = typeof _SearchResultsArtworks_viewer$ref;
@@ -11,7 +11,7 @@ export type SearchResultsArtworks_viewer = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchResultsArtworks_viewer",
   "type": "Viewer",
@@ -137,104 +137,87 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": null
+          "variableName": "acquireable"
         },
         {
           "kind": "Variable",
           "name": "artist_id",
-          "variableName": "artist_id",
-          "type": null
+          "variableName": "artist_id"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
-          "variableName": "at_auction",
-          "type": null
+          "variableName": "at_auction"
         },
         {
           "kind": "Variable",
           "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": null
+          "variableName": "attribution_class"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": null
+          "variableName": "color"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
-          "variableName": "for_sale",
-          "type": null
+          "variableName": "for_sale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": null
+          "variableName": "height"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": null
+          "variableName": "inquireable_only"
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "keyword",
-          "type": null
+          "variableName": "keyword"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
-          "variableName": "major_periods",
-          "type": null
+          "variableName": "major_periods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": null
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": null
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": null
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
-          "variableName": "partner_id",
-          "type": null
+          "variableName": "partner_id"
         },
         {
           "kind": "Variable",
           "name": "price_range",
-          "variableName": "price_range",
-          "type": null
+          "variableName": "price_range"
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": null
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": null
+          "variableName": "width"
         }
       ]
     }

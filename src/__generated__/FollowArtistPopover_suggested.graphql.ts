@@ -1,35 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FollowArtistPopoverRow_artist$ref } from "./FollowArtistPopoverRow_artist.graphql";
 declare const _FollowArtistPopover_suggested$ref: unique symbol;
 export type FollowArtistPopover_suggested$ref = typeof _FollowArtistPopover_suggested$ref;
 export type FollowArtistPopover_suggested = {
-    readonly related: ({
-        readonly suggested: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+    readonly related: {
+        readonly suggested: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly __id: string;
                     readonly _id: string;
                     readonly " $fragmentRefs": FollowArtistPopoverRow_artist$ref;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
     readonly " $refType": FollowArtistPopover_suggested$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistPopover_suggested",
   "type": "Artist",
@@ -54,14 +46,12 @@ return {
             {
               "kind": "Literal",
               "name": "exclude_followed_artists",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 3,
-              "type": "Int"
+              "value": 3
             }
           ],
           "concreteType": "ArtistConnection",
@@ -85,7 +75,13 @@ return {
                   "concreteType": "Artist",
                   "plural": false,
                   "selections": [
-                    v0,
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    },
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -105,10 +101,8 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '2aaa66b0aa88b4068cf423d512c5b234';
 export default node;

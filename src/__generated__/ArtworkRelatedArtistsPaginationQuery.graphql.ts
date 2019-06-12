@@ -8,9 +8,9 @@ export type ArtworkRelatedArtistsPaginationQueryVariables = {
     readonly artworkID: string;
 };
 export type ArtworkRelatedArtistsPaginationQueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkRelatedArtists_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkRelatedArtistsPaginationQuery = {
     readonly response: ArtworkRelatedArtistsPaginationQueryResponse;
@@ -27,7 +27,7 @@ query ArtworkRelatedArtistsPaginationQuery(
 ) {
   artwork(id: $artworkID) {
     ...ArtworkRelatedArtists_artwork_1G22uz
-    __id
+    id
   }
 }
 
@@ -44,16 +44,15 @@ fragment ArtworkRelatedArtists_artwork_1G22uz on Artwork {
         edges {
           node {
             ...ArtistCard_artist
-            __id
+            id
             __typename
           }
           cursor
         }
       }
     }
-    __id
+    id
   }
-  __id
 }
 
 fragment ArtistCard_artist on Artist {
@@ -64,11 +63,10 @@ fragment ArtistCard_artist on Artist {
     cropped(width: 400, height: 300) {
       url
     }
-    __id: id
+    id
   }
   formatted_nationality_and_birthday
   ...FollowArtistButton_artist
-  __id
 }
 
 fragment FollowArtistButton_artist on Artist {
@@ -106,51 +104,55 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
-    "type": "String!"
+    "variableName": "artworkID"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
-};
+},
+v4 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count"
+  },
+  {
+    "kind": "Literal",
+    "name": "kind",
+    "value": "MAIN"
+  }
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkRelatedArtistsPaginationQuery",
-  "id": null,
-  "text": "query ArtworkRelatedArtistsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkRelatedArtists_artwork_1G22uz\n    __id\n  }\n}\n\nfragment ArtworkRelatedArtists_artwork_1G22uz on Artwork {\n  id\n  artist {\n    href\n    related {\n      artists(kind: MAIN, first: $count, after: $cursor) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            ...ArtistCard_artist\n            __id\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkRelatedArtistsPaginationQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -161,18 +163,15 @@ return {
               {
                 "kind": "Variable",
                 "name": "count",
-                "variableName": "count",
-                "type": null
+                "variableName": "count"
               },
               {
                 "kind": "Variable",
                 "name": "cursor",
-                "variableName": "cursor",
-                "type": null
+                "variableName": "cursor"
               }
             ]
-          },
-          v2
+          }
         ]
       }
     ]
@@ -180,18 +179,18 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtworkRelatedArtistsPaginationQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
-          v3,
+          (v2/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -201,7 +200,7 @@ return {
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v4,
+              (v3/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -216,26 +215,7 @@ return {
                     "alias": null,
                     "name": "artists",
                     "storageKey": null,
-                    "args": [
-                      {
-                        "kind": "Variable",
-                        "name": "after",
-                        "variableName": "cursor",
-                        "type": "String"
-                      },
-                      {
-                        "kind": "Variable",
-                        "name": "first",
-                        "variableName": "count",
-                        "type": "Int"
-                      },
-                      {
-                        "kind": "Literal",
-                        "name": "kind",
-                        "value": "MAIN",
-                        "type": "RelatedArtistsKind"
-                      }
-                    ],
+                    "args": (v4/*: any*/),
                     "concreteType": "ArtistConnection",
                     "plural": false,
                     "selections": [
@@ -289,8 +269,8 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              v3,
-                              v4,
+                              (v2/*: any*/),
+                              (v3/*: any*/),
                               {
                                 "kind": "LinkedField",
                                 "alias": null,
@@ -309,14 +289,12 @@ return {
                                       {
                                         "kind": "Literal",
                                         "name": "height",
-                                        "value": 300,
-                                        "type": "Int!"
+                                        "value": 300
                                       },
                                       {
                                         "kind": "Literal",
                                         "name": "width",
-                                        "value": 400,
-                                        "type": "Int!"
+                                        "value": 400
                                       }
                                     ],
                                     "concreteType": "CroppedImageUrl",
@@ -331,13 +309,7 @@ return {
                                       }
                                     ]
                                   },
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": "__id",
-                                    "name": "id",
-                                    "args": null,
-                                    "storageKey": null
-                                  }
+                                  (v2/*: any*/)
                                 ]
                               },
                               {
@@ -347,7 +319,13 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              v2,
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "__id",
+                                "args": null,
+                                "storageKey": null
+                              },
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -397,26 +375,7 @@ return {
                     "kind": "LinkedHandle",
                     "alias": null,
                     "name": "artists",
-                    "args": [
-                      {
-                        "kind": "Variable",
-                        "name": "after",
-                        "variableName": "cursor",
-                        "type": "String"
-                      },
-                      {
-                        "kind": "Variable",
-                        "name": "first",
-                        "variableName": "count",
-                        "type": "Int"
-                      },
-                      {
-                        "kind": "Literal",
-                        "name": "kind",
-                        "value": "MAIN",
-                        "type": "RelatedArtistsKind"
-                      }
-                    ],
+                    "args": (v4/*: any*/),
                     "handle": "connection",
                     "key": "ArtworkRelatedArtists_artists",
                     "filters": [
@@ -425,13 +384,19 @@ return {
                   }
                 ]
               },
-              v2
+              (v2/*: any*/)
             ]
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkRelatedArtistsPaginationQuery",
+    "id": null,
+    "text": "query ArtworkRelatedArtistsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkRelatedArtists_artwork_1G22uz\n    id\n  }\n}\n\nfragment ArtworkRelatedArtists_artwork_1G22uz on Artwork {\n  id\n  artist {\n    href\n    related {\n      artists(kind: MAIN, first: $count, after: $cursor) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            ...ArtistCard_artist\n            id\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    id\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n    id\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

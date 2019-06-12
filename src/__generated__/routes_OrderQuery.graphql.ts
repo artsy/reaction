@@ -7,39 +7,53 @@ export type routes_OrderQueryVariables = {
     readonly orderID: string;
 };
 export type routes_OrderQueryResponse = {
-    readonly me: ({
+    readonly me: {
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly order: ({
         readonly id: string;
         readonly mode: OrderModeEnum | null;
         readonly state: string | null;
         readonly lastTransactionFailed: boolean | null;
-        readonly requestedFulfillment: ({
+        readonly requestedFulfillment: {
             readonly __typename: string;
-        }) | null;
-        readonly lineItems: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly artwork: ({
+        } | null;
+        readonly lineItems: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly artwork: {
                         readonly id: string;
-                    }) | null;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-        readonly creditCard: ({
+                    } | null;
+                } | null;
+            } | null> | null;
+        } | null;
+        readonly creditCard: {
             readonly id: string;
-        }) | null;
-        readonly myLastOffer?: ({
-            readonly id: string;
-            readonly createdAt: string | null;
-        }) | null;
-        readonly lastOffer?: ({
+        } | null;
+        readonly myLastOffer?: {
             readonly id: string;
             readonly createdAt: string | null;
-        }) | null;
+        } | null;
+        readonly lastOffer?: {
+            readonly id: string;
+            readonly createdAt: string | null;
+        } | null;
         readonly awaitingResponseFrom?: OrderParticipantEnum | null;
-    }) | null;
+    } & ({
+        readonly myLastOffer: {
+            readonly id: string;
+            readonly createdAt: string | null;
+        } | null;
+        readonly lastOffer: {
+            readonly id: string;
+            readonly createdAt: string | null;
+        } | null;
+        readonly awaitingResponseFrom: OrderParticipantEnum | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    })) | null;
 };
 export type routes_OrderQuery = {
     readonly response: routes_OrderQueryResponse;
@@ -54,7 +68,7 @@ query routes_OrderQuery(
 ) {
   me {
     name
-    __id
+    id
   }
   order: ecommerceOrder(id: $orderID) {
     __typename
@@ -66,12 +80,10 @@ query routes_OrderQuery(
       myLastOffer {
         id
         createdAt
-        __id: id
       }
       lastOffer {
         id
         createdAt
-        __id: id
       }
       awaitingResponseFrom
     }
@@ -83,17 +95,14 @@ query routes_OrderQuery(
         node {
           artwork {
             id
-            __id
           }
-          __id: id
+          id
         }
       }
     }
     creditCard {
       id
-      __id
     }
-    __id: id
   }
 }
 */
@@ -110,73 +119,53 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "me",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Me",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
-    },
-    v1
-  ]
-},
-v3 = [
+v2 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "orderID",
-    "type": "String!"
+    "variableName": "orderID"
   }
 ],
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "mode",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "state",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "lastTransactionFailed",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v9 = {
+v8 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "requestedFulfillment",
@@ -185,65 +174,23 @@ v9 = {
   "concreteType": null,
   "plural": false,
   "selections": [
-    v8
+    (v7/*: any*/)
   ]
 },
-v10 = [
-  v4,
-  v1
+v9 = [
+  (v3/*: any*/)
 ],
-v11 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v12 = {
+v10 = {
   "kind": "LinkedField",
   "alias": null,
-  "name": "lineItems",
+  "name": "artwork",
   "storageKey": null,
   "args": null,
-  "concreteType": "OrderLineItemConnection",
+  "concreteType": "Artwork",
   "plural": false,
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "edges",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "OrderLineItemEdge",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "node",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "OrderLineItem",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "artwork",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Artwork",
-              "plural": false,
-              "selections": v10
-            },
-            v11
-          ]
-        }
-      ]
-    }
-  ]
+  "selections": (v9/*: any*/)
 },
-v13 = {
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -251,20 +198,19 @@ v13 = {
   "args": null,
   "concreteType": "CreditCard",
   "plural": false,
-  "selections": v10
+  "selections": (v9/*: any*/)
 },
-v14 = [
-  v4,
+v12 = [
+  (v3/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "createdAt",
     "args": null,
     "storageKey": null
-  },
-  v11
+  }
 ],
-v15 = {
+v13 = {
   "kind": "InlineFragment",
   "type": "OfferOrder",
   "selections": [
@@ -276,7 +222,7 @@ v15 = {
       "args": null,
       "concreteType": "Offer",
       "plural": false,
-      "selections": v14
+      "selections": (v12/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -286,7 +232,7 @@ v15 = {
       "args": null,
       "concreteType": "Offer",
       "plural": false,
-      "selections": v14
+      "selections": (v12/*: any*/)
     },
     {
       "kind": "ScalarField",
@@ -299,37 +245,75 @@ v15 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_OrderQuery",
-  "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    __id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_OrderQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
-      v2,
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          (v1/*: any*/)
+        ]
+      },
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
-        "args": v3,
+        "args": (v2/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v4,
-          v5,
-          v6,
-          v7,
-          v9,
-          v12,
-          v13,
-          v11,
-          v15
+          (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
+          (v6/*: any*/),
+          (v8/*: any*/),
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "lineItems",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "OrderLineItemConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderLineItemEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "OrderLineItem",
+                    "plural": false,
+                    "selections": [
+                      (v10/*: any*/)
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          (v11/*: any*/),
+          (v13/*: any*/)
         ]
       }
     ]
@@ -337,31 +321,83 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_OrderQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
-      v2,
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          (v1/*: any*/),
+          (v3/*: any*/)
+        ]
+      },
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": null,
-        "args": v3,
+        "args": (v2/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v8,
-          v4,
-          v5,
-          v6,
-          v7,
-          v9,
-          v12,
-          v13,
-          v11,
-          v15
+          (v7/*: any*/),
+          (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
+          (v6/*: any*/),
+          (v8/*: any*/),
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "lineItems",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "OrderLineItemConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderLineItemEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "OrderLineItem",
+                    "plural": false,
+                    "selections": [
+                      (v10/*: any*/),
+                      (v3/*: any*/)
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          (v11/*: any*/),
+          (v13/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_OrderQuery",
+    "id": null,
+    "text": "query routes_OrderQuery(\n  $orderID: String!\n) {\n  me {\n    name\n    id\n  }\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on OfferOrder {\n      myLastOffer {\n        id\n        createdAt\n      }\n      lastOffer {\n        id\n        createdAt\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n          }\n          id\n        }\n      }\n    }\n    creditCard {\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

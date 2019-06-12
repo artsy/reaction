@@ -1,18 +1,18 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _TotalCount_filter_artworks$ref: unique symbol;
 export type TotalCount_filter_artworks$ref = typeof _TotalCount_filter_artworks$ref;
 export type TotalCount_filter_artworks = {
-    readonly counts: ({
+    readonly counts: {
         readonly total: any | null;
-    }) | null;
+    } | null;
     readonly " $refType": TotalCount_filter_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "TotalCount_filter_artworks",
   "type": "FilterArtworks",
@@ -36,13 +36,6 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

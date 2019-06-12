@@ -1,26 +1,26 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtistSearchResults_viewer$ref: unique symbol;
 export type ArtistSearchResults_viewer$ref = typeof _ArtistSearchResults_viewer$ref;
 export type ArtistSearchResults_viewer = {
-    readonly match_artist: ReadonlyArray<({
+    readonly match_artist: ReadonlyArray<{
         readonly id: string;
         readonly _id: string;
         readonly __id: string;
         readonly name: string | null;
-        readonly image: ({
-            readonly cropped: ({
+        readonly image: {
+            readonly cropped: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
+            } | null;
+        } | null;
+    } | null> | null;
     readonly " $refType": ArtistSearchResults_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistSearchResults_viewer",
   "type": "Viewer",
@@ -42,8 +42,7 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "term",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "Artist",
@@ -95,14 +94,12 @@ const node: ConcreteFragment = {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 100,
-                  "type": "Int!"
+                  "value": 100
                 },
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 100,
-                  "type": "Int!"
+                  "value": 100
                 }
               ],
               "concreteType": "CroppedImageUrl",
@@ -116,13 +113,6 @@ const node: ConcreteFragment = {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }

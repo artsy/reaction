@@ -1,33 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtistAuctionResultItem_auctionResult$ref: unique symbol;
 export type ArtistAuctionResultItem_auctionResult$ref = typeof _ArtistAuctionResultItem_auctionResult$ref;
 export type ArtistAuctionResultItem_auctionResult = {
     readonly title: string | null;
     readonly dimension_text: string | null;
     readonly organization: string | null;
-    readonly images: ({
-        readonly thumbnail: ({
+    readonly images: {
+        readonly thumbnail: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly description: string | null;
     readonly date_text: string | null;
     readonly sale_date_text: string | null;
-    readonly price_realized: ({
+    readonly price_realized: {
         readonly display: string | null;
         readonly cents_usd: number | null;
-    }) | null;
-    readonly estimate: ({
+    } | null;
+    readonly estimate: {
         readonly display: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtistAuctionResultItem_auctionResult$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -87,13 +87,6 @@ return {
               "name": "url",
               "args": null,
               "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -129,7 +122,7 @@ return {
       "concreteType": "AuctionResultPriceRealized",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -148,15 +141,8 @@ return {
       "concreteType": "AuctionLotEstimate",
       "plural": false,
       "selections": [
-        v0
+        (v0/*: any*/)
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

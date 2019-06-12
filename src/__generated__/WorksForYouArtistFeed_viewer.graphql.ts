@@ -1,49 +1,41 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 declare const _WorksForYouArtistFeed_viewer$ref: unique symbol;
 export type WorksForYouArtistFeed_viewer$ref = typeof _WorksForYouArtistFeed_viewer$ref;
 export type WorksForYouArtistFeed_viewer = {
-    readonly artist: ({
+    readonly artist: {
         readonly name: string | null;
         readonly href: string | null;
-        readonly counts: ({
+        readonly counts: {
             readonly artworks: any | null;
             readonly for_sale_artworks: any | null;
-        }) | null;
-        readonly image: ({
-            readonly resized: ({
+        } | null;
+        readonly image: {
+            readonly resized: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
-        readonly artworks_connection: ({
+            } | null;
+        } | null;
+        readonly artworks_connection: {
             readonly pageInfo: {
                 readonly hasNextPage: boolean;
                 readonly endCursor: string | null;
             };
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly __id: string;
-                }) | null;
-            }) | null> | null;
+                } | null;
+            } | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": WorksForYouArtistFeed_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "WorksForYouArtistFeed_viewer",
   "type": "Viewer",
@@ -98,8 +90,7 @@ return {
         {
           "kind": "Variable",
           "name": "id",
-          "variableName": "artistID",
-          "type": "String!"
+          "variableName": "artistID"
         }
       ],
       "concreteType": "Artist",
@@ -162,14 +153,12 @@ return {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 80,
-                  "type": "Int"
+                  "value": 80
                 },
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 80,
-                  "type": "Int"
+                  "value": 80
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -183,13 +172,6 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         },
@@ -202,14 +184,12 @@ return {
             {
               "kind": "Variable",
               "name": "filter",
-              "variableName": "filter",
-              "type": "[ArtistArtworksFilters]"
+              "variableName": "filter"
             },
             {
               "kind": "Literal",
               "name": "sort",
-              "value": "PUBLISHED_AT_DESC",
-              "type": "ArtworkSorts"
+              "value": "PUBLISHED_AT_DESC"
             }
           ],
           "concreteType": "ArtworkConnection",
@@ -241,11 +221,6 @@ return {
               ]
             },
             {
-              "kind": "FragmentSpread",
-              "name": "ArtworkGrid_artworks",
-              "args": null
-            },
-            {
               "kind": "LinkedField",
               "alias": null,
               "name": "edges",
@@ -263,7 +238,13 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    },
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -281,14 +262,17 @@ return {
                   "storageKey": null
                 }
               ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
             }
           ]
-        },
-        v0
+        }
       ]
     }
   ]
 };
-})();
 (node as any).hash = '5cbe0566f4e5fc5e85dfa1d0b436f337';
 export default node;

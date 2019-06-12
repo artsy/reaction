@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FillwidthItem_artwork$ref } from "./FillwidthItem_artwork.graphql";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _RecommendedArtist_artist$ref: unique symbol;
@@ -11,44 +11,29 @@ export type RecommendedArtist_artist = {
     readonly name: string | null;
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
-    readonly artworks_connection: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        } | null;
+    } | null;
+    readonly artworks_connection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
-                readonly image: ({
+                readonly image: {
                     readonly aspect_ratio: number;
-                }) | null;
+                } | null;
                 readonly " $fragmentRefs": FillwidthItem_artwork$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     readonly " $refType": RecommendedArtist_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "RecommendedArtist_artist",
   "type": "Artist",
@@ -108,14 +93,12 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -129,8 +112,7 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
     },
     {
@@ -142,20 +124,17 @@ return {
         {
           "kind": "Literal",
           "name": "filter",
-          "value": "IS_FOR_SALE",
-          "type": "[ArtistArtworksFilters]"
+          "value": "IS_FOR_SALE"
         },
         {
           "kind": "Literal",
           "name": "first",
-          "value": 20,
-          "type": "Int"
+          "value": 20
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PUBLISHED_AT_DESC",
-          "type": "ArtworkSorts"
+          "value": "PUBLISHED_AT_DESC"
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -179,7 +158,13 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v1,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__id",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -195,8 +180,7 @@ return {
                       "name": "aspect_ratio",
                       "args": null,
                       "storageKey": null
-                    },
-                    v0
+                    }
                   ]
                 },
                 {
@@ -214,10 +198,8 @@ return {
       "kind": "FragmentSpread",
       "name": "FollowArtistButton_artist",
       "args": null
-    },
-    v1
+    }
   ]
 };
-})();
 (node as any).hash = '6fefba32685b9654f7a1648a8de05f36';
 export default node;

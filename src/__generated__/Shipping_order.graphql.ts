@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
@@ -11,6 +11,16 @@ export type Shipping_order = {
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly requestedFulfillment: ({
+        readonly __typename: string;
+        readonly name?: string | null;
+        readonly addressLine1?: string | null;
+        readonly addressLine2?: string | null;
+        readonly city?: string | null;
+        readonly region?: string | null;
+        readonly country?: string;
+        readonly postalCode?: string | null;
+        readonly phoneNumber?: string | null;
+    } & ({
         readonly __typename: "Ship";
         readonly name: string | null;
         readonly addressLine1: string | null;
@@ -24,35 +34,28 @@ export type Shipping_order = {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    })) | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly id: string;
                     readonly pickup_available: boolean | null;
                     readonly shipsToContinentalUSOnly: boolean | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
     readonly " $refType": Shipping_order$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
@@ -64,7 +67,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -195,7 +198,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    (v0/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -209,17 +212,9 @@ return {
                       "name": "shipsToContinentalUSOnly",
                       "args": null,
                       "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
@@ -235,8 +230,7 @@ return {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
-    },
-    v1
+    }
   ]
 };
 })();

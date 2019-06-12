@@ -6,9 +6,9 @@ export type ArtworkSidebarPageviewsQueryVariables = {
     readonly artworkID: string;
 };
 export type ArtworkSidebarPageviewsQueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkSidebarPageviews_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarPageviewsQuery = {
     readonly response: ArtworkSidebarPageviewsQueryResponse;
@@ -23,14 +23,13 @@ query ArtworkSidebarPageviewsQuery(
 ) {
   artwork(id: $artworkID) {
     ...ArtworkSidebarPageviews_artwork
-    __id
+    id
   }
 }
 
 fragment ArtworkSidebarPageviews_artwork on Artwork {
   id
   pageviews
-  __id
 }
 */
 
@@ -47,37 +46,24 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
-    "type": "String!"
+    "variableName": "artworkID"
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarPageviewsQuery",
-  "id": null,
-  "text": "query ArtworkSidebarPageviewsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkSidebarPageviews_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarPageviews_artwork on Artwork {\n  id\n  pageviews\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarPageviewsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -85,8 +71,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarPageviews_artwork",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -94,14 +79,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtworkSidebarPageviewsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -118,11 +103,17 @@ return {
             "name": "pageviews",
             "args": null,
             "storageKey": null
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarPageviewsQuery",
+    "id": null,
+    "text": "query ArtworkSidebarPageviewsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkSidebarPageviews_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarPageviews_artwork on Artwork {\n  id\n  pageviews\n}\n",
+    "metadata": {}
   }
 };
 })();

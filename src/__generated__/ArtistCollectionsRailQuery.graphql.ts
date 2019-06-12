@@ -27,13 +27,12 @@ query ArtistCollectionsRailQuery(
 ) {
   collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {
     ...ArtistCollectionsRail_collections
-    __id: id
+    id
   }
 }
 
 fragment ArtistCollectionsRail_collections on MarketingCollection {
   ...ArtistCollectionEntity_collection
-  __id: id
 }
 
 fragment ArtistCollectionEntity_collection on MarketingCollection {
@@ -45,18 +44,16 @@ fragment ArtistCollectionEntity_collection on MarketingCollection {
     hits {
       artist {
         name
-        __id
+        id
       }
       title
       image {
         url(version: "small")
-        __id: id
+        id
       }
-      __id
+      id
     }
-    __id
   }
-  __id: id
 }
 */
 
@@ -85,63 +82,48 @@ v1 = [
   {
     "kind": "Variable",
     "name": "artistID",
-    "variableName": "artistID",
-    "type": "String"
+    "variableName": "artistID"
   },
   {
     "kind": "Variable",
     "name": "isFeaturedArtistContent",
-    "variableName": "isFeaturedArtistContent",
-    "type": "Boolean"
+    "variableName": "isFeaturedArtistContent"
   },
   {
     "kind": "Variable",
     "name": "size",
-    "variableName": "size",
-    "type": "Int"
+    "variableName": "size"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "title",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistCollectionsRailQuery",
-  "id": null,
-  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistCollectionsRailQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "collections",
         "name": "marketingCollections",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -149,8 +131,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistCollectionsRail_collections",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -158,14 +139,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtistCollectionsRailQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "collections",
         "name": "marketingCollections",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -183,7 +164,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v3,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -200,14 +181,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 3,
-                "type": "Int"
+                "value": 3
               },
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "merchandisability",
-                "type": "String"
+                "value": "merchandisability"
               }
             ],
             "concreteType": "FilterArtworks",
@@ -238,10 +217,10 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v4
+                      (v3/*: any*/)
                     ]
                   },
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -259,25 +238,30 @@ return {
                           {
                             "kind": "Literal",
                             "name": "version",
-                            "value": "small",
-                            "type": "[String]"
+                            "value": "small"
                           }
                         ],
                         "storageKey": "url(version:\"small\")"
                       },
-                      v2
+                      (v3/*: any*/)
                     ]
                   },
-                  v4
+                  (v3/*: any*/)
                 ]
-              },
-              v4
+              }
             ]
           },
-          v2
+          (v3/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistCollectionsRailQuery",
+    "id": null,
+    "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        id\n      }\n      title\n      image {\n        url(version: \"small\")\n        id\n      }\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

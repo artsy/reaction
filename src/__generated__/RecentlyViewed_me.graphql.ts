@@ -1,40 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Badge_artwork$ref } from "./Badge_artwork.graphql";
 import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _RecentlyViewed_me$ref: unique symbol;
 export type RecentlyViewed_me$ref = typeof _RecentlyViewed_me$ref;
 export type RecentlyViewed_me = {
-    readonly recentlyViewedArtworks: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+    readonly recentlyViewedArtworks: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
-                readonly image: ({
+                readonly image: {
                     readonly aspect_ratio: number;
                     readonly placeholder: string | null;
                     readonly url: string | null;
-                }) | null;
+                } | null;
                 readonly href: string | null;
                 readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": RecentlyViewed_me$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "RecentlyViewed_me",
   "type": "Me",
@@ -50,8 +42,7 @@ return {
         {
           "kind": "Literal",
           "name": "first",
-          "value": 20,
-          "type": "Int"
+          "value": 20
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -75,7 +66,13 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__id",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -94,13 +91,6 @@ return {
                     },
                     {
                       "kind": "ScalarField",
-                      "alias": "__id",
-                      "name": "id",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
                       "alias": null,
                       "name": "placeholder",
                       "args": null,
@@ -114,8 +104,7 @@ return {
                         {
                           "kind": "Literal",
                           "name": "version",
-                          "value": "large",
-                          "type": "[String]"
+                          "value": "large"
                         }
                       ],
                       "storageKey": "url(version:\"large\")"
@@ -149,10 +138,8 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '46e488d1fa37b7fa9c4ce73cbbd0c694';
 export default node;

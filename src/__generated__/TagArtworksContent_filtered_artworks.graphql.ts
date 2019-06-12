@@ -1,29 +1,29 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 declare const _TagArtworksContent_filtered_artworks$ref: unique symbol;
 export type TagArtworksContent_filtered_artworks$ref = typeof _TagArtworksContent_filtered_artworks$ref;
 export type TagArtworksContent_filtered_artworks = {
     readonly __id: string;
-    readonly artworks: ({
+    readonly artworks: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
-            }) | null;
-        }) | null> | null;
+            } | null;
+        } | null> | null;
         readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $refType": TagArtworksContent_filtered_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -67,7 +67,7 @@ return {
     }
   ],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": "artworks",
@@ -77,8 +77,7 @@ return {
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "String"
+          "variableName": "sort"
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -110,11 +109,6 @@ return {
           ]
         },
         {
-          "kind": "FragmentSpread",
-          "name": "ArtworkGrid_artworks",
-          "args": null
-        },
-        {
           "kind": "LinkedField",
           "alias": null,
           "name": "edges",
@@ -132,7 +126,7 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0,
+                (v0/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -150,6 +144,11 @@ return {
               "storageKey": null
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkGrid_artworks",
+          "args": null
         }
       ]
     }

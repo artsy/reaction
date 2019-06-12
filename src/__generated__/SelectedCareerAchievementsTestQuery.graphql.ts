@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { SelectedCareerAchievements_artist$ref } from "./SelectedCareerAchievements_artist.graphql";
 export type SelectedCareerAchievementsTestQueryVariables = {};
 export type SelectedCareerAchievementsTestQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": SelectedCareerAchievements_artist$ref;
-    }) | null;
+    } | null;
 };
 export type SelectedCareerAchievementsTestQuery = {
     readonly response: SelectedCareerAchievementsTestQueryResponse;
@@ -19,7 +19,7 @@ export type SelectedCareerAchievementsTestQuery = {
 query SelectedCareerAchievementsTestQuery {
   artist(id: "pablo-picasso") {
     ...SelectedCareerAchievements_artist
-    __id
+    id
   }
 }
 
@@ -31,11 +31,10 @@ fragment SelectedCareerAchievements_artist on Artist {
         node {
           categories {
             id
-            __id
           }
-          __id
+          id
         }
-        __id
+        id
       }
     }
   }
@@ -52,11 +51,10 @@ fragment SelectedCareerAchievements_artist on Artist {
         }
         organization
         sale_date(format: "YYYY")
-        __id
+        id
       }
     }
   }
-  __id
 }
 */
 
@@ -65,24 +63,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SelectedCareerAchievementsTestQuery",
-  "id": null,
-  "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievements_artist\n    __id\n  }\n}\n\nfragment SelectedCareerAchievements_artist on Artist {\n  _id\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        __id\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SelectedCareerAchievementsTestQuery",
@@ -95,7 +87,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -103,8 +95,7 @@ return {
             "kind": "FragmentSpread",
             "name": "SelectedCareerAchievements_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -119,7 +110,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -148,14 +139,12 @@ return {
                   {
                     "kind": "Literal",
                     "name": "display_on_partner_profile",
-                    "value": true,
-                    "type": "Boolean"
+                    "value": true
                   },
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 10,
-                    "type": "Int"
+                    "value": 10
                   },
                   {
                     "kind": "Literal",
@@ -164,14 +153,12 @@ return {
                       "blue-chip",
                       "top-established",
                       "top-emerging"
-                    ],
-                    "type": "[String]"
+                    ]
                   },
                   {
                     "kind": "Literal",
                     "name": "represented_by",
-                    "value": true,
-                    "type": "Boolean"
+                    "value": true
                   }
                 ],
                 "concreteType": "PartnerArtistConnection",
@@ -204,20 +191,13 @@ return {
                             "concreteType": "Category",
                             "plural": true,
                             "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              v1
+                              (v1/*: any*/)
                             ]
                           },
-                          v1
+                          (v1/*: any*/)
                         ]
                       },
-                      v1
+                      (v1/*: any*/)
                     ]
                   }
                 ]
@@ -265,20 +245,17 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 1,
-                "type": "Int"
+                "value": 1
               },
               {
                 "kind": "Literal",
                 "name": "recordsTrusted",
-                "value": true,
-                "type": "Boolean"
+                "value": true
               },
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "PRICE_AND_DATE_DESC",
-                "type": "AuctionResultSorts"
+                "value": "PRICE_AND_DATE_DESC"
               }
             ],
             "concreteType": "AuctionResultConnection",
@@ -319,8 +296,7 @@ return {
                               {
                                 "kind": "Literal",
                                 "name": "format",
-                                "value": "0a",
-                                "type": "String"
+                                "value": "0a"
                               }
                             ],
                             "storageKey": "display(format:\"0a\")"
@@ -342,23 +318,29 @@ return {
                           {
                             "kind": "Literal",
                             "name": "format",
-                            "value": "YYYY",
-                            "type": "String"
+                            "value": "YYYY"
                           }
                         ],
                         "storageKey": "sale_date(format:\"YYYY\")"
                       },
-                      v1
+                      (v1/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SelectedCareerAchievementsTestQuery",
+    "id": null,
+    "text": "query SelectedCareerAchievementsTestQuery {\n  artist(id: \"pablo-picasso\") {\n    ...SelectedCareerAchievements_artist\n    id\n  }\n}\n\nfragment SelectedCareerAchievements_artist on Artist {\n  _id\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  insights {\n    type\n    label\n    entities\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date(format: \"YYYY\")\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

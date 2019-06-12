@@ -10,25 +10,25 @@ export type GeneSearchResultsFollowGeneMutationVariables = {
     readonly excludedGeneIds: ReadonlyArray<string | null>;
 };
 export type GeneSearchResultsFollowGeneMutationResponse = {
-    readonly followGene: ({
-        readonly gene: ({
-            readonly similar: ({
-                readonly edges: ReadonlyArray<({
-                    readonly node: ({
+    readonly followGene: {
+        readonly gene: {
+            readonly similar: {
+                readonly edges: ReadonlyArray<{
+                    readonly node: {
                         readonly id: string;
                         readonly _id: string;
                         readonly __id: string;
                         readonly name: string | null;
-                        readonly image: ({
-                            readonly cropped: ({
+                        readonly image: {
+                            readonly cropped: {
                                 readonly url: string | null;
-                            }) | null;
-                        }) | null;
-                    }) | null;
-                }) | null> | null;
-            }) | null;
-        }) | null;
-    }) | null;
+                            } | null;
+                        } | null;
+                    } | null;
+                } | null> | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type GeneSearchResultsFollowGeneMutation = {
     readonly response: GeneSearchResultsFollowGeneMutationResponse;
@@ -55,12 +55,12 @@ mutation GeneSearchResultsFollowGeneMutation(
               cropped(width: 100, height: 100) {
                 url
               }
-              __id: id
+              id
             }
           }
         }
       }
-      __id
+      id
     }
   }
 }
@@ -81,147 +81,151 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
+  }
+],
+v2 = [
+  {
+    "kind": "Variable",
+    "name": "exclude_gene_ids",
+    "variableName": "excludedGeneIds"
+  },
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 1
+  }
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "_id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "followGene",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "FollowGeneInput!"
-      }
-    ],
-    "concreteType": "FollowGenePayload",
-    "plural": false,
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "cropped",
+  "storageKey": "cropped(height:100,width:100)",
+  "args": [
+    {
+      "kind": "Literal",
+      "name": "height",
+      "value": 100
+    },
+    {
+      "kind": "Literal",
+      "name": "width",
+      "value": 100
+    }
+  ],
+  "concreteType": "CroppedImageUrl",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "url",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+};
+return {
+  "kind": "Request",
+  "fragment": {
+    "kind": "Fragment",
+    "name": "GeneSearchResultsFollowGeneMutation",
+    "type": "Mutation",
+    "metadata": null,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "gene",
+        "name": "followGene",
         "storageKey": null,
-        "args": null,
-        "concreteType": "Gene",
+        "args": (v1/*: any*/),
+        "concreteType": "FollowGenePayload",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "similar",
+            "name": "gene",
             "storageKey": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "exclude_gene_ids",
-                "variableName": "excludedGeneIds",
-                "type": "[String]"
-              },
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 1,
-                "type": "Int"
-              }
-            ],
-            "concreteType": "GeneConnection",
+            "args": null,
+            "concreteType": "Gene",
             "plural": false,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "edges",
+                "name": "similar",
                 "storageKey": null,
-                "args": null,
-                "concreteType": "GeneEdge",
-                "plural": true,
+                "args": (v2/*: any*/),
+                "concreteType": "GeneConnection",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "node",
+                    "name": "edges",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Gene",
-                    "plural": false,
+                    "concreteType": "GeneEdge",
+                    "plural": true,
                     "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "id",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "_id",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      v1,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "name",
-                        "args": null,
-                        "storageKey": null
-                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "image",
+                        "name": "node",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "Image",
+                        "concreteType": "Gene",
                         "plural": false,
                         "selections": [
+                          (v3/*: any*/),
+                          (v4/*: any*/),
+                          (v5/*: any*/),
+                          (v6/*: any*/),
                           {
                             "kind": "LinkedField",
                             "alias": null,
-                            "name": "cropped",
-                            "storageKey": "cropped(height:100,width:100)",
-                            "args": [
-                              {
-                                "kind": "Literal",
-                                "name": "height",
-                                "value": 100,
-                                "type": "Int!"
-                              },
-                              {
-                                "kind": "Literal",
-                                "name": "width",
-                                "value": 100,
-                                "type": "Int!"
-                              }
-                            ],
-                            "concreteType": "CroppedImageUrl",
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
                             "plural": false,
                             "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "url",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v7/*: any*/)
                             ]
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": "__id",
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
                           }
                         ]
                       }
@@ -230,33 +234,97 @@ v2 = [
                 ]
               }
             ]
-          },
-          v1
+          }
         ]
       }
     ]
-  }
-];
-return {
-  "kind": "Request",
-  "operationKind": "mutation",
-  "name": "GeneSearchResultsFollowGeneMutation",
-  "id": null,
-  "text": "mutation GeneSearchResultsFollowGeneMutation(\n  $input: FollowGeneInput!\n  $excludedGeneIds: [String]!\n) {\n  followGene(input: $input) {\n    gene {\n      similar(first: 1, exclude_gene_ids: $excludedGeneIds) {\n        edges {\n          node {\n            id\n            _id\n            __id\n            name\n            image {\n              cropped(width: 100, height: 100) {\n                url\n              }\n              __id: id\n            }\n          }\n        }\n      }\n      __id\n    }\n  }\n}\n",
-  "metadata": {},
-  "fragment": {
-    "kind": "Fragment",
-    "name": "GeneSearchResultsFollowGeneMutation",
-    "type": "Mutation",
-    "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v2
   },
   "operation": {
     "kind": "Operation",
     "name": "GeneSearchResultsFollowGeneMutation",
-    "argumentDefinitions": v0,
-    "selections": v2
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "followGene",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "FollowGenePayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "gene",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Gene",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "similar",
+                "storageKey": null,
+                "args": (v2/*: any*/),
+                "concreteType": "GeneConnection",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "edges",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "GeneEdge",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "node",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Gene",
+                        "plural": false,
+                        "selections": [
+                          (v3/*: any*/),
+                          (v4/*: any*/),
+                          (v5/*: any*/),
+                          (v6/*: any*/),
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              (v7/*: any*/),
+                              (v3/*: any*/)
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              (v3/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "GeneSearchResultsFollowGeneMutation",
+    "id": null,
+    "text": "mutation GeneSearchResultsFollowGeneMutation(\n  $input: FollowGeneInput!\n  $excludedGeneIds: [String]!\n) {\n  followGene(input: $input) {\n    gene {\n      similar(first: 1, exclude_gene_ids: $excludedGeneIds) {\n        edges {\n          node {\n            id\n            _id\n            __id\n            name\n            image {\n              cropped(width: 100, height: 100) {\n                url\n              }\n              id\n            }\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

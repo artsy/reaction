@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkSidebarPartnerInfo_artwork$ref } from "./ArtworkSidebarPartnerInfo_artwork.graphql";
 export type ArtworkSidebarPartnerInfo_Test_QueryVariables = {};
 export type ArtworkSidebarPartnerInfo_Test_QueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkSidebarPartnerInfo_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarPartnerInfo_Test_Query = {
     readonly response: ArtworkSidebarPartnerInfo_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtworkSidebarPartnerInfo_Test_Query = {
 query ArtworkSidebarPartnerInfo_Test_Query {
   artwork(id: "artwork_from_partner_with_locations") {
     ...ArtworkSidebarPartnerInfo_artwork
-    __id
+    id
   }
 }
 
@@ -30,10 +30,10 @@ fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
     href
     locations {
       city
-      __id
+      id
     }
+    id
   }
-  __id
 }
 */
 
@@ -42,24 +42,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "artwork_from_partner_with_locations",
-    "type": "String!"
+    "value": "artwork_from_partner_with_locations"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarPartnerInfo_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      __id\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarPartnerInfo_Test_Query",
@@ -72,7 +66,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"artwork_from_partner_with_locations\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -80,8 +74,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarPartnerInfo_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -96,7 +89,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"artwork_from_partner_with_locations\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -109,7 +102,13 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v1,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__id",
+                "args": null,
+                "storageKey": null
+              },
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -140,15 +139,23 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
+                  (v1/*: any*/)
                 ]
-              }
+              },
+              (v1/*: any*/)
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarPartnerInfo_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    __id\n    name\n    href\n    locations {\n      city\n      id\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

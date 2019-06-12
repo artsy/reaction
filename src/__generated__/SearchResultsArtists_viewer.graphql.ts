@@ -1,34 +1,44 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
 declare const _SearchResultsArtists_viewer$ref: unique symbol;
 export type SearchResultsArtists_viewer$ref = typeof _SearchResultsArtists_viewer$ref;
 export type SearchResultsArtists_viewer = {
-    readonly search: ({
+    readonly search: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
+        readonly pageCursors: {
             readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
+        } | null;
+        readonly edges: ReadonlyArray<{
             readonly node: ({
                 readonly name?: string | null;
                 readonly _id?: string;
                 readonly href?: string | null;
                 readonly imageUrl?: string | null;
                 readonly bio?: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } & ({
+                readonly name: string | null;
+                readonly _id: string;
+                readonly href: string | null;
+                readonly imageUrl: string | null;
+                readonly bio: string | null;
+            } | {
+                /*This will never be '% other', but we need some
+                value in case none of the concrete values match.*/
+                readonly __typename: "%other";
+            })) | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": SearchResultsArtists_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchResultsArtists_viewer",
   "type": "Viewer",
@@ -81,46 +91,39 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Literal",
           "name": "entities",
           "value": [
             "ARTIST"
-          ],
-          "type": "[SearchEntity]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "query",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "SearchableConnection",
@@ -185,13 +188,6 @@ const node: ConcreteFragment = {
               "concreteType": null,
               "plural": false,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__id",
-                  "args": null,
-                  "storageKey": null
-                },
                 {
                   "kind": "InlineFragment",
                   "type": "Artist",

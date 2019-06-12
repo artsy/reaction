@@ -1,33 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
 declare const _SearchResultsArtworkGrid_filtered_artworks$ref: unique symbol;
 export type SearchResultsArtworkGrid_filtered_artworks$ref = typeof _SearchResultsArtworkGrid_filtered_artworks$ref;
 export type SearchResultsArtworkGrid_filtered_artworks = {
     readonly __id: string;
-    readonly artworks: ({
+    readonly artworks: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
+        readonly pageCursors: {
             readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        } | null;
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
-            }) | null;
-        }) | null> | null;
+            } | null;
+        } | null> | null;
         readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $refType": SearchResultsArtworkGrid_filtered_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -55,7 +55,7 @@ return {
     }
   ],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": "artworks",
@@ -65,14 +65,12 @@ return {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -120,11 +118,6 @@ return {
           ]
         },
         {
-          "kind": "FragmentSpread",
-          "name": "ArtworkGrid_artworks",
-          "args": null
-        },
-        {
           "kind": "LinkedField",
           "alias": null,
           "name": "edges",
@@ -142,10 +135,15 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0
+                (v0/*: any*/)
               ]
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkGrid_artworks",
+          "args": null
         }
       ]
     }

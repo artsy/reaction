@@ -1,52 +1,47 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _Contact_artwork$ref: unique symbol;
 export type Contact_artwork$ref = typeof _Contact_artwork$ref;
 export type Contact_artwork = {
     readonly _id: string;
     readonly href: string | null;
     readonly is_inquireable: boolean | null;
-    readonly sale: ({
+    readonly sale: {
         readonly is_auction: boolean | null;
         readonly is_live_open: boolean | null;
         readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
-    }) | null;
-    readonly partner: ({
+    } | null;
+    readonly partner: {
         readonly type: string | null;
-    }) | null;
-    readonly sale_artwork: ({
-        readonly highest_bid: ({
+    } | null;
+    readonly sale_artwork: {
+        readonly highest_bid: {
             readonly display: string | null;
-        }) | null;
-        readonly opening_bid: ({
+        } | null;
+        readonly opening_bid: {
             readonly display: string | null;
-        }) | null;
-        readonly counts: ({
+        } | null;
+        readonly counts: {
             readonly bidder_positions: any | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": Contact_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "display",
-  "args": null,
-  "storageKey": null
-};
+const node: ReaderFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "display",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "Contact_artwork",
@@ -111,8 +106,7 @@ return {
           "name": "is_closed",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -124,8 +118,7 @@ return {
         {
           "kind": "Literal",
           "name": "shallow",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "Partner",
@@ -137,8 +130,7 @@ return {
           "name": "type",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -158,16 +150,7 @@ return {
           "args": null,
           "concreteType": "SaleArtworkHighestBid",
           "plural": false,
-          "selections": [
-            v1,
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            }
-          ]
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -177,9 +160,7 @@ return {
           "args": null,
           "concreteType": "SaleArtworkOpeningBid",
           "plural": false,
-          "selections": [
-            v1
-          ]
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -198,11 +179,9 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
 })();

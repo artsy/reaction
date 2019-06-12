@@ -1,40 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { CVItem_artist$ref } from "./CVItem_artist.graphql";
 declare const _CV_viewer$ref: unique symbol;
 export type CV_viewer$ref = typeof _CV_viewer$ref;
 export type CV_viewer = {
-    readonly artist_soloShows: ({
+    readonly artist_soloShows: {
         readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
-    readonly artist_groupShows: ({
+    } | null;
+    readonly artist_groupShows: {
         readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
-    readonly artist_fairBooths: ({
+    } | null;
+    readonly artist_fairBooths: {
         readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
+    } | null;
     readonly " $refType": CV_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "CV_viewer",
@@ -77,7 +69,7 @@ return {
       "alias": "artist_soloShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -88,18 +80,15 @@ return {
             {
               "kind": "Variable",
               "name": "at_a_fair",
-              "variableName": "soloShows_at_a_fair",
-              "type": null
+              "variableName": "soloShows_at_a_fair"
             },
             {
               "kind": "Variable",
               "name": "solo_show",
-              "variableName": "soloShows_solo_show",
-              "type": null
+              "variableName": "soloShows_solo_show"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -107,7 +96,7 @@ return {
       "alias": "artist_groupShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -118,12 +107,10 @@ return {
             {
               "kind": "Variable",
               "name": "at_a_fair",
-              "variableName": "groupShows_at_a_fair",
-              "type": null
+              "variableName": "groupShows_at_a_fair"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -131,7 +118,7 @@ return {
       "alias": "artist_fairBooths",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -142,12 +129,10 @@ return {
             {
               "kind": "Variable",
               "name": "at_a_fair",
-              "variableName": "fairBooths_at_a_fair",
-              "type": null
+              "variableName": "fairBooths_at_a_fair"
             }
           ]
-        },
-        v1
+        }
       ]
     }
   ]

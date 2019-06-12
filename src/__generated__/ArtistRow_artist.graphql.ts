@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Fillwidth_artworks$ref } from "./Fillwidth_artworks.graphql";
 import { Follow_artist$ref } from "./Follow_artist.graphql";
 declare const _ArtistRow_artist$ref: unique symbol;
@@ -8,16 +8,16 @@ export type ArtistRow_artist$ref = typeof _ArtistRow_artist$ref;
 export type ArtistRow_artist = {
     readonly name: string | null;
     readonly href: string | null;
-    readonly artworks: ({
+    readonly artworks: {
         readonly " $fragmentRefs": Fillwidth_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": Follow_artist$ref;
     readonly " $refType": ArtistRow_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistRow_artist",
   "type": "Artist",
@@ -39,11 +39,6 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "Follow_artist",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
       "alias": "artworks",
       "name": "artworks_connection",
@@ -52,8 +47,7 @@ const node: ConcreteFragment = {
         {
           "kind": "Literal",
           "name": "first",
-          "value": 6,
-          "type": "Int"
+          "value": 6
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -67,11 +61,9 @@ const node: ConcreteFragment = {
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "Follow_artist",
+      "args": null
     }
   ]
 };

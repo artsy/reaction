@@ -6,9 +6,9 @@ export type InquiryArtworkQueryVariables = {
     readonly artworkID: string;
 };
 export type InquiryArtworkQueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": InquiryArtwork_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type InquiryArtworkQuery = {
     readonly response: InquiryArtworkQueryResponse;
@@ -23,13 +23,12 @@ query InquiryArtworkQuery(
 ) {
   artwork(id: $artworkID) {
     ...InquiryArtwork_artwork
-    __id
+    id
   }
 }
 
 fragment InquiryArtwork_artwork on Artwork {
   ...Artwork_artwork
-  __id
 }
 
 fragment Artwork_artwork on Artwork {
@@ -37,17 +36,15 @@ fragment Artwork_artwork on Artwork {
   image {
     url(version: "large")
     aspect_ratio
-    __id: id
+    id
   }
   ...Metadata_artwork
-  __id
 }
 
 fragment Metadata_artwork on Artwork {
   ...Details_artwork
   ...Contact_artwork
   href
-  __id
 }
 
 fragment Details_artwork on Artwork {
@@ -60,17 +57,18 @@ fragment Details_artwork on Artwork {
     __id
     href
     name
+    id
   }
   collecting_institution
   partner(shallow: true) {
     name
     href
-    __id
+    id
   }
   sale {
     is_auction
     is_closed
-    __id
+    id
   }
   sale_artwork {
     counts {
@@ -78,14 +76,13 @@ fragment Details_artwork on Artwork {
     }
     highest_bid {
       display
-      __id: id
+      id
     }
     opening_bid {
       display
     }
-    __id
+    id
   }
-  __id
 }
 
 fragment Contact_artwork on Artwork {
@@ -97,16 +94,16 @@ fragment Contact_artwork on Artwork {
     is_live_open
     is_open
     is_closed
-    __id
+    id
   }
   partner(shallow: true) {
     type
-    __id
+    id
   }
   sale_artwork {
     highest_bid {
       display
-      __id: id
+      id
     }
     opening_bid {
       display
@@ -114,9 +111,8 @@ fragment Contact_artwork on Artwork {
     counts {
       bidder_positions
     }
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -133,32 +129,30 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
-    "type": "String!"
+    "variableName": "artworkID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "Literal",
-    "name": "shallow",
-    "value": true,
-    "type": "Boolean"
-  }
-],
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "shallow",
+    "value": true
+  }
+],
 v5 = {
   "kind": "ScalarField",
   "alias": null,
@@ -168,13 +162,6 @@ v5 = {
 },
 v6 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
@@ -182,24 +169,19 @@ v7 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "InquiryArtworkQuery",
-  "id": null,
-  "text": "query InquiryArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...InquiryArtwork_artwork\n    __id\n  }\n}\n\nfragment InquiryArtwork_artwork on Artwork {\n  ...Artwork_artwork\n  __id\n}\n\nfragment Artwork_artwork on Artwork {\n  id\n  image {\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  ...Metadata_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "InquiryArtworkQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -207,8 +189,7 @@ return {
             "kind": "FragmentSpread",
             "name": "InquiryArtwork_artwork",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -216,39 +197,51 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "InquiryArtworkQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
+          (v2/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "artists",
-            "storageKey": "artists(shallow:true)",
-            "args": v3,
-            "concreteType": "Artist",
-            "plural": true,
+            "name": "image",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Image",
+            "plural": false,
             "selections": [
-              v2,
-              v4,
-              v5
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "url",
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "version",
+                    "value": "large"
+                  }
+                ],
+                "storageKey": "url(version:\"large\")"
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "aspect_ratio",
+                "args": null,
+                "storageKey": null
+              },
+              (v2/*: any*/)
             ]
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          v4,
+          (v3/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -280,34 +273,22 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "image",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Image",
-            "plural": false,
+            "name": "artists",
+            "storageKey": "artists(shallow:true)",
+            "args": (v4/*: any*/),
+            "concreteType": "Artist",
+            "plural": true,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "url",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "version",
-                    "value": "large",
-                    "type": "[String]"
-                  }
-                ],
-                "storageKey": "url(version:\"large\")"
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "aspect_ratio",
+                "name": "__id",
                 "args": null,
                 "storageKey": null
               },
-              v6
+              (v3/*: any*/),
+              (v5/*: any*/),
+              (v2/*: any*/)
             ]
           },
           {
@@ -322,13 +303,13 @@ return {
             "alias": null,
             "name": "partner",
             "storageKey": "partner(shallow:true)",
-            "args": v3,
+            "args": (v4/*: any*/),
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v5,
-              v4,
-              v2,
+              (v5/*: any*/),
+              (v3/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -361,7 +342,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -414,8 +395,8 @@ return {
                 "concreteType": "SaleArtworkHighestBid",
                 "plural": false,
                 "selections": [
-                  v7,
-                  v6
+                  (v6/*: any*/),
+                  (v2/*: any*/)
                 ]
               },
               {
@@ -427,13 +408,12 @@ return {
                 "concreteType": "SaleArtworkOpeningBid",
                 "plural": false,
                 "selections": [
-                  v7
+                  (v6/*: any*/)
                 ]
               },
-              v2
+              (v2/*: any*/)
             ]
           },
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -451,6 +431,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "InquiryArtworkQuery",
+    "id": null,
+    "text": "query InquiryArtworkQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...InquiryArtwork_artwork\n    id\n  }\n}\n\nfragment InquiryArtwork_artwork on Artwork {\n  ...Artwork_artwork\n}\n\nfragment Artwork_artwork on Artwork {\n  id\n  image {\n    url(version: \"large\")\n    aspect_ratio\n    id\n  }\n  ...Metadata_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n    id\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction\n    is_closed\n    id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

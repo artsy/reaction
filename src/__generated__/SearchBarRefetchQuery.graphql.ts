@@ -7,9 +7,9 @@ export type SearchBarRefetchQueryVariables = {
     readonly hasTerm: boolean;
 };
 export type SearchBarRefetchQueryResponse = {
-    readonly viewer: ({
+    readonly viewer: {
         readonly " $fragmentRefs": SearchBar_viewer$ref;
-    }) | null;
+    } | null;
 };
 export type SearchBarRefetchQuery = {
     readonly response: SearchBarRefetchQueryResponse;
@@ -39,9 +39,6 @@ fragment SearchBar_viewer_2Mejjw on Viewer {
           displayType
           id
         }
-        ... on Node {
-          __id
-        }
       }
     }
   }
@@ -62,25 +59,27 @@ var v0 = [
     "type": "Boolean!",
     "defaultValue": null
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SearchBarRefetchQuery",
-  "id": null,
-  "text": "query SearchBarRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          displayType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SearchBarRefetchQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -93,14 +92,12 @@ return {
               {
                 "kind": "Variable",
                 "name": "hasTerm",
-                "variableName": "hasTerm",
-                "type": null
+                "variableName": "hasTerm"
               },
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -111,7 +108,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "SearchBarRefetchQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -136,20 +133,17 @@ return {
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 7,
-                    "type": "Int"
+                    "value": 7
                   },
                   {
                     "kind": "Literal",
                     "name": "mode",
-                    "value": "AUTOSUGGEST",
-                    "type": "SearchMode"
+                    "value": "AUTOSUGGEST"
                   },
                   {
                     "kind": "Variable",
                     "name": "query",
-                    "variableName": "term",
-                    "type": "String!"
+                    "variableName": "term"
                   }
                 ],
                 "concreteType": "SearchableConnection",
@@ -195,13 +189,6 @@ return {
                             "storageKey": null
                           },
                           {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__id",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
                             "kind": "InlineFragment",
                             "type": "SearchableItem",
                             "selections": [
@@ -212,13 +199,13 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v1/*: any*/)
+                            ]
+                          },
+                          {
+                            "kind": "ClientExtension",
+                            "selections": [
+                              (v1/*: any*/)
                             ]
                           }
                         ]
@@ -230,17 +217,15 @@ return {
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SearchBarRefetchQuery",
+    "id": null,
+    "text": "query SearchBarRefetchQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          displayType\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

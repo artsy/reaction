@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 export type ShippingSummaryItemStoryQueryVariables = {};
 export type ShippingSummaryItemStoryQueryResponse = {
-    readonly order: ({
+    readonly order: {
         readonly " $fragmentRefs": ShippingSummaryItem_order$ref;
-    }) | null;
+    } | null;
 };
 export type ShippingSummaryItemStoryQuery = {
     readonly response: ShippingSummaryItemStoryQueryResponse;
@@ -20,7 +20,7 @@ query ShippingSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
     __typename
     ...ShippingSummaryItem_order
-    __id: id
+    id
   }
 }
 
@@ -35,13 +35,12 @@ fragment ShippingSummaryItem_order on Order {
       node {
         artwork {
           shippingOrigin
-          __id
+          id
         }
-        __id: id
+        id
       }
     }
   }
-  __id: id
 }
 
 fragment ShippingAddress_ship on Ship {
@@ -61,31 +60,25 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "foo",
-    "type": "String!"
+    "value": "foo"
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ShippingSummaryItemStoryQuery",
-  "id": null,
-  "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ShippingSummaryItemStoryQuery",
@@ -98,7 +91,7 @@ return {
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -106,8 +99,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ShippingSummaryItem_order",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -122,11 +114,11 @@ return {
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -143,7 +135,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
+              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Ship",
@@ -251,26 +243,27 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__id",
-                            "args": null,
-                            "storageKey": null
-                          }
+                          (v2/*: any*/)
                         ]
                       },
-                      v1
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v1
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ShippingSummaryItemStoryQuery",
+    "id": null,
+    "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "metadata": {}
   }
 };
 })();

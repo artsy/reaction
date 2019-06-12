@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
 export type NavigationTabs_Test_QueryVariables = {};
 export type NavigationTabs_Test_QueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": NavigationTabs_artist$ref;
-    }) | null;
+    } | null;
 };
 export type NavigationTabs_Test_Query = {
     readonly response: NavigationTabs_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type NavigationTabs_Test_Query = {
 query NavigationTabs_Test_Query {
   artist(id: "pablo-picasso") {
     ...NavigationTabs_artist
-    __id
+    id
   }
 }
 
@@ -32,7 +32,6 @@ fragment NavigationTabs_artist on Artist {
     cv(minShowCount: 0)
     auction_lots
   }
-  __id
 }
 */
 
@@ -41,24 +40,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "NavigationTabs_Test_Query",
-  "id": null,
-  "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    __id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "NavigationTabs_Test_Query",
@@ -71,7 +57,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -79,8 +65,7 @@ return {
             "kind": "FragmentSpread",
             "name": "NavigationTabs_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -95,7 +80,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -144,8 +129,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "minShowCount",
-                    "value": 0,
-                    "type": "Int"
+                    "value": 0
                   }
                 ],
                 "storageKey": "cv(minShowCount:0)"
@@ -158,11 +142,17 @@ return {
                 "storageKey": null
               }
             ]
-          },
-          v1
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "NavigationTabs_Test_Query",
+    "id": null,
+    "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -1,47 +1,47 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { NavigationTabs_searchableConnection$ref } from "./NavigationTabs_searchableConnection.graphql";
 export type SearchAggregation = "TYPE" | "%future added value";
 declare const _SearchApp_viewer$ref: unique symbol;
 export type SearchApp_viewer$ref = typeof _SearchApp_viewer$ref;
 export type SearchApp_viewer = {
-    readonly search: ({
-        readonly aggregations: ReadonlyArray<({
+    readonly search: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: SearchAggregation | null;
-            readonly counts: ReadonlyArray<({
+            readonly counts: ReadonlyArray<{
                 readonly count: number | null;
                 readonly name: string | null;
-            }) | null> | null;
-        }) | null> | null;
-        readonly edges: ReadonlyArray<({
+            } | null> | null;
+        } | null> | null;
+        readonly edges: ReadonlyArray<{
             readonly node: ({
                 readonly id?: string;
                 readonly displayLabel?: string | null;
                 readonly displayType?: string | null;
-            }) | null;
-        }) | null> | null;
+            } & ({
+                readonly id: string;
+                readonly displayLabel: string | null;
+                readonly displayType: string | null;
+            } | {
+                /*This will never be '% other', but we need some
+                value in case none of the concrete values match.*/
+                readonly __typename: "%other";
+            })) | null;
+        } | null> | null;
         readonly " $fragmentRefs": NavigationTabs_searchableConnection$ref;
-    }) | null;
-    readonly filter_artworks: ({
-        readonly counts: ({
+    } | null;
+    readonly filter_artworks: {
+        readonly counts: {
             readonly total: any | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": SearchApp_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchApp_viewer",
   "type": "Viewer",
@@ -66,20 +66,17 @@ return {
           "name": "aggregations",
           "value": [
             "TYPE"
-          ],
-          "type": "[SearchAggregation]"
+          ]
         },
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Variable",
           "name": "query",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "SearchableConnection",
@@ -123,16 +120,10 @@ return {
                   "name": "name",
                   "args": null,
                   "storageKey": null
-                },
-                v0
+                }
               ]
             }
           ]
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "NavigationTabs_searchableConnection",
-          "args": null
         },
         {
           "kind": "LinkedField",
@@ -152,7 +143,6 @@ return {
               "concreteType": null,
               "plural": false,
               "selections": [
-                v0,
                 {
                   "kind": "InlineFragment",
                   "type": "SearchableItem",
@@ -183,6 +173,11 @@ return {
               ]
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "NavigationTabs_searchableConnection",
+          "args": null
         }
       ]
     },
@@ -197,20 +192,17 @@ return {
           "name": "aggregations",
           "value": [
             "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "term",
-          "type": "String"
+          "variableName": "term"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
       "concreteType": "FilterArtworks",
@@ -233,12 +225,10 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
     }
   ]
 };
-})();
 (node as any).hash = '671536b76e6625d241658d8cf32d9d68';
 export default node;

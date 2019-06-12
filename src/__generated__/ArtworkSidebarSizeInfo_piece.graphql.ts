@@ -1,20 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSidebarSizeInfo_piece$ref: unique symbol;
 export type ArtworkSidebarSizeInfo_piece$ref = typeof _ArtworkSidebarSizeInfo_piece$ref;
 export type ArtworkSidebarSizeInfo_piece = {
-    readonly dimensions: ({
+    readonly dimensions: {
         readonly in: string | null;
         readonly cm: string | null;
-    }) | null;
+    } | null;
     readonly edition_of: string | null;
     readonly " $refType": ArtworkSidebarSizeInfo_piece$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarSizeInfo_piece",
   "type": "Sellable",
@@ -50,13 +50,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "edition_of",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     }

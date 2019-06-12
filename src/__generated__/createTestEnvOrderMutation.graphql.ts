@@ -11,16 +11,28 @@ export type createTestEnvOrderMutationVariables = {
     readonly input: CreateOrderWithArtworkInput;
 };
 export type createTestEnvOrderMutationResponse = {
-    readonly createOrderWithArtwork: ({
+    readonly createOrderWithArtwork: {
         readonly orderOrError: ({
-            readonly order?: ({
+            readonly order?: {
                 readonly id: string;
-            }) | null;
-            readonly error?: ({
+            } | null;
+            readonly error?: {
                 readonly type: string;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } & ({
+            readonly order: {
+                readonly id: string;
+            } | null;
+        } | {
+            readonly error: {
+                readonly type: string;
+            } | null;
+        } | {
+            /*This will never be '% other', but we need some
+            value in case none of the concrete values match.*/
+            readonly __typename: "%other";
+        })) | null;
+    } | null;
 };
 export type createTestEnvOrderMutation = {
     readonly response: createTestEnvOrderMutationResponse;
@@ -40,7 +52,6 @@ mutation createTestEnvOrderMutation(
         order {
           __typename
           id
-          __id: id
         }
       }
       ... on OrderWithMutationFailure {
@@ -66,11 +77,17 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CreateOrderWithArtworkInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -94,21 +111,7 @@ v2 = {
     }
   ]
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
 v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -117,24 +120,19 @@ v5 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "createTestEnvOrderMutation",
-  "id": null,
-  "text": "mutation createTestEnvOrderMutation(\n  $input: CreateOrderWithArtworkInput!\n) {\n  createOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createTestEnvOrderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "createOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -147,7 +145,6 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -161,12 +158,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
@@ -176,14 +173,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "createTestEnvOrderMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "createOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -196,8 +193,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
-              v2,
+              (v4/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -211,18 +207,25 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v5,
-                      v3,
-                      v4
+                      (v4/*: any*/),
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "createTestEnvOrderMutation",
+    "id": null,
+    "text": "mutation createTestEnvOrderMutation(\n  $input: CreateOrderWithArtworkInput!\n) {\n  createOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

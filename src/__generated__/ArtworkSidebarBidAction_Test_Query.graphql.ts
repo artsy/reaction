@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkSidebarBidAction_artwork$ref } from "./ArtworkSidebarBidAction_artwork.graphql";
 export type ArtworkSidebarBidAction_Test_QueryVariables = {};
 export type ArtworkSidebarBidAction_Test_QueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkSidebarBidAction_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarBidAction_Test_Query = {
     readonly response: ArtworkSidebarBidAction_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtworkSidebarBidAction_Test_Query = {
 query ArtworkSidebarBidAction_Test_Query {
   artwork(id: "auction_artwork") {
     ...ArtworkSidebarBidAction_artwork
-    __id
+    id
   }
 }
 
@@ -29,7 +29,7 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
       max_bid {
         cents
       }
-      __id
+      id
     }
   }
   id
@@ -38,23 +38,21 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
     id
     registrationStatus {
       qualified_for_bidding
-      __id
+      id
     }
     is_preview
     is_open
     is_live_open
     is_closed
     is_registration_closed
-    __id
   }
   sale_artwork {
     increments {
       cents
       display
     }
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -63,25 +61,17 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "auction_artwork",
-    "type": "String!"
+    "value": "auction_artwork"
   }
 ],
 v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cents",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -90,11 +80,6 @@ v3 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarBidAction_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarBidAction_Test_Query {\n  artwork(id: \"auction_artwork\") {\n    ...ArtworkSidebarBidAction_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    most_recent_bid {\n      max_bid {\n        cents\n      }\n      __id\n    }\n  }\n  id\n  _id\n  sale {\n    id\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    is_preview\n    is_open\n    is_live_open\n    is_closed\n    is_registration_closed\n    __id\n  }\n  sale_artwork {\n    increments {\n      cents\n      display\n    }\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarBidAction_Test_Query",
@@ -107,7 +92,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"auction_artwork\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -115,8 +100,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarBidAction_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -131,7 +115,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"auction_artwork\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -144,8 +128,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "live",
-                "value": true,
-                "type": "Boolean"
+                "value": true
               }
             ],
             "concreteType": "LotStanding",
@@ -169,15 +152,15 @@ return {
                     "concreteType": "BidderPositionMaxBid",
                     "plural": false,
                     "selections": [
-                      v2
+                      (v1/*: any*/)
                     ]
                   },
-                  v1
+                  (v2/*: any*/)
                 ]
               }
             ]
           },
-          v3,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -194,7 +177,7 @@ return {
             "concreteType": "Sale",
             "plural": false,
             "selections": [
-              v3,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -211,7 +194,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
+                  (v2/*: any*/)
                 ]
               },
               {
@@ -248,8 +231,7 @@ return {
                 "name": "is_registration_closed",
                 "args": null,
                 "storageKey": null
-              },
-              v1
+              }
             ]
           },
           {
@@ -270,7 +252,7 @@ return {
                 "concreteType": "BidIncrementsFormatted",
                 "plural": true,
                 "selections": [
-                  v2,
+                  (v1/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -280,13 +262,19 @@ return {
                   }
                 ]
               },
-              v1
+              (v2/*: any*/)
             ]
-          },
-          v1
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarBidAction_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarBidAction_Test_Query {\n  artwork(id: \"auction_artwork\") {\n    ...ArtworkSidebarBidAction_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    most_recent_bid {\n      max_bid {\n        cents\n      }\n      id\n    }\n  }\n  id\n  _id\n  sale {\n    id\n    registrationStatus {\n      qualified_for_bidding\n      id\n    }\n    is_preview\n    is_open\n    is_live_open\n    is_closed\n    is_registration_closed\n  }\n  sale_artwork {\n    increments {\n      cents\n      display\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

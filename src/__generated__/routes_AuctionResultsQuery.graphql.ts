@@ -6,9 +6,9 @@ export type routes_AuctionResultsQueryVariables = {
     readonly artistID: string;
 };
 export type routes_AuctionResultsQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": AuctionResults_artist$ref;
-    }) | null;
+    } | null;
 };
 export type routes_AuctionResultsQuery = {
     readonly response: routes_AuctionResultsQueryResponse;
@@ -23,13 +23,12 @@ query routes_AuctionResultsQuery(
 ) {
   artist(id: $artistID) {
     ...AuctionResults_artist
-    __id
+    id
   }
 }
 
 fragment AuctionResults_artist on Artist {
   ...ArtistAuctionResults_artist
-  __id
 }
 
 fragment ArtistAuctionResults_artist on Artist {
@@ -46,11 +45,10 @@ fragment ArtistAuctionResults_artist on Artist {
     edges {
       node {
         ...ArtistAuctionResultItem_auctionResult
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment Pagination_pageCursors on PageCursors {
@@ -82,7 +80,7 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
   images {
     thumbnail {
       url
-      __id: id
+      id
     }
   }
   description
@@ -95,7 +93,6 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
   estimate {
     display
   }
-  __id
 }
 */
 
@@ -112,14 +109,13 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -138,8 +134,8 @@ v4 = {
   "storageKey": null
 },
 v5 = [
-  v3,
-  v4,
+  (v3/*: any*/),
+  (v4/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -157,24 +153,19 @@ v6 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_AuctionResultsQuery",
-  "id": null,
-  "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    __id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n  __id\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  id\n  auctionResults(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n      __id: id\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_AuctionResultsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -182,8 +173,7 @@ return {
             "kind": "FragmentSpread",
             "name": "AuctionResults_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -191,24 +181,18 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_AuctionResultsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v2/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -218,14 +202,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 10,
-                "type": "Int"
+                "value": 10
               },
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "DATE_DESC",
-                "type": "AuctionResultSorts"
+                "value": "DATE_DESC"
               }
             ],
             "concreteType": "AuctionResultConnection",
@@ -273,7 +255,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v5
+                    "selections": (v5/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -283,7 +265,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v5
+                    "selections": (v5/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -293,7 +275,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v5
+                    "selections": (v5/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -304,8 +286,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      (v3/*: any*/),
+                      (v4/*: any*/)
                     ]
                   }
                 ]
@@ -381,13 +363,7 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v2/*: any*/)
                             ]
                           }
                         ]
@@ -422,7 +398,7 @@ return {
                         "concreteType": "AuctionResultPriceRealized",
                         "plural": false,
                         "selections": [
-                          v6,
+                          (v6/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -441,20 +417,26 @@ return {
                         "concreteType": "AuctionLotEstimate",
                         "plural": false,
                         "selections": [
-                          v6
+                          (v6/*: any*/)
                         ]
                       },
-                      v2
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_AuctionResultsQuery",
+    "id": null,
+    "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  id\n  auctionResults(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n      id\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

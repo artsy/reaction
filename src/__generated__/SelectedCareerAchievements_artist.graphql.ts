@@ -1,51 +1,43 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _SelectedCareerAchievements_artist$ref: unique symbol;
 export type SelectedCareerAchievements_artist$ref = typeof _SelectedCareerAchievements_artist$ref;
 export type SelectedCareerAchievements_artist = {
     readonly _id: string;
-    readonly highlights: ({
-        readonly partners: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly categories: ReadonlyArray<({
+    readonly highlights: {
+        readonly partners: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly categories: ReadonlyArray<{
                         readonly id: string;
-                    }) | null> | null;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly insights: ReadonlyArray<({
+                    } | null> | null;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly insights: ReadonlyArray<{
         readonly type: string | null;
         readonly label: string | null;
         readonly entities: ReadonlyArray<string | null> | null;
-    }) | null> | null;
-    readonly auctionResults: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly price_realized: ({
+    } | null> | null;
+    readonly auctionResults: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly price_realized: {
                     readonly display: string | null;
-                }) | null;
+                } | null;
                 readonly organization: string | null;
                 readonly sale_date: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": SelectedCareerAchievements_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SelectedCareerAchievements_artist",
   "type": "Artist",
@@ -88,26 +80,22 @@ return {
             {
               "kind": "Literal",
               "name": "display_on_partner_profile",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
-              "type": "Int"
+              "value": 10
             },
             {
               "kind": "Variable",
               "name": "partner_category",
-              "variableName": "partner_category",
-              "type": "[String]"
+              "variableName": "partner_category"
             },
             {
               "kind": "Literal",
               "name": "represented_by",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             }
           ],
           "concreteType": "PartnerArtistConnection",
@@ -146,14 +134,11 @@ return {
                           "name": "id",
                           "args": null,
                           "storageKey": null
-                        },
-                        v0
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
@@ -201,20 +186,17 @@ return {
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Literal",
           "name": "recordsTrusted",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PRICE_AND_DATE_DESC",
-          "type": "AuctionResultSorts"
+          "value": "PRICE_AND_DATE_DESC"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -255,8 +237,7 @@ return {
                         {
                           "kind": "Literal",
                           "name": "format",
-                          "value": "0a",
-                          "type": "String"
+                          "value": "0a"
                         }
                       ],
                       "storageKey": "display(format:\"0a\")"
@@ -278,22 +259,18 @@ return {
                     {
                       "kind": "Literal",
                       "name": "format",
-                      "value": "YYYY",
-                      "type": "String"
+                      "value": "YYYY"
                     }
                   ],
                   "storageKey": "sale_date(format:\"YYYY\")"
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '87b6c981376c85f3657f9b6e6fd372c5';
 export default node;

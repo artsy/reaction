@@ -1,35 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { SearchResultsRefetch_viewer$ref } from "./SearchResultsRefetch_viewer.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _SearchResultsFilterContainer_viewer$ref: unique symbol;
 export type SearchResultsFilterContainer_viewer$ref = typeof _SearchResultsFilterContainer_viewer$ref;
 export type SearchResultsFilterContainer_viewer = {
-    readonly filter_artworks: ({
-        readonly aggregations: ReadonlyArray<({
+    readonly filter_artworks: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: ArtworkAggregation | null;
-            readonly counts: ReadonlyArray<({
+            readonly counts: ReadonlyArray<{
                 readonly name: string | null;
                 readonly id: string;
-            }) | null> | null;
-        }) | null> | null;
-    }) | null;
+            } | null> | null;
+        } | null> | null;
+    } | null;
     readonly " $fragmentRefs": SearchResultsRefetch_viewer$ref;
     readonly " $refType": SearchResultsFilterContainer_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchResultsFilterContainer_viewer",
   "type": "Viewer",
@@ -157,14 +149,12 @@ return {
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
       "concreteType": "FilterArtworks",
@@ -208,13 +198,11 @@ return {
                   "name": "id",
                   "args": null,
                   "storageKey": null
-                },
-                v0
+                }
               ]
             }
           ]
-        },
-        v0
+        }
       ]
     },
     {
@@ -224,109 +212,91 @@ return {
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": null
+          "variableName": "acquireable"
         },
         {
           "kind": "Variable",
           "name": "artist_id",
-          "variableName": "artist_id",
-          "type": null
+          "variableName": "artist_id"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
-          "variableName": "at_auction",
-          "type": null
+          "variableName": "at_auction"
         },
         {
           "kind": "Variable",
           "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": null
+          "variableName": "attribution_class"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": null
+          "variableName": "color"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
-          "variableName": "for_sale",
-          "type": null
+          "variableName": "for_sale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": null
+          "variableName": "height"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": null
+          "variableName": "inquireable_only"
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "keyword",
-          "type": null
+          "variableName": "keyword"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
-          "variableName": "major_periods",
-          "type": null
+          "variableName": "major_periods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": null
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": null
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": null
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
-          "variableName": "partner_id",
-          "type": null
+          "variableName": "partner_id"
         },
         {
           "kind": "Variable",
           "name": "price_range",
-          "variableName": "price_range",
-          "type": null
+          "variableName": "price_range"
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": null
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": null
+          "variableName": "width"
         }
       ]
     }
   ]
 };
-})();
 (node as any).hash = '10c3756d2b9d072fb78f6bbf1a733644';
 export default node;

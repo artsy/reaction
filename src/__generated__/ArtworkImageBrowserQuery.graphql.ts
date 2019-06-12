@@ -6,9 +6,9 @@ export type ArtworkImageBrowserQueryVariables = {
     readonly artworkID: string;
 };
 export type ArtworkImageBrowserQueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": ArtworkImageBrowser_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkImageBrowserQuery = {
     readonly response: ArtworkImageBrowserQueryResponse;
@@ -23,7 +23,7 @@ query ArtworkImageBrowserQuery(
 ) {
   artwork(id: $artworkID) {
     ...ArtworkImageBrowser_artwork
-    __id
+    id
   }
 }
 
@@ -38,7 +38,6 @@ fragment ArtworkImageBrowser_artwork on Artwork {
     url(version: "larger")
     height
     width
-    __id: id
   }
   images {
     id
@@ -62,9 +61,7 @@ fragment ArtworkImageBrowser_artwork on Artwork {
         }
       }
     }
-    __id: id
   }
-  __id
 }
 
 fragment ArtworkActions_artwork on Artwork {
@@ -72,7 +69,7 @@ fragment ArtworkActions_artwork on Artwork {
   ...ArtworkSharePanel_artwork
   artists {
     name
-    __id
+    id
   }
   date
   dimensions {
@@ -85,21 +82,18 @@ fragment ArtworkActions_artwork on Artwork {
     url(version: "larger")
     height
     width
-    __id: id
   }
   is_downloadable
   is_hangable
   partner {
     id
-    __id
   }
   title
   sale {
     is_closed
     is_auction
-    __id
+    id
   }
-  __id
 }
 
 fragment Save_artwork on Artwork {
@@ -114,12 +108,11 @@ fragment ArtworkSharePanel_artwork on Artwork {
   href
   images {
     url
-    __id: id
+    id
   }
   artworkMeta: meta {
     share
   }
-  __id
 }
 */
 
@@ -136,58 +129,38 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
-    "type": "String!"
+    "variableName": "artworkID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "url",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkImageBrowserQuery",
-  "id": null,
-  "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    __id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...ArtworkActions_artwork\n  image {\n    id\n    url(version: \"larger\")\n    height\n    width\n    __id: id\n  }\n  images {\n    id\n    uri: url(version: [\"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    is_default\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n    __id: id\n  }\n  __id\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  artists {\n    name\n    __id\n  }\n  date\n  dimensions {\n    cm\n  }\n  href\n  id\n  image {\n    id\n    url(version: \"larger\")\n    height\n    width\n    __id: id\n  }\n  is_downloadable\n  is_hangable\n  partner {\n    id\n    __id\n  }\n  title\n  sale {\n    is_closed\n    is_auction\n    __id\n  }\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n    __id: id\n  }\n  artworkMeta: meta {\n    share\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkImageBrowserQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -195,8 +168,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkImageBrowser_artwork",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -204,39 +176,28 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtworkImageBrowserQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": "artworkMeta",
-            "name": "meta",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "ArtworkMeta",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "share",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
-          {
             "kind": "ScalarField",
             "alias": null,
             "name": "title",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": "image_alt",
+            "name": "to_s",
             "args": null,
             "storageKey": null
           },
@@ -254,7 +215,13 @@ return {
             "args": null,
             "storageKey": null
           },
-          v2,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -262,7 +229,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v3,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -279,9 +246,8 @@ return {
             "concreteType": "Image",
             "plural": true,
             "selections": [
-              v4,
-              v5,
-              v3,
+              (v3/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": "uri",
@@ -292,8 +258,7 @@ return {
                     "name": "version",
                     "value": [
                       "large"
-                    ],
-                    "type": "[String]"
+                    ]
                   }
                 ],
                 "storageKey": "url(version:[\"large\"])"
@@ -307,26 +272,23 @@ return {
                   {
                     "kind": "Literal",
                     "name": "height",
-                    "value": 30,
-                    "type": "Int"
+                    "value": 30
                   },
                   {
                     "kind": "Literal",
                     "name": "version",
-                    "value": "small",
-                    "type": "[String]"
+                    "value": "small"
                   },
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 30,
-                    "type": "Int"
+                    "value": 30
                   }
                 ],
                 "concreteType": "ResizedImageUrl",
                 "plural": false,
                 "selections": [
-                  v4
+                  (v3/*: any*/)
                 ]
               },
               {
@@ -435,11 +397,22 @@ return {
             ]
           },
           {
-            "kind": "ScalarField",
-            "alias": "image_alt",
-            "name": "to_s",
+            "kind": "LinkedField",
+            "alias": "artworkMeta",
+            "name": "meta",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "ArtworkMeta",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "share",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           },
           {
             "kind": "LinkedField",
@@ -457,7 +430,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              (v2/*: any*/)
             ]
           },
           {
@@ -494,7 +467,7 @@ return {
             "concreteType": "Image",
             "plural": false,
             "selections": [
-              v3,
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -503,8 +476,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "version",
-                    "value": "larger",
-                    "type": "[String]"
+                    "value": "larger"
                   }
                 ],
                 "storageKey": "url(version:\"larger\")"
@@ -522,8 +494,7 @@ return {
                 "name": "width",
                 "args": null,
                 "storageKey": null
-              },
-              v5
+              }
             ]
           },
           {
@@ -549,8 +520,7 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v3,
-              v2
+              (v2/*: any*/)
             ]
           },
           {
@@ -576,12 +546,19 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              (v2/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkImageBrowserQuery",
+    "id": null,
+    "text": "query ArtworkImageBrowserQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkImageBrowser_artwork\n    id\n  }\n}\n\nfragment ArtworkImageBrowser_artwork on Artwork {\n  title\n  image_alt: to_s\n  image_title\n  href\n  ...ArtworkActions_artwork\n  image {\n    id\n    url(version: \"larger\")\n    height\n    width\n  }\n  images {\n    id\n    uri: url(version: [\"large\"])\n    placeholder: resized(width: 30, height: 30, version: \"small\") {\n      url\n    }\n    aspectRatio: aspect_ratio\n    is_zoomable\n    is_default\n    deepZoom: deep_zoom {\n      Image {\n        xmlns\n        Url\n        Format\n        TileSize\n        Overlap\n        Size {\n          Width\n          Height\n        }\n      }\n    }\n  }\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  artists {\n    name\n    id\n  }\n  date\n  dimensions {\n    cm\n  }\n  href\n  id\n  image {\n    id\n    url(version: \"larger\")\n    height\n    width\n  }\n  is_downloadable\n  is_hangable\n  partner {\n    id\n  }\n  title\n  sale {\n    is_closed\n    is_auction\n    id\n  }\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n    id\n  }\n  artworkMeta: meta {\n    share\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

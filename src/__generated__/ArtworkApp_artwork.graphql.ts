@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistInfo_artist$ref } from "./ArtistInfo_artist.graphql";
 import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
 import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
@@ -20,20 +20,20 @@ export type ArtworkApp_artwork = {
     readonly availability: string | null;
     readonly price: string | null;
     readonly is_in_auction: boolean | null;
-    readonly artists: ReadonlyArray<({
+    readonly artists: ReadonlyArray<{
         readonly id: string;
         readonly " $fragmentRefs": ArtistInfo_artist$ref;
-    }) | null> | null;
-    readonly artist: ({
+    } | null> | null;
+    readonly artist: {
         readonly " $fragmentRefs": ArtistInfo_artist$ref;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkRelatedArtists_artwork$ref & ArtworkMeta_artwork$ref & ArtworkBanner_artwork$ref & ArtworkSidebar_artwork$ref & ArtworkDetails_artwork$ref & ArtworkImageBrowser_artwork$ref & OtherWorks_artwork$ref & PricingContext_artwork$ref;
     readonly " $refType": ArtworkApp_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -45,13 +45,6 @@ v1 = {
   "kind": "FragmentSpread",
   "name": "ArtistInfo_artist",
   "args": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -60,12 +53,14 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkRelatedArtists_artwork",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
     },
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -110,9 +105,8 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v0,
-        v1,
-        v2
+        (v0/*: any*/),
+        (v1/*: any*/)
       ]
     },
     {
@@ -124,16 +118,13 @@ return {
       "concreteType": "Artist",
       "plural": false,
       "selections": [
-        v1,
-        v2
+        (v1/*: any*/)
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtworkRelatedArtists_artwork",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -169,8 +160,7 @@ return {
       "kind": "FragmentSpread",
       "name": "PricingContext_artwork",
       "args": null
-    },
-    v2
+    }
   ]
 };
 })();

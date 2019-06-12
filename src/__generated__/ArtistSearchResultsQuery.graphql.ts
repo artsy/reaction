@@ -6,9 +6,9 @@ export type ArtistSearchResultsQueryVariables = {
     readonly term: string;
 };
 export type ArtistSearchResultsQueryResponse = {
-    readonly viewer: ({
+    readonly viewer: {
         readonly " $fragmentRefs": ArtistSearchResults_viewer$ref;
-    }) | null;
+    } | null;
 };
 export type ArtistSearchResultsQuery = {
     readonly response: ArtistSearchResultsQueryResponse;
@@ -36,7 +36,7 @@ fragment ArtistSearchResults_viewer on Viewer {
       cropped(width: 100, height: 100) {
         url
       }
-      __id: id
+      id
     }
   }
 }
@@ -50,25 +50,27 @@ var v0 = [
     "type": "String!",
     "defaultValue": null
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistSearchResultsQuery",
-  "id": null,
-  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id: id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistSearchResultsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -86,7 +88,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtistSearchResultsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -106,20 +108,13 @@ return {
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": "String!"
+                "variableName": "term"
               }
             ],
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
+              (v1/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -159,14 +154,12 @@ return {
                       {
                         "kind": "Literal",
                         "name": "height",
-                        "value": 100,
-                        "type": "Int!"
+                        "value": 100
                       },
                       {
                         "kind": "Literal",
                         "name": "width",
-                        "value": 100,
-                        "type": "Int!"
+                        "value": 100
                       }
                     ],
                     "concreteType": "CroppedImageUrl",
@@ -181,29 +174,21 @@ return {
                       }
                     ]
                   },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v1/*: any*/)
                 ]
               }
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistSearchResultsQuery",
+    "id": null,
+    "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

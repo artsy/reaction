@@ -5,10 +5,10 @@ export type RouterQueryVariables = {
     readonly artistID: string;
 };
 export type RouterQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly name: string | null;
         readonly bio: string | null;
-    }) | null;
+    } | null;
 };
 export type RouterQuery = {
     readonly response: RouterQueryResponse;
@@ -24,7 +24,7 @@ query RouterQuery(
   artist(id: $artistID) {
     name
     bio
-    __id
+    id
   }
 }
 */
@@ -40,65 +40,82 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "artist",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "id",
-        "variableName": "artistID",
-        "type": "String!"
-      }
-    ],
-    "concreteType": "Artist",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "name",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "bio",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "__id",
-        "args": null,
-        "storageKey": null
-      }
-    ]
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "artistID"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "bio",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "RouterQuery",
-  "id": null,
-  "text": "query RouterQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    name\n    bio\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "RouterQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          (v3/*: any*/)
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "RouterQuery",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          (v3/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "RouterQuery",
+    "id": null,
+    "text": "query RouterQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    name\n    bio\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

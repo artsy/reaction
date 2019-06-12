@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtistCollectionEntity_collection$ref: unique symbol;
 export type ArtistCollectionEntity_collection$ref = typeof _ArtistCollectionEntity_collection$ref;
 export type ArtistCollectionEntity_collection = {
@@ -8,41 +8,27 @@ export type ArtistCollectionEntity_collection = {
     readonly slug: string;
     readonly title: string;
     readonly price_guidance: number | null;
-    readonly artworks: ({
-        readonly hits: ReadonlyArray<({
-            readonly artist: ({
+    readonly artworks: {
+        readonly hits: ReadonlyArray<{
+            readonly artist: {
                 readonly name: string | null;
-            }) | null;
+            } | null;
             readonly title: string | null;
-            readonly image: ({
+            readonly image: {
                 readonly url: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": ArtistCollectionEntity_collection$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "title",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -67,7 +53,7 @@ return {
       "args": null,
       "storageKey": null
     },
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -84,14 +70,12 @@ return {
         {
           "kind": "Literal",
           "name": "size",
-          "value": 3,
-          "type": "Int"
+          "value": 3
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "merchandisability",
-          "type": "String"
+          "value": "merchandisability"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -121,11 +105,10 @@ return {
                   "name": "name",
                   "args": null,
                   "storageKey": null
-                },
-                v1
+                }
               ]
             },
-            v0,
+            (v0/*: any*/),
             {
               "kind": "LinkedField",
               "alias": null,
@@ -143,22 +126,17 @@ return {
                     {
                       "kind": "Literal",
                       "name": "version",
-                      "value": "small",
-                      "type": "[String]"
+                      "value": "small"
                     }
                   ],
                   "storageKey": "url(version:\"small\")"
-                },
-                v2
+                }
               ]
-            },
-            v1
+            }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v2
+    }
   ]
 };
 })();

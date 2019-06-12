@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkSidebarClassification_artwork$ref } from "./ArtworkSidebarClassification_artwork.graphql";
 import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece.graphql";
 import { ArtworkSidebarTitleInfo_artwork$ref } from "./ArtworkSidebarTitleInfo_artwork.graphql";
@@ -8,27 +8,19 @@ declare const _ArtworkSidebarMetadata_artwork$ref: unique symbol;
 export type ArtworkSidebarMetadata_artwork$ref = typeof _ArtworkSidebarMetadata_artwork$ref;
 export type ArtworkSidebarMetadata_artwork = {
     readonly is_biddable: boolean | null;
-    readonly edition_sets: ReadonlyArray<({
+    readonly edition_sets: ReadonlyArray<{
         readonly __id: string;
-    }) | null> | null;
-    readonly sale_artwork: ({
+    } | null> | null;
+    readonly sale_artwork: {
         readonly lot_label: string | null;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkSidebarTitleInfo_artwork$ref & ArtworkSidebarSizeInfo_piece$ref & ArtworkSidebarClassification_artwork$ref;
     readonly " $refType": ArtworkSidebarMetadata_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarMetadata_artwork",
   "type": "Artwork",
@@ -51,7 +43,13 @@ return {
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
     {
@@ -69,8 +67,7 @@ return {
           "name": "lot_label",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -87,10 +84,8 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebarClassification_artwork",
       "args": null
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '04f48094f4aca61848838f497c242421';
 export default node;

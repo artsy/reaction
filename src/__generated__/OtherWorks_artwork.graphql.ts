@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
 import { ArtworkContextFair_artwork$ref } from "./ArtworkContextFair_artwork.graphql";
 import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
@@ -9,48 +9,25 @@ export type OtherWorks_artwork$ref = typeof _OtherWorks_artwork$ref;
 export type OtherWorks_artwork = {
     readonly id: string;
     readonly _id: string;
-    readonly sale: ({
+    readonly sale: {
         readonly is_closed: boolean | null;
-    }) | null;
-    readonly context: ({
+    } | null;
+    readonly context: {
         readonly __typename: string;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref & ArtworkContextFair_artwork$ref & ArtworkContextPartnerShow_artwork$ref;
     readonly " $refType": OtherWorks_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "OtherWorks_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextArtist_artwork",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextFair_artwork",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextPartnerShow_artwork",
-      "args": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -80,8 +57,7 @@ return {
           "name": "is_closed",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -99,13 +75,25 @@ return {
           "name": "__typename",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
-    v0
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkContextArtist_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkContextFair_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkContextPartnerShow_artwork",
+      "args": null
+    }
   ]
 };
-})();
 (node as any).hash = '586e3a8404448705d4dc248ff5ef2997';
 export default node;

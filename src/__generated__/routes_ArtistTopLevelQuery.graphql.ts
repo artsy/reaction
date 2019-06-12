@@ -6,9 +6,9 @@ export type routes_ArtistTopLevelQueryVariables = {
     readonly artistID: string;
 };
 export type routes_ArtistTopLevelQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": ArtistApp_artist$ref;
-    }) | null;
+    } | null;
 };
 export type routes_ArtistTopLevelQuery = {
     readonly response: routes_ArtistTopLevelQueryResponse;
@@ -23,7 +23,7 @@ query routes_ArtistTopLevelQuery(
 ) {
   artist(id: $artistID) {
     ...ArtistApp_artist
-    __id
+    id
   }
 }
 
@@ -32,7 +32,6 @@ fragment ArtistApp_artist on Artist {
   id
   ...ArtistHeader_artist
   ...NavigationTabs_artist
-  __id
 }
 
 fragment ArtistHeader_artist on Artist {
@@ -52,11 +51,10 @@ fragment ArtistHeader_artist on Artist {
         width
         height
       }
-      __id: id
+      id
     }
   }
   ...FollowArtistButton_artist
-  __id
 }
 
 fragment NavigationTabs_artist on Artist {
@@ -68,7 +66,6 @@ fragment NavigationTabs_artist on Artist {
     cv(minShowCount: 0)
     auction_lots
   }
-  __id
 }
 
 fragment FollowArtistButton_artist on Artist {
@@ -94,37 +91,31 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_ArtistTopLevelQuery",
-  "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_ArtistTopLevelQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -132,8 +123,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistApp_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -141,14 +131,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_ArtistTopLevelQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -159,13 +149,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -239,8 +223,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "height",
-                        "value": 200,
-                        "type": "Int"
+                        "value": 200
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -269,18 +252,18 @@ return {
                       }
                     ]
                   },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v2/*: any*/)
                 ]
               }
             ]
           },
-          v2,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -326,8 +309,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "minShowCount",
-                    "value": 0,
-                    "type": "Int"
+                    "value": 0
                   }
                 ],
                 "storageKey": "cv(minShowCount:0)"
@@ -344,6 +326,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_ArtistTopLevelQuery",
+    "id": null,
+    "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      id\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    artists\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkDetailsAdditionalInfo_artwork$ref: unique symbol;
 export type ArtworkDetailsAdditionalInfo_artwork$ref = typeof _ArtworkDetailsAdditionalInfo_artwork$ref;
 export type ArtworkDetailsAdditionalInfo_artwork = {
@@ -8,28 +8,28 @@ export type ArtworkDetailsAdditionalInfo_artwork = {
     readonly publisher: string | null;
     readonly manufacturer: string | null;
     readonly image_rights: string | null;
-    readonly framed: ({
+    readonly framed: {
         readonly label: string | null;
         readonly details: string | null;
-    }) | null;
-    readonly signatureInfo: ({
+    } | null;
+    readonly signatureInfo: {
         readonly label: string | null;
         readonly details: string | null;
-    }) | null;
-    readonly conditionDescription: ({
+    } | null;
+    readonly conditionDescription: {
         readonly label: string | null;
         readonly details: string | null;
-    }) | null;
-    readonly certificateOfAuthenticity: ({
+    } | null;
+    readonly certificateOfAuthenticity: {
         readonly label: string | null;
         readonly details: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": ArtworkDetailsAdditionalInfo_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -89,7 +89,7 @@ return {
       "args": null,
       "concreteType": "ArtworkInfoRow",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -99,7 +99,7 @@ return {
       "args": null,
       "concreteType": "ArtworkInfoRow",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -109,7 +109,7 @@ return {
       "args": null,
       "concreteType": "ArtworkInfoRow",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -119,14 +119,7 @@ return {
       "args": null,
       "concreteType": "ArtworkInfoRow",
       "plural": false,
-      "selections": v0
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "selections": (v0/*: any*/)
     }
   ]
 };

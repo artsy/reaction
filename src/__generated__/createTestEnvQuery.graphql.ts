@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { createTestEnv_artwork$ref } from "./createTestEnv_artwork.graphql";
 export type createTestEnvQueryVariables = {};
 export type createTestEnvQueryResponse = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly " $fragmentRefs": createTestEnv_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type createTestEnvQuery = {
     readonly response: createTestEnvQueryResponse;
@@ -19,7 +19,7 @@ export type createTestEnvQuery = {
 query createTestEnvQuery {
   artwork(id: "unused") {
     ...createTestEnv_artwork
-    __id
+    id
   }
 }
 
@@ -27,9 +27,8 @@ fragment createTestEnv_artwork on Artwork {
   title
   artist {
     name
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -38,24 +37,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "createTestEnvQuery",
-  "id": null,
-  "text": "query createTestEnvQuery {\n  artwork(id: \"unused\") {\n    ...createTestEnv_artwork\n    __id\n  }\n}\n\nfragment createTestEnv_artwork on Artwork {\n  title\n  artist {\n    name\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createTestEnvQuery",
@@ -68,7 +61,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -76,8 +69,7 @@ return {
             "kind": "FragmentSpread",
             "name": "createTestEnv_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -92,7 +84,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -119,13 +111,20 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "createTestEnvQuery",
+    "id": null,
+    "text": "query createTestEnvQuery {\n  artwork(id: \"unused\") {\n    ...createTestEnv_artwork\n    id\n  }\n}\n\nfragment createTestEnv_artwork on Artwork {\n  title\n  artist {\n    name\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

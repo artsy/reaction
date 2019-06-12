@@ -9,18 +9,32 @@ export type ReviewSubmitOfferOrderMutationVariables = {
     readonly input: SubmitOrderWithOfferInput;
 };
 export type ReviewSubmitOfferOrderMutationResponse = {
-    readonly ecommerceSubmitOrderWithOffer: ({
+    readonly ecommerceSubmitOrderWithOffer: {
         readonly orderOrError: ({
-            readonly order?: ({
+            readonly order?: {
                 readonly state: string | null;
-            }) | null;
-            readonly error?: ({
+            } | null;
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } & ({
+            readonly order: {
+                readonly state: string | null;
+            } | null;
+        } | {
+            readonly error: {
+                readonly type: string;
+                readonly code: string;
+                readonly data: string | null;
+            } | null;
+        } | {
+            /*This will never be '% other', but we need some
+            value in case none of the concrete values match.*/
+            readonly __typename: "%other";
+        })) | null;
+    } | null;
 };
 export type ReviewSubmitOfferOrderMutation = {
     readonly response: ReviewSubmitOfferOrderMutationResponse;
@@ -40,7 +54,7 @@ mutation ReviewSubmitOfferOrderMutation(
         order {
           __typename
           state
-          __id: id
+          id
         }
       }
       ... on OrderWithMutationFailure {
@@ -68,11 +82,17 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "SubmitOrderWithOfferInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "InlineFragment",
   "type": "OrderWithMutationFailure",
   "selections": [
@@ -110,21 +130,7 @@ v2 = {
     }
   ]
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
 v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -133,24 +139,19 @@ v5 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ReviewSubmitOfferOrderMutation",
-  "id": null,
-  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: SubmitOrderWithOfferInput!\n) {\n  ecommerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ReviewSubmitOfferOrderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
@@ -163,7 +164,6 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -177,12 +177,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
@@ -192,14 +192,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ReviewSubmitOfferOrderMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "ecommerceSubmitOrderWithOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "SubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
@@ -212,8 +212,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
-              v2,
+              (v4/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "OrderWithMutationSuccess",
@@ -227,18 +226,32 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v5,
-                      v3,
-                      v4
+                      (v4/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ReviewSubmitOfferOrderMutation",
+    "id": null,
+    "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: SubmitOrderWithOfferInput!\n) {\n  ecommerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

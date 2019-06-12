@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graphql";
 import { PartnerArtworkGrid_artwork$ref } from "./PartnerArtworkGrid_artwork.graphql";
 import { RelatedWorksArtworkGrid_artwork$ref } from "./RelatedWorksArtworkGrid_artwork.graphql";
@@ -8,30 +8,22 @@ declare const _ArtworkContextArtist_artwork$ref: unique symbol;
 export type ArtworkContextArtist_artwork$ref = typeof _ArtworkContextArtist_artwork$ref;
 export type ArtworkContextArtist_artwork = {
     readonly id: string;
-    readonly artist: ({
+    readonly artist: {
         readonly name: string | null;
         readonly href: string | null;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtistArtworkGrid_artwork$ref & PartnerArtworkGrid_artwork$ref & RelatedWorksArtworkGrid_artwork$ref;
     readonly " $refType": ArtworkContextArtist_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "Variable",
     "name": "excludeArtworkIDs",
-    "variableName": "excludeArtworkIDs",
-    "type": null
+    "variableName": "excludeArtworkIDs"
   }
 ];
 return {
@@ -77,26 +69,24 @@ return {
           "name": "href",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "FragmentSpread",
       "name": "ArtistArtworkGrid_artwork",
-      "args": v1
+      "args": (v0/*: any*/)
     },
     {
       "kind": "FragmentSpread",
       "name": "PartnerArtworkGrid_artwork",
-      "args": v1
+      "args": (v0/*: any*/)
     },
     {
       "kind": "FragmentSpread",
       "name": "RelatedWorksArtworkGrid_artwork",
       "args": null
-    },
-    v0
+    }
   ]
 };
 })();

@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 export type ArtworkSummaryItemStoryQueryVariables = {};
 export type ArtworkSummaryItemStoryQueryResponse = {
-    readonly order: ({
+    readonly order: {
         readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkSummaryItemStoryQuery = {
     readonly response: ArtworkSummaryItemStoryQueryResponse;
@@ -20,7 +20,7 @@ query ArtworkSummaryItemStoryQuery {
   order: ecommerceOrder(id: "foo") {
     __typename
     ...ArtworkSummaryItem_order
-    __id: id
+    id
   }
 }
 
@@ -30,11 +30,8 @@ fragment ArtworkSummaryItem_order on Order {
     ... on Partner {
       name
     }
-    ... on Node {
-      __id
-    }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
@@ -49,15 +46,14 @@ fragment ArtworkSummaryItem_order on Order {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
+            id
           }
-          __id
+          id
         }
-        __id: id
+        id
       }
     }
   }
-  __id: id
 }
 */
 
@@ -66,38 +62,28 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "foo",
-    "type": "String!"
+    "value": "foo"
   }
 ],
 v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v3 = [
+  (v2/*: any*/)
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSummaryItemStoryQuery",
-  "id": null,
-  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSummaryItemStoryQuery",
@@ -110,7 +96,7 @@ return {
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -118,8 +104,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSummaryItem_order",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -134,11 +119,11 @@ return {
         "alias": "order",
         "name": "ecommerceOrder",
         "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
+          (v1/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -148,8 +133,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
-              v3,
+              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -162,6 +146,15 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "ClientExtension",
+                "selections": (v3/*: any*/)
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "User",
+                "selections": (v3/*: any*/)
               }
             ]
           },
@@ -247,8 +240,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -263,23 +255,30 @@ return {
                                   }
                                 ]
                               },
-                              v1
+                              (v2/*: any*/)
                             ]
                           },
-                          v3
+                          (v2/*: any*/)
                         ]
                       },
-                      v1
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v1
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSummaryItemStoryQuery",
+    "id": null,
+    "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

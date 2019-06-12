@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSidebarPageviews_artwork$ref: unique symbol;
 export type ArtworkSidebarPageviews_artwork$ref = typeof _ArtworkSidebarPageviews_artwork$ref;
 export type ArtworkSidebarPageviews_artwork = {
@@ -11,7 +11,7 @@ export type ArtworkSidebarPageviews_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarPageviews_artwork",
   "type": "Artwork",
@@ -29,13 +29,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "pageviews",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     }

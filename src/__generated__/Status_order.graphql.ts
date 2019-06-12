@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
@@ -18,32 +18,34 @@ export type Status_order = {
     readonly stateReason: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
+    } & ({
+        readonly __typename: "Ship";
     } | {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly fulfillments: ({
-                    readonly edges: ReadonlyArray<({
-                        readonly node: ({
+    })) | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly fulfillments: {
+                    readonly edges: ReadonlyArray<{
+                        readonly node: {
                             readonly courier: string | null;
                             readonly trackingId: string | null;
                             readonly estimatedDelivery: string | null;
-                        }) | null;
-                    }) | null> | null;
-                }) | null;
-                readonly artwork: ({
+                        } | null;
+                    } | null> | null;
+                } | null;
+                readonly artwork: {
                     readonly id: string;
                     readonly is_acquireable: boolean | null;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly myLastOffer?: ({
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly myLastOffer?: {
         readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
@@ -51,14 +53,29 @@ export type Status_order = {
         readonly shippingTotalCents: number | null;
         readonly taxTotal: string | null;
         readonly taxTotalCents: number | null;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
     readonly " $refType": Status_order$ref;
-};
+} & ({
+    readonly __typename: "OfferOrder";
+    readonly myLastOffer: {
+        readonly id: string;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+    } | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -66,29 +83,21 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
-  v0
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = [
+v2 = [
+  (v0/*: any*/)
+],
+v3 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ];
 return {
@@ -98,12 +107,8 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
-    },
-    v0,
+    (v0/*: any*/),
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -143,31 +148,15 @@ return {
       "selections": [
         {
           "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": v1
+          "type": "Ship",
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "InlineFragment",
-          "type": "Ship",
-          "selections": v1
+          "type": "Pickup",
+          "selections": (v2/*: any*/)
         }
       ]
-    },
-    v2,
-    {
-      "kind": "FragmentSpread",
-      "name": "TransactionDetailsSummaryItem_order",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ShippingSummaryItem_order",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "CreditCardSummaryItem_order",
-      "args": null
     },
     {
       "kind": "LinkedField",
@@ -245,13 +234,11 @@ return {
                                 {
                                   "kind": "Literal",
                                   "name": "format",
-                                  "value": "MMM Do, YYYY",
-                                  "type": "String"
+                                  "value": "MMM Do, YYYY"
                                 }
                               ],
                               "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
-                            },
-                            v3
+                            }
                           ]
                         }
                       ]
@@ -267,7 +254,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v2,
+                    (v1/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -279,24 +266,35 @@ return {
                       "kind": "FragmentSpread",
                       "name": "ItemReview_artwork",
                       "args": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v3
+                }
               ]
             }
           ]
         }
       ]
     },
-    v3,
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TransactionDetailsSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ShippingSummaryItem_order",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "CreditCardSummaryItem_order",
+      "args": null
+    },
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -310,12 +308,12 @@ return {
           "concreteType": "Offer",
           "plural": false,
           "selections": [
-            v2,
+            (v1/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "amount",
-              "args": v4,
+              "args": (v3/*: any*/),
               "storageKey": "amount(precision:2)"
             },
             {
@@ -329,7 +327,7 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "shippingTotal",
-              "args": v4,
+              "args": (v3/*: any*/),
               "storageKey": "shippingTotal(precision:2)"
             },
             {
@@ -343,7 +341,7 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "taxTotal",
-              "args": v4,
+              "args": (v3/*: any*/),
               "storageKey": "taxTotal(precision:2)"
             },
             {
@@ -352,8 +350,7 @@ return {
               "name": "taxTotalCents",
               "args": null,
               "storageKey": null
-            },
-            v3
+            }
           ]
         }
       ]

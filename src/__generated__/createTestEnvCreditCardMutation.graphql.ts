@@ -10,16 +10,28 @@ export type createTestEnvCreditCardMutationVariables = {
     readonly input: CreditCardInput;
 };
 export type createTestEnvCreditCardMutationResponse = {
-    readonly createCreditCard: ({
+    readonly createCreditCard: {
         readonly creditCardOrError: ({
-            readonly creditCard?: ({
+            readonly creditCard?: {
                 readonly brand: string;
-            }) | null;
-            readonly mutationError?: ({
+            } | null;
+            readonly mutationError?: {
                 readonly type: string | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } & ({
+            readonly creditCard: {
+                readonly brand: string;
+            } | null;
+        } | {
+            readonly mutationError: {
+                readonly type: string | null;
+            } | null;
+        } | {
+            /*This will never be '% other', but we need some
+            value in case none of the concrete values match.*/
+            readonly __typename: "%other";
+        })) | null;
+    } | null;
 };
 export type createTestEnvCreditCardMutation = {
     readonly response: createTestEnvCreditCardMutationResponse;
@@ -38,7 +50,7 @@ mutation createTestEnvCreditCardMutation(
       ... on CreditCardMutationSuccess {
         creditCard {
           brand
-          __id
+          id
         }
       }
       ... on CreditCardMutationFailure {
@@ -64,11 +76,17 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CreditCardInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "brand",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "InlineFragment",
   "type": "CreditCardMutationFailure",
   "selections": [
@@ -91,58 +109,22 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "InlineFragment",
-  "type": "CreditCardMutationSuccess",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "creditCard",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CreditCard",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "brand",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "createTestEnvCreditCardMutation",
-  "id": null,
-  "text": "mutation createTestEnvCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard: createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          brand\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createTestEnvCreditCardMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "createCreditCard",
         "name": "createCreditCard",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CreditCardPayload",
         "plural": false,
         "selections": [
@@ -155,8 +137,25 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
-              v3
+              {
+                "kind": "InlineFragment",
+                "type": "CreditCardMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "creditCard",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "CreditCard",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/)
+                    ]
+                  }
+                ]
+              },
+              (v3/*: any*/)
             ]
           }
         ]
@@ -166,14 +165,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "createTestEnvCreditCardMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "createCreditCard",
         "name": "createCreditCard",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CreditCardPayload",
         "plural": false,
         "selections": [
@@ -193,13 +192,44 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2,
-              v3
+              {
+                "kind": "InlineFragment",
+                "type": "CreditCardMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "creditCard",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "CreditCard",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "createTestEnvCreditCardMutation",
+    "id": null,
+    "text": "mutation createTestEnvCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard: createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          brand\n          id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

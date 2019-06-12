@@ -6,9 +6,9 @@ export type routes_SearchBarTopLevelQueryVariables = {
     readonly term: string;
 };
 export type routes_SearchBarTopLevelQueryResponse = {
-    readonly viewer: ({
+    readonly viewer: {
         readonly " $fragmentRefs": SearchApp_viewer$ref;
-    }) | null;
+    } | null;
 };
 export type routes_SearchBarTopLevelQuery = {
     readonly response: routes_SearchBarTopLevelQueryResponse;
@@ -33,7 +33,7 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
       counts {
         count
         name
-        __id
+        id
       }
     }
     ...NavigationTabs_searchableConnection
@@ -45,9 +45,6 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
           displayLabel
           displayType
         }
-        ... on Node {
-          __id
-        }
       }
     }
   }
@@ -55,7 +52,6 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
     counts {
       total
     }
-    __id
   }
 }
 
@@ -65,7 +61,7 @@ fragment NavigationTabs_searchableConnection on SearchableConnection {
     counts {
       count
       name
-      __id
+      id
     }
   }
 }
@@ -83,28 +79,23 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_SearchBarTopLevelQuery",
-  "id": null,
-  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n        __id\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    __id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_SearchBarTopLevelQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -117,8 +108,7 @@ return {
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -129,7 +119,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_SearchBarTopLevelQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -151,20 +141,17 @@ return {
                 "name": "aggregations",
                 "value": [
                   "TYPE"
-                ],
-                "type": "[SearchAggregation]"
+                ]
               },
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 1,
-                "type": "Int"
+                "value": 1
               },
               {
                 "kind": "Variable",
                 "name": "query",
-                "variableName": "term",
-                "type": "String!"
+                "variableName": "term"
               }
             ],
             "concreteType": "SearchableConnection",
@@ -209,7 +196,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v1
+                      (v1/*: any*/)
                     ]
                   }
                 ]
@@ -239,18 +226,11 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v1,
                       {
                         "kind": "InlineFragment",
                         "type": "SearchableItem",
                         "selections": [
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
-                          },
+                          (v1/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -265,6 +245,12 @@ return {
                             "args": null,
                             "storageKey": null
                           }
+                        ]
+                      },
+                      {
+                        "kind": "ClientExtension",
+                        "selections": [
+                          (v1/*: any*/)
                         ]
                       }
                     ]
@@ -284,20 +270,17 @@ return {
                 "name": "aggregations",
                 "value": [
                   "TOTAL"
-                ],
-                "type": "[ArtworkAggregation]"
+                ]
               },
               {
                 "kind": "Variable",
                 "name": "keyword",
-                "variableName": "term",
-                "type": "String"
+                "variableName": "term"
               },
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 0,
-                "type": "Int"
+                "value": 0
               }
             ],
             "concreteType": "FilterArtworks",
@@ -320,22 +303,19 @@ return {
                     "storageKey": null
                   }
                 ]
-              },
-              v1
+              }
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_SearchBarTopLevelQuery",
+    "id": null,
+    "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n        id\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          displayType\n        }\n      }\n    }\n  }\n  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

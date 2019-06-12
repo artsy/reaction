@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { MockRelayRendererFixtures_artwork$ref } from "./MockRelayRendererFixtures_artwork.graphql";
 export type MockRelayRendererFixturesBadQueryVariables = {};
 export type MockRelayRendererFixturesBadQueryResponse = {
-    readonly something_that_is_not_expected: ({
+    readonly something_that_is_not_expected: {
         readonly " $fragmentRefs": MockRelayRendererFixtures_artwork$ref;
-    }) | null;
+    } | null;
 };
 export type MockRelayRendererFixturesBadQuery = {
     readonly response: MockRelayRendererFixturesBadQueryResponse;
@@ -19,26 +19,23 @@ export type MockRelayRendererFixturesBadQuery = {
 query MockRelayRendererFixturesBadQuery {
   something_that_is_not_expected: artwork(id: "mona-lisa") {
     ...MockRelayRendererFixtures_artwork
-    __id
+    id
   }
 }
 
 fragment MockRelayRendererFixtures_artwork on Artwork {
   image {
     url
-    __id: id
+    id
   }
   artist {
     id
-    __id
   }
   ...MockRelayRendererFixtures_artworkMetadata
-  __id
 }
 
 fragment MockRelayRendererFixtures_artworkMetadata on Artwork {
   title
-  __id
 }
 */
 
@@ -47,24 +44,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "mona-lisa",
-    "type": "String!"
+    "value": "mona-lisa"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "MockRelayRendererFixturesBadQuery",
-  "id": null,
-  "text": "query MockRelayRendererFixturesBadQuery {\n  something_that_is_not_expected: artwork(id: \"mona-lisa\") {\n    ...MockRelayRendererFixtures_artwork\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artwork on Artwork {\n  image {\n    url\n    __id: id\n  }\n  artist {\n    id\n    __id\n  }\n  ...MockRelayRendererFixtures_artworkMetadata\n  __id\n}\n\nfragment MockRelayRendererFixtures_artworkMetadata on Artwork {\n  title\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "MockRelayRendererFixturesBadQuery",
@@ -77,7 +68,7 @@ return {
         "alias": "something_that_is_not_expected",
         "name": "artwork",
         "storageKey": "artwork(id:\"mona-lisa\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -85,8 +76,7 @@ return {
             "kind": "FragmentSpread",
             "name": "MockRelayRendererFixtures_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -101,7 +91,7 @@ return {
         "alias": "something_that_is_not_expected",
         "name": "artwork",
         "storageKey": "artwork(id:\"mona-lisa\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -121,13 +111,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              }
+              (v1/*: any*/)
             ]
           },
           {
@@ -139,14 +123,7 @@ return {
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
-              v1
+              (v1/*: any*/)
             ]
           },
           {
@@ -156,10 +133,17 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "MockRelayRendererFixturesBadQuery",
+    "id": null,
+    "text": "query MockRelayRendererFixturesBadQuery {\n  something_that_is_not_expected: artwork(id: \"mona-lisa\") {\n    ...MockRelayRendererFixtures_artwork\n    id\n  }\n}\n\nfragment MockRelayRendererFixtures_artwork on Artwork {\n  image {\n    url\n    id\n  }\n  artist {\n    id\n  }\n  ...MockRelayRendererFixtures_artworkMetadata\n}\n\nfragment MockRelayRendererFixtures_artworkMetadata on Artwork {\n  title\n}\n",
+    "metadata": {}
   }
 };
 })();

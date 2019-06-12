@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { ArtworkGrid_artist$ref } from "./ArtworkGrid_artist.graphql";
 export type ArtworkGrid_Test_QueryVariables = {};
 export type ArtworkGrid_Test_QueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": ArtworkGrid_artist$ref;
-    }) | null;
+    } | null;
 };
 export type ArtworkGrid_Test_Query = {
     readonly response: ArtworkGrid_Test_QueryResponse;
@@ -19,7 +19,7 @@ export type ArtworkGrid_Test_Query = {
 query ArtworkGrid_Test_Query {
   artist(id: "pablo-picasso") {
     ...ArtworkGrid_artist
-    __id
+    id
   }
 }
 
@@ -27,7 +27,6 @@ fragment ArtworkGrid_artist on Artist {
   artworks_connection(first: 4) {
     ...ArtworkGrid_artworks
   }
-  __id
 }
 
 fragment ArtworkGrid_artworks on ArtworkConnection {
@@ -38,7 +37,7 @@ fragment ArtworkGrid_artworks on ArtworkConnection {
       href
       image {
         aspect_ratio
-        __id: id
+        id
       }
       ...GridItem_artwork
     }
@@ -53,20 +52,18 @@ fragment GridItem_artwork on Artwork {
     placeholder
     url(version: "large")
     aspect_ratio
-    __id: id
+    id
   }
   href
   ...Metadata_artwork
   ...Save_artwork
   ...Badge_artwork
-  __id
 }
 
 fragment Metadata_artwork on Artwork {
   ...Details_artwork
   ...Contact_artwork
   href
-  __id
 }
 
 fragment Save_artwork on Artwork {
@@ -85,9 +82,8 @@ fragment Badge_artwork on Artwork {
   sale {
     is_preview
     display_timely_at
-    __id
+    id
   }
-  __id
 }
 
 fragment Details_artwork on Artwork {
@@ -100,17 +96,18 @@ fragment Details_artwork on Artwork {
     __id
     href
     name
+    id
   }
   collecting_institution
   partner(shallow: true) {
     name
     href
-    __id
+    id
   }
   sale {
     is_auction
     is_closed
-    __id
+    id
   }
   sale_artwork {
     counts {
@@ -118,14 +115,13 @@ fragment Details_artwork on Artwork {
     }
     highest_bid {
       display
-      __id: id
+      id
     }
     opening_bid {
       display
     }
-    __id
+    id
   }
-  __id
 }
 
 fragment Contact_artwork on Artwork {
@@ -137,16 +133,16 @@ fragment Contact_artwork on Artwork {
     is_live_open
     is_open
     is_closed
-    __id
+    id
   }
   partner(shallow: true) {
     type
-    __id
+    id
   }
   sale_artwork {
     highest_bid {
       display
-      __id: id
+      id
     }
     opening_bid {
       display
@@ -154,9 +150,8 @@ fragment Contact_artwork on Artwork {
     counts {
       bidder_positions
     }
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -165,8 +160,7 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
 ],
 v1 = {
@@ -176,14 +170,13 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = [
-  {
-    "kind": "Literal",
-    "name": "shallow",
-    "value": true,
-    "type": "Boolean"
-  }
-],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
 v3 = {
   "kind": "ScalarField",
   "alias": null,
@@ -191,17 +184,17 @@ v3 = {
   "args": null,
   "storageKey": null
 },
-v4 = {
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "shallow",
+    "value": true
+  }
+],
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -214,11 +207,6 @@ v6 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkGrid_Test_Query",
-  "id": null,
-  "text": "query ArtworkGrid_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtworkGrid_artist\n    __id\n  }\n}\n\nfragment ArtworkGrid_artist on Artist {\n  artworks_connection(first: 4) {\n    ...ArtworkGrid_artworks\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkGrid_Test_Query",
@@ -231,7 +219,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -239,8 +227,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkGrid_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -255,7 +242,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -268,8 +255,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 4,
-                "type": "Int"
+                "value": 4
               }
             ],
             "concreteType": "ArtworkConnection",
@@ -293,22 +279,9 @@ return {
                     "concreteType": "Artwork",
                     "plural": false,
                     "selections": [
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "artists",
-                        "storageKey": "artists(shallow:true)",
-                        "args": v2,
-                        "concreteType": "Artist",
-                        "plural": true,
-                        "selections": [
-                          v1,
-                          v3,
-                          v4
-                        ]
-                      },
-                      v1,
-                      v3,
+                      (v1/*: any*/),
+                      (v2/*: any*/),
+                      (v3/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -325,7 +298,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v5,
+                          (v2/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -341,8 +314,7 @@ return {
                               {
                                 "kind": "Literal",
                                 "name": "version",
-                                "value": "large",
-                                "type": "[String]"
+                                "value": "large"
                               }
                             ],
                             "storageKey": "url(version:\"large\")"
@@ -392,11 +364,19 @@ return {
                         "storageKey": null
                       },
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "id",
-                        "args": null,
-                        "storageKey": null
+                        "name": "artists",
+                        "storageKey": "artists(shallow:true)",
+                        "args": (v4/*: any*/),
+                        "concreteType": "Artist",
+                        "plural": true,
+                        "selections": [
+                          (v1/*: any*/),
+                          (v3/*: any*/),
+                          (v5/*: any*/),
+                          (v2/*: any*/)
+                        ]
                       },
                       {
                         "kind": "ScalarField",
@@ -410,13 +390,13 @@ return {
                         "alias": null,
                         "name": "partner",
                         "storageKey": "partner(shallow:true)",
-                        "args": v2,
+                        "args": (v4/*: any*/),
                         "concreteType": "Partner",
                         "plural": false,
                         "selections": [
-                          v4,
-                          v3,
-                          v1,
+                          (v5/*: any*/),
+                          (v3/*: any*/),
+                          (v2/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -449,7 +429,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v1,
+                          (v2/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -516,8 +496,8 @@ return {
                             "concreteType": "SaleArtworkHighestBid",
                             "plural": false,
                             "selections": [
-                              v6,
-                              v5
+                              (v6/*: any*/),
+                              (v2/*: any*/)
                             ]
                           },
                           {
@@ -529,10 +509,10 @@ return {
                             "concreteType": "SaleArtworkOpeningBid",
                             "plural": false,
                             "selections": [
-                              v6
+                              (v6/*: any*/)
                             ]
                           },
-                          v1
+                          (v2/*: any*/)
                         ]
                       },
                       {
@@ -576,10 +556,17 @@ return {
               }
             ]
           },
-          v1
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkGrid_Test_Query",
+    "id": null,
+    "text": "query ArtworkGrid_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtworkGrid_artist\n    id\n  }\n}\n\nfragment ArtworkGrid_artist on Artist {\n  artworks_connection(first: 4) {\n    ...ArtworkGrid_artworks\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n    id\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction\n    is_closed\n    id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  _id\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

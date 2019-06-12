@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkActions_artwork$ref } from "./ArtworkActions_artwork.graphql";
 declare const _ArtworkImageBrowser_artwork$ref: unique symbol;
 export type ArtworkImageBrowser_artwork$ref = typeof _ArtworkImageBrowser_artwork$ref;
@@ -9,52 +9,45 @@ export type ArtworkImageBrowser_artwork = {
     readonly image_alt: string | null;
     readonly image_title: string | null;
     readonly href: string | null;
-    readonly image: ({
+    readonly image: {
         readonly id: string | null;
         readonly url: string | null;
         readonly height: number | null;
         readonly width: number | null;
-    }) | null;
-    readonly images: ReadonlyArray<({
+    } | null;
+    readonly images: ReadonlyArray<{
         readonly id: string | null;
         readonly uri: string | null;
-        readonly placeholder: ({
+        readonly placeholder: {
             readonly url: string | null;
-        }) | null;
+        } | null;
         readonly aspectRatio: number;
         readonly is_zoomable: boolean | null;
         readonly is_default: boolean | null;
-        readonly deepZoom: ({
-            readonly Image: ({
+        readonly deepZoom: {
+            readonly Image: {
                 readonly xmlns: string | null;
                 readonly Url: string | null;
                 readonly Format: string | null;
                 readonly TileSize: number | null;
                 readonly Overlap: number | null;
-                readonly Size: ({
+                readonly Size: {
                     readonly Width: number | null;
                     readonly Height: number | null;
-                }) | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null> | null;
     readonly " $fragmentRefs": ArtworkActions_artwork$ref;
     readonly " $refType": ArtworkImageBrowser_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
@@ -95,11 +88,6 @@ return {
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkActions_artwork",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
       "alias": null,
       "name": "image",
@@ -108,7 +96,7 @@ return {
       "concreteType": "Image",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -117,8 +105,7 @@ return {
             {
               "kind": "Literal",
               "name": "version",
-              "value": "larger",
-              "type": "[String]"
+              "value": "larger"
             }
           ],
           "storageKey": "url(version:\"larger\")"
@@ -136,8 +123,7 @@ return {
           "name": "width",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
@@ -149,7 +135,7 @@ return {
       "concreteType": "Image",
       "plural": true,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": "uri",
@@ -160,8 +146,7 @@ return {
               "name": "version",
               "value": [
                 "large"
-              ],
-              "type": "[String]"
+              ]
             }
           ],
           "storageKey": "url(version:[\"large\"])"
@@ -175,20 +160,17 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 30,
-              "type": "Int"
+              "value": 30
             },
             {
               "kind": "Literal",
               "name": "version",
-              "value": "small",
-              "type": "[String]"
+              "value": "small"
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 30,
-              "type": "Int"
+              "value": 30
             }
           ],
           "concreteType": "ResizedImageUrl",
@@ -305,16 +287,13 @@ return {
               ]
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtworkActions_artwork",
+      "args": null
     }
   ]
 };

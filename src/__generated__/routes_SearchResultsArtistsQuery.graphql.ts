@@ -7,9 +7,9 @@ export type routes_SearchResultsArtistsQueryVariables = {
     readonly page?: number | null;
 };
 export type routes_SearchResultsArtistsQueryResponse = {
-    readonly viewer: ({
+    readonly viewer: {
         readonly " $fragmentRefs": SearchResultsArtists_viewer$ref;
-    }) | null;
+    } | null;
 };
 export type routes_SearchResultsArtistsQuery = {
     readonly response: routes_SearchResultsArtistsQueryResponse;
@@ -46,9 +46,6 @@ fragment SearchResultsArtists_viewer_2iLyA0 on Viewer {
           href
           imageUrl
           bio
-        }
-        ... on Node {
-          __id
         }
       }
     }
@@ -94,22 +91,27 @@ var v0 = [
   }
 ],
 v1 = {
+  "kind": "Variable",
+  "name": "page",
+  "variableName": "page"
+},
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "page",
   "args": null,
   "storageKey": null
 },
-v3 = [
-  v1,
-  v2,
+v4 = [
+  (v2/*: any*/),
+  (v3/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -120,22 +122,17 @@ v3 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_SearchResultsArtistsQuery",
-  "id": null,
-  "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_2iLyA0\n  }\n}\n\nfragment SearchResultsArtists_viewer_2iLyA0 on Viewer {\n  search(query: $term, first: 10, page: $page, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          _id\n          href\n          imageUrl\n          bio\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_SearchResultsArtistsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -145,17 +142,11 @@ return {
             "kind": "FragmentSpread",
             "name": "SearchResultsArtists_viewer",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "page",
-                "variableName": "page",
-                "type": null
-              },
+              (v1/*: any*/),
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -166,7 +157,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_SearchResultsArtistsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -188,26 +179,18 @@ return {
                 "name": "entities",
                 "value": [
                   "ARTIST"
-                ],
-                "type": "[SearchEntity]"
+                ]
               },
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 10,
-                "type": "Int"
+                "value": 10
               },
-              {
-                "kind": "Variable",
-                "name": "page",
-                "variableName": "page",
-                "type": "Int"
-              },
+              (v1/*: any*/),
               {
                 "kind": "Variable",
                 "name": "query",
-                "variableName": "term",
-                "type": "String!"
+                "variableName": "term"
               }
             ],
             "concreteType": "SearchableConnection",
@@ -255,7 +238,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v3
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -265,7 +248,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -275,7 +258,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -286,8 +269,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v1,
-                      v2
+                      (v2/*: any*/),
+                      (v3/*: any*/)
                     ]
                   }
                 ]
@@ -314,13 +297,6 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "__typename",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "__id",
                         "args": null,
                         "storageKey": null
                       },
@@ -364,6 +340,18 @@ return {
                             "storageKey": null
                           }
                         ]
+                      },
+                      {
+                        "kind": "ClientExtension",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "id",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ]
                   }
@@ -372,17 +360,15 @@ return {
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_SearchResultsArtistsQuery",
+    "id": null,
+    "text": "query routes_SearchResultsArtistsQuery(\n  $term: String!\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsArtists_viewer_2iLyA0\n  }\n}\n\nfragment SearchResultsArtists_viewer_2iLyA0 on Viewer {\n  search(query: $term, first: 10, page: $page, entities: [ARTIST]) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on Artist {\n          name\n          _id\n          href\n          imageUrl\n          bio\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

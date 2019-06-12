@@ -1,38 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _CurrentEvent_artist$ref: unique symbol;
 export type CurrentEvent_artist$ref = typeof _CurrentEvent_artist$ref;
 export type CurrentEvent_artist = {
-    readonly currentEvent: ({
+    readonly currentEvent: {
         readonly event: {
             readonly __typename: string;
         };
-        readonly image: ({
-            readonly resized: ({
+        readonly image: {
+            readonly resized: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
         readonly name: string | null;
         readonly status: string | null;
         readonly details: string | null;
         readonly partner: string | null;
         readonly href: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": CurrentEvent_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CurrentEvent_artist",
   "type": "Artist",
@@ -63,8 +55,7 @@ return {
               "name": "__typename",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         },
         {
@@ -85,8 +76,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 300,
-                  "type": "Int"
+                  "value": 300
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -100,13 +90,6 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         },
@@ -146,10 +129,8 @@ return {
           "storageKey": null
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '3e83a9a09afbd679fe1cac057ff044cc';
 export default node;

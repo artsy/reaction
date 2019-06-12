@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { SuggestedGenes_suggested_genes$ref } from "./SuggestedGenes_suggested_genes.graphql";
 export type SuggestedGenesQueryVariables = {};
 export type SuggestedGenesQueryResponse = {
-    readonly suggested_genes: ReadonlyArray<({
+    readonly suggested_genes: ReadonlyArray<{
         readonly " $fragmentRefs": SuggestedGenes_suggested_genes$ref;
-    }) | null> | null;
+    } | null> | null;
 };
 export type SuggestedGenesQuery = {
     readonly response: SuggestedGenesQueryResponse;
@@ -19,7 +19,7 @@ export type SuggestedGenesQuery = {
 query SuggestedGenesQuery {
   suggested_genes {
     ...SuggestedGenes_suggested_genes
-    __id
+    id
   }
 }
 
@@ -31,9 +31,8 @@ fragment SuggestedGenes_suggested_genes on Gene {
     cropped(width: 100, height: 100) {
       url
     }
-    __id: id
+    id
   }
-  __id
 }
 */
 
@@ -41,17 +40,12 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SuggestedGenesQuery",
-  "id": null,
-  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SuggestedGenesQuery",
@@ -72,8 +66,7 @@ return {
             "kind": "FragmentSpread",
             "name": "SuggestedGenes_suggested_genes",
             "args": null
-          },
-          v0
+          }
         ]
       }
     ]
@@ -92,13 +85,7 @@ return {
         "concreteType": "Gene",
         "plural": true,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v0/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -131,14 +118,12 @@ return {
                   {
                     "kind": "Literal",
                     "name": "height",
-                    "value": 100,
-                    "type": "Int!"
+                    "value": 100
                   },
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 100,
-                    "type": "Int!"
+                    "value": 100
                   }
                 ],
                 "concreteType": "CroppedImageUrl",
@@ -153,19 +138,19 @@ return {
                   }
                 ]
               },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              }
+              (v0/*: any*/)
             ]
-          },
-          v0
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SuggestedGenesQuery",
+    "id": null,
+    "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

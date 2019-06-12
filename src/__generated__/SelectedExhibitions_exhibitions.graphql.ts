@@ -1,42 +1,41 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _SelectedExhibitions_exhibitions$ref: unique symbol;
 export type SelectedExhibitions_exhibitions$ref = typeof _SelectedExhibitions_exhibitions$ref;
 export type SelectedExhibitions_exhibitions = ReadonlyArray<{
     readonly partner: ({
         readonly name?: string | null;
-    }) | null;
+    } & ({
+        readonly name: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    })) | null;
     readonly name: string | null;
     readonly start_at: string | null;
-    readonly cover_image: ({
-        readonly cropped: ({
+    readonly cover_image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly city: string | null;
     readonly " $refType": SelectedExhibitions_exhibitions$ref;
 }>;
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v1
+v1 = [
+  (v0/*: any*/)
 ];
 return {
   "kind": "Fragment",
@@ -56,20 +55,19 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v0,
-        {
-          "kind": "InlineFragment",
-          "type": "Partner",
-          "selections": v2
-        },
         {
           "kind": "InlineFragment",
           "type": "ExternalPartner",
-          "selections": v2
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Partner",
+          "selections": (v1/*: any*/)
         }
       ]
     },
-    v1,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -78,8 +76,7 @@ return {
         {
           "kind": "Literal",
           "name": "format",
-          "value": "YYYY",
-          "type": "String"
+          "value": "YYYY"
         }
       ],
       "storageKey": "start_at(format:\"YYYY\")"
@@ -102,14 +99,12 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 600,
-              "type": "Int!"
+              "value": 600
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 800,
-              "type": "Int!"
+              "value": 800
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -123,13 +118,6 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -139,8 +127,7 @@ return {
       "name": "city",
       "args": null,
       "storageKey": null
-    },
-    v0
+    }
   ]
 };
 })();

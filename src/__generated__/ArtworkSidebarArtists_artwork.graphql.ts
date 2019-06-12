@@ -1,33 +1,25 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _ArtworkSidebarArtists_artwork$ref: unique symbol;
 export type ArtworkSidebarArtists_artwork$ref = typeof _ArtworkSidebarArtists_artwork$ref;
 export type ArtworkSidebarArtists_artwork = {
     readonly cultural_maker: string | null;
-    readonly artists: ReadonlyArray<({
+    readonly artists: ReadonlyArray<{
         readonly __id: string;
         readonly _id: string;
         readonly id: string;
         readonly name: string | null;
         readonly href: string | null;
         readonly " $fragmentRefs": FollowArtistButton_artist$ref;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": ArtworkSidebarArtists_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarArtists_artwork",
   "type": "Artwork",
@@ -57,7 +49,13 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -93,16 +91,13 @@ return {
             {
               "kind": "Variable",
               "name": "showFollowSuggestions",
-              "variableName": "showFollowSuggestions",
-              "type": null
+              "variableName": "showFollowSuggestions"
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = 'aa97da2dfc57f1cf06cc2eb9fba3bbf5';
 export default node;

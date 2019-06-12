@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _FollowArtistPopoverRow_artist$ref: unique symbol;
 export type FollowArtistPopoverRow_artist$ref = typeof _FollowArtistPopoverRow_artist$ref;
 export type FollowArtistPopoverRow_artist = {
@@ -8,17 +8,17 @@ export type FollowArtistPopoverRow_artist = {
     readonly _id: string;
     readonly __id: string;
     readonly name: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": FollowArtistPopoverRow_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistPopoverRow_artist",
   "type": "Artist",
@@ -71,14 +71,12 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 45,
-              "type": "Int!"
+              "value": 45
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 45,
-              "type": "Int!"
+              "value": 45
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -92,13 +90,6 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     }

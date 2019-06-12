@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _ArtistCard_artist$ref: unique symbol;
 export type ArtistCard_artist$ref = typeof _ArtistCard_artist$ref;
@@ -8,11 +8,11 @@ export type ArtistCard_artist = {
     readonly name: string | null;
     readonly id: string;
     readonly href: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly formatted_nationality_and_birthday: string | null;
     readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     readonly " $refType": ArtistCard_artist$ref;
@@ -20,7 +20,7 @@ export type ArtistCard_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistCard_artist",
   "type": "Artist",
@@ -66,14 +66,12 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 300,
-              "type": "Int!"
+              "value": 300
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 400,
-              "type": "Int!"
+              "value": 400
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -87,13 +85,6 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -108,13 +99,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "FollowArtistButton_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

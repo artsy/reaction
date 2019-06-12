@@ -1,36 +1,28 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkDetailsArticles_artwork$ref: unique symbol;
 export type ArtworkDetailsArticles_artwork$ref = typeof _ArtworkDetailsArticles_artwork$ref;
 export type ArtworkDetailsArticles_artwork = {
-    readonly articles: ReadonlyArray<({
-        readonly author: ({
+    readonly articles: ReadonlyArray<{
+        readonly author: {
             readonly name: string | null;
-        }) | null;
+        } | null;
         readonly href: string | null;
         readonly published_at: string | null;
-        readonly thumbnail_image: ({
-            readonly resized: ({
+        readonly thumbnail_image: {
+            readonly resized: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
         readonly thumbnail_title: string | null;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": ArtworkDetailsArticles_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkDetailsArticles_artwork",
   "type": "Artwork",
@@ -46,8 +38,7 @@ return {
         {
           "kind": "Literal",
           "name": "size",
-          "value": 10,
-          "type": "Int"
+          "value": 10
         }
       ],
       "concreteType": "Article",
@@ -68,8 +59,7 @@ return {
               "name": "name",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         },
         {
@@ -87,8 +77,7 @@ return {
             {
               "kind": "Literal",
               "name": "format",
-              "value": "MMM Do, YYYY",
-              "type": "String"
+              "value": "MMM Do, YYYY"
             }
           ],
           "storageKey": "published_at(format:\"MMM Do, YYYY\")"
@@ -111,8 +100,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 300,
-                  "type": "Int"
+                  "value": 300
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -126,13 +114,6 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         },
@@ -142,13 +123,10 @@ return {
           "name": "thumbnail_title",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = 'a82766a04154e8b1f4c8d6938e7863d2';
 export default node;

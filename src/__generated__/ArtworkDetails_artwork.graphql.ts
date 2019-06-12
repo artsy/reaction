@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref } from "./ArtworkDetailsAboutTheWorkFromArtsy_artwork.graphql";
 import { ArtworkDetailsAboutTheWorkFromPartner_artwork$ref } from "./ArtworkDetailsAboutTheWorkFromPartner_artwork.graphql";
 import { ArtworkDetailsAdditionalInfo_artwork$ref } from "./ArtworkDetailsAdditionalInfo_artwork.graphql";
@@ -8,9 +8,9 @@ import { ArtworkDetailsArticles_artwork$ref } from "./ArtworkDetailsArticles_art
 declare const _ArtworkDetails_artwork$ref: unique symbol;
 export type ArtworkDetails_artwork$ref = typeof _ArtworkDetails_artwork$ref;
 export type ArtworkDetails_artwork = {
-    readonly articles: ReadonlyArray<({
+    readonly articles: ReadonlyArray<{
         readonly id: string;
-    }) | null> | null;
+    } | null> | null;
     readonly literature: string | null;
     readonly exhibition_history: string | null;
     readonly provenance: string | null;
@@ -20,20 +20,12 @@ export type ArtworkDetails_artwork = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "Literal",
     "name": "format",
-    "value": "HTML",
-    "type": "Format"
+    "value": "HTML"
   }
 ];
 return {
@@ -43,6 +35,51 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "articles",
+      "storageKey": "articles(size:10)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 10
+        }
+      ],
+      "concreteType": "Article",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "literature",
+      "args": (v0/*: any*/),
+      "storageKey": "literature(format:\"HTML\")"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "exhibition_history",
+      "args": (v0/*: any*/),
+      "storageKey": "exhibition_history(format:\"HTML\")"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "provenance",
+      "args": (v0/*: any*/),
+      "storageKey": "provenance(format:\"HTML\")"
+    },
     {
       "kind": "FragmentSpread",
       "name": "ArtworkDetailsAboutTheWorkFromArtsy_artwork",
@@ -62,55 +99,7 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkDetailsArticles_artwork",
       "args": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "articles",
-      "storageKey": "articles(size:10)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 10,
-          "type": "Int"
-        }
-      ],
-      "concreteType": "Article",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        v0
-      ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "literature",
-      "args": v1,
-      "storageKey": "literature(format:\"HTML\")"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "exhibition_history",
-      "args": v1,
-      "storageKey": "exhibition_history(format:\"HTML\")"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "provenance",
-      "args": v1,
-      "storageKey": "provenance(format:\"HTML\")"
-    },
-    v0
+    }
   ]
 };
 })();

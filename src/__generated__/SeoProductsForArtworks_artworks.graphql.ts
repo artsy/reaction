@@ -1,12 +1,12 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _SeoProductsForArtworks_artworks$ref: unique symbol;
 export type SeoProductsForArtworks_artworks$ref = typeof _SeoProductsForArtworks_artworks$ref;
 export type SeoProductsForArtworks_artworks = {
-    readonly artworks_connection: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+    readonly artworks_connection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __id: string;
                 readonly availability: string | null;
                 readonly category: string | null;
@@ -17,24 +17,24 @@ export type SeoProductsForArtworks_artworks = {
                 readonly price: string | null;
                 readonly price_currency: string | null;
                 readonly title: string | null;
-                readonly artists: ReadonlyArray<({
+                readonly artists: ReadonlyArray<{
                     readonly name: string | null;
-                }) | null> | null;
-                readonly image: ({
+                } | null> | null;
+                readonly image: {
                     readonly url: string | null;
-                }) | null;
-                readonly meta: ({
+                } | null;
+                readonly meta: {
                     readonly description: string | null;
-                }) | null;
-                readonly partner: ({
+                } | null;
+                readonly partner: {
                     readonly name: string | null;
                     readonly type: string | null;
-                    readonly profile: ({
-                        readonly icon: ({
+                    readonly profile: {
+                        readonly icon: {
                             readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                    readonly locations: ReadonlyArray<({
+                        } | null;
+                    } | null;
+                    readonly locations: ReadonlyArray<{
                         readonly address: string | null;
                         readonly address_2: string | null;
                         readonly city: string | null;
@@ -42,32 +42,25 @@ export type SeoProductsForArtworks_artworks = {
                         readonly country: string | null;
                         readonly postal_code: string | null;
                         readonly phone: string | null;
-                    }) | null> | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": SeoProductsForArtworks_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = [
+v1 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -76,18 +69,10 @@ v2 = [
       {
         "kind": "Literal",
         "name": "version",
-        "value": "larger",
-        "type": "[String]"
+        "value": "larger"
       }
     ],
     "storageKey": "url(version:\"larger\")"
-  },
-  {
-    "kind": "ScalarField",
-    "alias": "__id",
-    "name": "id",
-    "args": null,
-    "storageKey": null
   }
 ];
 return {
@@ -119,14 +104,12 @@ return {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -153,11 +136,17 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "price",
+                  "name": "__id",
                   "args": null,
                   "storageKey": null
                 },
-                v0,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "availability",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -196,7 +185,7 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "availability",
+                  "name": "price",
                   "args": null,
                   "storageKey": null
                 },
@@ -223,8 +212,7 @@ return {
                   "concreteType": "Artist",
                   "plural": true,
                   "selections": [
-                    v1,
-                    v0
+                    (v0/*: any*/)
                   ]
                 },
                 {
@@ -235,7 +223,7 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v2
+                  "selections": (v1/*: any*/)
                 },
                 {
                   "kind": "LinkedField",
@@ -264,14 +252,13 @@ return {
                     {
                       "kind": "Literal",
                       "name": "shallow",
-                      "value": true,
-                      "type": "Boolean"
+                      "value": true
                     }
                   ],
                   "concreteType": "Partner",
                   "plural": false,
                   "selections": [
-                    v1,
+                    (v0/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -296,9 +283,8 @@ return {
                           "args": null,
                           "concreteType": "Image",
                           "plural": false,
-                          "selections": v2
-                        },
-                        v0
+                          "selections": (v1/*: any*/)
+                        }
                       ]
                     },
                     {
@@ -310,8 +296,7 @@ return {
                         {
                           "kind": "Literal",
                           "name": "size",
-                          "value": 1,
-                          "type": "Int"
+                          "value": 1
                         }
                       ],
                       "concreteType": "Location",
@@ -365,11 +350,9 @@ return {
                           "name": "phone",
                           "args": null,
                           "storageKey": null
-                        },
-                        v0
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
                 }
               ]
@@ -377,8 +360,7 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
 })();

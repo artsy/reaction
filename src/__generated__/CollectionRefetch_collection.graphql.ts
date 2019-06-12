@@ -1,20 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { CollectArtworkGrid_filtered_artworks$ref } from "./CollectArtworkGrid_filtered_artworks.graphql";
 declare const _CollectionRefetch_collection$ref: unique symbol;
 export type CollectionRefetch_collection$ref = typeof _CollectionRefetch_collection$ref;
 export type CollectionRefetch_collection = {
     readonly slug: string;
-    readonly filtered_artworks: ({
+    readonly filtered_artworks: {
         readonly " $fragmentRefs": CollectArtworkGrid_filtered_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $refType": CollectionRefetch_collection$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CollectionRefetch_collection",
   "type": "MarketingCollection",
@@ -122,100 +122,84 @@ const node: ConcreteFragment = {
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": "Boolean"
+          "variableName": "acquireable"
         },
         {
           "kind": "Literal",
           "name": "aggregations",
           "value": [
             "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "at_auction",
-          "variableName": "at_auction",
-          "type": "Boolean"
+          "variableName": "at_auction"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": "String"
+          "variableName": "color"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "variableName": "for_sale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": "String"
+          "variableName": "height"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": "Boolean"
+          "variableName": "inquireable_only"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
+          "variableName": "major_periods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": "Boolean"
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
+          "variableName": "partner_id"
         },
         {
           "kind": "Variable",
           "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "variableName": "price_range"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "String"
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": "String"
+          "variableName": "width"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -225,22 +209,8 @@ const node: ConcreteFragment = {
           "kind": "FragmentSpread",
           "name": "CollectArtworkGrid_filtered_artworks",
           "args": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

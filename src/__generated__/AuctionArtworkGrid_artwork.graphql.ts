@@ -1,35 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 declare const _AuctionArtworkGrid_artwork$ref: unique symbol;
 export type AuctionArtworkGrid_artwork$ref = typeof _AuctionArtworkGrid_artwork$ref;
 export type AuctionArtworkGrid_artwork = {
-    readonly sale: ({
+    readonly sale: {
         readonly href: string | null;
-        readonly artworksConnection: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+        readonly artworksConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly id: string;
-                }) | null;
-            }) | null> | null;
+                } | null;
+            } | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": AuctionArtworkGrid_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "AuctionArtworkGrid_artwork",
   "type": "Artwork",
@@ -68,24 +60,17 @@ return {
             {
               "kind": "Variable",
               "name": "exclude",
-              "variableName": "excludeArtworkIDs",
-              "type": "[String]"
+              "variableName": "excludeArtworkIDs"
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 8,
-              "type": "Int"
+              "value": 8
             }
           ],
           "concreteType": "ArtworkConnection",
           "plural": false,
           "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "ArtworkGrid_artworks",
-              "args": null
-            },
             {
               "kind": "LinkedField",
               "alias": null,
@@ -110,20 +95,21 @@ return {
                       "name": "id",
                       "args": null,
                       "storageKey": null
-                    },
-                    v0
+                    }
                   ]
                 }
               ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
             }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '574cf83b49d6d325fe788fc409cd6162';
 export default node;

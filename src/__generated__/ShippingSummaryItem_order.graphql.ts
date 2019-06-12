@@ -1,38 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ShippingAddress_ship$ref } from "./ShippingAddress_ship.graphql";
 declare const _ShippingSummaryItem_order$ref: unique symbol;
 export type ShippingSummaryItem_order$ref = typeof _ShippingSummaryItem_order$ref;
 export type ShippingSummaryItem_order = {
     readonly state: string | null;
-    readonly requestedFulfillment: ({
+    readonly requestedFulfillment: {
         readonly __typename: string;
         readonly " $fragmentRefs": ShippingAddress_ship$ref;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly shippingOrigin: string | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": ShippingSummaryItem_order$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ShippingSummaryItem_order",
   "type": "Order",
@@ -111,26 +103,16 @@ return {
                       "name": "shippingOrigin",
                       "args": null,
                       "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '701e0a2e44b7ae043a9d459c9fda3bf3';
 export default node;

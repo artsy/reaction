@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { SeoDataForArtwork_artwork$ref } from "./SeoDataForArtwork_artwork.graphql";
 declare const _ArtworkMeta_artwork$ref: unique symbol;
 export type ArtworkMeta_artwork$ref = typeof _ArtworkMeta_artwork$ref;
@@ -10,26 +10,30 @@ export type ArtworkMeta_artwork = {
     readonly date: string | null;
     readonly artist_names: string | null;
     readonly sale_message: string | null;
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly image_rights: string | null;
     readonly is_in_auction: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_shareable: boolean | null;
-    readonly meta_image: ({
-        readonly resized: ({
+    readonly meta_image: {
+        readonly resized: {
             readonly width: number | null;
             readonly height: number | null;
             readonly url: string | null;
-        }) | null;
-    }) | null;
-    readonly meta: ({
+        } | null;
+    } | null;
+    readonly meta: {
         readonly title: string | null;
         readonly description: string | null;
         readonly long_description: string | null;
-    }) | null;
+    } | null;
     readonly context: ({
+        readonly __typename: string;
+        readonly id?: string;
+        readonly name?: string | null;
+    } & ({
         readonly __typename: "ArtworkContextFair";
         readonly id: string;
         readonly name: string | null;
@@ -37,25 +41,18 @@ export type ArtworkMeta_artwork = {
         /*This will never be '% other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
-    }) | null;
+    })) | null;
     readonly " $fragmentRefs": SeoDataForArtwork_artwork$ref;
     readonly " $refType": ArtworkMeta_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -69,14 +66,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_in_auction",
+      "name": "href",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "href",
+      "name": "_id",
       "args": null,
       "storageKey": null
     },
@@ -110,8 +107,7 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
     },
     {
@@ -124,7 +120,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "is_in_auction",
       "args": null,
       "storageKey": null
     },
@@ -160,8 +156,7 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 640,
-              "type": "Int"
+              "value": 640
             },
             {
               "kind": "Literal",
@@ -170,14 +165,12 @@ return {
                 "large",
                 "medium",
                 "tall"
-              ],
-              "type": "[String]"
+              ]
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 640,
-              "type": "Int"
+              "value": 640
             }
           ],
           "concreteType": "ResizedImageUrl",
@@ -205,13 +198,6 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -239,8 +225,7 @@ return {
             {
               "kind": "Literal",
               "name": "limit",
-              "value": 155,
-              "type": "Int"
+              "value": 155
             }
           ],
           "storageKey": "description(limit:155)"
@@ -253,8 +238,7 @@ return {
             {
               "kind": "Literal",
               "name": "limit",
-              "value": 200,
-              "type": "Int"
+              "value": 200
             }
           ],
           "storageKey": "description(limit:200)"
@@ -277,7 +261,6 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1,
         {
           "kind": "InlineFragment",
           "type": "ArtworkContextFair",
@@ -289,7 +272,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0
+            (v0/*: any*/)
           ]
         }
       ]
@@ -298,8 +281,7 @@ return {
       "kind": "FragmentSpread",
       "name": "SeoDataForArtwork_artwork",
       "args": null
-    },
-    v1
+    }
   ]
 };
 })();

@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
@@ -15,7 +15,7 @@ export type TransactionDetailsSummaryItem_order = {
     readonly itemsTotal: string | null;
     readonly totalListPrice: string | null;
     readonly buyerTotal: string | null;
-    readonly lastOffer?: ({
+    readonly lastOffer?: {
         readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
@@ -27,8 +27,8 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
         readonly note: string | null;
-    }) | null;
-    readonly myLastOffer?: ({
+    } | null;
+    readonly myLastOffer?: {
         readonly id: string;
         readonly amount: string | null;
         readonly amountCents: number | null;
@@ -40,65 +40,88 @@ export type TransactionDetailsSummaryItem_order = {
         readonly buyerTotalCents: number | null;
         readonly fromParticipant: OrderParticipantEnum | null;
         readonly note: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
-};
+} & ({
+    readonly __typename: "OfferOrder";
+    readonly lastOffer: {
+        readonly id: string;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly buyerTotal: string | null;
+        readonly buyerTotalCents: number | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
+    } | null;
+    readonly myLastOffer: {
+        readonly id: string;
+        readonly amount: string | null;
+        readonly amountCents: number | null;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly buyerTotal: string | null;
+        readonly buyerTotalCents: number | null;
+        readonly fromParticipant: OrderParticipantEnum | null;
+        readonly note: string | null;
+    } | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "taxTotalCents",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v1,
+  "args": (v0/*: any*/),
   "storageKey": "shippingTotal(precision:2)"
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v1,
+  "args": (v0/*: any*/),
   "storageKey": "taxTotal(precision:2)"
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v1,
+  "args": (v0/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
-v6 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v7 = [
-  v0,
+v6 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -109,21 +132,22 @@ v7 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "amount",
+    "args": (v0/*: any*/),
+    "storageKey": "amount(precision:2)"
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "amountCents",
     "args": null,
     "storageKey": null
   },
-  v2,
-  v3,
-  v4,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v1,
-    "storageKey": "amount(precision:2)"
-  },
-  v5,
+  (v1/*: any*/),
+  (v2/*: any*/),
+  (v3/*: any*/),
+  (v4/*: any*/),
+  (v5/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -144,8 +168,7 @@ v7 = [
     "name": "note",
     "args": null,
     "storageKey": null
-  },
-  v6
+  }
 ];
 return {
   "kind": "Fragment",
@@ -154,7 +177,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -162,9 +184,6 @@ return {
       "args": null,
       "storageKey": null
     },
-    v2,
-    v3,
-    v4,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -172,22 +191,25 @@ return {
       "args": null,
       "storageKey": null
     },
+    (v1/*: any*/),
+    (v2/*: any*/),
+    (v3/*: any*/),
+    (v4/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": v1,
+      "args": (v0/*: any*/),
       "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v1,
+      "args": (v0/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
-    v5,
-    v6,
+    (v5/*: any*/),
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -200,7 +222,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": v7
+          "selections": (v6/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -210,7 +232,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": v7
+          "selections": (v6/*: any*/)
         }
       ]
     }

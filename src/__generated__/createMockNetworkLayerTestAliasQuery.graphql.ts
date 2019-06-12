@@ -3,14 +3,14 @@
 import { ConcreteRequest } from "relay-runtime";
 export type createMockNetworkLayerTestAliasQueryVariables = {};
 export type createMockNetworkLayerTestAliasQueryResponse = {
-    readonly artist: ({
-        readonly forSaleArtworks: ReadonlyArray<({
+    readonly artist: {
+        readonly forSaleArtworks: ReadonlyArray<{
             readonly __id: string;
-        }) | null> | null;
-        readonly notForSaleArtworks: ReadonlyArray<({
+        } | null> | null;
+        readonly notForSaleArtworks: ReadonlyArray<{
             readonly __id: string;
-        }) | null> | null;
-    }) | null;
+        } | null> | null;
+    } | null;
 };
 export type createMockNetworkLayerTestAliasQuery = {
     readonly response: createMockNetworkLayerTestAliasQueryResponse;
@@ -24,101 +24,147 @@ query createMockNetworkLayerTestAliasQuery {
   artist(id: "banksy") {
     forSaleArtworks: artworks(filter: IS_FOR_SALE) {
       __id
+      id
     }
     notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {
       __id
+      id
     }
-    __id
+    id
   }
 }
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "id",
+    "value": "banksy"
+  }
+],
+v1 = [
+  {
+    "kind": "Literal",
+    "name": "filter",
+    "value": "IS_FOR_SALE"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v1 = [
-  v0
+v3 = [
+  (v2/*: any*/)
 ],
-v2 = [
+v4 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "artist",
-    "storageKey": "artist(id:\"banksy\")",
-    "args": [
-      {
-        "kind": "Literal",
-        "name": "id",
-        "value": "banksy",
-        "type": "String!"
-      }
-    ],
-    "concreteType": "Artist",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": "forSaleArtworks",
-        "name": "artworks",
-        "storageKey": "artworks(filter:\"IS_FOR_SALE\")",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "filter",
-            "value": "IS_FOR_SALE",
-            "type": "[ArtistArtworksFilters]"
-          }
-        ],
-        "concreteType": "Artwork",
-        "plural": true,
-        "selections": v1
-      },
-      {
-        "kind": "LinkedField",
-        "alias": "notForSaleArtworks",
-        "name": "artworks",
-        "storageKey": "artworks(filter:\"IS_NOT_FOR_SALE\")",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "filter",
-            "value": "IS_NOT_FOR_SALE",
-            "type": "[ArtistArtworksFilters]"
-          }
-        ],
-        "concreteType": "Artwork",
-        "plural": true,
-        "selections": v1
-      },
-      v0
-    ]
+    "kind": "Literal",
+    "name": "filter",
+    "value": "IS_NOT_FOR_SALE"
   }
+],
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v6 = [
+  (v2/*: any*/),
+  (v5/*: any*/)
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "createMockNetworkLayerTestAliasQuery",
-  "id": null,
-  "text": "query createMockNetworkLayerTestAliasQuery {\n  artist(id: \"banksy\") {\n    forSaleArtworks: artworks(filter: IS_FOR_SALE) {\n      __id\n    }\n    notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {\n      __id\n    }\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createMockNetworkLayerTestAliasQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v2
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": "artist(id:\"banksy\")",
+        "args": (v0/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": "forSaleArtworks",
+            "name": "artworks",
+            "storageKey": "artworks(filter:\"IS_FOR_SALE\")",
+            "args": (v1/*: any*/),
+            "concreteType": "Artwork",
+            "plural": true,
+            "selections": (v3/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": "notForSaleArtworks",
+            "name": "artworks",
+            "storageKey": "artworks(filter:\"IS_NOT_FOR_SALE\")",
+            "args": (v4/*: any*/),
+            "concreteType": "Artwork",
+            "plural": true,
+            "selections": (v3/*: any*/)
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "createMockNetworkLayerTestAliasQuery",
     "argumentDefinitions": [],
-    "selections": v2
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": "artist(id:\"banksy\")",
+        "args": (v0/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": "forSaleArtworks",
+            "name": "artworks",
+            "storageKey": "artworks(filter:\"IS_FOR_SALE\")",
+            "args": (v1/*: any*/),
+            "concreteType": "Artwork",
+            "plural": true,
+            "selections": (v6/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": "notForSaleArtworks",
+            "name": "artworks",
+            "storageKey": "artworks(filter:\"IS_NOT_FOR_SALE\")",
+            "args": (v4/*: any*/),
+            "concreteType": "Artwork",
+            "plural": true,
+            "selections": (v6/*: any*/)
+          },
+          (v5/*: any*/)
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "createMockNetworkLayerTestAliasQuery",
+    "id": null,
+    "text": "query createMockNetworkLayerTestAliasQuery {\n  artist(id: \"banksy\") {\n    forSaleArtworks: artworks(filter: IS_FOR_SALE) {\n      __id\n      id\n    }\n    notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {\n      __id\n      id\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

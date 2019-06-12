@@ -1,50 +1,41 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ArtworkSummaryItem_order$ref: unique symbol;
 export type ArtworkSummaryItem_order$ref = typeof _ArtworkSummaryItem_order$ref;
 export type ArtworkSummaryItem_order = {
     readonly seller: ({
         readonly name?: string | null;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    } & ({
+        readonly name: string | null;
+    } | {
+        /*This will never be '% other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    })) | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly artist_names: string | null;
                     readonly title: string | null;
                     readonly date: string | null;
                     readonly shippingOrigin: string | null;
-                    readonly image: ({
-                        readonly resized_ArtworkSummaryItem: ({
+                    readonly image: {
+                        readonly resized_ArtworkSummaryItem: {
                             readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+                        } | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly " $refType": ArtworkSummaryItem_order$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSummaryItem_order",
   "type": "Order",
@@ -60,7 +51,6 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "InlineFragment",
           "type": "Partner",
@@ -158,8 +148,7 @@ return {
                             {
                               "kind": "Literal",
                               "name": "width",
-                              "value": 55,
-                              "type": "Int"
+                              "value": 55
                             }
                           ],
                           "concreteType": "ResizedImageUrl",
@@ -173,23 +162,18 @@ return {
                               "storageKey": null
                             }
                           ]
-                        },
-                        v1
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v1
+    }
   ]
 };
-})();
 (node as any).hash = 'b65b9c01d65b8ef276a77155bed8c14c';
 export default node;

@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
 import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
 declare const _ArtistApp_artist$ref: unique symbol;
@@ -14,7 +14,7 @@ export type ArtistApp_artist = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistApp_artist",
   "type": "Artist",
@@ -44,13 +44,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "NavigationTabs_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

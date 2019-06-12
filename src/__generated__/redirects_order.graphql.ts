@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _redirects_order$ref: unique symbol;
@@ -10,36 +10,50 @@ export type redirects_order = {
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
     readonly lastTransactionFailed: boolean | null;
-    readonly requestedFulfillment: ({
+    readonly requestedFulfillment: {
         readonly __typename: string;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly creditCard: ({
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly creditCard: {
         readonly id: string;
-    }) | null;
-    readonly myLastOffer?: ({
-        readonly id: string;
-        readonly createdAt: string | null;
-    }) | null;
-    readonly lastOffer?: ({
+    } | null;
+    readonly myLastOffer?: {
         readonly id: string;
         readonly createdAt: string | null;
-    }) | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly id: string;
+        readonly createdAt: string | null;
+    } | null;
     readonly awaitingResponseFrom?: OrderParticipantEnum | null;
     readonly " $refType": redirects_order$ref;
-};
+} & ({
+    readonly myLastOffer: {
+        readonly id: string;
+        readonly createdAt: string | null;
+    } | null;
+    readonly lastOffer: {
+        readonly id: string;
+        readonly createdAt: string | null;
+    } | null;
+    readonly awaitingResponseFrom: OrderParticipantEnum | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -48,32 +62,17 @@ var v0 = {
   "storageKey": null
 },
 v1 = [
-  v0,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__id",
-    "args": null,
-    "storageKey": null
-  }
+  (v0/*: any*/)
 ],
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = [
-  v0,
+v2 = [
+  (v0/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "createdAt",
     "args": null,
     "storageKey": null
-  },
-  v2
+  }
 ];
 return {
   "kind": "Fragment",
@@ -82,7 +81,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -157,9 +156,8 @@ return {
                   "args": null,
                   "concreteType": "Artwork",
                   "plural": false,
-                  "selections": v1
-                },
-                v2
+                  "selections": (v1/*: any*/)
+                }
               ]
             }
           ]
@@ -174,9 +172,8 @@ return {
       "args": null,
       "concreteType": "CreditCard",
       "plural": false,
-      "selections": v1
+      "selections": (v1/*: any*/)
     },
-    v2,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -189,7 +186,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": v3
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -199,7 +196,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": v3
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "ScalarField",

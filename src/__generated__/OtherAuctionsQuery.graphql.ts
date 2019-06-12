@@ -6,9 +6,9 @@ export type OtherAuctionsQueryVariables = {
     readonly size: number;
 };
 export type OtherAuctionsQueryResponse = {
-    readonly sales: ReadonlyArray<({
+    readonly sales: ReadonlyArray<{
         readonly " $fragmentRefs": OtherAuctions_sales$ref;
-    }) | null> | null;
+    } | null> | null;
 };
 export type OtherAuctionsQuery = {
     readonly response: OtherAuctionsQueryResponse;
@@ -23,13 +23,12 @@ query OtherAuctionsQuery(
 ) {
   sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
     ...OtherAuctions_sales
-    __id
+    id
   }
 }
 
 fragment OtherAuctions_sales on Sale {
   ...AuctionCard_sale
-  __id
 }
 
 fragment AuctionCard_sale on Sale {
@@ -37,7 +36,7 @@ fragment AuctionCard_sale on Sale {
     cropped(width: 200, height: 180) {
       url
     }
-    __id: id
+    id
   }
   isBenefit
   isGalleryAuction
@@ -49,7 +48,6 @@ fragment AuctionCard_sale on Sale {
   live_start_at
   registrationStatus {
     id
-    __id
   }
   is_registration_closed
   name
@@ -57,9 +55,8 @@ fragment AuctionCard_sale on Sale {
   is_closed
   partner {
     name
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -76,31 +73,22 @@ v1 = [
   {
     "kind": "Variable",
     "name": "size",
-    "variableName": "size",
-    "type": "Int"
+    "variableName": "size"
   },
   {
     "kind": "Literal",
     "name": "sort",
-    "value": "TIMELY_AT_NAME_ASC",
-    "type": "SaleSorts"
+    "value": "TIMELY_AT_NAME_ASC"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
@@ -109,24 +97,19 @@ v4 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "OtherAuctionsQuery",
-  "id": null,
-  "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    __id: id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "OtherAuctionsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sales",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Sale",
         "plural": true,
         "selections": [
@@ -134,8 +117,7 @@ return {
             "kind": "FragmentSpread",
             "name": "OtherAuctions_sales",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -143,24 +125,17 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "OtherAuctionsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sales",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Sale",
         "plural": true,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "live_start_at",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -179,14 +154,12 @@ return {
                   {
                     "kind": "Literal",
                     "name": "height",
-                    "value": 180,
-                    "type": "Int!"
+                    "value": 180
                   },
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 200,
-                    "type": "Int!"
+                    "value": 200
                   }
                 ],
                 "concreteType": "CroppedImageUrl",
@@ -201,14 +174,15 @@ return {
                   }
                 ]
               },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              }
+              (v2/*: any*/)
             ]
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "isBenefit",
+            "args": null,
+            "storageKey": null
           },
           {
             "kind": "ScalarField",
@@ -231,7 +205,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v3,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -249,7 +223,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "isBenefit",
+            "name": "live_start_at",
             "args": null,
             "storageKey": null
           },
@@ -262,8 +236,7 @@ return {
             "concreteType": "Bidder",
             "plural": false,
             "selections": [
-              v3,
-              v2
+              (v2/*: any*/)
             ]
           },
           {
@@ -273,7 +246,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v4,
+          (v3/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -297,14 +270,20 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v4,
-              v2
+              (v3/*: any*/),
+              (v2/*: any*/)
             ]
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "OtherAuctionsQuery",
+    "id": null,
+    "text": "query OtherAuctionsQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

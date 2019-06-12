@@ -1,40 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistCard_artist$ref } from "./ArtistCard_artist.graphql";
 declare const _ArtworkRelatedArtists_artwork$ref: unique symbol;
 export type ArtworkRelatedArtists_artwork$ref = typeof _ArtworkRelatedArtists_artwork$ref;
 export type ArtworkRelatedArtists_artwork = {
     readonly id: string;
-    readonly artist: ({
+    readonly artist: {
         readonly href: string | null;
-        readonly related: ({
-            readonly artists: ({
+        readonly related: {
+            readonly artists: {
                 readonly pageInfo: {
                     readonly hasNextPage: boolean;
                 };
-                readonly edges: ReadonlyArray<({
-                    readonly node: ({
+                readonly edges: ReadonlyArray<{
+                    readonly node: {
                         readonly " $fragmentRefs": ArtistCard_artist$ref;
-                    }) | null;
-                }) | null> | null;
-            }) | null;
-        }) | null;
-    }) | null;
+                    } | null;
+                } | null> | null;
+            } | null;
+        } | null;
+    } | null;
     readonly " $refType": ArtworkRelatedArtists_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkRelatedArtists_artwork",
   "type": "Artwork",
@@ -108,8 +100,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "kind",
-                  "value": "MAIN",
-                  "type": "RelatedArtistsKind"
+                  "value": "MAIN"
                 }
               ],
               "concreteType": "ArtistConnection",
@@ -159,17 +150,16 @@ return {
                       "plural": false,
                       "selections": [
                         {
-                          "kind": "FragmentSpread",
-                          "name": "ArtistCard_artist",
-                          "args": null
-                        },
-                        v0,
-                        {
                           "kind": "ScalarField",
                           "alias": null,
                           "name": "__typename",
                           "args": null,
                           "storageKey": null
+                        },
+                        {
+                          "kind": "FragmentSpread",
+                          "name": "ArtistCard_artist",
+                          "args": null
                         }
                       ]
                     },
@@ -185,13 +175,10 @@ return {
               ]
             }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '5ec9d018d7422592fa838f8cd78ab245';
 export default node;

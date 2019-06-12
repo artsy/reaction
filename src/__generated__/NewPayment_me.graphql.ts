@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { PaymentPicker_me$ref } from "./PaymentPicker_me.graphql";
 declare const _NewPayment_me$ref: unique symbol;
 export type NewPayment_me$ref = typeof _NewPayment_me$ref;
@@ -11,7 +11,7 @@ export type NewPayment_me = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "NewPayment_me",
   "type": "Me",
@@ -22,13 +22,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "PaymentPicker_me",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

@@ -4,9 +4,9 @@ import { ConcreteRequest } from "relay-runtime";
 import { PopularArtists_popular_artists$ref } from "./PopularArtists_popular_artists.graphql";
 export type PopularArtistsQueryVariables = {};
 export type PopularArtistsQueryResponse = {
-    readonly popular_artists: ({
+    readonly popular_artists: {
         readonly " $fragmentRefs": PopularArtists_popular_artists$ref;
-    }) | null;
+    } | null;
 };
 export type PopularArtistsQuery = {
     readonly response: PopularArtistsQueryResponse;
@@ -32,7 +32,7 @@ fragment PopularArtists_popular_artists on PopularArtists {
       cropped(width: 100, height: 100) {
         url
       }
-      __id: id
+      id
     }
   }
 }
@@ -43,17 +43,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "exclude_followed_artists",
-    "value": true,
-    "type": "Boolean"
+    "value": true
   }
-];
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "PopularArtistsQuery",
-  "id": null,
-  "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtists_popular_artists\n  }\n}\n\nfragment PopularArtists_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id: id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "PopularArtistsQuery",
@@ -66,7 +67,7 @@ return {
         "alias": null,
         "name": "popular_artists",
         "storageKey": "popular_artists(exclude_followed_artists:true)",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "PopularArtists",
         "plural": false,
         "selections": [
@@ -89,7 +90,7 @@ return {
         "alias": null,
         "name": "popular_artists",
         "storageKey": "popular_artists(exclude_followed_artists:true)",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "PopularArtists",
         "plural": false,
         "selections": [
@@ -102,13 +103,7 @@ return {
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
+              (v1/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -148,14 +143,12 @@ return {
                       {
                         "kind": "Literal",
                         "name": "height",
-                        "value": 100,
-                        "type": "Int!"
+                        "value": 100
                       },
                       {
                         "kind": "Literal",
                         "name": "width",
-                        "value": 100,
-                        "type": "Int!"
+                        "value": 100
                       }
                     ],
                     "concreteType": "CroppedImageUrl",
@@ -170,13 +163,7 @@ return {
                       }
                     ]
                   },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v1/*: any*/)
                 ]
               }
             ]
@@ -184,6 +171,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "PopularArtistsQuery",
+    "id": null,
+    "text": "query PopularArtistsQuery {\n  popular_artists(exclude_followed_artists: true) {\n    ...PopularArtists_popular_artists\n  }\n}\n\nfragment PopularArtists_popular_artists on PopularArtists {\n  artists {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

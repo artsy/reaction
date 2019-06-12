@@ -14,9 +14,9 @@ export type CVItemQueryVariables = {
     readonly visible_to_public?: boolean | null;
 };
 export type CVItemQueryResponse = {
-    readonly artist: ({
+    readonly artist: {
         readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
+    } | null;
 };
 export type CVItemQuery = {
     readonly response: CVItemQueryResponse;
@@ -38,7 +38,7 @@ query CVItemQuery(
 ) {
   artist(id: $artistID) {
     ...CVItem_artist_2utmRv
-    __id
+    id
   }
 }
 
@@ -56,26 +56,23 @@ fragment CVItem_artist_2utmRv on Artist {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
             href
-          }
-          ... on Node {
-            __id
           }
         }
         name
         start_at(format: "YYYY")
         city
         href
+        id
         __typename
       }
       cursor
     }
   }
-  __id
 }
 */
 
@@ -134,32 +131,73 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
+  "kind": "Variable",
+  "name": "at_a_fair",
+  "variableName": "at_a_fair"
+},
+v3 = {
+  "kind": "Variable",
+  "name": "is_reference",
+  "variableName": "is_reference"
+},
+v4 = {
+  "kind": "Variable",
+  "name": "solo_show",
+  "variableName": "solo_show"
+},
+v5 = {
+  "kind": "Variable",
+  "name": "sort",
+  "variableName": "sort"
+},
+v6 = {
+  "kind": "Variable",
+  "name": "visible_to_public",
+  "variableName": "visible_to_public"
+},
+v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v8 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor"
+  },
+  (v2/*: any*/),
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count"
+  },
+  (v3/*: any*/),
+  (v4/*: any*/),
+  (v5/*: any*/),
+  (v6/*: any*/)
+],
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
@@ -168,24 +206,19 @@ v5 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CVItemQuery",
-  "id": null,
-  "text": "query CVItemQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVItem_artist_2utmRv\n    __id\n  }\n}\n\nfragment CVItem_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CVItemQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -193,51 +226,23 @@ return {
             "kind": "FragmentSpread",
             "name": "CVItem_artist",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": null
-              },
+              (v2/*: any*/),
               {
                 "kind": "Variable",
                 "name": "count",
-                "variableName": "count",
-                "type": null
+                "variableName": "count"
               },
               {
                 "kind": "Variable",
                 "name": "cursor",
-                "variableName": "cursor",
-                "type": null
+                "variableName": "cursor"
               },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
-                "type": null
-              }
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/)
             ]
-          },
-          v2
+          }
         ]
       }
     ]
@@ -245,73 +250,24 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "CVItemQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
+          (v7/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
             "name": "showsConnection",
             "storageKey": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": "PartnerShowSorts"
-              },
-              {
-                "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
-                "type": "Boolean"
-              }
-            ],
+            "args": (v8/*: any*/),
             "concreteType": "ShowConnection",
             "plural": false,
             "selections": [
@@ -358,7 +314,13 @@ return {
                     "concreteType": "Show",
                     "plural": false,
                     "selections": [
-                      v2,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__id",
+                        "args": null,
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -368,26 +330,32 @@ return {
                         "concreteType": null,
                         "plural": false,
                         "selections": [
-                          v3,
-                          v2,
-                          {
-                            "kind": "InlineFragment",
-                            "type": "Partner",
-                            "selections": [
-                              v4,
-                              v5
-                            ]
-                          },
+                          (v9/*: any*/),
                           {
                             "kind": "InlineFragment",
                             "type": "ExternalPartner",
                             "selections": [
-                              v4
+                              (v10/*: any*/),
+                              (v7/*: any*/)
+                            ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Partner",
+                            "selections": [
+                              (v10/*: any*/),
+                              (v11/*: any*/)
+                            ]
+                          },
+                          {
+                            "kind": "ClientExtension",
+                            "selections": [
+                              (v7/*: any*/)
                             ]
                           }
                         ]
                       },
-                      v4,
+                      (v10/*: any*/),
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -396,8 +364,7 @@ return {
                           {
                             "kind": "Literal",
                             "name": "format",
-                            "value": "YYYY",
-                            "type": "String"
+                            "value": "YYYY"
                           }
                         ],
                         "storageKey": "start_at(format:\"YYYY\")"
@@ -409,8 +376,9 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v5,
-                      v3
+                      (v11/*: any*/),
+                      (v7/*: any*/),
+                      (v9/*: any*/)
                     ]
                   },
                   {
@@ -428,50 +396,7 @@ return {
             "kind": "LinkedHandle",
             "alias": null,
             "name": "showsConnection",
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "at_a_fair",
-                "variableName": "at_a_fair",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "is_reference",
-                "variableName": "is_reference",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "solo_show",
-                "variableName": "solo_show",
-                "type": "Boolean"
-              },
-              {
-                "kind": "Variable",
-                "name": "sort",
-                "variableName": "sort",
-                "type": "PartnerShowSorts"
-              },
-              {
-                "kind": "Variable",
-                "name": "visible_to_public",
-                "variableName": "visible_to_public",
-                "type": "Boolean"
-              }
-            ],
+            "args": (v8/*: any*/),
             "handle": "connection",
             "key": "Artist_showsConnection",
             "filters": [
@@ -481,11 +406,17 @@ return {
               "is_reference",
               "visible_to_public"
             ]
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CVItemQuery",
+    "id": null,
+    "text": "query CVItemQuery(\n  $count: Int\n  $cursor: String\n  $artistID: String!\n  $sort: PartnerShowSorts\n  $at_a_fair: Boolean\n  $solo_show: Boolean\n  $is_reference: Boolean\n  $visible_to_public: Boolean\n) {\n  artist(id: $artistID) {\n    ...CVItem_artist_2utmRv\n    id\n  }\n}\n\nfragment CVItem_artist_2utmRv on Artist {\n  id\n  showsConnection(first: $count, after: $cursor, sort: $sort, at_a_fair: $at_a_fair, solo_show: $solo_show, is_reference: $is_reference, visible_to_public: $visible_to_public) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        id\n        __typename\n      }\n      cursor\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -13,9 +13,9 @@ export type CollectorIntentUpdateCollectorProfileMutationVariables = {
     readonly input: UpdateCollectorProfileInput;
 };
 export type CollectorIntentUpdateCollectorProfileMutationResponse = {
-    readonly updateCollectorProfile: ({
+    readonly updateCollectorProfile: {
         readonly intents: ReadonlyArray<string | null> | null;
-    }) | null;
+    } | null;
 };
 export type CollectorIntentUpdateCollectorProfileMutation = {
     readonly response: CollectorIntentUpdateCollectorProfileMutationResponse;
@@ -30,7 +30,7 @@ mutation CollectorIntentUpdateCollectorProfileMutation(
 ) {
   updateCollectorProfile(input: $input) {
     intents
-    __id
+    id
   }
 }
 */
@@ -46,58 +46,73 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "updateCollectorProfile",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "UpdateCollectorProfileInput!"
-      }
-    ],
-    "concreteType": "UpdateCollectorProfilePayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "intents",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "__id",
-        "args": null,
-        "storageKey": null
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "intents",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "CollectorIntentUpdateCollectorProfileMutation",
-  "id": null,
-  "text": "mutation CollectorIntentUpdateCollectorProfileMutation(\n  $input: UpdateCollectorProfileInput!\n) {\n  updateCollectorProfile(input: $input) {\n    intents\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CollectorIntentUpdateCollectorProfileMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "updateCollectorProfile",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "UpdateCollectorProfilePayload",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/)
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "CollectorIntentUpdateCollectorProfileMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "updateCollectorProfile",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "UpdateCollectorProfilePayload",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "CollectorIntentUpdateCollectorProfileMutation",
+    "id": null,
+    "text": "mutation CollectorIntentUpdateCollectorProfileMutation(\n  $input: UpdateCollectorProfileInput!\n) {\n  updateCollectorProfile(input: $input) {\n    intents\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

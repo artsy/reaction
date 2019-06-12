@@ -1,43 +1,36 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 declare const _ArtistArtworkGrid_artwork$ref: unique symbol;
 export type ArtistArtworkGrid_artwork$ref = typeof _ArtistArtworkGrid_artwork$ref;
 export type ArtistArtworkGrid_artwork = {
     readonly id: string;
-    readonly artist: ({
+    readonly artist: {
         readonly name: string | null;
         readonly href: string | null;
-        readonly counts: ({
+        readonly counts: {
             readonly artworks: any | null;
-        }) | null;
-        readonly artworks_connection: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+        } | null;
+        readonly artworks_connection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly id: string;
-                }) | null;
-            }) | null> | null;
+                } | null;
+            } | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": ArtistArtworkGrid_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -55,7 +48,7 @@ return {
     }
   ],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -96,14 +89,12 @@ return {
                 {
                   "kind": "Literal",
                   "name": "format",
-                  "value": "0,0",
-                  "type": "String"
+                  "value": "0,0"
                 },
                 {
                   "kind": "Literal",
                   "name": "label",
-                  "value": "work",
-                  "type": "String"
+                  "value": "work"
                 }
               ],
               "storageKey": "artworks(format:\"0,0\",label:\"work\")"
@@ -119,38 +110,29 @@ return {
             {
               "kind": "Variable",
               "name": "exclude",
-              "variableName": "excludeArtworkIDs",
-              "type": "[String]"
+              "variableName": "excludeArtworkIDs"
             },
             {
               "kind": "Literal",
               "name": "filter",
               "value": [
                 "IS_FOR_SALE"
-              ],
-              "type": "[ArtistArtworksFilters]"
+              ]
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 8,
-              "type": "Int"
+              "value": 8
             },
             {
               "kind": "Literal",
               "name": "sort",
-              "value": "PUBLISHED_AT_DESC",
-              "type": "ArtworkSorts"
+              "value": "PUBLISHED_AT_DESC"
             }
           ],
           "concreteType": "ArtworkConnection",
           "plural": false,
           "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "ArtworkGrid_artworks",
-              "args": null
-            },
             {
               "kind": "LinkedField",
               "alias": null,
@@ -169,18 +151,20 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
-                    v1
+                    (v0/*: any*/)
                   ]
                 }
               ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
             }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();

@@ -1,17 +1,17 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { Badge_artwork$ref } from "./Badge_artwork.graphql";
 import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
 import { Save_artwork$ref } from "./Save_artwork.graphql";
 declare const _FillwidthItem_artwork$ref: unique symbol;
 export type FillwidthItem_artwork$ref = typeof _FillwidthItem_artwork$ref;
 export type FillwidthItem_artwork = {
-    readonly image: ({
+    readonly image: {
         readonly placeholder: string | null;
         readonly url: string | null;
         readonly aspect_ratio: number;
-    }) | null;
+    } | null;
     readonly href: string | null;
     readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
     readonly " $refType": FillwidthItem_artwork$ref;
@@ -19,7 +19,7 @@ export type FillwidthItem_artwork = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FillwidthItem_artwork",
   "type": "Artwork",
@@ -50,8 +50,7 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "version",
-              "value": "large",
-              "type": "[String]"
+              "value": "large"
             }
           ],
           "storageKey": "url(version:\"large\")"
@@ -60,13 +59,6 @@ const node: ConcreteFragment = {
           "kind": "ScalarField",
           "alias": null,
           "name": "aspect_ratio",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
           "args": null,
           "storageKey": null
         }
@@ -93,13 +85,6 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "Badge_artwork",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

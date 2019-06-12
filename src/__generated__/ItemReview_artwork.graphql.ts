@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _ItemReview_artwork$ref: unique symbol;
 export type ItemReview_artwork$ref = typeof _ItemReview_artwork$ref;
 export type ItemReview_artwork = {
@@ -8,32 +8,24 @@ export type ItemReview_artwork = {
     readonly title: string | null;
     readonly date: string | null;
     readonly medium: string | null;
-    readonly dimensions: ({
+    readonly dimensions: {
         readonly in: string | null;
         readonly cm: string | null;
-    }) | null;
-    readonly attribution_class: ({
+    } | null;
+    readonly attribution_class: {
         readonly short_description: string | null;
-    }) | null;
-    readonly image: ({
-        readonly resized: ({
+    } | null;
+    readonly image: {
+        readonly resized: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly " $refType": ItemReview_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ItemReview_artwork",
   "type": "Artwork",
@@ -108,8 +100,7 @@ return {
           "name": "short_description",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -130,8 +121,7 @@ return {
             {
               "kind": "Literal",
               "name": "width",
-              "value": 185,
-              "type": "Int"
+              "value": 185
             }
           ],
           "concreteType": "ResizedImageUrl",
@@ -145,19 +135,10 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '73946f68c326f532fe710492224c3b27';
 export default node;

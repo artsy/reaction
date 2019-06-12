@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _FollowProfileButton_profile$ref: unique symbol;
 export type FollowProfileButton_profile$ref = typeof _FollowProfileButton_profile$ref;
 export type FollowProfileButton_profile = {
@@ -12,7 +12,7 @@ export type FollowProfileButton_profile = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowProfileButton_profile",
   "type": "Profile",

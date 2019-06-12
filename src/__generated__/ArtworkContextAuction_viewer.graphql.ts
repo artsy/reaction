@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graphql";
 import { AuctionArtworkGrid_artwork$ref } from "./AuctionArtworkGrid_artwork.graphql";
 import { OtherAuctions_sales$ref } from "./OtherAuctions_sales.graphql";
@@ -8,35 +8,27 @@ import { RelatedWorksArtworkGrid_artwork$ref } from "./RelatedWorksArtworkGrid_a
 declare const _ArtworkContextAuction_viewer$ref: unique symbol;
 export type ArtworkContextAuction_viewer$ref = typeof _ArtworkContextAuction_viewer$ref;
 export type ArtworkContextAuction_viewer = {
-    readonly artwork: ({
-        readonly sale: ({
+    readonly artwork: {
+        readonly sale: {
             readonly href: string | null;
             readonly is_closed: boolean | null;
-        }) | null;
+        } | null;
         readonly " $fragmentRefs": AuctionArtworkGrid_artwork$ref & ArtistArtworkGrid_artwork$ref & RelatedWorksArtworkGrid_artwork$ref;
-    }) | null;
-    readonly sales: ReadonlyArray<({
+    } | null;
+    readonly sales: ReadonlyArray<{
         readonly " $fragmentRefs": OtherAuctions_sales$ref;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": ArtworkContextAuction_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "Variable",
     "name": "excludeArtworkIDs",
-    "variableName": "excludeArtworkIDs",
-    "type": null
+    "variableName": "excludeArtworkIDs"
   }
 ];
 return {
@@ -74,8 +66,7 @@ return {
         {
           "kind": "Variable",
           "name": "id",
-          "variableName": "artworkSlug",
-          "type": "String!"
+          "variableName": "artworkSlug"
         }
       ],
       "concreteType": "Artwork",
@@ -103,25 +94,6 @@ return {
               "name": "is_closed",
               "args": null,
               "storageKey": null
-            },
-            v0
-          ]
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "RelatedWorksArtworkGrid_artwork",
-          "args": null
-        },
-        v0,
-        {
-          "kind": "Condition",
-          "passingValue": true,
-          "condition": "isClosed",
-          "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "ArtistArtworkGrid_artwork",
-              "args": v1
             }
           ]
         },
@@ -133,9 +105,26 @@ return {
             {
               "kind": "FragmentSpread",
               "name": "AuctionArtworkGrid_artwork",
-              "args": v1
+              "args": (v0/*: any*/)
             }
           ]
+        },
+        {
+          "kind": "Condition",
+          "passingValue": true,
+          "condition": "isClosed",
+          "selections": [
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtistArtworkGrid_artwork",
+              "args": (v0/*: any*/)
+            }
+          ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "RelatedWorksArtworkGrid_artwork",
+          "args": null
         }
       ]
     },
@@ -148,14 +137,12 @@ return {
         {
           "kind": "Literal",
           "name": "size",
-          "value": 4,
-          "type": "Int"
+          "value": 4
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "TIMELY_AT_NAME_ASC",
-          "type": "SaleSorts"
+          "value": "TIMELY_AT_NAME_ASC"
         }
       ],
       "concreteType": "Sale",
@@ -165,8 +152,7 @@ return {
           "kind": "FragmentSpread",
           "name": "OtherAuctions_sales",
           "args": null
-        },
-        v0
+        }
       ]
     }
   ]

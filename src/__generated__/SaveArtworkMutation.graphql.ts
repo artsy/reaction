@@ -10,13 +10,13 @@ export type SaveArtworkMutationVariables = {
     readonly input: SaveArtworkInput;
 };
 export type SaveArtworkMutationResponse = {
-    readonly saveArtwork: ({
-        readonly artwork: ({
+    readonly saveArtwork: {
+        readonly artwork: {
             readonly __id: string;
             readonly id: string;
             readonly is_saved: boolean | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type SaveArtworkMutation = {
     readonly response: SaveArtworkMutationResponse;
@@ -58,8 +58,7 @@ v1 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "SaveArtworkInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "SaveArtworkPayload",
@@ -102,24 +101,26 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "SaveArtworkMutation",
-  "id": null,
-  "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      __id\n      id\n      is_saved\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SaveArtworkMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "SaveArtworkMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "SaveArtworkMutation",
+    "id": null,
+    "text": "mutation SaveArtworkMutation(\n  $input: SaveArtworkInput!\n) {\n  saveArtwork(input: $input) {\n    artwork {\n      __id\n      id\n      is_saved\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

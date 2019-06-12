@@ -1,36 +1,28 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 declare const _PartnerArtworkGrid_artwork$ref: unique symbol;
 export type PartnerArtworkGrid_artwork$ref = typeof _PartnerArtworkGrid_artwork$ref;
 export type PartnerArtworkGrid_artwork = {
-    readonly partner: ({
-        readonly artworksConnection: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+    readonly partner: {
+        readonly artworksConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly id: string;
-                }) | null;
-            }) | null> | null;
+                } | null;
+            } | null> | null;
             readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
+        } | null;
         readonly href: string | null;
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly " $refType": PartnerArtworkGrid_artwork$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "PartnerArtworkGrid_artwork",
   "type": "Artwork",
@@ -62,36 +54,27 @@ return {
             {
               "kind": "Variable",
               "name": "exclude",
-              "variableName": "excludeArtworkIDs",
-              "type": "[String]"
+              "variableName": "excludeArtworkIDs"
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 8,
-              "type": "Int"
+              "value": 8
             },
             {
               "kind": "Literal",
               "name": "for_sale",
-              "value": true,
-              "type": "Boolean"
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "sort",
-              "value": "PUBLISHED_AT_DESC",
-              "type": "ArtworkSorts"
+              "value": "PUBLISHED_AT_DESC"
             }
           ],
           "concreteType": "ArtworkConnection",
           "plural": false,
           "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "ArtworkGrid_artworks",
-              "args": null
-            },
             {
               "kind": "LinkedField",
               "alias": null,
@@ -116,11 +99,15 @@ return {
                       "name": "id",
                       "args": null,
                       "storageKey": null
-                    },
-                    v0
+                    }
                   ]
                 }
               ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
             }
           ]
         },
@@ -137,13 +124,10 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '1d601ec42eddc7c9ec69441b09fb82f6';
 export default node;

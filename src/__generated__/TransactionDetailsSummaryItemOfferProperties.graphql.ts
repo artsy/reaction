@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItemOfferProperties$ref: unique symbol;
 export type TransactionDetailsSummaryItemOfferProperties$ref = typeof _TransactionDetailsSummaryItemOfferProperties$ref;
@@ -21,13 +21,12 @@ export type TransactionDetailsSummaryItemOfferProperties = {
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ];
 return {
@@ -40,16 +39,16 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "taxTotalCents",
+      "name": "id",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
+      "name": "amount",
+      "args": (v0/*: any*/),
+      "storageKey": "amount(precision:2)"
     },
     {
       "kind": "ScalarField",
@@ -62,7 +61,7 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "shippingTotal",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "shippingTotal(precision:2)"
     },
     {
@@ -76,21 +75,21 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "taxTotal",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "taxTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "amount",
-      "args": v0,
-      "storageKey": "amount(precision:2)"
+      "name": "taxTotalCents",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "buyerTotal",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "buyerTotal(precision:2)"
     },
     {
@@ -111,13 +110,6 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "note",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
       "args": null,
       "storageKey": null
     }

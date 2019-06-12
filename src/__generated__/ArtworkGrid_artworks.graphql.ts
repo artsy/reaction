@@ -1,27 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { GridItem_artwork$ref } from "./GridItem_artwork.graphql";
 declare const _ArtworkGrid_artworks$ref: unique symbol;
 export type ArtworkGrid_artworks$ref = typeof _ArtworkGrid_artworks$ref;
 export type ArtworkGrid_artworks = {
-    readonly edges: ReadonlyArray<({
-        readonly node: ({
+    readonly edges: ReadonlyArray<{
+        readonly node: {
             readonly __id: string;
             readonly id: string;
             readonly href: string | null;
-            readonly image: ({
+            readonly image: {
                 readonly aspect_ratio: number;
-            }) | null;
+            } | null;
             readonly " $fragmentRefs": GridItem_artwork$ref;
-        }) | null;
-    }) | null> | null;
+        } | null;
+    } | null> | null;
     readonly " $refType": ArtworkGrid_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkGrid_artworks",
   "type": "ArtworkConnection",
@@ -80,13 +80,6 @@ const node: ConcreteFragment = {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "aspect_ratio",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": "__id",
-                  "name": "id",
                   "args": null,
                   "storageKey": null
                 }

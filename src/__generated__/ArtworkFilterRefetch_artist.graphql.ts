@@ -1,28 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkFilterArtworkGrid_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid_filtered_artworks.graphql";
 declare const _ArtworkFilterRefetch_artist$ref: unique symbol;
 export type ArtworkFilterRefetch_artist$ref = typeof _ArtworkFilterRefetch_artist$ref;
 export type ArtworkFilterRefetch_artist = {
     readonly __id: string;
-    readonly grid: ({
+    readonly grid: {
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid_filtered_artworks$ref;
-    }) | null;
+    } | null;
     readonly " $refType": ArtworkFilterRefetch_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkFilterRefetch_artist",
   "type": "Artist",
@@ -96,7 +88,13 @@ return {
     }
   ],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": "grid",
@@ -106,82 +104,69 @@ return {
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": "Boolean"
+          "variableName": "acquireable"
         },
         {
           "kind": "Literal",
           "name": "aggregations",
           "value": [
             "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "at_auction",
-          "variableName": "at_auction",
-          "type": "Boolean"
+          "variableName": "at_auction"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "variableName": "for_sale"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": "Boolean"
+          "variableName": "inquireable_only"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
+          "variableName": "major_periods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": "Boolean"
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
+          "variableName": "partner_id"
         },
         {
           "kind": "Variable",
           "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "variableName": "price_range"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "String"
+          "variableName": "sort"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -191,12 +176,10 @@ return {
           "kind": "FragmentSpread",
           "name": "ArtworkFilterArtworkGrid_filtered_artworks",
           "args": null
-        },
-        v0
+        }
       ]
     }
   ]
 };
-})();
 (node as any).hash = 'e8f19166da037c573aa4928e3fcb1194';
 export default node;

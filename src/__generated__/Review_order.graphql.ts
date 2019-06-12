@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
 import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
@@ -14,30 +14,38 @@ export type Review_order = {
     readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly itemsTotal: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly id: string;
                     readonly _id: string;
-                    readonly artists: ReadonlyArray<({
+                    readonly artists: ReadonlyArray<{
                         readonly id: string;
-                    }) | null> | null;
+                    } | null> | null;
                     readonly " $fragmentRefs": ItemReview_artwork$ref;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly myLastOffer?: ({
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly myLastOffer?: {
         readonly id: string;
-    }) | null;
+    } | null;
     readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferSummaryItem_order$ref;
     readonly " $refType": Review_order$ref;
-};
+} & ({
+    readonly myLastOffer: {
+        readonly id: string;
+    } | null;
+} | {
+    /*This will never be '% other', but we need some
+    value in case none of the concrete values match.*/
+    readonly __typename: "%other";
+});
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -45,20 +53,9 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+v1 = [
+  (v0/*: any*/)
+];
 return {
   "kind": "Fragment",
   "name": "Review_order",
@@ -66,12 +63,14 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -80,8 +79,7 @@ return {
         {
           "kind": "Literal",
           "name": "precision",
-          "value": 2,
-          "type": "Int"
+          "value": 2
         }
       ],
       "storageKey": "itemsTotal(precision:2)"
@@ -122,7 +120,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    (v0/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -138,20 +136,15 @@ return {
                       "args": null,
                       "concreteType": "Artist",
                       "plural": true,
-                      "selections": [
-                        v0,
-                        v1
-                      ]
+                      "selections": (v1/*: any*/)
                     },
                     {
                       "kind": "FragmentSpread",
                       "name": "ItemReview_artwork",
                       "args": null
-                    },
-                    v1
+                    }
                   ]
-                },
-                v2
+                }
               ]
             }
           ]
@@ -159,16 +152,25 @@ return {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "OfferSummaryItem_order",
-      "args": null
+      "kind": "InlineFragment",
+      "type": "OfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": (v1/*: any*/)
+        }
+      ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -185,25 +187,10 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v2,
     {
-      "kind": "InlineFragment",
-      "type": "OfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "myLastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v0,
-            v2
-          ]
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "OfferSummaryItem_order",
+      "args": null
     }
   ]
 };

@@ -1,11 +1,11 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _Header_artworks$ref: unique symbol;
 export type Header_artworks$ref = typeof _Header_artworks$ref;
 export type Header_artworks = {
-    readonly merchandisable_artists: ReadonlyArray<({
+    readonly merchandisable_artists: ReadonlyArray<{
         readonly id: string;
         readonly _id: string;
         readonly name: string | null;
@@ -13,21 +13,13 @@ export type Header_artworks = {
         readonly birthday: string | null;
         readonly nationality: string | null;
         readonly " $fragmentRefs": FollowArtistButton_artist$ref;
-    }) | null> | null;
+    } | null> | null;
     readonly " $refType": Header_artworks$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Header_artworks",
   "type": "FilterArtworks",
@@ -89,13 +81,10 @@ return {
           "kind": "FragmentSpread",
           "name": "FollowArtistButton_artist",
           "args": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = 'eb9dc53e66d792a717cada1c6fa36f93';
 export default node;

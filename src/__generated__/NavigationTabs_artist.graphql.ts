@@ -1,23 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 declare const _NavigationTabs_artist$ref: unique symbol;
 export type NavigationTabs_artist$ref = typeof _NavigationTabs_artist$ref;
 export type NavigationTabs_artist = {
     readonly id: string;
-    readonly statuses: ({
+    readonly statuses: {
         readonly shows: boolean | null;
         readonly artists: boolean | null;
         readonly articles: boolean | null;
         readonly cv: boolean | null;
         readonly auction_lots: boolean | null;
-    }) | null;
+    } | null;
     readonly " $refType": NavigationTabs_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "NavigationTabs_artist",
   "type": "Artist",
@@ -69,8 +69,7 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "minShowCount",
-              "value": 0,
-              "type": "Int"
+              "value": 0
             }
           ],
           "storageKey": "cv(minShowCount:0)"
@@ -83,13 +82,6 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
