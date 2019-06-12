@@ -2,7 +2,7 @@ import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { StepSummaryItem } from "Components/v2"
 import { createTestEnv } from "DevTools/createTestEnv"
-import moment from "moment"
+import { DateTime } from "luxon"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
   rejectOfferFailed,
@@ -21,13 +21,13 @@ jest.unmock("react-relay")
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
-  stateExpiresAt: moment(NOW)
-    .add(1, "day")
-    .toISOString(),
+  stateExpiresAt: DateTime.fromISO(NOW)
+    .plus({ days: 1 })
+    .toString(),
   lastOffer: {
-    createdAt: moment(NOW)
-      .subtract(1, "day")
-      .toISOString(),
+    createdAt: DateTime.fromISO(NOW)
+      .minus({ days: 1 })
+      .toString(),
   },
 }
 
@@ -57,12 +57,9 @@ describe("Buyer rejects seller offer", () => {
         mockData: {
           order: {
             ...testOrder,
-            stateExpiresAt: moment(NOW)
-              .add(1, "day")
-              .add(4, "hours")
-              .add(22, "minutes")
-              .add(59, "seconds")
-              .toISOString(),
+            stateExpiresAt: DateTime.fromISO(NOW)
+              .plus({ days: 1, hours: 4, minutes: 22, seconds: 59 })
+              .toString(),
           },
         },
       })

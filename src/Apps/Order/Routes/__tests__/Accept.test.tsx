@@ -6,7 +6,7 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
-import moment from "moment"
+import { DateTime } from "luxon"
 import { graphql } from "react-relay"
 import {
   acceptOfferFailed,
@@ -29,14 +29,14 @@ window.location.assign = jest.fn()
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
-  stateExpiresAt: moment(NOW)
-    .add(1, "day")
-    .toISOString(),
+  stateExpiresAt: DateTime.fromISO(NOW)
+    .plus({ days: 1 })
+    .toString(),
   lastOffer: {
     ...OfferWithTotals,
-    createdAt: moment(NOW)
-      .subtract(1, "day")
-      .toISOString(),
+    createdAt: DateTime.fromISO(NOW)
+      .minus({ days: 1 })
+      .toString(),
     amount: "$sellers.offer",
     fromParticipant: "SELLER",
   },
@@ -74,12 +74,9 @@ describe("Accept seller offer", () => {
         mockData: {
           order: {
             ...testOrder,
-            stateExpiresAt: moment(NOW)
-              .add(1, "day")
-              .add(4, "hours")
-              .add(22, "minutes")
-              .add(59, "seconds")
-              .toISOString(),
+            stateExpiresAt: DateTime.fromISO(NOW)
+              .plus({ days: 1, hours: 4, minutes: 22, seconds: 59 })
+              .toString(),
           },
         },
       })

@@ -1,10 +1,11 @@
 const baseTime = "2018-12-05T13:47:16.446Z"
 let now = baseTime
+import { DateTime } from "luxon"
 
 export function __advance(ms: number) {
-  now = require("moment")(now)
-    .add(ms, "milliseconds")
-    .toISOString()
+  now = DateTime.fromISO(now)
+    .plus({ milliseconds: ms })
+    .toString()
 }
 
 export function __reset() {

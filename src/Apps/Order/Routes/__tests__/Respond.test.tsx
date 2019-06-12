@@ -7,7 +7,7 @@ import {
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
 import { OfferHistoryItemFragmentContainer } from "Apps/Order/Components/OfferHistoryItem"
-import moment from "moment"
+import { DateTime } from "luxon"
 import { RespondFragmentContainer } from "../Respond"
 
 // Need to mock Utils/Events instead of using mockTracking because
@@ -42,14 +42,14 @@ import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
-  stateExpiresAt: moment(NOW)
-    .add(1, "day")
-    .toISOString(),
+  stateExpiresAt: DateTime.fromISO(NOW)
+    .plus({ days: 1 })
+    .toString(),
   lastOffer: {
     ...OfferWithTotals,
-    createdAt: moment(NOW)
-      .subtract(1, "day")
-      .toISOString(),
+    createdAt: DateTime.fromISO(NOW)
+      .minus({ days: 1 })
+      .toString(),
   },
   offers: { edges: Offers },
   buyer: Buyer,
@@ -120,12 +120,9 @@ describe("The respond page", () => {
         mockData: {
           order: {
             ...testOrder,
-            stateExpiresAt: moment(NOW)
-              .add(1, "day")
-              .add(4, "hours")
-              .add(22, "minutes")
-              .add(59, "seconds")
-              .toISOString(),
+            stateExpiresAt: DateTime.fromISO(NOW)
+              .plus({ days: 1, hours: 4, minutes: 22, seconds: 59 })
+              .toString(),
           },
         },
       })
@@ -151,12 +148,9 @@ describe("The respond page", () => {
         mockData: {
           order: {
             ...OfferOrderWithShippingDetailsAndNote,
-            stateExpiresAt: moment(NOW)
-              .add(1, "day")
-              .add(4, "hours")
-              .add(22, "minutes")
-              .add(59, "seconds")
-              .toISOString(),
+            stateExpiresAt: DateTime.fromISO(NOW)
+              .plus({ days: 1, hours: 4, minutes: 22, seconds: 59 })
+              .toString(),
           },
         },
       })
