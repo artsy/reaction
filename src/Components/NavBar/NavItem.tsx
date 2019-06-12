@@ -3,7 +3,6 @@ import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
 import React, { useState } from "react"
-import { animated, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { NavBarHeight } from "./NavBar"
 
@@ -33,21 +32,6 @@ export const NavItem: React.FC<NavItemProps> = ({
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
   const hoverColor = hover ? "purple100" : "black80"
-  const getAnimation = h => ({
-    opacity: h ? 0 : 1,
-    transform: `translate3d(0, ${h ? -90 : -65}px, 0)`,
-  })
-  const animatedStyle = useSpring({
-    from: getAnimation(hover),
-    ...getAnimation(!hover),
-    config: name =>
-      name === "opacity"
-        ? config.stiff
-        : {
-            friction: 10,
-            mass: 0.5,
-          },
-  })
 
   const trackClick = () => {
     if (href && isString(children)) {
@@ -95,11 +79,9 @@ export const NavItem: React.FC<NavItemProps> = ({
       </Link>
 
       {showMenu && (
-        <animated.div style={animatedStyle}>
-          <MenuContainer top={space(6)}>
-            <Menu />
-          </MenuContainer>
-        </animated.div>
+        <MenuContainer top={space(6)}>
+          <Menu />
+        </MenuContainer>
       )}
 
       {showOverlay && <Overlay hover={hover} />}
