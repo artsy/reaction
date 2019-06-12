@@ -1,3 +1,15 @@
+# v16.16.2 (Wed Jun 12 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "[NavBar] Add animation to dropdown" [#2532](https://github.com/artsy/reaction/pull/2532) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.16.1 (Tue Jun 11 2019)
 
 #### 🐛  Bug Fix
