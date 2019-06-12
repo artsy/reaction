@@ -95,7 +95,7 @@ export const getFeaturedArtists = (
   }
 }
 
-const featuredArtistsEntityCollection = (
+export const featuredArtistsEntityCollection = (
   artists,
   isColumnLayout,
   mediator,
