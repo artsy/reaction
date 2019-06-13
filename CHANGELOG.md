@@ -1,3 +1,19 @@
+# v16.17.4 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- Don't render related artworks without artworks to display [#2542](https://github.com/artsy/reaction/pull/2542) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Removes jsx and js from test regex [#2535](https://github.com/artsy/reaction/pull/2535) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.17.3 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
