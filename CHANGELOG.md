@@ -1,3 +1,15 @@
+# v16.17.9 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- Extract action sheet management from Artist/state into Artist/ArtworkFilter [#2549](https://github.com/artsy/reaction/pull/2549) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.17.8 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
