@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "react-relay"
 
-import { RelatedCollectionsRailContent as RelatedCollectionsRail } from "Components/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import { Provider } from "unstated"
@@ -63,10 +62,5 @@ describe("CollectionApp", () => {
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")
     expect(items.at(1).text()).toContain("KAWS x Undercover , 1999")
-
-    const relatedCollectionsRail = tree.find(RelatedCollectionsRail)
-    expect(relatedCollectionsRail.props().category).toEqual(
-      "Collectible Sculptures"
-    )
   })
 })

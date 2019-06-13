@@ -3,9 +3,8 @@ import { CollectionApp_collection } from "__generated__/CollectionApp_collection
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Components/Artist/ArtistCollectionsRail"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
-import { RelatedCollectionsRailContent as RelatedCollectionsRail } from "Components/RelatedCollectionsRail"
+import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { HttpError } from "found"
 import React, { Component } from "react"
@@ -45,9 +44,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
-    const artistId =
-      collection.query.artist_id || collection.query.artist_ids[0]
-
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -74,11 +70,9 @@ export class CollectionApp extends Component<CollectionAppProps> {
             <CollectionFilterContainer collection={collection} />
           </Box>
           <Box mt="3">
-            {artistId ? (
-              <ArtistCollectionsRail artistID={artistId} />
-            ) : (
-              <RelatedCollectionsRail category={collection.category} />
-            )}
+            <RelatedCollectionsRail
+              collections={collection.relatedCollections}
+            />
           </Box>
         </FrameWithRecentlyViewed>
       </AppContainer>
@@ -122,6 +116,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           artist_ids
           artist_id
           gene_id
+        }
+        relatedCollections {
+          ...RelatedCollectionsRail_collections
         }
         artworks(
           aggregations: $aggregations

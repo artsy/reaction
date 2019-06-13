@@ -2,8 +2,8 @@ import { Box, Sans, Spacer } from "@artsy/palette"
 import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/CarouselV2"
-import { once } from "lodash"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { once, take } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
@@ -45,7 +45,7 @@ export class RelatedCollectionsRail extends React.Component<
     const { collections } = this.props
     if (collections.length > 3) {
       return (
-        <Box>
+        <Box px={3}>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
             Browse by iconic collections
@@ -53,13 +53,15 @@ export class RelatedCollectionsRail extends React.Component<
           <Spacer pb={1} />
 
           <Carousel
-            height={200}
+            height="200px"
             options={{
               groupCells: 1,
               wrapAround: true,
+              cellAlign: "left",
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={collections as object[]} // type required by slider
+            // data={collections as object[]} // type required by slider
+            data={take(collections, 8)}
             render={slide => {
               return <RelatedCollectionEntity collection={slide} />
             }}
