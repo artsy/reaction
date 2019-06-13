@@ -9,6 +9,7 @@ import { Bling as GPT } from "react-gpt"
 import renderer from "react-test-renderer"
 
 import { StandardArticleHostedAdCanvas as AdData } from "../../Fixtures/Components"
+
 it("renders the new canvas in standard layout", () => {
   const component = renderer
     .create(
