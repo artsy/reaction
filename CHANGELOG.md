@@ -1,3 +1,15 @@
+# v16.17.6 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Adjust animation settings [#2543](https://github.com/artsy/reaction/pull/2543) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.17.5 (Thu Jun 13 2019)
 
 
