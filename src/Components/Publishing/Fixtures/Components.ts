@@ -304,6 +304,11 @@ export const StandardArticleHostedAdPanel: DisplayAdProps = {
   adUnit: "Desktop_RightRail1" as AdUnit,
   adDimension: "300x250" as AdDimension,
   displayNewAds: true,
+  targetingData: {
+    is_testing: true,
+    page_type: "article",
+    post_id: "123",
+  },
 }
 
 export const StandardArticleHostedAdCanvas: DisplayAdProps = {

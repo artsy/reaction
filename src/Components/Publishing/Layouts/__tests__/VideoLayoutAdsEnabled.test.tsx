@@ -79,6 +79,7 @@ describe("data", () => {
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
         displayNewAds
         isSeries
+        targetingData={targetingData(VideoArticleFixture.id, "sponsorlanding")}
       />
     )
 

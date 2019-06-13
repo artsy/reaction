@@ -8,11 +8,17 @@ export interface DisplayAdProps extends FlexProps {
   adUnit?: AdUnit
   adDimension?: AdDimension
   displayNewAds?: boolean
-  targetingData?: {
+  targetingData: {
     is_testing: boolean
     page_type: string
     post_id: string
   }
+  isSeries?: boolean
+  isStandard?: boolean
+}
+
+export interface DisplayAdContainerProps extends FlexProps {
+  displayNewAds?: boolean
   isSeries?: boolean
   isStandard?: boolean
 }
@@ -56,7 +62,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   )
 }
 
-const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
+const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
   margin: ${props => (props.isStandard ? "0" : "0 auto")};
   border-top: ${props =>
     props.isSeries ? `1px solid ${color("black10")}` : "none"};

@@ -55,6 +55,7 @@ describe("data", () => {
         }
         displayNewAds
         isSeries
+        targetingData={targetingData(SeriesArticleFixture.id, "sponsorlanding")}
       />
     )
 
@@ -77,7 +78,7 @@ describe("data", () => {
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
         displayNewAds
         isSeries
-        targetingData={targetingData(SeriesArticleFixture.id, "article")}
+        targetingData={targetingData(SeriesArticleFixture.id, "sponsorlanding")}
       />
     )
 

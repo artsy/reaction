@@ -1,4 +1,6 @@
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayPanel } from "Components/Publishing/Display/NewDisplayPanel"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -15,6 +17,7 @@ describe("snapshot", () => {
           adDimension={StandardArticleHostedAdPanel.adDimension}
           adUnit={StandardArticleHostedAdPanel.adUnit}
           displayNewAds={true}
+          targetingData={targetingData(StandardArticle.id, "article")}
         />
       )
       .toJSON()
@@ -29,6 +32,7 @@ describe("data", () => {
         adDimension={StandardArticleHostedAdPanel.adDimension}
         adUnit={StandardArticleHostedAdPanel.adUnit}
         displayNewAds={true}
+        targetingData={targetingData(StandardArticle.id, "article")}
       />
     )
 
