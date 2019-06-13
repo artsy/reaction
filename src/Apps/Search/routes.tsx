@@ -16,11 +16,13 @@ const prepareVariables = (_params, { location }) => {
 const tabsToEntitiesMap = {
   collections: ["COLLECTION"],
   shows: ["SHOW"],
+  fairs: ["FAIR"],
+  museums: ["INSTITUTION"],
   galleries: ["GALLERY"],
   categories: ["GENE"],
   articles: ["ARTICLE"],
   auctions: ["SALE"],
-  more: ["TAG", "CITY", "FAIR", "FEATURE", "INSTITUTION"],
+  more: ["TAG", "CITY", "FEATURE"],
 }
 
 const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
