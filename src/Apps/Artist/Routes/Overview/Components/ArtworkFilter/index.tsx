@@ -27,7 +27,7 @@ import {
 } from "@artsy/palette"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
-interface Props {
+interface ArtworkFilterProps {
   artist: ArtworkFilter_artist
   hideTopBorder?: boolean
   filterState?: FilterState
@@ -35,10 +35,18 @@ interface Props {
   mediator?: Mediator
 }
 
+interface ArtworkFilterState {
+  showMobileActionSheet: boolean
+}
+
 @track()
-class Filter extends Component<Props> {
+class Filter extends Component<ArtworkFilterProps, ArtworkFilterState> {
   static defaultProps = {
     hideTopBorder: false,
+  }
+
+  state = {
+    showMobileActionSheet: false,
   }
 
   get existy() {
@@ -55,6 +63,16 @@ class Filter extends Component<Props> {
 
   get showZeroState() {
     return !this.existy.hasArtworks
+  }
+
+  hideMobileActionSheet = () => {
+    this.setState({ showMobileActionSheet: false })
+    document.body.style.overflowY = "auto"
+  }
+
+  showMobileActionSheet = () => {
+    this.setState({ showMobileActionSheet: true })
+    document.body.style.overflowY = "hidden"
   }
 
   renderFilters({ hideTopBorder }) {
@@ -280,10 +298,7 @@ class Filter extends Component<Props> {
         </Box>
 
         <Media at="xs">
-          <Button
-            size="small"
-            onClick={() => filterState.showActionSheet(true)}
-          >
+          <Button size="small" onClick={this.showMobileActionSheet}>
             <Flex justifyContent="space-between" alignItems="center">
               <FilterIcon fill={"white100"} />
               <Spacer mr={0.5} />
@@ -304,10 +319,8 @@ class Filter extends Component<Props> {
       <Flex flexDirection={["column", "row"]}>
         <Box width={["100%", "25%"]} mr={2}>
           <Media at="xs">
-            {filterState.state.showActionSheet && (
-              <MobileActionSheet
-                onClose={() => filterState.showActionSheet(false)}
-              >
+            {this.state.showMobileActionSheet && (
+              <MobileActionSheet onClose={this.hideMobileActionSheet}>
                 <Filters />
               </MobileActionSheet>
             )}
@@ -343,7 +356,7 @@ class Filter extends Component<Props> {
 }
 
 export const ArtworkFilterFragmentContainer = createFragmentContainer(
-  (props: Props) => {
+  (props: ArtworkFilterProps) => {
     return (
       <SystemContextConsumer>
         {({ user, mediator }) => (

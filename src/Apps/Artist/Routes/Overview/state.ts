@@ -18,7 +18,6 @@ interface State {
 
   // UI
   selectedFilters: string[]
-  showActionSheet: boolean
   showZeroState: boolean
 }
 
@@ -37,7 +36,6 @@ export const initialState = {
   inquireable_only: null,
   price_range: "*-*",
   selectedFilters: [],
-  showActionSheet: false,
   showZeroState: false,
 }
 
@@ -136,17 +134,6 @@ export class FilterState extends Container<State> {
     })
   }
 
-  showActionSheet = show => {
-    if (show) {
-      // TODO: Manage this side-effect in a more react-like fashion
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-
-    this.setState({ showActionSheet: show })
-  }
-
   showZeroState = showZeroState => {
     this.setState({
       showZeroState,
@@ -157,7 +144,6 @@ export class FilterState extends Container<State> {
     this.setState(
       {
         ...initialState,
-        showActionSheet: true,
       },
       () => {
         this.pushHistory()
