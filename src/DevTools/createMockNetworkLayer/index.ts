@@ -8,6 +8,7 @@ import {
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import getNetworkLayer from "relay-mock-network-layer"
 import { Network, RelayNetwork } from "relay-runtime"
+import { get } from "Utils/get"
 import uuid from "uuid"
 import schema from "../../../data/schema.graphql"
 import FormattedNumber from "./CustomScalars/formatted_number"
@@ -69,8 +70,9 @@ export const createMockFetchQuery = ({
       // whether to resolve fields in a given value
       if (typeof source !== "object") {
         const parentPath = pathAsArray.slice(0, -1).join("/")
+        const operationName = get(info, i => i.operation.name.value)
         throw new Error(
-          `The value at path '${parentPath}' should be an object but is a ${typeof source}.`
+          `The value at path '${parentPath}' for operation '${operationName}' should be an object but is a ${typeof source}.`
         )
       }
 
@@ -112,8 +114,8 @@ export const createMockFetchQuery = ({
 
       throw error(
         info,
-        ({ type, path }) =>
-          `A mock for field at path '${path}' of type '${type}' was expected but not found.`
+        ({ type, path, operationName }) =>
+          `A mock for field at path '${path}' of type '${type}' was expected for operation '${operationName}', but none was found.`
       )
     }) as GraphQLFieldResolver<any, any>,
     schema,
@@ -148,8 +150,8 @@ const checkLeafType = (value: unknown, info: GraphQLResolveInfo) => {
     } catch (e) {
       throw error(
         info,
-        ({ type, path }) =>
-          `Expected mock value of type '${type}' but got '${typeof value}' at path '${path}'`
+        ({ type, path, operationName }) =>
+          `Expected mock value of type '${type}' but got '${typeof value}' at path '${path}' for operation '${operationName}'`
       )
     }
   }
@@ -172,8 +174,8 @@ const inferUnionOrInterfaceType = (
   if (typeof value !== "object") {
     throw error(
       info,
-      ({ type, path }) =>
-        `Expected object of type '${type}' but got '${typeof value}' at path '${path}'`
+      ({ type, path, operationName }) =>
+        `Expected object of type '${type}' but got '${typeof value}' at path '${path}' for operation '${operationName}'`
     )
   }
 
@@ -195,19 +197,24 @@ const inferUnionOrInterfaceType = (
   const possibleTypes = unionMemberTypes.map(type => type.name).join(", ")
   throw error(
     info,
-    ({ path }) =>
-      `Ambiguous object at path '${path}'. Add a __typename from this list: [${possibleTypes}]`
+    ({ path, operationName }) =>
+      `Ambiguous object at path '${path}' for operation '${operationName}'. Add a __typename from this list: [${possibleTypes}]`
   )
 }
 
 function error(
   info: GraphQLResolveInfo,
-  renderMessage: (args: { type: string; path: string }) => string
+  renderMessage: (args: {
+    type: string
+    path: string
+    operationName: string
+  }) => string
 ) {
   return new Error(
     renderMessage({
       path: responsePathAsArray(info.path).join("/"),
       type: info.returnType.inspect(),
+      operationName: get(info, i => i.operation.name.value, "(unknown)"),
     })
   )
 }
