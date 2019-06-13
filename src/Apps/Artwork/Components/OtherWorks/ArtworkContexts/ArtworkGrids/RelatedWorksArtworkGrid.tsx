@@ -90,6 +90,10 @@ class RelatedWorksArtworkGrid extends React.Component<
       MAX_TAB_ITEMS
     )
 
+    if (!names.length) {
+      return <></>
+    }
+
     return (
       <>
         <Header title="Related works" />
