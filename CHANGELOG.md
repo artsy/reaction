@@ -1,3 +1,22 @@
+# v16.17.7 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- featured artist module follow up [#2546](https://github.com/artsy/reaction/pull/2546) ([@xtina-starr](https://github.com/xtina-starr) [@l2succes](https://github.com/l2succes))
+- add tests [#2518](https://github.com/artsy/reaction/pull/2518) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.14 to v4.14.15 [#2544](https://github.com/artsy/reaction/pull/2544) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.6 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
