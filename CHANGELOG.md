@@ -1,3 +1,15 @@
+# v16.17.2 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- Bump palette [#2539](https://github.com/artsy/reaction/pull/2539) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.17.1 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
