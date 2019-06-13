@@ -45,7 +45,7 @@ export class RelatedCollectionsRail extends React.Component<
     const { collections } = this.props
     if (collections.length > 3) {
       return (
-        <Box px={3}>
+        <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Sans size="3" weight="medium">
             Browse by iconic collections
@@ -60,7 +60,6 @@ export class RelatedCollectionsRail extends React.Component<
               cellAlign: "left",
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            // data={collections as object[]} // type required by slider
             data={take(collections, 8)}
             render={slide => {
               return <RelatedCollectionEntity collection={slide} />
