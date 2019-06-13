@@ -1,3 +1,15 @@
+# v16.17.3 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Remove babel-plugin-rename-import [#2540](https://github.com/artsy/reaction/pull/2540) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.17.2 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
