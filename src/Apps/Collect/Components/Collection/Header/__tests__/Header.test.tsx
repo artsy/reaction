@@ -1,6 +1,7 @@
-import { featuredArtistsEntityCollection, getFeaturedArtists } from "../index"
-
-const mockedFeaturedArtistsEntityCollection = featuredArtistsEntityCollection as jest.Mock
+import { EntityHeader } from "@artsy/palette"
+import { shallow } from "enzyme"
+import React from "react"
+import { getFeaturedArtists } from "../index"
 
 describe("getFeaturedArtists", () => {
   const mockMediator = jest.fn()
@@ -68,30 +69,31 @@ describe("getFeaturedArtists", () => {
   })
 
   it("passes correct arguments featuredArtistsEntityCollection", () => {
-    getFeaturedArtists(
-      9,
-      collection,
-      true,
-      collection.artworks.merchandisable_artists,
-      mockMediator,
-      {}
+    const wrapper = shallow(
+      <div>
+        {getFeaturedArtists(
+          9,
+          collection,
+          true,
+          collection.artworks.merchandisable_artists,
+          mockMediator,
+          {}
+        )}
+      </div>
     )
 
-    expect(mockedFeaturedArtistsEntityCollection).toBeCalledWith(
-      [
-        {
-          id: "kaws",
-          _id: "4e934002e340fa0001005336",
-          name: "KAWS",
-          imageUrl:
-            "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
-          birthday: "1974",
-          nationality: "American",
-        },
-      ],
-      true,
-      mockMediator,
-      {}
-    )
+    const entities = wrapper.find(EntityHeader)
+    expect(entities.length).toBe(1)
+
+    const artist = entities.at(0).props().FollowButton.props.artist
+    expect(artist).toMatchObject({
+      id: "kaws",
+      _id: "4e934002e340fa0001005336",
+      name: "KAWS",
+      imageUrl:
+        "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
+      birthday: "1974",
+      nationality: "American",
+    })
   })
 })
