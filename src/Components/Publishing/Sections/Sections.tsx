@@ -242,9 +242,15 @@ export class Sections extends Component<Props, State> {
         sectionItem.type === "text" &&
         !displayMarkerInjected
 
+      /**
+       *  Possible data types for sectionItem.type are
+       *  callout, embed, social_embed, text, slideshow, image_set, and image_collection.
+       *  Here we want to inject the first ad after the first image_collection OR image_set data type.
+       * */
       let shouldInjectNewAds =
         article.layout === "feature" &&
-        sectionItem.type === "image_collection" &&
+        (sectionItem.type === "image_collection" ||
+          sectionItem.type === "image_set") &&
         !firstAdInjected
 
       if (firstAdInjected) {
