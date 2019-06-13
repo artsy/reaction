@@ -1,4 +1,5 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { SeriesArticle as SeriesArticleFixture } from "Components/Publishing/Fixtures/Articles"
 import { SeriesLayout } from "Components/Publishing/Layouts/SeriesLayout"
@@ -76,6 +77,7 @@ describe("data", () => {
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
         displayNewAds
         isSeries
+        targetingData={targetingData(SeriesArticleFixture.id, "article")}
       />
     )
 
@@ -87,5 +89,25 @@ describe("data", () => {
     canvas.find({ "data-sizes": "300x250" })
     canvas.find({ "data-eager": true })
     canvas.find({ "data-unit": "Desktop_TopLeaderboard" })
+  })
+
+  it("renders the ad component with the correct targeting data", () => {
+    const canvas = mount(
+      <NewDisplayCanvas
+        adDimension={
+          AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+        }
+        adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
+        displayNewAds
+        isSeries
+        targetingData={targetingData(SeriesArticleFixture.id, "sponsorlanding")}
+      />
+    )
+
+    expect(canvas.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "sponsorlanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
   })
 })
