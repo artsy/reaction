@@ -45,7 +45,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         ? config.stiff
         : {
             friction: 10,
-            mass: 0.5,
+            mass: 0.1,
           },
   })
 
