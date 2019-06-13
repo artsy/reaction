@@ -66,9 +66,12 @@ export class ArtistArticles extends Component<
   }
 
   toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
-    })
+    this.setState(
+      {
+        isLoading,
+      },
+      () => window.scrollTo(0, 0)
+    )
   }
 
   render() {

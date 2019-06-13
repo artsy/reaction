@@ -39,9 +39,12 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
   }
 
   toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
-    })
+    this.setState(
+      {
+        isLoading,
+      },
+      () => window.scrollTo(0, 0)
+    )
   }
 
   loadNext = () => {
