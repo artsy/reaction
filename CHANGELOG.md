@@ -1,3 +1,16 @@
+# v16.17.1 (Thu Jun 13 2019)
+
+#### 🐛  Bug Fix
+
+- Test CI date fix [#2538](https://github.com/artsy/reaction/pull/2538) ([@damassi](https://github.com/damassi))
+- Revert "Revert "[NavBar] Add animation to dropdown"" [#2536](https://github.com/artsy/reaction/pull/2536) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.17.0 (Wed Jun 12 2019)
 
 #### 🚀  Enhancement
