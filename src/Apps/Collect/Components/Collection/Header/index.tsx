@@ -1,7 +1,7 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { cloneDeep, take } from "lodash"
-import React, { FC, useContext, useState } from "react"
+import { cloneDeep, filter, take } from "lodash"
+import React, { FC, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
@@ -23,7 +23,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
-import { SystemContext } from "Artsy"
+import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
@@ -39,6 +39,7 @@ interface Props {
     medium?: string
     slug: string
     title: string
+    query: any
   }
   artworks: Header_artworks
 }
@@ -61,6 +62,98 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+export const getFeaturedArtists = (
+  artistsCount: number,
+  collection,
+  isColumnLayout: boolean,
+  merchandisableArtists,
+  mediator,
+  user
+) => {
+  let featuredArtists
+
+  if (collection.query.artist_ids.length > 0) {
+    featuredArtists = filter(merchandisableArtists, artist =>
+      collection.query.artist_ids.includes(artist._id)
+    )
+
+    return featuredArtistsEntityCollection(
+      featuredArtists,
+      isColumnLayout,
+      mediator,
+      user
+    )
+  }
+
+  if (merchandisableArtists.length > 0) {
+    return featuredArtistsEntityCollection(
+      take(merchandisableArtists, artistsCount),
+      isColumnLayout,
+      mediator,
+      user
+    )
+  }
+}
+
+export const featuredArtistsEntityCollection = (
+  artists,
+  isColumnLayout,
+  mediator,
+  user
+) => {
+  return artists.map((artist, index) => {
+    const hasArtistMetaData = artist.nationality && artist.birthday
+    return (
+      <EntityContainer
+        width={["100%", "25%"]}
+        isColumnLayout={isColumnLayout}
+        key={index}
+        pb={20}
+      >
+        <EntityHeader
+          imageUrl={artist.imageUrl}
+          name={artist.name}
+          meta={
+            hasArtistMetaData
+              ? `${artist.nationality}, b. ${artist.birthday}`
+              : null
+          }
+          href={`/artist/${artist.id}`}
+          FollowButton={
+            <FollowArtistButton
+              artist={artist}
+              user={user}
+              trackingData={{
+                modelName: AnalyticsSchema.OwnerType.Artist,
+                context_module:
+                  AnalyticsSchema.ContextModule.CollectionDescription,
+                entity_id: artist._id,
+                entity_slug: artist.id,
+              }}
+              onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    color="black"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
+            />
+          }
+        />
+      </EntityContainer>
+    )
+  })
+}
+
 const maxChars = {
   xs: 350,
   sm: 730,
@@ -78,8 +171,11 @@ const imageWidthSizes = {
 }
 
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
-  const { user, mediator } = useContext(SystemContext)
+  const { user, mediator } = useSystemContext()
   const [showMore, setShowMore] = useState(false)
+  const hasMultipleArtists =
+    artworks.merchandisable_artists &&
+    artworks.merchandisable_artists.length > 1
 
   const truncateForMobile = (featuredArtists, isColumnLayout) => {
     if (featuredArtists.length < 3) {
@@ -118,68 +214,17 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
-
-        const hasMultipleArtists =
-          artworks.merchandisable_artists &&
-          artworks.merchandisable_artists.length > 1
-
         const isColumnLayout =
           hasMultipleArtists || !collection.description || size === "xs"
         const smallerScreen = size === "xs" || size === "sm"
-        const featuredArtists = take(
+        const featuredArtists = getFeaturedArtists(
+          artistsCount,
+          collection,
+          isColumnLayout,
           artworks.merchandisable_artists,
-          artistsCount
-        ).map((artist, index) => {
-          const hasArtistMetaData = artist.nationality && artist.birthday
-          return (
-            <EntityContainer
-              width={["100%", "25%"]}
-              isColumnLayout={isColumnLayout}
-              key={index}
-              pb={20}
-            >
-              <EntityHeader
-                imageUrl={artist.imageUrl}
-                name={artist.name}
-                meta={
-                  hasArtistMetaData
-                    ? `${artist.nationality}, b. ${artist.birthday}`
-                    : null
-                }
-                href={`/artist/${artist.id}`}
-                FollowButton={
-                  <FollowArtistButton
-                    artist={artist}
-                    user={user}
-                    trackingData={{
-                      modelName: AnalyticsSchema.OwnerType.Artist,
-                      context_module:
-                        AnalyticsSchema.ContextModule.CollectionDescription,
-                      entity_id: artist._id,
-                      entity_slug: artist.id,
-                    }}
-                    onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
-                    render={({ is_followed }) => {
-                      return (
-                        <Sans
-                          size="2"
-                          weight="medium"
-                          color="black"
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "underline",
-                          }}
-                        >
-                          {is_followed ? "Following" : "Follow"}
-                        </Sans>
-                      )
-                    }}
-                  />
-                }
-              />
-            </EntityContainer>
-          )
-        })
+          mediator,
+          user
+        )
 
         return (
           <header>
