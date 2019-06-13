@@ -59,9 +59,6 @@ export const NavBar: React.FC = track(
     }
   }, [isMobile])
 
-  // FIXME: Remove test
-  const [isWide, toggleMenuLayout] = useState(true)
-
   return (
     <>
       <NavBarContainer px={1}>
@@ -101,11 +98,10 @@ export const NavBar: React.FC = track(
             </NavItem>
             <NavItem href="/articles">Magazine</NavItem>
             <NavItem
-              onClick={() => toggleMenuLayout(!isWide)}
               Menu={() => {
                 return (
-                  <Box mr={isWide ? -20 : -150}>
-                    <MoreNavMenu width={isWide ? 260 : 160} />
+                  <Box mr={-150}>
+                    <MoreNavMenu width={160} />
                   </Box>
                 )
               }}
