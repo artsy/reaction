@@ -5,16 +5,16 @@ import { ArtistArtworkGrid_artwork$ref } from "./ArtistArtworkGrid_artwork.graph
 import { PartnerArtworkGrid_artwork$ref } from "./PartnerArtworkGrid_artwork.graphql";
 import { PartnerShowArtworkGrid_artwork$ref } from "./PartnerShowArtworkGrid_artwork.graphql";
 import { RelatedWorksArtworkGrid_artwork$ref } from "./RelatedWorksArtworkGrid_artwork.graphql";
-declare const _ArtworkContextPartnerShow_artwork$ref: unique symbol;
-export type ArtworkContextPartnerShow_artwork$ref = typeof _ArtworkContextPartnerShow_artwork$ref;
-export type ArtworkContextPartnerShow_artwork = {
+declare const _ArtworkContextShow_artwork$ref: unique symbol;
+export type ArtworkContextShow_artwork$ref = typeof _ArtworkContextShow_artwork$ref;
+export type ArtworkContextShow_artwork = {
     readonly id: string;
     readonly artist: ({
         readonly name: string | null;
         readonly href: string | null;
     }) | null;
     readonly " $fragmentRefs": PartnerShowArtworkGrid_artwork$ref & ArtistArtworkGrid_artwork$ref & PartnerArtworkGrid_artwork$ref & RelatedWorksArtworkGrid_artwork$ref;
-    readonly " $refType": ArtworkContextPartnerShow_artwork$ref;
+    readonly " $refType": ArtworkContextShow_artwork$ref;
 };
 
 
@@ -37,7 +37,7 @@ v1 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "ArtworkContextPartnerShow_artwork",
+  "name": "ArtworkContextShow_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [
@@ -106,5 +106,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7d6c7c0f3920cddc8d56ffde8c51ff72';
+(node as any).hash = '231df6a202ff3ad81f117a2f80ddb59e';
 export default node;

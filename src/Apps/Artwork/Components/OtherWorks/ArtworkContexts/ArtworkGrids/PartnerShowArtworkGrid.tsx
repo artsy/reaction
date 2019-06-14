@@ -31,12 +31,12 @@ class PartnerShowArtworkGrid extends React.Component<
   render() {
     const {
       artwork: {
-        show: { artworksConnection, href, name },
+        show: { artworks_connection, href, name },
       },
       mediator,
     } = this.props
 
-    if (hideGrid(artworksConnection)) {
+    if (hideGrid(artworks_connection)) {
       return null
     }
 
@@ -47,7 +47,7 @@ class PartnerShowArtworkGrid extends React.Component<
           buttonHref={sd.APP_URL + href}
         />
         <ArtworkGrid
-          artworks={artworksConnection}
+          artworks={artworks_connection}
           columnCount={[2, 3, 4]}
           preloadImageCount={0}
           mediator={mediator}
@@ -68,7 +68,7 @@ export const PartnerShowArtworkGridFragmentContainer = createFragmentContainer(
           href
           name
 
-          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+          artworks_connection(first: 8, exclude: $excludeArtworkIDs) {
             ...ArtworkGrid_artworks
 
             # Used to check for content

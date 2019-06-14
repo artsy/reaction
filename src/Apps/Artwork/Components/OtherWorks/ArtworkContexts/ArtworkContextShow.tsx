@@ -1,5 +1,5 @@
 import { Join, Spacer } from "@artsy/palette"
-import { ArtworkContextPartnerShow_artwork } from "__generated__/ArtworkContextPartnerShow_artwork.graphql"
+import { ArtworkContextShow_artwork } from "__generated__/ArtworkContextShow_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -10,8 +10,8 @@ import {
   RelatedWorksArtworkGrid,
 } from "./ArtworkGrids"
 
-export const ArtworkContextPartnerShowFragmentContainer = createFragmentContainer<{
-  artwork: ArtworkContextPartnerShow_artwork
+export const ArtworkContextShowFragmentContainer = createFragmentContainer<{
+  artwork: ArtworkContextShow_artwork
 }>(
   props => {
     return (
@@ -25,7 +25,7 @@ export const ArtworkContextPartnerShowFragmentContainer = createFragmentContaine
   },
   {
     artwork: graphql`
-      fragment ArtworkContextPartnerShow_artwork on Artwork
+      fragment ArtworkContextShow_artwork on Artwork
         @argumentDefinitions(excludeArtworkIDs: { type: "[String!]" }) {
         id
         artist {

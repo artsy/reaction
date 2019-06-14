@@ -13,7 +13,7 @@ export type ItemReview_artwork = {
         readonly cm: string | null;
     }) | null;
     readonly attribution_class: ({
-        readonly short_description: string | null;
+        readonly shortDescription: string | null;
     }) | null;
     readonly image: ({
         readonly resized: ({
@@ -105,7 +105,7 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "short_description",
+          "name": "shortDescription",
           "args": null,
           "storageKey": null
         },
@@ -159,5 +159,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '73946f68c326f532fe710492224c3b27';
+(node as any).hash = '067fce7b324e57319a37ba142dbd953e';
 export default node;

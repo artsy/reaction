@@ -42,8 +42,8 @@ export type ArtworkBanner_artwork = {
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
-    readonly artworkContextPartnerShow: ({
-        readonly __typename: "ArtworkContextPartnerShow";
+    readonly artworkContextShow: ({
+        readonly __typename: "ArtworkContextShow";
         readonly name: string | null;
         readonly href: string | null;
         readonly status: string | null;
@@ -288,7 +288,7 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": "artworkContextPartnerShow",
+      "alias": "artworkContextShow",
       "name": "context",
       "storageKey": null,
       "args": null,
@@ -299,7 +299,7 @@ return {
         v2,
         {
           "kind": "InlineFragment",
-          "type": "ArtworkContextPartnerShow",
+          "type": "ArtworkContextShow",
           "selections": [
             v0,
             v6,
@@ -328,5 +328,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '844cbaa515bdcdb004d87d2a42b1ee2e';
+(node as any).hash = '0b8dbf774b64eb873aa039f6bd031c78';
 export default node;

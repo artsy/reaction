@@ -15,7 +15,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
   const {
     artworkContextAuction,
     artworkContextFair,
-    artworkContextPartnerShow,
+    artworkContextShow,
     partner,
     sale,
   } = props.artwork
@@ -62,14 +62,14 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
 
   // Partner Show
   if (
-    artworkContextPartnerShow &&
-    artworkContextPartnerShow.__typename === "ArtworkContextPartnerShow"
+    artworkContextShow &&
+    artworkContextShow.__typename === "ArtworkContextShow"
   ) {
-    const showImage = get(artworkContextPartnerShow, c => c.thumbnail.img.url)
+    const showImage = get(artworkContextShow, c => c.thumbnail.img.url)
     let showLine = "In current show"
-    if (artworkContextPartnerShow.status === "upcoming") {
+    if (artworkContextShow.status === "upcoming") {
       showLine = "In upcoming show"
-    } else if (artworkContextPartnerShow.status === "closed") {
+    } else if (artworkContextShow.status === "closed") {
       showLine = "In past show"
     }
     return (
@@ -77,9 +77,9 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
         imageUrl={showImage}
         initials={partner.initials}
         meta={showLine}
-        name={artworkContextPartnerShow.name}
+        name={artworkContextShow.name}
         subHeadline={partner.name}
-        href={artworkContextPartnerShow.href}
+        href={artworkContextShow.href}
       />
     )
   }
@@ -125,9 +125,9 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
             }
           }
         }
-        artworkContextPartnerShow: context {
+        artworkContextShow: context {
           __typename
-          ... on ArtworkContextPartnerShow {
+          ... on ArtworkContextShow {
             name
             href
             status
@@ -171,7 +171,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         #       }
         #     }
         #   }
-        #   ... on ArtworkContextPartnerShow {
+        #   ... on ArtworkContextShow {
         #     name
         #     href
         #     type

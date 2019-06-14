@@ -29,12 +29,12 @@ class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
   render() {
     const {
       artwork: {
-        fair: { href, artworksConnection },
+        fair: { href, artworks_connection },
       },
       mediator,
     } = this.props
 
-    if (hideGrid(artworksConnection)) {
+    if (hideGrid(artworks_connection)) {
       return null
     }
 
@@ -45,7 +45,7 @@ class FairArtworkGrid extends React.Component<FairArtworkGridProps> {
           buttonHref={sd.APP_URL + href}
         />
         <ArtworkGrid
-          artworks={artworksConnection}
+          artworks={artworks_connection}
           columnCount={[2, 3, 4]}
           preloadImageCount={0}
           mediator={mediator}
@@ -65,7 +65,7 @@ export const FairArtworkGridFragmentContainer = createFragmentContainer(
         fair: show(at_a_fair: true) {
           href
 
-          artworksConnection(first: 8, exclude: $excludeArtworkIDs) {
+          artworks_connection(first: 8, exclude: $excludeArtworkIDs) {
             ...ArtworkGrid_artworks
 
             # Used to check for content

@@ -8,7 +8,7 @@ export type PartnerShowArtworkGrid_artwork = {
     readonly show: ({
         readonly href: string | null;
         readonly name: string | null;
-        readonly artworksConnection: ({
+        readonly artworks_connection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
                     readonly id: string;
@@ -50,7 +50,7 @@ return {
       "name": "show",
       "storageKey": null,
       "args": null,
-      "concreteType": "PartnerShow",
+      "concreteType": "Show",
       "plural": false,
       "selections": [
         {
@@ -70,7 +70,7 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "artworksConnection",
+          "name": "artworks_connection",
           "storageKey": null,
           "args": [
             {
@@ -133,5 +133,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7141b8fc182a6bad45e6ed9c0133e35c';
+(node as any).hash = '4cc77d111f0e1569c4c80e030afbb943';
 export default node;

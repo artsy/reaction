@@ -4,7 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkContextArtistFragmentContainer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
 import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
 import { ArtworkContextFairFragmentContainer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShowFragmentContainer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { ArtworkContextShowFragmentContainer as ArtworkContextShow } from "./ArtworkContexts/ArtworkContextShow"
 
 export interface OtherWorksContextProps {
   /** The artworkSlug to query */
@@ -34,8 +34,8 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       case "ArtworkContextFair": {
         return <ArtworkContextFair artwork={props.artwork} />
       }
-      case "ArtworkContextPartnerShow": {
-        return <ArtworkContextPartnerShow artwork={props.artwork} />
+      case "ArtworkContextShow": {
+        return <ArtworkContextShow artwork={props.artwork} />
       }
       default: {
         return <ArtworkContextArtist artwork={props.artwork} />
@@ -47,7 +47,7 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       fragment OtherWorks_artwork on Artwork {
         ...ArtworkContextArtist_artwork
         ...ArtworkContextFair_artwork
-        ...ArtworkContextPartnerShow_artwork
+        ...ArtworkContextShow_artwork
 
         id
         _id

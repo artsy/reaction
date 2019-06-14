@@ -1,29 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
-export type ArtworkContextPartnerShow_Test_QueryVariables = {};
-export type ArtworkContextPartnerShow_Test_QueryResponse = {
+import { ArtworkContextShow_artwork$ref } from "./ArtworkContextShow_artwork.graphql";
+export type ArtworkContextShow_Test_QueryVariables = {};
+export type ArtworkContextShow_Test_QueryResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkContextPartnerShow_artwork$ref;
+        readonly " $fragmentRefs": ArtworkContextShow_artwork$ref;
     }) | null;
 };
-export type ArtworkContextPartnerShow_Test_Query = {
-    readonly response: ArtworkContextPartnerShow_Test_QueryResponse;
-    readonly variables: ArtworkContextPartnerShow_Test_QueryVariables;
+export type ArtworkContextShow_Test_Query = {
+    readonly response: ArtworkContextShow_Test_QueryResponse;
+    readonly variables: ArtworkContextShow_Test_QueryVariables;
 };
 
 
 
 /*
-query ArtworkContextPartnerShow_Test_Query {
+query ArtworkContextShow_Test_Query {
   artwork(id: "jacky-tsai-kissers-1") {
-    ...ArtworkContextPartnerShow_artwork
+    ...ArtworkContextShow_artwork
     __id
   }
 }
 
-fragment ArtworkContextPartnerShow_artwork on Artwork {
+fragment ArtworkContextShow_artwork on Artwork {
   id
   artist {
     name
@@ -41,7 +41,7 @@ fragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {
   show {
     href
     name
-    artworksConnection(first: 8) {
+    artworks_connection(first: 8) {
       ...ArtworkGrid_artworks
       edges {
         node {
@@ -594,6 +594,9 @@ v10 = {
   ]
 },
 v11 = [
+  v5
+],
+v12 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -606,29 +609,17 @@ v11 = [
       v10
     ]
   }
-],
-v12 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "artworksConnection",
-  "storageKey": "artworksConnection(first:8)",
-  "args": [
-    v5
-  ],
-  "concreteType": "ArtworkConnection",
-  "plural": false,
-  "selections": v11
-};
+];
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "ArtworkContextPartnerShow_Test_Query",
+  "name": "ArtworkContextShow_Test_Query",
   "id": null,
-  "text": "query ArtworkContextPartnerShow_Test_Query {\n  artwork(id: \"jacky-tsai-kissers-1\") {\n    ...ArtworkContextPartnerShow_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextPartnerShow_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...PartnerShowArtworkGrid_artwork_2Lx1mV\n  ...ArtistArtworkGrid_artwork_2Lx1mV\n  ...PartnerArtworkGrid_artwork_2Lx1mV\n  ...RelatedWorksArtworkGrid_artwork\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {\n  show {\n    href\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_2Lx1mV on Artwork {\n  id\n  artist {\n    name\n    href\n    artworks_connection(first: 8, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        __typename\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerArtworkGrid_artwork_2Lx1mV on Artwork {\n  partner {\n    artworksConnection(first: 8, for_sale: true, sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextShow_Test_Query {\n  artwork(id: \"jacky-tsai-kissers-1\") {\n    ...ArtworkContextShow_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextShow_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...PartnerShowArtworkGrid_artwork_2Lx1mV\n  ...ArtistArtworkGrid_artwork_2Lx1mV\n  ...PartnerArtworkGrid_artwork_2Lx1mV\n  ...RelatedWorksArtworkGrid_artwork\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {\n  show {\n    href\n    name\n    artworks_connection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_2Lx1mV on Artwork {\n  id\n  artist {\n    name\n    href\n    artworks_connection(first: 8, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        __typename\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerArtworkGrid_artwork_2Lx1mV on Artwork {\n  partner {\n    artworksConnection(first: 8, for_sale: true, sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    href\n    name\n    __id\n  }\n  __id\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "ArtworkContextPartnerShow_Test_Query",
+    "name": "ArtworkContextShow_Test_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -644,7 +635,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtworkContextPartnerShow_artwork",
+            "name": "ArtworkContextShow_artwork",
             "args": null
           },
           v1
@@ -654,7 +645,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ArtworkContextPartnerShow_Test_Query",
+    "name": "ArtworkContextShow_Test_Query",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -728,12 +719,21 @@ return {
             "name": "show",
             "storageKey": null,
             "args": null,
-            "concreteType": "PartnerShow",
+            "concreteType": "Show",
             "plural": false,
             "selections": [
               v4,
               v3,
-              v12,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworks_connection",
+                "storageKey": "artworks_connection(first:8)",
+                "args": v11,
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v12
+              },
               v1
             ]
           },
@@ -764,7 +764,7 @@ return {
                 ],
                 "concreteType": "ArtworkConnection",
                 "plural": false,
-                "selections": v11
+                "selections": v12
               },
               v4,
               v3,
@@ -795,7 +795,16 @@ return {
             "plural": false,
             "selections": [
               v3,
-              v12,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworksConnection",
+                "storageKey": "artworksConnection(first:8)",
+                "args": v11,
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v12
+              },
               v1
             ]
           }
@@ -805,5 +814,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'dd2401d2f22699e80cdeaeceae983520';
+(node as any).hash = '9417e5edead168ecc26d16f46e016a05';
 export default node;

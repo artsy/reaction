@@ -21,7 +21,7 @@ storiesOf("Apps/Order Page/Components", module).add("ItemReview", () => {
                 cm: "243.8 × 200.7 cm",
               },
               attribution_class: {
-                short_description: "This is a unique work",
+                shortDescription: "This is a unique work",
               },
               image: {
                 resized: {
@@ -47,7 +47,7 @@ storiesOf("Apps/Order Page/Components", module).add("ItemReview", () => {
                 cm: "243.8 × 200.7 cm",
               },
               attribution_class: {
-                short_description: "This is a unique work",
+                shortDescription: "This is a unique work",
               },
               image: {
                 resized: {
@@ -72,7 +72,7 @@ storiesOf("Apps/Order Page/Components", module).add("ItemReview", () => {
                 cm: "243.8 × 200.7 cm",
               },
               attribution_class: {
-                short_description: "This is a unique work",
+                shortDescription: "This is a unique work",
               },
               image: {
                 resized: {

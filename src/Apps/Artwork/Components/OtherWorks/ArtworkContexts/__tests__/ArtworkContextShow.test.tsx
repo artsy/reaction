@@ -1,20 +1,20 @@
-import { ArtworkContextPartnerShowFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextPartnerShow.fixture"
+import { ArtworkContextShowFixture } from "Apps/__tests__/Fixtures/Artwork/OtherWorks/ArtworkContexts/ArtworkContextShow.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
-import { ArtworkContextPartnerShowFragmentContainer } from "../ArtworkContextPartnerShow"
+import { ArtworkContextShowFragmentContainer } from "../ArtworkContextShow"
 
 jest.unmock("react-relay")
 
-describe("ArtworkContextPartnerShow", () => {
-  const getWrapper = async (response = ArtworkContextPartnerShowFixture) => {
+describe("ArtworkContextShow", () => {
+  const getWrapper = async (response = ArtworkContextShowFixture) => {
     return await renderRelayTree({
-      Component: ArtworkContextPartnerShowFragmentContainer,
+      Component: ArtworkContextShowFragmentContainer,
       query: graphql`
-        query ArtworkContextPartnerShow_Test_Query {
+        query ArtworkContextShow_Test_Query {
           artwork(id: "jacky-tsai-kissers-1") {
-            ...ArtworkContextPartnerShow_artwork
+            ...ArtworkContextShow_artwork
           }
         }
       `,

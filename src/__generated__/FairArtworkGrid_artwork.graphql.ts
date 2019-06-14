@@ -7,7 +7,7 @@ export type FairArtworkGrid_artwork$ref = typeof _FairArtworkGrid_artwork$ref;
 export type FairArtworkGrid_artwork = {
     readonly fair: ({
         readonly href: string | null;
-        readonly artworksConnection: ({
+        readonly artworks_connection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
                     readonly id: string;
@@ -56,7 +56,7 @@ return {
           "type": "Boolean"
         }
       ],
-      "concreteType": "PartnerShow",
+      "concreteType": "Show",
       "plural": false,
       "selections": [
         {
@@ -69,7 +69,7 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "artworksConnection",
+          "name": "artworks_connection",
           "storageKey": null,
           "args": [
             {
@@ -132,5 +132,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f7d83acd6373fd7f2e2a47d1db5142d6';
+(node as any).hash = 'f76939f80d35868c0a6c7f9d69b7dc8b';
 export default node;

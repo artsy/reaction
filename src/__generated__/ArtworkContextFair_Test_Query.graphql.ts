@@ -40,7 +40,7 @@ fragment ArtworkContextFair_artwork on Artwork {
 fragment FairArtworkGrid_artwork_2Lx1mV on Artwork {
   fair: show(at_a_fair: true) {
     href
-    artworksConnection(first: 8) {
+    artworks_connection(first: 8) {
       ...ArtworkGrid_artworks
       edges {
         node {
@@ -58,7 +58,7 @@ fragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {
   show {
     href
     name
-    artworksConnection(first: 8) {
+    artworks_connection(first: 8) {
       ...ArtworkGrid_artworks
       edges {
         node {
@@ -586,37 +586,39 @@ v9 = {
     }
   ]
 },
-v10 = {
+v10 = [
+  v5
+],
+v11 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "edges",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "ArtworkEdge",
+    "plural": true,
+    "selections": [
+      v9
+    ]
+  }
+],
+v12 = {
   "kind": "LinkedField",
   "alias": null,
-  "name": "artworksConnection",
-  "storageKey": "artworksConnection(first:8)",
-  "args": [
-    v5
-  ],
+  "name": "artworks_connection",
+  "storageKey": "artworks_connection(first:8)",
+  "args": v10,
   "concreteType": "ArtworkConnection",
   "plural": false,
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "edges",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtworkEdge",
-      "plural": true,
-      "selections": [
-        v9
-      ]
-    }
-  ]
+  "selections": v11
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ArtworkContextFair_Test_Query",
   "id": null,
-  "text": "query ArtworkContextFair_Test_Query {\n  artwork(id: \"lucio-fontana-concetto-spaziale-attese-139\") {\n    ...ArtworkContextFair_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextFair_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...FairArtworkGrid_artwork_2Lx1mV\n  ...PartnerShowArtworkGrid_artwork_2Lx1mV\n  ...ArtistArtworkGrid_artwork_2Lx1mV\n  ...RelatedWorksArtworkGrid_artwork\n  __id\n}\n\nfragment FairArtworkGrid_artwork_2Lx1mV on Artwork {\n  fair: show(at_a_fair: true) {\n    href\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {\n  show {\n    href\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_2Lx1mV on Artwork {\n  id\n  artist {\n    name\n    href\n    artworks_connection(first: 8, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        __typename\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkContextFair_Test_Query {\n  artwork(id: \"lucio-fontana-concetto-spaziale-attese-139\") {\n    ...ArtworkContextFair_artwork\n    __id\n  }\n}\n\nfragment ArtworkContextFair_artwork on Artwork {\n  id\n  artist {\n    name\n    href\n    __id\n  }\n  ...FairArtworkGrid_artwork_2Lx1mV\n  ...PartnerShowArtworkGrid_artwork_2Lx1mV\n  ...ArtistArtworkGrid_artwork_2Lx1mV\n  ...RelatedWorksArtworkGrid_artwork\n  __id\n}\n\nfragment FairArtworkGrid_artwork_2Lx1mV on Artwork {\n  fair: show(at_a_fair: true) {\n    href\n    artworks_connection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment PartnerShowArtworkGrid_artwork_2Lx1mV on Artwork {\n  show {\n    href\n    name\n    artworks_connection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistArtworkGrid_artwork_2Lx1mV on Artwork {\n  id\n  artist {\n    name\n    href\n    artworks_connection(first: 8, filter: [IS_FOR_SALE], sort: PUBLISHED_AT_DESC) {\n      ...ArtworkGrid_artworks\n      edges {\n        __typename\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment RelatedWorksArtworkGrid_artwork on Artwork {\n  layers {\n    name\n    id\n    __id\n  }\n  layer {\n    name\n    artworksConnection(first: 8) {\n      ...ArtworkGrid_artworks\n      edges {\n        node {\n          id\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -732,11 +734,11 @@ return {
                 "type": "Boolean"
               }
             ],
-            "concreteType": "PartnerShow",
+            "concreteType": "Show",
             "plural": false,
             "selections": [
               v4,
-              v10,
+              v12,
               v1
             ]
           },
@@ -747,12 +749,12 @@ return {
             "name": "show",
             "storageKey": null,
             "args": null,
-            "concreteType": "PartnerShow",
+            "concreteType": "Show",
             "plural": false,
             "selections": [
               v4,
               v3,
-              v10,
+              v12,
               v1
             ]
           },
@@ -780,7 +782,16 @@ return {
             "plural": false,
             "selections": [
               v3,
-              v10,
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "artworksConnection",
+                "storageKey": "artworksConnection(first:8)",
+                "args": v10,
+                "concreteType": "ArtworkConnection",
+                "plural": false,
+                "selections": v11
+              },
               v1
             ]
           }

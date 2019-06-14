@@ -3,7 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
 import { ArtworkContextFair_artwork$ref } from "./ArtworkContextFair_artwork.graphql";
-import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
+import { ArtworkContextShow_artwork$ref } from "./ArtworkContextShow_artwork.graphql";
 declare const _OtherWorks_artwork$ref: unique symbol;
 export type OtherWorks_artwork$ref = typeof _OtherWorks_artwork$ref;
 export type OtherWorks_artwork = {
@@ -15,7 +15,7 @@ export type OtherWorks_artwork = {
     readonly context: ({
         readonly __typename: string;
     }) | null;
-    readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref & ArtworkContextFair_artwork$ref & ArtworkContextPartnerShow_artwork$ref;
+    readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref & ArtworkContextFair_artwork$ref & ArtworkContextShow_artwork$ref;
     readonly " $refType": OtherWorks_artwork$ref;
 };
 
@@ -48,7 +48,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkContextPartnerShow_artwork",
+      "name": "ArtworkContextShow_artwork",
       "args": null
     },
     {
@@ -107,5 +107,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '586e3a8404448705d4dc248ff5ef2997';
+(node as any).hash = '1bb13c76c15c70b72ccc562789cd161a';
 export default node;
