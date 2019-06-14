@@ -110,7 +110,7 @@ describe("createMockNetworkLayer", () => {
       })
     } catch (e) {
       expect(e.message).toMatchInlineSnapshot(
-        `"RelayMockNetworkLayerError: A mock for field at path 'artwork/title' of type 'String' was expected but not found."`
+        `"RelayMockNetworkLayerError: A mock for field at path 'artwork/title' of type 'String' was expected for operation 'createMockNetworkLayerTestQuery', but none was found."`
       )
     }
   })
@@ -139,7 +139,7 @@ describe("createMockNetworkLayer", () => {
       })
     } catch (e) {
       expect(e.message).toMatchInlineSnapshot(
-        `"RelayMockNetworkLayerError: Expected mock value of type 'String' but got 'object' at path 'artwork/title'"`
+        `"RelayMockNetworkLayerError: Expected mock value of type 'String' but got 'object' at path 'artwork/title' for operation 'createMockNetworkLayerTestQuery'"`
       )
     }
   })
@@ -153,7 +153,7 @@ describe("createMockNetworkLayer", () => {
       })
     } catch (e) {
       expect(e.message).toMatchInlineSnapshot(
-        `"RelayMockNetworkLayerError: The value at path 'artwork' should be an object but is a number."`
+        `"RelayMockNetworkLayerError: The value at path 'artwork' for operation 'createMockNetworkLayerTestQuery' should be an object but is a number."`
       )
     }
   })
@@ -328,7 +328,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Ambiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+          `"RelayMockNetworkLayerError: Ambiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
         )
       }
     })
@@ -412,7 +412,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'ecommerceBuyerAcceptOffer/orderOrError/order'"`
+          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
         )
       }
     })
