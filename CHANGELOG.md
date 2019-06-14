@@ -1,3 +1,15 @@
+# v16.17.10 (Fri Jun 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add more context to mock relay errors (the operation name) [#2550](https://github.com/artsy/reaction/pull/2550) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.17.9 (Thu Jun 13 2019)
 
 #### 🐛  Bug Fix
