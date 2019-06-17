@@ -244,7 +244,7 @@ const NavBarContainer = styled(Flex)`
   background-color: ${color("white100")};
   border-bottom: 1px solid ${color("black10")};
   position: relative;
-  z-index: 1;
+  z-index: 3;
   height: ${NavBarHeight}px;
 `
 
