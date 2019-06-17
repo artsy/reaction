@@ -1,4 +1,5 @@
 import { ArticleProps } from "Components/Publishing/Article"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import React from "react"
 import styled from "styled-components"
 import { Header } from "../Header/Header"
@@ -33,13 +34,8 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section &&
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
-  const isSponsored = [
-    "partner_condensed_logo",
-    "partner_dark_logo",
-    "partner_light_logo",
-    "partner_logo_link",
-    "pixel_tracking_code",
-  ].some(prop => sponsor && sponsor[prop] != null)
+  const isSponsored = isEditorialSponsored(sponsor)
+
   const seriesOrSuper = isSuper || seriesArticle
 
   return (

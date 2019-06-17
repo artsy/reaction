@@ -1,9 +1,13 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
-import { SeriesArticle as SeriesArticleFixture } from "Components/Publishing/Fixtures/Articles"
+import {
+  SeriesArticle as SeriesArticleFixture,
+  SeriesArticleSponsored,
+} from "Components/Publishing/Fixtures/Articles"
 import { SeriesLayout } from "Components/Publishing/Layouts/SeriesLayout"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -44,6 +48,60 @@ describe("News Layout with new ads enabled", () => {
 })
 
 describe("data", () => {
+  it("renders the component with the correct targeting data properties on sponosred series landing pages", () => {
+    const isSponsored = isEditorialSponsored(SeriesArticleSponsored.sponsor)
+
+    const canvas = mount(
+      <NewDisplayCanvas
+        adDimension={
+          AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+        }
+        adUnit={
+          AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+        }
+        displayNewAds
+        isSeries
+        targetingData={targetingData(
+          SeriesArticleFixture.id,
+          isSponsored ? "sponsorlanding" : "standardseries"
+        )}
+      />
+    )
+
+    expect(canvas.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "sponsorlanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+  })
+
+  it("renders the component with the correct targeting data properties on non sponosred series landing pages", () => {
+    const isSponsored = isEditorialSponsored(SeriesArticleFixture.sponsor)
+
+    const canvas = mount(
+      <NewDisplayCanvas
+        adDimension={
+          AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+        }
+        adUnit={
+          AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+        }
+        displayNewAds
+        isSeries
+        targetingData={targetingData(
+          SeriesArticleFixture.id,
+          isSponsored ? "sponsorlanding" : "standardseries"
+        )}
+      />
+    )
+
+    expect(canvas.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "standardseries",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+  })
+
   it("renders the component with the correct data and properties on series landing pages on desktop", () => {
     const canvas = mount(
       <NewDisplayCanvas

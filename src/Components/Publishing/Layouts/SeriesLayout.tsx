@@ -10,6 +10,7 @@ import {
   SeriesTitleContainer,
 } from "Components/Publishing/Series/SeriesTitle"
 import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import React, { Component } from "react"
 import styled from "styled-components"
 
@@ -35,6 +36,7 @@ export class SeriesLayout extends Component<Props, null> {
     } = this.props
 
     const { hero_section, sponsor } = article
+    const isSponsored = isEditorialSponsored(sponsor)
     const backgroundUrl =
       hero_section && hero_section.url ? hero_section.url : ""
 
@@ -77,7 +79,10 @@ export class SeriesLayout extends Component<Props, null> {
                 : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
             }
             displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(article.id, "sponsorlanding")}
+            targetingData={targetingData(
+              article.id,
+              isSponsored ? "sponsorlanding" : "standardseries"
+            )}
             isSeries
           />
         )}
