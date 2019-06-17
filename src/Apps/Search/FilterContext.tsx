@@ -10,16 +10,14 @@ import React, {
 export interface FilterContextValues {
   setFilter: Dispatch<{ type: string; payload: any }>
   hasFilters: boolean
-  filters: {
-    keyword?: string
-    page: number
-  }
+  filters: Filters
 }
 
 interface FilterContextProps {
   children: ReactNode
   keyword?: string
   page?: number
+  medium?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -35,6 +33,7 @@ export const FilterContext = React.createContext<FilterContextValues>({
 interface Filters {
   page: number
   keyword?: string
+  medium?: string
 }
 
 const filterReducer: (
@@ -44,6 +43,8 @@ const filterReducer: (
   switch (action.type) {
     case "page":
       return { ...state, page: action.payload }
+    case "medium":
+      return { ...state, medium: action.payload }
     default:
       throw new Error("Unexpected action")
   }
@@ -53,10 +54,12 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   children,
   keyword,
   page: initialPage = 1,
+  medium: initialMedium = "",
 }) => {
   const initialFilters: Filters = {
     page: initialPage,
     keyword,
+    medium: initialMedium,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)

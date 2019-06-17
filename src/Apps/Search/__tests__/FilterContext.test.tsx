@@ -17,7 +17,7 @@ describe("FilterContext", () => {
       expect(wrapper.html()).toContain("current page: 1")
     })
 
-    it("updates page", () => {
+    it("updates page from children", () => {
       const wrapper = mount(
         <FilterContextProvider>
           <SubscribingFunctionComponent />
@@ -60,6 +60,59 @@ describe("FilterContext", () => {
     })
   })
 
+  describe("medium", () => {
+    it("Defaults to no medium if none passed", () => {
+      const wrapper = mount(
+        <FilterContextProvider>
+          <SubscribingFunctionComponent />
+        </FilterContextProvider>
+      )
+      expect(wrapper.html()).toContain("current medium: none")
+    })
+
+    it("Defaults to medium passed in if it exists", () => {
+      const wrapper = mount(
+        <FilterContextProvider medium="Photography">
+          <SubscribingFunctionComponent />
+        </FilterContextProvider>
+      )
+      expect(wrapper.html()).toContain("current medium: Photography")
+    })
+
+    it("updates medium from children", () => {
+      const wrapper = mount(
+        <FilterContextProvider>
+          <SubscribingFunctionComponent />
+        </FilterContextProvider>
+      )
+
+      const increment = wrapper.find("#medium")
+      increment.simulate("click")
+
+      expect(wrapper.html()).toContain("current medium: Sculpture")
+    })
+
+    it("hasFilters is false when medium is empty", () => {
+      const wrapper = mount(
+        <FilterContextProvider>
+          <SubscribingFunctionComponent />
+        </FilterContextProvider>
+      )
+
+      expect(wrapper.html()).toContain("hasFilters: false")
+    })
+
+    it("hasFilters is true when medium is not empty", () => {
+      const wrapper = mount(
+        <FilterContextProvider medium="Performance">
+          <SubscribingFunctionComponent />
+        </FilterContextProvider>
+      )
+
+      expect(wrapper.html()).toContain("hasFilters: false")
+    })
+  })
+
   describe("infrastructure", () => {
     it("Renders a class component that doesn't subscribe", () => {
       const wrapper = mount(
@@ -95,6 +148,7 @@ const SubscribingFunctionComponent: FC = () => {
     <div>
       <h1>function component using the custom hook</h1>
       <h2>current page: {context.filters.page}</h2>
+      <h2>current medium: {context.filters.medium || "none"}</h2>
       <h3>hasFilters: {context.hasFilters.toString()}</h3>
       <button
         id="increment"
@@ -103,9 +157,9 @@ const SubscribingFunctionComponent: FC = () => {
         }
       />
       <button
-        id="decrement"
+        id="medium"
         onClick={() =>
-          context.setFilter({ type: "page", payload: context.filters.page - 1 })
+          context.setFilter({ type: "medium", payload: "Sculpture" })
         }
       />
     </div>
@@ -130,10 +184,6 @@ class SubscribingClassComponent extends React.Component {
               <button
                 id="increment"
                 onClick={() => setFilter({ type: "page", payload: page + 1 })}
-              />
-              <button
-                id="decrement"
-                onClick={() => setFilter({ type: "page", payload: page - 1 })}
               />
             </div>
           )
