@@ -66,15 +66,9 @@ exports[`renders a series title properly 1`] = `
     <div
       className="c3 c4"
     >
-      <a
-        href="https://www.dior.com/home/en_us"
-        onClick={[Function]}
-        target="_blank"
-      >
-        <img
-          src={null}
-        />
-      </a>
+      <img
+        src={null}
+      />
     </div>
   </div>
 </div>
@@ -149,15 +143,9 @@ exports[`renders a series with children properly 1`] = `
     <div
       className="c3 c4"
     >
-      <a
-        href="https://www.dior.com/home/en_us"
-        onClick={[Function]}
-        target="_blank"
-      >
-        <img
-          src={null}
-        />
-      </a>
+      <img
+        src={null}
+      />
     </div>
   </div>
 </div>

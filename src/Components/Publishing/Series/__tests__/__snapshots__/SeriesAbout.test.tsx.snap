@@ -577,15 +577,9 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>
@@ -630,15 +624,9 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>
@@ -1224,15 +1212,9 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>
@@ -1270,15 +1252,9 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>
@@ -1867,15 +1843,9 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>
@@ -1920,15 +1890,9 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
           <div
             className="c8"
           >
-            <a
-              href="https://www.dior.com/home/en_us"
-              onClick={[Function]}
-              target="_blank"
-            >
-              <img
-                src={null}
-              />
-            </a>
+            <img
+              src={null}
+            />
           </div>
         </div>
       </div>

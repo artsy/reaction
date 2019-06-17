@@ -221,7 +221,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
 }
 
 .c8 {
-  background-image: url(https://www.dior.com/home/en_us);
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
   background-size: cover;
   background-position: 50%;
   position: fixed;
