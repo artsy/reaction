@@ -55,7 +55,7 @@ export class DateSource extends Component<Props> {
     const { news_source, published_at } = this.props.article
     return (
       <DateSourceContainer>
-        {getDate(published_at || new Date(), "verbose")}
+        {getDate(published_at || new Date().toISOString(), "verbose")}
         {this.getNewsSource(news_source)}
       </DateSourceContainer>
     )
