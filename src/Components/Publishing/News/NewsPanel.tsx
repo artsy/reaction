@@ -15,7 +15,7 @@ export const NewsPanel: React.SFC<Props> = props => {
     <NewsPanelContainer>
       <Header>
         <HeaderTitle>News</HeaderTitle>
-        <HeaderText>{getDate(new Date(), "monthDay")}</HeaderText>
+        <HeaderText>{getDate(new Date().toISOString(), "monthDay")}</HeaderText>
       </Header>
 
       <ArticlesContainer>
@@ -53,7 +53,7 @@ const Header = styled.div`
   position: relative;
 `
 
-const HeaderText = styled.div`
+export const HeaderText = styled.div`
   ${unica("s19", "medium")};
   ${pMedia.sm`
     ${unica("s16", "medium")}
