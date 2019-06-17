@@ -107,4 +107,11 @@ describe("FilterState", () => {
     }
     expect(instance.hasFilters).toEqual(true)
   })
+
+  it("returns hasFilters as true if a page is not default", () => {
+    instance.state = {
+      page: 4,
+    }
+    expect(instance.hasFilters).toEqual(true)
+  })
 })

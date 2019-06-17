@@ -129,10 +129,6 @@ export class FilterState extends Container<State> {
     })
   }
 
-  get filteredState() {
-    return omitBy(this.state, isNil)
-  }
-
   previousQueryString = ""
   pushHistory() {
     const currentQueryString = urlFragmentFromState(this.state)
@@ -148,6 +144,7 @@ export class FilterState extends Container<State> {
     }
   }
 
+  /* sjhsjhsjh done */
   setPage(page) {
     this.setState({ page }, () => {
       this.pushHistory()
