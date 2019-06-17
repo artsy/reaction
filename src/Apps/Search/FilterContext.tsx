@@ -1,7 +1,14 @@
-import React, { FC, ReactNode, useContext, useEffect, useState } from "react"
+import React, {
+  Dispatch,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react"
 
 export interface FilterContextValues {
-  setPage: (page: number) => void
+  setFilter: Dispatch<{ type: string; payload: any }>
   hasFilters: boolean
   filters: {
     keyword?: string
@@ -19,31 +26,50 @@ export const FilterContext = React.createContext<FilterContextValues>({
   filters: {
     page: 1,
   },
-  setPage() {
+  setFilter() {
     console.error("Shouldn't have gotten here.")
   },
   hasFilters: false,
 })
+
+interface Filters {
+  page: number
+  keyword?: string
+}
+
+const filterReducer: (
+  state: Filters,
+  action: { type: string; payload: any }
+) => Filters = (state, action) => {
+  switch (action.type) {
+    case "page":
+      return { ...state, page: action.payload }
+    default:
+      throw new Error("Unexpected action")
+  }
+}
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
   children,
   keyword,
   page: initialPage = 1,
 }) => {
-  const [page, setPage] = useState(initialPage)
+  const initialFilters: Filters = {
+    page: initialPage,
+    keyword,
+  }
+
+  const [state, dispatch] = useReducer(filterReducer, initialFilters)
 
   useEffect(() => {
     // TODO - do this correctly.
     console.log("page changed; push history here.")
-  }, [page])
+  }, [state.page])
 
   const value = {
-    filters: {
-      page,
-      keyword,
-    },
-    setPage,
-    hasFilters: page !== 1,
+    filters: state,
+    hasFilters: state.page !== 1,
+    setFilter: dispatch,
   }
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
