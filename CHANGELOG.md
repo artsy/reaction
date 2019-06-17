@@ -1,3 +1,55 @@
+# v16.17.11 (Mon Jun 17 2019)
+
+### Release Notes
+
+  _From #2547_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.16`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41416-Thu-Jun-13-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.15...v4.14.16)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Moves luxon to dependency [#&#8203;512](https://togithub.com/artsy/palette/pull/512) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### 📝  Documentation
+
+-   Create Home “naming” [#&#8203;474](https://togithub.com/artsy/palette/pull/474) ([@&#8203;nicoleyeo](https://togithub.com/nicoleyeo))
+-   Update Home “process” [#&#8203;479](https://togithub.com/artsy/palette/pull/479) ([@&#8203;nicoleyeo](https://togithub.com/nicoleyeo))
+
+##### Authors: 2
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+-   [@&#8203;nicoleyeo](https://togithub.com/nicoleyeo)
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Fixes date regression bug in News Header [#2554](https://github.com/artsy/reaction/pull/2554) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.16 to v4.14.17 [#2553](https://github.com/artsy/reaction/pull/2553) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.15 to v4.14.16 [#2547](https://github.com/artsy/reaction/pull/2547) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.10 (Fri Jun 14 2019)
 
 #### 🐛  Bug Fix
