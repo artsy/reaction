@@ -58,6 +58,29 @@ describe("FilterContext", () => {
 
       expect(wrapper.html()).toContain("hasFilters: true")
     })
+
+    it("unsets page from children", () => {
+      const Child: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>current page: {context.filters.page}</h2>
+            <button onClick={() => context.unsetFilter("page")} />
+          </div>
+        )
+      }
+
+      const wrapper = mount(
+        <FilterContextProvider page={4}>
+          <Child />
+        </FilterContextProvider>
+      )
+
+      const increment = wrapper.find("button")
+      increment.simulate("click")
+
+      expect(wrapper.html()).toContain("current page: 1")
+    })
   })
 
   describe("medium", () => {
@@ -110,6 +133,29 @@ describe("FilterContext", () => {
       )
 
       expect(wrapper.html()).toContain("hasFilters: false")
+    })
+
+    it("unsets medium from children", () => {
+      const Child: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>current medium: {context.filters.medium || "none"}</h2>
+            <button onClick={() => context.unsetFilter("medium")} />
+          </div>
+        )
+      }
+
+      const wrapper = mount(
+        <FilterContextProvider medium="Photography">
+          <Child />
+        </FilterContextProvider>
+      )
+
+      const increment = wrapper.find("button")
+      increment.simulate("click")
+
+      expect(wrapper.html()).toContain("current medium: none")
     })
   })
 

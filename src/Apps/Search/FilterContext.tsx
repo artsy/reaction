@@ -3,6 +3,7 @@ import { filterReducer } from "./filterReducer"
 
 export interface FilterContextValues {
   setFilter: (name: string, value: any) => void
+  unsetFilter: (name: string) => void
   hasFilters: boolean
   filters: Filters
 }
@@ -19,6 +20,9 @@ export const FilterContext = React.createContext<FilterContextValues>({
     page: 1,
   },
   setFilter() {
+    console.error("Shouldn't have gotten here.")
+  },
+  unsetFilter() {
     console.error("Shouldn't have gotten here.")
   },
   hasFilters: false,
@@ -54,6 +58,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     hasFilters: state.page !== 1,
     setFilter: (name, val) =>
       dispatch({ type: "set", payload: { name, value: val } }),
+    unsetFilter: name => dispatch({ type: "unset", payload: { name } }),
   }
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
