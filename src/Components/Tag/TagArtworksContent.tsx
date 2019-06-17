@@ -134,7 +134,7 @@ export default createPaginationContainer(
         $cursor: String
         $sort: String
       ) {
-        node(__id: $filteredArtworksNodeID) {
+        node(id: $filteredArtworksNodeID) {
           ...TagArtworksContent_filtered_artworks
             @arguments(count: $count, cursor: $cursor)
         }

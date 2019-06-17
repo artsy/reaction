@@ -136,7 +136,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $price_range: String
       $page: Int
     ) {
-      node(__id: $artistNodeID) {
+      node(id: $artistNodeID) {
         ... on Artist {
           ...ArtworkFilterRefetch_artist
             @arguments(

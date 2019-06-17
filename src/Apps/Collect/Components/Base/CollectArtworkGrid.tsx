@@ -153,7 +153,7 @@ export const CollectArtworkGridRefreshContainer = createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      filtered_artworks: node(__id: $filteredArtworksNodeID) {
+      filtered_artworks: node(id: $filteredArtworksNodeID) {
         ...CollectArtworkGrid_filtered_artworks
           @arguments(first: $first, after: $after)
       }

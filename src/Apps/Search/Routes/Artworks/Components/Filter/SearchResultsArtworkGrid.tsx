@@ -173,7 +173,7 @@ export const SearchResultsArtworkGridRefreshContainer = createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      filtered_artworks: node(__id: $filteredArtworksNodeID) {
+      filtered_artworks: node(id: $filteredArtworksNodeID) {
         ...SearchResultsArtworkGrid_filtered_artworks
           @arguments(first: $first, after: $after)
       }

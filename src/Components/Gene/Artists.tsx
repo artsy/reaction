@@ -234,7 +234,7 @@ export default createPaginationContainer(
         $cursor: String
         $aggregations: [ArtworkAggregation]
       ) {
-        node(__id: $geneNodeID) {
+        node(id: $geneNodeID) {
           ...Artists_gene
             @arguments(
               count: $count
