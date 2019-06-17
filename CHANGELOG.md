@@ -1,3 +1,20 @@
+# v16.17.13 (Mon Jun 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Fix navBar zIndex #trivial [#2559](https://github.com/artsy/reaction/pull/2559) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.17 to v4.14.18 [#2556](https://github.com/artsy/reaction/pull/2556) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.12 (Mon Jun 17 2019)
 
 #### 🐛  Bug Fix
