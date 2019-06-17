@@ -123,10 +123,6 @@ describe("data", () => {
     expect(canvas.props().displayNewAds).toBe(true)
 
     expect(canvas).toHaveLength(1)
-    canvas.find({ className: "htl-ad" })
-    canvas.find({ "data-sizes": "970x250" })
-    canvas.find({ "data-eager": true })
-    canvas.find({ "data-unit": "Desktop_TopLeaderboard" })
   })
 
   it("renders the component with the correct data and properties on series landing pages on mobile", () => {
@@ -146,9 +142,5 @@ describe("data", () => {
     expect(canvas.props().adUnit).toEqual("Mobile_InContentLB2")
     expect(canvas.props().displayNewAds).toBe(true)
     expect(canvas).toHaveLength(1)
-    canvas.find({ className: "htl-ad" })
-    canvas.find({ "data-sizes": "300x250" })
-    canvas.find({ "data-eager": true })
-    canvas.find({ "data-unit": "Desktop_TopLeaderboard" })
   })
 })

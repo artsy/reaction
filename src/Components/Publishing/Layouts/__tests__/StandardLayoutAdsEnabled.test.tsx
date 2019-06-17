@@ -79,10 +79,6 @@ describe("data", () => {
       post_id: "594a7e2254c37f00177c0ea9",
     })
     expect(canvas).toHaveLength(1)
-    canvas.find({ className: "htl-ad" })
-    canvas.find({ "data-sizes": "970x250" })
-    canvas.find({ "data-eager": true })
-    canvas.find({ "data-unit": "Desktop_TopLeaderboard" })
   })
 
   it("renders the panel component with the correct data and properties on standard articles", () => {
@@ -104,10 +100,6 @@ describe("data", () => {
       post_id: "594a7e2254c37f00177c0ea9",
     })
     expect(panel).toHaveLength(1)
-    panel.find({ className: "htl-ad" })
-    panel.find({ "data-sizes": "300x250" })
-    panel.find({ "data-eager": true })
-    panel.find({ "data-unit": "Desktop_RightRail1" })
   })
 
   it("renders the panel component with the correct data and properties on standard articles on mobile", () => {
@@ -129,10 +121,6 @@ describe("data", () => {
       post_id: "594a7e2254c37f00177c0ea9",
     })
     expect(panel).toHaveLength(1)
-    panel.find({ className: "htl-ad" })
-    panel.find({ "data-sizes": "300x250" })
-    panel.find({ "data-eager": true })
-    panel.find({ "data-unit": "Mobile_InContentMR1" })
   })
 
   it("renders the canvas component with the correct data and properties on standard articles on mobile", () => {
@@ -154,9 +142,5 @@ describe("data", () => {
       post_id: "594a7e2254c37f00177c0ea9",
     })
     expect(canvas).toHaveLength(1)
-    canvas.find({ className: "htl-ad" })
-    canvas.find({ "data-sizes": "300x250" })
-    canvas.find({ "data-eager": true })
-    canvas.find({ "data-unit": "Mobile_TopLeaderboard" })
   })
 })

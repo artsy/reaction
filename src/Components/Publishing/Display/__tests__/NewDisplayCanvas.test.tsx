@@ -43,9 +43,5 @@ describe("data", () => {
       post_id: "594a7e2254c37f00177c0ea9",
     })
     expect(canvas).toHaveLength(1)
-    canvas.find({ className: "htl-ad" })
-    canvas.find({ "data-sizes": "970x250" })
-    canvas.find({ "data-eager": true })
-    canvas.find({ "data-unit": "Desktop_TopLeaderboard" })
   })
 })
