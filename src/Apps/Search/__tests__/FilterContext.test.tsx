@@ -152,15 +152,11 @@ const SubscribingFunctionComponent: FC = () => {
       <h3>hasFilters: {context.hasFilters.toString()}</h3>
       <button
         id="increment"
-        onClick={() =>
-          context.setFilter({ type: "page", payload: context.filters.page + 1 })
-        }
+        onClick={() => context.setFilter("page", context.filters.page + 1)}
       />
       <button
         id="medium"
-        onClick={() =>
-          context.setFilter({ type: "medium", payload: "Sculpture" })
-        }
+        onClick={() => context.setFilter("medium", "Sculpture")}
       />
     </div>
   )
@@ -183,7 +179,7 @@ class SubscribingClassComponent extends React.Component {
               <h2>current page: {page}</h2>
               <button
                 id="increment"
-                onClick={() => setFilter({ type: "page", payload: page + 1 })}
+                onClick={() => setFilter("page", page + 1)}
               />
             </div>
           )

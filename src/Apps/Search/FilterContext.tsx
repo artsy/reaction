@@ -1,14 +1,8 @@
-import React, {
-  Dispatch,
-  FC,
-  ReactNode,
-  useContext,
-  useEffect,
-  useReducer,
-} from "react"
+import React, { FC, ReactNode, useContext, useEffect, useReducer } from "react"
+import { filterReducer } from "./filterReducer"
 
 export interface FilterContextValues {
-  setFilter: Dispatch<{ type: string; payload: any }>
+  setFilter: (name: string, value: any) => void
   hasFilters: boolean
   filters: Filters
 }
@@ -30,24 +24,10 @@ export const FilterContext = React.createContext<FilterContextValues>({
   hasFilters: false,
 })
 
-interface Filters {
+export interface Filters {
   page: number
   keyword?: string
   medium?: string
-}
-
-const filterReducer: (
-  state: Filters,
-  action: { type: string; payload: any }
-) => Filters = (state, action) => {
-  switch (action.type) {
-    case "page":
-      return { ...state, page: action.payload }
-    case "medium":
-      return { ...state, medium: action.payload }
-    default:
-      throw new Error("Unexpected action")
-  }
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -72,7 +52,8 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   const value = {
     filters: state,
     hasFilters: state.page !== 1,
-    setFilter: dispatch,
+    setFilter: (name, val) =>
+      dispatch({ type: "set", payload: { name, value: val } }),
   }
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
