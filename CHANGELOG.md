@@ -1,3 +1,15 @@
+# v16.17.12 (Mon Jun 17 2019)
+
+#### 🐛  Bug Fix
+
+- Updates date to isostring for luxon consumption [#2555](https://github.com/artsy/reaction/pull/2555) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.17.11 (Mon Jun 17 2019)
 
 ### Release Notes
