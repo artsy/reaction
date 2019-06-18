@@ -21,6 +21,7 @@ describe("FilterContext", () => {
     ${"major_periods"}    | ${[]}               | ${["1990"]}
     ${"partner_id"}       | ${undefined}        | ${"1234"}
     ${"sort"}             | ${"-decayed_merch"} | ${"some,other,sort"}
+    ${"price_range"}      | ${"*-*"}            | ${"100-4000"}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {

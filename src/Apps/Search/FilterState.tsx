@@ -3,23 +3,23 @@ import qs from "qs"
 import { Container } from "unstated"
 
 export interface State {
-  medium?: string
-  major_periods?: string[]
-  partner_id?: string
-  for_sale?: boolean
-  page?: number
-  sort?: string
-  offerable?: boolean
-  acquireable?: boolean
-  at_auction?: boolean
-  inquireable_only?: boolean
-  price_range?: string
+  medium?: string // x
+  major_periods?: string[] // x
+  partner_id?: string // x
+  for_sale?: boolean // x
+  page?: number // x
+  sort?: string // x
+  offerable?: boolean // x
+  acquireable?: boolean // x
+  at_auction?: boolean // x
+  inquireable_only?: boolean // x
+  price_range?: string // x
   height?: string
   width?: string
   attribution_class?: string[]
   artist_id?: string
   color?: string
-  keyword?: string
+  keyword?: string // x
 }
 
 export const initialState = {
@@ -60,6 +60,7 @@ export const urlFragmentFromState = (state: State) => {
   })
 }
 
+/* sjhsjhsjh done */
 // This is used to remove default state params that clutter up URLs.
 const isDefaultFilter = (filter, value): boolean => {
   if (filter === "major_periods" || filter === "attribution_class") {
@@ -123,6 +124,7 @@ export class FilterState extends Container<State> {
     }
   }
 
+  /* sjhsjhsjh done */
   get hasFilters() {
     return Object.entries(this.state).some(([key, value]) => {
       return !isDefaultFilter(key, value)
@@ -164,6 +166,7 @@ export class FilterState extends Container<State> {
     )
   }
 
+  /* sjhsjhsjh done */
   unsetFilter(filter) {
     let newPartialState = {}
     if (filter === "major_periods") {
@@ -194,6 +197,7 @@ export class FilterState extends Container<State> {
     })
   }
 
+  /* sjhsjhsjh done */
   setFilter(filter: keyof State, value) {
     let newPartialState = {}
 
@@ -232,6 +236,7 @@ export class FilterState extends Container<State> {
     })
   }
 
+  // TODO - this can be a check called "isDefaultValue".
   isRangeSelected(range: string): boolean {
     if (range === "price_range") {
       return this.state.price_range !== "*-*"
@@ -242,6 +247,8 @@ export class FilterState extends Container<State> {
     }
   }
 
+  // TODO - this doesn't really belong here. It's a util.
+  //   Or maybe it belongs attached to individual filters?
   rangeToTuple(range: string): [number, number] {
     let minStr: string
     let maxStr: string

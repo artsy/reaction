@@ -22,6 +22,7 @@ interface FilterContextProps {
   major_periods?: string[]
   partner_id?: string
   sort?: string
+  price_range?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -29,6 +30,7 @@ export const FilterContext = React.createContext<FilterContextValues>({
     page: 1,
     major_periods: [],
     sort: "-decayed_merch",
+    price_range: "*-*",
   },
   setFilter() {
     console.error("Shouldn't have gotten here.")
@@ -51,6 +53,7 @@ export interface Filters {
   major_periods: string[]
   partner_id?: string
   sort: string
+  price_range: string
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -66,6 +69,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   major_periods = [],
   partner_id,
   sort = "-decayed_merch",
+  price_range = "*-*",
 }) => {
   const initialFilters: Filters = {
     page,
@@ -79,6 +83,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     major_periods,
     partner_id,
     sort,
+    price_range,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -106,21 +111,36 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
 
 // TODO - loop through object.keys
 const hasFilters: (state: Filters) => boolean = state => {
-  if (
-    state.page !== 1 ||
-    state.medium ||
-    state.for_sale ||
-    state.offerable ||
-    state.acquireable ||
-    state.at_auction ||
-    state.inquireable_only ||
-    state.major_periods.length > 0 ||
-    state.partner_id ||
-    state.sort !== "-decayed_merch"
-  ) {
-    return true
+  return Object.entries(state).some(([key, value]) => {
+    return !isDefaultFilter(key, value)
+  })
+}
+
+const isDefaultFilter: (name: string, value: any) => boolean = (
+  name,
+  value
+) => {
+  if (name === "major_periods" || name === "attribution_class") {
+    return value.length === 0
   }
-  return false
+
+  if (name === "sort") {
+    return value === "-decayed_merch"
+  }
+
+  if (name === "medium") {
+    return value === "*" || !value
+  }
+
+  if (name === "price_range" || name === "height" || name === "width") {
+    return value === "*-*"
+  }
+
+  if (name === "page") {
+    return value === 1
+  }
+
+  return !value
 }
 
 export const useFilterContext = () => {
