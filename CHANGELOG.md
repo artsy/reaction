@@ -1,3 +1,15 @@
+# v16.17.17 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- Require targeting data prop on all display ad components [#2551](https://github.com/artsy/reaction/pull/2551) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.16 (Tue Jun 18 2019)
 
 #### 🐛  Bug Fix
