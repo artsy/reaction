@@ -1,6 +1,10 @@
 import { Box, Spacer } from "@artsy/palette"
 import { SearchResultsArtworkGrid_filtered_artworks } from "__generated__/SearchResultsArtworkGrid_filtered_artworks.graphql"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
+import {
+  FilterContextConsumer,
+  FilterContextValues,
+} from "Apps/Search/FilterContext"
 import { FilterState } from "Apps/Search/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -10,7 +14,6 @@ import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Subscribe } from "unstated"
 
 interface Props {
   columnCount: number | number[]
@@ -40,7 +43,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     // no-op
   }
 
-  loadNext = (filters: FilterState) => {
+  loadNext = (filterContext: FilterContextValues) => {
     const {
       filtered_artworks: {
         artworks: {
@@ -50,11 +53,11 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
     } = this.props
 
     if (hasNextPage) {
-      this.loadAfter(endCursor, filters.state.page + 1, filters)
+      this.loadAfter(endCursor, filterContext.filters.page + 1, filterContext)
     }
   }
 
-  loadAfter = (cursor, page, filters: FilterState) => {
+  loadAfter = (cursor, page, filterContext: FilterContextValues) => {
     this.toggleLoading(true)
 
     this.props.relay.refetch(
@@ -66,7 +69,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
       null,
       error => {
         this.toggleLoading(false)
-        filters.setPage(page)
+        filterContext.setFilter("page", page)
         if (error) {
           console.error(error)
         }
@@ -97,8 +100,8 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
       <SystemContextConsumer>
         {({ user, mediator }) => {
           return (
-            <Subscribe to={[FilterState]}>
-              {(filters: FilterState) => {
+            <FilterContextConsumer>
+              {(context: FilterContextValues) => {
                 return (
                   <LoadingArea isLoading={isLoading}>
                     <ArtworkGrid
@@ -108,7 +111,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                       itemMargin={40}
                       user={user}
                       mediator={mediator}
-                      onClearFilters={filters.resetFilters}
+                      onClearFilters={context.resetFilters}
                       emptyStateComponent={emptyStateComponent}
                       onBrickClick={this.trackBrickClick.bind(this)}
                     />
@@ -120,10 +123,10 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                         hasNextPage={artworks.pageInfo.hasNextPage}
                         pageCursors={artworks.pageCursors as any}
                         onClick={(cursor, page) => {
-                          this.loadAfter(cursor, page, filters)
+                          this.loadAfter(cursor, page, context)
                         }}
                         onNext={() => {
-                          this.loadNext(filters)
+                          this.loadNext(context)
                         }}
                         scrollTo="#jump--searchArtworkGrid"
                       />
@@ -131,7 +134,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                   </LoadingArea>
                 )
               }}
-            </Subscribe>
+            </FilterContextConsumer>
           )
         }}
       </SystemContextConsumer>

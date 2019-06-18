@@ -7,6 +7,9 @@ export interface FilterContextValues {
   unsetFilter: (name: string) => void
   hasFilters: boolean
   filters: Filters
+  resetFilters: () => void
+  isRangeSelected: (name: string) => boolean
+  rangeToTuple: (name: string) => [number, number]
 }
 
 interface FilterContextProps {
@@ -39,6 +42,17 @@ export const FilterContext = React.createContext<FilterContextValues>({
     console.error("Shouldn't have gotten here.")
   },
   hasFilters: false,
+  resetFilters() {
+    console.error("Shouldn't have gotten here.")
+  },
+  isRangeSelected(_name) {
+    console.error("Shouldn't have gotten here.")
+    return false
+  },
+  rangeToTuple(name) {
+    console.error("Shouldn't have gotten here.")
+    return [0, 0]
+  },
 })
 
 export interface Filters {
@@ -103,7 +117,14 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     setFilter: (name, val) =>
       dispatch({ type: "set", payload: { name, value: val } }),
     unsetFilter: name => dispatch({ type: "unset", payload: { name } }),
+    // TODO - implement!
+    resetFilters: () => {},
+    // TODO - implement!
+    isRangeSelected: () => false,
+    // TODO - implement/move!
+    rangeToTuple: range => rangeToTuple(state, range),
   }
+  console.log("sjh3", value)
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
   )
@@ -141,6 +162,40 @@ const isDefaultFilter: (name: string, value: any) => boolean = (
   }
 
   return !value
+}
+
+// TODO - this doesn't really belong here. It's a util.
+//   Or maybe it belongs attached to individual filters?
+export const MIN_PRICE = 50
+export const MAX_PRICE = 50000
+export const MIN_HEIGHT = 1
+export const MAX_HEIGHT = 120
+export const MIN_WIDTH = 1
+export const MAX_WIDTH = 120
+const rangeToTuple: (state: Filters, range: string) => [number, number] = (
+  state,
+  range
+) => {
+  let minStr: string
+  let maxStr: string
+  let min: number
+  let max: number
+  if (range === "price_range") {
+    ;[minStr, maxStr] = state.price_range.split("-")
+    min = minStr === "*" ? MIN_PRICE : Number(minStr)
+    max = maxStr === "*" ? MAX_PRICE : Number(maxStr)
+    // } else if (range === "height") {
+    //   ;[minStr, maxStr] = state.height.split("-")
+    //   min = minStr === "*" ? MIN_HEIGHT : Number(minStr)
+    //   max = maxStr === "*" ? MAX_HEIGHT : Number(maxStr)
+    // } else if (range === "width") {
+    //   ;[minStr, maxStr] = state.width.split("-")
+    //   min = minStr === "*" ? MIN_WIDTH : Number(minStr)
+    //   max = maxStr === "*" ? MAX_WIDTH : Number(maxStr)
+  } else {
+    ;[minStr, maxStr] = ["*", "*"]
+  }
+  return [min, max]
 }
 
 export const useFilterContext = () => {

@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SearchResultsRefetchContainer } from "./SearchResultsRefetch"
 
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterContextValues, Filters } from "Apps/Search/FilterContext"
 import { FilterContainer } from "./Filters"
 
 export interface SearchFilterContainerProps {
@@ -28,10 +28,10 @@ export class SearchResultsFilterContainer extends Component<
               user={user}
               mediums={mediumAggregation.counts as any}
             >
-              {(filters: FilterState) => (
+              {(filterContext: FilterContextValues) => (
                 <SearchResultsRefetchContainer
                   viewer={this.props.viewer}
-                  filtersState={filters.state}
+                  filtersState={filterContext.filters}
                   term={term}
                 />
               )}

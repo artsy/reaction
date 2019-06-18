@@ -1,9 +1,9 @@
 import { Radio, RadioGroup } from "@artsy/palette"
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterContextValues, Filters } from "Apps/Search/FilterContext"
 import React from "react"
 
 interface Props {
-  filters: FilterState
+  filterContext: FilterContextValues
   mediums: Array<{
     id: string
     name: string
@@ -12,16 +12,16 @@ interface Props {
 
 export class MediumFilter extends React.Component<Props> {
   onClick(value) {
-    const { filters } = this.props
-    filters.setFilter("medium", value)
+    const { filterContext } = this.props
+    filterContext.setFilter("medium", value)
   }
 
   render() {
-    const { mediums, filters } = this.props
+    const { mediums, filterContext } = this.props
     const allowedMediums =
       mediums && mediums.length ? mediums : hardcodedMediums
 
-    const selectedMedium = filters.state.medium
+    const selectedMedium = filterContext.filters.medium
 
     return (
       <RadioGroup

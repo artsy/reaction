@@ -1,20 +1,20 @@
 import { Radio, RadioGroup } from "@artsy/palette"
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterContextValues } from "Apps/Search/FilterContext"
 import React from "react"
 
 interface Props {
-  filters: FilterState
+  filterContext: FilterContextValues
   timePeriods?: string[]
 }
 
 export class TimePeriodFilter extends React.Component<Props> {
   onClick(value) {
-    const { filters } = this.props
-    filters.setFilter("major_periods", value)
+    const { filterContext } = this.props
+    filterContext.setFilter("major_periods", value)
   }
 
   render() {
-    const { timePeriods, filters } = this.props
+    const { timePeriods, filterContext } = this.props
 
     const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
       allowedPeriods.includes(timePeriod)
@@ -26,7 +26,7 @@ export class TimePeriodFilter extends React.Component<Props> {
       )
     })
 
-    const selectedPeriod = filters.state.major_periods[0]
+    const selectedPeriod = filterContext.filters.major_periods[0]
 
     return (
       <RadioGroup

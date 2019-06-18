@@ -1,5 +1,5 @@
 import { SearchResultsRefetch_viewer } from "__generated__/SearchResultsRefetch_viewer.graphql"
-import { FilterState } from "Apps/Search/FilterState"
+import { Filters } from "Apps/Search/FilterContext"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -7,7 +7,7 @@ import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { SearchResultsArtworkGridRefreshContainer as SearchArtworkGrid } from "./SearchResultsArtworkGrid"
 interface SearchRefetchProps {
-  filtersState: FilterState["state"]
+  filtersState: Filters
   viewer: SearchResultsRefetch_viewer
   relay: RelayRefetchProp
   term: string

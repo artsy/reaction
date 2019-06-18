@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Subscribe } from "unstated"
 
-import { FilterState } from "Apps/Search/FilterState"
 import { MobileActionSheet } from "../SearchResultsMobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
@@ -20,13 +18,17 @@ import {
   Spacer,
   Toggle,
 } from "@artsy/palette"
+import {
+  FilterContextConsumer,
+  FilterContextValues,
+} from "Apps/Search/FilterContext"
 import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
   user?: any
   mediums: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
-  children?: (filters: FilterState) => JSX.Element
+  children?: (filterContext: FilterContextValues) => JSX.Element
 }
 
 export interface FilterContainerState {
@@ -62,42 +64,42 @@ export class FilterContainer extends React.Component<
     })
   }
 
-  renderFilters(filters: FilterState) {
+  renderFilters(filterContext: FilterContextValues) {
     const { mediums, timePeriods } = this.props
 
     return (
       <Box pr={2}>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <WaysToBuyFilter filters={filters} />
+          <WaysToBuyFilter filterContext={filterContext} />
         </Flex>
 
         <Toggle label="Medium" expanded>
           <Flex flexDirection="column" alignItems="left" mb={1}>
-            <MediumFilter filters={filters} mediums={mediums} />
+            <MediumFilter filterContext={filterContext} mediums={mediums} />
           </Flex>
         </Toggle>
 
         <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
-            <PriceRangeFilter filters={filters} />
+            <PriceRangeFilter filterContext={filterContext} />
           </Flex>
         </Toggle>
 
         <Toggle label="Size">
           <Flex flexDirection="column" alignItems="left" my={1}>
-            <SizeRangeFilters filters={filters} />
+            <SizeRangeFilters filterContext={filterContext} />
           </Flex>
         </Toggle>
 
         <Toggle label="Color">
           <Flex flexDirection="column" alignItems="center" my={1}>
-            <ColorFilter filters={filters} />
+            <ColorFilter filterContext={filterContext} />
           </Flex>
         </Toggle>
         <Toggle label="Time period">
           <Flex flexDirection="column" alignItems="center" my={1}>
             <TimePeriodFilter
-              filters={filters}
+              filterContext={filterContext}
               timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
             />
           </Flex>
@@ -108,8 +110,8 @@ export class FilterContainer extends React.Component<
 
   render() {
     return (
-      <Subscribe to={[FilterState]}>
-        {(filters: FilterState) => {
+      <FilterContextConsumer>
+        {(context: FilterContextValues) => {
           return (
             <>
               {/** Mobile */}
@@ -117,7 +119,7 @@ export class FilterContainer extends React.Component<
                 <Mobile>
                   {this.state.showMobileActionSheet && (
                     <MobileActionSheet onClose={this.hideMobileActionSheet}>
-                      {this.renderFilters(filters)}
+                      {this.renderFilters(context)}
                     </MobileActionSheet>
                   )}
 
@@ -140,7 +142,7 @@ export class FilterContainer extends React.Component<
 
                   <Spacer mb={2} />
 
-                  {this.props.children(filters)}
+                  {this.props.children(context)}
                 </Mobile>
               </Media>
 
@@ -148,20 +150,20 @@ export class FilterContainer extends React.Component<
               <Media greaterThan="xs">
                 <Desktop>
                   <Box width="25%" mr={2}>
-                    {this.renderFilters(filters)}
+                    {this.renderFilters(context)}
                     <Separator mb={2} />
                   </Box>
                   <Box width="75%">
                     <span id="jump--searchArtworkGrid" />
 
-                    {this.props.children(filters)}
+                    {this.props.children(context)}
                   </Box>
                 </Desktop>
               </Media>
             </>
           )
         }}
-      </Subscribe>
+      </FilterContextConsumer>
     )
   }
 }

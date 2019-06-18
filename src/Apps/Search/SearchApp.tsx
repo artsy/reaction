@@ -4,7 +4,6 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
 import { SearchMeta } from "Apps/Search/Components/SearchMeta"
-import { FilterState } from "Apps/Search/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -14,9 +13,9 @@ import {
 import { Location } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Provider } from "unstated"
 import { get } from "Utils/get"
 import { ZeroState } from "./Components/ZeroState"
+import { FilterContextProvider } from "./FilterContext"
 
 export interface Props {
   viewer: SearchApp_viewer
@@ -100,14 +99,7 @@ export class SearchApp extends React.Component<Props> {
     const hasResults = !!(countWithoutArtworks || artworkCount)
 
     return (
-      <Provider
-        inject={[
-          new FilterState({
-            ...query,
-            keyword: term,
-          }),
-        ]}
-      >
+      <FilterContextProvider {...query} keyword={term}>
         <AppContainer>
           <HorizontalPadding>
             {/* NOTE: react-head automatically moves these tags to the <head> element */}
@@ -126,7 +118,7 @@ export class SearchApp extends React.Component<Props> {
             <Spacer mb={3} />
           </HorizontalPadding>
         </AppContainer>
-      </Provider>
+      </FilterContextProvider>
     )
   }
 }

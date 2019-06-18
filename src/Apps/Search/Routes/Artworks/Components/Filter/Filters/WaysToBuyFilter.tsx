@@ -1,25 +1,25 @@
 import { Box, Checkbox, Sans, Spacer } from "@artsy/palette"
-import { FilterState, State } from "Apps/Search/FilterState"
+import { FilterContextValues, Filters } from "Apps/Search/FilterContext"
 import React from "react"
 
 interface WayToBuy {
   disabled: any
   name: string
-  state: keyof State
+  state: keyof Filters
 }
 
 interface Props {
-  filters: FilterState
+  filterContext: FilterContextValues
 }
 
 export class WaysToBuyFilter extends React.Component<Props> {
   onSelect(type, value) {
-    const { filters } = this.props
-    filters.setFilter(type, value)
+    const { filterContext } = this.props
+    filterContext.setFilter(type, value)
   }
 
   render() {
-    const { filters } = this.props
+    const { filterContext } = this.props
     const ways: WayToBuy[] = [
       {
         disabled: false,
@@ -32,7 +32,7 @@ export class WaysToBuyFilter extends React.Component<Props> {
         state: "offerable",
       },
       {
-        disabled: filters.isRangeSelected("price_range"),
+        disabled: filterContext.isRangeSelected("price_range"),
         name: "Bid",
         state: "at_auction",
       },
@@ -49,9 +49,8 @@ export class WaysToBuyFilter extends React.Component<Props> {
           disabled: way.disabled,
           key: index,
           onSelect: value => this.onSelect(way.state, value),
-          selected: filters.state[way.state],
+          selected: filterContext.filters[way.state] as boolean,
         }
-
         return <Checkbox {...props}>{way.name}</Checkbox>
       })
 
