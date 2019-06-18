@@ -1,3 +1,15 @@
+# v16.17.19 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- remove a/b test tracking logic [#2563](https://github.com/artsy/reaction/pull/2563) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.17.18 (Tue Jun 18 2019)
 
 #### 🐛  Bug Fix
