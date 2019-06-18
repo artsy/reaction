@@ -33,6 +33,8 @@ export const initialValueForField: (name: string) => any = name => {
       return 1
     case "major_periods":
       return []
+    case "sort":
+      return "-decayed_merch"
     default:
       return undefined
   }

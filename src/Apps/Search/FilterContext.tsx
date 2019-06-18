@@ -21,12 +21,14 @@ interface FilterContextProps {
   inquireable_only?: boolean
   major_periods?: string[]
   partner_id?: string
+  sort?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
   filters: {
     page: 1,
     major_periods: [],
+    sort: "-decayed_merch",
   },
   setFilter() {
     console.error("Shouldn't have gotten here.")
@@ -48,6 +50,7 @@ export interface Filters {
   inquireable_only?: boolean
   major_periods: string[]
   partner_id?: string
+  sort: string
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -62,6 +65,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   inquireable_only,
   major_periods = [],
   partner_id,
+  sort = "-decayed_merch",
 }) => {
   const initialFilters: Filters = {
     page,
@@ -74,6 +78,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     inquireable_only,
     major_periods,
     partner_id,
+    sort,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -110,7 +115,8 @@ const hasFilters: (state: Filters) => boolean = state => {
     state.at_auction ||
     state.inquireable_only ||
     state.major_periods.length > 0 ||
-    state.partner_id
+    state.partner_id ||
+    state.sort !== "-decayed_merch"
   ) {
     return true
   }

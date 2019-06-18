@@ -10,16 +10,17 @@ import {
 
 describe("FilterContext", () => {
   describe.each`
-    field                 | defaultValue | nonDefaultValue
-    ${"page"}             | ${1}         | ${4}
-    ${"medium"}           | ${undefined} | ${"Photography"}
-    ${"for_sale"}         | ${undefined} | ${true}
-    ${"offerable"}        | ${undefined} | ${true}
-    ${"acquireable"}      | ${undefined} | ${true}
-    ${"at_auction"}       | ${undefined} | ${true}
-    ${"inquireable_only"} | ${undefined} | ${true}
-    ${"major_periods"}    | ${[]}        | ${["1990"]}
-    ${"partner_id"}       | ${undefined} | ${"1234"}
+    field                 | defaultValue        | nonDefaultValue
+    ${"page"}             | ${1}                | ${4}
+    ${"medium"}           | ${undefined}        | ${"Photography"}
+    ${"for_sale"}         | ${undefined}        | ${true}
+    ${"offerable"}        | ${undefined}        | ${true}
+    ${"acquireable"}      | ${undefined}        | ${true}
+    ${"at_auction"}       | ${undefined}        | ${true}
+    ${"inquireable_only"} | ${undefined}        | ${true}
+    ${"major_periods"}    | ${[]}               | ${["1990"]}
+    ${"partner_id"}       | ${undefined}        | ${"1234"}
+    ${"sort"}             | ${"-decayed_merch"} | ${"some,other,sort"}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {
