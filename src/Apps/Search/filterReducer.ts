@@ -27,18 +27,18 @@ const setFilterReducer: (state: Filters, payload: FilterPayload) => Filters = (
   return { ...state, [payload.name]: payload.value }
 }
 
+export const initialValueForField: (name: string) => any = name => {
+  switch (name) {
+    case "page":
+      return 1
+    default:
+      return undefined
+  }
+}
+
 const unsetFilterReducer: (
   state: Filters,
   payload: FilterPayload
 ) => Filters = (state, payload) => {
-  switch (payload.name) {
-    case "page":
-      return { ...state, page: 1 }
-    case "medium":
-      return { ...state, medium: undefined }
-    case "for_sale":
-      return { ...state, for_sale: undefined }
-    case "offerable":
-      return { ...state, offerable: undefined }
-  }
+  return { ...state, [payload.name]: initialValueForField(payload.name) }
 }

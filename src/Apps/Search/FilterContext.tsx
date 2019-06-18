@@ -16,6 +16,9 @@ interface FilterContextProps {
   medium?: string
   for_sale?: boolean
   offerable?: boolean
+  acquireable?: boolean
+  at_auction?: boolean
+  inquireable_only?: boolean
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -37,6 +40,9 @@ export interface Filters {
   medium?: string
   for_sale?: boolean
   offerable?: boolean
+  acquireable?: boolean
+  at_auction?: boolean
+  inquireable_only?: boolean
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -46,6 +52,9 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   medium = "",
   for_sale,
   offerable,
+  acquireable,
+  at_auction,
+  inquireable_only,
 }) => {
   const initialFilters: Filters = {
     page,
@@ -53,6 +62,9 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     medium,
     for_sale,
     offerable,
+    acquireable,
+    at_auction,
+    inquireable_only,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -79,7 +91,15 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
 
 // TODO - loop through object.keys
 const hasFilters: (Filters) => boolean = state => {
-  if (state.page !== 1 || state.medium || state.for_sale || state.offerable) {
+  if (
+    state.page !== 1 ||
+    state.medium ||
+    state.for_sale ||
+    state.offerable ||
+    state.acquireable ||
+    state.at_auction ||
+    state.inquireable_only
+  ) {
     return true
   }
   return false

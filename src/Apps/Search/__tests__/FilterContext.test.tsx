@@ -209,7 +209,13 @@ describe("FilterContext", () => {
   })
 
   describe("ways to buy", () => {
-    const waysToBuyFields = ["for_sale", "offerable"]
+    const waysToBuyFields = [
+      "for_sale",
+      "offerable",
+      "acquireable",
+      "at_auction",
+      "inquireable_only",
+    ]
     it.each(waysToBuyFields)("Defaults to no %s if none passed", name => {
       const Subscriber: FC = () => {
         const context = useFilterContext()
