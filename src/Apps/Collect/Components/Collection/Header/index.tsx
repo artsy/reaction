@@ -278,10 +278,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     </Col>
                     <Col
                       sm={12}
-                      md={isColumnLayout ? "12" : "3"}
-                      mdOffset={isColumnLayout ? null : 1}
-                      lgOffset={isColumnLayout ? null : 1}
-                      xlOffset={isColumnLayout ? null : 1}
+                      md={12}
+                      mdOffset={null}
+                      lgOffset={null}
+                      xlOffset={null}
                     >
                       {featuredArtists.length > 0 && (
                         <Box pb={10}>
