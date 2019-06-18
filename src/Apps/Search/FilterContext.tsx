@@ -14,6 +14,8 @@ interface FilterContextProps {
   keyword?: string
   page?: number
   medium?: string
+  for_sale?: boolean
+  offerable?: boolean
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -33,18 +35,24 @@ export interface Filters {
   page: number
   keyword?: string
   medium?: string
+  for_sale?: boolean
+  offerable?: boolean
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
   children,
   keyword,
-  page: initialPage = 1,
-  medium: initialMedium = "",
+  page = 1,
+  medium = "",
+  for_sale,
+  offerable,
 }) => {
   const initialFilters: Filters = {
-    page: initialPage,
+    page,
     keyword,
-    medium: initialMedium,
+    medium,
+    for_sale,
+    offerable,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -59,7 +67,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
 
   const value = {
     filters: state,
-    hasFilters: state.page !== 1,
+    hasFilters: hasFilters(state),
     setFilter: (name, val) =>
       dispatch({ type: "set", payload: { name, value: val } }),
     unsetFilter: name => dispatch({ type: "unset", payload: { name } }),
@@ -67,6 +75,14 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
   )
+}
+
+// TODO - loop through object.keys
+const hasFilters: (Filters) => boolean = state => {
+  if (state.page !== 1 || state.medium || state.for_sale || state.offerable) {
+    return true
+  }
+  return false
 }
 
 export const useFilterContext = () => {

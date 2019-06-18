@@ -24,14 +24,7 @@ const setFilterReducer: (state: Filters, payload: FilterPayload) => Filters = (
   state,
   payload
 ) => {
-  switch (payload.name) {
-    case "page":
-      return { ...state, page: payload.value }
-    case "medium":
-      return { ...state, medium: payload.value }
-    default:
-      throw new Error("Unexpected property")
-  }
+  return { ...state, [payload.name]: payload.value }
 }
 
 const unsetFilterReducer: (
@@ -43,5 +36,9 @@ const unsetFilterReducer: (
       return { ...state, page: 1 }
     case "medium":
       return { ...state, medium: undefined }
+    case "for_sale":
+      return { ...state, for_sale: undefined }
+    case "offerable":
+      return { ...state, offerable: undefined }
   }
 }

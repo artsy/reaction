@@ -181,7 +181,7 @@ describe("FilterContext", () => {
         </FilterContextProvider>
       )
 
-      expect(wrapper.html()).toContain("hasFilters: false")
+      expect(wrapper.html()).toContain("hasFilters: true")
     })
 
     it("unsets medium from children", () => {
@@ -206,6 +206,123 @@ describe("FilterContext", () => {
 
       expect(wrapper.html()).toContain("current medium: none")
     })
+  })
+
+  describe("ways to buy", () => {
+    const waysToBuyFields = ["for_sale", "offerable"]
+    it.each(waysToBuyFields)("Defaults to no %s if none passed", name => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <h2>
+            current {name}: {context.filters[name] || "none"}
+          </h2>
+        )
+      }
+
+      const wrapper = mount(
+        <FilterContextProvider>
+          <Subscriber />
+        </FilterContextProvider>
+      )
+
+      expect(wrapper.html()).toContain(`current ${name}: none`)
+    })
+
+    it.each(waysToBuyFields)("Defaults to %s passed in if it exists", name => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <h2>
+            current {name}: {(context.filters[name] || "none").toString()}
+          </h2>
+        )
+      }
+
+      const initialValues = { [name]: true }
+      const wrapper = mount(
+        <FilterContextProvider {...initialValues}>
+          <Subscriber />
+        </FilterContextProvider>
+      )
+
+      expect(wrapper.html()).toContain(`current ${name}: true`)
+    })
+
+    it.each(waysToBuyFields)("sets %s from children", name => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>
+              current {name}: {(context.filters[name] || "none").toString()}
+            </h2>
+            <button onClick={() => context.setFilter(name, true)} />
+          </div>
+        )
+      }
+
+      const wrapper = mount(
+        <FilterContextProvider>
+          <Subscriber />
+        </FilterContextProvider>
+      )
+
+      const increment = wrapper.find("button")
+      increment.simulate("click")
+
+      expect(wrapper.html()).toContain(`current ${name}: true`)
+    })
+
+    it.each(waysToBuyFields)("unsets %s from children", name => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>
+              current {name}: {(context.filters[name] || "none").toString()}
+            </h2>
+            <button onClick={() => context.unsetFilter(name)} />
+          </div>
+        )
+      }
+
+      const initialValues = { [name]: true }
+      const wrapper = mount(
+        <FilterContextProvider {...initialValues}>
+          <Subscriber />
+        </FilterContextProvider>
+      )
+
+      const increment = wrapper.find("button")
+      increment.simulate("click")
+
+      expect(wrapper.html()).toContain(`current ${name}: none`)
+    })
+
+    it.each(waysToBuyFields)("hasFilters is false when %s is empty", _name => {
+      const wrapper = mount(
+        <FilterContextProvider>
+          <HasFiltersSubscriber />
+        </FilterContextProvider>
+      )
+
+      expect(wrapper.html()).toContain("hasFilters: false")
+    })
+
+    it.each(waysToBuyFields)(
+      "hasFilters is true when %s is not empty",
+      name => {
+        const initialValues = { [name]: true }
+        const wrapper = mount(
+          <FilterContextProvider {...initialValues}>
+            <HasFiltersSubscriber />
+          </FilterContextProvider>
+        )
+
+        expect(wrapper.html()).toContain("hasFilters: true")
+      }
+    )
   })
 
   describe("infrastructure", () => {
