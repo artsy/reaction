@@ -51,8 +51,32 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     return isReadMoreExpanded || hasNoBio
   }
 
+  shouldShowCollectionsRail(collections, artistID): boolean {
+    const hasFeaturedArtistContent: boolean = collections.some(
+      collection => collection.is_featured_artist_content
+    )
+
+    const artistInCollectionQuery: boolean = collections.some(
+      collection =>
+        collection.query &&
+        collection.query.artist_ids &&
+        collection.query.artist_ids.includes(artistID)
+    )
+
+    if (!hasFeaturedArtistContent) {
+      return false
+    }
+
+    if (artistInCollectionQuery || hasFeaturedArtistContent) {
+      return true
+    }
+
+    return false
+  }
+
   render() {
     const { artist } = this.props
+    const { marketingCollections } = artist
 
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
@@ -64,6 +88,11 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       !showArtistBio &&
       !showCurrentEvent &&
       !showConsignable
+    const artistID = artist._id
+    const showArtistCollectionsRail =
+      (marketingCollections || []).length > 0
+        ? this.shouldShowCollectionsRail(marketingCollections, artistID)
+        : false
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
@@ -132,11 +161,13 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
               {!hideMainOverviewSection && <Spacer mb={4} />}
 
-              <div>
-                <Separator mb={3} />
-                <ArtistCollectionsRail artistID={artist._id} />
-                <Spacer mb={3} />
-              </div>
+              {showArtistCollectionsRail && (
+                <div>
+                  <Separator mb={3} />
+                  <ArtistCollectionsRail artistID={artistID} />
+                  <Spacer mb={3} />
+                </div>
+              )}
 
               <Row>
                 <Col>
@@ -153,7 +184,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                 <Row>
                   <Col>
                     <Separator mt={6} mb={4} />
-                    <ArtistRecommendations artistID={artist._id} />
+                    <ArtistRecommendations artistID={artistID} />
                   </Col>
                 </Row>
               )}
@@ -207,6 +238,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             page: $page
           )
         id
+        _id
         counts {
           partner_shows
         }
@@ -239,6 +271,13 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         }
         _id
         collections
+        marketingCollections {
+          id
+          is_featured_artist_content
+          query {
+            artist_ids
+          }
+        }
         highlights {
           partners(
             first: 10

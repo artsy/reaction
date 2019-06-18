@@ -11,6 +11,7 @@ declare const _Overview_artist$ref: unique symbol;
 export type Overview_artist$ref = typeof _Overview_artist$ref;
 export type Overview_artist = {
     readonly id: string;
+    readonly _id: string;
     readonly counts: ({
         readonly partner_shows: any | null;
     }) | null;
@@ -39,8 +40,14 @@ export type Overview_artist = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly _id: string;
     readonly collections: ReadonlyArray<string | null> | null;
+    readonly marketingCollections: ReadonlyArray<({
+        readonly id: string;
+        readonly is_featured_artist_content: boolean;
+        readonly query: {
+            readonly artist_ids: ReadonlyArray<string> | null;
+        };
+    }) | null> | null;
     readonly highlights: ({
         readonly partners: ({
             readonly edges: ReadonlyArray<({
@@ -79,7 +86,14 @@ v1 = {
 v2 = [
   v0,
   v1
-];
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "Overview_artist",
@@ -167,7 +181,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_consignable",
+      "name": "href",
       "args": null,
       "storageKey": null
     },
@@ -265,6 +279,13 @@ return {
     },
     v0,
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "_id",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "counts",
@@ -283,16 +304,16 @@ return {
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
-    },
-    {
       "kind": "FragmentSpread",
       "name": "CurrentEvent_artist",
       "args": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_consignable",
+      "args": null,
+      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -437,16 +458,48 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "collections",
       "args": null,
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "collections",
+      "name": "marketingCollections",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "MarketingCollection",
+      "plural": true,
+      "selections": [
+        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_featured_artist_content",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "query",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "MarketingCollectionQuery",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "artist_ids",
+              "args": null,
+              "storageKey": null
+            },
+            v3
+          ]
+        },
+        v3
+      ]
     },
     {
       "kind": "LinkedField",
@@ -551,5 +604,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '66e52eeb241873536e1650cc837041bd';
+(node as any).hash = 'b76b52fe196229ccd5a8c96ddab076e2';
 export default node;
