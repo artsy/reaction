@@ -23,8 +23,8 @@ describe("SortTypes", () => {
       const values = options.map(o => o.value)
       expect(values).toEqual([
         "-decayed_merch",
-        "price_missing,-prices",
-        "price_missing,prices",
+        "sold,price_missing,-prices",
+        "sold,price_missing,prices",
         "-partner_updated_at",
         "-published_at",
         "-year",

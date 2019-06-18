@@ -13,8 +13,8 @@ const sorts = {
   ],
   collection: [
     { value: "-decayed_merch", text: "Default" },
-    { value: "price_missing,-prices", text: "Price (desc.)" },
-    { value: "price_missing,prices", text: "Price (asc.)" },
+    { value: "sold,price_missing,-prices", text: "Price (desc.)" },
+    { value: "sold,price_missing,prices", text: "Price (asc.)" },
     { value: "-partner_updated_at", text: "Recently updated" },
     { value: "-published_at", text: "Recently added" },
     { value: "-year", text: "Artwork year (desc.)" },
