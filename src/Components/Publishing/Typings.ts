@@ -63,7 +63,7 @@ export enum AdDimension {
   Desktop_NewsLanding_LeaderboardRepeat = "970x250",
   Mobile_Feature_InContentLeaderboard1 = "300x50",
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "970x250",
-  Mobile_TopLeaderboard = "300x250",
+  Mobile_TopLeaderboard = "300x50",
   Mobile_InContentMR1 = "300x250",
   Mobile_InContentMR2 = "300x250",
   Mobile_IncontentMRRepeat = "300x250",

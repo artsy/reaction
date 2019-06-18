@@ -9,6 +9,7 @@ import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import {
   VideoContainer,
   VideoPlayer,
@@ -86,6 +87,7 @@ export class VideoLayout extends Component<Props, State> {
     } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
+    const isSponsored = isEditorialSponsored(sponsor)
     const seriesLink =
       seriesArticle && getEditorialHref("series", seriesArticle.slug)
 
@@ -135,7 +137,10 @@ export class VideoLayout extends Component<Props, State> {
                 : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
             }
             displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(article.id, "sponsorlanding")}
+            targetingData={targetingData(
+              article.id,
+              isSponsored ? "sponsorfeature" : "video"
+            )}
             isSeries
           />
         )}

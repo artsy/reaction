@@ -1,4 +1,6 @@
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayPanel } from "Components/Publishing/Display/NewDisplayPanel"
+import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -15,6 +17,7 @@ describe("snapshot", () => {
           adDimension={StandardArticleHostedAdPanel.adDimension}
           adUnit={StandardArticleHostedAdPanel.adUnit}
           displayNewAds={true}
+          targetingData={targetingData(StandardArticle.id, "article")}
         />
       )
       .toJSON()
@@ -29,15 +32,12 @@ describe("data", () => {
         adDimension={StandardArticleHostedAdPanel.adDimension}
         adUnit={StandardArticleHostedAdPanel.adUnit}
         displayNewAds={true}
+        targetingData={targetingData(StandardArticle.id, "article")}
       />
     )
 
     expect(panel.props().adDimension).toEqual("300x250")
     expect(panel.props().adUnit).toEqual("Desktop_RightRail1")
     expect(panel.props().displayNewAds).toBe(true)
-    panel.find({ className: "htl-ad" })
-    panel.find({ "data-sizes": "300x250" })
-    panel.find({ "data-eager": true })
-    panel.find({ "data-unit": "Desktop_RightRail1" })
   })
 })

@@ -1,4 +1,5 @@
 import { Box } from "@artsy/palette"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
@@ -23,6 +24,7 @@ interface Props {
   isMobile?: boolean
   showTooltips?: boolean
   areHostedAdsEnabled?: boolean
+  isSponsored?: boolean
 }
 
 interface State {
@@ -227,7 +229,7 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, areHostedAdsEnabled, isMobile } = this.props
+    const { article, areHostedAdsEnabled, isMobile, isSponsored } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let firstAdInjected = false
     let placementCount = 1
@@ -276,6 +278,10 @@ export class Sections extends Component<Props, State> {
                   : AdDimension.Desktop_NewsLanding_Leaderboard1
               }
               displayNewAds
+              targetingData={targetingData(
+                article.id,
+                isSponsored ? "sponsorfeature" : "feature"
+              )}
             />
           </AdWrapper>
         )

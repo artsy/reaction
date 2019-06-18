@@ -170,6 +170,44 @@ describe("Sections", () => {
       expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
     })
 
+    it("it injects display ads with correct targeting data if not sponsored feature", () => {
+      props.article = FeatureArticleHostedAds
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      props.isSponsored = false
+      const wrapper = mountWrapper(props)
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .first()
+          .props().targetingData
+      ).toEqual({
+        is_testing: true,
+        page_type: "feature",
+        post_id: "594a7e2254c37f00177c0ea9",
+      })
+    })
+
+    it("it injects display ads with correct targeting data if sponsored feature", () => {
+      props.article = FeatureArticleHostedAds
+      props.isMobile = false
+      props.areHostedAdsEnabled = true
+      props.isSponsored = true
+      const wrapper = mountWrapper(props)
+
+      expect(
+        wrapper
+          .find(NewDisplayCanvas)
+          .first()
+          .props().targetingData
+      ).toEqual({
+        is_testing: true,
+        page_type: "sponsorfeature",
+        post_id: "594a7e2254c37f00177c0ea9",
+      })
+    })
+
     it("it injects display ads after correct sections if feature", () => {
       props.article = FeatureArticleHostedAds
       props.isMobile = false
