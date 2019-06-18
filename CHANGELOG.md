@@ -1,3 +1,15 @@
+# v16.17.16 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] Related collections rail [#2489](https://github.com/artsy/reaction/pull/2489) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.17.15 (Mon Jun 17 2019)
 
 
