@@ -19,6 +19,7 @@ describe("FilterContext", () => {
     ${"at_auction"}       | ${undefined} | ${true}
     ${"inquireable_only"} | ${undefined} | ${true}
     ${"major_periods"}    | ${[]}        | ${["1990"]}
+    ${"partner_id"}       | ${undefined} | ${"1234"}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {

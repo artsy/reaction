@@ -20,6 +20,7 @@ interface FilterContextProps {
   at_auction?: boolean
   inquireable_only?: boolean
   major_periods?: string[]
+  partner_id?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -46,6 +47,7 @@ export interface Filters {
   at_auction?: boolean
   inquireable_only?: boolean
   major_periods: string[]
+  partner_id?: string
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -59,6 +61,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   at_auction,
   inquireable_only,
   major_periods = [],
+  partner_id,
 }) => {
   const initialFilters: Filters = {
     page,
@@ -70,6 +73,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     at_auction,
     inquireable_only,
     major_periods,
+    partner_id,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -105,7 +109,8 @@ const hasFilters: (state: Filters) => boolean = state => {
     state.acquireable ||
     state.at_auction ||
     state.inquireable_only ||
-    state.major_periods.length > 0
+    state.major_periods.length > 0 ||
+    state.partner_id
   ) {
     return true
   }
