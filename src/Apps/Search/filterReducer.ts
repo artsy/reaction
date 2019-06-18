@@ -31,6 +31,8 @@ export const initialValueForField: (name: string) => any = name => {
   switch (name) {
     case "page":
       return 1
+    case "major_periods":
+      return []
     default:
       return undefined
   }

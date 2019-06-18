@@ -19,11 +19,13 @@ interface FilterContextProps {
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
+  major_periods?: string[]
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
   filters: {
     page: 1,
+    major_periods: [],
   },
   setFilter() {
     console.error("Shouldn't have gotten here.")
@@ -43,6 +45,7 @@ export interface Filters {
   acquireable?: boolean
   at_auction?: boolean
   inquireable_only?: boolean
+  major_periods: string[]
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -55,6 +58,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   acquireable,
   at_auction,
   inquireable_only,
+  major_periods = [],
 }) => {
   const initialFilters: Filters = {
     page,
@@ -65,13 +69,15 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     acquireable,
     at_auction,
     inquireable_only,
+    major_periods,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
   const isMounted = useDidMount()
 
+  // TODO - do this correctly. The effect needs to run any time _ANY_ of the filters change;
+  //   It also needs to call history.pushState instead of console.log.
   useEffect(() => {
-    // TODO - do this correctly.
     if (isMounted) {
       console.log("page changed; push history here.")
     }
@@ -90,7 +96,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
 }
 
 // TODO - loop through object.keys
-const hasFilters: (Filters) => boolean = state => {
+const hasFilters: (state: Filters) => boolean = state => {
   if (
     state.page !== 1 ||
     state.medium ||
@@ -98,7 +104,8 @@ const hasFilters: (Filters) => boolean = state => {
     state.offerable ||
     state.acquireable ||
     state.at_auction ||
-    state.inquireable_only
+    state.inquireable_only ||
+    state.major_periods.length > 0
   ) {
     return true
   }

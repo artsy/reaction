@@ -18,13 +18,15 @@ describe("FilterContext", () => {
     ${"acquireable"}      | ${undefined} | ${true}
     ${"at_auction"}       | ${undefined} | ${true}
     ${"inquireable_only"} | ${undefined} | ${true}
+    ${"major_periods"}    | ${[]}        | ${["1990"]}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {
         const context = useFilterContext()
         return (
           <h2>
-            current {field}: {context.filters[field] || "none"}
+            current {field}:{" "}
+            {get(context, c => c.filters[field].toString(), "none")}
           </h2>
         )
       }
