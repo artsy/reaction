@@ -55,9 +55,10 @@ export class ArtistCollectionsRail extends React.Component<
           <Carousel
             height="200px"
             options={{
-              groupCells: 1,
+              groupCells: 4,
               wrapAround: true,
               cellAlign: "left",
+              pageDots: false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
