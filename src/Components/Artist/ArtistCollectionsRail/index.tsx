@@ -16,7 +16,7 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
       environment={relayEnvironment}
       variables={{
         isFeaturedArtistContent: true,
-        size: 8,
+        size: 16,
         artistID: passedProps.artistID,
       }}
       query={graphql`
