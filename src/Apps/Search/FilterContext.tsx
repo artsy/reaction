@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useContext, useEffect, useReducer } from "react"
+import { useDidMount } from "Utils/Hooks/useDidMount"
 import { filterReducer } from "./filterReducer"
 
 export interface FilterContextValues {
@@ -47,10 +48,13 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
+  const isMounted = useDidMount()
 
   useEffect(() => {
     // TODO - do this correctly.
-    console.log("page changed; push history here.")
+    if (isMounted) {
+      console.log("page changed; push history here.")
+    }
   }, [state.page])
 
   const value = {

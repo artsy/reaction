@@ -1,48 +1,75 @@
-import { mount } from "enzyme"
+import { mount, ReactWrapper } from "enzyme"
 import React, { FC } from "react"
 import {
   FilterContextConsumer,
   FilterContextProvider,
+  FilterContextValues,
   useFilterContext,
 } from "../FilterContext"
 
 describe("FilterContext", () => {
   describe("paging", () => {
     it("Renders current page", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return <h2>current page: {context.filters.page}</h2>
+      }
+
       const wrapper = mount(
         <FilterContextProvider>
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
+
       expect(wrapper.html()).toContain("current page: 1")
     })
 
     it("updates page from children", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>current page: {context.filters.page}</h2>
+            <button
+              onClick={() =>
+                context.setFilter("page", context.filters.page + 1)
+              }
+            />
+          </div>
+        )
+      }
+
       const wrapper = mount(
         <FilterContextProvider>
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
 
-      const increment = wrapper.find("#increment")
+      const increment = wrapper.find("button")
       increment.simulate("click")
 
       expect(wrapper.html()).toContain("current page: 2")
     })
 
     it("defaults to page passed in", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return <h2>current page: {context.filters.page}</h2>
+      }
+
       const wrapper = mount(
         <FilterContextProvider page={5}>
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
+
       expect(wrapper.html()).toContain("current page: 5")
     })
 
     it("hasFilters is false when page is 1", () => {
       const wrapper = mount(
         <FilterContextProvider page={1}>
-          <SubscribingFunctionComponent />
+          <HasFiltersSubscriber />
         </FilterContextProvider>
       )
 
@@ -52,7 +79,7 @@ describe("FilterContext", () => {
     it("hasFilters is true when page is 4", () => {
       const wrapper = mount(
         <FilterContextProvider page={4}>
-          <SubscribingFunctionComponent />
+          <HasFiltersSubscriber />
         </FilterContextProvider>
       )
 
@@ -60,7 +87,7 @@ describe("FilterContext", () => {
     })
 
     it("unsets page from children", () => {
-      const Child: FC = () => {
+      const Subscriber: FC = () => {
         const context = useFilterContext()
         return (
           <div>
@@ -72,7 +99,7 @@ describe("FilterContext", () => {
 
       const wrapper = mount(
         <FilterContextProvider page={4}>
-          <Child />
+          <Subscriber />
         </FilterContextProvider>
       )
 
@@ -85,31 +112,53 @@ describe("FilterContext", () => {
 
   describe("medium", () => {
     it("Defaults to no medium if none passed", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return <h2>current medium: {context.filters.medium || "none"}</h2>
+      }
+
       const wrapper = mount(
         <FilterContextProvider>
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
+
       expect(wrapper.html()).toContain("current medium: none")
     })
 
     it("Defaults to medium passed in if it exists", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return <h2>current medium: {context.filters.medium || "none"}</h2>
+      }
+
       const wrapper = mount(
         <FilterContextProvider medium="Photography">
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
+
       expect(wrapper.html()).toContain("current medium: Photography")
     })
 
     it("updates medium from children", () => {
+      const Subscriber: FC = () => {
+        const context = useFilterContext()
+        return (
+          <div>
+            <h2>current medium: {context.filters.medium || "none"}</h2>
+            <button onClick={() => context.setFilter("medium", "Sculpture")} />
+          </div>
+        )
+      }
+
       const wrapper = mount(
         <FilterContextProvider>
-          <SubscribingFunctionComponent />
+          <Subscriber />
         </FilterContextProvider>
       )
 
-      const increment = wrapper.find("#medium")
+      const increment = wrapper.find("button")
       increment.simulate("click")
 
       expect(wrapper.html()).toContain("current medium: Sculpture")
@@ -118,7 +167,7 @@ describe("FilterContext", () => {
     it("hasFilters is false when medium is empty", () => {
       const wrapper = mount(
         <FilterContextProvider>
-          <SubscribingFunctionComponent />
+          <HasFiltersSubscriber />
         </FilterContextProvider>
       )
 
@@ -128,7 +177,7 @@ describe("FilterContext", () => {
     it("hasFilters is true when medium is not empty", () => {
       const wrapper = mount(
         <FilterContextProvider medium="Performance">
-          <SubscribingFunctionComponent />
+          <HasFiltersSubscriber />
         </FilterContextProvider>
       )
 
@@ -136,7 +185,7 @@ describe("FilterContext", () => {
     })
 
     it("unsets medium from children", () => {
-      const Child: FC = () => {
+      const Subscriber: FC = () => {
         const context = useFilterContext()
         return (
           <div>
@@ -148,7 +197,7 @@ describe("FilterContext", () => {
 
       const wrapper = mount(
         <FilterContextProvider medium="Photography">
-          <Child />
+          <Subscriber />
         </FilterContextProvider>
       )
 
@@ -160,6 +209,29 @@ describe("FilterContext", () => {
   })
 
   describe("infrastructure", () => {
+    class NonsubscribingClassComponent extends React.Component {
+      render() {
+        return <h1>class component that doesn't subscribe</h1>
+      }
+    }
+
+    class SubscribingClassComponent extends React.Component {
+      render() {
+        return (
+          <FilterContextConsumer>
+            {({ filters: { page }, setFilter }) => {
+              return (
+                <div>
+                  <h2>current page: {page}</h2>
+                  <button onClick={() => setFilter("page", page + 1)} />
+                </div>
+              )
+            }}
+          </FilterContextConsumer>
+        )
+      }
+    }
+
     it("Renders a class component that doesn't subscribe", () => {
       const wrapper = mount(
         <FilterContextProvider>
@@ -177,60 +249,18 @@ describe("FilterContext", () => {
         </FilterContextProvider>
       )
 
-      expect(wrapper.html()).toContain("class component subscriber")
+      expect(wrapper.html()).toContain("current page: 1")
 
-      const increment = wrapper.find("#increment")
+      const increment = wrapper.find("button")
       increment.simulate("click")
 
       expect(wrapper.html()).toContain("current page: 2")
     })
   })
+
+  const HasFiltersSubscriber: FC = () => {
+    const context = useFilterContext()
+
+    return <h2>hasFilters: {context.hasFilters.toString()}</h2>
+  }
 })
-
-const SubscribingFunctionComponent: FC = () => {
-  const context = useFilterContext()
-
-  return (
-    <div>
-      <h1>function component using the custom hook</h1>
-      <h2>current page: {context.filters.page}</h2>
-      <h2>current medium: {context.filters.medium || "none"}</h2>
-      <h3>hasFilters: {context.hasFilters.toString()}</h3>
-      <button
-        id="increment"
-        onClick={() => context.setFilter("page", context.filters.page + 1)}
-      />
-      <button
-        id="medium"
-        onClick={() => context.setFilter("medium", "Sculpture")}
-      />
-    </div>
-  )
-}
-
-class NonsubscribingClassComponent extends React.Component {
-  render() {
-    return <h1>class component that doesn't subscribe</h1>
-  }
-}
-
-class SubscribingClassComponent extends React.Component {
-  render() {
-    return (
-      <FilterContextConsumer>
-        {({ filters: { page }, setFilter }) => {
-          return (
-            <div>
-              <h1>class component subscriber</h1>
-              <h2>current page: {page}</h2>
-              <button
-                id="increment"
-                onClick={() => setFilter("page", page + 1)}
-              />
-            </div>
-          )
-        }}
-      </FilterContextConsumer>
-    )
-  }
-}
