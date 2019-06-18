@@ -1,3 +1,15 @@
+# v16.17.18 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- artist collection rail now hides dots, scrolls 4-at-a-time [#2562](https://github.com/artsy/reaction/pull/2562) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
 # v16.17.17 (Tue Jun 18 2019)
 
 #### 🐛  Bug Fix
