@@ -1,11 +1,13 @@
-import queryMiddleware from "farce/lib/queryMiddleware"
-import { Resolver } from "found-relay"
-import createRender from "found/lib/createRender"
-import { getFarceResult } from "found/lib/server"
+import qs from "qs"
 import React from "react"
 import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
+
+import createQueryMiddleware from "farce/lib/createQueryMiddleware"
+import { Resolver } from "found-relay"
+import createRender from "found/lib/createRender"
+import { getFarceResult } from "found/lib/server"
 
 export function buildServerApp(config): any {
   return new Promise(async (resolve, reject) => {
@@ -19,8 +21,14 @@ export function buildServerApp(config): any {
         serializeRelayData = data => serialize(data, { json: true }),
       } = config
 
+      const historyMiddlewares = [
+        createQueryMiddleware({
+          parse: qs.parse,
+          stringify: qs.stringify,
+        }),
+      ]
+
       const relayEnvironment = getRelayEnvironment()
-      const historyMiddlewares = [queryMiddleware]
       const resolver = new Resolver(relayEnvironment)
       const render = createRender({})
 
@@ -38,26 +46,25 @@ export function buildServerApp(config): any {
         return
       }
 
-      const App = () =>
+      const ServerApp = () =>
         renderApp({
           Router: () => element,
           relayEnvironment,
           routes,
-          status,
         })
 
       // Collect styles
       const sheet = new ServerStyleSheet()
 
       // Kick off relay requests
-      ReactDOMServer.renderToString(sheet.collectStyles(<App />))
+      ReactDOMServer.renderToString(sheet.collectStyles(<ServerApp />))
 
       // Sanitize data
       const relayData = await relayEnvironment.relaySSRMiddleware.getCache()
 
       // Re-render with primed cache
       const bodyHTML = ReactDOMServer.renderToString(
-        sheet.collectStyles(<App />)
+        sheet.collectStyles(<ServerApp />)
       )
 
       // Build up script tags to inject into head
@@ -72,14 +79,31 @@ export function buildServerApp(config): any {
       // Extract CSS styleTags to inject for SSR pass
       const styleTags = sheet.getStyleTags()
 
-      resolve({
+      const result = {
+        ServerApp: bodyHTML,
         bodyHTML,
         scripts,
+        status,
         styleTags,
-      })
+      }
+
+      // Only exporting this for testing purposes, don't go around using this
+      // elsewhere, we’re serious.
+      if (typeof jest !== "undefined") {
+        Object.defineProperty(
+          result,
+          __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
+          { value: ServerApp }
+        )
+      }
+
+      resolve(result)
     } catch (error) {
       console.log(error)
       reject(error)
     }
   })
 }
+
+export const __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__ =
+  typeof jest !== "undefined" ? Symbol() : null

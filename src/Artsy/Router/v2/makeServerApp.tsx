@@ -12,7 +12,7 @@ import { buildServerApp } from "./buildServerApp2"
 const MediaStyle = createMediaStyle()
 
 export function makeServerApp(config) {
-  const user = getUser(config.context.user)
+  const user = getUser(config.context && config.context.user)
 
   return buildServerApp({
     ...config,
