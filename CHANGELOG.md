@@ -1,3 +1,15 @@
+# v16.17.21 (Wed Jun 19 2019)
+
+#### 🐛  Bug Fix
+
+- fix event tracking for price. #minor [#2569](https://github.com/artsy/reaction/pull/2569) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
 # v16.17.20 (Wed Jun 19 2019)
 
 #### 🐛  Bug Fix
