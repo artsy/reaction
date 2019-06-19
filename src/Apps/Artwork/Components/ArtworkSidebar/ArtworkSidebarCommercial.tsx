@@ -17,6 +17,7 @@ import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import currency from "currency.js"
 import React, { FC, useContext } from "react"
 import {
   commitMutation,
@@ -166,7 +167,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       {
         product_id: props.artwork._id,
         quantity: 1,
-        price: props.artwork.price,
+        price: currency(props.artwork.price),
       },
     ],
   }))
