@@ -8,14 +8,25 @@ import createQueryMiddleware from "farce/lib/createQueryMiddleware"
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
 import { getFarceResult } from "found/lib/server"
+import { RouterConfig } from "./RouterConfig"
 
-export function buildServerApp(config): any {
+interface Resolve {
+  bodyHTML?: string
+  redirect?: {
+    url: string
+  }
+  scripts?: string
+  status?: number
+  styleTags?: string
+}
+
+export function buildServerApp(config: RouterConfig): Promise<Resolve> {
   return new Promise(async (resolve, reject) => {
     try {
       const {
         routes = [],
         url = "/",
-        renderApp = () => <div />,
+        renderWrapper = null,
         getFarceConfig = null,
         getRelayEnvironment = null,
         serializeRelayData = data => serialize(data, { json: true }),
@@ -46,12 +57,17 @@ export function buildServerApp(config): any {
         return
       }
 
-      const ServerApp = () =>
-        renderApp({
-          Router: () => element,
-          relayEnvironment,
-          routes,
-        })
+      const ServerApp = () => {
+        if (renderWrapper) {
+          return renderWrapper({
+            Router: () => element,
+            relayEnvironment,
+            routes,
+          })
+        } else {
+          return element
+        }
+      }
 
       // Collect styles
       const sheet = new ServerStyleSheet()

@@ -4,9 +4,12 @@ import { getUser } from "Utils/user"
 import { Boot } from "../Boot"
 import { createRouteConfig } from "../Utils/createRouteConfig"
 import { buildClientApp } from "./buildClientApp2"
+import { RouterConfig } from "./RouterConfig"
 
-export function makeClientApp(config) {
-  const user = getUser(config.context.user)
+export function makeClientApp(
+  config: RouterConfig
+): ReturnType<typeof buildClientApp> {
+  const user = getUser(config.context && config.context.user)
 
   return buildClientApp({
     ...config,
@@ -21,15 +24,17 @@ export function makeClientApp(config) {
     },
 
     getRelayEnvironment: () => {
-      const relayEnvironment = createRelaySSREnvironment({
-        cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
-        user,
-      })
+      const relayEnvironment =
+        (config.context && config.context.relayEnvironment) ||
+        createRelaySSREnvironment({
+          cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
+          user,
+        })
 
       return relayEnvironment
     },
 
-    renderApp: ({ Router, relayEnvironment, routes }) => {
+    renderWrapper: ({ Router, relayEnvironment, routes }) => {
       return (
         <Boot
           context={config.context}

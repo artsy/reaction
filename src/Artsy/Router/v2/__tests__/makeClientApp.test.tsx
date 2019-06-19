@@ -1,14 +1,14 @@
 import { SystemContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
+import { makeClientApp } from "../makeClientApp"
 
 describe("makeClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
-    const { ClientApp } = await buildClientApp({
+    const { ClientApp } = await makeClientApp({
       history: {
         protocol: "memory",
       },
@@ -29,7 +29,7 @@ describe("makeClientApp", () => {
   })
 
   it("accepts an initial route", async () => {
-    const { ClientApp } = await buildClientApp({
+    const { ClientApp } = await makeClientApp({
       history: {
         protocol: "memory",
       },
@@ -58,7 +58,7 @@ describe("makeClientApp", () => {
       ],
     ])
 
-    const { ClientApp } = await buildClientApp({
+    const { ClientApp } = await makeClientApp({
       history: {
         protocol: "memory",
       },
@@ -100,7 +100,7 @@ describe("makeClientApp", () => {
       )
     }
 
-    const { ClientApp } = await buildClientApp({
+    const { ClientApp } = await makeClientApp({
       history: {
         protocol: "memory",
       },
@@ -142,7 +142,7 @@ describe("makeClientApp", () => {
       const relayEnvironment = createRelaySSREnvironment({ relayNetwork })
 
       try {
-        const { ClientApp } = await buildClientApp({
+        const { ClientApp } = await makeClientApp({
           history: {
             protocol: "memory",
           },
@@ -151,7 +151,7 @@ describe("makeClientApp", () => {
               path: "/",
               Component: () => null,
               query: graphql`
-                query buildClientAppTestQuery {
+                query makeClientAppTestQuery {
                   me {
                     __id
                   }

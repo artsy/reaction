@@ -4,7 +4,6 @@
 
 import { SystemContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { ServerRouterConfig } from "Artsy/Router/buildServerApp"
 import { __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__ } from "Artsy/Router/v2/buildServerApp2"
 import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
@@ -13,6 +12,7 @@ import ReactDOMServer from "react-dom/server"
 import { graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 import { makeServerApp } from "../makeServerApp"
+import { RouterConfig } from "../RouterConfig"
 
 const defaultComponent = () => <div>hi!</div>
 
@@ -21,10 +21,10 @@ describe("makeServerApp", () => {
     url = "/",
     Component = defaultComponent,
     ...options
-  }: { Component?: React.ComponentType } & Pick<
-    ServerRouterConfig,
-    Exclude<keyof ServerRouterConfig, "routes">
-  > = {}) => {
+  }: {
+    Component?: React.ComponentType
+    userAgent?: string
+  } & Pick<RouterConfig, Exclude<keyof RouterConfig, "routes">> = {}) => {
     const result = await makeServerApp({
       routes: [
         {
@@ -35,7 +35,7 @@ describe("makeServerApp", () => {
           path: "/relay",
           Component,
           query: graphql`
-            query buildServerAppTestQuery {
+            query makeServerAppTestQuery {
               me {
                 __id
               }

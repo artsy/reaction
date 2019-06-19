@@ -8,10 +8,13 @@ import { Boot } from "../Boot"
 import { createRouteConfig } from "../Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "../Utils/matchingMediaQueriesForUserAgent"
 import { buildServerApp } from "./buildServerApp2"
+import { RouterConfig } from "./RouterConfig"
 
 const MediaStyle = createMediaStyle()
 
-export function makeServerApp(config) {
+export function makeServerApp(
+  config: RouterConfig & { userAgent?: string }
+): ReturnType<typeof buildServerApp> {
   const user = getUser(config.context && config.context.user)
 
   return buildServerApp({
@@ -34,7 +37,7 @@ export function makeServerApp(config) {
       return relayEnvironment
     },
 
-    renderApp: ({ Router, relayEnvironment, routes }) => {
+    renderWrapper: ({ Router, relayEnvironment, routes }) => {
       const headTags = [<style type="text/css">{MediaStyle}</style>]
 
       const matchingMediaQueries =

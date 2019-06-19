@@ -10,8 +10,13 @@ import createQueryMiddleware from "farce/lib/createQueryMiddleware"
 import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
 import qs from "qs"
+import { RouterConfig } from "./RouterConfig"
 
-export function buildClientApp(config): any {
+interface Resolve {
+  ClientApp: React.ComponentType<any>
+}
+
+export function buildClientApp(config: RouterConfig): Promise<Resolve> {
   return new Promise(async (resolve, reject) => {
     try {
       const {
@@ -20,7 +25,7 @@ export function buildClientApp(config): any {
         initialRoute = "/",
         getFarceConfig = () => ({}),
         getRelayEnvironment = null,
-        renderApp,
+        renderWrapper,
       } = config
 
       const relayEnvironment = getRelayEnvironment()
@@ -63,15 +68,22 @@ export function buildClientApp(config): any {
         ...getFarceConfig(),
       })
 
-      const App = () =>
-        renderApp({
-          Router: () => <Router resolver={resolver} />,
-          relayEnvironment,
-          routes,
-        })
+      const ClientApp: any /* FIXME */ = () => {
+        const FoundRouter = () => <Router resolver={resolver} />
+
+        if (renderWrapper) {
+          return renderWrapper({
+            Router: FoundRouter,
+            relayEnvironment,
+            routes,
+          })
+        } else {
+          return <FoundRouter />
+        }
+      }
 
       resolve({
-        ClientApp: App,
+        ClientApp,
       })
     } catch (error) {
       console.error(error)
