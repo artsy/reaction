@@ -1,5 +1,6 @@
 import { RouterConfig } from "Artsy/Router"
 import { buildClientApp } from "Artsy/Router/buildClientApp"
+import { makeClientRoutes } from "Artsy/Router/v2/makeClientApp"
 import {
   createMockNetworkLayer,
   createMockNetworkLayer2,
@@ -50,7 +51,7 @@ export class MockRouter extends React.Component<Props> {
         ? createMockNetworkLayer2({ mockData, mockMutationResults })
         : undefined
 
-      const { ClientApp } = await buildClientApp({
+      const { ClientApp } = await makeClientRoutes({
         routes,
         initialRoute,
         history: {
