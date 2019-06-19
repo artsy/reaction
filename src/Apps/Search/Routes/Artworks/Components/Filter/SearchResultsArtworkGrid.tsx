@@ -5,7 +5,6 @@ import {
   FilterContextConsumer,
   FilterContextValues,
 } from "Apps/Search/FilterContext"
-import { FilterState } from "Apps/Search/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"

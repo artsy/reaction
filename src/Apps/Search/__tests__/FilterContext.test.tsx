@@ -22,6 +22,8 @@ describe("FilterContext", () => {
     ${"partner_id"}       | ${undefined}        | ${"1234"}
     ${"sort"}             | ${"-decayed_merch"} | ${"some,other,sort"}
     ${"price_range"}      | ${"*-*"}            | ${"100-4000"}
+    ${"height"}           | ${"*-*"}            | ${"33-66"}
+    ${"width"}            | ${"*-*"}            | ${"33-66"}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {

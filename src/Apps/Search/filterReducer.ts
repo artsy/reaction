@@ -36,6 +36,8 @@ export const initialValueForField: (name: string) => any = name => {
     case "sort":
       return "-decayed_merch"
     case "price_range":
+    case "width":
+    case "height":
       return "*-*"
     default:
       return undefined

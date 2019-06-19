@@ -1,47 +1,57 @@
 import { LabeledRange } from "@artsy/palette"
-import { FilterState } from "Apps/Search/FilterState"
+import {
+  FilterContextValues,
+  MAX_HEIGHT,
+  MAX_WIDTH,
+  MIN_HEIGHT,
+  MIN_WIDTH,
+} from "Apps/Search/FilterContext"
 import React from "react"
 
 interface Props {
-  filters: FilterState
+  filterContext: FilterContextValues
 }
 
 export class SizeRangeFilters extends React.Component<Props> {
   setRange(type, value) {
-    const { filters } = this.props
-    filters.setFilter(type, value)
+    const { filterContext } = this.props
+    filterContext.setFilter(type, value)
   }
   render() {
-    const { filters } = this.props
-    const [initialMinHeight, initialMaxHeight] = filters.rangeToTuple("height")
-    const [initialMinWidth, initialMaxWidth] = filters.rangeToTuple("width")
+    const { filterContext } = this.props
+    const [initialMinHeight, initialMaxHeight] = filterContext.rangeToTuple(
+      "height"
+    )
+    const [initialMinWidth, initialMaxWidth] = filterContext.rangeToTuple(
+      "width"
+    )
     return (
       <>
         <LabeledRange
           label="Height"
           allowCross={false}
-          min={FilterState.MIN_HEIGHT}
-          max={FilterState.MAX_HEIGHT}
+          min={MIN_HEIGHT}
+          max={MAX_HEIGHT}
           unit="in"
           step={1}
           defaultValue={[initialMinHeight, initialMaxHeight]}
           onAfterChange={([min, max]) => {
-            const minStr = min === FilterState.MIN_HEIGHT ? "*" : min
-            const maxStr = max === FilterState.MAX_HEIGHT ? "*" : max
+            const minStr = min === MIN_HEIGHT ? "*" : min
+            const maxStr = max === MAX_HEIGHT ? "*" : max
             this.setRange("height", `${minStr}-${maxStr}`)
           }}
         />
         <LabeledRange
           label="Width"
           allowCross={false}
-          min={FilterState.MIN_WIDTH}
-          max={FilterState.MAX_WIDTH}
+          min={MIN_WIDTH}
+          max={MAX_WIDTH}
           unit="in"
           step={1}
           defaultValue={[initialMinWidth, initialMaxWidth]}
           onAfterChange={([min, max]) => {
-            const minStr = min === FilterState.MIN_WIDTH ? "*" : min
-            const maxStr = max === FilterState.MAX_WIDTH ? "*" : max
+            const minStr = min === MIN_WIDTH ? "*" : min
+            const maxStr = max === MAX_WIDTH ? "*" : max
             this.setRange("width", `${minStr}-${maxStr}`)
           }}
         />

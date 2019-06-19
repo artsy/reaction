@@ -26,6 +26,8 @@ interface FilterContextProps {
   partner_id?: string
   sort?: string
   price_range?: string
+  height?: string
+  width?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -34,6 +36,8 @@ export const FilterContext = React.createContext<FilterContextValues>({
     major_periods: [],
     sort: "-decayed_merch",
     price_range: "*-*",
+    height: "*-*",
+    width: "*-*",
   },
   setFilter() {
     console.error("Shouldn't have gotten here.")
@@ -68,6 +72,8 @@ export interface Filters {
   partner_id?: string
   sort: string
   price_range: string
+  height: string
+  width: string
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -84,6 +90,8 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   partner_id,
   sort = "-decayed_merch",
   price_range = "*-*",
+  height = "*-*",
+  width = "*-*",
 }) => {
   const initialFilters: Filters = {
     page,
@@ -98,6 +106,8 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     partner_id,
     sort,
     price_range,
+    height,
+    width,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -184,14 +194,14 @@ const rangeToTuple: (state: Filters, range: string) => [number, number] = (
     ;[minStr, maxStr] = state.price_range.split("-")
     min = minStr === "*" ? MIN_PRICE : Number(minStr)
     max = maxStr === "*" ? MAX_PRICE : Number(maxStr)
-    // } else if (range === "height") {
-    //   ;[minStr, maxStr] = state.height.split("-")
-    //   min = minStr === "*" ? MIN_HEIGHT : Number(minStr)
-    //   max = maxStr === "*" ? MAX_HEIGHT : Number(maxStr)
-    // } else if (range === "width") {
-    //   ;[minStr, maxStr] = state.width.split("-")
-    //   min = minStr === "*" ? MIN_WIDTH : Number(minStr)
-    //   max = maxStr === "*" ? MAX_WIDTH : Number(maxStr)
+  } else if (range === "height") {
+    ;[minStr, maxStr] = state.height.split("-")
+    min = minStr === "*" ? MIN_HEIGHT : Number(minStr)
+    max = maxStr === "*" ? MAX_HEIGHT : Number(maxStr)
+  } else if (range === "width") {
+    ;[minStr, maxStr] = state.width.split("-")
+    min = minStr === "*" ? MIN_WIDTH : Number(minStr)
+    max = maxStr === "*" ? MAX_WIDTH : Number(maxStr)
   } else {
     ;[minStr, maxStr] = ["*", "*"]
   }
