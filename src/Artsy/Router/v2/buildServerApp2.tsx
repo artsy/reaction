@@ -7,25 +7,17 @@ import ReactDOMServer from "react-dom/server"
 import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
 
-const defaultConfig = {
-  routes: [],
-  url: "/",
-  renderApp: () => <div />,
-  getFarceConfig: () => ({}),
-  getRelayEnvironment: null,
-  serializeRelayData: data => data,
-}
-
 export function buildServerApp(config): any {
   return new Promise(async (resolve, reject) => {
     try {
       const {
-        routes,
-        url,
-        renderApp,
-        getFarceConfig,
-        getRelayEnvironment,
-      } = Object.assign({}, defaultConfig, config)
+        routes = [],
+        url = "/",
+        renderApp = () => <div />,
+        getFarceConfig = null,
+        getRelayEnvironment = null,
+        serializeRelayData = data => serialize(data, { json: true }),
+      } = config
 
       const relayEnvironment = getRelayEnvironment()
       const historyMiddlewares = [queryMiddleware]
@@ -48,9 +40,8 @@ export function buildServerApp(config): any {
 
       const App = () =>
         renderApp({
-          element,
+          Router: () => element,
           relayEnvironment,
-          resolver,
           routes,
           status,
         })
@@ -62,9 +53,7 @@ export function buildServerApp(config): any {
       ReactDOMServer.renderToString(sheet.collectStyles(<App />))
 
       // Sanitize data
-      const relayData = serialize(
-        await relayEnvironment.relaySSRMiddleware.getCache()
-      )
+      const relayData = await relayEnvironment.relaySSRMiddleware.getCache()
 
       // Re-render with primed cache
       const bodyHTML = ReactDOMServer.renderToString(
@@ -72,10 +61,10 @@ export function buildServerApp(config): any {
       )
 
       // Build up script tags to inject into head
-      const scriptTags = [
+      const scripts = [
         `
         <script>
-          var __RELAY_BOOTSTRAP__ = ${serialize(relayData)};
+          var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
         </script>
       `,
       ].join("\n")
@@ -85,7 +74,7 @@ export function buildServerApp(config): any {
 
       resolve({
         bodyHTML,
-        scriptTags,
+        scripts,
         styleTags,
       })
     } catch (error) {

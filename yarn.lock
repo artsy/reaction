@@ -12,6 +12,11 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.4.tgz#933c66db24e70186c20e83017af39794a920ef0e"
   integrity sha512-3LfmVWQdTQLjorlNv02y+qdD3h3RS57M46P/PBlG+nHjzUFtNk2B9NAKPurTzDubjlPYx1FUTH+EPm3ZaoTipg==
 
+"@artsy/fresnel@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.4.tgz#116f8d3f06559967261a79dd4960cf618d7b771c"
+  integrity sha512-K7dkCkv5x0C8VVA/JlKCmiIkXV5+9No+WGhyO9yCzJFkiTVTbkh7PUEFrnPaXTfLeezmnitByT8Wo6yDVh1veg==
+
 "@artsy/palette@4.14.38":
   version "4.14.38"
   resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-4.14.38.tgz#9e00f25d244817b695caca74e9625a9a3fb92408"
@@ -29,11 +34,6 @@
     styled-bootstrap-grid "1.0.4"
     styled-system "^3.1.11"
     trunc-html "^1.1.2"
-
-"@artsy/react-responsive-media@^2.0.0-beta.5":
-  version "2.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@artsy/react-responsive-media/-/react-responsive-media-2.0.0-beta.5.tgz#d61e1a9f215d38d90ec2bb97dc1ff7409d0346fa"
-  integrity sha512-XRYA77v/j3mVInwy5EYb8NtmMkkAD1/XDxDi45BO0oduv4hsljJfjtjK7jN0ziJ6JUm2QTx/t6QwuaT9E7vTuA==
 
 "@babel/cli@7.0.0":
   version "7.0.0"

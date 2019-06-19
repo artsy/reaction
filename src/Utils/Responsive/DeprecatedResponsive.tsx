@@ -1,9 +1,10 @@
-import { themeProps } from "@artsy/palette"
 import {
   createResponsiveComponents,
   MediaQueryMatches,
   ResponsiveProviderProps as _ResponsiveProviderProps,
-} from "@artsy/react-responsive-media/dist/DynamicResponsive"
+} from "@artsy/fresnel/dist/DynamicResponsive"
+
+import { themeProps } from "@artsy/palette"
 import React from "react"
 import * as sharify from "sharify"
 

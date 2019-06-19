@@ -11,28 +11,17 @@ import HashProtocol from "farce/lib/HashProtocol"
 import MemoryProtocol from "farce/lib/MemoryProtocol"
 import qs from "qs"
 
-const defaultConfig = {
-  initialRoute: "/",
-  history: {},
-  routes: [],
-  renderApp: () => <div />,
-  getFarceConfig: () => ({}),
-  getRelayEnvironment: null,
-  getRouteConfig: null,
-}
-
 export function buildClientApp(config): any {
   return new Promise(async (resolve, reject) => {
     try {
       const {
-        history,
-        initialRoute,
-        getFarceConfig,
-        getRelayEnvironment,
-        getRouteConfig,
+        routes = [],
+        history = {},
+        initialRoute = "/",
+        getFarceConfig = () => ({}),
+        getRelayEnvironment = null,
         renderApp,
-        routes,
-      } = Object.assign({}, defaultConfig, config)
+      } = config
 
       const relayEnvironment = getRelayEnvironment()
 
@@ -60,13 +49,11 @@ export function buildClientApp(config): any {
 
       const render = createRender({})
 
-      const routeConfig = getRouteConfig ? getRouteConfig() : routes
-
       const Router = await createInitialFarceRouter({
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
         historyOptions: history.options,
-        routeConfig,
+        routeConfig: routes,
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>
@@ -78,9 +65,9 @@ export function buildClientApp(config): any {
 
       const App = () =>
         renderApp({
-          relayEnvironment,
-          routes: routeConfig,
           Router: () => <Router resolver={resolver} />,
+          relayEnvironment,
+          routes,
         })
 
       resolve({
