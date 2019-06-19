@@ -167,7 +167,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       {
         product_id: props.artwork._id,
         quantity: 1,
-        price: currency(props.artwork.price),
+        price: currency(props.artwork.price).value,
       },
     ],
   }))
