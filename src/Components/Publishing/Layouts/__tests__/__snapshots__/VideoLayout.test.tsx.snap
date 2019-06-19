@@ -3245,7 +3245,8 @@ exports[`Video Layout matches the snapshot 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c6 c7"
@@ -3571,7 +3572,8 @@ exports[`Video Layout matches the snapshot 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -3725,7 +3727,8 @@ exports[`Video Layout matches the snapshot 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -4261,7 +4264,8 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="rrm-container rrm-greaterThanOrEqual-md"
+                className="fresnel-container fresnel-greaterThanOrEqual-md"
+                suppressHydrationWarning={false}
               />
             </div>
             <div
@@ -4292,7 +4296,8 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="rrm-container rrm-lessThan-md"
+                className="fresnel-container fresnel-lessThan-md"
+                suppressHydrationWarning={false}
               />
             </div>
           </div>

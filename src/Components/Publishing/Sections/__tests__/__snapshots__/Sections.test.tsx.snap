@@ -2059,7 +2059,8 @@ exports[`Sections snapshots tests renders properly 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-sm"
+            className="fresnel-container fresnel-greaterThanOrEqual-sm"
+            suppressHydrationWarning={false}
           >
             <div
               className="c36"

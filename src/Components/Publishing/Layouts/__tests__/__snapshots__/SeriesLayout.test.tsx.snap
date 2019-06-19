@@ -1074,7 +1074,8 @@ exports[`series layout renders a series 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c5 c6"
@@ -1509,7 +1510,8 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           />
         </div>
         <div
@@ -1540,7 +1542,8 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           />
         </div>
       </div>
@@ -2744,7 +2747,8 @@ exports[`series layout renders a sponsored series 1`] = `
         </a>
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c7 c8"
@@ -3201,7 +3205,8 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c46"
@@ -3259,7 +3264,8 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c49"

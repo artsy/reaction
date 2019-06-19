@@ -127,7 +127,8 @@ exports[`Nav renders a Nav 1`] = `
       
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c4 c5"
@@ -341,7 +342,8 @@ exports[`Nav renders a sponsored nav 1`] = `
       </a>
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c6 c7"
@@ -501,7 +503,8 @@ exports[`Nav renders a transparent nav 1`] = `
       
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c4 c5"
