@@ -64,42 +64,41 @@ export class FilterContainer extends React.Component<
     })
   }
 
-  renderFilters(filterContext: FilterContextValues) {
+  renderFilters() {
     const { mediums, timePeriods } = this.props
 
     return (
       <Box pr={2}>
         <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-          <WaysToBuyFilter filterContext={filterContext} />
+          <WaysToBuyFilter />
         </Flex>
 
         <Toggle label="Medium" expanded>
           <Flex flexDirection="column" alignItems="left" mb={1}>
-            <MediumFilter filterContext={filterContext} mediums={mediums} />
+            <MediumFilter mediums={mediums} />
           </Flex>
         </Toggle>
 
         <Toggle label="Price" expanded>
           <Flex flexDirection="column" alignItems="left" my={1}>
-            <PriceRangeFilter filterContext={filterContext} />
+            <PriceRangeFilter />
           </Flex>
         </Toggle>
 
         <Toggle label="Size">
           <Flex flexDirection="column" alignItems="left" my={1}>
-            <SizeRangeFilters filterContext={filterContext} />
+            <SizeRangeFilters />
           </Flex>
         </Toggle>
 
         <Toggle label="Color">
           <Flex flexDirection="column" alignItems="center" my={1}>
-            <ColorFilter filterContext={filterContext} />
+            <ColorFilter />
           </Flex>
         </Toggle>
         <Toggle label="Time period">
           <Flex flexDirection="column" alignItems="center" my={1}>
             <TimePeriodFilter
-              filterContext={filterContext}
               timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
             />
           </Flex>
@@ -119,7 +118,7 @@ export class FilterContainer extends React.Component<
                 <Mobile>
                   {this.state.showMobileActionSheet && (
                     <MobileActionSheet onClose={this.hideMobileActionSheet}>
-                      {this.renderFilters(context)}
+                      {this.renderFilters()}
                     </MobileActionSheet>
                   )}
 
@@ -150,7 +149,7 @@ export class FilterContainer extends React.Component<
               <Media greaterThan="xs">
                 <Desktop>
                   <Box width="25%" mr={2}>
-                    {this.renderFilters(context)}
+                    {this.renderFilters()}
                     <Separator mb={2} />
                   </Box>
                   <Box width="75%">

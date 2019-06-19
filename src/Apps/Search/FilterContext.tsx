@@ -1,3 +1,4 @@
+import qs from "qs"
 import React, { FC, ReactNode, useContext, useEffect, useReducer } from "react"
 import { useDidMount } from "Utils/Hooks/useDidMount"
 import { filterReducer } from "./filterReducer"
@@ -8,7 +9,7 @@ export interface FilterContextValues {
   hasFilters: boolean
   filters: Filters
   resetFilters: () => void
-  isRangeSelected: (name: string) => boolean
+  isDefaultValue: (name: string) => boolean
   rangeToTuple: (name: string) => [number, number]
 }
 
@@ -32,6 +33,7 @@ interface FilterContextProps {
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
+  // TODO - consolidate these initial values....
   filters: {
     page: 1,
     major_periods: [],
@@ -40,24 +42,12 @@ export const FilterContext = React.createContext<FilterContextValues>({
     height: "*-*",
     width: "*-*",
   },
-  setFilter() {
-    console.error("Shouldn't have gotten here.")
-  },
-  unsetFilter() {
-    console.error("Shouldn't have gotten here.")
-  },
+  setFilter: null,
+  unsetFilter: null,
   hasFilters: false,
-  resetFilters() {
-    console.error("Shouldn't have gotten here.")
-  },
-  isRangeSelected(_name) {
-    console.error("Shouldn't have gotten here.")
-    return false
-  },
-  rangeToTuple(name) {
-    console.error("Shouldn't have gotten here.")
-    return [0, 0]
-  },
+  resetFilters: null,
+  isDefaultValue: null,
+  rangeToTuple: null,
 })
 
 export interface Filters {
@@ -81,6 +71,7 @@ export interface Filters {
 export const FilterContextProvider: FC<FilterContextProps> = ({
   children,
   keyword,
+  // TODO - consolidate these initial values....
   page = 1,
   medium = "",
   for_sale,
@@ -117,13 +108,26 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
   const isMounted = useDidMount()
 
-  // TODO - do this correctly. The effect needs to run any time _ANY_ of the filters change;
-  //   It also needs to call history.pushState instead of console.log.
   useEffect(() => {
     if (isMounted) {
-      console.log("page changed; push history here.")
+      const queryString = urlFragmentFromState(state)
+      window.history.pushState(
+        {},
+        null,
+        `${window.location.pathname}?${queryString}`
+      )
     }
-  }, [state.page])
+  }, Object.keys(state).map(prop => state[prop]))
+
+  // TODO - use this to trigger resetting of fields when back/fwd buttons are hit
+  //   because otherwise it doesn't always happen.
+  useEffect(() => {
+    window.addEventListener("popstate", handleChange)
+    return () => window.removeEventListener("popstate", handleChange)
+  }, [])
+  function handleChange() {
+    console.log("derive state from URL here, and update!")
+  }
 
   const value = {
     filters: state,
@@ -131,12 +135,10 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     setFilter: (name, val) =>
       dispatch({ type: "set", payload: { name, value: val } }),
     unsetFilter: name => dispatch({ type: "unset", payload: { name } }),
+    isDefaultValue: field => isDefaultFilter(field, state[field]),
+    rangeToTuple: range => rangeToTuple(state, range),
     // TODO - implement!
     resetFilters: () => {},
-    // TODO - implement!
-    isRangeSelected: () => false,
-    // TODO - implement/move!
-    rangeToTuple: range => rangeToTuple(state, range),
   }
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
@@ -152,6 +154,25 @@ const hasFilters: (state: Filters) => boolean = state => {
   })
 }
 
+// Returns a string representing the query part of a URL.
+// It removes default values, and rewrites keyword -> term.
+export const urlFragmentFromState = (state: Filters) => {
+  const { keyword: term } = state
+  const filters = Object.entries(state).reduce((acc, [key, value]) => {
+    if (isDefaultFilter(key, value) || key === "keyword") {
+      return acc
+    } else {
+      return { ...acc, [key]: value }
+    }
+  }, {})
+
+  return qs.stringify({
+    ...filters,
+    term,
+  })
+}
+
+// TODO - something...not sure what yet. Can it be consolidated with initial value stuff?
 const isDefaultFilter: (name: string, value: any) => boolean = (
   name,
   value
@@ -218,9 +239,11 @@ export const useFilterContext = () => {
   return filterContext
 }
 
-// Prefer using `useFilterContext`.
-//   This exists for legacy class components to use as a render-prop.
 // TODO - figure out how to type this
+/**
+ * Prefer using `useFilterContext`.
+ *   This exists for legacy class components to use as a render-prop.
+ */
 export const FilterContextConsumer = ({ children }) => {
   const filterContext = useFilterContext()
   return children(filterContext)

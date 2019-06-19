@@ -1,45 +1,37 @@
 import { Radio, RadioGroup } from "@artsy/palette"
-import { FilterContextValues } from "Apps/Search/FilterContext"
-import React from "react"
+import { useFilterContext } from "Apps/Search/FilterContext"
+import React, { FC } from "react"
 
 interface Props {
-  filterContext: FilterContextValues
   timePeriods?: string[]
 }
 
-export class TimePeriodFilter extends React.Component<Props> {
-  onClick(value) {
-    const { filterContext } = this.props
-    filterContext.setFilter("major_periods", value)
-  }
+export const TimePeriodFilter: FC<Props> = props => {
+  const filterContext = useFilterContext()
 
-  render() {
-    const { timePeriods, filterContext } = this.props
+  const { timePeriods } = props
 
-    const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
-      allowedPeriods.includes(timePeriod)
-    )
+  const periods = (timePeriods || allowedPeriods).filter(timePeriod =>
+    allowedPeriods.includes(timePeriod)
+  )
 
-    const radioButtons = periods.map((timePeriod, index) => {
-      return (
-        <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
-      )
-    })
+  const radioButtons = periods.map((timePeriod, index) => {
+    return <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
+  })
 
-    const selectedPeriod = filterContext.filters.major_periods[0]
+  const selectedPeriod = filterContext.filters.major_periods[0]
 
-    return (
-      <RadioGroup
-        deselectable
-        defaultValue={selectedPeriod}
-        onSelect={selectedOption => {
-          this.onClick(selectedOption)
-        }}
-      >
-        {radioButtons}
-      </RadioGroup>
-    )
-  }
+  return (
+    <RadioGroup
+      deselectable
+      defaultValue={selectedPeriod}
+      onSelect={selectedOption => {
+        filterContext.setFilter("major_periods", selectedOption)
+      }}
+    >
+      {radioButtons}
+    </RadioGroup>
+  )
 }
 
 const allowedPeriods = [

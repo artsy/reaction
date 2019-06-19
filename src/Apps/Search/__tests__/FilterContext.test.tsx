@@ -1,10 +1,9 @@
-import { mount, ReactWrapper } from "enzyme"
+import { mount } from "enzyme"
 import React, { FC } from "react"
 import { get } from "Utils/get"
 import {
   FilterContextConsumer,
   FilterContextProvider,
-  FilterContextValues,
   useFilterContext,
 } from "../FilterContext"
 
@@ -162,6 +161,44 @@ describe("FilterContext", () => {
         expect(wrapper.html()).toContain(
           `hasFilters: ${hasFiltersWhenNonDefaultValue.toString()}`
         )
+      })
+
+      it(`isDefaultValue is true when value is ${defaultValue}`, () => {
+        const Subscriber: FC = () => {
+          const context = useFilterContext()
+          return (
+            <h2>isDefaultValue: {context.isDefaultValue(name).toString()}</h2>
+          )
+        }
+
+        const wrapper = mount(
+          <FilterContextProvider>
+            <Subscriber />
+          </FilterContextProvider>
+        )
+
+        expect(wrapper.html()).toContain("isDefaultValue: true")
+      })
+
+      it(`isDefaultValue is false when value is ${nonDefaultValue}`, () => {
+        const Subscriber: FC = () => {
+          const context = useFilterContext()
+          return (
+            <h2>isDefaultValue: {context.isDefaultValue(field).toString()}</h2>
+          )
+        }
+
+        const initialValues = {
+          [field]: nonDefaultValue,
+        }
+
+        const wrapper = mount(
+          <FilterContextProvider {...initialValues}>
+            <Subscriber />
+          </FilterContextProvider>
+        )
+
+        expect(wrapper.html()).toContain("isDefaultValue: false")
       })
     }
   )

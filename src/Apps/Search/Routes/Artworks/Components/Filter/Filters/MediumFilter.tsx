@@ -1,44 +1,37 @@
 import { Radio, RadioGroup } from "@artsy/palette"
-import { FilterContextValues, Filters } from "Apps/Search/FilterContext"
-import React from "react"
+import { useFilterContext } from "Apps/Search/FilterContext"
+import React, { FC } from "react"
 
 interface Props {
-  filterContext: FilterContextValues
   mediums: Array<{
     id: string
     name: string
   }>
 }
 
-export class MediumFilter extends React.Component<Props> {
-  onClick(value) {
-    const { filterContext } = this.props
-    filterContext.setFilter("medium", value)
-  }
+export const MediumFilter: FC<Props> = props => {
+  const filterContext = useFilterContext()
 
-  render() {
-    const { mediums, filterContext } = this.props
-    const allowedMediums =
-      mediums && mediums.length ? mediums : hardcodedMediums
+  const { mediums } = props
+  const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
 
-    const selectedMedium = filterContext.filters.medium
+  const selectedMedium = filterContext.filters.medium
 
-    return (
-      <RadioGroup
-        deselectable
-        defaultValue={selectedMedium}
-        onSelect={selectedOption => {
-          this.onClick(selectedOption)
-        }}
-      >
-        {allowedMediums.map((medium, index) => {
-          return (
-            <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
-          )
-        })}
-      </RadioGroup>
-    )
-  }
+  return (
+    <RadioGroup
+      deselectable
+      defaultValue={selectedMedium}
+      onSelect={selectedOption =>
+        filterContext.setFilter("medium", selectedOption)
+      }
+    >
+      {allowedMediums.map((medium, index) => {
+        return (
+          <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
+        )
+      })}
+    </RadioGroup>
+  )
 }
 
 const hardcodedMediums = [
