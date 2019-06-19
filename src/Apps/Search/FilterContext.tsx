@@ -145,6 +145,9 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
 
 const hasFilters: (state: Filters) => boolean = state => {
   return Object.entries(state).some(([key, value]) => {
+    // TODO - I think this can be based on some flag on the filter
+    //   that indicates if this one should trip hasFilters. yucky, though.
+    if (key === "keyword") return false
     return !isDefaultFilter(key, value)
   })
 }
