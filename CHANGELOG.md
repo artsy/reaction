@@ -1,3 +1,15 @@
+# v16.17.20 (Wed Jun 19 2019)
+
+#### 🐛  Bug Fix
+
+- fix price format in buynow click events [#2567](https://github.com/artsy/reaction/pull/2567) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
 # v16.17.19 (Tue Jun 18 2019)
 
 #### 🐛  Bug Fix
