@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SearchResultsRefetchContainer } from "./SearchResultsRefetch"
 
-import { FilterContextValues, Filters } from "Apps/Search/FilterContext"
+import { FilterContextValues } from "Apps/Search/FilterContext"
 import { FilterContainer } from "./Filters"
 
 export interface SearchFilterContainerProps {

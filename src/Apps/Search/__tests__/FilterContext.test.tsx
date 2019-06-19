@@ -137,6 +137,37 @@ describe("FilterContext", () => {
         )
       })
 
+      it("gets reset from children", () => {
+        const Subscriber: FC = () => {
+          const context = useFilterContext()
+          return (
+            <div>
+              <h2>
+                current {field}: {context.filters[field] || "none"}
+              </h2>
+              <button onClick={() => context.resetFilters()} />
+            </div>
+          )
+        }
+
+        const initialValues = {
+          [field]: nonDefaultValue,
+        }
+
+        const wrapper = mount(
+          <FilterContextProvider {...initialValues}>
+            <Subscriber />
+          </FilterContextProvider>
+        )
+
+        const increment = wrapper.find("button")
+        increment.simulate("click")
+
+        expect(wrapper.html()).toContain(
+          `current ${field}: ${defaultValue || "none"}`
+        )
+      })
+
       it(`hasFilters is false when value is ${defaultValue}`, () => {
         const wrapper = mount(
           <FilterContextProvider>

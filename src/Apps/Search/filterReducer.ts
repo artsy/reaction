@@ -15,6 +15,8 @@ export const filterReducer: (
       return setFilterReducer(state, action.payload)
     case "unset":
       return unsetFilterReducer(state, action.payload)
+    case "reset":
+      return resetReducer(state)
     default:
       throw new Error("Unexpected action")
   }
@@ -50,4 +52,11 @@ const unsetFilterReducer: (
   payload: FilterPayload
 ) => Filters = (state, payload) => {
   return { ...state, [payload.name]: initialValueForField(payload.name) }
+}
+
+const resetReducer: (state: Filters) => Filters = state => {
+  return Object.keys(state).reduce(
+    (acc, field) => ({ ...acc, [field]: initialValueForField(field) }),
+    {}
+  ) as Filters
 }

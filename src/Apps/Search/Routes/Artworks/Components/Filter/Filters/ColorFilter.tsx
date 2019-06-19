@@ -1,8 +1,5 @@
 import { CheckIcon } from "@artsy/palette"
-import {
-  FilterContextValues,
-  useFilterContext,
-} from "Apps/Search/FilterContext"
+import { useFilterContext } from "Apps/Search/FilterContext"
 import React, { FC } from "react"
 
 const CheckmarkPositions = {

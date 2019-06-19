@@ -25,7 +25,6 @@
 1. Convert FilterState to a Context
 
 - consolidate "initial values" into one place
-- implement "resetFilters"
 - fix broken tests from conversion
 - figure out some typings
 - move rangeToTuple to its own util
@@ -49,3 +48,5 @@
   - somewhere the array-ness is getting lost
 - Console error when de-selecting a time period.
   - probably related to the first issue
+
+3. Resetting filters resets keyword to empty string.

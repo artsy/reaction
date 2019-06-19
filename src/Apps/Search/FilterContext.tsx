@@ -137,8 +137,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     unsetFilter: name => dispatch({ type: "unset", payload: { name } }),
     isDefaultValue: field => isDefaultFilter(field, state[field]),
     rangeToTuple: range => rangeToTuple(state, range),
-    // TODO - implement!
-    resetFilters: () => {},
+    resetFilters: () => dispatch({ type: "reset", payload: null }),
   }
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
