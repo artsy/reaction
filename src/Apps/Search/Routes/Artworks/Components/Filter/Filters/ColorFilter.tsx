@@ -1,9 +1,9 @@
 import { CheckIcon } from "@artsy/palette"
-import { FilterState } from "Apps/Search/FilterState"
+import { FilterContextValues } from "Apps/Search/FilterContext"
 import React from "react"
 
 interface Props {
-  filters: FilterState
+  filterContext: FilterContextValues
 }
 
 const CheckmarkPositions = {
@@ -60,21 +60,21 @@ const CheckmarkPositions = {
 
 export class ColorFilter extends React.Component<Props> {
   toggleColor(color) {
-    const { filters } = this.props
-    if (filters.state.color === color) {
-      filters.unsetFilter("color")
+    const { filterContext } = this.props
+    if (filterContext.filters.color === color) {
+      filterContext.unsetFilter("color")
     } else {
-      filters.setFilter("color", color)
+      filterContext.setFilter("color", color)
     }
   }
 
   render() {
-    const { filters } = this.props
+    const { filterContext } = this.props
 
     const CheckmarkStyle = {
       position: "relative",
       cursor: "pointer",
-      ...CheckmarkPositions[filters.state.color],
+      ...CheckmarkPositions[filterContext.filters.color],
     }
     return (
       <>
@@ -181,7 +181,7 @@ export class ColorFilter extends React.Component<Props> {
           </g>
         </svg>
         <CheckIcon
-          onClick={e => filters.unsetFilter("color")}
+          onClick={e => filterContext.unsetFilter("color")}
           style={CheckmarkStyle}
           fill="white100"
         />

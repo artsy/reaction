@@ -28,6 +28,7 @@ interface FilterContextProps {
   price_range?: string
   height?: string
   width?: string
+  color?: string
 }
 
 export const FilterContext = React.createContext<FilterContextValues>({
@@ -74,6 +75,7 @@ export interface Filters {
   price_range: string
   height: string
   width: string
+  color?: string
 }
 
 export const FilterContextProvider: FC<FilterContextProps> = ({
@@ -92,6 +94,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
   price_range = "*-*",
   height = "*-*",
   width = "*-*",
+  color,
 }) => {
   const initialFilters: Filters = {
     page,
@@ -108,6 +111,7 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     price_range,
     height,
     width,
+    color,
   }
 
   const [state, dispatch] = useReducer(filterReducer, initialFilters)
@@ -134,13 +138,11 @@ export const FilterContextProvider: FC<FilterContextProps> = ({
     // TODO - implement/move!
     rangeToTuple: range => rangeToTuple(state, range),
   }
-  console.log("sjh3", value)
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
   )
 }
 
-// TODO - loop through object.keys
 const hasFilters: (state: Filters) => boolean = state => {
   return Object.entries(state).some(([key, value]) => {
     return !isDefaultFilter(key, value)
@@ -151,7 +153,7 @@ const isDefaultFilter: (name: string, value: any) => boolean = (
   name,
   value
 ) => {
-  if (name === "major_periods" || name === "attribution_class") {
+  if (name === "major_periods") {
     return value.length === 0
   }
 

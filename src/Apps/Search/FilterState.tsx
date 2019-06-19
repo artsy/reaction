@@ -14,11 +14,11 @@ export interface State {
   at_auction?: boolean // x
   inquireable_only?: boolean // x
   price_range?: string // x
-  height?: string
-  width?: string
-  attribution_class?: string[]
-  artist_id?: string
-  color?: string
+  height?: string // x
+  width?: string // x
+  attribution_class?: string[] // ????? I don't see this used anywhere.
+  artist_id?: string // ????? I don't see this used anywhere.
+  color?: string // x
   keyword?: string // x
 }
 

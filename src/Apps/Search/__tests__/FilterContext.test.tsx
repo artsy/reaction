@@ -24,6 +24,7 @@ describe("FilterContext", () => {
     ${"price_range"}      | ${"*-*"}            | ${"100-4000"}
     ${"height"}           | ${"*-*"}            | ${"33-66"}
     ${"width"}            | ${"*-*"}            | ${"33-66"}
+    ${"color"}            | ${undefined}        | ${"lightgreen"}
   `("Field $field", ({ field, defaultValue, nonDefaultValue }) => {
     it(`Defaults to ${defaultValue} if none passed`, () => {
       const Subscriber: FC = () => {

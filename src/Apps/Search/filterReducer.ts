@@ -27,6 +27,7 @@ const setFilterReducer: (state: Filters, payload: FilterPayload) => Filters = (
   return { ...state, [payload.name]: payload.value }
 }
 
+// TODO - consolidate "initial values" into one place.
 export const initialValueForField: (name: string) => any = name => {
   switch (name) {
     case "page":
