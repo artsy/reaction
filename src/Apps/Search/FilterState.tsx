@@ -236,17 +236,6 @@ export class FilterState extends Container<State> {
     })
   }
 
-  // TODO - this can be a check called "isDefaultValue".
-  isRangeSelected(range: string): boolean {
-    if (range === "price_range") {
-      return this.state.price_range !== "*-*"
-    } else if (range === "height") {
-      return this.state.height !== "*-*"
-    } else if (range === "width") {
-      return this.state.width !== "*-*"
-    }
-  }
-
   // TODO - this doesn't really belong here. It's a util.
   //   Or maybe it belongs attached to individual filters?
   rangeToTuple(range: string): [number, number] {
