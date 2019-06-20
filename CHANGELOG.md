@@ -1,3 +1,20 @@
+# v16.17.22 (Thu Jun 20 2019)
+
+#### 🐛  Bug Fix
+
+- update status expiration message [#2571](https://github.com/artsy/reaction/pull/2571) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.18 to v4.14.20 [#2570](https://github.com/artsy/reaction/pull/2570) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.21 (Wed Jun 19 2019)
 
 #### 🐛  Bug Fix
