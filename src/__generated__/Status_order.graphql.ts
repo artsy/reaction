@@ -16,6 +16,7 @@ export type Status_order = {
     readonly state: string | null;
     readonly mode: OrderModeEnum | null;
     readonly stateReason: string | null;
+    readonly stateExpiresAt: string | null;
     readonly requestedFulfillment: ({
         readonly __typename: "Ship";
     } | {
@@ -99,9 +100,25 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "requestedFulfillment",
+      "storageKey": null,
+      "args": null,
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "InlineFragment",
+          "type": "Pickup",
+          "selections": v1
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Ship",
+          "selections": v1
+        }
+      ]
     },
     v0,
     {
@@ -133,27 +150,25 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "requestedFulfillment",
-      "storageKey": null,
-      "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
+      "name": "stateExpiresAt",
+      "args": [
         {
-          "kind": "InlineFragment",
-          "type": "Pickup",
-          "selections": v1
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "Ship",
-          "selections": v1
+          "kind": "Literal",
+          "name": "format",
+          "value": "MMM D",
+          "type": "String"
         }
-      ]
+      ],
+      "storageKey": "stateExpiresAt(format:\"MMM D\")"
     },
     v2,
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
@@ -361,5 +376,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '58dbee7c81be7b6c21b1f6ccd276295b';
+(node as any).hash = 'dd8bdb30bab04cceb6663a60514f3e89';
 export default node;
