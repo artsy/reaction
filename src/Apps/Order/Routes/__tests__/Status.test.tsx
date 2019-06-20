@@ -75,7 +75,7 @@ describe("Status", () => {
         const page = await env.buildPage()
         expect(page.text()).toContain("Your offer has been submitted")
         expect(page.text()).toContain(
-          "The seller will respond to your offer by January 15"
+          "The seller will respond to your offer by Jan 15"
         )
         page.expectMessage()
       })
@@ -247,7 +247,7 @@ describe("Status", () => {
         })
         expect(page.text()).toContain("Your order has been submitted")
         expect(page.text()).toContain(
-          "You will receive a confirmation email by January 15"
+          "You will receive a confirmation email by Jan 15"
         )
         page.expectMessage()
       })
