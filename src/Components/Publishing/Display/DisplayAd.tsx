@@ -5,8 +5,8 @@ import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 
 export interface DisplayAdProps extends FlexProps {
-  adUnit?: AdUnit
-  adDimension?: AdDimension
+  adUnit: AdUnit
+  adDimension: AdDimension
   displayNewAds?: boolean
   targetingData: {
     is_testing: boolean
