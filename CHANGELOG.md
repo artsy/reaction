@@ -1,3 +1,15 @@
+# v16.17.23 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- featured artists now always positioned below summary [#2564](https://github.com/artsy/reaction/pull/2564) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
 # v16.17.22 (Thu Jun 20 2019)
 
 #### 🐛  Bug Fix
