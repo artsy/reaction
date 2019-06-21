@@ -1,0 +1,36 @@
+import { Filters } from "../ArtworkFilterContext"
+
+export const MIN_PRICE = 50
+export const MAX_PRICE = 50000
+export const MIN_HEIGHT = 1
+export const MAX_HEIGHT = 120
+export const MIN_WIDTH = 1
+export const MAX_WIDTH = 120
+
+export const rangeToTuple: (
+  state: Filters,
+  range: string
+) => [number, number] = (state, range) => {
+  let minStr: string
+  let maxStr: string
+  let min: number
+  let max: number
+
+  if (range === "price_range") {
+    ;[minStr, maxStr] = state.price_range.split("-")
+    min = minStr === "*" ? MIN_PRICE : Number(minStr)
+    max = maxStr === "*" ? MAX_PRICE : Number(maxStr)
+  } else if (range === "height") {
+    ;[minStr, maxStr] = state.height.split("-")
+    min = minStr === "*" ? MIN_HEIGHT : Number(minStr)
+    max = maxStr === "*" ? MAX_HEIGHT : Number(maxStr)
+  } else if (range === "width") {
+    ;[minStr, maxStr] = state.width.split("-")
+    min = minStr === "*" ? MIN_WIDTH : Number(minStr)
+    max = maxStr === "*" ? MAX_WIDTH : Number(maxStr)
+  } else {
+    ;[minStr, maxStr] = ["*", "*"]
+  }
+
+  return [min, max]
+}

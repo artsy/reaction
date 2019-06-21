@@ -23,7 +23,10 @@
     "ordered-imports": true,
     "relay-operation-generics": [
       true,
-      { "artifactDirectory": "__generated__", "makeRelative": false }
+      {
+        "artifactDirectory": "__generated__",
+        "makeRelative": false
+      }
     ],
     "trailing-comma": false,
     "variable-name": [true, "ban-keywords", "allow-leading-underscore"],
