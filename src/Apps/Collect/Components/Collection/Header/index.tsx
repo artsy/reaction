@@ -276,13 +276,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                         </ExtendedSerif>
                       </Flex>
                     </Col>
-                    <Col
-                      sm={12}
-                      md={isColumnLayout ? "12" : "3"}
-                      mdOffset={isColumnLayout ? null : 1}
-                      lgOffset={isColumnLayout ? null : 1}
-                      xlOffset={isColumnLayout ? null : 1}
-                    >
+                    <Col sm={12} md={12}>
                       {featuredArtists.length > 0 && (
                         <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
@@ -399,6 +393,7 @@ const ViewMore = styled(Box)`
       text-decoration: underline;
       ${unica("s14")};
     }
+
     div:first-child {
       text-decoration: none;
     }
