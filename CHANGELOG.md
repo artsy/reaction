@@ -1,3 +1,16 @@
+# v16.17.24 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter Refactor] Extract and consolidate [#2572](https://github.com/artsy/reaction/pull/2572) ([@damassi](https://github.com/damassi) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.17.23 (Fri Jun 21 2019)
 
 #### 🐛  Bug Fix
