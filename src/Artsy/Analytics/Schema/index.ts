@@ -17,7 +17,7 @@ import { Label } from "./Label"
 import { Failure, Success } from "./Result"
 import { Type } from "./Type"
 
-interface Uncatagorized {
+interface Uncategorized {
   changed: any
   current: any
   item_type: any
@@ -35,7 +35,7 @@ export type Trackables =
   | Success
   | Failure
   | Type
-  | Uncatagorized
+  | Uncategorized
 
 /**
  * A sentinel type used to signal that anything goes in order to be able to
