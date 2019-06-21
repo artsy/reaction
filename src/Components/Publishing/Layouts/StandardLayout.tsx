@@ -114,7 +114,6 @@ export class StandardLayout extends React.Component<
   render() {
     const {
       article,
-      display,
       emailSignupUrl,
       infiniteScrollEntrySlug,
       isMobile,
@@ -171,7 +170,7 @@ export class StandardLayout extends React.Component<
                 />
               )}
 
-              {(relatedArticlesForCanvas || display) && !seriesOrSuper && (
+              {relatedArticlesForCanvas && !seriesOrSuper && (
                 <CanvasFooter
                   article={article}
                   relatedArticles={relatedArticlesForCanvas}
