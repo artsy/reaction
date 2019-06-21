@@ -34,7 +34,6 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
       slug,
       title,
     } = this.props.collection
-    const formattedTitle = (title && title.split(": ")[1]) || title
     const bgImages = map(hits, "image.url")
     const imageSize =
       bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
@@ -66,7 +65,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
             )}
           </ImgWrapper>
 
-          <CollectionTitle size="3">{formattedTitle}</CollectionTitle>
+          <CollectionTitle size="3">{title}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
               From $

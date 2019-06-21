@@ -55,9 +55,10 @@ export class RelatedCollectionsRail extends React.Component<
           <Carousel
             height="200px"
             options={{
-              groupCells: 1,
+              groupCells: 4,
               wrapAround: true,
               cellAlign: "left",
+              pageDots: false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={take(collections, 8)}
