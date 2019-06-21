@@ -1,4 +1,5 @@
 import { Box, Spacer } from "@artsy/palette"
+import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { useSystemContext } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React, { useState } from "react"
@@ -8,15 +9,22 @@ import { Pagination } from "../Pagination"
 import { useFilterContext } from "./ArtworkFilterContext"
 import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
 
+interface ArtworkFilterArtworkGridProps {
+  columnCount: number[]
+  filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
+  term: string
+  isLoading?: boolean
+}
+
 export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
-  props => {
+  (props: ArtworkFilterArtworkGridProps) => {
     const {
       columnCount,
       filtered_artworks: { artworks },
       term,
     } = props
 
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading /* setLoading */] = useState(false)
     const { user, mediator } = useSystemContext()
     const context = useFilterContext()
 
@@ -36,21 +44,19 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
 
         <Spacer mb={3} />
 
-        {/*
         <Box>
           <Pagination
             hasNextPage={artworks.pageInfo.hasNextPage}
             pageCursors={artworks.pageCursors as any}
             onClick={(cursor, page) => {
-              this.loadAfter(cursor, page, context)
+              // this.loadAfter(cursor, page, context)
             }}
             onNext={() => {
-              this.loadNext(context)
+              // this.loadNext(context)
             }}
             scrollTo="#jump--searchArtworkGrid"
           />
         </Box>
-        */}
       </LoadingArea>
     )
   },

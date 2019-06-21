@@ -74,7 +74,7 @@ export const FilterContextProvider: React.FC<
     ...rest,
   })
   const isMounted = useDidMount()
-  const updateOnChange = Object.keys(state).map(prop => state[prop])
+  // const updateOnChange = Object.keys(state).map(prop => state[prop])
 
   useEffect(() => {
     if (isMounted) {
@@ -85,7 +85,7 @@ export const FilterContextProvider: React.FC<
         `${window.location.pathname}?${queryString}`
       )
     }
-  }, updateOnChange)
+  })
 
   /**
    * TODO: use this to trigger resetting of fields when back/fwd buttons are hit

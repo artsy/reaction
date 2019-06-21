@@ -9,9 +9,9 @@ import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/Artw
 
 import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2"
 import { initialFilterState } from "./ArtworkFilterContext"
-import { FilterContextProvider, useFilterContext } from "./ArtworkFilterContext"
+import { FilterContextProvider } from "./ArtworkFilterContext"
 import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet"
-import { ArtworkFilters } from "./ArtworkFilters/ArtworkFilters"
+import { ArtworkFilters } from "./ArtworkFilters"
 
 import {
   Box,
@@ -21,10 +21,7 @@ import {
   Separator,
   Spacer,
 } from "@artsy/palette"
-
-interface ArtworkFilterProps {
-  size?: number
-}
+import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
 
 const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
@@ -71,10 +68,18 @@ const ArtworkQueryFilter = graphql`
   }
 `
 
+interface ArtworkFilterProps {
+  viewer: ArtworkFilter_viewer
+  term: string
+}
+
 const ArtworkFilterFragmentContainer = createRefetchContainer(
-  ({ viewer, term }) => {
-    const filterContext = useFilterContext()
+  ({ viewer, term }: ArtworkFilterProps) => {
     const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
+
+    const mediums = viewer.filter_artworks.aggregations.find(
+      agg => agg.slice === "MEDIUM"
+    )
 
     // If we're in mobile mode, prohibit scrolling
     useEffect(() => {
@@ -94,7 +99,6 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
     }, [showMobileActionSheet])
 
     const ArtworkGrid = () => {
-      console.log(viewer)
       return (
         <ArtworkFilterArtworkGrid
           filtered_artworks={viewer.filtered_artworks as any}
@@ -113,7 +117,7 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
               <ArtworkFilterMobileActionSheet
                 onClose={() => toggleMobileActionSheet(false)}
               >
-                <ArtworkFilters />
+                <ArtworkFilters mediums={mediums as any} />
               </ArtworkFilterMobileActionSheet>
             )}
 
@@ -123,7 +127,7 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
               <Button
                 size="small"
                 mt={-1}
-                onClick={() => this.setState({ showMobileActionSheet: true })}
+                onClick={() => toggleMobileActionSheet(true)}
               >
                 <Flex justifyContent="space-between" alignItems="center">
                   <FilterIcon fill="white100" />
@@ -142,7 +146,7 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
         <Media greaterThan="xs">
           <Flex>
             <Box width="25%" mr={2}>
-              <ArtworkFilters />
+              <ArtworkFilters mediums={mediums as any} />
               <Separator mb={2} />
             </Box>
             <Box width="75%">
@@ -220,9 +224,8 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
   ArtworkQueryFilter
 )
 
-export const ArtworkFilterQueryRenderer = ({ size }: ArtworkFilterProps) => {
+export const ArtworkFilterQueryRenderer = ({ term = "andy warhol" }) => {
   const { relayEnvironment } = useSystemContext()
-  const term = "andy warhol"
 
   return (
     <FilterContextProvider keyword={term} {...initialFilterState}>
