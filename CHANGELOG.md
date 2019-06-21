@@ -1,3 +1,15 @@
+# v16.17.25 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- [RelatedCollectionsRail]  fix related collections carousel [#2574](https://github.com/artsy/reaction/pull/2574) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v16.17.24 (Fri Jun 21 2019)
 
 #### 🐛  Bug Fix
