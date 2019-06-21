@@ -66,7 +66,7 @@ export class StandardLayout extends React.Component<
   renderSideRailDisplayAd(isMobileAd: boolean) {
     const { areHostedAdsEnabled, article } = this.props
 
-    // @FIXME: When ads are love on production remove areHostedAdsEnabled check
+    // @FIXME: When ads are live on production remove areHostedAdsEnabled check
     if (areHostedAdsEnabled) {
       return (
         <DisplayAd
@@ -90,7 +90,7 @@ export class StandardLayout extends React.Component<
     const { areHostedAdsEnabled, article } = this.props
 
     return (
-      // @FIXME: When ads are love on production remove areHostedAdsEnabled check
+      // @FIXME: When ads are live on production remove areHostedAdsEnabled check
       areHostedAdsEnabled && (
         <DisplayAd
           pt={4}
