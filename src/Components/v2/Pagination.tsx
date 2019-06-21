@@ -1,10 +1,16 @@
-import { LargePagination, Separator, SmallPagination } from "@artsy/palette"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 import { ScrollIntoView } from "Utils/ScrollIntoView"
 
 import { Pagination_pageCursors } from "__generated__/Pagination_pageCursors.graphql"
-import { createFragmentContainer, graphql } from "react-relay"
+
+import {
+  Box,
+  LargePagination,
+  Separator,
+  SmallPagination,
+} from "@artsy/palette"
 
 interface Props {
   onClick?: (cursor: string, page: number) => void
@@ -32,10 +38,10 @@ export class Pagination extends React.Component<Props> {
           <SmallPagination {...this.props} />
         </Media>
         <Media greaterThan="xs">
-          <div>
+          <Box>
             <Separator mb={3} pr={2} />
             <LargePagination {...this.props} />
-          </div>
+          </Box>
         </Media>
       </ScrollIntoView>
     )

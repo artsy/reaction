@@ -120,11 +120,6 @@ return {
           ]
         },
         {
-          "kind": "FragmentSpread",
-          "name": "ArtworkGrid_artworks",
-          "args": null
-        },
-        {
           "kind": "LinkedField",
           "alias": null,
           "name": "edges",
@@ -146,11 +141,16 @@ return {
               ]
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkGrid_artworks",
+          "args": null
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = 'f53e32c10ee0f1aedfceed372790ccd9';
+(node as any).hash = '27b7f0614f390c626facc03757ef1f36';
 export default node;

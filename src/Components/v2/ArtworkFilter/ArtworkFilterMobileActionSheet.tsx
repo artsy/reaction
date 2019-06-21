@@ -2,18 +2,22 @@ import { Box, Button, Sans, Spacer } from "@artsy/palette"
 import { MobileTopBar } from "Components/v2"
 import React, { SFC } from "react"
 import styled from "styled-components"
+import { useFilterContext } from "./ArtworkFilterContext"
 
 export const ArtworkFilterMobileActionSheet: SFC<{
   children: JSX.Element
   onClose: () => void
 }> = ({ children, onClose }) => {
-  // FIXME: Implement resetFilters
-  const resetFilters = () => null
+  const filterContext = useFilterContext()
 
   return (
     <Container mt={6}>
       <MobileTopBar>
-        <Button variant="noOutline" size="small" onClick={() => resetFilters()}>
+        <Button
+          variant="noOutline"
+          size="small"
+          onClick={() => filterContext.resetFilters()}
+        >
           Reset
         </Button>
         <FilterTitle size="2" weight="medium">

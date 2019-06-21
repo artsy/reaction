@@ -17,6 +17,14 @@ import { Label } from "./Label"
 import { Failure, Success } from "./Result"
 import { Type } from "./Type"
 
+interface Uncatagorized {
+  changed: any
+  current: any
+  item_type: any
+  item_id: any
+  query: any
+}
+
 export type Trackables =
   | AuthenticationInteraction
   | ContextModule
@@ -27,6 +35,7 @@ export type Trackables =
   | Success
   | Failure
   | Type
+  | Uncatagorized
 
 /**
  * A sentinel type used to signal that anything goes in order to be able to
