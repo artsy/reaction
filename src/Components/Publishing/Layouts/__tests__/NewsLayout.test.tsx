@@ -1,9 +1,6 @@
 import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
-import {
-  Display,
-  RelatedCanvas,
-} from "Components/Publishing/Fixtures/Components"
+import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { NewsSectionContainer } from "Components/Publishing/News/NewsSections"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { mount } from "enzyme"
@@ -89,13 +86,7 @@ describe("News Layout", () => {
   })
 
   xit("Can render display units if provided", () => {
-    const component = mount(
-      <NewsLayout
-        article={NewsArticle}
-        isTruncated
-        display={Display("image")}
-      />
-    )
+    const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
     expect(component.find(DisplayCanvas)).toHaveLength(1)
   })
 
