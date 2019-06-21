@@ -21,7 +21,7 @@ describe("RelatedCollectionEntity", () => {
   it("Renders expected fields", () => {
     const component = mount(<RelatedCollectionEntity {...props} />)
 
-    expect(component.text()).not.toMatch("Jasper Johns:")
+    expect(component.text()).toMatch("Jasper Johns:")
     expect(component.text()).toMatch("Flags")
     expect(component.text()).toMatch("From $1,000")
     expect(component.find(ArtworkImage).length).toBe(3)
