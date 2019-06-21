@@ -18,11 +18,9 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     backgroundColor,
     color,
     customEditorial,
-    display,
     isMobile,
     isSuper,
     relatedArticlesForCanvas,
-    renderTime,
     showTooltips,
     showCollectionsRail,
   } = props
@@ -64,17 +62,13 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
 
       {seriesArticle && <ArticleCardsBlock {...props} />}
 
-      {(relatedArticlesForCanvas || display) &&
-        !seriesOrSuper &&
-        !customEditorial && (
-          <CanvasFooter
-            article={article}
-            display={display}
-            relatedArticles={relatedArticlesForCanvas}
-            renderTime={renderTime}
-            showCollectionsRail={showCollectionsRail}
-          />
-        )}
+      {relatedArticlesForCanvas && !seriesOrSuper && !customEditorial && (
+        <CanvasFooter
+          article={article}
+          relatedArticles={relatedArticlesForCanvas}
+          showCollectionsRail={showCollectionsRail}
+        />
+      )}
     </FeatureLayoutContainer>
   )
 }

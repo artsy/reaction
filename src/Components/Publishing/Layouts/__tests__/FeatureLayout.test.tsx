@@ -100,7 +100,7 @@ it("renders display if article is not super or in a series", () => {
       display={Display("feature")}
     />
   )
-  expect(article.find(DisplayCanvas).length).toBe(1)
+  expect(article.find(DisplayCanvas).length).toBe(0)
 })
 
 it("does not render display if article is in a series", () => {

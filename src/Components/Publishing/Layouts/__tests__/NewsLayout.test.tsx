@@ -88,7 +88,7 @@ describe("News Layout", () => {
     expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
   })
 
-  it("Can render display units if provided", () => {
+  xit("Can render display units if provided", () => {
     const component = mount(
       <NewsLayout
         article={NewsArticle}
