@@ -1,5 +1,6 @@
 import { ArtistCollectionsRailQuery } from "__generated__/ArtistCollectionsRailQuery.graphql"
 import { useSystemContext } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from "./ArtistCollectionsRail"
@@ -34,13 +35,7 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
           }
         }
       `}
-      render={({ props }) => {
-        if (props) {
-          return <ArtistCollectionsRail {...props} />
-        } else {
-          return null
-        }
-      }}
+      render={renderWithLoadProgress(ArtistCollectionsRail)}
       cacheConfig={{ force: true }}
     />
   )
