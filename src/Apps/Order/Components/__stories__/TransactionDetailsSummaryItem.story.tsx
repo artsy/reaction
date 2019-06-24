@@ -48,7 +48,7 @@ const render = (
   />
 )
 
-storiesOf("Apps/Order Page/Components", module).add(
+storiesOf("Apps/Order/Components", module).add(
   "TransactionDetailsSummary",
   () => {
     return (

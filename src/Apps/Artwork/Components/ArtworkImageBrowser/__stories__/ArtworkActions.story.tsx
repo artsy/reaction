@@ -14,7 +14,7 @@ ArtworkActionsAuctionFixture.artwork.sale.is_auction = true
 const ArtworkActionsNonAdminFixture = cloneDeep(ArtworkActionsFixture)
 ArtworkActionsNonAdminFixture.user.type = "User"
 
-storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
+storiesOf("Apps/Artwork/Components/ArtworkImageBrowser", module).add(
   "ArtworkActions",
   () => (
     <>

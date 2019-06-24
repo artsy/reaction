@@ -13,7 +13,7 @@ import {
   ArtworkUpcomingShowBannerFixture,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkBanner"
 
-storiesOf("Apps/Artwork Page/Components", module).add("ArtworkBanner", () => {
+storiesOf("Apps/Artwork/Components", module).add("ArtworkBanner", () => {
   return (
     <React.Fragment>
       <Section title="ArtworkBannerQueryRenderer artwork with no banner">

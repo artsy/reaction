@@ -3,11 +3,10 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
-import { SearchResultsSkeleton } from "../Search/Components/SearchResultsSkeleton"
 import { routes as searchRoutes } from "../Search/routes"
 
 storiesOf("Apps", module)
-  .add("Collect Page", () => {
+  .add("Collect", () => {
     return (
       <MockRouter
         routes={collectRoutes}
@@ -20,7 +19,7 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Collection Page", () => {
+  .add("Collection", () => {
     return (
       <MockRouter
         routes={collectRoutes}
@@ -33,7 +32,7 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Collections Page", () => {
+  .add("Collections", () => {
     return (
       <MockRouter
         routes={collectionsRoutes}
@@ -42,7 +41,6 @@ storiesOf("Apps", module)
       />
     )
   })
-  .add("Search Results Page", () => {
+  .add("Search Results", () => {
     return <MockRouter routes={searchRoutes} initialRoute="/search?term=andy" />
   })
-  .add("Search Results Skeleton", () => <SearchResultsSkeleton />)

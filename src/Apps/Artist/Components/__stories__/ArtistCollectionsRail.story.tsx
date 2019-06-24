@@ -3,7 +3,7 @@ import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Apps/Arti
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
-storiesOf("Components/Artist/CollectionsRail", module).add(
+storiesOf("Apps/Artist/Components/ArtistCollectionsRail", module).add(
   "Artist Collections Rail",
   () => (
     <Theme>

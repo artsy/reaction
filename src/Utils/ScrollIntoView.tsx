@@ -1,6 +1,5 @@
-import { media } from "@artsy/palette"
+import { Box } from "@artsy/palette"
 import React from "react"
-import styled from "styled-components"
 
 interface ScrollIntoViewProps {
   selector: string
@@ -8,7 +7,7 @@ interface ScrollIntoViewProps {
 }
 export class ScrollIntoView extends React.Component<ScrollIntoViewProps> {
   static defaultProps = {
-    offset: 20,
+    offset: 40,
   }
 
   getElementPosition = $element => {
@@ -25,22 +24,17 @@ export class ScrollIntoView extends React.Component<ScrollIntoViewProps> {
 
     if ($element) {
       const { top } = this.getElementPosition($element)
-      window.scrollTo(0, top - offset)
+      window.scrollTo({
+        top: top - offset,
+      })
     }
   }
 
   render() {
     return (
-      <ClickArea onClick={this.scrollIntoView}>{this.props.children}</ClickArea>
+      <Box display="block" width={["100%"]} onClick={this.scrollIntoView}>
+        {this.props.children}
+      </Box>
     )
   }
 }
-
-const ClickArea = styled.div`
-  display: block;
-
-  /* FIXME: Style this right so width isn't needed */
-  ${media.xs`
-    width: 100%;
-  `};
-`

@@ -5,7 +5,7 @@ import { Section } from "Utils/Section"
 
 import { RelayStubProvider } from "DevTools/RelayStubProvider"
 
-storiesOf("Apps/Artwork Page/Components", module)
+storiesOf("Apps/Artwork/Components", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("SidebarLive", () => {
     return (

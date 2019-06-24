@@ -12,7 +12,7 @@ function RenderMarketDataSummaryFor(artistID: string) {
   )
 }
 
-storiesOf("Components/Artist/MarketDataSummary", module)
+storiesOf("Apps/Artist/Components/MarketDataSummary", module)
   .add("Pablo Picasso", () => RenderMarketDataSummaryFor("pablo-picasso"))
   .add("Andy Warhol", () => RenderMarketDataSummaryFor("andy-warhol"))
   .add("Damon Zucconi", () => RenderMarketDataSummaryFor("damon-zucconi"))

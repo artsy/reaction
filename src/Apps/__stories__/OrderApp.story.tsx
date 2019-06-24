@@ -38,7 +38,7 @@ const Router = ({ order, ...props }: any) => (
   />
 )
 
-storiesOf("Apps/Order Page/Buy Now/Shipping", module)
+storiesOf("Apps/Order/Buy Now/Shipping", module)
   .add("Shipping - Pre-filled", () => (
     <Router
       initialRoute="/orders/123/shipping"
@@ -54,7 +54,7 @@ storiesOf("Apps/Order Page/Buy Now/Shipping", module)
     />
   ))
 
-storiesOf("Apps/Order Page/Buy Now/Review", module).add("Review", () => (
+storiesOf("Apps/Order/Buy Now/Review", module).add("Review", () => (
   <Router
     initialRoute="/orders/123/review"
     order={{
@@ -65,7 +65,7 @@ storiesOf("Apps/Order Page/Buy Now/Review", module).add("Review", () => (
   />
 ))
 
-storiesOf("Apps/Order Page/Buy Now/Payment", module)
+storiesOf("Apps/Order/Buy Now/Payment", module)
   .add("With 'Ship'", () => (
     <Router
       initialRoute="/orders/123/payment"
@@ -76,7 +76,7 @@ storiesOf("Apps/Order Page/Buy Now/Payment", module)
     <Router initialRoute="/orders/123/payment" order={BuyOrderPickup} />
   ))
 
-storiesOf("Apps/Order Page/Buy Now/Status", module)
+storiesOf("Apps/Order/Buy Now/Status", module)
   .add("submitted (ship)", () => (
     <Router
       initialRoute="/orders/123/status"
@@ -148,7 +148,7 @@ storiesOf("Apps/Order Page/Buy Now/Status", module)
     />
   ))
 
-storiesOf("Apps/Order Page/Make Offer/Offer", module).add("Empty", () => (
+storiesOf("Apps/Order/Make Offer/Offer", module).add("Empty", () => (
   <Router
     initialRoute="/orders/123/offer"
     order={{
@@ -158,7 +158,7 @@ storiesOf("Apps/Order Page/Make Offer/Offer", module).add("Empty", () => (
   />
 ))
 
-storiesOf("Apps/Order Page/Make Offer/Shipping", module)
+storiesOf("Apps/Order/Make Offer/Shipping", module)
   .add("Shipping - Pre-filled", () => (
     <Router
       initialRoute="/orders/123/shipping"
@@ -169,7 +169,7 @@ storiesOf("Apps/Order Page/Make Offer/Shipping", module)
     <Router order={OfferOrderWithOffers} initialRoute="/orders/123/shipping" />
   ))
 
-storiesOf("Apps/Order Page/Make Offer/Payment", module)
+storiesOf("Apps/Order/Make Offer/Payment", module)
   .add("With 'Ship'", () => (
     <Router
       initialRoute="/orders/123/payment"
@@ -180,7 +180,7 @@ storiesOf("Apps/Order Page/Make Offer/Payment", module)
     <Router initialRoute="/orders/123/payment" order={OfferOrderPickup} />
   ))
 
-storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
+storiesOf("Apps/Order/Make Offer/NewPayment", module)
   .add("With 'Pickup'", () => (
     <Router
       initialRoute="/orders/123/payment/new"
@@ -225,14 +225,14 @@ storiesOf("Apps/Order Page/Make Offer/NewPayment", module)
       }}
     />
   ))
-storiesOf("Apps/Order Page/Make Offer/Review", module).add("Review", () => (
+storiesOf("Apps/Order/Make Offer/Review", module).add("Review", () => (
   <Router
     initialRoute="/orders/123/review"
     order={OfferOrderWithShippingDetails}
   />
 ))
 
-storiesOf("Apps/Order Page/Respond", module)
+storiesOf("Apps/Order/Respond", module)
   .add("Respond", () => (
     <Router
       initialRoute="/orders/123/respond"
@@ -330,7 +330,7 @@ storiesOf("Apps/Order Page/Respond", module)
     />
   ))
 
-storiesOf("Apps/Order Page/Make Offer/Status", module)
+storiesOf("Apps/Order/Make Offer/Status", module)
   .add("submitted (ship)", () => (
     <Router
       initialRoute="/orders/123/status"

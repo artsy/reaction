@@ -4,7 +4,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 
-storiesOf("Apps/Artwork Page/Components/ArtworkImageBrowser", module).add(
+storiesOf("Apps/Artwork/Components/ArtworkImageBrowser", module).add(
   "ArtworkBrowser",
   () => {
     return (

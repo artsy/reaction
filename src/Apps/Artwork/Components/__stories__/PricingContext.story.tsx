@@ -190,7 +190,7 @@ const mockArtwork: PricingContext_artwork = {
   },
 }
 
-storiesOf("Apps/Artwork Page/Components", module)
+storiesOf("Apps/Artwork/Components", module)
   .add("PricingContext", () => {
     return (
       <>
