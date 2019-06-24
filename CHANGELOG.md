@@ -1,3 +1,15 @@
+# v16.17.28 (Mon Jun 24 2019)
+
+#### 🐛  Bug Fix
+
+- [FeaturedArtistModule] refactor featured artist module to truncate on both desktop and mobile [#2579](https://github.com/artsy/reaction/pull/2579) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.17.27 (Mon Jun 24 2019)
 
 
