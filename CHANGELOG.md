@@ -1,3 +1,49 @@
+# v16.17.26 (Mon Jun 24 2019)
+
+### Release Notes
+
+  _From #2573_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.21`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41421-Fri-Jun-21-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.20...v4.14.21)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Add prop to make button full width [#&#8203;523](https://togithub.com/artsy/palette/pull/523) ([@&#8203;lilyfromseattle](https://togithub.com/lilyfromseattle) [`3465158`](https://togithub.com/artsy/palette/commit/34651588)+peril-staging[bot][@&#8203;users](https://togithub.com/users).noreply.github.com)
+
+##### Authors: 2
+
+-   Lily Pace ([@&#8203;lilyfromseattle](https://togithub.com/lilyfromseattle))
+-   [`3465158`](https://togithub.com/artsy/palette/commit/34651588)+peril-staging[bot][@&#8203;users](https://togithub.com/users).noreply.github.com
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- [ArtistRecommendations] Fix carousel alignment [#2576](https://github.com/artsy/reaction/pull/2576) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.20 to v4.14.21 [#2573](https://github.com/artsy/reaction/pull/2573) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.25 (Fri Jun 21 2019)
 
 #### 🐛  Bug Fix
