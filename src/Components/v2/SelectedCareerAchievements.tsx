@@ -3,7 +3,7 @@ import { SelectedCareerAchievements_artist } from "__generated__/SelectedCareerA
 import {
   hasSections,
   highestCategory,
-} from "Components/Artist/MarketInsights/MarketInsights"
+} from "Apps/Artist/Components/MarketInsights/MarketInsights"
 
 import { ArtistInsight } from "Components/v2/ArtistInsight"
 import { ArtistInsightsModal } from "Components/v2/ArtistInsightsModal"

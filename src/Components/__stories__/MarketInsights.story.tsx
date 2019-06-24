@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react"
 import * as React from "react"
 
+import { Contents } from "Apps/Artist/Components/MarketInsights"
 import { SystemContextProvider } from "Artsy"
-import { Contents } from "../Artist/MarketInsights"
 
 function RenderMarketInsightsFor(artistID: string) {
   return (
