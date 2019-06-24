@@ -3,6 +3,7 @@ import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
 import React, { FC, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
@@ -177,12 +178,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
 
-  const truncateForMobile = (featuredArtists, isColumnLayout) => {
-    if (featuredArtists.length < 3) {
+  const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
+    const truncatedLength = sd.IS_MOBILE ? 3 : 7
+    if (featuredArtists.length <= truncatedLength) {
       return featuredArtists
     }
 
-    const remainingArtists = featuredArtists.length - 3
+    const remainingArtists = featuredArtists.length - truncatedLength
     const viewMore = (
       <EntityContainer
         width={["100%", "25%"]}
@@ -200,7 +202,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       </EntityContainer>
     )
     const artists = cloneDeep(featuredArtists)
-    artists.splice(3, remainingArtists, viewMore)
+    artists.splice(truncatedLength, remainingArtists, viewMore)
 
     return showMore ? featuredArtists : artists
   }
@@ -283,12 +285,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                           </Sans>
                           <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                            {smallerScreen
-                              ? truncateForMobile(
-                                  featuredArtists,
-                                  isColumnLayout
-                                )
-                              : featuredArtists}
+                            {truncateFeaturedArtists(
+                              featuredArtists,
+                              isColumnLayout
+                            )}
                           </Flex>
                         </Box>
                       )}
