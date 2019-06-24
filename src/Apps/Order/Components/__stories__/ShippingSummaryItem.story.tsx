@@ -42,81 +42,78 @@ const orderQuery = graphql`
   }
 `
 
-storiesOf("Apps/Order Page/Components", module).add(
-  "ShippingSummaryItem",
-  () => (
-    <>
-      <Section title="Shipping Summary (delivery)">
-        <Flex flexDirection="column" width={300}>
-          <MockRelayRenderer
-            Component={ShippingSummaryItemFragmentContainer}
-            mockResolvers={mockResolver(order)}
-            query={orderQuery}
-          />
-        </Flex>
-      </Section>
-      <Section title="Shipping Summary (pickup)">
-        <Flex flexDirection="column" width={300}>
-          <MockRelayRenderer
-            Component={ShippingSummaryItemFragmentContainer}
-            mockResolvers={mockResolver({
-              ...order,
-              requestedFulfillment: {
-                __typename: "Pickup",
-              },
-            })}
-            query={orderQuery}
-          />
-        </Flex>
-      </Section>
-      <Section title="Shipping Review (delivery)">
-        <Flex flexDirection="column" width={300}>
-          <MockRelayRenderer
-            Component={(props: any) => (
-              <ShippingSummaryItemFragmentContainer
-                {...props}
-                onChange={() => alert("clicked")}
-              />
-            )}
-            mockResolvers={mockResolver(order)}
-            query={orderQuery}
-          />
-        </Flex>
-      </Section>
-      <Section title="Shipping Review (pickup)">
-        <Flex flexDirection="column" width={300}>
-          <MockRelayRenderer
-            Component={(props: any) => (
-              <ShippingSummaryItemFragmentContainer
-                {...props}
-                onChange={() => alert("clicked")}
-              />
-            )}
-            mockResolvers={mockResolver({
-              ...order,
-              requestedFulfillment: {
-                __typename: "Pickup",
-              },
-            })}
-            query={orderQuery}
-          />
-        </Flex>
-      </Section>
-      <Section title="Shipping Review (locked)">
-        <Flex flexDirection="column" width={300}>
-          <MockRelayRenderer
-            Component={(props: any) => (
-              <ShippingSummaryItemFragmentContainer
-                {...props}
-                locked
-                onChange={() => alert("clicked")}
-              />
-            )}
-            mockResolvers={mockResolver(order)}
-            query={orderQuery}
-          />
-        </Flex>
-      </Section>
-    </>
-  )
-)
+storiesOf("Apps/Order/Components", module).add("ShippingSummaryItem", () => (
+  <>
+    <Section title="Shipping Summary (delivery)">
+      <Flex flexDirection="column" width={300}>
+        <MockRelayRenderer
+          Component={ShippingSummaryItemFragmentContainer}
+          mockResolvers={mockResolver(order)}
+          query={orderQuery}
+        />
+      </Flex>
+    </Section>
+    <Section title="Shipping Summary (pickup)">
+      <Flex flexDirection="column" width={300}>
+        <MockRelayRenderer
+          Component={ShippingSummaryItemFragmentContainer}
+          mockResolvers={mockResolver({
+            ...order,
+            requestedFulfillment: {
+              __typename: "Pickup",
+            },
+          })}
+          query={orderQuery}
+        />
+      </Flex>
+    </Section>
+    <Section title="Shipping Review (delivery)">
+      <Flex flexDirection="column" width={300}>
+        <MockRelayRenderer
+          Component={(props: any) => (
+            <ShippingSummaryItemFragmentContainer
+              {...props}
+              onChange={() => alert("clicked")}
+            />
+          )}
+          mockResolvers={mockResolver(order)}
+          query={orderQuery}
+        />
+      </Flex>
+    </Section>
+    <Section title="Shipping Review (pickup)">
+      <Flex flexDirection="column" width={300}>
+        <MockRelayRenderer
+          Component={(props: any) => (
+            <ShippingSummaryItemFragmentContainer
+              {...props}
+              onChange={() => alert("clicked")}
+            />
+          )}
+          mockResolvers={mockResolver({
+            ...order,
+            requestedFulfillment: {
+              __typename: "Pickup",
+            },
+          })}
+          query={orderQuery}
+        />
+      </Flex>
+    </Section>
+    <Section title="Shipping Review (locked)">
+      <Flex flexDirection="column" width={300}>
+        <MockRelayRenderer
+          Component={(props: any) => (
+            <ShippingSummaryItemFragmentContainer
+              {...props}
+              locked
+              onChange={() => alert("clicked")}
+            />
+          )}
+          mockResolvers={mockResolver(order)}
+          query={orderQuery}
+        />
+      </Flex>
+    </Section>
+  </>
+))

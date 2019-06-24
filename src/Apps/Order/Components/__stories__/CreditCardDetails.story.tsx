@@ -11,25 +11,22 @@ const creditCard = {
   expiration_year: 21,
 }
 
-storiesOf("Apps/Order Page/Components", module).add(
-  "Credit card details",
-  () => (
-    <Section title="Credit card details">
-      <Flex flexDirection="column" width={300} mb={2}>
-        <CreditCardDetails {...creditCard} brand="Visa" />
-      </Flex>
-      <Flex flexDirection="column" width={300} mb={2}>
-        <CreditCardDetails {...creditCard} brand="MasterCard" />
-      </Flex>
-      <Flex flexDirection="column" width={300} mb={2}>
-        <CreditCardDetails {...creditCard} brand="Discover" />
-      </Flex>
-      <Flex flexDirection="column" width={300} mb={2}>
-        <CreditCardDetails {...creditCard} brand="American Express" />
-      </Flex>
-      <Flex flexDirection="column" width={300}>
-        <CreditCardDetails {...creditCard} brand="unknown" />
-      </Flex>
-    </Section>
-  )
-)
+storiesOf("Apps/Order/Components", module).add("Credit card details", () => (
+  <Section title="Credit card details">
+    <Flex flexDirection="column" width={300} mb={2}>
+      <CreditCardDetails {...creditCard} brand="Visa" />
+    </Flex>
+    <Flex flexDirection="column" width={300} mb={2}>
+      <CreditCardDetails {...creditCard} brand="MasterCard" />
+    </Flex>
+    <Flex flexDirection="column" width={300} mb={2}>
+      <CreditCardDetails {...creditCard} brand="Discover" />
+    </Flex>
+    <Flex flexDirection="column" width={300} mb={2}>
+      <CreditCardDetails {...creditCard} brand="American Express" />
+    </Flex>
+    <Flex flexDirection="column" width={300}>
+      <CreditCardDetails {...creditCard} brand="unknown" />
+    </Flex>
+  </Section>
+))

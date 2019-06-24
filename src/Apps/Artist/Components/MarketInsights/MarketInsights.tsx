@@ -5,8 +5,8 @@ import styled from "styled-components"
 
 import colors from "Assets/Colors"
 import { unica } from "Assets/Fonts"
-import TextLink from "../../TextLink"
-import { Tooltip } from "../../Tooltip"
+import TextLink from "Components/TextLink"
+import { Tooltip } from "Components/Tooltip"
 
 import { HelpIcon } from "@artsy/palette"
 
@@ -39,7 +39,7 @@ const TooltipContainer = styled.div`
   display: inline-block;
 `
 
-import { MarketInsights_artist } from "../../../__generated__/MarketInsights_artist.graphql"
+import { MarketInsights_artist } from "__generated__/MarketInsights_artist.graphql"
 interface Props extends React.HTMLProps<MarketInsights> {
   artist: MarketInsights_artist
 }

@@ -9,7 +9,7 @@ import styled, { StyledComponentClass } from "styled-components"
 export const MarketDataSummaryContainer = styled.div`
   ${unica("s14")};
 `
-import { MarketDataSummary_artist } from "../../../__generated__/MarketDataSummary_artist.graphql"
+import { MarketDataSummary_artist } from "__generated__/MarketDataSummary_artist.graphql"
 export interface Props extends React.HTMLProps<MarketDataSummary> {
   artist: MarketDataSummary_artist
   onEmptyText?: string

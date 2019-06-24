@@ -316,41 +316,43 @@ class Filter extends Component<ArtworkFilterProps, ArtworkFilterState> {
     const Filters = () => this.renderFilters({ hideTopBorder })
 
     return (
-      <Flex flexDirection={["column", "row"]}>
-        <Box width={["100%", "25%"]} mr={2}>
-          <Media at="xs">
-            {this.state.showMobileActionSheet && (
-              <MobileActionSheet onClose={this.hideMobileActionSheet}>
-                <Filters />
-              </MobileActionSheet>
+      <>
+        <Flex flexDirection={["column", "row"]}>
+          <Box width={["100%", "25%"]} mr={2}>
+            <Media at="xs">
+              {this.state.showMobileActionSheet && (
+                <MobileActionSheet onClose={this.hideMobileActionSheet}>
+                  <Filters />
+                </MobileActionSheet>
+              )}
+            </Media>
+            <Media greaterThan="xs">
+              <Filters />
+            </Media>
+          </Box>
+          {/* Main Artwork Grid */}
+          <Box width={["100%", "75%"]}>
+            <Media greaterThan="xs">
+              {!hideTopBorder && <Separator mb={2} mt={-1} />}
+            </Media>
+
+            {this.renderSelect()}
+
+            <Spacer mb={2} />
+
+            {this.showZeroState ? (
+              this.renderZeroState()
+            ) : (
+              <ArtworkFilter
+                artist={this.props.artist}
+                artistID={this.props.artist.id}
+                columnCount={[2, 2, 2, 3]}
+                filters={filterState.state}
+              />
             )}
-          </Media>
-          <Media greaterThan="xs">
-            <Filters />
-          </Media>
-        </Box>
-        {/* Main Artwork Grid */}
-        <Box width={["100%", "75%"]}>
-          <Media greaterThan="xs">
-            {!hideTopBorder && <Separator mb={2} mt={-1} />}
-          </Media>
-
-          {this.renderSelect()}
-
-          <Spacer mb={2} />
-
-          {this.showZeroState ? (
-            this.renderZeroState()
-          ) : (
-            <ArtworkFilter
-              artist={this.props.artist}
-              artistID={this.props.artist.id}
-              columnCount={[2, 2, 2, 3]}
-              filters={filterState.state}
-            />
-          )}
-        </Box>
-      </Flex>
+          </Box>
+        </Flex>
+      </>
     )
   }
 }

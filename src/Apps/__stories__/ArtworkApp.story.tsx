@@ -3,7 +3,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as artworkRoutes } from "../Artwork/routes"
 
-storiesOf("Apps/Artwork Page", module)
+storiesOf("Apps/Artwork", module)
   .add("Default", () => {
     return (
       <MockRouter
