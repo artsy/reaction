@@ -6,7 +6,7 @@ import styled from "styled-components"
 
 import { media } from "Components/Helpers"
 import { Byline } from "Components/Publishing/Byline/Byline"
-import { Date } from "Components/Publishing/Byline/Date"
+import { Date as DateComponent } from "Components/Publishing/Byline/Date"
 import { formatTime, getMediaDate } from "Components/Publishing/Constants"
 import { IconVideoPlay } from "Components/Publishing/Icon/IconVideoPlay"
 import { crop } from "Utils/resizer"
@@ -75,18 +75,19 @@ export class ArticleCard extends Component<Props> {
     const { article } = this.props
     const mediaDate = getMediaDate(article)
     const date = article.layout === "video" ? mediaDate : article.published_at
+    const formatedDate = new Date(date).toISOString()
 
     if (this.isUnpublishedMedia()) {
       return (
         <Sans size="3t" weight="medium">
           <Flex alignItems="flex-end">
             <Box mr="5px">Available</Box>
-            <Date format="monthYear" date={mediaDate} />
+            <DateComponent format="monthYear" date={mediaDate} />
           </Flex>
         </Sans>
       )
     } else {
-      return <Date layout="condensed" size="3t" date={date} />
+      return <DateComponent layout="condensed" size="3t" date={formatedDate} />
     }
   }
 
