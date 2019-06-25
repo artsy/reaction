@@ -1,3 +1,47 @@
+# v16.17.30 (Tue Jun 25 2019)
+
+### Release Notes
+
+_From #2577_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.22`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41422-Mon-Jun-24-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.21...v4.14.22)
+
+##### 🐛  Bug Fix
+
+-   Adds note about Zeppelin plugin [#&#8203;524](https://togithub.com/artsy/palette/pull/524) ([@&#8203;ashfurrow](https://togithub.com/ashfurrow))
+
+##### Authors: 1
+
+-   Ash Furrow ([@&#8203;ashfurrow](https://togithub.com/ashfurrow))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Deprecate Ads on Standard Articles [#2575](https://github.com/artsy/reaction/pull/2575) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.21 to v4.14.22 [#2577](https://github.com/artsy/reaction/pull/2577) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.29 (Mon Jun 24 2019)
 
 
