@@ -2,17 +2,14 @@ import { color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import { get, omit } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { Responsive } from "Utils/Responsive"
 import { pMedia } from "../../Helpers"
 import { ArticleProps } from "../Article"
-import { DisplayPanel } from "../Display/DisplayPanel"
-import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
-import { NewDisplayPanel } from "../Display/NewDisplayPanel"
 import { Header } from "../Header/Header"
 import { ReadMoreButton } from "../ReadMore/ReadMoreButton"
 import { ReadMoreWrapper } from "../ReadMore/ReadMoreWrapper"
@@ -66,15 +63,13 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
-  renderDisplayPanel(isMobileAd: boolean) {
-    const { areHostedAdsEnabled, article, display, renderTime } = this.props
+  renderSideRailDisplayAd(isMobileAd: boolean) {
+    const { areHostedAdsEnabled, article } = this.props
 
-    const hasPanel = get(display, "panel", false)
-    const campaign = omit(display, "panel", "canvas")
-
+    // @FIXME: When ads are live on production remove areHostedAdsEnabled check
     if (areHostedAdsEnabled) {
       return (
-        <NewDisplayPanel
+        <DisplayAd
           adUnit={
             isMobileAd ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_RightRail1
           }
@@ -88,25 +83,17 @@ export class StandardLayout extends React.Component<
         />
       )
     }
-    return (
-      hasPanel && (
-        <DisplayPanel
-          isMobile={isMobileAd}
-          unit={display.panel}
-          campaign={campaign}
-          article={article}
-          renderTime={renderTime}
-        />
-      )
-    )
+    return null
   }
 
-  renderDisplayCanvas(isMobileAd: boolean) {
+  renderTopRailDisplayAd(isMobileAd: boolean) {
     const { areHostedAdsEnabled, article } = this.props
 
     return (
+      // @FIXME: When ads are live on production remove areHostedAdsEnabled check
       areHostedAdsEnabled && (
-        <NewDisplayCanvas
+        <DisplayAd
+          pt={4}
           adUnit={
             isMobileAd
               ? AdUnit.Mobile_TopLeaderboard
@@ -126,15 +113,12 @@ export class StandardLayout extends React.Component<
 
   render() {
     const {
-      areHostedAdsEnabled,
       article,
-      display,
       emailSignupUrl,
       infiniteScrollEntrySlug,
       isMobile,
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
-      renderTime,
       showTooltips,
       showCollectionsRail,
       isSuper,
@@ -148,13 +132,13 @@ export class StandardLayout extends React.Component<
       <Responsive>
         {({ xs, sm, md }) => {
           const isMobileAd = Boolean(isMobile || xs || sm || md)
-          const DisplayPanelAd = () => (
-            <>{this.renderDisplayPanel(isMobileAd)}</>
+          const sideRailDisplayAd = () => (
+            <>{this.renderSideRailDisplayAd(isMobileAd)}</>
           )
 
           return (
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
-              {this.renderDisplayCanvas(isMobileAd)}
+              {this.renderTopRailDisplayAd(isMobileAd)}
 
               <ReadMoreWrapper
                 isTruncated={isTruncated}
@@ -165,14 +149,14 @@ export class StandardLayout extends React.Component<
                 <StandardLayoutParent>
                   <StandardLayoutContainer>
                     <Sections
-                      DisplayPanel={DisplayPanelAd}
+                      DisplayPanel={sideRailDisplayAd}
                       article={article}
                       isMobile={isMobile}
                       showTooltips={showTooltips}
                     />
                     <Sidebar
                       emailSignupUrl={emailSignupUrl}
-                      DisplayPanel={DisplayPanelAd}
+                      DisplayPanel={sideRailDisplayAd}
                       relatedArticlesForPanel={relatedArticlesForPanel}
                     />
                   </StandardLayoutContainer>
@@ -186,17 +170,13 @@ export class StandardLayout extends React.Component<
                 />
               )}
 
-              {(relatedArticlesForCanvas || display) &&
-                !seriesOrSuper &&
-                !areHostedAdsEnabled && (
-                  <CanvasFooter
-                    article={article}
-                    display={display}
-                    relatedArticles={relatedArticlesForCanvas}
-                    renderTime={renderTime}
-                    showCollectionsRail={showCollectionsRail}
-                  />
-                )}
+              {relatedArticlesForCanvas && !seriesOrSuper && (
+                <CanvasFooter
+                  article={article}
+                  relatedArticles={relatedArticlesForCanvas}
+                  showCollectionsRail={showCollectionsRail}
+                />
+              )}
             </ArticleWrapper>
           )
         }}
