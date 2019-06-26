@@ -18,9 +18,9 @@ export interface DisplayAdProps extends FlexProps {
 }
 
 export interface DisplayAdContainerProps extends FlexProps {
-  displayNewAds?: boolean
   isSeries?: boolean
   isStandard?: boolean
+  adDimension?: AdDimension
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -34,6 +34,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(false)
+  const is300x50Display = height === 50
 
   const ad = (
     <GPT
@@ -51,7 +52,13 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   }
 
   return (
-    <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
+    <DisplayAdContainer
+      flexDirection="column"
+      pt={is300x50Display ? 0 : 2}
+      pb={is300x50Display ? 2 : 1}
+      height={is300x50Display ? "100px" : "334px"}
+      {...otherProps}
+    >
       <Box m="auto">
         {ad}
         <Sans size="1" color="black30" m={1}>
@@ -70,5 +77,4 @@ const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
     props.isSeries ? color("black100") : color("black5")};
   text-align: center;
   width: 100%;
-  height: 334px;
 `
