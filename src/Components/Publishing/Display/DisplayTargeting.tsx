@@ -8,3 +8,7 @@ export const targetingData = (id: string, pageType: string) => {
     post_id: id,
   }
 }
+
+export const is300x50AdUnit = (unit: string): boolean => {
+  return unit.slice(-3) === "x50"
+}

@@ -3,7 +3,10 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  is300x50AdUnit,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -88,22 +91,21 @@ export class StandardLayout extends React.Component<
 
   renderTopRailDisplayAd(isMobileAd: boolean) {
     const { areHostedAdsEnabled, article } = this.props
+    const adDimension = isMobileAd
+      ? AdDimension.Mobile_TopLeaderboard
+      : AdDimension.Desktop_TopLeaderboard
 
     return (
       // @FIXME: When ads are live on production remove areHostedAdsEnabled check
       areHostedAdsEnabled && (
         <DisplayAd
-          pt={4}
+          pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
           adUnit={
             isMobileAd
               ? AdUnit.Mobile_TopLeaderboard
               : AdUnit.Desktop_TopLeaderboard
           }
-          adDimension={
-            isMobileAd
-              ? AdDimension.Mobile_TopLeaderboard
-              : AdDimension.Desktop_TopLeaderboard
-          }
+          adDimension={adDimension}
           displayNewAds={areHostedAdsEnabled}
           targetingData={targetingData(article.id, "article")}
         />

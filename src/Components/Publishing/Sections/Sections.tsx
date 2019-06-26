@@ -1,5 +1,8 @@
 import { Box } from "@artsy/palette"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  is300x50AdUnit,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
@@ -264,19 +267,21 @@ export class Sections extends Component<Props, State> {
       }
 
       if (areHostedAdsEnabled && shouldInjectNewAds) {
+        const adDimension = isMobile
+          ? AdDimension.Mobile_Feature_InContentLeaderboard1
+          : AdDimension.Desktop_NewsLanding_Leaderboard1
+
         const marginTop = this.getAdMarginTop(section)
+
         firstAdInjected = true
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
 
         ad = (
           <AdWrapper mt={marginTop}>
             <NewDisplayCanvas
+              pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
               adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
-              adDimension={
-                isMobile
-                  ? AdDimension.Mobile_Feature_InContentLeaderboard1
-                  : AdDimension.Desktop_NewsLanding_Leaderboard1
-              }
+              adDimension={adDimension}
               displayNewAds
               targetingData={targetingData(
                 article.id,
