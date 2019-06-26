@@ -7,6 +7,7 @@ import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
@@ -55,8 +56,8 @@ export class ArtistCollectionsRail extends React.Component<
           <Carousel
             height="200px"
             options={{
-              groupCells: 4,
-              wrapAround: true,
+              groupCells: sd.IS_MOBILE ? 1 : 4,
+              wrapAround: sd.IS_MOBILE ? true : false,
               cellAlign: "left",
               pageDots: false,
             }}
@@ -75,7 +76,7 @@ export class ArtistCollectionsRail extends React.Component<
             renderRightArrow={({ Arrow }) => {
               return (
                 <ArrowContainer>
-                  <Arrow />
+                  {collections.length > 4 && <Arrow />}
                 </ArrowContainer>
               )
             }}

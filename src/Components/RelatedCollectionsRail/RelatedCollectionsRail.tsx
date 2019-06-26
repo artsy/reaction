@@ -1,4 +1,4 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Sans, space, Spacer } from "@artsy/palette"
 import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -7,6 +7,7 @@ import { once, take } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } from "./RelatedCollectionEntity"
@@ -55,10 +56,12 @@ export class RelatedCollectionsRail extends React.Component<
           <Carousel
             height="200px"
             options={{
-              groupCells: 4,
-              wrapAround: true,
+              groupCells: sd.IS_MOBILE ? 1 : 4,
+
               cellAlign: "left",
+              wrapAround: sd.IS_MOBILE ? true : false,
               pageDots: false,
+              draggable: sd.IS_MOBILE ? true : false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={take(collections, 8)}
@@ -75,7 +78,7 @@ export class RelatedCollectionsRail extends React.Component<
             renderRightArrow={({ Arrow }) => {
               return (
                 <ArrowContainer>
-                  <Arrow />
+                  {collections.length > 4 && <Arrow />}
                 </ArrowContainer>
               )
             }}
@@ -89,10 +92,10 @@ export class RelatedCollectionsRail extends React.Component<
 }
 
 const ArrowContainer = styled(Box)`
-  align-self: flex-start;
+  position: relative;
+
   ${ArrowButton} {
-    min-height: 130px;
-    align-self: flex-start;
+    top: -${space(3)}px;
   }
 `
 
