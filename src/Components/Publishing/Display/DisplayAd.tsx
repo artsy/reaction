@@ -1,4 +1,5 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
+import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC, useState } from "react"
 import { Bling as GPT } from "react-gpt"
@@ -34,7 +35,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(false)
-  const is300x50Display = height === 50
+  const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
 
   const ad = (
     <GPT
@@ -54,9 +55,9 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   return (
     <DisplayAdContainer
       flexDirection="column"
-      pt={is300x50Display ? 0 : 2}
-      pb={is300x50Display ? 2 : 1}
-      height={is300x50Display ? "100px" : "334px"}
+      pt={isMobileLeaderboardAd ? 0 : 2}
+      pb={isMobileLeaderboardAd ? 2 : 1}
+      height={isMobileLeaderboardAd ? "100px" : "334px"}
       {...otherProps}
     >
       <Box m="auto">

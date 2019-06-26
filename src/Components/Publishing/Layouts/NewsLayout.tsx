@@ -1,6 +1,9 @@
 import { color } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  is300x50AdUnit,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { once } from "lodash"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -113,17 +116,17 @@ export class NewsLayout extends Component<Props, State> {
       shouldAdRender,
     } = this.props
     const adUnit = this.getAdUnit()
+    const adDimension = isMobile
+      ? AdDimension.Mobile_NewsLanding_InContent1
+      : AdDimension.Desktop_NewsLanding_Leaderboard1
 
     return (
       <>
         {shouldAdRender && (
           <NewDisplayCanvas
+            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={adUnit}
-            adDimension={
-              isMobile
-                ? AdDimension.Mobile_NewsLanding_InContent1
-                : AdDimension.Desktop_NewsLanding_Leaderboard1
-            }
+            adDimension={adDimension}
             displayNewAds={areHostedAdsEnabled}
             targetingData={targetingData(article.id, "newslanding")}
           />
