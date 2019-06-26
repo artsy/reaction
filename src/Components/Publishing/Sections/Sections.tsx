@@ -268,7 +268,9 @@ export class Sections extends Component<Props, State> {
 
       if (areHostedAdsEnabled && shouldInjectNewAds) {
         const adDimension = isMobile
-          ? AdDimension.Mobile_Feature_InContentLeaderboard1
+          ? isSponsored
+            ? AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
+            : AdDimension.Mobile_Feature_InContentLeaderboard1
           : AdDimension.Desktop_NewsLanding_Leaderboard1
 
         const marginTop = this.getAdMarginTop(section)
