@@ -1203,6 +1203,10 @@ export const FeatureBasicArticle: ArticleData = {
 }
 
 export const SponsoredArticle = extend(cloneDeep(FeatureArticle), Sponsor)
+export const SponsoredFeatureArticle = extend(
+  cloneDeep(FeatureArticleHostedAds),
+  Sponsor
+)
 
 export const SuperArticle = extend(cloneDeep(FeatureArticle), {
   is_super_article: true,
