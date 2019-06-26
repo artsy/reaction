@@ -1,3 +1,15 @@
+# v16.17.31 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Bring padding on mobile leaderboard ads up to spec [#2581](https://github.com/artsy/reaction/pull/2581) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.30 (Tue Jun 25 2019)
 
 ### Release Notes
