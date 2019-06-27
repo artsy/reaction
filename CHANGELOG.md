@@ -1,3 +1,16 @@
+# v16.17.33 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Corrects ad dimensions in mobile ads on feature articles [#2583](https://github.com/artsy/reaction/pull/2583) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Corrects standard article mobile ad dimensions [#2582](https://github.com/artsy/reaction/pull/2582) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.32 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
