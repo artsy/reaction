@@ -36,6 +36,7 @@ export enum AdUnit {
   Mobile_NewsLanding_InContent1 = "Mobile_InContentMR1",
   Mobile_NewsLanding_InContent2 = "Mobile_InContentMR2",
   Mobile_NewsLanding_InContent3 = "Mobile_InContentMRRepeat",
+
   Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom = "Mobile_InContentLB2",
   Mobile_Feature_InContentLeaderboard1 = "Mobile_InContentLB1",
   Mobile_Feature_InContentLeaderboard2 = "Mobile_InContentLB2",
@@ -56,10 +57,10 @@ export enum AdDimension {
   Mobile_InContentMR1 = "300x250",
   Mobile_InContentLB1 = "300x50",
   Mobile_InContentLB2 = "300x50",
-  Mobile_NewsLanding_InContent1 = "300x250",
-  Mobile_NewsLanding_InContent2 = "300x250",
-  Mobile_NewsLanding_InContent3 = "300x250",
   Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom = "300x250",
+  Mobile_NewsLanding_InContent1 = "300x50",
+  Mobile_NewsLanding_InContent2 = "300x50",
+  Mobile_NewsLanding_InContent3 = "300x50",
 }
 
 export type SectionLayout =

@@ -82,7 +82,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMR1"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 
@@ -108,7 +108,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMR2"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 
@@ -133,7 +133,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMRRepeat"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 })
