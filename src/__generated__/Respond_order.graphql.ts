@@ -32,6 +32,9 @@ export type Respond_order = {
         readonly id: string;
         readonly note: string | null;
     }) | null;
+    readonly myLastOffer?: ({
+        readonly createdAt: string | null;
+    }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
 };
@@ -60,7 +63,14 @@ v2 = [
     "value": 2,
     "type": "Int"
   }
-];
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "createdAt",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "Respond_order",
@@ -210,13 +220,7 @@ return {
           "concreteType": "Offer",
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "createdAt",
-              "args": null,
-              "storageKey": null
-            },
+            v3,
             v0,
             {
               "kind": "ScalarField",
@@ -227,11 +231,24 @@ return {
             },
             v1
           ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Offer",
+          "plural": false,
+          "selections": [
+            v3,
+            v1
+          ]
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '5fbe1efac59aba6761860d499f4d3720';
+(node as any).hash = '632034c4e26818aaec38a7646bcb5e6e';
 export default node;

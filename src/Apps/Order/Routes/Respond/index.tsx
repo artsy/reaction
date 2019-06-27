@@ -366,6 +366,9 @@ export const RespondFragmentContainer = createFragmentContainer(
             id
             note
           }
+          myLastOffer {
+            createdAt
+          }
         }
         ...TransactionDetailsSummaryItem_order
         ...ArtworkSummaryItem_order
