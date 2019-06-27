@@ -1,3 +1,15 @@
+# v16.17.34 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Updates mobile ad dimensions on news articles [#2586](https://github.com/artsy/reaction/pull/2586) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.33 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
