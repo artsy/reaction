@@ -45,6 +45,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
+      collapseEmptyDiv
     />
   )
 
