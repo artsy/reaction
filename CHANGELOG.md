@@ -1,3 +1,15 @@
+# v16.17.32 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Return myLastOffer so we can correctly redirect [#2585](https://github.com/artsy/reaction/pull/2585) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.17.31 (Wed Jun 26 2019)
 
 #### 🐛  Bug Fix
