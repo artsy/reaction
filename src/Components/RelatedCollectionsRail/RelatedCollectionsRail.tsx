@@ -90,6 +90,7 @@ export class RelatedCollectionsRail extends React.Component<
 
 const ArrowContainer = styled(Box)`
   align-self: flex-start;
+
   ${ArrowButton} {
     min-height: 130px;
     align-self: flex-start;
