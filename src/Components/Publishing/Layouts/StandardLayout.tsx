@@ -92,7 +92,7 @@ export class StandardLayout extends React.Component<
   renderTopRailDisplayAd(isMobileAd: boolean) {
     const { areHostedAdsEnabled, article } = this.props
     const adDimension = isMobileAd
-      ? AdDimension.Mobile_TopLeaderboard
+      ? AdDimension.Mobile_InContentMR1
       : AdDimension.Desktop_TopLeaderboard
 
     return (
@@ -102,7 +102,7 @@ export class StandardLayout extends React.Component<
           pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
           adUnit={
             isMobileAd
-              ? AdUnit.Mobile_TopLeaderboard
+              ? AdUnit.Mobile_InContentMR1
               : AdUnit.Desktop_TopLeaderboard
           }
           adDimension={adDimension}
