@@ -47,9 +47,6 @@ describe("CollectionsRail", () => {
 
   it("No arrows when there are less than 5 collections", () => {
     const component = getWrapper()
-    // const { Component, dispatch } = mockTracking(RelatedCollectionsRail)
-    // const component = mount(<Component {...props} />)
-
     expect(component.find(ArrowButton).length).toBe(1)
   })
 
