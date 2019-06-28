@@ -1,3 +1,15 @@
+# v16.17.35 (Fri Jun 28 2019)
+
+#### 🐛  Bug Fix
+
+- Handle Flicker Affect When Ad Server Content is Empty [#2588](https://github.com/artsy/reaction/pull/2588) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.34 (Thu Jun 27 2019)
 
 #### 🐛  Bug Fix
