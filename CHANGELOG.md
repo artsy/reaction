@@ -1,3 +1,49 @@
+# v16.17.36 (Tue Jul 02 2019)
+
+### Release Notes
+
+  _From #2587_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.23`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41423-Thu-Jun-27-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.22...v4.14.23)
+
+##### 🏠  Internal
+
+-   `@artsy/palette`
+-   Adds padding to small button [#&#8203;526](https://togithub.com/artsy/palette/pull/526) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- updates price sort string to account for "sold" #DONTMERGE [#2561](https://github.com/artsy/reaction/pull/2561) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.23 to v4.14.24 [#2591](https://github.com/artsy/reaction/pull/2591) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.22 to v4.14.23 [#2587](https://github.com/artsy/reaction/pull/2587) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.17.35 (Fri Jun 28 2019)
 
 #### 🐛  Bug Fix
