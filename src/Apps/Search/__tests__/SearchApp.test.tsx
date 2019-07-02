@@ -6,13 +6,13 @@ import { SearchApp } from "../SearchApp"
 
 jest.mock("Components/v2/RouteTabs", () => ({
   RouteTab: ({ children }) => children,
-  RouteTabs: ({ children }) => children,
+  TabCarousel: ({ tabs }) => tabs,
 }))
 
 describe("SearchApp", () => {
   const getWrapper = (searchProps: any) => {
     return mount(
-      <MockBoot>
+      <MockBoot breakpoint="lg">
         <SystemContextProvider>
           <SearchApp {...searchProps} />
         </SystemContextProvider>
