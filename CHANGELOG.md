@@ -1,3 +1,15 @@
+# v16.18.0 (Tue Jul 02 2019)
+
+#### 🚀  Enhancement
+
+- Adds TabCarousel [#2589](https://github.com/artsy/reaction/pull/2589) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v16.17.36 (Tue Jul 02 2019)
 
 ### Release Notes
