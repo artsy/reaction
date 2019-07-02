@@ -1,4 +1,5 @@
 import { ArticleProps } from "Components/Publishing/Article"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import React from "react"
 import styled from "styled-components"
 import { Header } from "../Header/Header"
@@ -17,11 +18,9 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     backgroundColor,
     color,
     customEditorial,
-    display,
     isMobile,
     isSuper,
     relatedArticlesForCanvas,
-    renderTime,
     showTooltips,
     showCollectionsRail,
   } = props
@@ -33,6 +32,8 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section &&
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
+  const isSponsored = isEditorialSponsored(sponsor)
+
   const seriesOrSuper = isSuper || seriesArticle
 
   return (
@@ -55,22 +56,19 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
           isMobile={isMobile}
           showTooltips={showTooltips}
           areHostedAdsEnabled={areHostedAdsEnabled}
+          isSponsored={isSponsored}
         />
       </FeatureLayoutContent>
 
       {seriesArticle && <ArticleCardsBlock {...props} />}
 
-      {(relatedArticlesForCanvas || display) &&
-        !seriesOrSuper &&
-        !customEditorial && (
-          <CanvasFooter
-            article={article}
-            display={display}
-            relatedArticles={relatedArticlesForCanvas}
-            renderTime={renderTime}
-            showCollectionsRail={showCollectionsRail}
-          />
-        )}
+      {relatedArticlesForCanvas && !seriesOrSuper && !customEditorial && (
+        <CanvasFooter
+          article={article}
+          relatedArticles={relatedArticlesForCanvas}
+          showCollectionsRail={showCollectionsRail}
+        />
+      )}
     </FeatureLayoutContainer>
   )
 }

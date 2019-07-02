@@ -61,6 +61,12 @@ describe("News Layout with new ads enabled", () => {
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
       "970x250"
     )
+
+    expect(component.find(NewDisplayCanvas).prop("targetingData")).toEqual({
+      is_testing: true,
+      page_type: "newslanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
   })
 
   it("renders the news layout component with correct ad unit after the 3rd article on mobile", () => {
@@ -76,7 +82,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMR1"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 
@@ -102,7 +108,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMR2"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 
@@ -127,7 +133,7 @@ describe("News Layout with new ads enabled", () => {
       "Mobile_InContentMRRepeat"
     )
     expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x250"
+      "300x50"
     )
   })
 })

@@ -29,7 +29,7 @@ class TypicalAddressForm extends React.Component<
   }
 }
 
-storiesOf("Apps/Order Page/Components", module).add("AddressForm", () => {
+storiesOf("Apps/Order/Components", module).add("AddressForm", () => {
   return (
     <>
       <Section title="Blank">

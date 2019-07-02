@@ -40,7 +40,13 @@ export interface StatusProps {
 
 export class StatusRoute extends Component<StatusProps> {
   getStatusCopy(): StatusPageConfig {
-    const { state, requestedFulfillment, mode, stateReason } = this.props.order
+    const {
+      state,
+      requestedFulfillment,
+      mode,
+      stateReason,
+      stateExpiresAt,
+    } = this.props.order
     const isOfferFlow = mode === "OFFER"
     const isShip = requestedFulfillment.__typename === "Ship"
 
@@ -51,8 +57,8 @@ export class StatusRoute extends Component<StatusProps> {
               title: "Your offer has been submitted",
               description: (
                 <>
-                  The seller has 48 hours to respond to your offer. Keep in mind
-                  making an offer doesn’t guarantee you the work.
+                  The seller will respond to your offer by {stateExpiresAt}.
+                  Keep in mind making an offer doesn’t guarantee you the work.
                 </>
               ),
             }
@@ -61,7 +67,7 @@ export class StatusRoute extends Component<StatusProps> {
               description: (
                 <>
                   Thank you for your purchase. You will receive a confirmation
-                  email within 2 days.
+                  email by {stateExpiresAt}.
                 </>
               ),
             }
@@ -319,6 +325,7 @@ export const StatusFragmentContainer = createFragmentContainer(
         state
         mode
         stateReason
+        stateExpiresAt(format: "MMM D")
         requestedFulfillment {
           ... on Ship {
             __typename

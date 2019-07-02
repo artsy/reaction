@@ -26,7 +26,7 @@ const OtherAuctions = ({ size }: { size?: number }) => {
   )
 }
 
-storiesOf("Apps/Artwork Page/Components/OtherAuctions", module)
+storiesOf("Apps/Artwork/Components/OtherAuctions", module)
   .add("Other Auctions (default)", () => {
     return (
       <Section title="Responsive Other Auctions">

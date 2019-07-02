@@ -1,30 +1,30 @@
 import { Box, Sans, Spacer } from "@artsy/palette"
-import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
+import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ArrowButton, Carousel } from "Components/v2/Carousel"
-import { once } from "lodash"
+import { once, take } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import Events from "Utils/Events"
-import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } from "./ArtistCollectionEntity"
+import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } from "./RelatedCollectionEntity"
 
-interface ArtistCollectionsRailProps {
-  collections: ArtistCollectionsRail_collections
+interface RelatedCollectionsRailProps {
+  collections: RelatedCollectionsRail_collections
 }
 
 @track(null, {
   dispatch: data => Events.postEvent(data),
 })
-export class ArtistCollectionsRail extends React.Component<
-  ArtistCollectionsRailProps
+export class RelatedCollectionsRail extends React.Component<
+  RelatedCollectionsRailProps
 > {
   @track({
     action_type: Schema.ActionType.Impression,
     context_module: Schema.ContextModule.CollectionsRail,
-    context_page_owner_type: Schema.OwnerType.Artist,
+    context_page_owner_type: Schema.OwnerType.Collection,
   })
   trackImpression() {
     // noop
@@ -33,7 +33,7 @@ export class ArtistCollectionsRail extends React.Component<
   @track({
     action_type: Schema.ActionType.Click,
     context_module: Schema.ContextModule.CollectionsRail,
-    context_page_owner_type: Schema.OwnerType.Artist,
+    context_page_owner_type: Schema.OwnerType.Collection,
     type: Schema.Type.Button,
     subject: Schema.Subject.ClickedNextButton,
   })
@@ -55,14 +55,15 @@ export class ArtistCollectionsRail extends React.Component<
           <Carousel
             height="200px"
             options={{
-              groupCells: 1,
+              groupCells: 4,
               wrapAround: true,
               cellAlign: "left",
+              pageDots: false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={collections as object[]} // type required by slider
+            data={take(collections, 8)}
             render={slide => {
-              return <ArtistCollectionEntity collection={slide} />
+              return <RelatedCollectionEntity collection={slide} />
             }}
             renderLeftArrow={({ Arrow }) => {
               return (
@@ -96,13 +97,13 @@ const ArrowContainer = styled(Box)`
   }
 `
 
-export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
-  ArtistCollectionsRail,
+export const RelatedCollectionsRailFragmentContainer = createFragmentContainer(
+  RelatedCollectionsRail,
   {
     collections: graphql`
-      fragment ArtistCollectionsRail_collections on MarketingCollection
+      fragment RelatedCollectionsRail_collections on MarketingCollection
         @relay(plural: true) {
-        ...ArtistCollectionEntity_collection
+        ...RelatedCollectionEntity_collection
       }
     `,
   }

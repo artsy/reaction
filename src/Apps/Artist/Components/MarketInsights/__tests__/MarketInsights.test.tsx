@@ -2,8 +2,8 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import { MarketInsightsArtists } from "../../Fixtures/Artists"
 import MarketInsights from "../MarketInsights"
+import { MarketInsightsArtists } from "./Fixtures/Artists.fixture"
 
 describe("MarketInsights", () => {
   describe("snapshots", () => {

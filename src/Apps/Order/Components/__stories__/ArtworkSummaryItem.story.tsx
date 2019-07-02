@@ -49,7 +49,7 @@ const render = (extraOrderProps?: Partial<ArtworkSummaryItem_order>) => {
     />
   )
 }
-storiesOf("Apps/Order Page/Components", module)
+storiesOf("Apps/Order/Components", module)
   .add("ArtworkSummaryItem", () => {
     return (
       <Section title="Artwork Summary">

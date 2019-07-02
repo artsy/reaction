@@ -1,10 +1,6 @@
 import { CollectionsRailContent } from "Components/CollectionsRail"
-import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
-import {
-  Display,
-  RelatedCanvas,
-} from "Components/Publishing/Fixtures/Components"
+import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -38,23 +34,12 @@ describe("CanvasFooter", () => {
     const component = getWrapper()
 
     expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
-    expect(component.find(DisplayCanvas)).toHaveLength(0)
   })
 
-  it("renders display if provided", () => {
-    props.display = Display("image")
-    const component = getWrapper()
-
-    expect(component.find(DisplayCanvas)).toHaveLength(1)
-    expect(component.find(RelatedArticlesCanvas)).toHaveLength(0)
-  })
-
-  it("renders display and related articles", () => {
-    props.display = Display("image")
+  it("renders related articles", () => {
     props.relatedArticles = RelatedCanvas
     const component = getWrapper()
 
-    expect(component.find(DisplayCanvas)).toHaveLength(1)
     expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
   })
 

@@ -40,7 +40,7 @@ const render = (
   />
 )
 
-storiesOf("Apps/Order Page/Components", module).add("OfferHistoryItem", () => {
+storiesOf("Apps/Order/Components", module).add("OfferHistoryItem", () => {
   return (
     <>
       <Section title="With only one offer">

@@ -1,24 +1,15 @@
-import { storiesOf } from "@storybook/react"
-import * as React from "react"
+import { artistResponse } from "Apps/__tests__/Fixtures/MarketInsights"
+import { MarketInsights } from "Components/v2/ArtistMarketInsights"
+import React from "react"
+import { storiesOf } from "storybook/storiesOf"
+import { Section } from "Utils/Section"
 
-import { SystemContextProvider } from "Artsy"
-import { Contents } from "../Artist/MarketInsights"
-
-function RenderMarketInsightsFor(artistID: string) {
+storiesOf("Components", module).add("MarketInsights v1", () => {
   return (
-    <SystemContextProvider>
-      <Contents artistID={artistID} />
-    </SystemContextProvider>
+    <React.Fragment>
+      <Section title="Market Insights">
+        <MarketInsights artist={artistResponse as any} />
+      </Section>
+    </React.Fragment>
   )
-}
-
-storiesOf("Components/Artist/MarketInsights", module)
-  .add("Pablo Picasso", () => RenderMarketInsightsFor("pablo-picasso"))
-  .add("Andy Warhol", () => RenderMarketInsightsFor("andy-warhol"))
-  .add("Damon Zucconi", () => RenderMarketInsightsFor("damon-zucconi"))
-  .add("Huma Bhabha", () => RenderMarketInsightsFor("huma-bhabha"))
-  .add("Robert Longo", () => RenderMarketInsightsFor("robert-longo"))
-  .add("Carla Accardi", () => RenderMarketInsightsFor("carla-accardi"))
-  .add("Armando Castro-Uribe (none)", () =>
-    RenderMarketInsightsFor("armando-castro-uribe")
-  )
+})

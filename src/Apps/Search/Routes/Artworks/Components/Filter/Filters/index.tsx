@@ -1,6 +1,6 @@
 export { FilterContainer } from "./FilterContainer"
-export { SizeRangeFilters } from "./SizeRangeFilters"
 export { MediumFilter } from "./MediumFilter"
 export { PriceRangeFilter } from "./PriceRangeFilter"
+export { SizeRangeFilters } from "./SizeRangeFilters"
 export { TimePeriodFilter } from "./TimePeriodFilter"
 export { WaysToBuyFilter } from "./WaysToBuyFilter"

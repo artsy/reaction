@@ -13,7 +13,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 
-storiesOf("Apps/Artwork Page/Components/Sidebar", module)
+storiesOf("Apps/Artwork/Components/Sidebar", module)
   .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
   .add("Metadata", () => {
     return (

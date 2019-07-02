@@ -1,9 +1,9 @@
 import "jest-styled-components"
 
+import { MarketDataSummaryArtists } from "Apps/Artist/Components/MarketInsights/__tests__/Fixtures/Artists.fixture"
 import { mount } from "enzyme"
 import React from "react"
 import renderer from "react-test-renderer"
-import { MarketDataSummaryArtists } from "../../Fixtures/Artists"
 import { MarketDataSummary } from "../MarketDataSummary"
 
 describe("MarketDataSummary", () => {

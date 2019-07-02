@@ -1,17 +1,17 @@
-import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
-import { DisplayPanel } from "Components/Publishing/Display/DisplayPanel"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import {
   SeriesArticle,
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import {
-  Display,
   RelatedCanvas,
   RelatedPanel,
 } from "Components/Publishing/Fixtures/Components"
 import { ReadMoreButton } from "Components/Publishing/ReadMore/ReadMoreButton"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
 import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
+import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep, extend } from "lodash"
@@ -35,7 +35,6 @@ describe("Standard Article", () => {
   beforeEach(() => {
     props = {
       article: StandardArticle,
-      display: Display("standard"),
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
@@ -45,6 +44,7 @@ describe("Standard Article", () => {
 
   afterEach(() => {
     jest.resetModules()
+    jest.resetAllMocks()
   })
 
   it("renders sidebar", () => {
@@ -72,24 +72,18 @@ describe("Standard Article", () => {
     expect(article.find(RelatedArticlesCanvas).length).toBe(0)
   })
 
-  it("renders display", () => {
-    const article = getWrapper(props)
-    expect(article.find(DisplayPanel).length).toBe(1)
-    expect(article.find(DisplayCanvas).length).toBe(1)
-  })
-
   it("Does not render display if article is in a series", () => {
     props.article = extend(cloneDeep(StandardArticle), {
       seriesArticle: SeriesArticle,
     })
     const article = getWrapper(props)
-    expect(article.find(DisplayCanvas).length).toBe(0)
+    expect(article.find(DisplayAd).length).toBe(0)
   })
 
   it("Does not render display if article is super", () => {
     props.isSuper = true
     const article = getWrapper(props)
-    expect(article.find(DisplayCanvas).length).toBe(0)
+    expect(article.find(DisplayAd).length).toBe(0)
   })
 
   it("shows read more if truncated", () => {
@@ -108,5 +102,174 @@ describe("Standard Article", () => {
       .props()
       .onClick()
     expect(article.state().isTruncated).toBeFalsy()
+  })
+
+  it("It renders display ads in Standard Layout Articles when feature flagged ads are enabled", () => {
+    props.areHostedAdsEnabled = true
+    const article = getWrapper(props)
+
+    expect(article.find(DisplayAd).length).toBe(2)
+  })
+
+  it("It does not render display ads in Standard Layout Articles when feature flagged ads are disabled", () => {
+    const article = getWrapper(props)
+
+    expect(article.find(DisplayAd).length).toBe(0)
+    expect(article.find(DisplayAd).length).toBe(0)
+  })
+
+  it("renders the top and side rail display ad component with the correct data and properties on standard articles", () => {
+    props.areHostedAdsEnabled = true
+
+    const article = getWrapper(props)
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adDimension
+    ).toBe("970x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adUnit
+    ).toBe("Desktop_TopLeaderboard")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adUnit
+    ).toBe("Desktop_RightRail1")
+  })
+
+  it("renders the top and side rail display ad component with the correct data and properties on standard articles on mobile", () => {
+    props.isMobile = true
+    props.areHostedAdsEnabled = true
+
+    const article = getWrapper(props)
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adUnit
+    ).toBe("Mobile_InContentMR1")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adUnit
+    ).toBe("Mobile_InContentMR1")
+  })
+})
+
+describe("standard article ad data", () => {
+  it("renders the top rail display ad component with the correct data and properties on standard articles", () => {
+    const ad = mount(
+      <DisplayAd
+        adDimension={AdDimension.Desktop_TopLeaderboard}
+        adUnit={AdUnit.Desktop_TopLeaderboard}
+        displayNewAds
+        targetingData={targetingData(StandardArticle.id, "article")}
+      />
+    )
+
+    expect(ad.props().adDimension).toEqual("970x250")
+    expect(ad.props().adUnit).toEqual("Desktop_TopLeaderboard")
+    expect(ad.props().displayNewAds).toBe(true)
+    expect(ad.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "article",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+    expect(ad).toHaveLength(1)
+  })
+
+  it("renders the side rail display ad component with the correct data and properties on standard articles", () => {
+    const ad = mount(
+      <DisplayAd
+        adDimension={AdDimension.Desktop_RightRail1}
+        adUnit={AdUnit.Desktop_RightRail1}
+        displayNewAds
+        targetingData={targetingData(StandardArticle.id, "article")}
+      />
+    )
+
+    expect(ad.props().adDimension).toEqual("300x250")
+    expect(ad.props().adUnit).toEqual("Desktop_RightRail1")
+    expect(ad.props().displayNewAds).toBe(true)
+    expect(ad.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "article",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+    expect(ad).toHaveLength(1)
+  })
+
+  it("renders the side rail display ad component with the correct data and properties on standard articles on mobile", () => {
+    const ad = mount(
+      <DisplayAd
+        adDimension={AdDimension.Mobile_InContentMR1}
+        adUnit={AdUnit.Mobile_InContentMR1}
+        displayNewAds
+        targetingData={targetingData(StandardArticle.id, "article")}
+      />
+    )
+
+    expect(ad.props().adDimension).toEqual("300x250")
+    expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
+    expect(ad.props().displayNewAds).toBe(true)
+    expect(ad.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "article",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+    expect(ad).toHaveLength(1)
+  })
+
+  it("renders the top rail display ad component with the correct data and properties on standard articles on mobile", () => {
+    const ad = mount(
+      <DisplayAd
+        adDimension={AdDimension.Mobile_TopLeaderboard}
+        adUnit={AdUnit.Mobile_TopLeaderboard}
+        displayNewAds
+        targetingData={targetingData(StandardArticle.id, "article")}
+      />
+    )
+
+    expect(ad.props().adDimension).toEqual("300x50")
+    expect(ad.props().adUnit).toEqual("Mobile_TopLeaderboard")
+    expect(ad.props().displayNewAds).toBe(true)
+    expect(ad.props().targetingData).toEqual({
+      is_testing: true,
+      page_type: "article",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+    expect(ad).toHaveLength(1)
   })
 })

@@ -11,26 +11,6 @@ import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
 import { OverviewRouteFragmentContainer as OverviewRoute } from "./Routes/Overview"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
-// @ts-ignore
-import { ComponentClass, StatelessComponent } from "react"
-// @ts-ignore
-import { ArtistAppProps } from "./ArtistApp"
-// @ts-ignore
-import { ArticlesRouteProps } from "./Routes/Articles"
-// @ts-ignore
-import { AuctionResultRouteProps } from "./Routes/AuctionResults"
-// @ts-ignore
-import { CVRouteProps } from "./Routes/CV"
-// @ts-ignore
-import { OverviewRouteProps } from "./Routes/Overview"
-// @ts-ignore
-import { RelatedArtistsProps } from "./Routes/RelatedArtists"
-// @ts-ignore
-import { ShowProps } from "./Routes/Shows"
-
-//
-// ---------
-
 // FIXME:
 // * `render` functions requires casting
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`

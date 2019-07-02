@@ -7,7 +7,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 import { ArtistInfoQueryRenderer } from "../ArtistInfo"
 
-storiesOf("Apps/Artwork Page/Components", module).add("ArtistInfo", () => {
+storiesOf("Apps/Artwork/Components", module).add("ArtistInfo", () => {
   return (
     <React.Fragment>
       <Section title="ArtistInfoQueryRenderer">

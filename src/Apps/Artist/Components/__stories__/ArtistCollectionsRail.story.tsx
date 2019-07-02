@@ -1,9 +1,9 @@
 import { Box, Theme } from "@artsy/palette"
+import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Apps/Artist/Components/ArtistCollectionsRail"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "../Artist/ArtistCollectionsRail"
 
-storiesOf("Components/Artist/CollectionsRail", module).add(
+storiesOf("Apps/Artist/Components/ArtistCollectionsRail", module).add(
   "Artist Collections Rail",
   () => (
     <Theme>

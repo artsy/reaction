@@ -1,20 +1,27 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
+import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC, useState } from "react"
 import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 
 export interface DisplayAdProps extends FlexProps {
-  adUnit?: AdUnit
-  adDimension?: AdDimension
+  adUnit: AdUnit
+  adDimension: AdDimension
   displayNewAds?: boolean
-  targetingData?: {
+  targetingData: {
     is_testing: boolean
     page_type: string
     post_id: string
   }
   isSeries?: boolean
   isStandard?: boolean
+}
+
+export interface DisplayAdContainerProps extends FlexProps {
+  isSeries?: boolean
+  isStandard?: boolean
+  adDimension?: AdDimension
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -28,6 +35,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(false)
+  const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
 
   const ad = (
     <GPT
@@ -37,6 +45,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
+      collapseEmptyDiv
     />
   )
 
@@ -45,7 +54,13 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   }
 
   return (
-    <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
+    <DisplayAdContainer
+      flexDirection="column"
+      pt={isMobileLeaderboardAd ? 0 : 2}
+      pb={isMobileLeaderboardAd ? 2 : 1}
+      height={isMobileLeaderboardAd ? "100px" : "334px"}
+      {...otherProps}
+    >
       <Box m="auto">
         {ad}
         <Sans size="1" color="black30" m={1}>
@@ -56,7 +71,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   )
 }
 
-const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
+const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
   margin: ${props => (props.isStandard ? "0" : "0 auto")};
   border-top: ${props =>
     props.isSeries ? `1px solid ${color("black10")}` : "none"};
@@ -64,5 +79,4 @@ const DisplayAdContainer = styled(Flex)<DisplayAdProps>`
     props.isSeries ? color("black100") : color("black5")};
   text-align: center;
   width: 100%;
-  height: 334px;
 `

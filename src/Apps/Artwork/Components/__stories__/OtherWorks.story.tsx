@@ -27,7 +27,7 @@ export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
   )
 }
 
-storiesOf("Apps/Artwork Page/Components/OtherWorks", module)
+storiesOf("Apps/Artwork/Components/OtherWorks", module)
   .add("Auctions", () => {
     return (
       <>

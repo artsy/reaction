@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 import { ItemReview } from "../ItemReview"
 
-storiesOf("Apps/Order Page/Components", module).add("ItemReview", () => {
+storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
   return (
     <>
       <Section title="Item Review">

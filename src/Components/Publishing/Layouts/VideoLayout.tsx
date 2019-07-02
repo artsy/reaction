@@ -1,20 +1,23 @@
 import { Box } from "@artsy/palette"
-import React, { Component } from "react"
-import track from "react-tracking"
-import styled from "styled-components"
-
 import { getEditorialHref } from "Components/Publishing/Constants"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  is300x50AdUnit,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
+import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import {
   VideoContainer,
   VideoPlayer,
 } from "Components/Publishing/Video/Player/VideoPlayer"
 import { VideoAbout } from "Components/Publishing/Video/VideoAbout"
 import { VideoCover } from "Components/Publishing/Video/VideoCover"
+import React, { Component } from "react"
+import track from "react-tracking"
+import styled from "styled-components"
 import Events from "Utils/Events"
 
 interface Props {
@@ -86,8 +89,12 @@ export class VideoLayout extends Component<Props, State> {
     } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
+    const isSponsored = isEditorialSponsored(sponsor)
     const seriesLink =
       seriesArticle && getEditorialHref("series", seriesArticle.slug)
+    const adDimension = isMobile
+      ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+      : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
 
     return (
       <VideoLayoutContainer>
@@ -124,18 +131,18 @@ export class VideoLayout extends Component<Props, State> {
         </Box>
         {areHostedAdsEnabled && (
           <NewDisplayCanvas
+            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={
               isMobile
                 ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
                 : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
             }
-            adDimension={
-              isMobile
-                ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-                : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-            }
+            adDimension={adDimension}
             displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(article.id, "sponsorlanding")}
+            targetingData={targetingData(
+              article.id,
+              isSponsored ? "sponsorfeature" : "video"
+            )}
             isSeries
           />
         )}

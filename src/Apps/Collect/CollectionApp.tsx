@@ -4,6 +4,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
+import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { HttpError } from "found"
 import React, { Component } from "react"
@@ -68,6 +69,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
+          <Box mt="3">
+            <RelatedCollectionsRail
+              collections={collection.relatedCollections}
+            />
+          </Box>
         </FrameWithRecentlyViewed>
       </AppContainer>
     )
@@ -110,6 +116,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           artist_ids
           artist_id
           gene_id
+        }
+        relatedCollections {
+          ...RelatedCollectionsRail_collections
         }
         artworks(
           aggregations: $aggregations

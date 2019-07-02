@@ -2,7 +2,7 @@ import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, RouteTabs } from "Components/v2"
+import { RouteTab, TabCarousel } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -86,7 +86,7 @@ export class NavigationTabs extends React.Component<Props> {
     return typeAggregation.find(agg => agg.name === type)
   }
 
-  renderTabs() {
+  tabs() {
     const { term, artworkCount } = this.props
 
     const route = tab => `/search${tab}?term=${term}`
@@ -115,35 +115,39 @@ export class NavigationTabs extends React.Component<Props> {
         ))
     )
 
-    return (
-      <>
-        {!!artworkCount &&
-          this.renderTab("Artworks", route(""), {
-            exact: true,
-            count: artworkCount,
-          })}
+    const tabs = []
 
-        {Object.entries(tabCountMap).map(([key, value]: [string, number]) => {
-          return this.renderTab(key, route(`/${key.toLowerCase()}`), {
-            count: value,
-          })
-        })}
+    !!artworkCount &&
+      tabs.push(
+        this.renderTab("Artworks", route(""), {
+          exact: true,
+          count: artworkCount,
+        })
+      )
 
-        {!!restAggregationCount &&
-          this.renderTab("More", route("/more"), {
-            count: restAggregationCount,
-          })}
-      </>
-    )
+    Object.entries(tabCountMap).map(([key, value]: [string, number]) => {
+      tabs.push(
+        this.renderTab(key, route(`/${key.toLowerCase()}`), {
+          count: value,
+        })
+      )
+    })
+
+    !!restAggregationCount &&
+      tabs.push(
+        this.renderTab("More", route("/more"), {
+          count: restAggregationCount,
+        })
+      )
+
+    return tabs
   }
 
   render() {
     return (
-      <>
-        <Flex mx={[-2, 0]}>
-          <RouteTabs>{this.renderTabs()}</RouteTabs>
-        </Flex>
-      </>
+      <Flex mx={[-2, 0]}>
+        <TabCarousel tabs={this.tabs()} />
+      </Flex>
     )
   }
 }

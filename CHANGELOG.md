@@ -1,3 +1,350 @@
+# v16.17.36 (Tue Jul 02 2019)
+
+### Release Notes
+
+  _From #2587_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.23`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41423-Thu-Jun-27-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.22...v4.14.23)
+
+##### 🏠  Internal
+
+-   `@artsy/palette`
+-   Adds padding to small button [#&#8203;526](https://togithub.com/artsy/palette/pull/526) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- updates price sort string to account for "sold" #DONTMERGE [#2561](https://github.com/artsy/reaction/pull/2561) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.23 to v4.14.24 [#2591](https://github.com/artsy/reaction/pull/2591) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.22 to v4.14.23 [#2587](https://github.com/artsy/reaction/pull/2587) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.17.35 (Fri Jun 28 2019)
+
+#### 🐛  Bug Fix
+
+- Handle Flicker Affect When Ad Server Content is Empty [#2588](https://github.com/artsy/reaction/pull/2588) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.34 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Updates mobile ad dimensions on news articles [#2586](https://github.com/artsy/reaction/pull/2586) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.33 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Corrects ad dimensions in mobile ads on feature articles [#2583](https://github.com/artsy/reaction/pull/2583) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Corrects standard article mobile ad dimensions [#2582](https://github.com/artsy/reaction/pull/2582) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.32 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Return myLastOffer so we can correctly redirect [#2585](https://github.com/artsy/reaction/pull/2585) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.17.31 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Bring padding on mobile leaderboard ads up to spec [#2581](https://github.com/artsy/reaction/pull/2581) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.30 (Tue Jun 25 2019)
+
+### Release Notes
+
+_From #2577_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.22`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41422-Mon-Jun-24-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.21...v4.14.22)
+
+##### 🐛  Bug Fix
+
+-   Adds note about Zeppelin plugin [#&#8203;524](https://togithub.com/artsy/palette/pull/524) ([@&#8203;ashfurrow](https://togithub.com/ashfurrow))
+
+##### Authors: 1
+
+-   Ash Furrow ([@&#8203;ashfurrow](https://togithub.com/ashfurrow))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- Deprecate Ads on Standard Articles [#2575](https://github.com/artsy/reaction/pull/2575) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.21 to v4.14.22 [#2577](https://github.com/artsy/reaction/pull/2577) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.17.29 (Mon Jun 24 2019)
+
+
+
+---
+
+# v16.17.28 (Mon Jun 24 2019)
+
+#### 🐛  Bug Fix
+
+- [FeaturedArtistModule] refactor featured artist module to truncate on both desktop and mobile [#2579](https://github.com/artsy/reaction/pull/2579) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.17.27 (Mon Jun 24 2019)
+
+
+
+---
+
+# v16.17.26 (Mon Jun 24 2019)
+
+### Release Notes
+
+  _From #2573_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.21`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41421-Fri-Jun-21-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.20...v4.14.21)
+
+##### 🐛  Bug Fix
+
+-   `@artsy/palette`
+-   Add prop to make button full width [#&#8203;523](https://togithub.com/artsy/palette/pull/523) ([@&#8203;lilyfromseattle](https://togithub.com/lilyfromseattle) [`3465158`](https://togithub.com/artsy/palette/commit/34651588)+peril-staging[bot][@&#8203;users](https://togithub.com/users).noreply.github.com)
+
+##### Authors: 2
+
+-   Lily Pace ([@&#8203;lilyfromseattle](https://togithub.com/lilyfromseattle))
+-   [`3465158`](https://togithub.com/artsy/palette/commit/34651588)+peril-staging[bot][@&#8203;users](https://togithub.com/users).noreply.github.com
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- [ArtistRecommendations] Fix carousel alignment [#2576](https://github.com/artsy/reaction/pull/2576) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.20 to v4.14.21 [#2573](https://github.com/artsy/reaction/pull/2573) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.17.25 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- [RelatedCollectionsRail]  fix related collections carousel [#2574](https://github.com/artsy/reaction/pull/2574) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v16.17.24 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter Refactor] Extract and consolidate [#2572](https://github.com/artsy/reaction/pull/2572) ([@damassi](https://github.com/damassi) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.17.23 (Fri Jun 21 2019)
+
+#### 🐛  Bug Fix
+
+- featured artists now always positioned below summary [#2564](https://github.com/artsy/reaction/pull/2564) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
+# v16.17.22 (Thu Jun 20 2019)
+
+#### 🐛  Bug Fix
+
+- update status expiration message [#2571](https://github.com/artsy/reaction/pull/2571) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.18 to v4.14.20 [#2570](https://github.com/artsy/reaction/pull/2570) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.17.21 (Wed Jun 19 2019)
+
+#### 🐛  Bug Fix
+
+- fix event tracking for price. #minor [#2569](https://github.com/artsy/reaction/pull/2569) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
+# v16.17.20 (Wed Jun 19 2019)
+
+#### 🐛  Bug Fix
+
+- fix price format in buynow click events [#2567](https://github.com/artsy/reaction/pull/2567) ([@cavvia](https://github.com/cavvia))
+
+#### Authors: 1
+
+- Anil Bawa-Cavia ([@cavvia](https://github.com/cavvia))
+
+---
+
+# v16.17.19 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- remove a/b test tracking logic [#2563](https://github.com/artsy/reaction/pull/2563) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.17.18 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- artist collection rail now hides dots, scrolls 4-at-a-time [#2562](https://github.com/artsy/reaction/pull/2562) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
+# v16.17.17 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- Require targeting data prop on all display ad components [#2551](https://github.com/artsy/reaction/pull/2551) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.16 (Tue Jun 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] Related collections rail [#2489](https://github.com/artsy/reaction/pull/2489) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.17.15 (Mon Jun 17 2019)
 
 

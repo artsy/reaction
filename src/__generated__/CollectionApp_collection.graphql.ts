@@ -3,6 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
 import { Header_artworks$ref } from "./Header_artworks.graphql";
+import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _CollectionApp_collection$ref: unique symbol;
 export type CollectionApp_collection$ref = typeof _CollectionApp_collection$ref;
@@ -19,6 +20,9 @@ export type CollectionApp_collection = {
         readonly artist_id: string | null;
         readonly gene_id: string | null;
     };
+    readonly relatedCollections: ReadonlyArray<{
+        readonly " $fragmentRefs": RelatedCollectionsRail_collections$ref;
+    }>;
     readonly artworks: ({
         readonly " $fragmentRefs": Header_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
@@ -142,7 +146,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "category",
+      "name": "credit",
       "args": null,
       "storageKey": null
     },
@@ -177,14 +181,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "category",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "credit",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -217,6 +221,23 @@ return {
           "name": "gene_id",
           "args": null,
           "storageKey": null
+        },
+        v0
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "relatedCollections",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "MarketingCollection",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "RelatedCollectionsRail_collections",
+          "args": null
         },
         v0
       ]
@@ -350,5 +371,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '25467f46cd5b9dc0cec17ed9b0218272';
+(node as any).hash = '22df6d19074931e3814f222d68b54dc4';
 export default node;
