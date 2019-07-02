@@ -2,7 +2,6 @@ import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
-import { SystemContextConsumer } from "Artsy"
 import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -106,100 +105,94 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
 
+    const showRecommendations =
+      get(artist, a => a.related.artists.edges.length, 0) > 0
+
     return (
-      <SystemContextConsumer>
-        {({ user }) => {
-          const showRecommendations =
-            get(artist, a => a.related.artists.edges.length, 0) > 0
-
-          return (
+      <>
+        <Row>
+          <Col sm={colNum}>
             <>
-              <Row>
-                <Col sm={colNum}>
-                  <>
-                    {showArtistBio && (
-                      <>
-                        <ArtistBio
-                          onReadMoreClicked={() => {
-                            this.setState({ isReadMoreExpanded: true })
-                          }}
-                          bio={artist}
-                        />
-                      </>
-                    )}
-                    {showGenes && (
-                      <>
-                        <Spacer mb={1} />
-                        <Genes artist={artist} />
-                        <Spacer mb={1} />
-                      </>
-                    )}
-                    {showConsignable && (
-                      <>
-                        <Spacer mb={1} />
-                        <Sans size="2" color="black60">
-                          Want to sell a work by this artist?{" "}
-                          <a
-                            href="/consign"
-                            onClick={this.handleConsignClick.bind(this)}
-                          >
-                            Learn more
-                          </a>
-                          .
-                        </Sans>
-                      </>
-                    )}
-                    {showArtistInsights && (
-                      <>
-                        <Spacer mb={2} />
-                        <SelectedCareerAchievements artist={artist} />
-                      </>
-                    )}
-                  </>
-                </Col>
-
-                {showCurrentEvent && (
-                  <Col sm={3}>
-                    <Box pl={2}>
-                      <CurrentEvent artist={artist} />
-                    </Box>
-                  </Col>
-                )}
-              </Row>
-
-              {!hideMainOverviewSection && <Spacer mb={4} />}
-
-              {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
-                <div>
-                  <Separator mb={3} />
-                  <ArtistCollectionsRail artistID={artist._id} />
-                  <Spacer mb={3} />
-                </div>
-              )}
-
-              <Row>
-                <Col>
-                  <span id="jump--artistArtworkGrid" />
-
-                  <ArtworkFilter
-                    artist={artist}
-                    hideTopBorder={hideMainOverviewSection}
+              {showArtistBio && (
+                <>
+                  <ArtistBio
+                    onReadMoreClicked={() => {
+                      this.setState({ isReadMoreExpanded: true })
+                    }}
+                    bio={artist}
                   />
-                </Col>
-              </Row>
-
-              {showRecommendations && (
-                <Row>
-                  <Col>
-                    <Separator mt={6} mb={4} />
-                    <ArtistRecommendations artistID={artist._id} />
-                  </Col>
-                </Row>
+                </>
+              )}
+              {showGenes && (
+                <>
+                  <Spacer mb={1} />
+                  <Genes artist={artist} />
+                  <Spacer mb={1} />
+                </>
+              )}
+              {showConsignable && (
+                <>
+                  <Spacer mb={1} />
+                  <Sans size="2" color="black60">
+                    Want to sell a work by this artist?{" "}
+                    <a
+                      href="/consign"
+                      onClick={this.handleConsignClick.bind(this)}
+                    >
+                      Learn more
+                    </a>
+                    .
+                  </Sans>
+                </>
+              )}
+              {showArtistInsights && (
+                <>
+                  <Spacer mb={2} />
+                  <SelectedCareerAchievements artist={artist} />
+                </>
               )}
             </>
-          )
-        }}
-      </SystemContextConsumer>
+          </Col>
+
+          {showCurrentEvent && (
+            <Col sm={3}>
+              <Box pl={2}>
+                <CurrentEvent artist={artist} />
+              </Box>
+            </Col>
+          )}
+        </Row>
+
+        {!hideMainOverviewSection && <Spacer mb={4} />}
+
+        {showCollectionsRail && ( // TODO: remove after CollectionsRail a/b test
+          <div>
+            <Separator mb={3} />
+            <ArtistCollectionsRail artistID={artist._id} />
+            <Spacer mb={3} />
+          </div>
+        )}
+
+        <Row>
+          <Col>
+            <span id="jump--artistArtworkGrid" />
+
+            <ArtworkFilter
+              artist={artist}
+              hideTopBorder={hideMainOverviewSection}
+            />
+          </Col>
+        </Row>
+
+        {showRecommendations && (
+          <Row>
+            <Col>
+              <Separator mt={6} mb={4} />
+              <ArtistRecommendations artistID={artist._id} />
+            </Col>
+          </Row>
+        )}
+      </>
     )
   }
 }
