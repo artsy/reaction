@@ -136,6 +136,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   background: #000;
   text-align: center;
   width: 100%;
+  visibility: hidden;
 }
 
 .c3 {

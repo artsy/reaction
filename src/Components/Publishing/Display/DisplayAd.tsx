@@ -22,6 +22,7 @@ export interface DisplayAdContainerProps extends FlexProps {
   isSeries?: boolean
   isStandard?: boolean
   adDimension?: AdDimension
+  isAdEmpty?: boolean
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -34,18 +35,18 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   } = props
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
-  const [isAdEmpty, setAdEmpty] = useState(false)
+  const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
 
   const ad = (
     <GPT
+      collapseEmptyDiv
       adUnitPath={`/21805539690/${adUnit}`}
       targeting={targetingData}
       slotSize={[width, height]}
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
-      collapseEmptyDiv
     />
   )
 
@@ -59,6 +60,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       pt={isMobileLeaderboardAd ? 0 : 2}
       pb={isMobileLeaderboardAd ? 2 : 1}
       height={isMobileLeaderboardAd ? "100px" : "334px"}
+      isAdEmpty={isAdEmpty}
       {...otherProps}
     >
       <Box m="auto">
@@ -72,11 +74,11 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 }
 
 const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
-  margin: ${props => (props.isStandard ? "0" : "0 auto")};
-  border-top: ${props =>
-    props.isSeries ? `1px solid ${color("black10")}` : "none"};
-  background: ${props =>
-    props.isSeries ? color("black100") : color("black5")};
+  margin: ${p => (p.isStandard ? "0" : "0 auto")};
+  border-top: ${p => (p.isSeries ? `1px solid ${color("black10")}` : "none")};
+  background: ${p => (p.isSeries ? color("black100") : color("black5"))};
   text-align: center;
   width: 100%;
+  visibility: ${p =>
+    p.isAdEmpty || p.isAdEmpty === null ? "hidden" : "visible"};
 `
