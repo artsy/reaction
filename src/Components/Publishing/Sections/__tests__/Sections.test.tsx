@@ -1,4 +1,4 @@
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   FeatureArticle,
   NonSponsoredFeatureArticle,
@@ -152,23 +152,15 @@ describe("Sections", () => {
       props.isMobile = false
       props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
+      expect(wrapper.find(DisplayAd).length).toBe(2)
     })
 
     it("it does not inject display ads if feature when ads are disabled", () => {
       props.article = FeatureArticle
       props.isMobile = false
-      const wrapper = mountWrapper(props)
       props.areHostedAdsEnabled = false
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(0)
-    })
-
-    it("it injects display ads if feature when ads are enabled", () => {
-      props.article = FeatureArticle
-      props.isMobile = false
-      props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(2)
+      expect(wrapper.find(DisplayAd).length).toBe(0)
     })
 
     it("it injects display ads with correct targeting data if not sponsored feature", () => {
@@ -180,7 +172,7 @@ describe("Sections", () => {
 
       expect(
         wrapper
-          .find(NewDisplayCanvas)
+          .find(DisplayAd)
           .first()
           .props().targetingData
       ).toEqual({
@@ -199,7 +191,7 @@ describe("Sections", () => {
 
       expect(
         wrapper
-          .find(NewDisplayCanvas)
+          .find(DisplayAd)
           .first()
           .props().targetingData
       ).toEqual({
@@ -215,84 +207,40 @@ describe("Sections", () => {
       props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adUnit
-      ).toBe("Desktop_Leaderboard1")
+      const ads = wrapper.find(DisplayAd)
+      expect(ads.length).toBe(8)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adDimension
-      ).toBe("970x250")
+      let ad = ads.at(0).props()
+      expect(ad.adUnit).toBe("Desktop_Leaderboard1")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adUnit
-      ).toBe("Desktop_Leaderboard2")
+      ad = ads.at(1).props()
+      expect(ad.adUnit).toBe("Desktop_Leaderboard2")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adDimension
-      ).toBe("970x250")
+      ad = ads.at(2).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
+      ad = ads.at(3).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adDimension
-      ).toBe("970x250")
+      ad = ads.at(4).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(3)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
+      ad = ads.at(5).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(4)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
+      ad = ads.at(6).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(6)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(7)
-          .props().adUnit
-      ).toBe("Desktop_LeaderboardRepeat")
-
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(8)
+      ad = ads.at(7).props()
+      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
+      expect(ad.adDimension).toBe("970x250")
     })
 
     it("it injects display ads after correct sections if feature on mobile", () => {
@@ -301,120 +249,42 @@ describe("Sections", () => {
       props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adUnit
-      ).toBe("Mobile_InContentLB1")
+      const ads = wrapper.find(DisplayAd)
+      expect(ads.length).toBe(8)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adDimension
-      ).toBe("300x50")
+      let ad = ads.at(0).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLB1")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adUnit
-      ).toBe("Mobile_InContentLB2")
+      ad = ads.at(1).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLB2")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adDimension
-      ).toBe("300x50")
+      ad = ads.at(2).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
+      ad = ads.at(3).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adDimension
-      ).toBe("300x50")
+      ad = ads.at(4).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(3)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
+      ad = ads.at(5).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(3)
-          .props().adDimension
-      ).toBe("300x50")
+      ad = ads.at(6).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(4)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(4)
-          .props().adDimension
-      ).toBe("300x50")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adDimension
-      ).toBe("300x50")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(6)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adDimension
-      ).toBe("300x50")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(7)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(7)
-          .props().adDimension
-      ).toBe("300x50")
-
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(8)
+      ad = ads.at(7).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x50")
     })
+
     it("it injects display ads after correct sections if sponsored feature on mobile", () => {
       props.article = SponsoredFeatureArticle
       props.isMobile = true
@@ -422,119 +292,40 @@ describe("Sections", () => {
       props.isSponsored = true
       const wrapper = mountWrapper(props)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adUnit
-      ).toBe("Mobile_InContentLB1")
+      const ads = wrapper.find(DisplayAd)
+      expect(ads.length).toBe(8)
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(0)
-          .props().adDimension
-      ).toBe("300x250")
+      let ad = ads.at(0).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLB1")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adUnit
-      ).toBe("Mobile_InContentLB2")
+      ad = ads.at(1).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLB2")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(1)
-          .props().adDimension
-      ).toBe("300x250")
+      ad = ads.at(2).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
+      ad = ads.at(3).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(2)
-          .props().adDimension
-      ).toBe("300x250")
+      ad = ads.at(4).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(3)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
+      ad = ads.at(5).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(3)
-          .props().adDimension
-      ).toBe("300x250")
+      ad = ads.at(6).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
 
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(4)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(4)
-          .props().adDimension
-      ).toBe("300x250")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(5)
-          .props().adDimension
-      ).toBe("300x250")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(6)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(6)
-          .props().adDimension
-      ).toBe("300x250")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(7)
-          .props().adUnit
-      ).toBe("Mobile_InContentLBRepeat")
-
-      expect(
-        wrapper
-          .find(NewDisplayCanvas)
-          .at(7)
-          .props().adDimension
-      ).toBe("300x250")
-
-      expect(wrapper.find(NewDisplayCanvas).length).toBe(8)
+      ad = ads.at(7).props()
+      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
+      expect(ad.adDimension).toBe("300x250")
     })
   })
 
