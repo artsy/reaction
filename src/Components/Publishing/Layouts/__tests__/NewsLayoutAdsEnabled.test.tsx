@@ -1,5 +1,4 @@
-import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 
 import { mount } from "enzyme"
@@ -44,25 +43,19 @@ describe("News Layout with new ads enabled", () => {
   it("renders the news layout component with new ads component", () => {
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).length).toBe(1)
-    expect(component.find(DisplayCanvas).length).toBe(0)
+    expect(component.find(DisplayAd).length).toBe(1)
   })
 
   it("renders the news layout component with correct ad unit after the 3rd article on desktop", () => {
     props.articleSerial = 3
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).length).toBe(1)
-    expect(component.find(DisplayCanvas).length).toBe(0)
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Desktop_Leaderboard1"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "970x250"
-    )
-
-    expect(component.find(NewDisplayCanvas).prop("targetingData")).toEqual({
+    expect(ads.prop("adUnit")).toEqual("Desktop_Leaderboard1")
+    expect(ads.prop("adDimension")).toEqual("970x250")
+    expect(ads.prop("targetingData")).toEqual({
       is_testing: true,
       page_type: "newslanding",
       post_id: "594a7e2254c37f00177c0ea9",
@@ -75,27 +68,27 @@ describe("News Layout with new ads enabled", () => {
 
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).length).toBe(1)
-    expect(component.find(DisplayCanvas).length).toBe(0)
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Mobile_InContentMR1"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x50"
-    )
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMR1")
+    expect(ads.prop("adDimension")).toEqual("300x50")
+    expect(ads.prop("targetingData")).toEqual({
+      is_testing: true,
+      page_type: "newslanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
   })
 
   it("renders the news layout component with correct ad unit after the 9th article on desktop", () => {
     props.articleSerial = 9
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Desktop_Leaderboard2"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "970x250"
-    )
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Desktop_Leaderboard2")
+    expect(ads.prop("adDimension")).toEqual("970x250")
   })
 
   it("renders the news layout component with correct ad unit after the 9th article on mobile", () => {
@@ -104,24 +97,22 @@ describe("News Layout with new ads enabled", () => {
 
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Mobile_InContentMR2"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x50"
-    )
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMR2")
+    expect(ads.prop("adDimension")).toEqual("300x50")
   })
 
   it("renders the news layout component with correct ad unit after the 15th article on desktop", () => {
     props.articleSerial = 15
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Desktop_LeaderboardRepeat"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "970x250"
-    )
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Desktop_LeaderboardRepeat")
+    expect(ads.prop("adDimension")).toEqual("970x250")
   })
 
   it("renders the news layout component with correct ad unit after the 15th article on mobile", () => {
@@ -129,11 +120,10 @@ describe("News Layout with new ads enabled", () => {
     props.isMobile = true
     const component = getWrapper()
 
-    expect(component.find(NewDisplayCanvas).prop("adUnit")).toEqual(
-      "Mobile_InContentMRRepeat"
-    )
-    expect(component.find(NewDisplayCanvas).prop("adDimension")).toEqual(
-      "300x50"
-    )
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMRRepeat")
+    expect(ads.prop("adDimension")).toEqual("300x50")
   })
 })

@@ -9,7 +9,7 @@ import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import { pMedia } from "../../Helpers"
-import { NewDisplayCanvas } from "../Display/NewDisplayCanvas"
+import { DisplayAd } from "../Display/DisplayAd"
 import { NewsHeadline } from "../News/NewsHeadline"
 import { NewsSections } from "../News/NewsSections"
 import {
@@ -123,7 +123,7 @@ export class NewsLayout extends Component<Props, State> {
     return (
       <>
         {shouldAdRender && (
-          <NewDisplayCanvas
+          <DisplayAd
             pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={adUnit}
             adDimension={adDimension}
