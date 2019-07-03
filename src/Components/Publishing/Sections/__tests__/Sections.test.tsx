@@ -1,7 +1,7 @@
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import {
   FeatureArticle,
-  FeatureArticleHostedAds,
+  NonSponsoredFeatureArticle,
   SponsoredFeatureArticle,
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
@@ -172,7 +172,7 @@ describe("Sections", () => {
     })
 
     it("it injects display ads with correct targeting data if not sponsored feature", () => {
-      props.article = FeatureArticleHostedAds
+      props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.areHostedAdsEnabled = true
       props.isSponsored = false
@@ -191,7 +191,7 @@ describe("Sections", () => {
     })
 
     it("it injects display ads with correct targeting data if sponsored feature", () => {
-      props.article = FeatureArticleHostedAds
+      props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.areHostedAdsEnabled = true
       props.isSponsored = true
@@ -210,7 +210,7 @@ describe("Sections", () => {
     })
 
     it("it injects display ads after correct sections if feature", () => {
-      props.article = FeatureArticleHostedAds
+      props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
@@ -296,7 +296,7 @@ describe("Sections", () => {
     })
 
     it("it injects display ads after correct sections if feature on mobile", () => {
-      props.article = FeatureArticleHostedAds
+      props.article = NonSponsoredFeatureArticle
       props.isMobile = true
       props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
