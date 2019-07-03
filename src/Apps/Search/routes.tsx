@@ -17,7 +17,7 @@ const tabsToEntitiesMap = {
   collections: ["COLLECTION"],
   shows: ["SHOW"],
   fairs: ["FAIR"],
-  museums: ["INSTITUTION"],
+  institutions: ["INSTITUTION"],
   galleries: ["GALLERY"],
   categories: ["GENE"],
   articles: ["ARTICLE"],
