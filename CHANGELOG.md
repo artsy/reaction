@@ -1,3 +1,15 @@
+# v16.18.1 (Wed Jul 03 2019)
+
+#### 🐛  Bug Fix
+
+- @alloy => [Artist] Remove unused user context on overview route [#2593](https://github.com/artsy/reaction/pull/2593) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.18.0 (Tue Jul 02 2019)
 
 #### 🚀  Enhancement
