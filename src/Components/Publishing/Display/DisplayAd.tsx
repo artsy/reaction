@@ -22,6 +22,7 @@ export interface DisplayAdContainerProps extends FlexProps {
   isSeries?: boolean
   isStandard?: boolean
   adDimension?: AdDimension
+  isAdEmpty?: boolean
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -45,20 +46,19 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
-      collapseEmptyDiv
     />
   )
 
   if (!displayNewAds || isAdEmpty) {
     return null
   }
-
   return (
     <DisplayAdContainer
       flexDirection="column"
       pt={isMobileLeaderboardAd ? 0 : 2}
       pb={isMobileLeaderboardAd ? 2 : 1}
       height={isMobileLeaderboardAd ? "100px" : "334px"}
+      isAdEmpty={isAdEmpty}
       {...otherProps}
     >
       <Box m="auto">
@@ -79,4 +79,5 @@ const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
     props.isSeries ? color("black100") : color("black5")};
   text-align: center;
   width: 100%;
+  display: ${p => (p.isAdEmpty ? "none" : "flex")};
 `
