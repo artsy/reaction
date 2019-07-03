@@ -1,3 +1,15 @@
+# v16.18.2 (Wed Jul 03 2019)
+
+#### 🏠  Internal
+
+- Rename Feature Article Fixture [#2594](https://github.com/artsy/reaction/pull/2594) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.1 (Wed Jul 03 2019)
 
 #### 🐛  Bug Fix
