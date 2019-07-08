@@ -97,10 +97,9 @@ export const ModalContent = styled.div.attrs<{
         ? "20px 40px 100px"
         : "20px 40px 0"
       : "20px 40px 40px"};
-  width: 100%;
 
-  width: ${props => (props.cta && props.hasImage ? "50%" : "100%")};
-  margin-left: ${props => props.cta && props.hasImage && "50%"};
+  width: ${props => (props.hasImage ? "50%" : "100%")};
+  ${props => props.hasImage && "margin-left: 50%"};
   ${media.sm`
     padding: ${props =>
       props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
@@ -126,7 +125,7 @@ export const CloseButton = styled(Icon).attrs({
   cursor: pointer;
 `
 
-const Image = styled.div.attrs<{ image: string }>({})`
+export const Image = styled.div.attrs<{ image: string }>({})`
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
