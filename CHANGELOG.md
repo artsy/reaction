@@ -1,3 +1,15 @@
+# v16.18.4 (Mon Jul 08 2019)
+
+#### 🐛  Bug Fix
+
+- refactor to be able to use image with authentication modal [#2590](https://github.com/artsy/reaction/pull/2590) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.18.3 (Wed Jul 03 2019)
 
 #### 🐛  Bug Fix
