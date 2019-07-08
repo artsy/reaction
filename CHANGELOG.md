@@ -1,3 +1,15 @@
+# v16.18.5 (Mon Jul 08 2019)
+
+#### 🐛  Bug Fix
+
+- Handles empty divs when ad blocker is enabled [#2599](https://github.com/artsy/reaction/pull/2599) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.4 (Mon Jul 08 2019)
 
 #### 🐛  Bug Fix
