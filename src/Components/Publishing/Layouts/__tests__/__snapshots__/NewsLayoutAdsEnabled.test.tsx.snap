@@ -28,7 +28,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 334px;
+  height: 1px;
   padding-bottom: 4px;
   padding-top: 32px;
   margin: 0 auto;
@@ -952,7 +952,7 @@ exports[`News Layout with new ads enabled renders the news layout properly when 
   </div>
   <div
     className="c24"
-    height="334px"
+    height="1px"
   >
     <div
       className="c25"

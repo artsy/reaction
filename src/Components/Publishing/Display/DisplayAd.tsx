@@ -47,6 +47,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
+      viewableThreshold={1.0}
     />
   )
 
@@ -59,7 +60,13 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       flexDirection="column"
       pt={isMobileLeaderboardAd ? 0 : 2}
       pb={isMobileLeaderboardAd ? 2 : 1}
-      height={isMobileLeaderboardAd ? "100px" : "334px"}
+      height={
+        isAdEmpty || isAdEmpty === null
+          ? "1px" // on initial render OR when no ad content returned from Google, set 1px height to ad container to prevent jarring UX effect
+          : isMobileLeaderboardAd
+          ? "100px" // on mobile 300x50 ads reduce ad container height to 100px
+          : "334px"
+      }
       isAdEmpty={isAdEmpty}
       {...otherProps}
     >
