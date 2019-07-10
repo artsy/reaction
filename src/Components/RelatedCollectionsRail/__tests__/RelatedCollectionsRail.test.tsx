@@ -3,7 +3,7 @@ import { mockTracking } from "Artsy/Analytics"
 import { ArrowButton } from "Components/v2/Carousel"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import { drop } from "lodash"
+import { clone, drop } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import { RelatedCollectionEntity } from "../RelatedCollectionEntity"
@@ -45,6 +45,11 @@ describe("CollectionsRail", () => {
     expect(component.find(RelatedCollectionEntity).length).toBe(0)
   })
 
+  it("No arrows when there are less than 5 collections", () => {
+    const component = getWrapper()
+    expect(component.find(ArrowButton).length).toBe(1)
+  })
+
   describe("Tracking", () => {
     it("Tracks impressions", () => {
       const { Component, dispatch } = mockTracking(RelatedCollectionsRail)
@@ -62,8 +67,51 @@ describe("CollectionsRail", () => {
     })
 
     it("Tracks carousel navigation", () => {
+      const collectionsCopy = clone(props.collections)
+      collectionsCopy.push({
+        slug: "jasper-johns-flags2",
+        headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
+        title: "Jasper Johns: Flags Part 2",
+        price_guidance: 1000,
+        artworks: {
+          hits: [
+            {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+              },
+            },
+            {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag (Moratorium)",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+              },
+            },
+            {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag I",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+              },
+            },
+          ],
+        },
+      })
+
+      const updatedCollections = { collections: collectionsCopy }
       const { Component, dispatch } = mockTracking(RelatedCollectionsRail)
-      const component = mount(<Component {...props} />)
+      const component = mount(<Component {...updatedCollections} />)
       component
         .find(ArrowButton)
         .at(1)
