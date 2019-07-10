@@ -27,6 +27,7 @@ import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
+// TODO: Update query interface when we know the schema
 interface Props {
   collection: {
     artist_ids?: string[]
@@ -44,6 +45,7 @@ interface Props {
   artworks: Header_artworks
 }
 
+// TODO: Add test here to test for collection description when it exists and doesn't
 const getReadMoreContent = description => {
   return (
     <>
@@ -187,6 +189,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
 
+  // TODO: Add test here to test this method works as expected
   const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
     const width = getWidth()
     const truncatedLength = sd.IS_MOBILE
@@ -219,8 +222,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       </EntityContainer>
     )
     const artists = cloneDeep(featuredArtists)
+    // TODO: Add test for splice method
     artists.splice(truncatedLength, remainingArtists, viewMore)
 
+    // TODO: Add test for each case that can be returned
     return showMore ? featuredArtists : artists
   }
 
@@ -297,6 +302,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     </Col>
                     <Col sm={12} md={12}>
                       {featuredArtists.length > 0 && (
+                        // TODO: Add test here to test when featuredArtists are present and not
                         <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
