@@ -1,3 +1,20 @@
+# v16.18.6 (Wed Jul 10 2019)
+
+#### 🐛  Bug Fix
+
+- grow_1367 Featured artist module on Small viewport should be 3 per row [#2598](https://github.com/artsy/reaction/pull/2598) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.24 to v4.14.27 [#2596](https://github.com/artsy/reaction/pull/2596) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.18.5 (Mon Jul 08 2019)
 
 #### 🐛  Bug Fix
