@@ -1,3 +1,182 @@
+# v16.18.5 (Mon Jul 08 2019)
+
+#### 🐛  Bug Fix
+
+- Handles empty divs when ad blocker is enabled [#2599](https://github.com/artsy/reaction/pull/2599) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.18.4 (Mon Jul 08 2019)
+
+#### 🐛  Bug Fix
+
+- refactor to be able to use image with authentication modal [#2590](https://github.com/artsy/reaction/pull/2590) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.18.3 (Wed Jul 03 2019)
+
+#### 🐛  Bug Fix
+
+- Prevent Empty Div From Rendering If No Ad Served or Ad Blocker Enabled [#2595](https://github.com/artsy/reaction/pull/2595) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.18.2 (Wed Jul 03 2019)
+
+#### 🏠  Internal
+
+- Rename Feature Article Fixture [#2594](https://github.com/artsy/reaction/pull/2594) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.18.1 (Wed Jul 03 2019)
+
+#### 🐛  Bug Fix
+
+- @alloy => [Artist] Remove unused user context on overview route [#2593](https://github.com/artsy/reaction/pull/2593) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.18.0 (Tue Jul 02 2019)
+
+#### 🚀  Enhancement
+
+- Adds TabCarousel [#2589](https://github.com/artsy/reaction/pull/2589) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v16.17.36 (Tue Jul 02 2019)
+
+### Release Notes
+
+  _From #2587_
+
+<details>
+<summary>artsy/palette</summary>
+
+### [`v4.14.23`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41423-Thu-Jun-27-2019)
+
+[Compare Source](https://togithub.com/artsy/palette/compare/v4.14.22...v4.14.23)
+
+##### 🏠  Internal
+
+-   `@artsy/palette`
+-   Adds padding to small button [#&#8203;526](https://togithub.com/artsy/palette/pull/526) ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+##### Authors: 1
+
+-   Kieran Gillen ([@&#8203;kierangillen](https://togithub.com/kierangillen))
+
+* * *
+
+</details>
+
+---
+
+---
+
+#### 🐛  Bug Fix
+
+- updates price sort string to account for "sold" #DONTMERGE [#2561](https://github.com/artsy/reaction/pull/2561) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.23 to v4.14.24 [#2591](https://github.com/artsy/reaction/pull/2591) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.22 to v4.14.23 [#2587](https://github.com/artsy/reaction/pull/2587) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.17.35 (Fri Jun 28 2019)
+
+#### 🐛  Bug Fix
+
+- Handle Flicker Affect When Ad Server Content is Empty [#2588](https://github.com/artsy/reaction/pull/2588) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.34 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Updates mobile ad dimensions on news articles [#2586](https://github.com/artsy/reaction/pull/2586) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.33 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Corrects ad dimensions in mobile ads on feature articles [#2583](https://github.com/artsy/reaction/pull/2583) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Corrects standard article mobile ad dimensions [#2582](https://github.com/artsy/reaction/pull/2582) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.17.32 (Thu Jun 27 2019)
+
+#### 🐛  Bug Fix
+
+- Return myLastOffer so we can correctly redirect [#2585](https://github.com/artsy/reaction/pull/2585) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.17.31 (Wed Jun 26 2019)
+
+#### 🐛  Bug Fix
+
+- Bring padding on mobile leaderboard ads up to spec [#2581](https://github.com/artsy/reaction/pull/2581) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.17.30 (Tue Jun 25 2019)
 
 ### Release Notes

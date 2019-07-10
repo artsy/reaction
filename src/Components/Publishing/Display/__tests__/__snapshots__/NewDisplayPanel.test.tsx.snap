@@ -21,6 +21,7 @@ exports[`snapshot renders the new canvas in standard layout 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: 1px;
   padding-bottom: 4px;
   padding-top: 8px;
   margin: 0 auto;
@@ -28,11 +29,12 @@ exports[`snapshot renders the new canvas in standard layout 1`] = `
   background: #F8F8F8;
   text-align: center;
   width: 100%;
-  height: 334px;
+  visibility: hidden;
 }
 
 <div
   className="c0"
+  height="1px"
 >
   <div
     className="c1"

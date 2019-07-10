@@ -44,6 +44,7 @@ describe("Standard Article", () => {
 
   afterEach(() => {
     jest.resetModules()
+    jest.resetAllMocks()
   })
 
   it("renders sidebar", () => {
@@ -115,6 +116,75 @@ describe("Standard Article", () => {
 
     expect(article.find(DisplayAd).length).toBe(0)
     expect(article.find(DisplayAd).length).toBe(0)
+  })
+
+  it("renders the top and side rail display ad component with the correct data and properties on standard articles", () => {
+    props.areHostedAdsEnabled = true
+
+    const article = getWrapper(props)
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adDimension
+    ).toBe("970x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adUnit
+    ).toBe("Desktop_TopLeaderboard")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adUnit
+    ).toBe("Desktop_RightRail1")
+  })
+
+  it("renders the top and side rail display ad component with the correct data and properties on standard articles on mobile", () => {
+    props.isMobile = true
+    props.areHostedAdsEnabled = true
+
+    const article = getWrapper(props)
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(0)
+        .props().adUnit
+    ).toBe("Mobile_InContentMR1")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(1)
+        .props().adUnit
+    ).toBe("Mobile_InContentMR1")
   })
 })
 

@@ -1,4 +1,5 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
+import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { SFC, useState } from "react"
 import { Bling as GPT } from "react-gpt"
@@ -18,9 +19,10 @@ export interface DisplayAdProps extends FlexProps {
 }
 
 export interface DisplayAdContainerProps extends FlexProps {
-  displayNewAds?: boolean
   isSeries?: boolean
   isStandard?: boolean
+  adDimension?: AdDimension
+  isAdEmpty?: boolean
 }
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
@@ -33,16 +35,19 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   } = props
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
-  const [isAdEmpty, setAdEmpty] = useState(false)
+  const [isAdEmpty, setAdEmpty] = useState(null)
+  const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
 
   const ad = (
     <GPT
+      collapseEmptyDiv
       adUnitPath={`/21805539690/${adUnit}`}
       targeting={targetingData}
       slotSize={[width, height]}
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
+      viewableThreshold={1.0}
     />
   )
 
@@ -51,7 +56,20 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   }
 
   return (
-    <DisplayAdContainer flexDirection="column" pt={2} pb={1} {...otherProps}>
+    <DisplayAdContainer
+      flexDirection="column"
+      pt={isMobileLeaderboardAd ? 0 : 2}
+      pb={isMobileLeaderboardAd ? 2 : 1}
+      height={
+        isAdEmpty || isAdEmpty === null
+          ? "1px" // on initial render OR when no ad content returned from Google, set 1px height to ad container to prevent jarring UX effect
+          : isMobileLeaderboardAd
+          ? "100px" // on mobile 300x50 ads reduce ad container height to 100px
+          : "334px"
+      }
+      isAdEmpty={isAdEmpty}
+      {...otherProps}
+    >
       <Box m="auto">
         {ad}
         <Sans size="1" color="black30" m={1}>
@@ -63,12 +81,11 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 }
 
 const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
-  margin: ${props => (props.isStandard ? "0" : "0 auto")};
-  border-top: ${props =>
-    props.isSeries ? `1px solid ${color("black10")}` : "none"};
-  background: ${props =>
-    props.isSeries ? color("black100") : color("black5")};
+  margin: ${p => (p.isStandard ? "0" : "0 auto")};
+  border-top: ${p => (p.isSeries ? `1px solid ${color("black10")}` : "none")};
+  background: ${p => (p.isSeries ? color("black100") : color("black5"))};
   text-align: center;
   width: 100%;
-  height: 334px;
+  visibility: ${p =>
+    p.isAdEmpty || p.isAdEmpty === null ? "hidden" : "visible"};
 `

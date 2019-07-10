@@ -669,7 +669,7 @@ export const FeatureArticle: ArticleData = {
   slug: "artsy-editorial-path-winning-art-prize",
 }
 
-export const FeatureArticleHostedAds: ArticleData = {
+export const NonSponsoredFeatureArticle: ArticleData = {
   ...FeatureArticle,
   sections: [
     {
@@ -1203,6 +1203,10 @@ export const FeatureBasicArticle: ArticleData = {
 }
 
 export const SponsoredArticle = extend(cloneDeep(FeatureArticle), Sponsor)
+export const SponsoredFeatureArticle = extend(
+  cloneDeep(NonSponsoredFeatureArticle),
+  Sponsor
+)
 
 export const SuperArticle = extend(cloneDeep(FeatureArticle), {
   is_super_article: true,

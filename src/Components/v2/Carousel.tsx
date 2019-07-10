@@ -1,4 +1,4 @@
-import { ChevronIcon, color, Flex, space } from "@artsy/palette"
+import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
 import { Options as FlickityOptions } from "flickity"
 import React, { Fragment } from "react"
 import styled from "styled-components"
@@ -52,6 +52,11 @@ interface CarouselProps {
   options?: FlickityOptions
 
   /**
+   * Pass an optional position for left and right for the arrow wrapper element otherwise defaults to -40
+   */
+  arrowPosition?: number
+
+  /**
    * Show or hide arrows. Defaults to true
    */
   showArrows?: boolean
@@ -84,14 +89,14 @@ export class Carousel extends React.Component<CarouselProps> {
 
   render() {
     return (
-      <>
+      <Box width="100%">
         <Media greaterThan="xs">
           <LargeCarousel {...this.props} />
         </Media>
         <Media at="xs">
           <SmallCarousel {...this.props} />
         </Media>
-      </>
+      </Box>
     )
   }
 }
@@ -150,7 +155,7 @@ export class BaseCarousel extends React.Component<
 > {
   state = {
     currentSlideIndex: 0,
-    lastItemVisible: false,
+    lastItemVisible: true,
     isMounted: false,
   }
 
@@ -210,30 +215,39 @@ export class BaseCarousel extends React.Component<
   handleSlideChange = index => {
     this.setState({
       currentSlideIndex: index,
-      lastItemVisible: this.checkLastItemVisible(),
     })
   }
 
   checkLastItemVisible = () => {
-    const lastItemVisible = this.flickity.selectedElements.includes(
-      this.flickity.getLastCell().element
-    )
-    return lastItemVisible
+    if (this.flickity && this.flickity.selectedElements) {
+      const lastItemVisible = this.flickity.selectedElements.includes(
+        this.flickity.getLastCell().element
+      )
+      return lastItemVisible
+    } else {
+      return true
+    }
   }
 
   renderLeftArrow = () => {
-    const { onArrowClick, renderLeftArrow, showArrows } = this.props
+    const { onArrowClick, renderLeftArrow, showArrows, height } = this.props
 
     if (!showArrows) {
       return null
     }
 
+    const leftPosition =
+      this.props.arrowPosition !== null &&
+      this.props.arrowPosition !== undefined
+        ? this.props.arrowPosition
+        : -space(4)
     const showLeftArrow =
       this.state.currentSlideIndex !== 0 || this.options.wrapAround === true
 
     const Arrow = () => (
-      <ArrowWrapper left={-space(4)} showArrow={showLeftArrow}>
+      <ArrowWrapper left={leftPosition} showArrow={showLeftArrow}>
         <ArrowButton
+          height={height}
           onClick={() => {
             this.flickity.previous()
 
@@ -243,10 +257,10 @@ export class BaseCarousel extends React.Component<
           }}
         >
           <ChevronIcon
+            height={30}
             direction="left"
             fill="black100"
             width={30}
-            height={30}
           />
         </ArrowButton>
       </ArrowWrapper>
@@ -265,18 +279,25 @@ export class BaseCarousel extends React.Component<
   }
 
   renderRightArrow = () => {
-    const { onArrowClick, renderRightArrow, showArrows } = this.props
+    const { onArrowClick, renderRightArrow, showArrows, height } = this.props
 
     if (!showArrows) {
       return null
     }
 
+    const rightPosition =
+      this.props.arrowPosition !== null &&
+      this.props.arrowPosition !== undefined
+        ? this.props.arrowPosition
+        : -space(4)
+
     const showRightArrow =
-      !this.state.lastItemVisible || this.options.wrapAround === true
+      !this.checkLastItemVisible() || this.options.wrapAround === true
 
     const Arrow = () => (
-      <ArrowWrapper right={-space(4)} showArrow={showRightArrow}>
+      <ArrowWrapper right={rightPosition} showArrow={showRightArrow}>
         <ArrowButton
+          height={height}
           onClick={() => {
             this.flickity.next()
 
@@ -286,10 +307,10 @@ export class BaseCarousel extends React.Component<
           }}
         >
           <ChevronIcon
+            height={30}
             direction="right"
             fill="black100"
             width={30}
-            height={30}
           />
         </ArrowButton>
       </ArrowWrapper>
@@ -409,7 +430,7 @@ export const ArrowButton = styled(Flex)<
   opacity: 0.3;
 
   transition: opacity 0.25s;
-  min-height: ${p => p.height || "200px"};
+  height: ${p => p.height || "200px"};
 
   &:hover {
     opacity: 1;
@@ -425,9 +446,11 @@ const ArrowWrapper = styled.div<{
   top: 50%;
   transform: translateY(-50%);
   min-width: 30px;
+  z-index: 10;
   transition: opacity 0.25s;
   opacity: ${props => (props.showArrow ? 1 : 0)};
   pointer-events: ${props => (props.showArrow ? "auto" : "none")};
+  height: 100%;
   ${left};
   ${right};
 `

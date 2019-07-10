@@ -32,6 +32,7 @@ export interface ModalManagerProps {
   onModalOpen?: () => void
   onModalClose?: () => void
   showRecaptchaDisclaimer?: boolean
+  image?: string
 }
 
 export interface ModalManagerState {
@@ -125,6 +126,7 @@ export class ModalManager extends Component<
         onClose={this.closeModal}
         subtitle={this.getSubtitle()}
         type={currentType}
+        image={options.image}
       >
         <FormSwitcher
           type={currentType}

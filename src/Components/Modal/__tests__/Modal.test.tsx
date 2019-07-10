@@ -1,6 +1,6 @@
 import { mount } from "enzyme"
 import React from "react"
-import { Modal } from "../Modal"
+import { Image, Modal, ModalContent } from "../Modal"
 import { ModalCta } from "../ModalCta"
 import { ModalHeader } from "../ModalHeader"
 
@@ -51,6 +51,14 @@ describe("Modal", () => {
 
       expect(component.find(ModalCta)).toHaveLength(1)
       expect(component.html()).toMatch("Learn More")
+    })
+
+    it("Renders Image if props.image", () => {
+      props.image = "an_image.jpg"
+      const component = getWrapper(props)
+
+      expect(component.find(Image)).toHaveLength(1)
+      expect(component.find(ModalContent)).toHaveLength(1)
     })
   })
 })

@@ -95,6 +95,10 @@ export interface ModalOptions {
    * The form or modal title in case it needs to be customized
    */
   title?: string
+  /**
+   * The image rendered with the modal
+   */
+  image?: string
 }
 
 export type FormComponentType =

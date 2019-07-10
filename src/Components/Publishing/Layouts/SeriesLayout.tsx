@@ -1,5 +1,8 @@
 import { Box, color } from "@artsy/palette"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  is300x50AdUnit,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
@@ -39,6 +42,9 @@ export class SeriesLayout extends Component<Props, null> {
     const isSponsored = isEditorialSponsored(sponsor)
     const backgroundUrl =
       hero_section && hero_section.url ? hero_section.url : ""
+    const adDimension = isMobile
+      ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+      : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
 
     return (
       <SeriesContainer
@@ -68,16 +74,13 @@ export class SeriesLayout extends Component<Props, null> {
         </SeriesContent>
         {areHostedAdsEnabled && (
           <NewDisplayCanvas
+            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={
               isMobile
                 ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
                 : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
             }
-            adDimension={
-              isMobile
-                ? AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-                : AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-            }
+            adDimension={adDimension}
             displayNewAds={areHostedAdsEnabled}
             targetingData={targetingData(
               article.id,

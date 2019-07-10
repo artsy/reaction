@@ -128,6 +128,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  height: 1px;
   padding-bottom: 4px;
   padding-top: 32px;
   margin: 0 auto;
@@ -135,7 +136,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   background: #000;
   text-align: center;
   width: 100%;
-  height: 334px;
+  visibility: hidden;
 }
 
 .c3 {
@@ -1621,6 +1622,7 @@ exports[`Video Layout with new ads enabled renders the video layout properly whe
   </div>
   <div
     className="c56"
+    height="1px"
   >
     <div
       className="c57"

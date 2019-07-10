@@ -1,10 +1,27 @@
-import { RouteTab, RouteTabs } from "Components/v2"
+import { RouteTab, TabCarousel } from "Components/v2"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("Tabs (Router)", () => {
+  const tabs = [
+    <RouteTab to="/overview">Overview</RouteTab>,
+    <RouteTab to="/cv">CV</RouteTab>,
+    <RouteTab to="/shows">Shows</RouteTab>,
+    <RouteTab to="/overview">Overview</RouteTab>,
+    <RouteTab to="/cv">CV</RouteTab>,
+    <RouteTab to="/shows">Shows</RouteTab>,
+    <RouteTab to="/overview">Overview</RouteTab>,
+    <RouteTab to="/cv">CV</RouteTab>,
+    <RouteTab to="/shows">Shows</RouteTab>,
+    <RouteTab to="/overview">Overview</RouteTab>,
+    <RouteTab to="/cv">CV</RouteTab>,
+    <RouteTab to="/shows">Shows</RouteTab>,
+    <RouteTab to="/overview">Overview</RouteTab>,
+    <RouteTab to="/cv">CV</RouteTab>,
+    <RouteTab to="/shows">Shows</RouteTab>,
+  ]
   return (
     <React.Fragment>
       <Section title="Route Tabs">
@@ -14,13 +31,7 @@ storiesOf("Styleguide/Components", module).add("Tabs (Router)", () => {
             {
               path: "/",
               Component: () => {
-                return (
-                  <RouteTabs>
-                    <RouteTab to="/overview">Overview</RouteTab>
-                    <RouteTab to="/cv">CV</RouteTab>
-                    <RouteTab to="/shows">Shows</RouteTab>
-                  </RouteTabs>
-                )
+                return <TabCarousel tabs={tabs} />
               },
               children: [
                 {
