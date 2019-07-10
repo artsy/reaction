@@ -27,7 +27,8 @@ import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
-interface Props {
+// TODO: Update query interface when we know the schema
+export interface Props {
   collection: {
     artist_ids?: string[]
     category: string
@@ -42,16 +43,6 @@ interface Props {
     query: any
   }
   artworks: Header_artworks
-}
-
-const getReadMoreContent = description => {
-  return (
-    <>
-      {description && (
-        <span dangerouslySetInnerHTML={{ __html: description }} />
-      )}
-    </>
-  )
 }
 
 const handleOpenAuth = (mediator, artist) => {
@@ -192,6 +183,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
 
+  // TODO: Add test here to test this method works as expected
   const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
     const width = getWidth()
     const truncatedLength = sd.IS_MOBILE
@@ -224,10 +216,19 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       </EntityContainer>
     )
     const artists = cloneDeep(featuredArtists)
+    // TODO: Add test for splice method
     artists.splice(truncatedLength, remainingArtists, viewMore)
 
+    // TODO: Add test for each case that can be returned
     return showMore ? featuredArtists : artists
   }
+
+  // TODO: casting description as any allows this to pass type-checking, but
+  //  the test that uses a JSX description will fail anyway, so we should
+  //  fix this to account for that.
+  const htmlUnsafeDescription = collection.description && (
+    <span dangerouslySetInnerHTML={{ __html: collection.description as any }} />
+  )
 
   return (
     <Responsive>
@@ -291,12 +292,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           {smallerScreen ? (
                             <ReadMore
                               maxChars={chars}
-                              content={getReadMoreContent(
-                                collection.description
-                              )}
+                              content={htmlUnsafeDescription}
                             />
                           ) : (
-                            getReadMoreContent(collection.description)
+                            htmlUnsafeDescription
                           )}
                           {collection.description && <Spacer mt={2} />}
                         </ExtendedSerif>
@@ -304,6 +303,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     </Col>
                     <Col sm={12} md={12}>
                       {featuredArtists.length > 0 && (
+                        // TODO: Add test here to test when featuredArtists are present and not
                         <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
