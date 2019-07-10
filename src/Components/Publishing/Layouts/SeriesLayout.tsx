@@ -3,7 +3,6 @@ import {
   is300x50AdUnit,
   targetingData,
 } from "Components/Publishing/Display/DisplayTargeting"
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
@@ -16,6 +15,7 @@ import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
 import { isEditorialSponsored } from "Components/Publishing/utils/Sponsored"
 import React, { Component } from "react"
 import styled from "styled-components"
+import { DisplayAd } from "../Display/DisplayAd"
 
 interface Props {
   areHostedAdsEnabled?: boolean
@@ -73,7 +73,7 @@ export class SeriesLayout extends Component<Props, null> {
           </Box>
         </SeriesContent>
         {areHostedAdsEnabled && (
-          <NewDisplayCanvas
+          <DisplayAd
             pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={
               isMobile
