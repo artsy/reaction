@@ -1,4 +1,5 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
 import React, { FC, useState } from "react"
@@ -8,8 +9,6 @@ import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
-
-import { AnalyticsSchema } from "Artsy/Analytics"
 
 import {
   Box,
@@ -63,6 +62,16 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+export const getWidth = () => {
+  let width: number
+  try {
+    width = window.innerWidth
+  } catch (e) {
+    width = 0
+  }
+  return width
+}
+
 export const getFeaturedArtists = (
   artistsCount: number,
   collection,
@@ -106,7 +115,7 @@ export const featuredArtistsEntityCollection = (
     const hasArtistMetaData = artist.nationality && artist.birthday
     return (
       <EntityContainer
-        width={["100%", "25%"]}
+        width={["100%", "33%", "33%", "25%"]}
         isColumnLayout={isColumnLayout}
         key={index}
         pb={20}
@@ -179,7 +188,15 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists.length > 1
 
   const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
-    const truncatedLength = sd.IS_MOBILE ? 3 : 7
+    const width = getWidth()
+    const truncatedLength = sd.IS_MOBILE
+      ? 3
+      : width > 1024
+      ? 7
+      : width > 768
+      ? 5
+      : 3
+
     if (featuredArtists.length <= truncatedLength) {
       return featuredArtists
     }
@@ -187,7 +204,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     const remainingArtists = featuredArtists.length - truncatedLength
     const viewMore = (
       <EntityContainer
-        width={["100%", "25%"]}
+        width={["100%", "33%", "33%", "25%"]}
         isColumnLayout={isColumnLayout}
         pb={20}
         key={4}
