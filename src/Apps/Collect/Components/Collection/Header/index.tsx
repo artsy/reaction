@@ -1,14 +1,14 @@
 import { EntityHeader, ReadMore } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
 import React, { FC, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
 import { Responsive } from "Utils/Responsive"
-
-import { AnalyticsSchema } from "Artsy/Analytics"
 
 import {
   Box,
@@ -189,7 +189,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
 
   const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
     const width = getWidth()
-    const truncatedLength = width > 1024 ? 7 : width > 768 ? 5 : 3
+    const truncatedLength = sd.IS_MOBILE
+      ? 3
+      : width > 1024
+      ? 7
+      : width > 768
+      ? 5
+      : 3
 
     if (featuredArtists.length <= truncatedLength) {
       return featuredArtists
