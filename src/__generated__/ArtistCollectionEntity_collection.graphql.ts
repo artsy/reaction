@@ -79,7 +79,7 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "artworks",
-      "storageKey": "artworks(size:3,sort:\"merchandisability\")",
+      "storageKey": "artworks(size:3,sort:\"-decayed_merch\")",
       "args": [
         {
           "kind": "Literal",
@@ -90,7 +90,7 @@ return {
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "merchandisability",
+          "value": "-decayed_merch",
           "type": "String"
         }
       ],
@@ -162,5 +162,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '235c0ba8408305088395703809dbdb18';
+(node as any).hash = '457be8470973167da1f503b33d78a395';
 export default node;

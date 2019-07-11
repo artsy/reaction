@@ -143,7 +143,7 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
         slug
         title
         price_guidance
-        artworks(size: 3, sort: "merchandisability") {
+        artworks(size: 3, sort: "-decayed_merch") {
           hits {
             artist {
               name
