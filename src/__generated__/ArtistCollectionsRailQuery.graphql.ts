@@ -41,7 +41,7 @@ fragment ArtistCollectionEntity_collection on MarketingCollection {
   slug
   title
   price_guidance
-  artworks(size: 3, sort: "merchandisability") {
+  artworks(size: 3, sort: "-decayed_merch") {
     hits {
       artist {
         name
@@ -127,7 +127,7 @@ return {
   "operationKind": "query",
   "name": "ArtistCollectionsRailQuery",
   "id": null,
-  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"merchandisability\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
+  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"-decayed_merch\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -195,7 +195,7 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "artworks",
-            "storageKey": "artworks(size:3,sort:\"merchandisability\")",
+            "storageKey": "artworks(size:3,sort:\"-decayed_merch\")",
             "args": [
               {
                 "kind": "Literal",
@@ -206,7 +206,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "merchandisability",
+                "value": "-decayed_merch",
                 "type": "String"
               }
             ],
