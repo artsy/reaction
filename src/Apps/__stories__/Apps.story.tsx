@@ -1,11 +1,25 @@
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import { routes as auctionRoutes } from "../Auction/routes"
 import { routes as collectRoutes } from "../Collect/routes"
 import { routes as collectionsRoutes } from "../Collections/routes"
 import { routes as searchRoutes } from "../Search/routes"
 
 storiesOf("Apps", module)
+  .add("Auction Registration", () => {
+    return (
+      <MockRouter
+        routes={auctionRoutes}
+        initialRoute="/auction-registration/123"
+        context={{
+          mediator: {
+            trigger: x => x,
+          },
+        }}
+      />
+    )
+  })
   .add("Collect", () => {
     return (
       <MockRouter
