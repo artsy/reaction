@@ -1,9 +1,6 @@
 import { color } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import {
-  is300x50AdUnit,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { once } from "lodash"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -106,7 +103,7 @@ export class NewsLayout extends Component<Props, State> {
       : AdUnit.Desktop_NewsLanding_LeaderboardRepeat
   }
 
-  renderAd() {
+  renderFooterContent() {
     const {
       isMobile,
       areHostedAdsEnabled,
@@ -120,36 +117,41 @@ export class NewsLayout extends Component<Props, State> {
       ? AdDimension.Mobile_NewsLanding_InContent1
       : AdDimension.Desktop_NewsLanding_Leaderboard1
 
+    if (areHostedAdsEnabled) {
+      return (
+        <>
+          {shouldAdRender && (
+            <DisplayAd
+              adUnit={adUnit}
+              adDimension={adDimension}
+              displayNewAds={areHostedAdsEnabled}
+              targetingData={targetingData(article.id, "newslanding")}
+            />
+          )}
+          {relatedArticlesForCanvas && (
+            <CanvasFooter
+              article={article}
+              relatedArticles={relatedArticlesForCanvas}
+              showCollectionsRail={showCollectionsRail}
+            />
+          )}
+        </>
+      )
+    }
+
     return (
-      <>
-        {shouldAdRender && (
-          <DisplayAd
-            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
-            adUnit={adUnit}
-            adDimension={adDimension}
-            displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(article.id, "newslanding")}
-          />
-        )}
-        {relatedArticlesForCanvas && (
-          <CanvasFooter
-            article={article}
-            relatedArticles={relatedArticlesForCanvas}
-            showCollectionsRail={showCollectionsRail}
-          />
-        )}
-      </>
+      relatedArticlesForCanvas && (
+        <CanvasFooter
+          article={article}
+          relatedArticles={relatedArticlesForCanvas}
+          showCollectionsRail={showCollectionsRail}
+        />
+      )
     )
   }
 
   render() {
-    const {
-      areHostedAdsEnabled,
-      article,
-      isMobile,
-      relatedArticlesForCanvas,
-      showCollectionsRail,
-    } = this.props
+    const { article, isMobile } = this.props
     const { isTruncated, isHovered } = this.state
 
     return (
@@ -184,15 +186,7 @@ export class NewsLayout extends Component<Props, State> {
           </ExpandButton>
         </NewsArticleContainer>
 
-        {areHostedAdsEnabled
-          ? this.renderAd()
-          : relatedArticlesForCanvas && (
-              <CanvasFooter
-                article={article}
-                relatedArticles={relatedArticlesForCanvas}
-                showCollectionsRail={showCollectionsRail}
-              />
-            )}
+        {this.renderFooterContent()}
       </NewsContainer>
     )
   }
