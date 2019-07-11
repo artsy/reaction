@@ -25,6 +25,8 @@ export interface DisplayAdContainerProps extends FlexProps {
   isAdEmpty?: boolean
 }
 
+GPT.syncCorrelator(true)
+
 export const DisplayAd: SFC<DisplayAdProps> = props => {
   const {
     adDimension,
