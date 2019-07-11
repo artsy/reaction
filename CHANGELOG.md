@@ -1,3 +1,15 @@
+# v16.18.9 (Thu Jul 11 2019)
+
+#### 🐛  Bug Fix
+
+- change sync correlator to true [#2603](https://github.com/artsy/reaction/pull/2603) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.8 (Thu Jul 11 2019)
 
 #### 🐛  Bug Fix
