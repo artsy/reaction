@@ -57,7 +57,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   return (
     <DisplayAdContainer
       flexDirection="column"
-      pt={isMobileLeaderboardAd ? 0 : 2}
+      pt={isMobileLeaderboardAd ? 2 : 4}
       pb={isMobileLeaderboardAd ? 2 : 1}
       height={
         isAdEmpty || isAdEmpty === null
