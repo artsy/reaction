@@ -7,6 +7,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { get } from "Utils/get"
 
 export interface CollectionProps {
   collection: ArtistCollectionEntity_collection
@@ -47,7 +48,10 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
-                const alt = `${hits[i].artist.name}, ${hits[i].title}`
+                const artistName = get(hits[i].artist, a => a.name)
+                const alt = `${artistName ? artistName + ", " : ""}${
+                  hits[i].title
+                }`
                 return (
                   <SingleImgContainer key={i}>
                     <ImgOverlay width={imageSize} />
