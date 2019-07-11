@@ -47,7 +47,6 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       onSlotRenderEnded={event => {
         setAdEmpty(event.isEmpty)
       }}
-      viewableThreshold={1.0}
     />
   )
 
