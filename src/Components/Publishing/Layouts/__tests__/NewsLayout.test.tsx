@@ -1,4 +1,4 @@
-import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { NewsSectionContainer } from "Components/Publishing/News/NewsSections"
@@ -17,16 +17,6 @@ global.fetch = jest.fn(() =>
     json: () => Promise.resolve({}),
   })
 )
-
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Non-Admin",
-      email: "someuser@email.com",
-    },
-  },
-}))
 
 describe("News Layout", () => {
   const dateNow = Date.now
@@ -85,11 +75,6 @@ describe("News Layout", () => {
     expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
   })
 
-  xit("Can render display units if provided", () => {
-    const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
-    expect(component.find(DisplayCanvas)).toHaveLength(1)
-  })
-
   it("sets a hover state onMouseEnter if desktop", () => {
     const component = mount(<NewsLayout article={NewsArticle} isTruncated />)
     component
@@ -135,5 +120,117 @@ describe("News Layout", () => {
         pathname: "/news/news-article",
       })
     })
+  })
+})
+
+describe("News Layout with new ads enabled", () => {
+  let props
+  const getWrapper = (passedProps = props) => {
+    return mount(<NewsLayout {...passedProps} />)
+  }
+
+  beforeEach(() => {
+    props = {
+      shouldAdRender: true,
+      areHostedAdsEnabled: true,
+      article: NewsArticle,
+    }
+  })
+
+  it("renders the news layout properly when new ads are enabled", () => {
+    const layout = renderer
+      .create(
+        <NewsLayout article={NewsArticle} shouldAdRender areHostedAdsEnabled />
+      )
+      .toJSON()
+
+    expect(layout).toMatchSnapshot()
+  })
+
+  it("renders the news layout component with new ads component", () => {
+    const component = getWrapper()
+
+    expect(component.find(DisplayAd).length).toBe(1)
+  })
+
+  it("renders the news layout component with correct ad unit after the 3rd article on desktop", () => {
+    props.articleSerial = 3
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Desktop_Leaderboard1")
+    expect(ads.prop("adDimension")).toEqual("970x250")
+    expect(ads.prop("targetingData")).toEqual({
+      is_testing: true,
+      page_type: "newslanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+  })
+
+  it("renders the news layout component with correct ad unit after the 3rd article on mobile", () => {
+    props.articleSerial = 3
+    props.isMobile = true
+
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMR1")
+    expect(ads.prop("adDimension")).toEqual("300x50")
+    expect(ads.prop("targetingData")).toEqual({
+      is_testing: true,
+      page_type: "newslanding",
+      post_id: "594a7e2254c37f00177c0ea9",
+    })
+  })
+
+  it("renders the news layout component with correct ad unit after the 9th article on desktop", () => {
+    props.articleSerial = 9
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Desktop_Leaderboard2")
+    expect(ads.prop("adDimension")).toEqual("970x250")
+  })
+
+  it("renders the news layout component with correct ad unit after the 9th article on mobile", () => {
+    props.articleSerial = 9
+    props.isMobile = true
+
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMR2")
+    expect(ads.prop("adDimension")).toEqual("300x50")
+  })
+
+  it("renders the news layout component with correct ad unit after the 15th article on desktop", () => {
+    props.articleSerial = 15
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Desktop_LeaderboardRepeat")
+    expect(ads.prop("adDimension")).toEqual("970x250")
+  })
+
+  it("renders the news layout component with correct ad unit after the 15th article on mobile", () => {
+    props.articleSerial = 15
+    props.isMobile = true
+    const component = getWrapper()
+
+    const ads = component.find(DisplayAd)
+    expect(ads.length).toBe(1)
+
+    expect(ads.prop("adUnit")).toEqual("Mobile_InContentMRRepeat")
+    expect(ads.prop("adDimension")).toEqual("300x50")
   })
 })

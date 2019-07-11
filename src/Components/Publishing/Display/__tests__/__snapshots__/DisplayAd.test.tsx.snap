@@ -23,7 +23,7 @@ exports[`renders the new canvas in standard layout 1`] = `
   flex-direction: column;
   height: 1px;
   padding-bottom: 4px;
-  padding-top: 8px;
+  padding-top: 32px;
   margin: 0 auto;
   border-top: none;
   background: #F8F8F8;
