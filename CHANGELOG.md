@@ -1,3 +1,15 @@
+# v16.18.12 (Thu Jul 11 2019)
+
+#### 🐛  Bug Fix
+
+- @mbilokonsky => [CollectionRail] Switch artwork sorting to use -decayed_merch [#2606](https://github.com/artsy/reaction/pull/2606) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.18.11 (Thu Jul 11 2019)
 
 
