@@ -1,3 +1,15 @@
+# v16.18.8 (Thu Jul 11 2019)
+
+#### 🐛  Bug Fix
+
+- Removes viewable threshold prop from ad component [#2602](https://github.com/artsy/reaction/pull/2602) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.7 (Wed Jul 10 2019)
 
 #### 🐛  Bug Fix
