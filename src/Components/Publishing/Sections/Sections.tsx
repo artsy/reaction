@@ -1,15 +1,12 @@
 import { Box } from "@artsy/palette"
-import {
-  is300x50AdUnit,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import styled, { StyledFunction } from "styled-components"
 import { pMedia } from "../../Helpers"
+import { DisplayAd } from "../Display/DisplayAd"
 import { ArticleData } from "../Typings"
 import { Authors } from "./Authors"
 import { Embed } from "./Embed"
@@ -280,8 +277,7 @@ export class Sections extends Component<Props, State> {
 
         ad = (
           <AdWrapper mt={marginTop}>
-            <NewDisplayCanvas
-              pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
+            <DisplayAd
               adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
               adDimension={adDimension}
               displayNewAds

@@ -1,4 +1,4 @@
-import { DisplayCanvas } from "Components/Publishing/Display/Canvas"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   FeatureArticle,
   SeriesArticle,
@@ -92,18 +92,19 @@ it("renders a nav if article is in a series", () => {
   expect(article.find(Nav).length).toBe(1)
 })
 
-it("renders display if article is not super or in a series", () => {
+it("renders display ads when feature flagged ads are enabled", () => {
   const article = mount(
     <FeatureLayout
       article={FeatureArticle}
       relatedArticlesForCanvas={RelatedCanvas}
       display={Display("feature")}
+      areHostedAdsEnabled
     />
   )
-  expect(article.find(DisplayCanvas).length).toBe(0)
+  expect(article.find(DisplayAd).length).toBe(2)
 })
 
-it("does not render display if article is in a series", () => {
+it("does not render display ads when feature flagged ads are disabled", () => {
   const Article = extend(cloneDeep(FeatureArticle), {
     seriesArticle: SeriesArticle,
   })
@@ -114,19 +115,7 @@ it("does not render display if article is in a series", () => {
       display={Display("feature")}
     />
   )
-  expect(article.find(DisplayCanvas).length).toBe(0)
-})
-
-it("does not render display if article is super", () => {
-  const article = mount(
-    <FeatureLayout
-      article={FeatureArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      display={Display("feature")}
-      isSuper
-    />
-  )
-  expect(article.find(DisplayCanvas).length).toBe(0)
+  expect(article.find(DisplayAd).length).toBe(0)
 })
 
 it("does not render a nav if article has a non-fullscreen header", () => {
