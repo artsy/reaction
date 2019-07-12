@@ -1,8 +1,5 @@
 import { Box, color } from "@artsy/palette"
-import {
-  is300x50AdUnit,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
@@ -74,7 +71,6 @@ export class SeriesLayout extends Component<Props, null> {
         </SeriesContent>
         {areHostedAdsEnabled && (
           <DisplayAd
-            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
             adUnit={
               isMobile
                 ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
