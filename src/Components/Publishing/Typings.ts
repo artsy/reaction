@@ -160,18 +160,6 @@ export interface GravityEntity {
   slug?: string
 }
 
-export interface DisplayData {
-  name: string
-  canvas: DisplayUnitData
-  panel: DisplayUnitData
-  renderTime?: number
-}
-
-export interface DisplayUnitAssetData {
-  caption?: string
-  url?: string
-}
-
 export interface MediaData {
   url?: string
   cover_image_url?: string
@@ -180,22 +168,6 @@ export interface MediaData {
   published?: boolean
   description?: string
   credits?: string
-}
-
-export interface DisplayUnitData {
-  assets?: DisplayUnitAssetData[]
-  body?: string
-  cover_image_url?: string
-  disclaimer?: string
-  headline?: string
-  layout?: string
-  link?: {
-    text: string
-    url: string
-  }
-  logo?: string
-  name?: string
-  pixel_tracking_code?: string
 }
 
 export interface RelatedArticlePanelData {
