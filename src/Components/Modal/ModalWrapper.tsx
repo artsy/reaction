@@ -8,6 +8,7 @@ import { CtaProps } from "./ModalCta"
 export enum ModalWidth {
   Narrow = "280px",
   Normal = "440px",
+  Medium = "780px",
   Wide = "900px",
 }
 
@@ -114,6 +115,16 @@ export class ModalWrapper extends React.Component<
     }
   }
 
+  getViewportWidth = () => {
+    let width: number
+    try {
+      width = window.innerWidth
+    } catch (e) {
+      width = 0
+    }
+    return width
+  }
+
   render(): JSX.Element {
     const { children, width, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
@@ -142,6 +153,7 @@ export class ModalWrapper extends React.Component<
               fullscreenResponsiveModal={fullscreenResponsiveModal}
               width={width}
               image={image}
+              viewportWidth={this.getViewportWidth()}
             >
               <ModalInner fullscreenResponsiveModal={fullscreenResponsiveModal}>
                 {children}
@@ -193,6 +205,7 @@ export const ModalContainer = styled.div.attrs<{
   width?: ModalWidth
   fullscreenResponsiveModal?: boolean
   image?: string
+  viewportWidth?: number
 }>({})`
   position: fixed;
   top: 50%;
@@ -201,7 +214,7 @@ export const ModalContainer = styled.div.attrs<{
   background: #fff;
   width: ${props => {
     if (props.image) {
-      return ModalWidth.Wide
+      return props.viewportWidth > 900 ? ModalWidth.Wide : ModalWidth.Medium
     } else {
       return props.width ? props.width : ModalWidth.Normal
     }
