@@ -1,3 +1,15 @@
+# v16.18.15 (Fri Jul 12 2019)
+
+#### 🐛  Bug Fix
+
+- handle modal width for medium screens [#2608](https://github.com/artsy/reaction/pull/2608) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.18.14 (Fri Jul 12 2019)
 
 #### 🐛  Bug Fix
