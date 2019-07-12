@@ -13,14 +13,6 @@ jest.mock(
   })
 )
 
-const DisplayPanel = () => {
-  return <div>Display Panel</div>
-}
-it("renders display panel", () => {
-  const sidebar = mount(<Sidebar DisplayPanel={DisplayPanel} />)
-  expect(sidebar.find(DisplayPanel).length).toBe(1)
-})
-
 it("renders related articles", () => {
   const sidebar = mount(<Sidebar relatedArticlesForPanel={RelatedPanel} />)
   expect(sidebar.find(RelatedArticlesPanel).length).toBe(1)
