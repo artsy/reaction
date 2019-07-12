@@ -1,10 +1,7 @@
 import { Box } from "@artsy/palette"
 import { getEditorialHref } from "Components/Publishing/Constants"
-import {
-  is300x50AdUnit,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
-import { NewDisplayCanvas } from "Components/Publishing/Display/NewDisplayCanvas"
+import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
@@ -130,8 +127,7 @@ export class VideoLayout extends Component<Props, State> {
           )}
         </Box>
         {areHostedAdsEnabled && (
-          <NewDisplayCanvas
-            pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
+          <DisplayAd
             adUnit={
               isMobile
                 ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
