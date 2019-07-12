@@ -1,3 +1,15 @@
+# v16.18.14 (Fri Jul 12 2019)
+
+#### 🐛  Bug Fix
+
+- Deprecate old ads for series landing pages [#2607](https://github.com/artsy/reaction/pull/2607) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.18.13 (Fri Jul 12 2019)
 
 #### 🐛  Bug Fix
