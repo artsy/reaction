@@ -23,7 +23,6 @@ interface Props {
   color?: string
   isMobile?: boolean
   showTooltips?: boolean
-  areHostedAdsEnabled?: boolean
   isSponsored?: boolean
 }
 
@@ -229,7 +228,7 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, areHostedAdsEnabled, isMobile, isSponsored } = this.props
+    const { article, isMobile, isSponsored } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let firstAdInjected = false
     let placementCount = 1
@@ -263,7 +262,7 @@ export class Sections extends Component<Props, State> {
         shouldInjectNewAds = true
       }
 
-      if (areHostedAdsEnabled && shouldInjectNewAds) {
+      if (shouldInjectNewAds) {
         const adDimension = isMobile
           ? isSponsored
             ? AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1

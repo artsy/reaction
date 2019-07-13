@@ -67,49 +67,40 @@ export class StandardLayout extends React.Component<
   }
 
   renderSideRailDisplayAd(isMobileAd: boolean) {
-    const { areHostedAdsEnabled, article } = this.props
+    const { article } = this.props
 
-    // @FIXME: When ads are live on production remove areHostedAdsEnabled check
-    if (areHostedAdsEnabled) {
-      return (
-        <DisplayAd
-          adUnit={
-            isMobileAd ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_RightRail1
-          }
-          adDimension={
-            isMobileAd
-              ? AdDimension.Mobile_InContentMR1
-              : AdDimension.Desktop_RightRail1
-          }
-          displayNewAds={areHostedAdsEnabled}
-          targetingData={targetingData(article.id, "article")}
-        />
-      )
-    }
-    return null
+    return (
+      <DisplayAd
+        adUnit={
+          isMobileAd ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_RightRail1
+        }
+        adDimension={
+          isMobileAd
+            ? AdDimension.Mobile_InContentMR1
+            : AdDimension.Desktop_RightRail1
+        }
+        targetingData={targetingData(article.id, "article")}
+      />
+    )
   }
 
   renderTopRailDisplayAd(isMobileAd: boolean) {
-    const { areHostedAdsEnabled, article } = this.props
+    const { article } = this.props
     const adDimension = isMobileAd
       ? AdDimension.Mobile_InContentMR1
       : AdDimension.Desktop_TopLeaderboard
 
     return (
-      // @FIXME: When ads are live on production remove areHostedAdsEnabled check
-      areHostedAdsEnabled && (
-        <DisplayAd
-          pt={is300x50AdUnit(adDimension) ? 2 : 4} // add 20px to mobile leaderboard ads until this component is converted to <DisplayAd />
-          adUnit={
-            isMobileAd
-              ? AdUnit.Mobile_InContentMR1
-              : AdUnit.Desktop_TopLeaderboard
-          }
-          adDimension={adDimension}
-          displayNewAds={areHostedAdsEnabled}
-          targetingData={targetingData(article.id, "article")}
-        />
-      )
+      <DisplayAd
+        pt={is300x50AdUnit(adDimension) ? 2 : 4}
+        adUnit={
+          isMobileAd
+            ? AdUnit.Mobile_InContentMR1
+            : AdUnit.Desktop_TopLeaderboard
+        }
+        adDimension={adDimension}
+        targetingData={targetingData(article.id, "article")}
+      />
     )
   }
 

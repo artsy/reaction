@@ -18,7 +18,6 @@ import styled from "styled-components"
 import Events from "Utils/Events"
 
 interface Props {
-  areHostedAdsEnabled?: boolean
   article: ArticleData
   seriesArticle?: ArticleData
   relatedArticles?: any
@@ -78,12 +77,7 @@ export class VideoLayout extends Component<Props, State> {
   }
 
   render() {
-    const {
-      areHostedAdsEnabled,
-      article,
-      isMobile,
-      relatedArticles,
-    } = this.props
+    const { article, isMobile, relatedArticles } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const isSponsored = isEditorialSponsored(sponsor)
@@ -126,22 +120,19 @@ export class VideoLayout extends Component<Props, State> {
             </Box>
           )}
         </Box>
-        {areHostedAdsEnabled && (
-          <DisplayAd
-            adUnit={
-              isMobile
-                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-            }
-            adDimension={adDimension}
-            displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(
-              article.id,
-              isSponsored ? "sponsorfeature" : "video"
-            )}
-            isSeries
-          />
-        )}
+        <DisplayAd
+          adUnit={
+            isMobile
+              ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+              : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          adDimension={adDimension}
+          targetingData={targetingData(
+            article.id,
+            isSponsored ? "sponsorfeature" : "video"
+          )}
+          isSeries
+        />
       </VideoLayoutContainer>
     )
   }
