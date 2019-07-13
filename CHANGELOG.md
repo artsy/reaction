@@ -1,3 +1,15 @@
+# v16.18.16 (Sat Jul 13 2019)
+
+#### 🐛  Bug Fix
+
+- Deprecate old ads on video articles [#2609](https://github.com/artsy/reaction/pull/2609) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.15 (Fri Jul 12 2019)
 
 #### 🐛  Bug Fix
