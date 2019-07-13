@@ -1,7 +1,7 @@
-import { data as sd } from "sharify"
-
 export const targetingData = (id: string, pageType: string) => {
-  const isTesting = JSON.parse(sd.HASHTAG_LAB_ADS_ENABLED || "true")
+  // TODO: Create a sharify field to pass true for staging and false for prod env to the isTesting bool
+  const isTesting = true
+
   return {
     is_testing: isTesting,
     page_type: pageType,

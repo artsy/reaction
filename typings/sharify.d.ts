@@ -20,15 +20,12 @@ declare module "sharify" {
       readonly APP_URL: string
       readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]
-      readonly CURRENT_USER?: User // FIXME: Remove after externally served ads are implemented
       readonly CMS_URL: string
       readonly FACEBOOK_APP_NAMESPACE: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly GENOME_URL: string
       readonly GOOGLE_ADWORDS_ID: string
-      readonly HASHTAG_LAB_ADS_ALLOWLIST: string // FIXME: Remove after externally served ads are implemented
-      readonly HASHTAG_LAB_ADS_ENABLED: string // FIXME: Remove after externally served ads are implemented
       readonly IMAGE_LAZY_LOADING: boolean
       readonly IS_MOBILE: boolean
       readonly METAPHYSICS_ENDPOINT: string
@@ -43,7 +40,6 @@ declare module "sharify" {
     }
 
     export interface ResponseLocalData extends GlobalData {
-      readonly CURRENT_USER?: User // FIXME: Remove after externally served ads are implemented
       RELAY_DATA?: any
       SUBMIT_URL?: string
       APP_TOKEN?: string
