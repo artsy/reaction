@@ -14,7 +14,6 @@ import {
 
 import { SystemContextProvider } from "Artsy"
 import {
-  Display,
   HeroSections,
   RelatedCanvas,
   RelatedPanel,
@@ -95,22 +94,6 @@ const story = storiesOf("Publishing/Articles/Standard", module)
     )
   })
 
-const displays = ["overlay", "image", "video", "slideshow"]
-displays.forEach(displayType => {
-  story.add(`With ${displayType} ad`, () => {
-    return (
-      <SystemContextProvider>
-        <Article
-          article={StandardArticle}
-          display={Display(displayType)}
-          relatedArticlesForPanel={RelatedPanel}
-          relatedArticlesForCanvas={RelatedCanvas}
-        />
-      </SystemContextProvider>
-    )
-  })
-})
-
 story.add(`Multiple articles`, () => {
   const article: ArticleData = {
     ...StandardArticle,
@@ -127,21 +110,18 @@ story.add(`Multiple articles`, () => {
       <div>
         <Article
           article={article}
-          display={Display("slideshow")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           showCollectionsRail
         />
         <Article
           article={article}
-          display={Display("video")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isTruncated
         />
         <Article
           article={article}
-          display={Display("image")}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
           isTruncated

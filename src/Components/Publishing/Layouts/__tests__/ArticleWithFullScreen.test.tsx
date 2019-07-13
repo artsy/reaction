@@ -3,7 +3,6 @@ import {
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import {
-  Display,
   RelatedCanvas,
   RelatedPanel,
 } from "Components/Publishing/Fixtures/Components"
@@ -53,7 +52,6 @@ it("renders articles in standard layout", () => {
   const article = mount(
     <ArticleWithFullScreen
       article={StandardArticle}
-      display={Display("standard")}
       relatedArticlesForCanvas={RelatedCanvas}
       relatedArticlesForPanel={RelatedPanel}
     />
@@ -67,7 +65,6 @@ it("renders articles in feature layout", () => {
   const article = mount(
     <ArticleWithFullScreen
       article={FeatureArticle}
-      display={Display("slideshow")}
       relatedArticlesForCanvas={RelatedCanvas}
       relatedArticlesForPanel={RelatedPanel}
     />

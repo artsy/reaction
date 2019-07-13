@@ -9,7 +9,6 @@ import {
   SuperArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import {
-  Display,
   HeroSections,
   RelatedCanvas,
 } from "Components/Publishing/Fixtures/Components"
@@ -23,7 +22,6 @@ storiesOf("Publishing/Articles/Feature/Fullscreen", module)
       <SystemContextProvider>
         <Article
           article={FeatureArticle}
-          display={Display("image")}
           relatedArticlesForCanvas={RelatedCanvas}
           showTooltips
         />
@@ -122,7 +120,6 @@ storiesOf("Publishing/Articles/Feature", module)
       <SystemContextProvider>
         <Article
           article={article}
-          display={Display("image")}
           relatedArticlesForCanvas={RelatedCanvas}
           isTruncated
           showTooltips

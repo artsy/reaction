@@ -4,10 +4,7 @@ import {
   SeriesArticle,
   SeriesArticleSponsored,
 } from "Components/Publishing/Fixtures/Articles"
-import {
-  Display,
-  RelatedCanvas,
-} from "Components/Publishing/Fixtures/Components"
+import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
@@ -61,7 +58,6 @@ it("Does not render RelatedArticlesCanvas if article is super and display is not
     <FeatureLayout
       article={FeatureArticle}
       relatedArticlesForCanvas={RelatedCanvas}
-      display={Display("feature")}
       isSuper
     />
   )
@@ -97,7 +93,6 @@ it("renders display ads when feature flagged ads are enabled", () => {
     <FeatureLayout
       article={FeatureArticle}
       relatedArticlesForCanvas={RelatedCanvas}
-      display={Display("feature")}
       areHostedAdsEnabled
     />
   )
@@ -109,11 +104,7 @@ it("does not render display ads when feature flagged ads are disabled", () => {
     seriesArticle: SeriesArticle,
   })
   const article = mount(
-    <FeatureLayout
-      article={Article}
-      relatedArticlesForCanvas={RelatedCanvas}
-      display={Display("feature")}
-    />
+    <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />
   )
   expect(article.find(DisplayAd).length).toBe(0)
 })
