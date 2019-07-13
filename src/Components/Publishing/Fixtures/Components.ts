@@ -1,13 +1,12 @@
 import {
   AdDimension,
   AdUnit,
-  DisplayUnitData,
   MediaData,
   RelatedArticleCanvasData,
   RelatedArticlePanelData,
   SectionData,
 } from "Components/Publishing/Typings"
-import { cloneDeep, extend, flatten } from "lodash"
+import { flatten } from "lodash"
 import { DisplayAdProps } from "../Display/DisplayAd"
 import { ImageSetPreviewProps } from "../Sections/ImageSetPreview"
 import { SocialEmbedProps } from "../Sections/SocialEmbed"

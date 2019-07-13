@@ -13,7 +13,7 @@ import { NewsLayout } from "./Layouts/NewsLayout"
 import { SeriesLayout } from "./Layouts/SeriesLayout"
 import { VideoLayout } from "./Layouts/VideoLayout"
 import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
-import { ArticleData, DisplayData } from "./Typings"
+import { ArticleData } from "./Typings"
 
 GPT.enableSingleRequest()
 
@@ -39,7 +39,6 @@ export interface ArticleProps {
   emailSignupUrl?: string
   headerHeight?: string
   marginTop?: string | null
-  display?: DisplayData
   showTooltips?: boolean
   showCollectionsRail?: boolean
   slideIndex?: number
