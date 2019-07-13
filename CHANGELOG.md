@@ -1,3 +1,15 @@
+# v16.18.17 (Sat Jul 13 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Old Display for Ad server cleanup [#2610](https://github.com/artsy/reaction/pull/2610) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.16 (Sat Jul 13 2019)
 
 #### 🐛  Bug Fix
