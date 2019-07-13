@@ -38,7 +38,6 @@ describe("Standard Article", () => {
       isTruncated: false,
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
-      areHostedAdsEnabled: false,
     }
   })
 
@@ -104,23 +103,13 @@ describe("Standard Article", () => {
     expect(article.state().isTruncated).toBeFalsy()
   })
 
-  it("It renders display ads in Standard Layout Articles when feature flagged ads are enabled", () => {
-    props.areHostedAdsEnabled = true
+  it("It renders display ads in Standard Layout", () => {
     const article = getWrapper(props)
 
     expect(article.find(DisplayAd).length).toBe(2)
   })
 
-  it("It does not render display ads in Standard Layout Articles when feature flagged ads are disabled", () => {
-    const article = getWrapper(props)
-
-    expect(article.find(DisplayAd).length).toBe(0)
-    expect(article.find(DisplayAd).length).toBe(0)
-  })
-
   it("renders the top and side rail display ad component with the correct data and properties on standard articles", () => {
-    props.areHostedAdsEnabled = true
-
     const article = getWrapper(props)
 
     expect(
@@ -154,7 +143,6 @@ describe("Standard Article", () => {
 
   it("renders the top and side rail display ad component with the correct data and properties on standard articles on mobile", () => {
     props.isMobile = true
-    props.areHostedAdsEnabled = true
 
     const article = getWrapper(props)
 

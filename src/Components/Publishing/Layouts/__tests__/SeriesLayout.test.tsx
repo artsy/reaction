@@ -20,7 +20,7 @@ function mountComponent() {
   return mount(<SeriesLayout {...props} />)
 }
 
-describe("when ads are not enabled", () => {
+describe("series layout", () => {
   beforeEach(() => {
     props = {
       article: SeriesArticle,
@@ -28,42 +28,35 @@ describe("when ads are not enabled", () => {
     }
   })
 
-  it("renders a series properly", () => {
+  it("renders a series", () => {
     const series = renderComponent().toJSON()
 
     expect(series).toMatchSnapshot()
   })
 
-  it("renders a sponsored series properly", () => {
+  it("renders a sponsored series", () => {
     props.article = SeriesArticleSponsored
 
     const series = renderComponent().toJSON()
 
     expect(series).toMatchSnapshot()
   })
-
-  it("does not render a DisplayAd", () => {
-    const component = mountComponent()
-
-    expect(component.find(DisplayAd).length).toBe(0)
-  })
 })
 
-describe("when ads are enabled", () => {
+describe("series layout with ads", () => {
   beforeEach(() => {
     props = {
-      areHostedAdsEnabled: true,
       article: SeriesArticleFixture,
       isSeries: true,
     }
   })
 
-  it("renders the series layout properly", () => {
+  it("renders the series layout with ads", () => {
     const layout = renderComponent().toJSON()
     expect(layout).toMatchSnapshot()
   })
 
-  it("renders a DisplayAd", () => {
+  it("renders a display ad", () => {
     const component = mountComponent()
 
     expect(component.find(DisplayAd).length).toBe(1)

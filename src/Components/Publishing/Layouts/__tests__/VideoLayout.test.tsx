@@ -97,7 +97,6 @@ describe("Video Layout ads", () => {
 
   beforeEach(() => {
     props = {
-      areHostedAdsEnabled: true,
       article: VideoArticleFixture,
       isSeries: true,
     }
@@ -105,7 +104,7 @@ describe("Video Layout ads", () => {
 
   it("renders the video layout properly with ads", () => {
     const layout = renderer
-      .create(<VideoLayout article={VideoArticleFixture} areHostedAdsEnabled />)
+      .create(<VideoLayout article={VideoArticleFixture} />)
       .toJSON()
     expect(layout).toMatchSnapshot()
   })

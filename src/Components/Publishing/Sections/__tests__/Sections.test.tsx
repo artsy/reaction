@@ -147,26 +147,16 @@ describe("Sections", () => {
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
 
-    it("it injects display ads if feature when ads are enabled", () => {
+    it("it injects display ads if feature", () => {
       props.article = FeatureArticle
       props.isMobile = false
-      props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
       expect(wrapper.find(DisplayAd).length).toBe(2)
-    })
-
-    it("it does not inject display ads if feature when ads are disabled", () => {
-      props.article = FeatureArticle
-      props.isMobile = false
-      props.areHostedAdsEnabled = false
-      const wrapper = mountWrapper(props)
-      expect(wrapper.find(DisplayAd).length).toBe(0)
     })
 
     it("it injects display ads with correct targeting data if not sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
-      props.areHostedAdsEnabled = true
       props.isSponsored = false
       const wrapper = mountWrapper(props)
 
@@ -185,7 +175,6 @@ describe("Sections", () => {
     it("it injects display ads with correct targeting data if sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
-      props.areHostedAdsEnabled = true
       props.isSponsored = true
       const wrapper = mountWrapper(props)
 
@@ -204,7 +193,6 @@ describe("Sections", () => {
     it("it injects display ads after correct sections if feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
-      props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
 
       const ads = wrapper.find(DisplayAd)
@@ -246,7 +234,6 @@ describe("Sections", () => {
     it("it injects display ads after correct sections if feature on mobile", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = true
-      props.areHostedAdsEnabled = true
       const wrapper = mountWrapper(props)
 
       const ads = wrapper.find(DisplayAd)
@@ -288,7 +275,6 @@ describe("Sections", () => {
     it("it injects display ads after correct sections if sponsored feature on mobile", () => {
       props.article = SponsoredFeatureArticle
       props.isMobile = true
-      props.areHostedAdsEnabled = true
       props.isSponsored = true
       const wrapper = mountWrapper(props)
 

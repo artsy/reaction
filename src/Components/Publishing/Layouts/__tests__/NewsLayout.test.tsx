@@ -123,7 +123,7 @@ describe("News Layout", () => {
   })
 })
 
-describe("News Layout with new ads enabled", () => {
+describe("News Layout with display ads", () => {
   let props
   const getWrapper = (passedProps = props) => {
     return mount(<NewsLayout {...passedProps} />)
@@ -132,16 +132,13 @@ describe("News Layout with new ads enabled", () => {
   beforeEach(() => {
     props = {
       shouldAdRender: true,
-      areHostedAdsEnabled: true,
       article: NewsArticle,
     }
   })
 
-  it("renders the news layout properly when new ads are enabled", () => {
+  it("renders the news layout properly with display ads", () => {
     const layout = renderer
-      .create(
-        <NewsLayout article={NewsArticle} shouldAdRender areHostedAdsEnabled />
-      )
+      .create(<NewsLayout article={NewsArticle} shouldAdRender />)
       .toJSON()
 
     expect(layout).toMatchSnapshot()
