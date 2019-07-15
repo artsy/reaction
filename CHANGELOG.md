@@ -1,3 +1,15 @@
+# v16.18.19 (Mon Jul 15 2019)
+
+#### 🐛  Bug Fix
+
+- [Trivial] Rename and export article card image container [#2613](https://github.com/artsy/reaction/pull/2613) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.18.18 (Mon Jul 15 2019)
 
 #### 🐛  Bug Fix
