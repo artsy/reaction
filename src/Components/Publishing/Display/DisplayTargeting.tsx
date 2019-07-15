@@ -1,6 +1,7 @@
+import { data as sd } from "sharify"
+
 export const targetingData = (id: string, pageType: string) => {
-  // TODO: Create a sharify field to pass true for staging and false for prod env to the isTesting bool
-  const isTesting = true
+  const isTesting = sd.AD_TESTING
 
   return {
     is_testing: isTesting,

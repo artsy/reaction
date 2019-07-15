@@ -28,6 +28,7 @@ declare module "sharify" {
       readonly GOOGLE_ADWORDS_ID: string
       readonly IMAGE_LAZY_LOADING: boolean
       readonly IS_MOBILE: boolean
+      readonly AD_TESTING: boolean
       readonly METAPHYSICS_ENDPOINT: string
       readonly NODE_ENV: string
       readonly NOTIFICATION_COUNT: string
