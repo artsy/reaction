@@ -177,7 +177,7 @@ export class ArticleCard extends Component<Props> {
             {this.renderDate()}
           </Flex>
 
-          <ImageContainer
+          <ArticleCardImageContainer
             width={["100%", "100%", "50%", "50%"]}
             ml={[0, 0, 30, 30]}
             mb={[10, 10, 0, 0]}
@@ -190,7 +190,7 @@ export class ArticleCard extends Component<Props> {
               />
             )}
             {article.media && layout === "video" && this.renderMediaCoverInfo()}
-          </ImageContainer>
+          </ArticleCardImageContainer>
         </Flex>
       </ArticleCardContainer>
     )
@@ -210,7 +210,7 @@ const Image = styled.img`
   display: block;
 `
 
-const ImageContainer = styled(Box)`
+export const ArticleCardImageContainer = styled(Box)`
   position: relative;
   height: inherit;
   background: white;
