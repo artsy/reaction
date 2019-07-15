@@ -1,3 +1,15 @@
+# v16.18.18 (Mon Jul 15 2019)
+
+#### 🐛  Bug Fix
+
+- Sync metaphysics schema [#2612](https://github.com/artsy/reaction/pull/2612) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.18.17 (Sat Jul 13 2019)
 
 #### 🐛  Bug Fix
