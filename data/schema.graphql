@@ -63,6 +63,68 @@ type AnalyticsArtworksPublishedStats {
 # An ISO 8601 datetime
 scalar AnalyticsDateTime
 
+# Visitor countries, device, referals and session page
+type AnalyticsGroupedStats {
+  groupedEntity: AnalyticsGroupedStatsUnion!
+  period: AnalyticsQueryPeriodEnum!
+}
+
+# The connection type for GroupedStats.
+type AnalyticsGroupedStatsConnection {
+  # A list of edges.
+  edges: [AnalyticsGroupedStatsEdge]
+
+  # A list of nodes.
+  nodes: [AnalyticsGroupedStats]
+
+  # Information to aid in pagination.
+  pageInfo: AnalyticsPageInfo!
+}
+
+# An edge in a connection.
+type AnalyticsGroupedStatsEdge {
+  # A cursor for use in pagination.
+  cursor: String!
+
+  # The item at the end of the edge.
+  node: AnalyticsGroupedStats
+}
+
+enum AnalyticsGroupedStatsMetricEnum {
+  # visitor_by_device
+  VISITOR_BY_DEVICE
+
+  # visitor_by_landing_page
+  VISITOR_BY_LANDING_PAGE
+
+  # visitor_by_location
+  VISITOR_BY_LOCATION
+
+  # visitor_by_referral
+  VISITOR_BY_REFERRAL
+}
+
+enum AnalyticsGroupedStatsObjectTypeEnum {
+  # country
+  COUNTRY
+
+  # device type
+  DEVICE
+
+  # landing page
+  LANDING_PAGE
+
+  # referral
+  REFERRAL
+}
+
+# A grouped stat item: country or device etc.
+union AnalyticsGroupedStatsUnion =
+    AnalyticsVisitorsByCountry
+  | AnalyticsVisitorsByDevice
+  | AnalyticsVisitorsByLandingPage
+  | AnalyticsVisitorsByReferral
+
 # A histogram bin
 type AnalyticsHistogramBin {
   maxPriceCents: Int!
@@ -113,6 +175,7 @@ type AnalyticsPageviewStats {
 
 # Audience stats of a partner
 type AnalyticsPartnerAudienceStats {
+  commercialVisitors: Int!
   partnerId: String!
   period: AnalyticsQueryPeriodEnum!
   uniqueVisitors: Int!
@@ -183,6 +246,24 @@ type AnalyticsPartnerStats {
 
   # Audience stats
   audience(period: AnalyticsQueryPeriodEnum!): AnalyticsPartnerAudienceStats
+
+  # Visitor countries, device, referals and session page
+  groupedStats(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+    metric: AnalyticsGroupedStatsMetricEnum!
+    objectType: AnalyticsGroupedStatsObjectTypeEnum!
+    period: AnalyticsQueryPeriodEnum!
+  ): AnalyticsGroupedStatsConnection
 
   # Inquiry stats
   inquiry(period: AnalyticsQueryPeriodEnum!): AnalyticsPartnerInquiryStats
@@ -385,6 +466,38 @@ type AnalyticsShow {
   entityId: String!
 }
 
+type AnalyticsVisitorsByCountry {
+  metric: String!
+  name: String!
+  percent: Float!
+  type: String!
+  value: Int!
+}
+
+type AnalyticsVisitorsByDevice {
+  metric: String!
+  name: String!
+  percent: Float!
+  type: String!
+  value: Int!
+}
+
+type AnalyticsVisitorsByLandingPage {
+  metric: String!
+  name: String!
+  percent: Float!
+  type: String!
+  value: Int!
+}
+
+type AnalyticsVisitorsByReferral {
+  metric: String!
+  name: String!
+  percent: Float!
+  type: String!
+  value: Int!
+}
+
 input ApproveOrderInput {
   # Order ID
   orderId: String!
@@ -460,10 +573,10 @@ type Artist implements Node & Searchable {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   alternate_names: [String]
@@ -805,10 +918,10 @@ type ArtistItem implements Node & Searchable {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   alternate_names: [String]
@@ -1123,10 +1236,10 @@ type Artwork implements Node & Searchable & Sellable {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   additional_information(format: Format): String
@@ -1276,6 +1389,12 @@ type Artwork implements Node & Searchable & Sellable {
     at_a_fair: Boolean
     sort: PartnerShowSorts
   ): PartnerShow
+  v2_shows(
+    size: Int
+    active: Boolean
+    at_a_fair: Boolean
+    sort: ShowSort
+  ): [Show]
   shows(
     size: Int
     active: Boolean
@@ -1345,10 +1464,10 @@ type ArtworkContextAuction implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks(
@@ -1407,8 +1526,12 @@ type ArtworkContextAuction implements Node {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A formatted description of when the auction starts or ends or if it has ended
+  formattedStartDateTime: String
   href: String
   name: String
+  initials(length: Int = 3): String
   is_auction: Boolean
   is_benefit: Boolean
     @deprecated(reason: "Prefer to use `isBenefit`. [Will be removed in v2]")
@@ -1476,10 +1599,10 @@ type ArtworkContextFair {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   about: String
   followed_content: FollowedContent
@@ -1617,13 +1740,13 @@ type ArtworkContextPartnerShow implements Node {
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
     )
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
     @deprecated(
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
     )
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
     @deprecated(
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
@@ -1814,10 +1937,10 @@ type ArtworkContextSale implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks(
@@ -1876,8 +1999,12 @@ type ArtworkContextSale implements Node {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A formatted description of when the auction starts or ends or if it has ended
+  formattedStartDateTime: String
   href: String
   name: String
+  initials(length: Int = 3): String
   is_auction: Boolean
   is_benefit: Boolean
     @deprecated(reason: "Prefer to use `isBenefit`. [Will be removed in v2]")
@@ -1956,10 +2083,10 @@ type ArtworkFilterGene implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   description: String
@@ -2017,10 +2144,10 @@ type ArtworkFilterTag implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   description: String
@@ -2087,11 +2214,8 @@ type ArtworkInquiry {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
   artwork: Artwork!
   impulse_conversation_id: String
 }
@@ -2118,10 +2242,10 @@ type ArtworkItem implements Node & Searchable & Sellable {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   additional_information(format: Format): String
@@ -2271,6 +2395,12 @@ type ArtworkItem implements Node & Searchable & Sellable {
     at_a_fair: Boolean
     sort: PartnerShowSorts
   ): PartnerShow
+  v2_shows(
+    size: Int
+    active: Boolean
+    at_a_fair: Boolean
+    sort: ShowSort
+  ): [Show]
   shows(
     size: Int
     active: Boolean
@@ -2400,11 +2530,8 @@ type ArtworkVersion {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
 
   # Artwork title
   title: String
@@ -2424,6 +2551,9 @@ type ArtworkVersion {
 
 # An asset which is assigned to a consignment submission
 type Asset {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -2439,6 +2569,9 @@ type Asset {
 
 # Fields of an attachment (currently from Radiation)
 type Attachment {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -2455,11 +2588,8 @@ type AttributionClass {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
 
   # Shortest form of attribution class display
   name: String
@@ -2508,7 +2638,7 @@ type AuctionResult implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   title: String
   artist_id: String!
@@ -2597,7 +2727,7 @@ type Bidder {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   created_at(
     # This arg is deprecated, use timezone instead
@@ -2616,7 +2746,7 @@ type BidderPosition {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   created_at(
     # This arg is deprecated, use timezone instead
@@ -2778,10 +2908,10 @@ type BuyersPremium {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
 
   # A formatted price with various currency formatting options.
@@ -2799,6 +2929,9 @@ type BuyersPremium {
 }
 
 type BuyOrder implements Order {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -3020,10 +3153,10 @@ type Category {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   category_type: String
   internal: Boolean
@@ -3090,10 +3223,10 @@ type Collection implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks_connection(
@@ -3120,7 +3253,7 @@ type CollectorProfileType {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   email: String
   name: String
@@ -4519,6 +4652,9 @@ type ConversationEdge {
 
 # The participant who started the conversation, currently always a User
 type ConversationInitiator {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -4539,6 +4675,9 @@ union ConversationItemType = Artwork | Show
 
 # The participant responding to the conversation, currently always a Partner
 type ConversationResponder {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -4707,11 +4846,8 @@ type CreditCard {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
 
   # Brand of credit card
   brand: String!
@@ -4855,6 +4991,9 @@ type DeleteCreditCardPayload {
 
 # Fields of a delivery (currently from Radiation)
 type Delivery {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -4899,21 +5038,17 @@ type dimensions {
   cm: String
 }
 
-# Partner
 type DoNotUseThisPartner {
-  # Partners display name
-  display_name: String
-
-  # Partners given name
-  given_name: String
-
-  # Uniq ID for this partner
+  displayName: String
+  display_name: String @deprecated(reason: "Use displayName")
+  givenName: String
+  given_name: String @deprecated(reason: "Use givenName")
   id: ID!
-  relative_size: Int
-
-  # Uniq, friendly identifier for this artist
-  slug: String!
-  subscription_state: String
+  relativeSize: Int
+  relative_size: Int @deprecated(reason: "Use relativeSize")
+  slug: String
+  subscriptionState: String
+  subscription_state: String @deprecated(reason: "Use subscriptionState")
 }
 
 type EcommerceError {
@@ -4957,7 +5092,7 @@ type EditionSet implements Sellable {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   dimensions: dimensions
   edition_of: String
@@ -5040,10 +5175,10 @@ type Fair {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   about: String
   followed_content: FollowedContent
@@ -5223,14 +5358,8 @@ type FairEdge {
 }
 
 type FairExhibitor {
-  # A globally unique ID.
-  __id: ID!
-
-  # An optional type-specific ID.
-  id: ID
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
+  # A slug ID.
+  id: ID!
 
   # Exhibitor name
   name: String
@@ -5265,7 +5394,10 @@ type FairSponsoredContent {
 }
 
 type FeaturedLinkItem {
-  # A type-specific ID.
+  # A globally unique ID.
+  __id: ID!
+
+  # A type-specific ID likely used as a database ID.
   id: String
   href: String
   image: Image
@@ -5278,7 +5410,7 @@ type Feedback {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
 
   # Feedback message
@@ -5376,7 +5508,7 @@ type FollowArtist {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
 }
 
@@ -5521,7 +5653,7 @@ type FollowGene {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
 }
 
@@ -5665,10 +5797,10 @@ type Gene implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artists: [Artist]
@@ -5833,10 +5965,10 @@ type GeneFamily {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   name: String!
   genes: [Gene]
@@ -5864,10 +5996,10 @@ type GeneItem implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artists: [Artist]
@@ -5999,7 +6131,7 @@ type HighestBid {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   created_at(
     # This arg is deprecated, use timezone instead
@@ -6071,10 +6203,10 @@ type HighlightedShow implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
 
@@ -6407,10 +6539,10 @@ type HomePageHeroUnit {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   mode: HomePageHeroUnitMode
@@ -6459,10 +6591,10 @@ type HomePageModuleContextFair {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   about: String
   followed_content: FollowedContent
@@ -6606,10 +6738,10 @@ type HomePageModuleContextGene implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artists: [Artist]
@@ -6739,10 +6871,10 @@ type HomePageModuleContextSale implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks(
@@ -6801,8 +6933,12 @@ type HomePageModuleContextSale implements Node {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A formatted description of when the auction starts or ends or if it has ended
+  formattedStartDateTime: String
   href: String
   name: String
+  initials(length: Int = 3): String
   is_auction: Boolean
   is_benefit: Boolean
     @deprecated(reason: "Prefer to use `isBenefit`. [Will be removed in v2]")
@@ -6926,7 +7062,7 @@ type Invoice implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
 
   # Lewitt's invoice id.
@@ -7030,6 +7166,9 @@ type MarketingCollection {
   # Background image for the header of the collection page
   headerImage: String
 
+  # URL for Thumbnail image to be used when this collection is displayed.
+  thumbnail: String
+
   # Set of keywords used for SEO purposes
   keywords: String!
 
@@ -7052,6 +7191,9 @@ type MarketingCollection {
 
   # Collection has prioritized connection to artist
   is_featured_artist_content: Boolean!
+
+  # CollectionGroups of this collection
+  linkedCollections: [MarketingCollectionGroup!]!
   relatedCollections: [MarketingCollection!]!
   artworks(
     acquireable: Boolean
@@ -7096,6 +7238,13 @@ type MarketingCollectionCategory {
   collections: [MarketingCollection!]!
 }
 
+type MarketingCollectionGroup {
+  id: ID!
+  groupType: MarketingGroupTypes!
+  name: String!
+  members: [String!]!
+}
+
 type MarketingCollectionQuery {
   id: ID
   acquireable: Boolean
@@ -7130,6 +7279,13 @@ type MarketingCollectionQuery {
 }
 
 scalar MarketingDateTime
+
+# Available types of CollectionGroup
+enum MarketingGroupTypes {
+  ArtistSeries
+  FeaturedCollections
+  OtherCollections
+}
 
 type Me implements Node {
   # A globally unique ID.
@@ -7601,7 +7757,7 @@ type Mutation {
 
   # Submits an order
   submitOrder(input: SubmitOrderInput!): SubmitOrderPayload
-  recordArtworkView(input: RecordArtworkViewInput): RecordArtworkViewPayload
+  recordArtworkView(input: RecordArtworkViewInput!): RecordArtworkViewPayload
   commerceAddInitialOfferToOrder(
     input: CommerceAddInitialOfferToOrderInput!
   ): CommerceAddInitialOfferToOrderPayload
@@ -7717,6 +7873,9 @@ enum NotificationsFeedItemStatus {
 }
 
 type Offer {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
   createdAt(
@@ -7833,6 +7992,9 @@ type OfferEdge {
 }
 
 type OfferOrder implements Order {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -8062,6 +8224,9 @@ type OpeningHoursText {
 union OpeningHoursUnion = OpeningHoursArray | OpeningHoursText
 
 interface Order {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -8304,6 +8469,9 @@ type OrderedSet {
 }
 
 type OrderFulfillment {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -8346,6 +8514,9 @@ enum OrderFulfillmentType {
 }
 
 type OrderLineItem {
+  # A globally unique ID.
+  __id: ID!
+
   # A type-specific ID likely used as a database ID.
   id: ID!
 
@@ -8481,6 +8652,14 @@ type OrderWithMutationSuccess {
 }
 
 type organizer {
+  # A globally unique ID.
+  __id: ID!
+
+  # A slug ID.
+  id: ID!
+
+  # A type-specific ID likely used as a database ID.
+  _id: ID!
   profile_id: ID
   profile: Profile
   website: String
@@ -8506,6 +8685,9 @@ type PageCursors {
 
 # Information about pagination in a connection.
 type PageInfo {
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+
   # When paginating forwards, are there more items?
   hasNextPage: Boolean!
 
@@ -8514,19 +8696,16 @@ type PageInfo {
 
   # When paginating backwards, the cursor to continue.
   startCursor: String
-
-  # When paginating forwards, the cursor to continue.
-  endCursor: String
 }
 
 type Partner implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks(
@@ -8655,8 +8834,11 @@ type PartnerCategory {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
+
+  # A type-specific ID likely used as a database ID.
+  _id: ID!
   cached: Int
   category_type: CategoryType
   name: String
@@ -8781,13 +8963,13 @@ type PartnerShow implements Node {
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
     )
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
     @deprecated(
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
     )
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
     @deprecated(
       reason: "The `PartnerShow` type is deprecated in favor of the `Show` type. [Will be removed in v2]"
@@ -9100,10 +9282,10 @@ type Profile {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   bio: String
@@ -9669,15 +9851,23 @@ type Query {
   viewer: Viewer
 
   # Autocomplete resolvers.
-  _unused_gravity_match_partners(
-    term: String
+  _unused_gravity_matchPartners(
+    matchType: String
     page: Int = 1
     size: Int = 5
-    match_type: String
-  ): [DoNotUseThisPartner]
+    term: String!
+  ): [DoNotUseThisPartner!]
 
-  # Find partners by ID
-  _unused_gravity_partners(ids: [ID]!): [DoNotUseThisPartner]
+  # Autocomplete resolvers.
+  _unused_gravity_match_partners(
+    match_type: String
+    page: Int = 1
+    size: Int = 5
+    term: String!
+  ): [DoNotUseThisPartner!] @deprecated(reason: "Use matchPartners")
+
+  # Find partners by IDs
+  _unused_gravity_partners(ids: [ID!]!): [DoNotUseThisPartner!]
 
   # Find list of competing orders
   commerceCompetingOrders(
@@ -9752,14 +9942,19 @@ type Query {
 
 # Autogenerated input type of RecordArtworkView
 input RecordArtworkViewInput {
+  artwork_id: String!
+
   # A unique identifier for the client performing the mutation.
   clientMutationId: String
-  artwork_id: String!
 }
 
 # Autogenerated return type of RecordArtworkView
 type RecordArtworkViewPayload {
-  artwork_id: String!
+  # Id of viewed artwork
+  artworkId: String!
+
+  # Id of viewed artwork
+  artwork_id: String! @deprecated(reason: "Use artworkId")
 
   # A unique identifier for the client performing the mutation.
   clientMutationId: String
@@ -9837,10 +10032,10 @@ type Sale implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artworks(
@@ -9899,8 +10094,12 @@ type Sale implements Node {
     # A tz database time zone, otherwise falls back to `X-TIMEZONE` header
     timezone: String
   ): String
+
+  # A formatted description of when the auction starts or ends or if it has ended
+  formattedStartDateTime: String
   href: String
   name: String
+  initials(length: Int = 3): String
   is_auction: Boolean
   is_benefit: Boolean
     @deprecated(reason: "Prefer to use `isBenefit`. [Will be removed in v2]")
@@ -9968,10 +10167,10 @@ type SaleArtwork {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   artwork: Artwork
@@ -10301,12 +10500,13 @@ type SearchableEdge {
 }
 
 type SearchableItem implements Node & Searchable {
+  # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   description: String
   displayLabel: String
@@ -10550,10 +10750,10 @@ type Show implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
 
@@ -10951,10 +11151,10 @@ type Tag implements Node {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A slug ID.
   id: ID!
 
-  # A type-specific Gravity Mongo Document ID.
+  # A type-specific ID likely used as a database ID.
   _id: ID!
   cached: Int
   description: String
@@ -11046,7 +11246,7 @@ type UpdateCollectorProfilePayload {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
   email: String
   name: String
@@ -11206,11 +11406,8 @@ type User {
   # A globally unique ID.
   __id: ID!
 
-  # A type-specific ID.
+  # A type-specific ID likely used as a database ID.
   id: ID!
-
-  # A type-specific Gravity Mongo Document ID.
-  _id: ID!
   cached: Int
 
   # The given name of the user.
