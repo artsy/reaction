@@ -1,7 +1,7 @@
 import { data as sd } from "sharify"
 
 export const targetingData = (id: string, pageType: string) => {
-  const isTesting = sd.AD_TESTING
+  const isTesting = sd.DEPLOY_ENV === "production" ? false : true
 
   return {
     is_testing: isTesting,
