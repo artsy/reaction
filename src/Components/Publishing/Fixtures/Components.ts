@@ -192,7 +192,6 @@ export const Authors = [
 export const StandardArticleHostedAdPanel: DisplayAdProps = {
   adUnit: "Desktop_RightRail1" as AdUnit,
   adDimension: "300x250" as AdDimension,
-  displayNewAds: true,
   targetingData: {
     is_testing: true,
     page_type: "article",
@@ -203,7 +202,6 @@ export const StandardArticleHostedAdPanel: DisplayAdProps = {
 export const StandardArticleHostedAdCanvas: DisplayAdProps = {
   adUnit: "Desktop_TopLeaderboard" as AdUnit,
   adDimension: "970x250" as AdDimension,
-  displayNewAds: true,
   targetingData: {
     is_testing: true,
     page_type: "article",

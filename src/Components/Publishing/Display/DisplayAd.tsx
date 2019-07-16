@@ -8,7 +8,6 @@ import styled from "styled-components"
 export interface DisplayAdProps extends FlexProps {
   adUnit: AdUnit
   adDimension: AdDimension
-  displayNewAds?: boolean
   targetingData: {
     is_testing: boolean
     page_type: string
@@ -28,13 +27,7 @@ export interface DisplayAdContainerProps extends FlexProps {
 GPT.syncCorrelator(true)
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
-  const {
-    adDimension,
-    adUnit,
-    displayNewAds,
-    targetingData,
-    ...otherProps
-  } = props
+  const { adDimension, adUnit, targetingData, ...otherProps } = props
 
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(null)
@@ -52,7 +45,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
     />
   )
 
-  if (!displayNewAds || isAdEmpty) {
+  if (isAdEmpty) {
     return null
   }
 

@@ -279,7 +279,6 @@ export class Sections extends Component<Props, State> {
             <DisplayAd
               adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
               adDimension={adDimension}
-              displayNewAds
               targetingData={targetingData(
                 article.id,
                 isSponsored ? "sponsorfeature" : "feature"

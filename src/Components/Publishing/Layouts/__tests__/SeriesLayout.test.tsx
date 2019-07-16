@@ -5,7 +5,6 @@ import {
   StandardArticle,
   VideoArticle,
 } from "Components/Publishing/Fixtures/Articles"
-import { SeriesArticle as SeriesArticleFixture } from "Components/Publishing/Fixtures/Articles"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -25,38 +24,25 @@ describe("series layout", () => {
     props = {
       article: SeriesArticle,
       relatedArticles: [VideoArticle, StandardArticle],
+      isSeries: true,
     }
   })
 
   it("renders a series", () => {
-    const series = renderComponent().toJSON()
+    const seriesLayout = renderComponent().toJSON()
 
-    expect(series).toMatchSnapshot()
+    expect(seriesLayout).toMatchSnapshot()
   })
 
   it("renders a sponsored series", () => {
     props.article = SeriesArticleSponsored
 
-    const series = renderComponent().toJSON()
+    const sponsoredSeries = renderComponent().toJSON()
 
-    expect(series).toMatchSnapshot()
-  })
-})
-
-describe("series layout with ads", () => {
-  beforeEach(() => {
-    props = {
-      article: SeriesArticleFixture,
-      isSeries: true,
-    }
+    expect(sponsoredSeries).toMatchSnapshot()
   })
 
-  it("renders the series layout with ads", () => {
-    const layout = renderComponent().toJSON()
-    expect(layout).toMatchSnapshot()
-  })
-
-  it("renders a display ad", () => {
+  it("renders a display ad when series", () => {
     const component = mountComponent()
 
     expect(component.find(DisplayAd).length).toBe(1)

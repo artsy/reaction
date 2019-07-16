@@ -3,10 +3,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
-import {
-  is300x50AdUnit,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -92,7 +89,6 @@ export class StandardLayout extends React.Component<
 
     return (
       <DisplayAd
-        pt={is300x50AdUnit(adDimension) ? 2 : 4}
         adUnit={
           isMobileAd
             ? AdUnit.Mobile_InContentMR1
