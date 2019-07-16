@@ -24,6 +24,7 @@ interface Props {
   isMobile?: boolean
   showTooltips?: boolean
   isSponsored?: boolean
+  isSuper?: boolean
 }
 
 interface State {
@@ -228,7 +229,7 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, isMobile, isSponsored } = this.props
+    const { article, isMobile, isSponsored, isSuper } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let firstAdInjected = false
     let placementCount = 1
@@ -252,7 +253,8 @@ export class Sections extends Component<Props, State> {
         article.layout === "feature" &&
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set") &&
-        !firstAdInjected
+        !firstAdInjected &&
+        !isSuper
 
       if (firstAdInjected) {
         placementCount++
