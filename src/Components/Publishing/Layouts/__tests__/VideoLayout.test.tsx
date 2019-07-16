@@ -128,7 +128,6 @@ describe("display ad data on video series", () => {
         adUnit={
           AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
         }
-        displayNewAds
         isSeries
         targetingData={targetingData(
           VideoArticleSponsored.id,
@@ -155,7 +154,6 @@ describe("display ad data on video series", () => {
         adUnit={
           AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
         }
-        displayNewAds
         isSeries
         targetingData={targetingData(
           VideoArticleFixture.id,
@@ -182,7 +180,6 @@ describe("display ad data on video series", () => {
         adUnit={
           AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
         }
-        displayNewAds
         isSeries
         targetingData={targetingData(
           VideoArticleFixture.id,
@@ -193,7 +190,6 @@ describe("display ad data on video series", () => {
 
     expect(canvas.props().adDimension).toEqual("970x250")
     expect(canvas.props().adUnit).toEqual("Desktop_InContentLB2")
-    expect(canvas.props().displayNewAds).toBe(true)
 
     expect(canvas).toHaveLength(1)
   })
@@ -205,7 +201,6 @@ describe("display ad data on video series", () => {
           AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
         }
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
-        displayNewAds
         isSeries
         targetingData={targetingData(VideoArticleFixture.id, "sponsorlanding")}
       />
@@ -213,7 +208,6 @@ describe("display ad data on video series", () => {
 
     expect(canvas.props().adDimension).toEqual("300x250")
     expect(canvas.props().adUnit).toEqual("Mobile_InContentLB2")
-    expect(canvas.props().displayNewAds).toBe(true)
     expect(canvas).toHaveLength(1)
   })
 })

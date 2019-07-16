@@ -17,7 +17,6 @@ it("renders the new canvas in standard layout", () => {
       <DisplayAd
         adDimension={AdData.adDimension}
         adUnit={AdData.adUnit}
-        displayNewAds
         targetingData={targetingData(StandardArticle.id, "article")}
       />
     )
@@ -30,7 +29,6 @@ it("renders the component with the correct data and properties in standard layou
     <DisplayAd
       adDimension={AdData.adDimension}
       adUnit={AdData.adUnit}
-      displayNewAds
       targetingData={targetingData(StandardArticle.id, "article")}
     />
   )
@@ -38,7 +36,6 @@ it("renders the component with the correct data and properties in standard layou
   const adProps: DisplayAdProps = ad.props()
   expect(adProps.adDimension).toEqual("970x250")
   expect(adProps.adUnit).toEqual("Desktop_TopLeaderboard")
-  expect(adProps.displayNewAds).toBe(true)
   expect(ad).toHaveLength(1)
 })
 
@@ -48,7 +45,6 @@ it("renders GPT with the correct properties in standard layout articles", () => 
       adDimension={AdData.adDimension}
       adUnit={AdData.adUnit}
       targetingData={targetingData(StandardArticle.id, "article")}
-      displayNewAds
     />
   )
 
