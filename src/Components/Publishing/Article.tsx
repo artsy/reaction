@@ -19,7 +19,6 @@ GPT.enableSingleRequest()
 
 export interface ArticleProps {
   articleSerial?: number
-  areHostedAdsEnabled?: boolean
   article: ArticleData
   backgroundColor?: string
   color?: string

@@ -22,16 +22,6 @@ jest.mock(
   })
 )
 
-jest.mock("sharify", () => ({
-  data: {
-    HASHTAG_LAB_ADS_ALLOWLIST: "alloweduser@email.com,alloweduser2@email.com",
-    CURRENT_USER: {
-      type: "Non-Admin",
-      email: "someuser@email.com",
-    },
-  },
-}))
-
 it("renders RelatedArticlesCanvas if article is not super or in a series", () => {
   const article = mount(
     <FeatureLayout
@@ -43,17 +33,6 @@ it("renders RelatedArticlesCanvas if article is not super or in a series", () =>
 })
 
 it("Does not render RelatedArticlesCanvas if article is super", () => {
-  const article = mount(
-    <FeatureLayout
-      article={FeatureArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      isSuper
-    />
-  )
-  expect(article.find(RelatedArticlesCanvas).length).toBe(0)
-})
-
-it("Does not render RelatedArticlesCanvas if article is super and display is not undefined", () => {
   const article = mount(
     <FeatureLayout
       article={FeatureArticle}
@@ -88,25 +67,14 @@ it("renders a nav if article is in a series", () => {
   expect(article.find(Nav).length).toBe(1)
 })
 
-it("renders display ads when feature flagged ads are enabled", () => {
+it("renders display ads when feature ", () => {
   const article = mount(
     <FeatureLayout
       article={FeatureArticle}
       relatedArticlesForCanvas={RelatedCanvas}
-      areHostedAdsEnabled
     />
   )
   expect(article.find(DisplayAd).length).toBe(2)
-})
-
-it("does not render display ads when feature flagged ads are disabled", () => {
-  const Article = extend(cloneDeep(FeatureArticle), {
-    seriesArticle: SeriesArticle,
-  })
-  const article = mount(
-    <FeatureLayout article={Article} relatedArticlesForCanvas={RelatedCanvas} />
-  )
-  expect(article.find(DisplayAd).length).toBe(0)
 })
 
 it("does not render a nav if article has a non-fullscreen header", () => {

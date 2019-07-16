@@ -15,7 +15,6 @@ import styled from "styled-components"
 import { DisplayAd } from "../Display/DisplayAd"
 
 interface Props {
-  areHostedAdsEnabled?: boolean
   article?: ArticleData
   backgroundColor?: string
   color?: string
@@ -27,13 +26,7 @@ export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render() {
-    const {
-      article,
-      backgroundColor,
-      relatedArticles,
-      isMobile,
-      areHostedAdsEnabled,
-    } = this.props
+    const { article, backgroundColor, relatedArticles, isMobile } = this.props
 
     const { hero_section, sponsor } = article
     const isSponsored = isEditorialSponsored(sponsor)
@@ -69,22 +62,19 @@ export class SeriesLayout extends Component<Props, null> {
             <SeriesAbout article={article} color={this.props.color} />
           </Box>
         </SeriesContent>
-        {areHostedAdsEnabled && (
-          <DisplayAd
-            adUnit={
-              isMobile
-                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-            }
-            adDimension={adDimension}
-            displayNewAds={areHostedAdsEnabled}
-            targetingData={targetingData(
-              article.id,
-              isSponsored ? "sponsorlanding" : "standardseries"
-            )}
-            isSeries
-          />
-        )}
+        <DisplayAd
+          adUnit={
+            isMobile
+              ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+              : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          adDimension={adDimension}
+          targetingData={targetingData(
+            article.id,
+            isSponsored ? "sponsorlanding" : "standardseries"
+          )}
+          isSeries
+        />
       </SeriesContainer>
     )
   }

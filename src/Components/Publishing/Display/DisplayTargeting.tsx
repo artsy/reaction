@@ -1,7 +1,8 @@
 import { data as sd } from "sharify"
 
 export const targetingData = (id: string, pageType: string) => {
-  const isTesting = JSON.parse(sd.HASHTAG_LAB_ADS_ENABLED || "true")
+  const isTesting = sd.DEPLOY_ENV === "production" ? false : true
+
   return {
     is_testing: isTesting,
     page_type: pageType,

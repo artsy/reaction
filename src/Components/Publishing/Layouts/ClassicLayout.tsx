@@ -7,7 +7,6 @@ import { ArticleData } from "../Typings"
 export interface ArticleProps {
   article: ArticleData
   isMobile?: boolean
-  areHostedAdsEnabled?: boolean
 }
 
 export const ClassicLayout: React.SFC<ArticleProps> = props => {

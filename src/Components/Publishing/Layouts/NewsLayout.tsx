@@ -18,7 +18,6 @@ import {
 import { CanvasFooter, CanvasFooterContainer } from "./Components/CanvasFooter"
 
 interface Props {
-  areHostedAdsEnabled?: boolean
   article: ArticleData
   articleSerial?: number
   isMobile?: boolean
@@ -106,7 +105,6 @@ export class NewsLayout extends Component<Props, State> {
   renderFooterContent() {
     const {
       isMobile,
-      areHostedAdsEnabled,
       article,
       relatedArticlesForCanvas,
       showCollectionsRail,
@@ -117,36 +115,23 @@ export class NewsLayout extends Component<Props, State> {
       ? AdDimension.Mobile_NewsLanding_InContent1
       : AdDimension.Desktop_NewsLanding_Leaderboard1
 
-    if (areHostedAdsEnabled) {
-      return (
-        <>
-          {shouldAdRender && (
-            <DisplayAd
-              adUnit={adUnit}
-              adDimension={adDimension}
-              displayNewAds={areHostedAdsEnabled}
-              targetingData={targetingData(article.id, "newslanding")}
-            />
-          )}
-          {relatedArticlesForCanvas && (
-            <CanvasFooter
-              article={article}
-              relatedArticles={relatedArticlesForCanvas}
-              showCollectionsRail={showCollectionsRail}
-            />
-          )}
-        </>
-      )
-    }
-
     return (
-      relatedArticlesForCanvas && (
-        <CanvasFooter
-          article={article}
-          relatedArticles={relatedArticlesForCanvas}
-          showCollectionsRail={showCollectionsRail}
-        />
-      )
+      <>
+        {shouldAdRender && (
+          <DisplayAd
+            adUnit={adUnit}
+            adDimension={adDimension}
+            targetingData={targetingData(article.id, "newslanding")}
+          />
+        )}
+        {relatedArticlesForCanvas && (
+          <CanvasFooter
+            article={article}
+            relatedArticles={relatedArticlesForCanvas}
+            showCollectionsRail={showCollectionsRail}
+          />
+        )}
+      </>
     )
   }
 

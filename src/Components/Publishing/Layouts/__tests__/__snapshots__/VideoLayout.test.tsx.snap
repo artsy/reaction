@@ -37,10 +37,6 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
   width: 100%;
 }
 
-.c57 {
-  margin: auto;
-}
-
 .c32 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -98,33 +94,6 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
   line-height: 20px;
 }
 
-.c58 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  color: black30;
-  margin: 4px;
-}
-
-.c56 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
-  margin: 0 auto;
-  border-top: 1px solid #E5E5E5;
-  background: #000;
-  text-align: center;
-  width: 100%;
-  visibility: hidden;
-}
-
 .c5 {
   font-family: artsy-icons;
   color: white;
@@ -157,7 +126,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c59 {
+.c3 .c56 {
   margin: 0 20px;
 }
 
@@ -366,7 +335,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c46 h2 .c60 {
+.c46 h2 .c57 {
   background-position: bottom !important;
 }
 
@@ -859,7 +828,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
     font-size: 24px;
   }
 
-  .c3 .c59 {
+  .c3 .c56 {
     margin: 0 10px;
   }
 }
@@ -1617,31 +1586,6 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="c56"
-    height="1px"
-  >
-    <div
-      className="c57"
-    >
-      <div
-        style={
-          Object {
-            "height": 250,
-            "width": 970,
-          }
-        }
-      />
-      <div
-        className="c58"
-        color="black30"
-        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        fontSize="10px"
-      >
-        Advertisement
       </div>
     </div>
   </div>

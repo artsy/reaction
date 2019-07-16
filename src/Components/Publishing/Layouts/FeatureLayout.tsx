@@ -13,7 +13,6 @@ import { CanvasFooter } from "./Components/CanvasFooter"
 
 export const FeatureLayout: React.SFC<ArticleProps> = props => {
   const {
-    areHostedAdsEnabled,
     article,
     backgroundColor,
     color,
@@ -55,7 +54,6 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
           color={color}
           isMobile={isMobile}
           showTooltips={showTooltips}
-          areHostedAdsEnabled={areHostedAdsEnabled}
           isSponsored={isSponsored}
         />
       </FeatureLayoutContent>
