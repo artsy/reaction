@@ -1,3 +1,15 @@
+# v16.18.20 (Tue Jul 16 2019)
+
+#### 🐛  Bug Fix
+
+- Remove feature flag from display ads [#2611](https://github.com/artsy/reaction/pull/2611) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.19 (Mon Jul 15 2019)
 
 #### 🐛  Bug Fix
