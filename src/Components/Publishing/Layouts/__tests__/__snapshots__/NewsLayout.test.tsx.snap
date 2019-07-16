@@ -1851,11 +1851,42 @@ exports[`News Layout renders the news layout properly 1`] = `
 `;
 
 exports[`News Layout with display ads renders the news layout properly with display ads 1`] = `
+.c25 {
+  margin: auto;
+}
+
 .c17 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+}
+
+.c26 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 1px;
+  padding-bottom: 4px;
+  padding-top: 32px;
+  margin: 0 auto;
+  border-top: none;
+  background: #F8F8F8;
+  text-align: center;
+  width: 100%;
+  visibility: hidden;
 }
 
 .c19 {
@@ -1954,7 +1985,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   position: relative;
 }
 
-.c8:hover .c24 {
+.c8:hover .c27 {
   opacity: 1;
 }
 
@@ -2142,7 +2173,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   background-size: 1.25px 1px;
 }
 
-.c13 h2 .c25 {
+.c13 h2 .c28 {
   background-position: bottom !important;
 }
 
@@ -2269,7 +2300,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   font-weight: 600;
 }
 
-.c0 .c26 {
+.c0 .c29 {
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -2324,7 +2355,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
 }
 
 @media (max-width:720px) {
-  .c8 .c24 {
+  .c8 .c27 {
     opacity: 1;
   }
 }
@@ -2768,6 +2799,31 @@ exports[`News Layout with display ads renders the news layout properly with disp
     >
       Expand
     </button>
+  </div>
+  <div
+    className="c24"
+    height="1px"
+  >
+    <div
+      className="c25"
+    >
+      <div
+        style={
+          Object {
+            "height": 250,
+            "width": 970,
+          }
+        }
+      />
+      <div
+        className="c26"
+        color="black30"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="10px"
+      >
+        Advertisement
+      </div>
+    </div>
   </div>
 </div>
 `;
