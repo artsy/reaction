@@ -19,6 +19,7 @@ describe("CollectionsRail", () => {
 
   beforeEach(() => {
     props = {
+      title: "Street Art",
       collections: CollectionsRailFixture,
     }
   })
@@ -29,7 +30,7 @@ describe("CollectionsRail", () => {
     ).renderUntil(n => {
       return n.html().search("is-selected") > 0
     })
-    expect(component.text()).toMatch("Browse by iconic collections")
+    expect(component.text()).toMatch("Related to Street Art")
     expect(component.find(RelatedCollectionEntity).length).toBe(8)
     expect(component.text()).toMatch("Flags")
     expect(component.text()).toMatch("From $1,000")
