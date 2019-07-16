@@ -1,13 +1,14 @@
-import { EntityHeader, Sans, Spacer } from "@artsy/palette"
+import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
@@ -103,7 +104,6 @@ const RecommendedArtist: FC<
         data={artistData}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
-
           return (
             <FillwidthItem
               artwork={artwork.node}
@@ -118,10 +118,32 @@ const RecommendedArtist: FC<
             />
           )
         }}
+        renderLeftArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
+        renderRightArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
       />
     </>
   )
 }
+
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 60%;
+  }
+`
 
 export const RecommendedArtistFragmentContainer = createFragmentContainer(
   RecommendedArtistWithTracking,

@@ -1,4 +1,4 @@
-import { Box, Sans, space, Spacer } from "@artsy/palette"
+import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -90,13 +90,12 @@ export class ArtistCollectionsRail extends React.Component<
 }
 
 const ArrowContainer = styled(Box)`
-  position: relative;
+  align-self: flex-start;
 
   ${ArrowButton} {
-    top: -${space(3)}px;
+    height: 60%;
   }
 `
-
 export const ArtistCollectionsRailFragmentContainer = createFragmentContainer(
   ArtistCollectionsRail,
   {

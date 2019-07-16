@@ -1,4 +1,4 @@
-import { Box } from "@artsy/palette"
+import { Box, Separator } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
@@ -37,13 +37,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
   render() {
     const { collection } = this.props
     const { title, slug, headerImage, description, artworks } = collection
-
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
       ? `Buy, bid, and inquire on ${title} on Artsy. ` +
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
-
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -61,7 +59,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
             ]}
           />
           <SeoProductsForArtworks artworks={artworks} />
-
           <CollectionHeader
             collection={collection}
             artworks={artworks as any}
@@ -69,9 +66,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
+          <Separator mt={6} mb={3} />
           <Box mt="3">
             <RelatedCollectionsRail
               collections={collection.relatedCollections}
+              title={collection.title}
             />
           </Box>
         </FrameWithRecentlyViewed>
