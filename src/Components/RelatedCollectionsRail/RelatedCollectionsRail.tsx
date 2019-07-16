@@ -1,4 +1,4 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Serif, Spacer } from "@artsy/palette"
 import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -13,6 +13,7 @@ import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } f
 
 interface RelatedCollectionsRailProps {
   collections: RelatedCollectionsRail_collections
+  readonly title: string
 }
 
 @track(null, {
@@ -43,14 +44,15 @@ export class RelatedCollectionsRail extends React.Component<
 
   render() {
     const { collections } = this.props
+    const { title } = this.props
     if (collections.length > 3) {
       return (
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-          <Sans size="3" weight="medium">
-            Browse by iconic collections
-          </Sans>
-          <Spacer pb={1} />
+          <Serif size="8" color="black100">
+            Related to {title}
+          </Serif>
+          <Spacer pb={4} />
 
           <Carousel
             height="200px"
@@ -61,7 +63,7 @@ export class RelatedCollectionsRail extends React.Component<
               pageDots: false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={take(collections, 8)}
+            data={take(collections, 16)}
             render={slide => {
               return <RelatedCollectionEntity collection={slide} />
             }}
@@ -92,8 +94,7 @@ const ArrowContainer = styled(Box)`
   align-self: flex-start;
 
   ${ArrowButton} {
-    min-height: 130px;
-    align-self: flex-start;
+    height: 60%;
   }
 `
 
