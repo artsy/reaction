@@ -144,7 +144,7 @@ describe("Standard Article", () => {
         .find(DisplayAd)
         .at(0)
         .props().adDimension
-    ).toBe("300x250")
+    ).toBe("300x50")
 
     expect(
       article
@@ -158,7 +158,7 @@ describe("Standard Article", () => {
         .find(DisplayAd)
         .at(1)
         .props().adDimension
-    ).toBe("300x250")
+    ).toBe("300x50")
 
     expect(
       article
@@ -217,7 +217,7 @@ describe("standard article ad data", () => {
       />
     )
 
-    expect(ad.props().adDimension).toEqual("300x250")
+    expect(ad.props().adDimension).toEqual("300x50")
     expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
     expect(ad.props().targetingData).toEqual({
       is_testing: true,
