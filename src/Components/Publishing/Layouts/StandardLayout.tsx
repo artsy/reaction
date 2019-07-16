@@ -92,7 +92,6 @@ export class StandardLayout extends React.Component<
 
     return (
       <DisplayAd
-        pt={is300x50AdUnit(adDimension) ? 2 : 4}
         adUnit={
           isMobileAd
             ? AdUnit.Mobile_InContentMR1
