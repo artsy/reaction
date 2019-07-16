@@ -20,6 +20,7 @@ export interface DisplayAdProps extends FlexProps {
 
 export interface DisplayAdContainerProps extends FlexProps {
   isSeries?: boolean
+  isSuper?: boolean
   isStandard?: boolean
   adDimension?: AdDimension
   isAdEmpty?: boolean

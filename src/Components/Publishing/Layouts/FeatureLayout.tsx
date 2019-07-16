@@ -32,7 +32,6 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     article.hero_section.type === "fullscreen"
   const sponsor = (seriesArticle && seriesArticle.sponsor) || article.sponsor
   const isSponsored = isEditorialSponsored(sponsor)
-
   const seriesOrSuper = isSuper || seriesArticle
 
   return (
@@ -55,6 +54,7 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
           isMobile={isMobile}
           showTooltips={showTooltips}
           isSponsored={isSponsored}
+          isSuper={isSuper}
         />
       </FeatureLayoutContent>
 

@@ -67,7 +67,11 @@ export class StandardLayout extends React.Component<
   }
 
   renderSideRailDisplayAd(isMobileAd: boolean) {
-    const { article } = this.props
+    const { article, isSuper } = this.props
+
+    if (isSuper) {
+      return
+    }
 
     return (
       <DisplayAd
@@ -85,10 +89,14 @@ export class StandardLayout extends React.Component<
   }
 
   renderTopRailDisplayAd(isMobileAd: boolean) {
-    const { article } = this.props
+    const { article, isSuper } = this.props
     const adDimension = isMobileAd
       ? AdDimension.Mobile_InContentMR1
       : AdDimension.Desktop_TopLeaderboard
+
+    if (isSuper) {
+      return
+    }
 
     return (
       <DisplayAd

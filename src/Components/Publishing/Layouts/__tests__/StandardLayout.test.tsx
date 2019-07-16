@@ -71,8 +71,7 @@ describe("Standard Article", () => {
     expect(article.find(RelatedArticlesCanvas).length).toBe(0)
   })
 
-  // TODO: Find out why display ads are not expected to render in super articles
-  xit("Does not render display if article is super", () => {
+  it("Does not render display if article is super", () => {
     props.isSuper = true
     const article = getWrapper(props)
     expect(article.find(DisplayAd).length).toBe(0)
