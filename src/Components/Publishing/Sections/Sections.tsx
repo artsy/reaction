@@ -231,6 +231,7 @@ export class Sections extends Component<Props, State> {
   renderSections() {
     const { article, isMobile, isSponsored, isSuper } = this.props
     const { shouldInjectMobileDisplay } = this.state
+    let quantityOfAdsRendered = 0
     let firstAdInjected = false
     let placementCount = 1
     let displayMarkerInjected = false
@@ -260,11 +261,14 @@ export class Sections extends Component<Props, State> {
         placementCount++
       }
 
-      if (placementCount % 6 === 0) {
+      if (placementCount % 6 === 0 && quantityOfAdsRendered < 2) {
+        // only render 2 ads on Features
         shouldInjectNewAds = true
       }
 
       if (shouldInjectNewAds) {
+        quantityOfAdsRendered++
+
         const adDimension = isMobile
           ? isSponsored
             ? AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
