@@ -20,7 +20,7 @@ query RejectTestQuery {
   order: ecommerceOrder(id: "unused") {
     __typename
     ...Reject_order
-    __id: id
+    __id
   }
 }
 
@@ -34,7 +34,7 @@ fragment Reject_order on Order {
           id
           __id
         }
-        __id: id
+        __id
       }
     }
   }
@@ -42,11 +42,11 @@ fragment Reject_order on Order {
     lastOffer {
       id
       createdAt
-      __id: id
+      __id
     }
   }
   ...ArtworkSummaryItem_order
-  __id: id
+  __id
 }
 
 fragment ArtworkSummaryItem_order on Order {
@@ -78,11 +78,11 @@ fragment ArtworkSummaryItem_order on Order {
           }
           __id
         }
-        __id: id
+        __id
       }
     }
   }
-  __id: id
+  __id
 }
 */
 
@@ -97,8 +97,8 @@ var v0 = [
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -115,20 +115,13 @@ v3 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "RejectTestQuery",
   "id": null,
-  "text": "query RejectTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query RejectTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n    __id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -216,7 +209,7 @@ return {
                         "plural": false,
                         "selections": [
                           v3,
-                          v4,
+                          v1,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -279,7 +272,13 @@ return {
                                   }
                                 ]
                               },
-                              v1
+                              {
+                                "kind": "ScalarField",
+                                "alias": "__id",
+                                "name": "id",
+                                "args": null,
+                                "storageKey": null
+                              }
                             ]
                           }
                         ]
@@ -301,7 +300,7 @@ return {
             "plural": false,
             "selections": [
               v2,
-              v4,
+              v1,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",

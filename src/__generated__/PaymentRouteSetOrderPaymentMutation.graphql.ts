@@ -60,7 +60,7 @@ mutation PaymentRouteSetOrderPaymentMutation(
             postal_code
             __id
           }
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -131,6 +131,13 @@ v2 = {
   ]
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -195,21 +202,8 @@ v3 = {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v3
   ]
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
@@ -223,7 +217,7 @@ return {
   "operationKind": "mutation",
   "name": "PaymentRouteSetOrderPaymentMutation",
   "id": null,
-  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  ecommerceSetOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation PaymentRouteSetOrderPaymentMutation(\n  $input: SetOrderPaymentInput!\n) {\n  ecommerceSetOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -264,8 +258,8 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      v4,
+                      v3
                     ]
                   }
                 ]
@@ -315,8 +309,8 @@ return {
                     "plural": false,
                     "selections": [
                       v5,
-                      v3,
-                      v4
+                      v4,
+                      v3
                     ]
                   }
                 ]

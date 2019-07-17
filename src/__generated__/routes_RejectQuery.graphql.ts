@@ -24,7 +24,7 @@ query routes_RejectQuery(
   order: ecommerceOrder(id: $orderID) {
     __typename
     ...Reject_order
-    __id: id
+    __id
   }
 }
 
@@ -38,7 +38,7 @@ fragment Reject_order on Order {
           id
           __id
         }
-        __id: id
+        __id
       }
     }
   }
@@ -46,11 +46,11 @@ fragment Reject_order on Order {
     lastOffer {
       id
       createdAt
-      __id: id
+      __id
     }
   }
   ...ArtworkSummaryItem_order
-  __id: id
+  __id
 }
 
 fragment ArtworkSummaryItem_order on Order {
@@ -82,11 +82,11 @@ fragment ArtworkSummaryItem_order on Order {
           }
           __id
         }
-        __id: id
+        __id
       }
     }
   }
-  __id: id
+  __id
 }
 */
 
@@ -109,8 +109,8 @@ v1 = [
 ],
 v2 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -127,20 +127,13 @@ v4 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_RejectQuery",
   "id": null,
-  "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
+  "text": "query routes_RejectQuery(\n  $orderID: String!\n) {\n  order: ecommerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -228,7 +221,7 @@ return {
                         "plural": false,
                         "selections": [
                           v4,
-                          v5,
+                          v2,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -291,7 +284,13 @@ return {
                                   }
                                 ]
                               },
-                              v2
+                              {
+                                "kind": "ScalarField",
+                                "alias": "__id",
+                                "name": "id",
+                                "args": null,
+                                "storageKey": null
+                              }
                             ]
                           }
                         ]
@@ -313,7 +312,7 @@ return {
             "plural": false,
             "selections": [
               v3,
-              v5,
+              v2,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",

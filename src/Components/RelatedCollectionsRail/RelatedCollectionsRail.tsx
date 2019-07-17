@@ -14,7 +14,7 @@ import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } f
 
 interface RelatedCollectionsRailProps {
   collections: RelatedCollectionsRail_collections
-  readonly title: string
+  readonly title?: string
 }
 
 @track(null, {
