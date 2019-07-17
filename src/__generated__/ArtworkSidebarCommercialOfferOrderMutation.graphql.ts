@@ -48,7 +48,7 @@ mutation ArtworkSidebarCommercialOfferOrderMutation(
           __typename
           id
           mode
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -141,8 +141,8 @@ v5 = {
 },
 v6 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -151,7 +151,7 @@ return {
   "operationKind": "mutation",
   "name": "ArtworkSidebarCommercialOfferOrderMutation",
   "id": null,
-  "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CreateOfferOrderWithArtworkInput!\n) {\n  ecommerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CreateOfferOrderWithArtworkInput!\n) {\n  ecommerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

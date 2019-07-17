@@ -45,7 +45,7 @@ mutation CounterSubmitMutation(
           ... on OfferOrder {
             awaitingResponseFrom
           }
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -124,8 +124,8 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -154,7 +154,7 @@ return {
   "operationKind": "mutation",
   "name": "CounterSubmitMutation",
   "id": null,
-  "text": "mutation CounterSubmitMutation(\n  $input: submitPendingOfferInput!\n) {\n  ecommerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation CounterSubmitMutation(\n  $input: submitPendingOfferInput!\n) {\n  ecommerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

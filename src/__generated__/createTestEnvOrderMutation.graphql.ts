@@ -40,7 +40,7 @@ mutation createTestEnvOrderMutation(
         order {
           __typename
           id
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -103,8 +103,8 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -120,7 +120,7 @@ return {
   "operationKind": "mutation",
   "name": "createTestEnvOrderMutation",
   "id": null,
-  "text": "mutation createTestEnvOrderMutation(\n  $input: CreateOrderWithArtworkInput!\n) {\n  createOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation createTestEnvOrderMutation(\n  $input: CreateOrderWithArtworkInput!\n) {\n  createOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

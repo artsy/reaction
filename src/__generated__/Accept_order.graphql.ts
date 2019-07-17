@@ -46,13 +46,6 @@ v1 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -122,7 +115,7 @@ return {
                     v1
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -149,7 +142,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v2,
+    v1,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -171,7 +164,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v2
+            v1
           ]
         }
       ]

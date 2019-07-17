@@ -47,23 +47,17 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
-  v0,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__id",
-    "args": null,
-    "storageKey": null
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
+v2 = [
+  v0,
+  v1
+],
 v3 = [
   v0,
   {
@@ -73,7 +67,7 @@ v3 = [
     "args": null,
     "storageKey": null
   },
-  v2
+  v1
 ];
 return {
   "kind": "Fragment",
@@ -157,9 +151,9 @@ return {
                   "args": null,
                   "concreteType": "Artwork",
                   "plural": false,
-                  "selections": v1
+                  "selections": v2
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -174,9 +168,9 @@ return {
       "args": null,
       "concreteType": "CreditCard",
       "plural": false,
-      "selections": v1
+      "selections": v2
     },
-    v2,
+    v1,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
