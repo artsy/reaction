@@ -1,3 +1,15 @@
+# v16.18.24 (Wed Jul 17 2019)
+
+#### 🐛  Bug Fix
+
+- Update featured articles to only render a max of 2 ads [#2618](https://github.com/artsy/reaction/pull/2618) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.18.23 (Tue Jul 16 2019)
 
 
