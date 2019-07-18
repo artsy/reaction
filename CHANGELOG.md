@@ -1,3 +1,15 @@
+# v16.18.26 (Thu Jul 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collections carousel tweaks QA for artist series and related collections [#2620](https://github.com/artsy/reaction/pull/2620) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v16.18.25 (Wed Jul 17 2019)
 
 
