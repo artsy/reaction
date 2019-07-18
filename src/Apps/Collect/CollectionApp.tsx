@@ -1,4 +1,4 @@
-import { Box } from "@artsy/palette"
+import { Box, Separator } from "@artsy/palette"
 import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
@@ -69,9 +69,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
+          <Separator mt={6} mb={3} />
           <Box mt="3">
             <RelatedCollectionsRail
               collections={collection.relatedCollections}
+              title={collection.title}
             />
           </Box>
         </FrameWithRecentlyViewed>
