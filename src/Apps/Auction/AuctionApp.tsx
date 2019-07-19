@@ -60,7 +60,7 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
 
     return (
       <AppContainer>
-        <Box maxWidth={550}>
+        <Box maxWidth={550} m="0 auto">
           <Serif size="10">Register to Bid on Artsy</Serif>
           <Separator mt={1} mb={2} />
           <Sans size="4t" color="black60">
