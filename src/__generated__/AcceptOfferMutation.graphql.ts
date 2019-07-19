@@ -47,7 +47,7 @@ mutation AcceptOfferMutation(
           ... on OfferOrder {
             awaitingResponseFrom
           }
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -133,8 +133,8 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -156,7 +156,7 @@ return {
   "operationKind": "mutation",
   "name": "AcceptOfferMutation",
   "id": null,
-  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
