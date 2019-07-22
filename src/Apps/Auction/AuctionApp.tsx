@@ -2,7 +2,6 @@ import { Box, Sans, Separator, Serif } from "@artsy/palette"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { CommitMutation } from "Apps/Order/Utils/commitMutation"
 import { ErrorPage } from "Components/ErrorPage"
-import PaymentForm from "Components/Payment/PaymentForm"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import {
@@ -10,6 +9,7 @@ import {
   ReactStripeElements,
   StripeProvider,
 } from "react-stripe-elements"
+import RegistrationForm from "./Components/RegistrationForm"
 
 declare global {
   interface Window {
@@ -34,7 +34,7 @@ interface AuctionAppState {
 
 export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
   state: AuctionAppState = { isGettingCreditCardId: false, stripe: null }
-
+  CreditCardInput
   componentDidMount() {
     if (window.Stripe) {
       this.setState({
@@ -76,14 +76,13 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
           <StripeProvider stripe={this.state.stripe}>
             <Elements>
               <Box mt={2}>
-                <PaymentForm me={this.props.me} />
+                <RegistrationForm />
               </Box>
             </Elements>
           </StripeProvider>
         </Box>
       </AppContainer>
     )
-    return <p>Hi from AuctionApp</p>
   }
 }
 

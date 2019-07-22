@@ -4,8 +4,11 @@ import { PositionProps, SpaceProps } from "styled-system"
 
 export interface CountrySelectProps extends PositionProps, SpaceProps {
   selected?: string
+  name?: string
+  error?: string
   disabled?: boolean
   onSelect?: (value) => void
+  onBlur?: (e: any) => void
 }
 
 export const CountrySelect = (props: CountrySelectProps) => {
