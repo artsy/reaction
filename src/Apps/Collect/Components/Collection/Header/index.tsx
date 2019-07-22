@@ -1,4 +1,4 @@
-import { EntityHeader, ReadMore } from "@artsy/palette"
+import { EntityHeader, ReadMore, space } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
@@ -255,8 +255,11 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
             <Flex flexDirection="column">
               <Box>
                 <Background
+                  position={["relative", "absolute"]}
+                  left={["auto", 0]}
+                  width={["auto", 1]}
                   p={2}
-                  mt={[0, 3]}
+                  mt={0}
                   mb={3}
                   headerImageUrl={resize(collection.headerImage, {
                     width: imageWidth * (xs ? 2 : 1),
@@ -273,7 +276,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     />
                   )}
                 </Background>
-                <MetaContainer mb={2}>
+                <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
                   <BreadcrumbContainer size={["2", "3"]}>
                     <a href="/collect">All works</a> /{" "}
                     <a href={categoryTarget}>{collection.category}</a>
