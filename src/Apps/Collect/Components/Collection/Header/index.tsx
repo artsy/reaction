@@ -33,7 +33,7 @@ export interface Props {
     artist_ids?: string[]
     category: string
     credit?: string
-    description?: JSX.Element | string
+    description?: string
     gene_ids?: string[]
     headerImage: string
     major_periods?: string[]
