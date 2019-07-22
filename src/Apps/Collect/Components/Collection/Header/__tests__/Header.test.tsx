@@ -68,6 +68,14 @@ describe("collections header", () => {
     }
   })
 
+  function mountComponent(theProps: Props, breakpoint: "sm" | "lg" = "sm") {
+    return mount(
+      <MockBoot breakpoint={breakpoint}>
+        <CollectionHeader {...theProps} />
+      </MockBoot>
+    )
+  }
+
   describe("getFeaturedArtists", () => {
     const mockMediator = jest.fn()
 
@@ -118,14 +126,6 @@ describe("collections header", () => {
   })
 
   describe("collection meta data", () => {
-    function mountComponent(theProps: Props, breakpoint: "sm" | "lg" = "sm") {
-      return mount(
-        <MockBoot breakpoint={breakpoint}>
-          <CollectionHeader {...theProps} />
-        </MockBoot>
-      )
-    }
-
     it("renders the title", () => {
       props.collection.title = "Scooby Doo"
 
@@ -184,24 +184,33 @@ describe("collections header", () => {
 
         expect(component.html()).toContain("<i>your description</i>")
       })
-
-      it("renders a JSX description", () => {
-        // though we don't really know how those happen.
-
-        // TODO - this test is currently failing. We'll need to make it pass
-        //  if we want to continue to accept JSX for the description field
-        //  Note: it was broken before refactoring, so it may be a known bug.
-        props.collection.description = <div>something</div>
-
-        const component = mountComponent(props)
-
-        expect(component.text()).toContain("some description")
-      })
     })
   })
 
-  // describe("collection header featured artists rail", () => {
-  //   it("renders featured artists when featured artists exist", () => {})
-  //   it("does not render featured artists when they don't exist", () => {})
-  // })
+  describe("collection header featured artists rail", () => {
+    it("renders featured artists when featured artists exist", () => {
+      props.collection.query = {
+        gene_id: null,
+        artist_id: null,
+        artist_ids: [],
+      }
+      const component = mountComponent(props, "lg")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(component.text()).toContain("Featured Artists")
+      expect(entityHeaders.length).toEqual(4)
+    })
+
+    it("does not render featured artists when they don't exist", () => {
+      props.artworks = {
+        " $refType": null,
+        merchandisable_artists: [],
+      }
+      const component = mountComponent(props, "lg")
+      const entities = component.find(EntityHeader)
+
+      expect(component.text()).not.toContain("Featured Artists")
+      expect(entities.length).toEqual(0)
+    })
+  })
 })
