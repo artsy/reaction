@@ -2,7 +2,14 @@ import { Button, Input } from "@artsy/palette"
 import { CountrySelect } from "Components/v2"
 import { Form, FormikProps, withFormik } from "formik"
 import React from "react"
+import { CardElement } from "react-stripe-elements"
+import styled from "styled-components"
 import * as Yup from "yup"
+
+export const StyledCardElement = styled(CardElement)`
+  width: 100%;
+  padding: 9px 10px;
+`
 
 // Shape of form values
 interface FormValues {
@@ -33,6 +40,8 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
         placeholder="Add full name"
         name="name"
       />
+
+      <StyledCardElement hidePostalCode />
 
       <Input
         onBlur={handleBlur}
@@ -74,6 +83,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
         required
         title="Telephone"
         name="telephone"
+        StyledCardElement
       />
 
       <Button
