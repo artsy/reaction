@@ -271,7 +271,6 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                   <Overlay />
                   {collection.credit && (
                     <ImageCaption
-                      size={size}
                       dangerouslySetInnerHTML={{ __html: collection.credit }}
                     />
                   )}
@@ -378,22 +377,13 @@ const EntityContainer = styled(Box)<{
   ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
 `
 
-const ImageCaption = styled(Box)<{
-  size: string
-}>`
+const ImageCaption = styled(Box)`
   ${unica("s12")};
   position: absolute;
-  bottom: 5px;
-  ${props => {
-    if (["xs", "sm", "md"].includes(props.size)) {
-      return `
-        left: 20px;
-      `
-    } else {
-      return `right: 20px;`
-    }
-  }}
-  max-width: ${props => (props.size === "xs" ? "300px" : "100%")};
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  text-align: right;
   color: ${color("white100")};
   z-index: 7;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
