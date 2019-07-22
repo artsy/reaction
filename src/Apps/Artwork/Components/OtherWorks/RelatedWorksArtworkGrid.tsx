@@ -1,7 +1,7 @@
 import { Spinner, Tab, Tabs } from "@artsy/palette"
 import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
-import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { Mediator, SystemContext, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"

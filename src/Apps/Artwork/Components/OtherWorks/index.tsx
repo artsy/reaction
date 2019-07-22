@@ -1,10 +1,12 @@
+import { Join, Spacer } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
+import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } from "Apps/Artwork/Components/OtherWorks/RelatedWorksArtworkGrid"
+import ArtworkGrid from "Components/ArtworkGrid"
+import { filter } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArtworkContextArtistFragmentContainer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
-import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
-import { ArtworkContextFairFragmentContainer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShowFragmentContainer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { get } from "Utils/get"
 
 export interface OtherWorksContextProps {
   /** The artworkSlug to query */
@@ -13,41 +15,78 @@ export interface OtherWorksContextProps {
   artworkID: string
 }
 
+/**
+ * Check to see if a connection's edges have a length; if false hide the grid.
+ */
+export function hideGrid(artworksConnection): boolean {
+  return Boolean(get(artworksConnection, p => !p.edges.length))
+}
+
+const populatedGrids = (grids: OtherWorks_artwork["contextGrids"]) => {
+  if (grids && grids.length > 0) {
+    return filter(grids, grid => {
+      return (
+        grid.artworks &&
+        grid.artworks.edges &&
+        grid.artworks.edges.length > 0 &&
+        grid.__typename !== "RelatedArtworkGrid"
+      )
+    })
+  }
+}
+
 export const OtherWorksFragmentContainer = createFragmentContainer<{
   artwork: OtherWorks_artwork
 }>(
   props => {
-    const contextType =
-      props.artwork.context && props.artwork.context.__typename
-    const artworkSlug = props.artwork.id
+    const { context, contextGrids, sale } = props.artwork
 
-    switch (contextType) {
-      case "ArtworkContextAuction": {
-        return (
-          <ArtworkContextAuction
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-            isClosed={props.artwork.sale.is_closed}
-          />
-        )
-      }
-      case "ArtworkContextFair": {
-        return <ArtworkContextFair artwork={props.artwork} />
-      }
-      case "ArtworkContextPartnerShow": {
-        return <ArtworkContextPartnerShow artwork={props.artwork} />
-      }
-      default: {
-        return <ArtworkContextArtist artwork={props.artwork} />
-      }
-    }
+    const grids = contextGrids
+    const gridsToShow = populatedGrids(grids)
+
+    return (
+      <>
+        {gridsToShow && gridsToShow.length > 0 && (
+          <Join separator={<Spacer my={3} />}>
+            {gridsToShow.map((grid, index) => (
+              <React.Fragment key={`Grid-${index}`}>
+                <Header title={grid.title} buttonHref={grid.ctaHref} />
+                <ArtworkGrid
+                  artworks={grid.artworks}
+                  columnCount={[2, 3, 4]}
+                  preloadImageCount={0}
+                />
+              </React.Fragment>
+            ))}
+          </Join>
+        )}
+        {!(
+          context.__typename === "ArtworkContextAuction" &&
+          !(sale && sale.is_closed)
+        ) && <RelatedWorksArtworkGrid artwork={props.artwork} />}
+      </>
+    )
   },
   {
     artwork: graphql`
       fragment OtherWorks_artwork on Artwork {
-        ...ArtworkContextArtist_artwork
-        ...ArtworkContextFair_artwork
-        ...ArtworkContextPartnerShow_artwork
+        contextGrids {
+          __typename
+          title
+          ctaTitle
+          ctaHref
+          artworks(first: 8) {
+            ...ArtworkGrid_artworks
+
+            edges {
+              node {
+                id
+              }
+            }
+          }
+        }
+
+        ...RelatedWorksArtworkGrid_artwork
 
         id
         _id
