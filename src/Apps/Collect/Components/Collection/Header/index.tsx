@@ -180,6 +180,11 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+const imageHeightSizes = {
+  xs: 160,
+  sm: 250,
+}
+
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
   const [showMore, setShowMore] = useState(false)
@@ -229,7 +234,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       {({ xs, sm, md, lg }) => {
         const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
         const imageWidth = imageWidthSizes[size]
-        const imageHeight = xs ? 160 : 240
+        const imageHeight = xs ? imageHeightSizes.xs : imageHeightSizes.sm
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
