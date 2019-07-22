@@ -183,16 +183,25 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
 
+  function calculateNumberOfArtists(size) {
+    if (sd.IS_MOBILE) {
+      return 3
+    }
+    if (size === "md") {
+      return 5
+    }
+    if (size === "lg") {
+      return 7
+    }
+    if (size === "xl") {
+      return 7
+    }
+    return 3
+  }
+
   // TODO: Add test here to test this method works as expected
-  const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
-    const width = getWidth()
-    const truncatedLength = sd.IS_MOBILE
-      ? 3
-      : width > 1024
-      ? 7
-      : width > 768
-      ? 5
-      : 3
+  const truncateFeaturedArtists = (featuredArtists, isColumnLayout, size) => {
+    const truncatedLength = calculateNumberOfArtists(size)
 
     if (featuredArtists.length <= truncatedLength) {
       return featuredArtists
@@ -204,7 +213,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         width={["100%", "33%", "33%", "25%"]}
         isColumnLayout={isColumnLayout}
         pb={20}
-        key={4}
+        key="view-more"
       >
         <ViewMore
           onClick={() => {
@@ -311,7 +320,8 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
                             {truncateFeaturedArtists(
                               featuredArtists,
-                              isColumnLayout
+                              isColumnLayout,
+                              size
                             )}
                           </Flex>
                         </Box>

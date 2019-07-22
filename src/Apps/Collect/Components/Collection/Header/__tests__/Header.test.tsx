@@ -1,8 +1,16 @@
 import { EntityHeader } from "@artsy/palette"
+import { FollowArtistButton_artist$ref } from "__generated__/FollowArtistButton_artist.graphql"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount, shallow } from "enzyme"
 import React from "react"
+import sharify from "sharify"
 import { CollectionHeader, getFeaturedArtists, Props } from "../index"
+
+jest.mock("sharify", () => ({
+  get data() {
+    return { IS_MOBILE: false }
+  },
+}))
 
 describe("collections header", () => {
   let props: Props
@@ -68,7 +76,10 @@ describe("collections header", () => {
     }
   })
 
-  function mountComponent(theProps: Props, breakpoint: "sm" | "lg" = "sm") {
+  function mountComponent(
+    theProps: Props,
+    breakpoint: "xs" | "sm" | "md" | "lg" = "sm"
+  ) {
     return mount(
       <MockBoot breakpoint={breakpoint}>
         <CollectionHeader {...theProps} />
@@ -211,6 +222,106 @@ describe("collections header", () => {
 
       expect(component.text()).not.toContain("Featured Artists")
       expect(entities.length).toEqual(0)
+    })
+
+    function anArtist() {
+      return {
+        id: "medicom-toy-slash-china",
+        _id: "5b9821af86c8aa21d364dde5",
+        name: "Medicom Toy/China",
+        imageUrl:
+          "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
+        birthday: "",
+        nationality: "",
+        " $fragmentRefs": null as FollowArtistButton_artist$ref,
+      }
+    }
+
+    it("shows 3 featured artists on mobile when not filtered by artist ids", () => {
+      const overrideData = jest.spyOn(sharify, "data", "get")
+      overrideData.mockReturnValueOnce({ IS_MOBILE: true })
+
+      props.collection.query = {
+        artist_ids: [],
+      }
+
+      const component = mountComponent(props, "xs")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(component.text()).toContain("Featured Artists")
+      expect(entityHeaders.length).toEqual(4) // 4 = 3 artists + 1 "View More"
+    })
+
+    it("shows 3 featured artists at small breakpoint when not filtered by artist ids", () => {
+      props.collection.query = {
+        artist_ids: [],
+      }
+      props.artworks = {
+        " $refType": null,
+        merchandisable_artists: [
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+        ],
+      }
+
+      const component = mountComponent(props, "sm")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(component.text()).toContain("Featured Artists")
+      expect(entityHeaders.length).toEqual(4) // 4 = 3 artists + 1 "View More"
+    })
+
+    it("shows 5 featured artists at medium breakpoint when not filtered by artist ids", () => {
+      props.collection.query = {
+        artist_ids: [],
+      }
+      props.artworks = {
+        " $refType": null,
+        merchandisable_artists: [
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+        ],
+      }
+
+      const component = mountComponent(props, "md")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(component.text()).toContain("Featured Artists")
+      expect(entityHeaders.length).toEqual(6) // 6 = 5 artists + 1 "View More"
+    })
+
+    it("shows 7 featured artists at large breakpoint when not filtered by artist ids", () => {
+      props.collection.query = {
+        artist_ids: [],
+      }
+      props.artworks = {
+        " $refType": null,
+        merchandisable_artists: [
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+        ],
+      }
+
+      const component = mountComponent(props, "lg")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(component.text()).toContain("Featured Artists")
+      expect(entityHeaders.length).toEqual(8) // 8 = 7 artists + 1 "View More"
     })
   })
 })
