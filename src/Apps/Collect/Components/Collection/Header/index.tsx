@@ -253,7 +253,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         return (
           <header>
             <Flex flexDirection="column">
-              <Box>
+              <Box mt={[0, "-12px"]}>
                 <Background
                   position={["relative", "absolute"]}
                   left={["auto", 0]}
