@@ -36,13 +36,6 @@ var v0 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -174,20 +167,26 @@ return {
                             }
                           ]
                         },
-                        v1
+                        {
+                          "kind": "ScalarField",
+                          "alias": "__id",
+                          "name": "id",
+                          "args": null,
+                          "storageKey": null
+                        }
                       ]
                     },
                     v0
                   ]
                 },
-                v1
+                v0
               ]
             }
           ]
         }
       ]
     },
-    v1
+    v0
   ]
 };
 })();

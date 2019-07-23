@@ -12,14 +12,13 @@ import { OrderApp } from "../OrderApp"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
-  mockResolver,
   OfferOrderWithShippingDetails,
   OfferWithTotals,
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
 import { MockBoot } from "DevTools"
-import { createMockNetworkLayer } from "DevTools/createMockNetworkLayer"
+import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
 import { DateTime } from "luxon"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
@@ -32,8 +31,8 @@ jest.mock("react-stripe-elements", () => ({
 
 describe("OrderApp routing redirects", () => {
   // FIXME: move to DevTools folder
-  async function render(url, mockResolvers) {
-    const network = createMockNetworkLayer(mockResolvers)
+  async function render(url, mockData) {
+    const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
     const store = new Store(source)
     const environment = new Environment({ network, store })
@@ -45,6 +44,8 @@ describe("OrderApp routing redirects", () => {
       render: createRender({}),
     })
   }
+
+  const mockResolver = data => ({ order: data, me: { name: "Alice Jane" } })
 
   it("does not redirect to the status route if the order is pending", async () => {
     const { redirect } = await render(

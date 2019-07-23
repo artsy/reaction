@@ -52,13 +52,10 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+v2 = [
+  v0,
+  v1
+];
 return {
   "kind": "Fragment",
   "name": "Review_order",
@@ -138,10 +135,7 @@ return {
                       "args": null,
                       "concreteType": "Artist",
                       "plural": true,
-                      "selections": [
-                        v0,
-                        v1
-                      ]
+                      "selections": v2
                     },
                     {
                       "kind": "FragmentSpread",
@@ -151,7 +145,7 @@ return {
                     v1
                   ]
                 },
-                v2
+                v1
               ]
             }
           ]
@@ -185,7 +179,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v2,
+    v1,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -198,10 +192,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": [
-            v0,
-            v2
-          ]
+          "selections": v2
         }
       ]
     }

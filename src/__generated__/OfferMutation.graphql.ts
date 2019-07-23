@@ -65,10 +65,10 @@ mutation OfferMutation(
               id
               amountCents
               note
-              __id: id
+              __id
             }
           }
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -175,8 +175,8 @@ v7 = {
 },
 v8 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -218,7 +218,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              note\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              note\n              __id\n            }\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

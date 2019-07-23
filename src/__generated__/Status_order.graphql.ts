@@ -79,8 +79,8 @@ v2 = {
 },
 v3 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -295,13 +295,7 @@ return {
                       "name": "ItemReview_artwork",
                       "args": null
                     },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    }
+                    v3
                   ]
                 },
                 v3

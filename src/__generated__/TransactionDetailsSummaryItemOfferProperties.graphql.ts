@@ -116,8 +116,8 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
+      "alias": null,
+      "name": "__id",
       "args": null,
       "storageKey": null
     }
