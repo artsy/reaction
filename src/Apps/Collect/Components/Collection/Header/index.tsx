@@ -187,16 +187,15 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     if (sd.IS_MOBILE) {
       return 3
     }
-    if (size === "md") {
-      return 5
+    switch (size) {
+      case "md":
+        return 5
+      case "lg":
+      case "xl":
+        return 7
+      default:
+        return 3
     }
-    if (size === "lg") {
-      return 7
-    }
-    if (size === "xl") {
-      return 7
-    }
-    return 3
   }
 
   // TODO: Add test here to test this method works as expected
