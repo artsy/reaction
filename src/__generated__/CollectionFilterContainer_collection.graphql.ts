@@ -144,6 +144,12 @@ return {
           "name": "include_medium_filter_in_aggregation",
           "value": true,
           "type": "Boolean"
+        },
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "-merchandisability",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -297,5 +303,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b8324b3bc570b04f460e8f7cb050c9f8';
+(node as any).hash = 'd01852bdf069c61d442c51ee0fd9dc21';
 export default node;
