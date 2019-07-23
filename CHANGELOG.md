@@ -1,3 +1,15 @@
+# v16.18.31 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Modal with image on smaller(xs) screens [#2627](https://github.com/artsy/reaction/pull/2627) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
 # v16.18.30 (Tue Jul 23 2019)
 
 #### 🐛  Bug Fix
