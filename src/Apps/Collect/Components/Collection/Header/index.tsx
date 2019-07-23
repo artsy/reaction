@@ -1,4 +1,4 @@
-import { EntityHeader, ReadMore } from "@artsy/palette"
+import { EntityHeader, ReadMore, space } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
@@ -180,6 +180,11 @@ const imageWidthSizes = {
   xl: 1112,
 }
 
+const imageHeightSizes = {
+  xs: 160,
+  sm: 250,
+}
+
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
   const [showMore, setShowMore] = useState(false)
@@ -229,7 +234,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       {({ xs, sm, md, lg }) => {
         const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
         const imageWidth = imageWidthSizes[size]
-        const imageHeight = xs ? 160 : 240
+        const imageHeight = xs ? imageHeightSizes.xs : imageHeightSizes.sm
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
@@ -248,10 +253,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         return (
           <header>
             <Flex flexDirection="column">
-              <Box>
+              <Box mt={[0, "-12px"]}>
                 <Background
+                  position={["relative", "absolute"]}
+                  left={["auto", 0]}
+                  width={["auto", 1]}
                   p={2}
-                  mt={[0, 3]}
+                  mt={0}
                   mb={3}
                   headerImageUrl={resize(collection.headerImage, {
                     width: imageWidth * (xs ? 2 : 1),
@@ -263,12 +271,11 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                   <Overlay />
                   {collection.credit && (
                     <ImageCaption
-                      size={size}
                       dangerouslySetInnerHTML={{ __html: collection.credit }}
                     />
                   )}
                 </Background>
-                <MetaContainer mb={2}>
+                <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
                   <BreadcrumbContainer size={["2", "3"]}>
                     <a href="/collect">All works</a> /{" "}
                     <a href={categoryTarget}>{collection.category}</a>
@@ -345,10 +352,10 @@ export const Overlay = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0.25) 95%
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.25)
   );
   z-index: 0;
 `
@@ -370,22 +377,13 @@ const EntityContainer = styled(Box)<{
   ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
 `
 
-const ImageCaption = styled(Box)<{
-  size: string
-}>`
+const ImageCaption = styled(Box)`
   ${unica("s12")};
   position: absolute;
-  bottom: 5px;
-  ${props => {
-    if (["xs", "sm", "md"].includes(props.size)) {
-      return `
-        left: 20px;
-      `
-    } else {
-      return `right: 20px;`
-    }
-  }}
-  max-width: ${props => (props.size === "xs" ? "300px" : "100%")};
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  text-align: right;
   color: ${color("white100")};
   z-index: 7;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);

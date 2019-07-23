@@ -196,7 +196,7 @@ describe("Sections", () => {
       const wrapper = mountWrapper(props)
 
       const ads = wrapper.find(DisplayAd)
-      expect(ads.length).toBe(8)
+      expect(ads.length).toBe(2)
 
       let ad = ads.at(0).props()
       expect(ad.adUnit).toBe("Desktop_Leaderboard1")
@@ -204,30 +204,6 @@ describe("Sections", () => {
 
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Desktop_Leaderboard2")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(2).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(3).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(4).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(5).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(6).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
-      expect(ad.adDimension).toBe("970x250")
-
-      ad = ads.at(7).props()
-      expect(ad.adUnit).toBe("Desktop_LeaderboardRepeat")
       expect(ad.adDimension).toBe("970x250")
     })
 
@@ -237,7 +213,7 @@ describe("Sections", () => {
       const wrapper = mountWrapper(props)
 
       const ads = wrapper.find(DisplayAd)
-      expect(ads.length).toBe(8)
+      expect(ads.length).toBe(2)
 
       let ad = ads.at(0).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB1")
@@ -245,30 +221,6 @@ describe("Sections", () => {
 
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(2).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(3).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(4).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(5).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(6).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x50")
-
-      ad = ads.at(7).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
       expect(ad.adDimension).toBe("300x50")
     })
 
@@ -279,7 +231,7 @@ describe("Sections", () => {
       const wrapper = mountWrapper(props)
 
       const ads = wrapper.find(DisplayAd)
-      expect(ads.length).toBe(8)
+      expect(ads.length).toBe(2)
 
       let ad = ads.at(0).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB1")
@@ -287,30 +239,6 @@ describe("Sections", () => {
 
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(2).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(3).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(4).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(5).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(6).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
-      expect(ad.adDimension).toBe("300x250")
-
-      ad = ads.at(7).props()
-      expect(ad.adUnit).toBe("Mobile_InContentLBRepeat")
       expect(ad.adDimension).toBe("300x250")
     })
   })
