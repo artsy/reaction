@@ -1,5 +1,6 @@
 import { Join, Spacer } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
+import { OtherAuctionsQueryRenderer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } from "Apps/Artwork/Components/OtherWorks/RelatedWorksArtworkGrid"
 import ArtworkGrid from "Components/ArtworkGrid"
@@ -61,9 +62,13 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
           </Join>
         )}
         {!(
+          context &&
           context.__typename === "ArtworkContextAuction" &&
           !(sale && sale.is_closed)
         ) && <RelatedWorksArtworkGrid artwork={props.artwork} />}
+        {context && context.__typename === "ArtworkContextAuction" && (
+          <OtherAuctions />
+        )}
       </>
     )
   },

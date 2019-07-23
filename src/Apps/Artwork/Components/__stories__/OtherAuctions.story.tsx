@@ -1,4 +1,4 @@
-import { OtherAuctionsQuery } from "__generated__/OtherAuctionsQuery.graphql"
+import { OtherAuctionsTestQuery } from "__generated__/OtherAuctionsTestQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React, { useContext } from "react"
@@ -11,10 +11,10 @@ const OtherAuctions = ({ size }: { size?: number }) => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<OtherAuctionsQuery>
+    <QueryRenderer<OtherAuctionsTestQuery>
       environment={relayEnvironment}
       query={graphql`
-        query OtherAuctionsQuery($size: Int!) {
+        query OtherAuctionsTestQuery($size: Int!) {
           sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
             ...OtherAuctions_sales
           }
