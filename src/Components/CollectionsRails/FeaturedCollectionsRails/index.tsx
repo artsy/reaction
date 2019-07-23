@@ -1,7 +1,7 @@
 import { Box, color, Flex, ReadMore, Sans, Serif } from "@artsy/palette"
+import { FeaturedCollectionsRails_marketingCollection } from "__generated__/FeaturedCollectionsRails_marketingCollection.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { FeaturedCollectionsRails_marketingCollection } from "src/__generated__/FeaturedCollectionsRails_marketingCollection.graphql"
 import styled from "styled-components"
 
 interface Props {
