@@ -52,12 +52,16 @@ export const FeaturedCollectionsRails = createFragmentContainer(
   ({ marketingCollection }: Props) => {
     const { linkedCollections } = marketingCollection
 
-    return linkedCollections.map(({ groupType, name, members }) => (
-      <div>
-        <Serif size="5">{name}</Serif>
-        {railForGroupType(groupType, members)}
-      </div>
-    ))
+    return (
+      <>
+        {linkedCollections.map(({ groupType, name, members }) => (
+          <div>
+            <Serif size="5">{name}</Serif>
+            {railForGroupType(groupType, members)}
+          </div>
+        ))}
+      </>
+    )
   },
   {
     marketingCollection: graphql`
