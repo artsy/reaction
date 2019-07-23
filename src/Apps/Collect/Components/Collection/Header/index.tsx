@@ -56,7 +56,6 @@ const handleOpenAuth = (mediator, artist) => {
 export const getFeaturedArtists = (
   artistsCount: number,
   collection,
-  isColumnLayout: boolean,
   merchandisableArtists,
   mediator,
   user
@@ -68,18 +67,12 @@ export const getFeaturedArtists = (
       collection.query.artist_ids.includes(artist._id)
     )
 
-    return featuredArtistsEntityCollection(
-      featuredArtists,
-      isColumnLayout,
-      mediator,
-      user
-    )
+    return featuredArtistsEntityCollection(featuredArtists, mediator, user)
   }
 
   if (merchandisableArtists.length > 0) {
     return featuredArtistsEntityCollection(
       take(merchandisableArtists, artistsCount),
-      isColumnLayout,
       mediator,
       user
     )
@@ -88,19 +81,13 @@ export const getFeaturedArtists = (
 
 export const featuredArtistsEntityCollection: (
   artists: any[],
-  isColumnLayout: boolean,
   mediator: any,
   user: any
-) => JSX.Element[] = (artists, isColumnLayout, mediator, user) => {
+) => JSX.Element[] = (artists, mediator, user) => {
   return artists.map((artist, index) => {
     const hasArtistMetaData = artist.nationality && artist.birthday
     return (
-      <EntityContainer
-        width={["100%", "33%", "33%", "25%"]}
-        isColumnLayout={isColumnLayout}
-        key={index}
-        pb={20}
-      >
+      <Box width={["100%", "33%", "33%", "25%"]} key={index} pb={20}>
         <EntityHeader
           imageUrl={artist.imageUrl}
           name={artist.name}
@@ -140,7 +127,7 @@ export const featuredArtistsEntityCollection: (
             />
           }
         />
-      </EntityContainer>
+      </Box>
     )
   })
 }
@@ -188,11 +175,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     }
   }
 
-  const truncateFeaturedArtists = (
-    featuredArtists: JSX.Element[],
-    isColumnLayout,
-    size
-  ) => {
+  const truncateFeaturedArtists = (featuredArtists: JSX.Element[], size) => {
     const truncatedLength = calculateNumberOfArtists(size)
 
     if (featuredArtists.length <= truncatedLength) {
@@ -201,12 +184,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
 
     const remainingArtists = featuredArtists.length - truncatedLength
     const viewMore = (
-      <EntityContainer
-        width={["100%", "33%", "33%", "25%"]}
-        isColumnLayout={isColumnLayout}
-        pb={20}
-        key="view-more"
-      >
+      <Box width={["100%", "33%", "33%", "25%"]} pb={20} key="view-more">
         <ViewMore
           onClick={() => {
             setShowMore(true)
@@ -214,7 +192,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         >
           <EntityHeader initials={`+ ${remainingArtists}`} name="View more" />
         </ViewMore>
-      </EntityContainer>
+      </Box>
     )
     const artists = cloneDeep(featuredArtists)
 
@@ -236,13 +214,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
-        const isColumnLayout =
-          hasMultipleArtists || !collection.description || size === "xs"
         const smallerScreen = size === "xs" || size === "sm"
         const featuredArtists = getFeaturedArtists(
           artistsCount,
           collection,
-          isColumnLayout,
           artworks.merchandisable_artists,
           mediator,
           user
@@ -304,12 +279,8 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                           </Sans>
-                          <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                            {truncateFeaturedArtists(
-                              featuredArtists,
-                              isColumnLayout,
-                              size
-                            )}
+                          <Flex flexWrap="wrap">
+                            {truncateFeaturedArtists(featuredArtists, size)}
                           </Flex>
                         </Box>
                       )}
@@ -366,12 +337,6 @@ const BreadcrumbContainer = styled(Sans)`
   a {
     text-decoration: none;
   }
-`
-
-const EntityContainer = styled(Box)<{
-  isColumnLayout: boolean
-}>`
-  ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
 `
 
 const ImageCaption = styled(Box)`

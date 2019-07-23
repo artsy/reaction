@@ -96,7 +96,6 @@ describe("collections header", () => {
       const results = getFeaturedArtists(
         9,
         collection,
-        true,
         artworks.merchandisable_artists,
         mockMediator,
         {}
@@ -113,7 +112,6 @@ describe("collections header", () => {
           {getFeaturedArtists(
             9,
             collection,
-            true,
             artworks.merchandisable_artists,
             mockMediator,
             {}
