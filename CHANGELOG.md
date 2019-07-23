@@ -1,3 +1,21 @@
+# v16.18.27 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Update to latest MP schema [#2622](https://github.com/artsy/reaction/pull/2622) ([@ashkan18](https://github.com/ashkan18) [@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update yarn orb to v2 [#2621](https://github.com/artsy/reaction/pull/2621) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.18.26 (Thu Jul 18 2019)
 
 #### 🐛  Bug Fix
