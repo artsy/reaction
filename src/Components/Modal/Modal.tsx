@@ -101,6 +101,8 @@ export const ModalContent = styled.div.attrs<{
   width: ${props => (props.hasImage ? "50%" : "100%")};
   ${props => props.hasImage && "margin-left: 50%"};
   ${media.sm`
+    width: 100%;
+    margin: 0px;
     padding: ${props =>
       props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
   `};
