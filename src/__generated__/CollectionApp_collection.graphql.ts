@@ -65,12 +65,6 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "artworks",
-      "type": "String",
-      "defaultValue": "*"
-    },
-    {
-      "kind": "LocalArgument",
       "name": "major_periods",
       "type": "[String]",
       "defaultValue": null
@@ -265,12 +259,6 @@ return {
           "name": "include_medium_filter_in_aggregation",
           "value": true,
           "type": "Boolean"
-        },
-        {
-          "kind": "Literal",
-          "name": "sort",
-          "value": "-merchandisability",
-          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -383,5 +371,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8757584311e53ca1097669faf950a1a7';
+(node as any).hash = '22df6d19074931e3814f222d68b54dc4';
 export default node;
