@@ -1,3 +1,16 @@
+# v16.18.30 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#2625](https://github.com/artsy/reaction/pull/2625) (damassi.pappas@gmail.com)
+- Upgrade styled-components@4.3.2 [#2625](https://github.com/artsy/reaction/pull/2625) (damassi.pappas@gmail.com)
+
+#### Authors: 1
+
+- Christopher Pappas (damassi.pappas@gmail.com)
+
+---
+
 # v16.18.29 (Tue Jul 23 2019)
 
 
