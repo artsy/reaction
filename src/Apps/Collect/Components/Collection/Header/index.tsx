@@ -96,12 +96,12 @@ export const getFeaturedArtists = (
   }
 }
 
-export const featuredArtistsEntityCollection = (
-  artists,
-  isColumnLayout,
-  mediator,
-  user
-) => {
+export const featuredArtistsEntityCollection: (
+  artists: any[],
+  isColumnLayout: boolean,
+  mediator: any,
+  user: any
+) => JSX.Element[] = (artists, isColumnLayout, mediator, user) => {
   return artists.map((artist, index) => {
     const hasArtistMetaData = artist.nationality && artist.birthday
     return (
@@ -198,8 +198,11 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     }
   }
 
-  // TODO: Add test here to test this method works as expected
-  const truncateFeaturedArtists = (featuredArtists, isColumnLayout, size) => {
+  const truncateFeaturedArtists = (
+    featuredArtists: JSX.Element[],
+    isColumnLayout,
+    size
+  ) => {
     const truncatedLength = calculateNumberOfArtists(size)
 
     if (featuredArtists.length <= truncatedLength) {
@@ -224,18 +227,14 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       </EntityContainer>
     )
     const artists = cloneDeep(featuredArtists)
-    // TODO: Add test for splice method
+
     artists.splice(truncatedLength, remainingArtists, viewMore)
 
-    // TODO: Add test for each case that can be returned
     return showMore ? featuredArtists : artists
   }
 
-  // TODO: casting description as any allows this to pass type-checking, but
-  //  the test that uses a JSX description will fail anyway, so we should
-  //  fix this to account for that.
   const htmlUnsafeDescription = collection.description && (
-    <span dangerouslySetInnerHTML={{ __html: collection.description as any }} />
+    <span dangerouslySetInnerHTML={{ __html: collection.description }} />
   )
 
   return (
@@ -311,7 +310,6 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     </Col>
                     <Col sm={12} md={12}>
                       {featuredArtists.length > 0 && (
-                        // TODO: Add test here to test when featuredArtists are present and not
                         <Box pb={10}>
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
@@ -411,7 +409,7 @@ const ExtendedSerif = styled(Serif)`
   }
 `
 
-const ViewMore = styled(Box)`
+export const ViewMore = styled(Box)`
   div {
     div {
       text-decoration: underline;

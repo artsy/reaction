@@ -5,6 +5,7 @@ import { mount, shallow } from "enzyme"
 import React from "react"
 import sharify from "sharify"
 import { CollectionHeader, getFeaturedArtists, Props } from "../index"
+import { ViewMore } from "../index"
 
 jest.mock("sharify", () => ({
   get data() {
@@ -322,6 +323,33 @@ describe("collections header", () => {
 
       expect(component.text()).toContain("Featured Artists")
       expect(entityHeaders.length).toEqual(8) // 8 = 7 artists + 1 "View More"
+    })
+
+    it("shows all featured artists after clicking 'show more'", () => {
+      props.collection.query = {
+        artist_ids: [],
+      }
+      props.artworks = {
+        " $refType": null,
+        merchandisable_artists: [
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+          anArtist(),
+        ],
+      }
+
+      const component = mountComponent(props, "xs")
+      const entityHeaders = component.find(EntityHeader)
+
+      expect(entityHeaders.length).toEqual(4) // 4 = 3 artists + 1 "View More"
+
+      const viewMore = component.find(ViewMore)
+      viewMore.simulate("click")
+
+      expect(component.find(EntityHeader).length).toEqual(6)
     })
   })
 })
