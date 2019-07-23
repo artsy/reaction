@@ -1,4 +1,5 @@
 import { EntityHeader, ReadMore, space } from "@artsy/palette"
+import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect/Components/Collection/Header/DefaultHeader"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
@@ -227,27 +228,31 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
           <header>
             <Flex flexDirection="column">
               <Box mt={[0, "-12px"]}>
-                <Background
-                  position={["relative", "absolute"]}
-                  left={["auto", 0]}
-                  width={["auto", 1]}
-                  p={2}
-                  mt={0}
-                  mb={3}
-                  headerImageUrl={resize(collection.headerImage, {
-                    width: imageWidth * (xs ? 2 : 1),
-                    height: imageHeight * (xs ? 2 : 1),
-                    quality: 80,
-                  })}
-                  height={imageHeight}
-                >
-                  <Overlay />
-                  {collection.credit && (
-                    <ImageCaption
-                      dangerouslySetInnerHTML={{ __html: collection.credit }}
-                    />
-                  )}
-                </Background>
+                {!collection.headerImage ? (
+                  <Background
+                    position={["relative", "absolute"]}
+                    left={["auto", 0]}
+                    width={["auto", 1]}
+                    p={2}
+                    mt={0}
+                    mb={3}
+                    headerImageUrl={resize(collection.headerImage, {
+                      width: imageWidth * (xs ? 2 : 1),
+                      height: imageHeight * (xs ? 2 : 1),
+                      quality: 80,
+                    })}
+                    height={imageHeight}
+                  >
+                    <Overlay />
+                    {collection.credit && (
+                      <ImageCaption
+                        dangerouslySetInnerHTML={{ __html: collection.credit }}
+                      />
+                    )}
+                  </Background>
+                ) : (
+                  <CollectionDefaultHeader headerArtworks={artworks as any} />
+                )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
                   <BreadcrumbContainer size={["2", "3"]}>
                     <a href="/collect">All works</a> /{" "}
@@ -382,6 +387,8 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
   {
     artworks: graphql`
       fragment Header_artworks on FilterArtworks {
+        ...DefaultHeader_headerArtworks
+
         merchandisable_artists {
           id
           _id
