@@ -9,7 +9,7 @@ import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
 interface ArtworkFilterProps {
-  mediums: Array<{
+  mediums?: Array<{
     id: string
     name: string
   }>

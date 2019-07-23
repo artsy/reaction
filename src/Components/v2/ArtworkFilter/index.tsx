@@ -153,10 +153,6 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
     })
   }
 
-  const filterMediums = viewer.filter_artworks.aggregations.find(
-    agg => agg.slice === "MEDIUM"
-  )
-
   const ArtworkGrid = () => {
     return (
       <ArtworkFilterArtworkGrid
@@ -176,7 +172,7 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
             <ArtworkFilterMobileActionSheet
               onClose={() => toggleMobileActionSheet(false)}
             >
-              <ArtworkFilters mediums={filterMediums as any} />
+              <ArtworkFilters />
             </ArtworkFilterMobileActionSheet>
           )}
 
@@ -205,7 +201,7 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
       <Media greaterThan="xs">
         <Flex>
           <Box width="25%" mr={2}>
-            <ArtworkFilters mediums={filterMediums as any} />
+            <ArtworkFilters />
             <Separator mb={2} />
           </Box>
           <Box width="75%">
@@ -225,11 +221,7 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
     viewer: graphql`
       fragment ArtworkFilter_viewer on Viewer
         @argumentDefinitions(
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL]
-          }
-
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
           acquireable: { type: "Boolean" }
           artist_id: { type: "String" }
           at_auction: { type: "Boolean" }
@@ -248,17 +240,8 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
-        filter_artworks(aggregations: $aggregations, size: 0) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-        }
         filtered_artworks: filter_artworks(
-          aggregations: [TOTAL]
+          aggregations: $aggregations
           medium: $medium
           major_periods: $major_periods
           partner_id: $partner_id

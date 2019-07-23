@@ -3,7 +3,7 @@ import React, { FC } from "react"
 import { useFilterContext } from "../ArtworkFilterContext"
 
 interface Props {
-  mediums: Array<{
+  mediums?: Array<{
     id: string
     name: string
   }>
