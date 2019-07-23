@@ -53,16 +53,6 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
-export const getWidth = () => {
-  let width: number
-  try {
-    width = window.innerWidth
-  } catch (e) {
-    width = 0
-  }
-  return width
-}
-
 export const getFeaturedArtists = (
   artistsCount: number,
   collection,
