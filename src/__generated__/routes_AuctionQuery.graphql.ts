@@ -1,16 +1,17 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { AuctionApp_me$ref } from "./AuctionApp_me.graphql";
+import { AuctionApp_sale$ref } from "./AuctionApp_sale.graphql";
 export type routes_AuctionQueryVariables = {
     readonly saleID: string;
 };
 export type routes_AuctionQueryResponse = {
     readonly me: ({
-        readonly name: string | null;
+        readonly " $fragmentRefs": AuctionApp_me$ref;
     }) | null;
     readonly sale: ({
-        readonly id: string;
-        readonly status: string | null;
+        readonly " $fragmentRefs": AuctionApp_sale$ref;
     }) | null;
 };
 export type routes_AuctionQuery = {
@@ -24,15 +25,25 @@ export type routes_AuctionQuery = {
 query routes_AuctionQuery(
   $saleID: String!
 ) {
-  me {
-    name
+  me: me {
+    ...AuctionApp_me
     __id
   }
   sale: sale(id: $saleID) {
-    id
-    status
+    ...AuctionApp_sale
     __id
   }
+}
+
+fragment AuctionApp_me on Me {
+  name
+  __id
+}
+
+fragment AuctionApp_sale on Sale {
+  id
+  name
+  __id
 }
 */
 
@@ -54,64 +65,25 @@ v1 = {
 },
 v2 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "me",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "Me",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "name",
-        "args": null,
-        "storageKey": null
-      },
-      v1
-    ]
-  },
-  {
-    "kind": "LinkedField",
-    "alias": "sale",
-    "name": "sale",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "id",
-        "variableName": "saleID",
-        "type": "String!"
-      }
-    ],
-    "concreteType": "Sale",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "id",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "status",
-        "args": null,
-        "storageKey": null
-      },
-      v1
-    ]
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "saleID",
+    "type": "String!"
   }
-];
+],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "routes_AuctionQuery",
   "id": null,
-  "text": "query routes_AuctionQuery(\n  $saleID: String!\n) {\n  me {\n    name\n    __id\n  }\n  sale: sale(id: $saleID) {\n    id\n    status\n    __id\n  }\n}\n",
+  "text": "query routes_AuctionQuery(\n  $saleID: String!\n) {\n  me: me {\n    ...AuctionApp_me\n    __id\n  }\n  sale: sale(id: $saleID) {\n    ...AuctionApp_sale\n    __id\n  }\n}\n\nfragment AuctionApp_me on Me {\n  name\n  __id\n}\n\nfragment AuctionApp_sale on Sale {\n  id\n  name\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -119,15 +91,84 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": "me",
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "AuctionApp_me",
+            "args": null
+          },
+          v1
+        ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": "sale",
+        "name": "sale",
+        "storageKey": null,
+        "args": v2,
+        "concreteType": "Sale",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "AuctionApp_sale",
+            "args": null
+          },
+          v1
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "routes_AuctionQuery",
     "argumentDefinitions": v0,
-    "selections": v2
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": "me",
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          v3,
+          v1
+        ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": "sale",
+        "name": "sale",
+        "storageKey": null,
+        "args": v2,
+        "concreteType": "Sale",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          v3,
+          v1
+        ]
+      }
+    ]
   }
 };
 })();
-(node as any).hash = '6dd1607b60f0ff160969906f813f6ba1';
+(node as any).hash = '0b018c8033fce0a8c862c00fe5f6605b';
 export default node;

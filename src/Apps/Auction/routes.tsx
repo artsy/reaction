@@ -3,7 +3,7 @@
 import { RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
-import { AuctionApp } from "./AuctionApp"
+import { AuctionAppFragmentContainer } from "./AuctionApp"
 
 // import { RegisterFragmentContainer as RegisterRoute } from "Apps/Auction/Routes/Register"
 
@@ -18,7 +18,7 @@ import { ErrorPage } from "Components/ErrorPage"
 export const routes: RouteConfig[] = [
   {
     path: "/auction-registration/:saleID",
-    Component: AuctionApp,
+    Component: AuctionAppFragmentContainer,
     render: ({ Component, props }) => {
       if (Component && props) {
         return <Component {...props} />
@@ -26,12 +26,11 @@ export const routes: RouteConfig[] = [
     },
     query: graphql`
       query routes_AuctionQuery($saleID: String!) {
-        me {
-          name
+        me: me {
+          ...AuctionApp_me
         }
         sale: sale(id: $saleID) {
-          id
-          status
+          ...AuctionApp_sale
         }
       }
     `,

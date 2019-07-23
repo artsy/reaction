@@ -11,7 +11,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction-registration/art-rite-modern-and-contemporary-art-1"
+        initialRoute="/auction-registration/yuki-contemporary-art-july-22th"
         context={{
           mediator: {
             trigger: x => x,

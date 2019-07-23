@@ -1,9 +1,13 @@
 import { Box, Sans, Separator, Serif } from "@artsy/palette"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { CommitMutation } from "Apps/Order/Utils/commitMutation"
+import {
+  CommitMutation,
+  injectCommitMutation,
+} from "Apps/Order/Utils/commitMutation"
+import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { ErrorPage } from "Components/ErrorPage"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import {
   Elements,
   ReactStripeElements,
@@ -23,17 +27,17 @@ declare global {
 interface AuctionAppProps extends ReactStripeElements.InjectedStripeProps {
   sale: any
   me: any
+  relay?: RelayProp
   commitMutation: CommitMutation
   isCommittingMutation: boolean
 }
 
 interface AuctionAppState {
-  isGettingCreditCardId: boolean
   stripe: stripe.Stripe
 }
 
 export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
-  state: AuctionAppState = { isGettingCreditCardId: false, stripe: null }
+  state: AuctionAppState = { stripe: null }
   CreditCardInput
   componentDidMount() {
     if (window.Stripe) {
@@ -51,8 +55,7 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
   }
 
   render() {
-    const { sale } = this.props
-    // const { isGettingCreditCardId } = this.state
+    const { me, sale } = this.props
 
     if (!sale) {
       return <ErrorPage code={404} />
@@ -62,6 +65,9 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
       <AppContainer>
         <Box maxWidth={550} m="0 auto">
           <Serif size="10">Register to Bid on Artsy</Serif>
+          <Separator mt={1} mb={2} />
+          <Serif size="2">Hi {me.name}</Serif>
+          <Serif size="2">Auction: {sale.name}</Serif>
           <Separator mt={1} mb={2} />
           <Sans size="4t" color="black60">
             Please enter your credit card information below. The name on your
@@ -76,7 +82,11 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
           <StripeProvider stripe={this.state.stripe}>
             <Elements>
               <Box mt={2}>
-                <RegistrationForm />
+                <RegistrationForm
+                  me={me}
+                  sale={sale}
+                  relay={this.props.relay}
+                />
               </Box>
             </Elements>
           </StripeProvider>
@@ -86,15 +96,19 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
   }
 }
 
-export const PaymentFragmentContainer = createFragmentContainer(AuctionApp, {
-  me: graphql`
-    fragment AuctionApp_me on Me {
-      name
-    }
-  `,
-  sale: graphql`
-    fragment AuctionApp_sale on Sale {
-      id
-    }
-  `,
-})
+export const AuctionAppFragmentContainer = createFragmentContainer(
+  injectCommitMutation(trackPageViewWrapper(AuctionApp)),
+  {
+    me: graphql`
+      fragment AuctionApp_me on Me {
+        name
+      }
+    `,
+    sale: graphql`
+      fragment AuctionApp_sale on Sale {
+        id
+        name
+      }
+    `,
+  }
+)
