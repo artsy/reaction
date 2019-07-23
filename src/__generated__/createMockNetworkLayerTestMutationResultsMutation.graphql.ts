@@ -49,7 +49,7 @@ mutation createMockNetworkLayerTestMutationResultsMutation(
           __typename
           id
           state
-          __id: id
+          __id
         }
       }
     }
@@ -90,8 +90,8 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
@@ -145,7 +145,7 @@ return {
   "operationKind": "mutation",
   "name": "createMockNetworkLayerTestMutationResultsMutation",
   "id": null,
-  "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          state\n          __id: id\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          state\n          __id\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

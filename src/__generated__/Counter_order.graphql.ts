@@ -47,12 +47,16 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 },
 v2 = [
+  v0,
+  v1
+],
+v3 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -102,16 +106,7 @@ return {
                   "args": null,
                   "concreteType": "Artwork",
                   "plural": false,
-                  "selections": [
-                    v0,
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    }
-                  ]
+                  "selections": v2
                 },
                 v1
               ]
@@ -132,14 +127,14 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": v2,
+      "args": v3,
       "storageKey": "itemsTotal(precision:2)"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v2,
+      "args": v3,
       "storageKey": "totalListPrice(precision:2)"
     },
     {
@@ -213,10 +208,7 @@ return {
           "args": null,
           "concreteType": "Offer",
           "plural": false,
-          "selections": [
-            v0,
-            v1
-          ]
+          "selections": v2
         }
       ]
     }

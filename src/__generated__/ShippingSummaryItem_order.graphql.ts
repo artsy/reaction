@@ -27,8 +27,8 @@ export type ShippingSummaryItem_order = {
 const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -112,13 +112,7 @@ return {
                       "args": null,
                       "storageKey": null
                     },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    }
+                    v0
                   ]
                 },
                 v0

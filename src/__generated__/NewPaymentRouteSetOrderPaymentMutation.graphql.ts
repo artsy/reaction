@@ -67,7 +67,7 @@ mutation NewPaymentRouteSetOrderPaymentMutation(
           ... on OfferOrder {
             awaitingResponseFrom
           }
-          __id: id
+          __id
         }
       }
       ... on OrderWithMutationFailure {
@@ -145,6 +145,13 @@ v3 = {
   "storageKey": null
 },
 v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -203,21 +210,8 @@ v4 = {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    }
+    v4
   ]
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 },
 v6 = {
   "kind": "InlineFragment",
@@ -244,7 +238,7 @@ return {
   "operationKind": "mutation",
   "name": "NewPaymentRouteSetOrderPaymentMutation",
   "id": null,
-  "text": "mutation NewPaymentRouteSetOrderPaymentMutation(\n  $input: FixFailedPaymentInput!\n) {\n  ecommerceFixFailedPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation NewPaymentRouteSetOrderPaymentMutation(\n  $input: FixFailedPaymentInput!\n) {\n  ecommerceFixFailedPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -286,8 +280,8 @@ return {
                     "plural": false,
                     "selections": [
                       v3,
-                      v4,
                       v5,
+                      v4,
                       v6
                     ]
                   }
@@ -339,8 +333,8 @@ return {
                     "selections": [
                       v7,
                       v3,
-                      v4,
                       v5,
+                      v4,
                       v6
                     ]
                   }

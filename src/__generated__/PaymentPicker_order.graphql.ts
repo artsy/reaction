@@ -95,13 +95,6 @@ v5 = {
   "name": "__id",
   "args": null,
   "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -293,14 +286,14 @@ return {
                     v5
                   ]
                 },
-                v6
+                v5
               ]
             }
           ]
         }
       ]
     },
-    v6
+    v5
   ]
 };
 })();
