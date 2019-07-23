@@ -3,11 +3,10 @@ import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import { OtherAuctionsQueryRenderer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } from "Apps/Artwork/Components/OtherWorks/RelatedWorksArtworkGrid"
-import { Mediator, withSystemContext } from "Artsy"
+import { Mediator, SystemContextProps, withSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
-import { filter } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -26,7 +25,7 @@ export function hideGrid(artworksConnection): boolean {
 
 const populatedGrids = (grids: OtherWorks_artwork["contextGrids"]) => {
   if (grids && grids.length > 0) {
-    return filter(grids, grid => {
+    return grids.filter(grid => {
       return (
         grid.artworks &&
         grid.artworks.edges &&
@@ -54,53 +53,50 @@ const contextGridTypeToContextModule = contextGridType => {
   }
 }
 
-export const OtherWorks: React.FC<{
-  artwork: OtherWorks_artwork
-}> = track()(props => {
-  const { context, contextGrids, sale } = props.artwork
+export const OtherWorks = track()(
+  (props: { artwork: OtherWorks_artwork } & SystemContextProps) => {
+    const { context, contextGrids, sale } = props.artwork
+    const gridsToShow = populatedGrids(contextGrids)
+    const tracking = useTracking()
 
-  const grids = contextGrids
-  const gridsToShow = populatedGrids(grids)
-
-  const tracking = useTracking()
-
-  return (
-    <>
-      {gridsToShow && gridsToShow.length > 0 && (
-        <Join separator={<Spacer my={3} />}>
-          {gridsToShow.map((grid, index) => (
-            <React.Fragment key={`Grid-${index}`}>
-              <Header title={grid.title} buttonHref={grid.ctaHref} />
-              <ArtworkGrid
-                artworks={grid.artworks}
-                columnCount={[2, 3, 4]}
-                preloadImageCount={0}
-                mediator={props.mediator}
-                onBrickClick={() =>
-                  tracking.trackEvent({
-                    type: Schema.Type.ArtworkBrick,
-                    action_type: Schema.ActionType.Click,
-                    context_module: contextGridTypeToContextModule(
-                      grid.__typename
-                    ),
-                  })
-                }
-              />
-            </React.Fragment>
-          ))}
-        </Join>
-      )}
-      {!(
-        context &&
-        context.__typename === "ArtworkContextAuction" &&
-        !(sale && sale.is_closed)
-      ) && <RelatedWorksArtworkGrid artwork={props.artwork} />}
-      {context && context.__typename === "ArtworkContextAuction" && (
-        <OtherAuctions />
-      )}
-    </>
-  )
-})
+    return (
+      <>
+        {gridsToShow && gridsToShow.length > 0 && (
+          <Join separator={<Spacer my={3} />}>
+            {gridsToShow.map((grid, index) => (
+              <React.Fragment key={`Grid-${index}`}>
+                <Header title={grid.title} buttonHref={grid.ctaHref} />
+                <ArtworkGrid
+                  artworks={grid.artworks}
+                  columnCount={[2, 3, 4]}
+                  preloadImageCount={0}
+                  mediator={props.mediator}
+                  onBrickClick={() =>
+                    tracking.trackEvent({
+                      type: Schema.Type.ArtworkBrick,
+                      action_type: Schema.ActionType.Click,
+                      context_module: contextGridTypeToContextModule(
+                        grid.__typename
+                      ),
+                    })
+                  }
+                />
+              </React.Fragment>
+            ))}
+          </Join>
+        )}
+        {!(
+          context &&
+          context.__typename === "ArtworkContextAuction" &&
+          !(sale && sale.is_closed)
+        ) && <RelatedWorksArtworkGrid artwork={props.artwork} />}
+        {context && context.__typename === "ArtworkContextAuction" && (
+          <OtherAuctions />
+        )}
+      </>
+    )
+  }
+)
 
 export const OtherWorksFragmentContainer = createFragmentContainer<{
   artwork: OtherWorks_artwork

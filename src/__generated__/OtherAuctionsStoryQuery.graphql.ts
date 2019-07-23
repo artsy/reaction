@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { OtherAuctions_sales$ref } from "./OtherAuctions_sales.graphql";
-export type OtherAuctionsTestQueryVariables = {
+export type OtherAuctionsStoryQueryVariables = {
     readonly size: number;
 };
-export type OtherAuctionsTestQueryResponse = {
+export type OtherAuctionsStoryQueryResponse = {
     readonly sales: ReadonlyArray<({
         readonly " $fragmentRefs": OtherAuctions_sales$ref;
     }) | null> | null;
 };
-export type OtherAuctionsTestQuery = {
-    readonly response: OtherAuctionsTestQueryResponse;
-    readonly variables: OtherAuctionsTestQueryVariables;
+export type OtherAuctionsStoryQuery = {
+    readonly response: OtherAuctionsStoryQueryResponse;
+    readonly variables: OtherAuctionsStoryQueryVariables;
 };
 
 
 
 /*
-query OtherAuctionsTestQuery(
+query OtherAuctionsStoryQuery(
   $size: Int!
 ) {
   sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
@@ -110,13 +110,13 @@ v4 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "OtherAuctionsTestQuery",
+  "name": "OtherAuctionsStoryQuery",
   "id": null,
-  "text": "query OtherAuctionsTestQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    __id: id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
+  "text": "query OtherAuctionsStoryQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    __id: id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "OtherAuctionsTestQuery",
+    "name": "OtherAuctionsStoryQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -142,7 +142,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "OtherAuctionsTestQuery",
+    "name": "OtherAuctionsStoryQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -308,5 +308,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'b1ea7995a8b98c8027a8acf596dd57d9';
+(node as any).hash = '786aba336603d5d42d7951471629aaed';
 export default node;
