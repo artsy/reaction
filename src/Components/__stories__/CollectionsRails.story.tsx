@@ -1,6 +1,6 @@
 import { Box, Theme } from "@artsy/palette"
 import { SystemContext } from "Artsy"
-import { FeaturedCollectionsRails } from "Components/CollectionsRails/FeaturedCollectionsRails"
+import { CollectionsHubRailsContainer as CollectionsHubRails } from "Components/CollectionsHubRails"
 import React, { useContext } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -11,11 +11,11 @@ const RailsContainer = styled(Box)`
 `
 
 storiesOf("Components/CollectionsRails", module).add(
-  "Featured Collections Rail",
+  "Collection Hub Rails",
   () => (
     <Theme>
       <RailsContainer width="100%">
-        <FeaturedCollectionsRailQueryRenderer collectionID="street-art-now" />
+        <CollectionHubRailsQueryRenderer collectionID="street-art-now" />
       </RailsContainer>
     </Theme>
   )
@@ -25,7 +25,7 @@ interface Props {
   collectionID: string
 }
 
-export const FeaturedCollectionsRailQueryRenderer: React.FC<Props> = ({
+export const CollectionHubRailsQueryRenderer: React.FC<Props> = ({
   collectionID,
 }) => {
   const { relayEnvironment } = useContext(SystemContext)
@@ -39,13 +39,13 @@ export const FeaturedCollectionsRailQueryRenderer: React.FC<Props> = ({
       query={graphql`
         query CollectionsRailsQuery($collectionID: String!) {
           marketingCollection(slug: $collectionID) {
-            ...FeaturedCollectionsRails_marketingCollection
+            ...CollectionsHubRails_marketingCollection
           }
         }
       `}
       render={({ props }) => {
         if (props) {
-          return <FeaturedCollectionsRails {...props as any} />
+          return <CollectionsHubRails {...props as any} />
         } else {
           return null
         }
