@@ -5,6 +5,7 @@ declare const _DefaultHeader_headerArtworks$ref: unique symbol;
 export type DefaultHeader_headerArtworks$ref = typeof _DefaultHeader_headerArtworks$ref;
 export type DefaultHeader_headerArtworks = {
     readonly hits: ReadonlyArray<({
+        readonly href: string | null;
         readonly id: string;
         readonly imageUrl: string | null;
         readonly image: ({
@@ -40,6 +41,13 @@ return {
       "concreteType": "Artwork",
       "plural": true,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "href",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "ScalarField",
           "alias": null,
@@ -86,5 +94,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cdca65eae5037e65eed7626c3499d04b';
+(node as any).hash = 'd6460a7c8e09bef9fe2b318076129633';
 export default node;

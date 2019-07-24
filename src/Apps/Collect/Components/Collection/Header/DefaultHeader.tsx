@@ -4,6 +4,7 @@ import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { resize } from "Utils/resizer"
+// import { getViewportWidth } from "Utils/viewport"
 
 interface Props {
   headerArtworks: DefaultHeader_headerArtworks
@@ -14,13 +15,11 @@ export const CollectionDefaultHeader: FC<Props> = ({
   defaultHeaderImageHeight,
 }) => {
   const { hits: artworks } = headerArtworks
-  if (!artworks) {
-    return null
-  }
+  console.log("TCL: artworks", artworks)
 
   return (
     <header>
-      <HeaderWrapper
+      <DefaultHeaderContainer
         position={["relative", "absolute"]}
         left={["auto", 0]}
         width={["auto", 1]}
@@ -28,6 +27,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
         mt={0}
         mb={3}
         height={[160, 250]}
+        className="deafult-header-artwork"
       >
         <Flex
           flexDirection="row"
@@ -42,18 +42,18 @@ export const CollectionDefaultHeader: FC<Props> = ({
             })
 
             return (
-              <Image
-                key={i}
-                width={artwork.image.width}
-                height={defaultHeaderImageHeight}
-                mx={15}
-                src={resizedImageUrl}
-                preventRightClick
-              />
+              <a href={artwork.href} key={i}>
+                <Image
+                  mx={0.5}
+                  height={defaultHeaderImageHeight}
+                  src={resizedImageUrl}
+                  preventRightClick
+                />
+              </a>
             )
           })}
         </Flex>
-      </HeaderWrapper>
+      </DefaultHeaderContainer>
     </header>
   )
 }
@@ -64,6 +64,7 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
     headerArtworks: graphql`
       fragment DefaultHeader_headerArtworks on FilterArtworks {
         hits {
+          href
           id
           imageUrl
           image {
@@ -75,10 +76,7 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
   }
 )
 
-const DefaultBanner = styled(Box)`
-  height: 250px;
-`
-
-const HeaderWrapper = styled(Box)`
+const DefaultHeaderContainer = styled(Box)`
   background-color: rgba(255, 255, 255, 0.8);
+  overflow-x: hidden;
 `
