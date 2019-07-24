@@ -1,3 +1,15 @@
+# v16.18.35 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed spacing above Related Works artwork grid on artwork page [#2630](https://github.com/artsy/reaction/pull/2630) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.18.34 (Wed Jul 24 2019)
 
 #### 🐛  Bug Fix
