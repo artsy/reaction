@@ -1,3 +1,15 @@
+# v16.18.33 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Collections hub [#2628](https://github.com/artsy/reaction/pull/2628) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
 # v16.18.32 (Wed Jul 24 2019)
 
 #### 🐛  Bug Fix
