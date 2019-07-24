@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -11,7 +12,6 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import createLogger from "Utils/logger"
-import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
 
 const logger = createLogger("ArtworkRelatedArtists.tsx")
 
