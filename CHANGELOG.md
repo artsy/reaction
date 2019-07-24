@@ -1,3 +1,15 @@
+# v16.18.32 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1317: Convert OtherWorks component to use contextGrids [#2623](https://github.com/artsy/reaction/pull/2623) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.18.31 (Tue Jul 23 2019)
 
 #### 🐛  Bug Fix
