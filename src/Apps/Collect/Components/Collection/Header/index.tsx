@@ -154,6 +154,14 @@ const imageHeightSizes = {
   sm: 250,
 }
 
+const defaultHeaderImageHeight = {
+  xs: 140,
+  sm: 140,
+  md: 220,
+  lg: 220,
+  xl: 220,
+}
+
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
   const [showMore, setShowMore] = useState(false)
@@ -210,6 +218,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     <Responsive>
       {({ xs, sm, md, lg }) => {
         const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
+        const responsiveImageHeight = defaultHeaderImageHeight[size]
         const imageWidth = imageWidthSizes[size]
         const imageHeight = xs ? imageHeightSizes.xs : imageHeightSizes.sm
         const chars = maxChars[size]
@@ -251,7 +260,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     )}
                   </Background>
                 ) : (
-                  <CollectionDefaultHeader headerArtworks={artworks as any} />
+                  <CollectionDefaultHeader
+                    headerArtworks={artworks as any}
+                    defaultHeaderImageHeight={responsiveImageHeight}
+                  />
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
                   <BreadcrumbContainer size={["2", "3"]}>

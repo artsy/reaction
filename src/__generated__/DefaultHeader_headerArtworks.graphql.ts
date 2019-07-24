@@ -7,6 +7,9 @@ export type DefaultHeader_headerArtworks = {
     readonly hits: ReadonlyArray<({
         readonly id: string;
         readonly imageUrl: string | null;
+        readonly image: ({
+            readonly width: number | null;
+        }) | null;
     }) | null> | null;
     readonly " $refType": DefaultHeader_headerArtworks$ref;
 };
@@ -51,6 +54,31 @@ return {
           "args": null,
           "storageKey": null
         },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "image",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Image",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "width",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": "__id",
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
         v0
       ]
     },
@@ -58,5 +86,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9ab248af491b30ccbdaeff022fb146b8';
+(node as any).hash = 'cdca65eae5037e65eed7626c3499d04b';
 export default node;
