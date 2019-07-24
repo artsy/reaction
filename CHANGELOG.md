@@ -1,3 +1,17 @@
+# v16.18.34 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Test & refactor collection header [#2614](https://github.com/artsy/reaction/pull/2614) ([@ashleyjelks](https://github.com/ashleyjelks) [@xtina-starr](https://github.com/xtina-starr) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v16.18.33 (Wed Jul 24 2019)
 
 #### 🐛  Bug Fix
