@@ -1,8 +1,9 @@
-import { Button, Checkbox, Input, Serif } from "@artsy/palette"
+import { Button, Input } from "@artsy/palette"
 import { AuctionApp_me } from "__generated__/AuctionApp_me.graphql"
 import { AuctionApp_sale } from "__generated__/AuctionApp_sale.graphql"
 import { RegistrationFormCreateBidderMutation } from "__generated__/RegistrationFormCreateBidderMutation.graphql"
 import { RegistrationFormCreateCreditCardMutation } from "__generated__/RegistrationFormCreateCreditCardMutation.graphql"
+import { ConditionsOfSaleCheckbox } from "Apps/Auction/Components/ConditionsOfSaleCheckbox"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { CountrySelect } from "Components/v2"
 import { Form, Formik, FormikProps } from "formik"
@@ -41,7 +42,6 @@ const InnerForm = (props: FormikProps<FormValues>) => {
     handleBlur,
     isSubmitting,
     handleChange,
-    setFieldValue,
     values,
   } = props
 
@@ -112,19 +112,15 @@ const InnerForm = (props: FormikProps<FormValues>) => {
         name="telephone"
       />
 
-      <Checkbox
+      <ConditionsOfSaleCheckbox
         error={touched.agree_to_terms && errors.agree_to_terms}
-        onSelect={selected => setFieldValue("agree_to_terms", selected)}
-        selected={values.agree_to_terms}
-      >
-        <Serif size="2">
-          Agree to{" "}
-          <a href="https://www.artsy.net/conditions-of-sale">
-            Conditions of Sale
-          </a>
-          .
-        </Serif>
-      </Checkbox>
+        checked={values.agree_to_terms}
+        value={values.agree_to_terms}
+        type="checkbox"
+        name="accepted_to_terms"
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
 
       <Button mt={1} size="large" width="100%" loading={isSubmitting}>
         Submit
