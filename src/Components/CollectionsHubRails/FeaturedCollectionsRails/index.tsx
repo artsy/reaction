@@ -1,4 +1,12 @@
-import { Box, color, Flex, ReadMore, Sans, Serif } from "@artsy/palette"
+import {
+  Box,
+  color,
+  Flex,
+  ReadMore,
+  ResponsiveImage,
+  Sans,
+  Serif,
+} from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -10,37 +18,41 @@ interface Props {
 export const FeaturedCollectionsRails: React.FC<Props> = ({
   collectionGroup,
 }) => {
-  const { members } = collectionGroup
+  const { members, name } = collectionGroup
   return (
-    <Flex flexDirection="row">
-      <Serif size="5">{name}</Serif>
-      {members.map(({ title, description, price_guidance, thumbnail }) => (
-        <Container p={2} m={1}>
-          <ImageContainer>
-            <img src={thumbnail} />
-          </ImageContainer>
-          <Serif size="5" mt={1}>
-            {title}
-          </Serif>
-          <Sans
-            size="2"
-            color="black60"
-          >{`Starting at $${price_guidance}`}</Sans>
-          <ExtendedSerif size="3" mt={1}>
-            <ReadMore
-              maxChars={100}
-              content={
-                <>
-                  {description && (
-                    <span dangerouslySetInnerHTML={{ __html: description }} />
-                  )}
-                </>
-              }
-            />
-          </ExtendedSerif>
-        </Container>
-      ))}
-    </Flex>
+    <>
+      <Serif size="5" m={1}>
+        {name}
+      </Serif>
+      <Flex flexDirection="row">
+        {members.map(({ title, description, price_guidance, thumbnail }) => (
+          <Container p={2} m={1}>
+            <ImageContainer>
+              <ResponsiveImage src={thumbnail} />
+            </ImageContainer>
+            <Serif size="5" mt={1}>
+              {title}
+            </Serif>
+            <Sans
+              size="2"
+              color="black60"
+            >{`Starting at $${price_guidance}`}</Sans>
+            <ExtendedSerif size="3" mt={1}>
+              <ReadMore
+                maxChars={100}
+                content={
+                  <>
+                    {description && (
+                      <span dangerouslySetInnerHTML={{ __html: description }} />
+                    )}
+                  </>
+                }
+              />
+            </ExtendedSerif>
+          </Container>
+        ))}
+      </Flex>
+    </>
   )
 }
 
@@ -71,7 +83,6 @@ const Container = styled(Box)`
 
 const ImageContainer = styled(Flex)`
   height: 280px;
-  background: ${color("black10")};
 `
 
 const ExtendedSerif = styled(Serif)`

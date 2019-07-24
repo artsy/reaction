@@ -10,6 +10,8 @@ const railForGroupType = collectionGroup => {
       return null
     case "FeaturedCollections":
       return <FeaturedCollectionsRails collectionGroup={collectionGroup} />
+    case "OtherCollections":
+      return null
     default:
       return null
   }
