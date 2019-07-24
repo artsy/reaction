@@ -27,12 +27,13 @@ import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
-interface Props {
+// TODO: Update query interface when we know the schema
+export interface Props {
   collection: {
     artist_ids?: string[]
     category: string
     credit?: string
-    description?: JSX.Element | string
+    description?: string
     gene_ids?: string[]
     headerImage: string
     major_periods?: string[]
@@ -44,16 +45,6 @@ interface Props {
   artworks: Header_artworks
 }
 
-const getReadMoreContent = description => {
-  return (
-    <>
-      {description && (
-        <span dangerouslySetInnerHTML={{ __html: description }} />
-      )}
-    </>
-  )
-}
-
 const handleOpenAuth = (mediator, artist) => {
   openAuthModal(mediator, {
     entity: artist,
@@ -62,20 +53,9 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
-export const getWidth = () => {
-  let width: number
-  try {
-    width = window.innerWidth
-  } catch (e) {
-    width = 0
-  }
-  return width
-}
-
 export const getFeaturedArtists = (
   artistsCount: number,
   collection,
-  isColumnLayout: boolean,
   merchandisableArtists,
   mediator,
   user
@@ -87,39 +67,27 @@ export const getFeaturedArtists = (
       collection.query.artist_ids.includes(artist._id)
     )
 
-    return featuredArtistsEntityCollection(
-      featuredArtists,
-      isColumnLayout,
-      mediator,
-      user
-    )
+    return featuredArtistsEntityCollection(featuredArtists, mediator, user)
   }
 
   if (merchandisableArtists.length > 0) {
     return featuredArtistsEntityCollection(
       take(merchandisableArtists, artistsCount),
-      isColumnLayout,
       mediator,
       user
     )
   }
 }
 
-export const featuredArtistsEntityCollection = (
-  artists,
-  isColumnLayout,
-  mediator,
-  user
-) => {
+export const featuredArtistsEntityCollection: (
+  artists: any[],
+  mediator: any,
+  user: any
+) => JSX.Element[] = (artists, mediator, user) => {
   return artists.map((artist, index) => {
     const hasArtistMetaData = artist.nationality && artist.birthday
     return (
-      <EntityContainer
-        width={["100%", "33%", "33%", "25%"]}
-        isColumnLayout={isColumnLayout}
-        key={index}
-        pb={20}
-      >
+      <Box width={["100%", "33%", "33%", "25%"]} key={index} pb={20}>
         <EntityHeader
           imageUrl={artist.imageUrl}
           name={artist.name}
@@ -159,7 +127,7 @@ export const featuredArtistsEntityCollection = (
             />
           }
         />
-      </EntityContainer>
+      </Box>
     )
   })
 }
@@ -192,15 +160,23 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
 
-  const truncateFeaturedArtists = (featuredArtists, isColumnLayout) => {
-    const width = getWidth()
-    const truncatedLength = sd.IS_MOBILE
-      ? 3
-      : width > 1024
-      ? 7
-      : width > 768
-      ? 5
-      : 3
+  function calculateNumberOfArtists(size) {
+    if (sd.IS_MOBILE) {
+      return 3
+    }
+    switch (size) {
+      case "md":
+        return 5
+      case "lg":
+      case "xl":
+        return 7
+      default:
+        return 3
+    }
+  }
+
+  const truncateFeaturedArtists = (featuredArtists: JSX.Element[], size) => {
+    const truncatedLength = calculateNumberOfArtists(size)
 
     if (featuredArtists.length <= truncatedLength) {
       return featuredArtists
@@ -208,12 +184,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
 
     const remainingArtists = featuredArtists.length - truncatedLength
     const viewMore = (
-      <EntityContainer
-        width={["100%", "33%", "33%", "25%"]}
-        isColumnLayout={isColumnLayout}
-        pb={20}
-        key={4}
-      >
+      <Box width={["100%", "33%", "33%", "25%"]} pb={20} key="view-more">
         <ViewMore
           onClick={() => {
             setShowMore(true)
@@ -221,13 +192,18 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         >
           <EntityHeader initials={`+ ${remainingArtists}`} name="View more" />
         </ViewMore>
-      </EntityContainer>
+      </Box>
     )
     const artists = cloneDeep(featuredArtists)
+
     artists.splice(truncatedLength, remainingArtists, viewMore)
 
     return showMore ? featuredArtists : artists
   }
+
+  const htmlUnsafeDescription = collection.description && (
+    <span dangerouslySetInnerHTML={{ __html: collection.description }} />
+  )
 
   return (
     <Responsive>
@@ -238,13 +214,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
-        const isColumnLayout =
-          hasMultipleArtists || !collection.description || size === "xs"
         const smallerScreen = size === "xs" || size === "sm"
         const featuredArtists = getFeaturedArtists(
           artistsCount,
           collection,
-          isColumnLayout,
           artworks.merchandisable_artists,
           mediator,
           user
@@ -291,12 +264,10 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           {smallerScreen ? (
                             <ReadMore
                               maxChars={chars}
-                              content={getReadMoreContent(
-                                collection.description
-                              )}
+                              content={htmlUnsafeDescription}
                             />
                           ) : (
-                            getReadMoreContent(collection.description)
+                            htmlUnsafeDescription
                           )}
                           {collection.description && <Spacer mt={2} />}
                         </ExtendedSerif>
@@ -308,11 +279,8 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           <Sans size="2" weight="medium" pb={15}>
                             {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
                           </Sans>
-                          <Flex flexWrap={isColumnLayout ? "wrap" : "nowrap"}>
-                            {truncateFeaturedArtists(
-                              featuredArtists,
-                              isColumnLayout
-                            )}
+                          <Flex flexWrap="wrap">
+                            {truncateFeaturedArtists(featuredArtists, size)}
                           </Flex>
                         </Box>
                       )}
@@ -371,12 +339,6 @@ const BreadcrumbContainer = styled(Sans)`
   }
 `
 
-const EntityContainer = styled(Box)<{
-  isColumnLayout: boolean
-}>`
-  ${props => (props.isColumnLayout ? "" : "min-width: 200px;")}
-`
-
 const ImageCaption = styled(Box)`
   ${unica("s12")};
   position: absolute;
@@ -402,7 +364,7 @@ const ExtendedSerif = styled(Serif)`
   }
 `
 
-const ViewMore = styled(Box)`
+export const ViewMore = styled(Box)`
   div {
     div {
       text-decoration: underline;
