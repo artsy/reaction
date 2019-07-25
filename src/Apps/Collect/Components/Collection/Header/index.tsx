@@ -232,7 +232,6 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
           mediator,
           user
         )
-        const responsiveImageHeight = defaultHeaderImageHeight[size]
 
         return (
           <header>
@@ -263,7 +262,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                 ) : (
                   <CollectionDefaultHeader
                     headerArtworks={artworks as any}
-                    defaultHeaderImageHeight={responsiveImageHeight}
+                    defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
                   />
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
