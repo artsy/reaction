@@ -1,6 +1,7 @@
 import { Box, Link, Sans, Serif } from "@artsy/palette"
 import Checkbox from "Components/Checkbox"
 import React from "react"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 export const ConditionsOfSaleCheckbox = ({
@@ -19,7 +20,7 @@ export const ConditionsOfSaleCheckbox = ({
           <Serif display="inline" color="black100" size="3t">
             <Link
               color="black100"
-              href="https://www.artsy.net/conditions-of-sale"
+              href={`${sd.APP_URL}/conditions-of-sale`}
               target="_blank"
             >
               Conditions of Sale
