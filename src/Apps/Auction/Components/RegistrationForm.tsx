@@ -5,7 +5,7 @@ import { RegistrationFormCreateCreditCardMutation } from "__generated__/Registra
 import { ConditionsOfSaleCheckbox } from "Apps/Auction/Components/ConditionsOfSaleCheckbox"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Form, Formik, FormikProps } from "formik"
-import React, { Component } from "react"
+import React from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import {
   CardElement,
@@ -166,12 +166,12 @@ export interface RegistrationFormProps
   sale: AuctionApp_sale
 }
 
-class RegistrationForm extends Component<RegistrationFormProps> {
-  private createBidder(setSubmitting) {
-    const { sale } = this.props
+const RegistrationForm: React.FC<RegistrationFormProps> = props => {
+  function createBidder(setSubmitting) {
+    const { sale } = props
 
     commitMutation<RegistrationFormCreateBidderMutation>(
-      this.props.relay.environment,
+      props.relay.environment,
       {
         onCompleted: (data, errors) => {
           setSubmitting(false)
@@ -199,10 +199,10 @@ class RegistrationForm extends Component<RegistrationFormProps> {
     )
   }
 
-  private createCreditCard(token) {
+  function createCreditCard(token) {
     return new Promise(async (resolve, reject) => {
       commitMutation<RegistrationFormCreateCreditCardMutation>(
-        this.props.relay.environment,
+        props.relay.environment,
         {
           onCompleted: (data, errors) => {
             const {
@@ -252,45 +252,42 @@ class RegistrationForm extends Component<RegistrationFormProps> {
     })
   }
 
-  render() {
-    return (
-      <Formik
-        initialValues={{
-          name: "",
-          street1: "",
-          city: "",
-          credit_card: null,
-          state: "",
-          postal_code: "",
-          telephone: "",
-          agree_to_terms: false,
-        }}
-        onSubmit={(values: FormValues, { setFieldError, setSubmitting }) => {
-          const address = {
-            name: values.name,
-            address_line1: values.street1,
-            address_city: values.city,
-            address_state: values.state,
-            address_zip: values.postal_code,
-          }
+  return (
+    <Formik
+      initialValues={{
+        name: "",
+        street1: "",
+        city: "",
+        credit_card: null,
+        state: "",
+        postal_code: "",
+        telephone: "",
+        agree_to_terms: false,
+      }}
+      onSubmit={(values: FormValues, { setFieldError, setSubmitting }) => {
+        const address = {
+          name: values.name,
+          address_line1: values.street1,
+          address_city: values.city,
+          address_state: values.state,
+          address_zip: values.postal_code,
+        }
 
-          this.props.stripe.createToken(address).then(({ error, token }) => {
-            if (error) {
-              setFieldError("credit_card", error.message)
-              setSubmitting(false)
-            } else {
-              console.log(token)
-              this.createCreditCard(token.id).then(() => {
-                this.createBidder(setSubmitting)
-              })
-            }
-          })
-        }}
-        validationSchema={validationSchema}
-        render={InnerForm}
-      />
-    )
-  }
+        props.stripe.createToken(address).then(({ error, token }) => {
+          if (error) {
+            setFieldError("credit_card", error.message)
+            setSubmitting(false)
+          } else {
+            createCreditCard(token.id).then(() => {
+              createBidder(setSubmitting)
+            })
+          }
+        })
+      }}
+      validationSchema={validationSchema}
+      render={InnerForm}
+    />
+  )
 }
 
-export default injectStripe(RegistrationForm)
+export const WrappedRegistrationForm = injectStripe(RegistrationForm)

@@ -10,16 +10,8 @@ import {
   ReactStripeElements,
   StripeProvider,
 } from "react-stripe-elements"
-import RegistrationForm from "./Components/RegistrationForm"
-
-declare global {
-  interface Window {
-    Stripe?: (key: string) => stripe.Stripe
-    sd: {
-      STRIPE_PUBLISHABLE_KEY: string
-    }
-  }
-}
+import { data as sd } from "sharify"
+import { WrappedRegistrationForm } from "./Components/RegistrationForm"
 
 interface AuctionAppProps extends ReactStripeElements.InjectedStripeProps {
   sale: AuctionApp_sale
@@ -33,19 +25,29 @@ interface AuctionAppState {
 export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
   state: AuctionAppState = { stripe: null }
   CreditCardInput
+
   componentDidMount() {
     if (window.Stripe) {
       this.setState({
-        stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+        stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
       })
     } else {
-      document.querySelector("#stripe-js").addEventListener("load", () => {
-        // Create Stripe instance once Stripe.js loads
-        this.setState({
-          stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
-        })
-      })
+      document
+        .querySelector("#stripe-js")
+        .addEventListener("load", this.setupStripe)
     }
+  }
+
+  componentWillUnmount() {
+    document
+      .querySelector("#stripe-js")
+      .removeEventListener("load", this.setupStripe)
+  }
+
+  private setupStripe() {
+    this.setState({
+      stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+    })
   }
 
   render() {
@@ -73,7 +75,7 @@ export class AuctionApp extends Component<AuctionAppProps, AuctionAppState> {
           <StripeProvider stripe={this.state.stripe}>
             <Elements>
               <Box mt={2}>
-                <RegistrationForm sale={sale} relay={this.props.relay} />
+                <WrappedRegistrationForm sale={sale} relay={this.props.relay} />
               </Box>
             </Elements>
           </StripeProvider>
