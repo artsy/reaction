@@ -1,13 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { FeaturedCollectionsRails_marketingCollection$ref } from "./FeaturedCollectionsRails_marketingCollection.graphql";
+import { CollectionsHubRails_marketingCollection$ref } from "./CollectionsHubRails_marketingCollection.graphql";
 export type CollectionsRailsQueryVariables = {
     readonly collectionID: string;
 };
 export type CollectionsRailsQueryResponse = {
     readonly marketingCollection: ({
-        readonly " $fragmentRefs": FeaturedCollectionsRails_marketingCollection$ref;
+        readonly " $fragmentRefs": CollectionsHubRails_marketingCollection$ref;
     }) | null;
 };
 export type CollectionsRailsQuery = {
@@ -22,24 +22,47 @@ query CollectionsRailsQuery(
   $collectionID: String!
 ) {
   marketingCollection(slug: $collectionID) {
-    ...FeaturedCollectionsRails_marketingCollection
+    ...CollectionsHubRails_marketingCollection
     __id: id
   }
 }
 
-fragment FeaturedCollectionsRails_marketingCollection on MarketingCollection {
+fragment CollectionsHubRails_marketingCollection on MarketingCollection {
   linkedCollections {
     groupType
-    name
-    members {
-      id
-      slug
-      title
-      description
-      price_guidance
-      __id: id
-    }
+    ...FeaturedCollectionsRails_collectionGroup
+    ...OtherCollectionsRail_collectionGroup
   }
+  __id: id
+}
+
+fragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {
+  groupType
+  name
+  members {
+    id
+    slug
+    title
+    description
+    price_guidance
+    thumbnail
+    __id: id
+  }
+}
+
+fragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {
+  groupType
+  name
+  members {
+    ...OtherCollectionEntity_member
+    __id: id
+  }
+}
+
+fragment OtherCollectionEntity_member on MarketingCollection {
+  slug
+  thumbnail
+  title
   __id: id
 }
 */
@@ -73,7 +96,7 @@ return {
   "operationKind": "query",
   "name": "CollectionsRailsQuery",
   "id": null,
-  "text": "query CollectionsRailsQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    ...FeaturedCollectionsRails_marketingCollection\n    __id: id\n  }\n}\n\nfragment FeaturedCollectionsRails_marketingCollection on MarketingCollection {\n  linkedCollections {\n    groupType\n    name\n    members {\n      id\n      slug\n      title\n      description\n      price_guidance\n      __id: id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query CollectionsRailsQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    ...CollectionsHubRails_marketingCollection\n    __id: id\n  }\n}\n\nfragment CollectionsHubRails_marketingCollection on MarketingCollection {\n  linkedCollections {\n    groupType\n    ...FeaturedCollectionsRails_collectionGroup\n    ...OtherCollectionsRail_collectionGroup\n  }\n  __id: id\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    id\n    slug\n    title\n    description\n    price_guidance\n    thumbnail\n    __id: id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    __id: id\n  }\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -93,7 +116,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "FeaturedCollectionsRails_marketingCollection",
+            "name": "CollectionsHubRails_marketingCollection",
             "args": null
           },
           v2
@@ -182,6 +205,13 @@ return {
                     "args": null,
                     "storageKey": null
                   },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "thumbnail",
+                    "args": null,
+                    "storageKey": null
+                  },
                   v2
                 ]
               }
@@ -194,5 +224,5 @@ return {
   }
 };
 })();
-(node as any).hash = '709a1e409ea485e6f250c2a7b44f2a72';
+(node as any).hash = '7d69b0d92a576a78d18a036def1cc118';
 export default node;

@@ -270,3 +270,35 @@ export const CategoriesFixture = [
     ],
   },
 ]
+
+export const CollectionsHubFixture = [
+  {
+    title: "KAWS: Companions",
+    slug: "kaws-companions",
+    headerImage:
+      "https://artsy-vanity-files-production.s3.amazonaws.com/images/kaws2.png",
+    linkedCollections: [
+      {
+        groupType: "OtherCollections",
+        name: "Other Collections",
+        members: [
+          {
+            slug: "artist-posters",
+            thumbnail: "http://files.artsy.net/images/posters_thumbnail.png",
+            title: "Artist Posters",
+          },
+          {
+            slug: "artist-skateboard-decks",
+            title: "Artist Skateboard Decks",
+          },
+          {
+            slug: "kaws-bearbrick",
+            thumbnail:
+              "http://files.artsy.net/images/kaws-bearbrick_thumbnail.png",
+            title: "KAWS: Bearbricks",
+          },
+        ],
+      },
+    ],
+  },
+]
