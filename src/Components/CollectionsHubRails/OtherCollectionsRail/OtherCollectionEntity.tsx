@@ -63,21 +63,3 @@ export const OtherCollectionsRailsContainer = createFragmentContainer(
     `,
   }
 )
-
-// export const OtherCollectionEntityFragmentContainer = createFragmentContainer(
-//   OtherCollectionEntity,
-//   {
-//     collection: graphql`
-//       fragment OtherCollectionEntity_collection on MarketingCollection {
-//         linkedCollections {
-//           name
-//           members {
-//             thumbnail
-//             slug
-//             title
-//           }
-//         }
-//       }
-//     `,
-//   }
-// )
