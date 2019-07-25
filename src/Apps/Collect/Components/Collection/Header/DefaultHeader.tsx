@@ -19,17 +19,18 @@ export const CollectionDefaultHeader: FC<Props> = ({
 }) => {
   useViewportSize()
   const { hits: artworks } = headerArtworks
+  console.log("TCL: artworks", artworks)
 
   const getHeaderArtworks = (
-    allArtworks: any[],
+    originalArtworksArray: any[],
     headerWidth: number,
     isSmallViewport: boolean
   ) => {
     let artworkWidthsInOriginalArray = 0
-    let artworkWidthsInRepeatedArray = artworkWidthsInOriginalArray
+    let artworkWidthsInRepeatingArray
     const repeatedArtworksArray = []
 
-    allArtworks.forEach(artwork => {
+    originalArtworksArray.forEach(artwork => {
       isSmallViewport
         ? (artworkWidthsInOriginalArray +=
             artwork.image.small.width + IMAGE_MARGIN_X)
@@ -38,27 +39,27 @@ export const CollectionDefaultHeader: FC<Props> = ({
       repeatedArtworksArray.push(artwork)
     })
 
-    artworkWidthsInRepeatedArray = artworkWidthsInOriginalArray
+    artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
 
     /**
      * If the summed widths of the artworks returned is larger than the width
      * of the viewport then there's no need to duplicate/repeat the header's artworks
      */
     if (artworkWidthsInOriginalArray >= headerWidth) {
-      return allArtworks
+      return originalArtworksArray
     } else {
       /**
        * Otherwise, duplicate the original array of artworks and add a new artwork to the array
        * until the summed widths of the artworks is greater than the viewport width
        */
-      while (artworkWidthsInRepeatedArray <= headerWidth) {
-        allArtworks.forEach((artwork, i) => {
+      while (artworkWidthsInRepeatingArray <= headerWidth) {
+        originalArtworksArray.forEach((artwork, i) => {
           repeatedArtworksArray.push(artwork)
 
           isSmallViewport
-            ? (artworkWidthsInRepeatedArray +=
+            ? (artworkWidthsInRepeatingArray +=
                 artwork.image.small.width + IMAGE_MARGIN_X)
-            : (artworkWidthsInRepeatedArray +=
+            : (artworkWidthsInRepeatingArray +=
                 artwork.image.large.width + IMAGE_MARGIN_X)
         })
       }
