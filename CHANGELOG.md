@@ -1,3 +1,15 @@
+# v16.19.0 (Thu Jul 25 2019)
+
+#### 🚀  Enhancement
+
+- Add initial auction registration flow [#2605](https://github.com/artsy/reaction/pull/2605) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.18.36 (Thu Jul 25 2019)
 
 
