@@ -3,75 +3,91 @@ import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_header
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { resize } from "Utils/resizer"
 import { getViewportWidth } from "Utils/viewport"
 
 interface Props {
   headerArtworks: DefaultHeader_headerArtworks
   defaultHeaderImageHeight: number
 }
-export const BOB = (artworks, headerWidth) => {
-  // const getCenteredHeaderImage
-  // const getAllHeaderArtworks
-  // const headerWidth = getViewportWidth()
-  let artworkWidths = 0
 
-  artworks.forEach((artwork, i) => {
-    artworkWidths += artwork.image.width + 10
+export const getAllHeaderArtworks = (
+  allArtworks: any[],
+  headerWidth: number,
+  isSmallViewport: boolean
+) => {
+  let artworkWidthsInOriginalArray = 0
+  let artworkWidthsInRepeatedArray = artworkWidthsInOriginalArray
+  const repeatedArtworksArray = []
+
+  allArtworks.forEach(artwork => {
+    isSmallViewport
+      ? (artworkWidthsInOriginalArray += artwork.image.small.width + 10)
+      : (artworkWidthsInOriginalArray += artwork.image.large.width + 10)
+    repeatedArtworksArray.push(artwork)
   })
-  console.log("TCL: artworkWidths", artworkWidths)
 
-  if (artworkWidths <= headerWidth) {
-    return artworks
+  artworkWidthsInRepeatedArray = artworkWidthsInOriginalArray
+
+  if (artworkWidthsInOriginalArray >= headerWidth) {
+    return allArtworks
+  } else {
+    /** while the widths of the artworks in repeatedArtworksArray is less than the header width:
+   loop through the original artwork array, pushing new artworks on repeatedArtworksArray until the widths
+   of the artworks in the array are greater/equal to the header width
+   */
+
+    while (artworkWidthsInRepeatedArray <= headerWidth) {
+      allArtworks.forEach((artwork, i) => {
+        repeatedArtworksArray.push(artwork)
+
+        isSmallViewport
+          ? (artworkWidthsInRepeatedArray += artwork.image.small.width + 10)
+          : (artworkWidthsInRepeatedArray += artwork.image.large.width + 10)
+      })
+    }
+
+    return repeatedArtworksArray
   }
-
-  return []
 }
+
 export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
 }) => {
   const { hits: artworks } = headerArtworks
-  console.log("TCL: getViewportWidth()", getViewportWidth())
-  const resizedImageUrl = artwork =>
-    resize(artwork.imageUrl, {
-      width: artwork.image.width,
-      height: defaultHeaderImageHeight,
-    })
-  const headerWidth = getViewportWidth()
-  BOB(artworks, headerWidth)
-  /**
-   * 1) Get header width
-   * 2) Calc quant of imgs that should render based on width
-   * 3) Manip artwork array accordingly
-   * 4) Center the img
-   */
+  const viewportWidth = getViewportWidth()
+  const smallViewport = viewportWidth < 1024
+  const duplicatedArtworks = artworks.slice(0)
+
   return (
     <header>
       <DefaultHeaderContainer
         position={["relative", "absolute"]}
         left={["auto", 0]}
         width={["auto", 1]}
-        p={2}
+        py={2}
+        pr={2}
+        pl={0}
         mt={0}
         mb={3}
         height={[160, 250]}
       >
-        <Flex
-          flexDirection="row"
-          flexGrow={1}
-          justifyContent="space-between"
-          alignContent="center"
-        >
-          {artworks.map((artwork, i) => {
-            const headerWidth = getViewportWidth()
-
+        <Flex flexDirection="row" alignContent="center">
+          {getAllHeaderArtworks(
+            duplicatedArtworks,
+            viewportWidth,
+            smallViewport
+          ).map((artwork, i) => {
             return (
               <a href={artwork.href} key={i}>
                 <Image
                   mx={0.5}
                   height={defaultHeaderImageHeight}
-                  src={resizedImageUrl(artwork)}
+                  src={
+                    smallViewport
+                      ? artwork.image.small.url
+                      : artwork.image.large.url
+                  }
                   preventRightClick
                 />
               </a>
@@ -91,9 +107,17 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
         hits {
           href
           id
-          imageUrl
           image {
-            width
+            small: resized(height: 160) {
+              url
+              width
+              height
+            }
+            large: resized(height: 220) {
+              url
+              width
+              height
+            }
           }
         }
       }

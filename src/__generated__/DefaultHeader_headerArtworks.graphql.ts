@@ -7,9 +7,17 @@ export type DefaultHeader_headerArtworks = {
     readonly hits: ReadonlyArray<({
         readonly href: string | null;
         readonly id: string;
-        readonly imageUrl: string | null;
         readonly image: ({
-            readonly width: number | null;
+            readonly small: ({
+                readonly url: string | null;
+                readonly width: number | null;
+                readonly height: number | null;
+            }) | null;
+            readonly large: ({
+                readonly url: string | null;
+                readonly width: number | null;
+                readonly height: number | null;
+            }) | null;
         }) | null;
     }) | null> | null;
     readonly " $refType": DefaultHeader_headerArtworks$ref;
@@ -18,7 +26,30 @@ export type DefaultHeader_headerArtworks = {
 
 
 const node: ConcreteFragment = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "url",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "width",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "height",
+    "args": null,
+    "storageKey": null
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -56,13 +87,6 @@ return {
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "imageUrl",
-          "args": null,
-          "storageKey": null
-        },
-        {
           "kind": "LinkedField",
           "alias": null,
           "name": "image",
@@ -72,11 +96,38 @@ return {
           "plural": false,
           "selections": [
             {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "width",
-              "args": null,
-              "storageKey": null
+              "kind": "LinkedField",
+              "alias": "small",
+              "name": "resized",
+              "storageKey": "resized(height:160)",
+              "args": [
+                {
+                  "kind": "Literal",
+                  "name": "height",
+                  "value": 160,
+                  "type": "Int"
+                }
+              ],
+              "concreteType": "ResizedImageUrl",
+              "plural": false,
+              "selections": v0
+            },
+            {
+              "kind": "LinkedField",
+              "alias": "large",
+              "name": "resized",
+              "storageKey": "resized(height:220)",
+              "args": [
+                {
+                  "kind": "Literal",
+                  "name": "height",
+                  "value": 220,
+                  "type": "Int"
+                }
+              ],
+              "concreteType": "ResizedImageUrl",
+              "plural": false,
+              "selections": v0
             },
             {
               "kind": "ScalarField",
@@ -87,12 +138,12 @@ return {
             }
           ]
         },
-        v0
+        v1
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = 'd6460a7c8e09bef9fe2b318076129633';
+(node as any).hash = '91384b79f54832378562f301bc78bbf9';
 export default node;
