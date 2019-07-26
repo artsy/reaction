@@ -9,6 +9,7 @@ export type RelatedWorksArtworkGrid_artwork = {
         readonly name: string | null;
         readonly id: string;
     }) | null> | null;
+    readonly id: string;
     readonly layer: ({
         readonly name: string | null;
         readonly artworksConnection: ({
@@ -75,6 +76,7 @@ return {
         v2
       ]
     },
+    v1,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -146,5 +148,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e5bdffd3541deeb7ba8a7babb5dd0d8e';
+(node as any).hash = '87cc1f280132a9c1649775ae146cec4d';
 export default node;

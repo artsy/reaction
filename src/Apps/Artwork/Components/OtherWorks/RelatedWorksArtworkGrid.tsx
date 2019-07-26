@@ -1,7 +1,7 @@
 import { Spinner, Tab, Tabs } from "@artsy/palette"
 import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
-import { hideGrid } from "Apps/Artwork/Components/OtherWorks/ArtworkContexts/ArtworkGrids"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
 import { Mediator, SystemContext, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -51,6 +51,7 @@ class RelatedWorksArtworkGrid extends React.Component<
     this.props.relay.refetch(
       {
         layerId: tab.data.layerId,
+        artworkSlug: this.props.artwork.id,
       },
       null,
       error => {
@@ -136,6 +137,7 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
           name
           id
         }
+        id
         layer(id: $layerId) {
           name
           artworksConnection(first: 8) {

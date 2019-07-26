@@ -6,7 +6,7 @@ import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 import { OtherWorksFragmentContainer } from "../OtherWorks"
-import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
+import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/RelatedWorksArtworkGrid"
 
 export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
   const { relayEnvironment } = useContext(SystemContext)

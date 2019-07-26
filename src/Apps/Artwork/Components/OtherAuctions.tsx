@@ -1,8 +1,11 @@
 import { Box, Flex } from "@artsy/palette"
 import { OtherAuctions_sales } from "__generated__/OtherAuctions_sales.graphql"
+import { OtherAuctionsQuery } from "__generated__/OtherAuctionsQuery.graphql"
+import { SystemContext } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCard"
-import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import React, { useContext } from "react"
+import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
 import { data as sd } from "sharify"
 import { Header } from "./OtherWorks/Header"
 
@@ -36,3 +39,22 @@ export const OtherAuctionsFragmentContainer = createFragmentContainer(
     }
   `
 )
+
+export const OtherAuctionsQueryRenderer = () => {
+  const { relayEnvironment } = useContext(SystemContext)
+
+  return (
+    <QueryRenderer<OtherAuctionsQuery>
+      environment={relayEnvironment}
+      variables={{ size: 4, sort: "TIMELY_AT_NAME_ASC" }}
+      query={graphql`
+        query OtherAuctionsQuery($size: Int!, $sort: SaleSorts) {
+          sales(size: $size, sort: $sort) {
+            ...OtherAuctions_sales
+          }
+        }
+      `}
+      render={renderWithLoadProgress(OtherAuctionsFragmentContainer)}
+    />
+  )
+}
