@@ -1,3 +1,15 @@
+# v16.19.1 (Fri Jul 26 2019)
+
+#### 🐛  Bug Fix
+
+- Other collections module [#2633](https://github.com/artsy/reaction/pull/2633) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.19.0 (Thu Jul 25 2019)
 
 #### 🚀  Enhancement
