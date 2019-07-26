@@ -7,12 +7,13 @@ import {
   Sans,
   Serif,
 } from "@artsy/palette"
+import { FeaturedCollectionsRails_collectionGroup } from "__generated__/FeaturedCollectionsRails_collectionGroup.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 interface Props {
-  collectionGroup: any
+  collectionGroup: FeaturedCollectionsRails_collectionGroup
 }
 
 export const FeaturedCollectionsRails: React.FC<Props> = ({
