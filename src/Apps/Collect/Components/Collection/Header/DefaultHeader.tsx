@@ -19,55 +19,6 @@ export const CollectionDefaultHeader: FC<Props> = ({
 }) => {
   useViewportSize()
   const { hits: artworks } = headerArtworks
-  console.log("TCL: artworks", artworks)
-
-  const getHeaderArtworks = (
-    originalArtworksArray: any[],
-    headerWidth: number,
-    isSmallViewport: boolean
-  ) => {
-    let artworkWidthsInOriginalArray = 0
-    let artworkWidthsInRepeatingArray
-    const repeatedArtworksArray = []
-
-    originalArtworksArray.forEach(artwork => {
-      isSmallViewport
-        ? (artworkWidthsInOriginalArray +=
-            artwork.image.small.width + IMAGE_MARGIN_X)
-        : (artworkWidthsInOriginalArray +=
-            artwork.image.large.width + IMAGE_MARGIN_X)
-      repeatedArtworksArray.push(artwork)
-    })
-
-    artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
-
-    /**
-     * If the summed widths of the artworks returned is larger than the width
-     * of the viewport then there's no need to duplicate/repeat the header's artworks
-     */
-    if (artworkWidthsInOriginalArray >= headerWidth) {
-      return originalArtworksArray
-    } else {
-      /**
-       * Otherwise, duplicate the original array of artworks and add a new artwork to the array
-       * until the summed widths of the artworks is greater than the viewport width
-       */
-      while (artworkWidthsInRepeatingArray <= headerWidth) {
-        originalArtworksArray.forEach((artwork, i) => {
-          repeatedArtworksArray.push(artwork)
-
-          isSmallViewport
-            ? (artworkWidthsInRepeatingArray +=
-                artwork.image.small.width + IMAGE_MARGIN_X)
-            : (artworkWidthsInRepeatingArray +=
-                artwork.image.large.width + IMAGE_MARGIN_X)
-        })
-      }
-
-      return repeatedArtworksArray
-    }
-  }
-
   const viewportWidth = getViewportWidth()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   const duplicatedArtworks = artworks.slice(0)
@@ -127,6 +78,53 @@ const useViewportSize = () => {
   }, [])
 
   return windowSize
+}
+
+export const getHeaderArtworks = (
+  originalArtworksArray: any[],
+  headerWidth: number,
+  isSmallViewport: boolean
+) => {
+  let artworkWidthsInOriginalArray = 0
+  let artworkWidthsInRepeatingArray
+  const repeatedArtworksArray = []
+
+  originalArtworksArray.forEach(artwork => {
+    isSmallViewport
+      ? (artworkWidthsInOriginalArray +=
+          artwork.image.small.width + IMAGE_MARGIN_X)
+      : (artworkWidthsInOriginalArray +=
+          artwork.image.large.width + IMAGE_MARGIN_X)
+    repeatedArtworksArray.push(artwork)
+  })
+
+  artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
+
+  /**
+   * If the summed widths of the artworks returned is larger than the width
+   * of the viewport then there's no need to duplicate/repeat the header's artworks
+   */
+  if (artworkWidthsInOriginalArray >= headerWidth) {
+    return originalArtworksArray
+  } else {
+    /**
+     * Otherwise, duplicate the original array of artworks and add a new artwork to the array
+     * until the summed widths of the artworks is greater than the viewport width
+     */
+    while (artworkWidthsInRepeatingArray <= headerWidth) {
+      originalArtworksArray.forEach((artwork, i) => {
+        repeatedArtworksArray.push(artwork)
+
+        isSmallViewport
+          ? (artworkWidthsInRepeatingArray +=
+              artwork.image.small.width + IMAGE_MARGIN_X)
+          : (artworkWidthsInRepeatingArray +=
+              artwork.image.large.width + IMAGE_MARGIN_X)
+      })
+    }
+
+    return repeatedArtworksArray
+  }
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
