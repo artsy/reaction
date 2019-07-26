@@ -1,4 +1,4 @@
-import { Join, Spacer } from "@artsy/palette"
+import { Box, Join, Spacer } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import { OtherAuctionsQueryRenderer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
 import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
@@ -89,7 +89,11 @@ export const OtherWorks = track()(
           context &&
           context.__typename === "ArtworkContextAuction" &&
           !(sale && sale.is_closed)
-        ) && <RelatedWorksArtworkGrid artwork={props.artwork} />}
+        ) && (
+          <Box mt={3}>
+            <RelatedWorksArtworkGrid artwork={props.artwork} />
+          </Box>
+        )}
         {context && context.__typename === "ArtworkContextAuction" && (
           <OtherAuctions />
         )}

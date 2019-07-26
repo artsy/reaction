@@ -51,6 +51,7 @@ class RelatedWorksArtworkGrid extends React.Component<
     this.props.relay.refetch(
       {
         layerId: tab.data.layerId,
+        artworkSlug: this.props.artwork.id,
       },
       null,
       error => {
@@ -136,6 +137,7 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
           name
           id
         }
+        id
         layer(id: $layerId) {
           name
           artworksConnection(first: 8) {

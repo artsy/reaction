@@ -1,3 +1,59 @@
+# v16.19.0 (Thu Jul 25 2019)
+
+#### 🚀  Enhancement
+
+- Add initial auction registration flow [#2605](https://github.com/artsy/reaction/pull/2605) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.18.36 (Thu Jul 25 2019)
+
+
+
+---
+
+# v16.18.35 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed spacing above Related Works artwork grid on artwork page [#2630](https://github.com/artsy/reaction/pull/2630) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.18.34 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Test & refactor collection header [#2614](https://github.com/artsy/reaction/pull/2614) ([@ashleyjelks](https://github.com/ashleyjelks) [@xtina-starr](https://github.com/xtina-starr) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.18.33 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Collections hub [#2628](https://github.com/artsy/reaction/pull/2628) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
 # v16.18.32 (Wed Jul 24 2019)
 
 #### 🐛  Bug Fix
