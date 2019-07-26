@@ -19,6 +19,7 @@ describe("collections header", () => {
     props = {
       artworks: {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [
           {
             id: "kaws",
@@ -214,6 +215,7 @@ describe("collections header", () => {
     it("does not render featured artists when they don't exist", () => {
       props.artworks = {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [],
       }
       const component = mountComponent(props, "lg")
@@ -257,6 +259,7 @@ describe("collections header", () => {
       }
       props.artworks = {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [
           anArtist(),
           anArtist(),
@@ -279,6 +282,7 @@ describe("collections header", () => {
       }
       props.artworks = {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [
           anArtist(),
           anArtist(),
@@ -303,6 +307,7 @@ describe("collections header", () => {
       }
       props.artworks = {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [
           anArtist(),
           anArtist(),
@@ -329,6 +334,7 @@ describe("collections header", () => {
       }
       props.artworks = {
         " $refType": null,
+        " $fragmentRefs": null,
         merchandisable_artists: [
           anArtist(),
           anArtist(),

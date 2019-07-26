@@ -17,7 +17,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
 }) => {
-  useViewportSize()
+  handleViewportResize()
   const { hits: artworks } = headerArtworks
   const viewportWidth = getViewportWidth()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
@@ -59,8 +59,8 @@ export const CollectionDefaultHeader: FC<Props> = ({
   )
 }
 
-const useViewportSize = () => {
-  const isClient = typeof window === "object"
+const handleViewportResize = () => {
+  const isClient = typeof window !== undefined
   const [windowSize, setWindowSize] = useState(getViewportWidth())
 
   useEffect(() => {
