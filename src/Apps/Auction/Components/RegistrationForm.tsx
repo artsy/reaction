@@ -2,8 +2,8 @@ import { Box, Button, Flex, Input, Serif } from "@artsy/palette"
 import { AuctionApp_sale } from "__generated__/AuctionApp_sale.graphql"
 import { RegistrationFormCreateBidderMutation } from "__generated__/RegistrationFormCreateBidderMutation.graphql"
 import { RegistrationFormCreateCreditCardMutation } from "__generated__/RegistrationFormCreateCreditCardMutation.graphql"
-import { ConditionsOfSaleCheckbox } from "Apps/Auction/Components/ConditionsOfSaleCheckbox"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { Form, Formik, FormikProps } from "formik"
 import React from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
@@ -131,9 +131,9 @@ const InnerForm = (props: FormikProps<FormValues>) => {
       <Flex mt={4} mb={2} justifyContent="center">
         <ConditionsOfSaleCheckbox
           error={touched.agree_to_terms && errors.agree_to_terms}
-          checked={values.agree_to_terms}
+          // checked={values.agree_to_terms}
           value={values.agree_to_terms}
-          type="checkbox"
+          // type="checkbox"
           name="agree_to_terms"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -170,6 +170,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = props => {
   function createBidder(setSubmitting) {
     const { sale } = props
 
+    // TODO: use mutation in 'Components/Auction/Registration' for this (should be a near copy)
     commitMutation<RegistrationFormCreateBidderMutation>(
       props.relay.environment,
       {
