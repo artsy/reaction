@@ -1,85 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`default header component renders a default header on a large viewport 1`] = `
-<header>
-  <div
-    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-sc-12cdbk9-0 fVUlqO"
-    height={
-      Array [
-        160,
-        160,
-        250,
-      ]
-    }
-    width={
-      Array [
-        "auto",
-        1,
-      ]
-    }
-  >
-    <div
-      className="sc-bwzfXH DefaultHeader__HeaderArtworks-sc-12cdbk9-1 jDVusT"
-    >
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-    </div>
-  </div>
-</header>
-`;
-
 exports[`default header component renders a snapshot 1`] = `
 <header>
   <div
@@ -107,7 +27,43 @@ exports[`default header component renders a snapshot 1`] = `
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
           onContextMenu={[Function]}
+          src="https://resized-large.cloudfront.net"
+        />
+      </a>
+      <a
+        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+      >
+        <img
+          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+        />
+      </a>
+      <a
+        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+      >
+        <img
+          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+        />
+      </a>
+      <a
+        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+      >
+        <img
+          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+        />
+      </a>
+      <a
+        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+      >
+        <img
+          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          onContextMenu={[Function]}
+          src="https://resized-large.cloudfront.net"
         />
       </a>
       <a

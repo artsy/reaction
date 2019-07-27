@@ -237,7 +237,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
             <Flex flexDirection="column">
               <Box mt={[0, "-12px"]}>
                 {collection.headerImage ? (
-                  <Background
+                  <CollectionSingleImageHeader
                     position={["relative", "absolute"]}
                     left={["auto", 0]}
                     width={["auto", 1]}
@@ -257,7 +257,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                         dangerouslySetInnerHTML={{ __html: collection.credit }}
                       />
                     )}
-                  </Background>
+                  </CollectionSingleImageHeader>
                 ) : (
                   <CollectionDefaultHeader
                     headerArtworks={artworks as any}
@@ -314,7 +314,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   )
 }
 
-const Background = styled(Box)<{
+const CollectionSingleImageHeader = styled(Box)<{
   headerImageUrl: string
   height: number
 }>`

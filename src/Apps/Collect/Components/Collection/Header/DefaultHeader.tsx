@@ -19,6 +19,11 @@ export const CollectionDefaultHeader: FC<Props> = ({
 }) => {
   handleViewportResize()
   const { hits: artworks } = headerArtworks
+
+  if (!artworks) {
+    return null
+  }
+
   const viewportWidth = getViewportWidth()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   const duplicatedArtworks = artworks.slice(0)
@@ -37,7 +42,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
         height={[160, 160, 250]}
       >
         <HeaderArtworks>
-          {(artworksToRender || []).map((artwork, i) => {
+          {artworksToRender.map((artwork, i) => {
             return (
               <a href={artwork.href} key={i}>
                 <Image
@@ -125,6 +130,7 @@ export const getHeaderArtworks = (
 
     return repeatedArtworksArray
   }
+  return []
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(

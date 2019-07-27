@@ -1,8 +1,4 @@
-import {
-  artworks,
-  artworksArrayLarge,
-  artworksArraySmall,
-} from "Apps/Collect/Components/Collection/Header/__tests__/fixtures/artworks"
+import { defaultCollectionHeaderArtworks } from "Apps/Collect/Components/Collection/Header/__tests__/fixtures/artworks"
 import {
   CollectionDefaultHeader,
   getHeaderArtworks,
@@ -13,15 +9,19 @@ import renderer from "react-test-renderer"
 
 describe("artworks", () => {
   it("returns an array of repeating artworks when original array of works is too small to fill header ", () => {
-    const result = getHeaderArtworks(artworksArraySmall, 1308, false)
+    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 3)
+    const result = getHeaderArtworks(artworks, 1308, false)
 
-    expect(result).toHaveLength(9)
+    expect(result.length).toBeGreaterThan(artworks.length)
+    expect(result).toHaveLength(6)
   })
 
-  it("returns the same number of artworks originally passed when header can fit all works ", () => {
-    const result = getHeaderArtworks(artworksArrayLarge, 1308, false)
+  it("returns an array of artworks of equal length as the original array received when header can fit all works ", () => {
+    const artworks = defaultCollectionHeaderArtworks.hits
 
-    expect(result).toHaveLength(12)
+    const result = getHeaderArtworks(artworks, 1308, false)
+    expect(artworks.length).toEqual(result.length)
+    expect(result).toHaveLength(10)
   })
 })
 
@@ -30,7 +30,7 @@ describe("default header component", () => {
 
   beforeEach(() => {
     props = {
-      headerArtworks: artworks,
+      headerArtworks: defaultCollectionHeaderArtworks,
       defaultHeaderImageHeight: 1000,
     }
   })
@@ -53,24 +53,43 @@ describe("default header component", () => {
   })
 
   it("renders images in the header component ", () => {
-    const header = getWrapper(props)
+    const wrapper = getWrapper(props)
 
-    expect(header.find("Image").length).toBe(6)
+    expect(wrapper.find("Image").length).toBe(10)
   })
 
-  // TODO: Debug this failing test
-  xit("handles a click on an artwork image in the header ", () => {
-    const header = getWrapper(props)
-    window.open = jest.fn()
+  it("when viewport size is sm or small the image src link references the small resized url", () => {
+    const mockWindow: any = window
+    mockWindow.innerWidth = 600
+    mockWindow.innerHeight = 600
+    const wrapper = getWrapper(props)
+    const headerArtwork = wrapper.find("Image").first()
 
-    header
-      .find("Image")
-      .at(0)
-      .simulate("click")
-
-    expect(window.open).toHaveBeenCalledWith(
-      "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      "_blank"
+    expect(headerArtwork.props().src).toEqual(
+      "https://resized-small.cloudfront.net"
     )
+  })
+
+  it("when viewport size is md or larger the image src link references the large resized url", () => {
+    const mockWindow: any = window
+    mockWindow.innerWidth = 1200
+    mockWindow.innerHeight = 1200
+    const wrapper = getWrapper(props)
+    const headerArtwork = wrapper.find("Image").first()
+
+    expect(headerArtwork.props().src).toEqual(
+      "https://resized-large.cloudfront.net"
+    )
+  })
+
+  it("a header image's anchor tag references the correct artwork slug ", () => {
+    const wrapper = getWrapper(props)
+
+    expect(
+      wrapper
+        .find("a")
+        .at(0)
+        .props().href
+    ).toEqual("/artwork/shepard-fairey-50-shades-of-black-lp-box-set")
   })
 })

@@ -1,5 +1,9 @@
 import { EntityHeader } from "@artsy/palette"
 import { FollowArtistButton_artist$ref } from "__generated__/FollowArtistButton_artist.graphql"
+import {
+  collectionHeaderArtworks,
+  defaultCollectionHeaderArtworks,
+} from "Apps/Collect/Components/Collection/Header/__tests__/fixtures/artworks"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount, shallow } from "enzyme"
 import React from "react"
@@ -17,52 +21,7 @@ describe("collections header", () => {
   let props: Props
   beforeEach(() => {
     props = {
-      artworks: {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [
-          {
-            id: "kaws",
-            _id: "4e934002e340fa0001005336",
-            name: "KAWS",
-            imageUrl:
-              "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
-            birthday: "1974",
-            nationality: "American",
-            " $fragmentRefs": null,
-          },
-          {
-            id: "robert-lazzarini",
-            _id: "4f5f64c23b555230ac0003ae",
-            name: "Robert Lazzarini",
-            imageUrl:
-              "https://d32dm0rphc51dk.cloudfront.net/1npk1i_Xua5q8Hv0YOq_3g/square.jpg",
-            birthday: "1965",
-            nationality: "American",
-            " $fragmentRefs": null,
-          },
-          {
-            id: "medicom",
-            _id: "58fe85ee275b2450a0fd2b51",
-            name: "Medicom",
-            imageUrl:
-              "https://d32dm0rphc51dk.cloudfront.net/jUMOidRmCQ0RyynXM_sFzQ/square.jpg",
-            birthday: "",
-            nationality: "",
-            " $fragmentRefs": null,
-          },
-          {
-            id: "medicom-toy-slash-china",
-            _id: "5b9821af86c8aa21d364dde5",
-            name: "Medicom Toy/China",
-            imageUrl:
-              "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
-            birthday: "",
-            nationality: "",
-            " $fragmentRefs": null,
-          },
-        ],
-      },
+      artworks: collectionHeaderArtworks,
       collection: {
         title: "KAWS: Toys",
         category: "Collectible Sculptures",
@@ -88,6 +47,18 @@ describe("collections header", () => {
       </MockBoot>
     )
   }
+
+  it("renders the default collections header when there is no header image", () => {
+    props.collection.headerImage = null
+    props.artworks = defaultCollectionHeaderArtworks as any
+    const component = mountComponent(props)
+
+    const defaultHeader = component.find("CollectionDefaultHeader")
+    const singleImageHeader = component.find("CollectionSingleImageHeader")
+
+    expect(defaultHeader.length).toEqual(1)
+    expect(singleImageHeader.length).toEqual(0)
+  })
 
   describe("getFeaturedArtists", () => {
     const mockMediator = jest.fn()
