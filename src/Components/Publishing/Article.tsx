@@ -1,6 +1,7 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 
+import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
@@ -66,7 +67,11 @@ export class Article extends React.Component<ArticleProps> {
     const { article, customEditorial } = this.props
 
     if (customEditorial) {
-      return <ArticleWithFullScreen {...this.props} />
+      if (article.layout !== "series") {
+        return <ArticleWithFullScreen {...this.props} />
+      } else {
+        return <EditorialFeature {...this.props} />
+      }
     } else {
       switch (article.layout) {
         case "classic": {
