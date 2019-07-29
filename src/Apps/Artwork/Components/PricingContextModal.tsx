@@ -1,6 +1,8 @@
 import {
   Box,
+  Button,
   Link,
+  Modal,
   QuestionCircleIcon,
   Serif,
   Spacer,
@@ -8,7 +10,6 @@ import {
 } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import Modal from "Components/Modal/Modal"
 import React from "react"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -51,26 +52,26 @@ export class PricingContextModal extends React.Component<State> {
           onClose={this.closeModal}
           show={this.state.isModalOpen}
           title="Price in context"
-          cta={{
-            text: "Got it",
-            onClick: this.closeModal,
-            isFixed: false,
-          }}
+          FixedButton={
+            <Button onClick={this.closeModal} block width="100%">
+              Got it
+            </Button>
+          }
         >
           <Spacer mt={2} />
-          <Serif size="3" color={"black80"}>
+          <Serif size="3" color="black80">
             This feature aims to provide insight into the range of prices for an
             artist's works and allow buyers to discover other available works by
             the artist at different price points.
           </Serif>
           <Spacer mt={2} />
-          <Serif size="3" color={"black80"}>
+          <Serif size="3" color="black80">
             The graph displays current and past list prices for works that are
             similar in size and category to the work you're viewing. The prices
             included in the graph are only from galleries and dealers on Artsy.
           </Serif>
           <Spacer mt={2} />
-          <Serif size="3" color={"black80"}>
+          <Serif size="3" color="black80">
             Artwork prices are affected by{" "}
             <Link
               href={sd.APP_URL + "/article/artsy-editorial-artworks-prices"}
