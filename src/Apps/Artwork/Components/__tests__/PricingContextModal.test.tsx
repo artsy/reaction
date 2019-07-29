@@ -27,19 +27,14 @@ describe("PricingContextModal", () => {
 
   it("renders the link to 'How Artworks Get Their Prices' article", async () => {
     const component = mount(<PricingContextModal />)
-    component
-      .find(QuestionCircleIcon)
-      .at(0)
-      .simulate("click")
+    component.find(QuestionCircleIcon).simulate("click")
 
-    component.find(Link)
-
-    expect(
-      component
-        .find(Link)
-        .at(0)
-        .props().href
-    ).toEqual("https://www.artsy.net/article/artsy-editorial-artworks-prices")
+    setTimeout(() => {
+      expect(component.find(Link).length).toEqual(1)
+      expect(component.find(Link).props().href).toEqual(
+        "https://www.artsy.net/article/artsy-editorial-artworks-prices"
+      )
+    })
   })
 
   it("renders the support mailto link", async () => {
@@ -48,27 +43,27 @@ describe("PricingContextModal", () => {
       .find(QuestionCircleIcon)
       .at(0)
       .simulate("click")
-
-    component.find(Link)
-
-    expect(
-      component
-        .find(Link)
-        .at(1)
-        .props().href
-    ).toEqual("mailto:support@artsy.net")
+    setTimeout(() => {
+      expect(
+        component
+          .find(Link)
+          .at(1)
+          .props().href
+      ).toEqual("mailto:support@artsy.net")
+    })
   })
 
   it("opens the modal when the question mark icon is clicked", async () => {
     const component = mount(<PricingContextModal />)
-
-    component
-      .find(QuestionCircleIcon)
-      .at(0)
-      .simulate("click")
-    expect(component.text()).toContain(
-      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
+    setTimeout(() => {
+      component
+        .find(QuestionCircleIcon)
+        .at(0)
+        .simulate("click")
+      expect(component.text()).toContain(
+        "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
+      )
+    })
   })
 
   it("closes the modal when the 'Got it' button is clicked", async () => {
@@ -78,21 +73,20 @@ describe("PricingContextModal", () => {
       .at(0)
       .simulate("click")
 
-    expect(component.text()).toContain(
-      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
-
-    component
-      .find(Button)
-      .at(0)
-      .simulate("click")
-
-    // Wait for modal close animation to finish
     setTimeout(() => {
-      expect(component.text()).not.toContain(
+      expect(component.text()).toContain(
         "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
       )
-    }, 500)
+      component
+        .find(Button)
+        .at(0)
+        .simulate("click")
+      setTimeout(() => {
+        expect(component.text()).not.toContain(
+          "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
+        )
+      })
+    })
   })
 
   describe("Analytics", () => {
