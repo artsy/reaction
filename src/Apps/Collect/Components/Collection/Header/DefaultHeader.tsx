@@ -66,50 +66,32 @@ export const CollectionDefaultHeader: FC<Props> = ({
 }
 
 export const getHeaderArtworks = (
-  originalArtworksArray: any[],
+  artworksArray: any[],
   headerWidth: number,
   isSmallViewport: boolean
 ) => {
-  let artworkWidthsInOriginalArray = 0
-  let artworkWidthsInRepeatingArray
-  const repeatedArtworksArray = []
+  let artworkWidths = 0
+  const headerArtworks = []
 
-  originalArtworksArray.forEach(artwork => {
-    isSmallViewport
-      ? (artworkWidthsInOriginalArray +=
-          artwork.image.small.width + IMAGE_MARGIN_X)
-      : (artworkWidthsInOriginalArray +=
-          artwork.image.large.width + IMAGE_MARGIN_X)
-    repeatedArtworksArray.push(artwork)
-  })
-
-  artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
+  if (artworksArray.length < 1) {
+    return []
+  }
 
   /**
-   * If the summed widths of the artworks returned is larger than the width
-   * of the viewport then there's no need to duplicate/repeat the header's artworks
+   * Loop through the artworks array, appending a new artwork to the output array
+   * until the summed widths of the artworks are greater than the width of the viewport.
    */
-  if (artworkWidthsInOriginalArray >= headerWidth) {
-    return originalArtworksArray
-  } else {
-    /**
-     * Otherwise, duplicate the original array of artworks and add a new artwork to the array
-     * until the summed widths of the artworks is greater than the viewport width
-     */
-    while (artworkWidthsInRepeatingArray <= headerWidth) {
-      originalArtworksArray.forEach((artwork, i) => {
-        repeatedArtworksArray.push(artwork)
+  while (artworkWidths <= headerWidth) {
+    artworksArray.forEach((artwork, i) => {
+      headerArtworks.push(artwork)
 
-        isSmallViewport
-          ? (artworkWidthsInRepeatingArray +=
-              artwork.image.small.width + IMAGE_MARGIN_X)
-          : (artworkWidthsInRepeatingArray +=
-              artwork.image.large.width + IMAGE_MARGIN_X)
-      })
-    }
-
-    return repeatedArtworksArray
+      isSmallViewport
+        ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
+        : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
+    })
   }
+
+  return headerArtworks
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
