@@ -5,8 +5,9 @@ import { getViewportWidth } from "../viewport"
  * A React hook for triggering an update when a window is resized.
  */
 export function useWindowSize() {
+  const { width: viewportWidth } = getViewportWidth()
   const isClient = typeof window !== undefined
-  const [windowSize, setWindowSize] = useState(getViewportWidth())
+  const [windowSize, setWindowSize] = useState(viewportWidth)
 
   useEffect(() => {
     if (!isClient) {
@@ -14,7 +15,7 @@ export function useWindowSize() {
     }
 
     const handleResize = () => {
-      setWindowSize(getViewportWidth())
+      setWindowSize(viewportWidth)
     }
 
     window.addEventListener("resize", handleResize)

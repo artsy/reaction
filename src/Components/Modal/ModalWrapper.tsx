@@ -119,6 +119,7 @@ export class ModalWrapper extends React.Component<
   render(): JSX.Element {
     const { children, width, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
+    const { width: viewportWidth } = getViewportWidth()
 
     if (isShown) {
       this.addBlurToContainers()
@@ -144,7 +145,7 @@ export class ModalWrapper extends React.Component<
               fullscreenResponsiveModal={fullscreenResponsiveModal}
               width={width}
               image={image}
-              viewportWidth={getViewportWidth()}
+              viewportWidth={viewportWidth}
             >
               <ModalInner fullscreenResponsiveModal={fullscreenResponsiveModal}>
                 {children}

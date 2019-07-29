@@ -25,7 +25,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
     return null
   }
 
-  const viewportWidth = getViewportWidth()
+  const { width: viewportWidth } = getViewportWidth()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   const duplicatedArtworks = artworks.slice(0)
   const artworksToRender = getHeaderArtworks(
@@ -70,46 +70,65 @@ export const getHeaderArtworks = (
   headerWidth: number,
   isSmallViewport: boolean
 ) => {
-  let artworkWidthsInOriginalArray = 0
-  let artworkWidthsInRepeatingArray
-  const repeatedArtworksArray = []
+  // let artworkWidthsInOriginalArray = 0
+  let artworkWidths = 0
+  // let artworkWidthsInRepeatingArray
+  const headerArtworks = []
+  console.log("TCL: headerWidth", headerWidth)
 
-  originalArtworksArray.forEach(artwork => {
-    isSmallViewport
-      ? (artworkWidthsInOriginalArray +=
-          artwork.image.small.width + IMAGE_MARGIN_X)
-      : (artworkWidthsInOriginalArray +=
-          artwork.image.large.width + IMAGE_MARGIN_X)
-    repeatedArtworksArray.push(artwork)
-  })
+  while (artworkWidths <= headerWidth) {
+    console.log("TCL: artworkWidths", artworkWidths)
+    originalArtworksArray.forEach((artwork, i) => {
+      console.log("TCL: originalArtworksArray", originalArtworksArray)
 
-  artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
+      headerArtworks.push(artwork)
+      originalArtworksArray.push(artwork)
 
-  /**
-   * If the summed widths of the artworks returned is larger than the width
-   * of the viewport then there's no need to duplicate/repeat the header's artworks
-   */
-  if (artworkWidthsInOriginalArray >= headerWidth) {
-    return originalArtworksArray
-  } else {
-    /**
-     * Otherwise, duplicate the original array of artworks and add a new artwork to the array
-     * until the summed widths of the artworks is greater than the viewport width
-     */
-    while (artworkWidthsInRepeatingArray <= headerWidth) {
-      originalArtworksArray.forEach((artwork, i) => {
-        repeatedArtworksArray.push(artwork)
-
-        isSmallViewport
-          ? (artworkWidthsInRepeatingArray +=
-              artwork.image.small.width + IMAGE_MARGIN_X)
-          : (artworkWidthsInRepeatingArray +=
-              artwork.image.large.width + IMAGE_MARGIN_X)
-      })
-    }
-
-    return repeatedArtworksArray
+      isSmallViewport
+        ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
+        : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
+    })
   }
+  console.log("TCL: headerArtworks", headerArtworks)
+
+  return headerArtworks
+
+  // originalArtworksArray.forEach(artwork => {
+  //   isSmallViewport
+  //     ? (artworkWidthsInOriginalArray +=
+  //         artwork.image.small.width + IMAGE_MARGIN_X)
+  //     : (artworkWidthsInOriginalArray +=
+  //         artwork.image.large.width + IMAGE_MARGIN_X)
+  //   repeatedArtworksArray.push(artwork)
+  // })
+
+  // artworkWidthsInRepeatingArray = artworkWidthsInOriginalArray
+
+  // /**
+  //  * If the summed widths of the artworks returned is larger than the width
+  //  * of the viewport then there's no need to duplicate/repeat the header's artworks
+  //  */
+  // if (artworkWidthsInOriginalArray >= headerWidth) {
+  //   return originalArtworksArray
+  // } else {
+  //   /**
+  //    * Otherwise, duplicate the original array of artworks and add a new artwork to the array
+  //    * until the summed widths of the artworks is greater than the viewport width
+  //    */
+  //   while (artworkWidthsInRepeatingArray <= headerWidth) {
+  //     originalArtworksArray.forEach((artwork, i) => {
+  //       repeatedArtworksArray.push(artwork)
+
+  //       isSmallViewport
+  //         ? (artworkWidthsInRepeatingArray +=
+  //             artwork.image.small.width + IMAGE_MARGIN_X)
+  //         : (artworkWidthsInRepeatingArray +=
+  //             artwork.image.large.width + IMAGE_MARGIN_X)
+  //     })
+  //   }
+
+  //   return repeatedArtworksArray
+  // }
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
@@ -140,7 +159,6 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
 
 const DefaultHeaderContainer = styled(Box)`
   background-color: ${color("black5")};
-  overflow: hidden;
 `
 const HeaderArtworks = styled(Flex)`
   flex-direction: row;
