@@ -1,9 +1,9 @@
+import { buildClientApp } from "@artsy/arc"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import React from "react"
 import { getUser } from "Utils/user"
 import { Boot } from "../Boot"
 import { createRouteConfig } from "../Utils/createRouteConfig"
-import { buildClientApp } from "./buildClientApp2"
 import { RouterConfig } from "./RouterConfig"
 
 export function makeClientApp(
