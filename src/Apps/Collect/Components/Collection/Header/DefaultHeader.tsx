@@ -1,8 +1,9 @@
 import { Box, color, Flex, Image } from "@artsy/palette"
 import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
-import React, { FC, useEffect, useState } from "react"
+import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { useWindowSize } from "Utils/Hooks/useWindowSize"
 import { getViewportWidth } from "Utils/viewport"
 
 interface Props {
@@ -17,7 +18,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
 }) => {
-  handleViewportResize()
+  useWindowSize()
   const { hits: artworks } = headerArtworks
 
   if (!artworks) {
@@ -62,27 +63,6 @@ export const CollectionDefaultHeader: FC<Props> = ({
       </DefaultHeaderContainer>
     </header>
   )
-}
-
-const handleViewportResize = () => {
-  const isClient = typeof window !== undefined
-  const [windowSize, setWindowSize] = useState(getViewportWidth())
-
-  useEffect(() => {
-    if (!isClient) {
-      return () => null
-    }
-
-    const handleResize = () => {
-      setWindowSize(getViewportWidth())
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  return windowSize
 }
 
 export const getHeaderArtworks = (
@@ -130,7 +110,6 @@ export const getHeaderArtworks = (
 
     return repeatedArtworksArray
   }
-  return []
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
