@@ -148,7 +148,7 @@ return {
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "-merchandisability",
+          "value": "-decayed_merch",
           "type": "String"
         }
       ],
@@ -303,5 +303,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd01852bdf069c61d442c51ee0fd9dc21';
+(node as any).hash = '475c0f7a5267980d74c935dd45af9a8a';
 export default node;

@@ -236,7 +236,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
           <header>
             <Flex flexDirection="column">
               <Box mt={[0, "-12px"]}>
-                {collection.headerImage ? (
+                {!collection.headerImage ? (
                   <CollectionSingleImageHeader
                     position={["relative", "absolute"]}
                     left={["auto", 0]}
