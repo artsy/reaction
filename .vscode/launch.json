@@ -7,25 +7,6 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Server",
-      "preLaunchTask": "compile:server",
-      "program": "${workspaceRoot}/index.js",
-      "args": ["${workspaceRoot}/dist"],
-      "sourceMaps": true,
-      "outFiles": ["${workspaceRoot}/dist/**/*.js"],
-      "internalConsoleOptions": "openOnSessionStart"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "storybook",
-      "name": "Launch Chrome",
-      "url": "http://localhost:4444",
-      "webRoot": "${workspaceRoot}/src"
-    },
-    {
-      "type": "node",
-      "request": "launch",
       "name": "Jest All",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
       "args": ["--runInBand"],
