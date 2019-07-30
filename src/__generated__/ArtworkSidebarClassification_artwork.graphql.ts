@@ -5,7 +5,7 @@ declare const _ArtworkSidebarClassification_artwork$ref: unique symbol;
 export type ArtworkSidebarClassification_artwork$ref = typeof _ArtworkSidebarClassification_artwork$ref;
 export type ArtworkSidebarClassification_artwork = {
     readonly attribution_class: ({
-        readonly short_description: string | null;
+        readonly shortDescription: string | null;
     }) | null;
     readonly " $refType": ArtworkSidebarClassification_artwork$ref;
 };
@@ -39,7 +39,7 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "short_description",
+          "name": "shortDescription",
           "args": null,
           "storageKey": null
         },
@@ -50,5 +50,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0edd5c2a1b8b93a17d606367fe4c25ae';
+(node as any).hash = '9e838ec31647d41024deeaf3f0cbb356';
 export default node;

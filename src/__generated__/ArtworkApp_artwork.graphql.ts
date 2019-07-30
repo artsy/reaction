@@ -18,7 +18,7 @@ export type ArtworkApp_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly availability: string | null;
-    readonly price: string | null;
+    readonly sale_message: string | null;
     readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -90,7 +90,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "price",
+      "name": "sale_message",
       "args": null,
       "storageKey": null
     },
@@ -174,5 +174,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5097a7c9d398cce1abd797fc91661166';
+(node as any).hash = '7350f78d9b44efce6f2b9bdd1347d63c';
 export default node;

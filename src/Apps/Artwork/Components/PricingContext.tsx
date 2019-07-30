@@ -78,7 +78,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
       return null
     }
 
-    const priceCents = artwork.priceCents.max || artwork.priceCents.min
+    const priceCents =
+      artwork.listPrice.maxPriceCents || artwork.listPrice.minPriceCents
 
     const artworkFallsBeforeFirstBin =
       priceCents < artwork.pricingContext.bins[0].minPriceCents
@@ -161,9 +162,11 @@ export const PricingContextFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment PricingContext_artwork on Artwork {
-        priceCents {
-          min
-          max
+        listPrice {
+          ... on PriceRange {
+            minPriceCents
+            maxPriceCents
+          }
         }
         artists {
           id

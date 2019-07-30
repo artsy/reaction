@@ -76,7 +76,7 @@ export class ArtworkApp extends React.Component<Props> {
 
   trackPageview() {
     const {
-      artwork: { price, availability, is_offerable, is_acquireable },
+      artwork: { sale_message, availability, is_offerable, is_acquireable },
     } = this.props
 
     // Pageview
@@ -85,7 +85,7 @@ export class ArtworkApp extends React.Component<Props> {
       acquireable: is_acquireable,
       offerable: is_offerable,
       availability,
-      price_listed: !!price,
+      price_listed: !!sale_message,
     }
 
     if (typeof window.analytics !== "undefined") {
@@ -216,7 +216,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
       is_acquireable
       is_offerable
       availability
-      price
+      sale_message
       is_in_auction
       artists {
         id
