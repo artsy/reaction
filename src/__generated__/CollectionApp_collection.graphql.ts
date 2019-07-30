@@ -259,6 +259,12 @@ return {
           "name": "include_medium_filter_in_aggregation",
           "value": true,
           "type": "Boolean"
+        },
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "-decayed_merch",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -371,5 +377,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '22df6d19074931e3814f222d68b54dc4';
+(node as any).hash = 'e33886d9f8e90148a3e2cdafed7c7aac';
 export default node;
