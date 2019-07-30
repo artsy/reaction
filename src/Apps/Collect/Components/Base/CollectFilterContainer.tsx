@@ -14,18 +14,11 @@ export class CollectFilterContainer extends Component<
   CollectFilterContainerProps
 > {
   render() {
-    const { filter_artworks } = this.props.viewer
-    const { aggregations } = filter_artworks
-    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
-
     return (
       <SystemContextConsumer>
         {({ user }) => {
           return (
-            <FilterContainer
-              user={user}
-              mediums={mediumAggregation.counts as any}
-            >
+            <FilterContainer user={user}>
               {(filters: FilterState) => (
                 <CollectRefetchContainer
                   viewer={this.props.viewer}
@@ -54,10 +47,7 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           acquireable: { type: "Boolean" }
           offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL]
-          }
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
           height: { type: "String" }
@@ -68,15 +58,6 @@ export const CollectFilterFragmentContainer = createFragmentContainer(
           page: { type: "Int" }
           dimension_range: { type: "String" }
         ) {
-        filter_artworks(aggregations: $aggregations, size: 0) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-        }
         ...CollectRefetch_viewer
           @arguments(
             medium: $medium

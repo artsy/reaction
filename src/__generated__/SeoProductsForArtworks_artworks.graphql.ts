@@ -60,14 +60,22 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
+v1 = [
+  {
+    "kind": "Literal",
+    "name": "shallow",
+    "value": true,
+    "type": "Boolean"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = [
+v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -218,12 +226,12 @@ return {
                   "kind": "LinkedField",
                   "alias": null,
                   "name": "artists",
-                  "storageKey": null,
-                  "args": null,
+                  "storageKey": "artists(shallow:true)",
+                  "args": v1,
                   "concreteType": "Artist",
                   "plural": true,
                   "selections": [
-                    v1,
+                    v2,
                     v0
                   ]
                 },
@@ -235,7 +243,7 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v2
+                  "selections": v3
                 },
                 {
                   "kind": "LinkedField",
@@ -260,18 +268,11 @@ return {
                   "alias": null,
                   "name": "partner",
                   "storageKey": "partner(shallow:true)",
-                  "args": [
-                    {
-                      "kind": "Literal",
-                      "name": "shallow",
-                      "value": true,
-                      "type": "Boolean"
-                    }
-                  ],
+                  "args": v1,
                   "concreteType": "Partner",
                   "plural": false,
                   "selections": [
-                    v1,
+                    v2,
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -296,7 +297,7 @@ return {
                           "args": null,
                           "concreteType": "Image",
                           "plural": false,
-                          "selections": v2
+                          "selections": v3
                         },
                         v0
                       ]
@@ -382,5 +383,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a50f86d40cc0e1c4a683fd0f73fa5b20';
+(node as any).hash = 'afaa66a6f2b7f10590f77f0064ab18e2';
 export default node;
