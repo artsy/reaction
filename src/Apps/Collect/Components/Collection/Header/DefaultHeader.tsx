@@ -4,7 +4,6 @@ import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { useWindowSize } from "Utils/Hooks/useWindowSize"
-import { getViewportWidth } from "Utils/viewport"
 
 interface Props {
   headerArtworks: DefaultHeader_headerArtworks
@@ -18,14 +17,13 @@ export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
 }) => {
-  useWindowSize()
+  const viewportWidth = useWindowSize()
   const { hits: artworks } = headerArtworks
 
   if (!artworks) {
     return null
   }
 
-  const { width: viewportWidth } = getViewportWidth()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   const duplicatedArtworks = artworks.slice(0)
   const artworksToRender = getHeaderArtworks(
