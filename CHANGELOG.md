@@ -1,3 +1,15 @@
+# v16.19.4 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Scaffold Vanguard series page [#2636](https://github.com/artsy/reaction/pull/2636) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.19.3 (Tue Jul 30 2019)
 
 #### 🐛  Bug Fix
