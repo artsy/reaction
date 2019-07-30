@@ -4,7 +4,7 @@ import React from "react"
 
 interface Props {
   filters: FilterState
-  mediums: Array<{
+  mediums?: Array<{
     id: string
     name: string
   }>

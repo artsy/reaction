@@ -76,7 +76,6 @@ const node: ConcreteFragment = {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
-        "MEDIUM",
         "TOTAL"
       ]
     },
@@ -240,5 +239,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '229cc64fab743e3ec642a06ea70b40cd';
+(node as any).hash = '22920c5a7f9e5d9c5f1fa28ccd08cad2';
 export default node;
