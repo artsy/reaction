@@ -2,6 +2,7 @@ import { CollectionsHubRails_marketingCollection } from "__generated__/Collectio
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeaturedCollectionsRailsContainer as FeaturedCollectionsRails } from "./FeaturedCollectionsRails"
+import { OtherCollectionsRailsContainer as OtherCollectionsRail } from "./OtherCollectionsRail"
 
 const railForGroupType = collectionGroup => {
   const { groupType } = collectionGroup
@@ -11,7 +12,7 @@ const railForGroupType = collectionGroup => {
     case "FeaturedCollections":
       return <FeaturedCollectionsRails collectionGroup={collectionGroup} />
     case "OtherCollections":
-      return null
+      return <OtherCollectionsRail collectionGroup={collectionGroup} />
     default:
       return null
   }
@@ -41,6 +42,7 @@ export const CollectionsHubRailsContainer = createFragmentContainer(
         linkedCollections {
           groupType
           ...FeaturedCollectionsRails_collectionGroup
+          ...OtherCollectionsRail_collectionGroup
         }
       }
     `,
