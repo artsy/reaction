@@ -24,16 +24,30 @@
       "webRoot": "${workspaceRoot}/src"
     },
     {
-      "name": "Run Tests With Debugger (slower, use yarn for normal work)",
       "type": "node",
       "request": "launch",
-      "port": 5858,
-      "address": "localhost",
-      "sourceMaps": true,
-      "stopOnEntry": false,
-      "runtimeExecutable": null,
-      "runtimeArgs": ["debug", "--debug-brk", "./node_modules/.bin/jest", "-i"],
-      "cwd": "${workspaceRoot}"
+      "name": "Jest All",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["**/__tests__/**/${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
     }
   ]
 }
