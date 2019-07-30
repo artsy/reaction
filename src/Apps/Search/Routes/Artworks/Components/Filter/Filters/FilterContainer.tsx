@@ -24,7 +24,7 @@ import { Media } from "Utils/Responsive"
 
 export interface FilterContainerProps {
   user?: any
-  mediums: Array<{ id: string; name: string }>
+  mediums?: Array<{ id: string; name: string }>
   timePeriods?: Array<{ name: string }>
   children?: (filters: FilterState) => JSX.Element
 }

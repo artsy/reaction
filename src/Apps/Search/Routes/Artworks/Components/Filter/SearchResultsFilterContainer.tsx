@@ -15,19 +15,13 @@ export class SearchResultsFilterContainer extends Component<
   SearchFilterContainerProps
 > {
   render() {
-    const { viewer, term } = this.props
-    const { filter_artworks } = viewer
-    const { aggregations } = filter_artworks
-    const mediumAggregation = aggregations.find(agg => agg.slice === "MEDIUM")
+    const { term } = this.props
 
     return (
       <SystemContextConsumer>
         {({ user }) => {
           return (
-            <FilterContainer
-              user={user}
-              mediums={mediumAggregation.counts as any}
-            >
+            <FilterContainer user={user}>
               {(filters: FilterState) => (
                 <SearchResultsRefetchContainer
                   viewer={this.props.viewer}
@@ -57,10 +51,7 @@ export const SearchResultsFilterFragmentContainer = createFragmentContainer(
           acquireable: { type: "Boolean" }
           offerable: { type: "Boolean" }
           inquireable_only: { type: "Boolean" }
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL]
-          }
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           price_range: { type: "String" }
           height: { type: "String" }
@@ -71,15 +62,6 @@ export const SearchResultsFilterFragmentContainer = createFragmentContainer(
           keyword: { type: "String!", defaultValue: "" }
           page: { type: "Int" }
         ) {
-        filter_artworks(aggregations: $aggregations, size: 0) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-        }
         ...SearchResultsRefetch_viewer
           @arguments(
             medium: $medium
