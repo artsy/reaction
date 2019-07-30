@@ -1,3 +1,15 @@
+# v16.19.5 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Remove unneeded call for medium aggregations [#2638](https://github.com/artsy/reaction/pull/2638) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.19.4 (Tue Jul 30 2019)
 
 #### 🐛  Bug Fix
