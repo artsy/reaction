@@ -1,3 +1,44 @@
+# v16.19.4 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Scaffold Vanguard series page [#2636](https://github.com/artsy/reaction/pull/2636) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.19.3 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2637](https://github.com/artsy/reaction/pull/2637) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.2 (Mon Jul 29 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1347 - Uses modal for price in context [#2632](https://github.com/artsy/reaction/pull/2632) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.27 to v4.14.38 [#2601](https://github.com/artsy/reaction/pull/2601) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.19.1 (Fri Jul 26 2019)
 
 #### 🐛  Bug Fix
