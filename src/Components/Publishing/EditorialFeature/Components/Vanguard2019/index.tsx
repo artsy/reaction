@@ -5,7 +5,7 @@ import React from "react"
 import styled from "styled-components"
 import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
-import { VanguardTOC } from "./Components/TOC"
+import { VanguardTableOfContents } from "./Components/TableOfContents"
 
 export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
   render() {
@@ -25,7 +25,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
         <FrameTextRight size="8">2019</FrameTextRight>
         <VanguardIntroduction article={article} />
         {/** table of contents */}
-        <VanguardTOC article={article} />
+        <VanguardTableOfContents article={article} />
         {/** map 3 sub-series articles */}
         {relatedArticles &&
           relatedArticles.map(subSeries => (
