@@ -41,10 +41,30 @@ export interface ReviewProps {
   isCommittingMutation: boolean
 }
 
+export interface ReviewState {
+  stripe: stripe.Stripe
+}
+
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
-export class ReviewRoute extends Component<ReviewProps> {
+export class ReviewRoute extends Component<ReviewProps, ReviewState> {
+  state = { stripe: null }
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+        })
+      })
+    }
+  }
+
   @track<ReviewProps>(props => ({
     action_type:
       props.order.mode === "BUY"
@@ -70,6 +90,15 @@ export class ReviewRoute extends Component<ReviewProps> {
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
         return
+      } else if (orderOrError.actionData.clientSecret) {
+        this.props.stripe.handleCardAction(clientSecret).then(result => {
+          if (result.error) {
+            // this.handleSubmitError(result.error)
+            console.log("ERROR!!!", result.error)
+          } else {
+            this.onSubmit()
+          }
+        })
       }
 
       this.props.router.push(`/orders/${this.props.order.id}/status`)
@@ -93,6 +122,11 @@ export class ReviewRoute extends Component<ReviewProps> {
               ... on OrderWithMutationSuccess {
                 order {
                   state
+                }
+              }
+              ... on OrderRequiresAction {
+                actionData {
+                  clientSecret
                 }
               }
               ... on OrderWithMutationFailure {
