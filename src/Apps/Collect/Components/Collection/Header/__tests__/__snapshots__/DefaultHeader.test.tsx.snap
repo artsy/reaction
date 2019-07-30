@@ -22,7 +22,7 @@ exports[`default header component renders a snapshot 1`] = `
       className="sc-bwzfXH DefaultHeader__HeaderArtworks-sc-12cdbk9-1 jDVusT"
     >
       <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+        href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -31,84 +31,39 @@ exports[`default header component renders a snapshot 1`] = `
         />
       </a>
       <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+        href="/artwork/carrie-mae-weems-untitled-woman-feeding-bird"
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
           onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6EcgtVvPwlklnB96Xo582Q%2Flarge.jpg"
         />
       </a>
       <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+        href="/artwork/carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book"
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
           onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FgK6jwJ3DvAJwfRN86QVkXg%2Flarge.jpg"
         />
       </a>
       <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+        href="/artwork/carrie-mae-weems-untitled-woman-standing"
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
           onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=213&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FclW8TSShyic1OZjPrQ2ZMQ%2Flarge.jpg"
         />
       </a>
       <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
+        href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1"
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
           onContextMenu={[Function]}
-          src="https://resized-large.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
-        />
-      </a>
-      <a
-        href="/artwork/shepard-fairey-50-shades-of-black-lp-box-set"
-      >
-        <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
-          onContextMenu={[Function]}
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=218&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6im4v__40Y7_SkuaZTCVaQ%2Flarge.jpg"
         />
       </a>
     </div>

@@ -4,24 +4,39 @@ import {
   getHeaderArtworks,
 } from "Apps/Collect/Components/Collection/Header/DefaultHeader"
 import { shallow } from "enzyme"
+import { uniq } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 
 describe("artworks", () => {
-  it("returns an array of repeating artworks when original array of works is too small to fill header ", () => {
-    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 3)
-    const result = getHeaderArtworks(artworks, 1308, false)
+  const hasDuplicateArtworks = headerArtworks => {
+    return uniq(headerArtworks).length !== headerArtworks.length
+  }
 
-    expect(result.length).toBeGreaterThan(artworks.length)
-    expect(result).toHaveLength(6)
+  it("returns a list of duplicating artworks that will fill the header, when the quantity of artworks in collection are small in a large viewport", () => {
+    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 3)
+    const headerArtworks = getHeaderArtworks(artworks, 1275, false)
+
+    expect(hasDuplicateArtworks(headerArtworks)).toBeTruthy()
+    expect(headerArtworks.length).toBeGreaterThan(artworks.length)
+    expect(headerArtworks).toHaveLength(6)
   })
 
-  it("returns an array of artworks of equal length as the original array received when header can fit all works ", () => {
+  it("returns a list of duplicating artworks that will fill the header, when the quantity of artworks in collection are small in a small viewport", () => {
+    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 2)
+    const headerArtworks = getHeaderArtworks(artworks, 375, true)
+
+    expect(hasDuplicateArtworks(headerArtworks)).toBeTruthy()
+    expect(headerArtworks.length).toBeGreaterThanOrEqual(artworks.length)
+    expect(headerArtworks).toHaveLength(3)
+  })
+
+  it("returns only the number of artworks necessary to fill the header", () => {
     const artworks = defaultCollectionHeaderArtworks.hits
 
-    const result = getHeaderArtworks(artworks, 1308, false)
-    expect(artworks.length).toEqual(result.length)
-    expect(result).toHaveLength(10)
+    const headerArtworks = getHeaderArtworks(artworks, 1375, false)
+    expect(artworks.length).toBeGreaterThan(headerArtworks.length)
+    expect(headerArtworks).toHaveLength(7)
   })
 })
 
@@ -55,13 +70,13 @@ describe("default header component", () => {
   it("renders images in the header component ", () => {
     const wrapper = getWrapper(props)
 
-    expect(wrapper.find("Image").length).toBe(10)
+    expect(wrapper.find("Image").length).toBe(5)
   })
 
-  it("when viewport size is sm or small the image src link references the small resized url", () => {
+  it("when viewport size is small the image src link references the small resized url", () => {
     const mockWindow: any = window
-    mockWindow.innerWidth = 600
-    mockWindow.innerHeight = 600
+    mockWindow.innerWidth = 375
+    mockWindow.innerHeight = 375
     const wrapper = getWrapper(props)
     const headerArtwork = wrapper.find("Image").first()
 
@@ -70,10 +85,10 @@ describe("default header component", () => {
     )
   })
 
-  it("when viewport size is md or larger the image src link references the large resized url", () => {
+  it("when viewport size is large the image src link references the large resized url", () => {
     const mockWindow: any = window
-    mockWindow.innerWidth = 1200
-    mockWindow.innerHeight = 1200
+    mockWindow.innerWidth = 900
+    mockWindow.innerHeight = 900
     const wrapper = getWrapper(props)
     const headerArtwork = wrapper.find("Image").first()
 
@@ -90,6 +105,8 @@ describe("default header component", () => {
         .find("a")
         .at(0)
         .props().href
-    ).toEqual("/artwork/shepard-fairey-50-shades-of-black-lp-box-set")
+    ).toEqual(
+      "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
+    )
   })
 })

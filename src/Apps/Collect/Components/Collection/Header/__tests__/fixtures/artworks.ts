@@ -49,210 +49,219 @@ export const defaultCollectionHeaderArtworks = {
   " $refType": null,
   hits: [
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href:
+        "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children",
+      id: "carrie-mae-weems-untitled-woman-and-daughter-with-children",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url: "https://resized-small.cloudfront.net",
+
+          width: 160,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url: "https://resized-large.cloudfront.net",
+          width: 220,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "556e274272616943ba410500",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1kYXVnaHRlci13aXRoLWNoaWxkcmVu",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href: "/artwork/carrie-mae-weems-untitled-woman-feeding-bird",
+      id: "carrie-mae-weems-untitled-woman-feeding-bird",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=159&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6EcgtVvPwlklnB96Xo582Q%2Flarge.jpg",
+          width: 159,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6EcgtVvPwlklnB96Xo582Q%2Flarge.jpg",
+          width: 219,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "556e270e72616978256c0500",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWZlZWRpbmctYmlyZA==",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href:
+        "/artwork/carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book",
+      id:
+        "carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FgK6jwJ3DvAJwfRN86QVkXg%2Flarge.jpg",
+          width: 160,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FgK6jwJ3DvAJwfRN86QVkXg%2Flarge.jpg",
+          width: 220,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "56efcd9f139b21568b00293c",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLW1hbi1yZWFkaW5nLW5ld3NwYXBlci1hbmQta2l0Y2hlbi10YWJsZS1zZXJpZXMtYm9vaw==",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href: "/artwork/carrie-mae-weems-untitled-woman-standing",
+      id: "carrie-mae-weems-untitled-woman-standing",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=155&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FclW8TSShyic1OZjPrQ2ZMQ%2Flarge.jpg",
+          width: 155,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=213&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FclW8TSShyic1OZjPrQ2ZMQ%2Flarge.jpg",
+          width: 213,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "556e26be7261692b8c230300",
       },
-      __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+      __id: "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLXN0YW5kaW5n",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href:
+        "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1",
+      id:
+        "carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1",
       image: {
         small: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=159&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6im4v__40Y7_SkuaZTCVaQ%2Flarge.jpg",
+          width: 159,
           height: 160,
-          width: 160,
-          url: "https://resized-small.cloudfront.net",
         },
         large: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=218&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6im4v__40Y7_SkuaZTCVaQ%2Flarge.jpg",
+          width: 218,
           height: 220,
-          width: 220,
-          url: "https://resized-large.cloudfront.net",
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "59e83bfb139b2175e05e4377",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1kYXVnaHRlci13aXRoLW1ha2V1cC1mcm9tLWtpdGNoZW4tdGFibGUtc2VyaWVzLTE=",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href: "/artwork/carrie-mae-weems-untitled-brushing-hair",
+      id: "carrie-mae-weems-untitled-brushing-hair",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjUtnjk72Wp_WtNsFdvYzZg%2Flarge.jpg",
+          width: 160,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjUtnjk72Wp_WtNsFdvYzZg%2Flarge.jpg",
+          width: 220,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "5b36523f1a1e8613a03d3d7c",
       },
-      __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+      __id: "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWJydXNoaW5nLWhhaXI=",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href:
+        "/artwork/carrie-mae-weems-untitled-man-smoking-from-kitchen-table-series",
+      id: "carrie-mae-weems-untitled-man-smoking-from-kitchen-table-series",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=158&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Ft6sAir5cRqSVcVKeP3NJQA%2Flarge.jpg",
+          width: 158,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=217&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Ft6sAir5cRqSVcVKeP3NJQA%2Flarge.jpg",
+          width: 217,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "5ce6941defd93e1fe9ee17df",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLW1hbi1zbW9raW5nLWZyb20ta2l0Y2hlbi10YWJsZS1zZXJpZXM=",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href: "/artwork/carrie-mae-weems-untitled-from-the-kitchen-table-series",
+      id: "carrie-mae-weems-untitled-from-the-kitchen-table-series",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=162&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIbCYjysUtSW7xkQ_kj0D8w%2Flarge.jpg",
+          width: 162,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=223&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIbCYjysUtSW7xkQ_kj0D8w%2Flarge.jpg",
+          width: 223,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "522789fe8b3b8142870004be",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWZyb20tdGhlLWtpdGNoZW4tdGFibGUtc2VyaWVz",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href:
+        "/artwork/carrie-mae-weems-untitled-woman-and-phone-from-the-series-the-kitchen-table",
+      id:
+        "carrie-mae-weems-untitled-woman-and-phone-from-the-series-the-kitchen-table",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=159&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FkZSmv3CeHhIzV9DrE1gcug%2Flarge.jpg",
+          width: 159,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FkZSmv3CeHhIzV9DrE1gcug%2Flarge.jpg",
+          width: 219,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "5b97f15a86c8aa4032386cf2",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1waG9uZS1mcm9tLXRoZS1zZXJpZXMtdGhlLWtpdGNoZW4tdGFibGU=",
     },
     {
-      href: "/artwork/shepard-fairey-50-shades-of-black-lp-box-set",
-      id: "shepard-fairey-50-shades-of-black-lp-box-set",
+      href: "/artwork/carrie-mae-weems-untitled-from-kitchen-table-series",
+      id: "carrie-mae-weems-untitled-from-kitchen-table-series",
       image: {
         small: {
-          height: 160,
-          width: 160,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=161&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSsSCXZj6gJgfsyzbA4ffCw%2Flarge.jpg",
+          width: 161,
+          height: 160,
         },
         large: {
-          height: 220,
-          width: 220,
           url:
-            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=160&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net",
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=222&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSsSCXZj6gJgfsyzbA4ffCw%2Flarge.jpg",
+          width: 222,
+          height: 220,
         },
-        __id: "5c9d52d6ab6a573cbc0a520e",
+        __id: "54f77f9872616962f8590300",
       },
       __id:
-        "QXJ0d29yazpzaGVwYXJkLWZhaXJleS01MC1zaGFkZXMtb2YtYmxhY2stbHAtYm94LXNldA==",
+        "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWZyb20ta2l0Y2hlbi10YWJsZS1zZXJpZXM=",
     },
   ],
 }
