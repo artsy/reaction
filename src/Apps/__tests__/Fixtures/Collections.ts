@@ -302,3 +302,52 @@ export const CollectionsHubFixture = [
     ],
   },
 ]
+
+export const CollectionsHubLinkedCollections = {
+  linkedCollections: [
+    {
+      groupType: "ArtistSeries",
+      name: "Artist Series",
+      members: [
+        {
+          title: "Flags unique collectins",
+          price_guidance: 1000,
+          artworks: {
+            hits: [
+              {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag",
+                image: {
+                  url:
+                    "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+              {
+                artist: {
+                  name: "Jaspe11111r Johns",
+                },
+                title: "Flag1111",
+                image: {
+                  url:
+                    "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+              {
+                artist: {
+                  name: "Jasper 1123",
+                },
+                title: "Fl124ag",
+                image: {
+                  url:
+                    "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}

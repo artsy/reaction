@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
+import { ArtistSeriesRail_collectionGroup$ref } from "./ArtistSeriesRail_collectionGroup.graphql";
 import { FeaturedCollectionsRails_collectionGroup$ref } from "./FeaturedCollectionsRails_collectionGroup.graphql";
 import { OtherCollectionsRail_collectionGroup$ref } from "./OtherCollectionsRail_collectionGroup.graphql";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
@@ -9,7 +10,7 @@ export type CollectionsHubRails_marketingCollection$ref = typeof _CollectionsHub
 export type CollectionsHubRails_marketingCollection = {
     readonly linkedCollections: ReadonlyArray<{
         readonly groupType: MarketingGroupTypes;
-        readonly " $fragmentRefs": FeaturedCollectionsRails_collectionGroup$ref & OtherCollectionsRail_collectionGroup$ref;
+        readonly " $fragmentRefs": FeaturedCollectionsRails_collectionGroup$ref & OtherCollectionsRail_collectionGroup$ref & ArtistSeriesRail_collectionGroup$ref;
     }>;
     readonly " $refType": CollectionsHubRails_marketingCollection$ref;
 };
@@ -48,6 +49,11 @@ const node: ConcreteFragment = {
           "kind": "FragmentSpread",
           "name": "OtherCollectionsRail_collectionGroup",
           "args": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtistSeriesRail_collectionGroup",
+          "args": null
         }
       ]
     },
@@ -60,5 +66,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '0416d48a4d5859055abfd55bfa769c68';
+(node as any).hash = '6390a64b7992f9361792f0cb66320097';
 export default node;
