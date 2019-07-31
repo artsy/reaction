@@ -15,21 +15,27 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
     return (
       <Box>
         <Nav
-          canFix={false}
+          canFix
           color="black"
           backgroundColor="white"
           title={article.title}
         />
+        <FrameTextLeft size="8">2019</FrameTextLeft>
+        <FrameTextRight size="8">Vanguard</FrameTextRight>
 
-        <FrameTextLeft size="8">Vanguard</FrameTextLeft>
-        <FrameTextRight size="8">2019</FrameTextRight>
+        {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
         {/** table of contents */}
         <VanguardTableOfContents article={article} />
+
         {/** map 3 sub-series articles */}
         {relatedArticles &&
-          relatedArticles.map(subSeries => (
-            <VanguardSeriesWrapper key={subSeries.id} article={subSeries} />
+          relatedArticles.map((subSeries, i) => (
+            <VanguardSeriesWrapper
+              key={subSeries.id}
+              article={subSeries}
+              index={i}
+            />
           ))}
       </Box>
     )
@@ -37,19 +43,18 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
 }
 
 const FrameText = styled(Sans)`
+  font-size: 100px;
   position: fixed;
   top: 50%;
-  font-size: 100px;
-  height: 1em;
   text-transform: uppercase;
   transform-origin: center center;
 `
 
 const FrameTextLeft = styled(FrameText)`
-  left: -150px;
+  left: 0;
   transform: rotate(-90deg);
 `
 const FrameTextRight = styled(FrameText)`
-  right: 20px;
+  right: -150px;
   transform: rotate(90deg);
 `
