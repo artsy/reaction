@@ -1,5 +1,7 @@
 import { Box, color, Flex, Link, ResponsiveImage, Serif } from "@artsy/palette"
 import { OtherCollectionEntity_member } from "__generated__/OtherCollectionEntity_member.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -33,8 +35,22 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
   member,
 }) => {
   const { slug, thumbnail, title } = member
+  const { trackEvent } = useTracking()
+
+  const onClickLink = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.OtherCollectionsRail,
+      context_page_owner_slug: slug && slug,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      type: Schema.Type.Link,
+      destination_path: location.href,
+    })
+  }
+
   return (
-    <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
+    <StyledLink href={`${sd.APP_URL}/collection/${slug}`} onClick={onClickLink}>
       <Flex alignItems="center">
         {thumbnail && (
           <ImageContainer>
