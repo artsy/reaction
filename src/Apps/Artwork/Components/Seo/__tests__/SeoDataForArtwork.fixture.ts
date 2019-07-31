@@ -6,7 +6,10 @@ export const SeoDataForArtworkFixture: SeoDataForArtwork_artwork = {
   date: "1950",
   is_price_hidden: false,
   is_price_range: false,
-  price: "",
+  listPrice: {
+    minPriceCents: 123400,
+    maxPriceCents: 234500,
+  },
   price_currency: "USD",
   sale_message: "sale message",
   meta_image: {

@@ -37,7 +37,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
     })
 
     return artworksForSeoProduct.map(({ node }, index) => {
-      const { artists, is_price_range, partner, price } = node
+      const { artists, is_price_range, partner, listPrice } = node
       const location = partner.locations && partner.locations[0]
       const artistsName = artists
         ? toSentence(node.artists.map(({ name }) => name))
@@ -64,10 +64,10 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                   offers: {
                     "@type": "Offer",
                     price: !is_price_range
-                      ? formatCurrency(price)
+                      ? formatCurrency(listPrice.priceCents)
                       : {
-                          minPrice: formatCurrency(price.split("-")[0]),
-                          maxPrice: formatCurrency(price.split("-")[1]),
+                          minPrice: formatCurrency(listPrice.minPriceCents),
+                          maxPrice: formatCurrency(listPrice.maxPriceCents),
                         },
                     priceCurrency: node.price_currency,
                     availability: AVAILABILITY[node.availability],
@@ -115,7 +115,15 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
             href
             is_acquireable
             is_price_range
-            price
+            listPrice {
+              ... on PriceRange {
+                minPriceCents
+                maxPriceCents
+              }
+              ... on ExactPrice {
+                priceCents
+              }
+            }
             price_currency
             title
             artists {

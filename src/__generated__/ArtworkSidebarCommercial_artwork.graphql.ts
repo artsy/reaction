@@ -10,7 +10,9 @@ export type ArtworkSidebarCommercial_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
-    readonly price: string | null;
+    readonly listPrice: ({
+        readonly priceCents?: number;
+    }) | null;
     readonly sale_message: string | null;
     readonly shippingInfo: string | null;
     readonly shippingOrigin: string | null;
@@ -71,11 +73,28 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "price",
+      "name": "listPrice",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "InlineFragment",
+          "type": "ExactPrice",
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "priceCents",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
+      ]
     },
     v0,
     v1,
@@ -134,5 +153,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c26a481dd5578776811cf868f1eead42';
+(node as any).hash = 'c4e6d37a5c2b176a115d79abb4b1f0ef';
 export default node;
