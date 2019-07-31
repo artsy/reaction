@@ -18,7 +18,6 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   return (
     <Content mb={2}>
       <Serif size="5">Trending Artist Series</Serif>
-      {console.log(members)}
       <Carousel
         height="200px"
         width="500px"
@@ -43,10 +42,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         renderRightArrow={({ Arrow }) => {
           return (
             <ArrowContainer>
-              <ArrowContainer>
-                {console.log("artist collection : " + members.length)}
-                {members.length > 4 && <Arrow />}
-              </ArrowContainer>
+              <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
             </ArrowContainer>
           )
         }}
