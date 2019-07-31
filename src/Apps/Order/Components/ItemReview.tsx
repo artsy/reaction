@@ -54,7 +54,7 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
       )}
       {attribution_class && (
         <Serif size="2" color="black60">
-          {attribution_class.short_description}
+          {attribution_class.shortDescription}
         </Serif>
       )}
     </Flex>
@@ -76,7 +76,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
         cm
       }
       attribution_class {
-        short_description
+        shortDescription
       }
       image {
         resized(width: 185) {

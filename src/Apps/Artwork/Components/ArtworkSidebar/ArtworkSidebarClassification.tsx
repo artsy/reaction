@@ -58,7 +58,7 @@ export class ArtworkSidebarClassification extends React.Component<
           <Spacer mt={2} />
           <Serif size="2">
             <ClassificationLink onClick={this.openModal.bind(this)}>
-              {artwork.attribution_class.short_description}
+              {artwork.attribution_class.shortDescription}
             </ClassificationLink>
             .
           </Serif>
@@ -74,7 +74,7 @@ export const ArtworkSidebarClassificationFragmentContainer = createFragmentConta
     artwork: graphql`
       fragment ArtworkSidebarClassification_artwork on Artwork {
         attribution_class {
-          short_description
+          shortDescription
         }
       }
     `,

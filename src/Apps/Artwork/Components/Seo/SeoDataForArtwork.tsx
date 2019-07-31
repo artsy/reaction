@@ -1,3 +1,4 @@
+import currency from "currency.js"
 import { trim } from "lodash"
 import React from "react"
 
@@ -76,7 +77,12 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
         date
         is_price_hidden
         is_price_range
-        price
+        listPrice {
+          ... on PriceRange {
+            minPriceCents
+            maxPriceCents
+          }
+        }
         price_currency
         sale_message
         meta_image: image {
@@ -120,12 +126,15 @@ const displayPrice = artwork => {
   const {
     is_price_hidden,
     is_price_range,
-    price,
+    listPrice,
     sale_message,
     price_currency,
   } = artwork
 
-  if (is_price_range && !is_price_hidden && price) {
+  if (is_price_range && !is_price_hidden && listPrice) {
+    const minPrice = currency(listPrice.minPriceCents / 100).format()
+    const maxPrice = currency(listPrice.maxPriceCents / 100).format()
+    const price = `${minPrice} - ${maxPrice}`
     return buildPriceSpecification(price_currency, splitPriceRange(price))
   }
 

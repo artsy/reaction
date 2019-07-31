@@ -141,7 +141,6 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: false,
           is_price_hidden: false,
-          price: undefined,
         })
 
         expect(getProductData(wrapper).offers.price).toEqual("sale message")
@@ -152,7 +151,10 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: true,
           is_price_hidden: false,
-          price: "$1,234 - 2,345",
+          listPrice: {
+            minPriceCents: 123400,
+            maxPriceCents: 234500,
+          },
         })
 
         const offers = getProductData(wrapper).offers
@@ -161,8 +163,8 @@ describe("SeoDataForArtwork", () => {
         expect(offers.priceSpecification).toBeDefined()
         expect(offers.priceSpecification).toEqual({
           "@type": "PriceSpecification",
-          minPrice: "1,234",
-          maxPrice: "2,345",
+          minPrice: "1,234.00",
+          maxPrice: "2,345.00",
           priceCurrency: "USD",
         })
       })
