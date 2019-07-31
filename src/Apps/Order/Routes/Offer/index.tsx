@@ -168,6 +168,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     const listPriceCents = this.props.order.totalListPriceCents
+    const orderCurrency = this.props.order.currencyCode
 
     if (!lowSpeedBumpEncountered && offerValue * 100 < listPriceCents * 0.75) {
       this.showLowSpeedbump()
@@ -189,7 +190,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
           orderId: this.props.order.id,
           offerPrice: {
             amount: offerValue,
-            currencyCode: "USD",
+            currencyCode: orderCurrency,
           },
         },
       })).ecommerceAddInitialOfferToOrder.orderOrError
@@ -210,6 +211,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     const { order, isCommittingMutation } = this.props
 
     const artworkId = order.lineItems.edges[0].node.artwork.id
+    const orderCurrency = order.currencyCode
 
     return (
       <>
@@ -282,7 +284,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       this.state.offerValue &&
                       this.state.offerValue.toLocaleString("en-US", {
                         style: "currency",
-                        currency: "USD",
+                        currency: orderCurrency,
                         minimumFractionDigits: 2,
                       })
                     }
@@ -319,6 +321,7 @@ export const OfferFragmentContainer = createFragmentContainer(
         id
         mode
         state
+        currencyCode
         totalListPrice(precision: 2)
         totalListPriceCents
         lineItems {

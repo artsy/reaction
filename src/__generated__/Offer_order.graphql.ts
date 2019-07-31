@@ -10,6 +10,7 @@ export type Offer_order = {
     readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
+    readonly currencyCode: string | null;
     readonly totalListPrice: string | null;
     readonly totalListPriceCents: number | null;
     readonly lineItems: ({
@@ -61,6 +62,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "currencyCode",
       "args": null,
       "storageKey": null
     },
@@ -146,5 +154,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6ee0e0c309dc3f09604fa6cf229cfbac';
+(node as any).hash = 'ebc253fd306147091715106fa9246ca1';
 export default node;

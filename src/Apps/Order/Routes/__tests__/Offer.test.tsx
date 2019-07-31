@@ -72,6 +72,36 @@ describe("Offer InitialMutation", () => {
     })
   })
 
+  describe("a non-usd currency", () => {
+    let page: OrderAppTestPage
+    beforeAll(async () => {
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            currencyCode: "GBP",
+            totalListPrice: "£16,000",
+          },
+        },
+      })
+    })
+
+    it("shows the list price just below the input", () => {
+      const container = page.find("div#offer-page-left-column")
+      expect(container.text()).toContain("List price: £16,000")
+    })
+
+    it("can receive input, which updates the transaction summary", () => {
+      expect(page.transactionSummary.text()).toContain("Your offer")
+
+      page.setOfferAmount(1)
+      expect(page.transactionSummary.text()).toContain("Your offer£1.00")
+
+      page.setOfferAmount(1023)
+      expect(page.transactionSummary.text()).toContain("Your offer£1,023.00")
+    })
+  })
+
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
