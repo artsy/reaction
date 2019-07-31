@@ -1,4 +1,4 @@
-import { Separator, Serif, Spacer } from "@artsy/palette"
+import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { RecentlyViewed_me } from "__generated__/RecentlyViewed_me.graphql"
 import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { SystemContext, SystemContextConsumer } from "Artsy"
@@ -6,10 +6,11 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
-import { Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import React, { useContext } from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -67,6 +68,22 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                       />
                     )
                   }}
+                  renderLeftArrow={({ Arrow }) => {
+                    return (
+                      <ArrowContainer>
+                        <Arrow />
+                      </ArrowContainer>
+                    )
+                  }}
+                  renderRightArrow={({ Arrow }) => {
+                    return (
+                      <ArrowContainer>
+                        {me.recentlyViewedArtworks.edges.length > 4 && (
+                          <Arrow />
+                        )}
+                      </ArrowContainer>
+                    )
+                  }}
                 />
               </React.Fragment>
             )
@@ -76,6 +93,13 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
     )
   }
 }
+
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+  ${ArrowButton} {
+    height: 60%;
+  }
+`
 
 export const RecentlyViewedFragmentContainer = createFragmentContainer(
   RecentlyViewed,
