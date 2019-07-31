@@ -9,6 +9,7 @@ import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "../../Components/CollectionsHubsNav"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "./Components/Base/CollectFilterContainer"
 import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
@@ -69,6 +70,12 @@ export class CollectApp extends Component<CollectAppProps> {
               <h1>Collect art and design online</h1>
             </Serif>
 
+            <CollectionsHubsNav
+              marketingHubCollections={
+                this.props.viewer.marketingHubCollections
+              }
+            />
+
             <Sans size="3" weight="medium">
               <a href="/collections">View collections</a>
             </Sans>
@@ -110,6 +117,10 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         ...SeoProductsForArtworks_artworks
+      }
+
+      marketingHubCollections {
+        ...CollectionsHubsNav_marketingHubCollections
       }
 
       ...CollectFilterContainer_viewer
