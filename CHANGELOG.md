@@ -1,3 +1,21 @@
+# v16.19.8 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.7 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections]  Default Header [#2634](https://github.com/artsy/reaction/pull/2634) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.19.6 (Tue Jul 30 2019)
 
 
