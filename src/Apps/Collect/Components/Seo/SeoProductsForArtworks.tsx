@@ -14,7 +14,8 @@ const AVAILABILITY = {
   sold: "https://schema.org/OutOfStock",
 }
 
-const formatCurrency = value => currency(value, { separator: "" }).format()
+const formatCurrency = value =>
+  currency(value / 100, { separator: "" }).format()
 
 interface SeoProductsProps {
   artworks: SeoProductsForArtworks_artworks

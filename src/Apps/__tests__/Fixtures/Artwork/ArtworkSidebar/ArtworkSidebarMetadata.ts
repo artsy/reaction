@@ -12,7 +12,7 @@ export const FilledOutMetadataNoEditions = {
   },
   edition_of: null,
   attribution_class: {
-    short_description: "This is a unique work",
+    shortDescription: "This is a unique work",
   },
 }
 
@@ -33,7 +33,7 @@ export const FilledOutMetadataOneEditionSet = {
   dimensions: { in: "14 × 18 in", cm: "35.6 × 45.7 cm" },
   edition_of: "Edition of 3000",
   attribution_class: {
-    short_description: "This is part of a limited edition set",
+    shortDescription: "This is part of a limited edition set",
   },
 }
 
@@ -59,7 +59,7 @@ export const FilledOutMetadataMultipleEditionSets = {
   dimensions: { in: "40 × 42 in", cm: "101.6 × 106.7 cm" },
   edition_of: "Edition of 3000",
   attribution_class: {
-    short_description: "This is part of a limited edition set",
+    shortDescription: "This is part of a limited edition set",
   },
 }
 
@@ -118,6 +118,6 @@ export const MetadataForAuctionWork = {
   dimensions: { in: "17 × 13 in", cm: "43.2 × 33 cm" },
   edition_of: null,
   attribution_class: {
-    short_description: "This is part of a limited edition set",
+    shortDescription: "This is part of a limited edition set",
   },
 }

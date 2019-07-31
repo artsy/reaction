@@ -27,8 +27,8 @@ fragment PricingContext_artwork on Artwork {
   listPrice {
     __typename
     ... on PriceRange {
-      minPriceCents
       maxPriceCents
+      minPriceCents
     }
   }
   artists {
@@ -73,14 +73,14 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "minPriceCents",
+  "name": "maxPriceCents",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "maxPriceCents",
+  "name": "minPriceCents",
   "args": null,
   "storageKey": null
 },
@@ -96,7 +96,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextStoryQuery",
   "id": null,
-  "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      minPriceCents\n      maxPriceCents\n    }\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPriceCents\n      minPriceCents\n    }\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -235,7 +235,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v3,
+                  v2,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -243,7 +243,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2,
+                  v3,
                   {
                     "kind": "ScalarField",
                     "alias": null,

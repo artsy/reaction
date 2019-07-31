@@ -164,8 +164,8 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       fragment PricingContext_artwork on Artwork {
         listPrice {
           ... on PriceRange {
-            minPriceCents
             maxPriceCents
+            minPriceCents
           }
         }
         artists {

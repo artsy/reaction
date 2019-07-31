@@ -7,8 +7,8 @@ declare const _PricingContext_artwork$ref: unique symbol;
 export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
     readonly listPrice: ({
-        readonly minPriceCents?: number;
         readonly maxPriceCents?: number;
+        readonly minPriceCents?: number;
     }) | null;
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -37,14 +37,14 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "minPriceCents",
+  "name": "maxPriceCents",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "maxPriceCents",
+  "name": "minPriceCents",
   "args": null,
   "storageKey": null
 },
@@ -159,7 +159,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1,
+            v0,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -167,7 +167,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0,
+            v1,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -183,5 +183,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd49c09fa39f2c9eff2377bfe47143afe';
+(node as any).hash = 'edd40bcc6ca8d0df7285270b99ed90b2';
 export default node;
