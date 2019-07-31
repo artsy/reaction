@@ -25,7 +25,7 @@ query ArtworkSidebarClassification_Test_Query {
 
 fragment ArtworkSidebarClassification_artwork on Artwork {
   attribution_class {
-    short_description
+    shortDescription
     __id
   }
   __id
@@ -53,7 +53,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebarClassification_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarClassification_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarClassification_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    short_description\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarClassification_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarClassification_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class {\n    shortDescription\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -107,7 +107,7 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "short_description",
+                "name": "shortDescription",
                 "args": null,
                 "storageKey": null
               },

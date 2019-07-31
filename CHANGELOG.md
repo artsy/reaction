@@ -1,3 +1,27 @@
+# v16.20.1 (Wed Jul 31 2019)
+
+#### 🐛  Bug Fix
+
+- [RecentlyViewed Carousel] Make consistent with recent patterns [#2650](https://github.com/artsy/reaction/pull/2650) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.20.0 (Wed Jul 31 2019)
+
+#### 🚀  Enhancement
+
+- Address more MP v2 deprecations [#2640](https://github.com/artsy/reaction/pull/2640) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.19.8 (Tue Jul 30 2019)
 
 
