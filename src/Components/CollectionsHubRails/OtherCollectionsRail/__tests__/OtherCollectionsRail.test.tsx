@@ -1,4 +1,4 @@
-import { CollectionsHubFixture } from "Apps/__tests__/Fixtures/Collections"
+import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
 import { ArrowButton } from "Components/v2/Carousel"
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -10,7 +10,7 @@ describe("CollectionsRail", () => {
 
   beforeEach(() => {
     props = {
-      collectionGroup: CollectionsHubFixture[0].linkedCollections[0],
+      collectionGroup: CollectionHubFixture.linkedCollections[0],
     }
   })
 
