@@ -28,7 +28,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
   /**
    * Relay is returning 12 artworks since this query populates both the artworks
    *  used for merchandisable artists and those used for this component.
-   * So slice the artworks array to just pull the first 10 in the result set.
+   *  Slice the artworks array to get just the first 10 in the result set.
    */
   const duplicatedArtworks = artworks.slice(0, 10)
   const artworksToRender = getHeaderArtworks(
