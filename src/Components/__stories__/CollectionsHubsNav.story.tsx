@@ -4,6 +4,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { CollectionsHubsNavFragmentContainer } from "../CollectionsHubsNav"
+import { imageSamples } from "./ImageLink.story"
 
 storiesOf("Components/CollectionsHubsNav", module).add("default", () => (
   <Theme>{render()}</Theme>
@@ -19,9 +20,34 @@ const hubsQuery = graphql`
 
 const marketingHubCollections = [
   {
-    slug: "street-art",
-    title: "Street Art",
-    thumbnail: "http://files.artsy.net/images/kaws-companions_thumbnail.png",
+    slug: "street-art  ",
+    title: "Street Art  ",
+    thumbnail: imageSamples.streetArt,
+  },
+  {
+    slug: "pre-twentieth-century",
+    title: "Pre-20th",
+    thumbnail: imageSamples.preTwentiethCentury,
+  },
+  {
+    slug: "post-war-art",
+    title: "Post-War",
+    thumbnail: imageSamples.postWarArt,
+  },
+  {
+    slug: "contemporary-art",
+    title: "Contemporary",
+    thumbnail: imageSamples.contemporaryArt,
+  },
+  {
+    slug: "impressionist-and-modern-art",
+    title: "Impressionist & Modern",
+    thumbnail: imageSamples.impressionistAndModernArt,
+  },
+  {
+    slug: "photography",
+    title: "Photography",
+    thumbnail: imageSamples.photography,
   },
 ]
 

@@ -1,14 +1,31 @@
 import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
+import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
   marketingHubCollections: CollectionsHubsNav_marketingHubCollections
 }
 
 export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
-  return <div>Hello, {JSON.stringify(props.marketingHubCollections)}</div>
+  return (
+    <NavWrapper>
+      {props.marketingHubCollections.map(hub => (
+        <ImageLink href={`/collection/${hub.slug}`} imageUrl={hub.thumbnail}>
+          {hub.title}
+        </ImageLink>
+      ))}
+    </NavWrapper>
+  )
 }
+
+const NavWrapper = styled.nav`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
 
 export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
   CollectionsHubsNav,

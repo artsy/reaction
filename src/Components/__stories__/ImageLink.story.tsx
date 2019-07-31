@@ -39,7 +39,7 @@ storiesOf("Components/ImageLink", module)
     </ImageLink>
   ))
 
-const imageSamples = {
+export const imageSamples = {
   contemporaryArt:
     "https://d32dm0rphc51dk.cloudfront.net/f_WVnADS9HIc5dQ-sIcejA/thumb.jpg",
   postWarArt:
