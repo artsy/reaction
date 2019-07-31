@@ -86,11 +86,6 @@ export const getHeaderArtworks = (
    */
   while (artworkWidths < headerWidth) {
     artworksArray.forEach((artwork, i) => {
-      // Trigger early break from while loop if headerArtworks widths are large enough to fill header
-      if (artworkWidths >= headerWidth) {
-        return headerArtworks
-      }
-
       headerArtworks.push(artwork)
 
       isSmallViewport
