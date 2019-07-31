@@ -6,8 +6,11 @@ import {
   ResponsiveImage,
   Sans,
   Serif,
+  Spacer,
 } from "@artsy/palette"
 import { FeaturedCollectionsRails_collectionGroup } from "__generated__/FeaturedCollectionsRails_collectionGroup.graphql"
+import { StyledLink } from "Apps/Artist/Components/ArtistCollectionsRail/ArtistCollectionEntity"
+import { ArrowButton, Carousel } from "Components/v2"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -21,39 +24,73 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   return (
-    <>
+    <Box>
       <Serif size="5" m={1}>
         {name}
       </Serif>
-      <Flex flexDirection="row">
-        {members.map(({ title, description, price_guidance, thumbnail }) => (
-          <Container p={2} m={1}>
-            <ImageContainer>
-              <ResponsiveImage src={thumbnail} />
-            </ImageContainer>
-            <Serif size="5" mt={1}>
-              {title}
-            </Serif>
-            <Sans
-              size="2"
-              color="black60"
-            >{`Starting at $${price_guidance}`}</Sans>
-            <ExtendedSerif size="3" mt={1}>
-              <ReadMore
-                maxChars={100}
-                content={
-                  <>
-                    {description && (
-                      <span dangerouslySetInnerHTML={{ __html: description }} />
-                    )}
-                  </>
-                }
-              />
-            </ExtendedSerif>
-          </Container>
-        ))}
-      </Flex>
-    </>
+      <Carousel
+        height="500px"
+        options={{
+          groupCells: 4,
+          cellAlign: "left",
+          wrapAround: false,
+          pageDots: false,
+          draggable: false,
+        }}
+        data={members}
+        render={slide => {
+          return <FeaturedCollectionEntity member={slide} />
+        }}
+        renderLeftArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
+        renderRightArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+          )
+        }}
+      />
+      <Spacer pb={4} />
+    </Box>
+  )
+}
+
+interface FeaturedCollectionEntityProps {
+  member: any
+}
+
+export const FeaturedCollectionEntity: React.FC<
+  FeaturedCollectionEntityProps
+> = ({ member }) => {
+  const { description, price_guidance, slug, thumbnail, title } = member
+  return (
+    <Container p={2} m={1}>
+      <StyledLink href={`/collection/${slug}`}>
+        <ImageContainer>
+          <FeaturedImage src={thumbnail} />
+        </ImageContainer>
+        <Serif size="5" mt={1}>
+          {title}
+        </Serif>
+        <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
+        <ExtendedSerif size="3" mt={1}>
+          <ReadMore
+            maxChars={100}
+            content={
+              <>
+                {description && (
+                  <span dangerouslySetInnerHTML={{ __html: description }} />
+                )}
+              </>
+            }
+          />
+        </ExtendedSerif>
+      </StyledLink>
+    </Container>
   )
 }
 
@@ -94,6 +131,21 @@ const ExtendedSerif = styled(Serif)`
 
     div p {
       display: inline;
+    }
+  }
+`
+export const FeaturedImage = styled(ResponsiveImage)`
+  background-position: top;
+`
+
+export const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 60%;
+    svg {
+      height: 18px;
+      width: 18px;
     }
   }
 `
