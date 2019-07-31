@@ -9,7 +9,7 @@ interface Props {
 export const FixedBackground: React.SFC<Props> = props => {
   const { backgroundColor, backgroundUrl } = props
 
-  if (backgroundUrl) {
+  if (backgroundUrl && !backgroundUrl.includes(".mp4")) {
     return (
       <FixedBackgroundContainer backgroundColor={backgroundColor}>
         <BackgroundImage backgroundUrl={backgroundUrl} />

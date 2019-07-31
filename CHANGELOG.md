@@ -1,3 +1,51 @@
+# v16.20.0 (Wed Jul 31 2019)
+
+#### 🚀  Enhancement
+
+- Address more MP v2 deprecations [#2640](https://github.com/artsy/reaction/pull/2640) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.8 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.7 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections]  Default Header [#2634](https://github.com/artsy/reaction/pull/2634) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.19.6 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.5 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Remove unneeded call for medium aggregations [#2638](https://github.com/artsy/reaction/pull/2638) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.19.4 (Tue Jul 30 2019)
 
 #### 🐛  Bug Fix
