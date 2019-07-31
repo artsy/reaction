@@ -1,8 +1,12 @@
-import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
+import {
+  BuyOrderWithShippingDetails,
+  CommerceOrderWithShippingDetails,
+} from "Apps/__tests__/Fixtures/Order"
 
 export const submitOrderWithFailure = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "validation",
         code: "credit_card_not_found",
@@ -13,9 +17,9 @@ export const submitOrderWithFailure = {
 }
 
 export const submitOrderWithFailureCardDeclined = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "charge_authorization_failed",
@@ -27,9 +31,9 @@ export const submitOrderWithFailureCardDeclined = {
 }
 
 export const submitOrderWithFailureInsufficientFunds = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "charge_authorization_failed",
@@ -41,8 +45,9 @@ export const submitOrderWithFailureInsufficientFunds = {
 }
 
 export const submitOrderWithVersionMismatchFailure = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "artwork_version_mismatch",
@@ -53,8 +58,9 @@ export const submitOrderWithVersionMismatchFailure = {
 }
 
 export const submitOrderWithNoInventoryFailure = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "insufficient_inventory",
@@ -64,11 +70,23 @@ export const submitOrderWithNoInventoryFailure = {
   },
 }
 
-export const submitOrderSuccess = {
-  ecommerceSubmitOrder: {
+export const submitOrderWithActionRequired = {
+  commerceSubmitOrder: {
     orderOrError: {
+      __typename: "CommerceOrderRequiresAction",
+      actionData: {
+        clientSecret: "validation",
+      },
+    },
+  },
+}
+
+export const submitOrderSuccess = {
+  commerceSubmitOrder: {
+    orderOrError: {
+      __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        ...BuyOrderWithShippingDetails,
+        ...CommerceOrderWithShippingDetails,
         state: "SUBMITTED",
       },
     },
@@ -76,8 +94,9 @@ export const submitOrderSuccess = {
 }
 
 export const submitOrderWithMissingInfo = {
-  ecommerceSubmitOrder: {
+  commerceSubmitOrder: {
     orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "processing",
         code: "missing_required_info",
