@@ -83,7 +83,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     try {
       const orderOrError =
         this.props.order.mode === "BUY"
-          ? (await this.submitBuyOrder()).ecommerceSubmitOrder.orderOrError
+          ? (await this.submitBuyOrder()).commerceSubmitOrder.orderOrError
           : (await this.submitOffer()).ecommerceSubmitOrderWithOffer
               .orderOrError
 
@@ -91,17 +91,19 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         this.handleSubmitError(orderOrError.error)
         return
       } else if (orderOrError.actionData.clientSecret) {
-        this.props.stripe.handleCardAction(clientSecret).then(result => {
-          if (result.error) {
-            // this.handleSubmitError(result.error)
-            console.log("ERROR!!!", result.error)
-          } else {
-            this.onSubmit()
-          }
-        })
+        this.state.stripe
+          .handleCardAction(orderOrError.actionData.clientSecret)
+          .then(result => {
+            if (result.error) {
+              console.log("I'm an error!", result.error)
+              return
+            } else {
+              this.onSubmit()
+            }
+          })
+      } else {
+        this.props.router.push(`/orders/${this.props.order.id}/status`)
       }
-
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -112,24 +114,24 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     return this.props.commitMutation<ReviewSubmitOrderMutation>({
       variables: {
         input: {
-          orderId: this.props.order.id,
+          id: this.props.order.id,
         },
       },
       mutation: graphql`
-        mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
-          ecommerceSubmitOrder(input: $input) {
+        mutation ReviewSubmitOrderMutation($input: CommerceSubmitOrderInput!) {
+          commerceSubmitOrder(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                 }
               }
-              ... on OrderRequiresAction {
+              ... on CommerceOrderRequiresAction {
                 actionData {
                   clientSecret
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code

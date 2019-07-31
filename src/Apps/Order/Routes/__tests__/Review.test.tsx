@@ -36,6 +36,14 @@ class ReviewTestPage extends OrderAppTestPage {
 }
 
 describe("Review", () => {
+  beforeAll(() => {
+    // @ts-ignore
+    // tslint:disable-next-line:no-empty
+    window.Stripe = () => {}
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
+
   const { buildPage, mutations, routes } = createTestEnv({
     Component: ReviewFragmentContainer,
     defaultData: {
@@ -47,7 +55,7 @@ describe("Review", () => {
     },
     query: graphql`
       query ReviewTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Review_order
         }
       }
@@ -144,6 +152,16 @@ describe("Review", () => {
       )
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
+
+    // it("shows SCA modal when required", async () => {
+    //   mutations.useResultsOnce(submitOrderWithActionRequired)
+
+    //   await page.clickSubmit()
+    //   await page.expectAndDismissErrorDialogMatching(
+    //     "Insufficient funds",
+    //     "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
+    //   )
+    // })
   })
 
   describe("Offer-mode orders", () => {
