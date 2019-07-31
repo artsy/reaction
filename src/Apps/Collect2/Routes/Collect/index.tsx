@@ -12,6 +12,7 @@ import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "../../Components/CollectionsHubsNav"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 
 export interface CollectAppProps {
@@ -70,6 +71,12 @@ export class CollectApp extends Component<CollectAppProps> {
               <h1>Collect art and design online</h1>
             </Serif>
 
+            <CollectionsHubsNav
+              marketingHubCollections={
+                this.props.viewer.marketingHubCollections
+              }
+            />
+
             <Box pb={0.3}>
               <Sans size="3" weight="medium">
                 <RouterLink to="/collections">View collections</RouterLink>
@@ -110,6 +117,10 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
       ) {
       filter_artworks(aggregations: $aggregations, sort: $sort) {
         ...SeoProductsForArtworks_artworks
+      }
+
+      marketingHubCollections {
+        ...CollectionsHubsNav_marketingHubCollections
       }
 
       ...CollectFilterContainer_viewer
