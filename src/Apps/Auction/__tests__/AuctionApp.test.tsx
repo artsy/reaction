@@ -1,3 +1,4 @@
+import { routes_AuctionQueryResponse } from "__generated__/routes_AuctionQuery.graphql"
 import { routes } from "Apps/Auction/routes"
 import { createMockNetworkLayer2 } from "DevTools"
 import { createRender } from "found"
@@ -5,6 +6,10 @@ import { Resolver } from "found-relay"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { SaleAuction } from "../../__tests__/Fixtures/Sale"
+
+interface MockResponse {
+  sale: routes_AuctionQueryResponse["sale"]
+}
 
 describe("AuctionApp", () => {
   describe("redirects", () => {
@@ -22,7 +27,11 @@ describe("AuctionApp", () => {
       })
     }
 
-    const mockResolver = data => ({ sale: data, me: { name: "Emmett Brown" } })
+    const mockResolver = (
+      data: routes_AuctionQueryResponse["sale"]
+    ): MockResponse => ({
+      sale: data,
+    })
 
     it("does not redirect if a sale is found", async () => {
       const { redirect } = await render(
