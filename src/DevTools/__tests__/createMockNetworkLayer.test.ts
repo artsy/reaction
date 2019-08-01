@@ -258,7 +258,7 @@ describe("createMockNetworkLayer", () => {
               order: {
                 __typename: "CommerceOfferOrder",
                 id: "my-order",
-                state: "MOCKED",
+                state: "ABANDONED",
               },
             },
           },
@@ -272,7 +272,7 @@ describe("createMockNetworkLayer", () => {
       })
 
       expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+        "ABANDONED"
       )
     })
 
@@ -284,9 +284,9 @@ describe("createMockNetworkLayer", () => {
           commerceBuyerAcceptOffer: {
             orderOrError: {
               order: {
-                __typename: "CommerceOrder",
+                __typename: "CommerceBuyOrder",
                 id: "my-order",
-                state: "MOCKED",
+                state: "ABANDONED",
               },
             },
           },
@@ -300,7 +300,7 @@ describe("createMockNetworkLayer", () => {
       })
 
       expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+        "ABANDONED"
       )
     })
 
@@ -314,7 +314,7 @@ describe("createMockNetworkLayer", () => {
               orderOrError: {
                 order: {
                   id: "my-order",
-                  state: "MOCKED",
+                  state: "ABANDONED",
                 },
               },
             },
@@ -328,7 +328,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Ambiguous object at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+          `"RelayMockNetworkLayerError: Ambiguous object at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [CommerceBuyOrder, CommerceOfferOrder]"`
         )
       }
     })
@@ -342,7 +342,7 @@ describe("createMockNetworkLayer", () => {
             orderOrError: {
               order: {
                 id: "my-order",
-                state: "MOCKED",
+                state: "ABANDONED",
                 myLastOffer: {},
               },
             },
@@ -356,7 +356,7 @@ describe("createMockNetworkLayer", () => {
         },
       })
       expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+        "ABANDONED"
       )
     })
 
@@ -372,7 +372,7 @@ describe("createMockNetworkLayer", () => {
                 order: {
                   __typename: "CommerceOfferOrder",
                   id: "my-order",
-                  state: "MOCKED",
+                  state: "ABANDONED",
                 },
               },
             },
@@ -412,7 +412,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
+          `"RelayMockNetworkLayerError: Expected object of type 'CommerceOrder!' but got 'string' at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
         )
       }
     })

@@ -21,7 +21,7 @@ export interface ArtworkSummaryItemProps extends Omit<FlexProps, "order"> {
 const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   order: {
     lineItems,
-    seller: { name },
+    sellerDetails: { name },
   },
   ...others
 }) => {

@@ -1,7 +1,4 @@
-import {
-  BuyOrderWithShippingDetails,
-  CommerceOrderWithShippingDetails,
-} from "Apps/__tests__/Fixtures/Order"
+import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 
 export const submitOrderWithFailure = {
   commerceSubmitOrder: {
@@ -86,7 +83,7 @@ export const submitOrderSuccess = {
     orderOrError: {
       __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        ...CommerceOrderWithShippingDetails,
+        ...BuyOrderWithShippingDetails,
         state: "SUBMITTED",
       },
     },

@@ -11,7 +11,7 @@ import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSum
 
 const order: TransactionDetailsSummaryItem_order = {
   " $refType": null,
-  __typename: "BuyOrder",
+  __typename: "CommerceBuyOrder",
   mode: "BUY",
   itemsTotal: "£3,024.89",
   totalListPrice: "£3,024.89",
@@ -61,7 +61,7 @@ storiesOf("Apps/Order/Components", module).add(
         <Section title="Offer Transaction Summary">
           <Flex width={280} flexDirection="column">
             {render({
-              __typename: "OfferOrder",
+              __typename: "CommerceOfferOrder",
               mode: "OFFER",
               myLastOffer: {
                 id: "2345",
@@ -83,7 +83,7 @@ storiesOf("Apps/Order/Components", module).add(
           <Flex width={280} flexDirection="column">
             {render(
               {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 myLastOffer: {
                   id: "2345",
@@ -107,7 +107,7 @@ storiesOf("Apps/Order/Components", module).add(
           <Flex width={280} flexDirection="column">
             {render(
               {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
                   id: "2345",
@@ -131,7 +131,7 @@ storiesOf("Apps/Order/Components", module).add(
           <Flex width={280} flexDirection="column">
             {render(
               {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
                   id: "2345",
@@ -155,7 +155,7 @@ storiesOf("Apps/Order/Components", module).add(
           <Flex width={280} flexDirection="column">
             {render(
               {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
                   id: "2345",

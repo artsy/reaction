@@ -3,6 +3,7 @@ import {
   GraphQLResolveInfo,
   isAbstractType,
   isLeafType,
+  isNonNullType,
   responsePathAsArray,
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -164,7 +165,11 @@ const inferUnionOrInterfaceType = (
   value: unknown,
   info: GraphQLResolveInfo
 ) => {
-  const returnType = info.returnType
+  let returnType = info.returnType
+
+  if (isNonNullType(returnType)) {
+    returnType = returnType.ofType
+  }
 
   if (!isAbstractType(returnType)) {
     return value
