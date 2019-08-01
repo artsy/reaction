@@ -51,7 +51,7 @@ export class RelatedCollectionsRail extends React.Component<
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
           <Serif size="8" color="black100">
-            Related to {title}
+            More like {title}
           </Serif>
           <Spacer pb={4} />
 
@@ -59,8 +59,8 @@ export class RelatedCollectionsRail extends React.Component<
             height="200px"
             options={{
               groupCells: sd.IS_MOBILE ? 1 : 4,
-
               cellAlign: "left",
+              contain: true,
               wrapAround: sd.IS_MOBILE ? true : false,
               pageDots: false,
               draggable: sd.IS_MOBILE ? true : false,
