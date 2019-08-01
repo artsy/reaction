@@ -46,10 +46,7 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ Component, props, error }) => {
-      if (error) {
-        console.error(error)
-      }
+    render: ({ Component, props }) => {
       if (Component && props) {
         const { location, order } = props as any
 
