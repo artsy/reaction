@@ -2,14 +2,14 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { AuctionRegistrationModal } from "../AuctionRegistrationModal"
 
-const submitHandler = p => {
+const submitHandler = submitUtils => {
   setTimeout(() => {
-    p.setSubmitting(false)
+    submitUtils.setSubmitting(false)
     alert("Your Submission Callback Here")
   }, 1000)
 }
-storiesOf("Components/Auction/AuctionRegistrationModal", module).add(
-  "Default",
+storiesOf("Components/AuctionRegistrationModal", module).add(
+  "AuctionRegistrationModal",
   () => {
     return (
       <>

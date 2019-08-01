@@ -22,7 +22,7 @@ describe("AuctionRegistrationModal", () => {
     jest.restoreAllMocks()
   })
 
-  xit("matches snapshot", () => {
+  xit("matches snapshot (TODO: Try to reenable with new palette modal)", () => {
     const modal = renderer
       .create(<AuctionRegistrationModal {...defaultProps} />)
       .toJSON()

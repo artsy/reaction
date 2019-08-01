@@ -131,9 +131,7 @@ const InnerForm = (props: FormikProps<FormValues>) => {
       <Flex mt={4} mb={2} justifyContent="center">
         <ConditionsOfSaleCheckbox
           error={touched.agree_to_terms && errors.agree_to_terms}
-          // checked={values.agree_to_terms}
           value={values.agree_to_terms}
-          // type="checkbox"
           name="agree_to_terms"
           onChange={handleChange}
           onBlur={handleBlur}
@@ -170,7 +168,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = props => {
   function createBidder(setSubmitting) {
     const { sale } = props
 
-    // TODO: use mutation in 'Components/Auction/Registration' for this (should be a near copy)
     commitMutation<RegistrationFormCreateBidderMutation>(
       props.relay.environment,
       {
