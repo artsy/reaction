@@ -269,7 +269,7 @@ Object {
       expect(dispatch).toHaveBeenCalledTimes(1)
     })
 
-    it.only("tracks clicks on 'Browse works in this category' link", () => {
+    it("tracks clicks on 'Browse works in this category' link", () => {
       const { Component, dispatch } = mockTracking(PricingContext)
       const component = mount(<Component artwork={mockArtwork as any} />)
       component
