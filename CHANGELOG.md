@@ -1,3 +1,15 @@
+# v16.20.3 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1282: Updates offer views to handle non-USD currencies [#2646](https://github.com/artsy/reaction/pull/2646) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.20.2 (Thu Aug 01 2019)
 
 #### 🐛  Bug Fix
