@@ -14,17 +14,6 @@ jest.mock("sharify", () => ({
 }))
 
 describe("PricingContextModal", () => {
-  it("renders with the modal closed", async () => {
-    const component = mount(<PricingContextModal />)
-    component.find(QuestionCircleIcon)
-
-    expect(component.find(QuestionCircleIcon).length).toEqual(1)
-
-    expect(component.text()).not.toContain(
-      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
-  })
-
   it("renders the link to 'How Artworks Get Their Prices' article", async () => {
     const component = mount(<PricingContextModal />)
     component.find(QuestionCircleIcon).simulate("click")

@@ -269,13 +269,14 @@ Object {
       expect(dispatch).toHaveBeenCalledTimes(1)
     })
 
-    it("tracks clicks on 'Browse works in this category' link", () => {
+    it.only("tracks clicks on 'Browse works in this category' link", () => {
       const { Component, dispatch } = mockTracking(PricingContext)
       const component = mount(<Component artwork={mockArtwork as any} />)
       component
         .find(Link)
-        .at(0)
+        .at(2)
         .simulate("click")
+
       expect(dispatch).toBeCalledWith({
         context_module: "Price Context",
         action_type: "Click",
