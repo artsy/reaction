@@ -15,7 +15,7 @@ export const VanguardTableOfContents: React.SFC<{
 
       {relatedArticles &&
         relatedArticles.map((subSeries, i) => (
-          <Box>
+          <Box key={i}>
             <Serif size="8">{times(i + 1, () => "I")}</Serif>
             <Sans size="8">{subSeries.title}</Sans>
           </Box>
