@@ -1,3 +1,15 @@
+# v16.20.4 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Use actual data in Vanguard Scaffold [#2654](https://github.com/artsy/reaction/pull/2654) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.20.3 (Thu Aug 01 2019)
 
 #### 🐛  Bug Fix
