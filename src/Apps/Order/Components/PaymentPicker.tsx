@@ -381,7 +381,7 @@ export class PaymentPicker extends React.Component<
   }
 
   private isPickup = () => {
-    return this.props.order.requestedFulfillment.__typename === "Pickup"
+    return this.props.order.requestedFulfillment.__typename === "CommercePickup"
   }
 
   private needsAddress = () => {

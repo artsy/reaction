@@ -77,7 +77,7 @@ export class Accept extends Component<AcceptProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.acceptOffer()).ecommerceBuyerAcceptOffer
+      const orderOrError = (await this.acceptOffer()).commerceBuyerAcceptOffer
         .orderOrError
 
       if (orderOrError.error) {

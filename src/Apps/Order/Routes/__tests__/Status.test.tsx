@@ -43,7 +43,7 @@ describe("Status", () => {
     Component: StatusFragmentContainer,
     query: graphql`
       query StatusQuery {
-        commerceOrder(id: "42") {
+        order: commerceOrder(id: "42") {
           ...Status_order
         }
       }

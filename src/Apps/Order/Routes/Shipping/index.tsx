@@ -11,7 +11,7 @@ import {
 } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import {
-  OrderFulfillmentType,
+  CommerceOrderFulfillmentTypeEnum,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -58,7 +58,7 @@ export interface ShippingProps {
 }
 
 export interface ShippingState {
-  shippingOption: OrderFulfillmentType
+  shippingOption: CommerceOrderFulfillmentTypeEnum
   address: Address
   addressErrors: AddressErrors
   addressTouched: AddressTouched
@@ -70,8 +70,10 @@ const logger = createLogger("Order/Routes/Shipping/index.tsx")
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state: ShippingState = {
     shippingOption: ((this.props.order.requestedFulfillment &&
-      this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
-      "SHIP") as OrderFulfillmentType,
+      (this.props.order.requestedFulfillment.__typename === "CommerceShip"
+        ? "SHIP"
+        : "PICKUP")) ||
+      "SHIP") as CommerceOrderFulfillmentTypeEnum,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
@@ -161,11 +163,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     try {
       const orderOrError = (await this.setShipping({
         input: {
-          orderId: this.props.order.id,
+          id: this.props.order.id,
           fulfillmentType: shippingOption,
           shipping: address,
         },
-      })).ecommerceSetOrderShipping.orderOrError
+      })).commerceSetShipping.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
@@ -258,7 +260,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     flow: "buy now",
     type: "button",
   }))
-  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+  onSelectShippingOption(shippingOption: CommerceOrderFulfillmentTypeEnum) {
     this.setState({ shippingOption })
   }
 
