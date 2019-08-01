@@ -1,3 +1,15 @@
+# v16.21.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1391,Collections carousel tweaks QA for artist series and related collections [#2648](https://github.com/artsy/reaction/pull/2648) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v16.21.1 (Thu Aug 01 2019)
 
 #### 🐛  Bug Fix
