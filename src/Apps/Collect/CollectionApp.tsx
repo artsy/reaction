@@ -3,6 +3,8 @@ import { CollectionApp_collection } from "__generated__/CollectionApp_collection
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
+import { CollectionsHubRailsContainer as CollectionsHubRails } from "Components/CollectionsHubRails"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
@@ -16,7 +18,7 @@ import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "
 import { CollectionFilterFragmentContainer as CollectionHeader } from "./Components/Collection/Header"
 import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
-interface CollectionAppProps {
+interface CollectionAppProps extends SystemContextProps {
   collection: CollectionApp_collection
 }
 
@@ -35,8 +37,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   render() {
-    const { collection } = this.props
+    const { collection, user } = this.props
     const { title, slug, headerImage, description, artworks } = collection
+    const showCollectionHubs =
+      collection.linkedCollections.length > 0 && user && user.type === "Admin"
 
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
@@ -66,6 +70,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
             collection={collection}
             artworks={artworks as any}
           />
+          {showCollectionHubs && (
+            <CollectionsHubRails
+              linkedCollections={collection.linkedCollections}
+            />
+          )}
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
@@ -83,7 +92,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 }
 
 export const CollectionAppFragmentContainer = createFragmentContainer(
-  CollectionApp,
+  withSystemContext(CollectionApp),
   {
     collection: graphql`
       fragment CollectionApp_collection on MarketingCollection
@@ -121,6 +130,9 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         }
         relatedCollections {
           ...RelatedCollectionsRail_collections
+        }
+        linkedCollections {
+          ...CollectionsHubRails_linkedCollections
         }
         artworks(
           aggregations: $aggregations
