@@ -1,3 +1,20 @@
+# v16.20.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Collections Default Header Bug Fix [#2647](https://github.com/artsy/reaction/pull/2647) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.38 to v4.14.39 [#2651](https://github.com/artsy/reaction/pull/2651) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.20.1 (Wed Jul 31 2019)
 
 #### 🐛  Bug Fix
