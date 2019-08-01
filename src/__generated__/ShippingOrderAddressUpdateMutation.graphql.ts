@@ -1,41 +1,42 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderFulfillmentType = "PICKUP" | "SHIP" | "%future added value";
-export type SetOrderShippingInput = {
-    readonly orderId?: string | null;
-    readonly fulfillmentType?: OrderFulfillmentType | null;
-    readonly shipping?: ShippingInputField | null;
+export type CommerceOrderFulfillmentTypeEnum = "PICKUP" | "SHIP" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+export type CommerceSetShippingInput = {
     readonly clientMutationId?: string | null;
+    readonly fulfillmentType: CommerceOrderFulfillmentTypeEnum;
+    readonly id: string;
+    readonly shipping?: CommerceShippingAttributes | null;
 };
-export type ShippingInputField = {
-    readonly name?: string | null;
+export type CommerceShippingAttributes = {
     readonly addressLine1?: string | null;
     readonly addressLine2?: string | null;
     readonly city?: string | null;
-    readonly region?: string | null;
     readonly country?: string | null;
+    readonly name?: string | null;
+    readonly phoneNumber: string;
     readonly postalCode?: string | null;
-    readonly phoneNumber?: string | null;
+    readonly region?: string | null;
 };
 export type ShippingOrderAddressUpdateMutationVariables = {
-    readonly input: SetOrderShippingInput;
+    readonly input: CommerceSetShippingInput;
 };
 export type ShippingOrderAddressUpdateMutationResponse = {
-    readonly ecommerceSetOrderShipping: ({
-        readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
-            readonly order?: ({
+    readonly commerceSetShipping: ({
+        readonly orderOrError: {
+            readonly __typename: "CommerceOrderWithMutationSuccess";
+            readonly order?: {
                 readonly id: string;
-                readonly state: string | null;
+                readonly state: CommerceOrderStateEnum;
                 readonly requestedFulfillment: ({
-                    readonly __typename: "Ship";
+                    readonly __typename: "CommerceShip";
                     readonly name: string | null;
                     readonly addressLine1: string | null;
                     readonly addressLine2: string | null;
                     readonly city: string | null;
                     readonly region: string | null;
-                    readonly country: string;
+                    readonly country: string | null;
                     readonly postalCode: string | null;
                     readonly phoneNumber: string | null;
                 } | {
@@ -43,13 +44,13 @@ export type ShippingOrderAddressUpdateMutationResponse = {
                     value in case none of the concrete values match.*/
                     readonly __typename: "%other";
                 }) | null;
-            }) | null;
-            readonly error?: ({
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type ShippingOrderAddressUpdateMutation = {
@@ -61,12 +62,12 @@ export type ShippingOrderAddressUpdateMutation = {
 
 /*
 mutation ShippingOrderAddressUpdateMutation(
-  $input: SetOrderShippingInput!
+  $input: CommerceSetShippingInput!
 ) {
-  ecommerceSetOrderShipping(input: $input) {
+  commerceSetShipping(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         __typename
         order {
           __typename
@@ -74,7 +75,7 @@ mutation ShippingOrderAddressUpdateMutation(
           state
           requestedFulfillment {
             __typename
-            ... on Ship {
+            ... on CommerceShip {
               name
               addressLine1
               addressLine2
@@ -85,10 +86,10 @@ mutation ShippingOrderAddressUpdateMutation(
               phoneNumber
             }
           }
-          __id
+          __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -105,7 +106,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "SetOrderShippingInput!",
+    "type": "CommerceSetShippingInput!",
     "defaultValue": null
   }
 ],
@@ -114,12 +115,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "SetOrderShippingInput!"
+    "type": "CommerceSetShippingInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -127,7 +128,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -188,7 +189,7 @@ v6 = {
     v3,
     {
       "kind": "InlineFragment",
-      "type": "Ship",
+      "type": "CommerceShip",
       "selections": [
         {
           "kind": "ScalarField",
@@ -252,8 +253,8 @@ v6 = {
 },
 v7 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -262,7 +263,7 @@ return {
   "operationKind": "mutation",
   "name": "ShippingOrderAddressUpdateMutation",
   "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: SetOrderShippingInput!\n) {\n  ecommerceSetOrderShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          state\n          requestedFulfillment {\n            __typename\n            ... on Ship {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: CommerceSetShippingInput!\n) {\n  commerceSetShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          state\n          requestedFulfillment {\n            __typename\n            ... on CommerceShip {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -274,10 +275,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderShipping",
+        "name": "commerceSetShipping",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SetOrderShippingPayload",
+        "concreteType": "CommerceSetShippingPayload",
         "plural": false,
         "selections": [
           {
@@ -292,7 +293,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -326,10 +327,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderShipping",
+        "name": "commerceSetShipping",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SetOrderShippingPayload",
+        "concreteType": "CommerceSetShippingPayload",
         "plural": false,
         "selections": [
           {
@@ -345,7 +346,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -374,5 +375,5 @@ return {
   }
 };
 })();
-(node as any).hash = '46e5953502991373be73e849583f9fb9';
+(node as any).hash = '1bfae43b7ea5c08293230ffc1b06e0fc';
 export default node;

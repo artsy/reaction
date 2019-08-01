@@ -7,12 +7,12 @@ import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
 import { OfferSummaryItem_order$ref } from "./OfferSummaryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Review_order$ref: unique symbol;
 export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
     readonly id: string;
-    readonly mode: OrderModeEnum | null;
+    readonly mode: CommerceOrderModeEnum | null;
     readonly itemsTotal: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -52,14 +52,17 @@ v1 = {
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v0,
-  v1
-];
+v2 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "Review_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -89,7 +92,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -98,7 +101,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -107,7 +110,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -135,7 +138,10 @@ return {
                       "args": null,
                       "concreteType": "Artist",
                       "plural": true,
-                      "selections": v2
+                      "selections": [
+                        v0,
+                        v1
+                      ]
                     },
                     {
                       "kind": "FragmentSpread",
@@ -145,7 +151,7 @@ return {
                     v1
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -179,10 +185,10 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1,
+    v2,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -190,14 +196,17 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
-          "selections": v2
+          "selections": [
+            v0,
+            v2
+          ]
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '0bffcc0a156da80f5e479655a11730d0';
+(node as any).hash = '862cc06fb461f0b8c784420eca595170';
 export default node;

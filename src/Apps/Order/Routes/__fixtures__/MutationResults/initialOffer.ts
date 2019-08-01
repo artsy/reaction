@@ -1,5 +1,5 @@
 export const initialOfferSuccess = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       order: {
         id: "1234",
@@ -19,7 +19,7 @@ export const initialOfferSuccess = {
 }
 
 export const initialOfferFailedCannotOffer = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       error: {
         type: "validation",
@@ -31,7 +31,7 @@ export const initialOfferFailedCannotOffer = {
 }
 
 export const initialOfferFailedAmountIsInvalid = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       error: {
         type: "validation",

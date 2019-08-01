@@ -65,7 +65,7 @@ describe("Shipping", () => {
     },
     query: graphql`
       query ShippingTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Shipping_order
         }
       }

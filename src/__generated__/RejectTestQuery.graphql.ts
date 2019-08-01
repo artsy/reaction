@@ -17,14 +17,14 @@ export type RejectTestQuery = {
 
 /*
 query RejectTestQuery {
-  order: ecommerceOrder(id: "unused") {
+  order: commerceOrder(id: "unused") {
     __typename
     ...Reject_order
-    __id
+    __id: id
   }
 }
 
-fragment Reject_order on Order {
+fragment Reject_order on CommerceOrder {
   id
   stateExpiresAt
   lineItems {
@@ -34,23 +34,23 @@ fragment Reject_order on Order {
           id
           __id
         }
-        __id
+        __id: id
       }
     }
   }
-  ... on OfferOrder {
+  ... on CommerceOfferOrder {
     lastOffer {
       id
       createdAt
-      __id
+      __id: id
     }
   }
   ...ArtworkSummaryItem_order
-  __id
+  __id: id
 }
 
-fragment ArtworkSummaryItem_order on Order {
-  seller {
+fragment ArtworkSummaryItem_order on CommerceOrder {
+  sellerDetails {
     __typename
     ... on Partner {
       name
@@ -78,11 +78,11 @@ fragment ArtworkSummaryItem_order on Order {
           }
           __id
         }
-        __id
+        __id: id
       }
     }
   }
-  __id
+  __id: id
 }
 */
 
@@ -92,13 +92,13 @@ var v0 = [
     "kind": "Literal",
     "name": "id",
     "value": "unused",
-    "type": "String!"
+    "type": "ID"
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -115,13 +115,20 @@ v3 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "RejectTestQuery",
   "id": null,
-  "text": "query RejectTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n    __id\n  }\n}\n\nfragment Reject_order on Order {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id\n      }\n    }\n  }\n  ... on OfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
+  "text": "query RejectTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on CommerceOrder {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -133,8 +140,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"unused\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"unused\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -157,8 +164,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"unused\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"unused\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -178,7 +185,7 @@ return {
             "name": "lineItems",
             "storageKey": null,
             "args": null,
-            "concreteType": "OrderLineItemConnection",
+            "concreteType": "CommerceLineItemConnection",
             "plural": false,
             "selections": [
               {
@@ -187,7 +194,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OrderLineItemEdge",
+                "concreteType": "CommerceLineItemEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -196,7 +203,7 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "OrderLineItem",
+                    "concreteType": "CommerceLineItem",
                     "plural": false,
                     "selections": [
                       {
@@ -209,7 +216,7 @@ return {
                         "plural": false,
                         "selections": [
                           v3,
-                          v1,
+                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -272,13 +279,7 @@ return {
                                   }
                                 ]
                               },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              v1
                             ]
                           }
                         ]
@@ -293,14 +294,14 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "seller",
+            "name": "sellerDetails",
             "storageKey": null,
             "args": null,
             "concreteType": null,
             "plural": false,
             "selections": [
               v2,
-              v1,
+              v4,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -319,7 +320,7 @@ return {
           v1,
           {
             "kind": "InlineFragment",
-            "type": "OfferOrder",
+            "type": "CommerceOfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
@@ -327,7 +328,7 @@ return {
                 "name": "lastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
                   v3,
@@ -349,5 +350,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5ef67f6f0f5d8f26d1db5952ab11c947';
+(node as any).hash = 'ea90d4fa54b8d3452edfeff07a7990f1';
 export default node;

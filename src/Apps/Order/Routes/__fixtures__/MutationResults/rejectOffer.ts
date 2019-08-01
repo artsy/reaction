@@ -1,5 +1,5 @@
 export const rejectOfferSuccess = {
-  ecommerceBuyerRejectOffer: {
+  commerceBuyerRejectOffer: {
     orderOrError: {
       order: {
         id: "1234",
@@ -9,7 +9,7 @@ export const rejectOfferSuccess = {
   },
 }
 export const rejectOfferFailed = {
-  ecommerceBuyerRejectOffer: {
+  commerceBuyerRejectOffer: {
     orderOrError: {
       error: {
         type: "validation",

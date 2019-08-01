@@ -4,12 +4,12 @@ import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { PaymentPicker_order$ref } from "./PaymentPicker_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 declare const _Payment_order$ref: unique symbol;
 export type Payment_order$ref = typeof _Payment_order$ref;
 export type Payment_order = {
     readonly id: string;
-    readonly mode: OrderModeEnum | null;
+    readonly mode: CommerceOrderModeEnum | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
             readonly node: ({
@@ -35,15 +35,15 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "Payment_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -61,7 +61,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -70,7 +70,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -79,7 +79,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -92,7 +92,13 @@ return {
                   "plural": false,
                   "selections": [
                     v0,
-                    v1
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
                   ]
                 },
                 v1
@@ -121,5 +127,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ad3f2e3667ec82168aee6edfc86f8924';
+(node as any).hash = '4dc6846a22641e49a14588c22c3888bb';
 export default node;

@@ -1,7 +1,7 @@
 import { BuyOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 
 export const settingOrderShipmentFailure = {
-  ecommerceSetOrderShipping: {
+  commerceSetOrderShipping: {
     orderOrError: {
       error: {
         type: "validation",
@@ -13,7 +13,7 @@ export const settingOrderShipmentFailure = {
 }
 
 export const settingOrderShipmentMissingRegionFailure = {
-  ecommerceSetOrderShipping: {
+  commerceSetOrderShipping: {
     orderOrError: {
       error: {
         type: "validation",
@@ -25,7 +25,7 @@ export const settingOrderShipmentMissingRegionFailure = {
 }
 
 export const settingOrderShipmentMissingCountryFailure = {
-  ecommerceSetOrderShipping: {
+  commerceSetOrderShipping: {
     orderOrError: {
       error: {
         type: "validation",
@@ -37,7 +37,7 @@ export const settingOrderShipmentMissingCountryFailure = {
 }
 
 export const settingOrderShipmentSuccess = {
-  ecommerceSetOrderShipping: {
+  commerceSetOrderShipping: {
     orderOrError: {
       order: {
         ...BuyOrderWithShippingDetails,

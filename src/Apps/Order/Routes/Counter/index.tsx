@@ -49,18 +49,20 @@ export class CounterRoute extends Component<CounterProps> {
     return this.props.commitMutation<CounterSubmitMutation>({
       variables,
       mutation: graphql`
-        mutation CounterSubmitMutation($input: submitPendingOfferInput!) {
-          ecommerceSubmitPendingOffer(input: $input) {
+        mutation CounterSubmitMutation(
+          $input: CommerceSubmitPendingOfferInput!
+        ) {
+          commerceSubmitPendingOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -77,7 +79,7 @@ export class CounterRoute extends Component<CounterProps> {
   onSubmitButtonPressed = async () => {
     try {
       const {
-        ecommerceSubmitPendingOffer: { orderOrError },
+        commerceSubmitPendingOffer: { orderOrError },
       } = await this.submitPendingOffer({
         input: {
           offerId: this.props.order.myLastOffer.id,
@@ -213,14 +215,14 @@ export const CounterFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(CounterRoute))),
   {
     order: graphql`
-      fragment Counter_order on Order {
+      fragment Counter_order on CommerceOrder {
         id
         mode
         state
         itemsTotal(precision: 2)
         totalListPrice(precision: 2)
         stateExpiresAt
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
           }

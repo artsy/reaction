@@ -180,15 +180,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     return this.props.commitMutation<RespondCounterOfferMutation>({
       variables,
       mutation: graphql`
-        mutation RespondCounterOfferMutation($input: buyerCounterOfferInput!) {
-          ecommerceBuyerCounterOffer(input: $input) {
+        mutation RespondCounterOfferMutation(
+          $input: CommerceBuyerCounterOfferInput!
+        ) {
+          commerceBuyerCounterOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   ...Respond_order
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -342,7 +344,7 @@ export const RespondFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
   {
     order: graphql`
-      fragment Respond_order on Order {
+      fragment Respond_order on CommerceOrder {
         id
         mode
         state
@@ -361,7 +363,7 @@ export const RespondFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
             id

@@ -17,14 +17,14 @@ export type ShippingSummaryItemStoryQuery = {
 
 /*
 query ShippingSummaryItemStoryQuery {
-  order: ecommerceOrder(id: "foo") {
+  order: commerceOrder(id: "foo") {
     __typename
     ...ShippingSummaryItem_order
-    __id
+    __id: id
   }
 }
 
-fragment ShippingSummaryItem_order on Order {
+fragment ShippingSummaryItem_order on CommerceOrder {
   state
   requestedFulfillment {
     __typename
@@ -37,14 +37,14 @@ fragment ShippingSummaryItem_order on Order {
           shippingOrigin
           __id
         }
-        __id
+        __id: id
       }
     }
   }
-  __id
+  __id: id
 }
 
-fragment ShippingAddress_ship on Ship {
+fragment ShippingAddress_ship on CommerceShip {
   name
   addressLine1
   addressLine2
@@ -62,13 +62,13 @@ var v0 = [
     "kind": "Literal",
     "name": "id",
     "value": "foo",
-    "type": "String!"
+    "type": "ID"
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -84,7 +84,7 @@ return {
   "operationKind": "query",
   "name": "ShippingSummaryItemStoryQuery",
   "id": null,
-  "text": "query ShippingSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    __id\n  }\n}\n\nfragment ShippingSummaryItem_order on Order {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ShippingAddress_ship on Ship {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+  "text": "query ShippingSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    __id: id\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -96,8 +96,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -120,8 +120,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -146,7 +146,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "Ship",
+                "type": "CommerceShip",
                 "selections": [
                   {
                     "kind": "ScalarField",
@@ -214,7 +214,7 @@ return {
             "name": "lineItems",
             "storageKey": null,
             "args": null,
-            "concreteType": "OrderLineItemConnection",
+            "concreteType": "CommerceLineItemConnection",
             "plural": false,
             "selections": [
               {
@@ -223,7 +223,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OrderLineItemEdge",
+                "concreteType": "CommerceLineItemEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -232,7 +232,7 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "OrderLineItem",
+                    "concreteType": "CommerceLineItem",
                     "plural": false,
                     "selections": [
                       {
@@ -251,7 +251,13 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v1
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__id",
+                            "args": null,
+                            "storageKey": null
+                          }
                         ]
                       },
                       v1
@@ -268,5 +274,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'cc1556c2c69db25ef96b8e5395fdc082';
+(node as any).hash = 'c513856685642d2a6f0433e41de0f49f';
 export default node;

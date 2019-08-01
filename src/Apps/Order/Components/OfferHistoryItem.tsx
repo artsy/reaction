@@ -89,8 +89,8 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
   OfferHistoryItem,
   {
     order: graphql`
-      fragment OfferHistoryItem_order on Order {
-        ... on OfferOrder {
+      fragment OfferHistoryItem_order on CommerceOrder {
+        ... on CommerceOfferOrder {
           offers {
             edges {
               node {

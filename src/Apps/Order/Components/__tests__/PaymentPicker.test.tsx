@@ -149,7 +149,7 @@ describe(PaymentPickerFragmentContainer, () => {
         me {
           ...PaymentPicker_me
         }
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...PaymentPicker_order
         }
       }

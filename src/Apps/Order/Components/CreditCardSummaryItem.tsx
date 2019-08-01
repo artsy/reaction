@@ -24,7 +24,7 @@ export const CreditCardSummaryItemFragmentContainer = createFragmentContainer(
   CreditCardSummaryItem,
   {
     order: graphql`
-      fragment CreditCardSummaryItem_order on Order {
+      fragment CreditCardSummaryItem_order on CommerceOrder {
         creditCard {
           brand
           last_digits

@@ -420,7 +420,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
       }
     `,
     order: graphql`
-      fragment PaymentPicker_order on Order {
+      fragment PaymentPicker_order on CommerceOrder {
         id
         mode
         state
@@ -440,7 +440,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
         }
         requestedFulfillment {
           __typename
-          ... on Ship {
+          ... on CommerceShip {
             name
             addressLine1
             addressLine2
@@ -449,7 +449,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
             country
             postalCode
           }
-          ... on Pickup {
+          ... on CommercePickup {
             fulfillmentType
           }
         }

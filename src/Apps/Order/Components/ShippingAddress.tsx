@@ -40,7 +40,7 @@ export const ShippingAddressFragmentContainer = createFragmentContainer(
   ShippingAddress,
   {
     ship: graphql`
-      fragment ShippingAddress_ship on Ship {
+      fragment ShippingAddress_ship on CommerceShip {
         name
         addressLine1
         addressLine2

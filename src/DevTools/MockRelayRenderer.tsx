@@ -37,7 +37,7 @@ export interface MockRelayRendererProps<
   /**
    * @example
    * mockMutationResults={{
-   *   ecommerceCreateOrderWithArtworkId: {
+   *   commerceCreateOrderWithArtworkId: {
    *     orderOrError: {
    *       order: {id: "my-order-id"}
    *     }

@@ -36,7 +36,7 @@ const order: ShippingSummaryItem_order = {
 
 const orderQuery = graphql`
   query ShippingSummaryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...ShippingSummaryItem_order
     }
   }
