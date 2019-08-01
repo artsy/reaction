@@ -13,6 +13,7 @@ export type Respond_order = {
     readonly id: string;
     readonly mode: OrderModeEnum | null;
     readonly state: string | null;
+    readonly currencyCode: string | null;
     readonly itemsTotal: string | null;
     readonly itemsTotalCents: number | null;
     readonly totalListPrice: string | null;
@@ -49,14 +50,7 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -64,6 +58,13 @@ v2 = [
     "type": "Int"
   }
 ],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
 v3 = {
   "kind": "ScalarField",
   "alias": null,
@@ -78,6 +79,63 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "currencyCode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": v1,
+      "storageKey": "itemsTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotalCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPrice",
+      "args": v1,
+      "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -115,65 +173,15 @@ return {
                   "plural": false,
                   "selections": [
                     v0,
-                    v1
+                    v2
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
         }
       ]
-    },
-    v0,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotal",
-      "args": v2,
-      "storageKey": "itemsTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotalCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPrice",
-      "args": v2,
-      "storageKey": "totalListPrice(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPriceCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "stateExpiresAt",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
     },
     {
       "kind": "FragmentSpread",
@@ -200,7 +208,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1,
+    v2,
     {
       "kind": "InlineFragment",
       "type": "OfferOrder",
@@ -223,7 +231,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            v2
           ]
         },
         {
@@ -236,7 +244,7 @@ return {
           "plural": false,
           "selections": [
             v3,
-            v1
+            v2
           ]
         }
       ]
@@ -244,5 +252,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '632034c4e26818aaec38a7646bcb5e6e';
+(node as any).hash = '4ad21584216439c19a9b86cbefe3019e';
 export default node;

@@ -49,6 +49,7 @@ export const UntouchedOrder = {
   buyerTotal: "$12,000",
   requestedFulfillment: null,
   lastTransactionFailed: false,
+  currencyCode: "USD",
   lineItems: {
     edges: [
       {
@@ -133,6 +134,7 @@ export const OfferWithTotals = {
   id: "myoffer-id",
   amount: "$14,000",
   amountCents: 1400000,
+  currencyCode: "USD",
   ...ShippingTotals,
   ...TaxTotals,
   createdAt: null,
@@ -146,6 +148,7 @@ export const UntouchedOfferOrder = {
   ...UntouchedOrder,
   __typename: "OfferOrder",
   mode: "OFFER",
+  currencyCode: "USD",
   totalListPrice: "$16,000",
   totalListPriceCents: 1600000,
   itemsTotal: "$16,000",
@@ -262,6 +265,7 @@ export const Offers = [
   {
     node: {
       id: OfferWithTotals.id,
+      currencyCode: "USD",
       fromParticipant: OfferWithTotals.fromParticipant,
       amount: OfferWithTotals.amount,
       createdAt: "May 22",
@@ -270,6 +274,7 @@ export const Offers = [
   {
     node: {
       id: "0",
+      currencyCode: "USD",
       fromParticipant: "BUYER",
       amount: "$1,200.00",
       createdAt: "May 21",
@@ -278,6 +283,7 @@ export const Offers = [
   {
     node: {
       id: "1",
+      currencyCode: "USD",
       fromParticipant: "SELLER",
       amount: "$1,500.00",
       createdAt: "Apr 30",
@@ -286,6 +292,7 @@ export const Offers = [
   {
     node: {
       id: "2",
+      currencyCode: "USD",
       fromParticipant: "BUYER",
       amount: "$1,100.00",
       createdAt: "Apr 5",

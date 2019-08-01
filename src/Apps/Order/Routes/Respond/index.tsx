@@ -159,7 +159,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           offerId: this.props.order.lastOffer.id,
           offerPrice: {
             amount: this.state.offerValue,
-            currencyCode: "USD",
+            currencyCode: this.props.order.currencyCode,
           },
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
         },
@@ -346,6 +346,7 @@ export const RespondFragmentContainer = createFragmentContainer(
         id
         mode
         state
+        currencyCode
         itemsTotal(precision: 2)
         itemsTotalCents
         totalListPrice(precision: 2)
