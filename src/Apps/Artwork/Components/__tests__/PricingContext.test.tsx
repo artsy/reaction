@@ -53,9 +53,9 @@ const mockArtwork = {
   artists: [{ id: "artist-id" }],
   category: "Photography",
   pricingContext: mockPricingContext,
-  listPrice: {
-    minPriceCents: 23455,
-    maxPriceCents: 23455,
+  priceCents: {
+    min: 23455,
+    max: null,
   },
 }
 
@@ -146,9 +146,9 @@ describe("PricingContext", () => {
     const wrapper = await getWrapper({
       artwork: {
         ...mockArtwork,
-        listPrice: {
-          minPriceCents: 15500,
-          maxPriceCents: 25500,
+        priceCents: {
+          min: 15500,
+          max: 25500,
         },
       },
     })
@@ -181,9 +181,9 @@ describe("PricingContext", () => {
             },
           ],
         },
-        listPrice: {
-          minPriceCents: 15500,
-          maxPriceCents: 15500,
+        priceCents: {
+          min: 15500,
+          max: 15500,
         },
       },
     })
@@ -219,9 +219,9 @@ Object {
             },
           ],
         },
-        listPrice: {
-          minPriceCents: 32721,
-          maxPriceCents: 32721,
+        priceCents: {
+          min: 32721,
+          max: 32721,
         },
       },
     })

@@ -167,7 +167,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       {
         product_id: props.artwork._id,
         quantity: 1,
-        price: currency(props.artwork.listPrice.priceCents / 100).value,
+        price: currency(props.artwork.price).value,
       },
     ],
   }))
@@ -461,12 +461,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         is_acquireable
         is_inquireable
         is_offerable
-
-        listPrice {
-          ... on ExactPrice {
-            priceCents
-          }
-        }
+        price
         sale_message
         shippingInfo
         shippingOrigin

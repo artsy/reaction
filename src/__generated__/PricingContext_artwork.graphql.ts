@@ -6,9 +6,9 @@ export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" 
 declare const _PricingContext_artwork$ref: unique symbol;
 export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
-    readonly listPrice: ({
-        readonly maxPriceCents?: number;
-        readonly minPriceCents?: number;
+    readonly priceCents: ({
+        readonly min: number | null;
+        readonly max: number | null;
     }) | null;
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -37,25 +37,11 @@ const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "maxPriceCents",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "minPriceCents",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "category",
@@ -72,19 +58,25 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "listPrice",
+      "name": "priceCents",
       "storageKey": null,
       "args": null,
-      "concreteType": null,
+      "concreteType": "PriceCents",
       "plural": false,
       "selections": [
         {
-          "kind": "InlineFragment",
-          "type": "PriceRange",
-          "selections": [
-            v0,
-            v1
-          ]
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "min",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "max",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -104,10 +96,10 @@ return {
           "args": null,
           "storageKey": null
         },
-        v2
+        v0
       ]
     },
-    v3,
+    v1,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -140,7 +132,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v3
+            v1
           ]
         },
         {
@@ -159,7 +151,13 @@ return {
               "args": null,
               "storageKey": null
             },
-            v0,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "maxPriceCents",
+              "args": null,
+              "storageKey": null
+            },
             {
               "kind": "ScalarField",
               "alias": null,
@@ -167,7 +165,13 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1,
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "minPriceCents",
+              "args": null,
+              "storageKey": null
+            },
             {
               "kind": "ScalarField",
               "alias": null,
@@ -179,9 +183,9 @@ return {
         }
       ]
     },
-    v2
+    v0
   ]
 };
 })();
-(node as any).hash = 'edd40bcc6ca8d0df7285270b99ed90b2';
+(node as any).hash = '0c7039a17ab5c85339f54ad2d644ca83';
 export default node;

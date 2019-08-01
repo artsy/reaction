@@ -8,10 +8,7 @@ export type SeoDataForArtwork_artwork = {
     readonly date: string | null;
     readonly is_price_hidden: boolean | null;
     readonly is_price_range: boolean | null;
-    readonly listPrice: ({
-        readonly minPriceCents?: number;
-        readonly maxPriceCents?: number;
-    }) | null;
+    readonly price: string | null;
     readonly price_currency: string | null;
     readonly sale_message: string | null;
     readonly meta_image: ({
@@ -159,35 +156,11 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "listPrice",
-      "storageKey": null,
+      "name": "price",
       "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        {
-          "kind": "InlineFragment",
-          "type": "PriceRange",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "minPriceCents",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "maxPriceCents",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        }
-      ]
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -368,5 +341,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5d9ec1a3fb4adf48be9bb7b0c2bd278c';
+(node as any).hash = 'd478c663cc0c86c7e82da8c3342d1bf7';
 export default node;

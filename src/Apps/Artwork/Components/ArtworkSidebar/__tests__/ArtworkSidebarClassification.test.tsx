@@ -12,7 +12,7 @@ describe("ArtworkSidebarClassification", () => {
   const getWrapper = async (
     response = {
       attribution_class: {
-        shortDescription: "This is a unique work",
+        short_description: "This is a unique work",
       },
     }
   ) => {

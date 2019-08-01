@@ -24,12 +24,9 @@ query PricingContextTestQuery {
 }
 
 fragment PricingContext_artwork on Artwork {
-  listPrice {
-    __typename
-    ... on PriceRange {
-      maxPriceCents
-      minPriceCents
-    }
+  priceCents {
+    min
+    max
   }
   artists {
     id
@@ -73,20 +70,6 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "maxPriceCents",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "minPriceCents",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "category",
   "args": null,
   "storageKey": null
@@ -96,7 +79,7 @@ return {
   "operationKind": "query",
   "name": "PricingContextTestQuery",
   "id": null,
-  "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPriceCents\n      minPriceCents\n    }\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
+  "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -141,26 +124,25 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "listPrice",
+            "name": "priceCents",
             "storageKey": null,
             "args": null,
-            "concreteType": null,
+            "concreteType": "PriceCents",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "__typename",
+                "name": "min",
                 "args": null,
                 "storageKey": null
               },
               {
-                "kind": "InlineFragment",
-                "type": "PriceRange",
-                "selections": [
-                  v2,
-                  v3
-                ]
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "max",
+                "args": null,
+                "storageKey": null
               }
             ]
           },
@@ -183,7 +165,7 @@ return {
               v1
             ]
           },
-          v4,
+          v2,
           {
             "kind": "LinkedField",
             "alias": null,
@@ -216,7 +198,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v4
+                  v2
                 ]
               },
               {
@@ -235,7 +217,13 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "maxPriceCents",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -243,7 +231,13 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v3,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "minPriceCents",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "ScalarField",
                     "alias": null,
