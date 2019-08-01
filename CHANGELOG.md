@@ -1,3 +1,15 @@
+# v16.21.1 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Revert #2640 [#2655](https://github.com/artsy/reaction/pull/2655) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v16.21.0 (Thu Aug 01 2019)
 
 #### 🚀  Enhancement
