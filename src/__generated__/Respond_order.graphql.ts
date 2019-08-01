@@ -6,17 +6,18 @@ import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.g
 import { OfferHistoryItem_order$ref } from "./OfferHistoryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 declare const _Respond_order$ref: unique symbol;
 export type Respond_order$ref = typeof _Respond_order$ref;
 export type Respond_order = {
     readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
     readonly itemsTotal: string | null;
     readonly itemsTotalCents: number | null;
     readonly totalListPrice: string | null;
-    readonly totalListPriceCents: number | null;
+    readonly totalListPriceCents: number;
     readonly stateExpiresAt: string | null;
     readonly lineItems: ({
         readonly edges: ReadonlyArray<({
@@ -28,12 +29,12 @@ export type Respond_order = {
         }) | null> | null;
     }) | null;
     readonly lastOffer?: ({
-        readonly createdAt: string | null;
+        readonly createdAt: string;
         readonly id: string;
         readonly note: string | null;
     }) | null;
     readonly myLastOffer?: ({
-        readonly createdAt: string | null;
+        readonly createdAt: string;
     }) | null;
     readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
     readonly " $refType": Respond_order$ref;
@@ -51,8 +52,8 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -74,7 +75,7 @@ v3 = {
 return {
   "kind": "Fragment",
   "name": "Respond_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -84,7 +85,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -93,7 +94,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -102,7 +103,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -115,7 +116,13 @@ return {
                   "plural": false,
                   "selections": [
                     v0,
-                    v1
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
                   ]
                 },
                 v1
@@ -203,7 +210,7 @@ return {
     v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -211,7 +218,7 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
             v3,
@@ -232,7 +239,7 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
             v3,
@@ -244,5 +251,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '632034c4e26818aaec38a7646bcb5e6e';
+(node as any).hash = '87bc93b55a16fafb0a7f7816939fcccd';
 export default node;

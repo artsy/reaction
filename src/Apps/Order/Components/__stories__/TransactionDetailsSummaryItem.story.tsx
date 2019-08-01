@@ -24,7 +24,7 @@ const order: TransactionDetailsSummaryItem_order = {
 
 const orderQuery = graphql`
   query TransactionDetailsSummaryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...TransactionDetailsSummaryItem_order
     }
   }

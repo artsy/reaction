@@ -50,7 +50,7 @@ const render = (
     }),
     query: graphql`
       query TransactionDetailsSummaryItemTestQuery {
-        order: ecommerceOrder(id: "whatevs") {
+        order: commerceOrder(id: "whatevs") {
           ...TransactionDetailsSummaryItem_order
         }
       }

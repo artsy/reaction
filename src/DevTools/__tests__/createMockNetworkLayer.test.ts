@@ -225,18 +225,18 @@ describe("createMockNetworkLayer", () => {
   describe("mutations", () => {
     const query = graphql`
       mutation createMockNetworkLayerTestMutationResultsMutation(
-        $input: buyerAcceptOfferInput!
+        $input: CommerceBuyerAcceptOfferInput!
       ) {
-        ecommerceBuyerAcceptOffer(input: $input) {
+        commerceBuyerAcceptOffer(input: $input) {
           orderOrError {
-            ... on OrderWithMutationFailure {
+            ... on CommerceOrderWithMutationFailure {
               error {
                 type
                 code
                 data
               }
             }
-            ... on OrderWithMutationSuccess {
+            ... on CommerceOrderWithMutationSuccess {
               order {
                 id
                 state
@@ -252,11 +252,11 @@ describe("createMockNetworkLayer", () => {
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
-              __typename: "OrderWithMutationSuccess",
+              __typename: "CommerceOrderWithMutationSuccess",
               order: {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 id: "my-order",
                 state: "MOCKED",
               },
@@ -271,7 +271,7 @@ describe("createMockNetworkLayer", () => {
         },
       })
 
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
         "MOCKED"
       )
     })
@@ -281,10 +281,10 @@ describe("createMockNetworkLayer", () => {
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
               order: {
-                __typename: "BuyOrder",
+                __typename: "CommerceOrder",
                 id: "my-order",
                 state: "MOCKED",
               },
@@ -299,7 +299,7 @@ describe("createMockNetworkLayer", () => {
         },
       })
 
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
         "MOCKED"
       )
     })
@@ -310,7 +310,7 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
                 order: {
                   id: "my-order",
@@ -328,7 +328,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Ambiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+          `"RelayMockNetworkLayerError: Ambiguous object at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
         )
       }
     })
@@ -338,7 +338,7 @@ describe("createMockNetworkLayer", () => {
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
               order: {
                 id: "my-order",
@@ -355,7 +355,7 @@ describe("createMockNetworkLayer", () => {
           },
         },
       })
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
         "MOCKED"
       )
     })
@@ -366,11 +366,11 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
-                __typename: "OrderWithMutationSuccess",
+                __typename: "CommerceOrderWithMutationSuccess",
                 order: {
-                  __typename: "OfferOrder",
+                  __typename: "CommerceOfferOrder",
                   id: "my-order",
                   state: "MOCKED",
                 },
@@ -396,9 +396,9 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
-                __typename: "OrderWithMutationSuccess",
+                __typename: "CommerceOrderWithMutationSuccess",
                 order: "hello I am a string",
               },
             },
@@ -412,7 +412,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
+          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
         )
       }
     })

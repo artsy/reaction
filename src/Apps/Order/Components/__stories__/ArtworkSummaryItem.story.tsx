@@ -31,7 +31,7 @@ const makeLineItems = ({ artistName, artworkTitle }) => ({
 
 const orderQuery = graphql`
   query ArtworkSummaryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...ArtworkSummaryItem_order
     }
   }

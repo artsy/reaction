@@ -37,11 +37,11 @@ export const routes: RouteConfig[] = [
     path: "/order(2|s)/:orderID",
     Component: OrderApp,
     query: graphql`
-      query routes_OrderQuery($orderID: String!) {
+      query routes_OrderQuery($orderID: ID!) {
         me {
           name
         }
-        order: ecommerceOrder(id: $orderID) {
+        order: commerceOrder(id: $orderID) {
           ...redirects_order @relay(mask: false)
         }
       }
@@ -77,8 +77,8 @@ export const routes: RouteConfig[] = [
         Component: RespondRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_RespondQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_RespondQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Respond_order
             }
           }
@@ -92,8 +92,8 @@ export const routes: RouteConfig[] = [
         Component: OfferRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_OfferQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_OfferQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Offer_order
             }
           }
@@ -107,8 +107,8 @@ export const routes: RouteConfig[] = [
         Component: ShippingRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_ShippingQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_ShippingQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Shipping_order
             }
           }
@@ -122,11 +122,11 @@ export const routes: RouteConfig[] = [
         Component: PaymentRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_PaymentQuery($orderID: String!) {
+          query routes_PaymentQuery($orderID: ID!) {
             me {
               ...Payment_me
             }
-            order: ecommerceOrder(id: $orderID) {
+            order: commerceOrder(id: $orderID) {
               ...Payment_order
             }
           }
@@ -140,11 +140,11 @@ export const routes: RouteConfig[] = [
         Component: NewPaymentRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_NewPaymentQuery($orderID: String!) {
+          query routes_NewPaymentQuery($orderID: ID!) {
             me {
               ...NewPayment_me
             }
-            order: ecommerceOrder(id: $orderID) {
+            order: commerceOrder(id: $orderID) {
               ...NewPayment_order
             }
           }
@@ -158,8 +158,8 @@ export const routes: RouteConfig[] = [
         Component: CounterRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_CounterQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_CounterQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Counter_order
             }
           }
@@ -173,8 +173,8 @@ export const routes: RouteConfig[] = [
         Component: ReviewRoute,
         onTransition: confirmRouteExit,
         query: graphql`
-          query routes_ReviewQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_ReviewQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Review_order
             }
           }
@@ -187,8 +187,8 @@ export const routes: RouteConfig[] = [
         path: "review/accept",
         Component: AcceptRoute,
         query: graphql`
-          query routes_AcceptQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_AcceptQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Accept_order
             }
           }
@@ -201,8 +201,8 @@ export const routes: RouteConfig[] = [
         path: "review/decline",
         Component: RejectRoute,
         query: graphql`
-          query routes_RejectQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_RejectQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Reject_order
             }
           }
@@ -212,8 +212,8 @@ export const routes: RouteConfig[] = [
         path: "status",
         Component: StatusRoute,
         query: graphql`
-          query routes_StatusQuery($orderID: String!) {
-            order: ecommerceOrder(id: $orderID) {
+          query routes_StatusQuery($orderID: ID!) {
+            order: commerceOrder(id: $orderID) {
               ...Status_order
             }
           }

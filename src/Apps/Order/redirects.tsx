@@ -243,12 +243,12 @@ export const redirects: RedirectRecord<OrderQuery> = {
 }
 
 graphql`
-  fragment redirects_order on Order {
+  fragment redirects_order on CommerceOrder {
     id
     mode
     state
     lastTransactionFailed
-    ... on OfferOrder {
+    ... on CommerceOfferOrder {
       myLastOffer {
         id
         createdAt

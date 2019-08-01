@@ -1,28 +1,28 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-export type buyerAcceptOfferInput = {
-    readonly offerId: string;
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceBuyerAcceptOfferInput = {
     readonly clientMutationId?: string | null;
+    readonly offerId: string;
 };
 export type AcceptOfferMutationVariables = {
-    readonly input: buyerAcceptOfferInput;
+    readonly input: CommerceBuyerAcceptOfferInput;
 };
 export type AcceptOfferMutationResponse = {
-    readonly ecommerceBuyerAcceptOffer: ({
-        readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
-            readonly order?: ({
+    readonly commerceBuyerAcceptOffer: ({
+        readonly orderOrError: {
+            readonly __typename: "CommerceOrderWithMutationSuccess";
+            readonly order?: {
                 readonly id: string;
-                readonly awaitingResponseFrom?: OrderParticipantEnum | null;
-            }) | null;
-            readonly error?: ({
+                readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type AcceptOfferMutation = {
@@ -34,23 +34,23 @@ export type AcceptOfferMutation = {
 
 /*
 mutation AcceptOfferMutation(
-  $input: buyerAcceptOfferInput!
+  $input: CommerceBuyerAcceptOfferInput!
 ) {
-  ecommerceBuyerAcceptOffer(input: $input) {
+  commerceBuyerAcceptOffer(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         __typename
         order {
           __typename
           id
-          ... on OfferOrder {
+          ... on CommerceOfferOrder {
             awaitingResponseFrom
           }
-          __id
+          __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -67,7 +67,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "buyerAcceptOfferInput!",
+    "type": "CommerceBuyerAcceptOfferInput!",
     "defaultValue": null
   }
 ],
@@ -76,12 +76,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "buyerAcceptOfferInput!"
+    "type": "CommerceBuyerAcceptOfferInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -89,7 +89,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -133,14 +133,14 @@ v4 = {
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "InlineFragment",
-  "type": "OfferOrder",
+  "type": "CommerceOfferOrder",
   "selections": [
     {
       "kind": "ScalarField",
@@ -156,7 +156,7 @@ return {
   "operationKind": "mutation",
   "name": "AcceptOfferMutation",
   "id": null,
-  "text": "mutation AcceptOfferMutation(\n  $input: buyerAcceptOfferInput!\n) {\n  ecommerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation AcceptOfferMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -168,10 +168,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceBuyerAcceptOffer",
+        "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "buyerAcceptOfferPayload",
+        "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -186,7 +186,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -219,10 +219,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceBuyerAcceptOffer",
+        "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "buyerAcceptOfferPayload",
+        "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -238,7 +238,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -266,5 +266,5 @@ return {
   }
 };
 })();
-(node as any).hash = '73e3ed3a8fcf9d874db6ba8783be79bd';
+(node as any).hash = '340d46f4243b3decb0fafc4064a9d805';
 export default node;

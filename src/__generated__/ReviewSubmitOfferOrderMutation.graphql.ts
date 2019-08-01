@@ -1,25 +1,26 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type SubmitOrderWithOfferInput = {
-    readonly offerId: string;
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+export type CommerceSubmitOrderWithOfferInput = {
     readonly clientMutationId?: string | null;
+    readonly offerId: string;
 };
 export type ReviewSubmitOfferOrderMutationVariables = {
-    readonly input: SubmitOrderWithOfferInput;
+    readonly input: CommerceSubmitOrderWithOfferInput;
 };
 export type ReviewSubmitOfferOrderMutationResponse = {
-    readonly ecommerceSubmitOrderWithOffer: ({
-        readonly orderOrError: ({
-            readonly order?: ({
-                readonly state: string | null;
-            }) | null;
-            readonly error?: ({
+    readonly commerceSubmitOrderWithOffer: ({
+        readonly orderOrError: {
+            readonly order?: {
+                readonly state: CommerceOrderStateEnum;
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type ReviewSubmitOfferOrderMutation = {
@@ -31,19 +32,19 @@ export type ReviewSubmitOfferOrderMutation = {
 
 /*
 mutation ReviewSubmitOfferOrderMutation(
-  $input: SubmitOrderWithOfferInput!
+  $input: CommerceSubmitOrderWithOfferInput!
 ) {
-  ecommerceSubmitOrderWithOffer(input: $input) {
+  commerceSubmitOrderWithOffer(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         order {
           __typename
           state
-          __id
+          __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -60,7 +61,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "SubmitOrderWithOfferInput!",
+    "type": "CommerceSubmitOrderWithOfferInput!",
     "defaultValue": null
   }
 ],
@@ -69,12 +70,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "SubmitOrderWithOfferInput!"
+    "type": "CommerceSubmitOrderWithOfferInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -82,7 +83,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -119,8 +120,8 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -136,7 +137,7 @@ return {
   "operationKind": "mutation",
   "name": "ReviewSubmitOfferOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: SubmitOrderWithOfferInput!\n) {\n  ecommerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: CommerceSubmitOrderWithOfferInput!\n) {\n  commerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -148,10 +149,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSubmitOrderWithOffer",
+        "name": "commerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SubmitOrderWithOfferPayload",
+        "concreteType": "CommerceSubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -166,7 +167,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   {
                     "kind": "LinkedField",
@@ -197,10 +198,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSubmitOrderWithOffer",
+        "name": "commerceSubmitOrderWithOffer",
         "storageKey": null,
         "args": v1,
-        "concreteType": "SubmitOrderWithOfferPayload",
+        "concreteType": "CommerceSubmitOrderWithOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -216,7 +217,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   {
                     "kind": "LinkedField",
@@ -242,5 +243,5 @@ return {
   }
 };
 })();
-(node as any).hash = '58df6696dd7d98059101a7fed178c970';
+(node as any).hash = '7a69ae03903af1cdf07b4db842c8572d';
 export default node;

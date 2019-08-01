@@ -1,31 +1,31 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type CreateOfferOrderWithArtworkInput = {
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceCreateOfferOrderWithArtworkInput = {
     readonly artworkId: string;
-    readonly editionSetId?: string | null;
-    readonly quantity?: number | null;
-    readonly find_active_or_create?: boolean | null;
     readonly clientMutationId?: string | null;
+    readonly editionSetId?: string | null;
+    readonly findActiveOrCreate?: boolean | null;
+    readonly quantity?: number | null;
 };
 export type ArtworkSidebarCommercialOfferOrderMutationVariables = {
-    readonly input: CreateOfferOrderWithArtworkInput;
+    readonly input: CommerceCreateOfferOrderWithArtworkInput;
 };
 export type ArtworkSidebarCommercialOfferOrderMutationResponse = {
-    readonly ecommerceCreateOfferOrderWithArtwork: ({
-        readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
-            readonly order?: ({
+    readonly commerceCreateOfferOrderWithArtwork: ({
+        readonly orderOrError: {
+            readonly __typename: "CommerceOrderWithMutationSuccess";
+            readonly order?: {
                 readonly id: string;
-                readonly mode: OrderModeEnum | null;
-            }) | null;
-            readonly error?: ({
+                readonly mode: CommerceOrderModeEnum | null;
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type ArtworkSidebarCommercialOfferOrderMutation = {
@@ -37,21 +37,21 @@ export type ArtworkSidebarCommercialOfferOrderMutation = {
 
 /*
 mutation ArtworkSidebarCommercialOfferOrderMutation(
-  $input: CreateOfferOrderWithArtworkInput!
+  $input: CommerceCreateOfferOrderWithArtworkInput!
 ) {
-  ecommerceCreateOfferOrderWithArtwork(input: $input) {
+  commerceCreateOfferOrderWithArtwork(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         __typename
         order {
           __typename
           id
           mode
-          __id
+          __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -68,7 +68,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreateOfferOrderWithArtworkInput!",
+    "type": "CommerceCreateOfferOrderWithArtworkInput!",
     "defaultValue": null
   }
 ],
@@ -77,12 +77,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "CreateOfferOrderWithArtworkInput!"
+    "type": "CommerceCreateOfferOrderWithArtworkInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -90,7 +90,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -141,8 +141,8 @@ v5 = {
 },
 v6 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -151,7 +151,7 @@ return {
   "operationKind": "mutation",
   "name": "ArtworkSidebarCommercialOfferOrderMutation",
   "id": null,
-  "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CreateOfferOrderWithArtworkInput!\n) {\n  ecommerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CommerceCreateOfferOrderWithArtworkInput!\n) {\n  commerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -163,10 +163,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceCreateOfferOrderWithArtwork",
+        "name": "commerceCreateOfferOrderWithArtwork",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreateOfferOrderWithArtworkPayload",
+        "concreteType": "CommerceCreateOfferOrderWithArtworkPayload",
         "plural": false,
         "selections": [
           {
@@ -181,7 +181,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -214,10 +214,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceCreateOfferOrderWithArtwork",
+        "name": "commerceCreateOfferOrderWithArtwork",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CreateOfferOrderWithArtworkPayload",
+        "concreteType": "CommerceCreateOfferOrderWithArtworkPayload",
         "plural": false,
         "selections": [
           {
@@ -233,7 +233,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -261,5 +261,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a45c6b861225fad53ced7393c9f62c10';
+(node as any).hash = '04da30893fac573be0833f0485eb2eac';
 export default node;

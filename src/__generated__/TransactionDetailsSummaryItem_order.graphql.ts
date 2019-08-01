@@ -1,13 +1,13 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItem_order$ref: unique symbol;
 export type TransactionDetailsSummaryItem_order$ref = typeof _TransactionDetailsSummaryItem_order$ref;
 export type TransactionDetailsSummaryItem_order = {
     readonly __typename: string;
-    readonly mode: OrderModeEnum | null;
+    readonly mode: CommerceOrderModeEnum | null;
     readonly shippingTotal: string | null;
     readonly shippingTotalCents: number | null;
     readonly taxTotal: string | null;
@@ -18,27 +18,27 @@ export type TransactionDetailsSummaryItem_order = {
     readonly lastOffer?: ({
         readonly id: string;
         readonly amount: string | null;
-        readonly amountCents: number | null;
+        readonly amountCents: number;
         readonly shippingTotal: string | null;
         readonly shippingTotalCents: number | null;
         readonly taxTotal: string | null;
         readonly taxTotalCents: number | null;
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
-        readonly fromParticipant: OrderParticipantEnum | null;
+        readonly fromParticipant: CommerceOrderParticipantEnum | null;
         readonly note: string | null;
     }) | null;
     readonly myLastOffer?: ({
         readonly id: string;
         readonly amount: string | null;
-        readonly amountCents: number | null;
+        readonly amountCents: number;
         readonly shippingTotal: string | null;
         readonly shippingTotalCents: number | null;
         readonly taxTotal: string | null;
         readonly taxTotalCents: number | null;
         readonly buyerTotal: string | null;
         readonly buyerTotalCents: number | null;
-        readonly fromParticipant: OrderParticipantEnum | null;
+        readonly fromParticipant: CommerceOrderParticipantEnum | null;
         readonly note: string | null;
     }) | null;
     readonly " $refType": TransactionDetailsSummaryItem_order$ref;
@@ -92,8 +92,8 @@ v5 = {
 },
 v6 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -150,7 +150,7 @@ v7 = [
 return {
   "kind": "Fragment",
   "name": "TransactionDetailsSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -190,7 +190,7 @@ return {
     v6,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -198,7 +198,7 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": v7
         },
@@ -208,7 +208,7 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": v7
         }
@@ -217,5 +217,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0a089f0405da382d428db51dfd1fe013';
+(node as any).hash = 'e207bab0483d25f4386054ee2b0365c6';
 export default node;

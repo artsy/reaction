@@ -101,7 +101,7 @@ describe("The respond page", () => {
     },
     query: graphql`
       query RespondTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Respond_order
         }
       }

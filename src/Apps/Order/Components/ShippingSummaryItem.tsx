@@ -46,7 +46,7 @@ export const ShippingSummaryItemFragmentContainer = createFragmentContainer(
   ShippingSummaryItem,
   {
     order: graphql`
-      fragment ShippingSummaryItem_order on Order {
+      fragment ShippingSummaryItem_order on CommerceOrder {
         state
         requestedFulfillment {
           __typename

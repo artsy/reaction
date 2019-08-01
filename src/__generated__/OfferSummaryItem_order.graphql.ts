@@ -25,15 +25,15 @@ var v0 = [
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "OfferSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -47,7 +47,7 @@ return {
     v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -55,7 +55,7 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
             {
@@ -80,5 +80,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '90ad44d35301b6a9de545dc7e020855d';
+(node as any).hash = '0261dbe6d5bf78317ddcbcc13f207aa5';
 export default node;

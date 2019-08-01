@@ -3,21 +3,22 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 declare const _Shipping_order$ref: unique symbol;
 export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
     readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: ({
-        readonly __typename: "Ship";
+        readonly __typename: "CommerceShip";
         readonly name: string | null;
         readonly addressLine1: string | null;
         readonly addressLine2: string | null;
         readonly city: string | null;
         readonly region: string | null;
-        readonly country: string;
+        readonly country: string | null;
         readonly postalCode: string | null;
         readonly phoneNumber: string | null;
     } | {
@@ -52,15 +53,15 @@ var v0 = {
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "Shipping_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -97,7 +98,7 @@ return {
         },
         {
           "kind": "InlineFragment",
-          "type": "Ship",
+          "type": "CommerceShip",
           "selections": [
             {
               "kind": "ScalarField",
@@ -165,7 +166,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -174,7 +175,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -183,7 +184,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -210,7 +211,13 @@ return {
                       "args": null,
                       "storageKey": null
                     },
-                    v1
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
                   ]
                 },
                 v1
@@ -234,5 +241,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ddc48eefaaa41842044ccffcd2d55e4f';
+(node as any).hash = '014b1825a797aad9654920cb221e1aae';
 export default node;

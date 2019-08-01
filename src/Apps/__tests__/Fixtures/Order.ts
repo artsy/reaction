@@ -23,6 +23,16 @@ export const mockResolver = (
       ...others,
     }
   },
+  CommerceOrder: (_, { id, ...others }) => {
+    return {
+      ...orderDetails,
+      id,
+      ...others,
+      __resolveType(obj, _context, _info) {
+        return obj.mode === "BUY" ? "CommerceOrder" : "CommerceOfferOrder"
+      },
+    }
+  },
   OfferOrder: (_, { id, ...others }) => {
     return {
       ...orderDetails,
@@ -100,7 +110,7 @@ export const UntouchedOrder = {
       },
     ],
   },
-  seller: {
+  sellerDetails: {
     __typename: "Partner",
     name: "Kathryn Markel Fine Arts",
     locations: [
@@ -115,7 +125,13 @@ export const UntouchedOrder = {
 
 export const UntouchedBuyOrder = {
   ...UntouchedOrder,
-  __typename: "BuyOrder",
+  __typename: "CommerceOrder",
+  mode: "BUY",
+}
+
+export const UntouchedCommerceOrder = {
+  ...UntouchedOrder,
+  __typename: "CommerceOrder",
   mode: "BUY",
 }
 
@@ -144,7 +160,7 @@ export const OfferWithTotals = {
 
 export const UntouchedOfferOrder = {
   ...UntouchedOrder,
-  __typename: "OfferOrder",
+  __typename: "CommerceOfferOrder",
   mode: "OFFER",
   totalListPrice: "$16,000",
   totalListPriceCents: 1600000,
@@ -214,6 +230,12 @@ export const PaymentDetails = {
 
 export const BuyOrderWithShippingDetails = {
   ...UntouchedBuyOrder,
+  ...ShippingDetails,
+  ...PaymentDetails,
+}
+
+export const CommerceOrderWithShippingDetails = {
+  ...UntouchedCommerceOrder,
   ...ShippingDetails,
   ...PaymentDetails,
 }

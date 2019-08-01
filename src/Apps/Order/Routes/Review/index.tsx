@@ -84,8 +84,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       const orderOrError =
         this.props.order.mode === "BUY"
           ? (await this.submitBuyOrder()).commerceSubmitOrder.orderOrError
-          : (await this.submitOffer()).ecommerceSubmitOrderWithOffer
-              .orderOrError
+          : (await this.submitOffer()).commerceSubmitOrderWithOffer.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
@@ -154,16 +153,16 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       },
       mutation: graphql`
         mutation ReviewSubmitOfferOrderMutation(
-          $input: SubmitOrderWithOfferInput!
+          $input: CommerceSubmitOrderWithOfferInput!
         ) {
-          ecommerceSubmitOrderWithOffer(input: $input) {
+          commerceSubmitOrderWithOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -373,7 +372,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(ReviewRoute))),
   {
     order: graphql`
-      fragment Review_order on Order {
+      fragment Review_order on CommerceOrder {
         id
         mode
         itemsTotal(precision: 2)
@@ -391,7 +390,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           myLastOffer {
             id
           }
