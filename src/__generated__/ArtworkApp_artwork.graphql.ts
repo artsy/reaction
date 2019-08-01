@@ -18,11 +18,7 @@ export type ArtworkApp_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly availability: string | null;
-    readonly listPrice: ({
-        readonly priceCents?: number;
-        readonly minPriceCents?: number;
-        readonly maxPriceCents?: number;
-    }) | null;
+    readonly price: string | null;
     readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<({
         readonly id: string;
@@ -92,48 +88,11 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "listPrice",
-      "storageKey": null,
+      "name": "price",
       "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        {
-          "kind": "InlineFragment",
-          "type": "PriceRange",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "minPriceCents",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "maxPriceCents",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        },
-        {
-          "kind": "InlineFragment",
-          "type": "ExactPrice",
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "priceCents",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        }
-      ]
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -215,5 +174,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '72ea80e7799efb14738b864c3034e6d9';
+(node as any).hash = '5097a7c9d398cce1abd797fc91661166';
 export default node;

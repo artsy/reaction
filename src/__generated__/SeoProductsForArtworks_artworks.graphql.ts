@@ -14,11 +14,7 @@ export type SeoProductsForArtworks_artworks = {
                 readonly href: string | null;
                 readonly is_acquireable: boolean | null;
                 readonly is_price_range: boolean | null;
-                readonly listPrice: ({
-                    readonly minPriceCents?: number;
-                    readonly maxPriceCents?: number;
-                    readonly priceCents?: number;
-                }) | null;
+                readonly price: string | null;
                 readonly price_currency: string | null;
                 readonly title: string | null;
                 readonly artists: ReadonlyArray<({
@@ -155,48 +151,11 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "kind": "LinkedField",
+                  "kind": "ScalarField",
                   "alias": null,
-                  "name": "listPrice",
-                  "storageKey": null,
+                  "name": "price",
                   "args": null,
-                  "concreteType": null,
-                  "plural": false,
-                  "selections": [
-                    {
-                      "kind": "InlineFragment",
-                      "type": "ExactPrice",
-                      "selections": [
-                        {
-                          "kind": "ScalarField",
-                          "alias": null,
-                          "name": "priceCents",
-                          "args": null,
-                          "storageKey": null
-                        }
-                      ]
-                    },
-                    {
-                      "kind": "InlineFragment",
-                      "type": "PriceRange",
-                      "selections": [
-                        {
-                          "kind": "ScalarField",
-                          "alias": null,
-                          "name": "minPriceCents",
-                          "args": null,
-                          "storageKey": null
-                        },
-                        {
-                          "kind": "ScalarField",
-                          "alias": null,
-                          "name": "maxPriceCents",
-                          "args": null,
-                          "storageKey": null
-                        }
-                      ]
-                    }
-                  ]
+                  "storageKey": null
                 },
                 v0,
                 {
@@ -423,5 +382,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6a3f721b7b47ff805bde6cdce4a29c90';
+(node as any).hash = 'a50f86d40cc0e1c4a683fd0f73fa5b20';
 export default node;

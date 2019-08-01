@@ -31,9 +31,9 @@ const mockArtwork: PricingContext_artwork = {
   " $refType": null,
   artists: [{ id: "alex-katz" }],
   category: "Sculpture",
-  listPrice: {
-    minPriceCents: 284243,
-    maxPriceCents: 284244,
+  priceCents: {
+    min: 284243,
+    max: 284244,
   },
   pricingContext: {
     bins: [
@@ -209,10 +209,7 @@ storiesOf("Apps/Artwork/Components", module)
         <Section title="Pricing Context">
           <Flex width="100%" maxWidth="600px" flexDirection="column">
             <MockPricingContext
-              artwork={{
-                ...mockArtwork,
-                listPrice: { minPriceCents: 1000, maxPriceCents: 1000 },
-              }}
+              artwork={{ ...mockArtwork, priceCents: { min: 1000, max: 1000 } }}
             />
           </Flex>
         </Section>
@@ -228,7 +225,7 @@ storiesOf("Apps/Artwork/Components", module)
             <MockPricingContext
               artwork={{
                 ...mockArtwork,
-                listPrice: { minPriceCents: 10000000, maxPriceCents: 10000000 },
+                priceCents: { min: 10000000, max: 10000000 },
               }}
             />
           </Flex>

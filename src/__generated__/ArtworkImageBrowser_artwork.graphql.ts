@@ -63,7 +63,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": "image_alt",
-      "name": "formattedMetadata",
+      "name": "to_s",
       "args": null,
       "storageKey": null
     },
@@ -264,5 +264,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b87b7676f4e1ffa42f6919a35004ec9e';
+(node as any).hash = '51377fc143d191b4dfefcfc5914e1f36';
 export default node;

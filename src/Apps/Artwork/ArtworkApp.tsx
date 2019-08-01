@@ -76,7 +76,7 @@ export class ArtworkApp extends React.Component<Props> {
 
   trackPageview() {
     const {
-      artwork: { listPrice, availability, is_offerable, is_acquireable },
+      artwork: { price, availability, is_offerable, is_acquireable },
     } = this.props
 
     // Pageview
@@ -85,11 +85,7 @@ export class ArtworkApp extends React.Component<Props> {
       acquireable: is_acquireable,
       offerable: is_offerable,
       availability,
-      price_listed: !!(
-        listPrice.minPriceCents ||
-        listPrice.maxPriceCents ||
-        listPrice.priceCents
-      ),
+      price_listed: !!price,
     }
 
     if (typeof window.analytics !== "undefined") {
@@ -220,15 +216,7 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
       is_acquireable
       is_offerable
       availability
-      listPrice {
-        ... on ExactPrice {
-          priceCents
-        }
-        ... on PriceRange {
-          minPriceCents
-          maxPriceCents
-        }
-      }
+      price
       is_in_auction
       artists {
         id
