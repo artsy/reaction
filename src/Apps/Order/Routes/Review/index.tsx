@@ -89,7 +89,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
         return
-      } else if (orderOrError.actionData.clientSecret) {
+      } else if (
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
         this.state.stripe
           .handleCardAction(orderOrError.actionData.clientSecret)
           .then(result => {

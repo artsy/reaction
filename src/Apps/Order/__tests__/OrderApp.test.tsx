@@ -37,12 +37,14 @@ describe("OrderApp routing redirects", () => {
     const store = new Store(source)
     const environment = new Environment({ network, store })
 
-    return await getFarceResult({
+    const result = await getFarceResult({
       url,
       routeConfig: routes,
       resolver: new Resolver(environment),
       render: createRender({}),
     })
+
+    return result
   }
 
   const mockResolver = data => ({ order: data, me: { name: "Alice Jane" } })
@@ -141,7 +143,7 @@ describe("OrderApp routing redirects", () => {
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
-          __typename: "Ship",
+          __typename: "CommerceShip",
         },
         creditCard: null,
       })
@@ -171,7 +173,7 @@ describe("OrderApp routing redirects", () => {
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
-          __typename: "Ship",
+          __typename: "CommerceShip",
         },
         creditCard: null,
       })
@@ -187,7 +189,7 @@ describe("OrderApp routing redirects", () => {
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
-          __typename: "Ship",
+          __typename: "CommerceShip",
         },
         creditCard: {
           id: "12345",
@@ -197,7 +199,7 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
-  it("redirects from the status route to the review route if the order is pending", async () => {
+  it.only("redirects from the status route to the review route if the order is pending", async () => {
     const { redirect } = await render(
       "/orders/1234/status",
       mockResolver({
@@ -205,7 +207,7 @@ describe("OrderApp routing redirects", () => {
         id: 1234,
         state: "PENDING",
         requestedFulfillment: {
-          __typename: "Ship",
+          __typename: "CommerceShip",
         },
         creditCard: {
           id: "12345",
@@ -223,7 +225,7 @@ describe("OrderApp routing redirects", () => {
         id: 1234,
         state: "SUBMITTED",
         requestedFulfillment: {
-          __typename: "Ship",
+          __typename: "CommerceShip",
         },
         creditCard: {
           id: "12345",

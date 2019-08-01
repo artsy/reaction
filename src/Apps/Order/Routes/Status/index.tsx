@@ -48,7 +48,7 @@ export class StatusRoute extends Component<StatusProps> {
       stateExpiresAt,
     } = this.props.order
     const isOfferFlow = mode === "OFFER"
-    const isShip = requestedFulfillment.__typename === "Ship"
+    const isShip = requestedFulfillment.__typename === "CommerceShip"
 
     switch (state) {
       case "SUBMITTED":

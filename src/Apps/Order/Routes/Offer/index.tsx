@@ -187,10 +187,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         input: {
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
           orderId: this.props.order.id,
-          offerPrice: {
-            amount: offerValue,
-            currencyCode: "USD",
-          },
+          amountCents: offerValue * 100,
         },
       })).commerceAddInitialOfferToOrder.orderOrError
 

@@ -21,7 +21,7 @@ const ShippingSummaryItem = ({
 }: {
   order: ShippingSummaryItem_order
 } & StepSummaryItemProps) => {
-  return requestedFulfillment.__typename === "Ship" ? (
+  return requestedFulfillment.__typename === "CommerceShip" ? (
     <StepSummaryItem title="Ship to" {...others}>
       <ShippingAddress ship={requestedFulfillment} />
     </StepSummaryItem>

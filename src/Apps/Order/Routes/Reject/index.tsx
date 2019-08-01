@@ -72,7 +72,7 @@ export class Reject extends Component<RejectProps> {
         input: {
           offerId: this.props.order.lastOffer.id,
         },
-      })).ecommerceBuyerRejectOffer.orderOrError
+      })).commerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error

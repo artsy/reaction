@@ -64,7 +64,7 @@ describe(injectCommitMutation, () => {
                   variables: {
                     input: {
                       creditCardId: "card",
-                      orderId: "order",
+                      id: "order",
                     },
                   },
                   mutation: graphql`
@@ -106,7 +106,7 @@ describe(injectCommitMutation, () => {
     wrapper.update()
     expect(wrapper.find("div").props().className).toBe("nothing")
     expect(resultFn).toHaveBeenCalledWith({
-      commerceSetOrderPayment: {
+      commerceSetPayment: {
         orderOrError: { error: { code: "invalid_state" } },
       },
     })

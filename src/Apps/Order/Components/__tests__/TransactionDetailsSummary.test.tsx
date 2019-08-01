@@ -58,7 +58,7 @@ const render = (
   })
 
 describe("TransactionDetailsSummaryItem", () => {
-  describe("BuyOrder", () => {
+  describe("CommerceBuyOrder", () => {
     it("shows the shipping and tax price if it's greater than 0", async () => {
       const transactionSummary = await render(transactionSummaryBuyOrder)
 
@@ -88,7 +88,7 @@ describe("TransactionDetailsSummaryItem", () => {
     })
   })
 
-  describe("OfferOrder", () => {
+  describe("CommerceOfferOrder", () => {
     it("shows the shipping and tax price if it's greater than 0", async () => {
       const transactionSummary = await render(transactionSummaryOfferOrder)
 
