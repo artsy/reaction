@@ -28,15 +28,15 @@ describe("artworks", () => {
 
     expect(hasDuplicateArtworks(headerArtworks)).toBeTruthy()
     expect(headerArtworks.length).toBeGreaterThanOrEqual(artworks.length)
-    expect(headerArtworks).toHaveLength(3)
+    expect(headerArtworks).toHaveLength(4)
   })
 
   it("returns only the number of artworks necessary to fill the header", () => {
     const artworks = defaultCollectionHeaderArtworks.hits
 
     const headerArtworks = getHeaderArtworks(artworks, 1375, false)
-    expect(artworks.length).toBeGreaterThan(headerArtworks.length)
-    expect(headerArtworks).toHaveLength(7)
+    expect(artworks.length).toBeGreaterThanOrEqual(headerArtworks.length)
+    expect(headerArtworks).toHaveLength(10)
   })
 })
 
@@ -70,7 +70,7 @@ describe("default header component", () => {
   it("renders images in the header component ", () => {
     const wrapper = getWrapper(props)
 
-    expect(wrapper.find("Image").length).toBe(5)
+    expect(wrapper.find("Image").length).toBe(10)
   })
 
   it("when viewport size is small the image src link references the small resized url", () => {

@@ -17,15 +17,20 @@ export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
 }) => {
-  const viewportWidth = useWindowSize()
   const { hits: artworks } = headerArtworks
 
   if (!artworks) {
     return null
   }
 
+  const viewportWidth = useWindowSize()
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
-  const duplicatedArtworks = artworks.slice(0)
+  /**
+   * Relay is returning 12 artworks since this query populates both the artworks
+   *  used for merchandisable artists and those used for this component.
+   *  Slice the artworks array to get just the first 10 in the result set.
+   */
+  const duplicatedArtworks = artworks.slice(0, 10)
   const artworksToRender = getHeaderArtworks(
     duplicatedArtworks,
     viewportWidth,
@@ -79,13 +84,8 @@ export const getHeaderArtworks = (
    * Loop through the artworks array, appending a new artwork to the output array
    * until the summed widths of the artworks are greater than the width of the viewport.
    */
-  while (artworkWidths <= headerWidth) {
+  while (artworkWidths < headerWidth) {
     artworksArray.forEach((artwork, i) => {
-      // Trigger early break from while loop if headerArtworks widths are large enough to fill header
-      if (artworkWidths >= headerWidth) {
-        return headerArtworks
-      }
-
       headerArtworks.push(artwork)
 
       isSmallViewport
