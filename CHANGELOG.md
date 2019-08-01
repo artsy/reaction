@@ -1,3 +1,15 @@
+# v16.21.0 (Thu Aug 01 2019)
+
+#### 🚀  Enhancement
+
+- Add redirects to AuctionApp bidder registration flow [#2643](https://github.com/artsy/reaction/pull/2643) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.20.4 (Thu Aug 01 2019)
 
 #### 🐛  Bug Fix
