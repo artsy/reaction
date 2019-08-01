@@ -163,7 +163,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
           },
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
         },
-      })).ecommerceBuyerCounterOffer.orderOrError
+      })).commerceBuyerCounterOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
