@@ -36,20 +36,14 @@ class ReviewTestPage extends OrderAppTestPage {
   }
 }
 
+const handleCardAction = jest.fn()
 describe("Review", () => {
   beforeAll(() => {
-    // @ts-ignore
-    // tslint:disable-next-line:no-empty
-    window.Stripe = () => {}
+    window.Stripe = () => {
+      return { handleCardAction } as any
+    }
+
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
-
-    // jest.mock("window.Stripe", () => ({
-    //   handleCardAction: () => true,
-    // }))
-
-    // Object.defineProperty(window, "Stripe", {
-    //   handleCardAction: jest.fn().mockImplementation(() => {}),
-    // })
   })
 
   const { buildPage, mutations, routes } = createTestEnv({
@@ -77,7 +71,7 @@ describe("Review", () => {
       page = await buildPage()
     })
 
-    it("enables the button and routes to the status page", async () => {
+    it("enables the button and routes to the payoff page", async () => {
       await page.clickSubmit()
       expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
       expect(routes.mockPushRoute).toBeCalledWith("/orders/1234/status")
@@ -161,16 +155,11 @@ describe("Review", () => {
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
 
-    xit("shows SCA modal when required", async () => {
-      const handleCardAction = jest.fn()
+    it("shows SCA modal when required", async () => {
       mutations.useResultsOnce(submitOrderWithActionRequired)
-      console.log("dfsdfsdf", page.state())
 
       await page.clickSubmit()
-      await page.expectAndDismissErrorDialogMatching(
-        "Insufficient funds",
-        "There aren't enough funds available on the payment methods you provided. Please contact your card provider or try another card."
-      )
+      expect(handleCardAction).toBeCalledWith("client-secret")
     })
   })
 
@@ -252,14 +241,12 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
-      // window.location.assign = jest.fn()
       mutations.useResultsOnce(submitOfferOrderWithNoInventoryFailure)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Not available",
         "Sorry, the work is no longer available."
       )
-      // expect().toBeCalledWith("/artist/artistId")
     })
   })
 
