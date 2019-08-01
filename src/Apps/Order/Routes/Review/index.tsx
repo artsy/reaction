@@ -90,7 +90,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         this.handleSubmitError(orderOrError.error)
         return
       } else if (
-        orderOrError.actionData &&
+        this.isOrder(orderOrError) &&
         orderOrError.actionData.clientSecret
       ) {
         this.state.stripe
@@ -110,6 +110,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       logger.error(error)
       this.props.dialog.showErrorDialog()
     }
+  }
+
+  isOrder(
+    orderOrError: any
+  ): orderOrError is ReviewSubmitOrderMutation["response"]["commerceSubmitOrder"]["orderOrError"] {
+    return orderOrError.actionData !== undefined
   }
 
   submitBuyOrder() {
