@@ -72,7 +72,7 @@ export const submitOrderWithActionRequired = {
     orderOrError: {
       __typename: "CommerceOrderRequiresAction",
       actionData: {
-        clientSecret: "validation",
+        clientSecret: "client-secret",
       },
     },
   },
