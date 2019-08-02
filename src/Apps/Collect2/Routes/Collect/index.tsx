@@ -72,9 +72,9 @@ export class CollectApp extends Component<CollectAppProps> {
             </Serif>
 
             <CollectionsHubsNav
-              marketingHubCollections={
-                this.props.viewer.marketingHubCollections
-              }
+            // marketingHubCollections={
+            //   this.props.viewer.marketingHubCollections
+            // }
             />
 
             <Box pb={0.3}>
@@ -119,9 +119,9 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
         ...SeoProductsForArtworks_artworks
       }
 
-      marketingHubCollections {
-        ...CollectionsHubsNav_marketingHubCollections
-      }
+      # marketingHubCollections {
+      #   ...CollectionsHubsNav_marketingHubCollections
+      # }
 
       ...CollectFilterContainer_viewer
         @arguments(

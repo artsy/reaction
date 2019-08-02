@@ -1,7 +1,8 @@
 import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
 import React, { SFC } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+// import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { marketingHubCollections } from "./_fixtures_/collectionsHubs"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
@@ -27,17 +28,22 @@ const NavWrapper = styled.nav`
   justify-content: space-between;
 `
 
-export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
-  CollectionsHubsNav,
-  {
-    marketingHubCollections: graphql`
-      fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection
-        @relay(plural: true) {
-        id
-        slug
-        title
-        thumbnail
-      }
-    `,
-  }
-)
+export const CollectionsHubsNavFragmentContainer = () => {
+  return (
+    <CollectionsHubsNav marketingHubCollections={marketingHubCollections} />
+  )
+}
+// export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
+//   CollectionsHubsNav,
+//   {
+//     marketingHubCollections: graphql`
+//       fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection
+//         @relay(plural: true) {
+//         id
+//         slug
+//         title
+//         thumbnail
+//       }
+//     `,
+//   }
+// )
