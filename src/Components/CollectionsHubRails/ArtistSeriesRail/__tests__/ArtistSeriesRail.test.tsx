@@ -22,7 +22,7 @@ describe("ArtistSeriesRail", () => {
         hits: [
           {
             artist: {
-              name: "Jasper John1111s",
+              name: "Jasper Johns",
             },
             title: "keyborad",
             image: {
@@ -41,15 +41,28 @@ describe("ArtistSeriesRail", () => {
     }
   })
 
-  it("Renders expected fields", () => {
+  it("showing the correct text, price guidance, and title", () => {
     const component = mount(<ArtistSeriesRail {...props} />)
     expect(component.text()).toMatch("Trending Artist Series")
-    expect(component.text()).toMatch("Flags unique collectins")
+    expect(component.text()).toMatch("Flags unique collections")
+    expect(component.text()).toMatch("From $1,000")
   })
 
-  it("No arrows when there are less than 5 collections", () => {
+  it("Does NOT show arrows when there are less than 5 collections", () => {
     const component = getWrapper()
-    expect(component.find(ArrowButton).length).toBe(1)
+    expect(component.find(ArrowButton).length).toBe(0)
+  })
+
+  it("Does NOT show arrows when there are exactly 4 collections", () => {
+    const newprops = clone(props)
+    newprops.collectionGroup.members = [
+      singleData(),
+      singleData(),
+      singleData(),
+      singleData(),
+    ]
+    const Component = mount(<ArtistSeriesRail {...newprops} />)
+    expect(Component.find(ArrowButton).length).toBe(0)
   })
 
   it("Arrows appear when there are more than 5 collections", () => {
@@ -63,7 +76,7 @@ describe("ArtistSeriesRail", () => {
       singleData(),
       singleData(),
     ]
-    const editedComponent = mount(<ArtistSeriesRail {...newprops} />)
-    expect(editedComponent.find(ArrowButton).length).toBe(2)
+    const Component = mount(<ArtistSeriesRail {...newprops} />)
+    expect(Component.find(ArrowButton).length).toBe(2)
   })
 })

@@ -310,15 +310,15 @@ export const CollectionsHubLinkedCollections = {
       name: "Artist Series",
       members: [
         {
-          title: "Flags unique collectins",
+          title: "Flags unique collections",
           price_guidance: 1000,
           artworks: {
             hits: [
               {
                 artist: {
-                  name: "Jasper Johns",
+                  // null
                 },
-                title: "Flag",
+                title: "A great flag from Jasper",
                 image: {
                   url:
                     "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
@@ -326,9 +326,9 @@ export const CollectionsHubLinkedCollections = {
               },
               {
                 artist: {
-                  name: "Jaspe11111r Johns",
+                  name: "Jasper Johns",
                 },
-                title: "Flag1111",
+                title: "Back to 2046",
                 image: {
                   url:
                     "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
@@ -336,9 +336,9 @@ export const CollectionsHubLinkedCollections = {
               },
               {
                 artist: {
-                  name: "Jasper 1123",
+                  name: "Andy Warhol",
                 },
-                title: "Fl124ag",
+                title: "An Apple",
                 image: {
                   url:
                     "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",

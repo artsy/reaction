@@ -10,13 +10,12 @@ import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesE
 export interface ArtistSeriesRailProps {
   collectionGroup: ArtistSeriesRail_collectionGroup
 }
-
 export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
   return (
-    <Content mb={2}>
+    <Content mb={2} px={2} py={3}>
       <Serif size="5">Trending Artist Series</Serif>
       <Carousel
         height="200px"
@@ -34,16 +33,12 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         }}
         renderLeftArrow={({ Arrow }) => {
           return (
-            <ArrowContainer>
-              <Arrow />
-            </ArrowContainer>
+            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
           )
         }}
         renderRightArrow={({ Arrow }) => {
           return (
-            <ArrowContainer>
-              <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
-            </ArrowContainer>
+            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
           )
         }}
       />
@@ -53,10 +48,6 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
 
 const Content = styled(Box)`
   border: 1px solid ${color("black10")};
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 30px;
-  padding-bottom: 30px;
 `
 
 export const ArrowContainer = styled(Box)`
