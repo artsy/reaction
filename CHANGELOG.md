@@ -1,3 +1,20 @@
+# v16.21.4 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette to 4.14.41 [#2658](https://github.com/artsy/reaction/pull/2658) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.39 to v4.14.41 [#2659](https://github.com/artsy/reaction/pull/2659) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.21.3 (Fri Aug 02 2019)
 
 #### 🐛  Bug Fix
