@@ -97,7 +97,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           .handleCardAction(orderOrError.actionData.clientSecret)
           .then(result => {
             if (result.error) {
-              console.log("I'm an error!", result.error)
+              this.props.dialog.showErrorDialog({
+                title: "An error occurred",
+                message: result.error.message,
+              })
               return
             } else {
               this.onSubmit()
