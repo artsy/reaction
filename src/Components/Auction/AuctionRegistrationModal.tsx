@@ -1,11 +1,8 @@
 import React, { useState } from "react"
 
 import { Box, Button, Flex, Serif } from "@artsy/palette"
+import { Modal } from "@artsy/palette"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
-import { Modal } from "Components/Modal/Modal"
-/** TODO: Swap for palette's modal
- * import { Modal } from "@artsy/palette"
-//  */
 
 // For convenience even though sale is for now a single value
 interface Sale {
