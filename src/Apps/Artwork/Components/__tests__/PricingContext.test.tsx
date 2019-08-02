@@ -274,7 +274,7 @@ Object {
       const component = mount(<Component artwork={mockArtwork as any} />)
       component
         .find(Link)
-        .at(2)
+        .at(0)
         .simulate("click")
 
       expect(dispatch).toBeCalledWith({
