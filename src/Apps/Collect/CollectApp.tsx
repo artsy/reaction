@@ -71,9 +71,9 @@ export class CollectApp extends Component<CollectAppProps> {
             </Serif>
 
             <CollectionsHubsNav
-              marketingHubCollections={
-                this.props.viewer.marketingHubCollections
-              }
+            // marketingHubCollections={
+            //   this.props.viewer.marketingHubCollections
+            // }
             />
 
             <Sans size="3" weight="medium">
@@ -119,9 +119,9 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
         ...SeoProductsForArtworks_artworks
       }
 
-      marketingHubCollections {
-        ...CollectionsHubsNav_marketingHubCollections
-      }
+      # marketingHubCollections {
+      #   ...CollectionsHubsNav_marketingHubCollections
+      # }
 
       ...CollectFilterContainer_viewer
         @arguments(
