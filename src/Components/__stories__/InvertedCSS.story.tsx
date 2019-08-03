@@ -4,7 +4,7 @@ import { unica } from "Assets/Fonts"
 import React from "react"
 import styled from "styled-components"
 import { getViewportWidth } from "Utils/viewport"
-import { ReactComponent as Logo } from "../../Assets/ArtsyVanguard/NewlyEstablished-01"
+import { NewlyEstablished } from "../../Assets/ArtsyVanguard/VanguardAssets"
 
 const { height, width } = getViewportWidth()
 
@@ -18,15 +18,14 @@ storiesOf("Components/InvertedCSS", module)
     </Box>
   ))
   .add("Inverted CSS Over SVG", () => (
-    <div style={{ padding: 10 }}>
-      <Title>Inverted CSS Over SVG</Title>
-      <section>
-        <SVGRect />
-        <Flex flexDirection="column">
-          <Vanguard>Vanguard</Vanguard>
-        </Flex>
-      </section>
-    </div>
+    <SVGWrapper height={height * 2} width={width} p={1}>
+      <Box mb={4.5}>
+        <Title>Inverted CSS Over SVG</Title>
+      </Box>
+      <InvertedText>Vanguard</InvertedText>
+      <SVG />
+      <SVGForeground />
+    </SVGWrapper>
   ))
   .add("Inverted CSS Over Video", () => (
     <div style={{ padding: 10 }}>
@@ -35,45 +34,6 @@ storiesOf("Components/InvertedCSS", module)
       </section>
     </div>
   ))
-
-const SVGContainer = styled.svg`
-  height: 1000px;
-  width: 1000px;
-  padding: 10px;
-  flex-shrink: 0;
-  isolation: isolate;
-`
-
-const SVGRect = props => (
-  <SVGContainer {...props}>
-    <rect
-      id="backgroundrect"
-      width="1000px"
-      height="1000px"
-      x="0"
-      y="0"
-      fill="#000000"
-      stroke="none"
-    />
-    )
-  </SVGContainer>
-)
-
-const Vanguard = styled(Flex)`
-  flex-direction: column;
-  transform: rotate(0.75turn);
-  position: absolute;
-  left: 0;
-  bottom: 350;
-    mix-blend-mode: multiply;    
-    padding-left: 20px;
-    text-align: center;
-    font-size: 50px;
-}
-`
-const Title = styled.h1`
-  ${unica("s40")};
-`
 
 // Background and Middleground height needs to take up the height of the viewport
 // so that the mix blend mode color inversion has a backdrop to contrast against.
@@ -103,6 +63,13 @@ const Foreground = styled(Box)`
   position: absolute;
 `
 
+const SVGForeground = styled(Flex)`
+  flex-grow: 1;
+  height: 1001px;
+  mix-blend-mode: difference;
+  background: white;
+`
+
 const InvertedText = styled(Box)`
   position: fixed;
   font-family: Arial, Helvetica;
@@ -112,4 +79,20 @@ const InvertedText = styled(Box)`
   z-index: 3;
   transform: rotate(270deg);
   margin: 250px 0 0 195px;
+`
+
+const SVGWrapper = styled(Box)`
+  overflow: hidden;
+`
+const Title = styled.h1`
+  ${unica("s40")};
+`
+/**
+ * Adding huge padding bottom here as a temp hack to push the transparent border
+ * on the below the rest of the page content
+ */
+const SVG = styled(NewlyEstablished)`
+  padding-bottom: 7000px;
+  background-color: ${color("white100")};
+  mix-blend-mode: difference;
 `
