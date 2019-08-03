@@ -6,35 +6,37 @@ import { times } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { VanguardArtistWrapper } from "./ArtistWrapper"
+import { VanguardVideoBackground } from "./VideoBackground"
 
 export const VanguardSeriesWrapper: React.SFC<{
   article: ArticleData
   index: number
 }> = props => {
   const { article, index } = props
-  const { relatedArticles, title, series, hero_section } = article
-  const url = (hero_section && hero_section.url) || ""
-  const isVideo = url.includes("mp4")
+  const { relatedArticles, title, layout, series, slug } = article
 
   return (
-    <Box pb={4}>
-      <Box background={url && !isVideo && `url(${url})`}>
-        <Box mx="auto" maxWidth={1000} height="70vh">
-          {isVideo && (
-            <Video src={url} autoPlay controls={false} loop muted playsInline />
-          )}
-          <Numeral size="8">{times(index + 1, () => "I")}</Numeral>
-          <Sans size="8" textAlign="center">
+    <Box>
+      <Box height="95vh" mb={80}>
+        <VanguardVideoBackground article={article} />
+        <Box mx="auto" maxWidth={1400} px={4}>
+          <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
+          <Title size="16" textAlign="center" element="h2">
             {title}
-          </Sans>
+          </Title>
         </Box>
       </Box>
-      <Box mx="auto" maxWidth={1000}>
-        <Flex pb={4} flexDirection="column" alignItems="center">
-          {series && <Serif size="8">{series.sub_title}</Serif>}
+
+      <Box mx="auto" maxWidth="65%" px={4} pb={150}>
+        <Flex flexDirection="column" alignItems="center">
+          {series && (
+            <SubTitle size="12" element="h3" pb={2}>
+              {series.sub_title}
+            </SubTitle>
+          )}
           <Share
             // TODO: We may need to use custom urls here for in-page routing
-            url={getFullEditorialHref(article.layout, article.slug)}
+            url={getFullEditorialHref(layout, slug)}
             title={title}
           />
         </Flex>
@@ -49,12 +51,18 @@ export const VanguardSeriesWrapper: React.SFC<{
   )
 }
 
-const Numeral = styled(Serif)`
-  position: absolute;
+const Title = styled(Sans)`
+  text-transform: uppercase;
+  text-align: center;
 `
 
-const Video = styled.video`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+const SubTitle = styled(Serif)`
+  text-transform: uppercase;
+  text-align: center;
+`
+
+const Numeral = styled(Serif)`
+  position: absolute;
+  font-size: 100px;
+  line-height: 1em;
 `

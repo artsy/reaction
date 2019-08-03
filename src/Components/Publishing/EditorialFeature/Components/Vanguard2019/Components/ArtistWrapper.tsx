@@ -30,7 +30,7 @@ export class VanguardArtistWrapper extends React.Component<
     const { isExpanded } = this.state
 
     return (
-      <ArtistContainer pb={4} maxWidth={1000} mx="auto">
+      <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
         <Box textAlign="center">
           <ArtistTitle size="8">{title}</ArtistTitle>
           <Box position="absolute">
