@@ -5,6 +5,7 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { slugify } from "underscore.string"
 import { VanguardArtistWrapper } from "./ArtistWrapper"
 
 export const VanguardSeriesWrapper: React.SFC<{
@@ -17,7 +18,7 @@ export const VanguardSeriesWrapper: React.SFC<{
   const isVideo = url.includes("mp4")
 
   return (
-    <Box pb={4}>
+    <Box pb={4} id={slugify(title)}>
       <Box background={url && !isVideo && `url(${url})`}>
         <Box mx="auto" maxWidth={1000} height="70vh">
           {isVideo && (
