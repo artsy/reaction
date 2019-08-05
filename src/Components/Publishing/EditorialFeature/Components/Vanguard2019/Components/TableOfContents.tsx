@@ -1,14 +1,14 @@
 import { Box, Sans, Serif } from "@artsy/palette"
+import {
+  NewlyEstablished1,
+  NewlyEstablished2,
+  NewlyEstablished3,
+} from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
-import {
-  NewlyEstablished1,
-  NewlyEstablished2,
-  NewlyEstablished3,
-} from "../Assets/NewlyEstablished"
 
 type SubSeriesType = "emerging" | "newly-established" | "getting-their-due"
 
