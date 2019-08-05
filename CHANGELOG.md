@@ -1,3 +1,97 @@
+# v16.22.2 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Display video in headers/intro [#2664](https://github.com/artsy/reaction/pull/2664) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.22.1 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add Inverted Text CSS to Storybooks [#2662](https://github.com/artsy/reaction/pull/2662) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.43 to v4.14.44 [#2665](https://github.com/artsy/reaction/pull/2665) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.22.0 (Mon Aug 05 2019)
+
+#### 🚀  Enhancement
+
+- Auct-463 auction registration modal [#2635](https://github.com/artsy/reaction/pull/2635) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/auto-config from 1.0.0 to v1.0.1 [#2663](https://github.com/artsy/reaction/pull/2663) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.41 to v4.14.43 [#2660](https://github.com/artsy/reaction/pull/2660) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.5 (Fri Aug 02 2019)
+
+
+
+---
+
+# v16.21.4 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette to 4.14.41 [#2658](https://github.com/artsy/reaction/pull/2658) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.39 to v4.14.41 [#2659](https://github.com/artsy/reaction/pull/2659) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.3 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- @yuki24 => [Collect] Remove unneeded medium aggregation call [#2639](https://github.com/artsy/reaction/pull/2639) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.21.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1391,Collections carousel tweaks QA for artist series and related collections [#2648](https://github.com/artsy/reaction/pull/2648) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v16.21.1 (Thu Aug 01 2019)
 
 #### 🐛  Bug Fix

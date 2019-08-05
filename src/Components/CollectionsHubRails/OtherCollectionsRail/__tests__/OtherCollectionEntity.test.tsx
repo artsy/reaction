@@ -1,4 +1,4 @@
-import { CollectionsHubFixture } from "Apps/__tests__/Fixtures/Collections"
+import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mount } from "enzyme"
 import React from "react"
 import {
@@ -13,7 +13,7 @@ describe("OtherCollectionEntity", () => {
 
   beforeEach(() => {
     props = {
-      member: CollectionsHubFixture[0].linkedCollections[0].members[0],
+      member: CollectionHubFixture.linkedCollections[0].members[0],
     }
   })
 
@@ -40,7 +40,7 @@ describe("OtherCollectionEntity", () => {
   })
 
   it("Returns entity with just text when there is no image", () => {
-    props.member = CollectionsHubFixture[0].linkedCollections[0].members[1]
+    props.member = CollectionHubFixture.linkedCollections[0].members[1]
     const component = mount(<OtherCollectionEntity {...props} />)
 
     expect(component.find(ThumbnailImage).length).toBe(0)

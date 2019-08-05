@@ -1,35 +1,54 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
-import { Byline } from "Components/Publishing/Byline/Byline"
+import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+import { VanguardVideoBackground } from "./VideoBackground"
 
 export const VanguardIntroduction: React.SFC<{
   article: ArticleData
 }> = props => {
   const { description } = props.article.series
+
   return (
-    <Box pb={4} pt={70}>
-      <Flex
-        justifyContent="space-between"
-        flexDirection="column"
-        alignItems="center"
-        height="90vh"
-      >
-        <HeaderText size="8">The Artsy</HeaderText>
-        <Box pb={4}>
-          <Serif size="8">The Artists To Know Right Now</Serif>
-          <Byline article={props.article} />
-        </Box>
-      </Flex>
-      <Box pb={4} mx="auto" maxWidth={800}>
-        <Text layout="standard" html={description} />
+    <IntroContainer>
+      <Box minHeight="calc(100vh - 50px)" mb={150}>
+        <VanguardVideoBackground {...props} />
+        <HeaderText pt={70} size="8" textAlign="center">
+          The Artsy
+        </HeaderText>
       </Box>
-    </Box>
+
+      <Box mx="auto" maxWidth={980} px={4}>
+        <Flex flexDirection="column" alignItems="center" pb={75}>
+          <Title size="12" element="h1" textAlign="center" pb={1}>
+            The Artists To Know Right Now
+          </Title>
+          <Byline {...props} />
+        </Flex>
+        <Box pb={12}>
+          <Text layout="standard" html={description} width="800px" />
+        </Box>
+      </Box>
+    </IntroContainer>
   )
 }
 
 const HeaderText = styled(Sans)`
   font-size: 100px;
+`
+
+const IntroContainer = styled(Box)`
+  ${BylineContainer} {
+    div::before {
+      display: none;
+    }
+  }
+`
+
+const Title = styled(Serif)`
+  text-transform: uppercase;
+  font-size: 90px;
+  line-height: 1em;
 `

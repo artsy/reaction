@@ -74,7 +74,6 @@ const node: ConcreteFragment = {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
-        "MEDIUM",
         "TOTAL"
       ]
     },
@@ -147,10 +146,10 @@ const node: ConcreteFragment = {
           "type": "[ArtworkAggregation]"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0,
-          "type": "Int"
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": "String"
         }
       ],
       "concreteType": "FilterArtworks",
@@ -280,5 +279,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '3bd6b91bb3994bb1fdc300d654a3a602';
+(node as any).hash = '149ee7fd827db1b5d09f5be6f81d5d3e';
 export default node;

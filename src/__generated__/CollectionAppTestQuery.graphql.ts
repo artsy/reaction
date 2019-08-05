@@ -93,7 +93,7 @@ fragment SeoProductsForArtworks_artworks on FilterArtworks {
         price
         price_currency
         title
-        artists {
+        artists(shallow: true) {
           name
           __id
         }
@@ -566,6 +566,14 @@ v18 = {
   "args": null,
   "storageKey": null
 },
+v19 = [
+  {
+    "kind": "Literal",
+    "name": "shallow",
+    "value": true,
+    "type": "Boolean"
+  }
+],
 v19 = [
   {
     "kind": "ScalarField",
@@ -1072,8 +1080,8 @@ return {
                             "kind": "LinkedField",
                             "alias": null,
                             "name": "artists",
-                            "storageKey": null,
-                            "args": null,
+                            "storageKey": "artists(shallow:true)",
+                            "args": v18,
                             "concreteType": "Artist",
                             "plural": true,
                             "selections": v12
