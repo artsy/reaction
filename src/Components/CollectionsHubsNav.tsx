@@ -16,8 +16,9 @@ export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
         <ImageLink
           href={`/collection/${hub.slug}`}
           imageUrl={hub.thumbnail}
-          width={[132, 132, 120, 168]}
-          height={[83, 83, 74, 105]}
+          width={[132, 132, 120, 136]}
+          height={[83, 83, 74, 85]}
+          mr={2}
         >
           {hub.title}
         </ImageLink>
