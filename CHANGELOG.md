@@ -1,3 +1,20 @@
+# v16.22.1 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add Inverted Text CSS to Storybooks [#2662](https://github.com/artsy/reaction/pull/2662) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.43 to v4.14.44 [#2665](https://github.com/artsy/reaction/pull/2665) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.22.0 (Mon Aug 05 2019)
 
 #### 🚀  Enhancement
