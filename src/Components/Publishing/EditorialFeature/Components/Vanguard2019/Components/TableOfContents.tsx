@@ -90,7 +90,7 @@ const SeriesTitle = styled(Sans)`
   text-transform: uppercase;
 `
 
-const SeriesContainer = styled(Box)`
+export const SeriesContainer = styled(Box)`
   position: relative;
 
   &:hover {

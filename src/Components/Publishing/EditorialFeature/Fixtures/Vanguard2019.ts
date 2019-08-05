@@ -160,6 +160,67 @@ export const Vanguard2019Fixture = {
     {
       authors: null,
       channel_id: "5759e3efb5989e6f98f77993",
+      id: "5d3defd1373e39001ff00644",
+      description: null,
+      layout: "series",
+      published_at: null,
+      published: false,
+      series: {
+        sub_title: "The New Leaders of Contemporary Art",
+      },
+      slug: "-1564340177",
+      social_description: null,
+      social_image: null,
+      social_title: null,
+      thumbnail_image: null,
+      thumbnail_title: "Vanguard: Newly Established Series",
+      title: "Newly Established",
+      hero_section: {
+        url:
+          "https://artsy-media-uploads.s3.amazonaws.com/T5A0Zsxnz4lWQ5XpDfJW8Q%2FD_4.mp4",
+      },
+      relatedArticles: [
+        {
+          title: "Frank Bowling",
+          layout: "feature",
+          slug: "artsy-editorial-1564583231",
+          hero_section: {
+            url: null,
+            deck: "B. 1968 in USA. Lives and works in Brooklyn.",
+          },
+          sections: [
+            {
+              type: "text",
+              body:
+                "<p>It’s a daunting task to name the individuals who most profoundly shaped and inspired the global art world in 2017. Decades ago, creative scenes were relatively tiny and cliquish, but the ongoing explosion of interest in contemporary art has meant more of everything.</p>",
+            },
+            {
+              type: "image_collection",
+              layout: "overflow_fillwidth",
+              images: [
+                {
+                  url:
+                    "https://artsy-media-uploads.s3.amazonaws.com/V2DFi7vlVXD0wqzpaNheXA%2F3f16639152267a66df35bb3efc815299.jpeg",
+                  caption: "<p>Frank Bowling by Daniel Dorsa for Artsy. </p>",
+                  width: 1201,
+                  height: 1800,
+                },
+                {
+                  url:
+                    "https://artsy-media-uploads.s3.amazonaws.com/g0_owFde0FOCeQab8JpbPA%2F3db76f0d0041ef85ed174940c2097e11.jpeg",
+                  caption: "",
+                  width: 1800,
+                  height: 1412,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      authors: null,
+      channel_id: "5759e3efb5989e6f98f77993",
       id: "5d1d01e03e7eba002037dc4c",
       description: "<p>About artists getting their due</p>",
       layout: "series",
@@ -329,67 +390,6 @@ export const Vanguard2019Fixture = {
               type: "text",
               body:
                 '<p>Working without assistants, she has maintained a successful, long-term art practice with representation from galleries in New York, Chicago, and London. In the last fourthree years, the 84-year-old artist has received much-deserved accolades with five solo exhibitions and 11seven group shows, including this year’s prestigious Whitney Biennial. Simpson shows with the young tastemaking JTT Gallery on the Lower East Side. Given the full ground-floor gallery of the <a href="https://www.artsy.net/whitneymuseum">Whitney Museum of American Art</a>, Simpson delved into the sociological roles that clothing plays through pieces <em>Lambrequin and Peplum</em> (2017) and <em>Window Dressing: Background 4, April VI</em> (2003/2007). Whitney Biennial co-curator Jane Panetta said "Diane’s work thoughtfully combines source imagery ranging from architectural details to historical garment design, routinely proposing new forms that suggest the possibility of fortifying the body in the world, through this focused dialogue around both clothing and architecture." </p>',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      authors: null,
-      channel_id: "5759e3efb5989e6f98f77993",
-      id: "5d3defd1373e39001ff00644",
-      description: null,
-      layout: "series",
-      published_at: null,
-      published: false,
-      series: {
-        sub_title: "The New Leaders of Contemporary Art",
-      },
-      slug: "-1564340177",
-      social_description: null,
-      social_image: null,
-      social_title: null,
-      thumbnail_image: null,
-      thumbnail_title: "Vanguard: Newly Established Series",
-      title: "Newly Established",
-      hero_section: {
-        url:
-          "https://artsy-media-uploads.s3.amazonaws.com/T5A0Zsxnz4lWQ5XpDfJW8Q%2FD_4.mp4",
-      },
-      relatedArticles: [
-        {
-          title: "Frank Bowling",
-          layout: "feature",
-          slug: "artsy-editorial-1564583231",
-          hero_section: {
-            url: null,
-            deck: "B. 1968 in USA. Lives and works in Brooklyn.",
-          },
-          sections: [
-            {
-              type: "text",
-              body:
-                "<p>It’s a daunting task to name the individuals who most profoundly shaped and inspired the global art world in 2017. Decades ago, creative scenes were relatively tiny and cliquish, but the ongoing explosion of interest in contemporary art has meant more of everything.</p>",
-            },
-            {
-              type: "image_collection",
-              layout: "overflow_fillwidth",
-              images: [
-                {
-                  url:
-                    "https://artsy-media-uploads.s3.amazonaws.com/V2DFi7vlVXD0wqzpaNheXA%2F3f16639152267a66df35bb3efc815299.jpeg",
-                  caption: "<p>Frank Bowling by Daniel Dorsa for Artsy. </p>",
-                  width: 1201,
-                  height: 1800,
-                },
-                {
-                  url:
-                    "https://artsy-media-uploads.s3.amazonaws.com/g0_owFde0FOCeQab8JpbPA%2F3db76f0d0041ef85ed174940c2097e11.jpeg",
-                  caption: "",
-                  width: 1800,
-                  height: 1412,
-                },
-              ],
             },
           ],
         },
