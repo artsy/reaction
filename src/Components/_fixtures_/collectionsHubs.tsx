@@ -1,4 +1,4 @@
-import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
+import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
 
 export const imageSamples = {
   contemporaryArt:
@@ -15,7 +15,7 @@ export const imageSamples = {
     "https://d32dm0rphc51dk.cloudfront.net/Tk7srLDTS-0Y60mbN7gWew/thumb.jpg",
 }
 
-export const marketingHubCollections: CollectionsHubsNav_marketingHubCollections = [
+export const marketingHubCollections: CollectionsHubsNav_marketingCollections = [
   {
     id: "1",
     slug: "street-art  ",
