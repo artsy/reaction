@@ -1,3 +1,17 @@
+# v16.22.3 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Co-locate Vanguard assets and components [#2666](https://github.com/artsy/reaction/pull/2666) ([@eessex](https://github.com/eessex))
+- [ArtworkFilter v2] More progress [#2661](https://github.com/artsy/reaction/pull/2661) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.22.2 (Mon Aug 05 2019)
 
 #### 🐛  Bug Fix
