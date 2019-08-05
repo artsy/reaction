@@ -69,11 +69,10 @@ const logger = createLogger("Order/Routes/Shipping/index.tsx")
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state: ShippingState = {
-    shippingOption: ((this.props.order.requestedFulfillment &&
-      (this.props.order.requestedFulfillment.__typename === "CommerceShip"
-        ? "SHIP"
-        : "PICKUP")) ||
-      "SHIP") as CommerceOrderFulfillmentTypeEnum,
+    shippingOption: (this.props.order.requestedFulfillment &&
+    this.props.order.requestedFulfillment.__typename !== "CommerceShip"
+      ? "PICKUP"
+      : "SHIP") as CommerceOrderFulfillmentTypeEnum,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
