@@ -11,7 +11,7 @@ storiesOf("Apps", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction-registration2/yuki-contemporary-art-july-22th"
+        initialRoute="/auction-registration2/weekly-mocktion"
       />
     )
   })
