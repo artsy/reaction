@@ -18,6 +18,10 @@ export const VanguardSeriesWrapper: React.SFC<{
 
   return (
     <Box id={slugify(title)}>
+      <Box
+        pt={50}
+        // prevents overlapping nav on jump-link
+      />
       <Box height="95vh" mb={80}>
         <VanguardVideoBackground article={article} />
         <Box mx="auto" maxWidth={1400} px={4}>
@@ -27,7 +31,6 @@ export const VanguardSeriesWrapper: React.SFC<{
           </Title>
         </Box>
       </Box>
-
       <Box mx="auto" maxWidth="65%" px={4} pb={150}>
         <Flex flexDirection="column" alignItems="center">
           {series && (
@@ -42,7 +45,6 @@ export const VanguardSeriesWrapper: React.SFC<{
           />
         </Flex>
       </Box>
-
       {/** map sub-series artist articles */}
       {relatedArticles &&
         relatedArticles.map((artistArticle, i) => (
