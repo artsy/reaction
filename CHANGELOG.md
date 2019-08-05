@@ -1,3 +1,21 @@
+# v16.22.0 (Mon Aug 05 2019)
+
+#### 🚀  Enhancement
+
+- Auct-463 auction registration modal [#2635](https://github.com/artsy/reaction/pull/2635) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/auto-config from 1.0.0 to v1.0.1 [#2663](https://github.com/artsy/reaction/pull/2663) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.41 to v4.14.43 [#2660](https://github.com/artsy/reaction/pull/2660) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.21.5 (Fri Aug 02 2019)
 
 
