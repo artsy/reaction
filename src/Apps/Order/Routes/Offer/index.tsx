@@ -168,7 +168,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     const listPriceCents = this.props.order.totalListPriceCents
-    const orderCurrency = this.props.order.currencyCode
 
     if (!lowSpeedBumpEncountered && offerValue * 100 < listPriceCents * 0.75) {
       this.showLowSpeedbump()
@@ -318,7 +317,6 @@ export const OfferFragmentContainer = createFragmentContainer(
         id
         mode
         state
-        currencyCode
         totalListPrice(precision: 2)
         totalListPriceCents
         lineItems {
