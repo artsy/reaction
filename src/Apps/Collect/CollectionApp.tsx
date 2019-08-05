@@ -23,9 +23,11 @@ interface CollectionAppProps extends SystemContextProps {
   collection: CollectionApp_collection
 }
 
-@track({
+@track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
-})
+  context_page_owner_slug: props.collection.slug,
+  context_page_owner_id: props.collection.id,
+}))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
     if (!collection) {

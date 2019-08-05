@@ -17,14 +17,12 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }) => {
   const { name, members } = collectionGroup
   const { trackEvent } = useTracking()
-  const slug = location.pathname.split("/")[2]
 
   useEffect(() => {
     trackEvent({
       action_type: Schema.ActionType.Impression,
       context_page: Schema.PageName.CollectionPage,
       context_module: Schema.ContextModule.OtherCollectionsRail,
-      context_page_owner_slug: slug && slug,
       context_page_owner_type: Schema.OwnerType.Collection,
     })
   }, [])
@@ -34,7 +32,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
       action_type: Schema.ActionType.Click,
       context_module: Schema.ContextModule.OtherCollectionsRail,
       context_page_owner_type: Schema.OwnerType.Collection,
-      context_page_owner_slug: slug && slug,
       context_page: Schema.PageName.CollectionPage,
       type: Schema.Type.Button,
       subject: Schema.Subject.ClickedNextButton,

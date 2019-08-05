@@ -42,7 +42,6 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
       action_type: Schema.ActionType.Click,
       context_page: Schema.PageName.CollectionPage,
       context_module: Schema.ContextModule.OtherCollectionsRail,
-      context_page_owner_slug: slug && slug,
       context_page_owner_type: Schema.OwnerType.Collection,
       type: Schema.Type.Link,
       destination_path: location.href,
