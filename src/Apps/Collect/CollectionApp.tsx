@@ -14,6 +14,7 @@ import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
+import { userIsAdmin } from "Utils/user"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "./Components/Collection/Header"
 import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
@@ -40,7 +41,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
     const { collection, user } = this.props
     const { title, slug, headerImage, description, artworks } = collection
     const showCollectionHubs =
-      collection.linkedCollections.length > 0 && user && user.type === "Admin"
+      collection.linkedCollections.length > 0 && userIsAdmin(user)
 
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
