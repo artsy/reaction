@@ -49,20 +49,21 @@ export const routes: RouteConfig[] = [
     path: "/auction-registration2/:saleID",
     Component: AuctionAppFragmentContainer,
     render: ({ Component, props }) => {
-      const { location, sale } = props as any
+      if (Component && props) {
+        const { location, sale } = props as any
+        const redirect = findRedirect(sale)
 
-      const redirect = findRedirect(sale)
+        if (redirect) {
+          logger.warn(
+            `Redirecting from ${location.pathname} to ${
+              redirect.path
+            } because '${redirect.reason}'`
+          )
+          throw new RedirectException(redirect.path)
+        }
 
-      if (redirect) {
-        logger.warn(
-          `Redirecting from ${location.pathname} to ${redirect.path} because '${
-            redirect.reason
-          }'`
-        )
-        throw new RedirectException(redirect.path)
+        return <Component {...props} />
       }
-
-      return <Component {...props} />
     },
     query: graphql`
       query routes_AuctionQuery($saleID: String!) {
