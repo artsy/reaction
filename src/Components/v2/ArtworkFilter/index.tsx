@@ -34,11 +34,13 @@ import {
 interface ArtworkFilterProps {
   viewer: ArtworkFilter_viewer
   relay: RelayRefetchProp
-  term: string
+
+  // FIXME: This varies across different apps
+  keyword?: string
 }
 
 const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
-  const { viewer, relay, term } = props
+  const { viewer, relay, keyword } = props
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -103,7 +105,7 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
         filtered_artworks={viewer.filtered_artworks}
         isLoading={isFetching}
         columnCount={[2, 2, 2, 3]}
-        term={term}
+        keyword={keyword}
       />
     )
   }
@@ -166,7 +168,7 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
   )
 }
 
-const ArtworkQueryFilter = graphql`
+export const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
     $acquireable: Boolean
     $artist_id: String
@@ -183,7 +185,7 @@ const ArtworkQueryFilter = graphql`
     $partner_id: ID
     $price_range: String
     $sort: String
-    $term: String!
+    $keyword: String
     $width: String
   ) {
     viewer {
@@ -197,7 +199,7 @@ const ArtworkQueryFilter = graphql`
           for_sale: $for_sale
           height: $height
           inquireable_only: $inquireable_only
-          keyword: $term
+          keyword: $keyword
           major_periods: $major_periods
           medium: $medium
           offerable: $offerable
@@ -211,7 +213,7 @@ const ArtworkQueryFilter = graphql`
   }
 `
 
-const ArtworkFilterRefetchContainer = createRefetchContainer(
+export const ArtworkFilterRefetchContainer = createRefetchContainer(
   ArtworkFilter,
   {
     viewer: graphql`
@@ -237,25 +239,25 @@ const ArtworkFilterRefetchContainer = createRefetchContainer(
           width: { type: "String" }
         ) {
         filtered_artworks: filter_artworks(
-          aggregations: [TOTAL]
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          at_auction: $at_auction
           acquireable: $acquireable
-          offerable: $offerable
-          inquireable_only: $inquireable_only
-          size: 0
-          sort: $sort
-          price_range: $price_range
-          height: $height
-          width: $width
+          aggregations: [TOTAL]
           artist_id: $artist_id
+          at_auction: $at_auction
           attribution_class: $attribution_class
           color: $color
+          for_sale: $for_sale
+          height: $height
+          inquireable_only: $inquireable_only
           keyword: $keyword
+          major_periods: $major_periods
+          medium: $medium
+          offerable: $offerable
           page: $page
+          partner_id: $partner_id
+          price_range: $price_range
+          size: 0
+          sort: $sort
+          width: $width
         ) {
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
@@ -265,14 +267,14 @@ const ArtworkFilterRefetchContainer = createRefetchContainer(
   ArtworkQueryFilter
 )
 
-export const ArtworkFilterQueryRenderer = ({ term = "andy warhol" }) => {
+export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
   const { relayEnvironment } = useSystemContext()
 
   return (
     <FilterContextProvider
       filters={{
         ...initialFilterState,
-        keyword: term,
+        keyword,
       }}
     >
       <QueryRenderer<ArtworkFilterQueryType>
@@ -281,7 +283,7 @@ export const ArtworkFilterQueryRenderer = ({ term = "andy warhol" }) => {
         /* tslint:disable:relay-operation-generics */
         query={ArtworkQueryFilter}
         variables={{
-          term: "andy warhol",
+          keyword: "andy warhol",
         }}
         render={renderWithLoadProgress(ArtworkFilterRefetchContainer)}
       />

@@ -53,7 +53,7 @@ export const FilterContext = React.createContext<FilterContextProps>({
 })
 
 export const FilterContextProvider: React.FC<{
-  filters: Filters
+  filters?: Filters
   children: React.ReactNode
 }> = ({ children, filters = initialFilterState }) => {
   const [filterState, dispatch] = useReducer(filterReducer, filters)

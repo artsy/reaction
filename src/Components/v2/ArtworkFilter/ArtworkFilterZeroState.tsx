@@ -6,7 +6,7 @@ import { useFilterContext } from "./ArtworkFilterContext"
 import { SendFeedback } from "Apps/Search/Components/SendFeedback"
 
 interface Props {
-  term: string
+  keyword: string
 }
 
 export const ArtworkFilterZeroState: FC<Props> = props => {
@@ -23,7 +23,7 @@ export const ArtworkFilterZeroState: FC<Props> = props => {
         <Serif size="6">
           {hasFilters
             ? "No results found."
-            : `No results found for "${props.term}".`}
+            : `No results found for "${props.keyword}".`}
         </Serif>
         <Serif size="3">
           {hasFilters

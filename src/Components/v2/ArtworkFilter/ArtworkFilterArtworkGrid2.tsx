@@ -17,7 +17,9 @@ interface ArtworkFilterArtworkGridProps {
   filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp
-  term: string
+
+  // FIXME: This varies across different apps
+  keyword?: string
 }
 
 const ArtworkFilterArtworkGrid: React.FC<
@@ -30,7 +32,7 @@ const ArtworkFilterArtworkGrid: React.FC<
   const {
     columnCount,
     filtered_artworks: { artworks },
-    term,
+    keyword,
   } = props
 
   const {
@@ -71,13 +73,13 @@ const ArtworkFilterArtworkGrid: React.FC<
           user={user}
           mediator={mediator}
           onClearFilters={context.resetFilters}
-          emptyStateComponent={<ArtworkFilterZeroState term={term} />}
+          emptyStateComponent={<ArtworkFilterZeroState keyword={keyword} />}
           onBrickClick={artwork => {
             trackEvent({
               // FIXME: Figure out how to pass in granular tracking to grid
               action_type:
                 AnalyticsSchema.ActionType.SelectedItemFromSearchPage,
-              query: props.term,
+              query: props.keyword,
               item_type: "Artwork",
               item_id: artwork.id,
               destination_path: artwork.href,
