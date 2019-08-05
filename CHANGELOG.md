@@ -1,3 +1,15 @@
+# v16.22.2 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Display video in headers/intro [#2664](https://github.com/artsy/reaction/pull/2664) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.22.1 (Mon Aug 05 2019)
 
 #### 🐛  Bug Fix
