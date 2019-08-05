@@ -8,7 +8,7 @@ import { getViewportWidth } from "Utils/viewport"
 
 const { height, width } = getViewportWidth()
 
-storiesOf("Components/InvertedCSS", module)
+storiesOf("Publishing/InvertedCSS", module)
   .add("Inverted CSS Over HTML", () => (
     <Box height={height} width={width}>
       <Background />
