@@ -1,29 +1,37 @@
 import { Theme } from "@artsy/palette"
-import { MockRelayRenderer } from "DevTools"
+import { CollectionsHubsNavQuery } from "__generated__/CollectionsHubsNavQuery.graphql"
+import { SystemContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
-import { graphql } from "react-relay"
+import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
-import { marketingHubCollections } from "../_fixtures_/collectionsHubs"
 import { CollectionsHubsNavFragmentContainer } from "../CollectionsHubsNav"
 
 storiesOf("Components/CollectionsHubsNav", module).add("default", () => (
-  <Theme>{render()}</Theme>
+  <Theme>
+    <CollectionsHubsNavQueryRenderer />
+  </Theme>
 ))
 
-const hubsQuery = graphql`
-  query CollectionsHubsNavStoryQuery {
-    marketingHubCollections {
-      ...CollectionsHubsNav_marketingHubCollections
-    }
-  }
-`
-
-const render = () => {
+const CollectionsHubsNavQueryRenderer = () => {
   return (
-    <MockRelayRenderer
-      Component={CollectionsHubsNavFragmentContainer}
-      mockData={{ marketingHubCollections }}
-      query={hubsQuery}
-    />
+    <SystemContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<CollectionsHubsNavQuery>
+            environment={relayEnvironment}
+            variables={{}}
+            query={graphql`
+              query CollectionsHubsNavQuery {
+                marketingCollections(size: 6) {
+                  ...CollectionsHubsNav_marketingCollections
+                }
+              }
+            `}
+            render={renderWithLoadProgress(CollectionsHubsNavFragmentContainer)}
+          />
+        )
+      }}
+    </SystemContextConsumer>
   )
 }
