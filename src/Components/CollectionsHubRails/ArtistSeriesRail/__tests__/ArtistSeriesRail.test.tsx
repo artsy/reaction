@@ -10,10 +10,6 @@ jest.unmock("react-tracking")
 describe("ArtistSeriesRail", () => {
   let props
 
-  const getWrapper = (passedProps = props) => {
-    return mount(<ArtistSeriesRail {...passedProps} />)
-  }
-
   function singleData() {
     return {
       title: "1787 keyboard",
@@ -46,11 +42,6 @@ describe("ArtistSeriesRail", () => {
     expect(component.text()).toMatch("Trending Artist Series")
     expect(component.text()).toMatch("Flags unique collections")
     expect(component.text()).toMatch("From $1,000")
-  })
-
-  it("Does NOT show arrows when there are less than 5 collections", () => {
-    const component = getWrapper()
-    expect(component.find(ArrowButton).length).toBe(0)
   })
 
   it("Does NOT show arrows when there are exactly 4 collections", () => {
