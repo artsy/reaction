@@ -8,7 +8,10 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { VanguardArtistWrapper } from "../Components/ArtistWrapper"
 import { VanguardIntroduction } from "../Components/Introduction"
 import { VanguardSeriesWrapper } from "../Components/SeriesWrapper"
-import { VanguardTableOfContents } from "../Components/TableOfContents"
+import {
+  SeriesContainer as TocSeriesContainer,
+  VanguardTableOfContents,
+} from "../Components/TableOfContents"
 import { Vanguard2019 } from "../index"
 
 jest.mock(
@@ -55,5 +58,20 @@ describe("Vanguard2019", () => {
       const component = getWrapper()
       expect(component.find(VanguardArtistWrapper).length).toBe(3)
     })
+  })
+
+  it("#onChangeSection scrolls to section", () => {
+    const scrollIntoView = jest.fn()
+    const getElementById = jest.fn().mockReturnValue({
+      scrollIntoView,
+    })
+    document.getElementById = getElementById
+    const component = getWrapper()
+    component
+      .find(TocSeriesContainer)
+      .at(0)
+      .simulate("click")
+    expect(getElementById).toBeCalledWith("emerging")
+    expect(scrollIntoView).toBeCalled()
   })
 })
