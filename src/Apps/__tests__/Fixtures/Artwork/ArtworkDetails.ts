@@ -36,7 +36,7 @@ export const ArtworkDetailsFixture = {
   },
   certificateOfAuthenticity: {
     label: "Certificate of authenticity",
-    details: null,
+    details: "Not included",
   },
   series: "Lorem Ipsum Dolor",
   publisher: "Factory Editions, New York",
