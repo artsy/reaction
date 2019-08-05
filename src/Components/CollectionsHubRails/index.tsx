@@ -1,4 +1,4 @@
-import { CollectionsHubRails_marketingCollection } from "__generated__/CollectionsHubRails_marketingCollection.graphql"
+import { CollectionsHubRails_linkedCollections } from "__generated__/CollectionsHubRails_linkedCollections.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeaturedCollectionsRailsContainer as FeaturedCollectionsRails } from "./FeaturedCollectionsRails"
@@ -19,12 +19,10 @@ const railForGroupType = collectionGroup => {
 }
 
 interface Props {
-  marketingCollection: CollectionsHubRails_marketingCollection
+  linkedCollections: CollectionsHubRails_linkedCollections
 }
 
-export const CollectionsHubRails = ({ marketingCollection }: Props) => {
-  const { linkedCollections } = marketingCollection
-
+export const CollectionsHubRails = ({ linkedCollections }: Props) => {
   return (
     <>
       {linkedCollections.map(collectionGroup => (
@@ -37,13 +35,12 @@ export const CollectionsHubRails = ({ marketingCollection }: Props) => {
 export const CollectionsHubRailsContainer = createFragmentContainer(
   CollectionsHubRails,
   {
-    marketingCollection: graphql`
-      fragment CollectionsHubRails_marketingCollection on MarketingCollection {
-        linkedCollections {
-          groupType
-          ...FeaturedCollectionsRails_collectionGroup
-          ...OtherCollectionsRail_collectionGroup
-        }
+    linkedCollections: graphql`
+      fragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup
+        @relay(plural: true) {
+        groupType
+        ...FeaturedCollectionsRails_collectionGroup
+        ...OtherCollectionsRail_collectionGroup
       }
     `,
   }

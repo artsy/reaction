@@ -39,13 +39,16 @@ export const CollectionHubRailsQueryRenderer: React.FC<Props> = ({
       query={graphql`
         query CollectionsRailsQuery($collectionID: String!) {
           marketingCollection(slug: $collectionID) {
-            ...CollectionsHubRails_marketingCollection
+            linkedCollections {
+              ...CollectionsHubRails_linkedCollections
+            }
           }
         }
       `}
       render={({ props }) => {
         if (props) {
-          return <CollectionsHubRails {...props as any} />
+          const { linkedCollections } = props.marketingCollection
+          return <CollectionsHubRails linkedCollections={linkedCollections} />
         } else {
           return null
         }
