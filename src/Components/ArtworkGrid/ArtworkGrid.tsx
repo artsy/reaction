@@ -191,6 +191,7 @@ export class ArtworkGridContainer extends React.Component<
       onClearFilters,
       emptyStateComponent,
     } = this.props
+
     const hasArtworks = artworks && artworks.edges && artworks.edges.length > 0
     const artworkGrids = this.renderSectionsForAllBreakpoints()
     const emptyState = emptyStateComponent || (
