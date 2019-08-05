@@ -60,6 +60,7 @@ export class ArtistCollectionsRail extends React.Component<
               wrapAround: sd.IS_MOBILE ? true : false,
               cellAlign: "left",
               pageDots: false,
+              contain: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider

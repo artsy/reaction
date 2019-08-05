@@ -345,6 +345,7 @@ export const RespondFragmentContainer = createFragmentContainer(
         id
         mode
         state
+        currencyCode
         itemsTotal(precision: 2)
         itemsTotalCents
         totalListPrice(precision: 2)

@@ -4,7 +4,15 @@ import React from "react"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 
-export const ConditionsOfSaleCheckbox = ({
+interface Props {
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  name: string
+  error?: string
+  onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: boolean
+}
+
+export const ConditionsOfSaleCheckbox: React.FC<Props> = ({
   error,
   name,
   onChange,

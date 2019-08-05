@@ -94,10 +94,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
         acquireable: { type: "Boolean" }
         offerable: { type: "Boolean" }
         inquireable_only: { type: "Boolean" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL]
-        }
+        aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
         sort: { type: "String", defaultValue: "-partner_updated_at" }
         price_range: { type: "String" }
         height: { type: "String" }
@@ -108,7 +105,7 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
         page: { type: "Int" }
         dimension_range: { type: "String" }
       ) {
-      filter_artworks(aggregations: $aggregations, size: 0) {
+      filter_artworks(aggregations: $aggregations, sort: $sort) {
         ...SeoProductsForArtworks_artworks
       }
 

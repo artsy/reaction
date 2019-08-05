@@ -118,7 +118,7 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
             price
             price_currency
             title
-            artists {
+            artists(shallow: true) {
               name
             }
             image {

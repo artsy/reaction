@@ -125,6 +125,8 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
         artworks(
           aggregations: $aggregations
           include_medium_filter_in_aggregation: true
+          sort: "-decayed_merch"
+          size: 12
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks

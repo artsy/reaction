@@ -276,6 +276,7 @@ Object {
         .find(Link)
         .at(0)
         .simulate("click")
+
       expect(dispatch).toBeCalledWith({
         context_module: "Price Context",
         action_type: "Click",

@@ -14,6 +14,7 @@ export type Respond_order = {
     readonly id: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
+    readonly currencyCode: string;
     readonly itemsTotal: string | null;
     readonly itemsTotalCents: number | null;
     readonly totalListPrice: string | null;
@@ -50,14 +51,7 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -65,6 +59,13 @@ v2 = [
     "type": "Int"
   }
 ],
+v2 = {
+  "kind": "ScalarField",
+  "alias": "__id",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
 v3 = {
   "kind": "ScalarField",
   "alias": null,
@@ -79,6 +80,63 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "stateExpiresAt",
+      "args": null,
+      "storageKey": null
+    },
+    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "state",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "currencyCode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotal",
+      "args": v1,
+      "storageKey": "itemsTotal(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "itemsTotalCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPrice",
+      "args": v1,
+      "storageKey": "totalListPrice(precision:2)"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "totalListPriceCents",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -125,62 +183,12 @@ return {
                     }
                   ]
                 },
-                v1
+                v2
               ]
             }
           ]
         }
       ]
-    },
-    v0,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotal",
-      "args": v2,
-      "storageKey": "itemsTotal(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "itemsTotalCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPrice",
-      "args": v2,
-      "storageKey": "totalListPrice(precision:2)"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "totalListPriceCents",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "stateExpiresAt",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
     },
     {
       "kind": "FragmentSpread",
@@ -207,7 +215,7 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1,
+    v2,
     {
       "kind": "InlineFragment",
       "type": "CommerceOfferOrder",
@@ -230,7 +238,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            v2
           ]
         },
         {
@@ -243,7 +251,7 @@ return {
           "plural": false,
           "selections": [
             v3,
-            v1
+            v2
           ]
         }
       ]
@@ -251,5 +259,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '87bc93b55a16fafb0a7f7816939fcccd';
+(node as any).hash = '65644c6096a6d6f35f3ae57670a4cca2';
 export default node;
