@@ -1,3 +1,20 @@
+# v16.22.8 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Handle xs breakpoint with metadata field [#2673](https://github.com/artsy/reaction/pull/2673) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.44 to v4.14.46 [#2671](https://github.com/artsy/reaction/pull/2671) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.22.7 (Tue Aug 06 2019)
 
 #### 🐛  Bug Fix
