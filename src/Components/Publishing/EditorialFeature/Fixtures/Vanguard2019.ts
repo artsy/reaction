@@ -52,7 +52,7 @@ export const Vanguard2019Fixture = {
           slug: "artsy-editorial-1562182136",
           hero_section: {
             url: "",
-            deck: "    B. 1968 in USA. Lives and works in Brooklyn",
+            deck: "B. 1968 in USA. Lives and works in Brooklyn",
           },
           sections: [
             {
@@ -66,6 +66,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit.</i></p>",
                   width: 490,
                   height: 703,
+                  type: "image",
                 },
                 {
                   url:
@@ -74,6 +75,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 1800,
                   height: 2655,
+                  type: "image",
                 },
               ],
             },
@@ -94,6 +96,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit, </i> 2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 2000,
                   height: 1334,
+                  type: "image",
                 },
                 {
                   url:
@@ -102,6 +105,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 2000,
                   height: 1333,
+                  type: "image",
                 },
                 {
                   url:
@@ -110,6 +114,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 2000,
                   height: 1120,
+                  type: "image",
                 },
                 {
                   url:
@@ -118,6 +123,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 2000,
                   height: 1333,
+                  type: "image",
                 },
               ],
             },
@@ -137,6 +143,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 1800,
                   height: 2321,
+                  type: "image",
                 },
                 {
                   url:
@@ -145,6 +152,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit, </i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
               ],
             },
@@ -204,6 +212,7 @@ export const Vanguard2019Fixture = {
                   caption: "<p>Frank Bowling by Daniel Dorsa for Artsy. </p>",
                   width: 1201,
                   height: 1800,
+                  type: "image",
                 },
                 {
                   url:
@@ -211,6 +220,7 @@ export const Vanguard2019Fixture = {
                   caption: "",
                   width: 1800,
                   height: 1412,
+                  type: "image",
                 },
               ],
             },
@@ -261,6 +271,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 1200,
+                  type: "image",
                 },
                 {
                   url:
@@ -269,6 +280,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 2000,
                   height: 1500,
+                  type: "image",
                 },
               ],
             },
@@ -283,6 +295,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit,</i> 2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
                 {
                   url:
@@ -291,6 +304,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 2000,
                   height: 1333,
+                  type: "image",
                 },
               ],
             },
@@ -305,6 +319,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
                 {
                   url:
@@ -313,6 +328,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2589,
+                  type: "image",
                 },
               ],
             },
@@ -332,6 +348,7 @@ export const Vanguard2019Fixture = {
                   caption: "",
                   width: 2000,
                   height: 1333,
+                  type: "image",
                 },
                 {
                   url:
@@ -340,6 +357,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. Vestibulum sed lectus ut odio sollicitudin scelerisque.&quot; Morbi molestie elit nisl, nec convallis libero placerat vitae.</p>",
                   width: 1800,
                   height: 2589,
+                  type: "image",
                 },
                 {
                   image:
@@ -351,6 +369,7 @@ export const Vanguard2019Fixture = {
                   ],
                   width: 3000,
                   height: 4000,
+                  type: "artwork",
                 },
                 {
                   url:
@@ -359,6 +378,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
                 {
                   url:
@@ -367,6 +387,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2698,
+                  type: "image",
                 },
                 {
                   url:
@@ -375,6 +396,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
                 {
                   url:
@@ -383,6 +405,7 @@ export const Vanguard2019Fixture = {
                     "<p>Lorem ipsum dolor sit amet,  <i>consectetur adipiscing elit,</i>  2019. Vivamus hendrerit vel &quot;dolor a ultricies. </p>",
                   width: 1800,
                   height: 2400,
+                  type: "image",
                 },
               ],
             },

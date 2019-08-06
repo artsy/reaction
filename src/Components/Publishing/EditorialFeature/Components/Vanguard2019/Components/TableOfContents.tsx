@@ -60,7 +60,6 @@ export const VanguardTableOfContents: React.SFC<{
 }
 
 export const TocSvgs = (type: SubSeriesType) => {
-  // TODO: Update with emerging/getting due SVGs
   switch (type) {
     case "emerging":
       return <Emerging1 />
