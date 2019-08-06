@@ -27,6 +27,7 @@ import {
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { Link } from "found"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
 // TODO: Update query interface when we know the schema
@@ -267,7 +268,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
                   <BreadcrumbContainer size={["2", "3"]}>
-                    <a href="/collect">All works</a> /{" "}
+                    <Link to="/collect">All works</Link> /{" "}
                     <a href={categoryTarget}>{collection.category}</a>
                   </BreadcrumbContainer>
                   <Spacer mt={1} />

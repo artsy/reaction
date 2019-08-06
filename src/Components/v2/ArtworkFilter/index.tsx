@@ -39,7 +39,7 @@ interface ArtworkFilterProps {
   keyword?: string
 }
 
-const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
+export const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
   const { viewer, relay, keyword } = props
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)

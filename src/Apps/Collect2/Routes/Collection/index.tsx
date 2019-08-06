@@ -15,8 +15,10 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
-// import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
+import { CollectionArtworkFilterFragmentContainer as CollectionArtworkFilter } from "./CollectionArtworkFilter"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "./CollectionHeader"
+
+// import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "./Components/Collection/CollectionFilterContainer"
 // import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 interface CollectionAppProps extends SystemContextProps {
@@ -78,11 +80,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
               linkedCollections={collection.linkedCollections}
             />
           )}
-          {/*
+
           <Box>
-            <CollectionFilterContainer collection={collection} />
+            <CollectionArtworkFilter collection={collection} />
           </Box>
-          */}
+
           <Separator mt={6} mb={3} />
 
           <Box mt="3">
@@ -103,24 +105,24 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
     collection: graphql`
       fragment Collection_collection on MarketingCollection
         @argumentDefinitions(
+          acquireable: { type: "Boolean" }
           aggregations: {
             type: "[ArtworkAggregation]"
             defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           }
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
-          acquireable: { type: "Boolean" }
-          offerable: { type: "Boolean" }
-          inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
-          price_range: { type: "String" }
-          height: { type: "String" }
-          width: { type: "String" }
           color: { type: "String" }
+          for_sale: { type: "Boolean" }
+          height: { type: "String" }
+          inquireable_only: { type: "Boolean" }
+          major_periods: { type: "[String]" }
+          medium: { type: "String", defaultValue: "*" }
+          offerable: { type: "Boolean" }
           page: { type: "Int" }
+          partner_id: { type: "ID" }
+          price_range: { type: "String" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+          width: { type: "String" }
         ) {
         id
         slug
@@ -150,21 +152,22 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           ...SeoProductsForArtworks_artworks
         }
 
-        ...CollectionFilterContainer_collection
+        ...CollectionArtworkFilter_collection
           @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            for_sale: $for_sale
-            sort: $sort
             acquireable: $acquireable
-            offerable: $offerable
             at_auction: $at_auction
-            inquireable_only: $inquireable_only
-            price_range: $price_range
-            height: $height
-            width: $width
             color: $color
+            for_sale: $for_sale
+            height: $height
+            inquireable_only: $inquireable_only
+            major_periods: $major_periods
+            medium: $medium
+            offerable: $offerable
             page: $page
+            partner_id: $partner_id
+            price_range: $price_range
+            sort: $sort
+            width: $width
           )
       }
     `,

@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
+import { CollectionArtworkFilter_collection$ref } from "./CollectionArtworkFilter_collection.graphql";
 import { CollectionHeader_artworks$ref } from "./CollectionHeader_artworks.graphql";
 import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
 import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
@@ -30,7 +30,7 @@ export type Collection_collection = {
     readonly artworks: ({
         readonly " $fragmentRefs": CollectionHeader_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
-    readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
+    readonly " $fragmentRefs": CollectionArtworkFilter_collection$ref;
     readonly " $refType": Collection_collection$ref;
 };
 
@@ -317,7 +317,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "CollectionFilterContainer_collection",
+      "name": "CollectionArtworkFilter_collection",
       "args": [
         {
           "kind": "Variable",
@@ -403,5 +403,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd3d076cc882c00daa163b3e1d5fefb49';
+(node as any).hash = '3c88703aa3df199e18af25029d122e4b';
 export default node;

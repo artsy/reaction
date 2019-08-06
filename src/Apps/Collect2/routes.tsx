@@ -46,37 +46,39 @@ export const routes: RouteConfig[] = [
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`
       query routes_MarketingCollectionApp2Query(
-        $slug: String!
-        $medium: String
-        $major_periods: [String]
-        $for_sale: Boolean
-        $sort: String
-        $at_auction: Boolean
         $acquireable: Boolean
-        $offerable: Boolean
-        $inquireable_only: Boolean
-        $price_range: String
-        $height: String
-        $width: String
+        $at_auction: Boolean
         $color: String
+        $for_sale: Boolean
+        $height: String
+        $inquireable_only: Boolean
+        $major_periods: [String]
+        $medium: String
+        $offerable: Boolean
         $page: Int
+        $partner_id: ID
+        $price_range: String
+        $slug: String!
+        $sort: String
+        $width: String
       ) {
         collection: marketingCollection(slug: $slug) {
           ...Collection_collection
             @arguments(
-              medium: $medium
-              major_periods: $major_periods
-              for_sale: $for_sale
-              sort: $sort
-              at_auction: $at_auction
               acquireable: $acquireable
-              offerable: $offerable
-              inquireable_only: $inquireable_only
-              price_range: $price_range
-              height: $height
-              width: $width
+              at_auction: $at_auction
               color: $color
+              for_sale: $for_sale
+              height: $height
+              inquireable_only: $inquireable_only
+              major_periods: $major_periods
+              medium: $medium
+              offerable: $offerable
               page: $page
+              partner_id: $partner_id
+              price_range: $price_range
+              sort: $sort
+              width: $width
             )
         }
       }
