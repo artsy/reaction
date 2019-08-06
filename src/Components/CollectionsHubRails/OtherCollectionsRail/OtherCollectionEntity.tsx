@@ -44,7 +44,7 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
       context_module: Schema.ContextModule.OtherCollectionsRail,
       context_page_owner_type: Schema.OwnerType.Collection,
       type: Schema.Type.Link,
-      destination_path: location.href,
+      destination_path: `${sd.APP_URL}/collection/${slug}`,
     })
   }
 
