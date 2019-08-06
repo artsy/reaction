@@ -3,6 +3,7 @@ import { CollectionsApp_categories } from "__generated__/CollectionsApp_categori
 import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
+import { Link, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -11,6 +12,7 @@ import { CollectionEntity, CollectionsGrid } from "./CollectionsGrid"
 
 interface CollectionsAppProps {
   categories: CollectionsApp_categories
+  router: Router
 }
 
 const META_DESCRIPTION =
@@ -18,7 +20,7 @@ const META_DESCRIPTION =
   "collections on the world's largest online art marketplace."
 
 export const CollectionsApp: React.FC<CollectionsAppProps> = props => {
-  const { categories } = props
+  const { categories, router } = props
 
   return (
     <>
@@ -42,7 +44,7 @@ export const CollectionsApp: React.FC<CollectionsAppProps> = props => {
             </Serif>
 
             <Sans size="3" weight="medium">
-              <a href="/collect">View works</a>
+              <Link to="/collect">View works</Link>
             </Sans>
           </Flex>
           {categories &&
@@ -53,6 +55,7 @@ export const CollectionsApp: React.FC<CollectionsAppProps> = props => {
                   key={index}
                   name={category.name}
                   collections={category.collections as CollectionEntity[]}
+                  router={router}
                 />
               ))}
         </FrameWithRecentlyViewed>

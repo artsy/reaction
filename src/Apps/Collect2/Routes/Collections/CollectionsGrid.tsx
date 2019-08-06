@@ -11,6 +11,7 @@ import {
   Separator,
   Spacer,
 } from "@artsy/palette"
+import { Router } from "found"
 
 export interface CollectionEntity {
   title: string
@@ -21,59 +22,58 @@ export interface CollectionEntity {
 interface CollectionsGridProps {
   collections: CollectionEntity[]
   name?: string
+  router: Router
 }
 
-export class CollectionsGrid extends Component<CollectionsGridProps> {
-  render() {
-    const { collections, name } = this.props
-    const hasShortRow = collections.length % 3 !== 0 // Preserve left align
+export const CollectionsGrid: React.FC<CollectionsGridProps> = props => {
+  const { collections, name, router } = props
+  const hasShortRow = collections.length % 3 !== 0 // Preserve left align
 
-    return (
-      <Box pb={80} id={slugify(name)}>
-        <Sans size="3" weight="medium" pb={15}>
-          {name}
-        </Sans>
+  return (
+    <Box pb={80} id={slugify(name)}>
+      <Sans size="3" weight="medium" pb={15}>
+        {name}
+      </Sans>
 
-        <Flex flexWrap="wrap" justifyContent="space-between">
-          {[...collections] // needs to create a new array since the sort function modifies the array.
-            .sort((a, b) => a.title.localeCompare(b.title))
-            .map((collection, index) => {
-              const imageUrl =
-                collection.headerImage &&
-                crop(collection.headerImage, {
-                  width: 50,
-                  height: 50,
-                })
+      <Flex flexWrap="wrap" justifyContent="space-between">
+        {[...collections] // needs to create a new array since the sort function modifies the array.
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((collection, index) => {
+            const imageUrl =
+              collection.headerImage &&
+              crop(collection.headerImage, {
+                width: 50,
+                height: 50,
+              })
 
-              return (
-                <Flex
-                  width={["100%", "30%"]}
-                  flexDirection="column"
-                  key={index}
-                >
-                  <Media at="xs">{index === 0 && <Separator />}</Media>
-                  <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
+            return (
+              <Flex width={["100%", "30%"]} flexDirection="column" key={index}>
+                <Media at="xs">{index === 0 && <Separator />}</Media>
+                <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
-                  <EntityHeader
-                    py={2}
-                    href={`/collection/${collection.slug}`}
-                    imageUrl={imageUrl}
-                    name={collection.title}
-                  />
-                  <Separator />
-                </Flex>
-              )
-            })}
+                <EntityHeader
+                  py={2}
+                  href={`/collection/${collection.slug}`}
+                  imageUrl={imageUrl}
+                  name={collection.title}
+                  onClick={event => {
+                    event.preventDefault()
+                    router.push(`/collection/${collection.slug}`)
+                  }}
+                />
+                <Separator />
+              </Flex>
+            )
+          })}
 
-          {hasShortRow && (
-            <Media greaterThan="xs">
-              {(_, renderChildren) =>
-                renderChildren && <Spacer width={["100%", "30%"]} />
-              }
-            </Media>
-          )}
-        </Flex>
-      </Box>
-    )
-  }
+        {hasShortRow && (
+          <Media greaterThan="xs">
+            {(_, renderChildren) =>
+              renderChildren && <Spacer width={["100%", "30%"]} />
+            }
+          </Media>
+        )}
+      </Flex>
+    </Box>
+  )
 }

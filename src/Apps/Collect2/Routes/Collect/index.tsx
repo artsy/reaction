@@ -5,6 +5,7 @@ import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { ArtworkFilterRefetchContainer as ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { FilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { BreadCrumbList } from "Components/v2/Seo"
+import { Link as RouteLink } from "found"
 import React from "react"
 import { Link, Meta, Title } from "react-head"
 import { data as sd } from "sharify"
@@ -62,7 +63,7 @@ export const CollectApp = props => {
             </Serif>
 
             <Sans size="3" weight="medium">
-              <a href="/collections">View collections</a>
+              <RouteLink to="/collections">View collections</RouteLink>
             </Sans>
           </Flex>
           <Box>

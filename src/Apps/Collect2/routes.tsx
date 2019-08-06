@@ -35,7 +35,7 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_MarketingCollectionsApp2Query {
         categories: marketingCategories {
-          ...CollectionsApp_categories
+          ...Collections_categories @relay(mask: false)
         }
       }
     `,
@@ -45,7 +45,7 @@ export const routes: RouteConfig[] = [
     Component: CollectionApp,
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`
-      query routes_MarketingCollectionAppQuery(
+      query routes_MarketingCollectionApp2Query(
         $slug: String!
         $medium: String
         $major_periods: [String]
@@ -62,7 +62,7 @@ export const routes: RouteConfig[] = [
         $page: Int
       ) {
         collection: marketingCollection(slug: $slug) {
-          ...CollectionApp_collection
+          ...Collection_collection
             @arguments(
               medium: $medium
               major_periods: $major_periods
