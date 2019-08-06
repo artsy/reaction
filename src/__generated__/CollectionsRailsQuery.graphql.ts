@@ -1,13 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CollectionsHubRails_marketingCollection$ref } from "./CollectionsHubRails_marketingCollection.graphql";
+import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
 export type CollectionsRailsQueryVariables = {
     readonly collectionID: string;
 };
 export type CollectionsRailsQueryResponse = {
     readonly marketingCollection: ({
-        readonly " $fragmentRefs": CollectionsHubRails_marketingCollection$ref;
+        readonly linkedCollections: ReadonlyArray<{
+            readonly " $fragmentRefs": CollectionsHubRails_linkedCollections$ref;
+        }>;
     }) | null;
 };
 export type CollectionsRailsQuery = {
@@ -22,18 +24,17 @@ query CollectionsRailsQuery(
   $collectionID: String!
 ) {
   marketingCollection(slug: $collectionID) {
-    ...CollectionsHubRails_marketingCollection
+    linkedCollections {
+      ...CollectionsHubRails_linkedCollections
+    }
     __id: id
   }
 }
 
-fragment CollectionsHubRails_marketingCollection on MarketingCollection {
-  linkedCollections {
-    groupType
-    ...FeaturedCollectionsRails_collectionGroup
-    ...OtherCollectionsRail_collectionGroup
-  }
-  __id: id
+fragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {
+  groupType
+  ...FeaturedCollectionsRails_collectionGroup
+  ...OtherCollectionsRail_collectionGroup
 }
 
 fragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {
@@ -96,7 +97,7 @@ return {
   "operationKind": "query",
   "name": "CollectionsRailsQuery",
   "id": null,
-  "text": "query CollectionsRailsQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    ...CollectionsHubRails_marketingCollection\n    __id: id\n  }\n}\n\nfragment CollectionsHubRails_marketingCollection on MarketingCollection {\n  linkedCollections {\n    groupType\n    ...FeaturedCollectionsRails_collectionGroup\n    ...OtherCollectionsRail_collectionGroup\n  }\n  __id: id\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    id\n    slug\n    title\n    description\n    price_guidance\n    thumbnail\n    __id: id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    __id: id\n  }\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n  __id: id\n}\n",
+  "text": "query CollectionsRailsQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    linkedCollections {\n      ...CollectionsHubRails_linkedCollections\n    }\n    __id: id\n  }\n}\n\nfragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {\n  groupType\n  ...FeaturedCollectionsRails_collectionGroup\n  ...OtherCollectionsRail_collectionGroup\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    id\n    slug\n    title\n    description\n    price_guidance\n    thumbnail\n    __id: id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    __id: id\n  }\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -115,9 +116,20 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "FragmentSpread",
-            "name": "CollectionsHubRails_marketingCollection",
-            "args": null
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "linkedCollections",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "MarketingCollectionGroup",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "FragmentSpread",
+                "name": "CollectionsHubRails_linkedCollections",
+                "args": null
+              }
+            ]
           },
           v2
         ]
@@ -224,5 +236,5 @@ return {
   }
 };
 })();
-(node as any).hash = '7d69b0d92a576a78d18a036def1cc118';
+(node as any).hash = '2e3fbc20b236fd48c3f6ae89616e31fc';
 export default node;

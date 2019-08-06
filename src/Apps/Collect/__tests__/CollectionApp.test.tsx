@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "react-relay"
 
+import { CollectionsHubRails } from "Components/CollectionsHubRails"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import { Provider } from "unstated"
@@ -62,5 +63,6 @@ describe("CollectionApp", () => {
     expect(items.length).toEqual(4)
     expect(items.at(0).text()).toContain("Pinocchio, 2018")
     expect(items.at(1).text()).toContain("KAWS x Undercover , 1999")
+    expect(tree.find(CollectionsHubRails).length).toBe(0)
   })
 })
