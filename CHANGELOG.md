@@ -1,3 +1,15 @@
+# v16.22.6 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Upload Artsy Vanguard 2019 SVG Files [#2670](https://github.com/artsy/reaction/pull/2670) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.22.5 (Mon Aug 05 2019)
 
 
