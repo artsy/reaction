@@ -11,7 +11,6 @@ export type Offer_order = {
     readonly id: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
-    readonly currencyCode: string;
     readonly totalListPrice: string | null;
     readonly totalListPriceCents: number;
     readonly lineItems: ({
@@ -63,13 +62,6 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "state",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "currencyCode",
       "args": null,
       "storageKey": null
     },
@@ -161,5 +153,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'da245a6fab4d214483e9c798c9945dc7';
+(node as any).hash = 'd9532c301018ee59f0c6da3e86fa82de';
 export default node;
