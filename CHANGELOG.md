@@ -1,3 +1,15 @@
+# v16.22.7 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Updates Artwork Details display [#2668](https://github.com/artsy/reaction/pull/2668) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v16.22.6 (Tue Aug 06 2019)
 
 #### 🐛  Bug Fix
