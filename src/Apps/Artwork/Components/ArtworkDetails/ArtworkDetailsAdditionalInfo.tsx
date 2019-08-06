@@ -69,12 +69,12 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
               key={`artwork-details-${index}`}
               pb={index === displayItems.length - 1 ? 0 : 1}
             >
-              <Col sm={12} md={6} lg={3}>
+              <Col xs={12} sm={6} md={6} lg={3}>
                 <Sans size="2" weight="medium" pr={2}>
                   {title}
                 </Sans>
               </Col>
-              <Col sm={12} md={6} lg={9}>
+              <Col xs={12} sm={6} md={6} lg={9}>
                 <Sans size="2" weight="regular" color="black60">
                   <ReadMore maxChars={140} content={value} />
                 </Sans>
