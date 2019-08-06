@@ -1,9 +1,7 @@
 import { Box, Sans, Serif } from "@artsy/palette"
-import {
-  NewlyEstablished1,
-  NewlyEstablished2,
-  NewlyEstablished3,
-} from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
+import { Emerging1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
+import { GettingTheirDue1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
+import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"
@@ -65,11 +63,11 @@ export const TocSvgs = (type: SubSeriesType) => {
   // TODO: Update with emerging/getting due SVGs
   switch (type) {
     case "emerging":
-      return <NewlyEstablished2 />
+      return <Emerging1 />
     case "newly-established":
       return <NewlyEstablished1 />
     case "getting-their-due":
-      return <NewlyEstablished3 />
+      return <GettingTheirDue1 />
   }
 }
 

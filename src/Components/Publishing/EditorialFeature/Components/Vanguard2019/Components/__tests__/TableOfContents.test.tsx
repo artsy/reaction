@@ -1,11 +1,9 @@
 import { mount } from "enzyme"
 import React from "react"
 
-import {
-  NewlyEstablished1,
-  NewlyEstablished2,
-  NewlyEstablished3,
-} from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
+import { Emerging1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
+import { GettingTheirDue1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
+import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import { Vanguard2019Fixture } from "Components/Publishing/EditorialFeature/Fixtures/Vanguard2019"
 import { ArticleData } from "Components/Publishing/Typings"
 import { SeriesContainer, VanguardTableOfContents } from "../TableOfContents"
@@ -51,9 +49,9 @@ describe("Vanguard2019", () => {
     it("Renders blob SVGs", () => {
       const component = getWrapper()
       expect(component.find("svg").length).toBe(3)
+      expect(component.find(Emerging1).length).toBe(1)
+      expect(component.find(GettingTheirDue1).length).toBe(1)
       expect(component.find(NewlyEstablished1).length).toBe(1)
-      expect(component.find(NewlyEstablished2).length).toBe(1)
-      expect(component.find(NewlyEstablished3).length).toBe(1)
     })
   })
 })
