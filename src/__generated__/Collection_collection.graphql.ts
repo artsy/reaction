@@ -2,8 +2,8 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
+import { CollectionHeader_artworks$ref } from "./CollectionHeader_artworks.graphql";
 import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
-import { Header_artworks$ref } from "./Header_artworks.graphql";
 import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
 declare const _Collection_collection$ref: unique symbol;
@@ -28,7 +28,7 @@ export type Collection_collection = {
         readonly " $fragmentRefs": CollectionsHubRails_linkedCollections$ref;
     }>;
     readonly artworks: ({
-        readonly " $fragmentRefs": Header_artworks$ref & SeoProductsForArtworks_artworks$ref;
+        readonly " $fragmentRefs": CollectionHeader_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
     readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
     readonly " $refType": Collection_collection$ref;
@@ -298,7 +298,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "Header_artworks",
+          "name": "CollectionHeader_artworks",
           "args": null
         },
         {
@@ -403,5 +403,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2a25a67377e2d818c7c16433114def68';
+(node as any).hash = 'd3d076cc882c00daa163b3e1d5fefb49';
 export default node;

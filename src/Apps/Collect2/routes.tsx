@@ -7,8 +7,8 @@ import { graphql } from "react-relay"
 // import { buildUrlForCollectApp, buildUrlForCollectionApp } from "./urlBuilder"
 
 import { CollectApp } from "./Routes/Collect"
-import { CollectionApp } from "./Routes/Collection"
-import { CollectionsApp } from "./Routes/Collections"
+import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
+import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 const initializeVariablesWithFilterState = (params, props) => {
   const initialFilterState = props.location ? props.location.query : {}
@@ -35,7 +35,7 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_MarketingCollectionsApp2Query {
         categories: marketingCategories {
-          ...Collections_categories @relay(mask: false)
+          ...Collections_categories
         }
       }
     `,

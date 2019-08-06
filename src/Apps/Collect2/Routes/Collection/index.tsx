@@ -27,8 +27,8 @@ interface CollectionAppProps extends SystemContextProps {
   context_module: Schema.ContextModule.CollectionDescription,
 })
 export class CollectionApp extends Component<CollectionAppProps> {
-  collectionNotFound = collection => {
-    if (!collection) {
+  collectionNotFound = marketingCollection => {
+    if (!marketingCollection) {
       throw new HttpError(404)
     }
   }
@@ -146,7 +146,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           sort: "-decayed_merch"
           size: 12
         ) {
-          ...Header_artworks
+          ...CollectionHeader_artworks
           ...SeoProductsForArtworks_artworks
         }
 

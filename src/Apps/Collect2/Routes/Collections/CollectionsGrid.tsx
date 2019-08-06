@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { slugify } from "underscore.string"
 import { crop } from "Utils/resizer"
 import { Media } from "Utils/Responsive"

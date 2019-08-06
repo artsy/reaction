@@ -17,15 +17,16 @@ storiesOf("Apps", module)
     )
   })
   .add("Collect2", () => {
+    return <MockRouter routes={collect2Routes} initialRoute="/collect" />
+  })
+  .add("Collections2", () => {
+    return <MockRouter routes={collect2Routes} initialRoute="/collections" />
+  })
+  .add("Collection2", () => {
     return (
       <MockRouter
         routes={collect2Routes}
-        initialRoute="/collect"
-        context={{
-          mediator: {
-            trigger: x => x,
-          },
-        }}
+        initialRoute="/collection/abstract-expressionism-works-on-paper"
       />
     )
   })
