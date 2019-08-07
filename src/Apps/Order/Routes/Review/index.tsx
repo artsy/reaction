@@ -24,6 +24,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -53,13 +54,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   componentDidMount() {
     if (window.Stripe) {
       this.setState({
-        stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+        stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
       })
     } else {
       document.querySelector("#stripe-js").addEventListener("load", () => {
         // Create Stripe instance once Stripe.js loads
         this.setState({
-          stripe: window.Stripe(window.sd.STRIPE_PUBLISHABLE_KEY),
+          stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
         })
       })
     }
