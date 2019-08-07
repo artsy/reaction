@@ -1,7 +1,9 @@
 import { Box, color, Serif } from "@artsy/palette"
 import { OtherCollectionsRail_collectionGroup } from "__generated__/OtherCollectionsRail_collectionGroup.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton, Carousel } from "Components/v2/Carousel"
-import React from "react"
+import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -14,6 +16,27 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
   collectionGroup,
 }) => {
   const { name, members } = collectionGroup
+  const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    trackEvent({
+      action_type: Schema.ActionType.Impression,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.OtherCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+    })
+  }, [])
+
+  const trackArrowClick = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_module: Schema.ContextModule.OtherCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      context_page: Schema.PageName.CollectionPage,
+      type: Schema.Type.Button,
+      subject: Schema.Subject.ClickedNextButton,
+    })
+  }
 
   return (
     <Container mb={4}>
@@ -41,6 +64,7 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
             </ArrowContainer>
           )
         }}
+        onArrowClick={() => trackArrowClick()}
         renderRightArrow={({ Arrow }) => {
           return (
             <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
