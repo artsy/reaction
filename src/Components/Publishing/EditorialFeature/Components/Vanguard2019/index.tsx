@@ -8,6 +8,12 @@ import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
 import { VanguardTableOfContents } from "./Components/TableOfContents"
 
 export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
+  onChangeSection = slug => {
+    document.getElementById(slug).scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+
   render() {
     const { article } = this.props
     const { relatedArticles } = article
@@ -26,7 +32,10 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
         {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
         {/** table of contents */}
-        <VanguardTableOfContents article={article} />
+        <VanguardTableOfContents
+          article={article}
+          onChangeSection={this.onChangeSection}
+        />
 
         {/** map 3 sub-series articles */}
         {relatedArticles &&

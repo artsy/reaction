@@ -1,7 +1,7 @@
 import { Box, color, Flex } from "@artsy/palette"
 import { storiesOf } from "@storybook/react"
 import { unica } from "Assets/Fonts"
-import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Assets/NewlyEstablished"
+import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import React from "react"
 import styled from "styled-components"
 import { getViewportWidth } from "Utils/viewport"
