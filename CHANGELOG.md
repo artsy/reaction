@@ -1,3 +1,15 @@
+# v16.22.10 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1372: add analytics events for OtherCollectionsRail [#2653](https://github.com/artsy/reaction/pull/2653) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.22.9 (Wed Aug 07 2019)
 
 #### 🐛  Bug Fix
