@@ -179,6 +179,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           }
           price_range: { type: "String", defaultValue: "*-*" }
           page: { type: "Int" }
+          hasFilter: { type: "Boolean", defaultValue: false }
         ) {
         ...ArtistBio_bio
         ...CurrentEvent_artist
@@ -198,6 +199,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             offerable: $offerable
             price_range: $price_range
             page: $page
+            hasFilter: $hasFilter
           )
         id
         counts {

@@ -54,6 +54,7 @@ class ArtworkGridRefetchContainerWrapper extends React.Component<Props> {
         {
           ...this.props.filters,
           artistNodeID: this.props.artist.__id,
+          aggregations: ["TOTAL"],
         },
         null,
         error => {
@@ -99,10 +100,11 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           offerable: { type: "Boolean" }
           price_range: { type: "String", defaultValue: "*-*" }
           page: { type: "Int" }
+          aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
         ) {
         __id
         grid: filtered_artworks(
-          aggregations: [TOTAL]
+          aggregations: $aggregations
           medium: $medium
           major_periods: $major_periods
           partner_id: $partner_id
@@ -135,6 +137,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       $sort: String
       $price_range: String
       $page: Int
+      $aggregations: [ArtworkAggregation]
     ) {
       node(__id: $artistNodeID) {
         ... on Artist {
@@ -151,6 +154,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
               inquireable_only: $inquireable_only
               price_range: $price_range
               page: $page
+              aggregations: $aggregations
             )
         }
       }
