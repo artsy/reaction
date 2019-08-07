@@ -1,3 +1,23 @@
+# v16.22.11 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- Fix render implementation in AuctionApp routes
+
+If provided, a `render` function in a [found][] router implementation
+will execute before and after a Relay response is available. To account
+for the early invocation, guard against the presence of `props`.
+
+[found]: https://github.com/4Catalyzer/found
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2672](https://github.com/artsy/reaction/pull/2672) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.22.10 (Wed Aug 07 2019)
 
 #### 🐛  Bug Fix
