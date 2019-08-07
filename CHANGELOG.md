@@ -1,3 +1,15 @@
+# v16.22.9 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Table of Contents [#2667](https://github.com/artsy/reaction/pull/2667) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.22.8 (Tue Aug 06 2019)
 
 #### 🐛  Bug Fix
