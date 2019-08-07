@@ -30,6 +30,7 @@ fragment Offer_order on CommerceOrder {
   state
   totalListPrice(precision: 2)
   totalListPriceCents
+  currencyCode
   lineItems {
     edges {
       node {
@@ -145,18 +146,11 @@ v1 = {
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = [
+v3 = [
   {
     "kind": "Literal",
     "name": "precision",
@@ -164,10 +158,17 @@ v4 = [
     "type": "Int"
   }
 ],
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
@@ -175,7 +176,7 @@ v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v4,
+  "args": v3,
   "storageKey": "shippingTotal(precision:2)"
 },
 v7 = {
@@ -189,7 +190,7 @@ v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v4,
+  "args": v3,
   "storageKey": "taxTotal(precision:2)"
 },
 v9 = {
@@ -203,12 +204,12 @@ v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v4,
+  "args": v3,
   "storageKey": "buyerTotal(precision:2)"
 },
 v11 = [
   v9,
-  v3,
+  v2,
   {
     "kind": "ScalarField",
     "alias": null,
@@ -223,7 +224,7 @@ v11 = [
     "kind": "ScalarField",
     "alias": null,
     "name": "amount",
-    "args": v4,
+    "args": v3,
     "storageKey": "amount(precision:2)"
   },
   v10,
@@ -255,7 +256,7 @@ return {
   "operationKind": "query",
   "name": "OfferTestQuery",
   "id": null,
-  "text": "query OfferTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Offer_order\n    __id: id\n  }\n}\n\nfragment Offer_order on CommerceOrder {\n  id\n  mode\n  state\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
+  "text": "query OfferTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Offer_order\n    __id: id\n  }\n}\n\nfragment Offer_order on CommerceOrder {\n  id\n  mode\n  state\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  currencyCode\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -297,8 +298,8 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
+          v1,
           v2,
-          v3,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -310,13 +311,20 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v4,
+            "args": v3,
             "storageKey": "totalListPrice(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPriceCents",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "currencyCode",
             "args": null,
             "storageKey": null
           },
@@ -356,8 +364,8 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v3,
-                          v5,
+                          v2,
+                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -441,8 +449,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               v5,
+              v4,
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -458,7 +466,6 @@ return {
               }
             ]
           },
-          v1,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -466,6 +473,7 @@ return {
             "args": null,
             "storageKey": null
           },
+          v5,
           v6,
           v7,
           v8,
@@ -474,7 +482,7 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v4,
+            "args": v3,
             "storageKey": "itemsTotal(precision:2)"
           },
           v10,

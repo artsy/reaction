@@ -319,6 +319,7 @@ export const OfferFragmentContainer = createFragmentContainer(
         state
         totalListPrice(precision: 2)
         totalListPriceCents
+        currencyCode
         lineItems {
           edges {
             node {
