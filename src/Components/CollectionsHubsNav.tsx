@@ -1,18 +1,25 @@
-import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
+import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
-  marketingHubCollections: CollectionsHubsNav_marketingHubCollections
+  marketingCollections: CollectionsHubsNav_marketingCollections
 }
 
 export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
   return (
     <NavWrapper>
-      {props.marketingHubCollections.map(hub => (
-        <ImageLink href={`/collection/${hub.slug}`} imageUrl={hub.thumbnail}>
+      {props.marketingCollections.map(hub => (
+        <ImageLink
+          href={`/collection/${hub.slug}`}
+          imageUrl={hub.thumbnail || "http://placekitten.com/136/85"}
+          width={[132, 132, 120, 136]}
+          height={[83, 83, 74, 85]}
+          mr={2}
+          key={hub.id}
+        >
           {hub.title}
         </ImageLink>
       ))}
@@ -30,8 +37,8 @@ const NavWrapper = styled.nav`
 export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
   CollectionsHubsNav,
   {
-    marketingHubCollections: graphql`
-      fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection
+    marketingCollections: graphql`
+      fragment CollectionsHubsNav_marketingCollections on MarketingCollection
         @relay(plural: true) {
         id
         slug

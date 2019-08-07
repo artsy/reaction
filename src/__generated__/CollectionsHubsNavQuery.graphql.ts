@@ -1,29 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CollectionsHubsNav_marketingHubCollections$ref } from "./CollectionsHubsNav_marketingHubCollections.graphql";
-export type CollectionsHubsNavStoryQueryVariables = {};
-export type CollectionsHubsNavStoryQueryResponse = {
-    readonly marketingHubCollections: ReadonlyArray<{
-        readonly " $fragmentRefs": CollectionsHubsNav_marketingHubCollections$ref;
+import { CollectionsHubsNav_marketingCollections$ref } from "./CollectionsHubsNav_marketingCollections.graphql";
+export type CollectionsHubsNavQueryVariables = {};
+export type CollectionsHubsNavQueryResponse = {
+    readonly marketingCollections: ReadonlyArray<{
+        readonly " $fragmentRefs": CollectionsHubsNav_marketingCollections$ref;
     }>;
 };
-export type CollectionsHubsNavStoryQuery = {
-    readonly response: CollectionsHubsNavStoryQueryResponse;
-    readonly variables: CollectionsHubsNavStoryQueryVariables;
+export type CollectionsHubsNavQuery = {
+    readonly response: CollectionsHubsNavQueryResponse;
+    readonly variables: CollectionsHubsNavQueryVariables;
 };
 
 
 
 /*
-query CollectionsHubsNavStoryQuery {
-  marketingHubCollections {
-    ...CollectionsHubsNav_marketingHubCollections
+query CollectionsHubsNavQuery {
+  marketingCollections(size: 6) {
+    ...CollectionsHubsNav_marketingCollections
     __id: id
   }
 }
 
-fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection {
+fragment CollectionsHubsNav_marketingCollections on MarketingCollection {
   id
   slug
   title
@@ -33,7 +33,15 @@ fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "size",
+    "value": 6,
+    "type": "Int"
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -43,13 +51,13 @@ var v0 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "CollectionsHubsNavStoryQuery",
+  "name": "CollectionsHubsNavQuery",
   "id": null,
-  "text": "query CollectionsHubsNavStoryQuery {\n  marketingHubCollections {\n    ...CollectionsHubsNav_marketingHubCollections\n    __id: id\n  }\n}\n\nfragment CollectionsHubsNav_marketingHubCollections on MarketingCollection {\n  id\n  slug\n  title\n  thumbnail\n  __id: id\n}\n",
+  "text": "query CollectionsHubsNavQuery {\n  marketingCollections(size: 6) {\n    ...CollectionsHubsNav_marketingCollections\n    __id: id\n  }\n}\n\nfragment CollectionsHubsNav_marketingCollections on MarketingCollection {\n  id\n  slug\n  title\n  thumbnail\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "CollectionsHubsNavStoryQuery",
+    "name": "CollectionsHubsNavQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -57,33 +65,33 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "marketingHubCollections",
-        "storageKey": null,
-        "args": null,
+        "name": "marketingCollections",
+        "storageKey": "marketingCollections(size:6)",
+        "args": v0,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CollectionsHubsNav_marketingHubCollections",
+            "name": "CollectionsHubsNav_marketingCollections",
             "args": null
           },
-          v0
+          v1
         ]
       }
     ]
   },
   "operation": {
     "kind": "Operation",
-    "name": "CollectionsHubsNavStoryQuery",
+    "name": "CollectionsHubsNavQuery",
     "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "marketingHubCollections",
-        "storageKey": null,
-        "args": null,
+        "name": "marketingCollections",
+        "storageKey": "marketingCollections(size:6)",
+        "args": v0,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -115,12 +123,12 @@ return {
             "args": null,
             "storageKey": null
           },
-          v0
+          v1
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'd804699e56600f4d31692b93a706bfab';
+(node as any).hash = 'ca5e20922d40db7c07fa18726837321a';
 export default node;

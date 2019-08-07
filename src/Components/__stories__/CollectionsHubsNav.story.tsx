@@ -1,62 +1,37 @@
 import { Theme } from "@artsy/palette"
-import { MockRelayRenderer } from "DevTools"
+import { CollectionsHubsNavQuery } from "__generated__/CollectionsHubsNavQuery.graphql"
+import { SystemContextConsumer } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
-import { graphql } from "react-relay"
+import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { CollectionsHubsNavFragmentContainer } from "../CollectionsHubsNav"
-import { imageSamples } from "./ImageLink.story"
 
 storiesOf("Components/CollectionsHubsNav", module).add("default", () => (
-  <Theme>{render()}</Theme>
+  <Theme>
+    <CollectionsHubsNavQueryRenderer />
+  </Theme>
 ))
 
-const hubsQuery = graphql`
-  query CollectionsHubsNavStoryQuery {
-    marketingHubCollections {
-      ...CollectionsHubsNav_marketingHubCollections
-    }
-  }
-`
-
-const marketingHubCollections = [
-  {
-    slug: "street-art  ",
-    title: "Street Art  ",
-    thumbnail: imageSamples.streetArt,
-  },
-  {
-    slug: "pre-twentieth-century",
-    title: "Pre-20th",
-    thumbnail: imageSamples.preTwentiethCentury,
-  },
-  {
-    slug: "post-war-art",
-    title: "Post-War",
-    thumbnail: imageSamples.postWarArt,
-  },
-  {
-    slug: "contemporary-art",
-    title: "Contemporary",
-    thumbnail: imageSamples.contemporaryArt,
-  },
-  {
-    slug: "impressionist-and-modern-art",
-    title: "Impressionist & Modern",
-    thumbnail: imageSamples.impressionistAndModernArt,
-  },
-  {
-    slug: "photography",
-    title: "Photography",
-    thumbnail: imageSamples.photography,
-  },
-]
-
-const render = () => {
+const CollectionsHubsNavQueryRenderer = () => {
   return (
-    <MockRelayRenderer
-      Component={CollectionsHubsNavFragmentContainer}
-      mockData={{ marketingHubCollections }}
-      query={hubsQuery}
-    />
+    <SystemContextConsumer>
+      {({ relayEnvironment }) => {
+        return (
+          <QueryRenderer<CollectionsHubsNavQuery>
+            environment={relayEnvironment}
+            variables={{}}
+            query={graphql`
+              query CollectionsHubsNavQuery {
+                marketingCollections(size: 6) {
+                  ...CollectionsHubsNav_marketingCollections
+                }
+              }
+            `}
+            render={renderWithLoadProgress(CollectionsHubsNavFragmentContainer)}
+          />
+        )
+      }}
+    </SystemContextConsumer>
   )
 }

@@ -1,5 +1,6 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Separator, Serif } from "@artsy/palette"
 import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
+import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -16,6 +17,7 @@ import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 export interface CollectAppProps {
   viewer?: CollectApp_viewer
+  marketingCollections?: CollectionsHubsNav_marketingCollections
   params?: {
     medium: string
   }
@@ -60,29 +62,17 @@ export class CollectApp extends Component<CollectAppProps> {
           />
           <SeoProductsForArtworks artworks={filter_artworks} />
 
-          <Flex
-            mt={3}
-            mb={4}
-            justifyContent="space-between"
-            alignItems="flex-end"
-          >
-            <Serif size="8">
-              <h1>Collect art and design online</h1>
-            </Serif>
+          <Serif size="8" mt={3} element="h1">
+            Collect art and design online
+          </Serif>
+          <Separator mt={2} mb={4} />
 
-            <CollectionsHubsNav
-              marketingHubCollections={
-                this.props.viewer.marketingHubCollections
-              }
-            />
+          <CollectionsHubsNav
+            marketingCollections={this.props.marketingCollections}
+          />
+          <Separator mb={2} mt={4} />
 
-            <Sans size="3" weight="medium">
-              <a href="/collections">View collections</a>
-            </Sans>
-          </Flex>
-          <Box>
-            <ArtworkGrid viewer={this.props.viewer} />
-          </Box>
+          <ArtworkGrid viewer={this.props.viewer} />
         </FrameWithRecentlyViewed>
       </AppContainer>
     )
@@ -117,10 +107,6 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
       ) {
       filter_artworks(aggregations: $aggregations, size: 0) {
         ...SeoProductsForArtworks_artworks
-      }
-
-      marketingHubCollections {
-        ...CollectionsHubsNav_marketingHubCollections
       }
 
       ...CollectFilterContainer_viewer

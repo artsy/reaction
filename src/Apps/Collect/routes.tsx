@@ -64,6 +64,9 @@ export const routes: RouteConfig[] = [
               page: $page
             )
         }
+        marketingCollections(size: 6) {
+          ...CollectionsHubsNav_marketingCollections
+        }
       }
     `,
     render: ({ props, Component }) => {
