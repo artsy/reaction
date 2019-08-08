@@ -102,7 +102,7 @@ export const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
   const ArtworkGrid = () => {
     return (
       <ArtworkFilterArtworkGrid
-        filtered_artworks={viewer.filtered_artworks}
+        filteredArtworks={viewer.filteredArtworks}
         isLoading={isFetching}
         columnCount={[2, 2, 2, 3]}
         keyword={keyword}
@@ -238,7 +238,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
-        filtered_artworks: filter_artworks(
+        filteredArtworks: filter_artworks(
           acquireable: $acquireable
           aggregations: [TOTAL]
           artist_id: $artist_id
@@ -259,7 +259,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
-          ...ArtworkFilterArtworkGrid2_filtered_artworks
+          ...ArtworkFilterArtworkGrid2_filteredArtworks
         }
       }
     `,

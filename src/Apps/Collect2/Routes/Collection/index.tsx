@@ -1,5 +1,5 @@
 import { Box, Separator } from "@artsy/palette"
-import { Collection_collection } from "__generated__/Collection_collection.graphql"
+import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -22,28 +22,28 @@ import { CollectionFilterFragmentContainer as CollectionHeader } from "./Collect
 // import { SeoProductsForArtworks } from "./Components/Seo/SeoProductsForArtworks"
 
 interface CollectionAppProps extends SystemContextProps {
-  collection: Collection_collection
+  viewer: Collection_viewer
 }
 
 @track({
   context_module: Schema.ContextModule.CollectionDescription,
 })
 export class CollectionApp extends Component<CollectionAppProps> {
-  collectionNotFound = marketingCollection => {
-    if (!marketingCollection) {
+  collectionNotFound = viewer => {
+    if (!viewer) {
       throw new HttpError(404)
     }
   }
 
   componentWillMount() {
-    this.collectionNotFound(this.props.collection)
+    this.collectionNotFound(this.props.viewer)
   }
 
   render() {
-    const { collection, user } = this.props
-    const { title, slug, headerImage, description, artworks } = collection
+    const { viewer, user } = this.props
+    const { title, slug, headerImage, description, artworks } = viewer
     const showCollectionHubs =
-      collection.linkedCollections.length > 0 && userIsAdmin(user)
+      viewer.linkedCollections.length > 0 && userIsAdmin(user)
 
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
     const metadataDescription = description
@@ -71,26 +71,21 @@ export class CollectionApp extends Component<CollectionAppProps> {
           <SeoProductsForArtworks artworks={artworks} />
           */}
 
-          <CollectionHeader
-            collection={collection}
-            artworks={artworks as any}
-          />
+          <CollectionHeader collection={viewer} artworks={artworks as any} />
           {showCollectionHubs && (
-            <CollectionsHubRails
-              linkedCollections={collection.linkedCollections}
-            />
+            <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
           )}
 
           <Box>
-            <CollectionArtworkFilter collection={collection} />
+            <CollectionArtworkFilter viewer={viewer} />
           </Box>
 
           <Separator mt={6} mb={3} />
 
           <Box mt="3">
             <RelatedCollectionsRail
-              collections={collection.relatedCollections}
-              title={collection.title}
+              collections={viewer.relatedCollections}
+              title={viewer.title}
             />
           </Box>
         </FrameWithRecentlyViewed>
@@ -102,8 +97,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
 export const CollectionAppFragmentContainer = createFragmentContainer(
   withSystemContext(CollectionApp),
   {
-    collection: graphql`
-      fragment Collection_collection on MarketingCollection
+    viewer: graphql`
+      fragment Collection_viewer on MarketingCollection
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
           aggregations: {
@@ -119,7 +114,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
+          # partner_id: { type: "ID" }
           price_range: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
@@ -152,7 +147,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
           ...SeoProductsForArtworks_artworks
         }
 
-        ...CollectionArtworkFilter_collection
+        ...CollectionArtworkFilter_viewer
           @arguments(
             acquireable: $acquireable
             at_auction: $at_auction
@@ -164,7 +159,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
             medium: $medium
             offerable: $offerable
             page: $page
-            partner_id: $partner_id
+            # partner_id: $partner_id
             price_range: $price_range
             sort: $sort
             width: $width

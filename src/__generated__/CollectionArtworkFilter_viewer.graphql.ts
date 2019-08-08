@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
+import { ArtworkFilterArtworkGrid2_filteredArtworks$ref } from "./ArtworkFilterArtworkGrid2_filteredArtworks.graphql";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _CollectionArtworkFilter_collection$ref: unique symbol;
-export type CollectionArtworkFilter_collection$ref = typeof _CollectionArtworkFilter_collection$ref;
-export type CollectionArtworkFilter_collection = {
+declare const _CollectionArtworkFilter_viewer$ref: unique symbol;
+export type CollectionArtworkFilter_viewer$ref = typeof _CollectionArtworkFilter_viewer$ref;
+export type CollectionArtworkFilter_viewer = {
     readonly artworks: ({
         readonly aggregations: ReadonlyArray<({
             readonly slice: ArtworkAggregation | null;
@@ -17,10 +17,10 @@ export type CollectionArtworkFilter_collection = {
         }) | null> | null;
     }) | null;
     readonly slug: string;
-    readonly filtered_artworks: ({
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+    readonly filteredArtworks: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filteredArtworks$ref;
     }) | null;
-    readonly " $refType": CollectionArtworkFilter_collection$ref;
+    readonly " $refType": CollectionArtworkFilter_viewer$ref;
 };
 
 
@@ -35,7 +35,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "CollectionArtworkFilter_collection",
+  "name": "CollectionArtworkFilter_viewer",
   "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
@@ -100,6 +100,12 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "partner_id",
+      "type": "ID",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "price_range",
       "type": "String",
       "defaultValue": null
@@ -127,11 +133,6 @@ return {
       "name": "page",
       "type": "Int",
       "defaultValue": null
-    },
-    {
-      "kind": "RootArgument",
-      "name": "partner_id",
-      "type": "ID"
     }
   ],
   "selections": [
@@ -232,7 +233,7 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": "filtered_artworks",
+      "alias": "filteredArtworks",
       "name": "artworks",
       "storageKey": null,
       "args": [
@@ -340,7 +341,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+          "name": "ArtworkFilterArtworkGrid2_filteredArtworks",
           "args": null
         },
         v0
@@ -356,5 +357,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '84b27ba9a3c74d26b7c7edab9763841f';
+(node as any).hash = '277eebff2f2e567026640616379207e6';
 export default node;

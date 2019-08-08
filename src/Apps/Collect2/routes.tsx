@@ -62,8 +62,8 @@ export const routes: RouteConfig[] = [
         $sort: String
         $width: String
       ) {
-        collection: marketingCollection(slug: $slug) {
-          ...Collection_collection
+        viewer: marketingCollection(slug: $slug) {
+          ...Collection_viewer
             @arguments(
               acquireable: $acquireable
               at_auction: $at_auction

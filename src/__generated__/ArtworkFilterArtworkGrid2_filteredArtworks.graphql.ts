@@ -3,9 +3,9 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _ArtworkFilterArtworkGrid2_filtered_artworks$ref: unique symbol;
-export type ArtworkFilterArtworkGrid2_filtered_artworks$ref = typeof _ArtworkFilterArtworkGrid2_filtered_artworks$ref;
-export type ArtworkFilterArtworkGrid2_filtered_artworks = {
+declare const _ArtworkFilterArtworkGrid2_filteredArtworks$ref: unique symbol;
+export type ArtworkFilterArtworkGrid2_filteredArtworks$ref = typeof _ArtworkFilterArtworkGrid2_filteredArtworks$ref;
+export type ArtworkFilterArtworkGrid2_filteredArtworks = {
     readonly __id: string;
     readonly artworks: ({
         readonly pageInfo: {
@@ -22,7 +22,7 @@ export type ArtworkFilterArtworkGrid2_filtered_artworks = {
         }) | null> | null;
         readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
     }) | null;
-    readonly " $refType": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+    readonly " $refType": ArtworkFilterArtworkGrid2_filteredArtworks$ref;
 };
 
 
@@ -37,7 +37,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+  "name": "ArtworkFilterArtworkGrid2_filteredArtworks",
   "type": "FilterArtworks",
   "metadata": null,
   "argumentDefinitions": [
@@ -152,5 +152,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '27b7f0614f390c626facc03757ef1f36';
+(node as any).hash = '485485ec4a219d9c88784b358f8cc9d6';
 export default node;

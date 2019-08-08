@@ -1,15 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
+import { ArtworkFilterArtworkGrid2_filteredArtworks$ref } from "./ArtworkFilterArtworkGrid2_filteredArtworks.graphql";
 export type ArtworkFilterArtworkGrid2QueryVariables = {
     readonly filteredArtworksNodeID: string;
     readonly first: number;
     readonly after?: string | null;
 };
 export type ArtworkFilterArtworkGrid2QueryResponse = {
-    readonly filtered_artworks: ({
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+    readonly filteredArtworks: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filteredArtworks$ref;
     }) | null;
 };
 export type ArtworkFilterArtworkGrid2Query = {
@@ -25,14 +25,14 @@ query ArtworkFilterArtworkGrid2Query(
   $first: Int!
   $after: String
 ) {
-  filtered_artworks: node(__id: $filteredArtworksNodeID) {
+  filteredArtworks: node(__id: $filteredArtworksNodeID) {
     __typename
-    ...ArtworkFilterArtworkGrid2_filtered_artworks_2HEEH6
+    ...ArtworkFilterArtworkGrid2_filteredArtworks_2HEEH6
     __id
   }
 }
 
-fragment ArtworkFilterArtworkGrid2_filtered_artworks_2HEEH6 on FilterArtworks {
+fragment ArtworkFilterArtworkGrid2_filteredArtworks_2HEEH6 on FilterArtworks {
   __id
   artworks: artworks_connection(first: $first, after: $after) {
     pageInfo {
@@ -304,7 +304,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkFilterArtworkGrid2Query",
   "id": null,
-  "text": "query ArtworkFilterArtworkGrid2Query(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  filtered_artworks: node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...ArtworkFilterArtworkGrid2_filtered_artworks_2HEEH6\n    __id\n  }\n}\n\nfragment ArtworkFilterArtworkGrid2_filtered_artworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __id\n      }\n    }\n    ...ArtworkGrid_artworks\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkFilterArtworkGrid2Query(\n  $filteredArtworksNodeID: ID!\n  $first: Int!\n  $after: String\n) {\n  filteredArtworks: node(__id: $filteredArtworksNodeID) {\n    __typename\n    ...ArtworkFilterArtworkGrid2_filteredArtworks_2HEEH6\n    __id\n  }\n}\n\nfragment ArtworkFilterArtworkGrid2_filteredArtworks_2HEEH6 on FilterArtworks {\n  __id\n  artworks: artworks_connection(first: $first, after: $after) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __id\n      }\n    }\n    ...ArtworkGrid_artworks\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnection {\n  edges {\n    node {\n      __id\n      id\n      href\n      image {\n        aspect_ratio\n        __id: id\n      }\n      ...GridItem_artwork\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  _id\n  title\n  image_title\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio\n    __id: id\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n  __id\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n  __id\n}\n\nfragment Save_artwork on Artwork {\n  __id\n  _id\n  id\n  is_saved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable\n  is_acquireable\n  is_offerable\n  href\n  sale {\n    is_preview\n    display_timely_at\n    __id\n  }\n  __id\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message\n  cultural_maker\n  artists(shallow: true) {\n    __id\n    href\n    name\n  }\n  collecting_institution\n  partner(shallow: true) {\n    name\n    href\n    __id\n  }\n  sale {\n    is_auction\n    is_closed\n    __id\n  }\n  sale_artwork {\n    counts {\n      bidder_positions\n    }\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    __id\n  }\n  __id\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable\n  sale {\n    is_auction\n    is_live_open\n    is_open\n    is_closed\n    __id\n  }\n  partner(shallow: true) {\n    type\n    __id\n  }\n  sale_artwork {\n    highest_bid {\n      display\n      __id: id\n    }\n    opening_bid {\n      display\n    }\n    counts {\n      bidder_positions\n    }\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -315,7 +315,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "filtered_artworks",
+        "alias": "filteredArtworks",
         "name": "node",
         "storageKey": null,
         "args": v1,
@@ -324,7 +324,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+            "name": "ArtworkFilterArtworkGrid2_filteredArtworks",
             "args": [
               {
                 "kind": "Variable",
@@ -352,7 +352,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "filtered_artworks",
+        "alias": "filteredArtworks",
         "name": "node",
         "storageKey": null,
         "args": v1,
@@ -781,5 +781,5 @@ return {
   }
 };
 })();
-(node as any).hash = '61f36e1c4b06e0230e9fbb23295176db';
+(node as any).hash = '2bd7e79248910fca638216b9eee4242a';
 export default node;

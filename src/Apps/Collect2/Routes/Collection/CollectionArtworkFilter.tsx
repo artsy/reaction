@@ -1,17 +1,27 @@
-import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
+import { ArtworkFilter } from "Components/v2/ArtworkFilter"
+
+import {
+  FilterContextProvider,
+  initialFilterState,
+} from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+
 export const CollectionArtworkFilter = props => {
-  console.log(props)
-  return <ArtworkFilter {...props} />
+  // FIXME: Need to pass proper relay context in for refetch
+  return (
+    <FilterContextProvider filters={initialFilterState}>
+      <ArtworkFilter {...props} />
+    </FilterContextProvider>
+  )
 }
 
 export const CollectionArtworkFilterFragmentContainer = createFragmentContainer(
   CollectionArtworkFilter,
   {
-    collection: graphql`
-      fragment CollectionArtworkFilter_collection on MarketingCollection
+    viewer: graphql`
+      fragment CollectionArtworkFilter_viewer on MarketingCollection
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
@@ -50,42 +60,42 @@ export const CollectionArtworkFilterFragmentContainer = createFragmentContainer(
 
         slug
 
-        filtered_artworks: artworks(
-          aggregations: [TOTAL]
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          at_auction: $at_auction
+        filteredArtworks: artworks(
           acquireable: $acquireable
-          offerable: $offerable
+          aggregations: [TOTAL]
+          at_auction: $at_auction
+          color: $color
+          for_sale: $for_sale
+          height: $height
           inquireable_only: $inquireable_only
+          major_periods: $major_periods
+          medium: $medium
+          offerable: $offerable
+          page: $page
+          partner_id: $partner_id
+          price_range: $price_range
           size: 0
           sort: $sort
-          price_range: $price_range
-          height: $height
           width: $width
-          color: $color
-          page: $page
         ) {
-          ...ArtworkFilterArtworkGrid2_filtered_artworks
+          ...ArtworkFilterArtworkGrid2_filteredArtworks
         }
 
-        ...CollectionRefetch_collection
+        # ...CollectionRefetch_collection
         #   @arguments(
-        #     medium: $medium
-        #     major_periods: $major_periods
-        #     for_sale: $for_sale
-        #     sort: $sort
         #     acquireable: $acquireable
-        #     offerable: $offerable
         #     at_auction: $at_auction
-        #     inquireable_only: $inquireable_only
-        #     price_range: $price_range
-        #     height: $height
-        #     width: $width
         #     color: $color
+        #     for_sale: $for_sale
+        #     height: $height
+        #     inquireable_only: $inquireable_only
+        #     major_periods: $major_periods
+        #     medium: $medium
+        #     offerable: $offerable
         #     page: $page
+        #     price_range: $price_range
+        #     sort: $sort
+        #     width: $width
         #   )
       }
     `,

@@ -1,5 +1,5 @@
 import { Box, Spacer } from "@artsy/palette"
-import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
+import { ArtworkFilterArtworkGrid2_filteredArtworks } from "__generated__/ArtworkFilterArtworkGrid2_filteredArtworks.graphql"
 import { AnalyticsSchema, useSystemContext, useTracking } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
@@ -14,7 +14,7 @@ import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
 
 interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
-  filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
+  filteredArtworks: ArtworkFilterArtworkGrid2_filteredArtworks
   isLoading?: boolean
   relay: RelayRefetchProp
 
@@ -31,7 +31,7 @@ const ArtworkFilterArtworkGrid: React.FC<
 
   const {
     columnCount,
-    filtered_artworks: { artworks },
+    filteredArtworks: { artworks },
     keyword,
   } = props
 
@@ -106,8 +106,8 @@ const ArtworkFilterArtworkGrid: React.FC<
 export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
   ArtworkFilterArtworkGrid,
   {
-    filtered_artworks: graphql`
-      fragment ArtworkFilterArtworkGrid2_filtered_artworks on FilterArtworks
+    filteredArtworks: graphql`
+      fragment ArtworkFilterArtworkGrid2_filteredArtworks on FilterArtworks
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 30 }
           after: { type: "String", defaultValue: "" }
@@ -137,8 +137,8 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      filtered_artworks: node(__id: $filteredArtworksNodeID) {
-        ...ArtworkFilterArtworkGrid2_filtered_artworks
+      filteredArtworks: node(__id: $filteredArtworksNodeID) {
+        ...ArtworkFilterArtworkGrid2_filteredArtworks
           @arguments(first: $first, after: $after)
       }
     }

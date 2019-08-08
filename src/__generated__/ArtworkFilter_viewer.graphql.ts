@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
+import { ArtworkFilterArtworkGrid2_filteredArtworks$ref } from "./ArtworkFilterArtworkGrid2_filteredArtworks.graphql";
 declare const _ArtworkFilter_viewer$ref: unique symbol;
 export type ArtworkFilter_viewer$ref = typeof _ArtworkFilter_viewer$ref;
 export type ArtworkFilter_viewer = {
-    readonly filtered_artworks: ({
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+    readonly filteredArtworks: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filteredArtworks$ref;
     }) | null;
     readonly " $refType": ArtworkFilter_viewer$ref;
 };
@@ -135,7 +135,7 @@ return {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "filtered_artworks",
+      "alias": "filteredArtworks",
       "name": "filter_artworks",
       "storageKey": null,
       "args": [
@@ -259,7 +259,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+          "name": "ArtworkFilterArtworkGrid2_filteredArtworks",
           "args": null
         },
         {
@@ -274,5 +274,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '23f9157da017da01f8147f9ec1cd7a87';
+(node as any).hash = '02875092f3b8c10aac33db206e4734e7';
 export default node;

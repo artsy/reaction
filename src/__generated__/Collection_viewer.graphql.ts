@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectionArtworkFilter_collection$ref } from "./CollectionArtworkFilter_collection.graphql";
+import { CollectionArtworkFilter_viewer$ref } from "./CollectionArtworkFilter_viewer.graphql";
 import { CollectionHeader_artworks$ref } from "./CollectionHeader_artworks.graphql";
 import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
 import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
-declare const _Collection_collection$ref: unique symbol;
-export type Collection_collection$ref = typeof _Collection_collection$ref;
-export type Collection_collection = {
+declare const _Collection_viewer$ref: unique symbol;
+export type Collection_viewer$ref = typeof _Collection_viewer$ref;
+export type Collection_viewer = {
     readonly id: string;
     readonly slug: string;
     readonly title: string;
@@ -30,8 +30,8 @@ export type Collection_collection = {
     readonly artworks: ({
         readonly " $fragmentRefs": CollectionHeader_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
-    readonly " $fragmentRefs": CollectionArtworkFilter_collection$ref;
-    readonly " $refType": Collection_collection$ref;
+    readonly " $fragmentRefs": CollectionArtworkFilter_viewer$ref;
+    readonly " $refType": Collection_viewer$ref;
 };
 
 
@@ -46,10 +46,16 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "Collection_collection",
+  "name": "Collection_viewer",
   "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
     {
       "kind": "LocalArgument",
       "name": "aggregations",
@@ -63,74 +69,8 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "medium",
-      "type": "String",
-      "defaultValue": "*"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "major_periods",
-      "type": "[String]",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "partner_id",
-      "type": "ID",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "for_sale",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
       "name": "at_auction",
       "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "acquireable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "offerable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "inquireable_only",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "sort",
-      "type": "String",
-      "defaultValue": "-partner_updated_at"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "price_range",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "height",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "width",
-      "type": "String",
       "defaultValue": null
     },
     {
@@ -141,8 +81,62 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "height",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "major_periods",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "medium",
+      "type": "String",
+      "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "page",
       "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "width",
+      "type": "String",
       "defaultValue": null
     }
   ],
@@ -317,7 +311,7 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "CollectionArtworkFilter_collection",
+      "name": "CollectionArtworkFilter_viewer",
       "args": [
         {
           "kind": "Variable",
@@ -403,5 +397,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3c88703aa3df199e18af25029d122e4b';
+(node as any).hash = '66b12925bee76af9cb72adca707de85b';
 export default node;
