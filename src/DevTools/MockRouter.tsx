@@ -1,5 +1,5 @@
 import { RouterConfig } from "Artsy/Router"
-import { buildClientApp } from "Artsy/Router/buildClientApp"
+// import { buildClientApp } from "Artsy/Router/buildClientApp"
 import { makeClientRoutes } from "Artsy/Router/v2/makeClientApp"
 import {
   createMockNetworkLayer,
