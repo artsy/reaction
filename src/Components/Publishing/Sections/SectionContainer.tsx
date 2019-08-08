@@ -9,14 +9,16 @@ const Fillwidth = "100%"
 const OverflowWidth = "780px"
 const OverflowWidthClassic = "1100px"
 
-export const SectionContainer = styled.div.attrs<{
+export const SectionContainer = styled.div<{
   section?: SectionData
   articleLayout?: ArticleLayout
-}>({})`
+  customWidth?: number
+}>`
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
-  width: ${props => getSectionWidth(props.section, props.articleLayout)};
+  width: ${props =>
+    getSectionWidth(props.section, props.articleLayout, props.customWidth)};
   max-width: 100%;
 
   ${props => pMedia.xl`
@@ -24,20 +26,27 @@ export const SectionContainer = styled.div.attrs<{
       `
       width: ${ColumnWidth}
     `}
-  `} ${props => pMedia.md`
+  `};
+
+  ${props => pMedia.md`
     padding: ${getSectionMobilePadding(props.section)};
   `};
 `
 
 export const getSectionWidth = (
   section?: SectionData,
-  articleLayout?: ArticleLayout
+  articleLayout?: ArticleLayout,
+  customWidth?: number
 ) => {
   const layout = (section && section.layout) || "column_width"
   const maybeOverflow =
     layout === "overflow_fillwidth" ? OverflowWidth : ColumnWidth
   const isText = section && section.type === "text"
   const isBlockquote = isText && section.body.includes("<blockquote>")
+
+  if (customWidth) {
+    return `${customWidth}px`
+  }
 
   switch (articleLayout) {
     case "standard": {

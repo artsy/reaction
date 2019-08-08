@@ -25,6 +25,7 @@ interface Props {
   showTooltips?: boolean
   isSponsored?: boolean
   isSuper?: boolean
+  customWidth?: number
 }
 
 interface State {
@@ -229,7 +230,7 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, isMobile, isSponsored, isSuper } = this.props
+    const { article, customWidth, isMobile, isSponsored, isSuper } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
@@ -315,6 +316,7 @@ export class Sections extends Component<Props, State> {
             key={index}
             articleLayout={article.layout}
             section={section}
+            customWidth={customWidth}
           >
             {child}
             {ad}
