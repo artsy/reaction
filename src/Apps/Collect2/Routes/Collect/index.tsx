@@ -67,9 +67,12 @@ export class CollectApp extends Component<CollectAppProps> {
           </Serif>
           <Separator mt={2} mb={4} />
 
-          <CollectionsHubsNav
-            marketingCollections={this.props.marketingCollections}
-          />
+          {sd.COLLECTION_HUBS === "experiment" && (
+            <CollectionsHubsNav
+              marketingCollections={this.props.marketingCollections}
+            />
+          )}
+
           <Separator mb={2} mt={4} />
 
           <ArtworkGrid viewer={this.props.viewer} />
