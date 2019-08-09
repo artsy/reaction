@@ -1,3 +1,15 @@
+# v16.22.12 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- adds latest svgs from wax [#2676](https://github.com/artsy/reaction/pull/2676) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.22.11 (Wed Aug 07 2019)
 
 #### 🐛  Bug Fix
