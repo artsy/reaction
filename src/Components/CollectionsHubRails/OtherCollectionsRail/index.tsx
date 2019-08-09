@@ -40,7 +40,7 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 
   return (
     <Container mb={4}>
-      <Serif size="5" mx={1} mt={4} mb={2}>
+      <Serif size="5" mt={4} mb={2}>
         {name}
       </Serif>
 
@@ -76,9 +76,8 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }
 
 const Container = styled(Box)`
-  border: 1px solid ${color("black10")};
-  padding-left: 35px;
-  padding-right: 35px;
+  border-top: 1px solid ${color("black10")};
+  border-bottom: 1px solid ${color("black10")};
 `
 
 export const ArrowContainer = styled(Box)`
