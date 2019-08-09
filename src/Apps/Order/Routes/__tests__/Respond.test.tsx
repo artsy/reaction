@@ -286,10 +286,7 @@ describe("The respond page", () => {
         expect(mutations.lastFetchVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
-            offerPrice: {
-              amount: 9000,
-              currencyCode: "GBP",
-            },
+            amountCents: 9000 * 100,
           },
         })
         expect(routes.mockPushRoute).toHaveBeenCalledWith(
