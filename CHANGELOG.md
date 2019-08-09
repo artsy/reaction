@@ -1,3 +1,15 @@
+# v16.22.13 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Artist] Consolidate aggregations and grid request for filter, when possible [#2674](https://github.com/artsy/reaction/pull/2674) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v16.22.12 (Fri Aug 09 2019)
 
 #### 🐛  Bug Fix
