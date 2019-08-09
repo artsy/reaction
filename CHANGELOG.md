@@ -1,3 +1,15 @@
+# v16.23.0 (Fri Aug 09 2019)
+
+#### 🚀  Enhancement
+
+- Update Metaphysics GraphQL schema [#2677](https://github.com/artsy/reaction/pull/2677) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v16.22.13 (Fri Aug 09 2019)
 
 #### 🐛  Bug Fix
