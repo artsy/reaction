@@ -93,6 +93,14 @@ return {
       "name": "page",
       "type": "Int",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "aggregations",
+      "type": "[ArtworkAggregation]",
+      "defaultValue": [
+        "TOTAL"
+      ]
     }
   ],
   "selections": [
@@ -110,11 +118,9 @@ return {
           "type": "Boolean"
         },
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "aggregations",
-          "value": [
-            "TOTAL"
-          ],
+          "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
         },
         {
@@ -198,5 +204,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e8f19166da037c573aa4928e3fcb1194';
+(node as any).hash = '6ed67d0fc03a0f3a0ff92bca59f69145';
 export default node;

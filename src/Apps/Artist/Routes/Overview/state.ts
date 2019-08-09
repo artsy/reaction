@@ -34,7 +34,7 @@ export const initialState = {
   offerable: null,
   at_auction: null,
   inquireable_only: null,
-  price_range: "*-*",
+  price_range: null,
   selectedFilters: [],
   showZeroState: false,
 }
@@ -54,7 +54,7 @@ export const urlFragmentFromState = (state: State) => {
 }
 
 // This is used to remove default state params that clutter up URLs.
-const isDefaultFilter = (filter, value): boolean => {
+export const isDefaultFilter = (filter, value): boolean => {
   if (filter === "major_periods" || filter === "attribution_class") {
     return value.length === 0
   }
@@ -184,7 +184,12 @@ export class FilterState extends Container<State> {
     let maxStr: string
     let min: number
     let max: number
-    ;[minStr, maxStr] = this.state.price_range.split("-")
+    if (this.state.price_range) {
+      ;[minStr, maxStr] = this.state.price_range.split("-")
+    } else {
+      minStr = "*"
+      maxStr = "*"
+    }
     min = minStr === "*" ? FilterState.MIN_PRICE : Number(minStr)
     max = maxStr === "*" ? FilterState.MAX_PRICE : Number(maxStr)
     return [min, max]

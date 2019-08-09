@@ -161,6 +161,12 @@ return {
       "name": "page",
       "type": "Int",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasFilter",
+      "type": "Boolean",
+      "defaultValue": false
     }
   ],
   "selections": [
@@ -211,6 +217,12 @@ return {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "hasFilter",
+          "variableName": "hasFilter",
           "type": null
         },
         {
@@ -551,5 +563,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '66e52eeb241873536e1650cc837041bd';
+(node as any).hash = 'a40500dc9a2b8ba5c0afdffaa7066ba3';
 export default node;
