@@ -1,3 +1,15 @@
+# v16.23.1 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1370: add analytics tracking to FeaturedCollections module [#2678](https://github.com/artsy/reaction/pull/2678) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.23.0 (Fri Aug 09 2019)
 
 #### 🚀  Enhancement
