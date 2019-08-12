@@ -25,6 +25,10 @@ describe("SectionContainer", () => {
       expect(getSectionWidth()).toBe("680px")
     })
 
+    it("returns a custom width if prop provided", () => {
+      expect(getSectionWidth(section, "feature", 900)).toBe("900px")
+    })
+
     describe("classic layout", () => {
       const articleLayout = "classic"
 

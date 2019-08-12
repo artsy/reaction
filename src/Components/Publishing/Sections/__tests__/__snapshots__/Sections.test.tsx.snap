@@ -51,67 +51,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
   line-height: 26px;
 }
 
-.c45 {
-  font-family: artsy-icons;
-  color: black;
-  font-size: 24px;
-  margin: 0 5px;
-  display: inline-block;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  position: relative;
-  color: black;
-}
-
-.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 20px;
-  color: black;
-}
-
-.c40 a {
-  color: black;
-}
-
-.c42 {
-  margin-right: 20px;
-}
-
-.c43 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.c43 .c44 {
-  vertical-align: middle;
-  margin: 0;
-}
-
-.c39 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c24 {
-  width: 100%;
-  height: 1000px;
-}
-
 .c19 {
   margin-right: 30px;
 }
@@ -285,6 +224,67 @@ exports[`Sections snapshots tests renders properly 1`] = `
 .c26 {
   margin-right: 0px;
   width: 222px;
+}
+
+.c45 {
+  font-family: artsy-icons;
+  color: black;
+  font-size: 24px;
+  margin: 0 5px;
+  display: inline-block;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  color: black;
+}
+
+.c40 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.c40 a {
+  color: black;
+}
+
+.c42 {
+  margin-right: 20px;
+}
+
+.c43 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.c43 .c44 {
+  vertical-align: middle;
+  margin: 0;
+}
+
+.c39 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c24 {
+  width: 100%;
+  height: 1000px;
 }
 
 .c36 {
@@ -639,13 +639,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
   }
 }
 
-@media (max-width:720px) {
-  .c24 {
-    height: 1300px;
-    width: 100%;
-  }
-}
-
 @media (max-width:600px) {
   .c17 {
     padding: 0 10px;
@@ -717,6 +710,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
 @media (max-width:600px) {
   .c26 {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width:720px) {
+  .c24 {
+    height: 1300px;
+    width: 100%;
   }
 }
 

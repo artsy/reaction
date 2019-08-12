@@ -47,7 +47,7 @@ export class VanguardArtistWrapper extends React.Component<
           )}
         </Box>
         {/** TODO: Sections may need to be customized to handle expansion */}
-        <Sections article={article} />
+        <Sections article={article} customWidth={900} />
 
         <ReadMoreButton
           size="5"

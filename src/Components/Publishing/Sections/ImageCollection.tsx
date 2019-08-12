@@ -9,7 +9,7 @@ import { ArticleLayout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 
-interface ImageCollectionProps {
+export interface ImageCollectionProps {
   color?: string
   images: any
   targetHeight?: number

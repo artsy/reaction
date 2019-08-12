@@ -6,6 +6,10 @@ import {
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
+import {
+  ImageCollection,
+  ImageCollectionProps,
+} from "Components/Publishing/Sections/ImageCollection"
 import { SectionData } from "Components/Publishing/Typings"
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -240,6 +244,33 @@ describe("Sections", () => {
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
       expect(ad.adDimension).toBe("300x250")
+    })
+  })
+
+  describe("Images targetHeight", () => {
+    it("Returns default targetHeight and size", () => {
+      props.article = FeatureArticle
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(500)
+      expect(imageProps.size.width).toBe(680)
+    })
+
+    it("Increases image targetHeight and size if a wide customWidth is passed", () => {
+      props.article = FeatureArticle
+      props.customWidth = 900
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(750)
+      expect(imageProps.size.width).toBe(900)
     })
   })
 

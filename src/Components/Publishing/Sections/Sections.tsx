@@ -25,6 +25,7 @@ interface Props {
   showTooltips?: boolean
   isSponsored?: boolean
   isSuper?: boolean
+  customWidth?: number
 }
 
 interface State {
@@ -149,8 +150,9 @@ export class Sections extends Component<Props, State> {
   }
 
   getSection(section, index) {
-    const { article, color, showTooltips } = this.props
-
+    const { article, color, customWidth, showTooltips } = this.props
+    const targetHeight = customWidth && customWidth > 750 ? 750 : 500
+    const size = customWidth && { width: customWidth }
     const sections = {
       image_collection: (
         <ImageCollection
@@ -158,8 +160,9 @@ export class Sections extends Component<Props, State> {
           sectionLayout={section.layout}
           articleLayout={article.layout}
           images={section.images}
-          targetHeight={500}
+          targetHeight={targetHeight}
           gutter={10}
+          size={size}
         />
       ),
       image_set: <ImageSetPreview section={section} color={color} />,
@@ -229,7 +232,7 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, isMobile, isSponsored, isSuper } = this.props
+    const { article, customWidth, isMobile, isSponsored, isSuper } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
@@ -315,6 +318,7 @@ export class Sections extends Component<Props, State> {
             key={index}
             articleLayout={article.layout}
             section={section}
+            customWidth={customWidth}
           >
             {child}
             {ad}
