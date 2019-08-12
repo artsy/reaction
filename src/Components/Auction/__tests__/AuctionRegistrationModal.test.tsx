@@ -1,9 +1,8 @@
-import { Modal } from "@artsy/palette"
+import { Button, Checkbox, Modal } from "@artsy/palette"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
-
-import { Button } from "@artsy/palette"
+import { act } from "react-dom/test-utils"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { AuctionRegistrationModal } from "../AuctionRegistrationModal"
 
@@ -37,9 +36,10 @@ describe("AuctionRegistrationModal", () => {
   })
 
   it("calls the onSubmit prop when trying to submit after accepting terms", async () => {
-    wrapper
-      .find('input[type="checkbox"]')
-      .simulate("change", { target: { checked: true } })
+    act(() => {
+      wrapper.find(Checkbox).prop("onSelect")(true)
+    })
+
     await flushPromiseQueue()
     wrapper.find(Button).simulate("click")
     expect(wrapper.text()).not.toMatch("You must agree to our terms.")
