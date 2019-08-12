@@ -2,18 +2,16 @@ import { ArticleProps } from "Components/Publishing/Article"
 import React from "react"
 import { TooltipsData } from "./TooltipsDataLoader"
 
-export class TooltipsDataProvider extends React.Component<ArticleProps> {
-  render() {
-    const { article, onOpenAuthModal, showTooltips } = this.props
+export const TooltipsDataProvider: React.SFC<ArticleProps> = props => {
+  const { article, onOpenAuthModal, showTooltips } = props
 
-    return (
-      <TooltipsData
-        article={article}
-        shouldFetchData={showTooltips}
-        onOpenAuthModal={onOpenAuthModal}
-      >
-        {this.props.children}
-      </TooltipsData>
-    )
-  }
+  return (
+    <TooltipsData
+      article={article}
+      shouldFetchData={showTooltips}
+      onOpenAuthModal={onOpenAuthModal}
+    >
+      {props.children}
+    </TooltipsData>
+  )
 }
