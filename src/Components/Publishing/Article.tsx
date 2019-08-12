@@ -2,6 +2,7 @@ import { Theme } from "@artsy/palette"
 import React from "react"
 
 import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
+import { TooltipsDataProvider } from "Components/Publishing/ToolTip/TooltipsDataProvider"
 import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
@@ -120,15 +121,20 @@ export class Article extends React.Component<ArticleProps> {
     return (
       <MediaContextProvider>
         <Theme>
-          <FullScreenProvider>
-            {this.getArticleLayout()}
-            {trackingCode && (
-              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
-            )}
-            {this.shouldRenderSignUpCta() && (
-              <BannerWrapper article={article} />
-            )}
-          </FullScreenProvider>
+          <TooltipsDataProvider {...this.props}>
+            <FullScreenProvider>
+              {this.getArticleLayout()}
+              {trackingCode && (
+                <PixelTracker
+                  unit={trackingCode}
+                  date={this.props.renderTime}
+                />
+              )}
+              {this.shouldRenderSignUpCta() && (
+                <BannerWrapper article={article} />
+              )}
+            </FullScreenProvider>
+          </TooltipsDataProvider>
         </Theme>
       </MediaContextProvider>
     )
