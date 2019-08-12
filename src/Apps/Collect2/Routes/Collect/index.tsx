@@ -1,5 +1,5 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
-import { CollectApp_viewer } from "__generated__/CollectApp_viewer.graphql"
+import { Collect_viewer } from "__generated__/Collect_viewer.graphql"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "Apps/Collect2/Components/Base/CollectFilterContainer"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -14,7 +14,7 @@ import { data as sd } from "sharify"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 
 export interface CollectAppProps {
-  viewer?: CollectApp_viewer
+  viewer?: Collect_viewer
   params?: {
     medium: string
   }
@@ -84,7 +84,7 @@ export class CollectApp extends Component<CollectAppProps> {
 
 export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
   viewer: graphql`
-    fragment CollectApp_viewer on Viewer
+    fragment Collect_viewer on Viewer
       @argumentDefinitions(
         medium: { type: "String", defaultValue: "*" }
         major_periods: { type: "[String]" }

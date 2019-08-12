@@ -3,21 +3,21 @@
 import { ConcreteFragment } from "relay-runtime";
 import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
-declare const _CollectApp_viewer$ref: unique symbol;
-export type CollectApp_viewer$ref = typeof _CollectApp_viewer$ref;
-export type CollectApp_viewer = {
+declare const _Collect_viewer$ref: unique symbol;
+export type Collect_viewer$ref = typeof _Collect_viewer$ref;
+export type Collect_viewer = {
     readonly filter_artworks: ({
         readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
     }) | null;
     readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
-    readonly " $refType": CollectApp_viewer$ref;
+    readonly " $refType": Collect_viewer$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectApp_viewer",
+  "name": "Collect_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -279,5 +279,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '149ee7fd827db1b5d09f5be6f81d5d3e';
+(node as any).hash = '988f9a05e9b737c05684bc086e5e94b9';
 export default node;

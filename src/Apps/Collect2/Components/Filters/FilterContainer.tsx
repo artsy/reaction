@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { MobileActionSheet } from "../MobileActionSheet"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"

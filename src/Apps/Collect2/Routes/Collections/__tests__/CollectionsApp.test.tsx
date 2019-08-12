@@ -1,11 +1,11 @@
 import { EntityHeader } from "@artsy/palette"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
-import { CollectionsGrid } from "Apps/Collections/Components/CollectionsGrid"
+import { CollectionsAppFragmentContainer as CollectionsApp } from "Apps/Collect2/Routes/Collections"
+import { CollectionsGrid } from "Apps/Collect2/Routes/Collections/Components/CollectionsGrid"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
-import { CollectionsAppFragmentContainer as CollectionsApp } from "../CollectionsApp"
 
 jest.unmock("react-relay")
 
@@ -15,9 +15,9 @@ describe("CollectionApp", () => {
       return await renderRelayTree({
         Component: CollectionsApp,
         query: graphql`
-          query CollectionsAppQuery {
+          query CollectionsAppTestQuery {
             categories: marketingCategories {
-              ...CollectionsApp_categories
+              ...Collections_categories
             }
           }
         `,

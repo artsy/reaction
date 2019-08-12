@@ -1,5 +1,5 @@
 import { CollectionRefetch_collection } from "__generated__/CollectionRefetch_collection.graphql"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -119,7 +119,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectionRefetchQuery(
+    query CollectionRefetch2Query(
       $collectionSlug: String!
       $medium: String
       $major_periods: [String]

@@ -1,5 +1,5 @@
 import { CheckIcon } from "@artsy/palette"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import React from "react"
 
 interface Props {

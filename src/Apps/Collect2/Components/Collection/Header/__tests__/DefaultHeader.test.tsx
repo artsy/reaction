@@ -1,8 +1,8 @@
-import { defaultCollectionHeaderArtworks } from "Apps/Collect/Components/Collection/Header/__tests__/fixtures/artworks"
+import { defaultCollectionHeaderArtworks } from "Apps/Collect2/Components/Collection/Header/__tests__/fixtures/artworks"
 import {
   CollectionDefaultHeader,
   getHeaderArtworks,
-} from "Apps/Collect/Components/Collection/Header/DefaultHeader"
+} from "Apps/Collect2/Components/Collection/Header/DefaultHeader"
 import { shallow } from "enzyme"
 import { uniq } from "lodash"
 import React from "react"

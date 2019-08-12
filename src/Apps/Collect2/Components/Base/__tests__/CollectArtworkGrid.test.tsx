@@ -31,7 +31,7 @@ describe("CollectArtworkGrid", () => {
           <MockRelayRenderer
             Component={CollectArtworkGridRelay}
             query={graphql`
-              query CollectArtworkGridTestQuery {
+              query CollectArtworkGridTest2Query {
                 filtered_artworks: filter_artworks(size: 4) {
                   ...CollectArtworkGrid_filtered_artworks
                 }

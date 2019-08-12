@@ -1,6 +1,6 @@
 import { Box, Spacer } from "@artsy/palette"
 import { ArtworkFilterArtworkGrid_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid_filtered_artworks.graphql"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { SystemContextConsumer } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
@@ -151,7 +151,7 @@ export const CollectArtworkGridRefreshContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectArtworkGridQuery(
+    query CollectArtworkGrid2Query(
       $filteredArtworksNodeID: ID!
       $first: Int!
       $after: String

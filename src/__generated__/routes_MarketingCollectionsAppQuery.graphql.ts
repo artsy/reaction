@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CollectionsApp_categories$ref } from "./CollectionsApp_categories.graphql";
+import { Collections_categories$ref } from "./Collections_categories.graphql";
 export type routes_MarketingCollectionsAppQueryVariables = {};
 export type routes_MarketingCollectionsAppQueryResponse = {
     readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": CollectionsApp_categories$ref;
+        readonly " $fragmentRefs": Collections_categories$ref;
     }>;
 };
 export type routes_MarketingCollectionsAppQuery = {
@@ -18,11 +18,11 @@ export type routes_MarketingCollectionsAppQuery = {
 /*
 query routes_MarketingCollectionsAppQuery {
   categories: marketingCategories {
-    ...CollectionsApp_categories
+    ...Collections_categories
   }
 }
 
-fragment CollectionsApp_categories on MarketingCollectionCategory {
+fragment Collections_categories on MarketingCollectionCategory {
   name
   collections {
     slug
@@ -38,7 +38,7 @@ const node: ConcreteRequest = {
   "operationKind": "query",
   "name": "routes_MarketingCollectionsAppQuery",
   "id": null,
-  "text": "query routes_MarketingCollectionsAppQuery {\n  categories: marketingCategories {\n    ...CollectionsApp_categories\n  }\n}\n\nfragment CollectionsApp_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
+  "text": "query routes_MarketingCollectionsAppQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -58,7 +58,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CollectionsApp_categories",
+            "name": "Collections_categories",
             "args": null
           }
         ]
@@ -130,5 +130,5 @@ const node: ConcreteRequest = {
     ]
   }
 };
-(node as any).hash = 'a33bff1af157797503b0c731d9ca3e8c';
+(node as any).hash = '86e70b201bcadc940f317bc5e17b5824';
 export default node;

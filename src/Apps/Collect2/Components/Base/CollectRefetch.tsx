@@ -1,5 +1,8 @@
 import { CollectRefetch_viewer } from "__generated__/CollectRefetch_viewer.graphql"
-import { FilterState, untrackedFilters } from "Apps/Collect/FilterState"
+import {
+  FilterState,
+  untrackedFilters,
+} from "Apps/Collect2/Routes/Collect/FilterState"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { isEqual } from "lodash"
@@ -138,7 +141,7 @@ export const CollectRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectRefetchQuery(
+    query CollectRefetch2Query(
       $medium: String
       $major_periods: [String]
       $partner_id: ID

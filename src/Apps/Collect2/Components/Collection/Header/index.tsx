@@ -1,5 +1,5 @@
 import { EntityHeader, ReadMore, space } from "@artsy/palette"
-import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect/Components/Collection/Header/DefaultHeader"
+import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect2/Components/Collection/Header/DefaultHeader"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { cloneDeep, filter, take } from "lodash"
@@ -398,7 +398,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
   {
     artworks: graphql`
       fragment Header_artworks on FilterArtworks {
-        ...DefaultHeader_headerArtworks
+        ...DefaultHeader2_headerArtworks
 
         merchandisable_artists {
           id

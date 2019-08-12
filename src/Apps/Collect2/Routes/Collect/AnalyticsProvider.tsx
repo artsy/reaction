@@ -1,4 +1,4 @@
-import { FilterState, State } from "Apps/Collect/FilterState"
+import { FilterState, State } from "Apps/Collect2/Routes/Collect/FilterState"
 import { track } from "Artsy/Analytics/track"
 import React from "react"
 import { Provider } from "unstated"

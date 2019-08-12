@@ -4,7 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectRefetchContainer } from "./CollectRefetch"
 
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { FilterContainer } from "../Filters"
 
 export interface CollectFilterContainerProps {

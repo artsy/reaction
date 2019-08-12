@@ -4,7 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { CollectionRefetchContainer } from "./CollectionRefetch"
 
 import { CollectionFilterContainer_collection } from "__generated__/CollectionFilterContainer_collection.graphql"
-import { FilterState } from "Apps/Collect/FilterState"
+import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { FilterContainer } from "../Filters"
 import { SortTypes } from "../Filters/SortFilterSortTypes"
 

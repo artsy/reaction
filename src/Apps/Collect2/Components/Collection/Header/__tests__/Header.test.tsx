@@ -3,7 +3,7 @@ import { FollowArtistButton_artist$ref } from "__generated__/FollowArtistButton_
 import {
   collectionHeaderArtworks,
   defaultCollectionHeaderArtworks,
-} from "Apps/Collect/Components/Collection/Header/__tests__/fixtures/artworks"
+} from "Apps/Collect2/Components/Collection/Header/__tests__/fixtures/artworks"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount, shallow } from "enzyme"
 import React from "react"

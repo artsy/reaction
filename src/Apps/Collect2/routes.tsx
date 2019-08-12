@@ -4,9 +4,9 @@ import { graphql } from "react-relay"
 
 import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
 
-import { CollectionsAppFragmentContainer as CollectionsApp } from "Apps/Collections/CollectionsApp"
 import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
 import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
+import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 import {
   buildUrlForCollectApp,
@@ -30,7 +30,7 @@ export const routes: RouteConfig[] = [
     path: "/collect/:medium?",
     Component: CollectApp,
     query: graphql`
-      query routes_CollectAppQuery(
+      query routes_CollectApp2Query(
         $medium: String
         $major_periods: [String]
         $partner_id: ID
@@ -50,7 +50,7 @@ export const routes: RouteConfig[] = [
         $page: Int
       ) {
         viewer {
-          ...CollectApp_viewer
+          ...Collect_viewer
             @arguments(
               medium: $medium
               major_periods: $major_periods
@@ -94,7 +94,7 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_MarketingCollectionsAppQuery {
         categories: marketingCategories {
-          ...CollectionsApp_categories
+          ...Collections_categories
         }
       }
     `,
@@ -110,7 +110,7 @@ export const routes: RouteConfig[] = [
     path: "/collection/:slug",
     Component: CollectionApp,
     query: graphql`
-      query routes_MarketingCollectionAppQuery(
+      query routes_MarketingCollectionApp2Query(
         $slug: String!
         $medium: String
         $major_periods: [String]

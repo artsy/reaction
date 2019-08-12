@@ -1,12 +1,12 @@
 import { Box, color, Flex, Image } from "@artsy/palette"
-import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
+import { DefaultHeader2_headerArtworks } from "__generated__/DefaultHeader2_headerArtworks.graphql"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { useWindowSize } from "Utils/Hooks/useWindowSize"
 
 interface Props {
-  headerArtworks: DefaultHeader_headerArtworks
+  headerArtworks: DefaultHeader2_headerArtworks
   defaultHeaderImageHeight: number
 }
 
@@ -101,7 +101,7 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
   CollectionDefaultHeader,
   {
     headerArtworks: graphql`
-      fragment DefaultHeader_headerArtworks on FilterArtworks {
+      fragment DefaultHeader2_headerArtworks on FilterArtworks {
         hits {
           href
           id

@@ -1,23 +1,23 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _CollectionsApp_categories$ref: unique symbol;
-export type CollectionsApp_categories$ref = typeof _CollectionsApp_categories$ref;
-export type CollectionsApp_categories = ReadonlyArray<{
+declare const _Collections_categories$ref: unique symbol;
+export type Collections_categories$ref = typeof _Collections_categories$ref;
+export type Collections_categories = ReadonlyArray<{
     readonly name: string;
     readonly collections: ReadonlyArray<{
         readonly slug: string;
         readonly headerImage: string | null;
         readonly title: string;
     }>;
-    readonly " $refType": CollectionsApp_categories$ref;
+    readonly " $refType": Collections_categories$ref;
 }>;
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectionsApp_categories",
+  "name": "Collections_categories",
   "type": "MarketingCollectionCategory",
   "metadata": {
     "plural": true
@@ -72,5 +72,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '9e6e605a7a7bf036decd80efe35f527a';
+(node as any).hash = '66eb3896886d261bafe79247912bf6b9';
 export default node;

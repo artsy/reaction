@@ -1,5 +1,5 @@
 import { Box, Separator } from "@artsy/palette"
-import { CollectionApp_collection } from "__generated__/CollectionApp_collection.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "Apps/Collect2/Components/Collection/CollectionFilterContainer"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Components/Collection/Header"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
@@ -20,7 +20,7 @@ import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
 
 interface CollectionAppProps extends SystemContextProps {
-  collection: CollectionApp_collection
+  collection: Collection_collection
 }
 
 @track<CollectionAppProps>(props => ({
@@ -98,7 +98,7 @@ export const CollectionAppFragmentContainer = createFragmentContainer(
   withSystemContext(CollectionApp),
   {
     collection: graphql`
-      fragment CollectionApp_collection on MarketingCollection
+      fragment Collection_collection on MarketingCollection
         @argumentDefinitions(
           aggregations: {
             type: "[ArtworkAggregation]"
