@@ -162,12 +162,14 @@ export const getArtsySlugsFromArticle = (
   article: ArticleData
 ): SlugsFromArticle => {
   const articleBody = article.sections
-    .map(section => {
-      if (section.type === "text") {
-        return section.body
-      }
-    })
-    .join()
+    ? article.sections
+        .map(section => {
+          if (section.type === "text") {
+            return section.body
+          }
+        })
+        .join()
+    : ""
 
   const artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
   const genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))

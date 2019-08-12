@@ -5,7 +5,6 @@ import track from "react-tracking"
 import { ArticleProps } from "../Article"
 import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
-import { TooltipsData } from "../ToolTip/TooltipsDataLoader"
 import { ArticleData } from "../Typings"
 import { FeatureLayout } from "./FeatureLayout"
 import { StandardLayout } from "./StandardLayout"
@@ -66,17 +65,12 @@ export class ArticleWithFullScreen extends React.Component<
       customEditorial,
       slideIndex,
       viewerIsOpen,
-      onOpenAuthModal,
     } = this.props
 
     const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
 
     return (
-      <TooltipsData
-        article={article}
-        shouldFetchData={this.props.showTooltips}
-        onOpenAuthModal={onOpenAuthModal}
-      >
+      <div>
         {customEditorial ? (
           <EditorialFeature {...articleProps} />
         ) : article.layout === "feature" ? (
@@ -90,7 +84,7 @@ export class ArticleWithFullScreen extends React.Component<
           slideIndex={slideIndex}
           images={fullscreenImages}
         />
-      </TooltipsData>
+      </div>
     )
   }
 }

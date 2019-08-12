@@ -7,7 +7,11 @@ import {
   getFullEditorialHref,
   getMediaDate,
 } from "../Constants"
-import { FeatureArticle, VideoArticle } from "../Fixtures/Articles"
+import {
+  FeatureArticle,
+  SeriesArticle,
+  VideoArticle,
+} from "../Fixtures/Articles"
 
 describe("getMediaDate", () => {
   let article
@@ -112,7 +116,10 @@ describe("getFullEditorialHref", () => {
 })
 
 describe("getArtsySlugs", () => {
-  const article = cloneDeep(FeatureArticle)
+  let article
+  beforeEach(() => {
+    article = cloneDeep(FeatureArticle)
+  })
 
   it("#getArtsySlugsFromArticle returns object with arrays of artsy ids by model", () => {
     article.sections.push({
@@ -125,6 +132,14 @@ describe("getArtsySlugs", () => {
     expect(slugs.artists.length).toBe(6)
     expect(slugs.genes.length).toBe(1)
     expect(slugs.genes[0]).toBe("capitalist-realism")
+  })
+
+  it("#getArtsySlugsFromArticle can handle articles without sections", () => {
+    article = cloneDeep(SeriesArticle)
+    const slugs = getArtsySlugsFromArticle(article)
+
+    expect(slugs.artists.length).toBe(0)
+    expect(slugs.genes.length).toBe(0)
   })
 
   it("#getArtsySlugsFromHTML can return linked artists from html", () => {
