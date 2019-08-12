@@ -3,6 +3,7 @@ import { Collections_categories } from "__generated__/Collections_categories.gra
 import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
+import { Link, Router } from "found"
 import React, { Component } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -11,6 +12,7 @@ import { CollectionEntity, CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {
   categories: Collections_categories
+  router: Router
 }
 
 const META_DESCRIPTION =
@@ -19,7 +21,7 @@ const META_DESCRIPTION =
 
 export class CollectionsApp extends Component<CollectionsAppProps> {
   render() {
-    const { categories } = this.props
+    const { categories, router } = this.props
 
     return (
       <>
@@ -45,7 +47,7 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
               </Serif>
 
               <Sans size="3" weight="medium">
-                <a href="/collect">View works</a>
+                <Link to="/collect">View works</Link>
               </Sans>
             </Flex>
             {categories &&
@@ -56,6 +58,7 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
                     key={index}
                     name={category.name}
                     collections={category.collections as CollectionEntity[]}
+                    router={router}
                   />
                 ))}
           </FrameWithRecentlyViewed>

@@ -7,6 +7,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
+import { Link as RouterLink } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -70,7 +71,7 @@ export class CollectApp extends Component<CollectAppProps> {
             </Serif>
 
             <Sans size="3" weight="medium">
-              <a href="/collections">View collections</a>
+              <RouterLink to="/collections">View collections</RouterLink>
             </Sans>
           </Flex>
           <Box>

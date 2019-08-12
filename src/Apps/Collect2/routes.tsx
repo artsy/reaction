@@ -127,7 +127,7 @@ export const routes: RouteConfig[] = [
         $page: Int
       ) {
         collection: marketingCollection(slug: $slug) {
-          ...CollectionApp_collection
+          ...Collection_collection
             @arguments(
               medium: $medium
               major_periods: $major_periods

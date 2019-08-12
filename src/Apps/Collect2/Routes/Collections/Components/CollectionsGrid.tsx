@@ -11,6 +11,7 @@ import {
   Separator,
   Spacer,
 } from "@artsy/palette"
+import { Router } from "found"
 
 export interface CollectionEntity {
   title: string
@@ -21,11 +22,12 @@ export interface CollectionEntity {
 interface CollectionsGridProps {
   collections: CollectionEntity[]
   name?: string
+  router: Router
 }
 
 export class CollectionsGrid extends Component<CollectionsGridProps> {
   render() {
-    const { collections, name } = this.props
+    const { collections, name, router } = this.props
     const hasShortRow = collections.length % 3 !== 0 // Preserve left align
 
     return (
@@ -59,6 +61,10 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                     href={`/collection/${collection.slug}`}
                     imageUrl={imageUrl}
                     name={collection.title}
+                    onClick={event => {
+                      event.preventDefault()
+                      router.push(`/collection/${collection.slug}`)
+                    }}
                   />
                   <Separator />
                 </Flex>
