@@ -1,6 +1,6 @@
+import { pMedia } from "Components/Helpers"
+import { ArticleLayout, SectionData } from "Components/Publishing/Typings"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
-import { ArticleLayout, SectionData } from "../Typings"
 
 const BlockquoteWidth = "900px"
 const ColumnWidth = "680px"
