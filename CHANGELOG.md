@@ -1,3 +1,15 @@
+# v16.23.3 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] SectionsList can accommodate custom widths [#2679](https://github.com/artsy/reaction/pull/2679) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.23.2 (Mon Aug 12 2019)
 
 #### 🐛  Bug Fix
