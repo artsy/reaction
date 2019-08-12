@@ -1,6 +1,6 @@
 import { Separator, Serif } from "@artsy/palette"
+import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
 import { Collect_viewer } from "__generated__/Collect_viewer.graphql"
-import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
 import { CollectFilterFragmentContainer as ArtworkGrid } from "Apps/Collect2/Components/Base/CollectFilterContainer"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -17,7 +17,7 @@ import { getMetadataForMedium } from "./CollectMediumMetadata"
 
 export interface CollectAppProps {
   viewer?: Collect_viewer
-  marketingCollections?: CollectionsHubsNav_marketingCollections
+  marketingCollections?: Collect_marketingCollections
   params?: {
     medium: string
   }
@@ -85,6 +85,12 @@ export class CollectApp extends Component<CollectAppProps> {
 }
 
 export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
+  marketingCollections: graphql`
+    fragment Collect_marketingCollections on MarketingCollection
+      @relay(plural: true) {
+      ...CollectionsHubsNav_marketingCollections
+    }
+  `,
   viewer: graphql`
     fragment Collect_viewer on Viewer
       @argumentDefinitions(

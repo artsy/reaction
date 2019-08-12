@@ -80,7 +80,7 @@ export const collectRoutes: RouteConfig[] = [
             )
         }
         marketingCollections(size: 6) {
-          ...CollectionsHubsNav_marketingCollections
+          ...Collect_marketingCollections
         }
       }
     `,
