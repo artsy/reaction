@@ -270,6 +270,35 @@ describe("The respond page", () => {
           "/orders/2939023/review/counter"
         )
       })
+
+      it("works when a valid number is inputted for a non-usd currency", async () => {
+        const nonUSDPage = await buildPage({
+          mockData: {
+            order: {
+              ...testOrder,
+              currencyCode: "GBP",
+            },
+          },
+        })
+        await nonUSDPage.selectCounterRadio()
+        await nonUSDPage.setOfferAmount(9000)
+
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
+        await nonUSDPage.clickSubmit()
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.lastFetchVariables).toMatchObject({
+          input: {
+            offerId: "myoffer-id",
+            offerPrice: {
+              amount: 9000,
+              currencyCode: "GBP",
+            },
+          },
+        })
+        expect(routes.mockPushRoute).toHaveBeenCalledWith(
+          "/orders/2939023/review/counter"
+        )
+      })
     })
 
     it("shows the error modal if submitting a counter offer fails at network level", async () => {

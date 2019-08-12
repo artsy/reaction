@@ -1,4 +1,5 @@
-import { CollectionsHubFixture } from "Apps/__tests__/Fixtures/Collections"
+import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import {
@@ -6,15 +7,22 @@ import {
   StyledLink,
   ThumbnailImage,
 } from "../OtherCollectionEntity"
-jest.unmock("react-tracking")
+
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("OtherCollectionEntity", () => {
   let props
+  const trackEvent = jest.fn()
 
   beforeEach(() => {
     props = {
-      member: CollectionsHubFixture[0].linkedCollections[0].members[0],
+      member: CollectionHubFixture.linkedCollections[0].members[0],
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("Renders collection's meta data", () => {
@@ -40,9 +48,26 @@ describe("OtherCollectionEntity", () => {
   })
 
   it("Returns entity with just text when there is no image", () => {
-    props.member = CollectionsHubFixture[0].linkedCollections[0].members[1]
+    props.member = CollectionHubFixture.linkedCollections[0].members[1]
     const component = mount(<OtherCollectionEntity {...props} />)
 
     expect(component.find(ThumbnailImage).length).toBe(0)
+  })
+
+  describe("Tracking", () => {
+    it("Tracks collection click", () => {
+      const component = mount(<OtherCollectionEntity {...props} />)
+
+      component.at(0).simulate("click")
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Click",
+        context_page: "Collection",
+        context_module: "OtherCollectionsRail",
+        context_page_owner_type: "Collection",
+        type: "Link",
+        destination_path: "undefined/collection/artist-posters",
+      })
+    })
   })
 })

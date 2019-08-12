@@ -33,22 +33,39 @@ describe("ArtworkDetails", () => {
       data.image_rights = null
       data.framed = null
       wrapper = await getWrapper(data)
-      expect(wrapper.html()).toContain("Signed")
-      expect(wrapper.html()).toContain("Condition details")
+      expect(wrapper.html()).toContain("Signature")
+      expect(wrapper.html()).toContain("Condition")
       expect(wrapper.html()).toContain("Certificate of authenticity")
+      expect(
+        wrapper.find("ArtworkDetailsAdditionalInfo").find("Row").length
+      ).toBe(3)
     })
   })
 
-  describe("ArtworkDetails for gallery artwork with complete details", () => {
-    beforeAll(async () => {
-      wrapper = await getWrapper()
-    })
+  it("Does not render the additional details section for an artwork who has no metadata", async () => {
+    const emptyData = {
+      ...ArtworkDetailsFixture,
+      series: null,
+      publisher: null,
+      manufacturer: null,
+      image_rights: null,
+      framed: null,
+      signatureInfo: null,
+      conditionDescription: null,
+      certificateOfAuthenticity: null,
+    }
 
-    it("renders a correct component tree", () => {
+    const emptyDataWrapper = await getWrapper(emptyData)
+    expect(
+      emptyDataWrapper.find("ArtworkDetailsAdditionalInfo").find("Row").length
+    ).toBe(0)
+  })
+
+  describe("ArtworkDetails for gallery artwork with complete details", () => {
+    it("renders a correct component tree", async () => {
+      wrapper = await getWrapper()
       const html = wrapper.html()
       expect(html).toContain("About the work")
-      // One for Artsy details and one for partner details
-      expect(wrapper.find("ReadMore").length).toBe(2)
       expect(html).toContain("Following")
       expect(html).toContain("Articles")
       expect(html).toContain("Exhibition history")
@@ -83,6 +100,7 @@ describe("ArtworkDetails", () => {
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).not.toContain("S9")
     })
+
     it("does not display partner Icon if artwork is from gallery auction", async () => {
       const benefitArtwork = cloneDeep(ArtworkDetailsFixture)
       benefitArtwork.sale = { isBenefit: false, isGalleryAuction: true }

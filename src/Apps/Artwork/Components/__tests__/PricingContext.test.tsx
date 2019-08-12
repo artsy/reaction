@@ -111,9 +111,11 @@ describe("PricingContext", () => {
       .find(QuestionCircleIcon)
       .at(0)
       .simulate("click")
-    expect(wrapper.text()).toContain(
-      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-    )
+    setTimeout(() => {
+      expect(wrapper.text()).toContain(
+        "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
+      )
+    })
   })
 
   it("displays $0 as the minimum price label if the minimum price is null", async () => {
@@ -274,6 +276,7 @@ Object {
         .find(Link)
         .at(0)
         .simulate("click")
+
       expect(dispatch).toBeCalledWith({
         context_module: "Price Context",
         action_type: "Click",

@@ -4,7 +4,7 @@ import { FilterState } from "../../FilterState"
 
 export const MediumFilter: React.SFC<{
   filters: FilterState
-  mediums: Array<{
+  mediums?: Array<{
     id: string
     name: string
   }>

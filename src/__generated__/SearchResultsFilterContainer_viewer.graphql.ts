@@ -2,34 +2,16 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { SearchResultsRefetch_viewer$ref } from "./SearchResultsRefetch_viewer.graphql";
-export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _SearchResultsFilterContainer_viewer$ref: unique symbol;
 export type SearchResultsFilterContainer_viewer$ref = typeof _SearchResultsFilterContainer_viewer$ref;
 export type SearchResultsFilterContainer_viewer = {
-    readonly filter_artworks: ({
-        readonly aggregations: ReadonlyArray<({
-            readonly slice: ArtworkAggregation | null;
-            readonly counts: ReadonlyArray<({
-                readonly name: string | null;
-                readonly id: string;
-            }) | null> | null;
-        }) | null> | null;
-    }) | null;
     readonly " $fragmentRefs": SearchResultsRefetch_viewer$ref;
     readonly " $refType": SearchResultsFilterContainer_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "SearchResultsFilterContainer_viewer",
   "type": "Viewer",
@@ -88,7 +70,6 @@ return {
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
       "defaultValue": [
-        "MEDIUM",
         "TOTAL"
       ]
     },
@@ -148,75 +129,6 @@ return {
     }
   ],
   "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "filter_artworks",
-      "storageKey": null,
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
-        },
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0,
-          "type": "Int"
-        }
-      ],
-      "concreteType": "FilterArtworks",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "aggregations",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "ArtworksAggregationResults",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "slice",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "counts",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "AggregationCount",
-              "plural": true,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
-                v0
-              ]
-            }
-          ]
-        },
-        v0
-      ]
-    },
     {
       "kind": "FragmentSpread",
       "name": "SearchResultsRefetch_viewer",
@@ -327,6 +239,5 @@ return {
     }
   ]
 };
-})();
-(node as any).hash = '10c3756d2b9d072fb78f6bbf1a733644';
+(node as any).hash = '3eaead19601726ca8f3897511110f3ba';
 export default node;

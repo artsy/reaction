@@ -5,6 +5,15 @@ import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
 import { urlFragmentFromState } from "./Utils/urlFragmentFromState"
 
+export const initialFilterState = {
+  height: "*-*",
+  major_periods: [],
+  page: 1,
+  price_range: "*-*",
+  sort: "-decayed_merch",
+  width: "*-*",
+}
+
 export interface Filters {
   acquireable?: boolean
   at_auction?: boolean
@@ -23,16 +32,7 @@ export interface Filters {
   width: string
 }
 
-export const initialFilterState = {
-  height: "*-*",
-  major_periods: [],
-  page: 1,
-  price_range: "*-*",
-  sort: "-decayed_merch",
-  width: "*-*",
-}
-
-export const FilterContext = React.createContext<{
+interface FilterContextProps {
   filters: Filters
   hasFilters: boolean
   isDefaultValue: (name: string) => boolean
@@ -40,7 +40,9 @@ export const FilterContext = React.createContext<{
   resetFilters: () => void
   setFilter: (name: string, value: any) => void
   unsetFilter: (name: string) => void
-}>({
+}
+
+export const FilterContext = React.createContext<FilterContextProps>({
   filters: initialFilterState,
   hasFilters: false,
   isDefaultValue: null,
@@ -50,66 +52,22 @@ export const FilterContext = React.createContext<{
   unsetFilter: null,
 })
 
-export const FilterContextProvider: React.FC<
-  Filters & { children: React.ReactNode }
-> = ({
-  children,
-  height = "*-*",
-  major_periods = [],
-  medium = "",
-  page = 1,
-  price_range = "*-*",
-  sort = "-decayed_merch",
-  width = "*-*",
-  ...rest
-}) => {
-  const [state, dispatch] = useReducer(filterReducer, {
-    height,
-    major_periods,
-    medium,
-    page,
-    price_range,
-    sort,
-    width,
-    ...rest,
-  })
-  const isMounted = useDidMount()
-  // const updateOnChange = Object.keys(state).map(prop => state[prop])
+export const FilterContextProvider: React.FC<{
+  filters: Filters
+  children: React.ReactNode
+}> = ({ children, filters = initialFilterState }) => {
+  const [filterState, dispatch] = useReducer(filterReducer, filters)
 
-  useEffect(() => {
-    if (isMounted) {
-      const queryString = urlFragmentFromState(state)
-      window.history.pushState(
-        {},
-        null,
-        `${window.location.pathname}?${queryString}`
-      )
-    }
-  })
-
-  /**
-   * TODO: use this to trigger resetting of fields when back/fwd buttons are hit
-   * because otherwise it doesn't always happen.
-   */
-  useEffect(() => {
-    window.addEventListener("popstate", handleChange)
-    return () => window.removeEventListener("popstate", handleChange)
-  }, [])
-
-  function handleChange() {
-    console.log("derive state from URL here, and update!")
-  }
-
-  const value = {
-    filters: state,
-    hasFilters: hasFilters(state),
+  const artworkFilterContext = {
+    filters: filterState,
+    hasFilters: hasFilters(filterState),
 
     isDefaultValue: field => {
-      return isDefaultFilter(field, state[field])
+      return isDefaultFilter(field, filterState[field])
     },
 
     rangeToTuple: range => {
-      return rangeToTuple(state, range)
+      return rangeToTuple(filterState, range)
     },
 
     setFilter: (name, val) => {
@@ -140,7 +98,9 @@ export const FilterContextProvider: React.FC<
   }
 
   return (
-    <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
+    <FilterContext.Provider value={artworkFilterContext}>
+      {children}
+    </FilterContext.Provider>
   )
 }
 
@@ -161,8 +121,44 @@ const filterReducer = (state, action) => {
     case "RESET": {
       return initialFilterState
     }
-    default:
-      throw new Error("Unexpected action")
+    default: {
+      throw new Error(
+        `Components/v2/ArtworkFilter/ArtworkFilterContext | Error setting filter: ${JSON.stringify(
+          action
+        )}`
+      )
+    }
+  }
+}
+
+/**
+ * FIXME: Need to create an adaptor to wire into history state; if using as a
+ * solo component we'll need to opt in.
+ */
+export const useURLState = state => {
+  const isMounted = useDidMount()
+  useEffect(() => {
+    if (isMounted) {
+      const queryString = urlFragmentFromState(state)
+      window.history.pushState(
+        {},
+        null,
+        `${window.location.pathname}?${queryString}`
+      )
+    }
+  }, []) // FIXME: add dependencies
+
+  /**
+   * TODO: use this to trigger resetting of fields when back/fwd buttons are hit
+   * because otherwise it doesn't always happen.
+   */
+  useEffect(() => {
+    window.addEventListener("popstate", handleChange)
+    return () => window.removeEventListener("popstate", handleChange)
+  }, [])
+
+  function handleChange() {
+    console.log("derive state from URL here, and update!")
   }
 }
 
@@ -172,13 +168,4 @@ const filterReducer = (state, action) => {
 export const useFilterContext = () => {
   const filterContext = useContext(FilterContext)
   return filterContext
-}
-
-/**
- * Prefer using `useFilterContext`. This exists for legacy class components to
- * use as a render-prop.
- */
-export const FilterContextConsumer = ({ children }) => {
-  const filterContext = useFilterContext()
-  return children(filterContext)
 }

@@ -13,6 +13,15 @@ export const ArtworkFilterFixture = {
   },
   filtered_artworks: {
     __id: "testest",
+    artworks_connection: {
+      edges: [
+        {
+          node: {
+            id: "percy-z-mouse-on-tile",
+          },
+        },
+      ],
+    },
     aggregations: [
       {
         slice: "INSTITUTION",

@@ -1,3 +1,422 @@
+# v16.23.1 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1370: add analytics tracking to FeaturedCollections module [#2678](https://github.com/artsy/reaction/pull/2678) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.23.0 (Fri Aug 09 2019)
+
+#### 🚀  Enhancement
+
+- Update Metaphysics GraphQL schema [#2677](https://github.com/artsy/reaction/pull/2677) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.22.13 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Artist] Consolidate aggregations and grid request for filter, when possible [#2674](https://github.com/artsy/reaction/pull/2674) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.22.12 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- adds latest svgs from wax [#2676](https://github.com/artsy/reaction/pull/2676) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.22.11 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- Fix render implementation in AuctionApp routes
+
+If provided, a `render` function in a [found][] router implementation
+will execute before and after a Relay response is available. To account
+for the early invocation, guard against the presence of `props`.
+
+[found]: https://github.com/4Catalyzer/found
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2672](https://github.com/artsy/reaction/pull/2672) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.22.10 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1372: add analytics events for OtherCollectionsRail [#2653](https://github.com/artsy/reaction/pull/2653) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.22.9 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Table of Contents [#2667](https://github.com/artsy/reaction/pull/2667) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.22.8 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Handle xs breakpoint with metadata field [#2673](https://github.com/artsy/reaction/pull/2673) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.44 to v4.14.46 [#2671](https://github.com/artsy/reaction/pull/2671) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.22.7 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Updates Artwork Details display [#2668](https://github.com/artsy/reaction/pull/2668) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.22.6 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Upload Artsy Vanguard 2019 SVG Files [#2670](https://github.com/artsy/reaction/pull/2670) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.22.5 (Mon Aug 05 2019)
+
+
+
+---
+
+# v16.22.4 (Mon Aug 05 2019)
+
+
+
+---
+
+# v16.22.3 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Co-locate Vanguard assets and components [#2666](https://github.com/artsy/reaction/pull/2666) ([@eessex](https://github.com/eessex))
+- [ArtworkFilter v2] More progress [#2661](https://github.com/artsy/reaction/pull/2661) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.22.2 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Display video in headers/intro [#2664](https://github.com/artsy/reaction/pull/2664) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.22.1 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add Inverted Text CSS to Storybooks [#2662](https://github.com/artsy/reaction/pull/2662) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.43 to v4.14.44 [#2665](https://github.com/artsy/reaction/pull/2665) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.22.0 (Mon Aug 05 2019)
+
+#### 🚀  Enhancement
+
+- Auct-463 auction registration modal [#2635](https://github.com/artsy/reaction/pull/2635) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/auto-config from 1.0.0 to v1.0.1 [#2663](https://github.com/artsy/reaction/pull/2663) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.41 to v4.14.43 [#2660](https://github.com/artsy/reaction/pull/2660) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.5 (Fri Aug 02 2019)
+
+
+
+---
+
+# v16.21.4 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette to 4.14.41 [#2658](https://github.com/artsy/reaction/pull/2658) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.39 to v4.14.41 [#2659](https://github.com/artsy/reaction/pull/2659) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.3 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- @yuki24 => [Collect] Remove unneeded medium aggregation call [#2639](https://github.com/artsy/reaction/pull/2639) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.21.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1391,Collections carousel tweaks QA for artist series and related collections [#2648](https://github.com/artsy/reaction/pull/2648) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v16.21.1 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Revert #2640 [#2655](https://github.com/artsy/reaction/pull/2655) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.21.0 (Thu Aug 01 2019)
+
+#### 🚀  Enhancement
+
+- Add redirects to AuctionApp bidder registration flow [#2643](https://github.com/artsy/reaction/pull/2643) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.20.4 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Use actual data in Vanguard Scaffold [#2654](https://github.com/artsy/reaction/pull/2654) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.20.3 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1282: Updates offer views to handle non-USD currencies [#2646](https://github.com/artsy/reaction/pull/2646) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.20.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Collections Default Header Bug Fix [#2647](https://github.com/artsy/reaction/pull/2647) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.38 to v4.14.39 [#2651](https://github.com/artsy/reaction/pull/2651) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.20.1 (Wed Jul 31 2019)
+
+#### 🐛  Bug Fix
+
+- [RecentlyViewed Carousel] Make consistent with recent patterns [#2650](https://github.com/artsy/reaction/pull/2650) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.20.0 (Wed Jul 31 2019)
+
+#### 🚀  Enhancement
+
+- Address more MP v2 deprecations [#2640](https://github.com/artsy/reaction/pull/2640) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.8 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.7 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections]  Default Header [#2634](https://github.com/artsy/reaction/pull/2634) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.19.6 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.5 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Remove unneeded call for medium aggregations [#2638](https://github.com/artsy/reaction/pull/2638) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.19.4 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Scaffold Vanguard series page [#2636](https://github.com/artsy/reaction/pull/2636) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.19.3 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2637](https://github.com/artsy/reaction/pull/2637) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.2 (Mon Jul 29 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1347 - Uses modal for price in context [#2632](https://github.com/artsy/reaction/pull/2632) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.27 to v4.14.38 [#2601](https://github.com/artsy/reaction/pull/2601) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.19.1 (Fri Jul 26 2019)
 
 #### 🐛  Bug Fix

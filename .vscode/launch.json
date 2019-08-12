@@ -7,33 +7,28 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Server",
-      "preLaunchTask": "compile:server",
-      "program": "${workspaceRoot}/index.js",
-      "args": ["${workspaceRoot}/dist"],
-      "sourceMaps": true,
-      "outFiles": ["${workspaceRoot}/dist/**/*.js"],
-      "internalConsoleOptions": "openOnSessionStart"
+      "name": "Jest All",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
     },
     {
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "storybook",
-      "name": "Launch Chrome",
-      "url": "http://localhost:4444",
-      "webRoot": "${workspaceRoot}/src"
-    },
-    {
-      "name": "Run Tests With Debugger (slower, use yarn for normal work)",
       "type": "node",
       "request": "launch",
-      "port": 5858,
-      "address": "localhost",
-      "sourceMaps": true,
-      "stopOnEntry": false,
-      "runtimeExecutable": null,
-      "runtimeArgs": ["debug", "--debug-brk", "./node_modules/.bin/jest", "-i"],
-      "cwd": "${workspaceRoot}"
+      "name": "Jest Current File",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["**/__tests__/**/${fileBasename}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
     }
   ]
 }

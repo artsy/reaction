@@ -2,14 +2,20 @@ import {
   Box,
   color,
   Flex,
+  Link,
   ReadMore,
   ResponsiveImage,
   Sans,
   Serif,
+  Spacer,
 } from "@artsy/palette"
 import { FeaturedCollectionsRails_collectionGroup } from "__generated__/FeaturedCollectionsRails_collectionGroup.graphql"
-import React from "react"
+import * as Schema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
+import { ArrowButton, Carousel } from "Components/v2"
+import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 interface Props {
@@ -20,40 +26,110 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
   collectionGroup,
 }) => {
   const { members, name } = collectionGroup
+  const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    trackEvent({
+      action_type: Schema.ActionType.Impression,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+    })
+  }, [])
+
+  const trackArrowClick = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      context_page: Schema.PageName.CollectionPage,
+      type: Schema.Type.Button,
+      subject: Schema.Subject.ClickedNextButton,
+    })
+  }
+
   return (
-    <>
+    <Box>
       <Serif size="5" m={1}>
         {name}
       </Serif>
-      <Flex flexDirection="row">
-        {members.map(({ title, description, price_guidance, thumbnail }) => (
-          <Container p={2} m={1}>
-            <ImageContainer>
-              <ResponsiveImage src={thumbnail} />
-            </ImageContainer>
-            <Serif size="5" mt={1}>
-              {title}
-            </Serif>
-            <Sans
-              size="2"
-              color="black60"
-            >{`Starting at $${price_guidance}`}</Sans>
-            <ExtendedSerif size="3" mt={1}>
-              <ReadMore
-                maxChars={100}
-                content={
-                  <>
-                    {description && (
-                      <span dangerouslySetInnerHTML={{ __html: description }} />
-                    )}
-                  </>
-                }
-              />
-            </ExtendedSerif>
-          </Container>
-        ))}
-      </Flex>
-    </>
+      <Carousel
+        height="500px"
+        options={{
+          groupCells: 4,
+          cellAlign: "left",
+          wrapAround: false,
+          pageDots: false,
+          draggable: false,
+        }}
+        data={members}
+        render={slide => {
+          return <FeaturedCollectionEntity member={slide} />
+        }}
+        renderLeftArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
+        renderRightArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+          )
+        }}
+        onArrowClick={() => trackArrowClick()}
+      />
+      <Spacer pb={4} />
+    </Box>
+  )
+}
+
+interface FeaturedCollectionEntityProps {
+  member: any
+}
+
+export const FeaturedCollectionEntity: React.FC<
+  FeaturedCollectionEntityProps
+> = ({ member }) => {
+  const { description, price_guidance, slug, thumbnail, title } = member
+  const { trackEvent } = useTracking()
+
+  const onClickLink = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      type: Schema.Type.Link,
+      destination_path: `${sd.APP_URL}/collection/${slug}`,
+    })
+  }
+
+  return (
+    <Container p={2} m={1}>
+      <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
+        <ImageContainer>
+          <FeaturedImage src={thumbnail} />
+        </ImageContainer>
+        <CollectionTitle size="5" mt={1}>
+          {title}
+        </CollectionTitle>
+        <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
+        <ExtendedSerif size="3" mt={1}>
+          <ReadMore
+            maxChars={100}
+            content={
+              <>
+                {description && (
+                  <span dangerouslySetInnerHTML={{ __html: description }} />
+                )}
+              </>
+            }
+          />
+        </ExtendedSerif>
+      </StyledLink>
+    </Container>
   )
 }
 
@@ -94,6 +170,38 @@ const ExtendedSerif = styled(Serif)`
 
     div p {
       display: inline;
+    }
+  }
+`
+export const FeaturedImage = styled(ResponsiveImage)`
+  background-position: top;
+`
+
+export const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 60%;
+    svg {
+      height: 18px;
+      width: 18px;
+    }
+  }
+`
+
+const CollectionTitle = styled(Serif)`
+  width: max-content;
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &:hover {
+    text-decoration: none;
+
+    ${CollectionTitle} {
+      text-decoration: underline;
     }
   }
 `

@@ -6,6 +6,7 @@ export enum PageName {
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
   CollectPage = "Collect page",
+  CollectionPage = "Collection",
   SearchPage = "Search page",
 }
 
@@ -304,6 +305,16 @@ export enum ContextModule {
    * Collections Rails
    */
   CollectionsRail = "CollectionsRail",
+
+  /**
+   * Other Collections Rail
+   */
+  OtherCollectionsRail = "OtherCollectionsRail",
+
+  /**
+   * Featured Collections Rail
+   */
+  FeaturedCollectionsRail = "FeaturedCollectionsRail",
 }
 
 export enum Flow {
