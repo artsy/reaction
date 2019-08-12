@@ -10,7 +10,7 @@ export type ShippingAddress_ship = {
     readonly city: string | null;
     readonly postalCode: string | null;
     readonly region: string | null;
-    readonly country: string;
+    readonly country: string | null;
     readonly phoneNumber: string | null;
     readonly " $refType": ShippingAddress_ship$ref;
 };
@@ -20,7 +20,7 @@ export type ShippingAddress_ship = {
 const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "ShippingAddress_ship",
-  "type": "Ship",
+  "type": "CommerceShip",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -82,5 +82,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2fdc393b0608cc1499ddf4c1831ca94a';
+(node as any).hash = '965be360f1c02f1cf98d179dda1e2df4';
 export default node;

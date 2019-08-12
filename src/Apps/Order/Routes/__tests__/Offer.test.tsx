@@ -39,7 +39,7 @@ describe("Offer InitialMutation", () => {
     TestPage: OrderAppTestPage,
     query: graphql`
       query OfferTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Offer_order
         }
       }

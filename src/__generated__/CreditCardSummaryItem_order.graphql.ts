@@ -15,18 +15,10 @@ export type CreditCardSummaryItem_order = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "CreditCardSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -67,12 +59,23 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__id",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
-    v0
+    {
+      "kind": "ScalarField",
+      "alias": "__id",
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    }
   ]
 };
-})();
-(node as any).hash = 'e1b7a3f9688dc19be197743ecbfe5a54';
+(node as any).hash = '281587f1020c8ac58c8d214993f3c581';
 export default node;

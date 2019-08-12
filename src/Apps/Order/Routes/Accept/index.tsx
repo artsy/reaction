@@ -49,19 +49,19 @@ export class Accept extends Component<AcceptProps> {
         input: { offerId: this.props.order.lastOffer.id },
       },
       mutation: graphql`
-        mutation AcceptOfferMutation($input: buyerAcceptOfferInput!) {
-          ecommerceBuyerAcceptOffer(input: $input) {
+        mutation AcceptOfferMutation($input: CommerceBuyerAcceptOfferInput!) {
+          commerceBuyerAcceptOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
                   id
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -77,7 +77,7 @@ export class Accept extends Component<AcceptProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.acceptOffer()).ecommerceBuyerAcceptOffer
+      const orderOrError = (await this.acceptOffer()).commerceBuyerAcceptOffer
         .orderOrError
 
       if (orderOrError.error) {
@@ -257,7 +257,7 @@ export const AcceptFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(Accept))),
   {
     order: graphql`
-      fragment Accept_order on Order {
+      fragment Accept_order on CommerceOrder {
         id
         stateExpiresAt
         lineItems {
@@ -272,7 +272,7 @@ export const AcceptFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             id
             createdAt

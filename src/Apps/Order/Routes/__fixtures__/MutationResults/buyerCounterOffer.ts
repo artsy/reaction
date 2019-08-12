@@ -2,7 +2,7 @@ import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { DateTime } from "luxon"
 
 export const buyerCounterOfferSuccess = {
-  ecommerceBuyerCounterOffer: {
+  commerceBuyerCounterOffer: {
     orderOrError: {
       order: {
         ...OfferOrderWithShippingDetails,
@@ -14,7 +14,7 @@ export const buyerCounterOfferSuccess = {
   },
 }
 export const buyerCounterOfferFailed = {
-  ecommerceBuyerCounterOffer: {
+  commerceBuyerCounterOffer: {
     orderOrError: {
       error: {
         type: "validation",

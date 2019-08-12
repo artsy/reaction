@@ -49,7 +49,7 @@ describe("Payment", () => {
         me {
           ...Payment_me
         }
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Payment_order
         }
       }
@@ -108,7 +108,7 @@ describe("Payment", () => {
     expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         creditCardId: "credit-card-id",
-        orderId: "1234",
+        id: "1234",
       },
     })
   })

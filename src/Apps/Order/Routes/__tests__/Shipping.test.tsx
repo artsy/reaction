@@ -65,7 +65,7 @@ describe("Shipping", () => {
     },
     query: graphql`
       query ShippingTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Shipping_order
         }
       }
@@ -102,7 +102,7 @@ describe("Shipping", () => {
 Object {
   "input": Object {
     "fulfillmentType": "SHIP",
-    "orderId": "1234",
+    "id": "1234",
     "shipping": Object {
       "addressLine1": "14 Gower's Walk",
       "addressLine2": "Suite 2.5, The Loom",
@@ -204,7 +204,7 @@ Object {
             ...testOrder,
             requestedFulfillment: {
               ...validAddress,
-              __typename: "Ship",
+              __typename: "CommerceShip",
               name: "Dr Collector",
             },
           },

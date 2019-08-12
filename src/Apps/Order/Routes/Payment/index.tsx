@@ -74,9 +74,9 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       const orderOrError = (await this.setOrderPayment({
         input: {
           creditCardId: result.creditCardId,
-          orderId: this.props.order.id,
+          id: this.props.order.id,
         },
-      })).ecommerceSetOrderPayment.orderOrError
+      })).commerceSetPayment.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
@@ -160,11 +160,11 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       variables,
       mutation: graphql`
         mutation PaymentRouteSetOrderPaymentMutation(
-          $input: SetOrderPaymentInput!
+          $input: CommerceSetPaymentInput!
         ) {
-          ecommerceSetOrderPayment(input: $input) {
+          commerceSetPayment(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   creditCard {
                     id
@@ -178,7 +178,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -202,7 +202,7 @@ export const PaymentFragmentContainer = createFragmentContainer(
       }
     `,
     order: graphql`
-      fragment Payment_order on Order {
+      fragment Payment_order on CommerceOrder {
         id
         mode
         lineItems {

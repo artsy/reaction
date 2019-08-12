@@ -1,7 +1,7 @@
 import { OfferOrderWithShippingDetailsAndNote } from "Apps/__tests__/Fixtures/Order"
 
 export const fixFailedPaymentSuccess = {
-  ecommerceFixFailedPayment: {
+  commerceFixFailedPayment: {
     orderOrError: {
       order: {
         ...OfferOrderWithShippingDetailsAndNote,
@@ -11,7 +11,7 @@ export const fixFailedPaymentSuccess = {
 }
 
 export const fixFailedPaymentFailure = {
-  ecommerceFixFailedPayment: {
+  commerceFixFailedPayment: {
     orderOrError: {
       error: {
         type: "processing",
@@ -23,7 +23,7 @@ export const fixFailedPaymentFailure = {
 }
 
 export const fixFailedPaymentInsufficientInventoryFailure = {
-  ecommerceFixFailedPayment: {
+  commerceFixFailedPayment: {
     orderOrError: {
       error: {
         type: "processing",

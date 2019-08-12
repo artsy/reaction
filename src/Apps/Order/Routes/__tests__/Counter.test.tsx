@@ -53,7 +53,7 @@ describe("Submit Pending Counter Offer", () => {
     Component: CounterFragmentContainer,
     query: graphql`
       query CounterTestQuery {
-        order(id: "") {
+        order: commerceOrder(id: "") {
           ...Counter_order
         }
       }

@@ -157,13 +157,10 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
       const orderOrError = (await this.createCounterOffer({
         input: {
           offerId: this.props.order.lastOffer.id,
-          offerPrice: {
-            amount: this.state.offerValue,
-            currencyCode: this.props.order.currencyCode,
-          },
+          amountCents: this.state.offerValue * 100,
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
         },
-      })).ecommerceBuyerCounterOffer.orderOrError
+      })).commerceBuyerCounterOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
@@ -180,15 +177,17 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     return this.props.commitMutation<RespondCounterOfferMutation>({
       variables,
       mutation: graphql`
-        mutation RespondCounterOfferMutation($input: buyerCounterOfferInput!) {
-          ecommerceBuyerCounterOffer(input: $input) {
+        mutation RespondCounterOfferMutation(
+          $input: CommerceBuyerCounterOfferInput!
+        ) {
+          commerceBuyerCounterOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   ...Respond_order
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -342,7 +341,7 @@ export const RespondFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
   {
     order: graphql`
-      fragment Respond_order on Order {
+      fragment Respond_order on CommerceOrder {
         id
         mode
         state
@@ -361,7 +360,7 @@ export const RespondFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
             id

@@ -1,14 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 declare const _redirects_order$ref: unique symbol;
 export type redirects_order$ref = typeof _redirects_order$ref;
 export type redirects_order = {
     readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
     readonly lastTransactionFailed: boolean | null;
     readonly requestedFulfillment: ({
         readonly __typename: string;
@@ -27,13 +28,13 @@ export type redirects_order = {
     }) | null;
     readonly myLastOffer?: ({
         readonly id: string;
-        readonly createdAt: string | null;
+        readonly createdAt: string;
     }) | null;
     readonly lastOffer?: ({
         readonly id: string;
-        readonly createdAt: string | null;
+        readonly createdAt: string;
     }) | null;
-    readonly awaitingResponseFrom?: OrderParticipantEnum | null;
+    readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
     readonly " $refType": redirects_order$ref;
 };
 
@@ -47,17 +48,23 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = {
+v1 = [
+  v0,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "__id",
+    "args": null,
+    "storageKey": null
+  }
+],
+v2 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  v0,
-  v1
-],
 v3 = [
   v0,
   {
@@ -67,12 +74,12 @@ v3 = [
     "args": null,
     "storageKey": null
   },
-  v1
+  v2
 ];
 return {
   "kind": "Fragment",
   "name": "redirects_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -122,7 +129,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -131,7 +138,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -140,7 +147,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -151,9 +158,9 @@ return {
                   "args": null,
                   "concreteType": "Artwork",
                   "plural": false,
-                  "selections": v2
+                  "selections": v1
                 },
-                v1
+                v2
               ]
             }
           ]
@@ -168,12 +175,12 @@ return {
       "args": null,
       "concreteType": "CreditCard",
       "plural": false,
-      "selections": v2
+      "selections": v1
     },
-    v1,
+    v2,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -181,7 +188,7 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": v3
         },
@@ -191,7 +198,7 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": v3
         },
@@ -207,5 +214,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '69f41a6e9e04504f73cde98dea2ae25b';
+(node as any).hash = 'c01a4a399cd325004d47280b43c4ef84';
 export default node;

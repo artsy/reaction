@@ -14,15 +14,17 @@ import {
 jest.unmock("react-relay")
 
 const orderMutation = graphql`
-  mutation createTestEnvOrderMutation($input: CreateOrderWithArtworkInput!) {
-    createOrderWithArtwork(input: $input) {
+  mutation createTestEnvOrderMutation(
+    $input: CommerceCreateOrderWithArtworkInput!
+  ) {
+    commerceCreateOrderWithArtwork(input: $input) {
       orderOrError {
-        ... on OrderWithMutationSuccess {
+        ... on CommerceOrderWithMutationSuccess {
           order {
             id
           }
         }
-        ... on OrderWithMutationFailure {
+        ... on CommerceOrderWithMutationFailure {
           error {
             type
           }
@@ -33,11 +35,11 @@ const orderMutation = graphql`
 `
 
 const orderSuccess = {
-  createOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
+      __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        __typename: "BuyOrder",
+        __typename: "CommerceBuyOrder",
         id: "order-id",
       },
     },
@@ -45,9 +47,9 @@ const orderSuccess = {
 }
 
 const orderFailure = {
-  createOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "order-error",
       },
@@ -293,7 +295,7 @@ describe("test envs", () => {
 
     expect(onCompleted).toHaveBeenCalledTimes(2)
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ order: {} })
     expect(
       onCompleted.mock.calls[1][0].createCreditCard.creditCardOrError
@@ -311,7 +313,7 @@ describe("test envs", () => {
 
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     expect(
       onCompleted.mock.calls[1][0].createCreditCard.creditCardOrError
@@ -320,7 +322,9 @@ describe("test envs", () => {
 
   it("resets the mutation mocks after every test", () => {
     expect(mutations.resolvers.createCreditCard).not.toHaveBeenCalled()
-    expect(mutations.resolvers.createOrderWithArtwork).not.toHaveBeenCalled()
+    expect(
+      mutations.resolvers.commerceCreateOrderWithArtwork
+    ).not.toHaveBeenCalled()
   })
 
   it("lets you inspect mutation variables", async () => {
@@ -352,7 +356,7 @@ describe("test envs", () => {
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
   })
 
@@ -363,19 +367,21 @@ describe("test envs", () => {
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[1][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[1][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     page.orderSubmitButton.simulate("click")
     await page.update()
-    expect(mutations.resolvers.createOrderWithArtwork).toHaveBeenCalledTimes(3)
+    expect(
+      mutations.resolvers.commerceCreateOrderWithArtwork
+    ).toHaveBeenCalledTimes(3)
     expect(onCompleted).toHaveBeenCalledTimes(3)
     expect(
-      onCompleted.mock.calls[2][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[2][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ order: {} })
   })
 })

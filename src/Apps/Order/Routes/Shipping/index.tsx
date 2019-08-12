@@ -11,7 +11,7 @@ import {
 } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import {
-  OrderFulfillmentType,
+  CommerceOrderFulfillmentTypeEnum,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -58,7 +58,7 @@ export interface ShippingProps {
 }
 
 export interface ShippingState {
-  shippingOption: OrderFulfillmentType
+  shippingOption: CommerceOrderFulfillmentTypeEnum
   address: Address
   addressErrors: AddressErrors
   addressTouched: AddressTouched
@@ -69,9 +69,10 @@ const logger = createLogger("Order/Routes/Shipping/index.tsx")
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state: ShippingState = {
-    shippingOption: ((this.props.order.requestedFulfillment &&
-      this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
-      "SHIP") as OrderFulfillmentType,
+    shippingOption: (this.props.order.requestedFulfillment &&
+    this.props.order.requestedFulfillment.__typename !== "CommerceShip"
+      ? "PICKUP"
+      : "SHIP") as CommerceOrderFulfillmentTypeEnum,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
@@ -106,18 +107,18 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       variables,
       mutation: graphql`
         mutation ShippingOrderAddressUpdateMutation(
-          $input: SetOrderShippingInput!
+          $input: CommerceSetShippingInput!
         ) {
-          ecommerceSetOrderShipping(input: $input) {
+          commerceSetShipping(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
                   id
                   state
                   requestedFulfillment {
                     __typename
-                    ... on Ship {
+                    ... on CommerceShip {
                       name
                       addressLine1
                       addressLine2
@@ -130,7 +131,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -161,11 +162,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     try {
       const orderOrError = (await this.setShipping({
         input: {
-          orderId: this.props.order.id,
+          id: this.props.order.id,
           fulfillmentType: shippingOption,
           shipping: address,
         },
-      })).ecommerceSetOrderShipping.orderOrError
+      })).commerceSetShipping.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
@@ -258,7 +259,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     flow: "buy now",
     type: "button",
   }))
-  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+  onSelectShippingOption(shippingOption: CommerceOrderFulfillmentTypeEnum) {
     this.setState({ shippingOption })
   }
 
@@ -381,13 +382,13 @@ export const ShippingFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(ShippingRoute))),
   {
     order: graphql`
-      fragment Shipping_order on Order {
+      fragment Shipping_order on CommerceOrder {
         id
         mode
         state
         requestedFulfillment {
           __typename
-          ... on Ship {
+          ... on CommerceShip {
             name
             addressLine1
             addressLine2

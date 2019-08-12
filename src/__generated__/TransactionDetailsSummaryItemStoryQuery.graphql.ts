@@ -17,14 +17,14 @@ export type TransactionDetailsSummaryItemStoryQuery = {
 
 /*
 query TransactionDetailsSummaryItemStoryQuery {
-  order: ecommerceOrder(id: "foo") {
+  order: commerceOrder(id: "foo") {
     __typename
     ...TransactionDetailsSummaryItem_order
-    __id
+    __id: id
   }
 }
 
-fragment TransactionDetailsSummaryItem_order on Order {
+fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   __typename
   mode
   shippingTotal(precision: 2)
@@ -34,7 +34,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
   itemsTotal(precision: 2)
   totalListPrice(precision: 2)
   buyerTotal(precision: 2)
-  ... on OfferOrder {
+  ... on CommerceOfferOrder {
     lastOffer {
       id
       amount(precision: 2)
@@ -47,7 +47,7 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      __id: id
     }
     myLastOffer {
       id
@@ -61,10 +61,10 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      __id: id
     }
   }
-  __id
+  __id: id
 }
 */
 
@@ -74,13 +74,13 @@ var v0 = [
     "kind": "Literal",
     "name": "id",
     "value": "foo",
-    "type": "String!"
+    "type": "ID"
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -182,7 +182,7 @@ return {
   "operationKind": "query",
   "name": "TransactionDetailsSummaryItemStoryQuery",
   "id": null,
-  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n  }\n  __id\n}\n",
+  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id: id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -194,8 +194,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -218,8 +218,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -260,7 +260,7 @@ return {
           v1,
           {
             "kind": "InlineFragment",
-            "type": "OfferOrder",
+            "type": "CommerceOfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
@@ -268,7 +268,7 @@ return {
                 "name": "lastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": v8
               },
@@ -278,7 +278,7 @@ return {
                 "name": "myLastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": v8
               }
@@ -290,5 +290,5 @@ return {
   }
 };
 })();
-(node as any).hash = '3a5232e28c1ac359d2d3335bdfd70648';
+(node as any).hash = 'f77b446c9a57f7b8446573a3a248788f';
 export default node;

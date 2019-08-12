@@ -101,7 +101,7 @@ describe("The respond page", () => {
     },
     query: graphql`
       query RespondTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Respond_order
         }
       }
@@ -260,10 +260,7 @@ describe("The respond page", () => {
         expect(mutations.lastFetchVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
-            offerPrice: {
-              amount: 9000,
-              currencyCode: "USD",
-            },
+            amountCents: 9000 * 100,
           },
         })
         expect(routes.mockPushRoute).toHaveBeenCalledWith(
@@ -289,10 +286,7 @@ describe("The respond page", () => {
         expect(mutations.lastFetchVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
-            offerPrice: {
-              amount: 9000,
-              currencyCode: "GBP",
-            },
+            amountCents: 9000 * 100,
           },
         })
         expect(routes.mockPushRoute).toHaveBeenCalledWith(

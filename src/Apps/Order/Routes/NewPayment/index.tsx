@@ -84,7 +84,7 @@ export class NewPaymentRoute extends Component<
           creditCardId: result.creditCardId,
           offerId: this.props.order.lastOffer.id,
         },
-      })).ecommerceFixFailedPayment.orderOrError
+      })).commerceFixFailedPayment.orderOrError
 
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)
@@ -180,11 +180,11 @@ export class NewPaymentRoute extends Component<
       variables,
       mutation: graphql`
         mutation NewPaymentRouteSetOrderPaymentMutation(
-          $input: FixFailedPaymentInput!
+          $input: CommerceFixFailedPaymentInput!
         ) {
-          ecommerceFixFailedPayment(input: $input) {
+          commerceFixFailedPayment(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                   creditCard {
@@ -197,12 +197,12 @@ export class NewPaymentRoute extends Component<
                     country
                     postal_code
                   }
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -266,7 +266,7 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
       }
     `,
     order: graphql`
-      fragment NewPayment_order on Order {
+      fragment NewPayment_order on CommerceOrder {
         id
         mode
         stateExpiresAt
@@ -282,7 +282,7 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
             id

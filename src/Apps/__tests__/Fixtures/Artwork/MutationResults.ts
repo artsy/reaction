@@ -23,7 +23,7 @@ export const OrderWithFailure = {
 }
 
 export const OfferOrderWithSuccess = {
-  ecommerceCreateOfferOrderWithArtwork: {
+  commerceCreateOfferOrderWithArtwork: {
     orderOrError: {
       __typename: "OrderWithMutationSuccess",
       order: {
@@ -35,7 +35,7 @@ export const OfferOrderWithSuccess = {
 }
 
 export const OfferOrderWithFailure = {
-  ecommerceCreateOfferOrderWithArtwork: {
+  commerceCreateOfferOrderWithArtwork: {
     orderOrError: {
       __typename: "OrderWithMutationFailure",
       error: {

@@ -1,20 +1,20 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _TransactionDetailsSummaryItemOfferProperties$ref: unique symbol;
 export type TransactionDetailsSummaryItemOfferProperties$ref = typeof _TransactionDetailsSummaryItemOfferProperties$ref;
 export type TransactionDetailsSummaryItemOfferProperties = {
     readonly id: string;
     readonly amount: string | null;
-    readonly amountCents: number | null;
+    readonly amountCents: number;
     readonly shippingTotal: string | null;
     readonly shippingTotalCents: number | null;
     readonly taxTotal: string | null;
     readonly taxTotalCents: number | null;
     readonly buyerTotal: string | null;
     readonly buyerTotalCents: number | null;
-    readonly fromParticipant: OrderParticipantEnum | null;
+    readonly fromParticipant: CommerceOrderParticipantEnum | null;
     readonly note: string | null;
     readonly " $refType": TransactionDetailsSummaryItemOfferProperties$ref;
 };
@@ -33,7 +33,7 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "TransactionDetailsSummaryItemOfferProperties",
-  "type": "Offer",
+  "type": "CommerceOffer",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -116,13 +116,13 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
+      "alias": "__id",
+      "name": "id",
       "args": null,
       "storageKey": null
     }
   ]
 };
 })();
-(node as any).hash = '603358d58b399b4455937de2bdae5382';
+(node as any).hash = 'ef8122fa1ce0cfb3e82d1bdfbfcd4d68';
 export default node;

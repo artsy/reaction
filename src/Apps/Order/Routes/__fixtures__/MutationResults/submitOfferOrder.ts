@@ -1,7 +1,7 @@
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 
 export const submitOfferOrderWithFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "validation",
@@ -13,7 +13,7 @@ export const submitOfferOrderWithFailure = {
 }
 
 export const submitOfferOrderWithVersionMismatchFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -25,7 +25,7 @@ export const submitOfferOrderWithVersionMismatchFailure = {
 }
 
 export const submitOfferOrderWithNoInventoryFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -37,7 +37,7 @@ export const submitOfferOrderWithNoInventoryFailure = {
 }
 
 export const submitOfferOrderSuccess = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       order: {
         ...OfferOrderWithShippingDetails,

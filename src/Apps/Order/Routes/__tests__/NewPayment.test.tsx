@@ -74,7 +74,7 @@ describe("Payment", () => {
         me {
           ...NewPayment_me
         }
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...NewPayment_order
         }
       }

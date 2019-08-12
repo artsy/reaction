@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 declare const _OfferHistoryItem_order$ref: unique symbol;
 export type OfferHistoryItem_order$ref = typeof _OfferHistoryItem_order$ref;
 export type OfferHistoryItem_order = {
@@ -11,14 +11,14 @@ export type OfferHistoryItem_order = {
             readonly node: ({
                 readonly id: string;
                 readonly amount: string | null;
-                readonly createdAt: string | null;
-                readonly fromParticipant: OrderParticipantEnum | null;
+                readonly createdAt: string;
+                readonly fromParticipant: CommerceOrderParticipantEnum | null;
             }) | null;
         }) | null> | null;
     }) | null;
     readonly lastOffer?: ({
         readonly id: string;
-        readonly fromParticipant: OrderParticipantEnum | null;
+        readonly fromParticipant: CommerceOrderParticipantEnum | null;
         readonly amount: string | null;
         readonly shippingTotal: string | null;
         readonly taxTotal: string | null;
@@ -40,8 +40,8 @@ var v0 = [
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -69,7 +69,7 @@ v4 = {
 return {
   "kind": "Fragment",
   "name": "OfferHistoryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -83,7 +83,7 @@ return {
     v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -91,7 +91,7 @@ return {
           "name": "offers",
           "storageKey": null,
           "args": null,
-          "concreteType": "OfferConnection",
+          "concreteType": "CommerceOfferConnection",
           "plural": false,
           "selections": [
             {
@@ -100,7 +100,7 @@ return {
               "name": "edges",
               "storageKey": null,
               "args": null,
-              "concreteType": "OfferEdge",
+              "concreteType": "CommerceOfferEdge",
               "plural": true,
               "selections": [
                 {
@@ -109,7 +109,7 @@ return {
                   "name": "node",
                   "storageKey": null,
                   "args": null,
-                  "concreteType": "Offer",
+                  "concreteType": "CommerceOffer",
                   "plural": false,
                   "selections": [
                     v2,
@@ -142,7 +142,7 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
             v2,
@@ -177,5 +177,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '115498eb52f9e7edd8cd8dc0893efb8c';
+(node as any).hash = '9d72783a423b991ef7aa55d4ffcfb39b';
 export default node;

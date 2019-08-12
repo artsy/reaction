@@ -31,7 +31,7 @@ const render = (
     }),
     query: graphql`
       query OfferHistoryItemTestQuery {
-        order: ecommerceOrder(id: "foo") {
+        order: commerceOrder(id: "foo") {
           ...OfferHistoryItem_order
         }
       }

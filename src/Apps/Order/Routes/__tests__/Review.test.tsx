@@ -14,6 +14,7 @@ import {
   submitOfferOrderWithNoInventoryFailure,
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderSuccess,
+  submitOrderWithActionRequired,
   submitOrderWithFailure,
   submitOrderWithFailureCardDeclined,
   submitOrderWithFailureInsufficientFunds,
@@ -35,7 +36,16 @@ class ReviewTestPage extends OrderAppTestPage {
   }
 }
 
+const handleCardAction = jest.fn()
 describe("Review", () => {
+  beforeAll(() => {
+    window.Stripe = () => {
+      return { handleCardAction } as any
+    }
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
+
   const { buildPage, mutations, routes } = createTestEnv({
     Component: ReviewFragmentContainer,
     defaultData: {
@@ -47,7 +57,7 @@ describe("Review", () => {
     },
     query: graphql`
       query ReviewTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Review_order
         }
       }
@@ -144,6 +154,13 @@ describe("Review", () => {
       )
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
+
+    it("shows SCA modal when required", async () => {
+      mutations.useResultsOnce(submitOrderWithActionRequired)
+
+      await page.clickSubmit()
+      expect(handleCardAction).toBeCalledWith("client-secret")
+    })
   })
 
   describe("Offer-mode orders", () => {
@@ -224,14 +241,12 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
-      window.location.assign = jest.fn()
       mutations.useResultsOnce(submitOfferOrderWithNoInventoryFailure)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Not available",
         "Sorry, the work is no longer available."
       )
-      expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
   })
 

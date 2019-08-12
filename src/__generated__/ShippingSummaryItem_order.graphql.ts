@@ -2,10 +2,11 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ShippingAddress_ship$ref } from "./ShippingAddress_ship.graphql";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 declare const _ShippingSummaryItem_order$ref: unique symbol;
 export type ShippingSummaryItem_order$ref = typeof _ShippingSummaryItem_order$ref;
 export type ShippingSummaryItem_order = {
-    readonly state: string | null;
+    readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: ({
         readonly __typename: string;
         readonly " $fragmentRefs": ShippingAddress_ship$ref;
@@ -27,15 +28,15 @@ export type ShippingSummaryItem_order = {
 const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "ShippingSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -75,7 +76,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -84,7 +85,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -93,7 +94,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -112,7 +113,13 @@ return {
                       "args": null,
                       "storageKey": null
                     },
-                    v0
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__id",
+                      "args": null,
+                      "storageKey": null
+                    }
                   ]
                 },
                 v0
@@ -126,5 +133,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '701e0a2e44b7ae043a9d459c9fda3bf3';
+(node as any).hash = '6a6edab4e4acbfb55e55f5fb1d9c4ae0';
 export default node;
