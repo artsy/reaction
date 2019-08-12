@@ -16,7 +16,6 @@ export const ConditionsOfSaleCheckbox: React.FC<CheckboxProps> = props => {
             Conditions of Sale
           </Link>
         </Serif>
-        .
       </Serif>
     </Checkbox>
   )
