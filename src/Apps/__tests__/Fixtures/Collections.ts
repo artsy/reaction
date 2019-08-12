@@ -272,6 +272,55 @@ export const CategoriesFixture = [
 ]
 
 // Represents one collection hub
+export const CollectionsHubLinkedCollections = {
+  linkedCollections: [
+    {
+      groupType: "ArtistSeries",
+      name: "Artist Series",
+      members: [
+        {
+          title: "Flags unique collections",
+          price_guidance: 1000,
+          artworks: {
+            hits: [
+              {
+                artist: {
+                  // null
+                },
+                title: "A great flag from Jasper",
+                image: {
+                  url:
+                    "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+              {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Back to 2046",
+                image: {
+                  url:
+                    "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+              {
+                artist: {
+                  name: "Andy Warhol",
+                },
+                title: "An Apple",
+                image: {
+                  url:
+                    "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  ],
+}
+
 export const CollectionHubFixture = {
   title: "KAWS: Companions",
   slug: "kaws-companions",
