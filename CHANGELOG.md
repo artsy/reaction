@@ -1,3 +1,20 @@
+# v16.24.0 (Mon Aug 12 2019)
+
+#### 🚀  Enhancement
+
+- Refactor ConditionsOfSaleCheckbox to use palette checkbox [#2682](https://github.com/artsy/reaction/pull/2682) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🐛  Bug Fix
+
+- Extract tooltip provider from fullscreen logic [#2683](https://github.com/artsy/reaction/pull/2683) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.23.3 (Mon Aug 12 2019)
 
 #### 🐛  Bug Fix
