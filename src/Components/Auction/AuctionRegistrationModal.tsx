@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-import { Box, Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { Modal } from "@artsy/palette"
-import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
+import { ConditionsOfSaleCheckbox } from "./ConditionsOfSaleCheckbox"
 
 // For convenience even though sale is for now a single value
 interface Sale {
@@ -69,16 +69,18 @@ export const AuctionRegistrationModal: React.FC<Props> = ({
           Welcome back. To complete your registration, please confirm that you
           agree to the Conditions of Sale.
         </Serif>
-        <Flex my={4} justifyContent="center">
-          <ConditionsOfSaleCheckbox
-            name="accept_cos"
-            value={acceptedConditions}
-            onChange={e => {
-              setAcceptedConditions(e.target.checked)
-            }}
-            onBlur={() => null}
-            error={error}
-          />
+        <Flex my={4} flexDirection="column" justifyContent="center">
+          <Box mx="auto">
+            <ConditionsOfSaleCheckbox
+              selected={acceptedConditions}
+              onSelect={value => setAcceptedConditions(value)}
+            />
+          </Box>
+          {error && (
+            <Sans mt={1} color="red100" size="2">
+              {error}
+            </Sans>
+          )}
         </Flex>
         <Button
           block
