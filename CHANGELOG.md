@@ -1,3 +1,19 @@
+# v16.23.2 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- update test [#2644](https://github.com/artsy/reaction/pull/2644) (jiahaodavid4040@gmail.com)
+
+#### ⚠️  Pushed to master
+
+- resolve conflicting files  (jiahaodavid4040@gmail.com)
+
+#### Authors: 1
+
+- david huang (jiahaodavid4040@gmail.com)
+
+---
+
 # v16.23.1 (Mon Aug 12 2019)
 
 #### 🐛  Bug Fix
