@@ -61,7 +61,7 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
             error={error}
           />
 
-          {checked && <PositionedCheckmark fill={fill} />}
+          {!disabled && checked && <PositionedCheckmark fill={fill} />}
         </CheckmarkContainer>
 
         {children}
