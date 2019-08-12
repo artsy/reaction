@@ -20,9 +20,15 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
     }
   }
 
-  onChange = event => {
-    if (this.props.onChange) {
-      this.props.onChange(event)
+  onClick = event => {
+    const { disabled } = this.props
+
+    if (disabled) {
+      return
+    }
+
+    if (this.props.onClick) {
+      this.props.onClick(event)
     }
 
     this.setState({
@@ -49,13 +55,13 @@ export class Checkbox extends Component<CheckboxProps, CheckboxState> {
           <CheckboxInput
             {...remainderProps}
             type="checkbox"
-            onChange={this.onChange}
+            onClick={this.onClick}
             checked={checked}
             disabled={disabled}
             error={error}
           />
 
-          {(!disabled || checked) && <PositionedCheckmark fill={fill} />}
+          {checked && <PositionedCheckmark fill={fill} />}
         </CheckmarkContainer>
 
         {children}
