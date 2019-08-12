@@ -1,4 +1,6 @@
-export const CollectAppFixture = {
+import { CollectApp_marketingCollections } from "__generated__/CollectApp_marketingCollections.graphql"
+
+export const CollectAppFixture_Viewer = {
   filter_artworks: {
     __id:
       "RmlsdGVyQXJ0d29ya3M6eyJhY3F1aXJlYWJsZSI6dHJ1ZSwiYWdncmVnYXRpb25zIjpbInRvdGFsIl0sImF0dHJpYnV0aW9uX2NsYXNzIjpbXSwibWFqb3JfcGVyaW9kcyI6W10sInByaWNlX3JhbmdlIjoiKi0qIiwic2l6ZSI6MCwic29ydCI6Ii1kZWNheWVkX21lcmNoIn0=",
@@ -86,3 +88,14 @@ export const CollectAppFixture = {
     },
   },
 }
+
+export const CollectAppFixture_MarketingCollections: CollectApp_marketingCollections = [
+  {
+    " $fragmentRefs": null,
+    " $refType": null,
+  },
+  {
+    " $fragmentRefs": null,
+    " $refType": null,
+  },
+]
