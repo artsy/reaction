@@ -92,6 +92,7 @@ const CheckboxInput = styled.input`
   margin: 0;
   left: 0;
   border: none;
+  cursor: pointer;
 
   /* The after represents the square box */
   &::after {
