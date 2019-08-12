@@ -43,7 +43,7 @@ describe("MobileSignUpForm", () => {
     const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
     const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
     inputEmail.onChange(ChangeEvents.email)
-    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+    termsCheckbox.onClick(ChangeEvents.accepted_terms_of_service)
     wrapper.find(SubmitButton).simulate("click")
 
     setTimeout(() => {
@@ -58,7 +58,7 @@ describe("MobileSignUpForm", () => {
     const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
     const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
     inputEmail.onChange(ChangeEvents.email)
-    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+    termsCheckbox.onClick(ChangeEvents.accepted_terms_of_service)
     wrapper.find(SubmitButton).simulate("click")
 
     setTimeout(() => {
@@ -82,7 +82,7 @@ describe("MobileSignUpForm", () => {
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
       const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
       inputEmail.onChange(ChangeEvents.email)
-      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+      termsCheckbox.onClick(ChangeEvents.accepted_terms_of_service)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
@@ -116,7 +116,7 @@ describe("MobileSignUpForm", () => {
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
       const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
       inputEmail.onChange(ChangeEvents.email)
-      termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+      termsCheckbox.onClick(ChangeEvents.accepted_terms_of_service)
       wrapper.find(SubmitButton).simulate("click")
 
       setTimeout(() => {
