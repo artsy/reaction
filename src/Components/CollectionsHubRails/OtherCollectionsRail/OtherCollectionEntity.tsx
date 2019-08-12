@@ -49,7 +49,7 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
   }
 
   return (
-    <StyledLink href={`${sd.APP_URL}/collection/${slug}`} onClick={onClickLink}>
+    <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
       <Flex alignItems="center">
         {thumbnail && (
           <ImageContainer>

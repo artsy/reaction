@@ -310,6 +310,11 @@ export enum ContextModule {
    * Other Collections Rail
    */
   OtherCollectionsRail = "OtherCollectionsRail",
+
+  /**
+   * Featured Collections Rail
+   */
+  FeaturedCollectionsRail = "FeaturedCollectionsRail",
 }
 
 export enum Flow {
