@@ -26,6 +26,7 @@ interface Props {
   isSponsored?: boolean
   isSuper?: boolean
   customWidth?: number
+  isTruncatedAt?: number
 }
 
 interface State {
@@ -232,7 +233,14 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, customWidth, isMobile, isSponsored, isSuper } = this.props
+    const {
+      article,
+      customWidth,
+      isMobile,
+      isSponsored,
+      isSuper,
+      isTruncatedAt,
+    } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
@@ -240,7 +248,11 @@ export class Sections extends Component<Props, State> {
     let displayMarkerInjected = false
     let indexAtFirstAd = null
 
-    const renderedSections = article.sections.map((sectionItem, index) => {
+    const articleSections = isTruncatedAt
+      ? clone(article.sections).slice(0, isTruncatedAt)
+      : article.sections
+
+    const renderedSections = articleSections.map((sectionItem, index) => {
       let section = sectionItem
       let ad = null
       const shouldInject =

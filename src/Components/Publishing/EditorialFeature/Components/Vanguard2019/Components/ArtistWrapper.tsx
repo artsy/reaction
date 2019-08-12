@@ -28,37 +28,49 @@ export class VanguardArtistWrapper extends React.Component<
     const { article } = this.props
     const { hero_section, layout, slug, title } = article
     const { isExpanded } = this.state
+    const textColor = isExpanded ? "white" : undefined
 
     return (
-      <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
-        <Box textAlign="center">
-          <ArtistTitle size="8">{title}</ArtistTitle>
-          <Box position="absolute">
-            <Share
-              // TODO: We may need to use custom urls for in-page routing
-              url={getFullEditorialHref(layout, slug)}
-              title={title}
-            />
+      <Box background={isExpanded && "black"}>
+        <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
+          <Box textAlign="center">
+            <ArtistTitle size="8" color={textColor}>
+              {title}
+            </ArtistTitle>
+            <Box position="absolute">
+              <Share
+                // TODO: We may need to use custom urls for in-page routing
+                url={getFullEditorialHref(layout, slug)}
+                title={title}
+                color={textColor}
+              />
+            </Box>
+            {hero_section && (
+              <Sans size="4" weight="medium" color={textColor}>
+                {hero_section.deck}
+              </Sans>
+            )}
           </Box>
-          {hero_section && (
-            <Sans size="4" weight="medium">
-              {hero_section.deck}
-            </Sans>
-          )}
-        </Box>
-        {/** TODO: Sections may need to be customized to handle expansion */}
-        <Sections article={article} customWidth={900} />
 
-        <ReadMoreButton
-          size="5"
-          weight="medium"
-          textAlign="center"
-          onClick={this.onExpand}
-        >
-          {isExpanded ? "Read More" : "Close"}
-          <Sans size="8">{isExpanded ? "\u2193" : "\u2191"}</Sans>
-        </ReadMoreButton>
-      </ArtistContainer>
+          <Sections
+            article={article}
+            customWidth={900}
+            isTruncatedAt={!isExpanded && 2}
+            color={textColor}
+          />
+
+          <ReadMoreButton
+            size="5"
+            weight="medium"
+            textAlign="center"
+            onClick={this.onExpand.bind(this)}
+            color={textColor}
+          >
+            {isExpanded ? "Close" : "Read More"}
+            <Sans size="8">{isExpanded ? "\u2191" : "\u2193"}</Sans>
+          </ReadMoreButton>
+        </ArtistContainer>
+      </Box>
     )
   }
 }
@@ -84,4 +96,5 @@ const ArtistContainer = styled(Box)`
 
 const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
   text-transform: uppercase;
+  cursor: pointer;
 `
