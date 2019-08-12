@@ -49,8 +49,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
   }
 
   return (
-    <Box>
-      <Serif size="5" m={1}>
+    <FeaturedCollectionsContainer>
+      <Serif size="5" mt={3}>
         {name}
       </Serif>
       <Carousel
@@ -80,8 +80,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
         }}
         onArrowClick={() => trackArrowClick()}
       />
-      <Spacer pb={4} />
-    </Box>
+      <Spacer pb={2} />
+    </FeaturedCollectionsContainer>
   )
 }
 
@@ -152,6 +152,10 @@ export const FeaturedCollectionsRailsContainer = createFragmentContainer(
     `,
   }
 )
+
+const FeaturedCollectionsContainer = styled(Box)`
+  border-top: 1px solid ${color("black10")};
+`
 
 const Container = styled(Box)`
   border: 1px solid ${color("black10")};
