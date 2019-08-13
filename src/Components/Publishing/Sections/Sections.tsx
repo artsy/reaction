@@ -26,6 +26,7 @@ interface Props {
   isSponsored?: boolean
   isSuper?: boolean
   customWidth?: number
+  hideAds?: boolean
 }
 
 interface State {
@@ -232,7 +233,14 @@ export class Sections extends Component<Props, State> {
   }
 
   renderSections() {
-    const { article, customWidth, isMobile, isSponsored, isSuper } = this.props
+    const {
+      article,
+      customWidth,
+      isMobile,
+      isSponsored,
+      isSuper,
+      hideAds,
+    } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
@@ -258,7 +266,8 @@ export class Sections extends Component<Props, State> {
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set") &&
         !firstAdInjected &&
-        !isSuper
+        !isSuper &&
+        !hideAds
 
       if (firstAdInjected) {
         placementCount++
