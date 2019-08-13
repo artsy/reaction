@@ -57,7 +57,9 @@ function createRender({ prerender, render, renderFetched }) {
     }
 
     // This should only ever show when doing client-side routing.
-    if (!props) return renderSpinner()
+    if (!props) {
+      return renderSpinner()
+    }
 
     if (renderFetched) {
       return renderFetched(renderArgs)

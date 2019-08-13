@@ -215,6 +215,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
     <span dangerouslySetInnerHTML={{ __html: collection.description }} />
   )
 
+  return <div>hii</div>
   return (
     <Responsive>
       {({ xs, sm, md, lg }) => {

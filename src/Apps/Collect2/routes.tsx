@@ -28,7 +28,15 @@ const initializeVariablesWithFilterState = (params, props) => {
 export const routes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
-    Component: CollectApp,
+    Component: props => {
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={CollectApp}
+          urlBuilder={buildUrlForCollectApp}
+        />
+      )
+    },
     query: graphql`
       query routes_CollectApp2Query(
         $medium: String
@@ -73,19 +81,6 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ props, Component }) => {
-      if (!props) {
-        return null
-      }
-
-      return (
-        <AnalyticsProvider
-          {...props}
-          Component={Component}
-          urlBuilder={buildUrlForCollectApp}
-        />
-      )
-    },
     prepareVariables: initializeVariablesWithFilterState,
   },
   {
@@ -98,17 +93,18 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ props, Component }) => {
-      if (!props) {
-        return null
-      }
-
-      return <Component {...props} />
-    },
   },
   {
     path: "/collection/:slug",
-    Component: CollectionApp,
+    Component: props => {
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={CollectionApp}
+          urlBuilder={buildUrlForCollectionApp}
+        />
+      )
+    },
     query: graphql`
       query routes_MarketingCollectionApp2Query(
         $slug: String!
@@ -146,19 +142,6 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ props, Component }) => {
-      if (!props) {
-        return null
-      }
-
-      return (
-        <AnalyticsProvider
-          {...props}
-          Component={Component}
-          urlBuilder={buildUrlForCollectionApp}
-        />
-      )
-    },
     prepareVariables: initializeVariablesWithFilterState,
   },
 ]

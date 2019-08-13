@@ -62,6 +62,9 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
   render() {
     const { filtersState } = this.props
     const { filtered_artworks } = this.props.collection
+
+    // FIXME: Undo
+    return <div>hii</div>
     return (
       <ArtworkFilter
         filtered_artworks={filtered_artworks as any}

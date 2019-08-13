@@ -78,9 +78,13 @@ export class CollectionApp extends Component<CollectionAppProps> {
               linkedCollections={collection.linkedCollections}
             />
           )}
+
+          {/*
+            // FIXME: Uncomment
           <Box>
             <CollectionFilterContainer collection={collection} />
           </Box>
+          */}
           <Separator mt={6} mb={3} />
           <Box mt="3">
             <RelatedCollectionsRail
