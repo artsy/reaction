@@ -2,10 +2,9 @@ import { EntityHeader, ReadMore, space } from "@artsy/palette"
 import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect2/Components/Collection/Header/DefaultHeader"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
-import { cloneDeep, filter, take } from "lodash"
-import React, { FC, useState } from "react"
+import { filter, take } from "lodash"
+import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { resize } from "Utils/resizer"
@@ -23,11 +22,13 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Link } from "found"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { FeaturedArtists } from "./FeaturedArtists"
 
 // TODO: Update query interface when we know the schema
 export interface Props {
@@ -165,57 +166,14 @@ const defaultHeaderImageHeight = {
 
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
-  const [showMore, setShowMore] = useState(false)
   const hasMultipleArtists =
     artworks.merchandisable_artists &&
     artworks.merchandisable_artists.length > 1
-
-  function calculateNumberOfArtists(size) {
-    if (sd.IS_MOBILE) {
-      return 3
-    }
-    switch (size) {
-      case "md":
-        return 5
-      case "lg":
-      case "xl":
-        return 7
-      default:
-        return 3
-    }
-  }
-
-  const truncateFeaturedArtists = (featuredArtists: JSX.Element[], size) => {
-    const truncatedLength = calculateNumberOfArtists(size)
-
-    if (featuredArtists.length <= truncatedLength) {
-      return featuredArtists
-    }
-
-    const remainingArtists = featuredArtists.length - truncatedLength
-    const viewMore = (
-      <Box width={["100%", "33%", "33%", "25%"]} pb={20} key="view-more">
-        <ViewMore
-          onClick={() => {
-            setShowMore(true)
-          }}
-        >
-          <EntityHeader initials={`+ ${remainingArtists}`} name="View more" />
-        </ViewMore>
-      </Box>
-    )
-    const artists = cloneDeep(featuredArtists)
-
-    artists.splice(truncatedLength, remainingArtists, viewMore)
-
-    return showMore ? featuredArtists : artists
-  }
 
   const htmlUnsafeDescription = collection.description && (
     <span dangerouslySetInnerHTML={{ __html: collection.description }} />
   )
 
-  return <div>hii</div>
   return (
     <Responsive>
       {({ xs, sm, md, lg }) => {
@@ -292,16 +250,11 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       </Flex>
                     </Col>
                     <Col sm={12} md={12}>
-                      {featuredArtists.length > 0 && (
-                        <Box pb={10}>
-                          <Sans size="2" weight="medium" pb={15}>
-                            {`Featured Artist${hasMultipleArtists ? "s" : ""}`}
-                          </Sans>
-                          <Flex flexWrap="wrap">
-                            {truncateFeaturedArtists(featuredArtists, size)}
-                          </Flex>
-                        </Box>
-                      )}
+                      <FeaturedArtists
+                        breakpointSize={size}
+                        featuredArtists={featuredArtists}
+                        hasMultipleArtists={hasMultipleArtists}
+                      />
                     </Col>
                   </Row>
                 </Grid>
@@ -378,19 +331,6 @@ const ExtendedSerif = styled(Serif)`
     div p {
       display: inline;
       ${unica("s12")};
-    }
-  }
-`
-
-export const ViewMore = styled(Box)`
-  div {
-    div {
-      text-decoration: underline;
-      ${unica("s14")};
-    }
-
-    div:first-child {
-      text-decoration: none;
     }
   }
 `

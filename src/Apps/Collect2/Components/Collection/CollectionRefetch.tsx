@@ -1,5 +1,6 @@
 import { CollectionRefetch_collection } from "__generated__/CollectionRefetch_collection.graphql"
 import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
+import { Link } from "found"
 import { isEqual } from "lodash"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -63,15 +64,16 @@ export class CollectionRefetch extends Component<CollectionRefetchProps> {
     const { filtersState } = this.props
     const { filtered_artworks } = this.props.collection
 
-    // FIXME: Undo
-    return <div>hii</div>
     return (
-      <ArtworkFilter
-        filtered_artworks={filtered_artworks as any}
-        isLoading={this.isLoading}
-        columnCount={[2, 2, 2, 3]}
-        filters={filtersState}
-      />
+      <>
+        <Link to="/collect">To collect</Link>
+        <ArtworkFilter
+          filtered_artworks={filtered_artworks as any}
+          isLoading={this.isLoading}
+          columnCount={[2, 2, 2, 3]}
+          filters={filtersState}
+        />
+      </>
     )
   }
 }
