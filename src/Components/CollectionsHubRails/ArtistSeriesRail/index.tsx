@@ -15,8 +15,10 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
 }) => {
   const { members } = collectionGroup
   return (
-    <Content mb={2} px={2} py={3}>
-      <Serif size="5">Trending Artist Series</Serif>
+    <Content mt={2} py={3}>
+      <Serif size="5" mb={1}>
+        Trending Artist Series
+      </Serif>
       <Carousel
         height="200px"
         width="500px"
@@ -47,7 +49,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
 }
 
 const Content = styled(Box)`
-  border: 1px solid ${color("black10")};
+  border-top: 1px solid ${color("black10")};
 `
 
 export const ArrowContainer = styled(Box)`

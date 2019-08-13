@@ -49,18 +49,18 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
   }
 
   return (
-    <Box>
-      <Serif size="5" m={1}>
+    <FeaturedCollectionsContainer>
+      <Serif size="5" mt={3}>
         {name}
       </Serif>
       <Carousel
-        height="500px"
+        height={sd.IS_MOBILE ? "430px" : "500px"}
         options={{
-          groupCells: 4,
+          groupCells: sd.IS_MOBILE ? 1 : 4,
+          wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
-          wrapAround: false,
           pageDots: false,
-          draggable: false,
+          draggable: sd.IS_MOBILE ? true : false,
         }}
         data={members}
         render={slide => {
@@ -80,8 +80,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
         }}
         onArrowClick={() => trackArrowClick()}
       />
-      <Spacer pb={4} />
-    </Box>
+      <Spacer pb={2} />
+    </FeaturedCollectionsContainer>
   )
 }
 
@@ -107,12 +107,12 @@ export const FeaturedCollectionEntity: React.FC<
   }
 
   return (
-    <Container p={2} m={1}>
+    <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
       <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
-        <ImageContainer>
+        <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
           <FeaturedImage src={thumbnail} />
-        </ImageContainer>
-        <CollectionTitle size="5" mt={1}>
+        </Flex>
+        <CollectionTitle size="4" mt={1}>
           {title}
         </CollectionTitle>
         <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
@@ -153,13 +153,12 @@ export const FeaturedCollectionsRailsContainer = createFragmentContainer(
   }
 )
 
-const Container = styled(Box)`
-  border: 1px solid ${color("black10")};
-  width: 365px;
+const FeaturedCollectionsContainer = styled(Box)`
+  border-top: 1px solid ${color("black10")};
 `
 
-const ImageContainer = styled(Flex)`
-  height: 280px;
+const Container = styled(Box)`
+  border: 1px solid ${color("black10")};
 `
 
 const ExtendedSerif = styled(Serif)`
