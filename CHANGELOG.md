@@ -1,3 +1,15 @@
+# v16.24.3 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubs] various hubs qa [#2687](https://github.com/artsy/reaction/pull/2687) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.24.2 (Tue Aug 13 2019)
 
 #### 🐛  Bug Fix
