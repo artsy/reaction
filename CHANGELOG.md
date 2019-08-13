@@ -1,3 +1,15 @@
+# v16.24.1 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Add creative credits [#2684](https://github.com/artsy/reaction/pull/2684) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.0 (Mon Aug 12 2019)
 
 #### 🚀  Enhancement
