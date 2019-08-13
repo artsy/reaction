@@ -48,8 +48,6 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
     })
   }
 
-  console.log(sd.IS_MOBILE)
-
   return (
     <FeaturedCollectionsContainer>
       <Serif size="5" mt={3}>
