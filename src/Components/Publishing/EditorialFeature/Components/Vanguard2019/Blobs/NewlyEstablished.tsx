@@ -164,3 +164,40 @@ export const NewlyEstablished15 = props => (
     <path d="M807.86 77.28c-151.42-25.19-326.71-101.48-439.61.9-70.44 63.87-102.46 164.08-181.65 217.11C149.71 320 105 332.48 70.32 360c-74.13 58.85-80.7 234.7-33.79 316.26S171 809.3 260.85 840.51c148.4 51.57 313 56.89 464.55 15 60.38-16.69 119.17-40.74 181.47-47.89 109.72-12.61 217.47 28 325.82 49.24s235.84 16.91 309.7-63.89c19.31-21.12 33.87-46.94 38.95-74.91 4.87-26.77 1-54.25-2.91-81.18q-36.53-252.66-73-505.32c-21.25-147-151.12-140.3-260.55-90.58-147.26 66.9-278.54 62.68-437.02 36.3z" />
   </svg>
 )
+
+export const NewlyEstablished = (index: number) => {
+  switch (index) {
+    case 1:
+      return <NewlyEstablished1 />
+    case 2:
+      return <NewlyEstablished2 />
+    case 3:
+      return <NewlyEstablished3 />
+    case 4:
+      return <NewlyEstablished4 />
+    case 5:
+      return <NewlyEstablished5 />
+    case 6:
+      return <NewlyEstablished6 />
+    case 7:
+      return <NewlyEstablished7 />
+    case 8:
+      return <NewlyEstablished8 />
+    case 9:
+      return <NewlyEstablished9 />
+    case 10:
+      return <NewlyEstablished10 />
+    case 11:
+      return <NewlyEstablished11 />
+    case 12:
+      return <NewlyEstablished12 />
+    case 13:
+      return <NewlyEstablished13 />
+    case 14:
+      return <NewlyEstablished14 />
+    case 15:
+      return <NewlyEstablished15 />
+    default:
+      return <NewlyEstablished1 />
+  }
+}

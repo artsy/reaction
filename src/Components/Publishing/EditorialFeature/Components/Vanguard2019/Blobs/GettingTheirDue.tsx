@@ -164,3 +164,40 @@ export const GettingTheirDue15 = props => (
     <path d="M306.42 49.47L1325.99 5.88 1600 685.59 6.04 803.97l300.38-754.5z" />
   </svg>
 )
+
+export const GettingTheirDue = (index: number) => {
+  switch (index) {
+    case 1:
+      return <GettingTheirDue1 />
+    case 2:
+      return <GettingTheirDue2 />
+    case 3:
+      return <GettingTheirDue3 />
+    case 4:
+      return <GettingTheirDue4 />
+    case 5:
+      return <GettingTheirDue5 />
+    case 6:
+      return <GettingTheirDue6 />
+    case 7:
+      return <GettingTheirDue7 />
+    case 8:
+      return <GettingTheirDue8 />
+    case 9:
+      return <GettingTheirDue9 />
+    case 10:
+      return <GettingTheirDue10 />
+    case 11:
+      return <GettingTheirDue11 />
+    case 12:
+      return <GettingTheirDue12 />
+    case 13:
+      return <GettingTheirDue13 />
+    case 14:
+      return <GettingTheirDue14 />
+    case 15:
+      return <GettingTheirDue15 />
+    default:
+      return <GettingTheirDue1 />
+  }
+}

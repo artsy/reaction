@@ -219,3 +219,50 @@ export const Emerging20 = props => (
     <path d="M1045.32 0L0 180.45l61 537.76L497.29 900l872.59-155.18L1600 319.16 1045.32 0z" />
   </svg>
 )
+
+export const Emerging = (index: number) => {
+  switch (index) {
+    case 1:
+      return <Emerging1 />
+    case 2:
+      return <Emerging2 />
+    case 3:
+      return <Emerging3 />
+    case 4:
+      return <Emerging4 />
+    case 5:
+      return <Emerging5 />
+    case 6:
+      return <Emerging6 />
+    case 7:
+      return <Emerging7 />
+    case 8:
+      return <Emerging8 />
+    case 9:
+      return <Emerging9 />
+    case 10:
+      return <Emerging10 />
+    case 11:
+      return <Emerging11 />
+    case 12:
+      return <Emerging12 />
+    case 13:
+      return <Emerging13 />
+    case 14:
+      return <Emerging14 />
+    case 15:
+      return <Emerging15 />
+    case 16:
+      return <Emerging16 />
+    case 17:
+      return <Emerging17 />
+    case 18:
+      return <Emerging18 />
+    case 19:
+      return <Emerging19 />
+    case 20:
+      return <Emerging20 />
+    default:
+      return <Emerging1 />
+  }
+}
