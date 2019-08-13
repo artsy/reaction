@@ -1,3 +1,15 @@
+# v16.24.2 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Bump react to 16.8.4 [#2686](https://github.com/artsy/reaction/pull/2686) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.1 (Tue Aug 13 2019)
 
 #### 🐛  Bug Fix
