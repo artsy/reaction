@@ -26,39 +26,39 @@ jest.mock("Components/Publishing/ToolTip/TooltipsDataLoader", () => ({
 }))
 
 it("indexes and titles images", () => {
+  const props = {
+    article: StandardArticle,
+    relatedArticlesForCanvas: RelatedCanvas,
+    relatedArticlesForPanel: RelatedPanel,
+  }
   const article = mount(
-    <ArticleWithFullScreen article={StandardArticle} />
+    <ArticleWithFullScreen {...props}>
+      <StandardLayout {...props} />
+    </ArticleWithFullScreen>
   ) as any
-  expect(article.state("article").sections[4].images[0].setTitle).toBe(
+
+  expect(article.state().fullscreenImages[0].setTitle).toBe(
     "A World Without Capitalism"
   )
-  expect(article.state("article").sections[4].images[0].index).toBe(0)
-  expect(article.state("article").sections[4].images[1].index).toBe(1)
-  expect(article.state("article").sections[6].images[0].index).toBe(3)
-  expect(article.state("article").sections[6].images[1].index).toBe(4)
-})
-
-it("renders articles in standard layout", () => {
-  const article = mount(
-    <ArticleWithFullScreen
-      article={StandardArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
-  )
+  expect(article.state().fullscreenImages[0].index).toBe(0)
+  expect(article.state().fullscreenImages[1].index).toBe(1)
   expect(article.find(StandardLayout).length).toBe(1)
   expect(article.find(RelatedArticlesPanel).length).toBe(1)
   expect(article.find(RelatedArticlesCanvas).length).toBe(1)
 })
 
 it("renders articles in feature layout", () => {
+  const props = {
+    article: FeatureArticle,
+    relatedArticlesForCanvas: RelatedCanvas,
+    relatedArticlesForPanel: RelatedPanel,
+  }
   const article = mount(
-    <ArticleWithFullScreen
-      article={FeatureArticle}
-      relatedArticlesForCanvas={RelatedCanvas}
-      relatedArticlesForPanel={RelatedPanel}
-    />
-  )
+    <ArticleWithFullScreen {...props}>
+      <FeatureLayout {...props} />
+    </ArticleWithFullScreen>
+  ) as any
+  expect(article.state().fullscreenImages[0].title).toBe("Untitled Suspended")
   expect(article.find(FeatureLayout).length).toBe(1)
   expect(article.find(RelatedArticlesPanel).length).toBe(0)
   expect(article.find(RelatedArticlesCanvas).length).toBe(1)

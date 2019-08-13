@@ -1,6 +1,8 @@
 import { Box, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
+import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFullScreen"
+import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
 import { Sections } from "Components/Publishing/Sections/Sections"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
@@ -30,35 +32,39 @@ export class VanguardArtistWrapper extends React.Component<
     const { isExpanded } = this.state
 
     return (
-      <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
-        <Box textAlign="center">
-          <ArtistTitle size="8">{title}</ArtistTitle>
-          <Box position="absolute">
-            <Share
-              // TODO: We may need to use custom urls for in-page routing
-              url={getFullEditorialHref(layout, slug)}
-              title={title}
-            />
-          </Box>
-          {hero_section && (
-            <Sans size="4" weight="medium">
-              {hero_section.deck}
-            </Sans>
-          )}
-        </Box>
-        {/** TODO: Sections may need to be customized to handle expansion */}
-        <Sections article={article} customWidth={900} />
+      <FullScreenProvider>
+        <ArticleWithFullScreen article={article}>
+          <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
+            <Box textAlign="center">
+              <ArtistTitle size="8">{title}</ArtistTitle>
+              <Box position="absolute">
+                <Share
+                  // TODO: We may need to use custom urls for in-page routing
+                  url={getFullEditorialHref(layout, slug)}
+                  title={title}
+                />
+              </Box>
+              {hero_section && (
+                <Sans size="4" weight="medium">
+                  {hero_section.deck}
+                </Sans>
+              )}
+            </Box>
+            {/** TODO: Sections may need to be customized to handle expansion */}
+            <Sections article={article} customWidth={900} />
 
-        <ReadMoreButton
-          size="5"
-          weight="medium"
-          textAlign="center"
-          onClick={this.onExpand}
-        >
-          {isExpanded ? "Read More" : "Close"}
-          <Sans size="8">{isExpanded ? "\u2193" : "\u2191"}</Sans>
-        </ReadMoreButton>
-      </ArtistContainer>
+            <ReadMoreButton
+              size="5"
+              weight="medium"
+              textAlign="center"
+              onClick={this.onExpand}
+            >
+              {isExpanded ? "Read More" : "Close"}
+              <Sans size="8">{isExpanded ? "\u2193" : "\u2191"}</Sans>
+            </ReadMoreButton>
+          </ArtistContainer>
+        </ArticleWithFullScreen>
+      </FullScreenProvider>
     )
   }
 }
