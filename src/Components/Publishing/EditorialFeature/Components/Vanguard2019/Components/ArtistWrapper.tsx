@@ -117,6 +117,7 @@ const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
   text-transform: uppercase;
 `
 const ArtistContainer = styled(Box)`
+  /* override feature text drop-caps */
   p:first-child::first-letter,
   .paragraph:first-child::first-letter {
     font-family: inherit;
