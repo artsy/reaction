@@ -158,6 +158,14 @@ describe("Sections", () => {
       expect(wrapper.find(DisplayAd).length).toBe(2)
     })
 
+    it("it does not inject display ads on features if hideAd props is passed", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      props.hideAds = true
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(DisplayAd).length).toBe(0)
+    })
+
     it("it injects display ads with correct targeting data if not sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
