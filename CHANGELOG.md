@@ -1,3 +1,15 @@
+# v16.24.5 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds prop to hide ads from feature articles for vanguard development [#2689](https://github.com/artsy/reaction/pull/2689) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.24.4 (Tue Aug 13 2019)
 
 #### 🐛  Bug Fix
