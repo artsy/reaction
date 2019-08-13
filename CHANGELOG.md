@@ -1,3 +1,15 @@
+# v16.24.4 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds SVGs To Artist Header [#2688](https://github.com/artsy/reaction/pull/2688) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.24.3 (Tue Aug 13 2019)
 
 #### 🐛  Bug Fix
