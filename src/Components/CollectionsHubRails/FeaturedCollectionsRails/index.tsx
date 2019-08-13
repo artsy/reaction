@@ -109,9 +109,9 @@ export const FeaturedCollectionEntity: React.FC<
   return (
     <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
       <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
-        <ImageContainer height={sd.IS_MOBILE ? "190px" : "280px"}>
+        <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
           <FeaturedImage src={thumbnail} />
-        </ImageContainer>
+        </Flex>
         <CollectionTitle size="4" mt={1}>
           {title}
         </CollectionTitle>
@@ -157,13 +157,8 @@ const FeaturedCollectionsContainer = styled(Box)`
   border-top: 1px solid ${color("black10")};
 `
 
-const Container = styled(Box)<{ width: string }>`
+const Container = styled(Box)`
   border: 1px solid ${color("black10")};
-  width: ${({ width }) => width};
-`
-
-const ImageContainer = styled(Flex)<{ height: string }>`
-  height: ${({ height }) => height};
 `
 
 const ExtendedSerif = styled(Serif)`
