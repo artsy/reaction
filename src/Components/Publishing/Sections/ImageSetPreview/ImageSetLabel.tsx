@@ -14,20 +14,26 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
   const label = images.length === 1 ? "Image" : "Images"
   const imageCount = `${images.length} ${label}`
   const primaryTitle = title ? title : imageCount
+  const textColor = color !== "white" ? color : undefined
 
   return (
     <LabelWrapper alignItems="center" justifyContent="space-between">
       <Flex flexDirection="column" justifyContent="space-between">
-        <SlideshowTitle size={["4", "5"]} weight="medium" pb={2} color={color}>
+        <SlideshowTitle
+          size={["4", "5"]}
+          weight="medium"
+          pb={2}
+          color={textColor}
+        >
           {primaryTitle}
         </SlideshowTitle>
 
         <SlideshowCta>
-          <Sans size={["2", "3"]} weight="medium" color={color}>
+          <Sans size={["2", "3"]} weight="medium" color={textColor}>
             View Slideshow
           </Sans>
           {title && (
-            <Sans size={["2", "3"]} pl={20} color={color}>
+            <Sans size={["2", "3"]} pl={20} color={textColor}>
               {imageCount}
             </Sans>
           )}
@@ -36,7 +42,7 @@ export const ImageSetLabel = (props: ImageSetPreviewProps) => {
 
       <Media greaterThanOrEqual="sm">
         <IconContainer>
-          <IconImageSet color={color} />
+          <IconImageSet color={textColor} />
         </IconContainer>
       </Media>
     </LabelWrapper>

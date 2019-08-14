@@ -5,7 +5,7 @@ import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { DisplayAd } from "../Display/DisplayAd"
 import { ArticleData } from "../Typings"
@@ -27,6 +27,7 @@ interface Props {
   isSponsored?: boolean
   isSuper?: boolean
   customWidth?: number
+  isTruncatedAt?: number
   hideAds?: boolean
 }
 
@@ -249,6 +250,7 @@ export class Sections extends Component<Props, State> {
       isMobile,
       isSponsored,
       isSuper,
+      isTruncatedAt,
       hideAds,
     } = this.props
     const { shouldInjectMobileDisplay } = this.state
@@ -258,7 +260,11 @@ export class Sections extends Component<Props, State> {
     let displayMarkerInjected = false
     let indexAtFirstAd = null
 
-    const renderedSections = article.sections.map((sectionItem, index) => {
+    const articleSections = isTruncatedAt
+      ? clone(article.sections).slice(0, isTruncatedAt)
+      : article.sections
+
+    const renderedSections = articleSections.map((sectionItem, index) => {
       let section = sectionItem
       let ad = null
       const shouldInject =
@@ -403,26 +409,26 @@ const chooseMargin = layout => {
   }
 }
 
-const div: StyledFunction<{ layout: string }> = styled.div
-const StyledSections = div`
+export const StyledSections = styled.div<{ layout: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: ${props => chooseMargin(props.layout)}
-  max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
+  margin: ${({ layout }) => chooseMargin(layout)};
+  max-width: ${({ layout }) => (layout === "standard" ? "780px" : "auto")};
 
-  ${props => pMedia.xl`
-    max-width: ${props.layout === "standard" ? "680px" : "auto"};
-    ${props.layout === "feature" ? "margin: 80px auto 0 auto" : ""}
+  ${({ layout }) => pMedia.xl`
+    max-width: ${layout === "standard" ? "680px" : "auto"};
+    ${layout === "feature" ? "margin: 80px auto 0 auto" : ""}
   `}
 
-  ${props => pMedia.md`
-    max-width: ${props.layout === "standard" ? "780px" : "auto"};
+  ${({ layout }) => pMedia.md`
+    max-width: ${layout === "standard" ? "780px" : "auto"};
   `}
-  ${props => pMedia.xs`
-    max-width: ${props.layout === "standard" ? "780px" : "auto"};
-    ${props.layout === "feature" ? "margin: 30px auto 0 auto" : ""}
+
+  ${({ layout }) => pMedia.xs`
+    max-width: ${layout === "standard" ? "780px" : "auto"};
+    ${layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `
 const AdWrapper = styled(Box)`

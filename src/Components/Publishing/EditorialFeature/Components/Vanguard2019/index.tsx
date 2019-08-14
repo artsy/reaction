@@ -26,8 +26,8 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
           backgroundColor="white"
           title={article.title}
         />
-        <FrameTextLeft size="16">2019</FrameTextLeft>
-        <FrameTextRight size="16">Vanguard</FrameTextRight>
+        <FrameTextRight size="16">2019</FrameTextRight>
+        <FrameTextLeft size="16">Vanguard</FrameTextLeft>
 
         {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
@@ -56,13 +56,14 @@ const FrameText = styled(Sans)`
   top: 50%;
   text-transform: uppercase;
   transform-origin: center center;
+  z-index: 2;
 `
 
 const FrameTextLeft = styled(FrameText)`
-  left: 0;
+  left: -160px;
   transform: rotate(-90deg);
 `
 const FrameTextRight = styled(FrameText)`
-  right: -150px;
+  right: 0;
   transform: rotate(90deg);
 `

@@ -28,7 +28,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
     dispatch: data => Events.postEvent(data),
   }
 )
-export class Share extends React.Component<Props, null> {
+export class Share extends React.Component<Props> {
   static defaultProps = {
     color: "black",
     hasLabel: false,

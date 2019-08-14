@@ -262,7 +262,7 @@ const ArtistName = styled.span`
   white-space: nowrap;
 `
 
-const StyledArtworkCaption = styled(Sans)<{
+export const StyledArtworkCaption = styled(Sans)<{
   color?: string
   layout?: ArticleLayout
   sectionLayout?: SectionLayout

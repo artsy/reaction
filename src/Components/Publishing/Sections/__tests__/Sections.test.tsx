@@ -16,6 +16,7 @@ import "jest-styled-components"
 import { cloneDeep, defer } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
+import { SectionContainer } from "../SectionContainer"
 import { Sections } from "../Sections"
 
 jest.mock("isomorphic-fetch")
@@ -252,6 +253,19 @@ describe("Sections", () => {
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
       expect(ad.adDimension).toBe("300x250")
+    })
+  })
+
+  describe("isTruncatedAt", () => {
+    it("shows all sections by default", () => {
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(SectionContainer).length).toBe(19)
+    })
+
+    it("limits sections to isTruncatedAt index when passed", () => {
+      props.isTruncatedAt = 3
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(SectionContainer).length).toBe(4)
     })
   })
 
