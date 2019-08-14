@@ -31,7 +31,7 @@ const makeLineItems = ({ artistName, artworkTitle }) => ({
 
 const orderQuery = graphql`
   query ArtworkSummaryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...ArtworkSummaryItem_order
     }
   }
@@ -67,7 +67,7 @@ storiesOf("Apps/Order/Components", module)
             artistName: "Francesca DiMattio and Orta Theroxicus",
             artworkTitle: "Some quite long title you know how artists can be",
           }) as any,
-          seller: {
+          sellerDetails: {
             __typename: "Partner",
             name: "Salon Nineteen Eighty Four and Three Quarters",
           } as any,

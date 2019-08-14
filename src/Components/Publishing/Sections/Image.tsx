@@ -16,6 +16,7 @@ interface ImageProps extends React.HTMLProps<HTMLDivElement> {
   sectionLayout?: SectionLayout
   width?: number | string
   height?: number | string
+  slideshowIndex?: number
 }
 
 export const Image: React.SFC<ImageProps> = props => {
@@ -29,8 +30,10 @@ export const Image: React.SFC<ImageProps> = props => {
     layout,
     linked,
     sectionLayout,
+    slideshowIndex,
     width,
   } = props
+
   const caption = image.caption || ""
   const shouldIncreaseResizeWidth =
     !sd.IS_MOBILE && sectionLayout === "fillwidth"
@@ -49,7 +52,7 @@ export const Image: React.SFC<ImageProps> = props => {
         width={width}
         height={height}
         alt={alt}
-        index={image.index}
+        slideshowIndex={slideshowIndex}
         editing={editCaption || editing}
       />
 

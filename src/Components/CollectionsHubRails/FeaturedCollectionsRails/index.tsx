@@ -2,6 +2,7 @@ import {
   Box,
   color,
   Flex,
+  Link,
   ReadMore,
   ResponsiveImage,
   Sans,
@@ -9,10 +10,12 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { FeaturedCollectionsRails_collectionGroup } from "__generated__/FeaturedCollectionsRails_collectionGroup.graphql"
-import { StyledLink } from "Apps/Artist/Components/ArtistCollectionsRail/ArtistCollectionEntity"
+import * as Schema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton, Carousel } from "Components/v2"
-import React from "react"
+import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 interface Props {
@@ -23,19 +26,41 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
   collectionGroup,
 }) => {
   const { members, name } = collectionGroup
+  const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    trackEvent({
+      action_type: Schema.ActionType.Impression,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+    })
+  }, [])
+
+  const trackArrowClick = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      context_page: Schema.PageName.CollectionPage,
+      type: Schema.Type.Button,
+      subject: Schema.Subject.ClickedNextButton,
+    })
+  }
+
   return (
-    <Box>
-      <Serif size="5" m={1}>
+    <FeaturedCollectionsContainer>
+      <Serif size="5" mt={3}>
         {name}
       </Serif>
       <Carousel
-        height="500px"
+        height={sd.IS_MOBILE ? "430px" : "500px"}
         options={{
-          groupCells: 4,
+          groupCells: sd.IS_MOBILE ? 1 : 4,
+          wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
-          wrapAround: false,
           pageDots: false,
-          draggable: false,
+          draggable: sd.IS_MOBILE ? true : false,
         }}
         data={members}
         render={slide => {
@@ -53,9 +78,10 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
             <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
           )
         }}
+        onArrowClick={() => trackArrowClick()}
       />
-      <Spacer pb={4} />
-    </Box>
+      <Spacer pb={2} />
+    </FeaturedCollectionsContainer>
   )
 }
 
@@ -67,15 +93,28 @@ export const FeaturedCollectionEntity: React.FC<
   FeaturedCollectionEntityProps
 > = ({ member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
+  const { trackEvent } = useTracking()
+
+  const onClickLink = () => {
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.FeaturedCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      type: Schema.Type.Link,
+      destination_path: `${sd.APP_URL}/collection/${slug}`,
+    })
+  }
+
   return (
-    <Container p={2} m={1}>
-      <StyledLink href={`/collection/${slug}`}>
-        <ImageContainer>
+    <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
+      <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
+        <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
           <FeaturedImage src={thumbnail} />
-        </ImageContainer>
-        <Serif size="5" mt={1}>
+        </Flex>
+        <CollectionTitle size="4" mt={1}>
           {title}
-        </Serif>
+        </CollectionTitle>
         <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
@@ -114,13 +153,12 @@ export const FeaturedCollectionsRailsContainer = createFragmentContainer(
   }
 )
 
-const Container = styled(Box)`
-  border: 1px solid ${color("black10")};
-  width: 365px;
+const FeaturedCollectionsContainer = styled(Box)`
+  border-top: 1px solid ${color("black10")};
 `
 
-const ImageContainer = styled(Flex)`
-  height: 280px;
+const Container = styled(Box)`
+  border: 1px solid ${color("black10")};
 `
 
 const ExtendedSerif = styled(Serif)`
@@ -146,6 +184,23 @@ export const ArrowContainer = styled(Box)`
     svg {
       height: 18px;
       width: 18px;
+    }
+  }
+`
+
+const CollectionTitle = styled(Serif)`
+  width: max-content;
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &:hover {
+    text-decoration: none;
+
+    ${CollectionTitle} {
+      text-decoration: underline;
     }
   }
 `

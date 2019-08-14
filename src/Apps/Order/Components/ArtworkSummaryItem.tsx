@@ -21,7 +21,7 @@ export interface ArtworkSummaryItemProps extends Omit<FlexProps, "order"> {
 const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   order: {
     lineItems,
-    seller: { name },
+    sellerDetails: { name },
   },
   ...others
 }) => {
@@ -80,8 +80,8 @@ export const ArtworkSummaryItemFragmentContainer = createFragmentContainer(
   ArtworkSummaryItem,
   {
     order: graphql`
-      fragment ArtworkSummaryItem_order on Order {
-        seller {
+      fragment ArtworkSummaryItem_order on CommerceOrder {
+        sellerDetails {
           ... on Partner {
             name
           }

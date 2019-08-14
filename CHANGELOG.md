@@ -1,3 +1,180 @@
+# v16.24.7 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor slideshows & add to vanguard [#2690](https://github.com/artsy/reaction/pull/2690) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.6 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor svg blobs on artist headers [#2692](https://github.com/artsy/reaction/pull/2692) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.5 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds prop to hide ads from feature articles for vanguard development [#2689](https://github.com/artsy/reaction/pull/2689) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.4 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds SVGs To Artist Header [#2688](https://github.com/artsy/reaction/pull/2688) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.3 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubs] various hubs qa [#2687](https://github.com/artsy/reaction/pull/2687) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.24.2 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Bump react to 16.8.4 [#2686](https://github.com/artsy/reaction/pull/2686) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.1 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Add creative credits [#2684](https://github.com/artsy/reaction/pull/2684) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.0 (Mon Aug 12 2019)
+
+#### 🚀  Enhancement
+
+- Refactor ConditionsOfSaleCheckbox to use palette checkbox [#2682](https://github.com/artsy/reaction/pull/2682) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🐛  Bug Fix
+
+- Extract tooltip provider from fullscreen logic [#2683](https://github.com/artsy/reaction/pull/2683) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.23.3 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] SectionsList can accommodate custom widths [#2679](https://github.com/artsy/reaction/pull/2679) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.23.2 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- update test [#2644](https://github.com/artsy/reaction/pull/2644) (jiahaodavid4040@gmail.com)
+
+#### ⚠️  Pushed to master
+
+- resolve conflicting files  (jiahaodavid4040@gmail.com)
+
+#### Authors: 1
+
+- david huang (jiahaodavid4040@gmail.com)
+
+---
+
+# v16.23.1 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1370: add analytics tracking to FeaturedCollections module [#2678](https://github.com/artsy/reaction/pull/2678) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.23.0 (Fri Aug 09 2019)
+
+#### 🚀  Enhancement
+
+- Update Metaphysics GraphQL schema [#2677](https://github.com/artsy/reaction/pull/2677) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.22.13 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Artist] Consolidate aggregations and grid request for filter, when possible [#2674](https://github.com/artsy/reaction/pull/2674) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.22.12 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- adds latest svgs from wax [#2676](https://github.com/artsy/reaction/pull/2676) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.22.11 (Wed Aug 07 2019)
 
 #### 🐛  Bug Fix

@@ -173,7 +173,7 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
 )
 
 graphql`
-  fragment TransactionDetailsSummaryItemOfferProperties on Offer {
+  fragment TransactionDetailsSummaryItemOfferProperties on CommerceOffer {
     id
     amount(precision: 2)
     amountCents
@@ -192,7 +192,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
   TransactionDetailsSummaryItem,
   {
     order: graphql`
-      fragment TransactionDetailsSummaryItem_order on Order {
+      fragment TransactionDetailsSummaryItem_order on CommerceOrder {
         __typename
         mode
         shippingTotal(precision: 2)
@@ -202,7 +202,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
         itemsTotal(precision: 2)
         totalListPrice(precision: 2)
         buyerTotal(precision: 2)
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
           }

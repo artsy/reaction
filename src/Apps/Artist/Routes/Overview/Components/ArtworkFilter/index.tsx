@@ -397,6 +397,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           sort: { type: "String", defaultValue: "-decayed_merch" }
           price_range: { type: "String", defaultValue: "*-*" }
           page: { type: "Int" }
+          hasFilter: { type: "Boolean", defaultValue: false }
         ) {
         id
         name
@@ -408,12 +409,36 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
           artworks
           has_make_offer_artworks
         }
-        filtered_artworks(aggregations: $aggregations, size: 0) {
+        # The call to fetch aggregations shouldn't take any
+        # filter params (since we always want the full list for an artist).
+        filtered_artworks(
+          sort: $sort
+          page: $page
+          aggregations: $aggregations
+        ) {
           aggregations {
             slice
             counts {
               name
               id
+            }
+          }
+          # Include the below fragment so that this will match
+          # the initial load (w/ no filter applied), and thus MP
+          # will consolidate aggregations _and_ the grid into one call.
+          # Leave out this fragment if navigating to the artist page
+          # with a filter applied, as those can't be consolidated and
+          # this is extra data.
+          #
+          # TODO: Metaphysics will still make this backend request, just not
+          # return any data if it's skipped. Improve introspection, as this
+          # will overfetch in cases of navigating to the artist page with
+          # a filter applied.
+          artworks_connection(first: 24, after: "") @skip(if: $hasFilter) {
+            edges {
+              node {
+                id
+              }
             }
           }
         }
@@ -431,6 +456,7 @@ export const ArtworkFilterFragmentContainer = createFragmentContainer(
             inquireable_only: $inquireable_only
             price_range: $price_range
             page: $page
+            aggregations: $aggregations
           )
 
         ...FollowArtistButton_artist

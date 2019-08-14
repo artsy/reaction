@@ -21,12 +21,25 @@ export const VanguardIntroduction: React.SFC<{
       </Box>
 
       <Box mx="auto" maxWidth={980} px={4}>
-        <Flex flexDirection="column" alignItems="center" pb={75}>
+        <Flex flexDirection="column" alignItems="center" pb={50}>
           <Title size="12" element="h1" textAlign="center" pb={1}>
             The Artists To Know Right Now
           </Title>
           <Byline {...props} />
+
+          <Box textAlign="center" pt={50}>
+            <Sans size="3t" weight="medium">
+              Video Headers by Alex John Beck
+            </Sans>
+            <Sans size="3t" weight="medium">
+              Video Editing by Nate DeYoung
+            </Sans>
+            <Sans size="3t" weight="medium">
+              Interaction Design by Wax Studios
+            </Sans>
+          </Box>
         </Flex>
+
         <Box pb={12}>
           <Text layout="standard" html={description} width="800px" />
         </Box>

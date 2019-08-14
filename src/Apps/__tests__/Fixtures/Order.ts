@@ -6,24 +6,24 @@ export const mockResolver = (
       name: "Alice Jane",
     },
   }),
-  Order: (_, { id, ...others }) => {
+  CommerceOrder: (_, { id, ...others }) => {
     return {
       ...orderDetails,
       id,
       ...others,
       __resolveType(obj, _context, _info) {
-        return obj.mode === "BUY" ? "BuyOrder" : "OfferOrder"
+        return obj.mode === "BUY" ? "CommerceBuyOrder" : "CommerceOfferOrder"
       },
     }
   },
-  BuyOrder: (_, { id, ...others }) => {
+  CommerceBuyOrder: (_, { id, ...others }) => {
     return {
       ...orderDetails,
       id,
       ...others,
     }
   },
-  OfferOrder: (_, { id, ...others }) => {
+  CommerceOfferOrder: (_, { id, ...others }) => {
     return {
       ...orderDetails,
       id,
@@ -101,7 +101,7 @@ export const UntouchedOrder = {
       },
     ],
   },
-  seller: {
+  sellerDetails: {
     __typename: "Partner",
     name: "Kathryn Markel Fine Arts",
     locations: [
@@ -116,7 +116,7 @@ export const UntouchedOrder = {
 
 export const UntouchedBuyOrder = {
   ...UntouchedOrder,
-  __typename: "BuyOrder",
+  __typename: "CommerceBuyOrder",
   mode: "BUY",
 }
 
@@ -137,7 +137,7 @@ export const OfferWithTotals = {
   currencyCode: "USD",
   ...ShippingTotals,
   ...TaxTotals,
-  createdAt: null,
+  createdAt: "2019-08-01T20:34:27.467Z",
   fromParticipant: "SELLER",
   buyerTotal: "$14,320",
   buyerTotalCents: 1432000,
@@ -146,7 +146,7 @@ export const OfferWithTotals = {
 
 export const UntouchedOfferOrder = {
   ...UntouchedOrder,
-  __typename: "OfferOrder",
+  __typename: "CommerceOfferOrder",
   mode: "OFFER",
   currencyCode: "USD",
   totalListPrice: "$16,000",
@@ -186,7 +186,7 @@ export const OfferOrderWithOffersAndNote = {
 export const ShippingDetails = {
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
-    __typename: "Ship",
+    __typename: "CommerceShip",
     fulfillmentType: "SHIP",
     name: "Joelle Van Dyne",
     addressLine1: "401 Broadway",
@@ -237,7 +237,7 @@ export const BuyOrderPickup = {
   ...UntouchedBuyOrder,
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
-    __typename: "Pickup",
+    __typename: "CommercePickup",
     fulfillmentType: "PICKUP",
   },
 }
@@ -246,7 +246,7 @@ export const OfferOrderPickup = {
   ...OfferOrderWithOffers,
   buyerPhoneNumber: "120938120983",
   requestedFulfillment: {
-    __typename: "Pickup",
+    __typename: "CommercePickup",
     fulfillmentType: "PICKUP",
   },
 }

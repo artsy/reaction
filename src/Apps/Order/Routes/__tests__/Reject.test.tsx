@@ -36,7 +36,7 @@ describe("Buyer rejects seller offer", () => {
     Component: RejectFragmentContainer,
     query: graphql`
       query RejectTestQuery {
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Reject_order
         }
       }

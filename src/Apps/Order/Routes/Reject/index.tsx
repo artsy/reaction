@@ -40,19 +40,19 @@ export class Reject extends Component<RejectProps> {
     return this.props.commitMutation<RejectOfferMutation>({
       variables,
       mutation: graphql`
-        mutation RejectOfferMutation($input: buyerRejectOfferInput!) {
-          ecommerceBuyerRejectOffer(input: $input) {
+        mutation RejectOfferMutation($input: CommerceBuyerRejectOfferInput!) {
+          commerceBuyerRejectOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
                   id
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -72,7 +72,7 @@ export class Reject extends Component<RejectProps> {
         input: {
           offerId: this.props.order.lastOffer.id,
         },
-      })).ecommerceBuyerRejectOffer.orderOrError
+      })).commerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
@@ -186,7 +186,7 @@ export const RejectFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(injectCommitMutation(injectDialog(Reject))),
   {
     order: graphql`
-      fragment Reject_order on Order {
+      fragment Reject_order on CommerceOrder {
         id
         stateExpiresAt
         lineItems {
@@ -198,7 +198,7 @@ export const RejectFragmentContainer = createFragmentContainer(
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             id
             createdAt

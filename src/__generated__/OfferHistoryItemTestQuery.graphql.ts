@@ -17,15 +17,15 @@ export type OfferHistoryItemTestQuery = {
 
 /*
 query OfferHistoryItemTestQuery {
-  order: ecommerceOrder(id: "foo") {
+  order: commerceOrder(id: "foo") {
     __typename
     ...OfferHistoryItem_order
-    __id
+    __id: id
   }
 }
 
-fragment OfferHistoryItem_order on Order {
-  ... on OfferOrder {
+fragment OfferHistoryItem_order on CommerceOrder {
+  ... on CommerceOfferOrder {
     offers {
       edges {
         node {
@@ -33,7 +33,7 @@ fragment OfferHistoryItem_order on Order {
           amount(precision: 2)
           createdAt(format: "MMM D")
           fromParticipant
-          __id
+          __id: id
         }
       }
     }
@@ -44,11 +44,11 @@ fragment OfferHistoryItem_order on Order {
       shippingTotal(precision: 2)
       taxTotal(precision: 2)
       note
-      __id
+      __id: id
     }
   }
   totalListPrice(precision: 2)
-  __id
+  __id: id
 }
 */
 
@@ -58,13 +58,13 @@ var v0 = [
     "kind": "Literal",
     "name": "id",
     "value": "foo",
-    "type": "String!"
+    "type": "ID"
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -102,7 +102,7 @@ return {
   "operationKind": "query",
   "name": "OfferHistoryItemTestQuery",
   "id": null,
-  "text": "query OfferHistoryItemTestQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id\n  }\n}\n\nfragment OfferHistoryItem_order on Order {\n  ... on OfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      __id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id\n}\n",
+  "text": "query OfferHistoryItemTestQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    __id: id\n  }\n}\n\nfragment OfferHistoryItem_order on CommerceOrder {\n  ... on CommerceOfferOrder {\n    offers {\n      edges {\n        node {\n          id\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          __id: id\n        }\n      }\n    }\n    lastOffer {\n      id\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      __id: id\n    }\n  }\n  totalListPrice(precision: 2)\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -114,8 +114,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -138,8 +138,8 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
         "args": v0,
         "concreteType": null,
         "plural": false,
@@ -161,7 +161,7 @@ return {
           v1,
           {
             "kind": "InlineFragment",
-            "type": "OfferOrder",
+            "type": "CommerceOfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
@@ -169,7 +169,7 @@ return {
                 "name": "offers",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OfferConnection",
+                "concreteType": "CommerceOfferConnection",
                 "plural": false,
                 "selections": [
                   {
@@ -178,7 +178,7 @@ return {
                     "name": "edges",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "OfferEdge",
+                    "concreteType": "CommerceOfferEdge",
                     "plural": true,
                     "selections": [
                       {
@@ -187,7 +187,7 @@ return {
                         "name": "node",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "Offer",
+                        "concreteType": "CommerceOffer",
                         "plural": false,
                         "selections": [
                           v3,
@@ -220,7 +220,7 @@ return {
                 "name": "lastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
                   v3,
@@ -258,5 +258,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd05d067f54d6211be6cb79d01d5febc7';
+(node as any).hash = 'd314116a4afd130525e4b44bd2181306';
 export default node;

@@ -1,5 +1,6 @@
 import { Box } from "@artsy/palette"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import { getSlideshowImagesFromArticle } from "Components/Publishing/Layouts/ArticleWithFullScreen"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
@@ -27,6 +28,7 @@ interface Props {
   isSuper?: boolean
   customWidth?: number
   isTruncatedAt?: number
+  hideAds?: boolean
 }
 
 interface State {
@@ -154,6 +156,8 @@ export class Sections extends Component<Props, State> {
     const { article, color, customWidth, showTooltips } = this.props
     const targetHeight = customWidth && customWidth > 750 ? 750 : 500
     const size = customWidth && { width: customWidth }
+    const fullscreenImages = getSlideshowImagesFromArticle(article)
+
     const sections = {
       image_collection: (
         <ImageCollection
@@ -164,9 +168,16 @@ export class Sections extends Component<Props, State> {
           targetHeight={targetHeight}
           gutter={10}
           size={size}
+          fullscreenImages={fullscreenImages}
         />
       ),
-      image_set: <ImageSetPreview section={section} color={color} />,
+      image_set: (
+        <ImageSetPreview
+          section={section}
+          color={color}
+          fullscreenImages={fullscreenImages}
+        />
+      ),
       video: <Video section={section} color={color} />,
       embed: <Embed section={section} />,
       social_embed: <SocialEmbed section={section} />,
@@ -240,6 +251,7 @@ export class Sections extends Component<Props, State> {
       isSponsored,
       isSuper,
       isTruncatedAt,
+      hideAds,
     } = this.props
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
@@ -270,7 +282,8 @@ export class Sections extends Component<Props, State> {
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set") &&
         !firstAdInjected &&
-        !isSuper
+        !isSuper &&
+        !hideAds
 
       if (firstAdInjected) {
         placementCount++

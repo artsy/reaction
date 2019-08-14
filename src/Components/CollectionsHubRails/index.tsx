@@ -1,6 +1,7 @@
 import { CollectionsHubRails_linkedCollections } from "__generated__/CollectionsHubRails_linkedCollections.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { ArtistSeriesRailContainer as ArtistSeriesRail } from "./ArtistSeriesRail"
 import { FeaturedCollectionsRailsContainer as FeaturedCollectionsRails } from "./FeaturedCollectionsRails"
 import { OtherCollectionsRailsContainer as OtherCollectionsRail } from "./OtherCollectionsRail"
 
@@ -8,7 +9,7 @@ const railForGroupType = collectionGroup => {
   const { groupType } = collectionGroup
   switch (groupType) {
     case "ArtistSeries":
-      return null
+      return <ArtistSeriesRail collectionGroup={collectionGroup} />
     case "FeaturedCollections":
       return <FeaturedCollectionsRails collectionGroup={collectionGroup} />
     case "OtherCollections":
@@ -41,6 +42,7 @@ export const CollectionsHubRailsContainer = createFragmentContainer(
         groupType
         ...FeaturedCollectionsRails_collectionGroup
         ...OtherCollectionsRail_collectionGroup
+        ...ArtistSeriesRail_collectionGroup
       }
     `,
   }

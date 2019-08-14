@@ -49,7 +49,7 @@ describe("Accept seller offer", () => {
     Component: AcceptFragmentContainer,
     query: graphql`
       query AcceptTestQuery {
-        order(id: "") {
+        order: commerceOrder(id: "") {
           ...Accept_order
         }
       }

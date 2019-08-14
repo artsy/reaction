@@ -103,17 +103,17 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     return this.props.commitMutation<OfferMutation>({
       variables,
       mutation: graphql`
-        mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
-          ecommerceAddInitialOfferToOrder(input: $input) {
+        mutation OfferMutation($input: CommerceAddInitialOfferToOrderInput!) {
+          commerceAddInitialOfferToOrder(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
                   id
                   mode
                   totalListPrice
                   totalListPriceCents
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     myLastOffer {
                       id
                       amountCents
@@ -122,7 +122,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -168,7 +168,6 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     const listPriceCents = this.props.order.totalListPriceCents
-    const orderCurrency = this.props.order.currencyCode
 
     if (!lowSpeedBumpEncountered && offerValue * 100 < listPriceCents * 0.75) {
       this.showLowSpeedbump()
@@ -188,12 +187,9 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         input: {
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
           orderId: this.props.order.id,
-          offerPrice: {
-            amount: offerValue,
-            currencyCode: orderCurrency,
-          },
+          amountCents: offerValue * 100,
         },
-      })).ecommerceAddInitialOfferToOrder.orderOrError
+      })).commerceAddInitialOfferToOrder.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
@@ -317,13 +313,13 @@ export const OfferFragmentContainer = createFragmentContainer(
   injectCommitMutation(injectDialog(trackPageViewWrapper(OfferRoute))),
   {
     order: graphql`
-      fragment Offer_order on Order {
+      fragment Offer_order on CommerceOrder {
         id
         mode
         state
-        currencyCode
         totalListPrice(precision: 2)
         totalListPriceCents
+        currencyCode
         lineItems {
           edges {
             node {

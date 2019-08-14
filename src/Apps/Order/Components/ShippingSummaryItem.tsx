@@ -21,7 +21,7 @@ const ShippingSummaryItem = ({
 }: {
   order: ShippingSummaryItem_order
 } & StepSummaryItemProps) => {
-  return requestedFulfillment.__typename === "Ship" ? (
+  return requestedFulfillment.__typename === "CommerceShip" ? (
     <StepSummaryItem title="Ship to" {...others}>
       <ShippingAddress ship={requestedFulfillment} />
     </StepSummaryItem>
@@ -46,7 +46,7 @@ export const ShippingSummaryItemFragmentContainer = createFragmentContainer(
   ShippingSummaryItem,
   {
     order: graphql`
-      fragment ShippingSummaryItem_order on Order {
+      fragment ShippingSummaryItem_order on CommerceOrder {
         state
         requestedFulfillment {
           __typename

@@ -15,9 +15,10 @@ export const VanguardSeriesWrapper: React.SFC<{
 }> = props => {
   const { article, index } = props
   const { relatedArticles, title, layout, series, slug } = article
+  const slugifiedTitle = slugify(title)
 
   return (
-    <Box id={slugify(title)}>
+    <Box id={slugifiedTitle}>
       <Box
         pt={50}
         // prevents overlapping nav on jump-link
@@ -48,7 +49,11 @@ export const VanguardSeriesWrapper: React.SFC<{
       {/** map sub-series artist articles */}
       {relatedArticles &&
         relatedArticles.map((artistArticle, i) => (
-          <VanguardArtistWrapper key={i} article={artistArticle} />
+          <VanguardArtistWrapper
+            key={i}
+            article={artistArticle}
+            section={slugifiedTitle}
+          />
         ))}
     </Box>
   )

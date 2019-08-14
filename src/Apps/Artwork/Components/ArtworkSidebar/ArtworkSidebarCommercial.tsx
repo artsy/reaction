@@ -262,18 +262,18 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             {
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOfferOrderMutation(
-                  $input: CreateOfferOrderWithArtworkInput!
+                  $input: CommerceCreateOfferOrderWithArtworkInput!
                 ) {
-                  ecommerceCreateOfferOrderWithArtwork(input: $input) {
+                  commerceCreateOfferOrderWithArtwork(input: $input) {
                     orderOrError {
-                      ... on OrderWithMutationSuccess {
+                      ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
                           id
                           mode
                         }
                       }
-                      ... on OrderWithMutationFailure {
+                      ... on CommerceOrderWithMutationFailure {
                         error {
                           type
                           code
@@ -298,7 +298,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                   { isCommittingCreateOfferOrderMutation: false },
                   () => {
                     const {
-                      ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+                      commerceCreateOfferOrderWithArtwork: { orderOrError },
                     } = data
                     if (orderOrError.error) {
                       this.onMutationError(

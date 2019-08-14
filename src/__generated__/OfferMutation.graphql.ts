@@ -1,41 +1,37 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type AddInitialOfferToOrderInput = {
-    readonly orderId: string;
-    readonly offerPrice?: MoneyInput | null;
-    readonly note?: string | null;
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceAddInitialOfferToOrderInput = {
+    readonly amountCents: number;
     readonly clientMutationId?: string | null;
-};
-export type MoneyInput = {
-    readonly amount: number;
-    readonly currencyCode: string;
+    readonly note?: string | null;
+    readonly orderId: string;
 };
 export type OfferMutationVariables = {
-    readonly input: AddInitialOfferToOrderInput;
+    readonly input: CommerceAddInitialOfferToOrderInput;
 };
 export type OfferMutationResponse = {
-    readonly ecommerceAddInitialOfferToOrder: ({
-        readonly orderOrError: ({
-            readonly __typename: "OrderWithMutationSuccess";
-            readonly order?: ({
+    readonly commerceAddInitialOfferToOrder: ({
+        readonly orderOrError: {
+            readonly __typename: "CommerceOrderWithMutationSuccess";
+            readonly order?: {
                 readonly id: string;
-                readonly mode: OrderModeEnum | null;
+                readonly mode: CommerceOrderModeEnum | null;
                 readonly totalListPrice: string | null;
-                readonly totalListPriceCents: number | null;
+                readonly totalListPriceCents: number;
                 readonly myLastOffer?: ({
                     readonly id: string;
-                    readonly amountCents: number | null;
+                    readonly amountCents: number;
                     readonly note: string | null;
                 }) | null;
-            }) | null;
-            readonly error?: ({
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
+            };
+        };
     }) | null;
 };
 export type OfferMutation = {
@@ -47,12 +43,12 @@ export type OfferMutation = {
 
 /*
 mutation OfferMutation(
-  $input: AddInitialOfferToOrderInput!
+  $input: CommerceAddInitialOfferToOrderInput!
 ) {
-  ecommerceAddInitialOfferToOrder(input: $input) {
+  commerceAddInitialOfferToOrder(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         __typename
         order {
           __typename
@@ -60,18 +56,18 @@ mutation OfferMutation(
           mode
           totalListPrice
           totalListPriceCents
-          ... on OfferOrder {
+          ... on CommerceOfferOrder {
             myLastOffer {
               id
               amountCents
               note
-              __id
+              __id: id
             }
           }
-          __id
+          __id: id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -88,7 +84,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "AddInitialOfferToOrderInput!",
+    "type": "CommerceAddInitialOfferToOrderInput!",
     "defaultValue": null
   }
 ],
@@ -97,12 +93,12 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "AddInitialOfferToOrderInput!"
+    "type": "CommerceAddInitialOfferToOrderInput!"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -110,7 +106,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -175,14 +171,14 @@ v7 = {
 },
 v8 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v9 = {
   "kind": "InlineFragment",
-  "type": "OfferOrder",
+  "type": "CommerceOfferOrder",
   "selections": [
     {
       "kind": "LinkedField",
@@ -190,7 +186,7 @@ v9 = {
       "name": "myLastOffer",
       "storageKey": null,
       "args": null,
-      "concreteType": "Offer",
+      "concreteType": "CommerceOffer",
       "plural": false,
       "selections": [
         v4,
@@ -218,7 +214,7 @@ return {
   "operationKind": "mutation",
   "name": "OfferMutation",
   "id": null,
-  "text": "mutation OfferMutation(\n  $input: AddInitialOfferToOrderInput!\n) {\n  ecommerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on OfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              note\n              __id\n            }\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation OfferMutation(\n  $input: CommerceAddInitialOfferToOrderInput!\n) {\n  commerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on CommerceOfferOrder {\n            myLastOffer {\n              id\n              amountCents\n              note\n              __id: id\n            }\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -230,10 +226,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceAddInitialOfferToOrder",
+        "name": "commerceAddInitialOfferToOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "AddInitialOfferToOrderPayload",
+        "concreteType": "CommerceAddInitialOfferToOrderPayload",
         "plural": false,
         "selections": [
           {
@@ -248,7 +244,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -284,10 +280,10 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceAddInitialOfferToOrder",
+        "name": "commerceAddInitialOfferToOrder",
         "storageKey": null,
         "args": v1,
-        "concreteType": "AddInitialOfferToOrderPayload",
+        "concreteType": "CommerceAddInitialOfferToOrderPayload",
         "plural": false,
         "selections": [
           {
@@ -303,7 +299,7 @@ return {
               v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   v3,
                   {
@@ -334,5 +330,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'ffcbdfafdb3c0f6337c146317bc4af2d';
+(node as any).hash = 'd132eefb517283adf59065d0786727d1';
 export default node;

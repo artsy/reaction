@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Input, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Input, Sans, Serif } from "@artsy/palette"
 import { AuctionApp_sale } from "__generated__/AuctionApp_sale.graphql"
 import { RegistrationFormCreateBidderMutation } from "__generated__/RegistrationFormCreateBidderMutation.graphql"
 import { RegistrationFormCreateCreditCardMutation } from "__generated__/RegistrationFormCreateCreditCardMutation.graphql"
@@ -40,6 +40,8 @@ const InnerForm = (props: FormikProps<FormValues>) => {
     isSubmitting,
     handleChange,
     values,
+    setFieldValue,
+    setFieldTouched,
   } = props
 
   return (
@@ -128,14 +130,22 @@ const InnerForm = (props: FormikProps<FormValues>) => {
         </Box>
       </Box>
 
-      <Flex mt={4} mb={2} justifyContent="center">
-        <ConditionsOfSaleCheckbox
-          error={touched.agree_to_terms && errors.agree_to_terms}
-          value={values.agree_to_terms}
-          name="agree_to_terms"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
+      <Flex mt={4} mb={2} flexDirection="column" justifyContent="center">
+        <Box mx="auto">
+          <ConditionsOfSaleCheckbox
+            selected={values.agree_to_terms}
+            onSelect={value => {
+              setFieldValue("agree_to_terms", value)
+              setFieldTouched("agree_to_terms")
+            }}
+          />
+        </Box>
+
+        {touched.agree_to_terms && errors.agree_to_terms && (
+          <Sans mt={1} color="red100" size="2" textAlign="center">
+            {errors.agree_to_terms}
+          </Sans>
+        )}
       </Flex>
 
       <Button mt={1} size="large" width="100%" loading={isSubmitting}>
