@@ -307,14 +307,19 @@ export enum ContextModule {
   CollectionsRail = "CollectionsRail",
 
   /**
-   * Other Collections Rail
+   * Other Collections Rail in collection hub
    */
   OtherCollectionsRail = "OtherCollectionsRail",
 
   /**
-   * Featured Collections Rail
+   * Featured Collections Rail in collection hub
    */
   FeaturedCollectionsRail = "FeaturedCollectionsRail",
+
+  /**
+   * Artist Series rail in collection hub
+   */
+  ArtistCollectionsRail = "ArtistCollectionsRail",
 }
 
 export enum Flow {

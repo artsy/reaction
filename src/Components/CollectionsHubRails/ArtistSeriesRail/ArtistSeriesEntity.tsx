@@ -1,9 +1,10 @@
 import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { ArtistSeriesEntity_member } from "__generated__/ArtistSeriesEntity_member.graphql"
+import * as Schema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import currency from "currency.js"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import { get } from "Utils/get"
 
@@ -24,9 +25,24 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   const bgImages = hits.map(hit => hit.image.url)
   const imageSize =
     bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+  const { trackEvent } = useTracking()
+  const onClickLink = event => {
+    const link = event.target
+    const href = link.parentNode.parentNode.parentNode.getAttribute("href")
+    trackEvent({
+      action_type: Schema.ActionType.Click,
+      context_page: Schema.PageName.CollectionPage,
+      context_module: Schema.ContextModule.ArtistCollectionsRail,
+      context_page_owner_type: Schema.OwnerType.Collection,
+      type: Schema.Type.Thumbnail,
+      destination_path: href,
+      // item_number: itemPlacement,
+    })
+  }
+
   return (
     <Container p={0.5} m={0.5}>
-      <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
+      <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
         <ImgWrapper pb={1}>
           {bgImages.length ? (
             bgImages.map((url, i) => {
