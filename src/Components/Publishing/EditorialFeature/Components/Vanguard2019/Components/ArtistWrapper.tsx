@@ -131,7 +131,8 @@ const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
 `
 const ArtistContainer = styled(Box)`
   position: relative;
-  bottom: 750px;
+
+  /* bottom: 750px; */
 
   /* override feature text drop-caps */
   p:first-child::first-letter,
@@ -151,4 +152,9 @@ const BackgroundContainer = styled(Box)`
 `
 const ArtistWrapper = styled(Flex)`
   flex-direction: column;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 `
