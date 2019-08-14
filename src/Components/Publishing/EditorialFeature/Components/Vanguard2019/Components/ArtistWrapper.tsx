@@ -4,6 +4,8 @@ import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { Emerging } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
 import { GettingTheirDue } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
 import { NewlyEstablished } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
+import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFullScreen"
+import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
 import { Sections } from "Components/Publishing/Sections/Sections"
 import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
@@ -66,39 +68,42 @@ export class VanguardArtistWrapper extends React.Component<
     )
 
     return (
-      <ArtistWrapper>
-        <BackgroundContainer>{background}</BackgroundContainer>
-        <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
-          <Box textAlign="center">
-            <ArtistTitle size="8">{title}</ArtistTitle>
-            <Box position="absolute">
-              <Share
-                // TODO: We may need to use custom urls for in-page routing
-                url={getFullEditorialHref(layout, slug)}
-                title={title}
-              />
-            </Box>
-            {hero_section && (
-              <Sans size="4" weight="medium">
-                {hero_section.deck}
-              </Sans>
-            )}
-          </Box>
+      <FullScreenProvider>
+        <ArtistWrapper>
+          <BackgroundContainer>{background}</BackgroundContainer>
+          <ArticleWithFullScreen article={article}>
+            <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
+              <Box textAlign="center">
+                <ArtistTitle size="8">{title}</ArtistTitle>
+                <Box position="absolute">
+                  <Share
+                    // TODO: We may need to use custom urls for in-page routing
+                    url={getFullEditorialHref(layout, slug)}
+                    title={title}
+                  />
+                </Box>
+                {hero_section && (
+                  <Sans size="4" weight="medium">
+                    {hero_section.deck}
+                  </Sans>
+                )}
+              </Box>
+              {/** TODO: Sections may need to be customized to handle expansion */}
+              <Sections hideAds article={article} customWidth={900} />
 
-          {/** TODO: Sections may need to be customized to handle expansion */}
-          <Sections hideAds article={article} />
-
-          <ReadMoreButton
-            size="5"
-            weight="medium"
-            textAlign="center"
-            onClick={this.onExpand}
-          >
-            {isExpanded ? "Read More" : "Close"}
-            <Sans size="8">{isExpanded ? "\u2193" : "\u2191"}</Sans>
-          </ReadMoreButton>
-        </ArtistContainer>
-      </ArtistWrapper>
+              <ReadMoreButton
+                size="5"
+                weight="medium"
+                textAlign="center"
+                onClick={this.onExpand}
+              >
+                {isExpanded ? "Read More" : "Close"}
+                <Sans size="8">{isExpanded ? "\u2193" : "\u2191"}</Sans>
+              </ReadMoreButton>
+            </ArtistContainer>
+          </ArticleWithFullScreen>
+        </ArtistWrapper>
+      </FullScreenProvider>
     )
   }
 }
@@ -114,6 +119,7 @@ const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
 const ArtistContainer = styled(Box)`
   position: relative;
   bottom: 750px;
+
   /* override feature text drop-caps */
   p:first-child::first-letter,
   .paragraph:first-child::first-letter {

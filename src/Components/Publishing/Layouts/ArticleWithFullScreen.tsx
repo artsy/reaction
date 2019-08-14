@@ -1,17 +1,12 @@
-import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
-import { cloneDeep, extend, includes, map } from "lodash"
+import { ArticleProps } from "Components/Publishing/Article"
+import { FullscreenViewer } from "Components/Publishing/Sections/FullscreenViewer/FullscreenViewer"
+import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
+import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import track from "react-tracking"
-import { ArticleProps } from "../Article"
-import { FullscreenViewer } from "../Sections/FullscreenViewer/FullscreenViewer"
-import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
-import { ArticleData } from "../Typings"
-import { FeatureLayout } from "./FeatureLayout"
-import { StandardLayout } from "./StandardLayout"
 
 interface ArticleState {
   fullscreenImages: any
-  article: ArticleData
 }
 
 @withFullScreen
@@ -29,55 +24,19 @@ export class ArticleWithFullScreen extends React.Component<
 
   constructor(props) {
     super(props)
-    const { fullscreenImages, article } = this.indexAndExtractImages()
+    const fullscreenImages = getSlideshowImagesFromArticle(props.article)
     this.state = {
       fullscreenImages,
-      article,
     }
   }
 
-  indexAndExtractImages = () => {
-    const article = cloneDeep(this.props.article)
-    const fullscreenImages = []
-    let sectionIndex = 0
-
-    const newSections = map(article.sections, section => {
-      if (includes(["image_collection", "image_set"], section.type)) {
-        const newImages = map(section.images, image => {
-          image.setTitle = section.title
-          image.index = sectionIndex
-          fullscreenImages.push(image)
-          sectionIndex = sectionIndex + 1
-          return image
-        })
-        section.images = newImages
-      }
-      return section
-    })
-    article.sections = newSections
-    return { fullscreenImages, article }
-  }
-
   render() {
-    const { article, fullscreenImages } = this.state
-    const {
-      closeViewer,
-      customEditorial,
-      slideIndex,
-      viewerIsOpen,
-    } = this.props
-
-    const articleProps = extend(cloneDeep(this.props), { article, slideIndex })
+    const { fullscreenImages } = this.state
+    const { closeViewer, slideIndex, viewerIsOpen } = this.props
 
     return (
       <div>
-        {customEditorial ? (
-          <EditorialFeature {...articleProps} />
-        ) : article.layout === "feature" ? (
-          <FeatureLayout {...articleProps} />
-        ) : (
-          <StandardLayout {...articleProps} />
-        )}
+        {this.props.children}
         <FullscreenViewer
           onClose={closeViewer}
           show={viewerIsOpen}
@@ -90,3 +49,23 @@ export class ArticleWithFullScreen extends React.Component<
 }
 
 export default track()(ArticleWithFullScreen)
+
+export const getSlideshowImagesFromArticle = (article: ArticleData) => {
+  const fullscreenImages = []
+  let sectionIndex = 0
+
+  article.sections.map(section => {
+    if (["image_collection", "image_set"].includes(section.type)) {
+      section.images.map(image => {
+        const img = {
+          ...image,
+          setTitle: section.title,
+          index: sectionIndex,
+        }
+        fullscreenImages.push(img)
+        sectionIndex = sectionIndex + 1
+      })
+    }
+  })
+  return fullscreenImages
+}

@@ -1,3 +1,4 @@
+import { ImagesData } from "Components/Publishing/Typings"
 import { find } from "lodash"
 import React from "react"
 import sizeMe from "react-sizeme"
@@ -11,7 +12,7 @@ import { Image } from "./Image"
 
 export interface ImageCollectionProps {
   color?: string
-  images: any
+  images: ImagesData
   targetHeight?: number
   gutter?: number
   sectionLayout?: SectionLayout
@@ -19,6 +20,7 @@ export interface ImageCollectionProps {
   size?: {
     width: number
   }
+  fullscreenImages: ImagesData
 }
 
 class ImageCollectionComponent extends React.PureComponent<
@@ -39,6 +41,7 @@ class ImageCollectionComponent extends React.PureComponent<
       images,
       sectionLayout,
       size: { width },
+      fullscreenImages,
     } = this.props
 
     const renderedImages = images.map((image, i) => {
@@ -51,6 +54,12 @@ class ImageCollectionComponent extends React.PureComponent<
         imageSize = find(dimensions, ["__id", url])
       }
 
+      const slideshowIndex =
+        fullscreenImages &&
+        fullscreenImages.findIndex(img => {
+          return img.url === image.url
+        })
+
       let renderedImage
       if (image.type === "image") {
         renderedImage = (
@@ -61,6 +70,7 @@ class ImageCollectionComponent extends React.PureComponent<
             layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
+            slideshowIndex={slideshowIndex}
           />
         )
       } else if (image.type === "artwork") {
@@ -72,6 +82,7 @@ class ImageCollectionComponent extends React.PureComponent<
             layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
+            slideshowIndex={slideshowIndex}
           />
         )
       } else {

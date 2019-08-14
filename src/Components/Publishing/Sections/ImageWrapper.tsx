@@ -13,7 +13,7 @@ interface Props extends React.HTMLProps<HTMLImageElement> {
   height?: string | number
   alt?: string
   editing?: boolean
-  index?: number
+  slideshowIndex?: number
 }
 
 export class ImageWrapper extends React.PureComponent<Props, any> {
@@ -56,7 +56,13 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
   }
 
   render() {
-    const { editing, layout, linked, index, ...imageProps }: any = this.props
+    const {
+      editing,
+      layout,
+      linked,
+      slideshowIndex,
+      ...imageProps
+    }: any = this.props
     let className = "BlockImage__container"
 
     if (this.state.isLoaded || editing) {
@@ -73,7 +79,7 @@ export class ImageWrapper extends React.PureComponent<Props, any> {
 
         {layout !== "classic" && layout !== "news" && linked && (
           <Fullscreen>
-            <ViewFullscreen index={index} />
+            <ViewFullscreen index={slideshowIndex} />
           </Fullscreen>
         )}
       </StyledImageWrapper>

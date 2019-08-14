@@ -1,21 +1,23 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 
+import { BannerWrapper } from "Components/Publishing/Banner/Banner"
+import { PixelTracker } from "Components/Publishing/Display/ExternalTrackers"
 import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
+import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFullScreen"
+import { ClassicLayout } from "Components/Publishing/Layouts/ClassicLayout"
+import { FeatureLayout } from "Components/Publishing/Layouts/FeatureLayout"
+import { NewsLayout } from "Components/Publishing/Layouts/NewsLayout"
+import { SeriesLayout } from "Components/Publishing/Layouts/SeriesLayout"
+import { StandardLayout } from "Components/Publishing/Layouts/StandardLayout"
+import { VideoLayout } from "Components/Publishing/Layouts/VideoLayout"
+import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
 import { TooltipsDataProvider } from "Components/Publishing/ToolTip/TooltipsDataProvider"
+import { ArticleData } from "Components/Publishing/Typings"
 import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
 import Events from "../../Utils/Events"
-import { BannerWrapper } from "./Banner/Banner"
-import { PixelTracker } from "./Display/ExternalTrackers"
-import ArticleWithFullScreen from "./Layouts/ArticleWithFullScreen"
-import { ClassicLayout } from "./Layouts/ClassicLayout"
-import { NewsLayout } from "./Layouts/NewsLayout"
-import { SeriesLayout } from "./Layouts/SeriesLayout"
-import { VideoLayout } from "./Layouts/VideoLayout"
-import { FullScreenProvider } from "./Sections/FullscreenViewer/FullScreenProvider"
-import { ArticleData } from "./Typings"
 
 GPT.enableSingleRequest()
 
@@ -69,7 +71,13 @@ export class Article extends React.Component<ArticleProps> {
 
     if (customEditorial) {
       if (article.layout !== "series") {
-        return <ArticleWithFullScreen {...this.props} />
+        return (
+          <FullScreenProvider>
+            <ArticleWithFullScreen {...this.props}>
+              <EditorialFeature {...this.props} />
+            </ArticleWithFullScreen>
+          </FullScreenProvider>
+        )
       } else {
         return <EditorialFeature {...this.props} />
       }
@@ -77,6 +85,15 @@ export class Article extends React.Component<ArticleProps> {
       switch (article.layout) {
         case "classic": {
           return <ClassicLayout {...this.props} />
+        }
+        case "feature": {
+          return (
+            <FullScreenProvider>
+              <ArticleWithFullScreen {...this.props}>
+                <FeatureLayout {...this.props} />
+              </ArticleWithFullScreen>
+            </FullScreenProvider>
+          )
         }
         case "series": {
           return <SeriesLayout {...this.props} />
@@ -88,7 +105,13 @@ export class Article extends React.Component<ArticleProps> {
           return <NewsLayout {...this.props} />
         }
         default: {
-          return <ArticleWithFullScreen {...this.props} />
+          return (
+            <FullScreenProvider>
+              <ArticleWithFullScreen {...this.props}>
+                <StandardLayout {...this.props} />
+              </ArticleWithFullScreen>
+            </FullScreenProvider>
+          )
         }
       }
     }
@@ -122,18 +145,13 @@ export class Article extends React.Component<ArticleProps> {
       <MediaContextProvider>
         <Theme>
           <TooltipsDataProvider {...this.props}>
-            <FullScreenProvider>
-              {this.getArticleLayout()}
-              {trackingCode && (
-                <PixelTracker
-                  unit={trackingCode}
-                  date={this.props.renderTime}
-                />
-              )}
-              {this.shouldRenderSignUpCta() && (
-                <BannerWrapper article={article} />
-              )}
-            </FullScreenProvider>
+            {this.getArticleLayout()}
+            {trackingCode && (
+              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
+            )}
+            {this.shouldRenderSignUpCta() && (
+              <BannerWrapper article={article} />
+            )}
           </TooltipsDataProvider>
         </Theme>
       </MediaContextProvider>

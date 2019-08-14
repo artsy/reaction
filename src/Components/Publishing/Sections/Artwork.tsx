@@ -15,6 +15,7 @@ export interface ArtworkProps {
   linked?: boolean
   width?: string | number
   height?: string | number
+  slideshowIndex?: number
 }
 
 export class Artwork extends React.PureComponent<ArtworkProps> {
@@ -33,6 +34,7 @@ export class Artwork extends React.PureComponent<ArtworkProps> {
       height,
       width,
       layout,
+      slideshowIndex,
     } = this.props
     const src = resize(artwork.image, {
       width: 1200,
@@ -48,7 +50,7 @@ export class Artwork extends React.PureComponent<ArtworkProps> {
         width={width}
         height={height}
         alt={artwork.title}
-        index={artwork.index}
+        slideshowIndex={slideshowIndex}
       />
     )
 

@@ -20,6 +20,7 @@ export interface ImageSetPreviewProps {
   section: ImageSetSection
   children?: ReactNode
   onViewFullscreen?: (index: number) => void
+  fullscreenImages?: ImagesData
 }
 
 @withFullScreen
@@ -34,7 +35,16 @@ export class ImageSetPreview extends React.PureComponent<ImageSetPreviewProps> {
   }
 
   onClick = () => {
-    this.props.onViewFullscreen(this.props.section.images[0].index)
+    const {
+      fullscreenImages,
+      section: { images },
+    } = this.props
+    const slideshowIndex =
+      fullscreenImages &&
+      fullscreenImages.findIndex(img => {
+        return img.url === images[0].url
+      })
+    this.props.onViewFullscreen(slideshowIndex)
   }
 
   render() {
