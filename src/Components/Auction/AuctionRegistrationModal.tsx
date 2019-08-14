@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { Modal } from "@artsy/palette"
@@ -37,8 +37,13 @@ export const AuctionRegistrationModal: React.FC<Props> = ({
 
   function closeModal() {
     setShow(false)
-    onClose()
   }
+
+  useEffect(() => {
+    if (!show) {
+      onClose()
+    }
+  }, [show])
 
   function validate() {
     if (acceptedConditions) {
