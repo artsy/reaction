@@ -1,12 +1,15 @@
 import { Box, color, Flex, FlexProps, Sans, Serif } from "@artsy/palette"
-import { Share } from "Components/Publishing/Byline/Share"
+import { Share, ShareContainer } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { Emerging } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
 import { GettingTheirDue } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
 import { NewlyEstablished } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFullScreen"
+import { StyledArtworkCaption } from "Components/Publishing/Sections/ArtworkCaption"
+import { CaptionContainer } from "Components/Publishing/Sections/Caption"
 import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
 import { Sections } from "Components/Publishing/Sections/Sections"
+import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
 import React from "react"
@@ -62,35 +65,37 @@ export class VanguardArtistWrapper extends React.Component<
     const { article, section } = this.props
     const { hero_section, layout, slug, title } = article
     const { isExpanded } = this.state
-    const textColor = isExpanded ? "white" : undefined
 
     const background = this.getSVGBackground(
       this.getRandomSVG(section),
       section
     )
+    const backgroundColor = isExpanded ? color("black100") : color("white100")
 
     return (
       <FullScreenProvider>
-        <ArtistWrapper background={isExpanded && "black"}>
+        <ArtistWrapper
+          background={backgroundColor}
+          pt={50}
+          mb={isExpanded && 100}
+        >
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
             <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
               <Box textAlign="center">
-                <ArtistTitle size="8" color={textColor}>
-                  {title}
-                </ArtistTitle>
+                <ArtistTitle size="8">{title}</ArtistTitle>
                 <Box position="absolute">
                   <Share
                     // TODO: We may need to use custom urls for in-page routing
                     url={getFullEditorialHref(layout, slug)}
                     title={title}
-                    color={textColor}
+                    color={color("white100")}
                   />
                 </Box>
                 {hero_section && (
-                  <Sans size="4" weight="medium" color={textColor}>
+                  <InvertedSans size="4" weight="medium">
                     {hero_section.deck}
-                  </Sans>
+                  </InvertedSans>
                 )}
               </Box>
 
@@ -99,7 +104,6 @@ export class VanguardArtistWrapper extends React.Component<
                 article={article}
                 customWidth={900}
                 isTruncatedAt={!isExpanded && 2}
-                color={textColor}
               />
 
               <ReadMoreButton
@@ -107,7 +111,6 @@ export class VanguardArtistWrapper extends React.Component<
                 weight="medium"
                 textAlign="center"
                 onClick={this.onExpand.bind(this)}
-                color={textColor}
               >
                 {isExpanded ? "Close" : "Read More"}
                 <Sans size="8">{isExpanded ? "\u2191" : "\u2193"}</Sans>
@@ -120,19 +123,30 @@ export class VanguardArtistWrapper extends React.Component<
   }
 }
 
-const ArtistTitle = styled(Serif)`
-  font-size: 100px;
-  line-height: 1.35em;
+export const InvertedSerif = styled(Serif)`
+  mix-blend-mode: difference;
+  background: ${color("black100")};
   color: ${color("white100")};
 `
-const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
+
+export const InvertedSans = styled(Sans)`
+  mix-blend-mode: difference;
+  background: ${color("black100")};
+  color: ${color("white100")};
+`
+
+const ArtistTitle = styled(InvertedSerif)`
+  font-size: 100px;
+  line-height: 1.35em;
+`
+
+const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
   text-transform: uppercase;
   cursor: pointer;
 `
+
 const ArtistContainer = styled(Box)`
   position: relative;
-
-  /* bottom: 750px; */
 
   /* override feature text drop-caps */
   p:first-child::first-letter,
@@ -145,16 +159,78 @@ const ArtistContainer = styled(Box)`
     margin-top: 0;
     text-transform: none;
   }
+
+  ${ShareContainer},
+  ${StyledText} {
+    mix-blend-mode: difference;
+    background: ${color("black100")};
+    color: ${color("white100")};
+  }
+
+  ${CaptionContainer} {
+    p {
+      mix-blend-mode: difference;
+      background: ${color("black100")};
+      color: ${color("white100")};
+    }
+
+    a {
+      mix-blend-mode: difference;
+      background: ${color("black100")};
+      color: ${color("white100")};
+      background-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        #fff 1px,
+        transparent 0
+      );
+      background-size: 1.25px 4px;
+      background-repeat: repeat-x;
+      background-position: bottom;
+    }
+  }
+
+  ${StyledArtworkCaption} {
+    mix-blend-mode: difference;
+    background: ${color("black100")};
+    color: ${color("white100")};
+
+    a {
+      mix-blend-mode: difference;
+      background: ${color("black100")};
+      color: ${color("white100")};
+    }
+  }
+
+  ${StyledText} {
+    a {
+      mix-blend-mode: difference;
+      background: ${color("black100")};
+      color: ${color("white100")};
+      background-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        #fff 1px,
+        transparent 0
+      );
+      background-size: 1.25px 4px;
+      background-repeat: repeat-x;
+      background-position: bottom;
+    }
+  }
 `
 
 const BackgroundContainer = styled(Box)`
-  height: 100%;
-`
-const ArtistWrapper = styled(Flex)`
-  flex-direction: column;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+`
+
+const ArtistWrapper = styled(Flex)`
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 100vh;
 `
