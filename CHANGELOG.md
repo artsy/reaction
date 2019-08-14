@@ -1,3 +1,15 @@
+# v16.24.7 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor slideshows & add to vanguard [#2690](https://github.com/artsy/reaction/pull/2690) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.6 (Wed Aug 14 2019)
 
 #### 🐛  Bug Fix
