@@ -25,7 +25,7 @@ const initializeVariablesWithFilterState = (params, props) => {
   return { sort: "-decayed_merch", ...initialFilterState, ...params }
 }
 
-export const routes: RouteConfig[] = [
+export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
     Component: props => {
@@ -38,7 +38,7 @@ export const routes: RouteConfig[] = [
       )
     },
     query: graphql`
-      query routes_CollectAppQuery(
+      query collectRoutes_CollectAppQuery(
         $medium: String
         $major_periods: [String]
         $partner_id: ID
@@ -82,17 +82,19 @@ export const routes: RouteConfig[] = [
       }
     `,
     prepareVariables: initializeVariablesWithFilterState,
+    showFetchIndicator: false,
   },
   {
     path: "/collections",
     Component: CollectionsApp,
     query: graphql`
-      query routes_MarketingCollectionsAppQuery {
+      query collectRoutes_MarketingCollectionsAppQuery {
         categories: marketingCategories {
           ...Collections_categories
         }
       }
     `,
+    showFetchIndicator: false,
   },
   {
     path: "/collection/:slug",
@@ -106,7 +108,7 @@ export const routes: RouteConfig[] = [
       )
     },
     query: graphql`
-      query routes_MarketingCollectionApp2Query(
+      query collectRoutes_MarketingCollectionApp2Query(
         $slug: String!
         $medium: String
         $major_periods: [String]
@@ -143,5 +145,6 @@ export const routes: RouteConfig[] = [
       }
     `,
     prepareVariables: initializeVariablesWithFilterState,
+    showFetchIndicator: false,
   },
 ]

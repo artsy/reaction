@@ -141,7 +141,7 @@ export const CollectRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectRefetch2Query(
+    query CollectRefetchQuery(
       $medium: String
       $major_periods: [String]
       $partner_id: ID

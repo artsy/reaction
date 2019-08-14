@@ -32,7 +32,12 @@ export const renderSpinner = () => {
 //   return location.action === "POP" ? "STORE_OR_NETWORK" : "STORE_THEN_NETWORK"
 // }
 
-function createRender({ prerender, render, renderFetched }) {
+function createRender({
+  prerender,
+  render,
+  renderFetched,
+  showFetchIndicator = false,
+}) {
   return (renderArgs: {
     Component: React.ComponentType
     props?: object
@@ -58,7 +63,11 @@ function createRender({ prerender, render, renderFetched }) {
 
     // This should only ever show when doing client-side routing.
     if (!props) {
-      return renderSpinner()
+      if (showFetchIndicator) {
+        return renderSpinner()
+      } else {
+        return
+      }
     }
 
     if (renderFetched) {

@@ -120,7 +120,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
     `,
   },
   graphql`
-    query CollectionRefetch2Query(
+    query CollectionRefetchQuery(
       $collectionSlug: String!
       $medium: String
       $major_periods: [String]

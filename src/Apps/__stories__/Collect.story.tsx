@@ -1,19 +1,19 @@
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { routes as collect2Routes } from "../Collect2/routes"
+import { collectRoutes } from "../Collect2/collectRoutes"
 
 storiesOf("Apps/Collect", module)
   .add("Collect", () => {
-    return <MockRouter routes={collect2Routes} initialRoute="/collect" />
+    return <MockRouter routes={collectRoutes} initialRoute="/collect" />
   })
   .add("Collections", () => {
-    return <MockRouter routes={collect2Routes} initialRoute="/collections" />
+    return <MockRouter routes={collectRoutes} initialRoute="/collections" />
   })
   .add("Collection", () => {
     return (
       <MockRouter
-        routes={collect2Routes}
+        routes={collectRoutes}
         initialRoute="/collection/abstract-expressionism-works-on-paper"
       />
     )

@@ -2,21 +2,21 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { Collections_categories$ref } from "./Collections_categories.graphql";
-export type routes_MarketingCollectionsAppQueryVariables = {};
-export type routes_MarketingCollectionsAppQueryResponse = {
+export type collectRoutes_MarketingCollectionsAppQueryVariables = {};
+export type collectRoutes_MarketingCollectionsAppQueryResponse = {
     readonly categories: ReadonlyArray<{
         readonly " $fragmentRefs": Collections_categories$ref;
     }>;
 };
-export type routes_MarketingCollectionsAppQuery = {
-    readonly response: routes_MarketingCollectionsAppQueryResponse;
-    readonly variables: routes_MarketingCollectionsAppQueryVariables;
+export type collectRoutes_MarketingCollectionsAppQuery = {
+    readonly response: collectRoutes_MarketingCollectionsAppQueryResponse;
+    readonly variables: collectRoutes_MarketingCollectionsAppQueryVariables;
 };
 
 
 
 /*
-query routes_MarketingCollectionsAppQuery {
+query collectRoutes_MarketingCollectionsAppQuery {
   categories: marketingCategories {
     ...Collections_categories
   }
@@ -36,13 +36,13 @@ fragment Collections_categories on MarketingCollectionCategory {
 const node: ConcreteRequest = {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_MarketingCollectionsAppQuery",
+  "name": "collectRoutes_MarketingCollectionsAppQuery",
   "id": null,
-  "text": "query routes_MarketingCollectionsAppQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
+  "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_MarketingCollectionsAppQuery",
+    "name": "collectRoutes_MarketingCollectionsAppQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -67,7 +67,7 @@ const node: ConcreteRequest = {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_MarketingCollectionsAppQuery",
+    "name": "collectRoutes_MarketingCollectionsAppQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -130,5 +130,5 @@ const node: ConcreteRequest = {
     ]
   }
 };
-(node as any).hash = '86e70b201bcadc940f317bc5e17b5824';
+(node as any).hash = '033d007f9a2365748adae65555d37147';
 export default node;
