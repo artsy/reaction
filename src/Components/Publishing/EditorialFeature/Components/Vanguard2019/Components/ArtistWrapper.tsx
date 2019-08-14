@@ -8,7 +8,10 @@ import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFull
 import { StyledArtworkCaption } from "Components/Publishing/Sections/ArtworkCaption"
 import { CaptionContainer } from "Components/Publishing/Sections/Caption"
 import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
-import { Sections } from "Components/Publishing/Sections/Sections"
+import {
+  Sections,
+  StyledSections,
+} from "Components/Publishing/Sections/Sections"
 import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
@@ -82,7 +85,7 @@ export class VanguardArtistWrapper extends React.Component<
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
             <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
-              <Box textAlign="center">
+              <Box textAlign="center" pb={30}>
                 <ArtistTitle size="8">{title}</ArtistTitle>
                 <Box position="absolute">
                   <Share
@@ -102,7 +105,7 @@ export class VanguardArtistWrapper extends React.Component<
               <Sections
                 hideAds
                 article={article}
-                customWidth={900}
+                customWidth={920}
                 isTruncatedAt={!isExpanded && 2}
               />
 
@@ -136,8 +139,8 @@ export const InvertedSans = styled(Sans)`
 `
 
 const ArtistTitle = styled(InvertedSerif)`
-  font-size: 100px;
-  line-height: 1.35em;
+  font-size: 95px;
+  line-height: 1em;
 `
 
 const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
@@ -158,6 +161,10 @@ const ArtistContainer = styled(Box)`
     margin-right: 0;
     margin-top: 0;
     text-transform: none;
+  }
+
+  ${StyledSections} {
+    margin-top: 0;
   }
 
   ${ShareContainer},
