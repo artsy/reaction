@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { DefaultHeader2_headerArtworks$ref } from "./DefaultHeader2_headerArtworks.graphql";
+import { DefaultHeader_headerArtworks$ref } from "./DefaultHeader_headerArtworks.graphql";
 import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
 declare const _Header_artworks$ref: unique symbol;
 export type Header_artworks$ref = typeof _Header_artworks$ref;
@@ -15,7 +15,7 @@ export type Header_artworks = {
         readonly nationality: string | null;
         readonly " $fragmentRefs": FollowArtistButton_artist$ref;
     }) | null> | null;
-    readonly " $fragmentRefs": DefaultHeader2_headerArtworks$ref;
+    readonly " $fragmentRefs": DefaultHeader_headerArtworks$ref;
     readonly " $refType": Header_artworks$ref;
 };
 
@@ -38,7 +38,7 @@ return {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "DefaultHeader2_headerArtworks",
+      "name": "DefaultHeader_headerArtworks",
       "args": null
     },
     {
@@ -104,5 +104,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e3982193d9f25268ff72202252b19373';
+(node as any).hash = '9f9af55c7e48a35977a2d4c5fa50c4e6';
 export default node;

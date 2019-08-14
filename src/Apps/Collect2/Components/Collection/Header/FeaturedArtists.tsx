@@ -53,6 +53,7 @@ const ViewMore = styled(Sans)`
   div {
     div {
       text-decoration: underline;
+      cursor: pointer;
     }
 
     div:first-child {

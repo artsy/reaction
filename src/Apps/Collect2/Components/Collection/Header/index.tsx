@@ -340,7 +340,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
   {
     artworks: graphql`
       fragment Header_artworks on FilterArtworks {
-        ...DefaultHeader2_headerArtworks
+        ...DefaultHeader_headerArtworks
 
         merchandisable_artists {
           id

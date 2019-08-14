@@ -1,10 +1,10 @@
-import { Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { Collections_categories } from "__generated__/Collections_categories.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { Link, Router } from "found"
-import React, { Component } from "react"
+import React, { Component, useState } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -18,6 +18,8 @@ interface CollectionsAppProps {
 const META_DESCRIPTION =
   "Discover collections of art curated by Artsy Specialists. From iconic artist series to trending design, shop " +
   "collections on the world's largest online art marketplace."
+
+const isServer = typeof window === "undefined"
 
 export class CollectionsApp extends Component<CollectionsAppProps> {
   render() {
@@ -53,19 +55,53 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
             {categories &&
               [...categories] // creates a new array since the sort function modifies the array.
                 .sort((a, b) => a.name.localeCompare(b.name))
-                .map((category, index) => (
-                  <CollectionsGrid
-                    key={index}
-                    name={category.name}
-                    collections={category.collections as CollectionEntity[]}
-                    router={router}
-                  />
-                ))}
+                .map((category, index) => {
+                  return (
+                    <Box>
+                      <CategoryItem
+                        category={category}
+                        router={router}
+                        key={category.name + index}
+                      />
+                    </Box>
+                  )
+                })}
           </FrameWithRecentlyViewed>
         </AppContainer>
       </>
     )
   }
+}
+
+const CategoryItem = props => {
+  const [showAll, toggleShowAll] = useState(false)
+  const { category, router } = props
+  const { collections } = category
+  const truncatedCollections = collections.slice(0, 21)
+  const displayableCollections = (showAll || isServer
+    ? collections
+    : truncatedCollections) as CollectionEntity[]
+
+  return (
+    <>
+      <CollectionsGrid
+        name={category.name}
+        collections={displayableCollections}
+        router={router}
+      />
+      {!(isServer || showAll) && (
+        <Box mb={6} width="100%" style={{ textAlign: "center" }}>
+          <Button
+            size="medium"
+            variant="secondaryOutline"
+            onClick={() => toggleShowAll(true)}
+          >
+            More in {category.name}
+          </Button>
+        </Box>
+      )}
+    </>
+  )
 }
 
 export const CollectionsAppFragmentContainer = createFragmentContainer(

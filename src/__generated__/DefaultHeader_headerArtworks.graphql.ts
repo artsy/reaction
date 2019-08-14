@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _DefaultHeader2_headerArtworks$ref: unique symbol;
-export type DefaultHeader2_headerArtworks$ref = typeof _DefaultHeader2_headerArtworks$ref;
-export type DefaultHeader2_headerArtworks = {
+declare const _DefaultHeader_headerArtworks$ref: unique symbol;
+export type DefaultHeader_headerArtworks$ref = typeof _DefaultHeader_headerArtworks$ref;
+export type DefaultHeader_headerArtworks = {
     readonly hits: ReadonlyArray<({
         readonly href: string | null;
         readonly id: string;
@@ -20,7 +20,7 @@ export type DefaultHeader2_headerArtworks = {
             }) | null;
         }) | null;
     }) | null> | null;
-    readonly " $refType": DefaultHeader2_headerArtworks$ref;
+    readonly " $refType": DefaultHeader_headerArtworks$ref;
 };
 
 
@@ -58,7 +58,7 @@ v1 = {
 };
 return {
   "kind": "Fragment",
-  "name": "DefaultHeader2_headerArtworks",
+  "name": "DefaultHeader_headerArtworks",
   "type": "FilterArtworks",
   "metadata": null,
   "argumentDefinitions": [],
@@ -145,5 +145,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7ea081aa7705b6e865e05b1d6fb7e3be';
+(node as any).hash = '91384b79f54832378562f301bc78bbf9';
 export default node;
