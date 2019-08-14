@@ -159,6 +159,11 @@ const FeaturedCollectionsContainer = styled(Box)`
 
 const Container = styled(Box)`
   border: 1px solid ${color("black10")};
+  border-radius: 2px;
+  &:hover {
+    text-decoration: none;
+    border: 1px solid ${color("black60")};
+  }
 `
 
 const ExtendedSerif = styled(Serif)`
@@ -198,9 +203,5 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
-
-    ${CollectionTitle} {
-      text-decoration: underline;
-    }
   }
 `

@@ -15,7 +15,12 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border: 1px solid ${color("black10")};
+  border-radius: 2px;
   margin-right: 10px;
+  &:hover {
+    text-decoration: none;
+    border: 1px solid ${color("black60")};
+  }
 `
 
 export const ImageContainer = styled(Box)`
@@ -25,6 +30,7 @@ export const ImageContainer = styled(Box)`
 
 export const ThumbnailImage = styled(ResponsiveImage)`
   background-size: cover;
+  border-radius: 2px 1px 1px 2px;
 `
 
 const TitleContainer = styled(Serif)`

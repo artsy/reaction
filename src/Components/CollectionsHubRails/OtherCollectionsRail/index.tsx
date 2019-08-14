@@ -52,6 +52,7 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
           wrapAround: sd.IS_MOBILE ? true : false,
           pageDots: false,
           draggable: sd.IS_MOBILE ? true : false,
+          contain: true,
         }}
         data={members}
         render={slide => {
