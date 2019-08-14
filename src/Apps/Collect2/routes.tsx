@@ -38,7 +38,7 @@ export const routes: RouteConfig[] = [
       )
     },
     query: graphql`
-      query routes_CollectApp2Query(
+      query routes_CollectAppQuery(
         $medium: String
         $major_periods: [String]
         $partner_id: ID
