@@ -1,3 +1,15 @@
+# v16.24.9 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1355]: Address OtherCollectionsRail QA items [#2691](https://github.com/artsy/reaction/pull/2691) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v16.24.8 (Wed Aug 14 2019)
 
 #### 🐛  Bug Fix
