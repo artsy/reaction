@@ -1,4 +1,4 @@
-import { Box, color, FlexProps, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, FlexProps, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { Emerging } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
@@ -10,7 +10,6 @@ import { Sections } from "Components/Publishing/Sections/Sections"
 import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
 import React from "react"
-import ReactDOM from "react-dom/server"
 import styled from "styled-components"
 
 export interface SVGBackgroundProps extends FlexProps {
@@ -35,7 +34,7 @@ export class VanguardArtistWrapper extends React.Component<
     this.setState({ isExpanded: !isExpanded })
   }
 
-  getRandomSVGIndex(section) {
+  getRandomSVG(section) {
     /* Lodash random returns a whole integer between 0 and the max passed.
      * "Emerging" has 20 SVG possibilities while Newly Established
      * and "Getting Their Due" have 15, hence the default to 15
@@ -63,18 +62,15 @@ export class VanguardArtistWrapper extends React.Component<
     const { article, section } = this.props
     const { hero_section, layout, slug, title } = article
     const { isExpanded } = this.state
-    const svgIndex = this.getRandomSVGIndex(section)
-    const svgString = encodeURIComponent(
-      ReactDOM.renderToStaticMarkup(this.getSVGBackground(
-        svgIndex,
-        section
-      ) as any)
+    const background = this.getSVGBackground(
+      this.getRandomSVG(section),
+      section
     )
-    const url = `url("data:image/svg+xml,${svgString}")`
 
     return (
       <FullScreenProvider>
-        <SVGBackground url={url}>
+        <ArtistWrapper>
+          <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
             <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
               <Box textAlign="center">
@@ -106,7 +102,7 @@ export class VanguardArtistWrapper extends React.Component<
               </ReadMoreButton>
             </ArtistContainer>
           </ArticleWithFullScreen>
-        </SVGBackground>
+        </ArtistWrapper>
       </FullScreenProvider>
     )
   }
@@ -117,11 +113,13 @@ const ArtistTitle = styled(Serif)`
   line-height: 1.35em;
   color: ${color("white100")};
 `
-
 const ReadMoreButton = styled(Sans)<{ onClick: () => void }>`
   text-transform: uppercase;
 `
 const ArtistContainer = styled(Box)`
+  position: relative;
+  bottom: 750px;
+
   /* override feature text drop-caps */
   p:first-child::first-letter,
   .paragraph:first-child::first-letter {
@@ -134,10 +132,10 @@ const ArtistContainer = styled(Box)`
     text-transform: none;
   }
 `
-const SVGBackground = styled(Box)<SVGBackgroundProps>`
-  background: ${props => props.url};
-  background-size: cover;
+
+const BackgroundContainer = styled(Box)`
   height: 100%;
-  min-height: calc(100vh + 50px);
-  margin-bottom: 75px;
+`
+const ArtistWrapper = styled(Flex)`
+  flex-direction: column;
 `

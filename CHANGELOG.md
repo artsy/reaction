@@ -1,3 +1,15 @@
+# v16.24.6 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor svg blobs on artist headers [#2692](https://github.com/artsy/reaction/pull/2692) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v16.24.5 (Tue Aug 13 2019)
 
 #### 🐛  Bug Fix
