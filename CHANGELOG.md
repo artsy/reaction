@@ -1,3 +1,15 @@
+# v16.24.10 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Article truncation [#2681](https://github.com/artsy/reaction/pull/2681) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.9 (Wed Aug 14 2019)
 
 #### 🐛  Bug Fix
