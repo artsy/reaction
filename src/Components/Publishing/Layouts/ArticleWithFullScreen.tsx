@@ -2,7 +2,6 @@ import { ArticleProps } from "Components/Publishing/Article"
 import { FullscreenViewer } from "Components/Publishing/Sections/FullscreenViewer/FullscreenViewer"
 import { withFullScreen } from "Components/Publishing/Sections/FullscreenViewer/withFullScreen"
 import { ArticleData } from "Components/Publishing/Typings"
-import { includes, map } from "lodash"
 import React from "react"
 import track from "react-tracking"
 
@@ -55,12 +54,15 @@ export const getSlideshowImagesFromArticle = (article: ArticleData) => {
   const fullscreenImages = []
   let sectionIndex = 0
 
-  map(article.sections, section => {
-    if (includes(["image_collection", "image_set"], section.type)) {
-      map(section.images, image => {
-        image.setTitle = section.title
-        image.index = sectionIndex
-        fullscreenImages.push(image)
+  article.sections.map(section => {
+    if (["image_collection", "image_set"].includes(section.type)) {
+      section.images.map(image => {
+        const img = {
+          ...image,
+          setTitle: section.title,
+          index: sectionIndex,
+        }
+        fullscreenImages.push(img)
         sectionIndex = sectionIndex + 1
       })
     }
