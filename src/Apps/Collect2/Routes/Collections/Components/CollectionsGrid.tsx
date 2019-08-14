@@ -51,7 +51,7 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                 <Flex
                   width={["100%", "30%"]}
                   flexDirection="column"
-                  key={index}
+                  key={collection.slug + index}
                 >
                   <Media at="xs">{index === 0 && <Separator />}</Media>
                   <Media greaterThan="xs">{index < 3 && <Separator />}</Media>

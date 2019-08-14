@@ -3,7 +3,7 @@
 exports[`default header component renders a snapshot 1`] = `
 <header>
   <div
-    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-sc-12cdbk9-0 fVUlqO"
+    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-sc-3u0gke-0 fnGldf"
     height={
       Array [
         160,
@@ -19,7 +19,7 @@ exports[`default header component renders a snapshot 1`] = `
     }
   >
     <div
-      className="sc-bwzfXH DefaultHeader__HeaderArtworks-sc-12cdbk9-1 jDVusT"
+      className="sc-bwzfXH DefaultHeader__HeaderArtworks-sc-3u0gke-1 heuBWl"
     >
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"

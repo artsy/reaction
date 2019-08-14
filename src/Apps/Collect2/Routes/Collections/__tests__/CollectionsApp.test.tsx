@@ -8,6 +8,9 @@ import React from "react"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
+jest.mock("found", () => ({
+  Link: () => <div />,
+}))
 
 describe("CollectionApp", () => {
   it("renders a relay tree correctly", async () => {

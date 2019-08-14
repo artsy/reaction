@@ -80,9 +80,6 @@ export const getHeaderArtworks = (
     return []
   }
 
-  // FIXME: Remove this test line
-  return []
-
   /**
    * Loop through the artworks array, appending a new artwork to the output array
    * until the summed widths of the artworks are greater than the width of the viewport.

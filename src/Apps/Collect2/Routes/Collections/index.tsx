@@ -57,12 +57,8 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((category, index) => {
                   return (
-                    <Box>
-                      <CategoryItem
-                        category={category}
-                        router={router}
-                        key={category.name + index}
-                      />
+                    <Box key={category.name + index}>
+                      <CategoryItem category={category} router={router} />
                     </Box>
                   )
                 })}
