@@ -65,7 +65,7 @@ export class CollectApp extends Component<CollectAppProps> {
           <Serif size="8" mt={3} element="h1">
             Collect art and design online
           </Serif>
-          <Separator mt={2} mb={4} />
+          <Separator mt={2} mb={[2, 2, 2, 4]} />
 
           {sd.COLLECTION_HUBS === "experiment" && (
             <>
@@ -73,7 +73,7 @@ export class CollectApp extends Component<CollectAppProps> {
                 marketingCollections={this.props.marketingCollections}
               />
 
-              <Separator mb={2} mt={4} />
+              <Separator mb={2} mt={[2, 2, 2, 4]} />
             </>
           )}
 

@@ -25,6 +25,7 @@ storiesOf("Components/ImageLink", module)
       imageUrl={imageSamples.streetArt}
       width={[132, 168]}
       height={[83, 105]}
+      fontSize={["4t", "5t"]}
     >
       Street Art
     </ImageLink>

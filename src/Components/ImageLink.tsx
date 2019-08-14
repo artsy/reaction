@@ -1,4 +1,4 @@
-import { color, Serif } from "@artsy/palette"
+import { color, Serif, SerifSize } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import {
@@ -14,10 +14,11 @@ export const ImageLink: React.SFC<ImageLinkProps> = ({
   href,
   imageUrl,
   children,
+  fontSize,
   ...rest
 }) => (
   <LinkWithBackground href={href} imageUrl={imageUrl} {...rest}>
-    <Serif size="5t" textAlign="center" p={1}>
+    <Serif size={fontSize} textAlign="center" p={1}>
       {children}
     </Serif>
   </LinkWithBackground>
@@ -27,11 +28,14 @@ interface ImageLinkProps
   extends WidthProps,
     HeightProps,
     SpaceProps,
-    LinkWithBackgroundProps {}
+    LinkWithBackgroundProps {
+  fontSize?: SerifSize
+}
 
 ImageLink.defaultProps = {
   width: 160,
   height: 100,
+  fontSize: "5t",
 }
 
 interface LinkWithBackgroundProps {
@@ -43,8 +47,8 @@ const LinkWithBackground = styled.a<LinkWithBackgroundProps>`
   align-items: center;
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
     ),
     url(${p => p.imageUrl});
   background-repeat: no-repeat;

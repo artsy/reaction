@@ -1,7 +1,8 @@
+import { CSSGrid } from "@artsy/palette"
 import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
+
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
@@ -10,29 +11,29 @@ interface CollectionsHubsNavProps {
 
 export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
   return (
-    <NavWrapper>
+    <CSSGrid
+      as="aside"
+      gridTemplateColumns={[
+        "repeat(2, 1fr)",
+        "repeat(3, 1fr)",
+        "repeat(6, 1fr)",
+      ]}
+      gridGap={20}
+    >
       {props.marketingCollections.map(hub => (
         <ImageLink
           href={`/collection/${hub.slug}`}
-          imageUrl={hub.thumbnail || "http://placekitten.com/136/85"}
-          width={[132, 132, 120, 136]}
-          height={[83, 83, 74, 85]}
-          mr={2}
+          imageUrl={hub.thumbnail || "http://placekitten.com/168/105"}
+          width={[132, 132, 168, 168]}
+          height={[83, 83, 105, 105]}
           key={hub.id}
         >
           {hub.title}
         </ImageLink>
       ))}
-    </NavWrapper>
+    </CSSGrid>
   )
 }
-
-const NavWrapper = styled.nav`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`
 
 export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
   CollectionsHubsNav,
