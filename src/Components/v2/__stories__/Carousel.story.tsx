@@ -196,6 +196,41 @@ storiesOf("Styleguide/Components/Carousel", module)
     )
   })
 
+  .add("Arrow onClick callback function", () => {
+    return (
+      <Container>
+        <Carousel
+          data={images}
+          render={(props, slideIndex) => {
+            return (
+              <Box
+                onClick={() => {
+                  console.log("Clicking slide", slideIndex)
+                }}
+              >
+                <Image
+                  px={5}
+                  src={props.resized.url}
+                  width={props.resized.width}
+                  height={props.resized.height}
+                />
+              </Box>
+            )
+          }}
+          onArrowClick={({ state }) => {
+            console.log("Slide #", state.currentSlideIndex)
+          }}
+          renderLeftArrow={({ flickity, Arrow }) => {
+            return <Arrow />
+          }}
+          renderRightArrow={({ Arrow }) => {
+            return <Arrow />
+          }}
+        />
+      </Container>
+    )
+  })
+
 const Container = ({ children, ...props }) => {
   return (
     <Flex width="100%" justifyContent="center">
