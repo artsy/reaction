@@ -1,3 +1,15 @@
+# v16.24.8 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Update fixture to use correct naming for related_article_ids [#2694](https://github.com/artsy/reaction/pull/2694) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.7 (Wed Aug 14 2019)
 
 #### 🐛  Bug Fix
