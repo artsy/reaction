@@ -14,20 +14,23 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
+  const broswerWidth = GetBroswerWidth()
+
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
         Trending Artist Series
       </Serif>
       <Carousel
-        height="200px"
-        width="500px"
+        height="250px"
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
-          wrapAround: sd.IS_MOBILE ? true : false,
+          groupCells: sd.IS_MOBILE ? 1 : broswerWidth > 1024 ? 4 : 1,
+          wrapAround: sd.IS_MOBILE ? true : broswerWidth > 1024 ? false : true,
+          // wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
           draggable: sd.IS_MOBILE ? true : false,
+          contain: true,
         }}
         data={members}
         render={slide => {
@@ -35,17 +38,39 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         }}
         renderLeftArrow={({ Arrow }) => {
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {broswerWidth > 1024 ? (
+                members.length > 4 && <Arrow />
+              ) : (
+                <Arrow />
+              )}
+            </ArrowContainer>
           )
         }}
         renderRightArrow={({ Arrow }) => {
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {broswerWidth > 1024 ? (
+                members.length > 4 && <Arrow />
+              ) : (
+                <Arrow />
+              )}
+            </ArrowContainer>
           )
         }}
       />
     </Content>
   )
+}
+
+export const GetBroswerWidth = () => {
+  let width: number
+  try {
+    width = window.innerWidth
+  } catch (e) {
+    width = 0
+  }
+  return width
 }
 
 const Content = styled(Box)`
