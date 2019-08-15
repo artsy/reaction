@@ -1,3 +1,25 @@
+# v17.0.0 (Thu Aug 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Consolidate /collect, /collections and /collection/id under a single App / Router [#2685](https://github.com/artsy/reaction/pull/2685) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Call modal onClose only after show has been set to false [#2696](https://github.com/artsy/reaction/pull/2696) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.46 to v4.14.47 [#2699](https://github.com/artsy/reaction/pull/2699) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v16.24.12 (Thu Aug 15 2019)
 
 #### 🐛  Bug Fix
