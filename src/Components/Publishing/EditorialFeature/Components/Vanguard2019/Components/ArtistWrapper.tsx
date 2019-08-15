@@ -17,6 +17,7 @@ import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { slugify } from "underscore.string"
 
 export interface SVGBackgroundProps extends FlexProps {
   url?: string
@@ -33,6 +34,17 @@ export class VanguardArtistWrapper extends React.Component<
 > {
   state = {
     isExpanded: this.props.isExpanded || false,
+  }
+
+  componentDidMount() {
+    const {
+      article: { title },
+    } = this.props
+    const slug = slugify(title)
+
+    if (window.location.pathname.includes(slug)) {
+      this.onExpand()
+    }
   }
 
   onExpand() {
@@ -81,6 +93,7 @@ export class VanguardArtistWrapper extends React.Component<
           background={backgroundColor}
           pt={50}
           mb={isExpanded && 100}
+          id={slugify(article.title)}
         >
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>

@@ -13,7 +13,7 @@ export const VanguardIntroduction: React.SFC<{
 
   return (
     <IntroContainer>
-      <Box minHeight="calc(100vh - 50px)" mb={150}>
+      <Box minHeight="calc(100vh - 50px)" mb={150} pt={50}>
         <VanguardVideoBackground {...props} />
         <HeaderText pt={70} size="8" textAlign="center">
           The Artsy
