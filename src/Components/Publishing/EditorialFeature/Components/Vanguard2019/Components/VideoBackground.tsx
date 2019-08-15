@@ -1,3 +1,4 @@
+import { SvgComponent } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -8,9 +9,11 @@ export const VanguardVideoBackground: React.SFC<{
   const { hero_section } = props.article
   const url = (hero_section && hero_section.url) || ""
   const isVideo = url.includes("mp4")
-
+  const video = (
+    <Video src={url} autoPlay controls={false} loop muted playsInline />
+  )
   if (isVideo) {
-    return <Video src={url} autoPlay controls={false} loop muted playsInline />
+    return <SvgComponent video={video} />
   } else {
     return null
   }

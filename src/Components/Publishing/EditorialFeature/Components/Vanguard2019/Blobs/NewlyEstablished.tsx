@@ -1,4 +1,40 @@
 import React from "react"
+import styled from "styled-components"
+
+const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  max-height: 95vh;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+  clip-path: url(#clip-svg);
+`
+
+export const SvgComponent = props => (
+  <>
+    <svg
+      height="inherit"
+      viewBox="0 0 0 0"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <clipPath id="clip-svg">
+          <path d="M126.26 167.61c65.8-51.52 143.23-85.86 220.62-117.5C409.07 24.69 473.46.32 540.66-1 591-2 640.59 10.09 689.33 22.65q287 74 566.13 175c66.27 24 132.79 49.42 191.39 88.51A462.2 462.2 0 011544 372.9c20.06 23.86 37.9 50.35 46.57 80.27 8.47 29.23 7.77 60.49 2.47 90.46-19.07 107.73-96.67 198.93-191 254.68S1197.93 878.2 1089 890.43c-293.72 33-600.55-18.17-854.69-168.76-54-32-106.8-69.62-141.09-122.15-23-35.19-36.6-75.5-50-115.32-18.08-53.72-57.5-115.63-33.81-171.35C34 255.12 77.36 206.14 126.26 167.61z" />
+        </clipPath>
+      </defs>
+    </svg>
+    <Video
+      autoPlay
+      loop
+      muted
+      playsInline
+      controls={false}
+      src="https://artsy-media-uploads.s3.amazonaws.com/9Tz7rvPU-Ot_UuV3wa0pxw%2FD_4.mp4"
+    />
+  </>
+)
 
 export const NewlyEstablished1 = props => (
   <svg
