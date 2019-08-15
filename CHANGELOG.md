@@ -1,3 +1,15 @@
+# v16.24.12 (Thu Aug 15 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Pass index / props down to render items [#2695](https://github.com/artsy/reaction/pull/2695) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.24.11 (Thu Aug 15 2019)
 
 #### 🐛  Bug Fix
