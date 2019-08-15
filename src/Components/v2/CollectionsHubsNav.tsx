@@ -9,6 +9,11 @@ interface CollectionsHubsNavProps {
   marketingCollections: CollectionsHubsNav_marketingCollections
 }
 
+// largest sized image at each breakpoint:
+// xs: 346x216 ~= 1.6 aspect ratio
+// sm: 254x159 ~= 1.6 aspect ratio
+// md: 138x86 ~= 1.6 aspect ratio
+// lg/xl: 168x105 = 1.6 aspect ratio
 export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
   return (
     <CSSGrid
@@ -23,10 +28,9 @@ export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
       {props.marketingCollections.map(hub => (
         <ImageLink
           href={`/collection/${hub.slug}`}
-          imageUrl={hub.thumbnail || "http://placekitten.com/168/105"}
-          width={[132, 132, 168, 168]}
-          height={[83, 83, 105, 105]}
+          imageUrl={hub.thumbnail || plainWhitePixel}
           key={hub.id}
+          fontSize={["5t", "5t", "4t", "5t"]}
         >
           {hub.title}
         </ImageLink>
@@ -34,6 +38,9 @@ export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
     </CSSGrid>
   )
 }
+
+const plainWhitePixel =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
 
 export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
   CollectionsHubsNav,

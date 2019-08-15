@@ -1,7 +1,17 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { imageSamples } from "../_fixtures_/collectionsHubs"
 import { ImageLink } from "../ImageLink"
+
+const imageSamples = {
+  contemporaryArt:
+    "https://d32dm0rphc51dk.cloudfront.net/f_WVnADS9HIc5dQ-sIcejA/thumb.jpg",
+  impressionistAndModernArt:
+    "https://d32dm0rphc51dk.cloudfront.net/Y2fVKtk64zRDfoGWgYSkJA/thumb.jpg",
+  photography:
+    "https://d32dm0rphc51dk.cloudfront.net/Cy1tDMUKkF_H-QN4BIDlDA/thumb.jpg",
+  streetArt:
+    "https://d32dm0rphc51dk.cloudfront.net/Tk7srLDTS-0Y60mbN7gWew/thumb.jpg",
+}
 
 storiesOf("Components/ImageLink", module)
   .add("with default dimensions", () => (
@@ -13,18 +23,14 @@ storiesOf("Components/ImageLink", module)
     <ImageLink
       href="http://example.com"
       imageUrl={imageSamples.contemporaryArt}
-      width={200}
-      height={150}
     >
       Contemporary Art
     </ImageLink>
   ))
-  .add("with responsive sizing", () => (
+  .add("with responsive text", () => (
     <ImageLink
       href="http://example.com"
       imageUrl={imageSamples.streetArt}
-      width={[132, 168]}
-      height={[83, 105]}
       fontSize={["4t", "5t"]}
     >
       Street Art
@@ -34,8 +40,6 @@ storiesOf("Components/ImageLink", module)
     <ImageLink
       href="http://example.com"
       imageUrl={imageSamples.impressionistAndModernArt}
-      width={200}
-      height={150}
     >
       Impressionist and Modern Art
     </ImageLink>

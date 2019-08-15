@@ -5,7 +5,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
-import { CollectionsHubsNavFragmentContainer } from "../CollectionsHubsNav"
+import { CollectionsHubsNavFragmentContainer } from "../v2/CollectionsHubsNav"
 
 storiesOf("Components/CollectionsHubsNav", module).add("default", () => (
   <Theme>
