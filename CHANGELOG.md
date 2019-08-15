@@ -1,3 +1,15 @@
+# v16.24.11 (Thu Aug 15 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Put back super article related_articles [#2697](https://github.com/artsy/reaction/pull/2697) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v16.24.10 (Wed Aug 14 2019)
 
 #### 🐛  Bug Fix
