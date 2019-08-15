@@ -39,12 +39,16 @@ interface CarouselProps {
   /**
    * Callback when forward / backward arrows are clicked
    */
-  onArrowClick?: () => void
+  onArrowClick?: ({
+    props: CarouselProps,
+    state: BaseCarouselState,
+    flickity: FlickityOptions,
+  }) => void
 
   /**
    * The render callback returns an image to display
    */
-  render: (slide) => React.ReactNode
+  render: (slide, slideIndex: number) => React.ReactNode
 
   /**
    * Flickity options
@@ -230,17 +234,20 @@ export class BaseCarousel extends React.Component<
   }
 
   renderLeftArrow = () => {
-    const { onArrowClick, renderLeftArrow, showArrows, height } = this.props
+    const {
+      arrowPosition,
+      onArrowClick,
+      renderLeftArrow,
+      showArrows,
+      height,
+    } = this.props
 
     if (!showArrows) {
       return null
     }
 
-    const leftPosition =
-      this.props.arrowPosition !== null &&
-      this.props.arrowPosition !== undefined
-        ? this.props.arrowPosition
-        : -space(4)
+    const leftPosition = arrowPosition != null ? arrowPosition : -space(4)
+
     const showLeftArrow =
       this.state.currentSlideIndex !== 0 || this.options.wrapAround === true
 
@@ -252,7 +259,11 @@ export class BaseCarousel extends React.Component<
             this.flickity.previous()
 
             if (onArrowClick) {
-              onArrowClick()
+              onArrowClick({
+                state: this.state,
+                props: this.props,
+                flickity: this.flickity,
+              })
             }
           }}
         >
@@ -279,17 +290,19 @@ export class BaseCarousel extends React.Component<
   }
 
   renderRightArrow = () => {
-    const { onArrowClick, renderRightArrow, showArrows, height } = this.props
+    const {
+      arrowPosition,
+      onArrowClick,
+      renderRightArrow,
+      showArrows,
+      height,
+    } = this.props
 
     if (!showArrows) {
       return null
     }
 
-    const rightPosition =
-      this.props.arrowPosition !== null &&
-      this.props.arrowPosition !== undefined
-        ? this.props.arrowPosition
-        : -space(4)
+    const rightPosition = arrowPosition != null ? arrowPosition : -space(4)
 
     const showRightArrow =
       !this.checkLastItemVisible() || this.options.wrapAround === true
@@ -302,7 +315,11 @@ export class BaseCarousel extends React.Component<
             this.flickity.next()
 
             if (onArrowClick) {
-              onArrowClick()
+              onArrowClick({
+                state: this.state,
+                props: this.props,
+                flickity: this.flickity,
+              })
             }
           }}
         >
@@ -353,8 +370,12 @@ export class BaseCarousel extends React.Component<
               isMounted={isMounted}
               ref={c => (this.carouselRef = c)}
             >
-              {carouselImages.map((slide, index) => {
-                return <Fragment key={index}>{render(slide)}</Fragment>
+              {carouselImages.map((slide, slideIndex) => {
+                return (
+                  <Fragment key={slideIndex}>
+                    {render(slide, slideIndex)}
+                  </Fragment>
+                )
               })}
             </FlickityCarousel>
           </CarouselContainer>
