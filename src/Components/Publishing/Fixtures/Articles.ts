@@ -1221,7 +1221,7 @@ export const SuperArticle = extend(cloneDeep(FeatureArticle), {
     partner_logo:
       "https://artsy-media-uploads.s3.amazonaws.com/PUn-n_Zn0VHfyDKofWeLeQ%2FUBS_Black.png",
     partner_logo_link: "https://www.ubs.com/microsites/planet-art/home.html",
-    related_article_ids: [
+    related_articles: [
       "5846e12cc137140011634710",
       "5846e1fdc137140011634711",
       "58459e56104093001189a7d1",
