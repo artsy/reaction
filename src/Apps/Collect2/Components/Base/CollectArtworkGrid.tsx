@@ -63,12 +63,9 @@ class CollectArtworkGrid extends Component<Props, LoadingAreaState> {
   }
 
   toggleLoading = isLoading => {
-    this.setState(
-      {
-        isLoading,
-      },
-      () => window.scrollTo(0, 0)
-    )
+    this.setState({
+      isLoading,
+    })
   }
 
   render() {
