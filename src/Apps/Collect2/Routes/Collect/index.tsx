@@ -16,8 +16,8 @@ import { data as sd } from "sharify"
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 
 export interface CollectAppProps {
-  viewer?: Collect_viewer
-  marketingCollections?: Collect_marketingCollections
+  viewer: Collect_viewer
+  marketingCollections: Collect_marketingCollections
   params?: {
     medium: string
   }
