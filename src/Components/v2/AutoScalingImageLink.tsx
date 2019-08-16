@@ -3,7 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
 
-export const ImageLink: React.FC<ImageLinkProps> = ({
+export const AutoScalingImageLink: React.FC<AutoScalingImageLinkProps> = ({
   href,
   imageUrl,
   children,
@@ -30,7 +30,7 @@ export const ImageLink: React.FC<ImageLinkProps> = ({
   </LinkWithBackground>
 )
 
-interface ImageLinkProps
+interface AutoScalingImageLinkProps
   extends SpaceProps,
     LinkWithBackgroundProps,
     PlaceholderImagesForContainerHeightAndWidthProps {
@@ -38,7 +38,7 @@ interface ImageLinkProps
   fontSize?: SerifSize
 }
 
-ImageLink.defaultProps = {
+AutoScalingImageLink.defaultProps = {
   fontSize: "5t",
 }
 

@@ -1,7 +1,7 @@
 import { Box } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { ImageLink } from "../ImageLink"
+import { AutoScalingImageLink } from "../AutoScalingImageLink"
 
 const imageSamples = {
   contemporaryArt:
@@ -19,50 +19,50 @@ const imageSize = {
   maxHeight: 216,
 }
 
-storiesOf("Components/ImageLink", module)
+storiesOf("Components/AutoScalingImageLink", module)
   .add("with specific dimensions", () => (
     <Box width={300}>
-      <ImageLink
+      <AutoScalingImageLink
         href="http://example.com"
         imageUrl={imageSamples.photography}
         {...imageSize}
       >
         Photography
-      </ImageLink>
+      </AutoScalingImageLink>
     </Box>
   ))
   .add("with responsive dimensions", () => (
     <Box width={[200, 300, 400]}>
-      <ImageLink
+      <AutoScalingImageLink
         href="http://example.com"
         imageUrl={imageSamples.streetArt}
         fontSize={["4t", "5t"]}
         {...imageSize}
       >
         Street Art
-      </ImageLink>
+      </AutoScalingImageLink>
     </Box>
   ))
   .add("with variable dimensions", () => (
     <Box width="30%">
-      <ImageLink
+      <AutoScalingImageLink
         href="http://example.com"
         imageUrl={imageSamples.streetArt}
         fontSize={["4t", "5t"]}
         {...imageSize}
       >
         Street Art
-      </ImageLink>
+      </AutoScalingImageLink>
     </Box>
   ))
   .add("with a long text", () => (
     <Box width={imageSize.maxWidth}>
-      <ImageLink
+      <AutoScalingImageLink
         href="http://example.com"
         imageUrl={imageSamples.impressionistAndModernArt}
         {...imageSize}
       >
         Impressionist and Modern Art
-      </ImageLink>
+      </AutoScalingImageLink>
     </Box>
   ))

@@ -3,7 +3,7 @@ import { CollectionsHubsNav_marketingCollections } from "__generated__/Collectio
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import { ImageLink } from "./ImageLink"
+import { AutoScalingImageLink } from "./AutoScalingImageLink"
 
 interface CollectionsHubsNavProps {
   marketingCollections: CollectionsHubsNav_marketingCollections
@@ -26,7 +26,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
       gridGap={20}
     >
       {props.marketingCollections.map(hub => (
-        <ImageLink
+        <AutoScalingImageLink
           href={`/collection/${hub.slug}`}
           imageUrl={hub.thumbnail || plainWhitePixel}
           key={hub.id}
@@ -35,7 +35,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
           maxHeight={216}
         >
           {hub.title}
-        </ImageLink>
+        </AutoScalingImageLink>
       ))}
     </CSSGrid>
   )
