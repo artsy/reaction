@@ -23,6 +23,7 @@ interface Uncategorized {
   item_type: any
   item_id: any
   query: any
+  item_number: any
 }
 
 export type Trackables =

@@ -56,7 +56,9 @@ describe("OtherCollectionEntity", () => {
 
   describe("Tracking", () => {
     it("Tracks collection click", () => {
-      const component = mount(<OtherCollectionEntity {...props} />)
+      const component = mount(
+        <OtherCollectionEntity {...props} itemNumber={0} />
+      )
 
       component.at(0).simulate("click")
 
@@ -65,8 +67,9 @@ describe("OtherCollectionEntity", () => {
         context_page: "Collection",
         context_module: "OtherCollectionsRail",
         context_page_owner_type: "Collection",
-        type: "Link",
+        type: "thumbnail",
         destination_path: "undefined/collection/artist-posters",
+        item_number: 0,
       })
     })
   })
