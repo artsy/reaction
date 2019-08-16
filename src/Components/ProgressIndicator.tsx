@@ -7,6 +7,10 @@ interface Props {
   percentComplete: number
 }
 
+/**
+ * @deprecated in favor of our Design System ProgressBar component in @artsy/palette
+ * https://palette.artsy.net/elements/loaders/progressbar
+ */
 export class ProgressIndicator extends React.Component<Props, null> {
   static defaultProps = {
     percentComplete: 0,

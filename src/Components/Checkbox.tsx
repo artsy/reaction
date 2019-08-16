@@ -11,6 +11,10 @@ export interface CheckboxState {
 
 export type CheckboxProps = ExtractProps<typeof CheckboxInput>
 
+/**
+ * @deprecated in favor of our Design System Checkbox component in @artsy/palette
+ * https://palette.artsy.net/elements/inputs/checkbox
+ */
 export class Checkbox extends Component<CheckboxProps, CheckboxState> {
   constructor(props) {
     super(props)

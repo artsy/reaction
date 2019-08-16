@@ -8,6 +8,10 @@ interface TextAreaProps extends React.HTMLProps<HTMLTextAreaElement> {
   block?: boolean
 }
 
+/**
+ * @deprecated in favor of our Design System TextArea component in @artsy/palette
+ * https://palette.artsy.net/elements/inputs/textarea
+ */
 const TextArea: React.SFC<TextAreaProps> = props => {
   const newProps = { ...props }
   delete newProps.block
