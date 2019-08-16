@@ -7,7 +7,7 @@
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^4.11.7",
+    "@artsy/palette": "^4.15.1",
     "@sentry/browser": "^4.2.3",
     "dd-trace": "^0.6.0",
     "flickity": "2.1.2",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.1",
-    "@artsy/palette": "4.14.47",
+    "@artsy/palette": "4.15.1",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.3.4",
     "@babel/plugin-proposal-class-properties": "7.3.4",
