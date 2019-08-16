@@ -1,5 +1,6 @@
 import { Box, Theme } from "@artsy/palette"
 import { SystemContext } from "Artsy"
+import { MockRouterProvider } from "DevTools/MockRouterProvider"
 import React, { useContext } from "react"
 import { graphql, QueryRenderer } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -13,11 +14,13 @@ const RailsContainer = styled(Box)`
 storiesOf("Apps/Collect/Collection/Components", module).add(
   "Collection Hub Rails",
   () => (
-    <Theme>
-      <RailsContainer width="100%">
-        <CollectionHubRailsQueryRenderer collectionID="street-art-now" />
-      </RailsContainer>
-    </Theme>
+    <MockRouterProvider>
+      <Theme>
+        <RailsContainer width="100%">
+          <CollectionHubRailsQueryRenderer collectionID="street-art-now" />
+        </RailsContainer>
+      </Theme>
+    </MockRouterProvider>
   )
 )
 
