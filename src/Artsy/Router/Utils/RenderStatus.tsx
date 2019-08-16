@@ -14,14 +14,14 @@ export const RenderPending: React.FC = props => {
       <Renderer>{null}</Renderer>
       <Box
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           right: 0,
           bottom: 0,
           left: 0,
           background: "white",
           opacity: 0.5,
-          zIndex: 1000,
+          zIndex: 10,
           height: "100vh",
         }}
       />

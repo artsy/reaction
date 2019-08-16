@@ -4,6 +4,7 @@ import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CollectRefetchContainer } from "./CollectRefetch"
 
+import { Box } from "@artsy/palette"
 import { FilterState } from "Apps/Collect2/Routes/Collect/FilterState"
 import { FilterContainer } from "../Filters"
 
@@ -18,14 +19,17 @@ export class CollectFilterContainer extends Component<
       <SystemContextConsumer>
         {({ user }) => {
           return (
-            <FilterContainer user={user}>
-              {(filters: FilterState) => (
-                <CollectRefetchContainer
-                  viewer={this.props.viewer}
-                  filtersState={filters.state}
-                />
-              )}
-            </FilterContainer>
+            <>
+              <Box id="jump--collectArtworkGrid" />
+              <FilterContainer user={user}>
+                {(filters: FilterState) => (
+                  <CollectRefetchContainer
+                    viewer={this.props.viewer}
+                    filtersState={filters.state}
+                  />
+                )}
+              </FilterContainer>
+            </>
           )
         }}
       </SystemContextConsumer>
