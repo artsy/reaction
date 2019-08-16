@@ -10,7 +10,8 @@ import React from "react"
 type FetchIndicator = "spinner" | "overlay"
 
 interface CreateRenderProps {
-  fetchIndicator: FetchIndicator
+  fetchIndicator?: FetchIndicator
+  render?: (props) => React.ReactNode
 }
 
 interface RenderArgProps {
@@ -19,12 +20,19 @@ interface RenderArgProps {
   error?: Error
 }
 
-function createRender({ fetchIndicator = "spinner" }: CreateRenderProps) {
+function createRender({
+  fetchIndicator = "spinner",
+  render,
+}: CreateRenderProps) {
   return (renderArgs: RenderArgProps) => {
     const { Component, props, error } = renderArgs
 
     if (error) {
       throw error
+    }
+
+    if (render) {
+      return render(renderArgs)
     }
 
     if (Component === undefined) {

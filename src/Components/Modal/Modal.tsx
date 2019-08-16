@@ -33,7 +33,7 @@ export class Modal extends React.Component<ModalProps> {
       : [],
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.show !== nextProps.show) {
       this.setState({
         isAnimating: true,

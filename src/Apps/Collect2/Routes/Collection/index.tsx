@@ -35,7 +35,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.collectionNotFound(this.props.collection)
   }
 

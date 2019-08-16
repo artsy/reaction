@@ -10,9 +10,8 @@ export const RenderPending: React.FC = props => {
    * and notify Sentry.
    */
   return (
-    <Box>
-      <StaticContainer>{null}</StaticContainer>
-
+    <>
+      <Renderer>{null}</Renderer>
       <Box
         style={{
           position: "absolute",
@@ -26,7 +25,7 @@ export const RenderPending: React.FC = props => {
           height: "100vh",
         }}
       />
-    </Box>
+    </>
   )
 }
 
@@ -34,10 +33,22 @@ export const RenderReady: React.FC<{
   elements: React.ReactNode
 }> = props => {
   return (
+    <Renderer shouldUpdate>
+      <ElementsRenderer elements={props.elements} />
+    </Renderer>
+  )
+}
+
+/**
+ * Define a container component so that we don't run into reconciliation issues
+ * due to an element existing in RenderPending that doesn't exist in RenderReady,
+ * between the top most container and StaticContainer.
+ *
+ */
+const Renderer = ({ children, ...props }) => {
+  return (
     <Box>
-      <StaticContainer shouldUpdate>
-        <ElementsRenderer elements={props.elements} />
-      </StaticContainer>
+      <StaticContainer {...props}>{children}</StaticContainer>
     </Box>
   )
 }

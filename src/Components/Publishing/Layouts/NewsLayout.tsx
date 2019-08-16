@@ -55,7 +55,7 @@ export class NewsLayout extends Component<Props, State> {
     this.trackExpand = once(this.trackExpand)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.isHovered !== this.props.isHovered) {
       this.setState({ isHovered: nextProps.isHovered })
     }
