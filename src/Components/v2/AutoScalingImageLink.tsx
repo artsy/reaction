@@ -79,7 +79,7 @@ const SVGPlaceholder = props => {
         width={width}
         height={height}
         fill="gray"
-        stroke-width="0"
+        strokeWidth="0"
       />
     </HiddenSVG>
   )
