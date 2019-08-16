@@ -38,7 +38,7 @@ export class QuickInput extends React.Component<
     touchedOnChange: true,
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (this.props.name !== newProps.name) {
       this.setState({
         value: "",

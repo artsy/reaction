@@ -95,7 +95,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.type !== nextProps.type && nextProps.type) {
       this.setState({
         type: nextProps.type,

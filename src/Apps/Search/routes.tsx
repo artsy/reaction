@@ -1,4 +1,3 @@
-import { renderSpinner } from "Artsy/Router/Utils/Route"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -7,6 +6,7 @@ import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute
 import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
 import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute } from "Apps/Search/Routes/Entity/SearchResultsEntity"
 
+import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
@@ -29,8 +29,13 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
   return {
     path: key,
     Component: SearchResultsEntityRoute,
+
+    // FIXME: We shouldn't overwrite our route functionality, as that breaks
+    // global route configuration behavior.
     render: ({ props, Component }) => {
-      if (!props) return renderSpinner()
+      if (!props) {
+        return <RouteSpinner />
+      }
       return <Component {...props} tab={key} entities={entities} />
     },
     prepareVariables: (_params, { location }) => {

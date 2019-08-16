@@ -82,7 +82,7 @@ export const collectRoutes: RouteConfig[] = [
       }
     `,
     prepareVariables: initializeVariablesWithFilterState,
-    showFetchIndicator: false,
+    fetchIndicator: "overlay",
   },
   {
     path: "/collections",
@@ -94,7 +94,7 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
-    showFetchIndicator: false,
+    fetchIndicator: "overlay",
   },
   {
     path: "/collection/:slug",
@@ -145,6 +145,6 @@ export const collectRoutes: RouteConfig[] = [
       }
     `,
     prepareVariables: initializeVariablesWithFilterState,
-    showFetchIndicator: false,
+    fetchIndicator: "overlay",
   },
 ]

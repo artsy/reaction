@@ -45,7 +45,7 @@ export class CanvasVideo extends Component<CanvasVideoProps, any> {
     }
   }
 
-  componentWillUpdate() {
+  UNSAFE_componentWillUpdate() {
     this.video.removeEventListener("timeupdate", this.trackProgress)
   }
 

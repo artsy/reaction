@@ -25,6 +25,20 @@ const SpinnerContainer = styled.figure`
   padding: 22px;
 `
 
+const RouteSpinnerContainer = styled.figure`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
+
+export const RouteSpinner = () => {
+  return (
+    <RouteSpinnerContainer className={LoadingClassName}>
+      <Spinner />
+    </RouteSpinnerContainer>
+  )
+}
+
 export const LoadingClassName = "relay-loading"
 
 const handleError = error => {

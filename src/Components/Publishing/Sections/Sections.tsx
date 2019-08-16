@@ -53,7 +53,7 @@ export class Sections extends Component<Props, State> {
     shouldInjectMobileDisplay: false,
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       article: { layout },
       isMobile,
