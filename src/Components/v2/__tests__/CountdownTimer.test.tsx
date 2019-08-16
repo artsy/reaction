@@ -13,6 +13,7 @@ jest.mock("Utils/time")
 import { renderUntil } from "DevTools"
 import { getOffsetBetweenGravityClock } from "Utils/time"
 const mockGetOffsetBetweenGravityClock = getOffsetBetweenGravityClock as jest.Mock
+const realSetInterval = global.setInterval
 
 const defaultProps: ExtractProps<typeof CountdownTimer> = {
   action: "Respond",
@@ -49,16 +50,11 @@ describe("CountdownTimer", () => {
   beforeEach(() => {
     require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(DATE)
     mockGetOffsetBetweenGravityClock.mockReturnValue(Promise.resolve(0))
+    Settings.defaultZoneName = "America/New_York"
   })
-
-  const realDefaultZone = Settings.defaultZoneName
 
   afterEach(() => {
-    Settings.defaultZoneName = realDefaultZone
-  })
-
-  beforeEach(() => {
-    Settings.defaultZoneName = "America/New_York"
+    global.setInterval = realSetInterval
   })
 
   describe("in winter", () => {
@@ -67,7 +63,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00h 00m 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
       )
     })
 
@@ -77,7 +73,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Dec 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00h 00m 00s leftRespond by Dec 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -91,7 +87,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Aug 4, 9:50am EDTExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00h 00m 00s leftRespond by Aug 4, 9:50am EDTExpired offers end the negotiation process permanently."`
       )
     })
 
@@ -101,7 +97,7 @@ describe("CountdownTimer", () => {
 
       const text = timer.text()
       expect(text).toMatchInlineSnapshot(
-        `"time remaining01d 00s leftRespond by Aug 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
+        `"time remaining01d 00h 00m 00s leftRespond by Aug 4, 1:50pm UTCExpired offers end the negotiation process permanently."`
       )
     })
   })
@@ -120,7 +116,7 @@ describe("CountdownTimer", () => {
 
     const text = timer.text()
     expect(text).toMatchInlineSnapshot(
-      `"time remaining01d 30m 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
+      `"time remaining01d 00h 00m 00s leftRespond by Dec 4, 8:50am ESTExpired offers end the negotiation process permanently."`
     )
   })
 
@@ -146,7 +142,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining15h 10m 05s leftRespond by Dec 4, 12:00am ESTExpired offers end the negotiation process permanently."`
+      `"time remaining00d 15h 10m 05s leftRespond by Dec 4, 12:00am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -158,7 +154,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining15m 10s leftRespond by Dec 3, 9:05am ESTExpired offers end the negotiation process permanently."`
+      `"time remaining00d 00h 15m 10s leftRespond by Dec 3, 9:05am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(
@@ -168,7 +164,7 @@ describe("CountdownTimer", () => {
         />
       ).text()
     ).toMatchInlineSnapshot(
-      `"time remaining01s leftRespond by Dec 3, 8:50am ESTExpired offers end the negotiation process permanently."`
+      `"time remaining00d 00h 00m 01s leftRespond by Dec 3, 8:50am ESTExpired offers end the negotiation process permanently."`
     )
 
     expect(

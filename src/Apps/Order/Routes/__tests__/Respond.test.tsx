@@ -25,6 +25,7 @@ jest.mock("Utils/getCurrentTimeAsIsoString")
 jest.mock("Utils/logger")
 
 const NOW = "2018-12-05T13:47:16.446Z"
+const realSetInterval = global.setInterval
 
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
@@ -116,6 +117,7 @@ describe("The respond page", () => {
   describe("the page layout", () => {
     let page: RespondTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -126,6 +128,10 @@ describe("The respond page", () => {
           },
         },
       })
+    })
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
     })
 
     it("shows the countdown timer", () => {
@@ -209,7 +215,13 @@ describe("The respond page", () => {
 
   describe("taking action", () => {
     let page: RespondTestPage
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
+    })
+
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
     })
 
@@ -232,6 +244,13 @@ describe("The respond page", () => {
     })
 
     describe("countering the seller's offer", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("doesn't work if nothing was typed in", async () => {
         await page.selectCounterRadio()
         expect(page.offerInput.props().showError).toBe(false)
@@ -322,6 +341,13 @@ describe("The respond page", () => {
     })
 
     describe("The 'amount too small' speed bump", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("shows if the offer amount is too small", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(1000)
@@ -346,6 +372,13 @@ describe("The respond page", () => {
     })
 
     describe("The 'amount too high' speed bump", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("shows if the offer amount is too high", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(17000)
@@ -374,6 +407,14 @@ describe("The respond page", () => {
     let page: RespondTestPage
     beforeEach(async () => {
       page = await buildPage()
+    })
+
+    beforeAll(() => {
+      global.setInterval = jest.fn()
+    })
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
     })
 
     it("tracks a pageview", () => {

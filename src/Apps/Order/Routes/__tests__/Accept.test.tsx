@@ -25,6 +25,8 @@ jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
+const realSetInterval = global.setInterval
+
 window.location.assign = jest.fn()
 
 const testOrder = {
@@ -70,6 +72,7 @@ describe("Accept seller offer", () => {
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -80,6 +83,10 @@ describe("Accept seller offer", () => {
           },
         },
       })
+    })
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
     })
 
     it("shows the countdown timer", async () => {
@@ -134,7 +141,12 @@ describe("Accept seller offer", () => {
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
+    })
+
+    afterEach(() => {
+      global.setInterval = realSetInterval
     })
 
     it("routes to status page after mutation completes", async () => {
@@ -180,7 +192,6 @@ describe("Accept seller offer", () => {
 
     it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
       mutations.useResultsOnce(acceptOfferInsufficientInventoryFailure)
-
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Not available",

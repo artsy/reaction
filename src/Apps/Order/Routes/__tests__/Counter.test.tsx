@@ -22,6 +22,8 @@ const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.unmock("react-relay")
 
+const realSetInterval = global.setInterval
+
 const testOrder = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
@@ -70,6 +72,7 @@ describe("Submit Pending Counter Offer", () => {
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -80,6 +83,10 @@ describe("Submit Pending Counter Offer", () => {
           },
         },
       })
+    })
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
     })
 
     it("shows the countdown timer", () => {
@@ -133,7 +140,12 @@ describe("Submit Pending Counter Offer", () => {
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
+    })
+
+    afterEach(() => {
+      global.setInterval = realSetInterval
     })
 
     it("routes to status page after mutation completes", async () => {
