@@ -1,3 +1,15 @@
+# v17.1.0 (Fri Aug 16 2019)
+
+#### 🚀  Enhancement
+
+- [Router] Add in  interstitial loading state [#2705](https://github.com/artsy/reaction/pull/2705) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.0.1 (Thu Aug 15 2019)
 
 
