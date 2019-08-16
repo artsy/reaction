@@ -1,3 +1,20 @@
+# v17.1.3 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette [#2710](https://github.com/artsy/reaction/pull/2710) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Mark components with clear artsy/palette equivalents as deprecated [#2711](https://github.com/artsy/reaction/pull/2711) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v17.1.2 (Fri Aug 16 2019)
 
 #### 🐛  Bug Fix
