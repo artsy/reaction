@@ -70,9 +70,11 @@ export class CollectApp extends Component<CollectAppProps> {
               <h1>Collect art and design online</h1>
             </Serif>
 
-            <Sans size="3" weight="medium">
-              <RouterLink to="/collections">View collections</RouterLink>
-            </Sans>
+            <Box pb={0.3}>
+              <Sans size="3" weight="medium">
+                <RouterLink to="/collections">View collections</RouterLink>
+              </Sans>
+            </Box>
           </Flex>
           <Box>
             <ArtworkGrid viewer={this.props.viewer} />
