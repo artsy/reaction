@@ -1,3 +1,4 @@
+import { Box } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { ImageLink } from "../ImageLink"
@@ -13,34 +14,55 @@ const imageSamples = {
     "https://d32dm0rphc51dk.cloudfront.net/Tk7srLDTS-0Y60mbN7gWew/thumb.jpg",
 }
 
+const imageSize = {
+  maxWidth: 346,
+  maxHeight: 216,
+}
+
 storiesOf("Components/ImageLink", module)
-  .add("with default dimensions", () => (
-    <ImageLink href="http://example.com" imageUrl={imageSamples.photography}>
-      Photography
-    </ImageLink>
+  .add("with specific dimensions", () => (
+    <Box width={300}>
+      <ImageLink
+        href="http://example.com"
+        imageUrl={imageSamples.photography}
+        {...imageSize}
+      >
+        Photography
+      </ImageLink>
+    </Box>
   ))
-  .add("with explicit dimensions", () => (
-    <ImageLink
-      href="http://example.com"
-      imageUrl={imageSamples.contemporaryArt}
-    >
-      Contemporary Art
-    </ImageLink>
+  .add("with responsive dimensions", () => (
+    <Box width={[200, 300, 400]}>
+      <ImageLink
+        href="http://example.com"
+        imageUrl={imageSamples.streetArt}
+        fontSize={["4t", "5t"]}
+        {...imageSize}
+      >
+        Street Art
+      </ImageLink>
+    </Box>
   ))
-  .add("with responsive text", () => (
-    <ImageLink
-      href="http://example.com"
-      imageUrl={imageSamples.streetArt}
-      fontSize={["4t", "5t"]}
-    >
-      Street Art
-    </ImageLink>
+  .add("with variable dimensions", () => (
+    <Box width="30%">
+      <ImageLink
+        href="http://example.com"
+        imageUrl={imageSamples.streetArt}
+        fontSize={["4t", "5t"]}
+        {...imageSize}
+      >
+        Street Art
+      </ImageLink>
+    </Box>
   ))
   .add("with a long text", () => (
-    <ImageLink
-      href="http://example.com"
-      imageUrl={imageSamples.impressionistAndModernArt}
-    >
-      Impressionist and Modern Art
-    </ImageLink>
+    <Box width={imageSize.maxWidth}>
+      <ImageLink
+        href="http://example.com"
+        imageUrl={imageSamples.impressionistAndModernArt}
+        {...imageSize}
+      >
+        Impressionist and Modern Art
+      </ImageLink>
+    </Box>
   ))

@@ -1,6 +1,6 @@
 import { CSSGrid } from "@artsy/palette"
 import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
-import React, { SFC } from "react"
+import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { ImageLink } from "./ImageLink"
@@ -14,7 +14,7 @@ interface CollectionsHubsNavProps {
 // sm: 254x159 ~= 1.6 aspect ratio
 // md: 138x86 ~= 1.6 aspect ratio
 // lg/xl: 168x105 = 1.6 aspect ratio
-export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
+export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
   return (
     <CSSGrid
       as="aside"
@@ -31,6 +31,8 @@ export const CollectionsHubsNav: SFC<CollectionsHubsNavProps> = props => {
           imageUrl={hub.thumbnail || plainWhitePixel}
           key={hub.id}
           fontSize={["5t", "5t", "4t", "5t"]}
+          maxWidth={346}
+          maxHeight={216}
         >
           {hub.title}
         </ImageLink>
