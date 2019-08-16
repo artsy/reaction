@@ -1,3 +1,15 @@
+# v17.1.1 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Fix zIndex #trivial [#2706](https://github.com/artsy/reaction/pull/2706) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.1.0 (Fri Aug 16 2019)
 
 #### 🚀  Enhancement
