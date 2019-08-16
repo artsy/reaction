@@ -10,6 +10,10 @@ import {
 
 jest.mock("Artsy/Analytics/useTracking")
 
+jest.mock("found", () => ({
+  Link: ({ children, ...props }) => <div {...props}>{children}</div>,
+}))
+
 describe("OtherCollectionEntity", () => {
   let props
   const trackEvent = jest.fn()
@@ -44,7 +48,7 @@ describe("OtherCollectionEntity", () => {
       .at(0)
       .getElement().props
 
-    expect(link.href).toContain("artist-poster")
+    expect(link.to).toContain("artist-poster")
   })
 
   it("Returns entity with just text when there is no image", () => {

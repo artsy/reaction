@@ -5,7 +5,12 @@ import "jest-styled-components"
 import { clone } from "lodash"
 import React from "react"
 import { ArtistSeriesRail } from "../index"
+
 jest.unmock("react-tracking")
+
+jest.mock("found", () => ({
+  Link: props => <div>{props.children}</div>,
+}))
 
 describe("ArtistSeriesRail", () => {
   let props

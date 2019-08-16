@@ -10,11 +10,21 @@ storiesOf("Apps/Collect", module)
   .add("Collections", () => {
     return <MockRouter routes={collectRoutes} initialRoute="/collections" />
   })
+
+storiesOf("Apps/Collect/Collection", module)
   .add("Collection", () => {
     return (
       <MockRouter
         routes={collectRoutes}
         initialRoute="/collection/abstract-expressionism-works-on-paper"
+      />
+    )
+  })
+  .add("Collection with Hub rails", () => {
+    return (
+      <MockRouter
+        routes={collectRoutes}
+        initialRoute="/collection/street-art-now"
       />
     )
   })

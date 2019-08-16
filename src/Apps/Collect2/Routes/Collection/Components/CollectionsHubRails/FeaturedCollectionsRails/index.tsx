@@ -118,6 +118,7 @@ export const FeaturedCollectionEntity: React.FC<
         <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
+            disabled
             maxChars={100}
             content={
               <>

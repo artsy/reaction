@@ -8,6 +8,10 @@ import { OtherCollectionsRail } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
 
+jest.mock("found", () => ({
+  Link: props => <div>{props.children}</div>,
+}))
+
 describe("CollectionsRail", () => {
   let props
   const trackEvent = jest.fn()
