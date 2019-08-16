@@ -19,6 +19,10 @@ const titleSizes = {
   xlarge: "s50",
 }
 
+/**
+ * @deprecated in favor of our Design System Typography components in @artsy/palette
+ * https://palette.artsy.net/tokens/typography
+ */
 const Title: React.SFC<TitleProps> = props => {
   const newProps: TitleProps = { ...props }
   delete newProps.titleSize

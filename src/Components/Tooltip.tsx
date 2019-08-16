@@ -71,6 +71,10 @@ const TooltipContainer = Div`
   }
 `
 
+/**
+ * @deprecated in favor of our Design System Tooltip component in @artsy/palette
+ * https://palette.artsy.net/elements/inputs/tooltip
+ */
 export class Tooltip extends React.Component<Props, null> {
   render() {
     return (

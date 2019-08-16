@@ -19,6 +19,10 @@ export interface ModalProps extends React.HTMLProps<Modal> {
   title?: string
 }
 
+/**
+ * @deprecated in favor of our Design System Modal component in @artsy/palette
+ * https://palette.artsy.net/elements/dialogs/modal
+ */
 export class Modal extends React.Component<ModalProps> {
   static defaultProps = {
     show: false,
