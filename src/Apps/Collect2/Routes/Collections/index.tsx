@@ -48,9 +48,11 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
                 <h1>Collections</h1>
               </Serif>
 
-              <Sans size="3" weight="medium">
-                <Link to="/collect">View works</Link>
-              </Sans>
+              <Box pb={0.3}>
+                <Sans size="3" weight="medium">
+                  <Link to="/collect">View works</Link>
+                </Sans>
+              </Box>
             </Flex>
             {categories &&
               [...categories] // creates a new array since the sort function modifies the array.
