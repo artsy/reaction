@@ -1,3 +1,15 @@
+# v17.1.2 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] Fix text alignment [#2707](https://github.com/artsy/reaction/pull/2707) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.1.1 (Fri Aug 16 2019)
 
 #### 🐛  Bug Fix
