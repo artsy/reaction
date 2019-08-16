@@ -11,24 +11,26 @@ export const AutoScalingImageLink: React.FC<AutoScalingImageLinkProps> = ({
   maxWidth,
   maxHeight,
   ...rest
-}) => (
-  <LinkWithBackground href={href} imageUrl={imageUrl} {...rest}>
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      position="relative"
-      width="100%"
-    >
-      <LinkText size={fontSize} textAlign="center" p={1}>
-        {children}
-      </LinkText>
-      <PlaceholderImagesForContainerHeightAndWidth
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-      />
-    </Flex>
-  </LinkWithBackground>
-)
+}) => {
+  return (
+    <LinkWithBackground href={href} imageUrl={imageUrl} {...rest}>
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        position="relative"
+        width="100%"
+      >
+        <LinkText size={fontSize} textAlign="center" p={1}>
+          {children}
+        </LinkText>
+        <PlaceholderImagesForContainerHeightAndWidth
+          maxWidth={maxWidth}
+          maxHeight={maxHeight}
+        />
+      </Flex>
+    </LinkWithBackground>
+  )
+}
 
 interface AutoScalingImageLinkProps
   extends SpaceProps,

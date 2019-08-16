@@ -1,6 +1,6 @@
 import { Theme } from "@artsy/palette"
 import { CollectionsHubsNavQuery } from "__generated__/CollectionsHubsNavQuery.graphql"
-import { SystemContextConsumer } from "Artsy"
+import { useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React from "react"
 import { graphql, QueryRenderer } from "react-relay"
@@ -14,24 +14,20 @@ storiesOf("Components/CollectionsHubsNav", module).add("default", () => (
 ))
 
 const CollectionsHubsNavQueryRenderer = () => {
+  const { relayEnvironment } = useSystemContext()
+
   return (
-    <SystemContextConsumer>
-      {({ relayEnvironment }) => {
-        return (
-          <QueryRenderer<CollectionsHubsNavQuery>
-            environment={relayEnvironment}
-            variables={{}}
-            query={graphql`
-              query CollectionsHubsNavQuery {
-                marketingCollections(size: 6) {
-                  ...CollectionsHubsNav_marketingCollections
-                }
-              }
-            `}
-            render={renderWithLoadProgress(CollectionsHubsNavFragmentContainer)}
-          />
-        )
-      }}
-    </SystemContextConsumer>
+    <QueryRenderer<CollectionsHubsNavQuery>
+      environment={relayEnvironment}
+      variables={{}}
+      query={graphql`
+        query CollectionsHubsNavQuery {
+          marketingCollections(size: 6) {
+            ...CollectionsHubsNav_marketingCollections
+          }
+        }
+      `}
+      render={renderWithLoadProgress(CollectionsHubsNavFragmentContainer)}
+    />
   )
 }
