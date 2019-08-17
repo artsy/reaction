@@ -1,6 +1,6 @@
 import { Radio, RadioGroup } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 interface Props {
   mediums?: Array<{
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const MediumFilter: FC<Props> = props => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
   const { mediums } = props
   const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
   const selectedMedium = filterContext.filters.medium

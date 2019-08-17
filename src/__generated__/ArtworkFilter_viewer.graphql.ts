@@ -25,15 +25,15 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "aggregations",
-      "type": "[ArtworkAggregation]",
-      "defaultValue": v0
-    },
-    {
-      "kind": "LocalArgument",
       "name": "acquireable",
       "type": "Boolean",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "aggregations",
+      "type": "[ArtworkAggregation]",
+      "defaultValue": v0
     },
     {
       "kind": "LocalArgument",
@@ -274,5 +274,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a6c33adc7321ad02e6632aa51010e3dd';
+(node as any).hash = 'c786a10b9fb2c6c877a8c3ff1d4509a0';
 export default node;

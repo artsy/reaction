@@ -1,16 +1,16 @@
 import { Box, Flex, Serif } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "./ArtworkFilterContext"
+import { useArtworkFilterContext } from "./ArtworkFilterContext"
 
 // Should this feedback form be more generally moved to artwork filter
 import { SendFeedback } from "Apps/Search/Components/SendFeedback"
 
 interface Props {
-  term: string
+  keyword: string
 }
 
 export const ArtworkFilterZeroState: FC<Props> = props => {
-  const { hasFilters } = useFilterContext()
+  const { hasFilters } = useArtworkFilterContext()
 
   return (
     <Flex
@@ -23,7 +23,7 @@ export const ArtworkFilterZeroState: FC<Props> = props => {
         <Serif size="6">
           {hasFilters
             ? "No results found."
-            : `No results found for "${props.term}".`}
+            : `No results found for "${props.keyword}".`}
         </Serif>
         <Serif size="3">
           {hasFilters
