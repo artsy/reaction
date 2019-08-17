@@ -6,7 +6,7 @@ import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
-import { useFilterContext } from "./ArtworkFilterContext"
+import { useArtworkFilterContext } from "./ArtworkFilterContext"
 import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
 
 // TODO: Wire up
@@ -17,7 +17,7 @@ interface ArtworkFilterArtworkGridProps {
   filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp
-  term: string
+  keyword: string
 }
 
 const ArtworkFilterArtworkGrid: React.FC<
@@ -25,12 +25,12 @@ const ArtworkFilterArtworkGrid: React.FC<
 > = props => {
   const { trackEvent } = useTracking()
   const { user, mediator } = useSystemContext()
-  const context = useFilterContext()
+  const context = useArtworkFilterContext()
 
   const {
     columnCount,
     filtered_artworks: { artworks },
-    term,
+    keyword,
   } = props
 
   const {
@@ -71,13 +71,13 @@ const ArtworkFilterArtworkGrid: React.FC<
           user={user}
           mediator={mediator}
           onClearFilters={context.resetFilters}
-          emptyStateComponent={<ArtworkFilterZeroState term={term} />}
+          emptyStateComponent={<ArtworkFilterZeroState keyword={keyword} />}
           onBrickClick={artwork => {
             trackEvent({
               // FIXME: Figure out how to pass in granular tracking to grid
               action_type:
                 AnalyticsSchema.ActionType.SelectedItemFromSearchPage,
-              query: props.term,
+              query: props.keyword,
               item_type: "Artwork",
               item_id: artwork.id,
               destination_path: artwork.href,

@@ -1,10 +1,10 @@
 import { PriceRange } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 import { MAX_PRICE, MIN_PRICE } from "../Utils/rangeToTuple"
 
 export const PriceRangeFilter: FC = () => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
   const [initialMin, initialMax] = filterContext.rangeToTuple("price_range")
 
   return (

@@ -1,7 +1,7 @@
-import { Filters } from "../ArtworkFilterContext"
+import { ArtworkFilters } from "../ArtworkFilterContext"
 import { isDefaultFilter } from "./isDefaultFilter"
 
-export const hasFilters: (state: Filters) => boolean = state => {
+export const hasFilters: (state: ArtworkFilters) => boolean = state => {
   return Object.entries(state).some(([key, value]) => {
     /**
      * TODO: I think this can be based on some flag on the filter that indicates

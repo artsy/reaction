@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useReducer } from "react"
-import { useDidMount } from "Utils/Hooks/useDidMount"
+import React, { useContext, useReducer } from "react"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
-import { urlFragmentFromState } from "./Utils/urlFragmentFromState"
 
-export const initialFilterState = {
+export const initialArtworkFilterState = {
   height: "*-*",
   major_periods: [],
   page: 1,
@@ -14,7 +12,7 @@ export const initialFilterState = {
   width: "*-*",
 }
 
-export interface Filters {
+export interface ArtworkFilters {
   acquireable?: boolean
   at_auction?: boolean
   color?: string
@@ -32,8 +30,8 @@ export interface Filters {
   width: string
 }
 
-interface FilterContextProps {
-  filters: Filters
+interface ArtworkFilterContextProps {
+  filters: ArtworkFilters
   hasFilters: boolean
   isDefaultValue: (name: string) => boolean
   rangeToTuple: (name: string) => [number, number]
@@ -42,8 +40,10 @@ interface FilterContextProps {
   unsetFilter: (name: string) => void
 }
 
-export const FilterContext = React.createContext<FilterContextProps>({
-  filters: initialFilterState,
+export const ArtworkFilterContext = React.createContext<
+  ArtworkFilterContextProps
+>({
+  filters: initialArtworkFilterState,
   hasFilters: false,
   isDefaultValue: null,
   rangeToTuple: null,
@@ -52,22 +52,32 @@ export const FilterContext = React.createContext<FilterContextProps>({
   unsetFilter: null,
 })
 
-export const FilterContextProvider: React.FC<{
-  filters: Filters
+export const ArtworkFilterContextProvider: React.FC<{
+  filters?: ArtworkFilters
   children: React.ReactNode
-}> = ({ children, filters = initialFilterState }) => {
-  const [filterState, dispatch] = useReducer(filterReducer, filters)
+  updateURLOnChange?: (filterState) => void
+}> = ({ children, updateURLOnChange, filters = {} }) => {
+  const useUpdateHook = updateURLOnChange ? useURLBarReducer : useReducer
+
+  const [artworkFilterState, dispatch] = useUpdateHook(
+    artworkFilterReducer,
+    {
+      ...initialArtworkFilterState,
+      ...filters,
+    },
+    updateURLOnChange
+  )
 
   const artworkFilterContext = {
-    filters: filterState,
-    hasFilters: hasFilters(filterState),
+    filters: artworkFilterState,
+    hasFilters: hasFilters(artworkFilterState),
 
     isDefaultValue: field => {
-      return isDefaultFilter(field, filterState[field])
+      return isDefaultFilter(field, artworkFilterState[field])
     },
 
     rangeToTuple: range => {
-      return rangeToTuple(filterState, range)
+      return rangeToTuple(artworkFilterState, range)
     },
 
     setFilter: (name, val) => {
@@ -98,13 +108,13 @@ export const FilterContextProvider: React.FC<{
   }
 
   return (
-    <FilterContext.Provider value={artworkFilterContext}>
+    <ArtworkFilterContext.Provider value={artworkFilterContext}>
       {children}
-    </FilterContext.Provider>
+    </ArtworkFilterContext.Provider>
   )
 }
 
-const filterReducer = (state, action) => {
+const artworkFilterReducer = (state, action) => {
   switch (action.type) {
     case "SET": {
       return {
@@ -115,57 +125,32 @@ const filterReducer = (state, action) => {
     case "UNSET": {
       return {
         ...state,
-        [action.payload.name]: initialFilterState[action.payload.name],
+        [action.payload.name]: initialArtworkFilterState[action.payload.name],
       }
     }
     case "RESET": {
-      return initialFilterState
+      return initialArtworkFilterState
     }
-    default: {
-      throw new Error(
-        `Components/v2/ArtworkFilter/ArtworkFilterContext | Error setting filter: ${JSON.stringify(
-          action
-        )}`
-      )
-    }
+    default:
+      return state
   }
 }
 
-/**
- * FIXME: Need to create an adaptor to wire into history state; if using as a
- * solo component we'll need to opt in.
- */
-export const useURLState = state => {
-  const isMounted = useDidMount()
-  useEffect(() => {
-    if (isMounted) {
-      const queryString = urlFragmentFromState(state)
-      window.history.pushState(
-        {},
-        null,
-        `${window.location.pathname}?${queryString}`
-      )
-    }
-  }, []) // FIXME: add dependencies
+const useURLBarReducer = (reducer, initialState, urlUpdater) => {
+  let state = reducer(initialState, {})
 
-  /**
-   * TODO: use this to trigger resetting of fields when back/fwd buttons are hit
-   * because otherwise it doesn't always happen.
-   */
-  useEffect(() => {
-    window.addEventListener("popstate", handleChange)
-    return () => window.removeEventListener("popstate", handleChange)
-  }, [])
-
-  function handleChange() {
-    console.log("derive state from URL here, and update!")
+  const dispatch = action => {
+    state = reducer(state, action)
+    urlUpdater(state)
   }
+
+  return [state, dispatch]
 }
 
 /**
  * Hook to conveniently access fiter state context
  */
-export const useFilterContext = () => {
-  const filterContext = useContext(FilterContext)
-  return filterContext
+export const useArtworkFilterContext = () => {
+  const artworkFilterContext = useContext(ArtworkFilterContext)
+  return artworkFilterContext
 }

@@ -1,6 +1,6 @@
 import { LabeledRange } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 import {
   MAX_HEIGHT,
@@ -10,7 +10,7 @@ import {
 } from "../Utils/rangeToTuple"
 
 export const SizeRangeFilters: FC = () => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
 
   const [initialMinHeight, initialMaxHeight] = filterContext.rangeToTuple(
     "height"
