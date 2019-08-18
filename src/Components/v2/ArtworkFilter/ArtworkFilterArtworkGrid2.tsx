@@ -7,7 +7,9 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
 import { useArtworkFilterContext } from "./ArtworkFilterContext"
-import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
+
+// TODO: Do we want to define a default ZeroState for the filter?
+// import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
 
 // TODO: Wire up
 // import { SortFilter } from "./ArtworkFilterArtworkGridSort"
@@ -17,7 +19,7 @@ interface ArtworkFilterArtworkGridProps {
   filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp
-  keyword: string
+  keyword?: string
 }
 
 const ArtworkFilterArtworkGrid: React.FC<
@@ -26,12 +28,10 @@ const ArtworkFilterArtworkGrid: React.FC<
   const { trackEvent } = useTracking()
   const { user, mediator } = useSystemContext()
   const context = useArtworkFilterContext()
-  console.log(context)
 
   const {
     columnCount,
     filtered_artworks: { artworks },
-    keyword,
   } = props
 
   const {
