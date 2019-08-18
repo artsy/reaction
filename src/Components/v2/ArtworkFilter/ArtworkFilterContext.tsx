@@ -38,6 +38,7 @@ interface ArtworkFilterContextProps {
   resetFilters: () => void
   setFilter: (name: string, value: any) => void
   unsetFilter: (name: string) => void
+  ZeroState?: React.FC
 }
 
 export const ArtworkFilterContext = React.createContext<
@@ -50,13 +51,15 @@ export const ArtworkFilterContext = React.createContext<
   resetFilters: null,
   setFilter: null,
   unsetFilter: null,
+  ZeroState: null,
 })
 
 export const ArtworkFilterContextProvider: React.FC<{
   filters?: ArtworkFilters
   children: React.ReactNode
   updateURLOnChange?: (filterState) => void
-}> = ({ children, updateURLOnChange, filters = {} }) => {
+  ZeroState?: ArtworkFilterContextProps["ZeroState"]
+}> = ({ children, updateURLOnChange, filters = {}, ZeroState }) => {
   const useUpdateHook = updateURLOnChange ? useURLBarReducer : useReducer
 
   const [artworkFilterState, dispatch] = useUpdateHook(
@@ -69,6 +72,7 @@ export const ArtworkFilterContextProvider: React.FC<{
   )
 
   const artworkFilterContext = {
+    ZeroState,
     filters: artworkFilterState,
     hasFilters: hasFilters(artworkFilterState),
 
