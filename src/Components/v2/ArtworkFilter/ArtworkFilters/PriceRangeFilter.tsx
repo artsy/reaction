@@ -15,7 +15,7 @@ export const PriceRangeFilter: FC = () => {
       step={50}
       disabledText="Disabled for biddable works"
       defaultValue={[initialMin, initialMax]}
-      disabled={filterContext.filters.at_auction}
+      disabled={Boolean(filterContext.filters.at_auction)}
       onAfterChange={([min, max]) => {
         const minStr = min === MIN_PRICE ? "*" : min
         const maxStr = max === MAX_PRICE ? "*" : max

@@ -13,7 +13,7 @@ export function buildUrlForCollectionApp(state: State): string {
 
 export function buildUrlForCollectApp(state: State): string {
   const fragment = buildCollectUrlFragmentFromState(state)
-  const url = (fragment ? `/collect${fragment}` : "/collect").toLowerCase()
+  const url = fragment ? `/collect${fragment}` : "/collect"
   return url
 }
 

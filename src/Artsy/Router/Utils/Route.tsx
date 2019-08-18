@@ -9,6 +9,9 @@ import BaseRoute from "found/lib/Route"
 import React from "react"
 import { get } from "Utils/get"
 
+// TODO: Wire up
+// import { HttpError } from "found"
+
 type FetchIndicator = "spinner" | "overlay"
 
 interface CreateRenderProps {
