@@ -29,7 +29,7 @@ export interface ArtworkGridProps
   onLoadMore?: () => any
   sectionMargin?: number
   user?: User
-  emptyStateComponent?: ReactNode
+  emptyStateComponent?: ReactNode | boolean
 }
 
 export interface ArtworkGridContainerState {

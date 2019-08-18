@@ -26,6 +26,7 @@ const ArtworkFilterArtworkGrid: React.FC<
   const { trackEvent } = useTracking()
   const { user, mediator } = useSystemContext()
   const context = useArtworkFilterContext()
+  console.log(context)
 
   const {
     columnCount,
@@ -71,7 +72,7 @@ const ArtworkFilterArtworkGrid: React.FC<
           user={user}
           mediator={mediator}
           onClearFilters={context.resetFilters}
-          emptyStateComponent={<ArtworkFilterZeroState keyword={keyword} />}
+          emptyStateComponent={context.ZeroState && <context.ZeroState />}
           onBrickClick={artwork => {
             trackEvent({
               // FIXME: Figure out how to pass in granular tracking to grid
