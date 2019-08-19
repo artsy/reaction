@@ -17,7 +17,9 @@ export const VanguardIntroduction: React.SFC<{
   return (
     <IntroContainer>
       <Box minHeight="calc(100vh - 50px)" mb={150}>
-        {isVideo && <IntroSVGVideo id="#clip-svg-intro" url={url} />}
+        <VideoWrapper>
+          {isVideo && <IntroSVGVideo id="#clip-svg-intro" url={url} />}
+        </VideoWrapper>
         <HeaderText pt={70} size="8" textAlign="center">
           The Artsy
         </HeaderText>
@@ -50,8 +52,18 @@ export const VanguardIntroduction: React.SFC<{
   )
 }
 
+const VideoWrapper = styled(Flex)`
+  flex-direction: row;
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 100vh;
+`
+
 const HeaderText = styled(Sans)`
   font-size: 100px;
+  position: absolute;
+  top: 3vw;
+  left: 35vw;
 `
 
 const IntroContainer = styled(Box)`
