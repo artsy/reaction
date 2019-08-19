@@ -1,3 +1,15 @@
+# v17.1.5 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- adds item_number to analytics tracking [#2717](https://github.com/artsy/reaction/pull/2717) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v17.1.4 (Mon Aug 19 2019)
 
 #### 🐛  Bug Fix
