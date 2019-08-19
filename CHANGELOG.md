@@ -1,3 +1,21 @@
+# v17.1.4 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] Relocate CollectionsHub rails [#2709](https://github.com/artsy/reaction/pull/2709) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.0 to v4.16.1 [#2715](https://github.com/artsy/reaction/pull/2715) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.15.1 to v4.16.0 [#2713](https://github.com/artsy/reaction/pull/2713) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.1.3 (Fri Aug 16 2019)
 
 #### 🐛  Bug Fix
