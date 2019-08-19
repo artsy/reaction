@@ -64,8 +64,8 @@ const VideoWrapper = styled(Flex)`
 const HeaderText = styled(Sans)`
   font-size: 100px;
   position: absolute;
-  top: 3vw;
-  left: 35vw;
+  top: 2vw;
+  width: 100%;
 `
 
 const IntroContainer = styled(Box)`
