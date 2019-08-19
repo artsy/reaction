@@ -26,11 +26,15 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     bgImages.length === 1 ? 221 : bgImages.length === 2 ? 109 : 72
   return (
 <<<<<<< HEAD:src/Apps/Collect2/Routes/Collection/Components/CollectionsHubRails/ArtistSeriesRail/ArtistSeriesEntity.tsx
+<<<<<<< HEAD:src/Apps/Collect2/Routes/Collection/Components/CollectionsHubRails/ArtistSeriesRail/ArtistSeriesEntity.tsx
     <Container p={0.5} m={0.5}>
       <StyledLink to={`/collection/${slug}`}>
         <ImgWrapper pb={1}>
 =======
     <Container px={2} pt={2} pb={1.6} m={1}>
+=======
+    <Container px={2} pt={2} pb={2} m={1}>
+>>>>>>> update css thing:src/Components/CollectionsHubRails/ArtistSeriesRail/ArtistSeriesEntity.tsx
       <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
         <ImgWrapper>
 >>>>>>> update css:src/Components/CollectionsHubRails/ArtistSeriesRail/ArtistSeriesEntity.tsx
