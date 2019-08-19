@@ -4,6 +4,7 @@
  */
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
+import { HttpError } from "found"
 import BaseRoute from "found/lib/Route"
 import React from "react"
 
@@ -28,7 +29,10 @@ function createRender({
     const { Component, props, error } = renderArgs
 
     if (error) {
-      throw error
+      // TODO: Need upstream fix type in found as it complains about missing
+      // second argument.
+      // @ts-ignore;
+      throw new HttpError(500, error.message)
     }
 
     if (render) {

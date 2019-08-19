@@ -51,6 +51,7 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
               <Box pb={0.3}>
                 <Sans size="3" weight="medium">
                   <Link to="/collect">View works</Link>
+                  <Link to="/collect/foo-error">View error</Link>
                 </Sans>
               </Box>
             </Flex>
