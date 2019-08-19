@@ -16,7 +16,7 @@ export const VanguardIntroduction: React.SFC<{
 
   return (
     <IntroContainer>
-      <Box minHeight="calc(100vh - 50px)" mb={150}>
+      <Box minHeight="calc(100vh - 50px)" mb={150} pt={50}>
         <VideoWrapper>
           {isVideo && (
             <VanguardVideoBackground id="#clip-svg-intro" url={url} />

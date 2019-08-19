@@ -1,17 +1,59 @@
 import { Box, Sans } from "@artsy/palette"
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
-import { Nav } from "Components/Publishing/Nav/Nav"
+import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
+import { last } from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { slugify } from "underscore.string"
 import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
 import { VanguardTableOfContents } from "./Components/TableOfContents"
 
 export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
+  public validSlugs
+
   onChangeSection = slug => {
-    document.getElementById(slug).scrollIntoView({
-      behavior: "smooth",
+    const scrollTarget = document.getElementById(slug)
+    scrollTarget &&
+      scrollTarget.scrollIntoView({
+        behavior: "smooth",
+      })
+  }
+
+  componentDidMount() {
+    this.getValidPaths()
+    window.addEventListener("load", this.handleScrollOnLoad.bind(this))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("load", this.handleScrollOnLoad)
+  }
+
+  handleScrollOnLoad() {
+    const scrollSlugs = window.location.pathname
+      .split("/series/artsy-vanguard-2019/")
+      .filter(({ length }) => length)
+    const scrollToSlug = scrollSlugs.length && last(scrollSlugs)
+
+    if (this.validSlugs.includes(scrollToSlug)) {
+      this.onChangeSection(scrollToSlug)
+    }
+    // remove slug from pathname
+    window.history.replaceState({}, "", "/series/artsy-vanguard-2019")
+  }
+
+  getValidPaths = () => {
+    const validPaths = []
+
+    this.props.article.relatedArticles.forEach(series => {
+      // get subSeries slug
+      validPaths.push(slugify(series.title))
+      series.relatedArticles.map(artist => {
+        // get artist slug
+        validPaths.push(slugify(artist.title))
+      })
     })
+    this.validSlugs = validPaths
   }
 
   render() {
@@ -19,7 +61,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
     const { relatedArticles } = article
 
     return (
-      <Box>
+      <VanguardWrapper>
         <Nav
           canFix
           color="black"
@@ -46,10 +88,16 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
               index={i}
             />
           ))}
-      </Box>
+      </VanguardWrapper>
     )
   }
 }
+
+const VanguardWrapper = styled(Box)`
+  ${NavContainer} {
+    position: fixed;
+  }
+`
 
 const FrameText = styled(Sans)`
   position: fixed;
@@ -63,6 +111,7 @@ const FrameTextLeft = styled(FrameText)`
   left: -160px;
   transform: rotate(-90deg);
 `
+
 const FrameTextRight = styled(FrameText)`
   right: 0;
   transform: rotate(90deg);
