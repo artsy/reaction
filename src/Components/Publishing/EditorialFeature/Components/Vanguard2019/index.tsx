@@ -10,7 +10,7 @@ import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
 import { VanguardTableOfContents } from "./Components/TableOfContents"
 
 export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
-  private validSlugs
+  public validSlugs
 
   onChangeSection = slug => {
     const scrollTarget = document.getElementById(slug)
