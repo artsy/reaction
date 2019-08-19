@@ -1,3 +1,15 @@
+# v17.1.7 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] scroll to sections based on slug [#2701](https://github.com/artsy/reaction/pull/2701) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v17.1.6 (Mon Aug 19 2019)
 
 #### 🐛  Bug Fix
