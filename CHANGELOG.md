@@ -1,3 +1,15 @@
+# v17.1.6 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- Add Video in SVG Blobs on Primary and Sub Series Headers [#2716](https://github.com/artsy/reaction/pull/2716) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.1.5 (Mon Aug 19 2019)
 
 #### 🐛  Bug Fix
