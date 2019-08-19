@@ -1,51 +1,34 @@
 /**
  * Taken from @taion as per example of how they actually use found-relay and
  * have default setup for each route.
- *
- * TODO:
- * - Decide if we want to change our getDataFrom, such as the one @taion uses.
- * - There's opportunity to unify some code with renderWithLoadProgress.
  */
 
-import { Spinner } from "@artsy/palette"
-import { LoadingClassName } from "Artsy/Relay/renderWithLoadProgress"
+import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import BaseRoute from "found/lib/Route"
 import React from "react"
-import styled from "styled-components"
 
-const SpinnerContainer = styled.figure`
-  width: 100%;
-  height: 100px;
-  position: relative;
-`
+type FetchIndicator = "spinner" | "overlay"
 
-export const renderSpinner = () => {
-  return (
-    <SpinnerContainer className={LoadingClassName}>
-      <Spinner />
-    </SpinnerContainer>
-  )
+interface CreateRenderProps {
+  fetchIndicator?: FetchIndicator
+  render?: (props) => React.ReactNode
 }
 
-// When popping a route (navigate back), use the data in the store.
-// function defaultGetDataFrom({ location }) {
-//   return location.action === "POP" ? "STORE_OR_NETWORK" : "STORE_THEN_NETWORK"
-// }
+interface RenderArgProps {
+  Component: React.ComponentType
+  props?: object
+  error?: Error
+}
 
-function createRender({ prerender, render, renderFetched }) {
-  return (renderArgs: {
-    Component: React.ComponentType
-    props?: object
-    error?: Error
-  }) => {
+function createRender({
+  fetchIndicator = "spinner",
+  render,
+}: CreateRenderProps) {
+  return (renderArgs: RenderArgProps) => {
     const { Component, props, error } = renderArgs
 
     if (error) {
       throw error
-    }
-
-    if (prerender) {
-      prerender(renderArgs)
     }
 
     if (render) {
@@ -57,10 +40,17 @@ function createRender({ prerender, render, renderFetched }) {
     }
 
     // This should only ever show when doing client-side routing.
-    if (!props) return renderSpinner()
+    if (!props) {
+      if (fetchIndicator === "spinner") {
+        return <RouteSpinner />
+      } else if (fetchIndicator === "overlay") {
+        // TODO: At some point  we might want to make this a little fancier. If
+        // undefined  is returned here, then we defer to `RenderStatus` component.
 
-    if (renderFetched) {
-      return renderFetched(renderArgs)
+        return
+      } else {
+        return
+      }
     }
 
     return <Component {...props} />
@@ -75,7 +65,6 @@ export class Route extends BaseRoute {
     }
 
     super({
-      // getDataFrom: defaultGetDataFrom,
       ...props,
       render: createRender(props),
     })

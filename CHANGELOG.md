@@ -1,3 +1,138 @@
+# v17.1.6 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- Add Video in SVG Blobs on Primary and Sub Series Headers [#2716](https://github.com/artsy/reaction/pull/2716) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.1.5 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- adds item_number to analytics tracking [#2717](https://github.com/artsy/reaction/pull/2717) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.1.4 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] Relocate CollectionsHub rails [#2709](https://github.com/artsy/reaction/pull/2709) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.0 to v4.16.1 [#2715](https://github.com/artsy/reaction/pull/2715) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.15.1 to v4.16.0 [#2713](https://github.com/artsy/reaction/pull/2713) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.1.3 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette [#2710](https://github.com/artsy/reaction/pull/2710) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Mark components with clear artsy/palette equivalents as deprecated [#2711](https://github.com/artsy/reaction/pull/2711) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.1.2 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] Fix text alignment [#2707](https://github.com/artsy/reaction/pull/2707) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.1.1 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Fix zIndex #trivial [#2706](https://github.com/artsy/reaction/pull/2706) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.1.0 (Fri Aug 16 2019)
+
+#### 🚀  Enhancement
+
+- [Router] Add in  interstitial loading state [#2705](https://github.com/artsy/reaction/pull/2705) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.0.1 (Thu Aug 15 2019)
+
+
+
+---
+
+# v17.0.0 (Thu Aug 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Consolidate /collect, /collections and /collection/id under a single App / Router [#2685](https://github.com/artsy/reaction/pull/2685) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Call modal onClose only after show has been set to false [#2696](https://github.com/artsy/reaction/pull/2696) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.46 to v4.14.47 [#2699](https://github.com/artsy/reaction/pull/2699) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.24.12 (Thu Aug 15 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Pass index / props down to render items [#2695](https://github.com/artsy/reaction/pull/2695) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v16.24.11 (Thu Aug 15 2019)
 
 #### 🐛  Bug Fix

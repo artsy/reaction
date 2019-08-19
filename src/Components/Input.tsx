@@ -15,9 +15,8 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 /**
- * Standard input field.
- * The `title` and `description` props are rendered above the input.
- *
+ * @deprecated in favor of our Design System Input component in @artsy/palette
+ * https://palette.artsy.net/elements/inputs/input
  */
 export const Input: React.ExoticComponent<InputProps> = React.forwardRef(
   ({ error, title, description, ...rest }, ref) => {

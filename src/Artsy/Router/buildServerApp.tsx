@@ -21,6 +21,7 @@ import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 import { RouterConfig } from "./"
+import { RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 interface Resolve {
   bodyHTML?: string
@@ -57,7 +58,10 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           }),
         ]
         const resolver = new Resolver(relayEnvironment)
-        const render = createRender({})
+        const render = createRender({
+          renderPending: RenderPending,
+          renderReady: RenderReady,
+        })
 
         const { redirect, status, element } = await trace(
           "buildServerApp.farceResults",

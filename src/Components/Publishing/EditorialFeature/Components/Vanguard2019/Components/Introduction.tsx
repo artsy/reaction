@@ -1,25 +1,31 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
+import { VanguardVideoBackground } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
-import { VanguardVideoBackground } from "./VideoBackground"
 
 export const VanguardIntroduction: React.SFC<{
   article: ArticleData
 }> = props => {
   const { description } = props.article.series
+  const { hero_section } = props.article
+  const url = ((hero_section && hero_section.url) || "") as string
+  const isVideo = url.includes("mp4")
 
   return (
     <IntroContainer>
       <Box minHeight="calc(100vh - 50px)" mb={150} pt={50}>
-        <VanguardVideoBackground {...props} />
+        <VideoWrapper>
+          {isVideo && (
+            <VanguardVideoBackground id="#clip-svg-intro" url={url} />
+          )}
+        </VideoWrapper>
         <HeaderText pt={70} size="8" textAlign="center">
           The Artsy
         </HeaderText>
       </Box>
-
       <Box mx="auto" maxWidth={980} px={4}>
         <Flex flexDirection="column" alignItems="center" pb={50}>
           <Title size="12" element="h1" textAlign="center" pb={1}>
@@ -48,8 +54,18 @@ export const VanguardIntroduction: React.SFC<{
   )
 }
 
+const VideoWrapper = styled(Flex)`
+  flex-direction: row;
+  position: relative;
+  padding-bottom: 100px;
+  min-height: 100vh;
+`
+
 const HeaderText = styled(Sans)`
   font-size: 100px;
+  position: absolute;
+  top: 2vw;
+  width: 100%;
 `
 
 const IntroContainer = styled(Box)`

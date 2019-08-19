@@ -46,8 +46,14 @@ describe("AuctionRegistrationModal", () => {
     expect(defaultProps.onSubmit).toHaveBeenCalled()
   })
 
-  it("calls the onClose prop when the modal closes", async () => {
+  it("calls the onClose prop AFTER the modal show prop turns false", async () => {
+    expect(wrapper.find(Modal).prop("show")).toEqual(true)
+
+    defaultProps.onClose.mockImplementationOnce(() => {
+      expect(wrapper.find(Modal).prop("show")).toEqual(false)
+    })
     wrapper.find("CloseIcon").simulate("click")
+    await flushPromiseQueue()
     expect(defaultProps.onClose).toHaveBeenCalled()
   })
 })

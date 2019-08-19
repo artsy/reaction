@@ -46,6 +46,10 @@ const RawText: React.SFC<TextProps> = (props: TextProps) => {
   return <p {...remainderProps}>{props.children}</p>
 }
 
+/**
+ * @deprecated in favor of our Design System Typography components in @artsy/palette
+ * https://palette.artsy.net/tokens/typography
+ */
 const Text = styled(RawText)`
   ${props => textStyleNameToCss[props.textStyle]};
   font-size: ${props => TextStyleToTextSize[props.textStyle][props.textSize]};

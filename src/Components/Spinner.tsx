@@ -8,6 +8,10 @@ interface Props extends React.HTMLProps<Spinner> {
   spinnerSize?: "small" | "medium" | "large"
 }
 
+/**
+ * @deprecated in favor of our Design System Spinner component in @artsy/palette
+ * https://palette.artsy.net/elements/loaders/spinner
+ */
 export class Spinner extends React.Component<Props> {
   render() {
     return <div className={this.props.className} />

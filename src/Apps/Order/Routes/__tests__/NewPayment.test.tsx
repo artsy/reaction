@@ -34,6 +34,8 @@ jest.mock(
   }
 )
 
+const realSetInterval = global.setInterval
+
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
@@ -84,6 +86,11 @@ describe("Payment", () => {
 
   beforeEach(() => {
     ;(window.location.assign as any).mockReset()
+    global.setInterval = jest.fn()
+  })
+
+  afterEach(() => {
+    global.setInterval = realSetInterval
   })
 
   it("shows the countdown timer", async () => {

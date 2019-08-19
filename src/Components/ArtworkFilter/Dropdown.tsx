@@ -29,7 +29,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ selected: nextProps.selected })
   }
 

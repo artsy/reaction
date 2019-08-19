@@ -12,6 +12,10 @@ export interface LinkProps
   target?: string
 }
 
+/**
+ * @deprecated in favor of our Design System Link component in @artsy/palette
+ * https://palette.artsy.net/elements/buttons/link
+ */
 export class TextLink extends React.Component<LinkProps, null> {
   public static defaultProps: LinkProps = {
     target: "_self",
