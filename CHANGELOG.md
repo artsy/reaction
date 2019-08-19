@@ -1,3 +1,15 @@
+# v17.2.0 (Mon Aug 19 2019)
+
+#### 🚀  Enhancement
+
+- [Router] Add ErrorPage handler [#2719](https://github.com/artsy/reaction/pull/2719) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.1.7 (Mon Aug 19 2019)
 
 #### 🐛  Bug Fix
