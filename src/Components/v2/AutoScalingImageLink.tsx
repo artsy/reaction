@@ -1,4 +1,5 @@
 import { color, Flex, Serif, SerifSize } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
@@ -13,7 +14,7 @@ export const AutoScalingImageLink: React.FC<AutoScalingImageLinkProps> = ({
   ...rest
 }) => {
   return (
-    <LinkWithBackground href={href} imageUrl={imageUrl} {...rest}>
+    <LinkWithBackground to={href} imageUrl={imageUrl} {...rest}>
       <Flex
         justifyContent="center"
         alignItems="center"
@@ -23,7 +24,7 @@ export const AutoScalingImageLink: React.FC<AutoScalingImageLinkProps> = ({
         <LinkText size={fontSize} textAlign="center" p={1}>
           {children}
         </LinkText>
-        <PlaceholderImagesForContainerHeightAndWidth
+        <PlaceholderImageForContainerHeightAndWidth
           maxWidth={maxWidth}
           maxHeight={maxHeight}
         />
@@ -35,7 +36,7 @@ export const AutoScalingImageLink: React.FC<AutoScalingImageLinkProps> = ({
 interface AutoScalingImageLinkProps
   extends SpaceProps,
     LinkWithBackgroundProps,
-    PlaceholderImagesForContainerHeightAndWidthProps {
+    PlaceholderImageForContainerHeightAndWidthProps {
   href: string
   fontSize?: SerifSize
 }
@@ -53,13 +54,13 @@ const LinkText = styled(Serif)`
 // This placeholder gives the container the correct height/width/aspect ratio at each breakpoint.
 //   It is hidden by CSS, but it allows the background image to scale correctly
 //   based on the available width.
-const PlaceholderImagesForContainerHeightAndWidth: React.FC<
-  PlaceholderImagesForContainerHeightAndWidthProps
+const PlaceholderImageForContainerHeightAndWidth: React.FC<
+  PlaceholderImageForContainerHeightAndWidthProps
 > = ({ maxWidth, maxHeight }) => {
   return <SVGPlaceholder width={maxWidth} height={maxHeight} aria-hidden />
 }
 
-interface PlaceholderImagesForContainerHeightAndWidthProps {
+interface PlaceholderImageForContainerHeightAndWidthProps {
   maxWidth: number
   maxHeight: number
 }
@@ -95,7 +96,7 @@ interface LinkWithBackgroundProps {
   imageUrl: string
 }
 
-const LinkWithBackground = styled.a<LinkWithBackgroundProps>`
+const LinkWithBackground = styled(RouterLink)<LinkWithBackgroundProps>`
   align-items: center;
   background-image: linear-gradient(
       to right,
