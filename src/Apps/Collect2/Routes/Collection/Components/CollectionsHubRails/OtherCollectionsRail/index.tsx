@@ -55,8 +55,10 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
           contain: true,
         }}
         data={members}
-        render={slide => {
-          return <OtherCollectionEntity member={slide} />
+        render={(slide, slideIndex) => {
+          return (
+            <OtherCollectionEntity member={slide} itemNumber={slideIndex} />
+          )
         }}
         renderLeftArrow={({ Arrow }) => {
           return (

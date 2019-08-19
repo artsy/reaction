@@ -139,7 +139,9 @@ describe("FeaturedCollectionEntity", () => {
 
   it("Tracks collection entity click", () => {
     const { members } = props.collectionGroup
-    const component = mount(<FeaturedCollectionEntity member={members[0]} />)
+    const component = mount(
+      <FeaturedCollectionEntity member={members[0]} itemNumber={0} />
+    )
     component
       .find(StyledLink)
       .at(0)
@@ -150,8 +152,9 @@ describe("FeaturedCollectionEntity", () => {
       context_page: "Collection",
       context_module: "FeaturedCollectionsRail",
       context_page_owner_type: "Collection",
-      type: "Link",
+      type: "thumbnail",
       destination_path: "undefined/collection/art-inspired-by-cartoons",
+      item_number: 0,
     })
   })
 })
