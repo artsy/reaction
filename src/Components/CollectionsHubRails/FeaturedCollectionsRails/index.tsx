@@ -94,15 +94,8 @@ interface FeaturedCollectionEntityProps {
 
 export const FeaturedCollectionEntity: React.FC<
   FeaturedCollectionEntityProps
-> = ({ member }) => {
-  const {
-    description,
-    itemNumber,
-    price_guidance,
-    slug,
-    thumbnail,
-    title,
-  } = member
+> = ({ itemNumber, member }) => {
+  const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
 
   const handleClick = () => {

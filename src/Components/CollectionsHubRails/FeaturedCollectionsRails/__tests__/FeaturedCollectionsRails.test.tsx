@@ -148,7 +148,7 @@ describe("FeaturedCollectionEntity", () => {
       context_page: "Collection",
       context_module: "FeaturedCollectionsRail",
       context_page_owner_type: "Collection",
-      type: "Thumbnail",
+      type: "thumbnail",
       destination_path: "undefined/collection/art-inspired-by-cartoons",
       item_number: 0,
     })
