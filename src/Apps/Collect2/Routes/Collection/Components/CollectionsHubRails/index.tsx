@@ -26,8 +26,8 @@ interface Props {
 export const CollectionsHubRails = ({ linkedCollections }: Props) => {
   return (
     <>
-      {linkedCollections.map(collectionGroup => (
-        <div>{railForGroupType(collectionGroup)}</div>
+      {linkedCollections.map((collectionGroup, index) => (
+        <div key={index}>{railForGroupType(collectionGroup)}</div>
       ))}
     </>
   )

@@ -1,7 +1,8 @@
-import { Box, color, Flex, Link, ResponsiveImage, Serif } from "@artsy/palette"
+import { Box, color, Flex, ResponsiveImage, Serif } from "@artsy/palette"
 import { OtherCollectionEntity_member } from "__generated__/OtherCollectionEntity_member.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -10,32 +11,6 @@ import styled from "styled-components"
 export interface CollectionProps {
   member: OtherCollectionEntity_member
 }
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  border: 1px solid ${color("black10")};
-  border-radius: 2px;
-  margin-right: 10px;
-  &:hover {
-    text-decoration: none;
-    border: 1px solid ${color("black60")};
-  }
-`
-
-export const ImageContainer = styled(Box)`
-  height: 60px;
-  width: 60px;
-`
-
-export const ThumbnailImage = styled(ResponsiveImage)`
-  background-size: cover;
-  border-radius: 2px 1px 1px 2px;
-`
-
-const TitleContainer = styled(Serif)`
-  width: max-content;
-`
 
 export const OtherCollectionEntity: React.FC<CollectionProps> = ({
   member,
@@ -55,7 +30,7 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
   }
 
   return (
-    <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
+    <StyledLink to={`/collection/${slug}`} onClick={onClickLink}>
       <Flex alignItems="center">
         {thumbnail && (
           <ImageContainer>
@@ -84,3 +59,30 @@ export const OtherCollectionsRailsContainer = createFragmentContainer(
     `,
   }
 )
+
+export const StyledLink = styled(RouterLink)`
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: 1px solid ${color("black10")};
+  border-radius: 2px;
+  margin-right: 10px;
+
+  &:hover {
+    text-decoration: none;
+    border: 1px solid ${color("black60")};
+  }
+`
+
+export const ImageContainer = styled(Box)`
+  height: 60px;
+  width: 60px;
+`
+
+export const ThumbnailImage = styled(ResponsiveImage)`
+  background-size: cover;
+  border-radius: 2px 1px 1px 2px;
+`
+
+const TitleContainer = styled(Serif)`
+  width: max-content;
+`

@@ -7,7 +7,6 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
-import { CollectionsHubRailsContainer as CollectionsHubRails } from "Components/CollectionsHubRails"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
@@ -18,6 +17,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
+import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
 interface CollectionAppProps extends SystemContextProps {
   collection: Collection_collection

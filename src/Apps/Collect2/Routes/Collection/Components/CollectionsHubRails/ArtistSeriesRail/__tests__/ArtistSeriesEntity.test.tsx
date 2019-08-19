@@ -2,7 +2,12 @@ import { CollectionsHubLinkedCollections } from "Apps/__tests__/Fixtures/Collect
 import { mount } from "enzyme"
 import React from "react"
 import { ArtistSeriesEntity, ArtworkImage } from "../ArtistSeriesEntity"
+
 jest.unmock("react-tracking")
+
+jest.mock("found", () => ({
+  Link: props => <div>{props.children}</div>,
+}))
 
 describe("ArtistSeriesEntity", () => {
   let props

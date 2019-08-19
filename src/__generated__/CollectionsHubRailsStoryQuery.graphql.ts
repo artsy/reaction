@@ -2,25 +2,25 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
-export type CollectionsRailsQueryVariables = {
+export type CollectionsHubRailsStoryQueryVariables = {
     readonly collectionID: string;
 };
-export type CollectionsRailsQueryResponse = {
+export type CollectionsHubRailsStoryQueryResponse = {
     readonly marketingCollection: ({
         readonly linkedCollections: ReadonlyArray<{
             readonly " $fragmentRefs": CollectionsHubRails_linkedCollections$ref;
         }>;
     }) | null;
 };
-export type CollectionsRailsQuery = {
-    readonly response: CollectionsRailsQueryResponse;
-    readonly variables: CollectionsRailsQueryVariables;
+export type CollectionsHubRailsStoryQuery = {
+    readonly response: CollectionsHubRailsStoryQueryResponse;
+    readonly variables: CollectionsHubRailsStoryQueryVariables;
 };
 
 
 
 /*
-query CollectionsRailsQuery(
+query CollectionsHubRailsStoryQuery(
   $collectionID: String!
 ) {
   marketingCollection(slug: $collectionID) {
@@ -149,13 +149,13 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "CollectionsRailsQuery",
+  "name": "CollectionsHubRailsStoryQuery",
   "id": null,
-  "text": "query CollectionsRailsQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    linkedCollections {\n      ...CollectionsHubRails_linkedCollections\n    }\n    __id: id\n  }\n}\n\nfragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {\n  groupType\n  ...FeaturedCollectionsRails_collectionGroup\n  ...OtherCollectionsRail_collectionGroup\n  ...ArtistSeriesRail_collectionGroup\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    id\n    slug\n    title\n    description\n    price_guidance\n    thumbnail\n    __id: id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    __id: id\n  }\n}\n\nfragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  members {\n    ...ArtistSeriesEntity_member\n    __id: id\n  }\n}\n\nfragment ArtistSeriesEntity_member on MarketingCollection {\n  slug\n  headerImage\n  thumbnail\n  title\n  price_guidance\n  artworks(size: 3, sort: \"-decayed_merch\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n  __id: id\n}\n",
+  "text": "query CollectionsHubRailsStoryQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    linkedCollections {\n      ...CollectionsHubRails_linkedCollections\n    }\n    __id: id\n  }\n}\n\nfragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {\n  groupType\n  ...FeaturedCollectionsRails_collectionGroup\n  ...OtherCollectionsRail_collectionGroup\n  ...ArtistSeriesRail_collectionGroup\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    id\n    slug\n    title\n    description\n    price_guidance\n    thumbnail\n    __id: id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    __id: id\n  }\n}\n\nfragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  members {\n    ...ArtistSeriesEntity_member\n    __id: id\n  }\n}\n\nfragment ArtistSeriesEntity_member on MarketingCollection {\n  slug\n  headerImage\n  thumbnail\n  title\n  price_guidance\n  artworks(size: 3, sort: \"-decayed_merch\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "CollectionsRailsQuery",
+    "name": "CollectionsHubRailsStoryQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -192,7 +192,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CollectionsRailsQuery",
+    "name": "CollectionsHubRailsStoryQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -362,5 +362,5 @@ return {
   }
 };
 })();
-(node as any).hash = '2e3fbc20b236fd48c3f6ae89616e31fc';
+(node as any).hash = '681df4bd4ecb21df42a6e2c835b1b433';
 export default node;

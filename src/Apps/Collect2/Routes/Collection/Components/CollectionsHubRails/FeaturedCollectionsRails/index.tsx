@@ -2,7 +2,6 @@ import {
   Box,
   color,
   Flex,
-  Link,
   ReadMore,
   ResponsiveImage,
   Sans,
@@ -12,6 +11,7 @@ import {
 import { FeaturedCollectionsRails_collectionGroup } from "__generated__/FeaturedCollectionsRails_collectionGroup.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { ArrowButton, Carousel } from "Components/v2"
 import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -108,7 +108,7 @@ export const FeaturedCollectionEntity: React.FC<
 
   return (
     <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
-      <StyledLink href={`/collection/${slug}`} onClick={onClickLink}>
+      <StyledLink to={`/collection/${slug}`} onClick={onClickLink}>
         <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
           <FeaturedImage src={thumbnail} />
         </Flex>
@@ -118,6 +118,7 @@ export const FeaturedCollectionEntity: React.FC<
         <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
+            disabled
             maxChars={100}
             content={
               <>
@@ -160,6 +161,7 @@ const FeaturedCollectionsContainer = styled(Box)`
 const Container = styled(Box)`
   border: 1px solid ${color("black10")};
   border-radius: 2px;
+
   &:hover {
     text-decoration: none;
     border: 1px solid ${color("black60")};
@@ -186,6 +188,7 @@ export const ArrowContainer = styled(Box)`
 
   ${ArrowButton} {
     height: 60%;
+
     svg {
       height: 18px;
       width: 18px;
@@ -197,7 +200,7 @@ const CollectionTitle = styled(Serif)`
   width: max-content;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(RouterLink)`
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 

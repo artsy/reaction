@@ -1,9 +1,9 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { ArtistSeriesEntity_member } from "__generated__/ArtistSeriesEntity_member.graphql"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import currency from "currency.js"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import { get } from "Utils/get"
 
@@ -26,7 +26,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
   return (
     <Container p={0.5} m={0.5}>
-      <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
+      <StyledLink to={`/collection/${slug}`}>
         <ImgWrapper pb={1}>
           {bgImages.length ? (
             bgImages.map((url, i) => {
@@ -100,7 +100,7 @@ export const ImgWrapper = styled(Flex)`
   width: 265px;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(RouterLink)`
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
