@@ -1,13 +1,13 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
+import { VanguardVideoBackground } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { VanguardArtistWrapper } from "./ArtistWrapper"
-import { VanguardVideoBackground } from "./VideoBackground"
 
 export const VanguardSeriesWrapper: React.SFC<{
   article: ArticleData
@@ -16,6 +16,19 @@ export const VanguardSeriesWrapper: React.SFC<{
   const { article, index } = props
   const { relatedArticles, title, layout, series, slug } = article
   const slugifiedTitle = slugify(title)
+  const { hero_section } = props.article
+  const url = ((hero_section && hero_section.url) || "") as string
+  const isVideo = url.includes("mp4")
+  const getVideoID = section => {
+    switch (section) {
+      case "newly-established":
+        return "#clip-svg-newly-established"
+      case "emerging":
+        return "#clip-svg-emerging"
+      case "getting-their-due":
+        return "#clip-svg-getting-their-due"
+    }
+  }
 
   return (
     <Box id={slugifiedTitle}>
@@ -24,7 +37,9 @@ export const VanguardSeriesWrapper: React.SFC<{
         // prevents overlapping nav on jump-link
       />
       <Box height="95vh" mb={80}>
-        <VanguardVideoBackground article={article} />
+        {isVideo && (
+          <VanguardVideoBackground id={getVideoID(slugifiedTitle)} url={url} />
+        )}
         <Box mx="auto" maxWidth={1400} px={4}>
           <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
           <Title size="16" textAlign="center" element="h2">
