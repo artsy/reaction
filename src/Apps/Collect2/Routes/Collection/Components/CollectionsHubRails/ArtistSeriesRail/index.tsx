@@ -39,10 +39,11 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         renderLeftArrow={({ Arrow }) => {
           return (
             <ArrowContainer>
-              {broswerWidth > 1024 ? (
-                members.length > 4 && <Arrow />
+              {members.length > 4 ? (
+                <Arrow />
               ) : (
-                <Arrow showArrow={true} />
+                members.length === 4 &&
+                broswerWidth < 1024 && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
@@ -50,10 +51,11 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         renderRightArrow={({ Arrow }) => {
           return (
             <ArrowContainer>
-              {broswerWidth > 1024 ? (
-                members.length > 4 && <Arrow />
+              {members.length > 4 ? (
+                <Arrow />
               ) : (
-                <Arrow showArrow={true} />
+                members.length === 4 &&
+                broswerWidth < 1024 && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
