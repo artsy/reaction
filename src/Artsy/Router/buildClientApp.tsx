@@ -20,7 +20,7 @@ import { Boot } from "Artsy/Router/Boot"
 
 import { RouterConfig } from "./"
 
-import { RenderPending, RenderReady } from "./Utils/RenderStatus"
+import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -70,6 +70,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       const render = createRender({
         renderPending: RenderPending,
         renderReady: RenderReady,
+        renderError: RenderError,
       })
 
       const Router = await createInitialFarceRouter({
