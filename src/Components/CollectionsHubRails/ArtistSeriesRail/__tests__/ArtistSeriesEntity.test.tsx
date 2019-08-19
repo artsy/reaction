@@ -36,7 +36,7 @@ describe("ArtistSeriesEntity", () => {
         .find(ArtworkImage)
         .at(0)
         .getElement().props.width
-    ).toBe(85)
+    ).toBe(72)
   })
 
   it("uses medium image width when there are only 2 hits", () => {
@@ -48,7 +48,7 @@ describe("ArtistSeriesEntity", () => {
         .find(ArtworkImage)
         .at(0)
         .getElement().props.width
-    ).toBe(131)
+    ).toBe(109)
   })
 
   it("uses large image width when there is exactly 1 hit", () => {
@@ -60,7 +60,7 @@ describe("ArtistSeriesEntity", () => {
         .find(ArtworkImage)
         .at(0)
         .getElement().props.width
-    ).toBe(265)
+    ).toBe(221)
   })
 
   it("uses the hit title for alt text if there is no artist", () => {
