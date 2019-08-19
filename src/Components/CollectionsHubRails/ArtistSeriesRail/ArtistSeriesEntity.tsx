@@ -25,7 +25,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   const imageSize =
     bgImages.length === 1 ? 221 : bgImages.length === 2 ? 109 : 72
   return (
-    <Container px={2} pt={2} pb={1.6} m={1}>
+    <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink href={`${sd.APP_URL}/collection/${slug}`}>
         <ImgWrapper>
           {bgImages.length ? (
