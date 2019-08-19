@@ -46,10 +46,13 @@ interface ArtworkFilterProps {
 const BaseArtworkFilter: React.FC<ArtworkFilterProps> = props => {
   const { viewer, relay, keyword } = props
   const tracking = useTracking()
-  const [isFetching, toggleFetching] = useState(false)
+  const { isRouterFetching } = useSystemContext()
+  const [isFetching, toggleFetching] = useState(isRouterFetching || false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
   const filterContext = useArtworkFilterContext()
   const previousFilters = usePrevious(filterContext.filters)
+
+  console.warn(isRouterFetching, "--------------- filter")
 
   /**
    * Check to see if the mobile action sheet is present and prevent scrolling
