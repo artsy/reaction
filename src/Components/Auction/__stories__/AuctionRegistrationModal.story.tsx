@@ -8,17 +8,14 @@ const submitHandler = submitUtils => {
     alert("Your Submission Callback Here")
   }, 1000)
 }
-storiesOf("Components/AuctionRegistrationModal", module).add(
-  "AuctionRegistrationModal",
-  () => {
-    return (
-      <>
-        <AuctionRegistrationModal
-          onSubmit={submitHandler}
-          onClose={() => null}
-          auction={{ name: "Big Time Sale" }}
-        />
-      </>
-    )
-  }
-)
+storiesOf("Components/Auction", module).add("AuctionRegistrationModal", () => {
+  return (
+    <>
+      <AuctionRegistrationModal
+        onSubmit={submitHandler}
+        onClose={() => null}
+        auction={{ name: "Big Time Sale" }}
+      />
+    </>
+  )
+})
