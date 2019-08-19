@@ -63,8 +63,10 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           draggable: sd.IS_MOBILE ? true : false,
         }}
         data={members}
-        render={slide => {
-          return <FeaturedCollectionEntity member={slide} />
+        render={(slide, slideIndex) => {
+          return (
+            <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
+          )
         }}
         renderLeftArrow={({ Arrow }) => {
           return (
@@ -87,28 +89,30 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 
 interface FeaturedCollectionEntityProps {
   member: any
+  itemNumber: number
 }
 
 export const FeaturedCollectionEntity: React.FC<
   FeaturedCollectionEntityProps
-> = ({ member }) => {
+> = ({ itemNumber, member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
 
-  const onClickLink = () => {
+  const handleClick = () => {
     trackEvent({
       action_type: Schema.ActionType.Click,
       context_page: Schema.PageName.CollectionPage,
       context_module: Schema.ContextModule.FeaturedCollectionsRail,
       context_page_owner_type: Schema.OwnerType.Collection,
-      type: Schema.Type.Link,
+      type: Schema.Type.Thumbnail,
       destination_path: `${sd.APP_URL}/collection/${slug}`,
+      item_number: itemNumber,
     })
   }
 
   return (
     <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
-      <StyledLink to={`/collection/${slug}`} onClick={onClickLink}>
+      <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
         <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
           <FeaturedImage src={thumbnail} />
         </Flex>

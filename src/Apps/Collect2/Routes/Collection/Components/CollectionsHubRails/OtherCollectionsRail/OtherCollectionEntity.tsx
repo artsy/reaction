@@ -10,27 +10,30 @@ import styled from "styled-components"
 
 export interface CollectionProps {
   member: OtherCollectionEntity_member
+  itemNumber: number
 }
 
 export const OtherCollectionEntity: React.FC<CollectionProps> = ({
+  itemNumber,
   member,
 }) => {
   const { slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
 
-  const onClickLink = () => {
+  const handleClick = () => {
     trackEvent({
       action_type: Schema.ActionType.Click,
       context_page: Schema.PageName.CollectionPage,
       context_module: Schema.ContextModule.OtherCollectionsRail,
       context_page_owner_type: Schema.OwnerType.Collection,
-      type: Schema.Type.Link,
+      type: Schema.Type.Thumbnail,
       destination_path: `${sd.APP_URL}/collection/${slug}`,
+      item_number: itemNumber,
     })
   }
 
   return (
-    <StyledLink to={`/collection/${slug}`} onClick={onClickLink}>
+    <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
       <Flex alignItems="center">
         {thumbnail && (
           <ImageContainer>
