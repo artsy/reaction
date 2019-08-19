@@ -44,14 +44,14 @@ export const WaysToBuyFilter: FC = () => {
         Ways to buy
       </Sans>
       <Spacer mb={2} />
-      {checkboxes.map((way, index) => {
+      {checkboxes.map((checkbox, index) => {
         const props = {
-          disabled: way.disabled,
+          disabled: checkbox.disabled,
           key: index,
-          onSelect: value => filterContext.setFilter(way.state, value),
-          selected: Boolean(filterContext.filters[way.state]),
+          onSelect: value => filterContext.setFilter(checkbox.state, value),
+          selected: Boolean(filterContext.filters[checkbox.state]),
         }
-        return <Checkbox {...props}>{way.name}</Checkbox>
+        return <Checkbox {...props}>{checkbox.name}</Checkbox>
       })}
     </Box>
   )

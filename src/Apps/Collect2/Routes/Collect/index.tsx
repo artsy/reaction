@@ -93,7 +93,7 @@ export const CollectApp: React.FC<CollectAppProps> = track({
             filters={location.query}
             updateURLOnChange={filters => {
               const url = buildUrlForCollectApp(filters)
-              router.push(url)
+              router.push(url, "hi")
             }}
           />
         </Box>

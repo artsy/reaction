@@ -67,7 +67,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
       ]
       const resolver = new Resolver(relayEnvironment)
 
-      const render = createRender({
+      const Renderer = createRender({
         renderPending: RenderPending,
         renderReady: RenderReady,
         renderError: RenderError,
@@ -82,7 +82,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         resolver,
         render: renderArgs => (
           <ScrollManager renderArgs={renderArgs}>
-            {render(renderArgs)}
+            <Renderer {...renderArgs} />
           </ScrollManager>
         ),
       })
