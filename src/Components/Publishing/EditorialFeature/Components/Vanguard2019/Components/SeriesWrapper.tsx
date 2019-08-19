@@ -1,7 +1,7 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
-import { IntroSVGVideo } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Intro"
+import { VanguardVideoBackground } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"
@@ -37,7 +37,9 @@ export const VanguardSeriesWrapper: React.SFC<{
         // prevents overlapping nav on jump-link
       />
       <Box height="95vh" mb={80}>
-        {isVideo && <IntroSVGVideo id={getVideoID(slugifiedTitle)} url={url} />}
+        {isVideo && (
+          <VanguardVideoBackground id={getVideoID(slugifiedTitle)} url={url} />
+        )}
         <Box mx="auto" maxWidth={1400} px={4}>
           <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
           <Title size="16" textAlign="center" element="h2">

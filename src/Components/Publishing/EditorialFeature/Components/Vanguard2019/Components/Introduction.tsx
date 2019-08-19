@@ -1,6 +1,6 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
-import { IntroSVGVideo } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Intro"
+import { VanguardVideoBackground } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
@@ -18,7 +18,9 @@ export const VanguardIntroduction: React.SFC<{
     <IntroContainer>
       <Box minHeight="calc(100vh - 50px)" mb={150}>
         <VideoWrapper>
-          {isVideo && <IntroSVGVideo id="#clip-svg-intro" url={url} />}
+          {isVideo && (
+            <VanguardVideoBackground id="#clip-svg-intro" url={url} />
+          )}
         </VideoWrapper>
         <HeaderText pt={70} size="8" textAlign="center">
           The Artsy

@@ -7,8 +7,8 @@ interface SVGVideoBackgroundProps {
   url?: string
 }
 
-export const IntroSVGVideo = props => (
-  <IntroSVGVideoWrapper>
+export const VanguardVideoBackground = props => (
+  <VideoBackgroundWrapper>
     <svg
       height="0"
       width="0"
@@ -20,8 +20,8 @@ export const IntroSVGVideo = props => (
     >
       <defs>{getSVGClipPath(props.id)}</defs>
     </svg>
-    <SVGVideoBackground {...props} />
-  </IntroSVGVideoWrapper>
+    <VanguardVideo {...props} />
+  </VideoBackgroundWrapper>
 )
 
 const getSVGClipPath = id => {
@@ -53,7 +53,7 @@ const getSVGClipPath = id => {
   }
 }
 
-const SVGVideoBackground = props => (
+const VanguardVideo = props => (
   <VideoWrapper>
     <Video
       autoPlay
@@ -72,7 +72,7 @@ const VideoWrapper = styled(Box)`
   width: 100vw;
   overflow: hidden;
 `
-const IntroSVGVideoWrapper = styled(Box)`
+const VideoBackgroundWrapper = styled(Box)`
   height: 100vw;
   width: 100vw;
   position: absolute;
