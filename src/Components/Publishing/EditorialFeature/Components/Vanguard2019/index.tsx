@@ -45,7 +45,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
   getValidPaths = () => {
     const validPaths = []
 
-    this.props.article.relatedArticles.map(series => {
+    this.props.article.relatedArticles.forEach(series => {
       // get subSeries slug
       validPaths.push(slugify(series.title))
       series.relatedArticles.map(artist => {
