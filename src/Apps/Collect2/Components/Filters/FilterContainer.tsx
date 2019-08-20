@@ -122,7 +122,6 @@ export class FilterContainer extends React.Component<
                     <Separator mb={2} mt={-1} />
                   </Box>
                   <Box width="75%">
-                    <Separator mb={2} mt={-1} />
                     <span id="jump--collectArtworkGrid" />
                     <SortFilter
                       filters={filters}

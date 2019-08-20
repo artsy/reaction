@@ -19,7 +19,7 @@ export const SortFilter: React.FC<{
 }> = ({ filters, onShow, sortType }) => {
   return (
     <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
-      <Box mt={-0.5}>
+      <Box>
         <SelectSmall
           options={getSortOptions(sortType)}
           selected={filters.state.sort}

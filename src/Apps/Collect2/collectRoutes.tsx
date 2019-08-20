@@ -79,6 +79,9 @@ export const collectRoutes: RouteConfig[] = [
               page: $page
             )
         }
+        marketingCollections(size: 6) {
+          ...Collect_marketingCollections
+        }
       }
     `,
     prepareVariables: initializeVariablesWithFilterState,
