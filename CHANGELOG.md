@@ -1,3 +1,15 @@
+# v17.2.3 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- Handle <RouterLink> behavior better [#2721](https://github.com/artsy/reaction/pull/2721) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.2.2 (Tue Aug 20 2019)
 
 #### 🐛  Bug Fix
