@@ -38,6 +38,10 @@ export const collectRoutes: RouteConfig[] = [
           ...Collect_marketingCollections
         }
 
+        filter_artworks(aggregations: [TOTAL], sort: $sort) {
+          ...SeoProductsForArtworks_artworks
+        }
+
         viewer {
           ...ArtworkFilter_viewer
             @arguments(

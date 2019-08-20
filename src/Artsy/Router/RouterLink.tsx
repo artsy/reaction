@@ -1,4 +1,5 @@
 import { Link, LinkProps } from "found"
+import { pick } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -19,15 +20,33 @@ export const RouterLink: React.FC<LinkProps> = (
 ) => {
   const isRouterContext = Boolean(context.router)
 
+  // Only pass found-router specific props across
+  const handlers = Object.keys(props).reduce((acc, prop) => {
+    if (prop.startsWith("on")) {
+      acc.push(prop)
+    }
+    return acc
+  }, [])
+
+  const whitelistedProps = pick(props, [
+    "Component",
+    "activeClassName",
+    "className",
+    "exact",
+    "replace",
+    "style",
+    ...handlers,
+  ])
+
   if (isRouterContext) {
     return (
-      <Link to={to} {...props}>
+      <Link to={to} {...whitelistedProps}>
         {children}
       </Link>
     )
   } else {
     return (
-      <a href={to as string} {...props}>
+      <a href={to as string} {...whitelistedProps}>
         {children}
       </a>
     )

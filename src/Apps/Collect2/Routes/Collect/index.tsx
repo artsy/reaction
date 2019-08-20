@@ -1,22 +1,25 @@
 import { Box, Separator, Serif } from "@artsy/palette"
-// import { CollectFilterFragmentContainer as ArtworkGrid } from "Apps/Collect2/Components/Base/CollectFilterContainer"
-// import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+import { Location, Router } from "found"
+import React from "react"
+import { Link, Meta, Title } from "react-head"
+import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
+
+import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
+
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
-import { Location, Router } from "found"
-import React from "react"
-import { Link, Meta, Title } from "react-head"
-import { data as sd } from "sharify"
+
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 
-// import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
-import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
-import { createFragmentContainer, graphql } from "react-relay"
+
+// import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
 
 export interface CollectAppProps {
   viewer: any // FIXME: Wire up ArtworkFilter_viewer
@@ -69,14 +72,7 @@ export const CollectApp: React.FC<CollectAppProps> = track({
           ].filter(Boolean)}
         />
 
-        {/* FIXME: Add SEO
-              <SeoProductsForArtworks artworks={filter_artworks} />
-              fragment on Viewer {
-                filter_artworks(aggregations: $aggregations, sort: $sort) {
-                  ...SeoProductsForArtworks_artworks
-                }
-              }
-            */}
+        <SeoProductsForArtworks artworks={props.filter_artworks} />
 
         <Box mt={3}>
           <Serif size="8">
