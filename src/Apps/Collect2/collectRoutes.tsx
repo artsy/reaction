@@ -3,23 +3,65 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
+import { buildUrlForCollectionApp } from "./Utils/urlBuilder"
 
-import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
-import {
-  // buildUrlForCollectApp, // FIXME: wire into /collect
-  buildUrlForCollectionApp,
-} from "./Utils/urlBuilder"
-
-import { CollectApp } from "./Routes/Collect"
+import { CollectAppFragmentContainer } from "./Routes/Collect"
 import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
-    Component: CollectApp,
+    Component: CollectAppFragmentContainer,
     prepareVariables: initializeVariablesWithFilterState,
-    query: ArtworkQueryFilter,
+    query: graphql`
+      query collectRoutes_ArtworkFilterQuery(
+        $acquireable: Boolean
+        $artist_id: String
+        $at_auction: Boolean
+        $attribution_class: [String]
+        $color: String
+        $for_sale: Boolean
+        $height: String
+        $inquireable_only: Boolean
+        $major_periods: [String]
+        $medium: String
+        $offerable: Boolean
+        $page: Int
+        $partner_id: ID
+        $price_range: String
+        $sort: String
+        $keyword: String
+        $width: String
+      ) {
+        marketingCollections(size: 6) {
+          ...Collect_marketingCollections
+        }
+
+        viewer {
+          ...ArtworkFilter_viewer
+            @arguments(
+              acquireable: $acquireable
+              artist_id: $artist_id
+              at_auction: $at_auction
+              attribution_class: $attribution_class
+              color: $color
+              for_sale: $for_sale
+              height: $height
+              inquireable_only: $inquireable_only
+              keyword: $keyword
+              major_periods: $major_periods
+              medium: $medium
+              offerable: $offerable
+              page: $page
+              partner_id: $partner_id
+              price_range: $price_range
+              sort: $sort
+              width: $width
+            )
+        }
+      }
+    `,
     fetchIndicator: "overlay",
   },
   {
