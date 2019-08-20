@@ -48,23 +48,27 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
           return <ArtistSeriesEntity member={slide} />
         }}
         renderLeftArrow={({ Arrow }) => {
+          const smallerViewpointAndFourItems =
+            isSmallerViewpoint && members.length === 4
           return (
             <ArrowContainer>
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                <Arrow showArrow={members.length === 4 && isSmallerViewpoint} />
+                smallerViewpointAndFourItems && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
         }}
         renderRightArrow={({ Arrow }) => {
+          const smallerViewpointAndFourItems =
+            isSmallerViewpoint && members.length === 4
           return (
             <ArrowContainer>
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                <Arrow showArrow={members.length === 4 && isSmallerViewpoint} />
+                smallerViewpointAndFourItems && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
