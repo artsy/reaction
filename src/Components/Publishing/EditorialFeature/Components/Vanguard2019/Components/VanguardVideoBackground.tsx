@@ -73,7 +73,7 @@ const VideoWrapper = styled(Box)`
   overflow: hidden;
 `
 const VideoBackgroundWrapper = styled(Box)`
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
   position: absolute;
   overflow-x: hidden;

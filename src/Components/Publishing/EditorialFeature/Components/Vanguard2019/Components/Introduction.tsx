@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { VanguardVideoBackground } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { Text } from "Components/Publishing/Sections/Text"
@@ -25,6 +25,9 @@ export const VanguardIntroduction: React.SFC<{
         <HeaderText pt={70} size="8" textAlign="center">
           The Artsy
         </HeaderText>
+        <InvertedHeaderText pt={70} size="8" textAlign="center">
+          The Artsy
+        </InvertedHeaderText>
       </Box>
       <Box mx="auto" maxWidth={980} px={4}>
         <Flex flexDirection="column" alignItems="center" pb={50}>
@@ -66,6 +69,21 @@ const HeaderText = styled(Sans)`
   position: absolute;
   top: 2vw;
   width: 100%;
+  background-color: ${color("black100")};
+  color: ${color("white100")};
+  z-index: 1;
+  mix-blend-mode: color-dodge;
+`
+
+const InvertedHeaderText = styled(Sans)`
+  font-size: 100px;
+  position: absolute;
+  top: 2vw;
+  width: 100%;
+  background-color: ${color("white100")};
+  color: ${color("black100")};
+  z-index: -1;
+  mix-blend-mode: difference;
 `
 
 const IntroContainer = styled(Box)`
