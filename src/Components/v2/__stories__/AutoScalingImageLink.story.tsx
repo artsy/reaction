@@ -1,4 +1,5 @@
 import { Box } from "@artsy/palette"
+import { MockRouterProvider } from "DevTools/MockRouterProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { AutoScalingImageLink } from "../AutoScalingImageLink"
@@ -20,6 +21,7 @@ const imageSize = {
 }
 
 storiesOf("Components/AutoScalingImageLink", module)
+  .addDecorator(story => <MockRouterProvider>{story()}</MockRouterProvider>)
   .add("with specific dimensions", () => (
     <Box width={300}>
       <AutoScalingImageLink
