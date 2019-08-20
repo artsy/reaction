@@ -1,4 +1,4 @@
-import { MockRouterProvider } from "DevTools/MockRouterProvider"
+import { MockRouter } from "DevTools"
 import { mount } from "enzyme"
 import { Link } from "found"
 import React from "react"
@@ -7,14 +7,21 @@ import { RouterLink } from "../RouterLink"
 describe("RouterLink", () => {
   it("uses the <Link> component if within a router context", async () => {
     const wrapper = await mount(
-      <MockRouterProvider>
-        <RouterLink to="/foo">Foo</RouterLink>
-      </MockRouterProvider>
-    ).renderUntil(p => {
+      <MockRouter
+        routes={[
+          {
+            path: "/",
+            Component: () => {
+              return <RouterLink to="/foo">Foo</RouterLink>
+            },
+          },
+        ]}
+      />
+    ).renderUntil(enzyme => {
       try {
-        return p.find(Link).length > 0
+        return enzyme.find(Link).length > 0
       } catch {
-        // Guard against p == null, which is the first render pass
+        // Guard against enzyme == null, which is the first render pass
       }
     })
 
