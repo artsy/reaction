@@ -17,6 +17,17 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   const { members } = collectionGroup
   const broswerWidth = useWindowSize()
 
+  let groupCells: number
+
+  if (sd.IS_MOBILE) {
+    groupCells = 1
+  } else {
+    if (broswerWidth > 1024) {
+      groupCells = 4
+    } else groupCells = 3
+  }
+
+  const isSmallerViewpoint = broswerWidth < 1024
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
@@ -25,7 +36,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
       <Carousel
         height="250px"
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : broswerWidth > 1024 ? 4 : 3,
+          groupCells,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
@@ -42,8 +53,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                members.length === 4 &&
-                broswerWidth < 1024 && <Arrow showArrow={true} />
+                <Arrow showArrow={members.length === 4 && isSmallerViewpoint} />
               )}
             </ArrowContainer>
           )
@@ -54,8 +64,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                members.length === 4 &&
-                broswerWidth < 1024 && <Arrow showArrow={true} />
+                <Arrow showArrow={members.length === 4 && isSmallerViewpoint} />
               )}
             </ArrowContainer>
           )
