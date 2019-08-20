@@ -27,6 +27,7 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
+  const carouselHeight = sd.IS_MOBILE ? "430px" : "500px"
 
   useEffect(() => {
     trackEvent({
@@ -54,7 +55,7 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
         {name}
       </Serif>
       <Carousel
-        height={sd.IS_MOBILE ? "430px" : "500px"}
+        height={carouselHeight}
         options={{
           groupCells: sd.IS_MOBILE ? 1 : 4,
           wrapAround: sd.IS_MOBILE ? true : false,
@@ -111,9 +112,9 @@ export const FeaturedCollectionEntity: React.FC<
   }
 
   return (
-    <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
+    <Container p={2} m={1} width={["261px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
-        <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
+        <Flex height={["190px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
         <CollectionTitle size="4" mt={1}>
