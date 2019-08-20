@@ -1,3 +1,20 @@
+# v17.2.1 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- Remove debug text #trivial [#2722](https://github.com/artsy/reaction/pull/2722) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Bring back the cool ascii banner text in the README [#2720](https://github.com/artsy/reaction/pull/2720) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v17.2.0 (Mon Aug 19 2019)
 
 #### 🚀  Enhancement
