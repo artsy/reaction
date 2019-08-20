@@ -1,3 +1,21 @@
+# v17.2.2 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- GROW 1362 - Add hub entry points to collect page [#2698](https://github.com/artsy/reaction/pull/2698) ([@anandaroop](https://github.com/anandaroop) [@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.1 to v4.16.2 [#2718](https://github.com/artsy/reaction/pull/2718) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.2.1 (Tue Aug 20 2019)
 
 #### 🐛  Bug Fix
