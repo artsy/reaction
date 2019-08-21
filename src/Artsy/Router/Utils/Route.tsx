@@ -8,9 +8,6 @@ import { HttpError } from "found"
 import BaseRoute from "found/lib/Route"
 import React from "react"
 
-// TODO: Wire up
-// import { HttpError } from "found"
-
 type FetchIndicator = "spinner" | "overlay"
 
 interface CreateRenderProps {

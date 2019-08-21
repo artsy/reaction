@@ -1,4 +1,4 @@
-import React, { SFC, useContext, useMemo, useState } from "react"
+import React, { SFC, useContext, useMemo } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
@@ -14,11 +14,6 @@ export interface Mediator {
 export interface SystemContextProps {
   /** Is the user opening a Reaction page from the mobile app */
   isEigen?: boolean
-
-  /**
-   * When a request is being performed by the router this value is updated
-   */
-  isRouterFetching?: boolean
 
   /**
    * A PubSub hub, which should only be used for communicating with Force.
@@ -41,12 +36,6 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
-   * Toggles `isRouterFetching`, which UI can tap into for displaying custom
-   * loading states.
-   */
-  setRouterFetching?: (isFetching: boolean) => void
-
-  /**
    * The currently signed-in user.
    *
    * Unless explicitely set to `null`, this will default to use the `USER_ID`
@@ -65,19 +54,15 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const [isRouterFetching, setRouterFetching] = useState(false)
   const user = getUser(props.user)
 
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 
-  console.log(isRouterFetching, "-------------------")
   const providerValues = useMemo(() => {
     return {
       ...props,
-      isRouterFetching,
       relayEnvironment,
-      setRouterFetching,
       user,
     }
   }, [props.relayEnvironment, props.user])

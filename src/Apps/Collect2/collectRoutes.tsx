@@ -13,6 +13,7 @@ export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
     Component: CollectAppFragmentContainer,
+    fetchIndicator: "overlay",
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`
       query collectRoutes_ArtworkFilterQuery(
@@ -38,7 +39,7 @@ export const collectRoutes: RouteConfig[] = [
           ...Collect_marketingCollections
         }
 
-        filter_artworks(aggregations: [TOTAL], sort: $sort) {
+        filterArtworks: filter_artworks(aggregations: [TOTAL], sort: $sort) {
           ...SeoProductsForArtworks_artworks
         }
 
@@ -66,11 +67,11 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
-    fetchIndicator: "overlay",
   },
   {
     path: "/collections",
     Component: CollectionsApp,
+    fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
         categories: marketingCategories {
@@ -78,7 +79,6 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
-    fetchIndicator: "overlay",
   },
   {
     path: "/collection/:slug",
@@ -91,6 +91,8 @@ export const collectRoutes: RouteConfig[] = [
         />
       )
     },
+    prepareVariables: initializeVariablesWithFilterState,
+    fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionApp2Query(
         $slug: String!
@@ -128,8 +130,6 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
-    prepareVariables: initializeVariablesWithFilterState,
-    fetchIndicator: "overlay",
   },
 ]
 

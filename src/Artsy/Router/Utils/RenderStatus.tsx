@@ -1,8 +1,7 @@
-import React, { useEffect } from "react"
+import React from "react"
 import StaticContainer from "react-static-container"
 
 import { Box } from "@artsy/palette"
-import { useSystemContext } from "Artsy/SystemContext"
 import { ErrorPage } from "Components/ErrorPage"
 import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
@@ -12,14 +11,6 @@ import createLogger from "Utils/logger"
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
 export const RenderPending: React.FC = props => {
-  const { isRouterFetching, setRouterFetching } = useSystemContext()
-
-  useEffect(() => {
-    if (!isRouterFetching) {
-      setRouterFetching(true)
-    }
-  }, [])
-
   /**
    * TODO: Add timeout here for when a request takes too long. Show generic error
    * and notify Sentry.
@@ -35,14 +26,6 @@ export const RenderPending: React.FC = props => {
 export const RenderReady: React.FC<{
   elements: React.ReactNode
 }> = props => {
-  const { isRouterFetching, setRouterFetching } = useSystemContext()
-
-  useEffect(() => {
-    if (isRouterFetching) {
-      setRouterFetching(false)
-    }
-  }, [])
-
   return (
     <Renderer shouldUpdate>
       <ElementsRenderer elements={props.elements} />
