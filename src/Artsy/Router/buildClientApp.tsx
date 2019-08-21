@@ -80,11 +80,13 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         routeConfig: createRouteConfig(routes),
         matchContext: { user },
         resolver,
-        render: renderArgs => (
-          <ScrollManager renderArgs={renderArgs}>
-            <Renderer {...renderArgs} />
-          </ScrollManager>
-        ),
+        render: renderArgs => {
+          return (
+            <ScrollManager renderArgs={renderArgs}>
+              <Renderer {...renderArgs} />
+            </ScrollManager>
+          )
+        },
       })
 
       const ClientApp = () => {
