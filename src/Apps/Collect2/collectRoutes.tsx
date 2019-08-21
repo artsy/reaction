@@ -5,14 +5,14 @@ import { graphql } from "react-relay"
 import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
 import { buildUrlForCollectionApp } from "./Utils/urlBuilder"
 
-import { CollectAppFragmentContainer } from "./Routes/Collect"
+import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
 import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
-    Component: CollectAppFragmentContainer,
+    Component: CollectApp,
     fetchIndicator: "overlay",
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`

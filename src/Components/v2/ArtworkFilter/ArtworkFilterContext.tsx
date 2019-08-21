@@ -40,7 +40,7 @@ interface ArtworkFilterContextProps {
 
   // Handlers
   onArtworkBrickClick?: (artwork: any, props: any) => void
-  onFilterChange?: (
+  onFilterClick?: (
     key: keyof ArtworkFilters,
     value: string,
     filterState: ArtworkFilters
@@ -79,10 +79,10 @@ export type SharedArtworkFilterContextProps = Pick<
   | "filters"
   | "sortOptions"
   | "onArtworkBrickClick"
-  | "onFilterChange"
+  | "onFilterClick"
   | "ZeroState"
 > & {
-  updateURLOnChange?: (filterState) => void
+  onChange?: (filterState) => void
 }
 
 export const ArtworkFilterContextProvider: React.FC<
@@ -91,25 +91,26 @@ export const ArtworkFilterContextProvider: React.FC<
   }
 > = ({
   children,
-  updateURLOnChange,
-  filters,
+  onChange,
+  filters = {},
   onArtworkBrickClick,
-  onFilterChange,
+  onFilterClick,
   sortOptions,
   ZeroState,
 }) => {
-  const useUpdateHook = updateURLOnChange ? useURLBarReducer : useReducer
-
   const initialState = {
     ...initialArtworkFilterState,
     ...filters,
   }
 
-  const [artworkFilterState, dispatch] = useUpdateHook(
+  const [artworkFilterState, dispatch] = useReducer(
     artworkFilterReducer,
-    initialState,
-    updateURLOnChange
+    initialState
   )
+
+  if (onChange) {
+    onChange(artworkFilterState)
+  }
 
   const artworkFilterContext = {
     ZeroState,
@@ -118,7 +119,7 @@ export const ArtworkFilterContextProvider: React.FC<
 
     // Handlers
     onArtworkBrickClick,
-    onFilterChange,
+    onFilterClick,
 
     // Sorting
     sortOptions,
@@ -133,8 +134,8 @@ export const ArtworkFilterContextProvider: React.FC<
     },
 
     setFilter: (name, val) => {
-      if (onFilterChange) {
-        onFilterChange(name, val, artworkFilterState)
+      if (onFilterClick) {
+        onFilterClick(name, val, artworkFilterState)
       }
 
       dispatch({
@@ -190,17 +191,6 @@ const artworkFilterReducer = (state, action) => {
     default:
       return state
   }
-}
-
-const useURLBarReducer = (reducer, initialState, urlUpdater) => {
-  let state = reducer(initialState, {})
-
-  const dispatch = action => {
-    state = reducer(state, action)
-    urlUpdater(state)
-  }
-
-  return [state, dispatch]
 }
 
 /**

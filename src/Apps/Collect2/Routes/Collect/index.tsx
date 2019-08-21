@@ -36,7 +36,7 @@ export interface CollectAppProps {
 export const CollectApp = track({
   context_page: Schema.PageName.CollectPage,
 })((props: CollectAppProps) => {
-  const { params, viewer, location, router } = props
+  const { params, viewer, location } = props
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()
@@ -105,11 +105,14 @@ export const CollectApp = track({
               { value: "-year", text: "Artwork year (desc.)" },
               { value: "year", text: "Artwork year (asc.)" },
             ]}
-            updateURLOnChange={filters => {
+            onChange={filters => {
               const url = buildUrlForCollectApp(filters)
-              router.push(url)
+
+              if (typeof window !== "undefined") {
+                window.history.pushState({}, null, url)
+              }
             }}
-            onFilterChange={(key, value, filterState) => {
+            onFilterClick={(key, value, filterState) => {
               trackEvent({
                 action_type: Schema.ActionType.CommercialFilterParamsChanged,
                 changed: { [key]: value },
