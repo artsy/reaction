@@ -17,6 +17,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { useWindowSize } from "Utils/Hooks/useWindowSize"
 
 interface Props {
   collectionGroup: FeaturedCollectionsRails_collectionGroup
@@ -27,7 +28,17 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
-  const carouselHeight = sd.IS_MOBILE ? "430px" : "500px"
+  const broswerWidth = useWindowSize()
+  const isSmallerViewpoint = broswerWidth < 1024
+  const carouselHeight = isSmallerViewpoint ? "500px" : "500px"
+  let groupCells: number
+  if (sd.IS_MOBILE) {
+    groupCells = 1
+  } else {
+    if (broswerWidth > 1024) {
+      groupCells = 3
+    } else groupCells = 2
+  }
 
   useEffect(() => {
     trackEvent({
@@ -57,11 +68,12 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
       <Carousel
         height={carouselHeight}
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
+          groupCells,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
           draggable: sd.IS_MOBILE ? true : false,
+          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
@@ -77,8 +89,16 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           )
         }}
         renderRightArrow={({ Arrow }) => {
+          const smallerViewpointAndThreeItems =
+            isSmallerViewpoint && members.length > 2
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {members.length > 3 ? (
+                <Arrow />
+              ) : (
+                smallerViewpointAndThreeItems && <Arrow showArrow={true} />
+              )}
+            </ArrowContainer>
           )
         }}
         onArrowClick={() => trackArrowClick()}
@@ -192,7 +212,7 @@ export const ArrowContainer = styled(Box)`
   align-self: flex-start;
 
   ${ArrowButton} {
-    height: 60%;
+    height: 100%;
 
     svg {
       height: 18px;
