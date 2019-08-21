@@ -50,8 +50,8 @@ export const ArtworkFilter: React.FC<
   filters,
   sortOptions,
   onArtworkBrickClick,
-  onFilterChange,
-  updateURLOnChange,
+  onFilterClick,
+  onChange,
   ZeroState,
 }) => {
   return (
@@ -59,28 +59,19 @@ export const ArtworkFilter: React.FC<
       filters={filters}
       sortOptions={sortOptions}
       onArtworkBrickClick={onArtworkBrickClick}
-      onFilterChange={onFilterChange}
-      updateURLOnChange={updateURLOnChange}
+      onFilterClick={onFilterClick}
+      onChange={onChange}
       ZeroState={ZeroState}
     >
-      <ArtworkFilterRefetchContainer
-        viewer={viewer}
-        disableRefetch={Boolean(updateURLOnChange)}
-      />
+      <ArtworkFilterRefetchContainer viewer={viewer} />
     </ArtworkFilterContextProvider>
   )
 }
 
 const BaseArtworkFilter: React.FC<{
-  /**
-   * When an `updateURLOnChange` callback is passed into the filter, relay-based
-   * refetching is disabled. This assumes that data-fetching takes place at the
-   * router level, versus internal to the ArtworkFilter component.
-   */
-  disableRefetch?: boolean
   relay: RelayRefetchProp
   viewer: ArtworkFilter_viewer
-}> = ({ disableRefetch, relay, viewer }) => {
+}> = ({ relay, viewer }) => {
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -127,11 +118,6 @@ const BaseArtworkFilter: React.FC<{
         [filterKey]: filterContext.filters[filterKey],
       },
     })
-
-    // Disable relay refetching and defer to URL bar router updates
-    if (disableRefetch) {
-      return false
-    }
 
     toggleFetching(true)
 
