@@ -5,7 +5,7 @@ import { useArtworkFilterContext } from "../ArtworkFilterContext"
 export const SortFilter: React.FC = () => {
   const context = useArtworkFilterContext()
 
-  if (!context.sortOptions.length) {
+  if (!context.sortOptions) {
     return null
   }
 

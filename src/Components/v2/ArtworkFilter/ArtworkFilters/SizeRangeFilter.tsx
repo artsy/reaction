@@ -9,7 +9,7 @@ import {
   MIN_WIDTH,
 } from "../Utils/rangeToTuple"
 
-export const SizeRangeFilters: FC = () => {
+export const SizeRangeFilter: FC = () => {
   const filterContext = useArtworkFilterContext()
 
   const [initialMinHeight, initialMaxHeight] = filterContext.rangeToTuple(
