@@ -1,3 +1,15 @@
+# v17.4.1 (Wed Aug 21 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionsHubsNav] Restyle collection hub nav according to new designs [#2723](https://github.com/artsy/reaction/pull/2723) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v17.4.0 (Wed Aug 21 2019)
 
 #### 🚀  Enhancement
