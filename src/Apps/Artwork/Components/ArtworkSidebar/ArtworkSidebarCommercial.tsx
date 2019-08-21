@@ -338,8 +338,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
-    console.log("artwork.priceIncludesTax", artwork.priceIncludesTax)
-
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return <Separator />
     }
