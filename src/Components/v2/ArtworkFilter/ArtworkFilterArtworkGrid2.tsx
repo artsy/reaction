@@ -1,15 +1,14 @@
 import { Box, Spacer } from "@artsy/palette"
+import React from "react"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { AnalyticsSchema, useSystemContext, useTracking } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
-import React from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
 import { useArtworkFilterContext } from "./ArtworkFilterContext"
-
-// TODO: Wire up
-// import { SortFilter } from "./ArtworkFilterArtworkGridSort"
+import { SortFilter } from "./ArtworkFilters/SortFilter"
 
 interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
@@ -53,13 +52,7 @@ const ArtworkFilterArtworkGrid: React.FC<
 
   return (
     <>
-      {/*
-        // TODO: Wire up sort filter, depending on needs (collect, collections, artist; not search)
-
-        <Box pb={2}>
-          <SortFilter />
-        </Box>
-      */}
+      <SortFilter />
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
           artworks={artworks as any}

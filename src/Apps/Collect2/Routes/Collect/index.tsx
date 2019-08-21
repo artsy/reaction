@@ -98,6 +98,13 @@ export const CollectApp = track({
           <ArtworkFilter
             viewer={viewer}
             filters={location.query as any}
+            sortOptions={[
+              { value: "-decayed_merch", text: "Default" },
+              { value: "-partner_updated_at", text: "Recently updated" },
+              { value: "-published_at", text: "Recently added" },
+              { value: "-year", text: "Artwork year (desc.)" },
+              { value: "year", text: "Artwork year (asc.)" },
+            ]}
             updateURLOnChange={filters => {
               const url = buildUrlForCollectApp(filters)
               router.push(url)

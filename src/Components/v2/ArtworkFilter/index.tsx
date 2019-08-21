@@ -22,6 +22,7 @@ import {
   ArtworkFilterContextProvider,
   ArtworkFilters as ArtworkFilterOptions,
   initialArtworkFilterState,
+  SortOptions,
   useArtworkFilterContext,
 } from "./ArtworkFilterContext"
 
@@ -45,17 +46,23 @@ interface ArtworkFilterProps {
   filters: ArtworkFilterOptions
   updateURLOnChange?: (filters: ArtworkFilterOptions) => void
   viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+  sortOptions?: SortOptions
 }
 
 export const ArtworkFilter: React.FC<ArtworkFilterProps> = ({
   filters,
   viewer,
+  sortOptions = [],
   ...props
 }) => {
   const disableRefetch = Boolean(props.updateURLOnChange)
 
   return (
-    <ArtworkFilterContextProvider filters={filters} {...props}>
+    <ArtworkFilterContextProvider
+      filters={filters}
+      sortOptions={sortOptions}
+      {...props}
+    >
       <ArtworkFilterRefetchContainer
         viewer={viewer}
         disableRefetch={disableRefetch}

@@ -28,25 +28,30 @@ export const RouterLink: React.FC<LinkProps> = (
     return acc
   }, [])
 
-  const whitelistedProps = pick(props, [
-    "Component",
-    "activeClassName",
-    "className",
-    "exact",
-    "replace",
-    "style",
-    ...handlers,
-  ])
-
   if (isRouterContext) {
+    const allowedProps = pick(props, [
+      "Component",
+      "activeClassName",
+      "className",
+      "exact",
+      "replace",
+      "style",
+      ...handlers,
+    ])
+
     return (
-      <Link to={to} {...whitelistedProps}>
+      <Link to={to} {...allowedProps}>
         {children}
       </Link>
     )
   } else {
     return (
-      <a href={to as string} {...whitelistedProps}>
+      <a
+        href={to as string}
+        className={props.className}
+        style={props.style}
+        {...handlers}
+      >
         {children}
       </a>
     )
