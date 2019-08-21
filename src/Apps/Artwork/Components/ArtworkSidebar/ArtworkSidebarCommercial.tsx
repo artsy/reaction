@@ -338,6 +338,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
+    console.log("artwork.priceIncludesTax", artwork.priceIncludesTax)
+
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return <Separator />
     }
@@ -374,6 +376,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         {artworkEcommerceAvailable && artwork.shippingInfo && (
           <Sans size="2" color="black60">
             {artwork.shippingInfo}
+          </Sans>
+        )}
+        {artwork.priceIncludesTax && (
+          <Sans size="2" color="black60">
+            VAT included in price
           </Sans>
         )}
 
@@ -462,6 +469,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         is_inquireable
         is_offerable
         price
+        priceIncludesTax
         sale_message
         shippingInfo
         shippingOrigin
