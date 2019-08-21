@@ -31,7 +31,7 @@ export interface ArtworkFilters {
 }
 
 interface ArtworkFilterContextProps {
-  filters: ArtworkFilters
+  filters?: ArtworkFilters
 
   // Components
   ZeroState?: React.FC

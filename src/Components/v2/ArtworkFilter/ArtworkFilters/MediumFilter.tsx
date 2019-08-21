@@ -19,9 +19,9 @@ export const MediumFilter: FC<Props> = props => {
     <RadioGroup
       deselectable
       defaultValue={selectedMedium}
-      onSelect={selectedOption =>
+      onSelect={selectedOption => {
         filterContext.setFilter("medium", selectedOption)
-      }
+      }}
     >
       {allowedMediums.map((medium, index) => {
         return (
