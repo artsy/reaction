@@ -20,6 +20,7 @@ import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } 
 
 import {
   ArtworkFilterContextProvider,
+  ArtworkFilters as ArtworkFilterOptions,
   initialArtworkFilterState,
   useArtworkFilterContext,
 } from "./ArtworkFilterContext"
@@ -36,23 +37,47 @@ import {
   Spacer,
 } from "@artsy/palette"
 
+/**
+ * Primary ArtworkFilter which is wrapped with a context and refetch container.
+ * If needing more granular control, the BaseArtworkFilter can be imported below.
+ */
 interface ArtworkFilterProps {
-  viewer: ArtworkFilter_viewer
+  filters: ArtworkFilterOptions
+  updateURLOnChange?: (filters: ArtworkFilterOptions) => void
+  viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+}
+
+export const ArtworkFilter: React.FC<ArtworkFilterProps> = ({
+  filters,
+  viewer,
+  ...props
+}) => {
+  const disableRefetch = Boolean(props.updateURLOnChange)
+
+  return (
+    <ArtworkFilterContextProvider filters={filters} {...props}>
+      <ArtworkFilterRefetchContainer
+        viewer={viewer}
+        disableRefetch={disableRefetch}
+      />
+    </ArtworkFilterContextProvider>
+  )
+}
+
+interface BaseArtworkFilterProps {
   relay: RelayRefetchProp
   keyword?: string
   disableRefetch?: boolean
+  viewer: ArtworkFilter_viewer
 }
 
-const BaseArtworkFilter: React.FC<ArtworkFilterProps> = props => {
+const BaseArtworkFilter: React.FC<BaseArtworkFilterProps> = props => {
   const { viewer, relay, keyword } = props
   const tracking = useTracking()
-  const { isRouterFetching } = useSystemContext()
-  const [isFetching, toggleFetching] = useState(isRouterFetching || false)
+  const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
   const filterContext = useArtworkFilterContext()
   const previousFilters = usePrevious(filterContext.filters)
-
-  console.warn(isRouterFetching, "--------------- filter")
 
   /**
    * Check to see if the mobile action sheet is present and prevent scrolling
@@ -278,20 +303,10 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
   ArtworkQueryFilter
 )
 
-// FIXME: Add interface
-export const ArtworkFilter = ({ filters, viewer, ...props }) => {
-  const disableRefetch = Boolean(props.updateURLOnChange)
-
-  return (
-    <ArtworkFilterContextProvider filters={filters} {...props}>
-      <ArtworkFilterRefetchContainer
-        viewer={viewer}
-        disableRefetch={disableRefetch}
-      />
-    </ArtworkFilterContextProvider>
-  )
-}
-
+/**
+ * This QueryRenderer can be used to instantiate stand-alone embedded ArtworkFilters
+ * that are not dependent on URLBar state.
+ */
 export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
   const { relayEnvironment } = useSystemContext()
 

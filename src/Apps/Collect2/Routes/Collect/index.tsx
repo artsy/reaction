@@ -16,23 +16,26 @@ import { BreadCrumbList } from "Components/v2/Seo"
 
 import { getMetadataForMedium } from "./CollectMediumMetadata"
 
+import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
+import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
-// import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
-
 export interface CollectAppProps {
-  viewer: any // FIXME: Wire up ArtworkFilter_viewer
-  router: Router
+  COLLECTION_HUBS?: string
   location: Location
+  router: Router
+  marketingCollections: Collect_marketingCollections
+  viewer: collectRoutes_ArtworkFilterQueryResponse["viewer"]
+  filterArtworks: collectRoutes_ArtworkFilterQueryResponse["filterArtworks"]
   params?: {
     medium: string
   }
 }
 
-export const CollectApp: React.FC<CollectAppProps> = track({
+export const CollectApp = track({
   context_page: Schema.PageName.CollectPage,
-})(props => {
+})((props: CollectAppProps) => {
   const { params, viewer, location, router } = props
   const medium = params && params.medium
 
@@ -72,7 +75,7 @@ export const CollectApp: React.FC<CollectAppProps> = track({
           ].filter(Boolean)}
         />
 
-        <SeoProductsForArtworks artworks={props.filter_artworks} />
+        <SeoProductsForArtworks artworks={props.filterArtworks} />
 
         <Box mt={3}>
           <Serif size="8">
@@ -94,10 +97,10 @@ export const CollectApp: React.FC<CollectAppProps> = track({
         <Box>
           <ArtworkFilter
             viewer={viewer}
-            filters={location.query}
+            filters={location.query as any}
             updateURLOnChange={filters => {
               const url = buildUrlForCollectApp(filters)
-              router.push(url, "hi")
+              router.push(url)
             }}
           />
         </Box>

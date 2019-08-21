@@ -8,9 +8,6 @@ import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
 import { useArtworkFilterContext } from "./ArtworkFilterContext"
 
-// TODO: Do we want to define a default ZeroState for the filter?
-// import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
-
 // TODO: Wire up
 // import { SortFilter } from "./ArtworkFilterArtworkGridSort"
 
