@@ -1,3 +1,15 @@
+# v17.3.0 (Wed Aug 21 2019)
+
+#### 🚀  Enhancement
+
+- Auction post-registration modal (migrating from force) [#2702](https://github.com/artsy/reaction/pull/2702) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v17.2.3 (Tue Aug 20 2019)
 
 #### 🐛  Bug Fix
