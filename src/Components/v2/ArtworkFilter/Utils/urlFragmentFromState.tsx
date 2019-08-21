@@ -9,7 +9,7 @@ import { isDefaultFilter } from "./isDefaultFilter"
 export const urlFragmentFromState = (state: ArtworkFilters) => {
   const { keyword: term } = state
   const filters = Object.entries(state).reduce((acc, [key, value]) => {
-    if (isDefaultFilter(key, value) || key === "keyword") {
+    if (isDefaultFilter(key, value)) {
       return acc
     } else {
       return { ...acc, [key]: value }
