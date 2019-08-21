@@ -20,9 +20,8 @@ import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } 
 
 import {
   ArtworkFilterContextProvider,
-  ArtworkFilters as ArtworkFilterOptions,
   initialArtworkFilterState,
-  SortOptions,
+  SharedArtworkFilterContextProps,
   useArtworkFilterContext,
 } from "./ArtworkFilterContext"
 
@@ -42,44 +41,46 @@ import {
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
  * If needing more granular control, the BaseArtworkFilter can be imported below.
  */
-interface ArtworkFilterProps {
-  filters: ArtworkFilterOptions
-  updateURLOnChange?: (filters: ArtworkFilterOptions) => void
-  viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
-  sortOptions?: SortOptions
-}
-
-export const ArtworkFilter: React.FC<ArtworkFilterProps> = ({
-  filters,
+export const ArtworkFilter: React.FC<
+  SharedArtworkFilterContextProps & {
+    viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+  }
+> = ({
   viewer,
-  sortOptions = [],
-  ...props
+  filters,
+  sortOptions,
+  onArtworkBrickClick,
+  onFilterChange,
+  updateURLOnChange,
+  ZeroState,
 }) => {
-  const disableRefetch = Boolean(props.updateURLOnChange)
-
   return (
     <ArtworkFilterContextProvider
       filters={filters}
       sortOptions={sortOptions}
-      {...props}
+      onArtworkBrickClick={onArtworkBrickClick}
+      onFilterChange={onFilterChange}
+      updateURLOnChange={updateURLOnChange}
+      ZeroState={ZeroState}
     >
       <ArtworkFilterRefetchContainer
         viewer={viewer}
-        disableRefetch={disableRefetch}
+        disableRefetch={Boolean(updateURLOnChange)}
       />
     </ArtworkFilterContextProvider>
   )
 }
 
-interface BaseArtworkFilterProps {
-  relay: RelayRefetchProp
-  keyword?: string
+const BaseArtworkFilter: React.FC<{
+  /**
+   * When an `updateURLOnChange` callback is passed into the filter, relay-based
+   * refetching is disabled. This assumes that data-fetching takes place at the
+   * router level, versus internal to the ArtworkFilter component.
+   */
   disableRefetch?: boolean
+  relay: RelayRefetchProp
   viewer: ArtworkFilter_viewer
-}
-
-const BaseArtworkFilter: React.FC<BaseArtworkFilterProps> = props => {
-  const { viewer, relay, keyword } = props
+}> = ({ disableRefetch, relay, viewer }) => {
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -127,7 +128,8 @@ const BaseArtworkFilter: React.FC<BaseArtworkFilterProps> = props => {
       },
     })
 
-    if (props.disableRefetch) {
+    // Disable relay refetching and defer to URL bar router updates
+    if (disableRefetch) {
       return false
     }
 
@@ -148,7 +150,6 @@ const BaseArtworkFilter: React.FC<BaseArtworkFilterProps> = props => {
         filtered_artworks={viewer.filtered_artworks}
         isLoading={isFetching}
         columnCount={[2, 2, 2, 3]}
-        keyword={keyword}
       />
     )
   }

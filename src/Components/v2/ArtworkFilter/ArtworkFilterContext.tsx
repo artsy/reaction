@@ -32,14 +32,27 @@ export interface ArtworkFilters {
 
 interface ArtworkFilterContextProps {
   filters: ArtworkFilters
+
+  // Components
+  ZeroState?: React.FC
+  // Sorting
+  sortOptions?: SortOptions
+
+  // Handlers
+  onArtworkBrickClick?: (artwork: any, props: any) => void
+  onFilterChange?: (
+    key: keyof ArtworkFilters,
+    value: string,
+    filterState: ArtworkFilters
+  ) => void
+
+  // Filter manipulationo
   hasFilters: boolean
   isDefaultValue: (name: string) => boolean
   rangeToTuple: (name: string) => [number, number]
   resetFilters: () => void
   setFilter: (name: string, value: any) => void
-  sortOptions?: SortOptions
   unsetFilter: (name: string) => void
-  ZeroState?: React.FC
 }
 
 export const ArtworkFilterContext = React.createContext<
@@ -61,25 +74,40 @@ export type SortOptions = Array<{
   text: string
 }>
 
-interface ArtworkFilterContextProviderProps {
-  children: React.ReactNode
-  filters?: ArtworkFilters
-  sortOptions?: SortOptions
+export type SharedArtworkFilterContextProps = Pick<
+  ArtworkFilterContextProps,
+  | "filters"
+  | "sortOptions"
+  | "onArtworkBrickClick"
+  | "onFilterChange"
+  | "ZeroState"
+> & {
   updateURLOnChange?: (filterState) => void
-  ZeroState?: ArtworkFilterContextProps["ZeroState"]
 }
 
 export const ArtworkFilterContextProvider: React.FC<
-  ArtworkFilterContextProviderProps
-> = ({ children, updateURLOnChange, filters = {}, sortOptions, ZeroState }) => {
+  SharedArtworkFilterContextProps & {
+    children: React.ReactNode
+  }
+> = ({
+  children,
+  updateURLOnChange,
+  filters,
+  onArtworkBrickClick,
+  onFilterChange,
+  sortOptions,
+  ZeroState,
+}) => {
   const useUpdateHook = updateURLOnChange ? useURLBarReducer : useReducer
+
+  const initialState = {
+    ...initialArtworkFilterState,
+    ...filters,
+  }
 
   const [artworkFilterState, dispatch] = useUpdateHook(
     artworkFilterReducer,
-    {
-      ...initialArtworkFilterState,
-      ...filters,
-    },
+    initialState,
     updateURLOnChange
   )
 
@@ -87,8 +115,15 @@ export const ArtworkFilterContextProvider: React.FC<
     ZeroState,
     filters: artworkFilterState,
     hasFilters: hasFilters(artworkFilterState),
+
+    // Handlers
+    onArtworkBrickClick,
+    onFilterChange,
+
+    // Sorting
     sortOptions,
 
+    // Filter manipulation
     isDefaultValue: field => {
       return isDefaultFilter(field, artworkFilterState[field])
     },
@@ -98,6 +133,10 @@ export const ArtworkFilterContextProvider: React.FC<
     },
 
     setFilter: (name, val) => {
+      if (onFilterChange) {
+        onFilterChange(name, val, artworkFilterState)
+      }
+
       dispatch({
         type: "SET",
         payload: {
