@@ -37,6 +37,7 @@ interface ArtworkFilterContextProps {
   rangeToTuple: (name: string) => [number, number]
   resetFilters: () => void
   setFilter: (name: string, value: any) => void
+  sortOptions?: SortOptions
   unsetFilter: (name: string) => void
   ZeroState?: React.FC
 }
@@ -50,16 +51,27 @@ export const ArtworkFilterContext = React.createContext<
   rangeToTuple: null,
   resetFilters: null,
   setFilter: null,
+  sortOptions: [],
   unsetFilter: null,
   ZeroState: null,
 })
 
-export const ArtworkFilterContextProvider: React.FC<{
-  filters?: ArtworkFilters
+export type SortOptions = Array<{
+  value: string
+  text: string
+}>
+
+interface ArtworkFilterContextProviderProps {
   children: React.ReactNode
+  filters?: ArtworkFilters
+  sortOptions?: SortOptions
   updateURLOnChange?: (filterState) => void
   ZeroState?: ArtworkFilterContextProps["ZeroState"]
-}> = ({ children, updateURLOnChange, filters = {}, ZeroState }) => {
+}
+
+export const ArtworkFilterContextProvider: React.FC<
+  ArtworkFilterContextProviderProps
+> = ({ children, updateURLOnChange, filters = {}, sortOptions, ZeroState }) => {
   const useUpdateHook = updateURLOnChange ? useURLBarReducer : useReducer
 
   const [artworkFilterState, dispatch] = useUpdateHook(
@@ -75,6 +87,7 @@ export const ArtworkFilterContextProvider: React.FC<{
     ZeroState,
     filters: artworkFilterState,
     hasFilters: hasFilters(artworkFilterState),
+    sortOptions,
 
     isDefaultValue: field => {
       return isDefaultFilter(field, artworkFilterState[field])
