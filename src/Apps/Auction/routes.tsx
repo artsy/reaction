@@ -4,6 +4,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
 import { findRedirect } from "./redirects"
+import { BidFragmentContainer as Bid } from "./Routes/Bid"
 import { RegisterFragmentContainer as Register } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
@@ -53,6 +54,62 @@ export const routes: RouteConfig[] = [
         }
         me {
           ...redirects_me
+
+          # TODO: We shouldn't need to inline this attribute
+          has_qualified_credit_cards
+        }
+      }
+    `,
+  },
+  {
+    path: "/auction/:saleID/bid/:artworkID",
+    Component: Bid,
+    render: ({ Component, props }) => {
+      if (Component && props) {
+        const { location, sale, me } = props as any
+
+        if (!sale) {
+          return <ErrorPage code={404} />
+        }
+
+        const redirect = findRedirect(sale, me)
+
+        if (redirect) {
+          logger.warn(
+            `Redirecting from ${location.pathname} to ${
+              redirect.path
+            } because '${redirect.reason}'`
+          )
+          throw new RedirectException(redirect.path)
+        }
+
+        return <Component {...props} />
+      }
+    },
+    query: graphql`
+      query routes_BidQuery($saleID: String!, $artworkID: String!) {
+        artwork(id: $artworkID) {
+          ...Bid_artwork
+        }
+
+        sale(id: $saleID) {
+          ...redirects_sale
+          ...Bid_sale
+
+          # TODO: We shouldn't need to inline these attributes
+          id
+          is_auction
+          is_registration_closed
+          is_preview
+          is_open
+          is_auction
+          registrationStatus {
+            qualified_for_bidding
+          }
+        }
+        me {
+          ...redirects_me
+          ...Bid_me
 
           # TODO: We shouldn't need to inline this attribute
           has_qualified_credit_cards
