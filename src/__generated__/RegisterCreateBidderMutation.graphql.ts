@@ -5,23 +5,23 @@ export type CreateBidderInput = {
     readonly sale_id: string;
     readonly clientMutationId?: string | null;
 };
-export type RegistrationFormCreateBidderMutationVariables = {
+export type RegisterCreateBidderMutationVariables = {
     readonly input: CreateBidderInput;
 };
-export type RegistrationFormCreateBidderMutationResponse = {
+export type RegisterCreateBidderMutationResponse = {
     readonly createBidder: ({
         readonly clientMutationId: string | null;
     }) | null;
 };
-export type RegistrationFormCreateBidderMutation = {
-    readonly response: RegistrationFormCreateBidderMutationResponse;
-    readonly variables: RegistrationFormCreateBidderMutationVariables;
+export type RegisterCreateBidderMutation = {
+    readonly response: RegisterCreateBidderMutationResponse;
+    readonly variables: RegisterCreateBidderMutationVariables;
 };
 
 
 
 /*
-mutation RegistrationFormCreateBidderMutation(
+mutation RegisterCreateBidderMutation(
   $input: CreateBidderInput!
 ) {
   createBidder(input: $input) {
@@ -69,13 +69,13 @@ v1 = [
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "RegistrationFormCreateBidderMutation",
+  "name": "RegisterCreateBidderMutation",
   "id": null,
-  "text": "mutation RegistrationFormCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    clientMutationId\n  }\n}\n",
+  "text": "mutation RegisterCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    clientMutationId\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RegistrationFormCreateBidderMutation",
+    "name": "RegisterCreateBidderMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -83,11 +83,11 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RegistrationFormCreateBidderMutation",
+    "name": "RegisterCreateBidderMutation",
     "argumentDefinitions": v0,
     "selections": v1
   }
 };
 })();
-(node as any).hash = 'ca8e2c5becc12bd63c8d3bf7ae82be8f';
+(node as any).hash = '976a0966cf299e6c43717a6bb20b4225';
 export default node;

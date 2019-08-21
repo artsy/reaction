@@ -6,10 +6,10 @@ export type CreditCardInput = {
     readonly oneTimeUse?: boolean | null;
     readonly clientMutationId?: string | null;
 };
-export type RegistrationFormCreateCreditCardMutationVariables = {
+export type RegisterCreateCreditCardMutationVariables = {
     readonly input: CreditCardInput;
 };
-export type RegistrationFormCreateCreditCardMutationResponse = {
+export type RegisterCreateCreditCardMutationResponse = {
     readonly createCreditCard: ({
         readonly creditCardOrError: ({
             readonly creditCardEdge?: ({
@@ -25,15 +25,15 @@ export type RegistrationFormCreateCreditCardMutationResponse = {
         }) | null;
     }) | null;
 };
-export type RegistrationFormCreateCreditCardMutation = {
-    readonly response: RegistrationFormCreateCreditCardMutationResponse;
-    readonly variables: RegistrationFormCreateCreditCardMutationVariables;
+export type RegisterCreateCreditCardMutation = {
+    readonly response: RegisterCreateCreditCardMutationResponse;
+    readonly variables: RegisterCreateCreditCardMutationVariables;
 };
 
 
 
 /*
-mutation RegistrationFormCreateCreditCardMutation(
+mutation RegisterCreateCreditCardMutation(
   $input: CreditCardInput!
 ) {
   createCreditCard(input: $input) {
@@ -159,13 +159,13 @@ v3 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "RegistrationFormCreateCreditCardMutation",
+  "name": "RegisterCreateCreditCardMutation",
   "id": null,
-  "text": "mutation RegistrationFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            last_digits\n            __id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation RegisterCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            last_digits\n            __id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RegistrationFormCreateCreditCardMutation",
+    "name": "RegisterCreateCreditCardMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -198,7 +198,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RegistrationFormCreateCreditCardMutation",
+    "name": "RegisterCreateCreditCardMutation",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -236,5 +236,5 @@ return {
   }
 };
 })();
-(node as any).hash = '1d11f4deeda0507b13f1addd1a8bf10c';
+(node as any).hash = '27050a789605a43ffb0fb098b2f3ab66';
 export default node;
