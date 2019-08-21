@@ -1,3 +1,22 @@
+# v17.4.0 (Wed Aug 21 2019)
+
+#### 🚀  Enhancement
+
+- Update Auction registration form
+
+- Add CountrySelect input to form
+- Update Auctions-related Storybook entries
+- Add Metaphytics API error handling
+- Update register redirect rules
+
+Co-authored-by: Erik Stockmeier <erik.d.stock@gmail.com> [#2703](https://github.com/artsy/reaction/pull/2703) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v17.3.0 (Wed Aug 21 2019)
 
 #### 🚀  Enhancement
