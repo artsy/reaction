@@ -115,7 +115,7 @@ export class ArtworkGridContainer extends React.Component<
         artworkComponents.push(
           <GridItem
             artwork={artwork}
-            key={"artwork-" + j + "-" + artwork.__id}
+            key={artwork.__id}
             mediator={this.props.mediator}
             lazyLoad={i + j >= preloadImageCount}
             onClick={() => {

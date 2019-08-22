@@ -20,7 +20,7 @@ workflows:
           requires:
             - yarn/workflow-queue
       - yarn/jest:
-          args: --runInBand
+          args: --runInBand --no-cache
           requires:
             - yarn/workflow-queue
       - yarn/auto-release:

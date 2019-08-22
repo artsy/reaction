@@ -1,5 +1,6 @@
 import { isEqual } from "lodash"
 import React, { useEffect, useState } from "react"
+import useDeepCompareEffect from "use-deep-compare-effect"
 
 import {
   createRefetchContainer,
@@ -18,6 +19,7 @@ import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql
 import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkFilterQuery.graphql"
 
 import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2"
+import { SortFilter } from "./ArtworkFilters/SortFilter"
 
 import {
   ArtworkFilterContextProvider,
@@ -29,14 +31,7 @@ import {
 import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet"
 import { ArtworkFilters } from "./ArtworkFilters"
 
-import {
-  Box,
-  Button,
-  FilterIcon,
-  Flex,
-  Separator,
-  Spacer,
-} from "@artsy/palette"
+import { Box, Button, FilterIcon, Flex, Spacer } from "@artsy/palette"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -79,6 +74,8 @@ const BaseArtworkFilter: React.FC<{
   const filterContext = useArtworkFilterContext()
   const previousFilters = usePrevious(filterContext.filters)
 
+  // const isLoading = isRouterFetching || isFetching
+
   /**
    * Check to see if the mobile action sheet is present and prevent scrolling
    */
@@ -98,7 +95,7 @@ const BaseArtworkFilter: React.FC<{
    * Check to see if the current filter is different from the previous filter
    * and trigger a reload.
    */
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
         const previousFilter = previousFilters[filterKey]
@@ -109,7 +106,7 @@ const BaseArtworkFilter: React.FC<{
         }
       }
     )
-  }, [JSON.stringify(filterContext.filters)])
+  }, [filterContext.filters])
 
   function fetchResults(filterKey) {
     tracking.trackEvent({
@@ -143,12 +140,13 @@ const BaseArtworkFilter: React.FC<{
 
   return (
     <Box>
+      <Box id="jump--artworkFilter" />
+
       {/*
         Mobile Artwork Filter
       */}
-
       <Media at="xs">
-        <Box>
+        <Box mb={1}>
           {showMobileActionSheet && (
             <ArtworkFilterMobileActionSheet
               onClose={() => toggleMobileActionSheet(false)}
@@ -157,20 +155,16 @@ const BaseArtworkFilter: React.FC<{
             </ArtworkFilterMobileActionSheet>
           )}
 
-          <Box id="jump--searchArtworkGrid" />
-
-          <Flex justifyContent="flex-end" alignItems="center">
-            <Button
-              size="small"
-              mt={-1}
-              onClick={() => toggleMobileActionSheet(true)}
-            >
+          <Flex justifyContent="space-between" alignItems="center" py={1}>
+            <Button size="small" onClick={() => toggleMobileActionSheet(true)}>
               <Flex justifyContent="space-between" alignItems="center">
                 <FilterIcon fill="white100" />
                 <Spacer mr={0.5} />
                 Filter
               </Flex>
             </Button>
+
+            <SortFilter />
           </Flex>
 
           <Spacer mb={2} />
@@ -182,15 +176,15 @@ const BaseArtworkFilter: React.FC<{
       {/*
         Desktop Artwork Filter
       */}
-
       <Media greaterThan="xs">
         <Flex>
-          <Box width="25%" mr={2}>
+          <Box width="25%" mr={2} mt={0.5}>
             <ArtworkFilters />
-            <Separator mb={2} />
           </Box>
           <Box width="75%">
-            <Box id="jump--searchArtworkGrid" />
+            <Box mb={2}>
+              <SortFilter />
+            </Box>
             <ArtworkGrid />
           </Box>
         </Flex>

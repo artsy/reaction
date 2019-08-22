@@ -82,9 +82,10 @@ export const CollectApp = track({
             <h1>Collect art and design online</h1>
           </Serif>
 
+          <Separator mt={2} mb={[2, 2, 2, 4]} />
+
           {showCollectionHubs && (
             <>
-              <Separator mt={2} mb={[2, 2, 2, 4]} />
               <CollectionsHubsNav
                 marketingCollections={props.marketingCollections}
               />
@@ -109,8 +110,26 @@ export const CollectApp = track({
               const url = buildUrlForCollectApp(filters)
 
               if (typeof window !== "undefined") {
-                window.history.pushState({}, null, url)
+                window.history.replaceState({}, "", url)
               }
+
+              /**
+               * FIXME: Ideally we route using our router, but are running into
+               * synchronization issues between router state and URL bar state.
+               *
+               * See below example as an illustration:
+               *
+
+                const newLocation = router.createLocation(url)
+
+                router.replace({
+                  ...newLocation,
+                  state: {
+                    scrollTo: "#jump--artworkFilter"
+                  },
+                })
+               *
+               */
             }}
             onFilterClick={(key, value, filterState) => {
               trackEvent({

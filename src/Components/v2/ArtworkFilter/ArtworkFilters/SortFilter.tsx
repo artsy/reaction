@@ -10,11 +10,7 @@ export const SortFilter: React.FC = () => {
   }
 
   return (
-    <Flex
-      pb={2}
-      justifyContent={["space-between", "flex-end"]}
-      alignItems="center"
-    >
+    <Flex justifyContent={["space-between", "flex-end"]} alignItems="center">
       <Box>
         <SelectSmall
           options={context.sortOptions}

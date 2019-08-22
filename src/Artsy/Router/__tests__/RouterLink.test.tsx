@@ -43,7 +43,6 @@ describe("RouterLink", () => {
 
   it("prunes invalid props from being passed to dom", async () => {
     const wrapper = await getWrapper({ hey: true, you: true })
-    console.log(wrapper.find(Link).props())
     expect(Object.keys(wrapper.find("a").props())).not.toContain(["hey", "you"])
   })
 })

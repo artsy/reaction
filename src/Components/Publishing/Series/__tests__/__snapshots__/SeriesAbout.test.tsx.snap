@@ -6,47 +6,6 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.c3 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -56,28 +15,28 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c2:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c2:first-child {
   padding-left: 0;
 }
 
-.c7 {
+.c3 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c3 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -87,22 +46,22 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c3 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c3 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c3 p,
+.c3 ul,
+.c3 ol,
+.c3 .paragraph,
+.c3 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -113,32 +72,32 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c3 p:first-child,
+.c3 .paragraph:first-child,
+.c3 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c3 p:last-child,
+.c3 .paragraph:last-child,
+.c3 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c3 ul,
+.c3 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c3 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c3 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c3 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -147,7 +106,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c3 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -160,7 +119,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c3 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -171,7 +130,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c3 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -180,15 +139,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c3 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c3 h2 .c4 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c3 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -198,7 +157,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c3 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -206,11 +165,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c3 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c3 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -223,11 +182,11 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c3 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c3 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -238,14 +197,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c3 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c3 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -253,7 +212,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c3 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -276,111 +235,39 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   width: 100%;
 }
 
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c3 p,
+  .c3 ul,
+  .c3 ol,
+  .c3 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c3 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c3 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c3 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c3 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -388,14 +275,14 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c3 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c3 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -403,7 +290,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c3 .content-start {
     font-size: 55px;
   }
 }
@@ -433,12 +320,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH c0"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH bEGzhX"
     width={
       Array [
         1,
@@ -450,7 +337,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="sc-bxivhb bUZGRr sc-htpNat efvIwX"
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -458,15 +345,15 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="sc-bxivhb bUZGRr sc-htpNat ieiYrI"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
         <div
-          className="c4"
+          className="c1"
         >
           <a
-            className="c5"
+            className="c2"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
             onClick={[Function]}
             target="_blank"
@@ -492,7 +379,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -518,7 +405,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
             onClick={[Function]}
             target="_blank"
@@ -551,7 +438,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
     />
   </div>
   <div
-    className="c6"
+    className="sc-bwzfXH ZkXJl"
     width={
       Array [
         1,
@@ -565,7 +452,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="article__text-section c3"
         color="black"
       >
         <div
@@ -590,47 +477,6 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.c3 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -640,28 +486,28 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c2:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c2:first-child {
   padding-left: 0;
 }
 
-.c7 {
+.c3 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c3 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -671,22 +517,22 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c3 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c3 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c3 p,
+.c3 ul,
+.c3 ol,
+.c3 .paragraph,
+.c3 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -697,32 +543,32 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c3 p:first-child,
+.c3 .paragraph:first-child,
+.c3 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c3 p:last-child,
+.c3 .paragraph:last-child,
+.c3 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c3 ul,
+.c3 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c3 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c3 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c3 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -731,7 +577,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c3 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -744,7 +590,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c3 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -755,7 +601,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c3 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -764,15 +610,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c3 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c3 h2 .c4 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c3 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -782,7 +628,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c3 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -790,11 +636,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c3 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c3 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -807,11 +653,11 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c3 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c3 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -822,14 +668,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c3 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c3 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -837,7 +683,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c3 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -860,111 +706,39 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   width: 100%;
 }
 
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c3 p,
+  .c3 ul,
+  .c3 ol,
+  .c3 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c3 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c3 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c3 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c3 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -972,14 +746,14 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c3 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c3 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -987,7 +761,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c3 .content-start {
     font-size: 55px;
   }
 }
@@ -1017,12 +791,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH c0"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH bEGzhX"
     width={
       Array [
         1,
@@ -1034,7 +808,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="sc-bxivhb bUZGRr sc-htpNat efvIwX"
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -1042,15 +816,15 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="sc-bxivhb bUZGRr sc-htpNat ieiYrI"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
         <div
-          className="c4"
+          className="c1"
         >
           <a
-            className="c5"
+            className="c2"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
             onClick={[Function]}
             target="_blank"
@@ -1076,7 +850,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -1102,7 +876,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
             onClick={[Function]}
             target="_blank"
@@ -1135,7 +909,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     />
   </div>
   <div
-    className="c6"
+    className="sc-bwzfXH ZkXJl"
     width={
       Array [
         1,
@@ -1146,7 +920,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="article__text-section c7"
+      className="article__text-section c3"
       color="black"
     >
       <div>
@@ -1167,47 +941,6 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.c3 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1217,28 +950,28 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c2:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c2:first-child {
   padding-left: 0;
 }
 
-.c7 {
+.c3 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c7 a {
+.c3 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1248,22 +981,22 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-position: bottom;
 }
 
-.c7 a:hover {
+.c3 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c7 div[class*='ToolTip'] a {
+.c3 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c7 p,
-.c7 ul,
-.c7 ol,
-.c7 .paragraph,
-.c7 div[data-block=true] .public-DraftStyleDefault-block {
+.c3 p,
+.c3 ul,
+.c3 ol,
+.c3 .paragraph,
+.c3 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1274,32 +1007,32 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-style: inherit;
 }
 
-.c7 p:first-child,
-.c7 .paragraph:first-child,
-.c7 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c3 p:first-child,
+.c3 .paragraph:first-child,
+.c3 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c7 p:last-child,
-.c7 .paragraph:last-child,
-.c7 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c3 p:last-child,
+.c3 .paragraph:last-child,
+.c3 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c7 ul,
-.c7 ol {
+.c3 ul,
+.c3 ol {
   padding-left: 1em;
 }
 
-.c7 ul {
+.c3 ul {
   list-style: disc;
 }
 
-.c7 ol {
+.c3 ol {
   list-style: decimal;
 }
 
-.c7 li {
+.c3 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1308,7 +1041,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   padding-bottom: .5em;
 }
 
-.c7 h1 {
+.c3 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1321,7 +1054,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   text-align: center;
 }
 
-.c7 h1::before {
+.c3 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1332,7 +1065,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   right: calc(50% - 4px);
 }
 
-.c7 h2 {
+.c3 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1341,15 +1074,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c7 h2 a {
+.c3 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c3 h2 .c4 {
   background-position: bottom !important;
 }
 
-.c7 h3 {
+.c3 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1359,7 +1092,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin: 0;
 }
 
-.c7 h3 strong {
+.c3 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1367,11 +1100,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   line-height: 1.5em;
 }
 
-.c7 h3 a {
+.c3 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c7 blockquote {
+.c3 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1384,11 +1117,11 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   word-break: break-word;
 }
 
-.c7 .preventLineBreak {
+.c3 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c7 .content-end {
+.c3 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1399,14 +1132,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   margin-bottom: 1px;
 }
 
-.c7 .artist-follow {
+.c3 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c7 .artist-follow::before {
+.c3 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1414,7 +1147,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   font-size: 32px;
 }
 
-.c7 .artist-follow::after {
+.c3 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1437,111 +1170,39 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   width: 100%;
 }
 
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c6 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:600px) {
-  .c7 p,
-  .c7 ul,
-  .c7 ol,
-  .c7 div[data-block=true] .public-DraftStyleDefault-block {
+  .c3 p,
+  .c3 ul,
+  .c3 ol,
+  .c3 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 li {
+  .c3 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c7 h1 {
+  .c3 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c7 h2 {
+  .c3 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c7 h3 {
+  .c3 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1549,14 +1210,14 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     line-height: 1.5em;
   }
 
-  .c7 h3 strong {
+  .c3 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c7 blockquote {
+  .c3 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1564,7 +1225,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     margin: 0;
   }
 
-  .c7 .content-start {
+  .c3 .content-start {
     font-size: 55px;
   }
 }
@@ -1594,12 +1255,12 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH c0"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH bEGzhX"
     width={
       Array [
         1,
@@ -1611,7 +1272,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="sc-bxivhb bUZGRr sc-htpNat efvIwX"
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -1622,15 +1283,15 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         </div>
       </div>
       <div
-        className="c3"
+        className="sc-bxivhb bUZGRr sc-htpNat ieiYrI"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
         <div
-          className="c4"
+          className="c1"
         >
           <a
-            className="c5"
+            className="c2"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
             onClick={[Function]}
             target="_blank"
@@ -1656,7 +1317,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -1682,7 +1343,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
             onClick={[Function]}
             target="_blank"
@@ -1715,7 +1376,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
     />
   </div>
   <div
-    className="c6"
+    className="sc-bwzfXH ZkXJl"
     width={
       Array [
         1,
@@ -1729,7 +1390,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="article__text-section c3"
         color="black"
       >
         <div
@@ -1749,56 +1410,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 `;
 
 exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
-.c6 {
-  margin-bottom: 4px;
-}
-
-.c12 {
-  margin-top: 60px;
-}
-
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-}
-
-.c2 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.c3 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1812,33 +1424,33 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c2 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c2:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c2:first-child {
   padding-left: 0;
 }
 
-.c7 {
+.c3 {
   display: block;
 }
 
-.c9 img {
+.c5 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c8 {
+.c4 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1846,13 +1458,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 20px;
 }
 
-.c11 {
+.c6 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c11 a {
+.c6 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1862,22 +1474,22 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background-position: bottom;
 }
 
-.c11 a:hover {
+.c6 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c11 div[class*='ToolTip'] a {
+.c6 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c11 p,
-.c11 ul,
-.c11 ol,
-.c11 .paragraph,
-.c11 div[data-block=true] .public-DraftStyleDefault-block {
+.c6 p,
+.c6 ul,
+.c6 ol,
+.c6 .paragraph,
+.c6 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1888,32 +1500,32 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-style: inherit;
 }
 
-.c11 p:first-child,
-.c11 .paragraph:first-child,
-.c11 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c6 p:first-child,
+.c6 .paragraph:first-child,
+.c6 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c11 p:last-child,
-.c11 .paragraph:last-child,
-.c11 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c6 p:last-child,
+.c6 .paragraph:last-child,
+.c6 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c11 ul,
-.c11 ol {
+.c6 ul,
+.c6 ol {
   padding-left: 1em;
 }
 
-.c11 ul {
+.c6 ul {
   list-style: disc;
 }
 
-.c11 ol {
+.c6 ol {
   list-style: decimal;
 }
 
-.c11 li {
+.c6 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1922,7 +1534,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   padding-bottom: .5em;
 }
 
-.c11 h1 {
+.c6 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1935,7 +1547,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   text-align: center;
 }
 
-.c11 h1::before {
+.c6 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1946,7 +1558,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   right: calc(50% - 4px);
 }
 
-.c11 h2 {
+.c6 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1955,15 +1567,15 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c11 h2 a {
+.c6 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c11 h2 .c13 {
+.c6 h2 .c7 {
   background-position: bottom !important;
 }
 
-.c11 h3 {
+.c6 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1973,7 +1585,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin: 0;
 }
 
-.c11 h3 strong {
+.c6 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1981,11 +1593,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   line-height: 1.5em;
 }
 
-.c11 h3 a {
+.c6 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c11 blockquote {
+.c6 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1998,11 +1610,11 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   word-break: break-word;
 }
 
-.c11 .preventLineBreak {
+.c6 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c11 .content-end {
+.c6 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -2013,14 +1625,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   margin-bottom: 1px;
 }
 
-.c11 .artist-follow {
+.c6 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c11 .artist-follow::before {
+.c6 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -2028,7 +1640,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   font-size: 32px;
 }
 
-.c11 .artist-follow::after {
+.c6 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -2051,80 +1663,8 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   width: 100%;
 }
 
-@media screen and (min-width:40em) {
-  .c1 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c10 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c10 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c10 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c3 {
-    margin-bottom: 0px;
-  }
-}
-
 @media (max-width:720px) {
-  .c8 {
+  .c4 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -2133,38 +1673,38 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 @media (max-width:600px) {
-  .c11 p,
-  .c11 ul,
-  .c11 ol,
-  .c11 div[data-block=true] .public-DraftStyleDefault-block {
+  .c6 p,
+  .c6 ul,
+  .c6 ol,
+  .c6 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c11 li {
+  .c6 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c11 h1 {
+  .c6 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c11 h2 {
+  .c6 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c11 h3 {
+  .c6 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -2172,14 +1712,14 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     line-height: 1.5em;
   }
 
-  .c11 h3 strong {
+  .c6 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c11 blockquote {
+  .c6 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -2187,7 +1727,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     margin: 0;
   }
 
-  .c11 .content-start {
+  .c6 .content-start {
     font-size: 55px;
   }
 }
@@ -2217,12 +1757,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH c0"
   color="black"
   width="100%"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH bEGzhX"
     width={
       Array [
         1,
@@ -2234,7 +1774,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="sc-bxivhb bUZGRr sc-htpNat efvIwX"
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -2242,15 +1782,15 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="sc-bxivhb bUZGRr sc-htpNat ieiYrI"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
         <div
-          className="c4"
+          className="c1"
         >
           <a
-            className="c5"
+            className="c2"
             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
             onClick={[Function]}
             target="_blank"
@@ -2276,7 +1816,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
             onClick={[Function]}
             target="_blank"
@@ -2302,7 +1842,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
             </svg>
           </a>
           <a
-            className="c5"
+            className="c2"
             href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
             onClick={[Function]}
             target="_blank"
@@ -2334,18 +1874,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="rrm-container rrm-greaterThanOrEqual-md"
     >
       <div
-        className="c6"
+        className="hirWLY"
       >
         <div
-          className="PartnerBlock c7"
+          className="PartnerBlock c3"
         >
           <div
-            className="c8"
+            className="c4"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c9"
+            className="c5"
           >
             <a
               href="http://artsy.net"
@@ -2362,7 +1902,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
     </div>
   </div>
   <div
-    className="c10"
+    className="sc-bwzfXH ZkXJl"
     width={
       Array [
         1,
@@ -2376,7 +1916,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c11"
+        className="article__text-section c6"
         color="black"
       >
         <div
@@ -2392,18 +1932,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="rrm-container rrm-lessThan-md"
     >
       <div
-        className="c12"
+        className="hhOARf"
       >
         <div
-          className="PartnerBlock c7"
+          className="PartnerBlock c3"
         >
           <div
-            className="c8"
+            className="c4"
           >
             Presented in Partnership with
           </div>
           <div
-            className="c9"
+            className="c5"
           >
             <a
               href="http://artsy.net"

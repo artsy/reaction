@@ -1,9 +1,11 @@
 import React, { useContext, useReducer } from "react"
+import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
 
 export const initialArtworkFilterState = {
+  attribution_class: [],
   height: "*-*",
   major_periods: [],
   page: 1,
@@ -46,7 +48,7 @@ interface ArtworkFilterContextProps {
     filterState: ArtworkFilters
   ) => void
 
-  // Filter manipulationo
+  // Filter manipulation
   hasFilters: boolean
   isDefaultValue: (name: string) => boolean
   rangeToTuple: (name: string) => [number, number]
@@ -103,14 +105,22 @@ export const ArtworkFilterContextProvider: React.FC<
     ...filters,
   }
 
+  // const [artworkFilterState, dispatch] = useURLBarReducer(
+  //   artworkFilterReducer,
+  //   initialState,
+  //   onChange
+  // )
+
   const [artworkFilterState, dispatch] = useReducer(
     artworkFilterReducer,
     initialState
   )
 
-  if (onChange) {
-    onChange(artworkFilterState)
-  }
+  useDeepCompareEffect(() => {
+    if (onChange) {
+      onChange(artworkFilterState)
+    }
+  }, [artworkFilterState])
 
   const artworkFilterContext = {
     ZeroState,
@@ -173,21 +183,118 @@ export const ArtworkFilterContextProvider: React.FC<
 
 const artworkFilterReducer = (state, action) => {
   switch (action.type) {
+    /**
+     * Setting  and updating filters
+     */
     case "SET": {
+      const { name, value } = action.payload
+
+      let filterState = {}
+
+      if (name === "attribution_class") {
+        filterState = {
+          attribution_class: state.filters.attribution_class.concat(value),
+        }
+      }
+      if (name === "major_periods") {
+        filterState = {
+          major_periods: value ? [value] : [],
+        }
+      }
+      if (name === "page") {
+        filterState[name] = Number(value)
+      }
+
+      // String filter types
+      ;[
+        "color",
+        "height",
+        "medium",
+        "partner_id",
+        "price_range",
+        "sort",
+        "width",
+      ].forEach(filter => {
+        if (name === filter) {
+          filterState[name] = value
+        }
+      })
+
+      // Boolean filter types
+      ;[
+        "acquireable",
+        "at_auction",
+        "for_sale",
+        "inquireable_only",
+        "offerable",
+      ].forEach(filter => {
+        if (name === filter) {
+          filterState[name] = Boolean(value)
+        }
+      })
+
       return {
         ...state,
-        [action.payload.name]: action.payload.value,
+        ...filterState,
       }
     }
+
+    /**
+     * Unsetting a filter
+     */
     case "UNSET": {
+      const { name } = action.payload
+
+      let filterState = {}
+
+      if (name === "attribution_class") {
+        filterState = {
+          attribution_class: [],
+        }
+      }
+      if (name === "major_periods") {
+        filterState = {
+          major_periods: [],
+        }
+      }
+      if (name === "medium") {
+        filterState = {
+          medium: "*",
+        }
+      }
+      if (name === "page") {
+        filterState = {
+          page: 1,
+        }
+      }
+
+      ;[
+        "acquireable",
+        "at_auction",
+        "color",
+        "for_sale",
+        "inquireable_only",
+        "offerable",
+        "partner_id",
+      ].forEach(filter => {
+        if (name === filter) {
+          filterState[name] = null
+        }
+      })
+
       return {
         ...state,
-        [action.payload.name]: initialArtworkFilterState[action.payload.name],
+        ...filterState,
       }
     }
+
+    /**
+     * Resetting filters back to their initial state
+     */
     case "RESET": {
       return initialArtworkFilterState
     }
+
     default:
       return state
   }

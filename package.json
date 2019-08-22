@@ -227,6 +227,7 @@
     "unstated": "^2.1.1",
     "unstated-debug": "^0.2.0",
     "url": "^0.11.0",
+    "use-deep-compare-effect": "^1.2.0",
     "yup": "^0.24.1"
   },
   "prettier": {

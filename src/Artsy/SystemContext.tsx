@@ -1,4 +1,4 @@
-import React, { SFC, useContext, useMemo } from "react"
+import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
@@ -16,6 +16,11 @@ export interface SystemContextProps {
   isEigen?: boolean
 
   /**
+   * Trigger for global fetching indicator
+   */
+  isFetching?: boolean
+
+  /**
    * A PubSub hub, which should only be used for communicating with Force.
    */
   mediator?: Mediator
@@ -24,7 +29,6 @@ export interface SystemContextProps {
    * FIXME: Ask alloy how to pass one-off props like this in from force
    */
   notificationCount?: number
-  searchQuery?: string
 
   /**
    * A configured environment object that can be used for any Relay operations
@@ -34,6 +38,13 @@ export interface SystemContextProps {
    * using the `user` if available.
    */
   relayEnvironment?: Environment
+
+  searchQuery?: string
+
+  /**
+   * Toggle for setting global fetch state, typically set in the `RenderStatus.tsx`
+   */
+  setIsFetching?: (isFetching: boolean) => void
 
   /**
    * The currently signed-in user.
@@ -59,13 +70,15 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 
-  const providerValues = useMemo(() => {
-    return {
-      ...props,
-      relayEnvironment,
-      user,
-    }
-  }, [props.relayEnvironment, props.user])
+  const [isFetching, setIsFetching] = useState(false)
+
+  const providerValues = {
+    ...props,
+    isFetching,
+    setIsFetching,
+    relayEnvironment,
+    user,
+  }
 
   return (
     <SystemContext.Provider value={providerValues}>

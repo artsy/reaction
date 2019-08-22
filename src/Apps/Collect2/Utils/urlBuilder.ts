@@ -1,4 +1,5 @@
 import { State } from "Apps/Collect2/Routes/Collect/FilterState"
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
 import qs from "qs"
 
 export const buildUrlForCollectionApp = (state: State): string => {
@@ -36,25 +37,4 @@ const removeDefaultValues = (state: State): State => {
       return { ...acc, [key]: value }
     }
   }, {})
-}
-
-// This is used to remove default state params that clutter up URLs.
-const isDefaultFilter = (filter, value): boolean => {
-  switch (filter) {
-    case "major_periods":
-    case "attribution_class":
-      return value.length === 0
-    case "sort":
-      return value === "-decayed_merch"
-    case "price_range":
-    case "height":
-    case "width":
-      return value === "*-*"
-    case "page":
-      return value === 1
-    case "medium":
-      return value === "*"
-    default:
-      return !value
-  }
 }

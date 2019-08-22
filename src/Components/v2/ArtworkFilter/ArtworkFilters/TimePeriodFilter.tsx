@@ -1,5 +1,6 @@
 import { Radio, RadioGroup } from "@artsy/palette"
 import React, { FC } from "react"
+import { get } from "Utils/get"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 interface Props {
@@ -13,7 +14,10 @@ export const TimePeriodFilter: FC<Props> = props => {
     return allowedPeriods.includes(timePeriod)
   })
 
-  const selectedPeriod = filterContext.filters.major_periods[0]
+  const selectedPeriod = get(
+    filterContext.filters,
+    f => f.major_periods[0] || ""
+  )
 
   return (
     <RadioGroup

@@ -54,6 +54,7 @@ describe("ArtworkFilter", () => {
 
       expect(onFilterClick).toHaveBeenCalledWith("acquireable", true, {
         acquireable: true,
+        attribution_class: [],
         height: "*-*",
         major_periods: [],
         page: 1,
@@ -89,6 +90,7 @@ describe("ArtworkFilter", () => {
 
       expect(onChange).toHaveBeenCalledWith({
         acquireable: true,
+        attribution_class: [],
         height: "*-*",
         major_periods: [],
         page: 1,
@@ -126,6 +128,7 @@ describe("ArtworkFilter", () => {
         price_range: "*-*",
         sort: "-partner_updated_at",
         width: "*-*",
+        attribution_class: [],
       })
     })
 
@@ -145,6 +148,7 @@ describe("ArtworkFilter", () => {
         changed: { acquireable: true },
         current: {
           acquireable: true,
+          attribution_class: [],
           height: "*-*",
           major_periods: [],
           page: 1,

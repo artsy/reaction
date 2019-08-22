@@ -1,50 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .c4 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-  padding-bottom: 8px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.c7 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 20px;
-}
-
-.c8 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c8 > svg {
+.c4 > svg {
   height: 98%;
 }
 
@@ -65,7 +29,7 @@ exports[`renders a full image set properly 1`] = `
   width: 100%;
 }
 
-.c5 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -100,45 +64,9 @@ exports[`renders a full image set properly 1`] = `
   fill: white;
 }
 
-.c9 {
+.c5 {
   height: auto;
   width: 100%;
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    line-height: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
-    line-height: 24px;
-  }
 }
 
 <div
@@ -149,13 +77,13 @@ exports[`renders a full image set properly 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c2"
+      className="sc-bwzfXH c2"
     >
       <div
-        className="c3"
+        className="sc-bwzfXH jXywsm"
       >
         <div
-          className="c4"
+          className="sc-bxivhb sc-htpNat jfWwGi"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -172,10 +100,10 @@ exports[`renders a full image set properly 1`] = `
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="c5"
+          className="sc-bwzfXH c3"
         >
           <div
-            className="c6"
+            className="sc-bxivhb bUZGRr sc-htpNat bzrKal"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -192,7 +120,7 @@ exports[`renders a full image set properly 1`] = `
             View Slideshow
           </div>
           <div
-            className="c7"
+            className="sc-bxivhb bUZGRr sc-htpNat iLcvIv"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize={
               Array [
@@ -209,7 +137,7 @@ exports[`renders a full image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c8"
+          className="c4"
         >
           <svg
             className="image-set"
@@ -239,7 +167,7 @@ exports[`renders a full image set properly 1`] = `
   >
     <img
       alt="The Work of Bruce M. Sherman"
-      className="c9"
+      className="c5"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=800&quality=80"
     />
   </div>
@@ -247,50 +175,14 @@ exports[`renders a full image set properly 1`] = `
 `;
 
 exports[`renders a mini image set properly 1`] = `
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .c6 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-  padding-bottom: 8px;
-}
-
-.c8 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.c9 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 20px;
-}
-
-.c10 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c10 > svg {
+.c6 > svg {
   height: 98%;
 }
 
@@ -311,7 +203,7 @@ exports[`renders a mini image set properly 1`] = `
   width: 100%;
 }
 
-.c7 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -348,47 +240,11 @@ exports[`renders a mini image set properly 1`] = `
   width: auto;
 }
 
-@media screen and (min-width:40em) {
-  .c6 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c6 {
-    line-height: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c8 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c8 {
-    line-height: 24px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c9 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c9 {
-    line-height: 24px;
-  }
-}
-
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH c1"
     onClick={[Function]}
   >
     <img
@@ -397,13 +253,13 @@ exports[`renders a mini image set properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=200&quality=80"
     />
     <div
-      className="c4"
+      className="sc-bwzfXH c4"
     >
       <div
-        className="c5"
+        className="sc-bwzfXH jXywsm"
       >
         <div
-          className="c6"
+          className="sc-bxivhb sc-htpNat jfWwGi"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -420,10 +276,10 @@ exports[`renders a mini image set properly 1`] = `
           The Work of Bruce M. Sherman
         </div>
         <div
-          className="c7"
+          className="sc-bwzfXH c5"
         >
           <div
-            className="c8"
+            className="sc-bxivhb bUZGRr sc-htpNat bzrKal"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -440,7 +296,7 @@ exports[`renders a mini image set properly 1`] = `
             View Slideshow
           </div>
           <div
-            className="c9"
+            className="sc-bxivhb bUZGRr sc-htpNat iLcvIv"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize={
               Array [
@@ -457,7 +313,7 @@ exports[`renders a mini image set properly 1`] = `
         className="rrm-container rrm-greaterThanOrEqual-sm"
       >
         <div
-          className="c10"
+          className="c6"
         >
           <svg
             className="image-set"

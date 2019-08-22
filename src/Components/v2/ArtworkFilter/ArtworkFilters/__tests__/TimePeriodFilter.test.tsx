@@ -32,7 +32,7 @@ describe("TimePeriodFilter", () => {
       .simulate("click")
 
     setTimeout(() => {
-      expect(context.filters.major_periods).toEqual("2010")
+      expect(context.filters.major_periods).toEqual(["2010"])
       done()
     }, 0)
   })

@@ -98,10 +98,12 @@ describe("buildServerApp", () => {
           {context => {
             expect(Object.keys(context).sort()).toEqual([
               "foo",
+              "isFetching",
               "mediator",
               "onlyMatchMediaQueries",
               "relayEnvironment",
               "routes",
+              "setIsFetching",
               "user",
             ])
             setImmediate(done)

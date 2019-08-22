@@ -1,72 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArticleCard renders an article properly 1`] = `
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
 .c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c7 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c9 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c8 {
+.c2 {
   margin: 10px 20px 0 0;
 }
 
-.c8::before {
+.c2::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -76,7 +20,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   background-color: #000;
 }
 
-.c6 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -91,7 +35,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   color: #000;
 }
 
-.c12 {
+.c6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -101,7 +45,7 @@ exports[`ArticleCard renders an article properly 1`] = `
   display: block;
 }
 
-.c10 {
+.c4 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -120,199 +64,49 @@ exports[`ArticleCard renders an article properly 1`] = `
   display: block;
 }
 
-.c0 .c11 {
+.c0 .c5 {
   opacity: 1;
 }
 
-.c0:hover .c11 {
+.c0:hover .c5 {
   opacity: 0.7;
 }
 
 @media screen and (min-width:40em) {
-  .c1 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c4 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c10 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c10 {
+  .c4 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c10 {
+  .c4 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c10 {
+  .c4 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c10 {
+  .c4 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c10 {
+  .c4 {
     width: 50%;
   }
 }
@@ -324,10 +118,10 @@ exports[`ArticleCard renders an article properly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="gvQHeY"
   >
     <div
-      className="c2"
+      className="hlyKdw"
       width={
         Array [
           "100%",
@@ -339,7 +133,7 @@ exports[`ArticleCard renders an article properly 1`] = `
     >
       <div>
         <div
-          className="c3"
+          className="bUZGRr frfaAc"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -351,7 +145,7 @@ exports[`ArticleCard renders an article properly 1`] = `
           The Future of Art
         </div>
         <div
-          className="c4"
+          className="bUZGRr ihlBMh"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -365,7 +159,7 @@ exports[`ArticleCard renders an article properly 1`] = `
           New York's Next Art District
         </div>
         <div
-          className="c5"
+          className="cFlEyZ gmgkop"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -380,11 +174,11 @@ exports[`ArticleCard renders an article properly 1`] = `
         </div>
       </div>
       <div
-        className="Byline c6"
+        className="Byline c1"
         color="#000"
       >
         <div
-          className="c7"
+          className="bUZGRr dOrNHt"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -394,17 +188,17 @@ exports[`ArticleCard renders an article properly 1`] = `
           fontSize="14px"
         >
           <div
-            className="c8"
+            className="c2"
             color="#000"
           >
             Casey Lesser
           </div>
         </div>
         <div
-          className="c9"
+          className="c3"
         >
           <div
-            className="c7"
+            className="bUZGRr dOrNHt"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -419,7 +213,7 @@ exports[`ArticleCard renders an article properly 1`] = `
       </div>
     </div>
     <div
-      className="c10"
+      className="c4"
       width={
         Array [
           "100%",
@@ -430,7 +224,7 @@ exports[`ArticleCard renders an article properly 1`] = `
       }
     >
       <img
-        className="c11 c12"
+        className="c5 c6"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
       />
     </div>
@@ -439,75 +233,12 @@ exports[`ArticleCard renders an article properly 1`] = `
 `;
 
 exports[`ArticleCard renders an article with children properly 1`] = `
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
 .c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c10 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c9 {
   width: 32px;
   height: 32px;
 }
 
-.c7 {
+.c1 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -526,15 +257,15 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   display: block;
 }
 
-.c0 .c11 {
+.c0 .c4 {
   opacity: 1;
 }
 
-.c0:hover .c11 {
+.c0:hover .c4 {
   opacity: 0.7;
 }
 
-.c8 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -553,201 +284,51 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   bottom: 20px;
 }
 
-.c8 svg {
+.c2 svg {
   height: 40px;
 }
 
 @media screen and (min-width:40em) {
   .c1 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c7 {
+  .c1 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c7 {
+  .c1 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c7 {
+  .c1 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c7 {
+  .c1 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c7 {
+  .c1 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c8 svg {
+  .c2 svg {
     height: 30px;
   }
 }
@@ -759,10 +340,10 @@ exports[`ArticleCard renders an article with children properly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="gvQHeY"
   >
     <div
-      className="c2"
+      className="hlyKdw"
       width={
         Array [
           "100%",
@@ -774,7 +355,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
     >
       <div>
         <div
-          className="c3"
+          className="bUZGRr frfaAc"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -786,7 +367,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           The Future of Art
         </div>
         <div
-          className="c4"
+          className="bUZGRr ihlBMh"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -803,7 +384,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           </div>
         </div>
         <div
-          className="c5"
+          className="cFlEyZ gmgkop"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -821,7 +402,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         </div>
       </div>
       <div
-        className="c6"
+        className="bUZGRr dOrNHt"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -837,7 +418,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
       </div>
     </div>
     <div
-      className="c7"
+      className="c1"
       width={
         Array [
           "100%",
@@ -852,10 +433,10 @@ exports[`ArticleCard renders an article with children properly 1`] = `
         image
       </div>
       <div
-        className="c8"
+        className="c2"
       >
         <svg
-          className="c9"
+          className="c3"
           version="1.1"
           viewBox="0 0 40 56"
           x="0px"
@@ -875,7 +456,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           </g>
         </svg>
         <div
-          className="c10"
+          className="bUZGRr jwuwyh"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -894,79 +475,16 @@ exports[`ArticleCard renders an article with children properly 1`] = `
 
 exports[`ArticleCard renders an article with unpublished media properly 1`] = `
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c4 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c5 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c7 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c13 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c6 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c12 {
+.c6 {
   width: 32px;
   height: 32px;
 }
 
-.c10 {
+.c4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -976,7 +494,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   display: block;
 }
 
-.c8 {
+.c2 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -995,15 +513,15 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   display: block;
 }
 
-.c0 .c9 {
+.c0 .c3 {
   opacity: 1;
 }
 
-.c0:hover .c9 {
+.c0:hover .c3 {
   opacity: 0.7;
 }
 
-.c11 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1022,201 +540,51 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   bottom: 20px;
 }
 
-.c11 svg {
+.c5 svg {
   height: 40px;
 }
 
 @media screen and (min-width:40em) {
-  .c1 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c1 {
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c2 {
-    margin-bottom: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c2 {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    font-size: 28px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    font-size: 42px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
-    line-height: 36px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c4 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 18px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c5 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c8 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c8 {
+  .c2 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c8 {
+  .c2 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c8 {
+  .c2 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c8 {
+  .c2 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c8 {
+  .c2 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c11 svg {
+  .c5 svg {
     height: 30px;
   }
 }
@@ -1228,10 +596,10 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="gvQHeY"
   >
     <div
-      className="c2"
+      className="hlyKdw"
       width={
         Array [
           "100%",
@@ -1243,7 +611,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
     >
       <div>
         <div
-          className="c3"
+          className="bUZGRr frfaAc"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1255,7 +623,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
           The Future of Art
         </div>
         <div
-          className="c4"
+          className="bUZGRr ihlBMh"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -1269,7 +637,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
           New Study Shows the Gender Pay Gap for Artists Is Not So Simple
         </div>
         <div
-          className="c5"
+          className="cFlEyZ gmgkop"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -1284,10 +652,10 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
         </div>
       </div>
       <div
-        className="c6"
+        className="c1"
       >
         <div
-          className="c7"
+          className="bUZGRr dOrNHt"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1301,7 +669,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       </div>
     </div>
     <div
-      className="c8"
+      className="c2"
       width={
         Array [
           "100%",
@@ -1312,14 +680,14 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
       }
     >
       <img
-        className="c9 c10"
+        className="c3 c4"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
       />
       <div
-        className="c11"
+        className="c5"
       >
         <svg
-          className="c12"
+          className="c6"
           version="1.1"
           viewBox="0 0 40 56"
           x="0px"
@@ -1339,7 +707,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
           </g>
         </svg>
         <div
-          className="c13"
+          className="bUZGRr jwuwyh"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

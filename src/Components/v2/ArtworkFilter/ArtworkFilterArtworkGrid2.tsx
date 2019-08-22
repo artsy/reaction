@@ -8,7 +8,6 @@ import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
 import { useArtworkFilterContext } from "./ArtworkFilterContext"
-import { SortFilter } from "./ArtworkFilters/SortFilter"
 
 interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
@@ -50,7 +49,6 @@ const ArtworkFilterArtworkGrid: React.FC<
 
   return (
     <>
-      <SortFilter />
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
           artworks={artworks as any}
@@ -76,7 +74,7 @@ const ArtworkFilterArtworkGrid: React.FC<
             pageCursors={artworks.pageCursors as any}
             onClick={(_cursor, page) => loadPage(page)}
             onNext={() => loadNext()}
-            scrollTo="#jump--searchArtworkGrid"
+            scrollTo="#jump--artworkFilter"
           />
         </Box>
       </LoadingArea>
