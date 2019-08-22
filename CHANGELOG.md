@@ -1,3 +1,15 @@
+# v17.5.2 (Thu Aug 22 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1386 - Adds VAT included in price to Artworks [#2725](https://github.com/artsy/reaction/pull/2725) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v17.5.1 (Thu Aug 22 2019)
 
 #### 🐛  Bug Fix
