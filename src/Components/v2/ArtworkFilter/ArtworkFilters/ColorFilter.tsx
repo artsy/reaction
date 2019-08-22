@@ -1,9 +1,9 @@
 import { CheckIcon } from "@artsy/palette"
 import React, { FC } from "react"
-import { useArtworkFilterContext } from "../ArtworkFilterContext"
+import { useFilterContext } from "../ArtworkFilterContext"
 
 export const ColorFilter: FC = () => {
-  const filterContext = useArtworkFilterContext()
+  const filterContext = useFilterContext()
 
   const toggleColor = color => {
     if (filterContext.filters.color === color) {

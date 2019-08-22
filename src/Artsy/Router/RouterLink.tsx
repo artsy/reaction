@@ -1,5 +1,4 @@
 import { Link, LinkProps } from "found"
-import { pick } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -20,39 +19,15 @@ export const RouterLink: React.FC<LinkProps> = (
 ) => {
   const isRouterContext = Boolean(context.router)
 
-  // Only pass found-router specific props across, props that conform to the
-  // link API found here: https://github.com/4Catalyzer/found#links
-  const handlers = Object.keys(props).reduce((acc, prop) => {
-    if (prop.startsWith("on")) {
-      acc.push(prop)
-    }
-    return acc
-  }, [])
-
   if (isRouterContext) {
-    const allowedProps = pick(props, [
-      "Component",
-      "activeClassName",
-      "className",
-      "exact",
-      "replace",
-      "style",
-      ...handlers,
-    ])
-
     return (
-      <Link to={to} {...allowedProps}>
+      <Link to={to} {...props}>
         {children}
       </Link>
     )
   } else {
     return (
-      <a
-        href={to as string}
-        className={props.className}
-        style={props.style}
-        {...props}
-      >
+      <a href={to as string} {...props}>
         {children}
       </a>
     )

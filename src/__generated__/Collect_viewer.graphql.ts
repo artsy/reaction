@@ -1,110 +1,36 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
-declare const _ArtworkFilter_viewer$ref: unique symbol;
-export type ArtworkFilter_viewer$ref = typeof _ArtworkFilter_viewer$ref;
-export type ArtworkFilter_viewer = {
-    readonly filtered_artworks: ({
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+import { CollectFilterContainer_viewer$ref } from "./CollectFilterContainer_viewer.graphql";
+import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
+declare const _Collect_viewer$ref: unique symbol;
+export type Collect_viewer$ref = typeof _Collect_viewer$ref;
+export type Collect_viewer = {
+    readonly filter_artworks: ({
+        readonly " $fragmentRefs": SeoProductsForArtworks_artworks$ref;
     }) | null;
-    readonly " $refType": ArtworkFilter_viewer$ref;
+    readonly " $fragmentRefs": CollectFilterContainer_viewer$ref;
+    readonly " $refType": Collect_viewer$ref;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = [
-  "TOTAL"
-];
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "ArtworkFilter_viewer",
+  "name": "Collect_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "aggregations",
-      "type": "[ArtworkAggregation]",
-      "defaultValue": v0
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "acquireable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "artist_id",
+      "name": "medium",
       "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "at_auction",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "attribution_class",
-      "type": "[String]",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "color",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "for_sale",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "height",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "inquireable_only",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "keyword",
-      "type": "String!",
-      "defaultValue": ""
+      "defaultValue": "*"
     },
     {
       "kind": "LocalArgument",
       "name": "major_periods",
       "type": "[String]",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "medium",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "offerable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "page",
-      "type": "Int",
       "defaultValue": null
     },
     {
@@ -115,9 +41,41 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "price_range",
-      "type": "String",
+      "name": "for_sale",
+      "type": "Boolean",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "at_auction",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "aggregations",
+      "type": "[ArtworkAggregation]",
+      "defaultValue": [
+        "TOTAL"
+      ]
     },
     {
       "kind": "LocalArgument",
@@ -127,7 +85,49 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "height",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "width",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "artist_id",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "attribution_class",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "color",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "page",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "dimension_range",
       "type": "String",
       "defaultValue": null
     }
@@ -135,122 +135,20 @@ return {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "filtered_artworks",
+      "alias": null,
       "name": "filter_artworks",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
-          "name": "acquireable",
-          "variableName": "acquireable",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Literal",
           "name": "aggregations",
-          "value": v0,
+          "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
-        },
-        {
-          "kind": "Variable",
-          "name": "artist_id",
-          "variableName": "artist_id",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "at_auction",
-          "variableName": "at_auction",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": "[String]"
-        },
-        {
-          "kind": "Variable",
-          "name": "color",
-          "variableName": "color",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "height",
-          "variableName": "height",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "keyword",
-          "variableName": "keyword",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
-        },
-        {
-          "kind": "Variable",
-          "name": "medium",
-          "variableName": "medium",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "offerable",
-          "variableName": "offerable",
-          "type": "Boolean"
-        },
-        {
-          "kind": "Variable",
-          "name": "page",
-          "variableName": "page",
-          "type": "Int"
-        },
-        {
-          "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
-        },
-        {
-          "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
-        },
-        {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0,
-          "type": "Int"
         },
         {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": "String"
-        },
-        {
-          "kind": "Variable",
-          "name": "width",
-          "variableName": "width",
           "type": "String"
         }
       ],
@@ -259,7 +157,7 @@ return {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+          "name": "SeoProductsForArtworks_artworks",
           "args": null
         },
         {
@@ -270,9 +168,116 @@ return {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "CollectFilterContainer_viewer",
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "acquireable",
+          "variableName": "acquireable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "artist_id",
+          "variableName": "artist_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "at_auction",
+          "variableName": "at_auction",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "attribution_class",
+          "variableName": "attribution_class",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "color",
+          "variableName": "color",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "dimension_range",
+          "variableName": "dimension_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "for_sale",
+          "variableName": "for_sale",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "height",
+          "variableName": "height",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "inquireable_only",
+          "variableName": "inquireable_only",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "major_periods",
+          "variableName": "major_periods",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "medium",
+          "variableName": "medium",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "offerable",
+          "variableName": "offerable",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "partner_id",
+          "variableName": "partner_id",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "price_range",
+          "variableName": "price_range",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": null
+        },
+        {
+          "kind": "Variable",
+          "name": "width",
+          "variableName": "width",
+          "type": null
+        }
+      ]
     }
   ]
 };
-})();
-(node as any).hash = 'a6c33adc7321ad02e6632aa51010e3dd';
+(node as any).hash = '988f9a05e9b737c05684bc086e5e94b9';
 export default node;

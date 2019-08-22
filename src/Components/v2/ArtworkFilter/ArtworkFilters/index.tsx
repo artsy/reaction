@@ -4,7 +4,7 @@ import React from "react"
 import { ColorFilter } from "./ColorFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
-import { SizeRangeFilter } from "./SizeRangeFilter"
+import { SizeRangeFilters } from "./SizeRangeFilters"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
@@ -40,7 +40,7 @@ export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
 
       <Toggle label="Size">
         <Flex flexDirection="column" alignItems="left" my={1}>
-          <SizeRangeFilter />
+          <SizeRangeFilters />
         </Flex>
       </Toggle>
 
@@ -51,7 +51,7 @@ export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
       </Toggle>
 
       <Toggle label="Time period">
-        <Flex flexDirection="column" my={1}>
+        <Flex flexDirection="column" alignItems="center" my={1}>
           <TimePeriodFilter
             timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
           />
