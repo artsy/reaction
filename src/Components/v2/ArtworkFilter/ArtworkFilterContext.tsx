@@ -16,19 +16,20 @@ export const initialArtworkFilterState = {
 export interface ArtworkFilters {
   acquireable?: boolean
   at_auction?: boolean
+  attribution_class?: string[]
   color?: string
   for_sale?: boolean
-  height: string
+  height?: string
   inquireable_only?: boolean
   keyword?: string
-  major_periods: string[]
+  major_periods?: string[]
   medium?: string
   offerable?: boolean
-  page: number
+  page?: number
   partner_id?: string
-  price_range: string
-  sort: string
-  width: string
+  price_range?: string
+  sort?: string
+  width?: string
 }
 
 interface ArtworkFilterContextProps {
@@ -180,7 +181,7 @@ const artworkFilterReducer = (state, action) => {
     case "SET": {
       const { name, value } = action.payload
 
-      let filterState = {}
+      let filterState: ArtworkFilters = {}
 
       if (name === "attribution_class") {
         filterState = {
@@ -194,6 +195,8 @@ const artworkFilterReducer = (state, action) => {
       }
       if (name === "page") {
         filterState[name] = Number(value)
+      } else {
+        filterState.page = 1 // Always reset page back to 1 on filter change
       }
 
       // String filter types
@@ -224,10 +227,12 @@ const artworkFilterReducer = (state, action) => {
         }
       })
 
-      return {
+      const updatedState = {
         ...state,
         ...filterState,
       }
+
+      return updatedState
     }
 
     /**
@@ -236,7 +241,7 @@ const artworkFilterReducer = (state, action) => {
     case "UNSET": {
       const { name } = action.payload
 
-      let filterState = {}
+      let filterState: ArtworkFilters = {}
 
       if (name === "attribution_class") {
         filterState = {
@@ -273,10 +278,12 @@ const artworkFilterReducer = (state, action) => {
         }
       })
 
-      return {
+      const updatedState = {
         ...state,
         ...filterState,
       }
+
+      return updatedState
     }
 
     /**
