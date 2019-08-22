@@ -32,7 +32,7 @@ describe("OtherCollectionEntity", () => {
     })
   })
 
-  it("Renders collection's meta data", () => {
+  it.only("Renders collection's meta data", () => {
     const component = mount(<OtherCollectionEntity {...props} />)
 
     expect(component.text()).toMatch("Artist Posters")
