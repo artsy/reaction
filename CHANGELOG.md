@@ -1,3 +1,15 @@
+# v17.5.1 (Thu Aug 22 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Ensure page is reset to 1 on filter change #trivial [#2728](https://github.com/artsy/reaction/pull/2728) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.5.0 (Thu Aug 22 2019)
 
 #### 🚀  Enhancement
