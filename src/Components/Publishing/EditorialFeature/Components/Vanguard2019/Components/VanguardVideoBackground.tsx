@@ -1,11 +1,6 @@
-import { Box, color } from "@artsy/palette"
+import { Box, color, Flex } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-
-// interface SVGVideoBackgroundProps {
-//   id?: string
-//   url?: string
-// }
 
 export const VanguardVideoPrimarySeries = props => (
   <VideoSVGWrapper>
@@ -22,27 +17,62 @@ export const VanguardVideoPrimarySeries = props => (
 )
 
 export const VanguardVideoSubSeries = props => (
-  <VideoSVGWrapperSubseries>
-    <svg
-      viewBox="0 0 1600 900"
-      xmlns="http://www.w3.org/2000/svg"
-      fill={color("white100")}
-      // stroke={color("white100")}
-      // strokeWidth="25"
-      {...props}
-    >
-      {getSVGPath(props.svg)}
-    </svg>
-    <VanguardVideoSubseries {...props} />
-  </VideoSVGWrapperSubseries>
+  <WholeWrapper>
+    <SVGWrapper>
+      <svg
+        viewBox="0 0 1600 900"
+        xmlns="http://www.w3.org/2000/svg"
+        fill={color("white100")}
+        height="inherit"
+        {...props}
+      >
+        {getSVGPath(props.svg)}
+      </svg>
+      <VideoWrapperSubseries>
+        <Video
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+          src={props.url}
+        />
+      </VideoWrapperSubseries>
+    </SVGWrapper>
+  </WholeWrapper>
 )
 
+// const VideoSubseries = styled.video`
+//   max-height: 96%;
+// `
+
+const WholeWrapper = styled(Flex)`
+  flex-direction: row;
+  position: relative;
+  min-height: 110vh;
+  margin-right: 5vw;
+`
+
+const SVGWrapper = styled(Box)`
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+`
+
+const VideoWrapperSubseries = styled(Box)`
+  z-index: -1;
+  position: absolute;
+  top: 0;
+`
+
 const getSVGPath = svg => {
-  console.log("TCL: svg", svg)
   switch (svg) {
     case "emerging":
       return (
-        <path d="M0,0V900H1600V0ZM1489.83,896.43,146.61,805.5,47.2,182.84,320,4.17l874.07,86,360.06,148Z" />
+        <>
+          <path d="M0,0V900H1600V0ZM1489.83,896.43,146.61,805.5,47.2,182.84,320,4.17l874.07,86,360.06,148Z" />
+        </>
       )
     case "getting-their-due":
       return (
@@ -61,19 +91,6 @@ const VanguardVideo = props => (
   </VideoWrapper>
 )
 
-const VanguardVideoSubseries = props => (
-  <VideoWrapperSubseries>
-    <VideoSubseries
-      autoPlay
-      loop
-      muted
-      playsInline
-      controls={false}
-      src={props.url}
-    />
-  </VideoWrapperSubseries>
-)
-
 const VideoWrapper = styled(Box)`
   height: 100%;
   max-width: 100vw;
@@ -87,26 +104,6 @@ const Video = styled.video`
 `
 
 const VideoSVGWrapper = styled(Box)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-`
-
-const VideoWrapperSubseries = styled(Box)`
-  height: 100%;
-  max-width: 100vw;
-  position: absolute;
-  top: 0;
-  z-index: -1;
-`
-
-const VideoSubseries = styled.video`
-  max-height: 98%;
-`
-
-const VideoSVGWrapperSubseries = styled(Box)`
   position: absolute;
   top: 0;
   left: 0;
