@@ -1,9 +1,14 @@
-import { Box, color, Flex } from "@artsy/palette"
+import { Box, color, Flex, FlexProps } from "@artsy/palette"
 import React from "react"
+import useDimensions from "react-use-dimensions"
 import styled from "styled-components"
 
+interface VanguardSubseriesVideoProps extends FlexProps {
+  svgHeight?: number
+}
+
 export const VanguardVideoPrimarySeries = props => (
-  <VideoSVGWrapper>
+  <PrimarySeriesWrapper>
     <svg
       viewBox="0 0 1600 900"
       xmlns="http://www.w3.org/2000/svg"
@@ -12,55 +17,89 @@ export const VanguardVideoPrimarySeries = props => (
     >
       <path d="M0,0V900H1600V0ZM1117.25,859.16c-321.9,34.84-538.72,61.19-699.67-12s-244.75-34.58-297.95-94.44S61.14,621.06,47.84,566.53-2.66,374.1,61.31,242.72c40.62-83.44,50.38-148.4,146.69-183,72.79-26.07,208.29,0,296.08,4,35.91,1.64,149-21.28,207.51-39.9s176.91-16,248.74,0,186.22-1.33,262,1.33,275.35,5.32,283.33,234.11-20,235.44,0,359.14S1439.15,824.32,1117.25,859.16Z" />
     </svg>
-    <VanguardVideo {...props} />
-  </VideoSVGWrapper>
+    <VanguardIntroVideoWrapper>
+      <VanguardIntroVideo
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls={false}
+        src={props.url}
+      />
+      {...props}
+    </VanguardIntroVideoWrapper>
+  </PrimarySeriesWrapper>
 )
+const VanguardIntroVideoWrapper = styled(Box)`
+  height: 100%;
+  max-width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+`
 
-export const VanguardVideoSubSeries = props => (
-  <WholeWrapper>
-    <SVGWrapper>
-      <svg
-        viewBox="0 0 1600 900"
-        xmlns="http://www.w3.org/2000/svg"
-        fill={color("white100")}
-        height="inherit"
-        {...props}
-      >
-        {getSVGPath(props.svg)}
-      </svg>
-      <VideoWrapperSubseries>
-        <Video
-          autoPlay
-          loop
-          muted
-          playsInline
-          controls={false}
-          src={props.url}
-        />
-      </VideoWrapperSubseries>
-    </SVGWrapper>
-  </WholeWrapper>
-)
+const VanguardIntroVideo = styled.video`
+  max-height: 98%;
+`
 
-// const VideoSubseries = styled.video`
-//   max-height: 96%;
-// `
+const PrimarySeriesWrapper = styled(Box)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+`
 
-const WholeWrapper = styled(Flex)`
+export const VanguardVideoSubSeries = props => {
+  const [ref, { height: svgHeight }] = useDimensions()
+
+  return (
+    <SubseriesWrapper>
+      <SubseriesSVGWrapper>
+        <svg
+          ref={ref}
+          viewBox="0 0 1600 900"
+          xmlns="http://www.w3.org/2000/svg"
+          fill={color("white100")}
+          width="100vw"
+          {...props}
+        >
+          {getSVGPath(props.svg)}
+        </svg>
+        <VanguardSubseriesVideoWrapper>
+          <VanguardSubseriesVideo
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls={false}
+            src={props.url}
+            svgHeight={svgHeight}
+          />
+        </VanguardSubseriesVideoWrapper>
+      </SubseriesSVGWrapper>
+    </SubseriesWrapper>
+  )
+}
+
+const VanguardSubseriesVideo = styled.video<VanguardSubseriesVideoProps>`
+  max-height: ${props => props.svgHeight}px;
+`
+
+const SubseriesWrapper = styled(Flex)`
   flex-direction: row;
   position: relative;
   min-height: 110vh;
-  margin-right: 5vw;
 `
 
-const SVGWrapper = styled(Box)`
+const SubseriesSVGWrapper = styled(Box)`
   position: absolute;
   overflow: hidden;
   height: 100%;
   width: 100%;
 `
 
-const VideoWrapperSubseries = styled(Box)`
+const VanguardSubseriesVideoWrapper = styled(Box)`
   z-index: -1;
   position: absolute;
   top: 0;
@@ -70,9 +109,7 @@ const getSVGPath = svg => {
   switch (svg) {
     case "emerging":
       return (
-        <>
-          <path d="M0,0V900H1600V0ZM1489.83,896.43,146.61,805.5,47.2,182.84,320,4.17l874.07,86,360.06,148Z" />
-        </>
+        <path d="M0,0V900H1600V0ZM1489.83,896.43,146.61,805.5,47.2,182.84,320,4.17l874.07,86,360.06,148Z" />
       )
     case "getting-their-due":
       return (
@@ -84,29 +121,3 @@ const getSVGPath = svg => {
       )
   }
 }
-
-const VanguardVideo = props => (
-  <VideoWrapper>
-    <Video autoPlay loop muted playsInline controls={false} src={props.url} />
-  </VideoWrapper>
-)
-
-const VideoWrapper = styled(Box)`
-  height: 100%;
-  max-width: 100vw;
-  position: absolute;
-  top: 0;
-  z-index: -1;
-`
-
-const Video = styled.video`
-  max-height: 98%;
-`
-
-const VideoSVGWrapper = styled(Box)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-`
