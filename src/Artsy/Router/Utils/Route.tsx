@@ -47,9 +47,33 @@ function createRender({
     if (!props) {
       if (fetchIndicator === "spinner") {
         return <RouteSpinner />
-      } else if (fetchIndicator === "overlay") {
+
         // TODO: At some point  we might want to make this a little fancier. If
         // undefined  is returned here, then we defer to `RenderStatus` component.
+      } else if (fetchIndicator === "overlay") {
+        /*
+          In attempting to avoid the use of <StaticContainer> in RenderStatus.tsx,
+          which freezes the component tree with `shouldComponentUpdate = false`,
+          we stored the previously-rendered component and props in a variable and
+          instead of returning undefined here, we returned <PrevComponent {...prevProps} />.
+
+          However, when the component is rendered by react, it errors out because
+          the data in prevProps has seemingly been garbage collected.
+
+          Relay has the ability to `retain` data in the store. We should investigate,
+          which would give us greater control over our component tree when top-level
+          route transitions occur.
+
+          See: https://graphql.slack.com/archives/C0BEXJLKG/p1561741782163900
+
+          export const setLocal = (query: GraphQLTaggedNode, localData: object) => {
+            const request = getRequest(query);
+            const operation = createOperationDescriptor(request, {});
+
+            env.commitPayload(operation, localData);
+            env.retain(operation.root);  // <== here @en_js magic :wink:
+          };
+        */
 
         return
       } else {

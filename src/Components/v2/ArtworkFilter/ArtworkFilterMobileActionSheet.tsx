@@ -2,13 +2,13 @@ import { Box, Button, Sans, Spacer } from "@artsy/palette"
 import { MobileTopBar } from "Components/v2"
 import React, { SFC } from "react"
 import styled from "styled-components"
-import { useFilterContext } from "./ArtworkFilterContext"
+import { useArtworkFilterContext } from "./ArtworkFilterContext"
 
 export const ArtworkFilterMobileActionSheet: SFC<{
   children: JSX.Element
   onClose: () => void
 }> = ({ children, onClose }) => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
 
   return (
     <Container mt={6}>

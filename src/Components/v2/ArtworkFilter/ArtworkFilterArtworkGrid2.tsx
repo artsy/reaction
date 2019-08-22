@@ -1,36 +1,31 @@
 import { Box, Spacer } from "@artsy/palette"
-import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
-import { AnalyticsSchema, useSystemContext, useTracking } from "Artsy"
-import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+
+import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
+import { useSystemContext } from "Artsy"
+import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
-import { useFilterContext } from "./ArtworkFilterContext"
-import { ArtworkFilterZeroState } from "./ArtworkFilterZeroState"
-
-// TODO: Wire up
-// import { SortFilter } from "./ArtworkFilterArtworkGridSort"
+import { useArtworkFilterContext } from "./ArtworkFilterContext"
+import { SortFilter } from "./ArtworkFilters/SortFilter"
 
 interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
   filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
   isLoading?: boolean
   relay: RelayRefetchProp
-  term: string
 }
 
 const ArtworkFilterArtworkGrid: React.FC<
   ArtworkFilterArtworkGridProps
 > = props => {
-  const { trackEvent } = useTracking()
   const { user, mediator } = useSystemContext()
-  const context = useFilterContext()
+  const context = useArtworkFilterContext()
 
   const {
     columnCount,
     filtered_artworks: { artworks },
-    term,
   } = props
 
   const {
@@ -55,13 +50,7 @@ const ArtworkFilterArtworkGrid: React.FC<
 
   return (
     <>
-      {/*
-        // TODO: Wire up sort filter, depending on needs (collect, collections, artist; not search)
-
-        <Box pb={2}>
-          <SortFilter />
-        </Box>
-      */}
+      <SortFilter />
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
           artworks={artworks as any}
@@ -71,17 +60,11 @@ const ArtworkFilterArtworkGrid: React.FC<
           user={user}
           mediator={mediator}
           onClearFilters={context.resetFilters}
-          emptyStateComponent={<ArtworkFilterZeroState term={term} />}
+          emptyStateComponent={context.ZeroState && <context.ZeroState />}
           onBrickClick={artwork => {
-            trackEvent({
-              // FIXME: Figure out how to pass in granular tracking to grid
-              action_type:
-                AnalyticsSchema.ActionType.SelectedItemFromSearchPage,
-              query: props.term,
-              item_type: "Artwork",
-              item_id: artwork.id,
-              destination_path: artwork.href,
-            })
+            if (context.onArtworkBrickClick) {
+              context.onArtworkBrickClick(artwork, props)
+            }
           }}
         />
 
