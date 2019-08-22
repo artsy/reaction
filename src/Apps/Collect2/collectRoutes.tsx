@@ -3,75 +3,93 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
-import { buildUrlForCollectionApp } from "./Utils/urlBuilder"
 
 import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
 import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
+import {
+  buildUrlForCollectApp,
+  buildUrlForCollectionApp,
+} from "./Utils/urlBuilder"
+
+const initializeVariablesWithFilterState = (params, props) => {
+  const initialFilterState = props.location ? props.location.query : {}
+  if (params.medium) {
+    initialFilterState.medium = params.medium
+    if (props.location.query) {
+      props.location.query.medium = params.medium
+    }
+  }
+
+  return { sort: "-decayed_merch", ...initialFilterState, ...params }
+}
+
 export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
-    Component: CollectApp,
-    fetchIndicator: "overlay",
-    prepareVariables: initializeVariablesWithFilterState,
+    Component: props => {
+      return (
+        <AnalyticsProvider
+          {...props}
+          Component={CollectApp}
+          urlBuilder={buildUrlForCollectApp}
+        />
+      )
+    },
     query: graphql`
-      query collectRoutes_ArtworkFilterQuery(
-        $acquireable: Boolean
-        $artist_id: String
+      query collectRoutes_CollectAppQuery(
+        $medium: String
+        $major_periods: [String]
+        $partner_id: ID
+        $for_sale: Boolean
+        $sort: String
         $at_auction: Boolean
+        $acquireable: Boolean
+        $offerable: Boolean
+        $inquireable_only: Boolean
+        $price_range: String
+        $height: String
+        $width: String
+        $dimension_range: String
+        $artist_id: String
         $attribution_class: [String]
         $color: String
-        $for_sale: Boolean
-        $height: String
-        $inquireable_only: Boolean
-        $major_periods: [String]
-        $medium: String
-        $offerable: Boolean
         $page: Int
-        $partner_id: ID
-        $price_range: String
-        $sort: String
-        $keyword: String
-        $width: String
       ) {
+        viewer {
+          ...Collect_viewer
+            @arguments(
+              medium: $medium
+              major_periods: $major_periods
+              partner_id: $partner_id
+              for_sale: $for_sale
+              sort: $sort
+              at_auction: $at_auction
+              acquireable: $acquireable
+              offerable: $offerable
+              inquireable_only: $inquireable_only
+              price_range: $price_range
+              height: $height
+              width: $width
+              dimension_range: $dimension_range
+              artist_id: $artist_id
+              attribution_class: $attribution_class
+              color: $color
+              page: $page
+            )
+        }
         marketingCollections(size: 6) {
           ...Collect_marketingCollections
         }
-
-        filterArtworks: filter_artworks(aggregations: [TOTAL], sort: $sort) {
-          ...SeoProductsForArtworks_artworks
-        }
-
-        viewer {
-          ...ArtworkFilter_viewer
-            @arguments(
-              acquireable: $acquireable
-              artist_id: $artist_id
-              at_auction: $at_auction
-              attribution_class: $attribution_class
-              color: $color
-              for_sale: $for_sale
-              height: $height
-              inquireable_only: $inquireable_only
-              keyword: $keyword
-              major_periods: $major_periods
-              medium: $medium
-              offerable: $offerable
-              page: $page
-              partner_id: $partner_id
-              price_range: $price_range
-              sort: $sort
-              width: $width
-            )
-        }
       }
     `,
+    prepareVariables: initializeVariablesWithFilterState,
+    fetchIndicator: "overlay",
   },
   {
     path: "/collections",
     Component: CollectionsApp,
-    fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
         categories: marketingCategories {
@@ -79,6 +97,7 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
+    fetchIndicator: "overlay",
   },
   {
     path: "/collection/:slug",
@@ -91,8 +110,6 @@ export const collectRoutes: RouteConfig[] = [
         />
       )
     },
-    prepareVariables: initializeVariablesWithFilterState,
-    fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionApp2Query(
         $slug: String!
@@ -130,25 +147,7 @@ export const collectRoutes: RouteConfig[] = [
         }
       }
     `,
+    prepareVariables: initializeVariablesWithFilterState,
+    fetchIndicator: "overlay",
   },
 ]
-
-function initializeVariablesWithFilterState(params, props) {
-  const initialFilterState = props.location ? props.location.query : {}
-
-  if (params.medium) {
-    initialFilterState.medium = params.medium
-
-    if (props.location.query) {
-      props.location.query.medium = params.medium
-    }
-  }
-
-  const state = {
-    sort: "-decayed_merch",
-    ...initialFilterState,
-    ...params,
-  }
-
-  return state
-}

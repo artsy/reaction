@@ -5,18 +5,14 @@ import React from "react"
 import { RouterLink } from "../RouterLink"
 
 describe("RouterLink", () => {
-  const getWrapper = async (props = {}) => {
-    return await mount(
+  it("uses the <Link> component if within a router context", async () => {
+    const wrapper = await mount(
       <MockRouter
         routes={[
           {
             path: "/",
             Component: () => {
-              return (
-                <RouterLink to="/foo" {...props}>
-                  Foo
-                </RouterLink>
-              )
+              return <RouterLink to="/foo">Foo</RouterLink>
             },
           },
         ]}
@@ -28,10 +24,7 @@ describe("RouterLink", () => {
         // Guard against enzyme == null, which is the first render pass
       }
     })
-  }
 
-  it("uses the <Link> component if within a router context", async () => {
-    const wrapper = await getWrapper()
     expect(wrapper.find(Link).length).toEqual(1)
   })
 
@@ -39,11 +32,5 @@ describe("RouterLink", () => {
     const wrapper = mount(<RouterLink to="/foo">Foo</RouterLink>)
     expect(wrapper.find(Link).length).toEqual(0)
     expect(wrapper.find("a").length).toEqual(1)
-  })
-
-  it("prunes invalid props from being passed to dom", async () => {
-    const wrapper = await getWrapper({ hey: true, you: true })
-    console.log(wrapper.find(Link).props())
-    expect(Object.keys(wrapper.find("a").props())).not.toContain(["hey", "you"])
   })
 })

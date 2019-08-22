@@ -1,4 +1,4 @@
-import { ArtworkFilters } from "../ArtworkFilterContext"
+import { Filters } from "../ArtworkFilterContext"
 
 export const MIN_PRICE = 50
 export const MAX_PRICE = 50000
@@ -8,7 +8,7 @@ export const MIN_WIDTH = 1
 export const MAX_WIDTH = 120
 
 export const rangeToTuple: (
-  state: ArtworkFilters,
+  state: Filters,
   range: string
 ) => [number, number] = (state, range) => {
   let minStr: string

@@ -2,12 +2,7 @@ export const isDefaultFilter: (name: string, value: any) => boolean = (
   name,
   value
 ) => {
-  if (!value) {
-    return false
-  }
-
   switch (true) {
-    case name === "attribution_class":
     case name === "major_periods":
       return value.length === 0
     case name === "sort":
