@@ -46,6 +46,28 @@ describe("ArtworkSidebarCommercial", () => {
     commitMutation.mockReset()
   })
 
+  it("displays if the artwork price includes tax", async () => {
+    const artwork = Object.assign(
+      {},
+      { ...ArtworkSingleEditionHiddenAvailability, priceIncludesTax: true }
+    )
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).toContain("VAT included in price")
+  })
+
+  it("does not display artwork price includes tax if untrue", async () => {
+    const artwork = Object.assign(
+      {},
+      { ...ArtworkSingleEditionHiddenAvailability, priceIncludesTax: false }
+    )
+
+    const wrapper = await getWrapper(artwork)
+
+    expect(wrapper.text()).not.toContain("VAT included in price")
+  })
+
   it("displays singe editioned hidden availability inquire work", async () => {
     const artwork = Object.assign({}, ArtworkSingleEditionHiddenAvailability)
 
