@@ -50,7 +50,7 @@ export const RouterLink: React.FC<LinkProps> = (
         href={to as string}
         className={props.className}
         style={props.style}
-        {...handlers}
+        {...props}
       >
         {children}
       </a>

@@ -135,7 +135,7 @@ export const ArtworkFilterContextProvider: React.FC<
 
     setFilter: (name, val) => {
       if (onFilterClick) {
-        onFilterClick(name, val, artworkFilterState)
+        onFilterClick(name, val, { ...artworkFilterState, [name]: val })
       }
 
       dispatch({

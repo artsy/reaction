@@ -8,7 +8,8 @@ import {
   RelayRefetchProp,
 } from "react-relay"
 
-import { AnalyticsSchema, useSystemContext, useTracking } from "Artsy"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { usePrevious } from "Utils/Hooks/usePrevious"
 import { Media } from "Utils/Responsive"

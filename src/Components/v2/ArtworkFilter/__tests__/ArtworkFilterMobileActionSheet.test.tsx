@@ -30,6 +30,23 @@ describe("ArtworkFilterMobileActionSheet", () => {
     )
   }
 
+  it("contains correct UI elements", () => {
+    const wrapper = getWrapper()
+    expect(
+      wrapper
+        .find("Button")
+        .first()
+        .text()
+    ).toEqual("Reset")
+    expect(wrapper.html()).toContain("Filter")
+    expect(
+      wrapper
+        .find("Button")
+        .last()
+        .text()
+    ).toEqual("Apply")
+  })
+
   it("resets filters to defaults on `Reset` button click", () => {
     const wrapper = getWrapper({
       filters: {
