@@ -1,3 +1,15 @@
+# v17.6.0 (Thu Aug 22 2019)
+
+#### 🚀  Enhancement
+
+- Revert "[Refactor] Replace <ArtworkFilter> in /collect " [#2732](https://github.com/artsy/reaction/pull/2732) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.5.3 (Thu Aug 22 2019)
 
 #### 🐛  Bug Fix
