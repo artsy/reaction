@@ -51,7 +51,7 @@ export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
       </Toggle>
 
       <Toggle label="Time period">
-        <Flex flexDirection="column" alignItems="center" my={1}>
+        <Flex flexDirection="column" my={1}>
           <TimePeriodFilter
             timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
           />

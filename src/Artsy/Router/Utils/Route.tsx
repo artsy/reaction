@@ -61,7 +61,7 @@ function createRender({
           the data in prevProps has seemingly been garbage collected.
 
           Relay has the ability to `retain` data in the store. We should investigate,
-          which wouold give us greater control over our component tree when top-level
+          which would give us greater control over our component tree when top-level
           route transitions occur.
 
           See: https://graphql.slack.com/archives/C0BEXJLKG/p1561741782163900

@@ -20,7 +20,8 @@ export const RouterLink: React.FC<LinkProps> = (
 ) => {
   const isRouterContext = Boolean(context.router)
 
-  // Only pass found-router specific props across
+  // Only pass found-router specific props across, props that conform to the
+  // link API found here: https://github.com/4Catalyzer/found#links
   const handlers = Object.keys(props).reduce((acc, prop) => {
     if (prop.startsWith("on")) {
       acc.push(prop)

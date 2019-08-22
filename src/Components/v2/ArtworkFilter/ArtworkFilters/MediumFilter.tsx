@@ -25,7 +25,12 @@ export const MediumFilter: FC<Props> = props => {
     >
       {allowedMediums.map((medium, index) => {
         return (
-          <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
+          <Radio
+            key={index}
+            my={0.3}
+            value={medium.id.toLocaleLowerCase()}
+            label={medium.name}
+          />
         )
       })}
     </RadioGroup>

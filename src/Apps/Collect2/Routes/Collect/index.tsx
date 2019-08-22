@@ -82,9 +82,10 @@ export const CollectApp = track({
             <h1>Collect art and design online</h1>
           </Serif>
 
+          <Separator mt={2} mb={[2, 2, 2, 4]} />
+
           {showCollectionHubs && (
             <>
-              <Separator mt={2} mb={[2, 2, 2, 4]} />
               <CollectionsHubsNav
                 marketingCollections={props.marketingCollections}
               />
