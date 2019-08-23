@@ -1,3 +1,22 @@
+# v17.6.1 (Fri Aug 23 2019)
+
+#### 🐛  Bug Fix
+
+- Add Reponsiveness to Primary and Subseries SVG Videos [#2729](https://github.com/artsy/reaction/pull/2729) ([@ashleyjelks](https://github.com/ashleyjelks))
+- New PR for improving CSS [#2734](https://github.com/artsy/reaction/pull/2734) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### 🏠  Internal
+
+- Update dep webpack-bundle-analyzer from 3.3.2 to v3.4.1 [#2733](https://github.com/artsy/reaction/pull/2733) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.6.0 (Thu Aug 22 2019)
 
 #### 🚀  Enhancement
