@@ -1,7 +1,7 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
-import { VanguardVideoSubSeries } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
+import { VanguardVideoSubSeries } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoSubseries"
 import { ArticleData } from "Components/Publishing/Typings"
 import { times } from "lodash"
 import React from "react"

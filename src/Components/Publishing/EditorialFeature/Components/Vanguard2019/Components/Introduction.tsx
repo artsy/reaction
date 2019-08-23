@@ -1,10 +1,10 @@
 import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
-import { VanguardVideoPrimarySeries } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardVideoBackground"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+import { VanguardVideoPrimarySeries } from "./VanguardVideoPrimarySeries"
 
 export const VanguardIntroduction: React.SFC<{
   article: ArticleData
