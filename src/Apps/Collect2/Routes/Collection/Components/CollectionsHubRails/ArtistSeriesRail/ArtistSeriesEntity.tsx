@@ -23,11 +23,11 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   } = member
   const bgImages = hits.map(hit => hit.image.url)
   const imageSize =
-    bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+    bgImages.length === 1 ? 221 : bgImages.length === 2 ? 109 : 72
   return (
-    <Container p={0.5} m={0.5}>
+    <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink to={`/collection/${slug}`}>
-        <ImgWrapper pb={1}>
+        <ImgWrapper>
           {bgImages.length ? (
             bgImages.map((url, i) => {
               const artistName = get(hits[i].artist, a => a.name)
@@ -42,12 +42,16 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
               )
             })
           ) : (
-            <ArtworkImage src={headerImage} width={265} />
+            <ArtworkImage src={headerImage} width={221} />
           )}
         </ImgWrapper>
-        {<CollectionTitle size="3">{title}</CollectionTitle>}
+        {
+          <CollectionTitle pt={1} pb={0.5} size="3">
+            {title}
+          </CollectionTitle>
+        }
         {price_guidance && (
-          <Sans size="2" color="black60">
+          <Sans size="2" color="black60" pb={1}>
             From $
             {currency(price_guidance, {
               separator: ",",
@@ -79,8 +83,13 @@ const ImgOverlay = styled(Box)<{ width: number }>`
   z-index: 7;
 `
 
-const Container = styled(Box)`
+export const Container = styled(Box)`
   border: 1px solid ${color("black10")};
+  border-radius: 2px;
+  &:hover {
+    text-decoration: none;
+    border: 1px solid ${color("black60")};
+  }
 `
 
 const SingleImgContainer = styled(Box)`
@@ -97,7 +106,7 @@ const CollectionTitle = styled(Serif)`
 `
 
 export const ImgWrapper = styled(Flex)`
-  width: 265px;
+  width: 221px;
 `
 
 export const StyledLink = styled(RouterLink)`
@@ -106,10 +115,6 @@ export const StyledLink = styled(RouterLink)`
 
   &:hover {
     text-decoration: none;
-
-    ${CollectionTitle} {
-      text-decoration: underline;
-    }
   }
 `
 

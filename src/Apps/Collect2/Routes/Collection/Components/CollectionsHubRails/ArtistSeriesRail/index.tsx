@@ -1,10 +1,11 @@
 import { Box, color, Serif } from "@artsy/palette"
 import { ArtistSeriesRail_collectionGroup } from "__generated__/ArtistSeriesRail_collectionGroup.graphql"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { Carousel } from "Components/v2/Carousel"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { useWindowSize } from "Utils/Hooks/useWindowSize"
 import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesEntity"
 
 export interface ArtistSeriesRailProps {
@@ -14,16 +15,28 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
+  const broswerWidth = useWindowSize()
+
+  let groupCells: number
+
+  if (sd.IS_MOBILE) {
+    groupCells = 1
+  } else {
+    if (broswerWidth > 1024) {
+      groupCells = 4
+    } else groupCells = 3
+  }
+
+  const isSmallerViewpoint = broswerWidth < 1024
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
         Trending Artist Series
       </Serif>
       <Carousel
-        height="200px"
-        width="500px"
+        height="250px"
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
+          groupCells,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
@@ -34,13 +47,29 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
           return <ArtistSeriesEntity member={slide} />
         }}
         renderLeftArrow={({ Arrow }) => {
+          const smallerViewpointAndFourItems =
+            isSmallerViewpoint && members.length === 4
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {members.length > 4 ? (
+                <Arrow />
+              ) : (
+                smallerViewpointAndFourItems && <Arrow showArrow={true} />
+              )}
+            </ArrowContainer>
           )
         }}
         renderRightArrow={({ Arrow }) => {
+          const smallerViewpointAndFourItems =
+            isSmallerViewpoint && members.length === 4
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {members.length > 4 ? (
+                <Arrow />
+              ) : (
+                smallerViewpointAndFourItems && <Arrow showArrow={true} />
+              )}
+            </ArrowContainer>
           )
         }}
       />
@@ -54,10 +83,6 @@ const Content = styled(Box)`
 
 export const ArrowContainer = styled(Box)`
   align-self: flex-start;
-
-  ${ArrowButton} {
-    height: 60%;
-  }
 `
 
 export const ArtistSeriesRailContainer = createFragmentContainer(
