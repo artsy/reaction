@@ -15,6 +15,9 @@ export type ReviewSubmitOfferOrderMutationResponse = {
             readonly order?: {
                 readonly state: CommerceOrderStateEnum;
             };
+            readonly actionData?: {
+                readonly clientSecret: string;
+            };
             readonly error?: {
                 readonly type: string;
                 readonly code: string;
@@ -42,6 +45,11 @@ mutation ReviewSubmitOfferOrderMutation(
           __typename
           state
           __id: id
+        }
+      }
+      ... on CommerceOrderRequiresAction {
+        actionData {
+          clientSecret
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -112,20 +120,44 @@ v2 = {
   ]
 },
 v3 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOrderRequiresAction",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "actionData",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommerceOrderActionData",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "clientSecret",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "state",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -137,7 +169,7 @@ return {
   "operationKind": "mutation",
   "name": "ReviewSubmitOfferOrderMutation",
   "id": null,
-  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: CommerceSubmitOrderWithOfferInput!\n) {\n  commerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation ReviewSubmitOfferOrderMutation(\n  $input: CommerceSubmitOrderWithOfferInput!\n) {\n  commerceSubmitOrderWithOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on CommerceOrderRequiresAction {\n        actionData {\n          clientSecret\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -165,6 +197,7 @@ return {
             "plural": false,
             "selections": [
               v2,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -178,8 +211,8 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      v4,
+                      v5
                     ]
                   }
                 ]
@@ -213,8 +246,9 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
+              v6,
               v2,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -228,9 +262,9 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v5,
-                      v3,
-                      v4
+                      v6,
+                      v4,
+                      v5
                     ]
                   }
                 ]
@@ -243,5 +277,5 @@ return {
   }
 };
 })();
-(node as any).hash = '7a69ae03903af1cdf07b4db842c8572d';
+(node as any).hash = 'cf5774c904680b91ec8f15d2bef60471';
 export default node;
