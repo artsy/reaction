@@ -9,6 +9,9 @@ import {
 } from "../OtherCollectionEntity"
 
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({}),
+}))
 
 jest.mock("found", () => ({
   Link: ({ children, ...props }) => <div {...props}>{children}</div>,

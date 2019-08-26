@@ -12,6 +12,9 @@ import {
 } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({}),
+}))
 
 jest.mock("found", () => ({
   Link: ({ children, ...props }) => <div {...props}>{children}</div>,
@@ -130,7 +133,7 @@ describe("FeaturedCollectionEntity", () => {
     const firstEntity = component.find(FeaturedCollectionEntity).at(0)
 
     expect(firstEntity.text()).toMatch("From SpongeBob SquarePants to Snoopy")
-    expect(firstEntity.text()).toMatch("Starting at $60")
+    expect(firstEntity.text()).toMatch("From $60")
     const featuredImage = component.find(FeaturedImage).at(0)
     expect(featuredImage.getElement().props.src).toBe(
       "http://files.artsy.net/images/cartoons_thumbnail.png"
