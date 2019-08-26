@@ -1,3 +1,27 @@
+# v17.7.1 (Mon Aug 26 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard responsive QA [#2738](https://github.com/artsy/reaction/pull/2738) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.7.0 (Mon Aug 26 2019)
+
+#### 🚀  Enhancement
+
+- Adds lazyLoad to ArtistHeader and ArtistCollectionRail [#2737](https://github.com/artsy/reaction/pull/2737) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v17.6.1 (Fri Aug 23 2019)
 
 #### 🐛  Bug Fix

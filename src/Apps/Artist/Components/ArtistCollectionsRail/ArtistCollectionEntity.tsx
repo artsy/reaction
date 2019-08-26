@@ -1,4 +1,4 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -11,6 +11,7 @@ import { get } from "Utils/get"
 
 export interface CollectionProps {
   collection: ArtistCollectionEntity_collection
+  lazyLoad: boolean
 }
 
 @track()
@@ -60,12 +61,19 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
                       src={url}
                       width={imageSize}
                       alt={alt}
+                      lazyLoad={this.props.lazyLoad}
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </SingleImgContainer>
                 )
               })
             ) : (
-              <ArtworkImage src={headerImage} width={265} />
+              <ArtworkImage
+                src={headerImage}
+                lazyLoad={this.props.lazyLoad}
+                width={265}
+                style={{ objectFit: "cover", objectPosition: "center" }}
+              />
             )}
           </ImgWrapper>
 
@@ -121,12 +129,10 @@ const ImgOverlay = styled(Box)<{ width: number }>`
   z-index: 7;
 `
 
-export const ArtworkImage = styled.img<{ width: number }>`
+export const ArtworkImage = styled(Image)<{ width: number }>`
   width: ${({ width }) => width}px;
   height: 125px;
   background-color: ${color("black10")};
-  object-fit: cover;
-  object-position: center;
   opacity: 0.9;
 `
 

@@ -6,8 +6,10 @@ import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
 
 /**
- * Note: we have the commercial license, which allows us to use this in our MIT licensed codebase,
+ * Notes:
+ * - We have the commercial license, which allows us to use this in our MIT licensed codebase,
  * but non-Artsy devs would technically be using the gplv3 version.
+ * - For LazyLoad use Palette's Image lazyLoad prop instead of Flickities
  */
 
 interface CarouselProps {
@@ -115,7 +117,6 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
         draggable: false,
         freeScroll: false,
         groupCells: true,
-        lazyLoad: false,
         pageDots: false,
         wrapAround: false,
         ...props.options,
@@ -173,7 +174,6 @@ export class BaseCarousel extends React.Component<
    * Options to pass to underlying flickity component
    */
   options: FlickityOptions = {
-    lazyLoad: true,
     prevNextButtons: false,
   }
 
@@ -350,9 +350,16 @@ export class BaseCarousel extends React.Component<
     const { data, height, oneSlideVisible, render } = this.props
 
     // FIXME: During SSR pass want to hide other images. Work around for lack
-    // of SSR support in Flickity.
-    const carouselImages =
-      typeof window === "undefined" && oneSlideVisible ? [data[0]] : data
+    // of SSR support in Flickity. This will only render the first 6 slides on SRR pass.
+    const isServer = typeof window === "undefined"
+    let carouselImages
+    if (isServer && oneSlideVisible) {
+      carouselImages = [data[0]]
+    } else if (isServer && data.length > 5) {
+      carouselImages = data.slice(0, 6)
+    } else {
+      carouselImages = data
+    }
 
     return (
       <>
