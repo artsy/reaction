@@ -1,3 +1,15 @@
+# v17.7.1 (Mon Aug 26 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard responsive QA [#2738](https://github.com/artsy/reaction/pull/2738) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v17.7.0 (Mon Aug 26 2019)
 
 #### 🚀  Enhancement
