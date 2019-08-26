@@ -21,19 +21,19 @@ export const VanguardSeriesWrapper: React.SFC<{
   const isVideo = url.includes("mp4")
 
   return (
-    <Box id={slugifiedTitle}>
+    <Box id={slugifiedTitle} position="relative">
       <Box
         pt={50}
         // prevents overlapping nav on jump-link
       />
-      <Box height="95vh" mb={80}>
-        {isVideo && <VanguardVideoSubSeries svg={slugifiedTitle} url={url} />}
-        <Box mx="auto" maxWidth={1400} px={4}>
+      <Box mb={80}>
+        <SubSeriesHeaderText mx="auto" maxWidth={1300} px={4}>
           <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
           <Title size="16" textAlign="center" element="h2">
             {title}
           </Title>
-        </Box>
+        </SubSeriesHeaderText>
+        {isVideo && <VanguardVideoSubSeries svg={slugifiedTitle} url={url} />}
       </Box>
       <Box mx="auto" maxWidth="65%" px={4} pb={150}>
         <Flex flexDirection="column" alignItems="center">
@@ -61,6 +61,13 @@ export const VanguardSeriesWrapper: React.SFC<{
     </Box>
   )
 }
+
+const SubSeriesHeaderText = styled(Box)`
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+`
 
 const Title = styled(Sans)`
   text-transform: uppercase;
