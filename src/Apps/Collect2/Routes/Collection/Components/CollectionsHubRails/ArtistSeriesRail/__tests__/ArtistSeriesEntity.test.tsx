@@ -1,21 +1,32 @@
 import { CollectionsHubLinkedCollections } from "Apps/__tests__/Fixtures/Collections"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
-import { ArtistSeriesEntity, ArtworkImage } from "../ArtistSeriesEntity"
+import {
+  ArtistSeriesEntity,
+  ArtworkImage,
+  StyledLink,
+} from "../ArtistSeriesEntity"
 
-jest.unmock("react-tracking")
+jest.mock("Artsy/Analytics/useTracking")
 
 jest.mock("found", () => ({
-  Link: props => <div>{props.children}</div>,
+  Link: ({ children, ...props }) => <div {...props}>{children}</div>,
 }))
 
 describe("ArtistSeriesEntity", () => {
   let props
+  const trackEvent = jest.fn()
 
   beforeEach(() => {
     props = {
       member: CollectionsHubLinkedCollections.linkedCollections[0].members[0],
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("showing the correct text, price guidance, amount of hits and image", () => {
@@ -93,5 +104,34 @@ describe("ArtistSeriesEntity", () => {
     delete props.member.price_guidance
     const component = mount(<ArtistSeriesEntity {...props} />)
     expect(component.text()).not.toMatch("From $")
+  })
+
+  describe("Tracking", () => {
+    it("Tracks collection click", () => {
+      const component = mount(<ArtistSeriesEntity {...props} itemNumber={0} />)
+      // const mockedEvent = { target: {} }
+      component
+        .find(StyledLink)
+        .at(0)
+        .simulate("click")
+
+      console.log(
+        "to:",
+        component
+          .find(StyledLink)
+          .at(0)
+          .props().to
+      )
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Click",
+        context_page: "Collection",
+        context_module: "ArtistCollectionsRail",
+        context_page_owner_type: "Collection",
+        type: "thumbnail",
+        destination_path: "undefined/collection/Many-Flags",
+        item_number: 0,
+      })
+    })
   })
 })

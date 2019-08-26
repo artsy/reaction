@@ -48,6 +48,12 @@ export interface AuthenticationInteraction extends Interaction {
   intent?: string
 
   /*
+   * item number , right now it is used in colelctionhub to
+   * track index of the item in the carousel.
+   */
+  item_number?: number
+
+  /*
    *  The type of action that triggered the modal (eg: click, timed)
    */
   trigger?: string

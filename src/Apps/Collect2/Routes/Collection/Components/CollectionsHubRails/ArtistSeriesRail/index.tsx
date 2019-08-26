@@ -1,7 +1,9 @@
 import { Box, color, Serif } from "@artsy/palette"
 import { ArtistSeriesRail_collectionGroup } from "__generated__/ArtistSeriesRail_collectionGroup.graphql"
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { Carousel } from "Components/v2/Carousel"
-import React from "react"
+import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -28,6 +30,28 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   }
 
   const isSmallerViewpoint = broswerWidth < 1024
+
+  const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Impression,
+      context_page: AnalyticsSchema.PageName.CollectionPage,
+      context_module: AnalyticsSchema.ContextModule.ArtistCollectionsRail,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Collection,
+    })
+  }, [])
+
+  const trackArrowClick = () => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: AnalyticsSchema.ContextModule.ArtistCollectionsRail,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Collection,
+      context_page: AnalyticsSchema.PageName.CollectionPage,
+      type: AnalyticsSchema.Type.Button,
+      subject: AnalyticsSchema.Subject.ClickedNextButton,
+    })
+  }
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
@@ -43,9 +67,10 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
           draggable: sd.IS_MOBILE ? true : false,
         }}
         data={members}
-        render={slide => {
-          return <ArtistSeriesEntity member={slide} />
+        render={(slide, slideIndex) => {
+          return <ArtistSeriesEntity member={slide} itemNumber={slideIndex} />
         }}
+        onArrowClick={() => trackArrowClick()}
         renderLeftArrow={({ Arrow }) => {
           const smallerViewpointAndFourItems =
             isSmallerViewpoint && members.length === 4

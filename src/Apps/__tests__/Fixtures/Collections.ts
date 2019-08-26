@@ -279,6 +279,7 @@ export const CollectionsHubLinkedCollections = {
       name: "Artist Series",
       members: [
         {
+          slug: "Many-Flags",
           title: "Flags unique collections",
           price_guidance: 1000,
           artworks: {
