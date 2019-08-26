@@ -130,7 +130,7 @@ export const FeaturedCollectionEntity: React.FC<
         <CollectionTitle size="4" mt={1}>
           {title}
         </CollectionTitle>
-        <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
+        <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
             disabled
