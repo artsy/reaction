@@ -54,6 +54,7 @@ export class LargeArtworkImageBrowser extends React.Component<
           showArrows={hasMultipleImages}
           options={options}
           oneSlideVisible
+          height="60vh"
           setCarouselRef={setCarouselRef}
           data={carouselImages}
           renderLeftArrow={({ flickity }) => (
