@@ -157,13 +157,11 @@ export class VanguardArtistWrapper extends React.Component<
 
 export const InvertedSerif = styled(Serif)`
   mix-blend-mode: difference;
-  background: ${color("black100")};
   color: ${color("white100")};
 `
 
 export const InvertedSans = styled(Sans)`
   mix-blend-mode: difference;
-  background: ${color("black100")};
   color: ${color("white100")};
 `
 
@@ -199,20 +197,17 @@ const ArtistContainer = styled(Box)`
   ${ShareContainer},
   ${StyledText} {
     mix-blend-mode: difference;
-    background: ${color("black100")};
     color: ${color("white100")};
   }
 
   ${CaptionContainer} {
     p {
       mix-blend-mode: difference;
-      background: ${color("black100")};
       color: ${color("white100")};
     }
 
     a {
       mix-blend-mode: difference;
-      background: ${color("black100")};
       color: ${color("white100")};
       background-image: linear-gradient(
         to bottom,
@@ -228,12 +223,10 @@ const ArtistContainer = styled(Box)`
 
   ${StyledArtworkCaption} {
     mix-blend-mode: difference;
-    background: ${color("black100")};
     color: ${color("white100")};
 
     a {
       mix-blend-mode: difference;
-      background: ${color("black100")};
       color: ${color("white100")};
     }
   }
@@ -241,7 +234,6 @@ const ArtistContainer = styled(Box)`
   ${StyledText} {
     a {
       mix-blend-mode: difference;
-      background: ${color("black100")};
       color: ${color("white100")};
       background-image: linear-gradient(
         to bottom,
