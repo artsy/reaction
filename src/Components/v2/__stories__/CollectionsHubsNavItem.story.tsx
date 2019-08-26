@@ -34,12 +34,8 @@ storiesOf("Components/CollectionsHubsNavItem", module)
         href="google.com"
         src="http://placekitten.com/300/200"
         alt="kitty kitty meow meow"
-        title={
-          <Serif size="5" element="h4">
-            I miss my little kitty kat
-          </Serif>
-        }
-        subtitle={<Serif size="3">And his little baby fur feet</Serif>}
+        title={<Serif size="4t">I miss my little kitty kat</Serif>}
+        subtitle={<Serif size="2">And his little baby fur feet</Serif>}
       />
     </Box>
   ))

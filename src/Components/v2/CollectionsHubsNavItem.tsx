@@ -95,7 +95,8 @@ export const ImageLink: FC<ImageLinkProps> = ({
       {React.cloneElement(title, {
         // kind of like "default props" for a cloned element.
         element: title.props.element || "h3",
-        p: title.props.p || "1",
+        mt: "1",
+        mb: "0.5",
         textAlign: "center",
         className: "title",
       })}
@@ -104,7 +105,6 @@ export const ImageLink: FC<ImageLinkProps> = ({
         React.cloneElement(subtitle, {
           // kind of like "default props" for a cloned element.
           element: title.props.element || "h4",
-          p: title.props.p || "1",
           textAlign: "center",
         })}
     </OuterLink>
