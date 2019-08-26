@@ -1,11 +1,11 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, media, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
-import { VanguardVideoPrimarySeries } from "./VanguardVideoPrimarySeries"
+import { VanguardVideoHeader } from "./VideoHeader"
 
 export const VanguardIntroduction: React.SFC<{
   article: ArticleData
@@ -17,13 +17,19 @@ export const VanguardIntroduction: React.SFC<{
 
   return (
     <IntroContainer>
-      <Box minHeight="calc(100vh - 50px)" mb={150} pt={50}>
-        <VideoWrapper>
-          {isVideo && <VanguardVideoPrimarySeries url={url} />}
-        </VideoWrapper>
+      <Box
+        minHeight="calc(100vw * 0.53)"
+        mb={[80, 100, 150]}
+        pt={[100, 100, 50, 50]}
+      >
+        {isVideo && <VanguardVideoHeader url={url} />}
 
         <Media greaterThan="xs">
-          <HeaderText pt={70} size="8" textAlign="center">
+          <HeaderText
+            pt={70}
+            size={["12", "12", "14", "16"]}
+            textAlign="center"
+          >
             The Artsy
           </HeaderText>
         </Media>
@@ -31,9 +37,23 @@ export const VanguardIntroduction: React.SFC<{
 
       <Box mx="auto" maxWidth={980} px={4}>
         <Flex flexDirection="column" alignItems="center" pb={50}>
-          <Title size="12" element="h1" textAlign="center" pb={1}>
-            The Artists To Know Right Now
-          </Title>
+          <Media greaterThanOrEqual="xl">
+            <LargeTitle size="12" element="h1" textAlign="center" pb={1}>
+              The Artists To Know Right Now
+            </LargeTitle>
+          </Media>
+
+          <Media lessThan="xl">
+            <Title
+              size={["8", "10", "12", "12"]}
+              element="h1"
+              textAlign="center"
+              pb={1}
+            >
+              The Artists To Know Right Now
+            </Title>
+          </Media>
+
           <Byline {...props} />
 
           <Box textAlign="center" pt={50}>
@@ -57,17 +77,9 @@ export const VanguardIntroduction: React.SFC<{
   )
 }
 
-const VideoWrapper = styled(Flex)`
-  flex-direction: row;
-  position: relative;
-  padding-bottom: 100px;
-  min-height: 100vh;
-`
-
 const HeaderText = styled(Sans)`
-  font-size: 100px;
   position: absolute;
-  top: 2vw;
+  top: 0;
   width: 100%;
 `
 
@@ -77,10 +89,20 @@ const IntroContainer = styled(Box)`
       display: none;
     }
   }
+
+  ${media.xs`
+    ${BylineContainer} {
+      flex-direction: column;
+      align-items: center;
+    }
+  `}
 `
 
 const Title = styled(Serif)`
   text-transform: uppercase;
-  font-size: 90px;
   line-height: 1em;
+`
+
+const LargeTitle = styled(Title)`
+  font-size: 90px;
 `

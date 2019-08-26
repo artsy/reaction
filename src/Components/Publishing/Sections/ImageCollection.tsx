@@ -139,6 +139,11 @@ export const ImageCollectionItem = styled.div<{
 
   ${pMedia.xs`
     margin-bottom: 10px;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
   `};
 `
 
