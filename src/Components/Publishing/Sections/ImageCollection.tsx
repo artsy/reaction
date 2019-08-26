@@ -130,6 +130,12 @@ export const ImageCollectionItem = styled.div<{
 }>`
   margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
   width: ${props => (props.width ? props.width + "px" : "100%")};
+  max-width: 100%;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
   ${pMedia.xs`
     margin-bottom: 10px;

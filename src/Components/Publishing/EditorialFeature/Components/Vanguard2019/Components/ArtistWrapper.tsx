@@ -18,6 +18,7 @@ import { random } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { Media } from "Utils/Responsive"
 
 export interface SVGBackgroundProps extends FlexProps {
   url?: string
@@ -97,22 +98,37 @@ export class VanguardArtistWrapper extends React.Component<
         >
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
-            <ArtistContainer pb={4} maxWidth={1000} px={4} mx="auto">
+            <ArtistContainer pb={4} maxWidth={["100vw", 1000]} px={4} mx="auto">
               <Box textAlign="center" pb={30}>
-                <ArtistTitle size="8">{title}</ArtistTitle>
-                <Box position="absolute">
-                  <Share
-                    // TODO: We may need to use custom urls for in-page routing
-                    url={getFullEditorialHref(layout, slug)}
-                    title={title}
-                    color={color("white100")}
-                  />
+                <Media greaterThanOrEqual="xl">
+                  <ArtistTitle size="12" element="h3">
+                    {title}
+                  </ArtistTitle>
+                </Media>
+
+                <Media lessThan="xl">
+                  <InvertedSerif size={["10", "12", "12"]} element="h3">
+                    {title}
+                  </InvertedSerif>
+                </Media>
+
+                <Box position="relative">
+                  {hero_section && (
+                    <InvertedSans size="4" weight="medium">
+                      {hero_section.deck}
+                    </InvertedSans>
+                  )}
+                  <Flex justifyContent={["center", "flex-start"]}>
+                    <Box position={["relative", "absolute"]} top={0}>
+                      <Share
+                        // TODO: We may need to use custom urls for in-page routing
+                        url={getFullEditorialHref(layout, slug)}
+                        title={title}
+                        color={color("white100")}
+                      />
+                    </Box>
+                  </Flex>
                 </Box>
-                {hero_section && (
-                  <InvertedSans size="4" weight="medium">
-                    {hero_section.deck}
-                  </InvertedSans>
-                )}
               </Box>
 
               <Sections
