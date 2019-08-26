@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
 import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { VanguardVideoHeader } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VideoHeader"
@@ -25,9 +25,12 @@ export const VanguardSeriesWrapper: React.SFC<{
     <Box id={slugifiedTitle} position="relative">
       <Box
         pt={50}
+        background={color("white100")}
+        zIndex={-10}
+        position="relative"
         // prevents overlapping nav on jump-link
       />
-      <Box mb={80}>
+      <Box>
         <SubSeriesHeaderText
           mx="auto"
           maxWidth={["90vw", "80vw", "80vw", 1400]}
@@ -49,19 +52,27 @@ export const VanguardSeriesWrapper: React.SFC<{
         {isVideo && <VanguardVideoHeader svg={slugifiedTitle} url={url} />}
       </Box>
 
-      <Box mx="auto" maxWidth={["90vw", "80vw", "80vw", "65%"]} px={4} pb={150}>
-        <Flex flexDirection="column" alignItems="center">
-          {series && (
-            <SubTitle size={["8", "10", "12", "12"]} element="h3" pb={2}>
-              {series.sub_title}
-            </SubTitle>
-          )}
-          <Share
-            // TODO: We may need to use custom urls here for in-page routing
-            url={getFullEditorialHref(layout, slug)}
-            title={title}
-          />
-        </Flex>
+      <Box background={color("white100")}>
+        <Box
+          mx="auto"
+          maxWidth={["90vw", "80vw", "80vw", "65%"]}
+          px={4}
+          pb={150}
+          pt={80}
+        >
+          <Flex flexDirection="column" alignItems="center">
+            {series && (
+              <SubTitle size={["8", "10", "12", "12"]} element="h3" pb={2}>
+                {series.sub_title}
+              </SubTitle>
+            )}
+            <Share
+              // TODO: We may need to use custom urls here for in-page routing
+              url={getFullEditorialHref(layout, slug)}
+              title={title}
+            />
+          </Flex>
+        </Box>
       </Box>
       {/** map sub-series artist articles */}
       {relatedArticles &&

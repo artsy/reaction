@@ -1,4 +1,4 @@
-import { Box, Flex, media, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, media, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
@@ -17,11 +17,7 @@ export const VanguardIntroduction: React.SFC<{
 
   return (
     <IntroContainer>
-      <Box
-        minHeight="calc(100vw * 0.53)"
-        mb={[80, 100, 150]}
-        pt={[100, 100, 50, 50]}
-      >
+      <Box minHeight="calc(100vw * 0.53)" pt={[100, 100, 50, 50]}>
         {isVideo && <VanguardVideoHeader url={url} />}
 
         <Media greaterThan="xs">
@@ -35,42 +31,44 @@ export const VanguardIntroduction: React.SFC<{
         </Media>
       </Box>
 
-      <Box mx="auto" maxWidth={980} px={4}>
-        <Flex flexDirection="column" alignItems="center" pb={50}>
-          <Media greaterThanOrEqual="xl">
-            <LargeTitle size="12" element="h1" textAlign="center" pb={1}>
-              The Artists To Know Right Now
-            </LargeTitle>
-          </Media>
+      <Box background={color("white100")} pt={[80, 100, 150]}>
+        <Box mx="auto" maxWidth={980} px={4}>
+          <Flex flexDirection="column" alignItems="center" pb={50}>
+            <Media greaterThanOrEqual="xl">
+              <LargeTitle size="12" element="h1" textAlign="center" pb={1}>
+                The Artists To Know Right Now
+              </LargeTitle>
+            </Media>
 
-          <Media lessThan="xl">
-            <Title
-              size={["8", "10", "12", "12"]}
-              element="h1"
-              textAlign="center"
-              pb={1}
-            >
-              The Artists To Know Right Now
-            </Title>
-          </Media>
+            <Media lessThan="xl">
+              <Title
+                size={["8", "10", "12", "12"]}
+                element="h1"
+                textAlign="center"
+                pb={1}
+              >
+                The Artists To Know Right Now
+              </Title>
+            </Media>
 
-          <Byline {...props} />
+            <Byline {...props} />
 
-          <Box textAlign="center" pt={50}>
-            <Sans size="3t" weight="medium">
-              Video by Alex John Beck
-            </Sans>
-            <Sans size="3t" weight="medium">
-              Video Editing by Nate DeYoung
-            </Sans>
-            <Sans size="3t" weight="medium">
-              Interaction Design by Wax Studios
-            </Sans>
+            <Box textAlign="center" pt={50}>
+              <Sans size="3t" weight="medium">
+                Video by Alex John Beck
+              </Sans>
+              <Sans size="3t" weight="medium">
+                Video Editing by Nate DeYoung
+              </Sans>
+              <Sans size="3t" weight="medium">
+                Interaction Design by Wax Studios
+              </Sans>
+            </Box>
+          </Flex>
+
+          <Box pb={12}>
+            <Text layout="standard" html={description} width="800px" />
           </Box>
-        </Flex>
-
-        <Box pb={12}>
-          <Text layout="standard" html={description} width="800px" />
         </Box>
       </Box>
     </IntroContainer>

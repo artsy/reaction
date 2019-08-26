@@ -1,4 +1,4 @@
-import { Flex, Sans } from "@artsy/palette"
+import { color, Flex, Sans } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -32,6 +32,8 @@ const FrameText = styled(Sans)`
   top: 50%;
   text-transform: uppercase;
   z-index: 2;
+  mix-blend-mode: difference;
+  color: ${color("white100")};
 `
 
 const FrameTextLeft = styled(FrameText)`
