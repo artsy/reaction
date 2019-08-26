@@ -1,10 +1,11 @@
-import { Box, Sans } from "@artsy/palette"
+import { Box } from "@artsy/palette"
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { last } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { VanguardFrameText } from "./Components/FrameText"
 import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
 import { VanguardTableOfContents } from "./Components/TableOfContents"
@@ -68,11 +69,13 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
           backgroundColor="white"
           title={article.title}
         />
-        <FrameTextRight size="16">2019</FrameTextRight>
-        <FrameTextLeft size="16">Vanguard</FrameTextLeft>
+
+        {/** floating title text */}
+        <VanguardFrameText />
 
         {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
+
         {/** table of contents */}
         <VanguardTableOfContents
           article={article}
@@ -97,22 +100,4 @@ const VanguardWrapper = styled(Box)`
   ${NavContainer} {
     position: fixed;
   }
-`
-
-const FrameText = styled(Sans)`
-  position: fixed;
-  top: 50%;
-  text-transform: uppercase;
-  transform-origin: center center;
-  z-index: 2;
-`
-
-const FrameTextLeft = styled(FrameText)`
-  left: -160px;
-  transform: rotate(-90deg);
-`
-
-const FrameTextRight = styled(FrameText)`
-  right: 0;
-  transform: rotate(90deg);
 `

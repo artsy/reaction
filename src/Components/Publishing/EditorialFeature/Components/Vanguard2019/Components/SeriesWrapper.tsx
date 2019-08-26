@@ -7,6 +7,7 @@ import { times } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { Media } from "Utils/Responsive"
 import { VanguardArtistWrapper } from "./ArtistWrapper"
 
 export const VanguardSeriesWrapper: React.SFC<{
@@ -21,24 +22,34 @@ export const VanguardSeriesWrapper: React.SFC<{
   const isVideo = url.includes("mp4")
 
   return (
-    <Box id={slugifiedTitle}>
+    <Box id={slugifiedTitle} position="relative">
       <Box
         pt={50}
         // prevents overlapping nav on jump-link
       />
-      <Box height="95vh" mb={80}>
-        {isVideo && <VanguardVideoSubSeries svg={slugifiedTitle} url={url} />}
-        <Box mx="auto" maxWidth={1400} px={4}>
-          <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
-          <Title size="16" textAlign="center" element="h2">
+      <Box mb={80}>
+        <SubSeriesHeaderText mx="auto" width={1400} maxWidth="80vw" px={4}>
+          <Media greaterThan="md">
+            <LargeNumeral size="12">{times(index + 1, () => "I")}</LargeNumeral>
+          </Media>
+          <Media lessThan="lg">
+            <Numeral size="12">{times(index + 1, () => "I")}</Numeral>
+          </Media>
+
+          <Title
+            size={["12", "12", "12", "16"]}
+            textAlign="center"
+            element="h2"
+          >
             {title}
           </Title>
-        </Box>
+        </SubSeriesHeaderText>
+        {isVideo && <VanguardVideoSubSeries svg={slugifiedTitle} url={url} />}
       </Box>
       <Box mx="auto" maxWidth="65%" px={4} pb={150}>
         <Flex flexDirection="column" alignItems="center">
           {series && (
-            <SubTitle size="12" element="h3" pb={2}>
+            <SubTitle size={["8", "10", "12", "12"]} element="h3" pb={2}>
               {series.sub_title}
             </SubTitle>
           )}
@@ -62,6 +73,13 @@ export const VanguardSeriesWrapper: React.SFC<{
   )
 }
 
+const SubSeriesHeaderText = styled(Box)`
+  position: absolute;
+  left: 0;
+  top: 50px;
+  right: 0;
+`
+
 const Title = styled(Sans)`
   text-transform: uppercase;
   text-align: center;
@@ -74,6 +92,14 @@ const SubTitle = styled(Serif)`
 
 const Numeral = styled(Serif)`
   position: absolute;
-  font-size: 100px;
   line-height: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+`
+
+const LargeNumeral = styled(Numeral)`
+  font-size: 100px;
 `

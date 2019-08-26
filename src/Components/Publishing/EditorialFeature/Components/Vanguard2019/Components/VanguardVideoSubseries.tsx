@@ -45,13 +45,16 @@ export const VanguardVideoSubSeries: React.SFC<Props> = props => {
 }
 
 const VanguardSubseriesVideo = styled.video<VanguardSubseriesVideoProps>`
-  max-height: ${props => props.svgHeight}px;
+  max-height: calc(${props => props.svgHeight}px - 2px);
 `
 
 const SubseriesWrapper = styled(Flex)`
   flex-direction: row;
   position: relative;
-  min-height: 110vh;
+  z-index: -1;
+
+  /* 16 x 9 aspect ratio */
+  height: calc(100vw * 0.56);
 `
 
 const SubseriesSVGWrapper = styled(Box)`
@@ -62,7 +65,7 @@ const SubseriesSVGWrapper = styled(Box)`
 `
 
 const VanguardSubseriesVideoWrapper = styled(Box)`
-  z-index: -1;
+  z-index: -10;
   position: absolute;
   top: 0;
 `

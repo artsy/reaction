@@ -253,4 +253,5 @@ const ArtistWrapper = styled(Flex)`
   position: relative;
   padding-bottom: 100px;
   min-height: 100vh;
+  z-index: 0;
 `
