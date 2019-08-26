@@ -4,6 +4,7 @@ import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+import { Media } from "Utils/Responsive"
 import { VanguardVideoPrimarySeries } from "./VanguardVideoPrimarySeries"
 
 export const VanguardIntroduction: React.SFC<{
@@ -20,10 +21,14 @@ export const VanguardIntroduction: React.SFC<{
         <VideoWrapper>
           {isVideo && <VanguardVideoPrimarySeries url={url} />}
         </VideoWrapper>
-        <HeaderText pt={70} size="8" textAlign="center">
-          The Artsy
-        </HeaderText>
+
+        <Media greaterThan="xs">
+          <HeaderText pt={70} size="8" textAlign="center">
+            The Artsy
+          </HeaderText>
+        </Media>
       </Box>
+
       <Box mx="auto" maxWidth={980} px={4}>
         <Flex flexDirection="column" alignItems="center" pb={50}>
           <Title size="12" element="h1" textAlign="center" pb={1}>
@@ -33,7 +38,7 @@ export const VanguardIntroduction: React.SFC<{
 
           <Box textAlign="center" pt={50}>
             <Sans size="3t" weight="medium">
-              Video Headers by Alex John Beck
+              Video by Alex John Beck
             </Sans>
             <Sans size="3t" weight="medium">
               Video Editing by Nate DeYoung
