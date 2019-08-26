@@ -67,7 +67,7 @@ export class ArtistCollectionsRail extends React.Component<
             render={(slide, index: number) => {
               return (
                 <ArtistCollectionEntity
-                  lazyLoad={index > 5 ? true : false}
+                  lazyLoad={index > 5}
                   collection={slide}
                 />
               )

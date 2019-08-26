@@ -351,10 +351,11 @@ export class BaseCarousel extends React.Component<
 
     // FIXME: During SSR pass want to hide other images. Work around for lack
     // of SSR support in Flickity. This will only render the first 6 slides on SRR pass.
+    const isServer = typeof window === "undefined"
     let carouselImages
-    if (typeof window === "undefined" && oneSlideVisible) {
+    if (isServer && oneSlideVisible) {
       carouselImages = [data[0]]
-    } else if (typeof window === "undefined" && data.length > 5) {
+    } else if (isServer && data.length > 5) {
       carouselImages = data.slice(0, 6)
     } else {
       carouselImages = data

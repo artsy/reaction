@@ -112,7 +112,7 @@ export class LargeArtistHeader extends Component<Props> {
                 <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                   <Image
                     px={5}
-                    lazyLoad={slideIndex > 5 ? true : false}
+                    lazyLoad={slideIndex > 5}
                     src={slide.resized.url}
                     width={slide.resized.width}
                     height={slide.resized.height}
