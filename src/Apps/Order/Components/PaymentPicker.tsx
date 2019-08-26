@@ -108,6 +108,7 @@ export class PaymentPicker extends React.Component<
 
   getCreditCardId: () => Promise<
     | { type: "error"; error: string | undefined }
+    | { type: "internal_error"; error: string | undefined }
     | { type: "invalid_form" }
     | { type: "success"; creditCardId: string }
   > = async () => {
@@ -142,10 +143,21 @@ export class PaymentPicker extends React.Component<
       },
     })).createCreditCard.creditCardOrError
 
-    if (creditCardOrError.mutationError) {
+    if (
+      creditCardOrError.mutationError &&
+      creditCardOrError.mutationError.detail
+    ) {
       return { type: "error", error: creditCardOrError.mutationError.detail }
-    }
-    return { type: "success", creditCardId: creditCardOrError.creditCard.id }
+    } else if (
+      creditCardOrError.mutationError &&
+      creditCardOrError.mutationError.message
+    ) {
+      return {
+        type: "internal_error",
+        error: creditCardOrError.mutationError.message,
+      }
+    } else
+      return { type: "success", creditCardId: creditCardOrError.creditCard.id }
   }
 
   @track((props: PaymentPickerProps, state, args) => {
