@@ -104,25 +104,24 @@ export class LargeArtistHeader extends Component<Props> {
     return (
       <Box width="100%">
         {hasImages && (
-          <section>
-            <Carousel
-              height="200px"
-              data={carousel.images as object[]}
-              render={(slide: Image) => {
-                return (
-                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                    <Image
-                      px={5}
-                      src={slide.resized.url}
-                      width={slide.resized.width}
-                      height={slide.resized.height}
-                      preventRightClick={!isAdmin}
-                    />
-                  </a>
-                )
-              }}
-            />
-          </section>
+          <Carousel
+            height="200px"
+            data={carousel.images as object[]}
+            render={(slide: Image, slideIndex: number) => {
+              return (
+                <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                  <Image
+                    px={5}
+                    lazyLoad={slideIndex > 5 ? true : false}
+                    src={slide.resized.url}
+                    width={slide.resized.width}
+                    height={slide.resized.height}
+                    preventRightClick={!isAdmin}
+                  />
+                </a>
+              )
+            }}
+          />
         )}
         <Spacer my={2} />
 
