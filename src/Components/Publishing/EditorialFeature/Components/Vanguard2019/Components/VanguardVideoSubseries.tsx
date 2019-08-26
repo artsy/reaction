@@ -1,11 +1,6 @@
-import { Box, color, Flex, FlexProps } from "@artsy/palette"
+import { Box, color, Flex } from "@artsy/palette"
 import React from "react"
-import useDimensions from "react-use-dimensions"
 import styled from "styled-components"
-
-interface VanguardSubseriesVideoProps extends FlexProps {
-  svgHeight: number
-}
 
 interface Props {
   url: string
@@ -13,13 +8,10 @@ interface Props {
 }
 
 export const VanguardVideoSubSeries: React.SFC<Props> = props => {
-  const [ref, { height: svgHeight }] = useDimensions()
-
   return (
     <SubseriesWrapper>
       <SubseriesSVGWrapper>
         <svg
-          ref={ref}
           viewBox="0 0 1600 900"
           xmlns="http://www.w3.org/2000/svg"
           fill={color("white100")}
@@ -36,7 +28,6 @@ export const VanguardVideoSubSeries: React.SFC<Props> = props => {
             playsInline
             controls={false}
             src={props.url}
-            svgHeight={svgHeight}
           />
         </VanguardSubseriesVideoWrapper>
       </SubseriesSVGWrapper>
@@ -44,8 +35,9 @@ export const VanguardVideoSubSeries: React.SFC<Props> = props => {
   )
 }
 
-const VanguardSubseriesVideo = styled.video<VanguardSubseriesVideoProps>`
-  max-height: calc(${props => props.svgHeight}px - 2px);
+const VanguardSubseriesVideo = styled.video`
+  /* 16 x 9 aspect ratio */
+  max-height: calc(100vw * 0.56);
 `
 
 const SubseriesWrapper = styled(Flex)`
