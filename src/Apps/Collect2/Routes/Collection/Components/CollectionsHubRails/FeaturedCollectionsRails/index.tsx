@@ -17,7 +17,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useWindowSize } from "Utils/Hooks/useWindowSize"
+import { useMedia } from "Utils/Hooks/useMedia"
 
 interface Props {
   collectionGroup: FeaturedCollectionsRails_collectionGroup
@@ -28,17 +28,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
-  const broswerWidth = useWindowSize()
-  const isSmallerViewpoint = broswerWidth < 1024
-  const carouselHeight = isSmallerViewpoint ? "500px" : "500px"
-  let groupCells: number
-  if (sd.IS_MOBILE) {
-    groupCells = 1
-  } else {
-    if (broswerWidth > 1024) {
-      groupCells = 3
-    } else groupCells = 2
-  }
+  const { xs, sm, xl } = useMedia()
+  const carouselHeight = xs || sm ? "430px" : "500px"
 
   useEffect(() => {
     trackEvent({
@@ -68,11 +59,11 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
       <Carousel
         height={carouselHeight}
         options={{
-          groupCells,
+          groupCells: xs || sm ? 1 : 2,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
-          draggable: sd.IS_MOBILE ? true : false,
+          draggable: xs || sm ? true : false,
           contain: true,
         }}
         data={members}
@@ -89,14 +80,13 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           )
         }}
         renderRightArrow={({ Arrow }) => {
-          const smallerViewpointAndThreeItems =
-            isSmallerViewpoint && members.length > 2
+          const shouldDisplayArrow = !xl && members.length > 2
           return (
             <ArrowContainer>
               {members.length > 3 ? (
                 <Arrow />
               ) : (
-                smallerViewpointAndThreeItems && <Arrow showArrow={true} />
+                shouldDisplayArrow && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
@@ -132,9 +122,9 @@ export const FeaturedCollectionEntity: React.FC<
   }
 
   return (
-    <Container p={2} m={1} width={["261px", "355px"]}>
+    <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
-        <Flex height={["190px", "280px"]}>
+        <Flex height={["190px", "190px", "280px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
         <CollectionTitle size="4" mt={1}>
