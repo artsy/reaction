@@ -171,6 +171,16 @@ describe("Payment", () => {
     )
   })
 
+  it("shows an error modal with the title 'An internal error occurred' and the default message when the payment picker returns an error with the type 'internal_error'", async () => {
+    paymentPickerMock.useInternalErrorResult()
+    const page = await buildPage()
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "An internal error occurred",
+      "Please try again or contact orders@artsy.net."
+    )
+  })
+
   it("shows an error modal when fixing the failed payment fails", async () => {
     const page = await buildPage()
     mutations.useResultsOnce(fixFailedPaymentFailure)
