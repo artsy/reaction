@@ -56,9 +56,7 @@ const OuterLink = styled(RouterLink)`
   text-decoration: none;
 
   &:hover {
-    text-decoration: none;
-
-    ${Title} {
+    .title {
       text-decoration: underline;
     }
 
@@ -76,7 +74,7 @@ interface ImageLinkProps {
   src: string
   href: string
   alt: string
-  title: React.ReactElement<SerifProps>
+  title: React.ReactElement<SerifProps & { className?: string }>
   subtitle?: React.ReactElement<SerifProps>
 }
 
@@ -99,6 +97,7 @@ export const ImageLink: FC<ImageLinkProps> = ({
         element: title.props.element || "h3",
         p: title.props.p || "1",
         textAlign: "center",
+        className: "title",
       })}
 
       {subtitle &&
