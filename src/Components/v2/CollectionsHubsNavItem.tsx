@@ -3,6 +3,7 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import React, { FC } from "react"
 import styled from "styled-components"
 import { space, SpaceProps } from "styled-system"
+import { Media } from "Utils/Responsive"
 
 interface CollectionsHubsNavItemProps extends SpaceProps {
   href: string
@@ -17,13 +18,16 @@ export const CollectionsHubsNavItem: React.FC<CollectionsHubsNavItemProps> = ({
   title,
   subtitle,
 }) => {
+  const titleElement = <Serif size="4t">{title}</Serif>
+  const subtitleElement = subtitle && <Serif size="2">{subtitle}</Serif>
+
   return (
     <ImageLink
       href={href}
       src={imageUrl}
       alt={title}
-      title={<Serif size="4t">{title}</Serif>}
-      subtitle={<Serif size="2">{subtitle}</Serif>}
+      title={titleElement}
+      subtitle={subtitleElement}
     />
   )
 }
@@ -98,13 +102,14 @@ export const ImageLink: FC<ImageLinkProps> = ({
         textAlign: "center",
         className: "title",
       })}
-
-      {subtitle &&
-        React.cloneElement(subtitle, {
-          // kind of like "default props" for a cloned element.
-          element: title.props.element || "h4",
-          textAlign: "center",
-        })}
+      <Media greaterThan="xs">
+        {subtitle &&
+          React.cloneElement(subtitle, {
+            // kind of like "default props" for a cloned element.
+            element: title.props.element || "h4",
+            textAlign: "center",
+          })}
+      </Media>
     </OuterLink>
   )
 }

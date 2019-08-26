@@ -44,7 +44,7 @@ storiesOf("Components/CollectionsHubsNavItem", module)
     </Box>
   ))
   .add("with title and subtitle", () => (
-    <Box width={300}>
+    <Box width="30%">
       <CollectionsHubsNavItem
         href="http://example.com"
         imageUrl={imageSample}
