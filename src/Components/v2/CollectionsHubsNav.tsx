@@ -22,12 +22,11 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
     >
       {props.marketingCollections.map(hub => (
         <CollectionsHubsNavItem
+          title={hub.title}
           href={`/collection/${hub.slug}`}
           imageUrl={placeholderImage}
           key={hub.id}
-        >
-          {hub.title}
-        </CollectionsHubsNavItem>
+        />
       ))}
     </CSSGrid>
   )

@@ -7,32 +7,30 @@ import { space, SpaceProps } from "styled-system"
 interface CollectionsHubsNavItemProps extends SpaceProps {
   href: string
   imageUrl: string
+  title: string
+  subtitle?: string
 }
 
 export const CollectionsHubsNavItem: React.FC<CollectionsHubsNavItemProps> = ({
   href,
   imageUrl,
-  children,
+  title,
+  subtitle,
 }) => {
   return (
-    <OuterLink to={href}>
-      <ImageContainer>
-        <ImageOverlay>
-          <HubImage src={imageUrl} width="100%" alt={"todo fill in"} />
-        </ImageOverlay>
-      </ImageContainer>
-      <Title size="3" textAlign="center" p={1}>
-        {children}
-      </Title>
-    </OuterLink>
+    <ImageLink
+      href={href}
+      src={imageUrl}
+      alt={title}
+      title={<Serif size="4t">{title}</Serif>}
+      subtitle={<Serif size="2">{subtitle}</Serif>}
+    />
   )
 }
 
 const ImageContainer = styled(Box)`
   position: relative;
 `
-
-const Title = styled(Serif)``
 
 const HubImage = styled(Image)`
   vertical-align: middle;
