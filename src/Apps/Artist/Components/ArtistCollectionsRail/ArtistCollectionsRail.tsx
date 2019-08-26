@@ -64,8 +64,13 @@ export class ArtistCollectionsRail extends React.Component<
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={collections as object[]} // type required by slider
-            render={slide => {
-              return <ArtistCollectionEntity collection={slide} />
+            render={(slide, index: number) => {
+              return (
+                <ArtistCollectionEntity
+                  lazyLoad={index > 5}
+                  collection={slide}
+                />
+              )
             }}
             renderLeftArrow={({ Arrow }) => {
               return (
