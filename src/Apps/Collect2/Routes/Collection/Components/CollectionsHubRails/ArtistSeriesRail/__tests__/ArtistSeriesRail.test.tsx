@@ -1,4 +1,5 @@
 import { CollectionsHubLinkedCollections } from "Apps/__tests__/Fixtures/Collections"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -6,7 +7,7 @@ import { clone } from "lodash"
 import React from "react"
 import { ArtistSeriesRail } from "../index"
 
-jest.unmock("react-tracking")
+jest.mock("Artsy/Analytics/useTracking")
 
 jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
@@ -14,6 +15,7 @@ jest.mock("found", () => ({
 
 describe("ArtistSeriesRail", () => {
   let props
+  const trackEvent = jest.fn()
 
   function singleData() {
     return {
@@ -40,6 +42,11 @@ describe("ArtistSeriesRail", () => {
     props = {
       collectionGroup: CollectionsHubLinkedCollections.linkedCollections[0],
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("showing the correct text, price guidance, and title", () => {
@@ -74,5 +81,43 @@ describe("ArtistSeriesRail", () => {
     ]
     const Component = mount(<ArtistSeriesRail {...newprops} />)
     expect(Component.find(ArrowButton).length).toBe(2)
+  })
+
+  describe("Tracking", () => {
+    it("Tracks impressions", () => {
+      mount(<ArtistSeriesRail {...props} />)
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Impression",
+        context_page: "Collection",
+        context_module: "ArtistCollectionsRail",
+        context_page_owner_type: "Collection",
+      })
+    })
+
+    it("Tracks arrow click", () => {
+      props.collectionGroup.members = [
+        singleData(),
+        singleData(),
+        singleData(),
+        singleData(),
+        singleData(),
+      ]
+
+      const component = mount(<ArtistSeriesRail {...props} />)
+      component
+        .find(ArrowButton)
+        .at(1)
+        .simulate("click")
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Click",
+        context_page: "Collection",
+        context_module: "ArtistCollectionsRail",
+        context_page_owner_type: "Collection",
+        type: "Button",
+        subject: "clicked next button",
+      })
+    })
   })
 })
