@@ -109,7 +109,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           })
       } else if (
-        this.props.order.mode !== "BUY" &&
+        this.props.order.mode === "OFFER" &&
         orderOrError.actionData &&
         orderOrError.actionData.clientSecret
       ) {
