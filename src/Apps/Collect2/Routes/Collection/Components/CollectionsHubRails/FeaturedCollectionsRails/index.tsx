@@ -17,6 +17,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { useMedia } from "Utils/Hooks/useMedia"
 
 interface Props {
   collectionGroup: FeaturedCollectionsRails_collectionGroup
@@ -27,6 +28,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
+  const { xs, sm, xl } = useMedia()
+  const carouselHeight = xs || sm ? "430px" : "500px"
 
   useEffect(() => {
     trackEvent({
@@ -54,13 +57,14 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
         {name}
       </Serif>
       <Carousel
-        height={sd.IS_MOBILE ? "430px" : "500px"}
+        height={carouselHeight}
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
+          groupCells: xs || sm ? 1 : 2,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
-          draggable: sd.IS_MOBILE ? true : false,
+          draggable: xs || sm ? true : false,
+          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
@@ -76,8 +80,15 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           )
         }}
         renderRightArrow={({ Arrow }) => {
+          const shouldDisplayArrow = !xl && members.length > 2
           return (
-            <ArrowContainer>{members.length > 4 && <Arrow />}</ArrowContainer>
+            <ArrowContainer>
+              {members.length > 3 ? (
+                <Arrow />
+              ) : (
+                shouldDisplayArrow && <Arrow showArrow={true} />
+              )}
+            </ArrowContainer>
           )
         }}
         onArrowClick={() => trackArrowClick()}
@@ -111,15 +122,15 @@ export const FeaturedCollectionEntity: React.FC<
   }
 
   return (
-    <Container p={2} m={1} width={sd.IS_MOBILE ? "261px" : "355px"}>
+    <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
-        <Flex height={sd.IS_MOBILE ? "190px" : "280px"}>
+        <Flex height={["190px", "190px", "280px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
         <CollectionTitle size="4" mt={1}>
           {title}
         </CollectionTitle>
-        <Sans size="2" color="black60">{`Starting at $${price_guidance}`}</Sans>
+        <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
             disabled
@@ -191,7 +202,7 @@ export const ArrowContainer = styled(Box)`
   align-self: flex-start;
 
   ${ArrowButton} {
-    height: 60%;
+    height: 100%;
 
     svg {
       height: 18px;
