@@ -1,5 +1,8 @@
 import { Box, color } from "@artsy/palette"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  getVerticalTag,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleCards } from "Components/Publishing/RelatedArticles/ArticleCards/ArticleCards"
 import { FixedBackground } from "Components/Publishing/Series/FixedBackground"
@@ -29,6 +32,7 @@ export class SeriesLayout extends Component<Props, null> {
     const { article, backgroundColor, relatedArticles, isMobile } = this.props
 
     const { hero_section, sponsor } = article
+    const verticalTag = getVerticalTag(article)
     const isSponsored = isEditorialSponsored(sponsor)
     const backgroundUrl =
       hero_section && hero_section.url ? hero_section.url : ""
@@ -71,7 +75,8 @@ export class SeriesLayout extends Component<Props, null> {
           adDimension={adDimension}
           targetingData={targetingData(
             article.id,
-            isSponsored ? "sponsorlanding" : "standardseries"
+            isSponsored ? "sponsorlanding" : "standardseries",
+            verticalTag
           )}
           isSeries
         />

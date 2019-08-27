@@ -1,5 +1,8 @@
 import { Box } from "@artsy/palette"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  getVerticalTag,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { getSlideshowImagesFromArticle } from "Components/Publishing/Layouts/ArticleWithFullScreen"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
@@ -254,6 +257,7 @@ export class Sections extends Component<Props, State> {
       hideAds,
     } = this.props
     const { shouldInjectMobileDisplay } = this.state
+    const verticalTag = getVerticalTag(article)
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
     let placementCount = 1
@@ -315,7 +319,8 @@ export class Sections extends Component<Props, State> {
               adDimension={adDimension}
               targetingData={targetingData(
                 article.id,
-                isSponsored ? "sponsorfeature" : "feature"
+                isSponsored ? "sponsorfeature" : "feature",
+                verticalTag
               )}
             />
           </AdWrapper>

@@ -1,6 +1,9 @@
 import { color } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  getVerticalTag,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { once } from "lodash"
 import React, { Component } from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -110,6 +113,7 @@ export class NewsLayout extends Component<Props, State> {
       showCollectionsRail,
       shouldAdRender,
     } = this.props
+    const verticalTag = getVerticalTag(article)
     const adUnit = this.getAdUnit()
     const adDimension = isMobile
       ? AdDimension.Mobile_NewsLanding_InContent1
@@ -121,7 +125,11 @@ export class NewsLayout extends Component<Props, State> {
           <DisplayAd
             adUnit={adUnit}
             adDimension={adDimension}
-            targetingData={targetingData(article.id, "newslanding")}
+            targetingData={targetingData(
+              article.id,
+              "newslanding",
+              verticalTag
+            )}
           />
         )}
         {relatedArticlesForCanvas && (

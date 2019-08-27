@@ -196,6 +196,7 @@ export const StandardArticleHostedAdPanel: DisplayAdProps = {
     is_testing: true,
     page_type: "article",
     post_id: "123",
+    tags: "Art Market",
   },
 }
 
@@ -206,6 +207,7 @@ export const StandardArticleHostedAdCanvas: DisplayAdProps = {
     is_testing: true,
     page_type: "article",
     post_id: "123",
+    tags: "Art Market",
   },
 }
 

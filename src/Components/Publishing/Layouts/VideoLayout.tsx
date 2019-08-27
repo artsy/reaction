@@ -1,7 +1,10 @@
 import { Box } from "@artsy/palette"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
-import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import {
+  getVerticalTag,
+  targetingData,
+} from "Components/Publishing/Display/DisplayTargeting"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { ArticleCardsBlock } from "Components/Publishing/RelatedArticles/ArticleCards/Block"
 import { AdDimension, AdUnit, ArticleData } from "Components/Publishing/Typings"
@@ -79,6 +82,7 @@ export class VideoLayout extends Component<Props, State> {
   render() {
     const { article, isMobile, relatedArticles } = this.props
     const { media, seriesArticle } = article
+    const verticalTag = getVerticalTag(article)
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const isSponsored = isEditorialSponsored(sponsor)
     const seriesLink =
@@ -129,7 +133,8 @@ export class VideoLayout extends Component<Props, State> {
           adDimension={adDimension}
           targetingData={targetingData(
             article.id,
-            isSponsored ? "sponsorfeature" : "video"
+            isSponsored ? "sponsorfeature" : "video",
+            verticalTag
           )}
           isSeries
         />
