@@ -282,9 +282,23 @@ describe("Sections", () => {
       expect(imageProps.size.width).toBe(680)
     })
 
+    it("Returns default targetHeight if mobile and customWidth is passed", () => {
+      props.article = FeatureArticle
+      props.customWidth = 900
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(500)
+      expect(imageProps.size.width).toBe(900)
+    })
+
     it("Increases image targetHeight and size if a wide customWidth is passed", () => {
       props.article = FeatureArticle
       props.customWidth = 900
+      props.isMobile = false
 
       const wrapper = mountWrapper(props)
       const imageProps = wrapper

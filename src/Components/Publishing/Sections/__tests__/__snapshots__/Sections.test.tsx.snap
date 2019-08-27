@@ -194,36 +194,78 @@ exports[`Sections snapshots tests renders properly 1`] = `
 .c6 {
   margin-right: 10px;
   width: 197px;
+  max-width: 100%;
+}
+
+.c6 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c14 {
   margin-right: 0px;
   width: 264px;
+  max-width: 100%;
+}
+
+.c14 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c21 {
   margin-right: 10px;
   width: 219px;
+  max-width: 100%;
+}
+
+.c21 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c22 {
   margin-right: 0px;
   width: 219px;
+  max-width: 100%;
+}
+
+.c22 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c23 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c23 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c25 {
   margin-right: 10px;
   width: 216px;
+  max-width: 100%;
+}
+
+.c25 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c26 {
   margin-right: 0px;
   width: 222px;
+  max-width: 100%;
+}
+
+.c26 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c1 {
@@ -674,42 +716,77 @@ exports[`Sections snapshots tests renders properly 1`] = `
 @media (max-width:600px) {
   .c6 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c6 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c14 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c14 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c21 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c21 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c22 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c22 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c23 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c23 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c25 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c25 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c26 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c26 img {
+    width: 100%;
   }
 }
 

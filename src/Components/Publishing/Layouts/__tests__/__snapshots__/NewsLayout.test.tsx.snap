@@ -177,6 +177,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 .c7 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c7 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c13 {
@@ -508,6 +514,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 @media (max-width:600px) {
   .c7 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c7 img {
+    width: 100%;
   }
 }
 
@@ -1105,6 +1116,12 @@ exports[`News Layout renders the news layout properly 1`] = `
 .c7 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c7 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c13 {
@@ -1430,6 +1447,11 @@ exports[`News Layout renders the news layout properly 1`] = `
 @media (max-width:600px) {
   .c7 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c7 img {
+    width: 100%;
   }
 }
 
@@ -2058,6 +2080,12 @@ exports[`News Layout with display ads renders the news layout properly with disp
 .c7 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c7 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c13 {
@@ -2383,6 +2411,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
 @media (max-width:600px) {
   .c7 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c7 img {
+    width: 100%;
   }
 }
 

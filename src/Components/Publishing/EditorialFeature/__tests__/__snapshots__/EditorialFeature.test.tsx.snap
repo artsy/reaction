@@ -7223,6 +7223,12 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 .c30 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c30 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c56 {
@@ -7833,6 +7839,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 @media (max-width:600px) {
   .c30 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c30 img {
+    width: 100%;
   }
 }
 
