@@ -1,3 +1,15 @@
+# v17.7.2 (Tue Aug 27 2019)
+
+#### 🐛  Bug Fix
+
+- Analytics_tracking_in_artist_series_in_collection_hub [#2736](https://github.com/artsy/reaction/pull/2736) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v17.7.1 (Mon Aug 26 2019)
 
 #### 🐛  Bug Fix
