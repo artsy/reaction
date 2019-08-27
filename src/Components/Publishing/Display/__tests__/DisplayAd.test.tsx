@@ -17,7 +17,11 @@ it("renders the new canvas in standard layout", () => {
       <DisplayAd
         adDimension={AdData.adDimension}
         adUnit={AdData.adUnit}
-        targetingData={targetingData(StandardArticle.id, "article")}
+        targetingData={targetingData(
+          StandardArticle.id,
+          "article",
+          StandardArticle.vertical.name
+        )}
       />
     )
     .toJSON()
@@ -29,7 +33,11 @@ it("renders the component with the correct data and properties in standard layou
     <DisplayAd
       adDimension={AdData.adDimension}
       adUnit={AdData.adUnit}
-      targetingData={targetingData(StandardArticle.id, "article")}
+      targetingData={targetingData(
+        StandardArticle.id,
+        "article",
+        StandardArticle.vertical.name
+      )}
     />
   )
 
@@ -44,7 +52,11 @@ it("renders GPT with the correct properties in standard layout articles", () => 
     <DisplayAd
       adDimension={AdData.adDimension}
       adUnit={AdData.adUnit}
-      targetingData={targetingData(StandardArticle.id, "article")}
+      targetingData={targetingData(
+        StandardArticle.id,
+        "article",
+        StandardArticle.vertical.name
+      )}
     />
   )
 
@@ -55,6 +67,7 @@ it("renders GPT with the correct properties in standard layout articles", () => 
     is_testing: true,
     page_type: "article",
     post_id: "594a7e2254c37f00177c0ea9",
+    tags: "Art Market",
   })
   expect(gptProps.slotSize).toEqual([970, 250])
 })

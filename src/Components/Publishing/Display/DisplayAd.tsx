@@ -29,8 +29,6 @@ GPT.syncCorrelator(true)
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
   const { adDimension, adUnit, targetingData, ...otherProps } = props
-  console.log("TCL: targetingData", targetingData)
-
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)

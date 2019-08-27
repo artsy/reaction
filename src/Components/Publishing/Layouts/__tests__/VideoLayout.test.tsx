@@ -131,7 +131,8 @@ describe("display ad data on video series", () => {
         isSeries
         targetingData={targetingData(
           VideoArticleSponsored.id,
-          isSponsored ? "sponsorlanding" : "video"
+          isSponsored ? "sponsorlanding" : "video",
+          VideoArticleSponsored.vertical.name
         )}
       />
     )
@@ -140,6 +141,7 @@ describe("display ad data on video series", () => {
       is_testing: true,
       page_type: "sponsorlanding",
       post_id: "597b9f652d35b80017a2a6a7",
+      tags: "Art Market",
     })
   })
 
@@ -157,7 +159,8 @@ describe("display ad data on video series", () => {
         isSeries
         targetingData={targetingData(
           VideoArticleFixture.id,
-          isSponsored ? "sponsorlanding" : "video"
+          isSponsored ? "sponsorlanding" : "video",
+          VideoArticleSponsored.vertical.name
         )}
       />
     )
@@ -166,6 +169,7 @@ describe("display ad data on video series", () => {
       is_testing: true,
       page_type: "video",
       post_id: "597b9f652d35b80017a2a6a7",
+      tags: "Art Market",
     })
   })
 
@@ -183,7 +187,8 @@ describe("display ad data on video series", () => {
         isSeries
         targetingData={targetingData(
           VideoArticleFixture.id,
-          isSponsored ? "sponsorlanding" : "video"
+          isSponsored ? "sponsorlanding" : "video",
+          VideoArticleSponsored.vertical.name
         )}
       />
     )
@@ -202,7 +207,11 @@ describe("display ad data on video series", () => {
         }
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
         isSeries
-        targetingData={targetingData(VideoArticleFixture.id, "sponsorlanding")}
+        targetingData={targetingData(
+          VideoArticleFixture.id,
+          "sponsorlanding",
+          VideoArticleSponsored.vertical.name
+        )}
       />
     )
 

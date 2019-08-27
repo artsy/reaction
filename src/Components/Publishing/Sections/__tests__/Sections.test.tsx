@@ -182,6 +182,7 @@ describe("Sections", () => {
         is_testing: true,
         page_type: "feature",
         post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Creativity",
       })
     })
 
@@ -200,6 +201,7 @@ describe("Sections", () => {
         is_testing: true,
         page_type: "sponsorfeature",
         post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Creativity",
       })
     })
 

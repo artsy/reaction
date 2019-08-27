@@ -163,6 +163,7 @@ describe("News Layout with display ads", () => {
       is_testing: true,
       page_type: "newslanding",
       post_id: "594a7e2254c37f00177c0ea9",
+      tags: "News",
     })
   })
 
@@ -181,6 +182,7 @@ describe("News Layout with display ads", () => {
       is_testing: true,
       page_type: "newslanding",
       post_id: "594a7e2254c37f00177c0ea9",
+      tags: "News",
     })
   })
 
