@@ -1,3 +1,16 @@
+# v17.7.3 (Tue Aug 27 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA [#2741](https://github.com/artsy/reaction/pull/2741) ([@eessex](https://github.com/eessex))
+- PURCHASE-1427: On Submitting offers, check graphql response and show Stripe's SCA popup if the mutation response was action required [#2739](https://github.com/artsy/reaction/pull/2739) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v17.7.2 (Tue Aug 27 2019)
 
 #### 🐛  Bug Fix
