@@ -153,8 +153,9 @@ export class Sections extends Component<Props, State> {
   }
 
   getSection(section, index) {
-    const { article, color, customWidth, showTooltips } = this.props
-    const targetHeight = customWidth && customWidth > 750 ? 750 : 500
+    const { article, color, customWidth, isMobile, showTooltips } = this.props
+    const targetHeight =
+      customWidth && (customWidth > 750 && !isMobile) ? 750 : 500
     const size = customWidth && { width: customWidth }
     const fullscreenImages = getSlideshowImagesFromArticle(article)
 

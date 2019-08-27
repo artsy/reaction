@@ -1,4 +1,4 @@
-import { Box, Sans, Serif } from "@artsy/palette"
+import { Box, color, Sans, Serif } from "@artsy/palette"
 import { Emerging1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
 import { GettingTheirDue1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
 import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
@@ -20,7 +20,12 @@ export const VanguardTableOfContents: React.SFC<{
   } = props
 
   return (
-    <Box pb={100} textAlign="center" minHeight="70vh">
+    <Box
+      pb={100}
+      textAlign="center"
+      minHeight="70vh"
+      background={color("white100")}
+    >
       <Sans size={["8", "12", "14", "16"]} mb={4}>
         Table of Contents
       </Sans>

@@ -111,6 +111,12 @@ exports[`renders a single image properly 1`] = `
 .c1 {
   margin-right: 0px;
   width: 100%;
+  max-width: 100%;
+}
+
+.c1 img {
+  max-width: 100%;
+  height: auto;
 }
 
 @media (max-width:600px) {
@@ -136,6 +142,11 @@ exports[`renders a single image properly 1`] = `
 @media (max-width:600px) {
   .c1 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c1 img {
+    width: 100%;
   }
 }
 
@@ -444,16 +455,34 @@ exports[`renders properly 1`] = `
 .c1 {
   margin-right: 10px;
   width: 312px;
+  max-width: 100%;
+}
+
+.c1 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c13 {
   margin-right: 10px;
   width: 168px;
+  max-width: 100%;
+}
+
+.c13 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .c16 {
   margin-right: 0px;
   width: 178px;
+  max-width: 100%;
+}
+
+.c16 img {
+  max-width: 100%;
+  height: auto;
 }
 
 @media (max-width:600px) {
@@ -491,18 +520,33 @@ exports[`renders properly 1`] = `
 @media (max-width:600px) {
   .c1 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c1 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c13 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c13 img {
+    width: 100%;
   }
 }
 
 @media (max-width:600px) {
   .c16 {
     margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c16 img {
+    width: 100%;
   }
 }
 
