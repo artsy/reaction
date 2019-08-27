@@ -91,11 +91,30 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         this.handleSubmitError(orderOrError.error)
         return
       } else if (
-        this.isBuyNowOrder(orderOrError) &&
+        this.props.order.mode === "BUY" &&
+        orderOrError.actionData &&
         orderOrError.actionData.clientSecret
       ) {
         this.state.stripe
           .handleCardAction(orderOrError.actionData.clientSecret)
+          .then(result => {
+            if (result.error) {
+              this.props.dialog.showErrorDialog({
+                title: "An error occurred",
+                message: result.error.message,
+              })
+              return
+            } else {
+              this.onSubmit()
+            }
+          })
+      } else if (
+        this.props.order.mode === "OFFER" &&
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
+        this.state.stripe
+          .handleCardSetup(orderOrError.actionData.clientSecret)
           .then(result => {
             if (result.error) {
               this.props.dialog.showErrorDialog({
@@ -114,12 +133,6 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       logger.error(error)
       this.props.dialog.showErrorDialog()
     }
-  }
-
-  isBuyNowOrder(
-    orderOrError: any
-  ): orderOrError is ReviewSubmitOrderMutation["response"]["commerceSubmitOrder"]["orderOrError"] {
-    return orderOrError.actionData !== undefined
   }
 
   submitBuyOrder() {
@@ -173,6 +186,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
+                }
+              }
+              ... on CommerceOrderRequiresAction {
+                actionData {
+                  clientSecret
                 }
               }
               ... on CommerceOrderWithMutationFailure {

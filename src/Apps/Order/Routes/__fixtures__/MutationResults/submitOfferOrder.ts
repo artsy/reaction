@@ -36,6 +36,16 @@ export const submitOfferOrderWithNoInventoryFailure = {
   },
 }
 
+export const submitOfferOrderWithActionRequired = {
+  commerceSubmitOrderWithOffer: {
+    orderOrError: {
+      actionData: {
+        clientSecret: "client-secret",
+      },
+    },
+  },
+}
+
 export const submitOfferOrderSuccess = {
   commerceSubmitOrderWithOffer: {
     orderOrError: {

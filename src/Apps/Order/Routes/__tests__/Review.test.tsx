@@ -10,6 +10,7 @@ import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
 import {
   submitOfferOrderSuccess,
+  submitOfferOrderWithActionRequired,
   submitOfferOrderWithFailure,
   submitOfferOrderWithNoInventoryFailure,
   submitOfferOrderWithVersionMismatchFailure,
@@ -247,6 +248,13 @@ describe("Review", () => {
         "Not available",
         "Sorry, the work is no longer available."
       )
+    })
+
+    it("shows SCA modal when required", async () => {
+      mutations.useResultsOnce(submitOfferOrderWithActionRequired)
+
+      await page.clickSubmit()
+      expect(handleCardAction).toBeCalledWith("client-secret")
     })
   })
 
