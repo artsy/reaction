@@ -13,7 +13,11 @@ import {
 
 jest.mock("Artsy/Analytics/useTracking")
 jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({}),
+  useMedia: () => ({
+    xs: false,
+    sm: false,
+    xl: true,
+  }),
 }))
 
 jest.mock("found", () => ({
