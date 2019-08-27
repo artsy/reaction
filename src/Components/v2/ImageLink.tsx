@@ -1,36 +1,9 @@
-import { Box, Image, Serif, SerifProps } from "@artsy/palette"
+import { Box, Image, SerifProps } from "@artsy/palette"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { space, SpaceProps } from "styled-system"
+import { space } from "styled-system"
 import { Media } from "Utils/Responsive"
-
-interface CollectionsHubsNavItemProps extends SpaceProps {
-  href: string
-  imageUrl: string
-  title: string
-  subtitle?: string
-}
-
-export const CollectionsHubsNavItem: React.FC<CollectionsHubsNavItemProps> = ({
-  href,
-  imageUrl,
-  title,
-  subtitle,
-}) => {
-  const titleElement = <Serif size="4t">{title}</Serif>
-  const subtitleElement = subtitle && <Serif size="2">{subtitle}</Serif>
-
-  return (
-    <ImageLink
-      href={href}
-      src={imageUrl}
-      alt={title}
-      title={titleElement}
-      subtitle={subtitleElement}
-    />
-  )
-}
 
 const ImageContainer = styled(Box)`
   position: relative;

@@ -3,7 +3,8 @@ import { CollectionsHubsNav_marketingCollections } from "__generated__/Collectio
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import { CollectionsHubsNavItem } from "./CollectionsHubsNavItem"
+import { Serif } from "@artsy/palette"
+import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
   marketingCollections: CollectionsHubsNav_marketingCollections
@@ -21,10 +22,12 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
       gridGap={20}
     >
       {props.marketingCollections.map(hub => (
-        <CollectionsHubsNavItem
-          title={hub.title}
+        <ImageLink
           href={`/collection/${hub.slug}`}
-          imageUrl={placeholderImage}
+          src={placeholderImage}
+          alt={hub.title}
+          title={<Serif size="4t">{hub.title}</Serif>}
+          // subtitle={subtitle && <Serif size="2">{hub.subtitle}</Serif>}
           key={hub.id}
         />
       ))}
