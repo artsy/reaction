@@ -109,19 +109,11 @@ describe("ArtistSeriesEntity", () => {
   describe("Tracking", () => {
     it("Tracks collection click", () => {
       const component = mount(<ArtistSeriesEntity {...props} itemNumber={0} />)
-      // const mockedEvent = { target: {} }
+
       component
         .find(StyledLink)
         .at(0)
         .simulate("click")
-
-      console.log(
-        "to:",
-        component
-          .find(StyledLink)
-          .at(0)
-          .props().to
-      )
 
       expect(trackEvent).toBeCalledWith({
         action_type: "Click",

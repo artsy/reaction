@@ -105,13 +105,6 @@ describe("ArtistSeriesRail", () => {
       ]
 
       const component = mount(<ArtistSeriesRail {...props} />)
-      console.log("track event" + trackEvent)
-      console.log(
-        component
-          .find(ArrowButton)
-          .at(1)
-          .simulate("click")
-      )
       component
         .find(ArrowButton)
         .at(1)
