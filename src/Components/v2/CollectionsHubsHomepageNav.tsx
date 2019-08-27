@@ -1,16 +1,18 @@
 import { CSSGrid } from "@artsy/palette"
-import { CollectionsHubsNav_marketingCollections } from "__generated__/CollectionsHubsNav_marketingCollections.graphql"
+import { Serif } from "@artsy/palette"
+import { CollectionsHubsHomepageNav_marketingCollections } from "__generated__/CollectionsHubsHomepageNav_marketingCollections.graphql"
+import { placeholderImage } from "Components/v2/CollectionsHubsNav"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
-import { Serif } from "@artsy/palette"
 import { ImageLink } from "./ImageLink"
 
-interface CollectionsHubsNavProps {
-  marketingCollections: CollectionsHubsNav_marketingCollections
+interface CollectionsHubsHomepageNavProps {
+  marketingCollections: CollectionsHubsHomepageNav_marketingCollections
 }
 
-export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
+export const CollectionsHubsHomepageNav: FC<
+  CollectionsHubsHomepageNavProps
+> = props => {
   return (
     <CSSGrid
       as="aside"
@@ -35,15 +37,11 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
   )
 }
 
-// This is a temporary image URL until we get real data.
-export const placeholderImage =
-  "https://d7hftxdivxxvm.cloudfront.net/?resize_to=fill&width=357&height=175&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeF_qAORql7lSnD2BwbFOYg%2Flarge.jpg"
-
-export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
-  CollectionsHubsNav,
+export const CollectionsHubsHomepageNavFragmentContainer = createFragmentContainer(
+  CollectionsHubsHomepageNav,
   {
     marketingCollections: graphql`
-      fragment CollectionsHubsNav_marketingCollections on MarketingCollection
+      fragment CollectionsHubsHomepageNav_marketingCollections on MarketingCollection
         @relay(plural: true) {
         id
         slug
