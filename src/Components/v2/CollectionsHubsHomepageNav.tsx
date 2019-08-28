@@ -18,8 +18,8 @@ export const CollectionsHubsHomepageNav: FC<
       as="aside"
       gridTemplateColumns={[
         "repeat(2, 1fr)",
+        "repeat(2, 1fr)",
         "repeat(3, 1fr)",
-        "repeat(6, 1fr)",
       ]}
       gridGap={20}
     >
@@ -29,7 +29,7 @@ export const CollectionsHubsHomepageNav: FC<
           src={placeholderImage}
           alt={hub.title}
           title={<Serif size="4t">{hub.title}</Serif>}
-          // subtitle={subtitle && <Serif size="2">{hub.subtitle}</Serif>}
+          subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}
           key={hub.id}
         />
       ))}
@@ -51,3 +51,30 @@ export const CollectionsHubsHomepageNavFragmentContainer = createFragmentContain
     `,
   }
 )
+
+/*
+ * This is a customization just for the homepage entry-points use case.
+ *
+ * Valid hub collections will have a subtitle defined here, rather than in KAWS.
+ * This mapping therefore will need to kept in sync as hubs are rotated
+ * in/out of the entrypoint.
+ *
+ * TODO: remove (or replace with safer) placeholder once we have real data.
+ */
+
+const subtitlesMapping = {
+  Contemporary: "Today’s leading artists and emerging talents",
+  "Post-War": "From Abstract Expressionism to Pop Art",
+  "Impressionist & Modern": "The birth of abstraction, Surrealism, and Dada",
+  "Pre-20th Century": "Ancient Rome, the Renaissance, Baroque, and more",
+  Photography: "Through the lens—from daguerreotypes to digital",
+  "Street Art": "The rise of graffiti, vinyl toys, and skate culture",
+}
+
+const subtitleFor = (title: string) => {
+  return (
+    subtitlesMapping[title] ||
+    /* placeholder */
+    Object.values(subtitlesMapping)[Math.floor(6 * Math.random())]
+  )
+}
