@@ -341,7 +341,6 @@ export const StatusFragmentContainer = createFragmentContainer(
         lineItems {
           edges {
             node {
-              ...ItemReview_lineItem
               fulfillments {
                 edges {
                   node {
@@ -350,10 +349,6 @@ export const StatusFragmentContainer = createFragmentContainer(
                     estimatedDelivery(format: "MMM Do, YYYY")
                   }
                 }
-              }
-              artwork {
-                id
-                is_acquireable
               }
             }
           }
