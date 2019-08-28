@@ -69,6 +69,7 @@ export const UntouchedOrder = {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
             },
+            edition_sets: [],
             artists: [
               {
                 id: "artistId",
@@ -97,6 +98,7 @@ export const UntouchedOrder = {
               },
             ],
           },
+          editionSetId: null,
         },
       },
     ],
