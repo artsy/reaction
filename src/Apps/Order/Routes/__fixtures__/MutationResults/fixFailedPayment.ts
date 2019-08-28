@@ -33,3 +33,14 @@ export const fixFailedPaymentInsufficientInventoryFailure = {
     },
   },
 }
+
+export const fixFailedPaymentWithActionRequired = {
+  commerceFixFailedPayment: {
+    orderOrError: {
+      __typename: "CommerceOrderRequiresAction",
+      actionData: {
+        clientSecret: "client-secret",
+      },
+    },
+  },
+}

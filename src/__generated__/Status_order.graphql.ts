@@ -3,7 +3,6 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { ItemReview_lineItem$ref } from "./ItemReview_lineItem.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
@@ -37,11 +36,6 @@ export type Status_order = {
                         }) | null;
                     }) | null> | null;
                 }) | null;
-                readonly artwork: ({
-                    readonly id: string;
-                    readonly is_acquireable: boolean | null;
-                }) | null;
-                readonly " $fragmentRefs": ItemReview_lineItem$ref;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -213,11 +207,6 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "kind": "FragmentSpread",
-                  "name": "ItemReview_lineItem",
-                  "args": null
-                },
-                {
                   "kind": "LinkedField",
                   "alias": null,
                   "name": "fulfillments",
@@ -276,32 +265,6 @@ return {
                           ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "artwork",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "Artwork",
-                  "plural": false,
-                  "selections": [
-                    v2,
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "is_acquireable",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
                 },
@@ -377,5 +340,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5b2c1fde3aa98f22666e0244a934893e';
+(node as any).hash = 'dc527973941511a05bed5036e544a6e5';
 export default node;

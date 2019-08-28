@@ -28,6 +28,9 @@ export type NewPaymentRouteSetOrderPaymentMutationResponse = {
                 }) | null;
                 readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
             };
+            readonly actionData?: {
+                readonly clientSecret: string;
+            };
             readonly error?: {
                 readonly type: string;
                 readonly code: string;
@@ -69,6 +72,11 @@ mutation NewPaymentRouteSetOrderPaymentMutation(
             awaitingResponseFrom
           }
           __id: id
+        }
+      }
+      ... on CommerceOrderRequiresAction {
+        actionData {
+          clientSecret
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -139,13 +147,37 @@ v2 = {
   ]
 },
 v3 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOrderRequiresAction",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "actionData",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommerceOrderActionData",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "clientSecret",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "state",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -189,7 +221,7 @@ v4 = {
       "args": null,
       "storageKey": null
     },
-    v3,
+    v4,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -213,14 +245,14 @@ v4 = {
     }
   ]
 },
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v7 = {
   "kind": "InlineFragment",
   "type": "CommerceOfferOrder",
   "selections": [
@@ -233,7 +265,7 @@ v6 = {
     }
   ]
 },
-v7 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -245,7 +277,7 @@ return {
   "operationKind": "mutation",
   "name": "NewPaymentRouteSetOrderPaymentMutation",
   "id": null,
-  "text": "mutation NewPaymentRouteSetOrderPaymentMutation(\n  $input: CommerceFixFailedPaymentInput!\n) {\n  commerceFixFailedPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation NewPaymentRouteSetOrderPaymentMutation(\n  $input: CommerceFixFailedPaymentInput!\n) {\n  commerceFixFailedPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          creditCard {\n            id\n            name\n            street1\n            street2\n            city\n            state\n            country\n            postal_code\n            __id\n          }\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderRequiresAction {\n        actionData {\n          clientSecret\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -273,6 +305,7 @@ return {
             "plural": false,
             "selections": [
               v2,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -286,10 +319,10 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
                       v4,
                       v5,
-                      v6
+                      v6,
+                      v7
                     ]
                   }
                 ]
@@ -323,8 +356,9 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v7,
+              v8,
               v2,
+              v3,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -338,11 +372,11 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v7,
-                      v3,
+                      v8,
                       v4,
                       v5,
-                      v6
+                      v6,
+                      v7
                     ]
                   }
                 ]
@@ -355,5 +389,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'dc95d92d55f7e60f9122eb79f8d9dedf';
+(node as any).hash = '32baca22a4e80acb3aed8485dac30a8b';
 export default node;
