@@ -10,25 +10,74 @@ storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
       <Section title="Item Review">
         <Flex width={542} flexDirection="column">
           <ItemReview
-            artwork={{
+            lineItem={{
               " $refType": null,
-              artist_names: "Francesca DiMattio",
-              title: "The Fox and the Hound",
-              date: "2018",
-              medium: "Oil on canvas",
-              dimensions: {
-                in: "96 × 79 in",
-                cm: "243.8 × 200.7 cm",
-              },
-              attribution_class: {
-                short_description: "This is a unique work",
-              },
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/XIlup0jb5BESj71JI7ZHpQ/larger.jpg",
+              artwork: {
+                artist_names: "Francesca DiMattio",
+                title: "The Fox and the Hound",
+                date: "2018",
+                medium: "Oil on canvas",
+                dimensions: {
+                  in: "96 × 79 in",
+                  cm: "243.8 × 200.7 cm",
+                },
+                attribution_class: {
+                  shortDescription: "This is a unique work",
+                },
+                edition_sets: [],
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/XIlup0jb5BESj71JI7ZHpQ/larger.jpg",
+                  },
                 },
               },
+              editionSetId: null,
+            }}
+          />
+        </Flex>
+      </Section>
+      <Section title="Item Review with edition set">
+        <Flex width={542} flexDirection="column">
+          <ItemReview
+            lineItem={{
+              " $refType": null,
+              artwork: {
+                artist_names: "Francesca DiMattio",
+                title: "The Fox and the Hound",
+                date: "2018",
+                medium: "Oil on canvas",
+                dimensions: {
+                  in: "96 × 79 in",
+                  cm: "243.8 × 200.7 cm",
+                },
+                attribution_class: {
+                  shortDescription: "This is a unique work",
+                },
+                edition_sets: [
+                  {
+                    id: "ed-1",
+                    dimensions: {
+                      in: "96 × 79 in",
+                      cm: "243.8 × 200.7 cm",
+                    },
+                  },
+                  {
+                    id: "ed-2",
+                    dimensions: {
+                      in: "24 × 24 in",
+                      cm: "10 × 10 cm",
+                    },
+                  },
+                ],
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/XIlup0jb5BESj71JI7ZHpQ/larger.jpg",
+                  },
+                },
+              },
+              editionSetId: "ed-2",
             }}
           />
         </Flex>
@@ -36,24 +85,28 @@ storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
       <Section title="Item Review with tall image">
         <Flex width={542} flexDirection="column">
           <ItemReview
-            artwork={{
+            lineItem={{
               " $refType": null,
-              artist_names: "Francesca DiMattio",
-              title: "The Fox and the Hound",
-              date: "2018",
-              medium: "Oil on canvas",
-              dimensions: {
-                in: "96 × 79 in",
-                cm: "243.8 × 200.7 cm",
-              },
-              attribution_class: {
-                short_description: "This is a unique work",
-              },
-              image: {
-                resized: {
-                  url: "http://via.placeholder.com/350x980",
+              artwork: {
+                artist_names: "Francesca DiMattio",
+                title: "The Fox and the Hound",
+                date: "2018",
+                medium: "Oil on canvas",
+                dimensions: {
+                  in: "96 × 79 in",
+                  cm: "243.8 × 200.7 cm",
+                },
+                attribution_class: {
+                  shortDescription: "This is a unique work",
+                },
+                edition_sets: [],
+                image: {
+                  resized: {
+                    url: "http://via.placeholder.com/350x980",
+                  },
                 },
               },
+              editionSetId: null,
             }}
           />
         </Flex>
@@ -61,24 +114,28 @@ storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
       <Section title="Item Review with fat image">
         <Flex width={542} flexDirection="column">
           <ItemReview
-            artwork={{
+            lineItem={{
               " $refType": null,
-              artist_names: "Francesca DiMattio",
-              title: "The Fox and the Hound",
-              date: "2018",
-              medium: "Oil on canvas",
-              dimensions: {
-                in: "96 × 79 in",
-                cm: "243.8 × 200.7 cm",
-              },
-              attribution_class: {
-                short_description: "This is a unique work",
-              },
-              image: {
-                resized: {
-                  url: "http://via.placeholder.com/980x350",
+              artwork: {
+                artist_names: "Francesca DiMattio",
+                title: "The Fox and the Hound",
+                date: "2018",
+                medium: "Oil on canvas",
+                dimensions: {
+                  in: "96 × 79 in",
+                  cm: "243.8 × 200.7 cm",
                 },
+                attribution_class: {
+                  shortDescription: "This is a unique work",
+                },
+                image: {
+                  resized: {
+                    url: "http://via.placeholder.com/980x350",
+                  },
+                },
+                edition_sets: [],
               },
+              editionSetId: null,
             }}
           />
         </Flex>

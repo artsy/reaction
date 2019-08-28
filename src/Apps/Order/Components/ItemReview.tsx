@@ -1,12 +1,12 @@
 import React from "react"
 
 import { BorderBox, Flex, Serif } from "@artsy/palette"
-import { ItemReview_artwork } from "__generated__/ItemReview_artwork.graphql"
+import { ItemReview_lineItem } from "__generated__/ItemReview_lineItem.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 interface ItemReviewProps {
-  artwork: ItemReview_artwork
+  lineItem: ItemReview_lineItem
 }
 
 const ImageBox = styled.div`
@@ -20,17 +20,27 @@ const ImageBox = styled.div`
   }
 `
 
+const dimensionsDisplay = dimensions => (
+  <Serif size="2" color="black60">
+    {dimensions.in} ({dimensions.cm})
+  </Serif>
+)
+
 export const ItemReview: React.SFC<ItemReviewProps> = ({
-  artwork: {
-    artist_names,
-    title,
-    date,
-    medium,
-    dimensions,
-    attribution_class,
-    image: {
-      resized: { url },
+  lineItem: {
+    artwork: {
+      artist_names,
+      title,
+      date,
+      medium,
+      dimensions: artworkDimensions,
+      attribution_class,
+      image: {
+        resized: { url },
+      },
+      edition_sets,
     },
+    editionSetId,
   },
 }) => (
   <BorderBox p={[2, 3]}>
@@ -47,14 +57,15 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
           {medium}
         </Serif>
       )}
-      {dimensions && (
-        <Serif size="2" color="black60">
-          {dimensions.in} ({dimensions.cm})
-        </Serif>
-      )}
+      {editionSetId &&
+        edition_sets &&
+        dimensionsDisplay(edition_sets.find(e => e.id === editionSetId))}
+      {!editionSetId &&
+        artworkDimensions &&
+        dimensionsDisplay(artworkDimensions)}
       {attribution_class && (
         <Serif size="2" color="black60">
-          {attribution_class.short_description}
+          {attribution_class.shortDescription}
         </Serif>
       )}
     </Flex>
@@ -65,24 +76,34 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
 )
 
 export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
-  artwork: graphql`
-    fragment ItemReview_artwork on Artwork {
-      artist_names
-      title
-      date
-      medium
-      dimensions {
-        in
-        cm
-      }
-      attribution_class {
-        short_description
-      }
-      image {
-        resized(width: 185) {
-          url
+  lineItem: graphql`
+    fragment ItemReview_lineItem on CommerceLineItem {
+      artwork {
+        artist_names
+        title
+        date
+        medium
+        dimensions {
+          in
+          cm
+        }
+        attribution_class {
+          shortDescription
+        }
+        image {
+          resized(width: 185) {
+            url
+          }
+        }
+        edition_sets {
+          id
+          dimensions {
+            in
+            cm
+          }
         }
       }
+      editionSetId
     }
   `,
 })
