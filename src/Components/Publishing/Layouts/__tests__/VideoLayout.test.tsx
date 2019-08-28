@@ -130,9 +130,8 @@ describe("display ad data on video series", () => {
         }
         isSeries
         targetingData={targetingData(
-          VideoArticleSponsored.id,
-          isSponsored ? "sponsorlanding" : "video",
-          VideoArticleSponsored.vertical.name
+          VideoArticleSponsored,
+          isSponsored ? "sponsorlanding" : "video"
         )}
       />
     )
@@ -158,9 +157,8 @@ describe("display ad data on video series", () => {
         }
         isSeries
         targetingData={targetingData(
-          VideoArticleFixture.id,
-          isSponsored ? "sponsorlanding" : "video",
-          VideoArticleSponsored.vertical.name
+          VideoArticleFixture,
+          isSponsored ? "sponsorlanding" : "video"
         )}
       />
     )
@@ -186,9 +184,8 @@ describe("display ad data on video series", () => {
         }
         isSeries
         targetingData={targetingData(
-          VideoArticleFixture.id,
-          isSponsored ? "sponsorlanding" : "video",
-          VideoArticleSponsored.vertical.name
+          VideoArticleFixture,
+          isSponsored ? "sponsorlanding" : "video"
         )}
       />
     )
@@ -207,11 +204,7 @@ describe("display ad data on video series", () => {
         }
         adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
         isSeries
-        targetingData={targetingData(
-          VideoArticleFixture.id,
-          "sponsorlanding",
-          VideoArticleSponsored.vertical.name
-        )}
+        targetingData={targetingData(VideoArticleFixture, "sponsorlanding")}
       />
     )
 

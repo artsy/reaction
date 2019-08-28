@@ -174,11 +174,7 @@ describe("standard article ad data", () => {
       <DisplayAd
         adDimension={AdDimension.Desktop_TopLeaderboard}
         adUnit={AdUnit.Desktop_TopLeaderboard}
-        targetingData={targetingData(
-          StandardArticle.id,
-          "article",
-          StandardArticle.vertical.name
-        )}
+        targetingData={targetingData(StandardArticle, "article")}
       />
     )
 
@@ -198,11 +194,7 @@ describe("standard article ad data", () => {
       <DisplayAd
         adDimension={AdDimension.Desktop_RightRail1}
         adUnit={AdUnit.Desktop_RightRail1}
-        targetingData={targetingData(
-          StandardArticle.id,
-          "article",
-          StandardArticle.vertical.name
-        )}
+        targetingData={targetingData(StandardArticle, "article")}
       />
     )
 
@@ -222,11 +214,7 @@ describe("standard article ad data", () => {
       <DisplayAd
         adDimension={AdDimension.Mobile_InContentMR1}
         adUnit={AdUnit.Mobile_InContentMR1}
-        targetingData={targetingData(
-          StandardArticle.id,
-          "article",
-          StandardArticle.vertical.name
-        )}
+        targetingData={targetingData(StandardArticle, "article")}
       />
     )
 
@@ -246,11 +234,7 @@ describe("standard article ad data", () => {
       <DisplayAd
         adDimension={AdDimension.Mobile_TopLeaderboard}
         adUnit={AdUnit.Mobile_TopLeaderboard}
-        targetingData={targetingData(
-          StandardArticle.id,
-          "article",
-          StandardArticle.vertical.name
-        )}
+        targetingData={targetingData(StandardArticle, "article")}
       />
     )
 

@@ -3,10 +3,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { getEditorialHref } from "Components/Publishing/Constants"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
-import {
-  getVerticalTag,
-  targetingData,
-} from "Components/Publishing/Display/DisplayTargeting"
+import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -66,7 +63,7 @@ export class StandardLayout extends React.Component<
     this.setState({ isTruncated: false })
   }
 
-  renderSideRailDisplayAd(isMobileAd: boolean, verticalTag: string) {
+  renderSideRailDisplayAd(isMobileAd: boolean) {
     const { article, isSuper } = this.props
 
     if (isSuper) {
@@ -83,12 +80,12 @@ export class StandardLayout extends React.Component<
             ? AdDimension.Mobile_InContentMR1
             : AdDimension.Desktop_RightRail1
         }
-        targetingData={targetingData(article.id, "article", verticalTag)}
+        targetingData={targetingData(article, "article")}
       />
     )
   }
 
-  renderTopRailDisplayAd(isMobileAd: boolean, verticalTag: string) {
+  renderTopRailDisplayAd(isMobileAd: boolean) {
     const { article, isSuper } = this.props
     const adDimension = isMobileAd
       ? AdDimension.Mobile_InContentMR1
@@ -106,7 +103,7 @@ export class StandardLayout extends React.Component<
             : AdUnit.Desktop_TopLeaderboard
         }
         adDimension={adDimension}
-        targetingData={targetingData(article.id, "article", verticalTag)}
+        targetingData={targetingData(article, "article")}
       />
     )
   }
@@ -127,19 +124,18 @@ export class StandardLayout extends React.Component<
     const { isTruncated } = this.state
     const { seriesArticle } = article
     const seriesOrSuper = isSuper || seriesArticle
-    const verticalTag = getVerticalTag(article)
 
     return (
       <Responsive>
         {({ xs, sm, md }) => {
           const isMobileAd = Boolean(isMobile || xs || sm || md)
           const sideRailDisplayAd = () => (
-            <>{this.renderSideRailDisplayAd(isMobileAd, verticalTag)}</>
+            <>{this.renderSideRailDisplayAd(isMobileAd)}</>
           )
 
           return (
             <ArticleWrapper isInfiniteScroll={this.props.isTruncated}>
-              {this.renderTopRailDisplayAd(isMobileAd, verticalTag)}
+              {this.renderTopRailDisplayAd(isMobileAd)}
 
               <ReadMoreWrapper
                 isTruncated={isTruncated}
