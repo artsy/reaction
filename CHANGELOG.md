@@ -1,3 +1,24 @@
+# v17.7.4 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- Update Targeting Data in Ad Server [#2743](https://github.com/artsy/reaction/pull/2743) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Additional hubs qa [#2726](https://github.com/artsy/reaction/pull/2726) ([@mzikherman](https://github.com/mzikherman))
+- @zephraph => [Error Handling] Present downstream 404s as 404s when possible instead of 500s [#2745](https://github.com/artsy/reaction/pull/2745) ([@mzikherman](https://github.com/mzikherman))
+- Stub out new API for collection hub nav item [#2730](https://github.com/artsy/reaction/pull/2730) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.2 to v4.16.3 [#2742](https://github.com/artsy/reaction/pull/2742) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.7.3 (Tue Aug 27 2019)
 
 #### 🐛  Bug Fix
