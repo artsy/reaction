@@ -31,4 +31,3 @@ Events.onEvent(data => {
 if (!window.sd || !(typeof window.sd === "object")) {
   window.sd = {}
 }
-window.sd.STRIPE_PUBLISHABLE_KEY = "pk_test_R4eRJrMVtXTZxbSPK8mTeluc"
