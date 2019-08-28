@@ -353,9 +353,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
                     />
                   </Flex>
                   <Media greaterThan="xs">
-                    <ItemReview
-                      artwork={order.lineItems.edges[0].node.artwork}
-                    />
+                    <ItemReview lineItem={order.lineItems.edges[0].node} />
                     <Spacer mb={3} />
                     <Button
                       size="large"
@@ -410,13 +408,13 @@ export const ReviewFragmentContainer = createFragmentContainer(
         lineItems {
           edges {
             node {
+              ...ItemReview_lineItem
               artwork {
                 id
                 _id
                 artists {
                   id
                 }
-                ...ItemReview_artwork
               }
             }
           }

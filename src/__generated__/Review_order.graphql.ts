@@ -3,7 +3,7 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
 import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { ItemReview_artwork$ref } from "./ItemReview_artwork.graphql";
+import { ItemReview_lineItem$ref } from "./ItemReview_lineItem.graphql";
 import { OfferSummaryItem_order$ref } from "./OfferSummaryItem_order.graphql";
 import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
 import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
@@ -23,8 +23,8 @@ export type Review_order = {
                     readonly artists: ReadonlyArray<({
                         readonly id: string;
                     }) | null> | null;
-                    readonly " $fragmentRefs": ItemReview_artwork$ref;
                 }) | null;
+                readonly " $fragmentRefs": ItemReview_lineItem$ref;
             }) | null;
         }) | null> | null;
     }) | null;
@@ -114,6 +114,11 @@ return {
               "plural": false,
               "selections": [
                 {
+                  "kind": "FragmentSpread",
+                  "name": "ItemReview_lineItem",
+                  "args": null
+                },
+                {
                   "kind": "LinkedField",
                   "alias": null,
                   "name": "artwork",
@@ -142,11 +147,6 @@ return {
                         v0,
                         v1
                       ]
-                    },
-                    {
-                      "kind": "FragmentSpread",
-                      "name": "ItemReview_artwork",
-                      "args": null
                     },
                     v1
                   ]
@@ -208,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '862cc06fb461f0b8c784420eca595170';
+(node as any).hash = 'b2f1f8fd334de38526bf166c54eccae9';
 export default node;

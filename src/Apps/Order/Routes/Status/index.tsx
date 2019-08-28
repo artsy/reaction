@@ -350,11 +350,6 @@ export const StatusFragmentContainer = createFragmentContainer(
                   }
                 }
               }
-              artwork {
-                id
-                is_acquireable
-                ...ItemReview_artwork
-              }
             }
           }
         }
