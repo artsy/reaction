@@ -7,7 +7,7 @@ export function trackPageViewWrapper<T>(
   return class TrackPageView extends React.Component<T> {
     static displayName = `TrackPageView(${Component.displayName ||
       Component.name ||
-      "unknonwn"})`
+      "unknown"})`
     componentDidMount() {
       trackPageView()
     }

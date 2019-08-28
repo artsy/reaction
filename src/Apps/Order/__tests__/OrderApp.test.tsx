@@ -199,7 +199,7 @@ describe("OrderApp routing redirects", () => {
     expect(redirect).toBe(undefined)
   })
 
-  it.only("redirects from the status route to the review route if the order is pending", async () => {
+  it("redirects from the status route to the review route if the order is pending", async () => {
     const { redirect } = await render(
       "/orders/1234/status",
       mockResolver({
