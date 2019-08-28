@@ -1,3 +1,15 @@
+# v17.7.5 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- Show correct edition set dimensions based on the selected edition set [#2748](https://github.com/artsy/reaction/pull/2748) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v17.7.4 (Wed Aug 28 2019)
 
 #### 🐛  Bug Fix
