@@ -1,13 +1,20 @@
+import { ArticleData } from "Components/Publishing/Typings"
 import { data as sd } from "sharify"
+import { get } from "Utils/get"
 
-export const targetingData = (id: string, pageType: string) => {
+export const targetingData = (article: ArticleData, pageType: string) => {
   const isTesting = sd.DEPLOY_ENV === "production" ? false : true
 
   return {
     is_testing: isTesting,
     page_type: pageType,
-    post_id: id,
+    post_id: article.id,
+    tags: verticalTag(article),
   }
+}
+
+const verticalTag = (article: ArticleData) => {
+  return get(article, a => a.vertical.name, "")
 }
 
 export const is300x50AdUnit = (unit: string): boolean => {

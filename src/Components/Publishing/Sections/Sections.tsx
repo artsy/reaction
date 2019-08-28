@@ -315,7 +315,7 @@ export class Sections extends Component<Props, State> {
               adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
               adDimension={adDimension}
               targetingData={targetingData(
-                article.id,
+                article,
                 isSponsored ? "sponsorfeature" : "feature"
               )}
             />

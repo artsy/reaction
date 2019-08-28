@@ -12,6 +12,7 @@ export interface DisplayAdProps extends FlexProps {
     is_testing: boolean
     page_type: string
     post_id: string
+    tags: string
   }
   isSeries?: boolean
   isStandard?: boolean
@@ -28,7 +29,6 @@ GPT.syncCorrelator(true)
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
   const { adDimension, adUnit, targetingData, ...otherProps } = props
-
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)

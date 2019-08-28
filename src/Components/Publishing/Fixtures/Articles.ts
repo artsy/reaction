@@ -1389,6 +1389,10 @@ export const NewsArticle: ArticleData = {
     id: "50f4367051e7956b6e00045d",
     name: "Artsy Editorial",
   },
+  vertical: {
+    name: "News",
+    id: "12345",
+  },
   published_at: "2018-07-19T17:19:55.909Z",
   authors: [
     {

@@ -121,7 +121,7 @@ export class NewsLayout extends Component<Props, State> {
           <DisplayAd
             adUnit={adUnit}
             adDimension={adDimension}
-            targetingData={targetingData(article.id, "newslanding")}
+            targetingData={targetingData(article, "newslanding")}
           />
         )}
         {relatedArticlesForCanvas && (

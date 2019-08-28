@@ -80,7 +80,7 @@ export class StandardLayout extends React.Component<
             ? AdDimension.Mobile_InContentMR1
             : AdDimension.Desktop_RightRail1
         }
-        targetingData={targetingData(article.id, "article")}
+        targetingData={targetingData(article, "article")}
       />
     )
   }
@@ -103,7 +103,7 @@ export class StandardLayout extends React.Component<
             : AdUnit.Desktop_TopLeaderboard
         }
         adDimension={adDimension}
-        targetingData={targetingData(article.id, "article")}
+        targetingData={targetingData(article, "article")}
       />
     )
   }
