@@ -8,6 +8,11 @@ import React from "react"
 import { ArtistSeriesRail } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
+jest.mock("Utils/Hooks/useMedia", () => ({
+  useMedia: () => ({
+    xl: true,
+  }),
+}))
 
 jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
