@@ -11,6 +11,9 @@ storiesOf("Apps/Auction/Components", module).add("RegistrationForm", () => {
           window.alert(JSON.stringify({ ...values, token: token.id }, null, 2))
           actions.setSubmitting(false)
         }}
+        trackSubmissionErrors={errors =>
+          console.warn("Tracking errors: ", errors)
+        }
       />
     </Section>
   )

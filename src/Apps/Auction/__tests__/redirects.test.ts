@@ -1,11 +1,11 @@
 import { routes } from "Apps/Auction/routes"
-import { createMockNetworkLayer2 } from "DevTools"
+import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
 import { createRender } from "found"
 import { Resolver } from "found-relay"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import {
-  RegisterQueryResponse,
+  DeFragedRegisterQueryResponse,
   RegisterQueryResponseFixture as Fixture,
 } from "../../__tests__/Fixtures/Auction/Routes/Register"
 
@@ -25,23 +25,23 @@ describe("Auction/redirects", () => {
   }
 
   const mockResolver = (
-    data: RegisterQueryResponse
-  ): RegisterQueryResponse => ({
+    data: DeFragedRegisterQueryResponse
+  ): DeFragedRegisterQueryResponse => ({
     sale: data.sale,
     me: data.me,
   })
 
   it("does not redirect if a sale is found", async () => {
-    const { redirect } = await render(
+    const result = await render(
       `/auction-registration2/${Fixture.sale.id}`,
       mockResolver(Fixture)
     )
-
+    const { redirect } = result
     expect(redirect).toBeUndefined
   })
 
   it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
-    const { redirect } = await render(
+    const result = await render(
       `/auction-registration2/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
@@ -51,6 +51,8 @@ describe("Auction/redirects", () => {
         },
       })
     )
+
+    const { redirect } = result
 
     expect(redirect.url).toBe(`/auction/${Fixture.sale.id}/registration-flow`)
   })

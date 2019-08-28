@@ -1,9 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
+import { Register_me$ref } from "./Register_me.graphql";
 import { Register_sale$ref } from "./Register_sale.graphql";
-import { redirects_me$ref } from "./redirects_me.graphql";
-import { redirects_sale$ref } from "./redirects_sale.graphql";
 export type routes_RegisterQueryVariables = {
     readonly saleID: string;
 };
@@ -17,11 +16,11 @@ export type routes_RegisterQueryResponse = {
         readonly registrationStatus: ({
             readonly qualified_for_bidding: boolean | null;
         }) | null;
-        readonly " $fragmentRefs": redirects_sale$ref & Register_sale$ref;
+        readonly " $fragmentRefs": Register_sale$ref;
     }) | null;
     readonly me: ({
         readonly has_qualified_credit_cards: boolean | null;
-        readonly " $fragmentRefs": redirects_me$ref;
+        readonly " $fragmentRefs": Register_me$ref;
     }) | null;
 };
 export type routes_RegisterQuery = {
@@ -36,8 +35,6 @@ query routes_RegisterQuery(
   $saleID: String!
 ) {
   sale(id: $saleID) {
-    ...redirects_sale
-    ...Register_sale
     id
     is_auction
     is_registration_closed
@@ -47,35 +44,25 @@ query routes_RegisterQuery(
       qualified_for_bidding
       __id
     }
+    ...Register_sale
     __id
   }
   me {
-    ...redirects_me
     has_qualified_credit_cards
+    ...Register_me
     __id
   }
-}
-
-fragment redirects_sale on Sale {
-  id
-  is_auction
-  is_registration_closed
-  is_preview
-  is_open
-  registrationStatus {
-    qualified_for_bidding
-    __id
-  }
-  __id
 }
 
 fragment Register_sale on Sale {
   id
+  _id
+  status
   __id
 }
 
-fragment redirects_me on Me {
-  has_qualified_credit_cards
+fragment Register_me on Me {
+  id
   __id
 }
 */
@@ -170,7 +157,7 @@ return {
   "operationKind": "query",
   "name": "routes_RegisterQuery",
   "id": null,
-  "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) {\n    ...redirects_sale\n    ...Register_sale\n    id\n    is_auction\n    is_registration_closed\n    is_preview\n    is_open\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    __id\n  }\n  me {\n    ...redirects_me\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment redirects_sale on Sale {\n  id\n  is_auction\n  is_registration_closed\n  is_preview\n  is_open\n  registrationStatus {\n    qualified_for_bidding\n    __id\n  }\n  __id\n}\n\nfragment Register_sale on Sale {\n  id\n  __id\n}\n\nfragment redirects_me on Me {\n  has_qualified_credit_cards\n  __id\n}\n",
+  "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) {\n    id\n    is_auction\n    is_registration_closed\n    is_preview\n    is_open\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    ...Register_sale\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    ...Register_me\n    __id\n  }\n}\n\nfragment Register_sale on Sale {\n  id\n  _id\n  status\n  __id\n}\n\nfragment Register_me on Me {\n  id\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -188,22 +175,17 @@ return {
         "concreteType": "Sale",
         "plural": false,
         "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "redirects_sale",
-            "args": null
-          },
-          {
-            "kind": "FragmentSpread",
-            "name": "Register_sale",
-            "args": null
-          },
           v2,
           v3,
           v4,
           v5,
           v6,
           v8,
+          {
+            "kind": "FragmentSpread",
+            "name": "Register_sale",
+            "args": null
+          },
           v7
         ]
       },
@@ -216,12 +198,12 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
+          v9,
           {
             "kind": "FragmentSpread",
-            "name": "redirects_me",
+            "name": "Register_me",
             "args": null
           },
-          v9,
           v7
         ]
       }
@@ -247,6 +229,20 @@ return {
           v5,
           v6,
           v8,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "_id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "status",
+            "args": null,
+            "storageKey": null
+          },
           v7
         ]
       },
@@ -260,6 +256,7 @@ return {
         "plural": false,
         "selections": [
           v9,
+          v2,
           v7
         ]
       }
@@ -267,5 +264,5 @@ return {
   }
 };
 })();
-(node as any).hash = '9f090f49979e7956be5f60517d199b8d';
+(node as any).hash = '5e90e1e8033ec046e4308a44cd338207';
 export default node;

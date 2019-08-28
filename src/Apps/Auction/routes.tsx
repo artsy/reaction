@@ -4,14 +4,14 @@ import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
 import { findRedirect } from "./redirects"
-import { RegisterFragmentContainer as Register } from "./Routes/Register"
+import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
 
 export const routes: RouteConfig[] = [
   {
     path: "/auction-registration2/:saleID",
-    Component: Register,
+    Component: RegisterRouteFragmentContainer,
     render: ({ Component, props }) => {
       if (Component && props) {
         const { location, sale, me } = props as any
@@ -37,10 +37,6 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_RegisterQuery($saleID: String!) {
         sale(id: $saleID) {
-          ...redirects_sale
-          ...Register_sale
-
-          # TODO: We shouldn't need to inline these attributes
           id
           is_auction
           is_registration_closed
@@ -50,12 +46,11 @@ export const routes: RouteConfig[] = [
           registrationStatus {
             qualified_for_bidding
           }
+          ...Register_sale
         }
         me {
-          ...redirects_me
-
-          # TODO: We shouldn't need to inline this attribute
           has_qualified_credit_cards
+          ...Register_me
         }
       }
     `,

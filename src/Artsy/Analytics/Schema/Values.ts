@@ -5,6 +5,7 @@ export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
+  AuctionRegistrationPage = "Auction Registration page",
   CollectPage = "Collect page",
   CollectionPage = "Collection",
   SearchPage = "Search page",
@@ -84,6 +85,12 @@ export enum ActionType {
   Link = "Link",
 
   /**
+   * Auctions
+   */
+  PlacedMaxBid = "Placed Max Bid",
+  RegisteredToBid = "Registered To Bid",
+
+  /**
    * A tap on a UI element using a finger-like input device.
    *
    * TODO: Check if ‘Click’ and this can be combined.
@@ -112,6 +119,12 @@ export enum ActionType {
   SelectedItemFromSearchPage = "Selected item from search page",
   SearchedAutosuggestWithResults = "Searched from header with results",
   SearchedAutosuggestWithoutResults = "Searched from header with no results",
+
+  /**
+   * Auction Registration flow
+   */
+  RegistrationSubmitFailed = "Registration failed to submit",
+  RegistrationSubmitted = "Registration submitted",
 }
 
 /**

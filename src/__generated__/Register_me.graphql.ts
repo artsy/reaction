@@ -1,18 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _redirects_me$ref: unique symbol;
-export type redirects_me$ref = typeof _redirects_me$ref;
-export type redirects_me = {
-    readonly has_qualified_credit_cards: boolean | null;
-    readonly " $refType": redirects_me$ref;
+declare const _Register_me$ref: unique symbol;
+export type Register_me$ref = typeof _Register_me$ref;
+export type Register_me = {
+    readonly id: string;
+    readonly " $refType": Register_me$ref;
 };
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "redirects_me",
+  "name": "Register_me",
   "type": "Me",
   "metadata": null,
   "argumentDefinitions": [],
@@ -20,7 +20,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "has_qualified_credit_cards",
+      "name": "id",
       "args": null,
       "storageKey": null
     },
@@ -33,5 +33,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '3415c6dd0dfd0accbba4a38a64800f5e';
+(node as any).hash = '6252a43fa617a5b5d2d66ceffe124a21';
 export default node;
