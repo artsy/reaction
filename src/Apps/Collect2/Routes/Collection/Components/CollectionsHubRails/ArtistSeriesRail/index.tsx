@@ -2,12 +2,12 @@ import { Box, color, Serif } from "@artsy/palette"
 import { ArtistSeriesRail_collectionGroup } from "__generated__/ArtistSeriesRail_collectionGroup.graphql"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useWindowSize } from "Utils/Hooks/useWindowSize"
+import { useMedia } from "Utils/Hooks/useMedia"
 import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesEntity"
 
 export interface ArtistSeriesRailProps {
@@ -17,19 +17,18 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
-  const broswerWidth = useWindowSize()
 
   let groupCells: number
 
+  const { xl } = useMedia()
+
   if (sd.IS_MOBILE) {
     groupCells = 1
+  } else if (!xl && members.length <= 4) {
+    groupCells = 3
   } else {
-    if (broswerWidth > 1024) {
-      groupCells = 4
-    } else groupCells = 3
+    groupCells = 4
   }
-
-  const isSmallerViewpoint = broswerWidth < 1024
 
   const { trackEvent } = useTracking()
 
@@ -52,6 +51,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
       subject: AnalyticsSchema.Subject.ClickedNextButton,
     })
   }
+
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
@@ -64,7 +64,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
-          draggable: sd.IS_MOBILE ? true : false,
+          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
@@ -72,27 +72,25 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         }}
         onArrowClick={() => trackArrowClick()}
         renderLeftArrow={({ Arrow }) => {
-          const smallerViewpointAndFourItems =
-            isSmallerViewpoint && members.length === 4
+          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
           return (
             <ArrowContainer>
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                smallerViewpointAndFourItems && <Arrow showArrow={true} />
+                showArrowChecker && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
         }}
         renderRightArrow={({ Arrow }) => {
-          const smallerViewpointAndFourItems =
-            isSmallerViewpoint && members.length === 4
+          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
           return (
             <ArrowContainer>
               {members.length > 4 ? (
                 <Arrow />
               ) : (
-                smallerViewpointAndFourItems && <Arrow showArrow={true} />
+                showArrowChecker && <Arrow showArrow={true} />
               )}
             </ArrowContainer>
           )
@@ -108,6 +106,9 @@ const Content = styled(Box)`
 
 export const ArrowContainer = styled(Box)`
   align-self: flex-start;
+  ${ArrowButton} {
+    height: 85%;
+  }
 `
 
 export const ArtistSeriesRailContainer = createFragmentContainer(
