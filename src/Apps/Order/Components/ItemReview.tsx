@@ -59,7 +59,9 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
       )}
       {editionSetId &&
         edition_sets &&
-        dimensionsDisplay(edition_sets.find(e => e.id === editionSetId))}
+        dimensionsDisplay(
+          edition_sets.find(e => e.id === editionSetId).dimensions
+        )}
       {!editionSetId &&
         artworkDimensions &&
         dimensionsDisplay(artworkDimensions)}
