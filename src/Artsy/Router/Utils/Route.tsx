@@ -35,7 +35,11 @@ function createRender({
         // TODO: Better error typing.
         // @ts-ignore
         const firstError = get(error, e => e.res.errors[0])
-        const statusCodes = get(firstError, e => e.extensions.httpStatusCodes)
+        const statusCodes = get(
+          firstError,
+          e => e.extensions.httpStatusCodes,
+          []
+        )
         if (statusCodes.length === 1) {
           status = statusCodes[0]
           message = firstError.message
