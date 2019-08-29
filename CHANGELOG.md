@@ -1,3 +1,15 @@
+# v17.8.0 (Thu Aug 29 2019)
+
+#### 🚀  Enhancement
+
+- Create Collection Hubs entrypoint nav component for homepage [#2749](https://github.com/artsy/reaction/pull/2749) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v17.7.7 (Thu Aug 29 2019)
 
 #### 🐛  Bug Fix
