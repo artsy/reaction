@@ -121,6 +121,17 @@ describe("FeaturedCollectionEntity", () => {
   let props
   const trackEvent = jest.fn()
 
+  const memberDataWithoutPriceGuidance = () => {
+    return {
+      description:
+        "<p>From SpongeBob SquarePants to Snoopy, many beloved childhood cartoons have made an impact on the history of art.</p>",
+      price_guidance: null,
+      slug: "art-inspired-by-cartoons",
+      thumbnail: "http://files.artsy.net/images/cartoons_thumbnail.png",
+      title: "Art Inspired by Cartoons",
+    }
+  }
+
   beforeEach(() => {
     props = {
       collectionGroup: CollectionHubFixture.linkedCollections[1],
@@ -142,6 +153,14 @@ describe("FeaturedCollectionEntity", () => {
     expect(featuredImage.getElement().props.src).toBe(
       "http://files.artsy.net/images/cartoons_thumbnail.png"
     )
+  })
+
+  it("Does not renders price guidance for FeaturedCollectionEntity when it is null", () => {
+    props.collectionGroup.members = [memberDataWithoutPriceGuidance()]
+    const component = mount(<FeaturedCollectionsRails {...props} />)
+    const firstEntity = component.find(FeaturedCollectionEntity).at(0)
+
+    expect(firstEntity.text()).not.toContain("From $")
   })
 
   it("Tracks collection entity click", () => {
