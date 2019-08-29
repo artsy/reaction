@@ -85,42 +85,5 @@ describe("Auction Registration Analytics ", () => {
 
   it("tracks form submission success", async () => {
     pending()
-    // const wrapper = await renderRelayTree({
-    //   Component: (props: any) => (
-    //     <div>
-    //       <RegisterRouteFragmentContainer {...props} />
-    //     </div>
-    //   ),
-    //   mockData: defaultProps as any,
-    //   mockMutationResults: {
-    //     createBidder: {
-    //       clientMutationId: 123,
-    //       bidder: {
-    //         id: 123
-    //       }
-    //     }
-    //   },
-    //   query: graphql`
-    //     query RegisterRouteAnalytics_Test_Query {
-    //       sale(id: "whatever") {
-    //         ...Register_sale
-    //       }
-    //       me {
-    //         ...Register_me
-    //       }
-    //     }
-    //   `,
-    // })
-
-    // console.log(wrapper.text())
-    // fillInForm(wrapper, validAddress)
-
-    // await flushPromiseQueue()
-
-    // expect(mockTrack).toHaveBeenCalledWith(
-    //   expect.objectContaining({
-    //     event: "Registration success!!!!!!",
-    //   })
-    // )
   })
 })
