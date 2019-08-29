@@ -28,7 +28,7 @@ export const CollectionsHubsHomepageNav: FC<
           to={`/collection/${hub.slug}`}
           src={placeholderImage}
           ratio={[0.49]}
-          title={<Serif size="4t">{hub.title}</Serif>}
+          title={<Serif size={["3", "4"]}>{hub.title}</Serif>}
           subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}
           key={hub.id}
         />
