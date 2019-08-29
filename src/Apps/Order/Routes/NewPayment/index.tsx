@@ -110,19 +110,18 @@ export class NewPaymentRoute extends Component<
         orderOrError.actionData &&
         orderOrError.actionData.clientSecret
       ) {
-        this.state.stripe
-          .handleCardAction(orderOrError.actionData.clientSecret)
-          .then(scaResult => {
-            if (scaResult.error) {
-              this.props.dialog.showErrorDialog({
-                title: "An error occurred",
-                message: scaResult.error.message,
-              })
-              return
-            } else {
-              this.onContinue()
-            }
+        const scaResult = await this.state.stripe.handleCardAction(
+          orderOrError.actionData.clientSecret
+        )
+        if (scaResult.error) {
+          this.props.dialog.showErrorDialog({
+            title: "An error occurred",
+            message: scaResult.error.message,
           })
+          return
+        } else {
+          this.onContinue()
+        }
       } else {
         this.props.router.push(`/orders/${this.props.order.id}/status`)
       }
