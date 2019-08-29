@@ -1,3 +1,15 @@
+# v17.7.7 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- Update ImageLink to use a fixed aspect ratio and avoid jitter [#2752](https://github.com/artsy/reaction/pull/2752) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v17.7.6 (Wed Aug 28 2019)
 
 #### 🐛  Bug Fix
