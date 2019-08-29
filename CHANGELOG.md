@@ -1,3 +1,15 @@
+# v17.8.1 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubsRails] minor UI fixes [#2753](https://github.com/artsy/reaction/pull/2753) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v17.8.0 (Thu Aug 29 2019)
 
 #### 🚀  Enhancement
