@@ -1,3 +1,15 @@
+# v17.7.6 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- showing arrows based on the width [#2746](https://github.com/artsy/reaction/pull/2746) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v17.7.5 (Wed Aug 28 2019)
 
 #### 🐛  Bug Fix
