@@ -27,7 +27,6 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
           src={placeholderImage}
           ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
-          // subtitle={subtitle && <Serif size="2">{hub.subtitle}</Serif>}
           key={hub.id}
         />
       ))}

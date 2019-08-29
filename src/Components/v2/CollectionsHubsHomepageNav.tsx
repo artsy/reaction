@@ -25,9 +25,9 @@ export const CollectionsHubsHomepageNav: FC<
     >
       {props.marketingCollections.map(hub => (
         <ImageLink
-          href={`/collection/${hub.slug}`}
+          to={`/collection/${hub.slug}`}
           src={placeholderImage}
-          alt={hub.title}
+          ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
           subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}
           key={hub.id}
