@@ -50,7 +50,7 @@ interface ImageLinkProps {
   src: string
 
   /** Destination for the hyperlink */
-  href: string
+  to: string
 
   /** Primary text that appears below the image */
   title: React.ReactElement<SerifProps & { className?: string }>
@@ -63,14 +63,14 @@ interface ImageLinkProps {
 }
 
 export const ImageLink: FC<ImageLinkProps> = ({
-  href,
+  to,
   src,
   title,
   subtitle,
   ratio,
 }) => {
   return (
-    <OuterLink to={href}>
+    <OuterLink to={to}>
       <ImageContainer>
         <ImageOverlay>
           <HubImage src={src} width="100%" ratio={ratio} />
