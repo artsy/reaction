@@ -1,3 +1,20 @@
+# v17.8.2 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Error Handling] Correct default if no status codes provided [#2754](https://github.com/artsy/reaction/pull/2754) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Add STRIPE_PUBISHABLE_KEY to .env.oss [#2747](https://github.com/artsy/reaction/pull/2747) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v17.8.1 (Thu Aug 29 2019)
 
 #### 🐛  Bug Fix
