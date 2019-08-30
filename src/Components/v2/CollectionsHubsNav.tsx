@@ -23,11 +23,10 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
     >
       {props.marketingCollections.map(hub => (
         <ImageLink
-          href={`/collection/${hub.slug}`}
+          to={`/collection/${hub.slug}`}
           src={placeholderImage}
-          alt={hub.title}
+          ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
-          // subtitle={subtitle && <Serif size="2">{hub.subtitle}</Serif>}
           key={hub.id}
         />
       ))}
@@ -36,7 +35,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
 }
 
 // This is a temporary image URL until we get real data.
-const placeholderImage =
+export const placeholderImage =
   "https://d7hftxdivxxvm.cloudfront.net/?resize_to=fill&width=357&height=175&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FeF_qAORql7lSnD2BwbFOYg%2Flarge.jpg"
 
 export const CollectionsHubsNavFragmentContainer = createFragmentContainer(

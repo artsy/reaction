@@ -10,9 +10,9 @@ storiesOf("Components/ImageLink", module)
   .add("with specific dimensions", () => (
     <Box width={300}>
       <ImageLink
-        href="http://example.com"
+        to="http://example.com"
         src={imageSample}
-        alt="Photography"
+        ratio={0.49}
         title={<Serif size="4t">Photography</Serif>}
       />
     </Box>
@@ -20,9 +20,9 @@ storiesOf("Components/ImageLink", module)
   .add("with variable dimensions", () => (
     <Box width="30%">
       <ImageLink
-        href="http://example.com"
+        to="http://example.com"
         src={imageSample}
-        alt="Street Art"
+        ratio={0.49}
         title={<Serif size="4t">Street Art</Serif>}
       />
     </Box>
@@ -30,9 +30,9 @@ storiesOf("Components/ImageLink", module)
   .add("with a long text", () => (
     <Box width={300}>
       <ImageLink
-        href="http://example.com"
+        to="http://example.com"
         src={imageSample}
-        alt="Impressionist and Modern Art and Other Things People Like"
+        ratio={0.49}
         title={
           <Serif size="4t">
             Impressionist and Modern Art and Other Things People Like
@@ -44,9 +44,9 @@ storiesOf("Components/ImageLink", module)
   .add("with title and subtitle", () => (
     <Box width="30%">
       <ImageLink
-        href="http://example.com"
+        to="http://example.com"
         src={imageSample}
-        alt="Photography"
+        ratio={0.49}
         title={<Serif size="4t">Photography</Serif>}
         subtitle={
           <Serif size="2">Today’s leading artists and emerging talents</Serif>

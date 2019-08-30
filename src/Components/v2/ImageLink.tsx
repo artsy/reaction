@@ -1,4 +1,4 @@
-import { Box, Image, SerifProps } from "@artsy/palette"
+import { Box, ResponsiveImage, SerifProps } from "@artsy/palette"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React, { FC } from "react"
 import styled from "styled-components"
@@ -9,7 +9,7 @@ const ImageContainer = styled(Box)`
   position: relative;
 `
 
-const HubImage = styled(Image)`
+const HubImage = styled(ResponsiveImage)`
   vertical-align: middle;
 `
 
@@ -46,25 +46,34 @@ const OuterLink = styled(RouterLink)`
 `
 
 interface ImageLinkProps {
+  /** Source url for the image */
   src: string
-  href: string
-  alt: string
+
+  /** Destination for the hyperlink */
+  to: string
+
+  /** Primary text that appears below the image */
   title: React.ReactElement<SerifProps & { className?: string }>
+
+  /** Secondary text that (optionally) appears below the title */
   subtitle?: React.ReactElement<SerifProps>
+
+  /** A number corresponding to the ratio of height/width (inverted from the usual width/height aspect ratio) */
+  ratio: number | number[]
 }
 
 export const ImageLink: FC<ImageLinkProps> = ({
-  href,
+  to,
   src,
-  alt,
   title,
   subtitle,
+  ratio,
 }) => {
   return (
-    <OuterLink to={href}>
+    <OuterLink to={to}>
       <ImageContainer>
         <ImageOverlay>
-          <HubImage src={src} width="100%" alt={alt} />
+          <HubImage src={src} width="100%" ratio={ratio} />
         </ImageOverlay>
       </ImageContainer>
       {React.cloneElement(title, {

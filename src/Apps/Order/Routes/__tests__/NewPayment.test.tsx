@@ -14,6 +14,7 @@ import {
   fixFailedPaymentFailure,
   fixFailedPaymentInsufficientInventoryFailure,
   fixFailedPaymentSuccess,
+  fixFailedPaymentWithActionRequired,
 } from "../__fixtures__/MutationResults"
 import { NewPaymentFragmentContainer } from "../NewPayment"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
@@ -34,6 +35,7 @@ jest.mock(
   }
 )
 
+const handleCardAction = jest.fn()
 const realSetInterval = global.setInterval
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
@@ -61,6 +63,13 @@ const testOrder = {
 }
 
 describe("Payment", () => {
+  beforeAll(() => {
+    window.Stripe = () => {
+      return { handleCardAction } as any
+    }
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
   const { buildPage, mutations, routes } = createTestEnv({
     Component: NewPaymentFragmentContainer,
     defaultData: {
@@ -171,6 +180,16 @@ describe("Payment", () => {
     )
   })
 
+  it("shows an error modal with the title 'An internal error occurred' and the default message when the payment picker returns an error with the type 'internal_error'", async () => {
+    paymentPickerMock.useInternalErrorResult()
+    const page = await buildPage()
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "An internal error occurred",
+      "Please try again or contact orders@artsy.net."
+    )
+  })
+
   it("shows an error modal when fixing the failed payment fails", async () => {
     const page = await buildPage()
     mutations.useResultsOnce(fixFailedPaymentFailure)
@@ -187,6 +206,14 @@ describe("Payment", () => {
 
     await page.clickSubmit()
     await page.expectAndDismissDefaultErrorDialog()
+  })
+
+  it("shows SCA modal when required", async () => {
+    const page = await buildPage()
+    mutations.useResultsOnce(fixFailedPaymentWithActionRequired)
+
+    await page.clickSubmit()
+    expect(handleCardAction).toBeCalledWith("client-secret")
   })
 
   it("tracks a pageview", async () => {

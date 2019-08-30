@@ -1,3 +1,86 @@
+# v17.8.5 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1432: Improve error messaging for generic declines on the payment page [#2740](https://github.com/artsy/reaction/pull/2740) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v17.8.4 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1428: Get failed payment flow working with case where payment intent of a already confirmed setupintent fails when seller accepts offer [#2751](https://github.com/artsy/reaction/pull/2751) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v17.8.3 (Thu Aug 29 2019)
+
+
+
+---
+
+# v17.8.2 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Error Handling] Correct default if no status codes provided [#2754](https://github.com/artsy/reaction/pull/2754) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Add STRIPE_PUBISHABLE_KEY to .env.oss [#2747](https://github.com/artsy/reaction/pull/2747) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v17.8.1 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubsRails] minor UI fixes [#2753](https://github.com/artsy/reaction/pull/2753) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.8.0 (Thu Aug 29 2019)
+
+#### 🚀  Enhancement
+
+- Create Collection Hubs entrypoint nav component for homepage [#2749](https://github.com/artsy/reaction/pull/2749) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v17.7.7 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- Update ImageLink to use a fixed aspect ratio and avoid jitter [#2752](https://github.com/artsy/reaction/pull/2752) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v17.7.6 (Wed Aug 28 2019)
 
 #### 🐛  Bug Fix
