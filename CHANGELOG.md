@@ -1,3 +1,15 @@
+# v17.8.5 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1432: Improve error messaging for generic declines on the payment page [#2740](https://github.com/artsy/reaction/pull/2740) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v17.8.4 (Fri Aug 30 2019)
 
 #### 🐛  Bug Fix
