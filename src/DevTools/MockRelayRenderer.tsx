@@ -106,7 +106,7 @@ export interface MockRelayRendererState {
        <MockRelayRenderer
          Component={Artwork}
          query={graphql`
-           query MockRelayRendererQuery {
+           query AnotherMockRelayRendererQuery {
              artwork(id: "mona-lisa") {
                ...MockRelayRenderer_artwork
              }

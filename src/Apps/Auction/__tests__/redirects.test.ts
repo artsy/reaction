@@ -1,11 +1,11 @@
 import { routes } from "Apps/Auction/routes"
-import { createMockNetworkLayer2 } from "DevTools"
+import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
 import { createRender } from "found"
 import { Resolver } from "found-relay"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import {
-  RegisterQueryResponse,
+  DeFragedRegisterQueryResponse,
   RegisterQueryResponseFixture as Fixture,
 } from "../../__tests__/Fixtures/Auction/Routes/Register"
 
@@ -25,8 +25,8 @@ describe("Auction/redirects", () => {
   }
 
   const mockResolver = (
-    data: RegisterQueryResponse
-  ): RegisterQueryResponse => ({
+    data: DeFragedRegisterQueryResponse
+  ): DeFragedRegisterQueryResponse => ({
     sale: data.sale,
     me: data.me,
   })
@@ -36,7 +36,6 @@ describe("Auction/redirects", () => {
       `/auction-registration2/${Fixture.sale.id}`,
       mockResolver(Fixture)
     )
-
     expect(redirect).toBeUndefined
   })
 

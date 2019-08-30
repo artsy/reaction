@@ -11,6 +11,9 @@ export type RegisterCreateBidderMutationVariables = {
 export type RegisterCreateBidderMutationResponse = {
     readonly createBidder: ({
         readonly clientMutationId: string | null;
+        readonly bidder: ({
+            readonly id: string;
+        }) | null;
     }) | null;
 };
 export type RegisterCreateBidderMutation = {
@@ -26,6 +29,10 @@ mutation RegisterCreateBidderMutation(
 ) {
   createBidder(input: $input) {
     clientMutationId
+    bidder {
+      id
+      __id
+    }
   }
 }
 */
@@ -62,6 +69,31 @@ v1 = [
         "name": "clientMutationId",
         "args": null,
         "storageKey": null
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "bidder",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Bidder",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__id",
+            "args": null,
+            "storageKey": null
+          }
+        ]
       }
     ]
   }
@@ -71,7 +103,7 @@ return {
   "operationKind": "mutation",
   "name": "RegisterCreateBidderMutation",
   "id": null,
-  "text": "mutation RegisterCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    clientMutationId\n  }\n}\n",
+  "text": "mutation RegisterCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    clientMutationId\n    bidder {\n      id\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -89,5 +121,5 @@ return {
   }
 };
 })();
-(node as any).hash = '976a0966cf299e6c43717a6bb20b4225';
+(node as any).hash = '7bb481b7dded4dc94f9b7832c50e0d13';
 export default node;
