@@ -14,6 +14,7 @@ import {
   fixFailedPaymentFailure,
   fixFailedPaymentInsufficientInventoryFailure,
   fixFailedPaymentSuccess,
+  fixFailedPaymentWithActionRequired,
 } from "../__fixtures__/MutationResults"
 import { NewPaymentFragmentContainer } from "../NewPayment"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
@@ -34,6 +35,7 @@ jest.mock(
   }
 )
 
+const handleCardAction = jest.fn()
 const realSetInterval = global.setInterval
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
@@ -61,6 +63,13 @@ const testOrder = {
 }
 
 describe("Payment", () => {
+  beforeAll(() => {
+    window.Stripe = () => {
+      return { handleCardAction } as any
+    }
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
   const { buildPage, mutations, routes } = createTestEnv({
     Component: NewPaymentFragmentContainer,
     defaultData: {
@@ -187,6 +196,14 @@ describe("Payment", () => {
 
     await page.clickSubmit()
     await page.expectAndDismissDefaultErrorDialog()
+  })
+
+  it("shows SCA modal when required", async () => {
+    const page = await buildPage()
+    mutations.useResultsOnce(fixFailedPaymentWithActionRequired)
+
+    await page.clickSubmit()
+    expect(handleCardAction).toBeCalledWith("client-secret")
   })
 
   it("tracks a pageview", async () => {

@@ -13,6 +13,7 @@ import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ReactStripeElements } from "react-stripe-elements"
+import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -48,6 +49,7 @@ export interface NewPaymentProps
 
 interface NewPaymentState {
   isGettingCreditCardId: boolean
+  stripe: stripe.Stripe
 }
 
 const logger = createLogger("Order/Routes/NewPayment/index.tsx")
@@ -60,6 +62,21 @@ export class NewPaymentRoute extends Component<
   paymentPicker = React.createRef<PaymentPicker>()
   state = {
     isGettingCreditCardId: false,
+    stripe: null,
+  }
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+        })
+      })
+    }
   }
 
   onContinue = async () => {
@@ -89,6 +106,24 @@ export class NewPaymentRoute extends Component<
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)
         return
+      } else if (
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
+        const scaResult = await this.state.stripe.handleCardAction(
+          orderOrError.actionData.clientSecret
+        )
+        if (scaResult.error) {
+          this.props.dialog.showErrorDialog({
+            title: "An error occurred",
+            message: scaResult.error.message,
+          })
+          return
+        } else {
+          this.onContinue()
+        }
+      } else {
+        this.props.router.push(`/orders/${this.props.order.id}/status`)
       }
 
       this.props.router.push(`/orders/${this.props.order.id}/status`)
@@ -200,6 +235,11 @@ export class NewPaymentRoute extends Component<
                   ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
+                }
+              }
+              ... on CommerceOrderRequiresAction {
+                actionData {
+                  clientSecret
                 }
               }
               ... on CommerceOrderWithMutationFailure {
