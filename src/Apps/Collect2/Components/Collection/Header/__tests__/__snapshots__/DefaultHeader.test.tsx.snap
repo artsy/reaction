@@ -23,6 +23,7 @@ exports[`default header component renders a snapshot 1`] = `
     >
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -32,6 +33,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-feeding-bird"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -41,6 +43,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -50,6 +53,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-standing"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -59,6 +63,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -68,6 +73,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-brushing-hair"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -77,6 +83,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-man-smoking-from-kitchen-table-series"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -86,6 +93,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-from-the-kitchen-table-series"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -95,6 +103,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-phone-from-the-series-the-kitchen-table"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
@@ -104,6 +113,7 @@ exports[`default header component renders a snapshot 1`] = `
       </a>
       <a
         href="/artwork/carrie-mae-weems-untitled-from-kitchen-table-series"
+        onClick={[Function]}
       >
         <img
           className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"

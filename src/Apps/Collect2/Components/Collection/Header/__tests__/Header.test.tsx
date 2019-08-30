@@ -17,7 +17,7 @@ jest.mock("sharify", () => ({
 }))
 
 jest.mock("found", () => ({
-  Link: props => <div>{props.children}</div>,
+  Link: ({ children, ...props }) => <div {...props}>{children}</div>,
 }))
 
 describe("collections header", () => {
@@ -26,6 +26,7 @@ describe("collections header", () => {
     props = {
       artworks: collectionHeaderArtworks,
       collection: {
+        id: "abcdefg1234",
         title: "KAWS: Toys",
         category: "Collectible Sculptures",
         slug: "kaws-toys",
@@ -58,7 +59,6 @@ describe("collections header", () => {
 
     const defaultHeader = component.find("CollectionDefaultHeader")
     const singleImageHeader = component.find("CollectionSingleImageHeader")
-
     expect(defaultHeader.length).toEqual(1)
     expect(singleImageHeader.length).toEqual(0)
   })
