@@ -1,3 +1,21 @@
+# v17.9.0 (Fri Aug 30 2019)
+
+#### 🚀  Enhancement
+
+- Add analytic event tracking to auction registration route [#2727](https://github.com/artsy/reaction/pull/2727) ([@erikdstock](https://github.com/erikdstock) [@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep jest-junit from 6.3.0 to v6.4.0 [#2757](https://github.com/artsy/reaction/pull/2757) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.8.5 (Fri Aug 30 2019)
 
 #### 🐛  Bug Fix
