@@ -1,3 +1,15 @@
+# v17.8.4 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1428: Get failed payment flow working with case where payment intent of a already confirmed setupintent fails when seller accepts offer [#2751](https://github.com/artsy/reaction/pull/2751) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v17.8.3 (Thu Aug 29 2019)
 
 
