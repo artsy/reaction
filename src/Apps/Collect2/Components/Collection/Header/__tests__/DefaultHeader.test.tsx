@@ -124,9 +124,7 @@ describe("default header component", () => {
 
   describe("Tracking", () => {
     it("Tracks collection click", () => {
-      const component = mount(
-        <CollectionDefaultHeader {...props} itemNumber={0} />
-      )
+      const component = mount(<CollectionDefaultHeader {...props} />)
 
       component
         .find("a")
