@@ -15,7 +15,7 @@ yarn --check-files
 
 ## Development
 
-Use yarn to kick off the force development process
+Use yarn to kick off the force development process.
 
 ```
 yarn dev-force
