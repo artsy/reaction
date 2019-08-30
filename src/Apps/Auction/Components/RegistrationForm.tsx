@@ -165,7 +165,13 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
         )}
       </Flex>
 
-      <Button mt={1} size="large" width="100%" loading={isSubmitting}>
+      <Button
+        mt={1}
+        size="large"
+        width="100%"
+        loading={isSubmitting}
+        {...{ type: "submit" } as any}
+      >
         Register
       </Button>
     </Form>
@@ -186,6 +192,41 @@ const validationSchema = Yup.object().shape({
   ),
 })
 
+type TrackErrors = (errors: string[]) => void
+
+/*
+  This component exists only to capture formik's renderProps and track form
+  submission events. It essentially says:
+  - IF the form has been submitted at least once
+  - AND the form is not submitting at this moment
+  - AND the form is invalid
+  - AND (in useEffect dependencies array) the form submitting state just
+    changed (because it is false, it must have been true above)
+  - THEN run the callback prop.
+  Background:
+    https://github.com/jaredpalmer/formik/issues/1484#issuecomment-490558973
+ */
+const OnSubmitValidationError: React.FC<{
+  cb: TrackErrors
+  formikProps: FormikProps<FormValues>
+}> = props => {
+  const { cb, formikProps } = props
+
+  const effect = () => {
+    if (
+      formikProps.submitCount > 0 &&
+      !formikProps.isSubmitting &&
+      !formikProps.isValid
+    ) {
+      cb(Object.values(formikProps.errors))
+      formikProps.setSubmitting(false)
+    }
+  }
+  React.useEffect(effect, [formikProps.submitCount, formikProps.isSubmitting])
+
+  return null
+}
+
 export interface RegistrationFormProps
   extends ReactStripeElements.InjectedStripeProps {
   onSubmit: (
@@ -193,10 +234,11 @@ export interface RegistrationFormProps
     formikActions: FormikActions<object>,
     token: stripe.Token
   ) => void
+  trackSubmissionErrors: TrackErrors
 }
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
-  const initialValues = {
+  const initialValues: FormValues = {
     name: "",
     street: "",
     country: "",
@@ -208,7 +250,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
     agreeToTerms: false,
   }
 
-  function onSubmit(values: FormValues, actions: FormikActions<object>) {
+  function handleSubmit(values: FormValues, actions: FormikActions<object>) {
     const address = {
       name: values.name,
       address_line1: values.street,
@@ -245,9 +287,17 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
       <Box mt={2}>
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           validationSchema={validationSchema}
-          render={InnerForm}
+          render={(formikProps: FormikProps<FormValues>) => (
+            <>
+              <OnSubmitValidationError
+                cb={props.trackSubmissionErrors}
+                formikProps={formikProps}
+              />
+              <InnerForm {...formikProps} />
+            </>
+          )}
         />
       </Box>
     </Box>
