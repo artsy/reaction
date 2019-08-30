@@ -20,6 +20,14 @@ jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
 }))
 
+jest.mock("Artsy/Analytics/useTracking", () => {
+  return {
+    useTracking: () => ({
+      trackEvent: jest.fn(),
+    }),
+  }
+})
+
 describe("collections header", () => {
   let props: Props
   beforeEach(() => {
