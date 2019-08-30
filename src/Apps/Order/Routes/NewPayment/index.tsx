@@ -96,6 +96,14 @@ export class NewPaymentRoute extends Component<
         return
       }
 
+      if (result.type === "internal_error") {
+        this.props.dialog.showErrorDialog({
+          title: "An internal error occurred",
+        })
+        logger.error(result.error)
+        return
+      }
+
       const orderOrError = (await this.fixFailedPayment({
         input: {
           creditCardId: result.creditCardId,
