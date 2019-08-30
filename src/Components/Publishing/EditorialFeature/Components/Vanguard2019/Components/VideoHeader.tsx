@@ -43,7 +43,7 @@ const VanguardSubseriesVideo = styled.video`
 const SubseriesWrapper = styled(Flex)`
   flex-direction: row;
   position: relative;
-  z-index: -1;
+  z-index: -2;
 
   /* 16 x 9 aspect ratio */
   height: calc(100vw * 0.56);
