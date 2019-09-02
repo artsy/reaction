@@ -23,13 +23,13 @@ export const CollectionsHubsHomepageNav: FC<
       ]}
       gridGap={20}
     >
-      {props.marketingCollections.map(hub => (
+      {props.marketingCollections.map((hub, index) => (
         <ImageLink
           to={`/collection/${hub.slug}`}
           src={placeholderImage}
           ratio={[0.49]}
           title={<Serif size={["3", "4"]}>{hub.title}</Serif>}
-          subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}
+          subtitle={<Serif size="2">{subtitleFor(hub.title, index)}</Serif>}
           key={hub.id}
         />
       ))}
@@ -71,10 +71,10 @@ const subtitlesMapping = {
   "Street Art": "The rise of graffiti, vinyl toys, and skate culture",
 }
 
-const subtitleFor = (title: string) => {
+const subtitleFor = (title: string, index: number) => {
   return (
     subtitlesMapping[title] ||
     /* placeholder */
-    Object.values(subtitlesMapping)[Math.floor(6 * Math.random())]
+    Object.values(subtitlesMapping)[index]
   )
 }
