@@ -26,7 +26,7 @@ const run = (cmd, args = []) =>
   })
 
 const updateDevPackage = () => {
-  run("yarn", "yalc publish --force --changed")
+  run("yarn", "yalc publish --force --changed --push")
 }
 
 console.log("Running yalc publish in watch mode")
