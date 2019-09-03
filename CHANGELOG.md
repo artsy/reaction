@@ -1,3 +1,15 @@
+# v17.9.4 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Analytics tracking default header Grow-1450 [#2760](https://github.com/artsy/reaction/pull/2760) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v17.9.3 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix
