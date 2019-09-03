@@ -1,3 +1,15 @@
+# v17.9.5 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2767](https://github.com/artsy/reaction/pull/2767) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v17.9.4 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix
