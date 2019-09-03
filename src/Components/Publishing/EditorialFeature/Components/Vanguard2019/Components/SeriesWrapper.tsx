@@ -92,6 +92,10 @@ const SubSeriesHeaderText = styled(Box)`
   left: 0;
   top: 50px;
   right: 0;
+  mix-blend-mode: difference;
+  color: ${color("white100")};
+  background: ${color("black100")};
+  z-index: -1;
 `
 
 const Title = styled(Sans)`
