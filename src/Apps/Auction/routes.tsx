@@ -18,7 +18,7 @@ type Me = routes_RegisterQueryResponse["me"]
 
 export const routes: RouteConfig[] = [
   {
-    path: "/auction-registration2/:saleID",
+    path: "/auction-registration/:saleID",
     Component: RegisterRouteFragmentContainer,
     render: ({ Component, props }) => {
       if (Component && props) {

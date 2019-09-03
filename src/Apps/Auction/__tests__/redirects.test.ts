@@ -33,7 +33,7 @@ describe("Auction/redirects", () => {
 
   it("does not redirect if a sale is found", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver(Fixture)
     )
     expect(redirect).toBeUndefined
@@ -41,7 +41,7 @@ describe("Auction/redirects", () => {
 
   it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         me: {
@@ -56,7 +56,7 @@ describe("Auction/redirects", () => {
 
   it("redirects back to the auction if the registration window has closed", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         sale: {
@@ -71,7 +71,7 @@ describe("Auction/redirects", () => {
 
   it("redirects to the auction confirm registration route if bidder has already registered", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         sale: {
