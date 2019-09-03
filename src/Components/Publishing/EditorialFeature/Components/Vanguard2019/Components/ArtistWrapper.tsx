@@ -36,6 +36,7 @@ export class VanguardArtistWrapper extends React.Component<
   state = {
     isExpanded: this.props.isExpanded || false,
   }
+  artistWrapper = null
 
   componentDidMount() {
     const {
@@ -50,6 +51,14 @@ export class VanguardArtistWrapper extends React.Component<
 
   onExpand() {
     const { isExpanded } = this.state
+
+    if (isExpanded) {
+      window.scrollTo({
+        behavior: "smooth",
+        top: this.artistWrapper.getBoundingClientRect().top + window.scrollY,
+      })
+    }
+
     this.setState({ isExpanded: !isExpanded })
   }
 
@@ -95,6 +104,7 @@ export class VanguardArtistWrapper extends React.Component<
           pt={50}
           mb={isExpanded && 100}
           id={slugify(article.title)}
+          ref={artistWrapper => (this.artistWrapper = artistWrapper)}
         >
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
