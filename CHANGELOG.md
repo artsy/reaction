@@ -1,3 +1,21 @@
+# v17.9.6 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fix bug where rendering the submission failed modal cleared props [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+- Add page title to Auction Registration form
+
+- use react-head
+- static title for now so that it doesn't look janky
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v17.9.5 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix
