@@ -1,3 +1,15 @@
+# v17.9.2 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Invert Header Text to Match Side Frame Text on Artsy Vanguard Headers [#2759](https://github.com/artsy/reaction/pull/2759) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.9.1 (Mon Sep 02 2019)
 
 #### 🐛  Bug Fix
