@@ -1,3 +1,15 @@
+# v17.9.3 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Scroll top on close Vanguard [#2764](https://github.com/artsy/reaction/pull/2764) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.9.2 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix
