@@ -2,7 +2,7 @@
 
 Often in development you'll want to link the development version of reaction into force.
 Traditionally one would use `yarn link` in reaction and `yarn link @artsy/reaction` in a service like force
-to acheive this. Unfortunately, this mechanism is prone to a lot of issues. Below is a guide for a smoother
+to achieve this. Unfortunately, this mechanism is prone to a lot of issues. Below is a guide for a smoother
 linking experience.
 
 ## Setup
