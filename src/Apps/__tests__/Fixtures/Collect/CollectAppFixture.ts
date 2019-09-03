@@ -1,4 +1,4 @@
-import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
+import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 
 export const CollectAppFixture_Viewer = {
   filter_artworks: {
@@ -89,7 +89,7 @@ export const CollectAppFixture_Viewer = {
   },
 }
 
-export const CollectAppFixture_MarketingCollections: Collect_marketingCollections = [
+export const CollectAppFixture_MarketingCollections: Collect_marketingHubCollections = [
   {
     " $fragmentRefs": null,
     " $refType": null,

@@ -16,7 +16,7 @@ import { BreadCrumbList } from "Components/v2/Seo"
 
 import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
-import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
+import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
@@ -25,7 +25,7 @@ export interface CollectAppProps {
   COLLECTION_HUBS?: string
   location: Location
   router: Router
-  marketingCollections: Collect_marketingCollections
+  marketingHubCollections: Collect_marketingHubCollections
   viewer: collectRoutes_ArtworkFilterQueryResponse["viewer"]
   filterArtworks: collectRoutes_ArtworkFilterQueryResponse["filterArtworks"]
   params?: {
@@ -87,7 +87,7 @@ export const CollectApp = track({
           {showCollectionHubs && (
             <>
               <CollectionsHubsNav
-                marketingCollections={props.marketingCollections}
+                marketingHubCollections={props.marketingHubCollections}
               />
 
               <Spacer mb={2} mt={[2, 2, 2, 4]} />
@@ -145,10 +145,10 @@ export const CollectApp = track({
 })
 
 export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
-  marketingCollections: graphql`
-    fragment Collect_marketingCollections on MarketingCollection
+  marketingHubCollections: graphql`
+    fragment Collect_marketingHubCollections on MarketingCollection
       @relay(plural: true) {
-      ...CollectionsHubsNav_marketingCollections
+      ...CollectionsHubsNav_marketingHubCollections
     }
   `,
 })
