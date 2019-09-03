@@ -1,3 +1,20 @@
+# v17.9.1 (Mon Sep 02 2019)
+
+#### 🐛  Bug Fix
+
+- De-randomize subtitles in homepage hubs nav to eliminate hydration mismatches [#2761](https://github.com/artsy/reaction/pull/2761) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Rename "Credit card number*" to "Credit card" to fix scan cc on mobile [#2762](https://github.com/artsy/reaction/pull/2762) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v17.9.0 (Fri Aug 30 2019)
 
 #### 🚀  Enhancement

@@ -64,7 +64,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
 
         <Box mb={2}>
           <Serif size="3t" mb={0.5}>
-            Credit card number*
+            Credit card
           </Serif>
           <CreditCardInput
             error={{ message: errors.creditCard } as stripe.Error}
