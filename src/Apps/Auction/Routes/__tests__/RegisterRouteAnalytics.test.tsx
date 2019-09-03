@@ -4,6 +4,7 @@ import { mockTracking } from "Artsy/Analytics"
 import { createMockNetworkLayer2 } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
+import { HeadProvider } from "react-head"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import { RegisterRouteFragmentContainer } from "../Register"
@@ -44,7 +45,11 @@ describe("Auction Registration Analytics ", () => {
 
   const mountRoute = (propOverrides = {}) => {
     const props = { ...defaultProps, ...propOverrides }
-    return mount(<TrackedRegisterRoute {...props as any} />)
+    return mount(
+      <HeadProvider>
+        <TrackedRegisterRoute {...props as any} />
+      </HeadProvider>
+    )
   }
   it("tracks form submission failure when form validation fails", async () => {
     const wrapper = mountRoute()

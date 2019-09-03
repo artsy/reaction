@@ -13,6 +13,7 @@ import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FormikActions } from "formik"
 import React from "react"
+import { Title } from "react-head"
 import {
   commitMutation,
   createFragmentContainer,
@@ -167,6 +168,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
 
   return (
     <AppContainer>
+      <Title>Auction Registration</Title>
       <Box maxWidth={550} px={[2, 0]} mx="auto" my={[1, 0]}>
         <Serif size="10">Register to Bid on Artsy</Serif>
         <Separator mt={1} mb={2} />
