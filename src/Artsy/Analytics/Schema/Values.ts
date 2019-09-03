@@ -313,6 +313,7 @@ export enum ContextModule {
    * Collection page
    */
   CollectionDescription = "CollectionDescription",
+  ArtworkBanner = "ArtworkBanner",
 
   /**
    * Collections Rails

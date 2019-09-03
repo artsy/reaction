@@ -3,10 +3,14 @@ import {
   CollectionDefaultHeader,
   getHeaderArtworks,
 } from "Apps/Collect2/Components/Collection/Header/DefaultHeader"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { shallow } from "enzyme"
+import { mount } from "enzyme"
 import { uniq } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
+
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("artworks", () => {
   const hasDuplicateArtworks = headerArtworks => {
@@ -42,12 +46,18 @@ describe("artworks", () => {
 
 describe("default header component", () => {
   let props
+  const trackEvent = jest.fn()
 
   beforeEach(() => {
     props = {
       headerArtworks: defaultCollectionHeaderArtworks,
       defaultHeaderImageHeight: 1000,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   const getWrapper = headerProps => {
@@ -60,6 +70,8 @@ describe("default header component", () => {
         <CollectionDefaultHeader
           headerArtworks={props.headerArtworks}
           defaultHeaderImageHeight={props.defaultHeaderImageHeight}
+          collection_id={props.collection_id}
+          collection_slug={props.collection_slug}
         />
       )
       .toJSON()
@@ -108,5 +120,27 @@ describe("default header component", () => {
     ).toEqual(
       "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
     )
+  })
+
+  describe("Tracking", () => {
+    it("Tracks collection click", () => {
+      const component = mount(<CollectionDefaultHeader {...props} />)
+
+      component
+        .find("a")
+        .at(0)
+        .simulate("click")
+
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Click",
+        context_page: "Collection",
+        context_module: "ArtworkBanner",
+        context_page_owner_type: "Collection",
+        destination_path:
+          "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children",
+        context_page_owner_id: undefined,
+        context_page_owner_slug: undefined,
+      })
+    })
   })
 })
