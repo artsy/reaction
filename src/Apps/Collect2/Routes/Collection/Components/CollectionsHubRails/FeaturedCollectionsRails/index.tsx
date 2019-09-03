@@ -108,6 +108,8 @@ export const FeaturedCollectionEntity: React.FC<
 > = ({ itemNumber, member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
+  const { xs, sm } = useMedia()
+  const hasLongTitle = title.length > 31
 
   const handleClick = () => {
     trackEvent({
@@ -127,7 +129,7 @@ export const FeaturedCollectionEntity: React.FC<
         <Flex height={["190px", "190px", "280px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
-        <CollectionTitle size="4" mt={1}>
+        <CollectionTitle size="4" mt={1} isSmallerScreen={xs || sm}>
           {title}
         </CollectionTitle>
         {price_guidance && (
@@ -136,7 +138,7 @@ export const FeaturedCollectionEntity: React.FC<
         <ExtendedSerif size="3" mt={1}>
           <ReadMore
             disabled
-            maxChars={100}
+            maxChars={hasLongTitle && (xs || sm) ? 50 : 100}
             content={
               <>
                 {description && (
@@ -208,16 +210,11 @@ export const ArrowContainer = styled(Box)`
 
   ${ArrowButton} {
     height: 100%;
-
-    svg {
-      height: 18px;
-      width: 18px;
-    }
   }
 `
 
-const CollectionTitle = styled(Serif)`
-  width: max-content;
+const CollectionTitle = styled(Serif)<{ isSmallerScreen: boolean }>`
+  width: ${props => (props.isSmallerScreen ? "246px" : "max-content")};
 `
 
 export const StyledLink = styled(RouterLink)`
