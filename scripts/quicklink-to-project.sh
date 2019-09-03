@@ -32,4 +32,4 @@ if [ ! -f "$PROJECT/scripts/quicklink.sh" ]; then
   exit 1
 fi
 
-yarn concurrently --kill-others --names "$CURRENT_NAME,$PROJECT_NAME" "yarn run watch" "cd $PROJECT && ./scripts/quicklink.sh @artsy/reaction"
+yarn concurrently --kill-others --names "$CURRENT_NAME,$PROJECT_NAME" "yarn watch" "cd $PROJECT && ./scripts/quicklink.sh @artsy/reaction"
