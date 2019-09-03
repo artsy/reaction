@@ -44,6 +44,7 @@ export interface Props {
     slug: string
     title: string
     query: any
+    id: string
   }
   artworks: Header_artworks
 }
@@ -222,6 +223,8 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                   <CollectionDefaultHeader
                     headerArtworks={artworks as any}
                     defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
+                    collection_id={collection.id}
+                    collection_slug={collection.slug}
                   />
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>

@@ -20,12 +20,21 @@ jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
 }))
 
+jest.mock("Artsy/Analytics/useTracking", () => {
+  return {
+    useTracking: () => ({
+      trackEvent: jest.fn(),
+    }),
+  }
+})
+
 describe("collections header", () => {
   let props: Props
   beforeEach(() => {
     props = {
       artworks: collectionHeaderArtworks,
       collection: {
+        id: "abcdefg1234",
         title: "KAWS: Toys",
         category: "Collectible Sculptures",
         slug: "kaws-toys",

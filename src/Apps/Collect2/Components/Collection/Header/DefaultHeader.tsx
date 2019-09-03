@@ -1,5 +1,7 @@
 import { Box, color, Flex, Image } from "@artsy/palette"
 import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -8,6 +10,8 @@ import { useWindowSize } from "Utils/Hooks/useWindowSize"
 interface Props {
   headerArtworks: DefaultHeader_headerArtworks
   defaultHeaderImageHeight: number
+  collection_id: string
+  collection_slug: string
 }
 
 const IMAGE_MARGIN_X = 10
@@ -16,6 +20,8 @@ const LARGE_VIEWPORT_WIDTH = 880
 export const CollectionDefaultHeader: FC<Props> = ({
   headerArtworks,
   defaultHeaderImageHeight,
+  collection_id,
+  collection_slug,
 }) => {
   const { hits: artworks } = headerArtworks
 
@@ -37,6 +43,8 @@ export const CollectionDefaultHeader: FC<Props> = ({
     smallViewport
   )
 
+  const { trackEvent } = useTracking()
+
   return (
     <header>
       <DefaultHeaderContainer
@@ -48,7 +56,22 @@ export const CollectionDefaultHeader: FC<Props> = ({
         <HeaderArtworks>
           {artworksToRender.map((artwork, i) => {
             return (
-              <a href={artwork.href} key={i}>
+              <a
+                href={artwork.href}
+                key={i}
+                onClick={() => {
+                  trackEvent({
+                    action_type: AnalyticsSchema.ActionType.Click,
+                    context_module: AnalyticsSchema.ContextModule.ArtworkBanner,
+                    context_page_owner_type:
+                      AnalyticsSchema.OwnerType.Collection,
+                    context_page: AnalyticsSchema.PageName.CollectionPage,
+                    context_page_owner_id: collection_id,
+                    context_page_owner_slug: collection_slug,
+                    destination_path: artwork.href,
+                  })
+                }}
+              >
                 <Image
                   mx={0.5}
                   height={defaultHeaderImageHeight}
