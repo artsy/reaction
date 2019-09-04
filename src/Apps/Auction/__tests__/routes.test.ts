@@ -32,11 +32,22 @@ describe("Auction/routes", () => {
   })
 
   it("does not redirect if a sale is found", async () => {
-    const { redirect } = await render(
+    const { redirect, status } = await render(
       `/auction-registration/${Fixture.sale.id}`,
       mockResolver(Fixture)
     )
+
+    expect(status).toBe(200)
     expect(redirect).toBeUndefined
+  })
+
+  it("also responds to auction-registration2 route", async () => {
+    const { status } = await render(
+      `/auction-registration2/${Fixture.sale.id}`,
+      mockResolver(Fixture)
+    )
+
+    expect(status).toBe(200)
   })
 
   it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
