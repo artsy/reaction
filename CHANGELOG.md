@@ -1,3 +1,25 @@
+# v17.10.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Respond to both auction-registration and auction-registration2 routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Rename test file redirects -> routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Host new registration form on `/auction-registration` [#2769](https://github.com/artsy/reaction/pull/2769) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Pin dep yalc from ^1.0.0-pre.34 to 1.0.0-pre.34 [#2770](https://github.com/artsy/reaction/pull/2770) ([@renovate-bot](https://github.com/renovate-bot))
+- Setup safer/more robust linking process for reaction/force [#2758](https://github.com/artsy/reaction/pull/2758) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.9.7 (Wed Sep 04 2019)
 
 #### 🐛  Bug Fix
