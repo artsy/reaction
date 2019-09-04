@@ -56,8 +56,7 @@
 
 ## Developing in Force
 
-Before you start, ensure dependencies of reaction are installed via `yarn --check-files` and that force is on the correct branch
-and up-to-date.
+_Before you start, you should ensure Force is on the right branch and up-to-date._
 
 Use yarn to kick off the force development process.
 
