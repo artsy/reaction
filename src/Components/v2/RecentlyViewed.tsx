@@ -11,6 +11,7 @@ import React, { useContext } from "react"
 import { QueryRenderer } from "react-relay"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 
 export interface RecentlyViewedProps {
   me: RecentlyViewed_me
@@ -48,11 +49,11 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                 <Carousel
                   data={me.recentlyViewedArtworks.edges as object[]}
                   render={artwork => {
-                    const {
-                      node: {
-                        image: { aspect_ratio },
-                      },
-                    } = artwork
+                    const aspect_ratio = get(
+                      artwork,
+                      w => w.node.image.aspect_ratio,
+                      1
+                    )
 
                     return (
                       <FillwidthItem
