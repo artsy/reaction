@@ -1,3 +1,15 @@
+# v17.11.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Add bottom margin to viewports > XS on bidder registration form [#2771](https://github.com/artsy/reaction/pull/2771) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v17.10.0 (Wed Sep 04 2019)
 
 #### 🚀  Enhancement
