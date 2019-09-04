@@ -1,3 +1,57 @@
+# v17.9.7 (Wed Sep 04 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure carousel arrows are the same size and long titles line-break [#2766](https://github.com/artsy/reaction/pull/2766) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.9.6 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fix bug where rendering the submission failed modal cleared props [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+- Add page title to Auction Registration form
+
+- use react-head
+- static title for now so that it doesn't look janky
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v17.9.5 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2767](https://github.com/artsy/reaction/pull/2767) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v17.9.4 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Analytics tracking default header Grow-1450 [#2760](https://github.com/artsy/reaction/pull/2760) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v17.9.3 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix

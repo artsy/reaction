@@ -96,11 +96,6 @@ export const ArrowContainer = styled(Box)`
 
   ${ArrowButton} {
     height: 60%;
-
-    svg {
-      height: 18px;
-      width: 18px;
-    }
   }
 `
 

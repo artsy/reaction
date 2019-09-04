@@ -6,17 +6,14 @@ import {
   RegisterCreateBidderMutationResponse,
 } from "__generated__/RegisterCreateBidderMutation.graphql"
 import { RegisterCreateCreditCardMutation } from "__generated__/RegisterCreateCreditCardMutation.graphql"
-import {
-  FormValues,
-  StripeWrappedRegistrationForm,
-} from "Apps/Auction/Components/RegistrationForm"
+import { StripeWrappedRegistrationForm } from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ErrorModal } from "Components/Modal/ErrorModal"
 import { FormikActions } from "formik"
-import React, { useState } from "react"
+import React from "react"
+import { Title } from "react-head"
 import {
   commitMutation,
   createFragmentContainer,
@@ -38,7 +35,6 @@ interface RegisterProps {
 
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
-  const [showErrorModal, setShowErrorModal] = useState(false)
 
   const commonProperties = {
     auction_slug: sale.id,
@@ -137,12 +133,8 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     })
   }
 
-  function handleSubmit(
-    values: FormValues,
-    actions: FormikActions<object>,
-    token: stripe.Token
-  ) {
-    const { setSubmitting } = actions
+  function handleSubmit(actions: FormikActions<object>, token: stripe.Token) {
+    const { setSubmitting, setStatus } = actions
 
     createCreditCard(token.id)
       .then(() => {
@@ -170,12 +162,13 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         trackRegistrationFailed(errorMessages)
 
         setSubmitting(false)
-        setShowErrorModal(true)
+        setStatus("submissionFailed")
       })
   }
 
   return (
     <AppContainer>
+      <Title>Auction Registration</Title>
       <Box maxWidth={550} px={[2, 0]} mx="auto" my={[1, 0]}>
         <Serif size="10">Register to Bid on Artsy</Serif>
         <Separator mt={1} mb={2} />
@@ -185,12 +178,6 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
           trackSubmissionErrors={trackRegistrationFailed}
         />
       </Box>
-      <ErrorModal
-        show={showErrorModal}
-        onClose={() => {
-          setShowErrorModal(false)
-        }}
-      />
     </AppContainer>
   )
 }

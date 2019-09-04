@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Input, Sans, Serif } from "@artsy/palette"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import { CountrySelect } from "Components/v2"
 import { Form, Formik, FormikActions, FormikProps } from "formik"
 import React, { useEffect, useState } from "react"
@@ -229,11 +230,7 @@ const OnSubmitValidationError: React.FC<{
 
 export interface RegistrationFormProps
   extends ReactStripeElements.InjectedStripeProps {
-  onSubmit: (
-    values: FormValues,
-    formikActions: FormikActions<object>,
-    token: stripe.Token
-  ) => void
+  onSubmit: (formikActions: FormikActions<object>, token: stripe.Token) => void
   trackSubmissionErrors: TrackErrors
 }
 
@@ -250,7 +247,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
     agreeToTerms: false,
   }
 
-  function handleSubmit(values: FormValues, actions: FormikActions<object>) {
+  function createTokenAndSubmit(
+    values: FormValues,
+    actions: FormikActions<object>
+  ) {
     const address = {
       name: values.name,
       address_line1: values.street,
@@ -268,7 +268,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
         setFieldError("creditCard", error.message)
         setSubmitting(false)
       } else {
-        props.onSubmit(values, actions, token)
+        props.onSubmit(actions, token)
       }
     })
   }
@@ -287,7 +287,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
       <Box mt={2}>
         <Formik
           initialValues={initialValues}
-          onSubmit={handleSubmit}
+          onSubmit={createTokenAndSubmit}
           validationSchema={validationSchema}
           render={(formikProps: FormikProps<FormValues>) => (
             <>
@@ -296,6 +296,12 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
                 formikProps={formikProps}
               />
               <InnerForm {...formikProps} />
+              <ErrorModal
+                show={formikProps.status === "submissionFailed"}
+                onClose={() => {
+                  formikProps.setStatus(null)
+                }}
+              />
             </>
           )}
         />
