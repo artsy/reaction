@@ -9,7 +9,7 @@ import {
   RegisterQueryResponseFixture as Fixture,
 } from "../../__tests__/Fixtures/Auction/Routes/Register"
 
-describe("Auction/redirects", () => {
+describe("Auction/routes", () => {
   async function render(url, mockData) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
