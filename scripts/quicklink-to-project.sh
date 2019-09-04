@@ -16,12 +16,6 @@ PROJECT_NAME="$(path_to_name $PROJECT)"
 
 CURRENT_NAME=$(path_to_name $(pwd))
 
-# Do initial compile just to make sure starting files are present
-# yarn compile
-
-# Do initial publish to make sure files are there to start with
-# yarn yalc publish --push
-
 if [ ! -d "$PROJECT" ]; then
   echo "$(realpath $PROJECT) doesn't exist, ensure project name is correct or PROJECT_PATH is pointing to a valid directory"
   exit 1
