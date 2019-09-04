@@ -169,7 +169,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   return (
     <AppContainer>
       <Title>Auction Registration</Title>
-      <Box maxWidth={550} px={[2, 0]} mx="auto" my={[1, 0]}>
+      <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="10">Register to Bid on Artsy</Serif>
         <Separator mt={1} mb={2} />
 
