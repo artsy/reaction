@@ -1,3 +1,15 @@
+# v17.9.7 (Wed Sep 04 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure carousel arrows are the same size and long titles line-break [#2766](https://github.com/artsy/reaction/pull/2766) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v17.9.6 (Tue Sep 03 2019)
 
 #### 🐛  Bug Fix
