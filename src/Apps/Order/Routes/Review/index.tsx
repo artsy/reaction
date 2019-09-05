@@ -80,7 +80,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       },
     ],
   }))
-  async onSubmit(setupIntentId: null) {
+  async onSubmit(setupIntentId?: null) {
     try {
       const orderOrError =
         this.props.order.mode === "BUY"
