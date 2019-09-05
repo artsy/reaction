@@ -1,21 +1,21 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _CollectionsHubsHomepageNav_marketingCollections$ref: unique symbol;
-export type CollectionsHubsHomepageNav_marketingCollections$ref = typeof _CollectionsHubsHomepageNav_marketingCollections$ref;
-export type CollectionsHubsHomepageNav_marketingCollections = ReadonlyArray<{
+declare const _CollectionsHubsHomepageNav_marketingHubCollections$ref: unique symbol;
+export type CollectionsHubsHomepageNav_marketingHubCollections$ref = typeof _CollectionsHubsHomepageNav_marketingHubCollections$ref;
+export type CollectionsHubsHomepageNav_marketingHubCollections = ReadonlyArray<{
     readonly id: string;
     readonly slug: string;
     readonly title: string;
     readonly thumbnail: string | null;
-    readonly " $refType": CollectionsHubsHomepageNav_marketingCollections$ref;
+    readonly " $refType": CollectionsHubsHomepageNav_marketingHubCollections$ref;
 }>;
 
 
 
 const node: ConcreteFragment = {
   "kind": "Fragment",
-  "name": "CollectionsHubsHomepageNav_marketingCollections",
+  "name": "CollectionsHubsHomepageNav_marketingHubCollections",
   "type": "MarketingCollection",
   "metadata": {
     "plural": true
@@ -59,5 +59,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '57db5beb8e6251df4cb00a9a980ed7f9';
+(node as any).hash = 'cf76894fb739249a114139809dfe01cb';
 export default node;

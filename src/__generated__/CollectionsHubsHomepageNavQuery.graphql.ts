@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CollectionsHubsHomepageNav_marketingCollections$ref } from "./CollectionsHubsHomepageNav_marketingCollections.graphql";
+import { CollectionsHubsHomepageNav_marketingHubCollections$ref } from "./CollectionsHubsHomepageNav_marketingHubCollections.graphql";
 export type CollectionsHubsHomepageNavQueryVariables = {};
 export type CollectionsHubsHomepageNavQueryResponse = {
-    readonly marketingCollections: ReadonlyArray<{
-        readonly " $fragmentRefs": CollectionsHubsHomepageNav_marketingCollections$ref;
+    readonly marketingHubCollections: ReadonlyArray<{
+        readonly " $fragmentRefs": CollectionsHubsHomepageNav_marketingHubCollections$ref;
     }>;
 };
 export type CollectionsHubsHomepageNavQuery = {
@@ -17,13 +17,13 @@ export type CollectionsHubsHomepageNavQuery = {
 
 /*
 query CollectionsHubsHomepageNavQuery {
-  marketingCollections(size: 6) {
-    ...CollectionsHubsHomepageNav_marketingCollections
+  marketingHubCollections {
+    ...CollectionsHubsHomepageNav_marketingHubCollections
     __id: id
   }
 }
 
-fragment CollectionsHubsHomepageNav_marketingCollections on MarketingCollection {
+fragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection {
   id
   slug
   title
@@ -33,15 +33,7 @@ fragment CollectionsHubsHomepageNav_marketingCollections on MarketingCollection 
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "kind": "Literal",
-    "name": "size",
-    "value": 6,
-    "type": "Int"
-  }
-],
-v1 = {
+var v0 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
@@ -53,7 +45,7 @@ return {
   "operationKind": "query",
   "name": "CollectionsHubsHomepageNavQuery",
   "id": null,
-  "text": "query CollectionsHubsHomepageNavQuery {\n  marketingCollections(size: 6) {\n    ...CollectionsHubsHomepageNav_marketingCollections\n    __id: id\n  }\n}\n\nfragment CollectionsHubsHomepageNav_marketingCollections on MarketingCollection {\n  id\n  slug\n  title\n  thumbnail\n  __id: id\n}\n",
+  "text": "query CollectionsHubsHomepageNavQuery {\n  marketingHubCollections {\n    ...CollectionsHubsHomepageNav_marketingHubCollections\n    __id: id\n  }\n}\n\nfragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection {\n  id\n  slug\n  title\n  thumbnail\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -65,18 +57,18 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "marketingCollections",
-        "storageKey": "marketingCollections(size:6)",
-        "args": v0,
+        "name": "marketingHubCollections",
+        "storageKey": null,
+        "args": null,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "CollectionsHubsHomepageNav_marketingCollections",
+            "name": "CollectionsHubsHomepageNav_marketingHubCollections",
             "args": null
           },
-          v1
+          v0
         ]
       }
     ]
@@ -89,9 +81,9 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "marketingCollections",
-        "storageKey": "marketingCollections(size:6)",
-        "args": v0,
+        "name": "marketingHubCollections",
+        "storageKey": null,
+        "args": null,
         "concreteType": "MarketingCollection",
         "plural": true,
         "selections": [
@@ -123,12 +115,12 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1
+          v0
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = '0560202a24b7e2143c54554f18fb1041';
+(node as any).hash = '7e2b35da19e4803e18aca235288f1303';
 export default node;

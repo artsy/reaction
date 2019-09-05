@@ -25,8 +25,8 @@ const CollectionsHubsHomepageNavQueryRenderer = () => {
       variables={{}}
       query={graphql`
         query CollectionsHubsHomepageNavQuery {
-          marketingCollections(size: 6) {
-            ...CollectionsHubsHomepageNav_marketingCollections
+          marketingHubCollections {
+            ...CollectionsHubsHomepageNav_marketingHubCollections
           }
         }
       `}
