@@ -310,6 +310,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
   )
 }
 
+const StripeInjectedRegistrationForm = injectStripe(RegistrationForm)
+
 export const StripeWrappedRegistrationForm: React.FC<
   RegistrationFormProps
 > = props => {
@@ -332,8 +334,6 @@ export const StripeWrappedRegistrationForm: React.FC<
       }
     }
   }, [])
-
-  const StripeInjectedRegistrationForm = injectStripe(RegistrationForm)
 
   return (
     <StripeProvider stripe={stripe}>

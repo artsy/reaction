@@ -7,7 +7,7 @@ import { Environment, RecordSource, Store } from "relay-runtime"
 import {
   DeFragedRegisterQueryResponse,
   RegisterQueryResponseFixture as Fixture,
-} from "../../__tests__/Fixtures/Auction/Routes/Register"
+} from "../__fixtures__/routes_RegisterQuery"
 
 describe("Auction/routes", () => {
   async function render(url, mockData) {
