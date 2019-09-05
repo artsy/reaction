@@ -54,7 +54,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   function trackRegistrationSuccess(bidderId: string) {
     tracking.trackEvent({
       action_type: Schema.ActionType.RegistrationSubmitted,
-      bidderId,
+      bidder_id: bidderId,
       ...commonProperties,
     })
   }
@@ -71,7 +71,6 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         mutation: graphql`
           mutation RegisterCreateBidderMutation($input: CreateBidderInput!) {
             createBidder(input: $input) {
-              clientMutationId
               bidder {
                 id
               }
@@ -133,36 +132,43 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     })
   }
 
-  function handleSubmit(actions: FormikActions<object>, token: stripe.Token) {
-    const { setSubmitting, setStatus } = actions
+  function handleMutationError(actions: FormikActions<object>, error: Error) {
+    logger.error(error)
 
+    let errorMessages: string[]
+    if (Array.isArray(error)) {
+      errorMessages = error.map(e => e.message)
+    } else if (typeof error === "string") {
+      errorMessages = [error]
+    } else if (error.message) {
+      errorMessages = [error.message]
+    }
+
+    trackRegistrationFailed(errorMessages)
+
+    actions.setSubmitting(false)
+    actions.setStatus("submissionFailed")
+  }
+
+  function handleSubmit(actions: FormikActions<object>, token: stripe.Token) {
     createCreditCard(token.id)
       .then(() => {
-        createBidder().then((data: RegisterCreateBidderMutationResponse) => {
-          setSubmitting(false)
+        createBidder()
+          .then((data: RegisterCreateBidderMutationResponse) => {
+            actions.setSubmitting(false)
 
-          trackRegistrationSuccess(data.createBidder.bidder.id)
+            trackRegistrationSuccess(data.createBidder.bidder.id)
 
-          window.location.href = `${sd.APP_URL}/auction/${
-            sale.id
-          }/confirm-registration`
-        })
+            window.location.assign(
+              `${sd.APP_URL}/auction/${sale.id}/confirm-registration`
+            )
+          })
+          .catch(error => {
+            handleMutationError(actions, error)
+          })
       })
       .catch(error => {
-        logger.error(error)
-        let errorMessages: string[]
-        if (Array.isArray(error)) {
-          errorMessages = error.map(e => e.message)
-        } else if (typeof error === "string") {
-          errorMessages = [error]
-        } else if (error.message) {
-          errorMessages = [error.message]
-        }
-
-        trackRegistrationFailed(errorMessages)
-
-        setSubmitting(false)
-        setStatus("submissionFailed")
+        handleMutationError(actions, error)
       })
   }
 
