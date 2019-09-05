@@ -23,11 +23,16 @@ import { Media } from "Utils/Responsive"
 export interface SVGBackgroundProps extends FlexProps {
   url?: string
 }
+export interface TextProps extends FlexProps {
+  isMobile?: boolean
+  isExpanded?: boolean
+}
 export class VanguardArtistWrapper extends React.Component<
   {
     article: ArticleData
     isExpanded?: boolean
     section?: string
+    isMobile: boolean
   },
   {
     isExpanded: boolean
@@ -108,7 +113,14 @@ export class VanguardArtistWrapper extends React.Component<
         >
           <BackgroundContainer>{background}</BackgroundContainer>
           <ArticleWithFullScreen article={article}>
-            <ArtistContainer pb={4} maxWidth={["100vw", 1000]} px={4} mx="auto">
+            <ArtistContainer
+              pb={4}
+              maxWidth={["100vw", 1000]}
+              px={4}
+              mx="auto"
+              isMobile
+              isExpanded={isExpanded}
+            >
               <Box textAlign="center" pb={30}>
                 <Media greaterThanOrEqual="xl">
                   <ArtistTitle size="12" element="h3">
@@ -117,14 +129,24 @@ export class VanguardArtistWrapper extends React.Component<
                 </Media>
 
                 <Media lessThan="xl">
-                  <InvertedSerif size={["10", "12", "12"]} element="h3">
+                  <InvertedSerif
+                    size={["10", "12", "12"]}
+                    element="h3"
+                    isMobile
+                    isExpanded={isExpanded}
+                  >
                     {title}
                   </InvertedSerif>
                 </Media>
 
                 <Box position="relative">
                   {hero_section && (
-                    <InvertedSans size="4" weight="medium">
+                    <InvertedSans
+                      size="4"
+                      weight="medium"
+                      isMobile
+                      isExpanded={isExpanded}
+                    >
                       {hero_section.deck}
                     </InvertedSans>
                   )}
@@ -153,6 +175,8 @@ export class VanguardArtistWrapper extends React.Component<
                 weight="medium"
                 textAlign="center"
                 onClick={this.onExpand.bind(this)}
+                isMobile
+                isExpanded={isExpanded}
               >
                 {isExpanded ? "Close" : "Read More"}
                 <Sans size="8">{isExpanded ? "\u2191" : "\u2193"}</Sans>
@@ -165,13 +189,13 @@ export class VanguardArtistWrapper extends React.Component<
   }
 }
 
-export const InvertedSerif = styled(Serif)`
-  mix-blend-mode: difference;
+export const InvertedSerif = styled(Serif)<TextProps>`
+  mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
 `
 
-export const InvertedSans = styled(Sans)`
-  mix-blend-mode: difference;
+export const InvertedSans = styled(Sans)<TextProps>`
+  mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
 `
 
@@ -183,9 +207,15 @@ const ArtistTitle = styled(InvertedSerif)`
 const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
   text-transform: uppercase;
   cursor: pointer;
+  color: ${p =>
+    p.isMobile && p.isExpanded
+      ? color("white100")
+      : p.isMobile && !p.isExpanded
+      ? color("black100")
+      : color("white100")};
 `
 
-const ArtistContainer = styled(Box)`
+const ArtistContainer = styled(Box)<TextProps>`
   position: relative;
 
   /* override feature text drop-caps */
@@ -206,19 +236,25 @@ const ArtistContainer = styled(Box)`
 
   ${ShareContainer},
   ${StyledText} {
-    mix-blend-mode: difference;
-    color: ${color("white100")};
+    mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+    color: ${p =>
+      p.isMobile && p.isExpanded
+        ? color("white100")
+        : p.isMobile && !p.isExpanded
+        ? color("black100")
+        : color("white100")};
   }
 
   ${CaptionContainer} {
     p {
-      mix-blend-mode: difference;
-      color: ${color("white100")};
+      mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      color: ${p => p.isMobile && color("black30")};
     }
 
     a {
-      mix-blend-mode: difference;
-      color: ${color("white100")};
+      mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      color: ${p =>
+        p.isMobile && !p.isExpanded ? color("black100") : color("white100")};
       background-image: linear-gradient(
         to bottom,
         transparent 0,
@@ -232,19 +268,25 @@ const ArtistContainer = styled(Box)`
   }
 
   ${StyledArtworkCaption} {
-    mix-blend-mode: difference;
-    color: ${color("white100")};
+    mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+    color: ${p => (p.isMobile ? color("black30") : color("white100"))};
 
     a {
-      mix-blend-mode: difference;
-      color: ${color("white100")};
+      mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      color: ${p =>
+        p.isMobile && !p.isExpanded ? color("black100") : color("white100")};
     }
   }
 
   ${StyledText} {
     a {
-      mix-blend-mode: difference;
-      color: ${color("white100")};
+      mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      color: ${p =>
+        p.isMobile && p.isExpanded
+          ? color("white100")
+          : p.isMobile && !p.isExpanded
+          ? color("black100")
+          : color("white100")};
       background-image: linear-gradient(
         to bottom,
         transparent 0,

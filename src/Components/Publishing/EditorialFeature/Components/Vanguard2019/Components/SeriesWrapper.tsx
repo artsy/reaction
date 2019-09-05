@@ -13,8 +13,9 @@ import { VanguardArtistWrapper } from "./ArtistWrapper"
 export const VanguardSeriesWrapper: React.SFC<{
   article: ArticleData
   index: number
+  isMobile: boolean
 }> = props => {
-  const { article, index } = props
+  const { article, index, isMobile } = props
   const { relatedArticles, title, layout, series, slug } = article
   const slugifiedTitle = slugify(title)
   const { hero_section } = props.article
@@ -81,6 +82,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             key={i}
             article={artistArticle}
             section={slugifiedTitle}
+            isMobile={isMobile}
           />
         ))}
     </Box>
@@ -92,10 +94,6 @@ const SubSeriesHeaderText = styled(Box)`
   left: 0;
   top: 50px;
   right: 0;
-  mix-blend-mode: difference;
-  color: ${color("white100")};
-  background: ${color("black100")};
-  z-index: -1;
 `
 
 const Title = styled(Sans)`
