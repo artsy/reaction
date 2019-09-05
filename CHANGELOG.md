@@ -1,3 +1,21 @@
+# v17.11.1 (Thu Sep 05 2019)
+
+#### 🐛  Bug Fix
+
+- Defensively access images' aspect ratio in Recently Viewed rail [#2772](https://github.com/artsy/reaction/pull/2772) ([@anandaroop](https://github.com/anandaroop))
+
+#### 🏠  Internal
+
+- Update dep jest from 24.8.0 to v24.9.0 [#2756](https://github.com/artsy/reaction/pull/2756) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v17.11.0 (Wed Sep 04 2019)
 
 #### 🚀  Enhancement
