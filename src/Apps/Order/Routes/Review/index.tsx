@@ -80,12 +80,13 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       },
     ],
   }))
-  async onSubmit() {
+  async onSubmit(setupIntentId: null) {
     try {
       const orderOrError =
         this.props.order.mode === "BUY"
           ? (await this.submitBuyOrder()).commerceSubmitOrder.orderOrError
-          : (await this.submitOffer()).commerceSubmitOrderWithOffer.orderOrError
+          : (await this.submitOffer(setupIntentId)).commerceSubmitOrderWithOffer
+              .orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
@@ -105,7 +106,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               })
               return
             } else {
-              this.onSubmit()
+              this.onSubmit(setupIntentId)
             }
           })
       } else if (
@@ -123,7 +124,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               })
               return
             } else {
-              this.onSubmit()
+              this.onSubmit(result.setupIntent.id)
             }
           })
       } else {
@@ -170,11 +171,12 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
-  submitOffer() {
+  submitOffer(setupIntentId) {
     return this.props.commitMutation<ReviewSubmitOfferOrderMutation>({
       variables: {
         input: {
           offerId: this.props.order.myLastOffer.id,
+          confirmedSetupIntentId: setupIntentId,
         },
       },
       mutation: graphql`
