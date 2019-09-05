@@ -223,7 +223,7 @@ describe("collections header", () => {
 
     it("shows 3 featured artists on mobile when not filtered by artist ids", () => {
       const overrideData = jest.spyOn(sharify, "data", "get")
-      overrideData.mockReturnValueOnce({ IS_MOBILE: true })
+      overrideData.mockReturnValueOnce({ IS_MOBILE: true } as any)
 
       props.collection.query = {
         artist_ids: [],

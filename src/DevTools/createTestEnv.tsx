@@ -48,7 +48,7 @@ class Mutations<MutationNames extends string> {
 }
 
 class Routes {
-  mockPushRoute = jest.fn<string>()
+  mockPushRoute = jest.fn()
   mockOnTransition = jest.fn()
 }
 
