@@ -170,7 +170,7 @@
     "yalc": "1.0.0-pre.34"
   },
   "dependencies": {
-    "@artsy/detect-responsive-traits": "^0.0.4",
+    "@artsy/detect-responsive-traits": "^0.0.5",
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@types/luxon": "^1.15.1",
     "autosuggest-highlight": "^3.1.1",
