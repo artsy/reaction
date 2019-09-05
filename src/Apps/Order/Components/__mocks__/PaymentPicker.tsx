@@ -44,8 +44,8 @@ export const useThrownError = () => {
 }
 
 const PaymentPickerMock = {
-  getCreditCardId: jest.fn<Promise<CreditCardIdResult>>(() =>
-    Promise.resolve(goodResult)
+  getCreditCardId: jest.fn(
+    () => Promise.resolve(goodResult) as Promise<CreditCardIdResult>
   ),
 }
 

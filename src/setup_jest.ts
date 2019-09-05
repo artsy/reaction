@@ -7,7 +7,7 @@ import { format } from "util"
 jest.mock("react-tracking")
 import _track from "react-tracking"
 const track = _track as jest.Mock<typeof _track>
-track.mockImplementation(y => x => x)
+track.mockImplementation(y => x => x as any)
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("Utils/logger")

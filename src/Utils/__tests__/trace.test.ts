@@ -13,7 +13,7 @@ describe("trace", () => {
       active: jest.fn(() => ({
         span: jest.fn(() => parentSpan),
       })),
-    }))
+    })) as any
     span = {
       finish: jest.fn(),
       addTags: jest.fn(),
