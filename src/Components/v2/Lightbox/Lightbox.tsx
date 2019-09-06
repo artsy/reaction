@@ -26,7 +26,6 @@ const DeepZoomContainer = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  cursor: zoom-in;
   max-width: 100%;
   max-height: 100%;
 `
@@ -299,31 +298,35 @@ class LightboxComponent extends React.Component<LightboxProps, LightboxState> {
     if (!this.state.element) {
       return (
         <Flex justifyContent="center" height={height} alignItems="center">
-          <StyledImage alt={imageAlt} src={src} preventRightClick />
+          <StyledImage
+            style={{ cursor: enabled ? "zoom-in" : "auto" }}
+            alt={imageAlt}
+            src={src}
+            preventRightClick
+          />
         </Flex>
       )
     }
 
     return (
-      <React.Fragment>
+      <>
         {this.renderPortal()}
-        {enabled && (
-          <Flex
-            justifyContent="center"
-            alignItems="center"
-            height={height}
-            onClick={this.show.bind(this)}
-          >
-            <StyledImage
-              src={src}
-              alt={imageAlt}
-              data-type="artwork-image"
-              data-is-default={isDefault}
-              preventRightClick={!isAdmin}
-            />
-          </Flex>
-        )}
-      </React.Fragment>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          height={height}
+          onClick={enabled ? this.show.bind(this) : null}
+        >
+          <StyledImage
+            style={{ cursor: enabled ? "zoom-in" : "auto" }}
+            src={src}
+            alt={imageAlt}
+            data-type="artwork-image"
+            data-is-default={isDefault}
+            preventRightClick={!isAdmin}
+          />
+        </Flex>
+      </>
     )
   }
 
