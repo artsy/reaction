@@ -1,3 +1,20 @@
+# v17.11.2 (Fri Sep 06 2019)
+
+#### 🐛  Bug Fix
+
+- Allow images without zoom [#2776](https://github.com/artsy/reaction/pull/2776) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/detect-responsive-traits from ^0.0.4 to ^0.0.5 [#2763](https://github.com/artsy/reaction/pull/2763) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.11.1 (Thu Sep 05 2019)
 
 #### 🐛  Bug Fix
