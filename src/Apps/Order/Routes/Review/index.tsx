@@ -106,7 +106,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
               })
               return
             } else {
-              this.onSubmit(setupIntentId)
+              this.onSubmit()
             }
           })
       } else if (
