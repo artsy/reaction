@@ -338,9 +338,6 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const artworkEcommerceAvailable =
       artwork.is_acquireable || artwork.is_offerable
 
-    const artworkIsForSale =
-      artwork.availability && artwork.availability === "for sale"
-
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return <Separator />
     }
@@ -379,7 +376,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             {artwork.shippingInfo}
           </Sans>
         )}
-        {artworkIsForSale && artwork.priceIncludesTax && (
+        {artwork.is_for_sale && artwork.priceIncludesTax && (
           <Sans size="2" color="black60">
             VAT included in price
           </Sans>
@@ -466,7 +463,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
       fragment ArtworkSidebarCommercial_artwork on Artwork {
         id
         _id
-        availability
+        is_for_sale
         is_acquireable
         is_inquireable
         is_offerable

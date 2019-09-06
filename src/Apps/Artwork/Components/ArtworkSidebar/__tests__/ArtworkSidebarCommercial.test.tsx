@@ -52,7 +52,7 @@ describe("ArtworkSidebarCommercial", () => {
       {
         ...ArtworkSingleEditionHiddenAvailability,
         priceIncludesTax: true,
-        availability: "for sale",
+        is_for_sale: true,
       }
     )
 
