@@ -7,6 +7,7 @@ export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommerc
 export type ArtworkSidebarCommercial_artwork = {
     readonly id: string;
     readonly _id: string;
+    readonly availability: string | null;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
@@ -74,11 +75,18 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "priceIncludesTax",
+      "name": "price",
       "args": null,
       "storageKey": null
     },
     v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "availability",
+      "args": null,
+      "storageKey": null
+    },
     v1,
     {
       "kind": "ScalarField",
@@ -91,14 +99,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "price",
+      "name": "_id",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "priceIncludesTax",
       "args": null,
       "storageKey": null
     },
@@ -142,5 +150,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '263c31dfa4a3ecdac58629d2574efa35';
+(node as any).hash = 'f3589ea186b293babee82d8663619785';
 export default node;
