@@ -38,10 +38,12 @@ class ReviewTestPage extends OrderAppTestPage {
 }
 
 const handleCardAction = jest.fn()
+const handleCardSetup = jest.fn()
+
 describe("Review", () => {
   beforeAll(() => {
     window.Stripe = () => {
-      return { handleCardAction } as any
+      return { handleCardAction, handleCardSetup } as any
     }
 
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
@@ -155,7 +157,6 @@ describe("Review", () => {
       )
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
-
     it("shows SCA modal when required", async () => {
       mutations.useResultsOnce(submitOrderWithActionRequired)
 
@@ -254,7 +255,7 @@ describe("Review", () => {
       mutations.useResultsOnce(submitOfferOrderWithActionRequired)
 
       await page.clickSubmit()
-      expect(handleCardAction).toBeCalledWith("client-secret")
+      expect(handleCardSetup).toBeCalledWith("client-secret")
     })
   })
 
