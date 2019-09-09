@@ -96,7 +96,7 @@ const SubSeriesHeaderText = styled(Box)`
   right: 0;
   mix-blend-mode: difference;
   color: ${color("white100")};
-  background: ${color("black100")};
+  will-change: color;
   z-index: -1;
 `
 

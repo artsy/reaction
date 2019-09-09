@@ -111,7 +111,9 @@ export class VanguardArtistWrapper extends React.Component<
           id={slugify(article.title)}
           ref={artistWrapper => (this.artistWrapper = artistWrapper)}
         >
-          <BackgroundContainer>{background}</BackgroundContainer>
+          <BackgroundContainer backgroundColor={backgroundColor}>
+            {background}
+          </BackgroundContainer>
           <ArticleWithFullScreen article={article}>
             <ArtistContainer
               pb={4}
@@ -192,11 +194,13 @@ export class VanguardArtistWrapper extends React.Component<
 export const InvertedSerif = styled(Serif)<TextProps>`
   mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
+  will-change: color;
 `
 
 export const InvertedSans = styled(Sans)<TextProps>`
   mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
+  will-change: color;
 `
 
 const ArtistTitle = styled(InvertedSerif)`
@@ -237,6 +241,7 @@ const ArtistContainer = styled(Box)<TextProps>`
   ${ShareContainer},
   ${StyledText} {
     mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+    will-change: color;
     color: ${p =>
       p.isMobile && p.isExpanded
         ? color("white100")
@@ -248,11 +253,13 @@ const ArtistContainer = styled(Box)<TextProps>`
   ${CaptionContainer} {
     p {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      will-change: color;
       color: ${p => (p.isMobile ? color("black100") : color("white100"))};
     }
 
     a {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      will-change: color;
       color: ${p =>
         p.isMobile && !p.isExpanded ? color("black100") : color("white100")};
       background-image: linear-gradient(
@@ -270,9 +277,11 @@ const ArtistContainer = styled(Box)<TextProps>`
   ${StyledArtworkCaption} {
     mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
     color: ${p => (p.isMobile ? color("black100") : color("white100"))};
+    will-change: color;
 
     a {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      will-change: color;
       color: ${p =>
         p.isMobile && !p.isExpanded ? color("black100") : color("white100")};
     }
@@ -281,6 +290,7 @@ const ArtistContainer = styled(Box)<TextProps>`
   ${StyledText} {
     a {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
+      will-change: color;
       color: ${p =>
         p.isMobile && p.isExpanded
           ? color("white100")
@@ -300,12 +310,13 @@ const ArtistContainer = styled(Box)<TextProps>`
   }
 `
 
-const BackgroundContainer = styled(Box)`
+const BackgroundContainer = styled(Box)<{ backgroundColor: string }>`
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  background: ${({ backgroundColor }) => backgroundColor};
 `
 
 const ArtistWrapper = styled(Flex)`
