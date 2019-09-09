@@ -92,7 +92,7 @@ export class VanguardArtistWrapper extends React.Component<
   }
 
   render() {
-    const { article, section } = this.props
+    const { article, section, isMobile } = this.props
     const { hero_section, layout, slug, title } = article
     const { isExpanded } = this.state
 
@@ -118,7 +118,7 @@ export class VanguardArtistWrapper extends React.Component<
               maxWidth={["100vw", 1000]}
               px={4}
               mx="auto"
-              isMobile
+              isMobile={isMobile}
               isExpanded={isExpanded}
             >
               <Box textAlign="center" pb={30}>
@@ -132,7 +132,7 @@ export class VanguardArtistWrapper extends React.Component<
                   <InvertedSerif
                     size={["10", "12", "12"]}
                     element="h3"
-                    isMobile
+                    isMobile={isMobile}
                     isExpanded={isExpanded}
                   >
                     {title}
@@ -144,7 +144,7 @@ export class VanguardArtistWrapper extends React.Component<
                     <InvertedSans
                       size="4"
                       weight="medium"
-                      isMobile
+                      isMobile={isMobile}
                       isExpanded={isExpanded}
                     >
                       {hero_section.deck}
@@ -175,7 +175,7 @@ export class VanguardArtistWrapper extends React.Component<
                 weight="medium"
                 textAlign="center"
                 onClick={this.onExpand.bind(this)}
-                isMobile
+                isMobile={isMobile}
                 isExpanded={isExpanded}
               >
                 {isExpanded ? "Close" : "Read More"}
@@ -248,7 +248,7 @@ const ArtistContainer = styled(Box)<TextProps>`
   ${CaptionContainer} {
     p {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
-      color: ${p => p.isMobile && color("black30")};
+      color: ${p => (p.isMobile ? color("black100") : color("white100"))};
     }
 
     a {
@@ -269,7 +269,7 @@ const ArtistContainer = styled(Box)<TextProps>`
 
   ${StyledArtworkCaption} {
     mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
-    color: ${p => (p.isMobile ? color("black30") : color("white100"))};
+    color: ${p => (p.isMobile ? color("black100") : color("white100"))};
 
     a {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
