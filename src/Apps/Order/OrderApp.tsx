@@ -1,12 +1,13 @@
 import { Box } from "@artsy/palette"
-import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
+import { OrderApp_order } from "__generated__/OrderApp_order.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
-import { SystemContextConsumer } from "Artsy"
+import { Mediator, SystemContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import { Location, RouteConfig, Router } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
+import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
 import { get } from "Utils/get"
@@ -29,7 +30,7 @@ const findRoute = (routes, routeIndices) => {
   return currentRoute
 }
 
-export interface OrderAppProps extends routes_OrderQueryResponse {
+export interface OrderAppProps {
   params: {
     orderID: string
   }
@@ -37,6 +38,7 @@ export interface OrderAppProps extends routes_OrderQueryResponse {
   routeIndices: number[]
   routes: RouteConfig[]
   router: Router
+  order: OrderApp_order
 }
 
 interface OrderAppState {
@@ -44,6 +46,7 @@ interface OrderAppState {
 }
 
 export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
+  mediator: Mediator | null = null
   state = { stripe: null }
   removeTransitionHook: () => void
 
@@ -52,6 +55,19 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       this.removeTransitionHook = this.props.router.addTransitionHook(
         this.onTransition
       )
+    }
+
+    const artwork = get(
+      null,
+      () => this.props.order.lineItems.edges[0].node.artwork
+    )
+
+    if (artwork && this.mediator && this.mediator.trigger) {
+      const { is_offerable, is_acquireable } = artwork
+      this.mediator.trigger("enableIntercomForBuyers", {
+        is_offerable,
+        is_acquireable,
+      })
     }
 
     if (window.Stripe) {
@@ -100,31 +116,34 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 
     return (
       <SystemContextConsumer>
-        {({ isEigen }) => (
-          <AppContainer>
-            <Title>Checkout | Artsy</Title>
-            {isEigen ? (
-              <Meta
-                name="viewport"
-                content="width=device-width, user-scalable=no"
-              />
-            ) : (
-              <Meta
-                name="viewport"
-                content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-              />
-            )}
-            <SafeAreaContainer>
-              <StripeProvider stripe={this.state.stripe}>
-                <Elements>
-                  <>{children}</>
-                </Elements>
-              </StripeProvider>
-            </SafeAreaContainer>
-            <StickyFooter orderType={order.mode} artworkId={artworkId} />
-            <ConnectedModalDialog />
-          </AppContainer>
-        )}
+        {({ isEigen, mediator }) => {
+          this.mediator = mediator
+          return (
+            <AppContainer>
+              <Title>Checkout | Artsy</Title>
+              {isEigen ? (
+                <Meta
+                  name="viewport"
+                  content="width=device-width, user-scalable=no"
+                />
+              ) : (
+                <Meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+                />
+              )}
+              <SafeAreaContainer>
+                <StripeProvider stripe={this.state.stripe}>
+                  <Elements>
+                    <>{children}</>
+                  </Elements>
+                </StripeProvider>
+              </SafeAreaContainer>
+              <StickyFooter orderType={order.mode} artworkId={artworkId} />
+              <ConnectedModalDialog />
+            </AppContainer>
+          )
+        }}
       </SystemContextConsumer>
     )
   }
@@ -134,4 +153,21 @@ const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   margin-bottom: 75px;
+`
+
+graphql`
+  fragment OrderApp_order on CommerceOrder {
+    mode
+    lineItems {
+      edges {
+        node {
+          artwork {
+            id
+            is_acquireable
+            is_offerable
+          }
+        }
+      }
+    }
+  }
 `

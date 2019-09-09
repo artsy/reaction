@@ -43,6 +43,7 @@ export const routes: RouteConfig[] = [
         }
         order: commerceOrder(id: $orderID) {
           ...redirects_order @relay(mask: false)
+          ...OrderApp_order @relay(mask: false)
         }
       }
     `,

@@ -1,4 +1,3 @@
-import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
 import { Location, RouteConfig, Router } from "found"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
@@ -41,7 +40,7 @@ export const confirmRouteExit = (
 }
 
 const goToStatusIf = (
-  pred: (order: routes_OrderQueryResponse["order"]) => boolean,
+  pred: (order: redirects_order) => boolean,
   reason
 ): OrderPredicate => ({ order }) => {
   if (pred(order)) {

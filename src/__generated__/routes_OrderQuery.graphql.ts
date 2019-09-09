@@ -24,6 +24,8 @@ export type routes_OrderQueryResponse = {
                 readonly node: ({
                     readonly artwork: ({
                         readonly id: string;
+                        readonly is_acquireable: boolean | null;
+                        readonly is_offerable: boolean | null;
                     }) | null;
                 }) | null;
             }) | null> | null;
@@ -85,6 +87,8 @@ query routes_OrderQuery(
           artwork {
             id
             __id
+            is_acquireable
+            is_offerable
           }
           __id: id
         }
@@ -189,18 +193,14 @@ v9 = {
     v8
   ]
 },
-v10 = [
-  v4,
-  v1
-],
-v11 = {
+v10 = {
   "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v12 = {
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "lineItems",
@@ -235,16 +235,33 @@ v12 = {
               "args": null,
               "concreteType": "Artwork",
               "plural": false,
-              "selections": v10
+              "selections": [
+                v4,
+                v1,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "is_acquireable",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "is_offerable",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
             },
-            v11
+            v10
           ]
         }
       ]
     }
   ]
 },
-v13 = {
+v12 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "creditCard",
@@ -252,9 +269,12 @@ v13 = {
   "args": null,
   "concreteType": "CreditCard",
   "plural": false,
-  "selections": v10
+  "selections": [
+    v4,
+    v1
+  ]
 },
-v14 = [
+v13 = [
   v4,
   {
     "kind": "ScalarField",
@@ -263,9 +283,9 @@ v14 = [
     "args": null,
     "storageKey": null
   },
-  v11
+  v10
 ],
-v15 = {
+v14 = {
   "kind": "InlineFragment",
   "type": "CommerceOfferOrder",
   "selections": [
@@ -277,7 +297,7 @@ v15 = {
       "args": null,
       "concreteType": "CommerceOffer",
       "plural": false,
-      "selections": v14
+      "selections": v13
     },
     {
       "kind": "LinkedField",
@@ -287,7 +307,7 @@ v15 = {
       "args": null,
       "concreteType": "CommerceOffer",
       "plural": false,
-      "selections": v14
+      "selections": v13
     },
     {
       "kind": "ScalarField",
@@ -303,7 +323,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    __id\n  }\n  order: commerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    __id\n  }\n  order: commerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n            is_acquireable\n            is_offerable\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -327,10 +347,10 @@ return {
           v6,
           v7,
           v9,
-          v12,
-          v13,
           v11,
-          v15
+          v12,
+          v10,
+          v14
         ]
       }
     ]
@@ -356,15 +376,15 @@ return {
           v6,
           v7,
           v9,
-          v12,
-          v13,
           v11,
-          v15
+          v12,
+          v10,
+          v14
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'affb6306deddbc88542ea4b0a477d208';
+(node as any).hash = '38d8dd80495cf9b352f5b040d05e4fee';
 export default node;

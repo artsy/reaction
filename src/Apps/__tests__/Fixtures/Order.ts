@@ -65,6 +65,7 @@ export const UntouchedOrder = {
             medium: "Oil and pencil on panel",
             shipsToContinentalUSOnly: false,
             is_acquireable: true,
+            is_offerable: false,
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
