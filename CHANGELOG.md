@@ -1,3 +1,84 @@
+# v17.11.3 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1472 - Checks for availability before showing VAT [#2775](https://github.com/artsy/reaction/pull/2775) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v17.11.2 (Fri Sep 06 2019)
+
+#### 🐛  Bug Fix
+
+- Allow images without zoom [#2776](https://github.com/artsy/reaction/pull/2776) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/detect-responsive-traits from ^0.0.4 to ^0.0.5 [#2763](https://github.com/artsy/reaction/pull/2763) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.11.1 (Thu Sep 05 2019)
+
+#### 🐛  Bug Fix
+
+- Defensively access images' aspect ratio in Recently Viewed rail [#2772](https://github.com/artsy/reaction/pull/2772) ([@anandaroop](https://github.com/anandaroop))
+
+#### 🏠  Internal
+
+- Update dep jest from 24.8.0 to v24.9.0 [#2756](https://github.com/artsy/reaction/pull/2756) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v17.11.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Add bottom margin to viewports > XS on bidder registration form [#2771](https://github.com/artsy/reaction/pull/2771) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.10.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Respond to both auction-registration and auction-registration2 routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Rename test file redirects -> routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Host new registration form on `/auction-registration` [#2769](https://github.com/artsy/reaction/pull/2769) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Pin dep yalc from ^1.0.0-pre.34 to 1.0.0-pre.34 [#2770](https://github.com/artsy/reaction/pull/2770) ([@renovate-bot](https://github.com/renovate-bot))
+- Setup safer/more robust linking process for reaction/force [#2758](https://github.com/artsy/reaction/pull/2758) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.9.7 (Wed Sep 04 2019)
 
 #### 🐛  Bug Fix

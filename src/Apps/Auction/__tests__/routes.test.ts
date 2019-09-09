@@ -9,7 +9,7 @@ import {
   RegisterQueryResponseFixture as Fixture,
 } from "../../__tests__/Fixtures/Auction/Routes/Register"
 
-describe("Auction/redirects", () => {
+describe("Auction/routes", () => {
   async function render(url, mockData) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
@@ -32,16 +32,27 @@ describe("Auction/redirects", () => {
   })
 
   it("does not redirect if a sale is found", async () => {
-    const { redirect } = await render(
+    const { redirect, status } = await render(
+      `/auction-registration/${Fixture.sale.id}`,
+      mockResolver(Fixture)
+    )
+
+    expect(status).toBe(200)
+    expect(redirect).toBeUndefined
+  })
+
+  it("also responds to auction-registration2 route", async () => {
+    const { status } = await render(
       `/auction-registration2/${Fixture.sale.id}`,
       mockResolver(Fixture)
     )
-    expect(redirect).toBeUndefined
+
+    expect(status).toBe(200)
   })
 
   it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         me: {
@@ -56,7 +67,7 @@ describe("Auction/redirects", () => {
 
   it("redirects back to the auction if the registration window has closed", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         sale: {
@@ -71,7 +82,7 @@ describe("Auction/redirects", () => {
 
   it("redirects to the auction confirm registration route if bidder has already registered", async () => {
     const { redirect } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
+      `/auction-registration/${Fixture.sale.id}`,
       mockResolver({
         ...Fixture,
         sale: {

@@ -34,7 +34,7 @@ describe("ReadMore", () => {
         top: 100,
         bottom: 300,
       }
-    })
+    }) as any
     readMoreProps = {
       hideButton: jest.fn(),
       isTruncated: true,
