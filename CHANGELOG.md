@@ -1,3 +1,16 @@
+# v17.11.4 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- Add Default Mobile Styling to Vanguard 2019 Article Series [#2782](https://github.com/artsy/reaction/pull/2782) ([@ashleyjelks](https://github.com/ashleyjelks) [@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v17.11.3 (Mon Sep 09 2019)
 
 #### 🐛  Bug Fix
