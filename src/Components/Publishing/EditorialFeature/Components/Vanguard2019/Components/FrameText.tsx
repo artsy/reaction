@@ -34,6 +34,7 @@ const FrameText = styled(Sans)`
   z-index: 2;
   mix-blend-mode: difference;
   color: ${color("white100")};
+  will-change: color;
 `
 
 const FrameTextLeft = styled(FrameText)`
