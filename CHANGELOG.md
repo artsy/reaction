@@ -1,3 +1,15 @@
+# v17.11.3 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1472 - Checks for availability before showing VAT [#2775](https://github.com/artsy/reaction/pull/2775) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v17.11.2 (Fri Sep 06 2019)
 
 #### 🐛  Bug Fix
