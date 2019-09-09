@@ -24,7 +24,7 @@ export const routes: RouteConfig[] = [
     Component: ArtistApp,
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
-        artist(id: $artistID) {
+        artist(id: $artistID) @principalField {
           ...ArtistApp_artist
         }
       }
