@@ -1,3 +1,15 @@
+# v17.11.10 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1470: Reuse SetupIntent for make offer [#2773](https://github.com/artsy/reaction/pull/2773) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v17.11.9 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
