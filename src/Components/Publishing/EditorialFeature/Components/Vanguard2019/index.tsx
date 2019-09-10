@@ -58,7 +58,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
   }
 
   render() {
-    const { article } = this.props
+    const { article, isMobile } = this.props
     const { relatedArticles } = article
 
     return (
@@ -89,6 +89,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
               key={subSeries.id}
               article={subSeries}
               index={i}
+              isMobile={isMobile}
             />
           ))}
       </VanguardWrapper>

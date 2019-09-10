@@ -81,8 +81,8 @@ const HeaderText = styled(Sans)`
   width: 100%;
   z-index: -1;
   color: ${color("white100")};
-  background: ${color("black100")};
   mix-blend-mode: difference;
+  will-change: color;
 `
 
 const IntroContainer = styled(Box)`

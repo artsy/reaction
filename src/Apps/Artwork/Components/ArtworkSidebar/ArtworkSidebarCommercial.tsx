@@ -376,7 +376,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             {artwork.shippingInfo}
           </Sans>
         )}
-        {artwork.priceIncludesTax && (
+        {artwork.is_for_sale && artwork.priceIncludesTax && (
           <Sans size="2" color="black60">
             VAT included in price
           </Sans>
@@ -463,6 +463,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
       fragment ArtworkSidebarCommercial_artwork on Artwork {
         id
         _id
+        is_for_sale
         is_acquireable
         is_inquireable
         is_offerable

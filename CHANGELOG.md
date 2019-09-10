@@ -1,3 +1,40 @@
+# v17.11.5 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA [#2786](https://github.com/artsy/reaction/pull/2786) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.11.4 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- Add Default Mobile Styling to Vanguard 2019 Article Series [#2782](https://github.com/artsy/reaction/pull/2782) ([@ashleyjelks](https://github.com/ashleyjelks) [@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.11.3 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1472 - Checks for availability before showing VAT [#2775](https://github.com/artsy/reaction/pull/2775) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v17.11.2 (Fri Sep 06 2019)
 
 #### 🐛  Bug Fix
