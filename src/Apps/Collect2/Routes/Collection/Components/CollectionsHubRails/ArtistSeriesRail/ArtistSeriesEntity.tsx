@@ -121,7 +121,7 @@ const SingleImgContainer = styled(Box)`
 `
 
 const CollectionTitle = styled(Serif)`
-  width: max-content;
+  width: 100%;
 `
 
 export const ImgWrapper = styled(Flex)`
