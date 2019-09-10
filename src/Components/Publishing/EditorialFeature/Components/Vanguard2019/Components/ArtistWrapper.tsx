@@ -1,6 +1,5 @@
 import { Box, color, Flex, FlexProps, Sans, Serif } from "@artsy/palette"
 import { Share, ShareContainer } from "Components/Publishing/Byline/Share"
-import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { Emerging } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
 import { GettingTheirDue } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
 import { NewlyEstablished } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
@@ -16,6 +15,7 @@ import { StyledText } from "Components/Publishing/Sections/StyledText"
 import { ArticleData } from "Components/Publishing/Typings"
 import { random } from "lodash"
 import React from "react"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { Media } from "Utils/Responsive"
@@ -94,7 +94,7 @@ export class VanguardArtistWrapper extends React.Component<
 
   render() {
     const { article, section, isMobile, onSlideshowStateChange } = this.props
-    const { hero_section, layout, slug, title } = article
+    const { hero_section, title } = article
     const { isExpanded } = this.state
 
     const background = this.getSVGBackground(
@@ -102,6 +102,7 @@ export class VanguardArtistWrapper extends React.Component<
       section
     )
     const backgroundColor = isExpanded ? color("black100") : color("white100")
+    const slugifiedTitle = slugify(article.title)
 
     return (
       <FullScreenProvider onSlideshowStateChange={onSlideshowStateChange}>
@@ -109,7 +110,7 @@ export class VanguardArtistWrapper extends React.Component<
           background={backgroundColor}
           pt={50}
           mb={isExpanded && 100}
-          id={slugify(article.title)}
+          id={slugifiedTitle}
           ref={artistWrapper => (this.artistWrapper = artistWrapper)}
         >
           <BackgroundContainer backgroundColor={backgroundColor}>
@@ -158,9 +159,10 @@ export class VanguardArtistWrapper extends React.Component<
                   <Flex justifyContent={["center", "flex-start"]}>
                     <Box position={["relative", "absolute"]} top={0}>
                       <Share
-                        // TODO: We may need to use custom urls for in-page routing
-                        url={getFullEditorialHref(layout, slug)}
-                        title={title}
+                        url={`${
+                          sd.APP_URL
+                        }/artsy-vanguard-2019/${slugifiedTitle}`}
+                        title={`Artsy Vanguard 2019: ${title}`}
                         color={color("white100")}
                       />
                     </Box>

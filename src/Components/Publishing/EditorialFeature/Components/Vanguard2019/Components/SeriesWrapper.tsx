@@ -1,9 +1,9 @@
 import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
-import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { VanguardVideoHeader } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VideoHeader"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { VanguardArtistWrapper } from "./ArtistWrapper"
@@ -15,7 +15,7 @@ export const VanguardSeriesWrapper: React.SFC<{
   onSlideshowStateChange?: (state: boolean) => void
 }> = props => {
   const { article, isMobile, onSlideshowStateChange } = props
-  const { relatedArticles, title, layout, series, slug } = article
+  const { relatedArticles, title, series } = article
   const slugifiedTitle = slugify(title)
   const { hero_section } = props.article
   const url = ((hero_section && hero_section.url) || "") as string
@@ -58,9 +58,8 @@ export const VanguardSeriesWrapper: React.SFC<{
               </SubTitle>
             )}
             <Share
-              // TODO: We may need to use custom urls here for in-page routing
-              url={getFullEditorialHref(layout, slug)}
-              title={title}
+              url={`${sd.APP_URL}/artsy-vanguard-2019/${slugifiedTitle}`}
+              title={`Artsy Vanguard 2019: ${title}`}
             />
           </Flex>
         </Box>
