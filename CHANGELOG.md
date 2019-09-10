@@ -1,3 +1,15 @@
+# v17.11.11 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard qa [#2790](https://github.com/artsy/reaction/pull/2790) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v17.11.10 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
