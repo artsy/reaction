@@ -1,3 +1,25 @@
+# v17.11.6 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- add intercom to order app [#2783](https://github.com/artsy/reaction/pull/2783) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.3 to v4.17.1 [#2781](https://github.com/artsy/reaction/pull/2781) ([@renovate-bot](https://github.com/renovate-bot))
+- Bump lodash.template from 4.4.0 to 4.5.0 [#2777](https://github.com/artsy/reaction/pull/2777) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump lodash-es from 4.17.11 to 4.17.15 [#2779](https://github.com/artsy/reaction/pull/2779) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump extend from 3.0.1 to 3.0.2 [#2780](https://github.com/artsy/reaction/pull/2780) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump mixin-deep from 1.3.1 to 1.3.2 [#2778](https://github.com/artsy/reaction/pull/2778) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v17.11.5 (Mon Sep 09 2019)
 
 #### 🐛  Bug Fix
