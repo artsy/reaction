@@ -3,27 +3,35 @@ import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-export const VanguardFrameText: React.SFC = () => {
-  return (
-    <>
-      <Media at="xs">
-        <MobileFrame>
-          <MobileFrameText size="8">The Artsy</MobileFrameText>
-          <MobileFrameText size="8" isUppercase>
-            Vanguard
-          </MobileFrameText>
-          <MobileFrameText size="8" isUppercase>
-            2019
-          </MobileFrameText>
-        </MobileFrame>
-      </Media>
+interface VanguardFrameTextProps {
+  isSlideClosed?: boolean
+}
 
-      {/* Desktop */}
-      <Media greaterThan="xs">
-        <FrameTextLeft size={["12", "12", "14", "16"]}>Vanguard</FrameTextLeft>
-        <FrameTextRight size={["12", "12", "14", "16"]}>2019</FrameTextRight>
-      </Media>
-    </>
+export const VanguardFrameText: React.SFC<VanguardFrameTextProps> = props => {
+  return (
+    props.isSlideClosed && (
+      <>
+        <Media at="xs">
+          <MobileFrame>
+            <MobileFrameText size="8">The Artsy</MobileFrameText>
+            <MobileFrameText size="8" isUppercase>
+              Vanguard
+            </MobileFrameText>
+            <MobileFrameText size="8" isUppercase>
+              2019
+            </MobileFrameText>
+          </MobileFrame>
+        </Media>
+
+        {/* Desktop */}
+        <Media greaterThan="xs">
+          <FrameTextLeft size={["12", "12", "14", "16"]}>
+            Vanguard
+          </FrameTextLeft>
+          <FrameTextRight size={["12", "12", "14", "16"]}>2019</FrameTextRight>
+        </Media>
+      </>
+    )
   )
 }
 

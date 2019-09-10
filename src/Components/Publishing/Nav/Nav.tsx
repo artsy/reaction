@@ -13,6 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   sponsor?: any
   title?: string
   transparent?: boolean
+  isSlideClosed?: boolean
 }
 
 interface State {
@@ -50,38 +51,46 @@ export class Nav extends React.Component<Props, State> {
       canFix,
       transparent,
       title,
+      isSlideClosed,
     } = this.props
     const { isFixed } = this.state
 
     return (
-      <div>
-        <NavContainer
-          backgroundColor={backgroundColor}
-          className={className}
-          color={color}
-          isFixed={canFix && isFixed}
-          transparent={!isFixed && transparent}
-        >
-          <PartnerInline
-            url={sponsor && sponsor.partner_logo_link}
-            logo={sponsor && sponsor.partner_condensed_logo}
+      isSlideClosed && (
+        <div>
+          <NavContainer
+            backgroundColor={backgroundColor}
+            className={className}
             color={color}
-            margin="0 10px"
+            isFixed={canFix && isFixed}
+            transparent={!isFixed && transparent}
+          >
+            <PartnerInline
+              url={sponsor && sponsor.partner_logo_link}
+              logo={sponsor && sponsor.partner_condensed_logo}
+              color={color}
+              margin="0 10px"
+            />
+
+            <Media greaterThan="xs">
+              <Title
+                size="5"
+                color={color}
+                weight="semibold"
+                textAlign="center"
+              >
+                {title ? title : <a href="/magazine">Artsy Editorial</a>}
+              </Title>
+            </Media>
+            {children}
+          </NavContainer>
+
+          <Waypoint
+            onEnter={() => this.setPosition(false)}
+            onLeave={() => this.setPosition(true)}
           />
-
-          <Media greaterThan="xs">
-            <Title size="5" color={color} weight="semibold" textAlign="center">
-              {title ? title : <a href="/magazine">Artsy Editorial</a>}
-            </Title>
-          </Media>
-          {children}
-        </NavContainer>
-
-        <Waypoint
-          onEnter={() => this.setPosition(false)}
-          onLeave={() => this.setPosition(true)}
-        />
-      </div>
+        </div>
+      )
     )
   }
 }

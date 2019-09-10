@@ -12,8 +12,9 @@ export const VanguardSeriesWrapper: React.SFC<{
   article: ArticleData
   index: number
   isMobile: boolean
+  slideShowState?: (state: boolean) => void
 }> = props => {
-  const { article, isMobile } = props
+  const { article, isMobile, slideShowState } = props
   const { relatedArticles, title, layout, series, slug } = article
   const slugifiedTitle = slugify(title)
   const { hero_section } = props.article
@@ -72,6 +73,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             article={artistArticle}
             section={slugifiedTitle}
             isMobile={isMobile}
+            slideShowState={slideShowState}
           />
         ))}
     </Box>
