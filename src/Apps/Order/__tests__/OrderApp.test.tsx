@@ -86,6 +86,8 @@ describe("OrderApp routing redirects", () => {
               node: {
                 artwork: {
                   id: "artwork-id",
+                  is_acquireable: true,
+                  is_offerable: false,
                 },
               },
             },
@@ -493,12 +495,23 @@ describe("OrderApp", () => {
         replace,
       },
       order: {
+        ...UntouchedBuyOrder,
         state: state || "PENDING",
       },
       routeIndices: [],
       routes: [],
     }
   }
+
+  it("enables intercom", () => {
+    const trigger = jest.fn()
+    const props = getProps()
+    getWrapper({ props, context: { mediator: { trigger } } })
+    expect(trigger).toHaveBeenCalledWith("enableIntercomForBuyers", {
+      is_acquireable: true,
+      is_offerable: false,
+    })
+  })
 
   it("adds a meta tag with 'view-port-fit=cover' when not Eigen", () => {
     const props = getProps() as any
