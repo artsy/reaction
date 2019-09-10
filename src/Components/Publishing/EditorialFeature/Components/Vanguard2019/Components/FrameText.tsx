@@ -57,6 +57,7 @@ const FrameTextLeft = styled(FrameText)<{ isSlideOpen?: boolean }>`
   left: 0;
   transform: rotate(-90deg);
   transform-origin: 30% 136%;
+
   &&& {
     z-index: ${p => (p.isSlideOpen ? 0 : 2)};
   }
@@ -66,6 +67,7 @@ const FrameTextRight = styled(FrameText)<{ isSlideOpen?: boolean }>`
   right: 0;
   transform: rotate(90deg);
   transform-origin: 60% 60%;
+
   &&& {
     z-index: ${p => (p.isSlideOpen ? 0 : 2)};
   }
@@ -75,7 +77,7 @@ const MobileFrame = styled(Flex)`
   position: fixed;
   flex-direction: column;
   top: 65px;
-  left: 0;
+  left: -10px;
   height: calc(100vh - 150px);
   width: 60px;
   justify-content: space-between;
