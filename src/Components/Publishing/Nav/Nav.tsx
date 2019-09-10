@@ -13,6 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   sponsor?: any
   title?: string
   transparent?: boolean
+  isSlideOpen?: boolean
 }
 
 interface State {
@@ -50,6 +51,7 @@ export class Nav extends React.Component<Props, State> {
       canFix,
       transparent,
       title,
+      isSlideOpen,
     } = this.props
     const { isFixed } = this.state
 
@@ -61,6 +63,7 @@ export class Nav extends React.Component<Props, State> {
           color={color}
           isFixed={canFix && isFixed}
           transparent={!isFixed && transparent}
+          isSlideOpen={isSlideOpen}
         >
           <PartnerInline
             url={sponsor && sponsor.partner_logo_link}
@@ -91,6 +94,7 @@ export const NavContainer = styled(Flex)<{
   color: string
   transparent: boolean
   isFixed: boolean
+  isSlideOpen: boolean
 }>`
   background-color: ${props =>
     props.transparent ? "transparent" : props.backgroundColor};
@@ -98,7 +102,7 @@ export const NavContainer = styled(Flex)<{
   position: relative;
   height: 52px;
   width: 100%;
-  z-index: 10;
+  z-index: ${props => (props.isSlideOpen ? -1 : 10)};
 
   ${props =>
     props.transparent &&

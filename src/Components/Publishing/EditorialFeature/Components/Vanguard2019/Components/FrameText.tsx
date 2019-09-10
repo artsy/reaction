@@ -3,7 +3,13 @@ import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-export const VanguardFrameText: React.SFC = () => {
+interface VanguardFrameTextProps {
+  isSlideOpen?: boolean
+}
+
+export const VanguardFrameText: React.SFC<VanguardFrameTextProps> = props => {
+  const { isSlideOpen } = props
+
   return (
     <>
       <Media at="xs">
@@ -20,8 +26,18 @@ export const VanguardFrameText: React.SFC = () => {
 
       {/* Desktop */}
       <Media greaterThan="xs">
-        <FrameTextLeft size={["12", "12", "14", "16"]}>Vanguard</FrameTextLeft>
-        <FrameTextRight size={["12", "12", "14", "16"]}>2019</FrameTextRight>
+        <FrameTextLeft
+          isSlideOpen={isSlideOpen}
+          size={["12", "12", "14", "16"]}
+        >
+          Vanguard
+        </FrameTextLeft>
+        <FrameTextRight
+          isSlideOpen={isSlideOpen}
+          size={["12", "12", "14", "16"]}
+        >
+          2019
+        </FrameTextRight>
       </Media>
     </>
   )
@@ -37,16 +53,22 @@ const FrameText = styled(Sans)`
   will-change: color;
 `
 
-const FrameTextLeft = styled(FrameText)`
+const FrameTextLeft = styled(FrameText)<{ isSlideOpen?: boolean }>`
   left: 0;
   transform: rotate(-90deg);
   transform-origin: 30% 136%;
+  &&& {
+    z-index: ${p => (p.isSlideOpen ? 0 : 2)};
+  }
 `
 
-const FrameTextRight = styled(FrameText)`
+const FrameTextRight = styled(FrameText)<{ isSlideOpen?: boolean }>`
   right: 0;
   transform: rotate(90deg);
   transform-origin: 60% 60%;
+  &&& {
+    z-index: ${p => (p.isSlideOpen ? 0 : 2)};
+  }
 `
 
 const MobileFrame = styled(Flex)`

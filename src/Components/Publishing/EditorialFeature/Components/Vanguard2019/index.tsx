@@ -10,7 +10,15 @@ import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
 import { VanguardTableOfContents } from "./Components/TableOfContents"
 
-export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
+export class Vanguard2019 extends React.Component<
+  EditorialFeaturesProps,
+  {
+    isSlideOpen: boolean
+  }
+> {
+  state = {
+    isSlideOpen: false,
+  }
   public validSlugs
 
   onChangeSection = slug => {
@@ -57,8 +65,13 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
     this.validSlugs = validPaths
   }
 
+  onFullScreenProviderStateChange = (state: boolean) => {
+    this.setState({ isSlideOpen: !state })
+  }
+
   render() {
     const { article, isMobile } = this.props
+    const { isSlideOpen } = this.state
     const { relatedArticles } = article
 
     return (
@@ -68,10 +81,11 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
           color="black"
           backgroundColor="white"
           title={article.title}
+          isSlideOpen={isSlideOpen}
         />
 
         {/** floating title text */}
-        <VanguardFrameText />
+        <VanguardFrameText isSlideOpen={isSlideOpen} />
 
         {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
@@ -90,6 +104,7 @@ export class Vanguard2019 extends React.Component<EditorialFeaturesProps> {
               article={subSeries}
               index={i}
               isMobile={isMobile}
+              onSlideshowStateChange={this.onFullScreenProviderStateChange}
             />
           ))}
       </VanguardWrapper>
