@@ -1,3 +1,15 @@
+# v17.11.7 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- Handle Nav Bar and Side Frame Text When Slideshow is Open [#2788](https://github.com/artsy/reaction/pull/2788) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.11.6 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
