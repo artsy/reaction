@@ -171,7 +171,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     })
   }
 
-  submitOffer(setupIntentId) {
+  submitOffer(setupIntentId: string | null) {
     return this.props.commitMutation<ReviewSubmitOfferOrderMutation>({
       variables: {
         input: {
