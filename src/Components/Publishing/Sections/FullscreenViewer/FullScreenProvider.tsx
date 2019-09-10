@@ -4,7 +4,7 @@ import { Component } from "react"
 
 interface Props {
   children: any
-  slideShowState?: (state: boolean) => void
+  onSlideshowStateChange?: (state: boolean) => void
 }
 
 interface State {
@@ -39,7 +39,10 @@ export class FullScreenProvider extends Component<Props, State> {
   openViewer = index => {
     const body = document.getElementsByTagName("BODY")[0]
     body.setAttribute("style", "overflow: hidden;")
-    this.vanguardSlideShowState()
+
+    if (this.props.onSlideshowStateChange) {
+      this.slideshowStateChange()
+    }
 
     this.setState({
       viewerIsOpen: true,
@@ -50,7 +53,10 @@ export class FullScreenProvider extends Component<Props, State> {
   closeViewer = () => {
     const body = document.getElementsByTagName("BODY")[0]
     body.setAttribute("style", "overflow: scroll;")
-    this.vanguardSlideShowState()
+
+    if (this.props.onSlideshowStateChange) {
+      this.slideshowStateChange()
+    }
 
     this.setState({
       viewerIsOpen: false,
@@ -58,8 +64,8 @@ export class FullScreenProvider extends Component<Props, State> {
     })
   }
 
-  vanguardSlideShowState = () => {
-    return this.props.slideShowState(this.state.viewerIsOpen)
+  slideshowStateChange = () => {
+    return this.props.onSlideshowStateChange(this.state.viewerIsOpen)
   }
 
   render() {

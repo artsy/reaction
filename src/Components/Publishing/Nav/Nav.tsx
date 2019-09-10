@@ -13,7 +13,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   sponsor?: any
   title?: string
   transparent?: boolean
-  isSlideClosed?: boolean
+  isSlideOpen?: boolean
 }
 
 interface State {
@@ -51,46 +51,40 @@ export class Nav extends React.Component<Props, State> {
       canFix,
       transparent,
       title,
-      isSlideClosed,
+      isSlideOpen,
     } = this.props
     const { isFixed } = this.state
 
     return (
-      isSlideClosed && (
-        <div>
-          <NavContainer
-            backgroundColor={backgroundColor}
-            className={className}
+      <div>
+        <NavContainer
+          backgroundColor={backgroundColor}
+          className={className}
+          color={color}
+          isFixed={canFix && isFixed}
+          transparent={!isFixed && transparent}
+          isSlideOpen={isSlideOpen}
+        >
+          <PartnerInline
+            url={sponsor && sponsor.partner_logo_link}
+            logo={sponsor && sponsor.partner_condensed_logo}
             color={color}
-            isFixed={canFix && isFixed}
-            transparent={!isFixed && transparent}
-          >
-            <PartnerInline
-              url={sponsor && sponsor.partner_logo_link}
-              logo={sponsor && sponsor.partner_condensed_logo}
-              color={color}
-              margin="0 10px"
-            />
-
-            <Media greaterThan="xs">
-              <Title
-                size="5"
-                color={color}
-                weight="semibold"
-                textAlign="center"
-              >
-                {title ? title : <a href="/magazine">Artsy Editorial</a>}
-              </Title>
-            </Media>
-            {children}
-          </NavContainer>
-
-          <Waypoint
-            onEnter={() => this.setPosition(false)}
-            onLeave={() => this.setPosition(true)}
+            margin="0 10px"
           />
-        </div>
-      )
+
+          <Media greaterThan="xs">
+            <Title size="5" color={color} weight="semibold" textAlign="center">
+              {title ? title : <a href="/magazine">Artsy Editorial</a>}
+            </Title>
+          </Media>
+          {children}
+        </NavContainer>
+
+        <Waypoint
+          onEnter={() => this.setPosition(false)}
+          onLeave={() => this.setPosition(true)}
+        />
+      </div>
     )
   }
 }
@@ -100,6 +94,7 @@ export const NavContainer = styled(Flex)<{
   color: string
   transparent: boolean
   isFixed: boolean
+  isSlideOpen: boolean
 }>`
   background-color: ${props =>
     props.transparent ? "transparent" : props.backgroundColor};
@@ -107,7 +102,7 @@ export const NavContainer = styled(Flex)<{
   position: relative;
   height: 52px;
   width: 100%;
-  z-index: 10;
+  z-index: ${props => (props.isSlideOpen ? -1 : 10)};
 
   ${props =>
     props.transparent &&

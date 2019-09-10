@@ -33,7 +33,7 @@ export class VanguardArtistWrapper extends React.Component<
     isExpanded?: boolean
     section?: string
     isMobile: boolean
-    slideShowState?: (state: boolean) => void
+    onSlideshowStateChange?: (state: boolean) => void
   },
   {
     isExpanded: boolean
@@ -93,7 +93,7 @@ export class VanguardArtistWrapper extends React.Component<
   }
 
   render() {
-    const { article, section, isMobile, slideShowState } = this.props
+    const { article, section, isMobile, onSlideshowStateChange } = this.props
     const { hero_section, layout, slug, title } = article
     const { isExpanded } = this.state
 
@@ -104,7 +104,7 @@ export class VanguardArtistWrapper extends React.Component<
     const backgroundColor = isExpanded ? color("black100") : color("white100")
 
     return (
-      <FullScreenProvider slideShowState={slideShowState}>
+      <FullScreenProvider onSlideshowStateChange={onSlideshowStateChange}>
         <ArtistWrapper
           background={backgroundColor}
           pt={50}

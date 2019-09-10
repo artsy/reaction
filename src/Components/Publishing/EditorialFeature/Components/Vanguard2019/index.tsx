@@ -13,11 +13,11 @@ import { VanguardTableOfContents } from "./Components/TableOfContents"
 export class Vanguard2019 extends React.Component<
   EditorialFeaturesProps,
   {
-    isSlideClosed: boolean
+    isSlideOpen: boolean
   }
 > {
   state = {
-    isSlideClosed: false,
+    isSlideOpen: false,
   }
   public validSlugs
 
@@ -65,13 +65,13 @@ export class Vanguard2019 extends React.Component<
     this.validSlugs = validPaths
   }
 
-  getSlideShowState = (state: boolean) => {
-    this.setState({ isSlideClosed: state })
+  onFullScreenProviderStateChange = (state: boolean) => {
+    this.setState({ isSlideOpen: !state })
   }
 
   render() {
     const { article, isMobile } = this.props
-    const { isSlideClosed } = this.state
+    const { isSlideOpen } = this.state
     const { relatedArticles } = article
 
     return (
@@ -81,11 +81,11 @@ export class Vanguard2019 extends React.Component<
           color="black"
           backgroundColor="white"
           title={article.title}
-          isSlideClosed={isSlideClosed}
+          isSlideOpen={isSlideOpen}
         />
 
         {/** floating title text */}
-        <VanguardFrameText isSlideClosed={isSlideClosed} />
+        <VanguardFrameText isSlideOpen={isSlideOpen} />
 
         {/** header landing video & intro text */}
         <VanguardIntroduction article={article} />
@@ -104,7 +104,7 @@ export class Vanguard2019 extends React.Component<
               article={subSeries}
               index={i}
               isMobile={isMobile}
-              slideShowState={this.getSlideShowState}
+              onSlideshowStateChange={this.onFullScreenProviderStateChange}
             />
           ))}
       </VanguardWrapper>
