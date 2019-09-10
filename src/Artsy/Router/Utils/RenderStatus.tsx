@@ -1,11 +1,10 @@
 import React from "react"
 import StaticContainer from "react-static-container"
 
-import { Box } from "@artsy/palette"
+import { Box, PageLoader } from "@artsy/palette"
 import { ErrorPage } from "Components/ErrorPage"
 import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
-import styled from "styled-components"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
@@ -18,7 +17,14 @@ export const RenderPending: React.FC = props => {
   return (
     <>
       <Renderer>{null}</Renderer>
-      <LoadingOverlay />
+      <PageLoader
+        className="reactionPageLoader" // positional styling comes from Force body.styl
+        showBackground={false}
+        style={{
+          position: "fixed",
+          top: -6,
+        }}
+      />
     </>
   )
 }
@@ -48,16 +54,6 @@ export const RenderError: React.FC<{
   // https://github.com/artsy/reaction/pull/1855
   return <ErrorPage code={props.error.status} message={message} />
 }
-
-const LoadingOverlay = styled(Box)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: 10;
-  height: 100vh;
-`
 
 /**
  * Define a container component so that we don't run into reconciliation issues
