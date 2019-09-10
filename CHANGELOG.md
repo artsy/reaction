@@ -1,3 +1,15 @@
+# v17.11.8 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- [PageLoader] Add page loader to router [#2785](https://github.com/artsy/reaction/pull/2785) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.11.7 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
