@@ -49,7 +49,7 @@ export const VanguardSeriesWrapper: React.SFC<{
           maxWidth={["90vw", "80vw", "80vw", "65%"]}
           px={4}
           pb={150}
-          pt={80}
+          pt={60}
         >
           <Flex flexDirection="column" alignItems="center">
             {series && (
