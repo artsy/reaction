@@ -4,6 +4,7 @@ import { ConcreteRequest } from "relay-runtime";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 export type CommerceSubmitOrderWithOfferInput = {
     readonly clientMutationId?: string | null;
+    readonly confirmedSetupIntentId?: string | null;
     readonly offerId: string;
 };
 export type ReviewSubmitOfferOrderMutationVariables = {

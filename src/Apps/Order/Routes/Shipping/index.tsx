@@ -335,7 +335,8 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     errors={addressErrors}
                     touched={addressTouched}
                     onChange={this.onAddressChange}
-                    continentalUsOnly={artwork.shipsToContinentalUSOnly}
+                    domesticOnly={artwork.onlyShipsDomestically}
+                    shippingCountry={artwork.shippingCountry}
                   />
                 </Collapse>
 
@@ -405,7 +406,8 @@ export const ShippingFragmentContainer = createFragmentContainer(
               artwork {
                 id
                 pickup_available
-                shipsToContinentalUSOnly
+                onlyShipsDomestically
+                shippingCountry
               }
             }
           }

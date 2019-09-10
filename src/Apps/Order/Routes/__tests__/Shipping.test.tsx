@@ -80,11 +80,11 @@ describe("Shipping", () => {
     expect(page.find(RadioGroup).length).toEqual(0)
   })
 
-  it("disables country select when shipsToContinentalUSOnly is true", async () => {
-    const continentalUSOnlyOrder = cloneDeep(testOrder) as any
-    continentalUSOnlyOrder.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
+  it("disables country select when onlyShipsDomestically is true", async () => {
+    const domesticShippingOnlyOrder = cloneDeep(testOrder) as any
+    domesticShippingOnlyOrder.lineItems.edges[0].node.artwork.onlyShipsDomestically = true
     const page = await buildPage({
-      mockData: { order: continentalUSOnlyOrder },
+      mockData: { order: domesticShippingOnlyOrder },
     })
     expect(page.find(CountrySelect).props().disabled).toBe(true)
   })

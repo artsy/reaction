@@ -32,7 +32,8 @@ export type Shipping_order = {
                 readonly artwork: ({
                     readonly id: string;
                     readonly pickup_available: boolean | null;
-                    readonly shipsToContinentalUSOnly: boolean | null;
+                    readonly onlyShipsDomestically: boolean | null;
+                    readonly shippingCountry: string | null;
                 }) | null;
             }) | null;
         }) | null> | null;
@@ -207,7 +208,14 @@ return {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "shipsToContinentalUSOnly",
+                      "name": "onlyShipsDomestically",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "shippingCountry",
                       "args": null,
                       "storageKey": null
                     },
@@ -241,5 +249,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '014b1825a797aad9654920cb221e1aae';
+(node as any).hash = '7ae2c5fc71b9b498d4207c3533662985';
 export default node;
