@@ -1,3 +1,15 @@
+# v17.11.9 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [QueryString] When parsing query strings for apps, coerce Ints and Bools [#2787](https://github.com/artsy/reaction/pull/2787) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v17.11.8 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
