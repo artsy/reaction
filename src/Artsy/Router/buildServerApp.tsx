@@ -21,6 +21,7 @@ import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 import { RouterConfig } from "./"
+import { queryStringParsing } from "./Utils/queryStringParsing"
 import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 interface Resolve {
@@ -53,7 +54,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         const relayEnvironment = context.relayEnvironment || createRelaySSREnvironment({ user }) // prettier-ignore
         const historyMiddlewares = [
           createQueryMiddleware({
-            parse: qs.parse,
+            parse: queryStringParsing,
             stringify: qs.stringify,
           }),
         ]

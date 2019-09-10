@@ -14,6 +14,7 @@ import qs from "qs"
 import createLogger from "Utils/logger"
 import { getUser } from "Utils/user"
 import { createRouteConfig } from "./Utils/createRouteConfig"
+import { queryStringParsing } from "./Utils/queryStringParsing"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Boot"
@@ -61,7 +62,7 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
 
       const historyMiddlewares = [
         createQueryMiddleware({
-          parse: qs.parse,
+          parse: queryStringParsing,
           stringify: qs.stringify,
         }),
       ]
