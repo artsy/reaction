@@ -133,10 +133,11 @@ export class VanguardArtistWrapper extends React.Component<
 
                 <Media lessThan="xl">
                   <InvertedSerif
-                    size={["10", "12", "12"]}
+                    size={["8", "10", "12", "12"]}
                     element="h3"
                     isMobile={isMobile}
                     isExpanded={isExpanded}
+                    lineHeight="1.1em"
                   >
                     {title}
                   </InvertedSerif>
@@ -145,10 +146,11 @@ export class VanguardArtistWrapper extends React.Component<
                 <Box position="relative">
                   {hero_section && (
                     <InvertedSans
-                      size="4"
+                      size={["3", "4", "4", "4"]}
                       weight="medium"
                       isMobile={isMobile}
                       isExpanded={isExpanded}
+                      lineHeight="1.1em"
                     >
                       {hero_section.deck}
                     </InvertedSans>
