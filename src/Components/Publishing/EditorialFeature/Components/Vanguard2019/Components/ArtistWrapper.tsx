@@ -186,7 +186,6 @@ export class VanguardArtistWrapper extends React.Component<
                 isExpanded={isExpanded}
               >
                 {isExpanded ? "Close" : "Read More"}
-                <Sans size="8">{isExpanded ? "\u2191" : "\u2193"}</Sans>
               </ReadMoreButton>
             </ArtistContainer>
           </ArticleWithFullScreen>
@@ -214,6 +213,7 @@ const ArtistTitle = styled(InvertedSerif)`
 `
 
 const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
+  text-decoration: underline;
   text-transform: uppercase;
   cursor: pointer;
   color: ${p =>
