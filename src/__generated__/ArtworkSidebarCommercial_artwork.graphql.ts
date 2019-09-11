@@ -12,7 +12,7 @@ export type ArtworkSidebarCommercial_artwork = {
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly price: string | null;
-    readonly priceIncludesTax: boolean | null;
+    readonly priceIncludesTaxDisplay: string | null;
     readonly sale_message: string | null;
     readonly shippingInfo: string | null;
     readonly shippingOrigin: string | null;
@@ -106,7 +106,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "priceIncludesTax",
+      "name": "priceIncludesTaxDisplay",
       "args": null,
       "storageKey": null
     },
@@ -150,5 +150,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'ec6c8137cfe782b066267f29e26641f1';
+(node as any).hash = 'c5fddefc6389f7c15acb550655da02f8';
 export default node;
