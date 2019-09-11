@@ -1,3 +1,15 @@
+# v17.11.15 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- align captions on artist image and artist artworks [#2798](https://github.com/artsy/reaction/pull/2798) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.11.14 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
