@@ -7,6 +7,7 @@ import ArticleWithFullScreen from "Components/Publishing/Layouts/ArticleWithFull
 import { StyledArtworkCaption } from "Components/Publishing/Sections/ArtworkCaption"
 import { CaptionContainer } from "Components/Publishing/Sections/Caption"
 import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
+import { SectionContainer } from "Components/Publishing/Sections/SectionContainer"
 import {
   Sections,
   StyledSections,
@@ -241,6 +242,10 @@ const ArtistContainer = styled(Box)<TextProps>`
 
   ${StyledSections} {
     margin-top: 0;
+  }
+
+  ${SectionContainer} {
+    padding: ${p => p.isMobile && 0};
   }
 
   ${ShareContainer},
