@@ -1,3 +1,15 @@
+# v17.11.14 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Remove padding from article content on mobile [#2796](https://github.com/artsy/reaction/pull/2796) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.11.13 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
