@@ -167,6 +167,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c13 > a,

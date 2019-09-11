@@ -6686,6 +6686,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c38 > a,
