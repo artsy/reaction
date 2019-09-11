@@ -1,3 +1,15 @@
+# v18.0.0 (Wed Sep 11 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Replace <ArtworkFilter> in /collect -> Take 2 [#2789](https://github.com/artsy/reaction/pull/2789) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v17.11.18 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
