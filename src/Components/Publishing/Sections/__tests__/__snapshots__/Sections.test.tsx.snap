@@ -1,16 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots tests renders properly 1`] = `
-.c23 {
-  width: 100%;
-  height: 1000px;
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .c18 {
-  margin-right: 30px;
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
+.c32 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  padding-bottom: 8px;
+}
+
+.c34 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c35 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.c41 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
 }
 
 .c19 {
+  margin-right: 30px;
+}
+
+.c20 {
   white-space: nowrap;
 }
 
@@ -169,19 +214,8 @@ exports[`Sections snapshots tests renders properly 1`] = `
   height: auto;
 }
 
-.c20 {
-  margin-right: 10px;
-  width: 219px;
-  max-width: 100%;
-}
-
-.c20 img {
-  max-width: 100%;
-  height: auto;
-}
-
 .c21 {
-  margin-right: 0px;
+  margin-right: 10px;
   width: 219px;
   max-width: 100%;
 }
@@ -193,7 +227,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
 
 .c22 {
   margin-right: 0px;
-  width: 100%;
+  width: 219px;
   max-width: 100%;
 }
 
@@ -202,24 +236,35 @@ exports[`Sections snapshots tests renders properly 1`] = `
   height: auto;
 }
 
-.c24 {
-  margin-right: 10px;
-  width: 216px;
+.c23 {
+  margin-right: 0px;
+  width: 100%;
   max-width: 100%;
 }
 
-.c24 img {
+.c23 img {
   max-width: 100%;
   height: auto;
 }
 
 .c25 {
+  margin-right: 10px;
+  width: 216px;
+  max-width: 100%;
+}
+
+.c25 img {
+  max-width: 100%;
+  height: auto;
+}
+
+.c26 {
   margin-right: 0px;
   width: 222px;
   max-width: 100%;
 }
 
-.c25 img {
+.c26 img {
   max-width: 100%;
   height: auto;
 }
@@ -248,7 +293,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c26 {
+.c27 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -256,7 +301,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c33 {
+.c38 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -264,7 +309,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c39 {
+.c45 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -278,7 +323,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c35 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -291,26 +336,26 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c35 a {
+.c40 a {
   color: black;
 }
 
-.c36 {
+.c42 {
   margin-right: 20px;
 }
 
-.c37 {
+.c43 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c37 .c38 {
+.c43 .c44 {
   vertical-align: middle;
   margin: 0;
 }
 
-.c34 {
+.c39 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -320,18 +365,23 @@ exports[`Sections snapshots tests renders properly 1`] = `
   flex-direction: column;
 }
 
-.c31 {
+.c24 {
+  width: 100%;
+  height: 1000px;
+}
+
+.c36 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c31 > svg {
+.c36 > svg {
   height: 98%;
 }
 
-.c29 {
+.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -348,19 +398,19 @@ exports[`Sections snapshots tests renders properly 1`] = `
   width: 100%;
 }
 
-.c30 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c27 {
+.c28 {
   position: relative;
   width: 100%;
 }
 
-.c28 {
+.c29 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -373,17 +423,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
   cursor: pointer;
 }
 
-.c28:hover {
+.c29:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c28:hover path,
-.c28:hover polygon {
+.c29:hover path,
+.c29:hover polygon {
   fill: white;
 }
 
-.c32 {
+.c37 {
   height: auto;
   width: 100%;
 }
@@ -501,7 +551,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c2 h2 .c40 {
+.c2 h2 .c46 {
   background-position: bottom !important;
 }
 
@@ -596,10 +646,39 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 780px;
 }
 
-@media (max-width:720px) {
-  .c23 {
-    height: 1300px;
-    width: 100%;
+@media screen and (min-width:40em) {
+  .c32 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c32 {
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c34 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c34 {
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    line-height: 24px;
   }
 }
 
@@ -658,17 +737,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c20 {
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
-  .c20 img {
-    width: 100%;
-  }
-}
-
-@media (max-width:600px) {
   .c21 {
     margin-bottom: 10px;
     width: 100%;
@@ -691,12 +759,12 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c24 {
+  .c23 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c24 img {
+  .c23 img {
     width: 100%;
   }
 }
@@ -712,6 +780,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
   }
 }
 
+@media (max-width:600px) {
+  .c26 {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .c26 img {
+    width: 100%;
+  }
+}
+
 @media (max-width:1280px) {
   .c1 {
     width: 680px;
@@ -749,20 +828,27 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c26 {
+  .c27 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c26 {
+  .c27 {
     padding: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c33 {
+  .c38 {
     padding: 0 20px;
+  }
+}
+
+@media (max-width:720px) {
+  .c24 {
+    height: 1300px;
+    width: 100%;
   }
 }
 
@@ -1174,16 +1260,16 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </a>
           <div>
             <div
-              className="c17 hoYAXX"
+              className="c17 c18"
               color="#C2C2C2"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="14px"
             >
               <span
-                className="c18"
+                className="c19"
               >
                 <span
-                  className="c19"
+                  className="c20"
                 >
                   <a
                     href="/artist/matt-devine"
@@ -1269,7 +1355,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1358,7 +1444,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1447,7 +1533,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c21"
+        className="c22"
         width={219}
       >
         <div
@@ -1560,7 +1646,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c22"
+        className="c23"
       >
         <div
           className="article-image"
@@ -1669,7 +1755,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c3"
   >
     <iframe
-      className="c23"
+      className="c24"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1699,7 +1785,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c24"
+        className="c25"
         width={216}
       >
         <div
@@ -1788,7 +1874,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c20"
+        className="c21"
         width={219}
       >
         <div
@@ -1877,7 +1963,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c25"
+        className="c26"
         width={222}
       >
         <div
@@ -1984,23 +2070,23 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c26"
+    className="c27"
   >
     <div
-      className="c27"
+      className="c28"
     >
       <div
-        className="c28"
+        className="c29"
         onClick={[Function]}
       >
         <div
-          className="c29"
+          className="c30"
         >
           <div
-            className="jXywsm"
+            className="c31"
           >
             <div
-              className="jfWwGi"
+              className="c32"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2017,10 +2103,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
               The Work of Bruce M. Sherman
             </div>
             <div
-              className="c30"
+              className="c33"
             >
               <div
-                className="bUZGRr bzrKal"
+                className="c34"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2037,7 +2123,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                 View Slideshow
               </div>
               <div
-                className="bUZGRr iLcvIv"
+                className="c35"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize={
                   Array [
@@ -2054,7 +2140,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             className="rrm-container rrm-greaterThanOrEqual-sm"
           >
             <div
-              className="c31"
+              className="c36"
             >
               <svg
                 className="image-set"
@@ -2084,7 +2170,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       >
         <img
           alt="The Work of Bruce M. Sherman"
-          className="c32"
+          className="c37"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
         />
       </div>
@@ -2107,13 +2193,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c26"
+    className="c27"
   >
     <div
       className="c5"
     >
       <div
-        className="c22"
+        className="c23"
       >
         <div
           className="article-image"
@@ -2219,17 +2305,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c33"
+    className="c38"
   >
     <div
-      className="c34"
+      className="c39"
     >
       <div
-        className="c35"
+        className="c40"
         color="black"
       >
         <div
-          className="bUZGRr htJRPl"
+          className="c41"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2239,7 +2325,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           fontSize="16px"
         >
           <span
-            className="c36"
+            className="c42"
           >
             <span>
               <a
@@ -2252,11 +2338,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </span>
           <span>
             <a
-              className="c37"
+              className="c43"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c38 c39"
+                className="c44 c45"
               >
                 
               </div>

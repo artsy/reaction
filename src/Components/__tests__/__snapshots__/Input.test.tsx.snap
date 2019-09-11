@@ -89,7 +89,7 @@ exports[`Input renders as a snapshot 1`] = `
 }
 
 <div
-  className="sc-bdVaJa dVZOZN"
+  className=""
 >
   <div
     className="c0"

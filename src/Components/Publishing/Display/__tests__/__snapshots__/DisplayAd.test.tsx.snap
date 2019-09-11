@@ -1,6 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders the new canvas in standard layout 1`] = `
+.c1 {
+  margin: auto;
+}
+
+.c2 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -25,7 +37,7 @@ exports[`renders the new canvas in standard layout 1`] = `
   height="1px"
 >
   <div
-    className="fdqRED"
+    className="c1"
   >
     <div
       style={
@@ -36,7 +48,7 @@ exports[`renders the new canvas in standard layout 1`] = `
       }
     />
     <div
-      className="bUZGRr jritVp"
+      className="c2"
       color="black30"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="10px"
