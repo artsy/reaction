@@ -185,7 +185,9 @@ export class VanguardArtistWrapper extends React.Component<
                 isMobile={isMobile}
                 isExpanded={isExpanded}
               >
-                {isExpanded ? "Close" : "Read More"}
+                <ReadMoreText>
+                  {isExpanded ? "Close" : "Read More"}
+                </ReadMoreText>
               </ReadMoreButton>
             </ArtistContainer>
           </ArticleWithFullScreen>
@@ -212,8 +214,12 @@ const ArtistTitle = styled(InvertedSerif)`
   line-height: 1em;
 `
 
+const ReadMoreText = styled(Box)`
+  display: inline-flex;
+  border-bottom: solid;
+  line-height: normal;
+`
 const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
-  text-decoration: underline;
   text-transform: uppercase;
   cursor: pointer;
   color: ${p =>
