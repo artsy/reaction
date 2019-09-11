@@ -120,7 +120,7 @@ export class VanguardArtistWrapper extends React.Component<
             <ArtistContainer
               pb={4}
               maxWidth={["100vw", 1000]}
-              px={4}
+              px={["10vw", "10vw", "10vw", "10vw", 4]}
               mx="auto"
               isMobile={isMobile}
               isExpanded={isExpanded}
