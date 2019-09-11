@@ -1,3 +1,15 @@
+# v17.11.13 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Prevent Side Frame from overlapping with Article Content [#2795](https://github.com/artsy/reaction/pull/2795) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.11.12 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
