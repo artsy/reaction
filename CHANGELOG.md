@@ -1,3 +1,20 @@
+# v17.11.18 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Switch to using metaphysics field for tax information [#2800](https://github.com/artsy/reaction/pull/2800) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.2 to v4.17.3 [#2799](https://github.com/artsy/reaction/pull/2799) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.11.17 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
