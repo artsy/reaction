@@ -20,6 +20,7 @@ import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
 import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
+import { BankTransferExperiment } from "Apps/Order/Components/BankTransferExperiment"
 import {
   PaymentPicker,
   PaymentPickerFragmentContainer,
@@ -131,6 +132,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   order={this.props.order}
                   innerRef={this.paymentPicker}
                 />
+                <Spacer mb={3} />
+                <BankTransferExperiment />
                 <Spacer mb={3} />
                 <Media greaterThan="xs">
                   <ContinueButton
