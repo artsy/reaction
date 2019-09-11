@@ -1,3 +1,15 @@
+# v17.11.17 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Directive] Start using principalField to propagate a single HTTP non 2XX code [#2784](https://github.com/artsy/reaction/pull/2784) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v17.11.16 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
