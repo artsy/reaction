@@ -29,7 +29,7 @@ export interface ArtworkGridProps
   onLoadMore?: () => any
   sectionMargin?: number
   user?: User
-  emptyStateComponent?: ReactNode
+  emptyStateComponent?: ReactNode | boolean
 }
 
 export interface ArtworkGridContainerState {
@@ -115,7 +115,7 @@ export class ArtworkGridContainer extends React.Component<
         artworkComponents.push(
           <GridItem
             artwork={artwork}
-            key={"artwork-" + j + "-" + artwork.__id}
+            key={artwork.__id}
             mediator={this.props.mediator}
             lazyLoad={i + j >= preloadImageCount}
             onClick={() => {

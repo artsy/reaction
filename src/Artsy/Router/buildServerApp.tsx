@@ -60,7 +60,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
         ]
         const resolver = new Resolver(relayEnvironment)
 
-        const render = createRender({
+        const Render = createRender({
           renderPending: RenderPending,
           renderReady: RenderReady,
           renderError: RenderError,
@@ -73,7 +73,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             historyMiddlewares,
             routeConfig: createRouteConfig(routes),
             resolver,
-            render,
+            render: props => <Render {...props} />,
             matchContext: { user },
           })
         )

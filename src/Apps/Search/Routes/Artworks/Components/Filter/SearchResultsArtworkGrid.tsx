@@ -125,7 +125,7 @@ class SearchResultsArtworkGrid extends Component<Props, LoadingAreaState> {
                         onNext={() => {
                           this.loadNext(filters)
                         }}
-                        scrollTo="#jump--searchArtworkGrid"
+                        scrollTo="#jump--artworkFilter"
                       />
                     </Box>
                   </LoadingArea>

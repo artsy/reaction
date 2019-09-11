@@ -41,7 +41,9 @@ describe("Artsy context", () => {
         <Artsy.SystemContextConsumer>
           {props => {
             expect(Object.keys(props).sort()).toEqual([
+              "isFetching",
               "relayEnvironment",
+              "setIsFetching",
               "user",
             ])
             setImmediate(done)

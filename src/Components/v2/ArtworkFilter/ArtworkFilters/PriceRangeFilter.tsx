@@ -1,10 +1,10 @@
 import { PriceRange } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 import { MAX_PRICE, MIN_PRICE } from "../Utils/rangeToTuple"
 
 export const PriceRangeFilter: FC = () => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
   const [initialMin, initialMax] = filterContext.rangeToTuple("price_range")
 
   return (
@@ -15,7 +15,7 @@ export const PriceRangeFilter: FC = () => {
       step={50}
       disabledText="Disabled for biddable works"
       defaultValue={[initialMin, initialMax]}
-      disabled={filterContext.filters.at_auction}
+      disabled={Boolean(filterContext.filters.at_auction)}
       onAfterChange={([min, max]) => {
         const minStr = min === MIN_PRICE ? "*" : min
         const maxStr = max === MAX_PRICE ? "*" : max

@@ -88,9 +88,11 @@ describe("buildClientApp", () => {
         <SystemContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
+              "isFetching",
               "mediator",
               "relayEnvironment",
               "routes",
+              "setIsFetching",
               "user",
             ])
             setImmediate(done)

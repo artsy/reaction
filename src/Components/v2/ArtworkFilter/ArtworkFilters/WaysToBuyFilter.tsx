@@ -1,17 +1,21 @@
 import { Box, Checkbox, Sans, Spacer } from "@artsy/palette"
 import React, { FC } from "react"
-import { Filters, useFilterContext } from "../ArtworkFilterContext"
+
+import {
+  ArtworkFilters,
+  useArtworkFilterContext,
+} from "../ArtworkFilterContext"
 
 interface WayToBuy {
   disabled: any
   name: string
-  state: keyof Filters
+  state: keyof ArtworkFilters
 }
 
 export const WaysToBuyFilter: FC = () => {
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
 
-  const ways: WayToBuy[] = [
+  const checkboxes: WayToBuy[] = [
     {
       disabled: false,
       name: "Buy now",
@@ -34,24 +38,21 @@ export const WaysToBuyFilter: FC = () => {
     },
   ]
 
-  const constructCheckboxes = () =>
-    ways.map((way, index) => {
-      const props = {
-        disabled: way.disabled,
-        key: index,
-        onSelect: value => filterContext.setFilter(way.state, value),
-        selected: filterContext.filters[way.state] as boolean,
-      }
-      return <Checkbox {...props}>{way.name}</Checkbox>
-    })
-
   return (
     <Box pt={1}>
       <Sans size="2" weight="medium" color="black100">
         Ways to buy
       </Sans>
       <Spacer mb={2} />
-      {constructCheckboxes()}
+      {checkboxes.map((checkbox, index) => {
+        const props = {
+          disabled: checkbox.disabled,
+          key: index,
+          onSelect: value => filterContext.setFilter(checkbox.state, value),
+          selected: Boolean(filterContext.filters[checkbox.state]),
+        }
+        return <Checkbox {...props}>{checkbox.name}</Checkbox>
+      })}
     </Box>
   )
 }
