@@ -9,6 +9,7 @@ import { Environment, RecordSource, RelayNetwork, Store } from "relay-runtime"
 import { data as sd } from "sharify"
 import { NetworkError } from "Utils/errors"
 
+import { HttpError } from "found"
 import {
   cacheMiddleware,
   errorMiddleware,
@@ -16,6 +17,7 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern/node8"
+import { get } from "Utils/get"
 import { metaphysicsExtensionsLoggerMiddleware } from "./middleware/metaphysicsExtensionsLoggerMiddleware"
 
 const isServer = typeof window === "undefined"
@@ -103,7 +105,18 @@ export function createRelaySSREnvironment(config: Config = {}) {
           }
         },
       }),
-
+      next => async req => {
+        const res = await next(req)
+        const httpError = get(
+          res,
+          r => r.json.extensions.principalField.httpStatusCode
+        )
+        if (httpError) {
+          throw new HttpError(httpError)
+        } else {
+          return res
+        }
+      },
       // TODO: This has been moved over from `Utils/metaphysics` but can eventually
       // be replaced by error / retry middleware
       next => async req => {

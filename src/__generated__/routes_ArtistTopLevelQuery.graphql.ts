@@ -21,7 +21,7 @@ export type routes_ArtistTopLevelQuery = {
 query routes_ArtistTopLevelQuery(
   $artistID: String!
 ) {
-  artist(id: $artistID) {
+  artist(id: $artistID) @principalField {
     ...ArtistApp_artist
     __id
   }
@@ -109,7 +109,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtistTopLevelQuery",
   "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -339,5 +339,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'e13deb67c7f6a6137a8b86cd6100d7ac';
+(node as any).hash = 'f832fab34a63627613675e2a93bce9ec';
 export default node;

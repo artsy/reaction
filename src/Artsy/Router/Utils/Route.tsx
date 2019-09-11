@@ -31,7 +31,9 @@ function createRender({
     let status: number
     let message: string
     if (error) {
-      if (error.name === "RRNLRequestError") {
+      if (error instanceof HttpError) {
+        throw error
+      } else if (error.name === "RRNLRequestError") {
         // TODO: Better error typing.
         // @ts-ignore
         const firstError = get(error, e => e.res.errors[0])
