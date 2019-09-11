@@ -1,3 +1,20 @@
+# v17.11.12 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Collection hub title [#2791](https://github.com/artsy/reaction/pull/2791) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.1 to v4.17.2 [#2792](https://github.com/artsy/reaction/pull/2792) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v17.11.11 (Tue Sep 10 2019)
 
 #### 🐛  Bug Fix
