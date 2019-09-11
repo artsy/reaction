@@ -50,8 +50,8 @@ describe("ArtworkSidebarCommercial", () => {
     const artwork = Object.assign(
       {},
       {
-        ...ArtworkSingleEditionHiddenAvailability,
-        priceIncludesTax: true,
+        ...ArtworkBuyNowMakeOffer,
+        priceIncludesTaxDisplay: "VAT included in price",
         is_for_sale: true,
       }
     )
@@ -64,7 +64,10 @@ describe("ArtworkSidebarCommercial", () => {
   it("does not display artwork price includes tax if untrue", async () => {
     const artwork = Object.assign(
       {},
-      { ...ArtworkSingleEditionHiddenAvailability, priceIncludesTax: false }
+      {
+        ...ArtworkSingleEditionHiddenAvailability,
+        priceIncludesTaxDisplay: null,
+      }
     )
 
     const wrapper = await getWrapper(artwork)

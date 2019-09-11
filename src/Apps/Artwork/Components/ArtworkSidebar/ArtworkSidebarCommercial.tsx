@@ -341,6 +341,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return <Separator />
     }
+
     return (
       <Box textAlign="left">
         {artwork.sale_message && <Separator />}
@@ -376,9 +377,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
             {artwork.shippingInfo}
           </Sans>
         )}
-        {artwork.is_for_sale && artwork.priceIncludesTax && (
+        {artworkEcommerceAvailable && artwork.priceIncludesTaxDisplay && (
           <Sans size="2" color="black60">
-            VAT included in price
+            {artwork.priceIncludesTaxDisplay}
           </Sans>
         )}
 
@@ -468,7 +469,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         is_inquireable
         is_offerable
         price
-        priceIncludesTax
+        priceIncludesTaxDisplay
         sale_message
         shippingInfo
         shippingOrigin
