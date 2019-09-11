@@ -150,6 +150,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c11 > a,
@@ -1089,6 +1090,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c11 > a,
@@ -2053,6 +2055,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c11 > a,

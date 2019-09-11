@@ -29,6 +29,7 @@ exports[`renders a child even if a caption is provided 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c1 > a,
@@ -95,6 +96,7 @@ exports[`renders a saved caption properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c1 > a,
