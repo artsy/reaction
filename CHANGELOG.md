@@ -1,3 +1,15 @@
+# v17.11.16 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- replace up/down arrows with underline on read more button [#2797](https://github.com/artsy/reaction/pull/2797) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v17.11.15 (Wed Sep 11 2019)
 
 #### 🐛  Bug Fix
