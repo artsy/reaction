@@ -296,6 +296,8 @@ const ArtistContainer = styled(Box)<TextProps>`
     mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
     color: ${p => (p.isMobile ? color("black100") : color("white100"))};
     will-change: color;
+    max-width: 100vw;
+    overflow: hidden;
 
     a {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
