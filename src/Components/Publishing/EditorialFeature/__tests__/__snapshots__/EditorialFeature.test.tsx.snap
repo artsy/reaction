@@ -248,6 +248,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6714,6 +6715,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
