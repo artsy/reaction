@@ -54,6 +54,8 @@ const SubseriesSVGWrapper = styled(Box)`
   overflow: hidden;
   height: 100%;
   width: 100%;
+  background: ${color("black100")};
+  z-index: -10;
 `
 
 const VanguardSubseriesVideoWrapper = styled(Box)`

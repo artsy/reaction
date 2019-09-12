@@ -110,7 +110,7 @@ export class VanguardArtistWrapper extends React.Component<
         <ArtistWrapper
           background={backgroundColor}
           pt={50}
-          mb={isExpanded && 100}
+          isExpanded={isExpanded}
           id={slugifiedTitle}
           ref={artistWrapper => (this.artistWrapper = artistWrapper)}
         >
@@ -140,6 +140,7 @@ export class VanguardArtistWrapper extends React.Component<
                     isMobile={isMobile}
                     isExpanded={isExpanded}
                     lineHeight="1.1em"
+                    mb={5}
                   >
                     {title}
                   </InvertedSerif>
@@ -148,7 +149,7 @@ export class VanguardArtistWrapper extends React.Component<
                 <Box position="relative">
                   {hero_section && (
                     <InvertedSans
-                      size={["3", "4", "4", "4"]}
+                      size={["3", "3", "4", "4", "4"]}
                       weight="medium"
                       isMobile={isMobile}
                       isExpanded={isExpanded}
@@ -336,10 +337,17 @@ const BackgroundContainer = styled(Box)<{ backgroundColor: string }>`
   background: ${({ backgroundColor }) => backgroundColor};
 `
 
-const ArtistWrapper = styled(Flex)`
+const ArtistWrapper = styled(Flex)<{ isExpanded: boolean }>`
   flex-direction: column;
   position: relative;
   padding-bottom: 100px;
   min-height: 100vh;
   z-index: 0;
+
+  /* Border instead of margin to prevent interruption of frame text inversion */
+  ${({ isExpanded }) =>
+    isExpanded &&
+    `
+    border-bottom: 100px solid ${color("white100")};
+  `}
 `
