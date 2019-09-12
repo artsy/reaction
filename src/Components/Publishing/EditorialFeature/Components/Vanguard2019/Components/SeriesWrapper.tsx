@@ -76,7 +76,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             onSlideshowStateChange={onSlideshowStateChange}
           />
         ))}
-      {isMobile && VanguardCredits(isMobile)}
+      {isMobile && <VanguardCredits isMobile={isMobile} />}
     </Box>
   )
 }

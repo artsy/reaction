@@ -56,7 +56,7 @@ export const VanguardIntroduction: React.SFC<{
 
             <Byline {...props} />
 
-            {!isMobile && VanguardCredits(isMobile)}
+            {!isMobile && <VanguardCredits isMobile={isMobile} />}
           </Flex>
 
           <Box pb={12}>
