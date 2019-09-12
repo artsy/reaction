@@ -181,7 +181,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment ArtistAuctionResults_artist on Artist
         @argumentDefinitions(
-          sort: { type: "AuctionResultSorts", defaultValue: "DATE_DESC" }
+          sort: { type: "AuctionResultSorts", defaultValue: DATE_DESC }
           first: { type: "Int", defaultValue: 10 }
           last: { type: "Int" }
           after: { type: "String" }

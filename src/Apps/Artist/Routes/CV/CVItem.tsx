@@ -180,7 +180,7 @@ export const CVPaginationContainer = createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
-          sort: { type: "PartnerShowSorts", defaultValue: "start_at_desc" }
+          sort: { type: "PartnerShowSorts", defaultValue: START_AT_DESC }
           at_a_fair: { type: "Boolean", defaultValue: false }
           solo_show: { type: "Boolean", defaultValue: false }
           is_reference: { type: "Boolean", defaultValue: true }

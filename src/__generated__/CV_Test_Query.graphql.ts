@@ -43,7 +43,7 @@ fragment CV_viewer on Viewer {
 
 fragment CVItem_artist_3NSfvL on Artist {
   id
-  showsConnection(first: 10, sort: start_at_desc, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {
+  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {
     pageInfo {
       hasNextPage
       endCursor
@@ -79,7 +79,7 @@ fragment CVItem_artist_3NSfvL on Artist {
 
 fragment CVItem_artist_3yzB0w on Artist {
   id
-  showsConnection(first: 10, sort: start_at_desc, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {
+  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {
     pageInfo {
       hasNextPage
       endCursor
@@ -115,7 +115,7 @@ fragment CVItem_artist_3yzB0w on Artist {
 
 fragment CVItem_artist_37CQKT on Artist {
   id
-  showsConnection(first: 10, sort: start_at_desc, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {
+  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {
     pageInfo {
       hasNextPage
       endCursor
@@ -195,7 +195,7 @@ v5 = {
 v6 = {
   "kind": "Literal",
   "name": "sort",
-  "value": "start_at_desc",
+  "value": "START_AT_DESC",
   "type": "PartnerShowSorts"
 },
 v7 = {
@@ -352,7 +352,7 @@ return {
   "operationKind": "query",
   "name": "CV_Test_Query",
   "id": null,
-  "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_3NSfvL\n    __id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_3yzB0w\n    __id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_37CQKT\n    __id\n  }\n}\n\nfragment CVItem_artist_3NSfvL on Artist {\n  id\n  showsConnection(first: 10, sort: start_at_desc, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_3yzB0w on Artist {\n  id\n  showsConnection(first: 10, sort: start_at_desc, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_37CQKT on Artist {\n  id\n  showsConnection(first: 10, sort: start_at_desc, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_3NSfvL\n    __id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_3yzB0w\n    __id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_37CQKT\n    __id\n  }\n}\n\nfragment CVItem_artist_3NSfvL on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_3yzB0w on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_37CQKT on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -407,7 +407,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:true,sort:\"start_at_desc\",visible_to_public:false)",
+                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:true,sort:\"START_AT_DESC\",visible_to_public:false)",
                 "args": [
                   v3,
                   v4,
@@ -469,7 +469,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:false,sort:\"start_at_desc\",visible_to_public:false)",
+                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:false,sort:\"START_AT_DESC\",visible_to_public:false)",
                 "args": [
                   v3,
                   v4,
@@ -521,7 +521,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:true,first:10,is_reference:true,solo_show:false,sort:\"start_at_desc\",visible_to_public:false)",
+                "storageKey": "showsConnection(at_a_fair:true,first:10,is_reference:true,solo_show:false,sort:\"START_AT_DESC\",visible_to_public:false)",
                 "args": [
                   {
                     "kind": "Literal",
