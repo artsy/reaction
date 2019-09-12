@@ -5,6 +5,7 @@ import { last } from "lodash"
 import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
+import { ArtistWrapper } from "./Components/ArtistWrapper"
 import { VanguardFrameText } from "./Components/FrameText"
 import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
@@ -75,7 +76,7 @@ export class Vanguard2019 extends React.Component<
     const { relatedArticles } = article
 
     return (
-      <VanguardWrapper>
+      <VanguardWrapper isSlideOpen={isSlideOpen}>
         <Nav
           canFix
           color="black"
@@ -112,7 +113,13 @@ export class Vanguard2019 extends React.Component<
   }
 }
 
-const VanguardWrapper = styled(Box)`
+const VanguardWrapper = styled(Box)<{ isSlideOpen: boolean }>`
+  overflow: ${({ isSlideOpen }) => isSlideOpen && "hidden"};
+
+  ${ArtistWrapper} {
+    z-index: unset;
+  }
+
   ${NavContainer} {
     position: fixed;
   }
