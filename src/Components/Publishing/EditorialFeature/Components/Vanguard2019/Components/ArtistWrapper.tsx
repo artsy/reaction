@@ -270,7 +270,8 @@ const ArtistContainer = styled(Box)<TextProps>`
     p {
       mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
       will-change: color;
-      color: ${p => (p.isMobile ? color("black100") : color("white100"))};
+      color: ${p =>
+        p.isMobile && !p.isExpanded ? color("black100") : color("white100")};
     }
 
     a {
