@@ -18,7 +18,7 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }) => {
   const { name, members } = collectionGroup
   const { trackEvent } = useTracking()
-  const { xs, sm, md } = useMedia()
+  const { sm, md } = useMedia()
 
   useEffect(() => {
     trackEvent({
@@ -53,7 +53,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
           cellAlign: "left",
           wrapAround: sd.IS_MOBILE ? true : false,
           pageDots: false,
-          draggable: xs || sm ? true : false,
           contain: true,
         }}
         data={members}

@@ -63,7 +63,6 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
-          draggable: xs || sm ? true : false,
           contain: true,
         }}
         data={members}
