@@ -51,7 +51,7 @@ return {
       "kind": "LocalArgument",
       "name": "currentShowsSort",
       "type": "PartnerShowSorts",
-      "defaultValue": "end_at_asc"
+      "defaultValue": "END_AT_ASC"
     },
     {
       "kind": "LocalArgument",
@@ -63,7 +63,7 @@ return {
       "kind": "LocalArgument",
       "name": "upcomingShowsSort",
       "type": "PartnerShowSorts",
-      "defaultValue": "start_at_asc"
+      "defaultValue": "START_AT_ASC"
     },
     {
       "kind": "LocalArgument",
@@ -75,7 +75,7 @@ return {
       "kind": "LocalArgument",
       "name": "pastShowsSort",
       "type": "PartnerShowSorts",
-      "defaultValue": "end_at_desc"
+      "defaultValue": "END_AT_DESC"
     },
     {
       "kind": "RootArgument",
@@ -177,5 +177,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a5b24380340288a2abae7669e3103624';
+(node as any).hash = '80a700bd21b6c8b6c0b8ed5c5420a127';
 export default node;

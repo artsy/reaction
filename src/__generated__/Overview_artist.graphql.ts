@@ -101,7 +101,7 @@ return {
     {
       "kind": "LocalArgument",
       "name": "partner_id",
-      "type": "ID!",
+      "type": "ID",
       "defaultValue": null
     },
     {
@@ -563,5 +563,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a40500dc9a2b8ba5c0afdffaa7066ba3';
+(node as any).hash = '7521309cf5bf0fd7f1b2e606d318b428';
 export default node;

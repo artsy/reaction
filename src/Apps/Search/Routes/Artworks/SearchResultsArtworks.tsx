@@ -46,7 +46,7 @@ export const SearchResultsArtworksRouteFragmentContainer = createFragmentContain
           height: { type: "String" }
           width: { type: "String" }
           artist_id: { type: "String" }
-          attribution_class: { type: "String" }
+          attribution_class: { type: "[String]" }
           color: { type: "String" }
           page: { type: "Int" }
         ) {

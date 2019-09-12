@@ -166,7 +166,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           medium: { type: "String", defaultValue: "*" }
           major_periods: { type: "[String]" }
-          partner_id: { type: "ID!" }
+          partner_id: { type: "ID" }
           for_sale: { type: "Boolean" }
           at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
