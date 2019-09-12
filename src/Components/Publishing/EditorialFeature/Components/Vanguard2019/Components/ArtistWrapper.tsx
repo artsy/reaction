@@ -339,7 +339,7 @@ const BackgroundContainer = styled(Box)<{ backgroundColor: string }>`
   background: ${({ backgroundColor }) => backgroundColor};
 `
 
-const ArtistWrapper = styled(Flex)<{ isExpanded: boolean }>`
+export const ArtistWrapper = styled(Flex)<{ isExpanded: boolean }>`
   flex-direction: column;
   position: relative;
   padding-bottom: 100px;
