@@ -44,7 +44,7 @@ export const routes: RouteConfig[] = [
     },
     query: graphql`
       query routes_RegisterQuery($saleID: String!) {
-        sale(id: $saleID) {
+        sale(id: $saleID) @principalField {
           id
           is_auction
           is_registration_closed

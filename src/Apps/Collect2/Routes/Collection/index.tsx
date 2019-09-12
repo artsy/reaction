@@ -128,6 +128,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 }
 
+// TODO: Add `@principalField` to below query
+// when KAWS returns a 404 in `errors` for non-existent collections.
+// Currently it doesn't send any errors so there isn't anything
+// for Metaphysics to propagate.
 export const CollectionAppQuery = graphql`
   query CollectionRefetch2Query(
     $acquireable: Boolean

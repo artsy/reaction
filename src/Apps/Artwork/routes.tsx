@@ -12,7 +12,7 @@ export const routes = [
     Component: ArtworkApp,
     query: graphql`
       query routes_ArtworkQuery($artworkID: String!) {
-        artwork(id: $artworkID) {
+        artwork(id: $artworkID) @principalField {
           ...ArtworkApp_artwork
         }
       }

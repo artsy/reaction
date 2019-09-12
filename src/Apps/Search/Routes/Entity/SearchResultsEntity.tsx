@@ -171,7 +171,7 @@ export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
           last: $last
           page: $page
           entities: $entities
-        ) {
+        ) @principalField {
           pageInfo {
             hasNextPage
             endCursor

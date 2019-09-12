@@ -241,5 +241,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '424f7979f455210cfd54d1c1e2f75071';
+(node as any).hash = '93e61616ae311ee14a7c08447f3189f1';
 export default node;

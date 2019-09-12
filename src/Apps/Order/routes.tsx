@@ -36,12 +36,14 @@ export const routes: RouteConfig[] = [
   {
     path: "/order(2|s)/:orderID",
     Component: OrderApp,
+    // TODO: Better support `@principalField` in Metaphysics.
+    // This currently only works because of the `order` field alias.
     query: graphql`
       query routes_OrderQuery($orderID: ID!) {
         me {
           name
         }
-        order: commerceOrder(id: $orderID) {
+        order: commerceOrder(id: $orderID) @principalField {
           ...redirects_order @relay(mask: false)
           ...OrderApp_order @relay(mask: false)
         }

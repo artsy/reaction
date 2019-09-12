@@ -123,7 +123,7 @@ export const SearchResultsRefetchContainer = createRefetchContainer(
           color: $color
           keyword: $keyword
           page: $page
-        ) {
+        ) @principalField {
           ...SearchResultsArtworkGrid_filtered_artworks
         }
       }

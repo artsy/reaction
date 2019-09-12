@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { SearchApp_viewer$ref } from "./SearchApp_viewer.graphql";
-export type routes_SearchBarTopLevelQueryVariables = {
+export type routes_SearchResultsTopLevelQueryVariables = {
     readonly term: string;
 };
-export type routes_SearchBarTopLevelQueryResponse = {
+export type routes_SearchResultsTopLevelQueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": SearchApp_viewer$ref;
     }) | null;
 };
-export type routes_SearchBarTopLevelQuery = {
-    readonly response: routes_SearchBarTopLevelQueryResponse;
-    readonly variables: routes_SearchBarTopLevelQueryVariables;
+export type routes_SearchResultsTopLevelQuery = {
+    readonly response: routes_SearchResultsTopLevelQueryResponse;
+    readonly variables: routes_SearchResultsTopLevelQueryVariables;
 };
 
 
 
 /*
-query routes_SearchBarTopLevelQuery(
+query routes_SearchResultsTopLevelQuery(
   $term: String!
 ) {
   viewer {
@@ -90,13 +90,13 @@ v1 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_SearchBarTopLevelQuery",
+  "name": "routes_SearchResultsTopLevelQuery",
   "id": null,
-  "text": "query routes_SearchBarTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n        __id\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    __id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
+  "text": "query routes_SearchResultsTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n        __id\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    __id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_SearchBarTopLevelQuery",
+    "name": "routes_SearchResultsTopLevelQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -128,7 +128,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_SearchBarTopLevelQuery",
+    "name": "routes_SearchResultsTopLevelQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -339,5 +339,5 @@ return {
   }
 };
 })();
-(node as any).hash = '3b024d92fcba431a3667ed0d990cbbaa';
+(node as any).hash = '6f3892041bb97db5f3ad7fb947d804bc';
 export default node;
