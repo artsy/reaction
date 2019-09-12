@@ -1,3 +1,15 @@
+# v18.0.1 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Handle caption color on static images in expanded mode in mobile [#2804](https://github.com/artsy/reaction/pull/2804) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.0.0 (Wed Sep 11 2019)
 
 #### 💥  Breaking Change

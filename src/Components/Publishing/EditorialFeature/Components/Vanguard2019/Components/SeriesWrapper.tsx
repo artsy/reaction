@@ -1,5 +1,6 @@
 import { Box, color, Flex, Sans, Serif } from "@artsy/palette"
 import { Share } from "Components/Publishing/Byline/Share"
+import { VanguardCredits } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardCredits"
 import { VanguardVideoHeader } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VideoHeader"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
@@ -75,6 +76,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             onSlideshowStateChange={onSlideshowStateChange}
           />
         ))}
+      {isMobile && <VanguardCredits isMobile={isMobile} />}
     </Box>
   )
 }

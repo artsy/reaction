@@ -1,5 +1,6 @@
 import { Box, color, Flex, media, Sans, Serif } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
+import { VanguardCredits } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardCredits"
 import { Text } from "Components/Publishing/Sections/Text"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
@@ -9,7 +10,9 @@ import { VanguardVideoHeader } from "./VideoHeader"
 
 export const VanguardIntroduction: React.SFC<{
   article: ArticleData
+  isMobile: boolean
 }> = props => {
+  const { isMobile } = props
   const { description } = props.article.series
   const { hero_section } = props.article
   const url = ((hero_section && hero_section.url) || "") as string
@@ -53,17 +56,7 @@ export const VanguardIntroduction: React.SFC<{
 
             <Byline {...props} />
 
-            <Box textAlign="center" pt={50}>
-              <Sans size="3t" weight="medium">
-                Video by Alex John Beck
-              </Sans>
-              <Sans size="3t" weight="medium">
-                Video Editing by Nate DeYoung
-              </Sans>
-              <Sans size="3t" weight="medium">
-                Interaction Design by Wax Studios
-              </Sans>
-            </Box>
+            {!isMobile && <VanguardCredits isMobile={isMobile} />}
           </Flex>
 
           <Box pb={12}>
