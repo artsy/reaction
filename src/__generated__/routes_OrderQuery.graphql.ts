@@ -59,7 +59,7 @@ query routes_OrderQuery(
     name
     __id
   }
-  order: commerceOrder(id: $orderID) {
+  order: commerceOrder(id: $orderID) @principalField {
     __typename
     id
     mode
@@ -323,7 +323,7 @@ return {
   "operationKind": "query",
   "name": "routes_OrderQuery",
   "id": null,
-  "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    __id\n  }\n  order: commerceOrder(id: $orderID) {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n            is_acquireable\n            is_offerable\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
+  "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    __id\n  }\n  order: commerceOrder(id: $orderID) @principalField {\n    __typename\n    id\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      lastOffer {\n        id\n        createdAt\n        __id: id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            id\n            __id\n            is_acquireable\n            is_offerable\n          }\n          __id: id\n        }\n      }\n    }\n    creditCard {\n      id\n      __id\n    }\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -386,5 +386,5 @@ return {
   }
 };
 })();
-(node as any).hash = '38d8dd80495cf9b352f5b040d05e4fee';
+(node as any).hash = '9249b465ae12de4e4212d5f0f2062ac1';
 export default node;

@@ -17,7 +17,7 @@ export type collectRoutes_MarketingCollectionsAppQuery = {
 
 /*
 query collectRoutes_MarketingCollectionsAppQuery {
-  categories: marketingCategories {
+  categories: marketingCategories @principalField {
     ...Collections_categories
   }
 }
@@ -38,7 +38,7 @@ const node: ConcreteRequest = {
   "operationKind": "query",
   "name": "collectRoutes_MarketingCollectionsAppQuery",
   "id": null,
-  "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
+  "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -130,5 +130,5 @@ const node: ConcreteRequest = {
     ]
   }
 };
-(node as any).hash = '033d007f9a2365748adae65555d37147';
+(node as any).hash = '81db5fa0b5f99948b02522c13d2f9278';
 export default node;

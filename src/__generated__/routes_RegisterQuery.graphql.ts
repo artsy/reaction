@@ -34,7 +34,7 @@ export type routes_RegisterQuery = {
 query routes_RegisterQuery(
   $saleID: String!
 ) {
-  sale(id: $saleID) {
+  sale(id: $saleID) @principalField {
     id
     is_auction
     is_registration_closed
@@ -157,7 +157,7 @@ return {
   "operationKind": "query",
   "name": "routes_RegisterQuery",
   "id": null,
-  "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) {\n    id\n    is_auction\n    is_registration_closed\n    is_preview\n    is_open\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    ...Register_sale\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    ...Register_me\n    __id\n  }\n}\n\nfragment Register_sale on Sale {\n  id\n  _id\n  status\n  __id\n}\n\nfragment Register_me on Me {\n  id\n  __id\n}\n",
+  "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) @principalField {\n    id\n    is_auction\n    is_registration_closed\n    is_preview\n    is_open\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    ...Register_sale\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    ...Register_me\n    __id\n  }\n}\n\nfragment Register_sale on Sale {\n  id\n  _id\n  status\n  __id\n}\n\nfragment Register_me on Me {\n  id\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -264,5 +264,5 @@ return {
   }
 };
 })();
-(node as any).hash = '5e90e1e8033ec046e4308a44cd338207';
+(node as any).hash = '8d974f73f8bdb31b5616a8c45ce626be';
 export default node;

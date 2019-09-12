@@ -167,7 +167,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
           last: $last
           page: $page
           entities: [ARTIST]
-        ) {
+        ) @principalField {
           pageInfo {
             hasNextPage
             endCursor

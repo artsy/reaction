@@ -64,7 +64,7 @@ export const routes: RouteConfig[] = [
     path: "/search",
     Component: SearchApp,
     query: graphql`
-      query routes_SearchBarTopLevelQuery($term: String!) {
+      query routes_SearchResultsTopLevelQuery($term: String!) {
         viewer {
           ...SearchApp_viewer @arguments(term: $term)
         }
