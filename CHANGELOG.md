@@ -1,3 +1,22 @@
+# v18.0.5 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Wire up new <ArtworkFilter> into /collection/id [#2801](https://github.com/artsy/reaction/pull/2801) ([@damassi](https://github.com/damassi))
+- Revert "Update dep @artsy/palette from 4.17.3 to v4.17.4" [#2812](https://github.com/artsy/reaction/pull/2812) ([@damassi](https://github.com/damassi))
+- Vanguard qa [#2810](https://github.com/artsy/reaction/pull/2810) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.3 to v4.17.4 [#2808](https://github.com/artsy/reaction/pull/2808) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v18.0.4 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
