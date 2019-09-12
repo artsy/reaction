@@ -1,3 +1,17 @@
+# v18.0.3 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Add vscode-apollo-relay [#2802](https://github.com/artsy/reaction/pull/2802) ([@alloy](https://github.com/alloy))
+- Increase z-indices to enable navigation by clicking on nav bar logos [#2807](https://github.com/artsy/reaction/pull/2807) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.0.2 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
