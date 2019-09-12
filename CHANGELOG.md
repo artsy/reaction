@@ -1,3 +1,15 @@
+# v18.0.6 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- [principalField] Add directive to more apps [#2813](https://github.com/artsy/reaction/pull/2813) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v18.0.5 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
