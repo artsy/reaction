@@ -1,8 +1,8 @@
 import { Box, Separator } from "@artsy/palette"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
-// import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "Apps/Collect2/Components/Collection/CollectionFilterContainer"
-import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Components/Collection/Header"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+// import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "Apps/Collect2/Components/Collection/CollectionFilterContainer"
+import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
@@ -47,7 +47,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   render() {
-    console.warn(this.props, "there")
     const { viewer, location, relay, user } = this.props
     const { title, slug, headerImage, description, artworks } = viewer
     const showCollectionHubs =

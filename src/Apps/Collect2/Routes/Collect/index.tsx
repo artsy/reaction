@@ -14,7 +14,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 
-import { getMetadataForMedium } from "./CollectMediumMetadata"
+import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"

@@ -1,5 +1,5 @@
 import { EntityHeader, ReadMore, space } from "@artsy/palette"
-import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect2/Components/Collection/Header/DefaultHeader"
+import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect2/Routes/Collection/Components/Header/DefaultHeader"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { unica } from "Assets/Fonts"
 import { filter, take } from "lodash"
