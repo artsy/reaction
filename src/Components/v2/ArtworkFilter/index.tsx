@@ -32,6 +32,7 @@ import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet
 import { ArtworkFilters } from "./ArtworkFilters"
 
 import { Box, Button, FilterIcon, Flex, Spacer } from "@artsy/palette"
+import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -64,17 +65,16 @@ export const ArtworkFilter: React.FC<
   )
 }
 
-const BaseArtworkFilter: React.FC<{
+export const BaseArtworkFilter: React.FC<{
   relay: RelayRefetchProp
-  viewer: ArtworkFilter_viewer
-}> = ({ relay, viewer }) => {
+  relayVariables?: object
+  viewer: ArtworkFilter_viewer | Collection_viewer
+}> = ({ relay, viewer, relayVariables = {} }) => {
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
   const filterContext = useArtworkFilterContext()
   const previousFilters = usePrevious(filterContext.filters)
-
-  // const isLoading = isRouterFetching || isFetching
 
   /**
    * Check to see if the mobile action sheet is present and prevent scrolling
@@ -96,30 +96,36 @@ const BaseArtworkFilter: React.FC<{
    * and trigger a reload.
    */
   useDeepCompareEffect(() => {
+    fetchResults()
+
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
         const previousFilter = previousFilters[filterKey]
         const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
 
         if (filtersHaveUpdated) {
-          fetchResults(filterKey)
+          tracking.trackEvent({
+            action_type:
+              AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
+            current: filterContext.filters,
+            changed: {
+              [filterKey]: filterContext.filters[filterKey],
+            },
+          })
         }
       }
     )
   }, [filterContext.filters])
 
-  function fetchResults(filterKey) {
-    tracking.trackEvent({
-      action_type: AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-      current: filterContext.filters,
-      changed: {
-        [filterKey]: filterContext.filters[filterKey],
-      },
-    })
-
+  function fetchResults() {
     toggleFetching(true)
 
-    relay.refetch(filterContext.filters, null, error => {
+    const relayRefetchVariables = {
+      ...filterContext.filters,
+      ...relayVariables,
+    }
+
+    relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
         console.error(error)
       }
@@ -314,7 +320,7 @@ export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
         variables={{
           keyword,
         }}
-        render={renderWithLoadProgress(ArtworkFilterRefetchContainer)}
+        render={renderWithLoadProgress(ArtworkFilterRefetchContainer as any)} // FIXME: Find way to support union types here
       />
     </ArtworkFilterContextProvider>
   )

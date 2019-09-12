@@ -1,8 +1,8 @@
 import { Box, Separator } from "@artsy/palette"
-import { Collection_collection } from "__generated__/Collection_collection.graphql"
-import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "Apps/Collect2/Components/Collection/CollectionFilterContainer"
-import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Components/Collection/Header"
-import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
+import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
+import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -10,23 +10,31 @@ import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
+import { Location } from "found"
 import { HttpError } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
+import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
+import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import { TrackingProp } from "react-tracking"
+
 interface CollectionAppProps extends SystemContextProps {
-  collection: Collection_collection
+  viewer: Collection_viewer
+  location: Location
+  relay: RelayRefetchProp
+  tracking: TrackingProp
 }
 
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
-  context_page_owner_slug: props.collection.slug,
-  context_page_owner_id: props.collection.id,
+  context_page_owner_slug: props.viewer.slug,
+  context_page_owner_id: props.viewer.id,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
@@ -36,20 +44,21 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   UNSAFE_componentWillMount() {
-    this.collectionNotFound(this.props.collection)
+    this.collectionNotFound(this.props.viewer)
   }
 
   render() {
-    const { collection, user } = this.props
-    const { title, slug, headerImage, description, artworks } = collection
-    const showCollectionHubs =
-      collection.linkedCollections.length > 0 && userIsAdmin(user)
-
+    const { viewer, location, relay, user } = this.props
+    const { title, slug, headerImage, description, artworks } = viewer
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
+
     const metadataDescription = description
       ? `Buy, bid, and inquire on ${title} on Artsy. ` +
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
+
+    const showCollectionHubs =
+      viewer.linkedCollections.length > 0 && userIsAdmin(user)
 
     return (
       <AppContainer>
@@ -68,24 +77,49 @@ export class CollectionApp extends Component<CollectionAppProps> {
             ]}
           />
           <SeoProductsForArtworks artworks={artworks} />
-
-          <CollectionHeader
-            collection={collection}
-            artworks={artworks as any}
-          />
+          <CollectionHeader collection={viewer} artworks={artworks as any} />
           {showCollectionHubs && (
-            <CollectionsHubRails
-              linkedCollections={collection.linkedCollections}
-            />
+            <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
           )}
           <Box>
-            <CollectionFilterContainer collection={collection} />
+            <ArtworkFilterContextProvider
+              filters={location.query as any}
+              sortOptions={[
+                { value: "-decayed_merch", text: "Default" },
+                { value: "-partner_updated_at", text: "Recently updated" },
+                { value: "-published_at", text: "Recently added" },
+                { value: "-year", text: "Artwork year (desc.)" },
+                { value: "year", text: "Artwork year (asc.)" },
+              ]}
+              onChange={filters => {
+                const url = buildUrlForCollectionApp(filters)
+
+                if (typeof window !== "undefined") {
+                  window.history.replaceState({}, "", url)
+                }
+              }}
+              onFilterClick={(key, value, filterState) => {
+                this.props.tracking.trackEvent({
+                  action_type: Schema.ActionType.CommercialFilterParamsChanged,
+                  changed: { [key]: value },
+                  current: filterState,
+                })
+              }}
+            >
+              <ArtworkFilter
+                relay={relay}
+                viewer={viewer}
+                relayVariables={{
+                  slug: viewer.slug,
+                }}
+              />
+            </ArtworkFilterContextProvider>
           </Box>
           <Separator mt={6} mb={3} />
           <Box mt="3">
             <RelatedCollectionsRail
-              collections={collection.relatedCollections}
-              title={collection.title}
+              collections={viewer.relatedCollections}
+              title={viewer.title}
             />
           </Box>
         </FrameWithRecentlyViewed>
@@ -94,76 +128,127 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 }
 
-export const CollectionAppFragmentContainer = createFragmentContainer(
+export const CollectionAppQuery = graphql`
+  query CollectionRefetch2Query(
+    $acquireable: Boolean
+    $at_auction: Boolean
+    $color: String
+    $for_sale: Boolean
+    $height: String
+    $inquireable_only: Boolean
+    $major_periods: [String]
+    $medium: String
+    $offerable: Boolean
+    $page: Int
+    $price_range: String
+    $sort: String
+    $slug: String!
+    $width: String
+  ) {
+    viewer: marketingCollection(slug: $slug) {
+      ...Collection_viewer
+        @arguments(
+          acquireable: $acquireable
+          # aggregations: $aggregations
+          at_auction: $at_auction
+          color: $color
+          for_sale: $for_sale
+          height: $height
+          inquireable_only: $inquireable_only
+          major_periods: $major_periods
+          medium: $medium
+          offerable: $offerable
+          page: $page
+          price_range: $price_range
+          sort: $sort
+          width: $width
+        )
+    }
+  }
+`
+
+export const CollectionRefetchContainer = createRefetchContainer(
   withSystemContext(CollectionApp),
   {
-    collection: graphql`
-      fragment Collection_collection on MarketingCollection
+    viewer: graphql`
+      fragment Collection_viewer on MarketingCollection
         @argumentDefinitions(
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
-          }
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
-          at_auction: { type: "Boolean" }
           acquireable: { type: "Boolean" }
-          offerable: { type: "Boolean" }
-          inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-partner_updated_at" }
-          price_range: { type: "String" }
-          height: { type: "String" }
-          width: { type: "String" }
+          at_auction: { type: "Boolean" }
           color: { type: "String" }
+          for_sale: { type: "Boolean" }
+          height: { type: "String" }
+          inquireable_only: { type: "Boolean" }
+          major_periods: { type: "[String]" }
+          medium: { type: "String", defaultValue: "*" }
+          offerable: { type: "Boolean" }
           page: { type: "Int" }
+          price_range: { type: "String" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+          width: { type: "String" }
         ) {
+        category
+        credit
+        description
+        headerImage
         id
         slug
         title
-        description
-        headerImage
-        category
-        credit
+
         query {
           artist_ids
           artist_id
           gene_id
         }
+
         relatedCollections {
           ...RelatedCollectionsRail_collections
         }
+
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
         }
+
         artworks(
-          aggregations: $aggregations
+          aggregations: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           include_medium_filter_in_aggregation: true
-          sort: "-decayed_merch"
           size: 12
+          sort: "-decayed_merch"
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks
+
+          aggregations {
+            slice
+            counts {
+              id
+              name
+              count
+            }
+          }
         }
 
-        ...CollectionFilterContainer_collection
-          @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            for_sale: $for_sale
-            sort: $sort
-            acquireable: $acquireable
-            offerable: $offerable
-            at_auction: $at_auction
-            inquireable_only: $inquireable_only
-            price_range: $price_range
-            height: $height
-            width: $width
-            color: $color
-            page: $page
-          )
+        filtered_artworks: artworks(
+          acquireable: $acquireable
+          aggregations: [TOTAL]
+          at_auction: $at_auction
+          color: $color
+          for_sale: $for_sale
+          height: $height
+          inquireable_only: $inquireable_only
+          major_periods: $major_periods
+          medium: $medium
+          offerable: $offerable
+          page: $page
+          price_range: $price_range
+          size: 0
+          sort: $sort
+          width: $width
+        ) {
+          ...ArtworkFilterArtworkGrid2_filtered_artworks
+        }
       }
     `,
-  }
+  },
+  CollectionAppQuery
 )

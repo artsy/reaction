@@ -5,7 +5,7 @@ import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
-import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 
@@ -14,7 +14,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 
-import { getMetadataForMedium } from "./CollectMediumMetadata"
+import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingCollections } from "__generated__/Collect_marketingCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
@@ -119,7 +119,6 @@ export const CollectApp = track({
                *
                * See below example as an illustration:
                *
-
                 const newLocation = router.createLocation(url)
 
                 router.replace({
