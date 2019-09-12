@@ -1,3 +1,15 @@
+# v18.0.2 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Move video credits to end of series on mobile [#2803](https://github.com/artsy/reaction/pull/2803) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.0.1 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
