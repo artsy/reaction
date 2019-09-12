@@ -13,7 +13,7 @@ export const VanguardFrameText: React.SFC<VanguardFrameTextProps> = props => {
   return (
     <>
       <Media at="xs">
-        <MobileFrame>
+        <MobileFrame isSlideOpen={isSlideOpen}>
           <MobileFrameText size="8">The Artsy</MobileFrameText>
           <MobileFrameText size="8" isUppercase>
             Vanguard
@@ -73,7 +73,9 @@ const FrameTextRight = styled(FrameText)<{ isSlideOpen?: boolean }>`
   }
 `
 
-const MobileFrame = styled(Flex)`
+const MobileFrame = styled(Flex)<{
+  isSlideOpen?: boolean
+}>`
   position: fixed;
   flex-direction: column;
   top: 65px;
@@ -81,10 +83,12 @@ const MobileFrame = styled(Flex)`
   height: calc(100vh - 150px);
   width: 60px;
   justify-content: space-between;
-  z-index: 2;
+  z-index: ${p => (p.isSlideOpen ? 0 : 2)};
 `
 
-const MobileFrameText = styled(Sans)<{ isUppercase?: boolean }>`
+const MobileFrameText = styled(Sans)<{
+  isUppercase?: boolean
+}>`
   transform: rotate(90deg);
   white-space: nowrap;
   padding: 0 10px;
