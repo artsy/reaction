@@ -1,5 +1,6 @@
 import { routes_RegisterQueryResponse } from "__generated__/routes_RegisterQuery.graphql"
 import { ErrorPage } from "Components/ErrorPage"
+import { AuctionFAQ } from "Components/v2/AuctionFAQ"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -17,6 +18,10 @@ type Sale = routes_RegisterQueryResponse["sale"]
 type Me = routes_RegisterQueryResponse["me"]
 
 export const routes: RouteConfig[] = [
+  {
+    path: "/auction-faq",
+    Component: AuctionFAQ,
+  },
   {
     path: "/auction-registration(2)?/:saleID",
     Component: RegisterRouteFragmentContainer,
