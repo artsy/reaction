@@ -86,7 +86,7 @@ exports[`renders properly 1`] = `
 }
 
 .c0 {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
