@@ -1,12 +1,15 @@
 import { RouteConfig } from "found"
-import React from "react"
 import { graphql } from "react-relay"
 
-import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
-import { buildUrlForCollectionApp } from "./Utils/urlBuilder"
+// import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
+// import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
 
 import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
-import { CollectionAppFragmentContainer as CollectionApp } from "./Routes/Collection"
+import {
+  // CollectionAppFragmentContainer as CollectionApp,
+  CollectionAppQuery,
+  CollectionRefetchContainer as CollectionApp,
+} from "./Routes/Collection"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 export const collectRoutes: RouteConfig[] = [
@@ -82,54 +85,10 @@ export const collectRoutes: RouteConfig[] = [
   },
   {
     path: "/collection/:slug",
-    Component: props => {
-      return (
-        <AnalyticsProvider
-          {...props}
-          Component={CollectionApp}
-          urlBuilder={buildUrlForCollectionApp}
-        />
-      )
-    },
+    Component: CollectionApp,
     prepareVariables: initializeVariablesWithFilterState,
     fetchIndicator: "overlay",
-    query: graphql`
-      query collectRoutes_MarketingCollectionApp2Query(
-        $slug: String!
-        $medium: String
-        $major_periods: [String]
-        $for_sale: Boolean
-        $sort: String
-        $at_auction: Boolean
-        $acquireable: Boolean
-        $offerable: Boolean
-        $inquireable_only: Boolean
-        $price_range: String
-        $height: String
-        $width: String
-        $color: String
-        $page: Int
-      ) {
-        collection: marketingCollection(slug: $slug) {
-          ...Collection_collection
-            @arguments(
-              medium: $medium
-              major_periods: $major_periods
-              for_sale: $for_sale
-              sort: $sort
-              at_auction: $at_auction
-              acquireable: $acquireable
-              offerable: $offerable
-              inquireable_only: $inquireable_only
-              price_range: $price_range
-              height: $height
-              width: $width
-              color: $color
-              page: $page
-            )
-        }
-      }
-    `,
+    query: CollectionAppQuery,
   },
 ]
 

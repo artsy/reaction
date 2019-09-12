@@ -105,12 +105,6 @@ export const ArtworkFilterContextProvider: React.FC<
     ...filters,
   }
 
-  // const [artworkFilterState, dispatch] = useURLBarReducer(
-  //   artworkFilterReducer,
-  //   initialState,
-  //   onChange
-  // )
-
   const [artworkFilterState, dispatch] = useReducer(
     artworkFilterReducer,
     initialState

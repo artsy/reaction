@@ -1,21 +1,22 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { CollectionFilterContainer_collection$ref } from "./CollectionFilterContainer_collection.graphql";
+import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
 import { CollectionsHubRails_linkedCollections$ref } from "./CollectionsHubRails_linkedCollections.graphql";
 import { Header_artworks$ref } from "./Header_artworks.graphql";
 import { RelatedCollectionsRail_collections$ref } from "./RelatedCollectionsRail_collections.graphql";
 import { SeoProductsForArtworks_artworks$ref } from "./SeoProductsForArtworks_artworks.graphql";
-declare const _Collection_collection$ref: unique symbol;
-export type Collection_collection$ref = typeof _Collection_collection$ref;
-export type Collection_collection = {
+export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+declare const _Collection_viewer$ref: unique symbol;
+export type Collection_viewer$ref = typeof _Collection_viewer$ref;
+export type Collection_viewer = {
+    readonly category: string;
+    readonly credit: string | null;
+    readonly description: string | null;
+    readonly headerImage: string | null;
     readonly id: string;
     readonly slug: string;
     readonly title: string;
-    readonly description: string | null;
-    readonly headerImage: string | null;
-    readonly category: string;
-    readonly credit: string | null;
     readonly query: {
         readonly artist_ids: ReadonlyArray<string> | null;
         readonly artist_id: string | null;
@@ -28,10 +29,20 @@ export type Collection_collection = {
         readonly " $fragmentRefs": CollectionsHubRails_linkedCollections$ref;
     }>;
     readonly artworks: ({
+        readonly aggregations: ReadonlyArray<({
+            readonly slice: ArtworkAggregation | null;
+            readonly counts: ReadonlyArray<({
+                readonly id: string;
+                readonly name: string | null;
+                readonly count: number | null;
+            }) | null> | null;
+        }) | null> | null;
         readonly " $fragmentRefs": Header_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
-    readonly " $fragmentRefs": CollectionFilterContainer_collection$ref;
-    readonly " $refType": Collection_collection$ref;
+    readonly filtered_artworks: ({
+        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+    }) | null;
+    readonly " $refType": Collection_viewer$ref;
 };
 
 
@@ -39,17 +50,37 @@ export type Collection_collection = {
 const node: ConcreteFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
   "alias": "__id",
   "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
-  "name": "Collection_collection",
+  "name": "Collection_viewer",
   "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "acquireable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
     {
       "kind": "LocalArgument",
       "name": "aggregations",
@@ -63,74 +94,8 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "medium",
-      "type": "String",
-      "defaultValue": "*"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "major_periods",
-      "type": "[String]",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "partner_id",
-      "type": "ID",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "for_sale",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
       "name": "at_auction",
       "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "acquireable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "offerable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "inquireable_only",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "sort",
-      "type": "String",
-      "defaultValue": "-partner_updated_at"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "price_range",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "height",
-      "type": "String",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "width",
-      "type": "String",
       "defaultValue": null
     },
     {
@@ -141,8 +106,68 @@ return {
     },
     {
       "kind": "LocalArgument",
+      "name": "for_sale",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "height",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "inquireable_only",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "major_periods",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "medium",
+      "type": "String",
+      "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "offerable",
+      "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
       "name": "page",
       "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "partner_id",
+      "type": "ID",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "price_range",
+      "type": "String",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "width",
+      "type": "String",
       "defaultValue": null
     }
   ],
@@ -150,21 +175,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "credit",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "title",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "category",
       "args": null,
       "storageKey": null
     },
@@ -182,17 +200,18 @@ return {
       "args": null,
       "storageKey": null
     },
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "category",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "credit",
       "args": null,
       "storageKey": null
     },
@@ -226,7 +245,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -243,7 +262,7 @@ return {
           "name": "RelatedCollectionsRail_collections",
           "args": null
         },
-        v0
+        v1
       ]
     },
     {
@@ -307,101 +326,166 @@ return {
           "args": null
         },
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "__id",
+          "name": "aggregations",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
-        }
+          "concreteType": "ArtworksAggregationResults",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "slice",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "counts",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "AggregationCount",
+              "plural": true,
+              "selections": [
+                v0,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "name",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "count",
+                  "args": null,
+                  "storageKey": null
+                },
+                v2
+              ]
+            }
+          ]
+        },
+        v2
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "CollectionFilterContainer_collection",
+      "kind": "LinkedField",
+      "alias": "filtered_artworks",
+      "name": "artworks",
+      "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "acquireable",
           "variableName": "acquireable",
-          "type": null
+          "type": "Boolean"
+        },
+        {
+          "kind": "Literal",
+          "name": "aggregations",
+          "value": [
+            "TOTAL"
+          ],
+          "type": "[ArtworkAggregation]"
         },
         {
           "kind": "Variable",
           "name": "at_auction",
           "variableName": "at_auction",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "color",
           "variableName": "color",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "for_sale",
           "variableName": "for_sale",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "height",
           "variableName": "height",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "inquireable_only",
           "variableName": "inquireable_only",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "major_periods",
           "variableName": "major_periods",
-          "type": null
+          "type": "[String]"
         },
         {
           "kind": "Variable",
           "name": "medium",
           "variableName": "medium",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "offerable",
           "variableName": "offerable",
-          "type": null
+          "type": "Boolean"
         },
         {
           "kind": "Variable",
           "name": "page",
           "variableName": "page",
-          "type": null
+          "type": "Int"
         },
         {
           "kind": "Variable",
           "name": "price_range",
           "variableName": "price_range",
-          "type": null
+          "type": "String"
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 0,
+          "type": "Int"
         },
         {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort",
-          "type": null
+          "type": "String"
         },
         {
           "kind": "Variable",
           "name": "width",
           "variableName": "width",
-          "type": null
+          "type": "String"
         }
+      ],
+      "concreteType": "FilterArtworks",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+          "args": null
+        },
+        v2
       ]
     },
-    v0
+    v1
   ]
 };
 })();
-(node as any).hash = '2a25a67377e2d818c7c16433114def68';
+(node as any).hash = 'b7dd38a3e5ad007e338d304c95eb3463';
 export default node;
