@@ -220,6 +220,10 @@ export enum Subject {
   BNMOProvideShipping = "provide shipping address",
   BNMOArrangePickup = "arrange for pickup",
   BNMOUseShippingAddress = "use shipping address",
+  BNMOAddBankAccount = "addBankAccount",
+  BNMOHelpEmail = "orders@artsy.net",
+  BNMOBankTransferNotifcationCheckbox = "notifyCheckboxChecked",
+  BNMOBankTransferModalDismissed = "modalDismissed",
 
   AuctionConditionsOfSale = "conditions of sale",
   AuctionFAQ = "auction faq",
@@ -334,6 +338,11 @@ export enum ContextModule {
    * Artist Series rail in the collection hub
    */
   ArtistCollectionsRail = "ArtistCollectionsRail",
+
+  /**
+   * NSO 'bank transfer experiment
+   */
+  BankTransferExperiment = "BankTransferExperiment",
 }
 
 export enum Flow {
@@ -365,4 +374,7 @@ export enum Type {
   Tab = "Tab",
   Thumbnail = "thumbnail",
   Chart = "Chart",
+  RadioButton = "radio button",
+  EmailLink = "email link",
+  ModalDismissal = "modal dismissal",
 }
