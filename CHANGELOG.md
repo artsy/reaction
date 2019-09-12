@@ -1,3 +1,17 @@
+# v18.0.4 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard qa [#2805](https://github.com/artsy/reaction/pull/2805) ([@eessex](https://github.com/eessex))
+- Remove side frame text from slide show in mobile [#2806](https://github.com/artsy/reaction/pull/2806) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.0.3 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
