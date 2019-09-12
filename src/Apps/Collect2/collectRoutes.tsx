@@ -1,16 +1,13 @@
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
 
-// import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
-// import AnalyticsProvider from "./Routes/Collect/AnalyticsProvider"
-
 import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
+import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
+
 import {
-  // CollectionAppFragmentContainer as CollectionApp,
   CollectionAppQuery,
   CollectionRefetchContainer as CollectionApp,
 } from "./Routes/Collection"
-import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
 export const collectRoutes: RouteConfig[] = [
   {

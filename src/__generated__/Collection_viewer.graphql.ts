@@ -83,17 +83,6 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "aggregations",
-      "type": "[ArtworkAggregation]",
-      "defaultValue": [
-        "MERCHANDISABLE_ARTISTS",
-        "MEDIUM",
-        "MAJOR_PERIOD",
-        "TOTAL"
-      ]
-    },
-    {
-      "kind": "LocalArgument",
       "name": "at_auction",
       "type": "Boolean",
       "defaultValue": null
@@ -144,12 +133,6 @@ return {
       "kind": "LocalArgument",
       "name": "page",
       "type": "Int",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "partner_id",
-      "type": "ID",
       "defaultValue": null
     },
     {
@@ -285,12 +268,17 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "artworks",
-      "storageKey": null,
+      "storageKey": "artworks(aggregations:[\"MERCHANDISABLE_ARTISTS\",\"MEDIUM\",\"MAJOR_PERIOD\",\"TOTAL\"],include_medium_filter_in_aggregation:true,size:12,sort:\"-decayed_merch\")",
       "args": [
         {
-          "kind": "Variable",
+          "kind": "Literal",
           "name": "aggregations",
-          "variableName": "aggregations",
+          "value": [
+            "MERCHANDISABLE_ARTISTS",
+            "MEDIUM",
+            "MAJOR_PERIOD",
+            "TOTAL"
+          ],
           "type": "[ArtworkAggregation]"
         },
         {
@@ -487,5 +475,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b7dd38a3e5ad007e338d304c95eb3463';
+(node as any).hash = '5fe86066af1eb1903c95e150dd3a6e4f';
 export default node;

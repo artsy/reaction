@@ -1,7 +1,6 @@
 import { Box, Separator } from "@artsy/palette"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
-import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
-// import { CollectionFilterFragmentContainer as CollectionFilterContainer } from "Apps/Collect2/Components/Collection/CollectionFilterContainer"
+import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -21,13 +20,15 @@ import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
-import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
+import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
   viewer: Collection_viewer
   location: Location
   relay: RelayRefetchProp
+  tracking: TrackingProp
 }
 
 @track<CollectionAppProps>(props => ({
@@ -49,14 +50,15 @@ export class CollectionApp extends Component<CollectionAppProps> {
   render() {
     const { viewer, location, relay, user } = this.props
     const { title, slug, headerImage, description, artworks } = viewer
-    const showCollectionHubs =
-      viewer.linkedCollections.length > 0 && userIsAdmin(user)
-
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
+
     const metadataDescription = description
       ? `Buy, bid, and inquire on ${title} on Artsy. ` +
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
+
+    const showCollectionHubs =
+      viewer.linkedCollections.length > 0 && userIsAdmin(user)
 
     return (
       <AppContainer>
@@ -97,15 +99,14 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 }
               }}
               onFilterClick={(key, value, filterState) => {
-                // FIXME: Implement tracking
-                // trackEvent({
-                //   action_type: Schema.ActionType.CommercialFilterParamsChanged,
-                //   changed: { [key]: value },
-                //   current: filterState,
-                // })
+                this.props.tracking.trackEvent({
+                  action_type: Schema.ActionType.CommercialFilterParamsChanged,
+                  changed: { [key]: value },
+                  current: filterState,
+                })
               }}
             >
-              <BaseArtworkFilter
+              <ArtworkFilter
                 relay={relay}
                 viewer={viewer}
                 relayVariables={{
@@ -130,7 +131,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
 export const CollectionAppQuery = graphql`
   query CollectionRefetch2Query(
     $acquireable: Boolean
-    # $aggregations: [ArtworkAggregation]
     $at_auction: Boolean
     $color: String
     $for_sale: Boolean
@@ -140,7 +140,6 @@ export const CollectionAppQuery = graphql`
     $medium: String
     $offerable: Boolean
     $page: Int
-    # $partner_id: ID
     $price_range: String
     $sort: String
     $slug: String!
@@ -160,7 +159,6 @@ export const CollectionAppQuery = graphql`
           medium: $medium
           offerable: $offerable
           page: $page
-          # partner_id: $partner_id
           price_range: $price_range
           sort: $sort
           width: $width
@@ -176,10 +174,6 @@ export const CollectionRefetchContainer = createRefetchContainer(
       fragment Collection_viewer on MarketingCollection
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
-          }
           at_auction: { type: "Boolean" }
           color: { type: "String" }
           for_sale: { type: "Boolean" }
@@ -189,7 +183,6 @@ export const CollectionRefetchContainer = createRefetchContainer(
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
           price_range: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
@@ -211,11 +204,13 @@ export const CollectionRefetchContainer = createRefetchContainer(
         relatedCollections {
           ...RelatedCollectionsRail_collections
         }
+
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
         }
+
         artworks(
-          aggregations: $aggregations
+          aggregations: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
           include_medium_filter_in_aggregation: true
           size: 12
           sort: "-decayed_merch"
@@ -245,7 +240,6 @@ export const CollectionRefetchContainer = createRefetchContainer(
           medium: $medium
           offerable: $offerable
           page: $page
-          # partner_id: $partner_id
           price_range: $price_range
           size: 0
           sort: $sort

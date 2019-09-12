@@ -96,27 +96,28 @@ export const BaseArtworkFilter: React.FC<{
    * and trigger a reload.
    */
   useDeepCompareEffect(() => {
+    fetchResults()
+
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
         const previousFilter = previousFilters[filterKey]
         const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
 
         if (filtersHaveUpdated) {
-          fetchResults(filterKey)
+          tracking.trackEvent({
+            action_type:
+              AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
+            current: filterContext.filters,
+            changed: {
+              [filterKey]: filterContext.filters[filterKey],
+            },
+          })
         }
       }
     )
   }, [filterContext.filters])
 
-  function fetchResults(filterKey) {
-    tracking.trackEvent({
-      action_type: AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-      current: filterContext.filters,
-      changed: {
-        [filterKey]: filterContext.filters[filterKey],
-      },
-    })
-
+  function fetchResults() {
     toggleFetching(true)
 
     const relayRefetchVariables = {
@@ -319,7 +320,7 @@ export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
         variables={{
           keyword,
         }}
-        render={renderWithLoadProgress(ArtworkFilterRefetchContainer as any)}
+        render={renderWithLoadProgress(ArtworkFilterRefetchContainer as any)} // FIXME: Find way to support union types here
       />
     </ArtworkFilterContextProvider>
   )

@@ -5,7 +5,7 @@ import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
-import { SeoProductsForArtworks } from "Apps/Collect2/Components/Seo/SeoProductsForArtworks"
+import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 
@@ -119,7 +119,6 @@ export const CollectApp = track({
                *
                * See below example as an illustration:
                *
-
                 const newLocation = router.createLocation(url)
 
                 router.replace({
