@@ -42,8 +42,11 @@ export class ImageSetPreview extends React.PureComponent<ImageSetPreviewProps> {
     const slideshowIndex =
       fullscreenImages &&
       fullscreenImages.findIndex(img => {
-        return img.url === images[0].url
+        return img.type === "artwork"
+          ? img.image === images[0].image
+          : img.url === images[0].url
       })
+
     this.props.onViewFullscreen(slideshowIndex)
   }
 
