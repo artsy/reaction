@@ -171,6 +171,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c2 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1758,6 +1759,7 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c2 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

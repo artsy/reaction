@@ -140,6 +140,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1915,6 +1916,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
