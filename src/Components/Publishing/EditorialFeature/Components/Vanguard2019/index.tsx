@@ -88,7 +88,7 @@ export class Vanguard2019 extends React.Component<
         <VanguardFrameText isSlideOpen={isSlideOpen} />
 
         {/** header landing video & intro text */}
-        <VanguardIntroduction article={article} />
+        <VanguardIntroduction article={article} isMobile={isMobile} />
 
         {/** table of contents */}
         <VanguardTableOfContents
