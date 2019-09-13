@@ -67,7 +67,11 @@ export function BankTransferExperiment() {
   return (
     <Flex flexDirection="column">
       <Serif size="3">Bank Transfer</Serif>
-      <Flex flexDirection="column" onMouseEnter={onHoverOverRadio}>
+      <Flex
+        flexDirection="column"
+        onMouseEnter={onHoverOverRadio}
+        id="bank-transfer-hover-target"
+      >
         <BorderedRadio
           selected={isShowingModal}
           onSelect={onClickRadio}
