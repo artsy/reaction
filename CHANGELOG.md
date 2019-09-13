@@ -1,3 +1,20 @@
+# v18.0.10 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1476: If work can only ship domestically, the shipping form only displays the artwork's origin country [#2793](https://github.com/artsy/reaction/pull/2793) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.3 to v4.17.6 [#2819](https://github.com/artsy/reaction/pull/2819) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v18.0.9 (Fri Sep 13 2019)
 
 
