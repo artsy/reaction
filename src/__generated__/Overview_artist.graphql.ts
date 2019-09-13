@@ -2,7 +2,6 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
-import { ArtworkFilter_artist$ref } from "./ArtworkFilter_artist.graphql";
 import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
 import { Genes_artist$ref } from "./Genes_artist.graphql";
 import { MarketInsights_artist$ref } from "./MarketInsights_artist.graphql";
@@ -55,7 +54,7 @@ export type Overview_artist = {
     readonly insights: ReadonlyArray<({
         readonly type: string | null;
     }) | null> | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsights_artist$ref & SelectedCareerAchievements_artist$ref & Genes_artist$ref & ArtworkFilter_artist$ref;
+    readonly " $fragmentRefs": ArtistBio_bio$ref & CurrentEvent_artist$ref & MarketInsights_artist$ref & SelectedCareerAchievements_artist$ref & Genes_artist$ref;
     readonly " $refType": Overview_artist$ref;
 };
 
@@ -88,60 +87,6 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "medium",
-      "type": "String",
-      "defaultValue": "*"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "major_periods",
-      "type": "[String]",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "partner_id",
-      "type": "ID",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "for_sale",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "at_auction",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "acquireable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "offerable",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "inquireable_only",
-      "type": "Boolean",
-      "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "sort",
-      "type": "String",
-      "defaultValue": "-decayed_merch"
-    },
-    {
-      "kind": "LocalArgument",
       "name": "partner_category",
       "type": "[String]",
       "defaultValue": [
@@ -149,18 +94,6 @@ return {
         "top-established",
         "top-emerging"
       ]
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "price_range",
-      "type": "String",
-      "defaultValue": "*-*"
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "page",
-      "type": "Int",
-      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
@@ -196,84 +129,6 @@ return {
       "kind": "FragmentSpread",
       "name": "Genes_artist",
       "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkFilter_artist",
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "acquireable",
-          "variableName": "acquireable",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "at_auction",
-          "variableName": "at_auction",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "hasFilter",
-          "variableName": "hasFilter",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "medium",
-          "variableName": "medium",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "offerable",
-          "variableName": "offerable",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "page",
-          "variableName": "page",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": null
-        },
-        {
-          "kind": "Variable",
-          "name": "sort",
-          "variableName": "sort",
-          "type": null
-        }
-      ]
     },
     v0,
     {
@@ -563,5 +418,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7521309cf5bf0fd7f1b2e606d318b428';
+(node as any).hash = '4393de62cc69c1bb26641b6637b2e348';
 export default node;

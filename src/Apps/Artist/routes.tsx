@@ -1,13 +1,9 @@
-import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
 import {
-  FilterState,
   initialState,
   isDefaultFilter,
 } from "Apps/Artist/Routes/Overview/state"
 import { Redirect, RouteConfig } from "found"
-import React from "react"
 import { graphql } from "react-relay"
-import { Provider } from "unstated"
 import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
@@ -33,22 +29,6 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: OverviewRoute,
-        render: ({ props, Component }) => {
-          if (!props) {
-            return null
-          }
-
-          return (
-            <Provider inject={[new FilterState(props.location.query as any)]}>
-              <Component
-                artist={
-                  (props as any)
-                    .artist as routes_OverviewQueryRendererQueryResponse
-                }
-              />
-            </Provider>
-          )
-        },
         prepareVariables: (params, props) => {
           // FIXME: The initial render includes `location` in props, but subsequent
           // renders (such as tabbing back to this route in your browser) will not.
@@ -69,35 +49,46 @@ export const routes: RouteConfig[] = [
         },
         query: graphql`
           query routes_OverviewQueryRendererQuery(
-            $artistID: String!
-            $medium: String
-            $major_periods: [String]
-            $partner_id: ID
-            $for_sale: Boolean
-            $sort: String
-            $at_auction: Boolean
             $acquireable: Boolean
-            $offerable: Boolean
-            $inquireable_only: Boolean
-            $price_range: String
-            $page: Int
+            $aggregations: [ArtworkAggregation] = [
+              MEDIUM
+              TOTAL
+              GALLERY
+              INSTITUTION
+              MAJOR_PERIOD
+            ]
+            $artistID: String!
+            $at_auction: Boolean
+            $for_sale: Boolean
             $hasFilter: Boolean!
+            $inquireable_only: Boolean
+            $major_periods: [String]
+            $medium: String
+            $offerable: Boolean
+            $page: Int
+            $partner_id: ID
+            $price_range: String
+            $sort: String
           ) {
             artist(id: $artistID) {
-              ...Overview_artist
+              ...Overview_artist @arguments(hasFilter: $hasFilter)
+            }
+            viewer {
+              ...ArtworkFilter_viewer
                 @arguments(
-                  medium: $medium
-                  major_periods: $major_periods
-                  partner_id: $partner_id
-                  for_sale: $for_sale
-                  sort: $sort
-                  at_auction: $at_auction
                   acquireable: $acquireable
+                  aggregations: $aggregations
+                  artist_id: $artistID
+                  at_auction: $at_auction
+                  for_sale: $for_sale
                   inquireable_only: $inquireable_only
+                  major_periods: $major_periods
+                  medium: $medium
                   offerable: $offerable
-                  price_range: $price_range
                   page: $page
-                  hasFilter: $hasFilter
+                  partner_id: $partner_id
+                  price_range: $price_range
+                  sort: $sort
                 )
             }
           }

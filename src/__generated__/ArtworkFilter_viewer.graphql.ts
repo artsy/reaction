@@ -13,11 +13,7 @@ export type ArtworkFilter_viewer = {
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = [
-  "TOTAL"
-];
-return {
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "ArtworkFilter_viewer",
   "type": "Viewer",
@@ -33,7 +29,9 @@ return {
       "kind": "LocalArgument",
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
-      "defaultValue": v0
+      "defaultValue": [
+        "TOTAL"
+      ]
     },
     {
       "kind": "LocalArgument",
@@ -80,8 +78,8 @@ return {
     {
       "kind": "LocalArgument",
       "name": "keyword",
-      "type": "String!",
-      "defaultValue": ""
+      "type": "String",
+      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
@@ -146,9 +144,9 @@ return {
           "type": "Boolean"
         },
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "aggregations",
-          "value": v0,
+          "variableName": "aggregations",
           "type": "[ArtworkAggregation]"
         },
         {
@@ -273,6 +271,5 @@ return {
     }
   ]
 };
-})();
-(node as any).hash = 'c786a10b9fb2c6c877a8c3ff1d4509a0';
+(node as any).hash = '83de2f74c709f490551d33f25802bcaf';
 export default node;

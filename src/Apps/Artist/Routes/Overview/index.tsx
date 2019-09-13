@@ -2,7 +2,6 @@ import { Box, Col, Row, Sans, Separator, Spacer } from "@artsy/palette"
 import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Apps/Artist/Components/ArtistCollectionsRail"
 import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
-import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
 import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Components/Genes"
 import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
@@ -12,22 +11,30 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
+import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
 import {
   ArtistBioFragmentContainer as ArtistBio,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
+import { ArtworkFilter } from "Components/v2/ArtworkFilter"
+import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+import { Location } from "found"
+import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
+import { ZeroState } from "./Components/ZeroState"
 
 export interface OverviewRouteProps {
-  artist: Overview_artist & {
-    __fragments: object[]
-  }
+  viewer: routes_OverviewQueryRendererQueryResponse["viewer"]
+  artist: Overview_artist
+  location: Location
+  tracking: TrackingProp
 }
 
 interface State {
   isReadMoreExpanded: boolean
 }
 
+@track()
 export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   state = {
     isReadMoreExpanded: false,
@@ -51,8 +58,11 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }
 
   render() {
-    const { artist } = this.props
+    if (!this.props) {
+      return null
+    }
 
+    const { artist } = this.props
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
@@ -128,19 +138,35 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
         {!hideMainOverviewSection && <Spacer mb={4} />}
 
-        <div>
+        <Box>
           <Separator mb={3} />
           <ArtistCollectionsRail artistID={artist._id} />
           <Spacer mb={3} />
-        </div>
+        </Box>
 
         <Row>
           <Col>
             <span id="jump--artistArtworkGrid" />
 
             <ArtworkFilter
-              artist={artist}
-              hideTopBorder={hideMainOverviewSection}
+              filters={this.props.location.query as any}
+              viewer={this.props.viewer}
+              sortOptions={[
+                { value: "-decayed_merch", text: "Default" },
+                { value: "-partner_updated_at", text: "Recently updated" },
+                { value: "-published_at", text: "Recently added" },
+                { value: "-year", text: "Artwork year (desc.)" },
+                { value: "year", text: "Artwork year (asc.)" },
+              ]}
+              onChange={updateUrl}
+              onFilterClick={(key, value, filterState) => {
+                this.props.tracking.trackEvent({
+                  action_type: Schema.ActionType.CommercialFilterParamsChanged,
+                  changed: { [key]: value },
+                  current: filterState,
+                })
+              }}
+              ZeroState={ZeroState}
             />
           </Col>
         </Row>
@@ -164,21 +190,10 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
     artist: graphql`
       fragment Overview_artist on Artist
         @argumentDefinitions(
-          medium: { type: "String", defaultValue: "*" }
-          major_periods: { type: "[String]" }
-          partner_id: { type: "ID" }
-          for_sale: { type: "Boolean" }
-          at_auction: { type: "Boolean" }
-          acquireable: { type: "Boolean" }
-          offerable: { type: "Boolean" }
-          inquireable_only: { type: "Boolean" }
-          sort: { type: "String", defaultValue: "-decayed_merch" }
           partner_category: {
             type: "[String]"
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
-          price_range: { type: "String", defaultValue: "*-*" }
-          page: { type: "Int" }
           hasFilter: { type: "Boolean", defaultValue: false }
         ) {
         ...ArtistBio_bio
@@ -186,21 +201,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...MarketInsights_artist
         ...SelectedCareerAchievements_artist
         ...Genes_artist
-        ...ArtworkFilter_artist
-          @arguments(
-            medium: $medium
-            major_periods: $major_periods
-            partner_id: $partner_id
-            for_sale: $for_sale
-            sort: $sort
-            at_auction: $at_auction
-            acquireable: $acquireable
-            inquireable_only: $inquireable_only
-            offerable: $offerable
-            price_range: $price_range
-            page: $page
-            hasFilter: $hasFilter
-          )
         id
         counts {
           partner_shows

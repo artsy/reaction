@@ -44,6 +44,7 @@ export const ArtworkFilter: React.FC<
   }
 > = ({
   viewer,
+  aggregations,
   filters,
   sortOptions,
   onArtworkBrickClick,
@@ -53,6 +54,7 @@ export const ArtworkFilter: React.FC<
 }) => {
   return (
     <ArtworkFilterContextProvider
+      aggregations={aggregations}
       filters={filters}
       sortOptions={sortOptions}
       onArtworkBrickClick={onArtworkBrickClick}
@@ -259,7 +261,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           for_sale: { type: "Boolean" }
           height: { type: "String" }
           inquireable_only: { type: "Boolean" }
-          keyword: { type: "String!", defaultValue: "" }
+          keyword: { type: "String" }
           major_periods: { type: "[String]" }
           medium: { type: "String" }
           offerable: { type: "Boolean" }
@@ -271,7 +273,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
         ) {
         filtered_artworks: filter_artworks(
           acquireable: $acquireable
-          aggregations: [TOTAL]
+          aggregations: $aggregations
           artist_id: $artist_id
           at_auction: $at_auction
           attribution_class: $attribution_class
