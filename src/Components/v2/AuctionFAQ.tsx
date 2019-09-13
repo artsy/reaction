@@ -1,10 +1,11 @@
-import { Box, Serif, Spacer, Theme, Toggle } from "@artsy/palette"
+import { Box, media, Serif, space, Spacer, Theme, Toggle } from "@artsy/palette"
 import React from "react"
+import styled from "styled-components"
 
 export const AuctionFAQ: React.FC = () => {
   return (
     <Theme>
-      <Box maxWidth="600px">
+      <AuctionWrapper>
         <Serif size="8" color="black100">
           Auction FAQs
         </Serif>
@@ -168,7 +169,16 @@ export const AuctionFAQ: React.FC = () => {
             read them carefully before bidding.
           </Serif>
         </Toggle>
-      </Box>
+      </AuctionWrapper>
     </Theme>
   )
 }
+
+const AuctionWrapper = styled(Box)`
+  max-width: 600px;
+  margin: ${space(4)}px auto;
+  padding: ${space(2)}px;
+  ${media.xs`
+    margin: ${space(1)}px auto;
+  `};
+`
