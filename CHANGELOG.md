@@ -1,3 +1,15 @@
+# v18.0.11 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- Grow 1498 fix the broken scrolling in small size [#2811](https://github.com/artsy/reaction/pull/2811) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v18.0.10 (Fri Sep 13 2019)
 
 #### 🐛  Bug Fix
