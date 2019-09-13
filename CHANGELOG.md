@@ -1,3 +1,15 @@
+# v18.0.7 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Fix reset bug #trivial [#2815](https://github.com/artsy/reaction/pull/2815) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v18.0.6 (Thu Sep 12 2019)
 
 #### 🐛  Bug Fix
