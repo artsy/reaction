@@ -31,6 +31,12 @@ describe("Auction/routes", () => {
     me: data.me,
   })
 
+  it("renders the Auction FAQ view", async () => {
+    const { status } = await render("/auction-faq", mockResolver(Fixture))
+
+    expect(status).toBe(200)
+  })
+
   it("does not redirect if a sale is found", async () => {
     const { redirect, status } = await render(
       `/auction-registration/${Fixture.sale.id}`,
