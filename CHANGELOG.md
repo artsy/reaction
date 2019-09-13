@@ -1,3 +1,20 @@
+# v18.0.8 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1456 Add BankTransferExperiment [#2794](https://github.com/artsy/reaction/pull/2794) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Add Artsy Engineering footer [#2818](https://github.com/artsy/reaction/pull/2818) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v18.0.7 (Fri Sep 13 2019)
 
 #### 🐛  Bug Fix
