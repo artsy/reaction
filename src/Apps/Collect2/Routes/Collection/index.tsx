@@ -2,7 +2,6 @@ import { Box, Separator } from "@artsy/palette"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
-import { buildUrlForCollectionApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -22,6 +21,7 @@ import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Component
 
 import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
@@ -91,13 +91,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "-year", text: "Artwork year (desc.)" },
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
-              onChange={filters => {
-                const url = buildUrlForCollectionApp(filters)
-
-                if (typeof window !== "undefined") {
-                  window.history.replaceState({}, "", url)
-                }
-              }}
+              onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {
                 this.props.tracking.trackEvent({
                   action_type: Schema.ActionType.CommercialFilterParamsChanged,
