@@ -1,3 +1,15 @@
+# v18.1.2 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Search] Replace old artwork filter with new generic implementation [#2816](https://github.com/artsy/reaction/pull/2816) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v18.1.1 (Fri Sep 13 2019)
 
 #### 🐛  Bug Fix
