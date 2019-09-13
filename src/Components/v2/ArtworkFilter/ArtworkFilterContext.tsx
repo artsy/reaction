@@ -1,3 +1,4 @@
+import { omit } from "lodash"
 import React, { useContext, useReducer } from "react"
 import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
@@ -112,7 +113,7 @@ export const ArtworkFilterContextProvider: React.FC<
 
   useDeepCompareEffect(() => {
     if (onChange) {
-      onChange(artworkFilterState)
+      onChange(omit(artworkFilterState, ["reset"]))
     }
   }, [artworkFilterState])
 
@@ -227,6 +228,8 @@ const artworkFilterReducer = (state, action) => {
         }
       })
 
+      delete state.reset
+
       return {
         ...state,
         ...filterState,
@@ -286,7 +289,10 @@ const artworkFilterReducer = (state, action) => {
      * Resetting filters back to their initial state
      */
     case "RESET": {
-      return initialArtworkFilterState
+      return {
+        ...initialArtworkFilterState,
+        reset: true,
+      }
     }
 
     default:

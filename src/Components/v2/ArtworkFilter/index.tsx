@@ -96,14 +96,14 @@ export const BaseArtworkFilter: React.FC<{
    * and trigger a reload.
    */
   useDeepCompareEffect(() => {
-    fetchResults()
-
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
         const previousFilter = previousFilters[filterKey]
         const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
 
         if (filtersHaveUpdated) {
+          fetchResults()
+
           tracking.trackEvent({
             action_type:
               AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
