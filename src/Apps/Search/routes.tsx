@@ -3,14 +3,18 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
-import { SearchResultsArtworksRouteFragmentContainer as SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks/SearchResultsArtworks"
+import { SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks"
 import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute } from "Apps/Search/Routes/Entity/SearchResultsEntity"
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
+import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
-  return location.query
+  return {
+    ...location.query,
+    keyword: location.query.term,
+  }
 }
 
 const tabsToEntitiesMap = {
@@ -76,50 +80,7 @@ export const routes: RouteConfig[] = [
         path: "/",
         Component: SearchResultsArtworksRoute,
         prepareVariables,
-        query: graphql`
-          query routes_SearchResultsArtworksQuery(
-            $term: String!
-            $medium: String
-            $major_periods: [String]
-            $partner_id: ID
-            $for_sale: Boolean
-            $sort: String
-            $at_auction: Boolean
-            $acquireable: Boolean
-            $offerable: Boolean
-            $inquireable_only: Boolean
-            $price_range: String
-            $height: String
-            $width: String
-            $artist_id: String
-            $attribution_class: [String]
-            $color: String
-            $page: Int
-          ) {
-            viewer {
-              ...SearchResultsArtworks_viewer
-                @arguments(
-                  keyword: $term
-                  medium: $medium
-                  major_periods: $major_periods
-                  partner_id: $partner_id
-                  for_sale: $for_sale
-                  sort: $sort
-                  at_auction: $at_auction
-                  acquireable: $acquireable
-                  offerable: $offerable
-                  inquireable_only: $inquireable_only
-                  price_range: $price_range
-                  height: $height
-                  width: $width
-                  artist_id: $artist_id
-                  attribution_class: $attribution_class
-                  color: $color
-                  page: $page
-                )
-            }
-          }
-        `,
+        query: ArtworkQueryFilter,
       },
       {
         path: "artists",

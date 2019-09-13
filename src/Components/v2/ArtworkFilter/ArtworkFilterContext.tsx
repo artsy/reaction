@@ -30,6 +30,7 @@ export interface ArtworkFilters {
   partner_id?: string
   price_range: string
   sort: string
+  term?: string
   width: string
 }
 
