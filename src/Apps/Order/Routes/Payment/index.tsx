@@ -20,6 +20,7 @@ import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
 import { Button, Col, Flex, Row, Spacer } from "@artsy/palette"
+import { BankTransferExperiment } from "Apps/Order/Components/BankTransferExperiment"
 import {
   PaymentPicker,
   PaymentPickerFragmentContainer,
@@ -29,6 +30,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
+import { AnalyticsSchema, track } from "Artsy"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -51,6 +53,12 @@ interface PaymentState {
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
 
+@track((props: PaymentProps) => ({
+  flow:
+    props.order.mode === "BUY"
+      ? AnalyticsSchema.Flow.BuyNow
+      : AnalyticsSchema.Flow.MakeOffer,
+}))
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state: PaymentState = { isGettingCreditCardId: false }
   paymentPicker = React.createRef<PaymentPicker>()
@@ -131,6 +139,8 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                   order={this.props.order}
                   innerRef={this.paymentPicker}
                 />
+                <Spacer mb={3} />
+                <BankTransferExperiment />
                 <Spacer mb={3} />
                 <Media greaterThan="xs">
                   <ContinueButton
