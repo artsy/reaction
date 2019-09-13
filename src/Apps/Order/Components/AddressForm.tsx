@@ -36,7 +36,8 @@ export interface AddressFormProps {
   onChange: AddressChangeHandler
   value?: Partial<Address>
   billing?: boolean
-  continentalUsOnly?: boolean
+  domesticOnly?: boolean
+  shippingCountry?: string
   errors: AddressErrors
   touched: AddressTouched
 }
@@ -83,7 +84,7 @@ export class AddressForm extends React.Component<
   }
 
   render() {
-    const lockCountryToUS = !this.props.billing && this.props.continentalUsOnly
+    const lockCountryToOrigin = !this.props.billing && this.props.domesticOnly
     return (
       <Join separator={<Spacer mb={2} />}>
         <Flex flexDirection="column">
@@ -106,15 +107,19 @@ export class AddressForm extends React.Component<
               Country
             </Serif>
             <CountrySelect
-              selected={lockCountryToUS ? "US" : this.state.address.country}
+              selected={
+                lockCountryToOrigin
+                  ? this.props.shippingCountry
+                  : this.state.address.country
+              }
               onSelect={this.changeValueHandler("country")}
-              disabled={lockCountryToUS}
+              disabled={lockCountryToOrigin}
             />
-            {lockCountryToUS && (
+            {lockCountryToOrigin && (
               <>
                 <Spacer m={0.5} />
                 <Sans size="2" color="black60">
-                  Ships to continental US only
+                  Domestic shipping only.
                 </Sans>
               </>
             )}
