@@ -155,8 +155,6 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {
-            actions.setSubmitting(false)
-
             trackRegistrationSuccess(data.createBidder.bidder.id)
 
             window.location.assign(
