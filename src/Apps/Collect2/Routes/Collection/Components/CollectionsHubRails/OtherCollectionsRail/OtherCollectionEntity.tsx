@@ -88,4 +88,5 @@ export const ThumbnailImage = styled(ResponsiveImage)`
 
 const TitleContainer = styled(Serif)`
   width: max-content;
+  white-space: nowrap;
 `
