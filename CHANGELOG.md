@@ -1,3 +1,15 @@
+# v18.1.1 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1501]: fixes word wrapping in ie [#2814](https://github.com/artsy/reaction/pull/2814) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v18.1.0 (Fri Sep 13 2019)
 
 #### 🚀  Enhancement
