@@ -83,10 +83,12 @@ export const AuctionFAQ: React.FC = () => {
             <br />
             $50,000 - $99,999: $5,000
             <br />
+            At or above $100,000: $10,000
             <br />
-            At or above $100,000: $10,000 Note: Our usual bidding increments are
-            listed above, but depending on the auction, we will default to the
-            bidding increments of our auction house partners.
+            <br />
+            Note: Our usual bidding increments are listed above, but depending
+            on the auction, we will default to the bidding increments of our
+            auction house partners.
           </Serif>
           <Spacer mb={2} />
           <Serif size="3" weight="semibold">
