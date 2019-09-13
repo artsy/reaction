@@ -1,3 +1,19 @@
+# v18.1.0 (Fri Sep 13 2019)
+
+#### 🚀  Enhancement
+
+- Add specs to exercise full bidder registration flow [#2774](https://github.com/artsy/reaction/pull/2774) ([@dblandin](https://github.com/dblandin))
+- Keep Register button spinner spinning while redirecting
+
+It can take a while to redirect back to the auction page so keep the
+spinner spinning so that the user doesn't think the page is stuck. [#2774](https://github.com/artsy/reaction/pull/2774) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v18.0.11 (Fri Sep 13 2019)
 
 #### 🐛  Bug Fix
