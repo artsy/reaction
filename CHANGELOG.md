@@ -1,3 +1,15 @@
+# v18.1.3 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA--moves credits to end of article series on mobile [#2817](https://github.com/artsy/reaction/pull/2817) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.1.2 (Fri Sep 13 2019)
 
 #### 🐛  Bug Fix
