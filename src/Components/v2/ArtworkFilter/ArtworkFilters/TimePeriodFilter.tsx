@@ -3,16 +3,18 @@ import React, { FC } from "react"
 import { get } from "Utils/get"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-interface Props {
-  timePeriods?: string[]
-}
+export const TimePeriodFilter: FC = props => {
+  const { aggregations, ...filterContext } = useArtworkFilterContext()
+  const timePeriods = aggregations.find(agg => agg.slice === "MAJOR_PERIOD")
 
-export const TimePeriodFilter: FC<Props> = props => {
-  const filterContext = useArtworkFilterContext()
-
-  const periods = (props.timePeriods || allowedPeriods).filter(timePeriod => {
-    return allowedPeriods.includes(timePeriod)
-  })
+  let periods
+  if (timePeriods && timePeriods.counts) {
+    periods = timePeriods.counts.filter(timePeriod => {
+      return allowedPeriods.includes(timePeriod.name)
+    })
+  } else {
+    periods = allowedPeriods.map(name => ({ name }))
+  }
 
   const selectedPeriod = get(
     filterContext.filters,
@@ -29,7 +31,12 @@ export const TimePeriodFilter: FC<Props> = props => {
     >
       {periods.map((timePeriod, index) => {
         return (
-          <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
+          <Radio
+            my={0.3}
+            value={timePeriod.name}
+            key={index}
+            label={timePeriod.name}
+          />
         )
       })}
     </RadioGroup>

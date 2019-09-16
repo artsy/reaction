@@ -2,17 +2,15 @@ import { Radio, RadioGroup } from "@artsy/palette"
 import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-interface Props {
-  mediums?: Array<{
-    id: string
-    name: string
-  }>
-}
+export const MediumFilter: FC = () => {
+  const { aggregations, ...filterContext } = useArtworkFilterContext()
+  const mediums = aggregations.find(agg => agg.slice === "MEDIUM") || {
+    slice: "",
+    counts: [],
+  }
+  const allowedMediums =
+    mediums && mediums.counts.length ? mediums.counts : hardcodedMediums
 
-export const MediumFilter: FC<Props> = props => {
-  const filterContext = useArtworkFilterContext()
-  const { mediums } = props
-  const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
   const selectedMedium = filterContext.filters.medium
 
   return (
