@@ -1,3 +1,4 @@
+import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
@@ -10,14 +11,6 @@ import {
 jest.unmock("react-tracking")
 
 describe("ArtistCollectionEntity", () => {
-  let props
-
-  beforeEach(() => {
-    props = {
-      collection: CollectionsRailFixture[0],
-    }
-  })
-
   it("Renders expected fields", () => {
     const component = mount(<ArtistCollectionEntity {...props} />)
 
@@ -38,8 +31,52 @@ describe("ArtistCollectionEntity", () => {
   })
 
   it("Returns proper image size if 2 artworks returned", () => {
-    props.collection.artworks.hits.pop()
-    const component = mount(<ArtistCollectionEntity {...props} />)
+    const twoArtworkCollectionProps = {
+      ...props,
+      collection: {
+        ...collection,
+        artworks: {
+          hits: [
+            props.collection.artworks.hits[0],
+            props.collection.artworks.hits[1],
+          ],
+        },
+      },
+    }
+
+    const component = mount(
+      <ArtistCollectionEntity {...twoArtworkCollectionProps} />
+    )
+    const artworkImage = component
+      .find(ArtworkImage)
+      .at(0)
+      .getElement().props
+
+    expect(component.find(ArtworkImage).length).toBe(2)
+    expect(artworkImage.width).toBe(131)
+  })
+
+  it("Returns correct number of images if a hit has no image url", () => {
+    const noImageCollectionProps = {
+      ...props,
+      collection: {
+        ...collection,
+        artworks: {
+          hits: [
+            {
+              ...props.collection.artworks.hits[0],
+              image: null,
+            },
+            props.collection.artworks.hits[1],
+            props.collection.artworks.hits[2],
+          ],
+        },
+      },
+    }
+
+    const component = mount(
+      <ArtistCollectionEntity {...noImageCollectionProps} />
+    )
     const artworkImage = component
       .find(ArtworkImage)
       .at(0)
@@ -50,8 +87,18 @@ describe("ArtistCollectionEntity", () => {
   })
 
   it("Renders a backup image if no artworks returned", () => {
-    props.collection.artworks.hits = []
-    const component = mount(<ArtistCollectionEntity {...props} />)
+    const noArtworksCollectionProps = {
+      ...props,
+      collection: {
+        ...collection,
+        artworks: {
+          hits: [],
+        },
+      },
+    }
+    const component = mount(
+      <ArtistCollectionEntity {...noArtworksCollectionProps} />
+    )
     const artworkImage = component
       .find(ArtworkImage)
       .at(0)
@@ -78,3 +125,13 @@ describe("ArtistCollectionEntity", () => {
     })
   })
 })
+
+const collection: ArtistCollectionEntity_collection = {
+  " $refType": null,
+  ...CollectionsRailFixture[0],
+}
+
+const props = {
+  collection,
+  lazyLoad: false,
+}

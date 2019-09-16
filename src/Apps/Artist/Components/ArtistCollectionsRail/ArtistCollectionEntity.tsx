@@ -3,6 +3,7 @@ import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectio
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import currency from "currency.js"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -36,7 +37,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
       title,
     } = this.props.collection
     const formattedTitle = (title && title.split(": ")[1]) || title
-    const bgImages = hits.map(hit => hit.image.url)
+    const bgImages = compact(hits.map(hit => hit.image && hit.image.url))
     const imageSize =
       bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
 
