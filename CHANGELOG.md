@@ -1,3 +1,15 @@
+# v18.1.4 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Fix aggregations [#2821](https://github.com/artsy/reaction/pull/2821) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v18.1.3 (Mon Sep 16 2019)
 
 #### 🐛  Bug Fix
