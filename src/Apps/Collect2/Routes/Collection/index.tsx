@@ -20,7 +20,10 @@ import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
 import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
-import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import {
+  ArtworkFilterContextProvider,
+  SharedArtworkFilterContextProps,
+} from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { TrackingProp } from "react-tracking"
 
@@ -91,6 +94,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "-year", text: "Artwork year (desc.)" },
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
+              aggregations={
+                this.props.viewer.artworks
+                  .aggregations as SharedArtworkFilterContextProps["aggregations"]
+              }
               onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {
                 this.props.tracking.trackEvent({

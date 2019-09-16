@@ -8,18 +8,7 @@ import { SizeRangeFilter } from "./SizeRangeFilter"
 import { TimePeriodFilter } from "./TimePeriodFilter"
 import { WaysToBuyFilter } from "./WaysToBuyFilter"
 
-interface ArtworkFilterProps {
-  mediums?: Array<{
-    id: string
-    name: string
-  }>
-  timePeriods?: any
-}
-
-export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
-  mediums,
-  timePeriods,
-}) => {
+export const ArtworkFilters: React.FC = () => {
   return (
     <Box pr={2}>
       <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
@@ -28,7 +17,7 @@ export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
 
       <Toggle label="Medium" expanded>
         <Flex flexDirection="column" alignItems="left" mb={1}>
-          <MediumFilter mediums={mediums} />
+          <MediumFilter />
         </Flex>
       </Toggle>
 
@@ -52,9 +41,7 @@ export const ArtworkFilters: React.FC<ArtworkFilterProps> = ({
 
       <Toggle label="Time period">
         <Flex flexDirection="column" my={1}>
-          <TimePeriodFilter
-            timePeriods={!!timePeriods ? timePeriods.map(a => a.name) : null}
-          />
+          <TimePeriodFilter />
         </Flex>
       </Toggle>
     </Box>
