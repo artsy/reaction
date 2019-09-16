@@ -17,6 +17,7 @@ export const VanguardSeriesWrapper: React.SFC<{
   const { article, isMobile, onSlideshowStateChange } = props
   const { relatedArticles, title, series } = article
   const slugifiedTitle = slugify(title)
+  const shareTitle = article.social_title || article.thumbnail_title
   const { hero_section } = props.article
   const url = ((hero_section && hero_section.url) || "") as string
   const isVideo = url.includes("mp4")
@@ -59,7 +60,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             )}
             <Share
               url={`${sd.APP_URL}/artsy-vanguard-2019/${slugifiedTitle}`}
-              title={`Artsy Vanguard 2019: ${title}`}
+              title={`Artsy Vanguard 2019: ${shareTitle}`}
             />
           </Flex>
         </Box>
