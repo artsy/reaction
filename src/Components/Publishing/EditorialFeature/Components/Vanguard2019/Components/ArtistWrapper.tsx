@@ -104,6 +104,7 @@ export class VanguardArtistWrapper extends React.Component<
     )
     const backgroundColor = isExpanded ? color("black100") : color("white100")
     const slugifiedTitle = slugify(article.title)
+    const shareTitle = article.social_title || article.thumbnail_title
 
     return (
       <FullScreenProvider onSlideshowStateChange={onSlideshowStateChange}>
@@ -164,7 +165,7 @@ export class VanguardArtistWrapper extends React.Component<
                         url={`${
                           sd.APP_URL
                         }/artsy-vanguard-2019/${slugifiedTitle}`}
-                        title={`Artsy Vanguard 2019: ${title}`}
+                        title={`Artsy Vanguard 2019: ${shareTitle}`}
                         color={color("white100")}
                       />
                     </Box>
