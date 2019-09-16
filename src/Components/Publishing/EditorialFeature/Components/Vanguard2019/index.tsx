@@ -1,4 +1,5 @@
 import { Box } from "@artsy/palette"
+import { VanguardCredits } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardCredits"
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Nav, NavContainer } from "Components/Publishing/Nav/Nav"
 import { last } from "lodash"
@@ -108,6 +109,9 @@ export class Vanguard2019 extends React.Component<
               onSlideshowStateChange={this.onFullScreenProviderStateChange}
             />
           ))}
+
+        {/** display credits at end of article series on mobile */}
+        {isMobile && <VanguardCredits isMobile={isMobile} />}
       </VanguardWrapper>
     )
   }
