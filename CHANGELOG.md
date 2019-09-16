@@ -1,3 +1,15 @@
+# v18.1.5 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Collection rail on Artist page [#2822](https://github.com/artsy/reaction/pull/2822) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v18.1.4 (Mon Sep 16 2019)
 
 #### 🐛  Bug Fix
