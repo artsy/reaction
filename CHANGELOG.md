@@ -1,3 +1,15 @@
+# v18.1.6 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard sharing [#2823](https://github.com/artsy/reaction/pull/2823) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v18.1.5 (Mon Sep 16 2019)
 
 #### 🐛  Bug Fix
