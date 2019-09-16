@@ -39,8 +39,29 @@ interface ArtworkFilterContextProps {
 
   // Components
   ZeroState?: React.FC
+
   // Sorting
   sortOptions?: SortOptions
+  aggregations?: Array<{
+    slice:
+      | "COLOR"
+      | "DIMENSION_RANGE"
+      | "FOLLOWED_ARTISTS"
+      | "GALLERY"
+      | "INSTITUTION"
+      | "MAJOR_PERIOD"
+      | "MEDIUM"
+      | "MERCHANDISABLE_ARTISTS"
+      | "PARTNER_CITY"
+      | "PERIOD"
+      | "PRICE_RANGE"
+      | "TOTAL"
+    counts: Array<{
+      count: number
+      id: string
+      name: string
+    }>
+  }>
 
   // Handlers
   onArtworkBrickClick?: (artwork: any, props: any) => void
@@ -80,6 +101,7 @@ export type SortOptions = Array<{
 
 export type SharedArtworkFilterContextProps = Pick<
   ArtworkFilterContextProps,
+  | "aggregations"
   | "filters"
   | "sortOptions"
   | "onArtworkBrickClick"
@@ -94,22 +116,23 @@ export const ArtworkFilterContextProvider: React.FC<
     children: React.ReactNode
   }
 > = ({
+  aggregations = [],
   children,
-  onChange,
   filters = {},
   onArtworkBrickClick,
+  onChange,
   onFilterClick,
   sortOptions,
   ZeroState,
 }) => {
-  const initialState = {
+  const initialFilterState = {
     ...initialArtworkFilterState,
     ...filters,
   }
 
   const [artworkFilterState, dispatch] = useReducer(
     artworkFilterReducer,
-    initialState
+    initialFilterState
   )
 
   useDeepCompareEffect(() => {
@@ -119,7 +142,6 @@ export const ArtworkFilterContextProvider: React.FC<
   }, [artworkFilterState])
 
   const artworkFilterContext = {
-    ZeroState,
     filters: artworkFilterState,
     hasFilters: hasFilters(artworkFilterState),
 
@@ -129,6 +151,10 @@ export const ArtworkFilterContextProvider: React.FC<
 
     // Sorting
     sortOptions,
+    aggregations,
+
+    // Components
+    ZeroState,
 
     // Filter manipulation
     isDefaultValue: field => {

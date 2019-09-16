@@ -9,9 +9,9 @@ import { TimePeriodFilter } from "../TimePeriodFilter"
 describe("TimePeriodFilter", () => {
   let context
 
-  const getWrapper = () => {
+  const getWrapper = (props = {}) => {
     return mount(
-      <ArtworkFilterContextProvider>
+      <ArtworkFilterContextProvider {...props}>
         <TimePeriodFilterFilterTest />
       </ArtworkFilterContextProvider>
     )
@@ -21,6 +21,25 @@ describe("TimePeriodFilter", () => {
     context = useArtworkFilterContext()
     return <TimePeriodFilter />
   }
+
+  it("shows specific time periods if aggregations passed to context", () => {
+    const wrapper = getWrapper({
+      aggregations: [
+        {
+          slice: "MAJOR_PERIOD",
+          counts: [
+            {
+              name: "Late 19th Century",
+              id: "foo-period",
+            },
+          ],
+        },
+      ],
+    })
+
+    expect(wrapper.html()).toContain("Late 19th Century")
+    expect(wrapper.html()).not.toContain("2010")
+  })
 
   it("updates context on filter change", done => {
     const wrapper = getWrapper()
