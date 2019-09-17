@@ -3,10 +3,19 @@
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
 import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _ArtworkFilterArtworkGrid2_filtered_artworks$ref: unique symbol;
 export type ArtworkFilterArtworkGrid2_filtered_artworks$ref = typeof _ArtworkFilterArtworkGrid2_filtered_artworks$ref;
 export type ArtworkFilterArtworkGrid2_filtered_artworks = {
     readonly __id: string;
+    readonly aggregations: ReadonlyArray<({
+        readonly slice: ArtworkAggregation | null;
+        readonly counts: ReadonlyArray<({
+            readonly id: string;
+            readonly name: string | null;
+            readonly count: number | null;
+        }) | null> | null;
+    }) | null> | null;
     readonly artworks: ({
         readonly pageInfo: {
             readonly hasNextPage: boolean;
@@ -56,6 +65,57 @@ return {
   ],
   "selections": [
     v0,
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "aggregations",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworksAggregationResults",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "slice",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "counts",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "AggregationCount",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "count",
+              "args": null,
+              "storageKey": null
+            },
+            v0
+          ]
+        }
+      ]
+    },
     {
       "kind": "LinkedField",
       "alias": "artworks",
@@ -152,5 +212,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '27b7f0614f390c626facc03757ef1f36';
+(node as any).hash = 'a4bd893a278d6f5768ed5964137f09e1';
 export default node;

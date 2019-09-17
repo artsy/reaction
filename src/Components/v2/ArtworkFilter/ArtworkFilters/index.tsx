@@ -2,6 +2,8 @@ import { Box, Flex, Toggle } from "@artsy/palette"
 import React from "react"
 
 import { ColorFilter } from "./ColorFilter"
+import { GalleryFilter } from "./GalleryFilter"
+import { InstitutionFilter } from "./InstitutionFilter"
 import { MediumFilter } from "./MediumFilter"
 import { PriceRangeFilter } from "./PriceRangeFilter"
 import { SizeRangeFilter } from "./SizeRangeFilter"
@@ -24,6 +26,18 @@ export const ArtworkFilters: React.FC = () => {
       <Toggle label="Price" expanded>
         <Flex flexDirection="column" alignItems="left" my={1}>
           <PriceRangeFilter />
+        </Flex>
+      </Toggle>
+
+      <Toggle label="Gallery" expanded>
+        <Flex flexDirection="column" alignItems="left" my={1}>
+          <GalleryFilter />
+        </Flex>
+      </Toggle>
+
+      <Toggle label="Institution" expanded>
+        <Flex flexDirection="column" alignItems="left" my={1}>
+          <InstitutionFilter />
         </Flex>
       </Toggle>
 

@@ -63,6 +63,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
     const showCollectionHubs =
       viewer.linkedCollections.length > 0 && userIsAdmin(user)
 
+    console.log("does this work")
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>

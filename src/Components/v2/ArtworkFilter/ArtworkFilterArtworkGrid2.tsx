@@ -1,5 +1,6 @@
 import { Box, Spacer } from "@artsy/palette"
-import React from "react"
+import { isEqual } from "lodash"
+import React, { useEffect } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
@@ -7,7 +8,7 @@ import { useSystemContext } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
-import { useArtworkFilterContext } from "./ArtworkFilterContext"
+import { Aggregations, useArtworkFilterContext } from "./ArtworkFilterContext"
 
 interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
@@ -21,6 +22,16 @@ const ArtworkFilterArtworkGrid: React.FC<
 > = props => {
   const { user, mediator } = useSystemContext()
   const context = useArtworkFilterContext()
+  const {
+    filtered_artworks: { aggregations },
+  } = props
+
+  useEffect(() => {
+    if (!isEqual(aggregations, context.aggregations)) {
+      context.setAggregations(props.filtered_artworks
+        .aggregations as Aggregations)
+    }
+  }, [])
 
   const {
     columnCount,
@@ -92,6 +103,16 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
           after: { type: "String", defaultValue: "" }
         ) {
         __id
+
+        aggregations {
+          slice
+          counts {
+            id
+            name
+            count
+          }
+        }
+
         artworks: artworks_connection(first: $first, after: $after) {
           pageInfo {
             hasNextPage

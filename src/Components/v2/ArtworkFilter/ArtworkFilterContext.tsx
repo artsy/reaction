@@ -1,5 +1,5 @@
 import { omit } from "lodash"
-import React, { useContext, useReducer } from "react"
+import React, { useContext, useReducer, useState } from "react"
 import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
@@ -34,6 +34,27 @@ export interface ArtworkFilters {
   width: string
 }
 
+export type Aggregations = Array<{
+  slice:
+    | "COLOR"
+    | "DIMENSION_RANGE"
+    | "FOLLOWED_ARTISTS"
+    | "GALLERY"
+    | "INSTITUTION"
+    | "MAJOR_PERIOD"
+    | "MEDIUM"
+    | "MERCHANDISABLE_ARTISTS"
+    | "PARTNER_CITY"
+    | "PERIOD"
+    | "PRICE_RANGE"
+    | "TOTAL"
+  counts: Array<{
+    count: number
+    id: string
+    name: string
+  }>
+}>
+
 interface ArtworkFilterContextProps {
   filters?: ArtworkFilters
 
@@ -42,26 +63,8 @@ interface ArtworkFilterContextProps {
 
   // Sorting
   sortOptions?: SortOptions
-  aggregations?: Array<{
-    slice:
-      | "COLOR"
-      | "DIMENSION_RANGE"
-      | "FOLLOWED_ARTISTS"
-      | "GALLERY"
-      | "INSTITUTION"
-      | "MAJOR_PERIOD"
-      | "MEDIUM"
-      | "MERCHANDISABLE_ARTISTS"
-      | "PARTNER_CITY"
-      | "PERIOD"
-      | "PRICE_RANGE"
-      | "TOTAL"
-    counts: Array<{
-      count: number
-      id: string
-      name: string
-    }>
-  }>
+  aggregations?: Aggregations
+  setAggregations?: (aggregations: Aggregations) => void
 
   // Handlers
   onArtworkBrickClick?: (artwork: any, props: any) => void
@@ -135,6 +138,8 @@ export const ArtworkFilterContextProvider: React.FC<
     initialFilterState
   )
 
+  const [filterAggregations, setAggregations] = useState(aggregations)
+
   useDeepCompareEffect(() => {
     if (onChange) {
       onChange(omit(artworkFilterState, ["reset"]))
@@ -151,7 +156,8 @@ export const ArtworkFilterContextProvider: React.FC<
 
     // Sorting
     sortOptions,
-    aggregations,
+    aggregations: filterAggregations,
+    setAggregations,
 
     // Components
     ZeroState,
