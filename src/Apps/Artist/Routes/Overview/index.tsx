@@ -151,6 +151,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
             <ArtworkFilter
               filters={this.props.location.query as any}
               viewer={this.props.viewer}
+              counts={this.props.viewer.artist.counts}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
                 { value: "-partner_updated_at", text: "Recently updated" },

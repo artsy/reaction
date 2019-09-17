@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from "@artsy/palette"
+import { Flex, Radio, RadioGroup, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
 import { get } from "Utils/get"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
@@ -22,24 +22,28 @@ export const TimePeriodFilter: FC = props => {
   )
 
   return (
-    <RadioGroup
-      deselectable
-      defaultValue={selectedPeriod}
-      onSelect={selectedOption => {
-        filterContext.setFilter("major_periods", selectedOption)
-      }}
-    >
-      {periods.map((timePeriod, index) => {
-        return (
-          <Radio
-            my={0.3}
-            value={timePeriod.name}
-            key={index}
-            label={timePeriod.name}
-          />
-        )
-      })}
-    </RadioGroup>
+    <Toggle label="Time period">
+      <Flex flexDirection="column" my={1}>
+        <RadioGroup
+          deselectable
+          defaultValue={selectedPeriod}
+          onSelect={selectedOption => {
+            filterContext.setFilter("major_periods", selectedOption)
+          }}
+        >
+          {periods.map((timePeriod, index) => {
+            return (
+              <Radio
+                my={0.3}
+                value={timePeriod.name}
+                key={index}
+                label={timePeriod.name}
+              />
+            )
+          })}
+        </RadioGroup>
+      </Flex>
+    </Toggle>
   )
 }
 

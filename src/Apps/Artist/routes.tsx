@@ -59,8 +59,11 @@ export const routes: RouteConfig[] = [
             ]
             $artistID: String!
             $at_auction: Boolean
+            $attribution_class: [String]
+            $color: String
             $for_sale: Boolean
             $hasFilter: Boolean!
+            $height: String
             $inquireable_only: Boolean
             $major_periods: [String]
             $medium: String
@@ -69,18 +72,32 @@ export const routes: RouteConfig[] = [
             $partner_id: ID
             $price_range: String
             $sort: String
+            $width: String
           ) {
+            # FIXME: Remove this top-level field
             artist(id: $artistID) {
               ...Overview_artist @arguments(hasFilter: $hasFilter)
             }
             viewer {
+              artist(id: $artistID) {
+                counts {
+                  for_sale_artworks
+                  ecommerce_artworks
+                  auction_artworks
+                  artworks
+                  has_make_offer_artworks
+                }
+              }
               ...ArtworkFilter_viewer
                 @arguments(
                   acquireable: $acquireable
                   aggregations: $aggregations
                   artist_id: $artistID
                   at_auction: $at_auction
+                  attribution_class: $attribution_class
+                  color: $color
                   for_sale: $for_sale
+                  height: $height
                   inquireable_only: $inquireable_only
                   major_periods: $major_periods
                   medium: $medium
@@ -89,6 +106,7 @@ export const routes: RouteConfig[] = [
                   partner_id: $partner_id
                   price_range: $price_range
                   sort: $sort
+                  width: $width
                 )
             }
           }

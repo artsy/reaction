@@ -5,6 +5,9 @@ import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
 
+/**
+ * Initial filter state
+ */
 export const initialArtworkFilterState = {
   attribution_class: [],
   height: "*-*",
@@ -15,25 +18,31 @@ export const initialArtworkFilterState = {
   width: "*-*",
 }
 
+/**
+ * A list of all possible artwork filters across all apps
+ */
 export interface ArtworkFilters {
   acquireable?: boolean
   at_auction?: boolean
   color?: string
   for_sale?: boolean
-  height: string
+  height?: string
   inquireable_only?: boolean
   keyword?: string
-  major_periods: string[]
+  major_periods?: string[]
   medium?: string
   offerable?: boolean
-  page: number
+  page?: number
   partner_id?: string
-  price_range: string
-  sort: string
+  price_range?: string
+  sort?: string
   term?: string
-  width: string
+  width?: string
 }
 
+/**
+ * Possible aggregations that can be passed
+ */
 export type Aggregations = Array<{
   slice:
     | "COLOR"
@@ -55,6 +64,14 @@ export type Aggregations = Array<{
   }>
 }>
 
+interface Counts {
+  for_sale_artworks?: number
+  ecommerce_artworks?: number
+  auction_artworks?: number
+  artworks?: number
+  has_make_offer_artworks?: boolean
+}
+
 interface ArtworkFilterContextProps {
   filters?: ArtworkFilters
 
@@ -65,6 +82,8 @@ interface ArtworkFilterContextProps {
   sortOptions?: SortOptions
   aggregations?: Aggregations
   setAggregations?: (aggregations: Aggregations) => void
+  counts?: Counts
+  setCounts?: (counts: Counts) => void
 
   // Handlers
   onArtworkBrickClick?: (artwork: any, props: any) => void
@@ -83,6 +102,9 @@ interface ArtworkFilterContextProps {
   unsetFilter: (name: string) => void
 }
 
+/**
+ * Context behavior shared globally across the ArtworkFilter component tree
+ */
 export const ArtworkFilterContext = React.createContext<
   ArtworkFilterContextProps
 >({
@@ -105,6 +127,7 @@ export type SortOptions = Array<{
 export type SharedArtworkFilterContextProps = Pick<
   ArtworkFilterContextProps,
   | "aggregations"
+  | "counts"
   | "filters"
   | "sortOptions"
   | "onArtworkBrickClick"
@@ -121,6 +144,7 @@ export const ArtworkFilterContextProvider: React.FC<
 > = ({
   aggregations = [],
   children,
+  counts = {},
   filters = {},
   onArtworkBrickClick,
   onChange,
@@ -138,7 +162,9 @@ export const ArtworkFilterContextProvider: React.FC<
     initialFilterState
   )
 
+  // TODO: Consolidate this into additional reducer
   const [filterAggregations, setAggregations] = useState(aggregations)
+  const [artworkCounts, setCounts] = useState(counts)
 
   useDeepCompareEffect(() => {
     if (onChange) {
@@ -158,6 +184,8 @@ export const ArtworkFilterContextProvider: React.FC<
     sortOptions,
     aggregations: filterAggregations,
     setAggregations,
+    counts: artworkCounts,
+    setCounts,
 
     // Components
     ZeroState,

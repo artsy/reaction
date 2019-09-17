@@ -1,4 +1,4 @@
-import { LabeledRange } from "@artsy/palette"
+import { Flex, LabeledRange, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
@@ -18,35 +18,39 @@ export const SizeRangeFilter: FC = () => {
   const [initialMinWidth, initialMaxWidth] = filterContext.rangeToTuple("width")
 
   return (
-    <>
-      <LabeledRange
-        label="Height"
-        allowCross={false}
-        min={MIN_HEIGHT}
-        max={MAX_HEIGHT}
-        unit="in"
-        step={1}
-        defaultValue={[initialMinHeight, initialMaxHeight]}
-        onAfterChange={([min, max]) => {
-          const minStr = min === MIN_HEIGHT ? "*" : min
-          const maxStr = max === MAX_HEIGHT ? "*" : max
-          filterContext.setFilter("height", `${minStr}-${maxStr}`)
-        }}
-      />
-      <LabeledRange
-        label="Width"
-        allowCross={false}
-        min={MIN_WIDTH}
-        max={MAX_WIDTH}
-        unit="in"
-        step={1}
-        defaultValue={[initialMinWidth, initialMaxWidth]}
-        onAfterChange={([min, max]) => {
-          const minStr = min === MIN_WIDTH ? "*" : min
-          const maxStr = max === MAX_WIDTH ? "*" : max
-          filterContext.setFilter("width", `${minStr}-${maxStr}`)
-        }}
-      />
-    </>
+    <Toggle label="Size">
+      <Flex flexDirection="column" alignItems="left" my={1}>
+        <>
+          <LabeledRange
+            label="Height"
+            allowCross={false}
+            min={MIN_HEIGHT}
+            max={MAX_HEIGHT}
+            unit="in"
+            step={1}
+            defaultValue={[initialMinHeight, initialMaxHeight]}
+            onAfterChange={([min, max]) => {
+              const minStr = min === MIN_HEIGHT ? "*" : min
+              const maxStr = max === MAX_HEIGHT ? "*" : max
+              filterContext.setFilter("height", `${minStr}-${maxStr}`)
+            }}
+          />
+          <LabeledRange
+            label="Width"
+            allowCross={false}
+            min={MIN_WIDTH}
+            max={MAX_WIDTH}
+            unit="in"
+            step={1}
+            defaultValue={[initialMinWidth, initialMaxWidth]}
+            onAfterChange={([min, max]) => {
+              const minStr = min === MIN_WIDTH ? "*" : min
+              const maxStr = max === MAX_WIDTH ? "*" : max
+              filterContext.setFilter("width", `${minStr}-${maxStr}`)
+            }}
+          />
+        </>
+      </Flex>
+    </Toggle>
   )
 }

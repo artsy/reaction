@@ -45,6 +45,7 @@ export const ArtworkFilter: React.FC<
 > = ({
   viewer,
   aggregations,
+  counts,
   filters,
   sortOptions,
   onArtworkBrickClick,
@@ -55,6 +56,7 @@ export const ArtworkFilter: React.FC<
   return (
     <ArtworkFilterContextProvider
       aggregations={aggregations}
+      counts={counts}
       filters={filters}
       sortOptions={sortOptions}
       onArtworkBrickClick={onArtworkBrickClick}
@@ -127,6 +129,7 @@ export const BaseArtworkFilter: React.FC<{
       ...relayVariables,
     }
 
+    console.log(relayRefetchVariables)
     relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
         console.error(error)
@@ -204,6 +207,7 @@ export const BaseArtworkFilter: React.FC<{
 export const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
     $acquireable: Boolean
+    # $aggregations: [ArtworkAggregation]
     $artist_id: String
     $at_auction: Boolean
     $attribution_class: [String]
@@ -225,6 +229,7 @@ export const ArtworkQueryFilter = graphql`
       ...ArtworkFilter_viewer
         @arguments(
           acquireable: $acquireable
+          # aggregations: $aggregations
           artist_id: $artist_id
           at_auction: $at_auction
           attribution_class: $attribution_class
