@@ -260,6 +260,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
         }
         break
       }
+      case "payment_method_confirmation_failed": {
+        await this.props.dialog.showErrorDialog({
+          title: "Your card was declined",
+          message:
+            "We couldn't authorize your credit card. Please enter another payment method or contact your bank for more information.",
+        })
+        break
+      }
       case "artwork_version_mismatch": {
         await this.props.dialog.showErrorDialog({
           title: "Work has been updated",
