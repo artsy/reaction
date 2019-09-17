@@ -1,3 +1,15 @@
+# v18.1.7 (Tue Sep 17 2019)
+
+#### 🐛  Bug Fix
+
+- Handle case for payment_method_confirmation_failed [#2824](https://github.com/artsy/reaction/pull/2824) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v18.1.6 (Mon Sep 16 2019)
 
 #### 🐛  Bug Fix
