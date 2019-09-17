@@ -9,6 +9,7 @@ import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
 import {
+  submitOfferOrderFailedConfirmation,
   submitOfferOrderSuccess,
   submitOfferOrderWithActionRequired,
   submitOfferOrderWithFailure,
@@ -240,6 +241,19 @@ describe("Review", () => {
         "Something about the work changed since you started checkout. Please review the work before submitting your order."
       )
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
+    })
+
+    it("shows a modal if there is a payment_method_confirmation_failed", async () => {
+      window.location.assign = jest.fn()
+
+      mutations.useResultsOnce(submitOfferOrderFailedConfirmation)
+
+      await page.clickSubmit()
+
+      await page.expectAndDismissErrorDialogMatching(
+        "Your card was declined",
+        "We couldn't authorize your credit card. Please enter another payment method or contact your bank for more information."
+      )
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {

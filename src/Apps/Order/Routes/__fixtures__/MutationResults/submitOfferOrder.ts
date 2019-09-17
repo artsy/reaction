@@ -12,6 +12,19 @@ export const submitOfferOrderWithFailure = {
   },
 }
 
+export const submitOfferOrderFailedConfirmation = {
+  commerceSubmitOrderWithOffer: {
+    orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
+      error: {
+        type: "processing",
+        code: "payment_method_confirmation_failed",
+        data: null,
+      },
+    },
+  },
+}
+
 export const submitOfferOrderWithVersionMismatchFailure = {
   commerceSubmitOrderWithOffer: {
     orderOrError: {
