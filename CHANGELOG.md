@@ -1,3 +1,15 @@
+# v18.1.8 (Tue Sep 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Upgrade storybooks@5.2 [#2827](https://github.com/artsy/reaction/pull/2827) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v18.1.7 (Tue Sep 17 2019)
 
 #### 🐛  Bug Fix
