@@ -20,14 +20,9 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   itemNumber,
 }) => {
   const { headerImage, artworks, price_guidance, slug, title } = member
-  const hits = artworks && artworks.hits
-  const bgImages = hits && hits.map(hit => hit && hit.image && hit.image.url)
+  const bgImages = artworks!.hits!.map(hit => hit!.image!.url)
   const imageSize =
-    bgImages && bgImages.length === 1
-      ? 221
-      : bgImages && bgImages.length === 2
-      ? 109
-      : 72
+    bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
 
   const { trackEvent } = useTracking()
 
@@ -46,12 +41,13 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink to={`/collection/${slug}`} onClick={handleLinkClick}>
         <ImgWrapper>
-          {bgImages && bgImages.length
+          {bgImages!.length
             ? bgImages.map((url, i) => {
-                const hit = hits && hits.length && hits[i] !== null && hits[i]
-                const artistName = get(hit && hit.artist, a => a && a.name)
-                const alt = `${artistName ? artistName + ", " : ""}${hit &&
-                  hit.title}`
+                const hit = artworks!.hits![i]
+                const artistName = get(hit!.artist, a => a!.name)
+                const alt = `${artistName ? artistName + ", " : ""}${
+                  hit!.title
+                }`
                 return (
                   <SingleImgContainer key={i}>
                     <ImgOverlay width={imageSize} />

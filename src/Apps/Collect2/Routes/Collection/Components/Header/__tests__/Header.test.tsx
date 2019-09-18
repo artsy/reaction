@@ -84,7 +84,7 @@ describe("collections header", () => {
         {}
       )
 
-      expect(results && results.length).toEqual(1)
+      expect(results!.length).toEqual(1)
     })
 
     it("passes correct arguments featuredArtistsEntityCollection", () => {
@@ -154,7 +154,7 @@ describe("collections header", () => {
           const component = mountComponent(props)
 
           const readMore = component.find("ReadMore")
-          expect(readMore && readMore.length).toEqual(1)
+          expect(readMore!.length).toEqual(1)
           expect(readMore.text()).toEqual("")
         })
       })

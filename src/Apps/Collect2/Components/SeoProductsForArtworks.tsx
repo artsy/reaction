@@ -29,108 +29,83 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
     // here the filtering is necessary so we can re-use the artwork list shown in the page (could include
     // non-acquireable artworks) without making an extra request. Also, seller image is a required field
     // so excluding those that don't have `partner.profile.icon.url`.
-
-    const edges = artworks_connection && artworks_connection.edges
-    const artworksForSeoProduct =
-      edges &&
-      edges.filter(edge => {
-        return get(edge, e => {
-          const node = e && e.node !== null && e.node
-
-          if (node) {
-            const { is_acquireable, partner } = node
-            const iconUrl =
-              partner &&
-              partner.profile &&
-              partner.profile.icon &&
-              partner.profile.icon.url
-            return is_acquireable && iconUrl
-          } else {
-            return false
-          }
-        })
+    const artworksForSeoProduct = artworks_connection!.edges!.filter(edge => {
+      return get(edge, e => {
+        return e!.node!.is_acquireable && e!.node!.partner!.profile!.icon!.url
       })
+    })
 
-    return (
-      artworksForSeoProduct &&
-      artworksForSeoProduct.map(a => {
-        if (a && a.node !== null) {
-          const { node } = a
-          const {
-            artists,
-            availability,
-            image,
-            is_price_range,
-            partner,
-            price,
-          } = node
-          const location = partner && partner.locations && partner.locations[0]
-          const artistsName = artists
-            ? toSentence(artists.map(artist => artist && artist.name))
-            : null
-          const isInstitution = partner && partner.type === "Institution"
-          const iconUrl =
-            partner &&
-            partner.profile &&
-            partner.profile.icon &&
-            partner.profile.icon.url
+    return artworksForSeoProduct!.map(a => {
+      if (a!.node !== null) {
+        const node = a!.node
+        const {
+          artists,
+          availability,
+          image,
+          is_price_range,
+          partner,
+          price,
+        } = node
+        const location = partner!.locations && partner!.locations[0]
+        const artistsName = artists
+          ? toSentence(artists.map(artist => artist!.name))
+          : null
+        const isInstitution = partner!.type === "Institution"
 
-          return (
-            <Product
-              key={node.__id}
-              data={{
-                name: node.title,
-                image: image && image.url,
-                description: node.meta && node.meta.description,
-                url: `${APP_URL}${node.href}`,
-                brand: {
-                  "@type": "Person",
-                  name: artistsName,
-                },
-                ...(isInstitution
-                  ? {}
-                  : {
-                      category: node.category,
-                      productionDate: node.date,
-                      offers: {
-                        "@type": "Offer",
-                        price: !is_price_range
-                          ? formatCurrency(price)
-                          : {
-                              minPrice:
-                                price && formatCurrency(price.split("-")[0]),
-                              maxPrice:
-                                price && formatCurrency(price.split("-")[1]),
-                            },
-                        priceCurrency: node.price_currency,
-                        availability:
-                          availability && AVAILABILITY[availability],
-                        seller: {
-                          "@type": "ArtGallery",
-                          name: partner && partner.name,
-                          image: iconUrl,
-                          address: location
-                            ? [
-                                location.address,
-                                location.address_2,
-                                location.city,
-                                location.state,
-                                location.country,
-                                location.postal_code,
-                              ]
-                                .filter(Boolean)
-                                .join(", ")
-                            : null,
-                          telephone: location ? location.phone : null,
-                        },
+        return (
+          <Product
+            key={node.__id}
+            data={{
+              name: node.title,
+              image: image!.url,
+              description: node.meta!.description,
+              url: `${APP_URL}${node.href}`,
+              brand: {
+                "@type": "Person",
+                name: artistsName,
+              },
+              ...(isInstitution
+                ? {}
+                : {
+                    category: node.category,
+                    productionDate: node.date,
+                    offers: {
+                      "@type": "Offer",
+                      price: !is_price_range
+                        ? formatCurrency(price)
+                        : {
+                            minPrice:
+                              price && formatCurrency(price.split("-")[0]),
+                            maxPrice:
+                              price && formatCurrency(price.split("-")[1]),
+                          },
+                      priceCurrency: node.price_currency,
+                      availability: availability && AVAILABILITY[availability],
+                      seller: {
+                        "@type": "ArtGallery",
+                        name: partner!.name,
+                        image: partner!.profile!.icon!.url,
+                        address: location
+                          ? [
+                              location.address,
+                              location.address_2,
+                              location.city,
+                              location.state,
+                              location.country,
+                              location.postal_code,
+                            ]
+                              .filter(Boolean)
+                              .join(", ")
+                          : null,
+                        telephone: location!.phone,
                       },
-                    }),
-              }}
-            />
-          )
-        }
-      })
-    )
+                    },
+                  }),
+            }}
+          />
+        )
+      }
+    })
   }
 }
 

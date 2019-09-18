@@ -62,8 +62,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
     const showCollectionHubs =
       viewer.linkedCollections.length > 0 && userIsAdmin(user)
-    const aggregations =
-      viewer && viewer.artworks && viewer.artworks.aggregations
+
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -99,7 +98,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                aggregations as SharedArtworkFilterContextProps["aggregations"]
+                viewer!.artworks!
+                  .aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {
