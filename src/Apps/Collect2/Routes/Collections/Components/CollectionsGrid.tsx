@@ -31,7 +31,7 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
     const hasShortRow = collections.length % 3 !== 0 // Preserve left align
 
     return (
-      <Box pb={80} id={slugify(name)}>
+      <Box pb={80} id={name && slugify(name)}>
         <Sans size="3" weight="medium" pb={15}>
           {name}
         </Sans>
@@ -59,7 +59,7 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                   <EntityHeader
                     py={2}
                     href={`/collection/${collection.slug}`}
-                    imageUrl={imageUrl}
+                    imageUrl={imageUrl || undefined}
                     name={collection.title}
                     onClick={event => {
                       event.preventDefault()

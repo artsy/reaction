@@ -128,7 +128,7 @@ export const FeaturedCollectionEntity: React.FC<
         <Flex height={["190px", "190px", "280px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
-        <CollectionTitle size="4" mt={1} isSmallerScreen={xs || sm}>
+        <CollectionTitle size="4" mt={1} isSmallerScreen={xs || sm || false}>
           {title}
         </CollectionTitle>
         {price_guidance && (
@@ -182,10 +182,21 @@ const Container = styled(Box)`
   }
 `
 
+export const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 100%;
+  }
+`
+
 const FeaturedCollectionsContainer = styled(Box)`
   border-top: 1px solid ${color("black10")};
-  ${Container}:first-of-type {
-    margin-left: 2px;
+
+  ${Container} {
+    &:first-of-type {
+      margin-left: 2px;
+    }
   }
 `
 
@@ -202,14 +213,6 @@ const ExtendedSerif = styled(Serif)`
 `
 export const FeaturedImage = styled(ResponsiveImage)`
   background-position: top;
-`
-
-export const ArrowContainer = styled(Box)`
-  align-self: flex-start;
-
-  ${ArrowButton} {
-    height: 100%;
-  }
 `
 
 const CollectionTitle = styled(Serif)<{ isSmallerScreen: boolean }>`

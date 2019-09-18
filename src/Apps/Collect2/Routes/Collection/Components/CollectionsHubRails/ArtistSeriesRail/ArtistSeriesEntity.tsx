@@ -19,16 +19,10 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   member,
   itemNumber,
 }) => {
-  const {
-    headerImage,
-    artworks: { hits },
-    price_guidance,
-    slug,
-    title,
-  } = member
-  const bgImages = hits.map(hit => hit.image.url)
+  const { headerImage, artworks, price_guidance, slug, title } = member
+  const bgImages = artworks!.hits!.map(hit => hit!.image!.url)
   const imageSize =
-    bgImages.length === 1 ? 221 : bgImages.length === 2 ? 109 : 72
+    bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
 
   const { trackEvent } = useTracking()
 
@@ -47,22 +41,28 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink to={`/collection/${slug}`} onClick={handleLinkClick}>
         <ImgWrapper>
-          {bgImages.length ? (
-            bgImages.map((url, i) => {
-              const artistName = get(hits[i].artist, a => a.name)
-              const alt = `${artistName ? artistName + ", " : ""}${
-                hits[i].title
-              }`
-              return (
-                <SingleImgContainer key={i}>
-                  <ImgOverlay width={imageSize} />
-                  <ArtworkImage key={i} src={url} width={imageSize} alt={alt} />
-                </SingleImgContainer>
-              )
-            })
-          ) : (
-            <ArtworkImage src={headerImage} width={221} />
-          )}
+          {bgImages!.length
+            ? bgImages.map((url, i) => {
+                const hit = artworks!.hits![i]
+                const artistName = get(hit!.artist, a => a!.name)
+                const alt = `${artistName ? artistName + ", " : ""}${
+                  hit!.title
+                }`
+                return (
+                  <SingleImgContainer key={i}>
+                    <ImgOverlay width={imageSize} />
+                    {url && (
+                      <ArtworkImage
+                        key={i}
+                        src={url}
+                        width={imageSize}
+                        alt={alt}
+                      />
+                    )}
+                  </SingleImgContainer>
+                )
+              })
+            : headerImage && <ArtworkImage src={headerImage} width={221} />}
         </ImgWrapper>
         {
           <CollectionTitle pt={1} pb={0.5} size="3">
@@ -105,6 +105,7 @@ const ImgOverlay = styled(Box)<{ width: number }>`
 export const Container = styled(Box)`
   border: 1px solid ${color("black10")};
   border-radius: 2px;
+
   &:hover {
     text-decoration: none;
     border: 1px solid ${color("black60")};

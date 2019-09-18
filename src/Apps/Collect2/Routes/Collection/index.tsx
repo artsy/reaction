@@ -79,8 +79,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
               { path: `/collection/${slug}`, name: title },
             ]}
           />
-          <SeoProductsForArtworks artworks={artworks} />
-          <CollectionHeader collection={viewer} artworks={artworks as any} />
+          {artworks && <SeoProductsForArtworks artworks={artworks} />}
+          <CollectionHeader
+            collection={viewer as any}
+            artworks={artworks as any}
+          />
           {showCollectionHubs && (
             <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
           )}
@@ -95,7 +98,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                this.props.viewer.artworks
+                viewer!.artworks!
                   .aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}

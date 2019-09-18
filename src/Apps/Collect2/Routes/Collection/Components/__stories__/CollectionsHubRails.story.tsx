@@ -29,30 +29,34 @@ export const CollectionHubRailsQueryRenderer: React.FC<Props> = ({
   collectionID,
 }) => {
   const { relayEnvironment } = useContext(SystemContext)
-  return (
-    // tslint:disable-next-line:relay-operation-generics
-    <QueryRenderer
-      environment={relayEnvironment}
-      variables={{
-        collectionID,
-      }}
-      query={graphql`
-        query CollectionsHubRailsStoryQuery($collectionID: String!) {
-          marketingCollection(slug: $collectionID) {
-            linkedCollections {
-              ...CollectionsHubRails_linkedCollections
+  if (relayEnvironment) {
+    return (
+      // tslint:disable-next-line:relay-operation-generics
+      <QueryRenderer
+        environment={relayEnvironment}
+        variables={{
+          collectionID,
+        }}
+        query={graphql`
+          query CollectionsHubRailsStoryQuery($collectionID: String!) {
+            marketingCollection(slug: $collectionID) {
+              linkedCollections {
+                ...CollectionsHubRails_linkedCollections
+              }
             }
           }
-        }
-      `}
-      render={({ props }) => {
-        if (props) {
-          const { linkedCollections } = props.marketingCollection
-          return <CollectionsHubRails linkedCollections={linkedCollections} />
-        } else {
-          return null
-        }
-      }}
-    />
-  )
+        `}
+        render={({ props }) => {
+          if (props) {
+            const { linkedCollections } = props.marketingCollection
+            return <CollectionsHubRails linkedCollections={linkedCollections} />
+          } else {
+            return null
+          }
+        }}
+      />
+    )
+  } else {
+    return null
+  }
 }

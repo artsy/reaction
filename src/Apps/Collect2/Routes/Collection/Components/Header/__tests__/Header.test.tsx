@@ -1,5 +1,4 @@
 import { EntityHeader } from "@artsy/palette"
-import { FollowArtistButton_artist$ref } from "__generated__/FollowArtistButton_artist.graphql"
 import {
   collectionHeaderArtworks,
   defaultCollectionHeaderArtworks,
@@ -61,7 +60,7 @@ describe("collections header", () => {
   }
 
   it("renders the default collections header when there is no header image", () => {
-    props.collection.headerImage = null
+    props.collection.headerImage = ""
     props.artworks = defaultCollectionHeaderArtworks as any
     const component = mountComponent(props)
 
@@ -85,7 +84,7 @@ describe("collections header", () => {
         {}
       )
 
-      expect(results.length).toEqual(1)
+      expect(results!.length).toEqual(1)
     })
 
     it("passes correct arguments featuredArtistsEntityCollection", () => {
@@ -155,7 +154,7 @@ describe("collections header", () => {
           const component = mountComponent(props)
 
           const readMore = component.find("ReadMore")
-          expect(readMore.length).toEqual(1)
+          expect(readMore!.length).toEqual(1)
           expect(readMore.text()).toEqual("")
         })
       })
@@ -200,7 +199,7 @@ describe("collections header", () => {
         " $refType": null,
         " $fragmentRefs": null,
         merchandisable_artists: [],
-      }
+      } as any
       const component = mountComponent(props, "lg")
       const entities = component.find(EntityHeader)
 
@@ -217,7 +216,7 @@ describe("collections header", () => {
           "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
         birthday: "",
         nationality: "",
-        " $fragmentRefs": null as FollowArtistButton_artist$ref,
+        " $fragmentRefs": null,
       }
     }
 
@@ -250,7 +249,7 @@ describe("collections header", () => {
           anArtist(),
           anArtist(),
         ],
-      }
+      } as any
 
       const component = mountComponent(props, "sm")
       const entityHeaders = component.find(EntityHeader)
@@ -275,7 +274,7 @@ describe("collections header", () => {
           anArtist(),
           anArtist(),
         ],
-      }
+      } as any
 
       const component = mountComponent(props, "md")
       const entityHeaders = component.find(EntityHeader)
@@ -302,7 +301,7 @@ describe("collections header", () => {
           anArtist(),
           anArtist(),
         ],
-      }
+      } as any
 
       const component = mountComponent(props, "lg")
       const entityHeaders = component.find(EntityHeader)
@@ -326,7 +325,7 @@ describe("collections header", () => {
           anArtist(),
           anArtist(),
         ],
-      }
+      } as any
 
       const component = mountComponent(props, "xs")
       const entityHeaders = component.find(EntityHeader)
