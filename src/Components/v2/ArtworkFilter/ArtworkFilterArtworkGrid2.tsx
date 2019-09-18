@@ -1,11 +1,12 @@
 import { Box, Spacer } from "@artsy/palette"
-import { isEqual } from "lodash"
+import { isEmpty } from "lodash"
 import React, { useEffect } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { useSystemContext } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { get } from "Utils/get"
 import { LoadingArea } from "../LoadingArea"
 import { PaginationFragmentContainer as Pagination } from "../Pagination"
 import { Aggregations, useArtworkFilterContext } from "./ArtworkFilterContext"
@@ -22,14 +23,15 @@ const ArtworkFilterArtworkGrid: React.FC<
 > = props => {
   const { user, mediator } = useSystemContext()
   const context = useArtworkFilterContext()
-  const {
-    filtered_artworks: { aggregations },
-  } = props
+  const aggregations = get(props, p => p.filtered_artworks.aggregations)
 
+  /**
+   * If aggregations have not been passed as props  when instantiating the
+   * <ArtworkFilter> component then populate.
+   */
   useEffect(() => {
-    if (!isEqual(aggregations, context.aggregations)) {
-      context.setAggregations(props.filtered_artworks
-        .aggregations as Aggregations)
+    if (isEmpty(context.aggregations) && aggregations.length) {
+      context.setAggregations(aggregations as Aggregations)
     }
   }, [])
 

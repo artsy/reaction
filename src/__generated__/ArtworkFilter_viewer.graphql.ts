@@ -29,9 +29,7 @@ const node: ConcreteFragment = {
       "kind": "LocalArgument",
       "name": "aggregations",
       "type": "[ArtworkAggregation]",
-      "defaultValue": [
-        "TOTAL"
-      ]
+      "defaultValue": null
     },
     {
       "kind": "LocalArgument",
@@ -271,5 +269,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '83de2f74c709f490551d33f25802bcaf';
+(node as any).hash = 'a5a3b02d3540c5378a4af98357ca55a8';
 export default node;

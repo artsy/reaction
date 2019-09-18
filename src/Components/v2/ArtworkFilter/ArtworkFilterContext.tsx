@@ -23,6 +23,7 @@ export const initialArtworkFilterState = {
  */
 export interface ArtworkFilters {
   acquireable?: boolean
+  artist_id?: string
   at_auction?: boolean
   color?: string
   for_sale?: boolean

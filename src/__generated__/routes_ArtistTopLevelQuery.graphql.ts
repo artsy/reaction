@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { ArtistApp_artist$ref } from "./ArtistApp_artist.graphql";
 export type routes_ArtistTopLevelQueryVariables = {
-    readonly artistID: string;
+    readonly artist_id: string;
 };
 export type routes_ArtistTopLevelQueryResponse = {
     readonly artist: ({
@@ -19,9 +19,9 @@ export type routes_ArtistTopLevelQuery = {
 
 /*
 query routes_ArtistTopLevelQuery(
-  $artistID: String!
+  $artist_id: String!
 ) {
-  artist(id: $artistID) @principalField {
+  artist(id: $artist_id) @principalField {
     ...ArtistApp_artist
     __id
   }
@@ -72,6 +72,7 @@ fragment NavigationTabs_artist on Artist {
 
 fragment FollowArtistButton_artist on Artist {
   __id
+  name
   id
   is_followed
   counts {
@@ -84,7 +85,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "artist_id",
     "type": "String!",
     "defaultValue": null
   }
@@ -93,7 +94,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -109,7 +110,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtistTopLevelQuery",
   "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_ArtistTopLevelQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -339,5 +340,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'f832fab34a63627613675e2a93bce9ec';
+(node as any).hash = '457b31c97881104086337d7b2ea87270';
 export default node;

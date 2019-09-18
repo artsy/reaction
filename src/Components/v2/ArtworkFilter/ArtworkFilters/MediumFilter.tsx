@@ -3,20 +3,19 @@ import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 export const MediumFilter: FC = () => {
-  const { aggregations, ...filterContext } = useArtworkFilterContext()
-  console.log(aggregations)
+  const { aggregations, counts, ...filterContext } = useArtworkFilterContext()
   const mediums = aggregations.find(agg => agg.slice === "MEDIUM") || {
     slice: "",
     counts: [],
   }
-  console.log(mediums)
   const allowedMediums =
     mediums && mediums.counts.length ? mediums.counts : hardcodedMediums
 
   const selectedMedium = filterContext.filters.medium
+  const isExpanded = !counts.artworks || counts.artworks > 0
 
   return (
-    <Toggle label="Medium" expanded>
+    <Toggle label="Medium" expanded={isExpanded}>
       <Flex flexDirection="column" alignItems="left" mb={1}>
         <RadioGroup
           deselectable

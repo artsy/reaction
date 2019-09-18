@@ -196,6 +196,7 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
           showFollowSuggestions: { type: "Boolean", defaultValue: false }
         ) {
         __id
+        name
         id
         is_followed
         counts {

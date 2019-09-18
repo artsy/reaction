@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { CV_viewer$ref } from "./CV_viewer.graphql";
 export type CV_Test_QueryVariables = {
-    readonly artistID: string;
+    readonly artist_id: string;
 };
 export type CV_Test_QueryResponse = {
     readonly viewer: ({
@@ -19,7 +19,7 @@ export type CV_Test_Query = {
 
 /*
 query CV_Test_Query(
-  $artistID: String!
+  $artist_id: String!
 ) {
   viewer {
     ...CV_viewer
@@ -27,15 +27,15 @@ query CV_Test_Query(
 }
 
 fragment CV_viewer on Viewer {
-  artist_soloShows: artist(id: $artistID) {
+  artist_soloShows: artist(id: $artist_id) {
     ...CVItem_artist_3NSfvL
     __id
   }
-  artist_groupShows: artist(id: $artistID) {
+  artist_groupShows: artist(id: $artist_id) {
     ...CVItem_artist_3yzB0w
     __id
   }
-  artist_fairBooths: artist(id: $artistID) {
+  artist_fairBooths: artist(id: $artist_id) {
     ...CVItem_artist_37CQKT
     __id
   }
@@ -154,7 +154,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "artist_id",
     "type": "String!",
     "defaultValue": null
   }
@@ -163,7 +163,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -352,7 +352,7 @@ return {
   "operationKind": "query",
   "name": "CV_Test_Query",
   "id": null,
-  "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_3NSfvL\n    __id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_3yzB0w\n    __id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_37CQKT\n    __id\n  }\n}\n\nfragment CVItem_artist_3NSfvL on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_3yzB0w on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_37CQKT on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
+  "text": "query CV_Test_Query(\n  $artist_id: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artist_id) {\n    ...CVItem_artist_3NSfvL\n    __id\n  }\n  artist_groupShows: artist(id: $artist_id) {\n    ...CVItem_artist_3yzB0w\n    __id\n  }\n  artist_fairBooths: artist(id: $artist_id) {\n    ...CVItem_artist_37CQKT\n    __id\n  }\n}\n\nfragment CVItem_artist_3NSfvL on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_3yzB0w on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_37CQKT on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -584,5 +584,5 @@ return {
   }
 };
 })();
-(node as any).hash = '24a16a211d8569785b3d9c26862fbc99';
+(node as any).hash = '3c779381767cbf93dc425bfcd33803a1';
 export default node;

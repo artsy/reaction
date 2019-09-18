@@ -16,7 +16,7 @@ describe("CV Route", () => {
     return await renderRelayTree({
       Component: CVRoute,
       query: graphql`
-        query CV_Test_Query($artistID: String!) {
+        query CV_Test_Query($artist_id: String!) {
           viewer {
             ...CV_viewer
           }

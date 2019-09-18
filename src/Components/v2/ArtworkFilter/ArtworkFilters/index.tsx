@@ -1,4 +1,4 @@
-import { Box } from "@artsy/palette"
+import { Box, Separator } from "@artsy/palette"
 import React from "react"
 
 import { ColorFilter } from "./ColorFilter"
@@ -13,6 +13,9 @@ import { WaysToBuyFilter } from "./WaysToBuyFilter"
 export const ArtworkFilters: React.FC = () => {
   return (
     <Box pr={2}>
+      <Box pb={2}>
+        <Separator />
+      </Box>
       <WaysToBuyFilter />
       <MediumFilter />
       <PriceRangeFilter />

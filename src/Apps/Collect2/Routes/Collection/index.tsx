@@ -19,7 +19,7 @@ import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
-import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
+import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import {
   ArtworkFilterContextProvider,
   SharedArtworkFilterContextProps,
@@ -63,7 +63,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
     const showCollectionHubs =
       viewer.linkedCollections.length > 0 && userIsAdmin(user)
 
-    console.log(this.props)
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -90,7 +89,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
           )}
           <Box>
             <ArtworkFilterContextProvider
-              filters={location.query as any}
+              filters={location.query}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
                 { value: "-partner_updated_at", text: "Recently updated" },
@@ -99,7 +98,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                viewer!.artworks!
+                viewer.artworks
                   .aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
@@ -111,7 +110,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 })
               }}
             >
-              <ArtworkFilter
+              <BaseArtworkFilter
                 relay={relay}
                 viewer={viewer}
                 relayVariables={{

@@ -31,12 +31,23 @@ import {
 import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet"
 import { ArtworkFilters } from "./ArtworkFilters"
 
-import { Box, Button, FilterIcon, Flex, Spacer } from "@artsy/palette"
+import {
+  Box,
+  Button,
+  FilterIcon,
+  Flex,
+  Separator,
+  Spacer,
+} from "@artsy/palette"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { Overview_artist } from "__generated__/Overview_artist.graphql"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
- * If needing more granular control, the BaseArtworkFilter can be imported below.
+ *
+ * If needing more granular control over the query being used, or the root query
+ * doesn't `extend Viewer`, the BaseArtworkFilter can be imported below. See
+ * `Apps/Collection` for an example, which queries Kaws for data.
  */
 export const ArtworkFilter: React.FC<
   SharedArtworkFilterContextProps & {
@@ -72,8 +83,8 @@ export const ArtworkFilter: React.FC<
 export const BaseArtworkFilter: React.FC<{
   relay: RelayRefetchProp
   relayVariables?: object
-  viewer: ArtworkFilter_viewer | Collection_viewer
-}> = ({ relay, viewer, relayVariables = {} }) => {
+  viewer: ArtworkFilter_viewer | Collection_viewer | Overview_artist
+}> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -129,7 +140,6 @@ export const BaseArtworkFilter: React.FC<{
       ...relayVariables,
     }
 
-    console.log(relayRefetchVariables)
     relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
         console.error(error)
@@ -194,9 +204,13 @@ export const BaseArtworkFilter: React.FC<{
           </Box>
           <Box width="75%">
             <Box mb={2}>
+              <Box pb={2} mt={0.5}>
+                <Separator />
+              </Box>
               <SortFilter />
             </Box>
-            <ArtworkGrid />
+
+            {props.children || <ArtworkGrid />}
           </Box>
         </Flex>
       </Media>
@@ -207,7 +221,7 @@ export const BaseArtworkFilter: React.FC<{
 export const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
     $acquireable: Boolean
-    # $aggregations: [ArtworkAggregation]
+    $aggregations: [ArtworkAggregation] = [TOTAL]
     $artist_id: String
     $at_auction: Boolean
     $attribution_class: [String]
@@ -229,7 +243,7 @@ export const ArtworkQueryFilter = graphql`
       ...ArtworkFilter_viewer
         @arguments(
           acquireable: $acquireable
-          # aggregations: $aggregations
+          aggregations: $aggregations
           artist_id: $artist_id
           at_auction: $at_auction
           attribution_class: $attribution_class
@@ -258,7 +272,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
       fragment ArtworkFilter_viewer on Viewer
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
-          aggregations: { type: "[ArtworkAggregation]", defaultValue: [TOTAL] }
+          aggregations: { type: "[ArtworkAggregation]" }
           artist_id: { type: "String" }
           at_auction: { type: "Boolean" }
           attribution_class: { type: "[String]" }
