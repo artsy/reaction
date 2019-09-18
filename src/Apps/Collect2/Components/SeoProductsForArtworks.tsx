@@ -46,11 +46,11 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
           partner,
           price,
         } = node
-        const location = partner!.locations && partner!.locations[0]
+        const location = partner && partner.locations && partner.locations[0]
         const artistsName = artists
           ? toSentence(artists.map(artist => artist!.name))
           : null
-        const isInstitution = partner!.type === "Institution"
+        const isInstitution = partner && partner.type === "Institution"
 
         return (
           <Product
@@ -83,8 +83,8 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                       availability: availability && AVAILABILITY[availability],
                       seller: {
                         "@type": "ArtGallery",
-                        name: partner!.name,
-                        image: partner!.profile!.icon!.url,
+                        name: partner && partner!.name,
+                        image: partner && partner!.profile!.icon!.url,
                         address: location
                           ? [
                               location.address,
@@ -97,7 +97,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                               .filter(Boolean)
                               .join(", ")
                           : null,
-                        telephone: location!.phone,
+                        telephone: location ? location.phone : null,
                       },
                     },
                   }),
