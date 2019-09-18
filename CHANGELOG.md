@@ -1,3 +1,15 @@
+# v18.1.11 (Wed Sep 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collect null QA [#2832](https://github.com/artsy/reaction/pull/2832) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v18.1.10 (Wed Sep 18 2019)
 
 #### 🐛  Bug Fix
