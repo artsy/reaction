@@ -106,6 +106,7 @@ const Content = styled(Box)`
 
 export const ArrowContainer = styled(Box)`
   align-self: flex-start;
+
   ${ArrowButton} {
     height: 85%;
   }

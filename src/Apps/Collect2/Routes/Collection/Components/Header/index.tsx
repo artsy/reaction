@@ -98,7 +98,7 @@ export const featuredArtistsEntityCollection: (
           meta={
             hasArtistMetaData
               ? `${artist.nationality}, b. ${artist.birthday}`
-              : null
+              : undefined
           }
           href={`/artist/${artist.id}`}
           FollowButton={
@@ -192,12 +192,19 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
           mediator,
           user
         )
+        const resizedHeaderImage =
+          collection.headerImage &&
+          resize(collection.headerImage, {
+            width: imageWidth * (xs ? 2 : 1),
+            height: imageHeight * (xs ? 2 : 1),
+            quality: 80,
+          })
 
         return (
           <header>
             <Flex flexDirection="column">
               <Box mt={[0, "-12px"]}>
-                {collection.headerImage ? (
+                {resizedHeaderImage ? (
                   <CollectionSingleImageHeader
                     position={["relative", "absolute"]}
                     left={["auto", 0]}
@@ -205,11 +212,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     p={2}
                     mt={0}
                     mb={3}
-                    headerImageUrl={resize(collection.headerImage, {
-                      width: imageWidth * (xs ? 2 : 1),
-                      height: imageHeight * (xs ? 2 : 1),
-                      quality: 80,
-                    })}
+                    headerImageUrl={resizedHeaderImage}
                     height={imageHeight}
                   >
                     <Overlay />
@@ -243,7 +246,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                           {smallerScreen ? (
                             <ReadMore
                               maxChars={chars}
-                              content={htmlUnsafeDescription}
+                              content={htmlUnsafeDescription || ""}
                             />
                           ) : (
                             htmlUnsafeDescription
@@ -253,11 +256,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                       </Flex>
                     </Col>
                     <Col sm={12} md={12}>
-                      <FeaturedArtists
-                        breakpointSize={size}
-                        featuredArtists={featuredArtists}
-                        hasMultipleArtists={hasMultipleArtists}
-                      />
+                      {featuredArtists && hasMultipleArtists && (
+                        <FeaturedArtists
+                          breakpointSize={size}
+                          featuredArtists={featuredArtists}
+                          hasMultipleArtists={hasMultipleArtists}
+                        />
+                      )}
                     </Col>
                   </Row>
                 </Grid>

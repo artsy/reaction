@@ -50,6 +50,15 @@ export const CollectApp = track({
   const showCollectionHubs =
     sd.COLLECTION_HUBS === "experiment" ||
     props.COLLECTION_HUBS === "experiment"
+  const { filterArtworks } = props
+
+  const items = [{ path: "/collect", name: "Collect" }]
+  if (medium) {
+    items.push({
+      path: `/collect/${medium}`,
+      name: breadcrumbTitle,
+    })
+  }
 
   return (
     <AppContainer>
@@ -65,17 +74,9 @@ export const CollectApp = track({
         <Meta property="twitter:description" content={description} />
         <Link rel="canonical" href={canonicalHref} />
 
-        <BreadCrumbList
-          items={[
-            { path: "/collect", name: "Collect" },
-            medium && {
-              path: `/collect/${medium}`,
-              name: breadcrumbTitle,
-            },
-          ].filter(Boolean)}
-        />
+        <BreadCrumbList items={items} />
 
-        <SeoProductsForArtworks artworks={props.filterArtworks} />
+        {filterArtworks && <SeoProductsForArtworks artworks={filterArtworks} />}
 
         <Box mt={3}>
           <Serif size="8">

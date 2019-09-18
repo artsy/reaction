@@ -97,10 +97,10 @@ export const getHeaderArtworks = (
   isSmallViewport: boolean
 ) => {
   let artworkWidths = 0
-  const headerArtworks = []
+  const headerArtworks: any[] = []
 
   if (artworksArray.length < 1) {
-    return []
+    return [] as any[]
   }
 
   /**
