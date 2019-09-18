@@ -1,3 +1,20 @@
+# v18.1.10 (Wed Sep 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collect2 app passes strict null checks [#2830](https://github.com/artsy/reaction/pull/2830) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Don't tie `yalc` publishing to `yarn watch` [#2829](https://github.com/artsy/reaction/pull/2829) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v18.1.9 (Tue Sep 17 2019)
 
 
