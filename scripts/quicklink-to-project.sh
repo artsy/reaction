@@ -43,4 +43,4 @@ fi
 
 echo ""
 echo "Beginning integration..."
-yarn concurrently --kill-others --names "$CURRENT_NAME,$PROJECT_NAME" "yarn watch" "cd $PROJECT && ./scripts/quicklink.sh @artsy/reaction"
+yarn concurrently --kill-others --names "$CURRENT_NAME,$CURRENT_NAME,$PROJECT_NAME" "yarn watch" "node scripts/publish-on-change.js" "cd $PROJECT && ./scripts/quicklink.sh @artsy/reaction"
