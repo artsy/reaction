@@ -63,7 +63,6 @@ export const RenderError: React.FC<{
   error: { status?: number; data?: any }
 }> = props => {
   logger.error(props.error.data)
-  console.log("***", props)
 
   const message =
     (process.env.NODE_ENV || sd.NODE_ENV) === "development"
