@@ -1,3 +1,21 @@
+# v18.1.12 (Thu Sep 19 2019)
+
+#### 🐛  Bug Fix
+
+- Update fake hubs data with more accurate fake images [#2834](https://github.com/artsy/reaction/pull/2834) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.6 to v4.17.7 [#2826](https://github.com/artsy/reaction/pull/2826) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep patch-package from 6.0.2 to v6.2.0 [#2831](https://github.com/artsy/reaction/pull/2831) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v18.1.11 (Wed Sep 18 2019)
 
 #### 🐛  Bug Fix
