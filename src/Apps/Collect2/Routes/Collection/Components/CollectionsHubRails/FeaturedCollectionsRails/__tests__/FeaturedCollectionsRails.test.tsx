@@ -1,6 +1,7 @@
 import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
+import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -12,13 +13,6 @@ import {
 } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({
-    xs: false,
-    sm: false,
-    xl: true,
-  }),
-}))
 
 jest.mock("found", () => ({
   Link: ({ children, ...props }) => <div {...props}>{children}</div>,
@@ -60,7 +54,11 @@ describe("FeaturedCollectionsRails", () => {
   })
 
   it("Renders no arrows when there are less than 5 collections", () => {
-    const component = mount(<FeaturedCollectionsRails {...props} />)
+    const component = mount(
+      <MockBoot>
+        <FeaturedCollectionsRails {...props} />
+      </MockBoot>
+    )
     expect(component.find(ArrowButton).length).toBe(1)
   })
 
@@ -73,7 +71,11 @@ describe("FeaturedCollectionsRails", () => {
       memberData(),
     ]
 
-    const component = mount(<FeaturedCollectionsRails {...props} />)
+    const component = mount(
+      <MockBoot>
+        <FeaturedCollectionsRails {...props} />
+      </MockBoot>
+    )
     expect(component.find(ArrowButton).length).toBe(2)
   })
 
