@@ -7,7 +7,6 @@ import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import { HttpError } from "found"
 import BaseRoute from "found/lib/Route"
 import React from "react"
-import { get } from "Utils/get"
 
 type FetchIndicator = "spinner" | "overlay"
 
@@ -28,33 +27,8 @@ function createRender({
 }: CreateRenderProps) {
   return (renderArgs: RenderArgProps) => {
     const { Component, props, error } = renderArgs
-    let status: number
-    let message: string
-    if (error) {
-      if (error instanceof HttpError) {
-        throw error
-      } else if (error.name === "RRNLRequestError") {
-        // TODO: Better error typing.
-        // @ts-ignore
-        const firstError = get(error, e => e.res.errors[0])
-        const statusCodes = get(
-          firstError,
-          e => e.extensions.httpStatusCodes,
-          []
-        )
-        if (statusCodes.length === 1) {
-          status = statusCodes[0]
-          message = firstError.message
-        }
-      } else {
-        status = 500
-        message = error.message
-      }
-
-      // TODO: Need upstream fix type in found as it complains about missing
-      // second argument.
-      // @ts-ignore
-      throw new HttpError(status, message)
+    if (error && error instanceof HttpError) {
+      throw error
     }
 
     if (render) {

@@ -7,9 +7,7 @@ import RelayClientSSR from "react-relay-network-modern-ssr/node8/client"
 import RelayServerSSR from "react-relay-network-modern-ssr/node8/server"
 import { Environment, RecordSource, RelayNetwork, Store } from "relay-runtime"
 import { data as sd } from "sharify"
-import { NetworkError } from "Utils/errors"
 
-import { HttpError } from "found"
 import {
   cacheMiddleware,
   errorMiddleware,
@@ -17,8 +15,10 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern/node8"
-import { get } from "Utils/get"
+import { metaphysicsErrorHandlerMiddleware } from "./middleware/metaphysicsErrorHandlerMiddleware"
 import { metaphysicsExtensionsLoggerMiddleware } from "./middleware/metaphysicsExtensionsLoggerMiddleware"
+import { principalFieldErrorHandlerMiddleware } from "./middleware/principalFieldErrorHandlerMiddleware"
+import { searchBarImmediateResolveMiddleware } from "./middleware/searchBarImmediateResolveMiddleware"
 
 const isServer = typeof window === "undefined"
 const isDevelopment =
@@ -74,65 +74,41 @@ export function createRelaySSREnvironment(config: Config = {}) {
     console.warn("Browser does not support i18n API, not setting TZ header.")
   }
 
-  const network =
-    relayNetwork ||
-    new RelayNetworkLayer([
-      // TODO: Better introspection around if this is a SearchBar query,
-      // or further refactoring to extract `addMiddlewareToEnvironment(environment)`,
-      // to be used in the SearchBar QueryRenderer (for example).
-      next => req => {
-        if (req.id === "SearchBarSuggestQuery" && req.variables.term === "")
-          return Promise.resolve({ data: { viewer: {} } })
-        return next(req)
-      },
-      urlMiddleware({
-        url: METAPHYSICS_ENDPOINT,
-        headers: !!user
-          ? {
-              ...headers,
-              "X-USER-ID": user && user.id,
-              "X-ACCESS-TOKEN": user && user.accessToken,
-            }
-          : headers,
-      }),
-      relaySSRMiddleware.getMiddleware(),
-      cacheMiddleware({
-        size: 100, // max 100 requests
-        ttl: 900000, // 15 minutes
-        onInit: queryResponseCache => {
-          if (!isServer) {
-            hydrateCacheFromSSR(queryResponseCache)
+  const middlewares = [
+    searchBarImmediateResolveMiddleware(),
+    urlMiddleware({
+      url: METAPHYSICS_ENDPOINT,
+      headers: !!user
+        ? {
+            ...headers,
+            "X-USER-ID": user && user.id,
+            "X-ACCESS-TOKEN": user && user.accessToken,
           }
-        },
-      }),
-      next => async req => {
-        const res = await next(req)
-        const httpError = get(
-          res,
-          r => r.json.extensions.principalField.httpStatusCode
-        )
-        if (httpError) {
-          throw new HttpError(httpError)
-        } else {
-          return res
+        : headers,
+    }),
+    relaySSRMiddleware.getMiddleware(),
+    cacheMiddleware({
+      size: 100, // max 100 requests
+      ttl: 900000, // 15 minutes
+      onInit: queryResponseCache => {
+        if (!isServer) {
+          hydrateCacheFromSSR(queryResponseCache)
         }
       },
-      // TODO: This has been moved over from `Utils/metaphysics` but can eventually
-      // be replaced by error / retry middleware
-      next => async req => {
-        const response = await next(req)
-        if (!checkStatus || (response.status >= 200 && response.status < 300)) {
-          return response
-        } else {
-          const error = new NetworkError(response.statusText)
-          error.response = response
-          throw error
-        }
-      },
-      loggingEnabled && loggerMiddleware(),
-      loggingEnabled && metaphysicsExtensionsLoggerMiddleware(),
-      loggingEnabled && errorMiddleware({ disableServerMiddlewareTip: true }),
-    ])
+    }),
+    principalFieldErrorHandlerMiddleware(),
+    metaphysicsErrorHandlerMiddleware({ checkStatus }),
+    loggingEnabled && loggerMiddleware(),
+    loggingEnabled && metaphysicsExtensionsLoggerMiddleware(),
+    loggingEnabled && errorMiddleware({ disableServerMiddlewareTip: true }),
+  ]
+
+  // TODO: The `noThrow` option is used since we do our own error handling,
+  // and don't want the default behavior of throwing when `result.errors` exists.
+  // https://github.com/relay-tools/react-relay-network-modern#advanced-options-2nd-argument-after-middlewares
+  // This is still 'experimental' and might be removed.
+  const network =
+    relayNetwork || new RelayNetworkLayer(middlewares, { noThrow: true })
 
   const source = new RecordSource()
   const store = new Store(source)
