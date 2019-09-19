@@ -49,12 +49,12 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
     })
   }
 
-  const renderCarousel = ({ xs, sm, xl }) => {
+  const renderCarousel = breakpoints => {
     return (
       <Carousel
-        height={xs || sm ? "430px" : "500px"}
+        height={breakpoints.xs || breakpoints.sm ? "430px" : "500px"}
         options={{
-          groupCells: xs || sm ? 1 : 2,
+          groupCells: breakpoints.xs || breakpoints.sm ? 1 : 2,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
@@ -74,7 +74,7 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
           )
         }}
         renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow = !xl && members.length > 2
+          const shouldDisplayArrow = !breakpoints.xl && members.length > 2
           return (
             <ArrowContainer>
               {members.length > 3 ? (
@@ -95,18 +95,10 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
       <Serif size="5" mt={3}>
         {name}
       </Serif>
-      <Media lessThan="md">
-        {renderCarousel({ xs: true, sm: true, xl: false })}
-      </Media>
-      <Media at="md">
-        {renderCarousel({ xs: false, sm: false, xl: false })}
-      </Media>
-      <Media at="lg">
-        {renderCarousel({ xs: false, sm: false, xl: false })}
-      </Media>
-      <Media greaterThanOrEqual="xl">
-        {renderCarousel({ xs: false, sm: false, xl: true })}
-      </Media>
+      <Media lessThan="md">{renderCarousel({ xs: true, sm: true })}</Media>
+      <Media at="md">{renderCarousel({})}</Media>
+      <Media at="lg">{renderCarousel({})}</Media>
+      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
       <Spacer pb={2} />
     </FeaturedCollectionsContainer>
   )
