@@ -1,3 +1,15 @@
+# v18.1.14 (Thu Sep 19 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "Add error log" [#2837](https://github.com/artsy/reaction/pull/2837) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v18.1.13 (Thu Sep 19 2019)
 
 #### 🐛  Bug Fix
