@@ -10,6 +10,8 @@ storiesOf("Apps/Collect", module)
   .add("Collections", () => {
     return <MockRouter routes={collectRoutes} initialRoute="/collections" />
   })
+
+storiesOf("Apps/Collect/Collection", module)
   .add("Collection", () => {
     return (
       <MockRouter

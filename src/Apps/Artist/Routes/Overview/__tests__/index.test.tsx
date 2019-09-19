@@ -1,10 +1,6 @@
-// @ts-ignore
-import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
-import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
-import { Provider } from "unstated"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "../Components/ArtistRecommendations"
 import { OverviewRoute } from "../index"
 import {
@@ -23,11 +19,9 @@ describe("OverviewRoute", () => {
   describe("Artist Recommendations", () => {
     function getWrapper(artistData: OverviewRouteArtist, user: User = {}) {
       return mount(
-        <Provider inject={[{} as FilterState]}>
-          <SystemContextProvider user={user}>
-            <OverviewRoute artist={artistData} />
-          </SystemContextProvider>
-        </Provider>
+        <SystemContextProvider user={user}>
+          <OverviewRoute artist={artistData} />
+        </SystemContextProvider>
       )
     }
 
