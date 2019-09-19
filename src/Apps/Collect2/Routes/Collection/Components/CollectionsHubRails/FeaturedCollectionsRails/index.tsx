@@ -49,7 +49,13 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
     })
   }
 
-  const renderCarousel = breakpoints => {
+  interface Breakpoints {
+    xs?: boolean
+    sm?: boolean
+    xl?: boolean
+  }
+
+  const renderCarousel = (breakpoints: Breakpoints = {}) => {
     return (
       <Carousel
         height={breakpoints.xs || breakpoints.sm ? "430px" : "500px"}
@@ -96,8 +102,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
         {name}
       </Serif>
       <Media lessThan="md">{renderCarousel({ xs: true, sm: true })}</Media>
-      <Media at="md">{renderCarousel({})}</Media>
-      <Media at="lg">{renderCarousel({})}</Media>
+      <Media at="md">{renderCarousel()}</Media>
+      <Media at="lg">{renderCarousel()}</Media>
       <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
       <Spacer pb={2} />
     </FeaturedCollectionsContainer>
