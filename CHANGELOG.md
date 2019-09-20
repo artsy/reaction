@@ -1,3 +1,15 @@
+# v18.1.15 (Fri Sep 20 2019)
+
+#### 🐛  Bug Fix
+
+- Handle collections header flicker [#2838](https://github.com/artsy/reaction/pull/2838) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v18.1.14 (Thu Sep 19 2019)
 
 #### 🐛  Bug Fix
