@@ -9,7 +9,13 @@ import {
   MIN_WIDTH,
 } from "../Utils/rangeToTuple"
 
-export const SizeRangeFilter: FC = () => {
+interface TimePeriodFilterProps {
+  expanded?: boolean
+}
+
+export const SizeRangeFilter: FC<TimePeriodFilterProps> = ({
+  expanded = false,
+}) => {
   const filterContext = useArtworkFilterContext()
 
   const [initialMinHeight, initialMaxHeight] = filterContext.rangeToTuple(
@@ -18,7 +24,7 @@ export const SizeRangeFilter: FC = () => {
   const [initialMinWidth, initialMaxWidth] = filterContext.rangeToTuple("width")
 
   return (
-    <Toggle label="Size">
+    <Toggle label="Size" expanded={expanded}>
       <Flex flexDirection="column" alignItems="left" my={1}>
         <>
           <LabeledRange

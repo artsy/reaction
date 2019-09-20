@@ -26,7 +26,7 @@ const ArtworkFilterArtworkGrid: React.FC<
   const aggregations = get(props, p => p.filtered_artworks.aggregations)
 
   /**
-   * If aggregations have not been passed as props  when instantiating the
+   * If aggregations have not been passed as props when instantiating the
    * <ArtworkFilter> component then populate.
    */
   useEffect(() => {
