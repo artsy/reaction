@@ -3,7 +3,13 @@ import React, { FC } from "react"
 import { get } from "Utils/get"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-export const TimePeriodFilter: FC = props => {
+interface TimePeriodFilterProps {
+  expanded?: boolean
+}
+
+export const TimePeriodFilter: FC<TimePeriodFilterProps> = ({
+  expanded = false,
+}) => {
   const { aggregations, ...filterContext } = useArtworkFilterContext()
   const timePeriods = aggregations.find(agg => agg.slice === "MAJOR_PERIOD")
 
@@ -22,7 +28,7 @@ export const TimePeriodFilter: FC = props => {
   )
 
   return (
-    <Toggle label="Time period">
+    <Toggle label="Time period" expanded={expanded}>
       <Flex flexDirection="column" my={1}>
         <RadioGroup
           deselectable

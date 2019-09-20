@@ -19,7 +19,7 @@ describe("TimePeriodFilter", () => {
 
   const TimePeriodFilterFilterTest = () => {
     context = useArtworkFilterContext()
-    return <TimePeriodFilter />
+    return <TimePeriodFilter expanded />
   }
 
   it("shows specific time periods if aggregations passed to context", () => {

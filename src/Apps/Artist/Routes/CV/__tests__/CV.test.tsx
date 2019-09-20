@@ -29,7 +29,7 @@ describe("CV Route", () => {
         ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
       },
       variables: {
-        artistID: "pablo-picasso",
+        artist_id: "pablo-picasso",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

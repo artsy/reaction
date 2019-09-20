@@ -19,7 +19,7 @@ describe("ColorFilter", () => {
 
   const ColorFilterTest = () => {
     context = useArtworkFilterContext()
-    return <ColorFilter />
+    return <ColorFilter expanded />
   }
 
   it("selects a color based on svg swatch click", () => {

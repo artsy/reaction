@@ -2,7 +2,11 @@ import { CheckIcon, Flex, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-export const ColorFilter: FC = () => {
+interface ColorFilterProps {
+  expanded?: boolean
+}
+
+export const ColorFilter: FC<ColorFilterProps> = ({ expanded = false }) => {
   const filterContext = useArtworkFilterContext()
 
   const toggleColor = color => {
@@ -19,7 +23,7 @@ export const ColorFilter: FC = () => {
     ...CheckmarkPositions[filterContext.filters.color],
   }
   return (
-    <Toggle label="Color">
+    <Toggle label="Color" expanded={expanded}>
       <Flex flexDirection="column" alignItems="center" my={1}>
         <>
           <svg
