@@ -41,6 +41,7 @@ export const CollectApp = track({
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()
+  const { user } = useSystemContext()
 
   // FIXME: Remove after A/B test completes
   // @ts-ignore
