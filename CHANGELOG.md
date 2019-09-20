@@ -1,3 +1,15 @@
+# v18.1.16 (Fri Sep 20 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1506] use unique key [#2840](https://github.com/artsy/reaction/pull/2840) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v18.1.15 (Fri Sep 20 2019)
 
 #### 🐛  Bug Fix
