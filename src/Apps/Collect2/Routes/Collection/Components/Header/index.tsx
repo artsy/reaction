@@ -229,7 +229,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
                     collection_id={collection.id}
                     collection_slug={collection.slug}
-                    key="defaultHeader"
+                    key={collection.slug}
                   />
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
