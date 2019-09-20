@@ -58,7 +58,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
             return (
               <a
                 href={artwork.href}
-                key={i}
+                key={artwork.href}
                 onClick={() => {
                   trackEvent({
                     action_type: AnalyticsSchema.ActionType.Click,
