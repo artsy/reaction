@@ -99,8 +99,8 @@ describe("Payment", () => {
     const page = await buildPage()
     await page.clickSubmit()
     await page.expectAndDismissErrorDialogMatching(
-      "An error occurred",
-      "This is the description of an error."
+      "Your card was declined",
+      "Please enter another payment method or contact your bank for more information."
     )
   })
 
