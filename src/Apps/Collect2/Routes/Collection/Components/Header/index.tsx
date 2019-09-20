@@ -214,6 +214,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     mb={3}
                     headerImageUrl={resizedHeaderImage}
                     height={imageHeight}
+                    key="singleImageHeader"
                   >
                     <Overlay />
                     {collection.credit && (
@@ -228,6 +229,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
                     collection_id={collection.id}
                     collection_slug={collection.slug}
+                    key="defaultHeader"
                   />
                 )}
                 <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
