@@ -26,11 +26,11 @@ export type EditableLocation = {
     readonly state?: string | null;
     readonly state_code?: string | null;
 };
-export type RegisterPreCreateBidderMutationVariables = {
+export type RegisterCreateCreditCardAndUpdatePhoneMutationVariables = {
     readonly creditCardInput: CreditCardInput;
     readonly profileInput: UpdateMyProfileInput;
 };
-export type RegisterPreCreateBidderMutationResponse = {
+export type RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
     readonly updateMyUserProfile: ({
         readonly user: ({
             readonly id: string;
@@ -51,15 +51,15 @@ export type RegisterPreCreateBidderMutationResponse = {
         }) | null;
     }) | null;
 };
-export type RegisterPreCreateBidderMutation = {
-    readonly response: RegisterPreCreateBidderMutationResponse;
-    readonly variables: RegisterPreCreateBidderMutationVariables;
+export type RegisterCreateCreditCardAndUpdatePhoneMutation = {
+    readonly response: RegisterCreateCreditCardAndUpdatePhoneMutationResponse;
+    readonly variables: RegisterCreateCreditCardAndUpdatePhoneMutationVariables;
 };
 
 
 
 /*
-mutation RegisterPreCreateBidderMutation(
+mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
   $creditCardInput: CreditCardInput!
   $profileInput: UpdateMyProfileInput!
 ) {
@@ -236,13 +236,13 @@ v5 = {
 return {
   "kind": "Request",
   "operationKind": "mutation",
-  "name": "RegisterPreCreateBidderMutation",
+  "name": "RegisterCreateCreditCardAndUpdatePhoneMutation",
   "id": null,
-  "text": "mutation RegisterPreCreateBidderMutation(\n  $creditCardInput: CreditCardInput!\n  $profileInput: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $profileInput) {\n    user {\n      id\n      __id\n    }\n  }\n  createCreditCard(input: $creditCardInput) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            last_digits\n            __id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+  "text": "mutation RegisterCreateCreditCardAndUpdatePhoneMutation(\n  $creditCardInput: CreditCardInput!\n  $profileInput: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $profileInput) {\n    user {\n      id\n      __id\n    }\n  }\n  createCreditCard(input: $creditCardInput) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            last_digits\n            __id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "RegisterPreCreateBidderMutation",
+    "name": "RegisterCreateCreditCardAndUpdatePhoneMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -276,7 +276,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "RegisterPreCreateBidderMutation",
+    "name": "RegisterCreateCreditCardAndUpdatePhoneMutation",
     "argumentDefinitions": v0,
     "selections": [
       v2,
@@ -315,5 +315,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'd87757512a4955f1cf1ab27d2a981486';
+(node as any).hash = '00a2498f3a22aea39c5d39bdcb14aaee';
 export default node;

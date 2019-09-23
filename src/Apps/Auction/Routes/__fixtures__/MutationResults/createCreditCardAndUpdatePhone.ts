@@ -1,6 +1,6 @@
-import { RegisterPreCreateBidderMutationResponse } from "__generated__/RegisterPreCreateBidderMutation.graphql"
+import { RegisterCreateCreditCardAndUpdatePhoneMutationResponse } from "__generated__/RegisterCreateCreditCardAndUpdatePhoneMutation.graphql"
 
-export const persistBidderRequirementsSuccessful: RegisterPreCreateBidderMutationResponse = {
+export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
       id: "example-user-id",
@@ -17,7 +17,7 @@ export const persistBidderRequirementsSuccessful: RegisterPreCreateBidderMutatio
   },
 }
 
-export const persistBidderRequirementsFailed: RegisterPreCreateBidderMutationResponse = {
+export const createCreditCardAndUpdatePhoneFailed: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
       id: "example-user-id",

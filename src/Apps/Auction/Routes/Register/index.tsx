@@ -5,7 +5,7 @@ import {
   RegisterCreateBidderMutation,
   RegisterCreateBidderMutationResponse,
 } from "__generated__/RegisterCreateBidderMutation.graphql"
-import { RegisterPreCreateBidderMutation } from "__generated__/RegisterPreCreateBidderMutation.graphql"
+import { RegisterCreateCreditCardAndUpdatePhoneMutation } from "__generated__/RegisterCreateCreditCardAndUpdatePhoneMutation.graphql"
 import {
   FormResult,
   StripeWrappedRegistrationForm,
@@ -87,61 +87,64 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     })
   }
 
-  function persistBidderRequirements(phone, token) {
+  function createCreditCardAndUpdatePhone(phone, token) {
     return new Promise(async (resolve, reject) => {
-      commitMutation<RegisterPreCreateBidderMutation>(relay.environment, {
-        onCompleted: (data, errors) => {
-          const {
-            createCreditCard: { creditCardOrError },
-          } = data
+      commitMutation<RegisterCreateCreditCardAndUpdatePhoneMutation>(
+        relay.environment,
+        {
+          onCompleted: (data, errors) => {
+            const {
+              createCreditCard: { creditCardOrError },
+            } = data
 
-          if (creditCardOrError.creditCardEdge) {
-            resolve()
-          } else {
-            if (errors) {
-              reject(errors)
+            if (creditCardOrError.creditCardEdge) {
+              resolve()
             } else {
-              reject(creditCardOrError.mutationError)
-            }
-          }
-        },
-        onError: reject,
-        mutation: graphql`
-          mutation RegisterPreCreateBidderMutation(
-            $creditCardInput: CreditCardInput!
-            $profileInput: UpdateMyProfileInput!
-          ) {
-            updateMyUserProfile(input: $profileInput) {
-              user {
-                id
+              if (errors) {
+                reject(errors)
+              } else {
+                reject(creditCardOrError.mutationError)
               }
             }
+          },
+          onError: reject,
+          mutation: graphql`
+            mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
+              $creditCardInput: CreditCardInput!
+              $profileInput: UpdateMyProfileInput!
+            ) {
+              updateMyUserProfile(input: $profileInput) {
+                user {
+                  id
+                }
+              }
 
-            createCreditCard(input: $creditCardInput) {
-              creditCardOrError {
-                ... on CreditCardMutationSuccess {
-                  creditCardEdge {
-                    node {
-                      last_digits
+              createCreditCard(input: $creditCardInput) {
+                creditCardOrError {
+                  ... on CreditCardMutationSuccess {
+                    creditCardEdge {
+                      node {
+                        last_digits
+                      }
+                    }
+                  }
+                  ... on CreditCardMutationFailure {
+                    mutationError {
+                      type
+                      message
+                      detail
                     }
                   }
                 }
-                ... on CreditCardMutationFailure {
-                  mutationError {
-                    type
-                    message
-                    detail
-                  }
-                }
               }
             }
-          }
-        `,
-        variables: {
-          creditCardInput: { token },
-          profileInput: { phone },
-        },
-      })
+          `,
+          variables: {
+            creditCardInput: { token },
+            profileInput: { phone },
+          },
+        }
+      )
     })
   }
 
@@ -164,7 +167,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   }
 
   function handleSubmit(actions: FormikActions<object>, result: FormResult) {
-    persistBidderRequirements(result.telephone, result.token.id)
+    createCreditCardAndUpdatePhone(result.telephone, result.token.id)
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {
