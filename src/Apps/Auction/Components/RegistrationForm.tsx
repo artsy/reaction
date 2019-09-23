@@ -21,6 +21,11 @@ export const StyledCardElement = styled(CardElement)`
   padding: 9px 10px;
 `
 
+export interface FormResult {
+  token: stripe.Token
+  telephone: string
+}
+
 export interface FormValues {
   name: string
   street: string
@@ -179,14 +184,22 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
   )
 }
 
+Yup.addMethod(Yup.string, "present", function(message) {
+  return this.test("test-present", message, value => {
+    return this.trim()
+      .required(message)
+      .isValid(value)
+  })
+})
+
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  street: Yup.string().required("Address is required"),
-  country: Yup.string().required("Country is required"),
-  city: Yup.string().required("City is required"),
-  state: Yup.string().required("State is required"),
-  postalCode: Yup.string().required("Postal code is required"),
-  telephone: Yup.string().required("Telephone is required"),
+  name: Yup.string().present("Name is required"),
+  street: Yup.string().present("Address is required"),
+  country: Yup.string().present("Country is required"),
+  city: Yup.string().present("City is required"),
+  state: Yup.string().present("State is required"),
+  postalCode: Yup.string().present("Postal code is required"),
+  telephone: Yup.string().present("Telephone is required"),
   agreeToTerms: Yup.bool().oneOf(
     [true],
     "You must agree to the Conditions of Sale"
@@ -230,7 +243,7 @@ const OnSubmitValidationError: React.FC<{
 
 export interface RegistrationFormProps
   extends ReactStripeElements.InjectedStripeProps {
-  onSubmit: (formikActions: FormikActions<object>, token: stripe.Token) => void
+  onSubmit: (formikActions: FormikActions<object>, result: FormResult) => void
   trackSubmissionErrors: TrackErrors
 }
 
@@ -268,7 +281,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
         setFieldError("creditCard", error.message)
         setSubmitting(false)
       } else {
-        props.onSubmit(actions, token)
+        const result: FormResult = { telephone: values.telephone, token }
+
+        props.onSubmit(actions, result)
       }
     })
   }

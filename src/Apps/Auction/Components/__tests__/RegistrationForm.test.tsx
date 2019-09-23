@@ -26,7 +26,7 @@ describe("RegistrationForm", () => {
     trackSubmissionErrors: jest.fn(),
   }
 
-  beforeAll(() => {
+  beforeEach(() => {
     wrapper = mount(
       <MockBoot>
         <StripeProvider stripe={null}>

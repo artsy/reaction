@@ -10,9 +10,9 @@ import { expectOne } from "DevTools/RootTestPage"
 import { RegisterQueryResponseFixture } from "../../__fixtures__/routes_RegisterQuery"
 import { createBidderSuccessful } from "../__fixtures__/MutationResults/createBidder"
 import {
-  createCreditCardFailed,
-  createCreditCardSuccessful,
-} from "../__fixtures__/MutationResults/createCreditCard"
+  createCreditCardAndUpdatePhoneFailed,
+  createCreditCardAndUpdatePhoneSuccessful,
+} from "../__fixtures__/MutationResults/createCreditCardAndUpdatePhone"
 import { stripeTokenResponse } from "../__fixtures__/Stripe"
 import { RegisterRouteFragmentContainer } from "../Register"
 import { RegisterTestPage } from "./Utils/RegisterTestPage"
@@ -71,6 +71,7 @@ const setupTestEnv = () => {
     defaultMutationResults: {
       createCreditCard: {},
       createBidder: {},
+      updateMyUserProfile: {},
     },
   })
 }
@@ -126,7 +127,7 @@ describe("Routes/Register ", () => {
 
     setupCreateTokenMock()
 
-    env.mutations.useResultsOnce(createCreditCardSuccessful)
+    env.mutations.useResultsOnce(createCreditCardAndUpdatePhoneSuccessful)
     env.mutations.useResultsOnce(createBidderSuccessful)
 
     await page.fillFormWithValidValues()
@@ -156,7 +157,7 @@ describe("Routes/Register ", () => {
 
     setupCreateTokenMock()
 
-    env.mutations.useResultsOnce(createCreditCardFailed)
+    env.mutations.useResultsOnce(createCreditCardAndUpdatePhoneFailed)
 
     await page.fillFormWithValidValues()
     await page.submitForm()
@@ -185,5 +186,19 @@ describe("Routes/Register ", () => {
 
   it("displays an error modal if the `createBidder` mutation fails", async () => {
     pending("until we can mimic Gravity-provided `createBidder` errors")
+  })
+
+  it("validates against an empty phone number", async () => {
+    const env = setupTestEnv()
+    const page = await env.buildPage()
+
+    setupCreateTokenMock()
+
+    await page.fillFormWithValidValues()
+    await page.fillTelephone("   ")
+
+    await page.submitForm()
+
+    expect(page.text()).toMatch("Telephone is required")
   })
 })

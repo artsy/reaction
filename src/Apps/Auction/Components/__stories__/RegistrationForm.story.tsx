@@ -7,8 +7,14 @@ storiesOf("Apps/Auction/Components", module).add("RegistrationForm", () => {
   return (
     <Section>
       <StripeWrappedRegistrationForm
-        onSubmit={(actions, token) => {
-          window.alert(JSON.stringify({ token: token.id }, null, 2))
+        onSubmit={(actions, result) => {
+          window.alert(
+            JSON.stringify(
+              { telephone: result.telephone, token: result.token.id },
+              null,
+              2
+            )
+          )
           actions.setSubmitting(false)
         }}
         trackSubmissionErrors={errors =>

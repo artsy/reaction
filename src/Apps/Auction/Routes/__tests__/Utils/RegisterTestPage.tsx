@@ -35,6 +35,11 @@ export class RegisterTestPage extends RootTestPage {
   get agreeToTermsInput() {
     return expectOne(this.form.find(Checkbox))
   }
+  async fillTelephone(value) {
+    await this.telephoneInput.prop("onChange")({
+      target: { name: "telephone", value },
+    } as React.ChangeEvent<any>)
+  }
   async fillFormWithValidValues() {
     await this.nameInput.prop("onChange")({
       target: { name: "name", value: "Example Name" },
@@ -51,9 +56,7 @@ export class RegisterTestPage extends RootTestPage {
     await this.postalCodeInput.prop("onChange")({
       target: { name: "postalCode", value: "12345" },
     } as React.ChangeEvent<any>)
-    await this.telephoneInput.prop("onChange")({
-      target: { name: "telephone", value: "1234567878" },
-    } as React.ChangeEvent<any>)
+    this.fillTelephone("1234567878")
 
     this.countryInput.props().onSelect("United States")
     this.agreeToTermsInput.props().onSelect(true)
