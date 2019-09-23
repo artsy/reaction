@@ -10,9 +10,9 @@ import { expectOne } from "DevTools/RootTestPage"
 import { RegisterQueryResponseFixture } from "../../__fixtures__/routes_RegisterQuery"
 import { createBidderSuccessful } from "../__fixtures__/MutationResults/createBidder"
 import {
-  createCreditCardFailed,
-  createCreditCardSuccessful,
-} from "../__fixtures__/MutationResults/createCreditCard"
+  persistBidderRequirementsFailed,
+  persistBidderRequirementsSuccessful,
+} from "../__fixtures__/MutationResults/persistBidderRequirements"
 import { stripeTokenResponse } from "../__fixtures__/Stripe"
 import { RegisterRouteFragmentContainer } from "../Register"
 import { RegisterTestPage } from "./Utils/RegisterTestPage"
@@ -71,6 +71,7 @@ const setupTestEnv = () => {
     defaultMutationResults: {
       createCreditCard: {},
       createBidder: {},
+      updateMyUserProfile: {},
     },
   })
 }
@@ -126,7 +127,7 @@ describe("Routes/Register ", () => {
 
     setupCreateTokenMock()
 
-    env.mutations.useResultsOnce(createCreditCardSuccessful)
+    env.mutations.useResultsOnce(persistBidderRequirementsSuccessful)
     env.mutations.useResultsOnce(createBidderSuccessful)
 
     await page.fillFormWithValidValues()
@@ -156,7 +157,7 @@ describe("Routes/Register ", () => {
 
     setupCreateTokenMock()
 
-    env.mutations.useResultsOnce(createCreditCardFailed)
+    env.mutations.useResultsOnce(persistBidderRequirementsFailed)
 
     await page.fillFormWithValidValues()
     await page.submitForm()

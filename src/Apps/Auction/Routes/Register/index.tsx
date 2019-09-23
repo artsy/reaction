@@ -5,8 +5,11 @@ import {
   RegisterCreateBidderMutation,
   RegisterCreateBidderMutationResponse,
 } from "__generated__/RegisterCreateBidderMutation.graphql"
-import { RegisterCreateCreditCardMutation } from "__generated__/RegisterCreateCreditCardMutation.graphql"
-import { StripeWrappedRegistrationForm } from "Apps/Auction/Components/RegistrationForm"
+import { RegisterPreCreateBidderMutation } from "__generated__/RegisterPreCreateBidderMutation.graphql"
+import {
+  FormResult,
+  StripeWrappedRegistrationForm,
+} from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
@@ -84,9 +87,9 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     })
   }
 
-  function createCreditCard(token) {
+  function persistBidderRequirements(phone, token) {
     return new Promise(async (resolve, reject) => {
-      commitMutation<RegisterCreateCreditCardMutation>(relay.environment, {
+      commitMutation<RegisterPreCreateBidderMutation>(relay.environment, {
         onCompleted: (data, errors) => {
           const {
             createCreditCard: { creditCardOrError },
@@ -104,8 +107,17 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         },
         onError: reject,
         mutation: graphql`
-          mutation RegisterCreateCreditCardMutation($input: CreditCardInput!) {
-            createCreditCard(input: $input) {
+          mutation RegisterPreCreateBidderMutation(
+            $creditCardInput: CreditCardInput!
+            $profileInput: UpdateMyProfileInput!
+          ) {
+            updateMyUserProfile(input: $profileInput) {
+              user {
+                id
+              }
+            }
+
+            createCreditCard(input: $creditCardInput) {
               creditCardOrError {
                 ... on CreditCardMutationSuccess {
                   creditCardEdge {
@@ -126,7 +138,8 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
           }
         `,
         variables: {
-          input: { token },
+          creditCardInput: { token },
+          profileInput: { phone },
         },
       })
     })
@@ -150,8 +163,8 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     actions.setStatus("submissionFailed")
   }
 
-  function handleSubmit(actions: FormikActions<object>, token: stripe.Token) {
-    createCreditCard(token.id)
+  function handleSubmit(actions: FormikActions<object>, result: FormResult) {
+    persistBidderRequirements(result.telephone, result.token.id)
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {

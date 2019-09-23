@@ -21,6 +21,11 @@ export const StyledCardElement = styled(CardElement)`
   padding: 9px 10px;
 `
 
+export interface FormResult {
+  token: stripe.Token
+  telephone: string
+}
+
 export interface FormValues {
   name: string
   street: string
@@ -230,7 +235,7 @@ const OnSubmitValidationError: React.FC<{
 
 export interface RegistrationFormProps
   extends ReactStripeElements.InjectedStripeProps {
-  onSubmit: (formikActions: FormikActions<object>, token: stripe.Token) => void
+  onSubmit: (formikActions: FormikActions<object>, result: FormResult) => void
   trackSubmissionErrors: TrackErrors
 }
 
@@ -268,7 +273,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
         setFieldError("creditCard", error.message)
         setSubmitting(false)
       } else {
-        props.onSubmit(actions, token)
+        const result: FormResult = { telephone: values.telephone, token }
+
+        props.onSubmit(actions, result)
       }
     })
   }
