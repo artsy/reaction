@@ -38,17 +38,17 @@ export const CVRouteFragmentContainer = createFragmentContainer(CVRoute, {
         groupShows_at_a_fair: { type: "Boolean", defaultValue: false }
         fairBooths_at_a_fair: { type: "Boolean", defaultValue: true }
       ) {
-      artist_soloShows: artist(id: $artistID) {
+      artist_soloShows: artist(id: $artist_id) {
         ...CVItem_artist
           @arguments(
             at_a_fair: $soloShows_at_a_fair
             solo_show: $soloShows_solo_show
           )
       }
-      artist_groupShows: artist(id: $artistID) {
+      artist_groupShows: artist(id: $artist_id) {
         ...CVItem_artist @arguments(at_a_fair: $groupShows_at_a_fair)
       }
-      artist_fairBooths: artist(id: $artistID) {
+      artist_fairBooths: artist(id: $artist_id) {
         ...CVItem_artist @arguments(at_a_fair: $fairBooths_at_a_fair)
       }
     }

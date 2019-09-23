@@ -6,6 +6,7 @@ declare const _FollowArtistButton_artist$ref: unique symbol;
 export type FollowArtistButton_artist$ref = typeof _FollowArtistButton_artist$ref;
 export type FollowArtistButton_artist = {
     readonly __id: string;
+    readonly name: string | null;
     readonly id: string;
     readonly is_followed: boolean | null;
     readonly counts: ({
@@ -35,6 +36,13 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "__id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
       "args": null,
       "storageKey": null
     },
@@ -84,5 +92,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'c8cd753c0684c100bbc6d08b01eec991';
+(node as any).hash = '76a8dd8d51e477cc276dbcf883045e21';
 export default node;

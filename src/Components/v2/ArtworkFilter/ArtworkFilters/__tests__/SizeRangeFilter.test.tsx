@@ -20,7 +20,7 @@ describe("SizeRangeFilter", () => {
 
   const SizeRangeFilterTest = () => {
     context = useArtworkFilterContext()
-    return <SizeRangeFilter />
+    return <SizeRangeFilter expanded />
   }
 
   it("height filter updates context on filter change", done => {

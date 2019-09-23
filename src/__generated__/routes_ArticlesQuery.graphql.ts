@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { Articles_artist$ref } from "./Articles_artist.graphql";
 export type routes_ArticlesQueryVariables = {
-    readonly artistID: string;
+    readonly artist_id: string;
 };
 export type routes_ArticlesQueryResponse = {
     readonly artist: ({
@@ -19,9 +19,9 @@ export type routes_ArticlesQuery = {
 
 /*
 query routes_ArticlesQuery(
-  $artistID: String!
+  $artist_id: String!
 ) {
-  artist(id: $artistID) {
+  artist(id: $artist_id) {
     ...Articles_artist
     __id
   }
@@ -91,7 +91,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "artist_id",
     "type": "String!",
     "defaultValue": null
   }
@@ -100,7 +100,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -141,7 +141,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArticlesQuery",
   "id": null,
-  "text": "query routes_ArticlesQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM Do, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+  "text": "query routes_ArticlesQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) {\n    ...Articles_artist\n    __id\n  }\n}\n\nfragment Articles_artist on Artist {\n  ...ArtistArticles_artist\n  __id\n}\n\nfragment ArtistArticles_artist on Artist {\n  id\n  articlesConnection(first: 10, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM Do, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -419,5 +419,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c9b790c3bf82673cdc79e82e99663083';
+(node as any).hash = '78f1e688d80c3765dd6a173a61582d97';
 export default node;

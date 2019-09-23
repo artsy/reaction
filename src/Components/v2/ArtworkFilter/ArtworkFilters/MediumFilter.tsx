@@ -1,9 +1,9 @@
-import { Radio, RadioGroup } from "@artsy/palette"
+import { Flex, Radio, RadioGroup, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 export const MediumFilter: FC = () => {
-  const { aggregations, ...filterContext } = useArtworkFilterContext()
+  const { aggregations, counts, ...filterContext } = useArtworkFilterContext()
   const mediums = aggregations.find(agg => agg.slice === "MEDIUM") || {
     slice: "",
     counts: [],
@@ -12,26 +12,31 @@ export const MediumFilter: FC = () => {
     mediums && mediums.counts.length ? mediums.counts : hardcodedMediums
 
   const selectedMedium = filterContext.filters.medium
+  const isExpanded = !counts.artworks || counts.artworks > 0
 
   return (
-    <RadioGroup
-      deselectable
-      defaultValue={selectedMedium}
-      onSelect={selectedOption => {
-        filterContext.setFilter("medium", selectedOption)
-      }}
-    >
-      {allowedMediums.map((medium, index) => {
-        return (
-          <Radio
-            key={index}
-            my={0.3}
-            value={medium.id.toLocaleLowerCase()}
-            label={medium.name}
-          />
-        )
-      })}
-    </RadioGroup>
+    <Toggle label="Medium" expanded={isExpanded}>
+      <Flex flexDirection="column" alignItems="left" mb={1}>
+        <RadioGroup
+          deselectable
+          defaultValue={selectedMedium}
+          onSelect={selectedOption => {
+            filterContext.setFilter("medium", selectedOption)
+          }}
+        >
+          {allowedMediums.map((medium, index) => {
+            return (
+              <Radio
+                key={index}
+                my={0.3}
+                value={medium.id.toLocaleLowerCase()}
+                label={medium.name}
+              />
+            )
+          })}
+        </RadioGroup>
+      </Flex>
+    </Toggle>
   )
 }
 

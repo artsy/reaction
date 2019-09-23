@@ -18,6 +18,7 @@ export const collectRoutes: RouteConfig[] = [
     query: graphql`
       query collectRoutes_ArtworkFilterQuery(
         $acquireable: Boolean
+        $aggregations: [ArtworkAggregation] = [TOTAL]
         $artist_id: String
         $at_auction: Boolean
         $attribution_class: [String]
@@ -39,7 +40,10 @@ export const collectRoutes: RouteConfig[] = [
           ...Collect_marketingCollections
         }
 
-        filterArtworks: filter_artworks(aggregations: [TOTAL], sort: $sort) {
+        filterArtworks: filter_artworks(
+          aggregations: $aggregations
+          sort: $sort
+        ) {
           ...SeoProductsForArtworks_artworks
         }
 
@@ -47,6 +51,7 @@ export const collectRoutes: RouteConfig[] = [
           ...ArtworkFilter_viewer
             @arguments(
               acquireable: $acquireable
+              aggregations: $aggregations
               artist_id: $artist_id
               at_auction: $at_auction
               attribution_class: $attribution_class
