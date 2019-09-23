@@ -1,3 +1,20 @@
+# v18.1.19 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- Persist telephone from bidder registration form to user profile [#2842](https://github.com/artsy/reaction/pull/2842) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.7 to v4.17.8 [#2843](https://github.com/artsy/reaction/pull/2843) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v18.1.18 (Mon Sep 23 2019)
 
 #### 🐛  Bug Fix
