@@ -187,4 +187,18 @@ describe("Routes/Register ", () => {
   it("displays an error modal if the `createBidder` mutation fails", async () => {
     pending("until we can mimic Gravity-provided `createBidder` errors")
   })
+
+  it("validates against an empty phone number", async () => {
+    const env = setupTestEnv()
+    const page = await env.buildPage()
+
+    setupCreateTokenMock()
+
+    await page.fillFormWithValidValues()
+    await page.fillTelephone("   ")
+
+    await page.submitForm()
+
+    expect(page.text()).toMatch("Telephone is required")
+  })
 })
