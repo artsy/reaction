@@ -1,3 +1,15 @@
+# v18.1.18 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Corrections footer [#2841](https://github.com/artsy/reaction/pull/2841) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v18.1.17 (Mon Sep 23 2019)
 
 #### 🐛  Bug Fix
