@@ -1,3 +1,15 @@
+# v18.1.17 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- improved error messaging on payment page [#2839](https://github.com/artsy/reaction/pull/2839) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v18.1.16 (Fri Sep 20 2019)
 
 #### 🐛  Bug Fix
