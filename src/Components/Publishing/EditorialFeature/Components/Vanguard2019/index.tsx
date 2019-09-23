@@ -7,6 +7,7 @@ import React from "react"
 import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { ArtistWrapper } from "./Components/ArtistWrapper"
+import { VanguardFooter } from "./Components/Footer"
 import { VanguardFrameText } from "./Components/FrameText"
 import { VanguardIntroduction } from "./Components/Introduction"
 import { VanguardSeriesWrapper } from "./Components/SeriesWrapper"
@@ -112,6 +113,7 @@ export class Vanguard2019 extends React.Component<
 
         {/** display credits at end of article series on mobile */}
         {isMobile && <VanguardCredits isMobile={isMobile} />}
+        <VanguardFooter />
       </VanguardWrapper>
     )
   }
