@@ -10,17 +10,15 @@ import {
   ArtistBioFragmentContainer as ArtistBio,
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
-import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
-import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
-import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+
 import { Location } from "found"
 import React from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
+import { ArtistArtworkFilterRefetchContainer as ArtworkFilter } from "./Components/ArtistArtworkFilter"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
 import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
-import { ZeroState } from "./Components/ZeroState"
 
 export interface OverviewRouteProps {
   artist: Overview_artist
@@ -61,7 +59,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
       return null
     }
 
-    const { artist, location, relay } = this.props
+    const { artist, location } = this.props
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
@@ -138,41 +136,14 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
         {!hideMainOverviewSection && <Spacer mb={4} />}
 
         <Box>
-          <Separator mb={3} />
           <ArtistCollectionsRail artistID={artist._id} />
-          <Spacer mb={3} />
         </Box>
 
         <Row>
           <Col>
             <span id="jump--artistArtworkGrid" />
 
-            <ArtworkFilterContextProvider
-              filters={location.query}
-              sortOptions={[
-                { value: "-decayed_merch", text: "Default" },
-                { value: "-partner_updated_at", text: "Recently updated" },
-                { value: "-published_at", text: "Recently added" },
-                { value: "-year", text: "Artwork year (desc.)" },
-                { value: "year", text: "Artwork year (asc.)" },
-              ]}
-              aggregations={artist.sidebarAggregations.aggregations as any}
-              counts={artist.counts}
-              onChange={updateUrl}
-              onFilterClick={(key, value, filterState) => {
-                this.props.tracking.trackEvent({
-                  action_type: Schema.ActionType.CommercialFilterParamsChanged,
-                  changed: { [key]: value },
-                  current: filterState,
-                })
-              }}
-            >
-              <BaseArtworkFilter relay={relay} viewer={artist}>
-                {artist.counts.artworks.length === 0 && (
-                  <ZeroState artist={artist} is_followed={artist.is_followed} />
-                )}
-              </BaseArtworkFilter>
-            </ArtworkFilterContextProvider>
+            <ArtworkFilter artist={artist} location={location} />
           </Col>
         </Row>
 
@@ -245,7 +216,7 @@ export const ArtistOverviewQuery = graphql`
   }
 `
 
-export const OverviewRouteFragmentContainer = createRefetchContainer(
+export const OverviewRouteFragmentContainer = createFragmentContainer(
   withSystemContext(OverviewRoute),
   {
     artist: graphql`
@@ -291,7 +262,6 @@ export const OverviewRouteFragmentContainer = createRefetchContainer(
           has_make_offer_artworks
         }
         href
-        is_followed
         is_consignable
         # NOTE: The following are used to determine whether sections
         # should be rendered.
@@ -340,45 +310,29 @@ export const OverviewRouteFragmentContainer = createRefetchContainer(
           type
         }
 
-        sidebarAggregations: filtered_artworks(
-          sort: $sort
-          page: $page
-          aggregations: $aggregations
-        ) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-        }
-
-        filtered_artworks(
-          acquireable: $acquireable
-          aggregations: $aggregations
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
-          color: $color
-          for_sale: $for_sale
-          height: $height
-          inquireable_only: $inquireable_only
-          keyword: $keyword
-          major_periods: $major_periods
-          medium: $medium
-          offerable: $offerable
-          page: $page
-          partner_id: $partner_id
-          price_range: $price_range
-          size: 0
-          sort: $sort
-          width: $width
-        ) {
-          ...ArtworkFilterArtworkGrid2_filtered_artworks
-        }
+        ...ArtistArtworkFilter_artist
+          @arguments(
+            acquireable: $acquireable
+            aggregations: $aggregations
+            artist_id: $artist_id
+            at_auction: $at_auction
+            attribution_class: $attribution_class
+            color: $color
+            for_sale: $for_sale
+            hasFilter: $hasFilter
+            height: $height
+            inquireable_only: $inquireable_only
+            keyword: $keyword
+            major_periods: $major_periods
+            medium: $medium
+            offerable: $offerable
+            page: $page
+            partner_id: $partner_id
+            price_range: $price_range
+            sort: $sort
+            width: $width
+          )
       }
     `,
-  },
-  ArtistOverviewQuery
+  }
 )

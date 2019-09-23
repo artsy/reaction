@@ -39,8 +39,8 @@ import {
   Separator,
   Spacer,
 } from "@artsy/palette"
+import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
-import { Overview_artist } from "__generated__/Overview_artist.graphql"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -83,7 +83,7 @@ export const ArtworkFilter: React.FC<
 export const BaseArtworkFilter: React.FC<{
   relay: RelayRefetchProp
   relayVariables?: object
-  viewer: ArtworkFilter_viewer | Collection_viewer | Overview_artist
+  viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
