@@ -60,6 +60,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     }
 
     const { artist, location } = this.props
+    const { sidebarAggregations } = artist
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
@@ -143,7 +144,11 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
           <Col>
             <span id="jump--artistArtworkGrid" />
 
-            <ArtworkFilter artist={artist} location={location} />
+            <ArtworkFilter
+              artist={artist}
+              location={location}
+              sidebarAggregations={sidebarAggregations}
+            />
           </Col>
         </Row>
 
@@ -308,6 +313,33 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         }
         insights {
           type
+        }
+
+        sidebarAggregations: filtered_artworks(
+          sort: $sort
+          page: $page
+          aggregations: $aggregations
+        ) {
+          aggregations {
+            slice
+            counts {
+              name
+              id
+            }
+          }
+          # Include the below fragment so that this will match
+          # the initial load (w/ no filter applied), and thus MP
+          # will consolidate aggregations _and_ the grid into one call.
+          # Leave out this fragment if navigating to the artist page
+          # with a filter applied, as those can't be consolidated and
+          # this is extra data.
+          artworks_connection(first: 30, after: "") @skip(if: $hasFilter) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
         }
 
         ...ArtistArtworkFilter_artist

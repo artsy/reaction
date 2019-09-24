@@ -2,7 +2,6 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
-export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 declare const _ArtistArtworkFilter_artist$ref: unique symbol;
 export type ArtistArtworkFilter_artist$ref = typeof _ArtistArtworkFilter_artist$ref;
 export type ArtistArtworkFilter_artist = {
@@ -15,22 +14,6 @@ export type ArtistArtworkFilter_artist = {
         readonly artworks: any | null;
         readonly has_make_offer_artworks: boolean | null;
     }) | null;
-    readonly sidebarAggregations: ({
-        readonly aggregations: ReadonlyArray<({
-            readonly slice: ArtworkAggregation | null;
-            readonly counts: ReadonlyArray<({
-                readonly name: string | null;
-                readonly id: string;
-            }) | null> | null;
-        }) | null> | null;
-        readonly artworks_connection?: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly id: string;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
     }) | null;
@@ -41,31 +24,6 @@ export type ArtistArtworkFilter_artist = {
 
 const node: ConcreteFragment = (function(){
 var v0 = {
-  "kind": "Variable",
-  "name": "aggregations",
-  "variableName": "aggregations",
-  "type": "[ArtworkAggregation]"
-},
-v1 = {
-  "kind": "Variable",
-  "name": "page",
-  "variableName": "page",
-  "type": "Int"
-},
-v2 = {
-  "kind": "Variable",
-  "name": "sort",
-  "variableName": "sort",
-  "type": "String"
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -266,115 +224,6 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": "sidebarAggregations",
-      "name": "filtered_artworks",
-      "storageKey": null,
-      "args": [
-        v0,
-        v1,
-        v2
-      ],
-      "concreteType": "FilterArtworks",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "aggregations",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "ArtworksAggregationResults",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "slice",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "counts",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "AggregationCount",
-              "plural": true,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                },
-                v3,
-                v4
-              ]
-            }
-          ]
-        },
-        v4,
-        {
-          "kind": "Condition",
-          "passingValue": false,
-          "condition": "hasFilter",
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "artworks_connection",
-              "storageKey": "artworks_connection(after:\"\",first:30)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "after",
-                  "value": "",
-                  "type": "String"
-                },
-                {
-                  "kind": "Literal",
-                  "name": "first",
-                  "value": 30,
-                  "type": "Int"
-                }
-              ],
-              "concreteType": "ArtworkConnection",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "edges",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "ArtworkEdge",
-                  "plural": true,
-                  "selections": [
-                    {
-                      "kind": "LinkedField",
-                      "alias": null,
-                      "name": "node",
-                      "storageKey": null,
-                      "args": null,
-                      "concreteType": "Artwork",
-                      "plural": false,
-                      "selections": [
-                        v3,
-                        v4
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
       "alias": null,
       "name": "filtered_artworks",
       "storageKey": null,
@@ -385,7 +234,12 @@ return {
           "variableName": "acquireable",
           "type": "Boolean"
         },
-        v0,
+        {
+          "kind": "Variable",
+          "name": "aggregations",
+          "variableName": "aggregations",
+          "type": "[ArtworkAggregation]"
+        },
         {
           "kind": "Variable",
           "name": "artist_id",
@@ -452,7 +306,12 @@ return {
           "variableName": "offerable",
           "type": "Boolean"
         },
-        v1,
+        {
+          "kind": "Variable",
+          "name": "page",
+          "variableName": "page",
+          "type": "Int"
+        },
         {
           "kind": "Variable",
           "name": "partner_id",
@@ -471,7 +330,12 @@ return {
           "value": 0,
           "type": "Int"
         },
-        v2,
+        {
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort",
+          "type": "String"
+        },
         {
           "kind": "Variable",
           "name": "width",
@@ -487,12 +351,12 @@ return {
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
         },
-        v4
+        v0
       ]
     },
-    v4
+    v0
   ]
 };
 })();
-(node as any).hash = 'd6146fb89f5b16e5d7b851a246eb56a2';
+(node as any).hash = '4d356d9b1d86ac1576e244bc6d86da5c';
 export default node;

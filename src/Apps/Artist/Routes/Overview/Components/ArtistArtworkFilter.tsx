@@ -1,4 +1,5 @@
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
+import { Overview_artist } from "__generated__/Overview_artist.graphql"
 import { useTracking } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
@@ -12,11 +13,12 @@ import { ZeroState } from "./ZeroState"
 interface ArtistArtworkFilterProps {
   artist: ArtistArtworkFilter_artist
   relay: RelayRefetchProp
+  sidebarAggregations: Overview_artist["sidebarAggregations"]
   location: Location
 }
 
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
-  const { location, relay, artist } = props
+  const { location, relay, artist, sidebarAggregations } = props
   const tracking = useTracking()
 
   return (
@@ -29,7 +31,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
         { value: "-year", text: "Artwork year (desc.)" },
         { value: "year", text: "Artwork year (asc.)" },
       ]}
-      aggregations={artist.sidebarAggregations.aggregations as any}
+      aggregations={sidebarAggregations.aggregations as any}
       counts={artist.counts}
       onChange={updateUrl}
       onFilterClick={(key, value, filterState) => {
@@ -94,33 +96,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           auction_artworks
           artworks
           has_make_offer_artworks
-        }
-
-        sidebarAggregations: filtered_artworks(
-          sort: $sort
-          page: $page
-          aggregations: $aggregations
-        ) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-          # Include the below fragment so that this will match
-          # the initial load (w/ no filter applied), and thus MP
-          # will consolidate aggregations _and_ the grid into one call.
-          # Leave out this fragment if navigating to the artist page
-          # with a filter applied, as those can't be consolidated and
-          # this is extra data.
-          artworks_connection(first: 30, after: "") @skip(if: $hasFilter) {
-            edges {
-              node {
-                id
-              }
-            }
-          }
         }
 
         filtered_artworks(
