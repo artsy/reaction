@@ -23,7 +23,7 @@ import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
 export interface CollectAppProps {
-  COLLECTION_HUBS?: string
+  COLLECTION_HUB_ENTRYPOINTS?: string
   location: Location
   router: Router
   marketingHubCollections: Collect_marketingHubCollections
