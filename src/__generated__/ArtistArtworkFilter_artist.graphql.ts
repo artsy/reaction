@@ -23,6 +23,13 @@ export type ArtistArtworkFilter_artist = {
                 readonly id: string;
             }) | null> | null;
         }) | null> | null;
+        readonly artworks_connection?: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                }) | null;
+            }) | null> | null;
+        }) | null;
     }) | null;
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
@@ -52,6 +59,13 @@ v2 = {
   "type": "String"
 },
 v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -295,19 +309,68 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
-                v3
+                v3,
+                v4
               ]
             }
           ]
         },
-        v3
+        v4,
+        {
+          "kind": "Condition",
+          "passingValue": false,
+          "condition": "hasFilter",
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "artworks_connection",
+              "storageKey": "artworks_connection(after:\"\",first:30)",
+              "args": [
+                {
+                  "kind": "Literal",
+                  "name": "after",
+                  "value": "",
+                  "type": "String"
+                },
+                {
+                  "kind": "Literal",
+                  "name": "first",
+                  "value": 30,
+                  "type": "Int"
+                }
+              ],
+              "concreteType": "ArtworkConnection",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "edges",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "ArtworkEdge",
+                  "plural": true,
+                  "selections": [
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "node",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "Artwork",
+                      "plural": false,
+                      "selections": [
+                        v3,
+                        v4
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
     {
@@ -424,12 +487,12 @@ return {
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
         },
-        v3
+        v4
       ]
     },
-    v3
+    v4
   ]
 };
 })();
-(node as any).hash = 'b61f0becacf883be37fc9e9650f1d5f3';
+(node as any).hash = 'd6146fb89f5b16e5d7b851a246eb56a2';
 export default node;

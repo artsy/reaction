@@ -108,6 +108,19 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
               id
             }
           }
+          # Include the below fragment so that this will match
+          # the initial load (w/ no filter applied), and thus MP
+          # will consolidate aggregations _and_ the grid into one call.
+          # Leave out this fragment if navigating to the artist page
+          # with a filter applied, as those can't be consolidated and
+          # this is extra data.
+          artworks_connection(first: 30, after: "") @skip(if: $hasFilter) {
+            edges {
+              node {
+                id
+              }
+            }
+          }
         }
 
         filtered_artworks(

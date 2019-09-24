@@ -17,15 +17,17 @@ export const rangeToTuple: (
   let max: number
 
   if (range === "price_range") {
-    ;[minStr, maxStr] = state.price_range.split("-")
+    ;[minStr, maxStr] = state.price_range
+      ? state.price_range.split("-")
+      : ["*", "*"]
     min = minStr === "*" ? MIN_PRICE : Number(minStr)
     max = maxStr === "*" ? MAX_PRICE : Number(maxStr)
   } else if (range === "height") {
-    ;[minStr, maxStr] = state.height.split("-")
+    ;[minStr, maxStr] = state.height ? state.height.split("-") : ["*", "*"]
     min = minStr === "*" ? MIN_HEIGHT : Number(minStr)
     max = maxStr === "*" ? MAX_HEIGHT : Number(maxStr)
   } else if (range === "width") {
-    ;[minStr, maxStr] = state.width.split("-")
+    ;[minStr, maxStr] = state.width ? state.width.split("-") : ["*", "*"]
     min = minStr === "*" ? MIN_WIDTH : Number(minStr)
     max = maxStr === "*" ? MAX_WIDTH : Number(maxStr)
   } else {
