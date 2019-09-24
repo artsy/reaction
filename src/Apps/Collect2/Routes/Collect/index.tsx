@@ -44,15 +44,15 @@ export const CollectApp = track({
 
   // FIXME: Remove after A/B test completes
   // @ts-ignore
-  const { COLLECTION_HUBS } = useSystemContext()
+  const { COLLECTION_HUB_ENTRYPOINTS } = useSystemContext()
 
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
     : `${sd.APP_URL}/collect`
 
-  // Client renders will get COLLECTION_HUBS from sd; server renders
+  // Client renders will get COLLECTION_HUB_ENTRYPOINTS from sd; server renders
   // will get it from the SystemContext.
-  const showCollectionHubs = COLLECTION_HUBS === "experiment"
+  const showCollectionHubs = COLLECTION_HUB_ENTRYPOINTS === "experiment"
 
   const { filterArtworks } = props
 
