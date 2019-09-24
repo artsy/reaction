@@ -55,12 +55,9 @@ describe("ArtworkFilter", () => {
       expect(onFilterClick).toHaveBeenCalledWith("acquireable", true, {
         acquireable: true,
         attribution_class: [],
-        height: "*-*",
         major_periods: [],
         page: 1,
-        price_range: "*-*",
         sort: "-decayed_merch",
-        width: "*-*",
       })
     })
 
@@ -91,12 +88,9 @@ describe("ArtworkFilter", () => {
       expect(onChange).toHaveBeenCalledWith({
         acquireable: true,
         attribution_class: [],
-        height: "*-*",
         major_periods: [],
         page: 1,
-        price_range: "*-*",
         sort: "-decayed_merch",
-        width: "*-*",
       })
     })
 
@@ -122,12 +116,9 @@ describe("ArtworkFilter", () => {
         .simulate("change")
 
       expect(onChange).toHaveBeenCalledWith({
-        height: "*-*",
         major_periods: [],
         page: 1,
-        price_range: "*-*",
         sort: "-partner_updated_at",
-        width: "*-*",
         attribution_class: [],
       })
     })
@@ -149,12 +140,9 @@ describe("ArtworkFilter", () => {
         current: {
           acquireable: true,
           attribution_class: [],
-          height: "*-*",
           major_periods: [],
           page: 1,
-          price_range: "*-*",
           sort: "-decayed_merch",
-          width: "*-*",
         },
       })
     })

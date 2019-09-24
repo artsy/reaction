@@ -10,11 +10,13 @@ import { rangeToTuple } from "./Utils/rangeToTuple"
  */
 export const initialArtworkFilterState = {
   attribution_class: [],
-  // height: "*-*",
   major_periods: [],
   page: 1,
-  // price_range: "*-*",
   sort: "-decayed_merch",
+
+  // TODO: Remove these unneeded default props
+  // height: "*-*",
+  // price_range: "*-*",
   // width: "*-*",
 }
 
