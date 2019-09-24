@@ -1,3 +1,15 @@
+# v19.0.0 (Tue Sep 24 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Add new ArtworkFilter to /artist/id [#2820](https://github.com/artsy/reaction/pull/2820) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v18.1.19 (Mon Sep 23 2019)
 
 #### 🐛  Bug Fix
