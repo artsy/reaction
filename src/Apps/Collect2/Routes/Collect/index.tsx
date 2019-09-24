@@ -41,7 +41,6 @@ export const CollectApp = track({
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()
-  const { user } = useSystemContext()
 
   // FIXME: Remove after A/B test completes
   // @ts-ignore
@@ -93,6 +92,10 @@ export const CollectApp = track({
             <>
               <CollectionsHubsNav
                 marketingHubCollections={props.marketingHubCollections}
+                collectionHubTestVariation={
+                  sd.COLLECTION_HUB_ENTRYPOINTS ||
+                  props.COLLECTION_HUB_ENTRYPOINTS
+                }
               />
 
               <Spacer mb={2} mt={[2, 2, 2, 4]} />
