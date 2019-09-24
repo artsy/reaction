@@ -15,7 +15,7 @@ describe("urlFragmentFromState", () => {
     }
 
     expect(urlFragmentFromState(artworkFilterState)).toEqual(
-      "height=300-400&price_range=100-200&width=500-600"
+      "price_range=100-200&height=300-400&width=500-600"
     )
   })
 })

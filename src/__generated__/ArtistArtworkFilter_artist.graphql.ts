@@ -2,23 +2,50 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
-declare const _ArtworkFilter_viewer$ref: unique symbol;
-export type ArtworkFilter_viewer$ref = typeof _ArtworkFilter_viewer$ref;
-export type ArtworkFilter_viewer = {
+declare const _ArtistArtworkFilter_artist$ref: unique symbol;
+export type ArtistArtworkFilter_artist$ref = typeof _ArtistArtworkFilter_artist$ref;
+export type ArtistArtworkFilter_artist = {
+    readonly is_followed: boolean | null;
+    readonly counts: ({
+        readonly partner_shows: any | null;
+        readonly for_sale_artworks: any | null;
+        readonly ecommerce_artworks: any | null;
+        readonly auction_artworks: any | null;
+        readonly artworks: any | null;
+        readonly has_make_offer_artworks: boolean | null;
+    }) | null;
     readonly filtered_artworks: ({
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
     }) | null;
-    readonly " $refType": ArtworkFilter_viewer$ref;
+    readonly " $refType": ArtistArtworkFilter_artist$ref;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ConcreteFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
-  "name": "ArtworkFilter_viewer",
-  "type": "Viewer",
+  "name": "ArtistArtworkFilter_artist",
+  "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "partner_category",
+      "type": "[String]",
+      "defaultValue": [
+        "blue-chip",
+        "top-established",
+        "top-emerging"
+      ]
+    },
     {
       "kind": "LocalArgument",
       "name": "acquireable",
@@ -63,6 +90,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
+      "name": "hasFilter",
+      "type": "Boolean",
+      "defaultValue": false
+    },
+    {
+      "kind": "LocalArgument",
       "name": "height",
       "type": "String",
       "defaultValue": null
@@ -89,7 +122,7 @@ const node: ConcreteFragment = {
       "kind": "LocalArgument",
       "name": "medium",
       "type": "String",
-      "defaultValue": null
+      "defaultValue": "*"
     },
     {
       "kind": "LocalArgument",
@@ -130,9 +163,69 @@ const node: ConcreteFragment = {
   ],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_followed",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
-      "alias": "filtered_artworks",
-      "name": "filter_artworks",
+      "alias": null,
+      "name": "counts",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistCounts",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "partner_shows",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "for_sale_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "ecommerce_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "auction_artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "artworks",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "has_make_offer_artworks",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "filtered_artworks",
       "storageKey": null,
       "args": [
         {
@@ -258,16 +351,12 @@ const node: ConcreteFragment = {
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
         },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
+        v0
       ]
-    }
+    },
+    v0
   ]
 };
-(node as any).hash = 'a5a3b02d3540c5378a4af98357ca55a8';
+})();
+(node as any).hash = '4d356d9b1d86ac1576e244bc6d86da5c';
 export default node;

@@ -3,7 +3,7 @@
 import { ConcreteRequest } from "relay-runtime";
 import { AuctionResults_artist$ref } from "./AuctionResults_artist.graphql";
 export type routes_AuctionResultsQueryVariables = {
-    readonly artistID: string;
+    readonly artist_id: string;
 };
 export type routes_AuctionResultsQueryResponse = {
     readonly artist: ({
@@ -19,9 +19,9 @@ export type routes_AuctionResultsQuery = {
 
 /*
 query routes_AuctionResultsQuery(
-  $artistID: String!
+  $artist_id: String!
 ) {
-  artist(id: $artistID) {
+  artist(id: $artist_id) {
     ...AuctionResults_artist
     __id
   }
@@ -103,7 +103,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "artist_id",
     "type": "String!",
     "defaultValue": null
   }
@@ -112,7 +112,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -160,7 +160,7 @@ return {
   "operationKind": "query",
   "name": "routes_AuctionResultsQuery",
   "id": null,
-  "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    __id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n  __id\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  id\n  auctionResults(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n      __id: id\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
+  "text": "query routes_AuctionResultsQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) {\n    ...AuctionResults_artist\n    __id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n  __id\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  id\n  auctionResults(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text\n  organization\n  images {\n    thumbnail {\n      url\n      __id: id\n    }\n  }\n  description\n  date_text\n  sale_date_text\n  price_realized {\n    display\n    cents_usd\n  }\n  estimate {\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -458,5 +458,5 @@ return {
   }
 };
 })();
-(node as any).hash = '7e7cc15afd3067174c965fdb4e749616';
+(node as any).hash = 'e314b05a95a6b6699a939d33efbcf128';
 export default node;

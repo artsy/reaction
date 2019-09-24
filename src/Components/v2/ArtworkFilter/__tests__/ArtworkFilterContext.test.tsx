@@ -67,7 +67,7 @@ describe("ArtworkFilterContext", () => {
 
     it("#isDefaultValue", () => {
       getWrapper()
-      expect(context.isDefaultValue("height")).toEqual(true)
+      expect(context.isDefaultValue("sort")).toEqual(true)
     })
 
     it("#rangeToTuple", () => {

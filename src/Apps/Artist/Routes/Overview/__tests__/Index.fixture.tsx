@@ -1,14 +1,20 @@
-import { Overview_artist } from "__generated__/Overview_artist.graphql"
-
-export type OverviewRouteArtist = Overview_artist & { __fragments: object[] }
-
-export const defaultArtist: OverviewRouteArtist = {
+export const defaultArtist = {
   is_consignable: true,
   __fragments: null,
   id: "juan-gris",
   counts: {
     partner_shows: 11,
+    for_sale_artworks: 20,
+    ecommerce_artworks: 30,
+    auction_artworks: 40,
+    artworks: 50,
+    has_make_offer_artworks: true,
   },
+  is_followed: true,
+  sidebarAggregations: {
+    aggregations: [],
+  },
+  filtered_artworks: {},
   href: "/artist/juan-gris",
   biography_blurb: {
     text:
@@ -44,7 +50,7 @@ export const defaultArtist: OverviewRouteArtist = {
   " $refType": null,
 }
 
-export const artistWithRelatedArtists: OverviewRouteArtist = {
+export const artistWithRelatedArtists = {
   ...defaultArtist,
   related: {
     ...defaultArtist.related,

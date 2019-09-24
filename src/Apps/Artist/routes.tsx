@@ -1,18 +1,15 @@
-import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
-import {
-  FilterState,
-  initialState,
-  isDefaultFilter,
-} from "Apps/Artist/Routes/Overview/state"
+import { initialArtworkFilterState } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
 import { Redirect, RouteConfig } from "found"
-import React from "react"
 import { graphql } from "react-relay"
-import { Provider } from "unstated"
 import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
 import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
-import { OverviewRouteFragmentContainer as OverviewRoute } from "./Routes/Overview"
+import {
+  ArtistOverviewQuery,
+  OverviewRouteFragmentContainer as OverviewRoute,
+} from "./Routes/Overview"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 
 // FIXME:
@@ -20,11 +17,11 @@ import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
 export const routes: RouteConfig[] = [
   {
-    path: "/artist/:artistID",
+    path: "/artist/:artist_id",
     Component: ArtistApp,
     query: graphql`
-      query routes_ArtistTopLevelQuery($artistID: String!) {
-        artist(id: $artistID) @principalField {
+      query routes_ArtistTopLevelQuery($artist_id: String!) {
+        artist(id: $artist_id) @principalField {
           ...ArtistApp_artist
         }
       }
@@ -33,28 +30,13 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: OverviewRoute,
-        render: ({ props, Component }) => {
-          if (!props) {
-            return null
-          }
-
-          return (
-            <Provider inject={[new FilterState(props.location.query as any)]}>
-              <Component
-                artist={
-                  (props as any)
-                    .artist as routes_OverviewQueryRendererQueryResponse
-                }
-              />
-            </Provider>
-          )
-        },
+        query: ArtistOverviewQuery,
         prepareVariables: (params, props) => {
           // FIXME: The initial render includes `location` in props, but subsequent
           // renders (such as tabbing back to this route in your browser) will not.
           const filterStateFromUrl = props.location ? props.location.query : {}
           const filterParams = {
-            ...initialState,
+            ...initialArtworkFilterState,
             ...filterStateFromUrl,
             ...params,
           }
@@ -67,47 +49,12 @@ export const routes: RouteConfig[] = [
 
           return filterParams
         },
-        query: graphql`
-          query routes_OverviewQueryRendererQuery(
-            $artistID: String!
-            $medium: String
-            $major_periods: [String]
-            $partner_id: ID
-            $for_sale: Boolean
-            $sort: String
-            $at_auction: Boolean
-            $acquireable: Boolean
-            $offerable: Boolean
-            $inquireable_only: Boolean
-            $price_range: String
-            $page: Int
-            $hasFilter: Boolean!
-          ) {
-            artist(id: $artistID) {
-              ...Overview_artist
-                @arguments(
-                  medium: $medium
-                  major_periods: $major_periods
-                  partner_id: $partner_id
-                  for_sale: $for_sale
-                  sort: $sort
-                  at_auction: $at_auction
-                  acquireable: $acquireable
-                  inquireable_only: $inquireable_only
-                  offerable: $offerable
-                  price_range: $price_range
-                  page: $page
-                  hasFilter: $hasFilter
-                )
-            }
-          }
-        `,
       },
       {
         path: "cv",
         Component: CVRoute,
         query: graphql`
-          query routes_CVQuery($artistID: String!) {
+          query routes_CVQuery($artist_id: String!) {
             viewer {
               ...CV_viewer
             }
@@ -118,8 +65,8 @@ export const routes: RouteConfig[] = [
         path: "articles",
         Component: ArticlesRoute,
         query: graphql`
-          query routes_ArticlesQuery($artistID: String!) {
-            artist(id: $artistID) {
+          query routes_ArticlesQuery($artist_id: String!) {
+            artist(id: $artist_id) {
               ...Articles_artist
             }
           }
@@ -129,7 +76,7 @@ export const routes: RouteConfig[] = [
         path: "shows",
         Component: ShowsRoute,
         query: graphql`
-          query routes_ShowsQuery($artistID: String!) {
+          query routes_ShowsQuery($artist_id: String!) {
             viewer {
               ...Shows_viewer
             }
@@ -140,8 +87,8 @@ export const routes: RouteConfig[] = [
         path: "auction-results",
         Component: AuctionResultsRoute,
         query: graphql`
-          query routes_AuctionResultsQuery($artistID: String!) {
-            artist(id: $artistID) {
+          query routes_AuctionResultsQuery($artist_id: String!) {
+            artist(id: $artist_id) {
               ...AuctionResults_artist
             }
           }

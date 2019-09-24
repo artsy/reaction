@@ -1,4 +1,4 @@
-import { Box, Separator, Serif } from "@artsy/palette"
+import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { Location, Router } from "found"
 import React from "react"
 import { Link, Meta, Title } from "react-head"
@@ -82,7 +82,6 @@ export const CollectApp = track({
           <Serif size="8">
             <h1>Collect art and design online</h1>
           </Serif>
-
           <Separator mt={2} mb={[2, 2, 2, 4]} />
 
           {showCollectionHubs && (
@@ -91,7 +90,7 @@ export const CollectApp = track({
                 marketingCollections={props.marketingCollections}
               />
 
-              <Separator mb={2} mt={[2, 2, 2, 4]} />
+              <Spacer mb={2} mt={[2, 2, 2, 4]} />
             </>
           )}
         </Box>

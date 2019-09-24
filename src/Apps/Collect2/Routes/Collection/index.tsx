@@ -19,7 +19,7 @@ import truncate from "trunc-html"
 import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
-import { BaseArtworkFilter as ArtworkFilter } from "Components/v2/ArtworkFilter"
+import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import {
   ArtworkFilterContextProvider,
   SharedArtworkFilterContextProps,
@@ -89,7 +89,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
           )}
           <Box>
             <ArtworkFilterContextProvider
-              filters={location.query as any}
+              filters={location.query}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
                 { value: "-partner_updated_at", text: "Recently updated" },
@@ -98,7 +98,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                viewer!.artworks!
+                viewer.artworks
                   .aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
@@ -110,7 +110,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 })
               }}
             >
-              <ArtworkFilter
+              <BaseArtworkFilter
                 relay={relay}
                 viewer={viewer}
                 relayVariables={{
@@ -139,6 +139,12 @@ export class CollectionApp extends Component<CollectionAppProps> {
 export const CollectionAppQuery = graphql`
   query CollectionRefetch2Query(
     $acquireable: Boolean
+    $aggregations: [ArtworkAggregation] = [
+      MERCHANDISABLE_ARTISTS
+      MEDIUM
+      MAJOR_PERIOD
+      TOTAL
+    ]
     $at_auction: Boolean
     $color: String
     $for_sale: Boolean
@@ -157,7 +163,7 @@ export const CollectionAppQuery = graphql`
       ...Collection_viewer
         @arguments(
           acquireable: $acquireable
-          # aggregations: $aggregations
+          aggregations: $aggregations
           at_auction: $at_auction
           color: $color
           for_sale: $for_sale
@@ -182,6 +188,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
       fragment Collection_viewer on MarketingCollection
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
+          aggregations: { type: "[ArtworkAggregation]" }
           at_auction: { type: "Boolean" }
           color: { type: "String" }
           for_sale: { type: "Boolean" }
@@ -218,7 +225,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         }
 
         artworks(
-          aggregations: [MERCHANDISABLE_ARTISTS, MEDIUM, MAJOR_PERIOD, TOTAL]
+          aggregations: $aggregations
           include_medium_filter_in_aggregation: true
           size: 12
           sort: "-decayed_merch"
@@ -238,7 +245,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
 
         filtered_artworks: artworks(
           acquireable: $acquireable
-          aggregations: [TOTAL]
+          aggregations: $aggregations
           at_auction: $at_auction
           color: $color
           for_sale: $for_sale

@@ -1,37 +1,78 @@
 import { omit } from "lodash"
-import React, { useContext, useReducer } from "react"
+import React, { useContext, useReducer, useState } from "react"
 import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
 
+/**
+ * Initial filter state
+ */
 export const initialArtworkFilterState = {
   attribution_class: [],
-  height: "*-*",
   major_periods: [],
   page: 1,
-  price_range: "*-*",
   sort: "-decayed_merch",
-  width: "*-*",
+
+  // TODO: Remove these unneeded default props
+  // height: "*-*",
+  // price_range: "*-*",
+  // width: "*-*",
 }
 
+/**
+ * A list of all possible artwork filters across all apps
+ */
 export interface ArtworkFilters {
   acquireable?: boolean
+  artist_id?: string
   at_auction?: boolean
   color?: string
   for_sale?: boolean
-  height: string
+  height?: string
   inquireable_only?: boolean
   keyword?: string
-  major_periods: string[]
+  major_periods?: string[]
   medium?: string
   offerable?: boolean
-  page: number
+  page?: number
   partner_id?: string
-  price_range: string
-  sort: string
+  price_range?: string
+  sort?: string
   term?: string
-  width: string
+  width?: string
+}
+
+/**
+ * Possible aggregations that can be passed
+ */
+export type Aggregations = Array<{
+  slice:
+    | "COLOR"
+    | "DIMENSION_RANGE"
+    | "FOLLOWED_ARTISTS"
+    | "GALLERY"
+    | "INSTITUTION"
+    | "MAJOR_PERIOD"
+    | "MEDIUM"
+    | "MERCHANDISABLE_ARTISTS"
+    | "PARTNER_CITY"
+    | "PERIOD"
+    | "PRICE_RANGE"
+    | "TOTAL"
+  counts: Array<{
+    count: number
+    id: string
+    name: string
+  }>
+}>
+
+interface Counts {
+  for_sale_artworks?: number
+  ecommerce_artworks?: number
+  auction_artworks?: number
+  artworks?: number
+  has_make_offer_artworks?: boolean
 }
 
 interface ArtworkFilterContextProps {
@@ -42,26 +83,10 @@ interface ArtworkFilterContextProps {
 
   // Sorting
   sortOptions?: SortOptions
-  aggregations?: Array<{
-    slice:
-      | "COLOR"
-      | "DIMENSION_RANGE"
-      | "FOLLOWED_ARTISTS"
-      | "GALLERY"
-      | "INSTITUTION"
-      | "MAJOR_PERIOD"
-      | "MEDIUM"
-      | "MERCHANDISABLE_ARTISTS"
-      | "PARTNER_CITY"
-      | "PERIOD"
-      | "PRICE_RANGE"
-      | "TOTAL"
-    counts: Array<{
-      count: number
-      id: string
-      name: string
-    }>
-  }>
+  aggregations?: Aggregations
+  setAggregations?: (aggregations: Aggregations) => void
+  counts?: Counts
+  setCounts?: (counts: Counts) => void
 
   // Handlers
   onArtworkBrickClick?: (artwork: any, props: any) => void
@@ -80,6 +105,9 @@ interface ArtworkFilterContextProps {
   unsetFilter: (name: string) => void
 }
 
+/**
+ * Context behavior shared globally across the ArtworkFilter component tree
+ */
 export const ArtworkFilterContext = React.createContext<
   ArtworkFilterContextProps
 >({
@@ -102,6 +130,7 @@ export type SortOptions = Array<{
 export type SharedArtworkFilterContextProps = Pick<
   ArtworkFilterContextProps,
   | "aggregations"
+  | "counts"
   | "filters"
   | "sortOptions"
   | "onArtworkBrickClick"
@@ -118,6 +147,7 @@ export const ArtworkFilterContextProvider: React.FC<
 > = ({
   aggregations = [],
   children,
+  counts = {},
   filters = {},
   onArtworkBrickClick,
   onChange,
@@ -135,6 +165,10 @@ export const ArtworkFilterContextProvider: React.FC<
     initialFilterState
   )
 
+  // TODO: Consolidate this into additional reducer
+  const [filterAggregations, setAggregations] = useState(aggregations)
+  const [artworkCounts, setCounts] = useState(counts)
+
   useDeepCompareEffect(() => {
     if (onChange) {
       onChange(omit(artworkFilterState, ["reset"]))
@@ -151,7 +185,10 @@ export const ArtworkFilterContextProvider: React.FC<
 
     // Sorting
     sortOptions,
-    aggregations,
+    aggregations: filterAggregations,
+    setAggregations,
+    counts: artworkCounts,
+    setCounts,
 
     // Components
     ZeroState,

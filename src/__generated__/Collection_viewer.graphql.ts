@@ -63,6 +63,12 @@ v1 = {
   "storageKey": null
 },
 v2 = {
+  "kind": "Variable",
+  "name": "aggregations",
+  "variableName": "aggregations",
+  "type": "[ArtworkAggregation]"
+},
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -79,6 +85,12 @@ return {
       "kind": "LocalArgument",
       "name": "acquireable",
       "type": "Boolean",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "aggregations",
+      "type": "[ArtworkAggregation]",
       "defaultValue": null
     },
     {
@@ -268,19 +280,9 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "artworks",
-      "storageKey": "artworks(aggregations:[\"MERCHANDISABLE_ARTISTS\",\"MEDIUM\",\"MAJOR_PERIOD\",\"TOTAL\"],include_medium_filter_in_aggregation:true,size:12,sort:\"-decayed_merch\")",
+      "storageKey": null,
       "args": [
-        {
-          "kind": "Literal",
-          "name": "aggregations",
-          "value": [
-            "MERCHANDISABLE_ARTISTS",
-            "MEDIUM",
-            "MAJOR_PERIOD",
-            "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
-        },
+        v2,
         {
           "kind": "Literal",
           "name": "include_medium_filter_in_aggregation",
@@ -353,12 +355,12 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v2
+                v3
               ]
             }
           ]
         },
-        v2
+        v3
       ]
     },
     {
@@ -373,14 +375,7 @@ return {
           "variableName": "acquireable",
           "type": "Boolean"
         },
-        {
-          "kind": "Literal",
-          "name": "aggregations",
-          "value": [
-            "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
-        },
+        v2,
         {
           "kind": "Variable",
           "name": "at_auction",
@@ -468,12 +463,12 @@ return {
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
         },
-        v2
+        v3
       ]
     },
     v1
   ]
 };
 })();
-(node as any).hash = '5fe86066af1eb1903c95e150dd3a6e4f';
+(node as any).hash = '253dfff3152451104f010540dbbe5482';
 export default node;

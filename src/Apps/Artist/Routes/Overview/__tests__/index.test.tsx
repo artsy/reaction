@@ -1,33 +1,26 @@
-// @ts-ignore
-import { ArtworkFilterFragmentContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtworkFilter"
-import { FilterState } from "Apps/Artist/Routes/Overview/state"
 import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
-import { Provider } from "unstated"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "../Components/ArtistRecommendations"
 import { OverviewRoute } from "../index"
-import {
-  artistWithRelatedArtists,
-  defaultArtist,
-  OverviewRouteArtist,
-} from "./Index.fixture"
+import { artistWithRelatedArtists, defaultArtist } from "./Index.fixture"
 
 // Mocking the ArtworkFilter component because we're not using it in these tests,
 //  and it takes a lot of setup data to get it to render.
-jest.mock("Apps/Artist/Routes/Overview/Components/ArtworkFilter", () => ({
-  ArtworkFilterFragmentContainer: () => <div>Mock ArtworkFilter</div>,
+jest.mock("Components/v2/ArtworkFilter/ArtworkFilterContext", () => ({
+  ArtworkFilterContextProvider: () => <div>Mock ArtworkFilter</div>,
+}))
+jest.mock("Components/v2/ArtworkFilter", () => ({
+  BaseArtworkFilter: () => <div>Mock ArtworkFilter</div>,
 }))
 
 describe("OverviewRoute", () => {
   describe("Artist Recommendations", () => {
-    function getWrapper(artistData: OverviewRouteArtist, user: User = {}) {
+    function getWrapper(artistData, user: User = {}) {
       return mount(
-        <Provider inject={[{} as FilterState]}>
-          <SystemContextProvider user={user}>
-            <OverviewRoute artist={artistData} />
-          </SystemContextProvider>
-        </Provider>
+        <SystemContextProvider user={user}>
+          <OverviewRoute artist={artistData} location={{} as any} />
+        </SystemContextProvider>
       )
     }
 

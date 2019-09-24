@@ -73,6 +73,7 @@ fragment ArtistCard_artist on Artist {
 
 fragment FollowArtistButton_artist on Artist {
   __id
+  name
   id
   is_followed
   counts {
@@ -136,7 +137,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkRelatedArtistsPaginationQuery",
   "id": null,
-  "text": "query ArtworkRelatedArtistsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkRelatedArtists_artwork_1G22uz\n    __id\n  }\n}\n\nfragment ArtworkRelatedArtists_artwork_1G22uz on Artwork {\n  id\n  artist {\n    href\n    related {\n      artists(kind: MAIN, first: $count, after: $cursor) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            ...ArtistCard_artist\n            __id\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query ArtworkRelatedArtistsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkRelatedArtists_artwork_1G22uz\n    __id\n  }\n}\n\nfragment ArtworkRelatedArtists_artwork_1G22uz on Artwork {\n  id\n  artist {\n    href\n    related {\n      artists(kind: MAIN, first: $count, after: $cursor) {\n        pageInfo {\n          hasNextPage\n          endCursor\n        }\n        edges {\n          node {\n            ...ArtistCard_artist\n            __id\n            __typename\n          }\n          cursor\n        }\n      }\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

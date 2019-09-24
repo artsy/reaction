@@ -24,7 +24,7 @@ var v0 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -67,7 +67,7 @@ return {
     },
     {
       "kind": "RootArgument",
-      "name": "artistID",
+      "name": "artist_id",
       "type": "String!"
     }
   ],
@@ -153,5 +153,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c44abe868f13498038d51c77daf31339';
+(node as any).hash = '036c65ba9f26e5eba899202fe6b96832';
 export default node;

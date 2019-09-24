@@ -1,33 +1,17 @@
 export const ArtworkFilterFixture = {
   viewer: {
     filtered_artworks: {
+      __id:
+        "RmlsdGVyQXJ0d29ya3M6eyJhZ2dyZWdhdGlvbnMiOlsidG90YWwiXSwia2V5d29yZCI6ImFuZHkgd2FyaG9sIn0=",
+      aggregations: [],
       artworks: {
-        pageInfo: {
-          hasNextPage: true,
-          endCursor: "YXJyYXljb25uZWN0aW9uOjI5",
-        },
+        pageInfo: { hasNextPage: true, endCursor: "YXJyYXljb25uZWN0aW9uOjI5" },
         pageCursors: {
           around: [
-            {
-              cursor: "YXJyYXljb25uZWN0aW9uOi0x",
-              page: 1,
-              isCurrent: true,
-            },
-            {
-              cursor: "YXJyYXljb25uZWN0aW9uOjI5",
-              page: 2,
-              isCurrent: false,
-            },
-            {
-              cursor: "YXJyYXljb25uZWN0aW9uOjU5",
-              page: 3,
-              isCurrent: false,
-            },
-            {
-              cursor: "YXJyYXljb25uZWN0aW9uOjg5",
-              page: 4,
-              isCurrent: false,
-            },
+            { cursor: "YXJyYXljb25uZWN0aW9uOi0x", page: 1, isCurrent: true },
+            { cursor: "YXJyYXljb25uZWN0aW9uOjI5", page: 2, isCurrent: false },
+            { cursor: "YXJyYXljb25uZWN0aW9uOjU5", page: 3, isCurrent: false },
+            { cursor: "YXJyYXljb25uZWN0aW9uOjg5", page: 4, isCurrent: false },
           ],
           first: null,
           last: {
@@ -40,10 +24,12 @@ export const ArtworkFilterFixture = {
         edges: [
           {
             node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1rZW5ueS1idXJyZWxs",
               id: "andy-warhol-kenny-burrell",
               href: "/artwork/andy-warhol-kenny-burrell",
               image: {
                 aspect_ratio: 1.35,
+                __id: "5d041932f7708f000ecadb53",
                 placeholder: "74.20097898070833%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/lTTEGbhqyyMC8IraJuGTtw/large.jpg",
@@ -52,10 +38,11 @@ export const ArtworkFilterFixture = {
               title: "Kenny Burrell",
               image_title: "Andy Warhol, ‘Kenny Burrell’, 1956",
               date: "1956",
-              sale_message: "$95,000",
+              sale_message: "$125,000",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -64,6 +51,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Ambleside Gallery",
                 href: "/ambleside-gallery",
+                __id: "UGFydG5lcjphbWJsZXNpZGUtZ2FsbGVyeQ==",
                 type: "Gallery",
               },
               sale: null,
@@ -77,84 +65,13 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-truck-13",
-              href: "/artwork/andy-warhol-truck-13",
-              image: {
-                aspect_ratio: 1.38,
-                placeholder: "72.25%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/qguoXSQBjO8DWY7_hccTLA/large.jpg",
-              },
-              _id: "5cb74b740c1fe113bb9e4bb3",
-              title: "Truck",
-              image_title: "Andy Warhol, ‘Truck’, ca. 1980",
-              date: "ca. 1980",
-              sale_message: "$215,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Westwood Gallery NYC",
-                href: "/westwood-gallery-nyc",
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-dollar-signs-2",
-              href: "/artwork/andy-warhol-dollar-signs-2",
-              image: {
-                aspect_ratio: 0.77,
-                placeholder: "129.25764192139738%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/PK5SWJlAnKSfnfcu2Gsz-A/large.jpg",
-              },
-              _id: "5ba511f67cc3c00c36503f23",
-              title: "DOLLAR SIGNS",
-              image_title: "Andy Warhol, ‘DOLLAR SIGNS’, 1981",
-              date: "1981",
-              sale_message: "$315,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Gallery Art",
-                href: "/gallery-art",
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1kb2xsYXJzLTEtZnMtaWktZG90LTI3NA==",
               id: "andy-warhol-dollars-1-fs-ii-dot-274",
               href: "/artwork/andy-warhol-dollars-1-fs-ii-dot-274",
               image: {
                 aspect_ratio: 0.79,
+                __id: "5c65e45e167d1632a46fe344",
                 placeholder: "126.35956493921945%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/QNBY1kx6foZiKrB7msMWmw/large.jpg",
@@ -167,6 +84,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -175,6 +93,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Gallery Art",
                 href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
                 type: "Gallery",
               },
               sale: null,
@@ -188,85 +107,55 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-truck-9",
-              href: "/artwork/andy-warhol-truck-9",
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1wZWFjaGVz",
+              id: "andy-warhol-peaches",
+              href: "/artwork/andy-warhol-peaches",
               image: {
-                aspect_ratio: 1.24,
-                placeholder: "80.53691275167785%",
+                aspect_ratio: 1.33,
+                __id: "59664e93c9dc246e416f6ec9",
+                placeholder: "75.44910179640718%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/-RLvowuSRvkjZP9aPrdXhg/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/RkBOuh6bjwu-pY9a3CzaHA/large.jpg",
               },
-              _id: "5936d55c8b3b816199432aeb",
-              title: "Truck",
-              image_title: "Andy Warhol, ‘Truck’, 1985",
-              date: "1985",
-              sale_message: "Contact For Price",
+              _id: "59664e918b0c1456357651c2",
+              title: "Peaches",
+              image_title: "Andy Warhol, ‘Peaches’, 1978",
+              date: "1978",
+              sale_message: "$15,000",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "HG Contemporary",
-                href: "/hg-contemporary",
+                name: "DTR Modern Galleries",
+                href: "/dtr-modern-galleries",
+                __id: "UGFydG5lcjpkdHItbW9kZXJuLWdhbGxlcmllcw==",
                 type: "Gallery",
               },
               sale: null,
               sale_artwork: null,
-              is_inquireable: true,
+              is_inquireable: false,
               is_saved: false,
               is_biddable: false,
-              is_acquireable: false,
-              is_offerable: false,
+              is_acquireable: true,
+              is_offerable: true,
             },
           },
           {
             node: {
-              id: "andy-warhol-mao-177",
-              href: "/artwork/andy-warhol-mao-177",
-              image: {
-                aspect_ratio: 1,
-                placeholder: "100%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/aKZbFz8GjfIfUj9AKCl1ZQ/large.jpg",
-              },
-              _id: "5936d55dcd530e69388b704e",
-              title: "MAO ",
-              image_title: "Andy Warhol, ‘MAO ’, 1972",
-              date: "1972",
-              sale_message: "Contact For Price",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "HG Contemporary",
-                href: "/hg-contemporary",
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: true,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: false,
-              is_offerable: false,
-            },
-          },
-          {
-            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1hY3RyZXNzLXNob3RzLWFuZHktd2FyaG9sLW55LWRhaWx5LW5ld3MtMTk2OA==",
               id: "andy-warhol-actress-shots-andy-warhol-ny-daily-news-1968",
               href:
                 "/artwork/andy-warhol-actress-shots-andy-warhol-ny-daily-news-1968",
               image: {
                 aspect_ratio: 1.07,
+                __id: "575f46988b3b81538e003035",
                 placeholder: "93.81044487427465%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/L8Vjqhum4XX6sqiEXUg3Fg/large.jpg",
@@ -280,6 +169,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -288,7 +178,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "VINCE fine arts/ephemera",
                 href: "/vince-fine-arts-slash-ephemera",
-
+                __id: "UGFydG5lcjp2aW5jZS1maW5lLWFydHMtc2xhc2gtZXBoZW1lcmE=",
                 type: "Gallery",
               },
               sale: null,
@@ -302,50 +192,12 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-shoe-18",
-              href: "/artwork/andy-warhol-shoe-18",
-              image: {
-                aspect_ratio: 1.42,
-
-                placeholder: "70.31349968010237%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/123zBWZmYy_OC9d9tV3ajQ/large.jpg",
-              },
-              _id: "5bad2bbbc5cfa04f7c0c669e",
-              title: "Shoe",
-              image_title: "Andy Warhol, ‘Shoe’, 1958",
-              date: "1958",
-              sale_message: "$18,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "McClain Gallery",
-                href: "/mcclain-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1jb3Ntb3M=",
               id: "andy-warhol-cosmos",
               href: "/artwork/andy-warhol-cosmos",
               image: {
                 aspect_ratio: 0.78,
-
+                __id: "5c84405f832a2e002bcdd387",
                 placeholder: "128.15296989422293%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/Lzonx30NloDXcs0FdKUjDw/large.jpg",
@@ -358,6 +210,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -366,7 +219,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Gallery Art",
                 href: "/gallery-art",
-
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
                 type: "Gallery",
               },
               sale: null,
@@ -380,90 +233,12 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-unknown-female-iranian-princess",
-              href: "/artwork/andy-warhol-unknown-female-iranian-princess",
-              image: {
-                aspect_ratio: 0.78,
-
-                placeholder: "127.65957446808511%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/Ai17efWbDETpA3y9puiW5Q/large.jpg",
-              },
-              _id: "5b197fed5b2fba13b1e3fc11",
-              title: "Unknown Female (Iranian Princess)",
-              image_title:
-                "Andy Warhol, ‘Unknown Female (Iranian Princess)’, 1977",
-              date: "1977",
-              sale_message: "$45,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Cerbera Gallery",
-                href: "/cerbera-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: true,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: false,
-              is_offerable: false,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-peaches",
-              href: "/artwork/andy-warhol-peaches",
-              image: {
-                aspect_ratio: 1.33,
-
-                placeholder: "75.44910179640718%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/RkBOuh6bjwu-pY9a3CzaHA/large.jpg",
-              },
-              _id: "59664e918b0c1456357651c2",
-              title: "Peaches",
-              image_title: "Andy Warhol, ‘Peaches’, 1978",
-              date: "1978",
-              sale_message: "$15,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "DTR Modern Galleries",
-                href: "/dtr-modern-galleries",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1sZWUtaWFjb2NjYS0y",
               id: "andy-warhol-lee-iacocca-2",
               href: "/artwork/andy-warhol-lee-iacocca-2",
               image: {
                 aspect_ratio: 0.82,
-
+                __id: "5d0aa3fbdbb254000fc3265e",
                 placeholder: "121.67539267015708%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/NuQp4MqjsqRaiPpC9hu5BA/large.jpg",
@@ -476,6 +251,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -484,7 +260,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Robert Fontaine Gallery",
                 href: "/robert-fontaine-gallery",
-
+                __id: "UGFydG5lcjpyb2JlcnQtZm9udGFpbmUtZ2FsbGVyeQ==",
                 type: "Gallery",
               },
               sale: null,
@@ -498,32 +274,34 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-birmingham-race-riot-10",
-              href: "/artwork/andy-warhol-birmingham-race-riot-10",
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1zaG9lLTE4",
+              id: "andy-warhol-shoe-18",
+              href: "/artwork/andy-warhol-shoe-18",
               image: {
-                aspect_ratio: 1.21,
-
-                placeholder: "82.84023668639054%",
+                aspect_ratio: 1.42,
+                __id: "5c8bf9664b3e996f60202b80",
+                placeholder: "70.31349968010237%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/TuMBh41hMifd0F7EaheI9w/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/123zBWZmYy_OC9d9tV3ajQ/large.jpg",
               },
-              _id: "5cd38e5486c1c459da06ad0d",
-              title: "Birmingham Race Riot",
-              image_title: "Andy Warhol, ‘Birmingham Race Riot’, 1964",
-              date: "1964",
-              sale_message: "$13,000",
+              _id: "5bad2bbbc5cfa04f7c0c669e",
+              title: "Shoe",
+              image_title: "Andy Warhol, ‘Shoe’, 1958",
+              date: "1958",
+              sale_message: "$18,000",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "Graves International Art",
-                href: "/graves-international-art",
-
+                name: "McClain Gallery",
+                href: "/mcclain-gallery",
+                __id: "UGFydG5lcjptY2NsYWluLWdhbGxlcnk=",
                 type: "Gallery",
               },
               sale: null,
@@ -537,50 +315,12 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-the-beatles-unique",
-              href: "/artwork/andy-warhol-the-beatles-unique",
-              image: {
-                aspect_ratio: 1.31,
-
-                placeholder: "76.54534950895436%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/veZiKJqEyw3EwO1xfIINEg/large.jpg",
-              },
-              _id: "59e24ecd139b214a3023f5e4",
-              title: "The Beatles (Unique)",
-              image_title: "Andy Warhol, ‘The Beatles (Unique)’, 1980",
-              date: "1980",
-              sale_message: "$115,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "DANE FINE ART",
-                href: "/great-dane-auctions",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: true,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: false,
-              is_offerable: false,
-            },
-          },
-          {
-            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1zZXdpbmctbWFjaGluZQ==",
               id: "andy-warhol-sewing-machine",
               href: "/artwork/andy-warhol-sewing-machine",
               image: {
                 aspect_ratio: 1,
-
+                __id: "572b64d28b3b8144980012f9",
                 placeholder: "100%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/MySOcyJvvgWT6US5jFafRA/large.jpg",
@@ -593,6 +333,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -601,7 +342,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Joseph K. Levene Fine Art, Ltd.",
                 href: "/joseph-k-levene-fine-art-ltd",
-
+                __id: "UGFydG5lcjpqb3NlcGgtay1sZXZlbmUtZmluZS1hcnQtbHRk",
                 type: "Gallery",
               },
               sale: null,
@@ -615,76 +356,35 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-rare-original-andy-warhol-record-art",
-              href: "/artwork/andy-warhol-rare-original-andy-warhol-record-art",
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1zdXBlcm1hbi1mLWFuZC1zLWlpLTI2MC0z",
+              id: "andy-warhol-superman-f-and-s-ii-260-3",
+              href: "/artwork/andy-warhol-superman-f-and-s-ii-260-3",
               image: {
                 aspect_ratio: 1,
-
-                placeholder: "100.2248201438849%",
+                __id: "5d02a7ddfe27da00117275ad",
+                placeholder: "100.45558086560365%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/nhUiLKacJVUqpMSXQ30nJA/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/JfQvrm5cdR-D0O7hqqbEZg/large.jpg",
               },
-              _id: "5c7eccb73f643300285eb707",
-              title: "Rare original Andy Warhol record art",
-              image_title:
-                "Andy Warhol, ‘Rare original Andy Warhol record art’, 1964",
-              date: "1964",
-              sale_message: "$750",
+              _id: "5d02a7dc9a0484000d291164",
+              title: "Superman (F. & S. II. 260)",
+              image_title: "Andy Warhol, ‘Superman (F. & S. II. 260)’, 1981",
+              date: "1981",
+              sale_message: "$240,000",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "Lot 180",
-                href: "/lot-180",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: true,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: false,
-              is_offerable: false,
-            },
-          },
-          {
-            node: {
-              id:
-                "andy-warhol-andy-warhol-photograph-of-victor-hugo-in-sequin-dress-and-a-man-1970s",
-              href:
-                "/artwork/andy-warhol-andy-warhol-photograph-of-victor-hugo-in-sequin-dress-and-a-man-1970s",
-              image: {
-                aspect_ratio: 1.37,
-
-                placeholder: "73.24777887462982%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/h_JhF79Y6oy_fRMhg6M9tw/large.jpg",
-              },
-              _id: "5c3fa9f737553c5bf49d2b0b",
-              title:
-                "Andy Warhol, Photograph of Victor Hugo in Sequin Dress and a Man, 1970s",
-              image_title:
-                "Andy Warhol, ‘Andy Warhol, Photograph of Victor Hugo in Sequin Dress and a Man, 1970s’, 1970s",
-              date: "1970s",
-              sale_message: "$8,500",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Hedges Projects",
-                href: "/hedges-projects",
-
+                name: "David Benrimon Fine Art",
+                href: "/david-benrimon-fine-art",
+                __id: "UGFydG5lcjpkYXZpZC1iZW5yaW1vbi1maW5lLWFydA==",
                 type: "Gallery",
               },
               sale: null,
@@ -698,11 +398,55 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1iaXJtaW5naGFtLXJhY2UtcmlvdC0xMA==",
+              id: "andy-warhol-birmingham-race-riot-10",
+              href: "/artwork/andy-warhol-birmingham-race-riot-10",
+              image: {
+                aspect_ratio: 1.21,
+                __id: "5cd38e55287f1a7b4725fb79",
+                placeholder: "82.84023668639054%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/TuMBh41hMifd0F7EaheI9w/large.jpg",
+              },
+              _id: "5cd38e5486c1c459da06ad0d",
+              title: "Birmingham Race Riot",
+              image_title: "Andy Warhol, ‘Birmingham Race Riot’, 1964",
+              date: "1964",
+              sale_message: "$13,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Graves International Art",
+                href: "/graves-international-art",
+                __id: "UGFydG5lcjpncmF2ZXMtaW50ZXJuYXRpb25hbC1hcnQ=",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1ub3J0aHdlc3QtY29hc3QtbWFzay1mcy1paS1kb3QtMzgwLTI=",
               id: "andy-warhol-northwest-coast-mask-fs-ii-dot-380-2",
               href: "/artwork/andy-warhol-northwest-coast-mask-fs-ii-dot-380-2",
               image: {
                 aspect_ratio: 1,
-
+                __id: "5ba6bc80271fe71e4bde2a2e",
                 placeholder: "99.71291866028709%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/6y_-lwRBHGbGgw6KmsdCmQ/large.jpg",
@@ -716,6 +460,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -724,7 +469,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Gallery Art",
                 href: "/gallery-art",
-
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
                 type: "Gallery",
               },
               sale: null,
@@ -738,74 +483,36 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-untitled-angel-with-scarf",
-              href: "/artwork/andy-warhol-untitled-angel-with-scarf",
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1yYXJlLW9yaWdpbmFsLWFuZHktd2FyaG9sLXJlY29yZC1hcnQ=",
+              id: "andy-warhol-rare-original-andy-warhol-record-art",
+              href: "/artwork/andy-warhol-rare-original-andy-warhol-record-art",
               image: {
-                aspect_ratio: 0.8,
-
-                placeholder: "124.86187845303867%",
+                aspect_ratio: 1,
+                __id: "5c7eccb8f21b2b554398b640",
+                placeholder: "100.2248201438849%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/yqC7sUAP_E2TTcBH2luELQ/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/nhUiLKacJVUqpMSXQ30nJA/large.jpg",
               },
-              _id: "5d03df49e607c200127ee73b",
-              title: "Untitled (Angel with Scarf)",
+              _id: "5c7eccb73f643300285eb707",
+              title: "Rare original Andy Warhol record art",
               image_title:
-                "Andy Warhol, ‘Untitled (Angel with Scarf)’, ca. 1954",
-              date: "ca. 1954",
-              sale_message: "$15,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Long-Sharp Gallery",
-                href: "/long-sharp-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
-              href:
-                "/artwork/andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
-              image: {
-                aspect_ratio: 0.58,
-
-                placeholder: "172.1784776902887%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/EjLVZTsT0Ve41R6ProKQPQ/large.jpg",
-              },
-              _id: "530f70e97622dd44ed0000b9",
-              title: "Andy Warhol, Philip Fagan & Gerard Malanga",
-              image_title:
-                "Andy Warhol, ‘Andy Warhol, Philip Fagan & Gerard Malanga’, 1964",
+                "Andy Warhol, ‘Rare original Andy Warhol record art’, 1964",
               date: "1964",
-              sale_message: "Contact For Price",
+              sale_message: "$750",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "Joseph K. Levene Fine Art, Ltd.",
-                href: "/joseph-k-levene-fine-art-ltd",
-
+                name: "Lot 180",
+                href: "/lot-180",
+                __id: "UGFydG5lcjpsb3QtMTgw",
                 type: "Gallery",
               },
               sale: null,
@@ -819,129 +526,58 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-edward-kennedy-246",
-              href: "/artwork/andy-warhol-edward-kennedy-246",
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1hbmR5LXdhcmhvbC1waGlsaXAtZmFnYW4tYW5kLWdlcmFyZC1tYWxhbmdh",
+              id: "andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
+              href:
+                "/artwork/andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
               image: {
-                aspect_ratio: 0.79,
-
-                placeholder: "126.05042016806722%",
+                aspect_ratio: 0.58,
+                __id: "5c8ffeec7ba260002c4a5997",
+                placeholder: "172.1784776902887%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/v4_Qr-qqxp5ykoEDrvy3YQ/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/EjLVZTsT0Ve41R6ProKQPQ/large.jpg",
               },
-              _id: "56e87cb3cb4c270f630006ac",
-              title: "Edward Kennedy ",
-              image_title: "Andy Warhol, ‘Edward Kennedy ’, 1980",
-              date: "1980",
-              sale_message: "$19,000",
+              _id: "530f70e97622dd44ed0000b9",
+              title: "Andy Warhol, Philip Fagan & Gerard Malanga",
+              image_title:
+                "Andy Warhol, ‘Andy Warhol, Philip Fagan & Gerard Malanga’, 1964",
+              date: "1964",
+              sale_message: "Contact For Price",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "DTR Modern Galleries",
-                href: "/dtr-modern-galleries",
-
+                name: "Joseph K. Levene Fine Art, Ltd.",
+                href: "/joseph-k-levene-fine-art-ltd",
+                __id: "UGFydG5lcjpqb3NlcGgtay1sZXZlbmUtZmluZS1hcnQtbHRk",
                 type: "Gallery",
               },
               sale: null,
               sale_artwork: null,
-              is_inquireable: false,
+              is_inquireable: true,
               is_saved: false,
               is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
+              is_acquireable: false,
+              is_offerable: false,
             },
           },
           {
             node: {
-              id: "andy-warhol-geronimo-fs-ii-dot-384-12",
-              href: "/artwork/andy-warhol-geronimo-fs-ii-dot-384-12",
-              image: {
-                aspect_ratio: 1,
-
-                placeholder: "99.9002493765586%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/XzLLLPlzBCa4VLRv-x9Llw/large.jpg",
-              },
-              _id: "598dee35b202a34d8ae555fd",
-              title: "GERONIMO FS II.384",
-              image_title: "Andy Warhol, ‘GERONIMO FS II.384’, 1986",
-              date: "1986",
-              sale_message: "$59,500",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Gallery Art",
-                href: "/gallery-art",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-muhammed-ali-1",
-              href: "/artwork/andy-warhol-muhammed-ali-1",
-              image: {
-                aspect_ratio: 0.75,
-
-                placeholder: "133.57142857142856%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/mdtpEgwYjBZOLAnbV_wT3A/large.jpg",
-              },
-              _id: "5c5350d87571e150e59c064a",
-              title: "Muhammed Ali",
-              image_title: "Andy Warhol, ‘Muhammed Ali’, 1978",
-              date: "1978",
-              sale_message: "$110,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Samuel Owen Gallery",
-                href: "/samuel-owen-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1hbmR5LXdhcmhvbC1waG90b2dyYXBoLW9mLWNvcm5lbGlhLWd1ZXN0LTE5ODU=",
               id: "andy-warhol-andy-warhol-photograph-of-cornelia-guest-1985",
               href:
                 "/artwork/andy-warhol-andy-warhol-photograph-of-cornelia-guest-1985",
               image: {
                 aspect_ratio: 0.8,
-
+                __id: "5acf9cab9c18db546b46389e",
                 placeholder: "124.82435597189696%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/PWBFswpR5-Ai0lCrpRO5YA/large.jpg",
@@ -955,6 +591,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -963,7 +600,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Hedges Projects",
                 href: "/hedges-projects",
-
+                __id: "UGFydG5lcjpoZWRnZXMtcHJvamVjdHM=",
                 type: "Gallery",
               },
               sale: null,
@@ -977,129 +614,14 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-jason-mccoy",
-              href: "/artwork/andy-warhol-jason-mccoy",
-              image: {
-                aspect_ratio: 0.78,
-
-                placeholder: "128.2233936458185%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/1wd-zBc5RUMqVxXxWwvD2Q/large.jpg",
-              },
-              _id: "5899f38bcd530e4cb9497c39",
-              title: "Jason McCoy",
-              image_title: "Andy Warhol, ‘Jason McCoy’, ca. 1975",
-              date: "ca. 1975",
-              sale_message: "$7,500",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Alpha 137 Gallery",
-                href: "/alpha-137-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-christmas-tree",
-              href: "/artwork/andy-warhol-christmas-tree",
-              image: {
-                aspect_ratio: 1.54,
-
-                placeholder: "64.7452229299363%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/Xnb1U4aBD90UjbZG727O-A/large.jpg",
-              },
-              _id: "5d03bbdc0727f1000dbcf08b",
-              title: "Christmas Tree",
-              image_title: "Andy Warhol, ‘Christmas Tree’, ca. 1957",
-              date: "ca. 1957",
-              sale_message: "$12,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Long-Sharp Gallery",
-                href: "/long-sharp-gallery",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
-              id: "andy-warhol-untitled-jon-gould-1",
-              href: "/artwork/andy-warhol-untitled-jon-gould-1",
-              image: {
-                aspect_ratio: 0.73,
-
-                placeholder: "137.22126929674099%",
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/m08CoClNXzF2xnjrCxy5Kg/large.jpg",
-              },
-              _id: "5ba53e0aac71ac1fcc830a61",
-              title: "UNTITLED ( JON GOULD)",
-              image_title: "Andy Warhol, ‘UNTITLED ( JON GOULD)’, 1982",
-              date: "1982",
-              sale_message: "$75,000",
-              cultural_maker: null,
-              artists: [
-                {
-                  href: "/artist/andy-warhol",
-                  name: "Andy Warhol",
-                },
-              ],
-              collecting_institution: null,
-              partner: {
-                name: "Gallery Art",
-                href: "/gallery-art",
-
-                type: "Gallery",
-              },
-              sale: null,
-              sale_artwork: null,
-              is_inquireable: false,
-              is_saved: false,
-              is_biddable: false,
-              is_acquireable: true,
-              is_offerable: true,
-            },
-          },
-          {
-            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1hbmR5LXdhcmhvbC1waG90b2dyYXBoLW9mLXRpbW90aHktaHV0dG9uLTE5ODA=",
               id: "andy-warhol-andy-warhol-photograph-of-timothy-hutton-1980",
               href:
                 "/artwork/andy-warhol-andy-warhol-photograph-of-timothy-hutton-1980",
               image: {
                 aspect_ratio: 0.76,
-
+                __id: "5a849c618b0c1437e789895b",
                 placeholder: "131.11395646606914%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/_Gp2Tqu2040tCbVzm5ZSOg/large.jpg",
@@ -1113,6 +635,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -1121,7 +644,7 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "Hedges Projects",
                 href: "/hedges-projects",
-
+                __id: "UGFydG5lcjpoZWRnZXMtcHJvamVjdHM=",
                 type: "Gallery",
               },
               sale: null,
@@ -1135,32 +658,34 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
-              id: "andy-warhol-superman-f-and-s-ii-260-3",
-              href: "/artwork/andy-warhol-superman-f-and-s-ii-260-3",
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1tdWhhbW1lZC1hbGktMQ==",
+              id: "andy-warhol-muhammed-ali-1",
+              href: "/artwork/andy-warhol-muhammed-ali-1",
               image: {
-                aspect_ratio: 1,
-
-                placeholder: "100.45558086560365%",
+                aspect_ratio: 0.75,
+                __id: "5c5350d9e92d7d320c5a9771",
+                placeholder: "133.57142857142856%",
                 url:
-                  "https://d32dm0rphc51dk.cloudfront.net/JfQvrm5cdR-D0O7hqqbEZg/large.jpg",
+                  "https://d32dm0rphc51dk.cloudfront.net/mdtpEgwYjBZOLAnbV_wT3A/large.jpg",
               },
-              _id: "5d02a7dc9a0484000d291164",
-              title: "Superman (F. & S. II. 260)",
-              image_title: "Andy Warhol, ‘Superman (F. & S. II. 260)’, 1981",
-              date: "1981",
-              sale_message: "$240,000",
+              _id: "5c5350d87571e150e59c064a",
+              title: "Muhammed Ali",
+              image_title: "Andy Warhol, ‘Muhammed Ali’, 1978",
+              date: "1978",
+              sale_message: "$110,000",
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
               ],
               collecting_institution: null,
               partner: {
-                name: "David Benrimon Fine Art",
-                href: "/david-benrimon-fine-art",
-
+                name: "Samuel Owen Gallery",
+                href: "/samuel-owen-gallery",
+                __id: "UGFydG5lcjpzYW11ZWwtb3dlbi1nYWxsZXJ5",
                 type: "Gallery",
               },
               sale: null,
@@ -1174,11 +699,220 @@ export const ArtworkFilterFixture = {
           },
           {
             node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC11bnRpdGxlZC1qb24tZ291bGQtMQ==",
+              id: "andy-warhol-untitled-jon-gould-1",
+              href: "/artwork/andy-warhol-untitled-jon-gould-1",
+              image: {
+                aspect_ratio: 0.73,
+                __id: "5ba53e0b267eaf12216ac62b",
+                placeholder: "137.22126929674099%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/m08CoClNXzF2xnjrCxy5Kg/large.jpg",
+              },
+              _id: "5ba53e0aac71ac1fcc830a61",
+              title: "UNTITLED ( JON GOULD)",
+              image_title: "Andy Warhol, ‘UNTITLED ( JON GOULD)’, 1982",
+              date: "1982",
+              sale_message: "$75,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1nZXJvbmltby1mcy1paS1kb3QtMzg0LTEy",
+              id: "andy-warhol-geronimo-fs-ii-dot-384-12",
+              href: "/artwork/andy-warhol-geronimo-fs-ii-dot-384-12",
+              image: {
+                aspect_ratio: 1,
+                __id: "598dee377622dd5fb61e36cd",
+                placeholder: "99.9002493765586%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/XzLLLPlzBCa4VLRv-x9Llw/large.jpg",
+              },
+              _id: "598dee35b202a34d8ae555fd",
+              title: "GERONIMO FS II.384",
+              image_title: "Andy Warhol, ‘GERONIMO FS II.384’, 1986",
+              date: "1986",
+              sale_message: "$59,500",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1qYXNvbi1tY2NveQ==",
+              id: "andy-warhol-jason-mccoy",
+              href: "/artwork/andy-warhol-jason-mccoy",
+              image: {
+                aspect_ratio: 0.78,
+                __id: "5899f38f8b3b811199018b3f",
+                placeholder: "128.2233936458185%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/1wd-zBc5RUMqVxXxWwvD2Q/large.jpg",
+              },
+              _id: "5899f38bcd530e4cb9497c39",
+              title: "Jason McCoy",
+              image_title: "Andy Warhol, ‘Jason McCoy’, ca. 1975",
+              date: "ca. 1975",
+              sale_message: "$7,500",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Alpha 137 Gallery",
+                href: "/alpha-137-gallery",
+                __id: "UGFydG5lcjphbHBoYS0xMzctZ2FsbGVyeQ==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1kb2xsYXJzLXF1YWRyYW50LWZzLWlpLWRvdC0yODQtMQ==",
+              id: "andy-warhol-dollars-quadrant-fs-ii-dot-284-1",
+              href: "/artwork/andy-warhol-dollars-quadrant-fs-ii-dot-284-1",
+              image: {
+                aspect_ratio: 0.79,
+                __id: "5ba51fab8401d90a3639e007",
+                placeholder: "125.92766557069046%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/kHTEwjm-QJPlM0woOxF3RQ/large.jpg",
+              },
+              _id: "5ba51faa7cc3c02d1360402b",
+              title: "$ (QUADRANT) FS II.284",
+              image_title: "Andy Warhol, ‘$ (QUADRANT) FS II.284’, 1982",
+              date: "1982",
+              sale_message: "$215,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1sYWRpZXMtYW5kLWdlbnRsZW1lbi1mcy1paS1kb3QtMTMwLTE=",
+              id: "andy-warhol-ladies-and-gentlemen-fs-ii-dot-130-1",
+              href: "/artwork/andy-warhol-ladies-and-gentlemen-fs-ii-dot-130-1",
+              image: {
+                aspect_ratio: 0.65,
+                __id: "5bc1132dc8d432002985d69e",
+                placeholder: "153.60983102918587%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/o_SwQjGrVcVDI3ZBFw_p1A/large.jpg",
+              },
+              _id: "5bb91a3efb13b3467ad92176",
+              title: "LADIES & GENTLEMEN FS II.130",
+              image_title: "Andy Warhol, ‘LADIES & GENTLEMEN FS II.130’, 1975",
+              date: "1975",
+              sale_message: "$18,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1tYW8tZi1kb3Qtcy1paS1kb3QtOTU=",
               id: "andy-warhol-mao-f-dot-s-ii-dot-95",
               href: "/artwork/andy-warhol-mao-f-dot-s-ii-dot-95",
               image: {
                 aspect_ratio: 0.99,
-
+                __id: "5ade403a9c18db50a36c7ed2",
                 placeholder: "101.26150698943061%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/NQ-02-O7u2EcAK3VVVuBpg/large.jpg",
@@ -1191,6 +925,7 @@ export const ArtworkFilterFixture = {
               cultural_maker: null,
               artists: [
                 {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -1199,6 +934,339 @@ export const ArtworkFilterFixture = {
               partner: {
                 name: "DTR Modern Galleries",
                 href: "/dtr-modern-galleries",
+                __id: "UGFydG5lcjpkdHItbW9kZXJuLWdhbGxlcmllcw==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1sYWRpZXMtYW5kLWdlbnRsZW1lbi1mcy1paS1kb3QtMTI3LTE=",
+              id: "andy-warhol-ladies-and-gentlemen-fs-ii-dot-127-1",
+              href: "/artwork/andy-warhol-ladies-and-gentlemen-fs-ii-dot-127-1",
+              image: {
+                aspect_ratio: 0.69,
+                __id: "5bb932d3b4d88a315f2e5170",
+                placeholder: "145.1534339990258%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/fqXp8pPB9Gq_skirBR-Ttw/large.jpg",
+              },
+              _id: "5bb932d248638b389dccd1de",
+              title: "LADIES & GENTLEMEN FS II.127",
+              image_title: "Andy Warhol, ‘LADIES & GENTLEMEN FS II.127’, 1975",
+              date: "1975",
+              sale_message: "$15,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC10cnVjay05",
+              id: "andy-warhol-truck-9",
+              href: "/artwork/andy-warhol-truck-9",
+              image: {
+                aspect_ratio: 1.24,
+                __id: "5936d55e275b244dd0bece46",
+                placeholder: "80.53691275167785%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/-RLvowuSRvkjZP9aPrdXhg/large.jpg",
+              },
+              _id: "5936d55c8b3b816199432aeb",
+              title: "Truck",
+              image_title: "Andy Warhol, ‘Truck’, 1985",
+              date: "1985",
+              sale_message: "$40,000 - 50,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "HG Contemporary",
+                href: "/hg-contemporary",
+                __id: "UGFydG5lcjpoZy1jb250ZW1wb3Jhcnk=",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: true,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: false,
+              is_offerable: false,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1icmlsbG8tMQ==",
+              id: "andy-warhol-brillo-1",
+              href: "/artwork/andy-warhol-brillo-1",
+              image: {
+                aspect_ratio: 0.87,
+                __id: "5a42130dc9dc243a1d9b00e4",
+                placeholder: "115.29525653436592%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/bXDSjJjt3mNnTtUbmv3-GQ/large.jpg",
+              },
+              _id: "5a42130b275b24365005ee0e",
+              title: "Brillo ",
+              image_title: "Andy Warhol, ‘Brillo ’, 1970",
+              date: "1970",
+              sale_message: "$2,500",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Alpha 137 Gallery",
+                href: "/alpha-137-gallery",
+                __id: "UGFydG5lcjphbHBoYS0xMzctZ2FsbGVyeQ==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1wbGFpbnMtaW5kaWFuLXNoaWVsZC1mcy1paS1kb3QtMzgyLTM=",
+              id: "andy-warhol-plains-indian-shield-fs-ii-dot-382-3",
+              href: "/artwork/andy-warhol-plains-indian-shield-fs-ii-dot-382-3",
+              image: {
+                aspect_ratio: 1,
+                __id: "5bad23a02f893b0026e3a91e",
+                placeholder: "99.70089730807578%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/YTOAMMo5veMFGqxWRfGGKw/large.jpg",
+              },
+              _id: "5bad21ad1f74731ee9303eef",
+              title: "PLAINS INDIAN SHIELD FS II.382",
+              image_title:
+                "Andy Warhol, ‘PLAINS INDIAN SHIELD FS II.382’, 1986",
+              date: "1986",
+              sale_message: "$29,500",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1tYXJ0aGEtZ3JhaGFtLTE1",
+              id: "andy-warhol-martha-graham-15",
+              href: "/artwork/andy-warhol-martha-graham-15",
+              image: {
+                aspect_ratio: 0.88,
+                __id: "5d0aa4699227580011df7005",
+                placeholder: "113.60239162929746%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/LQ_-wbit7h14pg_rRZlUxg/large.jpg",
+              },
+              _id: "58aa83afa09a6724705e70ee",
+              title: "Martha Graham",
+              image_title: "Andy Warhol, ‘Martha Graham’, ca. 1980",
+              date: "ca. 1980",
+              sale_message: "$35,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Long-Sharp Gallery",
+                href: "/long-sharp-gallery",
+                __id: "UGFydG5lcjpsb25nLXNoYXJwLWdhbGxlcnk=",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1maXNoLWZzLWlpaWEtZG90LTM5LTE=",
+              id: "andy-warhol-fish-fs-iiia-dot-39-1",
+              href: "/artwork/andy-warhol-fish-fs-iiia-dot-39-1",
+              image: {
+                aspect_ratio: 0.69,
+                __id: "5a5a5a801a1e865022ba93d8",
+                placeholder: "144.65281297516472%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/sxPJfeQIEfyw4ZIPs3CUBA/large.jpg",
+              },
+              _id: "5a5a5a7f275b24325dcf4205",
+              title: "FISH FS IIIA.39",
+              image_title: "Andy Warhol, ‘FISH FS IIIA.39’, 1983",
+              date: "1983",
+              sale_message: "$27,500",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id: "QXJ0d29yazphbmR5LXdhcmhvbC11bnRpdGxlZC1mZW1hbGUtZmlndXJl",
+              id: "andy-warhol-untitled-female-figure",
+              href: "/artwork/andy-warhol-untitled-female-figure",
+              image: {
+                aspect_ratio: 0.74,
+                __id: "5d0aa42c973301000d4fc5ac",
+                placeholder: "134.3361674296926%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/riZWHaE2IEQhiNHwmFjiKw/large.jpg",
+              },
+              _id: "5c9a503a9817f366d0db9c4c",
+              title: "Untitled (Female Figure)",
+              image_title: "Andy Warhol, ‘Untitled (Female Figure)’, ca. 1956",
+              date: "ca. 1956",
+              sale_message: "$14,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Long-Sharp Gallery",
+                href: "/long-sharp-gallery",
+                __id: "UGFydG5lcjpsb25nLXNoYXJwLWdhbGxlcnk=",
+                type: "Gallery",
+              },
+              sale: null,
+              sale_artwork: null,
+              is_inquireable: false,
+              is_saved: false,
+              is_biddable: false,
+              is_acquireable: true,
+              is_offerable: true,
+            },
+          },
+          {
+            node: {
+              __id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1sYWRpZXMtYW5kLWdlbnRsZW1lbi1mcy1paS1kb3QtMTI4LTI=",
+              id: "andy-warhol-ladies-and-gentlemen-fs-ii-dot-128-2",
+              href: "/artwork/andy-warhol-ladies-and-gentlemen-fs-ii-dot-128-2",
+              image: {
+                aspect_ratio: 0.62,
+                __id: "5bbe6720478ff40d796360da",
+                placeholder: "160.09673518742443%",
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/GIsZlmTq9UiTCEVIwx709g/large.jpg",
+              },
+              _id: "5bbe671fa13448002a77b29e",
+              title: "LADIES & GENTLEMEN FS II.128",
+              image_title: "Andy Warhol, ‘LADIES & GENTLEMEN FS II.128’, 1975",
+              date: "1975",
+              sale_message: "$23,000",
+              cultural_maker: null,
+              artists: [
+                {
+                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  href: "/artist/andy-warhol",
+                  name: "Andy Warhol",
+                },
+              ],
+              collecting_institution: null,
+              partner: {
+                name: "Gallery Art",
+                href: "/gallery-art",
+                __id: "UGFydG5lcjpnYWxsZXJ5LWFydA==",
                 type: "Gallery",
               },
               sale: null,
@@ -1215,3 +1283,1221 @@ export const ArtworkFilterFixture = {
     },
   },
 }
+
+// export const ArtworkFilterFixture = {
+//   viewer: {
+//     filtered_artworks: {
+//       artworks: {
+//         pageInfo: {
+//           hasNextPage: true,
+//           endCursor: "YXJyYXljb25uZWN0aW9uOjI5",
+//         },
+//         pageCursors: {
+//           around: [
+//             {
+//               cursor: "YXJyYXljb25uZWN0aW9uOi0x",
+//               page: 1,
+//               isCurrent: true,
+//             },
+//             {
+//               cursor: "YXJyYXljb25uZWN0aW9uOjI5",
+//               page: 2,
+//               isCurrent: false,
+//             },
+//             {
+//               cursor: "YXJyYXljb25uZWN0aW9uOjU5",
+//               page: 3,
+//               isCurrent: false,
+//             },
+//             {
+//               cursor: "YXJyYXljb25uZWN0aW9uOjg5",
+//               page: 4,
+//               isCurrent: false,
+//             },
+//           ],
+//           first: null,
+//           last: {
+//             cursor: "YXJyYXljb25uZWN0aW9uOjI5Njk=",
+//             page: 100,
+//             isCurrent: false,
+//           },
+//           previous: null,
+//         },
+//         edges: [
+//           {
+//             node: {
+//               id: "andy-warhol-kenny-burrell",
+//               href: "/artwork/andy-warhol-kenny-burrell",
+//               image: {
+//                 aspect_ratio: 1.35,
+//                 placeholder: "74.20097898070833%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/lTTEGbhqyyMC8IraJuGTtw/large.jpg",
+//               },
+//               _id: "5d041931e607c200127ef3c1",
+//               title: "Kenny Burrell",
+//               image_title: "Andy Warhol, ‘Kenny Burrell’, 1956",
+//               date: "1956",
+//               sale_message: "$95,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Ambleside Gallery",
+//                 href: "/ambleside-gallery",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-truck-13",
+//               href: "/artwork/andy-warhol-truck-13",
+//               image: {
+//                 aspect_ratio: 1.38,
+//                 placeholder: "72.25%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/qguoXSQBjO8DWY7_hccTLA/large.jpg",
+//               },
+//               _id: "5cb74b740c1fe113bb9e4bb3",
+//               title: "Truck",
+//               image_title: "Andy Warhol, ‘Truck’, ca. 1980",
+//               date: "ca. 1980",
+//               sale_message: "$215,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Westwood Gallery NYC",
+//                 href: "/westwood-gallery-nyc",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-dollar-signs-2",
+//               href: "/artwork/andy-warhol-dollar-signs-2",
+//               image: {
+//                 aspect_ratio: 0.77,
+//                 placeholder: "129.25764192139738%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/PK5SWJlAnKSfnfcu2Gsz-A/large.jpg",
+//               },
+//               _id: "5ba511f67cc3c00c36503f23",
+//               title: "DOLLAR SIGNS",
+//               image_title: "Andy Warhol, ‘DOLLAR SIGNS’, 1981",
+//               date: "1981",
+//               sale_message: "$315,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-dollars-1-fs-ii-dot-274",
+//               href: "/artwork/andy-warhol-dollars-1-fs-ii-dot-274",
+//               image: {
+//                 aspect_ratio: 0.79,
+//                 placeholder: "126.35956493921945%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/QNBY1kx6foZiKrB7msMWmw/large.jpg",
+//               },
+//               _id: "5c65e45bdf9e64439cfecedf",
+//               title: "$(1) FS II.274",
+//               image_title: "Andy Warhol, ‘$(1) FS II.274’, 1982",
+//               date: "1982",
+//               sale_message: "$85,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-truck-9",
+//               href: "/artwork/andy-warhol-truck-9",
+//               image: {
+//                 aspect_ratio: 1.24,
+//                 placeholder: "80.53691275167785%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/-RLvowuSRvkjZP9aPrdXhg/large.jpg",
+//               },
+//               _id: "5936d55c8b3b816199432aeb",
+//               title: "Truck",
+//               image_title: "Andy Warhol, ‘Truck’, 1985",
+//               date: "1985",
+//               sale_message: "Contact For Price",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "HG Contemporary",
+//                 href: "/hg-contemporary",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-mao-177",
+//               href: "/artwork/andy-warhol-mao-177",
+//               image: {
+//                 aspect_ratio: 1,
+//                 placeholder: "100%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/aKZbFz8GjfIfUj9AKCl1ZQ/large.jpg",
+//               },
+//               _id: "5936d55dcd530e69388b704e",
+//               title: "MAO ",
+//               image_title: "Andy Warhol, ‘MAO ’, 1972",
+//               date: "1972",
+//               sale_message: "Contact For Price",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "HG Contemporary",
+//                 href: "/hg-contemporary",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-actress-shots-andy-warhol-ny-daily-news-1968",
+//               href:
+//                 "/artwork/andy-warhol-actress-shots-andy-warhol-ny-daily-news-1968",
+//               image: {
+//                 aspect_ratio: 1.07,
+//                 placeholder: "93.81044487427465%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/L8Vjqhum4XX6sqiEXUg3Fg/large.jpg",
+//               },
+//               _id: "575f459bcd530e65df000adb",
+//               title: '"ACTRESS SHOTS ANDY WARHOL" NY Daily News, 1968',
+//               image_title:
+//                 'Andy Warhol, ‘"ACTRESS SHOTS ANDY WARHOL" NY Daily News, 1968’, 1968',
+//               date: "1968",
+//               sale_message: "$1,250",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "VINCE fine arts/ephemera",
+//                 href: "/vince-fine-arts-slash-ephemera",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-shoe-18",
+//               href: "/artwork/andy-warhol-shoe-18",
+//               image: {
+//                 aspect_ratio: 1.42,
+
+//                 placeholder: "70.31349968010237%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/123zBWZmYy_OC9d9tV3ajQ/large.jpg",
+//               },
+//               _id: "5bad2bbbc5cfa04f7c0c669e",
+//               title: "Shoe",
+//               image_title: "Andy Warhol, ‘Shoe’, 1958",
+//               date: "1958",
+//               sale_message: "$18,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "McClain Gallery",
+//                 href: "/mcclain-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-cosmos",
+//               href: "/artwork/andy-warhol-cosmos",
+//               image: {
+//                 aspect_ratio: 0.78,
+
+//                 placeholder: "128.15296989422293%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/Lzonx30NloDXcs0FdKUjDw/large.jpg",
+//               },
+//               _id: "5c84405fc8cb3760fe0e628d",
+//               title: "COSMOS",
+//               image_title: "Andy Warhol, ‘COSMOS’, ca. 1984",
+//               date: "ca. 1984",
+//               sale_message: "$99,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-unknown-female-iranian-princess",
+//               href: "/artwork/andy-warhol-unknown-female-iranian-princess",
+//               image: {
+//                 aspect_ratio: 0.78,
+
+//                 placeholder: "127.65957446808511%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/Ai17efWbDETpA3y9puiW5Q/large.jpg",
+//               },
+//               _id: "5b197fed5b2fba13b1e3fc11",
+//               title: "Unknown Female (Iranian Princess)",
+//               image_title:
+//                 "Andy Warhol, ‘Unknown Female (Iranian Princess)’, 1977",
+//               date: "1977",
+//               sale_message: "$45,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Cerbera Gallery",
+//                 href: "/cerbera-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-peaches",
+//               href: "/artwork/andy-warhol-peaches",
+//               image: {
+//                 aspect_ratio: 1.33,
+
+//                 placeholder: "75.44910179640718%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/RkBOuh6bjwu-pY9a3CzaHA/large.jpg",
+//               },
+//               _id: "59664e918b0c1456357651c2",
+//               title: "Peaches",
+//               image_title: "Andy Warhol, ‘Peaches’, 1978",
+//               date: "1978",
+//               sale_message: "$15,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "DTR Modern Galleries",
+//                 href: "/dtr-modern-galleries",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-lee-iacocca-2",
+//               href: "/artwork/andy-warhol-lee-iacocca-2",
+//               image: {
+//                 aspect_ratio: 0.82,
+
+//                 placeholder: "121.67539267015708%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/NuQp4MqjsqRaiPpC9hu5BA/large.jpg",
+//               },
+//               _id: "59d7a04a7622dd4d838b9f10",
+//               title: "Lee Iacocca",
+//               image_title: "Andy Warhol, ‘Lee Iacocca’, 1985",
+//               date: "1985",
+//               sale_message: "$18,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Robert Fontaine Gallery",
+//                 href: "/robert-fontaine-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-birmingham-race-riot-10",
+//               href: "/artwork/andy-warhol-birmingham-race-riot-10",
+//               image: {
+//                 aspect_ratio: 1.21,
+
+//                 placeholder: "82.84023668639054%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/TuMBh41hMifd0F7EaheI9w/large.jpg",
+//               },
+//               _id: "5cd38e5486c1c459da06ad0d",
+//               title: "Birmingham Race Riot",
+//               image_title: "Andy Warhol, ‘Birmingham Race Riot’, 1964",
+//               date: "1964",
+//               sale_message: "$13,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Graves International Art",
+//                 href: "/graves-international-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-the-beatles-unique",
+//               href: "/artwork/andy-warhol-the-beatles-unique",
+//               image: {
+//                 aspect_ratio: 1.31,
+
+//                 placeholder: "76.54534950895436%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/veZiKJqEyw3EwO1xfIINEg/large.jpg",
+//               },
+//               _id: "59e24ecd139b214a3023f5e4",
+//               title: "The Beatles (Unique)",
+//               image_title: "Andy Warhol, ‘The Beatles (Unique)’, 1980",
+//               date: "1980",
+//               sale_message: "$115,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "DANE FINE ART",
+//                 href: "/great-dane-auctions",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-sewing-machine",
+//               href: "/artwork/andy-warhol-sewing-machine",
+//               image: {
+//                 aspect_ratio: 1,
+
+//                 placeholder: "100%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/MySOcyJvvgWT6US5jFafRA/large.jpg",
+//               },
+//               _id: "572b64d18b3b81436a0011c8",
+//               title: "Sewing Machine",
+//               image_title: "Andy Warhol, ‘Sewing Machine’, 1952",
+//               date: "1952",
+//               sale_message: "$17,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Joseph K. Levene Fine Art, Ltd.",
+//                 href: "/joseph-k-levene-fine-art-ltd",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-rare-original-andy-warhol-record-art",
+//               href: "/artwork/andy-warhol-rare-original-andy-warhol-record-art",
+//               image: {
+//                 aspect_ratio: 1,
+
+//                 placeholder: "100.2248201438849%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/nhUiLKacJVUqpMSXQ30nJA/large.jpg",
+//               },
+//               _id: "5c7eccb73f643300285eb707",
+//               title: "Rare original Andy Warhol record art",
+//               image_title:
+//                 "Andy Warhol, ‘Rare original Andy Warhol record art’, 1964",
+//               date: "1964",
+//               sale_message: "$750",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Lot 180",
+//                 href: "/lot-180",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id:
+//                 "andy-warhol-andy-warhol-photograph-of-victor-hugo-in-sequin-dress-and-a-man-1970s",
+//               href:
+//                 "/artwork/andy-warhol-andy-warhol-photograph-of-victor-hugo-in-sequin-dress-and-a-man-1970s",
+//               image: {
+//                 aspect_ratio: 1.37,
+
+//                 placeholder: "73.24777887462982%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/h_JhF79Y6oy_fRMhg6M9tw/large.jpg",
+//               },
+//               _id: "5c3fa9f737553c5bf49d2b0b",
+//               title:
+//                 "Andy Warhol, Photograph of Victor Hugo in Sequin Dress and a Man, 1970s",
+//               image_title:
+//                 "Andy Warhol, ‘Andy Warhol, Photograph of Victor Hugo in Sequin Dress and a Man, 1970s’, 1970s",
+//               date: "1970s",
+//               sale_message: "$8,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Hedges Projects",
+//                 href: "/hedges-projects",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-northwest-coast-mask-fs-ii-dot-380-2",
+//               href: "/artwork/andy-warhol-northwest-coast-mask-fs-ii-dot-380-2",
+//               image: {
+//                 aspect_ratio: 1,
+
+//                 placeholder: "99.71291866028709%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/6y_-lwRBHGbGgw6KmsdCmQ/large.jpg",
+//               },
+//               _id: "5ba6bc7e869e571108ea1aaa",
+//               title: "NORTHWEST COAST MASK FS II.380",
+//               image_title:
+//                 "Andy Warhol, ‘NORTHWEST COAST MASK FS II.380’, 1986",
+//               date: "1986",
+//               sale_message: "$72,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-untitled-angel-with-scarf",
+//               href: "/artwork/andy-warhol-untitled-angel-with-scarf",
+//               image: {
+//                 aspect_ratio: 0.8,
+
+//                 placeholder: "124.86187845303867%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/yqC7sUAP_E2TTcBH2luELQ/large.jpg",
+//               },
+//               _id: "5d03df49e607c200127ee73b",
+//               title: "Untitled (Angel with Scarf)",
+//               image_title:
+//                 "Andy Warhol, ‘Untitled (Angel with Scarf)’, ca. 1954",
+//               date: "ca. 1954",
+//               sale_message: "$15,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Long-Sharp Gallery",
+//                 href: "/long-sharp-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
+//               href:
+//                 "/artwork/andy-warhol-andy-warhol-philip-fagan-and-gerard-malanga",
+//               image: {
+//                 aspect_ratio: 0.58,
+
+//                 placeholder: "172.1784776902887%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/EjLVZTsT0Ve41R6ProKQPQ/large.jpg",
+//               },
+//               _id: "530f70e97622dd44ed0000b9",
+//               title: "Andy Warhol, Philip Fagan & Gerard Malanga",
+//               image_title:
+//                 "Andy Warhol, ‘Andy Warhol, Philip Fagan & Gerard Malanga’, 1964",
+//               date: "1964",
+//               sale_message: "Contact For Price",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Joseph K. Levene Fine Art, Ltd.",
+//                 href: "/joseph-k-levene-fine-art-ltd",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: true,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: false,
+//               is_offerable: false,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-edward-kennedy-246",
+//               href: "/artwork/andy-warhol-edward-kennedy-246",
+//               image: {
+//                 aspect_ratio: 0.79,
+
+//                 placeholder: "126.05042016806722%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/v4_Qr-qqxp5ykoEDrvy3YQ/large.jpg",
+//               },
+//               _id: "56e87cb3cb4c270f630006ac",
+//               title: "Edward Kennedy ",
+//               image_title: "Andy Warhol, ‘Edward Kennedy ’, 1980",
+//               date: "1980",
+//               sale_message: "$19,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "DTR Modern Galleries",
+//                 href: "/dtr-modern-galleries",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-geronimo-fs-ii-dot-384-12",
+//               href: "/artwork/andy-warhol-geronimo-fs-ii-dot-384-12",
+//               image: {
+//                 aspect_ratio: 1,
+
+//                 placeholder: "99.9002493765586%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/XzLLLPlzBCa4VLRv-x9Llw/large.jpg",
+//               },
+//               _id: "598dee35b202a34d8ae555fd",
+//               title: "GERONIMO FS II.384",
+//               image_title: "Andy Warhol, ‘GERONIMO FS II.384’, 1986",
+//               date: "1986",
+//               sale_message: "$59,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-muhammed-ali-1",
+//               href: "/artwork/andy-warhol-muhammed-ali-1",
+//               image: {
+//                 aspect_ratio: 0.75,
+
+//                 placeholder: "133.57142857142856%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/mdtpEgwYjBZOLAnbV_wT3A/large.jpg",
+//               },
+//               _id: "5c5350d87571e150e59c064a",
+//               title: "Muhammed Ali",
+//               image_title: "Andy Warhol, ‘Muhammed Ali’, 1978",
+//               date: "1978",
+//               sale_message: "$110,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Samuel Owen Gallery",
+//                 href: "/samuel-owen-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-andy-warhol-photograph-of-cornelia-guest-1985",
+//               href:
+//                 "/artwork/andy-warhol-andy-warhol-photograph-of-cornelia-guest-1985",
+//               image: {
+//                 aspect_ratio: 0.8,
+
+//                 placeholder: "124.82435597189696%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/PWBFswpR5-Ai0lCrpRO5YA/large.jpg",
+//               },
+//               _id: "5acf9ca9c9dc2404e5b1e7e1",
+//               title: "Andy Warhol, Photograph of Cornelia Guest, 1985",
+//               image_title:
+//                 "Andy Warhol, ‘Andy Warhol, Photograph of Cornelia Guest, 1985’, 1985",
+//               date: "1985",
+//               sale_message: "$12,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Hedges Projects",
+//                 href: "/hedges-projects",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-jason-mccoy",
+//               href: "/artwork/andy-warhol-jason-mccoy",
+//               image: {
+//                 aspect_ratio: 0.78,
+
+//                 placeholder: "128.2233936458185%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/1wd-zBc5RUMqVxXxWwvD2Q/large.jpg",
+//               },
+//               _id: "5899f38bcd530e4cb9497c39",
+//               title: "Jason McCoy",
+//               image_title: "Andy Warhol, ‘Jason McCoy’, ca. 1975",
+//               date: "ca. 1975",
+//               sale_message: "$7,500",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Alpha 137 Gallery",
+//                 href: "/alpha-137-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-christmas-tree",
+//               href: "/artwork/andy-warhol-christmas-tree",
+//               image: {
+//                 aspect_ratio: 1.54,
+
+//                 placeholder: "64.7452229299363%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/Xnb1U4aBD90UjbZG727O-A/large.jpg",
+//               },
+//               _id: "5d03bbdc0727f1000dbcf08b",
+//               title: "Christmas Tree",
+//               image_title: "Andy Warhol, ‘Christmas Tree’, ca. 1957",
+//               date: "ca. 1957",
+//               sale_message: "$12,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Long-Sharp Gallery",
+//                 href: "/long-sharp-gallery",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-untitled-jon-gould-1",
+//               href: "/artwork/andy-warhol-untitled-jon-gould-1",
+//               image: {
+//                 aspect_ratio: 0.73,
+
+//                 placeholder: "137.22126929674099%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/m08CoClNXzF2xnjrCxy5Kg/large.jpg",
+//               },
+//               _id: "5ba53e0aac71ac1fcc830a61",
+//               title: "UNTITLED ( JON GOULD)",
+//               image_title: "Andy Warhol, ‘UNTITLED ( JON GOULD)’, 1982",
+//               date: "1982",
+//               sale_message: "$75,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Gallery Art",
+//                 href: "/gallery-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-andy-warhol-photograph-of-timothy-hutton-1980",
+//               href:
+//                 "/artwork/andy-warhol-andy-warhol-photograph-of-timothy-hutton-1980",
+//               image: {
+//                 aspect_ratio: 0.76,
+
+//                 placeholder: "131.11395646606914%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/_Gp2Tqu2040tCbVzm5ZSOg/large.jpg",
+//               },
+//               _id: "5a849c5c8b0c1437e789894f",
+//               title: "Andy Warhol, Photograph of Timothy Hutton, 1980",
+//               image_title:
+//                 "Andy Warhol, ‘Andy Warhol, Photograph of Timothy Hutton, 1980’, 1980",
+//               date: "1980",
+//               sale_message: "$6,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "Hedges Projects",
+//                 href: "/hedges-projects",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-superman-f-and-s-ii-260-3",
+//               href: "/artwork/andy-warhol-superman-f-and-s-ii-260-3",
+//               image: {
+//                 aspect_ratio: 1,
+
+//                 placeholder: "100.45558086560365%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/JfQvrm5cdR-D0O7hqqbEZg/large.jpg",
+//               },
+//               _id: "5d02a7dc9a0484000d291164",
+//               title: "Superman (F. & S. II. 260)",
+//               image_title: "Andy Warhol, ‘Superman (F. & S. II. 260)’, 1981",
+//               date: "1981",
+//               sale_message: "$240,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "David Benrimon Fine Art",
+//                 href: "/david-benrimon-fine-art",
+
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//           {
+//             node: {
+//               id: "andy-warhol-mao-f-dot-s-ii-dot-95",
+//               href: "/artwork/andy-warhol-mao-f-dot-s-ii-dot-95",
+//               image: {
+//                 aspect_ratio: 0.99,
+
+//                 placeholder: "101.26150698943061%",
+//                 url:
+//                   "https://d32dm0rphc51dk.cloudfront.net/NQ-02-O7u2EcAK3VVVuBpg/large.jpg",
+//               },
+//               _id: "5ade4038b202a32c06c7391e",
+//               title: "Mao F.S.II.95",
+//               image_title: "Andy Warhol, ‘Mao F.S.II.95’, 1972",
+//               date: "1972",
+//               sale_message: "$70,000",
+//               cultural_maker: null,
+//               artists: [
+//                 {
+//                   href: "/artist/andy-warhol",
+//                   name: "Andy Warhol",
+//                 },
+//               ],
+//               collecting_institution: null,
+//               partner: {
+//                 name: "DTR Modern Galleries",
+//                 href: "/dtr-modern-galleries",
+//                 type: "Gallery",
+//               },
+//               sale: null,
+//               sale_artwork: null,
+//               is_inquireable: false,
+//               is_saved: false,
+//               is_biddable: false,
+//               is_acquireable: true,
+//               is_offerable: true,
+//             },
+//           },
+//         ],
+//       },
+//     },
+//   },
+// }
