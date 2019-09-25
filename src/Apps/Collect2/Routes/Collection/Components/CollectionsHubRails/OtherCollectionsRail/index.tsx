@@ -7,7 +7,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useMedia } from "Utils/Hooks/useMedia"
+import { Media } from "Utils/Responsive"
 import { OtherCollectionsRailsContainer as OtherCollectionEntity } from "./OtherCollectionEntity"
 
 interface OtherCollectionsRailProps {
@@ -18,7 +18,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }) => {
   const { name, members } = collectionGroup
   const { trackEvent } = useTracking()
-  const { sm, md } = useMedia()
 
   useEffect(() => {
     trackEvent({
@@ -40,18 +39,22 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
     })
   }
 
-  return (
-    <Container mb={4}>
-      <Serif size="5" mt={3} mb={2}>
-        {name}
-      </Serif>
+  interface Breakpoints {
+    xs?: boolean
+    sm?: boolean
+    md?: boolean
+    xl?: boolean
+  }
 
+  const renderCarousel = (breakpoints: Breakpoints = {}) => {
+    return (
       <Carousel
         height="100px"
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
-          cellAlign: "left",
+          groupCells:
+            breakpoints.xs || breakpoints.sm || breakpoints.md ? 1 : 3,
           wrapAround: sd.IS_MOBILE ? true : false,
+          cellAlign: "left",
           pageDots: false,
           contain: true,
         }}
@@ -68,9 +71,9 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
             </ArrowContainer>
           )
         }}
-        onArrowClick={() => trackArrowClick()}
         renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow = sm || (md && members.length > 3)
+          const shouldDisplayArrow =
+            breakpoints.sm || (breakpoints.md && members.length > 3)
           return (
             <ArrowContainer>
               {members.length > 4 ? (
@@ -81,7 +84,21 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
             </ArrowContainer>
           )
         }}
+        onArrowClick={() => trackArrowClick()}
       />
+    )
+  }
+
+  return (
+    <Container mb={4}>
+      <Serif size="5" mt={3} mb={2}>
+        {name}
+      </Serif>
+      <Media lessThan="lg">
+        {renderCarousel({ xs: true, sm: true, md: true })}
+      </Media>
+      <Media at="lg">{renderCarousel()}</Media>
+      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
     </Container>
   )
 }
