@@ -1,6 +1,7 @@
 import { CollectionsHubLinkedCollections } from "Apps/__tests__/Fixtures/Collections"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
+import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { clone } from "lodash"
@@ -8,12 +9,6 @@ import React from "react"
 import { ArtistSeriesRail } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({
-    xl: true,
-  }),
-}))
-
 jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
 }))
@@ -69,7 +64,11 @@ describe("ArtistSeriesRail", () => {
       singleData(),
       singleData(),
     ]
-    const Component = mount(<ArtistSeriesRail {...newprops} />)
+    const Component = mount(
+      <MockBoot>
+        <ArtistSeriesRail {...newprops} />
+      </MockBoot>
+    )
     expect(Component.find(ArrowButton).length).toBe(0)
   })
 
@@ -84,7 +83,11 @@ describe("ArtistSeriesRail", () => {
       singleData(),
       singleData(),
     ]
-    const Component = mount(<ArtistSeriesRail {...newprops} />)
+    const Component = mount(
+      <MockBoot>
+        <ArtistSeriesRail {...newprops} />
+      </MockBoot>
+    )
     expect(Component.find(ArrowButton).length).toBe(2)
   })
 

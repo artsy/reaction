@@ -7,7 +7,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useMedia } from "Utils/Hooks/useMedia"
+import { Media } from "Utils/Responsive"
 import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesEntity"
 
 export interface ArtistSeriesRailProps {
@@ -17,19 +17,6 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
-
-  let groupCells: number
-
-  const { xl } = useMedia()
-
-  if (sd.IS_MOBILE) {
-    groupCells = 1
-  } else if (!xl && members.length <= 4) {
-    groupCells = 3
-  } else {
-    groupCells = 4
-  }
-
   const { trackEvent } = useTracking()
 
   useEffect(() => {
@@ -52,15 +39,20 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
     })
   }
 
-  return (
-    <Content mt={2} py={3}>
-      <Serif size="5" mb={1}>
-        Trending Artist Series
-      </Serif>
+  interface Breakpoints {
+    xs?: boolean
+    sm?: boolean
+    md?: boolean
+    xl?: boolean
+  }
+
+  const renderCarousel = (breakpoints: Breakpoints = {}) => {
+    return (
       <Carousel
         height="250px"
         options={{
-          groupCells,
+          groupCells:
+            breakpoints.xs || breakpoints.sm || breakpoints.md ? 1 : 4,
           wrapAround: sd.IS_MOBILE ? true : false,
           cellAlign: "left",
           pageDots: false,
@@ -70,9 +62,9 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
         render={(slide, slideIndex) => {
           return <ArtistSeriesEntity member={slide} itemNumber={slideIndex} />
         }}
-        onArrowClick={() => trackArrowClick()}
         renderLeftArrow={({ Arrow }) => {
-          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
+          const showArrowChecker =
+            !breakpoints.xl && members.length <= 4 && !sd.IS_MOBILE
           return (
             <ArrowContainer>
               {members.length > 4 ? (
@@ -84,7 +76,8 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
           )
         }}
         renderRightArrow={({ Arrow }) => {
-          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
+          const showArrowChecker =
+            !breakpoints.xl && members.length <= 4 && !sd.IS_MOBILE
           return (
             <ArrowContainer>
               {members.length > 4 ? (
@@ -95,7 +88,21 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
             </ArrowContainer>
           )
         }}
+        onArrowClick={() => trackArrowClick()}
       />
+    )
+  }
+
+  return (
+    <Content mt={2} py={3}>
+      <Serif size="5" mb={1}>
+        Trending Artist Series
+      </Serif>
+      <Media lessThan="lg">
+        {renderCarousel({ xs: true, sm: true, md: true })}
+      </Media>
+      <Media at="lg">{renderCarousel()}</Media>
+      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
     </Content>
   )
 }
