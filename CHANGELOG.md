@@ -1,3 +1,15 @@
+# v20.0.0 (Wed Sep 25 2019)
+
+#### 💥  Breaking Change
+
+- @eessex => [Error Handling] Only serve non 2XX pages on principalField errors [#2836](https://github.com/artsy/reaction/pull/2836) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v19.0.0 (Tue Sep 24 2019)
 
 #### 💥  Breaking Change
