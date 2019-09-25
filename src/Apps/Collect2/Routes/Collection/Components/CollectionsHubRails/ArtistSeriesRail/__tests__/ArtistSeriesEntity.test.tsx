@@ -59,7 +59,7 @@ describe("ArtistSeriesEntity", () => {
   })
 
   it("uses medium image width when there are only 2 hits", () => {
-    props.member.artworks.hits.pop()
+    props.member.artworks.artworks_connection.edges.pop()
     const component = mount(<ArtistSeriesEntity {...props} />)
     expect(component.find(ArtworkImage).length).toBe(2)
     expect(
@@ -71,7 +71,7 @@ describe("ArtistSeriesEntity", () => {
   })
 
   it("uses large image width when there is exactly 1 hit", () => {
-    props.member.artworks.hits.pop()
+    props.member.artworks.artworks_connection.edges.pop()
     const component = mount(<ArtistSeriesEntity {...props} />)
     expect(component.find(ArtworkImage).length).toBe(1)
     expect(
@@ -93,7 +93,8 @@ describe("ArtistSeriesEntity", () => {
   })
 
   it("uses the artist name and title for alt text if there is an artist", () => {
-    props.member.artworks.hits[0].artist.name = "Jasper Johns"
+    props.member.artworks.artworks_connection.edges[0].node.artist.name =
+      "Jasper Johns"
     const component = mount(<ArtistSeriesEntity {...props} />)
     expect(
       component
