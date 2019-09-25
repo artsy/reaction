@@ -3,6 +3,7 @@ import { Serif } from "@artsy/palette"
 import { CollectionsHubsHomepageNav_marketingHubCollections } from "__generated__/CollectionsHubsHomepageNav_marketingHubCollections.graphql"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsHomepageNavProps {
@@ -25,7 +26,7 @@ export const CollectionsHubsHomepageNav: FC<
       {props.marketingHubCollections.slice(0, 6).map(hub => (
         <ImageLink
           to={`/collection/${hub.slug}`}
-          src={hub.thumbnail}
+          src={resize(hub.thumbnail, { width: 357, height: 175 })}
           ratio={[0.49]}
           title={<Serif size={["3", "4"]}>{hub.title}</Serif>}
           subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}

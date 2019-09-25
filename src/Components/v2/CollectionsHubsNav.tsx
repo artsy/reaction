@@ -4,6 +4,7 @@ import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Serif } from "@artsy/palette"
+import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
@@ -24,7 +25,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
       {props.marketingHubCollections.slice(0, 6).map(hub => (
         <ImageLink
           to={`/collection/${hub.slug}`}
-          src={hub.thumbnail}
+          src={resize(hub.thumbnail, { width: 357, height: 175 })}
           ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
           key={hub.id}
