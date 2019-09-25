@@ -10,7 +10,7 @@ storiesOf("Apps/Auction/Components", module).add("RegistrationForm", () => {
         onSubmit={(actions, result) => {
           window.alert(
             JSON.stringify(
-              { telephone: result.telephone, token: result.token.id },
+              { telephone: result.phoneNumber, token: result.token.id },
               null,
               2
             )

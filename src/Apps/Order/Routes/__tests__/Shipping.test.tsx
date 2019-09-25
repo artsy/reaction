@@ -29,7 +29,7 @@ jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
 const fillAddressForm = (component: any, address: Address) => {
-  fillIn(component, { title: "Full name", value: address.name })
+  fillIn(component, { title: "Name on card", value: address.name })
   fillIn(component, { title: "Address line 1", value: address.addressLine1 })
   fillIn(component, {
     title: "Address line 2 (optional)",
@@ -215,7 +215,7 @@ Object {
     it("includes already-filled-in data if available", () => {
       const input = page
         .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "Full name")
+        .filterWhere(wrapper => wrapper.props().title === "Name on card")
 
       expect(input.props().value).toBe("Dr Collector")
     })
@@ -243,7 +243,7 @@ Object {
       })
 
       it("does not submit the mutation with an incomplete form for a SHIP order", async () => {
-        fillIn(page.root, { title: "Full name", value: "Air Bud" })
+        fillIn(page.root, { title: "Name on card", value: "Air Bud" })
         await page.clickSubmit()
         expect(mutations.mockFetch).not.toBeCalled()
       })
@@ -258,7 +258,7 @@ Object {
         await page.clickSubmit()
         const input = page
           .find(Input)
-          .filterWhere(wrapper => wrapper.props().title === "Full name")
+          .filterWhere(wrapper => wrapper.props().title === "Name on card")
         expect(input.props().error).toEqual("This field is required")
       })
 
@@ -285,7 +285,7 @@ Object {
       })
 
       it("before submit, only shows a validation error on inputs that have been touched", async () => {
-        fillIn(page.root, { title: "Full name", value: "Erik David" })
+        fillIn(page.root, { title: "Name on card", value: "Erik David" })
         fillIn(page.root, { title: "Address line 1", value: "" })
 
         await page.update()
@@ -302,7 +302,7 @@ Object {
       })
 
       it("after submit, shows all validation errors on inputs that have been touched", async () => {
-        fillIn(page.root, { title: "Full name", value: "Erik David" })
+        fillIn(page.root, { title: "Name on card", value: "Erik David" })
 
         await page.clickSubmit()
 
