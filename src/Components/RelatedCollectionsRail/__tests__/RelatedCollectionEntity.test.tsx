@@ -38,7 +38,7 @@ describe("RelatedCollectionEntity", () => {
   })
 
   it("Returns proper image size if 2 artworks returned", () => {
-    props.collection.artworks.hits.pop()
+    props.collection.artworks.artworks_connection.edges.pop()
     const component = mount(<RelatedCollectionEntity {...props} />)
     const artworkImage = component
       .find(ArtworkImage)
@@ -50,7 +50,7 @@ describe("RelatedCollectionEntity", () => {
   })
 
   it("Renders a backup image if no artworks returned", () => {
-    props.collection.artworks.hits = []
+    props.collection.artworks.artworks_connection.edges = []
     const component = mount(<RelatedCollectionEntity {...props} />)
     const artworkImage = component
       .find(ArtworkImage)
