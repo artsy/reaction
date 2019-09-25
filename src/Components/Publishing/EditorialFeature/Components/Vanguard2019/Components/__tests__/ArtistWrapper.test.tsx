@@ -22,11 +22,7 @@ describe("ArtistWrapper", () => {
   })
 
   it("#componentDidMount expands article based on slug", () => {
-    window.history.pushState(
-      {},
-      "",
-      "/series/artsy-vanguard-2019/genesis-balenger"
-    )
+    window.history.pushState({}, "", "/series/artsy-vanguard-2019/victoria-sin")
     const component = getWrapper().instance() as VanguardArtistWrapper
     expect(component.state.isExpanded).toBeTruthy()
   })
