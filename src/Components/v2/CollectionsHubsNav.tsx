@@ -16,7 +16,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
   const { trackEvent } = useTracking()
 
   useEffect(() => {
-    const experiment = "collection_hub_entrypoints"
+    const experiment = "collection_hub_entrypoints_test"
     trackEvent({
       action_type: Schema.ActionType.ExperimentViewed,
       experiment_id: experiment,
