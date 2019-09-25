@@ -15,7 +15,7 @@ import {
 } from "../__fixtures__/MutationResults/createCreditCardAndUpdatePhone"
 import { stripeTokenResponse } from "../__fixtures__/Stripe"
 import { RegisterRouteFragmentContainer } from "../Register"
-import { RegisterTestPage } from "./Utils/RegisterTestPage"
+import { RegisterTestPage, ValidFormValues } from "./Utils/RegisterTestPage"
 
 jest.unmock("react-relay")
 jest.unmock("react-tracking")
@@ -103,14 +103,13 @@ describe("Routes/Register ", () => {
       auction_slug: RegisterQueryResponseFixture.sale.id,
       auction_state: RegisterQueryResponseFixture.sale.status,
       error_messages: [
+        "You must agree to the Conditions of Sale",
         "Name is required",
         "Address is required",
-        "Country is required",
         "City is required",
         "State is required",
         "Postal code is required",
         "Telephone is required",
-        "You must agree to the Conditions of Sale",
       ],
       sale_id: RegisterQueryResponseFixture.sale._id,
       user_id: RegisterQueryResponseFixture.me.id,
@@ -194,9 +193,10 @@ describe("Routes/Register ", () => {
 
     setupCreateTokenMock()
 
-    await page.fillFormWithValidValues()
-    await page.fillTelephone("   ")
+    const address = Object.assign({}, ValidFormValues)
+    address.phoneNumber = "    "
 
+    await page.fillAddressForm(address)
     await page.submitForm()
 
     expect(page.text()).toMatch("Telephone is required")

@@ -167,7 +167,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   }
 
   function handleSubmit(actions: FormikActions<object>, result: FormResult) {
-    createCreditCardAndUpdatePhone(result.telephone, result.token.id)
+    createCreditCardAndUpdatePhone(result.phoneNumber, result.token.id)
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {

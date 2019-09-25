@@ -1,8 +1,8 @@
-import { Box, Button, Flex, Input, Sans, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
+import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { CountrySelect } from "Components/v2"
 import { Form, Formik, FormikActions, FormikProps } from "formik"
 import React, { useEffect, useState } from "react"
 import {
@@ -23,18 +23,12 @@ export const StyledCardElement = styled(CardElement)`
 
 export interface FormResult {
   token: stripe.Token
-  telephone: string
+  phoneNumber: string
 }
 
 export interface FormValues {
-  name: string
-  street: string
-  country: string
-  city: string
-  state: string
+  address: Address
   creditCard: string
-  postalCode: string
-  telephone: string
   agreeToTerms: boolean
 }
 
@@ -42,9 +36,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
   const {
     touched,
     errors,
-    handleBlur,
     isSubmitting,
-    handleChange,
     values,
     setFieldValue,
     setFieldTouched,
@@ -53,21 +45,6 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
   return (
     <Form>
       <Box mt={4}>
-        <Serif weight="semibold" size="4t" mb={2}>
-          Card Information
-        </Serif>
-        <Box mb={2}>
-          <Input
-            onBlur={handleBlur}
-            onChange={handleChange}
-            error={touched.name && errors.name}
-            required
-            title="Name on card"
-            placeholder="Add full name"
-            name="name"
-          />
-        </Box>
-
         <Box mb={2}>
           <Serif size="3t" mb={0.5}>
             Credit card
@@ -78,77 +55,16 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
         </Box>
       </Box>
       <Box mt={4}>
-        <Serif weight="semibold" size="4t">
-          Billing Address
-        </Serif>
         <Box mt={2}>
-          <Input
-            onBlur={handleBlur}
-            onChange={handleChange}
-            error={touched.street && errors.street}
-            required
-            title="Address"
-            name="street"
-          />
-        </Box>
-        <Box mt={2}>
-          <Serif size="3t" mb={0.5}>
-            Country*
-          </Serif>
-          <CountrySelect
-            selected={values.country}
-            onSelect={value => {
-              setFieldValue("country", value)
-              setFieldTouched("country")
+          <AddressForm
+            value={values.address}
+            onChange={(address, _key) => {
+              setFieldValue("address", address)
             }}
-          />
-          {touched.country && errors.country && (
-            <Sans mt={1} color="red100" size="2">
-              {errors.country}
-            </Sans>
-          )}
-        </Box>
-        <Flex mt={2}>
-          <Flex flexBasis="50%" flexGrow="2" mr={1}>
-            <Input
-              onBlur={handleBlur}
-              onChange={handleChange}
-              error={touched.city && errors.city}
-              required
-              title="City"
-              name="city"
-            />
-          </Flex>
-          <Flex flexBasis="25%" flexGrow="1" mr={1}>
-            <Input
-              onBlur={handleBlur}
-              onChange={handleChange}
-              error={touched.state && errors.state}
-              required
-              title="State"
-              name="state"
-            />
-          </Flex>
-          <Flex flexBasis="25%" flexGrow="1">
-            <Input
-              onBlur={handleBlur}
-              onChange={handleChange}
-              error={touched.postalCode && errors.postalCode}
-              required
-              title="Postal code"
-              name="postalCode"
-            />
-          </Flex>
-        </Flex>
-        <Box mt={2}>
-          <Input
-            onBlur={handleBlur}
-            onChange={handleChange}
-            type="tel"
-            error={touched.telephone && errors.telephone}
-            required
-            title="Telephone"
-            name="telephone"
+            errors={errors.address}
+            touched={touched.address}
+            billing
+            showPhoneNumberInput
           />
         </Box>
       </Box>
@@ -193,13 +109,15 @@ Yup.addMethod(Yup.string, "present", function(message) {
 })
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().present("Name is required"),
-  street: Yup.string().present("Address is required"),
-  country: Yup.string().present("Country is required"),
-  city: Yup.string().present("City is required"),
-  state: Yup.string().present("State is required"),
-  postalCode: Yup.string().present("Postal code is required"),
-  telephone: Yup.string().present("Telephone is required"),
+  address: Yup.object({
+    name: Yup.string().present("Name is required"),
+    addressLine1: Yup.string().present("Address is required"),
+    country: Yup.string().present("Country is required"),
+    city: Yup.string().present("City is required"),
+    region: Yup.string().present("State is required"),
+    postalCode: Yup.string().present("Postal code is required"),
+    phoneNumber: Yup.string().present("Telephone is required"),
+  }),
   agreeToTerms: Yup.bool().oneOf(
     [true],
     "You must agree to the Conditions of Sale"
@@ -232,7 +150,13 @@ const OnSubmitValidationError: React.FC<{
       !formikProps.isSubmitting &&
       !formikProps.isValid
     ) {
-      cb(Object.values(formikProps.errors))
+      const clonedErrors = Object.assign({}, formikProps.errors)
+      const addressErrors = clonedErrors.address
+      delete clonedErrors.address
+
+      const errors = Object.assign({}, clonedErrors, addressErrors)
+
+      cb(Object.values(errors))
       formikProps.setSubmitting(false)
     }
   }
@@ -249,14 +173,17 @@ export interface RegistrationFormProps
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
   const initialValues: FormValues = {
-    name: "",
-    street: "",
-    country: "",
-    city: "",
+    address: {
+      name: "",
+      addressLine1: "",
+      addressLine2: "",
+      country: "US",
+      city: "",
+      region: "",
+      postalCode: "",
+      phoneNumber: "",
+    },
     creditCard: undefined,
-    state: "",
-    postalCode: "",
-    telephone: "",
     agreeToTerms: false,
   }
 
@@ -265,12 +192,13 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
     actions: FormikActions<object>
   ) {
     const address = {
-      name: values.name,
-      address_line1: values.street,
-      address_country: values.country,
-      address_city: values.city,
-      address_state: values.state,
-      address_zip: values.postalCode,
+      name: values.address.name,
+      address_line1: values.address.addressLine1,
+      address_line2: values.address.addressLine2,
+      address_country: values.address.country,
+      address_city: values.address.city,
+      address_state: values.address.region,
+      address_zip: values.address.postalCode,
     }
 
     const { setFieldError, setSubmitting } = actions
@@ -281,7 +209,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
         setFieldError("creditCard", error.message)
         setSubmitting(false)
       } else {
-        const result: FormResult = { telephone: values.telephone, token }
+        const result: FormResult = {
+          phoneNumber: values.address.phoneNumber,
+          token,
+        }
 
         props.onSubmit(actions, result)
       }

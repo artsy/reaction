@@ -37,6 +37,7 @@ export interface AddressFormProps {
   value?: Partial<Address>
   billing?: boolean
   domesticOnly?: boolean
+  showPhoneNumberInput?: boolean
   shippingCountry?: string
   errors: AddressErrors
   touched: AddressTouched
@@ -83,6 +84,12 @@ export class AddressForm extends React.Component<
     )
   }
 
+  getPhoneNumberInputDescription = () => {
+    if (!(this.props.billing && this.props.showPhoneNumberInput)) {
+      return "Required for shipping logistics"
+    }
+  }
+
   render() {
     const lockCountryToOrigin = !this.props.billing && this.props.domesticOnly
     return (
@@ -91,7 +98,7 @@ export class AddressForm extends React.Component<
           <Input
             id="AddressForm_name"
             placeholder="Add full name"
-            title="Full name"
+            title="Name on card"
             autoCapitalize="words"
             autoCorrect="off"
             value={this.props.value.name}
@@ -182,6 +189,7 @@ export class AddressForm extends React.Component<
 
           <Flex flexDirection="column">
             <Input
+              id="AddressForm_region"
               placeholder="Add State, province, or region"
               title="State, province, or region"
               autoCapitalize="words"
@@ -193,13 +201,13 @@ export class AddressForm extends React.Component<
             />
           </Flex>
         </TwoColumnSplit>
-        {!this.props.billing && (
+        {(!this.props.billing || this.props.showPhoneNumberInput) && (
           <>
             <Flex flexDirection="column">
               <Input
                 id="AddressForm_phoneNumber"
                 title="Phone number"
-                description="Required for shipping logistics"
+                description={this.getPhoneNumberInputDescription()}
                 placeholder="Add phone"
                 pattern="[0-9]*"
                 value={this.props.value.phoneNumber}

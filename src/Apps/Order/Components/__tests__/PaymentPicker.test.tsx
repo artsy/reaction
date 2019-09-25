@@ -49,7 +49,7 @@ createTokenMock.mockImplementation(() =>
 )
 
 const fillAddressForm = (component: any, address: Address) => {
-  fillIn(component, { title: "Full name", value: address.name })
+  fillIn(component, { title: "Name on card", value: address.name })
   fillIn(component, { title: "Address line 1", value: address.addressLine1 })
   fillIn(component, {
     title: "Address line 2 (optional)",
@@ -640,7 +640,7 @@ describe(PaymentPickerFragmentContainer, () => {
 
       const input = page
         .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "Full name")
+        .filterWhere(wrapper => wrapper.props().title === "Name on card")
       expect(input.props().error).toEqual("This field is required")
     })
 
@@ -648,7 +648,7 @@ describe(PaymentPickerFragmentContainer, () => {
       const page = await env.buildPage()
       await page.toggleSameAddressCheckbox()
 
-      fillIn(page.root, { title: "Full name", value: "Erik David" })
+      fillIn(page.root, { title: "Name on card", value: "Erik David" })
       fillIn(page.root, { title: "Address line 1", value: "" })
       page.root.update()
 
@@ -664,7 +664,7 @@ describe(PaymentPickerFragmentContainer, () => {
       const page = await env.buildPage()
       await page.toggleSameAddressCheckbox()
 
-      fillIn(page.root, { title: "Full name", value: "Erik David" })
+      fillIn(page.root, { title: "Name on card", value: "Erik David" })
 
       await page.getCreditCardId()
 
