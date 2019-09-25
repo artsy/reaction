@@ -41,18 +41,22 @@ fragment ArtistCollectionEntity_collection on MarketingCollection {
   slug
   title
   price_guidance
-  artworks(size: 3, sort: "-decayed_merch") {
-    hits {
-      artist {
-        name
-        __id
+  artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
+    artworks_connection(first: 3) {
+      edges {
+        node {
+          artist {
+            name
+            __id
+          }
+          title
+          image {
+            url(version: "small")
+            __id: id
+          }
+          __id
+        }
       }
-      title
-      image {
-        url(version: "small")
-        __id: id
-      }
-      __id
     }
     __id
   }
@@ -127,7 +131,7 @@ return {
   "operationKind": "query",
   "name": "ArtistCollectionsRailQuery",
   "id": null,
-  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(size: 3, sort: \"-decayed_merch\") {\n    hits {\n      artist {\n        name\n        __id\n      }\n      title\n      image {\n        url(version: \"small\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id: id\n}\n",
+  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    artworks_connection(first: 3) {\n      edges {\n        node {\n          artist {\n            name\n            __id\n          }\n          title\n          image {\n            url(version: \"small\")\n            __id: id\n          }\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -195,13 +199,15 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "artworks",
-            "storageKey": "artworks(size:3,sort:\"-decayed_merch\")",
+            "storageKey": "artworks(aggregations:[\"TOTAL\"],sort:\"-decayed_merch\")",
             "args": [
               {
                 "kind": "Literal",
-                "name": "size",
-                "value": 3,
-                "type": "Int"
+                "name": "aggregations",
+                "value": [
+                  "TOTAL"
+                ],
+                "type": "[ArtworkAggregation]"
               },
               {
                 "kind": "Literal",
@@ -216,59 +222,88 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "hits",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Artwork",
-                "plural": true,
+                "name": "artworks_connection",
+                "storageKey": "artworks_connection(first:3)",
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 3,
+                    "type": "Int"
+                  }
+                ],
+                "concreteType": "ArtworkConnection",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "artist",
+                    "name": "edges",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Artist",
-                    "plural": false,
+                    "concreteType": "ArtworkEdge",
+                    "plural": true,
                     "selections": [
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "name",
+                        "name": "node",
+                        "storageKey": null,
                         "args": null,
-                        "storageKey": null
-                      },
-                      v4
-                    ]
-                  },
-                  v3,
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "image",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "Image",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "url",
-                        "args": [
+                        "concreteType": "Artwork",
+                        "plural": false,
+                        "selections": [
                           {
-                            "kind": "Literal",
-                            "name": "version",
-                            "value": "small",
-                            "type": "[String]"
-                          }
-                        ],
-                        "storageKey": "url(version:\"small\")"
-                      },
-                      v2
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "artist",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Artist",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "name",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              v4
+                            ]
+                          },
+                          v3,
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "version",
+                                    "value": "small",
+                                    "type": "[String]"
+                                  }
+                                ],
+                                "storageKey": "url(version:\"small\")"
+                              },
+                              v2
+                            ]
+                          },
+                          v4
+                        ]
+                      }
                     ]
-                  },
-                  v4
+                  }
                 ]
               },
               v4
