@@ -1,3 +1,20 @@
+# v20.0.1 (Thu Sep 26 2019)
+
+#### 🐛  Bug Fix
+
+- Increase Test Coverage of 2019 Vanguard Article Series [#2851](https://github.com/artsy/reaction/pull/2851) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Add codemod command to simplify running codemods in reaction [#2850](https://github.com/artsy/reaction/pull/2850) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v20.0.0 (Wed Sep 25 2019)
 
 #### 💥  Breaking Change
