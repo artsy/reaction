@@ -1,13 +1,13 @@
 import { CSSGrid } from "@artsy/palette"
 import { Serif } from "@artsy/palette"
-import { CollectionsHubsHomepageNav_marketingCollections } from "__generated__/CollectionsHubsHomepageNav_marketingCollections.graphql"
-import { placeholderImages } from "Components/v2/CollectionsHubsNav"
+import { CollectionsHubsHomepageNav_marketingHubCollections } from "__generated__/CollectionsHubsHomepageNav_marketingHubCollections.graphql"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsHomepageNavProps {
-  marketingCollections: CollectionsHubsHomepageNav_marketingCollections
+  marketingHubCollections: CollectionsHubsHomepageNav_marketingHubCollections
 }
 
 export const CollectionsHubsHomepageNav: FC<
@@ -23,13 +23,13 @@ export const CollectionsHubsHomepageNav: FC<
       ]}
       gridGap={20}
     >
-      {props.marketingCollections.map((hub, index) => (
+      {props.marketingHubCollections.slice(0, 6).map(hub => (
         <ImageLink
           to={`/collection/${hub.slug}`}
-          src={placeholderImages[index]}
+          src={resize(hub.thumbnail, { width: 357, height: 175 })}
           ratio={[0.49]}
           title={<Serif size={["3", "4"]}>{hub.title}</Serif>}
-          subtitle={<Serif size="2">{subtitleFor(hub.title, index)}</Serif>}
+          subtitle={<Serif size="2">{subtitleFor(hub.title)}</Serif>}
           key={hub.id}
         />
       ))}
@@ -40,8 +40,8 @@ export const CollectionsHubsHomepageNav: FC<
 export const CollectionsHubsHomepageNavFragmentContainer = createFragmentContainer(
   CollectionsHubsHomepageNav,
   {
-    marketingCollections: graphql`
-      fragment CollectionsHubsHomepageNav_marketingCollections on MarketingCollection
+    marketingHubCollections: graphql`
+      fragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection
         @relay(plural: true) {
         id
         slug
@@ -71,10 +71,6 @@ const subtitlesMapping = {
   "Street Art": "The rise of graffiti, vinyl toys, and skate culture",
 }
 
-const subtitleFor = (title: string, index: number) => {
-  return (
-    subtitlesMapping[title] ||
-    /* placeholder */
-    Object.values(subtitlesMapping)[index]
-  )
+const subtitleFor = (title: string) => {
+  return subtitlesMapping[title]
 }

@@ -36,8 +36,8 @@ export const collectRoutes: RouteConfig[] = [
         $keyword: String
         $width: String
       ) {
-        marketingCollections(size: 6) {
-          ...Collect_marketingCollections
+        marketingHubCollections {
+          ...Collect_marketingHubCollections
         }
 
         filterArtworks: filter_artworks(
