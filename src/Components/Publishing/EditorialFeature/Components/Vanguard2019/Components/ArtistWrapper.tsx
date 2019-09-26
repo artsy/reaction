@@ -84,22 +84,15 @@ export class VanguardArtistWrapper extends React.Component<
   }
 
   getSVGBackground(index, section, isTest) {
+    const i = isTest ? 1 : index
+
     switch (section) {
       case "emerging":
-        if (isTest) {
-          return Emerging(1)
-        }
-        return Emerging(index)
+        return Emerging(i)
       case "newly-established":
-        if (isTest) {
-          return NewlyEstablished(1)
-        }
-        return NewlyEstablished(index)
+        return NewlyEstablished(i)
       case "getting-their-due":
-        if (isTest) {
-          return GettingTheirDue(1)
-        }
-        return GettingTheirDue(index)
+        return GettingTheirDue(i)
     }
   }
 
