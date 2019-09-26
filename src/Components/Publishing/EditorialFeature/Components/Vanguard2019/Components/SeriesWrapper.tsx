@@ -13,8 +13,9 @@ export const VanguardSeriesWrapper: React.SFC<{
   index: number
   isMobile: boolean
   onSlideshowStateChange?: (state: boolean) => void
+  isTest?: boolean
 }> = props => {
-  const { article, isMobile, onSlideshowStateChange } = props
+  const { article, isMobile, onSlideshowStateChange, isTest } = props
   const { relatedArticles, title, series } = article
   const slugifiedTitle = slugify(title)
   const shareTitle = article.social_title || article.thumbnail_title
@@ -74,6 +75,7 @@ export const VanguardSeriesWrapper: React.SFC<{
             section={slugifiedTitle}
             isMobile={isMobile}
             onSlideshowStateChange={onSlideshowStateChange}
+            isTest={isTest}
           />
         ))}
     </Box>

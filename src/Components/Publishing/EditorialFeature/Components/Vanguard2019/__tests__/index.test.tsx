@@ -1,10 +1,10 @@
-import { mount } from "enzyme"
-import React from "react"
-
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Vanguard2019Fixture } from "Components/Publishing/EditorialFeature/Fixtures/Vanguard2019"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleData } from "Components/Publishing/Typings"
+import { mount } from "enzyme"
+import React from "react"
+import renderer from "react-test-renderer"
 import { VanguardArtistWrapper } from "../Components/ArtistWrapper"
 import { VanguardIntroduction } from "../Components/Introduction"
 import { VanguardSeriesWrapper } from "../Components/SeriesWrapper"
@@ -30,7 +30,15 @@ describe("Vanguard2019", () => {
   beforeEach(() => {
     props = {
       article: Vanguard2019Fixture as ArticleData,
+      isTest: true,
     }
+  })
+
+  describe("Snapshots", () => {
+    it("renders article series snapshot properly", () => {
+      const snapshot = renderer.create(<Vanguard2019 {...props} />).toJSON()
+      expect(snapshot).toMatchSnapshot()
+    })
   })
 
   describe("Rendering", () => {
@@ -56,7 +64,7 @@ describe("Vanguard2019", () => {
 
     it("Renders artist articles", () => {
       const component = getWrapper()
-      expect(component.find(VanguardArtistWrapper).length).toBe(3)
+      expect(component.find(VanguardArtistWrapper).length).toBe(50)
     })
   })
 
@@ -119,11 +127,58 @@ describe("Vanguard2019", () => {
     const instance = getWrapper().instance() as Vanguard2019
     expect(instance.validSlugs).toEqual([
       "emerging",
-      "genesis-balenger",
+      "victoria-sin",
+      "monira-al-qadiri",
+      "diedrick-brackens",
+      "dineo-seshee-bopape",
+      "martine-gutierrez",
+      "genesis-belanger",
+      "tao-hui",
+      "jordan-nassar",
+      "geng-xue",
+      "meriem-bennani",
+      "manuel-solano",
+      "lauren-halsey",
+      "derek-fordjour",
+      "alia-farid",
+      "gala-porras-kim",
+      "jonathan-lyndon-chase",
+      "elle-perez",
+      "suki-seokyeong-kang",
+      "evelyn-taocheng-wang",
+      "jill-mulleady",
       "newly-established",
-      "frank-bowling",
+      "michael-armitage",
+      "ebony-g-patterson",
+      "lawrence-abu-hamdan",
+      "korakrit-arunanondchai",
+      "barbara-wagner-benjamin-de-burca",
+      "charlotte-prodger",
+      "jeffrey-gibson",
+      "hao-liang",
+      "jacolby-satterwhite",
+      "melike-kara",
+      "cui-jie",
+      "firelei-baez",
+      "forensic-architecture",
+      "tschabalala-self",
+      "harold-ancart",
       "getting-their-due",
+      "frank-bowling",
+      "zilia-sanchez",
+      "fred-eversley",
+      "tishan-hsu",
+      "howardena-pindell",
       "diane-simpson",
+      "lorraine-o-grady",
+      "teresa-burga",
+      "siah-armajani",
+      "mcarthur-binion",
+      "beatriz-gonzalez",
+      "simone-fattal",
+      "vivian-suter",
+      "henry-taylor",
+      "anna-maria-maiolino",
     ])
   })
 
