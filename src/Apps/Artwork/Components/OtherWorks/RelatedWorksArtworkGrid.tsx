@@ -19,6 +19,7 @@ import {
   QueryRenderer,
   RelayRefetchProp,
 } from "react-relay"
+import { get } from "Utils/get"
 
 const logger = createLogger("RelatedWorksArtworkGrid.tsx")
 
@@ -75,22 +76,20 @@ class RelatedWorksArtworkGrid extends React.Component<
 
   render() {
     const {
-      artwork: {
-        layers,
-        layer: { artworksConnection },
-      },
+      artwork: { layers, layer },
       mediator,
     } = this.props
+
+    // The layer might have failed to fetch, so we use the `get` helper
+    // instead of ordinary destructuring.
+    const artworksConnection = get(layer, l => l.artworksConnection)
 
     if (hideGrid(artworksConnection)) {
       return null
     }
 
     // For sale artworks are already rendered on the page so we filter them from related works
-    const names = take(
-      layers.filter(layer => layer.name !== "For Sale"),
-      MAX_TAB_ITEMS
-    )
+    const names = take(layers.filter(l => l.name !== "For Sale"), MAX_TAB_ITEMS)
 
     if (!names.length) {
       return <></>

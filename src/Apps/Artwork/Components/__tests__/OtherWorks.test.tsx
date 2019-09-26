@@ -178,5 +178,11 @@ describe("OtherWorks", () => {
       expect(component.find("RelatedWorksArtworkGrid").length).toEqual(0)
       expect(component.find("OtherAuctionsQueryRenderer").length).toEqual(1)
     })
+
+    it("safely renders when there's a missing layer", () => {
+      genericOtherWorksData.layer = null
+      const component = mount(<OtherWorks artwork={genericOtherWorksData} />)
+      expect(component.find("RelatedWorksArtworkGrid").length).toEqual(1)
+    })
   })
 })
