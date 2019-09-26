@@ -240,7 +240,7 @@ const ReadMoreText = styled(Box)`
   border-bottom: solid;
   line-height: normal;
 `
-const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
+export const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
   text-transform: uppercase;
   cursor: pointer;
   color: ${p =>

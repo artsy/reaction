@@ -1,7 +1,7 @@
 import { Vanguard2019Fixture } from "Components/Publishing/EditorialFeature/Fixtures/Vanguard2019"
 import { mount } from "enzyme"
 import React from "react"
-import { VanguardArtistWrapper } from "../ArtistWrapper"
+import { ReadMoreButton, VanguardArtistWrapper } from "../ArtistWrapper"
 
 describe("ArtistWrapper", () => {
   let props
@@ -34,12 +34,28 @@ describe("ArtistWrapper", () => {
     expect(component.state.isExpanded).toBe(!isExpanded)
   })
 
-  it("#getRandomSVG", () => {
-    const wrapper = getWrapper().html()
-    const wrapper1 = getWrapper().html()
+  /**
+   * In CI there is a small but possible chance that this test could fail because
+   * it randomly generates the same SVG path background for wrapper and wrapper1.
+   * Unlikely, but if it does happen just re-run the same test again manually.
+   */
+  it("generates a random SVG background", () => {
+    const component = getWrapper()
+      .find("path")
+      .first()
+      .html()
+    const component1 = getWrapper()
+      .find("path")
+      .first()
+      .html()
 
-    expect(wrapper).not.toStrictEqual(wrapper1)
+    expect(component).not.toStrictEqual(component1)
   })
 
-  // it("#getSVGBackground", () => {})
+  it("expands or collapses background when ReadMore is selected", () => {
+    const component = getWrapper()
+    component.find(ReadMoreButton).simulate("click")
+
+    expect(window.scrollTo).toHaveBeenCalled()
+  })
 })
