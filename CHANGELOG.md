@@ -1,3 +1,15 @@
+# v20.0.2 (Thu Sep 26 2019)
+
+#### 🐛  Bug Fix
+
+- Point collection hubs entry points at marketingHubCollections for real data [#2765](https://github.com/artsy/reaction/pull/2765) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v20.0.1 (Thu Sep 26 2019)
 
 #### 🐛  Bug Fix
