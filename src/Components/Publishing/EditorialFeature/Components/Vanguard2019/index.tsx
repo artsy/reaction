@@ -17,6 +17,7 @@ export class Vanguard2019 extends React.Component<
   EditorialFeaturesProps,
   {
     isSlideOpen: boolean
+    isTest?: boolean
   }
 > {
   state = {
@@ -73,7 +74,7 @@ export class Vanguard2019 extends React.Component<
   }
 
   render() {
-    const { article, isMobile } = this.props
+    const { article, isMobile, isTest } = this.props
     const { isSlideOpen } = this.state
     const { relatedArticles } = article
 
@@ -108,6 +109,7 @@ export class Vanguard2019 extends React.Component<
               index={i}
               isMobile={isMobile}
               onSlideshowStateChange={this.onFullScreenProviderStateChange}
+              isTest={isTest}
             />
           ))}
 

@@ -1,10 +1,10 @@
-import { mount } from "enzyme"
-import React from "react"
-
 import { EditorialFeaturesProps } from "Components/Publishing/EditorialFeature/EditorialFeature"
 import { Vanguard2019Fixture } from "Components/Publishing/EditorialFeature/Fixtures/Vanguard2019"
 import { Nav } from "Components/Publishing/Nav/Nav"
 import { ArticleData } from "Components/Publishing/Typings"
+import { mount } from "enzyme"
+import React from "react"
+import renderer from "react-test-renderer"
 import { VanguardArtistWrapper } from "../Components/ArtistWrapper"
 import { VanguardIntroduction } from "../Components/Introduction"
 import { VanguardSeriesWrapper } from "../Components/SeriesWrapper"
@@ -30,7 +30,15 @@ describe("Vanguard2019", () => {
   beforeEach(() => {
     props = {
       article: Vanguard2019Fixture as ArticleData,
+      isTest: true,
     }
+  })
+
+  describe("Snapshots", () => {
+    it("renders article series snapshot properly", () => {
+      const snapshot = renderer.create(<Vanguard2019 {...props} />).toJSON()
+      expect(snapshot).toMatchSnapshot()
+    })
   })
 
   describe("Rendering", () => {

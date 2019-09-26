@@ -35,6 +35,7 @@ export class VanguardArtistWrapper extends React.Component<
     section?: string
     isMobile: boolean
     onSlideshowStateChange?: (state: boolean) => void
+    isTest?: boolean
   },
   {
     isExpanded: boolean
@@ -82,25 +83,42 @@ export class VanguardArtistWrapper extends React.Component<
     }
   }
 
-  getSVGBackground(index, section) {
+  getSVGBackground(index, section, isTest) {
     switch (section) {
       case "emerging":
+        if (isTest) {
+          return Emerging(1)
+        }
         return Emerging(index)
       case "newly-established":
+        if (isTest) {
+          return NewlyEstablished(1)
+        }
         return NewlyEstablished(index)
       case "getting-their-due":
+        if (isTest) {
+          return GettingTheirDue(1)
+        }
         return GettingTheirDue(index)
     }
   }
 
   render() {
-    const { article, section, isMobile, onSlideshowStateChange } = this.props
+    const {
+      article,
+      section,
+      isMobile,
+      onSlideshowStateChange,
+      isTest,
+    } = this.props
+
     const { hero_section, title } = article
     const { isExpanded } = this.state
 
     const background = this.getSVGBackground(
       this.getRandomSVG(section),
-      section
+      section,
+      isTest
     )
     const backgroundColor = isExpanded ? color("black100") : color("white100")
     const slugifiedTitle = slugify(article.title)

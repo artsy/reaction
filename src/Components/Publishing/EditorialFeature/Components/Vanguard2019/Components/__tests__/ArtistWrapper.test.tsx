@@ -5,7 +5,6 @@ import { VanguardArtistWrapper } from "../ArtistWrapper"
 
 describe("ArtistWrapper", () => {
   let props
-
   const getWrapper = (passedProps = props) => {
     return mount(<VanguardArtistWrapper {...passedProps} />)
   }
@@ -13,6 +12,7 @@ describe("ArtistWrapper", () => {
     props = {
       article: Vanguard2019Fixture.relatedArticles[0].relatedArticles[0],
       section: "emerging",
+      isMobile: false,
     }
   })
 
@@ -34,6 +34,12 @@ describe("ArtistWrapper", () => {
     expect(component.state.isExpanded).toBe(!isExpanded)
   })
 
-  // it("#getRandomSVG", () => {})
+  it("#getRandomSVG", () => {
+    const wrapper = getWrapper().html()
+    const wrapper1 = getWrapper().html()
+
+    expect(wrapper).not.toStrictEqual(wrapper1)
+  })
+
   // it("#getSVGBackground", () => {})
 })
