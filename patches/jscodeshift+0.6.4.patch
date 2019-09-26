@@ -1,0 +1,62 @@
+diff --git a/node_modules/jscodeshift/dist/Worker.js b/node_modules/jscodeshift/dist/Worker.js
+index 3c96e2b..9329390 100644
+--- a/node_modules/jscodeshift/dist/Worker.js
++++ b/node_modules/jscodeshift/dist/Worker.js
+@@ -134,7 +134,7 @@ function run(data) {
+   async.each(
+     files,
+     function(file, callback) {
+-      fs.readFile(file, function(err, source) {
++      fs.readFile(file, async function(err, source) {
+         if (err) {
+           updateStatus('error', file, 'File error: ' + err);
+           callback();
+@@ -143,7 +143,7 @@ function run(data) {
+         source = source.toString();
+         try {
+           const jscodeshift = prepareJscodeshift(options);
+-          const out = transform(
++          const out = await transform(
+             {
+               path: file,
+               source: source,
+diff --git a/node_modules/jscodeshift/src/testUtils.js b/node_modules/jscodeshift/src/testUtils.js
+index 7ccbf4f..24d79d4 100644
+--- a/node_modules/jscodeshift/src/testUtils.js
++++ b/node_modules/jscodeshift/src/testUtils.js
+@@ -56,16 +56,16 @@ exports.runInlineTest = runInlineTest;
+  * - Test data should be located in a directory called __testfixtures__
+  *   alongside the transform and __tests__ directory.
+  */
+-function runTest(dirName, transformName, options, testFilePrefix) {
++function runTest(dirName, transformName, options, testFilePrefix, testFileExtname) {
+   if (!testFilePrefix) {
+     testFilePrefix = transformName;
+   }
+ 
+   const fixtureDir = path.join(dirName, '..', '__testfixtures__');
+-  const inputPath = path.join(fixtureDir, testFilePrefix + '.input.js');
++  const inputPath = path.join(fixtureDir, testFilePrefix + '.input.' + (testFileExtname || 'js'));
+   const source = fs.readFileSync(inputPath, 'utf8');
+   const expectedOutput = fs.readFileSync(
+-    path.join(fixtureDir, testFilePrefix + '.output.js'),
++    path.join(fixtureDir, testFilePrefix + '.output.' + (testFileExtname || 'js')),
+     'utf8'
+   );
+   // Assumes transform is one level up from __tests__ directory
+@@ -81,13 +81,13 @@ exports.runTest = runTest;
+  * Handles some boilerplate around defining a simple jest/Jasmine test for a
+  * jscodeshift transform.
+  */
+-function defineTest(dirName, transformName, options, testFilePrefix) {
++function defineTest(dirName, transformName, options, testFilePrefix, testFileExtname) {
+   const testName = testFilePrefix
+     ? `transforms correctly using "${testFilePrefix}" data`
+     : 'transforms correctly';
+   describe(transformName, () => {
+     it(testName, () => {
+-      runTest(dirName, transformName, options, testFilePrefix);
++      runTest(dirName, transformName, options, testFilePrefix, testFileExtname);
+     });
+   });
+ }

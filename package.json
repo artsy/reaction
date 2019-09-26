@@ -132,6 +132,7 @@
     "jest-junit": "6.4.0",
     "jest-raw-loader": "1.0.1",
     "jest-styled-components": "7.0.0-2",
+    "jscodeshift": "^0.6.4",
     "json5": "2.1.0",
     "klaw-sync": "6.0.0",
     "lint-staged": "4.3.0",
