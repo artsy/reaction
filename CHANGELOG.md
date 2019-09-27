@@ -1,3 +1,15 @@
+# v20.0.3 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [RelatedArtworks] Be defensive about missing layer [#2853](https://github.com/artsy/reaction/pull/2853) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v20.0.2 (Thu Sep 26 2019)
 
 #### 🐛  Bug Fix
