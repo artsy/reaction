@@ -1,13 +1,13 @@
+import { AuctionFAQFragmentContainer as AuctionFAQ } from "Apps/Auction/Components/AuctionFAQ"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
-import { AuctionFAQQueryRenderer as AuctionFAQ } from "../AuctionFAQ"
 
 storiesOf("Styleguide/Components", module).add("AuctionFAQ", () => {
   return (
     <React.Fragment>
       <Section title="Auction FAQ Modal">
-        <AuctionFAQ />
+        <AuctionFAQ viewer={null} />
       </Section>
     </React.Fragment>
   )
