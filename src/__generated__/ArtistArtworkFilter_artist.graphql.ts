@@ -15,6 +15,7 @@ export type ArtistArtworkFilter_artist = {
         readonly has_make_offer_artworks: boolean | null;
     }) | null;
     readonly filtered_artworks: ({
+        readonly __id: string;
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
     }) | null;
     readonly " $refType": ArtistArtworkFilter_artist$ref;
@@ -346,17 +347,17 @@ return {
       "concreteType": "FilterArtworks",
       "plural": false,
       "selections": [
+        v0,
         {
           "kind": "FragmentSpread",
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
-        },
-        v0
+        }
       ]
     },
     v0
   ]
 };
 })();
-(node as any).hash = '4d356d9b1d86ac1576e244bc6d86da5c';
+(node as any).hash = 'd1cbeb45d454e387db7735ccc9d7673d';
 export default node;
