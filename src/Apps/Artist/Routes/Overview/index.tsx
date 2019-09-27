@@ -76,10 +76,9 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     const colNum = 9 // artist.currentEvent ? 9 : 12
     const showGenes = this.maybeShowGenes()
 
-    const showRecommendations =
-      get(artist, a => a.related.artists.edges.length, 0) > 0
-
     const isClient = typeof window !== "undefined"
+    const showRecommendations =
+      isClient && get(artist, a => a.related.artists.edges.length, 0) > 0
     return (
       <>
         <Row>
