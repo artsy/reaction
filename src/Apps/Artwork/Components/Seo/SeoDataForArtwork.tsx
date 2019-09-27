@@ -38,7 +38,8 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
     },
   }
 
-  if (artwork.partner.type === "Institution") {
+  const partnerType = get(artwork, a => a.partner.type)
+  if (partnerType === "Institution") {
     return <CreativeWork data={artworkMetaData} />
   }
 

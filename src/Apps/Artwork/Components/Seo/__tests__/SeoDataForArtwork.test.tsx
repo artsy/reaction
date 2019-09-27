@@ -30,6 +30,14 @@ describe("SeoDataForArtwork", () => {
       .props().data
 
   describe("SeoDataForArtworkFragmentContainer", () => {
+    it("Renders without a partner", async () => {
+      const wrapper = await getWrapper({
+        ...SeoDataForArtworkFixture,
+        partner: null,
+      })
+
+      expect(wrapper).toBeTruthy()
+    })
     it("Renders a CreativeWork for an institution", async () => {
       const wrapper = await getWrapper({
         ...SeoDataForArtworkFixture,
