@@ -13,7 +13,6 @@ interface AuctionFAQProps {
 }
 
 export const AuctionFAQ: React.FC<AuctionFAQProps> = ({ viewer }) => {
-  console.log("viewer", viewer)
   return (
     <Theme>
       <AuctionWrapper>
