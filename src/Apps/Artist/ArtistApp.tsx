@@ -10,6 +10,7 @@ import {
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
 import React from "react"
+import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
@@ -50,11 +51,15 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <RecentlyViewed />
-            </Col>
-          </Row>
+          {typeof window !== "undefined" && (
+            <LazyLoadComponent threshold={1000}>
+              <Row>
+                <Col>
+                  <RecentlyViewed />
+                </Col>
+              </Row>
+            </LazyLoadComponent>
+          )}
 
           <Separator mt={6} mb={3} />
 
