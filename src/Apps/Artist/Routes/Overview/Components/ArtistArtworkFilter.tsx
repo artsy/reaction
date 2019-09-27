@@ -20,6 +20,13 @@ interface ArtistArtworkFilterProps {
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
   const { location, relay, artist, sidebarAggregations } = props
   const tracking = useTracking()
+  const { filtered_artworks } = artist
+
+  const hasFilter = filtered_artworks && filtered_artworks.__id
+
+  // If there was an error fetching the filter,
+  // we still want to render the rest of the page.
+  if (!hasFilter) return null
 
   return (
     <ArtworkFilterContextProvider
@@ -119,6 +126,7 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
+          __id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }
