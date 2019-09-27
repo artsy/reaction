@@ -1,3 +1,15 @@
+# v20.0.6 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Few more Sentry bugs [#2856](https://github.com/artsy/reaction/pull/2856) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v20.0.5 (Fri Sep 27 2019)
 
 #### 🐛  Bug Fix
