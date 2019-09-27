@@ -1,7 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
-import { AuctionFAQ } from "../AuctionFAQ"
+import { AuctionFAQQueryRenderer as AuctionFAQ } from "../AuctionFAQ"
 
 storiesOf("Styleguide/Components", module).add("AuctionFAQ", () => {
   return (

@@ -2,7 +2,12 @@ import { Box, media, Serif, space, Spacer, Theme, Toggle } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
-export const AuctionFAQ: React.FC = () => {
+interface Props {
+  query: AuctionFAQ_query
+}
+
+export const AuctionFAQ: React.FC<Props> = ({ query }) => {
+  console.log("viewer", query)
   return (
     <Theme>
       <AuctionWrapper>

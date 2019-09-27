@@ -1,10 +1,10 @@
 import { routes_RegisterQueryResponse } from "__generated__/routes_RegisterQuery.graphql"
 import { ErrorPage } from "Components/ErrorPage"
-import { AuctionFAQ } from "Components/v2/AuctionFAQ"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
+import { AuctionFAQQueryRenderer as AuctionFAQ } from "./Components/AuctionFAQ"
 import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
