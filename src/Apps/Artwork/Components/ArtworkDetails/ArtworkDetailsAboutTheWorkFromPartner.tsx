@@ -89,7 +89,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       (artwork.sale.isBenefit || artwork.sale.isGalleryAuction)
     )
     const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
-    const partnerInitials = showPartnerLogo && partner.initials
+    const partnerInitials = showPartnerLogo && get(partner, p => p.initials)
     const showPartnerFollow =
       partner.type !== "Auction House" && partner.profile
 
