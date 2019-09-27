@@ -36,8 +36,8 @@ interface CollectionAppProps extends SystemContextProps {
 
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
-  context_page_owner_slug: props.viewer.slug,
-  context_page_owner_id: props.viewer.id,
+  context_page_owner_slug: props.viewer && props.viewer.slug,
+  context_page_owner_id: props.viewer && props.viewer.id,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
