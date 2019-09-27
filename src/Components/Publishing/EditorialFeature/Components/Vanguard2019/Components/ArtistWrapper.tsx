@@ -21,6 +21,12 @@ import styled from "styled-components"
 import { slugify } from "underscore.string"
 import { Media } from "Utils/Responsive"
 
+// "Emerging" has 20 SVG possibilities while Newly Established
+// and "Getting Their Due" have 15
+export function totalSVGsForSection(section: string) {
+  return section === "emerging" ? 20 : 15
+}
+
 export interface SVGBackgroundProps extends FlexProps {
   url?: string
 }
@@ -71,16 +77,7 @@ export class VanguardArtistWrapper extends React.Component<
   }
 
   getRandomSVG(section) {
-    /* Lodash random returns a whole integer between 0 and the max passed.
-     * "Emerging" has 20 SVG possibilities while Newly Established
-     * and "Getting Their Due" have 15, hence the default to 15
-     * */
-    switch (section) {
-      case "emerging":
-        return random(20)
-      default:
-        return random(15)
-    }
+    return random(totalSVGsForSection(section))
   }
 
   getSVGBackground(index, section, isTest) {
