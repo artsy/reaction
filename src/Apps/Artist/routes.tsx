@@ -101,7 +101,7 @@ export const routes: RouteConfig[] = [
       // and not get caught here.
       new Redirect({
         from: "*",
-        to: "/artist/:artistID",
+        to: "/artist/:artist_id",
       }) as any,
     ],
   },
