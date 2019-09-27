@@ -1,3 +1,15 @@
+# v20.0.4 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Artwork] Be defensive in SEO meta tag component to artworks w/o part… [#2854](https://github.com/artsy/reaction/pull/2854) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v20.0.3 (Fri Sep 27 2019)
 
 #### 🐛  Bug Fix
