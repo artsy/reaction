@@ -1,3 +1,22 @@
+# v20.0.7 (Sat Sep 28 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CI] Empty commit to deploy Reaction [#2860](https://github.com/artsy/reaction/pull/2860) ([@mzikherman](https://github.com/mzikherman))
+- @damassi => Couple of more defers on the artist page [#2858](https://github.com/artsy/reaction/pull/2858) ([@mzikherman](https://github.com/mzikherman))
+- [Artist] Defer collection rail to client [#2857](https://github.com/artsy/reaction/pull/2857) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update yarn orb to v2.1.1 [#2859](https://github.com/artsy/reaction/pull/2859) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v20.0.6 (Fri Sep 27 2019)
 
 #### 🐛  Bug Fix
