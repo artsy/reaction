@@ -1,4 +1,4 @@
-import { Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendationsRendererQuery } from "__generated__/ArtistRecommendationsRendererQuery.graphql"
 import { SystemContext } from "Artsy"
@@ -48,7 +48,7 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
   }
 
   return (
-    <div>
+    <Box>
       <Serif size="8" color="black100">
         Related to {name}
       </Serif>
@@ -57,7 +57,7 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
       {relay.hasMore() && (
         <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
       )}
-    </div>
+    </Box>
   )
 }
 
