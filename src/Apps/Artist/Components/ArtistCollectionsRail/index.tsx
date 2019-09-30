@@ -13,6 +13,7 @@ interface Props {
 
 export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
   const { relayEnvironment } = useSystemContext()
+
   return (
     <Box mb={3}>
       <QueryRenderer<ArtistCollectionsRailQuery>
