@@ -85,6 +85,13 @@ export const BaseArtworkFilter: React.FC<{
   relayVariables?: object
   viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
+  const { filtered_artworks } = viewer
+  const hasFilter = filtered_artworks && filtered_artworks.__id
+
+  // If there was an error fetching the filter,
+  // we still want to render the rest of the page.
+  if (!hasFilter) return null
+
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -311,6 +318,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
+          __id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

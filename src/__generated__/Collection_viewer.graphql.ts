@@ -40,6 +40,7 @@ export type Collection_viewer = {
         readonly " $fragmentRefs": Header_artworks$ref & SeoProductsForArtworks_artworks$ref;
     }) | null;
     readonly filtered_artworks: ({
+        readonly __id: string;
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
     }) | null;
     readonly " $refType": Collection_viewer$ref;
@@ -458,17 +459,17 @@ return {
       "concreteType": "FilterArtworks",
       "plural": false,
       "selections": [
+        v3,
         {
           "kind": "FragmentSpread",
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
-        },
-        v3
+        }
       ]
     },
     v1
   ]
 };
 })();
-(node as any).hash = '253dfff3152451104f010540dbbe5482';
+(node as any).hash = '03d820319f505974d7387a30b6d58686';
 export default node;
