@@ -1,3 +1,16 @@
+# v20.0.10 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artwork] Be defensive about missing partner in additional info section [#2862](https://github.com/artsy/reaction/pull/2862) ([@mzikherman](https://github.com/mzikherman))
+- @damassi => [Filter] Be defensive about missing filtered artworks [#2861](https://github.com/artsy/reaction/pull/2861) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v20.0.9 (Mon Sep 30 2019)
 
 #### ⚠️  Pushed to master
