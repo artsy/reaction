@@ -1,3 +1,15 @@
+# v20.0.11 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1416 - Adds AuctionFAQ [#2809](https://github.com/artsy/reaction/pull/2809) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v20.0.10 (Mon Sep 30 2019)
 
 #### 🐛  Bug Fix
