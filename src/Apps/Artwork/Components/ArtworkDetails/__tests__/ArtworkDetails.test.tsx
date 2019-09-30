@@ -144,5 +144,12 @@ describe("ArtworkDetails", () => {
       wrapper = await getWrapper(data)
       expect(wrapper.html()).not.toContain("Following")
     })
+
+    it("works without a partner", async () => {
+      const data = cloneDeep(ArtworkDetailsFixture)
+      data.partner = null
+      wrapper = await getWrapper(data)
+      expect(wrapper).toBeTruthy()
+    })
   })
 })
