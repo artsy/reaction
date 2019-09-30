@@ -111,6 +111,7 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
   return (
     <BaseCarousel
       showArrows
+      {...props}
       options={{
         cellAlign: "left",
         contain: true,
@@ -121,7 +122,6 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
         wrapAround: false,
         ...props.options,
       }}
-      {...props}
     />
   )
 }
@@ -132,6 +132,7 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
   return (
     <BaseCarousel
       showArrows={false}
+      {...props}
       options={{
         cellAlign: "left",
         draggable: hasMultipleSlides,
@@ -143,7 +144,6 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
         wrapAround: false,
         ...props.options,
       }}
-      {...props}
     />
   )
 }
