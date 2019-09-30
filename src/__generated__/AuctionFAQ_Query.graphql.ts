@@ -2,21 +2,21 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { AuctionFAQ_viewer$ref } from "./AuctionFAQ_viewer.graphql";
-export type AuctionFAQQueryVariables = {};
-export type AuctionFAQQueryResponse = {
+export type AuctionFAQ_QueryVariables = {};
+export type AuctionFAQ_QueryResponse = {
     readonly viewer: ({
         readonly " $fragmentRefs": AuctionFAQ_viewer$ref;
     }) | null;
 };
-export type AuctionFAQQuery = {
-    readonly response: AuctionFAQQueryResponse;
-    readonly variables: AuctionFAQQueryVariables;
+export type AuctionFAQ_Query = {
+    readonly response: AuctionFAQ_QueryResponse;
+    readonly variables: AuctionFAQ_QueryVariables;
 };
 
 
 
 /*
-query AuctionFAQQuery {
+query AuctionFAQ_Query {
   viewer {
     ...AuctionFAQ_viewer
   }
@@ -66,13 +66,13 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "AuctionFAQQuery",
+  "name": "AuctionFAQ_Query",
   "id": null,
-  "text": "query AuctionFAQQuery {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    __id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    __id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    __id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    __id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    __id\n  }\n}\n",
+  "text": "query AuctionFAQ_Query {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    __id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    __id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    __id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    __id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    __id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "AuctionFAQQuery",
+    "name": "AuctionFAQ_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -97,7 +97,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AuctionFAQQuery",
+    "name": "AuctionFAQ_Query",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -209,5 +209,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a3919be173a3a996315aa0da7c1bc1e6';
+(node as any).hash = '7f44a811d202dac6f088582255ec153b';
 export default node;

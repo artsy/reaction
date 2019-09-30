@@ -6,23 +6,18 @@ export type AuctionFAQ_viewer$ref = typeof _AuctionFAQ_viewer$ref;
 export type AuctionFAQ_viewer = {
     readonly bidding: ({
         readonly content: string | null;
-        readonly name: string | null;
     }) | null;
     readonly buyersPremiumTaxesAndFees: ({
         readonly content: string | null;
-        readonly name: string | null;
     }) | null;
     readonly paymentsAndShipping: ({
         readonly content: string | null;
-        readonly name: string | null;
     }) | null;
     readonly emailsAndAlerts: ({
         readonly content: string | null;
-        readonly name: string | null;
     }) | null;
     readonly conditionsOfSale: ({
         readonly content: string | null;
-        readonly name: string | null;
     }) | null;
     readonly " $refType": AuctionFAQ_viewer$ref;
 };
@@ -35,13 +30,6 @@ var v0 = [
     "kind": "ScalarField",
     "alias": null,
     "name": "content",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "name",
     "args": null,
     "storageKey": null
   },
@@ -148,5 +136,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd47fb32aace0dba38e98e9804c213c32';
+(node as any).hash = 'e29df207450f132c887a37fde758a3ac';
 export default node;

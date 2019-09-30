@@ -13,6 +13,16 @@ interface AuctionFAQProps {
 }
 
 export const AuctionFAQ: React.FC<AuctionFAQProps> = ({ viewer }) => {
+  const biddingContent = viewer.bidding && viewer.bidding.content
+  const buyersPremiumTaxesAndFeesContent =
+    viewer.buyersPremiumTaxesAndFees && viewer.buyersPremiumTaxesAndFees.content
+  const paymentsAndShippingContent =
+    viewer.paymentsAndShipping && viewer.paymentsAndShipping.content
+  const emailsAndAlertsContent =
+    viewer.emailsAndAlerts && viewer.emailsAndAlerts.content
+  const conditionsOfSaleContent =
+    viewer.conditionsOfSale && viewer.conditionsOfSale.content
+
   return (
     <Theme>
       <AuctionWrapper>
@@ -28,46 +38,51 @@ export const AuctionFAQ: React.FC<AuctionFAQProps> = ({ viewer }) => {
           <a href="mailto:support@artsy.net">contact us</a>.
         </Serif>
         <Spacer mb={2} />
-        <Toggle label="Bidding">
-          <StyledMarkdown
-            source={viewer.bidding && viewer.bidding.content}
-            containerTagName="div"
-            unwrapDisallowed
-          />
-        </Toggle>
-        <Toggle label="Buyer's Premium, Taxes & Fees">
-          <StyledMarkdown
-            source={
-              viewer.buyersPremiumTaxesAndFees &&
-              viewer.buyersPremiumTaxesAndFees.content
-            }
-            containerTagName="div"
-            unwrapDisallowed
-          />
-        </Toggle>
-        <Toggle label="Payments and Shipping">
-          <StyledMarkdown
-            source={
-              viewer.paymentsAndShipping && viewer.paymentsAndShipping.content
-            }
-            containerTagName="div"
-            unwrapDisallowed
-          />
-        </Toggle>
-        <Toggle label="Emails and Alerts">
-          <StyledMarkdown
-            source={viewer.emailsAndAlerts && viewer.emailsAndAlerts.content}
-            containerTagName="div"
-            unwrapDisallowed
-          />
-        </Toggle>
-        <Toggle label="Conditions of sale">
-          <StyledMarkdown
-            source={viewer.conditionsOfSale && viewer.conditionsOfSale.content}
-            containerTagName="div"
-            unwrapDisallowed
-          />
-        </Toggle>
+        {biddingContent && (
+          <Toggle label="Bidding">
+            <StyledMarkdown
+              source={biddingContent}
+              containerTagName="div"
+              unwrapDisallowed
+            />
+          </Toggle>
+        )}
+        {buyersPremiumTaxesAndFeesContent && (
+          <Toggle label="Buyer's Premium, Taxes & Fees">
+            <StyledMarkdown
+              source={buyersPremiumTaxesAndFeesContent}
+              containerTagName="div"
+              unwrapDisallowed
+            />
+          </Toggle>
+        )}
+        {paymentsAndShippingContent && (
+          <Toggle label="Payments and Shipping">
+            <StyledMarkdown
+              source={paymentsAndShippingContent}
+              containerTagName="div"
+              unwrapDisallowed
+            />
+          </Toggle>
+        )}
+        {emailsAndAlertsContent && (
+          <Toggle label="Emails and Alerts">
+            <StyledMarkdown
+              source={emailsAndAlertsContent}
+              containerTagName="div"
+              unwrapDisallowed
+            />
+          </Toggle>
+        )}
+        {conditionsOfSaleContent && (
+          <Toggle label="Conditions of sale">
+            <StyledMarkdown
+              source={conditionsOfSaleContent}
+              containerTagName="div"
+              unwrapDisallowed
+            />
+          </Toggle>
+        )}
       </AuctionWrapper>
     </Theme>
   )
@@ -109,31 +124,26 @@ export const AuctionFAQFragmentContainer = createFragmentContainer(AuctionFAQ, {
     fragment AuctionFAQ_viewer on Viewer {
       bidding: staticContent(id: "how-auctions-work-bidding") {
         content
-        name
       }
       buyersPremiumTaxesAndFees: staticContent(
         id: "how-auctions-work-buyers-premium-taxes-and-fees"
       ) {
         content
-        name
       }
       paymentsAndShipping: staticContent(
         id: "how-auctions-work-payments-and-shipping"
       ) {
         content
-        name
       }
       emailsAndAlerts: staticContent(
         id: "how-auctions-work-emails-and-alerts"
       ) {
         content
-        name
       }
       conditionsOfSale: staticContent(
         id: "how-auctions-work-conditions-of-sale"
       ) {
         content
-        name
       }
     }
   `,
