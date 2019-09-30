@@ -1,6 +1,5 @@
 import qs from "qs"
 const GEMINI_CLOUDFRONT_URL = "https://d7hftxdivxxvm.cloudfront.net"
-const GEMINI_DISPLAY_CLOUDFRONT_URL = "https://de5y2r7wr8mpb.cloudfront.net"
 
 const warn = message => {
   if (process.env.NODE_ENV === "development") {
@@ -14,10 +13,9 @@ export const crop = (
     width: number
     height: number
     quality?: number
-    isDisplayAd?: boolean
   }
 ) => {
-  const { width, height, quality, isDisplayAd } = options
+  const { width, height, quality } = options
 
   // dont call gemini with empty src
   if (!src) return null
@@ -41,10 +39,7 @@ export const crop = (
     quality: quality || 95,
   }
 
-  const url = isDisplayAd
-    ? GEMINI_DISPLAY_CLOUDFRONT_URL
-    : GEMINI_CLOUDFRONT_URL
-  return [url, qs.stringify(config)].join("?")
+  return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
 }
 
 export const resize = (
@@ -53,10 +48,9 @@ export const resize = (
     width?: number
     height?: number
     quality?: number
-    isDisplayAd?: boolean
   }
 ) => {
-  const { width, height, quality, isDisplayAd } = options
+  const { width, height, quality } = options
 
   // dont call gemini with empty src
   if (!src) return null
@@ -78,8 +72,5 @@ export const resize = (
     quality: quality || 80,
   }
 
-  const url = isDisplayAd
-    ? GEMINI_DISPLAY_CLOUDFRONT_URL
-    : GEMINI_CLOUDFRONT_URL
-  return [url, qs.stringify(config)].join("?")
+  return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
 }
