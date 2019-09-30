@@ -1,3 +1,15 @@
+# v20.0.9 (Mon Sep 30 2019)
+
+#### ⚠️  Pushed to master
+
+- Remove Luc from point people  (eve.essex@gmail.com)
+
+#### Authors: 1
+
+- Eve Essex (eve.essex@gmail.com)
+
+---
+
 # v20.0.8 (Mon Sep 30 2019)
 
 #### 🐛  Bug Fix
