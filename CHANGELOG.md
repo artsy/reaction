@@ -1,3 +1,15 @@
+# v20.0.8 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove deprecated display components/functionality [#2852](https://github.com/artsy/reaction/pull/2852) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v20.0.7 (Sat Sep 28 2019)
 
 #### 🐛  Bug Fix
