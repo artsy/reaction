@@ -91,7 +91,9 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
     const partnerInitials = showPartnerLogo && get(partner, p => p.initials)
     const showPartnerFollow =
-      partner.type !== "Auction House" && partner.profile
+      partner && partner.type !== "Auction House" && partner.profile
+    const hasDefaultPublicProfile = partner && partner.is_default_profile_public
+    const partnerName = partner && partner.name
 
     return (
       <SystemContextConsumer>
@@ -100,10 +102,9 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             <StackableBorderBox p={2}>
               <Box>
                 <EntityHeader
-                  name={partner.name}
+                  name={partnerName}
                   href={
-                    partner.is_default_profile_public &&
-                    `${sd.APP_URL}${partner.href}`
+                    hasDefaultPublicProfile && `${sd.APP_URL}${partner.href}`
                   }
                   meta={locationNames}
                   imageUrl={imageUrl}
