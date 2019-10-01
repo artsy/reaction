@@ -46,7 +46,8 @@
     "test:watch": "jest --watch --runInBand",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty --noEmit",
-    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
+    "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'",
+    "betterer": "betterer"
   },
   "resolutions": {
     "@types/react": "16.8.7",
@@ -66,6 +67,8 @@
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.7.2",
+    "@betterer/cli": "^0.1.4",
+    "@betterer/typescript": "^0.1.4",
     "@omakase/cli": "0.0.10",
     "@sentry/browser": "4.2.3",
     "@storybook/addon-info": "5.1.10",
