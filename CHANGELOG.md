@@ -1,3 +1,15 @@
+# v21.0.3 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fix ArtistCollectionsRail's fetching of collections' artworks [#2845](https://github.com/artsy/reaction/pull/2845) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v21.0.2 (Tue Oct 01 2019)
 
 #### 🐛  Bug Fix
