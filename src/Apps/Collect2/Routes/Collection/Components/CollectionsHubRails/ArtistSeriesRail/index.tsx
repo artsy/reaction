@@ -7,7 +7,6 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { Media } from "Utils/Responsive"
 import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesEntity"
 
 export interface ArtistSeriesRailProps {
@@ -39,70 +38,29 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
     })
   }
 
-  interface Breakpoints {
-    xs?: boolean
-    sm?: boolean
-    md?: boolean
-    xl?: boolean
-  }
-
-  const renderCarousel = (breakpoints: Breakpoints = {}) => {
-    return (
-      <Carousel
-        height="250px"
-        options={{
-          groupCells:
-            breakpoints.xs || breakpoints.sm || breakpoints.md ? 1 : 4,
-          wrapAround: sd.IS_MOBILE ? true : false,
-          cellAlign: "left",
-          pageDots: false,
-          contain: true,
-        }}
-        data={members}
-        render={(slide, slideIndex) => {
-          return <ArtistSeriesEntity member={slide} itemNumber={slideIndex} />
-        }}
-        renderLeftArrow={({ Arrow }) => {
-          const showArrowChecker =
-            !breakpoints.xl && members.length <= 4 && !sd.IS_MOBILE
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                showArrowChecker && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
-        renderRightArrow={({ Arrow }) => {
-          const showArrowChecker =
-            !breakpoints.xl && members.length <= 4 && !sd.IS_MOBILE
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                showArrowChecker && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
-        onArrowClick={() => trackArrowClick()}
-      />
-    )
-  }
-
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
         Trending Artist Series
       </Serif>
-      <Media lessThan="lg">
-        {renderCarousel({ xs: true, sm: true, md: true })}
-      </Media>
-      <Media at="lg">{renderCarousel()}</Media>
-      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
+      <Carousel
+        height="250px"
+        options={{
+          wrapAround: sd.IS_MOBILE ? true : false,
+          pageDots: false,
+        }}
+        data={members}
+        render={(slide, slideIndex) => {
+          return (
+            <ArtistSeriesEntity
+              member={slide}
+              itemNumber={slideIndex}
+              key={slide.slug}
+            />
+          )
+        }}
+        onArrowClick={() => trackArrowClick()}
+      />
     </Content>
   )
 }
