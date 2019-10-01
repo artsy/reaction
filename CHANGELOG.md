@@ -1,3 +1,15 @@
+# v21.0.0 (Tue Oct 01 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Replace router code with @artsy/arc [#2863](https://github.com/artsy/reaction/pull/2863) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v20.0.11 (Mon Sep 30 2019)
 
 #### 🐛  Bug Fix
