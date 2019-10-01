@@ -53,15 +53,6 @@ describe("FeaturedCollectionsRails", () => {
     expect(component.text()).toMatch("Street Art: Superheroes and Villains")
   })
 
-  it("Renders no arrows when there are less than 5 collections", () => {
-    const component = mount(
-      <MockBoot>
-        <FeaturedCollectionsRails {...props} />
-      </MockBoot>
-    )
-    expect(component.find(ArrowButton).length).toBe(1)
-  })
-
   it("Renders arrows when there are more than 4 featured collections", () => {
     props.collectionGroup.members = [
       memberData(),

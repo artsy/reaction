@@ -49,46 +49,18 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
     })
   }
 
-  interface Breakpoints {
-    xs?: boolean
-    sm?: boolean
-    xl?: boolean
-  }
-
-  const renderCarousel = (breakpoints: Breakpoints = {}) => {
+  const renderCarousel = (carouselHeight: string) => {
     return (
       <Carousel
-        height={breakpoints.xs || breakpoints.sm ? "430px" : "500px"}
+        height={carouselHeight}
         options={{
-          groupCells: breakpoints.xs || breakpoints.sm ? 1 : 2,
           wrapAround: sd.IS_MOBILE ? true : false,
-          cellAlign: "left",
           pageDots: false,
-          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
           return (
             <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
-          )
-        }}
-        renderLeftArrow={({ Arrow }) => {
-          return (
-            <ArrowContainer>
-              <Arrow />
-            </ArrowContainer>
-          )
-        }}
-        renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow = !breakpoints.xl && members.length > 2
-          return (
-            <ArrowContainer>
-              {members.length > 3 ? (
-                <Arrow />
-              ) : (
-                shouldDisplayArrow && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
           )
         }}
         onArrowClick={() => trackArrowClick()}
@@ -101,10 +73,8 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
       <Serif size="5" mt={3}>
         {name}
       </Serif>
-      <Media lessThan="md">{renderCarousel({ xs: true, sm: true })}</Media>
-      <Media at="md">{renderCarousel()}</Media>
-      <Media at="lg">{renderCarousel()}</Media>
-      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
+      <Media lessThan="md">{renderCarousel("430px")}</Media>
+      <Media greaterThanOrEqual="md">{renderCarousel("500px")}</Media>
       <Spacer pb={2} />
     </FeaturedCollectionsContainer>
   )
