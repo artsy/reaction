@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@artsy/arc@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@artsy/arc/-/arc-1.4.2.tgz#dd83384da7cbe4d419a6bbd408252b90081be78f"
+  integrity sha512-Ysl/x1m4oCEm9Du6DKZojDLR8Of4NAPYKK1KMjkPTam1FU2ikyq+CzN/rfFkvGyw5uNhBAr6lcKWvz8uvVbTxw==
+  dependencies:
+    farce "0.2.6"
+    found "0.3.14"
+    found-relay "0.3.1"
+    found-scroll "0.1.5"
+    react-relay "https://github.com/artsy/relay/releases/download/v1.5.0-artsy.3/react-relay-1.5.0-artsy.3.tgz"
+
 "@artsy/auto-config@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.1.tgz#781aaaf026d2d06520005ced032ebca284935e8c"
@@ -7024,7 +7035,7 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
-farce@^0.2.1, farce@^0.2.6:
+farce@0.2.6, farce@^0.2.1, farce@^0.2.6:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/farce/-/farce-0.2.6.tgz#3d307fae9eac46a148fd5535dee2dfbcf653ba83"
   integrity sha1-PTB/rp6sRqFI/VU13uLfvPZTuoM=
@@ -7439,7 +7450,7 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.3.1:
+found-relay@0.3.1, found-relay@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.3.1.tgz#b525339595e5b3aa24af555423e60fdb33a5cb16"
   integrity sha512-N9lADMedKGkl+PNY/L/qf0rDy+3HRbO9IX8Gcvjpy2tgRmPy6Z2QM/zVOufCvvD8rYGP84CuqtmTWJvJrLPFYw==
@@ -7451,7 +7462,7 @@ found-relay@^0.3.1:
     prop-types-extra "^1.1.0"
     warning "^4.0.2"
 
-found-scroll@^0.1.5:
+found-scroll@0.1.5, found-scroll@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/found-scroll/-/found-scroll-0.1.5.tgz#23b6a127dde05572c573b71048798a5eaea35add"
   integrity sha1-I7ahJ93gVXLFc7cQSHmKXq6jWt0=
@@ -7460,7 +7471,7 @@ found-scroll@^0.1.5:
     prop-types "^15.6.0"
     scroll-behavior "^0.9.3"
 
-found@^0.3.14:
+found@0.3.14, found@^0.3.14:
   version "0.3.14"
   resolved "https://registry.yarnpkg.com/found/-/found-0.3.14.tgz#0bfe2e7433951bf2df223e65c73756565d97ba8c"
   integrity sha512-Z4Ag0L8whIJwVf0MyNTkx9q3ekmbqK5RkCvlcVU7Dn3ruKfKSxbPReUiQi7mWGMTAut2JnkwiobSD/FQRhk9Vw==

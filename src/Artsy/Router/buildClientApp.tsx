@@ -1,114 +1,51 @@
-import React, { ComponentType } from "react"
-
-import { Resolver } from "found-relay"
-import { ScrollManager } from "found-scroll"
-import createInitialFarceRouter from "found/lib/createInitialFarceRouter"
-import createRender from "found/lib/createRender"
-
-import BrowserProtocol from "farce/lib/BrowserProtocol"
-import createQueryMiddleware from "farce/lib/createQueryMiddleware"
-import HashProtocol from "farce/lib/HashProtocol"
-import MemoryProtocol from "farce/lib/MemoryProtocol"
-import qs from "qs"
-
-import createLogger from "Utils/logger"
-import { getUser } from "Utils/user"
-import { createRouteConfig } from "./Utils/createRouteConfig"
-import { queryStringParsing } from "./Utils/queryStringParsing"
-
+import { buildClientApp as makeRouter, RouterConfig } from "@artsy/arc"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Boot } from "Artsy/Router/Boot"
-
-import { RouterConfig } from "./"
-
+import React from "react"
+import { getUser } from "Utils/user"
+import { Boot } from "./Boot"
+import { createRouteConfig } from "./Utils/createRouteConfig"
+import { historyMiddlewares } from "./Utils/historyMiddlewares"
 import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
-interface Resolve {
-  ClientApp: ComponentType<any>
-}
+export function buildClientApp(config: RouterConfig) {
+  const user = getUser(config.context.user)
 
-const logger = createLogger("Artsy/Router/buildClientApp.tsx")
+  return makeRouter({
+    ...config,
+    routes: createRouteConfig(config.routes),
 
-export function buildClientApp(config: RouterConfig): Promise<Resolve> {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const {
-        context = {},
-        history = {},
-        initialRoute = "/",
-        routes = [],
-      } = config
-
-      const user = getUser(context.user)
-      const relayEnvironment =
-        context.relayEnvironment ||
-        createRelaySSREnvironment({
-          cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
-          user,
-        })
-
-      const getHistoryProtocol = () => {
-        switch (history.protocol) {
-          case "browser":
-            return new BrowserProtocol()
-          case "hash":
-            return new HashProtocol()
-          case "memory":
-            return new MemoryProtocol(initialRoute)
-          default:
-            return new BrowserProtocol()
-        }
-      }
-
-      const historyMiddlewares = [
-        createQueryMiddleware({
-          parse: queryStringParsing,
-          stringify: qs.stringify,
-        }),
-      ]
-      const resolver = new Resolver(relayEnvironment)
-
-      const Renderer = createRender({
-        renderPending: RenderPending,
-        renderReady: RenderReady,
-        renderError: RenderError,
+    getRelayEnvironment: () => {
+      const relayEnvironment = createRelaySSREnvironment({
+        cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
+        user,
       })
 
-      const Router = await createInitialFarceRouter({
-        historyProtocol: getHistoryProtocol(),
+      return relayEnvironment
+    },
+
+    getFarceConfig: () => {
+      return {
         historyMiddlewares,
-        historyOptions: history.options,
-        routeConfig: createRouteConfig(routes),
-        matchContext: { user },
-        resolver,
-        render: renderArgs => {
-          return (
-            <ScrollManager renderArgs={renderArgs}>
-              <Renderer {...renderArgs} />
-            </ScrollManager>
-          )
-        },
-      })
+      }
+    },
 
-      const ClientApp = () => {
+    render: {
+      renderPending: RenderPending,
+      renderReady: RenderReady,
+      renderError: RenderError,
+
+      renderWrapper: ({ Router, relayEnvironment, routes }) => {
         return (
           <Boot
-            context={context}
+            context={config.context}
             user={user}
             relayEnvironment={relayEnvironment}
             routes={routes}
           >
-            <Router resolver={resolver} />
+            <Router />
           </Boot>
         )
-      }
-
-      resolve({
-        ClientApp,
-      })
-    } catch (error) {
-      logger.error(error)
-      reject(error)
-    }
+      },
+    },
   })
 }
