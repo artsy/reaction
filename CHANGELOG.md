@@ -1,3 +1,15 @@
+# v21.0.1 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Remove unused router packages [#2866](https://github.com/artsy/reaction/pull/2866) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.0.0 (Tue Oct 01 2019)
 
 #### 💥  Breaking Change
