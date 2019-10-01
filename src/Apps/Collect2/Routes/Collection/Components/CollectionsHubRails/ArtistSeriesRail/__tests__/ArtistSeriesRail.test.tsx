@@ -1,10 +1,8 @@
 import { CollectionsHubLinkedCollections } from "Apps/__tests__/Fixtures/Collections"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
-import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import "jest-styled-components"
-import { clone } from "lodash"
 import React from "react"
 import { ArtistSeriesRail } from "../index"
 
