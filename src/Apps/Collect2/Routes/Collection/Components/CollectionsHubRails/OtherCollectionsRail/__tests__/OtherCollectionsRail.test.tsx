@@ -1,7 +1,6 @@
 import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
-import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -45,15 +44,6 @@ describe("CollectionsRail", () => {
     expect(component.text()).toMatch("Artist Posters")
     expect(component.text()).toMatch("Artist Skateboard Decks")
     expect(component.text()).toMatch("KAWS: Bearbricks")
-  })
-
-  it("Renders no arrows when there are less than 5 collections", () => {
-    const component = mount(
-      <MockBoot>
-        <OtherCollectionsRail {...props} />
-      </MockBoot>
-    )
-    expect(component.find(ArrowButton).length).toBe(1)
   })
 
   describe("Tracking", () => {

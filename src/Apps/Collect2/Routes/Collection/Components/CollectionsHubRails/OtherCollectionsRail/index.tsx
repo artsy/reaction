@@ -39,24 +39,16 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
     })
   }
 
-  interface Breakpoints {
-    xs?: boolean
-    sm?: boolean
-    md?: boolean
-    xl?: boolean
-  }
-
-  const renderCarousel = (breakpoints: Breakpoints = {}) => {
-    return (
+  return (
+    <Container mb={4}>
+      <Serif size="5" mt={3} mb={2}>
+        {name}
+      </Serif>
       <Carousel
         height="100px"
         options={{
-          groupCells:
-            breakpoints.xs || breakpoints.sm || breakpoints.md ? 1 : 3,
           wrapAround: sd.IS_MOBILE ? true : false,
-          cellAlign: "left",
           pageDots: false,
-          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
@@ -64,41 +56,8 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
             <OtherCollectionEntity member={slide} itemNumber={slideIndex} />
           )
         }}
-        renderLeftArrow={({ Arrow }) => {
-          return (
-            <ArrowContainer>
-              <Arrow />
-            </ArrowContainer>
-          )
-        }}
-        renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow =
-            breakpoints.sm || (breakpoints.md && members.length > 3)
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                shouldDisplayArrow && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
         onArrowClick={() => trackArrowClick()}
       />
-    )
-  }
-
-  return (
-    <Container mb={4}>
-      <Serif size="5" mt={3} mb={2}>
-        {name}
-      </Serif>
-      <Media lessThan="lg">
-        {renderCarousel({ xs: true, sm: true, md: true })}
-      </Media>
-      <Media at="lg">{renderCarousel()}</Media>
-      <Media greaterThanOrEqual="xl">{renderCarousel({ xl: true })}</Media>
     </Container>
   )
 }
