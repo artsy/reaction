@@ -1,3 +1,15 @@
+# v21.0.2 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection/Id] Re-add missing price sort [#2865](https://github.com/artsy/reaction/pull/2865) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.0.1 (Tue Oct 01 2019)
 
 #### 🐛  Bug Fix
