@@ -23,6 +23,29 @@ interface Props {
   collectionGroup: FeaturedCollectionsRails_collectionGroup
 }
 
+export const renderCarousel = (
+  members,
+  trackArrowClick,
+  carouselHeight: string
+) => {
+  return (
+    <Carousel
+      height={carouselHeight}
+      options={{
+        wrapAround: sd.IS_MOBILE ? true : false,
+        pageDots: false,
+      }}
+      data={members}
+      render={(slide, slideIndex) => {
+        return (
+          <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
+        )
+      }}
+      onArrowClick={() => trackArrowClick()}
+    />
+  )
+}
+
 export const FeaturedCollectionsRails: React.FC<Props> = ({
   collectionGroup,
 }) => {
@@ -49,32 +72,17 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
     })
   }
 
-  const renderCarousel = (carouselHeight: string) => {
-    return (
-      <Carousel
-        height={carouselHeight}
-        options={{
-          wrapAround: sd.IS_MOBILE ? true : false,
-          pageDots: false,
-        }}
-        data={members}
-        render={(slide, slideIndex) => {
-          return (
-            <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
-          )
-        }}
-        onArrowClick={() => trackArrowClick()}
-      />
-    )
-  }
-
   return (
     <FeaturedCollectionsContainer>
       <Serif size="5" mt={3}>
         {name}
       </Serif>
-      <Media lessThan="md">{renderCarousel("430px")}</Media>
-      <Media greaterThanOrEqual="md">{renderCarousel("500px")}</Media>
+      <Media lessThan="md">
+        {renderCarousel(members, trackArrowClick, "430px")}
+      </Media>
+      <Media greaterThanOrEqual="md">
+        {renderCarousel(members, trackArrowClick, "500px")}
+      </Media>
       <Spacer pb={2} />
     </FeaturedCollectionsContainer>
   )

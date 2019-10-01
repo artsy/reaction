@@ -1,7 +1,7 @@
 import { CollectionHubFixture } from "Apps/__tests__/Fixtures/Collections"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton } from "Components/v2/Carousel"
-import { MockBoot } from "DevTools/MockBoot"
+// import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
@@ -9,6 +9,7 @@ import {
   FeaturedCollectionEntity,
   FeaturedCollectionsRails,
   FeaturedImage,
+  // renderCarousel,
   StyledLink,
 } from "../index"
 
@@ -53,22 +54,18 @@ describe("FeaturedCollectionsRails", () => {
     expect(component.text()).toMatch("Street Art: Superheroes and Villains")
   })
 
-  it("Renders arrows when there are more than 4 featured collections", () => {
-    props.collectionGroup.members = [
-      memberData(),
-      memberData(),
-      memberData(),
-      memberData(),
-      memberData(),
-    ]
+  // it("Renders correct height at smaller breakpoints", () => {
+  //   const component = mount(
+  //     <MockBoot breakpoint="sm">
+  //       <FeaturedCollectionsRails {...props} />
+  //     </MockBoot>
+  //   )
 
-    const component = mount(
-      <MockBoot>
-        <FeaturedCollectionsRails {...props} />
-      </MockBoot>
-    )
-    expect(component.find(ArrowButton).length).toBe(2)
-  })
+  //   console.log("comp", component.props())
+  //   console.log("key", component.key())
+
+  //   expect(renderCarousel).toBeCalledWith("430px")
+  // })
 
   describe("Tracking", () => {
     it("Tracks impressions", () => {
