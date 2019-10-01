@@ -56,41 +56,6 @@ describe("ArtistSeriesRail", () => {
     expect(component.text()).toMatch("From $1,000")
   })
 
-  it("Does NOT show arrows when there are exactly 4 collections", () => {
-    const newprops = clone(props)
-    newprops.collectionGroup.members = [
-      singleData(),
-      singleData(),
-      singleData(),
-      singleData(),
-    ]
-    const Component = mount(
-      <MockBoot>
-        <ArtistSeriesRail {...newprops} />
-      </MockBoot>
-    )
-    expect(Component.find(ArrowButton).length).toBe(0)
-  })
-
-  it("Arrows appear when there are more than 5 collections", () => {
-    const newprops = clone(props)
-    newprops.collectionGroup.members = [
-      singleData(),
-      singleData(),
-      singleData(),
-      singleData(),
-      singleData(),
-      singleData(),
-      singleData(),
-    ]
-    const Component = mount(
-      <MockBoot>
-        <ArtistSeriesRail {...newprops} />
-      </MockBoot>
-    )
-    expect(Component.find(ArrowButton).length).toBe(2)
-  })
-
   describe("Tracking", () => {
     it("Tracks impressions", () => {
       mount(<ArtistSeriesRail {...props} />)
