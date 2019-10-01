@@ -43,38 +43,46 @@ export const CollectionsRailFixture = [
     title: "Jasper Johns: Flags",
     price_guidance: 1000,
     artworks: {
-      hits: [
-        {
-          artist: {
-            name: "Jasper Johns",
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+              },
+            },
           },
-          title: "Flag",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+          {
+            node: {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag (Moratorium)",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+              },
+            },
           },
-        },
-        {
-          artist: {
-            name: "Jasper Johns",
+          {
+            node: {
+              artist: {
+                name: "Jasper Johns",
+              },
+              title: "Flag I",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+              },
+            },
           },
-          title: "Flag (Moratorium)",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
-          },
-        },
-        {
-          artist: {
-            name: "Jasper Johns",
-          },
-          title: "Flag I",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
-          },
-        },
-      ],
+        ],
+      },
     },
   },
   {
@@ -83,38 +91,46 @@ export const CollectionsRailFixture = [
     title: "Street Art Now",
     price_guidance: 200,
     artworks: {
-      hits: [
-        {
-          artist: {
-            name: "Alec Monopoly",
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              artist: {
+                name: "Alec Monopoly",
+              },
+              title: "Community Chest: Go To Jail",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/DSa-4s-zRJEwW6mZRgDoxQ/small.jpg",
+              },
+            },
           },
-          title: "Community Chest: Go To Jail",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/DSa-4s-zRJEwW6mZRgDoxQ/small.jpg",
+          {
+            node: {
+              artist: {
+                name: "Alec Monopoly",
+              },
+              title: "DJ Monopoly",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/L0wx7i69h96MUFq9EgOpBQ/small.jpg",
+              },
+            },
           },
-        },
-        {
-          artist: {
-            name: "Alec Monopoly",
+          {
+            node: {
+              artist: {
+                name: "Keith Haring",
+              },
+              title: "Keith Haring 1982 Dolphin lithograph",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/ZZodXz8Y7v7h0VWlQnZQCw/small.jpg",
+              },
+            },
           },
-          title: "DJ Monopoly",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/L0wx7i69h96MUFq9EgOpBQ/small.jpg",
-          },
-        },
-        {
-          artist: {
-            name: "Keith Haring",
-          },
-          title: "Keith Haring 1982 Dolphin lithograph",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/ZZodXz8Y7v7h0VWlQnZQCw/small.jpg",
-          },
-        },
-      ],
+        ],
+      },
     },
   },
   {
@@ -124,38 +140,46 @@ export const CollectionsRailFixture = [
     title: "Contemporary Limited Editions",
     price_guidance: 1000,
     artworks: {
-      hits: [
-        {
-          artist: {
-            name: "Kiki Smith",
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              artist: {
+                name: "Kiki Smith",
+              },
+              title: "Untitled",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/VzteQ4joB2Iwjek9kPUrGg/small.jpg",
+              },
+            },
           },
-          title: "Untitled",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/VzteQ4joB2Iwjek9kPUrGg/small.jpg",
+          {
+            node: {
+              artist: {
+                name: "Gerhard Richter",
+              },
+              title: "P8",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/ZN_qyzZgvHz-DRMFW-Wrcw/small.jpg",
+              },
+            },
           },
-        },
-        {
-          artist: {
-            name: "Gerhard Richter",
+          {
+            node: {
+              artist: {
+                name: "Robert Longo",
+              },
+              title: "Monsters",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/0vJm9FeXzxzZJpBC-A-4ig/small.jpg",
+              },
+            },
           },
-          title: "P8",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/ZN_qyzZgvHz-DRMFW-Wrcw/small.jpg",
-          },
-        },
-        {
-          artist: {
-            name: "Robert Longo",
-          },
-          title: "Monsters",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/0vJm9FeXzxzZJpBC-A-4ig/small.jpg",
-          },
-        },
-      ],
+        ],
+      },
     },
   },
   {
@@ -164,38 +188,46 @@ export const CollectionsRailFixture = [
     title: "Timeless Modern Prints",
     price_guidance: 2500,
     artworks: {
-      hits: [
-        {
-          artist: {
-            name: "Joan Miró",
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              artist: {
+                name: "Joan Miró",
+              },
+              title: "Migratory Bird I",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/_67k2lYpopsd-UK6LOD61g/small.jpg",
+              },
+            },
           },
-          title: "Migratory Bird I",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/_67k2lYpopsd-UK6LOD61g/small.jpg",
+          {
+            node: {
+              artist: {
+                name: "Pablo Picasso",
+              },
+              title: "Bacchanale",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/mepJj80_m4NiWUJviymyBw/small.jpg",
+              },
+            },
           },
-        },
-        {
-          artist: {
-            name: "Pablo Picasso",
+          {
+            node: {
+              artist: {
+                name: "Josef Albers",
+              },
+              title: "Mitered Squares-Apricot ",
+              image: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/CbgUJdNK5lWvhKzziYgx7w/small.jpg",
+              },
+            },
           },
-          title: "Bacchanale",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/mepJj80_m4NiWUJviymyBw/small.jpg",
-          },
-        },
-        {
-          artist: {
-            name: "Josef Albers",
-          },
-          title: "Mitered Squares-Apricot ",
-          image: {
-            url:
-              "https://d32dm0rphc51dk.cloudfront.net/CbgUJdNK5lWvhKzziYgx7w/small.jpg",
-          },
-        },
-      ],
+        ],
+      },
     },
   },
 ]
@@ -283,38 +315,46 @@ export const CollectionsHubLinkedCollections = {
           title: "Flags unique collections",
           price_guidance: 1000,
           artworks: {
-            hits: [
-              {
-                artist: {
-                  // null
+            artworks_connection: {
+              edges: [
+                {
+                  node: {
+                    artist: {
+                      // null
+                    },
+                    title: "A great flag from Jasper",
+                    image: {
+                      url:
+                        "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                    },
+                  },
                 },
-                title: "A great flag from Jasper",
-                image: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                {
+                  node: {
+                    artist: {
+                      name: "Jasper Johns",
+                    },
+                    title: "Back to 2046",
+                    image: {
+                      url:
+                        "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                    },
+                  },
                 },
-              },
-              {
-                artist: {
-                  name: "Jasper Johns",
+                {
+                  node: {
+                    artist: {
+                      name: "Andy Warhol",
+                    },
+                    title: "An Apple",
+                    image: {
+                      url:
+                        "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                    },
+                  },
                 },
-                title: "Back to 2046",
-                image: {
-                  url:
-                    "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                },
-              },
-              {
-                artist: {
-                  name: "Andy Warhol",
-                },
-                title: "An Apple",
-                image: {
-                  url:
-                    "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                },
-              },
-            ],
+              ],
+            },
           },
         },
       ],

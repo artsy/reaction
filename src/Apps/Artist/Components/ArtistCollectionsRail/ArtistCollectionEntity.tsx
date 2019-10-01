@@ -30,14 +30,15 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
 
   render() {
     const {
-      artworks: { hits },
       headerImage,
       price_guidance,
       slug,
       title,
+      artworks: { artworks_connection },
     } = this.props.collection
+    const artworks = artworks_connection.edges.map(({ node }) => node)
     const formattedTitle = (title && title.split(": ")[1]) || title
-    const bgImages = compact(hits.map(hit => hit.image && hit.image.url))
+    const bgImages = compact(artworks.map(({ image }) => image && image.url))
     const imageSize =
       bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
 
@@ -50,9 +51,9 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
-                const artistName = get(hits[i].artist, a => a.name)
+                const artistName = get(artworks[i].artist, a => a.name)
                 const alt = `${artistName ? artistName + ", " : ""}${
-                  hits[i].title
+                  artworks[i].title
                 }`
                 return (
                   <SingleImgContainer key={i}>
@@ -150,14 +151,18 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
         slug
         title
         price_guidance
-        artworks(size: 3, sort: "-decayed_merch") {
-          hits {
-            artist {
-              name
-            }
-            title
-            image {
-              url(version: "small")
+        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
+          artworks_connection(first: 3) {
+            edges {
+              node {
+                artist {
+                  name
+                }
+                title
+                image {
+                  url(version: "small")
+                }
+              }
             }
           }
         }

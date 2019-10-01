@@ -19,8 +19,15 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
   member,
   itemNumber,
 }) => {
-  const { headerImage, artworks, price_guidance, slug, title } = member
-  const bgImages = artworks!.hits!.map(hit => hit!.image!.url)
+  const {
+    headerImage,
+    artworks: { artworks_connection },
+    price_guidance,
+    slug,
+    title,
+  } = member
+  const artworks = artworks_connection.edges.map(({ node }) => node)
+  const bgImages = artworks.map(({ image }) => image && image.url)
   const imageSize =
     bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
 
@@ -43,7 +50,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
         <ImgWrapper>
           {bgImages!.length
             ? bgImages.map((url, i) => {
-                const hit = artworks!.hits![i]
+                const hit = artworks![i]
                 const artistName = get(hit!.artist, a => a!.name)
                 const alt = `${artistName ? artistName + ", " : ""}${
                   hit!.title
@@ -148,14 +155,19 @@ export const ArtistSeriesRailContainer = createFragmentContainer(
         thumbnail
         title
         price_guidance
-        artworks(size: 3, sort: "-decayed_merch") {
-          hits {
-            artist {
-              name
-            }
-            title
-            image {
-              url(version: "small")
+
+        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
+          artworks_connection(first: 3) {
+            edges {
+              node {
+                artist {
+                  name
+                }
+                title
+                image {
+                  url(version: "small")
+                }
+              }
             }
           }
         }

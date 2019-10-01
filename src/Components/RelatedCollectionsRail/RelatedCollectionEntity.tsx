@@ -3,7 +3,7 @@ import { RelatedCollectionEntity_collection } from "__generated__/RelatedCollect
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import currency from "currency.js"
-import { map } from "lodash"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -29,13 +29,14 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
 
   render() {
     const {
-      artworks: { hits },
+      artworks: { artworks_connection },
       headerImage,
       price_guidance,
       slug,
       title,
     } = this.props.collection
-    const bgImages = map(hits, "image.url")
+    const artworks = artworks_connection.edges.map(({ node }) => node)
+    const bgImages = compact(artworks.map(({ image }) => image && image.url))
     const imageSize =
       bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
 
@@ -48,9 +49,9 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
-                const artistName = get(hits[i].artist, a => a.name)
+                const artistName = get(artworks[i].artist, a => a.name)
                 const alt = `${artistName ? artistName + ", " : ""}${
-                  hits[i].title
+                  artworks[i].title
                 }`
                 return (
                   <SingleImgContainer key={i}>
@@ -68,7 +69,6 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
               <ArtworkImage src={headerImage} width={265} />
             )}
           </ImgWrapper>
-
           <CollectionTitle size="3">{title}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
@@ -142,14 +142,18 @@ export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
         slug
         title
         price_guidance
-        artworks(size: 3, sort: "-decayed_merch") {
-          hits {
-            artist {
-              name
-            }
-            title
-            image {
-              url(version: "small")
+        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
+          artworks_connection(first: 3) {
+            edges {
+              node {
+                artist {
+                  name
+                }
+                title
+                image {
+                  url(version: "small")
+                }
+              }
             }
           }
         }

@@ -27,18 +27,22 @@ describe("ArtistSeriesRail", () => {
       title: "1787 keyboard",
       price_guidance: 10000,
       artworks: {
-        hits: [
-          {
-            artist: {
-              name: "Jasper Johns",
+        artworks_connection: {
+          edges: [
+            {
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "keyborad",
+                image: {
+                  url:
+                    "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                },
+              },
             },
-            title: "keyborad",
-            image: {
-              url:
-                "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-            },
-          },
-        ],
+          ],
+        },
       },
     }
   }
