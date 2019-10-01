@@ -46,7 +46,6 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
           href={`${sd.APP_URL}/collection/${slug}`}
           onClick={this.onLinkClick.bind(this)}
         >
-          Hey!
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
