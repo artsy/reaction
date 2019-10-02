@@ -1,7 +1,8 @@
 import { RouteConfig } from "found"
-import React from "react"
+import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
+import { useSystemContext } from "Artsy/SystemContext"
 import { catchLinks } from "Utils/catchLinks"
 
 const ROUTE_NAMESPACE = ""
@@ -43,9 +44,20 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
     .flat(2)
     .map(createRouteConfiguration)
 
+  // Return a top-level "meta" route containing all global sub-routes, which is
+  // then mounted into the router.
   return [
     {
       Component: props => {
+        const { router, setRouter } = useSystemContext()
+
+        // Store global reference to router instance
+        useEffect(() => {
+          if (props.router !== router) {
+            setRouter(props.router)
+          }
+        }, [])
+
         /**
          * Intercept <a> tags on page and if contained within router route
          * manifest, navigate via router versus doing a hard jump between pages.

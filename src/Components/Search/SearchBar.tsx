@@ -1,7 +1,7 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { SystemContext, SystemContextProps } from "Artsy"
+import { SystemContext, SystemContextProps, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
@@ -12,6 +12,7 @@ import {
   PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
+import { Router } from "found"
 import { isEmpty } from "lodash"
 import { throttle } from "lodash"
 import qs from "qs"
@@ -23,6 +24,7 @@ import styled from "styled-components"
 import request from "superagent"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
@@ -31,6 +33,7 @@ const logger = createLogger("Components/Search/SearchBar")
 
 export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
+  router?: Router
   viewer: SearchBar_viewer
 }
 
@@ -89,6 +92,9 @@ export class SearchBar extends Component<Props, State> {
   // this behaviour  is acceptable.
   private userClickedOnDescendant: boolean
 
+  // TODO: Remove references once things go live
+  private enableExperimentalAppShell: boolean
+
   state = {
     term: getSearchTerm(window.location),
     entityID: null,
@@ -145,6 +151,12 @@ export class SearchBar extends Component<Props, State> {
         this.trackSearch(term, edges.length > 0)
       }
     )
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.enableExperimentalAppShell = getENV("EXPERIMENTAL_APP_SHELL")
   }
 
   componentDidMount() {
@@ -245,7 +257,12 @@ export class SearchBar extends Component<Props, State> {
   }) {
     this.userClickedOnDescendant = true
 
-    window.location.assign(href)
+    if (this.enableExperimentalAppShell) {
+      this.props.router.push(href)
+      this.onBlur({})
+    } else {
+      window.location.assign(href)
+    }
   }
 
   renderSuggestionsContainer = ({ containerProps, children, query }) => {
@@ -366,6 +383,8 @@ export class SearchBar extends Component<Props, State> {
   }
 
   render() {
+    const { router } = this.props
+
     return (
       <form
         action="/search"
@@ -373,6 +392,20 @@ export class SearchBar extends Component<Props, State> {
         itemProp="potentialAction"
         itemScope
         itemType="http://schema.org/SearchAction"
+        onSubmit={event => {
+          if (this.enableExperimentalAppShell) {
+            event.preventDefault()
+
+            if (router) {
+              router.push(`/search?term=${this.state.term}`)
+              this.onBlur(event)
+            } else {
+              console.error(
+                "[Components/Search/SearchBar] `router` instance not found."
+              )
+            }
+          }
+        }}
       >
         <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
         <Media greaterThan="xs">
@@ -384,9 +417,7 @@ export class SearchBar extends Component<Props, State> {
 }
 
 export const SearchBarRefetchContainer = createRefetchContainer(
-  (props: Props) => {
-    return <SearchBar {...props} />
-  },
+  withSystemContext(SearchBar),
   {
     viewer: graphql`
       fragment SearchBar_viewer on Viewer
