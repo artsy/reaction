@@ -7,7 +7,6 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useMedia } from "Utils/Hooks/useMedia"
 import { ArtistSeriesRailContainer as ArtistSeriesEntity } from "./ArtistSeriesEntity"
 
 export interface ArtistSeriesRailProps {
@@ -17,19 +16,6 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
   const { members } = collectionGroup
-
-  let groupCells: number
-
-  const { xl } = useMedia()
-
-  if (sd.IS_MOBILE) {
-    groupCells = 1
-  } else if (!xl && members.length <= 4) {
-    groupCells = 3
-  } else {
-    groupCells = 4
-  }
-
   const { trackEvent } = useTracking()
 
   useEffect(() => {
@@ -60,41 +46,20 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
       <Carousel
         height="250px"
         options={{
-          groupCells,
           wrapAround: sd.IS_MOBILE ? true : false,
-          cellAlign: "left",
           pageDots: false,
-          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
-          return <ArtistSeriesEntity member={slide} itemNumber={slideIndex} />
+          return (
+            <ArtistSeriesEntity
+              member={slide}
+              itemNumber={slideIndex}
+              key={slide.slug}
+            />
+          )
         }}
         onArrowClick={() => trackArrowClick()}
-        renderLeftArrow={({ Arrow }) => {
-          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                showArrowChecker && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
-        renderRightArrow={({ Arrow }) => {
-          const showArrowChecker = !xl && members.length <= 4 && !sd.IS_MOBILE
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                showArrowChecker && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
       />
     </Content>
   )

@@ -17,10 +17,33 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useMedia } from "Utils/Hooks/useMedia"
+import { Media } from "Utils/Responsive"
 
 interface Props {
   collectionGroup: FeaturedCollectionsRails_collectionGroup
+}
+
+export const renderCarousel = (
+  members,
+  trackArrowClick,
+  carouselHeight: string
+) => {
+  return (
+    <Carousel
+      height={carouselHeight}
+      options={{
+        wrapAround: sd.IS_MOBILE ? true : false,
+        pageDots: false,
+      }}
+      data={members}
+      render={(slide, slideIndex) => {
+        return (
+          <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
+        )
+      }}
+      onArrowClick={() => trackArrowClick()}
+    />
+  )
 }
 
 export const FeaturedCollectionsRails: React.FC<Props> = ({
@@ -28,8 +51,6 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
-  const { xs, sm, xl } = useMedia()
-  const carouselHeight = xs || sm ? "430px" : "500px"
 
   useEffect(() => {
     trackEvent({
@@ -56,42 +77,12 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
       <Serif size="5" mt={3}>
         {name}
       </Serif>
-      <Carousel
-        height={carouselHeight}
-        options={{
-          groupCells: xs || sm ? 1 : 2,
-          wrapAround: sd.IS_MOBILE ? true : false,
-          cellAlign: "left",
-          pageDots: false,
-          contain: true,
-        }}
-        data={members}
-        render={(slide, slideIndex) => {
-          return (
-            <FeaturedCollectionEntity member={slide} itemNumber={slideIndex} />
-          )
-        }}
-        renderLeftArrow={({ Arrow }) => {
-          return (
-            <ArrowContainer>
-              <Arrow />
-            </ArrowContainer>
-          )
-        }}
-        renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow = !xl && members.length > 2
-          return (
-            <ArrowContainer>
-              {members.length > 3 ? (
-                <Arrow />
-              ) : (
-                shouldDisplayArrow && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
-        onArrowClick={() => trackArrowClick()}
-      />
+      <Media lessThan="md">
+        {renderCarousel(members, trackArrowClick, "430px")}
+      </Media>
+      <Media greaterThanOrEqual="md">
+        {renderCarousel(members, trackArrowClick, "500px")}
+      </Media>
       <Spacer pb={2} />
     </FeaturedCollectionsContainer>
   )
@@ -107,7 +98,6 @@ export const FeaturedCollectionEntity: React.FC<
 > = ({ itemNumber, member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
-  const { xs, sm } = useMedia()
   const hasLongTitle = title.length > 31
 
   const handleClick = () => {
@@ -122,30 +112,37 @@ export const FeaturedCollectionEntity: React.FC<
     })
   }
 
+  const renderReadMore = (isSmallerScreen: boolean) => {
+    return (
+      <ReadMore
+        disabled
+        maxChars={hasLongTitle && isSmallerScreen ? 50 : 100}
+        content={
+          <>
+            {description && (
+              <span dangerouslySetInnerHTML={{ __html: description }} />
+            )}
+          </>
+        }
+      />
+    )
+  }
+
   return (
     <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
         <Flex height={["190px", "190px", "280px", "280px"]}>
           <FeaturedImage src={thumbnail} />
         </Flex>
-        <CollectionTitle size="4" mt={1} isSmallerScreen={xs || sm || false}>
+        <Serif size="4" mt={1} maxWidth={["246px", "100%"]}>
           {title}
-        </CollectionTitle>
+        </Serif>
         {price_guidance && (
           <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
         )}
         <ExtendedSerif size="3" mt={1}>
-          <ReadMore
-            disabled
-            maxChars={hasLongTitle && (xs || sm) ? 50 : 100}
-            content={
-              <>
-                {description && (
-                  <span dangerouslySetInnerHTML={{ __html: description }} />
-                )}
-              </>
-            }
-          />
+          <Media lessThan="md">{renderReadMore(true)}</Media>
+          <Media greaterThan="sm">{renderReadMore(false)}</Media>
         </ExtendedSerif>
       </StyledLink>
     </Container>
@@ -182,14 +179,6 @@ const Container = styled(Box)`
   }
 `
 
-export const ArrowContainer = styled(Box)`
-  align-self: flex-start;
-
-  ${ArrowButton} {
-    height: 100%;
-  }
-`
-
 const FeaturedCollectionsContainer = styled(Box)`
   border-top: 1px solid ${color("black10")};
 
@@ -215,8 +204,12 @@ export const FeaturedImage = styled(ResponsiveImage)`
   background-position: top;
 `
 
-const CollectionTitle = styled(Serif)<{ isSmallerScreen: boolean }>`
-  width: ${props => (props.isSmallerScreen ? "246px" : "max-content")};
+export const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 100%;
+  }
 `
 
 export const StyledLink = styled(RouterLink)`

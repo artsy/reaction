@@ -12,13 +12,6 @@ import {
 } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({
-    xs: false,
-    sm: false,
-    xl: true,
-  }),
-}))
 
 jest.mock("found", () => ({
   Link: ({ children, ...props }) => <div {...props}>{children}</div>,
@@ -57,24 +50,6 @@ describe("FeaturedCollectionsRails", () => {
     expect(component.text()).toMatch("Art Inspired by Cartoons")
     expect(component.text()).toMatch("Street Art: Celebrity Portraits")
     expect(component.text()).toMatch("Street Art: Superheroes and Villains")
-  })
-
-  it("Renders no arrows when there are less than 5 collections", () => {
-    const component = mount(<FeaturedCollectionsRails {...props} />)
-    expect(component.find(ArrowButton).length).toBe(1)
-  })
-
-  it("Renders arrows when there are more than 4 featured collections", () => {
-    props.collectionGroup.members = [
-      memberData(),
-      memberData(),
-      memberData(),
-      memberData(),
-      memberData(),
-    ]
-
-    const component = mount(<FeaturedCollectionsRails {...props} />)
-    expect(component.find(ArrowButton).length).toBe(2)
   })
 
   describe("Tracking", () => {

@@ -7,10 +7,6 @@ import React from "react"
 import { OtherCollectionsRail } from "../index"
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({}),
-}))
-
 jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
 }))
@@ -48,11 +44,6 @@ describe("CollectionsRail", () => {
     expect(component.text()).toMatch("Artist Posters")
     expect(component.text()).toMatch("Artist Skateboard Decks")
     expect(component.text()).toMatch("KAWS: Bearbricks")
-  })
-
-  it("Renders no arrows when there are less than 5 collections", () => {
-    const component = mount(<OtherCollectionsRail {...props} />)
-    expect(component.find(ArrowButton).length).toBe(1)
   })
 
   describe("Tracking", () => {
