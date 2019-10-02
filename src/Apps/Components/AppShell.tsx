@@ -10,7 +10,7 @@ export const AppShell = props => {
   return (
     <Box width="100%">
       <Box pb={6}>
-        <Box left={0} position="fixed" width="100%" zIndex={10}>
+        <Box left={0} position="fixed" width="100%" zIndex={100}>
           <NavBar />
         </Box>
       </Box>

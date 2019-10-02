@@ -91,6 +91,7 @@ if (USER_ID && USER_ACCESS_TOKEN) {
   plugins.push(
     new webpack.DefinePlugin({
       "process.env": {
+        IS_STORYBOOK: JSON.stringify(true),
         USER_ID: JSON.stringify(USER_ID),
         USER_TYPE: JSON.stringify(USER_TYPE),
         USER_ACCESS_TOKEN: JSON.stringify(USER_ACCESS_TOKEN),

@@ -100,7 +100,11 @@ export const CollectApp = track({
               const url = buildUrlForCollectApp(filters)
 
               if (typeof window !== "undefined") {
-                window.history.replaceState({}, "", url)
+                // FIXME: Is this the best way to guard against history updates
+                // in Storybooks?
+                if (!process.env.IS_STORYBOOK) {
+                  window.history.replaceState({}, "", url)
+                }
               }
 
               /**
