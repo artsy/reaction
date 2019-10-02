@@ -24,6 +24,7 @@ export const RenderPending = () => {
           position: "fixed",
           left: 0,
           top: -6,
+          zIndex: 1000,
         }}
       />
     </>

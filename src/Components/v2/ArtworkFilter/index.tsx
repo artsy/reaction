@@ -1,30 +1,33 @@
-import { isEqual } from "lodash"
-import React, { useEffect, useState } from "react"
-import useDeepCompareEffect from "use-deep-compare-effect"
+import { isEqual } from "lodash";
+import React, { useEffect, useState } from "react";
+import useDeepCompareEffect from "use-deep-compare-effect";
 
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay";
 
-import { AnalyticsSchema, useSystemContext } from "Artsy"
-import { useTracking } from "Artsy/Analytics/useTracking"
-import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { usePrevious } from "Utils/Hooks/usePrevious"
-import { Media } from "Utils/Responsive"
+import { AnalyticsSchema, useSystemContext } from "Artsy";
+import { useTracking } from "Artsy/Analytics/useTracking";
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress";
+import { usePrevious } from "Utils/Hooks/usePrevious";
+import { Media } from "Utils/Responsive";
 
-import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
-import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkFilterQuery.graphql"
+import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql";
+import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql";
+import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkFilterQuery.graphql";
+import { Collection_viewer } from "__generated__/Collection_viewer.graphql";
 
-import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2"
-import { SortFilter } from "./ArtworkFilters/SortFilter"
+import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2";
+import { SortFilter } from "./ArtworkFilters/SortFilter";
 
 import {
   ArtworkFilterContextProvider,
   initialArtworkFilterState,
   SharedArtworkFilterContextProps,
-  useArtworkFilterContext,
-} from "./ArtworkFilterContext"
+  useArtworkFilterContext
+} from "./ArtworkFilterContext";
 
-import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet"
-import { ArtworkFilters } from "./ArtworkFilters"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer";
+import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet";
+import { ArtworkFilters } from "./ArtworkFilters";
 
 import {
   Box,
@@ -32,11 +35,8 @@ import {
   FilterIcon,
   Flex,
   Separator,
-  Spacer,
-} from "@artsy/palette"
-import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
-import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
-import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+  Spacer
+} from "@artsy/palette";
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -47,7 +47,7 @@ import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRen
  */
 export const ArtworkFilter: React.FC<
   SharedArtworkFilterContextProps & {
-    viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+    viewer: any; // FIXME: We need to support multiple types implementing different viewer interfaces
   }
 > = ({
   viewer,
@@ -58,7 +58,7 @@ export const ArtworkFilter: React.FC<
   onArtworkBrickClick,
   onFilterClick,
   onChange,
-  ZeroState,
+  ZeroState
 }) => {
   return (
     <ArtworkFilterContextProvider
@@ -73,41 +73,41 @@ export const ArtworkFilter: React.FC<
     >
       <ArtworkFilterRefetchContainer viewer={viewer} />
     </ArtworkFilterContextProvider>
-  )
-}
+  );
+};
 
 export const BaseArtworkFilter: React.FC<{
-  relay: RelayRefetchProp
-  relayVariables?: object
-  viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
+  relay: RelayRefetchProp;
+  relayVariables?: object;
+  viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist;
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
-  const { filtered_artworks } = viewer
-  const hasFilter = filtered_artworks && filtered_artworks.__id
+  const { filtered_artworks } = viewer;
+  const hasFilter = filtered_artworks && filtered_artworks.__id;
 
   // If there was an error fetching the filter,
   // we still want to render the rest of the page.
-  if (!hasFilter) return null
+  if (!hasFilter) return null;
 
-  const tracking = useTracking()
-  const [isFetching, toggleFetching] = useState(false)
-  const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
-  const filterContext = useArtworkFilterContext()
-  const previousFilters = usePrevious(filterContext.filters)
+  const tracking = useTracking();
+  const [isFetching, toggleFetching] = useState(false);
+  const [showMobileActionSheet, toggleMobileActionSheet] = useState(false);
+  const filterContext = useArtworkFilterContext();
+  const previousFilters = usePrevious(filterContext.filters);
 
   /**
    * Check to see if the mobile action sheet is present and prevent scrolling
    */
   useEffect(() => {
     const setScrollable = doScroll => {
-      document.body.style.overflowY = doScroll ? "visible" : "hidden"
-    }
+      document.body.style.overflowY = doScroll ? "visible" : "hidden";
+    };
     if (showMobileActionSheet) {
-      setScrollable(false)
+      setScrollable(false);
     }
     return () => {
-      setScrollable(true)
-    }
-  }, [showMobileActionSheet])
+      setScrollable(true);
+    };
+  }, [showMobileActionSheet]);
 
   /**
    * Check to see if the current filter is different from the previous filter
@@ -116,40 +116,40 @@ export const BaseArtworkFilter: React.FC<{
   useDeepCompareEffect(() => {
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
-        const previousFilter = previousFilters[filterKey]
-        const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
+        const previousFilter = previousFilters[filterKey];
+        const filtersHaveUpdated = !isEqual(currentFilter, previousFilter);
 
         if (filtersHaveUpdated) {
-          fetchResults()
+          fetchResults();
 
           tracking.trackEvent({
             action_type:
               AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
             current: filterContext.filters,
             changed: {
-              [filterKey]: filterContext.filters[filterKey],
-            },
-          })
+              [filterKey]: filterContext.filters[filterKey]
+            }
+          });
         }
       }
-    )
-  }, [filterContext.filters])
+    );
+  }, [filterContext.filters]);
 
   function fetchResults() {
-    toggleFetching(true)
+    toggleFetching(true);
 
     const relayRefetchVariables = {
       ...filterContext.filters,
-      ...relayVariables,
-    }
+      ...relayVariables
+    };
 
     relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
-        console.error(error)
+        console.error(error);
       }
 
-      toggleFetching(false)
-    })
+      toggleFetching(false);
+    });
   }
 
   const ArtworkGrid = () => {
@@ -159,8 +159,8 @@ export const BaseArtworkFilter: React.FC<{
         isLoading={isFetching}
         columnCount={[2, 2, 2, 3]}
       />
-    )
-  }
+    );
+  };
 
   return (
     <Box>
@@ -218,8 +218,8 @@ export const BaseArtworkFilter: React.FC<{
         </Flex>
       </Media>
     </Box>
-  )
-}
+  );
+};
 
 export const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
@@ -266,7 +266,7 @@ export const ArtworkQueryFilter = graphql`
         )
     }
   }
-`
+`;
 
 export const ArtworkFilterRefetchContainer = createRefetchContainer(
   BaseArtworkFilter,
@@ -318,23 +318,23 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }
-    `,
+    `
   },
   ArtworkQueryFilter
-)
+);
 
 /**
  * This QueryRenderer can be used to instantiate stand-alone embedded ArtworkFilters
  * that are not dependent on URLBar state.
  */
 export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
-  const { relayEnvironment } = useSystemContext()
+  const { relayEnvironment } = useSystemContext();
 
   return (
     <ArtworkFilterContextProvider
       filters={{
         ...initialArtworkFilterState,
-        keyword,
+        keyword
       }}
     >
       <QueryRenderer<ArtworkFilterQueryType>
@@ -343,10 +343,10 @@ export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
         /* tslint:disable:relay-operation-generics */
         query={ArtworkQueryFilter}
         variables={{
-          keyword,
+          keyword
         }}
         render={renderWithLoadProgress(ArtworkFilterRefetchContainer as any)} // FIXME: Find way to support union types here
       />
     </ArtworkFilterContextProvider>
-  )
-}
+  );
+};
