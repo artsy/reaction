@@ -1,7 +1,7 @@
 import { Separator } from "@artsy/palette"
 import { Box, Flex } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { SystemContextConsumer } from "Artsy"
+import { useSystemContext } from "Artsy"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 
@@ -9,12 +9,17 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
+import { getENV } from "Utils/getENV"
 
 export interface Props {
   name?: string
 }
 
 export const FrameWithRecentlyViewed: React.SFC<Props> = ({ children }) => {
+  const { isEigen } = useSystemContext()
+  const EXPERIMENTAL_APP_SHELL = getENV("EXPERIMENTAL_APP_SHELL")
+  const showFooter = !(isEigen || EXPERIMENTAL_APP_SHELL)
+
   return (
     <HorizontalPadding>
       <Flex flexDirection="column">
@@ -27,15 +32,11 @@ export const FrameWithRecentlyViewed: React.SFC<Props> = ({ children }) => {
         )}
         <Separator mt={6} mb={3} />
 
-        <SystemContextConsumer>
-          {({ isEigen }) =>
-            isEigen ? null : (
-              <Box>
-                <Footer />
-              </Box>
-            )
-          }
-        </SystemContextConsumer>
+        {showFooter && (
+          <Box>
+            <Footer />
+          </Box>
+        )}
       </Flex>
     </HorizontalPadding>
   )
