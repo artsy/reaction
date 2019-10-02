@@ -18,7 +18,7 @@ export const AppShell = props => {
       <Box>
         <Box>{children}</Box>
 
-        <Box>
+        <Box px={4}>
           <Footer />
         </Box>
       </Box>

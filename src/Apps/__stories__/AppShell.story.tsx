@@ -1,12 +1,15 @@
-import { AppShell } from "Artsy/Router/AppShell"
-import { SystemContextProvider } from "Artsy/SystemContext"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+
+import { SystemContextProvider } from "Artsy/SystemContext"
+import { MockRouter } from "DevTools"
+
+import { appRoutes } from "Apps/appRoutes"
 
 storiesOf("Apps", module).add("AppShell", () => {
   return (
     <SystemContextProvider>
-      <AppShell>hi</AppShell>
+      <MockRouter routes={appRoutes} initialRoute="/collect" />
     </SystemContextProvider>
   )
 })
