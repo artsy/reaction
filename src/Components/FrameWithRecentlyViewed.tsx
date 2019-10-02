@@ -17,8 +17,7 @@ export interface Props {
 
 export const FrameWithRecentlyViewed: React.SFC<Props> = ({ children }) => {
   const { isEigen } = useSystemContext()
-  const EXPERIMENTAL_APP_SHELL = getENV("EXPERIMENTAL_APP_SHELL")
-  const showFooter = !(isEigen || EXPERIMENTAL_APP_SHELL)
+  const showFooter = !(isEigen || getENV("EXPERIMENTAL_APP_SHELL"))
 
   return (
     <HorizontalPadding>
