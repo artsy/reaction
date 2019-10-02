@@ -4955,11 +4955,6 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-catch-links@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/catch-links/-/catch-links-2.0.1.tgz#ed7a78abeb3f4b3d3adea3b5bbf9ef9c24fe4a8d"
-  integrity sha1-7Xp4q+s/Sz063qO1u/nvnCT+So0=
-
 ccount@^1.0.0, ccount@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.0.3.tgz#f1cec43f332e2ea5a569fd46f9f5bde4e6102aff"
