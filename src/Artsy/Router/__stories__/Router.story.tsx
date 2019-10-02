@@ -75,7 +75,7 @@ const routes = [
   },
 ]
 
-storiesOf("SSR Router/Example", module).add("Example Router App", () => {
+storiesOf("Router/Example", module).add("Example Router App", () => {
   return (
     <MockRouter
       routes={routes}
