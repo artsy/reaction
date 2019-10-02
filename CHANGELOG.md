@@ -1,3 +1,21 @@
+# v21.0.4 (Wed Oct 02 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1547] increment correctly at smaller breakpoints [#2848](https://github.com/artsy/reaction/pull/2848) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.9 to v4.17.10 [#2869](https://github.com/artsy/reaction/pull/2869) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.8 to v4.17.9 [#2867](https://github.com/artsy/reaction/pull/2867) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v21.0.3 (Tue Oct 01 2019)
 
 #### 🐛  Bug Fix
