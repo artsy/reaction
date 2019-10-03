@@ -32,6 +32,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
 
   const { trackEvent } = useTracking()
+  const isMobileDevice = sd.IS_MOBILE
 
   const handleLinkClick = () => {
     trackEvent({
@@ -44,6 +45,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
       item_number: itemNumber,
     })
   }
+
   return (
     <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink to={`/collection/${slug}`} onClick={handleLinkClick}>
@@ -72,7 +74,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
             : headerImage && <ArtworkImage src={headerImage} width={221} />}
         </ImgWrapper>
         {
-          <CollectionTitle pt={1} pb={0.5} size="3">
+          <CollectionTitle pt={1} pb={0.5} size="3" isMobile={isMobileDevice}>
             {title}
           </CollectionTitle>
         }
@@ -128,8 +130,11 @@ const SingleImgContainer = styled(Box)`
   }
 `
 
-const CollectionTitle = styled(Serif)`
-  width: 100%;
+const CollectionTitle = styled(Serif)<{ isMobile: boolean }>`
+  width: ${props => (props.isMobile ? "220px" : "224px")};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const ImgWrapper = styled(Flex)`
