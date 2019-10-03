@@ -41,6 +41,10 @@ export class NavigationTabs extends React.Component<Props> {
     // no-op
   }
 
+  shouldComponentUpdate = prevProps => {
+    return this.props.term !== prevProps.term
+  }
+
   renderTab = (
     text: string,
     to: string,
@@ -120,7 +124,10 @@ export class NavigationTabs extends React.Component<Props> {
   render() {
     return (
       <Flex mx={[-2, 0]}>
-        <TabCarousel tabs={this.tabs()} />
+        <TabCarousel
+          key={`tab-carousel-${this.props.term}`}
+          tabs={this.tabs()}
+        />
       </Flex>
     )
   }

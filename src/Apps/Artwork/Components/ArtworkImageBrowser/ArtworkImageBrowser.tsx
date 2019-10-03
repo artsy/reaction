@@ -50,7 +50,7 @@ export class LargeArtworkImageBrowser extends React.Component<
 
     // The maxHeight was added in order to fix how Google bot renders the page
     return (
-      <Container>
+      <Container key={Math.random()}>
         <Carousel
           showArrows={hasMultipleImages}
           options={options}

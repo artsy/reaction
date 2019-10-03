@@ -2,6 +2,7 @@ import { Box, color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import currency from "currency.js"
 import { compact } from "lodash"
 import React from "react"
@@ -46,8 +47,8 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
 
     return (
       <Box pr={2}>
-        <StyledLink
-          href={`${sd.APP_URL}/collection/${slug}`}
+        <RouterLink
+          to={`/collection/${slug}`}
           onClick={this.onLinkClick.bind(this)}
         >
           <ImgWrapper pb={1}>
@@ -91,7 +92,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
               }).format()}
             </Sans>
           )}
-        </StyledLink>
+        </RouterLink>
       </Box>
     )
   }

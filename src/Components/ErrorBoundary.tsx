@@ -4,6 +4,7 @@ import createLogger from "Utils/logger"
 
 interface Props {
   children?: any
+  onCatch?: () => void
 }
 
 const logger = createLogger()
@@ -11,6 +12,10 @@ const logger = createLogger()
 export class ErrorBoundary extends React.Component<Props> {
   componentDidCatch(error, errorInfo) {
     logger.error(new ErrorWithMetadata(error.message, errorInfo))
+
+    if (this.props.onCatch) {
+      this.props.onCatch()
+    }
   }
 
   render() {

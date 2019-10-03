@@ -1,4 +1,5 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
+import { ErrorBoundary } from "Components/ErrorBoundary"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
@@ -133,8 +134,10 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
 export const SmallCarousel: React.FC<CarouselProps> = props => {
   // Only render pageDots and enable draggable if more than one slide
   const hasMultipleSlides = props.data.length > 1
+
   return (
     <BaseCarousel
+      // key={Math.random()} // See comment above
       showArrows={false}
       {...props}
       options={{
@@ -388,7 +391,24 @@ export class BaseCarousel extends React.Component<
     }
 
     return (
-      <>
+      <ErrorBoundary
+        onCatch={() => {
+          /**
+           * If an error occurs when mounting / unmounting flickity, reload page.
+           *
+           * FIXME: Figure out how to diagnose `Failed to execute ‘removeChild’
+           * on ‘Node’: The node to be removed is not a child of this node.` error
+           *
+           * NOTE: To hack-fix error, apply a random `key={Math.random()} on
+           * offending container, or ensure component isn't rerendering needlessly.
+           */
+          console.warn(
+            "------------------ RELOAD carousel",
+            window.location.href
+          )
+          window.location.reload()
+        }}
+      >
         <Flex
           flexDirection="row"
           position="relative"
@@ -415,7 +435,7 @@ export class BaseCarousel extends React.Component<
 
           {this.renderRightArrow()}
         </Flex>
-      </>
+      </ErrorBoundary>
     )
   }
 }
