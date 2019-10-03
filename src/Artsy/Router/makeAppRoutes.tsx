@@ -6,7 +6,7 @@ import { AppShell } from "Apps/Components/AppShell"
 import { useSystemContext } from "Artsy/SystemContext"
 import { catchLinks } from "Utils/catchLinks"
 
-const ROUTE_NAMESPACE = "experimental-app-shell"
+const ROUTE_NAMESPACE = ""
 
 interface RouteList {
   routes: RouteConfig
@@ -48,6 +48,8 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
   // then mounted into the router.
   return [
     {
+      path: ROUTE_NAMESPACE,
+
       Component: props => {
         const { router, setRouter } = useSystemContext()
 
@@ -56,24 +58,22 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
           if (props.router !== router) {
             setRouter(props.router)
           }
+
+          /**
+           * Intercept <a> tags on page and if contained within router route
+           * manifest, navigate via router versus doing a hard jump between pages.
+           */
+          catchLinks(window, href => {
+            const url = ROUTE_NAMESPACE + href
+            const foundUrl = props.router.matcher.matchRoutes(routes, url)
+
+            if (foundUrl) {
+              props.router.push(url)
+            } else {
+              window.location.assign(url)
+            }
+          })
         }, [])
-
-        /**
-         * Intercept <a> tags on page and if contained within router route
-         * manifest, navigate via router versus doing a hard jump between pages.
-         */
-        catchLinks(window, href => {
-          const url = ROUTE_NAMESPACE + href
-          const foundUrl = props.router.matcher.matchRoutes(routes, url)
-
-          console.log("here!@")
-
-          if (foundUrl) {
-            props.router.push(url)
-          } else {
-            window.location.assign(url)
-          }
-        })
 
         return <AppShell {...props} />
       },
