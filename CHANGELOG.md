@@ -1,3 +1,15 @@
+# v21.0.5 (Thu Oct 03 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Make user path a bit safer [#2870](https://github.com/artsy/reaction/pull/2870) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.0.4 (Wed Oct 02 2019)
 
 #### 🐛  Bug Fix
