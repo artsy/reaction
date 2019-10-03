@@ -9,7 +9,6 @@ export function getAppRoutes(): RouteConfig[] {
   return makeAppRoutes([
     {
       routes: artistRoutes,
-      disabled: false,
     },
     {
       routes: artworkRoutes,

@@ -258,8 +258,15 @@ export class SearchBar extends Component<Props, State> {
     this.userClickedOnDescendant = true
 
     if (this.enableExperimentalAppShell) {
-      this.props.router.push(href)
-      this.onBlur({})
+      if (this.props.router) {
+        this.props.router.push(href)
+        this.onBlur({})
+
+        // Outside of router context
+      } else {
+        window.location.assign(href)
+      }
+      // New router not enabled
     } else {
       window.location.assign(href)
     }
@@ -393,10 +400,10 @@ export class SearchBar extends Component<Props, State> {
         itemScope
         itemType="http://schema.org/SearchAction"
         onSubmit={event => {
+          console.log(this.enableExperimentalAppShell)
           if (this.enableExperimentalAppShell) {
-            event.preventDefault()
-
             if (router) {
+              event.preventDefault()
               router.push(`/search?term=${this.state.term}`)
               this.onBlur(event)
             } else {

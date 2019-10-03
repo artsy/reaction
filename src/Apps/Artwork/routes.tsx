@@ -17,5 +17,8 @@ export const routes = [
         }
       }
     `,
+    cacheConfig: {
+      force: true,
+    },
   },
 ]
