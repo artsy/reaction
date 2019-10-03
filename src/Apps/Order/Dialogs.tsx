@@ -169,6 +169,7 @@ export function injectDialog<R extends { dialog: Dialog }>(
   return props => (
     <Subscribe to={[DialogContainer]}>
       {(dialog: DialogContainer) => (
+        // @ts-ignore
         <Component dialog={extractDialogHelpers(dialog)} {...props} />
       )}
     </Subscribe>

@@ -106,12 +106,12 @@ export class EmailPanel extends React.Component<
   }
 }
 
-const Input = styled.input`
+const Input = styled.input<InputProps>`
   width: 100%;
   border-width: 1px;
-  color: ${(props: InputProps) => (props.isError ? Colors.redMedium : "black")};
-  ${(props: InputProps) => (props.isReadOnly ? unica("s16") : "")};
-  ${borderedInput};
+  color: ${props => (props.isError ? Colors.redMedium : "black")};
+  ${props => (props.isReadOnly ? unica("s16") : "")};
+  ${borderedInput as any};
 `
 const EmailPanelContainer = styled.div`
   display: flex;

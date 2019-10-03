@@ -43,6 +43,7 @@ const handleCardSetup = jest.fn()
 
 describe("Review", () => {
   beforeAll(() => {
+    // @ts-ignore
     window.Stripe = () => {
       return { handleCardAction, handleCardSetup } as any
     }

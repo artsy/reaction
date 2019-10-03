@@ -88,6 +88,7 @@ export function injectCommitMutation<Props extends CommitMutationProps>(
       <ProvideMutationContext relayEnvironment={relayEnvironment}>
         <MutationContext.Consumer>
           {({ isCommittingMutation, commitMutation }) => (
+            // @ts-ignore
             <Component
               isCommittingMutation={isCommittingMutation}
               commitMutation={commitMutation}

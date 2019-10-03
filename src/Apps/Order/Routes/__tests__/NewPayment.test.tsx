@@ -64,6 +64,7 @@ const testOrder = {
 
 describe("Payment", () => {
   beforeAll(() => {
+    // @ts-ignore
     window.Stripe = () => {
       return { handleCardAction } as any
     }
