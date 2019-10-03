@@ -1,11 +1,12 @@
 import { RouteConfig } from "found"
+import { flatten } from "lodash"
 import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
 import { useSystemContext } from "Artsy/SystemContext"
 import { catchLinks } from "Utils/catchLinks"
 
-const ROUTE_NAMESPACE = ""
+const ROUTE_NAMESPACE = "experimental-app-shell"
 
 interface RouteList {
   routes: RouteConfig
@@ -39,10 +40,9 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
   }
 
   // Build route list
-  const routes = routeList
-    .reduce(removeDisabledRoutes, [])
-    .flat(2)
-    .map(createRouteConfiguration)
+  const routes = flatten(routeList.reduce(removeDisabledRoutes, [])).map(
+    createRouteConfiguration
+  )
 
   // Return a top-level "meta" route containing all global sub-routes, which is
   // then mounted into the router.
@@ -65,6 +65,8 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
         catchLinks(window, href => {
           const url = ROUTE_NAMESPACE + href
           const foundUrl = props.router.matcher.matchRoutes(routes, url)
+
+          console.log("here!@")
 
           if (foundUrl) {
             props.router.push(url)

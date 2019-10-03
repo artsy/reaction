@@ -4,7 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { SystemContextProvider } from "Artsy/SystemContext"
 import { MockRouter } from "DevTools"
 
-import { getAppRoutes } from "Apps/appRoutes"
+import { getAppRoutes } from "Apps/getAppRoutes"
 
 storiesOf("Apps", module).add("AppShell", () => {
   return (
