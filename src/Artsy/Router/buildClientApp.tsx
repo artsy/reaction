@@ -8,7 +8,7 @@ import { historyMiddlewares } from "./Utils/historyMiddlewares"
 import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 export function buildClientApp(config: RouterConfig) {
-  const user = getUser(config.context.user)
+  const user = getUser(config.context && config.context.user)
 
   return makeRouter({
     ...config,
