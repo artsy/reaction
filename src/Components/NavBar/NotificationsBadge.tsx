@@ -84,7 +84,7 @@ const CircularCount: React.FC<{
   /**
    * Raw unread count, used for analytics.
    */
-  rawCount?: boolean
+  rawCount?: number
   /**
    * True if hovering over the badge
    */

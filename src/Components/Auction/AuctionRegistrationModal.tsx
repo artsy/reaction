@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
-import { Modal } from "@artsy/palette"
+import { Box, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
 import { ConditionsOfSaleCheckbox } from "./ConditionsOfSaleCheckbox"
 
 // For convenience even though sale is for now a single value

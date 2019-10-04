@@ -6,6 +6,7 @@ declare const _ArtworkFilter_viewer$ref: unique symbol;
 export type ArtworkFilter_viewer$ref = typeof _ArtworkFilter_viewer$ref;
 export type ArtworkFilter_viewer = {
     readonly filtered_artworks: ({
+        readonly __id: string;
         readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
     }) | null;
     readonly " $refType": ArtworkFilter_viewer$ref;
@@ -254,20 +255,20 @@ const node: ConcreteFragment = {
       "plural": false,
       "selections": [
         {
-          "kind": "FragmentSpread",
-          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
-          "args": null
-        },
-        {
           "kind": "ScalarField",
           "alias": null,
           "name": "__id",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
+          "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = 'a5a3b02d3540c5378a4af98357ca55a8';
+(node as any).hash = 'b03297e790c78632c4fe24bd5d7de6e3';
 export default node;

@@ -75,38 +75,46 @@ describe("CollectionsRail", () => {
         title: "Jasper Johns: Flags Part 2",
         price_guidance: 1000,
         artworks: {
-          hits: [
-            {
-              artist: {
-                name: "Jasper Johns",
+          artworks_connection: {
+            edges: [
+              {
+                node: {
+                  artist: {
+                    name: "Jasper Johns",
+                  },
+                  title: "Flag",
+                  image: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                  },
+                },
               },
-              title: "Flag",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+              {
+                node: {
+                  artist: {
+                    name: "Jasper Johns",
+                  },
+                  title: "Flag (Moratorium)",
+                  image: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+                  },
+                },
               },
-            },
-            {
-              artist: {
-                name: "Jasper Johns",
+              {
+                node: {
+                  artist: {
+                    name: "Jasper Johns",
+                  },
+                  title: "Flag I",
+                  image: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+                  },
+                },
               },
-              title: "Flag (Moratorium)",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
-              },
-            },
-            {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag I",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
-              },
-            },
-          ],
+            ],
+          },
         },
       })
 

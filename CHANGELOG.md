@@ -1,3 +1,118 @@
+# v21.0.5 (Thu Oct 03 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Make user path a bit safer [#2870](https://github.com/artsy/reaction/pull/2870) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.4 (Wed Oct 02 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1547] increment correctly at smaller breakpoints [#2848](https://github.com/artsy/reaction/pull/2848) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.9 to v4.17.10 [#2869](https://github.com/artsy/reaction/pull/2869) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.8 to v4.17.9 [#2867](https://github.com/artsy/reaction/pull/2867) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.0.3 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fix ArtistCollectionsRail's fetching of collections' artworks [#2845](https://github.com/artsy/reaction/pull/2845) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v21.0.2 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection/Id] Re-add missing price sort [#2865](https://github.com/artsy/reaction/pull/2865) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.1 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Remove unused router packages [#2866](https://github.com/artsy/reaction/pull/2866) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.0 (Tue Oct 01 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Replace router code with @artsy/arc [#2863](https://github.com/artsy/reaction/pull/2863) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v20.0.11 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1416 - Adds AuctionFAQ [#2809](https://github.com/artsy/reaction/pull/2809) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v20.0.10 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artwork] Be defensive about missing partner in additional info section [#2862](https://github.com/artsy/reaction/pull/2862) ([@mzikherman](https://github.com/mzikherman))
+- @damassi => [Filter] Be defensive about missing filtered artworks [#2861](https://github.com/artsy/reaction/pull/2861) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.9 (Mon Sep 30 2019)
+
+#### ⚠️  Pushed to master
+
+- Remove Luc from point people  (eve.essex@gmail.com)
+
+#### Authors: 1
+
+- Eve Essex (eve.essex@gmail.com)
+
+---
+
 # v20.0.8 (Mon Sep 30 2019)
 
 #### 🐛  Bug Fix

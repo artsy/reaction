@@ -7,7 +7,6 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
-import { useMedia } from "Utils/Hooks/useMedia"
 import { OtherCollectionsRailsContainer as OtherCollectionEntity } from "./OtherCollectionEntity"
 
 interface OtherCollectionsRailProps {
@@ -18,7 +17,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }) => {
   const { name, members } = collectionGroup
   const { trackEvent } = useTracking()
-  const { sm, md } = useMedia()
 
   useEffect(() => {
     trackEvent({
@@ -45,15 +43,11 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
       <Serif size="5" mt={3} mb={2}>
         {name}
       </Serif>
-
       <Carousel
         height="100px"
         options={{
-          groupCells: sd.IS_MOBILE ? 1 : 4,
-          cellAlign: "left",
           wrapAround: sd.IS_MOBILE ? true : false,
           pageDots: false,
-          contain: true,
         }}
         data={members}
         render={(slide, slideIndex) => {
@@ -61,26 +55,7 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
             <OtherCollectionEntity member={slide} itemNumber={slideIndex} />
           )
         }}
-        renderLeftArrow={({ Arrow }) => {
-          return (
-            <ArrowContainer>
-              <Arrow />
-            </ArrowContainer>
-          )
-        }}
         onArrowClick={() => trackArrowClick()}
-        renderRightArrow={({ Arrow }) => {
-          const shouldDisplayArrow = sm || (md && members.length > 3)
-          return (
-            <ArrowContainer>
-              {members.length > 4 ? (
-                <Arrow />
-              ) : (
-                shouldDisplayArrow && <Arrow showArrow={true} />
-              )}
-            </ArrowContainer>
-          )
-        }}
       />
     </Container>
   )

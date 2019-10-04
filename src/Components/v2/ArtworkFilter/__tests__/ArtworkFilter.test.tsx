@@ -1,7 +1,12 @@
 import { Breakpoint } from "@artsy/palette"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { ArtworkFilter, ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
+import {
+  ArtworkFilter,
+  ArtworkQueryFilter,
+  BaseArtworkFilter,
+} from "Components/v2/ArtworkFilter"
 import { MockBoot, renderRelayTree } from "DevTools"
+import { renderToString } from "DevTools/__tests__/MockRelayRendererFixtures"
 import React from "react"
 import { ArtworkFilterFixture } from "./fixtures/ArtworkFilter.fixture"
 
@@ -30,6 +35,16 @@ describe("ArtworkFilter", () => {
       return {
         trackEvent,
       }
+    })
+  })
+
+  describe("without any filtered artworks", () => {
+    it("renders null", async () => {
+      const props = {
+        viewer: { filtered_artworks: null },
+      } as any
+      const filterComponent = <BaseArtworkFilter {...props} />
+      expect(renderToString(filterComponent)).toBeFalsy()
     })
   })
 

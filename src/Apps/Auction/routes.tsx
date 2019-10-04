@@ -4,6 +4,7 @@ import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
+import { AuctionFAQQueryRenderer as AuctionFAQ } from "./Components/AuctionFAQ"
 import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
@@ -17,6 +18,10 @@ type Sale = routes_RegisterQueryResponse["sale"]
 type Me = routes_RegisterQueryResponse["me"]
 
 export const routes: RouteConfig[] = [
+  {
+    path: "/auction-faq",
+    Component: AuctionFAQ,
+  },
   {
     path: "/auction-registration(2)?/:saleID",
     Component: RegisterRouteFragmentContainer,

@@ -92,6 +92,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
               filters={location.query}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
+                { value: "sold,-has_price,-prices", text: "Price (desc.)" },
+                { value: "sold,-has_price,prices", text: "Price (asc.)" },
                 { value: "-partner_updated_at", text: "Recently updated" },
                 { value: "-published_at", text: "Recently added" },
                 { value: "-year", text: "Artwork year (desc.)" },
@@ -260,6 +262,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
+          __id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }
