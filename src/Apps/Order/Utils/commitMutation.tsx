@@ -79,20 +79,17 @@ class ProvideMutationContext extends React.Component<
 
 export function injectCommitMutation<Props extends CommitMutationProps>(
   Component: React.ComponentType<Props>
-): React.ComponentType<
-  Pick<Props, Exclude<keyof Props, keyof CommitMutationProps>>
-> {
+): React.ComponentType<Omit<Props, keyof CommitMutationProps>> {
   return props => {
     const { relayEnvironment } = useContext(SystemContext)
     return (
       <ProvideMutationContext relayEnvironment={relayEnvironment}>
         <MutationContext.Consumer>
           {({ isCommittingMutation, commitMutation }) => (
-            // @ts-ignore
             <Component
               isCommittingMutation={isCommittingMutation}
               commitMutation={commitMutation}
-              {...props}
+              {...props as Props}
             />
           )}
         </MutationContext.Consumer>

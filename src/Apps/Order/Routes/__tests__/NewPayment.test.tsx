@@ -66,7 +66,7 @@ describe("Payment", () => {
   beforeAll(() => {
     // @ts-ignore
     window.Stripe = () => {
-      return { handleCardAction } as any
+      return { handleCardAction }
     }
 
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
