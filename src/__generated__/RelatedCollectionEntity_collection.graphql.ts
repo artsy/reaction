@@ -17,7 +17,9 @@ export type RelatedCollectionEntity_collection = {
                     }) | null;
                     readonly title: string | null;
                     readonly image: ({
-                        readonly url: string | null;
+                        readonly resized: ({
+                            readonly url: string | null;
+                        }) | null;
                     }) | null;
                 }) | null;
             }) | null> | null;
@@ -167,18 +169,29 @@ return {
                       "plural": false,
                       "selections": [
                         {
-                          "kind": "ScalarField",
+                          "kind": "LinkedField",
                           "alias": null,
-                          "name": "url",
+                          "name": "resized",
+                          "storageKey": "resized(width:262)",
                           "args": [
                             {
                               "kind": "Literal",
-                              "name": "version",
-                              "value": "small",
-                              "type": "[String]"
+                              "name": "width",
+                              "value": 262,
+                              "type": "Int"
                             }
                           ],
-                          "storageKey": "url(version:\"small\")"
+                          "concreteType": "ResizedImageUrl",
+                          "plural": false,
+                          "selections": [
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "url",
+                              "args": null,
+                              "storageKey": null
+                            }
+                          ]
                         },
                         v2
                       ]
@@ -197,5 +210,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd83ff6b1bae5fd0f0cc405596b3c2e2d';
+(node as any).hash = '62656e0f6791fb5013052961265cf689';
 export default node;

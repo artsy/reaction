@@ -83,8 +83,10 @@ describe("CollectionsRail", () => {
                   },
                   title: "Flag",
                   image: {
-                    url:
-                      "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                    resized: {
+                      url:
+                        "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                    },
                   },
                 },
               },
@@ -95,8 +97,10 @@ describe("CollectionsRail", () => {
                   },
                   title: "Flag (Moratorium)",
                   image: {
-                    url:
-                      "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+                    resized: {
+                      url:
+                        "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+                    },
                   },
                 },
               },
@@ -107,8 +111,10 @@ describe("CollectionsRail", () => {
                   },
                   title: "Flag I",
                   image: {
-                    url:
-                      "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+                    resized: {
+                      url:
+                        "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+                    },
                   },
                 },
               },

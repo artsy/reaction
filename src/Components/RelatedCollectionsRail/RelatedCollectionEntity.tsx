@@ -36,9 +36,11 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
       title,
     } = this.props.collection
     const artworks = artworks_connection.edges.map(({ node }) => node)
-    const bgImages = compact(artworks.map(({ image }) => image && image.url))
+    const bgImages = compact(
+      artworks.map(({ image }) => image && image.resized.url)
+    )
     const imageSize =
-      bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+      bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86
 
     return (
       <Box pr={2}>
@@ -66,7 +68,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
                 )
               })
             ) : (
-              <ArtworkImage src={headerImage} width={265} />
+              <ArtworkImage src={headerImage} width={262} />
             )}
           </ImgWrapper>
           <CollectionTitle size="3">{title}</CollectionTitle>
@@ -130,7 +132,7 @@ export const ArtworkImage = styled.img<{ width: number }>`
 `
 
 const ImgWrapper = styled(Flex)`
-  width: 265px;
+  width: 262px;
 `
 
 export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
@@ -151,7 +153,9 @@ export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
                 }
                 title
                 image {
-                  url(version: "small")
+                  resized(width: 262) {
+                    url
+                  }
                 }
               }
             }

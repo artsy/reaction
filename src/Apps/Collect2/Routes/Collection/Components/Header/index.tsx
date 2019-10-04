@@ -198,6 +198,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
             width: imageWidth * (xs ? 2 : 1),
             height: imageHeight * (xs ? 2 : 1),
             quality: 80,
+            convert_to: "jpg",
           })
 
         return (
