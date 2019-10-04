@@ -81,7 +81,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                 width="100%"
                 px={hasMultipleImages ? [2, 2, 0] : 0}
                 height="60vh"
-                maxHeight={image.height}
+                maxHeight="3000px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
@@ -90,7 +90,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="60vh"
-                  maxHeight={image.height}
+                  maxHeight="3000px"
                 />
               </Flex>
             )
@@ -138,7 +138,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                   enabled={image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
-                  maxHeight={image.height}
+                  maxHeight="2000px"
                   initialHeight="45vh"
                 />
               </Flex>

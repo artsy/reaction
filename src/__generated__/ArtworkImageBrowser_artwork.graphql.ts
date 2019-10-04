@@ -15,7 +15,6 @@ export type ArtworkImageBrowser_artwork = {
         readonly placeholder: ({
             readonly url: string | null;
         }) | null;
-        readonly height: number | null;
         readonly aspectRatio: number;
         readonly is_zoomable: boolean | null;
         readonly is_default: boolean | null;
@@ -151,13 +150,6 @@ return {
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "height",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
           "alias": "aspectRatio",
           "name": "aspect_ratio",
           "args": null,
@@ -272,5 +264,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e8f5d4db1cc12174b56302f7988bf155';
+(node as any).hash = '51377fc143d191b4dfefcfc5914e1f36';
 export default node;
