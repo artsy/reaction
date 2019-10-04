@@ -43,8 +43,9 @@ const handleCardSetup = jest.fn()
 
 describe("Review", () => {
   beforeAll(() => {
+    // @ts-ignore
     window.Stripe = () => {
-      return { handleCardAction, handleCardSetup } as any
+      return { handleCardAction, handleCardSetup }
     }
 
     window.sd = { STRIPE_PUBLISHABLE_KEY: "" }

@@ -8,6 +8,7 @@ import Button from "./Default"
 const TwitterButton = (props: ExtractProps<typeof Button>) => {
   const icon = <Icon name="twitter" color="white" />
   return (
+    // @ts-ignore
     <Button {...props} icon={icon}>
       Log in with Twitter
     </Button>
