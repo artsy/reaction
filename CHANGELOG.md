@@ -1,3 +1,26 @@
+# v21.0.6 (Fri Oct 04 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Nav] Move notifications dropdown fetching to client [#2878](https://github.com/artsy/reaction/pull/2878) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.14 to v4.17.15 [#2877](https://github.com/artsy/reaction/pull/2877) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.12 to v4.17.14 [#2876](https://github.com/artsy/reaction/pull/2876) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.1.6 to v3.6.3 [#2871](https://github.com/artsy/reaction/pull/2871) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@ds300](https://github.com/ds300))
+- Update dep @artsy/palette from 4.17.11 to v4.17.12 [#2873](https://github.com/artsy/reaction/pull/2873) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.10 to v4.17.11 [#2872](https://github.com/artsy/reaction/pull/2872) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v21.0.5 (Thu Oct 03 2019)
 
 #### 🐛  Bug Fix
