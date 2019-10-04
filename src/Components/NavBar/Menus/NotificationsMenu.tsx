@@ -95,16 +95,19 @@ export const NotificationMenuItems: React.FC<
  * individual MenuItems for display. During fetch there is a loading spinner.
  */
 export const NotificationsMenu: React.FC = () => {
+  const isClient = typeof window !== "undefined"
   return (
     <Menu title="Activity">
-      <NotificationsQueryRenderer
-        render={renderWithLoadProgress(
-          NotificationMenuItems,
-          {},
-          {},
-          { size: "small" }
-        )}
-      />
+      {isClient && (
+        <NotificationsQueryRenderer
+          render={renderWithLoadProgress(
+            NotificationMenuItems,
+            {},
+            {},
+            { size: "small" }
+          )}
+        />
+      )}
     </Menu>
   )
 }

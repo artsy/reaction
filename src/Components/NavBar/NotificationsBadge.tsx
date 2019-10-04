@@ -17,7 +17,8 @@ export const NotificationsBadge: React.FC<{
    */
   hover?: boolean
 }> = ({ hover }) => {
-  return (
+  const isClient = typeof window !== "undefined"
+  return isClient ? (
     <NotificationsQueryRenderer
       render={({ error, props }: ReadyState) => {
         // If there's an error hide the badge
@@ -73,6 +74,8 @@ export const NotificationsBadge: React.FC<{
         )
       }}
     />
+  ) : (
+    <CircularCount />
   )
 }
 
