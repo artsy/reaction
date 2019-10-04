@@ -10,6 +10,7 @@ export const ArtworkImageBrowserFixture = {
     __id: "QXJ0d29yazphbmR5LXdhcmhvbC1sZW5pbi1mcy1paS1kb3QtNDAyLTE=",
     id: "andy-warhol-lenin-fs-ii-dot-402-1",
     is_saved: false,
+    height: 2000,
     images: [
       {
         id: "5ba674c17cc3c01fe843281a",

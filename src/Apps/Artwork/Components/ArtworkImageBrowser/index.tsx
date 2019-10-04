@@ -57,6 +57,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
         placeholder: resized(width: 30, height: 30, version: "small") {
           url
         }
+        height
         aspectRatio: aspect_ratio
         is_zoomable
         is_default
