@@ -5,12 +5,12 @@ import {
 } from "__generated__/PopularArtistsFollowArtistMutation.graphql"
 import { PopularArtistsQuery } from "__generated__/PopularArtistsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import * as React from "react"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  QueryRenderer,
   RelayProp,
 } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
@@ -215,7 +215,7 @@ const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
   updateFollowCount,
 }) => {
   return (
-    <QueryRenderer<PopularArtistsQuery>
+    <SystemQueryRenderer<PopularArtistsQuery>
       environment={relayEnvironment}
       query={graphql`
         query PopularArtistsQuery {

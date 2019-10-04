@@ -2,8 +2,9 @@ import { Box } from "@artsy/palette"
 import { ArtistCollectionsRailQuery } from "__generated__/ArtistCollectionsRailQuery.graphql"
 import { useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from "./ArtistCollectionsRail"
 
 interface Props {
@@ -16,7 +17,7 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
 
   return (
     <Box mb={3}>
-      <QueryRenderer<ArtistCollectionsRailQuery>
+      <SystemQueryRenderer<ArtistCollectionsRailQuery>
         environment={relayEnvironment}
         variables={{
           isFeaturedArtistContent: true,

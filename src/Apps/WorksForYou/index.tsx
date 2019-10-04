@@ -1,11 +1,12 @@
 import { Box, Spinner, Theme } from "@artsy/palette"
-import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { ArtistArtworksFilters } from "__generated__/WorksForYouQuery.graphql"
+import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
 import { SystemContextConsumer, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { Component } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 import styled from "styled-components"
 import Events from "Utils/Events"
 import { WorksForYouArtistFeedPaginationContainer as WorksForYouArtistFeed } from "./WorksForYouArtistFeed"
@@ -38,7 +39,7 @@ export class WorksForYou extends Component<Props> {
               <>
                 <MarketingHeader />
 
-                <QueryRenderer<WorksForYouQuery>
+                <SystemQueryRenderer<WorksForYouQuery>
                   environment={relayEnvironment}
                   query={graphql`
                     query WorksForYouQuery(

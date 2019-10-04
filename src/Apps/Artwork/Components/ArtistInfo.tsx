@@ -13,6 +13,7 @@ import { Mediator } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import {
   ArtistBioFragmentContainer as ArtistBio,
@@ -21,7 +22,7 @@ import {
 } from "Components/v2"
 import { MIN_EXHIBITIONS } from "Components/v2/SelectedExhibitions"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
@@ -274,7 +275,7 @@ export const ArtistInfoQueryRenderer = ({ artistID }: { artistID: string }) => {
     <SystemContextConsumer>
       {({ relayEnvironment }) => {
         return (
-          <QueryRenderer<ArtistInfoQuery>
+          <SystemQueryRenderer<ArtistInfoQuery>
             environment={relayEnvironment}
             variables={{ artistID }}
             query={graphql`

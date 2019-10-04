@@ -5,13 +5,13 @@ import {
 } from "__generated__/GeneSearchResultsFollowGeneMutation.graphql"
 import { GeneSearchResultsQuery } from "__generated__/GeneSearchResultsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { garamond } from "Assets/Fonts"
 import * as React from "react"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  QueryRenderer,
   RelayProp,
 } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
@@ -190,7 +190,7 @@ const GeneSearchResultsComponent: React.SFC<
   ContainerProps & SystemContextProps
 > = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
-    <QueryRenderer<GeneSearchResultsQuery>
+    <SystemQueryRenderer<GeneSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query GeneSearchResultsQuery($term: String!) {

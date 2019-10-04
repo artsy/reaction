@@ -1,7 +1,7 @@
 import { Box, Tab, Tabs } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import React, { Component, useContext } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { ArtworkDetailsAboutTheWorkFromArtsyFragmentContainer as AboutTheWorkFromArtsy } from "./ArtworkDetailsAboutTheWorkFromArtsy"
 import { ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer as AboutTheWorkFromPartner } from "./ArtworkDetailsAboutTheWorkFromPartner"
@@ -14,6 +14,7 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import Events from "Utils/Events"
 
 export interface ArtworkDetailsProps {
@@ -114,7 +115,7 @@ export const ArtworkDetailsQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<ArtworkDetailsQuery>
+    <SystemQueryRenderer<ArtworkDetailsQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`
