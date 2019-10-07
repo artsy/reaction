@@ -1,3 +1,15 @@
+# v21.2.1 (Mon Oct 07 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Update Utils/time to use `fetchQuery` [#2885](https://github.com/artsy/reaction/pull/2885) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.2.0 (Mon Oct 07 2019)
 
 #### 🚀  Enhancement
