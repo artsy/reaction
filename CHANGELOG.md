@@ -1,3 +1,20 @@
+# v21.2.0 (Mon Oct 07 2019)
+
+#### 🚀  Enhancement
+
+- Add hooks for cypress in the PaymentPicker [#2884](https://github.com/artsy/reaction/pull/2884) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.15 to v4.17.16 [#2883](https://github.com/artsy/reaction/pull/2883) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v21.1.1 (Mon Oct 07 2019)
 
 #### 🐛  Bug Fix
