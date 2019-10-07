@@ -41,7 +41,7 @@ const fillwidthDimensions = (
     // Set id and aspectRatio for Relay or publishing
     if (item.node) {
       id = item.node.__id
-      aspectRatio = item.node.image.aspect_ratio
+      aspectRatio = item.node.image && item.node.image.aspect_ratio
     } else {
       id = item.url ? item.url : item.image
       aspectRatio = item.width / item.height
