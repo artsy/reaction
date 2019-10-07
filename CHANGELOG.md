@@ -1,3 +1,15 @@
+# v21.1.0 (Mon Oct 07 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Replace QueryRender with SystemQueryRenderer [#2881](https://github.com/artsy/reaction/pull/2881) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.0.6 (Fri Oct 04 2019)
 
 #### 🐛  Bug Fix
