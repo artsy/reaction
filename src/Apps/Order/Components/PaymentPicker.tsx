@@ -259,6 +259,7 @@ export class PaymentPicker extends React.Component<
                 })
                 .concat([
                   <BorderedRadio
+                    data-test="AddNewCard"
                     value="new"
                     key="new"
                     selected={creditCardSelection.type === "new"}
@@ -295,6 +296,7 @@ export class PaymentPicker extends React.Component<
                 <Checkbox
                   selected={this.state.hideBillingAddress}
                   onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                  data-test="BillingAndShippingAreTheSame"
                 >
                   Billing and shipping addresses are the same.
                 </Checkbox>
@@ -312,6 +314,7 @@ export class PaymentPicker extends React.Component<
               <Spacer mb={2} />
             </Collapse>
             <Checkbox
+              data-test="SaveNewCreditCard"
               selected={this.state.saveNewCreditCard}
               onSelect={() =>
                 this.setState({
