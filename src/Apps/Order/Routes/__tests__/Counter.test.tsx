@@ -65,6 +65,11 @@ describe("Submit Pending Counter Offer", () => {
     },
     defaultData: {
       order: testOrder,
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
     },
     TestPage: OrderAppTestPage,
   })

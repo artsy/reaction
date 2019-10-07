@@ -8,10 +8,11 @@ const DATE = "2018-12-03T13:50:31.641Z"
 const SUMMER_DATE = "2018-08-03T13:50:31.641Z"
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
-
 jest.mock("Utils/time")
+
 import { renderUntil } from "DevTools"
 import { getOffsetBetweenGravityClock } from "Utils/time"
+
 const mockGetOffsetBetweenGravityClock = getOffsetBetweenGravityClock as jest.Mock
 const realSetInterval = global.setInterval
 

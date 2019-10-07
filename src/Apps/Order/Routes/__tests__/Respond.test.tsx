@@ -96,6 +96,11 @@ describe("The respond page", () => {
     Component: RespondFragmentContainer,
     defaultData: {
       order: testOrder,
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
     },
     defaultMutationResults: {
       ...buyerCounterOfferSuccess,
