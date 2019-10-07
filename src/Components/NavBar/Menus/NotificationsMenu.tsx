@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
@@ -25,6 +25,7 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 export const NotificationMenuItems: React.FC<
   NotificationsMenuQueryResponse
@@ -95,19 +96,16 @@ export const NotificationMenuItems: React.FC<
  * individual MenuItems for display. During fetch there is a loading spinner.
  */
 export const NotificationsMenu: React.FC = () => {
-  const isClient = typeof window !== "undefined"
   return (
     <Menu title="Activity">
-      {isClient && (
-        <NotificationsQueryRenderer
-          render={renderWithLoadProgress(
-            NotificationMenuItems,
-            {},
-            {},
-            { size: "small" }
-          )}
-        />
-      )}
+      <NotificationsQueryRenderer
+        render={renderWithLoadProgress(
+          NotificationMenuItems,
+          {},
+          {},
+          { size: "small" }
+        )}
+      />
     </Menu>
   )
 }
@@ -123,7 +121,7 @@ export const NotificationsQueryRenderer: React.FC<{
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<NotificationsMenuQuery>
+    <SystemQueryRenderer<NotificationsMenuQuery>
       environment={relayEnvironment}
       query={graphql`
         query NotificationsMenuQuery {

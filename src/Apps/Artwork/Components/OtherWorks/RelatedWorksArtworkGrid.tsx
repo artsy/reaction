@@ -13,12 +13,8 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
-import {
-  createRefetchContainer,
-  graphql,
-  QueryRenderer,
-  RelayRefetchProp,
-} from "react-relay"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
 const logger = createLogger("RelatedWorksArtworkGrid.tsx")
@@ -173,7 +169,7 @@ export const RelatedWorksArtworkGridQueryRenderer: React.SFC<{
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<RelatedWorksArtworkGridQuery>
+    <SystemQueryRenderer<RelatedWorksArtworkGridQuery>
       environment={relayEnvironment}
       variables={{
         artworkSlug,

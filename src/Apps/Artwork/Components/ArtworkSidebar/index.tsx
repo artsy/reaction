@@ -2,7 +2,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { AuctionTimerFragmentContainer as AuctionTimer } from "Components/v2/AuctionTimer"
 import React, { Component, useContext } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
@@ -15,6 +15,7 @@ import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./Art
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 import { SystemContext } from "Artsy"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
@@ -89,7 +90,7 @@ export const ArtworkSidebarQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<ArtworkSidebarQuery>
+    <SystemQueryRenderer<ArtworkSidebarQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`

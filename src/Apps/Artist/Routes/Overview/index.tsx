@@ -136,7 +136,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
         {!hideMainOverviewSection && <Spacer mb={4} />}
 
-        <Box>{isClient && <ArtistCollectionsRail artistID={artist._id} />}</Box>
+        <Box>{<ArtistCollectionsRail artistID={artist._id} />}</Box>
 
         <Row>
           <Col>

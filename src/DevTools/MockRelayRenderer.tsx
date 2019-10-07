@@ -1,6 +1,7 @@
 import { SystemContextProvider } from "Artsy"
 import { SystemContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
 import { QueryRenderer, RelayContainer } from "react-relay"
@@ -219,7 +220,7 @@ export class MockRelayRenderer<
             {...contextProps}
             relayEnvironment={environment}
           >
-            <QueryRenderer
+            <SystemQueryRenderer
               // tslint:disable-next-line relay-operation-generics
               query={query}
               environment={environment}

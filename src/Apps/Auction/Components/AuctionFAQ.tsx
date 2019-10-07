@@ -3,9 +3,10 @@ import { AuctionFAQ_viewer } from "__generated__/AuctionFAQ_viewer.graphql"
 import { AuctionFAQQuery } from "__generated__/AuctionFAQQuery.graphql"
 import { useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React from "react"
 import Markdown from "react-markdown"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 interface AuctionFAQProps {
@@ -152,7 +153,7 @@ export const AuctionFAQFragmentContainer = createFragmentContainer(AuctionFAQ, {
 export const AuctionFAQQueryRenderer: React.SFC = () => {
   const { relayEnvironment } = useSystemContext()
   return (
-    <QueryRenderer<AuctionFAQQuery>
+    <SystemQueryRenderer<AuctionFAQQuery>
       environment={relayEnvironment}
       variables={{}}
       query={graphql`

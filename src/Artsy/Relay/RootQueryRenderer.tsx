@@ -5,8 +5,8 @@ import {
 } from "Artsy"
 import React from "react"
 import { GraphQLTaggedNode, ReadyState } from "react-relay"
-import { QueryRenderer } from "react-relay"
 import { CacheConfig, RerunParam, Variables } from "relay-runtime"
+import { SystemQueryRenderer } from "./SystemQueryRenderer"
 
 /**
  * A copy of the upstream interface, minus the `environment` field.
@@ -26,7 +26,7 @@ const Renderer: React.SFC<Props> = ({
   relayEnvironment,
   children,
   ...props
-}) => <QueryRenderer {...props} environment={relayEnvironment} />
+}) => <SystemQueryRenderer {...props} environment={relayEnvironment} />
 
 const RendererWithContext = withSystemContext(Renderer)
 

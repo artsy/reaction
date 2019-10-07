@@ -5,12 +5,12 @@ import {
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import * as React from "react"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  QueryRenderer,
   RelayProp,
 } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
@@ -204,7 +204,7 @@ const ArtistSearchResultsComponent: React.SFC<
   ContainerProps & SystemContextProps
 > = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
-    <QueryRenderer<ArtistSearchResultsQuery>
+    <SystemQueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {

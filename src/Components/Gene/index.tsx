@@ -1,9 +1,10 @@
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { GeneContentsArtistsQuery } from "__generated__/GeneContentsArtistsQuery.graphql"
 import { GeneContentsArtworksQuery } from "__generated__/GeneContentsArtworksQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 
@@ -125,7 +126,7 @@ class GeneContents extends React.Component<Props, State> {
   renderArtists() {
     const { geneID, relayEnvironment } = this.props
     return (
-      <QueryRenderer<GeneContentsArtistsQuery>
+      <SystemQueryRenderer<GeneContentsArtistsQuery>
         environment={relayEnvironment}
         query={graphql`
           query GeneContentsArtistsQuery($geneID: String!) {
@@ -156,7 +157,7 @@ class GeneContents extends React.Component<Props, State> {
     const { geneID, relayEnvironment } = this.props
     const { for_sale, medium, price_range, dimension_range, sort } = this.state
     return (
-      <QueryRenderer<GeneContentsArtworksQuery>
+      <SystemQueryRenderer<GeneContentsArtworksQuery>
         environment={relayEnvironment}
         query={graphql`
           query GeneContentsArtworksQuery(
