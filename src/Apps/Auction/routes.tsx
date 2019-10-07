@@ -24,7 +24,7 @@ export const routes: RouteConfig[] = [
     Component: AuctionFAQ,
   },
   {
-    path: "auction/:saleID/bid/:artworkID",
+    path: "auction/:saleID/bid2/:artworkID",
     Component: BidRouteFragmentContainer,
     render: ({ Component, props }) => {
       console.log("render:", props)
