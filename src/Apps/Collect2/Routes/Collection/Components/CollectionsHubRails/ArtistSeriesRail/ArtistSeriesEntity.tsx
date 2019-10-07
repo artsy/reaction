@@ -3,6 +3,7 @@ import { ArtistSeriesEntity_member } from "__generated__/ArtistSeriesEntity_memb
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
+import { Truncator } from "Components/Truncator"
 import currency from "currency.js"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -32,7 +33,6 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
     bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
 
   const { trackEvent } = useTracking()
-  const isMobileDevice = sd.IS_MOBILE
 
   const handleLinkClick = () => {
     trackEvent({
@@ -74,8 +74,8 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
             : headerImage && <ArtworkImage src={headerImage} width={221} />}
         </ImgWrapper>
         {
-          <CollectionTitle pt={1} pb={0.5} size="3" isMobile={isMobileDevice}>
-            {title}
+          <CollectionTitle pt={1} pb={0.5} size="3">
+            <Truncator maxLineCount={1}>{title}</Truncator>
           </CollectionTitle>
         }
         {price_guidance && (
@@ -130,11 +130,8 @@ const SingleImgContainer = styled(Box)`
   }
 `
 
-const CollectionTitle = styled(Serif)<{ isMobile: boolean }>`
-  width: ${props => (props.isMobile ? "220px" : "224px")};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const CollectionTitle = styled(Serif)`
+  width: 100%;
 `
 
 export const ImgWrapper = styled(Flex)`
