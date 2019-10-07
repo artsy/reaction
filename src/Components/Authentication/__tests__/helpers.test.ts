@@ -1,16 +1,15 @@
-import { metaphysics } from "Utils/metaphysics"
+import { fetchQuery } from "relay-runtime"
 import { checkEmail } from "../helpers"
 
-jest.mock("Utils/metaphysics", () => ({
-  metaphysics: jest.fn(),
-}))
+jest.mock("relay-runtime", () => ({ fetchQuery: jest.fn() }))
+const mockFetchQuery = fetchQuery as jest.Mock<any>
 
 describe("Authentication Helpers", () => {
   describe("checkEmail", () => {
     it("return true if it should exist and it does exist", done => {
-      ;(metaphysics as any).mockImplementationOnce(() =>
+      mockFetchQuery.mockImplementationOnce(() =>
         Promise.resolve({
-          data: { user: { userAlreadyExists: true } },
+          user: { userAlreadyExists: true },
         })
       )
       checkEmail({
@@ -22,6 +21,7 @@ describe("Authentication Helpers", () => {
           setSubmitting: jest.fn(),
         },
         shouldExist: true,
+        relayEnvironment: null,
       }).then(result => {
         expect(result).toBeTruthy()
         done()
@@ -29,9 +29,9 @@ describe("Authentication Helpers", () => {
     })
 
     it("return false if it should exist and it doesnt exist", done => {
-      ;(metaphysics as any).mockImplementationOnce(() =>
+      mockFetchQuery.mockImplementationOnce(() =>
         Promise.resolve({
-          data: { user: { userAlreadyExists: false } },
+          user: { userAlreadyExists: false },
         })
       )
       checkEmail({
@@ -43,6 +43,7 @@ describe("Authentication Helpers", () => {
           setSubmitting: jest.fn(),
         },
         shouldExist: true,
+        relayEnvironment: null,
       }).then(result => {
         expect(result).toBeFalsy()
         done()
@@ -50,9 +51,9 @@ describe("Authentication Helpers", () => {
     })
 
     it("return true if it shouldnt exist and it doesnt exist", done => {
-      ;(metaphysics as any).mockImplementationOnce(() =>
+      mockFetchQuery.mockImplementationOnce(() =>
         Promise.resolve({
-          data: { user: { userAlreadyExists: false } },
+          user: { userAlreadyExists: false },
         })
       )
       checkEmail({
@@ -64,6 +65,7 @@ describe("Authentication Helpers", () => {
           setSubmitting: jest.fn(),
         },
         shouldExist: false,
+        relayEnvironment: null,
       }).then(result => {
         expect(result).toBeTruthy()
         done()
@@ -71,9 +73,9 @@ describe("Authentication Helpers", () => {
     })
 
     it("return false if it shouldnt exist and it does exist", done => {
-      ;(metaphysics as any).mockImplementationOnce(() =>
+      mockFetchQuery.mockImplementationOnce(() =>
         Promise.resolve({
-          data: { user: { userAlreadyExists: true } },
+          user: { userAlreadyExists: true },
         })
       )
       checkEmail({
@@ -85,6 +87,7 @@ describe("Authentication Helpers", () => {
           setSubmitting: jest.fn(),
         },
         shouldExist: false,
+        relayEnvironment: null,
       }).then(result => {
         expect(result).toBeFalsy()
         done()

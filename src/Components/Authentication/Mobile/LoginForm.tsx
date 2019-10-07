@@ -1,4 +1,5 @@
 import { Flex } from "@artsy/palette"
+import { withSystemContext } from "Artsy"
 import { checkEmail } from "Components/Authentication/helpers"
 import Icon from "Components/Icon"
 import PasswordInput from "Components/PasswordInput"
@@ -7,6 +8,7 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
+import { Environment } from "relay-runtime"
 import { repcaptcha } from "Utils/repcaptcha"
 import {
   BackButton,
@@ -21,7 +23,11 @@ import {
 import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
-export class MobileLoginForm extends Component<FormProps> {
+class MobileLoginFormWithSystemContext extends Component<
+  FormProps & {
+    relayEnvironment: Environment
+  }
+> {
   showError = status => {
     const { error } = this.props
     if (error) {
@@ -45,7 +51,12 @@ export class MobileLoginForm extends Component<FormProps> {
       <Step
         validationSchema={MobileLoginValidator.email}
         onSubmit={(values, actions) =>
-          checkEmail({ values, actions, shouldExist: true })
+          checkEmail({
+            relayEnvironment: this.props.relayEnvironment,
+            values,
+            actions,
+            shouldExist: true,
+          })
         }
       >
         {({
@@ -152,3 +163,7 @@ export class MobileLoginForm extends Component<FormProps> {
     )
   }
 }
+
+export const MobileLoginForm = withSystemContext(
+  MobileLoginFormWithSystemContext
+)
