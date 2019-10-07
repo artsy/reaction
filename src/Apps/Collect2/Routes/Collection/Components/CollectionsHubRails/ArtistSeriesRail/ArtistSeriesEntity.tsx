@@ -3,6 +3,7 @@ import { ArtistSeriesEntity_member } from "__generated__/ArtistSeriesEntity_memb
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
+import { Truncator } from "Components/Truncator"
 import currency from "currency.js"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -44,6 +45,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
       item_number: itemNumber,
     })
   }
+
   return (
     <Container px={2} pt={2} pb={2} m={1}>
       <StyledLink to={`/collection/${slug}`} onClick={handleLinkClick}>
@@ -73,7 +75,7 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
         </ImgWrapper>
         {
           <CollectionTitle pt={1} pb={0.5} size="3">
-            {title}
+            <Truncator maxLineCount={1}>{title}</Truncator>
           </CollectionTitle>
         }
         {price_guidance && (

@@ -63,10 +63,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 
 const Container = styled(Box)`
   border-top: 1px solid ${color("black10")};
-`
-
-export const ArrowContainer = styled(Box)`
-  align-self: flex-start;
 
   ${ArrowButton} {
     height: 60%;
