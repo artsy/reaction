@@ -1,3 +1,15 @@
+# v21.1.1 (Mon Oct 07 2019)
+
+#### 🐛  Bug Fix
+
+- Collection hubs QA [#2874](https://github.com/artsy/reaction/pull/2874) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.1.0 (Mon Oct 07 2019)
 
 #### 🚀  Enhancement
