@@ -1,31 +1,40 @@
-import { Box, Flex, Image, Sans, Separator, Serif } from "@artsy/palette"
-import { Bid_artwork } from "__generated__/Bid_artwork.graphql"
-import { Bid_me } from "__generated__/Bid_me.graphql"
-import { Bid_sale } from "__generated__/Bid_sale.graphql"
-import { Bid_saleArtwork } from "__generated__/Bid_saleArtwork.graphql"
+import {
+  Box,
+  Button,
+  Flex,
+  Image,
+  LargeSelect,
+  Sans,
+  Separator,
+  Serif,
+} from "@artsy/palette"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import React from "react"
 import { Title } from "react-head"
-import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import { createFragmentContainer, RelayProp } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/Bid")
 
 interface BidProps {
-  sale: Bid_sale
-  me: Bid_me
-  artwork: Bid_artwork
-  saleArtwork: Bid_saleArtwork
+  artwork: any
+  me: any
   relay: RelayProp
   tracking: TrackingProp
 }
 
-export const BidRoute: React.FC<BidProps> = props => {
-  const { me, sale, artwork, saleArtwork } = props
+export const BidRoute: React.FC<BidProps> = track({
+  context_page: Schema.PageName.AuctionBidPage,
+})(props => {
+  console.log("BidRoute:", props)
+  const { me, artwork } = props
+  const { saleArtwork } = artwork
+  const { sale } = saleArtwork
   logger.log({
     me,
     sale,
@@ -56,70 +65,106 @@ export const BidRoute: React.FC<BidProps> = props => {
   //     bidder_id: bidderId,
   //     ...commonProperties,
   //   })
-  // }
+  //
+  // const bidCount = 12
+  const {
+    counts: { bidderPositions: bidCount },
+  } = saleArtwork
 
   return (
     <AppContainer>
       <Title>Auction Registration</Title>
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
-        <Serif size="10">Confirm your bid</Serif>
-        <Separator mt={1} mb={2} />
-        <Flex>
+        <Serif size="8">Confirm your bid</Serif>
+        <Separator />
+        <Flex py={4}>
           <Flex maxWidth="150px">
             <Image width="100%" src={artwork.imageUrl} />
           </Flex>
-          <Flex pl={3} flexDirection="column">
-            <Sans weight="medium" size="5t">
-              Lot {artwork.title}
+          <Flex pl={3} pt={1} flexDirection="column">
+            <Sans size="3" weight="medium" color="black100">
+              Lot {saleArtwork.lotLabel}
             </Sans>
-            <Sans size="5t">Foo</Sans>
+            <Serif size="3" color="black100">
+              <i>{artwork.title}</i>
+              {artwork.date && `, ${artwork.date}`}
+            </Serif>
+            <Serif size="3" color="black100">
+              {artwork.artistNames}
+            </Serif>
             <br />
-            <Sans size="5t">Foo</Sans>
+            <Serif size="3">
+              Current Bid: {saleArtwork.minimumNextBid.display}
+            </Serif>
+            {bidCount > 0 && (
+              <Serif size="3" color="black60">
+                ({bidCount} bid{bidCount > 1 && "s"})
+              </Serif>
+            )}
           </Flex>
+        </Flex>
+        <Separator />
+        <Flex flexDirection="column" py={4}>
+          <Serif pb={0.5} size="4t" weight="semibold" color="black100">
+            Set your max bid
+          </Serif>
+          <LargeSelect
+            options={[
+              { text: "1 hundred doll hairs", value: "100" },
+              { text: "1 million doll hairs", value: "100000000" },
+            ]}
+          />
+        </Flex>
+
+        <Separator />
+        <Flex
+          py={3}
+          flexDirection="column"
+          justifyContent="center"
+          width="100%"
+        >
+          <Box mx="auto" mb={3}>
+            <ConditionsOfSaleCheckbox />
+          </Box>
+          <Button block>Confirm bid</Button>
         </Flex>
       </Box>
     </AppContainer>
   )
-}
-
-const TrackingWrappedBidRoute: React.FC<BidProps> = props => {
-  const Component = track({
-    context_page: Schema.PageName.AuctionBidPage,
-  })(BidRoute)
-
-  return <Component {...props} />
-}
+})
 
 export const BidRouteFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(TrackingWrappedBidRoute),
-  {
-    artwork: graphql`
-      fragment Bid_artwork on Artwork {
-        _id
-        title
-        imageUrl
-      }
-    `,
-
-    sale: graphql`
-      fragment Bid_sale on Sale {
-        id
-        _id
-        status
-      }
-    `,
-
-    saleArtwork: graphql`
-      fragment Bid_saleArtwork on SaleArtwork {
-        id
-        lotLabel: lot_label
-      }
-    `,
-
-    me: graphql`
-      fragment Bid_me on Me {
-        id
-      }
-    `,
-  }
+  trackPageViewWrapper(BidRoute),
+  {}
 )
+//   {
+//     artwork: graphql`
+//       fragment Bid_artwork on Artwork {
+//         _id
+//         title
+//         imageUrl
+//       }
+//     `,
+
+//     sale: graphql`
+//       fragment Bid_sale on Sale {
+//         id
+//         _id
+//         status
+//       }
+//     `,
+
+//     saleArtwork: graphql`
+//       fragment Bid_saleArtwork on SaleArtwork {
+//         id
+//         lotLabel: lot_label
+//       }
+//     `,
+
+//     me: graphql`
+//       fragment Bid_me on Me {
+//         id
+//       }
+//     `,
+//   }
+// )

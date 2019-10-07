@@ -27,30 +27,46 @@ export const routes: RouteConfig[] = [
     path: "auction/:saleID/bid/:artworkID",
     Component: BidRouteFragmentContainer,
     render: ({ Component, props }) => {
-      console.log(props)
+      console.log("render:", props)
       if (Component && props) {
         const { artwork, me, location } = props as any
-        console.log({ artwork })
-        // TODO: Refine all logic here
         if (!artwork) {
           return <ErrorPage code={404} />
         }
-
-        const redirect = findRedirectBid(artwork.sale_artwork.sale, me)
-        handleRedirect(redirect, location)
-
+        handleRedirect(bidRedirect(artwork.saleArtwork.sale, me), location)
         return <Component {...props} />
       }
     },
     query: graphql`
       query routes_BidQuery($saleID: String!, $artworkID: String!) {
         artwork(id: $artworkID) {
-          ...Bid_artwork
-          sale_artwork(sale_id: $saleID) {
-            ...Bid_saleArtwork
+          _id
+          id
+          title
+          imageUrl
+          artistNames: artist_names
+
+          saleArtwork: sale_artwork(sale_id: $saleID) {
+            _id
+            id
+            counts {
+              bidderPositions: bidder_positions
+            }
+            lotLabel: lot_label
+            minimumNextBid: minimum_next_bid {
+              amount
+              cents
+              display
+            }
+            openingBid: opening_bid {
+              amount
+              cents
+              display
+            }
             sale {
+              _id
+              id
               name
-              ...Bid_sale
             }
           }
         }
@@ -63,7 +79,6 @@ export const routes: RouteConfig[] = [
               name
             }
           }
-          ...Bid_me
         }
       }
     `,
@@ -79,8 +94,7 @@ export const routes: RouteConfig[] = [
           return <ErrorPage code={404} />
         }
 
-        const redirect = findRedirectRegister(sale, me)
-        handleRedirect(redirect, location)
+        handleRedirect(registerRedirect(sale, me), location)
 
         return <Component {...props} />
       }
@@ -119,14 +133,14 @@ function handleRedirect(redirect: Redirect, location: Location) {
   }
 }
 
-function findRedirectBid(sale: Sale, me: Me): Redirect | null {
+function bidRedirect(sale: Sale, me: Me): Redirect | null {
   if (!(me as any).bidders[0].qualified_for_bidding) {
     throw new Error("ur not registerd (TODO)")
   }
   return null
 }
 
-function findRedirectRegister(sale: Sale, me: Me): Redirect | null {
+function registerRedirect(sale: Sale, me: Me): Redirect | null {
   let redirect = null
   if (me.has_qualified_credit_cards) {
     redirect = {
