@@ -47,20 +47,20 @@ it("formats the remaining time in '00d  00h  00m  00s'", () => {
 })
 
 it("counts down to zero", () => {
-  const timer = renderer.create(<Timer endDate="2018-05-14T10:23:10+00:00" />)
+  let timer = renderer.create(<Timer endDate="2018-05-14T10:23:10+00:00" />)
   expect(getTimerText(timer)).toMatch("03d")
   expect(getTimerText(timer)).toMatch("14h")
   expect(getTimerText(timer)).toMatch("00m")
   expect(getTimerText(timer)).toMatch("38s")
 
-  require("Utils/getCurrentTimeAsIsoString").__advance(2 * 1000)
+  timer = renderer.create(<Timer endDate="2018-05-14T10:23:08+00:00" />)
   jest.runOnlyPendingTimers()
   expect(getTimerText(timer)).toMatch("03d")
   expect(getTimerText(timer)).toMatch("14h")
   expect(getTimerText(timer)).toMatch("00m")
   expect(getTimerText(timer)).toMatch("36s")
 
-  require("Utils/getCurrentTimeAsIsoString").__advance(60 * 1000)
+  timer = renderer.create(<Timer endDate="2018-05-14T10:22:08+00:00" />)
   jest.runOnlyPendingTimers()
   expect(getTimerText(timer)).toMatch("03d")
   expect(getTimerText(timer)).toMatch("13h")

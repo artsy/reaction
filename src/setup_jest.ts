@@ -67,7 +67,19 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
     ;["error", "warn"].forEach((type: "error" | "warn") => {
       // Don't spy on loggers that have been modified by the current test.
       if (console[type] === originalLoggers[type]) {
-        const handler = (...args) => done.fail(logToError(type, args, handler))
+        const handler = (...args) => {
+          // FIXME: React 16.8.x doesn't support async `act` testing hooks and so this
+          // suppresses for now. Remove once we upgrade to React 16.9.
+          // @see https://github.com/facebook/react/issues/14769
+          if (
+            !args[0].includes(
+              "Warning: An update to %s inside a test was not wrapped in act"
+            )
+          ) {
+            done.fail(logToError(type, args, handler))
+          }
+        }
+
         jest.spyOn(console, type).mockImplementation(handler)
       }
     })

@@ -58,6 +58,11 @@ describe("Accept seller offer", () => {
     `,
     defaultData: {
       order: testOrder,
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
     },
     defaultMutationResults: {
       ...acceptOfferSuccess,

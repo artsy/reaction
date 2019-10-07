@@ -76,6 +76,11 @@ describe("Payment", () => {
     defaultData: {
       order: testOrder,
       me: { creditCards: { edges: [] } },
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
     },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
