@@ -84,8 +84,10 @@ export class AddressForm extends React.Component<
     )
   }
 
-  getPhoneNumberInputDescription = () => {
-    if (!(this.props.billing && this.props.showPhoneNumberInput)) {
+  phoneNumberInputDescription = (): string | null => {
+    if (this.props.billing && this.props.showPhoneNumberInput) {
+      return null
+    } else {
       return "Required for shipping logistics"
     }
   }
@@ -207,7 +209,7 @@ export class AddressForm extends React.Component<
               <Input
                 id="AddressForm_phoneNumber"
                 title="Phone number"
-                description={this.getPhoneNumberInputDescription()}
+                description={this.phoneNumberInputDescription()}
                 placeholder="Add phone"
                 pattern="[0-9]*"
                 value={this.props.value.phoneNumber}
