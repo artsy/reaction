@@ -2,7 +2,7 @@ import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_a
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
@@ -87,7 +87,7 @@ export const ArtworkImageBrowserQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<ArtworkImageBrowserQuery>
+    <QueryRenderer<ArtworkImageBrowserQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`

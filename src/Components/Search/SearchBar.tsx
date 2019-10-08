@@ -4,7 +4,7 @@ import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graph
 import { SystemContext, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import colors from "Assets/Colors"
 import {
   FirstSuggestionItem,
@@ -419,7 +419,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
 export const SearchBarQueryRenderer: React.FC = () => {
   const { relayEnvironment, searchQuery = "" } = useContext(SystemContext)
   return (
-    <SystemQueryRenderer<SearchBarSuggestQuery>
+    <QueryRenderer<SearchBarSuggestQuery>
       environment={relayEnvironment}
       query={graphql`
         query SearchBarSuggestQuery($term: String!, $hasTerm: Boolean!) {

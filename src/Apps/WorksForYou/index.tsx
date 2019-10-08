@@ -4,7 +4,7 @@ import { WorksForYouQuery } from "__generated__/WorksForYouQuery.graphql"
 import { MarketingHeader } from "Apps/WorksForYou/MarketingHeader"
 import { SystemContextConsumer, SystemContextProps } from "Artsy"
 import { track } from "Artsy/Analytics"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { Component } from "react"
 import { graphql } from "react-relay"
 import styled from "styled-components"
@@ -39,7 +39,7 @@ export class WorksForYou extends Component<Props> {
               <>
                 <MarketingHeader />
 
-                <SystemQueryRenderer<WorksForYouQuery>
+                <QueryRenderer<WorksForYouQuery>
                   environment={relayEnvironment}
                   query={graphql`
                     query WorksForYouQuery(

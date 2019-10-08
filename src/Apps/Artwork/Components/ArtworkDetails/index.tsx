@@ -14,7 +14,7 @@ import { ArtworkDetailsQuery } from "__generated__/ArtworkDetailsQuery.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import Events from "Utils/Events"
 
 export interface ArtworkDetailsProps {
@@ -115,7 +115,7 @@ export const ArtworkDetailsQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<ArtworkDetailsQuery>
+    <QueryRenderer<ArtworkDetailsQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`

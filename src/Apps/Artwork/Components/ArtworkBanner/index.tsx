@@ -2,7 +2,7 @@ import { ArtworkBanner_artwork } from "__generated__/ArtworkBanner_artwork.graph
 import { ArtworkBannerQuery } from "__generated__/ArtworkBannerQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -196,7 +196,7 @@ export const ArtworkBannerQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<ArtworkBannerQuery>
+    <QueryRenderer<ArtworkBannerQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`

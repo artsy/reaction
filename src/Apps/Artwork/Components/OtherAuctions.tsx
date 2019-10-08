@@ -3,7 +3,7 @@ import { OtherAuctions_sales } from "__generated__/OtherAuctions_sales.graphql"
 import { OtherAuctionsQuery } from "__generated__/OtherAuctionsQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { AuctionCardFragmentContainer as AuctionCard } from "Components/v2/AuctionCard"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -45,7 +45,7 @@ export const OtherAuctionsQueryRenderer = () => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<OtherAuctionsQuery>
+    <QueryRenderer<OtherAuctionsQuery>
       environment={relayEnvironment}
       variables={{ size: 4, sort: "TIMELY_AT_NAME_ASC" }}
       query={graphql`

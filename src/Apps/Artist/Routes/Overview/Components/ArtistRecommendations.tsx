@@ -3,7 +3,7 @@ import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendation
 import { ArtistRecommendationsRendererQuery } from "__generated__/ArtistRecommendationsRendererQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext, useState } from "react"
 import {
   createPaginationContainer,
@@ -151,7 +151,7 @@ export const ArtistRecommendationsQueryRenderer: React.FC<{
 }> = ({ artistID }) => {
   const { relayEnvironment } = useContext(SystemContext)
   return (
-    <SystemQueryRenderer<ArtistRecommendationsRendererQuery>
+    <QueryRenderer<ArtistRecommendationsRendererQuery>
       environment={relayEnvironment}
       query={graphql`
         query ArtistRecommendationsRendererQuery($artistID: String!) {

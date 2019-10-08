@@ -2,7 +2,7 @@ import { Theme } from "@artsy/palette"
 import { CollectionsHubsHomepageNavQuery } from "__generated__/CollectionsHubsHomepageNavQuery.graphql"
 import { useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -21,7 +21,7 @@ const CollectionsHubsHomepageNavQueryRenderer = () => {
   const { relayEnvironment } = useSystemContext()
 
   return (
-    <SystemQueryRenderer<CollectionsHubsHomepageNavQuery>
+    <QueryRenderer<CollectionsHubsHomepageNavQuery>
       environment={relayEnvironment}
       variables={{}}
       query={graphql`

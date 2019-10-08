@@ -5,7 +5,7 @@ import {
 } from "__generated__/SuggestedGenesFollowGeneMutation.graphql"
 import { SuggestedGenesQuery } from "__generated__/SuggestedGenesQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import * as React from "react"
 import {
   commitMutation,
@@ -167,7 +167,7 @@ const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
   updateFollowCount,
 }) => {
   return (
-    <SystemQueryRenderer<SuggestedGenesQuery>
+    <QueryRenderer<SuggestedGenesQuery>
       environment={relayEnvironment}
       query={graphql`
         query SuggestedGenesQuery {

@@ -1,7 +1,7 @@
 import { OtherAuctionsStoryQuery } from "__generated__/OtherAuctionsStoryQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -12,7 +12,7 @@ const OtherAuctions = ({ size }: { size?: number }) => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<OtherAuctionsStoryQuery>
+    <QueryRenderer<OtherAuctionsStoryQuery>
       environment={relayEnvironment}
       query={graphql`
         query OtherAuctionsStoryQuery($size: Int!) {
