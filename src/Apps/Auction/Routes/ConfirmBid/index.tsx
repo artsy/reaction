@@ -8,7 +8,7 @@ import { Title } from "react-head"
 import { createFragmentContainer, RelayProp } from "react-relay"
 import createLogger from "Utils/logger"
 
-const logger = createLogger("Apps/Auction/Routes/Bid")
+const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
 interface BidProps {
   artwork: any
@@ -16,7 +16,7 @@ interface BidProps {
   relay: RelayProp
 }
 
-export const BidRoute: React.FC<BidProps> = props => {
+export const ConfirmBidRoute: React.FC<BidProps> = props => {
   const { me, artwork } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
@@ -38,8 +38,6 @@ export const BidRoute: React.FC<BidProps> = props => {
         <BidForm
           saleArtwork={saleArtwork}
           onSubmit={(values, actions) => {
-            alert(Object.keys(values))
-            alert(Object.keys(actions))
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2))
               actions.setSubmitting(false)
@@ -51,7 +49,7 @@ export const BidRoute: React.FC<BidProps> = props => {
   )
 }
 
-export const BidRouteFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(BidRoute),
+export const ConfirmBidRouteFragmentContainer = createFragmentContainer(
+  trackPageViewWrapper(ConfirmBidRoute),
   {}
 )

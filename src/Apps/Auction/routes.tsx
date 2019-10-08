@@ -5,7 +5,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
 import { AuctionFAQQueryRenderer as AuctionFAQ } from "./Components/AuctionFAQ"
-import { BidRouteFragmentContainer } from "./Routes/Bid"
+import { ConfirmBidRouteFragmentContainer as ConfirmBidRoute } from "./Routes/ConfirmBid"
 import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
@@ -25,7 +25,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "auction/:saleID/bid(2)?/:artworkID",
-    Component: BidRouteFragmentContainer,
+    Component: ConfirmBidRoute,
     render: ({ Component, props }) => {
       if (Component && props) {
         const { artwork, me, location } = props as any

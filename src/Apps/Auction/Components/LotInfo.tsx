@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const LotInfo: React.FC<Props> = ({ artwork, saleArtwork }) => {
-  console.log(artwork, saleArtwork)
   const {
     counts: { bidderPositions: bidCount },
   } = saleArtwork
