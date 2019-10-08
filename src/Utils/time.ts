@@ -20,12 +20,12 @@ export async function getOffsetBetweenGravityClock(
   `
 
   const fetchSystemTime = () => {
-    return fetchQuery<{ data: timeQueryResponse }>(relayEnvironment, query, {})
+    return fetchQuery<timeQueryResponse>(relayEnvironment, query, {})
   }
 
   const getGravityTimestampInMilliSeconds = async () => {
     const startTime = getLocalTimestampInMilliSeconds()
-    const { data } = await fetchSystemTime()
+    const data = await fetchSystemTime()
 
     const possibleNetworkLatencyInMilliSeconds =
       (getLocalTimestampInMilliSeconds() - startTime) / 2

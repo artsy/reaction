@@ -4,6 +4,7 @@ import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import Events from "Utils/Events"
 
+import { SystemContextProvider } from "Artsy"
 import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
 import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
 import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
@@ -173,34 +174,36 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
 
     return (
-      <Theme>
-        <Form
-          title={title}
-          contextModule={options.contextModule}
-          error={error}
-          values={defaultValues}
-          handleTypeChange={this.handleTypeChange}
-          handleSubmit={handleSubmit}
-          intent={options.intent}
-          onBackButtonClicked={onBackButtonClicked}
-          onFacebookLogin={() => {
-            if (this.props.onSocialAuthEvent) {
-              this.props.onSocialAuthEvent({
-                ...options,
-                service: "facebook",
-              })
-            }
+      <SystemContextProvider>
+        <Theme>
+          <Form
+            title={title}
+            contextModule={options.contextModule}
+            error={error}
+            values={defaultValues}
+            handleTypeChange={this.handleTypeChange}
+            handleSubmit={handleSubmit}
+            intent={options.intent}
+            onBackButtonClicked={onBackButtonClicked}
+            onFacebookLogin={() => {
+              if (this.props.onSocialAuthEvent) {
+                this.props.onSocialAuthEvent({
+                  ...options,
+                  service: "facebook",
+                })
+              }
 
-            if (typeof window !== "undefined") {
-              window.location.href =
-                this.props.submitUrls.facebook +
-                `?${authQueryData}` +
-                "&service=facebook"
-            }
-          }}
-          showRecaptchaDisclaimer={showRecaptchaDisclaimer}
-        />
-      </Theme>
+              if (typeof window !== "undefined") {
+                window.location.href =
+                  this.props.submitUrls.facebook +
+                  `?${authQueryData}` +
+                  "&service=facebook"
+              }
+            }}
+            showRecaptchaDisclaimer={showRecaptchaDisclaimer}
+          />
+        </Theme>
+      </SystemContextProvider>
     )
   }
 }

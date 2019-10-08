@@ -1,3 +1,4 @@
+import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -24,6 +25,7 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
+import { Environment } from "relay-runtime"
 import { repcaptcha } from "Utils/repcaptcha"
 
 export interface MobileSignUpFormState {
@@ -36,8 +38,10 @@ export const currentStepActionName = {
 }
 
 @track()
-export class MobileSignUpForm extends Component<
-  FormProps,
+class TrackedMobileSignUpForm extends Component<
+  FormProps & {
+    relayEnvironment: Environment
+  },
   MobileSignUpFormState
 > {
   state = {
@@ -84,7 +88,12 @@ export class MobileSignUpForm extends Component<
       <Step
         validationSchema={MobileSignUpValidator.email}
         onSubmit={(values, actions) =>
-          checkEmail({ values, actions, shouldExist: false })
+          checkEmail({
+            relayEnvironment: this.props.relayEnvironment,
+            values,
+            actions,
+            shouldExist: false,
+          })
         }
       >
         {({
@@ -241,3 +250,5 @@ export class MobileSignUpForm extends Component<
     )
   }
 }
+
+export const MobileSignUpForm = withSystemContext(TrackedMobileSignUpForm)

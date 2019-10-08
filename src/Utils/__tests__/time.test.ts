@@ -16,11 +16,9 @@ it("returns an offset between current time and system time", async () => {
   // Set up a situation where the client's clock is ahead of Gravity's clock by 10 minutes.
   mockFetchQuery.mockReturnValueOnce(
     Promise.resolve({
-      data: {
-        system: {
-          time: {
-            unix: (dateNow - 10 * MINUTES) * 1e-3,
-          },
+      system: {
+        time: {
+          unix: (dateNow - 10 * MINUTES) * 1e-3,
         },
       },
     })
