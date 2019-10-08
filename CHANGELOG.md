@@ -1,3 +1,15 @@
+# v21.6.1 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Alias SystemQueryRenderer as QueryRenderer for linting [#2890](https://github.com/artsy/reaction/pull/2890) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.6.0 (Tue Oct 08 2019)
 
 #### 🚀  Enhancement
