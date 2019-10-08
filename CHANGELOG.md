@@ -1,3 +1,15 @@
+# v21.5.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Confirm Bid Page Layout [#2875](https://github.com/artsy/reaction/pull/2875) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.4.0 (Tue Oct 08 2019)
 
 #### 🚀  Enhancement
