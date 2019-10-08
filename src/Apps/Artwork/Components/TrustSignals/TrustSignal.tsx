@@ -14,7 +14,7 @@ export const TrustSignal: FC<TrustSignalProps> = ({
 }) => (
   <Flex>
     {Icon}
-    <Flex>
+    <Flex flexDirection="column" ml={1}>
       <Sans size="2" weight="medium" color="black100">
         {label}
       </Sans>
