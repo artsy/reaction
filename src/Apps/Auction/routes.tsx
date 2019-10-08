@@ -27,7 +27,6 @@ export const routes: RouteConfig[] = [
     path: "auction/:saleID/bid2/:artworkID",
     Component: BidRouteFragmentContainer,
     render: ({ Component, props }) => {
-      console.log("render:", props)
       if (Component && props) {
         const { artwork, me, location } = props as any
         if (!artwork) {
@@ -40,29 +39,14 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_BidQuery($saleID: String!, $artworkID: String!) {
         artwork(id: $artworkID) {
+          ...LotInfo_artwork
           _id
           id
-          title
-          imageUrl
-          artistNames: artist_names
-
           saleArtwork: sale_artwork(sale_id: $saleID) {
+            ...LotInfo_saleArtwork
+            ...BidForm_saleArtwork
             _id
             id
-            counts {
-              bidderPositions: bidder_positions
-            }
-            lotLabel: lot_label
-            minimumNextBid: minimum_next_bid {
-              amount
-              cents
-              display
-            }
-            openingBid: opening_bid {
-              amount
-              cents
-              display
-            }
             sale {
               _id
               id

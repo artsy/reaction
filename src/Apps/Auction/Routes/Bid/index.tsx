@@ -1,18 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  LargeSelect,
-  Sans,
-  Separator,
-  Serif,
-} from "@artsy/palette"
+import { Box, Separator, Serif } from "@artsy/palette"
+import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/BidForm"
+import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import React from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, RelayProp } from "react-relay"
@@ -41,67 +33,25 @@ export const BidRoute: React.FC<BidProps> = track({
     saleArtwork,
   })
 
-  const {
-    counts: { bidderPositions: bidCount },
-  } = saleArtwork
-
   return (
     <AppContainer>
       <Title>Auction Registration</Title>
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="8">Confirm your bid</Serif>
         <Separator />
-        <Flex py={4}>
-          <Flex maxWidth="150px">
-            <Image width="100%" src={artwork.imageUrl} />
-          </Flex>
-          <Flex pl={3} pt={1} flexDirection="column">
-            <Sans size="3" weight="medium" color="black100">
-              Lot {saleArtwork.lotLabel}
-            </Sans>
-            <Serif size="3" color="black100">
-              <i>{artwork.title}</i>
-              {artwork.date && `, ${artwork.date}`}
-            </Serif>
-            <Serif size="3" color="black100">
-              {artwork.artistNames}
-            </Serif>
-            <br />
-            <Serif size="3">
-              Current Bid: {saleArtwork.minimumNextBid.display}
-            </Serif>
-            {bidCount > 0 && (
-              <Serif size="3" color="black60">
-                ({bidCount} bid{bidCount > 1 && "s"})
-              </Serif>
-            )}
-          </Flex>
-        </Flex>
+        <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
         <Separator />
-        <Flex flexDirection="column" py={4}>
-          <Serif pb={0.5} size="4t" weight="semibold" color="black100">
-            Set your max bid
-          </Serif>
-          <LargeSelect
-            options={[
-              { text: "1 hundred doll hairs", value: "100" },
-              { text: "1 million doll hairs", value: "100000000" },
-            ]}
-          />
-        </Flex>
-
-        <Separator />
-        <Flex
-          py={3}
-          flexDirection="column"
-          justifyContent="center"
-          width="100%"
-        >
-          <Box mx="auto" mb={3}>
-            <ConditionsOfSaleCheckbox />
-          </Box>
-          <Button block>Confirm bid</Button>
-        </Flex>
+        <BidForm
+          saleArtwork={saleArtwork}
+          onSubmit={(values, actions) => {
+            alert(Object.keys(values))
+            alert(Object.keys(actions))
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2))
+              actions.setSubmitting(false)
+            }, 2000)
+          }}
+        />
       </Box>
     </AppContainer>
   )
@@ -111,34 +61,3 @@ export const BidRouteFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(BidRoute),
   {}
 )
-//   {
-//     artwork: graphql`
-//       fragment Bid_artwork on Artwork {
-//         _id
-//         title
-//         imageUrl
-//       }
-//     `,
-
-//     sale: graphql`
-//       fragment Bid_sale on Sale {
-//         id
-//         _id
-//         status
-//       }
-//     `,
-
-//     saleArtwork: graphql`
-//       fragment Bid_saleArtwork on SaleArtwork {
-//         id
-//         lotLabel: lot_label
-//       }
-//     `,
-
-//     me: graphql`
-//       fragment Bid_me on Me {
-//         id
-//       }
-//     `,
-//   }
-// )
