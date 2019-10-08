@@ -1,3 +1,16 @@
+# v21.4.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Clarify phone number description logic [#2847](https://github.com/artsy/reaction/pull/2847) ([@dblandin](https://github.com/dblandin))
+- Consolidate payment form components [#2847](https://github.com/artsy/reaction/pull/2847) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v21.3.0 (Tue Oct 08 2019)
 
 #### 🚀  Enhancement
