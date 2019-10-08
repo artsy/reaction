@@ -1,3 +1,15 @@
+# v21.6.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- @damassi => [Artist] Port meta tags and structured data from Force [#2888](https://github.com/artsy/reaction/pull/2888) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v21.5.0 (Tue Oct 08 2019)
 
 #### 🚀  Enhancement
