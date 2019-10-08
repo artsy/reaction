@@ -12,6 +12,7 @@ import { FeaturedCollectionsRails_collectionGroup } from "__generated__/Featured
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
+import { Truncator } from "Components/Truncator"
 import { ArrowButton, Carousel } from "Components/v2"
 import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -98,7 +99,6 @@ export const FeaturedCollectionEntity: React.FC<
 > = ({ itemNumber, member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
-  const hasLongTitle = title.length > 31
 
   const handleClick = () => {
     trackEvent({
@@ -112,22 +112,6 @@ export const FeaturedCollectionEntity: React.FC<
     })
   }
 
-  const renderReadMore = (isSmallerScreen: boolean) => {
-    return (
-      <ReadMore
-        disabled
-        maxChars={hasLongTitle && isSmallerScreen ? 50 : 100}
-        content={
-          <>
-            {description && (
-              <span dangerouslySetInnerHTML={{ __html: description }} />
-            )}
-          </>
-        }
-      />
-    )
-  }
-
   return (
     <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
@@ -135,14 +119,23 @@ export const FeaturedCollectionEntity: React.FC<
           <FeaturedImage src={thumbnail} />
         </Flex>
         <Serif size="4" mt={1} maxWidth={["246px", "100%"]}>
-          {title}
+          <Truncator maxLineCount={1}>{title}</Truncator>
         </Serif>
         {price_guidance && (
           <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
         )}
         <ExtendedSerif size="3" mt={1}>
-          <Media lessThan="md">{renderReadMore(true)}</Media>
-          <Media greaterThan="sm">{renderReadMore(false)}</Media>
+          <ReadMore
+            disabled
+            maxChars={110}
+            content={
+              <>
+                {description && (
+                  <span dangerouslySetInnerHTML={{ __html: description }} />
+                )}
+              </>
+            }
+          />
         </ExtendedSerif>
       </StyledLink>
     </Container>
