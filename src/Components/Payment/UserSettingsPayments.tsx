@@ -5,7 +5,7 @@ import { SystemContext, SystemContextProps } from "Artsy"
 import { get } from "Utils/get"
 
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { PaymentFormWrapper } from "./PaymentFormWrapper"
@@ -96,7 +96,7 @@ export const UserSettingsPaymentsQueryRenderer = () => {
   }
 
   return (
-    <SystemQueryRenderer<UserSettingsPaymentsQuery>
+    <QueryRenderer<UserSettingsPaymentsQuery>
       environment={relayEnvironment}
       variables={{}}
       query={graphql`

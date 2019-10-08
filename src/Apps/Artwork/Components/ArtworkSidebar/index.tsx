@@ -15,7 +15,7 @@ import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./Art
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 import { SystemContext } from "Artsy"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
@@ -90,7 +90,7 @@ export const ArtworkSidebarQueryRenderer = ({
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<ArtworkSidebarQuery>
+    <QueryRenderer<ArtworkSidebarQuery>
       environment={relayEnvironment}
       variables={{ artworkID }}
       query={graphql`

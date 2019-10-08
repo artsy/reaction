@@ -1,7 +1,7 @@
 import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -13,7 +13,7 @@ export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<OtherWorksQuery>
+    <QueryRenderer<OtherWorksQuery>
       environment={relayEnvironment}
       variables={{ artworkSlug }}
       query={graphql`

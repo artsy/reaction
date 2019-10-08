@@ -5,7 +5,7 @@ import {
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import * as React from "react"
 import {
   commitMutation,
@@ -204,7 +204,7 @@ const ArtistSearchResultsComponent: React.SFC<
   ContainerProps & SystemContextProps
 > = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
-    <SystemQueryRenderer<ArtistSearchResultsQuery>
+    <QueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}
       query={graphql`
         query ArtistSearchResultsQuery($term: String!) {

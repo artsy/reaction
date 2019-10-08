@@ -5,7 +5,7 @@ import { SystemContext, SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import React, { useContext } from "react"
@@ -130,7 +130,7 @@ export const RecentlyViewedQueryRenderer = () => {
     return null
   }
   return (
-    <SystemQueryRenderer<RecentlyViewedQuery>
+    <QueryRenderer<RecentlyViewedQuery>
       environment={relayEnvironment}
       variables={{}}
       query={graphql`

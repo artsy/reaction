@@ -36,7 +36,7 @@ import {
 } from "@artsy/palette"
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
 import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -337,7 +337,7 @@ export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
         keyword,
       }}
     >
-      <SystemQueryRenderer<ArtworkFilterQueryType>
+      <QueryRenderer<ArtworkFilterQueryType>
         environment={relayEnvironment}
         // FIXME: Passing a variable to `query` shouldn't error out in linter
         /* tslint:disable:relay-operation-generics */

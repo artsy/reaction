@@ -3,7 +3,7 @@ import { graphql } from "react-relay"
 
 import { TagContentsArtworksQuery } from "__generated__/TagContentsArtworksQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {
@@ -100,7 +100,7 @@ class TagContents extends React.Component<Props, State> {
     const { tagID, relayEnvironment } = this.props
     const { for_sale, medium, price_range, dimension_range, sort } = this.state
     return (
-      <SystemQueryRenderer<TagContentsArtworksQuery>
+      <QueryRenderer<TagContentsArtworksQuery>
         environment={relayEnvironment}
         query={graphql`
           query TagContentsArtworksQuery(

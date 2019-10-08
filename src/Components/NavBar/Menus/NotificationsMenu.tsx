@@ -25,7 +25,7 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 export const NotificationMenuItems: React.FC<
   NotificationsMenuQueryResponse
@@ -121,7 +121,7 @@ export const NotificationsQueryRenderer: React.FC<{
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <SystemQueryRenderer<NotificationsMenuQuery>
+    <QueryRenderer<NotificationsMenuQuery>
       environment={relayEnvironment}
       query={graphql`
         query NotificationsMenuQuery {

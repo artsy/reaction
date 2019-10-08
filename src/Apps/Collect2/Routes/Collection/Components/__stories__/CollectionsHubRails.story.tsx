@@ -1,6 +1,6 @@
 import { Box } from "@artsy/palette"
 import { SystemContext } from "Artsy"
-import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
 import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
@@ -33,7 +33,7 @@ export const CollectionHubRailsQueryRenderer: React.FC<Props> = ({
   if (relayEnvironment) {
     return (
       // tslint:disable-next-line:relay-operation-generics
-      <SystemQueryRenderer
+      <QueryRenderer
         environment={relayEnvironment}
         variables={{
           collectionID,
