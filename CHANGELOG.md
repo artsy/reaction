@@ -1,3 +1,15 @@
+# v21.3.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Truncate long titles featured collection entity titles [#2886](https://github.com/artsy/reaction/pull/2886) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.2.2 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
