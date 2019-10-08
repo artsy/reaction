@@ -16,7 +16,7 @@ storiesOf("Apps/Auction/Routes", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/shared-live-mocktion-k8s/bid/karen-halverson-painting?bid=65000"
+        initialRoute="/auction/shared-live-mocktion-k8s/bid2/karen-halverson-painting?bid=65000"
       />
     )
   })

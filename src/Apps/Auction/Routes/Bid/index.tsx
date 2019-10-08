@@ -31,7 +31,6 @@ interface BidProps {
 export const BidRoute: React.FC<BidProps> = track({
   context_page: Schema.PageName.AuctionBidPage,
 })(props => {
-  console.log("BidRoute:", props)
   const { me, artwork } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
@@ -42,31 +41,6 @@ export const BidRoute: React.FC<BidProps> = track({
     saleArtwork,
   })
 
-  // TODO: tracking
-  // const commonProperties = {
-  //   auction_slug: sale.id,
-  //   auction_state: sale.status,
-  //   sale_id: sale._id,
-  //   artwork_id: artwork._id,
-  //   user_id: me.id,
-  // }
-
-  // function trackBidFailed(errors: string[]) {
-  //   tracking.trackEvent({
-  //     action_type: Schema.ActionType.RegistrationSubmitFailed,
-  //     error_messages: errors,
-  //     ...commonProperties,
-  //   })
-  // }
-
-  // function trackBidSuccess(bidderId: string) {
-  //   tracking.trackEvent({
-  //     action_type: Schema.ActionType.RegistrationSubmitted,
-  //     bidder_id: bidderId,
-  //     ...commonProperties,
-  //   })
-  //
-  // const bidCount = 12
   const {
     counts: { bidderPositions: bidCount },
   } = saleArtwork

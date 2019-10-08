@@ -133,9 +133,19 @@ function handleRedirect(redirect: Redirect, location: Location) {
   }
 }
 
+// (TODO) Clarify redirect logic
 function bidRedirect(sale: Sale, me: Me): Redirect | null {
-  if (!(me as any).bidders[0].qualified_for_bidding) {
-    throw new Error("ur not registerd (TODO)")
+  const bidder = (me as any).bidders[0]
+  if (!bidder)
+    return {
+      path: `/auction/${sale.id}/registration-flow`,
+      reason: "user is not registered to bid",
+    }
+  if (!bidder.qualified_for_bidding) {
+    return {
+      path: `/auction/${sale.id}`,
+      reason: "user is not qualified for bidding",
+    }
   }
   return null
 }
