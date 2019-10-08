@@ -1,3 +1,15 @@
+# v21.2.2 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Replace mobile LoginForm `metaphysics` calls with `fetchQuery` [#2887](https://github.com/artsy/reaction/pull/2887) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.2.1 (Mon Oct 07 2019)
 
 #### 🐛  Bug Fix
