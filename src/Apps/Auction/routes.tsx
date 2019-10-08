@@ -5,6 +5,7 @@ import React from "react"
 import { graphql } from "react-relay"
 import createLogger from "Utils/logger"
 import { AuctionFAQQueryRenderer as AuctionFAQ } from "./Components/AuctionFAQ"
+import { ConfirmBidRouteFragmentContainer as ConfirmBidRoute } from "./Routes/ConfirmBid"
 import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
@@ -23,6 +24,50 @@ export const routes: RouteConfig[] = [
     Component: AuctionFAQ,
   },
   {
+    path: "auction/:saleID/bid(2)?/:artworkID",
+    Component: ConfirmBidRoute,
+    render: ({ Component, props }) => {
+      if (Component && props) {
+        const { artwork, me, location } = props as any
+        if (!artwork) {
+          return <ErrorPage code={404} />
+        }
+        handleRedirect(bidRedirect(artwork.saleArtwork.sale, me), location)
+        return <Component {...props} />
+      }
+    },
+    query: graphql`
+      query routes_BidQuery($saleID: String!, $artworkID: String!) {
+        artwork(id: $artworkID) {
+          ...LotInfo_artwork
+          _id
+          id
+          saleArtwork: sale_artwork(sale_id: $saleID) {
+            ...LotInfo_saleArtwork
+            ...BidForm_saleArtwork
+            _id
+            id
+            sale {
+              _id
+              id
+              name
+            }
+          }
+        }
+        me {
+          has_qualified_credit_cards
+          # Pretty sure entire query will fail if the user is not registered
+          bidders(sale_id: $saleID) {
+            qualified_for_bidding
+            sale {
+              name
+            }
+          }
+        }
+      }
+    `,
+  },
+  {
     path: "/auction-registration(2)?/:saleID",
     Component: RegisterRouteFragmentContainer,
     render: ({ Component, props }) => {
@@ -33,16 +78,7 @@ export const routes: RouteConfig[] = [
           return <ErrorPage code={404} />
         }
 
-        const redirect = findRedirect(sale, me)
-
-        if (redirect) {
-          logger.warn(
-            `Redirecting from ${location.pathname} to ${
-              redirect.path
-            } because '${redirect.reason}'`
-          )
-          throw new RedirectException(redirect.path)
-        }
+        handleRedirect(registerRedirect(sale, me), location)
 
         return <Component {...props} />
       }
@@ -70,7 +106,35 @@ export const routes: RouteConfig[] = [
   },
 ]
 
-function findRedirect(sale: Sale, me: Me): Redirect | null {
+function handleRedirect(redirect: Redirect, location: Location) {
+  if (redirect) {
+    logger.warn(
+      `Redirecting from ${location.pathname} to ${redirect.path} because '${
+        redirect.reason
+      }'`
+    )
+    throw new RedirectException(redirect.path)
+  }
+}
+
+// (TODO) Clarify redirect logic
+function bidRedirect(sale: Sale, me: Me): Redirect | null {
+  const bidder = (me as any).bidders[0]
+  if (!bidder)
+    return {
+      path: `/auction/${sale.id}/registration-flow`,
+      reason: "user is not registered to bid",
+    }
+  if (!bidder.qualified_for_bidding) {
+    return {
+      path: `/auction/${sale.id}`,
+      reason: "user is not qualified for bidding",
+    }
+  }
+  return null
+}
+
+function registerRedirect(sale: Sale, me: Me): Redirect | null {
   let redirect = null
   if (me.has_qualified_credit_cards) {
     redirect = {
