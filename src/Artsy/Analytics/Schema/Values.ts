@@ -6,7 +6,6 @@ export enum PageName {
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
   AuctionRegistrationPage = "Auction Registration page",
-  AuctionBidPage = "Auction Bid page (TODO)",
   CollectPage = "Collect page",
   CollectionPage = "Collection",
   SearchPage = "Search page",

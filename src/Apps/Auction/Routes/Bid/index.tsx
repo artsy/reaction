@@ -3,12 +3,9 @@ import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/Bid
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { track } from "Artsy"
-import * as Schema from "Artsy/Analytics/Schema"
 import React from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, RelayProp } from "react-relay"
-import { TrackingProp } from "react-tracking"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/Bid")
@@ -17,12 +14,9 @@ interface BidProps {
   artwork: any
   me: any
   relay: RelayProp
-  tracking: TrackingProp
 }
 
-export const BidRoute: React.FC<BidProps> = track({
-  context_page: Schema.PageName.AuctionBidPage,
-})(props => {
+export const BidRoute: React.FC<BidProps> = props => {
   const { me, artwork } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
@@ -55,7 +49,7 @@ export const BidRoute: React.FC<BidProps> = track({
       </Box>
     </AppContainer>
   )
-})
+}
 
 export const BidRouteFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(BidRoute),
