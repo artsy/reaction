@@ -39,7 +39,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
     const artworks = artworks_connection.edges.map(({ node }) => node)
     const formattedTitle = (title && title.split(": ")[1]) || title
     const bgImages = compact(
-      artworks.map(({ image }) => image && image.resized.url)
+      artworks.map(({ image }) => image && image.resized && image.resized.url)
     )
     const imageSize =
       bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86

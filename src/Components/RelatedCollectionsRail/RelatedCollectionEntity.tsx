@@ -37,7 +37,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
     } = this.props.collection
     const artworks = artworks_connection.edges.map(({ node }) => node)
     const bgImages = compact(
-      artworks.map(({ image }) => image && image.resized.url)
+      artworks.map(({ image }) => image && image.resized && image.resized.url)
     )
     const imageSize =
       bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86
