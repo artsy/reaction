@@ -73,6 +73,7 @@ export class LargeArtworkImageBrowser extends React.Component<
               />
             </Col>
           )}
+          // maxHeight is needed for google search indexing
           render={(image: Image) => {
             return (
               <Flex
@@ -81,7 +82,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                 width="100%"
                 px={hasMultipleImages ? [2, 2, 0] : 0}
                 height="60vh"
-                maxHeight="3000px"
+                maxHeight="2000px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
@@ -90,7 +91,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="60vh"
-                  maxHeight="3000px"
+                  maxHeight="2000px"
                 />
               </Flex>
             )
