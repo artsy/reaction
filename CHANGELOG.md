@@ -1,3 +1,15 @@
+# v21.6.3 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fillwidth doesn't fail when image is absent [#2882](https://github.com/artsy/reaction/pull/2882) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.6.2 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
