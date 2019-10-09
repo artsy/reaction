@@ -1,7 +1,7 @@
 import { Flex, Sans } from "@artsy/palette"
 import React, { FC } from "react"
 
-interface TrustSignalProps {
+export interface TrustSignalProps {
   Icon: JSX.Element
   label: string
   description: string | JSX.Element

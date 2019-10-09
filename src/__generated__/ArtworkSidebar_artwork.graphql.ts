@@ -10,6 +10,7 @@ import { ArtworkSidebarExtraLinks_artwork$ref } from "./ArtworkSidebarExtraLinks
 import { ArtworkSidebarMetadata_artwork$ref } from "./ArtworkSidebarMetadata_artwork.graphql";
 import { ArtworkSidebarPartnerInfo_artwork$ref } from "./ArtworkSidebarPartnerInfo_artwork.graphql";
 import { AuctionTimer_sale$ref } from "./AuctionTimer_sale.graphql";
+import { SecurePayment_artwork$ref } from "./SecurePayment_artwork.graphql";
 declare const _ArtworkSidebar_artwork$ref: unique symbol;
 export type ArtworkSidebar_artwork$ref = typeof _ArtworkSidebar_artwork$ref;
 export type ArtworkSidebar_artwork = {
@@ -18,7 +19,7 @@ export type ArtworkSidebar_artwork = {
         readonly is_closed: boolean | null;
         readonly " $fragmentRefs": AuctionTimer_sale$ref;
     }) | null;
-    readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref & ArtworkSidebarMetadata_artwork$ref & ArtworkSidebarAuctionPartnerInfo_artwork$ref & ArtworkSidebarCurrentBidInfo_artwork$ref & ArtworkSidebarBidAction_artwork$ref & ArtworkSidebarCommercial_artwork$ref & ArtworkSidebarPartnerInfo_artwork$ref & ArtworkSidebarExtraLinks_artwork$ref;
+    readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref & ArtworkSidebarMetadata_artwork$ref & ArtworkSidebarAuctionPartnerInfo_artwork$ref & ArtworkSidebarCurrentBidInfo_artwork$ref & ArtworkSidebarBidAction_artwork$ref & ArtworkSidebarCommercial_artwork$ref & ArtworkSidebarPartnerInfo_artwork$ref & ArtworkSidebarExtraLinks_artwork$ref & SecurePayment_artwork$ref;
     readonly " $refType": ArtworkSidebar_artwork$ref;
 };
 
@@ -41,7 +42,7 @@ return {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarBidAction_artwork",
+      "name": "ArtworkSidebarCommercial_artwork",
       "args": null
     },
     {
@@ -68,12 +69,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarArtists_artwork",
+      "name": "ArtworkSidebarBidAction_artwork",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarCommercial_artwork",
+      "name": "ArtworkSidebarArtists_artwork",
       "args": null
     },
     {
@@ -84,6 +85,11 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebarExtraLinks_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "SecurePayment_artwork",
       "args": null
     },
     {
@@ -114,5 +120,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'caa524c1e86a737fdf6e66a8b95e2bc8';
+(node as any).hash = '0aa53c02b9293e75f5d49c6ed7f5472e';
 export default node;
