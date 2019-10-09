@@ -232,7 +232,14 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     key={collection.slug}
                   />
                 )}
-                <MetaContainer mb={2} mt={[0, imageHeightSizes.sm + space(3)]}>
+                <MetaContainer
+                  mb={2}
+                  mt={[
+                    0,
+                    imageHeightSizes.xs + space(3),
+                    imageHeightSizes.sm + space(3),
+                  ]}
+                >
                   <BreadcrumbContainer size={["2", "3"]} mt={[2, 0]}>
                     <Link to="/collect">All works</Link> /{" "}
                     <Link to={categoryTarget}>{collection.category}</Link>
