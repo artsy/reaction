@@ -20,7 +20,16 @@ export async function getOffsetBetweenGravityClock(
   `
 
   const fetchSystemTime = () => {
-    return fetchQuery<timeQueryResponse>(relayEnvironment, query, {})
+    return fetchQuery<timeQueryResponse>(
+      relayEnvironment,
+      query,
+      {},
+      // FIXME: Update after definitely-typed and relay docs are updated
+      // @ts-ignore
+      {
+        force: true,
+      }
+    )
   }
 
   const getGravityTimestampInMilliSeconds = async () => {
