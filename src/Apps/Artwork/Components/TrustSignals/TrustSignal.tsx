@@ -1,7 +1,7 @@
-import { Flex, Sans } from "@artsy/palette"
+import { Flex, FlexProps, Sans } from "@artsy/palette"
 import React, { FC } from "react"
 
-export interface TrustSignalProps {
+export interface TrustSignalProps extends Omit<FlexProps, "flexDirection"> {
   Icon: JSX.Element
   label: string
   description: string | JSX.Element
@@ -11,8 +11,9 @@ export const TrustSignal: FC<TrustSignalProps> = ({
   Icon,
   label,
   description,
+  ...other
 }) => (
-  <Flex>
+  <Flex {...other}>
     {Icon}
     <Flex flexDirection="column" ml={1}>
       <Sans size="2" weight="medium" color="black100">

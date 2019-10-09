@@ -17,8 +17,9 @@ export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) =>
       label="Secure payment"
       description={
         <>
-          {"Secure transactions by credit card through Stripe."}{" "}
-          <Link href="">Learn more</Link>
+          {"Secure transactions by credit card through Stripe."}
+          <br />
+          <Link href="https://stripe.com/docs/security/stripe">Learn more</Link>
           {"."}
         </>
       }
