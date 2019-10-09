@@ -1,3 +1,15 @@
+# v21.6.2 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Update `time` util to not cache at relay layer [#2891](https://github.com/artsy/reaction/pull/2891) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.6.1 (Tue Oct 08 2019)
 
 #### 🐛  Bug Fix
