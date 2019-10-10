@@ -1,3 +1,15 @@
+# v21.6.5 (Thu Oct 10 2019)
+
+#### 🐛  Bug Fix
+
+- Swap name prompt in address form based on billing prop [#2893](https://github.com/artsy/reaction/pull/2893) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v21.6.4 (Thu Oct 10 2019)
 
 #### 🐛  Bug Fix
