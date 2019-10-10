@@ -1,3 +1,15 @@
+# v21.7.0 (Thu Oct 10 2019)
+
+#### 🚀  Enhancement
+
+- Add secure payment trust signal component [#2889](https://github.com/artsy/reaction/pull/2889) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v21.6.5 (Thu Oct 10 2019)
 
 #### 🐛  Bug Fix
