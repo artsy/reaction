@@ -5,6 +5,7 @@ import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { artistBio, artistSale } from "../SEOArtistTest/ArtistTestGroups"
 
 interface Props {
   artist: ArtistMeta_artist
@@ -114,6 +115,16 @@ export const structuredDataAttributes = (artist: ArtistMeta_artist) => {
   return pickBy(attributes, identity)
 }
 
+export const getArtistTitleTag = (artist: ArtistMeta_artist) => {
+  if (artistBio.test.includes(artist.id)) {
+    return `${artist.name} - Art, Bio, Insights - Artsy`
+  }
+  if (artistSale.test.includes(artist.id)) {
+    return `${artist.name} - For Sale on Artsy`
+  }
+  return artist.meta.title
+}
+
 export class ArtistMeta extends Component<Props> {
   renderImageMetaTags() {
     const { artist } = this.props
@@ -156,7 +167,7 @@ export class ArtistMeta extends Component<Props> {
     const { artist } = this.props
     return (
       <>
-        <Title>{artist.meta.title}</Title>
+        <Title>{getArtistTitleTag(artist)}</Title>
         <Link rel="canonical" href={`${sd.APP_URL}/artist/${artist.id}`} />
         <Meta property="og:title" content={artist.meta.title} />
         <Meta name="description" content={artist.meta.description} />

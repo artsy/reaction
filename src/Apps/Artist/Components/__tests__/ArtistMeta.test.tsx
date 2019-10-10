@@ -1,4 +1,5 @@
 import {
+  getArtistTitleTag,
   offersAttributes,
   productAttributes,
   sellerFromPartner,
@@ -12,67 +13,96 @@ jest.mock("sharify", () => ({
 }))
 
 describe("Meta", () => {
-  const artist = {
-    id: "claes-oldenburg",
-    name: "Claes Oldenburg",
-    nationality: "Swedish",
-    birthday: "1929",
-    alternate_names: null,
-    counts: null,
-    blurb: null,
-    deathday: null,
-    gender: "male",
-    href: "/artist/claes-oldenburg",
-    meta: {
-      title: "cool art",
-      description:
-        "Find the latest shows, biography, and artworks for sale by Claes Oldenburg. “I am for an art that is political-erotical-mystical, that does something more th…",
-    },
-    image: {
-      versions: ["small", "large"],
-      large:
-        "https://d32dm0rphc51dk.cloudfront.net/6q6LeyKvA_vpT5YzHRSNUA/large.jpg",
-      square:
-        "https://d32dm0rphc51dk.cloudfront.net/6q6LeyKvA_vpT5YzHRSNUA/square.jpg",
-    },
-    artworks_connection: {
-      edges: [
-        {
-          node: {
-            date: "1993",
-            title:
-              "'25 Years Studio',  1993, SIGNED by the BIG-8 Contemporary Artists, Gemini G.E.L.",
-            availability: "for sale",
-            description: null,
-            category: "Drawing, Collage or other Work on Paper",
-            price_currency: "USD",
-            is_price_range: false,
-            href:
-              "/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
-            image: {
-              small:
-                "https://d32dm0rphc51dk.cloudfront.net/PmBrn30fGmg9dGwk2Nf51w/small.jpg",
-              large:
-                "https://d32dm0rphc51dk.cloudfront.net/PmBrn30fGmg9dGwk2Nf51w/large.jpg",
-            },
-            partner: {
-              name: "VINCE fine arts/ephemera",
-              href: "/vince-fine-arts-slash-ephemera",
-              profile: {
-                image: {
-                  small:
-                    "https://d32dm0rphc51dk.cloudfront.net/vIzxQvuBS8gZVPUOKc4tPQ/wide.jpg",
-                  large:
-                    "https://d32dm0rphc51dk.cloudfront.net/vIzxQvuBS8gZVPUOKc4tPQ/wide.jpg",
+  let artist
+
+  beforeEach(() => {
+    artist = {
+      id: "claes-oldenburg",
+      name: "Claes Oldenburg",
+      nationality: "Swedish",
+      birthday: "1929",
+      alternate_names: null,
+      counts: null,
+      blurb: null,
+      deathday: null,
+      gender: "male",
+      href: "/artist/claes-oldenburg",
+      meta: {
+        title: "Claes Oldenburg - 1 Artworks, Bio & Shows on Artsy",
+        description:
+          "Find the latest shows, biography, and artworks for sale by Claes Oldenburg. “I am for an art that is political-erotical-mystical, that does something more th…",
+      },
+      image: {
+        versions: ["small", "large"],
+        large:
+          "https://d32dm0rphc51dk.cloudfront.net/6q6LeyKvA_vpT5YzHRSNUA/large.jpg",
+        square:
+          "https://d32dm0rphc51dk.cloudfront.net/6q6LeyKvA_vpT5YzHRSNUA/square.jpg",
+      },
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              date: "1993",
+              title:
+                "'25 Years Studio',  1993, SIGNED by the BIG-8 Contemporary Artists, Gemini G.E.L.",
+              availability: "for sale",
+              description: null,
+              category: "Drawing, Collage or other Work on Paper",
+              price_currency: "USD",
+              is_price_range: false,
+              href:
+                "/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
+              image: {
+                small:
+                  "https://d32dm0rphc51dk.cloudfront.net/PmBrn30fGmg9dGwk2Nf51w/small.jpg",
+                large:
+                  "https://d32dm0rphc51dk.cloudfront.net/PmBrn30fGmg9dGwk2Nf51w/large.jpg",
+              },
+              partner: {
+                name: "VINCE fine arts/ephemera",
+                href: "/vince-fine-arts-slash-ephemera",
+                profile: {
+                  image: {
+                    small:
+                      "https://d32dm0rphc51dk.cloudfront.net/vIzxQvuBS8gZVPUOKc4tPQ/wide.jpg",
+                    large:
+                      "https://d32dm0rphc51dk.cloudfront.net/vIzxQvuBS8gZVPUOKc4tPQ/wide.jpg",
+                  },
                 },
               },
             },
           },
-        },
-      ],
-    },
-    " $refType": null,
-  }
+        ],
+      },
+      " $refType": null,
+    }
+  })
+
+  describe("#getArtistTitleTag", () => {
+    it("Returns a title tag ending in ' Artworks, Bio & Shows on Artsy'", () => {
+      const titleTag = getArtistTitleTag(artist)
+      expect(titleTag).toEqual(
+        "Claes Oldenburg - 1 Artworks, Bio & Shows on Artsy"
+      )
+    })
+
+    it("Returns a title tag ending in '- Art, Bio, Insights - Artsy'", () => {
+      artist.id = "uri-aran"
+      artist.name = "Uri Aran"
+      const titleTag = getArtistTitleTag(artist)
+
+      expect(titleTag).toEqual("Uri Aran - Art, Bio, Insights - Artsy")
+    })
+
+    it("Returns a title tag ending in '- For Sale on Artsy'", () => {
+      artist.id = "jesus-bautista-moroles"
+      artist.name = "Jesus Bautista Moroles"
+      const titleTag = getArtistTitleTag(artist)
+
+      expect(titleTag).toEqual("Jesus Bautista Moroles - For Sale on Artsy")
+    })
+  })
 
   describe("structured data", () => {
     it("Constructs a json object from data", () => {
