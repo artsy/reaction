@@ -10,10 +10,9 @@ interface AuthenticityCertificateProps
   artwork: AuthenticityCertificate_artwork
 }
 
-export const AuthenticityCertificate = ({
-  artwork,
-  ...other
-}: AuthenticityCertificateProps) => {
+export const AuthenticityCertificate: React.FC<
+  AuthenticityCertificateProps
+> = ({ artwork, ...other }) => {
   return (
     artwork.certificateOfAuthenticity &&
     !artwork.is_biddable && (

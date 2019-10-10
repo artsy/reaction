@@ -10,7 +10,10 @@ interface SecurePaymentProps
   artwork: SecurePayment_artwork
 }
 
-export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) => {
+export const SecurePayment: React.FC<SecurePaymentProps> = ({
+  artwork,
+  ...other
+}) => {
   return (
     (artwork.is_acquireable || artwork.is_offerable) && (
       <TrustSignal

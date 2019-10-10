@@ -10,7 +10,10 @@ interface VerifiedSellerProps
   artwork: VerifiedSeller_artwork
 }
 
-export const VerifiedSeller = ({ artwork, ...other }: VerifiedSellerProps) => {
+export const VerifiedSeller: React.FC<VerifiedSellerProps> = ({
+  artwork,
+  ...other
+}) => {
   return (
     artwork.partner.isVerifiedSeller && (
       <TrustSignal
