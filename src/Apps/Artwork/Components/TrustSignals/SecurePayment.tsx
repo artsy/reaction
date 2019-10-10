@@ -10,22 +10,27 @@ interface SecurePaymentProps
   artwork: SecurePayment_artwork
 }
 
-export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) =>
-  (artwork.is_acquireable || artwork.is_offerable) && (
-    <TrustSignal
-      Icon={<LockIcon />}
-      label="Secure payment"
-      description={
-        <>
-          {"Secure transactions by credit card through Stripe."}
-          <br />
-          <Link href="https://stripe.com/docs/security/stripe">Learn more</Link>
-          {"."}
-        </>
-      }
-      {...other}
-    />
+export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) => {
+  return (
+    (artwork.is_acquireable || artwork.is_offerable) && (
+      <TrustSignal
+        Icon={<LockIcon />}
+        label="Secure payment"
+        description={
+          <>
+            {"Secure transactions by credit card through Stripe."}
+            <br />
+            <Link href="https://stripe.com/docs/security/stripe">
+              Learn more
+            </Link>
+            {"."}
+          </>
+        }
+        {...other}
+      />
+    )
   )
+}
 
 export const SecurePaymentFragmentContainer = createFragmentContainer(
   SecurePayment,

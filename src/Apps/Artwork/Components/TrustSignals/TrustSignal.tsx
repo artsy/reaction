@@ -12,16 +12,18 @@ export const TrustSignal: FC<TrustSignalProps> = ({
   label,
   description,
   ...other
-}) => (
-  <Flex {...other}>
-    {Icon}
-    <Flex flexDirection="column" ml={1}>
-      <Sans size="2" weight="medium" color="black100">
-        {label}
-      </Sans>
-      <Sans size="2" color="black60">
-        {description}
-      </Sans>
+}) => {
+  return (
+    <Flex {...other}>
+      {Icon}
+      <Flex flexDirection="column" ml={1}>
+        <Sans size="2" weight="medium" color="black100">
+          {label}
+        </Sans>
+        <Sans size="2" color="black60">
+          {description}
+        </Sans>
+      </Flex>
     </Flex>
-  </Flex>
-)
+  )
+}
