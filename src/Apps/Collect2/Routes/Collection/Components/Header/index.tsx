@@ -180,11 +180,13 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
       {({ xs, sm, md, lg }) => {
         const size = xs ? "xs" : sm ? "sm" : md ? "md" : lg ? "lg" : "xl"
         const imageWidth = imageWidthSizes[size]
-        const imageHeight = xs ? imageHeightSizes.xs : imageHeightSizes.sm
+        const smallerScreen = size === "xs" || size === "sm"
+        const imageHeight = smallerScreen
+          ? imageHeightSizes.xs
+          : imageHeightSizes.sm
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = size === "xs" ? 9 : 12
-        const smallerScreen = size === "xs" || size === "sm"
         const featuredArtists = getFeaturedArtists(
           artistsCount,
           collection,
