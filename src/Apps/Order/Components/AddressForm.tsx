@@ -100,7 +100,7 @@ export class AddressForm extends React.Component<
           <Input
             id="AddressForm_name"
             placeholder="Add full name"
-            title="Name on card"
+            title={this.props.billing ? "Name on card" : "Full name"}
             autoCapitalize="words"
             autoCorrect="off"
             value={this.props.value.name}
