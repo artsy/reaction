@@ -5,7 +5,8 @@ import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import { artistBio, artistSale } from "../SEOArtistTest/ArtistTestGroups"
+import artistBio from "../SEOArtistTest/ArtistBioInsightTestGroup.js"
+import artistSale from "../SEOArtistTest/ArtistForSaleTestGroup.js"
 
 interface Props {
   artist: ArtistMeta_artist
