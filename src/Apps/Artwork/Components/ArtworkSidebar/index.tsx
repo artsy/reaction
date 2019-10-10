@@ -1,8 +1,9 @@
-import { Box, Spacer } from "@artsy/palette"
+import { Box, space, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { AuctionTimerFragmentContainer as AuctionTimer } from "Components/v2/AuctionTimer"
 import React, { Component, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { ArtworkSidebarArtistsFragmentContainer as Artists } from "./ArtworkSidebarArtists"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer as AuctionPartnerInfo } from "./ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarBidActionFragmentContainer as BidAction } from "./ArtworkSidebarBidAction"
@@ -16,12 +17,24 @@ import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.gra
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 import { SystemContext } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { SecurePaymentFragmentContainer as SecurePayment } from "../TrustSignals/SecurePayment"
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
 }
 
 const ArtworkSidebarContainer = Box
+
+const TrustSignalsContainer = styled.div`
+  > * + * {
+    margin-top: ${space(2)}px;
+  }
+  :after {
+    content: "";
+    display: block;
+    margin-bottom: ${space(3)}px;
+  }
+`
 
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
@@ -53,6 +66,10 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
           </React.Fragment>
         )}
 
+        <TrustSignalsContainer>
+          <SecurePayment artwork={artwork} />
+        </TrustSignalsContainer>
+
         <ExtraLinks artwork={artwork} />
       </ArtworkSidebarContainer>
     )
@@ -73,6 +90,7 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
         ...ArtworkSidebarCommercial_artwork
         ...ArtworkSidebarPartnerInfo_artwork
         ...ArtworkSidebarExtraLinks_artwork
+        ...SecurePayment_artwork
         sale {
           is_closed
           ...AuctionTimer_sale
