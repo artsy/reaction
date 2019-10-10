@@ -10,7 +10,9 @@ import { ArtworkSidebarExtraLinks_artwork$ref } from "./ArtworkSidebarExtraLinks
 import { ArtworkSidebarMetadata_artwork$ref } from "./ArtworkSidebarMetadata_artwork.graphql";
 import { ArtworkSidebarPartnerInfo_artwork$ref } from "./ArtworkSidebarPartnerInfo_artwork.graphql";
 import { AuctionTimer_sale$ref } from "./AuctionTimer_sale.graphql";
+import { AuthenticityCertificate_artwork$ref } from "./AuthenticityCertificate_artwork.graphql";
 import { SecurePayment_artwork$ref } from "./SecurePayment_artwork.graphql";
+import { VerifiedSeller_artwork$ref } from "./VerifiedSeller_artwork.graphql";
 declare const _ArtworkSidebar_artwork$ref: unique symbol;
 export type ArtworkSidebar_artwork$ref = typeof _ArtworkSidebar_artwork$ref;
 export type ArtworkSidebar_artwork = {
@@ -19,7 +21,7 @@ export type ArtworkSidebar_artwork = {
         readonly is_closed: boolean | null;
         readonly " $fragmentRefs": AuctionTimer_sale$ref;
     }) | null;
-    readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref & ArtworkSidebarMetadata_artwork$ref & ArtworkSidebarAuctionPartnerInfo_artwork$ref & ArtworkSidebarCurrentBidInfo_artwork$ref & ArtworkSidebarBidAction_artwork$ref & ArtworkSidebarCommercial_artwork$ref & ArtworkSidebarPartnerInfo_artwork$ref & ArtworkSidebarExtraLinks_artwork$ref & SecurePayment_artwork$ref;
+    readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref & ArtworkSidebarMetadata_artwork$ref & ArtworkSidebarAuctionPartnerInfo_artwork$ref & ArtworkSidebarCurrentBidInfo_artwork$ref & ArtworkSidebarBidAction_artwork$ref & ArtworkSidebarCommercial_artwork$ref & ArtworkSidebarPartnerInfo_artwork$ref & ArtworkSidebarExtraLinks_artwork$ref & SecurePayment_artwork$ref & VerifiedSeller_artwork$ref & AuthenticityCertificate_artwork$ref;
     readonly " $refType": ArtworkSidebar_artwork$ref;
 };
 
@@ -42,7 +44,7 @@ return {
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarCommercial_artwork",
+      "name": "ArtworkSidebarPartnerInfo_artwork",
       "args": null
     },
     {
@@ -74,12 +76,12 @@ return {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarArtists_artwork",
+      "name": "ArtworkSidebarCommercial_artwork",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "ArtworkSidebarPartnerInfo_artwork",
+      "name": "ArtworkSidebarArtists_artwork",
       "args": null
     },
     {
@@ -90,6 +92,16 @@ return {
     {
       "kind": "FragmentSpread",
       "name": "SecurePayment_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "VerifiedSeller_artwork",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "AuthenticityCertificate_artwork",
       "args": null
     },
     {
@@ -120,5 +132,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0aa53c02b9293e75f5d49c6ed7f5472e';
+(node as any).hash = 'dfe2a81caa32c07aa46a382f0b8cc2cb';
 export default node;
