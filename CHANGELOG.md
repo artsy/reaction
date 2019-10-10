@@ -1,3 +1,15 @@
+# v21.6.4 (Thu Oct 10 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1587] Ensure content below collection header image respond to image resize at small breakpoint [#2892](https://github.com/artsy/reaction/pull/2892) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.6.3 (Wed Oct 09 2019)
 
 #### 🐛  Bug Fix
