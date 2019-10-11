@@ -41,11 +41,6 @@
     styled-system "^3.1.11"
     trunc-html "^1.1.2"
 
-"@artsy/react-html-parser@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@artsy/react-html-parser/-/react-html-parser-3.0.0.tgz#0d8f640644824765b81760e0b8fe2e99d89e61da"
-  integrity sha512-GTCfk0OMTfXWggQVJYWa2wf8Qmv03iuw8TAtFjrEHlTPaC+yJ/o8WySqc76ceXC9p96Y/rVDGMpZGqIarCWQzA==
-
 "@artsy/react-responsive-media@^2.0.0-beta.5":
   version "2.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@artsy/react-responsive-media/-/react-responsive-media-2.0.0-beta.5.tgz#d61e1a9f215d38d90ec2bb97dc1ff7409d0346fa"
@@ -8268,7 +8263,7 @@ html-webpack-plugin@^4.0.0-beta.2:
     tapable "^1.1.0"
     util.promisify "1.0.0"
 
-htmlparser2@^3.9.1, htmlparser2@^3.9.2:
+htmlparser2@^3.9.0, htmlparser2@^3.9.1, htmlparser2@^3.9.2:
   version "3.9.2"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"
   integrity sha1-G9+HrMoPP55T+k/M6w9LTLsAszg=
@@ -12864,6 +12859,13 @@ react-hotkeys@2.0.0-pre4:
   integrity sha512-oa+UncSWyOwMK3GExt+oELXaR7T3ItgcMolsupQFdKvwkEhVAluJd5rYczsRSQpQlVkdNoHG46De2NUeuS+88Q==
   dependencies:
     prop-types "^15.6.1"
+
+react-html-parser@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-html-parser/-/react-html-parser-2.0.2.tgz#6dbe1ddd2cebc1b34ca15215158021db5fc5685e"
+  integrity sha512-XeerLwCVjTs3njZcgCOeDUqLgNIt/t+6Jgi5/qPsO/krUWl76kWKXMeVs2LhY2gwM6X378DkhLjur0zUQdpz0g==
+  dependencies:
+    htmlparser2 "^3.9.0"
 
 react-input-autosize@^2.1.2:
   version "2.2.1"
