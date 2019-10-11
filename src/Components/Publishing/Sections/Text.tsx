@@ -1,6 +1,6 @@
+import ReactHtmlParser, { convertNodeToElement } from "@artsy/react-html-parser"
 import { startsWith } from "lodash"
 import React, { Component } from "react"
-import ReactHtmlParser, { convertNodeToElement } from "react-html-parser"
 import { get } from "Utils/get"
 import { ArticleLayout } from "../Typings"
 import { StyledText } from "./StyledText"
@@ -59,12 +59,12 @@ export class Text extends Component<Props, State> {
     return cleanedHtml
   }
 
-  shouldShowTooltipForURL = node => {
+  shouldShowTooltipForURL = (node: Element) => {
     const urlBase = "https://www.artsy.net/"
     const types = ["artist/", "gene/"]
 
     for (const type of types) {
-      if (startsWith(node.attribs.href, urlBase + type)) {
+      if (startsWith(node.getAttribute("href"), urlBase + type)) {
         return true
       }
     }
@@ -72,41 +72,41 @@ export class Text extends Component<Props, State> {
     return false
   }
 
-  transformNode = (node, index) => {
+  transformNode = (node: Element, index) => {
     const { color } = this.props
     // Dont include relay components unless necessary
     // To avoid 'regeneratorRuntime' error
     const LinkWithTooltip = require("../ToolTip/LinkWithTooltip").default
 
-    if (node.name === "p") {
-      node.name = "div"
-      node.attribs.class = "paragraph"
-      return convertNodeToElement(node, index, this.transformNode)
+    if (node.tagName === "P") {
+      const newNode = node.ownerDocument.createElement("div")
+      newNode.setAttribute("class", "paragraph")
+      Array.from(node.childNodes).forEach(child => newNode.appendChild(child))
+      return convertNodeToElement(newNode, index, this.transformNode)
     }
 
-    if (node.name === "a" && this.shouldShowTooltipForURL(node)) {
-      const href = node.attribs.href
-      const linkNode = get(node, n => n.children[0].data && n.children[0], {})
+    if (node.tagName === "A" && this.shouldShowTooltipForURL(node)) {
+      const href = node.getAttribute("href")
+      const linkNode = node.childNodes[0]
 
-      if (linkNode.data) {
+      if (linkNode && linkNode.textContent) {
         const props = { key: href + index, url: href, color }
-        const next = linkNode.parent && linkNode.parent.next
-        const text = linkNode.data
-        const apostropheRe = /[’'][a-zA-Z]/
+        const next = node.nextSibling
+        const text = linkNode.textContent
 
         // Check to see if there's an apostrophe following a linked section of
         // text and if found, return it.
         const apostrophe = get(next, n => {
-          const str = n.data.substr(0, 2)
-          if (apostropheRe.test(str)) {
+          const str = n.textContent.substr(0, 2)
+          if (/[’'][a-zA-Z]/.test(str)) {
             return str
           }
         })
 
         if (apostrophe) {
           // Remove the apostrophe from the original text
-          next.data = next.data.substring(2)
-          // And wrap the whole thing with with a span preventing whitespace breaks
+          next.textContent = next.textContent.substring(2)
+          // And wrap the whole thing with a span preventing whitespace breaks
           return (
             <span
               className="preventLineBreak"
