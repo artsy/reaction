@@ -1,3 +1,15 @@
+# v21.7.3 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Revert dropping htmlparser2 for now due to difficulty running Force test suite [#2899](https://github.com/artsy/reaction/pull/2899) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.7.2 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
