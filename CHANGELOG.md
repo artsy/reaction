@@ -1,3 +1,15 @@
+# v21.7.1 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1482 collection rail images are insecure and oversized [#2880](https://github.com/artsy/reaction/pull/2880) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v21.7.0 (Thu Oct 10 2019)
 
 #### 🚀  Enhancement
