@@ -34,7 +34,7 @@ describe("RelatedCollectionEntity", () => {
       "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg"
     )
     expect(artworkImage.alt).toBe("Jasper Johns, Flag")
-    expect(artworkImage.width).toBe(85)
+    expect(artworkImage.width).toBe(86)
   })
 
   it("Returns proper image size if 2 artworks returned", () => {
@@ -46,7 +46,7 @@ describe("RelatedCollectionEntity", () => {
       .getElement().props
 
     expect(component.find(ArtworkImage).length).toBe(2)
-    expect(artworkImage.width).toBe(131)
+    expect(artworkImage.width).toBe(130)
   })
 
   it("Renders a backup image if no artworks returned", () => {
@@ -61,7 +61,7 @@ describe("RelatedCollectionEntity", () => {
     expect(artworkImage.src).toBe(
       "http://files.artsy.net/images/jasperjohnsflag.png"
     )
-    expect(artworkImage.width).toBe(265)
+    expect(artworkImage.width).toBe(262)
   })
 
   it("Tracks link clicks", () => {

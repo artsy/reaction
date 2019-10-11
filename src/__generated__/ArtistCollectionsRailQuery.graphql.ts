@@ -51,7 +51,9 @@ fragment ArtistCollectionEntity_collection on MarketingCollection {
           }
           title
           image {
-            url(version: "small")
+            resized(width: 262) {
+              url
+            }
             __id: id
           }
           __id
@@ -131,7 +133,7 @@ return {
   "operationKind": "query",
   "name": "ArtistCollectionsRailQuery",
   "id": null,
-  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    artworks_connection(first: 3) {\n      edges {\n        node {\n          artist {\n            name\n            __id\n          }\n          title\n          image {\n            url(version: \"small\")\n            __id: id\n          }\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id: id\n}\n",
+  "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    __id: id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n  __id: id\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance\n  artworks(aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    artworks_connection(first: 3) {\n      edges {\n        node {\n          artist {\n            name\n            __id\n          }\n          title\n          image {\n            resized(width: 262) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n      }\n    }\n    __id\n  }\n  __id: id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -283,18 +285,29 @@ return {
                             "plural": false,
                             "selections": [
                               {
-                                "kind": "ScalarField",
+                                "kind": "LinkedField",
                                 "alias": null,
-                                "name": "url",
+                                "name": "resized",
+                                "storageKey": "resized(width:262)",
                                 "args": [
                                   {
                                     "kind": "Literal",
-                                    "name": "version",
-                                    "value": "small",
-                                    "type": "[String]"
+                                    "name": "width",
+                                    "value": 262,
+                                    "type": "Int"
                                   }
                                 ],
-                                "storageKey": "url(version:\"small\")"
+                                "concreteType": "ResizedImageUrl",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "url",
+                                    "args": null,
+                                    "storageKey": null
+                                  }
+                                ]
                               },
                               v2
                             ]

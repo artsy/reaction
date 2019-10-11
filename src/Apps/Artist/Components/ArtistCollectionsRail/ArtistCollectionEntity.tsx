@@ -38,9 +38,11 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
     } = this.props.collection
     const artworks = artworks_connection.edges.map(({ node }) => node)
     const formattedTitle = (title && title.split(": ")[1]) || title
-    const bgImages = compact(artworks.map(({ image }) => image && image.url))
+    const bgImages = compact(
+      artworks.map(({ image }) => image && image.resized && image.resized.url)
+    )
     const imageSize =
-      bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+      bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86
 
     return (
       <Box pr={2}>
@@ -73,7 +75,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
               <ArtworkImage
                 src={headerImage}
                 lazyLoad={this.props.lazyLoad}
-                width={265}
+                width={262}
                 style={{ objectFit: "cover", objectPosition: "center" }}
               />
             )}
@@ -139,7 +141,7 @@ export const ArtworkImage = styled(Image)<{ width: number }>`
 `
 
 const ImgWrapper = styled(Flex)`
-  width: 265px;
+  width: 262px;
 `
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
@@ -160,7 +162,9 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
                 }
                 title
                 image {
-                  url(version: "small")
+                  resized(width: 262) {
+                    url
+                  }
                 }
               }
             }
