@@ -23,7 +23,10 @@ export const SecurePayment: React.FC<SecurePaymentProps> = ({
           <>
             {"Secure transactions by credit card through Stripe."}
             <br />
-            <Link href="https://stripe.com/docs/security/stripe">
+            <Link
+              href="https://stripe.com/docs/security/stripe"
+              target="_blank"
+            >
               Learn more
             </Link>
             {"."}
