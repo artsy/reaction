@@ -1,4 +1,3 @@
-import cheerio from "cheerio"
 import { compact, last, uniq } from "lodash"
 import { DateTime } from "luxon"
 import url from "url"
@@ -184,19 +183,16 @@ export const getArtsySlugsFromHTML = (
   html: string,
   model: string
 ): string[] => {
-  const $ = cheerio.load(html)
+  const parser = new window.DOMParser()
+  const doc = parser.parseFromString(html, "text/html")
 
-  const slugs = compact($("a")).map(a => {
-    const href = $(a).attr("href")
-    if (href) {
-      if (href.match(`artsy.net/${model}`)) {
-        return last(url.parse(href).pathname.split("/"))
-      } else {
-        return null
-      }
-    } else {
-      return null
+  const slugs: string[] = []
+  doc.querySelectorAll("a").forEach(anchor => {
+    const href = anchor.getAttribute("href")
+    if (href && href.match(`artsy.net/${model}`)) {
+      slugs.push(last(url.parse(href).pathname.split("/")))
     }
   })
+
   return compact(slugs)
 }
