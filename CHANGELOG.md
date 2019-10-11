@@ -1,3 +1,15 @@
+# v21.7.2 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- [Publising/Text] Update react-html-parser to use DOMParser [#2897](https://github.com/artsy/reaction/pull/2897) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.7.1 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
