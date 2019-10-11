@@ -1,3 +1,15 @@
+# v21.7.5 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- [Publishing] Do not include test fixtures in main exports and bundles [#2901](https://github.com/artsy/reaction/pull/2901) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.7.4 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
