@@ -1,3 +1,15 @@
+# v21.7.4 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Drop htmlparser2 and parse5 deps from runtime deps [#2900](https://github.com/artsy/reaction/pull/2900) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.7.3 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
