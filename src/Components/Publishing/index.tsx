@@ -55,34 +55,9 @@ export { IconRemove } from "./Icon/IconRemove"
 export { IconUnorderedList } from "./Icon/IconUnorderedList"
 export { IconLock } from "./Icon/IconLock"
 
-// Test Fixtures
-import {
-  ClassicArticle,
-  FeatureArticle,
-  ImageHeavyStandardArticle,
-  SeriesArticle,
-  SeriesArticleSponsored,
-  ShortStandardArticle,
-  StandardArticle,
-  VideoArticle,
-  VideoArticleSponsored,
-} from "./Fixtures/Articles"
-
 // FIXME: Refactor out SizeMe; see https://github.com/ctrlplusb/react-sizeme#server-side-rendering
 import sizeMe from "react-sizeme"
 sizeMe.noPlaceholders = true
-
-export const Fixtures = {
-  ClassicArticle,
-  FeatureArticle,
-  ImageHeavyStandardArticle,
-  SeriesArticle,
-  SeriesArticleSponsored,
-  ShortStandardArticle,
-  StandardArticle,
-  VideoArticle,
-  VideoArticleSponsored,
-}
 
 // Constants
 import * as AllConstants from "./Constants"
