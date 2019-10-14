@@ -1,3 +1,15 @@
+# v21.8.0 (Mon Oct 14 2019)
+
+#### 🚀  Enhancement
+
+- Trust signals 2 [#2896](https://github.com/artsy/reaction/pull/2896) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.7.8 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
