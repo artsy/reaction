@@ -3,7 +3,7 @@
 exports[`default header component renders a snapshot 1`] = `
 <header>
   <div
-    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-ermo8a-0 lkfTWi"
+    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-ermo8a-0 igHTUA"
     height={
       Array [
         160,
@@ -26,7 +26,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="Imageshared__BaseImage-sc-1dymtq1-0 iCfOkg"
           onContextMenu={[Function]}
           src="https://resized-large.cloudfront.net"
         />
@@ -116,7 +116,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="Imageshared__BaseImage-sc-1dymtq1-0 cnqsDZ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=222&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSsSCXZj6gJgfsyzbA4ffCw%2Flarge.jpg"
         />
