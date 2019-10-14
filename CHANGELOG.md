@@ -1,3 +1,15 @@
+# v21.7.7 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add DOMParser polyfill for the server [#2903](https://github.com/artsy/reaction/pull/2903) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.7.6 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
