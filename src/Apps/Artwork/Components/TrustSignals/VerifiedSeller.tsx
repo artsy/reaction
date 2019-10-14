@@ -15,6 +15,7 @@ export const VerifiedSeller: React.FC<VerifiedSellerProps> = ({
   ...other
 }) => {
   return (
+    artwork.partner &&
     artwork.partner.isVerifiedSeller && (
       <TrustSignal
         Icon={<VerifiedIcon />}
