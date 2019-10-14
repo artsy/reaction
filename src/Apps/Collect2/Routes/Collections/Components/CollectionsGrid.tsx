@@ -12,6 +12,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { Router } from "found"
+import styled from "styled-components"
 
 export interface CollectionEntity {
   title: string
@@ -31,7 +32,8 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
     const hasShortRow = collections.length % 3 !== 0 // Preserve left align
 
     return (
-      <Box pb={80} id={name && slugify(name)}>
+      <Box pb={80}>
+        <CollectionsGridAnchor id={name && slugify(name)} />
         <Sans size="3" weight="medium" pb={15}>
           {name}
         </Sans>
@@ -83,3 +85,10 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
     )
   }
 }
+
+const CollectionsGridAnchor = styled.a`
+  display: block;
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+`
