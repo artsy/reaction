@@ -4,6 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _VerifiedSeller_artwork$ref: unique symbol;
 export type VerifiedSeller_artwork$ref = typeof _VerifiedSeller_artwork$ref;
 export type VerifiedSeller_artwork = {
+    readonly is_biddable: boolean | null;
     readonly partner: ({
         readonly isVerifiedSeller: boolean | null;
         readonly name: string | null;
@@ -28,6 +29,13 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_biddable",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -58,5 +66,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3bc53613eb716f0c1dbc18dd4e1fd620';
+(node as any).hash = '5037e65d788b7be2400c0a017b8257e6';
 export default node;

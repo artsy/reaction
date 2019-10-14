@@ -15,6 +15,7 @@ export const VerifiedSeller: React.FC<VerifiedSellerProps> = ({
   ...other
 }) => {
   return (
+    artwork.is_biddable &&
     artwork.partner &&
     artwork.partner.isVerifiedSeller && (
       <TrustSignal
@@ -32,6 +33,7 @@ export const VerifiedSellerFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment VerifiedSeller_artwork on Artwork {
+        is_biddable
         partner {
           isVerifiedSeller
           name
