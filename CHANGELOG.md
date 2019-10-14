@@ -1,3 +1,15 @@
+# v21.8.1 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Trust signal followup [#2906](https://github.com/artsy/reaction/pull/2906) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.8.0 (Mon Oct 14 2019)
 
 #### 🚀  Enhancement
