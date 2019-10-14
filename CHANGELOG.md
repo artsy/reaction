@@ -1,3 +1,15 @@
+# v21.7.8 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Publishing] Revert SystemQueryRenderer change [#2905](https://github.com/artsy/reaction/pull/2905) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.7.7 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
