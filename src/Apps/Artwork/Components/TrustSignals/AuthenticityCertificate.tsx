@@ -14,7 +14,7 @@ export const AuthenticityCertificate: React.FC<
   AuthenticityCertificateProps
 > = ({ artwork, ...other }) => {
   return (
-    artwork.certificateOfAuthenticity &&
+    artwork.hasCertificateOfAuthenticity &&
     !artwork.is_biddable && (
       <TrustSignal
         Icon={<CertificateIcon />}
@@ -31,10 +31,7 @@ export const AuthenticityCertificateFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment AuthenticityCertificate_artwork on Artwork {
-        certificateOfAuthenticity {
-          label
-          details
-        }
+        hasCertificateOfAuthenticity
         is_biddable
       }
     `,

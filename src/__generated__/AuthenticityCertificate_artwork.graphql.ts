@@ -4,10 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 declare const _AuthenticityCertificate_artwork$ref: unique symbol;
 export type AuthenticityCertificate_artwork$ref = typeof _AuthenticityCertificate_artwork$ref;
 export type AuthenticityCertificate_artwork = {
-    readonly certificateOfAuthenticity: ({
-        readonly label: string | null;
-        readonly details: string | null;
-    }) | null;
+    readonly hasCertificateOfAuthenticity: boolean | null;
     readonly is_biddable: boolean | null;
     readonly " $refType": AuthenticityCertificate_artwork$ref;
 };
@@ -22,29 +19,11 @@ const node: ConcreteFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "certificateOfAuthenticity",
-      "storageKey": null,
+      "name": "hasCertificateOfAuthenticity",
       "args": null,
-      "concreteType": "ArtworkInfoRow",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "label",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "details",
-          "args": null,
-          "storageKey": null
-        }
-      ]
+      "storageKey": null
     },
     {
       "kind": "ScalarField",
@@ -62,5 +41,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '934bdc62f5185450f2929220156255bd';
+(node as any).hash = '80912d790965a940931e0e426a0fd89b';
 export default node;
