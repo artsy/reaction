@@ -75,7 +75,7 @@ describe("ArtworkSidebarCommercial", () => {
     expect(wrapper.text()).not.toContain("VAT included in price")
   })
 
-  it("displays singe editioned hidden availability inquire work", async () => {
+  it("displays single editioned hidden availability inquire work", async () => {
     const artwork = Object.assign({}, ArtworkSingleEditionHiddenAvailability)
 
     const wrapper = await getWrapper(artwork)

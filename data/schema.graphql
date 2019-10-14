@@ -1450,6 +1450,11 @@ type Artwork implements Node & Searchable & Sellable {
   framed: ArtworkInfoRow
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
+
+  # Returns true when artwork has a certificate of authenticity
+  hasCertificateOfAuthenticity: Boolean
+
+  # Returns the display label and detail for artwork certificate of authenticity
   certificateOfAuthenticity: ArtworkInfoRow
 
   # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
@@ -2494,6 +2499,11 @@ type ArtworkItem implements Node & Searchable & Sellable {
   framed: ArtworkInfoRow
   signatureInfo: ArtworkInfoRow
   conditionDescription: ArtworkInfoRow
+
+  # Returns true when artwork has a certificate of authenticity
+  hasCertificateOfAuthenticity: Boolean
+
+  # Returns the display label and detail for artwork certificate of authenticity
   certificateOfAuthenticity: ArtworkInfoRow
 
   # If you need to render artwork dimensions as a string, prefer the `Artwork#dimensions` field
@@ -9032,6 +9042,9 @@ type Partner implements Node {
 
   # The gallery partner's web address
   website: String
+
+  # Indicates the partner is a trusted seller on Artsy
+  isVerifiedSeller: Boolean
   analytics: AnalyticsPartnerStats
 }
 

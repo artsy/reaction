@@ -10,7 +10,10 @@ interface SecurePaymentProps
   artwork: SecurePayment_artwork
 }
 
-export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) => {
+export const SecurePayment: React.FC<SecurePaymentProps> = ({
+  artwork,
+  ...other
+}) => {
   return (
     (artwork.is_acquireable || artwork.is_offerable) && (
       <TrustSignal
@@ -20,7 +23,11 @@ export const SecurePayment = ({ artwork, ...other }: SecurePaymentProps) => {
           <>
             {"Secure transactions by credit card through Stripe."}
             <br />
-            <Link href="https://stripe.com/docs/security/stripe">
+            <Link
+              href="https://stripe.com/docs/security/stripe"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Learn more
             </Link>
             {"."}
