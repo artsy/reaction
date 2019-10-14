@@ -26,6 +26,7 @@ export const SecurePayment: React.FC<SecurePaymentProps> = ({
             <Link
               href="https://stripe.com/docs/security/stripe"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Learn more
             </Link>
