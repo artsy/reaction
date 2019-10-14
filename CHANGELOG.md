@@ -1,3 +1,18 @@
+# v21.7.6 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Collections breadcrumb navigation bug fix [#2902](https://github.com/artsy/reaction/pull/2902) ([@ashleyjelks](https://github.com/ashleyjelks))
+- [GROW-1587] ensure custom collection header image height is correct at small breakpoint [#2895](https://github.com/artsy/reaction/pull/2895) ([@xtina-starr](https://github.com/xtina-starr))
+- [GROW-1580] truncate featured collection description by line count vs characters [#2898](https://github.com/artsy/reaction/pull/2898) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.7.5 (Fri Oct 11 2019)
 
 #### 🐛  Bug Fix
