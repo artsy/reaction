@@ -2,7 +2,6 @@ import {
   Box,
   color,
   Flex,
-  ReadMore,
   ResponsiveImage,
   Sans,
   Serif,
@@ -112,6 +111,30 @@ export const FeaturedCollectionEntity: React.FC<
     })
   }
 
+  const getTruncatedDescription = (lines: number) => {
+    return (
+      <Truncator
+        maxLineCount={lines}
+        ReadMoreLink={() => {
+          return (
+            <>
+              {`... `}
+              <ReadMoreLink size="2" weight="medium" display="inline">
+                Read more
+              </ReadMoreLink>
+            </>
+          )
+        }}
+      >
+        <>
+          {description && (
+            <span dangerouslySetInnerHTML={{ __html: description }} />
+          )}
+        </>
+      </Truncator>
+    )
+  }
+
   return (
     <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
@@ -125,17 +148,8 @@ export const FeaturedCollectionEntity: React.FC<
           <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
         )}
         <ExtendedSerif size="3" mt={1}>
-          <ReadMore
-            disabled
-            maxChars={110}
-            content={
-              <>
-                {description && (
-                  <span dangerouslySetInnerHTML={{ __html: description }} />
-                )}
-              </>
-            }
-          />
+          <Media lessThan="md">{getTruncatedDescription(4)}</Media>
+          <Media greaterThan="sm">{getTruncatedDescription(3)}</Media>
         </ExtendedSerif>
       </StyledLink>
     </Container>
@@ -212,4 +226,8 @@ export const StyledLink = styled(RouterLink)`
   &:hover {
     text-decoration: none;
   }
+`
+
+const ReadMoreLink = styled(Sans)`
+    text-decoration: underline;
 `
