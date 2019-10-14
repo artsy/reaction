@@ -13,6 +13,7 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { Truncator } from "Components/Truncator"
 import { ArrowButton, Carousel } from "Components/v2"
+import currency from "currency.js"
 import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -98,6 +99,10 @@ export const FeaturedCollectionEntity: React.FC<
 > = ({ itemNumber, member }) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
+  const formattedPrice = currency(price_guidance, {
+    separator: ",",
+    precision: 0,
+  }).format()
 
   const handleClick = () => {
     trackEvent({
@@ -145,7 +150,7 @@ export const FeaturedCollectionEntity: React.FC<
           <Truncator maxLineCount={1}>{title}</Truncator>
         </Serif>
         {price_guidance && (
-          <Sans size="2" color="black60">{`From $${price_guidance}`}</Sans>
+          <Sans size="2" color="black60">{`From $${formattedPrice}`}</Sans>
         )}
         <ExtendedSerif size="3" mt={1}>
           <Media lessThan="md">{getTruncatedDescription(4)}</Media>
