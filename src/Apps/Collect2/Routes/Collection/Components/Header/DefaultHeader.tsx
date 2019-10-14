@@ -1,4 +1,4 @@
-import { Box, color, Flex, Image } from "@artsy/palette"
+import { Box, color, Flex, Image, media } from "@artsy/palette"
 import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
@@ -72,8 +72,14 @@ export const CollectionDefaultHeader: FC<Props> = ({
                   })
                 }}
               >
+                {/**
+                 * Don't add 5px of padding to left margin of the first image
+                 * nor to the right marging of the last image in the header
+                 * because the header should bleed to the edge of the screen
+                 */}
                 <Image
-                  mx={0.5}
+                  ml={i === 0 ? 0 : 0.5}
+                  mr={i === artworksToRender.length - 1 ? 0 : 0.5}
                   height={defaultHeaderImageHeight}
                   src={
                     smallViewport
@@ -149,6 +155,11 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
 const DefaultHeaderContainer = styled(Box)`
   background-color: ${color("black5")};
   overflow: hidden;
+
+  ${media.xs`
+    margin-left: -20px;
+    margin-right: -20px;
+  `};
 `
 const HeaderArtworks = styled(Flex)`
   flex-direction: row;
