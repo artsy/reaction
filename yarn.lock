@@ -41,10 +41,10 @@
     styled-system "^3.1.11"
     trunc-html "^1.1.2"
 
-"@artsy/react-html-parser@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@artsy/react-html-parser/-/react-html-parser-3.0.0.tgz#0d8f640644824765b81760e0b8fe2e99d89e61da"
-  integrity sha512-GTCfk0OMTfXWggQVJYWa2wf8Qmv03iuw8TAtFjrEHlTPaC+yJ/o8WySqc76ceXC9p96Y/rVDGMpZGqIarCWQzA==
+"@artsy/react-html-parser@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@artsy/react-html-parser/-/react-html-parser-3.0.2.tgz#6213d662441acf0bd8c9ee953aa77ac8d9cf1cdd"
+  integrity sha512-FXiRSqfSvwpz/QgwaqFvjJsbDmo9qMGpvUp/0p1V6muaJbGnfxkTSxAYWmYlFst6bmjhVxCYKxvgQhEVE03Wfg==
 
 "@artsy/react-responsive-media@^2.0.0-beta.5":
   version "2.0.0-beta.5"
