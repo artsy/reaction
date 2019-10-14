@@ -183,7 +183,7 @@ export const getArtsySlugsFromHTML = (
   html: string,
   model: string
 ): string[] => {
-  const parser = new window.DOMParser()
+  const parser = new DOMParser()
   const doc = parser.parseFromString(html, "text/html")
 
   const slugs: string[] = []
