@@ -15,7 +15,7 @@ export const VerifiedSeller: React.FC<VerifiedSellerProps> = ({
   ...other
 }) => {
   return (
-    artwork.is_biddable &&
+    !artwork.is_biddable &&
     artwork.partner &&
     artwork.partner.isVerifiedSeller && (
       <TrustSignal
