@@ -17,17 +17,14 @@ const render = (
     Component: (props: any) => (
       <AuthenticityCertificateFragmentContainer
         artwork={{
-          " $refType": null,
           ...artwork,
         }}
         {...props}
         {...extraProps}
       />
     ),
-    mockResolvers: {
-      Artwork: () => ({
-        ...artwork,
-      }),
+    mockData: {
+      artwork,
     },
     query: graphql`
       query AuthenticityCertificateTestQuery {
