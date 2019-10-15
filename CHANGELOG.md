@@ -1,3 +1,15 @@
+# v21.8.3 (Tue Oct 15 2019)
+
+#### 🐛  Bug Fix
+
+- Remove snapping effect from mobile carousels because it causes weirdness in iOS 13. [#2910](https://github.com/artsy/reaction/pull/2910) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v21.8.2 (Tue Oct 15 2019)
 
 #### 🐛  Bug Fix
