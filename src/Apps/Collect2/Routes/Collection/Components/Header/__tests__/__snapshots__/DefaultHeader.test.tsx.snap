@@ -19,14 +19,14 @@ exports[`default header component renders a snapshot 1`] = `
     }
   >
     <div
-      className="sc-bwzfXH DefaultHeader__HeaderArtworks-ermo8a-1 ikSSZq"
+      className="sc-bwzfXH DefaultHeader__HeaderArtworks-ermo8a-1 ixXvKG"
     >
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 iCfOkg"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://resized-large.cloudfront.net"
         />
@@ -36,7 +36,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6EcgtVvPwlklnB96Xo582Q%2Flarge.jpg"
         />
@@ -46,7 +46,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FgK6jwJ3DvAJwfRN86QVkXg%2Flarge.jpg"
         />
@@ -56,7 +56,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=213&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FclW8TSShyic1OZjPrQ2ZMQ%2Flarge.jpg"
         />
@@ -66,7 +66,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=218&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6im4v__40Y7_SkuaZTCVaQ%2Flarge.jpg"
         />
@@ -76,7 +76,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjUtnjk72Wp_WtNsFdvYzZg%2Flarge.jpg"
         />
@@ -86,7 +86,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=217&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Ft6sAir5cRqSVcVKeP3NJQA%2Flarge.jpg"
         />
@@ -96,7 +96,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=223&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIbCYjysUtSW7xkQ_kj0D8w%2Flarge.jpg"
         />
@@ -106,7 +106,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 dgNeGC"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FkZSmv3CeHhIzV9DrE1gcug%2Flarge.jpg"
         />
@@ -116,7 +116,7 @@ exports[`default header component renders a snapshot 1`] = `
         onClick={[Function]}
       >
         <img
-          className="Imageshared__BaseImage-sc-1dymtq1-0 cnqsDZ"
+          className="DefaultHeader__HeaderImage-ermo8a-2 hqcjhN Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
           onContextMenu={[Function]}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=222&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSsSCXZj6gJgfsyzbA4ffCw%2Flarge.jpg"
         />
