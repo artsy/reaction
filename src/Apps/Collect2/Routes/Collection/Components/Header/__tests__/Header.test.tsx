@@ -124,7 +124,7 @@ describe("collections header", () => {
 
       const component = mountComponent(props)
 
-      expect(component.text()).toContain("Scooby Doo")
+      expect(component.find("h1").text()).toContain("Scooby Doo")
     })
 
     it("renders breadcrumb category", () => {

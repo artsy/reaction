@@ -248,7 +248,9 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                     <Link to={categoryTarget}>{collection.category}</Link>
                   </BreadcrumbContainer>
                   <Spacer mt={1} />
-                  <Serif size={["6", "10"]}>{collection.title}</Serif>
+                  <Serif size={["6", "10"]} element="h1">
+                    {collection.title}
+                  </Serif>
                 </MetaContainer>
                 <Grid>
                   <Row>
