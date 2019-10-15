@@ -5,8 +5,12 @@ import { Resolver } from "found-relay"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import {
+  BidQueryResponse,
+  BidQueryResponseFixture,
+} from "../__fixtures__/routes_BidQuery"
+import {
   DeFragedRegisterQueryResponse,
-  RegisterQueryResponseFixture as Fixture,
+  RegisterQueryResponseFixture,
 } from "../__fixtures__/routes_RegisterQuery"
 
 describe("Auction/routes", () => {
@@ -24,84 +28,208 @@ describe("Auction/routes", () => {
     })
   }
 
-  const mockResolver = (
+  const mockRegisterResolver = (
     data: DeFragedRegisterQueryResponse
   ): DeFragedRegisterQueryResponse => ({
     sale: data.sale,
     me: data.me,
   })
 
+  const mockConfirmBidResolver = ({
+    artwork = {},
+    saleArtwork = {},
+    sale = {},
+    me = {},
+  }: Partial<{
+    artwork: Partial<BidQueryResponse["artwork"]>
+    sale: Partial<BidQueryResponse["artwork"]["saleArtwork"]["sale"]>
+    saleArtwork: Partial<BidQueryResponse["artwork"]["saleArtwork"]>
+    me: Partial<BidQueryResponse["me"]>
+  }> = {}): BidQueryResponse => ({
+    ...BidQueryResponseFixture,
+    artwork: {
+      ...BidQueryResponseFixture.artwork,
+      ...artwork,
+      saleArtwork: {
+        ...BidQueryResponseFixture.artwork.saleArtwork,
+        ...saleArtwork,
+        sale: {
+          ...BidQueryResponseFixture.artwork.saleArtwork.sale,
+          ...sale,
+        },
+      },
+    },
+    me: {
+      ...BidQueryResponseFixture.me,
+      ...me,
+    },
+  })
+
   it("renders the Auction FAQ view", async () => {
-    const { status } = await render("/auction-faq", mockResolver(Fixture))
+    const { status } = await render("/auction-faq", {})
 
     expect(status).toBe(200)
   })
 
-  it("does not redirect if a sale is found", async () => {
-    const { redirect, status } = await render(
-      `/auction-registration/${Fixture.sale.id}`,
-      mockResolver(Fixture)
-    )
+  describe("Confirm Bid: /:saleId/bid/:artworkId", () => {
+    it("does not redirect if the user is qualified to bid in the sale, the sale is open, and the artwork is biddable", async () => {
+      const fixture: BidQueryResponse = mockConfirmBidResolver()
+      const { redirect, status } = await render(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
+          fixture.artwork.id
+        }`,
+        fixture
+      )
 
-    expect(status).toBe(200)
-    expect(redirect).toBeUndefined
-  })
+      expect(status).toBe(200)
+      expect(redirect).toBeUndefined
+    })
 
-  it("also responds to auction-registration2 route", async () => {
-    const { status } = await render(
-      `/auction-registration2/${Fixture.sale.id}`,
-      mockResolver(Fixture)
-    )
+    it("redirects to confirm registration page if user is registered but not qualified to bid (to remind them)", async () => {
+      const fixture: BidQueryResponse = mockConfirmBidResolver({
+        sale: { registrationStatus: { qualified_for_bidding: false } },
+      })
+      const { redirect } = await render(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
+          fixture.artwork.id
+        }`,
+        fixture
+      )
 
-    expect(status).toBe(200)
-  })
+      expect(redirect.url).toBe(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/confirm-registration`
+      )
+    })
 
-  it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
-    const { redirect } = await render(
-      `/auction-registration/${Fixture.sale.id}`,
-      mockResolver({
-        ...Fixture,
-        me: {
-          ...Fixture.me,
-          has_qualified_credit_cards: true,
+    it("redirects to sale artwork page if the sale is closed", async () => {
+      const fixture: BidQueryResponse = mockConfirmBidResolver({
+        sale: {
+          is_closed: true,
         },
       })
-    )
+      const { redirect } = await render(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
+          fixture.artwork.id
+        }`,
+        fixture
+      )
+      expect(redirect.url).toBe(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/artwork/${
+          fixture.artwork.id
+        }`
+      )
+    })
 
-    expect(redirect.url).toBe(`/auction/${Fixture.sale.id}/registration-flow`)
-  })
-
-  it("redirects back to the auction if the registration window has closed", async () => {
-    const { redirect } = await render(
-      `/auction-registration/${Fixture.sale.id}`,
-      mockResolver({
-        ...Fixture,
+    it("redirects to the sale artwork page if user is not registered and registration is closed", async () => {
+      const fixture: BidQueryResponse = mockConfirmBidResolver({
         sale: {
-          ...Fixture.sale,
+          registrationStatus: null,
           is_registration_closed: true,
         },
       })
-    )
+      const { redirect } = await render(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
+          fixture.artwork.id
+        }`,
+        fixture
+      )
+      expect(redirect.url).toBe(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/artwork/${
+          fixture.artwork.id
+        }`
+      )
+    })
 
-    expect(redirect.url).toBe(`/auction/${Fixture.sale.id}`)
-  })
-
-  it("redirects to the auction confirm registration route if bidder has already registered", async () => {
-    const { redirect } = await render(
-      `/auction-registration/${Fixture.sale.id}`,
-      mockResolver({
-        ...Fixture,
+    it("redirects to the registration page if user is not registered and registration is open", async () => {
+      const fixture: BidQueryResponse = mockConfirmBidResolver({
         sale: {
-          ...Fixture.sale,
-          registrationStatus: {
-            qualified_for_bidding: true,
-          },
+          registrationStatus: null,
+          is_registration_closed: false,
         },
       })
-    )
+      const { redirect } = await render(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
+          fixture.artwork.id
+        }`,
+        fixture
+      )
+      expect(redirect.url).toBe(
+        `/auction/${fixture.artwork.saleArtwork.sale.id}/registration-flow`
+      )
+    })
+  })
 
-    expect(redirect.url).toBe(
-      `/auction/${Fixture.sale.id}/confirm-registration`
-    )
+  describe("Register: /auction-registration/:saleId", () => {
+    it("does not redirect if a sale is found", async () => {
+      const { redirect, status } = await render(
+        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        mockRegisterResolver(RegisterQueryResponseFixture)
+      )
+
+      expect(status).toBe(200)
+      expect(redirect).toBeUndefined
+    })
+
+    it("also responds to auction-registration2 route", async () => {
+      const { status } = await render(
+        `/auction-registration2/${RegisterQueryResponseFixture.sale.id}`,
+        mockRegisterResolver(RegisterQueryResponseFixture)
+      )
+
+      expect(status).toBe(200)
+    })
+
+    it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
+      const { redirect } = await render(
+        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        mockRegisterResolver({
+          ...RegisterQueryResponseFixture,
+          me: {
+            ...RegisterQueryResponseFixture.me,
+            has_qualified_credit_cards: true,
+          },
+        })
+      )
+
+      expect(redirect.url).toBe(
+        `/auction/${RegisterQueryResponseFixture.sale.id}/registration-flow`
+      )
+    })
+
+    it("redirects back to the auction if the registration window has closed", async () => {
+      const { redirect } = await render(
+        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        mockRegisterResolver({
+          ...RegisterQueryResponseFixture,
+          sale: {
+            ...RegisterQueryResponseFixture.sale,
+            is_registration_closed: true,
+          },
+        })
+      )
+
+      expect(redirect.url).toBe(
+        `/auction/${RegisterQueryResponseFixture.sale.id}`
+      )
+    })
+
+    it("redirects to the auction confirm registration route if bidder has already registered", async () => {
+      const { redirect } = await render(
+        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        mockRegisterResolver({
+          ...RegisterQueryResponseFixture,
+          sale: {
+            ...RegisterQueryResponseFixture.sale,
+            registrationStatus: {
+              qualified_for_bidding: true,
+            },
+          },
+        })
+      )
+
+      expect(redirect.url).toBe(
+        `/auction/${RegisterQueryResponseFixture.sale.id}/confirm-registration`
+      )
+    })
   })
 })
