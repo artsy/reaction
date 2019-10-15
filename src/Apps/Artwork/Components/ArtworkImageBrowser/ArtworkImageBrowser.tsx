@@ -48,6 +48,7 @@ export class LargeArtworkImageBrowser extends React.Component<
       lazyLoad: true,
     }
 
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
       <Container>
         <Carousel
@@ -118,6 +119,8 @@ export class SmallArtworkImageBrowser extends React.Component<
       groupCells: 1,
       pageDots: hasMultipleImages,
     }
+
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
       <Container>
         <Carousel
