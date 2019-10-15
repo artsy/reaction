@@ -1,3 +1,15 @@
+# v21.8.2 (Tue Oct 15 2019)
+
+#### 🐛  Bug Fix
+
+- Use h1 element for page title [#2908](https://github.com/artsy/reaction/pull/2908) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.8.1 (Mon Oct 14 2019)
 
 #### 🐛  Bug Fix
