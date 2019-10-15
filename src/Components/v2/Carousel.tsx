@@ -136,7 +136,7 @@ export const SmallCarousel: React.FC<CarouselProps> = props => {
       options={{
         cellAlign: "left",
         draggable: hasMultipleSlides,
-        freeScroll: false,
+        freeScroll: true,
         contain: true,
         friction: 0.3,
         pageDots: hasMultipleSlides,
