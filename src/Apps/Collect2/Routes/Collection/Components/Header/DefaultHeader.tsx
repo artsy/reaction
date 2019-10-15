@@ -1,4 +1,4 @@
-import { Box, color, Flex, Image, media } from "@artsy/palette"
+import { Box, color, Flex, Image, media, space } from "@artsy/palette"
 import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
@@ -7,7 +7,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { useWindowSize } from "Utils/Hooks/useWindowSize"
 
-interface Props {
+interface CollectionDefaultHeaderProps {
   headerArtworks: DefaultHeader_headerArtworks
   defaultHeaderImageHeight: number
   collection_id: string
@@ -17,7 +17,7 @@ interface Props {
 const IMAGE_MARGIN_X = 10
 const LARGE_VIEWPORT_WIDTH = 880
 
-export const CollectionDefaultHeader: FC<Props> = ({
+export const CollectionDefaultHeader: FC<CollectionDefaultHeaderProps> = ({
   headerArtworks,
   defaultHeaderImageHeight,
   collection_id,
@@ -29,7 +29,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
     return null
   }
 
-  const viewportWidth = useWindowSize()
+  const viewportWidth = useWindowSize().width
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   /**
    * Relay is returning 12 artworks since this query populates both the artworks
@@ -72,19 +72,12 @@ export const CollectionDefaultHeader: FC<Props> = ({
                   })
                 }}
               >
-                {/**
-                 * Don't add 5px of padding to left margin of the first image
-                 * nor to the right marging of the last image in the header
-                 * because the header should bleed to the edge of the screen
-                 */}
-                <Image
-                  ml={i === 0 ? 0 : 0.5}
-                  mr={i === artworksToRender.length - 1 ? 0 : 0.5}
+                <HeaderImage
                   height={defaultHeaderImageHeight}
                   src={
                     smallViewport
-                      ? artwork.image.small.url
-                      : artwork.image.large.url
+                      ? (artwork.image.small.url as string)
+                      : (artwork.image.large.url as string)
                   }
                   preventRightClick
                 />
@@ -110,18 +103,25 @@ export const getHeaderArtworks = (
   }
 
   /**
-   * Loop through the artworks array, appending a new artwork to the output array
-   * until the summed widths of the artworks are greater than the width of the viewport.
+   * Loop through the initial artworks array, appending a new artwork to the output array,
+   * and to the end of the intial artworks array until the summed widths of the artworks
+   * in the output array are greater than the width of the viewport.
    */
-  while (artworkWidths < headerWidth) {
-    artworksArray.forEach((artwork, i) => {
+  artworksArray.forEach((artwork, i) => {
+    if (artworkWidths > headerWidth) {
+      // add one more artwork to the final output array (to ensure
+      // cutoff effect) and exit loop
       headerArtworks.push(artwork)
+      return
+    }
 
-      isSmallViewport
-        ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
-        : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
-    })
-  }
+    headerArtworks.push(artwork)
+    artworksArray.push(artwork)
+
+    isSmallViewport
+      ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
+      : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
+  })
 
   return headerArtworks
 }
@@ -165,4 +165,16 @@ const HeaderArtworks = styled(Flex)`
   flex-direction: row;
   position: absolute;
   bottom: 0;
+
+  & a:first-child > img {
+    margin-left: 0px;
+  }
+
+  & a:last-child > img {
+    margin-left: 0px;
+  }
+`
+const HeaderImage = styled(Image)`
+  margin-right: ${space(0.5)}px;
+  margin-left: ${space(0.5)}px;
 `

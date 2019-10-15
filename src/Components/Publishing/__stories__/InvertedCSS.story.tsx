@@ -4,9 +4,9 @@ import { unica } from "Assets/Fonts"
 import { NewlyEstablished1 } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/NewlyEstablished"
 import React from "react"
 import styled from "styled-components"
-import { getViewportWidth } from "Utils/viewport"
+import { getViewportDimensions } from "Utils/viewport"
 
-const { height, width } = getViewportWidth()
+const { height, width } = getViewportDimensions()
 
 storiesOf("Publishing/InvertedCSS", module)
   .add("Inverted CSS Over HTML", () => (

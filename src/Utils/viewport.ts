@@ -1,4 +1,4 @@
-export const getViewportWidth = () => {
+export const getViewportDimensions = () => {
   let width: number
   let height: number
   try {
