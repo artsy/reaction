@@ -1,7 +1,7 @@
 import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
-import { BidForm_saleArtwork } from "../../../__generated__/BidForm_saleArtwork.graphql"
-import { LotInfo_artwork } from "../../../__generated__/LotInfo_artwork.graphql"
-import { routes_BidQueryResponse } from "../../../__generated__/routes_BidQuery.graphql"
+import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
+import { LotInfo_artwork } from "__generated__/LotInfo_artwork.graphql"
+import { routes_BidQueryResponse } from "__generated__/routes_BidQuery.graphql"
 
 export interface BidQueryResponse extends routes_BidQueryResponse {
   artwork: routes_BidQueryResponse["artwork"] &
