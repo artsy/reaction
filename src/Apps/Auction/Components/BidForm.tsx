@@ -10,7 +10,7 @@ import {
 import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
-import { Formik, FormikActions, FormikValues } from "formik"
+import { Form, Formik, FormikActions, FormikValues } from "formik"
 import { dropWhile } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -53,7 +53,6 @@ export const BidForm: React.FC<Props> = ({
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       render={({
-        handleSubmit,
         values,
         touched,
         errors,
@@ -62,8 +61,8 @@ export const BidForm: React.FC<Props> = ({
         setFieldTouched,
       }) => {
         return (
-          <form onSubmit={handleSubmit}>
-            <Flex flexDirection="column" as="form">
+          <Form>
+            <Flex flexDirection="column">
               <Flex flexDirection="column" py={4}>
                 <Serif pb={0.5} size="4t" weight="semibold" color="black100">
                   Set your max bid
@@ -115,7 +114,7 @@ export const BidForm: React.FC<Props> = ({
                 </Button>
               </Flex>
             </Flex>
-          </form>
+          </Form>
         )
       }}
     />

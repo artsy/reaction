@@ -1,11 +1,22 @@
 import { Box, Separator, Serif } from "@artsy/palette"
+import {
+  ConfirmBidCreateBidderPositionMutation,
+  ConfirmBidCreateBidderPositionMutationResponse,
+} from "__generated__/ConfirmBidCreateBidderPositionMutation.graphql"
 import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/BidForm"
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { FormikActions } from "formik"
 import React from "react"
 import { Title } from "react-head"
-import { createFragmentContainer, RelayProp } from "react-relay"
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+  RelayProp,
+} from "react-relay"
+import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
@@ -28,6 +39,80 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
     saleArtwork,
   })
 
+  function createBidderPosition(maxBidAmountCents: number) {
+    return new Promise(async (resolve, reject) => {
+      commitMutation<ConfirmBidCreateBidderPositionMutation>(
+        props.relay.environment,
+        {
+          onCompleted: data => {
+            resolve(data)
+          },
+          onError: error => {
+            reject(error)
+          },
+          mutation: graphql`
+            mutation ConfirmBidCreateBidderPositionMutation(
+              $input: BidderPositionInput!
+            ) {
+              createBidderPosition(input: $input) {
+                result {
+                  status
+                  message_header
+                  message_description_md
+                }
+              }
+            }
+          `,
+          variables: {
+            input: {
+              sale_id: sale.id,
+              artwork_id: artwork.id,
+              max_bid_amount_cents: maxBidAmountCents,
+            },
+          },
+        }
+      )
+    })
+  }
+
+  function handleMutationError(actions: FormikActions<object>, error: Error) {
+    logger.error(error)
+
+    let errorMessages: string[]
+    if (Array.isArray(error)) {
+      errorMessages = error.map(e => e.message)
+    } else if (typeof error === "string") {
+      errorMessages = [error]
+    } else if (error.message) {
+      errorMessages = [error.message]
+    }
+
+    // TODO: add tracking with errorMessages
+    logger.error(errorMessages) // remove once tracking is implemented
+
+    actions.setSubmitting(false)
+    actions.setStatus("submissionFailed")
+  }
+
+  function handleSubmit(
+    values: { selectedBid: number },
+    actions: FormikActions<object>
+  ) {
+    createBidderPosition(Number(values.selectedBid))
+      .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
+        // TODO: add tracking here
+        window.location.assign(
+          `${sd.APP_URL}/auction/${sale.id}/artwork/${artwork.id}`
+        )
+      })
+      .catch(error => {
+        handleMutationError(actions, error)
+      })
+      .finally(() => {
+        actions.setSubmitting(false)
+      })
+  }
+
   return (
     <AppContainer>
       <Title>Auction Registration</Title>
@@ -39,12 +124,7 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
         <BidForm
           showPricingTransparency={Boolean(/pt=1/.test(props.location.search))}
           saleArtwork={saleArtwork}
-          onSubmit={(values, actions) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2))
-              actions.setSubmitting(false)
-            }, 2000)
-          }}
+          onSubmit={handleSubmit}
         />
       </Box>
     </AppContainer>
