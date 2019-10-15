@@ -1,6 +1,3 @@
-// import { Bid_me } from "__generated__/Bid_me.graphql"
-// import { Bid_artwork } from "__generated__/Bid_artwork.graphql"
-// import { routes_BidQueryResponse } from "__generated__/routes_BidQuery.graphql"
 import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
 import { BidForm_saleArtwork } from "../../../__generated__/BidForm_saleArtwork.graphql"
 import { LotInfo_artwork } from "../../../__generated__/LotInfo_artwork.graphql"
@@ -31,7 +28,6 @@ export const BidQueryResponseFixture: BidQueryResponse = {
     saleArtwork: {
       " $fragmentRefs": null as never,
       " $refType": null as never,
-      // " $fragmentRefs": null,
       _id: "saleArtworkid",
       id: "saleArtworkslug",
       counts: { bidderPositions: 3 },
