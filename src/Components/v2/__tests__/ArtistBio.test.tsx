@@ -43,19 +43,4 @@ describe("ArtistBio", () => {
 
     expect(wrapper.html()).toContain(biography_blurb.text)
   })
-
-  it("renders a ReadMore expandable area", async () => {
-    const wrapper = await getWrapper()
-    expect(wrapper.find("ReadMore").length).toBe(1)
-  })
-
-  // TODO: Chris, this test needs finishing.
-  xit("triggers callback when clicked", async done => {
-    const wrapper = await getWrapper({
-      onReadMoreClicked: () => {
-        done()
-      },
-    })
-    wrapper.find("Container").simulate("click")
-  })
 })

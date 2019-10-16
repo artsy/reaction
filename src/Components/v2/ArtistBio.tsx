@@ -1,8 +1,7 @@
-import { ReadMore, Serif } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Media } from "Utils/Responsive"
 
 export interface ArtistBioProps {
   bio: ArtistBio_bio
@@ -16,20 +15,15 @@ export const MAX_CHARS = {
 }
 
 export class ArtistBio extends React.Component<ArtistBioProps> {
-  renderReadMore = size => {
-    return (
-      <ReadMore
-        onReadMoreClicked={this.props.onReadMoreClicked}
-        maxChars={size === "xs" ? MAX_CHARS.xs : MAX_CHARS.default}
-        content={this.props.bio.biography_blurb.text}
-      />
-    )
-  }
   render() {
+    const { bio } = this.props
     return (
       <Serif size="3">
-        <Media at="xs">{this.renderReadMore("xs")}</Media>
-        <Media greaterThan="xs">{this.renderReadMore("rest")}</Media>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: bio.biography_blurb.text,
+          }}
+        />
       </Serif>
     )
   }

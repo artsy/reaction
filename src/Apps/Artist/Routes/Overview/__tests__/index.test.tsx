@@ -24,7 +24,7 @@ describe("OverviewRoute", () => {
       )
     }
 
-    it("Does not display recommendations if related.artists is empty", () => {
+    it.only("Does not display recommendations if related.artists is empty", () => {
       const wrapper = getWrapper(defaultArtist)
 
       expect(wrapper.find(ArtistRecommendations).length).toEqual(0)

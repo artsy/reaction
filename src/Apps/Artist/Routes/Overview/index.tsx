@@ -47,13 +47,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
     // no-op
   }
 
-  maybeShowGenes() {
-    const { isReadMoreExpanded } = this.state
-    const hasNoBio = !this.props.artist.biography_blurb.text
-
-    return isReadMoreExpanded || hasNoBio
-  }
-
   render() {
     if (!this.props) {
       return null
@@ -74,7 +67,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
-    const showGenes = this.maybeShowGenes()
 
     const isClient = typeof window !== "undefined"
     const showRecommendations =
@@ -94,13 +86,11 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   />
                 </>
               )}
-              {showGenes && (
-                <>
-                  <Spacer mb={1} />
-                  <Genes artist={artist} />
-                  <Spacer mb={1} />
-                </>
-              )}
+              <>
+                <Spacer mb={1} />
+                <Genes artist={artist} />
+                <Spacer mb={1} />
+              </>
               {showConsignable && (
                 <>
                   <Spacer mb={1} />
