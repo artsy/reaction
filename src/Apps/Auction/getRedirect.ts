@@ -12,7 +12,7 @@ export function registerRedirect(
 ): Redirect | null {
   if (me.has_qualified_credit_cards) {
     return {
-      path: `/auction/${sale.id}/registration-flow`,
+      path: registrationFlowPath(sale),
       reason: "user already has a qualified credit card",
     }
   } else if (!sale.is_auction) {
@@ -22,12 +22,12 @@ export function registerRedirect(
     }
   } else if (!isRegisterable(sale)) {
     return {
-      path: `/auction/${sale.id}`,
+      path: auctionPath(sale),
       reason: "auction must be registerable",
     }
   } else if (userRegisteredToBid(sale)) {
     return {
-      path: `/auction/${sale.id}/confirm-registration`,
+      path: confirmRegistrationPath(sale),
       reason: "user is already registered to bid",
     }
   }
