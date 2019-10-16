@@ -11,7 +11,6 @@ export const useWindowSize = () => {
       setSize({ width, height })
     }
     window.addEventListener("resize", resize)
-    resize()
     return () => window.removeEventListener("resize", resize)
   }, [])
 

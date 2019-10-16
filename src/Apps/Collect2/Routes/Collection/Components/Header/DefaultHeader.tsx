@@ -96,6 +96,7 @@ export const getHeaderArtworks = (
   isSmallViewport: boolean
 ) => {
   let artworkWidths = 0
+  let shouldAppendDuplicateArtworksToHeader = true
   const headerArtworks: any[] = []
 
   if (artworksArray.length < 1) {
@@ -104,25 +105,27 @@ export const getHeaderArtworks = (
 
   /**
    * Loop through the initial artworks array, appending a new artwork to the output array,
-   * and to the end of the intial artworks array until the summed widths of the artworks
-   * in the output array are greater than the width of the viewport.
+   * until the summed widths of the artworks in the output array are greater than the
+   * width of the viewport.
    */
-  artworksArray.forEach((artwork, i) => {
-    if (artworkWidths > headerWidth) {
-      // add one more artwork to the final output array (to ensure
-      // cutoff effect) and exit loop
+  while (shouldAppendDuplicateArtworksToHeader) {
+    for (const artwork of artworksArray) {
+      if (artworkWidths > headerWidth) {
+        /** add one more artwork to the final output array (to
+         * handle margin-x between images) then exit while loop
+         * */
+        headerArtworks.push(artwork)
+        shouldAppendDuplicateArtworksToHeader = false
+        return headerArtworks
+      }
+
       headerArtworks.push(artwork)
-      return
+
+      isSmallViewport
+        ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
+        : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
     }
-
-    headerArtworks.push(artwork)
-    artworksArray.push(artwork)
-
-    isSmallViewport
-      ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
-      : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
-  })
-
+  }
   return headerArtworks
 }
 
