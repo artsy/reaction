@@ -73,9 +73,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openAuctionAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -118,9 +118,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openBuyNowAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 

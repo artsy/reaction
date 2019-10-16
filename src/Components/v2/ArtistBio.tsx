@@ -2,6 +2,7 @@ import { Serif } from "@artsy/palette"
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 
 export interface ArtistBioProps {
   bio: ArtistBio_bio
@@ -9,17 +10,12 @@ export interface ArtistBioProps {
   maxChars?: number
 }
 
-export const MAX_CHARS = {
-  xs: 100,
-  default: 320,
-}
-
 export class ArtistBio extends React.Component<ArtistBioProps> {
   render() {
     const { bio } = this.props
     return (
       <Serif size="3">
-        <span
+        <BioSpan
           dangerouslySetInnerHTML={{
             __html: bio.biography_blurb.text,
           }}
@@ -38,3 +34,18 @@ export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
     }
   `,
 })
+
+/*
+  Using dangerouslySetInnerHTML in our span adds an inline <p>.
+  Here we make sure the inline <p> is formatted properly.
+*/
+const BioSpan = styled.span`
+  > * {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-bottom: 1em;
+  }
+  > *:last-child {
+    display: inline;
+  }
+`
