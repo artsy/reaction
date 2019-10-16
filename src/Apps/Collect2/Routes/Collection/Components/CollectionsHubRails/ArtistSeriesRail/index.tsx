@@ -15,7 +15,7 @@ export interface ArtistSeriesRailProps {
 export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   collectionGroup,
 }) => {
-  const { members } = collectionGroup
+  const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const ArtistSeriesRail: React.FC<ArtistSeriesRailProps> = ({
   return (
     <Content mt={2} py={3}>
       <Serif size="5" mb={1}>
-        Trending Artist Series
+        {name}
       </Serif>
       <Carousel
         height="250px"
@@ -83,6 +83,7 @@ export const ArtistSeriesRailContainer = createFragmentContainer(
     collectionGroup: graphql`
       fragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {
         groupType
+        name
         members {
           ...ArtistSeriesEntity_member
         }

@@ -7,6 +7,7 @@ declare const _ArtistSeriesRail_collectionGroup$ref: unique symbol;
 export type ArtistSeriesRail_collectionGroup$ref = typeof _ArtistSeriesRail_collectionGroup$ref;
 export type ArtistSeriesRail_collectionGroup = {
     readonly groupType: MarketingGroupTypes;
+    readonly name: string;
     readonly members: ReadonlyArray<{
         readonly " $fragmentRefs": ArtistSeriesEntity_member$ref;
     }>;
@@ -26,6 +27,13 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "groupType",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
       "args": null,
       "storageKey": null
     },
@@ -54,5 +62,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7479767af0f703142f82e6e5257f792f';
+(node as any).hash = '74444f1335a930cac0d23033f2438ad6';
 export default node;
