@@ -1,3 +1,15 @@
+# v21.9.6 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Test] Update FollowArtistPopover to use renderRelayTree [#2917](https://github.com/artsy/reaction/pull/2917) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v21.9.5 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
