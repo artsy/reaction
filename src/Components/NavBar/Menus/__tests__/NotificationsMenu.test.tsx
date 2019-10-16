@@ -1,15 +1,10 @@
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import { mount } from "enzyme"
 import React from "react"
 import { NotificationMenuItems } from "../NotificationsMenu"
 
 describe("NotificationsMenu", () => {
   const getWrapper = (props = NotificationMenuFixture) => {
-    return mount(
-      <RelayStubProvider>
-        <NotificationMenuItems {...props} />
-      </RelayStubProvider>
-    )
+    return mount(<NotificationMenuItems {...props} />)
   }
 
   it("renders the correct number of menu items", () => {
@@ -21,15 +16,20 @@ describe("NotificationsMenu", () => {
     const wrapper = getWrapper()
     const menuItem = wrapper.find("MenuItem").first()
     expect(menuItem.find("Image").length).toEqual(1)
-    expect(wrapper.html()).toContain("1 work added")
-    expect(wrapper.html()).toContain("David Hockney")
+    expect(menuItem.html()).toContain("1 work added")
+    expect(menuItem.html()).toContain("David Hockney")
     expect(wrapper.find("Link").html()).toContain("View all")
     expect(wrapper.find("Link").prop("href")).toContain("/works-for-you")
   })
 
   it("renders proper zerostate", () => {
     const wrapper = getWrapper({} as any)
-    expect(wrapper.html()).toContain("No new works")
+    expect(
+      wrapper
+        .find("Flex")
+        .first()
+        .html()
+    ).toContain("No new works")
   })
 })
 
