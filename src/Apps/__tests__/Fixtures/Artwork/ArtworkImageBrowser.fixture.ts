@@ -13,7 +13,7 @@ export const ArtworkImageBrowserFixture = {
     images: [
       {
         id: "5ba674c17cc3c01fe843281a",
-        uri:
+        url:
           "https://d32dm0rphc51dk.cloudfront.net/xqsNp6x9eJVhM6pnqL_daQ/larger.jpg",
         placeholder: {
           url:
@@ -21,6 +21,7 @@ export const ArtworkImageBrowserFixture = {
         },
         aspectRatio: 0.69,
         is_zoomable: true,
+        is_default: true,
         deepZoom: {
           Image: {
             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
@@ -35,7 +36,7 @@ export const ArtworkImageBrowserFixture = {
       },
       {
         id: "5ba67628068a02634b44f101",
-        uri:
+        url:
           "https://d32dm0rphc51dk.cloudfront.net/Hywp9kybFtHZnghRm4diWw/larger.jpg",
         placeholder: {
           url:
@@ -43,6 +44,7 @@ export const ArtworkImageBrowserFixture = {
         },
         aspectRatio: 0.71,
         is_zoomable: true,
+        is_default: false,
         deepZoom: {
           Image: {
             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
@@ -57,7 +59,7 @@ export const ArtworkImageBrowserFixture = {
       },
       {
         id: "5ba676248126a07fc1601799",
-        uri:
+        url:
           "https://d32dm0rphc51dk.cloudfront.net/okxS9YRwv5B7mlU9g2Wifw/larger.jpg",
         placeholder: {
           url:
@@ -65,6 +67,7 @@ export const ArtworkImageBrowserFixture = {
         },
         aspectRatio: 1.33,
         is_zoomable: true,
+        is_default: false,
         deepZoom: {
           Image: {
             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
@@ -79,7 +82,7 @@ export const ArtworkImageBrowserFixture = {
       },
       {
         id: "5ba67624d7e8867fc2aa12d2",
-        uri:
+        url:
           "https://d32dm0rphc51dk.cloudfront.net/556ER3g_ki0pyOEZO0k0ag/larger.jpg",
         placeholder: {
           url:
@@ -87,6 +90,7 @@ export const ArtworkImageBrowserFixture = {
         },
         aspectRatio: 1.17,
         is_zoomable: true,
+        is_default: false,
         deepZoom: {
           Image: {
             xmlns: "http://schemas.microsoft.com/deepzoom/2008",
