@@ -160,7 +160,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
       <Container>
         Want to sell a work by{" "}
         {artistsCount === 1 ? "this artist" : "these artists"}?{" "}
-        <Link onClick={this.onClickConsign.bind(this)}>Learn more</Link>.
+        <Link onClick={this.onClickConsign.bind(this)}>Consign with Artsy</Link>
+        .
       </Container>
     )
   }

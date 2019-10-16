@@ -100,7 +100,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       href="/consign"
                       onClick={this.handleConsignClick.bind(this)}
                     >
-                      Learn more
+                      Consign with Artsy
                     </a>
                     .
                   </Sans>
