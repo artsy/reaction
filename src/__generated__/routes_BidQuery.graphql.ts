@@ -16,9 +16,14 @@ export type routes_BidQueryResponse = {
             readonly _id: string;
             readonly id: string;
             readonly sale: ({
+                readonly registrationStatus: ({
+                    readonly qualified_for_bidding: boolean | null;
+                }) | null;
                 readonly _id: string;
                 readonly id: string;
                 readonly name: string | null;
+                readonly is_closed: boolean | null;
+                readonly is_registration_closed: boolean | null;
             }) | null;
             readonly " $fragmentRefs": LotInfo_saleArtwork$ref & BidForm_saleArtwork$ref;
         }) | null;
@@ -26,12 +31,6 @@ export type routes_BidQueryResponse = {
     }) | null;
     readonly me: ({
         readonly has_qualified_credit_cards: boolean | null;
-        readonly bidders: ReadonlyArray<({
-            readonly qualified_for_bidding: boolean | null;
-            readonly sale: ({
-                readonly name: string | null;
-            }) | null;
-        }) | null> | null;
     }) | null;
 };
 export type routes_BidQuery = {
@@ -56,9 +55,15 @@ query routes_BidQuery(
       _id
       id
       sale {
+        registrationStatus {
+          qualified_for_bidding
+          __id
+        }
         _id
         id
         name
+        is_closed
+        is_registration_closed
         __id
       }
       __id
@@ -67,14 +72,6 @@ query routes_BidQuery(
   }
   me {
     has_qualified_credit_cards
-    bidders(sale_id: $saleID) {
-      qualified_for_bidding
-      sale {
-        name
-        __id
-      }
-      __id
-    }
     __id
   }
 }
@@ -161,18 +158,11 @@ v4 = [
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "__id",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v6 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "sale",
@@ -181,13 +171,52 @@ v7 = {
   "concreteType": "Sale",
   "plural": false,
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "registrationStatus",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Bidder",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "qualified_for_bidding",
+          "args": null,
+          "storageKey": null
+        },
+        v5
+      ]
+    },
     v2,
     v3,
-    v5,
-    v6
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_closed",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "is_registration_closed",
+      "args": null,
+      "storageKey": null
+    },
+    v5
   ]
 },
-v8 = {
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "me",
@@ -203,49 +232,17 @@ v8 = {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "bidders",
-      "storageKey": null,
-      "args": v4,
-      "concreteType": "Bidder",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "qualified_for_bidding",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "sale",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sale",
-          "plural": false,
-          "selections": [
-            v5,
-            v6
-          ]
-        },
-        v6
-      ]
-    },
-    v6
+    v5
   ]
 },
-v9 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cents",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -257,7 +254,7 @@ return {
   "operationKind": "query",
   "name": "routes_BidQuery",
   "id": null,
-  "text": "query routes_BidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        _id\n        id\n        name\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    bidders(sale_id: $saleID) {\n      qualified_for_bidding\n      sale {\n        name\n        __id\n      }\n      __id\n    }\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
+  "text": "query routes_BidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -303,14 +300,14 @@ return {
               },
               v2,
               v3,
-              v7,
-              v6
+              v6,
+              v5
             ]
           },
-          v6
+          v5
         ]
       },
-      v8
+      v7
     ]
   },
   "operation": {
@@ -356,7 +353,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v6,
+          v5,
           v3,
           {
             "kind": "LinkedField",
@@ -408,11 +405,11 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v9,
-                  v10
+                  v8,
+                  v9
                 ]
               },
-              v6,
+              v5,
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -429,21 +426,21 @@ return {
                 "concreteType": "BidIncrementsFormatted",
                 "plural": true,
                 "selections": [
-                  v9,
-                  v10
+                  v8,
+                  v9
                 ]
               },
               v2,
               v3,
-              v7
+              v6
             ]
           }
         ]
       },
-      v8
+      v7
     ]
   }
 };
 })();
-(node as any).hash = 'aee93f965a54247486b2cd0865c16860';
+(node as any).hash = 'af13ddd3e0d60d9cbda2a148ab938c56';
 export default node;
