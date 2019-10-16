@@ -27,16 +27,8 @@ export interface OverviewRouteProps {
   tracking?: TrackingProp
 }
 
-interface State {
-  isReadMoreExpanded: boolean
-}
-
 @track()
-export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
-  state = {
-    isReadMoreExpanded: false,
-  }
-
+export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
   @track<OverviewRouteProps>(props => ({
     action_type: Schema.ActionType.Click,
     // TODO: Feel like these should become enums too
