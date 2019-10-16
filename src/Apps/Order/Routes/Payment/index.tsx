@@ -74,7 +74,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
       if (result.type === "error") {
         this.props.dialog.showErrorDialog({
-          title: "Your card was declined",
+          title: result.error,
           message:
             "Please enter another payment method or contact your bank for more information.",
         })

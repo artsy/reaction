@@ -48,13 +48,14 @@ export class LargeArtworkImageBrowser extends React.Component<
       lazyLoad: true,
     }
 
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
       <Container>
         <Carousel
           showArrows={hasMultipleImages}
           options={options}
           oneSlideVisible
-          height="60vh"
+          height="auto"
           setCarouselRef={setCarouselRef}
           data={carouselImages}
           renderLeftArrow={({ flickity }) => (
@@ -73,6 +74,7 @@ export class LargeArtworkImageBrowser extends React.Component<
               />
             </Col>
           )}
+          // maxHeight is needed for google search indexing
           render={(image: Image) => {
             return (
               <Flex
@@ -81,6 +83,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                 width="100%"
                 px={hasMultipleImages ? [2, 2, 0] : 0}
                 height="60vh"
+                maxHeight="2000px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
@@ -89,6 +92,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="60vh"
+                  maxHeight="2000px"
                 />
               </Flex>
             )
@@ -115,6 +119,8 @@ export class SmallArtworkImageBrowser extends React.Component<
       groupCells: 1,
       pageDots: hasMultipleImages,
     }
+
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
       <Container>
         <Carousel
@@ -136,6 +142,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                   enabled={image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
+                  maxHeight="2000px"
                   initialHeight="45vh"
                 />
               </Flex>
