@@ -1,3 +1,15 @@
+# v21.9.4 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- Use `name` from MP for artist series rail, instead of hardcoded text. [#2915](https://github.com/artsy/reaction/pull/2915) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v21.9.3 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
