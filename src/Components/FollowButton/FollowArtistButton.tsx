@@ -177,7 +177,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
           <SuggestionsPopoverContainer>
             <SuggestionsPopover
               user={user}
-              suggested={artist}
+              artist={artist}
               onClose={() => this.closePopover()}
             />
           </SuggestionsPopoverContainer>
@@ -202,7 +202,7 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
         counts {
           follows
         }
-        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
+        ...FollowArtistPopover_artist @include(if: $showFollowSuggestions)
       }
     `,
   }

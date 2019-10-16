@@ -1,7 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistPopover_suggested$ref } from "./FollowArtistPopover_suggested.graphql";
+import { FollowArtistPopover_artist$ref } from "./FollowArtistPopover_artist.graphql";
 declare const _FollowArtistButton_artist$ref: unique symbol;
 export type FollowArtistButton_artist$ref = typeof _FollowArtistButton_artist$ref;
 export type FollowArtistButton_artist = {
@@ -12,7 +12,7 @@ export type FollowArtistButton_artist = {
     readonly counts: ({
         readonly follows: any | null;
     }) | null;
-    readonly " $fragmentRefs": FollowArtistPopover_suggested$ref;
+    readonly " $fragmentRefs": FollowArtistPopover_artist$ref;
     readonly " $refType": FollowArtistButton_artist$ref;
 };
 
@@ -85,12 +85,12 @@ const node: ConcreteFragment = {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "FollowArtistPopover_suggested",
+          "name": "FollowArtistPopover_artist",
           "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '76a8dd8d51e477cc276dbcf883045e21';
+(node as any).hash = 'a4fcc153d1a5105f48b549ecf97fa9f1';
 export default node;

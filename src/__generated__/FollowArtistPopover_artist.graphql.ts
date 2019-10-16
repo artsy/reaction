@@ -2,9 +2,9 @@
 
 import { ConcreteFragment } from "relay-runtime";
 import { FollowArtistPopoverRow_artist$ref } from "./FollowArtistPopoverRow_artist.graphql";
-declare const _FollowArtistPopover_suggested$ref: unique symbol;
-export type FollowArtistPopover_suggested$ref = typeof _FollowArtistPopover_suggested$ref;
-export type FollowArtistPopover_suggested = {
+declare const _FollowArtistPopover_artist$ref: unique symbol;
+export type FollowArtistPopover_artist$ref = typeof _FollowArtistPopover_artist$ref;
+export type FollowArtistPopover_artist = {
     readonly related: ({
         readonly suggested: ({
             readonly edges: ReadonlyArray<({
@@ -16,7 +16,7 @@ export type FollowArtistPopover_suggested = {
             }) | null> | null;
         }) | null;
     }) | null;
-    readonly " $refType": FollowArtistPopover_suggested$ref;
+    readonly " $refType": FollowArtistPopover_artist$ref;
 };
 
 
@@ -31,7 +31,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "FollowArtistPopover_suggested",
+  "name": "FollowArtistPopover_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [],
@@ -110,5 +110,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2aaa66b0aa88b4068cf423d512c5b234';
+(node as any).hash = '29a8394fc5cdd97be2738d4e745d322e';
 export default node;
