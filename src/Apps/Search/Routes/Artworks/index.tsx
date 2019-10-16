@@ -22,8 +22,17 @@ export const SearchResultsArtworksRoute: React.FC<
     <Box pt={2}>
       <ArtworkFilter
         viewer={props.viewer}
-        filters={props.location.query as any}
+        filters={props.location.query}
         onChange={updateUrl}
+        onArtworkBrickClick={(artwork, artworkBrickProps) => {
+          tracking.trackEvent({
+            action_type: AnalyticsSchema.ActionType.SelectedItemFromSearchPage,
+            query: artworkBrickProps.term,
+            item_type: "Artwork",
+            item_id: artwork.id,
+            destination_path: artwork.href,
+          })
+        }}
         onFilterClick={(key, value, filterState) => {
           tracking.trackEvent({
             action_type:
