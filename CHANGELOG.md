@@ -1,3 +1,15 @@
+# v21.9.1 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1433, PURCHASE-1534: Informative error messages and maxHeight for image carousel [#2879](https://github.com/artsy/reaction/pull/2879) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v21.9.0 (Wed Oct 16 2019)
 
 #### 🚀  Enhancement
