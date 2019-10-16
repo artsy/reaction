@@ -1,3 +1,15 @@
+# v21.9.2 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Test] Convert artist shows to use renderRelayTree [#2912](https://github.com/artsy/reaction/pull/2912) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v21.9.1 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
