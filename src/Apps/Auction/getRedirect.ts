@@ -43,24 +43,18 @@ export function confirmBidRedirect(
   const { sale } = saleArtwork
   const { registrationStatus } = sale
 
-  if (!registrationStatus)
-    return sale.is_registration_closed
-      ? {
-          path: artworkPath(sale, artwork),
-          reason: "user is not registered, registration closed",
-        }
-      : {
-          path: registrationFlowPath(sale),
-          reason: "user is not registered to bid",
-        }
-
-  if (!registrationStatus.qualified_for_bidding) {
+  if (!registrationStatus && sale.is_registration_closed) {
+    return {
+      path: artworkPath(sale, artwork),
+      reason: "user is not registered, registration closed",
+    }
+  }
+  if (registrationStatus && !registrationStatus.qualified_for_bidding) {
     return {
       path: confirmRegistrationPath(sale),
       reason: "user is not qualified for bidding",
     }
   }
-
   if (sale.is_closed) {
     return {
       path: artworkPath(sale, artwork),

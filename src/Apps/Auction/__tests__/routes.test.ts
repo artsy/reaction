@@ -140,22 +140,22 @@ describe("Auction/routes", () => {
       )
     })
 
-    it("redirects to the registration page if user is not registered and registration is open", async () => {
+    it("does not redirect if user is not registered but registration is open", async () => {
       const fixture: BidQueryResponse = mockConfirmBidResolver({
         sale: {
           registrationStatus: null,
           is_registration_closed: false,
         },
       })
-      const { redirect } = await render(
+      const { redirect, status } = await render(
         `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
           fixture.artwork.id
         }`,
         fixture
       )
-      expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/registration-flow`
-      )
+
+      expect(status).toBe(200)
+      expect(redirect).toBeUndefined
     })
   })
 
