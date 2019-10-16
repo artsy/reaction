@@ -53,7 +53,7 @@ describe("ArtistSeriesRail", () => {
 
   it("showing the correct text, price guidance, and title", () => {
     const component = mount(<ArtistSeriesRail {...props} />)
-    expect(component.text()).toMatch("Trending Artist Series")
+    expect(component.text()).toMatch("Artist Series")
     expect(component.text()).toMatch("Flags unique collections")
     expect(component.text()).toMatch("From $1,000")
   })
