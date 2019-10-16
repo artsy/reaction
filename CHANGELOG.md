@@ -1,3 +1,16 @@
+# v21.9.0 (Wed Oct 16 2019)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1589] Add trust signals tests [#2911](https://github.com/artsy/reaction/pull/2911) ([@zephraph](https://github.com/zephraph) [@sepans](https://github.com/sepans))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.8.4 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
