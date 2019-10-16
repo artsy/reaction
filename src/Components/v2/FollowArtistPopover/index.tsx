@@ -8,7 +8,7 @@ import {
   Separator,
   space,
 } from "@artsy/palette"
-import { FollowArtistPopover_suggested } from "__generated__/FollowArtistPopover_suggested.graphql"
+import { FollowArtistPopover_artist } from "__generated__/FollowArtistPopover_artist.graphql"
 import { FollowArtistPopoverQuery } from "__generated__/FollowArtistPopoverQuery.graphql"
 import { SystemContext, SystemContextProps } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
@@ -30,12 +30,12 @@ const Container = Box
 const TitleContainer = Box
 
 interface Props extends SystemContextProps {
-  suggested: FollowArtistPopover_suggested
+  artist: FollowArtistPopover_artist
   onClose?: () => void
 }
 
 const FollowArtistPopover: SFC<Props> = props => {
-  const { suggested, user } = props
+  const { artist: suggested, user } = props
   const { related } = suggested
   const suggetionsCount = related.suggested.edges.length
   if (suggetionsCount === 0) return null
@@ -77,8 +77,8 @@ const FollowArtistPopover: SFC<Props> = props => {
 export const FollowArtistPopoverFragmentContainer = createFragmentContainer(
   FollowArtistPopover,
   {
-    suggested: graphql`
-      fragment FollowArtistPopover_suggested on Artist {
+    artist: graphql`
+      fragment FollowArtistPopover_artist on Artist {
         related {
           suggested(first: 3, exclude_followed_artists: true) {
             edges {
@@ -108,7 +108,7 @@ export const FollowArtistPopoverQueryRenderer = ({
       query={graphql`
         query FollowArtistPopoverQuery($artistID: String!) {
           artist(id: $artistID) {
-            ...FollowArtistPopover_suggested
+            ...FollowArtistPopover_artist
           }
         }
       `}
@@ -116,7 +116,7 @@ export const FollowArtistPopoverQueryRenderer = ({
         return (
           props && (
             <FollowArtistPopoverFragmentContainer
-              suggested={props.artist}
+              artist={props.artist}
               user={user}
             />
           )

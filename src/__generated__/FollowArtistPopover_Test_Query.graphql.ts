@@ -2,26 +2,26 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FollowArtistPopover_artist$ref } from "./FollowArtistPopover_artist.graphql";
-export type FollowArtistPopoverQueryVariables = {
-    readonly artistID: string;
+export type FollowArtistPopover_Test_QueryVariables = {
+    readonly artist_id: string;
 };
-export type FollowArtistPopoverQueryResponse = {
+export type FollowArtistPopover_Test_QueryResponse = {
     readonly artist: ({
         readonly " $fragmentRefs": FollowArtistPopover_artist$ref;
     }) | null;
 };
-export type FollowArtistPopoverQuery = {
-    readonly response: FollowArtistPopoverQueryResponse;
-    readonly variables: FollowArtistPopoverQueryVariables;
+export type FollowArtistPopover_Test_Query = {
+    readonly response: FollowArtistPopover_Test_QueryResponse;
+    readonly variables: FollowArtistPopover_Test_QueryVariables;
 };
 
 
 
 /*
-query FollowArtistPopoverQuery(
-  $artistID: String!
+query FollowArtistPopover_Test_Query(
+  $artist_id: String!
 ) {
-  artist(id: $artistID) {
+  artist(id: $artist_id) {
     ...FollowArtistPopover_artist
     __id
   }
@@ -59,7 +59,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artistID",
+    "name": "artist_id",
     "type": "String!",
     "defaultValue": null
   }
@@ -68,7 +68,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
+    "variableName": "artist_id",
     "type": "String!"
   }
 ],
@@ -82,13 +82,13 @@ v2 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "FollowArtistPopoverQuery",
+  "name": "FollowArtistPopover_Test_Query",
   "id": null,
-  "text": "query FollowArtistPopoverQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...FollowArtistPopover_artist\n    __id\n  }\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  _id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
+  "text": "query FollowArtistPopover_Test_Query(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) {\n    ...FollowArtistPopover_artist\n    __id\n  }\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  _id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "FollowArtistPopoverQuery",
+    "name": "FollowArtistPopover_Test_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -114,7 +114,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "FollowArtistPopoverQuery",
+    "name": "FollowArtistPopover_Test_Query",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -254,5 +254,5 @@ return {
   }
 };
 })();
-(node as any).hash = '364b417ae6a387a733637fd589434356';
+(node as any).hash = 'b602d5d7930d483e0952e259777cfbea';
 export default node;
