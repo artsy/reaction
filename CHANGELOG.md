@@ -1,3 +1,15 @@
+# v21.9.5 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Move more specs to `renderRelayTree` [#2913](https://github.com/artsy/reaction/pull/2913) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v21.9.4 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
