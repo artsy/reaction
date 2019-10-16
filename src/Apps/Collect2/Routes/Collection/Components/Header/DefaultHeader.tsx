@@ -104,16 +104,13 @@ export const getHeaderArtworks = (
   }
 
   /**
-   * Loop through the initial artworks array, appending a new artwork to the output array,
+   * Loop through the initial artworks array, appending an artwork to the output array,
    * until the summed widths of the artworks in the output array are greater than the
    * width of the viewport.
    */
   while (shouldAppendDuplicateArtworksToHeader) {
     for (const artwork of artworksArray) {
       if (artworkWidths > headerWidth) {
-        /** add one more artwork to the final output array (to
-         * handle margin-x between images) then exit while loop
-         * */
         headerArtworks.push(artwork)
         shouldAppendDuplicateArtworksToHeader = false
         return headerArtworks
@@ -126,7 +123,6 @@ export const getHeaderArtworks = (
         : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
     }
   }
-  return headerArtworks
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
