@@ -1,3 +1,15 @@
+# v21.9.3 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Fix analytics event on /search filter [#2907](https://github.com/artsy/reaction/pull/2907) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.9.2 (Wed Oct 16 2019)
 
 #### 🐛  Bug Fix
