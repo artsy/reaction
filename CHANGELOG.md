@@ -1,3 +1,15 @@
+# v21.8.4 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes margins on XS default collection headers [#2904](https://github.com/artsy/reaction/pull/2904) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v21.8.3 (Tue Oct 15 2019)
 
 #### 🐛  Bug Fix
