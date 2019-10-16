@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react"
-import { getViewportWidth } from "../viewport"
+import { useLayoutEffect, useState } from "react"
+import { getViewportDimensions } from "Utils/viewport"
 
-/**
- * A React hook for triggering an update when a window is resized.
- */
-export function useWindowSize() {
-  const { width: viewportWidth } = getViewportWidth()
-  const isClient = typeof window !== undefined
-  const [windowSize, setWindowSize] = useState(viewportWidth)
+export const useWindowSize = () => {
+  const [size, setSize] = useState({ width: 0, height: 0 })
 
-  useEffect(() => {
-    if (!isClient) {
-      return () => null
+  useLayoutEffect(() => {
+    function resize() {
+      const { width, height } = getViewportDimensions()
+
+      setSize({ width, height })
     }
-
-    const handleResize = () => {
-      setWindowSize(viewportWidth)
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => window.removeEventListener("resize", handleResize)
+    window.addEventListener("resize", resize)
+    resize()
+    return () => window.removeEventListener("resize", resize)
   }, [])
 
-  return windowSize
+  return size
 }

@@ -1,4 +1,4 @@
-import { Box, color, Flex, Image } from "@artsy/palette"
+import { Box, color, Flex, Image, media, space } from "@artsy/palette"
 import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { useTracking } from "Artsy/Analytics/useTracking"
@@ -7,7 +7,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { useWindowSize } from "Utils/Hooks/useWindowSize"
 
-interface Props {
+interface CollectionDefaultHeaderProps {
   headerArtworks: DefaultHeader_headerArtworks
   defaultHeaderImageHeight: number
   collection_id: string
@@ -17,7 +17,7 @@ interface Props {
 const IMAGE_MARGIN_X = 10
 const LARGE_VIEWPORT_WIDTH = 880
 
-export const CollectionDefaultHeader: FC<Props> = ({
+export const CollectionDefaultHeader: FC<CollectionDefaultHeaderProps> = ({
   headerArtworks,
   defaultHeaderImageHeight,
   collection_id,
@@ -29,7 +29,7 @@ export const CollectionDefaultHeader: FC<Props> = ({
     return null
   }
 
-  const viewportWidth = useWindowSize()
+  const viewportWidth = useWindowSize().width
   const smallViewport = viewportWidth < LARGE_VIEWPORT_WIDTH
   /**
    * Relay is returning 12 artworks since this query populates both the artworks
@@ -72,13 +72,12 @@ export const CollectionDefaultHeader: FC<Props> = ({
                   })
                 }}
               >
-                <Image
-                  mx={0.5}
+                <HeaderImage
                   height={defaultHeaderImageHeight}
                   src={
                     smallViewport
-                      ? artwork.image.small.url
-                      : artwork.image.large.url
+                      ? (artwork.image.small.url as string)
+                      : (artwork.image.large.url as string)
                   }
                   preventRightClick
                 />
@@ -97,6 +96,7 @@ export const getHeaderArtworks = (
   isSmallViewport: boolean
 ) => {
   let artworkWidths = 0
+  let shouldAppendDuplicateArtworksToHeader = true
   const headerArtworks: any[] = []
 
   if (artworksArray.length < 1) {
@@ -104,20 +104,25 @@ export const getHeaderArtworks = (
   }
 
   /**
-   * Loop through the artworks array, appending a new artwork to the output array
-   * until the summed widths of the artworks are greater than the width of the viewport.
+   * Loop through the initial artworks array, appending an artwork to the output array,
+   * until the summed widths of the artworks in the output array are greater than the
+   * width of the viewport.
    */
-  while (artworkWidths < headerWidth) {
-    artworksArray.forEach((artwork, i) => {
+  while (shouldAppendDuplicateArtworksToHeader) {
+    for (const artwork of artworksArray) {
+      if (artworkWidths > headerWidth) {
+        headerArtworks.push(artwork)
+        shouldAppendDuplicateArtworksToHeader = false
+        return headerArtworks
+      }
+
       headerArtworks.push(artwork)
 
       isSmallViewport
         ? (artworkWidths += artwork.image.small.width + IMAGE_MARGIN_X)
         : (artworkWidths += artwork.image.large.width + IMAGE_MARGIN_X)
-    })
+    }
   }
-
-  return headerArtworks
 }
 
 export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
@@ -149,9 +154,26 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
 const DefaultHeaderContainer = styled(Box)`
   background-color: ${color("black5")};
   overflow: hidden;
+
+  ${media.xs`
+    margin-left: -20px;
+    margin-right: -20px;
+  `};
 `
 const HeaderArtworks = styled(Flex)`
   flex-direction: row;
   position: absolute;
   bottom: 0;
+
+  & a:first-child > img {
+    margin-left: 0px;
+  }
+
+  & a:last-child > img {
+    margin-left: 0px;
+  }
+`
+const HeaderImage = styled(Image)`
+  margin-right: ${space(0.5)}px;
+  margin-left: ${space(0.5)}px;
 `

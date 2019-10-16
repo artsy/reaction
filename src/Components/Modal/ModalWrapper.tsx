@@ -1,7 +1,7 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 import styled, { createGlobalStyle, keyframes } from "styled-components"
-import { getViewportWidth } from "Utils/viewport"
+import { getViewportDimensions } from "Utils/viewport"
 import FadeTransition from "../Animation/FadeTransition"
 import { media } from "../Helpers"
 import { CtaProps } from "./ModalCta"
@@ -119,7 +119,7 @@ export class ModalWrapper extends React.Component<
   render(): JSX.Element {
     const { children, width, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
-    const { width: viewportWidth } = getViewportWidth()
+    const { width: viewportWidth } = getViewportDimensions()
 
     if (isShown) {
       this.addBlurToContainers()
