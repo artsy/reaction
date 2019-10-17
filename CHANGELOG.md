@@ -1,3 +1,15 @@
+# v21.10.1 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Order] Don't refer to graphql-js at runtime. [#2920](https://github.com/artsy/reaction/pull/2920) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.10.0 (Thu Oct 17 2019)
 
 #### 🚀  Enhancement
