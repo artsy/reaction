@@ -1269,13 +1269,13 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
                     02:28
                   </div>
                 </div>
-                <div
+                <h1
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
                   Trevor Paglan
-                </div>
+                </h1>
               </div>
             </div>
           </div>
@@ -3500,13 +3500,13 @@ exports[`Video Layout matches the snapshot 1`] = `
                     02:28
                   </div>
                 </div>
-                <div
+                <h1
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
                   Trevor Paglan
-                </div>
+                </h1>
               </div>
             </div>
           </div>

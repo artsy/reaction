@@ -2,10 +2,6 @@
 
 exports[`renders a headline with children properly 1`] = `
 .c0 {
-  margin: 0;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,55 +9,64 @@ exports[`renders a headline with children properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  text-align: left;
-  max-width: 780px;
-  width: 100%;
-  margin: 10px auto 30px;
-  box-sizing: border-box;
+  max-width: 780;
+  margin-bottom: 16px;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.c2 {
+.c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
 }
 
-@media (max-width:720px) {
-  .c2 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: initial;
   }
 }
 
 <div
-  className="c0"
+  className=""
 >
   <div
-    className="c1"
+    className="c0"
   >
-    <div
-      className="c2"
+    <h1
+      className="c1"
+      fontFamily={
+        Object {
+          "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+          "fontWeight": 600,
+        }
+      }
+      fontSize={
+        Array [
+          "26px",
+          "32px",
+        ]
+      }
     >
       <div>
         Child 
         title
       </div>
-    </div>
+    </h1>
   </div>
 </div>
 `;
 
 exports[`renders a news headline properly 1`] = `
 .c0 {
-  margin: 0;
-}
-
-.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,42 +74,55 @@ exports[`renders a news headline properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  text-align: left;
-  max-width: 780px;
-  width: 100%;
-  margin: 10px auto 30px;
-  box-sizing: border-box;
+  max-width: 780;
+  margin-bottom: 16px;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.c2 {
+.c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 34px;
-  line-height: 1.1em;
-  -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
 }
 
-@media (max-width:720px) {
-  .c2 {
-    font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-    font-size: 23px;
-    line-height: 1.5em;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.1;
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: initial;
   }
 }
 
 <div
-  className="c0"
+  className=""
 >
   <div
-    className="c1"
+    className="c0"
   >
-    <div
-      className="c2"
+    <h1
+      className="c1"
+      fontFamily={
+        Object {
+          "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
+          "fontWeight": 600,
+        }
+      }
+      fontSize={
+        Array [
+          "26px",
+          "32px",
+        ]
+      }
     >
       The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.
-    </div>
+    </h1>
   </div>
 </div>
 `;

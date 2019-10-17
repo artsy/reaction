@@ -26,7 +26,9 @@ export const VideoInfoBlock: React.SFC<Props> = props => {
         {media.duration && <Sans size="3">{formatTime(media.duration)}</Sans>}
       </Flex>
 
-      <Sans size="10">{editTitle || title}</Sans>
+      <Sans size="10" element="h1">
+        {editTitle || title}
+      </Sans>
     </div>
   )
 }
