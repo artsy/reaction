@@ -5,7 +5,17 @@ import { collectRoutes } from "../Collect2/collectRoutes"
 
 storiesOf("Apps/Collect", module)
   .add("Collect", () => {
-    return <MockRouter routes={collectRoutes} initialRoute="/collect" />
+    return (
+      <MockRouter
+        routes={collectRoutes}
+        initialRoute="/collect"
+        context={{
+          // FIXME: Remove after A/B test completes
+          // @ts-ignore
+          COLLECTION_HUBS: "experiment",
+        }}
+      />
+    )
   })
   .add("Collections", () => {
     return <MockRouter routes={collectRoutes} initialRoute="/collections" />

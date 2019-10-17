@@ -18,6 +18,7 @@ import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
+import { useSystemContext } from "Artsy"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
@@ -41,15 +42,18 @@ export const CollectApp = track({
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()
 
+  // FIXME: Remove after A/B test completes
+  // @ts-ignore
+  const { COLLECTION_HUBS } = useSystemContext()
+
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
     : `${sd.APP_URL}/collect`
 
   // Client renders will get COLLECTION_HUBS from sd; server renders
   // will get it from the SystemContext.
-  const showCollectionHubs =
-    sd.COLLECTION_HUBS === "experiment" ||
-    props.COLLECTION_HUBS === "experiment"
+  const showCollectionHubs = COLLECTION_HUBS === "experiment"
+
   const { filterArtworks } = props
 
   const items = [{ path: "/collect", name: "Collect" }]
