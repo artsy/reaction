@@ -1,4 +1,4 @@
-import { Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
 export const PricingTransparency: React.FC<{}> = () => {
@@ -14,16 +14,16 @@ export const PricingTransparency: React.FC<{}> = () => {
         alignItems="baseline"
         pb={1}
       >
-        <div>
+        <Box>
           <Serif size="3t" color="black100">
             Your max bid
           </Serif>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Serif size="3t" color="black100">
             £18,000
           </Serif>
-        </div>
+        </Box>
       </Flex>
       <Flex
         flexDirection="row"
@@ -31,16 +31,16 @@ export const PricingTransparency: React.FC<{}> = () => {
         alignItems="baseline"
         pb={2}
       >
-        <div>
+        <Box>
           <Serif size="3t" color="black100">
             Buyer's Premium
           </Serif>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Serif size="3t" color="black100">
             £3,600
           </Serif>
-        </div>
+        </Box>
       </Flex>
       <Flex
         flexDirection="row"
@@ -48,16 +48,16 @@ export const PricingTransparency: React.FC<{}> = () => {
         alignItems="baseline"
         pb={1}
       >
-        <div>
+        <Box>
           <Serif size="3t" color="black100">
             Subtotal
           </Serif>
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Serif size="3t" color="black100">
             £21,600
           </Serif>
-        </div>
+        </Box>
       </Flex>
       <Sans size="2" color="black60">
         Plus any applicable shipping, taxes, and fees.
