@@ -1,3 +1,15 @@
+# v21.10.0 (Thu Oct 17 2019)
+
+#### 🚀  Enhancement
+
+- SEO Improvements to the Artist page [#2914](https://github.com/artsy/reaction/pull/2914) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v21.9.7 (Wed Oct 16 2019)
 
 
