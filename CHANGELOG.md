@@ -1,3 +1,17 @@
+# v21.10.2 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection] Pass COLLECT_HUBS a/b test to context [#2921](https://github.com/artsy/reaction/pull/2921) ([@damassi](https://github.com/damassi))
+- Don't overwrite the User-Agent header for relay operations [#2923](https://github.com/artsy/reaction/pull/2923) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v21.10.1 (Thu Oct 17 2019)
 
 #### 🐛  Bug Fix
