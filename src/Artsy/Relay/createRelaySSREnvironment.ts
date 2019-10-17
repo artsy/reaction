@@ -38,6 +38,7 @@ interface Config {
   user?: User
   checkStatus?: boolean
   relayNetwork?: RelayNetwork
+  userAgent?: string
 }
 
 export interface RelaySSREnvironment extends Environment {
@@ -46,7 +47,7 @@ export interface RelaySSREnvironment extends Environment {
 }
 
 export function createRelaySSREnvironment(config: Config = {}) {
-  const { cache = {}, checkStatus, user, relayNetwork } = config
+  const { cache = {}, checkStatus, user, relayNetwork, userAgent } = config
 
   const relaySSRMiddleware = isServer
     ? new RelayServerSSR()
@@ -63,7 +64,7 @@ export function createRelaySSREnvironment(config: Config = {}) {
      *
      * See https://bugs.chromium.org/p/chromium/issues/detail?id=571722
      */
-    "User-Agent": USER_AGENT,
+    "User-Agent": userAgent ? `${userAgent}; ${USER_AGENT}` : USER_AGENT,
   }
 
   let timeZone

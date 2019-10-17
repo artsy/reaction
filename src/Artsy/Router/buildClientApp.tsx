@@ -18,6 +18,7 @@ export function buildClientApp(config: RouterConfig) {
       const relayEnvironment = createRelaySSREnvironment({
         cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
         user,
+        userAgent: window.navigator.userAgent,
       })
 
       return relayEnvironment
