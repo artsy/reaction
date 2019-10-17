@@ -27,16 +27,8 @@ export interface OverviewRouteProps {
   tracking?: TrackingProp
 }
 
-interface State {
-  isReadMoreExpanded: boolean
-}
-
 @track()
-export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
-  state = {
-    isReadMoreExpanded: false,
-  }
-
+export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
   @track<OverviewRouteProps>(props => ({
     action_type: Schema.ActionType.Click,
     // TODO: Feel like these should become enums too
@@ -45,13 +37,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
   }))
   handleConsignClick() {
     // no-op
-  }
-
-  maybeShowGenes() {
-    const { isReadMoreExpanded } = this.state
-    const hasNoBio = !this.props.artist.biography_blurb.text
-
-    return isReadMoreExpanded || hasNoBio
   }
 
   render() {
@@ -74,7 +59,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
 
     // TODO: Hide right column if missing current event. Waiting on feedback
     const colNum = 9 // artist.currentEvent ? 9 : 12
-    const showGenes = this.maybeShowGenes()
 
     const isClient = typeof window !== "undefined"
     const showRecommendations =
@@ -94,13 +78,11 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                   />
                 </>
               )}
-              {showGenes && (
-                <>
-                  <Spacer mb={1} />
-                  <Genes artist={artist} />
-                  <Spacer mb={1} />
-                </>
-              )}
+              <>
+                <Spacer mb={1} />
+                <Genes artist={artist} />
+                <Spacer mb={1} />
+              </>
               {showConsignable && (
                 <>
                   <Spacer mb={1} />
@@ -110,7 +92,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, State> {
                       href="/consign"
                       onClick={this.handleConsignClick.bind(this)}
                     >
-                      Learn more
+                      Consign with Artsy
                     </a>
                     .
                   </Sans>

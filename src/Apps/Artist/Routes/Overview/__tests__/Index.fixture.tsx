@@ -28,6 +28,7 @@ export const defaultArtist = {
         {
           node: {
             id: "cubism",
+            href: "/gene/cubism",
           },
         },
       ],

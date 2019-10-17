@@ -41,7 +41,7 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Have a question? Read our auction FAQs or ask a specialist."
       )
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays conditions of sale link that opens conditions of sale page", () => {
@@ -73,9 +73,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openAuctionAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -95,7 +95,7 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Have a question? Read our FAQ or ask a specialist."
       )
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays FAQ link that opens Buy now FAQ page", () => {
@@ -118,9 +118,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openBuyNowAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -141,7 +141,7 @@ describe("ArtworkSidebarExtraLinks", () => {
     it("displays proper text", () => {
       expect(wrapper.text()).toContain("Have a question? Read our FAQ.")
       expect(wrapper.text()).toContain(
-        "Want to sell a work by these artists? Learn more."
+        "Want to sell a work by these artists? Consign with Artsy."
       )
     })
     it("displays FAQ link that brings collector FAQ modal", () => {
@@ -153,9 +153,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openCollectorFAQModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -173,13 +173,13 @@ describe("ArtworkSidebarExtraLinks", () => {
     it("displays proper text", () => {
       expect(wrapper.text()).not.toContain("Have a question? Read our FAQ")
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 

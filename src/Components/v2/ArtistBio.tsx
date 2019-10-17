@@ -1,8 +1,8 @@
-import { ReadMore, Serif } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Media } from "Utils/Responsive"
+import styled from "styled-components"
 
 export interface ArtistBioProps {
   bio: ArtistBio_bio
@@ -10,26 +10,16 @@ export interface ArtistBioProps {
   maxChars?: number
 }
 
-export const MAX_CHARS = {
-  xs: 100,
-  default: 320,
-}
-
 export class ArtistBio extends React.Component<ArtistBioProps> {
-  renderReadMore = size => {
-    return (
-      <ReadMore
-        onReadMoreClicked={this.props.onReadMoreClicked}
-        maxChars={size === "xs" ? MAX_CHARS.xs : MAX_CHARS.default}
-        content={this.props.bio.biography_blurb.text}
-      />
-    )
-  }
   render() {
+    const { bio } = this.props
     return (
       <Serif size="3">
-        <Media at="xs">{this.renderReadMore("xs")}</Media>
-        <Media greaterThan="xs">{this.renderReadMore("rest")}</Media>
+        <BioSpan
+          dangerouslySetInnerHTML={{
+            __html: bio.biography_blurb.text,
+          }}
+        />
       </Serif>
     )
   }
@@ -44,3 +34,18 @@ export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
     }
   `,
 })
+
+/*
+  Using dangerouslySetInnerHTML in our span adds an inline <p>.
+  Here we make sure the inline <p> is formatted properly.
+*/
+const BioSpan = styled.span`
+  > * {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-bottom: 1em;
+  }
+  > *:last-child {
+    display: inline;
+  }
+`
