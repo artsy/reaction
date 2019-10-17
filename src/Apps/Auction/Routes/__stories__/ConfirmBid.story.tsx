@@ -8,7 +8,7 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/shared-live-mocktion-k8s/bid2/nicole-won-hee-maloof-surrealism?bid=11000000?bid=65000"
+        initialRoute="/auction/shared-live-mocktion-k8s/bid2/nicole-won-hee-maloof-surrealism?bid=11000000"
       />
     )
   })
