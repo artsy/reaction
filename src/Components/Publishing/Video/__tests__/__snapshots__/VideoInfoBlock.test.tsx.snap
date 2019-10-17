@@ -52,13 +52,13 @@ exports[`Video Info Block matches the snapshot 1`] = `
       02:28
     </div>
   </div>
-  <div
+  <h1
     className="c4"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="42px"
   >
     Trevor Paglan
-  </div>
+  </h1>
 </div>
 `;
 
@@ -114,7 +114,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
       02:28
     </div>
   </div>
-  <div
+  <h1
     className="c4"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="42px"
@@ -123,6 +123,6 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
       Child 
       title
     </div>
-  </div>
+  </h1>
 </div>
 `;

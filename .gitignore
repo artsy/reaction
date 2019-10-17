@@ -21,3 +21,4 @@ yarn-error.log
 storybook_build
 .yalc
 yalc.lock
+coverage*
