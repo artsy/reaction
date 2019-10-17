@@ -187,6 +187,19 @@ export class BaseCarousel extends React.Component<
     }
   }
 
+  allowPreventDefault = () => {
+    // Fix for flickity bug introduced in iOS 13 https://github.com/metafizzy/flickity/issues/740
+    let startX
+    this.carouselRef.ontouchstart = e => {
+      startX = e.touches[0].clientX
+    }
+    this.carouselRef.ontouchmove = e => {
+      if (Math.abs(e.touches[0].clientX - startX) > 5 && e.cancelable) {
+        e.preventDefault()
+      }
+    }
+  }
+
   /**
    * Since Flickity doesn't support SSR rendering, we need to load it once the
    * client has mounted. During the server-side pass we use a Flex wrapper instead.
@@ -206,6 +219,7 @@ export class BaseCarousel extends React.Component<
           setCarouselRef(this.flickity)
         }
         this.flickity.on("select", this.handleSlideChange)
+        this.allowPreventDefault()
       }
     )
   }
@@ -213,6 +227,7 @@ export class BaseCarousel extends React.Component<
   componentWillUnmount() {
     if (this.flickity) {
       this.flickity.off("select")
+      this.flickity.flickity("destroy")
     }
   }
 
