@@ -1,3 +1,15 @@
+# v21.10.3 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes carousel for iOS 13 [#2924](https://github.com/artsy/reaction/pull/2924) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v21.10.2 (Thu Oct 17 2019)
 
 #### 🐛  Bug Fix
