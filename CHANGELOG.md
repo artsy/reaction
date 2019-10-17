@@ -1,3 +1,15 @@
+# v21.10.4 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [SEO] Publishing titles use h1 [#2925](https://github.com/artsy/reaction/pull/2925) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.10.3 (Thu Oct 17 2019)
 
 #### 🐛  Bug Fix
