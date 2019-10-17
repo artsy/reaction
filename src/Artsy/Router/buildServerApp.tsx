@@ -36,7 +36,7 @@ export function buildServerApp(config: RouterConfig & { userAgent?: string }) {
     getRelayEnvironment: () => {
       const relayEnvironment =
         (config.context && config.context.relayEnvironment) ||
-        createRelaySSREnvironment({ user })
+        createRelaySSREnvironment({ user, userAgent: config.userAgent })
 
       return relayEnvironment
     },
