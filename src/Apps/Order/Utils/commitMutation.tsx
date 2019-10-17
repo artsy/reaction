@@ -1,5 +1,4 @@
 import { SystemContext } from "Artsy"
-import { GraphQLError } from "graphql"
 import React, { useContext } from "react"
 import {
   commitMutation as relayCommitMutation,
@@ -45,7 +44,7 @@ class ProvideMutationContext extends React.Component<
           onCompleted: (data, errors) => {
             this.setState({ isCommittingMutation: false }, () => {
               if (errors) {
-                reject(new GraphQLError(errors.join("\n")))
+                reject(new Error(errors.join("\n")))
                 return
               }
               resolve(data)
