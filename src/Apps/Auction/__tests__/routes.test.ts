@@ -1,17 +1,17 @@
+import {
+  BidQueryResponse,
+  BidQueryResponseFixture,
+} from "Apps/Auction/__fixtures__/routes_BidQuery"
+import {
+  DeFragedRegisterQueryResponse,
+  RegisterQueryResponseFixture,
+} from "Apps/Auction/__fixtures__/routes_RegisterQuery"
 import { routes } from "Apps/Auction/routes"
 import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
 import { createRender } from "found"
 import { Resolver } from "found-relay"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
-import {
-  BidQueryResponse,
-  BidQueryResponseFixture,
-} from "../__fixtures__/routes_BidQuery"
-import {
-  DeFragedRegisterQueryResponse,
-  RegisterQueryResponseFixture,
-} from "../__fixtures__/routes_RegisterQuery"
 
 describe("Auction/routes", () => {
   async function render(url, mockData) {

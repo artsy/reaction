@@ -14,6 +14,7 @@ interface BidProps {
   artwork: any
   me: any
   relay: RelayProp
+  location: Location
 }
 
 export const ConfirmBidRoute: React.FC<BidProps> = props => {
@@ -36,6 +37,7 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
         <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
         <Separator />
         <BidForm
+          showPricingTransparency={Boolean(/pt=1/.test(props.location.search))}
           saleArtwork={saleArtwork}
           onSubmit={(values, actions) => {
             setTimeout(() => {

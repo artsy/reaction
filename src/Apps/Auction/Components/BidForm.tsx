@@ -8,6 +8,7 @@ import {
   Serif,
 } from "@artsy/palette"
 import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
+import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { Formik, FormikActions, FormikValues } from "formik"
 import { dropWhile } from "lodash"
@@ -16,6 +17,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
 
 interface Props {
+  showPricingTransparency?: boolean
   saleArtwork: BidForm_saleArtwork
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
 }
@@ -33,7 +35,11 @@ const validationSchema = Yup.object().shape({
   ),
 })
 
-export const BidForm: React.FC<Props> = ({ onSubmit, saleArtwork }) => {
+export const BidForm: React.FC<Props> = ({
+  onSubmit,
+  saleArtwork,
+  showPricingTransparency = false,
+}) => {
   const displayIncrements = dropWhile(
     saleArtwork.increments,
     increment => increment.cents < saleArtwork.minimumNextBid.cents
@@ -75,8 +81,8 @@ export const BidForm: React.FC<Props> = ({ onSubmit, saleArtwork }) => {
                     {errors.selectedBid}
                   </Sans>
                 )}
+                {showPricingTransparency && <PricingTransparency />}
               </Flex>
-
               <Separator />
               <Flex
                 py={3}
