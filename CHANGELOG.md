@@ -1,3 +1,15 @@
+# v21.10.5 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [createRelaySSREnvironment] Lazy load deps so they can be stripped. [#2926](https://github.com/artsy/reaction/pull/2926) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.10.4 (Thu Oct 17 2019)
 
 #### 🐛  Bug Fix
