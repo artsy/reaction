@@ -49,9 +49,16 @@ export interface RelaySSREnvironment extends Environment {
 export function createRelaySSREnvironment(config: Config = {}) {
   const { cache = {}, checkStatus, user, relayNetwork, userAgent } = config
 
+  /**
+   * Lazy load these here so we can safely ignore the server module from client
+   * bundles without that leading to an exception trying to import it
+   * unconditionally at the top-level.
+   */
   const relaySSRMiddleware = isServer
-    ? new RelayServerSSR()
-    : new RelayClientSSR(cache)
+    ? new (require("react-relay-network-modern-ssr/node8/server")).default()
+    : new (require("react-relay-network-modern-ssr/node8/client")).default(
+        cache
+      )
 
   relaySSRMiddleware.debug = false
 
