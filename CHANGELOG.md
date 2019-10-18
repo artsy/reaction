@@ -1,3 +1,15 @@
+# v21.10.10 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Return default object on server from useWindowSize, instead of null [#2931](https://github.com/artsy/reaction/pull/2931) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v21.10.9 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
