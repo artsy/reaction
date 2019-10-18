@@ -1,5 +1,5 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
-import Flickity, { Options as FlickityOptions } from "flickity"
+import { Options as FlickityOptions } from "flickity"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
@@ -206,6 +206,7 @@ export class BaseCarousel extends React.Component<
    */
   componentDidMount() {
     const { setCarouselRef } = this.props
+    const Flickity = require("flickity")
 
     this.flickity = new Flickity(this.carouselRef, this.options)
 
