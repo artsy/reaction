@@ -1,5 +1,5 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
-import { Options as FlickityOptions } from "flickity"
+import Flickity, { Options as FlickityOptions } from "flickity"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
@@ -167,7 +167,7 @@ export class BaseCarousel extends React.Component<
   /**
    * A reference to the Flickity instance
    */
-  flickity = null
+  flickity: Flickity = null
   carouselRef = null
 
   /**
@@ -205,7 +205,6 @@ export class BaseCarousel extends React.Component<
    * client has mounted. During the server-side pass we use a Flex wrapper instead.
    */
   componentDidMount() {
-    const Flickity = require("flickity")
     const { setCarouselRef } = this.props
 
     this.flickity = new Flickity(this.carouselRef, this.options)
@@ -226,8 +225,8 @@ export class BaseCarousel extends React.Component<
 
   componentWillUnmount() {
     if (this.flickity) {
-      this.flickity.off("select")
-      this.flickity.flickity("destroy")
+      this.flickity.off("select", this.handleSlideChange)
+      this.flickity.destroy()
     }
   }
 
@@ -240,6 +239,9 @@ export class BaseCarousel extends React.Component<
   checkLastItemVisible = () => {
     if (this.flickity && this.flickity.selectedElements) {
       const lastItemVisible = this.flickity.selectedElements.includes(
+        // FIXME: Undocumented API. Is there a way this can be achieved with
+        // something public and commonly available?
+        // @ts-ignore
         this.flickity.getLastCell().element
       )
       return lastItemVisible
