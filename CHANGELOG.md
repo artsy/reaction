@@ -1,3 +1,15 @@
+# v21.10.6 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Auct 465 pricing stub [#2918](https://github.com/artsy/reaction/pull/2918) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.10.5 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
