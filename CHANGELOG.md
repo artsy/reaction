@@ -1,3 +1,15 @@
+# v21.10.8 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "@damassi => [Artist] Port meta tags and structured data from Force" [#2929](https://github.com/artsy/reaction/pull/2929) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.10.7 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
