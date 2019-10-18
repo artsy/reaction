@@ -45,6 +45,7 @@ export interface Props {
     title: string
     query: any
     id: string
+    featuredArtistExclusionIds?: string[]
   }
   artworks: Header_artworks
 }
@@ -60,26 +61,19 @@ const handleOpenAuth = (mediator, artist) => {
 export const getFeaturedArtists = (
   artistsCount: number,
   collection,
-  merchandisableArtists,
-  mediator,
-  user
+  merchandisableArtists
 ) => {
-  let featuredArtists
-
   if (collection.query.artist_ids.length > 0) {
-    featuredArtists = filter(merchandisableArtists, artist =>
+    return filter(merchandisableArtists, artist =>
       collection.query.artist_ids.includes(artist._id)
     )
-
-    return featuredArtistsEntityCollection(featuredArtists, mediator, user)
   }
 
   if (merchandisableArtists.length > 0) {
-    return featuredArtistsEntityCollection(
-      take(merchandisableArtists, artistsCount),
-      mediator,
-      user
-    )
+    // const stuff = merchandisableArtists.filter((artist) => {
+    //   artist.id
+    // })
+    return take(merchandisableArtists, artistsCount)
   }
 }
 
@@ -187,10 +181,12 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         const chars = maxChars[size]
         const categoryTarget = `/collections#${slugify(collection.category)}`
         const artistsCount = xs ? 9 : 12
-        const featuredArtists = getFeaturedArtists(
-          artistsCount,
-          collection,
-          artworks.merchandisable_artists,
+        const featuredArtists = featuredArtistsEntityCollection(
+          getFeaturedArtists(
+            artistsCount,
+            collection,
+            artworks.merchandisable_artists
+          ),
           mediator,
           user
         )

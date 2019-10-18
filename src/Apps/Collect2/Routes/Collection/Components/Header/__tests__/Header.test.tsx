@@ -79,33 +79,36 @@ describe("collections header", () => {
       const results = getFeaturedArtists(
         9,
         collection,
-        artworks.merchandisable_artists,
-        mockMediator,
-        {}
+        artworks.merchandisable_artists
       )
 
       expect(results!.length).toEqual(1)
     })
 
+    it("returns merchandisable artists when there is no explicit artist_ids", () => {
+      props.collection.query.artist_ids = []
+      const { collection, artworks } = props
+      const results = getFeaturedArtists(
+        9,
+        collection,
+        artworks.merchandisable_artists
+      )
+
+      expect(results!.length).toEqual(4)
+    })
+
     it("passes correct arguments featuredArtistsEntityCollection", () => {
       const { collection, artworks } = props
 
-      const wrapper = shallow(
-        <div>
-          {getFeaturedArtists(
-            9,
-            collection,
-            artworks.merchandisable_artists,
-            mockMediator,
-            {}
-          )}
-        </div>
+      const results = getFeaturedArtists(
+        9,
+        collection,
+        artworks.merchandisable_artists
       )
 
-      const entities = wrapper.find(EntityHeader)
-      expect(entities.length).toBe(1)
+      expect(results.length).toBe(1)
+      const artist = results[0]
 
-      const artist = entities.at(0).props().FollowButton.props.artist
       expect(artist).toMatchObject({
         id: "kaws",
         _id: "4e934002e340fa0001005336",
@@ -116,6 +119,34 @@ describe("collections header", () => {
         nationality: "American",
       })
     })
+
+    // it("return excludes artists specified by featuredArtistExclusionIds", () => {
+    //   // artists ids for Robert Lazzarini and Medicom
+    //   const excludedIds = [
+    //     "4f5f64c23b555230ac0003ae",
+    //     "58fe85ee275b2450a0fd2b51",
+    //   ]
+    //   props.collection.featuredArtistExclusionIds = excludedIds
+    //   props.collection.query.artist_ids = []
+    //   const { collection, artworks } = props
+    //   const wrapper = shallow(
+    //     <div>
+    //       {getFeaturedArtists(
+    //         9,
+    //         collection,
+    //         artworks.merchandisable_artists,
+    //         mockMediator,
+    //         {}
+    //       )}
+    //     </div>
+    //   )
+
+    //   const entities = wrapper.find(EntityHeader)
+    //   expect(entities.length).toBe(2)
+
+    //   const firstEntity = entities.at(0)
+    //   expect(excludedIds.includes(firstEntity.props().name)
+    // })
   })
 
   describe("collection meta data", () => {

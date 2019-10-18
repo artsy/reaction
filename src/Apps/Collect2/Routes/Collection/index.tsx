@@ -211,6 +211,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         id
         slug
         title
+        featuredArtistExclusionIds
 
         query {
           artist_ids
