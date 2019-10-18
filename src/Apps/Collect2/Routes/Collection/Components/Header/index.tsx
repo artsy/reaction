@@ -70,10 +70,10 @@ export const getFeaturedArtists = (
   }
 
   if (merchandisableArtists.length > 0) {
-    // const stuff = merchandisableArtists.filter((artist) => {
-    //   artist.id
-    // })
-    return take(merchandisableArtists, artistsCount)
+    const filteredArtistsIds = merchandisableArtists.filter(artist => {
+      return !collection.featuredArtistExclusionIds.includes(artist._id)
+    })
+    return take(filteredArtistsIds, artistsCount)
   }
 }
 

@@ -1,10 +1,11 @@
 import { EntityHeader } from "@artsy/palette"
+import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import {
   collectionHeaderArtworks,
   defaultCollectionHeaderArtworks,
 } from "Apps/Collect2/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
 import { MockBoot } from "DevTools/MockBoot"
-import { mount, shallow } from "enzyme"
+import { mount } from "enzyme"
 import React from "react"
 import sharify from "sharify"
 import { CollectionHeader, getFeaturedArtists, Props } from "../index"
@@ -44,6 +45,7 @@ describe("collections header", () => {
           artist_id: null,
           artist_ids: ["4e934002e340fa0001005336"],
         },
+        featuredArtistExclusionIds: [],
       },
     }
   })
@@ -72,8 +74,6 @@ describe("collections header", () => {
   })
 
   describe("getFeaturedArtists", () => {
-    const mockMediator = jest.fn()
-
     it("returns the queried artists when there is explicit artist_ids", () => {
       const { collection, artworks } = props
       const results = getFeaturedArtists(
@@ -120,33 +120,24 @@ describe("collections header", () => {
       })
     })
 
-    // it("return excludes artists specified by featuredArtistExclusionIds", () => {
-    //   // artists ids for Robert Lazzarini and Medicom
-    //   const excludedIds = [
-    //     "4f5f64c23b555230ac0003ae",
-    //     "58fe85ee275b2450a0fd2b51",
-    //   ]
-    //   props.collection.featuredArtistExclusionIds = excludedIds
-    //   props.collection.query.artist_ids = []
-    //   const { collection, artworks } = props
-    //   const wrapper = shallow(
-    //     <div>
-    //       {getFeaturedArtists(
-    //         9,
-    //         collection,
-    //         artworks.merchandisable_artists,
-    //         mockMediator,
-    //         {}
-    //       )}
-    //     </div>
-    //   )
+    it("return artists with featuredArtistExclusionIds removed", () => {
+      // artists ids for Robert Lazzarini and Medicom
+      const excludedIds = [
+        "4f5f64c23b555230ac0003ae",
+        "58fe85ee275b2450a0fd2b51",
+      ]
+      props.collection.featuredArtistExclusionIds = excludedIds
+      props.collection.query.artist_ids = []
+      const { collection, artworks } = props
+      const results = getFeaturedArtists(
+        9,
+        collection,
+        artworks.merchandisable_artists
+      ) as Header_artworks["merchandisable_artists"]
 
-    //   const entities = wrapper.find(EntityHeader)
-    //   expect(entities.length).toBe(2)
-
-    //   const firstEntity = entities.at(0)
-    //   expect(excludedIds.includes(firstEntity.props().name)
-    // })
+      const artistIds = results.map(artist => artist._id)
+      expect(artistIds).toEqual(expect.not.arrayContaining(excludedIds))
+    })
   })
 
   describe("collection meta data", () => {
