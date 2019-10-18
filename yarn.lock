@@ -2486,10 +2486,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/flickity@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@types/flickity/-/flickity-2.2.0.tgz#aff71ca3e6a61d17c990464f4cfdef2505e3ee80"
-  integrity sha512-CqBikpvByNOMDycFqlSEfZMs9Td0X94ro/d/q//LiASkdF58wvT1tfauqYn5PnuUQIYPLq8+W0mAyLQi/sx5tA==
+"@types/flickity@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@types/flickity/-/flickity-2.2.2.tgz#6aa0177b305229f5e5930f43fd8bb148146fee61"
+  integrity sha512-YELdmqtxposhb0dlqjQqeNJr6U/KiMptORxqCpIjypyuXHcPH8vt6rHSQkTkoYkA0WhUks4NOhDQuakaEONRAg==
 
 "@types/graphql@14.0.5":
   version "14.0.5"
