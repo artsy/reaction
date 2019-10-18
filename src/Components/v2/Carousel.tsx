@@ -225,7 +225,7 @@ export class BaseCarousel extends React.Component<
 
   componentWillUnmount() {
     if (this.flickity) {
-      this.flickity.off("select")
+      this.flickity.off("select", this.handleSlideChange)
       this.flickity.destroy()
     }
   }
@@ -239,6 +239,9 @@ export class BaseCarousel extends React.Component<
   checkLastItemVisible = () => {
     if (this.flickity && this.flickity.selectedElements) {
       const lastItemVisible = this.flickity.selectedElements.includes(
+        // FIXME: Undocumented API. Is there a way this can be achieved with
+        // something public and commonly available?
+        // @ts-ignore
         this.flickity.getLastCell().element
       )
       return lastItemVisible
