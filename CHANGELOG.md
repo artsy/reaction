@@ -1,3 +1,16 @@
+# v21.10.9 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix incorrect invocation of `Flickity.prototype.destroy()` [#2927](https://github.com/artsy/reaction/pull/2927) ([@alloy](https://github.com/alloy) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.10.8 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
