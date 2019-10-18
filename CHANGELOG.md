@@ -1,3 +1,15 @@
+# v21.10.7 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Add a check for window obj before useLayoutEffect hook [#2919](https://github.com/artsy/reaction/pull/2919) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v21.10.6 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
