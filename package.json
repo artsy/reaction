@@ -80,7 +80,7 @@
     "@types/dd-trace": "0.6.0",
     "@types/dedent": "0.7.0",
     "@types/enzyme": "3.1.11",
-    "@types/flickity": "^2.2.2",
+    "@types/flickity": "2.2.2",
     "@types/graphql": "14.0.5",
     "@types/isomorphic-fetch": "0.0.34",
     "@types/jest": "24.0.18",

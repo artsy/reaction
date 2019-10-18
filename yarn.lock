@@ -2486,7 +2486,7 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
-"@types/flickity@^2.2.2":
+"@types/flickity@2.2.2":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@types/flickity/-/flickity-2.2.2.tgz#6aa0177b305229f5e5930f43fd8bb148146fee61"
   integrity sha512-YELdmqtxposhb0dlqjQqeNJr6U/KiMptORxqCpIjypyuXHcPH8vt6rHSQkTkoYkA0WhUks4NOhDQuakaEONRAg==
