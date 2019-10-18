@@ -2,6 +2,10 @@ import { useLayoutEffect, useState } from "react"
 import { getViewportDimensions } from "Utils/viewport"
 
 export const useWindowSize = () => {
+  if (typeof window === "undefined") {
+    return null
+  }
+
   const [size, setSize] = useState({ width: 0, height: 0 })
 
   useLayoutEffect(() => {
