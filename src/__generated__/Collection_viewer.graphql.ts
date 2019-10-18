@@ -17,6 +17,7 @@ export type Collection_viewer = {
     readonly id: string;
     readonly slug: string;
     readonly title: string;
+    readonly featuredArtistExclusionIds: ReadonlyArray<string> | null;
     readonly query: {
         readonly artist_ids: ReadonlyArray<string> | null;
         readonly artist_id: string | null;
@@ -171,7 +172,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "title",
+      "name": "featuredArtistExclusionIds",
       "args": null,
       "storageKey": null
     },
@@ -201,6 +202,13 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "title",
       "args": null,
       "storageKey": null
     },
@@ -471,5 +479,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '03d820319f505974d7387a30b6d58686';
+(node as any).hash = 'b4f06af76fc8d81d9009d4c01b294754';
 export default node;
