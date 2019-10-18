@@ -1,3 +1,20 @@
+# v21.10.11 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Ensure we only import flickity on client [#2933](https://github.com/artsy/reaction/pull/2933) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @types/flickity from ^2.2.2 to 2.2.2 [#2930](https://github.com/artsy/reaction/pull/2930) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v21.10.10 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
