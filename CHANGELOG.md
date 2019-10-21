@@ -1,3 +1,15 @@
+# v21.11.1 (Mon Oct 21 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1598] Excluded featured artist ids [#2932](https://github.com/artsy/reaction/pull/2932) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.11.0 (Mon Oct 21 2019)
 
 #### 🚀  Enhancement
