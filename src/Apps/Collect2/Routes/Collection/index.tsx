@@ -211,6 +211,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         id
         slug
         title
+        featuredArtistExclusionIds
 
         query {
           artist_ids
@@ -229,7 +230,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         artworks(
           aggregations: $aggregations
           include_medium_filter_in_aggregation: true
-          size: 12
+          size: 20
           sort: "-decayed_merch"
         ) {
           ...Header_artworks
