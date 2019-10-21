@@ -6,10 +6,10 @@ export interface Redirect {
   reason: string
 }
 
-export function registerRedirect(
-  sale: routes_RegisterQueryResponse["sale"],
-  me: routes_RegisterQueryResponse["me"]
-): Redirect | null {
+export function registerRedirect({
+  me,
+  sale,
+}: routes_RegisterQueryResponse): Redirect | null {
   if (me.has_qualified_credit_cards) {
     return {
       path: registrationFlowPath(sale),
@@ -35,13 +35,21 @@ export function registerRedirect(
   return null
 }
 
-export function confirmBidRedirect(
-  artwork: routes_BidQueryResponse["artwork"],
-  me: routes_BidQueryResponse["me"]
-): Redirect | null {
+export function confirmBidRedirect({
+  artwork,
+  me,
+}: routes_BidQueryResponse): Redirect | null {
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
   const { registrationStatus } = sale
+
+  if (!me) {
+    return {
+      path:
+        "/log_in?redirect_uri=" + encodeURIComponent(bidPath(sale, artwork)),
+      reason: "user is not signed in",
+    }
+  }
 
   if (!registrationStatus && sale.is_registration_closed) {
     return {
@@ -71,6 +79,8 @@ const confirmRegistrationPath = (sale: { id: string }): string =>
   auctionPath(sale) + "/confirm-registration"
 const artworkPath = (sale: { id: string }, artwork: { id: string }): string =>
   auctionPath(sale) + `/artwork/${artwork.id}`
+const bidPath = (sale: { id: string }, artwork: { id: string }): string =>
+  auctionPath(sale) + `/bid/${artwork.id}`
 
 function isRegisterable(sale: {
   is_preview: boolean

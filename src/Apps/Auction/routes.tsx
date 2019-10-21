@@ -24,7 +24,7 @@ export const routes: RouteConfig[] = [
         if (!artwork) {
           return <ErrorPage code={404} />
         }
-        handleRedirect(confirmBidRedirect(artwork, me), location)
+        handleRedirect(confirmBidRedirect({ artwork, me }), location)
         return <Component {...props} />
       }
     },
@@ -68,7 +68,7 @@ export const routes: RouteConfig[] = [
           return <ErrorPage code={404} />
         }
 
-        handleRedirect(registerRedirect(sale, me), location)
+        handleRedirect(registerRedirect({ sale, me }), location)
 
         return <Component {...props} />
       }
