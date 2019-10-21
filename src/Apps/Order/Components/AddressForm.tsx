@@ -209,9 +209,10 @@ export class AddressForm extends React.Component<
               <Input
                 id="AddressForm_phoneNumber"
                 title="Phone number"
+                type="tel"
                 description={this.phoneNumberInputDescription()}
-                placeholder="Add phone"
-                pattern="[0-9]*"
+                placeholder="+1-222-222-2222"
+                pattern="[^a-z]"
                 value={this.props.value.phoneNumber}
                 onChange={this.changeEventHandler("phoneNumber")}
                 error={this.getError("phoneNumber")}
