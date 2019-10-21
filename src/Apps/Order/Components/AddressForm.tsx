@@ -212,7 +212,7 @@ export class AddressForm extends React.Component<
                 type="tel"
                 description={this.phoneNumberInputDescription()}
                 placeholder="+1-222-222-2222"
-                pattern="[^a-z]"
+                pattern="[^a-z]+"
                 value={this.props.value.phoneNumber}
                 onChange={this.changeEventHandler("phoneNumber")}
                 error={this.getError("phoneNumber")}
