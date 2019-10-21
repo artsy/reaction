@@ -30,6 +30,8 @@ export const confirmRouteExit = (
   // Attempting to navigate to another route in the orders app
   const match = router.matcher.match(newLocation)
   if (match) {
+    // FIXME: Need to update found types: https://github.com/4Catalyzer/found/blob/master/src/Matcher.js#L27
+    // @ts-ignore
     const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
     if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
       return undefined
