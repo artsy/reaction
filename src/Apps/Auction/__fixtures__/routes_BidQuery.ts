@@ -3,7 +3,10 @@ import { BidForm_saleArtwork } from "../../../__generated__/BidForm_saleArtwork.
 import { LotInfo_artwork } from "../../../__generated__/LotInfo_artwork.graphql"
 import { routes_BidQueryResponse } from "../../../__generated__/routes_BidQuery.graphql"
 
-export interface BidQueryResponse extends routes_BidQueryResponse {
+type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
+
+export interface BidQueryResponse
+  extends DeepWriteable<routes_BidQueryResponse> {
   artwork: routes_BidQueryResponse["artwork"] &
     LotInfo_artwork & {
       saleArtwork: routes_BidQueryResponse["artwork"]["saleArtwork"] &

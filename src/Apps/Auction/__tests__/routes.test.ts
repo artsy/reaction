@@ -122,7 +122,7 @@ describe("Auction/routes", () => {
 
     it("redirects to the login (plus redirect_uri of sale artwork bid page) if user is not signed in", async () => {
       const fixture: BidQueryResponse = mockConfirmBidResolver()
-      ;(fixture as any).me = null
+      fixture.me = null
 
       const { redirect } = await render(
         `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
