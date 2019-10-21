@@ -1,3 +1,20 @@
+# v21.11.0 (Mon Oct 21 2019)
+
+#### 🚀  Enhancement
+
+- [Revert] Move arc router code back into reaction [#2935](https://github.com/artsy/reaction/pull/2935) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- [Carousel] Type `new Flickity(…)` and document SSR import issue. [#2934](https://github.com/artsy/reaction/pull/2934) ([@alloy](https://github.com/alloy))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v21.10.11 (Fri Oct 18 2019)
 
 #### 🐛  Bug Fix
