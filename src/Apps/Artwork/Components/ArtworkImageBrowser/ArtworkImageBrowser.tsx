@@ -62,7 +62,12 @@ export class LargeArtworkImageBrowser extends React.Component<
             <Col sm={1}>
               <ArrowButton
                 direction="left"
-                onClick={() => flickity.previous(false, true)}
+                onClick={() => {
+                  // FIXME: Flickity.prototype.previous typing is missing second
+                  // `isInstant` method.
+                  // @ts-ignore
+                  flickity.previous(false, true)
+                }}
               />
             </Col>
           )}
@@ -70,7 +75,12 @@ export class LargeArtworkImageBrowser extends React.Component<
             <Col sm={1}>
               <ArrowButton
                 direction="right"
-                onClick={() => flickity.next(false, true)}
+                onClick={() => {
+                  // FIXME: Flickity.prototype.next typing is missing second
+                  // `isInstant` method.
+                  // @ts-ignore
+                  flickity.next(false, true)
+                }}
               />
             </Col>
           )}

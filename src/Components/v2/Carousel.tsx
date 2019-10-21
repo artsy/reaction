@@ -1,9 +1,16 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
-import { Options as FlickityOptions } from "flickity"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
+
+/**
+ * Do NOT use `FlickityType` to create instances of Flickity. Only refer to it
+ * for type purposes.
+ *
+ * @see BaseCarousel.prototype.componentDidMount()
+ */
+import FlickityType, { Options as FlickityOptions } from "flickity"
 
 /**
  * Notes:
@@ -81,10 +88,7 @@ interface CarouselProps {
 type ArrowProps = (props: {
   currentSlideIndex: number
   Arrow: React.ReactType
-  flickity: {
-    previous: (isWrapped?: boolean, isInstant?: boolean) => void
-    next: (isWrapped?: boolean, isInstant?: boolean) => void
-  }
+  flickity: FlickityType
 }) => React.ReactNode
 
 export class Carousel extends React.Component<CarouselProps> {
@@ -167,7 +171,7 @@ export class BaseCarousel extends React.Component<
   /**
    * A reference to the Flickity instance
    */
-  flickity: Flickity = null
+  flickity: FlickityType = null
   carouselRef = null
 
   /**
@@ -202,12 +206,16 @@ export class BaseCarousel extends React.Component<
 
   /**
    * Since Flickity doesn't support SSR rendering, we need to load it once the
-   * client has mounted. During the server-side pass we use a Flex wrapper instead.
+   * client has mounted. During the server-side pass we use a Flex wrapper.
+   *
+   * In fact, the flickity library can't even be loaded in environments that do
+   * not have a global `window` object. Thus we need to lazy load it here with
+   * an inline `require` statement.
    */
   componentDidMount() {
     const { setCarouselRef } = this.props
-    const Flickity = require("flickity")
 
+    const Flickity = require("flickity") as typeof FlickityType
     this.flickity = new Flickity(this.carouselRef, this.options)
 
     this.setState(
