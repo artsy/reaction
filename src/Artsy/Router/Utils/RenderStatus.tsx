@@ -9,7 +9,7 @@ import createLogger from "Utils/logger"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
-export const RenderPending: React.FC = props => {
+export const RenderPending = () => {
   /**
    * TODO: Add timeout here for when a request takes too long. Show generic error
    * and notify Sentry.
