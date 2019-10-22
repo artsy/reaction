@@ -93,5 +93,23 @@ describe("Authentication Helpers", () => {
         done()
       })
     })
+
+    it("should gracefully handle a missing user object as if it were a missing user", done => {
+      mockFetchQuery.mockImplementationOnce(() => Promise.resolve({}))
+      checkEmail({
+        values: {
+          email: "kana@lalamail.com",
+        },
+        actions: {
+          setFieldError: jest.fn(),
+          setSubmitting: jest.fn(),
+        },
+        shouldExist: true,
+        relayEnvironment: null,
+      }).then(result => {
+        expect(result).toBeFalsy()
+        done()
+      })
+    })
   })
 })
