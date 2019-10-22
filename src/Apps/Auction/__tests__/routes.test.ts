@@ -1,7 +1,7 @@
 import {
-  BidQueryResponse,
-  BidQueryResponseFixture,
-} from "Apps/Auction/__fixtures__/routes_BidQuery"
+  ConfirmBidQueryResponse,
+  ConfirmBidQueryResponseFixture,
+} from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import {
   DeFragedRegisterQueryResponse,
   RegisterQueryResponseFixture,
@@ -41,26 +41,26 @@ describe("Auction/routes", () => {
     sale = {},
     me = {},
   }: Partial<{
-    artwork: Partial<BidQueryResponse["artwork"]>
-    sale: Partial<BidQueryResponse["artwork"]["saleArtwork"]["sale"]>
-    saleArtwork: Partial<BidQueryResponse["artwork"]["saleArtwork"]>
-    me: Partial<BidQueryResponse["me"]>
-  }> = {}): BidQueryResponse => ({
-    ...BidQueryResponseFixture,
+    artwork: Partial<ConfirmBidQueryResponse["artwork"]>
+    sale: Partial<ConfirmBidQueryResponse["artwork"]["saleArtwork"]["sale"]>
+    saleArtwork: Partial<ConfirmBidQueryResponse["artwork"]["saleArtwork"]>
+    me: Partial<ConfirmBidQueryResponse["me"]>
+  }> = {}): ConfirmBidQueryResponse => ({
+    ...ConfirmBidQueryResponseFixture,
     artwork: {
-      ...BidQueryResponseFixture.artwork,
+      ...ConfirmBidQueryResponseFixture.artwork,
       ...artwork,
       saleArtwork: {
-        ...BidQueryResponseFixture.artwork.saleArtwork,
+        ...ConfirmBidQueryResponseFixture.artwork.saleArtwork,
         ...saleArtwork,
         sale: {
-          ...BidQueryResponseFixture.artwork.saleArtwork.sale,
+          ...ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale,
           ...sale,
         },
       },
     },
     me: {
-      ...BidQueryResponseFixture.me,
+      ...ConfirmBidQueryResponseFixture.me,
       ...me,
     },
   })
@@ -73,7 +73,7 @@ describe("Auction/routes", () => {
 
   describe("Confirm Bid: /:saleId/bid/:artworkId", () => {
     it("does not redirect if the user is qualified to bid in the sale, the sale is open, and the artwork is biddable", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver()
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver()
       const { redirect, status } = await render(
         `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
           fixture.artwork.id
@@ -86,7 +86,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to confirm registration page if user is registered but not qualified to bid (to remind them)", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver({
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
         sale: { registrationStatus: { qualified_for_bidding: false } },
       })
       const { redirect } = await render(
@@ -102,7 +102,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to sale artwork page if the sale is closed", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver({
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
         sale: {
           is_closed: true,
         },
@@ -121,7 +121,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to the login (plus redirect_uri of sale artwork bid page) if user is not signed in", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver()
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver()
       fixture.me = null
 
       const { redirect } = await render(
@@ -136,7 +136,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to the sale artwork page if user is not registered and registration is closed", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver({
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
         sale: {
           registrationStatus: null,
           is_registration_closed: true,
@@ -156,7 +156,7 @@ describe("Auction/routes", () => {
     })
 
     it("does not redirect if user is not registered but registration is open", async () => {
-      const fixture: BidQueryResponse = mockConfirmBidResolver({
+      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
         sale: {
           registrationStatus: null,
           is_registration_closed: false,

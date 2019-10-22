@@ -8,7 +8,7 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/shared-live-mocktion-k8s/bid2/nicole-won-hee-maloof-surrealism?bid=11000000"
+        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?bid=11000000"
       />
     )
   })
@@ -16,7 +16,7 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/shared-live-mocktion-k8s/bid2/nicole-won-hee-maloof-surrealism?bid=11000000&pt=1"
+        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?bid=11000000&pt=1"
       />
     )
   })

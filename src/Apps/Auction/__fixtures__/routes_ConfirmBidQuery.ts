@@ -1,21 +1,20 @@
 import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { LotInfo_artwork } from "__generated__/LotInfo_artwork.graphql"
 import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
-import { routes_BidQueryResponse } from "__generated__/routes_BidQuery.graphql"
-
+import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
-export interface BidQueryResponse
-  extends DeepWriteable<routes_BidQueryResponse> {
-  artwork: routes_BidQueryResponse["artwork"] &
+export interface ConfirmBidQueryResponse
+  extends DeepWriteable<routes_ConfirmBidQueryResponse> {
+  artwork: routes_ConfirmBidQueryResponse["artwork"] &
     LotInfo_artwork & {
-      saleArtwork: routes_BidQueryResponse["artwork"]["saleArtwork"] &
+      saleArtwork: routes_ConfirmBidQueryResponse["artwork"]["saleArtwork"] &
         LotInfo_saleArtwork &
         BidForm_saleArtwork
     }
 }
 
-export const BidQueryResponseFixture: BidQueryResponse = {
+export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
   me: {
     has_qualified_credit_cards: false,
   },
