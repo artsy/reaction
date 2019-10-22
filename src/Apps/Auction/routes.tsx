@@ -24,7 +24,7 @@ export const routes: RouteConfig[] = [
         if (!artwork) {
           return <ErrorPage code={404} />
         }
-        handleRedirect(confirmBidRedirect({ artwork, me }), location)
+        handleRedirect(confirmBidRedirect({ artwork, me }, location), location)
         return <Component {...props} />
       }
     },

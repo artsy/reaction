@@ -35,18 +35,19 @@ export function registerRedirect({
   return null
 }
 
-export function confirmBidRedirect({
-  artwork,
-  me,
-}: routes_BidQueryResponse): Redirect | null {
+export function confirmBidRedirect(
+  data: routes_BidQueryResponse,
+  location: Location
+): Redirect | null {
+  const { artwork, me } = data
   const { saleArtwork } = artwork
+
   const { sale } = saleArtwork
   const { registrationStatus } = sale
 
   if (!me) {
     return {
-      path:
-        "/log_in?redirect_uri=" + encodeURIComponent(bidPath(sale, artwork)),
+      path: "/log_in?redirect_uri=" + encodeURIComponent(location.pathname),
       reason: "user is not signed in",
     }
   }
@@ -79,8 +80,6 @@ const confirmRegistrationPath = (sale: { id: string }): string =>
   auctionPath(sale) + "/confirm-registration"
 const artworkPath = (sale: { id: string }, artwork: { id: string }): string =>
   auctionPath(sale) + `/artwork/${artwork.id}`
-const bidPath = (sale: { id: string }, artwork: { id: string }): string =>
-  auctionPath(sale) + `/bid/${artwork.id}`
 
 function isRegisterable(sale: {
   is_preview: boolean
