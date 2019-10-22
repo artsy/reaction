@@ -1,3 +1,15 @@
+# v21.12.2 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- this hopefully fixes the broken login flow on mobile [#2941](https://github.com/artsy/reaction/pull/2941) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
 # v21.12.1 (Tue Oct 22 2019)
 
 #### 🐛  Bug Fix
