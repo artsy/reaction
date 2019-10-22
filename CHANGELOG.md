@@ -1,3 +1,15 @@
+# v21.12.1 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection Hubs] only display Related Collections Rail on non-hubs collections [#2942](https://github.com/artsy/reaction/pull/2942) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.12.0 (Tue Oct 22 2019)
 
 #### 🚀  Enhancement
