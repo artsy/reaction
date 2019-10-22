@@ -121,13 +121,17 @@ export class CollectionApp extends Component<CollectionAppProps> {
               />
             </ArtworkFilterContextProvider>
           </Box>
-          <Separator mt={6} mb={3} />
-          <Box mt="3">
-            <RelatedCollectionsRail
-              collections={viewer.relatedCollections}
-              title={viewer.title}
-            />
-          </Box>
+          {viewer.linkedCollections.length === 0 && (
+            <>
+              <Separator mt={6} mb={3} />
+              <Box mt="3">
+                <RelatedCollectionsRail
+                  collections={viewer.relatedCollections}
+                  title={viewer.title}
+                />
+              </Box>
+            </>
+          )}
         </FrameWithRecentlyViewed>
       </AppContainer>
     )
