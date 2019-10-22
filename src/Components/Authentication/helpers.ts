@@ -55,7 +55,7 @@ export const checkEmail = ({
   return fetchQuery<helpersEmailQueryResponse>(relayEnvironment, query, {
     email: values.email,
   }).then((data: any) => {
-    if (data.user.userAlreadyExists) {
+    if (data.user && data.user.userAlreadyExists) {
       if (shouldExist) {
         return true
       } else {
