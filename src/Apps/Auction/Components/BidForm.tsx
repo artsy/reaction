@@ -19,6 +19,7 @@ import Yup from "yup"
 interface Props {
   showPricingTransparency?: boolean
   saleArtwork: BidForm_saleArtwork
+  initialSelectedBid?: string
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
 }
 
@@ -39,15 +40,19 @@ export const BidForm: React.FC<Props> = ({
   onSubmit,
   saleArtwork,
   showPricingTransparency = false,
+  initialSelectedBid,
 }) => {
   const displayIncrements = dropWhile(
     saleArtwork.increments,
     increment => increment.cents < saleArtwork.minimumNextBid.cents
   ).map(inc => ({ value: inc.cents.toString(), text: inc.display }))
+
+  const selectedBid = initialSelectedBid || displayIncrements[0].value
+
   return (
     <Formik<FormValues>
       initialValues={{
-        selectedBid: displayIncrements[0].value,
+        selectedBid,
         agreeToTerms: false,
       }}
       validationSchema={validationSchema}

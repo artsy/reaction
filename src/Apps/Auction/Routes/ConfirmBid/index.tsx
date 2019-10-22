@@ -9,6 +9,7 @@ import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/Lot
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { FormikActions } from "formik"
+import qs from "qs"
 import React from "react"
 import { Title } from "react-head"
 import {
@@ -18,6 +19,7 @@ import {
   RelayProp,
 } from "react-relay"
 import { data as sd } from "sharify"
+import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
@@ -123,12 +125,21 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
         <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
         <Separator />
         <BidForm
+          initialSelectedBid={getInitialSelectedBid(props.location)}
           showPricingTransparency={Boolean(/pt=1/.test(props.location.search))}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
         />
       </Box>
     </AppContainer>
+  )
+}
+
+const getInitialSelectedBid = (location: Location): string | undefined => {
+  return get(
+    qs,
+    querystring => querystring.parse(location.search.slice(1)).bid,
+    undefined
   )
 }
 

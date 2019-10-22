@@ -17,15 +17,17 @@ jest.mock("sharify", () => ({
   },
 }))
 
-const mockLocation: any = {
+const mockLocation: Partial<Location> = {
   search: "",
 }
 
-const setupTestEnv = () => {
+const setupTestEnv = ({
+  location = mockLocation,
+}: { location?: Partial<Location> } = {}) => {
   return createTestEnv({
     TestPage: ConfirmBidTestPage,
     Component: (props: routes_ConfirmBidQueryResponse) => (
-      <ConfirmBidRouteFragmentContainer location={mockLocation} {...props} />
+      <ConfirmBidRouteFragmentContainer location={location as any} {...props} />
     ),
     query: graphql`
       query ConfirmBidValidTestQuery {
@@ -116,5 +118,15 @@ describe("Routes/Register ", () => {
     expect(env.mutations.mockFetch).not.toBeCalled()
     expect(window.location.assign).not.toHaveBeenCalled()
     expect(page.text()).toContain("You must agree to the Conditions of Sale")
+  })
+
+  it("pre-fills the bid select box with a VALID value from the query string", async () => {
+    const specialSelectedBidAmount = "42000000"
+    const search = `?bid=${specialSelectedBidAmount}`
+    const env = setupTestEnv({ location: { search } })
+    const page = await env.buildPage()
+    expect(page.selectBidAmountInput.props().value.toString()).toBe(
+      specialSelectedBidAmount
+    )
   })
 })

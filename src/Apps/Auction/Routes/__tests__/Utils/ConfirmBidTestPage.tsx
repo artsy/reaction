@@ -18,6 +18,9 @@ export class ConfirmBidTestPage extends RootTestPage {
       btn.text().includes("Confirm bid")
     )
   }
+  get selectBidAmountInput() {
+    return expectOne(this.find("select"))
+  }
   get form() {
     return expectOne(this.find("form"))
   }
