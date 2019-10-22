@@ -4,11 +4,11 @@ import { ConcreteRequest } from "relay-runtime";
 import { BidForm_saleArtwork$ref } from "./BidForm_saleArtwork.graphql";
 import { LotInfo_artwork$ref } from "./LotInfo_artwork.graphql";
 import { LotInfo_saleArtwork$ref } from "./LotInfo_saleArtwork.graphql";
-export type routes_BidQueryVariables = {
+export type routes_ConfirmBidQueryVariables = {
     readonly saleID: string;
     readonly artworkID: string;
 };
-export type routes_BidQueryResponse = {
+export type routes_ConfirmBidQueryResponse = {
     readonly artwork: ({
         readonly _id: string;
         readonly id: string;
@@ -33,15 +33,15 @@ export type routes_BidQueryResponse = {
         readonly has_qualified_credit_cards: boolean | null;
     }) | null;
 };
-export type routes_BidQuery = {
-    readonly response: routes_BidQueryResponse;
-    readonly variables: routes_BidQueryVariables;
+export type routes_ConfirmBidQuery = {
+    readonly response: routes_ConfirmBidQueryResponse;
+    readonly variables: routes_ConfirmBidQueryVariables;
 };
 
 
 
 /*
-query routes_BidQuery(
+query routes_ConfirmBidQuery(
   $saleID: String!
   $artworkID: String!
 ) {
@@ -252,13 +252,13 @@ v9 = {
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "routes_BidQuery",
+  "name": "routes_ConfirmBidQuery",
   "id": null,
-  "text": "query routes_BidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
+  "text": "query routes_ConfirmBidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_BidQuery",
+    "name": "routes_ConfirmBidQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": v0,
@@ -312,7 +312,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_BidQuery",
+    "name": "routes_ConfirmBidQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -442,5 +442,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'af13ddd3e0d60d9cbda2a148ab938c56';
+(node as any).hash = 'ff2da827cde39edcee834e5a15602665';
 export default node;

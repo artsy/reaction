@@ -3,6 +3,7 @@ import {
   ConfirmBidCreateBidderPositionMutation,
   ConfirmBidCreateBidderPositionMutationResponse,
 } from "__generated__/ConfirmBidCreateBidderPositionMutation.graphql"
+import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/BidForm"
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -22,8 +23,8 @@ import createLogger from "Utils/logger"
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
 interface BidProps {
-  artwork: any
-  me: any
+  artwork: routes_ConfirmBidQueryResponse["artwork"]
+  me: routes_ConfirmBidQueryResponse["me"]
   relay: RelayProp
   location: Location
 }

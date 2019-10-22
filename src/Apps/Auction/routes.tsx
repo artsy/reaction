@@ -29,7 +29,7 @@ export const routes: RouteConfig[] = [
       }
     },
     query: graphql`
-      query routes_BidQuery($saleID: String!, $artworkID: String!) {
+      query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!) {
         artwork(id: $artworkID) {
           ...LotInfo_artwork
           _id

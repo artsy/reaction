@@ -3,8 +3,8 @@ import { graphql } from "react-relay"
 
 import { createTestEnv } from "DevTools/createTestEnv"
 
-import { routes_BidQueryResponse } from "__generated__/routes_BidQuery.graphql"
-import { BidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_BidQuery"
+import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
+import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import { createBidderPositionSuccessful } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -24,7 +24,7 @@ const mockLocation: any = {
 const setupTestEnv = () => {
   return createTestEnv({
     TestPage: ConfirmBidTestPage,
-    Component: (props: routes_BidQueryResponse) => (
+    Component: (props: routes_ConfirmBidQueryResponse) => (
       <ConfirmBidRouteFragmentContainer location={mockLocation} {...props} />
     ),
     query: graphql`
@@ -55,7 +55,7 @@ const setupTestEnv = () => {
         }
       }
     `,
-    defaultData: BidQueryResponseFixture,
+    defaultData: ConfirmBidQueryResponseFixture,
     defaultMutationResults: {
       createBidderPosition: {},
     },
@@ -102,8 +102,8 @@ describe("Routes/Register ", () => {
 
     expect(window.location.assign).toHaveBeenCalledWith(
       `https://example.com/auction/${
-        BidQueryResponseFixture.artwork.saleArtwork.sale.id
-      }/artwork/${BidQueryResponseFixture.artwork.id}`
+        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.id
+      }/artwork/${ConfirmBidQueryResponseFixture.artwork.id}`
     )
   })
 

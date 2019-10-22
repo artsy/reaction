@@ -1,4 +1,4 @@
-import { routes_BidQueryResponse } from "__generated__/routes_BidQuery.graphql"
+import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { routes_RegisterQueryResponse } from "__generated__/routes_RegisterQuery.graphql"
 
 export interface Redirect {
@@ -36,7 +36,7 @@ export function registerRedirect({
 }
 
 export function confirmBidRedirect(
-  data: routes_BidQueryResponse,
+  data: routes_ConfirmBidQueryResponse,
   location: Location
 ): Redirect | null {
   const { artwork, me } = data
