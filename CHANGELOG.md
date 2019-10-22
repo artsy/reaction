@@ -1,3 +1,15 @@
+# v21.13.0 (Tue Oct 22 2019)
+
+#### 🚀  Enhancement
+
+- Submit bid via new ConfirmBid page [#2928](https://github.com/artsy/reaction/pull/2928) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.12.2 (Tue Oct 22 2019)
 
 #### 🐛  Bug Fix
