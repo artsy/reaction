@@ -1,3 +1,16 @@
+# v21.12.0 (Tue Oct 22 2019)
+
+#### 🚀  Enhancement
+
+- Require login for bid confirm route [#2936](https://github.com/artsy/reaction/pull/2936) ([@bhoggard](https://github.com/bhoggard) [@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v21.11.2 (Tue Oct 22 2019)
 
 #### 🐛  Bug Fix
