@@ -6,10 +6,10 @@ export interface Redirect {
   reason: string
 }
 
-export function registerRedirect(
-  sale: routes_RegisterQueryResponse["sale"],
-  me: routes_RegisterQueryResponse["me"]
-): Redirect | null {
+export function registerRedirect({
+  me,
+  sale,
+}: routes_RegisterQueryResponse): Redirect | null {
   if (me.has_qualified_credit_cards) {
     return {
       path: registrationFlowPath(sale),
@@ -36,12 +36,21 @@ export function registerRedirect(
 }
 
 export function confirmBidRedirect(
-  artwork: routes_BidQueryResponse["artwork"],
-  me: routes_BidQueryResponse["me"]
+  data: routes_BidQueryResponse,
+  location: Location
 ): Redirect | null {
+  const { artwork, me } = data
   const { saleArtwork } = artwork
+
   const { sale } = saleArtwork
   const { registrationStatus } = sale
+
+  if (!me) {
+    return {
+      path: "/log_in?redirect_uri=" + encodeURIComponent(location.pathname),
+      reason: "user is not signed in",
+    }
+  }
 
   if (!registrationStatus && sale.is_registration_closed) {
     return {
