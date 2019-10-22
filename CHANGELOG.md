@@ -1,3 +1,20 @@
+# v21.11.2 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1677 Analytics tracking for hub entry points [#2922](https://github.com/artsy/reaction/pull/2922) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v5.0.0 [#2937](https://github.com/artsy/reaction/pull/2937) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v21.11.1 (Mon Oct 21 2019)
 
 #### 🐛  Bug Fix
