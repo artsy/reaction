@@ -16,7 +16,6 @@ import { Link, Meta, Title } from "react-head"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
-import { userIsAdmin } from "Utils/user"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
@@ -51,7 +50,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   render() {
-    const { viewer, location, relay, user } = this.props
+    const { viewer, location, relay } = this.props
     const { title, slug, headerImage, description, artworks } = viewer
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
@@ -60,8 +59,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
-    const showCollectionHubs =
-      viewer.linkedCollections.length > 0 && userIsAdmin(user)
+    const showCollectionHubs = viewer.linkedCollections.length > 0
 
     return (
       <AppContainer>
