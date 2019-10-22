@@ -9,6 +9,7 @@ export enum PageName {
   CollectPage = "Collect page",
   CollectionPage = "Collection",
   SearchPage = "Search page",
+  HomePage = "Home",
 }
 
 /**
@@ -252,6 +253,11 @@ export enum Subject {
   Login = "Log In",
   Signup = "Sign Up",
   SmallScreenMenuSandwichIcon = "Small Screen Menu Sandwich Icon",
+
+  /**
+   * CollectionHub
+   */
+  FeaturedCategories = "Featured Categories",
 }
 
 /**
@@ -323,6 +329,11 @@ export enum ContextModule {
    * Collections Rails
    */
   CollectionsRail = "CollectionsRail",
+
+  /**
+   * CollectionHub Entry Point in home page
+   */
+  CollectionHubEntryPoint = "HubEntrypoint",
 
   /**
    * Other Collections Rail

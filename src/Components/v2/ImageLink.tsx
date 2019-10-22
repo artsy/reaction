@@ -60,6 +60,8 @@ interface ImageLinkProps {
 
   /** A number corresponding to the ratio of height/width (inverted from the usual width/height aspect ratio) */
   ratio: number | number[]
+
+  onClick?: () => void
 }
 
 export const ImageLink: FC<ImageLinkProps> = ({
@@ -68,9 +70,10 @@ export const ImageLink: FC<ImageLinkProps> = ({
   title,
   subtitle,
   ratio,
+  onClick,
 }) => {
   return (
-    <OuterLink to={to}>
+    <OuterLink to={to} onClick={onClick}>
       <ImageContainer>
         <ImageOverlay>
           <HubImage src={src} width="100%" ratio={ratio} />

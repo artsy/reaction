@@ -1,9 +1,10 @@
 import { CSSGrid } from "@artsy/palette"
+import { Serif } from "@artsy/palette"
 import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
-import { Serif } from "@artsy/palette"
 import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
@@ -12,6 +13,7 @@ interface CollectionsHubsNavProps {
 }
 
 export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
+  const { trackEvent } = useTracking()
   return (
     <CSSGrid
       as="aside"
@@ -29,6 +31,16 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
           ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
           key={hub.id}
+          onClick={() => {
+            trackEvent({
+              action_type: AnalyticsSchema.ActionType.Click,
+              context_page: AnalyticsSchema.PageName.CollectPage,
+              context_module:
+                AnalyticsSchema.ContextModule.CollectionHubEntryPoint,
+              type: AnalyticsSchema.Type.Thumbnail,
+              destination_path: `/collection/${hub.slug}`,
+            })
+          }}
         />
       ))}
     </CSSGrid>
