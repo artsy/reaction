@@ -83,9 +83,15 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem href="/collect">Artworks</NavItem>
-            <NavItem href="/auctions">Auctions</NavItem>
-            <NavItem href="/galleries">Galleries</NavItem>
+            <NavItem href="/collect" callHoverTracking>
+              Artworks
+            </NavItem>
+            <NavItem href="/auctions" callHoverTracking>
+              Auctions
+            </NavItem>
+            <NavItem href="/galleries" callHoverTracking>
+              Galleries
+            </NavItem>
 
             {/**
               Only show Fairs at `xlg`
@@ -93,10 +99,13 @@ export const NavBar: React.FC = track(
             <NavItem
               href="/art-fairs"
               display={["none", "none", "none", "none", "block"]}
+              callHoverTracking
             >
               Fairs
             </NavItem>
-            <NavItem href="/articles">Magazine</NavItem>
+            <NavItem href="/articles" callHoverTracking>
+              Magazine
+            </NavItem>
             <NavItem
               Menu={() => {
                 return (
@@ -105,6 +114,7 @@ export const NavBar: React.FC = track(
                   </Box>
                 )
               }}
+              callHoverTracking
             >
               More
             </NavItem>
@@ -136,7 +146,6 @@ export const NavBar: React.FC = track(
                         new_notification_count: getNotificationCount(),
                       })
                     }
-
                     return (
                       <BellIcon
                         top={3}
@@ -147,6 +156,12 @@ export const NavBar: React.FC = track(
                 </NavItem>
                 <NavItem Menu={UserMenu}>
                   {({ hover }) => {
+                    if (hover) {
+                      trackEvent({
+                        action_type: AnalyticsSchema.ActionType.Hover,
+                        subject: "User",
+                      })
+                    }
                     return (
                       <SoloIcon
                         top={3}
