@@ -91,7 +91,7 @@ describe("Routes/Register ", () => {
     jest.resetAllMocks()
   })
 
-  it("emits a RegistrationSubmitFailed analtyics event and halts submission", async () => {
+  it("emits a RegistrationSubmitFailed analytics event and halts submission", async () => {
     const env = setupTestEnv()
     const page = await env.buildPage()
 
