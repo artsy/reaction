@@ -1,5 +1,17 @@
+import { DateTime } from "luxon"
+
 export const VideoArtwork = {
   __id: "QXJ0d29yazpqZXJlbXktY2hhbmRsZXItcHJvbmUtcG9zaXRpb24=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
       __id: "QXJ0aXN0OmplcmVteS1jaGFuZGxlcg==",
@@ -8,6 +20,9 @@ export const VideoArtwork = {
       is_followed: false,
       href: "/artist/jeremy-chandler",
       is_consignable: false,
+      _id: "artist_id",
+      counts: null,
+      related: null,
     },
   ],
   partner: {
@@ -15,6 +30,7 @@ export const VideoArtwork = {
     type: "Gallery",
     name: "Mindy Solomon Gallery",
     href: "/mindy-solomon-gallery",
+    isVerifiedSeller: false,
     locations: [
       {
         city: "Miami",
@@ -47,6 +63,8 @@ export const VideoArtwork = {
       },
       sale_message: "$850",
       edition_of: "Edition of 12",
+      is_acquireable: false,
+      is_offerable: false,
     },
   ],
   sale_message: "$850",
@@ -55,23 +73,37 @@ export const VideoArtwork = {
   is_for_sale: true,
 }
 export const CollecingInstitutionArtwork = {
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
   __id:
     "QXJ0d29yazpyZW1icmFuZHQtdmFuLXJpam4tZ2FueW1lZGUtaW4tdGhlLWNsYXdzLW9mLXRoZS1lYWdsZQ==",
   artists: [
     {
+      _id: "artist_id",
       __id: "QXJ0aXN0OnJlbWJyYW5kdC12YW4tcmlqbg==",
       id: "rembrandt-van-rijn",
       name: "Rembrandt van Rijn",
       is_followed: false,
       href: "/artist/rembrandt-van-rijn",
       is_consignable: true,
+      counts: null,
+      related: null,
     },
   ],
+  myLotStanding: null,
   partner: {
     __id: "UGFydG5lcjpiZWx2ZWRlcmUtbXVzZXVt",
     type: "Gallery",
     name: "Belvedere Museum",
     href: "/belvedere-museum",
+    isVerifiedSeller: false,
     locations: [{ city: "Vienna" }, { city: "Vienna" }, { city: "Vienna" }],
   },
   sale: null,
@@ -96,46 +128,71 @@ export const CollecingInstitutionArtwork = {
 
 export const MultipleArtistsArtwork = {
   __id: "QXJ0d29yazpkYW1pZW4taGlyc3QtbXl0aG9zLXNsYXNoLXJlLW9iamVjdHM=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
+      _id: "artist.0.id",
       __id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
       id: "damien-hirst",
       name: "Damien Hirst",
       is_followed: false,
       href: "/artist/damien-hirst",
       is_consignable: true,
+      counts: null,
+      related: null,
     },
     {
+      _id: "artist.1.id",
       __id: "QXJ0aXN0OmplZmYta29vbnM=",
       id: "jeff-koons",
       name: "Jeff Koons",
       is_followed: false,
       href: "/artist/jeff-koons",
       is_consignable: true,
+      counts: null,
+      related: null,
     },
     {
+      _id: "artist.2.id",
       __id: "QXJ0aXN0Om1hdHRoZXctYmFybmV5",
       id: "matthew-barney",
       name: "Matthew Barney",
       is_followed: false,
       href: "/artist/matthew-barney",
       is_consignable: false,
+      counts: null,
+      related: null,
     },
     {
+      _id: "artist.3.id",
       __id: "QXJ0aXN0OmdlcmhhcmQtbWVyeg==",
       id: "gerhard-merz",
       name: "Gerhard Merz",
       is_followed: false,
       href: "/artist/gerhard-merz",
       is_consignable: false,
+      counts: null,
+      related: null,
     },
     {
+      _id: "artist.4.id",
       __id: "QXJ0aXN0OmRvdWdsYXMtZ29yZG9u",
       id: "douglas-gordon",
       name: "Douglas Gordon",
       is_followed: false,
       href: "/artist/douglas-gordon",
       is_consignable: false,
+      counts: null,
+      related: null,
     },
   ],
   partner: {
@@ -144,6 +201,7 @@ export const MultipleArtistsArtwork = {
     name: "Alpha 137 Gallery",
     href: "/alpha-137-gallery",
     locations: [{ city: null }],
+    isVerifiedSeller: true,
   },
   sale: null,
   sale_artwork: null,
@@ -169,6 +227,16 @@ export const MultipleArtistsArtwork = {
 
 export const RegularNonEditionedArtwork = {
   __id: "QXJ0d29yazpkYW1pZW4taGlyc3Qtc3Bpbi1wYWludGluZy1idXR0ZXJmbHk=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
       __id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
@@ -177,9 +245,13 @@ export const RegularNonEditionedArtwork = {
       is_followed: false,
       href: "/artist/damien-hirst",
       is_consignable: true,
+      _id: "artist.0.id",
+      counts: null,
+      related: null,
     },
   ],
   partner: {
+    isVerifiedSeller: true,
     __id: "UGFydG5lcjpydWRvbGYtYnVkamEtZ2FsbGVyeQ==",
     type: "Gallery",
     name: "RUDOLF BUDJA GALLERY",
@@ -218,6 +290,16 @@ export const RegularNonEditionedArtwork = {
 export const RegularArtworkWithOneEdition = {
   __id:
     "QXJ0d29yazp0YWthc2hpLW11cmFrYW1pLWZsb3dlcnMtZnJvbS10aGUtdmlsbGFnZS1vZi1wb25rb3Rhbi01",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
       __id: "QXJ0aXN0OnRha2FzaGktbXVyYWthbWk=",
@@ -226,6 +308,9 @@ export const RegularArtworkWithOneEdition = {
       is_followed: false,
       href: "/artist/takashi-murakami",
       is_consignable: true,
+      _id: "artist_id",
+      counts: null,
+      related: null,
     },
   ],
   partner: {
@@ -233,6 +318,7 @@ export const RegularArtworkWithOneEdition = {
     type: "Gallery",
     name: "Gagosian",
     href: "/gagosian-gallery",
+    isVerifiedSeller: false,
     locations: [
       {
         city: "New York",
@@ -307,6 +393,8 @@ export const RegularArtworkWithOneEdition = {
         in: "19 3/4 × 19 3/4 in",
       },
       sale_message: "On hold",
+      is_acquireable: true,
+      is_offerable: true,
       edition_of: "Edition of 300",
     },
   ],
@@ -318,6 +406,16 @@ export const RegularArtworkWithOneEdition = {
 
 export const RegularArtworkWithTwoEditions = {
   __id: "QXJ0d29yazpib2ItY2FybG9zLWNsYXJrZS1mYWlyeS1idW0=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
       __id: "QXJ0aXN0OmJvYi1jYXJsb3MtY2xhcmtl",
@@ -326,9 +424,13 @@ export const RegularArtworkWithTwoEditions = {
       is_followed: false,
       href: "/artist/bob-carlos-clarke",
       is_consignable: false,
+      _id: "artist_id",
+      counts: null,
+      related: null,
     },
   ],
   partner: {
+    isVerifiedSeller: true,
     __id: "UGFydG5lcjp0aGUtbGl0dGxlLWJsYWNrLWdhbGxlcnk=",
     type: "Gallery",
     name: "THE LITTLE BLACK GALLERY",
@@ -373,6 +475,8 @@ export const RegularArtworkWithTwoEditions = {
         in: "70 × 41 in",
       },
       sale_message: "$4,250",
+      is_acquireable: true,
+      is_offerable: false,
       edition_of: "Edition of 9",
     },
     {
@@ -382,6 +486,8 @@ export const RegularArtworkWithTwoEditions = {
         in: "34 × 24 in",
       },
       sale_message: "$1,000",
+      is_acquireable: true,
+      is_offerable: false,
       edition_of: "Edition of 100",
     },
   ],
@@ -395,14 +501,27 @@ export const RegularArtworkWithTwoEditions = {
 export const OpenAuctionArtwork = {
   __id:
     "QXJ0d29yazpnaWRlb24tcnViaW4tZWxiYS1udW1iZXItNS1hbmQtdGhlLWVjY2VudHJpY2l0aWVzLW9mLWEtbmlnaHRpbmdhbGU=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
+      _id: "artist_id",
       __id: "QXJ0aXN0OmdpZGVvbi1ydWJpbi0x",
       id: "gideon-rubin-1",
       name: "Gideon Rubin",
       is_followed: false,
       href: "/artist/gideon-rubin-1",
       is_consignable: false,
+      counts: null,
+      related: null,
     },
   ],
   partner: {
@@ -411,14 +530,21 @@ export const OpenAuctionArtwork = {
     name: "Rago",
     href: "/auction/partner-595e68c9275b24129e961234",
     locations: [],
+    isVerifiedSeller: false,
   },
   sale: {
+    _id: "sale_id",
     is_preview: false,
     is_open: true,
     is_closed: false,
     is_live_open: false,
     is_with_buyers_premium: true,
     is_registration_closed: false,
+    registrationStatus: null,
+    live_start_at: null,
+    end_at: DateTime.local()
+      .plus({ days: 3 })
+      .toString(),
   },
   sale_artwork: {
     lot_label: "2",
@@ -457,8 +583,21 @@ export const OpenAuctionArtwork = {
 export const LiveAuctionArtwork = {
   __id:
     "QXJ0d29yazphaS13ZWl3ZWktb2R5c3NleS1mcm9tLWdvb2QtZmVuY2VzLW1ha2UtZ29vZC1uZWlnaGJvcnMtcG9zdGVyLTE=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
+      _id: "artist_id",
+      counts: null,
+      related: null,
       __id: "QXJ0aXN0OmFpLXdlaXdlaQ==",
       id: "ai-weiwei",
       name: "Ai Weiwei",
@@ -473,6 +612,7 @@ export const LiveAuctionArtwork = {
     name: "Heritage Auctions",
     href: "/auction/partner-595e67cab202a301c4818569",
     locations: [],
+    isVerifiedSeller: false,
   },
   sale: {
     is_preview: false,
@@ -482,6 +622,11 @@ export const LiveAuctionArtwork = {
     is_with_buyers_premium: true,
     is_registration_closed: true,
     registrationStatus: null,
+    live_start_at: DateTime.local()
+      .plus({ days: 3 })
+      .toString(),
+    end_at: null,
+    _id: "sale_id",
   },
   sale_artwork: {
     lot_label: "14002",
@@ -491,6 +636,7 @@ export const LiveAuctionArtwork = {
     reserve_status: "no_reserve",
     current_bid: { display: "$400" },
     counts: { bidder_positions: 1 },
+    increments: null,
   },
   is_in_auction: true,
   is_biddable: true,
@@ -508,6 +654,8 @@ export const LiveAuctionArtwork = {
       dimensions: { cm: "91.4 × 61 cm", in: "36 × 24 in" },
       sale_message: "Contact for price",
       edition_of: "Edition of 1000",
+      is_acquireable: true,
+      is_offerable: false,
     },
   ],
   sale_message: "Contact For Price",
@@ -520,6 +668,16 @@ export const LiveAuctionArtwork = {
 export const ClosedAuctionArtwork = {
   __id:
     "QXJ0d29yazptYXJjLWNoYWdhbGwtcGFyaXMtZGUtbGEtZmVuZXRyZS1wYXJpcy10aHJvdWdoLXRoZS13aW5kb3c=",
+  cultural_maker: null,
+  _id: "artwork_id",
+  is_acquireable: false,
+  is_offerable: false,
+  price: null,
+  priceIncludesTaxDisplay: null,
+  shippingInfo: null,
+  shippingOrigin: null,
+  hasCertificateOfAuthenticity: false,
+  myLotStanding: null,
   artists: [
     {
       __id: "QXJ0aXN0Om1hcmMtY2hhZ2FsbA==",
@@ -528,6 +686,9 @@ export const ClosedAuctionArtwork = {
       is_followed: false,
       href: "/artist/marc-chagall",
       is_consignable: true,
+      _id: "artist_id",
+      counts: null,
+      related: null,
     },
   ],
   partner: {
@@ -536,6 +697,7 @@ export const ClosedAuctionArtwork = {
     name: "Phillips",
     href: "/auction/phillips-1",
     locations: [],
+    isVerifiedSeller: true,
   },
   sale: {
     registrationStatus: null,
@@ -545,6 +707,11 @@ export const ClosedAuctionArtwork = {
     is_live_open: false,
     is_with_buyers_premium: true,
     is_registration_closed: true,
+    live_start_at: null,
+    end_at: DateTime.local()
+      .minus({ days: 3 })
+      .toString(),
+    _id: "sale_id",
   },
   sale_artwork: {
     lot_label: "2",
