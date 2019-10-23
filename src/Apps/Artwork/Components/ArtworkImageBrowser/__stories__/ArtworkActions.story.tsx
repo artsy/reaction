@@ -1,5 +1,5 @@
 import { Flex } from "@artsy/palette"
-import { artwork as FullArtworkFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions.fixture"
+import { FullArtworkFixture } from "Apps/__tests__/Fixtures/Artwork/FullArtwork.fixture"
 import { MockRelayRenderer } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
