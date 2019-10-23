@@ -1,3 +1,5 @@
+import { FullArtworkFixture } from "Apps/__tests__/Fixtures/Artwork/FullArtwork.fixture"
+
 export const images = [
   {
     resized: {
@@ -68,6 +70,7 @@ export const images = [
 export const artworkBricks = [
   {
     node: {
+      ...FullArtworkFixture,
       __id:
         "QXJ0d29yazpwYWJsby1waWNhc3NvLXBvcnRyYWl0LW9mLWFydC1kZWFsZXItYW1icm9pc2Utdm9sbGFyZC0xODY3LTE5Mzk=",
       image: {
@@ -106,6 +109,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWxhLXZpZS1saWZl",
       image: {
         aspect_ratio: 0.65,
@@ -142,6 +146,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWd1ZXJuaWNh",
       image: {
         aspect_ratio: 2.21,
@@ -178,6 +183,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id:
         "QXJ0d29yazpwYWJsby1waWNhc3NvLXN0aWxsLWxpZmUtd2l0aC1jaGFpci1jYW5pbmc=",
       image: {
@@ -215,6 +221,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWRhbmllbC1oZW5yeS1rYWhud2VpbGVy",
       image: {
         aspect_ratio: 0.72,
@@ -251,6 +258,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLXZpb2xpbi13aXRoLXNoZWV0LW9mLW11c2lj",
       image: {
         aspect_ratio: 0.82,
@@ -287,6 +295,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWZlbW1lLWF1LW1vdWNob2lyLTE=",
       image: {
         aspect_ratio: 0.83,
@@ -323,6 +332,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWxlLXJldmUtdGhlLWRyZWFt",
       image: {
         aspect_ratio: 0.74,
@@ -359,6 +369,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLWNpbmVzaWFzLWV0LXNhLW15cnJoaW5l",
       image: {
         aspect_ratio: 0.66,
@@ -395,6 +406,7 @@ export const artworkBricks = [
   },
   {
     node: {
+      ...FullArtworkFixture,
       __id: "QXJ0d29yazpwYWJsby1waWNhc3NvLXBpY2hldC10ZXRlLWNhcnJlZQ==",
       image: {
         aspect_ratio: 0.99,
