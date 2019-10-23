@@ -1,3 +1,15 @@
+# v21.15.0 (Wed Oct 23 2019)
+
+#### 🚀  Enhancement
+
+- Refactor auction tests to use deepmerge in fixture creation [#2944](https://github.com/artsy/reaction/pull/2944) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.14.2 (Wed Oct 23 2019)
 
 #### 🐛  Bug Fix
