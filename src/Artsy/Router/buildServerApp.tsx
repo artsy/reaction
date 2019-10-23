@@ -109,15 +109,15 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           "buildServerApp.fetch",
           (async () => {
             const sheet = new ServerStyleSheet()
-            // Kick off relay requests to prime cache.
-            // TODO: Remove the need to do this by using persisted queries.
-            ReactDOMServer.renderToString(sheet.collectStyles(<ServerApp />))
-            // Get serializable Relay data for rehydration on the client
-            const data = await relayEnvironment.relaySSRMiddleware.getCache()
+
             // Render tree again, but this time with Relay data being available.
             const html = ReactDOMServer.renderToString(
               sheet.collectStyles(<ServerApp tags={headTags} />)
             )
+
+            // Get serializable Relay data for rehydration on the client
+            const data = await relayEnvironment.relaySSRMiddleware.getCache()
+
             // Extract CSS styleTags to inject for SSR pass
             const tags = sheet.getStyleTags()
 
