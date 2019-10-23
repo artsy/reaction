@@ -1,3 +1,15 @@
+# v21.14.0 (Wed Oct 23 2019)
+
+#### 🚀  Enhancement
+
+- Loosen rules on phone numbers in AddressForm for international numbers. [#2938](https://github.com/artsy/reaction/pull/2938) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v21.13.0 (Tue Oct 22 2019)
 
 #### 🚀  Enhancement
