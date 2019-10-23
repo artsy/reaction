@@ -172,7 +172,7 @@ describe("Routes/Register ", () => {
           },
         }),
       })
-      expect(page.selectBidAmountInput.props().value).toBe("7000000")
+      expect(page.selectBidAmountInput.props().value).toBe("5000000")
     })
     it("pre-fills the bid select box with the lowest increment if the value is lower than what is available", async () => {
       const specialSelectedBidAmount = "420000"

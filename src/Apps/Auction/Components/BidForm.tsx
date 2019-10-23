@@ -49,7 +49,7 @@ const getSelectedBid = ({
     const selectedNum = Number(initialSelectedBid)
     const lastGoodIncrement = findLast(
       displayIncrements,
-      i => Number(i.value) <= selectedNum
+      i => Number(i.value) === selectedNum
     )
     return (lastGoodIncrement || displayIncrements[0]).value
   }
