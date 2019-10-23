@@ -1,10 +1,13 @@
+import deepMerge from "deepmerge"
+import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { createTestEnv } from "DevTools/createTestEnv"
-
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
-import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
+import {
+  ConfirmBidQueryResponse,
+  ConfirmBidQueryResponseFixture,
+} from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import { createBidderPositionSuccessful } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -21,9 +24,13 @@ const mockLocation: Partial<Location> = {
   search: "",
 }
 
+const mockDefaultData = (data: any) =>
+  deepMerge(ConfirmBidQueryResponseFixture, data)
+
 const setupTestEnv = ({
   location = mockLocation,
-}: { location?: Partial<Location> } = {}) => {
+  data = {},
+}: { location?: Partial<Location>; data?: any } = {}) => {
   return createTestEnv({
     TestPage: ConfirmBidTestPage,
     Component: (props: routes_ConfirmBidQueryResponse) => (
@@ -57,7 +64,7 @@ const setupTestEnv = ({
         }
       }
     `,
-    defaultData: ConfirmBidQueryResponseFixture,
+    defaultData: mockDefaultData({}),
     defaultMutationResults: {
       createBidderPosition: {},
     },
@@ -120,13 +127,85 @@ describe("Routes/Register ", () => {
     expect(page.text()).toContain("You must agree to the Conditions of Sale")
   })
 
-  it("pre-fills the bid select box with a VALID value from the query string", async () => {
-    const specialSelectedBidAmount = "42000000"
-    const search = `?bid=${specialSelectedBidAmount}`
-    const env = setupTestEnv({ location: { search } })
-    const page = await env.buildPage()
-    expect(page.selectBidAmountInput.props().value.toString()).toBe(
-      specialSelectedBidAmount
-    )
+  describe("preselected bid amounts", () => {
+    it("pre-fills the bid select box with a value from the query string that is available in increments", async () => {
+      const specialSelectedBidAmount = "7000000"
+      const search = `?bid=${specialSelectedBidAmount}`
+      const env = setupTestEnv({ location: { search } })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+      expect(page.selectBidAmountInput.props().value).toBe(
+        specialSelectedBidAmount
+      )
+    })
+    it("pre-fills the bid select box with the highest increment if the value is higher than what is available", async () => {
+      const specialSelectedBidAmount = "42000000"
+      const search = `?bid=${specialSelectedBidAmount}`
+      const env = setupTestEnv({ location: { search } })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+      expect(page.selectBidAmountInput.props().value).toBe("7000000")
+    })
+    it("pre-fills the bid select box with the lowest increment if the value is lower than what is available", async () => {
+      const specialSelectedBidAmount = "420000"
+      const search = `?bid=${specialSelectedBidAmount}`
+      const env = setupTestEnv({ location: { search } })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+      expect(page.selectBidAmountInput.props().value).toBe("5000000")
+    })
+
+    it("pre-fills the bid select box with the lowest increment if the value is not a number", async () => {
+      const specialSelectedBidAmount = "50 thousand and 00/100 dollars"
+      const search = `?bid=${specialSelectedBidAmount}`
+      const env = setupTestEnv({ location: { search } })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+      expect(page.selectBidAmountInput.props().value).toBe("5000000")
+    })
   })
 })

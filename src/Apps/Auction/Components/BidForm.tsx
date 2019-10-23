@@ -11,7 +11,7 @@ import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { Form, Formik, FormikActions, FormikValues } from "formik"
-import { dropWhile } from "lodash"
+import { dropWhile, findLast } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
@@ -36,6 +36,25 @@ const validationSchema = Yup.object().shape({
   ),
 })
 
+const getSelectedBid = ({
+  initialSelectedBid,
+  displayIncrements,
+}: {
+  initialSelectedBid: Props["initialSelectedBid"]
+  displayIncrements: Array<{ value: string; text: string }>
+}): string => {
+  if (!initialSelectedBid) {
+    return displayIncrements[0].value
+  } else {
+    const selectedNum = Number(initialSelectedBid)
+    const lastGoodIncrement = findLast(
+      displayIncrements,
+      i => Number(i.value) <= selectedNum
+    )
+    return (lastGoodIncrement || displayIncrements[0]).value
+  }
+}
+
 export const BidForm: React.FC<Props> = ({
   onSubmit,
   saleArtwork,
@@ -47,7 +66,7 @@ export const BidForm: React.FC<Props> = ({
     increment => increment.cents < saleArtwork.minimumNextBid.cents
   ).map(inc => ({ value: inc.cents.toString(), text: inc.display }))
 
-  const selectedBid = initialSelectedBid || displayIncrements[0].value
+  const selectedBid = getSelectedBid({ initialSelectedBid, displayIncrements })
 
   return (
     <Formik<FormValues>
