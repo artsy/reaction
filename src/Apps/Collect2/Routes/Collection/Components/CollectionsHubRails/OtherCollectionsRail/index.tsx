@@ -3,7 +3,7 @@ import { OtherCollectionsRail_collectionGroup } from "__generated__/OtherCollect
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { ArrowButton, Carousel } from "Components/v2/Carousel"
-import React, { useEffect } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -17,15 +17,6 @@ export const OtherCollectionsRail: React.FC<OtherCollectionsRailProps> = ({
 }) => {
   const { name, members } = collectionGroup
   const { trackEvent } = useTracking()
-
-  useEffect(() => {
-    trackEvent({
-      action_type: Schema.ActionType.Impression,
-      context_page: Schema.PageName.CollectionPage,
-      context_module: Schema.ContextModule.OtherCollectionsRail,
-      context_page_owner_type: Schema.OwnerType.Collection,
-    })
-  }, [])
 
   const trackArrowClick = () => {
     trackEvent({

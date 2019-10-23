@@ -14,7 +14,7 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import { Truncator } from "Components/Truncator"
 import { ArrowButton, Carousel } from "Components/v2"
 import currency from "currency.js"
-import React, { useEffect } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
@@ -52,15 +52,6 @@ export const FeaturedCollectionsRails: React.FC<Props> = ({
 }) => {
   const { members, name } = collectionGroup
   const { trackEvent } = useTracking()
-
-  useEffect(() => {
-    trackEvent({
-      action_type: Schema.ActionType.Impression,
-      context_page: Schema.PageName.CollectionPage,
-      context_module: Schema.ContextModule.FeaturedCollectionsRail,
-      context_page_owner_type: Schema.OwnerType.Collection,
-    })
-  }, [])
 
   const trackArrowClick = () => {
     trackEvent({
