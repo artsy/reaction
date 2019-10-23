@@ -744,7 +744,6 @@ export const ClosedAuctionArtwork = {
   is_inquireable: true,
   is_price_range: false,
   is_for_sale: false,
-  myLotStanding: null,
 }
 
 export const MoctionArtwork = {

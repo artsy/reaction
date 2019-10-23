@@ -1,18 +1,40 @@
 import { Flex } from "@artsy/palette"
-import { ArtworkActionsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions.fixture"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
+import { artwork as FullArtworkFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions.fixture"
+import { MockRelayRenderer } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
+import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
-import { ArtworkActions } from "../ArtworkActions"
+import { ArtworkActionsFragmentContainer } from "../ArtworkActions"
 
-const ArtworkActionsAuctionFixture = cloneDeep(ArtworkActionsFixture)
-ArtworkActionsAuctionFixture.artwork.sale.is_closed = false
-ArtworkActionsAuctionFixture.artwork.sale.is_auction = true
+const ArtworkActionsAuctionFixture = { artwork: cloneDeep(FullArtworkFixture) }
+ArtworkActionsAuctionFixture.artwork.sale = {
+  is_closed: false,
+  is_auction: true,
+}
 
-const ArtworkActionsNonAdminFixture = cloneDeep(ArtworkActionsFixture)
+const ArtworkActionsNonAdminFixture = {
+  artwork: cloneDeep(FullArtworkFixture),
+  user: { type: null },
+}
 ArtworkActionsNonAdminFixture.user.type = "User"
+
+const MockArtworkActions = ({ artwork }) => {
+  return (
+    <MockRelayRenderer
+      Component={ArtworkActionsFragmentContainer}
+      mockData={{ artwork }}
+      query={graphql`
+        query ArtworkActionsStoryQuery {
+          artwork(id: "unused") {
+            ...ArtworkActions_artwork
+          }
+        }
+      `}
+    />
+  )
+}
 
 storiesOf("Apps/Artwork/Components/ArtworkImageBrowser", module).add(
   "ArtworkActions",
@@ -20,23 +42,17 @@ storiesOf("Apps/Artwork/Components/ArtworkImageBrowser", module).add(
     <>
       <Section title="Default Share">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
-          <RelayStubProvider>
-            <ArtworkActions {...ArtworkActionsFixture as any} />
-          </RelayStubProvider>
+          <MockArtworkActions artwork={FullArtworkFixture} />
         </Flex>
       </Section>
       <Section title="Auction Share">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
-          <RelayStubProvider>
-            <ArtworkActions {...ArtworkActionsAuctionFixture as any} />
-          </RelayStubProvider>
+          <MockArtworkActions {...ArtworkActionsAuctionFixture as any} />
         </Flex>
       </Section>
       <Section title="Non-admin">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
-          <RelayStubProvider>
-            <ArtworkActions {...ArtworkActionsNonAdminFixture as any} />
-          </RelayStubProvider>
+          <MockArtworkActions {...ArtworkActionsNonAdminFixture as any} />
         </Flex>
       </Section>
     </>
