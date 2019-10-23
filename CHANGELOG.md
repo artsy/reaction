@@ -1,3 +1,15 @@
+# v21.14.1 (Wed Oct 23 2019)
+
+#### 🐛  Bug Fix
+
+- Remove pageview tracking from hubs modules [#2943](https://github.com/artsy/reaction/pull/2943) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v21.14.0 (Wed Oct 23 2019)
 
 #### 🚀  Enhancement
