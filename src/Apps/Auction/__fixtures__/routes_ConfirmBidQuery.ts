@@ -2,10 +2,10 @@ import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { LotInfo_artwork } from "__generated__/LotInfo_artwork.graphql"
 import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
-type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
+// This complicated type is needed in order to include nested/masked relay queries
 export interface ConfirmBidQueryResponse
-  extends DeepWriteable<routes_ConfirmBidQueryResponse> {
+  extends routes_ConfirmBidQueryResponse {
   artwork: routes_ConfirmBidQueryResponse["artwork"] &
     LotInfo_artwork & {
       saleArtwork: routes_ConfirmBidQueryResponse["artwork"]["saleArtwork"] &

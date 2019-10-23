@@ -10,8 +10,6 @@ import {
 
 jest.unmock("react-relay")
 
-type Omit<T, K> = { [k in Exclude<keyof T, K>]: T[k] }
-
 describe("ArtistBio", () => {
   const biography_blurb = {
     text: '<a href="hi">hello how are you</a>',
