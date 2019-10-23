@@ -47,17 +47,6 @@ describe("CollectionsRail", () => {
   })
 
   describe("Tracking", () => {
-    it("Tracks impressions", () => {
-      mount(<OtherCollectionsRail {...props} />)
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: "Impression",
-        context_page: "Collection",
-        context_module: "OtherCollectionsRail",
-        context_page_owner_type: "Collection",
-      })
-    })
-
     it("Tracks arrow click", () => {
       props.collectionGroup.members = [
         memberData(),
