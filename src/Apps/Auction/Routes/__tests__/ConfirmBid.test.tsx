@@ -8,6 +8,7 @@ import {
   ConfirmBidQueryResponse,
   ConfirmBidQueryResponseFixture,
 } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
+import { DeepPartial } from "Utils/typeSupport"
 import { createBidderPositionSuccessful } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -24,8 +25,13 @@ const mockLocation: Partial<Location> = {
   search: "",
 }
 
-const mockDefaultData = (data: any) =>
-  deepMerge(ConfirmBidQueryResponseFixture, data)
+const mockDefaultData = (
+  data: DeepPartial<ConfirmBidQueryResponse> = {}
+): ConfirmBidQueryResponse =>
+  deepMerge<ConfirmBidQueryResponse, DeepPartial<ConfirmBidQueryResponse>>(
+    ConfirmBidQueryResponseFixture,
+    data
+  )
 
 const setupTestEnv = ({
   location = mockLocation,
