@@ -648,10 +648,14 @@ export const AllAdditionalDetailsPresent = {
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   additional_information:
     "In Francesca DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam DiMattio’s The Fox and the Hound, 2018, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam. Tempor incididunt ut labore et dolore magnas.",
+  sale: null,
   partner: {
+    _id: "salon-94",
     type: "Gallery",
     name: "Salon 94",
     initials: "S9",
+    href: "/link/to/partner",
+    is_default_profile_public: true,
     locations: [
       { city: "New York" },
       { city: "Kharkov" },
