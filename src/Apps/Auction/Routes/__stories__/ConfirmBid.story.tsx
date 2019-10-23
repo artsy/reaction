@@ -8,7 +8,15 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?bid=11000000"
+        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i"
+      />
+    )
+  })
+  .add("High selected bid in query string", () => {
+    return (
+      <MockRouter
+        routes={auctionRoutes}
+        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?bid=110000000000"
       />
     )
   })
@@ -16,7 +24,7 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
     return (
       <MockRouter
         routes={auctionRoutes}
-        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?bid=11000000&pt=1"
+        initialRoute="/auction/phillips-editions-and-works-on-paper-5/bid2/jean-dubuffet-lenfle-chic-i-the-inflated-snob-i?&pt=1"
       />
     )
   })
