@@ -2,7 +2,6 @@ import { Register_me } from "__generated__/Register_me.graphql"
 import { Register_sale } from "__generated__/Register_sale.graphql"
 import { routes_RegisterQueryResponse } from "__generated__/routes_RegisterQuery.graphql"
 
-type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 type DeFraged<T> = Omit<T, " $refType" | " $fragmentRefs">
 
 export interface DeFragedRegisterQueryResponse {
