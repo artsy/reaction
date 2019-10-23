@@ -1,3 +1,15 @@
+# v21.14.2 (Wed Oct 23 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Remove double render [#2946](https://github.com/artsy/reaction/pull/2946) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.14.1 (Wed Oct 23 2019)
 
 #### 🐛  Bug Fix
