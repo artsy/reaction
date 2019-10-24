@@ -1,5 +1,6 @@
 import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
 import { ArtistApp_artist } from "__generated__/ArtistApp_artist.graphql"
+import { ArtistMetaFragmentContainer as ArtistMeta } from "Apps/Artist/Components/ArtistMeta"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
@@ -34,6 +35,7 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
     return (
       <AppContainer>
         <HorizontalPadding>
+          <ArtistMeta artist={artist} />
           <Row>
             <Col>
               <ArtistHeader artist={artist} />
@@ -79,6 +81,7 @@ export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
     fragment ArtistApp_artist on Artist {
       _id
       id
+      ...ArtistMeta_artist
       ...ArtistHeader_artist
       ...NavigationTabs_artist
     }
