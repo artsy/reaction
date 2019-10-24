@@ -185,6 +185,22 @@ describe("NavBarTracking", () => {
         new_notification_count: 0,
       })
     })
+
+    it("track navItem with doCallHoverTracking props", () => {
+      const wrapper = mount(
+        <Wrapper>
+          <NavItem href="/collect" doHoverTracking>
+            Fairs
+          </NavItem>
+        </Wrapper>
+      )
+
+      wrapper.simulate("mouseenter")
+      expect(trackEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.Hover,
+        subject: "Fairs",
+      })
+    })
   })
 
   describe("Mobile", () => {

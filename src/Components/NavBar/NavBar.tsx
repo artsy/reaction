@@ -83,13 +83,13 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem href="/collect" callHoverTracking>
+            <NavItem href="/collect" doHoverTracking>
               Artworks
             </NavItem>
-            <NavItem href="/auctions" callHoverTracking>
+            <NavItem href="/auctions" doHoverTracking>
               Auctions
             </NavItem>
-            <NavItem href="/galleries" callHoverTracking>
+            <NavItem href="/galleries" doHoverTracking>
               Galleries
             </NavItem>
 
@@ -99,11 +99,11 @@ export const NavBar: React.FC = track(
             <NavItem
               href="/art-fairs"
               display={["none", "none", "none", "none", "block"]}
-              callHoverTracking
+              doHoverTracking
             >
               Fairs
             </NavItem>
-            <NavItem href="/articles" callHoverTracking>
+            <NavItem href="/articles" doHoverTracking>
               Magazine
             </NavItem>
             <NavItem
@@ -114,7 +114,7 @@ export const NavBar: React.FC = track(
                   </Box>
                 )
               }}
-              callHoverTracking
+              doHoverTracking
             >
               More
             </NavItem>
