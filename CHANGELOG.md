@@ -1,3 +1,15 @@
+# v21.16.2 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Pre-populate the selected bid with a value from the query string [#2947](https://github.com/artsy/reaction/pull/2947) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.16.1 (Thu Oct 24 2019)
 
 #### 🐛  Bug Fix
