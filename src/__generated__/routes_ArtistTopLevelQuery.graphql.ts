@@ -67,7 +67,22 @@ fragment ArtistMeta_artist on Artist {
         description
         category
         price_currency
-        is_price_range
+        listPrice {
+          __typename
+          ... on PriceRange {
+            minPrice {
+              major
+            }
+            maxPrice {
+              major
+              currencyCode
+            }
+          }
+          ... on Money {
+            major
+            currencyCode
+          }
+        }
         availability
         href
         image {
@@ -215,6 +230,23 @@ v8 = {
   "storageKey": null
 },
 v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "major",
+  "args": null,
+  "storageKey": null
+},
+v10 = [
+  v9,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "currencyCode",
+    "args": null,
+    "storageKey": null
+  }
+],
+v11 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "image",
@@ -246,7 +278,7 @@ return {
   "operationKind": "query",
   "name": "routes_ArtistTopLevelQuery",
   "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistMeta_artist\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistMeta_artist on Artist {\n  id\n  name\n  nationality\n  birthday\n  deathday\n  gender\n  href\n  meta {\n    title\n    description\n  }\n  alternate_names\n  image {\n    versions\n    large: url(version: \"large\")\n    square: url(version: \"square\")\n    __id: id\n  }\n  counts {\n    artworks\n  }\n  blurb\n  artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {\n    edges {\n      node {\n        title\n        date\n        description\n        category\n        price_currency\n        is_price_range\n        availability\n        href\n        image {\n          small: url(version: \"small\")\n          large: url(version: \"large\")\n          __id: id\n        }\n        partner {\n          name\n          href\n          profile {\n            image {\n              small: url(version: \"small\")\n              large: url(version: \"large\")\n              __id: id\n            }\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
+  "text": "query routes_ArtistTopLevelQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistMeta_artist\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistMeta_artist on Artist {\n  id\n  name\n  nationality\n  birthday\n  deathday\n  gender\n  href\n  meta {\n    title\n    description\n  }\n  alternate_names\n  image {\n    versions\n    large: url(version: \"large\")\n    square: url(version: \"square\")\n    __id: id\n  }\n  counts {\n    artworks\n  }\n  blurb\n  artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {\n    edges {\n      node {\n        title\n        date\n        description\n        category\n        price_currency\n        listPrice {\n          __typename\n          ... on PriceRange {\n            minPrice {\n              major\n            }\n            maxPrice {\n              major\n              currencyCode\n            }\n          }\n          ... on Money {\n            major\n            currencyCode\n          }\n        }\n        availability\n        href\n        image {\n          small: url(version: \"small\")\n          large: url(version: \"large\")\n          __id: id\n        }\n        partner {\n          name\n          href\n          profile {\n            image {\n              small: url(version: \"small\")\n              large: url(version: \"large\")\n              __id: id\n            }\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -465,11 +497,55 @@ return {
                     "plural": false,
                     "selections": [
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "is_price_range",
+                        "name": "listPrice",
+                        "storageKey": null,
                         "args": null,
-                        "storageKey": null
+                        "concreteType": null,
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__typename",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Money",
+                            "selections": v10
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "PriceRange",
+                            "selections": [
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "minPrice",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "Money",
+                                "plural": false,
+                                "selections": [
+                                  v9
+                                ]
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "maxPrice",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": "Money",
+                                "plural": false,
+                                "selections": v10
+                              }
+                            ]
+                          }
+                        ]
                       },
                       v5,
                       v6,
@@ -502,7 +578,7 @@ return {
                         "storageKey": null
                       },
                       v4,
-                      v9,
+                      v11,
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -523,7 +599,7 @@ return {
                             "concreteType": "Profile",
                             "plural": false,
                             "selections": [
-                              v9,
+                              v11,
                               v2
                             ]
                           },

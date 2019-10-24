@@ -33,7 +33,24 @@ export type ArtistMeta_artist = {
                 readonly description: string | null;
                 readonly category: string | null;
                 readonly price_currency: string | null;
-                readonly is_price_range: boolean | null;
+                readonly listPrice: ({
+                    readonly __typename: "PriceRange";
+                    readonly minPrice: ({
+                        readonly major: number;
+                    }) | null;
+                    readonly maxPrice: ({
+                        readonly major: number;
+                        readonly currencyCode: string;
+                    }) | null;
+                } | {
+                    readonly __typename: "Money";
+                    readonly major: number;
+                    readonly currencyCode: string;
+                } | {
+                    /*This will never be '% other', but we need some
+                    value in case none of the concrete values match.*/
+                    readonly __typename: "%other";
+                }) | null;
                 readonly availability: string | null;
                 readonly href: string | null;
                 readonly image: ({
@@ -109,6 +126,23 @@ v5 = {
   "storageKey": null
 },
 v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "major",
+  "args": null,
+  "storageKey": null
+},
+v7 = [
+  v6,
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "currencyCode",
+    "args": null,
+    "storageKey": null
+  }
+],
+v8 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "image",
@@ -135,7 +169,7 @@ v6 = {
     v5
   ]
 },
-v7 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__id",
@@ -312,11 +346,55 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "kind": "ScalarField",
+                  "kind": "LinkedField",
                   "alias": null,
-                  "name": "is_price_range",
+                  "name": "listPrice",
+                  "storageKey": null,
                   "args": null,
-                  "storageKey": null
+                  "concreteType": null,
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "__typename",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "InlineFragment",
+                      "type": "Money",
+                      "selections": v7
+                    },
+                    {
+                      "kind": "InlineFragment",
+                      "type": "PriceRange",
+                      "selections": [
+                        {
+                          "kind": "LinkedField",
+                          "alias": null,
+                          "name": "minPrice",
+                          "storageKey": null,
+                          "args": null,
+                          "concreteType": "Money",
+                          "plural": false,
+                          "selections": [
+                            v6
+                          ]
+                        },
+                        {
+                          "kind": "LinkedField",
+                          "alias": null,
+                          "name": "maxPrice",
+                          "storageKey": null,
+                          "args": null,
+                          "concreteType": "Money",
+                          "plural": false,
+                          "selections": v7
+                        }
+                      ]
+                    }
+                  ]
                 },
                 v0,
                 v1,
@@ -349,7 +427,7 @@ return {
                   "storageKey": null
                 },
                 v2,
-                v6,
+                v8,
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -370,23 +448,23 @@ return {
                       "concreteType": "Profile",
                       "plural": false,
                       "selections": [
-                        v6,
-                        v7
+                        v8,
+                        v9
                       ]
                     },
-                    v7
+                    v9
                   ]
                 },
-                v7
+                v9
               ]
             }
           ]
         }
       ]
     },
-    v7
+    v9
   ]
 };
 })();
-(node as any).hash = 'e60ab4fdd3eaa30f1ae44ab3c5fa37ff';
+(node as any).hash = 'd39c9878d26bce0520f066843a619884';
 export default node;

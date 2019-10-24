@@ -56,20 +56,24 @@ export const offersAttributes = (artist: ArtistMeta_artist) => {
 
   const offers =
     edges &&
-    edges.map(({ node }) => {
-      const seller = sellerFromPartner(node.partner)
-      const itemOffered = productAttributes(artist, node)
-      const availability =
-        node.availability === "for sale" ? "InStock" : "OutOfStock"
+    edges
+      .map(({ node }) => {
+        const seller = sellerFromPartner(node.partner)
+        const itemOffered = productAttributes(artist, node)
+        const availability =
+          node.availability === "for sale" ? "InStock" : "OutOfStock"
 
-      return {
-        "@type": "Offer",
-        availability,
-        priceCurrency: node.price_currency,
-        seller,
-        itemOffered,
-      }
-    })
+        if (!itemOffered) return null
+
+        return {
+          "@type": "Offer",
+          availability,
+          priceCurrency: node.price_currency,
+          seller,
+          itemOffered,
+        }
+      })
+      .filter(offer => !!offer)
   return offers
 }
 
@@ -78,6 +82,9 @@ export const productAttributes = (
   artwork: ArtworkNode
 ) => {
   const image = imageObjectAttributes(artwork)
+  const offers = offerAttributes(artwork)
+
+  if (!offers) return null
 
   return {
     "@type": "Product",
@@ -86,6 +93,7 @@ export const productAttributes = (
     name: artwork.title,
     url: `${sd.APP_URL}${artwork.href}`,
     image,
+    offers,
     brand: {
       "@type": "Person",
       name: artist.name,
@@ -93,8 +101,33 @@ export const productAttributes = (
   }
 }
 
+export const offerAttributes = (artwork: ArtworkNode) => {
+  if (!artwork.listPrice) return null
+  switch (artwork.listPrice.__typename) {
+    case "PriceRange":
+      return {
+        "@type": "AggregateOffer",
+        lowPrice: artwork.listPrice.minPrice.major,
+        highPrice: artwork.listPrice.maxPrice.major,
+        priceCurrency: artwork.listPrice.maxPrice.currencyCode,
+      }
+    case "Money":
+      return {
+        "@type": "Offer",
+        price: artwork.listPrice.major,
+        priceCurrency: artwork.listPrice.currencyCode,
+        availability: "InStock",
+      }
+    default:
+      return null
+  }
+}
+
 export const structuredDataAttributes = (artist: ArtistMeta_artist) => {
-  const makesOffer = offersAttributes(artist)
+  let makesOffer = offersAttributes(artist)
+  if (makesOffer.length === 0) {
+    makesOffer = undefined
+  }
   const attributes = {
     additionalType: "Artist",
     image: artist.image ? artist.image.large : "",
@@ -223,7 +256,22 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
             description
             category
             price_currency
-            is_price_range
+            listPrice {
+              __typename
+              ... on PriceRange {
+                minPrice {
+                  major
+                }
+                maxPrice {
+                  major
+                  currencyCode
+                }
+              }
+              ... on Money {
+                major
+                currencyCode
+              }
+            }
             availability
             href
             image {

@@ -1,3 +1,4 @@
+import { ArtistMeta_artist } from "__generated__/ArtistMeta_artist.graphql"
 import {
   offersAttributes,
   productAttributes,
@@ -12,7 +13,8 @@ jest.mock("sharify", () => ({
 }))
 
 describe("Meta", () => {
-  const artist = {
+  const artist: ArtistMeta_artist = {
+    " $refType": null,
     id: "claes-oldenburg",
     name: "Claes Oldenburg",
     nationality: "Swedish",
@@ -46,7 +48,11 @@ describe("Meta", () => {
             description: null,
             category: "Drawing, Collage or other Work on Paper",
             price_currency: "USD",
-            is_price_range: false,
+            listPrice: {
+              __typename: "Money",
+              major: 1000,
+              currencyCode: "USD",
+            },
             href:
               "/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
             image: {
@@ -71,7 +77,26 @@ describe("Meta", () => {
         },
       ],
     },
-    " $refType": null,
+  }
+
+  type ArtworkMeta = ArtistMeta_artist["artworks_connection"]["edges"][number]["node"]
+
+  const artistWithArtworkOverrides = (
+    artwork: Partial<ArtworkMeta>
+  ): ArtistMeta_artist => {
+    return {
+      ...artist,
+      artworks_connection: {
+        edges: [
+          {
+            node: {
+              ...artist.artworks_connection.edges[0].node,
+              ...artwork,
+            },
+          },
+        ],
+      },
+    }
   }
 
   describe("structured data", () => {
@@ -113,6 +138,12 @@ describe("Meta", () => {
               },
               name:
                 "'25 Years Studio',  1993, SIGNED by the BIG-8 Contemporary Artists, Gemini G.E.L.",
+              offers: {
+                "@type": "Offer",
+                availability: "InStock",
+                price: 1000,
+                priceCurrency: "USD",
+              },
               productionDate: "1993",
               url:
                 "https://www.artsy-test.net/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
@@ -164,6 +195,12 @@ describe("Meta", () => {
             productionDate: "1993",
             name:
               "'25 Years Studio',  1993, SIGNED by the BIG-8 Contemporary Artists, Gemini G.E.L.",
+            offers: {
+              "@type": "Offer",
+              availability: "InStock",
+              price: 1000,
+              priceCurrency: "USD",
+            },
             url:
               "https://www.artsy-test.net/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
           },
@@ -195,6 +232,12 @@ describe("Meta", () => {
         productionDate: "1993",
         name:
           "'25 Years Studio',  1993, SIGNED by the BIG-8 Contemporary Artists, Gemini G.E.L.",
+        offers: {
+          "@type": "Offer",
+          availability: "InStock",
+          price: 1000,
+          priceCurrency: "USD",
+        },
         url:
           "https://www.artsy-test.net/artwork/robert-rauschenberg-25-years-studio-1993-signed-by-the-big-8-contemporary-artists-gemini-gel",
         image: {
@@ -207,6 +250,39 @@ describe("Meta", () => {
         brand: {
           "@type": "Person",
           name: "Claes Oldenburg",
+        },
+      })
+    })
+
+    it("#productFromArtistArtwork doesn't include a product if there's no price", () => {
+      const modifiedArtist = artistWithArtworkOverrides({
+        listPrice: null,
+      })
+      const artwork = modifiedArtist.artworks_connection.edges[0].node
+      const json = productAttributes(modifiedArtist, artwork)
+      expect(json).toBeFalsy()
+    })
+
+    it("#productFromArtistArtwork with a price range includes an AggregateOffer", () => {
+      const modifiedArtist = artistWithArtworkOverrides({
+        listPrice: {
+          __typename: "PriceRange",
+          maxPrice: {
+            major: 1000,
+            currencyCode: "USD",
+          },
+          minPrice: {
+            major: 100,
+          },
+        } as const,
+      })
+      const artwork = modifiedArtist.artworks_connection.edges[0].node
+      const json = productAttributes(modifiedArtist, artwork)
+      expect(json).toMatchObject({
+        offers: {
+          "@type": "AggregateOffer",
+          highPrice: 1000,
+          lowPrice: 100,
         },
       })
     })
