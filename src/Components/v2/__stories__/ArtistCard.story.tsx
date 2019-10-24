@@ -1,11 +1,16 @@
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 
-import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
+import { MockRelayRenderer } from "DevTools"
+import { graphql } from "react-relay"
+import {
+  ArtistCardFragmentContainer,
+  LargeArtistCard,
+  SmallArtistCard,
+} from "../ArtistCard"
 
-const artist = {
+const artistFixture = {
   image: {
     cropped: {
       url: "https://picsum.photos/110/110/?random",
@@ -15,27 +20,44 @@ const artist = {
   name: "Francesca DiMattio",
   formatted_nationality_and_birthday: "American, b. 1979",
   id: "percy",
+  counts: null,
+  related: null,
+  is_followed: false,
 }
 
-storiesOf("Styleguide/Components", module)
-  .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
-  .add("ArtistCard", () => {
-    const props = {
-      artist: artist as any,
-      user: null,
-    }
+const MockArtistCard = ({ artist, Component }) => {
+  return (
+    <MockRelayRenderer
+      Component={Component}
+      mockData={{ artist }}
+      query={graphql`
+        query ArtistCardStoryQuery {
+          artist(id: "unused") {
+            ...ArtistCard_artist
+          }
+        }
+      `}
+    />
+  )
+}
 
-    return (
-      <React.Fragment>
-        <Section title="Responsive Artist Card">
-          <ArtistCard {...props} />
-        </Section>
-        <Section title="Large Artist Card">
-          <LargeArtistCard {...props} />
-        </Section>
-        <Section title="Small Artist Card">
-          <SmallArtistCard {...props} />
-        </Section>
-      </React.Fragment>
-    )
-  })
+storiesOf("Styleguide/Components", module).add("ArtistCard", () => {
+  const props = {
+    artist: artistFixture as any,
+    user: null,
+  }
+
+  return (
+    <React.Fragment>
+      <Section title="Responsive Artist Card">
+        <MockArtistCard {...props} Component={ArtistCardFragmentContainer} />
+      </Section>
+      <Section title="Large Artist Card">
+        <MockArtistCard {...props} Component={LargeArtistCard} />
+      </Section>
+      <Section title="Small Artist Card">
+        <MockArtistCard {...props} Component={SmallArtistCard} />
+      </Section>
+    </React.Fragment>
+  )
+})

@@ -1,11 +1,39 @@
 import { Box, Flex, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
 import { Carousel, LargeCarousel, SmallCarousel } from "Components/v2/Carousel"
+import { MockRelayRenderer } from "DevTools"
+import { graphql } from "react-relay"
+
+const MockFillWidthItem = ({ artwork }) => {
+  const {
+    image: { aspect_ratio },
+  } = artwork
+  return (
+    <MockRelayRenderer
+      Component={() => (
+        <FillwidthItem
+          artwork={artwork}
+          targetHeight={200}
+          imageHeight={200}
+          width={200 * aspect_ratio}
+          margin={20}
+        />
+      )}
+      mockData={{ artwork }}
+      query={graphql`
+        query CarouselArtworkBrickStoryQuery {
+          artwork(id: "unused") {
+            ...FillwidthItem_artwork
+          }
+        }
+      `}
+    />
+  )
+}
 
 storiesOf("Styleguide/Components/Carousel", module)
   .add("Responsive Carousel", () => {
@@ -95,27 +123,12 @@ storiesOf("Styleguide/Components/Carousel", module)
   .add("Carousel with ArtworkBricks", () => {
     return (
       <Container>
-        <RelayStubProvider>
-          <Carousel
-            data={artworkBricks}
-            render={artwork => {
-              const {
-                node: {
-                  image: { aspect_ratio },
-                },
-              } = artwork
-              return (
-                <FillwidthItem
-                  artwork={artwork.node}
-                  targetHeight={200}
-                  imageHeight={200}
-                  width={200 * aspect_ratio}
-                  margin={20}
-                />
-              )
-            }}
-          />
-        </RelayStubProvider>
+        <Carousel
+          data={artworkBricks}
+          render={artwork => {
+            return <MockFillWidthItem artwork={artwork.node} />
+          }}
+        />
       </Container>
     )
   })

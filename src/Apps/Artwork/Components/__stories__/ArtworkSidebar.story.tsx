@@ -1,4 +1,4 @@
-import { ArtworkSidebar } from "Apps/Artwork/Components/ArtworkSidebar"
+import { ArtworkSidebarFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
@@ -14,40 +14,55 @@ import {
   RegularNonEditionedArtwork,
   VideoArtwork,
 } from "Apps/__tests__/Fixtures/Artworks"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
+import { MockRelayRenderer } from "DevTools"
+import { graphql } from "react-relay"
 
-storiesOf("Apps/Artwork/Components", module)
-  .addDecorator(story => <RelayStubProvider>{story()}</RelayStubProvider>)
-  .add("Sidebar", () => {
-    return (
-      <React.Fragment>
-        <Section title="Artwork with collectiing_institution attribute set">
-          <ArtworkSidebar artwork={CollecingInstitutionArtwork as any} />
-        </Section>
-        <Section title="Multiple artists artwork">
-          <ArtworkSidebar artwork={MultipleArtistsArtwork as any} />
-        </Section>
-        <Section title="Regular non editioned artwork">
-          <ArtworkSidebar artwork={RegularNonEditionedArtwork as any} />
-        </Section>
-        <Section title="Regular artwork with 1 edition set">
-          <ArtworkSidebar artwork={RegularArtworkWithOneEdition as any} />
-        </Section>
-        <Section title="Regular artwork with 2 editions">
-          <ArtworkSidebar artwork={RegularArtworkWithTwoEditions as any} />
-        </Section>
-        <Section title="Video artwork">
-          <ArtworkSidebar artwork={VideoArtwork as any} />
-        </Section>
-        <Section title="Current auction artwork with bidding allowed">
-          <ArtworkSidebar artwork={OpenAuctionArtwork as any} />
-        </Section>
-        <Section title="Live auction artwork">
-          <ArtworkSidebar artwork={LiveAuctionArtwork as any} />
-        </Section>
-        <Section title="Closed auction artwork">
-          <ArtworkSidebar artwork={ClosedAuctionArtwork as any} />
-        </Section>
-      </React.Fragment>
-    )
-  })
+const MockArtworkSidebar = ({ artwork }) => {
+  return (
+    <MockRelayRenderer
+      Component={ArtworkSidebarFragmentContainer}
+      mockData={{ artwork }}
+      query={graphql`
+        query ArtworkSidebarStoryQuery {
+          artwork(id: "unused") {
+            ...ArtworkSidebar_artwork
+          }
+        }
+      `}
+    />
+  )
+}
+
+storiesOf("Apps/Artwork/Components", module).add("Sidebar", () => {
+  return (
+    <React.Fragment>
+      <Section title="Artwork with collectiing_institution attribute set">
+        <MockArtworkSidebar artwork={CollecingInstitutionArtwork as any} />
+      </Section>
+      <Section title="Multiple artists artwork">
+        <MockArtworkSidebar artwork={MultipleArtistsArtwork as any} />
+      </Section>
+      <Section title="Regular non editioned artwork">
+        <MockArtworkSidebar artwork={RegularNonEditionedArtwork as any} />
+      </Section>
+      <Section title="Regular artwork with 1 edition set">
+        <MockArtworkSidebar artwork={RegularArtworkWithOneEdition as any} />
+      </Section>
+      <Section title="Regular artwork with 2 editions">
+        <MockArtworkSidebar artwork={RegularArtworkWithTwoEditions as any} />
+      </Section>
+      <Section title="Video artwork">
+        <MockArtworkSidebar artwork={VideoArtwork as any} />
+      </Section>
+      <Section title="Current auction artwork with bidding allowed">
+        <MockArtworkSidebar artwork={OpenAuctionArtwork as any} />
+      </Section>
+      <Section title="Live auction artwork">
+        <MockArtworkSidebar artwork={LiveAuctionArtwork as any} />
+      </Section>
+      <Section title="Closed auction artwork">
+        <MockArtworkSidebar artwork={ClosedAuctionArtwork as any} />
+      </Section>
+    </React.Fragment>
+  )
+})
