@@ -1,3 +1,15 @@
+# v21.16.1 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Restore meta data, fix product structured data issues on artist… [#2939](https://github.com/artsy/reaction/pull/2939) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v21.16.0 (Thu Oct 24 2019)
 
 #### 🚀  Enhancement
