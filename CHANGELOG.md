@@ -1,3 +1,15 @@
+# v21.16.0 (Thu Oct 24 2019)
+
+#### 🚀  Enhancement
+
+- Enable collection hubs rails for everyone! [#2940](https://github.com/artsy/reaction/pull/2940) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v21.15.1 (Thu Oct 24 2019)
 
 #### 🐛  Bug Fix
