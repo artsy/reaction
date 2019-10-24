@@ -11,7 +11,7 @@ import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { Form, Formik, FormikActions, FormikValues } from "formik"
-import { dropWhile, findLast } from "lodash"
+import { dropWhile, find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
@@ -43,16 +43,18 @@ const getSelectedBid = ({
   initialSelectedBid: Props["initialSelectedBid"]
   displayIncrements: Array<{ value: string; text: string }>
 }): string => {
+  let selectedIncrement: { value: string }
   if (!initialSelectedBid) {
-    return displayIncrements[0].value
+    selectedIncrement = displayIncrements[0]
   } else {
     const selectedNum = Number(initialSelectedBid)
-    const lastGoodIncrement = findLast(
+    const lastGoodIncrement = find(
       displayIncrements,
       i => Number(i.value) === selectedNum
     )
-    return (lastGoodIncrement || displayIncrements[0]).value
+    selectedIncrement = lastGoodIncrement || displayIncrements[0]
   }
+  return selectedIncrement.value
 }
 
 export const BidForm: React.FC<Props> = ({
