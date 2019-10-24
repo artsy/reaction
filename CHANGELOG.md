@@ -1,3 +1,15 @@
+# v21.15.1 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- @alloy =>Update stories and remove RelayStubProvider [#2945](https://github.com/artsy/reaction/pull/2945) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v21.15.0 (Wed Oct 23 2019)
 
 #### 🚀  Enhancement
