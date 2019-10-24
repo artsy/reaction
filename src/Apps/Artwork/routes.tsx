@@ -1,11 +1,6 @@
 import { graphql } from "react-relay"
 import { ArtworkAppFragmentContainer as ArtworkApp } from "./ArtworkApp"
 
-// @ts-ignore
-import { ComponentClass, StatelessComponent } from "react"
-
-// TODO: Investigate better error boundaries for runtime errors
-
 export const routes = [
   {
     path: "/artwork/:artworkID/(confirm-bid)?",
@@ -17,5 +12,8 @@ export const routes = [
         }
       }
     `,
+    cacheConfig: {
+      force: true,
+    },
   },
 ]
