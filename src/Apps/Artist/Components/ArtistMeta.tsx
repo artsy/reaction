@@ -125,7 +125,7 @@ export const offerAttributes = (artwork: ArtworkNode) => {
 
 export const structuredDataAttributes = (artist: ArtistMeta_artist) => {
   let makesOffer = offersAttributes(artist)
-  if (makesOffer.length === 0) {
+  if (makesOffer && makesOffer.length === 0) {
     makesOffer = undefined
   }
   const attributes = {
