@@ -1,3 +1,15 @@
+# v21.16.3 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure makesOffer isn't null before getting length [#2950](https://github.com/artsy/reaction/pull/2950) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v21.16.2 (Thu Oct 24 2019)
 
 #### 🐛  Bug Fix
