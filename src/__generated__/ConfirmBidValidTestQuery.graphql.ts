@@ -14,6 +14,7 @@ export type ConfirmBidValidTestQueryResponse = {
             readonly id: string;
             readonly sale: ({
                 readonly registrationStatus: ({
+                    readonly id: string;
                     readonly qualified_for_bidding: boolean | null;
                 }) | null;
                 readonly _id: string;
@@ -27,6 +28,7 @@ export type ConfirmBidValidTestQueryResponse = {
         readonly " $fragmentRefs": LotInfo_artwork$ref;
     }) | null;
     readonly me: ({
+        readonly id: string;
         readonly has_qualified_credit_cards: boolean | null;
     }) | null;
 };
@@ -50,6 +52,7 @@ query ConfirmBidValidTestQuery {
       id
       sale {
         registrationStatus {
+          id
           qualified_for_bidding
           __id
         }
@@ -65,6 +68,7 @@ query ConfirmBidValidTestQuery {
     __id
   }
   me {
+    id
     has_qualified_credit_cards
     __id
   }
@@ -160,6 +164,7 @@ v5 = {
       "concreteType": "Bidder",
       "plural": false,
       "selections": [
+        v2,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -205,6 +210,7 @@ v6 = {
   "concreteType": "Me",
   "plural": false,
   "selections": [
+    v2,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -234,7 +240,7 @@ return {
   "operationKind": "query",
   "name": "ConfirmBidValidTestQuery",
   "id": null,
-  "text": "query ConfirmBidValidTestQuery {\n  artwork(id: \"artwork-id\") {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: \"example-auction-id\") {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
+  "text": "query ConfirmBidValidTestQuery {\n  artwork(id: \"artwork-id\") {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: \"example-auction-id\") {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          id\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    id\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -422,5 +428,5 @@ return {
   }
 };
 })();
-(node as any).hash = '021be58c4a37c3bc7911be25be0141b5';
+(node as any).hash = '8f25a025f95a317c927ae659c6d05b0e';
 export default node;

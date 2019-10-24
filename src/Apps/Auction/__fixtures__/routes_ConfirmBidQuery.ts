@@ -16,6 +16,7 @@ export interface ConfirmBidQueryResponse
 
 export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
   me: {
+    id: "my-user-id",
     has_qualified_credit_cards: false,
   },
   artwork: {
@@ -51,6 +52,7 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
         is_closed: false,
         is_registration_closed: false,
         registrationStatus: {
+          id: "bidderid",
           qualified_for_bidding: true,
         },
       },
