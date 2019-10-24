@@ -4,11 +4,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
-import {
-  ConfirmBidQueryResponse,
-  ConfirmBidQueryResponseFixture,
-} from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
-import { DeepPartial } from "Utils/typeSupport"
+import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import { createBidderPositionSuccessful } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -25,22 +21,18 @@ const mockLocation: Partial<Location> = {
   search: "",
 }
 
-const mockDefaultData = (
-  data: DeepPartial<ConfirmBidQueryResponse> = {}
-): ConfirmBidQueryResponse =>
-  deepMerge<ConfirmBidQueryResponse, DeepPartial<ConfirmBidQueryResponse>>(
-    ConfirmBidQueryResponseFixture,
-    data
-  )
-
 const setupTestEnv = ({
   location = mockLocation,
-  data = {},
-}: { location?: Partial<Location>; data?: any } = {}) => {
+}: {
+  location?: Partial<Location>
+} = {}) => {
   return createTestEnv({
     TestPage: ConfirmBidTestPage,
     Component: (props: routes_ConfirmBidQueryResponse) => (
-      <ConfirmBidRouteFragmentContainer location={location as any} {...props} />
+      <ConfirmBidRouteFragmentContainer
+        location={location as Location}
+        {...props}
+      />
     ),
     query: graphql`
       query ConfirmBidValidTestQuery {
@@ -70,7 +62,7 @@ const setupTestEnv = ({
         }
       }
     `,
-    defaultData: mockDefaultData({}),
+    defaultData: ConfirmBidQueryResponseFixture,
     defaultMutationResults: {
       createBidderPosition: {},
     },

@@ -13,7 +13,7 @@ storiesOf("Apps/Auction/Components", module).add("LotInfo", () => {
           _id: "artworkid",
           date: "1938/1939",
           imageUrl:
-            "https://d32dm0rphc51dk.cloudfront.net/klloxkFxMYsIt2d36Oviog/square.jpg",
+            "https://d32dm0rphc51dk.cloudfront.net/7oGWacsWm7L5NS6gSVp-KA/square.jpg",
           artistNames:
             "PaJaMa, Jared French, Paul Cadmus, Margaret Hoening French",
           title: "Paul Cadmus and Margaret French, Fire Island",
