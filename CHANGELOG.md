@@ -1,3 +1,15 @@
+# v21.16.8 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Rename `Magazine` to `Editorial` [#2955](https://github.com/artsy/reaction/pull/2955) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v21.16.7 (Fri Oct 25 2019)
 
 #### 🐛  Bug Fix
