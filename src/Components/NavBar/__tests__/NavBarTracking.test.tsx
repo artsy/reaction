@@ -186,7 +186,7 @@ describe("NavBarTracking", () => {
       })
     })
 
-    it("track navItem with doCallHoverTracking props", () => {
+    it("track navItem with onHover as a default value", () => {
       const wrapper = mount(
         <Wrapper>
           <NavItem href="/collect">Fairs</NavItem>
