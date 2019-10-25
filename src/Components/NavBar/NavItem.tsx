@@ -16,7 +16,7 @@ interface NavItemProps extends BoxProps {
   className?: string
   href?: string
   onClick?: () => void
-  doHoverTracking?: boolean
+  onHover?: boolean
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -28,7 +28,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   display = "block",
   href,
   onClick,
-  doHoverTracking,
+  onHover = true,
 }) => {
   const { trackEvent } = useTracking()
   const [hover, toggleHover] = useState(active)
@@ -104,7 +104,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         </Sans>
       </Link>
 
-      {hover && doHoverTracking ? trackHover() : null}
+      {hover && onHover ? trackHover() : null}
 
       {showMenu && (
         <animated.div style={animatedStyle}>

@@ -189,9 +189,7 @@ describe("NavBarTracking", () => {
     it("track navItem with doCallHoverTracking props", () => {
       const wrapper = mount(
         <Wrapper>
-          <NavItem href="/collect" doHoverTracking>
-            Fairs
-          </NavItem>
+          <NavItem href="/collect">Fairs</NavItem>
         </Wrapper>
       )
 
