@@ -105,6 +105,9 @@ export const offerAttributes = (artwork: ArtworkNode) => {
   if (!artwork.listPrice) return null
   switch (artwork.listPrice.__typename) {
     case "PriceRange":
+      if (!artwork.listPrice.minPrice || !artwork.listPrice.maxPrice) {
+        return null
+      }
       return {
         "@type": "AggregateOffer",
         lowPrice: artwork.listPrice.minPrice.major,
