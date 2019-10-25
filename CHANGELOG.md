@@ -1,3 +1,15 @@
+# v21.16.7 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection Hubs Entry Points] Moves Experiment Viewed to collect app [#2954](https://github.com/artsy/reaction/pull/2954) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.16.6 (Fri Oct 25 2019)
 
 #### 🐛  Bug Fix
