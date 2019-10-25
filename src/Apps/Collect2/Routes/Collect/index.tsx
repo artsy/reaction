@@ -23,7 +23,7 @@ import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
 export interface CollectAppProps {
-  COLLECTION_HUBS?: string
+  COLLECTION_HUB_ENTRYPOINTS_TEST?: string
   location: Location
   router: Router
   marketingHubCollections: Collect_marketingHubCollections
@@ -44,15 +44,15 @@ export const CollectApp = track({
 
   // FIXME: Remove after A/B test completes
   // @ts-ignore
-  const { COLLECTION_HUBS } = useSystemContext()
+  const { COLLECTION_HUB_ENTRYPOINTS_TEST } = useSystemContext()
 
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
     : `${sd.APP_URL}/collect`
 
-  // Client renders will get COLLECTION_HUBS from sd; server renders
+  // Client renders will get COLLECTION_HUB_ENTRYPOINTS_TEST from sd; server renders
   // will get it from the SystemContext.
-  const showCollectionHubs = COLLECTION_HUBS === "experiment"
+  const showCollectionHubs = COLLECTION_HUB_ENTRYPOINTS_TEST === "experiment"
 
   const { filterArtworks } = props
 
@@ -92,6 +92,7 @@ export const CollectApp = track({
             <>
               <CollectionsHubsNav
                 marketingHubCollections={props.marketingHubCollections}
+                collectionHubTestVariation={COLLECTION_HUB_ENTRYPOINTS_TEST}
               />
 
               <Spacer mb={2} mt={[2, 2, 2, 4]} />

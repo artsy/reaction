@@ -1,19 +1,32 @@
-import { CSSGrid } from "@artsy/palette"
-import { Serif } from "@artsy/palette"
+import { CSSGrid, Serif } from "@artsy/palette"
 import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
-import { AnalyticsSchema } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
   marketingHubCollections: CollectionsHubsNav_marketingHubCollections
+  collectionHubTestVariation: string
 }
 
 export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
   const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    const experiment = "collection_hub_entrypoints_test"
+    trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: props.collectionHubTestVariation,
+      variation_name: props.collectionHubTestVariation,
+      nonInteraction: 1,
+    })
+  }, [])
+
   return (
     <CSSGrid
       as="aside"
@@ -33,11 +46,10 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
           key={hub.id}
           onClick={() => {
             trackEvent({
-              action_type: AnalyticsSchema.ActionType.Click,
-              context_page: AnalyticsSchema.PageName.CollectPage,
-              context_module:
-                AnalyticsSchema.ContextModule.CollectionHubEntryPoint,
-              type: AnalyticsSchema.Type.Thumbnail,
+              action_type: Schema.ActionType.Click,
+              context_page: Schema.PageName.CollectPage,
+              context_module: Schema.ContextModule.CollectionHubEntryPoint,
+              type: Schema.Type.Thumbnail,
               destination_path: `/collection/${hub.slug}`,
             })
           }}

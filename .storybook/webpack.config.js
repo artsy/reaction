@@ -19,7 +19,7 @@ const {
   ADMIN_URL,
   APP_URL,
   CI,
-  COLLECTION_HUBS,
+  COLLECTION_HUB_ENTRYPOINTS_TEST,
   CMS_URL,
   FACEBOOK_APP_NAMESPACE,
   PREDICTION_URL,
@@ -51,7 +51,7 @@ const notOnCI = value => (isCI ? [] : [value])
 const sharifyPath = sharify({
   ADMIN_URL,
   APP_URL,
-  COLLECTION_HUBS,
+  COLLECTION_HUB_ENTRYPOINTS_TEST,
   CMS_URL,
   FACEBOOK_APP_NAMESPACE,
   FORCE_CLOUDFRONT_URL,
@@ -110,7 +110,10 @@ console.log("\n[Reaction] Booting...\n")
 /**
  * Booting in full-control mode: https://storybook.js.org/docs/configurations/custom-webpack-config/#full-control-mode-default
  */
-module.exports = async ({ config, mode }) => {
+module.exports = async ({
+  config,
+  mode
+}) => {
   config.mode = mode.toLowerCase()
   config.devtool = WEBPACK_DEVTOOL
   config.devServer = {
@@ -138,23 +141,18 @@ module.exports = async ({ config, mode }) => {
     })
   }
 
-  config.module.rules.push(
-    {
+  config.module.rules.push({
       test: /\.graphql$/,
       include: [/data/],
       exclude: [/node_modules/],
-      use: [
-        {
-          loader: "raw-loader",
-        },
-      ],
-    },
-    {
+      use: [{
+        loader: "raw-loader",
+      }, ],
+    }, {
       test: /\.tsx?$/,
       include: [/src/],
       exclude: [/node_modules/, new RegExp(package.jest.testRegex)],
-      use: [
-        {
+      use: [{
           loader: "cache-loader",
           options: {
             cacheDirectory: path.join(cacheDirectory),

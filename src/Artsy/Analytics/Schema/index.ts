@@ -24,6 +24,11 @@ interface Uncategorized {
   item_id: any
   query: any
   item_number: number
+  experiment_id: string
+  experiment_name: string
+  variation_id: string
+  variation_name: string
+  nonInteraction: number
 }
 
 export type Trackables =
