@@ -25,11 +25,3 @@ storiesOf("Apps/Auction/Routes/Confirm Bid", module)
       />
     )
   })
-  .add("Pricing Transparency", () => {
-    return (
-      <MockRouter
-        routes={auctionRoutes}
-        initialRoute={confirmBidRoute + "?&pt=1"}
-      />
-    )
-  })
