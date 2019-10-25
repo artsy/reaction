@@ -1,6 +1,6 @@
 import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { Location, Router } from "found"
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -45,6 +45,18 @@ export const CollectApp = track({
   // FIXME: Remove after A/B test completes
   // @ts-ignore
   const { COLLECTION_HUB_ENTRYPOINTS_TEST } = useSystemContext()
+
+  useEffect(() => {
+    const experiment = "collection_hub_entrypoints_test"
+    trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: COLLECTION_HUB_ENTRYPOINTS_TEST,
+      variation_name: COLLECTION_HUB_ENTRYPOINTS_TEST,
+      nonInteraction: 1,
+    })
+  }, [])
 
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
@@ -92,7 +104,6 @@ export const CollectApp = track({
             <>
               <CollectionsHubsNav
                 marketingHubCollections={props.marketingHubCollections}
-                collectionHubTestVariation={COLLECTION_HUB_ENTRYPOINTS_TEST}
               />
 
               <Spacer mb={2} mt={[2, 2, 2, 4]} />

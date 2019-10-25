@@ -1,31 +1,18 @@
 import { CSSGrid, Serif } from "@artsy/palette"
 import { CollectionsHubsNav_marketingHubCollections } from "__generated__/CollectionsHubsNav_marketingHubCollections.graphql"
+import { useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { useTracking } from "Artsy/Analytics/useTracking"
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { resize } from "Utils/resizer"
 import { ImageLink } from "./ImageLink"
 
 interface CollectionsHubsNavProps {
   marketingHubCollections: CollectionsHubsNav_marketingHubCollections
-  collectionHubTestVariation: string
 }
 
 export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
   const { trackEvent } = useTracking()
-
-  useEffect(() => {
-    const experiment = "collection_hub_entrypoints_test"
-    trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: props.collectionHubTestVariation,
-      variation_name: props.collectionHubTestVariation,
-      nonInteraction: 1,
-    })
-  }, [])
 
   return (
     <CSSGrid
