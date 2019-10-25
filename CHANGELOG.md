@@ -1,3 +1,15 @@
+# v21.16.6 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- remove pricing transparency query param, make a story for it [#2953](https://github.com/artsy/reaction/pull/2953) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v21.16.5 (Fri Oct 25 2019)
 
 #### 🐛  Bug Fix
