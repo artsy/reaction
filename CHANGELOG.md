@@ -1,3 +1,15 @@
+# v21.16.5 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1513] Collection hub nav ab [#2844](https://github.com/artsy/reaction/pull/2844) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.16.4 (Fri Oct 25 2019)
 
 
