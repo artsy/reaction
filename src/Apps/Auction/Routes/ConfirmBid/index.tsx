@@ -126,7 +126,7 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
         <Separator />
         <BidForm
           initialSelectedBid={getInitialSelectedBid(props.location)}
-          showPricingTransparency={Boolean(/pt=1/.test(props.location.search))}
+          showPricingTransparency={false}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
         />
