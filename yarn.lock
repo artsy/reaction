@@ -1740,49 +1740,52 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@betterer/betterer@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@betterer/betterer/-/betterer-0.1.4.tgz#9af2ee6403c7e435465b537e2e3ebe088238f144"
-  integrity sha512-zUOxUfKXgi822+iXAkPCpsbxLXN79b/cc3hz5B+d7dPg/nwtOW0IkHPyj4tapXasoM/jidQXOBDnOSKY6tB/Ig==
+"@betterer/betterer@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@betterer/betterer/-/betterer-0.3.0.tgz#047957a9c408a8c58b74880f6f546c7b91108efc"
+  integrity sha512-v1lZUZtbK2cL/UL1SBZBMm4d3ZptgysqAWQilT4R4+ix2EU1eGOTAVCJk/36NRWyTKLXyh5sX1qmOrN9/cVZ3g==
   dependencies:
-    "@betterer/logger" "^0.1.4"
+    "@betterer/constraints" "^0.3.0"
+    "@betterer/logger" "^0.3.0"
+    jest-diff "^24.9.0"
+    lines-and-columns "^1.1.6"
     tslib "^1.10.0"
 
-"@betterer/cli@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@betterer/cli/-/cli-0.1.4.tgz#896aa176f5aefb156b91e00c92aca7a8f4b2ddff"
-  integrity sha512-kFgCVFNsUBXizBlpn18bv+eNztA7vsIr0VhZ2H9Gv53SGmMHXeT80TV5cU4D/UG3jiHhhpflWIUc9LJPImbprg==
+"@betterer/cli@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@betterer/cli/-/cli-0.3.3.tgz#635ca588afca7f2495759223959395c6e38d42ef"
+  integrity sha512-hGOdNUfn8B419bfTPJFoK2eggftKataI8ytR9oKoCP0+cZ18fltFjw3ehChKJdrxbZJSjkEfW0ngRcLfhALr/Q==
   dependencies:
-    "@betterer/betterer" "^0.1.4"
+    "@betterer/betterer" "^0.3.0"
     commander "^3.0.1"
     find-up "^4.1.0"
     tslib "^1.10.0"
 
-"@betterer/constraints@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@betterer/constraints/-/constraints-0.1.4.tgz#77d514d3430ecebb84be5ee1198bb15215711f46"
-  integrity sha512-QYAJB0Z3KkruqsOZmG5iyCj+tgca0LfqFeH+64ZtZUz0G+bmIE+qXFEJeWeTM2yRz7xAzlrSphl54kaij6j3CA==
+"@betterer/constraints@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@betterer/constraints/-/constraints-0.3.0.tgz#9a1737bdbd372e7773040330c590884358db2e68"
+  integrity sha512-/nU8dlNyerufG/LIDt9iuHLmUi6vO8QPZpknyOyFWG2TaKvgmO/sG6og/qpVD7gaG3ASCieaV1Y6EYy5nAGTGA==
   dependencies:
     tslib "^1.10.0"
 
-"@betterer/logger@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@betterer/logger/-/logger-0.1.4.tgz#067183db5ad69956676194bf36d5ef68178a9d74"
-  integrity sha512-dJ9dyU92b9IJ3BXDNLNJJ+r6HrYvNf28gwS4kysbfqhkYwethK6KIimjIYcT0+cMaTnXdgaB4B958z51CZtCAw==
+"@betterer/logger@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@betterer/logger/-/logger-0.3.0.tgz#217291cd17f3f2cc2ce238949a655099bf952d0d"
+  integrity sha512-vTLBI7wyxnRxJfWZr8xRFR7cvvpb7q/jGV3mEA/jDvoYUqaqrfn60BQicvMsN7r/FkIL4s4j8W9e2fiTTEsrJQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
+    chalk "^2.4.2"
     lines-and-columns "^1.1.6"
     npmlog "^4.1.2"
     tslib "^1.10.0"
 
-"@betterer/typescript@^0.1.4":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@betterer/typescript/-/typescript-0.1.6.tgz#31f7b2171e855ae1892bcff10e87290647b2aabe"
-  integrity sha512-r+Y/sTvLRRIWyvut45sN6lNnAmcMqT8UTXo7WnqVAW9lj7THi/LPItu2TmHg0c0kau3Wh1vbz1KghznYwBRBgw==
+"@betterer/typescript@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@betterer/typescript/-/typescript-0.3.0.tgz#2e2653e5e9ea0c38ffa99dce6b3ba993cebc6ebc"
+  integrity sha512-0QE6zcRIkXBR9GEHxd8fkr9zLLPp/fFVVqlSh11jlM/dm834x9lnsIzKlCiHU/UOVtOBj7ytOxsE11Nsj2QeyQ==
   dependencies:
-    "@betterer/betterer" "^0.1.4"
-    "@betterer/constraints" "^0.1.4"
-    "@betterer/logger" "^0.1.4"
+    "@betterer/betterer" "^0.3.0"
+    "@betterer/logger" "^0.3.0"
     callsite "^1.0.0"
     tslib "^1.10.0"
 
