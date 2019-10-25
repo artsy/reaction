@@ -57,7 +57,7 @@ describe("NavBar", () => {
       ["/auctions", "Auctions"],
       ["/galleries", "Galleries"],
       ["/art-fairs", "Fairs"],
-      ["/articles", "Magazine"],
+      ["/articles", "Editorial"],
     ]
 
     it("renders correct lg, xl nav items", () => {

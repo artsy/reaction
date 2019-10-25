@@ -96,7 +96,7 @@ export const NavBar: React.FC = track(
             >
               Fairs
             </NavItem>
-            <NavItem href="/articles">Magazine</NavItem>
+            <NavItem href="/articles">Editorial</NavItem>
             <NavItem
               Menu={() => {
                 return (
