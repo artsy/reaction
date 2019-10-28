@@ -51,6 +51,9 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
           ? toSentence(artists.map(artist => artist!.name))
           : null
         const isInstitution = partner && partner.type === "Institution"
+        const partnerImg = get(partner, p => {
+          return p!.profile && p.profile.icon && p.profile.icon.url
+        })
 
         return (
           <Product
@@ -84,11 +87,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                       seller: {
                         "@type": "ArtGallery",
                         name: partner && partner.name,
-                        image:
-                          partner &&
-                          partner.profile &&
-                          partner.profile.icon &&
-                          partner.profile.icon.url,
+                        image: partnerImg,
                         address: location
                           ? [
                               location.address,
