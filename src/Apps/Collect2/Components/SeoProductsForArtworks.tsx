@@ -57,8 +57,8 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
             key={node.__id}
             data={{
               name: node.title,
-              image: image!.url,
-              description: node.meta!.description,
+              image: image && image.url,
+              description: node.meta && node.meta.description,
               url: `${APP_URL}${node.href}`,
               brand: {
                 "@type": "Person",
@@ -83,8 +83,12 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                       availability: availability && AVAILABILITY[availability],
                       seller: {
                         "@type": "ArtGallery",
-                        name: partner && partner!.name,
-                        image: partner && partner!.profile!.icon!.url,
+                        name: partner && partner.name,
+                        image:
+                          partner &&
+                          partner.profile &&
+                          partner.profile.icon &&
+                          partner.profile.icon.url,
                         address: location
                           ? [
                               location.address,
