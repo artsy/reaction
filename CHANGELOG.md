@@ -1,3 +1,19 @@
+# v21.17.0 (Mon Oct 28 2019)
+
+#### 🚀  Enhancement
+
+- Add analytics calls to ConfirmBid route [#2956](https://github.com/artsy/reaction/pull/2956) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🐛  Bug Fix
+
+- Collection SeoProducts description [#2958](https://github.com/artsy/reaction/pull/2958) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
 # v21.16.8 (Fri Oct 25 2019)
 
 #### 🐛  Bug Fix
