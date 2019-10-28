@@ -52,7 +52,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
           : null
         const isInstitution = partner && partner.type === "Institution"
         const partnerImg = get(partner, p => {
-          return p!.profile && p.profile.icon && p.profile.icon.url
+          return p.profile.icon.url
         })
 
         return (
