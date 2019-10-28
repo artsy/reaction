@@ -46,13 +46,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     saleArtwork,
   })
 
-  const commonProperties = {
-    auction_slug: sale.id,
-    artwork_slug: artwork.id,
-    sale_id: sale._id,
-    user_id: me.id,
-  }
-
   function createBidderPosition(maxBidAmountCents: number) {
     return new Promise(async (resolve, reject) => {
       commitMutation<ConfirmBidCreateBidderPositionMutation>(
@@ -114,12 +107,19 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     actions.setStatus("submissionFailed")
   }
 
+  const commonEventProperties = {
+    auction_slug: sale.id,
+    artwork_slug: artwork.id,
+    sale_id: sale._id,
+    user_id: me.id,
+  }
+
   function trackConfirmBidFailed(bidderId: string, errors: string[]) {
     tracking.trackEvent({
       action_type: Schema.ActionType.ConfirmBidFailed,
       bidder_id: bidderId,
       error_messages: errors,
-      ...commonProperties,
+      ...commonEventProperties,
     })
   }
 
@@ -128,7 +128,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       action_type: Schema.ActionType.ConfirmBidSubmitted,
       bidder_position_id: positionId,
       bidder_id: bidderId,
-      ...commonProperties,
+      ...commonEventProperties,
     })
   }
 

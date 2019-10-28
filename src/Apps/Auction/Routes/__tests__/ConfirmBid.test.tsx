@@ -5,7 +5,7 @@ import { graphql } from "react-relay"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
-import * as Schema from "Artsy/Analytics/Schema"
+import { AnalyticsSchema } from "Artsy/Analytics"
 import { TrackingProp } from "react-tracking"
 import {
   createBidderPositionFailed,
@@ -116,8 +116,8 @@ describe("Routes/ConfirmBid", () => {
     )
 
     expect(mockPostEvent).toBeCalledWith({
-      action_type: Schema.ActionType.ConfirmBidSubmitted,
-      context_page: Schema.PageName.AuctionConfirmBidPage,
+      action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+      context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
       auction_slug: "saleslug",
       artwork_slug: "artworkslug",
       bidder_id: "bidderid",
@@ -157,8 +157,8 @@ describe("Routes/ConfirmBid", () => {
     )
 
     expect(mockPostEvent).toBeCalledWith({
-      action_type: Schema.ActionType.ConfirmBidFailed,
-      context_page: Schema.PageName.AuctionConfirmBidPage,
+      action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+      context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
       error_messages: ["ConfirmBidCreateBidderPositionMutation failed"],
       auction_slug: "saleslug",
       artwork_slug: "artworkslug",
