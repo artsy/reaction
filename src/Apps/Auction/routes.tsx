@@ -41,6 +41,7 @@ export const routes: RouteConfig[] = [
             id
             sale {
               registrationStatus {
+                id
                 qualified_for_bidding
               }
               _id
@@ -52,6 +53,7 @@ export const routes: RouteConfig[] = [
           }
         }
         me {
+          id
           has_qualified_credit_cards
         }
       }

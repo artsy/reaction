@@ -6,6 +6,7 @@ export enum PageName {
   ArtistPage = "Artist",
   ArtworkPage = "Artwork page",
   AuctionRegistrationPage = "Auction Registration page",
+  AuctionConfirmBidPage = "Auction Confirm Bid page",
   CollectPage = "Collect page",
   CollectionPage = "Collection",
   SearchPage = "Search page",
@@ -88,6 +89,8 @@ export enum ActionType {
   /**
    * Auctions
    */
+  ConfirmBidSubmitted = "Confirmed bid on bid page",
+  ConfirmBidFailed = "Confirm bid failed",
   PlacedMaxBid = "Placed Max Bid",
   RegisteredToBid = "Registered To Bid",
 

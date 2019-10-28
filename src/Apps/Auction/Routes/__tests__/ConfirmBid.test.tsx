@@ -5,11 +5,21 @@ import { graphql } from "react-relay"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
-import { createBidderPositionSuccessful } from "../__fixtures__/MutationResults/createBidderPosition"
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { TrackingProp } from "react-tracking"
+import {
+  createBidderPositionFailed,
+  createBidderPositionSuccessful,
+} from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
 
 jest.unmock("react-relay")
+jest.unmock("react-tracking")
+jest.mock("Utils/Events", () => ({
+  postEvent: jest.fn(),
+}))
+const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("sharify", () => ({
   data: {
@@ -28,7 +38,9 @@ const setupTestEnv = ({
 } = {}) => {
   return createTestEnv({
     TestPage: ConfirmBidTestPage,
-    Component: (props: routes_ConfirmBidQueryResponse) => (
+    Component: (
+      props: routes_ConfirmBidQueryResponse & { tracking: TrackingProp }
+    ) => (
       <ConfirmBidRouteFragmentContainer
         location={location as Location}
         {...props}
@@ -47,6 +59,7 @@ const setupTestEnv = ({
             id
             sale {
               registrationStatus {
+                id
                 qualified_for_bidding
               }
               _id
@@ -58,6 +71,7 @@ const setupTestEnv = ({
           }
         }
         me {
+          id
           has_qualified_credit_cards
         }
       }
@@ -69,13 +83,7 @@ const setupTestEnv = ({
   })
 }
 
-describe("Routes/Register ", () => {
-  beforeAll(() => {
-    // @ts-ignore
-    // tslint:disable-next-line:no-empty
-    window.Stripe = () => {}
-  })
-
+describe("Routes/ConfirmBid", () => {
   beforeEach(() => {
     window.location.assign = jest.fn()
     window.location.search = ""
@@ -107,11 +115,59 @@ describe("Routes/Register ", () => {
       }
     )
 
+    expect(mockPostEvent).toBeCalledWith({
+      action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+      context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+      auction_slug: "saleslug",
+      artwork_slug: "artworkslug",
+      bidder_id: "bidderid",
+      bidder_position_id: "positionid",
+      sale_id: "saleid",
+      user_id: "my-user-id",
+    })
+    expect(mockPostEvent).toHaveBeenCalledTimes(1)
+
     expect(window.location.assign).toHaveBeenCalledWith(
       `https://example.com/auction/${
         ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.id
       }/artwork/${ConfirmBidQueryResponseFixture.artwork.id}`
     )
+  })
+
+  it("send an error event to analytics if the mutation fails", async () => {
+    const env = setupTestEnv()
+    const page = await env.buildPage()
+
+    env.mutations.useResultsOnce(createBidderPositionFailed)
+
+    await page.agreeToTerms()
+    await page.submitForm()
+
+    expect(env.mutations.mockFetch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "ConfirmBidCreateBidderPositionMutation",
+      }),
+      {
+        input: {
+          artwork_id: "artworkslug",
+          max_bid_amount_cents: 5000000,
+          sale_id: "saleslug",
+        },
+      }
+    )
+
+    expect(mockPostEvent).toBeCalledWith({
+      action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+      context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+      error_messages: ["ConfirmBidCreateBidderPositionMutation failed"],
+      auction_slug: "saleslug",
+      artwork_slug: "artworkslug",
+      bidder_id: "bidderid",
+      sale_id: "saleid",
+      user_id: "my-user-id",
+    })
+    expect(mockPostEvent).toHaveBeenCalledTimes(1)
+    expect(window.location.assign).not.toHaveBeenCalled()
   })
 
   it("requires user to agree to terms", async () => {

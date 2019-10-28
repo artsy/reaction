@@ -8,6 +8,8 @@ import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/Bid
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { track } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { FormikActions } from "formik"
 import qs from "qs"
 import React from "react"
@@ -18,21 +20,23 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
-interface BidProps {
+interface ConfirmBidProps {
   artwork: routes_ConfirmBidQueryResponse["artwork"]
   me: routes_ConfirmBidQueryResponse["me"]
   relay: RelayProp
   location: Location
+  tracking: TrackingProp
 }
 
-export const ConfirmBidRoute: React.FC<BidProps> = props => {
-  const { me, artwork } = props
+export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
+  const { me, artwork, tracking } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
   logger.log({
@@ -59,6 +63,9 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
             ) {
               createBidderPosition(input: $input) {
                 result {
+                  position {
+                    id
+                  }
                   status
                   message_header
                   message_description_md
@@ -78,7 +85,11 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
     })
   }
 
-  function handleMutationError(actions: FormikActions<object>, error: Error) {
+  function handleMutationError(
+    actions: FormikActions<object>,
+    error: Error,
+    bidderId: string
+  ) {
     logger.error(error)
 
     let errorMessages: string[]
@@ -90,26 +101,58 @@ export const ConfirmBidRoute: React.FC<BidProps> = props => {
       errorMessages = [error.message]
     }
 
-    // TODO: add tracking with errorMessages
-    logger.error(errorMessages) // remove once tracking is implemented
+    trackConfirmBidFailed(bidderId, errorMessages)
 
     actions.setSubmitting(false)
     actions.setStatus("submissionFailed")
+  }
+
+  const commonEventProperties = {
+    auction_slug: sale.id,
+    artwork_slug: artwork.id,
+    sale_id: sale._id,
+    user_id: me.id,
+  }
+
+  function trackConfirmBidFailed(bidderId: string, errors: string[]) {
+    tracking.trackEvent({
+      action_type: Schema.ActionType.ConfirmBidFailed,
+      bidder_id: bidderId,
+      error_messages: errors,
+      ...commonEventProperties,
+    })
+  }
+
+  function trackConfirmBidSuccess(positionId: string, bidderId: string) {
+    tracking.trackEvent({
+      action_type: Schema.ActionType.ConfirmBidSubmitted,
+      bidder_position_id: positionId,
+      bidder_id: bidderId,
+      ...commonEventProperties,
+    })
   }
 
   function handleSubmit(
     values: { selectedBid: number },
     actions: FormikActions<object>
   ) {
+    const bidderId = sale.registrationStatus.id
     createBidderPosition(Number(values.selectedBid))
       .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
-        // TODO: add tracking here
-        window.location.assign(
-          `${sd.APP_URL}/auction/${sale.id}/artwork/${artwork.id}`
-        )
+        if (data.createBidderPosition.result.status !== "SUCCESS") {
+          trackConfirmBidFailed(bidderId, [
+            "ConfirmBidCreateBidderPositionMutation failed",
+          ])
+        } else {
+          const positionId = data.createBidderPosition.result.position.id
+          trackConfirmBidSuccess(positionId, bidderId)
+          window.location.assign(
+            `${sd.APP_URL}/auction/${sale.id}/artwork/${artwork.id}`
+          )
+        }
       })
       .catch(error => {
-        handleMutationError(actions, error)
+        handleMutationError(actions, error, bidderId)
       })
       .finally(() => {
         actions.setSubmitting(false)
@@ -143,7 +186,15 @@ const getInitialSelectedBid = (location: Location): string | undefined => {
   )
 }
 
+const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
+  const Component = track({
+    context_page: Schema.PageName.AuctionConfirmBidPage,
+  })(ConfirmBidRoute)
+
+  return <Component {...props} />
+}
+
 export const ConfirmBidRouteFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(ConfirmBidRoute),
+  trackPageViewWrapper(TrackingWrappedConfirmBidRoute),
   {}
 )

@@ -13,6 +13,9 @@ export type ConfirmBidCreateBidderPositionMutationVariables = {
 export type ConfirmBidCreateBidderPositionMutationResponse = {
     readonly createBidderPosition: ({
         readonly result: ({
+            readonly position: ({
+                readonly id: string;
+            }) | null;
             readonly status: string;
             readonly message_header: string | null;
             readonly message_description_md: string | null;
@@ -32,6 +35,10 @@ mutation ConfirmBidCreateBidderPositionMutation(
 ) {
   createBidderPosition(input: $input) {
     result {
+      position {
+        id
+        __id
+      }
       status
       message_header
       message_description_md
@@ -76,6 +83,31 @@ v1 = [
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "position",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "BidderPosition",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__id",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "name": "status",
@@ -106,7 +138,7 @@ return {
   "operationKind": "mutation",
   "name": "ConfirmBidCreateBidderPositionMutation",
   "id": null,
-  "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      status\n      message_header\n      message_description_md\n    }\n  }\n}\n",
+  "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        id\n        __id\n      }\n      status\n      message_header\n      message_description_md\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -124,5 +156,5 @@ return {
   }
 };
 })();
-(node as any).hash = '83a32bbd1213cdb1462815a1707c7e6d';
+(node as any).hash = '6c893ea6050f8571b02181c2d660da78';
 export default node;
