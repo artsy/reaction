@@ -39,12 +39,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const { me, artwork, tracking } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
-  logger.log({
-    me,
-    sale,
-    artwork,
-    saleArtwork,
-  })
 
   function createBidderPosition(maxBidAmountCents: number) {
     return new Promise(async (resolve, reject) => {
