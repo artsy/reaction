@@ -1,3 +1,15 @@
+# v21.17.1 (Tue Oct 29 2019)
+
+#### 🐛  Bug Fix
+
+- Fix title of Confirm Bid route [#2960](https://github.com/artsy/reaction/pull/2960) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v21.17.0 (Mon Oct 28 2019)
 
 #### 🚀  Enhancement
