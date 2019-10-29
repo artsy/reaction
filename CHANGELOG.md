@@ -1,3 +1,16 @@
+# v21.17.2 (Tue Oct 29 2019)
+
+#### 🐛  Bug Fix
+
+- QA for Grow 1577 Analytics tracking for hub entry points [#2957](https://github.com/artsy/reaction/pull/2957) ([@jiahaodavid](https://github.com/jiahaodavid))
+- Grow 1563 Add analytics tracking to Nav Bar [#2949](https://github.com/artsy/reaction/pull/2949) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v21.17.1 (Tue Oct 29 2019)
 
 #### 🐛  Bug Fix
