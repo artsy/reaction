@@ -2,7 +2,7 @@ import { Box, BoxProps, Link, Sans, space } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { animated, config, useSpring } from "react-spring"
 import styled from "styled-components"
 import { NavBarHeight } from "./NavBar"
@@ -16,7 +16,6 @@ interface NavItemProps extends BoxProps {
   className?: string
   href?: string
   onClick?: () => void
-  onHover?: boolean
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -28,8 +27,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   display = "block",
   href,
   onClick,
-  onHover = true,
 }) => {
+  const navItemLabel = children
   const { trackEvent } = useTracking()
   const [hover, toggleHover] = useState(active)
   const showMenu = Boolean(Menu && hover)
@@ -52,22 +51,28 @@ export const NavItem: React.FC<NavItemProps> = ({
   })
 
   const trackClick = () => {
-    if (href && isString(children)) {
+    if (href && isString(navItemLabel)) {
       trackEvent({
         action_type: AnalyticsSchema.ActionType.Click,
-        subject: children, // Text passed into the NavItem
+        subject: navItemLabel, // Text passed into the NavItem
         destination_path: href,
       })
     }
   }
 
   const trackHover = () => {
-    if (isString(children))
+    if (isString(navItemLabel))
       trackEvent({
         action_type: AnalyticsSchema.ActionType.Hover,
-        subject: children,
+        subject: navItemLabel,
       })
   }
+
+  useEffect(() => {
+    if (hover) {
+      trackHover()
+    }
+  }, [hover])
 
   return (
     <Box
@@ -92,19 +97,17 @@ export const NavItem: React.FC<NavItemProps> = ({
       >
         <Sans size="3" weight="medium" color={hoverColor}>
           <Box height={25}>
-            {isFunction(children)
+            {isFunction(navItemLabel)
               ? // NavItem children can be called as renderProps so that contents
                 // can operate on UI behaviors (such as changing the color of an
                 // icon on hover).
-                children({
+                navItemLabel({
                   hover,
                 })
-              : children}
+              : navItemLabel}
           </Box>
         </Sans>
       </Link>
-
-      {hover && onHover ? trackHover() : null}
 
       {showMenu && (
         <animated.div style={animatedStyle}>

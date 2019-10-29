@@ -116,7 +116,6 @@ export const NavBar: React.FC = track(
             {isLoggedIn && (
               <>
                 <NavItem
-                  onHover={false}
                   href="/works-for-you"
                   Menu={NotificationsMenu}
                   Overlay={NotificationsBadge}
