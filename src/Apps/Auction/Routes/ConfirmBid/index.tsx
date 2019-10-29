@@ -161,7 +161,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
   return (
     <AppContainer>
-      <Title>Auction Registration</Title>
+      <Title>Confirm Bid | Artsy</Title>
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="8">Confirm your bid</Serif>
         <Separator />
