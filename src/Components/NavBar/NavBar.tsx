@@ -136,7 +136,6 @@ export const NavBar: React.FC = track(
                         new_notification_count: getNotificationCount(),
                       })
                     }
-
                     return (
                       <BellIcon
                         top={3}
@@ -147,6 +146,12 @@ export const NavBar: React.FC = track(
                 </NavItem>
                 <NavItem Menu={UserMenu}>
                   {({ hover }) => {
+                    if (hover) {
+                      trackEvent({
+                        action_type: AnalyticsSchema.ActionType.Hover,
+                        subject: "User",
+                      })
+                    }
                     return (
                       <SoloIcon
                         top={3}
