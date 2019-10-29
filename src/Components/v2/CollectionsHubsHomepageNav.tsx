@@ -2,7 +2,7 @@ import { CSSGrid } from "@artsy/palette"
 import { Serif } from "@artsy/palette"
 import { CollectionsHubsHomepageNav_marketingHubCollections } from "__generated__/CollectionsHubsHomepageNav_marketingHubCollections.graphql"
 import { AnalyticsSchema } from "Artsy/Analytics"
-import React, { useEffect } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import track, { useTracking } from "react-tracking"
 import Events from "Utils/Events"
@@ -18,16 +18,12 @@ export const CollectionsHubsHomepageNav = track(
     context_page: AnalyticsSchema.PageName.HomePage,
     context_module: AnalyticsSchema.ContextModule.CollectionHubEntryPoint,
     subject: AnalyticsSchema.Subject.FeaturedCategories,
+    action_type: AnalyticsSchema.ActionType.Impression,
   },
   { dispatch: data => Events.postEvent(data) }
 )((props: CollectionsHubsHomepageNavProps) => {
   const { trackEvent } = useTracking()
-  useEffect(() => {
-    trackEvent({
-      action_type: AnalyticsSchema.ActionType.Impression,
-    })
-  }, [])
-
+  trackEvent({})
   return (
     <CSSGrid
       as="aside"
@@ -49,10 +45,6 @@ export const CollectionsHubsHomepageNav = track(
           onClick={() => {
             trackEvent({
               action_type: AnalyticsSchema.ActionType.Click,
-              context_page: AnalyticsSchema.PageName.HomePage,
-              context_module:
-                AnalyticsSchema.ContextModule.CollectionHubEntryPoint,
-              subject: AnalyticsSchema.Subject.FeaturedCategories,
               type: AnalyticsSchema.Type.Thumbnail,
               desination_path: `/collection/${hub.slug}`,
             })
