@@ -10,6 +10,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ProductInfo } from "Artsy/Analytics/Schema/Interaction"
 import { FormikActions } from "formik"
 import qs from "qs"
 import React from "react"
@@ -101,11 +102,25 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     actions.setStatus("submissionFailed")
   }
 
-  const commonEventProperties = {
-    auction_slug: sale.id,
-    artwork_slug: artwork.id,
-    sale_id: sale._id,
-    user_id: me.id,
+  function commonEventProperties(bidderId: string) {
+    return {
+      auction_slug: sale.id,
+      artwork_slug: artwork.id,
+      sale_id: sale._id,
+      user_id: me.id,
+      order_id: bidderId,
+    }
+  }
+  function productInfo(selectedBidAmountCents: number): ProductInfo {
+    return {
+      products: [
+        {
+          product_id: artwork._id,
+          quantity: 1,
+          price: selectedBidAmountCents / 100,
+        },
+      ],
+    }
   }
 
   function trackConfirmBidFailed(bidderId: string, errors: string[]) {
@@ -113,16 +128,21 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       action_type: Schema.ActionType.ConfirmBidFailed,
       bidder_id: bidderId,
       error_messages: errors,
-      ...commonEventProperties,
+      ...commonEventProperties(bidderId),
     })
   }
 
-  function trackConfirmBidSuccess(positionId: string, bidderId: string) {
+  function trackConfirmBidSuccess(
+    positionId: string,
+    bidderId: string,
+    selectedBidAmountCents: number
+  ) {
     tracking.trackEvent({
       action_type: Schema.ActionType.ConfirmBidSubmitted,
       bidder_position_id: positionId,
       bidder_id: bidderId,
-      ...commonEventProperties,
+      ...commonEventProperties(bidderId),
+      ...productInfo(selectedBidAmountCents),
     })
   }
 
@@ -131,6 +151,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     actions: FormikActions<object>
   ) {
     const bidderId = sale.registrationStatus.id
+
     createBidderPosition(Number(values.selectedBid))
       .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
         if (data.createBidderPosition.result.status !== "SUCCESS") {
@@ -139,7 +160,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           ])
         } else {
           const positionId = data.createBidderPosition.result.position.id
-          trackConfirmBidSuccess(positionId, bidderId)
+          trackConfirmBidSuccess(positionId, bidderId, values.selectedBid)
           window.location.assign(
             `${sd.APP_URL}/auction/${sale.id}/artwork/${artwork.id}`
           )
