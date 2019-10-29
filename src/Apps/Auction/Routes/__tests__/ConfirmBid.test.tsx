@@ -115,6 +115,21 @@ describe("Routes/ConfirmBid", () => {
       }
     )
 
+    expect(window.location.assign).toHaveBeenCalledWith(
+      `https://example.com/auction/${
+        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.id
+      }/artwork/${ConfirmBidQueryResponseFixture.artwork.id}`
+    )
+  })
+
+  it("tracks a success event to Segment including product information", async () => {
+    const env = setupTestEnv()
+    const page = await env.buildPage()
+    env.mutations.useResultsOnce(createBidderPositionSuccessful)
+
+    await page.agreeToTerms()
+    await page.submitForm()
+
     expect(mockPostEvent).toBeCalledWith({
       action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
       context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
@@ -124,14 +139,16 @@ describe("Routes/ConfirmBid", () => {
       bidder_position_id: "positionid",
       sale_id: "saleid",
       user_id: "my-user-id",
+      order_id: "bidderid",
+      products: [
+        {
+          product_id: "artworkid",
+          quantity: 1,
+          price: 50000,
+        },
+      ],
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
-
-    expect(window.location.assign).toHaveBeenCalledWith(
-      `https://example.com/auction/${
-        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.id
-      }/artwork/${ConfirmBidQueryResponseFixture.artwork.id}`
-    )
   })
 
   it("send an error event to analytics if the mutation fails", async () => {
@@ -165,6 +182,7 @@ describe("Routes/ConfirmBid", () => {
       bidder_id: "bidderid",
       sale_id: "saleid",
       user_id: "my-user-id",
+      order_id: "bidderid",
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
     expect(window.location.assign).not.toHaveBeenCalled()
