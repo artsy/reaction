@@ -1,3 +1,15 @@
+# v21.17.3 (Wed Oct 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Magazine from mobile nav [#2962](https://github.com/artsy/reaction/pull/2962) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.17.2 (Tue Oct 29 2019)
 
 #### 🐛  Bug Fix
