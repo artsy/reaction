@@ -142,7 +142,7 @@ exports[`Nav renders a Nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>
@@ -357,7 +357,7 @@ exports[`Nav renders a sponsored nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>
@@ -518,7 +518,7 @@ exports[`Nav renders a transparent nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>

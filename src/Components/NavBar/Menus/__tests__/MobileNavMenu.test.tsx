@@ -30,7 +30,7 @@ describe("MobileNavMenu", () => {
     ["/institutions", "Museums"],
     ["/fairs", "Fairs"],
     ["/auctions", "Auctions"],
-    ["/articles", "Magazine"],
+    ["/articles", "Editorial"],
   ]
 
   describe("nav structure", () => {

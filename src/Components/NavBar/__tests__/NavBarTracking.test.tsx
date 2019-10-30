@@ -215,20 +215,20 @@ describe("NavBarTracking", () => {
 
       wrapper
         .find("MobileLink")
-        .last()
+        .at(1)
         .simulate("click", {
           target: {
-            innerText: "Magazine",
+            innerText: "Artists",
             parentNode: {
-              getAttribute: () => "/articles",
+              getAttribute: () => "/artists",
             },
           },
         })
 
       expect(trackEvent).toBeCalledWith({
         action_type: AnalyticsSchema.ActionType.Click,
-        subject: "Magazine",
-        destination_path: "/articles",
+        subject: "Artists",
+        destination_path: "/artists",
       })
     })
   })

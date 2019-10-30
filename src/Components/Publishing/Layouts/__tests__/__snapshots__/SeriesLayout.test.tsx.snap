@@ -1108,7 +1108,7 @@ exports[`series layout renders a series 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -2806,7 +2806,7 @@ exports[`series layout renders a sponsored series 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
