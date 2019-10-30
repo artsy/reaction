@@ -74,7 +74,7 @@ export class Nav extends React.Component<Props, State> {
 
           <Media greaterThan="xs">
             <Title size="5" color={color} weight="semibold" textAlign="center">
-              {title ? title : <a href="/magazine">Artsy Editorial</a>}
+              {title ? title : <a href="/articles">Artsy Editorial</a>}
             </Title>
           </Media>
           {children}

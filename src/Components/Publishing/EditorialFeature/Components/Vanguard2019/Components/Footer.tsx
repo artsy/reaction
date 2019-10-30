@@ -30,7 +30,7 @@ export const VanguardFooter = () => {
         </Flex>
         <Separator mb={2} />
         <Serif size="3">
-          Back to <a href="/magazine">Artsy Editorial</a>
+          Back to <a href="/articles">Artsy Editorial</a>
         </Serif>
       </Box>
     </Box>
