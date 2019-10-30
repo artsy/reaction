@@ -2101,7 +2101,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -8025,7 +8025,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
