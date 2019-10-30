@@ -42,7 +42,7 @@ export const MobileNavMenu: React.FC = () => {
       <MobileLink href="/institutions">Museums</MobileLink>
       <MobileLink href="/fairs">Fairs</MobileLink>
       <MobileLink href="/auctions">Auctions</MobileLink>
-      <MobileLink href="/articles">Magazine</MobileLink>
+      <MobileLink href="/articles">Editorial</MobileLink>
 
       <Box px={2}>
         <Separator my={[1, 4]} />
