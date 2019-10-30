@@ -1,3 +1,15 @@
+# v21.17.4 (Wed Oct 30 2019)
+
+#### 🐛  Bug Fix
+
+- Conditions of sale --> Conditions of Sale in Auction FAQ [#2963](https://github.com/artsy/reaction/pull/2963) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v21.17.3 (Wed Oct 30 2019)
 
 #### 🐛  Bug Fix
