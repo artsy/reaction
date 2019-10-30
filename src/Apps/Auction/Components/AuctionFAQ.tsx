@@ -76,7 +76,7 @@ export const AuctionFAQ: React.FC<AuctionFAQProps> = ({ viewer }) => {
           </Toggle>
         )}
         {conditionsOfSaleContent && (
-          <Toggle label="Conditions of sale">
+          <Toggle label="Conditions of Sale">
             <StyledMarkdown
               source={conditionsOfSaleContent}
               containerTagName="div"
