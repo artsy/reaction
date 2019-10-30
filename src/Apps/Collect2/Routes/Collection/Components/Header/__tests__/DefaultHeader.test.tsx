@@ -35,9 +35,8 @@ describe("default collections header artworks", () => {
 
   it("returns only the number of artworks necessary to fill the header", () => {
     const artworks = defaultCollectionHeaderArtworks.hits
-    console.log("TCL: artworks", artworks.length)
-
     const headerArtworks = getHeaderArtworks(artworks, 675, false)
+
     expect(headerArtworks.length).toBeLessThan(artworks.length)
     expect(headerArtworks).toHaveLength(4)
   })
