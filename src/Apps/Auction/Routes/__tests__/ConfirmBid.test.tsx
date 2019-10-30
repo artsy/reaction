@@ -122,7 +122,7 @@ describe("Routes/ConfirmBid", () => {
     )
   })
 
-  it("tracks a success event to Segment including product information", async () => {
+  it("tracks a success event to Segment including Criteo info", async () => {
     const env = setupTestEnv()
     const page = await env.buildPage()
     env.mutations.useResultsOnce(createBidderPositionSuccessful)
@@ -182,7 +182,6 @@ describe("Routes/ConfirmBid", () => {
       bidder_id: "bidderid",
       sale_id: "saleid",
       user_id: "my-user-id",
-      order_id: "bidderid",
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
     expect(window.location.assign).not.toHaveBeenCalled()
