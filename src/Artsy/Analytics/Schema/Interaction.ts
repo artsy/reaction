@@ -52,15 +52,3 @@ export interface AuthenticationInteraction extends Interaction {
    */
   trigger?: string
 }
-
-interface Product {
-  product_id: string
-  quantity: number
-  price: number
-}
-/** ProductInfo models the information needed for Segment to consider
- * the information as "productize-able", which is important for downstream services.
- */
-export interface ProductInfo {
-  products: Product[]
-}

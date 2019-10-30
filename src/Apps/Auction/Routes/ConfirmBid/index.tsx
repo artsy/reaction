@@ -10,7 +10,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ProductInfo } from "Artsy/Analytics/Schema/Interaction"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { FormikActions } from "formik"
 import qs from "qs"
 import React from "react"
@@ -21,7 +21,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -33,13 +32,14 @@ interface ConfirmBidProps {
   me: routes_ConfirmBidQueryResponse["me"]
   relay: RelayProp
   location: Location
-  tracking: TrackingProp
 }
 
 export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
-  const { me, artwork, tracking } = props
+  const { artwork } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
+
+  const { trackEvent } = useTracking()
 
   function createBidderPosition(maxBidAmountCents: number) {
     return new Promise(async (resolve, reject) => {
@@ -102,33 +102,11 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     actions.setStatus("submissionFailed")
   }
 
-  function commonEventProperties(bidderId: string) {
-    return {
-      auction_slug: sale.id,
-      artwork_slug: artwork.id,
-      sale_id: sale._id,
-      user_id: me.id,
-      order_id: bidderId,
-    }
-  }
-  function productInfo(selectedBidAmountCents: number): ProductInfo {
-    return {
-      products: [
-        {
-          product_id: artwork._id,
-          quantity: 1,
-          price: selectedBidAmountCents / 100,
-        },
-      ],
-    }
-  }
-
   function trackConfirmBidFailed(bidderId: string, errors: string[]) {
-    tracking.trackEvent({
+    trackEvent({
       action_type: Schema.ActionType.ConfirmBidFailed,
       bidder_id: bidderId,
       error_messages: errors,
-      ...commonEventProperties(bidderId),
     })
   }
 
@@ -137,12 +115,18 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     bidderId: string,
     selectedBidAmountCents: number
   ) {
-    tracking.trackEvent({
+    trackEvent({
       action_type: Schema.ActionType.ConfirmBidSubmitted,
       bidder_position_id: positionId,
       bidder_id: bidderId,
-      ...commonEventProperties(bidderId),
-      ...productInfo(selectedBidAmountCents),
+      order_id: bidderId,
+      products: [
+        {
+          product_id: artwork._id,
+          quantity: 1,
+          price: selectedBidAmountCents / 100,
+        },
+      ],
     })
   }
 
@@ -202,9 +186,13 @@ const getInitialSelectedBid = (location: Location): string | undefined => {
 }
 
 const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
-  const Component = track({
+  const Component = track<ConfirmBidProps>(p => ({
     context_page: Schema.PageName.AuctionConfirmBidPage,
-  })(ConfirmBidRoute)
+    auction_slug: p.artwork.saleArtwork.sale.id,
+    artwork_slug: p.artwork.id,
+    sale_id: p.artwork.saleArtwork.sale._id,
+    user_id: p.me.id,
+  }))(ConfirmBidRoute)
 
   return <Component {...props} />
 }
