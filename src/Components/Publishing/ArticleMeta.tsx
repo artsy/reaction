@@ -1,15 +1,14 @@
 import { getFullEditorialHref } from "Components/Publishing/Constants"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
+import { data as sd } from "sharify"
 import { crop } from "Utils/resizer"
+import { createMediaStyle } from "Utils/Responsive"
 
 export const ArticleMeta: React.SFC<{
   article: ArticleData
-  customMetaContent: ArticleData
-  sd: any // res.locals.sd passed directly to component as sd
 }> = props => {
-  const { sd, customMetaContent } = props
-  const article = customMetaContent || props.article
+  const { article } = props
   const title = article.search_title || article.thumbnail_title || ""
   const titleExtension = article.layout === "news" ? "Artsy News" : "Artsy"
   const url = getFullEditorialHref(article.layout, article.slug)
@@ -21,6 +20,7 @@ export const ArticleMeta: React.SFC<{
   const keywords = (article.keywords && article.keywords.join(", ")) || ""
   const sailthruKeywords = [`article${keywords && `, ${keywords}`}`]
   const emailMetadata = article.published && article.email_metadata
+  const responsiveCss = createMediaStyle()
 
   if (article.featured) {
     sailthruKeywords.push("magazine")
@@ -108,7 +108,7 @@ export const ArticleMeta: React.SFC<{
       )}
       {!article.indexable && <meta name="robots" content="noindex" />}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <style>{sd.RESPONSIVE_CSS}</style>
+      <style>{responsiveCss}</style>
     </>
   )
 }

@@ -3,6 +3,12 @@ import { mount } from "enzyme"
 import React from "react"
 import { ArticleMeta } from "../ArticleMeta"
 
+jest.mock("sharify", () => ({
+  data: {
+    FACEBOOK_ID: "facebook_id",
+  },
+}))
+
 describe("ArticleMeta", () => {
   let props
   const getWrapper = (passedProps = props) => {
@@ -12,10 +18,6 @@ describe("ArticleMeta", () => {
   beforeEach(() => {
     props = {
       article: { ...StandardArticle },
-      sd: {
-        FACEBOOK_ID: "facebook_id",
-        RESPONSIVE_CSS: "body {};",
-      },
     }
   })
 
@@ -273,6 +275,6 @@ describe("ArticleMeta", () => {
 
   it("renders responsive styles", () => {
     const component = getWrapper()
-    expect(component.find("style").text()).toBe("body {};")
+    expect(component.find("style").text().length).toBeTruthy()
   })
 })

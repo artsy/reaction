@@ -23,6 +23,7 @@ declare module "sharify" {
       readonly COLLECTION_HUB_ENTRYPOINTS_TEST: string
       readonly CMS_URL: string
       readonly FACEBOOK_APP_NAMESPACE: string
+      readonly FACEBOOK_ID: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly GENOME_URL: string
