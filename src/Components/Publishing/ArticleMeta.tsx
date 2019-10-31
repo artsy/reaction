@@ -5,6 +5,8 @@ import { data as sd } from "sharify"
 import { crop } from "Utils/resizer"
 import { createMediaStyle } from "Utils/Responsive"
 
+const responsiveCss = createMediaStyle()
+
 export const ArticleMeta: React.SFC<{
   article: ArticleData
 }> = props => {
@@ -20,7 +22,6 @@ export const ArticleMeta: React.SFC<{
   const keywords = (article.keywords && article.keywords.join(", ")) || ""
   const sailthruKeywords = [`article${keywords && `, ${keywords}`}`]
   const emailMetadata = article.published && article.email_metadata
-  const responsiveCss = createMediaStyle()
 
   if (article.featured) {
     sailthruKeywords.push("magazine")
