@@ -74,6 +74,7 @@ export class SeriesLayout extends Component<Props, null> {
             isSponsored ? "sponsorlanding" : "standardseries"
           )}
           isSeries
+          articleSlug={article.slug}
         />
       </SeriesContainer>
     )

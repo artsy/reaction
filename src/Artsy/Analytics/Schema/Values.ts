@@ -354,6 +354,11 @@ export enum ContextModule {
    * NSO 'bank transfer experiment
    */
   BankTransferExperiment = "BankTransferExperiment",
+
+  /**
+   * Ad Server
+   */
+  AdServer = "AdServer",
 }
 
 export enum Flow {

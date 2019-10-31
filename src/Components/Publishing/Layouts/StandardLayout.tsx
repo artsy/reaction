@@ -65,6 +65,7 @@ export class StandardLayout extends React.Component<
 
   renderSideRailDisplayAd(isMobileAd: boolean) {
     const { article, isSuper } = this.props
+    console.log("TCL: renderSideRailDisplayAd -> article", article.slug)
 
     if (isSuper) {
       return
@@ -81,6 +82,7 @@ export class StandardLayout extends React.Component<
             : AdDimension.Desktop_RightRail1
         }
         targetingData={targetingData(article, "article")}
+        articleSlug={article.slug}
       />
     )
   }
@@ -104,6 +106,7 @@ export class StandardLayout extends React.Component<
         }
         adDimension={adDimension}
         targetingData={targetingData(article, "article")}
+        articleSlug={article.slug}
       />
     )
   }
