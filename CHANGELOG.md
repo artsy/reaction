@@ -1,3 +1,15 @@
+# v21.17.6 (Thu Oct 31 2019)
+
+#### 🐛  Bug Fix
+
+- Article meta component [#2959](https://github.com/artsy/reaction/pull/2959) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.17.5 (Thu Oct 31 2019)
 
 #### 🐛  Bug Fix
