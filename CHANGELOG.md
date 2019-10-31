@@ -1,3 +1,39 @@
+# v21.17.5 (Thu Oct 31 2019)
+
+#### 🐛  Bug Fix
+
+- Add productize-able info to bid success payload [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- cleanup: remove unused ValidFormValues in ConfirmBidTestPage [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- Remove stray log in ConfirmBid route. [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- Refactor ConfirmBid tracking
+
+Why?
+
+* This allows us to use the type schema, better protecting ourselves
+incorrect tracking code.
+
+* It also allows better factor common tracking components by replacing
+dependency injection with composition with common properties defined
+at the component level.
+
+Details
+
+- add common tracking properties to HOC call and delete commonProperties
+- Remove incorrect assertion about `order_id` in failing case
+- Extend analytics schema with Criteo and Auctions info
+  + Add `CriteoInfo` interface to describe core information about
+    integrating with Criteo
+  + Add `AuctionInfo` interface to describe assorted auction-related
+    properties.
+- Use p instead of props in track-wrapping to avoid “props shadowing”
+  error. [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v21.17.4 (Wed Oct 30 2019)
 
 #### 🐛  Bug Fix
