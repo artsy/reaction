@@ -1,3 +1,15 @@
+# v21.17.7 (Fri Nov 01 2019)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1578]  Adds `<Tags>` component for genes [#2951](https://github.com/artsy/reaction/pull/2951) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.17.6 (Thu Oct 31 2019)
 
 #### 🐛  Bug Fix
