@@ -8,6 +8,12 @@
 ###    ### ########## ###     ###  ########     ###     ########### ########  ###    ####
 ```
 
+## WARNING
+
+This is a medium-term lived release branch. Beware!
+
+Context: https://artsyproduct.atlassian.net/browse/AUCT-722
+
 ## Meta
 
 - **State:** production
