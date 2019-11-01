@@ -65,7 +65,6 @@ export class StandardLayout extends React.Component<
 
   renderSideRailDisplayAd(isMobileAd: boolean) {
     const { article, isSuper } = this.props
-    console.log("TCL: renderSideRailDisplayAd -> article", article.slug)
 
     if (isSuper) {
       return

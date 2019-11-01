@@ -189,18 +189,8 @@ export const Authors = [
   },
 ]
 
-export const StandardArticleHostedAdPanel: DisplayAdProps = {
-  adUnit: "Desktop_RightRail1" as AdUnit,
-  adDimension: "300x250" as AdDimension,
-  targetingData: {
-    is_testing: true,
-    page_type: "article",
-    post_id: "123",
-    tags: "Art Market",
-  },
-}
-
-export const StandardArticleHostedAdCanvas: DisplayAdProps = {
+export const ArticleDisplayAdProps: DisplayAdProps = {
+  articleSlug: "a-standard-article",
   adUnit: "Desktop_TopLeaderboard" as AdUnit,
   adDimension: "970x250" as AdDimension,
   targetingData: {

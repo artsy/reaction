@@ -10,7 +10,7 @@ import "jest-styled-components"
 import React from "react"
 import { Bling as GPT } from "react-gpt"
 import renderer from "react-test-renderer"
-import { StandardArticleHostedAdCanvas as AdData } from "../../Fixtures/Components"
+import { ArticleDisplayAdProps as AdData } from "../../Fixtures/Components"
 
 jest.mock("Artsy/Analytics/useTracking")
 

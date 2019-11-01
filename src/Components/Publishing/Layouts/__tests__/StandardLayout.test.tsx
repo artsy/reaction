@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import {
@@ -25,13 +26,15 @@ jest.mock(
     withFullScreen: x => x,
   })
 )
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("Standard Article", () => {
+  const trackEvent = jest.fn()
   const getWrapper = _props => {
     return mount(<StandardLayout {..._props} />)
   }
-
   let props
+
   beforeEach(() => {
     props = {
       article: StandardArticle,
@@ -39,6 +42,11 @@ describe("Standard Article", () => {
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   afterEach(() => {
@@ -175,6 +183,7 @@ describe("standard article ad data", () => {
         adDimension={AdDimension.Desktop_TopLeaderboard}
         adUnit={AdUnit.Desktop_TopLeaderboard}
         targetingData={targetingData(StandardArticle, "article")}
+        articleSlug={StandardArticle.slug}
       />
     )
 
@@ -195,6 +204,7 @@ describe("standard article ad data", () => {
         adDimension={AdDimension.Desktop_RightRail1}
         adUnit={AdUnit.Desktop_RightRail1}
         targetingData={targetingData(StandardArticle, "article")}
+        articleSlug={StandardArticle.slug}
       />
     )
 
@@ -215,6 +225,7 @@ describe("standard article ad data", () => {
         adDimension={AdDimension.Mobile_InContentMR1}
         adUnit={AdUnit.Mobile_InContentMR1}
         targetingData={targetingData(StandardArticle, "article")}
+        articleSlug={StandardArticle.slug}
       />
     )
 
@@ -235,6 +246,7 @@ describe("standard article ad data", () => {
         adDimension={AdDimension.Mobile_TopLeaderboard}
         adUnit={AdUnit.Mobile_TopLeaderboard}
         targetingData={targetingData(StandardArticle, "article")}
+        articleSlug={StandardArticle.slug}
       />
     )
 
