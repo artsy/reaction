@@ -2866,6 +2866,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   <div
     className="c23"
     height="1px"
+    onClick={[Function]}
   >
     <div
       className="c24"

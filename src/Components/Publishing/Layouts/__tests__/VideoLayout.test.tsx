@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import {
@@ -23,7 +24,19 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { VideoLayout } from "../VideoLayout"
 
+jest.mock("Artsy/Analytics/useTracking")
+
 describe("Video Layout", () => {
+  const trackEvent = jest.fn()
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
   const VideoSeriesArticle = clone({
     ...VideoArticle,
     seriesArticle: SeriesArticle,
@@ -87,133 +100,121 @@ describe("Video Layout", () => {
     component.instance().onPlayToggle(false)
     expect(component.state().isPlaying).toBe(false)
   })
-})
 
-describe("Video Layout ads", () => {
-  let props
-  const getWrapper = (passedProps = props) => {
-    return mount(<VideoLayout {...passedProps} />)
-  }
+  describe("Video Layout ads", () => {
+    it("renders the video layout properly with ads", () => {
+      const layout = renderer
+        .create(<VideoLayout article={VideoArticleFixture} />)
+        .toJSON()
+      expect(layout).toMatchSnapshot()
+    })
 
-  beforeEach(() => {
-    props = {
-      article: VideoArticleFixture,
-      isSeries: true,
-    }
-  })
+    it("renders an ad component on video series", () => {
+      const component = getWrapper()
 
-  it("renders the video layout properly with ads", () => {
-    const layout = renderer
-      .create(<VideoLayout article={VideoArticleFixture} />)
-      .toJSON()
-    expect(layout).toMatchSnapshot()
-  })
-
-  it("renders an ad component on video series", () => {
-    const component = getWrapper()
-
-    expect(component.find(DisplayAd).length).toBe(1)
-  })
-})
-
-describe("display ad data on video series", () => {
-  it("renders the component with the correct target properties when video article is sponsored", () => {
-    const isSponsored = isEditorialSponsored(VideoArticleSponsored.sponsor)
-
-    const canvas = mount(
-      <DisplayAd
-        adDimension={
-          AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        adUnit={
-          AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        isSeries
-        targetingData={targetingData(
-          VideoArticleSponsored,
-          isSponsored ? "sponsorlanding" : "video"
-        )}
-        articleSlug={VideoArticleSponsored.slug}
-      />
-    )
-
-    expect(canvas.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "sponsorlanding",
-      post_id: "597b9f652d35b80017a2a6a7",
-      tags: "Art Market",
+      expect(component.find(DisplayAd).length).toBe(1)
     })
   })
 
-  it("renders the component with the correct target properties when video article is not sponsored", () => {
-    const isSponsored = isEditorialSponsored(VideoArticleFixture.sponsor)
+  describe("display ad data on video series", () => {
+    it("renders the component with the correct target properties when video article is sponsored", () => {
+      const isSponsored = isEditorialSponsored(VideoArticleSponsored.sponsor)
 
-    const canvas = mount(
-      <DisplayAd
-        adDimension={
-          AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        adUnit={
-          AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        isSeries
-        targetingData={targetingData(
-          VideoArticleFixture,
-          isSponsored ? "sponsorlanding" : "video"
-        )}
-        articleSlug={VideoArticleSponsored.slug}
-      />
-    )
+      const canvas = mount(
+        <DisplayAd
+          adDimension={
+            AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          adUnit={
+            AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          isSeries
+          targetingData={targetingData(
+            VideoArticleSponsored,
+            isSponsored ? "sponsorlanding" : "video"
+          )}
+          articleSlug={VideoArticleSponsored.slug}
+        />
+      )
 
-    expect(canvas.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "video",
-      post_id: "597b9f652d35b80017a2a6a7",
-      tags: "Art Market",
+      expect(canvas.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "sponsorlanding",
+        post_id: "597b9f652d35b80017a2a6a7",
+        tags: "Art Market",
+      })
     })
-  })
 
-  it("renders the component with the correct data and properties on video landing pages on desktop", () => {
-    const isSponsored = isEditorialSponsored(VideoArticleFixture.sponsor)
+    it("renders the component with the correct target properties when video article is not sponsored", () => {
+      const isSponsored = isEditorialSponsored(VideoArticleFixture.sponsor)
 
-    const canvas = mount(
-      <DisplayAd
-        adDimension={
-          AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        adUnit={
-          AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-        }
-        isSeries
-        targetingData={targetingData(
-          VideoArticleFixture,
-          isSponsored ? "sponsorlanding" : "video"
-        )}
-        articleSlug={VideoArticleSponsored.slug}
-      />
-    )
+      const canvas = mount(
+        <DisplayAd
+          adDimension={
+            AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          adUnit={
+            AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          isSeries
+          targetingData={targetingData(
+            VideoArticleFixture,
+            isSponsored ? "sponsorlanding" : "video"
+          )}
+          articleSlug={VideoArticleSponsored.slug}
+        />
+      )
 
-    expect(canvas.props().adDimension).toEqual("970x250")
-    expect(canvas.props().adUnit).toEqual("Desktop_InContentLB2")
+      expect(canvas.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "video",
+        post_id: "597b9f652d35b80017a2a6a7",
+        tags: "Art Market",
+      })
+    })
 
-    expect(canvas).toHaveLength(1)
-  })
+    it("renders the component with the correct data and properties on video landing pages on desktop", () => {
+      const isSponsored = isEditorialSponsored(VideoArticleFixture.sponsor)
 
-  it("renders the component with the correct data and properties on series landing pages on mobile", () => {
-    const canvas = mount(
-      <DisplayAd
-        adDimension={
-          AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-        }
-        adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
-        isSeries
-        targetingData={targetingData(VideoArticleFixture, "sponsorlanding")}
-        articleSlug={VideoArticleSponsored.slug}
-      />
-    )
+      const canvas = mount(
+        <DisplayAd
+          adDimension={
+            AdDimension.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          adUnit={
+            AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+          }
+          isSeries
+          targetingData={targetingData(
+            VideoArticleFixture,
+            isSponsored ? "sponsorlanding" : "video"
+          )}
+          articleSlug={VideoArticleSponsored.slug}
+        />
+      )
 
-    expect(canvas.props().adDimension).toEqual("300x250")
-    expect(canvas.props().adUnit).toEqual("Mobile_InContentLB2")
-    expect(canvas).toHaveLength(1)
+      expect(canvas.props().adDimension).toEqual("970x250")
+      expect(canvas.props().adUnit).toEqual("Desktop_InContentLB2")
+
+      expect(canvas).toHaveLength(1)
+    })
+
+    it("renders the component with the correct data and properties on series landing pages on mobile", () => {
+      const canvas = mount(
+        <DisplayAd
+          adDimension={
+            AdDimension.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+          }
+          adUnit={AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom}
+          isSeries
+          targetingData={targetingData(VideoArticleFixture, "sponsorlanding")}
+          articleSlug={VideoArticleSponsored.slug}
+        />
+      )
+
+      expect(canvas.props().adDimension).toEqual("300x250")
+      expect(canvas.props().adUnit).toEqual("Mobile_InContentLB2")
+      expect(canvas).toHaveLength(1)
+    })
   })
 })

@@ -174,90 +174,90 @@ describe("Standard Article", () => {
         .props().adUnit
     ).toBe("Mobile_InContentMR1")
   })
-})
 
-describe("standard article ad data", () => {
-  it("renders the top rail display ad component with the correct data and properties on standard articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Desktop_TopLeaderboard}
-        adUnit={AdUnit.Desktop_TopLeaderboard}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+  describe("Standard Article Display Ads", () => {
+    it("renders the top rail display ad component with the correct data and properties on standard articles", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Desktop_TopLeaderboard}
+          adUnit={AdUnit.Desktop_TopLeaderboard}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("970x250")
-    expect(ad.props().adUnit).toEqual("Desktop_TopLeaderboard")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
-      tags: "Art Market",
+      expect(ad.props().adDimension).toEqual("970x250")
+      expect(ad.props().adUnit).toEqual("Desktop_TopLeaderboard")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
-  })
 
-  it("renders the side rail display ad component with the correct data and properties on standard articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Desktop_RightRail1}
-        adUnit={AdUnit.Desktop_RightRail1}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    it("renders the side rail display ad component with the correct data and properties on standard articles", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Desktop_RightRail1}
+          adUnit={AdUnit.Desktop_RightRail1}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x250")
-    expect(ad.props().adUnit).toEqual("Desktop_RightRail1")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
-      tags: "Art Market",
+      expect(ad.props().adDimension).toEqual("300x250")
+      expect(ad.props().adUnit).toEqual("Desktop_RightRail1")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
-  })
 
-  it("renders the side rail display ad component with the correct data and properties on standard articles on mobile", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Mobile_InContentMR1}
-        adUnit={AdUnit.Mobile_InContentMR1}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    it("renders the side rail display ad component with the correct data and properties on standard articles on mobile", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Mobile_InContentMR1}
+          adUnit={AdUnit.Mobile_InContentMR1}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x50")
-    expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
-      tags: "Art Market",
+      expect(ad.props().adDimension).toEqual("300x50")
+      expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
-  })
 
-  it("renders the top rail display ad component with the correct data and properties on standard articles on mobile", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Mobile_TopLeaderboard}
-        adUnit={AdUnit.Mobile_TopLeaderboard}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    it("renders the top rail display ad component with the correct data and properties on standard articles on mobile", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Mobile_TopLeaderboard}
+          adUnit={AdUnit.Mobile_TopLeaderboard}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x50")
-    expect(ad.props().adUnit).toEqual("Mobile_TopLeaderboard")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
-      tags: "Art Market",
+      expect(ad.props().adDimension).toEqual("300x50")
+      expect(ad.props().adUnit).toEqual("Mobile_TopLeaderboard")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
   })
 })

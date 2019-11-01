@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   FeatureArticle,
@@ -31,6 +32,8 @@ jest.mock("react-dom/server", () => ({
   renderToStaticMarkup: x => x,
 }))
 
+jest.mock("Artsy/Analytics/useTracking")
+
 declare const global: any
 const renderSnapshot = props => {
   return renderer
@@ -43,15 +46,22 @@ const mountWrapper = props => {
 }
 
 describe("Sections", () => {
+  const trackEvent = jest.fn()
+
   let props
-  beforeEach(
-    () =>
-      (props = {
-        article: StandardArticle,
-        DisplayPanel: () => <div>hi!</div>,
-        isMobile: true,
-      })
-  )
+
+  beforeEach(() => {
+    props = {
+      article: StandardArticle,
+      DisplayPanel: () => <div>hi!</div>,
+      isMobile: true,
+    }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
 
   describe("snapshots tests", () => {
     it("renders properly", () => {

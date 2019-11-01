@@ -1,7 +1,10 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount, shallow } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { Article } from "../Article"
+import { BannerWrapper } from "../Banner/Banner"
+import { PixelTracker } from "../Display/ExternalTrackers"
 import {
   FeatureArticle,
   NewsArticle,
@@ -10,9 +13,6 @@ import {
   StandardArticle,
   VideoArticle,
 } from "../Fixtures/Articles"
-
-import { BannerWrapper } from "../Banner/Banner"
-import { PixelTracker } from "../Display/ExternalTrackers"
 import { ArticleWithFullScreen } from "../Layouts/ArticleWithFullScreen"
 import { NewsLayout } from "../Layouts/NewsLayout"
 import { SeriesLayout } from "../Layouts/SeriesLayout"
@@ -31,6 +31,17 @@ global.fetch = jest.fn(() =>
 jest.mock("../ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))
+jest.mock("Artsy/Analytics/useTracking")
+
+const trackEvent = jest.fn()
+
+beforeEach(() => {
+  ;(useTracking as jest.Mock).mockImplementation(() => {
+    return {
+      trackEvent,
+    }
+  })
+})
 
 it("renders standard articles in fullscreen layout", () => {
   const article = mount(<Article article={StandardArticle} />)
