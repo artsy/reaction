@@ -2,6 +2,7 @@ import { Sans, Spacer, Tags } from "@artsy/palette"
 import { Genes_artist } from "__generated__/Genes_artist.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import styled from "styled-components"
 
 const GeneFamily = styled.div``
@@ -17,7 +18,9 @@ export class Genes extends Component<Props> {
     if (genes.edges.length === 0) {
       return null
     }
-    const tags = genes.edges.map(edge => edge.node)
+    const tags = genes.edges.map(edge => {
+      return { name: edge.node.name, href: sd.APP_URL + edge.node.href }
+    })
     return (
       <GeneFamily>
         <Sans size="2" weight="medium">
