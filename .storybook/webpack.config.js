@@ -19,7 +19,6 @@ const {
   ADMIN_URL,
   APP_URL,
   CI,
-  COLLECTION_HUB_ENTRYPOINTS_TEST,
   CMS_URL,
   FACEBOOK_APP_NAMESPACE,
   PREDICTION_URL,
@@ -51,7 +50,6 @@ const notOnCI = value => (isCI ? [] : [value])
 const sharifyPath = sharify({
   ADMIN_URL,
   APP_URL,
-  COLLECTION_HUB_ENTRYPOINTS_TEST,
   CMS_URL,
   FACEBOOK_APP_NAMESPACE,
   FORCE_CLOUDFRONT_URL,
