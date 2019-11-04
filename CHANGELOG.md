@@ -1,3 +1,21 @@
+# v21.17.8 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Update buyer's premium copy and location [#2966](https://github.com/artsy/reaction/pull/2966) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 5.1.4 to v5.1.5 [#2968](https://github.com/artsy/reaction/pull/2968) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 5.1.1 to v5.1.4 [#2948](https://github.com/artsy/reaction/pull/2948) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v21.17.7 (Fri Nov 01 2019)
 
 #### 🐛  Bug Fix
