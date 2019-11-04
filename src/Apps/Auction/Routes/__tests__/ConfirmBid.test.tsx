@@ -1,13 +1,21 @@
 import { ConfirmBidValidTestQueryRawResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
+jest.mock("Apps/Auction/Routes/ConfirmBid/BidderPositionQuery", () => ({
+  bidderPositionQuery: jest.fn(),
+}))
+
+import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
 import { graphql } from "react-relay"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
+import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { TrackingProp } from "react-tracking"
 import {
+  confirmBidBidderPositionQueryWithPending,
+  confirmBidBidderPositionQueryWithWinning,
   createBidderPositionFailed,
   createBidderPositionSuccessful,
 } from "../__fixtures__/MutationResults/createBidderPosition"
@@ -19,6 +27,7 @@ jest.unmock("react-tracking")
 jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
+const mockBidderPositionQuery = bidderPositionQuery as jest.Mock
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("sharify", () => ({
@@ -93,11 +102,14 @@ describe("Routes/ConfirmBid", () => {
     jest.resetAllMocks()
   })
 
-  it("successfully places a bid and redirect to artwork page", async () => {
+  it("successfully places a bid and redirect to artwork page", async done => {
     const env = setupTestEnv()
     const page = await env.buildPage()
 
     env.mutations.useResultsOnce(createBidderPositionSuccessful)
+    mockBidderPositionQuery.mockResolvedValue(
+      confirmBidBidderPositionQueryWithPending
+    )
 
     await page.agreeToTerms()
     await page.submitForm()
@@ -115,40 +127,64 @@ describe("Routes/ConfirmBid", () => {
       }
     )
 
-    expect(window.location.assign).toHaveBeenCalledWith(
-      `https://example.com/auction/${
-        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.slug
-      }/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
+    expect(mockBidderPositionQuery).toHaveBeenCalledTimes(1)
+    expect(mockBidderPositionQuery.mock.calls[0][1]).toEqual({
+      bidderPositionID: "positionid",
+    })
+
+    mockBidderPositionQuery.mockReset()
+    mockBidderPositionQuery.mockResolvedValue(
+      confirmBidBidderPositionQueryWithWinning
     )
+
+    setTimeout(() => {
+      expect(mockBidderPositionQuery).toHaveBeenCalledTimes(1)
+      expect(mockBidderPositionQuery.mock.calls[0][1]).toEqual({
+        bidderPositionID: "pending-bidder-position-id-from-polling",
+      })
+
+      expect(window.location.assign).toHaveBeenCalledWith(
+        `https://example.com/artwork/${
+          ConfirmBidQueryResponseFixture.artwork.id
+        }`
+      )
+      done()
+    }, 1001)
   })
 
-  it("tracks a success event to Segment including Criteo info", async () => {
+  it("tracks a success event to Segment including Criteo info", async done => {
     const env = setupTestEnv()
     const page = await env.buildPage()
     env.mutations.useResultsOnce(createBidderPositionSuccessful)
+    mockBidderPositionQuery.mockResolvedValue(
+      confirmBidBidderPositionQueryWithWinning
+    )
 
     await page.agreeToTerms()
     await page.submitForm()
 
-    expect(mockPostEvent).toBeCalledWith({
-      action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
-      context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
-      auction_slug: "saleslug",
-      artwork_slug: "artworkslug",
-      bidder_id: "bidderid",
-      bidder_position_id: "positionid",
-      sale_id: "saleid",
-      user_id: "my-user-id",
-      order_id: "bidderid",
-      products: [
-        {
-          product_id: "artworkid",
-          quantity: 1,
-          price: 50000,
-        },
-      ],
-    })
-    expect(mockPostEvent).toHaveBeenCalledTimes(1)
+    setTimeout(() => {
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "bidderid",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "bidderid",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
+      })
+      done()
+    }, 1001)
   })
 
   it("send an error event to analytics if the mutation fails", async () => {
@@ -218,7 +254,20 @@ describe("Routes/ConfirmBid", () => {
       const specialSelectedBidAmount = "7000000"
       const search = `?bid=${specialSelectedBidAmount}`
       const env = setupTestEnv({ location: { search } })
-      const page = await env.buildPage({ mockData })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+
       expect(page.selectBidAmountInput.props().value).toBe(
         specialSelectedBidAmount
       )
@@ -228,7 +277,20 @@ describe("Routes/ConfirmBid", () => {
       const specialSelectedBidAmount = "42000000"
       const search = `?bid=${specialSelectedBidAmount}`
       const env = setupTestEnv({ location: { search } })
-      const page = await env.buildPage({ mockData })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+
       expect(page.selectBidAmountInput.props().value).toBe("5000000")
     })
 
@@ -236,7 +298,20 @@ describe("Routes/ConfirmBid", () => {
       const specialSelectedBidAmount = "420000"
       const search = `?bid=${specialSelectedBidAmount}`
       const env = setupTestEnv({ location: { search } })
-      const page = await env.buildPage({ mockData })
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              increments: [
+                { cents: 5000000, display: "$50,000" },
+                { cents: 6000000, display: "$60,000" },
+                { cents: 7000000, display: "$70,000" },
+              ],
+            },
+          },
+        }),
+      })
+
       expect(page.selectBidAmountInput.props().value).toBe("5000000")
     })
 

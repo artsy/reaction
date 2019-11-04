@@ -1,3 +1,4 @@
+import { BidderPositionQueryResponse } from "__generated__/BidderPositionQuery.graphql"
 import { ConfirmBidCreateBidderPositionMutationResponse } from "__generated__/ConfirmBidCreateBidderPositionMutation.graphql"
 
 export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutationResponse = {
@@ -20,6 +21,32 @@ export const createBidderPositionFailed: ConfirmBidCreateBidderPositionMutationR
       status: "FAILED",
       message_header: "The `createBidderPosition` mutation failed.",
       message_description_md: null,
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithWinning: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "WINNING",
+      messageHeader: null,
+      position: {
+        id: "winning-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithPending: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "PENDING",
+      messageHeader: null,
+      position: {
+        id: "pending-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
     },
   },
 }
