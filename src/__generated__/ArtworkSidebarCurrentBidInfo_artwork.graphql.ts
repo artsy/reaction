@@ -7,6 +7,8 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
     readonly sale: ({
         readonly is_closed: boolean | null;
         readonly is_live_open: boolean | null;
+        readonly _id: string;
+        readonly is_with_buyers_premium: boolean | null;
     }) | null;
     readonly sale_artwork: ({
         readonly is_with_reserve: boolean | null;
@@ -78,6 +80,20 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "is_live_open",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "_id",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "is_with_buyers_premium",
           "args": null,
           "storageKey": null
         },
@@ -208,5 +224,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'fedde3c8966b405132cca1af168ee580';
+(node as any).hash = '2340260c6f73d83e3c607cec9fd8a0b1';
 export default node;

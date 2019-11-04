@@ -3,7 +3,7 @@ import {
   AuctionPreview,
   AuctionPreviewNoStartingBid,
   ClosedAuctionArtwork,
-  LiveAuctionInProgeress,
+  LiveAuctionInProgress,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
@@ -46,7 +46,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
 
   describe("for live sale in progress", () => {
     it("does not display anything", async () => {
-      const wrapper = await getWrapper(LiveAuctionInProgeress)
+      const wrapper = await getWrapper(LiveAuctionInProgress)
 
       expect(wrapper.html()).toBe(null)
     })
@@ -123,6 +123,15 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
 
       expect(wrapper.text()).toContain("Your max: $15,000")
       expect(wrapper.find(WinningBidIcon).length).toBe(1)
+    })
+
+    it("displays buyer's premium information", async () => {
+      const wrapper = await getWrapper(OpenAuctionReserveMetWithMyWinningBid)
+
+      expect(wrapper.text()).toContain("This auction has a buyer's premium.")
+      expect(wrapper.text()).toContain(
+        "Shipping, taxes, and additional fees may apply."
+      )
     })
   })
 

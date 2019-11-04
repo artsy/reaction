@@ -1,8 +1,9 @@
+import { Link } from "@artsy/palette"
+import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
+import { SystemContextConsumer } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-
-import { ArtworkSidebarCurrentBidInfo_artwork } from "__generated__/ArtworkSidebarCurrentBidInfo_artwork.graphql"
 
 import {
   Box,
@@ -22,6 +23,15 @@ export interface ArtworkSidebarCurrentBidInfoProps {
 export class ArtworkSidebarCurrentBidInfo extends React.Component<
   ArtworkSidebarCurrentBidInfoProps
 > {
+  onClickBuyerPremium(mediator) {
+    const { artwork } = this.props
+    mediator &&
+      mediator.trigger &&
+      mediator.trigger("openAuctionBuyerPremium", {
+        auctionId: artwork.sale._id,
+      })
+  }
+
   render() {
     const { artwork } = this.props
 
@@ -76,43 +86,66 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
       myBidPresent && get(myLotStanding, s => s.active_bid.is_winning)
     const myMaxBid = get(myMostRecent, bid => bid.max_bid.display)
     return (
-      <Box>
-        <Separator mb={3} />
-        <Flex width="100%" flexDirection="row" justifyContent="space-between">
-          <Serif size="5t" weight="semibold" pr={1}>
-            {bidsPresent ? "Current bid" : "Starting bid"}
-          </Serif>
-          <Flex
-            flexDirection="row"
-            justifyContent="right"
-            alignContent="baseline"
-          >
-            {myBidPresent && (
-              <Box pt={0.5}>
-                {myBidWinning ? (
-                  <WinningBidIcon fill="green100" />
-                ) : (
-                  <LosingBidIcon fill="red100" />
+      <SystemContextConsumer>
+        {({ mediator }) => (
+          <Box>
+            <Separator mb={3} />
+            <Flex
+              width="100%"
+              flexDirection="row"
+              justifyContent="space-between"
+            >
+              <Serif size="5t" weight="semibold" pr={1}>
+                {bidsPresent ? "Current bid" : "Starting bid"}
+              </Serif>
+              <Flex
+                flexDirection="row"
+                justifyContent="right"
+                alignContent="baseline"
+              >
+                {myBidPresent && (
+                  <Box pt={0.5}>
+                    {myBidWinning ? (
+                      <WinningBidIcon fill="green100" />
+                    ) : (
+                      <LosingBidIcon fill="red100" />
+                    )}
+                  </Box>
                 )}
-              </Box>
+                <Serif size="5t" weight="semibold" pl={0.5}>
+                  {artwork.sale_artwork.current_bid.display}
+                </Serif>
+              </Flex>
+            </Flex>
+            <Flex
+              width="100%"
+              flexDirection="row"
+              justifyContent="space-between"
+            >
+              <Sans size="2" color={bidColor} pr={1}>
+                {bidText}
+              </Sans>
+              {myMaxBid && (
+                <Sans size="2" color="black60" pl={1}>
+                  Your max: {myMaxBid}
+                </Sans>
+              )}
+            </Flex>
+            {artwork.sale && artwork.sale.is_with_buyers_premium && (
+              <Serif size="2" color="black60">
+                <br />
+                This auction has a{" "}
+                <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
+                  buyer's premium
+                </Link>
+                .<br />
+                Shipping, taxes, and additional fees may apply.
+              </Serif>
             )}
-            <Serif size="5t" weight="semibold" pl={0.5}>
-              {artwork.sale_artwork.current_bid.display}
-            </Serif>
-          </Flex>
-        </Flex>
-        <Flex width="100%" flexDirection="row" justifyContent="space-between">
-          <Sans size="2" color={bidColor} pr={1}>
-            {bidText}
-          </Sans>
-          {myMaxBid && (
-            <Sans size="2" color="black60" pl={1}>
-              Your max: {myMaxBid}
-            </Sans>
-          )}
-        </Flex>
-        <Spacer mb={3} />
-      </Box>
+            <Spacer mb={3} />
+          </Box>
+        )}
+      </SystemContextConsumer>
     )
   }
 }
@@ -125,6 +158,8 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         sale {
           is_closed
           is_live_open
+          _id
+          is_with_buyers_premium
         }
         sale_artwork {
           is_with_reserve

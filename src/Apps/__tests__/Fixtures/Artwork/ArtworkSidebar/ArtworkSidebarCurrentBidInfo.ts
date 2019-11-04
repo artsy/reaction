@@ -142,6 +142,7 @@ export const OpenAuctionReserveMetWithBids = {
   sale: {
     is_closed: false,
     is_live_open: false,
+    is_with_buyers_premium: true,
   },
   sale_artwork: {
     is_with_reserve: true,
@@ -195,7 +196,7 @@ export const OpenAuctionReserveMetWithMyLosingBid = {
   ],
 }
 
-export const LiveAuctionInProgeress = {
+export const LiveAuctionInProgress = {
   _id: "artwork_from_live_auction",
   sale: { is_closed: false, is_live_open: true },
   sale_artwork: {

@@ -2,7 +2,7 @@ import {
   AuctionPreview,
   AuctionPreviewNoStartingBid,
   ClosedAuctionArtwork,
-  LiveAuctionInProgeress,
+  LiveAuctionInProgress,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
@@ -62,7 +62,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add(
           <CurrentBidInfo artwork={AuctionPreviewNoStartingBid as any} />
         </Section>
         <Section title="Live auction in progress">
-          <CurrentBidInfo artwork={LiveAuctionInProgeress as any} />
+          <CurrentBidInfo artwork={LiveAuctionInProgress as any} />
         </Section>
       </React.Fragment>
     )

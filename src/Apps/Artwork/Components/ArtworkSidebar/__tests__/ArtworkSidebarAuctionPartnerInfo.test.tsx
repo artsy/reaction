@@ -29,14 +29,13 @@ describe("ArtworkSidebarAuctionPartnerInfo", () => {
       artwork = Object.assign({}, ArtworkWithEstimateAndPremium)
     })
 
-    it("displays partner name, estimate and premium", async () => {
+    it("displays partner name and estimate", async () => {
       const wrapper = await getWrapper(artwork)
 
       expect(wrapper.text()).toContain("Bruun Rasmussen")
       expect(wrapper.text()).toContain(
         "Estimated value: DKK 100,000–DKK 125,000"
       )
-      expect(wrapper.text()).toContain("buyer's premium")
     })
 
     it("displays artwork without premium", async () => {

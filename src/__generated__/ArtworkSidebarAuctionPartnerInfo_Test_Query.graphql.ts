@@ -35,7 +35,6 @@ fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
   sale {
     _id
     is_closed
-    is_with_buyers_premium
     __id
   }
   __id
@@ -63,7 +62,7 @@ return {
   "operationKind": "query",
   "name": "ArtworkSidebarAuctionPartnerInfo_Test_Query",
   "id": null,
-  "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    __id\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n",
+  "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    __id\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    __id\n  }\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -163,13 +162,6 @@ return {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "is_closed",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "is_with_buyers_premium",
                 "args": null,
                 "storageKey": null
               },
