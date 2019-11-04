@@ -13,7 +13,6 @@ export type ArtworkSidebarAuctionPartnerInfo_artwork = {
     readonly sale: ({
         readonly _id: string;
         readonly is_closed: boolean | null;
-        readonly is_with_buyers_premium: boolean | null;
     }) | null;
     readonly " $refType": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
 };
@@ -96,13 +95,6 @@ return {
           "args": null,
           "storageKey": null
         },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "is_with_buyers_premium",
-          "args": null,
-          "storageKey": null
-        },
         v0
       ]
     },
@@ -110,5 +102,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c6a39c92e2e559c89b1e7b31adf242a8';
+(node as any).hash = 'e7fc08a40b9f5d01b4580aa68ec42a4d';
 export default node;

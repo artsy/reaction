@@ -142,7 +142,6 @@ export const OpenAuctionReserveMetWithBids = {
   sale: {
     is_closed: false,
     is_live_open: false,
-    is_with_reserve: true,
     is_with_buyers_premium: true,
   },
   sale_artwork: {

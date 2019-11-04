@@ -61,7 +61,6 @@ export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentC
         sale {
           _id
           is_closed
-          is_with_buyers_premium
         }
       }
     `,
