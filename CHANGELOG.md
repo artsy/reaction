@@ -1,3 +1,15 @@
+# v21.17.10 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Safe access to artwork image in `ArtworkSummaryItem` [#2969](https://github.com/artsy/reaction/pull/2969) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v21.17.9 (Mon Nov 04 2019)
 
 #### 🐛  Bug Fix
