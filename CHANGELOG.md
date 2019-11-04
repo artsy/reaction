@@ -1,3 +1,15 @@
+# v21.17.9 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1639] close collection hubs entry points a/b test on the collect page [#2970](https://github.com/artsy/reaction/pull/2970) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v21.17.8 (Mon Nov 04 2019)
 
 #### 🐛  Bug Fix
