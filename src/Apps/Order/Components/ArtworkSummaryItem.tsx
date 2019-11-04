@@ -27,15 +27,12 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
 }) => {
   const artwork = get({}, props => lineItems.edges[0].node.artwork)
 
-  const {
-    artist_names,
-    title,
-    date,
-    shippingOrigin,
-    image: {
-      resized_ArtworkSummaryItem: { url: imageURL },
-    },
-  } = artwork
+  const { artist_names, title, date, shippingOrigin, image } = artwork
+
+  const imageURL =
+    image &&
+    image.resized_ArtworkSummaryItem &&
+    image.resized_ArtworkSummaryItem.url
 
   const truncateTextStyle = {
     whiteSpace: "nowrap",
@@ -46,7 +43,7 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   return (
     <StackableBorderBox flexDirection="row" {...others}>
       <Box height="auto">
-        <Image src={imageURL} width="55px" mr={1} />
+        {imageURL && <Image src={imageURL} width="55px" mr={1} />}
       </Box>
       <Flex flexDirection="column" style={{ overflow: "hidden" }}>
         <Serif
