@@ -1,3 +1,15 @@
+# v21.17.11 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#2971](https://github.com/artsy/reaction/pull/2971) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v21.17.10 (Mon Nov 04 2019)
 
 #### 🐛  Bug Fix
