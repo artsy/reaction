@@ -20,7 +20,6 @@ declare module "sharify" {
       readonly APP_URL: string
       readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]
-      readonly COLLECTION_HUB_ENTRYPOINTS_TEST: string
       readonly CMS_URL: string
       readonly FACEBOOK_APP_NAMESPACE: string
       readonly FACEBOOK_ID: string

@@ -1,6 +1,6 @@
 import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { Location, Router } from "found"
-import React, { useEffect } from "react"
+import React from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -18,12 +18,10 @@ import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
-import { useSystemContext } from "Artsy"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
 export interface CollectAppProps {
-  COLLECTION_HUB_ENTRYPOINTS_TEST?: string
   location: Location
   router: Router
   marketingHubCollections: Collect_marketingHubCollections
@@ -42,29 +40,9 @@ export const CollectApp = track({
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()
 
-  // FIXME: Remove after A/B test completes
-  // @ts-ignore
-  const { COLLECTION_HUB_ENTRYPOINTS_TEST } = useSystemContext()
-
-  useEffect(() => {
-    const experiment = "collection_hub_entrypoints_test"
-    trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: COLLECTION_HUB_ENTRYPOINTS_TEST,
-      variation_name: COLLECTION_HUB_ENTRYPOINTS_TEST,
-      nonInteraction: 1,
-    })
-  }, [])
-
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
     : `${sd.APP_URL}/collect`
-
-  // Client renders will get COLLECTION_HUB_ENTRYPOINTS_TEST from sd; server renders
-  // will get it from the SystemContext.
-  const showCollectionHubs = COLLECTION_HUB_ENTRYPOINTS_TEST === "experiment"
 
   const { filterArtworks } = props
 
@@ -100,15 +78,11 @@ export const CollectApp = track({
           </Serif>
           <Separator mt={2} mb={[2, 2, 2, 4]} />
 
-          {showCollectionHubs && (
-            <>
-              <CollectionsHubsNav
-                marketingHubCollections={props.marketingHubCollections}
-              />
+          <CollectionsHubsNav
+            marketingHubCollections={props.marketingHubCollections}
+          />
 
-              <Spacer mb={2} mt={[2, 2, 2, 4]} />
-            </>
-          )}
+          <Spacer mb={2} mt={[2, 2, 2, 4]} />
         </Box>
 
         <Box>
