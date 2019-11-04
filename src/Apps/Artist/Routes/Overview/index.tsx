@@ -58,7 +58,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
     return (
       <>
         <Row>
-          <Col sm={9}>
+          <Col sm={8}>
             <>
               {showArtistBio && (
                 <>
@@ -94,7 +94,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
           </Col>
 
           {showArtistInsights && (
-            <Col sm={3}>
+            <Col sm={4}>
               <Box pl={2}>
                 <SelectedCareerAchievements artist={artist} />
               </Box>
