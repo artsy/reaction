@@ -102,6 +102,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   addInitialOfferToOrder(variables: OfferMutation["variables"]) {
     return this.props.commitMutation<OfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation OfferMutation($input: CommerceAddInitialOfferToOrderInput!) {
           commerceAddInitialOfferToOrder(input: $input) {

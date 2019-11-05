@@ -96,10 +96,10 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
           initials
         }
         sale {
-          is_auction
+          is_auction: isAuction
           isBenefit
           isGalleryAuction
-          cover_image {
+          cover_image: coverImage {
             url(version: "square")
           }
         }
@@ -107,8 +107,6 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         #        generator, that leads to a union selection _with_ a __typename selection being normalized incorrectly.
         #        What ends up happening is that _only_ the common selection is being omitted from the second fragment,
         #        i.e. in this case the fair and partnerShow selections are missing name and href.
-        #
-        #        This can be seen much more clear when adding __typename to the context part in ArtworkRail.tsx.
         artworkContextAuction: context {
           __typename
           ... on ArtworkContextAuction {
@@ -137,7 +135,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
             name
             href
             status
-            thumbnail: cover_image {
+            thumbnail: coverImage {
               img: resized(width: 70, height: 70, version: "square") {
                 url
               }

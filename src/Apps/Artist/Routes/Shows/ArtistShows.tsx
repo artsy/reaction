@@ -219,8 +219,8 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
               }
               name
               href
-              exhibition_period
-              cover_image {
+              exhibition_period: exhibitionPeriod
+              cover_image: coverImage {
                 cropped(width: 800, height: 600) {
                   url
                 }

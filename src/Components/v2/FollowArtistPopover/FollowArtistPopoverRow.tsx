@@ -46,6 +46,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     } = excludeArtistIdsState
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowArtistPopoverRowMutation(
             $input: FollowArtistInput!
@@ -57,8 +58,8 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
                 related {
                   suggested(
                     first: 1
-                    exclude_followed_artists: true
-                    exclude_artist_ids: $excludeArtistIds
+                    excludeFollowedArtists: true
+                    excludeArtistIDs: $excludeArtistIds
                   ) {
                     edges {
                       node {

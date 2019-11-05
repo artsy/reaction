@@ -66,12 +66,13 @@ export class FollowButton extends React.Component<Props, null> {
     const { artist, user, relay } = this.props
     if (user && user.id) {
       commitMutation<FollowArtistMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowArtistMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
                 id
-                is_followed
+                is_followed: isFollowed
               }
             }
           }
@@ -125,7 +126,7 @@ export default createFragmentContainer(Artsy.withSystemContext(FollowButton), {
     fragment Follow_artist on Artist {
       id
       slug
-      is_followed
+      is_followed: isFollowed
     }
   `,
 })

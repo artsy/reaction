@@ -136,7 +136,7 @@ export const NotificationsQueryRenderer: React.FC<{
                     href
                     summary
                     artists
-                    published_at(format: "MMM DD")
+                    published_at: publishedAt(format: "MMM DD")
                     image {
                       resized(height: 40, width: 40) {
                         url

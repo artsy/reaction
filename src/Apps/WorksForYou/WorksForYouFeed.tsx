@@ -129,7 +129,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
-          for_sale: { type: "Boolean", defaultValue: true }
+          forSale: { type: "Boolean", defaultValue: true }
         ) {
         me {
           followsAndSaves {
@@ -137,7 +137,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
               sort: PUBLISHED_AT_DESC
               first: $count
               after: $cursor
-              for_sale: $for_sale
+              forSale: $forSale
             ) @connection(key: "WorksForYou_notifications") {
               pageInfo {
                 hasNextPage
@@ -149,7 +149,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
                   href
                   summary
                   artists
-                  published_at(format: "MMM DD")
+                  published_at: publishedAt(format: "MMM DD")
                   artworksConnection {
                     ...ArtworkGrid_artworks
                   }

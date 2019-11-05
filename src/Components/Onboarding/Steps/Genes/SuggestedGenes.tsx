@@ -82,6 +82,7 @@ class SuggestedGenesContent extends React.Component<Props> {
     commitMutation<SuggestedGenesFollowGeneMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation SuggestedGenesFollowGeneMutation(
             $input: FollowGeneInput!
@@ -89,7 +90,7 @@ class SuggestedGenesContent extends React.Component<Props> {
           ) {
             followGene(input: $input) {
               gene {
-                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                similar(first: 1, excludeGeneIDs: $excludedGeneIds) {
                   edges {
                     node {
                       slug
@@ -171,7 +172,7 @@ const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
       environment={relayEnvironment}
       query={graphql`
         query SuggestedGenesQuery {
-          suggested_genes {
+          suggested_genes: suggestedGenes {
             ...SuggestedGenes_suggested_genes
           }
         }

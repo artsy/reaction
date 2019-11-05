@@ -125,22 +125,22 @@ export default createFragmentContainer(TagArtworks, {
   tag: graphql`
     fragment TagArtworks_tag on Tag
       @argumentDefinitions(
-        for_sale: { type: "Boolean" }
+        forSale: { type: "Boolean" }
         medium: { type: "String", defaultValue: "*" }
         aggregations: {
           type: "[ArtworkAggregation]"
           defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
         }
-        price_range: { type: "String", defaultValue: "*" }
-        dimension_range: { type: "String", defaultValue: "*" }
+        priceRange: { type: "String", defaultValue: "*" }
+        dimensionRange: { type: "String", defaultValue: "*" }
       ) {
       slug
-      filtered_artworks(
+      filtered_artworks: filteredArtworks(
         aggregations: $aggregations
-        for_sale: $for_sale
+        forSale: $forSale
         medium: $medium
-        price_range: $price_range
-        dimension_range: $dimension_range
+        priceRange: $priceRange
+        dimensionRange: $dimensionRange
         size: 0
       ) {
         ...TotalCount_filter_artworks

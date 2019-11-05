@@ -163,18 +163,18 @@ class GeneContents extends React.Component<Props, State> {
           query GeneContentsArtworksQuery(
             $geneID: String!
             $medium: String
-            $price_range: String
+            $priceRange: String
             $sort: String
-            $for_sale: Boolean
-            $dimension_range: String
+            $forSale: Boolean
+            $dimensionRange: String
           ) {
             gene(id: $geneID) {
               ...GeneArtworks_gene
                 @arguments(
-                  for_sale: $for_sale
+                  forSale: $forSale
                   medium: $medium
-                  price_range: $price_range
-                  dimension_range: $dimension_range
+                  priceRange: $priceRange
+                  dimensionRange: $dimensionRange
                 )
             }
           }

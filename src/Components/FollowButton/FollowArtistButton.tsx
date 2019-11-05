@@ -99,12 +99,13 @@ export class FollowArtistButton extends React.Component<Props, State> {
       : artist.counts.follows + 1
 
     commitMutation<FollowArtistButtonMutation>(relay.environment, {
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
             artist {
               id
-              is_followed
+              is_followed: isFollowed
               counts {
                 follows
               }
@@ -198,7 +199,7 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
         id
         name
         slug
-        is_followed
+        is_followed: isFollowed
         counts {
           follows
         }

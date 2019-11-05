@@ -87,7 +87,7 @@ export const ArtworkSummaryItemFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                artist_names
+                artist_names: artistNames
                 title
                 date
                 shippingOrigin

@@ -88,6 +88,7 @@ export class CreditCard extends React.Component<
             }
           },
           onError: this.onMutationError.bind(this),
+          // TODO: Inputs to the mutation might have changed case of the keys!
           mutation: graphql`
             mutation SavedCreditCardsDeleteCreditCardMutation(
               $input: DeleteCreditCardInput!

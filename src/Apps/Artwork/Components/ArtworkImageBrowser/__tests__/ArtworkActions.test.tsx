@@ -29,8 +29,8 @@ describe("ArtworkActions", () => {
     return await renderRelayTree({
       Component: ArtworkActions,
       query: graphql`
-        query ArtworkActions_Test_Query($artwork_id: String!) {
-          artwork(id: $artwork_id) {
+        query ArtworkActions_Test_Query($artworkID: String!) {
+          artwork(id: $artworkID) {
             ...ArtworkActions_artwork
           }
         }

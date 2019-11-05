@@ -152,14 +152,14 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
         slug
         internalID
         name
-        formatted_nationality_and_birthday
+        formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         image {
           cropped(width: 100, height: 100) {
             url
           }
         }
-        artworks_connection(
+        artworks_connection: artworksConnection(
           first: 20
           sort: PUBLISHED_AT_DESC
           filter: IS_FOR_SALE
@@ -168,7 +168,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
             node {
               id
               image {
-                aspect_ratio
+                aspect_ratio: aspectRatio
               }
               ...FillwidthItem_artwork
             }

@@ -223,6 +223,7 @@ export class NewPaymentRoute extends Component<
   ) {
     return this.props.commitMutation<NewPaymentRouteSetOrderPaymentMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation NewPaymentRouteSetOrderPaymentMutation(
           $input: CommerceFixFailedPaymentInput!
@@ -240,7 +241,7 @@ export class NewPaymentRoute extends Component<
                     city
                     state
                     country
-                    postal_code
+                    postal_code: postalCode
                   }
                   ... on CommerceOfferOrder {
                     awaitingResponseFrom

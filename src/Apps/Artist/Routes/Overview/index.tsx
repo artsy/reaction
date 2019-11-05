@@ -155,45 +155,45 @@ export const ArtistOverviewQuery = graphql`
       INSTITUTION
       MAJOR_PERIOD
     ]
-    $artist_id: String!
-    $at_auction: Boolean
-    $attribution_class: [String]
+    $artistID: String!
+    $atAuction: Boolean
+    $attributionClass: [String]
     $color: String
-    $for_sale: Boolean
+    $forSale: Boolean
     $hasFilter: Boolean!
     $height: String
-    $inquireable_only: Boolean
+    $inquireableOnly: Boolean
     $keyword: String
-    $major_periods: [String]
+    $majorPeriods: [String]
     $medium: String
     $offerable: Boolean
     $page: Int
-    $partner_category: [String]
-    $partner_id: ID
-    $price_range: String
+    $partnerCategory: [String]
+    $partnerID: ID
+    $priceRange: String
     $sort: String
     $width: String
   ) {
-    artist(id: $artist_id) {
+    artist(id: $artistID) {
       ...Overview_artist
         @arguments(
           acquireable: $acquireable
           aggregations: $aggregations
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           hasFilter: $hasFilter
           height: $height
-          inquireable_only: $inquireable_only
+          inquireableOnly: $inquireableOnly
           keyword: $keyword
-          major_periods: $major_periods
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          partner_id: $partner_id
-          price_range: $price_range
+          partnerID: $partnerID
+          priceRange: $priceRange
           sort: $sort
           width: $width
         )
@@ -207,27 +207,27 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
     artist: graphql`
       fragment Overview_artist on Artist
         @argumentDefinitions(
-          partner_category: {
+          partnerCategory: {
             type: "[String]"
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
-          artist_id: { type: "String" }
-          at_auction: { type: "Boolean" }
-          attribution_class: { type: "[String]" }
+          artistID: { type: "String" }
+          atAuction: { type: "Boolean" }
+          attributionClass: { type: "[String]" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           hasFilter: { type: "Boolean", defaultValue: false }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
+          inquireableOnly: { type: "Boolean" }
           keyword: { type: "String" }
-          major_periods: { type: "[String]" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
-          price_range: { type: "String" }
+          partnerID: { type: "ID" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
@@ -239,18 +239,18 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...FollowArtistButton_artist
         slug
         counts {
-          partner_shows
-          for_sale_artworks
-          ecommerce_artworks
-          auction_artworks
+          partner_shows: partnerShows
+          for_sale_artworks: forSaleArtworks
+          ecommerce_artworks: ecommerceArtworks
+          auction_artworks: auctionArtworks
           artworks
-          has_make_offer_artworks
+          has_make_offer_artworks: hasMakeOfferArtworks
         }
         href
-        is_consignable
+        is_consignable: isConsignable
         # NOTE: The following are used to determine whether sections
         # should be rendered.
-        biography_blurb(format: HTML, partner_bio: true) {
+        biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
           text
           credit
         }
@@ -278,9 +278,9 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         highlights {
           partners(
             first: 10
-            display_on_partner_profile: true
-            represented_by: true
-            partner_category: $partner_category
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
           ) {
             edges {
               node {
@@ -294,7 +294,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         insights {
           type
         }
-        sidebarAggregations: filtered_artworks(
+        sidebarAggregations: filteredArtworks(
           sort: $sort
           page: $page
           aggregations: $aggregations
@@ -312,7 +312,8 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           # Leave out this fragment if navigating to the artist page
           # with a filter applied, as those can't be consolidated and
           # this is extra data.
-          artworks_connection(first: 30, after: "") @skip(if: $hasFilter) {
+          artworks_connection: artworksConnection(first: 30, after: "")
+            @skip(if: $hasFilter) {
             edges {
               node {
                 sludORinternalID
@@ -324,21 +325,21 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           @arguments(
             acquireable: $acquireable
             aggregations: $aggregations
-            artist_id: $artist_id
-            at_auction: $at_auction
-            attribution_class: $attribution_class
+            artistID: $artistID
+            atAuction: $atAuction
+            attributionClass: $attributionClass
             color: $color
-            for_sale: $for_sale
+            forSale: $forSale
             hasFilter: $hasFilter
             height: $height
-            inquireable_only: $inquireable_only
+            inquireableOnly: $inquireableOnly
             keyword: $keyword
-            major_periods: $major_periods
+            majorPeriods: $majorPeriods
             medium: $medium
             offerable: $offerable
             page: $page
-            partner_id: $partner_id
-            price_range: $price_range
+            partnerID: $partnerID
+            priceRange: $priceRange
             sort: $sort
             width: $width
           )

@@ -48,6 +48,7 @@ export class CounterRoute extends Component<CounterProps> {
   submitPendingOffer(variables: CounterSubmitMutation["variables"]) {
     return this.props.commitMutation<CounterSubmitMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation CounterSubmitMutation(
           $input: CommerceSubmitPendingOfferInput!

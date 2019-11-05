@@ -213,11 +213,11 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
     fragment ArtworkApp_artwork on Artwork {
       slug
       internalID
-      is_acquireable
-      is_offerable
+      is_acquireable: isAcquireable
+      is_offerable: isOfferable
       availability
       price
-      is_in_auction
+      is_in_auction: isInAuction
       artists {
         slug
         ...ArtistInfo_artist

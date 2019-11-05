@@ -149,16 +149,16 @@ export const CollectionAppQuery = graphql`
       MAJOR_PERIOD
       TOTAL
     ]
-    $at_auction: Boolean
+    $atAuction: Boolean
     $color: String
-    $for_sale: Boolean
+    $forSale: Boolean
     $height: String
-    $inquireable_only: Boolean
-    $major_periods: [String]
+    $inquireableOnly: Boolean
+    $majorPeriods: [String]
     $medium: String
     $offerable: Boolean
     $page: Int
-    $price_range: String
+    $priceRange: String
     $sort: String
     $slug: String!
     $width: String
@@ -168,16 +168,16 @@ export const CollectionAppQuery = graphql`
         @arguments(
           acquireable: $acquireable
           aggregations: $aggregations
-          at_auction: $at_auction
+          atAuction: $atAuction
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
-          major_periods: $major_periods
+          inquireableOnly: $inquireableOnly
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          price_range: $price_range
+          priceRange: $priceRange
           sort: $sort
           width: $width
         )
@@ -193,16 +193,16 @@ export const CollectionRefetchContainer = createRefetchContainer(
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
-          at_auction: { type: "Boolean" }
+          atAuction: { type: "Boolean" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
-          major_periods: { type: "[String]" }
+          inquireableOnly: { type: "Boolean" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          price_range: { type: "String" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
@@ -215,9 +215,9 @@ export const CollectionRefetchContainer = createRefetchContainer(
         title
         featuredArtistExclusionIds
         query {
-          artist_ids
-          artist_id
-          gene_id
+          artist_ids: artistIDs
+          artist_id: artistID
+          gene_id: geneID
         }
         relatedCollections {
           ...RelatedCollectionsRail_collections
@@ -227,7 +227,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         }
         artworks(
           aggregations: $aggregations
-          include_medium_filter_in_aggregation: true
+          includeMediumFilterInAggregation: true
           size: 20
           sort: "-decayed_merch"
         ) {
@@ -245,16 +245,16 @@ export const CollectionRefetchContainer = createRefetchContainer(
         filtered_artworks: artworks(
           acquireable: $acquireable
           aggregations: $aggregations
-          at_auction: $at_auction
+          atAuction: $atAuction
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
-          major_periods: $major_periods
+          inquireableOnly: $inquireableOnly
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          price_range: $price_range
+          priceRange: $priceRange
           size: 0
           sort: $sort
           width: $width

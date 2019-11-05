@@ -125,7 +125,7 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
       slug
       internalID
       sale {
-        is_closed
+        is_closed: isClosed
       }
       context {
         __typename

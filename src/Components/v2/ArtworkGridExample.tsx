@@ -13,7 +13,7 @@ export function ArtworkGridExample(props: {
       query={graphql`
         query ArtworkGridExampleQuery($artistID: String!) {
           artist(id: $artistID) {
-            artworks: artworks_connection(first: 10) {
+            artworks: artworksConnection(first: 10) {
               ...ArtworkGrid_artworks
             }
           }

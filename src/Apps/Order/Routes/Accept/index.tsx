@@ -48,6 +48,7 @@ export class Accept extends Component<AcceptProps> {
       variables: {
         input: { offerId: this.props.order.lastOffer.id },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation AcceptOfferMutation($input: CommerceBuyerAcceptOfferInput!) {
           commerceBuyerAcceptOffer(input: $input) {

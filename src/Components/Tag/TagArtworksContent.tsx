@@ -87,7 +87,7 @@ export default createPaginationContainer(
           cursor: { type: "String", defaultValue: "" }
         ) {
         id
-        artworks: artworks_connection(
+        artworks: artworksConnection(
           first: $count
           after: $cursor
           sort: $sort

@@ -179,6 +179,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOrderMutation(
                   $input: CommerceCreateOrderWithArtworkInput!
@@ -260,6 +261,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOfferOrderMutation(
                   $input: CommerceCreateOfferOrderWithArtworkInput!
@@ -464,21 +466,21 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
       fragment ArtworkSidebarCommercial_artwork on Artwork {
         slug
         internalID
-        is_for_sale
-        is_acquireable
-        is_inquireable
-        is_offerable
+        is_for_sale: isForSale
+        is_acquireable: isAcquireable
+        is_inquireable: isInquireable
+        is_offerable: isOfferable
         price
         priceIncludesTaxDisplay
-        sale_message
+        sale_message: saleMessage
         shippingInfo
         shippingOrigin
-        edition_sets {
+        edition_sets: editionSets {
           sludORinternalID
           id
-          is_acquireable
-          is_offerable
-          sale_message
+          is_acquireable: isAcquireable
+          is_offerable: isOfferable
+          sale_message: saleMessage
           ...ArtworkSidebarSizeInfo_piece
         }
       }

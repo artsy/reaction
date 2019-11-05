@@ -70,56 +70,56 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment ArtistArtworkFilter_artist on Artist
         @argumentDefinitions(
-          partner_category: {
+          partnerCategory: {
             type: "[String]"
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
-          artist_id: { type: "String" }
-          at_auction: { type: "Boolean" }
-          attribution_class: { type: "[String]" }
+          artistID: { type: "String" }
+          atAuction: { type: "Boolean" }
+          attributionClass: { type: "[String]" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           hasFilter: { type: "Boolean", defaultValue: false }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
+          inquireableOnly: { type: "Boolean" }
           keyword: { type: "String" }
-          major_periods: { type: "[String]" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
-          price_range: { type: "String" }
+          partnerID: { type: "ID" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
-        is_followed
+        is_followed: isFollowed
         counts {
-          partner_shows
-          for_sale_artworks
-          ecommerce_artworks
-          auction_artworks
+          partner_shows: partnerShows
+          for_sale_artworks: forSaleArtworks
+          ecommerce_artworks: ecommerceArtworks
+          auction_artworks: auctionArtworks
           artworks
-          has_make_offer_artworks
+          has_make_offer_artworks: hasMakeOfferArtworks
         }
-        filtered_artworks(
+        filtered_artworks: filteredArtworks(
           acquireable: $acquireable
           aggregations: $aggregations
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
+          inquireableOnly: $inquireableOnly
           keyword: $keyword
-          major_periods: $major_periods
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          partner_id: $partner_id
-          price_range: $price_range
+          partnerID: $partnerID
+          priceRange: $priceRange
           size: 0
           sort: $sort
           width: $width
@@ -140,44 +140,44 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
         INSTITUTION
         MAJOR_PERIOD
       ]
-      $artist_id: String!
-      $at_auction: Boolean
-      $attribution_class: [String]
+      $artistID: String!
+      $atAuction: Boolean
+      $attributionClass: [String]
       $color: String
-      $for_sale: Boolean
+      $forSale: Boolean
       $hasFilter: Boolean!
       $height: String
-      $inquireable_only: Boolean
+      $inquireableOnly: Boolean
       $keyword: String
-      $major_periods: [String]
+      $majorPeriods: [String]
       $medium: String
       $offerable: Boolean
       $page: Int
-      $partner_id: ID
-      $price_range: String
+      $partnerID: ID
+      $priceRange: String
       $sort: String
       $width: String
     ) {
-      artist(id: $artist_id) {
+      artist(id: $artistID) {
         ...ArtistArtworkFilter_artist
           @arguments(
             acquireable: $acquireable
             aggregations: $aggregations
-            artist_id: $artist_id
-            at_auction: $at_auction
-            attribution_class: $attribution_class
+            artistID: $artistID
+            atAuction: $atAuction
+            attributionClass: $attributionClass
             color: $color
-            for_sale: $for_sale
+            forSale: $forSale
             hasFilter: $hasFilter
             height: $height
-            inquireable_only: $inquireable_only
+            inquireableOnly: $inquireableOnly
             keyword: $keyword
-            major_periods: $major_periods
+            majorPeriods: $majorPeriods
             medium: $medium
             offerable: $offerable
             page: $page
-            partner_id: $partner_id
-            price_range: $price_range
+            partnerID: $partnerID
+            priceRange: $priceRange
             sort: $sort
             width: $width
           )

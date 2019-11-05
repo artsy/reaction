@@ -164,7 +164,7 @@ export const FeaturedCollectionsRailsContainer = createFragmentContainer(
           slug
           title
           description
-          price_guidance
+          price_guidance: priceGuidance
           thumbnail
         }
       }

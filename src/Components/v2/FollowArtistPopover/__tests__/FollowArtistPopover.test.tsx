@@ -35,8 +35,8 @@ describe("Follow Artist Popover", () => {
     return await renderRelayTree({
       Component: FollowArtistPopover,
       query: graphql`
-        query FollowArtistPopover_Test_Query($artist_id: String!) {
-          artist(id: $artist_id) {
+        query FollowArtistPopover_Test_Query($artistID: String!) {
+          artist(id: $artistID) {
             ...FollowArtistPopover_artist
           }
         }

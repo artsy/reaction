@@ -209,7 +209,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
   artist: graphql`
     fragment ArtistInfo_artist on Artist
       @argumentDefinitions(
-        partner_category: {
+        partnerCategory: {
           type: "[String]"
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
@@ -223,20 +223,20 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
           url
         }
       }
-      formatted_nationality_and_birthday
+      formatted_nationality_and_birthday: formattedNationalityAndBirthday
       counts {
-        partner_shows
+        partner_shows: partnerShows
       }
-      exhibition_highlights(size: 3) {
+      exhibition_highlights: exhibitionHighlights(size: 3) {
         ...SelectedExhibitions_exhibitions
       }
       collections
       highlights {
         partners(
           first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+          displayOnPartnerProfile: true
+          representedBy: true
+          partnerCategory: $partnerCategory
         ) {
           edges {
             node {
@@ -261,7 +261,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       ...FollowArtistButton_artist
       # The below data is only used to determine whether a section
       # should be rendered
-      biography_blurb(format: HTML, partner_bio: true) {
+      biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
         text
       }
     }

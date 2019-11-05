@@ -165,11 +165,11 @@ export default createFragmentContainer(withSystemContext(ArtworkGridItem), {
     fragment GridItem_artwork on Artwork {
       internalID
       title
-      image_title
+      image_title: imageTitle
       image {
         placeholder
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       href
       ...Metadata_artwork

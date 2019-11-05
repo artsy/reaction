@@ -28,7 +28,7 @@ export class ArtistBio extends React.Component<ArtistBioProps> {
 export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
   bio: graphql`
     fragment ArtistBio_bio on Artist {
-      biography_blurb(format: HTML, partner_bio: true) {
+      biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
         text
       }
     }

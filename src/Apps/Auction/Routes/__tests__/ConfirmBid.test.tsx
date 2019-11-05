@@ -52,7 +52,7 @@ const setupTestEnv = ({
           ...LotInfo_artwork
           internalID
           slug
-          saleArtwork: sale_artwork(sale_id: "example-auction-id") {
+          saleArtwork: saleArtwork(saleID: "example-auction-id") {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
             internalID
@@ -60,19 +60,19 @@ const setupTestEnv = ({
             sale {
               registrationStatus {
                 sludORinternalID
-                qualified_for_bidding
+                qualified_for_bidding: qualifiedForBidding
               }
               internalID
               sludORinternalID
               name
-              is_closed
-              is_registration_closed
+              is_closed: isClosed
+              is_registration_closed: isRegistrationClosed
             }
           }
         }
         me {
           internalID
-          has_qualified_credit_cards
+          has_qualified_credit_cards: hasQualifiedCreditCards
         }
       }
     `,

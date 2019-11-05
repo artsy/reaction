@@ -216,30 +216,30 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
         href
         title
         date
-        sale_message
-        cultural_maker
+        sale_message: saleMessage
+        cultural_maker: culturalMaker
         artists(shallow: true) {
           id
           href
           name
         }
-        collecting_institution
+        collecting_institution: collectingInstitution
         partner(shallow: true) {
           name
           href
         }
         sale {
-          is_auction
-          is_closed
+          is_auction: isAuction
+          is_closed: isClosed
         }
-        sale_artwork {
+        sale_artwork: saleArtwork {
           counts {
-            bidder_positions
+            bidder_positions: bidderPositions
           }
-          highest_bid {
+          highest_bid: highestBid {
             display
           }
-          opening_bid {
+          opening_bid: openingBid {
             display
           }
         }

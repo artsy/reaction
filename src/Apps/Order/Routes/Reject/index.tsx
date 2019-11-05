@@ -39,6 +39,7 @@ export class Reject extends Component<RejectProps> {
   rejectOffer(variables: RejectOfferMutation["variables"]) {
     return this.props.commitMutation<RejectOfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation RejectOfferMutation($input: CommerceBuyerRejectOfferInput!) {
           commerceBuyerRejectOffer(input: $input) {

@@ -153,15 +153,15 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
         href
         internalID
         date
-        artist_names
-        sale_message
+        artist_names: artistNames
+        sale_message: saleMessage
         partner {
           name
         }
-        image_rights
-        is_in_auction
-        is_acquireable
-        is_shareable
+        image_rights: imageRights
+        is_in_auction: isInAuction
+        is_acquireable: isAcquireable
+        is_shareable: isShareable
         meta_image: image {
           resized(
             width: 640

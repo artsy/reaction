@@ -143,6 +143,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           id: this.props.order.id,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ReviewSubmitOrderMutation($input: CommerceSubmitOrderInput!) {
           commerceSubmitOrder(input: $input) {
@@ -179,6 +180,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
           confirmedSetupIntentId: setupIntentId,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ReviewSubmitOfferOrderMutation(
           $input: CommerceSubmitOrderWithOfferInput!

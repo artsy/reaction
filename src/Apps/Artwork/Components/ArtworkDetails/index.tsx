@@ -100,7 +100,7 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
           slug
         }
         literature(format: HTML)
-        exhibition_history(format: HTML)
+        exhibition_history: exhibitionHistory(format: HTML)
         provenance(format: HTML)
       }
     `,

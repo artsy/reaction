@@ -180,7 +180,7 @@ export default createPaginationContainer(
           cursor: { type: "String", defaultValue: "" }
         ) {
         id
-        artists: artists_connection(first: $count, after: $cursor)
+        artists: artistsConnection(first: $count, after: $cursor)
           @connection(key: "Artists_artists") {
           pageInfo {
             hasNextPage
@@ -192,10 +192,10 @@ export default createPaginationContainer(
             }
           }
         }
-        filter_aggregations: filtered_artworks(
+        filter_aggregations: filteredArtworks(
           aggregations: $aggregations
           size: 0
-          include_medium_filter_in_aggregation: true
+          includeMediumFilterInAggregation: true
         ) {
           ...TotalCount_filter_artworks
           aggregations {

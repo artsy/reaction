@@ -61,15 +61,15 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(ShowsRoute, {
         pastShowsStatus: { type: "String", defaultValue: "closed" }
         pastShowsSort: { type: "PartnerShowSorts", defaultValue: END_AT_DESC }
       ) {
-      artist_currentShows: artist(id: $artist_id) {
+      artist_currentShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $currentShowsSort, status: $currentShowsStatus)
       }
-      artist_upcomingShows: artist(id: $artist_id) {
+      artist_upcomingShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $upcomingShowsSort, status: $upcomingShowsStatus)
       }
-      artist_pastShows: artist(id: $artist_id) {
+      artist_pastShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $pastShowsSort, status: $pastShowsStatus)
       }

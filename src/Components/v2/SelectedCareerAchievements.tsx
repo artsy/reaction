@@ -145,7 +145,7 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
     artist: graphql`
       fragment SelectedCareerAchievements_artist on Artist
         @argumentDefinitions(
-          partner_category: {
+          partnerCategory: {
             type: "[String]"
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
@@ -153,9 +153,9 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
         highlights {
           partners(
             first: 10
-            display_on_partner_profile: true
-            represented_by: true
-            partner_category: $partner_category
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
           ) {
             edges {
               node {
@@ -178,11 +178,11 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
         ) {
           edges {
             node {
-              price_realized {
+              price_realized: priceRealized {
                 display(format: "0a")
               }
               organization
-              sale_date(format: "YYYY")
+              sale_date: saleDate(format: "YYYY")
             }
           }
         }

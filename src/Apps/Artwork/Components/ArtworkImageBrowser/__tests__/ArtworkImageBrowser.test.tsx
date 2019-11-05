@@ -17,8 +17,8 @@ describe("ArtworkImageBrowser", () => {
     return await renderRelayTree({
       Component: ArtworkImageBrowser,
       query: graphql`
-        query ArtworkImageBrowser_Test_Query($artwork_id: String!) {
-          artwork(id: $artwork_id) {
+        query ArtworkImageBrowser_Test_Query($artworkID: String!) {
+          artwork(id: $artworkID) {
             ...ArtworkImageBrowser_artwork
           }
         }

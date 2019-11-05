@@ -105,6 +105,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   setShipping(variables: ShippingOrderAddressUpdateMutation["variables"]) {
     return this.props.commitMutation<ShippingOrderAddressUpdateMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ShippingOrderAddressUpdateMutation(
           $input: CommerceSetShippingInput!
@@ -405,7 +406,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
             node {
               artwork {
                 slug
-                pickup_available
+                pickup_available: pickupAvailable
                 onlyShipsDomestically
                 shippingCountry
               }

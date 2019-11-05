@@ -166,7 +166,7 @@ export const ArtistTooltipContainer = track({})(
         name
         slug
         internalID
-        formatted_nationality_and_birthday
+        formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         blurb
         carousel {

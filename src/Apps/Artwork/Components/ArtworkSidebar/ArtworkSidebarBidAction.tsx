@@ -220,8 +220,8 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
     artwork: graphql`
       fragment ArtworkSidebarBidAction_artwork on Artwork {
         myLotStanding(live: true) {
-          most_recent_bid {
-            max_bid {
+          most_recent_bid: mostRecentBid {
+            max_bid: maxBid {
               cents
             }
           }
@@ -231,15 +231,15 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
         sale {
           slug
           registrationStatus {
-            qualified_for_bidding
+            qualified_for_bidding: qualifiedForBidding
           }
-          is_preview
-          is_open
-          is_live_open
-          is_closed
-          is_registration_closed
+          is_preview: isPreview
+          is_open: isOpen
+          is_live_open: isLiveOpen
+          is_closed: isClosed
+          is_registration_closed: isRegistrationClosed
         }
-        sale_artwork {
+        sale_artwork: saleArtwork {
           increments {
             cents
             display

@@ -98,16 +98,17 @@ class PopularArtistsContent extends React.Component<Props, null> {
     commitMutation<PopularArtistsFollowArtistMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation PopularArtistsFollowArtistMutation(
             $input: FollowArtistInput!
             $excludedArtistIds: [String]!
           ) {
             followArtist(input: $input) {
-              popular_artists(
+              popular_artists: popularArtists(
                 size: 1
-                exclude_followed_artists: true
-                exclude_artist_ids: $excludedArtistIds
+                excludeFollowedArtists: true
+                excludeArtistIDs: $excludedArtistIds
               ) {
                 artists {
                   sludORinternalID
@@ -126,8 +127,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 related {
                   suggested(
                     first: 1
-                    exclude_followed_artists: true
-                    exclude_artist_ids: $excludedArtistIds
+                    excludeFollowedArtists: true
+                    excludeArtistIDs: $excludedArtistIds
                   ) {
                     edges {
                       node {
@@ -219,7 +220,7 @@ const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
       environment={relayEnvironment}
       query={graphql`
         query PopularArtistsQuery {
-          popular_artists(exclude_followed_artists: true) {
+          popular_artists: popularArtists(excludeFollowedArtists: true) {
             ...PopularArtists_popular_artists
           }
         }

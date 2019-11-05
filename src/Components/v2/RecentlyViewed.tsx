@@ -113,7 +113,7 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
             node {
               id
               image {
-                aspect_ratio
+                aspect_ratio: aspectRatio
               }
               ...FillwidthItem_artwork @relay(mask: false)
             }

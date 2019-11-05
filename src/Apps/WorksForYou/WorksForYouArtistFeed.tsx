@@ -108,14 +108,14 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
           href
           counts {
             artworks
-            for_sale_artworks
+            for_sale_artworks: forSaleArtworks
           }
           image {
             resized(height: 80, width: 80) {
               url
             }
           }
-          artworks_connection(
+          artworks_connection: artworksConnection(
             sort: PUBLISHED_AT_DESC
             first: $count
             after: $cursor

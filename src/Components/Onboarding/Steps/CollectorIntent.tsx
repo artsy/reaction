@@ -74,6 +74,7 @@ export class CollectorIntentComponent extends React.Component<Props, State> {
     commitMutation<CollectorIntentUpdateCollectorProfileMutation>(
       this.props.relayEnvironment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation CollectorIntentUpdateCollectorProfileMutation(
             $input: UpdateCollectorProfileInput!

@@ -75,11 +75,11 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
       fragment SeoDataForArtwork_artwork on Artwork {
         href
         date
-        is_price_hidden
-        is_price_range
+        is_price_hidden: isPriceHidden
+        is_price_range: isPriceRange
         price
-        price_currency
-        sale_message
+        price_currency: priceCurrency
+        sale_message: saleMessage
         meta_image: image {
           resized(
             width: 640
@@ -106,7 +106,7 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
             }
           }
         }
-        artist_names
+        artist_names: artistNames
         availability
         category
         dimensions {

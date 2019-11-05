@@ -45,7 +45,7 @@ export default createFragmentContainer(ArtistRow, {
       name
       href
       ...Follow_artist
-      artworks: artworks_connection(first: 6) {
+      artworks: artworksConnection(first: 6) {
         ...Fillwidth_artworks
       }
     }

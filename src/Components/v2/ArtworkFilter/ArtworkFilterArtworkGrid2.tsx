@@ -113,7 +113,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
             count
           }
         }
-        artworks: artworks_connection(first: $first, after: $after) {
+        artworks: artworksConnection(first: $first, after: $after) {
           pageInfo {
             hasNextPage
             endCursor

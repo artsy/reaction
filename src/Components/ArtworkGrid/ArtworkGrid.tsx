@@ -223,7 +223,7 @@ export default createFragmentContainer(ArtworkGrid, {
           slug
           href
           image {
-            aspect_ratio
+            aspect_ratio: aspectRatio
           }
           ...GridItem_artwork
         }

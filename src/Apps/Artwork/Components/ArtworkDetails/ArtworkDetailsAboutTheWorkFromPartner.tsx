@@ -169,7 +169,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   {
     artwork: graphql`
       fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-        additional_information(format: HTML)
+        additional_information: additionalInformation(format: HTML)
         sale {
           isBenefit
           isGalleryAuction
@@ -184,7 +184,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           locations {
             city
           }
-          is_default_profile_public
+          is_default_profile_public: isDefaultProfilePublic
           profile {
             ...FollowProfileButton_profile
             slug

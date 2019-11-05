@@ -59,6 +59,7 @@ export class BudgetComponent extends React.Component<
     commitMutation<BudgetUpdateMyUserProfileMutation>(
       this.props.relayEnvironment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation BudgetUpdateMyUserProfileMutation(
             $input: UpdateMyProfileInput!

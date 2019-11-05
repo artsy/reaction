@@ -52,6 +52,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           onError: error => {
             reject(error)
           },
+          // TODO: Inputs to the mutation might have changed case of the keys!
           mutation: graphql`
             mutation ConfirmBidCreateBidderPositionMutation(
               $input: BidderPositionInput!
@@ -62,8 +63,8 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
                     internalID
                   }
                   status
-                  message_header
-                  message_description_md
+                  message_header: messageHeader
+                  message_description_md: messageDescriptionMD
                 }
               }
             }

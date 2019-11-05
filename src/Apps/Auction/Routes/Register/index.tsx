@@ -71,6 +71,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         onError: error => {
           reject(error)
         },
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation RegisterCreateBidderMutation($input: CreateBidderInput!) {
             createBidder(input: $input) {
@@ -108,6 +109,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
             }
           },
           onError: reject,
+          // TODO: Inputs to the mutation might have changed case of the keys!
           mutation: graphql`
             mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
               $creditCardInput: CreditCardInput!
@@ -123,7 +125,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
                   ... on CreditCardMutationSuccess {
                     creditCardEdge {
                       node {
-                        last_digits
+                        last_digits: lastDigits
                       }
                     }
                   }

@@ -20,8 +20,8 @@ export const routes: RouteConfig[] = [
     path: "/artist/:artist_id",
     Component: ArtistApp,
     query: graphql`
-      query routes_ArtistTopLevelQuery($artist_id: String!) {
-        artist(id: $artist_id) @principalField {
+      query routes_ArtistTopLevelQuery($artistID: String!) {
+        artist(id: $artistID) @principalField {
           ...ArtistApp_artist
         }
       }
@@ -54,7 +54,7 @@ export const routes: RouteConfig[] = [
         path: "cv",
         Component: CVRoute,
         query: graphql`
-          query routes_CVQuery($artist_id: String!) {
+          query routes_CVQuery($artistID: String!) {
             viewer {
               ...CV_viewer
             }
@@ -65,8 +65,8 @@ export const routes: RouteConfig[] = [
         path: "articles",
         Component: ArticlesRoute,
         query: graphql`
-          query routes_ArticlesQuery($artist_id: String!) {
-            artist(id: $artist_id) {
+          query routes_ArticlesQuery($artistID: String!) {
+            artist(id: $artistID) {
               ...Articles_artist
             }
           }
@@ -76,7 +76,7 @@ export const routes: RouteConfig[] = [
         path: "shows",
         Component: ShowsRoute,
         query: graphql`
-          query routes_ShowsQuery($artist_id: String!) {
+          query routes_ShowsQuery($artistID: String!) {
             viewer {
               ...Shows_viewer
             }
@@ -87,8 +87,8 @@ export const routes: RouteConfig[] = [
         path: "auction-results",
         Component: AuctionResultsRoute,
         query: graphql`
-          query routes_AuctionResultsQuery($artist_id: String!) {
-            artist(id: $artist_id) {
+          query routes_AuctionResultsQuery($artistID: String!) {
+            artist(id: $artistID) {
               ...AuctionResults_artist
             }
           }

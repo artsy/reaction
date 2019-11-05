@@ -234,29 +234,31 @@ describe("createMockNetworkLayer", () => {
   })
 
   describe("mutations", () => {
-    const query = graphql`
-      mutation createMockNetworkLayerTestMutationResultsMutation(
-        $input: CommerceBuyerAcceptOfferInput!
-      ) {
-        commerceBuyerAcceptOffer(input: $input) {
-          orderOrError {
-            ... on CommerceOrderWithMutationFailure {
-              error {
-                type
-                code
-                data
+    const query =
+      // TODO: Inputs to the mutation might have changed case of the keys!
+      graphql`
+        mutation createMockNetworkLayerTestMutationResultsMutation(
+          $input: CommerceBuyerAcceptOfferInput!
+        ) {
+          commerceBuyerAcceptOffer(input: $input) {
+            orderOrError {
+              ... on CommerceOrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
               }
-            }
-            ... on CommerceOrderWithMutationSuccess {
-              order {
-                internalID
-                state
+              ... on CommerceOrderWithMutationSuccess {
+                order {
+                  internalID
+                  state
+                }
               }
             }
           }
         }
-      }
-    `
+      `
 
     it("allows mocking successful mutation results", async () => {
       const data = await fetchMutationResults<

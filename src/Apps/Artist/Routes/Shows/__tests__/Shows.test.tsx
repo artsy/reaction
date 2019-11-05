@@ -16,7 +16,7 @@ describe("Shows Route", () => {
     return await renderRelayTree({
       Component: ShowsRoute,
       query: graphql`
-        query Shows_Test_Query($artist_id: String!) {
+        query Shows_Test_Query($artistID: String!) {
           viewer {
             ...Shows_viewer
           }

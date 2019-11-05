@@ -143,7 +143,11 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
           }
         }
       }
-      filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
+      filter_artworks: filterArtworks(
+        keyword: $term
+        size: 0
+        aggregations: [TOTAL]
+      ) {
         counts {
           total
         }

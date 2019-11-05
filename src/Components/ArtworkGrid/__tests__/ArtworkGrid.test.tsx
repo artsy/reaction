@@ -28,7 +28,7 @@ const TestContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment ArtworkGrid_artist on Artist {
-        artworks_connection(first: 4) {
+        artworks_connection: artworksConnection(first: 4) {
           ...ArtworkGrid_artworks
         }
       }

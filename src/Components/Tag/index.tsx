@@ -106,18 +106,18 @@ class TagContents extends React.Component<Props, State> {
           query TagContentsArtworksQuery(
             $tagID: String!
             $medium: String
-            $price_range: String
+            $priceRange: String
             $sort: String
-            $for_sale: Boolean
-            $dimension_range: String
+            $forSale: Boolean
+            $dimensionRange: String
           ) {
             tag(id: $tagID) {
               ...TagArtworks_tag
                 @arguments(
-                  for_sale: $for_sale
+                  forSale: $forSale
                   medium: $medium
-                  price_range: $price_range
-                  dimension_range: $dimension_range
+                  priceRange: $priceRange
+                  dimensionRange: $dimensionRange
                 )
             }
           }

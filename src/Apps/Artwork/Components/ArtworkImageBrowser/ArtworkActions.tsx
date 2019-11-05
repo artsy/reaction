@@ -286,15 +286,15 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
           height
           width
         }
-        is_downloadable
-        is_hangable
+        is_downloadable: isDownloadable
+        is_hangable: isHangable
         partner {
           slug
         }
         title
         sale {
-          is_closed
-          is_auction
+          is_closed: isClosed
+          is_auction: isAuction
         }
       }
     `,

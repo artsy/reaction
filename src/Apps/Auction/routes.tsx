@@ -34,7 +34,7 @@ export const routes: RouteConfig[] = [
           ...LotInfo_artwork
           internalID
           slug
-          saleArtwork: sale_artwork(sale_id: $saleID) {
+          saleArtwork: saleArtwork(saleID: $saleID) {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
             internalID
@@ -42,19 +42,19 @@ export const routes: RouteConfig[] = [
             sale {
               registrationStatus {
                 sludORinternalID
-                qualified_for_bidding
+                qualified_for_bidding: qualifiedForBidding
               }
               internalID
               sludORinternalID
               name
-              is_closed
-              is_registration_closed
+              is_closed: isClosed
+              is_registration_closed: isRegistrationClosed
             }
           }
         }
         me {
           internalID
-          has_qualified_credit_cards
+          has_qualified_credit_cards: hasQualifiedCreditCards
         }
       }
     `,
@@ -79,18 +79,18 @@ export const routes: RouteConfig[] = [
       query routes_RegisterQuery($saleID: String!) {
         sale(id: $saleID) @principalField {
           slug
-          is_auction
-          is_registration_closed
-          is_preview
-          is_open
-          is_auction
+          is_auction: isAuction
+          is_registration_closed: isRegistrationClosed
+          is_preview: isPreview
+          is_open: isOpen
+          is_auction: isAuction
           registrationStatus {
-            qualified_for_bidding
+            qualified_for_bidding: qualifiedForBidding
           }
           ...Register_sale
         }
         me {
-          has_qualified_credit_cards
+          has_qualified_credit_cards: hasQualifiedCreditCards
           ...Register_me
         }
       }

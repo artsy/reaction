@@ -82,13 +82,14 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
     if (environment && user && user.id) {
       commitMutation<SaveArtworkMutation>(environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
                 id
                 slug
-                is_saved
+                is_saved: isSaved
               }
             }
           }
@@ -229,7 +230,7 @@ export default createFragmentContainer(Artsy.withSystemContext(SaveButton), {
       id
       internalID
       slug
-      is_saved
+      is_saved: isSaved
       title
     }
   `,

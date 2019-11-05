@@ -100,7 +100,7 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
           shows
           articles
           cv(minShowCount: 0)
-          auction_lots
+          auction_lots: auctionLots
         }
       }
     `,

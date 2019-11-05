@@ -156,7 +156,7 @@ export const ArtistCardFragmentContainer = createFragmentContainer(ArtistCard, {
           url
         }
       }
-      formatted_nationality_and_birthday
+      formatted_nationality_and_birthday: formattedNationalityAndBirthday
       ...FollowArtistButton_artist
     }
   `,

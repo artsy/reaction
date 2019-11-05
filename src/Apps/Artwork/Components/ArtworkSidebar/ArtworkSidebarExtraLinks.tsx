@@ -204,15 +204,15 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
     artwork: graphql`
       fragment ArtworkSidebarExtraLinks_artwork on Artwork {
         internalID
-        is_in_auction
-        is_for_sale
-        is_acquireable
-        is_inquireable
+        is_in_auction: isInAuction
+        is_for_sale: isForSale
+        is_acquireable: isAcquireable
+        is_inquireable: isInquireable
         artists {
-          is_consignable
+          is_consignable: isConsignable
         }
         sale {
-          is_closed
+          is_closed: isClosed
         }
       }
     `,

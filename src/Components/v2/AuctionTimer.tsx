@@ -77,8 +77,8 @@ export const AuctionTimerFragmentContainer = createFragmentContainer(
   {
     sale: graphql`
       fragment AuctionTimer_sale on Sale {
-        live_start_at
-        end_at
+        live_start_at: liveStartAt
+        end_at: endAt
       }
     `,
   }

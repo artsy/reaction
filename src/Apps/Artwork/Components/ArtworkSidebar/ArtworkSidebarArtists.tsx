@@ -115,7 +115,7 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           showFollowSuggestions: { type: "Boolean", defaultValue: true }
         ) {
-        cultural_maker
+        cultural_maker: culturalMaker
         artists {
           id
           internalID

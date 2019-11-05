@@ -98,6 +98,7 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
     commitMutation<GeneSearchResultsFollowGeneMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation GeneSearchResultsFollowGeneMutation(
             $input: FollowGeneInput!
@@ -105,7 +106,7 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
           ) {
             followGene(input: $input) {
               gene {
-                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                similar(first: 1, excludeGeneIDs: $excludedGeneIds) {
                   edges {
                     node {
                       slug
@@ -171,7 +172,7 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment GeneSearchResults_viewer on Viewer {
-        match_gene(term: $term) {
+        match_gene: matchGene(term: $term) {
           name
           sludORinternalID
           internalID

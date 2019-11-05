@@ -87,7 +87,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 3 }
           cursor: { type: "String", defaultValue: "" }
-          min_forsale_artworks: { type: "Int", defaultValue: 7 }
+          minForsaleArtworks: { type: "Int", defaultValue: 7 }
         ) {
         slug
         name
@@ -95,7 +95,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           artists(
             first: $count
             after: $cursor
-            min_forsale_artworks: $min_forsale_artworks
+            minForsaleArtworks: $minForsaleArtworks
           ) @connection(key: "ArtistRecommendations_artists") {
             edges {
               node {

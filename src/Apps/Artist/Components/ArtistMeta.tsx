@@ -241,7 +241,7 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
         title
         description
       }
-      alternate_names
+      alternate_names: alternateNames
       image {
         versions
         large: url(version: "large")
@@ -251,14 +251,18 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
         artworks
       }
       blurb
-      artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {
+      artworks_connection: artworksConnection(
+        first: 10
+        filter: IS_FOR_SALE
+        published: true
+      ) {
         edges {
           node {
             title
             date
             description
             category
-            price_currency
+            price_currency: priceCurrency
             listPrice {
               __typename
               ... on PriceRange {

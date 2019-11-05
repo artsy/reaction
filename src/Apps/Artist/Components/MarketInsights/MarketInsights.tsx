@@ -217,7 +217,7 @@ export default createFragmentContainer(MarketInsights, {
   artist: graphql`
     fragment MarketInsights_artist on Artist
       @argumentDefinitions(
-        partner_category: {
+        partnerCategory: {
           type: "[String]"
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
@@ -227,9 +227,9 @@ export default createFragmentContainer(MarketInsights, {
       highlights {
         partners(
           first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+          displayOnPartnerProfile: true
+          representedBy: true
+          partnerCategory: $partnerCategory
         ) {
           edges {
             node {
@@ -247,7 +247,7 @@ export default createFragmentContainer(MarketInsights, {
       ) {
         edges {
           node {
-            price_realized {
+            price_realized: priceRealized {
               display(format: "0a")
             }
           }

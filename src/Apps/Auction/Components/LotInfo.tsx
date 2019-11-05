@@ -51,16 +51,16 @@ export const LotInfoFragmentContainer = createFragmentContainer(LotInfo, {
       date
       title
       imageUrl
-      artistNames: artist_names
+      artistNames: artistNames
     }
   `,
   saleArtwork: graphql`
     fragment LotInfo_saleArtwork on SaleArtwork {
       counts {
-        bidderPositions: bidder_positions
+        bidderPositions: bidderPositions
       }
-      lotLabel: lot_label
-      minimumNextBid: minimum_next_bid {
+      lotLabel: lotLabel
+      minimumNextBid: minimumNextBid {
         amount
         cents
         display

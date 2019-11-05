@@ -178,6 +178,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   setOrderPayment(variables: PaymentRouteSetOrderPaymentMutation["variables"]) {
     return this.props.commitMutation<PaymentRouteSetOrderPaymentMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation PaymentRouteSetOrderPaymentMutation(
           $input: CommerceSetPaymentInput!
@@ -194,7 +195,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
                     city
                     state
                     country
-                    postal_code
+                    postal_code: postalCode
                   }
                 }
               }

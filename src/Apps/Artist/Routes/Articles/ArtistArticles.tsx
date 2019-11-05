@@ -138,7 +138,7 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           before: $before
           last: $last
           sort: PUBLISHED_AT_DESC
-          in_editorial_feed: true
+          inEditorialFeed: true
         ) {
           pageInfo {
             hasNextPage
@@ -150,12 +150,12 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           edges {
             node {
               href
-              thumbnail_title
+              thumbnail_title: thumbnailTitle
               author {
                 name
               }
-              published_at(format: "MMM Do, YYYY")
-              thumbnail_image {
+              published_at: publishedAt(format: "MMM Do, YYYY")
+              thumbnail_image: thumbnailImage {
                 resized(width: 300) {
                   url
                 }

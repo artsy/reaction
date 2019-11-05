@@ -359,6 +359,7 @@ export class PaymentPicker extends React.Component<
   ) {
     return this.props.commitMutation<PaymentPickerCreateCreditCardMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation PaymentPickerCreateCreditCardMutation(
           $input: CreditCardInput!
@@ -374,10 +375,10 @@ export class PaymentPicker extends React.Component<
                   city
                   state
                   country
-                  postal_code
-                  expiration_month
-                  expiration_year
-                  last_digits
+                  postal_code: postalCode
+                  expiration_month: expirationMonth
+                  expiration_year: expirationYear
+                  last_digits: lastDigits
                   brand
                 }
               }
@@ -426,9 +427,9 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
             node {
               internalID
               brand
-              last_digits
-              expiration_month
-              expiration_year
+              last_digits: lastDigits
+              expiration_month: expirationMonth
+              expiration_year: expirationYear
             }
           }
         }
@@ -447,10 +448,10 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
           city
           state
           country
-          postal_code
-          expiration_month
-          expiration_year
-          last_digits
+          postal_code: postalCode
+          expiration_month: expirationMonth
+          expiration_year: expirationYear
+          last_digits: lastDigits
           brand
         }
         requestedFulfillment {

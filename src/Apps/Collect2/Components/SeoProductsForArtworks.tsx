@@ -119,7 +119,7 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
         first: { type: "Int", defaultValue: 30 }
         after: { type: "String", defaultValue: "" }
       ) {
-      artworks_connection(first: $first, after: $after) {
+      artworks_connection: artworksConnection(first: $first, after: $after) {
         edges {
           node {
             id
@@ -127,10 +127,10 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
             category
             date
             href
-            is_acquireable
-            is_price_range
+            is_acquireable: isAcquireable
+            is_price_range: isPriceRange
             price
-            price_currency
+            price_currency: priceCurrency
             title
             artists(shallow: true) {
               name
@@ -151,11 +151,11 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
               }
               locations(size: 1) {
                 address
-                address_2
+                address_2: address2
                 city
                 state
                 country
-                postal_code
+                postal_code: postalCode
                 phone
               }
             }

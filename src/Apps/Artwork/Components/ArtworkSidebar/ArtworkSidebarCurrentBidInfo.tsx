@@ -156,28 +156,28 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
     artwork: graphql`
       fragment ArtworkSidebarCurrentBidInfo_artwork on Artwork {
         sale {
-          is_closed
-          is_live_open
+          is_closed: isClosed
+          is_live_open: isLiveOpen
           internalID
-          is_with_buyers_premium
+          is_with_buyers_premium: isWithBuyersPremium
         }
-        sale_artwork {
-          is_with_reserve
-          reserve_message
-          reserve_status
-          current_bid {
+        sale_artwork: saleArtwork {
+          is_with_reserve: isWithReserve
+          reserve_message: reserveMessage
+          reserve_status: reserveStatus
+          current_bid: currentBid {
             display
           }
           counts {
-            bidder_positions
+            bidder_positions: bidderPositions
           }
         }
         myLotStanding(live: true) {
-          active_bid {
-            is_winning
+          active_bid: activeBid {
+            is_winning: isWinning
           }
-          most_recent_bid {
-            max_bid {
+          most_recent_bid: mostRecentBid {
+            max_bid: maxBid {
               display
             }
           }

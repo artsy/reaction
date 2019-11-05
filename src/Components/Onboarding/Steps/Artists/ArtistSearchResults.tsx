@@ -89,16 +89,17 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
     commitMutation<ArtistSearchResultsArtistMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation ArtistSearchResultsArtistMutation(
             $input: FollowArtistInput!
             $excludedArtistIds: [String]!
           ) {
             followArtist(input: $input) {
-              popular_artists(
+              popular_artists: popularArtists(
                 size: 1
-                exclude_followed_artists: true
-                exclude_artist_ids: $excludedArtistIds
+                excludeFollowedArtists: true
+                excludeArtistIDs: $excludedArtistIds
               ) {
                 artists {
                   sludORinternalID
@@ -117,8 +118,8 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                 related {
                   suggested(
                     first: 1
-                    exclude_followed_artists: true
-                    exclude_artist_ids: $excludedArtistIds
+                    excludeFollowedArtists: true
+                    excludeArtistIDs: $excludedArtistIds
                   ) {
                     edges {
                       node {
@@ -184,7 +185,7 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment ArtistSearchResults_viewer on Viewer {
-        match_artist(term: $term) {
+        match_artist: matchArtist(term: $term) {
           sludORinternalID
           internalID
           id

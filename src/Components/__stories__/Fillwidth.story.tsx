@@ -11,7 +11,7 @@ function FillwidthExample(props: { artistID: string }) {
       query={graphql`
         query FillwidthQuery($artistID: String!) {
           artist(id: $artistID) {
-            artworks: artworks_connection(first: 6) {
+            artworks: artworksConnection(first: 6) {
               ...Fillwidth_artworks
             }
           }

@@ -40,12 +40,13 @@ export class FollowGeneButton extends React.Component<Props> {
 
     if (user && user.id) {
       commitMutation<FollowGeneButtonMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {
               gene {
                 id
-                is_followed
+                is_followed: isFollowed
               }
             }
           }
@@ -93,7 +94,7 @@ export const FollowGeneButtonFragmentContainer = track({})(
       fragment FollowGeneButton_gene on Gene {
         id
         slug
-        is_followed
+        is_followed: isFollowed
       }
     `,
   })

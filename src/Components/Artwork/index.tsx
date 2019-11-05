@@ -126,7 +126,7 @@ export default createFragmentContainer(Artwork, {
       slug
       image {
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       ...Metadata_artwork
     }

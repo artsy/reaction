@@ -143,9 +143,9 @@ export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
         headerImage
         slug
         title
-        price_guidance
+        price_guidance: priceGuidance
         artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
-          artworks_connection(first: 3) {
+          artworks_connection: artworksConnection(first: 3) {
             edges {
               node {
                 artist {

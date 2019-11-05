@@ -27,9 +27,9 @@ export const CreditCardSummaryItemFragmentContainer = createFragmentContainer(
       fragment CreditCardSummaryItem_order on CommerceOrder {
         creditCard {
           brand
-          last_digits
-          expiration_year
-          expiration_month
+          last_digits: lastDigits
+          expiration_year: expirationYear
+          expiration_month: expirationMonth
         }
       }
     `,

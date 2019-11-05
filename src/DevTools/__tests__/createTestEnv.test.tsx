@@ -13,26 +13,28 @@ import {
 
 jest.unmock("react-relay")
 
-const orderMutation = graphql`
-  mutation createTestEnvOrderMutation(
-    $input: CommerceCreateOrderWithArtworkInput!
-  ) {
-    commerceCreateOrderWithArtwork(input: $input) {
-      orderOrError {
-        ... on CommerceOrderWithMutationSuccess {
-          order {
-            internalID
+const orderMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvOrderMutation(
+      $input: CommerceCreateOrderWithArtworkInput!
+    ) {
+      commerceCreateOrderWithArtwork(input: $input) {
+        orderOrError {
+          ... on CommerceOrderWithMutationSuccess {
+            order {
+              internalID
+            }
           }
-        }
-        ... on CommerceOrderWithMutationFailure {
-          error {
-            type
+          ... on CommerceOrderWithMutationFailure {
+            error {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const orderSuccess = {
   commerceCreateOrderWithArtwork: {
@@ -57,24 +59,26 @@ const orderFailure = {
   },
 }
 
-const creditCardMutation = graphql`
-  mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
-    createCreditCard: createCreditCard(input: $input) {
-      creditCardOrError {
-        ... on CreditCardMutationSuccess {
-          creditCard {
-            brand
+const creditCardMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
+      createCreditCard: createCreditCard(input: $input) {
+        creditCardOrError {
+          ... on CreditCardMutationSuccess {
+            creditCard {
+              brand
+            }
           }
-        }
-        ... on CreditCardMutationFailure {
-          mutationError {
-            type
+          ... on CreditCardMutationFailure {
+            mutationError {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const creditCardSuccess = {
   createCreditCard: {

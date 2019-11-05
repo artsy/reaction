@@ -79,25 +79,25 @@ export default createFragmentContainer(Contact, {
   artwork: graphql`
     fragment Contact_artwork on Artwork {
       href
-      is_inquireable
+      is_inquireable: isInquireable
       sale {
-        is_auction
-        is_live_open
-        is_open
-        is_closed
+        is_auction: isAuction
+        is_live_open: isLiveOpen
+        is_open: isOpen
+        is_closed: isClosed
       }
       partner(shallow: true) {
         type
       }
-      sale_artwork {
-        highest_bid {
+      sale_artwork: saleArtwork {
+        highest_bid: highestBid {
           display
         }
-        opening_bid {
+        opening_bid: openingBid {
           display
         }
         counts {
-          bidder_positions
+          bidder_positions: bidderPositions
         }
       }
     }

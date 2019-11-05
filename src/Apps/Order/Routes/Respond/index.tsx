@@ -176,6 +176,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   createCounterOffer(variables: RespondCounterOfferMutation["variables"]) {
     return this.props.commitMutation<RespondCounterOfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation RespondCounterOfferMutation(
           $input: CommerceBuyerCounterOfferInput!

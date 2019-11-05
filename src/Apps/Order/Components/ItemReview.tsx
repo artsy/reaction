@@ -81,7 +81,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
   lineItem: graphql`
     fragment ItemReview_lineItem on CommerceLineItem {
       artwork {
-        artist_names
+        artist_names: artistNames
         title
         date
         medium
@@ -89,7 +89,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
           in
           cm
         }
-        attribution_class {
+        attribution_class: attributionClass {
           shortDescription
         }
         image {
@@ -97,7 +97,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
             url
           }
         }
-        edition_sets {
+        edition_sets: editionSets {
           sludORinternalID
           dimensions {
             in

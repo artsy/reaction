@@ -53,12 +53,13 @@ export class FollowProfileButton extends React.Component<Props> {
 
     if (user && user.id) {
       commitMutation<FollowProfileButtonMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowProfileButtonMutation($input: FollowProfileInput!) {
             followProfile(input: $input) {
               profile {
                 id
-                is_followed
+                is_followed: isFollowed
               }
             }
           }
@@ -113,7 +114,7 @@ export const FollowProfileButtonFragmentContainer = track({})(
       fragment FollowProfileButton_profile on Profile {
         id
         slug
-        is_followed
+        is_followed: isFollowed
       }
     `,
   })

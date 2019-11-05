@@ -75,7 +75,7 @@ export default createFragmentContainer(Fillwidth, {
         node {
           id
           image {
-            aspect_ratio
+            aspect_ratio: aspectRatio
           }
           ...FillwidthItem_artwork
         }

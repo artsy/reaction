@@ -163,8 +163,8 @@ graphql`
         node {
           artwork {
             slug
-            is_acquireable
-            is_offerable
+            is_acquireable: isAcquireable
+            is_offerable: isOfferable
           }
         }
       }

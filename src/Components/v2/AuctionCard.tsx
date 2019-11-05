@@ -163,26 +163,26 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
   {
     sale: graphql`
       fragment AuctionCard_sale on Sale {
-        cover_image {
+        cover_image: coverImage {
           cropped(width: 200, height: 180) {
             url
           }
         }
         isBenefit
         isGalleryAuction
-        end_at
+        end_at: endAt
         href
         slug
-        is_live_open
-        is_preview
-        live_start_at
+        is_live_open: isLiveOpen
+        is_preview: isPreview
+        live_start_at: liveStartAt
         registrationStatus {
           internalID
         }
-        is_registration_closed
+        is_registration_closed: isRegistrationClosed
         name
-        start_at
-        is_closed
+        start_at: startAt
+        is_closed: isClosed
         partner {
           name
         }
