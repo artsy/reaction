@@ -27,9 +27,9 @@ const isDevelopment =
 // Only log on the client during development
 const loggingEnabled = isDevelopment && !isServer
 
-const METAPHYSICS_ENDPOINT = isServer
-  ? process.env.METAPHYSICS_ENDPOINT
-  : sd.METAPHYSICS_ENDPOINT
+const METAPHYSICS_ENDPOINT = `${
+  isServer ? process.env.METAPHYSICS_ENDPOINT : sd.METAPHYSICS_ENDPOINT
+}/v2`
 
 const USER_AGENT = `Reaction/${ReactionVersion}`
 
