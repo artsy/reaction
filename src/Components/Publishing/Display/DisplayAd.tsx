@@ -3,10 +3,9 @@ import * as AnalyticsSchema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import React, { SFC, useState } from "react"
+import React, { SFC, useEffect, useState } from "react"
 import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
-import { useDidMount } from "Utils/Hooks/useDidMount"
 
 export interface DisplayAdProps extends FlexProps {
   adUnit: AdUnit
@@ -43,9 +42,8 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
   const { trackEvent } = useTracking()
-  const isMounted = useDidMount()
 
-  if (isMounted) {
+  useEffect(() => {
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Impression,
       context_page: AnalyticsSchema.PageName.ArticlePage,
@@ -54,7 +52,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
       context_page_owner_slug: props.articleSlug,
       context_page_owner_type: AnalyticsSchema.OwnerType.Article,
     })
-  }
+  }, [])
 
   const onClickAd = () => {
     trackEvent({
