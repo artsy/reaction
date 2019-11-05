@@ -226,10 +226,10 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
             }
           }
         }
-        id
-        _id
+        slug
+        internalID
         sale {
-          id
+          slug
           registrationStatus {
             qualified_for_bidding
           }

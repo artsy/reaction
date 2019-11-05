@@ -271,7 +271,6 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
       fragment ArtworkActions_artwork on Artwork {
         ...Save_artwork
         ...ArtworkSharePanel_artwork
-
         artists {
           name
         }
@@ -280,9 +279,9 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
           cm
         }
         href
-        id
+        slug
         image {
-          id
+          internalID
           url(version: "larger")
           height
           width
@@ -290,7 +289,7 @@ export const ArtworkActionsFragmentContainer = createFragmentContainer(
         is_downloadable
         is_hangable
         partner {
-          id
+          slug
         }
         title
         sale {

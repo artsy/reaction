@@ -50,20 +50,20 @@ const setupTestEnv = ({
       query ConfirmBidValidTestQuery {
         artwork(id: "artwork-id") {
           ...LotInfo_artwork
-          _id
-          id
+          internalID
+          slug
           saleArtwork: sale_artwork(sale_id: "example-auction-id") {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
-            _id
-            id
+            internalID
+            sludORinternalID
             sale {
               registrationStatus {
-                id
+                sludORinternalID
                 qualified_for_bidding
               }
-              _id
-              id
+              internalID
+              sludORinternalID
               name
               is_closed
               is_registration_closed
@@ -71,7 +71,7 @@ const setupTestEnv = ({
           }
         }
         me {
-          id
+          internalID
           has_qualified_credit_cards
         }
       }

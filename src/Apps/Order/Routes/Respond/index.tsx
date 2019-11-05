@@ -342,7 +342,7 @@ export const RespondFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Respond_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         currencyCode
@@ -355,7 +355,7 @@ export const RespondFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
@@ -363,7 +363,7 @@ export const RespondFragmentContainer = createFragmentContainer(
         ... on CommerceOfferOrder {
           lastOffer {
             createdAt
-            id
+            internalID
             note
           }
           myLastOffer {

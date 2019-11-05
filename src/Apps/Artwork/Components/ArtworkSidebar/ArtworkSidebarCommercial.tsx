@@ -188,7 +188,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
@@ -269,7 +269,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
@@ -462,8 +462,8 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   {
     artwork: graphql`
       fragment ArtworkSidebarCommercial_artwork on Artwork {
-        id
-        _id
+        slug
+        internalID
         is_for_sale
         is_acquireable
         is_inquireable
@@ -474,8 +474,8 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         shippingInfo
         shippingOrigin
         edition_sets {
+          sludORinternalID
           id
-          __id
           is_acquireable
           is_offerable
           sale_message

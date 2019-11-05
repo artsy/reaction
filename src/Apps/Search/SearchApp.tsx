@@ -136,14 +136,13 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
         edges {
           node {
             ... on SearchableItem {
-              id
+              slug
               displayLabel
               displayType
             }
           }
         }
       }
-
       filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
         counts {
           total

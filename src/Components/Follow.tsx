@@ -70,7 +70,7 @@ export class FollowButton extends React.Component<Props, null> {
           mutation FollowArtistMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
-                __id
+                id
                 is_followed
               }
             }
@@ -123,8 +123,8 @@ export class FollowButton extends React.Component<Props, null> {
 export default createFragmentContainer(Artsy.withSystemContext(FollowButton), {
   artist: graphql`
     fragment Follow_artist on Artist {
-      __id
       id
+      slug
       is_followed
     }
   `,

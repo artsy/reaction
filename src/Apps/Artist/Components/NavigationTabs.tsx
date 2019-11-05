@@ -95,7 +95,7 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment NavigationTabs_artist on Artist {
-        id
+        slug
         statuses {
           shows
           articles

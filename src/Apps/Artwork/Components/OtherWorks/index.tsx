@@ -114,19 +114,16 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
         ctaHref
         artworks(first: 8) {
           ...ArtworkGrid_artworks
-
           edges {
             node {
-              id
+              sludORinternalID
             }
           }
         }
       }
-
       ...RelatedWorksArtworkGrid_artwork
-
-      id
-      _id
+      slug
+      internalID
       sale {
         is_closed
       }

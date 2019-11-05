@@ -96,8 +96,8 @@ export class CreditCard extends React.Component<
                 creditCardOrError {
                   ... on CreditCardMutationSuccess {
                     creditCard {
+                      internalID
                       id
-                      __id
                     }
                   }
                   ... on CreditCardMutationFailure {

@@ -21,7 +21,7 @@ const orderMutation = graphql`
       orderOrError {
         ... on CommerceOrderWithMutationSuccess {
           order {
-            id
+            internalID
           }
         }
         ... on CommerceOrderWithMutationFailure {
@@ -66,7 +66,6 @@ const creditCardMutation = graphql`
             brand
           }
         }
-
         ... on CreditCardMutationFailure {
           mutationError {
             type

@@ -39,14 +39,12 @@ export const collectRoutes: RouteConfig[] = [
         marketingHubCollections {
           ...Collect_marketingHubCollections
         }
-
         filterArtworks: filter_artworks(
           aggregations: $aggregations
           sort: $sort
         ) {
           ...SeoProductsForArtworks_artworks
         }
-
         viewer {
           ...ArtworkFilter_viewer
             @arguments(

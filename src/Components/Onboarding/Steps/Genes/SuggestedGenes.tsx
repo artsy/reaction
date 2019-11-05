@@ -92,9 +92,9 @@ class SuggestedGenesContent extends React.Component<Props> {
                 similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
                   edges {
                     node {
+                      slug
+                      internalID
                       id
-                      _id
-                      __id
                       name
                       image {
                         cropped(width: 100, height: 100) {
@@ -150,8 +150,8 @@ class SuggestedGenesContent extends React.Component<Props> {
 const SuggestedGenesContainer = createFragmentContainer(SuggestedGenesContent, {
   suggested_genes: graphql`
     fragment SuggestedGenes_suggested_genes on Gene @relay(plural: true) {
-      id
-      _id
+      slug
+      internalID
       name
       image {
         cropped(width: 100, height: 100) {

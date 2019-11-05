@@ -104,17 +104,15 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
           first: { type: "Int", defaultValue: 30 }
           after: { type: "String", defaultValue: "" }
         ) {
-        __id
-
+        id
         aggregations {
           slice
           counts {
-            id
+            sludORinternalID
             name
             count
           }
         }
-
         artworks: artworks_connection(first: $first, after: $after) {
           pageInfo {
             hasNextPage
@@ -125,7 +123,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
           }
           edges {
             node {
-              __id
+              id
             }
           }
           ...ArtworkGrid_artworks
@@ -139,7 +137,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
       $first: Int!
       $after: String
     ) {
-      filtered_artworks: node(__id: $filteredArtworksNodeID) {
+      filtered_artworks: node(id: $filteredArtworksNodeID) {
         ...ArtworkFilterArtworkGrid2_filtered_artworks
           @arguments(first: $first, after: $after)
       }

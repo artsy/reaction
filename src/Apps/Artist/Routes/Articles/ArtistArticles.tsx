@@ -131,7 +131,7 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
         ) {
-        id
+        slug
         articlesConnection(
           first: $first
           after: $after

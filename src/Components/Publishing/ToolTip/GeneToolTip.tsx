@@ -114,8 +114,8 @@ export const GeneToolTipContainer = track()(
       fragment GeneToolTip_gene on Gene {
         description
         href
-        id
-        _id
+        slug
+        internalID
         image {
           url(version: "tall")
         }

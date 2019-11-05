@@ -73,7 +73,7 @@ export default createFragmentContainer(Fillwidth, {
     fragment Fillwidth_artworks on ArtworkConnection {
       edges {
         node {
-          __id
+          id
           image {
             aspect_ratio
           }

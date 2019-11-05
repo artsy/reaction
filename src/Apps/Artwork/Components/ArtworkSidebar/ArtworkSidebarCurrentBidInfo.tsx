@@ -158,7 +158,7 @@ export const ArtworkSidebarCurrentBidInfoFragmentContainer = createFragmentConta
         sale {
           is_closed
           is_live_open
-          _id
+          internalID
           is_with_buyers_premium
         }
         sale_artwork {

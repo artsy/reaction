@@ -211,15 +211,15 @@ export class ArtworkApp extends React.Component<Props> {
 export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
   artwork: graphql`
     fragment ArtworkApp_artwork on Artwork {
-      id
-      _id
+      slug
+      internalID
       is_acquireable
       is_offerable
       availability
       price
       is_in_auction
       artists {
-        id
+        slug
         ...ArtistInfo_artist
       }
       artist {

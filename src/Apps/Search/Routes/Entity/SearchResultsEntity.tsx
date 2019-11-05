@@ -185,7 +185,7 @@ export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
                 description
                 displayLabel
                 href
-                _id
+                internalID
                 imageUrl
                 displayType
               }

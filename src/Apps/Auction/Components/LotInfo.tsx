@@ -47,7 +47,7 @@ export const LotInfo: React.FC<Props> = ({ artwork, saleArtwork }) => {
 export const LotInfoFragmentContainer = createFragmentContainer(LotInfo, {
   artwork: graphql`
     fragment LotInfo_artwork on Artwork {
-      _id
+      internalID
       date
       title
       imageUrl

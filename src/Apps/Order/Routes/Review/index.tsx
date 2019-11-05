@@ -412,7 +412,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Review_order on CommerceOrder {
-        id
+        internalID
         mode
         itemsTotal(precision: 2)
         lineItems {
@@ -420,10 +420,10 @@ export const ReviewFragmentContainer = createFragmentContainer(
             node {
               ...ItemReview_lineItem
               artwork {
-                id
-                _id
+                slug
+                internalID
                 artists {
-                  id
+                  slug
                 }
               }
             }
@@ -431,7 +431,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
         }
         ... on CommerceOfferOrder {
           myLastOffer {
-            id
+            internalID
           }
         }
         ...ArtworkSummaryItem_order

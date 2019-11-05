@@ -59,7 +59,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
               createBidderPosition(input: $input) {
                 result {
                   position {
-                    id
+                    internalID
                   }
                   status
                   message_header

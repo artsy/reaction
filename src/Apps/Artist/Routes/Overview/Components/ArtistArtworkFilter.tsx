@@ -95,7 +95,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           width: { type: "String" }
         ) {
         is_followed
-
         counts {
           partner_shows
           for_sale_artworks
@@ -104,7 +103,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           artworks
           has_make_offer_artworks
         }
-
         filtered_artworks(
           acquireable: $acquireable
           aggregations: $aggregations
@@ -126,7 +124,7 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
-          __id
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

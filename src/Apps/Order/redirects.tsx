@@ -245,17 +245,17 @@ export const redirects: RedirectRecord<OrderQuery> = {
 
 graphql`
   fragment redirects_order on CommerceOrder {
-    id
+    internalID
     mode
     state
     lastTransactionFailed
     ... on CommerceOfferOrder {
       myLastOffer {
-        id
+        internalID
         createdAt
       }
       lastOffer {
-        id
+        internalID
         createdAt
       }
       awaitingResponseFrom
@@ -267,13 +267,13 @@ graphql`
       edges {
         node {
           artwork {
-            id
+            slug
           }
         }
       }
     }
     creditCard {
-      id
+      internalID
     }
   }
 `

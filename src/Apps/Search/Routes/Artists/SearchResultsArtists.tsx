@@ -179,7 +179,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
             node {
               ... on Artist {
                 name
-                _id
+                internalID
                 href
                 imageUrl
                 bio

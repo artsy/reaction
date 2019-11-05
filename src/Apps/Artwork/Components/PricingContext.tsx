@@ -166,7 +166,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
           max
         }
         artists {
-          id
+          slug
         }
         category
         pricingContext {

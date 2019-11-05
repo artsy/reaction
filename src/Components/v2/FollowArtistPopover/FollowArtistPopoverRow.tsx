@@ -53,7 +53,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           ) {
             followArtist(input: $input) {
               artist {
-                __id
+                id
                 related {
                   suggested(
                     first: 1
@@ -62,8 +62,8 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
                   ) {
                     edges {
                       node {
-                        __id
-                        _id
+                        id
+                        internalID
                         ...FollowArtistPopoverRow_artist @relay(mask: false)
                       }
                     }
@@ -152,7 +152,7 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment FollowArtistPopoverRow_artist on Artist {
-        _id
+        internalID
         name
         image {
           cropped(width: 45, height: 45) {

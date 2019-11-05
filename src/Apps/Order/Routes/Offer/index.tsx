@@ -109,13 +109,13 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   mode
                   totalListPrice
                   totalListPriceCents
                   ... on CommerceOfferOrder {
                     myLastOffer {
-                      id
+                      internalID
                       amountCents
                       note
                     }
@@ -314,7 +314,7 @@ export const OfferFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Offer_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         totalListPrice(precision: 2)
@@ -324,7 +324,7 @@ export const OfferFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

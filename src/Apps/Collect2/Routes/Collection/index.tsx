@@ -210,25 +210,21 @@ export const CollectionRefetchContainer = createRefetchContainer(
         credit
         description
         headerImage
-        id
+        slug
         slug
         title
         featuredArtistExclusionIds
-
         query {
           artist_ids
           artist_id
           gene_id
         }
-
         relatedCollections {
           ...RelatedCollectionsRail_collections
         }
-
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
         }
-
         artworks(
           aggregations: $aggregations
           include_medium_filter_in_aggregation: true
@@ -237,17 +233,15 @@ export const CollectionRefetchContainer = createRefetchContainer(
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks
-
           aggregations {
             slice
             counts {
-              id
+              sludORinternalID
               name
               count
             }
           }
         }
-
         filtered_artworks: artworks(
           acquireable: $acquireable
           aggregations: $aggregations
@@ -265,7 +259,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
-          __id
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

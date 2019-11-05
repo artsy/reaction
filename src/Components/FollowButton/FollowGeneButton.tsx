@@ -44,7 +44,7 @@ export class FollowGeneButton extends React.Component<Props> {
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {
               gene {
-                __id
+                id
                 is_followed
               }
             }
@@ -91,8 +91,8 @@ export const FollowGeneButtonFragmentContainer = track({})(
   createFragmentContainer(Artsy.withSystemContext(FollowGeneButton), {
     gene: graphql`
       fragment FollowGeneButton_gene on Gene {
-        __id
         id
+        slug
         is_followed
       }
     `,

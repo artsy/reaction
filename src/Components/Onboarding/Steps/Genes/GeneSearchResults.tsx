@@ -108,9 +108,9 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
                 similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
                   edges {
                     node {
+                      slug
+                      internalID
                       id
-                      _id
-                      __id
                       name
                       image {
                         cropped(width: 100, height: 100) {
@@ -173,8 +173,8 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
       fragment GeneSearchResults_viewer on Viewer {
         match_gene(term: $term) {
           name
-          id
-          _id
+          sludORinternalID
+          internalID
           image {
             cropped(width: 100, height: 100) {
               url

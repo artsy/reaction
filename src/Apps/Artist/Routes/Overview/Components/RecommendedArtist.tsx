@@ -149,8 +149,8 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment RecommendedArtist_artist on Artist {
-        id
-        _id
+        slug
+        internalID
         name
         formatted_nationality_and_birthday
         href
@@ -166,7 +166,7 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
         ) {
           edges {
             node {
-              __id
+              id
               image {
                 aspect_ratio
               }

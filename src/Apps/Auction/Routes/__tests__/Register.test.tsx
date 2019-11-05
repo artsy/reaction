@@ -61,7 +61,6 @@ const setupTestEnv = () => {
         sale(id: "example-auction-id") {
           ...Register_sale
         }
-
         me {
           ...Register_me
         }

@@ -143,7 +143,7 @@ export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
             edges {
               node {
                 categories {
-                  id
+                  sludORinternalID
                 }
               }
             }

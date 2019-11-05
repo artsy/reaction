@@ -262,8 +262,8 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment ArtistHeader_artist on Artist {
-        _id
-        id
+        internalID
+        slug
         name
         nationality
         years

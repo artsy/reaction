@@ -237,7 +237,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...SelectedCareerAchievements_artist
         ...Genes_artist
         ...FollowArtistButton_artist
-        id
+        slug
         counts {
           partner_shows
           for_sale_artworks
@@ -261,19 +261,19 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           genes {
             edges {
               node {
-                id
+                slug
               }
             }
           }
           artists(first: 1) {
             edges {
               node {
-                __id
+                id
               }
             }
           }
         }
-        _id
+        internalID
         collections
         highlights {
           partners(
@@ -285,7 +285,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             edges {
               node {
                 categories {
-                  id
+                  sludORinternalID
                 }
               }
             }
@@ -294,7 +294,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         insights {
           type
         }
-
         sidebarAggregations: filtered_artworks(
           sort: $sort
           page: $page
@@ -304,7 +303,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             slice
             counts {
               name
-              id
+              sludORinternalID
             }
           }
           # Include the below fragment so that this will match
@@ -316,12 +315,11 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           artworks_connection(first: 30, after: "") @skip(if: $hasFilter) {
             edges {
               node {
-                id
+                sludORinternalID
               }
             }
           }
         }
-
         ...ArtistArtworkFilter_artist
           @arguments(
             acquireable: $acquireable

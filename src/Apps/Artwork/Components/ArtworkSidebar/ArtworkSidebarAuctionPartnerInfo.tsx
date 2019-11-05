@@ -59,7 +59,7 @@ export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentC
           estimate
         }
         sale {
-          _id
+          internalID
           is_closed
         }
       }

@@ -359,10 +359,9 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
     artworks: graphql`
       fragment Header_artworks on FilterArtworks {
         ...DefaultHeader_headerArtworks
-
         merchandisable_artists {
-          id
-          _id
+          sludORinternalID
+          internalID
           name
           imageUrl
           birthday

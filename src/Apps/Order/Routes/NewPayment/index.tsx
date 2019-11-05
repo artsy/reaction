@@ -233,7 +233,7 @@ export class NewPaymentRoute extends Component<
                 order {
                   state
                   creditCard {
-                    id
+                    internalID
                     name
                     street1
                     street2
@@ -317,16 +317,16 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
     `,
     order: graphql`
       fragment NewPayment_order on CommerceOrder {
-        id
+        internalID
         mode
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
                 artists {
-                  id
+                  slug
                 }
               }
             }
@@ -335,7 +335,7 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
         ... on CommerceOfferOrder {
           lastOffer {
             createdAt
-            id
+            internalID
             note
           }
         }

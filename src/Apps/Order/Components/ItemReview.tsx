@@ -98,7 +98,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
           }
         }
         edition_sets {
-          id
+          sludORinternalID
           dimensions {
             in
             cm

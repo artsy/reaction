@@ -160,7 +160,7 @@ export const SelectedCareerAchievementsFragmentContainer = createFragmentContain
             edges {
               node {
                 categories {
-                  id
+                  sludORinternalID
                 }
               }
             }

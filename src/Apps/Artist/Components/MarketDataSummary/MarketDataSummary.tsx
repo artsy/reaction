@@ -145,7 +145,7 @@ export default createFragmentContainer(MarketDataSummary, {
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      _id
+      internalID
       collections
       highlights {
         partners(
@@ -157,7 +157,7 @@ export default createFragmentContainer(MarketDataSummary, {
           edges {
             node {
               categories {
-                id
+                sludORinternalID
               }
             }
           }

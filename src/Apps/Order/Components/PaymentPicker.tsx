@@ -367,7 +367,7 @@ export class PaymentPicker extends React.Component<
             creditCardOrError {
               ... on CreditCardMutationSuccess {
                 creditCard {
-                  id
+                  internalID
                   name
                   street1
                   street2
@@ -424,7 +424,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
         creditCards(first: 100) {
           edges {
             node {
-              id
+              internalID
               brand
               last_digits
               expiration_month
@@ -436,11 +436,11 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
     `,
     order: graphql`
       fragment PaymentPicker_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         creditCard {
-          id
+          internalID
           name
           street1
           street2
@@ -472,7 +472,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

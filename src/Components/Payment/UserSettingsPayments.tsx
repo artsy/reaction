@@ -59,8 +59,8 @@ export interface CreditCardType {
 
 graphql`
   fragment UserSettingsPaymentsCreditCard on CreditCard {
-    __id
     id
+    internalID
     brand
     last_digits
     expiration_year
@@ -74,8 +74,8 @@ export const UserSettingsPaymentsFragmentContainer = createFragmentContainer(
   {
     me: graphql`
       fragment UserSettingsPayments_me on Me {
-        __id
         id
+        internalID
         creditCards(first: 100)
           @connection(key: "UserSettingsPayments_creditCards", filters: []) {
           edges {

@@ -216,7 +216,7 @@ export const CounterFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Counter_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         itemsTotal(precision: 2)
@@ -227,14 +227,14 @@ export const CounterFragmentContainer = createFragmentContainer(
             createdAt
           }
           myLastOffer {
-            id
+            internalID
           }
         }
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

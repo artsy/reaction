@@ -145,7 +145,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
               }
               edges {
                 node {
-                  __id
+                  id
                   href
                   summary
                   artists

@@ -174,7 +174,7 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
 
 graphql`
   fragment TransactionDetailsSummaryItemOfferProperties on CommerceOffer {
-    id
+    internalID
     amount(precision: 2)
     amountCents
     shippingTotal(precision: 2)

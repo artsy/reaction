@@ -179,7 +179,7 @@ export default createPaginationContainer(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
-        __id
+        id
         artists: artists_connection(first: $count, after: $cursor)
           @connection(key: "Artists_artists") {
           pageInfo {
@@ -187,7 +187,7 @@ export default createPaginationContainer(
           }
           edges {
             node {
-              __id
+              id
               ...ArtistRow_artist
             }
           }
@@ -234,7 +234,7 @@ export default createPaginationContainer(
         $cursor: String
         $aggregations: [ArtworkAggregation]
       ) {
-        node(__id: $geneNodeID) {
+        node(id: $geneNodeID) {
           ...Artists_gene
             @arguments(
               count: $count

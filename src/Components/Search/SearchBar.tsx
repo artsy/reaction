@@ -399,7 +399,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
               href
               ... on SearchableItem {
                 displayType
-                id
+                slug
               }
             }
           }

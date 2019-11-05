@@ -55,7 +55,7 @@ export class Accept extends Component<AcceptProps> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
@@ -258,15 +258,15 @@ export const AcceptFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Accept_order on CommerceOrder {
-        id
+        internalID
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
                 artists {
-                  id
+                  slug
                 }
               }
             }
@@ -274,7 +274,7 @@ export const AcceptFragmentContainer = createFragmentContainer(
         }
         ... on CommerceOfferOrder {
           lastOffer {
-            id
+            internalID
             createdAt
           }
         }

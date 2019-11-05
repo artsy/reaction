@@ -214,8 +214,8 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      _id
-      id
+      internalID
+      slug
       name
       href
       image {
@@ -259,10 +259,8 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       ...ArtistBio_bio
       ...ArtistMarketInsights_artist
       ...FollowArtistButton_artist
-
       # The below data is only used to determine whether a section
       # should be rendered
-
       biography_blurb(format: HTML, partner_bio: true) {
         text
       }

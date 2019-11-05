@@ -151,7 +151,7 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
     artwork: graphql`
       fragment ArtworkMeta_artwork on Artwork {
         href
-        _id
+        internalID
         date
         artist_names
         sale_message
@@ -181,7 +181,7 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
         context {
           __typename
           ... on ArtworkContextFair {
-            id
+            sludORinternalID
             name
           }
         }

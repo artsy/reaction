@@ -164,8 +164,8 @@ export const ArtistTooltipContainer = track({})(
     artist: graphql`
       fragment ArtistToolTip_artist on Artist {
         name
-        id
-        _id
+        slug
+        internalID
         formatted_nationality_and_birthday
         href
         blurb

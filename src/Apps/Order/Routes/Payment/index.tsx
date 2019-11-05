@@ -187,7 +187,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
               ... on CommerceOrderWithMutationSuccess {
                 order {
                   creditCard {
-                    id
+                    internalID
                     name
                     street1
                     street2
@@ -223,13 +223,13 @@ export const PaymentFragmentContainer = createFragmentContainer(
     `,
     order: graphql`
       fragment Payment_order on CommerceOrder {
-        id
+        internalID
         mode
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

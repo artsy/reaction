@@ -130,18 +130,17 @@ export const RelatedWorksArtworkGridRefetchContainer = createRefetchContainer<
         @argumentDefinitions(layerId: { type: "String" }) {
         layers {
           name
-          id
+          internalID
         }
-        id
+        slug
         layer(id: $layerId) {
           name
           artworksConnection(first: 8) {
             ...ArtworkGrid_artworks
-
             # Used to check for content
             edges {
               node {
-                id
+                slug
               }
             }
           }

@@ -57,7 +57,7 @@ export class FollowProfileButton extends React.Component<Props> {
           mutation FollowProfileButtonMutation($input: FollowProfileInput!) {
             followProfile(input: $input) {
               profile {
-                __id
+                id
                 is_followed
               }
             }
@@ -111,8 +111,8 @@ export const FollowProfileButtonFragmentContainer = track({})(
   createFragmentContainer(Artsy.withSystemContext(FollowProfileButton), {
     profile: graphql`
       fragment FollowProfileButton_profile on Profile {
-        __id
         id
+        slug
         is_followed
       }
     `,

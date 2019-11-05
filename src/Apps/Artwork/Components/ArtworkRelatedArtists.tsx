@@ -113,7 +113,7 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
           count: { type: "Int", defaultValue: 4 }
           cursor: { type: "String", defaultValue: "" }
         ) {
-        id
+        slug
         artist {
           href
           related {

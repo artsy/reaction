@@ -163,7 +163,7 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
 export default createFragmentContainer(withSystemContext(ArtworkGridItem), {
   artwork: graphql`
     fragment GridItem_artwork on Artwork {
-      _id
+      internalID
       title
       image_title
       image {

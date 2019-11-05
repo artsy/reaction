@@ -40,7 +40,7 @@ describe("buildServerApp", () => {
           query: graphql`
             query buildServerAppTestQuery {
               me {
-                __id
+                id
               }
             }
           `,

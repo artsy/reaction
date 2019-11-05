@@ -40,7 +40,7 @@ export const Artwork = createFragmentContainer(
           url
         }
         artist {
-          id
+          slug
         }
         ...MockRelayRendererFixtures_artworkMetadata
       }

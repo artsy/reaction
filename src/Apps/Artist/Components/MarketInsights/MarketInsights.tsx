@@ -222,7 +222,7 @@ export default createFragmentContainer(MarketInsights, {
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      _id
+      internalID
       collections
       highlights {
         partners(
@@ -234,7 +234,7 @@ export default createFragmentContainer(MarketInsights, {
           edges {
             node {
               categories {
-                id
+                sludORinternalID
               }
             }
           }

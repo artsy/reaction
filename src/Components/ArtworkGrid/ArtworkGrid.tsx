@@ -219,8 +219,8 @@ export default createFragmentContainer(ArtworkGrid, {
     fragment ArtworkGrid_artworks on ArtworkConnection {
       edges {
         node {
-          __id
           id
+          slug
           href
           image {
             aspect_ratio

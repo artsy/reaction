@@ -89,7 +89,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           cursor: { type: "String", defaultValue: "" }
           min_forsale_artworks: { type: "Int", defaultValue: 7 }
         ) {
-        id
+        slug
         name
         related {
           artists(
@@ -99,7 +99,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           ) @connection(key: "ArtistRecommendations_artists") {
             edges {
               node {
-                id
+                sludORinternalID
                 ...RecommendedArtist_artist
               }
             }

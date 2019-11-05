@@ -155,7 +155,7 @@ describe("buildClientApp", () => {
               query: graphql`
                 query buildClientAppTestQuery {
                   me {
-                    __id
+                    id
                   }
                 }
               `,

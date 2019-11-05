@@ -94,7 +94,7 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
           offers {
             edges {
               node {
-                id
+                internalID
                 amount(precision: 2)
                 createdAt(format: "MMM D")
                 fromParticipant
@@ -102,7 +102,7 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
             }
           }
           lastOffer {
-            id
+            internalID
             fromParticipant
             amount(precision: 2)
             shippingTotal(precision: 2)

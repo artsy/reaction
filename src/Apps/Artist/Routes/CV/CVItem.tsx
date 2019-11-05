@@ -186,7 +186,7 @@ export const CVPaginationContainer = createPaginationContainer(
           is_reference: { type: "Boolean", defaultValue: true }
           visible_to_public: { type: "Boolean", defaultValue: false }
         ) {
-        id
+        slug
         showsConnection(
           first: $count
           after: $cursor
@@ -201,7 +201,7 @@ export const CVPaginationContainer = createPaginationContainer(
           }
           edges {
             node {
-              __id
+              id
               partner {
                 ... on ExternalPartner {
                   name

@@ -38,7 +38,7 @@ describe("createMockNetworkLayer", () => {
       graphql`
         query createMockNetworkLayerTestQuery {
           artwork(id: "untitled") {
-            __id
+            id
             title
           }
         }
@@ -192,10 +192,10 @@ describe("createMockNetworkLayer", () => {
         query createMockNetworkLayerTestAliasQuery {
           artist(id: "banksy") {
             forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              __id
+              id
             }
             notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {
-              __id
+              id
             }
           }
         }
@@ -224,7 +224,7 @@ describe("createMockNetworkLayer", () => {
         query createMockNetworkLayerTestAliasPrecendenceQuery {
           artist(id: "banksy") {
             forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              __id
+              id
             }
           }
         }
@@ -249,7 +249,7 @@ describe("createMockNetworkLayer", () => {
             }
             ... on CommerceOrderWithMutationSuccess {
               order {
-                id
+                internalID
                 state
               }
             }

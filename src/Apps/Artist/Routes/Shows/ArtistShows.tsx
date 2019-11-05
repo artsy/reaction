@@ -191,7 +191,7 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
           sort: { type: "PartnerShowSorts" }
           status: { type: "String" }
         ) {
-        id
+        slug
         showsConnection(
           first: $first
           after: $after

@@ -50,10 +50,10 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
       image_alt: to_s
       ...ArtworkActions_artwork
       image {
-        id
+        internalID
       }
       images {
-        id
+        internalID
         uri: url(version: ["large"])
         placeholder: resized(width: 30, height: 30, version: "small") {
           url

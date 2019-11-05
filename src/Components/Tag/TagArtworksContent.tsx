@@ -86,7 +86,7 @@ export default createPaginationContainer(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
-        __id
+        id
         artworks: artworks_connection(
           first: $count
           after: $cursor
@@ -99,7 +99,7 @@ export default createPaginationContainer(
           ...ArtworkGrid_artworks
           edges {
             node {
-              __id
+              id
             }
           }
         }
@@ -134,7 +134,7 @@ export default createPaginationContainer(
         $cursor: String
         $sort: String
       ) {
-        node(__id: $filteredArtworksNodeID) {
+        node(id: $filteredArtworksNodeID) {
           ...TagArtworksContent_filtered_artworks
             @arguments(count: $count, cursor: $cursor)
         }

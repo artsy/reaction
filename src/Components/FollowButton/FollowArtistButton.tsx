@@ -103,7 +103,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
         mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
             artist {
-              __id
+              id
               is_followed
               counts {
                 follows
@@ -195,9 +195,9 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           showFollowSuggestions: { type: "Boolean", defaultValue: false }
         ) {
-        __id
-        name
         id
+        name
+        slug
         is_followed
         counts {
           follows

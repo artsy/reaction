@@ -101,9 +101,9 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                 exclude_artist_ids: $excludedArtistIds
               ) {
                 artists {
+                  sludORinternalID
+                  internalID
                   id
-                  _id
-                  __id
                   name
                   image {
                     cropped(width: 100, height: 100) {
@@ -113,7 +113,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                 }
               }
               artist {
-                __id
+                id
                 related {
                   suggested(
                     first: 1
@@ -122,9 +122,9 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                   ) {
                     edges {
                       node {
+                        sludORinternalID
+                        internalID
                         id
-                        _id
-                        __id
                         name
                         image {
                           cropped(width: 100, height: 100) {
@@ -185,9 +185,9 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
     viewer: graphql`
       fragment ArtistSearchResults_viewer on Viewer {
         match_artist(term: $term) {
+          sludORinternalID
+          internalID
           id
-          _id
-          __id
           name
           image {
             cropped(width: 100, height: 100) {

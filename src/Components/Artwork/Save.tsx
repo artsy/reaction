@@ -86,8 +86,8 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
-                __id
                 id
+                slug
                 is_saved
               }
             }
@@ -226,9 +226,9 @@ export const Container = styled.div`
 export default createFragmentContainer(Artsy.withSystemContext(SaveButton), {
   artwork: graphql`
     fragment Save_artwork on Artwork {
-      __id
-      _id
       id
+      internalID
+      slug
       is_saved
       title
     }

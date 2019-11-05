@@ -175,8 +175,8 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           isGalleryAuction
         }
         partner {
-          _id
-          id
+          internalID
+          slug
           type
           href
           name
@@ -187,7 +187,7 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           is_default_profile_public
           profile {
             ...FollowProfileButton_profile
-            id
+            slug
             icon {
               url(version: "square140")
             }

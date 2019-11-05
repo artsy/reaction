@@ -32,20 +32,20 @@ export const routes: RouteConfig[] = [
       query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!) {
         artwork(id: $artworkID) {
           ...LotInfo_artwork
-          _id
-          id
+          internalID
+          slug
           saleArtwork: sale_artwork(sale_id: $saleID) {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
-            _id
-            id
+            internalID
+            sludORinternalID
             sale {
               registrationStatus {
-                id
+                sludORinternalID
                 qualified_for_bidding
               }
-              _id
-              id
+              internalID
+              sludORinternalID
               name
               is_closed
               is_registration_closed
@@ -53,7 +53,7 @@ export const routes: RouteConfig[] = [
           }
         }
         me {
-          id
+          internalID
           has_qualified_credit_cards
         }
       }
@@ -78,7 +78,7 @@ export const routes: RouteConfig[] = [
     query: graphql`
       query routes_RegisterQuery($saleID: String!) {
         sale(id: $saleID) @principalField {
-          id
+          slug
           is_auction
           is_registration_closed
           is_preview

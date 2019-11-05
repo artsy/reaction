@@ -117,9 +117,9 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
         ) {
         cultural_maker
         artists {
-          __id
-          _id
           id
+          internalID
+          slug
           name
           href
           ...FollowArtistButton_artist

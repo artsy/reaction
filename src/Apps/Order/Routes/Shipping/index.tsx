@@ -114,7 +114,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   state
                   requestedFulfillment {
                     __typename
@@ -384,7 +384,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Shipping_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         requestedFulfillment {
@@ -404,7 +404,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
                 pickup_available
                 onlyShipsDomestically
                 shippingCountry

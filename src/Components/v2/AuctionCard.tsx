@@ -172,12 +172,12 @@ export const AuctionCardFragmentContainer = createFragmentContainer<{
         isGalleryAuction
         end_at
         href
-        id
+        slug
         is_live_open
         is_preview
         live_start_at
         registrationStatus {
-          id
+          internalID
         }
         is_registration_closed
         name

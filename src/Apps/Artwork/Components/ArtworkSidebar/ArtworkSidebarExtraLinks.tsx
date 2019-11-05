@@ -203,7 +203,7 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   {
     artwork: graphql`
       fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-        _id
+        internalID
         is_in_auction
         is_for_sale
         is_acquireable

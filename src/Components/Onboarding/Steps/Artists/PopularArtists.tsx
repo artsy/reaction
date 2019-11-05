@@ -110,9 +110,9 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 exclude_artist_ids: $excludedArtistIds
               ) {
                 artists {
+                  sludORinternalID
+                  internalID
                   id
-                  _id
-                  __id
                   name
                   image {
                     cropped(width: 100, height: 100) {
@@ -122,7 +122,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 }
               }
               artist {
-                __id
+                id
                 related {
                   suggested(
                     first: 1
@@ -131,9 +131,9 @@ class PopularArtistsContent extends React.Component<Props, null> {
                   ) {
                     edges {
                       node {
+                        sludORinternalID
+                        internalID
                         id
-                        _id
-                        __id
                         name
                         image {
                           cropped(width: 100, height: 100) {
@@ -195,9 +195,9 @@ const PopularArtistContentContainer = createFragmentContainer(
     popular_artists: graphql`
       fragment PopularArtists_popular_artists on PopularArtists {
         artists {
+          sludORinternalID
+          internalID
           id
-          _id
-          __id
           name
           image {
             cropped(width: 100, height: 100) {

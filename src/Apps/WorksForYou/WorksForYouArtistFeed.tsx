@@ -128,7 +128,7 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
             ...ArtworkGrid_artworks
             edges {
               node {
-                __id
+                id
               }
             }
           }

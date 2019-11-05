@@ -219,7 +219,7 @@ export const DetailsFragmentContainer = createFragmentContainer<Props>(
         sale_message
         cultural_maker
         artists(shallow: true) {
-          __id
+          id
           href
           name
         }

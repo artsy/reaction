@@ -162,7 +162,7 @@ graphql`
       edges {
         node {
           artwork {
-            id
+            slug
             is_acquireable
             is_offerable
           }

@@ -157,7 +157,6 @@ export const ArtistSeriesRailContainer = createFragmentContainer(
         thumbnail
         title
         price_guidance
-
         artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
           artworks_connection(first: 3) {
             edges {

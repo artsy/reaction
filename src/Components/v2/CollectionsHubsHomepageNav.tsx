@@ -61,7 +61,7 @@ export const CollectionsHubsHomepageNavFragmentContainer = createFragmentContain
     marketingHubCollections: graphql`
       fragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection
         @relay(plural: true) {
-        id
+        slug
         slug
         title
         thumbnail

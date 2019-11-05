@@ -167,7 +167,7 @@ export default createFragmentContainer(GeneArtworks, {
         price_range: { type: "String", defaultValue: "*" }
         dimension_range: { type: "String", defaultValue: "*" }
       ) {
-      id
+      slug
       filtered_artworks(
         aggregations: $aggregations
         for_sale: $for_sale
@@ -183,7 +183,7 @@ export default createFragmentContainer(GeneArtworks, {
           slice
           counts {
             name
-            id
+            sludORinternalID
           }
           ...Dropdown_aggregation
         }

@@ -79,8 +79,8 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
 export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
   artist: graphql`
     fragment ArtistApp_artist on Artist {
-      _id
-      id
+      internalID
+      slug
       ...ArtistMeta_artist
       ...ArtistHeader_artist
       ...NavigationTabs_artist

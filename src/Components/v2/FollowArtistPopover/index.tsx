@@ -83,8 +83,8 @@ export const FollowArtistPopoverFragmentContainer = createFragmentContainer(
           suggested(first: 3, exclude_followed_artists: true) {
             edges {
               node {
-                __id
-                _id
+                id
+                internalID
                 ...FollowArtistPopoverRow_artist
               }
             }

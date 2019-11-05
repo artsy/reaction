@@ -122,7 +122,7 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
       artworks_connection(first: $first, after: $after) {
         edges {
           node {
-            __id
+            id
             availability
             category
             date

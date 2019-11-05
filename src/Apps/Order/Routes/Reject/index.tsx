@@ -46,7 +46,7 @@ export class Reject extends Component<RejectProps> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
@@ -187,20 +187,20 @@ export const RejectFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Reject_order on CommerceOrder {
-        id
+        internalID
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
         }
         ... on CommerceOfferOrder {
           lastOffer {
-            id
+            internalID
             createdAt
           }
         }

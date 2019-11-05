@@ -230,7 +230,7 @@ export class ArtistMeta extends Component<Props> {
 export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
   artist: graphql`
     fragment ArtistMeta_artist on Artist {
-      id
+      slug
       name
       nationality
       birthday

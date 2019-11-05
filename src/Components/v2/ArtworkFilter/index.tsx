@@ -314,7 +314,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: $sort
           width: $width
         ) {
-          __id
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

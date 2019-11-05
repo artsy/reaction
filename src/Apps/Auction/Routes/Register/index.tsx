@@ -75,7 +75,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
           mutation RegisterCreateBidderMutation($input: CreateBidderInput!) {
             createBidder(input: $input) {
               bidder {
-                id
+                internalID
               }
             }
           }
@@ -115,10 +115,9 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
             ) {
               updateMyUserProfile(input: $profileInput) {
                 user {
-                  id
+                  internalID
                 }
               }
-
               createCreditCard(input: $creditCardInput) {
                 creditCardOrError {
                   ... on CreditCardMutationSuccess {
@@ -215,14 +214,14 @@ export const RegisterRouteFragmentContainer = createFragmentContainer(
   {
     sale: graphql`
       fragment Register_sale on Sale {
-        id
-        _id
+        slug
+        internalID
         status
       }
     `,
     me: graphql`
       fragment Register_me on Me {
-        id
+        internalID
       }
     `,
   }

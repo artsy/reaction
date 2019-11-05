@@ -111,7 +111,7 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
         recentlyViewedArtworks(first: 20) {
           edges {
             node {
-              __id
+              id
               image {
                 aspect_ratio
               }
