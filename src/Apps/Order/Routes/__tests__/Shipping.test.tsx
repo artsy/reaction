@@ -1,3 +1,4 @@
+import { ShippingTestQueryRawResponse } from "__generated__/ShippingTestQuery.graphql"
 import { cloneDeep } from "lodash"
 
 import { RadioGroup } from "@artsy/palette"
@@ -59,12 +60,12 @@ class ShippingTestPage extends OrderAppTestPage {
 describe("Shipping", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: ShippingFragmentContainer,
-    defaultData: { order: testOrder },
+    defaultData: { order: testOrder } as ShippingTestQueryRawResponse,
     defaultMutationResults: {
       ...settingOrderShipmentSuccess,
     },
     query: graphql`
-      query ShippingTestQuery {
+      query ShippingTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Shipping_order
         }

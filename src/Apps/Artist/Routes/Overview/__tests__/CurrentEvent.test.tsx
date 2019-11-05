@@ -1,3 +1,4 @@
+import { CurrentEvent_Test_QueryRawResponse } from "__generated__/CurrentEvent_Test_Query.graphql"
 import { CurrentEventFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Overview/CurrentEvent"
 import { CurrentEventFragmentContainer as CurrentEvent } from "Apps/Artist/Routes/Overview/Components/CurrentEvent"
 import { renderRelayTree } from "DevTools"
@@ -14,7 +15,7 @@ describe("CurrentEvent", () => {
     return await renderRelayTree({
       Component: CurrentEvent,
       query: graphql`
-        query CurrentEvent_Test_Query {
+        query CurrentEvent_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...CurrentEvent_artist
           }
@@ -22,7 +23,7 @@ describe("CurrentEvent", () => {
       `,
       mockResolvers: {
         Artist: () => CurrentEventFixture,
-      },
+      } as CurrentEvent_Test_QueryRawResponse,
     })
   }
 

@@ -1,3 +1,4 @@
+import { ArtworkBanner_Test_QueryRawResponse } from "__generated__/ArtworkBanner_Test_Query.graphql"
 import {
   ArtworkAuctionBannerFixture,
   ArtworkBenefitAuctionBannerFixture,
@@ -16,13 +17,13 @@ describe("ArtworkBanner", () => {
     return await renderRelayTree({
       Component: ArtworkBannerFragmentContainer,
       query: graphql`
-        query ArtworkBanner_Test_Query {
+        query ArtworkBanner_Test_Query @raw_response_type {
           artwork(id: "richard-anuszkiewicz-lino-yellow-318") {
             ...ArtworkBanner_artwork
           }
         }
       `,
-      mockData: { artwork: response },
+      mockData: { artwork: response } as ArtworkBanner_Test_QueryRawResponse,
     })
   }
 

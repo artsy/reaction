@@ -1,3 +1,4 @@
+import { SelectedCareerAchievementsTestQueryRawResponse } from "__generated__/SelectedCareerAchievementsTestQuery.graphql"
 import { artistResponse as ArtistFixture } from "Apps/__tests__/Fixtures/SelectedCareerAchievements"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -14,7 +15,7 @@ describe("SelectedCareerAchievements", () => {
     return await renderRelayTree({
       Component: SelectedCareerAchievements,
       query: graphql`
-        query SelectedCareerAchievementsTestQuery {
+        query SelectedCareerAchievementsTestQuery @raw_response_type {
           artist(id: "pablo-picasso") {
             ...SelectedCareerAchievements_artist
           }
@@ -22,7 +23,7 @@ describe("SelectedCareerAchievements", () => {
       `,
       mockData: {
         artist: artistData,
-      },
+      } as SelectedCareerAchievementsTestQueryRawResponse,
     })
   }
 

@@ -1,3 +1,4 @@
+import { ArtworkImageBrowser_Test_QueryRawResponse } from "__generated__/ArtworkImageBrowser_Test_Query.graphql"
 import { ArtworkImageBrowserFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkImageBrowser.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -17,13 +18,14 @@ describe("ArtworkImageBrowser", () => {
     return await renderRelayTree({
       Component: ArtworkImageBrowser,
       query: graphql`
-        query ArtworkImageBrowser_Test_Query($artworkID: String!) {
+        query ArtworkImageBrowser_Test_Query($artworkID: String!)
+          @raw_response_type {
           artwork(id: $artworkID) {
             ...ArtworkImageBrowser_artwork
           }
         }
       `,
-      mockData: data,
+      mockData: data as ArtworkImageBrowser_Test_QueryRawResponse,
       variables: {
         artwork_id: "matt-z-and-percy-still-life",
       },

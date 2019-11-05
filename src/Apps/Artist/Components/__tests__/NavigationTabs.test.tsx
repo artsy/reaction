@@ -1,3 +1,4 @@
+import { NavigationTabs_Test_QueryRawResponse } from "__generated__/NavigationTabs_Test_Query.graphql"
 import { NavigationTabsFixture } from "Apps/__tests__/Fixtures/Artist/Components/NavigationTabs"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { SystemContextProvider } from "Artsy"
@@ -19,7 +20,7 @@ describe("ArtistHeader", () => {
         )
       },
       query: graphql`
-        query NavigationTabs_Test_Query {
+        query NavigationTabs_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...NavigationTabs_artist
           }
@@ -27,7 +28,7 @@ describe("ArtistHeader", () => {
       `,
       mockResolvers: {
         Artist: () => response,
-      },
+      } as NavigationTabs_Test_QueryRawResponse,
     })
   }
 

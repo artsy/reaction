@@ -1,3 +1,4 @@
+import { ArtworkSidebarArtists_Test_QueryRawResponse } from "__generated__/ArtworkSidebarArtists_Test_Query.graphql"
 import {
   CulturalMakerWork,
   MultipleArtists,
@@ -14,7 +15,7 @@ describe("ArtworkSidebarArtists", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarArtistsFragmentContainer,
       query: graphql`
-        query ArtworkSidebarArtists_Test_Query {
+        query ArtworkSidebarArtists_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarArtists_artwork
           }
@@ -22,7 +23,7 @@ describe("ArtworkSidebarArtists", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarArtists_Test_QueryRawResponse,
     })
   }
 

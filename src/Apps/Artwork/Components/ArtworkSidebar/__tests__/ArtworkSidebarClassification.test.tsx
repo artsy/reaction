@@ -1,3 +1,4 @@
+import { ArtworkSidebarClassification_Test_QueryRawResponse } from "__generated__/ArtworkSidebarClassification_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"
@@ -19,7 +20,7 @@ describe("ArtworkSidebarClassification", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarClassificationFragmentContainer,
       query: graphql`
-        query ArtworkSidebarClassification_Test_Query {
+        query ArtworkSidebarClassification_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarClassification_artwork
           }
@@ -27,7 +28,7 @@ describe("ArtworkSidebarClassification", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarClassification_Test_QueryRawResponse,
     })
   }
 

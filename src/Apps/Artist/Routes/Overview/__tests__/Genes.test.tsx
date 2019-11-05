@@ -1,3 +1,4 @@
+import { Genes_Test_QueryRawResponse } from "__generated__/Genes_Test_Query.graphql"
 import { GenesFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Overview/Genes"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -14,7 +15,7 @@ describe("Genes", () => {
     return await renderRelayTree({
       Component: Genes,
       query: graphql`
-        query Genes_Test_Query {
+        query Genes_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...Genes_artist
           }
@@ -22,7 +23,7 @@ describe("Genes", () => {
       `,
       mockResolvers: {
         Artist: () => GenesFixture,
-      },
+      } as Genes_Test_QueryRawResponse,
     })
   }
 

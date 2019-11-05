@@ -1,3 +1,4 @@
+import { ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarCurrentBidInfo_Test_Query.graphql"
 import { LosingBidIcon, WinningBidIcon } from "@artsy/palette"
 import {
   AuctionPreview,
@@ -24,7 +25,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarCurrentBidInfoFragmentContainer,
       query: graphql`
-        query ArtworkSidebarCurrentBidInfo_Test_Query {
+        query ArtworkSidebarCurrentBidInfo_Test_Query @raw_response_type {
           artwork(id: "auction_artwork_estimate_premium") {
             ...ArtworkSidebarCurrentBidInfo_artwork
           }
@@ -32,7 +33,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse,
     })
   }
 

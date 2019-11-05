@@ -1,3 +1,4 @@
+import { OfferTestQueryRawResponse } from "__generated__/OfferTestQuery.graphql"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
@@ -32,13 +33,13 @@ describe("Offer InitialMutation", () => {
     Component: OfferFragmentContainer,
     defaultData: {
       order: testOrder,
-    },
+    } as OfferTestQueryRawResponse,
     defaultMutationResults: {
       ...initialOfferSuccess,
     },
     TestPage: OrderAppTestPage,
     query: graphql`
-      query OfferTestQuery {
+      query OfferTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Offer_order
         }

@@ -1,3 +1,4 @@
+import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsAppTestQuery.graphql"
 import { EntityHeader } from "@artsy/palette"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "Apps/Collect2/Routes/Collections"
@@ -18,7 +19,7 @@ describe("CollectionApp", () => {
       return await renderRelayTree({
         Component: CollectionsApp,
         query: graphql`
-          query CollectionsAppTestQuery {
+          query CollectionsAppTestQuery @raw_response_type {
             categories: marketingCategories {
               ...Collections_categories
             }
@@ -34,7 +35,7 @@ describe("CollectionApp", () => {
               ...CategoriesFixture,
             ],
           }),
-        },
+        } as CollectionsAppTestQueryRawResponse,
         wrapper: children => <MockBoot breakpoint="lg">{children}</MockBoot>,
       })
     }

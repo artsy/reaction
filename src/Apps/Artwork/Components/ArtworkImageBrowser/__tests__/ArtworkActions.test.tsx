@@ -1,3 +1,4 @@
+import { ArtworkActions_Test_QueryRawResponse } from "__generated__/ArtworkActions_Test_Query.graphql"
 import { Breakpoint } from "@artsy/palette"
 import { ArtworkActionsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -29,13 +30,14 @@ describe("ArtworkActions", () => {
     return await renderRelayTree({
       Component: ArtworkActions,
       query: graphql`
-        query ArtworkActions_Test_Query($artworkID: String!) {
+        query ArtworkActions_Test_Query($artworkID: String!)
+          @raw_response_type {
           artwork(id: $artworkID) {
             ...ArtworkActions_artwork
           }
         }
       `,
-      mockData: { artwork },
+      mockData: { artwork } as ArtworkActions_Test_QueryRawResponse,
       variables: {
         artwork_id: "matt-z-and-percy-still-life",
       },

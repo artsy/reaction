@@ -1,3 +1,4 @@
+import { RegisterValidTestQueryRawResponse } from "__generated__/RegisterValidTestQuery.graphql"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -57,7 +58,7 @@ const setupTestEnv = () => {
     TestPage: RegisterTestPage,
     Component: RegisterRouteFragmentContainer,
     query: graphql`
-      query RegisterValidTestQuery {
+      query RegisterValidTestQuery @raw_response_type {
         sale(id: "example-auction-id") {
           ...Register_sale
         }
@@ -66,7 +67,7 @@ const setupTestEnv = () => {
         }
       }
     `,
-    defaultData: RegisterQueryResponseFixture,
+    defaultData: RegisterQueryResponseFixture as RegisterValidTestQueryRawResponse,
     defaultMutationResults: {
       createCreditCard: {},
       createBidder: {},

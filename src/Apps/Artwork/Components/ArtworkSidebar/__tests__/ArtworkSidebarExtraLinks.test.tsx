@@ -1,3 +1,4 @@
+import { ArtworkSidebarExtraLinks_Test_QueryRawResponse } from "__generated__/ArtworkSidebarExtraLinks_Test_Query.graphql"
 import {
   AcquireableArtworkWithOneConsignableArtist,
   InquireableArtworkWithMultipleConsignableArtists,
@@ -17,7 +18,7 @@ describe("ArtworkSidebarExtraLinks", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarExtraLinksFragmentContainer,
       query: graphql`
-        query ArtworkSidebarExtraLinks_Test_Query {
+        query ArtworkSidebarExtraLinks_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarExtraLinks_artwork
           }
@@ -25,7 +26,7 @@ describe("ArtworkSidebarExtraLinks", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarExtraLinks_Test_QueryRawResponse,
     })
   }
 

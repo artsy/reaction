@@ -1,3 +1,4 @@
+import { PaymentPickerTestQueryRawResponse } from "__generated__/PaymentPickerTestQuery.graphql"
 import { BorderedRadio, Checkbox, Collapse, Link } from "@artsy/palette"
 import { PaymentPicker_me } from "__generated__/PaymentPicker_me.graphql"
 import {
@@ -140,12 +141,12 @@ describe(PaymentPickerFragmentContainer, () => {
         ...BuyOrderWithShippingDetails,
         creditCard: null,
       },
-    },
+    } as PaymentPickerTestQueryRawResponse,
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
     },
     query: graphql`
-      query PaymentPickerTestQuery {
+      query PaymentPickerTestQuery @raw_response_type {
         me {
           ...PaymentPicker_me
         }

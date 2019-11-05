@@ -1,3 +1,4 @@
+import { SearchBarTestQueryRawResponse } from "__generated__/SearchBarTestQuery.graphql"
 import Input from "Components/Input"
 import {
   getSearchTerm,
@@ -46,7 +47,8 @@ const getWrapper = (viewer, breakpoint = "xl") => {
   return renderRelayTree({
     Component: SearchBar,
     query: graphql`
-      query SearchBarTestQuery($term: String!, $hasTerm: Boolean!) {
+      query SearchBarTestQuery($term: String!, $hasTerm: Boolean!)
+        @raw_response_type {
         viewer {
           ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
         }
@@ -54,7 +56,7 @@ const getWrapper = (viewer, breakpoint = "xl") => {
     `,
     mockData: {
       viewer,
-    },
+    } as SearchBarTestQueryRawResponse,
     variables: {
       term: "perc",
       hasTerm: true,

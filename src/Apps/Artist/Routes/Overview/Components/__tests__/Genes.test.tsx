@@ -1,3 +1,4 @@
+import { GenesTestQueryRawResponse } from "__generated__/GenesTestQuery.graphql"
 import { Genes_artist } from "__generated__/Genes_artist.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -23,9 +24,9 @@ const render = (
     ),
     mockData: {
       artist,
-    },
+    } as GenesTestQueryRawResponse,
     query: graphql`
-      query GenesTestQuery {
+      query GenesTestQuery @raw_response_type {
         artist(id: "whatevs") {
           ...Genes_artist
         }

@@ -1,3 +1,4 @@
+import { RespondTestQueryRawResponse } from "__generated__/RespondTestQuery.graphql"
 import { BorderedRadio, Button } from "@artsy/palette"
 import {
   Buyer,
@@ -101,12 +102,12 @@ describe("The respond page", () => {
           unix: 222,
         },
       },
-    },
+    } as RespondTestQueryRawResponse,
     defaultMutationResults: {
       ...buyerCounterOfferSuccess,
     },
     query: graphql`
-      query RespondTestQuery {
+      query RespondTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Respond_order
         }

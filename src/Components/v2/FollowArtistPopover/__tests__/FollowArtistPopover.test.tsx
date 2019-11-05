@@ -1,3 +1,4 @@
+import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
 import { Breakpoint } from "@artsy/palette"
 import { SingleNonFollowedArtist } from "Apps/__tests__/Fixtures/Artists"
 import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/v2/FollowArtistPopover"
@@ -35,13 +36,14 @@ describe("Follow Artist Popover", () => {
     return await renderRelayTree({
       Component: FollowArtistPopover,
       query: graphql`
-        query FollowArtistPopover_Test_Query($artistID: String!) {
+        query FollowArtistPopover_Test_Query($artistID: String!)
+          @raw_response_type {
           artist(id: $artistID) {
             ...FollowArtistPopover_artist
           }
         }
       `,
-      mockData: artistResponse,
+      mockData: artistResponse as FollowArtistPopover_Test_QueryRawResponse,
       variables: {
         artist_id: "percy-z",
       },

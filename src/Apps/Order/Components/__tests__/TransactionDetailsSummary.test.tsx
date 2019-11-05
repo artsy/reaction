@@ -1,3 +1,4 @@
+import { TransactionDetailsSummaryItemTestQueryRawResponse } from "__generated__/TransactionDetailsSummaryItemTestQuery.graphql"
 import {
   mockResolver,
   OfferOrderWithOffers,
@@ -47,9 +48,9 @@ const render = (
     ),
     mockResolvers: mockResolver({
       ...order,
-    }),
+    }) as TransactionDetailsSummaryItemTestQueryRawResponse,
     query: graphql`
-      query TransactionDetailsSummaryItemTestQuery {
+      query TransactionDetailsSummaryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "whatevs") {
           ...TransactionDetailsSummaryItem_order
         }

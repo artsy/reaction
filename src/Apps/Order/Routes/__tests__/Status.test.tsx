@@ -1,3 +1,4 @@
+import { StatusQueryRawResponse } from "__generated__/StatusQuery.graphql"
 import { Message } from "@artsy/palette"
 import {
   BuyOrderPickup,
@@ -42,7 +43,7 @@ describe("Status", () => {
   const env = createTestEnv({
     Component: StatusFragmentContainer,
     query: graphql`
-      query StatusQuery {
+      query StatusQuery @raw_response_type {
         order: commerceOrder(id: "42") {
           ...Status_order
         }
@@ -50,7 +51,7 @@ describe("Status", () => {
     `,
     defaultData: {
       order: testOrder,
-    },
+    } as StatusQueryRawResponse,
     TestPage: StatusTestPage,
   })
 

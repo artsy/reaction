@@ -1,3 +1,4 @@
+import { ArtworkDetails_Test_QueryRawResponse } from "__generated__/ArtworkDetails_Test_Query.graphql"
 import { ArtworkDetailsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkDetails"
 import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -12,14 +13,14 @@ describe("ArtworkDetails", () => {
     return await renderRelayTree({
       Component: ArtworkDetailsFragmentContainer,
       query: graphql`
-        query ArtworkDetails_Test_Query {
+        query ArtworkDetails_Test_Query @raw_response_type {
           artwork(id: "richard-prince-untitled-fashion") {
             ...ArtworkDetails_artwork
           }
         }
       `,
       wrapper: n => <MockBoot breakpoint="xs">{n}</MockBoot>,
-      mockData: { artwork: response },
+      mockData: { artwork: response } as ArtworkDetails_Test_QueryRawResponse,
     })
   }
   let wrapper

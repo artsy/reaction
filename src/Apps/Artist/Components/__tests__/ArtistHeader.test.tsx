@@ -1,3 +1,4 @@
+import { ArtistHeader_Test_QueryRawResponse } from "__generated__/ArtistHeader_Test_Query.graphql"
 import { ArtistHeaderFixture } from "Apps/__tests__/Fixtures/Artist/Components/ArtistHeader"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "Apps/Artist/Components/ArtistHeader"
 import { renderRelayTree } from "DevTools"
@@ -10,7 +11,7 @@ describe("ArtistHeader", () => {
     return await renderRelayTree({
       Component: ArtistHeader,
       query: graphql`
-        query ArtistHeader_Test_Query {
+        query ArtistHeader_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...ArtistHeader_artist
           }
@@ -18,7 +19,7 @@ describe("ArtistHeader", () => {
       `,
       mockResolvers: {
         Artist: () => response,
-      },
+      } as ArtistHeader_Test_QueryRawResponse,
     })
   }
 

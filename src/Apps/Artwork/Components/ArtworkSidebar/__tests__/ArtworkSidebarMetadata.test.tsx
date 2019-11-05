@@ -1,3 +1,4 @@
+import { ArtworkSidebarMetadata_Test_QueryRawResponse } from "__generated__/ArtworkSidebarMetadata_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
@@ -21,7 +22,7 @@ describe("ArtworkSidebarMetadata", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarMetadataFragmentContainer,
       query: graphql`
-        query ArtworkSidebarMetadata_Test_Query {
+        query ArtworkSidebarMetadata_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarMetadata_artwork
           }
@@ -29,7 +30,7 @@ describe("ArtworkSidebarMetadata", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarMetadata_Test_QueryRawResponse,
     })
   }
 

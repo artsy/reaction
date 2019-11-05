@@ -1,3 +1,4 @@
+import { OfferHistoryItemTestQueryRawResponse } from "__generated__/OfferHistoryItemTestQuery.graphql"
 import { Button, Collapse } from "@artsy/palette"
 import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.graphql"
 import {
@@ -28,9 +29,9 @@ const render = (
       buyer: Buyer,
       lastOffer: OfferWithTotals,
       ...extraOrderProps,
-    }),
+    }) as OfferHistoryItemTestQueryRawResponse,
     query: graphql`
-      query OfferHistoryItemTestQuery {
+      query OfferHistoryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "foo") {
           ...OfferHistoryItem_order
         }

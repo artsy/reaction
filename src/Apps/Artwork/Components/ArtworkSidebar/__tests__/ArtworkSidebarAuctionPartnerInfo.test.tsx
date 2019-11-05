@@ -1,3 +1,4 @@
+import { ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarAuctionPartnerInfo_Test_Query.graphql"
 import { ArtworkWithEstimateAndPremium } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
 import { ArtworkSidebarAuctionPartnerInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarAuctionPartnerInfo"
 import { renderRelayTree } from "DevTools"
@@ -10,7 +11,7 @@ describe("ArtworkSidebarAuctionPartnerInfo", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarAuctionPartnerInfoFragmentContainer,
       query: graphql`
-        query ArtworkSidebarAuctionPartnerInfo_Test_Query {
+        query ArtworkSidebarAuctionPartnerInfo_Test_Query @raw_response_type {
           artwork(id: "auction_artwork_estimate_premium") {
             ...ArtworkSidebarAuctionPartnerInfo_artwork
           }
@@ -18,7 +19,7 @@ describe("ArtworkSidebarAuctionPartnerInfo", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse,
     })
   }
 

@@ -1,3 +1,4 @@
+import { AuctionResults_Test_QueryRawResponse } from "__generated__/AuctionResults_Test_Query.graphql"
 import { AuctionResultsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -15,7 +16,7 @@ describe("AuctionResults", () => {
     return await renderRelayTree({
       Component: AuctionResultsRoute,
       query: graphql`
-        query AuctionResults_Test_Query($artistID: String!) {
+        query AuctionResults_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...AuctionResults_artist
           }
@@ -23,7 +24,7 @@ describe("AuctionResults", () => {
       `,
       mockResolvers: {
         Artist: () => AuctionResultsFixture,
-      },
+      } as AuctionResults_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
       },

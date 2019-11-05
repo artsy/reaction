@@ -1,3 +1,4 @@
+import { CounterTestQueryRawResponse } from "__generated__/CounterTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -54,7 +55,7 @@ describe("Submit Pending Counter Offer", () => {
   const { buildPage, mutations, routes } = createTestEnv({
     Component: CounterFragmentContainer,
     query: graphql`
-      query CounterTestQuery {
+      query CounterTestQuery @raw_response_type {
         order: commerceOrder(id: "") {
           ...Counter_order
         }
@@ -70,7 +71,7 @@ describe("Submit Pending Counter Offer", () => {
           unix: 222,
         },
       },
-    },
+    } as CounterTestQueryRawResponse,
     TestPage: OrderAppTestPage,
   })
 

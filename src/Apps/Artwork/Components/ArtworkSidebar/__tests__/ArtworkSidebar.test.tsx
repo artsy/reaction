@@ -1,3 +1,4 @@
+import { ArtworkSidebar_Test_QueryRawResponse } from "__generated__/ArtworkSidebar_Test_Query.graphql"
 import { ArtworkSidebarFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar"
 import { ArtworkSidebarFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar"
 import { ArtworkSidebarArtists } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
@@ -12,7 +13,7 @@ describe("ArtworkSidebar", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarFragmentContainer,
       query: graphql`
-        query ArtworkSidebar_Test_Query {
+        query ArtworkSidebar_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebar_artwork
           }
@@ -20,7 +21,7 @@ describe("ArtworkSidebar", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebar_Test_QueryRawResponse,
     })
   }
 

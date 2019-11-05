@@ -1,3 +1,4 @@
+import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv_artwork } from "__generated__/createTestEnv_artwork.graphql"
 import { createTestEnvCreditCardMutation } from "__generated__/createTestEnvCreditCardMutation.graphql"
 import { createTestEnvOrderMutation } from "__generated__/createTestEnvOrderMutation.graphql"
@@ -190,13 +191,13 @@ describe("test envs", () => {
         title: "Test Artwork",
         artist: { name: "David Sheldrick" },
       },
-    },
+    } as createTestEnvQueryRawResponse,
     defaultMutationResults: {
       ...orderSuccess,
       ...creditCardSuccess,
     },
     query: graphql`
-      query createTestEnvQuery {
+      query createTestEnvQuery @raw_response_type {
         artwork(id: "unused") {
           ...createTestEnv_artwork
         }

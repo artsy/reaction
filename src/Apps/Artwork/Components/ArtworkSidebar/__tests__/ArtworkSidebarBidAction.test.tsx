@@ -1,3 +1,4 @@
+import { ArtworkSidebarBidAction_Test_QueryRawResponse } from "__generated__/ArtworkSidebarBidAction_Test_Query.graphql"
 import {
   ArtworkFromAuctionPreview,
   ArtworkFromClosedAuction,
@@ -24,7 +25,7 @@ describe("ArtworkSidebarBidAction", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarBidActionFragmentContainer,
       query: graphql`
-        query ArtworkSidebarBidAction_Test_Query {
+        query ArtworkSidebarBidAction_Test_Query @raw_response_type {
           artwork(id: "auction_artwork") {
             ...ArtworkSidebarBidAction_artwork
           }
@@ -32,7 +33,7 @@ describe("ArtworkSidebarBidAction", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as ArtworkSidebarBidAction_Test_QueryRawResponse,
     })
   }
 

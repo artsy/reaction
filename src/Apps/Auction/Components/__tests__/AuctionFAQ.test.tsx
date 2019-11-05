@@ -1,3 +1,4 @@
+import { AuctionFAQ_QueryRawResponse } from "__generated__/AuctionFAQ_Query.graphql"
 import { Sans, Toggle } from "@artsy/palette"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -51,7 +52,7 @@ describe("AuctionFAQ", () => {
     return await renderRelayTree({
       Component: AuctionFAQFragmentContainer,
       query: graphql`
-        query AuctionFAQ_Query {
+        query AuctionFAQ_Query @raw_response_type {
           viewer {
             ...AuctionFAQ_viewer
           }
@@ -59,7 +60,7 @@ describe("AuctionFAQ", () => {
       `,
       mockData: {
         viewer: mockResponse,
-      },
+      } as AuctionFAQ_QueryRawResponse,
     })
   }
 

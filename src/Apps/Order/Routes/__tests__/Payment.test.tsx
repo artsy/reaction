@@ -1,3 +1,4 @@
+import { PaymentTestQueryRawResponse } from "__generated__/PaymentTestQuery.graphql"
 import { BorderedRadio, Checkbox } from "@artsy/palette"
 
 import {
@@ -43,12 +44,12 @@ describe("Payment", () => {
     defaultData: {
       order: testOrder,
       me: { creditCards: { edges: [] } },
-    },
+    } as PaymentTestQueryRawResponse,
     defaultMutationResults: {
       ...settingOrderPaymentSuccess,
     },
     query: graphql`
-      query PaymentTestQuery {
+      query PaymentTestQuery @raw_response_type {
         me {
           ...Payment_me
         }

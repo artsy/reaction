@@ -1,3 +1,4 @@
+import { NewPaymentTestQueryRawResponse } from "__generated__/NewPaymentTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -81,13 +82,13 @@ describe("Payment", () => {
           unix: 222,
         },
       },
-    },
+    } as NewPaymentTestQueryRawResponse,
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
       ...fixFailedPaymentSuccess,
     },
     query: graphql`
-      query NewPaymentTestQuery {
+      query NewPaymentTestQuery @raw_response_type {
         me {
           ...NewPayment_me
         }

@@ -1,3 +1,4 @@
+import { CV_Test_QueryRawResponse } from "__generated__/CV_Test_Query.graphql"
 import { CVFixture } from "Apps/__tests__/Fixtures/Artist/Routes/CV"
 import { CVRouteFragmentContainer as CVRoute } from "Apps/Artist/Routes/CV"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -16,7 +17,7 @@ describe("CV Route", () => {
     return await renderRelayTree({
       Component: CVRoute,
       query: graphql`
-        query CV_Test_Query($artistID: String!) {
+        query CV_Test_Query($artistID: String!) @raw_response_type {
           viewer {
             ...CV_viewer
           }
@@ -27,7 +28,7 @@ describe("CV Route", () => {
         Artist: () => CVFixture.artist_soloShows,
         Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
         ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
-      },
+      } as CV_Test_QueryRawResponse,
       variables: {
         artist_id: "pablo-picasso",
       },

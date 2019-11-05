@@ -1,3 +1,4 @@
+import { ArtworkGrid_Test_QueryRawResponse } from "__generated__/ArtworkGrid_Test_Query.graphql"
 import { ArtworkGrid_artist } from "__generated__/ArtworkGrid_artist.graphql"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { renderRelayTree } from "DevTools"
@@ -112,7 +113,7 @@ describe("ArtworkGrid", () => {
         Component: TestContainer,
         componentProps,
         query: graphql`
-          query ArtworkGrid_Test_Query {
+          query ArtworkGrid_Test_Query @raw_response_type {
             artist(id: "pablo-picasso") {
               ...ArtworkGrid_artist
             }
@@ -120,7 +121,7 @@ describe("ArtworkGrid", () => {
         `,
         mockData: {
           artist: { artworks_connection: artworks },
-        },
+        } as ArtworkGrid_Test_QueryRawResponse,
       })
     }
 

@@ -1,3 +1,4 @@
+import { AcceptTestQueryRawResponse } from "__generated__/AcceptTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -50,7 +51,7 @@ describe("Accept seller offer", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: AcceptFragmentContainer,
     query: graphql`
-      query AcceptTestQuery {
+      query AcceptTestQuery @raw_response_type {
         order: commerceOrder(id: "") {
           ...Accept_order
         }
@@ -63,7 +64,7 @@ describe("Accept seller offer", () => {
           unix: 222,
         },
       },
-    },
+    } as AcceptTestQueryRawResponse,
     defaultMutationResults: {
       ...acceptOfferSuccess,
     },

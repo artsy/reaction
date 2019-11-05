@@ -1,3 +1,4 @@
+import { Details_Test_QueryRawResponse } from "__generated__/Details_Test_Query.graphql"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
 import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
@@ -14,7 +15,7 @@ describe("Details", () => {
         <DetailsFragmentContainer {...props as any} showSaleLine />
       ),
       query: graphql`
-        query Details_Test_Query {
+        query Details_Test_Query @raw_response_type {
           artwork(id: "gerhard-richter-bagdad-ii-flow-p10-1") {
             ...Details_artwork
           }
@@ -22,7 +23,7 @@ describe("Details", () => {
       `,
       mockResolvers: {
         Artwork: () => response,
-      },
+      } as Details_Test_QueryRawResponse,
     })
   }
 

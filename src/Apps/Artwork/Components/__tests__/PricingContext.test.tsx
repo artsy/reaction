@@ -1,4 +1,5 @@
 import { BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
+import { PricingContextTestQueryRawResponse } from "__generated__/PricingContextTestQuery.graphql"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -73,9 +74,9 @@ describe("PricingContext", () => {
           <PricingContextFragmentContainer {...props} />
         </div>
       ),
-      mockData,
+      mockData: mockData as PricingContextTestQueryRawResponse,
       query: graphql`
-        query PricingContextTestQuery {
+        query PricingContextTestQuery @raw_response_type {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }

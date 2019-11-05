@@ -1,3 +1,4 @@
+import { ArtistBioTestQueryRawResponse } from "__generated__/ArtistBioTestQuery.graphql"
 import React from "react"
 
 import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
@@ -24,7 +25,7 @@ describe("ArtistBio", () => {
         </MockBoot>
       ),
       query: graphql`
-        query ArtistBioTestQuery {
+        query ArtistBioTestQuery @raw_response_type {
           bio: artist(id: "unused") {
             ...ArtistBio_bio
           }
@@ -32,7 +33,7 @@ describe("ArtistBio", () => {
       `,
       mockResolvers: {
         Artist: (): Omit<ArtistBio_bio, " $refType"> => ({ biography_blurb }),
-      },
+      } as ArtistBioTestQueryRawResponse,
     })
   }
 

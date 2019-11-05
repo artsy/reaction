@@ -1,3 +1,4 @@
+import { SecurePaymentTestQueryRawResponse } from "__generated__/SecurePaymentTestQuery.graphql"
 import { SecurePayment_artwork } from "__generated__/SecurePayment_artwork.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -23,9 +24,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as SecurePaymentTestQueryRawResponse,
     query: graphql`
-      query SecurePaymentTestQuery {
+      query SecurePaymentTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...SecurePayment_artwork
         }

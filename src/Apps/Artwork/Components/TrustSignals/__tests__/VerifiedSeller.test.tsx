@@ -1,3 +1,4 @@
+import { VerifiedSellerTestQueryRawResponse } from "__generated__/VerifiedSellerTestQuery.graphql"
 import { VerifiedSeller_artwork } from "__generated__/VerifiedSeller_artwork.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -23,9 +24,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as VerifiedSellerTestQueryRawResponse,
     query: graphql`
-      query VerifiedSellerTestQuery {
+      query VerifiedSellerTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...VerifiedSeller_artwork
         }

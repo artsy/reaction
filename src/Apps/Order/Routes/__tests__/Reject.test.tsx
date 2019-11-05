@@ -1,3 +1,4 @@
+import { RejectTestQueryRawResponse } from "__generated__/RejectTestQuery.graphql"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { StepSummaryItem } from "Components/v2"
@@ -36,7 +37,7 @@ describe("Buyer rejects seller offer", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: RejectFragmentContainer,
     query: graphql`
-      query RejectTestQuery {
+      query RejectTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Reject_order
         }
@@ -49,7 +50,7 @@ describe("Buyer rejects seller offer", () => {
           unix: 222,
         },
       },
-    },
+    } as RejectTestQueryRawResponse,
     defaultMutationResults: {
       ...rejectOfferSuccess,
     },

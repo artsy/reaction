@@ -1,3 +1,4 @@
+import { ReviewTestQueryRawResponse } from "__generated__/ReviewTestQuery.graphql"
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
@@ -55,13 +56,13 @@ describe("Review", () => {
     Component: ReviewFragmentContainer,
     defaultData: {
       order: testOrder,
-    },
+    } as ReviewTestQueryRawResponse,
     defaultMutationResults: {
       ...submitOrderSuccess,
       ...submitOfferOrderSuccess,
     },
     query: graphql`
-      query ReviewTestQuery {
+      query ReviewTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Review_order
         }

@@ -1,3 +1,4 @@
+import { AuthenticityCertificateTestQueryRawResponse } from "__generated__/AuthenticityCertificateTestQuery.graphql"
 import { AuthenticityCertificate_artwork } from "__generated__/AuthenticityCertificate_artwork.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -25,9 +26,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as AuthenticityCertificateTestQueryRawResponse,
     query: graphql`
-      query AuthenticityCertificateTestQuery {
+      query AuthenticityCertificateTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...AuthenticityCertificate_artwork
         }

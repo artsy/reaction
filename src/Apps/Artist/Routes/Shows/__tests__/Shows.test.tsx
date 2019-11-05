@@ -1,3 +1,4 @@
+import { Shows_Test_QueryRawResponse } from "__generated__/Shows_Test_Query.graphql"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "Apps/Artist/Routes/Shows"
 import { MockBoot, renderRelayTree } from "DevTools"
 
@@ -16,13 +17,13 @@ describe("Shows Route", () => {
     return await renderRelayTree({
       Component: ShowsRoute,
       query: graphql`
-        query Shows_Test_Query($artistID: String!) {
+        query Shows_Test_Query($artistID: String!) @raw_response_type {
           viewer {
             ...Shows_viewer
           }
         }
       `,
-      mockData: { viewer: ShowsFixture },
+      mockData: { viewer: ShowsFixture } as Shows_Test_QueryRawResponse,
       variables: {
         artist_id: "pablo-picasso",
       },
