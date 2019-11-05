@@ -101,29 +101,25 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                 excludeFollowedArtists: true
                 excludeArtistIDs: $excludedArtistIds
               ) {
-                artists {
-                  slug
-                  internalID
-                  id
-                  name
-                  image {
-                    cropped(width: 100, height: 100) {
-                      url
-                    }
+                internalID
+                id
+                name
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
                   }
                 }
               }
               artist {
                 id
                 related {
-                  suggested(
+                  suggestedConnection(
                     first: 1
                     excludeFollowedArtists: true
                     excludeArtistIDs: $excludedArtistIds
                   ) {
                     edges {
                       node {
-                        slug
                         internalID
                         id
                         name
@@ -185,14 +181,14 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment ArtistSearchResults_viewer on Viewer {
-        match_artist: matchArtist(term: $term) {
-          slug
-          internalID
-          id
-          name
-          image {
-            cropped(width: 100, height: 100) {
-              url
+        searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {
+          edges {
+            node {
+              ... on SearchableItem {
+                internalID
+                displayLabel
+                imageUrl
+              }
             }
           }
         }

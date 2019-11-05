@@ -1,20 +1,18 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
-declare const _ArtworkFilter_viewer$ref: unique symbol;
-export type ArtworkFilter_viewer$ref = typeof _ArtworkFilter_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkFilter_viewer = {
-    readonly filtered_artworks: ({
-        readonly __id: string;
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
-    }) | null;
-    readonly " $refType": ArtworkFilter_viewer$ref;
+    readonly filtered_artworks: {
+        readonly id: string;
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkFilterArtworkGrid2_filtered_artworks">;
+    } | null;
+    readonly " $refType": "ArtworkFilter_viewer";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkFilter_viewer",
   "type": "Viewer",
@@ -34,19 +32,19 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "artist_id",
+      "name": "artistID",
       "type": "String",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "at_auction",
+      "name": "atAuction",
       "type": "Boolean",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "attribution_class",
+      "name": "attributionClass",
       "type": "[String]",
       "defaultValue": null
     },
@@ -58,7 +56,7 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "for_sale",
+      "name": "forSale",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -70,7 +68,7 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "inquireable_only",
+      "name": "inquireableOnly",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -82,7 +80,7 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "major_periods",
+      "name": "majorPeriods",
       "type": "[String]",
       "defaultValue": null
     },
@@ -106,13 +104,13 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "LocalArgument",
-      "name": "partner_id",
+      "name": "partnerID",
       "type": "ID",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "price_range",
+      "name": "priceRange",
       "type": "String",
       "defaultValue": null
     },
@@ -133,131 +131,112 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": "filtered_artworks",
-      "name": "filter_artworks",
+      "name": "artworksConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": "Boolean"
+          "variableName": "acquireable"
         },
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Variable",
-          "name": "artist_id",
-          "variableName": "artist_id",
-          "type": "String"
+          "name": "artistID",
+          "variableName": "artistID"
         },
         {
           "kind": "Variable",
-          "name": "at_auction",
-          "variableName": "at_auction",
-          "type": "Boolean"
+          "name": "atAuction",
+          "variableName": "atAuction"
         },
         {
           "kind": "Variable",
-          "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": "[String]"
+          "name": "attributionClass",
+          "variableName": "attributionClass"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": "String"
+          "variableName": "color"
         },
         {
           "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "name": "forSale",
+          "variableName": "forSale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": "String"
+          "variableName": "height"
         },
         {
           "kind": "Variable",
-          "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": "Boolean"
+          "name": "inquireableOnly",
+          "variableName": "inquireableOnly"
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "keyword",
-          "type": "String"
+          "variableName": "keyword"
         },
         {
           "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
+          "name": "majorPeriods",
+          "variableName": "majorPeriods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": "Boolean"
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
+          "name": "partnerID",
+          "variableName": "partnerID"
         },
         {
           "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "name": "priceRange",
+          "variableName": "priceRange"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "String"
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": "String"
+          "variableName": "width"
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "__id",
+          "name": "id",
           "args": null,
           "storageKey": null
         },
@@ -270,5 +249,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'b03297e790c78632c4fe24bd5d7de6e3';
+(node as any).hash = 'f28c0e2748a882143d35388b5610ffc9';
 export default node;

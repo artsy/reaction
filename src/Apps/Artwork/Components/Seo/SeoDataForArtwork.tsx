@@ -77,7 +77,14 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
         date
         is_price_hidden: isPriceHidden
         is_price_range: isPriceRange
-        price
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
         price_currency: priceCurrency
         sale_message: saleMessage
         meta_image: image {

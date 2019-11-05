@@ -1,20 +1,18 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _LotInfo_artwork$ref: unique symbol;
-export type LotInfo_artwork$ref = typeof _LotInfo_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type LotInfo_artwork = {
-    readonly _id: string;
+    readonly internalID: string;
     readonly date: string | null;
     readonly title: string | null;
     readonly imageUrl: string | null;
     readonly artistNames: string | null;
-    readonly " $refType": LotInfo_artwork$ref;
+    readonly " $refType": "LotInfo_artwork";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "LotInfo_artwork",
   "type": "Artwork",
@@ -24,7 +22,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -51,19 +49,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": "artistNames",
-      "name": "artist_names",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "artistNames",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '0f99e65d0fccd0cc06748c0b0bc328e7';
+(node as any).hash = 'a9095cb09b9315a79ed98a144176d186';
 export default node;

@@ -40,7 +40,7 @@
     "release": "auto shipit",
     "start": "yarn storybook",
     "storybook": "concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook --quiet -s ./public -p 9001'",
-    "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schemaV2.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
+    "sync-schema": "cat /Users/mzikherman/Documents/Code/Artsy/metaphysics/_schemaV2.graphql > data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema -- ../reaction/data",
     "test": "jest",
     "test:watch": "jest --watch --runInBand",

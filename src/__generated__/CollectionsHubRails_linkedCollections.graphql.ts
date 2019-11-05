@@ -1,21 +1,17 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistSeriesRail_collectionGroup$ref } from "./ArtistSeriesRail_collectionGroup.graphql";
-import { FeaturedCollectionsRails_collectionGroup$ref } from "./FeaturedCollectionsRails_collectionGroup.graphql";
-import { OtherCollectionsRail_collectionGroup$ref } from "./OtherCollectionsRail_collectionGroup.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
-declare const _CollectionsHubRails_linkedCollections$ref: unique symbol;
-export type CollectionsHubRails_linkedCollections$ref = typeof _CollectionsHubRails_linkedCollections$ref;
 export type CollectionsHubRails_linkedCollections = ReadonlyArray<{
     readonly groupType: MarketingGroupTypes;
-    readonly " $fragmentRefs": FeaturedCollectionsRails_collectionGroup$ref & OtherCollectionsRail_collectionGroup$ref & ArtistSeriesRail_collectionGroup$ref;
-    readonly " $refType": CollectionsHubRails_linkedCollections$ref;
+    readonly " $fragmentRefs": FragmentRefs<"FeaturedCollectionsRails_collectionGroup" | "OtherCollectionsRail_collectionGroup" | "ArtistSeriesRail_collectionGroup">;
+    readonly " $refType": "CollectionsHubRails_linkedCollections";
 }>;
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CollectionsHubRails_linkedCollections",
   "type": "MarketingCollectionGroup",

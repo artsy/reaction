@@ -1,16 +1,24 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SecurePayment_artwork$ref } from "./SecurePayment_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type SecurePaymentTestQueryVariables = {};
 export type SecurePaymentTestQueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"SecurePayment_artwork">;
+    } | null;
+};
+export type SecurePaymentTestQueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": SecurePayment_artwork$ref;
+        readonly is_acquireable: boolean | null;
+        readonly is_offerable: boolean | null;
+        readonly id: string | null;
     }) | null;
 };
 export type SecurePaymentTestQuery = {
     readonly response: SecurePaymentTestQueryResponse;
     readonly variables: SecurePaymentTestQueryVariables;
+    readonly rawResponse: SecurePaymentTestQueryRawResponse;
 };
 
 
@@ -19,14 +27,13 @@ export type SecurePaymentTestQuery = {
 query SecurePaymentTestQuery {
   artwork(id: "whatevs") {
     ...SecurePayment_artwork
-    __id
+    id
   }
 }
 
 fragment SecurePayment_artwork on Artwork {
-  is_acquireable
-  is_offerable
-  __id
+  is_acquireable: isAcquireable
+  is_offerable: isOfferable
 }
 */
 
@@ -35,24 +42,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "whatevs",
-    "type": "String!"
+    "value": "whatevs"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SecurePaymentTestQuery",
-  "id": null,
-  "text": "query SecurePaymentTestQuery {\n  artwork(id: \"whatevs\") {\n    ...SecurePayment_artwork\n    __id\n  }\n}\n\nfragment SecurePayment_artwork on Artwork {\n  is_acquireable\n  is_offerable\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SecurePaymentTestQuery",
@@ -65,7 +59,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -73,8 +67,7 @@ return {
             "kind": "FragmentSpread",
             "name": "SecurePayment_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -89,30 +82,43 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_acquireable",
+            "alias": "is_acquireable",
+            "name": "isAcquireable",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": "is_offerable",
+            "name": "isOfferable",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_offerable",
+            "name": "id",
             "args": null,
             "storageKey": null
-          },
-          v1
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SecurePaymentTestQuery",
+    "id": null,
+    "text": "query SecurePaymentTestQuery {\n  artwork(id: \"whatevs\") {\n    ...SecurePayment_artwork\n    id\n  }\n}\n\nfragment SecurePayment_artwork on Artwork {\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '165920d44caabb5774c28db0aa6f8de1';
+(node as any).hash = 'e4ce9cd4c7b6db43aa9600e859dee9a0';
 export default node;

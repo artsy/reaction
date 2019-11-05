@@ -1,41 +1,39 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ItemReview_lineItem$ref: unique symbol;
-export type ItemReview_lineItem$ref = typeof _ItemReview_lineItem$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ItemReview_lineItem = {
-    readonly artwork: ({
+    readonly artwork: {
         readonly artist_names: string | null;
         readonly title: string | null;
         readonly date: string | null;
         readonly medium: string | null;
-        readonly dimensions: ({
+        readonly dimensions: {
             readonly in: string | null;
             readonly cm: string | null;
-        }) | null;
-        readonly attribution_class: ({
+        } | null;
+        readonly attribution_class: {
             readonly shortDescription: string | null;
-        }) | null;
-        readonly image: ({
-            readonly resized: ({
+        } | null;
+        readonly image: {
+            readonly resized: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
-        readonly edition_sets: ReadonlyArray<({
-            readonly id: string;
-            readonly dimensions: ({
+            } | null;
+        } | null;
+        readonly edition_sets: ReadonlyArray<{
+            readonly internalID: string;
+            readonly dimensions: {
                 readonly in: string | null;
                 readonly cm: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly editionSetId: string | null;
-    readonly " $refType": ItemReview_lineItem$ref;
+    readonly " $refType": "ItemReview_lineItem";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "LinkedField",
   "alias": null,
@@ -60,20 +58,6 @@ var v0 = {
       "storageKey": null
     }
   ]
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -93,8 +77,8 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "artist_names",
+          "alias": "artist_names",
+          "name": "artistNames",
           "args": null,
           "storageKey": null
         },
@@ -119,11 +103,11 @@ return {
           "args": null,
           "storageKey": null
         },
-        v0,
+        (v0/*: any*/),
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "attribution_class",
+          "alias": "attribution_class",
+          "name": "attributionClass",
           "storageKey": null,
           "args": null,
           "concreteType": "AttributionClass",
@@ -135,8 +119,7 @@ return {
               "name": "shortDescription",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         },
         {
@@ -157,8 +140,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 185,
-                  "type": "Int"
+                  "value": 185
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -172,14 +154,13 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            v2
+            }
           ]
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "edition_sets",
+          "alias": "edition_sets",
+          "name": "editionSets",
           "storageKey": null,
           "args": null,
           "concreteType": "EditionSet",
@@ -188,15 +169,13 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "internalID",
               "args": null,
               "storageKey": null
             },
-            v0,
-            v1
+            (v0/*: any*/)
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -205,10 +184,9 @@ return {
       "name": "editionSetId",
       "args": null,
       "storageKey": null
-    },
-    v2
+    }
   ]
 };
 })();
-(node as any).hash = 'c07dc43284e1d589e8b252309ad5443a';
+(node as any).hash = '1cbb0c8982674f0dcdd9ee38d36fe8cf';
 export default node;

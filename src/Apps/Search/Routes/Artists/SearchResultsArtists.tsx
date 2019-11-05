@@ -159,7 +159,7 @@ export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer
           before: { type: "String" }
           page: { type: "Int" }
         ) {
-        search(
+        searchConnection(
           query: $term
           first: $first
           after: $after

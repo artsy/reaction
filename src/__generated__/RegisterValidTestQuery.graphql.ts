@@ -1,20 +1,32 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Register_me$ref } from "./Register_me.graphql";
-import { Register_sale$ref } from "./Register_sale.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type RegisterValidTestQueryVariables = {};
 export type RegisterValidTestQueryResponse = {
+    readonly sale: {
+        readonly " $fragmentRefs": FragmentRefs<"Register_sale">;
+    } | null;
+    readonly me: {
+        readonly " $fragmentRefs": FragmentRefs<"Register_me">;
+    } | null;
+};
+export type RegisterValidTestQueryRawResponse = {
     readonly sale: ({
-        readonly " $fragmentRefs": Register_sale$ref;
+        readonly slug: string;
+        readonly internalID: string;
+        readonly status: string | null;
+        readonly id: string | null;
     }) | null;
     readonly me: ({
-        readonly " $fragmentRefs": Register_me$ref;
+        readonly internalID: string;
+        readonly id: string | null;
     }) | null;
 };
 export type RegisterValidTestQuery = {
     readonly response: RegisterValidTestQueryResponse;
     readonly variables: RegisterValidTestQueryVariables;
+    readonly rawResponse: RegisterValidTestQueryRawResponse;
 };
 
 
@@ -23,24 +35,22 @@ export type RegisterValidTestQuery = {
 query RegisterValidTestQuery {
   sale(id: "example-auction-id") {
     ...Register_sale
-    __id
+    id
   }
   me {
     ...Register_me
-    __id
+    id
   }
 }
 
 fragment Register_sale on Sale {
-  id
-  _id
+  slug
+  internalID
   status
-  __id
 }
 
 fragment Register_me on Me {
-  id
-  __id
+  internalID
 }
 */
 
@@ -49,14 +59,13 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "example-auction-id",
-    "type": "String!"
+    "value": "example-auction-id"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
@@ -69,11 +78,6 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "RegisterValidTestQuery",
-  "id": null,
-  "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    __id\n  }\n  me {\n    ...Register_me\n    __id\n  }\n}\n\nfragment Register_sale on Sale {\n  id\n  _id\n  status\n  __id\n}\n\nfragment Register_me on Me {\n  id\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "RegisterValidTestQuery",
@@ -86,7 +90,7 @@ return {
         "alias": null,
         "name": "sale",
         "storageKey": "sale(id:\"example-auction-id\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Sale",
         "plural": false,
         "selections": [
@@ -94,8 +98,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Register_sale",
             "args": null
-          },
-          v1
+          }
         ]
       },
       {
@@ -111,8 +114,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Register_me",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -127,18 +129,18 @@ return {
         "alias": null,
         "name": "sale",
         "storageKey": "sale(id:\"example-auction-id\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Sale",
         "plural": false,
         "selections": [
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "_id",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -146,7 +148,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1
+          (v2/*: any*/)
         ]
       },
       {
@@ -158,13 +160,20 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          v2,
-          v1
+          (v1/*: any*/),
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "RegisterValidTestQuery",
+    "id": null,
+    "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    id\n  }\n  me {\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n\nfragment Register_me on Me {\n  internalID\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e09da6584348e9a59dfbc0da8831f992';
+(node as any).hash = 'a4c265e5981c01e987b8ac249f776df2';
 export default node;

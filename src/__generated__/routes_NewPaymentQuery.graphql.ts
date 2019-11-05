@@ -1,18 +1,17 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { NewPayment_me$ref } from "./NewPayment_me.graphql";
-import { NewPayment_order$ref } from "./NewPayment_order.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_NewPaymentQueryVariables = {
-    readonly orderID: string;
+    orderID: string;
 };
 export type routes_NewPaymentQueryResponse = {
-    readonly me: ({
-        readonly " $fragmentRefs": NewPayment_me$ref;
-    }) | null;
-    readonly order: ({
-        readonly " $fragmentRefs": NewPayment_order$ref;
-    }) | null;
+    readonly me: {
+        readonly " $fragmentRefs": FragmentRefs<"NewPayment_me">;
+    } | null;
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"NewPayment_order">;
+    } | null;
 };
 export type routes_NewPaymentQuery = {
     readonly response: routes_NewPaymentQueryResponse;
@@ -27,71 +26,66 @@ query routes_NewPaymentQuery(
 ) {
   me {
     ...NewPayment_me
-    __id
+    id
   }
   order: commerceOrder(id: $orderID) {
     __typename
     ...NewPayment_order
-    __id: id
   }
 }
 
 fragment NewPayment_me on Me {
   ...PaymentPicker_me
-  __id
 }
 
 fragment NewPayment_order on CommerceOrder {
-  id
+  internalID
   mode
   stateExpiresAt
   lineItems {
     edges {
       node {
         artwork {
-          id
+          slug
           artists {
+            slug
             id
-            __id
           }
-          __id
+          id
         }
-        __id: id
       }
     }
   }
   ... on CommerceOfferOrder {
     lastOffer {
       createdAt
-      id
+      internalID
       note
-      __id: id
     }
   }
   ...PaymentPicker_order
   ...ArtworkSummaryItem_order
   ...TransactionDetailsSummaryItem_order
-  __id: id
 }
 
 fragment PaymentPicker_order on CommerceOrder {
-  id
+  internalID
   mode
   state
   creditCard {
-    id
+    internalID
     name
     street1
     street2
     city
     state
     country
-    postal_code
-    expiration_month
-    expiration_year
-    last_digits
+    postal_code: postalCode
+    expiration_month: expirationMonth
+    expiration_year: expirationYear
+    last_digits: lastDigits
     brand
-    __id
+    id
   }
   requestedFulfillment {
     __typename
@@ -112,14 +106,12 @@ fragment PaymentPicker_order on CommerceOrder {
     edges {
       node {
         artwork {
+          slug
           id
-          __id
         }
-        __id: id
       }
     }
   }
-  __id: id
 }
 
 fragment ArtworkSummaryItem_order on CommerceOrder {
@@ -129,17 +121,17 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
       name
     }
     ... on Node {
-      __id
+      id
     }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
     edges {
       node {
         artwork {
-          artist_names
+          artist_names: artistNames
           title
           date
           shippingOrigin
@@ -147,15 +139,12 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
           }
-          __id
+          id
         }
-        __id: id
       }
     }
   }
-  __id: id
 }
 
 fragment TransactionDetailsSummaryItem_order on CommerceOrder {
@@ -170,7 +159,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   buyerTotal(precision: 2)
   ... on CommerceOfferOrder {
     lastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -181,10 +170,9 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
-      __id: id
     }
     myLastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -195,26 +183,23 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
-      __id: id
     }
   }
-  __id: id
 }
 
 fragment PaymentPicker_me on Me {
   creditCards(first: 100) {
     edges {
       node {
-        id
+        internalID
         brand
-        last_digits
-        expiration_month
-        expiration_year
-        __id
+        last_digits: lastDigits
+        expiration_month: expirationMonth
+        expiration_year: expirationYear
+        id
       }
     }
   }
-  __id
 }
 */
 
@@ -227,67 +212,66 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "orderID",
-    "type": "ID"
+    "variableName": "orderID"
   }
 ],
-v3 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "brand",
   "args": null,
   "storageKey": null
 },
+v4 = {
+  "kind": "ScalarField",
+  "alias": "last_digits",
+  "name": "lastDigits",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": "expiration_month",
+  "name": "expirationMonth",
+  "args": null,
+  "storageKey": null
+},
 v6 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "last_digits",
+  "alias": "expiration_year",
+  "name": "expirationYear",
   "args": null,
   "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "expiration_month",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v8 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "expiration_year",
+  "name": "slug",
   "args": null,
   "storageKey": null
 },
 v9 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "state",
   "args": null,
   "storageKey": null
 },
@@ -298,40 +282,39 @@ v10 = {
   "args": null,
   "storageKey": null
 },
-v11 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
-v12 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
-v13 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "country",
-  "args": null,
-  "storageKey": null
-},
-v14 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "city",
   "args": null,
   "storageKey": null
 },
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v13 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v14 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2
+  }
+],
 v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v11,
+  "args": (v14/*: any*/),
   "storageKey": "shippingTotal(precision:2)"
 },
 v16 = {
@@ -345,7 +328,7 @@ v17 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v11,
+  "args": (v14/*: any*/),
   "storageKey": "taxTotal(precision:2)"
 },
 v18 = {
@@ -359,7 +342,7 @@ v19 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v11,
+  "args": (v14/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
 v20 = {
@@ -373,7 +356,7 @@ v21 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "amount",
-  "args": v11,
+  "args": (v14/*: any*/),
   "storageKey": "amount(precision:2)"
 },
 v22 = {
@@ -399,17 +382,12 @@ v24 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_NewPaymentQuery",
-  "id": null,
-  "text": "query routes_NewPaymentQuery(\n  $orderID: ID!\n) {\n  me {\n    ...NewPayment_me\n    __id\n  }\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...NewPayment_order\n    __id: id\n  }\n}\n\nfragment NewPayment_me on Me {\n  ...PaymentPicker_me\n  __id\n}\n\nfragment NewPayment_order on CommerceOrder {\n  id\n  mode\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          artists {\n            id\n            __id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      createdAt\n      id\n      note\n      __id: id\n    }\n  }\n  ...PaymentPicker_order\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  id\n  mode\n  state\n  creditCard {\n    id\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code\n    expiration_month\n    expiration_year\n    last_digits\n    brand\n    __id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        id\n        brand\n        last_digits\n        expiration_month\n        expiration_year\n        __id\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_NewPaymentQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -424,8 +402,7 @@ return {
             "kind": "FragmentSpread",
             "name": "NewPayment_me",
             "args": null
-          },
-          v1
+          }
         ]
       },
       {
@@ -433,7 +410,7 @@ return {
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v2,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -441,8 +418,7 @@ return {
             "kind": "FragmentSpread",
             "name": "NewPayment_order",
             "args": null
-          },
-          v3
+          }
         ]
       }
     ]
@@ -450,7 +426,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_NewPaymentQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -470,8 +446,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 100,
-                "type": "Int"
+                "value": 100
               }
             ],
             "concreteType": "CreditCardConnection",
@@ -495,19 +470,19 @@ return {
                     "concreteType": "CreditCard",
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5,
-                      v6,
-                      v7,
-                      v8,
-                      v1
+                      (v2/*: any*/),
+                      (v3/*: any*/),
+                      (v4/*: any*/),
+                      (v5/*: any*/),
+                      (v6/*: any*/),
+                      (v7/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v1
+          (v7/*: any*/)
         ]
       },
       {
@@ -515,31 +490,18 @@ return {
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v2,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
+          (v2/*: any*/),
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "sellerDetails",
-            "storageKey": null,
+            "name": "mode",
             "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v9,
-              v1,
-              {
-                "kind": "InlineFragment",
-                "type": "Partner",
-                "selections": [
-                  v10
-                ]
-              }
-            ]
+            "storageKey": null
           },
-          v4,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -583,7 +545,7 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v4,
+                          (v8/*: any*/),
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -593,15 +555,15 @@ return {
                             "concreteType": "Artist",
                             "plural": true,
                             "selections": [
-                              v4,
-                              v1
+                              (v8/*: any*/),
+                              (v7/*: any*/)
                             ]
                           },
-                          v1,
+                          (v7/*: any*/),
                           {
                             "kind": "ScalarField",
-                            "alias": null,
-                            "name": "artist_names",
+                            "alias": "artist_names",
+                            "name": "artistNames",
                             "args": null,
                             "storageKey": null
                           },
@@ -644,8 +606,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -659,27 +620,18 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              v3
+                              }
                             ]
                           }
                         ]
-                      },
-                      v3
+                      }
                     ]
                   }
                 ]
               }
             ]
           },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "totalListPrice",
-            "args": v11,
-            "storageKey": "totalListPrice(precision:2)"
-          },
-          v12,
+          (v9/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -689,8 +641,8 @@ return {
             "concreteType": "CreditCard",
             "plural": false,
             "selections": [
-              v13,
-              v4,
+              (v2/*: any*/),
+              (v10/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -705,21 +657,21 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v14,
-              v12,
-              v10,
+              (v11/*: any*/),
+              (v9/*: any*/),
+              (v12/*: any*/),
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "postal_code",
+                "alias": "postal_code",
+                "name": "postalCode",
                 "args": null,
                 "storageKey": null
               },
-              v7,
-              v8,
-              v6,
-              v5,
-              v1
+              (v5/*: any*/),
+              (v6/*: any*/),
+              (v4/*: any*/),
+              (v3/*: any*/),
+              (v7/*: any*/)
             ]
           },
           {
@@ -731,25 +683,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v9,
-              {
-                "kind": "InlineFragment",
-                "type": "CommercePickup",
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "fulfillmentType",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              },
+              (v13/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceShip",
                 "selections": [
-                  v10,
+                  (v10/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -764,7 +703,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v14,
+                  (v11/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -772,7 +711,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v13,
+                  (v12/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -781,30 +720,62 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "CommercePickup",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "fulfillmentType",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
               }
             ]
           },
-          v3,
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "mode",
+            "name": "sellerDetails",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              (v13/*: any*/),
+              (v7/*: any*/),
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  (v10/*: any*/)
+                ]
+              }
+            ]
           },
-          v9,
-          v15,
-          v16,
-          v17,
-          v18,
+          (v13/*: any*/),
+          (v15/*: any*/),
+          (v16/*: any*/),
+          (v17/*: any*/),
+          (v18/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v11,
+            "args": (v14/*: any*/),
             "storageKey": "itemsTotal(precision:2)"
           },
-          v19,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "totalListPrice",
+            "args": (v14/*: any*/),
+            "storageKey": "totalListPrice(precision:2)"
+          },
+          (v19/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -818,7 +789,6 @@ return {
                 "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
-                  v15,
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -826,17 +796,17 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v20,
-                  v3,
-                  v21,
-                  v22,
-                  v4,
-                  v16,
-                  v17,
-                  v18,
-                  v19,
-                  v23,
-                  v24
+                  (v2/*: any*/),
+                  (v20/*: any*/),
+                  (v21/*: any*/),
+                  (v22/*: any*/),
+                  (v15/*: any*/),
+                  (v16/*: any*/),
+                  (v17/*: any*/),
+                  (v18/*: any*/),
+                  (v19/*: any*/),
+                  (v23/*: any*/),
+                  (v24/*: any*/)
                 ]
               },
               {
@@ -848,18 +818,17 @@ return {
                 "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
-                  v18,
-                  v4,
-                  v22,
-                  v15,
-                  v16,
-                  v17,
-                  v21,
-                  v19,
-                  v23,
-                  v24,
-                  v20,
-                  v3
+                  (v2/*: any*/),
+                  (v21/*: any*/),
+                  (v22/*: any*/),
+                  (v15/*: any*/),
+                  (v16/*: any*/),
+                  (v17/*: any*/),
+                  (v18/*: any*/),
+                  (v19/*: any*/),
+                  (v23/*: any*/),
+                  (v24/*: any*/),
+                  (v20/*: any*/)
                 ]
               }
             ]
@@ -867,6 +836,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_NewPaymentQuery",
+    "id": null,
+    "text": "query routes_NewPaymentQuery(\n  $orderID: ID!\n) {\n  me {\n    ...NewPayment_me\n    id\n  }\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...NewPayment_order\n  }\n}\n\nfragment NewPayment_me on Me {\n  ...PaymentPicker_me\n}\n\nfragment NewPayment_order on CommerceOrder {\n  internalID\n  mode\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          artists {\n            slug\n            id\n          }\n          id\n        }\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      createdAt\n      internalID\n      note\n    }\n  }\n  ...PaymentPicker_order\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code: postalCode\n    expiration_month: expirationMonth\n    expiration_year: expirationYear\n    last_digits: lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_month: expirationMonth\n        expiration_year: expirationYear\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

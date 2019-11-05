@@ -1,16 +1,24 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { AuthenticityCertificate_artwork$ref } from "./AuthenticityCertificate_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type AuthenticityCertificateTestQueryVariables = {};
 export type AuthenticityCertificateTestQueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"AuthenticityCertificate_artwork">;
+    } | null;
+};
+export type AuthenticityCertificateTestQueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": AuthenticityCertificate_artwork$ref;
+        readonly hasCertificateOfAuthenticity: boolean | null;
+        readonly is_biddable: boolean | null;
+        readonly id: string | null;
     }) | null;
 };
 export type AuthenticityCertificateTestQuery = {
     readonly response: AuthenticityCertificateTestQueryResponse;
     readonly variables: AuthenticityCertificateTestQueryVariables;
+    readonly rawResponse: AuthenticityCertificateTestQueryRawResponse;
 };
 
 
@@ -19,14 +27,13 @@ export type AuthenticityCertificateTestQuery = {
 query AuthenticityCertificateTestQuery {
   artwork(id: "whatevs") {
     ...AuthenticityCertificate_artwork
-    __id
+    id
   }
 }
 
 fragment AuthenticityCertificate_artwork on Artwork {
   hasCertificateOfAuthenticity
-  is_biddable
-  __id
+  is_biddable: isBiddable
 }
 */
 
@@ -35,24 +42,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "whatevs",
-    "type": "String!"
+    "value": "whatevs"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "AuthenticityCertificateTestQuery",
-  "id": null,
-  "text": "query AuthenticityCertificateTestQuery {\n  artwork(id: \"whatevs\") {\n    ...AuthenticityCertificate_artwork\n    __id\n  }\n}\n\nfragment AuthenticityCertificate_artwork on Artwork {\n  hasCertificateOfAuthenticity\n  is_biddable\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "AuthenticityCertificateTestQuery",
@@ -65,7 +59,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -73,8 +67,7 @@ return {
             "kind": "FragmentSpread",
             "name": "AuthenticityCertificate_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -89,7 +82,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -102,17 +95,30 @@ return {
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_biddable",
+            "alias": "is_biddable",
+            "name": "isBiddable",
             "args": null,
             "storageKey": null
           },
-          v1
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "AuthenticityCertificateTestQuery",
+    "id": null,
+    "text": "query AuthenticityCertificateTestQuery {\n  artwork(id: \"whatevs\") {\n    ...AuthenticityCertificate_artwork\n    id\n  }\n}\n\nfragment AuthenticityCertificate_artwork on Artwork {\n  hasCertificateOfAuthenticity\n  is_biddable: isBiddable\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '4eb77c6a8491f223fde8a34290f5c854';
+(node as any).hash = 'dad823a90dc192a9c17a406d84cdc0c8';
 export default node;

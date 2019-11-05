@@ -2,23 +2,23 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowArtistInput = {
-    readonly artist_id?: string | null;
+    readonly artistID: string;
     readonly unfollow?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type FollowArtistButtonMutationVariables = {
-    readonly input: FollowArtistInput;
+    input: FollowArtistInput;
 };
 export type FollowArtistButtonMutationResponse = {
-    readonly followArtist: ({
-        readonly artist: ({
-            readonly __id: string;
+    readonly followArtist: {
+        readonly artist: {
+            readonly id: string;
             readonly is_followed: boolean | null;
-            readonly counts: ({
-                readonly follows: any | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            readonly counts: {
+                readonly follows: number | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type FollowArtistButtonMutation = {
     readonly response: FollowArtistButtonMutationResponse;
@@ -33,8 +33,8 @@ mutation FollowArtistButtonMutation(
 ) {
   followArtist(input: $input) {
     artist {
-      __id
-      is_followed
+      id
+      is_followed: isFollowed
       counts {
         follows
       }
@@ -62,8 +62,7 @@ v1 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "FollowArtistInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "FollowArtistPayload",
@@ -81,14 +80,14 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__id",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           },
@@ -117,26 +116,28 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowArtistButtonMutation",
-  "id": null,
-  "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n      counts {\n        follows\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowArtistButtonMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "FollowArtistButtonMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "FollowArtistButtonMutation",
+    "id": null,
+    "text": "mutation FollowArtistButtonMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      id\n      is_followed: isFollowed\n      counts {\n        follows\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e65f3d9d751239122f1c59971dd45400';
+(node as any).hash = '1ccb6092697db4f9bc8c0d044b7360a9';
 export default node;

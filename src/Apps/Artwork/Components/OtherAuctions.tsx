@@ -49,9 +49,13 @@ export const OtherAuctionsQueryRenderer = () => {
       environment={relayEnvironment}
       variables={{ size: 4, sort: "TIMELY_AT_NAME_ASC" }}
       query={graphql`
-        query OtherAuctionsQuery($size: Int!, $sort: SaleSorts) {
-          sales(size: $size, sort: $sort) {
-            ...OtherAuctions_sales
+        query OtherAuctionsQuery($sort: SaleSorts) {
+          salesConnection(sort: $sort) {
+            edges {
+              node {
+                ...OtherAuctions_sales
+              }
+            }
           }
         }
       `}

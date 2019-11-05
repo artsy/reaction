@@ -1,16 +1,27 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Collections_categories$ref } from "./Collections_categories.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type CollectionsAppTestQueryVariables = {};
 export type CollectionsAppTestQueryResponse = {
     readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": Collections_categories$ref;
+        readonly " $fragmentRefs": FragmentRefs<"Collections_categories">;
+    }>;
+};
+export type CollectionsAppTestQueryRawResponse = {
+    readonly categories: ReadonlyArray<{
+        readonly name: string;
+        readonly collections: ReadonlyArray<{
+            readonly slug: string;
+            readonly headerImage: string | null;
+            readonly title: string;
+        }>;
     }>;
 };
 export type CollectionsAppTestQuery = {
     readonly response: CollectionsAppTestQueryResponse;
     readonly variables: CollectionsAppTestQueryVariables;
+    readonly rawResponse: CollectionsAppTestQueryRawResponse;
 };
 
 
@@ -28,18 +39,12 @@ fragment Collections_categories on MarketingCollectionCategory {
     slug
     headerImage
     title
-    __id: id
   }
 }
 */
 
 const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CollectionsAppTestQuery",
-  "id": null,
-  "text": "query CollectionsAppTestQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CollectionsAppTestQuery",
@@ -115,20 +120,20 @@ const node: ConcreteRequest = {
                 "name": "title",
                 "args": null,
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CollectionsAppTestQuery",
+    "id": null,
+    "text": "query CollectionsAppTestQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n  }\n}\n",
+    "metadata": {}
   }
 };
-(node as any).hash = 'b9fcfe6e95aed4b8149c3d1cbb9f8cd9';
+(node as any).hash = '88bfd2b9f1af91035925a2727d3fb403';
 export default node;

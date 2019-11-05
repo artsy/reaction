@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistCard_artist$ref } from "./ArtistCard_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistCardStoryQueryVariables = {};
 export type ArtistCardStoryQueryResponse = {
-    readonly artist: ({
-        readonly " $fragmentRefs": ArtistCard_artist$ref;
-    }) | null;
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistCard_artist">;
+    } | null;
 };
 export type ArtistCardStoryQuery = {
     readonly response: ArtistCardStoryQueryResponse;
@@ -19,30 +19,28 @@ export type ArtistCardStoryQuery = {
 query ArtistCardStoryQuery {
   artist(id: "unused") {
     ...ArtistCard_artist
-    __id
+    id
   }
 }
 
 fragment ArtistCard_artist on Artist {
   name
-  id
+  slug
   href
   image {
     cropped(width: 400, height: 300) {
       url
     }
-    __id: id
   }
-  formatted_nationality_and_birthday
+  formatted_nationality_and_birthday: formattedNationalityAndBirthday
   ...FollowArtistButton_artist
-  __id
 }
 
 fragment FollowArtistButton_artist on Artist {
-  __id
-  name
   id
-  is_followed
+  name
+  slug
+  is_followed: isFollowed
   counts {
     follows
   }
@@ -54,24 +52,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistCardStoryQuery",
-  "id": null,
-  "text": "query ArtistCardStoryQuery {\n  artist(id: \"unused\") {\n    ...ArtistCard_artist\n    __id\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  id\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n    __id: id\n  }\n  formatted_nationality_and_birthday\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistCardStoryQuery",
@@ -84,7 +69,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -92,8 +77,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistCard_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -108,7 +92,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -122,7 +106,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
@@ -151,14 +135,12 @@ return {
                   {
                     "kind": "Literal",
                     "name": "height",
-                    "value": 300,
-                    "type": "Int!"
+                    "value": 300
                   },
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 400,
-                    "type": "Int!"
+                    "value": 400
                   }
                 ],
                 "concreteType": "CroppedImageUrl",
@@ -172,28 +154,27 @@ return {
                     "storageKey": null
                   }
                 ]
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "formatted_nationality_and_birthday",
+            "alias": "formatted_nationality_and_birthday",
+            "name": "formattedNationalityAndBirthday",
             "args": null,
             "storageKey": null
           },
-          v1,
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_followed",
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           },
@@ -218,6 +199,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistCardStoryQuery",
+    "id": null,
+    "text": "query ArtistCardStoryQuery {\n  artist(id: \"unused\") {\n    ...ArtistCard_artist\n    id\n  }\n}\n\nfragment ArtistCard_artist on Artist {\n  name\n  slug\n  href\n  image {\n    cropped(width: 400, height: 300) {\n      url\n    }\n  }\n  formatted_nationality_and_birthday: formattedNationalityAndBirthday\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  name\n  slug\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

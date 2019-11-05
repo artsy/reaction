@@ -127,7 +127,7 @@ export const NotificationsQueryRenderer: React.FC<{
         query NotificationsMenuQuery {
           me {
             followsAndSaves {
-              notifications: bundledArtworksByArtist(
+              notifications: bundledArtworksByArtistConnection(
                 sort: PUBLISHED_AT_DESC
                 first: 10
               ) @connection(key: "WorksForYou_notifications") {

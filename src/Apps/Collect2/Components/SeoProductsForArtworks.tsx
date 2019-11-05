@@ -119,45 +119,50 @@ export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
         first: { type: "Int", defaultValue: 30 }
         after: { type: "String", defaultValue: "" }
       ) {
-      artworks_connection: artworksConnection(first: $first, after: $after) {
-        edges {
-          node {
-            id
-            availability
-            category
-            date
-            href
-            is_acquireable: isAcquireable
-            is_price_range: isPriceRange
-            price
-            price_currency: priceCurrency
-            title
-            artists(shallow: true) {
-              name
+      edges {
+        node {
+          id
+          availability
+          category
+          date
+          href
+          is_acquireable: isAcquireable
+          is_price_range: isPriceRange
+          listPrice {
+            ... on PriceRange {
+              display
             }
-            image {
-              url(version: "larger")
+            ... on Money {
+              display
             }
-            meta {
-              description
-            }
-            partner(shallow: true) {
-              name
-              type
-              profile {
-                icon {
-                  url(version: "larger")
-                }
+          }
+          price_currency: priceCurrency
+          title
+          artists(shallow: true) {
+            name
+          }
+          image {
+            url(version: "larger")
+          }
+          meta {
+            description
+          }
+          partner(shallow: true) {
+            name
+            type
+            profile {
+              icon {
+                url(version: "larger")
               }
-              locations(size: 1) {
-                address
-                address_2: address2
-                city
-                state
-                country
-                postal_code: postalCode
-                phone
-              }
+            }
+            locations(size: 1) {
+              address
+              address_2: address2
+              city
+              state
+              country
+              postal_code: postalCode
+              phone
             }
           }
         }

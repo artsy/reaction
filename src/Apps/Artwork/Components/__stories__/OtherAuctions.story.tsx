@@ -16,8 +16,13 @@ const OtherAuctions = ({ size }: { size?: number }) => {
       environment={relayEnvironment}
       query={graphql`
         query OtherAuctionsStoryQuery($size: Int!) {
-          sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
-            ...OtherAuctions_sales
+          salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {
+            edges {
+              node {
+                # FIXME: Need to pluck just nodes and send as array.
+                ...OtherAuctions_sales
+              }
+            }
           }
         }
       `}

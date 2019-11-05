@@ -161,9 +161,16 @@ export const PricingContextFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment PricingContext_artwork on Artwork {
-        priceCents {
-          min
-          max
+        # FIXME: Does this need to support exact prices?
+        listPrice {
+          ... on PriceRange {
+            maxPrice {
+              minor
+            }
+            minPrice {
+              minor
+            }
+          }
         }
         artists {
           slug

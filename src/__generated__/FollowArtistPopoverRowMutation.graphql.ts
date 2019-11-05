@@ -2,36 +2,36 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowArtistInput = {
-    readonly artist_id?: string | null;
+    readonly artistID: string;
     readonly unfollow?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type FollowArtistPopoverRowMutationVariables = {
-    readonly input: FollowArtistInput;
-    readonly excludeArtistIds: ReadonlyArray<string | null>;
+    input: FollowArtistInput;
+    excludeArtistIds: ReadonlyArray<string | null>;
 };
 export type FollowArtistPopoverRowMutationResponse = {
-    readonly followArtist: ({
-        readonly artist: ({
-            readonly __id: string;
-            readonly related: ({
-                readonly suggested: ({
-                    readonly edges: ReadonlyArray<({
-                        readonly node: ({
-                            readonly __id: string;
-                            readonly _id: string;
+    readonly followArtist: {
+        readonly artist: {
+            readonly id: string;
+            readonly related: {
+                readonly suggestedConnection: {
+                    readonly edges: ReadonlyArray<{
+                        readonly node: {
+                            readonly id: string;
+                            readonly internalID: string;
                             readonly name: string | null;
-                            readonly image: ({
-                                readonly cropped: ({
+                            readonly image: {
+                                readonly cropped: {
                                     readonly url: string | null;
-                                }) | null;
-                            }) | null;
-                        }) | null;
-                    }) | null> | null;
-                }) | null;
-            }) | null;
-        }) | null;
-    }) | null;
+                                } | null;
+                            } | null;
+                        } | null;
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type FollowArtistPopoverRowMutation = {
     readonly response: FollowArtistPopoverRowMutationResponse;
@@ -47,19 +47,18 @@ mutation FollowArtistPopoverRowMutation(
 ) {
   followArtist(input: $input) {
     artist {
-      __id
+      id
       related {
-        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {
+        suggestedConnection(first: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludeArtistIds) {
           edges {
             node {
-              __id
-              _id
+              id
+              internalID
               name
               image {
                 cropped(width: 45, height: 45) {
                   url
                 }
-                __id: id
               }
             }
           }
@@ -88,7 +87,7 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -102,8 +101,7 @@ v2 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "FollowArtistInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "FollowArtistPayload",
@@ -118,7 +116,7 @@ v2 = [
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          v1,
+          (v1/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -131,26 +129,23 @@ v2 = [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "suggested",
+                "name": "suggestedConnection",
                 "storageKey": null,
                 "args": [
                   {
                     "kind": "Variable",
-                    "name": "exclude_artist_ids",
-                    "variableName": "excludeArtistIds",
-                    "type": "[String]"
+                    "name": "excludeArtistIDs",
+                    "variableName": "excludeArtistIds"
                   },
                   {
                     "kind": "Literal",
-                    "name": "exclude_followed_artists",
-                    "value": true,
-                    "type": "Boolean"
+                    "name": "excludeFollowedArtists",
+                    "value": true
                   },
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 1,
-                    "type": "Int"
+                    "value": 1
                   }
                 ],
                 "concreteType": "ArtistConnection",
@@ -174,11 +169,11 @@ v2 = [
                         "concreteType": "Artist",
                         "plural": false,
                         "selections": [
-                          v1,
+                          (v1/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "_id",
+                            "name": "internalID",
                             "args": null,
                             "storageKey": null
                           },
@@ -207,14 +202,12 @@ v2 = [
                                   {
                                     "kind": "Literal",
                                     "name": "height",
-                                    "value": 45,
-                                    "type": "Int!"
+                                    "value": 45
                                   },
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 45,
-                                    "type": "Int!"
+                                    "value": 45
                                   }
                                 ],
                                 "concreteType": "CroppedImageUrl",
@@ -228,13 +221,6 @@ v2 = [
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
                               }
                             ]
                           }
@@ -253,26 +239,28 @@ v2 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowArtistPopoverRowMutation",
-  "id": null,
-  "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludeArtistIds) {\n          edges {\n            node {\n              __id\n              _id\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n                __id: id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowArtistPopoverRowMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v2
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v2/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "FollowArtistPopoverRowMutation",
-    "argumentDefinitions": v0,
-    "selections": v2
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v2/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "FollowArtistPopoverRowMutation",
+    "id": null,
+    "text": "mutation FollowArtistPopoverRowMutation(\n  $input: FollowArtistInput!\n  $excludeArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    artist {\n      id\n      related {\n        suggestedConnection(first: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludeArtistIds) {\n          edges {\n            node {\n              id\n              internalID\n              name\n              image {\n                cropped(width: 45, height: 45) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '00f75e29203f26f7db1cb195fcda5978';
+(node as any).hash = 'e9b1a00dcc8137dfec48c9c65d2eb70b';
 export default node;

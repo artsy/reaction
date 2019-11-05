@@ -172,8 +172,10 @@ const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
       environment={relayEnvironment}
       query={graphql`
         query SuggestedGenesQuery {
-          suggested_genes: suggestedGenes {
-            ...SuggestedGenes_suggested_genes
+          highlights {
+            suggested_genes: broadCollectingGenes {
+              ...SuggestedGenes_suggested_genes
+            }
           }
         }
       `}

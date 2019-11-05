@@ -1,50 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Dropdown_aggregation$ref } from "./Dropdown_aggregation.graphql";
-import { GeneArtworksContent_filtered_artworks$ref } from "./GeneArtworksContent_filtered_artworks.graphql";
-import { Headline_facet$ref } from "./Headline_facet.graphql";
-import { TotalCount_filter_artworks$ref } from "./TotalCount_filter_artworks.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _GeneArtworks_gene$ref: unique symbol;
-export type GeneArtworks_gene$ref = typeof _GeneArtworks_gene$ref;
 export type GeneArtworks_gene = {
-    readonly id: string;
-    readonly filtered_artworks: ({
-        readonly aggregations: ReadonlyArray<({
+    readonly slug: string;
+    readonly filtered_artworks: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: ArtworkAggregation | null;
-            readonly counts: ReadonlyArray<({
-                readonly name: string | null;
-                readonly id: string;
-            }) | null> | null;
-            readonly " $fragmentRefs": Dropdown_aggregation$ref;
-        }) | null> | null;
-        readonly facet: ({
-            readonly " $fragmentRefs": Headline_facet$ref;
-        }) | null;
-        readonly " $fragmentRefs": TotalCount_filter_artworks$ref & GeneArtworksContent_filtered_artworks$ref;
-    }) | null;
-    readonly " $refType": GeneArtworks_gene$ref;
+            readonly counts: ReadonlyArray<{
+                readonly name: string;
+                readonly value: string;
+            } | null> | null;
+            readonly " $fragmentRefs": FragmentRefs<"Dropdown_aggregation">;
+        } | null> | null;
+        readonly facet: {
+            readonly " $fragmentRefs": FragmentRefs<"Headline_facet">;
+        } | null;
+        readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks" | "GeneArtworksContent_filtered_artworks">;
+    } | null;
+    readonly " $refType": "GeneArtworks_gene";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "GeneArtworks_gene",
   "type": "Gene",
@@ -52,7 +32,7 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "for_sale",
+      "name": "forSale",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -75,81 +55,70 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "price_range",
+      "name": "priceRange",
       "type": "String",
       "defaultValue": "*"
     },
     {
       "kind": "LocalArgument",
-      "name": "dimension_range",
+      "name": "dimensionRange",
       "type": "String",
       "defaultValue": "*"
     }
   ],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "filtered_artworks",
+      "alias": "filtered_artworks",
+      "name": "filterArtworksConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Variable",
-          "name": "dimension_range",
-          "variableName": "dimension_range",
-          "type": "String"
+          "name": "dimensionRange",
+          "variableName": "dimensionRange"
         },
         {
           "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "name": "forSale",
+          "variableName": "forSale"
         },
         {
           "kind": "Literal",
-          "name": "include_medium_filter_in_aggregation",
-          "value": true,
-          "type": "Boolean"
+          "name": "includeMediumFilterInAggregation",
+          "value": true
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "name": "priceRange",
+          "variableName": "priceRange"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "TotalCount_filter_artworks",
-          "args": null
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "GeneArtworksContent_filtered_artworks",
-          "args": null
-        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -182,8 +151,13 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v0,
-                v1
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "value",
+                  "args": null,
+                  "storageKey": null
+                }
               ]
             },
             {
@@ -206,16 +180,22 @@ return {
               "kind": "FragmentSpread",
               "name": "Headline_facet",
               "args": null
-            },
-            v1
+            }
           ]
         },
-        v1
+        {
+          "kind": "FragmentSpread",
+          "name": "TotalCount_filter_artworks",
+          "args": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "GeneArtworksContent_filtered_artworks",
+          "args": null
+        }
       ]
-    },
-    v1
+    }
   ]
 };
-})();
-(node as any).hash = '1d17472b70abefaa13a7b3d87aecf9b4';
+(node as any).hash = '4a790b68677796b68fb1a921b3074bba';
 export default node;

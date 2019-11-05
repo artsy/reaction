@@ -1,33 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarAuctionPartnerInfo_artwork$ref: unique symbol;
-export type ArtworkSidebarAuctionPartnerInfo_artwork$ref = typeof _ArtworkSidebarAuctionPartnerInfo_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkSidebarAuctionPartnerInfo_artwork = {
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
-    }) | null;
-    readonly sale_artwork: ({
+    } | null;
+    readonly sale_artwork: {
         readonly estimate: string | null;
-    }) | null;
-    readonly sale: ({
-        readonly _id: string;
+    } | null;
+    readonly sale: {
+        readonly internalID: string;
         readonly is_closed: boolean | null;
-    }) | null;
-    readonly " $refType": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
+    } | null;
+    readonly " $refType": "ArtworkSidebarAuctionPartnerInfo_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarAuctionPartnerInfo_artwork",
   "type": "Artwork",
@@ -49,14 +39,13 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "sale_artwork",
+      "alias": "sale_artwork",
+      "name": "saleArtwork",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtwork",
@@ -68,8 +57,7 @@ return {
           "name": "estimate",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -84,23 +72,20 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "_id",
+          "name": "internalID",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'e7fc08a40b9f5d01b4580aa68ec42a4d';
+(node as any).hash = '9ae1e9a16b9b2924cf3ec43d91ed7ebf';
 export default node;

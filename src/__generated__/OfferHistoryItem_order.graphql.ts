@@ -1,65 +1,55 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-declare const _OfferHistoryItem_order$ref: unique symbol;
-export type OfferHistoryItem_order$ref = typeof _OfferHistoryItem_order$ref;
 export type OfferHistoryItem_order = {
     readonly totalListPrice: string | null;
-    readonly offers?: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly id: string;
+    readonly offers?: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly internalID: string;
                 readonly amount: string | null;
                 readonly createdAt: string;
                 readonly fromParticipant: CommerceOrderParticipantEnum | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly id: string;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly internalID: string;
         readonly fromParticipant: CommerceOrderParticipantEnum | null;
         readonly amount: string | null;
         readonly shippingTotal: string | null;
         readonly taxTotal: string | null;
         readonly note: string | null;
-    }) | null;
-    readonly " $refType": OfferHistoryItem_order$ref;
+    } | null;
+    readonly " $refType": "OfferHistoryItem_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
 v1 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "amount",
-  "args": v0,
+  "args": (v0/*: any*/),
   "storageKey": "amount(precision:2)"
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "fromParticipant",
@@ -77,10 +67,9 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
-    v1,
     {
       "kind": "InlineFragment",
       "type": "CommerceOfferOrder",
@@ -112,8 +101,8 @@ return {
                   "concreteType": "CommerceOffer",
                   "plural": false,
                   "selections": [
-                    v2,
-                    v3,
+                    (v1/*: any*/),
+                    (v2/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -122,14 +111,12 @@ return {
                         {
                           "kind": "Literal",
                           "name": "format",
-                          "value": "MMM D",
-                          "type": "String"
+                          "value": "MMM D"
                         }
                       ],
                       "storageKey": "createdAt(format:\"MMM D\")"
                     },
-                    v4,
-                    v1
+                    (v3/*: any*/)
                   ]
                 }
               ]
@@ -145,21 +132,21 @@ return {
           "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
-            v2,
-            v4,
-            v3,
+            (v1/*: any*/),
+            (v3/*: any*/),
+            (v2/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "shippingTotal",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "shippingTotal(precision:2)"
             },
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "taxTotal",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "taxTotal(precision:2)"
             },
             {
@@ -168,8 +155,7 @@ return {
               "name": "note",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         }
       ]
@@ -177,5 +163,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9d72783a423b991ef7aa55d4ffcfb39b';
+(node as any).hash = '6209a00aa1b92262f730863b082250c1';
 export default node;

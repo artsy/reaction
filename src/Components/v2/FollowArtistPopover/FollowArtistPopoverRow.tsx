@@ -56,7 +56,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
               artist {
                 id
                 related {
-                  suggested(
+                  suggestedConnection(
                     first: 1
                     excludeFollowedArtists: true
                     excludeArtistIDs: $excludeArtistIds

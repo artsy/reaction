@@ -164,7 +164,7 @@ class GeneContents extends React.Component<Props, State> {
             $geneID: String!
             $medium: String
             $priceRange: String
-            $sort: String
+            # $sort: String
             $forSale: Boolean
             $dimensionRange: String
           ) {

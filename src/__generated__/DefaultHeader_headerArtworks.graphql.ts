@@ -1,31 +1,29 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _DefaultHeader_headerArtworks$ref: unique symbol;
-export type DefaultHeader_headerArtworks$ref = typeof _DefaultHeader_headerArtworks$ref;
+import { ReaderFragment } from "relay-runtime";
 export type DefaultHeader_headerArtworks = {
-    readonly hits: ReadonlyArray<({
+    readonly hits: ReadonlyArray<{
         readonly href: string | null;
-        readonly id: string;
-        readonly image: ({
-            readonly small: ({
+        readonly slug: string;
+        readonly image: {
+            readonly small: {
                 readonly url: string | null;
                 readonly width: number | null;
                 readonly height: number | null;
-            }) | null;
-            readonly large: ({
+            } | null;
+            readonly large: {
                 readonly url: string | null;
                 readonly width: number | null;
                 readonly height: number | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": DefaultHeader_headerArtworks$ref;
+            } | null;
+        } | null;
+    } | null> | null;
+    readonly " $refType": "DefaultHeader_headerArtworks";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -48,18 +46,11 @@ var v0 = [
     "args": null,
     "storageKey": null
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "DefaultHeader_headerArtworks",
-  "type": "FilterArtworks",
+  "type": "FilterArtworksConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -82,7 +73,7 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "slug",
           "args": null,
           "storageKey": null
         },
@@ -104,13 +95,12 @@ return {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 160,
-                  "type": "Int"
+                  "value": 160
                 }
               ],
               "concreteType": "ResizedImageUrl",
               "plural": false,
-              "selections": v0
+              "selections": (v0/*: any*/)
             },
             {
               "kind": "LinkedField",
@@ -121,29 +111,19 @@ return {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 220,
-                  "type": "Int"
+                  "value": 220
                 }
               ],
               "concreteType": "ResizedImageUrl",
               "plural": false,
-              "selections": v0
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
+              "selections": (v0/*: any*/)
             }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = '91384b79f54832378562f301bc78bbf9';
+(node as any).hash = 'd37ba97bbae067ca7e2398a464d516af';
 export default node;

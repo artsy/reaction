@@ -191,11 +191,19 @@ describe("createMockNetworkLayer", () => {
       graphql`
         query createMockNetworkLayerTestAliasQuery {
           artist(id: "banksy") {
-            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              id
+            forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
-            notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {
-              id
+            notForSaleArtworks: artworksConnection(filter: IS_NOT_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
           }
         }
@@ -223,8 +231,12 @@ describe("createMockNetworkLayer", () => {
       graphql`
         query createMockNetworkLayerTestAliasPrecendenceQuery {
           artist(id: "banksy") {
-            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              id
+            forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
           }
         }

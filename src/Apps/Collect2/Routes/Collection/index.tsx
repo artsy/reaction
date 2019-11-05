@@ -225,7 +225,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
         }
-        artworks(
+        artworksConnection(
           aggregations: $aggregations
           includeMediumFilterInAggregation: true
           size: 20
@@ -242,7 +242,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
             }
           }
         }
-        filtered_artworks: artworks(
+        filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations
           atAuction: $atAuction

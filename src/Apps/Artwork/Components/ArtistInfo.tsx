@@ -232,7 +232,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       }
       collections
       highlights {
-        partners(
+        partnersConnection(
           first: 10
           displayOnPartnerProfile: true
           representedBy: true
@@ -245,7 +245,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
           }
         }
       }
-      auctionResults(
+      auctionResultsConnection(
         recordsTrusted: true
         first: 1
         sort: PRICE_AND_DATE_DESC

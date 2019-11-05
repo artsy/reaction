@@ -1,39 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Badge_artwork$ref } from "./Badge_artwork.graphql";
-import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
-import { Save_artwork$ref } from "./Save_artwork.graphql";
-declare const _RecentlyViewed_me$ref: unique symbol;
-export type RecentlyViewed_me$ref = typeof _RecentlyViewed_me$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type RecentlyViewed_me = {
-    readonly recentlyViewedArtworks: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly __id: string;
-                readonly image: ({
+    readonly recentlyViewedArtworksConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly id: string;
+                readonly image: {
                     readonly aspect_ratio: number;
                     readonly url: string | null;
-                }) | null;
+                } | null;
                 readonly href: string | null;
-                readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": RecentlyViewed_me$ref;
+                readonly " $fragmentRefs": FragmentRefs<"Metadata_artwork" | "Save_artwork" | "Badge_artwork">;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "RecentlyViewed_me";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "RecentlyViewed_me",
   "type": "Me",
@@ -43,14 +31,13 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "recentlyViewedArtworks",
-      "storageKey": "recentlyViewedArtworks(first:20)",
+      "name": "recentlyViewedArtworksConnection",
+      "storageKey": "recentlyViewedArtworksConnection(first:20)",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 20,
-          "type": "Int"
+          "value": 20
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -74,7 +61,13 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
-                v0,
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -86,15 +79,8 @@ return {
                   "selections": [
                     {
                       "kind": "ScalarField",
-                      "alias": null,
-                      "name": "aspect_ratio",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": "__id",
-                      "name": "id",
+                      "alias": "aspect_ratio",
+                      "name": "aspectRatio",
                       "args": null,
                       "storageKey": null
                     },
@@ -106,8 +92,7 @@ return {
                         {
                           "kind": "Literal",
                           "name": "version",
-                          "value": "large",
-                          "type": "[String]"
+                          "value": "large"
                         }
                       ],
                       "storageKey": "url(version:\"large\")"
@@ -141,10 +126,8 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '46e488d1fa37b7fa9c4ce73cbbd0c694';
+(node as any).hash = '746769007f334b0c16dc32cb9ec46bf4';
 export default node;

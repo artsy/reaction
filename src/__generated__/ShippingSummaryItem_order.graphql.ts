@@ -1,39 +1,29 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ShippingAddress_ship$ref } from "./ShippingAddress_ship.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
-declare const _ShippingSummaryItem_order$ref: unique symbol;
-export type ShippingSummaryItem_order$ref = typeof _ShippingSummaryItem_order$ref;
 export type ShippingSummaryItem_order = {
     readonly state: CommerceOrderStateEnum;
-    readonly requestedFulfillment: ({
+    readonly requestedFulfillment: {
         readonly __typename: string;
-        readonly " $fragmentRefs": ShippingAddress_ship$ref;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+        readonly " $fragmentRefs": FragmentRefs<"ShippingAddress_ship">;
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly shippingOrigin: string | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ShippingSummaryItem_order$ref;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ShippingSummaryItem_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ShippingSummaryItem_order",
   "type": "CommerceOrder",
@@ -112,26 +102,16 @@ return {
                       "name": "shippingOrigin",
                       "args": null,
                       "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '6a6edab4e4acbfb55e55f5fb1d9c4ae0';
 export default node;

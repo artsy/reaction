@@ -2,18 +2,18 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type CreateBidderInput = {
-    readonly sale_id: string;
+    readonly saleID: string;
     readonly clientMutationId?: string | null;
 };
 export type RegisterCreateBidderMutationVariables = {
-    readonly input: CreateBidderInput;
+    input: CreateBidderInput;
 };
 export type RegisterCreateBidderMutationResponse = {
-    readonly createBidder: ({
-        readonly bidder: ({
-            readonly id: string;
-        }) | null;
-    }) | null;
+    readonly createBidder: {
+        readonly bidder: {
+            readonly internalID: string;
+        } | null;
+    } | null;
 };
 export type RegisterCreateBidderMutation = {
     readonly response: RegisterCreateBidderMutationResponse;
@@ -28,8 +28,8 @@ mutation RegisterCreateBidderMutation(
 ) {
   createBidder(input: $input) {
     bidder {
+      internalID
       id
-      __id
     }
   }
 }
@@ -46,71 +46,97 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "createBidder",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "CreateBidderInput!"
-      }
-    ],
-    "concreteType": "CreateBidderPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "bidder",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "Bidder",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__id",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "RegisterCreateBidderMutation",
-  "id": null,
-  "text": "mutation RegisterCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    bidder {\n      id\n      __id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "RegisterCreateBidderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "createBidder",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "CreateBidderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "bidder",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Bidder",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "RegisterCreateBidderMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "createBidder",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "CreateBidderPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "bidder",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Bidder",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "RegisterCreateBidderMutation",
+    "id": null,
+    "text": "mutation RegisterCreateBidderMutation(\n  $input: CreateBidderInput!\n) {\n  createBidder(input: $input) {\n    bidder {\n      internalID\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '2026ef93ec0debedc112e1d8b4ba9c6b';
+(node as any).hash = '5a40789346f5d1cb6e5bbf634e36eae6';
 export default node;

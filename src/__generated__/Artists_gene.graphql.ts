@@ -1,42 +1,38 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistRow_artist$ref } from "./ArtistRow_artist.graphql";
-import { Dropdown_aggregation$ref } from "./Dropdown_aggregation.graphql";
-import { TotalCount_filter_artworks$ref } from "./TotalCount_filter_artworks.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _Artists_gene$ref: unique symbol;
-export type Artists_gene$ref = typeof _Artists_gene$ref;
 export type Artists_gene = {
-    readonly __id: string;
-    readonly artists: ({
+    readonly id: string;
+    readonly artists: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
         };
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly __id: string;
-                readonly " $fragmentRefs": ArtistRow_artist$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly filter_aggregations: ({
-        readonly aggregations: ReadonlyArray<({
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly id: string;
+                readonly " $fragmentRefs": FragmentRefs<"ArtistRow_artist">;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly filter_aggregations: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: ArtworkAggregation | null;
-            readonly " $fragmentRefs": Dropdown_aggregation$ref;
-        }) | null> | null;
-        readonly " $fragmentRefs": TotalCount_filter_artworks$ref;
-    }) | null;
-    readonly " $refType": Artists_gene$ref;
+            readonly " $fragmentRefs": FragmentRefs<"Dropdown_aggregation">;
+        } | null> | null;
+        readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks">;
+    } | null;
+    readonly " $refType": "Artists_gene";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -82,7 +78,7 @@ return {
     }
   ],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": "artists",
@@ -135,18 +131,18 @@ return {
               "concreteType": "Artist",
               "plural": false,
               "selections": [
-                v0,
-                {
-                  "kind": "FragmentSpread",
-                  "name": "ArtistRow_artist",
-                  "args": null
-                },
+                (v0/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
                   "name": "__typename",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "FragmentSpread",
+                  "name": "ArtistRow_artist",
+                  "args": null
                 }
               ]
             },
@@ -164,36 +160,28 @@ return {
     {
       "kind": "LinkedField",
       "alias": "filter_aggregations",
-      "name": "filtered_artworks",
+      "name": "filterArtworksConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Literal",
-          "name": "include_medium_filter_in_aggregation",
-          "value": true,
-          "type": "Boolean"
+          "name": "includeMediumFilterInAggregation",
+          "value": true
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "TotalCount_filter_artworks",
-          "args": null
-        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -217,11 +205,15 @@ return {
             }
           ]
         },
-        v0
+        {
+          "kind": "FragmentSpread",
+          "name": "TotalCount_filter_artworks",
+          "args": null
+        }
       ]
     }
   ]
 };
 })();
-(node as any).hash = 'c21a21d79040bd329707d9e8f2d6f805';
+(node as any).hash = 'a0ada1320be5d81516db46da6ebe3650';
 export default node;

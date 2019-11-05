@@ -172,13 +172,23 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment GeneSearchResults_viewer on Viewer {
-        match_gene: matchGene(term: $term) {
-          name
-          slug
-          internalID
-          image {
-            cropped(width: 100, height: 100) {
-              url
+        match_gene: searchConnection(
+          query: $term
+          mode: AUTOSUGGEST
+          entities: [GENE]
+        ) {
+          edges {
+            node {
+              ... on Gene {
+                name
+                slug
+                internalID
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
+                  }
+                }
+              }
             }
           }
         }

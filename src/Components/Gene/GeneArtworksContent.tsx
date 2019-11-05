@@ -96,21 +96,17 @@ export default createPaginationContainer(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
+        # FIXME: Might need to reenable this.
+        # @connection(key: "GeneArtworksContent_filtered_artworks") {
         id
-        artworks: artworksConnection(
-          first: $count
-          after: $cursor
-          sort: $sort
-        ) @connection(key: "GeneArtworksContent_filtered_artworks") {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          ...ArtworkGrid_artworks
-          edges {
-            node {
-              id
-            }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        ...ArtworkGrid_artworks
+        edges {
+          node {
+            id
           }
         }
       }
@@ -141,8 +137,7 @@ export default createPaginationContainer(
       query GeneArtworksContentQuery(
         $filteredArtworksNodeID: ID!
         $count: Int!
-        $cursor: String
-        $sort: String
+        $cursor: String # $sort: String
       ) {
         node(id: $filteredArtworksNodeID) {
           ...GeneArtworksContent_filtered_artworks

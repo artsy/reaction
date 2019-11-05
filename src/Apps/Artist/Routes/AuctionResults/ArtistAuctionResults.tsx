@@ -188,7 +188,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           before: { type: "String" }
         ) {
         slug
-        auctionResults(
+        auctionResultsConnection(
           first: $first
           after: $after
           before: $before

@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Shipping_order$ref } from "./Shipping_order.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_ShippingQueryVariables = {
-    readonly orderID: string;
+    orderID: string;
 };
 export type routes_ShippingQueryResponse = {
-    readonly order: ({
-        readonly " $fragmentRefs": Shipping_order$ref;
-    }) | null;
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"Shipping_order">;
+    } | null;
 };
 export type routes_ShippingQuery = {
     readonly response: routes_ShippingQueryResponse;
@@ -24,12 +24,11 @@ query routes_ShippingQuery(
   order: commerceOrder(id: $orderID) {
     __typename
     ...Shipping_order
-    __id: id
   }
 }
 
 fragment Shipping_order on CommerceOrder {
-  id
+  internalID
   mode
   state
   requestedFulfillment {
@@ -49,19 +48,17 @@ fragment Shipping_order on CommerceOrder {
     edges {
       node {
         artwork {
-          id
-          pickup_available
+          slug
+          pickup_available: pickupAvailable
           onlyShipsDomestically
           shippingCountry
-          __id
+          id
         }
-        __id: id
       }
     }
   }
   ...ArtworkSummaryItem_order
   ...TransactionDetailsSummaryItem_order
-  __id: id
 }
 
 fragment ArtworkSummaryItem_order on CommerceOrder {
@@ -71,17 +68,17 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
       name
     }
     ... on Node {
-      __id
+      id
     }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
     edges {
       node {
         artwork {
-          artist_names
+          artist_names: artistNames
           title
           date
           shippingOrigin
@@ -89,15 +86,12 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
           }
-          __id
+          id
         }
-        __id: id
       }
     }
   }
-  __id: id
 }
 
 fragment TransactionDetailsSummaryItem_order on CommerceOrder {
@@ -112,7 +106,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   buyerTotal(precision: 2)
   ... on CommerceOfferOrder {
     lastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -123,10 +117,9 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
-      __id: id
     }
     myLastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -137,10 +130,8 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
-      __id: id
     }
   }
-  __id: id
 }
 */
 
@@ -157,31 +148,29 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "orderID",
-    "type": "ID"
+    "variableName": "orderID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "shippingTotal",
-  "args": v3,
-  "storageKey": "shippingTotal(precision:2)"
+  "name": "name",
+  "args": null,
+  "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
@@ -190,58 +179,57 @@ v5 = {
   "args": null,
   "storageKey": null
 },
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
+v6 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2
+  }
+],
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
+  "name": "shippingTotal",
+  "args": (v6/*: any*/),
+  "storageKey": "shippingTotal(precision:2)"
 },
 v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v3,
+  "args": (v6/*: any*/),
   "storageKey": "taxTotal(precision:2)"
 },
-v11 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotalCents",
   "args": null,
   "storageKey": null
 },
-v12 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v3,
+  "args": (v6/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
-v13 = [
-  v11,
-  v5,
+v12 = [
+  (v2/*: any*/),
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": (v6/*: any*/),
+    "storageKey": "amount(precision:2)"
+  },
   {
     "kind": "ScalarField",
     "alias": null,
@@ -249,17 +237,11 @@ v13 = [
     "args": null,
     "storageKey": null
   },
-  v4,
-  v9,
-  v10,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v3,
-    "storageKey": "amount(precision:2)"
-  },
-  v12,
+  (v7/*: any*/),
+  (v8/*: any*/),
+  (v9/*: any*/),
+  (v10/*: any*/),
+  (v11/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -280,29 +262,23 @@ v13 = [
     "name": "note",
     "args": null,
     "storageKey": null
-  },
-  v2
+  }
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_ShippingQuery",
-  "id": null,
-  "text": "query routes_ShippingQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Shipping_order\n    __id: id\n  }\n}\n\nfragment Shipping_order on CommerceOrder {\n  id\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          pickup_available\n          onlyShipsDomestically\n          shippingCountry\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id: id\n    }\n  }\n  __id: id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_ShippingQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -310,8 +286,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Shipping_order",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -319,19 +294,25 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_ShippingQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v4,
-          v5,
+          (v2/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "mode",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -348,12 +329,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
+              (v3/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceShip",
                 "selections": [
-                  v7,
+                  (v4/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -443,11 +424,17 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "pickup_available",
+                            "name": "slug",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": "pickup_available",
+                            "name": "pickupAvailable",
                             "args": null,
                             "storageKey": null
                           },
@@ -465,11 +452,11 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v8,
+                          (v5/*: any*/),
                           {
                             "kind": "ScalarField",
-                            "alias": null,
-                            "name": "artist_names",
+                            "alias": "artist_names",
+                            "name": "artistNames",
                             "args": null,
                             "storageKey": null
                           },
@@ -512,8 +499,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -527,13 +513,11 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              v2
+                              }
                             ]
                           }
                         ]
-                      },
-                      v2
+                      }
                     ]
                   }
                 ]
@@ -549,44 +533,37 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
-              v8,
+              (v3/*: any*/),
+              (v5/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
-                  v7
+                  (v4/*: any*/)
                 ]
               }
             ]
           },
-          v2,
-          v6,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
-          v9,
-          v10,
-          v11,
+          (v3/*: any*/),
+          (v7/*: any*/),
+          (v8/*: any*/),
+          (v9/*: any*/),
+          (v10/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": (v6/*: any*/),
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": (v6/*: any*/),
             "storageKey": "totalListPrice(precision:2)"
           },
-          v12,
+          (v11/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -599,7 +576,7 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v13
+                "selections": (v12/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -609,13 +586,20 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v13
+                "selections": (v12/*: any*/)
               }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_ShippingQuery",
+    "id": null,
+    "text": "query routes_ShippingQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Shipping_order\n  }\n}\n\nfragment Shipping_order on CommerceOrder {\n  internalID\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          pickup_available: pickupAvailable\n          onlyShipsDomestically\n          shippingCountry\n          id\n        }\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

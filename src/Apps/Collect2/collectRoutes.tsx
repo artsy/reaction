@@ -39,7 +39,7 @@ export const collectRoutes: RouteConfig[] = [
         marketingHubCollections {
           ...Collect_marketingHubCollections
         }
-        filterArtworks: filterArtworks(
+        filterArtworks: artworksConnection(
           aggregations: $aggregations
           sort: $sort
         ) {

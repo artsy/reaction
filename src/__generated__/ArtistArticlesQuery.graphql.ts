@@ -1,18 +1,18 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistArticles_artist$ref } from "./ArtistArticles_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistArticlesQueryVariables = {
-    readonly first?: number | null;
-    readonly last?: number | null;
-    readonly after?: string | null;
-    readonly before?: string | null;
-    readonly artistID: string;
+    first?: number | null;
+    last?: number | null;
+    after?: string | null;
+    before?: string | null;
+    artistID: string;
 };
 export type ArtistArticlesQueryResponse = {
-    readonly artist: ({
-        readonly " $fragmentRefs": ArtistArticles_artist$ref;
-    }) | null;
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistArticles_artist">;
+    } | null;
 };
 export type ArtistArticlesQuery = {
     readonly response: ArtistArticlesQueryResponse;
@@ -31,13 +31,13 @@ query ArtistArticlesQuery(
 ) {
   artist(id: $artistID) {
     ...ArtistArticles_artist_pbnwq
-    __id
+    id
   }
 }
 
 fragment ArtistArticles_artist_pbnwq on Artist {
-  id
-  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {
+  slug
+  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, inEditorialFeed: true) {
     pageInfo {
       hasNextPage
       endCursor
@@ -48,23 +48,21 @@ fragment ArtistArticles_artist_pbnwq on Artist {
     edges {
       node {
         href
-        thumbnail_title
+        thumbnail_title: thumbnailTitle
         author {
           name
-          __id
+          id
         }
-        published_at(format: "MMM Do, YYYY")
-        thumbnail_image {
+        published_at: publishedAt(format: "MMM Do, YYYY")
+        thumbnail_image: thumbnailImage {
           resized(width: 300) {
             url
           }
-          __id: id
         }
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment Pagination_pageCursors on PageCursors {
@@ -127,34 +125,46 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
+  "kind": "Variable",
+  "name": "after",
+  "variableName": "after"
 },
 v3 = {
+  "kind": "Variable",
+  "name": "before",
+  "variableName": "before"
+},
+v4 = {
+  "kind": "Variable",
+  "name": "first",
+  "variableName": "first"
+},
+v5 = {
+  "kind": "Variable",
+  "name": "last",
+  "variableName": "last"
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "page",
   "args": null,
   "storageKey": null
 },
-v5 = [
-  v3,
-  v4,
+v8 = [
+  (v6/*: any*/),
+  (v7/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -162,27 +172,29 @@ v5 = [
     "args": null,
     "storageKey": null
   }
-];
+],
+v9 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistArticlesQuery",
-  "id": null,
-  "text": "query ArtistArticlesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistArticles_artist_pbnwq\n    __id\n  }\n}\n\nfragment ArtistArticles_artist_pbnwq on Artist {\n  id\n  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, in_editorial_feed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title\n        author {\n          name\n          __id\n        }\n        published_at(format: \"MMM Do, YYYY\")\n        thumbnail_image {\n          resized(width: 300) {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistArticlesQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -190,33 +202,12 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistArticles_artist",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": null
-              }
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
-          },
-          v2
+          }
         ]
       }
     ]
@@ -224,21 +215,21 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtistArticlesQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
@@ -248,41 +239,19 @@ return {
             "name": "articlesConnection",
             "storageKey": null,
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": "Int"
-              },
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "Literal",
-                "name": "in_editorial_feed",
-                "value": true,
-                "type": "Boolean"
+                "name": "inEditorialFeed",
+                "value": true
               },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": "Int"
-              },
+              (v5/*: any*/),
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "PUBLISHED_AT_DESC",
-                "type": "ArticleSorts"
+                "value": "PUBLISHED_AT_DESC"
               }
             ],
             "concreteType": "ArticleConnection",
@@ -330,7 +299,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v5
+                    "selections": (v8/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -340,7 +309,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v5
+                    "selections": (v8/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -350,7 +319,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v5
+                    "selections": (v8/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -361,8 +330,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      (v6/*: any*/),
+                      (v7/*: any*/)
                     ]
                   }
                 ]
@@ -394,8 +363,8 @@ return {
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": null,
-                        "name": "thumbnail_title",
+                        "alias": "thumbnail_title",
+                        "name": "thumbnailTitle",
                         "args": null,
                         "storageKey": null
                       },
@@ -415,27 +384,26 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v2
+                          (v9/*: any*/)
                         ]
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": null,
-                        "name": "published_at",
+                        "alias": "published_at",
+                        "name": "publishedAt",
                         "args": [
                           {
                             "kind": "Literal",
                             "name": "format",
-                            "value": "MMM Do, YYYY",
-                            "type": "String"
+                            "value": "MMM Do, YYYY"
                           }
                         ],
-                        "storageKey": "published_at(format:\"MMM Do, YYYY\")"
+                        "storageKey": "publishedAt(format:\"MMM Do, YYYY\")"
                       },
                       {
                         "kind": "LinkedField",
-                        "alias": null,
-                        "name": "thumbnail_image",
+                        "alias": "thumbnail_image",
+                        "name": "thumbnailImage",
                         "storageKey": null,
                         "args": null,
                         "concreteType": "Image",
@@ -450,8 +418,7 @@ return {
                               {
                                 "kind": "Literal",
                                 "name": "width",
-                                "value": 300,
-                                "type": "Int"
+                                "value": 300
                               }
                             ],
                             "concreteType": "ResizedImageUrl",
@@ -465,27 +432,27 @@ return {
                                 "storageKey": null
                               }
                             ]
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": "__id",
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
                           }
                         ]
                       },
-                      v2
+                      (v9/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v2
+          (v9/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistArticlesQuery",
+    "id": null,
+    "text": "query ArtistArticlesQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistArticles_artist_pbnwq\n    id\n  }\n}\n\nfragment ArtistArticles_artist_pbnwq on Artist {\n  slug\n  articlesConnection(first: $first, after: $after, before: $before, last: $last, sort: PUBLISHED_AT_DESC, inEditorialFeed: true) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        href\n        thumbnail_title: thumbnailTitle\n        author {\n          name\n          id\n        }\n        published_at: publishedAt(format: \"MMM Do, YYYY\")\n        thumbnail_image: thumbnailImage {\n          resized(width: 300) {\n            url\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

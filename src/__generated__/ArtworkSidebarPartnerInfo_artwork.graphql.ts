@@ -1,30 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarPartnerInfo_artwork$ref: unique symbol;
-export type ArtworkSidebarPartnerInfo_artwork$ref = typeof _ArtworkSidebarPartnerInfo_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkSidebarPartnerInfo_artwork = {
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
         readonly href: string | null;
-        readonly locations: ReadonlyArray<({
+        readonly locations: ReadonlyArray<{
             readonly city: string | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtworkSidebarPartnerInfo_artwork$ref;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtworkSidebarPartnerInfo_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarPartnerInfo_artwork",
   "type": "Artwork",
@@ -69,16 +59,12 @@ return {
               "name": "city",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
 (node as any).hash = '2d4008d718bc19a2034d96f2665bacf9';
 export default node;

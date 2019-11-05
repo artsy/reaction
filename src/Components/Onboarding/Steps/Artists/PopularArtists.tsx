@@ -110,14 +110,20 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 excludeFollowedArtists: true
                 excludeArtistIDs: $excludedArtistIds
               ) {
-                artists {
-                  slug
-                  internalID
-                  id
-                  name
-                  image {
-                    cropped(width: 100, height: 100) {
-                      url
+                related {
+                  artistsConnection {
+                    edges {
+                      node {
+                        slug
+                        internalID
+                        id
+                        name
+                        image {
+                          cropped(width: 100, height: 100) {
+                            url
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -125,7 +131,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
               artist {
                 id
                 related {
-                  suggested(
+                  suggestedConnection(
                     first: 1
                     excludeFollowedArtists: true
                     excludeArtistIDs: $excludedArtistIds
@@ -195,14 +201,20 @@ const PopularArtistContentContainer = createFragmentContainer(
   {
     popular_artists: graphql`
       fragment PopularArtists_popular_artists on Artist @relay(plural: true) {
-        artists {
-          slug
-          internalID
-          id
-          name
-          image {
-            cropped(width: 100, height: 100) {
-              url
+        related {
+          artistsConnection {
+            edges {
+              node {
+                slug
+                internalID
+                id
+                name
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
+                  }
+                }
+              }
             }
           }
         }
@@ -220,8 +232,10 @@ const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
       environment={relayEnvironment}
       query={graphql`
         query PopularArtistsQuery {
-          popular_artists: popularArtists(excludeFollowedArtists: true) {
-            ...PopularArtists_popular_artists
+          highlights {
+            popular_artists: popularArtists(excludeFollowedArtists: true) {
+              ...PopularArtists_popular_artists
+            }
           }
         }
       `}

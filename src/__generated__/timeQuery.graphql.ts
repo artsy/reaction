@@ -3,11 +3,11 @@
 import { ConcreteRequest } from "relay-runtime";
 export type timeQueryVariables = {};
 export type timeQueryResponse = {
-    readonly system: ({
-        readonly time: ({
+    readonly system: {
+        readonly time: {
             readonly unix: number | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type timeQuery = {
     readonly response: timeQueryResponse;
@@ -60,24 +60,26 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "timeQuery",
-  "id": null,
-  "text": "query timeQuery {\n  system {\n    time {\n      unix\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "timeQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "timeQuery",
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "timeQuery",
+    "id": null,
+    "text": "query timeQuery {\n  system {\n    time {\n      unix\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

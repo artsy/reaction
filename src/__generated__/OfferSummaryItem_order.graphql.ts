@@ -1,35 +1,25 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _OfferSummaryItem_order$ref: unique symbol;
-export type OfferSummaryItem_order$ref = typeof _OfferSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
 export type OfferSummaryItem_order = {
     readonly totalListPrice: string | null;
-    readonly myLastOffer?: ({
+    readonly myLastOffer?: {
         readonly amount: string | null;
         readonly note: string | null;
-    }) | null;
-    readonly " $refType": OfferSummaryItem_order$ref;
+    } | null;
+    readonly " $refType": "OfferSummaryItem_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "OfferSummaryItem_order",
@@ -41,10 +31,9 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
-    v1,
     {
       "kind": "InlineFragment",
       "type": "CommerceOfferOrder",
@@ -62,7 +51,7 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "amount",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "amount(precision:2)"
             },
             {
@@ -71,8 +60,7 @@ return {
               "name": "note",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         }
       ]

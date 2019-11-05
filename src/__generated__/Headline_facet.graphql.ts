@@ -1,16 +1,14 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Headline_facet$ref: unique symbol;
-export type Headline_facet$ref = typeof _Headline_facet$ref;
+import { ReaderFragment } from "relay-runtime";
 export type Headline_facet = {
     readonly name?: string | null;
-    readonly " $refType": Headline_facet$ref;
+    readonly " $refType": "Headline_facet";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -28,24 +26,17 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "InlineFragment",
+      "type": "Tag",
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "InlineFragment",
-      "type": "ArtworkFilterGene",
-      "selections": v0
-    },
-    {
-      "kind": "InlineFragment",
-      "type": "ArtworkFilterTag",
-      "selections": v0
+      "type": "Gene",
+      "selections": (v0/*: any*/)
     }
   ]
 };
 })();
-(node as any).hash = 'fe0e6f752ce23f2a03e177de220f2ed6';
+(node as any).hash = 'cc39f7348e589619f9da1addd80e0022';
 export default node;

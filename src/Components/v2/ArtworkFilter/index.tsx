@@ -293,7 +293,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
         ) {
-        filtered_artworks: filterArtworks(
+        filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations
           artistID: $artistID

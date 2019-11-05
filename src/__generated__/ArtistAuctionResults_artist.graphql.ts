@@ -1,41 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistAuctionResultItem_auctionResult$ref } from "./ArtistAuctionResultItem_auctionResult.graphql";
-import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _ArtistAuctionResults_artist$ref: unique symbol;
-export type ArtistAuctionResults_artist$ref = typeof _ArtistAuctionResults_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistAuctionResults_artist = {
-    readonly id: string;
-    readonly auctionResults: ({
+    readonly slug: string;
+    readonly auctionResultsConnection: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
-            readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
+        readonly pageCursors: {
+            readonly " $fragmentRefs": FragmentRefs<"Pagination_pageCursors">;
+        };
         readonly totalCount: number | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly " $fragmentRefs": ArtistAuctionResultItem_auctionResult$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtistAuctionResults_artist$ref;
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly " $fragmentRefs": FragmentRefs<"ArtistAuctionResultItem_auctionResult">;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtistAuctionResults_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistAuctionResults_artist",
   "type": "Artist",
@@ -76,45 +65,40 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "auctionResults",
+      "name": "auctionResultsConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "AuctionResultSorts"
+          "variableName": "sort"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -190,17 +174,14 @@ return {
                   "kind": "FragmentSpread",
                   "name": "ArtistAuctionResultItem_auctionResult",
                   "args": null
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '65960d8121e20d8f76659179177c9be8';
+(node as any).hash = '91a544d759a1674fbda032fab9cf830d';
 export default node;

@@ -134,7 +134,7 @@ export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
         ) {
         collections
         highlights {
-          partners(
+          partnersConnection(
             first: 10
             displayOnPartnerProfile: true
             representedBy: true
@@ -149,7 +149,7 @@ export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
             }
           }
         }
-        auctionResults(
+        auctionResultsConnection(
           recordsTrusted: true
           first: 1
           sort: PRICE_AND_DATE_DESC

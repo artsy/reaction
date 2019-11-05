@@ -133,7 +133,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
         ) {
         me {
           followsAndSaves {
-            notifications: bundledArtworksByArtist(
+            notifications: bundledArtworksByArtistConnection(
               sort: PUBLISHED_AT_DESC
               first: $count
               after: $cursor

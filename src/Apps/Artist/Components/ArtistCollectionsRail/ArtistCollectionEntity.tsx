@@ -153,18 +153,20 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
         slug
         title
         price_guidance: priceGuidance
-        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
-          artworks_connection: artworksConnection(first: 3) {
-            edges {
-              node {
-                artist {
-                  name
-                }
-                title
-                image {
-                  resized(width: 262) {
-                    url
-                  }
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              artist {
+                name
+              }
+              title
+              image {
+                resized(width: 262) {
+                  url
                 }
               }
             }
