@@ -43,9 +43,22 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
   const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
   const { trackEvent } = useTracking()
+  const isMounted = useDidMount()
+
+  if (isMounted) {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Impression,
+      context_page: AnalyticsSchema.PageName.ArticlePage,
+      context_module: AnalyticsSchema.ContextModule.AdServer,
+      context_page_owner_id: props.targetingData.post_id,
+      context_page_owner_slug: props.articleSlug,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Article,
+    })
+  }
 
   const onClickAd = () => {
     trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
       context_page: AnalyticsSchema.PageName.ArticlePage,
       context_module: AnalyticsSchema.ContextModule.AdServer,
       context_page_owner_id: props.targetingData.post_id,
@@ -68,16 +81,6 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 
   if (isAdEmpty) {
     return null
-  }
-
-  if (useDidMount) {
-    trackEvent({
-      context_page: AnalyticsSchema.PageName.ArticlePage,
-      context_module: AnalyticsSchema.ContextModule.AdServer,
-      context_page_owner_id: props.targetingData.post_id,
-      context_page_owner_slug: props.articleSlug,
-      context_page_owner_type: AnalyticsSchema.OwnerType.Article,
-    })
   }
 
   return (
