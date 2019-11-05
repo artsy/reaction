@@ -114,7 +114,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
 
 export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
   artworks: graphql`
-    fragment SeoProductsForArtworks_artworks on FilterArtworks
+    fragment SeoProductsForArtworks_artworks on FilterArtworksConnection
       @argumentDefinitions(
         first: { type: "Int", defaultValue: 30 }
         after: { type: "String", defaultValue: "" }

@@ -109,14 +109,14 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         #        i.e. in this case the fair and partnerShow selections are missing name and href.
         artworkContextAuction: context {
           __typename
-          ... on ArtworkContextAuction {
+          ... on Sale {
             name
             href
           }
         }
         artworkContextFair: context {
           __typename
-          ... on ArtworkContextFair {
+          ... on Fair {
             name
             href
             profile {
@@ -131,7 +131,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
         }
         artworkContextPartnerShow: context {
           __typename
-          ... on ArtworkContextPartnerShow {
+          ... on Show {
             name
             href
             status

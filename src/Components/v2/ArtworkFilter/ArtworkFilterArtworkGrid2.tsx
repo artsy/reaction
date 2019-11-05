@@ -99,7 +99,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
   ArtworkFilterArtworkGrid,
   {
     filtered_artworks: graphql`
-      fragment ArtworkFilterArtworkGrid2_filtered_artworks on FilterArtworks
+      fragment ArtworkFilterArtworkGrid2_filtered_artworks on FilterArtworksConnection
         @argumentDefinitions(
           first: { type: "Int", defaultValue: 30 }
           after: { type: "String", defaultValue: "" }

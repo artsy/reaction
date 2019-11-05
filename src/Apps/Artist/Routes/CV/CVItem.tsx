@@ -180,7 +180,7 @@ export const CVPaginationContainer = createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
-          sort: { type: "PartnerShowSorts", defaultValue: START_AT_DESC }
+          sort: { type: "ShowSorts", defaultValue: START_AT_DESC }
           atAFair: { type: "Boolean", defaultValue: false }
           soloShow: { type: "Boolean", defaultValue: false }
           isReference: { type: "Boolean", defaultValue: true }
@@ -244,7 +244,7 @@ export const CVPaginationContainer = createPaginationContainer(
         $count: Int
         $cursor: String
         $artistID: String!
-        $sort: PartnerShowSorts
+        $sort: ShowSorts
         $atAFair: Boolean
         $soloShow: Boolean
         $isReference: Boolean

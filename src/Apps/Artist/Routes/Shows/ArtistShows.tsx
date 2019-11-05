@@ -188,7 +188,7 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
-          sort: { type: "PartnerShowSorts" }
+          sort: { type: "ShowSorts" }
           status: { type: "String" }
         ) {
         slug
@@ -239,7 +239,7 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
       $after: String
       $before: String
       $artistID: String!
-      $sort: PartnerShowSorts
+      $sort: ShowSorts
       $status: String!
     ) {
       artist(id: $artistID) {

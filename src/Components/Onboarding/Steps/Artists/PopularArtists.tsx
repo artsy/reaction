@@ -194,7 +194,7 @@ const PopularArtistContentContainer = createFragmentContainer(
   PopularArtistsContent,
   {
     popular_artists: graphql`
-      fragment PopularArtists_popular_artists on PopularArtists {
+      fragment PopularArtists_popular_artists on Artist @relay(plural: true) {
         artists {
           sludORinternalID
           internalID

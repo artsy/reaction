@@ -81,7 +81,7 @@ export default createPaginationContainer(
   TagArtworksContent,
   {
     filtered_artworks: graphql`
-      fragment TagArtworksContent_filtered_artworks on FilterArtworks
+      fragment TagArtworksContent_filtered_artworks on FilterArtworksConnection
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }

@@ -52,14 +52,11 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(ShowsRoute, {
     fragment Shows_viewer on Viewer
       @argumentDefinitions(
         currentShowsStatus: { type: "String", defaultValue: "running" }
-        currentShowsSort: { type: "PartnerShowSorts", defaultValue: END_AT_ASC }
+        currentShowsSort: { type: "ShowSorts", defaultValue: END_AT_ASC }
         upcomingShowsStatus: { type: "String", defaultValue: "upcoming" }
-        upcomingShowsSort: {
-          type: "PartnerShowSorts"
-          defaultValue: START_AT_ASC
-        }
+        upcomingShowsSort: { type: "ShowSorts", defaultValue: START_AT_ASC }
         pastShowsStatus: { type: "String", defaultValue: "closed" }
-        pastShowsSort: { type: "PartnerShowSorts", defaultValue: END_AT_DESC }
+        pastShowsSort: { type: "ShowSorts", defaultValue: END_AT_DESC }
       ) {
       artist_currentShows: artist(id: $artistID) {
         ...ArtistShows_artist

@@ -91,7 +91,7 @@ export default createPaginationContainer(
   GeneArtworksContent,
   {
     filtered_artworks: graphql`
-      fragment GeneArtworksContent_filtered_artworks on FilterArtworks
+      fragment GeneArtworksContent_filtered_artworks on FilterArtworksConnection
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }

@@ -29,7 +29,7 @@ const StyledTotalCount = styled(TotalCount)`
 
 export default createFragmentContainer(StyledTotalCount, {
   filter_artworks: graphql`
-    fragment TotalCount_filter_artworks on FilterArtworks {
+    fragment TotalCount_filter_artworks on FilterArtworksConnection {
       counts {
         total
       }

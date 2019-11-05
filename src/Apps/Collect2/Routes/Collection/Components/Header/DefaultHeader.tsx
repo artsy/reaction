@@ -129,7 +129,7 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
   CollectionDefaultHeader,
   {
     headerArtworks: graphql`
-      fragment DefaultHeader_headerArtworks on FilterArtworks {
+      fragment DefaultHeader_headerArtworks on FilterArtworksConnection {
         hits {
           href
           sludORinternalID

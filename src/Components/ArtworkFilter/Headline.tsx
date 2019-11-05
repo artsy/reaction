@@ -92,10 +92,10 @@ const StyledHeadline = styled(Headline)`
 export default createFragmentContainer(StyledHeadline, {
   facet: graphql`
     fragment Headline_facet on ArtworkFilterFacet {
-      ... on ArtworkFilterTag {
+      ... on Tag {
         name
       }
-      ... on ArtworkFilterGene {
+      ... on Gene {
         name
       }
     }

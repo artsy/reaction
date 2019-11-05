@@ -357,7 +357,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
   CollectionHeader,
   {
     artworks: graphql`
-      fragment Header_artworks on FilterArtworks {
+      fragment Header_artworks on FilterArtworksConnection {
         ...DefaultHeader_headerArtworks
         merchandisable_artists: merchandisableArtists {
           sludORinternalID
