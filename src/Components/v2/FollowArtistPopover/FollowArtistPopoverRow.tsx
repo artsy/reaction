@@ -82,7 +82,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             followed: true,
           })
         },
-        updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
+        updater: (_store, data) => {
           const { node } = data.followArtist.artist.related.suggested.edges[0]
 
           // Add slight delay to make UX seem a bit nicer
@@ -93,7 +93,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             () => {
               setTimeout(() => {
                 this.setState({
-                  swappedArtist: node,
+                  swappedArtist: (node as unknown) as FollowArtistPopoverRow_artist,
                   followed: false,
                 })
               }, 500)

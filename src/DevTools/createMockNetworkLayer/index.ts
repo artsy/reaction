@@ -8,7 +8,7 @@ import {
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import getNetworkLayer from "relay-mock-network-layer"
-import { Network, RelayNetwork } from "relay-runtime"
+import { INetwork, Network } from "relay-runtime"
 import { get } from "Utils/get"
 import uuid from "uuid"
 import schema from "../../../data/schema.graphql"
@@ -33,7 +33,7 @@ export const createMockNetworkLayer2 = ({
 }: {
   mockData?: object
   mockMutationResults?: object
-}): RelayNetwork => {
+}): INetwork => {
   return Network.create(createMockFetchQuery({ mockData, mockMutationResults }))
 }
 

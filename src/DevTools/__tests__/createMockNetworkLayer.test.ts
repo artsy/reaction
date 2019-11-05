@@ -1,4 +1,7 @@
+import { createMockNetworkLayerTestAliasPrecendenceQuery } from "__generated__/createMockNetworkLayerTestAliasPrecendenceQuery.graphql"
+import { createMockNetworkLayerTestAliasQuery } from "__generated__/createMockNetworkLayerTestAliasQuery.graphql"
 import { createMockNetworkLayerTestMutationResultsMutation } from "__generated__/createMockNetworkLayerTestMutationResultsMutation.graphql"
+import { createMockNetworkLayerTestQuery } from "__generated__/createMockNetworkLayerTestQuery.graphql"
 import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
 import { commitMutation, graphql } from "react-relay"
 import {
@@ -6,7 +9,7 @@ import {
   fetchQuery,
   GraphQLTaggedNode,
   Network,
-  OperationBase,
+  OperationType,
   RecordSource,
   Store,
 } from "relay-runtime"
@@ -14,9 +17,9 @@ import { createMockNetworkLayer2 } from "../index"
 jest.unmock("react-relay")
 
 describe("createMockNetworkLayer", () => {
-  function fetchQueryWithResolvers(
+  function _fetchQueryWithResolvers<T extends OperationType>(
     options: Parameters<typeof createMockNetworkLayer2>[0],
-    query?: GraphQLTaggedNode
+    query: GraphQLTaggedNode
   ) {
     const network = createMockNetworkLayer2(options)
 
@@ -24,22 +27,26 @@ describe("createMockNetworkLayer", () => {
     const store = new Store(source)
     const environment = new Environment({ network, store })
 
-    return fetchQuery(
-      environment,
-      query ||
-        graphql`
-          query createMockNetworkLayerTestQuery {
-            artwork(id: "untitled") {
-              __id
-              title
-            }
+    return fetchQuery<T>(environment, query, {})
+  }
+
+  function fetchArtworkQueryWithResolvers(
+    options: Parameters<typeof createMockNetworkLayer2>[0]
+  ) {
+    return _fetchQueryWithResolvers<createMockNetworkLayerTestQuery>(
+      options,
+      graphql`
+        query createMockNetworkLayerTestQuery {
+          artwork(id: "untitled") {
+            __id
+            title
           }
-        `,
-      {}
+        }
+      `
     )
   }
 
-  function fetchMutationResults<Input extends OperationBase>({
+  function fetchMutationResults<Input extends OperationType>({
     mockMutationResults,
     query,
     variables,
@@ -74,7 +81,7 @@ describe("createMockNetworkLayer", () => {
 
   describe("preserves the upstream behaviour", () => {
     it("returns the data if present", async () => {
-      const data = await fetchQueryWithResolvers({
+      const data = await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { title: "Untitled", __id: "untitled" },
         },
@@ -83,7 +90,7 @@ describe("createMockNetworkLayer", () => {
     })
 
     it("returns null for nullable fields which are given as null", async () => {
-      const data = await fetchQueryWithResolvers({
+      const data = await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { title: null, __id: "null" },
         },
@@ -92,7 +99,7 @@ describe("createMockNetworkLayer", () => {
     })
 
     it("converts undefined to null", async () => {
-      const data = await fetchQueryWithResolvers({
+      const data = await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { title: undefined, __id: "null" },
         },
@@ -103,7 +110,7 @@ describe("createMockNetworkLayer", () => {
 
   it("complains with a helpful error when selected field is not present", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { __id: "blah" },
         },
@@ -119,7 +126,7 @@ describe("createMockNetworkLayer", () => {
   // see https://github.com/graphql/graphql-js/commit/3521e1429eec7eabeee4da65c93306b51308727b
   it.skip("complains with a helpful error when leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { __id: "blah", title: 32 },
         },
@@ -132,7 +139,7 @@ describe("createMockNetworkLayer", () => {
   // TODO: related to above, the only check right now is that you can't return an array as a string
   it("complains with a helpful error when leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: { __id: "blah", title: [] },
         },
@@ -146,7 +153,7 @@ describe("createMockNetworkLayer", () => {
 
   it("complains with a helpful error when non-leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: 3,
         },
@@ -159,7 +166,7 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("Does not complain when non-leaf nullable field type is null", async () => {
-    const data = await fetchQueryWithResolvers({
+    const data = await fetchArtworkQueryWithResolvers({
       mockData: {
         artwork: null,
       },
@@ -169,7 +176,9 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("uses data provided with an aliased name", async () => {
-    const data = await fetchQueryWithResolvers(
+    const data = await _fetchQueryWithResolvers<
+      createMockNetworkLayerTestAliasQuery
+    >(
       {
         mockData: {
           artist: {
@@ -199,7 +208,9 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("uses the alias over the default name if both are present", async () => {
-    const data = await fetchQueryWithResolvers(
+    const data = await _fetchQueryWithResolvers<
+      createMockNetworkLayerTestAliasPrecendenceQuery
+    >(
       {
         mockData: {
           artist: {
