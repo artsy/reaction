@@ -157,7 +157,7 @@ export default createFragmentContainer(MarketDataSummary, {
           edges {
             node {
               categories {
-                sludORinternalID
+                slug
               }
             }
           }

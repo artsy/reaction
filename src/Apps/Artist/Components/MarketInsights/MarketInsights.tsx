@@ -234,7 +234,7 @@ export default createFragmentContainer(MarketInsights, {
           edges {
             node {
               categories {
-                sludORinternalID
+                slug
               }
             }
           }

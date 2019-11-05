@@ -476,7 +476,7 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         shippingInfo
         shippingOrigin
         edition_sets: editionSets {
-          sludORinternalID
+          internalID
           id
           is_acquireable: isAcquireable
           is_offerable: isOfferable

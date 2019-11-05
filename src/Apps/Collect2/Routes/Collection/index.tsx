@@ -236,7 +236,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           aggregations {
             slice
             counts {
-              sludORinternalID
+              value
               name
               count
             }

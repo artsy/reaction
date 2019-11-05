@@ -187,7 +187,7 @@ export default createFragmentContainer(StyledDropdown, {
       slice
       counts {
         name
-        sludORinternalID
+        value
         count
       }
     }

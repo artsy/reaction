@@ -116,7 +116,7 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
           ...ArtworkGrid_artworks
           edges {
             node {
-              sludORinternalID
+              slug
             }
           }
         }

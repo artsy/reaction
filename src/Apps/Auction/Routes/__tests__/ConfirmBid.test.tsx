@@ -57,14 +57,14 @@ const setupTestEnv = ({
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
             internalID
-            sludORinternalID
+            slug
             sale {
               registrationStatus {
-                sludORinternalID
+                internalID
                 qualified_for_bidding: qualifiedForBidding
               }
               internalID
-              sludORinternalID
+              slug
               name
               is_closed: isClosed
               is_registration_closed: isRegistrationClosed

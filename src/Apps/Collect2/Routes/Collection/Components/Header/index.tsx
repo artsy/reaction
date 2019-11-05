@@ -360,7 +360,7 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
       fragment Header_artworks on FilterArtworksConnection {
         ...DefaultHeader_headerArtworks
         merchandisable_artists: merchandisableArtists {
-          sludORinternalID
+          slug
           internalID
           name
           imageUrl

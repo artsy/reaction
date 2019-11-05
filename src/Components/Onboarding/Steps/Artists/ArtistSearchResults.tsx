@@ -102,7 +102,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                 excludeArtistIDs: $excludedArtistIds
               ) {
                 artists {
-                  sludORinternalID
+                  slug
                   internalID
                   id
                   name
@@ -123,7 +123,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
                   ) {
                     edges {
                       node {
-                        sludORinternalID
+                        slug
                         internalID
                         id
                         name
@@ -186,7 +186,7 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
     viewer: graphql`
       fragment ArtistSearchResults_viewer on Viewer {
         match_artist: matchArtist(term: $term) {
-          sludORinternalID
+          slug
           internalID
           id
           name

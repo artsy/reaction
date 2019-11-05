@@ -183,7 +183,7 @@ export default createFragmentContainer(GeneArtworks, {
           slice
           counts {
             name
-            sludORinternalID
+            value
           }
           ...Dropdown_aggregation
         }

@@ -111,7 +111,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 excludeArtistIDs: $excludedArtistIds
               ) {
                 artists {
-                  sludORinternalID
+                  slug
                   internalID
                   id
                   name
@@ -132,7 +132,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
                   ) {
                     edges {
                       node {
-                        sludORinternalID
+                        slug
                         internalID
                         id
                         name
@@ -196,7 +196,7 @@ const PopularArtistContentContainer = createFragmentContainer(
     popular_artists: graphql`
       fragment PopularArtists_popular_artists on Artist @relay(plural: true) {
         artists {
-          sludORinternalID
+          slug
           internalID
           id
           name

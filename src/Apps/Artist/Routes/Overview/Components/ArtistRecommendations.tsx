@@ -99,7 +99,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           ) @connection(key: "ArtistRecommendations_artists") {
             edges {
               node {
-                sludORinternalID
+                slug
                 ...RecommendedArtist_artist
               }
             }
