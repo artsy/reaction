@@ -216,7 +216,16 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
       is_acquireable: isAcquireable
       is_offerable: isOfferable
       availability
-      price
+      # FIXME: The props in the component need to update to reflect
+      # the new structure for price.
+      listPrice {
+        ... on PriceRange {
+          display
+        }
+        ... on Money {
+          display
+        }
+      }
       is_in_auction: isInAuction
       artists {
         slug

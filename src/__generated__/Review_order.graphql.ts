@@ -1,61 +1,47 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { ItemReview_lineItem$ref } from "./ItemReview_lineItem.graphql";
-import { OfferSummaryItem_order$ref } from "./OfferSummaryItem_order.graphql";
-import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
-declare const _Review_order$ref: unique symbol;
-export type Review_order$ref = typeof _Review_order$ref;
 export type Review_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly itemsTotal: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                    readonly _id: string;
-                    readonly artists: ReadonlyArray<({
-                        readonly id: string;
-                    }) | null> | null;
-                }) | null;
-                readonly " $fragmentRefs": ItemReview_lineItem$ref;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly myLastOffer?: ({
-        readonly id: string;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferSummaryItem_order$ref;
-    readonly " $refType": Review_order$ref;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                    readonly internalID: string;
+                    readonly artists: ReadonlyArray<{
+                        readonly slug: string;
+                    } | null> | null;
+                } | null;
+                readonly " $fragmentRefs": FragmentRefs<"ItemReview_lineItem">;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly myLastOffer?: {
+        readonly internalID: string;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order" | "ShippingSummaryItem_order" | "CreditCardSummaryItem_order" | "OfferSummaryItem_order">;
+    readonly " $refType": "Review_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -66,12 +52,14 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "mode",
+      "args": null,
+      "storageKey": null
     },
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -80,8 +68,7 @@ return {
         {
           "kind": "Literal",
           "name": "precision",
-          "value": 2,
-          "type": "Int"
+          "value": 2
         }
       ],
       "storageKey": "itemsTotal(precision:2)"
@@ -114,11 +101,6 @@ return {
               "plural": false,
               "selections": [
                 {
-                  "kind": "FragmentSpread",
-                  "name": "ItemReview_lineItem",
-                  "args": null
-                },
-                {
                   "kind": "LinkedField",
                   "alias": null,
                   "name": "artwork",
@@ -127,14 +109,8 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "_id",
-                      "args": null,
-                      "storageKey": null
-                    },
+                    (v1/*: any*/),
+                    (v0/*: any*/),
                     {
                       "kind": "LinkedField",
                       "alias": null,
@@ -144,14 +120,16 @@ return {
                       "concreteType": "Artist",
                       "plural": true,
                       "selections": [
-                        v0,
-                        v1
+                        (v1/*: any*/)
                       ]
-                    },
-                    v1
+                    }
                   ]
                 },
-                v2
+                {
+                  "kind": "FragmentSpread",
+                  "name": "ItemReview_lineItem",
+                  "args": null
+                }
               ]
             }
           ]
@@ -159,16 +137,27 @@ return {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "OfferSummaryItem_order",
-      "args": null
+      "kind": "InlineFragment",
+      "type": "CommerceOfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v0/*: any*/)
+          ]
+        }
+      ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "mode",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -185,28 +174,13 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v2,
     {
-      "kind": "InlineFragment",
-      "type": "CommerceOfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "myLastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "CommerceOffer",
-          "plural": false,
-          "selections": [
-            v0,
-            v2
-          ]
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "OfferSummaryItem_order",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = 'b2f1f8fd334de38526bf166c54eccae9';
+(node as any).hash = '60dfd6ec4add50147123f983c4b5e086';
 export default node;

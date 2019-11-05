@@ -1,57 +1,45 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
-declare const _Offer_order$ref: unique symbol;
-export type Offer_order$ref = typeof _Offer_order$ref;
 export type Offer_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
     readonly totalListPrice: string | null;
     readonly totalListPriceCents: number;
     readonly currencyCode: string;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
-    readonly " $refType": Offer_order$ref;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
+    readonly " $refType": "Offer_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Offer_order",
   "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -74,8 +62,7 @@ return {
         {
           "kind": "Literal",
           "name": "precision",
-          "value": 2,
-          "type": "Int"
+          "value": 2
         }
       ],
       "storageKey": "totalListPrice(precision:2)"
@@ -130,17 +117,15 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "__id",
+                      "name": "slug",
                       "args": null,
                       "storageKey": null
                     }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
@@ -156,10 +141,8 @@ return {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
-    },
-    v1
+    }
   ]
 };
-})();
-(node as any).hash = '1b1ab23013a1d61ad89fcb83371a44e8';
+(node as any).hash = 'ed652f82e3ec77a94451ec21b8d1cc15';
 export default node;

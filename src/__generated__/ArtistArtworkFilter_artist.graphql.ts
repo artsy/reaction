@@ -1,37 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkFilterArtworkGrid2_filtered_artworks$ref } from "./ArtworkFilterArtworkGrid2_filtered_artworks.graphql";
-declare const _ArtistArtworkFilter_artist$ref: unique symbol;
-export type ArtistArtworkFilter_artist$ref = typeof _ArtistArtworkFilter_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistArtworkFilter_artist = {
     readonly is_followed: boolean | null;
-    readonly counts: ({
-        readonly partner_shows: any | null;
-        readonly for_sale_artworks: any | null;
-        readonly ecommerce_artworks: any | null;
-        readonly auction_artworks: any | null;
-        readonly artworks: any | null;
+    readonly counts: {
+        readonly partner_shows: number | null;
+        readonly for_sale_artworks: number | null;
+        readonly ecommerce_artworks: number | null;
+        readonly auction_artworks: number | null;
+        readonly artworks: number | null;
         readonly has_make_offer_artworks: boolean | null;
-    }) | null;
-    readonly filtered_artworks: ({
-        readonly __id: string;
-        readonly " $fragmentRefs": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
-    }) | null;
-    readonly " $refType": ArtistArtworkFilter_artist$ref;
+    } | null;
+    readonly filtered_artworks: {
+        readonly id: string;
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkFilterArtworkGrid2_filtered_artworks">;
+    } | null;
+    readonly " $refType": "ArtistArtworkFilter_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistArtworkFilter_artist",
   "type": "Artist",
@@ -39,7 +29,7 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "partner_category",
+      "name": "partnerCategory",
       "type": "[String]",
       "defaultValue": [
         "blue-chip",
@@ -61,19 +51,19 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "artist_id",
+      "name": "artistID",
       "type": "String",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "at_auction",
+      "name": "atAuction",
       "type": "Boolean",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "attribution_class",
+      "name": "attributionClass",
       "type": "[String]",
       "defaultValue": null
     },
@@ -85,7 +75,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "for_sale",
+      "name": "forSale",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -103,7 +93,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "inquireable_only",
+      "name": "inquireableOnly",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -115,7 +105,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "major_periods",
+      "name": "majorPeriods",
       "type": "[String]",
       "defaultValue": null
     },
@@ -139,13 +129,13 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "partner_id",
+      "name": "partnerID",
       "type": "ID",
       "defaultValue": null
     },
     {
       "kind": "LocalArgument",
-      "name": "price_range",
+      "name": "priceRange",
       "type": "String",
       "defaultValue": null
     },
@@ -165,8 +155,8 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_followed",
+      "alias": "is_followed",
+      "name": "isFollowed",
       "args": null,
       "storageKey": null
     },
@@ -181,29 +171,29 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "partner_shows",
+          "alias": "partner_shows",
+          "name": "partnerShows",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "for_sale_artworks",
+          "alias": "for_sale_artworks",
+          "name": "forSaleArtworks",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "ecommerce_artworks",
+          "alias": "ecommerce_artworks",
+          "name": "ecommerceArtworks",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "auction_artworks",
+          "alias": "auction_artworks",
+          "name": "auctionArtworks",
           "args": null,
           "storageKey": null
         },
@@ -216,8 +206,8 @@ return {
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "has_make_offer_artworks",
+          "alias": "has_make_offer_artworks",
+          "name": "hasMakeOfferArtworks",
           "args": null,
           "storageKey": null
         }
@@ -225,139 +215,124 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "filtered_artworks",
+      "alias": "filtered_artworks",
+      "name": "filterArtworksConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "acquireable",
-          "variableName": "acquireable",
-          "type": "Boolean"
+          "variableName": "acquireable"
         },
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Variable",
-          "name": "artist_id",
-          "variableName": "artist_id",
-          "type": "String"
+          "name": "artistID",
+          "variableName": "artistID"
         },
         {
           "kind": "Variable",
-          "name": "at_auction",
-          "variableName": "at_auction",
-          "type": "Boolean"
+          "name": "atAuction",
+          "variableName": "atAuction"
         },
         {
           "kind": "Variable",
-          "name": "attribution_class",
-          "variableName": "attribution_class",
-          "type": "[String]"
+          "name": "attributionClass",
+          "variableName": "attributionClass"
         },
         {
           "kind": "Variable",
           "name": "color",
-          "variableName": "color",
-          "type": "String"
+          "variableName": "color"
         },
         {
           "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "name": "forSale",
+          "variableName": "forSale"
         },
         {
           "kind": "Variable",
           "name": "height",
-          "variableName": "height",
-          "type": "String"
+          "variableName": "height"
         },
         {
           "kind": "Variable",
-          "name": "inquireable_only",
-          "variableName": "inquireable_only",
-          "type": "Boolean"
+          "name": "inquireableOnly",
+          "variableName": "inquireableOnly"
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "keyword",
-          "type": "String"
+          "variableName": "keyword"
         },
         {
           "kind": "Variable",
-          "name": "major_periods",
-          "variableName": "major_periods",
-          "type": "[String]"
+          "name": "majorPeriods",
+          "variableName": "majorPeriods"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
           "name": "offerable",
-          "variableName": "offerable",
-          "type": "Boolean"
+          "variableName": "offerable"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
-          "name": "partner_id",
-          "variableName": "partner_id",
-          "type": "ID"
+          "name": "partnerID",
+          "variableName": "partnerID"
         },
         {
           "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "name": "priceRange",
+          "variableName": "priceRange"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         },
         {
           "kind": "Variable",
           "name": "sort",
-          "variableName": "sort",
-          "type": "String"
+          "variableName": "sort"
         },
         {
           "kind": "Variable",
           "name": "width",
-          "variableName": "width",
-          "type": "String"
+          "variableName": "width"
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
-        v0,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "FragmentSpread",
           "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
           "args": null
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'd1cbeb45d454e387db7735ccc9d7673d';
+(node as any).hash = '178574b6e725b62d0c0f312e02c19983';
 export default node;

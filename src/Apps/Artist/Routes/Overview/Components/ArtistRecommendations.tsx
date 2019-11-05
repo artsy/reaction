@@ -92,11 +92,11 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         slug
         name
         related {
-          artists(
+          artistsConnection(
             first: $count
             after: $cursor
             minForsaleArtworks: $minForsaleArtworks
-          ) @connection(key: "ArtistRecommendations_artists") {
+          ) @connection(key: "ArtistRecommendations_artistsConnection") {
             edges {
               node {
                 slug

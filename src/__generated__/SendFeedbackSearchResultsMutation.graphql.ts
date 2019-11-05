@@ -9,21 +9,21 @@ export type SendFeedbackMutationInput = {
     readonly clientMutationId?: string | null;
 };
 export type SendFeedbackSearchResultsMutationVariables = {
-    readonly input: SendFeedbackMutationInput;
+    input: SendFeedbackMutationInput;
 };
 export type SendFeedbackSearchResultsMutationResponse = {
-    readonly sendFeedback: ({
-        readonly feedbackOrError: ({
-            readonly feedback?: ({
+    readonly sendFeedback: {
+        readonly feedbackOrError: {
+            readonly feedback?: {
                 readonly message: string;
-            }) | null;
-            readonly mutationError?: ({
+            } | null;
+            readonly mutationError?: {
                 readonly type: string | null;
                 readonly message: string | null;
                 readonly detail: string | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type SendFeedbackSearchResultsMutation = {
     readonly response: SendFeedbackSearchResultsMutationResponse;
@@ -42,7 +42,7 @@ mutation SendFeedbackSearchResultsMutation(
       ... on SendFeedbackMutationSuccess {
         feedback {
           message
-          __id
+          id
         }
       }
       ... on SendFeedbackMutationFailure {
@@ -70,8 +70,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "SendFeedbackMutationInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
@@ -101,7 +100,7 @@ v3 = {
           "args": null,
           "storageKey": null
         },
-        v2,
+        (v2/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -112,52 +111,22 @@ v3 = {
       ]
     }
   ]
-},
-v4 = {
-  "kind": "InlineFragment",
-  "type": "SendFeedbackMutationSuccess",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "feedback",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Feedback",
-      "plural": false,
-      "selections": [
-        v2,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "SendFeedbackSearchResultsMutation",
-  "id": null,
-  "text": "mutation SendFeedbackSearchResultsMutation(\n  $input: SendFeedbackMutationInput!\n) {\n  sendFeedback(input: $input) {\n    feedbackOrError {\n      __typename\n      ... on SendFeedbackMutationSuccess {\n        feedback {\n          message\n          __id\n        }\n      }\n      ... on SendFeedbackMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SendFeedbackSearchResultsMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sendFeedback",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "SendFeedbackMutationPayload",
         "plural": false,
         "selections": [
@@ -170,8 +139,25 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v4
+              {
+                "kind": "InlineFragment",
+                "type": "SendFeedbackMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "feedback",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Feedback",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/)
+                    ]
+                  }
+                ]
+              },
+              (v3/*: any*/)
             ]
           }
         ]
@@ -181,14 +167,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "SendFeedbackSearchResultsMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sendFeedback",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "SendFeedbackMutationPayload",
         "plural": false,
         "selections": [
@@ -208,13 +194,44 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v3,
-              v4
+              {
+                "kind": "InlineFragment",
+                "type": "SendFeedbackMutationSuccess",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "feedback",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Feedback",
+                    "plural": false,
+                    "selections": [
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "SendFeedbackSearchResultsMutation",
+    "id": null,
+    "text": "mutation SendFeedbackSearchResultsMutation(\n  $input: SendFeedbackMutationInput!\n) {\n  sendFeedback(input: $input) {\n    feedbackOrError {\n      __typename\n      ... on SendFeedbackMutationSuccess {\n        feedback {\n          message\n          id\n        }\n      }\n      ... on SendFeedbackMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

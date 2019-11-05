@@ -7,16 +7,16 @@ export type CommerceSetPaymentInput = {
     readonly id: string;
 };
 export type commitMutationTest1MutationVariables = {
-    readonly input: CommerceSetPaymentInput;
+    input: CommerceSetPaymentInput;
 };
 export type commitMutationTest1MutationResponse = {
-    readonly commerceSetPayment: ({
+    readonly commerceSetPayment: {
         readonly orderOrError: {
             readonly error?: {
                 readonly code: string;
             };
         };
-    }) | null;
+    } | null;
 };
 export type commitMutationTest1Mutation = {
     readonly response: commitMutationTest1MutationResponse;
@@ -55,8 +55,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceSetPaymentInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
@@ -85,24 +84,19 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "commitMutationTest1Mutation",
-  "id": null,
-  "text": "mutation commitMutationTest1Mutation(\n  $input: CommerceSetPaymentInput!\n) {\n  commerceSetPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          code\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "commitMutationTest1Mutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSetPayment",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSetPaymentPayload",
         "plural": false,
         "selections": [
@@ -115,7 +109,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2
+              (v2/*: any*/)
             ]
           }
         ]
@@ -125,14 +119,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "commitMutationTest1Mutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSetPayment",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSetPaymentPayload",
         "plural": false,
         "selections": [
@@ -152,12 +146,19 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              (v2/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "commitMutationTest1Mutation",
+    "id": null,
+    "text": "mutation commitMutationTest1Mutation(\n  $input: CommerceSetPaymentInput!\n) {\n  commerceSetPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          code\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -1,35 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-declare const _ArtistHeader_artist$ref: unique symbol;
-export type ArtistHeader_artist$ref = typeof _ArtistHeader_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistHeader_artist = {
-    readonly _id: string;
-    readonly id: string;
+    readonly internalID: string;
+    readonly slug: string;
     readonly name: string | null;
     readonly nationality: string | null;
     readonly years: string | null;
-    readonly counts: ({
-        readonly follows: any | null;
-    }) | null;
-    readonly carousel: ({
-        readonly images: ReadonlyArray<({
+    readonly counts: {
+        readonly follows: number | null;
+    } | null;
+    readonly carousel: {
+        readonly images: ReadonlyArray<{
             readonly href: string | null;
-            readonly resized: ({
+            readonly resized: {
                 readonly url: string | null;
                 readonly width: number | null;
                 readonly height: number | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $fragmentRefs": FollowArtistButton_artist$ref;
-    readonly " $refType": ArtistHeader_artist$ref;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
+    readonly " $refType": "ArtistHeader_artist";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistHeader_artist",
   "type": "Artist",
@@ -39,14 +37,14 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -123,8 +121,7 @@ const node: ConcreteFragment = {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 200,
-                  "type": "Int"
+                  "value": 200
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -152,13 +149,6 @@ const node: ConcreteFragment = {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -168,15 +158,8 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "FollowArtistButton_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = '7c700420d84dd2fe567a9f2491518ea1';
+(node as any).hash = 'effa836893fe1cf4476282a6ff5eeabc';
 export default node;

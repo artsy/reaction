@@ -1,25 +1,201 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Shows_viewer$ref } from "./Shows_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type Shows_Test_QueryVariables = {
-    readonly artist_id: string;
+    artistID: string;
 };
 export type Shows_Test_QueryResponse = {
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"Shows_viewer">;
+    } | null;
+};
+export type Shows_Test_QueryRawResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": Shows_viewer$ref;
+        readonly artist_currentShows: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly pageCursors: {
+                    readonly around: ReadonlyArray<{
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }>;
+                    readonly first: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly last: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly previous: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                    }) | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly href: string | null;
+                        readonly exhibition_period: string | null;
+                        readonly cover_image: ({
+                            readonly cropped: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                        readonly city: string | null;
+                        readonly id: string | null;
+                    }) | null;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly artist_upcomingShows: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly pageCursors: {
+                    readonly around: ReadonlyArray<{
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }>;
+                    readonly first: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly last: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly previous: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                    }) | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly href: string | null;
+                        readonly exhibition_period: string | null;
+                        readonly cover_image: ({
+                            readonly cropped: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                        readonly city: string | null;
+                        readonly id: string | null;
+                    }) | null;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly artist_pastShows: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly pageCursors: {
+                    readonly around: ReadonlyArray<{
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }>;
+                    readonly first: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly last: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                        readonly isCurrent: boolean;
+                    }) | null;
+                    readonly previous: ({
+                        readonly cursor: string;
+                        readonly page: number;
+                    }) | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly href: string | null;
+                        readonly exhibition_period: string | null;
+                        readonly cover_image: ({
+                            readonly cropped: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                        readonly city: string | null;
+                        readonly id: string | null;
+                    }) | null;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
     }) | null;
 };
 export type Shows_Test_Query = {
     readonly response: Shows_Test_QueryResponse;
     readonly variables: Shows_Test_QueryVariables;
+    readonly rawResponse: Shows_Test_QueryRawResponse;
 };
 
 
 
 /*
 query Shows_Test_Query(
-  $artist_id: String!
+  $artistID: String!
 ) {
   viewer {
     ...Shows_viewer
@@ -27,22 +203,22 @@ query Shows_Test_Query(
 }
 
 fragment Shows_viewer on Viewer {
-  artist_currentShows: artist(id: $artist_id) {
+  artist_currentShows: artist(id: $artistID) {
     ...ArtistShows_artist_43oec1
-    __id
+    id
   }
-  artist_upcomingShows: artist(id: $artist_id) {
+  artist_upcomingShows: artist(id: $artistID) {
     ...ArtistShows_artist_12Fjro
-    __id
+    id
   }
-  artist_pastShows: artist(id: $artist_id) {
+  artist_pastShows: artist(id: $artistID) {
     ...ArtistShows_artist_3dp4w3
-    __id
+    id
   }
 }
 
 fragment ArtistShows_artist_43oec1 on Artist {
-  id
+  slug
   showsConnection(first: 4, sort: END_AT_ASC, status: "running") {
     pageInfo {
       hasNextPage
@@ -57,34 +233,32 @@ fragment ArtistShows_artist_43oec1 on Artist {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
         href
-        exhibition_period
-        cover_image {
+        exhibition_period: exhibitionPeriod
+        cover_image: coverImage {
           cropped(width: 800, height: 600) {
             url
           }
-          __id: id
         }
         city
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment ArtistShows_artist_12Fjro on Artist {
-  id
+  slug
   showsConnection(first: 4, sort: START_AT_ASC, status: "upcoming") {
     pageInfo {
       hasNextPage
@@ -99,34 +273,32 @@ fragment ArtistShows_artist_12Fjro on Artist {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
         href
-        exhibition_period
-        cover_image {
+        exhibition_period: exhibitionPeriod
+        cover_image: coverImage {
           cropped(width: 800, height: 600) {
             url
           }
-          __id: id
         }
         city
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment ArtistShows_artist_3dp4w3 on Artist {
-  id
+  slug
   showsConnection(first: 4, sort: END_AT_DESC, status: "closed") {
     pageInfo {
       hasNextPage
@@ -141,30 +313,28 @@ fragment ArtistShows_artist_3dp4w3 on Artist {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
         href
-        exhibition_period
-        cover_image {
+        exhibition_period: exhibitionPeriod
+        cover_image: coverImage {
           cropped(width: 800, height: 600) {
             url
           }
-          __id: id
         }
         city
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment Pagination_pageCursors on PageCursors {
@@ -194,7 +364,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artist_id",
+    "name": "artistID",
     "type": "String!",
     "defaultValue": null
   }
@@ -203,22 +373,20 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artist_id",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "Literal",
   "name": "first",
-  "value": 4,
-  "type": "Int"
+  "value": 4
 },
 v4 = {
   "kind": "ScalarField",
@@ -235,8 +403,8 @@ v5 = {
   "storageKey": null
 },
 v6 = [
-  v4,
-  v5,
+  (v4/*: any*/),
+  (v5/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -248,7 +416,7 @@ v6 = [
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -260,7 +428,7 @@ v8 = {
   "storageKey": null
 },
 v9 = [
-  v8
+  (v8/*: any*/)
 ],
 v10 = [
   {
@@ -305,7 +473,7 @@ v10 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": true,
-        "selections": v6
+        "selections": (v6/*: any*/)
       },
       {
         "kind": "LinkedField",
@@ -315,7 +483,7 @@ v10 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v6
+        "selections": (v6/*: any*/)
       },
       {
         "kind": "LinkedField",
@@ -325,7 +493,7 @@ v10 = [
         "args": null,
         "concreteType": "PageCursor",
         "plural": false,
-        "selections": v6
+        "selections": (v6/*: any*/)
       },
       {
         "kind": "LinkedField",
@@ -336,8 +504,8 @@ v10 = [
         "concreteType": "PageCursor",
         "plural": false,
         "selections": [
-          v4,
-          v5
+          (v4/*: any*/),
+          (v5/*: any*/)
         ]
       }
     ]
@@ -376,20 +544,20 @@ v10 = [
                 "args": null,
                 "storageKey": null
               },
-              v7,
-              {
-                "kind": "InlineFragment",
-                "type": "Partner",
-                "selections": v9
-              },
+              (v7/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "ExternalPartner",
-                "selections": v9
+                "selections": (v9/*: any*/)
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": (v9/*: any*/)
               }
             ]
           },
-          v8,
+          (v8/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -399,15 +567,15 @@ v10 = [
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "exhibition_period",
+            "alias": "exhibition_period",
+            "name": "exhibitionPeriod",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "cover_image",
+            "alias": "cover_image",
+            "name": "coverImage",
             "storageKey": null,
             "args": null,
             "concreteType": "Image",
@@ -422,14 +590,12 @@ v10 = [
                   {
                     "kind": "Literal",
                     "name": "height",
-                    "value": 600,
-                    "type": "Int!"
+                    "value": 600
                   },
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 800,
-                    "type": "Int!"
+                    "value": 800
                   }
                 ],
                 "concreteType": "CroppedImageUrl",
@@ -443,13 +609,6 @@ v10 = [
                     "storageKey": null
                   }
                 ]
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
           },
@@ -460,7 +619,7 @@ v10 = [
             "args": null,
             "storageKey": null
           },
-          v7
+          (v7/*: any*/)
         ]
       }
     ]
@@ -468,22 +627,17 @@ v10 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "Shows_Test_Query",
-  "id": null,
-  "text": "query Shows_Test_Query(\n  $artist_id: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artist_id) {\n    ...ArtistShows_artist_43oec1\n    __id\n  }\n  artist_upcomingShows: artist(id: $artist_id) {\n    ...ArtistShows_artist_12Fjro\n    __id\n  }\n  artist_pastShows: artist(id: $artist_id) {\n    ...ArtistShows_artist_3dp4w3\n    __id\n  }\n}\n\nfragment ArtistShows_artist_43oec1 on Artist {\n  id\n  showsConnection(first: 4, sort: END_AT_ASC, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n          __id: id\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistShows_artist_12Fjro on Artist {\n  id\n  showsConnection(first: 4, sort: START_AT_ASC, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n          __id: id\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistShows_artist_3dp4w3 on Artist {\n  id\n  showsConnection(first: 4, sort: END_AT_DESC, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        href\n        exhibition_period\n        cover_image {\n          cropped(width: 800, height: 600) {\n            url\n          }\n          __id: id\n        }\n        city\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "Shows_Test_Query",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -501,7 +655,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "Shows_Test_Query",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -517,36 +671,34 @@ return {
             "alias": "artist_currentShows",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
                 "storageKey": "showsConnection(first:4,sort:\"END_AT_ASC\",status:\"running\")",
                 "args": [
-                  v3,
+                  (v3/*: any*/),
                   {
                     "kind": "Literal",
                     "name": "sort",
-                    "value": "END_AT_ASC",
-                    "type": "PartnerShowSorts"
+                    "value": "END_AT_ASC"
                   },
                   {
                     "kind": "Literal",
                     "name": "status",
-                    "value": "running",
-                    "type": "String"
+                    "value": "running"
                   }
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v10
+                "selections": (v10/*: any*/)
               },
-              v7
+              (v7/*: any*/)
             ]
           },
           {
@@ -554,36 +706,34 @@ return {
             "alias": "artist_upcomingShows",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
                 "storageKey": "showsConnection(first:4,sort:\"START_AT_ASC\",status:\"upcoming\")",
                 "args": [
-                  v3,
+                  (v3/*: any*/),
                   {
                     "kind": "Literal",
                     "name": "sort",
-                    "value": "START_AT_ASC",
-                    "type": "PartnerShowSorts"
+                    "value": "START_AT_ASC"
                   },
                   {
                     "kind": "Literal",
                     "name": "status",
-                    "value": "upcoming",
-                    "type": "String"
+                    "value": "upcoming"
                   }
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v10
+                "selections": (v10/*: any*/)
               },
-              v7
+              (v7/*: any*/)
             ]
           },
           {
@@ -591,52 +741,48 @@ return {
             "alias": "artist_pastShows",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
                 "storageKey": "showsConnection(first:4,sort:\"END_AT_DESC\",status:\"closed\")",
                 "args": [
-                  v3,
+                  (v3/*: any*/),
                   {
                     "kind": "Literal",
                     "name": "sort",
-                    "value": "END_AT_DESC",
-                    "type": "PartnerShowSorts"
+                    "value": "END_AT_DESC"
                   },
                   {
                     "kind": "Literal",
                     "name": "status",
-                    "value": "closed",
-                    "type": "String"
+                    "value": "closed"
                   }
                 ],
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v10
+                "selections": (v10/*: any*/)
               },
-              v7
+              (v7/*: any*/)
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "Shows_Test_Query",
+    "id": null,
+    "text": "query Shows_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...Shows_viewer\n  }\n}\n\nfragment Shows_viewer on Viewer {\n  artist_currentShows: artist(id: $artistID) {\n    ...ArtistShows_artist_43oec1\n    id\n  }\n  artist_upcomingShows: artist(id: $artistID) {\n    ...ArtistShows_artist_12Fjro\n    id\n  }\n  artist_pastShows: artist(id: $artistID) {\n    ...ArtistShows_artist_3dp4w3\n    id\n  }\n}\n\nfragment ArtistShows_artist_43oec1 on Artist {\n  slug\n  showsConnection(first: 4, sort: END_AT_ASC, status: \"running\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        href\n        exhibition_period: exhibitionPeriod\n        cover_image: coverImage {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        id\n      }\n    }\n  }\n}\n\nfragment ArtistShows_artist_12Fjro on Artist {\n  slug\n  showsConnection(first: 4, sort: START_AT_ASC, status: \"upcoming\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        href\n        exhibition_period: exhibitionPeriod\n        cover_image: coverImage {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        id\n      }\n    }\n  }\n}\n\nfragment ArtistShows_artist_3dp4w3 on Artist {\n  slug\n  showsConnection(first: 4, sort: END_AT_DESC, status: \"closed\") {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        href\n        exhibition_period: exhibitionPeriod\n        cover_image: coverImage {\n          cropped(width: 800, height: 600) {\n            url\n          }\n        }\n        city\n        id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'c996feefc1689e71a7c56ffd8fb9f49a';
+(node as any).hash = '733d28d99e58211eb302f2a5a0376f91';
 export default node;

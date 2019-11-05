@@ -107,7 +107,7 @@ class TagContents extends React.Component<Props, State> {
             $tagID: String!
             $medium: String
             $priceRange: String
-            $sort: String
+            # $sort: String
             $forSale: Boolean
             $dimensionRange: String
           ) {

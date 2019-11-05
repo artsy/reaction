@@ -108,7 +108,7 @@ export const RecentlyViewedFragmentContainer = createFragmentContainer(
   {
     me: graphql`
       fragment RecentlyViewed_me on Me {
-        recentlyViewedArtworks(first: 20) {
+        recentlyViewedArtworksConnection(first: 20) {
           edges {
             node {
               id

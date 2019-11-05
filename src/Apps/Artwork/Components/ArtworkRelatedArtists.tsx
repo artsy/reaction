@@ -117,8 +117,8 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
         artist {
           href
           related {
-            artists(kind: MAIN, first: $count, after: $cursor)
-              @connection(key: "ArtworkRelatedArtists_artists") {
+            artistsConnection(kind: MAIN, first: $count, after: $cursor)
+              @connection(key: "ArtworkRelatedArtists_artistsConnection") {
               pageInfo {
                 hasNextPage
               }

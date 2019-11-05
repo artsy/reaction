@@ -80,7 +80,7 @@ export const FollowArtistPopoverFragmentContainer = createFragmentContainer(
     artist: graphql`
       fragment FollowArtistPopover_artist on Artist {
         related {
-          suggested(first: 3, excludeFollowedArtists: true) {
+          suggestedConnection(first: 3, excludeFollowedArtists: true) {
             edges {
               node {
                 id

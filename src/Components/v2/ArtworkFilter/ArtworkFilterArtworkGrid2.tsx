@@ -113,21 +113,19 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
             count
           }
         }
-        artworks: artworksConnection(first: $first, after: $after) {
-          pageInfo {
-            hasNextPage
-            endCursor
-          }
-          pageCursors {
-            ...Pagination_pageCursors
-          }
-          edges {
-            node {
-              id
-            }
-          }
-          ...ArtworkGrid_artworks
+        pageInfo {
+          hasNextPage
+          endCursor
         }
+        pageCursors {
+          ...Pagination_pageCursors
+        }
+        edges {
+          node {
+            id
+          }
+        }
+        ...ArtworkGrid_artworks
       }
     `,
   },

@@ -103,7 +103,7 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           artworks
           has_make_offer_artworks: hasMakeOfferArtworks
         }
-        filtered_artworks: filteredArtworks(
+        filtered_artworks: filterArtworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations
           artistID: $artistID

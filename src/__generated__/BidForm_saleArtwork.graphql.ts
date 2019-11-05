@@ -1,22 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _BidForm_saleArtwork$ref: unique symbol;
-export type BidForm_saleArtwork$ref = typeof _BidForm_saleArtwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type BidForm_saleArtwork = {
-    readonly minimumNextBid: ({
+    readonly minimumNextBid: {
         readonly cents: number | null;
-    }) | null;
-    readonly increments: ReadonlyArray<({
+    } | null;
+    readonly increments: ReadonlyArray<{
         readonly cents: number | null;
         readonly display: string | null;
-    }) | null> | null;
-    readonly " $refType": BidForm_saleArtwork$ref;
+    } | null> | null;
+    readonly " $refType": "BidForm_saleArtwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -33,14 +31,14 @@ return {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "minimumNextBid",
-      "name": "minimum_next_bid",
+      "alias": null,
+      "name": "minimumNextBid",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtworkMinimumNextBid",
       "plural": false,
       "selections": [
-        v0
+        (v0/*: any*/)
       ]
     },
     {
@@ -52,14 +50,13 @@ return {
         {
           "kind": "Literal",
           "name": "useMyMaxBid",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "BidIncrementsFormatted",
       "plural": true,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -68,16 +65,9 @@ return {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
 })();
-(node as any).hash = 'f63146f06b2eeaabe48250b3d9b72cac';
+(node as any).hash = 'e929d0b1f453429bad6f2adb041f92a9';
 export default node;

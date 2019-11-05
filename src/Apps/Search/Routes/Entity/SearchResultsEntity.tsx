@@ -163,7 +163,7 @@ export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
           page: { type: "Int" }
           entities: { type: "[SearchEntity]" }
         ) {
-        search(
+        searchConnection(
           query: $term
           first: $first
           after: $after

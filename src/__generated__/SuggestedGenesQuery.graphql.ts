@@ -1,12 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SuggestedGenes_suggested_genes$ref } from "./SuggestedGenes_suggested_genes.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type SuggestedGenesQueryVariables = {};
 export type SuggestedGenesQueryResponse = {
-    readonly suggested_genes: ReadonlyArray<({
-        readonly " $fragmentRefs": SuggestedGenes_suggested_genes$ref;
-    }) | null> | null;
+    readonly highlights: {
+        readonly suggested_genes: ReadonlyArray<{
+            readonly " $fragmentRefs": FragmentRefs<"SuggestedGenes_suggested_genes">;
+        } | null> | null;
+    } | null;
 };
 export type SuggestedGenesQuery = {
     readonly response: SuggestedGenesQueryResponse;
@@ -17,41 +19,28 @@ export type SuggestedGenesQuery = {
 
 /*
 query SuggestedGenesQuery {
-  suggested_genes {
-    ...SuggestedGenes_suggested_genes
-    __id
+  highlights {
+    suggested_genes: broadCollectingGenes {
+      ...SuggestedGenes_suggested_genes
+      id
+    }
   }
 }
 
 fragment SuggestedGenes_suggested_genes on Gene {
-  id
-  _id
+  slug
+  internalID
   name
   image {
     cropped(width: 100, height: 100) {
       url
     }
-    __id: id
   }
-  __id
 }
 */
 
-const node: ConcreteRequest = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SuggestedGenesQuery",
-  "id": null,
-  "text": "query SuggestedGenesQuery {\n  suggested_genes {\n    ...SuggestedGenes_suggested_genes\n    __id\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  _id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SuggestedGenesQuery",
@@ -62,18 +51,28 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "suggested_genes",
+        "name": "highlights",
         "storageKey": null,
         "args": null,
-        "concreteType": "Gene",
-        "plural": true,
+        "concreteType": "Highlights",
+        "plural": false,
         "selections": [
           {
-            "kind": "FragmentSpread",
-            "name": "SuggestedGenes_suggested_genes",
-            "args": null
-          },
-          v0
+            "kind": "LinkedField",
+            "alias": "suggested_genes",
+            "name": "broadCollectingGenes",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Gene",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "FragmentSpread",
+                "name": "SuggestedGenes_suggested_genes",
+                "args": null
+              }
+            ]
+          }
         ]
       }
     ]
@@ -86,88 +85,102 @@ return {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "suggested_genes",
+        "name": "highlights",
         "storageKey": null,
         "args": null,
-        "concreteType": "Gene",
-        "plural": true,
+        "concreteType": "Highlights",
+        "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "_id",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "image",
+            "alias": "suggested_genes",
+            "name": "broadCollectingGenes",
             "storageKey": null,
             "args": null,
-            "concreteType": "Image",
-            "plural": false,
+            "concreteType": "Gene",
+            "plural": true,
             "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "slug",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "internalID",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "name",
+                "args": null,
+                "storageKey": null
+              },
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "cropped",
-                "storageKey": "cropped(height:100,width:100)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "height",
-                    "value": 100,
-                    "type": "Int!"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "width",
-                    "value": 100,
-                    "type": "Int!"
-                  }
-                ],
-                "concreteType": "CroppedImageUrl",
+                "name": "image",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Image",
                 "plural": false,
                 "selections": [
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "url",
-                    "args": null,
-                    "storageKey": null
+                    "name": "cropped",
+                    "storageKey": "cropped(height:100,width:100)",
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "height",
+                        "value": 100
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "width",
+                        "value": 100
+                      }
+                    ],
+                    "concreteType": "CroppedImageUrl",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "url",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ]
               },
               {
                 "kind": "ScalarField",
-                "alias": "__id",
+                "alias": null,
                 "name": "id",
                 "args": null,
                 "storageKey": null
               }
             ]
-          },
-          v0
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SuggestedGenesQuery",
+    "id": null,
+    "text": "query SuggestedGenesQuery {\n  highlights {\n    suggested_genes: broadCollectingGenes {\n      ...SuggestedGenes_suggested_genes\n      id\n    }\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  slug\n  internalID\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
-})();
-(node as any).hash = '42530c5bcd10f72dbb90c9e06541717d';
+(node as any).hash = '91f31587213209d9aee297d52ee8babb';
 export default node;

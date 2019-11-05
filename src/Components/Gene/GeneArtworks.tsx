@@ -168,7 +168,7 @@ export default createFragmentContainer(GeneArtworks, {
         dimensionRange: { type: "String", defaultValue: "*" }
       ) {
       slug
-      filtered_artworks: filteredArtworks(
+      filtered_artworks: filterArtworksConnection(
         aggregations: $aggregations
         forSale: $forSale
         medium: $medium

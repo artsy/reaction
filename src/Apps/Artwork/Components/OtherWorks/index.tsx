@@ -112,7 +112,7 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
         title
         ctaTitle
         ctaHref
-        artworks(first: 8) {
+        artworksConnection(first: 8) {
           ...ArtworkGrid_artworks
           edges {
             node {

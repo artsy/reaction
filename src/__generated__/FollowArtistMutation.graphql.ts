@@ -2,20 +2,20 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowArtistInput = {
-    readonly artist_id?: string | null;
+    readonly artistID: string;
     readonly unfollow?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type FollowArtistMutationVariables = {
-    readonly input: FollowArtistInput;
+    input: FollowArtistInput;
 };
 export type FollowArtistMutationResponse = {
-    readonly followArtist: ({
-        readonly artist: ({
-            readonly __id: string;
+    readonly followArtist: {
+        readonly artist: {
+            readonly id: string;
             readonly is_followed: boolean | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type FollowArtistMutation = {
     readonly response: FollowArtistMutationResponse;
@@ -30,8 +30,8 @@ mutation FollowArtistMutation(
 ) {
   followArtist(input: $input) {
     artist {
-      __id
-      is_followed
+      id
+      is_followed: isFollowed
     }
   }
 }
@@ -56,8 +56,7 @@ v1 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "FollowArtistInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "FollowArtistPayload",
@@ -75,14 +74,14 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__id",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           }
@@ -93,26 +92,28 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowArtistMutation",
-  "id": null,
-  "text": "mutation FollowArtistMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      __id\n      is_followed\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowArtistMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "FollowArtistMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "FollowArtistMutation",
+    "id": null,
+    "text": "mutation FollowArtistMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      id\n      is_followed: isFollowed\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '73c44bcd83a0d8cada5bcb910fb1a71f';
+(node as any).hash = 'f380e216ce8a2a395b2b910ea042695a';
 export default node;

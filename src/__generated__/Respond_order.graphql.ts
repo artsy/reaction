@@ -1,17 +1,11 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { OfferHistoryItem_order$ref } from "./OfferHistoryItem_order.graphql";
-import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
-declare const _Respond_order$ref: unique symbol;
-export type Respond_order$ref = typeof _Respond_order$ref;
 export type Respond_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
     readonly currencyCode: string;
@@ -20,34 +14,34 @@ export type Respond_order = {
     readonly totalListPrice: string | null;
     readonly totalListPriceCents: number;
     readonly stateExpiresAt: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
         readonly createdAt: string;
-        readonly id: string;
+        readonly internalID: string;
         readonly note: string | null;
-    }) | null;
-    readonly myLastOffer?: ({
+    } | null;
+    readonly myLastOffer?: {
         readonly createdAt: string;
-    }) | null;
-    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
-    readonly " $refType": Respond_order$ref;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order" | "ArtworkSummaryItem_order" | "ShippingSummaryItem_order" | "CreditCardSummaryItem_order" | "OfferHistoryItem_order">;
+    readonly " $refType": "Respond_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
@@ -55,18 +49,10 @@ v1 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "createdAt",
@@ -80,14 +66,14 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "stateExpiresAt",
+      "name": "mode",
       "args": null,
       "storageKey": null
     },
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -106,7 +92,7 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "itemsTotal",
-      "args": v1,
+      "args": (v1/*: any*/),
       "storageKey": "itemsTotal(precision:2)"
     },
     {
@@ -120,7 +106,7 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v1,
+      "args": (v1/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
     {
@@ -133,7 +119,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "mode",
+      "name": "stateExpiresAt",
       "args": null,
       "storageKey": null
     },
@@ -173,17 +159,15 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "__id",
+                      "name": "slug",
                       "args": null,
                       "storageKey": null
                     }
                   ]
-                },
-                v2
+                }
               ]
             }
           ]
@@ -191,9 +175,42 @@ return {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "OfferHistoryItem_order",
-      "args": null
+      "kind": "InlineFragment",
+      "type": "CommerceOfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v2/*: any*/),
+            (v0/*: any*/),
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v2/*: any*/)
+          ]
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -215,49 +232,13 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v2,
     {
-      "kind": "InlineFragment",
-      "type": "CommerceOfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "CommerceOffer",
-          "plural": false,
-          "selections": [
-            v3,
-            v0,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "note",
-              "args": null,
-              "storageKey": null
-            },
-            v2
-          ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "myLastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "CommerceOffer",
-          "plural": false,
-          "selections": [
-            v3,
-            v2
-          ]
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "OfferHistoryItem_order",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '65644c6096a6d6f35f3ae57670a4cca2';
+(node as any).hash = '5b8133ec8a17977aa86f219db0b50846';
 export default node;

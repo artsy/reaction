@@ -124,7 +124,7 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
   viewer: graphql`
     fragment SearchApp_viewer on Viewer
       @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
-      search(query: $term, first: 1, aggregations: [TYPE]) {
+      searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
         aggregations {
           slice
           counts {
@@ -143,11 +143,7 @@ export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
           }
         }
       }
-      filter_artworks: filterArtworks(
-        keyword: $term
-        size: 0
-        aggregations: [TOTAL]
-      ) {
+      artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {
         counts {
           total
         }

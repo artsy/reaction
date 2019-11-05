@@ -1,14 +1,11 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
-declare const _Shipping_order$ref: unique symbol;
-export type Shipping_order$ref = typeof _Shipping_order$ref;
 export type Shipping_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: ({
@@ -22,51 +19,42 @@ export type Shipping_order = {
         readonly postalCode: string | null;
         readonly phoneNumber: string | null;
     } | {
-        /*This will never be '% other', but we need some
+        /*This will never be '%other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
                     readonly pickup_available: boolean | null;
                     readonly onlyShipsDomestically: boolean | null;
                     readonly shippingCountry: string | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
-    readonly " $refType": Shipping_order$ref;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
+    readonly " $refType": "Shipping_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Shipping_order",
   "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -197,11 +185,17 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "pickup_available",
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": "pickup_available",
+                      "name": "pickupAvailable",
                       "args": null,
                       "storageKey": null
                     },
@@ -218,17 +212,9 @@ return {
                       "name": "shippingCountry",
                       "args": null,
                       "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
@@ -244,10 +230,8 @@ return {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
-    },
-    v1
+    }
   ]
 };
-})();
-(node as any).hash = '7ae2c5fc71b9b498d4207c3533662985';
+(node as any).hash = 'a4f4398ad5fddb05c06e6fba20a78582';
 export default node;

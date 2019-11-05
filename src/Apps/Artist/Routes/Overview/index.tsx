@@ -265,7 +265,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
               }
             }
           }
-          artists(first: 1) {
+          artistsConnection(first: 1) {
             edges {
               node {
                 id
@@ -276,7 +276,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         internalID
         collections
         highlights {
-          partners(
+          partnersConnection(
             first: 10
             displayOnPartnerProfile: true
             representedBy: true
@@ -294,7 +294,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         insights {
           type
         }
-        sidebarAggregations: filteredArtworks(
+        sidebarAggregations: filterArtworksConnection(
           sort: $sort
           page: $page
           aggregations: $aggregations
@@ -306,20 +306,21 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
               value
             }
           }
+          # FIXME: Might need to reenable the below.
           # Include the below fragment so that this will match
           # the initial load (w/ no filter applied), and thus MP
           # will consolidate aggregations _and_ the grid into one call.
           # Leave out this fragment if navigating to the artist page
           # with a filter applied, as those can't be consolidated and
           # this is extra data.
-          artworks_connection: artworksConnection(first: 30, after: "")
-            @skip(if: $hasFilter) {
-            edges {
-              node {
-                slug
-              }
-            }
-          }
+          # artworks_connection: artworksConnection(first: 30, after: "")
+          #   @skip(if: $hasFilter) {
+          #   edges {
+          #     node {
+          #       slug
+          #     }
+          #   }
+          # }
         }
         ...ArtistArtworkFilter_artist
           @arguments(

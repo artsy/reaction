@@ -1,39 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { RecommendedArtist_artist$ref } from "./RecommendedArtist_artist.graphql";
-declare const _ArtistRecommendations_artist$ref: unique symbol;
-export type ArtistRecommendations_artist$ref = typeof _ArtistRecommendations_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistRecommendations_artist = {
-    readonly id: string;
+    readonly slug: string;
     readonly name: string | null;
-    readonly related: ({
-        readonly artists: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly id: string;
-                    readonly " $fragmentRefs": RecommendedArtist_artist$ref;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": ArtistRecommendations_artist$ref;
+    readonly related: {
+        readonly artistsConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly slug: string;
+                    readonly " $fragmentRefs": FragmentRefs<"RecommendedArtist_artist">;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly " $refType": "ArtistRecommendations_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -49,7 +40,7 @@ return {
         "direction": "forward",
         "path": [
           "related",
-          "artists"
+          "artistsConnection"
         ]
       }
     ]
@@ -69,13 +60,13 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "min_forsale_artworks",
+      "name": "minForsaleArtworks",
       "type": "Int",
       "defaultValue": 7
     }
   ],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -94,15 +85,14 @@ return {
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": "artists",
-          "name": "__ArtistRecommendations_artists_connection",
+          "alias": "artistsConnection",
+          "name": "__ArtistRecommendations_artistsConnection_connection",
           "storageKey": null,
           "args": [
             {
               "kind": "Variable",
-              "name": "min_forsale_artworks",
-              "variableName": "min_forsale_artworks",
-              "type": "Int"
+              "name": "minForsaleArtworks",
+              "variableName": "minForsaleArtworks"
             }
           ],
           "concreteType": "ArtistConnection",
@@ -126,19 +116,18 @@ return {
                   "concreteType": "Artist",
                   "plural": false,
                   "selections": [
-                    v0,
-                    {
-                      "kind": "FragmentSpread",
-                      "name": "RecommendedArtist_artist",
-                      "args": null
-                    },
-                    v1,
+                    (v0/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
                       "name": "__typename",
                       "args": null,
                       "storageKey": null
+                    },
+                    {
+                      "kind": "FragmentSpread",
+                      "name": "RecommendedArtist_artist",
+                      "args": null
                     }
                   ]
                 },
@@ -179,10 +168,9 @@ return {
           ]
         }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = '9e7938b6ba634599de75bdc87be9c6eb';
+(node as any).hash = '768efb45a18855c15e57d0b22936a3e9';
 export default node;

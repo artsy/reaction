@@ -1,16 +1,33 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Genes_artist$ref } from "./Genes_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type GenesTestQueryVariables = {};
 export type GenesTestQueryResponse = {
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"Genes_artist">;
+    } | null;
+};
+export type GenesTestQueryRawResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": Genes_artist$ref;
+        readonly related: ({
+            readonly genes: ({
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly href: string | null;
+                        readonly name: string | null;
+                        readonly id: string | null;
+                    }) | null;
+                }) | null> | null;
+            }) | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type GenesTestQuery = {
     readonly response: GenesTestQueryResponse;
     readonly variables: GenesTestQueryVariables;
+    readonly rawResponse: GenesTestQueryRawResponse;
 };
 
 
@@ -19,7 +36,7 @@ export type GenesTestQuery = {
 query GenesTestQuery {
   artist(id: "whatevs") {
     ...Genes_artist
-    __id
+    id
   }
 }
 
@@ -30,12 +47,11 @@ fragment Genes_artist on Artist {
         node {
           href
           name
-          __id
+          id
         }
       }
     }
   }
-  __id
 }
 */
 
@@ -44,24 +60,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "whatevs",
-    "type": "String!"
+    "value": "whatevs"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "GenesTestQuery",
-  "id": null,
-  "text": "query GenesTestQuery {\n  artist(id: \"whatevs\") {\n    ...Genes_artist\n    __id\n  }\n}\n\nfragment Genes_artist on Artist {\n  related {\n    genes {\n      edges {\n        node {\n          href\n          name\n          __id\n        }\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "GenesTestQuery",
@@ -74,7 +84,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -82,8 +92,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Genes_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -98,7 +107,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"whatevs\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -152,7 +161,7 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          v1
+                          (v1/*: any*/)
                         ]
                       }
                     ]
@@ -161,12 +170,19 @@ return {
               }
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "GenesTestQuery",
+    "id": null,
+    "text": "query GenesTestQuery {\n  artist(id: \"whatevs\") {\n    ...Genes_artist\n    id\n  }\n}\n\nfragment Genes_artist on Artist {\n  related {\n    genes {\n      edges {\n        node {\n          href\n          name\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '51ef7eab0ef22b735b558f121c67e18d';
+(node as any).hash = '5c089c574dd81f9ef817ad618c24af50';
 export default node;

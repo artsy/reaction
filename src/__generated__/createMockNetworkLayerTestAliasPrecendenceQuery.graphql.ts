@@ -3,11 +3,15 @@
 import { ConcreteRequest } from "relay-runtime";
 export type createMockNetworkLayerTestAliasPrecendenceQueryVariables = {};
 export type createMockNetworkLayerTestAliasPrecendenceQueryResponse = {
-    readonly artist: ({
-        readonly forSaleArtworks: ReadonlyArray<({
-            readonly __id: string;
-        }) | null> | null;
-    }) | null;
+    readonly artist: {
+        readonly forSaleArtworks: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly id: string;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
 };
 export type createMockNetworkLayerTestAliasPrecendenceQuery = {
     readonly response: createMockNetworkLayerTestAliasPrecendenceQueryResponse;
@@ -19,84 +23,124 @@ export type createMockNetworkLayerTestAliasPrecendenceQuery = {
 /*
 query createMockNetworkLayerTestAliasPrecendenceQuery {
   artist(id: "banksy") {
-    forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-      __id
+    forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
+      edges {
+        node {
+          id
+        }
+      }
     }
-    __id
+    id
   }
 }
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "id",
+    "value": "banksy"
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v1 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "artist",
-    "storageKey": "artist(id:\"banksy\")",
-    "args": [
-      {
-        "kind": "Literal",
-        "name": "id",
-        "value": "banksy",
-        "type": "String!"
-      }
-    ],
-    "concreteType": "Artist",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": "forSaleArtworks",
-        "name": "artworks",
-        "storageKey": "artworks(filter:\"IS_FOR_SALE\")",
-        "args": [
-          {
-            "kind": "Literal",
-            "name": "filter",
-            "value": "IS_FOR_SALE",
-            "type": "[ArtistArtworksFilters]"
-          }
-        ],
-        "concreteType": "Artwork",
-        "plural": true,
-        "selections": [
-          v0
-        ]
-      },
-      v0
-    ]
-  }
-];
+v2 = {
+  "kind": "LinkedField",
+  "alias": "forSaleArtworks",
+  "name": "artworksConnection",
+  "storageKey": "artworksConnection(filter:\"IS_FOR_SALE\")",
+  "args": [
+    {
+      "kind": "Literal",
+      "name": "filter",
+      "value": "IS_FOR_SALE"
+    }
+  ],
+  "concreteType": "ArtworkConnection",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "edges",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtworkEdge",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "node",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Artwork",
+          "plural": false,
+          "selections": [
+            (v1/*: any*/)
+          ]
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "createMockNetworkLayerTestAliasPrecendenceQuery",
-  "id": null,
-  "text": "query createMockNetworkLayerTestAliasPrecendenceQuery {\n  artist(id: \"banksy\") {\n    forSaleArtworks: artworks(filter: IS_FOR_SALE) {\n      __id\n    }\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createMockNetworkLayerTestAliasPrecendenceQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": "artist(id:\"banksy\")",
+        "args": (v0/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/)
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "createMockNetworkLayerTestAliasPrecendenceQuery",
     "argumentDefinitions": [],
-    "selections": v1
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "artist",
+        "storageKey": "artist(id:\"banksy\")",
+        "args": (v0/*: any*/),
+        "concreteType": "Artist",
+        "plural": false,
+        "selections": [
+          (v2/*: any*/),
+          (v1/*: any*/)
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "createMockNetworkLayerTestAliasPrecendenceQuery",
+    "id": null,
+    "text": "query createMockNetworkLayerTestAliasPrecendenceQuery {\n  artist(id: \"banksy\") {\n    forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {\n      edges {\n        node {\n          id\n        }\n      }\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'ce15fb8d6e1436f250f61e9fb17cccb3';
+(node as any).hash = '92c8ccb40dd497258b009d3930532e77';
 export default node;

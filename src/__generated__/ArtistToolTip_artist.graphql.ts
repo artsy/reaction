@@ -1,44 +1,35 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtistToolTip_artist$ref: unique symbol;
-export type ArtistToolTip_artist$ref = typeof _ArtistToolTip_artist$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtistToolTip_artist = {
     readonly name: string | null;
-    readonly id: string;
-    readonly _id: string;
+    readonly slug: string;
+    readonly internalID: string;
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
     readonly blurb: string | null;
-    readonly carousel: ({
-        readonly images: ReadonlyArray<({
-            readonly resized: ({
+    readonly carousel: {
+        readonly images: ReadonlyArray<{
+            readonly resized: {
                 readonly url: string | null;
                 readonly width: number | null;
                 readonly height: number | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly genes: ReadonlyArray<({
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly genes: ReadonlyArray<{
         readonly name: string | null;
-    }) | null> | null;
-    readonly " $refType": ArtistToolTip_artist$ref;
+    } | null> | null;
+    readonly " $refType": "ArtistToolTip_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -49,25 +40,25 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "formatted_nationality_and_birthday",
+      "alias": "formatted_nationality_and_birthday",
+      "name": "formattedNationalityAndBirthday",
       "args": null,
       "storageKey": null
     },
@@ -112,8 +103,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "height",
-                  "value": 200,
-                  "type": "Int"
+                  "value": 200
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -141,13 +131,6 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -162,13 +145,11 @@ return {
       "concreteType": "Gene",
       "plural": true,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = 'b66365bad87a0ff55816fd0106213acb';
+(node as any).hash = 'e08987aab34bb773538c361d5a6de342';
 export default node;

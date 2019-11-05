@@ -225,7 +225,7 @@ export default createFragmentContainer(MarketInsights, {
       internalID
       collections
       highlights {
-        partners(
+        partnersConnection(
           first: 10
           displayOnPartnerProfile: true
           representedBy: true
@@ -240,7 +240,7 @@ export default createFragmentContainer(MarketInsights, {
           }
         }
       }
-      auctionResults(
+      auctionResultsConnection(
         recordsTrusted: true
         first: 1
         sort: PRICE_AND_DATE_DESC

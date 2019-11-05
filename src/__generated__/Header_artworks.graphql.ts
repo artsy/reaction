@@ -1,50 +1,34 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { DefaultHeader_headerArtworks$ref } from "./DefaultHeader_headerArtworks.graphql";
-import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-declare const _Header_artworks$ref: unique symbol;
-export type Header_artworks$ref = typeof _Header_artworks$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Header_artworks = {
-    readonly merchandisable_artists: ReadonlyArray<({
-        readonly id: string;
-        readonly _id: string;
+    readonly merchandisable_artists: ReadonlyArray<{
+        readonly slug: string;
+        readonly internalID: string;
         readonly name: string | null;
         readonly imageUrl: string | null;
         readonly birthday: string | null;
         readonly nationality: string | null;
-        readonly " $fragmentRefs": FollowArtistButton_artist$ref;
-    }) | null> | null;
-    readonly " $fragmentRefs": DefaultHeader_headerArtworks$ref;
-    readonly " $refType": Header_artworks$ref;
+        readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
+    } | null> | null;
+    readonly " $fragmentRefs": FragmentRefs<"DefaultHeader_headerArtworks">;
+    readonly " $refType": "Header_artworks";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Header_artworks",
-  "type": "FilterArtworks",
+  "type": "FilterArtworksConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "DefaultHeader_headerArtworks",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "merchandisable_artists",
+      "alias": "merchandisable_artists",
+      "name": "merchandisableArtists",
       "storageKey": null,
       "args": null,
       "concreteType": "Artist",
@@ -53,14 +37,14 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "slug",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "_id",
+          "name": "internalID",
           "args": null,
           "storageKey": null
         },
@@ -96,13 +80,15 @@ return {
           "kind": "FragmentSpread",
           "name": "FollowArtistButton_artist",
           "args": null
-        },
-        v0
+        }
       ]
     },
-    v0
+    {
+      "kind": "FragmentSpread",
+      "name": "DefaultHeader_headerArtworks",
+      "args": null
+    }
   ]
 };
-})();
-(node as any).hash = '9f9af55c7e48a35977a2d4c5fa50c4e6';
+(node as any).hash = '5cad49a9c85daf837561704395836e47';
 export default node;

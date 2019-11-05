@@ -2,50 +2,46 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowArtistInput = {
-    readonly artist_id?: string | null;
+    readonly artistID: string;
     readonly unfollow?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type ArtistSearchResultsArtistMutationVariables = {
-    readonly input: FollowArtistInput;
-    readonly excludedArtistIds: ReadonlyArray<string | null>;
+    input: FollowArtistInput;
+    excludedArtistIds: ReadonlyArray<string | null>;
 };
 export type ArtistSearchResultsArtistMutationResponse = {
-    readonly followArtist: ({
-        readonly popular_artists: ({
-            readonly artists: ReadonlyArray<({
-                readonly id: string;
-                readonly _id: string;
-                readonly __id: string;
-                readonly name: string | null;
-                readonly image: ({
-                    readonly cropped: ({
-                        readonly url: string | null;
-                    }) | null;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-        readonly artist: ({
-            readonly __id: string;
-            readonly related: ({
-                readonly suggested: ({
-                    readonly edges: ReadonlyArray<({
-                        readonly node: ({
+    readonly followArtist: {
+        readonly popular_artists: ReadonlyArray<{
+            readonly internalID: string;
+            readonly id: string;
+            readonly name: string | null;
+            readonly image: {
+                readonly cropped: {
+                    readonly url: string | null;
+                } | null;
+            } | null;
+        } | null> | null;
+        readonly artist: {
+            readonly id: string;
+            readonly related: {
+                readonly suggestedConnection: {
+                    readonly edges: ReadonlyArray<{
+                        readonly node: {
+                            readonly internalID: string;
                             readonly id: string;
-                            readonly _id: string;
-                            readonly __id: string;
                             readonly name: string | null;
-                            readonly image: ({
-                                readonly cropped: ({
+                            readonly image: {
+                                readonly cropped: {
                                     readonly url: string | null;
-                                }) | null;
-                            }) | null;
-                        }) | null;
-                    }) | null> | null;
-                }) | null;
-            }) | null;
-        }) | null;
-    }) | null;
+                                } | null;
+                            } | null;
+                        } | null;
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type ArtistSearchResultsArtistMutation = {
     readonly response: ArtistSearchResultsArtistMutationResponse;
@@ -60,35 +56,29 @@ mutation ArtistSearchResultsArtistMutation(
   $excludedArtistIds: [String]!
 ) {
   followArtist(input: $input) {
-    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
-      artists {
-        id
-        _id
-        __id
-        name
-        image {
-          cropped(width: 100, height: 100) {
-            url
-          }
-          __id: id
+    popular_artists: popularArtists(size: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludedArtistIds) {
+      internalID
+      id
+      name
+      image {
+        cropped(width: 100, height: 100) {
+          url
         }
       }
     }
     artist {
-      __id
+      id
       related {
-        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {
+        suggestedConnection(first: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludedArtistIds) {
           edges {
             node {
+              internalID
               id
-              _id
-              __id
               name
               image {
                 cropped(width: 100, height: 100) {
                   url
                 }
-                __id: id
               }
             }
           }
@@ -116,20 +106,18 @@ var v0 = [
 ],
 v1 = {
   "kind": "Variable",
-  "name": "exclude_artist_ids",
-  "variableName": "excludedArtistIds",
-  "type": "[String]"
+  "name": "excludeArtistIDs",
+  "variableName": "excludedArtistIds"
 },
 v2 = {
   "kind": "Literal",
-  "name": "exclude_followed_artists",
-  "value": true,
-  "type": "Boolean"
+  "name": "excludeFollowedArtists",
+  "value": true
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -137,18 +125,11 @@ v4 = [
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "id",
+    "name": "internalID",
     "args": null,
     "storageKey": null
   },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "_id",
-    "args": null,
-    "storageKey": null
-  },
-  v3,
+  (v3/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -174,14 +155,12 @@ v4 = [
           {
             "kind": "Literal",
             "name": "height",
-            "value": 100,
-            "type": "Int!"
+            "value": 100
           },
           {
             "kind": "Literal",
             "name": "width",
-            "value": 100,
-            "type": "Int!"
+            "value": 100
           }
         ],
         "concreteType": "CroppedImageUrl",
@@ -195,13 +174,6 @@ v4 = [
             "storageKey": null
           }
         ]
-      },
-      {
-        "kind": "ScalarField",
-        "alias": "__id",
-        "name": "id",
-        "args": null,
-        "storageKey": null
       }
     ]
   }
@@ -216,8 +188,7 @@ v5 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "FollowArtistInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "FollowArtistPayload",
@@ -225,33 +196,21 @@ v5 = [
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
-        "name": "popular_artists",
+        "alias": "popular_artists",
+        "name": "popularArtists",
         "storageKey": null,
         "args": [
-          v1,
-          v2,
+          (v1/*: any*/),
+          (v2/*: any*/),
           {
             "kind": "Literal",
             "name": "size",
-            "value": 1,
-            "type": "Int"
+            "value": 1
           }
         ],
-        "concreteType": "PopularArtists",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "artists",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Artist",
-            "plural": true,
-            "selections": v4
-          }
-        ]
+        "concreteType": "Artist",
+        "plural": true,
+        "selections": (v4/*: any*/)
       },
       {
         "kind": "LinkedField",
@@ -262,7 +221,7 @@ v5 = [
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          v3,
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -275,16 +234,15 @@ v5 = [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "suggested",
+                "name": "suggestedConnection",
                 "storageKey": null,
                 "args": [
-                  v1,
-                  v2,
+                  (v1/*: any*/),
+                  (v2/*: any*/),
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 1,
-                    "type": "Int"
+                    "value": 1
                   }
                 ],
                 "concreteType": "ArtistConnection",
@@ -307,7 +265,7 @@ v5 = [
                         "args": null,
                         "concreteType": "Artist",
                         "plural": false,
-                        "selections": v4
+                        "selections": (v4/*: any*/)
                       }
                     ]
                   }
@@ -322,26 +280,28 @@ v5 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ArtistSearchResultsArtistMutation",
-  "id": null,
-  "text": "mutation ArtistSearchResultsArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists(size: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n      artists {\n        id\n        _id\n        __id\n        name\n        image {\n          cropped(width: 100, height: 100) {\n            url\n          }\n          __id: id\n        }\n      }\n    }\n    artist {\n      __id\n      related {\n        suggested(first: 1, exclude_followed_artists: true, exclude_artist_ids: $excludedArtistIds) {\n          edges {\n            node {\n              id\n              _id\n              __id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n                __id: id\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistSearchResultsArtistMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v5
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v5/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "ArtistSearchResultsArtistMutation",
-    "argumentDefinitions": v0,
-    "selections": v5
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v5/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ArtistSearchResultsArtistMutation",
+    "id": null,
+    "text": "mutation ArtistSearchResultsArtistMutation(\n  $input: FollowArtistInput!\n  $excludedArtistIds: [String]!\n) {\n  followArtist(input: $input) {\n    popular_artists: popularArtists(size: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludedArtistIds) {\n      internalID\n      id\n      name\n      image {\n        cropped(width: 100, height: 100) {\n          url\n        }\n      }\n    }\n    artist {\n      id\n      related {\n        suggestedConnection(first: 1, excludeFollowedArtists: true, excludeArtistIDs: $excludedArtistIds) {\n          edges {\n            node {\n              internalID\n              id\n              name\n              image {\n                cropped(width: 100, height: 100) {\n                  url\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'be26c86b2efc4fd7dd40fe5689acf9dc';
+(node as any).hash = '5125c1788a3f6c745f71598546b2c52a';
 export default node;

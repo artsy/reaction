@@ -1,35 +1,25 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistPopoverRow_artist$ref } from "./FollowArtistPopoverRow_artist.graphql";
-declare const _FollowArtistPopover_artist$ref: unique symbol;
-export type FollowArtistPopover_artist$ref = typeof _FollowArtistPopover_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type FollowArtistPopover_artist = {
-    readonly related: ({
-        readonly suggested: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly __id: string;
-                    readonly _id: string;
-                    readonly " $fragmentRefs": FollowArtistPopoverRow_artist$ref;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": FollowArtistPopover_artist$ref;
+    readonly related: {
+        readonly suggestedConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly id: string;
+                    readonly internalID: string;
+                    readonly " $fragmentRefs": FragmentRefs<"FollowArtistPopoverRow_artist">;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly " $refType": "FollowArtistPopover_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistPopover_artist",
   "type": "Artist",
@@ -48,20 +38,18 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "suggested",
-          "storageKey": "suggested(exclude_followed_artists:true,first:3)",
+          "name": "suggestedConnection",
+          "storageKey": "suggestedConnection(excludeFollowedArtists:true,first:3)",
           "args": [
             {
               "kind": "Literal",
-              "name": "exclude_followed_artists",
-              "value": true,
-              "type": "Boolean"
+              "name": "excludeFollowedArtists",
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 3,
-              "type": "Int"
+              "value": 3
             }
           ],
           "concreteType": "ArtistConnection",
@@ -85,11 +73,17 @@ return {
                   "concreteType": "Artist",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "_id",
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "internalID",
                       "args": null,
                       "storageKey": null
                     },
@@ -105,10 +99,8 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '29a8394fc5cdd97be2738d4e745d322e';
+(node as any).hash = '90657ea28fda4ad1f17942932ad1d208';
 export default node;

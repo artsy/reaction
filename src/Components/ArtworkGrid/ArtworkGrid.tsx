@@ -216,7 +216,7 @@ const InnerContainer = styled(Flex)`
 
 export default createFragmentContainer(ArtworkGrid, {
   artworks: graphql`
-    fragment ArtworkGrid_artworks on ArtworkConnection {
+    fragment ArtworkGrid_artworks on ArtworkConnectionInterface {
       edges {
         node {
           id

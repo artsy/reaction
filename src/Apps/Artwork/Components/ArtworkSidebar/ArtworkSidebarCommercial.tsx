@@ -470,7 +470,14 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
         is_acquireable: isAcquireable
         is_inquireable: isInquireable
         is_offerable: isOfferable
-        price
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
         priceIncludesTaxDisplay
         sale_message: saleMessage
         shippingInfo

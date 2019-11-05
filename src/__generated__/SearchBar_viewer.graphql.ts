@@ -1,25 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _SearchBar_viewer$ref: unique symbol;
-export type SearchBar_viewer$ref = typeof _SearchBar_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
 export type SearchBar_viewer = {
-    readonly search?: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+    readonly searchConnection?: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly displayLabel: string | null;
                 readonly href: string | null;
                 readonly displayType?: string | null;
-                readonly id?: string;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": SearchBar_viewer$ref;
+                readonly slug?: string;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "SearchBar_viewer";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchBar_viewer",
   "type": "Viewer",
@@ -47,26 +45,23 @@ const node: ConcreteFragment = {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "search",
+          "name": "searchConnection",
           "storageKey": null,
           "args": [
             {
               "kind": "Literal",
               "name": "first",
-              "value": 7,
-              "type": "Int"
+              "value": 7
             },
             {
               "kind": "Literal",
               "name": "mode",
-              "value": "AUTOSUGGEST",
-              "type": "SearchMode"
+              "value": "AUTOSUGGEST"
             },
             {
               "kind": "Variable",
               "name": "query",
-              "variableName": "term",
-              "type": "String!"
+              "variableName": "term"
             }
           ],
           "concreteType": "SearchableConnection",
@@ -105,13 +100,6 @@ const node: ConcreteFragment = {
                       "storageKey": null
                     },
                     {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
                       "kind": "InlineFragment",
                       "type": "SearchableItem",
                       "selections": [
@@ -125,7 +113,7 @@ const node: ConcreteFragment = {
                         {
                           "kind": "ScalarField",
                           "alias": null,
-                          "name": "id",
+                          "name": "slug",
                           "args": null,
                           "storageKey": null
                         }
@@ -141,5 +129,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '7d0a79e6f397dc366681ef647a0a5d50';
+(node as any).hash = '3aeb38b1dc5d0bfda3a165193d2b7a27';
 export default node;

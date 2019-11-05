@@ -1,17 +1,15 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _SecurePayment_artwork$ref: unique symbol;
-export type SecurePayment_artwork$ref = typeof _SecurePayment_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type SecurePayment_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
-    readonly " $refType": SecurePayment_artwork$ref;
+    readonly " $refType": "SecurePayment_artwork";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SecurePayment_artwork",
   "type": "Artwork",
@@ -20,26 +18,19 @@ const node: ConcreteFragment = {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_acquireable",
+      "alias": "is_acquireable",
+      "name": "isAcquireable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_offerable",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
+      "alias": "is_offerable",
+      "name": "isOfferable",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '0e7579e709bc9421eda100bf10f95fa4';
+(node as any).hash = '7b709dabe338934945be8bc6d1518082';
 export default node;

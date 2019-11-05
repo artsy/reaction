@@ -47,7 +47,7 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
 >(ArtworkImageBrowserContainer, {
   artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
-      image_alt: toS
+      image_alt: formattedMetadata
       ...ArtworkActions_artwork
       image {
         internalID

@@ -148,7 +148,7 @@ export default createFragmentContainer(MarketDataSummary, {
       internalID
       collections
       highlights {
-        partners(
+        partnersConnection(
           first: 10
           displayOnPartnerProfile: true
           representedBy: true
@@ -163,7 +163,7 @@ export default createFragmentContainer(MarketDataSummary, {
           }
         }
       }
-      auctionResults(
+      auctionResultsConnection(
         recordsTrusted: true
         first: 1
         sort: PRICE_AND_DATE_DESC

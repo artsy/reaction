@@ -1,36 +1,26 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
-declare const _OrderApp_order$ref: unique symbol;
-export type OrderApp_order$ref = typeof _OrderApp_order$ref;
 export type OrderApp_order = {
     readonly mode: CommerceOrderModeEnum | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
                     readonly is_acquireable: boolean | null;
                     readonly is_offerable: boolean | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": OrderApp_order$ref;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "OrderApp_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "OrderApp_order",
   "type": "CommerceOrder",
@@ -83,43 +73,33 @@ return {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "id",
+                      "name": "slug",
                       "args": null,
                       "storageKey": null
                     },
                     {
                       "kind": "ScalarField",
-                      "alias": null,
-                      "name": "is_acquireable",
+                      "alias": "is_acquireable",
+                      "name": "isAcquireable",
                       "args": null,
                       "storageKey": null
                     },
                     {
                       "kind": "ScalarField",
-                      "alias": null,
-                      "name": "is_offerable",
-                      "args": null,
-                      "storageKey": null
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "__id",
+                      "alias": "is_offerable",
+                      "name": "isOfferable",
                       "args": null,
                       "storageKey": null
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '220ccbb3f0b64551825fd612ed8d6b07';
+(node as any).hash = '9fc62d5ccf7d952e69863f2952d5bf51';
 export default node;

@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { MarketInsights_artist$ref } from "./MarketInsights_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type MarketInsightsContentsQueryVariables = {
-    readonly artistID: string;
+    artistID: string;
 };
 export type MarketInsightsContentsQueryResponse = {
-    readonly artist: ({
-        readonly " $fragmentRefs": MarketInsights_artist$ref;
-    }) | null;
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"MarketInsights_artist">;
+    } | null;
 };
 export type MarketInsightsContentsQuery = {
     readonly response: MarketInsightsContentsQueryResponse;
@@ -23,38 +23,37 @@ query MarketInsightsContentsQuery(
 ) {
   artist(id: $artistID) {
     ...MarketInsights_artist
-    __id
+    id
   }
 }
 
 fragment MarketInsights_artist on Artist {
-  _id
+  internalID
   collections
   highlights {
-    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: ["blue-chip", "top-established", "top-emerging"]) {
+    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: ["blue-chip", "top-established", "top-emerging"]) {
       edges {
         node {
           categories {
+            slug
             id
-            __id
           }
-          __id
+          id
         }
-        __id
+        id
       }
     }
   }
-  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
+  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
     edges {
       node {
-        price_realized {
+        price_realized: priceRealized {
           display(format: "0a")
         }
-        __id
+        id
       }
     }
   }
-  __id
 }
 */
 
@@ -71,37 +70,31 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "MarketInsightsContentsQuery",
-  "id": null,
-  "text": "query MarketInsightsContentsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...MarketInsights_artist\n    __id\n  }\n}\n\nfragment MarketInsights_artist on Artist {\n  _id\n  collections\n  highlights {\n    partners(first: 10, display_on_partner_profile: true, represented_by: true, partner_category: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            id\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  auctionResults(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized {\n          display(format: \"0a\")\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "MarketInsightsContentsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -109,8 +102,7 @@ return {
             "kind": "FragmentSpread",
             "name": "MarketInsights_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -118,21 +110,21 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "MarketInsightsContentsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "_id",
+            "name": "internalID",
             "args": null,
             "storageKey": null
           },
@@ -155,36 +147,32 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "partners",
-                "storageKey": "partners(display_on_partner_profile:true,first:10,partner_category:[\"blue-chip\",\"top-established\",\"top-emerging\"],represented_by:true)",
+                "name": "partnersConnection",
+                "storageKey": "partnersConnection(displayOnPartnerProfile:true,first:10,partnerCategory:[\"blue-chip\",\"top-established\",\"top-emerging\"],representedBy:true)",
                 "args": [
                   {
                     "kind": "Literal",
-                    "name": "display_on_partner_profile",
-                    "value": true,
-                    "type": "Boolean"
+                    "name": "displayOnPartnerProfile",
+                    "value": true
                   },
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 10,
-                    "type": "Int"
+                    "value": 10
                   },
                   {
                     "kind": "Literal",
-                    "name": "partner_category",
+                    "name": "partnerCategory",
                     "value": [
                       "blue-chip",
                       "top-established",
                       "top-emerging"
-                    ],
-                    "type": "[String]"
+                    ]
                   },
                   {
                     "kind": "Literal",
-                    "name": "represented_by",
-                    "value": true,
-                    "type": "Boolean"
+                    "name": "representedBy",
+                    "value": true
                   }
                 ],
                 "concreteType": "PartnerArtistConnection",
@@ -214,23 +202,23 @@ return {
                             "name": "categories",
                             "storageKey": null,
                             "args": null,
-                            "concreteType": "Category",
+                            "concreteType": "PartnerCategory",
                             "plural": true,
                             "selections": [
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
-                                "name": "id",
+                                "name": "slug",
                                 "args": null,
                                 "storageKey": null
                               },
-                              v2
+                              (v2/*: any*/)
                             ]
                           },
-                          v2
+                          (v2/*: any*/)
                         ]
                       },
-                      v2
+                      (v2/*: any*/)
                     ]
                   }
                 ]
@@ -240,26 +228,23 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "auctionResults",
-            "storageKey": "auctionResults(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
+            "name": "auctionResultsConnection",
+            "storageKey": "auctionResultsConnection(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
             "args": [
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 1,
-                "type": "Int"
+                "value": 1
               },
               {
                 "kind": "Literal",
                 "name": "recordsTrusted",
-                "value": true,
-                "type": "Boolean"
+                "value": true
               },
               {
                 "kind": "Literal",
                 "name": "sort",
-                "value": "PRICE_AND_DATE_DESC",
-                "type": "AuctionResultSorts"
+                "value": "PRICE_AND_DATE_DESC"
               }
             ],
             "concreteType": "AuctionResultConnection",
@@ -285,8 +270,8 @@ return {
                     "selections": [
                       {
                         "kind": "LinkedField",
-                        "alias": null,
-                        "name": "price_realized",
+                        "alias": "price_realized",
+                        "name": "priceRealized",
                         "storageKey": null,
                         "args": null,
                         "concreteType": "AuctionResultPriceRealized",
@@ -300,25 +285,31 @@ return {
                               {
                                 "kind": "Literal",
                                 "name": "format",
-                                "value": "0a",
-                                "type": "String"
+                                "value": "0a"
                               }
                             ],
                             "storageKey": "display(format:\"0a\")"
                           }
                         ]
                       },
-                      v2
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v2
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "MarketInsightsContentsQuery",
+    "id": null,
+    "text": "query MarketInsightsContentsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...MarketInsights_artist\n    id\n  }\n}\n\nfragment MarketInsights_artist on Artist {\n  internalID\n  collections\n  highlights {\n    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized: priceRealized {\n          display(format: \"0a\")\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

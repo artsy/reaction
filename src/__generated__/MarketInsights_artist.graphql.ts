@@ -1,45 +1,35 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _MarketInsights_artist$ref: unique symbol;
-export type MarketInsights_artist$ref = typeof _MarketInsights_artist$ref;
+import { ReaderFragment } from "relay-runtime";
 export type MarketInsights_artist = {
-    readonly _id: string;
+    readonly internalID: string;
     readonly collections: ReadonlyArray<string | null> | null;
-    readonly highlights: ({
-        readonly partners: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly categories: ReadonlyArray<({
-                        readonly id: string;
-                    }) | null> | null;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly auctionResults: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly price_realized: ({
+    readonly highlights: {
+        readonly partnersConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly categories: ReadonlyArray<{
+                        readonly slug: string;
+                    } | null> | null;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly auctionResultsConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly price_realized: {
                     readonly display: string | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": MarketInsights_artist$ref;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "MarketInsights_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "MarketInsights_artist",
   "type": "Artist",
@@ -47,7 +37,7 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "partner_category",
+      "name": "partnerCategory",
       "type": "[String]",
       "defaultValue": [
         "blue-chip",
@@ -60,7 +50,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -83,32 +73,28 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "partners",
+          "name": "partnersConnection",
           "storageKey": null,
           "args": [
             {
               "kind": "Literal",
-              "name": "display_on_partner_profile",
-              "value": true,
-              "type": "Boolean"
+              "name": "displayOnPartnerProfile",
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
-              "type": "Int"
+              "value": 10
             },
             {
               "kind": "Variable",
-              "name": "partner_category",
-              "variableName": "partner_category",
-              "type": "[String]"
+              "name": "partnerCategory",
+              "variableName": "partnerCategory"
             },
             {
               "kind": "Literal",
-              "name": "represented_by",
-              "value": true,
-              "type": "Boolean"
+              "name": "representedBy",
+              "value": true
             }
           ],
           "concreteType": "PartnerArtistConnection",
@@ -138,23 +124,20 @@ return {
                       "name": "categories",
                       "storageKey": null,
                       "args": null,
-                      "concreteType": "Category",
+                      "concreteType": "PartnerCategory",
                       "plural": true,
                       "selections": [
                         {
                           "kind": "ScalarField",
                           "alias": null,
-                          "name": "id",
+                          "name": "slug",
                           "args": null,
                           "storageKey": null
-                        },
-                        v0
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
@@ -164,26 +147,23 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "auctionResults",
-      "storageKey": "auctionResults(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
+      "name": "auctionResultsConnection",
+      "storageKey": "auctionResultsConnection(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Literal",
           "name": "recordsTrusted",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PRICE_AND_DATE_DESC",
-          "type": "AuctionResultSorts"
+          "value": "PRICE_AND_DATE_DESC"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -209,8 +189,8 @@ return {
               "selections": [
                 {
                   "kind": "LinkedField",
-                  "alias": null,
-                  "name": "price_realized",
+                  "alias": "price_realized",
+                  "name": "priceRealized",
                   "storageKey": null,
                   "args": null,
                   "concreteType": "AuctionResultPriceRealized",
@@ -224,24 +204,20 @@ return {
                         {
                           "kind": "Literal",
                           "name": "format",
-                          "value": "0a",
-                          "type": "String"
+                          "value": "0a"
                         }
                       ],
                       "storageKey": "display(format:\"0a\")"
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'bc1709cbe4b0a9523e937f00dbd67ede';
+(node as any).hash = '8a16ac97b1188e4b379169f822c2b755';
 export default node;

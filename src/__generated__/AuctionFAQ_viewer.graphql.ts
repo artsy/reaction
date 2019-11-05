@@ -1,42 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _AuctionFAQ_viewer$ref: unique symbol;
-export type AuctionFAQ_viewer$ref = typeof _AuctionFAQ_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
 export type AuctionFAQ_viewer = {
-    readonly bidding: ({
+    readonly bidding: {
         readonly content: string | null;
-    }) | null;
-    readonly buyersPremiumTaxesAndFees: ({
+    } | null;
+    readonly buyersPremiumTaxesAndFees: {
         readonly content: string | null;
-    }) | null;
-    readonly paymentsAndShipping: ({
+    } | null;
+    readonly paymentsAndShipping: {
         readonly content: string | null;
-    }) | null;
-    readonly emailsAndAlerts: ({
+    } | null;
+    readonly emailsAndAlerts: {
         readonly content: string | null;
-    }) | null;
-    readonly conditionsOfSale: ({
+    } | null;
+    readonly conditionsOfSale: {
         readonly content: string | null;
-    }) | null;
-    readonly " $refType": AuctionFAQ_viewer$ref;
+    } | null;
+    readonly " $refType": "AuctionFAQ_viewer";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "content",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "__id",
     "args": null,
     "storageKey": null
   }
@@ -57,13 +48,12 @@ return {
         {
           "kind": "Literal",
           "name": "id",
-          "value": "how-auctions-work-bidding",
-          "type": "String!"
+          "value": "how-auctions-work-bidding"
         }
       ],
       "concreteType": "StaticContent",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -74,13 +64,12 @@ return {
         {
           "kind": "Literal",
           "name": "id",
-          "value": "how-auctions-work-buyers-premium-taxes-and-fees",
-          "type": "String!"
+          "value": "how-auctions-work-buyers-premium-taxes-and-fees"
         }
       ],
       "concreteType": "StaticContent",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -91,13 +80,12 @@ return {
         {
           "kind": "Literal",
           "name": "id",
-          "value": "how-auctions-work-payments-and-shipping",
-          "type": "String!"
+          "value": "how-auctions-work-payments-and-shipping"
         }
       ],
       "concreteType": "StaticContent",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -108,13 +96,12 @@ return {
         {
           "kind": "Literal",
           "name": "id",
-          "value": "how-auctions-work-emails-and-alerts",
-          "type": "String!"
+          "value": "how-auctions-work-emails-and-alerts"
         }
       ],
       "concreteType": "StaticContent",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -125,13 +112,12 @@ return {
         {
           "kind": "Literal",
           "name": "id",
-          "value": "how-auctions-work-conditions-of-sale",
-          "type": "String!"
+          "value": "how-auctions-work-conditions-of-sale"
         }
       ],
       "concreteType": "StaticContent",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     }
   ]
 };

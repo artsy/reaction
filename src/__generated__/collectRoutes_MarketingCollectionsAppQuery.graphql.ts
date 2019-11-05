@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Collections_categories$ref } from "./Collections_categories.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type collectRoutes_MarketingCollectionsAppQueryVariables = {};
 export type collectRoutes_MarketingCollectionsAppQueryResponse = {
     readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": Collections_categories$ref;
+        readonly " $fragmentRefs": FragmentRefs<"Collections_categories">;
     }>;
 };
 export type collectRoutes_MarketingCollectionsAppQuery = {
@@ -28,18 +28,12 @@ fragment Collections_categories on MarketingCollectionCategory {
     slug
     headerImage
     title
-    __id: id
   }
 }
 */
 
 const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "collectRoutes_MarketingCollectionsAppQuery",
-  "id": null,
-  "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "collectRoutes_MarketingCollectionsAppQuery",
@@ -115,19 +109,19 @@ const node: ConcreteRequest = {
                 "name": "title",
                 "args": null,
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "collectRoutes_MarketingCollectionsAppQuery",
+    "id": null,
+    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n  }\n}\n",
+    "metadata": {}
   }
 };
 (node as any).hash = '81db5fa0b5f99948b02522c13d2f9278';

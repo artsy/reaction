@@ -1,16 +1,35 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkSidebarExtraLinks_artwork$ref } from "./ArtworkSidebarExtraLinks_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarExtraLinks_Test_QueryVariables = {};
 export type ArtworkSidebarExtraLinks_Test_QueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarExtraLinks_artwork">;
+    } | null;
+};
+export type ArtworkSidebarExtraLinks_Test_QueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkSidebarExtraLinks_artwork$ref;
+        readonly internalID: string;
+        readonly is_in_auction: boolean | null;
+        readonly is_for_sale: boolean | null;
+        readonly is_acquireable: boolean | null;
+        readonly is_inquireable: boolean | null;
+        readonly artists: ReadonlyArray<({
+            readonly is_consignable: boolean | null;
+            readonly id: string | null;
+        }) | null> | null;
+        readonly sale: ({
+            readonly is_closed: boolean | null;
+            readonly id: string | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ArtworkSidebarExtraLinks_Test_Query = {
     readonly response: ArtworkSidebarExtraLinks_Test_QueryResponse;
     readonly variables: ArtworkSidebarExtraLinks_Test_QueryVariables;
+    readonly rawResponse: ArtworkSidebarExtraLinks_Test_QueryRawResponse;
 };
 
 
@@ -19,25 +38,24 @@ export type ArtworkSidebarExtraLinks_Test_Query = {
 query ArtworkSidebarExtraLinks_Test_Query {
   artwork(id: "josef-albers-homage-to-the-square-85") {
     ...ArtworkSidebarExtraLinks_artwork
-    __id
+    id
   }
 }
 
 fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-  _id
-  is_in_auction
-  is_for_sale
-  is_acquireable
-  is_inquireable
+  internalID
+  is_in_auction: isInAuction
+  is_for_sale: isForSale
+  is_acquireable: isAcquireable
+  is_inquireable: isInquireable
   artists {
-    is_consignable
-    __id
+    is_consignable: isConsignable
+    id
   }
   sale {
-    is_closed
-    __id
+    is_closed: isClosed
+    id
   }
-  __id
 }
 */
 
@@ -46,24 +64,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "josef-albers-homage-to-the-square-85",
-    "type": "String!"
+    "value": "josef-albers-homage-to-the-square-85"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarExtraLinks_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  _id\n  is_in_auction\n  is_for_sale\n  is_acquireable\n  is_inquireable\n  artists {\n    is_consignable\n    __id\n  }\n  sale {\n    is_closed\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarExtraLinks_Test_Query",
@@ -76,7 +88,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"josef-albers-homage-to-the-square-85\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -84,8 +96,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarExtraLinks_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -100,42 +111,42 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"josef-albers-homage-to-the-square-85\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "_id",
+            "name": "internalID",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_in_auction",
+            "alias": "is_in_auction",
+            "name": "isInAuction",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_for_sale",
+            "alias": "is_for_sale",
+            "name": "isForSale",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_acquireable",
+            "alias": "is_acquireable",
+            "name": "isAcquireable",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_inquireable",
+            "alias": "is_inquireable",
+            "name": "isInquireable",
             "args": null,
             "storageKey": null
           },
@@ -150,12 +161,12 @@ return {
             "selections": [
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_consignable",
+                "alias": "is_consignable",
+                "name": "isConsignable",
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
           {
@@ -169,20 +180,27 @@ return {
             "selections": [
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_closed",
+                "alias": "is_closed",
+                "name": "isClosed",
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarExtraLinks_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  internalID\n  is_in_auction: isInAuction\n  is_for_sale: isForSale\n  is_acquireable: isAcquireable\n  is_inquireable: isInquireable\n  artists {\n    is_consignable: isConsignable\n    id\n  }\n  sale {\n    is_closed: isClosed\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '84e923a3d181590ea494f2f2305c70c6';
+(node as any).hash = '0539f2867a3fb30a8f29529d8f731ebd';
 export default node;

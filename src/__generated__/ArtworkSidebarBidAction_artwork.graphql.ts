@@ -1,41 +1,39 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarBidAction_artwork$ref: unique symbol;
-export type ArtworkSidebarBidAction_artwork$ref = typeof _ArtworkSidebarBidAction_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
-        readonly most_recent_bid: ({
-            readonly max_bid: ({
+        readonly most_recent_bid: {
+            readonly max_bid: {
                 readonly cents: number | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
     }> | null;
-    readonly id: string;
-    readonly _id: string;
-    readonly sale: ({
-        readonly id: string;
-        readonly registrationStatus: ({
+    readonly slug: string;
+    readonly internalID: string;
+    readonly sale: {
+        readonly slug: string;
+        readonly registrationStatus: {
             readonly qualified_for_bidding: boolean | null;
-        }) | null;
+        } | null;
         readonly is_preview: boolean | null;
         readonly is_open: boolean | null;
         readonly is_live_open: boolean | null;
         readonly is_closed: boolean | null;
         readonly is_registration_closed: boolean | null;
-    }) | null;
-    readonly sale_artwork: ({
-        readonly increments: ReadonlyArray<({
+    } | null;
+    readonly sale_artwork: {
+        readonly increments: ReadonlyArray<{
             readonly cents: number | null;
             readonly display: string | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtworkSidebarBidAction_artwork$ref;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtworkSidebarBidAction_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -46,14 +44,7 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -73,8 +64,7 @@ return {
         {
           "kind": "Literal",
           "name": "live",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "LotStanding",
@@ -82,8 +72,8 @@ return {
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "most_recent_bid",
+          "alias": "most_recent_bid",
+          "name": "mostRecentBid",
           "storageKey": null,
           "args": null,
           "concreteType": "BidderPosition",
@@ -91,26 +81,25 @@ return {
           "selections": [
             {
               "kind": "LinkedField",
-              "alias": null,
-              "name": "max_bid",
+              "alias": "max_bid",
+              "name": "maxBid",
               "storageKey": null,
               "args": null,
               "concreteType": "BidderPositionMaxBid",
               "plural": false,
               "selections": [
-                v0
+                (v0/*: any*/)
               ]
-            },
-            v1
+            }
           ]
         }
       ]
     },
-    v2,
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -123,7 +112,7 @@ return {
       "concreteType": "Sale",
       "plural": false,
       "selections": [
-        v2,
+        (v1/*: any*/),
         {
           "kind": "LinkedField",
           "alias": null,
@@ -135,56 +124,54 @@ return {
           "selections": [
             {
               "kind": "ScalarField",
-              "alias": null,
-              "name": "qualified_for_bidding",
+              "alias": "qualified_for_bidding",
+              "name": "qualifiedForBidding",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_preview",
+          "alias": "is_preview",
+          "name": "isPreview",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_open",
+          "alias": "is_open",
+          "name": "isOpen",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_live_open",
+          "alias": "is_live_open",
+          "name": "isLiveOpen",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_registration_closed",
+          "alias": "is_registration_closed",
+          "name": "isRegistrationClosed",
           "args": null,
           "storageKey": null
-        },
-        v1
+        }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "sale_artwork",
+      "alias": "sale_artwork",
+      "name": "saleArtwork",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtwork",
@@ -199,7 +186,7 @@ return {
           "concreteType": "BidIncrementsFormatted",
           "plural": true,
           "selections": [
-            v0,
+            (v0/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
@@ -208,13 +195,11 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = '7362bd5c91f910a9d4d415a72114bbbb';
+(node as any).hash = 'b10043f886f4c50e3f843434f87a8a88';
 export default node;

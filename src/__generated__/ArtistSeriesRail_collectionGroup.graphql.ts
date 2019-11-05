@@ -1,22 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistSeriesEntity_member$ref } from "./ArtistSeriesEntity_member.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
-declare const _ArtistSeriesRail_collectionGroup$ref: unique symbol;
-export type ArtistSeriesRail_collectionGroup$ref = typeof _ArtistSeriesRail_collectionGroup$ref;
 export type ArtistSeriesRail_collectionGroup = {
     readonly groupType: MarketingGroupTypes;
     readonly name: string;
     readonly members: ReadonlyArray<{
-        readonly " $fragmentRefs": ArtistSeriesEntity_member$ref;
+        readonly " $fragmentRefs": FragmentRefs<"ArtistSeriesEntity_member">;
     }>;
-    readonly " $refType": ArtistSeriesRail_collectionGroup$ref;
+    readonly " $refType": "ArtistSeriesRail_collectionGroup";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistSeriesRail_collectionGroup",
   "type": "MarketingCollectionGroup",
@@ -50,13 +48,6 @@ const node: ConcreteFragment = {
           "kind": "FragmentSpread",
           "name": "ArtistSeriesEntity_member",
           "args": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     }

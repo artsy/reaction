@@ -1,33 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-declare const _ArtworkSidebarArtists_artwork$ref: unique symbol;
-export type ArtworkSidebarArtists_artwork$ref = typeof _ArtworkSidebarArtists_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarArtists_artwork = {
     readonly cultural_maker: string | null;
-    readonly artists: ReadonlyArray<({
-        readonly __id: string;
-        readonly _id: string;
+    readonly artists: ReadonlyArray<{
         readonly id: string;
+        readonly internalID: string;
+        readonly slug: string;
         readonly name: string | null;
         readonly href: string | null;
-        readonly " $fragmentRefs": FollowArtistButton_artist$ref;
-    }) | null> | null;
-    readonly " $refType": ArtworkSidebarArtists_artwork$ref;
+        readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
+    } | null> | null;
+    readonly " $refType": "ArtworkSidebarArtists_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarArtists_artwork",
   "type": "Artwork",
@@ -43,8 +33,8 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "cultural_maker",
+      "alias": "cultural_maker",
+      "name": "culturalMaker",
       "args": null,
       "storageKey": null
     },
@@ -57,18 +47,24 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
-        v0,
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "_id",
+          "name": "id",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "internalID",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "slug",
           "args": null,
           "storageKey": null
         },
@@ -93,16 +89,13 @@ return {
             {
               "kind": "Variable",
               "name": "showFollowSuggestions",
-              "variableName": "showFollowSuggestions",
-              "type": null
+              "variableName": "showFollowSuggestions"
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'aa97da2dfc57f1cf06cc2eb9fba3bbf5';
+(node as any).hash = '961d703b4bbc396cc6aaf106c649a11d';
 export default node;

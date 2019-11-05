@@ -192,7 +192,7 @@ export default createPaginationContainer(
             }
           }
         }
-        filter_aggregations: filteredArtworks(
+        filter_aggregations: filterArtworksConnection(
           aggregations: $aggregations
           size: 0
           includeMediumFilterInAggregation: true

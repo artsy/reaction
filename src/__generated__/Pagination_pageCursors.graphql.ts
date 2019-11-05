@@ -1,34 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Pagination_pageCursors$ref: unique symbol;
-export type Pagination_pageCursors$ref = typeof _Pagination_pageCursors$ref;
+import { ReaderFragment } from "relay-runtime";
 export type Pagination_pageCursors = {
     readonly around: ReadonlyArray<{
         readonly cursor: string;
         readonly page: number;
         readonly isCurrent: boolean;
     }>;
-    readonly first: ({
+    readonly first: {
         readonly cursor: string;
         readonly page: number;
         readonly isCurrent: boolean;
-    }) | null;
-    readonly last: ({
+    } | null;
+    readonly last: {
         readonly cursor: string;
         readonly page: number;
         readonly isCurrent: boolean;
-    }) | null;
-    readonly previous: ({
+    } | null;
+    readonly previous: {
         readonly cursor: string;
         readonly page: number;
-    }) | null;
-    readonly " $refType": Pagination_pageCursors$ref;
+    } | null;
+    readonly " $refType": "Pagination_pageCursors";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -44,8 +42,8 @@ v1 = {
   "storageKey": null
 },
 v2 = [
-  v0,
-  v1,
+  (v0/*: any*/),
+  (v1/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -69,7 +67,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": true,
-      "selections": v2
+      "selections": (v2/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -79,7 +77,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v2
+      "selections": (v2/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -89,7 +87,7 @@ return {
       "args": null,
       "concreteType": "PageCursor",
       "plural": false,
-      "selections": v2
+      "selections": (v2/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -100,8 +98,8 @@ return {
       "concreteType": "PageCursor",
       "plural": false,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/),
+        (v1/*: any*/)
       ]
     }
   ]

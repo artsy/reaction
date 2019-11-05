@@ -1,40 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistCard_artist$ref } from "./ArtistCard_artist.graphql";
-declare const _ArtworkRelatedArtists_artwork$ref: unique symbol;
-export type ArtworkRelatedArtists_artwork$ref = typeof _ArtworkRelatedArtists_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkRelatedArtists_artwork = {
-    readonly id: string;
-    readonly artist: ({
+    readonly slug: string;
+    readonly artist: {
         readonly href: string | null;
-        readonly related: ({
-            readonly artists: ({
+        readonly related: {
+            readonly artistsConnection: {
                 readonly pageInfo: {
                     readonly hasNextPage: boolean;
                 };
-                readonly edges: ReadonlyArray<({
-                    readonly node: ({
-                        readonly " $fragmentRefs": ArtistCard_artist$ref;
-                    }) | null;
-                }) | null> | null;
-            }) | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": ArtworkRelatedArtists_artwork$ref;
+                readonly edges: ReadonlyArray<{
+                    readonly node: {
+                        readonly " $fragmentRefs": FragmentRefs<"ArtistCard_artist">;
+                    } | null;
+                } | null> | null;
+            } | null;
+        } | null;
+    } | null;
+    readonly " $refType": "ArtworkRelatedArtists_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkRelatedArtists_artwork",
   "type": "Artwork",
@@ -47,7 +37,7 @@ return {
         "path": [
           "artist",
           "related",
-          "artists"
+          "artistsConnection"
         ]
       }
     ]
@@ -70,7 +60,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -101,15 +91,14 @@ return {
           "selections": [
             {
               "kind": "LinkedField",
-              "alias": "artists",
-              "name": "__ArtworkRelatedArtists_artists_connection",
-              "storageKey": "__ArtworkRelatedArtists_artists_connection(kind:\"MAIN\")",
+              "alias": "artistsConnection",
+              "name": "__ArtworkRelatedArtists_artistsConnection_connection",
+              "storageKey": "__ArtworkRelatedArtists_artistsConnection_connection(kind:\"MAIN\")",
               "args": [
                 {
                   "kind": "Literal",
                   "name": "kind",
-                  "value": "MAIN",
-                  "type": "RelatedArtistsKind"
+                  "value": "MAIN"
                 }
               ],
               "concreteType": "ArtistConnection",
@@ -159,17 +148,16 @@ return {
                       "plural": false,
                       "selections": [
                         {
-                          "kind": "FragmentSpread",
-                          "name": "ArtistCard_artist",
-                          "args": null
-                        },
-                        v0,
-                        {
                           "kind": "ScalarField",
                           "alias": null,
                           "name": "__typename",
                           "args": null,
                           "storageKey": null
+                        },
+                        {
+                          "kind": "FragmentSpread",
+                          "name": "ArtistCard_artist",
+                          "args": null
                         }
                       ]
                     },
@@ -185,13 +173,10 @@ return {
               ]
             }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '5ec9d018d7422592fa838f8cd78ab245';
+(node as any).hash = '4df1872cc84dffa4698fd299b4459457';
 export default node;

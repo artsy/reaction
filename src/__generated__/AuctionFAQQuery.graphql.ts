@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { AuctionFAQ_viewer$ref } from "./AuctionFAQ_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type AuctionFAQQueryVariables = {};
 export type AuctionFAQQueryResponse = {
-    readonly viewer: ({
-        readonly " $fragmentRefs": AuctionFAQ_viewer$ref;
-    }) | null;
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"AuctionFAQ_viewer">;
+    } | null;
 };
 export type AuctionFAQQuery = {
     readonly response: AuctionFAQQueryResponse;
@@ -25,23 +25,23 @@ query AuctionFAQQuery {
 fragment AuctionFAQ_viewer on Viewer {
   bidding: staticContent(id: "how-auctions-work-bidding") {
     content
-    __id
+    id
   }
   buyersPremiumTaxesAndFees: staticContent(id: "how-auctions-work-buyers-premium-taxes-and-fees") {
     content
-    __id
+    id
   }
   paymentsAndShipping: staticContent(id: "how-auctions-work-payments-and-shipping") {
     content
-    __id
+    id
   }
   emailsAndAlerts: staticContent(id: "how-auctions-work-emails-and-alerts") {
     content
-    __id
+    id
   }
   conditionsOfSale: staticContent(id: "how-auctions-work-conditions-of-sale") {
     content
-    __id
+    id
   }
 }
 */
@@ -58,18 +58,13 @@ var v0 = [
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "__id",
+    "name": "id",
     "args": null,
     "storageKey": null
   }
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "AuctionFAQQuery",
-  "id": null,
-  "text": "query AuctionFAQQuery {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    __id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    __id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    __id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    __id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "AuctionFAQQuery",
@@ -79,8 +74,8 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -118,13 +113,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "id",
-                "value": "how-auctions-work-bidding",
-                "type": "String!"
+                "value": "how-auctions-work-bidding"
               }
             ],
             "concreteType": "StaticContent",
             "plural": false,
-            "selections": v0
+            "selections": (v0/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -135,13 +129,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "id",
-                "value": "how-auctions-work-buyers-premium-taxes-and-fees",
-                "type": "String!"
+                "value": "how-auctions-work-buyers-premium-taxes-and-fees"
               }
             ],
             "concreteType": "StaticContent",
             "plural": false,
-            "selections": v0
+            "selections": (v0/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -152,13 +145,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "id",
-                "value": "how-auctions-work-payments-and-shipping",
-                "type": "String!"
+                "value": "how-auctions-work-payments-and-shipping"
               }
             ],
             "concreteType": "StaticContent",
             "plural": false,
-            "selections": v0
+            "selections": (v0/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -169,13 +161,12 @@ return {
               {
                 "kind": "Literal",
                 "name": "id",
-                "value": "how-auctions-work-emails-and-alerts",
-                "type": "String!"
+                "value": "how-auctions-work-emails-and-alerts"
               }
             ],
             "concreteType": "StaticContent",
             "plural": false,
-            "selections": v0
+            "selections": (v0/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -186,26 +177,23 @@ return {
               {
                 "kind": "Literal",
                 "name": "id",
-                "value": "how-auctions-work-conditions-of-sale",
-                "type": "String!"
+                "value": "how-auctions-work-conditions-of-sale"
               }
             ],
             "concreteType": "StaticContent",
             "plural": false,
-            "selections": v0
+            "selections": (v0/*: any*/)
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "AuctionFAQQuery",
+    "id": null,
+    "text": "query AuctionFAQQuery {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
