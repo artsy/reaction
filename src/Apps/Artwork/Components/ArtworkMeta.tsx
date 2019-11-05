@@ -181,7 +181,7 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
         context {
           __typename
           ... on Fair {
-            sludORinternalID
+            slug
             name
           }
         }

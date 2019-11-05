@@ -174,7 +174,7 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
       fragment GeneSearchResults_viewer on Viewer {
         match_gene: matchGene(term: $term) {
           name
-          sludORinternalID
+          slug
           internalID
           image {
             cropped(width: 100, height: 100) {

@@ -285,7 +285,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             edges {
               node {
                 categories {
-                  sludORinternalID
+                  slug
                 }
               }
             }
@@ -303,7 +303,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             slice
             counts {
               name
-              sludORinternalID
+              value
             }
           }
           # Include the below fragment so that this will match
@@ -316,7 +316,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             @skip(if: $hasFilter) {
             edges {
               node {
-                sludORinternalID
+                slug
               }
             }
           }

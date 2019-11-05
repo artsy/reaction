@@ -132,7 +132,7 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
       fragment DefaultHeader_headerArtworks on FilterArtworksConnection {
         hits {
           href
-          sludORinternalID
+          slug
           image {
             small: resized(height: 160) {
               url

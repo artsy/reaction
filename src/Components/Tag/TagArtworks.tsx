@@ -149,7 +149,7 @@ export default createFragmentContainer(TagArtworks, {
           slice
           counts {
             name
-            sludORinternalID
+            value
           }
           ...Dropdown_aggregation
         }

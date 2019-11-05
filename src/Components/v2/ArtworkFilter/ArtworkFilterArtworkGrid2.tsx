@@ -108,7 +108,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
         aggregations {
           slice
           counts {
-            sludORinternalID
+            value
             name
             count
           }
