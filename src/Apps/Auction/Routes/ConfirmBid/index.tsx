@@ -227,9 +227,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="8">Confirm your bid</Serif>
-        <Serif size="8">
-          This is a release of reaction off of `auct-pt-master`.
-        </Serif>
 
         <Separator />
 
