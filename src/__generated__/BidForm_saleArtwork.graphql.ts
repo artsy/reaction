@@ -11,6 +11,11 @@ export type BidForm_saleArtwork = {
         readonly cents: number | null;
         readonly display: string | null;
     }) | null> | null;
+    readonly sale: ({
+        readonly registrationStatus: ({
+            readonly qualifiedForBidding: boolean | null;
+        }) | null;
+    }) | null;
     readonly " $refType": BidForm_saleArtwork$ref;
 };
 
@@ -21,6 +26,13 @@ var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cents",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -70,14 +82,39 @@ return {
       ]
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "__id",
+      "name": "sale",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
-    }
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "registrationStatus",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Bidder",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": "qualifiedForBidding",
+              "name": "qualified_for_bidding",
+              "args": null,
+              "storageKey": null
+            },
+            v1
+          ]
+        },
+        v1
+      ]
+    },
+    v1
   ]
 };
 })();
-(node as any).hash = 'f63146f06b2eeaabe48250b3d9b72cac';
+(node as any).hash = '2b29986a93e0cc4abb6c031f75b05cd1';
 export default node;

@@ -7,6 +7,7 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
+import { BidForm_me } from "__generated__/BidForm_me.graphql"
 import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
@@ -17,10 +18,11 @@ import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
 
 interface Props {
-  showPricingTransparency?: boolean
-  saleArtwork: BidForm_saleArtwork
   initialSelectedBid?: string
+  me: BidForm_me
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
+  saleArtwork: BidForm_saleArtwork
+  showPricingTransparency?: boolean
 }
 
 interface FormValues {
@@ -28,7 +30,11 @@ interface FormValues {
   agreeToTerms: boolean
 }
 
-const validationSchema = Yup.object().shape({
+const validationSchemaForRegisteredUsers = Yup.object().shape({
+  selectedBid: Yup.string().required(),
+})
+
+const validationSchemaForUnregisteredUsersWithCreditCard = Yup.object().shape({
   selectedBid: Yup.string().required(),
   agreeToTerms: Yup.bool().oneOf(
     [true],
@@ -57,11 +63,24 @@ const getSelectedBid = ({
   return selectedIncrement.value
 }
 
+const determineDisplayRequirements = (
+  bidder: BidForm_saleArtwork["sale"]["registrationStatus"],
+  me: BidForm_me
+) => {
+  const isRegistered = !!bidder
+
+  return {
+    requiresCheckbox: !isRegistered,
+    requiresPaymentInformation: !(isRegistered || me.hasQualifiedCreditCards),
+  }
+}
+
 export const BidForm: React.FC<Props> = ({
+  initialSelectedBid,
+  me,
   onSubmit,
   saleArtwork,
   showPricingTransparency = false,
-  initialSelectedBid,
 }) => {
   const displayIncrements = dropWhile(
     saleArtwork.increments,
@@ -69,6 +88,13 @@ export const BidForm: React.FC<Props> = ({
   ).map(inc => ({ value: inc.cents.toString(), text: inc.display }))
 
   const selectedBid = getSelectedBid({ initialSelectedBid, displayIncrements })
+  const { requiresCheckbox } = determineDisplayRequirements(
+    saleArtwork.sale.registrationStatus,
+    me
+  )
+  const validationSchema = requiresCheckbox
+    ? validationSchemaForUnregisteredUsersWithCreditCard
+    : validationSchemaForRegisteredUsers
 
   return (
     <Box maxWidth={550}>
@@ -109,30 +135,41 @@ export const BidForm: React.FC<Props> = ({
                   )}
                   {showPricingTransparency && <PricingTransparency />}
                 </Flex>
-                <Separator />
+
                 <Flex
-                  py={3}
+                  pb={3}
                   flexDirection="column"
                   justifyContent="center"
                   width="100%"
                 >
-                  <Box mx="auto" mb={3}>
-                    <ConditionsOfSaleCheckbox
-                      selected={values.agreeToTerms}
-                      onSelect={value => {
-                        setFieldValue("agreeToTerms", value)
-                        setFieldTouched("agreeToTerms")
-                      }}
-                    />
-                    {touched.agreeToTerms && errors.agreeToTerms && (
-                      <Sans mt={1} color="red100" size="2" textAlign="center">
-                        {errors.agreeToTerms}
-                      </Sans>
-                    )}
-                  </Box>
+                  {requiresCheckbox && (
+                    <>
+                      <Separator mb={3} />
+
+                      <Box mx="auto" mb={3}>
+                        <ConditionsOfSaleCheckbox
+                          selected={values.agreeToTerms}
+                          onSelect={value => {
+                            setFieldValue("agreeToTerms", value)
+                            setFieldTouched("agreeToTerms")
+                          }}
+                        />
+                        {touched.agreeToTerms && errors.agreeToTerms && (
+                          <Sans
+                            mt={1}
+                            color="red100"
+                            size="2"
+                            textAlign="center"
+                          >
+                            {errors.agreeToTerms}
+                          </Sans>
+                        )}
+                      </Box>
+                    </>
+                  )}
+
                   <Button
                     size="large"
-                    mt={3}
                     width="100%"
                     loading={isSubmitting}
                     {...{ type: "submit" } as any}
@@ -159,6 +196,16 @@ export const BidFormFragmentContainer = createFragmentContainer(BidForm, {
         cents
         display
       }
+      sale {
+        registrationStatus {
+          qualifiedForBidding: qualified_for_bidding
+        }
+      }
+    }
+  `,
+  me: graphql`
+    fragment BidForm_me on Me {
+      hasQualifiedCreditCards: has_qualified_credit_cards
     }
   `,
 })

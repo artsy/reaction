@@ -53,6 +53,7 @@ export const routes: RouteConfig[] = [
           }
         }
         me {
+          ...BidForm_me
           id
           has_qualified_credit_cards
         }
