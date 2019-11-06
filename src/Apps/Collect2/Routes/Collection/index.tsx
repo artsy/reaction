@@ -36,7 +36,7 @@ interface CollectionAppProps extends SystemContextProps {
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
   context_page_owner_slug: props.viewer && props.viewer.slug,
-  context_page_owner_id: props.viewer && props.viewer.id,
+  context_page_owner_id: props.viewer && props.viewer.slug,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
@@ -51,7 +51,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   render() {
     const { viewer, location, relay } = this.props
-    const { title, slug, headerImage, description, artworks } = viewer
+    const { title, slug, headerImage, description, artworksConnection } = viewer
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
     const metadataDescription = description
@@ -77,17 +77,19 @@ export class CollectionApp extends Component<CollectionAppProps> {
               { path: `/collection/${slug}`, name: title },
             ]}
           />
-          {artworks && <SeoProductsForArtworks artworks={artworks} />}
+          {artworksConnection && (
+            <SeoProductsForArtworks artworks={artworksConnection} />
+          )}
           <CollectionHeader
             collection={viewer as any}
-            artworks={artworks as any}
+            artworks={artworksConnection as any}
           />
           {showCollectionHubs && (
             <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
           )}
           <Box>
             <ArtworkFilterContextProvider
-              filters={location.query}
+              filters={location && location.query}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
                 { value: "sold,-has_price,-prices", text: "Price (desc.)" },
@@ -98,8 +100,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                viewer.artworks
-                  .aggregations as SharedArtworkFilterContextProps["aggregations"]
+                artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {

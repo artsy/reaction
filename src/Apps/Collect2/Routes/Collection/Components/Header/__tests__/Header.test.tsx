@@ -135,7 +135,7 @@ describe("collections header", () => {
         artworks.merchandisable_artists
       ) as Header_artworks["merchandisable_artists"]
 
-      const artistIds = results.map(artist => artist._id)
+      const artistIds = results.map(artist => artist.slug)
       expect(artistIds).toEqual(expect.not.arrayContaining(excludedIds))
     })
   })
