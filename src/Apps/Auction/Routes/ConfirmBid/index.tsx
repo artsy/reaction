@@ -42,7 +42,7 @@ const MAX_POLL_ATTEMPTS = 20
 export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
 
-  const { artwork, relay } = props
+  const { artwork, me, relay } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
 
@@ -224,19 +224,25 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   return (
     <AppContainer>
       <Title>Confirm Bid | Artsy</Title>
+
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="8">Confirm your bid</Serif>
         <Serif size="8">
           This is a release of reaction off of `auct-pt-master`.
         </Serif>
+
         <Separator />
+
         <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
+
         <Separator />
+
         <BidForm
           initialSelectedBid={getInitialSelectedBid(props.location)}
           showPricingTransparency={false}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
+          me={me}
         />
       </Box>
     </AppContainer>
