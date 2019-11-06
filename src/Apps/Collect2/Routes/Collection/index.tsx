@@ -9,7 +9,7 @@ import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
-import { Location } from "found"
+import { Match } from "found"
 import { HttpError } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
@@ -28,7 +28,7 @@ import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
   viewer: Collection_viewer
-  location: Location
+  match: Match
   relay: RelayRefetchProp
   tracking: TrackingProp
 }
@@ -50,7 +50,11 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   render() {
-    const { viewer, location, relay } = this.props
+    const {
+      viewer,
+      match: { location },
+      relay,
+    } = this.props
     const { title, slug, headerImage, description, artworksConnection } = viewer
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
@@ -89,7 +93,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
           )}
           <Box>
             <ArtworkFilterContextProvider
-              filters={location && location.query}
+              filters={location.query}
               sortOptions={[
                 { value: "-decayed_merch", text: "Default" },
                 { value: "sold,-has_price,-prices", text: "Price (desc.)" },
