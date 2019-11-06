@@ -1,6 +1,8 @@
-import { TransactionDetailsSummaryItemTestQueryRawResponse } from "__generated__/TransactionDetailsSummaryItemTestQuery.graphql"
 import {
-  mockResolver,
+  TransactionDetailsSummaryItemTestQueryRawResponse,
+  TransactionDetailsSummaryItemTestQueryResponse,
+} from "__generated__/TransactionDetailsSummaryItemTestQuery.graphql"
+import {
   OfferOrderWithOffers,
   OfferWithTotals,
   UntouchedBuyOrder,
@@ -34,21 +36,19 @@ const transactionSummaryOfferOrder = {
 }
 
 const render = (
-  order,
+  order: TransactionDetailsSummaryItemTestQueryRawResponse,
   extraProps?: Partial<
     ExtractProps<typeof TransactionDetailsSummaryItemFragmentContainer>
   >
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: TransactionDetailsSummaryItemTestQueryResponse) => (
       <TransactionDetailsSummaryItemFragmentContainer
         {...props}
         {...extraProps}
       />
     ),
-    mockResolvers: mockResolver({
-      ...order,
-    }) as TransactionDetailsSummaryItemTestQueryRawResponse,
+    mockData: order,
     query: graphql`
       query TransactionDetailsSummaryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "whatevs") {
