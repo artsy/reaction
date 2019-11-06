@@ -29,7 +29,8 @@ export const routes: RouteConfig[] = [
       }
     },
     query: graphql`
-      query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!) {
+      query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!)
+        @raw_response_type {
         artwork(id: $artworkID) {
           ...LotInfo_artwork
           internalID
@@ -76,7 +77,7 @@ export const routes: RouteConfig[] = [
       }
     },
     query: graphql`
-      query routes_RegisterQuery($saleID: String!) {
+      query routes_RegisterQuery($saleID: String!) @raw_response_type {
         sale(id: $saleID) @principalField {
           slug
           is_auction: isAuction

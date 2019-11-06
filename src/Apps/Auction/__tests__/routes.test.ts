@@ -1,3 +1,5 @@
+import { routes_ConfirmBidQueryRawResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
+import { routes_RegisterQueryRawResponse } from "__generated__/routes_RegisterQuery.graphql"
 import {
   ConfirmBidQueryResponse,
   ConfirmBidQueryResponseFixture,
@@ -16,7 +18,7 @@ import { Environment, RecordSource, Store } from "relay-runtime"
 import { DeepPartial } from "Utils/typeSupport"
 
 describe("Auction/routes", () => {
-  async function render(url, mockData) {
+  async function render(url, mockData: routes_ConfirmBidQueryRawResponse) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
     const store = new Store(source)
@@ -31,15 +33,15 @@ describe("Auction/routes", () => {
   }
 
   const mockRegisterResolver = (
-    data: DeFragedRegisterQueryResponse
-  ): DeFragedRegisterQueryResponse => ({
+    data: routes_RegisterQueryRawResponse
+  ): routes_RegisterQueryRawResponse => ({
     sale: data.sale,
     me: data.me,
   })
 
   const mockConfirmBidResolver = (
-    data: DeepPartial<ConfirmBidQueryResponse> = {}
-  ): ConfirmBidQueryResponse =>
+    data: DeepPartial<routes_ConfirmBidQueryRawResponse> = {}
+  ): routes_ConfirmBidQueryRawResponse =>
     deepMerge<ConfirmBidQueryResponse, DeepPartial<ConfirmBidQueryResponse>>(
       ConfirmBidQueryResponseFixture,
       data
@@ -53,7 +55,7 @@ describe("Auction/routes", () => {
 
   describe("Confirm Bid: /:saleId/bid/:artworkId", () => {
     it("does not redirect if the user is qualified to bid in the sale, the sale is open, and the artwork is biddable", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver()
+      const fixture = mockConfirmBidResolver()
       const { redirect, status } = await render(
         `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
           fixture.artwork.id
@@ -66,7 +68,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to confirm registration page if user is registered but not qualified to bid (to remind them)", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
+      const fixture = mockConfirmBidResolver({
         artwork: {
           saleArtwork: {
             sale: { registrationStatus: { qualified_for_bidding: false } },
@@ -86,7 +88,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to sale artwork page if the sale is closed", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
+      const fixture = mockConfirmBidResolver({
         artwork: {
           saleArtwork: {
             sale: {
@@ -109,7 +111,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to the login (plus redirect_uri of sale artwork bid page) if user is not signed in", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
+      const fixture = mockConfirmBidResolver({
         me: null,
       })
 
@@ -125,7 +127,7 @@ describe("Auction/routes", () => {
     })
 
     it("redirects to the sale artwork page if user is not registered and registration is closed", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
+      const fixture = mockConfirmBidResolver({
         artwork: {
           saleArtwork: {
             sale: {
@@ -149,7 +151,7 @@ describe("Auction/routes", () => {
     })
 
     it("does not redirect if user is not registered but registration is open", async () => {
-      const fixture: ConfirmBidQueryResponse = mockConfirmBidResolver({
+      const fixture = mockConfirmBidResolver({
         artwork: {
           saleArtwork: {
             sale: {

@@ -1,6 +1,9 @@
 // @ts-ignore
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
-import { ArtistRecommendations_Test_Query } from "__generated__/ArtistRecommendations_Test_Query.graphql"
+import {
+  ArtistRecommendations_Test_Query,
+  ArtistRecommendations_Test_QueryRawResponse,
+} from "__generated__/ArtistRecommendations_Test_Query.graphql"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -10,7 +13,9 @@ import { RecommendedArtistFragmentContainer as RecommendedArtist } from "../Reco
 jest.unmock("react-relay")
 
 describe("ArtistRecommendations", () => {
-  async function getWrapper(artistData: any) {
+  async function getWrapper(
+    artistData: ArtistRecommendations_Test_QueryRawResponse["artist"]
+  ) {
     return await renderUntil(
       wrapper => {
         return wrapper.find(ArtistRecommendations).length > 0
@@ -19,7 +24,7 @@ describe("ArtistRecommendations", () => {
         <MockRelayRenderer<ArtistRecommendations_Test_Query>
           Component={ArtistRecommendations}
           query={graphql`
-            query ArtistRecommendations_Test_Query {
+            query ArtistRecommendations_Test_Query @raw_response_type {
               artist(id: "andy-warhol") {
                 ...ArtistRecommendations_artist
               }
