@@ -5,8 +5,12 @@ import {
   ConfirmBidCreateBidderPositionMutationResponse,
 } from "__generated__/ConfirmBidCreateBidderPositionMutation.graphql"
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
-import { BidFormFragmentContainer as BidForm } from "Apps/Auction/Components/BidForm"
+import {
+  BidFormFragmentContainer as BidForm,
+  FormValues,
+} from "Apps/Auction/Components/BidForm"
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
+import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
@@ -26,9 +30,9 @@ import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 
-import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
-
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
+
+type BidFormActions = FormikActions<FormValues>
 
 interface ConfirmBidProps {
   artwork: routes_ConfirmBidQueryResponse["artwork"]
@@ -45,20 +49,15 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const { artwork, me, relay } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
-
+  const { environment } = relay
   const { trackEvent } = useTracking()
 
   function createBidderPosition(maxBidAmountCents: number) {
-    return new Promise(async (resolve, reject) => {
-      commitMutation<ConfirmBidCreateBidderPositionMutation>(
-        relay.environment,
-        {
-          onCompleted: data => {
-            resolve(data)
-          },
-          onError: error => {
-            reject(error)
-          },
+    return new Promise<ConfirmBidCreateBidderPositionMutationResponse>(
+      (resolve, reject) => {
+        commitMutation<ConfirmBidCreateBidderPositionMutation>(environment, {
+          onCompleted: data => resolve(data),
+          onError: error => reject(error),
           mutation: graphql`
             mutation ConfirmBidCreateBidderPositionMutation(
               $input: BidderPositionInput!
@@ -76,8 +75,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
                     }
                   }
                   status
-                  message_header
-                  message_description_md
+                  messageHeader: message_header
                 }
               }
             }
@@ -89,31 +87,18 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
               max_bid_amount_cents: maxBidAmountCents,
             },
           },
-        }
-      )
-    })
+        })
+      }
+    )
   }
 
-  function handleMutationError(
-    actions: FormikActions<object>,
-    error: Error,
-    bidderId: string
-  ) {
+  function onJsError(actions: BidFormActions, error: Error, bidderId: string) {
     logger.error(error)
-
-    let errorMessages: string[]
-    if (Array.isArray(error)) {
-      errorMessages = error.map(e => e.message)
-    } else if (typeof error === "string") {
-      errorMessages = [error]
-    } else if (error.message) {
-      errorMessages = [error.message]
-    }
-
-    trackConfirmBidFailed(bidderId, errorMessages)
-
+    trackConfirmBidFailed(bidderId, [`JavaScript error: ${error.message}`])
     actions.setSubmitting(false)
-    actions.setStatus("submissionFailed")
+    actions.setStatus(
+      "Something went wrong while processing your bid. Please make sure your internet connection is active and try again"
+    )
   }
 
   function trackConfirmBidFailed(bidderId: string, errors: string[]) {
@@ -144,96 +129,91 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     })
   }
 
-  function handleSubmit(
-    values: { selectedBid: number },
-    actions: FormikActions<object>
-  ) {
+  function handleSubmit(values: FormValues, actions: BidFormActions) {
     const selectedBid = Number(values.selectedBid)
-    const possibleExistingBidderId: string | null = sale.registrationStatus
-      ? sale.registrationStatus.id
-      : null
+    const possibleExistingBidderId: string | null =
+      sale.registrationStatus && sale.registrationStatus.id
 
     createBidderPosition(selectedBid)
-      .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
-        if (data.createBidderPosition.result.status !== "SUCCESS") {
-          trackConfirmBidFailed(possibleExistingBidderId, [
-            "ConfirmBidCreateBidderPositionMutation failed",
-          ])
-        } else {
-          const bidderIdFromMutation =
-            data.createBidderPosition.result.position.sale_artwork.sale
-              .registrationStatus.id
-          verifyBidderPosition({
-            data,
-            bidderId: bidderIdFromMutation,
-            selectedBid,
-          })
-        }
-      })
-      .catch(error => {
-        handleMutationError(actions, error, possibleExistingBidderId)
-        actions.setSubmitting(false)
-      })
+      .then(data =>
+        verifyBidderPosition({
+          actions,
+          data,
+          selectedBid,
+          possibleExistingBidderId,
+        })
+      )
+      .catch(error => onJsError(actions, error, possibleExistingBidderId))
   }
 
   function verifyBidderPosition({
+    actions,
     data,
-    bidderId,
+    possibleExistingBidderId,
     selectedBid,
   }: {
+    actions: BidFormActions
     data: ConfirmBidCreateBidderPositionMutationResponse
-    bidderId: string
+    possibleExistingBidderId: string
     selectedBid: number
   }) {
     const { result } = data.createBidderPosition
-    const { position } = result
+    const { position, messageHeader } = result
+    const bidderId =
+      possibleExistingBidderId ||
+      (position &&
+        position.sale_artwork &&
+        position.sale_artwork.sale &&
+        position.sale_artwork.sale.registrationStatus.id)
 
     if (result.status === "SUCCESS") {
-      bidderPositionQuery(relay.environment, { bidderPositionID: position.id })
-        .then(response =>
-          checkBidderPosition({ data: response, bidderId, selectedBid })
+      bidderPositionQuery(environment, { bidderPositionID: position.id })
+        .then(res =>
+          checkBidderPosition({ actions, data: res, bidderId, selectedBid })
         )
-        .catch(error => console.error(error)) // TODO: Implement error handling. story: AUCT-713
+        .catch(error => onJsError(actions, error, bidderId))
     } else {
-      // TODO: Implement error handling. story: AUCT-713
-      console.error("Bid result was not SUCCESS:", data)
+      actions.setStatus(messageHeader)
+      actions.setSubmitting(false)
+      trackConfirmBidFailed(bidderId, [messageHeader])
     }
   }
 
   function checkBidderPosition({
+    actions,
     data,
     bidderId,
     selectedBid,
   }: {
+    actions: BidFormActions
     data: BidderPositionQueryResponse
     bidderId: string
     selectedBid: number
   }) {
     const { bidderPosition } = data.me
+    const { status, position, messageHeader } = bidderPosition
 
-    if (bidderPosition.status === "PENDING" && pollCount < MAX_POLL_ATTEMPTS) {
+    if (status === "PENDING" && pollCount < MAX_POLL_ATTEMPTS) {
       // initiating new request here (vs setInterval) to make sure we wait for
       // the previous call to return before making a new one
       setTimeout(
         () =>
-          bidderPositionQuery(relay.environment, {
-            bidderPositionID: bidderPosition.position.id,
-          })
-            .then(response =>
-              checkBidderPosition({ data: response, bidderId, selectedBid })
+          bidderPositionQuery(environment, { bidderPositionID: position.id })
+            .then(res =>
+              checkBidderPosition({ actions, data: res, bidderId, selectedBid })
             )
-            .catch(error => console.error(error)), // TODO: Implement error handling. story: AUCT-713
+            .catch(error => onJsError(actions, error, bidderId)),
         1000
       )
 
       pollCount += 1
-    } else if (bidderPosition.status === "WINNING") {
-      const positionId = data.me.bidderPosition.position.id
-      trackConfirmBidSuccess(positionId, bidderId, selectedBid)
-
+    } else if (status === "WINNING") {
+      trackConfirmBidSuccess(position.id, bidderId, selectedBid)
       window.location.assign(`${sd.APP_URL}/artwork/${artwork.id}`)
     } else {
-      // TODO: Implement error handling. story: AUCT-713
+      actions.setStatus(messageHeader)
+      actions.setSubmitting(false)
+      trackConfirmBidFailed(bidderId, [messageHeader])
     }
   }
 

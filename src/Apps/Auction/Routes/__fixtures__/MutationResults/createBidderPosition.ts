@@ -15,8 +15,7 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
         },
       },
       status: "SUCCESS",
-      message_header: null,
-      message_description_md: null,
+      messageHeader: null,
     },
   },
 }
@@ -35,8 +34,7 @@ export const createBidderPositionSuccessfulAndBidder: ConfirmBidCreateBidderPosi
         },
       },
       status: "SUCCESS",
-      message_header: null,
-      message_description_md: null,
+      messageHeader: null,
     },
   },
 }
@@ -46,8 +44,7 @@ export const createBidderPositionFailed: ConfirmBidCreateBidderPositionMutationR
     result: {
       position: null,
       status: "FAILED",
-      message_header: "The `createBidderPosition` mutation failed.",
-      message_description_md: null,
+      messageHeader: "Sale Closed to Bids",
     },
   },
 }
@@ -70,6 +67,19 @@ export const confirmBidBidderPositionQueryWithPending: BidderPositionQueryRespon
     bidderPosition: {
       status: "PENDING",
       messageHeader: null,
+      position: {
+        id: "pending-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithOutbid: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "OUTBID",
+      messageHeader: "Your bid wasn’t high enough",
       position: {
         id: "pending-bidder-position-id-from-polling",
         suggestedNextBid: null,
