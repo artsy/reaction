@@ -127,12 +127,12 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
   graphql`
     query ArtworkFilterArtworkGrid2Query(
       $filteredArtworksNodeID: ID!
-      $first: Int!
-      $after: String
-    ) {
+    ) # $first: Int!
+    # $after: String
+    {
       filtered_artworks: node(id: $filteredArtworksNodeID) {
         ...ArtworkFilterArtworkGrid2_filtered_artworks
-          @arguments(first: $first, after: $after)
+        # @arguments(first: $first, after: $after)
       }
     }
   `
