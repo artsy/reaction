@@ -69,7 +69,7 @@ const ArtworkFilterArtworkGrid: React.FC<
     <>
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
-          artworks={props.filtered_artworks as any}
+          artworks={props.filtered_artworks}
           columnCount={columnCount}
           preloadImageCount={9}
           itemMargin={40}
@@ -89,7 +89,7 @@ const ArtworkFilterArtworkGrid: React.FC<
         <Box>
           <Pagination
             hasNextPage={hasNextPage}
-            pageCursors={pageCursors as any}
+            pageCursors={pageCursors}
             onClick={(_cursor, page) => loadPage(page)}
             onNext={() => loadNext()}
             scrollTo="#jump--artworkFilter"

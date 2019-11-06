@@ -10,15 +10,14 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
-import { Location } from "found"
+import { RouterState, withRouter } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { ZeroState } from "./Components/ZeroState"
 
-export interface Props {
+export interface Props extends RouterState {
   viewer: SearchApp_viewer
-  location: Location
 }
 
 @track({
@@ -26,8 +25,11 @@ export interface Props {
 })
 export class SearchApp extends React.Component<Props> {
   renderResults(count: number, artworkCount: number) {
-    const { viewer, location } = this.props
-    const { search } = viewer
+    const {
+      viewer,
+      match: { location },
+    } = this.props
+    const { searchConnection } = viewer
     const {
       query: { term },
     } = location
@@ -45,7 +47,7 @@ export class SearchApp extends React.Component<Props> {
             <NavigationTabs
               artworkCount={artworkCount}
               term={term}
-              searchableConnection={search}
+              searchableConnection={searchConnection}
             />
             <Box minHeight="30vh">{this.props.children}</Box>
           </Col>
@@ -60,9 +62,7 @@ export class SearchApp extends React.Component<Props> {
     return (
       <>
         <Row>
-          <Col>
-            <RecentlyViewed />
-          </Col>
+          <Col>{/*<RecentlyViewed />*/}</Col>
         </Row>
 
         <Separator mt={6} mb={3} />
@@ -77,13 +77,16 @@ export class SearchApp extends React.Component<Props> {
   }
 
   render() {
-    const { viewer, location } = this.props
-    const { search, filter_artworks } = viewer
+    const {
+      viewer,
+      match: { location },
+    } = this.props
+    const { searchConnection, artworksConnection } = viewer
     const { query } = location
     const { term } = query
 
-    const { aggregations } = search
-    const artworkCount = get(filter_artworks, f => f.counts.total, 0)
+    const { aggregations } = searchConnection
+    const artworkCount = get(artworksConnection, f => f.counts.total, 0)
 
     let countWithoutArtworks: number = 0
     const typeAggregation = aggregations.find(agg => agg.slice === "TYPE")
@@ -120,34 +123,37 @@ export class SearchApp extends React.Component<Props> {
   }
 }
 
-export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
-  viewer: graphql`
-    fragment SearchApp_viewer on Viewer
-      @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
-      searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
-        aggregations {
-          slice
-          counts {
-            count
-            name
+export const SearchAppFragmentContainer = createFragmentContainer(
+  withRouter(SearchApp),
+  {
+    viewer: graphql`
+      fragment SearchApp_viewer on Viewer
+        @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
+        searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
+          aggregations {
+            slice
+            counts {
+              count
+              name
+            }
           }
-        }
-        ...NavigationTabs_searchableConnection
-        edges {
-          node {
-            ... on SearchableItem {
-              slug
-              displayLabel
-              displayType
+          ...NavigationTabs_searchableConnection
+          edges {
+            node {
+              ... on SearchableItem {
+                slug
+                displayLabel
+                displayType
+              }
             }
           }
         }
-      }
-      artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {
-        counts {
-          total
+        artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {
+          counts {
+            total
+          }
         }
       }
-    }
-  `,
-})
+    `,
+  }
+)
