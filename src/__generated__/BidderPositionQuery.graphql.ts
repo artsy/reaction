@@ -10,7 +10,7 @@ export type BidderPositionQueryResponse = {
             readonly status: string;
             readonly messageHeader: string | null;
             readonly position: {
-                readonly id: string;
+                readonly internalID: string;
                 readonly suggestedNextBid: {
                     readonly cents: number | null;
                     readonly display: string | null;
@@ -35,11 +35,12 @@ query BidderPositionQuery(
       status
       messageHeader
       position {
-        id
+        internalID
         suggestedNextBid {
           cents
           display
         }
+        id
       }
     }
     id
@@ -56,80 +57,65 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "bidderPositionID"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "status",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "messageHeader",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
   "kind": "LinkedField",
   "alias": null,
-  "name": "bidderPosition",
+  "name": "suggestedNextBid",
   "storageKey": null,
-  "args": [
-    {
-      "kind": "Variable",
-      "name": "id",
-      "variableName": "bidderPositionID"
-    }
-  ],
-  "concreteType": "BidderPositionResult",
+  "args": null,
+  "concreteType": "BidderPositionSuggestedNextBid",
   "plural": false,
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "status",
+      "name": "cents",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "messageHeader",
+      "name": "display",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "position",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "BidderPosition",
-      "plural": false,
-      "selections": [
-        (v1/*: any*/),
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "suggestedNextBid",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "BidderPositionSuggestedNextBid",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "cents",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "display",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        }
-      ]
     }
   ]
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
@@ -149,7 +135,32 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          (v2/*: any*/)
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "bidderPosition",
+            "storageKey": null,
+            "args": (v1/*: any*/),
+            "concreteType": "BidderPositionResult",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "position",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "BidderPosition",
+                "plural": false,
+                "selections": [
+                  (v4/*: any*/),
+                  (v5/*: any*/)
+                ]
+              }
+            ]
+          }
         ]
       }
     ]
@@ -168,8 +179,34 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
-          (v1/*: any*/)
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "bidderPosition",
+            "storageKey": null,
+            "args": (v1/*: any*/),
+            "concreteType": "BidderPositionResult",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "position",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "BidderPosition",
+                "plural": false,
+                "selections": [
+                  (v4/*: any*/),
+                  (v5/*: any*/),
+                  (v6/*: any*/)
+                ]
+              }
+            ]
+          },
+          (v6/*: any*/)
         ]
       }
     ]
@@ -178,10 +215,10 @@ return {
     "operationKind": "query",
     "name": "BidderPositionQuery",
     "id": null,
-    "text": "query BidderPositionQuery(\n  $bidderPositionID: String!\n) {\n  me {\n    bidderPosition(id: $bidderPositionID) {\n      status\n      messageHeader\n      position {\n        id\n        suggestedNextBid {\n          cents\n          display\n        }\n      }\n    }\n    id\n  }\n}\n",
+    "text": "query BidderPositionQuery(\n  $bidderPositionID: String!\n) {\n  me {\n    bidderPosition(id: $bidderPositionID) {\n      status\n      messageHeader\n      position {\n        internalID\n        suggestedNextBid {\n          cents\n          display\n        }\n        id\n      }\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '6aa78c481c1eaf99b5323a9d2ffd6baf';
+(node as any).hash = '824ae5e154436e7ff5d954d947fd8ad6';
 export default node;

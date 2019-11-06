@@ -82,6 +82,7 @@ const setupTestEnv = ({
         me {
           internalID
           hasQualifiedCreditCards
+          ...BidForm_me
         }
       }
     `,
@@ -120,9 +121,9 @@ describe("Routes/ConfirmBid", () => {
         }),
         {
           input: {
-            artwork_id: "artworkslug",
-            max_bid_amount_cents: 5000000,
-            sale_id: "saleslug",
+            artworkID: "artworkid",
+            maxBidAmountCents: 5000000,
+            saleID: "saleid",
           },
         }
       )
@@ -145,7 +146,7 @@ describe("Routes/ConfirmBid", () => {
 
         expect(window.location.assign).toHaveBeenCalledWith(
           `https://example.com/artwork/${
-            ConfirmBidQueryResponseFixture.artwork.id
+            ConfirmBidQueryResponseFixture.artwork.slug
           }`
         )
         done()
@@ -200,9 +201,9 @@ describe("Routes/ConfirmBid", () => {
         }),
         {
           input: {
-            artwork_id: "artworkslug",
-            max_bid_amount_cents: 5000000,
-            sale_id: "saleslug",
+            artworkID: "artworkid",
+            maxBidAmountCents: 5000000,
+            saleID: "saleid",
           },
         }
       )
@@ -258,9 +259,9 @@ describe("Routes/ConfirmBid", () => {
       //   }),
       //   {
       //     input: {
-      //       artwork_id: "artworkslug",
-      //       max_bid_amount_cents: 5000000,
-      //       sale_id: "saleslug",
+      //       artworkID: "artworkid",
+      //       maxBidAmountCents: 5000000,
+      //       saleID: "saleid",
       //     },
       //   }
       // )
@@ -281,21 +282,6 @@ describe("Routes/ConfirmBid", () => {
   })
 
   describe("preselected bid amounts", () => {
-    const mockData = {
-      ...ConfirmBidQueryResponseFixture,
-      artwork: {
-        ...ConfirmBidQueryResponseFixture.artwork,
-        saleArtwork: {
-          ...ConfirmBidQueryResponseFixture.artwork.saleArtwork,
-          increments: [
-            { cents: 5000000, display: "$50,000" },
-            { cents: 6000000, display: "$60,000" },
-            { cents: 7000000, display: "$70,000" },
-          ],
-        },
-      },
-    }
-
     it("pre-fills the bid select box with a value from the query string that is available in increments", async () => {
       const specialSelectedBidAmount = "7000000"
       const search = `?bid=${specialSelectedBidAmount}`

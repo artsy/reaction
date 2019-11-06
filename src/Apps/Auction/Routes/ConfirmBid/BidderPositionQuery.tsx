@@ -18,7 +18,7 @@ export const bidderPositionQuery = (
             status
             messageHeader
             position {
-              id
+              internalID
               suggestedNextBid {
                 cents
                 display

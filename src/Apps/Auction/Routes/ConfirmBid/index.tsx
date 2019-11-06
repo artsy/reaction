@@ -42,7 +42,7 @@ const MAX_POLL_ATTEMPTS = 20
 export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
 
-  const { artwork, relay } = props
+  const { artwork, me, relay } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
 
@@ -70,8 +70,8 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
                     internalID
                   }
                   status
-                  message_header: messageHeader
-                  message_description_md: messageDescriptionMD
+                  messageHeader
+                  messageDescriptionMD
                 }
               }
             }
@@ -152,12 +152,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
             "ConfirmBidCreateBidderPositionMutation failed",
           ])
         } else {
-          const positionId =
-            data.createBidderPosition.result.position.internalID
-          trackConfirmBidSuccess(positionId, bidderId, values.selectedBid)
-          window.location.assign(
-            `${sd.APP_URL}/auction/${sale.slug}/artwork/${artwork.slug}`
-          )
           verifyBidderPosition({ data, bidderId, selectedBid })
         }
       })
@@ -210,7 +204,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       setTimeout(
         () =>
           bidderPositionQuery(relay.environment, {
-            bidderPositionID: bidderPosition.position.id,
+            bidderPositionID: bidderPosition.position.internalID,
           })
             .then(response =>
               checkBidderPosition({ data: response, bidderId, selectedBid })
@@ -221,10 +215,10 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
       pollCount += 1
     } else if (bidderPosition.status === "WINNING") {
-      const positionId = data.me.bidderPosition.position.id
+      const positionId = data.me.bidderPosition.position.internalID
       trackConfirmBidSuccess(positionId, bidderId, selectedBid)
 
-      window.location.assign(`${sd.APP_URL}/artwork/${artwork.id}`)
+      window.location.assign(`${sd.APP_URL}/artwork/${artwork.slug}`)
     } else {
       // TODO: Implement error handling. story: AUCT-713
     }
@@ -233,16 +227,22 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   return (
     <AppContainer>
       <Title>Confirm Bid | Artsy</Title>
+
       <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
         <Serif size="8">Confirm your bid</Serif>
+
         <Separator />
+
         <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
+
         <Separator />
+
         <BidForm
           initialSelectedBid={getInitialSelectedBid(props.location)}
           showPricingTransparency={false}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
+          me={me}
         />
       </Box>
     </AppContainer>

@@ -4,7 +4,7 @@ export const ConfirmBidQueryResponseFixture: routes_ConfirmBidQueryRawResponse =
   me: {
     id: "opaque-my-user-id",
     internalID: "my-user-id",
-    hasQualifiedCreditCards: false,
+    hasQualifiedCreditCards: true,
   },
   artwork: {
     id: "opaque-artworkid",

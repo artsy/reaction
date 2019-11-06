@@ -60,6 +60,7 @@ export const routes: RouteConfig[] = [
           }
         }
         me {
+          ...BidForm_me
           id
           internalID
           hasQualifiedCreditCards

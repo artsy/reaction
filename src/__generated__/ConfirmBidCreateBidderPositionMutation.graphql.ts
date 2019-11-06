@@ -17,8 +17,8 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
                 readonly internalID: string;
             } | null;
             readonly status: string;
-            readonly message_header: string | null;
-            readonly message_description_md: string | null;
+            readonly messageHeader: string | null;
+            readonly messageDescriptionMD: string | null;
         } | null;
     } | null;
 };
@@ -40,8 +40,8 @@ mutation ConfirmBidCreateBidderPositionMutation(
         id
       }
       status
-      message_header: messageHeader
-      message_description_md: messageDescriptionMD
+      messageHeader
+      messageDescriptionMD
     }
   }
 }
@@ -79,14 +79,14 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "message_header",
+  "alias": null,
   "name": "messageHeader",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "message_description_md",
+  "alias": null,
   "name": "messageDescriptionMD",
   "args": null,
   "storageKey": null
@@ -194,10 +194,10 @@ return {
     "operationKind": "mutation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "id": null,
-    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        id\n      }\n      status\n      message_header: messageHeader\n      message_description_md: messageDescriptionMD\n    }\n  }\n}\n",
+    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        id\n      }\n      status\n      messageHeader\n      messageDescriptionMD\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '5a8747e92cb3ca78c7dac7a73739afa4';
+(node as any).hash = '221ace778bd3446ce1d9695869417e38';
 export default node;

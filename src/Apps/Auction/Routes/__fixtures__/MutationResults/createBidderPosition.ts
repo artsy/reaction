@@ -8,8 +8,8 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
         internalID: "positionid",
       },
       status: "SUCCESS",
-      message_header: null,
-      message_description_md: null,
+      messageHeader: null,
+      messageDescriptionMD: null,
     },
   },
 }
@@ -19,8 +19,8 @@ export const createBidderPositionFailed: ConfirmBidCreateBidderPositionMutationR
     result: {
       position: null,
       status: "FAILED",
-      message_header: "The `createBidderPosition` mutation failed.",
-      message_description_md: null,
+      messageHeader: "The `createBidderPosition` mutation failed.",
+      messageDescriptionMD: null,
     },
   },
 }
@@ -31,7 +31,7 @@ export const confirmBidBidderPositionQueryWithWinning: BidderPositionQueryRespon
       status: "WINNING",
       messageHeader: null,
       position: {
-        id: "winning-bidder-position-id-from-polling",
+        internalID: "winning-bidder-position-id-from-polling",
         suggestedNextBid: null,
       },
     },
@@ -44,7 +44,7 @@ export const confirmBidBidderPositionQueryWithPending: BidderPositionQueryRespon
       status: "PENDING",
       messageHeader: null,
       position: {
-        id: "pending-bidder-position-id-from-polling",
+        internalID: "pending-bidder-position-id-from-polling",
         suggestedNextBid: null,
       },
     },
