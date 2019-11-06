@@ -7,14 +7,13 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 
 interface Props extends SystemContextProps {
-  relay?: RelayPaginationProp
+  relay: RelayPaginationProp
   viewer: WorksForYouArtistFeed_viewer
   artistID: string
   forSale?: boolean
@@ -57,8 +56,8 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
     const avatarImageUrl = get(artist, p => p.image.resized.url)
     const meta =
       (forSale
-        ? get(artist, p => p.counts.for_sale_artworks, "").toLocaleString()
-        : get(artist, p => p.counts.artworks, "").toLocaleString()) + " Works"
+        ? get(artist, p => p.counts.for_sale_artworks.toLocaleString(), "")
+        : get(artist, p => p.counts.artworks.toLocaleString(), "")) + " Works"
 
     return (
       <>
@@ -139,7 +138,7 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.viewer.artist.artworks_connection as ConnectionData
+      return props.viewer.artist.artworks_connection
     },
     getFragmentVariables(prevVars, totalCount) {
       return {

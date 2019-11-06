@@ -8,14 +8,13 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 
 interface Props extends SystemContextProps {
-  relay?: RelayPaginationProp
+  relay: RelayPaginationProp
   user?: User
   viewer: WorksForYouFeed_viewer
 }
@@ -169,7 +168,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.viewer.me.followsAndSaves.notifications as ConnectionData
+      return props.viewer.me.followsAndSaves.notifications
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
