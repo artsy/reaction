@@ -25,14 +25,14 @@ jest.unmock("react-relay")
 
 const realSetInterval = global.setInterval
 
-const testOrder = {
+const testOrder: CounterTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
     .toString(),
   lastOffer: {
     ...OfferWithTotals,
-    id: "lastOffer",
+    internalID: "lastOffer",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
       .toString(),
@@ -40,15 +40,11 @@ const testOrder = {
   },
   myLastOffer: {
     ...OfferWithTotals,
-    id: "myLastOffer",
-    createdAt: DateTime.fromISO(NOW)
-      .minus({ days: 1 })
-      .toString(),
+    internalID: "myLastOffer",
     amount: "$your.offer",
     fromParticipant: "BUYER",
   },
   offers: { edges: Offers },
-  buyer: Buyer,
 }
 
 describe("Submit Pending Counter Offer", () => {
@@ -157,7 +153,7 @@ describe("Submit Pending Counter Offer", () => {
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 

@@ -62,7 +62,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.FocusedOnOfferInput,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -71,7 +71,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferTooLow,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -86,7 +86,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -187,7 +187,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
       const orderOrError = (await this.addInitialOfferToOrder({
         input: {
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
-          orderId: this.props.order.id,
+          orderId: this.props.order.internalID,
           amountCents: offerValue * 100,
         },
       })).commerceAddInitialOfferToOrder.orderOrError
@@ -197,7 +197,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/shipping`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -207,7 +207,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   render() {
     const { order, isCommittingMutation } = this.props
 
-    const artworkId = order.lineItems.edges[0].node.artwork.id
+    const artworkId = order.lineItems.edges[0].node.artwork.slug
     const orderCurrency = order.currencyCode
 
     return (

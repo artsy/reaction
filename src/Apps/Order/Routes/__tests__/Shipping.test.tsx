@@ -46,7 +46,10 @@ const fillAddressForm = (component: any, address: Address) => {
   fillCountrySelect(component, address.country)
 }
 
-const testOrder = { ...UntouchedBuyOrder, id: "1234" }
+const testOrder: ShippingTestQueryRawResponse["order"] = {
+  ...UntouchedBuyOrder,
+  internalID: "1234",
+}
 
 class ShippingTestPage extends OrderAppTestPage {
   async selectPickupOption() {
@@ -60,7 +63,7 @@ class ShippingTestPage extends OrderAppTestPage {
 describe("Shipping", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: ShippingFragmentContainer,
-    defaultData: { order: testOrder } as ShippingTestQueryRawResponse,
+    defaultData: { order: testOrder },
     defaultMutationResults: {
       ...settingOrderShipmentSuccess,
     },

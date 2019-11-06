@@ -1,5 +1,5 @@
-import { PaymentTestQueryRawResponse } from "__generated__/PaymentTestQuery.graphql"
 import { BorderedRadio, Checkbox } from "@artsy/palette"
+import { PaymentTestQueryRawResponse } from "__generated__/PaymentTestQuery.graphql"
 
 import {
   BuyOrderWithShippingDetails,
@@ -36,7 +36,10 @@ jest.mock(
   }
 )
 
-const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
+const testOrder: PaymentTestQueryRawResponse["order"] = {
+  ...BuyOrderWithShippingDetails,
+  internalID: "1234",
+}
 
 describe("Payment", () => {
   const { buildPage, mutations, routes } = createTestEnv({
@@ -44,7 +47,7 @@ describe("Payment", () => {
     defaultData: {
       order: testOrder,
       me: { creditCards: { edges: [] } },
-    } as PaymentTestQueryRawResponse,
+    },
     defaultMutationResults: {
       ...settingOrderPaymentSuccess,
     },

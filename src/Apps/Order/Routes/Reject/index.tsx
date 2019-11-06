@@ -71,7 +71,7 @@ export class Reject extends Component<RejectProps> {
     try {
       const orderOrError = (await this.rejectOffer({
         input: {
-          offerId: this.props.order.lastOffer.id,
+          offerId: this.props.order.lastOffer.internalID,
         },
       })).commerceBuyerRejectOffer.orderOrError
 
@@ -79,7 +79,7 @@ export class Reject extends Component<RejectProps> {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -88,7 +88,7 @@ export class Reject extends Component<RejectProps> {
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   render() {

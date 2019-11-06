@@ -1,5 +1,5 @@
-import { RespondTestQueryRawResponse } from "__generated__/RespondTestQuery.graphql"
 import { BorderedRadio, Button } from "@artsy/palette"
+import { RespondTestQueryRawResponse } from "__generated__/RespondTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -236,7 +236,7 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/accept`
+        `/orders/${testOrder.internalID}/review/accept`
       )
     })
 
@@ -245,7 +245,7 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/decline`
+        `/orders/${testOrder.internalID}/review/decline`
       )
     })
 

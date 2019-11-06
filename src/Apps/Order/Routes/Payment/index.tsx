@@ -92,7 +92,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       const orderOrError = (await this.setOrderPayment({
         input: {
           creditCardId: result.creditCardId,
-          id: this.props.order.id,
+          id: this.props.order.internalID,
         },
       })).commerceSetPayment.orderOrError
 
@@ -100,7 +100,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/review`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/review`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()

@@ -4,6 +4,7 @@ import {
   isAbstractType,
   isLeafType,
   isNonNullType,
+  isNullableType,
   responsePathAsArray,
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
@@ -138,6 +139,9 @@ export const createMockFetchQuery = ({
 
 const checkLeafType = (value: unknown, info: GraphQLResolveInfo) => {
   const returnType = info.returnType
+  if (isNullableType(returnType) && value === null) {
+    return null
+  }
   if (isLeafType(returnType)) {
     try {
       returnType.parseValue(value)

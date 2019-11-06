@@ -83,7 +83,7 @@ export class CounterRoute extends Component<CounterProps> {
         commerceSubmitPendingOffer: { orderOrError },
       } = await this.submitPendingOffer({
         input: {
-          offerId: this.props.order.myLastOffer.id,
+          offerId: this.props.order.myLastOffer.internalID,
         },
       })
 
@@ -113,15 +113,15 @@ export class CounterRoute extends Component<CounterProps> {
 
   @track<CounterProps>(props => ({
     action_type: Schema.ActionType.SubmittedCounterOffer,
-    order_id: props.order.id,
+    order_id: props.order.internalID,
   }))
   onSuccessfulSubmit() {
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/status`)
   }
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   render() {

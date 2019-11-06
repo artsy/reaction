@@ -57,7 +57,7 @@ export const UntouchedOrder = {
           artwork: {
             id: "02393",
             internalID: "artworkId",
-            slug: "11111111",
+            slug: "artworkId",
             pickup_available: true,
             artist_names: "Lisa Breslow",
             title: "Gramercy Park South",
@@ -66,8 +66,8 @@ export const UntouchedOrder = {
             medium: "Oil and pencil on panel",
             onlyShipsDomestically: false,
             shippingCountry: "US",
-            is_acquireable: true,
-            is_offerable: false,
+            is_acquireable: true as boolean,
+            is_offerable: false as boolean,
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
@@ -76,6 +76,8 @@ export const UntouchedOrder = {
             artists: [
               {
                 internalID: "artistId",
+                slug: "artistId",
+                id: "239084092",
               },
             ],
             attribution_class: null,
@@ -108,6 +110,7 @@ export const UntouchedOrder = {
   },
   sellerDetails: {
     __typename: "Partner",
+    id: "partner-node-id",
     name: "Kathryn Markel Fine Arts",
     locations: [
       {
@@ -260,11 +263,13 @@ export const OfferOrderPickup = {
 
 export const Buyer = {
   __typename: "User",
+  id: "buyer-node-id",
   internalID: "buyer",
 } as const
 
 export const Seller = {
   __typename: "Partner",
+  id: "seller-node-id",
   internalID: "seller",
 } as const
 

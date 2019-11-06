@@ -21,12 +21,13 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.unmock("react-relay")
 const realSetInterval = global.setInterval
 
-const testOrder = {
+const testOrder: RejectTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
     .toString(),
   lastOffer: {
+    internalID: "last-offer-id",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
       .toString(),
@@ -50,7 +51,7 @@ describe("Buyer rejects seller offer", () => {
           unix: 222,
         },
       },
-    } as RejectTestQueryRawResponse,
+    },
     defaultMutationResults: {
       ...rejectOfferSuccess,
     },
@@ -97,7 +98,7 @@ describe("Buyer rejects seller offer", () => {
     it("Shows a change link that takes the user back to the respond page", () => {
       page.root.find("StepSummaryItem a").simulate("click")
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/respond`
+        `/orders/${testOrder.internalID}/respond`
       )
     })
   })
@@ -116,7 +117,7 @@ describe("Buyer rejects seller offer", () => {
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 

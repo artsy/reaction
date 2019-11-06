@@ -26,14 +26,17 @@ const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
-const testOrder = { ...UntouchedOfferOrder, id: "1234" }
+const testOrder: OfferTestQueryRawResponse["order"] = {
+  ...UntouchedOfferOrder,
+  internalID: "1234",
+}
 
 describe("Offer InitialMutation", () => {
   const { buildPage, mutations, routes } = createTestEnv({
     Component: OfferFragmentContainer,
     defaultData: {
       order: testOrder,
-    } as OfferTestQueryRawResponse,
+    },
     defaultMutationResults: {
       ...initialOfferSuccess,
     },

@@ -1,8 +1,6 @@
 import { NewPaymentTestQueryRawResponse } from "__generated__/NewPaymentTestQuery.graphql"
 import {
-  Buyer,
   OfferOrderWithShippingDetails,
-  Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
@@ -45,9 +43,9 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 window.location.assign = jest.fn()
 
-const testOrder = {
+const testOrder: NewPaymentTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
-  id: "1234",
+  internalID: "1234",
   state: "SUBMITTED",
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
@@ -58,9 +56,6 @@ const testOrder = {
       .minus({ days: 1 })
       .toString(),
   },
-  awaitingResponseFrom: "BUYER",
-  offers: { edges: Offers },
-  buyer: Buyer,
 }
 
 describe("Payment", () => {
@@ -82,7 +77,7 @@ describe("Payment", () => {
           unix: 222,
         },
       },
-    } as NewPaymentTestQueryRawResponse,
+    },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
       ...fixFailedPaymentSuccess,
@@ -173,7 +168,7 @@ describe("Payment", () => {
       "Not available",
       "Sorry, the work is no longer available."
     )
-    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].slug
     expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
   })
 

@@ -11,7 +11,7 @@ import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ReactStripeElements } from "react-stripe-elements"
 import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
@@ -39,7 +39,6 @@ export interface NewPaymentProps
   extends ReactStripeElements.InjectedStripeProps {
   order: NewPayment_order
   me: NewPayment_me
-  relay?: RelayRefetchProp
   router: Router
   route: RouteConfig
   dialog: Dialog
@@ -109,7 +108,7 @@ export class NewPaymentRoute extends Component<
       const orderOrError = (await this.fixFailedPayment({
         input: {
           creditCardId: result.creditCardId,
-          offerId: this.props.order.lastOffer.id,
+          offerId: this.props.order.lastOffer.internalID,
         },
       })).commerceFixFailedPayment.orderOrError
 
@@ -133,10 +132,10 @@ export class NewPaymentRoute extends Component<
           this.onContinue()
         }
       } else {
-        this.props.router.push(`/orders/${this.props.order.id}/status`)
+        this.props.router.push(`/orders/${this.props.order.internalID}/status`)
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -295,7 +294,7 @@ export class NewPaymentRoute extends Component<
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
