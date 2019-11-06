@@ -75,6 +75,10 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       {} as any
     )
 
+    beforeEach(() => {
+      this.errors = []
+    })
+
     afterEach(() => {
       const _errors = this.errors
       this.errors = []
