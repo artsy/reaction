@@ -47,7 +47,7 @@ const goToStatusIf = (
 ): OrderPredicate => ({ order }) => {
   if (pred(order)) {
     return {
-      path: `/orders/${order.id}/status`,
+      path: `/orders/${order.internalID}/status`,
       reason,
     }
   }
@@ -55,7 +55,7 @@ const goToStatusIf = (
 
 const goToArtworkIfOrderWasAbandoned: OrderPredicate = ({ order }) => {
   if (order.state === "ABANDONED") {
-    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
+    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.slug)
     // If an artwork ID can't be found, redirect back to home page.
     return {
       path: artworkID ? `/artwork/${artworkID}` : "/",
@@ -72,7 +72,7 @@ const goToStatusIfOrderIsNotPending = goToStatusIf(
 const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.requestedFulfillment) {
     return {
-      path: `/orders/${order.id}/shipping`,
+      path: `/orders/${order.internalID}/shipping`,
       reason: "Shipping was not yet completed",
     }
   }
@@ -81,7 +81,7 @@ const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
 const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.creditCard) {
     return {
-      path: `/orders/${order.id}/payment`,
+      path: `/orders/${order.internalID}/payment`,
       reason: "Payment was not yet completed",
     }
   }
@@ -90,7 +90,7 @@ const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
 const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
   if (order.mode !== "OFFER") {
     return {
-      path: `/orders/${order.id}/shipping`,
+      path: `/orders/${order.internalID}/shipping`,
       reason: "Order is not an offer order",
     }
   }
@@ -99,7 +99,7 @@ const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
 const goToOfferIfNoOfferMade: OrderPredicate = ({ order }) => {
   if (order.mode === "OFFER" && !order.myLastOffer) {
     return {
-      path: `/orders/${order.id}/offer`,
+      path: `/orders/${order.internalID}/offer`,
       reason: "No offer has been made yet",
     }
   }
@@ -128,7 +128,7 @@ const goToStatusIfNotLastTransactionFailed = goToStatusIf(
 const goToReviewIfOrderIsPending: OrderPredicate = ({ order }) => {
   if (order.state === "PENDING") {
     return {
-      path: `/orders/${order.id}/review`,
+      path: `/orders/${order.internalID}/review`,
       reason: "Order is still pending",
     }
   }
@@ -146,7 +146,7 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
     return
   }
   return {
-    path: `/orders/${order.id}/respond`,
+    path: `/orders/${order.internalID}/respond`,
     reason: "myLastOffer is not most recent offer",
   }
 }
@@ -154,7 +154,7 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
 const goToRespondIfAwaitingBuyerResponse: OrderPredicate = ({ order }) => {
   if (order.awaitingResponseFrom === "BUYER") {
     return {
-      path: `/orders/${order.id}/respond`,
+      path: `/orders/${order.internalID}/respond`,
       reason: "Still awaiting buyer response",
     }
   }

@@ -125,13 +125,6 @@ export const createMockFetchQuery = ({
       // here we map the mock fixture entries to resolver functions if they aren't
       // already. graphql-tools expects functions, but we want to be able to just
       // supply plain data for syntax convenience.
-      Query: Object.entries(mockData).reduce(
-        (acc, [k, v]) => ({
-          ...acc,
-          [k]: typeof v === "function" ? v : () => v,
-        }),
-        {}
-      ),
       Mutation: Object.entries(mockMutationResults).reduce(
         (acc, [k, v]) => ({
           ...acc,
