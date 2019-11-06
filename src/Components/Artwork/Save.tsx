@@ -96,15 +96,15 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
         `,
         variables: {
           input: {
-            artwork_id: artwork.id,
+            artworkID: artwork.internalID,
             remove: this.isSaved,
           },
         },
         optimisticResponse: {
           saveArtwork: {
             artwork: {
-              __id: artwork.__id,
               id: artwork.id,
+              slug: artwork.slug,
               is_saved: !this.isSaved,
             },
           },
