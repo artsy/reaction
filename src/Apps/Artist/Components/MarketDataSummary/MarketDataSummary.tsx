@@ -35,19 +35,27 @@ export class MarketDataSummary extends React.Component<Props, null> {
   }
 
   hasSections() {
-    const { highlights, auctionResults, collections } = this.props.artist
-    const { partners } = highlights
+    const {
+      highlights,
+      auctionResultsConnection,
+      collections,
+    } = this.props.artist
+    const { partnersConnection } = highlights
 
     // Is there a gallery representation section?
-    if (partners && partners.edges && partners.edges.length > 0) {
+    if (
+      partnersConnection &&
+      partnersConnection.edges &&
+      partnersConnection.edges.length > 0
+    ) {
       return true
     }
 
     // Is there an auction highlights section?
     if (
-      auctionResults &&
-      auctionResults.edges &&
-      auctionResults.edges.length > 0
+      auctionResultsConnection &&
+      auctionResultsConnection.edges &&
+      auctionResultsConnection.edges.length > 0
     ) {
       return true
     }
@@ -64,19 +72,26 @@ export class MarketDataSummary extends React.Component<Props, null> {
   // Display the highest category string for all the partners that represent the artist
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
-    const { partners } = highlights
-    if (partners && partners.edges && partners.edges.length > 0) {
-      const groupedByCategory = groupBy(partners.edges, ({ node: partner }) => {
-        let category
-        Object.keys(Categories).forEach(key => {
-          partner.categories.forEach(partnerCategory => {
-            if (partnerCategory.id === key) {
-              category = key
-            }
+    const { partnersConnection } = highlights
+    if (
+      partnersConnection &&
+      partnersConnection.edges &&
+      partnersConnection.edges.length > 0
+    ) {
+      const groupedByCategory = groupBy(
+        partnersConnection.edges,
+        ({ node: partner }) => {
+          let category
+          Object.keys(Categories).forEach(key => {
+            partner.categories.forEach(partnerCategory => {
+              if (partnerCategory.slug === key) {
+                category = key
+              }
+            })
           })
-        })
-        return category
-      })
+          return category
+        }
+      )
 
       const highestCategory = orderedCategories.filter(
         category =>
@@ -96,12 +111,13 @@ export class MarketDataSummary extends React.Component<Props, null> {
 
   renderAuctionHighlight() {
     if (
-      !this.props.artist.auctionResults ||
-      this.props.artist.auctionResults.edges.length < 1
+      !this.props.artist.auctionResultsConnection ||
+      this.props.artist.auctionResultsConnection.edges.length < 1
     ) {
       return null
     }
-    const topAuctionResult = this.props.artist.auctionResults.edges[0].node
+    const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
+      .node
     return <div>{topAuctionResult.price_realized.display} auction record</div>
   }
 

@@ -34,11 +34,17 @@ export class OtherAuctions extends React.Component<OtherAuctionsProps> {
 
 export const OtherAuctionsFragmentContainer = createFragmentContainer(
   OtherAuctions,
-  graphql`
-    fragment OtherAuctions_sales on Sale @relay(plural: true) {
-      ...AuctionCard_sale
-    }
-  `
+  {
+    sales: graphql`
+      fragment OtherAuctions_sales on SaleConnection {
+        edges {
+          node {
+            ...AuctionCard_sale
+          }
+        }
+      }
+    `,
+  }
 )
 
 export const OtherAuctionsQueryRenderer = () => {
@@ -51,11 +57,7 @@ export const OtherAuctionsQueryRenderer = () => {
       query={graphql`
         query OtherAuctionsQuery($sort: SaleSorts) {
           salesConnection(sort: $sort) {
-            edges {
-              node {
-                ...OtherAuctions_sales
-              }
-            }
+            ...OtherAuctions_sales
           }
         }
       `}

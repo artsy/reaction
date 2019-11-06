@@ -552,7 +552,17 @@ return {
       "name": "filterArtworksConnection",
       "storageKey": null,
       "args": [
+        {
+          "kind": "Literal",
+          "name": "after",
+          "value": ""
+        },
         (v3/*: any*/),
+        {
+          "kind": "Literal",
+          "name": "first",
+          "value": 30
+        },
         (v4/*: any*/),
         (v5/*: any*/)
       ],
@@ -720,5 +730,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6d19cee4a6166cab209b325683721f4d';
+(node as any).hash = '1a0b622e2469aee742f710c68cb80d06';
 export default node;

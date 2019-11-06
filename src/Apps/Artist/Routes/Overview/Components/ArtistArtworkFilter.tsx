@@ -22,7 +22,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
   const tracking = useTracking()
   const { filtered_artworks } = artist
 
-  const hasFilter = filtered_artworks && filtered_artworks.__id
+  const hasFilter = filtered_artworks && filtered_artworks.id
 
   // If there was an error fetching the filter,
   // we still want to render the rest of the page.
@@ -56,7 +56,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
           aggregations: ["TOTAL"],
         }}
       >
-        {artist.counts.artworks.length === 0 && (
+        {artist.counts.artworks === 0 && (
           <ZeroState artist={artist} is_followed={artist.is_followed} />
         )}
       </BaseArtworkFilter>

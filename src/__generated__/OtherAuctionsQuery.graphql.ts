@@ -8,11 +8,7 @@ export type OtherAuctionsQueryVariables = {
 };
 export type OtherAuctionsQueryResponse = {
     readonly salesConnection: {
-        readonly edges: ReadonlyArray<{
-            readonly node: {
-                readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_sales">;
-            } | null;
-        } | null> | null;
+        readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_sales">;
     } | null;
 };
 export type OtherAuctionsQuery = {
@@ -27,17 +23,17 @@ query OtherAuctionsQuery(
   $sort: SaleSorts
 ) {
   salesConnection(sort: $sort) {
-    edges {
-      node {
-        ...OtherAuctions_sales
-        id
-      }
-    }
+    ...OtherAuctions_sales
   }
 }
 
-fragment OtherAuctions_sales on Sale {
-  ...AuctionCard_sale
+fragment OtherAuctions_sales on SaleConnection {
+  edges {
+    node {
+      ...AuctionCard_sale
+      id
+    }
+  }
 }
 
 fragment AuctionCard_sale on Sale {
@@ -118,31 +114,9 @@ return {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "edges",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "SaleEdge",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "node",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Sale",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "FragmentSpread",
-                    "name": "OtherAuctions_sales",
-                    "args": null
-                  }
-                ]
-              }
-            ]
+            "kind": "FragmentSpread",
+            "name": "OtherAuctions_sales",
+            "args": null
           }
         ]
       }
@@ -343,10 +317,10 @@ return {
     "operationKind": "query",
     "name": "OtherAuctionsQuery",
     "id": null,
-    "text": "query OtherAuctionsQuery(\n  $sort: SaleSorts\n) {\n  salesConnection(sort: $sort) {\n    edges {\n      node {\n        ...OtherAuctions_sales\n        id\n      }\n    }\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
+    "text": "query OtherAuctionsQuery(\n  $sort: SaleSorts\n) {\n  salesConnection(sort: $sort) {\n    ...OtherAuctions_sales\n  }\n}\n\nfragment OtherAuctions_sales on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '41feacf1e4d4e8e64584ae1e2586ecfe';
+(node as any).hash = '5d222fcc05a81f1fe2bc9f34d6d07c23';
 export default node;
