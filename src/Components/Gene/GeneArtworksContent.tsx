@@ -37,8 +37,8 @@ export class GeneArtworksContent extends React.Component<Props, State> {
   }
 
   loadMoreArtworks() {
-    const hasMore = this.props.filtered_artworks.artworks.pageInfo.hasNextPage
-    const origLength = this.props.filtered_artworks.artworks.edges.length
+    const hasMore = this.props.filtered_artworks.pageInfo.hasNextPage
+    const origLength = this.props.filtered_artworks.edges.length
     if (hasMore && !this.state.loading && !this.finishedPaginatingWithError) {
       this.setState({ loading: true }, () => {
         this.props.relay.loadMore(PageSize, error => {
@@ -54,9 +54,8 @@ export class GeneArtworksContent extends React.Component<Props, State> {
           }
 
           // Check to see if no new edges were received.
-          const newLength = this.props.filtered_artworks.artworks.edges.length
-          const newHasMore = this.props.filtered_artworks.artworks.pageInfo
-            .hasNextPage
+          const newLength = this.props.filtered_artworks.edges.length
+          const newHasMore = this.props.filtered_artworks.pageInfo.hasNextPage
           if (newLength - origLength === 0 && newHasMore) {
             console.error(
               `No more records returned for gene: ${this.props.geneID}`
@@ -74,7 +73,7 @@ export class GeneArtworksContent extends React.Component<Props, State> {
     return (
       <div>
         <ArtworkGrid
-          artworks={this.props.filtered_artworks.artworks}
+          artworks={this.props.filtered_artworks}
           columnCount={4}
           itemMargin={40}
           onLoadMore={() => this.loadMoreArtworks()}
@@ -115,7 +114,7 @@ export default createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.filtered_artworks.artworks
+      return props.filtered_artworks
     },
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -130,7 +129,7 @@ export default createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
-        filteredArtworksNodeID: props.filtered_artworks.__id,
+        filteredArtworksNodeID: props.filtered_artworks.id,
       }
     },
     query: graphql`

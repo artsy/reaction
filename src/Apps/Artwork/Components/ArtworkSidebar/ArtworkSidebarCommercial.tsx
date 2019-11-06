@@ -119,7 +119,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
     const editionSetsFragment = editionSets.map((editionSet, index) => {
       return (
-        <React.Fragment key={editionSet.__id}>
+        <React.Fragment key={editionSet.id}>
           <Box py={3}>
             {this.renderEditionSet(editionSet, includeSelectOption)}
           </Box>
@@ -147,13 +147,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     context_module: Schema.ContextModule.Sidebar,
     action_type: Schema.ActionType.ClickedContactGallery,
     subject: Schema.Subject.ContactGallery,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleInquiry() {
     get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
-        artworkId: this.props.artwork.id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -161,13 +161,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedBuyNow,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
     products: [
       {
-        product_id: props.artwork._id,
+        product_id: props.artwork.internalID,
         quantity: 1,
-        price: currency(props.artwork.price).value,
+        price: currency(props.artwork.listPrice.display).value,
       },
     ],
   }))
@@ -206,7 +206,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
                     state => state.selectedEditionSet.id
@@ -228,7 +228,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(`/orders/${orderOrError.order.id}`)
+                      window.location.assign(
+                        `/orders/${orderOrError.order.internalID}`
+                      )
                     }
                   }
                 )
@@ -250,8 +252,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedMakeOffer,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleCreateOfferOrder() {
     const { user, mediator } = this.props
@@ -288,7 +290,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
                     state => state.selectedEditionSet.id
@@ -311,7 +313,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       )
                     } else {
                       window.location.assign(
-                        `/orders/${orderOrError.order.id}/offer`
+                        `/orders/${orderOrError.order.internalID}/offer`
                       )
                     }
                   }

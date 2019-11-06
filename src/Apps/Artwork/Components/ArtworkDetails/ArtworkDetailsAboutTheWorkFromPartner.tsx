@@ -118,8 +118,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                           modelName: Schema.OwnerType.Partner,
                           context_module:
                             Schema.ContextModule.AboutTheWorkPartner,
-                          entity_id: partner._id,
-                          entity_slug: partner.id,
+                          entity_id: partner.internalID,
+                          entity_slug: partner.slug,
                         }}
                         onOpenAuthModal={() =>
                           this.handleOpenAuth(mediator, partner)

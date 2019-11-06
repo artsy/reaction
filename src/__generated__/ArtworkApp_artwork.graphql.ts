@@ -13,6 +13,7 @@ export type ArtworkApp_artwork = {
     } | null;
     readonly is_in_auction: boolean | null;
     readonly artists: ReadonlyArray<{
+        readonly id: string;
         readonly slug: string;
         readonly " $fragmentRefs": FragmentRefs<"ArtistInfo_artist">;
     } | null> | null;
@@ -120,6 +121,13 @@ return {
       "concreteType": "Artist",
       "plural": true,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
         (v0/*: any*/),
         (v2/*: any*/)
       ]
@@ -179,5 +187,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4c3050fc9012ae42a1942eb5f5ebaa02';
+(node as any).hash = 'a6f40e5e386f177795ad698b3f70e0c3';
 export default node;

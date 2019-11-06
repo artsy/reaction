@@ -78,7 +78,8 @@ export class PricingContext extends React.Component<PricingContextProps> {
       return null
     }
 
-    const priceCents = artwork.priceCents.max || artwork.priceCents.min
+    const priceCents =
+      artwork.listPrice.maxPrice.minor || artwork.listPrice.minPrice.minor
 
     const artworkFallsBeforeFirstBin =
       priceCents < artwork.pricingContext.bins[0].minPriceCents
@@ -87,7 +88,7 @@ export class PricingContext extends React.Component<PricingContextProps> {
       artwork.pricingContext.bins[artwork.pricingContext.bins.length - 1]
         .maxPriceCents
 
-    const artistId = artwork.artists[0].id
+    const artistId = artwork.artists[0].slug
     return (
       <BorderBox mb={2} flexDirection="column">
         <Waypoint onEnter={once(this.trackImpression.bind(this))} />

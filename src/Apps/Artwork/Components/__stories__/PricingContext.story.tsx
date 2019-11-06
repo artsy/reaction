@@ -29,11 +29,15 @@ const MockPricingContext = ({
 
 const mockArtwork: PricingContext_artwork = {
   " $refType": null,
-  artists: [{ id: "alex-katz" }],
+  artists: [{ slug: "alex-katz" }],
   category: "Sculpture",
-  priceCents: {
-    min: 284243,
-    max: 284244,
+  listPrice: {
+    minPrice: {
+      minor: 284243,
+    },
+    maxPrice: {
+      minor: 284243,
+    },
   },
   pricingContext: {
     bins: [

@@ -48,7 +48,7 @@ class RelatedWorksArtworkGrid extends React.Component<
     this.props.relay.refetch(
       {
         layerId: tab.data.layerId,
-        artworkSlug: this.props.artwork.id,
+        artworkSlug: this.props.artwork.slug,
       },
       null,
       error => {
@@ -95,9 +95,9 @@ class RelatedWorksArtworkGrid extends React.Component<
       <>
         <Header title="Related works" />
         <Tabs justifyContent="center" onChange={this.handleTabClick}>
-          {names.map(({ name, id }, key) => {
+          {names.map(({ name, internalID }, key) => {
             return (
-              <Tab name={name} key={key} data={{ layerId: id }}>
+              <Tab name={name} key={key} data={{ layerId: internalID }}>
                 <ArtworksContainer>
                   {this.state.isLoading ? (
                     <Spinner />
