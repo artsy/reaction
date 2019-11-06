@@ -1,5 +1,5 @@
-import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsAppTestQuery.graphql"
 import { EntityHeader } from "@artsy/palette"
+import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsAppTestQuery.graphql"
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "Apps/Collect2/Routes/Collections"
 import { CollectionsGrid } from "Apps/Collect2/Routes/Collections/Components/CollectionsGrid"
@@ -25,16 +25,14 @@ describe("CollectionApp", () => {
             }
           }
         `,
-        mockResolvers: {
-          Query: () => ({
-            marketingCategories: () => [
-              {
-                name: "Modern",
-                collections: [], // "Modern" exists to test sort order so no need to add collections
-              },
-              ...CategoriesFixture,
-            ],
-          }),
+        mockData: {
+          categories: [
+            {
+              name: "Modern",
+              collections: [], // "Modern" exists to test sort order so no need to add collections
+            },
+            ...CategoriesFixture,
+          ],
         } as CollectionsAppTestQueryRawResponse,
         wrapper: children => <MockBoot breakpoint="lg">{children}</MockBoot>,
       })

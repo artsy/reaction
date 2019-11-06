@@ -7,7 +7,9 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarAuctionPartnerInfo", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarAuctionPartnerInfoFragmentContainer,
       query: graphql`
@@ -17,13 +19,13 @@ describe("ArtworkSidebarAuctionPartnerInfo", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
+      mockData: {
+        artwork: response,
       } as ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse,
     })
   }
 
-  let artwork
+  let artwork: ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse["artwork"]
 
   describe("ArtworkSidebarAuctionPartnerInfo", () => {
     beforeEach(() => {

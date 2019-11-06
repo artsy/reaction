@@ -22,8 +22,8 @@ describe("Articles Route", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => ArticlesFixture,
+      mockData: {
+        artist: ArticlesFixture,
       } as Articles_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",

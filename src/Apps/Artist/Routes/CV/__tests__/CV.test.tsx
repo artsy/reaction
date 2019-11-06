@@ -23,11 +23,8 @@ describe("CV Route", () => {
           }
         }
       `,
-      mockResolvers: {
-        Viewer: () => CVFixture,
-        Artist: () => CVFixture.artist_soloShows,
-        Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
-        ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
+      mockData: {
+        viewer: CVFixture,
       } as CV_Test_QueryRawResponse,
       variables: {
         artist_id: "pablo-picasso",

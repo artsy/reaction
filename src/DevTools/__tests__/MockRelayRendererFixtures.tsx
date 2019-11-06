@@ -83,7 +83,7 @@ const ArtistQueryRenderer = (props: { id: string }) => (
 )
 
 export const query = graphql`
-  query MockRelayRendererFixturesQuery {
+  query MockRelayRendererFixturesQuery @raw_response_type {
     artwork(id: "mona-lisa") {
       ...MockRelayRendererFixtures_artwork
     }
@@ -92,7 +92,7 @@ export const query = graphql`
 
 // Bad query has a misnamed top-level property.
 export const badQuery = graphql`
-  query MockRelayRendererFixturesBadQuery {
+  query MockRelayRendererFixturesBadQuery @raw_response_type {
     something_that_is_not_expected: artwork(id: "mona-lisa") {
       ...MockRelayRendererFixtures_artwork
     }

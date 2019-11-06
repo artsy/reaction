@@ -11,7 +11,7 @@ describe("ArtworkSidebarClassification", () => {
   let wrapper = null
 
   const getWrapper = async (
-    response = {
+    response: ArtworkSidebarClassification_Test_QueryRawResponse["artwork"] = {
       attribution_class: {
         short_description: "This is a unique work",
       },
@@ -26,8 +26,8 @@ describe("ArtworkSidebarClassification", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
+      mockData: {
+        artwork: response,
       } as ArtworkSidebarClassification_Test_QueryRawResponse,
     })
   }

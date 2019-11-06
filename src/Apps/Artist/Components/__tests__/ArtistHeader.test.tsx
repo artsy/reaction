@@ -7,7 +7,9 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtistHeader", () => {
-  const getWrapper = async (response = ArtistHeaderFixture) => {
+  const getWrapper = async (
+    response: ArtistHeader_Test_QueryRawResponse["artist"] = ArtistHeaderFixture
+  ) => {
     return await renderRelayTree({
       Component: ArtistHeader,
       query: graphql`
@@ -17,8 +19,8 @@ describe("ArtistHeader", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => response,
+      mockData: {
+        artist: response,
       } as ArtistHeader_Test_QueryRawResponse,
     })
   }
